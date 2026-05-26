@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesla (TSLA) Full AI Equity Report | Valuatum</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="search.html" class="nav-link" style="color:var(--gray-steel);">Generate new report</a>
+      </nav>
+      <button class="btn btn-primary btn-sm" onclick="showToast('PDF download — coming soon. Report is being prepared.')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 4 3-4"/><path d="M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Download PDF
+      </button>
+    </div>
+  </header>
+
+  <main class="report-full-page">
+
+    <!-- Company header -->
+    <section class="report-company-header">
+      <div class="container">
+        <div class="company-header-inner">
+          <div class="company-ident">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
+              <span class="company-ticker">TSLA</span>
+              <span class="company-status-badge"><span class="company-status-dot"></span>Full report · 2026-05-26</span>
+            </div>
+            <h1 class="company-name">Tesla, Inc.</h1>
+            <div class="company-meta">
+              <span class="company-meta-chip">NASDAQ</span>
+              <span class="company-meta-sep"></span>
+              <span class="company-meta-chip">United States</span>
+              <span class="company-meta-sep"></span>
+              <span class="company-meta-chip">Consumer Discretionary · Electric Vehicles</span>
+              <span class="company-meta-sep"></span>
+              <span class="company-meta-chip">Data date: 2026-05-25</span>
+            </div>
+          </div>
+          <div class="company-header-actions">
+            <button class="btn btn-primary" onclick="showToast('PDF download coming soon — report is being prepared.')">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 4 3-4"/><path d="M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Download PDF
+            </button>
+            <a href="index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); font-size:var(--text-xs);">Generate report</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report nav (top) -->
+    <nav class="report-full-nav" aria-label="Report sections">
+      <div class="container" style="padding:0;">
+        <div class="report-full-nav-inner">
+          <a href="#summary" class="report-nav-link active">Summary</a>
+          <a href="#metrics" class="report-nav-link">Key Metrics</a>
+          <a href="#value-map" class="report-nav-link">Value Map</a>
+          <a href="#core-analysis" class="report-nav-link">Core Analysis</a>
+          <a href="#reverse-val" class="report-nav-link">Reverse Valuation</a>
+          <a href="#risks" class="report-nav-link">Risks</a>
+          <a href="#financials" class="report-nav-link">Financials</a>
+          <a href="#sources" class="report-nav-link">Sources</a>
+          <div class="report-full-download">
+            <button class="btn btn-primary btn-sm" onclick="showToast('PDF download coming soon.')">
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 4 3-4"/><path d="M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Download PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Report layout -->
+    <div class="report-full-layout">
+
+      <!-- Sidebar nav -->
+      <aside class="report-full-sidebar" aria-label="Section navigation">
+        <div style="font-size:var(--text-xs); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray-steel); margin-bottom:1rem;">Report sections</div>
+        <a href="#summary" class="sidebar-nav-link active">Executive Summary</a>
+        <a href="#metrics" class="sidebar-nav-link">Key Metrics</a>
+        <a href="#value-map" class="sidebar-nav-link">Company Value Map</a>
+        <a href="#core-analysis" class="sidebar-nav-link">Core Analysis</a>
+        <a href="#reverse-val" class="sidebar-nav-link">Reverse Valuation</a>
+        <a href="#risks" class="sidebar-nav-link">Risks & Catalysts</a>
+        <a href="#financials" class="sidebar-nav-link">Financial Statements</a>
+        <a href="#investment-summary" class="sidebar-nav-link">Investment Summary</a>
+        <a href="#sources" class="sidebar-nav-link">Sources</a>
+        <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+          <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center;" onclick="showToast('PDF download coming soon.')">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 4 3-4"/><path d="M2 12h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Download PDF
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="report-full-content">
+
+        <!-- Upsell bar -->
+        <div class="upsell-bar">
+          <div class="upsell-bar-text">
+            <div class="upsell-bar-title">Generate report</div>
+            <div class="upsell-bar-desc">Use your remaining credits or buy more for any listed company.</div>
+          </div>
+          <a href="search.html" class="btn btn-outline">Search company →</a>
+          <a href="pricing.html" class="btn btn-primary">Buy 5 credits — €49</a>
+        </div>
+
+        <!-- Summary -->
+        <section class="report-full-section" id="summary">
+          <h2>Executive Summary</h2>
+          <p>Tesla, Inc. (NASDAQ: TSLA) is an American electric vehicle and clean energy company headquartered in Austin, Texas. As of 26 May 2026, Tesla trades at $248.52 per share with a market capitalization of approximately $798 billion and an enterprise value of approximately $784 billion.</p>
+          <p>At current pricing, Tesla's valuation is dominated by option value embedded in future business lines that have not yet achieved material profitability. The core automotive business — generating 2024 revenues of $77.1 billion and an EBIT margin of 3.7% — cannot justify the current EV at any conventional multiple. The market is effectively pricing in full commercial success of the Full Self-Driving software platform, a functioning Robotaxi network, and meaningful progress in humanoid robotics (Optimus).</p>
+          <p>The reverse valuation analysis shows that justifying the current $784B enterprise value under a base scenario requires Tesla to reach approximately $280–300B in revenue by 2030 (a ~22% CAGR) while expanding EBIT margins to 18–22% as software revenues scale. This implies substantial execution across all major value pools simultaneously — a scenario with significant binary risk.</p>
+          <p>The investment case is highly asymmetric: a bull case where FSD/Robotaxi succeeds could imply significant additional upside, while a bear case where automotive margins remain depressed and the option pool timeline extends substantially could result in a fair value well below current pricing.</p>
+        </section>
+
+        <!-- Key metrics -->
+        <section class="report-full-section" id="metrics">
+          <h2>Key Metrics</h2>
+          <div class="metrics-grid">
+            <div class="metric-card"><span class="metric-label">Share Price</span><span class="metric-value">$248.52</span><span class="metric-change metric-change--pos">+1.4%</span></div>
+            <div class="metric-card"><span class="metric-label">Market Cap</span><span class="metric-value">$798B</span></div>
+            <div class="metric-card"><span class="metric-label">Enterprise Value</span><span class="metric-value">$784B</span></div>
+            <div class="metric-card"><span class="metric-label">Revenue (LTM)</span><span class="metric-value">$97.7B</span><span class="metric-change metric-change--pos">+1.1% YoY</span></div>
+            <div class="metric-card"><span class="metric-label">EBIT</span><span class="metric-value">$3.6B</span><span class="metric-change metric-change--neg">−69% YoY</span></div>
+            <div class="metric-card"><span class="metric-label">EBIT Margin</span><span class="metric-value">3.7%</span><span class="metric-change metric-change--neg">−5.2pp YoY</span></div>
+            <div class="metric-card"><span class="metric-label">EPS (Reported)</span><span class="metric-value">$1.07</span><span class="metric-change metric-change--neg">−70% YoY</span></div>
+            <div class="metric-card"><span class="metric-label">P/E (TTM)</span><span class="metric-value">232x</span></div>
+            <div class="metric-card"><span class="metric-label">P/E (Fwd 2025E)</span><span class="metric-value">89x</span></div>
+            <div class="metric-card"><span class="metric-label">EV/EBIT (TTM)</span><span class="metric-value">218x</span></div>
+            <div class="metric-card"><span class="metric-label">EV/Revenue</span><span class="metric-value">8.0x</span></div>
+            <div class="metric-card"><span class="metric-label">Dividend Yield</span><span class="metric-value">0.0%</span></div>
+          </div>
+        </section>
+
+        <!-- Value Map -->
+        <section class="report-full-section" id="value-map">
+          <h2>Company Value Map — Enterprise Value Allocation</h2>
+          <p>The company value map decomposes Tesla's $784B enterprise value into five distinct pools, each representing a different source of implied value. The allocation reflects the market's implied pricing of each business at current share price.</p>
+
+          <h3>Value Pool Allocation</h3>
+          <div class="value-pool-chart" style="margin-top:1rem;">
+            <div class="pool-row"><span class="pool-name" style="min-width:200px;">Automotive Core</span><div class="pool-track"><div class="pool-fill" data-pct="38" style="width:0%; background:var(--green);"></div></div><span class="pool-pct">38% · ~$298B</span></div>
+            <div class="pool-row"><span class="pool-name" style="min-width:200px;">Energy & Storage</span><div class="pool-track"><div class="pool-fill" data-pct="12" style="width:0%; background:var(--green-light);"></div></div><span class="pool-pct">12% · ~$94B</span></div>
+            <div class="pool-row"><span class="pool-name" style="min-width:200px;">FSD Software Option</span><div class="pool-track"><div class="pool-fill" data-pct="22" style="width:0%; background:var(--green-deep);"></div></div><span class="pool-pct">22% · ~$172B</span></div>
+            <div class="pool-row"><span class="pool-name" style="min-width:200px;">Robotaxi Option</span><div class="pool-track"><div class="pool-fill" data-pct="23" style="width:0%; background:var(--charcoal-mid);"></div></div><span class="pool-pct">23% · ~$180B</span></div>
+            <div class="pool-row"><span class="pool-name" style="min-width:200px;">Optimus / Other</span><div class="pool-track"><div class="pool-fill" data-pct="5" style="width:0%; background:var(--gray-steel);"></div></div><span class="pool-pct">5% · ~$40B</span></div>
+          </div>
+
+          <h3>Pool 1: Automotive Core (~$298B, 38% of EV)</h3>
+          <p>The automotive segment generated $77.1B in revenue and approximately $3.6B in EBIT in 2024 (margin: ~4.7% for auto ex-energy). At $298B, the implied EV/EBIT is approximately 83x — significantly above the auto sector median of 8–12x, but reflecting Tesla's superior software architecture, vertically integrated manufacturing, and brand premium over traditional OEMs.</p>
+          <p>The bull case for this pool: margins recover to 15–18% by 2027–2028 as pricing pressure eases and mix improves. At $298B implied value with 2027E EBIT of ~$15B, this represents a ~20x forward EV/EBIT — aggressive but defensible if the manufacturing cost roadmap executes.</p>
+
+          <h3>Pool 2: Energy & Storage (~$94B, 12% of EV)</h3>
+          <p>Tesla's Megapack business has emerged as a high-margin, high-growth unit. 2024 energy revenues were $10.1B with gross margins above 40% — substantially higher than automotive. At $94B implied EV, the market is pricing approximately 9x revenue (2024) — premium but reflecting the sector's scarcity value and Tesla's manufacturing advantage in stationary storage.</p>
+
+          <h3>Pool 3: FSD Software Option (~$172B, 22% of EV)</h3>
+          <p>This pool represents the implied value of Full Self-Driving software monetisation across Tesla's fleet. The bull case: 15M+ FSD subscribers at $200/month by 2030 implies $36B annual recurring revenue — justifying a significant premium EV. The bear case: regulatory delays, competitive pressure from Waymo and others, and lower-than-expected adoption could compress this value substantially.</p>
+
+          <h3>Pool 4: Robotaxi Option (~$180B, 23% of EV)</h3>
+          <p>The Robotaxi pool is the largest speculative component. Full-scale autonomous ride-hailing at scale (5M+ vehicles by 2030) would represent a major value creation event. However, it requires commercial regulatory approval, consistent safety performance, and fleet deployment that remains uncertain. This pool has the highest binary risk of all five.</p>
+
+          <h3>Pool 5: Optimus / Other (~$40B, 5% of EV)</h3>
+          <p>The Optimus humanoid robot programme is early-stage. The market is pricing in modest option value relative to the stated ambitions, reflecting appropriate scepticism about timeline and commercial feasibility. This pool is treated as speculative optionality rather than a core DCF component.</p>
+        </section>
+
+        <!-- Core Analysis -->
+        <section class="report-full-section" id="core-analysis">
+          <h2>Core Investment Analysis</h2>
+
+          <h3>Business Model Quality</h3>
+          <p>Tesla operates across two distinct business model types. The automotive business is a high-capital, volume-driven manufacturing operation where scale, cost efficiency, and brand determine margin. The software/AI businesses (FSD, Robotaxi) are high-margin, low-variable-cost platforms where the economics improve significantly with scale.</p>
+          <p>The tension in the current investment case is that the stock is priced for the software model, while near-term results reflect the manufacturing model under margin pressure. This creates the primary analytical question: does the company successfully execute the transition from margin-compressed automaker to high-margin software/AI platform?</p>
+
+          <h3>Competitive Position</h3>
+          <p>In automotive, Tesla's competitive position is eroding at the margin. BYD and other Chinese manufacturers have closed the technology gap in standard EVs and compete aggressively on price. In Europe, established OEMs are gaining ground. Tesla's US market position remains stronger due to brand, Supercharger network, and FSD optionality.</p>
+          <p>In autonomous driving, Tesla's data advantage (billions of real-world miles) is significant, but Waymo's safety record and regulatory approvals in key US markets represent a meaningful competitive threat. The race to commercial Robotaxi deployment is Tesla's most important near-term competitive battle.</p>
+
+          <h3>Historical Performance</h3>
+          <p>Tesla's 2022 peak EBIT margin of 16.8% showed what the business could achieve at scale with pricing power intact. The subsequent decline to 3.7% in 2024 reflects aggressive price cuts designed to maintain volume and defend market share against rising competition. This creates a difficult narrative: the margin decline may be temporary (bull case) or structural (bear case).</p>
+
+          <h3>Valuation Tension</h3>
+          <p>At 218x EV/EBIT on trailing earnings, Tesla is priced at a level that requires near-perfect execution across multiple high-risk initiatives simultaneously. The automotive core at today's margins does not justify the current EV. Every dollar of EV above ~$150B represents implied option value that has not yet been proven commercially.</p>
+        </section>
+
+        <!-- Reverse Valuation -->
+        <section class="report-full-section" id="reverse-val">
+          <h2>Reverse Valuation</h2>
+          <p>Instead of providing a price target, this analysis works backwards from the current enterprise value of $784B to identify what the market is implying. The question is: what would have to be true for $784B to be a rational price?</p>
+
+          <h3>Base Scenario Assumptions (to justify $784B EV)</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>2024A</th><th>2026E</th><th>2028E</th><th>2030E (Required)</th></tr></thead>
+            <tbody>
+              <tr><td>Revenue</td><td class="num">$97.7B</td><td class="num">$131B</td><td class="num">$196B</td><td class="num">$285B</td></tr>
+              <tr><td>Revenue CAGR</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num pos">~22%</td></tr>
+              <tr><td>EBIT Margin</td><td class="num">3.7%</td><td class="num">10.7%</td><td class="num">16.0%</td><td class="num">18.5%</td></tr>
+              <tr><td>EBIT</td><td class="num">$3.6B</td><td class="num">$14.1B</td><td class="num">$31.4B</td><td class="num">$52.7B</td></tr>
+              <tr><td>EV/EBIT (on 2030E)</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">~15x</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Scenario Range</h3>
+          <table style="margin-top:1.5rem;">
+            <thead><tr><th>Scenario</th><th>Rev CAGR</th><th>EBIT Margin 2030</th><th>Implied EV</th><th>vs. Current</th></tr></thead>
+            <tbody>
+              <tr><td>Bull</td><td class="num pos">28%</td><td class="num pos">24%</td><td class="num pos">$1,400B+</td><td class="num pos">+79%</td></tr>
+              <tr><td>Base</td><td class="num">22%</td><td class="num">18%</td><td class="num">$784B</td><td class="num">—</td></tr>
+              <tr><td>Bear</td><td class="num neg">14%</td><td class="num neg">10%</td><td class="num neg">$280B</td><td class="num neg">−64%</td></tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:1.5rem;">The wide scenario range reflects the fundamentally binary nature of Tesla's option value pools. The bear case does not require Tesla to fail at automotive — it merely requires the option pools to not materialise on current timelines.</p>
+        </section>
+
+        <!-- Risks -->
+        <section class="report-full-section" id="risks">
+          <h2>Risk & Catalyst Analysis</h2>
+
+          <h3>Downside Risks</h3>
+          <p><strong>1. FSD/Robotaxi timeline slippage.</strong> If full autonomy is delayed by 2+ years from current expectations, the Robotaxi pool ($180B) loses material value. A 3-year delay would reduce NPV of the Robotaxi pool by 25–35% at a 10% WACC, cutting implied EV by ~$50–60B.</p>
+          <p><strong>2. China competition intensifies.</strong> BYD, Huawei/AITO, and local Chinese EV players continue to erode Tesla's China margin and volume. China represents ~25% of Tesla's revenue. If Tesla's China revenue falls 20% and margins contract further, automotive pool value could fall by $40–60B.</p>
+          <p><strong>3. Sustained margin pressure.</strong> If competitive pricing prevents margin recovery beyond 8–10% EBIT margin through 2027, the automotive pool is worth substantially less and the entire investment case timeline extends.</p>
+          <p><strong>4. Regulatory failure for Robotaxi.</strong> If US or EU regulators do not approve unsupervised Robotaxi operations at scale by 2028, the entire Robotaxi pool value collapses within the current discount period.</p>
+
+          <h3>Upside Catalysts</h3>
+          <p><strong>1. FSD regulatory breakthrough.</strong> Commercial approval for unsupervised FSD in additional US states and EU markets ahead of expectations could unlock subscription revenue and validate the software pool.</p>
+          <p><strong>2. Robotaxi ahead of Waymo.</strong> If Tesla deploys commercial Robotaxi operations in Austin and additional cities before Waymo achieves national scale, the implied pool value of $180B becomes more defensible.</p>
+          <p><strong>3. Margin recovery faster than expected.</strong> Lower input costs, Model Y refresh, and Cybertruck reaching profitability could push EBIT margins back to 12–15% by 2026, de-risking the automotive pool.</p>
+          <p><strong>4. Optimus commercialisation surprise.</strong> If Optimus humanoid robots enter commercial use in Tesla's own factories and/or external sale by 2027, the optionality implied in this pool is currently being significantly underpriced.</p>
+        </section>
+
+        <!-- Financials -->
+        <section class="report-full-section" id="financials">
+          <h2>Financial Statements & Estimates</h2>
+          <p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:1.5rem;">All figures in USD millions unless noted. 2024A = audited actuals. 2025E–2027E = consensus analyst estimates as of May 2026.</p>
+
+          <h3>Income Statement</h3>
+          <table>
+            <thead>
+              <tr><th>USD millions</th><th class="num">2022A</th><th class="num">2023A</th><th class="num">2024A</th><th class="num">2025E</th><th class="num">2026E</th><th class="num">2027E</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Revenue</td><td class="num">81,462</td><td class="num">96,773</td><td class="num">97,690</td><td class="num">107,290</td><td class="num">131,200</td><td class="num">162,840</td></tr>
+              <tr><td>Gross Profit</td><td class="num">20,853</td><td class="num">17,660</td><td class="num">17,854</td><td class="num">22,230</td><td class="num">31,490</td><td class="num">42,740</td></tr>
+              <tr><td>Gross Margin</td><td class="num pos">25.6%</td><td class="num">18.2%</td><td class="num">18.3%</td><td class="num">20.7%</td><td class="num">24.0%</td><td class="num pos">26.3%</td></tr>
+              <tr><td>EBIT</td><td class="num">13,656</td><td class="num">8,891</td><td class="num">3,630</td><td class="num">6,820</td><td class="num">14,060</td><td class="num">22,430</td></tr>
+              <tr><td>EBIT Margin</td><td class="num pos">16.8%</td><td class="num">9.2%</td><td class="num neg">3.7%</td><td class="num">6.4%</td><td class="num">10.7%</td><td class="num pos">13.8%</td></tr>
+              <tr><td>Net Income</td><td class="num">12,556</td><td class="num">14,997</td><td class="num">7,262</td><td class="num">9,830</td><td class="num">13,700</td><td class="num">19,850</td></tr>
+              <tr><td>EPS (diluted)</td><td class="num">$3.62</td><td class="num">$4.30</td><td class="num">$1.07</td><td class="num">$2.18</td><td class="num">$4.12</td><td class="num">$6.50</td></tr>
+            </tbody>
+          </table>
+
+          <h3 style="margin-top:2rem;">Key Valuation Ratios</h3>
+          <table>
+            <thead>
+              <tr><th>Ratio</th><th class="num">2024A</th><th class="num">2025E</th><th class="num">2026E</th><th class="num">2027E</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>EV/Revenue</td><td class="num">8.0x</td><td class="num">7.3x</td><td class="num">6.0x</td><td class="num">4.8x</td></tr>
+              <tr><td>EV/EBIT</td><td class="num neg">218x</td><td class="num">115x</td><td class="num">56x</td><td class="num">35x</td></tr>
+              <tr><td>P/E (diluted EPS)</td><td class="num neg">232x</td><td class="num">114x</td><td class="num">60x</td><td class="num">38x</td></tr>
+              <tr><td>EV/EBITDA</td><td class="num">74x</td><td class="num">49x</td><td class="num">28x</td><td class="num">19x</td></tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:1.5rem; font-size:var(--text-xs); color:var(--gray-steel);">Note: 2025–2027 consensus estimates sourced from analyst databases. Actual results may differ materially. See sources section for data attribution.</p>
+        </section>
+
+        <!-- Investment Summary -->
+        <section class="report-full-section" id="investment-summary">
+          <h2>Investment Summary</h2>
+          <p>Tesla is a company where the valuation debate is not primarily about the current business — it is about whether and when the option value pools deliver. The automotive core is underperforming relative to its 2022 peak, and the near-term recovery trajectory depends on pricing strategy, competitive dynamics in China, and the success of new model launches.</p>
+          <p>The investment case is not binary in the traditional sense, but it is dependent on the realisation of future value pools that have not yet proven commercial viability at scale. An investor paying today's price is effectively paying for the automotive business at an aggressive multiple AND paying a substantial option premium for FSD, Robotaxi, and beyond.</p>
+          <p>The key judgment call for any investor is: do you believe Tesla's FSD/Robotaxi timeline is achievable within the discount period implied by the current price? If yes, the option pools justify the premium. If no, the current EV is difficult to justify on the automotive and energy businesses alone.</p>
+          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.5rem; margin-top:1.5rem; border-left:3px solid var(--green);">
+            <p style="font-size:var(--text-sm); font-weight:600; color:var(--charcoal); margin-bottom:0.5rem;">Not a buy/sell recommendation</p>
+            <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel); line-height:1.7; margin:0;">This analysis is not a recommendation to buy or sell Tesla shares. It is a structured framework for understanding the investment case. Investment decisions should be made based on your own analysis, risk tolerance, and financial situation.</p>
+          </div>
+        </section>
+
+        <!-- Sources -->
+        <section class="report-full-section" id="sources">
+          <h2>Sources & Methodology</h2>
+          <h3>Primary Data Sources</h3>
+          <p>Financial statement data: Tesla, Inc. Annual Reports (10-K) for FY2022, FY2023, FY2024 filed with the SEC. Tesla Q4 2024 earnings release and earnings call transcript.</p>
+          <p>Consensus estimates: Aggregated analyst consensus estimates as of May 2026 from financial data providers. Estimates represent median of analyst consensus and may vary from other sources.</p>
+          <p>Market data: Share price and market capitalisation as of 26 May 2026 from exchange data.</p>
+          <p>Enterprise value components: Calculated from balance sheet data as of 31 December 2024.</p>
+
+          <h3>Methodology</h3>
+          <p>This report was generated using Valuatum's AI equity research framework, which applies a structured enterprise value and value pool methodology developed from professional equity research practice. See <a href="methodology.html" style="color:var(--green);">valuatum.com/ai-reports/methodology</a> for full methodology description.</p>
+
+          <h3>Known Limitations</h3>
+          <p>1. Data freshness: Report reflects data as of 26 May 2026. Material events occurring after this date are not reflected.</p>
+          <p>2. AI-generated content: This analysis was produced by artificial intelligence and may contain errors or misinterpretations. All key figures and conclusions should be independently verified.</p>
+          <p>3. Consensus estimates: Forward estimates are analyst consensus and may be materially incorrect. Tesla's business has historically shown high variance against consensus.</p>
+          <p>4. Option pool valuations: The FSD, Robotaxi, and Optimus pool values are inherently speculative and depend on highly uncertain future assumptions.</p>
+
+          <div style="background:var(--forest); border-radius:var(--r-lg); padding:1.5rem; margin-top:1.5rem;">
+            <p style="font-size:var(--text-sm); color:rgba(255,255,255,0.7); line-height:1.7; margin:0;"><strong style="color:white;">Legal disclaimer:</strong> This report is an AI-generated research material for informational purposes only. It does not constitute investment advice, a buy/sell recommendation, or regulated financial advice. Past performance is not indicative of future results. Always perform your own analysis before making investment decisions. Valuatum Oy, Helsinki, Finland.</p>
+          </div>
+        </section>
+
+        <!-- PDF download bottom -->
+        <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; text-align:center; margin-bottom:2rem;">
+          <p style="font-size:var(--text-md); font-weight:300; color:white; margin-bottom:1rem;">Download the full report as a professional PDF.</p>
+          <p style="font-size:var(--text-xs); color:rgba(255,255,255,0.45); margin-bottom:1.5rem;">Filename: Valuatum_AI_Equity_Report_TSLA_2026-05-26.pdf</p>
+          <button class="btn btn-primary btn-lg" onclick="showToast('PDF download coming soon — report is being prepared.')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v10M4 9l4 5 4-5"/><path d="M2 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download PDF
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland</span>
+        <span class="footer-disclaimer">AI-generated research. Not investment advice. <a href="disclaimer.html" style="color:rgba(255,255,255,0.4);">Disclaimer</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/mockData.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

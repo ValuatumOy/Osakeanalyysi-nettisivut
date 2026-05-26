@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Cancelled — Valuatum AI Equity Reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <div class="checkout-card">
+      <div class="checkout-icon checkout-icon--cancel">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="18" r="16"/>
+          <path d="M13 13l10 10M23 13l-10 10" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1 class="checkout-title">Checkout cancelled</h1>
+      <p class="checkout-body">No charge was made. Your free report is still available — you can return to it or try a different company.</p>
+      <div style="background:var(--green-faint); border:1px solid var(--color-border); border-radius:var(--r-lg); padding:1.25rem; margin-bottom:1.75rem; text-align:left;">
+        <p style="font-size:var(--text-sm); font-weight:500; color:var(--charcoal); margin-bottom:0.4rem;">The free report is still available</p>
+        <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel); line-height:1.65;">You can return to the free report and unlock it when you're ready. The launch price of €9.90 is still active.</p>
+      </div>
+      <div class="checkout-actions">
+        <a href="../report-preview.html" class="btn btn-primary" style="justify-content:center;" id="returnPreviewLink">Return to report</a>
+        <a href="../pricing.html" class="btn btn-outline-dark" style="justify-content:center;">View all pricing options</a>
+        <a href="../search.html" class="btn btn-ghost" style="justify-content:center; color:var(--gray-steel);">Search another company</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/script.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ticker = params.get('ticker');
+    if (ticker) {
+      document.getElementById('returnPreviewLink').href = `../report-preview.html?ticker=${encodeURIComponent(ticker)}`;
+    }
+  </script>
+</body>
+</html>

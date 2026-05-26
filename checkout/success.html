@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Unlocked — Valuatum AI Equity Reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <div class="checkout-card">
+      <div class="checkout-icon checkout-icon--success">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="18" cy="18" r="16"/>
+          <path d="M11 18l5 5 9-9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="checkout-title">Report unlocked!</h1>
+      <p class="checkout-body">Your full AI equity research report is now available. Access it now or download the PDF directly.</p>
+      <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem; margin-bottom:1.75rem; text-align:left;">
+        <div style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray-steel); margin-bottom:0.75rem;">Your purchase</div>
+        <div style="font-size:var(--text-sm); font-weight:500; color:var(--charcoal); margin-bottom:0.25rem;" id="purchaseTitle">Full AI Equity Report — TSLA</div>
+        <div style="font-size:var(--text-xs); color:var(--gray-steel);" id="purchaseDetails">Valuatum AI Equity Reports · Report date: 2026-05-26</div>
+        <div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--color-border); font-size:var(--text-sm); color:var(--charcoal);">A receipt has been emailed to you.</div>
+      </div>
+      <div class="checkout-actions">
+        <a href="../report-full.html?ticker=TSLA" class="btn btn-primary btn-lg" style="justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12h12M8 3v7M4 7l4 5 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View full report
+        </a>
+        <button class="btn btn-outline-dark" style="justify-content:center;" onclick="showToast('PDF download coming soon — report is being prepared.')">
+          Download PDF
+        </button>
+        <a href="../index.html#hero" class="btn btn-ghost" style="justify-content:center; color:var(--gray-steel);">Generate report →</a>
+      </div>
+      <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+        <p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:1rem;">Want to cover more companies?</p>
+        <a href="../pricing.html" style="font-size:var(--text-sm); color:var(--green);">See report credits — from €49 for 5 reports →</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/script.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ticker = params.get('ticker') || 'TSLA';
+    const plan = params.get('plan') || 'single';
+    const planLabels = {
+      single: `Full AI Equity Report \u2014 ${ticker}`,
+      'credits-5': '5 Report Credits',
+      'credits-20': '20 Report Credits',
+      pro: 'Pro Monthly',
+    };
+    document.getElementById('purchaseTitle').textContent = planLabels[plan] || planLabels.single;
+    document.getElementById('purchaseDetails').textContent = plan === 'single'
+      ? 'Valuatum AI Equity Reports \u00b7 Report date: 2026-05-26'
+      : 'Credits are ready for supported companies \u00b7 Receipt emailed';
+    const fullLink = document.querySelector('a[href*="report-full"]');
+    if (fullLink && plan === 'single') {
+      fullLink.href = `../report-full.html?ticker=${ticker}`;
+    } else if (fullLink) {
+      fullLink.href = '../search.html';
+      fullLink.textContent = 'Generate first report';
+      document.querySelector('button[onclick*="PDF"]')?.remove();
+    }
+  </script>
+</body>
+</html>
