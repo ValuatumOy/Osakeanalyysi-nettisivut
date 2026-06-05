@@ -8,9 +8,49 @@ function resend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
+function describeResendError(error) {
+  if (!error) return 'unknown error';
+  if (typeof error === 'string') return error;
+
+  const fields = [
+    error.name,
+    error.type,
+    error.statusCode || error.status,
+    error.message,
+  ].filter(Boolean);
+
+  if (fields.length) return fields.join(' ');
+
+  try {
+    return JSON.stringify(error);
+  } catch (_) {
+    return String(error);
+  }
+}
+
+async function sendEmail(message, label) {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not set');
+  }
+
+  const { data, error } = await resend().emails.send(message);
+
+  if (error) {
+    throw new Error(`Resend ${label} failed: ${describeResendError(error)}`);
+  }
+
+  console.log(`Resend ${label} queued`, {
+    id: data?.id || null,
+    from: message.from,
+    to: message.to,
+  });
+
+  return data;
+}
+
 // ── Existing report: deliver PDF link ────────────────────────────────────────
 async function sendReportEmail(toEmail, report) {
-  await resend().emails.send({
+  await sendEmail({
     from: FROM,
     to: toEmail,
     subject: `Your Valuatum AI Equity Report — ${report.ticker}`,
@@ -46,7 +86,7 @@ async function sendReportEmail(toEmail, report) {
   </table>
 </body>
 </html>`,
-  });
+  }, 'report email');
 }
 
 // ── Fresh report: confirm to customer ───────────────────────────────────────
@@ -54,7 +94,7 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   const company = meta?.company || 'your company';
   const ticker = meta?.ticker ? ` (${meta.ticker})` : '';
 
-  await resend().emails.send({
+  await sendEmail({
     from: FROM,
     to: toEmail,
     subject: `Fresh report order confirmed — ${company}`,
@@ -92,12 +132,12 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   </table>
 </body>
 </html>`,
-  });
+  }, 'fresh confirmation email');
 }
 
 // ── Fresh report: notify admin to generate ──────────────────────────────────
 async function sendAdminNotification(meta, customerEmail) {
-  await resend().emails.send({
+  await sendEmail({
     from: FROM,
     to: ADMIN,
     subject: `New fresh report order: ${meta?.company || 'unknown'}`,
@@ -112,7 +152,7 @@ async function sendAdminNotification(meta, customerEmail) {
       </table>
       <p style="margin-top:16px;">Generate the report and send the PDF to the customer email above.</p>
     `,
-  });
+  }, 'admin notification email');
 }
 
 module.exports = { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification };

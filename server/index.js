@@ -151,10 +151,16 @@ app.get('/api/get-report-link', async (req, res) => {
 app.post('/api/webhook', async (req, res) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const sig = req.headers['stripe-signature'];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  if (!webhookSecret) {
+    console.error('STRIPE_WEBHOOK_SECRET is not set');
+    return res.status(500).send('Webhook Error: STRIPE_WEBHOOK_SECRET is not set');
+  }
 
   let event;
   try {
-    event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
   } catch (err) {
     console.error('Webhook sig failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -164,20 +170,38 @@ app.post('/api/webhook', async (req, res) => {
     const session = event.data.object;
     if (session.payment_status !== 'paid') return res.json({ received: true });
 
-    const email   = session.customer_details?.email;
+    const email   = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
+    const reportId = session.metadata?.reportId;
+
+    console.log('Checkout completed webhook received', {
+      sessionId: session.id,
+      isFresh,
+      reportId: reportId || null,
+      paymentStatus: session.payment_status,
+    });
 
     try {
       if (isFresh) {
-        if (email) await sendFreshConfirmEmail(email, session.metadata);
+        if (email) {
+          await sendFreshConfirmEmail(email, session.metadata);
+        } else {
+          console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
+        }
         await sendAdminNotification(session.metadata, email);
       } else {
-        const report = REPORT_CATALOG[session.metadata?.reportId];
-        if (email && report) await sendReportEmail(email, report);
+        const report = REPORT_CATALOG[reportId];
+        if (!email) {
+          console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
+        } else if (!report) {
+          console.error('Report email skipped: unknown report id', { sessionId: session.id, reportId });
+        } else {
+          await sendReportEmail(email, report);
+        }
       }
     } catch (emailErr) {
       // Log but don't fail — Stripe already has the payment
-      console.error('Email send error:', emailErr.message);
+      console.error('Email send error:', emailErr.message, { sessionId: session.id, isFresh, reportId: reportId || null });
     }
   }
 
