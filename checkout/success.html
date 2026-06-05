@@ -159,8 +159,8 @@
 
   <script>
     // ── Config ─────────────────────────────────────────────────────────────────
-    // Update API_BASE to wherever your server is running.
-    const API_BASE = 'https://files.valuatum.com';
+    // '' = same-origin (Vercel). To switch to EC2/AWS: 'https://files.valuatum.com'
+    const API_BASE = '';
 
     // ── Helpers ────────────────────────────────────────────────────────────────
     function show(id) { document.getElementById(id).style.display = ''; }
