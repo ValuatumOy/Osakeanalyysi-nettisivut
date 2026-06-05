@@ -424,8 +424,8 @@
   <script>
 
   // ── Config ───────────────────────────────────────────────────────────────
-  // '' = same-origin (Vercel). To switch all APIs to EC2/AWS: 'https://files.valuatum.com'
   const API_BASE = window.VALUATUM_API_BASE || '';
+  const CATALOG_BASE = 'https://files.valuatum.com';
 
   // ── State ─────────────────────────────────────────────────────────────────
   let activeTab = 'all';
@@ -446,7 +446,7 @@
 
   async function loadDynamicReports() {
     try {
-      const res = await fetch(`${API_BASE}/api/reports`, { cache: 'no-store' });
+      const res = await fetch(`${CATALOG_BASE}/api/reports`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Report API returned ${res.status}`);
       const data = await res.json();
       if (Array.isArray(data.reports) && data.reports.length) {
