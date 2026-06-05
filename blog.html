@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — AI Equity Research Insights — Valuatum</title>
+  <meta name="description" content="Insights on AI equity research, valuation methodology, reverse valuation, and how to read professional equity reports. Written by the Valuatum team.">
+  <link rel="canonical" href="https://www.aiequityreports.com/blog.html">
+  <meta property="og:title" content="Blog — AI Equity Research Insights — Valuatum">
+  <meta property="og:description" content="Insights on AI equity research, valuation methodology, and how professional equity analysis works. Written by the Valuatum team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aiequityreports.com/blog.html">
+  <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-hero { background: var(--forest); padding: var(--section-py) 0; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .blog-card { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); overflow: hidden; display: flex; flex-direction: column; }
+    .blog-card-thumb { background: var(--forest); height: 160px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .blog-card-thumb-label { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); }
+    .blog-card-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-category { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+    .blog-card-title { font-size: var(--text-md); font-weight: 500; color: var(--charcoal); line-height: 1.4; margin-bottom: 0.75rem; }
+    .blog-card-desc { font-size: var(--text-sm); font-weight: 300; color: var(--gray-steel); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .blog-card-meta { font-size: var(--text-xs); color: var(--gray-steel); }
+    .blog-coming-soon { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--text-xs); font-weight: 600; background: var(--off-white); color: var(--gray-steel); border: 1px solid var(--color-border); border-radius: 99px; padding: 0.3rem 0.75rem; }
+    .blog-coming-soon-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" style="color:var(--gray-steel);">Home</a>
+        <a href="reports.html" class="nav-link" style="color:var(--gray-steel);">Reports</a>
+        <a href="pricing.html" class="nav-link" style="color:var(--gray-steel);">Pricing</a>
+        <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
+        <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
+        <a href="faq.html" class="nav-link" style="color:var(--gray-steel);">FAQ</a>
+        <a href="blog.html" class="nav-link" style="color:var(--green);">Blog</a>
+      </nav>
+      <a href="reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="index.html" class="nav-mobile-link">Home</a>
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="blog.html" class="nav-mobile-link" style="color:var(--green-light);">Blog</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="blog-hero">
+      <div class="container">
+        <span class="section-eyebrow section-eyebrow--light">Blog</span>
+        <h1 class="section-headline section-headline--light" style="max-width:640px;">Insights on AI equity research.</h1>
+        <p style="font-size:var(--text-md); font-weight:300; color:rgba(255,255,255,0.6); max-width:520px; line-height:1.75;">Practical writing on equity valuation, how AI equity reports work, and what to look for when analysing a company.</p>
+      </div>
+    </section>
+
+    <section style="padding: var(--section-py) 0;">
+      <div class="container">
+
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem;">
+          <span style="font-size:var(--text-sm); font-weight:600; color:var(--charcoal);">Coming soon</span>
+          <span style="flex:1; height:1px; background:var(--color-border);"></span>
+        </div>
+        <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-bottom:3rem;">Articles are in progress. Subscribe below to get notified when the first ones go live.</p>
+
+        <div class="blog-grid">
+
+          <!-- Article 1 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><polyline points="0,80 60,65 120,70 180,50 240,55 300,30 360,35 400,15" stroke="#6DBFA0" stroke-width="2" fill="none"/></svg>
+              <span class="blog-card-thumb-label">Valuation</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">Methodology</div>
+              <div class="blog-card-title">What is reverse valuation and why does it matter more than a price target?</div>
+              <p class="blog-card-desc">Most equity research ends with a price target. Reverse valuation starts there and works backwards, asking what has to be true for today's stock price to make sense. It is a more honest way to think about valuation.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 8 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><polyline points="0,90 80,75 160,80 240,45 320,55 400,20" stroke="#6DBFA0" stroke-width="2" fill="none"/><polyline points="0,95 80,88 160,90 240,72 320,78 400,55" stroke="#3D9E72" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/></svg>
+              <span class="blog-card-thumb-label">AI Research</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">AI equity research</div>
+              <div class="blog-card-title">AI vs traditional equity research: what is actually different?</div>
+              <p class="blog-card-desc">AI-generated equity reports follow the same analytical structure as traditional research notes. What changes is the speed, the cost, and how assumptions are made explicit. A look at where AI adds real value and where it falls short.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 6 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><rect x="40" y="40" width="30" height="60" fill="#6DBFA0"/><rect x="100" y="25" width="30" height="75" fill="#6DBFA0"/><rect x="160" y="10" width="30" height="90" fill="#6DBFA0"/><rect x="220" y="30" width="30" height="70" fill="#6DBFA0"/><rect x="280" y="5" width="30" height="95" fill="#6DBFA0"/><rect x="340" y="18" width="30" height="82" fill="#6DBFA0"/></svg>
+              <span class="blog-card-thumb-label">Value Pools</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">Methodology</div>
+              <div class="blog-card-title">How to read a company value map: understanding enterprise value allocation</div>
+              <p class="blog-card-desc">A company value map breaks enterprise value into pools: core businesses, physical assets, option values, and capital structure effects. Understanding how to read one changes how you think about whether a stock is cheap or expensive.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 7 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 4 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><circle cx="80" cy="50" r="40" stroke="#6DBFA0" stroke-width="1.5" fill="none"/><circle cx="200" cy="50" r="40" stroke="#6DBFA0" stroke-width="1.5" fill="none"/><circle cx="320" cy="50" r="40" stroke="#6DBFA0" stroke-width="1.5" fill="none"/></svg>
+              <span class="blog-card-thumb-label">Investing</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">Equity research basics</div>
+              <div class="blog-card-title">How to read an equity research report as a retail investor</div>
+              <p class="blog-card-desc">Professional equity research reports are written for institutional analysts, not individual investors. This guide walks through what each section actually means, which numbers to focus on, and how to use a report as a starting point rather than a final verdict.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 10 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 5 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><polyline points="0,60 100,40 200,55 300,20 400,35" stroke="#6DBFA0" stroke-width="2" fill="none"/><line x1="0" y1="100" x2="400" y2="100" stroke="#6DBFA0" stroke-width="0.5"/><line x1="0" y1="75" x2="400" y2="75" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="3 6"/><line x1="0" y1="50" x2="400" y2="50" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="3 6"/></svg>
+              <span class="blog-card-thumb-label">EV Framework</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">Valuation</div>
+              <div class="blog-card-title">Why enterprise value matters more than market cap in stock analysis</div>
+              <p class="blog-card-desc">Market cap tells you what the equity is worth. Enterprise value tells you what the whole business costs to buy, including debt. Using market cap alone leads to systematically wrong comparisons between companies with different capital structures.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 5 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Article 6 -->
+          <div class="blog-card">
+            <div class="blog-card-thumb">
+              <svg aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.15;" viewBox="0 0 400 100" fill="none"><path d="M40 80 L80 40 L120 60 L160 20 L200 45 L240 30 L280 55 L320 25 L360 50" stroke="#6DBFA0" stroke-width="2" fill="none"/><circle cx="80" cy="40" r="4" fill="#6DBFA0"/><circle cx="160" cy="20" r="4" fill="#6DBFA0"/><circle cx="240" cy="30" r="4" fill="#6DBFA0"/><circle cx="320" cy="25" r="4" fill="#6DBFA0"/></svg>
+              <span class="blog-card-thumb-label">Nordic Stocks</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-category">Market focus</div>
+              <div class="blog-card-title">Nordic equity research: what makes Scandinavian listed companies different to analyse</div>
+              <p class="blog-card-desc">Nordic listed companies tend to have cleaner capital structures, conservative management, and strong ESG reporting. They also get less analyst coverage than US peers. Here is what to pay attention to when analysing a Finnish, Swedish, or Danish stock.</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-meta">Valuatum · 7 min read</span>
+                <span class="blog-coming-soon"><span class="blog-coming-soon-dot"></span>Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Newsletter signup -->
+        <div style="background:var(--forest); border-radius:var(--r-xl); padding:3rem; margin-top:4rem; text-align:center;">
+          <h2 style="font-size:var(--text-2xl); font-weight:300; color:white; letter-spacing:-0.02em; margin-bottom:0.75rem;">Get notified when articles go live.</h2>
+          <p style="font-size:var(--text-sm); color:rgba(255,255,255,0.5); margin-bottom:2rem;">We will email you when the first articles are published. No spam.</p>
+          <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; max-width:460px; margin:0 auto;">
+            <input type="email" placeholder="your@email.com" style="flex:1; min-width:220px; padding:0.75rem 1rem; border-radius:var(--r-md); border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.08); color:white; font-size:var(--text-sm); outline:none;" />
+            <button class="btn btn-primary" onclick="this.textContent='Subscribed'; this.disabled=true;">Notify me</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland</span>
+        <span class="footer-disclaimer">AI-generated research. Not investment advice. <a href="disclaimer.html" style="color:rgba(255,255,255,0.4);">Disclaimer</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
