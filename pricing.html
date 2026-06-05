@@ -9,6 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .enterprise-features-list li { color: rgba(255,255,255,0.85) !important; }
+    .enterprise-features-list li::before { background: var(--green-light) !important; }
+  </style>
 </head>
 <body>
 
@@ -119,7 +123,6 @@
               <li style="color:white;">Team accounts</li>
               <li style="color:white;">SLA & dedicated support</li>
             </ul>
-            <style>.enterprise-features-list li::before { background: var(--green-light); }</style>
             <a href="mailto:sales@valuatum.com" class="btn btn-outline pricing-card-cta" style="width:100%; justify-content:center;" onclick="trackEvent && trackEvent('enterprise_contact_clicked')">Contact sales</a>
           </div>
 
