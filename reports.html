@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Equity Reports — Browse & Buy — Valuatum</title>
+  <meta name="description" content="Browse available AI equity research reports. Open free sample reports or buy existing reports. Order a fresh AI-generated equity report delivered by email.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="reports.html" class="nav-link" style="color:var(--green);">Reports</a>
+        <a href="pricing.html" class="nav-link" style="color:var(--gray-steel);">Pricing</a>
+        <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
+        <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
+      </nav>
+      <a href="reports.html#order-fresh" class="nav-cta">Order fresh report</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="reports.html" class="nav-mobile-link" style="color:var(--green-light);">Reports</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="#order-fresh" class="nav-mobile-link nav-mobile-cta">Order fresh report →</a>
+    </div>
+  </header>
+
+  <main class="reports-page">
+
+    <!-- PAGE HERO -->
+    <section class="reports-hero">
+      <div class="container">
+        <div class="reports-hero-inner">
+          <div class="reports-hero-text">
+            <span class="section-eyebrow section-eyebrow--light">AI Equity Reports</span>
+            <h1 class="reports-hero-headline">Browse, sample, and buy<br>equity research reports.</h1>
+            <p class="reports-hero-sub">Open free sample reports, buy recent AI equity reports at a discounted price, or order a fresh report with the latest available data — delivered by email.</p>
+          </div>
+          <div class="reports-hero-search">
+            <div class="rp-search-field">
+              <svg class="rp-search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <input type="text" id="rpSearchInput" class="rp-search-input" placeholder="Search company or ticker…" autocomplete="off" aria-label="Search reports">
+              <button class="rp-search-clear" id="rpSearchClear" style="display:none;" aria-label="Clear search">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <p class="reports-hero-note">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 5v4M6 3.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Live self-service generation coming soon — fresh reports currently delivered by email
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section class="reports-catalog" id="catalog">
+      <div class="container">
+
+        <!-- TABS -->
+        <div class="catalog-tabs" id="catalogTabs" role="tablist">
+          <button class="catalog-tab active" data-tab="all" role="tab" aria-selected="true">All reports</button>
+          <button class="catalog-tab" data-tab="free" role="tab" aria-selected="false">
+            Free samples
+            <span class="tab-count" id="tabCountFree"></span>
+          </button>
+          <button class="catalog-tab" data-tab="existing" role="tab" aria-selected="false">
+            Existing reports
+            <span class="tab-count" id="tabCountExisting"></span>
+          </button>
+          <button class="catalog-tab catalog-tab--fresh" data-tab="fresh" role="tab" aria-selected="false">
+            Order fresh report
+          </button>
+        </div>
+
+        <!-- FILTERS + SORT -->
+        <div class="catalog-controls" id="catalogControls">
+          <div class="catalog-filters">
+            <select class="catalog-filter-select" id="filterMarket" aria-label="Filter by market">
+              <option value="">All markets</option>
+              <option value="NASDAQ">NASDAQ</option>
+              <option value="NYSE">NYSE</option>
+              <option value="Helsinki">Helsinki</option>
+            </select>
+            <select class="catalog-filter-select" id="filterSector" aria-label="Filter by sector">
+              <option value="">All sectors</option>
+              <option value="Consumer Discretionary">Consumer Discretionary</option>
+              <option value="Financials">Financials</option>
+              <option value="Health Care">Health Care</option>
+              <option value="Materials">Materials</option>
+            </select>
+          </div>
+          <div class="catalog-sort-wrap">
+            <label for="sortSelect" class="catalog-sort-label">Sort:</label>
+            <select class="catalog-filter-select" id="sortSelect" aria-label="Sort reports">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="free_first">Free first</option>
+              <option value="price_asc">Lowest price</option>
+              <option value="company">Company name</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- RESULTS META -->
+        <div class="catalog-meta" id="catalogMeta">
+          <span class="catalog-count" id="catalogCount"></span>
+        </div>
+
+        <!-- REPORT CARDS GRID -->
+        <div class="catalog-grid" id="catalogGrid" role="list"></div>
+
+        <!-- EMPTY STATE -->
+        <div class="catalog-empty" id="catalogEmpty" style="display:none;">
+          <div class="catalog-empty-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8v4M12 15v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="catalog-empty-title">No reports match your search.</p>
+          <p class="catalog-empty-sub">Try a different company name or ticker — or order a fresh report for any listed company.</p>
+          <button class="btn btn-primary" onclick="openFreshOrderModal()">Order fresh report</button>
+        </div>
+
+        <!-- FRESH ORDER TAB PANEL -->
+        <div class="fresh-tab-panel" id="freshTabPanel" style="display:none;">
+          <div class="fresh-tab-intro">
+            <div class="fresh-tab-intro-text">
+              <span class="section-eyebrow">Fresh Report</span>
+              <h2 class="section-headline" style="font-size:var(--text-2xl);">Order a newly generated equity report.</h2>
+              <p class="section-sub">Can't find your company in the catalog? Order a fresh AI equity report generated with the latest available financial data. Delivered to your email.</p>
+            </div>
+            <div class="fresh-tab-price-card">
+              <div class="fresh-price-amount">€19.90</div>
+              <div class="fresh-price-label">per fresh report</div>
+              <div class="fresh-price-note">Delivered by email after payment</div>
+            </div>
+          </div>
+          <div id="freshOrderFormWrap"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CANT FIND BLOCK -->
+    <section class="cant-find-section" id="order-fresh">
+      <div class="container">
+        <div class="cant-find-block">
+          <div class="cant-find-text">
+            <span class="section-eyebrow">Fresh Report</span>
+            <h2 class="cant-find-headline">Need a report for another company?</h2>
+            <p class="cant-find-sub">Order a fresh AI equity report with the latest available data. Any listed company — delivered by email.</p>
+            <div class="cant-find-trust">
+              <span class="cant-find-trust-item">Latest available data</span>
+              <span class="cant-find-trust-item">Full PDF report</span>
+              <span class="cant-find-trust-item">Delivered by email</span>
+            </div>
+          </div>
+          <div class="cant-find-form-wrap">
+            <div class="cant-find-price">€19.90 <span>per fresh report</span></div>
+            <form class="fresh-order-form" id="freshOrderFormMain" novalidate>
+              <div class="fresh-form-row">
+                <input type="text" class="fresh-input" id="freshCompany" placeholder="Company name *" required aria-label="Company name">
+                <input type="text" class="fresh-input" id="freshTicker" placeholder="Ticker (optional)" aria-label="Ticker symbol">
+              </div>
+              <input type="email" class="fresh-input" id="freshEmail" placeholder="Your email *" required aria-label="Email address">
+              <select class="fresh-input fresh-select" id="freshPurpose" aria-label="Report purpose">
+                <option value="">Purpose (optional)</option>
+                <option value="personal">Personal investing</option>
+                <option value="professional">Professional research</option>
+                <option value="client">Client work</option>
+                <option value="other">Other</option>
+              </select>
+              <button type="submit" class="btn btn-primary btn-lg fresh-submit-btn">
+                Order fresh report — €19.90
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </form>
+            <p class="fresh-form-note">After submitting, you'll receive payment instructions. Report delivered within 1 business day after payment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDITS TEASER -->
+    <section class="credits-teaser-section">
+      <div class="container">
+        <div class="credits-teaser-inner">
+          <div class="credits-teaser-text">
+            <span class="section-eyebrow">Credit Packs — Coming Soon</span>
+            <h2 class="credits-teaser-headline">Buy in bulk. Save per report.</h2>
+            <p class="credits-teaser-sub">Credit packs let you buy multiple reports at a discounted per-report price. Credits never expire and work on any available company.</p>
+          </div>
+          <div class="credits-cards-row">
+            <div class="credits-card">
+              <div class="credits-card-amount">10 credits</div>
+              <div class="credits-card-price">€89</div>
+              <div class="credits-card-per">€8.90 per report</div>
+              <div class="credits-card-badge">Coming soon</div>
+            </div>
+            <div class="credits-card credits-card--featured">
+              <div class="credits-card-amount">25 credits</div>
+              <div class="credits-card-price">€199</div>
+              <div class="credits-card-per">€7.96 per report</div>
+              <div class="credits-card-badge credits-card-badge--green">Best value</div>
+            </div>
+            <div class="credits-card">
+              <div class="credits-card-amount">100 credits</div>
+              <div class="credits-card-price">€699</div>
+              <div class="credits-card-per">€6.99 per report</div>
+              <div class="credits-card-badge">Enterprise</div>
+            </div>
+          </div>
+        </div>
+        <div class="enterprise-cta-row">
+          <div class="enterprise-cta-text">
+            <strong>Enterprise / Unlimited</strong> — For teams needing recurring report generation, API access, or custom coverage lists.
+          </div>
+          <a href="mailto:sales@valuatum.com" class="btn btn-outline-dark" onclick="trackEvent('enterprise_contact_clicked')">Contact sales →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+            <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-wordmark">Valuatum</span>
+              <span class="nav-logo-sub">AI Equity Reports</span>
+            </div>
+          </a>
+          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+        </div>
+        <div>
+          <div class="footer-col-label">Reports</div>
+          <div class="footer-links">
+            <a href="reports.html" class="footer-link">Browse reports</a>
+            <a href="reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="methodology.html" class="footer-link">Methodology</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Company</div>
+          <div class="footer-links">
+            <a href="about.html" class="footer-link">About Valuatum</a>
+            <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
+            <a href="mailto:support@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:sales@valuatum.com" class="footer-link">Enterprise sales</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Legal</div>
+          <div class="footer-links">
+            <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PURCHASE MODAL -->
+  <div class="rp-modal-overlay" id="purchaseModal" role="dialog" aria-modal="true" aria-labelledby="purchaseModalTitle" style="display:none;">
+    <div class="rp-modal">
+      <button class="rp-modal-close" id="purchaseModalClose" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <!-- Step 1: Order form -->
+      <div id="purchaseStep1">
+        <div class="rp-modal-report-summary" id="purchaseReportSummary"></div>
+        <h2 class="rp-modal-title" id="purchaseModalTitle">Buy this report</h2>
+        <p class="rp-modal-sub">Enter your email — we'll send payment instructions and deliver the report after confirmation.</p>
+        <form class="rp-modal-form" id="purchaseForm" novalidate>
+          <div class="rp-form-group">
+            <label class="rp-form-label" for="purchaseEmail">Your email address</label>
+            <input type="email" class="rp-form-input" id="purchaseEmail" placeholder="your@email.com" required aria-label="Email">
+          </div>
+          <div class="rp-price-row" id="purchasePriceRow"></div>
+          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit" id="purchaseSubmitBtn">
+            Proceed to payment
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment instructions -->
+      <div id="purchaseStep2" style="display:none;">
+        <div class="rp-payment-success-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="rp-modal-title">Order received</h2>
+        <p class="rp-modal-sub" id="purchaseConfirmSub"></p>
+        <div class="rp-payment-instructions" id="paymentInstructions"></div>
+        <div class="rp-modal-note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          The PDF report will be delivered to your email within 1 business day after we confirm your payment.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRESH ORDER MODAL (standalone) -->
+  <div class="rp-modal-overlay" id="freshModal" role="dialog" aria-modal="true" aria-labelledby="freshModalTitle" style="display:none;">
+    <div class="rp-modal">
+      <button class="rp-modal-close" id="freshModalClose" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div id="freshModalStep1">
+        <div class="rp-modal-type-badge rp-modal-type-badge--fresh">Fresh Report</div>
+        <h2 class="rp-modal-title" id="freshModalTitle">Order a fresh AI equity report</h2>
+        <p class="rp-modal-sub">Enter the company details and your email. We'll send payment instructions and generate a report with the latest available data.</p>
+        <div class="rp-price-row" style="margin-bottom:1.5rem;">
+          <span class="rp-price-tag">€19.90</span>
+          <span class="rp-price-note-inline">Delivered by email · Fresh data</span>
+        </div>
+        <form class="rp-modal-form" id="freshModalForm" novalidate>
+          <div class="rp-form-row-2">
+            <div class="rp-form-group">
+              <label class="rp-form-label" for="freshModalCompany">Company name *</label>
+              <input type="text" class="rp-form-input" id="freshModalCompany" placeholder="e.g. Apple, Novo Nordisk" required>
+            </div>
+            <div class="rp-form-group">
+              <label class="rp-form-label" for="freshModalTicker">Ticker (optional)</label>
+              <input type="text" class="rp-form-input" id="freshModalTicker" placeholder="e.g. AAPL">
+            </div>
+          </div>
+          <div class="rp-form-group">
+            <label class="rp-form-label" for="freshModalExchange">Exchange (optional)</label>
+            <input type="text" class="rp-form-input" id="freshModalExchange" placeholder="e.g. NASDAQ, Helsinki, NYSE">
+          </div>
+          <div class="rp-form-group">
+            <label class="rp-form-label" for="freshModalEmail">Your email *</label>
+            <input type="email" class="rp-form-input" id="freshModalEmail" placeholder="your@email.com" required>
+          </div>
+          <div class="rp-form-group">
+            <label class="rp-form-label" for="freshModalPurpose">Purpose (optional)</label>
+            <select class="rp-form-input rp-form-select" id="freshModalPurpose">
+              <option value="">Select…</option>
+              <option value="personal">Personal investing</option>
+              <option value="professional">Professional research</option>
+              <option value="client">Client work</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit">
+            Order fresh report — €19.90
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+      <div id="freshModalStep2" style="display:none;">
+        <div class="rp-payment-success-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="rp-modal-title">Order received</h2>
+        <p class="rp-modal-sub" id="freshConfirmSub"></p>
+        <div class="rp-payment-instructions" id="freshPaymentInstructions"></div>
+        <div class="rp-modal-note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          We'll generate a fresh report with the latest available data. Delivered to your email within 1 business day after payment.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/mockData.js"></script>
+  <script src="js/pricingConfig.js"></script>
+  <script src="js/reportsData.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+
+  // ── State ─────────────────────────────────────────────────────────────────
+  let activeTab = 'all';
+  let searchQuery = '';
+  let filterMarket = '';
+  let filterSector = '';
+  let sortMode = 'newest';
+  let activePurchaseReport = null;
+
+  // ── Render report cards ──────────────────────────────────────────────────
+  function getFilteredReports() {
+    let list = [...REPORTS_CATALOG];
+
+    // Tab filter
+    if (activeTab === 'free') list = list.filter(r => r.reportType === 'free');
+    if (activeTab === 'existing') list = list.filter(r => r.reportType === 'existing');
+
+    // Search
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(r =>
+        r.companyName.toLowerCase().includes(q) ||
+        r.ticker.toLowerCase().includes(q) ||
+        r.sector.toLowerCase().includes(q) ||
+        r.exchange.toLowerCase().includes(q)
+      );
+    }
+
+    // Market filter
+    if (filterMarket) list = list.filter(r => r.exchange === filterMarket);
+
+    // Sector filter
+    if (filterSector) list = list.filter(r => r.sector === filterSector);
+
+    // Sort
+    list.sort((a, b) => {
+      if (sortMode === 'newest') return new Date(b.reportDate) - new Date(a.reportDate);
+      if (sortMode === 'oldest') return new Date(a.reportDate) - new Date(b.reportDate);
+      if (sortMode === 'free_first') {
+        if (a.isFree && !b.isFree) return -1;
+        if (!a.isFree && b.isFree) return 1;
+        return new Date(b.reportDate) - new Date(a.reportDate);
+      }
+      if (sortMode === 'price_asc') return a.price - b.price;
+      if (sortMode === 'company') return a.companyName.localeCompare(b.companyName);
+      return 0;
+    });
+
+    return list;
+  }
+
+  function buildReportCard(report) {
+    const ageDays = getReportAgeDays(report.reportDate);
+    const ageLabel = getReportAgeLabel(report.reportDate);
+    const dateFormatted = formatReportDate(report.reportDate);
+
+    const typeBadge = report.reportType === 'free'
+      ? `<span class="rc-badge rc-badge--free">Free Sample</span>`
+      : report.reportType === 'existing'
+      ? `<span class="rc-badge rc-badge--existing">Existing Report</span>`
+      : `<span class="rc-badge rc-badge--fresh">Fresh Report</span>`;
+
+    const tags = (report.tags || []).map(t => `<span class="rc-tag">${t}</span>`).join('');
+
+    const ageClass = ageDays <= 7 ? 'rc-age--fresh' : ageDays <= 14 ? 'rc-age--recent' : 'rc-age--older';
+
+    let ctaBtn, pricePart;
+    if (report.isFree) {
+      pricePart = `<span class="rc-price rc-price--free">Free</span>`;
+      ctaBtn = `<a href="${report.pdfUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${report.ticker}', reportId:'${report.id}'})">Open free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+    } else {
+      pricePart = `<span class="rc-price">€${report.price.toFixed(2)}</span>`;
+      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="openPurchaseModal('${report.id}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+    }
+
+    return `
+      <article class="report-card" role="listitem" data-report-id="${report.id}">
+        <div class="rc-top">
+          ${typeBadge}
+          <span class="rc-date-badge ${ageClass}">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="5.5" r="4.5" stroke="currentColor" stroke-width="1.1"/><path d="M5.5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+            ${ageLabel}
+          </span>
+        </div>
+        <div class="rc-company">
+          <div class="rc-company-name">${report.companyName}</div>
+          <div class="rc-company-meta">
+            <span class="rc-ticker">${report.ticker}</span>
+            <span class="rc-sep">·</span>
+            <span>${report.exchange}</span>
+            <span class="rc-sep">·</span>
+            <span>${report.sector}</span>
+          </div>
+        </div>
+        <p class="rc-desc">${report.description}</p>
+        <div class="rc-tags">${tags}</div>
+        <div class="rc-footer">
+          <div class="rc-footer-left">
+            ${pricePart}
+            <span class="rc-report-date">${dateFormatted}</span>
+          </div>
+          ${ctaBtn}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderCatalog() {
+    const grid = document.getElementById('catalogGrid');
+    const empty = document.getElementById('catalogEmpty');
+    const count = document.getElementById('catalogCount');
+    const freshPanel = document.getElementById('freshTabPanel');
+    const controls = document.getElementById('catalogControls');
+
+    if (activeTab === 'fresh') {
+      grid.style.display = 'none';
+      empty.style.display = 'none';
+      controls.style.display = 'none';
+      freshPanel.style.display = 'block';
+      count.textContent = '';
+      renderFreshTabForm();
+      trackEvent('report_filter_used', { tab: 'fresh' });
+      return;
+    }
+
+    grid.style.display = '';
+    controls.style.display = '';
+    freshPanel.style.display = 'none';
+
+    const reports = getFilteredReports();
+
+    if (reports.length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'flex';
+      count.textContent = '0 reports';
+      return;
+    }
+
+    empty.style.display = 'none';
+    count.textContent = `${reports.length} report${reports.length !== 1 ? 's' : ''}`;
+    grid.innerHTML = reports.map(buildReportCard).join('');
+  }
+
+  function renderFreshTabForm() {
+    const wrap = document.getElementById('freshOrderFormWrap');
+    if (!wrap) return;
+    wrap.innerHTML = `
+      <div class="fresh-tab-form-card">
+        <form class="rp-modal-form fresh-tab-form" id="freshTabForm" novalidate>
+          <div class="rp-form-row-2">
+            <div class="rp-form-group">
+              <label class="rp-form-label">Company name *</label>
+              <input type="text" class="rp-form-input" id="freshTabCompany" placeholder="e.g. Apple, Novo Nordisk" required>
+            </div>
+            <div class="rp-form-group">
+              <label class="rp-form-label">Ticker (optional)</label>
+              <input type="text" class="rp-form-input" id="freshTabTicker" placeholder="e.g. AAPL">
+            </div>
+          </div>
+          <div class="rp-form-row-2">
+            <div class="rp-form-group">
+              <label class="rp-form-label">Exchange (optional)</label>
+              <input type="text" class="rp-form-input" id="freshTabExchange" placeholder="e.g. NASDAQ, Helsinki">
+            </div>
+            <div class="rp-form-group">
+              <label class="rp-form-label">Purpose (optional)</label>
+              <select class="rp-form-input rp-form-select" id="freshTabPurpose">
+                <option value="">Select…</option>
+                <option value="personal">Personal investing</option>
+                <option value="professional">Professional research</option>
+                <option value="client">Client work</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="rp-form-group">
+            <label class="rp-form-label">Your email *</label>
+            <input type="email" class="rp-form-input" id="freshTabEmail" placeholder="your@email.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit" style="width:100%; justify-content:center;">
+            Order fresh report — €19.90
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+        <p class="fresh-form-note" style="margin-top:1rem; text-align:center;">After submitting, you'll receive payment instructions. Report delivered within 1 business day after payment.</p>
+      </div>
+    `;
+    document.getElementById('freshTabForm')?.addEventListener('submit', e => {
+      e.preventDefault();
+      const company = document.getElementById('freshTabCompany')?.value.trim();
+      const email = document.getElementById('freshTabEmail')?.value.trim();
+      if (!company || !email) { showToast('Please fill in company name and email.'); return; }
+      handleFreshOrderSubmit(company, document.getElementById('freshTabTicker')?.value.trim(), email, 'fresh_tab');
+    });
+  }
+
+  // ── Tab switching ─────────────────────────────────────────────────────────
+  function setTab(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.catalog-tab').forEach(btn => {
+      const isActive = btn.dataset.tab === tab;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive);
+    });
+    renderCatalog();
+    trackEvent('report_filter_used', { tab });
+  }
+
+  // ── Tab counts ────────────────────────────────────────────────────────────
+  function updateTabCounts() {
+    const free = REPORTS_CATALOG.filter(r => r.reportType === 'free').length;
+    const existing = REPORTS_CATALOG.filter(r => r.reportType === 'existing').length;
+    const freeEl = document.getElementById('tabCountFree');
+    const existingEl = document.getElementById('tabCountExisting');
+    if (freeEl) freeEl.textContent = free;
+    if (existingEl) existingEl.textContent = existing;
+  }
+
+  // ── Purchase modal ────────────────────────────────────────────────────────
+  function openPurchaseModal(reportId) {
+    const report = REPORTS_CATALOG.find(r => r.id === reportId);
+    if (!report) return;
+    activePurchaseReport = report;
+
+    const summary = document.getElementById('purchaseReportSummary');
+    const priceRow = document.getElementById('purchasePriceRow');
+
+    summary.innerHTML = `
+      <div class="rp-modal-type-badge ${report.reportType === 'free' ? 'rp-modal-type-badge--free' : 'rp-modal-type-badge--existing'}">
+        ${report.reportType === 'free' ? 'Free Sample' : 'Existing Report'}
+      </div>
+      <div class="rp-modal-summary-company">${report.companyName}</div>
+      <div class="rp-modal-summary-meta">${report.ticker} · ${report.exchange} · ${formatReportDate(report.reportDate)}</div>
+    `;
+
+    priceRow.innerHTML = `
+      <span class="rp-price-tag">€${report.price.toFixed(2)}</span>
+      <span class="rp-price-note-inline">Full PDF report · Delivered by email</span>
+    `;
+
+    document.getElementById('purchaseStep1').style.display = '';
+    document.getElementById('purchaseStep2').style.display = 'none';
+    document.getElementById('purchaseEmail').value = '';
+
+    const modal = document.getElementById('purchaseModal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+    trackEvent('paid_report_buy_clicked', { reportId, ticker: report.ticker });
+  }
+
+  function closePurchaseModal() {
+    const modal = document.getElementById('purchaseModal');
+    modal.classList.remove('open');
+    setTimeout(() => { modal.style.display = 'none'; }, 250);
+    activePurchaseReport = null;
+  }
+
+  function openFreshOrderModal() {
+    document.getElementById('freshModalStep1').style.display = '';
+    document.getElementById('freshModalStep2').style.display = 'none';
+    document.getElementById('freshModalCompany').value = '';
+    document.getElementById('freshModalTicker').value = '';
+    document.getElementById('freshModalExchange').value = '';
+    document.getElementById('freshModalEmail').value = '';
+    const modal = document.getElementById('freshModal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+    trackEvent('fresh_report_order_started');
+  }
+
+  function closeFreshModal() {
+    const modal = document.getElementById('freshModal');
+    modal.classList.remove('open');
+    setTimeout(() => { modal.style.display = 'none'; }, 250);
+  }
+
+  // ── Build payment instructions HTML ───────────────────────────────────────
+  function buildManualPaymentHTML(reference) {
+    const p = PAYMENT_CONFIG.manualInstructions;
+    return `
+      <div class="rp-payment-method">
+        <div class="rp-payment-method-title">Bank transfer</div>
+        <div class="rp-payment-field"><span>Payee</span><strong>${p.payee}</strong></div>
+        <div class="rp-payment-field"><span>IBAN</span><strong>${p.iban}</strong></div>
+        <div class="rp-payment-field"><span>BIC</span><strong>${p.bic}</strong></div>
+        <div class="rp-payment-field"><span>Amount</span><strong>${PAYMENT_CONFIG.currencySymbol}${reference.amount}</strong></div>
+        <div class="rp-payment-field"><span>Reference</span><strong>${reference.ref}</strong></div>
+      </div>
+      <div class="rp-payment-ref-note">${p.referenceNote}</div>
+    `;
+  }
+
+  // ── Handle purchase submit ────────────────────────────────────────────────
+  document.getElementById('purchaseForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('purchaseEmail')?.value.trim();
+    if (!email || !email.includes('@')) { showToast('Please enter a valid email.'); return; }
+    if (!activePurchaseReport) return;
+
+    const r = activePurchaseReport;
+    trackEvent('email_submitted', { email, purpose: 'purchase', reportId: r.id });
+
+    const ref = { amount: r.price.toFixed(2), ref: `${email} ${r.ticker}` };
+
+    document.getElementById('purchaseConfirmSub').textContent =
+      `We've registered your order for ${r.companyName} (${r.ticker}). Complete your payment using the details below and we'll deliver the report to ${email}.`;
+
+    if (PAYMENT_CONFIG.mode === 'stripe' && PAYMENT_CONFIG.stripeLinks.singleReport) {
+      trackEvent('stripe_checkout_clicked', { reportId: r.id });
+      window.open(PAYMENT_CONFIG.stripeLinks.singleReport, '_blank');
+      document.getElementById('paymentInstructions').innerHTML = `<div class="rp-payment-method"><p>You've been redirected to Stripe for secure payment. After payment, the report will be delivered to <strong>${email}</strong>.</p></div>`;
+    } else {
+      trackEvent('manual_payment_instructions_viewed', { reportId: r.id });
+      document.getElementById('paymentInstructions').innerHTML = buildManualPaymentHTML(ref);
+    }
+
+    document.getElementById('purchaseStep1').style.display = 'none';
+    document.getElementById('purchaseStep2').style.display = '';
+  });
+
+  // ── Handle fresh order submit ─────────────────────────────────────────────
+  function handleFreshOrderSubmit(company, ticker, email, source) {
+    trackEvent('fresh_report_order_started', { company, ticker, email, source });
+    trackEvent('email_submitted', { email, purpose: 'fresh_report' });
+
+    const ref = { amount: PAYMENT_CONFIG.freshReportPrice.toFixed(2), ref: `${email} ${ticker || company}` };
+    const instructionsHTML = buildManualPaymentHTML(ref);
+
+    if (source === 'fresh_modal') {
+      document.getElementById('freshConfirmSub').textContent =
+        `We've registered your request for a fresh ${company} report. Complete your payment and we'll generate and deliver the report to ${email}.`;
+      document.getElementById('freshPaymentInstructions').innerHTML = instructionsHTML;
+      document.getElementById('freshModalStep1').style.display = 'none';
+      document.getElementById('freshModalStep2').style.display = '';
+      trackEvent('manual_payment_instructions_viewed', { type: 'fresh' });
+    } else {
+      showToast(`Order received! Payment instructions sent to ${email}.`);
+    }
+  }
+
+  document.getElementById('freshModalForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const company = document.getElementById('freshModalCompany')?.value.trim();
+    const email = document.getElementById('freshModalEmail')?.value.trim();
+    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
+    handleFreshOrderSubmit(
+      company,
+      document.getElementById('freshModalTicker')?.value.trim(),
+      email,
+      'fresh_modal'
+    );
+  });
+
+  // ── Main fresh order form (cant-find section) ─────────────────────────────
+  document.getElementById('freshOrderFormMain')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const company = document.getElementById('freshCompany')?.value.trim();
+    const email = document.getElementById('freshEmail')?.value.trim();
+    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
+    handleFreshOrderSubmit(
+      company,
+      document.getElementById('freshTicker')?.value.trim(),
+      email,
+      'main_form'
+    );
+  });
+
+  // ── Modal close handlers ──────────────────────────────────────────────────
+  document.getElementById('purchaseModalClose')?.addEventListener('click', closePurchaseModal);
+  document.getElementById('freshModalClose')?.addEventListener('click', closeFreshModal);
+  document.getElementById('purchaseModal')?.addEventListener('click', e => {
+    if (e.target === e.currentTarget) closePurchaseModal();
+  });
+  document.getElementById('freshModal')?.addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeFreshModal();
+  });
+
+  // ── Keyboard: Escape closes modals ────────────────────────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closePurchaseModal();
+      closeFreshModal();
+    }
+  });
+
+  // ── Search ────────────────────────────────────────────────────────────────
+  document.getElementById('rpSearchInput')?.addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    const clearBtn = document.getElementById('rpSearchClear');
+    if (clearBtn) clearBtn.style.display = searchQuery ? '' : 'none';
+    if (searchQuery) trackEvent('report_search', { query: searchQuery });
+    renderCatalog();
+  });
+
+  document.getElementById('rpSearchClear')?.addEventListener('click', () => {
+    document.getElementById('rpSearchInput').value = '';
+    searchQuery = '';
+    document.getElementById('rpSearchClear').style.display = 'none';
+    renderCatalog();
+  });
+
+  // ── Filters ───────────────────────────────────────────────────────────────
+  document.getElementById('filterMarket')?.addEventListener('change', e => {
+    filterMarket = e.target.value;
+    trackEvent('report_filter_used', { filter: 'market', value: filterMarket });
+    renderCatalog();
+  });
+  document.getElementById('filterSector')?.addEventListener('change', e => {
+    filterSector = e.target.value;
+    trackEvent('report_filter_used', { filter: 'sector', value: filterSector });
+    renderCatalog();
+  });
+  document.getElementById('sortSelect')?.addEventListener('change', e => {
+    sortMode = e.target.value;
+    renderCatalog();
+  });
+
+  // ── Tab buttons ───────────────────────────────────────────────────────────
+  document.querySelectorAll('.catalog-tab').forEach(btn => {
+    btn.addEventListener('click', () => setTab(btn.dataset.tab));
+  });
+
+  // ── Init ──────────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    updateTabCounts();
+    renderCatalog();
+
+    // Hash-based tab activation
+    if (window.location.hash === '#free') setTab('free');
+    if (window.location.hash === '#order-fresh-tab') setTab('fresh');
+  });
+
+  </script>
+</body>
+</html>
