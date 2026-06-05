@@ -1,8 +1,13 @@
 const { Resend } = require('resend');
 
-const FROM = process.env.FROM_EMAIL || 'reports@valuatum.com';
-const ADMIN = process.env.ADMIN_EMAIL || 'contact26@valuatum.com';
-const SITE = process.env.SITE_URL || 'https://valuatum.com';
+function envValue(name, fallback) {
+  const value = process.env[name]?.trim();
+  return value || fallback;
+}
+
+const FROM = envValue('FROM_EMAIL', 'reports@valuatum.com');
+const ADMIN = envValue('ADMIN_EMAIL', 'contact26@valuatum.com');
+const SITE = envValue('SITE_URL', 'https://valuatum.com');
 
 function resend() {
   return new Resend(process.env.RESEND_API_KEY);

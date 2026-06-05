@@ -3,6 +3,22 @@ const { REPORT_CATALOG } = require('../server/reports');
 const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = require('../server/email');
 
 // Vercel: disable body parser so we get raw body for Stripe signature verification
+async function getRawBody(req) {
+  if (Buffer.isBuffer(req.body) || typeof req.body === 'string') {
+    return req.body;
+  }
+
+  const chunks = [];
+  for await (const chunk of req) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+
+  if (chunks.length) return Buffer.concat(chunks);
+
+  // Fallback for local/dev runtimes that still provide a parsed body.
+  return JSON.stringify(req.body);
+}
+
 const handler = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
 
@@ -17,10 +33,7 @@ const handler = async (req, res) => {
 
   let event;
   try {
-    const payload = Buffer.isBuffer(req.body) || typeof req.body === 'string'
-      ? req.body
-      : JSON.stringify(req.body);
-
+    const payload = await getRawBody(req);
     event = stripe.webhooks.constructEvent(payload, sig, webhookSecret);
   } catch (err) {
     console.error('Webhook sig failed:', err.message);
@@ -68,5 +81,5 @@ const handler = async (req, res) => {
   res.json({ received: true });
 };
 
-handler.config = { api: { bodyParser: false } };
 module.exports = handler;
+module.exports.config = { api: { bodyParser: false } };
