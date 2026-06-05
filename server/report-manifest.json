@@ -42,19 +42,6 @@
       "tags": ["AI Equity Report", "Reverse Valuation", "Nordic", "PDF"]
     },
     {
-      "id": "nuholdings-02062026",
-      "fileName": "NuHoldings_02062026.pdf",
-      "companyName": "Nu Holdings Ltd.",
-      "ticker": "NU",
-      "exchange": "NYSE",
-      "country": "US",
-      "sector": "Financials",
-      "reportDate": "2026-06-02",
-      "forceVisible": true,
-      "description": "AI equity report on Nu Holdings' digital banking platform, Latin America expansion, profitability ramp, and reverse valuation against current market pricing.",
-      "tags": ["AI Equity Report", "Fintech", "LatAm", "PDF"]
-    },
-    {
       "id": "recursion-02062026",
       "fileName": "RecursionPharmaceuticals_02062026.pdf",
       "companyName": "Recursion Pharmaceuticals",

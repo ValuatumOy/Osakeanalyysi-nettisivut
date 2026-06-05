@@ -285,7 +285,7 @@ function buildRawReports(options = {}) {
     }
   }
 
-  return Array.from(byFileName.values()).map(file => {
+  return Array.from(byFileName.values()).filter(file => file.size !== null).map(file => {
     const sidecarMeta = readSidecarMeta(pdfDir, file.fileName);
     const meta = {
       ...(manifest.byFileName.get(file.fileName) || {}),
