@@ -417,6 +417,10 @@
   </script>
   <script>
 
+  // ── Config ───────────────────────────────────────────────────────────────
+  // Update this when the API server is running on files.valuatum.com
+  const API_BASE = 'https://files.valuatum.com';
+
   // ── State ─────────────────────────────────────────────────────────────────
   let activeTab = 'all';
   let searchQuery = '';
@@ -488,7 +492,7 @@
       ctaBtn = `<a href="${report.pdfUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${report.ticker}', reportId:'${report.id}'})">Open free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
     } else {
       pricePart = `<span class="rc-price">€${report.price.toFixed(2)}</span>`;
-      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="openPurchaseModal('${report.id}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${report.id}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     }
 
     return `
@@ -708,33 +712,63 @@
     `;
   }
 
-  // ── Handle purchase submit ────────────────────────────────────────────────
-  document.getElementById('purchaseForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('purchaseEmail')?.value.trim();
-    if (!email || !email.includes('@')) { showToast('Please enter a valid email.'); return; }
-    if (!activePurchaseReport) return;
+  // ── Stripe checkout for existing reports ─────────────────────────────────
+  async function handleStripeCheckout(reportId) {
+    const report = REPORTS_CATALOG.find(r => r.id === reportId);
+    if (!report) return;
 
-    const r = activePurchaseReport;
-    trackEvent('email_submitted', { email, purpose: 'purchase', reportId: r.id });
+    trackEvent('paid_report_buy_clicked', { reportId, ticker: report.ticker });
+    showToast('Redirecting to secure checkout…');
 
-    const ref = { amount: r.price.toFixed(2), ref: `${email} ${r.ticker}` };
-
-    document.getElementById('purchaseConfirmSub').textContent =
-      `We've registered your order for ${r.companyName} (${r.ticker}). Complete your payment using the details below and we'll deliver the report to ${email}.`;
-
-    if (PAYMENT_CONFIG.mode === 'stripe' && PAYMENT_CONFIG.stripeLinks.singleReport) {
-      trackEvent('stripe_checkout_clicked', { reportId: r.id });
-      window.open(PAYMENT_CONFIG.stripeLinks.singleReport, '_blank');
-      document.getElementById('paymentInstructions').innerHTML = `<div class="rp-payment-method"><p>You've been redirected to Stripe for secure payment. After payment, the report will be delivered to <strong>${email}</strong>.</p></div>`;
-    } else {
-      trackEvent('manual_payment_instructions_viewed', { reportId: r.id });
-      document.getElementById('paymentInstructions').innerHTML = buildManualPaymentHTML(ref);
+    try {
+      const res = await fetch(`${API_BASE}/api/create-checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reportId:   report.id,
+          reportName: report.companyName,
+          price:      report.price,
+          ticker:     report.ticker,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        trackEvent('stripe_checkout_clicked', { reportId });
+        window.location.href = data.url;
+      } else {
+        showToast('Could not start checkout — try again or contact contact26@valuatum.com');
+      }
+    } catch {
+      showToast('Connection error — please try again.');
     }
+  }
 
-    document.getElementById('purchaseStep1').style.display = 'none';
-    document.getElementById('purchaseStep2').style.display = '';
-  });
+  // ── Stripe checkout for fresh reports ────────────────────────────────────
+  async function handleFreshOrderSubmit(company, ticker, email, source) {
+    if (!company || !email || !email.includes('@')) {
+      showToast('Please fill in company name and email.');
+      return;
+    }
+    trackEvent('fresh_report_order_started', { company, ticker, source });
+    showToast('Redirecting to secure checkout…');
+
+    try {
+      const res = await fetch(`${API_BASE}/api/create-fresh-checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ company, ticker, email }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        trackEvent('stripe_checkout_clicked', { type: 'fresh', company });
+        window.location.href = data.url;
+      } else {
+        showToast('Could not start checkout — try again or contact contact26@valuatum.com');
+      }
+    } catch {
+      showToast('Connection error — please try again.');
+    }
+  }
 
   // ── Handle fresh order submit ─────────────────────────────────────────────
   function handleFreshOrderSubmit(company, ticker, email, source) {

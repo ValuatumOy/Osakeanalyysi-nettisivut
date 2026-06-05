@@ -3,11 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Report Unlocked — Valuatum AI Equity Reports</title>
+  <title>Payment confirmed — Valuatum AI Equity Reports</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .success-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: calc(var(--nav-h) + 2rem) var(--page-x) 4rem;
+      background: var(--off-white);
+    }
+    .success-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-xl);
+      padding: 3rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--green-mist);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-icon--loading { background: var(--off-white); color: var(--gray-steel); }
+    .success-icon--error   { background: #fef2f2; color: #dc2626; }
+    .success-title   { font-size: var(--text-xl); font-weight: 300; color: var(--charcoal); margin-bottom: .5rem; letter-spacing: -.01em; }
+    .success-sub     { font-size: var(--text-sm); color: var(--gray-steel); line-height: 1.65; margin-bottom: 2rem; }
+    .report-box {
+      background: var(--green-faint);
+      border: 1px solid var(--green-mist);
+      border-radius: var(--r-lg);
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      margin-bottom: 1.75rem;
+    }
+    .report-box-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green-deep); margin-bottom: .5rem; }
+    .report-box-name  { font-size: var(--text-md); font-weight: 600; color: var(--charcoal); margin-bottom: .2rem; }
+    .report-box-meta  { font-size: var(--text-xs); color: var(--gray-steel); font-family: 'Courier New', monospace; }
+    .email-note {
+      font-size: var(--text-xs);
+      color: var(--gray-steel);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .btn-full { width: 100%; justify-content: center; }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--gray-light);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
 
@@ -23,62 +85,131 @@
     </div>
   </header>
 
-  <main class="checkout-page">
-    <div class="checkout-card">
-      <div class="checkout-icon checkout-icon--success">
-        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="18" cy="18" r="16"/>
-          <path d="M11 18l5 5 9-9" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+  <main class="success-page">
+    <div class="success-card">
+
+      <!-- Loading state -->
+      <div id="stateLoading">
+        <div class="success-icon success-icon--loading" style="background:var(--off-white);">
+          <div class="spinner"></div>
+        </div>
+        <p class="success-title" style="font-size:var(--text-lg);">Confirming payment…</p>
+        <p class="success-sub">Just a moment.</p>
       </div>
-      <h1 class="checkout-title">Report unlocked!</h1>
-      <p class="checkout-body">Your full AI equity research report is now available. Access it now or download the PDF directly.</p>
-      <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem; margin-bottom:1.75rem; text-align:left;">
-        <div style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray-steel); margin-bottom:0.75rem;">Your purchase</div>
-        <div style="font-size:var(--text-sm); font-weight:500; color:var(--charcoal); margin-bottom:0.25rem;" id="purchaseTitle">Full AI Equity Report — TSLA</div>
-        <div style="font-size:var(--text-xs); color:var(--gray-steel);" id="purchaseDetails">Valuatum AI Equity Reports · Report date: 2026-05-26</div>
-        <div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--color-border); font-size:var(--text-sm); color:var(--charcoal);">A receipt has been emailed to you.</div>
-      </div>
-      <div class="checkout-actions">
-        <a href="../report-full.html?ticker=TSLA" class="btn btn-primary btn-lg" style="justify-content:center;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12h12M8 3v7M4 7l4 5 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          View full report
+
+      <!-- Success: existing report with download -->
+      <div id="stateReport" style="display:none;">
+        <div class="success-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1 class="success-title">Payment confirmed.</h1>
+        <p class="success-sub">Your report is ready to download. We've also sent it to your email.</p>
+        <div class="report-box">
+          <div class="report-box-label">Your report</div>
+          <div class="report-box-name" id="reportName">—</div>
+          <div class="report-box-meta" id="reportMeta">—</div>
+        </div>
+        <a id="downloadBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-lg btn-full">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12h10M8 3v7M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download PDF report
         </a>
-        <button class="btn btn-outline-dark" style="justify-content:center;" onclick="showToast('PDF download coming soon — report is being prepared.')">
-          Download PDF
-        </button>
-        <a href="../index.html#hero" class="btn btn-ghost" style="justify-content:center; color:var(--gray-steel);">Generate report →</a>
+        <p class="email-note">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3l5 3 5-3M1 3v6h10V3H1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          Also sent to <span id="customerEmail" style="font-weight:500;">your email</span>
+        </p>
       </div>
-      <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
-        <p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:1rem;">Want to cover more companies?</p>
-        <a href="../pricing.html" style="font-size:var(--text-sm); color:var(--green);">See report credits — from €49 for 5 reports →</a>
+
+      <!-- Success: fresh report (no immediate PDF) -->
+      <div id="stateFresh" style="display:none;">
+        <div class="success-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1 class="success-title">Order confirmed.</h1>
+        <p class="success-sub">We'll generate a fresh report with the latest available data and deliver it by email within <strong>1 business day</strong>.</p>
+        <div class="report-box">
+          <div class="report-box-label">Fresh report ordered</div>
+          <div class="report-box-name" id="freshCompany">—</div>
+          <div class="report-box-meta">Fresh generation &middot; Latest data</div>
+        </div>
+        <p class="email-note" style="margin-bottom: 1.5rem;">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3l5 3 5-3M1 3v6h10V3H1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          Confirmation sent to <span id="freshEmail" style="font-weight:500;">your email</span>
+        </p>
       </div>
+
+      <!-- Error state -->
+      <div id="stateError" style="display:none;">
+        <div class="success-icon success-icon--error">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 16.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h1 class="success-title" style="font-size:var(--text-lg);">Something went wrong</h1>
+        <p class="success-sub" id="errorMsg">We couldn't verify your payment. If you were charged, email us and we'll sort it out.</p>
+        <a href="mailto:contact26@valuatum.com" class="btn btn-outline-dark btn-full">Contact support</a>
+      </div>
+
+      <!-- Shared footer actions (shown after loading) -->
+      <div id="footerActions" style="display:none; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+        <a href="../reports.html" class="btn btn-ghost" style="color:var(--gray-steel); justify-content:center; width:100%;">
+          Browse more reports →
+        </a>
+      </div>
+
     </div>
   </main>
 
-  <script src="../js/script.js"></script>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const ticker = params.get('ticker') || 'TSLA';
-    const plan = params.get('plan') || 'single';
-    const planLabels = {
-      single: `Full AI Equity Report \u2014 ${ticker}`,
-      'credits-5': '5 Report Credits',
-      'credits-20': '20 Report Credits',
-      pro: 'Pro Monthly',
-    };
-    document.getElementById('purchaseTitle').textContent = planLabels[plan] || planLabels.single;
-    document.getElementById('purchaseDetails').textContent = plan === 'single'
-      ? 'Valuatum AI Equity Reports \u00b7 Report date: 2026-05-26'
-      : 'Credits are ready for supported companies \u00b7 Receipt emailed';
-    const fullLink = document.querySelector('a[href*="report-full"]');
-    if (fullLink && plan === 'single') {
-      fullLink.href = `../report-full.html?ticker=${ticker}`;
-    } else if (fullLink) {
-      fullLink.href = '../search.html';
-      fullLink.textContent = 'Generate first report';
-      document.querySelector('button[onclick*="PDF"]')?.remove();
+    // ── Config ─────────────────────────────────────────────────────────────────
+    // Update API_BASE to wherever your server is running.
+    const API_BASE = 'https://files.valuatum.com';
+
+    // ── Helpers ────────────────────────────────────────────────────────────────
+    function show(id) { document.getElementById(id).style.display = ''; }
+    function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+    function showError(msg) {
+      hide('stateLoading');
+      show('stateError');
+      show('footerActions');
+      if (msg) document.getElementById('errorMsg').textContent = msg;
     }
+
+    // ── Main ───────────────────────────────────────────────────────────────────
+    (async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+
+      if (!sessionId) {
+        showError('No session ID found. If you completed a payment, contact contact26@valuatum.com.');
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/api/get-report-link?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await res.json();
+
+        if (!res.ok) {
+          showError(data.error || 'Payment could not be verified.');
+          return;
+        }
+
+        hide('stateLoading');
+        show('footerActions');
+
+        if (data.type === 'fresh') {
+          document.getElementById('freshCompany').textContent = data.company || 'Your requested company';
+          document.getElementById('freshEmail').textContent = data.email || 'your email';
+          show('stateFresh');
+        } else {
+          document.getElementById('reportName').textContent = data.reportName || '—';
+          document.getElementById('reportMeta').textContent = `${data.ticker} · Generated ${data.reportDate}`;
+          document.getElementById('downloadBtn').href = data.pdfUrl;
+          document.getElementById('customerEmail').textContent = data.email || 'your email';
+          show('stateReport');
+        }
+      } catch (err) {
+        showError('Network error. If you completed a payment, email contact26@valuatum.com.');
+      }
+    })();
   </script>
 </body>
 </html>
