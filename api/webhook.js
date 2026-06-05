@@ -17,7 +17,11 @@ const handler = async (req, res) => {
 
   let event;
   try {
-    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    const payload = Buffer.isBuffer(req.body) || typeof req.body === 'string'
+      ? req.body
+      : JSON.stringify(req.body);
+
+    event = stripe.webhooks.constructEvent(payload, sig, webhookSecret);
   } catch (err) {
     console.error('Webhook sig failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
