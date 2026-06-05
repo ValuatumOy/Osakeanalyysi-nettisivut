@@ -3,7 +3,7 @@
 // reportType: "free" | "existing" | "fresh"
 // availability: "available" | "coming_soon" | "hidden"
 
-const REPORTS_CATALOG = [
+var REPORTS_CATALOG = [
   {
     id: "tesla-01062026",
     companyName: "Tesla, Inc.",
@@ -99,7 +99,7 @@ const REPORTS_CATALOG = [
 // ── Payment configuration ──────────────────────────────────────────────────
 // Set mode to 'stripe' and fill stripeLinks when Stripe is configured.
 
-const PAYMENT_CONFIG = {
+var PAYMENT_CONFIG = {
   mode: "manual", // "manual" | "stripe"
   currency: "EUR",
   currencySymbol: "€",

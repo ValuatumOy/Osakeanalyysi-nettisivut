@@ -1,8 +1,8 @@
 const Stripe = require('stripe');
-const { REPORT_CATALOG } = require('../server/reports');
+const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
 const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = require('../server/email');
 
-// Vercel: disable body parser so we get raw body for Stripe signature verification
+// Vercel: disable body parser so Stripe signature verification receives the raw body.
 async function getRawBody(req) {
   if (Buffer.isBuffer(req.body) || typeof req.body === 'string') {
     return req.body;
@@ -14,8 +14,6 @@ async function getRawBody(req) {
   }
 
   if (chunks.length) return Buffer.concat(chunks);
-
-  // Fallback for local/dev runtimes that still provide a parsed body.
   return JSON.stringify(req.body);
 }
 
@@ -44,7 +42,7 @@ const handler = async (req, res) => {
     const session = event.data.object;
     if (session.payment_status !== 'paid') return res.json({ received: true });
 
-    const email   = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
+    const email = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
     const reportId = session.metadata?.reportId;
 
@@ -57,6 +55,17 @@ const handler = async (req, res) => {
 
     try {
       if (isFresh) {
+        const purchase = {
+          type: 'fresh',
+          sessionId: session.id,
+          companyName: session.metadata?.company || '',
+          ticker: session.metadata?.ticker || '',
+          customerEmail: email || '',
+          purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
+        };
+
+        await recordCatalogPurchase(purchase);
+
         if (email) {
           await sendFreshConfirmEmail(email, session.metadata);
         } else {
@@ -64,17 +73,27 @@ const handler = async (req, res) => {
         }
         await sendAdminNotification(session.metadata, email);
       } else {
-        const report = REPORT_CATALOG[reportId];
+        const report = await getCatalogReport(reportId);
         if (!email) {
           console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
         } else if (!report) {
           console.error('Report email skipped: unknown report id', { sessionId: session.id, reportId });
         } else {
+          await recordCatalogPurchase({
+            type: 'existing',
+            reportId: report.id,
+            fileName: report.fileName,
+            ticker: report.ticker,
+            companyName: report.name,
+            sessionId: session.id,
+            customerEmail: email,
+            purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
+          });
           await sendReportEmail(email, report);
         }
       }
     } catch (e) {
-      console.error('Email error:', e.message, { sessionId: session.id, isFresh, reportId: reportId || null });
+      console.error('Email or catalog sync error:', e.message, { sessionId: session.id, isFresh, reportId: reportId || null });
     }
   }
 

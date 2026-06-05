@@ -424,8 +424,8 @@
   <script>
 
   // ── Config ───────────────────────────────────────────────────────────────
-  // '' = same-origin (Vercel). To switch to EC2/AWS: 'https://files.valuatum.com'
-  const API_BASE = '';
+  // '' = same-origin (Vercel). To switch all APIs to EC2/AWS: 'https://files.valuatum.com'
+  const API_BASE = window.VALUATUM_API_BASE || '';
 
   // ── State ─────────────────────────────────────────────────────────────────
   let activeTab = 'all';
@@ -435,9 +435,50 @@
   let sortMode = 'newest';
   let activePurchaseReport = null;
 
+  function escapeHTML(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  async function loadDynamicReports() {
+    try {
+      const res = await fetch(`${API_BASE}/api/reports`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Report API returned ${res.status}`);
+      const data = await res.json();
+      if (Array.isArray(data.reports) && data.reports.length) {
+        REPORTS_CATALOG = data.reports;
+      }
+    } catch (err) {
+      console.warn('Using bundled report catalog fallback:', err.message);
+    }
+  }
+
+  function populateCatalogFilters() {
+    const marketSelect = document.getElementById('filterMarket');
+    const sectorSelect = document.getElementById('filterSector');
+    if (!marketSelect || !sectorSelect) return;
+
+    const currentMarket = marketSelect.value;
+    const currentSector = sectorSelect.value;
+    const markets = [...new Set(REPORTS_CATALOG.map(r => r.exchange).filter(Boolean))].sort();
+    const sectors = [...new Set(REPORTS_CATALOG.map(r => r.sector).filter(Boolean))].sort();
+
+    marketSelect.innerHTML = '<option value="">All markets</option>' +
+      markets.map(value => `<option value="${escapeHTML(value)}">${escapeHTML(value)}</option>`).join('');
+    sectorSelect.innerHTML = '<option value="">All sectors</option>' +
+      sectors.map(value => `<option value="${escapeHTML(value)}">${escapeHTML(value)}</option>`).join('');
+
+    if (markets.includes(currentMarket)) marketSelect.value = currentMarket;
+    if (sectors.includes(currentSector)) sectorSelect.value = currentSector;
+  }
+
   // ── Render report cards ──────────────────────────────────────────────────
   function getFilteredReports() {
-    let list = [...REPORTS_CATALOG];
+    let list = [...REPORTS_CATALOG].filter(r => r.availability !== 'hidden');
 
     // Tab filter
     if (activeTab === 'free') list = list.filter(r => r.reportType === 'free');
@@ -447,10 +488,10 @@
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       list = list.filter(r =>
-        r.companyName.toLowerCase().includes(q) ||
-        r.ticker.toLowerCase().includes(q) ||
-        r.sector.toLowerCase().includes(q) ||
-        r.exchange.toLowerCase().includes(q)
+        String(r.companyName || '').toLowerCase().includes(q) ||
+        String(r.ticker || '').toLowerCase().includes(q) ||
+        String(r.sector || '').toLowerCase().includes(q) ||
+        String(r.exchange || '').toLowerCase().includes(q)
       );
     }
 
@@ -469,8 +510,8 @@
         if (!a.isFree && b.isFree) return 1;
         return new Date(b.reportDate) - new Date(a.reportDate);
       }
-      if (sortMode === 'price_asc') return a.price - b.price;
-      if (sortMode === 'company') return a.companyName.localeCompare(b.companyName);
+      if (sortMode === 'price_asc') return Number(a.price || 0) - Number(b.price || 0);
+      if (sortMode === 'company') return String(a.companyName || '').localeCompare(String(b.companyName || ''));
       return 0;
     });
 
@@ -481,6 +522,12 @@
     const ageDays = getReportAgeDays(report.reportDate);
     const ageLabel = getReportAgeLabel(report.reportDate);
     const dateFormatted = formatReportDate(report.reportDate);
+    const companyName = escapeHTML(report.companyName || report.name || 'Unknown company');
+    const ticker = escapeHTML(report.ticker || '');
+    const exchange = escapeHTML(report.exchange || 'Unknown');
+    const sector = escapeHTML(report.sector || 'Unclassified');
+    const description = escapeHTML(report.description || '');
+    const reportId = escapeHTML(report.id);
 
     const typeBadge = report.reportType === 'free'
       ? `<span class="rc-badge rc-badge--free">Free Sample</span>`
@@ -488,21 +535,21 @@
       ? `<span class="rc-badge rc-badge--existing">Existing Report</span>`
       : `<span class="rc-badge rc-badge--fresh">Fresh Report</span>`;
 
-    const tags = (report.tags || []).map(t => `<span class="rc-tag">${t}</span>`).join('');
+    const tags = (report.tags || []).map(t => `<span class="rc-tag">${escapeHTML(t)}</span>`).join('');
 
     const ageClass = ageDays <= 7 ? 'rc-age--fresh' : ageDays <= 14 ? 'rc-age--recent' : 'rc-age--older';
 
     let ctaBtn, pricePart;
     if (report.isFree) {
       pricePart = `<span class="rc-price rc-price--free">Free</span>`;
-      ctaBtn = `<a href="${report.pdfUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${report.ticker}', reportId:'${report.id}'})">Open free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+      ctaBtn = `<a href="${escapeHTML(report.pdfUrl)}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${ticker}', reportId:'${reportId}'})">Open free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
     } else {
-      pricePart = `<span class="rc-price">€${report.price.toFixed(2)}</span>`;
-      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${report.id}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+      pricePart = `<span class="rc-price">€${Number(report.price || 0).toFixed(2)}</span>`;
+      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${reportId}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     }
 
     return `
-      <article class="report-card" role="listitem" data-report-id="${report.id}">
+      <article class="report-card" role="listitem" data-report-id="${reportId}">
         <div class="rc-top">
           ${typeBadge}
           <span class="rc-date-badge ${ageClass}">
@@ -511,16 +558,16 @@
           </span>
         </div>
         <div class="rc-company">
-          <div class="rc-company-name">${report.companyName}</div>
+          <div class="rc-company-name">${companyName}</div>
           <div class="rc-company-meta">
-            <span class="rc-ticker">${report.ticker}</span>
+            <span class="rc-ticker">${ticker}</span>
             <span class="rc-sep">·</span>
-            <span>${report.exchange}</span>
+            <span>${exchange}</span>
             <span class="rc-sep">·</span>
-            <span>${report.sector}</span>
+            <span>${sector}</span>
           </div>
         </div>
-        <p class="rc-desc">${report.description}</p>
+        <p class="rc-desc">${description}</p>
         <div class="rc-tags">${tags}</div>
         <div class="rc-footer">
           <div class="rc-footer-left">
@@ -618,7 +665,16 @@
       const company = document.getElementById('freshTabCompany')?.value.trim();
       const email = document.getElementById('freshTabEmail')?.value.trim();
       if (!company || !email) { showToast('Please fill in company name and email.'); return; }
-      handleFreshOrderSubmit(company, document.getElementById('freshTabTicker')?.value.trim(), email, 'fresh_tab');
+      handleFreshOrderSubmit(
+        company,
+        document.getElementById('freshTabTicker')?.value.trim(),
+        email,
+        'fresh_tab',
+        {
+          exchange: document.getElementById('freshTabExchange')?.value.trim(),
+          purpose: document.getElementById('freshTabPurpose')?.value,
+        }
+      );
     });
   }
 
@@ -636,8 +692,9 @@
 
   // ── Tab counts ────────────────────────────────────────────────────────────
   function updateTabCounts() {
-    const free = REPORTS_CATALOG.filter(r => r.reportType === 'free').length;
-    const existing = REPORTS_CATALOG.filter(r => r.reportType === 'existing').length;
+    const visibleReports = REPORTS_CATALOG.filter(r => r.availability !== 'hidden');
+    const free = visibleReports.filter(r => r.reportType === 'free').length;
+    const existing = visibleReports.filter(r => r.reportType === 'existing').length;
     const freeEl = document.getElementById('tabCountFree');
     const existingEl = document.getElementById('tabCountExisting');
     if (freeEl) freeEl.textContent = free;
@@ -730,12 +787,7 @@
       const res = await fetch(`${API_BASE}/api/create-checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          reportId:   report.id,
-          reportName: report.companyName,
-          price:      report.price,
-          ticker:     report.ticker,
-        }),
+        body: JSON.stringify({ reportId: report.id }),
       });
       const data = await res.json();
       if (data.url) {
@@ -750,7 +802,7 @@
   }
 
   // ── Stripe checkout for fresh reports ────────────────────────────────────
-  async function handleFreshOrderSubmit(company, ticker, email, source) {
+  async function handleFreshOrderSubmit(company, ticker, email, source, options = {}) {
     if (!company || !email || !email.includes('@')) {
       showToast('Please fill in company name and email.');
       return;
@@ -762,7 +814,13 @@
       const res = await fetch(`${API_BASE}/api/create-fresh-checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company, ticker, email }),
+        body: JSON.stringify({
+          company,
+          ticker,
+          email,
+          exchange: options.exchange || '',
+          purpose: options.purpose || '',
+        }),
       });
       const data = await res.json();
       if (data.url) {
@@ -776,26 +834,6 @@
     }
   }
 
-  // ── Handle fresh order submit ─────────────────────────────────────────────
-  function handleFreshOrderSubmit(company, ticker, email, source) {
-    trackEvent('fresh_report_order_started', { company, ticker, email, source });
-    trackEvent('email_submitted', { email, purpose: 'fresh_report' });
-
-    const ref = { amount: PAYMENT_CONFIG.freshReportPrice.toFixed(2), ref: `${email} ${ticker || company}` };
-    const instructionsHTML = buildManualPaymentHTML(ref);
-
-    if (source === 'fresh_modal') {
-      document.getElementById('freshConfirmSub').textContent =
-        `We've registered your request for a fresh ${company} report. Complete your payment and we'll generate and deliver the report to ${email}.`;
-      document.getElementById('freshPaymentInstructions').innerHTML = instructionsHTML;
-      document.getElementById('freshModalStep1').style.display = 'none';
-      document.getElementById('freshModalStep2').style.display = '';
-      trackEvent('manual_payment_instructions_viewed', { type: 'fresh' });
-    } else {
-      showToast(`Order received! Payment instructions sent to ${email}.`);
-    }
-  }
-
   document.getElementById('freshModalForm')?.addEventListener('submit', e => {
     e.preventDefault();
     const company = document.getElementById('freshModalCompany')?.value.trim();
@@ -805,7 +843,11 @@
       company,
       document.getElementById('freshModalTicker')?.value.trim(),
       email,
-      'fresh_modal'
+      'fresh_modal',
+      {
+        exchange: document.getElementById('freshModalExchange')?.value.trim(),
+        purpose: document.getElementById('freshModalPurpose')?.value,
+      }
     );
   });
 
@@ -819,7 +861,10 @@
       company,
       document.getElementById('freshTicker')?.value.trim(),
       email,
-      'main_form'
+      'main_form',
+      {
+        purpose: document.getElementById('freshPurpose')?.value,
+      }
     );
   });
 
@@ -879,7 +924,10 @@
   });
 
   // ── Init ──────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadDynamicReports();
+    populateCatalogFilters();
+
     const params = new URLSearchParams(window.location.search);
     const initialSearch = params.get('search')?.trim();
     if (initialSearch) {

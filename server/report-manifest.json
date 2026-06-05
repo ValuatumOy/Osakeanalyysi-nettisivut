@@ -1,0 +1,71 @@
+{
+  "reports": [
+    {
+      "id": "tesla-01062026",
+      "fileName": "Tesla_01062026.pdf",
+      "companyName": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "sector": "Consumer Discretionary",
+      "reportDate": "2026-06-01",
+      "forceVisible": true,
+      "forceFree": true,
+      "description": "AI equity report mapping Tesla's value pools across automotive, energy storage, FSD software, and Robotaxi option - with reverse valuation and risk analysis.",
+      "tags": ["AI Equity Report", "Reverse Valuation", "Value Pools", "PDF"]
+    },
+    {
+      "id": "storaenso-01062026",
+      "fileName": "StoraEnso_01062026.pdf",
+      "companyName": "Stora Enso Oyj",
+      "ticker": "STERV.HE",
+      "exchange": "Helsinki",
+      "country": "FI",
+      "sector": "Materials",
+      "reportDate": "2026-06-01",
+      "forceVisible": true,
+      "forceFree": true,
+      "description": "AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, and reverse valuation case.",
+      "tags": ["AI Equity Report", "Nordic", "Materials", "PDF"]
+    },
+    {
+      "id": "oriola-01062026",
+      "fileName": "Oriola_01062026.pdf",
+      "companyName": "Oriola Oyj",
+      "ticker": "ORIH.HE",
+      "exchange": "Helsinki",
+      "country": "FI",
+      "sector": "Health Care",
+      "reportDate": "2026-06-01",
+      "forceVisible": true,
+      "description": "AI equity report on Oriola's pharmaceutical distribution business, margin recovery trajectory, Nordic healthcare market dynamics, and valuation case.",
+      "tags": ["AI Equity Report", "Reverse Valuation", "Nordic", "PDF"]
+    },
+    {
+      "id": "nuholdings-02062026",
+      "fileName": "NuHoldings_02062026.pdf",
+      "companyName": "Nu Holdings Ltd.",
+      "ticker": "NU",
+      "exchange": "NYSE",
+      "country": "US",
+      "sector": "Financials",
+      "reportDate": "2026-06-02",
+      "forceVisible": true,
+      "description": "AI equity report on Nu Holdings' digital banking platform, Latin America expansion, profitability ramp, and reverse valuation against current market pricing.",
+      "tags": ["AI Equity Report", "Fintech", "LatAm", "PDF"]
+    },
+    {
+      "id": "recursion-02062026",
+      "fileName": "RecursionPharmaceuticals_02062026.pdf",
+      "companyName": "Recursion Pharmaceuticals",
+      "ticker": "RXRX",
+      "exchange": "NASDAQ",
+      "country": "US",
+      "sector": "Health Care",
+      "reportDate": "2026-06-02",
+      "forceVisible": true,
+      "description": "AI equity report on Recursion's AI drug discovery platform, pipeline optionality, path to commercial milestones, and reverse valuation.",
+      "tags": ["AI Equity Report", "Biotech", "AI Drug Discovery", "PDF"]
+    }
+  ]
+}
