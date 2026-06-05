@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing — Valuatum AI Equity Reports</title>
-  <meta name="description" content="Free reports for selected companies. Single full reports from €9.90 (launch price). 5-credit packs, 20-credit packs, and Pro monthly plans available.">
+  <meta name="description" content="Free sample reports, existing AI equity reports from €4.90, and fresh reports on demand at €9.90. Simple transparent pricing, no subscription.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
@@ -26,9 +26,11 @@
         </div>
       </a>
       <nav class="nav-links">
+        <a href="index.html" class="nav-link" style="color:var(--gray-steel);">Home</a>
         <a href="reports.html" class="nav-link" style="color:var(--gray-steel);">Reports</a>
         <a href="pricing.html" class="nav-link" style="color:var(--green);">Pricing</a>
         <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
+        <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
       </nav>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -36,14 +38,35 @@
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="search.html" class="nav-mobile-link">Reports</a>
+      <a href="index.html" class="nav-mobile-link">Home</a>
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
     </div>
   </header>
 
   <main class="pricing-page">
     <!-- HERO -->
-    <section class="pricing-page-hero">
+    <section class="pricing-page-hero" style="position:relative;overflow:hidden;">
+      <!-- Background bar chart decoration -->
+      <svg aria-hidden="true" style="position:absolute;right:0;top:0;height:100%;width:50%;pointer-events:none;opacity:0.06;" viewBox="0 0 500 300" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(109,191,160,0.4)" stroke="#6DBFA0" stroke-width="1">
+          <rect x="30" y="180" width="28" height="90"/>
+          <rect x="80" y="140" width="28" height="130"/>
+          <rect x="130" y="100" width="28" height="170"/>
+          <rect x="180" y="120" width="28" height="150"/>
+          <rect x="230" y="60" width="28" height="210"/>
+          <rect x="280" y="80" width="28" height="190"/>
+          <rect x="330" y="40" width="28" height="230"/>
+          <rect x="380" y="55" width="28" height="215"/>
+          <rect x="430" y="20" width="28" height="250"/>
+        </g>
+        <polyline points="44,180 94,140 144,100 194,120 244,60 294,80 344,40 394,55 444,20" stroke="#6DBFA0" stroke-width="2" fill="none" opacity="0.7"/>
+        <line x1="0" y1="270" x2="500" y2="270" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.35"/>
+        <line x1="0" y1="180" x2="500" y2="180" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.35"/>
+        <line x1="0" y1="90" x2="500" y2="90" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.35"/>
+      </svg>
       <div class="container">
         <span class="section-eyebrow section-eyebrow--light">Pricing</span>
         <h1 class="section-headline section-headline--light" style="max-width:600px;">Simple, transparent pricing.</h1>
@@ -123,7 +146,7 @@
               <li style="color:white;">Team accounts</li>
               <li style="color:white;">SLA & dedicated support</li>
             </ul>
-            <a href="mailto:sales@valuatum.com" class="btn btn-outline pricing-card-cta" style="width:100%; justify-content:center;" onclick="trackEvent && trackEvent('enterprise_contact_clicked')">Contact sales</a>
+            <a href="mailto:contact26@valuatum.com" class="btn btn-outline pricing-card-cta" style="width:100%; justify-content:center;" onclick="trackEvent && trackEvent('enterprise_contact_clicked')">Contact sales</a>
           </div>
 
         </div>
@@ -158,24 +181,24 @@
         <h2 class="section-headline" style="text-align:center; margin-bottom:var(--gap-xl);">Pricing FAQ</h2>
         <div class="faq-list" style="max-width:720px; margin:0 auto;">
           <div class="faq-item">
-            <button class="faq-question">Do credits expire?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>No. Report credits never expire. Once purchased, you can use them at any time on any supported company.</p></div>
+            <button class="faq-question">How is the report delivered?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Free sample reports open as PDFs directly in your browser. Paid existing and fresh reports are delivered as PDF files to your email address, typically within one business day of payment confirmation.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Can I get an invoice?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>Yes. A receipt is automatically emailed after every purchase. For formal invoices, email billing@valuatum.com with your order reference and business details. Invoice availability is standard for 20-credit packs and above.</p></div>
+            <div class="faq-answer"><p>Yes. Email contact26@valuatum.com with your order details and business information and we'll issue a formal invoice.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Is there a refund policy?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>Because AI equity reports are digital products that are generated and delivered instantly, we do not offer refunds after a report has been accessed. In the case of a technical failure or a report that cannot be generated, you will receive a full refund or credit. Contact support@valuatum.com with any issues.</p></div>
+            <div class="faq-answer"><p>Because reports are digital products, refunds are not available after a report has been delivered. If there is a technical issue or we cannot deliver, you will receive a full refund. Contact contact26@valuatum.com with any issues.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">How long does the launch price last?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>The €9.90 single report launch price is available during our beta period. Once we exit beta, the standard price of €19.90 will apply. We'll give advance notice before the price changes.</p></div>
+            <button class="faq-question">What is the difference between an existing report and a fresh report?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Existing reports (€4.90) were generated recently and reflect data from their generation date — available for the companies listed in our catalog. Fresh reports (€9.90) are generated specifically for your order with the latest available financial data, for any listed company you request.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Can I use reports in client work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>Reports are licensed for the purchaser's internal research and reference use. For commercial redistribution, client-facing distribution, or white-labeled outputs, contact sales@valuatum.com about our Enterprise plan.</p></div>
+            <div class="faq-answer"><p>Reports are licensed for the purchaser's internal research and reference use. For commercial redistribution, client-facing distribution, or white-labeled outputs, contact contact26@valuatum.com about our Enterprise plan.</p></div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,6 +24,7 @@
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-link" style="color:var(--gray-steel);">Home</a>
         <a href="reports.html" class="nav-link" style="color:var(--green);">Reports</a>
         <a href="pricing.html" class="nav-link" style="color:var(--gray-steel);">Pricing</a>
         <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
@@ -35,6 +36,7 @@
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="index.html" class="nav-mobile-link">Home</a>
       <a href="reports.html" class="nav-mobile-link" style="color:var(--green-light);">Reports</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
@@ -47,6 +49,23 @@
 
     <!-- PAGE HERO -->
     <section class="reports-hero">
+      <!-- Background chart decoration -->
+      <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.07;" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,320 80,290 160,305 240,265 320,275 400,230 480,245 560,200 640,215 720,175 800,160 880,130 960,145 1040,105 1120,90 1200,60" stroke="#6DBFA0" stroke-width="2" fill="none"/>
+        <polyline points="0,360 100,340 200,355 300,325 400,310 500,280 600,295 700,260 800,240 900,210 1000,225 1100,190 1200,170" stroke="#3D9E72" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
+        <polyline points="0,380 150,365 300,350 450,330 600,315 750,290 900,270 1050,250 1200,230" stroke="#6DBFA0" stroke-width="1" fill="none" opacity="0.5"/>
+        <!-- Candlestick marks -->
+        <g stroke="#6DBFA0" stroke-width="1.5">
+          <line x1="200" y1="260" x2="200" y2="310"/><rect x="195" y="270" width="10" height="25" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
+          <line x1="400" y1="215" x2="400" y2="255"/><rect x="395" y="220" width="10" height="22" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
+          <line x1="640" y1="195" x2="640" y2="240"/><rect x="635" y="202" width="10" height="24" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
+          <line x1="860" y1="120" x2="860" y2="168"/><rect x="855" y="128" width="10" height="28" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
+          <line x1="1060" y1="88" x2="1060" y2="132"/><rect x="1055" y="95" width="10" height="25" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
+        </g>
+        <!-- Grid lines -->
+        <line x1="0" y1="200" x2="1200" y2="200" stroke="#3D9E72" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.3"/>
+        <line x1="0" y1="300" x2="1200" y2="300" stroke="#3D9E72" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.3"/>
+      </svg>
       <div class="container">
         <div class="reports-hero-inner">
           <div class="reports-hero-text">
@@ -159,7 +178,24 @@
     </section>
 
     <!-- CANT FIND BLOCK -->
-    <section class="cant-find-section" id="order-fresh">
+    <section class="cant-find-section" id="order-fresh" style="position:relative;overflow:hidden;">
+      <!-- Background candlestick decoration -->
+      <svg aria-hidden="true" style="position:absolute;right:0;bottom:0;height:100%;width:55%;pointer-events:none;opacity:0.055;" viewBox="0 0 600 400" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#6DBFA0">
+          <line x1="50" y1="60" x2="50" y2="160"/><rect x="40" y="75" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
+          <line x1="110" y1="90" x2="110" y2="175"/><rect x="100" y="105" width="20" height="45" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
+          <line x1="170" y1="50" x2="170" y2="140"/><rect x="160" y="65" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
+          <line x1="230" y1="110" x2="230" y2="200"/><rect x="220" y="125" width="20" height="45" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
+          <line x1="290" y1="70" x2="290" y2="155"/><rect x="280" y="85" width="20" height="50" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
+          <line x1="350" y1="40" x2="350" y2="125"/><rect x="340" y="52" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
+          <line x1="410" y1="85" x2="410" y2="170"/><rect x="400" y="98" width="20" height="48" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
+          <line x1="470" y1="30" x2="470" y2="110"/><rect x="460" y="42" width="20" height="50" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
+          <line x1="530" y1="55" x2="530" y2="140"/><rect x="520" y="68" width="20" height="52" fill="rgba(109,191,160,0.2)" stroke-width="1.5"/>
+        </g>
+        <polyline points="50,118 110,148 170,118 230,170 290,135 350,107 410,145 470,80 530,118" stroke="#6DBFA0" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <line x1="0" y1="250" x2="600" y2="250" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.4"/>
+        <line x1="0" y1="350" x2="600" y2="350" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.4"/>
+      </svg>
       <div class="container">
         <div class="cant-find-block">
           <div class="cant-find-text">
@@ -205,7 +241,7 @@
           <div class="enterprise-cta-text">
             <strong>Enterprise / Unlimited</strong> — For teams needing recurring report generation, API access, or custom coverage lists.
           </div>
-          <a href="mailto:sales@valuatum.com" class="btn btn-outline-dark" onclick="trackEvent('enterprise_contact_clicked')">Contact sales →</a>
+          <a href="mailto:contact26@valuatum.com" class="btn btn-outline-dark" onclick="trackEvent('enterprise_contact_clicked')">Contact sales →</a>
         </div>
       </div>
     </section>
@@ -240,8 +276,8 @@
           <div class="footer-links">
             <a href="about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
-            <a href="mailto:support@valuatum.com" class="footer-link">Support</a>
-            <a href="mailto:sales@valuatum.com" class="footer-link">Enterprise sales</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
           </div>
         </div>
         <div>
@@ -369,6 +405,16 @@
   <script src="js/pricingConfig.js"></script>
   <script src="js/reportsData.js"></script>
   <script src="js/script.js"></script>
+  <script>
+  // Keep nav white on this page regardless of scroll position
+  // (dark hero behind nav → transparent nav looks wrong)
+  (function() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    nav.classList.add('scrolled');
+    window.addEventListener('scroll', () => nav.classList.add('scrolled'), { passive: true });
+  })();
+  </script>
   <script>
 
   // ── State ─────────────────────────────────────────────────────────────────
