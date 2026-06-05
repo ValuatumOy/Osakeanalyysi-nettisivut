@@ -32,13 +32,13 @@
         </svg>
       </div>
       <h1 class="checkout-title">Checkout cancelled</h1>
-      <p class="checkout-body">No charge was made. Your free report is still available — you can return to it or try a different company.</p>
+      <p class="checkout-body">No charge was made. You can return to the report catalog, open a free sample, or try a different company.</p>
       <div style="background:var(--green-faint); border:1px solid var(--color-border); border-radius:var(--r-lg); padding:1.25rem; margin-bottom:1.75rem; text-align:left;">
-        <p style="font-size:var(--text-sm); font-weight:500; color:var(--charcoal); margin-bottom:0.4rem;">The free report is still available</p>
-        <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel); line-height:1.65;">You can return to the free report and unlock it when you're ready. The launch price of €9.90 is still active.</p>
+        <p style="font-size:var(--text-sm); font-weight:500; color:var(--charcoal); margin-bottom:0.4rem;">Free sample reports are still available</p>
+        <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel); line-height:1.65;">Open a full free PDF report before buying so you know exactly what the paid reports look like.</p>
       </div>
       <div class="checkout-actions">
-        <a href="../report-preview.html" class="btn btn-primary" style="justify-content:center;" id="returnPreviewLink">Return to report</a>
+        <a href="../reports.html" class="btn btn-primary" style="justify-content:center;" id="returnPreviewLink">Return to reports</a>
         <a href="../pricing.html" class="btn btn-outline-dark" style="justify-content:center;">View all pricing options</a>
         <a href="../search.html" class="btn btn-ghost" style="justify-content:center; color:var(--gray-steel);">Search another company</a>
       </div>
@@ -50,7 +50,7 @@
     const params = new URLSearchParams(window.location.search);
     const ticker = params.get('ticker');
     if (ticker) {
-      document.getElementById('returnPreviewLink').href = `../report-preview.html?ticker=${encodeURIComponent(ticker)}`;
+      document.getElementById('returnPreviewLink').href = `../reports.html?search=${encodeURIComponent(ticker)}`;
     }
   </script>
 </body>

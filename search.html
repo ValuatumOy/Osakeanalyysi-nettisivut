@@ -134,7 +134,7 @@
       nf.style.display = 'none';
       count.textContent = `Showing ${companies.length} compan${companies.length === 1 ? 'y' : 'ies'}`;
       grid.innerHTML = companies.map(c => `
-        <a href="report-preview.html?ticker=${encodeURIComponent(c.ticker)}" class="result-card">
+        <a href="reports.html?search=${encodeURIComponent(c.ticker)}" class="result-card">
           <div class="result-card-top">
             <span class="result-ticker">${c.ticker}</span>
             <span class="availability-badge ${availBadgeClass(c.reportAvailability)}">${availLabel(c.reportAvailability)}</span>

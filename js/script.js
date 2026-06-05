@@ -121,12 +121,7 @@ function availLabel(status) {
 
 function handleSearch(query) {
   if (!query) return;
-  const q = query.toLowerCase();
-  const company = COMPANIES.find(c =>
-    c.ticker.toLowerCase() === q || c.name.toLowerCase().includes(q)
-  );
-  const ticker = company ? company.ticker : query.toUpperCase();
-  window.location.href = `report-preview.html?ticker=${encodeURIComponent(ticker)}`;
+  window.location.href = `reports.html?search=${encodeURIComponent(query)}`;
 }
 
 // ── Value pool bars animation ──────────────────────

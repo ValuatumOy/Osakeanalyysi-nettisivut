@@ -880,6 +880,16 @@
 
   // ── Init ──────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const initialSearch = params.get('search')?.trim();
+    if (initialSearch) {
+      searchQuery = initialSearch;
+      const searchInput = document.getElementById('rpSearchInput');
+      const clearBtn = document.getElementById('rpSearchClear');
+      if (searchInput) searchInput.value = initialSearch;
+      if (clearBtn) clearBtn.style.display = '';
+    }
+
     updateTabCounts();
     renderCatalog();
 
