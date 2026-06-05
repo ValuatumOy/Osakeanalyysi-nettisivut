@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /checkout/
+Disallow: /search.html
+Disallow: /report-preview.html
+Disallow: /report-full.html
+
+Sitemap: https://www.aiequityreports.com/sitemap.xml
