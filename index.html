@@ -69,21 +69,19 @@
           AI equity research reports<br>for any listed company.
         </h1>
         <p class="hero-sub">
-          Buy existing reports instantly or order a fresh AI analysis for any company — delivered by email. Full automation coming soon.
+          Browse available reports, open free samples, or order a fresh AI-generated equity report delivered by email — with value pool analysis, reverse valuation, risks, and full financials.
         </p>
 
-        <!-- Now vs Coming Soon cards -->
-        <div class="hero-modes">
-          <div class="hero-mode hero-mode--now">
-            <span class="hero-mode-label">Available now</span>
-            <p class="hero-mode-text">Browse &amp; buy existing reports. Open free samples. Order any company by email — delivered within 1 business day.</p>
-            <a href="reports.html" class="btn btn-primary btn-sm">Browse reports</a>
+        <!-- Search -->
+        <div class="hero-search-wrap">
+          <div class="search-field-wrap">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <input type="text" class="search-input" placeholder="Search company or ticker…" autocomplete="off" aria-label="Search reports">
+            <button class="search-btn" type="button" onclick="window.location.href='reports.html'">Browse reports</button>
           </div>
-          <div class="hero-mode hero-mode--soon">
-            <span class="hero-mode-label hero-mode-label--soon">Coming soon</span>
-            <p class="hero-mode-text">Type any ticker or company name and get a full AI equity report generated instantly — no email, no waiting.</p>
-            <a href="#notify" class="btn btn-outline btn-sm" onclick="document.getElementById('emailModal').classList.add('open'); return false;">Get notified</a>
-          </div>
+          <div class="search-autocomplete" id="heroAutocomplete" role="listbox"></div>
         </div>
 
         <div class="hero-trust">
@@ -91,6 +89,22 @@
           <span class="hero-trust-item">Full PDF download</span>
           <span class="hero-trust-item">Built on financial data + AI</span>
           <span class="hero-trust-item">25+ years of analysis expertise</span>
+        </div>
+
+        <div class="hero-sample-link">
+          <a href="reports.html" onclick="trackEvent && trackEvent('hero_browse_clicked')">
+            View available reports
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l5 4.5L7 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- Coming soon notice -->
+        <div class="hero-coming-soon">
+          <span class="hero-cs-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.2 3.6L6 8.2 2.7 10.5l1.2-3.6L1 4.6h3.8z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="hero-cs-text"><strong>Coming soon:</strong> type any ticker and get a full AI equity report generated instantly — no email, no waiting.</span>
+          <button class="hero-cs-link" onclick="document.getElementById('emailModal').classList.add('open')">Get notified →</button>
         </div>
 
       </div>

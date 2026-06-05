@@ -250,8 +250,8 @@ body::before {
 .nav-logo-icon svg { width: 16px; height: 16px; fill: white; }
 
 .nav-logo-img {
-  width: 34px;
-  height: 34px;
+  height: 40px;
+  width: auto;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -625,6 +625,39 @@ body::before {
   background: var(--green);
   flex-shrink: 0;
 }
+
+/* Hero coming soon notice */
+.hero-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.1rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-pill);
+  opacity: 0;
+  transition: opacity 0.8s ease 0.8s;
+}
+.hero-loaded .hero-coming-soon { opacity: 1; }
+.hero-cs-icon { color: rgba(255,255,255,0.4); flex-shrink: 0; display: flex; }
+.hero-cs-text {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.hero-cs-text strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+.hero-cs-link {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--green-light);
+  white-space: nowrap;
+  transition: color var(--trs);
+  cursor: pointer;
+}
+.hero-cs-link:hover { color: var(--white); }
 
 /* Hero Now vs Coming Soon cards */
 .hero-modes {
