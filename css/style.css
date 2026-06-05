@@ -249,6 +249,13 @@ body::before {
 }
 .nav-logo-icon svg { width: 16px; height: 16px; fill: white; }
 
+.nav-logo-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .nav-logo-text {
   display: flex;
   flex-direction: column;
@@ -617,6 +624,50 @@ body::before {
   border-radius: 50%;
   background: var(--green);
   flex-shrink: 0;
+}
+
+/* Hero Now vs Coming Soon cards */
+.hero-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 640px;
+  margin: 2rem auto 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+  text-align: left;
+}
+@media (max-width: 540px) { .hero-modes { grid-template-columns: 1fr; } }
+.hero-loaded .hero-modes { opacity: 1; transform: translateY(0); }
+
+.hero-mode {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-xl);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  backdrop-filter: blur(6px);
+}
+.hero-mode--now  { background: rgba(61,158,114,0.12); border-color: rgba(61,158,114,0.3); }
+.hero-mode--soon { background: rgba(255,255,255,0.05); }
+
+.hero-mode-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-light);
+}
+.hero-mode-label--soon { color: rgba(255,255,255,0.4); }
+
+.hero-mode-text {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.7);
+  flex: 1;
 }
 
 .hero-sample-link {

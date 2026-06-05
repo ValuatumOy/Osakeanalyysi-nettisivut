@@ -19,11 +19,7 @@
   <header class="nav" id="nav" style="background:transparent;">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Valuatum AI Reports">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
+        <img src="/images/Valuatum_logo.png" class="nav-logo-img" alt="Valuatum">
         <div class="nav-logo-text">
           <span class="nav-logo-wordmark">Valuatum</span>
           <span class="nav-logo-sub">AI Equity Reports</span>
@@ -70,36 +66,31 @@
           <span class="hero-badge-text">AI Equity Research · Now Available</span>
         </div>
         <h1 class="hero-headline">
-          AI equity research reports<br>for listed companies.
+          AI equity research reports<br>for any listed company.
         </h1>
         <p class="hero-sub">
-          Browse available reports, open free samples, or order a fresh AI-generated equity report delivered by email — with value pool analysis, reverse valuation, risks, and full financials.
+          Buy existing reports instantly or order a fresh AI analysis for any company — delivered by email. Full automation coming soon.
         </p>
 
-        <!-- Search -->
-        <div class="hero-search-wrap">
-          <div class="search-field-wrap">
-            <span class="search-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <input type="text" class="search-input" placeholder="Search company, ticker, or report…" autocomplete="off" aria-label="Search reports">
-            <button class="search-btn" type="button" onclick="window.location.href='reports.html'">Search reports</button>
+        <!-- Now vs Coming Soon cards -->
+        <div class="hero-modes">
+          <div class="hero-mode hero-mode--now">
+            <span class="hero-mode-label">Available now</span>
+            <p class="hero-mode-text">Browse &amp; buy existing reports. Open free samples. Order any company by email — delivered within 1 business day.</p>
+            <a href="reports.html" class="btn btn-primary btn-sm">Browse reports</a>
           </div>
-          <div class="search-autocomplete" id="heroAutocomplete" role="listbox"></div>
+          <div class="hero-mode hero-mode--soon">
+            <span class="hero-mode-label hero-mode-label--soon">Coming soon</span>
+            <p class="hero-mode-text">Type any ticker or company name and get a full AI equity report generated instantly — no email, no waiting.</p>
+            <a href="#notify" class="btn btn-outline btn-sm" onclick="document.getElementById('emailModal').classList.add('open'); return false;">Get notified</a>
+          </div>
         </div>
 
         <div class="hero-trust">
           <span class="hero-trust-item">Free sample reports available</span>
           <span class="hero-trust-item">Full PDF download</span>
           <span class="hero-trust-item">Built on financial data + AI</span>
-          <span class="hero-trust-item">Fresh reports delivered by email</span>
-        </div>
-
-        <div class="hero-sample-link">
-          <a href="reports.html#free" onclick="trackEvent && trackEvent('hero_free_samples_clicked')">
-            View free sample reports
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l5 4.5L7 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <span class="hero-trust-item">25+ years of analysis expertise</span>
         </div>
 
       </div>
@@ -657,7 +648,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
-            <div class="nav-logo-icon"><svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 7L9 10L12 5L14 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <img src="/images/Valuatum_logo.png" class="nav-logo-img" alt="Valuatum">
             <div class="nav-logo-text">
               <span class="nav-logo-wordmark">Valuatum</span>
               <span class="nav-logo-sub">AI Equity Reports</span>
