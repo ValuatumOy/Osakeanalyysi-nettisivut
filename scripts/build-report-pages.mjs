@@ -217,7 +217,7 @@ function relatedHtml(current, all) {
   const others = all.filter(x => x.slug !== current.slug);
   if (!others.length) return '';
   return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${others.map(o =>
-    `<a class="company-meta-chip" style="text-decoration:none; padding:0.5rem 0.9rem;" href="/reports/${o.slug}.html">${esc(shortName(o.companyName))} (${esc(o.ticker)}) report →</a>`).join('')}</div>`;
+    `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${o.slug}.html">${esc(shortName(o.companyName))} (${esc(o.ticker)}) report →</a>`).join('')}</div>`;
 }
 
 function jsonLd(d, cat, desc) {
@@ -274,6 +274,15 @@ function buyGate(d, cat) {
         </section>`;
 }
 
+const LOCK_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
+function lockedSection(title, desc, teaser, ctaLabel, reportId) {
+  return `<div class="locked-section"><div class="locked-section-inner">
+            ${teaser ? `<div class="locked-preview"><p class="locked-preview-text">${esc(teaser)}</p><div class="locked-gate"></div></div>` : ''}
+            <div class="locked-section-header"><div class="locked-icon">${LOCK_SVG}</div><div><div class="locked-section-title">${esc(title)}</div><div class="locked-section-desc">${esc(desc)}</div></div></div>
+            <a class="locked-cta" href="/reports.html#report-${esc(reportId)}">${LOCK_SVG}${esc(ctaLabel)}</a>
+          </div></div>`;
+}
+
 // ── page template ───────────────────────────────────────────────────────────
 function renderPage(d, cat, all) {
   const isFree = !!cat?.isFree;
@@ -288,15 +297,10 @@ function renderPage(d, cat, all) {
     : `<a href="#unlock" class="btn btn-primary">Get the full report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`;
 
   const sections = [];
+  const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
+  const unlockLabel = price ? `Unlock with the full report — ${price}` : 'Unlock with the full report';
 
-  // Executive summary
-  sections.push(`
-        <section class="report-full-section" id="summary">
-          <h2>Executive summary</h2>
-          ${(d.summary || []).map(p => `<p>${esc(p)}</p>`).join('\n          ')}
-        </section>`);
-
-  // Key metrics / multiples
+  // Key metrics / multiples (public facts — the hook)
   sections.push(`
         <section class="report-full-section" id="metrics">
           <h2>Key metrics &amp; valuation multiples</h2>
@@ -305,27 +309,65 @@ function renderPage(d, cat, all) {
           ${d.priceStats ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:1rem;">52-week range ${esc(d.priceStats.week52Low)} – ${esc(d.priceStats.week52High)} · 1-year change ${esc(d.priceStats.oneYearChange)} · 3-year change ${esc(d.priceStats.threeYearChange)}.</p>` : ''}
         </section>`);
 
-  // Thesis
-  if (Array.isArray(d.thesis) && d.thesis.length) {
+  if (!isFree) {
+    // PAID — analysis sections shown but locked, to drive purchase.
     sections.push(`
+        <section class="report-full-section" id="summary">
+          <h2>Executive summary</h2>
+          ${lockedSection(`${sn} investment summary`, `The full investment case and conclusion for ${sn} (${d.ticker}).`, (d.summary || [])[0] || '', unlockLabel, d.id)}
+        </section>`);
+    if (Array.isArray(d.thesis) && d.thesis.length) {
+      sections.push(`
+        <section class="report-full-section" id="thesis">
+          <h2>Investment thesis — three reasons</h2>
+          ${lockedSection(`Why Valuatum rates ${sn} ${d.headline?.recommendation || ''}`.trim(), `The three pillars behind the call plus the thesis-breaker scenario.`, (d.thesis[0] && d.thesis[0].text) || '', unlockLabel, d.id)}
+        </section>`);
+    }
+    if (Array.isArray(d.valuePools) && d.valuePools.length) {
+      sections.push(`
+        <section class="report-full-section" id="value-pools">
+          <h2>Value pool analysis — enterprise-value allocation</h2>
+          ${lockedSection(`${sn} enterprise-value breakdown`, `The full split of enterprise value across ${d.valuePools.length} business pool${d.valuePools.length === 1 ? '' : 's'} with segment revenue, EBIT and EV economics.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
+        </section>`);
+    }
+    if (d.reverseValuation) {
+      sections.push(`
+        <section class="report-full-section" id="reverse-valuation">
+          <h2>Reverse valuation</h2>
+          ${lockedSection(`What the market is pricing into ${sn}`, `The bull / base / bear scenario model and the growth and margins implied by the current price.`, d.reverseValuation.intro || '', unlockLabel, d.id)}
+        </section>`);
+    }
+    if (financialsHtml(d.financials)) {
+      sections.push(`
+        <section class="report-full-section" id="financials">
+          <h2>Financial statements &amp; estimates</h2>
+          ${lockedSection(`${sn} financial model`, `Income statement, margins and forecasts with key valuation ratios.`, (d.financials && d.financials.note) || '', unlockLabel, d.id)}
+        </section>`);
+    }
+    sections.push(buyGate(d, cat));
+  } else {
+    // FREE — everything open.
+    sections.push(`
+        <section class="report-full-section" id="summary">
+          <h2>Executive summary</h2>
+          ${(d.summary || []).map(p => `<p>${esc(p)}</p>`).join('\n          ')}
+        </section>`);
+    if (Array.isArray(d.thesis) && d.thesis.length) {
+      sections.push(`
         <section class="report-full-section" id="thesis">
           <h2>Investment thesis — three reasons</h2>
           ${thesisHtml(d.thesis)}
           ${d.thesisBreaker ? `<p style="margin-top:1rem;"><strong>Thesis breaker:</strong> ${esc(d.thesisBreaker)}</p>` : ''}
         </section>`);
-  }
-
-  // Value pools
-  if (Array.isArray(d.valuePools) && d.valuePools.length) {
-    sections.push(`
+    }
+    if (Array.isArray(d.valuePools) && d.valuePools.length) {
+      sections.push(`
         <section class="report-full-section" id="value-pools">
           <h2>Value pool analysis — enterprise-value allocation</h2>
           <p>The value pool analysis decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for, each shown with its share of total EV and segment economics.</p>
           ${valuePoolsHtml(d.valuePools)}
         </section>`);
-  }
-
-  if (isFree) {
+    }
     // Reverse valuation
     if (d.reverseValuation) {
       sections.push(`
@@ -371,8 +413,6 @@ function renderPage(d, cat, all) {
           </div>
         </section>`);
     }
-  } else {
-    sections.push(buyGate(d, cat));
   }
 
   // FAQ
