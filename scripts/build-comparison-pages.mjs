@@ -44,7 +44,8 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
-        <a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a>
+        <a href="/reports.html" class="nav-link">Reports</a>
+        <a href="/comparisons.html" class="nav-link" style="color:var(--green);">Compare</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -321,6 +322,81 @@ ${footerHtml()}
 `;
 }
 
+// Hub page listing every comparison — gives the nav "Compare" link a destination and a crawlable index.
+function renderHub(items) {
+  const url = `${SITE}/comparisons.html`;
+  const title = `Stock Comparisons — AI Equity Ratings & Price Targets Side by Side | Valuatum`;
+  const desc = `Compare listed companies side by side: AI equity recommendations, 12-month price targets, valuation multiples and value-pool analysis. Free head-to-head stock comparisons from Valuatum.`;
+  const cards = items.map(it => `
+          <a href="/compare/${it.slug}.html" style="display:block; text-decoration:none; border:1px solid var(--color-border); border-radius:var(--r-lg); padding:1.25rem 1.5rem; background:#fff;">
+            <div style="font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-steel); margin-bottom:0.35rem;">${esc(it.sector || 'Stock comparison')}</div>
+            <div style="font-size:var(--text-md); font-weight:600; color:var(--charcoal);">${esc(it.sa)} vs ${esc(it.sb)}</div>
+            <div style="font-size:var(--text-sm); color:var(--gray-steel); margin-top:0.2rem;">${esc(it.ta)} vs ${esc(it.tb)} — ratings, price targets &amp; valuation →</div>
+          </a>`).join('');
+  const ld = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Stock comparisons', item: url },
+      ] },
+      { '@type': 'CollectionPage', name: 'Stock comparisons', description: desc, url,
+        hasPart: items.map(it => ({ '@type': 'WebPage', name: `${it.sa} vs ${it.sb}`, url: `${SITE}/compare/${it.slug}.html` })) },
+    ],
+  }, null, 2);
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${esc(title)}</title>
+  <meta name="description" content="${attr(desc)}">
+  <link rel="canonical" href="${url}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta property="og:title" content="${attr(title)}">
+  <meta property="og:description" content="${attr(desc)}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${SITE}/images/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
+  <script type="application/ld+json">
+${ld}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+${navHtml()}
+
+  <main class="report-full-page">
+    <section class="report-company-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.6); margin-bottom:1rem;">
+          <a href="/" style="color:rgba(255,255,255,0.7);">Home</a> ›
+          <span>Stock comparisons</span>
+        </nav>
+        <h1 class="company-name" style="margin:0;">Stock comparisons</h1>
+        <p style="color:rgba(255,255,255,0.8); font-weight:300; margin-top:0.75rem; max-width:640px;">Free head-to-head comparisons of AI equity ratings, 12-month price targets, valuation multiples and value pools.</p>
+      </div>
+    </section>
+
+    <div class="container" style="max-width:880px; padding-top:2.5rem; padding-bottom:3rem;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem;">
+${cards}
+      </div>
+    </div>
+  </main>
+
+${footerHtml()}
+  <script src="/js/script.js"></script>
+</body>
+</html>
+`;
+}
+
 // ── run ───────────────────────────────────────────────────────────────────────
 const catalog = loadCatalog();
 const docs = [];
@@ -344,14 +420,20 @@ for (const group of Object.values(bySector)) {
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const written = [];
+const hubItems = [];
 for (const [A, B] of pairs) {
   // Stable ordering: alphabetical by stem so the page is deterministic.
   const [X, Y] = cmpStem(A.d.companyName) <= cmpStem(B.d.companyName) ? [A, B] : [B, A];
   const slug = compareSlug(A.d.companyName, B.d.companyName);
   fs.writeFileSync(path.join(OUT_DIR, `${slug}.html`), renderPage(X, Y));
   written.push(slug);
+  hubItems.push({ slug, sa: shortName(X.d.companyName), ta: X.d.ticker, sb: shortName(Y.d.companyName), tb: Y.d.ticker, sector: X.d.sector });
   console.log(`wrote  compare/${slug}.html`);
 }
+
+// Hub / index page (also the nav "Compare" destination).
+fs.writeFileSync(path.join(ROOT, 'comparisons.html'), renderHub(hubItems));
+console.log('wrote  comparisons.html (hub)');
 
 const frag = written.map(slug =>
   `  <url>\n    <loc>${SITE}/compare/${slug}.html</loc>\n    <lastmod>${TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`).join('\n');
