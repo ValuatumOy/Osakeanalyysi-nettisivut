@@ -1,0 +1,118 @@
+{
+  "id": "nuholdings-02062026",
+  "slug": "nu-holdings-equity-report",
+  "companyName": "New Era Helium, Inc.",
+  "ticker": "NU",
+  "exchange": "New York Stock Exchange",
+  "country": "Brazil",
+  "sector": "Banks - Diversified",
+  "currency": "USD",
+  "reportDate": "2026-06-02",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "12.39 USD",
+    "targetPrice": "10.50 USD",
+    "impliedUpside": "-15.3%",
+    "marketCap": "USD 12 m",
+    "enterpriseValue": "USD 13 m"
+  },
+  "multiples": [
+    {"label": "P/E 2025E", "value": "-12.2x"},
+    {"label": "EV/EBITDA 2025E", "value": "-20.9x"},
+    {"label": "FCF Yield 2025E", "value": "43.6%"},
+    {"label": "Dividend Yield 2025E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2025E", "value": "-1.3x"}
+  ],
+  "priceStats": {
+    "week52High": "17.75 USD",
+    "week52Low": "12.22 USD",
+    "oneYearChange": "-5.3%",
+    "threeYearChange": "+63.2%"
+  },
+  "summary": [
+    "New Era Helium, Inc. (NU, New York Stock Exchange) is a distressed, pre-revenue holding entity pivoting from legacy helium and natural gas operations to a data center land-development play; in this Valuatum equity research report dated 2 June 2026, the call is SELL with a 12-month target price of 10.50 USD against a current price of 12.39 USD, implying roughly 15.3% downside.",
+    "The company's $13 million enterprise value functions as a binary option on real estate entitlement and asset liquidation rather than on operating economics. Forward revenue projects to $0 million against an annualized EBITDA burn of about -$1 million through 2026, and a 0.65x current ratio ($4 million current assets against $7 million current liabilities at year-end 2024) signals imminent liquidity risk. Exactly 0% of enterprise value is supported by current recurring cash flows; 100% rests on future optionality (the TCDC data center land flip) and distressed asset realization (1.5 Bcf of helium reserves).",
+    "The reverse-valuation read is that the equity story only works if New Era acts as a lean incubator — minimizing debt, securing ERCOT interconnection cheaply, and quickly flipping powered land to a hyperscaler. The thesis breaks if management closes the binding agreement to buy out its data center JV partner (Sharon AI's 50% stake in TCDC) using a $50 million senior secured promissory note, because injecting a $50 million claim against a $13 million enterprise value would push residual equity below zero immediately."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Severe transition to zero revenue", "metric": "$1M burn", "text": "The company's transition to zero revenue creates an annualized cash burn of about $1 million through 2026, steadily draining cash and capping any fundamental valuation upside."},
+    {"num": "02", "title": "Urgent asset sale required", "metric": "0.65x ratio", "text": "To avoid near-term insolvency, the company must execute a distressed asset sale of $5 million to cover working capital. A current ratio of just 0.65x leaves operations severely constrained."},
+    {"num": "03", "title": "Fatal capital structure overhang", "metric": "$50M debt", "text": "A fatal capital structure overhang threatens the $13 million enterprise value: a potential $50 million secured debt issuance would instantly subordinate common shareholders and wipe out all equity upside."}
+  ],
+  "thesisBreaker": "The bear thesis would break if management secures the ERCOT interconnection and sells helium assets at premium valuations without taking on the $50 million senior secured debt.",
+  "valuePools": [
+    {"name": "Digital Infrastructure", "share": "62% EV · $8M", "economics": "Revenue $0 (0.0%) · Comp. EBIT -$5M · EV $8M (61.5%)", "text": "A zero-revenue, development-stage segment built around the Texas Critical Data Centers (TCDC) project, a planned 250 MW AI/HPC campus in Ector County, Texas. The allocation is a deeply discounted option on securing permits and ERCOT grid interconnection, valued via a mixed-method early-stage land-development estimate with an implied probability of about 32%."},
+    {"name": "Helium & Natural Gas Operations", "share": "38% EV · $5M", "economics": "Revenue $1M (100.0%) · Comp. EBIT -$8M · EV $5M (38.5%)", "text": "A legacy, stranded asset segment holding 137,000 acres in the Pecos Slope Field, New Mexico, with roughly 1.5 Bcf of proved and probable helium reserves. Lacking midstream processing after the Pecos Slope Plant was never built, the reserves are valued on distressed in-ground terms of about $3.33 per Mcf for a $5 million target gross asset value."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenarios test enterprise value elasticity against binary outcomes — ERCOT interconnection approval and the sale price of legacy helium leases — rather than marginal operating improvements, then bridge EBITDA and an assigned multiple to equity value per share and upside versus the 12.39 USD current price.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "0", "EBITDA": "1", "Margin": "0.0%", "Multiple": "45.0x", "EV": "45", "Equity": "42", "Value/Share": "USD 1.60"}, "impliedValueOrUpside": "-87.1%"},
+      {"scenario": "Base", "cols": {"Revenue": "0", "EBITDA": "1", "Margin": "0.0%", "Multiple": "20.0x", "EV": "20", "Equity": "17", "Value/Share": "USD 0.64"}, "impliedValueOrUpside": "-94.8%"},
+      {"scenario": "Bear", "cols": {"Revenue": "0", "EBITDA": "1", "Margin": "0.0%", "Multiple": "3.0x", "EV": "3", "Equity": "-0", "Value/Share": "USD -0.02"}, "impliedValueOrUpside": "-100.1%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity", "Value/Share"]
+  },
+  "coreAnalysis": [
+    {"heading": "Executive map", "text": "The company is a distressed, pre-revenue holding entity, not a going-concern operating business. Its $1 million in legacy E&P revenue is a runoff artifact, and the -$12 million 2024 EBITDA is distorted by one-off de-SPAC costs, restructuring fees, and early-stage development spending, so it gives no reliable baseline for recurring cash flow. Enterprise value rests almost entirely on optionality and raw asset backing: the zero-revenue Digital Infrastructure segment commands 61.5% of EV ($8 million) and legacy Helium & Natural Gas Operations 38.5% ($5 million)."},
+    {"heading": "Digital Infrastructure deep dive", "text": "This segment generates $0 revenue and an estimated -$5 million in development-stage EBIT for $8 million of allocated EV. After rebranding to New Era Energy & Digital, the focus is the TCDC project — a planned AI/HPC campus in Ector County, Texas. The market values it purely as a real estate and regulatory option because the company lacks the billions needed to build a finished data center; its only competitive lever against multi-billion-dollar developers is regulatory speed in navigating the ERCOT Large Load Interconnection queue to convert raw dirt into 'powered land.'"},
+    {"heading": "Helium & Natural Gas Operations deep dive", "text": "The legacy segment generates roughly $1 million in residual revenue and deeply negative EBITDA of -$7 million, receiving $5 million in EV (38.5%). It holds 137,000 acres in the Pecos Slope Field with about 1.5 Bcf of proved and probable helium reserves. While refined helium often trades above $300 per Mcf, the absence of midstream processing means unit economics depend on in-ground transaction value, where distressed reserves typically trade at $2.00 to $5.00 per Mcf."},
+    {"heading": "Cross-pool bridge", "text": "The forecast is mechanically driven by the shutdown of legacy revenue: 2024 actuals show an EBITDA margin of -2222.7% as one-off costs swamped negligible revenue, and 2025/2026 project $0 revenue with EBITDA normalized to about -$1 million under extreme austerity. Exactly 0% of the $13 million enterprise value is supported by current cash flows; 100% depends on TCDC land development and the distressed sale of helium reserves. The equity bridge is especially fragile because finalizing the Sharon AI 50% stake acquisition would add a $50 million senior secured note, pushing residual equity below zero."},
+    {"heading": "Scenarios and verdict", "text": "The downside scenario is liquidity-driven: if the company cannot fund ERCOT application costs, TCDC becomes stranded West Texas dirt and helium leases default, leaving enterprise value at the $3 million raw salvage value of the land, fully consumed by debt and restructuring claims. The upside requires flawless execution — securing the minor source air permit, gaining Large Load Interconnection approval, selling entitled rights for $35 million (about $140,000 per megawatt), and monetizing helium reserves at $10 million."}
+  ],
+  "risks": [
+    "Liquidity / Insolvency (Company Wide, HIGH, structural): a 0.65x current ratio suggests imminent cash shortfall without an immediate asset sale, with delayed Pecos Slope asset sale as the early-warning trigger.",
+    "Debt Allocation Overhang (Digital Infrastructure, HIGH, thesis-break): the $50 million promissory note from the Sharon AI deal would wipe out equity; an 8-K filing confirming deal closure via debt is the early warning.",
+    "Regulatory Failure (Digital Infrastructure, HIGH, structural): ERCOT or air permit denial stalls the TCDC pivot, flagged by permit rejection notices.",
+    "Operational Integration / Separation Costs (Helium & Natural Gas Operations, MEDIUM, manageable): perceived tax leakage or unknown liabilities deter acquirers, signalled by a lack of credible bids for Pecos Slope."
+  ],
+  "catalysts": [
+    "ERCOT Interconnection Approval (Digital Infrastructure, medium-term): an ERCOT public queue update or SEC 8-K that validates TCDC asset value — the genuine value-creation catalyst, since without it the land cannot be flipped to a hyperscaler.",
+    "Sharon AI Buyout Resolution (Digital Infrastructure, near-term): an SEC 8-K filing determining the $50 million debt load overhang and the most critical catalyst over the next 12 months.",
+    "Divestment of Pecos Slope Acreage (Helium & Natural Gas Operations, medium-term): a company press release or quarterly filing providing non-dilutive liquidity."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions as labeled in the report, unless noted (per-share figures in USD).",
+    "incomeStatement": {
+      "columns": ["2022", "2023", "2024", "2025", "2026", "2027"],
+      "rows": [
+        {"label": "Net Sales", "values": ["4", "1", "1", "0", "0", "0"]},
+        {"label": "EBITDA", "values": ["1", "0", "-12", "-1", "-0", "-0"]},
+        {"label": "EBITDA margin", "values": ["28.4%", "56.6%", "-2222.7%", "-321.4%", "-60.3%", "-31.8%"]},
+        {"label": "Depreciation", "values": ["-1", "-1", "-1", "—", "-0", "-0"]},
+        {"label": "Operating Profit (EBIT)", "values": ["0", "-0", "-13", "-1", "-0", "-0"]},
+        {"label": "EBIT margin", "values": ["6.7%", "-47.6%", "-2389.9%", "-321.4%", "-265.6%", "-199.2%"]},
+        {"label": "Net financial items", "values": ["-0", "-0", "-0", "—", "-0", "-0"]},
+        {"label": "Pre-tax Profit", "values": ["0", "-1", "-13", "-1", "-1", "-1"]},
+        {"label": "Net Earnings", "values": ["0", "-2", "-15", "-0", "-1", "-1"]},
+        {"label": "EPS (USD)", "values": ["0", "-0.1", "-1.1", "-0", "-0.1", "-0.1"]},
+        {"label": "DPS (USD)", "values": ["0", "0", "0", "0", "0", "0"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2025E"],
+      "rows": [
+        {"label": "P/E", "values": ["-12.2x"]},
+        {"label": "EV/EBITDA", "values": ["-20.9x"]},
+        {"label": "EV/EBIT", "values": ["-20.9x"]},
+        {"label": "P/FCF", "values": ["2.3x"]},
+        {"label": "P/BV", "values": ["-4.7x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["-1.3x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is New Era Helium (NU) a buy or sell in 2026?", "a": "Valuatum rates New Era Helium a SELL as of 2 June 2026, with a 12-month target price of 10.50 USD versus a 12.39 USD current price, implying about 15.3% downside. The thesis cites zero forward revenue, ongoing cash burn, and a fatal capital-structure overhang."},
+    {"q": "What is New Era Helium's price target?", "a": "The 12-month fundamental target price for New Era Helium (NU) is 10.50 USD in Valuatum's 2 June 2026 report, against a current price of 12.39 USD. That equates to an implied upside of -15.3%, supporting the SELL recommendation."},
+    {"q": "Why does Valuatum have a SELL rating on New Era Helium?", "a": "New Era Helium is rated SELL because its $13 million enterprise value rests entirely on future optionality, with $0 forward revenue, an annualized EBITDA burn near -$1 million, and a 0.65x current ratio signalling insolvency risk. A possible $50 million secured note could wipe out equity."},
+    {"q": "How does the reverse valuation of New Era Helium work?", "a": "Valuatum's scenarios bridge EBITDA and an assigned multiple to equity value per share. The bull case (45.0x) yields USD 1.60 per share (-87.1%), the base case (20.0x) USD 0.64 (-94.8%), and the bear case (3.0x) USD -0.02 (-100.1%) — all below the 12.39 USD price."},
+    {"q": "What could break the bear thesis on New Era Helium?", "a": "The bear thesis breaks if management secures ERCOT interconnection approval and sells helium assets at premium valuations without taking on the $50 million senior secured debt from the Sharon AI buyout. ERCOT approval is the genuine value-creation catalyst over the next 12 months."}
+  ],
+  "sources": [
+    "Company disclosures and 2024 actual financials (revenue $1M; EBITDA -$12M), Valuatum equity research, 2 June 2026",
+    "Analyst-generated estimates and model output (2025E EBITDA -$1M; target price $10.50; enterprise value allocation $13M)",
+    "Market data: current quote $12.39, ERCOT regulatory queues, and internal estimates"
+  ]
+}

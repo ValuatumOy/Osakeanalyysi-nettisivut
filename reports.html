@@ -266,6 +266,22 @@
       </div>
     </section>
 
+    <!-- Static crawlable report index (always in DOM for search/AI crawlers) -->
+    <section class="container" style="padding:2rem 1.5rem 3rem;">
+      <h2 style="font-size:var(--text-lg); margin-bottom:1rem;">All AI equity reports</h2>
+      <ul style="list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:0.75rem;">
+        <li><a class="footer-link" href="/reports/tesla-equity-report.html">Tesla (TSLA) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/stora-enso-equity-report.html">Stora Enso (STERV.HE) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/upm-kymmene-equity-report.html">UPM-Kymmene (UPM.HE) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/advanced-micro-devices-equity-report.html">AMD (AMD) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/intel-equity-report.html">Intel (INTC) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/kesko-equity-report.html">Kesko (KESKOB.HE) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/nokia-equity-report.html">Nokia (NOKIA.HE) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/recursion-pharmaceuticals-equity-report.html">Recursion Pharmaceuticals (RXRX) AI equity report</a></li>
+        <li><a class="footer-link" href="/reports/wartsila-equity-report.html">Wärtsilä (WRT1V.HE) AI equity report</a></li>
+      </ul>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
@@ -424,6 +440,7 @@
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
   <script src="js/reportsData.js"></script>
+  <script src="js/reportSlugs.js"></script>
   <script src="js/script.js"></script>
   <script>
   // Keep nav white on this page regardless of scroll position
@@ -542,6 +559,8 @@
     const sector = escapeHTML(report.sector || 'Unclassified');
     const description = escapeHTML(report.description || '');
     const reportId = escapeHTML(report.id);
+    const _slug = (window.REPORT_SLUGS && window.REPORT_SLUGS[report.id]) || report.slug || '';
+    const landingUrl = _slug ? `/reports/${escapeHTML(_slug)}.html` : '';
 
     const typeBadge = report.reportType === 'free'
       ? `<span class="rc-badge rc-badge--free">Free Sample</span>`
@@ -556,10 +575,12 @@
     let ctaBtn, pricePart;
     if (report.isFree) {
       pricePart = `<span class="rc-price rc-price--free">Free</span>`;
-      ctaBtn = `<a href="${escapeHTML(report.pdfUrl)}" target="_blank" rel="noopener" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${ticker}', reportId:'${reportId}'})">Open free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+      const freeHref = landingUrl || escapeHTML(report.pdfUrl);
+      ctaBtn = `<a href="${freeHref}" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${ticker}', reportId:'${reportId}'})">Read free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
     } else {
       pricePart = `<span class="rc-price">€${Number(report.price || 0).toFixed(2)}</span>`;
-      ctaBtn = `<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${reportId}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+      const preview = landingUrl ? `<a href="${landingUrl}" class="btn btn-outline btn-sm rc-cta" style="margin-right:0.5rem;">Preview</a>` : '';
+      ctaBtn = `${preview}<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${reportId}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     }
 
     return `
@@ -572,7 +593,7 @@
           </span>
         </div>
         <div class="rc-company">
-          <div class="rc-company-name">${companyName}</div>
+          <div class="rc-company-name">${landingUrl ? `<a href="${landingUrl}" style="color:inherit; text-decoration:none;">${companyName}</a>` : companyName}</div>
           <div class="rc-company-meta">
             <span class="rc-ticker">${ticker}</span>
             <span class="rc-sep">·</span>

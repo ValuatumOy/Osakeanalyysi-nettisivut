@@ -1,0 +1,154 @@
+{
+  "id": "recursion-02062026",
+  "slug": "recursion-pharmaceuticals-equity-report",
+  "companyName": "Recursion Pharmaceuticals, Inc.",
+  "ticker": "RXRX",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Biotechnology",
+  "currency": "USD",
+  "reportDate": "2026-06-02",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "4.84 USD",
+    "targetPrice": "4.10 USD",
+    "impliedUpside": "-15.3%",
+    "marketCap": "USD 1.3 bn",
+    "enterpriseValue": "USD 1.6 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2025E", "value": "-2.2x"},
+    {"label": "EV/EBITDA 2025E", "value": "-2.9x"},
+    {"label": "EV/EBIT 2025E", "value": "-2.8x"},
+    {"label": "FCF Yield 2025E", "value": "-62.2%"},
+    {"label": "Dividend Yield 2025E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2025E", "value": "-0.6x"}
+  ],
+  "priceStats": {
+    "week52High": "5.95 USD",
+    "week52Low": "3.07 USD",
+    "oneYearChange": "-25.1%",
+    "threeYearChange": "-73.2%"
+  },
+  "summary": [
+    "Recursion Pharmaceuticals, Inc. (NASDAQ: RXRX) is a US clinical-stage TechBio company that pairs an AI-driven drug-discovery platform (Recursion OS, BioHive supercomputing) with pharmaceutical discovery collaborations and an internal therapeutic pipeline; in its 2 June 2026 equity report, Valuatum rates the stock SELL with a 12-month target price of 4.10 USD versus a current price of 4.84 USD, implying -15.3% downside.",
+    "The core valuation tension is that Recursion's USD 1,605 million enterprise value behaves as a binary call option on AI-driven clinical success while the company runs an unsustainable forward 2025 free cash flow deficit of 802 million on baseline 2024 net sales of only 59 million and reported EBIT of -479 million. Valuation preservation depends entirely on milestone acceleration offsetting the structural cash consumption of exponential compute capital expenditures before capital markets close.",
+    "On a reverse-valuation basis, the Base scenario bridges to roughly USD 4.89 per share (+1.0%) only if revenue reaches 135 million and the platform is funded without catastrophic dilution; the Bear case collapses to USD 2.31 (-52.3%) on clinical attrition, while the Bull case reaches USD 9.32 (+92.5%) only if Recursion proves the AI thesis with multiple Phase 2 successes and a standalone software ARR floor. Until then the equity remains a highly speculative bet on the future of TechBio."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Unsustainable FCF Deficit Overwhelming Net Sales", "metric": "-$802M FCF", "text": "The company faces an unsustainable $802 million free cash flow deficit in 2025 because exponential compute capital expenditures overwhelm baseline net sales of $59 million."},
+    {"num": "02", "title": "Unjustified Pre-Revenue Software Enterprise Value", "metric": "$500M EV", "text": "The market assigns a $500 million enterprise value to a software segment with $0 external revenue. That allocation requires securing $50 million in commercial licenses to justify its multiple."},
+    {"num": "03", "title": "Dependence on Milestone Acceleration for Survival", "metric": "-$1.18B EBITDA", "text": "Valuation preservation depends entirely on securing multiple midstage clinical milestones annually to bridge the massive funding gap toward a projected $1.18 billion EBITDA loss by 2028."}
+  ],
+  "thesisBreaker": "Accelerated, non-dilutive monetization of the Recursion OS through broad SaaS adoption or definitive Phase 2/3 clinical efficacy for proprietary assets such as REC-4881.",
+  "valuePools": [
+    {"name": "Discovery Collaborations", "share": "44% · USD 700M EV", "economics": "Revenue $59M (100% of group) · Comp. EBIT -$50M · EV $700M (43.6%)", "text": "The only revenue-generating pool, earning $59 million in 2024 entirely from milestone and research payments. The $700 million EV allocation is mathematically justified only if contracted milestones (key partners Roche, Genentech, Bayer; up to $12B+ potential with Roche) materialize far faster than industry averages, requiring $150M-$200M steady-state revenue from 4-6 mid-stage milestones per year."},
+    {"name": "Software & Platform Licensing", "share": "31% · USD 500M EV", "economics": "Revenue $0 · Comp. EBIT -$150M · EV $500M (31.2%)", "text": "A pre-revenue, recurring-software pool whose $500 million EV rests entirely on narrative; with $0 external software revenue it would require $50M-$80M of ARR at 75%+ contribution margin (via Recursion OS and BioHive-2) to be justified. Without external monetization, the platform's heavy depreciation and CapEx make it an economic liability."},
+    {"name": "Internal Therapeutic Pipeline", "share": "25% · USD 405M EV", "economics": "Revenue $0 · Comp. EBIT -$279M · EV $405M (25.2%)", "text": "An emerging-option pool valued at $405 million with $0 product revenue; lead asset REC-4881 (FAP) would need $250M-$400M risk-adjusted peak sales at 15%-25% clinical success probability. Recent terminations of REC-994, REC-2282 and REC-3964 show AI has not yet solved the biological complexity behind late-stage attrition."}
+  ],
+  "reverseValuation": {
+    "intro": "Because every segment is structurally loss-making, the enterprise value cannot be set with traditional EBITDA multiples; instead the report tests Bear/Base/Bull scenarios by varying revenue, EBITDA and the applied multiple to derive an implied equity value and value per share against the 4.84 USD current price.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "280", "EBITDA": "-1,181", "Margin": "-421.8%", "Multiple": "-3.0x", "EV": "3,496", "Equity": "3,982", "Value / Share": "USD 9.32"}, "impliedValueOrUpside": "+92.5%"},
+      {"scenario": "Base", "cols": {"Revenue": "135", "EBITDA": "-536", "Margin": "-397.0%", "Multiple": "-3.0x", "EV": "1,603", "Equity": "2,088", "Value / Share": "USD 4.89"}, "impliedValueOrUpside": "+1.0%"},
+      {"scenario": "Bear", "cols": {"Revenue": "59", "EBITDA": "-500", "Margin": "-847.4%", "Multiple": "-1.0x", "EV": "500", "Equity": "986", "Value / Share": "USD 2.31"}, "impliedValueOrUpside": "-52.3%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity", "Value / Share"]
+  },
+  "coreAnalysis": [
+    {"heading": "Business Model Quality", "text": "Every segment is structurally loss-making, so the enterprise value allocation relies on indirect analytical estimation rather than traditional EBITDA multiples. The central analytical task is testing whether the unit economics of milestones and potential software licenses can realistically bridge the company's aggressive, multi-year cash burn without destroying equity value through severe dilution."},
+    {"heading": "Cross-Pool Bridge", "text": "The bridge is fundamentally weak because it requires capital markets to continuously fund a billion-dollar annual cash deficit for a pre-commercial business. For the forecast to be credible, Recursion must drastically reduce platform and pipeline investment, secure multi-hundred-million-dollar upfront software licensing deals, or execute highly dilutive equity raises. The most fragile assumption is the separability of platform value from clinical output: if the platform cannot identify efficacious drugs internally, partners will eventually stop paying Discovery Collaboration milestones, making the entire $1.6 billion EV a single, highly correlated binary option on machine learning in biology."},
+    {"heading": "Scenarios & Verdict", "text": "Enterprise value bridges to positive equity value only if management can thread the needle of funding a projected $802 million 2025 free cash flow deficit without catastrophic dilution. The Bear case materializes if clinical attrition accelerates and Roche delays option exercises, collapsing EV to the salvage value of BioHive hardware and IP; the Bull case requires multiple Phase 2 successes, hundreds of millions in non-dilutive partner cash, and a high-margin software ARR floor. Until then the equity remains a highly speculative binary option on the future of TechBio."}
+  ],
+  "risks": [
+    "Dilution / Capital Markets Closure (Group, HIGH, structural): inability to fund the structurally widening FCF deficit forces highly dilutive equity raises or debt restructurings, with failure to trigger multiple Phase 2 milestones as the early warning.",
+    "Clinical Attrition / Eroom's Law (Internal Therapeutic Pipeline, HIGH, thesis-breaker if combined): AI-discovered drugs fail at historical industry rates, undermining the core platform premise; early warning is negative REC-4881 efficacy signals.",
+    "TechBio Sentiment Reversal (Software & Platform Licensing, MEDIUM, manageable): the market rotates away from infrastructure narratives and punishes pre-revenue software valuations, signalled by NVIDIA divestiture and the absence of commercial SaaS contracts.",
+    "Integration Risk / Exscientia (Group, MEDIUM, manageable): merging distinct AI architectures and corporate cultures exacerbates the cash crunch, with spikes in SG&A or delays in merged-pipeline readouts as warning signs."
+  ],
+  "catalysts": [
+    "REC-4881 clinical data readouts (medium-term, Internal Therapeutic Pipeline): H2 2026 data is critical for restoring internal pipeline credibility and acts as a proxy for the entire platform's validity.",
+    "Roche / Bayer milestone announcements (near-term, Discovery Collaborations): quarterly announcements dictate cash runway and prevent equity dilution; every $30M-$50M payment directly extends the runway and defers dilution.",
+    "Third-party BioNeMo/SaaS contracts (medium-term, Software & Platform Licensing): the first material ARR contract is required to validate the standalone software EV.",
+    "Quarterly free cash flow burn (near-term, Group Financials): quarterly FCF metrics serve as an early-warning indicator for forced equity raises."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted.",
+    "incomeStatement": {
+      "columns": ["2022A", "2023A", "2024A", "2025E", "2026E", "2027E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["40", "45", "59", "88", "135", "263"]},
+        {"label": "EBITDA", "values": ["-236", "-314", "-443", "-562", "-536", "-346"]},
+        {"label": "EBITDA margin", "values": ["-593.6%", "-703.5%", "-753.7%", "-636.9%", "-396.4%", "-131.7%"]},
+        {"label": "Depreciation", "values": ["-10", "-36", "-36", "-19", "41", "-25"]},
+        {"label": "Operating Profit (EBIT)", "values": ["-246", "-350", "-479", "-581", "-495", "-371"]},
+        {"label": "EBIT margin", "values": ["-619.3%", "-785.3%", "-814.1%", "-657.9%", "-366.4%", "-141.3%"]},
+        {"label": "Net financial items", "values": ["6", "18", "14", "0", "-2", "-12"]},
+        {"label": "Pre-tax Profit", "values": ["-239", "-332", "-465", "-581", "-497", "-383"]},
+        {"label": "Net Earnings", "values": ["-237", "-326", "-464", "-574", "-491", "-378"]},
+        {"label": "EPS (USD)", "values": ["-1.4", "-1.6", "-1.7", "-2.1", "-1.8", "-1.4"]},
+        {"label": "DPS (USD)", "values": ["0", "0", "0", "0", "0", "0"]}
+      ]
+    },
+    "balanceSheet": {
+      "columns": ["2022A", "2023A", "2024A", "2025E", "2026E", "2027E"],
+      "rows": [
+        {"label": "Non-current assets", "values": ["139", "216", "732", "978", "1,410", "2,588"]},
+        {"label": "Cash & equivalents", "values": ["550", "392", "594", "851", "1,302", "2,533"]},
+        {"label": "Total Assets", "values": ["701", "654", "1,449", "1,952", "2,862", "5,344"]},
+        {"label": "Equity", "values": ["486", "463", "1,035", "461", "-30", "-408"]},
+        {"label": "Long-term debt", "values": ["1", "1", "19", "584", "1,273", "2,675"]},
+        {"label": "Short-term debt", "values": ["6", "0", "22", "584", "1,274", "2,675"]},
+        {"label": "Net debt", "values": ["-493", "-341", "-486", "316", "1,245", "2,816"]},
+        {"label": "Equity ratio", "values": ["69.3%", "70.9%", "71.4%", "23.6%", "-1.0%", "-7.6%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2022A", "2023A", "2024A", "2025E", "2026E", "2027E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["52", "-317", "-429", "-538", "-537", "-368"]},
+        {"label": "Gross capex", "values": ["65", "113", "552", "264", "391", "1,204"]},
+        {"label": "Free Operating Cash Flow", "values": ["643", "-473", "-904", "-802", "-926", "-1,560"]},
+        {"label": "Free cash flow to firm", "values": ["643", "-473", "-904", "-802", "-926", "-1,560"]},
+        {"label": "CF from financing", "values": ["279", "279", "1,171", "1,059", "1,379", "2,803"]},
+        {"label": "Net change in cash", "values": ["265", "-151", "189", "257", "451", "1,231"]}
+      ]
+    },
+    "keyFinancials": {
+      "columns": ["2024A", "2025E", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["59", "88", "135", "263", "280"]},
+        {"label": "EBITDA", "values": ["-443", "-562", "-536", "-346", "-1,181"]},
+        {"label": "Comparable EBIT", "values": ["-479", "-581", "-495", "-371", "-1,371"]},
+        {"label": "Net Earnings", "values": ["-464", "-574", "-491", "-378", "-1,380"]},
+        {"label": "EPS (USD)", "values": ["-1.7", "-2.1", "-1.8", "-1.4", "-5"]},
+        {"label": "DPS (USD)", "values": ["0", "0", "0", "0", "0"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2025E"],
+      "rows": [
+        {"label": "P/E", "values": ["-2.2x"]},
+        {"label": "EV/EBITDA", "values": ["-2.9x"]},
+        {"label": "EV/EBIT", "values": ["-2.8x"]},
+        {"label": "P/FCF", "values": ["-1.6x"]},
+        {"label": "P/BV", "values": ["2.8x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["-0.6x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Recursion Pharmaceuticals (RXRX) a buy in 2026?", "a": "No. In its 2 June 2026 equity report, Valuatum rates Recursion Pharmaceuticals (NASDAQ: RXRX) SELL with a 12-month target price of 4.10 USD versus a 4.84 USD current price, implying -15.3% downside. The call reflects an unsustainable $802 million 2025 free cash flow deficit and severe dilution risk."},
+    {"q": "What is Recursion Pharmaceuticals' price target?", "a": "Valuatum's 12-month fundamental target price for Recursion Pharmaceuticals (RXRX) is 4.10 USD as of the 2 June 2026 report, about 15.3% below the 4.84 USD current price. The target is an analyst-generated estimate against an enterprise value of roughly USD 1.6 billion."},
+    {"q": "Why does Valuatum have a SELL rating on Recursion Pharmaceuticals?", "a": "Valuatum rates RXRX SELL because its USD 1,605 million enterprise value is a binary option on AI-driven clinical success underpinned by an unsustainable $802 million 2025 free cash flow deficit on just $59 million of 2024 revenue. Exponential compute CapEx and milestone dependence drive severe dilution risk."},
+    {"q": "Is Recursion Pharmaceuticals overvalued?", "a": "Per the 2 June 2026 report, RXRX looks overvalued: every segment is loss-making, the market assigns $500 million EV to a pre-revenue software pool with $0 external revenue, and reported 2024 EBIT was -$479 million. The base reverse-valuation bridges to just USD 4.89 per share, roughly flat versus the 4.84 USD price."},
+    {"q": "How does the reverse valuation work for Recursion Pharmaceuticals?", "a": "Because all segments are loss-making, Valuatum tests Bear/Base/Bull scenarios varying revenue, EBITDA and applied multiple instead of standard multiples. The Bear case implies USD 2.31 (-52.3%), Base USD 4.89 (+1.0%) on $135M revenue, and Bull USD 9.32 (+92.5%) only with multiple Phase 2 wins and a software ARR floor."}
+  ],
+  "sources": [
+    "Primary data: Valuatum equity research, Recursion Pharmaceuticals, Inc., report dated 2 June 2026; company value map and financial snapshot (2024 net sales $59M, allocated EV Discovery Collaborations $700M).",
+    "Consensus estimates: Consensus 2025 EBITDA of -$583M used in forecast comparisons.",
+    "Market data: Market capitalization $1,289M; current price 4.84 USD, target price 4.10 USD (analyst-generated estimate)."
+  ]
+}

@@ -4,5 +4,32 @@ Disallow: /checkout/
 Disallow: /search.html
 Disallow: /report-preview.html
 Disallow: /report-full.html
+Disallow: /mockups/
+
+# AI search & answer engines — explicitly allowed so they can cite our reports.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: cohere-ai
+Allow: /
 
 Sitemap: https://www.aiequityreports.com/sitemap.xml

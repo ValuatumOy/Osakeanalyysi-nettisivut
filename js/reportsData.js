@@ -6,6 +6,7 @@
 var REPORTS_CATALOG = [
   {
     id: "tesla-01062026",
+    slug: "tesla-equity-report",
     companyName: "Tesla, Inc.",
     ticker: "TSLA",
     exchange: "NASDAQ",
@@ -24,6 +25,7 @@ var REPORTS_CATALOG = [
   },
   {
     id: "storaenso-01062026",
+    slug: "stora-enso-equity-report",
     companyName: "Stora Enso Oyj",
     ticker: "STERV.HE",
     exchange: "Helsinki",
@@ -78,6 +80,7 @@ var REPORTS_CATALOG = [
   },
   {
     id: "recursion-02062026",
+    slug: "recursion-pharmaceuticals-equity-report",
     companyName: "Recursion Pharmaceuticals",
     ticker: "RXRX",
     exchange: "NASDAQ",
