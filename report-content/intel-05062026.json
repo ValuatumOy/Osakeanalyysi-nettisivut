@@ -1,0 +1,127 @@
+{
+  "id": "intel-05062026",
+  "slug": "intel-equity-report",
+  "companyName": "Intel Corporation",
+  "ticker": "INTC",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-06-05",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "114.68 USD",
+    "targetPrice": "98.00 USD",
+    "impliedUpside": "-14.5%",
+    "marketCap": "USD 561.8 bn",
+    "enterpriseValue": "USD 646.5 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "106.4x"},
+    {"label": "EV/EBITDA 2026E", "value": "26.5x"},
+    {"label": "FCF Yield 2026E", "value": "0.4%"},
+    {"label": "Dividend Yield 2026E", "value": "0.7%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "1.1x"}
+  ],
+  "priceStats": {
+    "week52High": "114.68 USD",
+    "week52Low": "19.80 USD",
+    "oneYearChange": "+399.0%",
+    "threeYearChange": "+212.5%"
+  },
+  "summary": [
+    "Intel Corporation (INTC, NASDAQ Global Select) is a US semiconductor designer and manufacturer whose valuation now rests on a sovereign-backed foundry turnaround; in this Valuatum equity research report dated 5 June 2026 we rate the stock SELL with a 12-month target price of 98.00 USD against a current price of 114.68 USD, implying roughly 14.5% downside. Market capitalisation is USD 561.8 bn and enterprise value is USD 646.5 bn.",
+    "The core valuation tension is a $500 billion premium over fundamentals. Intel's $646.5 billion enterprise value embeds a premium over the roughly $80 billion valuation implied by its $5.2 billion projected 2026 consolidated operating profit. The product divisions, Client Computing and Data Center and AI, generate a combined $16.4 billion in operating profit, but at the group level that is severely diluted by the Intel Foundry, which currently burns approximately $9.6 billion annually while consuming $24.3 billion in gross capital expenditure.",
+    "On a reverse-valuation basis the embedded assumptions are difficult to defend: the $300 billion Data Center and AI allocation requires segment EBIT to more than double from $6.0 billion to roughly $15.0 billion on nearly $43 billion of revenue, while the $170.5 billion foundry allocation requires $11.4 billion of recurring operating profit and over $35 billion of external revenue from a unit that today produces only $385 million in external sales. With the absolute re-rating driver being commercial validation of the 18A node, we conclude the premium is unsupported and reiterate the SELL call."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Extreme Valuation Premium vs Earnings", "metric": "$500B premium", "text": "The enterprise value carries a staggering $500 billion premium over the baseline $80 billion valuation supported by a highly fragile projected $5.2 billion consolidated operating profit. Current earnings at a blended 15x to 20x EBIT framework would justify only $80 billion to $100 billion of enterprise value."},
+    {"num": "02", "title": "Severe Structural Foundry Challenges", "metric": "-$9.6B deficit", "text": "Severe structural foundry challenges persist: a $9.6 billion operating deficit and $24.3 billion in annual capital expenditure mechanically erase the product earnings needed to support the consolidated valuation. The $170.5 billion assigned to the foundry rests on a regulated-asset or strategic-option framework rather than current cash flows."},
+    {"num": "03", "title": "Unrealistic Data Center Scaling Needs", "metric": "$42.8B required sales", "text": "Justifying the $300 billion valuation assigned to the data center segment demands aggressive revenue scaling from $20.8 billion to $42.8 billion, creating intense and unsustainable execution risk. Operating profit would have to more than double to $15.0 billion at an expanded 35% margin."}
+  ],
+  "thesisBreaker": "Announcement of a non-DoD, tier-1 commercial customer committing high volume to the 18A node would validate the strategic option thesis and immediately revalue the foundry as a structurally sound duopoly asset.",
+  "valuePools": [
+    {"name": "Data Center and AI", "share": "46% · USD 300.0bn", "economics": "Revenue $20,796m (37.8%) · Comp. EBIT $6,000m (114.2%) · EV $300,000m (46.4%) · Scaling", "text": "Scaling pool valued as Intel's primary growth engine at roughly 50x current operating profit, pricing in capture of a secondary wave of AI infrastructure spending. To justify the $300 billion allocation at a mature 20x multiple the segment must more than double EBIT to $15.0 billion, implying nearly $43 billion of revenue at a 35% margin from AI server CPUs and Gaudi 3 accelerators."},
+    {"name": "Intel Foundry", "share": "26% · USD 170.5bn", "economics": "Revenue $385m (0.7%) · Comp. EBIT -$9,600m (-182.8%) · EV $170,463m (26.4%) · Emerging option", "text": "Emerging-option pool generating just $385 million in external sales while running an annualized operating deficit of roughly $9.6 billion, with its $170.5 billion allocation heavily subsidized by assumed sovereign support including U.S. CHIPS and Science Act funding. Justifying that EV at a 15x multiple requires $11.4 billion of recurring operating profit and over $35 billion of external foundry revenue, implying capture of 25% to 30% of TSMC's current scale."},
+    {"name": "Client Computing Group", "share": "24% · USD 156.0bn", "economics": "Revenue $31,359m (57.0%) · Comp. EBIT $10,400m (198.0%) · EV $156,000m (24.1%) · Profit engine", "text": "Current profit engine and financial bedrock generating $31.4 billion of net sales (57.0% of group) and an estimated $10.4 billion operating profit at a 33.2% margin, valued at exactly 15x as a traditional cash cow that subsidizes foundry capex. The mature, cyclical PC business faces structural threats from ARM-based architectures via Apple and Qualcomm, offset by NPU integration in Core Ultra processors to lift ASPs."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the revenue, EBITDA, margin and multiple assumptions embedded in Intel's enterprise value are mathematically coherent. The scenario bridge moves from a base case anchored on the 26.5x forward EV/EBITDA multiple to bear and bull cases driven primarily by external customer adoption of the 18A manufacturing node and the competitive resilience of the Data Center segment.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "65,000", "EBITDA": "34,000", "Margin": "52.3%", "Multiple": "25.0x", "EV": "850,000", "Equity": "817,680"}, "impliedValueOrUpside": "USD 162.69 / sh · +41.9%"},
+      {"scenario": "Base", "cols": {"Revenue": "55,016", "EBITDA": "24,389", "Margin": "44.3%", "Multiple": "26.5x", "EV": "646,309", "Equity": "613,989"}, "impliedValueOrUpside": "USD 122.16 / sh · +6.5%"},
+      {"scenario": "Bear", "cols": {"Revenue": "50,000", "EBITDA": "18,000", "Margin": "36.0%", "Multiple": "19.4x", "EV": "349,200", "Equity": "316,880"}, "impliedValueOrUpside": "USD 63.05 / sh · -45.0%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "The foundational premise of the current valuation is that Intel's historical product businesses must fund the capital-intensive incubation of a sovereign-backed commercial foundry. Intel earns its economic output almost entirely from its product design divisions: the Client Computing Group functions as a mature cash engine generating the bulk of consolidated volume and operating profit, while the Data Center and AI segment supplies margin expansion and the growth narrative. Combined they produce an estimated $16.4 billion in annualized operating profit, but at the consolidated level that profit is severely diluted by the Intel Foundry, which burns approximately $9.6 billion annually, while DCAI alone commands 46.4% of the $646.5 billion enterprise value."},
+    {"heading": "Cross-pool bridge", "text": "The mechanical driver of Intel's forecast is the intersection of product profitability and manufacturing capital intensity. The product divisions support $52.2 billion of net sales and $16.4 billion of operating profit, but after deducting the $9.6 billion foundry loss and $1.5 billion of corporate overhead the group is left with only $5.2 billion of consolidated EBIT for 2026. The company is projected to generate $24.4 billion in EBITDA but must immediately deploy $24.3 billion in gross capital expenditure on foundry infrastructure, so a 15x to 20x EBIT framework supports an enterprise value of only $80 billion to $100 billion versus a market value of $646.5 billion, a premium of over $500 billion based entirely on future optionality."},
+    {"heading": "Scenarios and verdict", "text": "Scenarios differ fundamentally based on Intel Foundry execution and the competitive resilience of the Data Center segment, with external customer adoption of the 18A node causing the largest valuation swing. In the downside case, poor 18A defect densities or delays keep tier-1 designers locked into TSMC while AMD takes x86 server share, dragging equity value to roughly $255 billion. The upside depends on breaking TSMC's monopoly via massive 18A volume commitments, which paired with strong Gaudi 3 adoption could expand enterprise value to $850 billion. The biggest unsupported assumption is that external commercial demand for foundry services will materialize at a scale large enough to absorb $24 billion in annual capital expenditure."}
+  ],
+  "risks": [
+    "Capital Exhaustion (Group / Equity): capex requirements outpace CCG and DCAI cash generation, with consecutive quarters of worsening free cash flow as the early warning — HIGH impact and a thesis-breaker if combined with competitive pressure.",
+    "TSMC Pricing Retaliation (Intel Foundry): TSMC lowers wafer prices to starve the 18A node of volume, with TSMC wafer discount announcements as the early warning — HIGH impact, structural.",
+    "ARM PC Architecture Shift (Client Computing Group): Qualcomm and Apple erode x86 laptop dominance, with ARM-based laptop market-share gains as the early warning — MEDIUM impact, structural.",
+    "AI Compute Commoditization (Data Center and AI): inference pricing drops and compresses Gaudi 3 margins, with AI hardware margin compression as the early warning — MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "18A External Customer Wins (near-term, Intel Foundry): announced tier-1 fabless volume contracts validate the foundry's $170B option value and are the hardest evidence the turnaround is commercially viable.",
+    "Data Center Market Share (near-term, Data Center and AI): Xeon 6 versus AMD EPYC results defend DCAI margin, revenue share and the $300B EV, and are the easiest catalyst to observe quarterly.",
+    "AI Accelerator Adoption (near-term, Data Center and AI): the Gaudi 3 revenue run-rate determines the sustainability of the AI premium.",
+    "Foundry Operating Margin (medium-term, Intel Foundry): a reduction in the -$9.6B operating loss measures absorption of fixed capex."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["54,228", "53,101", "52,853", "55,016", "57,713", "58,628"]},
+        {"label": "EBITDA", "values": ["7,329", "-299", "11,683", "24,389", "22,953", "14,496"]},
+        {"label": "EBITDA margin", "values": ["13.5%", "-0.6%", "22.1%", "44.3%", "39.8%", "24.7%"]},
+        {"label": "Depreciation", "values": ["-7,236", "-11,379", "-11,706", "-19,137", "-14,114", "-12,640"]},
+        {"label": "Operating Profit (EBIT)", "values": ["93", "-11,678", "-23", "5,252", "8,839", "1,856"]},
+        {"label": "EBIT margin", "values": ["0.2%", "-22.0%", "-0.0%", "9.5%", "15.3%", "3.2%"]},
+        {"label": "Net financial items", "values": ["669", "468", "1,580", "3,276", "3,131", "3,206"]},
+        {"label": "Pre-tax Profit", "values": ["762", "-11,210", "1,557", "8,528", "11,970", "5,062"]},
+        {"label": "Net Earnings", "values": ["1,675", "-19,233", "26", "5,102", "8,857", "3,746"]},
+        {"label": "EPS (USD)", "values": ["0.4", "-4.5", "0", "1.1", "1.8", "0.8"]},
+        {"label": "DPS (USD)", "values": ["0.7", "0.4", "0", "0.8", "1.4", "0.6"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["11,515", "-4,555", "-1,477", "28,800", "23,117", "16,436"]},
+        {"label": "Gross capex", "values": ["27,293", "12,237", "10,286", "24,293", "19,670", "14,524"]},
+        {"label": "Free Operating Cash Flow", "values": ["-15,225", "-14,209", "-13,029", "2,082", "1,130", "-461"]},
+        {"label": "Free cash flow to firm", "values": ["-15,225", "-14,209", "-13,029", "2,082", "1,130", "-461"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["106.4x"]},
+        {"label": "EV/EBITDA", "values": ["26.5x"]},
+        {"label": "EV/EBIT", "values": ["123.1x"]},
+        {"label": "P/FCF", "values": ["260.7x"]},
+        {"label": "P/BV", "values": ["4.7x"]},
+        {"label": "Dividend Yield", "values": ["0.7%"]},
+        {"label": "Net Debt / EBITDA", "values": ["1.1x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Intel a buy in 2026?", "a": "No. Valuatum's 5 June 2026 equity report rates Intel (INTC) a SELL with a 98.00 USD 12-month target versus a 114.68 USD price, implying about 14.5% downside. The $646.5 billion enterprise value embeds a $500 billion premium over the roughly $80 billion supported by $5.2 billion of 2026 operating profit."},
+    {"q": "What is Intel's price target?", "a": "The Valuatum report dated 5 June 2026 sets a 12-month fundamental target price of 98.00 USD for Intel (INTC), against a current price of 114.68 USD. That implies an implied upside of -14.5%, roughly 15% downside, and underpins the SELL recommendation."},
+    {"q": "Why is Intel rated SELL?", "a": "Intel is rated SELL because its $646.5 billion enterprise value carries a $500 billion premium over the roughly $80 billion justified by current economics. The Intel Foundry burns about $9.6 billion a year and consumes $24.3 billion of capex, mechanically erasing the $16.4 billion of product profit needed to support the valuation."},
+    {"q": "Is Intel overvalued in 2026?", "a": "On Valuatum's framework Intel looks overvalued: a blended 15x to 20x EBIT multiple on $5.2 billion of consolidated 2026 operating profit supports only $80 billion to $100 billion of enterprise value, versus a $646.5 billion market value. The report sees about 14.5% downside to a 98.00 USD target."},
+    {"q": "How does the reverse valuation work for Intel?", "a": "The reverse valuation tests whether assumptions embedded in Intel's enterprise value are feasible. The $300 billion Data Center allocation needs EBIT to double to $15.0 billion on nearly $43 billion of revenue, and the $170.5 billion foundry allocation needs $11.4 billion of profit on over $35 billion of external sales. The base scenario implies $122.16 per share, near current levels."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Intel Corporation report dated 5 June 2026 (company value map and sum-of-the-parts; Intel Foundry EV allocation $170,463m).",
+    "Consensus estimates: 2026 consensus EBITDA estimate of $18,370m used for forward model benchmarking.",
+    "Market data: Ticker INTC current price 114.68 USD as of 5 June 2026; 2025 historical revenue $52,853m; consolidated 2026 EBIT forecast $5,252m (analyst-generated estimate)."
+  ]
+}

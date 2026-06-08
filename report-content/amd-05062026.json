@@ -1,0 +1,128 @@
+{
+  "id": "amd-05062026",
+  "slug": "advanced-micro-devices-equity-report",
+  "companyName": "Advanced Micro Devices, Inc.",
+  "ticker": "AMD",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-06-05",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "516.10 USD",
+    "targetPrice": "413.00 USD",
+    "impliedUpside": "-20.0%",
+    "marketCap": "USD 853.1 bn",
+    "enterpriseValue": "USD 857.5 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "112.5x"},
+    {"label": "EV/EBITDA 2026E", "value": "58.3x"},
+    {"label": "FCF Yield 2026E", "value": "-0.3%"},
+    {"label": "Dividend Yield 2026E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "0.3x"}
+  ],
+  "priceStats": {
+    "week52High": "523.20 USD",
+    "week52Low": "161.79 USD",
+    "oneYearChange": "+268.7%",
+    "threeYearChange": "+357.3%"
+  },
+  "summary": [
+    "Advanced Micro Devices, Inc. (AMD, NASDAQ Global Select) is a semiconductor designer increasingly priced as a pure-play AI data center accelerator vendor; in this Valuatum equity research report dated 5 June 2026 we rate the stock SELL with a 12-month target price of 413.00 USD against a current price of 516.10 USD, implying roughly 20.0% downside. Market capitalisation is USD 853.1 bn and enterprise value is USD 857.5 bn.",
+    "The core valuation tension is a severe structural skew: the Data Center segment absorbs 87.5% ($750 billion) of total enterprise value while generating only 56.0% of estimated 2026 net sales and 67.1% of estimated forward operating earnings. At an allocated $750 billion the segment trades at roughly 80x its estimated 2026 EBIT of $9.37 billion, while the Client, Embedded and Gaming divisions contribute 44.0% of group sales but just 12.5% of enterprise value and function mainly as R&D funding mechanisms.",
+    "On a reverse-valuation basis the embedded assumptions are difficult to defend. Bridging the 2026 baseline to the 2027 consensus requires group net sales to jump $20.0 billion to $70.0 billion and operating EBIT to rise $8.69 billion in a single year, with almost 100% of that expansion falling on Data Center as it scales from ~$28 billion to nearly $48 billion in revenue. Applying a generous 25x multiple to current Data Center profit supports an EV of only ~$234 billion, leaving an uncovered premium of over $515 billion; with free cash flow negative through the forecast, we conclude the premium is unsupported and reiterate the SELL call."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Severe Valuation Disconnect", "metric": "$750 billion", "text": "The enterprise valuation rests on a severe structural skew: the Data Center segment absorbs $750 billion of total market value while generating only 67.1% of estimated forward operating earnings. The other divisions contribute 44.0% of group sales but only 12.5% of enterprise value."},
+    {"num": "02", "title": "Aggressive Consensus Bridge", "metric": "+$20.0 billion", "text": "Bridging baseline economics to aggressive market expectations requires group sales to grow $20.0 billion sequentially to $70.0 billion in 2027, with the artificial intelligence segment expanding revenue to roughly $48.0 billion. Legacy segments cannot support the bridge, placing nearly all of the burden on Data Center."},
+    {"num": "03", "title": "Massive Uncovered Premium", "metric": "$515 billion", "text": "The stock explicitly prices a $515 billion uncovered premium above structurally supported economics, creating severe multiple contraction risk if custom silicon competition causes segment earnings to stagnate near $12.0 billion. Because AMD trades at roughly 80x forward EBIT, it has minimal margin of safety."}
+  ],
+  "thesisBreaker": "Widespread enterprise adoption of the MI355X architecture displacing Nvidia while defending 35%+ operating margins against internal hyperscaler ASICs.",
+  "valuePools": [
+    {"name": "Data Center", "share": "87.5% · ~$750B", "economics": "Revenue $28,000m (56.0%) · Comp. EBIT $9,375m (67.1%) · EV $750,000m (87.5%) · Scaling", "text": "Estimated to generate $28.0 billion in net sales and $9.37 billion in EBIT for 2026, a 33.5% operating margin, yet allocated $750 billion of enterprise value via residual EV estimation — implying roughly 80x forward EBIT. The market prices AMD as the only viable merchant silicon alternative to Nvidia, expecting the AI accelerator TAM to grow toward $400–$500 billion by decade end, but hyperscaler custom ASICs threaten the volume assumptions underpinning the multiple."},
+    {"name": "Embedded", "share": "7.6% · ~$65B", "economics": "Revenue $6,000m (12.0%) · Comp. EBIT $2,400m (17.2%) · EV $65,000m (7.6%) · Profit engine", "text": "Largely the legacy Xilinx franchise, estimated to generate $6.0 billion in net sales and $2.4 billion in EBIT for 2026, an exceptional 40.0% operating margin, valued at a ~27x forward EBIT peer multiple. FPGAs and adaptive SoCs serve long-lifecycle, sticky aerospace, defence, automotive and industrial markets where prohibitive switching costs protect the 40% margins from cyclical pricing pressure."},
+    {"name": "Client", "share": "4.2% · ~$36B", "economics": "Revenue $12,000m (24.0%) · Comp. EBIT $1,800m (12.9%) · EV $36,000m (4.2%) · Profit engine", "text": "Estimated to generate $12.0 billion in net sales and $1.8 billion in EBIT for 2026, a 15.0% operating margin, valued at a ~20x forward EBIT peer multiple reflecting steady-state PC dynamics. Valued for reliable cash generation and amortizing x86 R&D, but pressured by an acute memory shortage inflating PC bills of materials and by ARM-based and Nvidia incursions fracturing the x86 duopoly."},
+    {"name": "Gaming", "share": "0.8% · ~$6.5B", "economics": "Revenue $4,000m (8.0%) · Comp. EBIT $400m (2.9%) · EV $6,534m (0.8%) · Declining", "text": "Estimated to generate $4.0 billion in net sales and $400 million in EBIT for 2026, a 2.9% share of group EBIT, allocated just $6,534 million of enterprise value. Classified as a declining pool contributing minimal valuation support."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenario valuation tests whether the volume, margin and multiple assumptions embedded in AMD's enterprise value are coherent, with outcomes built entirely around the elasticity and profitability of the Data Center segment since legacy segments represent just 12.5% of enterprise value. Because the balance sheet is effectively unlevered (net debt of $4,404 million), enterprise value and equity value are practically synonymous and value per share moves almost directly with EV.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "105,000", "EBITDA": "40,000", "Margin": "38.0%", "Multiple": "28.9x", "EV": "1,156,000", "Equity": "1,157,067"}, "impliedValueOrUpside": "USD 709.60 / sh · +37.5%"},
+      {"scenario": "Base", "cols": {"Revenue": "85,000", "EBITDA": "30,000", "Margin": "35.3%", "Multiple": "28.5x", "EV": "855,000", "Equity": "856,067"}, "impliedValueOrUpside": "USD 525.00 / sh · +1.7%"},
+      {"scenario": "Bear", "cols": {"Revenue": "65,000", "EBITDA": "17,000", "Margin": "26.1%", "Multiple": "20.4x", "EV": "346,800", "Equity": "347,867"}, "impliedValueOrUpside": "USD 213.34 / sh · -58.7%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "The enterprise value of AMD shows a deep structural skew toward future AI infrastructure growth, decoupling the group's valuation from its current revenue mix. The group enterprise value control total of $857,534 million bridges to the equity market cap of $853,130 million by deducting an estimated net debt position of $4,404 million. While Data Center generates 56% of estimated 2026 net sales and 67% of estimated forward EBIT, it absorbs 87.5% of total enterprise value; at an allocated $750 billion it trades at approximately 80x estimated 2026 EBIT of $9.37 billion, so the core analytical task is to evaluate the economic reality of the Data Center segment."},
+    {"heading": "Cross-pool bridge", "text": "The bridge from the 2026 baseline to the 2027 consensus requires AMD to add $20 billion in net sales and $8.69 billion in operating EBIT in a single year, with almost 100% of that increment coming from Data Center as it jumps from roughly $28 billion to nearly $48 billion in revenue while holding a ~33.5% margin. Applying a generous 25x multiple to the Data Center's current $9.37 billion operating profit yields a supported EV of only ~$234 billion, leaving an uncovered valuation premium of over $515 billion that depends entirely on future optionality and terminal pricing power."},
+    {"heading": "Scenarios and verdict", "text": "In the Bull scenario AMD captures 30% of a $400 billion AI accelerator market and reaches $35 billion in segment EBIT by 2029; a 30x multiple drives Data Center EV past $1 trillion and the implied share price above $700. In the downside 'ASIC Substitution and Margin Crush' case, hyperscalers migrate inference workloads to internal silicon, Data Center EBIT stagnates at $12 billion and the multiple compresses to a 20x hardware mean, collapsing Data Center EV to $240 billion and the implied share price to roughly $210. The remaining cash-generating businesses offer virtually no valuation floor if the AI thesis fractures."}
+  ],
+  "risks": [
+    "Hyperscaler ASIC Substitution (Data Center): major cloud providers migrate inference workloads to proprietary silicon, structurally shrinking the merchant GPU TAM; early warning is flattening orders from the top 4 cloud providers — HIGH impact and structural, the most thesis-breaking risk.",
+    "Client PC Architectural Disruption (Client): Nvidia and ARM-based entrants permanently fragment the x86 laptop and desktop compute duopoly, with Qualcomm gaining >20% premium laptop share as the early warning — HIGH impact, structural.",
+    "HBM Supply Chain Cost Inflation (Data Center): TSMC packaging and memory bottlenecks force AMD to absorb higher component costs, compressing AI GPU margins, with gross margins missing consensus estimates as the early warning — MEDIUM impact, manageable.",
+    "Internal Node Allocation Friction (Client): prioritizing high-margin AI GPUs starves Client and Gaming of cutting-edge TSMC silicon, with Client processor supply shortages as the early warning — MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "MI355X enterprise adoption vs Nvidia Blackwell (near-term, Data Center): quarterly Data Center segment revenue beats driven by enterprise AI deployments would add roughly +$50/share.",
+    "HBM3e supply constraints and pricing dynamics (near-term, Data Center): memory supplier capex and AMD gross margin stability could add roughly +$20/share.",
+    "Windows-on-ARM / Nvidia CPU market penetration (medium-term, Client): Mercury Research x86 unit market share erosion poses roughly -$30/share of downside.",
+    "Industrial and Auto end-market capex recovery (near-term, Embedded): Embedded segment book-to-bill disclosures and sequential revenue growth could add roughly +$10/share."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["22,680", "25,785", "34,639", "50,000", "70,000", "78,713"]},
+        {"label": "EBITDA", "values": ["2,946", "5,077", "6,698", "14,715", "22,078", "14,916"]},
+        {"label": "EBITDA margin", "values": ["13.0%", "19.7%", "19.3%", "29.4%", "31.5%", "19.0%"]},
+        {"label": "Depreciation", "values": ["-2,545", "-3,177", "-3,004", "-740", "588", "-6,960"]},
+        {"label": "Operating Profit (EBIT)", "values": ["401", "1,900", "3,694", "13,975", "22,666", "7,956"]},
+        {"label": "EBIT margin", "values": ["1.8%", "7.4%", "10.7%", "28.0%", "32.4%", "10.1%"]},
+        {"label": "Net financial items", "values": ["107", "122", "472", "-3,830", "-4,389", "-105"]},
+        {"label": "Pre-tax Profit", "values": ["508", "2,022", "4,166", "10,145", "18,277", "7,851"]},
+        {"label": "Net Earnings", "values": ["854", "1,641", "4,335", "7,554", "13,525", "5,810"]},
+        {"label": "EPS (USD)", "values": ["0.5", "1", "2.7", "4.7", "8.3", "3.6"]},
+        {"label": "DPS (USD)", "values": ["0", "0", "0", "0", "0", "0"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["330", "3,734", "2,493", "3,840", "6,633", "10,023"]},
+        {"label": "Gross capex", "values": ["793", "1,915", "3,110", "9,651", "10,583", "11,827"]},
+        {"label": "Free Operating Cash Flow", "values": ["-1,396", "511", "-2,154", "-2,960", "-702", "-1,725"]},
+        {"label": "Free cash flow to firm", "values": ["-1,396", "511", "-2,088", "-2,960", "-702", "-1,725"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["112.5x"]},
+        {"label": "EV/EBITDA", "values": ["58.3x"]},
+        {"label": "EV/EBIT", "values": ["61.4x"]},
+        {"label": "P/FCF", "values": ["-287.1x"]},
+        {"label": "P/BV", "values": ["12.0x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["0.3x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is AMD a buy in 2026?", "a": "No. Valuatum's 5 June 2026 equity report rates AMD a SELL with a 413.00 USD 12-month target versus a 516.10 USD price, implying about 20.0% downside. The Data Center segment absorbs $750 billion of enterprise value while generating only $9.37 billion of estimated 2026 EBIT."},
+    {"q": "What is AMD's price target for 2026?", "a": "The Valuatum report dated 5 June 2026 sets a 12-month fundamental target price of 413.00 USD for AMD, against a current price of 516.10 USD. That implies an implied upside of -20.0%, i.e. about 20% downside, and underpins the SELL recommendation."},
+    {"q": "Why is AMD rated SELL?", "a": "AMD is rated SELL because its enterprise value is severely skewed: Data Center absorbs 87.5% ($750 billion) of value yet generates only 67.1% of forward EBIT, trading at roughly 80x. Reaching the 2027 consensus needs sales to jump $20 billion, leaving a $515 billion uncovered premium exposed to hyperscaler ASIC competition."},
+    {"q": "Is AMD overvalued in 2026?", "a": "On Valuatum's normalized framework AMD looks overvalued: a generous 25x multiple on the Data Center's $9.37 billion of 2026 operating profit supports an enterprise value of only ~$234 billion, versus the $750 billion the market allocates. That leaves an uncovered premium of over $515 billion and implies about 20% downside to 413.00 USD."},
+    {"q": "How does the reverse valuation work for AMD?", "a": "The scenario valuation tests assumptions around the Data Center segment, which drives 87.5% of value. The Bull case (30% of a $400B AI market, $40B EBITDA) implies USD 709.60 per share; the Base case USD 525.00 (+1.7%); and the ASIC-substitution Bear case, with EBIT stagnating and the multiple at 20.4x, implies USD 213.34 per share, or -58.7%."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Advanced Micro Devices, Inc. report dated 5 June 2026 (residual enterprise-value company value map; EV control total $857,534M bridging to equity market cap $853,130M).",
+    "Consensus estimates: 2027E consensus net sales of $70,000M used for the cross-pool bridge, with 2026E base group EBITDA of $14,715M as an analyst-generated estimate.",
+    "Market data: Ticker AMD current price $516.10 as of 5 June 2026; 52-week range $161.79–$523.20; 2025 actual net sales $34,639M; 2026E Data Center sales $28,000M."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "id": "oriola-01062026",
+  "slug": "oriola-equity-report",
+  "companyName": "Oriola Oyj",
+  "ticker": "ORIOLA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Medical - Distribution",
+  "currency": "EUR",
+  "reportDate": "2026-06-01",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "0.93 EUR",
+    "targetPrice": "1.15 EUR",
+    "impliedUpside": "+23.5%",
+    "marketCap": "EUR 173 m",
+    "enterpriseValue": "EUR 281 m"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "-9.6x"},
+    {"label": "EV/EBITDA 2026E", "value": "6.4x"},
+    {"label": "FCF Yield 2026E", "value": "-78.6%"},
+    {"label": "Dividend Yield 2026E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "2.5x"}
+  ],
+  "priceStats": {
+    "week52High": "1.18 EUR",
+    "week52Low": "0.92 EUR",
+    "oneYearChange": "-10.5%",
+    "threeYearChange": "-15.3%"
+  },
+  "summary": [
+    "Oriola Oyj (ORIOLA.HE, NASDAQ Helsinki) is a Nordic pharmaceutical distribution group rated BUY in Valuatum's 1 June 2026 equity report, with a 12-month target price of 1.15 EUR versus a 0.93 EUR current price, implying +23.5% upside. Oriola's EUR 173 m equity capitalization (EUR 281 m enterprise value) is depressed by its distressed 50% Swedish retail pharmacy joint venture, Kronans Apotek, which obscures a stable, cash-generative distribution duopoly.",
+    "The valuation tension is a sum-of-the-parts split. The core Services and Products operations generate 100% of the group's EUR 44 m forward EBITDA and are valued at an undemanding ~4.7x EV/EBITDA (EUR 206 m allocated EV), fully supporting the EUR 109 m forward net debt without aggressive growth assumptions. Conversely, the 50% Kronans Apotek JV has recorded two consecutive EUR 16 m goodwill impairments and drags net earnings by EUR 18 m to EUR 22 m, leading the market to apply a ~60% discount (0.4x price-to-book) to its EUR 187 m carrying book value, allocating only ~EUR 75 m of EV to it.",
+    "The reverse-valuation conclusion is that re-rating depends almost entirely on the JV. Closing the roughly EUR 112 m gap between the JV's book value and the market's assigned value requires sequential Kronans Apotek EBITA recovery toward 2.0% in H2 2026 and industry-standard 3-4% retail margins by 2027. In the report's upside scenario, group EV expands to EUR 393 m and equity value to EUR 284 m (EUR 1.54 per share); if the turnaround stalls, the core must absorb the full EUR 109 m net debt."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Stable core distribution margins", "metric": "44m euros", "text": "The stable core Services and Products divisions produce EUR 44 million in recurring forward earnings on high pharmaceutical volumes, de-risking the EUR 109 million net debt at an undemanding valuation multiple."},
+    {"num": "02", "title": "Distressed market discount reversal", "metric": "60% discount", "text": "The market misprices the group by applying a severe 60 percent discount to the joint venture's EUR 187 million book value because of temporary integration disruptions, which penalises the consolidated multiple."},
+    {"num": "03", "title": "Swedish pharmacy market share rebound", "metric": "+5m euros", "text": "Regaining Swedish retail pharmacy market share above 21 percent will halt the joint venture's cash burn and swing its earnings contribution to a positive EUR 5 million, unlocking the embedded equity premium."}
+  ],
+  "thesisBreaker": "Kronans Apotek fails to halt cash burn before liquidity buffers run out, forcing a dilutive capital call.",
+  "valuePools": [
+    {"name": "Services", "share": "58% · EUR 163 m EV", "economics": "EUR 148 m revenue (70.5%) · EUR 12 m comp. EBIT (80.0%) · 4.7x EV/EBITDA", "text": "The profit-engine pharmaceutical distribution business, recast under IFRS 15 to an agent fee model with structural EBITDA margins approaching 20-25%. A rigid Nordic distribution duopoly with high barriers to entry, valued at an undemanding ~4.7x EV/EBITDA."},
+    {"name": "Kronans Apotek (50% JV)", "share": "27% · EUR 75 m EV", "economics": "EUR 0 m revenue (equity accounted) · EUR 0 m EBIT · 0.4x price-to-book vs EUR 187 m book value", "text": "An asset-backed, deeply distressed Swedish retail pharmacy joint venture carried at EUR 187 m book value but assigned only ~EUR 75 m of EV after two EUR 16 m goodwill impairments and a flawed ERP integration. Holds 20.7% market share (2025); required target margin 3.0-4.0%."},
+    {"name": "Products", "share": "15% · EUR 43 m EV", "economics": "EUR 62 m revenue (29.5%) · EUR 3 m comp. EBIT (20.0%) · 4.8x EV/EBITDA", "text": "A scaling wholesale operation in OTC, traded goods and special licensed medicines across Finland and Sweden. Following the April 2025 divestment of Svensk dos AB for ~EUR 9.5 m, the segment settled at a ~4.8% EBITDA margin (~EUR 9 m forward EBITDA), in line with the core distribution valuation."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge reverses Oriola's valuation by varying the trajectory of the Kronans Apotek joint venture, the sole driver of large equity upside. Each scenario flexes revenue, core EBITDA and the trading multiple to derive enterprise value, equity value, value per share and implied upside versus the 0.93 EUR current price.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "EUR 220 m", "EBITDA": "EUR 50 m", "Margin": "22.7%", "Multiple": "7.8x", "EV": "EUR 390 m", "Equity": "EUR 464 m"}, "impliedValueOrUpside": "EUR 2.50 / sh · +169.0%"},
+      {"scenario": "Base", "cols": {"Revenue": "EUR 210 m", "EBITDA": "EUR 44 m", "Margin": "21.0%", "Multiple": "6.4x", "EV": "EUR 282 m", "Equity": "EUR 356 m"}, "impliedValueOrUpside": "EUR 1.92 / sh · +106.1%"},
+      {"scenario": "Bear", "cols": {"Revenue": "EUR 210 m", "EBITDA": "EUR 38 m", "Margin": "18.1%", "Multiple": "4.7x", "EV": "EUR 179 m", "Equity": "EUR 253 m"}, "impliedValueOrUpside": "EUR 1.36 / sh · +46.4%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "Executive map — two valuation distortions", "text": "Valuing Oriola requires adjusting for two distortions: a 2026 change in revenue recognition and equity accounting of a deeply distressed joint venture. In 2026, Oriola restated pharmaceutical distribution revenue from a principal to an agent model (IFRS 15), collapsing reported net sales from EUR 1.9 billion to EUR 210 million while leaving absolute earnings unchanged. The EUR 281 million enterprise value bridges to a EUR 173 million equity market cap via EUR 109 million in forward net debt, with the core Services and Products segments generating 100% of the group's EUR 44 million forward EBITDA at ~4.7x EV/EBITDA."},
+    {"heading": "Services — current profit engine", "text": "The market values Services as a defensive, infrastructure-like asset. Under IFRS 15 only the distribution fee and service margins are recognized as net sales, lifting structural EBITDA margins to 20-25% of net revenue from less than 2% under the old gross invoicing model. The Nordic distribution market is a rigid, heavily regulated duopoly; Oriola's moat rests on prohibitive cold-chain capital requirements and switching costs. Allocating EUR 163 million against EUR 35 million in segment EBITDA implies a realistic, undemanding 4.7x EV/EBITDA. Key competitor: Tamro."},
+    {"heading": "Kronans Apotek (50% JV) — asset-backed value pool", "text": "After the 2022 Apoteksgruppen merger, a flawed 2024-2025 ERP integration disrupted store-level operations, causing market-share losses and margin compression, and forcing two identical EUR 16 million goodwill impairments in Q4 2024 and Q4 2025. The JV is structurally unprofitable at the net level, pays no upstream dividends, and trades at 0.4x price-to-book. Market share was 20.7% in 2025; a healthy Swedish pharmacy chain should earn a 3-4% EBIT margin. If industry-standard margins are reached by 2027, the EUR 187 million book value could be realized via resumed dividends or a strategic exit."},
+    {"heading": "Products — scaling current business", "text": "The Products segment wholesales traded goods, OTC products and special licensed medicines in Finland and Sweden. The April 2025 divestment of Svensk dos AB for ~EUR 9.5 million removed a low-margin, working-capital-intensive drag, leaving a cleaner wholesale operation with a ~4.8% EBITDA margin (~EUR 9 million forward EBITDA). Allocating EUR 43 million of EV against EUR 9 million EBITDA gives a 4.8x multiple, in line with the core distribution valuation."},
+    {"heading": "Cross-pool bridge", "text": "The IFRS 15 restatement reduces reported net sales from EUR 1.9 billion to EUR 210 million without affecting cash flow, pushing the reported EBITDA margin from roughly 1.0% to over 20%. Because Kronans Apotek is a joint venture, its revenues and EBITDA sit below the operating line but its net losses flow into pre-tax profit, decoupling strong EBITDA from deeply negative net earnings. The core's EUR 44 million EBITDA at an assigned EUR 206 million EV yields a 4.7x multiple, while the EUR 112 million gap between the JV's EUR 187 million book value and EUR 75 million market value represents unpriced equity upside if the turnaround succeeds."},
+    {"heading": "Scenarios & verdict", "text": "In the upside scenario, Kronans Apotek stabilizes, regains share and reaches a 3-4% EBIT margin by 2027; the discount disappears, the JV is valued at its EUR 187 million book value, group EV expands to EUR 393 million and equity value to EUR 284 million. In the downside scenario, a failed turnaround triggers a capital call (net debt assumed EUR 140 million) and core EV drops to EUR 180 million with the JV written to zero, pushing equity value to roughly EUR 40 million. The bottom-line question is whether the JV discount is a permanent impairment or a temporary dislocation from flawed integration execution."}
+  ],
+  "risks": [
+    "Kronans Apotek capital call (thesis-breaker if it occurs): continued JV net losses exhaust liquidity buffers and force a dilutive capital injection by the two 50% shareholders.",
+    "Loss of pharmaceutical manufacturer contracts in Services to competitor Tamro; with large fixed logistics costs, any volume loss hits EBITDA directly (medium impact, structural).",
+    "Net debt escalation if post-IFRS 15 working-capital outflows fail to stabilize; combined with margin compression this would push forward net debt of EUR 109 million beyond comfortable leverage limits (medium impact, manageable)."
+  ],
+  "catalysts": [
+    "Kronans Apotek quarterly EBITA improvement (near-term): sequential margin improvement toward 2.0% worth ~+EUR 0.60/share.",
+    "Swedish pharmacy market-share recovery above 21.0% (near-term): closes the JV price-to-book discount.",
+    "Capital Markets Day updates (medium-term): a clear JV exit strategy or capital allocation plan removes dilution risk.",
+    "Services segment EBITDA margin defense above 20% under agent reporting (medium-term): confirms fixed-cost absorption."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["1,494", "1,680", "1,906", "210", "221", "236"]},
+        {"label": "EBITDA", "values": ["24", "25", "19", "44", "42", "6"]},
+        {"label": "EBITDA margin", "values": ["1.6%", "1.5%", "1.0%", "20.8%", "19.0%", "2.6%"]},
+        {"label": "Depreciation", "values": ["-10", "-12", "-18", "-29", "-21", "-2"]},
+        {"label": "Operating Profit (EBIT)", "values": ["14", "14", "1", "15", "21", "4"]},
+        {"label": "EBIT margin", "values": ["0.9%", "0.8%", "0.1%", "7.0%", "9.6%", "1.8%"]},
+        {"label": "Net financial items", "values": ["-31", "-32", "-28", "-31", "-47", "-50"]},
+        {"label": "Pre-tax Profit", "values": ["-18", "-19", "-27", "-16", "-26", "-46"]},
+        {"label": "Net Earnings", "values": ["-21", "-20", "-27", "-18", "-26", "-46"]},
+        {"label": "EPS (EUR)", "values": ["-0.1", "-0.1", "-0.2", "-0.1", "-0.1", "-0.3"]},
+        {"label": "DPS (EUR)", "values": ["0.1", "0.1", "0.1", "0", "0", "0"]},
+        {"label": "Payout ratio", "values": ["-52.6%", "-63.2%", "-47.4%", "-53.7%", "-53.7%", "-53.7%"]}
+      ]
+    },
+    "balanceSheet": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Non-current assets", "values": ["347", "313", "286", "241", "242", "242"]},
+        {"label": "Inventories", "values": ["163", "176", "189", "21", "22", "24"]},
+        {"label": "Receivables", "values": ["286", "272", "316", "34", "36", "38"]},
+        {"label": "Cash & equivalents", "values": ["138", "114", "152", "16", "17", "18"]},
+        {"label": "Total Assets", "values": ["935", "876", "946", "315", "319", "325"]},
+        {"label": "Equity", "values": ["171", "133", "101", "70", "44", "-2"]},
+        {"label": "Net debt", "values": ["-21", "-37", "-74", "109", "134", "178"]},
+        {"label": "Equity ratio", "values": ["18.3%", "15.2%", "10.7%", "22.2%", "13.7%", "-0.6%"]},
+        {"label": "Net debt / EBITDA", "values": ["-0.9x", "-1.5x", "-3.8x", "2.5x", "3.2x", "28.5x"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["-42", "15", "38", "-186", "-4", "-42"]},
+        {"label": "Change in working capital", "values": ["33", "-23", "-48", "197", "-1", "-2"]},
+        {"label": "Gross capex", "values": ["-60", "-22", "-9", "-16", "21", "2"]},
+        {"label": "Free Operating Cash Flow", "values": ["55", "69", "70", "-135", "22", "6"]},
+        {"label": "CF from financing", "values": ["-39", "-59", "-8", "33", "26", "45"]},
+        {"label": "Dividends paid", "values": ["-7", "-11", "-13", "-13", "—", "—"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["-9.6x"]},
+        {"label": "EV/EBITDA", "values": ["6.4x"]},
+        {"label": "EV/EBIT", "values": ["19.0x"]},
+        {"label": "P/FCF", "values": ["-1.3x"]},
+        {"label": "P/BV", "values": ["2.5x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["2.5x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Oriola a buy in 2026?", "a": "Yes. Valuatum's 1 June 2026 equity report rates Oriola Oyj (ORIOLA.HE) BUY with a 12-month target of 1.15 EUR versus a 0.93 EUR price, implying +23.5% upside. The thesis hinges on the depressed Kronans Apotek joint venture re-rating while the stable core distribution business supports the debt."},
+    {"q": "What is Oriola's price target?", "a": "Valuatum's 1 June 2026 report sets a 12-month fundamental target price of 1.15 EUR for Oriola Oyj, about 23.5% above the 0.93 EUR current price. The report's scenario bridge spans a bear value of 1.36 EUR to a bull value of 2.50 EUR per share depending on the Kronans Apotek turnaround."},
+    {"q": "Why is Oriola undervalued?", "a": "Oriola's EUR 173 m equity value is depressed by its 50% Kronans Apotek joint venture, which the market discounts ~60% (0.4x price-to-book) versus its EUR 187 m book value after two EUR 16 m impairments. This obscures a stable core distribution duopoly generating EUR 44 m forward EBITDA at an undemanding ~4.7x EV/EBITDA, per the 1 June 2026 report."},
+    {"q": "How does the reverse valuation work for Oriola?", "a": "Valuatum's 1 June 2026 reverse valuation flexes the Kronans Apotek JV trajectory across three scenarios. Base (6.4x on EUR 44 m EBITDA) implies EUR 1.92/share and +106.1% upside; bull (7.8x, EUR 50 m EBITDA) implies EUR 2.50/share and +169.0%; bear (4.7x, EUR 38 m EBITDA) implies EUR 1.36/share and +46.4%, all versus the 0.93 EUR price."},
+    {"q": "What is the biggest risk to Oriola's stock?", "a": "The biggest risk per Valuatum's 1 June 2026 report is a Kronans Apotek capital call: continued JV net losses could exhaust liquidity buffers and force a dilutive capital injection, the report's thesis-breaker. Secondary risks are losing pharmaceutical distribution contracts to Tamro and net-debt escalation beyond the EUR 109 m forward level."}
+  ],
+  "sources": [
+    "Primary data and forecasts: Valuatum Equity Research, Oriola Oyj report dated 1 June 2026.",
+    "Consensus and analyst-generated estimates: 2026E net sales EUR 210 m and EUR 44 m forward EBITDA (analyst-generated estimate, model output).",
+    "Market data as of 1 June 2026: current price 0.931 EUR, market cap EUR 173 m, enterprise value EUR 281 m."
+  ]
+}
