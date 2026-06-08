@@ -45,11 +45,56 @@ function pdfHrefOf(cat) {
 
 function metaDescription(d) {
   const h = d.headline || {};
-  const parts = [`${shortName(d.companyName)} (${d.ticker}) AI equity report: Valuatum rates it ${h.recommendation}`];
-  if (h.targetPrice) parts.push(`with a ${h.targetPrice} 12-month target`);
+  const sn = shortName(d.companyName);
+  const parts = [`${sn} (${d.ticker}) stock analysis & AI equity report: Valuatum rates ${d.ticker} ${h.recommendation}`];
+  if (h.targetPrice) parts.push(`with a ${h.targetPrice} price target`);
   if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
-  let s = parts.join(' ') + `. Value-pool analysis, reverse valuation, financials & risks.`;
+  let s = parts.join(' ') + `. Share price forecast, valuation, value-pool analysis, reverse valuation, financials, risks & catalysts.`;
   return s.replace(/\s+/g, ' ').trim();
+}
+
+// Keyword-rich public overview paragraph (templated; safe to show on paid pages).
+function overviewIntro(d) {
+  const h = d.headline || {};
+  const sn = shortName(d.companyName);
+  let s = `${sn} (${d.exchange ? d.exchange + ': ' : ''}${d.ticker}) stock analysis and AI equity research. `;
+  if (h.currentPrice) s += `${sn} shares trade at ${h.currentPrice}; `;
+  s += `Valuatum rates ${d.ticker} ${h.recommendation || 'in this report'}`;
+  if (h.targetPrice) s += ` with a ${h.targetPrice} 12-month price target`;
+  if (h.impliedUpside) s += ` (${h.impliedUpside} vs the current share price)`;
+  s += `. This ${d.sector ? d.sector + ' ' : ''}equity research report covers ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  return s.replace(/\s+/g, ' ').trim();
+}
+
+// Paid FAQ: factual + keyword-rich, reveals nothing that is gated. Free uses the full extracted FAQ.
+function templatedFaqs(d) {
+  const h = d.headline || {};
+  const sn = shortName(d.companyName);
+  const t = d.ticker;
+  const out = [];
+  if (h.recommendation) out.push({ q: `Is ${sn} (${t}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sn} (${t}) ${h.recommendation}${h.targetPrice ? `, with a 12-month price target of ${h.targetPrice}` : ''}${h.currentPrice ? ` versus a ${h.currentPrice} share price` : ''}${h.impliedUpside ? ` (${h.impliedUpside})` : ''}. The full report explains the rationale behind the rating.` });
+  if (h.targetPrice) out.push({ q: `What is the ${sn} (${t}) share price target?`, a: `The current Valuatum 12-month price target for ${sn} is ${h.targetPrice}${h.impliedUpside ? `, implying ${h.impliedUpside} versus the current share price` : ''}. Unlock the report for the valuation behind the target.` });
+  out.push({ q: `How is ${sn} (${t}) valued?`, a: `The ${sn} AI equity report values the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts. Buy the report to read the full valuation.` });
+  out.push({ q: `Where can I get the ${sn} (${t}) equity research report?`, a: `Buy the ${sn} (${t}) AI equity report PDF on this page for instant download, or generate a fresh report for any listed company.` });
+  return out;
+}
+
+function faqsFor(d, cat) {
+  return cat?.isFree ? (Array.isArray(d.faqs) ? d.faqs : []) : templatedFaqs(d);
+}
+
+function valuePoolBars(pools) {
+  if (!Array.isArray(pools) || !pools.length) return '';
+  const colors = ['var(--green)', 'var(--green-light)', 'var(--green-deep)', 'var(--charcoal-mid)', 'var(--gray-steel)', 'var(--forest)'];
+  const bars = pools.map((p, i) => {
+    const pct = firstPct(p.share);
+    return pct === null ? '' : `<div class="pool-row"><span class="pool-name" style="min-width:200px;">${esc(p.name)}</span><div class="pool-track"><div class="pool-fill" style="width:${pct}%; background:${colors[i % colors.length]};"></div></div><span class="pool-pct">${esc(p.share)}</span></div>`;
+  }).join('');
+  return bars ? `<div class="value-pool-chart" style="margin:1rem 0 1.5rem;">${bars}</div>` : '';
+}
+
+function thesisTeaserList(thesis) {
+  return `<div style="margin-bottom:1.25rem;">${thesis.map(t => `<div style="display:flex; gap:0.6rem; align-items:baseline; padding:0.6rem 0; border-bottom:1px solid var(--color-border);"><span style="font-weight:700; color:var(--green); font-size:var(--text-xs);">${esc(t.num || '')}</span><strong style="color:var(--charcoal);">${esc(t.title)}</strong>${t.metric ? `<span class="num" style="margin-left:auto; font-weight:700; color:var(--charcoal);">${esc(t.metric)}</span>` : ''}</div>`).join('')}</div>`;
 }
 
 function navHtml() {
@@ -250,10 +295,11 @@ function jsonLd(d, cat, desc) {
       isAccessibleForFree: !!cat?.isFree,
     },
   ];
-  if (Array.isArray(d.faqs) && d.faqs.length) {
+  const faqs = faqsFor(d, cat);
+  if (faqs.length) {
     graph.push({
       '@type': 'FAQPage',
-      mainEntity: d.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     });
   }
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
@@ -289,7 +335,7 @@ function renderPage(d, cat, all) {
   const url = `${SITE}/reports/${d.slug}.html`;
   const desc = metaDescription(d);
   const sn = shortName(d.companyName);
-  const title = `${sn} (${d.ticker}) AI Equity Report — Valuation & Target Price | Valuatum`;
+  const title = `${sn} (${d.ticker}) Stock Analysis & AI Equity Report — Price Target & Valuation | Valuatum`;
   const updated = d.reportDate;
   const pdfHref = pdfHrefOf(cat);
   const downloadCta = isFree && pdfHref
@@ -299,6 +345,13 @@ function renderPage(d, cat, all) {
   const sections = [];
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
   const unlockLabel = price ? `Unlock with the full report — ${price}` : 'Unlock with the full report';
+
+  // Overview (public, keyword-rich, templated — safe on paid)
+  sections.push(`
+        <section class="report-full-section" id="overview">
+          <h2>${esc(sn)} (${esc(d.ticker)}) overview</h2>
+          <p>${esc(overviewIntro(d))}</p>
+        </section>`);
 
   // Key metrics / multiples (public facts — the hook)
   sections.push(`
@@ -310,38 +363,45 @@ function renderPage(d, cat, all) {
         </section>`);
 
   if (!isFree) {
-    // PAID — analysis sections shown but locked, to drive purchase.
+    // PAID — reveal a readable lead, then lock the deep analysis to drive purchase.
+    const sumLead = (d.summary || [])[0] || '';
+    const sumRest = (d.summary || []).slice(1).join(' ');
     sections.push(`
         <section class="report-full-section" id="summary">
           <h2>Executive summary</h2>
-          ${lockedSection(`${sn} investment summary`, `The full investment case and conclusion for ${sn} (${d.ticker}).`, (d.summary || [])[0] || '', unlockLabel, d.id)}
+          ${sumLead ? `<p>${esc(sumLead)}</p>` : ''}
+          ${lockedSection(`Full ${sn} investment summary`, `The complete investment case, valuation conclusion and recommendation rationale for ${sn} (${d.ticker}).`, sumRest || sumLead, unlockLabel, d.id)}
         </section>`);
     if (Array.isArray(d.thesis) && d.thesis.length) {
       sections.push(`
         <section class="report-full-section" id="thesis">
           <h2>Investment thesis — three reasons</h2>
-          ${lockedSection(`Why Valuatum rates ${sn} ${d.headline?.recommendation || ''}`.trim(), `The three pillars behind the call plus the thesis-breaker scenario.`, (d.thesis[0] && d.thesis[0].text) || '', unlockLabel, d.id)}
+          ${thesisTeaserList(d.thesis)}
+          ${lockedSection(`Full thesis reasoning for ${sn}`, `The detailed analysis behind each of the three pillars, plus the thesis-breaker scenario.`, (d.thesis[0] && d.thesis[0].text) || '', unlockLabel, d.id)}
         </section>`);
     }
     if (Array.isArray(d.valuePools) && d.valuePools.length) {
       sections.push(`
         <section class="report-full-section" id="value-pools">
           <h2>Value pool analysis — enterprise-value allocation</h2>
-          ${lockedSection(`${sn} enterprise-value breakdown`, `The full split of enterprise value across ${d.valuePools.length} business pool${d.valuePools.length === 1 ? '' : 's'} with segment revenue, EBIT and EV economics.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
+          <p>The value pool analysis decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for. The allocation across each pool is shown below; the full segment economics are in the report.</p>
+          ${valuePoolBars(d.valuePools)}
+          ${lockedSection(`Full ${sn} value-pool breakdown`, `Per-pool revenue, EBIT and EV economics with the implied valuation of each business.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
         </section>`);
     }
     if (d.reverseValuation) {
       sections.push(`
         <section class="report-full-section" id="reverse-valuation">
           <h2>Reverse valuation</h2>
-          ${lockedSection(`What the market is pricing into ${sn}`, `The bull / base / bear scenario model and the growth and margins implied by the current price.`, d.reverseValuation.intro || '', unlockLabel, d.id)}
+          ${d.reverseValuation.intro ? `<p>${esc(d.reverseValuation.intro)}</p>` : ''}
+          ${lockedSection(`Full reverse-valuation model for ${sn}`, `The bull / base / bear scenario table and the revenue growth and margins implied by the current ${sn} share price.`, '', unlockLabel, d.id)}
         </section>`);
     }
     if (financialsHtml(d.financials)) {
       sections.push(`
         <section class="report-full-section" id="financials">
-          <h2>Financial statements &amp; estimates</h2>
-          ${lockedSection(`${sn} financial model`, `Income statement, margins and forecasts with key valuation ratios.`, (d.financials && d.financials.note) || '', unlockLabel, d.id)}
+          <h2>${esc(sn)} financial statements &amp; estimates</h2>
+          ${lockedSection(`${sn} financial model & forecasts`, `Income statement, revenue and EBIT forecasts, margins and key valuation ratios for ${sn} (${d.ticker}).`, (d.financials && d.financials.note) || '', unlockLabel, d.id)}
         </section>`);
     }
     sections.push(buyGate(d, cat));
@@ -419,8 +479,8 @@ function renderPage(d, cat, all) {
   if (Array.isArray(d.faqs) && d.faqs.length) {
     sections.push(`
         <section class="report-full-section" id="faq">
-          <h2>${esc(sn)} equity report — FAQ</h2>
-          ${faqHtml(d.faqs)}
+          <h2>${esc(sn)} (${esc(d.ticker)}) stock — frequently asked questions</h2>
+          ${faqHtml(faqsFor(d, cat))}
         </section>`);
   }
 
@@ -501,7 +561,7 @@ ${navHtml()}
               <span class="company-ticker">${esc(d.ticker)}</span>
               <span class="company-status-badge"><span class="company-status-dot"></span>${isFree ? 'Free report' : 'Sample preview'} · Updated ${esc(updated)}</span>
             </div>
-            <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) AI Equity Report</h1>
+            <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               <span class="company-meta-chip">${esc(d.exchange)}</span>
               <span class="company-meta-sep"></span>
