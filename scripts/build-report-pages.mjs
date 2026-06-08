@@ -133,14 +133,14 @@ function metricsBand(h) {
     ['Market cap', esc(h.marketCap), 'shares × price'],
     ['Enterprise value', esc(h.enterpriseValue), 'mcap + net debt'],
   ].filter(([, v]) => v && v !== 'undefined' && !/>undefined</.test(v));
-  return `<div class="metrics-grid">${cells.map(([l, v, s]) =>
-    `<div class="metric-card"><span class="metric-label">${esc(l)}</span><span class="metric-value">${v}</span>${s ? `<span class="metric-change" style="color:var(--gray-steel);font-weight:400;">${esc(s)}</span>` : ''}</div>`).join('')}</div>`;
+  return `<div class="cp-grid">${cells.map(([l, v, s]) =>
+    `<div class="cp-cell"><span class="cp-l">${esc(l)}</span><span class="cp-v">${v}</span>${s ? `<span class="cp-sub">${esc(s)}</span>` : ''}</div>`).join('')}</div>`;
 }
 
 function multiplesGrid(multiples) {
   if (!Array.isArray(multiples) || !multiples.length) return '';
-  return `<div class="metrics-grid" style="margin-top:1rem;">${multiples.map(m =>
-    `<div class="metric-card"><span class="metric-label">${esc(m.label)}</span><span class="metric-value">${esc(m.value)}</span></div>`).join('')}</div>`;
+  return `<div class="cp-grid" style="margin-top:0.6rem;">${multiples.map(m =>
+    `<div class="cp-cell"><span class="cp-l">${esc(m.label)}</span><span class="cp-v">${esc(m.value)}</span></div>`).join('')}</div>`;
 }
 
 function thesisHtml(thesis) {
@@ -181,14 +181,14 @@ function scenarioTable(rv) {
     const cls = s.scenario === 'Bull' ? 'pos' : s.scenario === 'Bear' ? 'neg' : '';
     return `<tr><td><strong>${esc(s.scenario)}</strong></td>${cols.map(c => `<td class="num ${cls}">${esc((s.cols || {})[c] ?? '—')}</td>`).join('')}${hasImplied ? `<td class="num ${cls}">${esc(s.impliedValueOrUpside ?? '—')}</td>` : ''}</tr>`;
   }).join('');
-  return `<table><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  return `<div class="cp-scroll"><table><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
 
 function finTable(t) {
   if (!t || !Array.isArray(t.columns) || !Array.isArray(t.rows)) return '';
   const head = `<tr><th></th>${t.columns.map(c => `<th class="num">${esc(c)}</th>`).join('')}</tr>`;
   const body = t.rows.map(r => `<tr><td>${esc(r.label)}</td>${(r.values || []).map(v => `<td class="num">${esc(v)}</td>`).join('')}</tr>`).join('');
-  return `<table><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  return `<div class="cp-scroll"><table><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
 }
 
 function financialsHtml(f) {
@@ -433,6 +433,16 @@ ${jsonLd(d, cat, desc)}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .cp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:0.6rem;margin-top:0.25rem;}
+    .cp-cell{background:#fff;border:1px solid var(--color-border);border-radius:var(--r-md);padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.2rem;min-width:0;}
+    .cp-l{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.05em;color:var(--gray-steel);line-height:1.25;}
+    .cp-v{font-size:1rem;font-weight:600;color:var(--charcoal);line-height:1.3;overflow-wrap:break-word;}
+    .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
+    .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .cp-scroll table{white-space:nowrap;min-width:100%;}
+    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
+  </style>
 </head>
 <body>
 ${navHtml()}
