@@ -15,6 +15,14 @@ const TODAY = '2026-06-08';
 
 const EXCLUDE = new Set(['nuholdings-02062026']);
 
+// Force the nav into its solid/readable state on these pages (don't rely on the
+// transparent-over-dark-hero scroll trick — guarantees the links are visible at the top).
+const NAV_SOLID_CSS = `    .nav{background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom-color:var(--color-border);}
+    .nav .nav-logo-wordmark{color:var(--charcoal);}
+    .nav .nav-logo-sub{color:var(--gray-steel);}
+    .nav .nav-link{color:var(--gray-steel);}
+    .nav .nav-link:hover{color:var(--charcoal);}`;
+
 // ── helpers (kept in sync with scripts/build-report-pages.mjs) ────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = (s) => esc(s);
@@ -235,6 +243,7 @@ ${jsonLd(A, B, url, desc, faqList)}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
     .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
     @media(max-width:640px){.vs-grid{grid-template-columns:1fr;}}
+${NAV_SOLID_CSS}
   </style>
 </head>
 <body>
@@ -367,6 +376,9 @@ ${ld}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+${NAV_SOLID_CSS}
+  </style>
 </head>
 <body>
 ${navHtml()}
