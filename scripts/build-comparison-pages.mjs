@@ -91,6 +91,7 @@ function poolBars(pools) {
 function metricRow(label, a, b, opts = {}) {
   const cell = (v) => {
     if (v == null || v === '' || v === 'undefined') return '<td class="num">—</td>';
+    if (opts.raw) return `<td class="num">${v}</td>`;
     const cls = opts.cls ? opts.cls(v) : '';
     return `<td class="num ${cls}">${esc(v)}</td>`;
   };
@@ -103,8 +104,9 @@ function comparisonTable(A, B) {
   const ha = A.d.headline || {}, hb = B.d.headline || {};
   const rows = [
     metricRow('Recommendation',
-      `<span class="num ${recClass(ha.recommendation)}">${ha.recommendation || '—'}</span>`,
-      `<span class="num ${recClass(hb.recommendation)}">${hb.recommendation || '—'}</span>`),
+      `<span class="num ${recClass(ha.recommendation)}">${esc(ha.recommendation || '—')}</span>`,
+      `<span class="num ${recClass(hb.recommendation)}">${esc(hb.recommendation || '—')}</span>`,
+      { raw: true }),
     metricRow('12-month price target', ha.targetPrice, hb.targetPrice),
     metricRow('Current price', ha.currentPrice, hb.currentPrice),
     metricRow('Implied upside', ha.impliedUpside, hb.impliedUpside, { cls: upsideCls }),
