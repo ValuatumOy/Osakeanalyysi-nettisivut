@@ -20,6 +20,9 @@ const attr = (s) => esc(s);
 const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
+// Stable comparison-page slug, order-independent (must match scripts/build-comparison-pages.mjs).
+const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
 function loadCatalog() {
   // Source of truth: snapshot of the live catalog API (report-content/_catalog.json),
@@ -258,11 +261,22 @@ function faqHtml(faqs) {
         </div>`).join('');
 }
 
+const chip = (href, label) => `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="${attr(href)}">${esc(label)}</a>`;
+
 function relatedHtml(current, all) {
   const others = all.filter(x => x.slug !== current.slug);
   if (!others.length) return '';
-  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${others.map(o =>
-    `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${o.slug}.html">${esc(shortName(o.companyName))} (${esc(o.ticker)}) report →</a>`).join('')}</div>`;
+  // Sector peers first (tighter topical links), then the rest.
+  const peers = others.filter(o => o.sector && o.sector === current.sector);
+  const rest = others.filter(o => !(o.sector && o.sector === current.sector));
+  const ordered = [...peers, ...rest];
+  const reportChips = ordered.map(o => chip(`/reports/${o.slug}.html`, `${shortName(o.companyName)} (${o.ticker}) report →`)).join('');
+  // Head-to-head comparison chips for same-sector peers (highest-intent "X vs Y" queries).
+  const cmpChips = peers.map(o => chip(`/compare/${compareSlug(current.companyName, o.companyName)}.html`,
+    `${shortName(current.companyName)} vs ${shortName(o.companyName)} →`)).join('');
+  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>${cmpChips ? `
+          <h3 style="margin-top:1.5rem;">Head-to-head comparisons</h3>
+          <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${cmpChips}</div>` : ''}`;
 }
 
 function jsonLd(d, cat, desc) {
@@ -384,7 +398,7 @@ function renderPage(d, cat, all) {
       sections.push(`
         <section class="report-full-section" id="value-pools">
           <h2>Value pool analysis — enterprise-value allocation</h2>
-          <p>The value pool analysis decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for. The allocation across each pool is shown below; the full segment economics are in the report.</p>
+          <p>The <a href="/methodology.html">value pool analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for. The allocation across each pool is shown below; the full segment economics are in the report.</p>
           ${valuePoolBars(d.valuePools)}
           ${lockedSection(`Full ${sn} value-pool breakdown`, `Per-pool revenue, EBIT and EV economics with the implied valuation of each business.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
         </section>`);
@@ -424,7 +438,7 @@ function renderPage(d, cat, all) {
       sections.push(`
         <section class="report-full-section" id="value-pools">
           <h2>Value pool analysis — enterprise-value allocation</h2>
-          <p>The value pool analysis decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for, each shown with its share of total EV and segment economics.</p>
+          <p>The <a href="/methodology.html">value pool analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for, each shown with its share of total EV and segment economics.</p>
           ${valuePoolsHtml(d.valuePools)}
         </section>`);
     }
