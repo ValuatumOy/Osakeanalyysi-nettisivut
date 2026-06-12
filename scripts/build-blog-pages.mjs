@@ -277,9 +277,10 @@ ${jsonLd(article, author)}
     .blog-post-hero { background: var(--forest); padding: var(--section-py) 0 2.5rem; }
     .blog-post-body { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
     .blog-post-body h2 { font-size: var(--text-lg); font-weight: 500; color: var(--charcoal); margin-top: 0; letter-spacing: -0.02em; }
-    .blog-post-body p { font-size: var(--text-sm); line-height: 1.8; color: var(--charcoal); }
+    .blog-post-body p { font-size: var(--text-sm); line-height: 1.8; color: var(--charcoal); margin-top: 0; margin-bottom: 1.25rem; }
+    .blog-post-body p:last-child { margin-bottom: 0; }
     .blog-post-body a { color: var(--green); }
-    .blog-post-body ul, .blog-post-body ol { font-size: var(--text-sm); line-height: 1.8; }
+    .blog-post-body ul, .blog-post-body ol { font-size: var(--text-sm); line-height: 1.8; margin-bottom: 1.25rem; }
     @media (max-width: 600px) { .blog-post-body { padding: 2rem 1rem 3rem; } }
   </style>
 </head>
