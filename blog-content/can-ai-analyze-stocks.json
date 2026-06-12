@@ -57,8 +57,8 @@
   ],
   "sources": [
     { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
-    { "label": "Kahneman, D. and Tversky, A. — Judgment under Uncertainty: Heuristics and Biases (1974), Science", "url": "https://science.sciencemag.org/content/185/4157/1124" },
-    { "label": "Kahneman, D. — Thinking, Fast and Slow (2011), Farrar Straus Giroux", "url": "/methodology.html" },
+    { "label": "Kahneman, D. and Tversky, A. Judgment under Uncertainty: Heuristics and Biases (1974), Science vol. 185", "url": "https://www.science.org/doi/10.1126/science.185.4157.1124" },
+    { "label": "Kahneman, D. Thinking, Fast and Slow (2011), Farrar Straus Giroux", "url": "https://us.macmillan.com/books/9780374533557/thinkingfastandslow" },
     { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
   ],
   "gateScores": {
