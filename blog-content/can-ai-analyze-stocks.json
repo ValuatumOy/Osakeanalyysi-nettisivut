@@ -1,0 +1,69 @@
+{
+  "slug": "can-ai-analyze-stocks",
+  "cluster": "ai-equity-research",
+  "role": "pillar",
+  "targetQuery": "can ai analyze stocks",
+  "intent": "informational",
+  "title": "Can AI Analyze Stocks? What AI Equity Research Can and Cannot Do",
+  "metaDescription": "AI removes the systematic biases built into sell-side research: anchoring, herding, and incentive conflicts. Here is what it does better than humans, what it still gets wrong, and where the gap is heading.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": "2026-06-12" },
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "Sell-side analysts get it wrong in predictable, systematic ways",
+      "html": "<p>Roughly 55% of sell-side equity ratings are buys at any given time. That number holds across bull markets, bear markets, and financial crises. The reason is not that analysts are particularly optimistic about the world. It is that downside calls are expensive for a sell-side analyst to make: investment banking relationships, management access, career risk from being wrong and contrarian, and the cognitive pull of anchoring on last quarter's published number all push estimates toward the consensus and away from bad news.</p><p>Daniel Kahneman and Amos Tversky documented anchoring as one of the most consistent and severe biases in human expert judgment. In financial forecasting, anchoring is especially damaging because analysts revise their numbers gradually, even when incoming data calls for a large move. A model that rated a company a buy six months ago will, on average, take longer to cut that rating to a sell than the fundamental change in the business warrants.</p><p>AI has none of these constraints. It has no relationships to protect, no prior rating to anchor on, and no career incentive to stay close to the consensus.</p>"
+    },
+    {
+      "h2": "What AI gets right in equity analysis",
+      "html": "<p>Structured financial modelling is where the advantage is clearest. Our June 2026 analysis on Nokia produced a SELL rating with an 11.50 EUR price target against a 13.90 EUR share price. The model applied a reverse valuation: what revenue growth and margin assumptions does the current share price imply, and are those assumptions realistic given what we know about Nokia's competitive position and order book? That process runs identically whether the subject is Nokia or any other company being modelled for the first time. There is no familiarity bias, no reluctance to cut a rating because a buy call was published three months ago, and no pressure to stay within a comfortable range of the analyst consensus.</p><p>Data coverage is the second structural advantage. A senior sell-side analyst covers 15 to 20 companies and reads selectively, prioritising the names generating the most trading activity or banking interest. An AI model reads every filing, every transcript, every footnote for every covered company. Nothing gets skipped because there were three other earnings calls that week.</p><p>Consistency across a coverage universe is underrated. When a human analyst covers both Nokia and Ericsson, the frameworks they apply to each will drift slightly depending on which company they know better, which management team they find more credible, and which numbers they have been tracking longest. AI applies the same methodology identically to both.</p>"
+    },
+    {
+      "h2": "Where humans still hold an edge",
+      "html": "<p>Qualitative judgment about management is the clearest remaining gap. Whether a CEO is being evasive on a specific earnings call question, whether a board is genuinely independent from the controlling shareholder, whether a stated strategy is credible given the team's track record in a different industry: these require pattern recognition that experienced analysts are still better at. You cannot read a room from an income statement.</p><p>The second area is genuinely novel situations. An AI model trained on historical data will apply familiar frameworks to familiar situations well. A situation with no historical precedent, a technology shift that changes the economics of an entire sector, or a geopolitical event that rewrites competitive dynamics: human judgment about what the right framework even is still matters here.</p><p>But both of these gaps are narrowing. NLP systems that analyse earnings call transcripts for tone shifts, keyword frequency changes, and unusual phrasing patterns are improving fast. On the novel-situation problem, the models are getting better at recognising when a historical analogy is a poor fit.</p>"
+    },
+    {
+      "h2": "AI will be the default, not the supplement",
+      "html": "<p>My view: within two or three years, equity analysis workflows that do not use AI for the structured first pass will be at a systematic disadvantage. The question is not whether AI replaces analysts. The better frame is whether analysts who use AI well outcompete those who do not. On the dimensions that are measurable, consistency, coverage, and freedom from incentive-driven bias, AI already wins.</p><p>The honest story of AI in equity research is not about speed or cost, though both improve significantly. It is about removing sources of systematic error that are built into human cognition and the institutional structures analysts work within. Anchoring bias, herding toward consensus, incentive conflicts, and selective attention to data: these are not individual failures. They are structural features of how sell-side research has operated for decades.</p><p>Valuatum's approach is to apply AI to the structured analytical work and let the methodology speak for itself. The Nokia SELL rating stands or falls on the reverse valuation model, not on who published it or whether it matches the consensus. That is a different kind of equity research, and I think it is a better one.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can AI replace a human stock analyst?",
+      "a": "On structured analytical tasks, AI already outperforms the average sell-side analyst on consistency and coverage. The remaining human advantage is qualitative judgment, particularly management assessment and interpreting genuinely novel situations. That gap is narrowing. The more useful question is whether analysts who integrate AI into their process will outcompete those who do not, and the answer to that is yes."
+    },
+    {
+      "q": "How accurate are AI-generated equity reports?",
+      "a": "Accuracy on structured inputs, valuations, financial projections, and ratio analysis is high and consistent because AI applies the same methodology every time without the anchoring and herding biases that affect human forecasts. On qualitative judgment calls, AI is less reliable. The critical design requirement is that the system fails loudly on unverified claims rather than fabricating a confident-sounding answer."
+    },
+    {
+      "q": "What causes systematic errors in traditional equity research?",
+      "a": "Three documented sources: anchoring bias (analysts adjust forecasts too slowly from their previous published number), herding (analysts stay close to consensus to reduce career risk from being wrong alone), and incentive conflicts (sell-side relationships with investment banking and management create pressure against negative ratings). These are structural features of how sell-side research is organised, not individual failures."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum Nokia SELL rating, 11.50 EUR target vs 13.90 EUR current price (June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/methodology.html",
+    "/reports/nokia-equity-report.html",
+    "/blog.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
+    { "label": "Kahneman, D. and Tversky, A. — Judgment under Uncertainty: Heuristics and Biases (1974), Science", "url": "https://science.sciencemag.org/content/185/4157/1124" },
+    { "label": "Kahneman, D. — Thinking, Fast and Slow (2011), Farrar Straus Giroux", "url": "/methodology.html" },
+    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+  ],
+  "gateScores": {
+    "humanizer": 46,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
