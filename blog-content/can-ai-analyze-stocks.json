@@ -1,0 +1,67 @@
+{
+  "slug": "can-ai-analyze-stocks",
+  "cluster": "ai-equity-research",
+  "role": "pillar",
+  "targetQuery": "can ai analyze stocks",
+  "intent": "informational",
+  "title": "Can AI Analyze Stocks? What AI Equity Research Can and Cannot Do",
+  "metaDescription": "AI runs structured valuation models, extracts data from filings, and surfaces patterns faster than any analyst team. Here is what it actually does well, where it fails, and how Valuatum uses it.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": "2026-06-12" },
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "AI can do equity research, with real limits",
+      "html": "<p>AI can run a structured DCF, extract every number from a 200-page annual report, and generate a formatted investment thesis in under two minutes. That is genuinely useful. It cannot tell you what a management team is hiding, predict a regulatory reversal, or take responsibility for a bad call.</p><p>The gap between those two things is where most of the confusion about AI equity research lives. At Valuatum, we have been running AI-assisted analysis since the platform launched. What follows is an honest account of where the technology helps and where it does not.</p>"
+    },
+    {
+      "h2": "What AI does well in stock analysis",
+      "html": "<p>Structured financial modelling is the clearest win. Given a standardised set of inputs, an AI model applies valuation frameworks — discounted cash flow, EV/EBITDA multiples, reverse valuation — consistently, without the anchoring bias a human analyst develops after following a company for three years.</p><p>Valuatum's June 2026 analysis on Nokia rated the stock SELL with a €11.50 price target against a €13.90 share price. The reverse valuation that produced that number was applied in the same way it would be applied to any other covered company. A human analyst would reach the same conclusion given the same inputs; AI gets there faster and applies the framework identically across every name.</p><p>Data extraction is the second win. Earnings transcripts, footnotes, segment disclosures — AI reads all of it. A senior analyst at a large firm covers 15–20 names and reads selectively. A well-built AI system reads everything.</p>"
+    },
+    {
+      "h2": "Where AI equity research fails",
+      "html": "<p>Qualitative judgment is the hard limit. AI does not attend earnings calls, read the room, or notice that a CFO looked uncomfortable answering a specific question. It cannot evaluate whether a new CEO's strategy is credible based on their track record in a different industry. These signals matter in equity research and AI does not have them.</p><p>The second failure mode is hallucination under ambiguity. When the data is clean and structured, AI is reliable. When the question requires inference across incomplete or contradictory data, it fills gaps with plausible-sounding estimates. Every number in a Valuatum report is traced to a source; the system is designed to fail loudly rather than fabricate quietly. That design choice matters more than the model version.</p><p>The third limit is accountability. A professional analyst can be asked why they made a call, what they saw, and what would change their view. AI generates reasoning but does not hold a view. The distinction is not semantic — it changes how you should use the output.</p>"
+    },
+    {
+      "h2": "How Valuatum uses AI in practice",
+      "html": "<p>Our pipeline uses AI for the structured work: model inputs, valuation calculations, data extraction, and a first-pass synthesis. Human review sits at the point that matters: the public disclosure. Every report has a named reviewer who has read the analysis and accepted it. The author box on this article follows the same logic — I built and run the AI pipeline and write about what it does; the analytical conclusions in the reports are reviewed by people with equity research backgrounds.</p><p>The result is analysis that is broader than a small team could produce manually, with the same factual discipline. It is not a replacement for analyst judgment. It is a fast, consistent research tool that does the structured work so analysts can focus on the judgment calls that actually require experience.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can AI replace a human stock analyst?",
+      "a": "Not fully. AI handles structured analysis, data extraction, and valuation modelling well. It cannot assess management quality, interpret ambiguous disclosures, or take accountability for recommendations. The most accurate framing is AI as a research tool that scales coverage without replacing analytical judgment on the calls that matter."
+    },
+    {
+      "q": "How accurate are AI-generated equity reports?",
+      "a": "Accuracy depends on the quality of input data and the discipline of the system. Valuatum traces every factual claim to a source and hard-fails on any unverified number. On structured numerical analysis — valuations, multiples, financial projections — AI-generated reports are consistent and reproducible. On qualitative judgment, they are less reliable than an experienced analyst."
+    },
+    {
+      "q": "What can AI equity research not do?",
+      "a": "AI cannot evaluate management credibility, interpret non-verbal signals, predict event-driven catalysts, or take professional responsibility for investment advice. It also performs poorly when asked to reason from incomplete or contradictory data — in those cases the risk of confident-sounding confabulation is real."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum Nokia SELL rating, €11.50 target vs €13.90 price (June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/methodology.html",
+    "/reports/nokia-equity-report.html",
+    "/blog.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
+    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+  ],
+  "gateScores": {
+    "humanizer": 44,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}

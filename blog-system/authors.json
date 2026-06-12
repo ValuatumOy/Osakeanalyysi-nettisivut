@@ -5,22 +5,22 @@
   "authors": [
     {
       "id": "author-1",
-      "name": "TODO Full Name",
-      "title": "TODO e.g. Equity Analyst, Valuatum Oy",
-      "credentials": "TODO real credentials only, e.g. M.Sc. (Econ.), 8 years equity research",
-      "bio": "TODO 2-3 sentences of verifiable authority: what they have analyzed, for how long, where. Shown in the author box on every article.",
-      "photo": "/images/authors/TODO.jpg",
-      "linkedin": "https://www.linkedin.com/in/TODO",
-      "authorPage": "/authors/TODO.html",
-      "sameAs": ["https://www.linkedin.com/in/TODO"]
+      "name": "Lauri Hynönen",
+      "title": "AI Analyst, Valuatum Oy",
+      "credentials": "AI systems development, business analysis",
+      "bio": "Lauri Hynönen is an AI analyst at Valuatum Oy, where he designs and evaluates AI systems for equity research. His background is in artificial intelligence and business analysis, and he writes about what AI can and cannot do in stock analysis.",
+      "photo": "/images/authors/lauri-hynonen.jpg",
+      "linkedin": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/",
+      "authorPage": "/authors/lauri-hynonen.html",
+      "sameAs": ["https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"]
     }
   ],
   "reviewers": [
     {
       "id": "reviewer-1",
-      "name": "TODO Full Name",
-      "title": "TODO e.g. Head of Research, Valuatum Oy",
-      "linkedin": "https://www.linkedin.com/in/TODO"
+      "name": "Lauri Hynönen",
+      "title": "AI Analyst, Valuatum Oy",
+      "linkedin": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
     }
   ]
 }
