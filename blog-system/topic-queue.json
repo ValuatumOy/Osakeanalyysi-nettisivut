@@ -1,0 +1,47 @@
+{
+  "velocityCap": { "newPostsPerWeek": 3 },
+  "topicGovernance": {
+    "proposalRun": "Sunday 21:30 Europe/Helsinki",
+    "humanApprovalWindowHours": 48,
+    "autoPromoteRule": "if no status:'queued' item exists, promote highest-score 'proposed' item older than window; set autoApproved:true",
+    "minProposalsInList": 6
+  },
+  "clusters": {
+    "valuation-methodology": {
+      "pillarSlug": "how-to-value-a-stock",
+      "goal": "Topical authority on valuation; every concept illustrated with live numbers from our own reports."
+    },
+    "helsinki-stocks": {
+      "pillarSlug": "investing-in-helsinki-listed-stocks",
+      "goal": "Own the underserved English-language OMXH space with proprietary valuations."
+    },
+    "ai-equity-research": {
+      "pillarSlug": "can-ai-analyze-stocks",
+      "goal": "Brand cluster; honest-limitations content builds trust and information gain."
+    },
+    "company-deep-dives": {
+      "pillarSlug": null,
+      "goal": "Freshness workhorses; refresh on every new report date. Must not cannibalize /compare pages."
+    }
+  },
+  "queue": [
+    { "slug": "how-to-value-a-stock", "cluster": "valuation-methodology", "role": "pillar", "targetQuery": "how to value a stock", "intent": "informational", "status": "queued", "notes": "Pillar. DCF + multiples + scenarios, each step shown with a real number from our published reports." },
+    { "slug": "what-is-reverse-valuation", "cluster": "valuation-methodology", "role": "support", "targetQuery": "what is reverse valuation", "intent": "informational", "status": "queued", "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain." },
+    { "slug": "value-pool-analysis-explained", "cluster": "valuation-methodology", "role": "support", "targetQuery": "value pool analysis stocks", "intent": "informational", "status": "queued", "notes": "Use a real segment EV split from a free report (Tesla or UPM)." },
+    { "slug": "ev-ebitda-vs-pe-ratio", "cluster": "valuation-methodology", "role": "support", "targetQuery": "ev/ebitda vs p/e which is better", "intent": "informational", "status": "queued", "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree." },
+    { "slug": "terminal-growth-rate-dcf", "cluster": "valuation-methodology", "role": "support", "targetQuery": "terminal growth rate dcf assumption", "intent": "informational", "status": "queued", "notes": "Show fair-value sensitivity table from our own model." },
+    { "slug": "how-to-read-an-equity-research-report", "cluster": "valuation-methodology", "role": "support", "targetQuery": "how to read an equity research report", "intent": "informational", "status": "queued", "notes": "Walk through our own free Tesla report section by section; links to product." },
+    { "slug": "investing-in-helsinki-listed-stocks", "cluster": "helsinki-stocks", "role": "pillar", "targetQuery": "how to invest in finnish stocks", "intent": "informational", "status": "queued", "notes": "Pillar. OMXH structure, sectors, access for international investors; proprietary valuations of 5 covered names." },
+    { "slug": "is-nokia-stock-undervalued", "cluster": "helsinki-stocks", "role": "support", "targetQuery": "is nokia stock undervalued", "intent": "informational-commercial", "status": "queued", "notes": "Cluster D pattern applied to OMXH; base-case fair value from nokia report JSON." },
+    { "slug": "finnish-forestry-stocks-upm-stora-enso", "cluster": "helsinki-stocks", "role": "support", "targetQuery": "finnish forestry stocks", "intent": "informational", "status": "queued", "notes": "Sector angle; both reports free → reveal full numbers. Links to existing UPM vs Stora Enso comparison page (different intent: sector outlook vs head-to-head)." },
+    { "slug": "finnish-dividend-stocks", "cluster": "helsinki-stocks", "role": "support", "targetQuery": "best finnish dividend stocks", "intent": "informational-commercial", "status": "queued", "notes": "Listicle format likely dominates SERP; use payout data from covered names only — no claims about uncovered stocks." },
+    { "slug": "can-ai-analyze-stocks", "cluster": "ai-equity-research", "role": "pillar", "targetQuery": "can ai analyze stocks", "intent": "informational", "status": "queued", "notes": "Pillar. Honest capabilities + limitations; our pipeline as the worked example." },
+    { "slug": "ai-vs-human-equity-analyst", "cluster": "ai-equity-research", "role": "support", "targetQuery": "ai vs human stock analyst", "intent": "informational", "status": "queued", "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples." },
+    { "slug": "is-tesla-overvalued", "cluster": "company-deep-dives", "role": "support", "targetQuery": "is tesla stock overvalued 2026", "intent": "informational-commercial", "status": "queued", "notes": "Free report → full numbers. Hard SERP (tier-1 media) but the proprietary fair value is the differentiator; refresh every report cycle." },
+    { "slug": "amd-stock-fair-value", "cluster": "company-deep-dives", "role": "support", "targetQuery": "amd stock fair value", "intent": "informational-commercial", "status": "queued", "notes": "Paid report: reveal base-case number, gate scenario detail. Link to AMD vs Intel comparison page." },
+    { "slug": "wartsila-stock-analysis", "cluster": "company-deep-dives", "role": "support", "targetQuery": "wartsila stock analysis", "intent": "informational-commercial", "status": "queued", "notes": "Low-competition English query for OMXH industrial; paid report pattern." }
+  ],
+  "quarterly": [
+    { "slug": "coverage-universe-valuation-study-q3-2026", "type": "original-data", "status": "proposed", "notes": "Run model across all covered tickers: % above/below fair value, sector spread. Human-collaborative, not autonomous. Most linkable asset type." }
+  ]
+}

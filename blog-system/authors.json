@@ -1,0 +1,26 @@
+{
+  "_comment": "Real people only. YMYL: never invent names, credentials, or photos. Fill TODOs before first publish. Build script must FAIL if an article references an author with TODO fields.",
+  "defaultAuthorId": "author-1",
+  "defaultReviewerId": "reviewer-1",
+  "authors": [
+    {
+      "id": "author-1",
+      "name": "TODO Full Name",
+      "title": "TODO e.g. Equity Analyst, Valuatum Oy",
+      "credentials": "TODO real credentials only, e.g. M.Sc. (Econ.), 8 years equity research",
+      "bio": "TODO 2-3 sentences of verifiable authority: what they have analyzed, for how long, where. Shown in the author box on every article.",
+      "photo": "/images/authors/TODO.jpg",
+      "linkedin": "https://www.linkedin.com/in/TODO",
+      "authorPage": "/authors/TODO.html",
+      "sameAs": ["https://www.linkedin.com/in/TODO"]
+    }
+  ],
+  "reviewers": [
+    {
+      "id": "reviewer-1",
+      "name": "TODO Full Name",
+      "title": "TODO e.g. Head of Research, Valuatum Oy",
+      "linkedin": "https://www.linkedin.com/in/TODO"
+    }
+  ]
+}
