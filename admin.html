@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Admin — Valuatum</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3D9E72; --green-light: #6DBFA0; --green-deep: #2D7A58;
+      --forest: #1B3A2D; --charcoal: #1A1A2E; --charcoal-mid: #4A4A6A;
+      --gray-steel: #7A7A9A; --off-white: #F8F8FC; --white: #FFFFFF;
+      --border: #E5E5EF; --gold: #D4A843; --red: #C0392B;
+      --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--charcoal); font-size: 0.875rem; }
+    a { color: var(--green); }
+
+    /* ── auth screen ── */
+    #auth-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--forest);
+    }
+    .auth-card {
+      background: white; border-radius: var(--r-xl); padding: 2.5rem; width: 100%; max-width: 420px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+    }
+    .auth-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
+    .auth-logo-mark { width: 36px; height: 36px; background: var(--forest); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; }
+    .auth-logo-mark svg { width: 20px; height: 20px; }
+    .auth-logo-text { font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+    .auth-logo-sub { font-size: 0.75rem; color: var(--gray-steel); }
+    .auth-card h1 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .auth-card p { font-size: 0.8rem; color: var(--gray-steel); margin-bottom: 1.5rem; line-height: 1.6; }
+    .auth-card label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .auth-card input { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.875rem; font-family: inherit; outline: none; transition: border-color 0.15s; }
+    .auth-card input:focus { border-color: var(--green); }
+    .auth-hint { font-size: 0.75rem; color: var(--gray-steel); margin-top: 0.5rem; margin-bottom: 1.25rem; }
+    .auth-hint a { color: var(--green); }
+    .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; color: var(--red); margin-bottom: 1rem; display: none; }
+
+    /* ── main layout ── */
+    #app { display: none; min-height: 100vh; }
+    .topbar {
+      background: var(--forest); color: white; padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1rem; height: 52px; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; font-weight: 600; color: white; text-decoration: none; }
+    .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
+    .topbar-user { margin-left: auto; font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+    .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+    .topbar-signout:hover { background: rgba(255,255,255,0.08); }
+
+    .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; }
+    .tab-btn {
+      font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none;
+      cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px;
+      font-family: inherit; transition: color 0.15s;
+    }
+    .tab-btn:hover { color: var(--charcoal); }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+    .tab-count { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: var(--green); color: white; border-radius: 50%; font-size: 0.65rem; font-weight: 700; margin-left: 0.4rem; }
+    .tab-count.zero { background: var(--border); color: var(--gray-steel); }
+
+    .panel { display: none; padding: 1.5rem; max-width: 960px; margin: 0 auto; }
+    .panel.active { display: block; }
+
+    /* ── shared components ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: var(--r-md); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: opacity 0.15s, background 0.15s; text-decoration: none; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--green-deep); }
+    .btn-ghost { background: none; border: 1.5px solid var(--border); color: var(--charcoal); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--charcoal-mid); }
+    .btn-danger { background: none; border: 1.5px solid #FECACA; color: var(--red); }
+    .btn-danger:hover:not(:disabled) { background: #FEF2F2; }
+    .btn-sm { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
+
+    .badge { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: var(--r-pill); text-transform: uppercase; letter-spacing: 0.05em; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-yellow { background: #FEF3C7; color: #92400E; }
+    .badge-gray { background: var(--off-white); color: var(--gray-steel); border: 1px solid var(--border); }
+    .badge-red { background: #FEE2E2; color: #991B1B; }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+
+    .card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.9rem; }
+    .card-title { font-size: 1rem; font-weight: 500; color: var(--charcoal); line-height: 1.35; flex: 1; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: 0.75rem; color: var(--gray-steel); margin-bottom: 0.9rem; }
+    .card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .card-note { font-size: 0.78rem; color: var(--charcoal-mid); line-height: 1.55; margin-bottom: 0.75rem; border-left: 2px solid var(--border); padding-left: 0.75rem; }
+
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+    .section-title { font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--gray-steel); font-size: 0.875rem; }
+    .empty-state .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+    /* ── topics filter bar ── */
+    .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.3rem 0.8rem; border-radius: var(--r-pill); font-size: 0.78rem; font-weight: 500; border: 1.5px solid var(--border); background: white; cursor: pointer; font-family: inherit; color: var(--gray-steel); transition: all 0.15s; }
+    .filter-btn:hover { border-color: var(--green); color: var(--green); }
+    .filter-btn.active { background: var(--green); border-color: var(--green); color: white; }
+
+    /* ── topic row ── */
+    .topic-row { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.9rem 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .topic-row-body { flex: 1; min-width: 0; }
+    .topic-query { font-weight: 500; color: var(--charcoal); font-size: 0.9rem; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topic-meta { font-size: 0.73rem; color: var(--gray-steel); }
+    .topic-notes { font-size: 0.78rem; color: var(--charcoal-mid); margin-top: 0.35rem; line-height: 1.5; }
+    .topic-actions { display: flex; gap: 0.4rem; align-items: center; flex-shrink: 0; }
+    .topic-row[data-status="published"] { opacity: 0.55; }
+
+    /* ── author cards ── */
+    .author-card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .author-head { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+    .author-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; background: var(--off-white); }
+    .author-name { font-weight: 600; color: var(--charcoal); margin-bottom: 0.15rem; }
+    .author-title { font-size: 0.8rem; color: var(--gray-steel); }
+    .author-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .author-form .full { grid-column: 1 / -1; }
+    .form-field label { display: block; font-size: 0.73rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-steel); margin-bottom: 0.3rem; }
+    .form-field input, .form-field textarea { width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.85rem; font-family: inherit; outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--green); }
+    .form-actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
+
+    .todo-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: #FEF3C7; color: #92400E; padding: 0.15rem 0.5rem; border-radius: var(--r-pill); margin-left: 0.35rem; }
+
+    .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner-dark { border-color: rgba(0,0,0,0.15); border-top-color: var(--charcoal); }
+
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--charcoal); color: white;
+      padding: 0.7rem 1.1rem; border-radius: var(--r-lg); font-size: 0.85rem; font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 999; transform: translateY(80px); opacity: 0;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--green-deep); }
+    .toast.error { background: var(--red); }
+
+    @media (max-width: 600px) {
+      .author-form { grid-template-columns: 1fr; }
+      .author-form .full { grid-column: 1; }
+      .card-header { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Auth Screen ── -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="auth-logo-text">Valuatum</div>
+        <div class="auth-logo-sub">Blog Admin</div>
+      </div>
+    </div>
+    <h1>Connect to GitHub</h1>
+    <p>Enter a GitHub personal access token with <strong>Contents</strong> and <strong>Pull requests</strong> read/write access on this repository.</p>
+    <div id="auth-error" class="auth-error"></div>
+    <label for="token-input">Personal access token</label>
+    <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off">
+    <div class="auth-hint">
+      <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">Create a fine-grained token</a> on ValuatumOy/Osakeanalyysi-nettisivut with <em>Contents: Read &amp; write</em> and <em>Pull requests: Read &amp; write</em>.
+    </div>
+    <button class="btn btn-primary" id="connect-btn" onclick="connect()" style="width:100%; justify-content:center; padding:0.7rem;">
+      Connect
+    </button>
+  </div>
+</div>
+
+<!-- ── Main App ── -->
+<div id="app">
+  <div class="topbar">
+    <a class="topbar-logo" href="/index.html">
+      <div class="topbar-logo-dot"></div>
+      Valuatum
+    </a>
+    <span class="topbar-badge">Blog Admin</span>
+    <span class="topbar-user" id="topbar-user"></span>
+    <button class="topbar-signout" onclick="signOut()">Sign out</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-posts" onclick="switchTab('posts')">
+      Posts <span class="tab-count zero" id="count-posts">0</span>
+    </button>
+    <button class="tab-btn" id="tab-topics" onclick="switchTab('topics')">
+      Topics <span class="tab-count zero" id="count-topics">0</span>
+    </button>
+    <button class="tab-btn" id="tab-authors" onclick="switchTab('authors')">
+      Authors
+    </button>
+  </div>
+
+  <!-- Posts panel -->
+  <div class="panel active" id="panel-posts">
+    <div id="posts-content"><div class="empty-state"><div class="icon">⏳</div>Loading posts...</div></div>
+  </div>
+
+  <!-- Topics panel -->
+  <div class="panel" id="panel-topics">
+    <div id="topics-content"><div class="empty-state"><div class="icon">⏳</div>Loading topics...</div></div>
+  </div>
+
+  <!-- Authors panel -->
+  <div class="panel" id="panel-authors">
+    <div id="authors-content"><div class="empty-state"><div class="icon">⏳</div>Loading authors...</div></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const REPO = 'ValuatumOy/Osakeanalyysi-nettisivut';
+const API  = 'https://api.github.com';
+let TOKEN  = '';
+
+// ── GitHub API ──────────────────────────────────────────────────────────────
+async function gh(method, path, body) {
+  const res = await fetch(`${API}${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(body ? { 'Content-Type': 'application/json' } : {}),
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `HTTP ${res.status}`);
+  }
+  if (res.status === 204) return null;
+  return res.json();
+}
+
+async function getFile(filePath) {
+  const data = await gh('GET', `/repos/${REPO}/contents/${filePath}`);
+  const text = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+  return { json: JSON.parse(text), sha: data.sha };
+}
+
+async function putFile(filePath, json, sha, message) {
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(json, null, 2) + '\n')));
+  return gh('PUT', `/repos/${REPO}/contents/${filePath}`, { message, content, sha });
+}
+
+// ── Auth ────────────────────────────────────────────────────────────────────
+async function connect() {
+  const input = document.getElementById('token-input');
+  const btn   = document.getElementById('connect-btn');
+  const err   = document.getElementById('auth-error');
+  TOKEN = input.value.trim();
+  if (!TOKEN) return;
+  btn.innerHTML = '<span class="spinner"></span> Connecting...';
+  btn.disabled = true;
+  err.style.display = 'none';
+  try {
+    const user = await gh('GET', '/user');
+    localStorage.setItem('valu_admin_token', TOKEN);
+    document.getElementById('topbar-user').textContent = user.login;
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadAll();
+  } catch (e) {
+    err.textContent = 'Could not connect: ' + e.message;
+    err.style.display = 'block';
+    btn.innerHTML = 'Connect';
+    btn.disabled = false;
+  }
+}
+
+function signOut() {
+  localStorage.removeItem('valu_admin_token');
+  location.reload();
+}
+
+document.getElementById('token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') connect();
+});
+
+// ── Toast ───────────────────────────────────────────────────────────────────
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ── Tabs ────────────────────────────────────────────────────────────────────
+function switchTab(tab) {
+  ['posts', 'topics', 'authors'].forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`panel-${t}`).classList.toggle('active', t === tab);
+  });
+}
+
+// ── Load everything ─────────────────────────────────────────────────────────
+async function loadAll() {
+  loadPosts();
+  loadTopics();
+  loadAuthors();
+}
+
+// ── POSTS ───────────────────────────────────────────────────────────────────
+let prs = [];
+async function loadPosts() {
+  try {
+    const all = await gh('GET', `/repos/${REPO}/pulls?state=open&per_page=50`);
+    prs = all.filter(pr => pr.head.ref.startsWith('blog/'));
+    const count = document.getElementById('count-posts');
+    count.textContent = prs.length;
+    count.className = 'tab-count' + (prs.length ? '' : ' zero');
+    renderPosts();
+  } catch (e) {
+    document.getElementById('posts-content').innerHTML =
+      `<div class="empty-state">Failed to load: ${e.message}</div>`;
+  }
+}
+
+function renderPosts() {
+  const el = document.getElementById('posts-content');
+  if (!prs.length) {
+    el.innerHTML = `<div class="empty-state"><div class="icon">✅</div>No pending posts. All caught up.</div>`;
+    return;
+  }
+  el.innerHTML = prs.map(pr => {
+    const slug = pr.head.ref.replace('blog/', '');
+    const score  = (pr.body || '').match(/Humanizer score[:\s]*(\d+)/i)?.[1];
+    const autoNote = (pr.body || '').toLowerCase().includes('auto-selected') ?
+      '<span class="badge badge-yellow" style="margin-left:0.5rem;">Auto-selected topic</span>' : '';
+    return `
+    <div class="card" id="pr-${pr.number}">
+      <div class="card-header">
+        <div>
+          <div class="card-title">${esc(pr.title)} ${autoNote}</div>
+        </div>
+        <div style="display:flex; gap:0.4rem; flex-shrink:0; flex-wrap:wrap;">
+          ${score ? `<span class="badge badge-${+score >= 40 ? 'green' : 'yellow'}">Score ${score}/50</span>` : ''}
+          <span class="badge badge-gray">${esc(slug)}</span>
+        </div>
+      </div>
+      <div class="card-meta">
+        <span>Opened by ${esc(pr.user.login)}</span>
+        <span>${formatDate(pr.created_at)}</span>
+        <span>#${pr.number}</span>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-primary" onclick="publishPost(${pr.number}, this)">Publish (merge)</button>
+        <a class="btn btn-ghost" href="${esc(pr.html_url)}" target="_blank" rel="noopener">View on GitHub →</a>
+        <button class="btn btn-ghost" onclick="editAuthor(${pr.number}, '${esc(slug)}', this)" style="margin-left:auto;">Change author</button>
+        <button class="btn btn-danger" onclick="rejectPost(${pr.number}, this)">Reject</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function publishPost(num, btn) {
+  if (!confirm('Publish this post? It will go live on the site.')) return;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Publishing...';
+  btn.disabled = true;
+  try {
+    await gh('PUT', `/repos/${REPO}/pulls/${num}/merge`, {
+      merge_method: 'squash',
+      commit_title: `Publish blog post (#${num})`,
+    });
+    toast('Published! Vercel is deploying now.', 'success');
+    document.getElementById(`pr-${num}`).remove();
+    prs = prs.filter(p => p.number !== num);
+    const count = document.getElementById('count-posts');
+    count.textContent = prs.length;
+    count.className = 'tab-count' + (prs.length ? '' : ' zero');
+    if (!prs.length) renderPosts();
+  } catch (e) {
+    toast('Merge failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+async function rejectPost(num, btn) {
+  if (!confirm('Close this PR without publishing?')) return;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner spinner-dark"></span>';
+  btn.disabled = true;
+  try {
+    await gh('PATCH', `/repos/${REPO}/pulls/${num}`, { state: 'closed' });
+    toast('Post rejected and PR closed.', 'success');
+    document.getElementById(`pr-${num}`).remove();
+    prs = prs.filter(p => p.number !== num);
+    const count = document.getElementById('count-posts');
+    count.textContent = prs.length;
+    count.className = 'tab-count' + (prs.length ? '' : ' zero');
+    if (!prs.length) renderPosts();
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+// Change author inline in the article JSON on the PR branch
+async function editAuthor(prNum, slug, btn) {
+  const authorsData = await getFile('blog-system/authors.json').catch(() => null);
+  if (!authorsData) { toast('Could not load authors.json', 'error'); return; }
+  const names = authorsData.json.authors.map(a => `${a.id}: ${a.name}`).join('\n');
+  const picked = prompt(`Available authors:\n${names}\n\nEnter author ID to assign:`, 'author-1');
+  if (!picked) return;
+  btn.disabled = true;
+  try {
+    const file = await getFile(`blog-content/${slug}.json`);
+    file.json.authorId = picked.trim();
+    file.json.reviewerId = picked.trim();
+    await putFile(`blog-content/${slug}.json`, file.json, file.sha,
+      `Blog: change author on ${slug} to ${picked.trim()}`, 'blog/' + slug);
+    toast(`Author updated to ${picked.trim()}.`, 'success');
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+  btn.disabled = false;
+}
+
+// ── TOPICS ──────────────────────────────────────────────────────────────────
+let topicsData = null;
+let topicFilter = 'active';
+
+async function loadTopics() {
+  try {
+    const { json, sha } = await getFile('blog-system/topic-queue.json');
+    topicsData = { json, sha };
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued').length;
+    const count = document.getElementById('count-topics');
+    count.textContent = active;
+    count.className = 'tab-count' + (active ? '' : ' zero');
+    renderTopics();
+  } catch (e) {
+    document.getElementById('topics-content').innerHTML =
+      `<div class="empty-state">Failed to load: ${e.message}</div>`;
+  }
+}
+
+function renderTopics() {
+  const el = document.getElementById('topics-content');
+  if (!topicsData) return;
+  const queue = topicsData.json.queue;
+  const filtered = topicFilter === 'all' ? queue :
+    topicFilter === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued') :
+    queue.filter(t => t.status === topicFilter);
+
+  const clusterLabel = { 'valuation-methodology': 'Valuation', 'helsinki-stocks': 'Helsinki', 'ai-equity-research': 'AI Research', 'company-deep-dives': 'Deep Dive' };
+  const statusBadge = { proposed: 'badge-yellow', queued: 'badge-green', published: 'badge-gray', rejected: 'badge-red', 'blocked-cannibalization': 'badge-red' };
+
+  el.innerHTML = `
+    <div class="filter-bar">
+      ${['active','proposed','queued','published','all'].map(f =>
+        `<button class="filter-btn ${topicFilter === f ? 'active' : ''}" onclick="setTopicFilter('${f}')">${f.charAt(0).toUpperCase()+f.slice(1)} ${f === 'active' ? '(needs decision)' : ''}</button>`
+      ).join('')}
+    </div>
+    ${!filtered.length ? `<div class="empty-state"><div class="icon">🎉</div>Nothing here.</div>` :
+    filtered.map((t, i) => {
+      const realIdx = queue.indexOf(t);
+      return `
+      <div class="topic-row" data-status="${t.status}">
+        <div class="topic-row-body">
+          <div class="topic-query">${esc(t.targetQuery || t.slug)}</div>
+          <div class="topic-meta">
+            <span class="badge ${statusBadge[t.status] || 'badge-gray'}" style="font-size:0.65rem;">${esc(t.status)}</span>
+            &nbsp;${esc(clusterLabel[t.cluster] || t.cluster)} · ${esc(t.role)} · ${esc(t.slug)}
+          </div>
+          ${t.notes ? `<div class="topic-notes">${esc(t.notes)}</div>` : ''}
+        </div>
+        <div class="topic-actions">
+          ${t.status === 'proposed' ? `<button class="btn btn-primary btn-sm" onclick="setTopicStatus(${realIdx}, 'queued', this)">Queue it</button>` : ''}
+          ${t.status === 'queued' ? `<button class="btn btn-ghost btn-sm" onclick="setTopicStatus(${realIdx}, 'proposed', this)">Unqueue</button>` : ''}
+          ${t.status !== 'rejected' && t.status !== 'published' ? `<button class="btn btn-danger btn-sm" onclick="setTopicStatus(${realIdx}, 'rejected', this)">Reject</button>` : ''}
+          ${t.status === 'rejected' ? `<button class="btn btn-ghost btn-sm" onclick="setTopicStatus(${realIdx}, 'proposed', this)">Restore</button>` : ''}
+        </div>
+      </div>`;
+    }).join('')}`;
+}
+
+function setTopicFilter(f) {
+  topicFilter = f;
+  renderTopics();
+}
+
+async function setTopicStatus(idx, newStatus, btn) {
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner spinner-dark"></span>';
+  btn.disabled = true;
+  try {
+    const { json, sha } = await getFile('blog-system/topic-queue.json');
+    json.queue[idx].status = newStatus;
+    const { sha: newSha } = await putFile('blog-system/topic-queue.json', json, sha,
+      `Blog topics: set "${json.queue[idx].slug}" to ${newStatus}`);
+    topicsData = { json, sha: newSha };
+    toast(`Topic ${newStatus}.`, 'success');
+    renderTopics();
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+// ── AUTHORS ─────────────────────────────────────────────────────────────────
+let authorsData = null;
+let editingAuthorId = null;
+
+async function loadAuthors() {
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    authorsData = { json, sha };
+    renderAuthors();
+  } catch (e) {
+    document.getElementById('authors-content').innerHTML =
+      `<div class="empty-state">Failed to load: ${e.message}</div>`;
+  }
+}
+
+function hasTodo(author) {
+  return ['name','title','credentials','bio','photo','linkedin'].some(
+    f => !author[f] || String(author[f]).includes('TODO')
+  );
+}
+
+function renderAuthors() {
+  const el = document.getElementById('authors-content');
+  if (!authorsData) return;
+  const { authors } = authorsData.json;
+
+  el.innerHTML = `
+    <div class="section-header">
+      <span class="section-title">Authors (${authors.length})</span>
+      <button class="btn btn-primary btn-sm" onclick="startAddAuthor()">+ Add author</button>
+    </div>
+    <div id="new-author-form" style="display:none;"></div>
+    ${authors.map((a, i) => `
+    <div class="author-card" id="author-card-${i}">
+      <div class="author-head">
+        <img class="author-photo" src="${esc(a.photo || '/images/og-image.png')}" alt="${esc(a.name)}" onerror="this.src='/images/logo.svg'">
+        <div style="flex:1;">
+          <div class="author-name">
+            ${esc(a.name)} ${hasTodo(a) ? '<span class="todo-pill">has TODOs</span>' : ''}
+          </div>
+          <div class="author-title">${esc(a.title)}</div>
+          <div style="font-size:0.75rem; color:var(--gray-steel); margin-top:0.25rem;">${esc(a.id)}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="toggleAuthorEdit(${i})">Edit</button>
+      </div>
+      <div id="author-edit-${i}" style="display:none;">
+        <div class="author-form">
+          <div class="form-field"><label>Full name *</label><input id="a${i}-name" value="${esc(a.name)}"></div>
+          <div class="form-field"><label>Title *</label><input id="a${i}-title" value="${esc(a.title)}"></div>
+          <div class="form-field full"><label>Credentials</label><input id="a${i}-credentials" value="${esc(a.credentials || '')}"></div>
+          <div class="form-field full"><label>Bio (2-3 sentences) *</label><textarea id="a${i}-bio" rows="3">${esc(a.bio || '')}</textarea></div>
+          <div class="form-field"><label>Photo path *</label><input id="a${i}-photo" value="${esc(a.photo || '')}" placeholder="/images/authors/name.jpg"></div>
+          <div class="form-field"><label>LinkedIn URL *</label><input id="a${i}-linkedin" value="${esc(a.linkedin || '')}" placeholder="https://linkedin.com/in/..."></div>
+          <div class="form-field"><label>Author page path</label><input id="a${i}-authorPage" value="${esc(a.authorPage || '')}"></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveAuthor(${i})">Save</button>
+          <button class="btn btn-ghost" onclick="toggleAuthorEdit(${i})">Cancel</button>
+        </div>
+      </div>
+    </div>`).join('')}`;
+}
+
+function toggleAuthorEdit(i) {
+  const el = document.getElementById(`author-edit-${i}`);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+async function saveAuthor(i) {
+  const get = id => document.getElementById(id)?.value.trim();
+  const updated = {
+    ...authorsData.json.authors[i],
+    name: get(`a${i}-name`),
+    title: get(`a${i}-title`),
+    credentials: get(`a${i}-credentials`),
+    bio: get(`a${i}-bio`),
+    photo: get(`a${i}-photo`),
+    linkedin: get(`a${i}-linkedin`),
+    authorPage: get(`a${i}-authorPage`),
+    sameAs: [get(`a${i}-linkedin`)].filter(Boolean),
+  };
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    json.authors[i] = updated;
+    const { sha: newSha } = await putFile('blog-system/authors.json', json, sha,
+      `Authors: update ${updated.name}`);
+    authorsData = { json, sha: newSha };
+    toast('Author saved.', 'success');
+    renderAuthors();
+  } catch (e) {
+    toast('Save failed: ' + e.message, 'error');
+  }
+}
+
+function startAddAuthor() {
+  const el = document.getElementById('new-author-form');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div class="author-card" style="border-color:var(--green);">
+      <div style="font-weight:600; margin-bottom:1rem; color:var(--green);">New author</div>
+      <div class="author-form">
+        <div class="form-field"><label>Author ID *</label><input id="new-id" placeholder="author-2"></div>
+        <div class="form-field"><label>Full name *</label><input id="new-name" placeholder="Jane Smith"></div>
+        <div class="form-field"><label>Title *</label><input id="new-title" placeholder="Equity Analyst, Valuatum Oy"></div>
+        <div class="form-field full"><label>Credentials</label><input id="new-credentials" placeholder="CFA, 8 years equity research"></div>
+        <div class="form-field full"><label>Bio (2-3 sentences) *</label><textarea id="new-bio" rows="3" placeholder="Jane covers Nordic industrials at Valuatum..."></textarea></div>
+        <div class="form-field"><label>Photo path *</label><input id="new-photo" placeholder="/images/authors/jane-smith.jpg"></div>
+        <div class="form-field"><label>LinkedIn URL *</label><input id="new-linkedin" placeholder="https://linkedin.com/in/..."></div>
+        <div class="form-field"><label>Author page</label><input id="new-authorPage" placeholder="/authors/jane-smith.html"></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="addAuthor()">Add author</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('new-author-form').style.display='none'">Cancel</button>
+      </div>
+    </div>`;
+}
+
+async function addAuthor() {
+  const get = id => document.getElementById(id)?.value.trim();
+  const newAuthor = {
+    id: get('new-id'), name: get('new-name'), title: get('new-title'),
+    credentials: get('new-credentials'), bio: get('new-bio'),
+    photo: get('new-photo'), linkedin: get('new-linkedin'),
+    authorPage: get('new-authorPage'),
+    sameAs: [get('new-linkedin')].filter(Boolean),
+  };
+  if (!newAuthor.id || !newAuthor.name) { toast('ID and name are required.', 'error'); return; }
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    json.authors.push(newAuthor);
+    const { sha: newSha } = await putFile('blog-system/authors.json', json, sha,
+      `Authors: add ${newAuthor.name}`);
+    authorsData = { json, sha: newSha };
+    toast('Author added.', 'success');
+    renderAuthors();
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+}
+
+// ── Helpers ─────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+const saved = localStorage.getItem('valu_admin_token');
+if (saved) {
+  TOKEN = saved;
+  document.getElementById('token-input').value = saved;
+  connect();
+}
+</script>
+</body>
+</html>
