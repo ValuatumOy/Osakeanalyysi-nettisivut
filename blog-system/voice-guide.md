@@ -51,7 +51,7 @@ Structures:
 - Synonym rotation: calling the same company four different things in one paragraph.
 
 Format:
-- Max 1 em dash per 500 words.
+- ZERO em dashes. Not one, ever. Rewrite the sentence with a comma, colon, or period.
 - No excessive bolding of key terms, no "**Header:** description" bullet walls,
   no Title Case headings (sentence case), no emoji.
 - Uniform paragraph lengths are a tell — break them.

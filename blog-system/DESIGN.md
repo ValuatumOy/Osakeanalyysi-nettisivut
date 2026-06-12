@@ -191,10 +191,10 @@ transparent about assumptions and track record. Never hype.
 
 - Lead with a number or a position, never a topic intro.
 - One explicit opinion per post, with reasoning.
-- State assumptions ("we assume 4% terminal growth — here's why").
+- State assumptions ("we assume 4% terminal growth, because...").
 - Admit uncertainty ranges. End with a concrete implication or risk, never "time will tell".
 - Banned: delve, leverage (verb), landscape, testament, pivotal, robust, seamless,
-  "not X but Y", "serves/stands as", rule-of-three lists, >1 em dash per 500 words,
+  "not X but Y", "serves/stands as", rule-of-three lists, ANY em dash (zero tolerance),
   paragraph-final summary sentences, "experts say", optimistic formula endings.
 - Required: varied sentence and paragraph lengths, first person allowed, plain "is/has".
 
