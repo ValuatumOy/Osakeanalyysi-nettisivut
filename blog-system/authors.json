@@ -13,6 +13,17 @@
       "linkedin": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/",
       "authorPage": "/authors/lauri-hynonen.html",
       "sameAs": ["https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"]
+    },
+    {
+      "id": "author-2",
+      "name": "Lauri Kinnunen",
+      "title": "Head of Operations, Valuatum Oy",
+      "credentials": "Operations Management, Data Analytics, Financial Analysis",
+      "bio": "Lauri Kinnunen is Head of Operations at Valuatum, where he works on operations management, data analytics, and AI applications for financial research.",
+      "photo": "/images/authors/lauri-kinnunen.jpg",
+      "linkedin": "https://www.linkedin.com/in/kinnunenlauri/",
+      "authorPage": "/authors/lauri-kinnunen.html",
+      "sameAs": ["https://www.linkedin.com/in/kinnunenlauri/"]
     }
   ],
   "reviewers": [
@@ -21,6 +32,12 @@
       "name": "Lauri Hynönen",
       "title": "AI Analyst, Valuatum Oy",
       "linkedin": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
+    },
+    {
+      "id": "reviewer-2",
+      "name": "Lauri Kinnunen",
+      "title": "Head of Operations, Valuatum Oy",
+      "linkedin": "https://www.linkedin.com/in/kinnunenlauri/"
     }
   ]
 }
