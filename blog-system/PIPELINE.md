@@ -99,6 +99,7 @@ Topics enter the queue two ways:
   author has TODO fields, missing photo, or missing LinkedIn URL. Renders the
   author box (photo, name, title, authority bio, LinkedIn button) + reviewer
   line ("Reviewed by …") + Person schema with `sameAs` LinkedIn.
+- **Mark topic as in-review**: in `topic-queue.json`, set the topic's `status` to `"in-review"` and add `"prNumber": <PR number>`. This prevents the next pipeline run from generating a duplicate. Commit this change to main (not to the PR branch).
 - **Open a PR** (always — this is the approval surface), body containing:
   - the brief's angle + the humanizer score + fact-check claim table
   - source list

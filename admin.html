@@ -579,7 +579,7 @@ function updateGenerateCard() {
   const el = document.getElementById('gen-card-body');
   if (!el) return;
   if (!topicsData) { el.textContent = 'Loading queue…'; return; }
-  const queued = topicsData.json.queue.filter(t => t.status === 'queued');
+  const queued = topicsData.json.queue.filter(t => t.status === 'queued' || t.status === 'proposed');
   if (!queued.length) {
     el.innerHTML = `No topics in queue. <a href="#" onclick="switchTab('topics');return false;">Add some in the Topics tab →</a>`;
     return;
@@ -862,7 +862,7 @@ async function loadTopics() {
   try {
     const { json, sha } = await getFile('blog-system/topic-queue.json');
     topicsData = { json, sha };
-    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued').length;
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
     const cnt = document.getElementById('count-topics');
     cnt.textContent = active;
     cnt.className = 'tab-count' + (active ? '' : ' zero');
@@ -879,7 +879,7 @@ function renderTopics() {
   if (!topicsData) return;
   const queue = topicsData.json.queue;
   const filtered = topicFilter === 'all' ? queue
-    : topicFilter === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued')
+    : topicFilter === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review')
     : queue.filter(t => t.status === topicFilter);
 
   const clusterLabel = {
@@ -890,22 +890,26 @@ function renderTopics() {
   };
   const statusBadge = {
     proposed: 'badge-yellow', queued: 'badge-green',
-    published: 'badge-gray', rejected: 'badge-red',
-    'blocked-cannibalization': 'badge-red',
+    'in-review': 'badge-blue', published: 'badge-gray',
+    rejected: 'badge-red', 'blocked-cannibalization': 'badge-red',
+  };
+  const statusLabel = {
+    proposed: 'Proposed', queued: 'Queued', 'in-review': 'PR open',
+    published: 'Published', rejected: 'Rejected',
   };
 
   const counts = {};
-  ['active','proposed','queued','published','all'].forEach(f => {
+  ['active','proposed','queued','in-review','published','all'].forEach(f => {
     counts[f] = f === 'all' ? queue.length
-      : f === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued').length
+      : f === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length
       : queue.filter(t => t.status === f).length;
   });
 
   el.innerHTML = `
     <div class="filter-bar">
-      ${['active','proposed','queued','published','all'].map(f => `
+      ${['active','queued','in-review','proposed','published','all'].map(f => `
         <button class="filter-btn ${topicFilter === f ? 'active' : ''}" onclick="setTopicFilter('${f}')">
-          ${f === 'active' ? 'Needs decision' : f.charAt(0).toUpperCase()+f.slice(1)}
+          ${f === 'active' ? 'All active' : f === 'in-review' ? 'PR open' : f.charAt(0).toUpperCase()+f.slice(1)}
           ${counts[f] ? ` (${counts[f]})` : ''}
         </button>`).join('')}
     </div>
@@ -918,15 +922,17 @@ function renderTopics() {
             <div class="topic-row-body">
               <div class="topic-query">${esc(t.targetQuery || t.slug)}</div>
               <div class="topic-meta">
-                <span class="badge ${statusBadge[t.status] || 'badge-gray'}" style="font-size:0.65rem;">${esc(t.status)}</span>
+                <span class="badge ${statusBadge[t.status] || 'badge-gray'}" style="font-size:0.65rem;">${esc(statusLabel[t.status] || t.status)}</span>
                 &nbsp;${esc(clusterLabel[t.cluster] || t.cluster)} · ${esc(t.role)}
+                ${t.status === 'in-review' && t.prNumber ? `&nbsp;· <a href="https://github.com/${REPO}/pull/${t.prNumber}" target="_blank" rel="noopener" style="font-size:0.72rem;">PR #${t.prNumber} →</a>` : ''}
               </div>
               ${t.notes ? `<div class="topic-notes">${esc(t.notes)}</div>` : ''}
             </div>
             <div class="topic-actions">
-              ${t.status === 'proposed' ? `<button class="btn btn-primary btn-sm" onclick="setTopicStatus(${realIdx},'queued',this)">Queue it</button>` : ''}
-              ${t.status === 'queued'   ? `<button class="btn btn-ghost btn-sm"   onclick="setTopicStatus(${realIdx},'proposed',this)">Unqueue</button>` : ''}
-              ${t.status !== 'rejected' && t.status !== 'published'
+              ${t.status === 'proposed'  ? `<button class="btn btn-primary btn-sm" onclick="setTopicStatus(${realIdx},'queued',this)">Queue it</button>` : ''}
+              ${t.status === 'queued'    ? `<button class="btn btn-ghost btn-sm"   onclick="setTopicStatus(${realIdx},'proposed',this)">Unqueue</button>` : ''}
+              ${t.status === 'in-review' ? `<span style="font-size:0.75rem; color:var(--gray-steel);">Awaiting review</span>` : ''}
+              ${t.status !== 'rejected' && t.status !== 'published' && t.status !== 'in-review'
                 ? `<button class="btn btn-danger btn-sm" onclick="setTopicStatus(${realIdx},'rejected',this)">Reject</button>` : ''}
               ${t.status === 'rejected'
                 ? `<button class="btn btn-ghost btn-sm" onclick="setTopicStatus(${realIdx},'proposed',this)">Restore</button>` : ''}
@@ -949,7 +955,7 @@ async function setTopicStatus(idx, newStatus, btn) {
     topicsData = { json, sha: newSha };
     toast(`Topic ${newStatus}.`, 'success');
     // update count badge
-    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued').length;
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
     const cnt = document.getElementById('count-topics');
     cnt.textContent = active;
     cnt.className = 'tab-count' + (active ? '' : ' zero');
@@ -999,7 +1005,7 @@ async function submitIdea(btn) {
     topicInput.value  = '';
     notesInput.value  = '';
     toast(`"${topic}" added to queue — AI will draft it next run.`, 'success');
-    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued').length;
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
     const cnt = document.getElementById('count-topics');
     cnt.textContent = active;
     cnt.className = 'tab-count' + (active ? '' : ' zero');
