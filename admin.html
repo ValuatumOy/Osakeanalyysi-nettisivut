@@ -166,6 +166,44 @@
     .toast.success { background: var(--green-deep); }
     .toast.error { background: var(--red); }
     @media (max-width: 600px) { .author-form { grid-template-columns: 1fr; } .author-form .full { grid-column: 1; } }
+
+    /* ── article preview / edit modal ── */
+    .am-overlay { position:fixed; inset:0; background:rgba(26,26,46,0.6); z-index:200; overflow-y:auto; padding:2rem 1rem; display:none; }
+    .am-overlay.open { display:block; }
+    .am-sheet { background:white; max-width:880px; margin:0 auto; border-radius:var(--r-xl); overflow:hidden; }
+    .am-head { background:var(--forest); color:white; padding:0.85rem 1.25rem; display:flex; align-items:center; gap:0.75rem; }
+    .am-close { background:none; border:none; color:rgba(255,255,255,0.6); cursor:pointer; font-size:1.1rem; line-height:1; padding:0.2rem 0.4rem; flex-shrink:0; }
+    .am-close:hover { color:white; }
+    .am-head-title { font-weight:600; font-size:0.875rem; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .am-tabs { display:flex; gap:0.15rem; background:rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.2rem; flex-shrink:0; }
+    .am-tab { background:none; border:none; color:rgba(255,255,255,0.6); cursor:pointer; font-family:inherit; font-size:0.78rem; font-weight:500; padding:0.28rem 0.85rem; border-radius:var(--r-pill); transition:all 0.15s; white-space:nowrap; }
+    .am-tab.active { background:white; color:var(--forest); }
+    .am-body { padding:2rem; max-height:calc(100vh - 11rem); overflow-y:auto; }
+    .am-article h1 { font-size:1.45rem; font-weight:700; line-height:1.3; margin-bottom:0.6rem; }
+    .am-article h2 { font-size:1.05rem; font-weight:600; margin:1.75rem 0 0.55rem; }
+    .am-article p { line-height:1.75; font-size:0.9rem; margin-bottom:0.85rem; }
+    .am-article a { color:var(--green); }
+    .am-article table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.84rem; }
+    .am-article th { background:var(--off-white); padding:0.45rem 0.7rem; text-align:left; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.04em; border-bottom:2px solid var(--border); }
+    .am-article td { padding:0.45rem 0.7rem; border-bottom:1px solid var(--border); }
+    .am-article ul, .am-article ol { padding-left:1.4rem; margin-bottom:0.85rem; }
+    .am-article li { font-size:0.9rem; line-height:1.7; margin-bottom:0.2rem; }
+    .am-meta-bar { display:flex; gap:0.4rem; flex-wrap:wrap; padding:0.75rem 0 1.25rem; border-bottom:1px solid var(--border); margin-bottom:1.5rem; }
+    .am-faq-item { margin-bottom:1rem; }
+    .am-faq-q { font-weight:600; font-size:0.88rem; margin-bottom:0.3rem; }
+    .am-faq-a { font-size:0.85rem; color:var(--charcoal-mid); line-height:1.65; }
+    .am-sources { list-style:none; padding:0; }
+    .am-sources li { font-size:0.82rem; padding:0.3rem 0; border-bottom:1px solid var(--border); }
+    .am-sources li:last-child { border-bottom:none; }
+    .am-edit-field { margin-bottom:0.9rem; }
+    .am-edit-field label { display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-steel); margin-bottom:0.3rem; }
+    .am-edit-field input, .am-edit-field textarea { width:100%; padding:0.55rem 0.75rem; border:1.5px solid var(--border); border-radius:var(--r-md); font-size:0.875rem; font-family:inherit; outline:none; transition:border-color 0.15s; resize:vertical; }
+    .am-edit-field input:focus, .am-edit-field textarea:focus { border-color:var(--green); }
+    .am-edit-field .hint { font-size:0.72rem; color:var(--gray-steel); margin-top:0.25rem; }
+    .am-section-block { border:1px solid var(--border); border-radius:var(--r-lg); padding:1rem; margin-bottom:0.6rem; }
+    .am-section-num { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-steel); margin-bottom:0.6rem; }
+    .am-save-bar { position:sticky; bottom:0; background:white; padding:0.85rem 0; border-top:1px solid var(--border); margin-top:1.25rem; display:flex; gap:0.5rem; align-items:center; }
+    .am-save-note { font-size:0.72rem; color:var(--gray-steel); }
   </style>
 </head>
 <body>
@@ -314,6 +352,23 @@
       Runs use Claude Opus 4.8 on your Claude Code subscription — no separate API key needed.
       Each full run takes 20–60 min. Generated articles appear in <strong>Posts → Awaiting review</strong> for your approval.
     </p>
+  </div>
+</div>
+
+<!-- ── Article preview / edit modal ── -->
+<div id="am-overlay" class="am-overlay" onclick="amOverlayClick(event)">
+  <div class="am-sheet" id="am-sheet">
+    <div class="am-head">
+      <button class="am-close" onclick="closeArticleModal()">✕</button>
+      <div class="am-head-title" id="am-head-title">Loading…</div>
+      <div class="am-tabs">
+        <button class="am-tab active" id="am-tab-preview" onclick="switchArticleTab('preview')">Preview</button>
+        <button class="am-tab" id="am-tab-edit" onclick="switchArticleTab('edit')">Edit</button>
+      </div>
+    </div>
+    <div class="am-body" id="am-body">
+      <div class="empty-state"><div class="icon">⏳</div>Loading…</div>
+    </div>
   </div>
 </div>
 
@@ -481,9 +536,9 @@ function renderPosts(pending, published) {
           <button class="btn btn-primary" onclick="publishPost(${pr.number}, this)">
             Publish &amp; go live
           </button>
-          <a class="btn btn-ghost" href="https://github.com/${REPO}/edit/blog/${esc(slug)}/blog-content/${esc(slug)}.json" target="_blank" rel="noopener">
-            Edit draft →
-          </a>
+          <button class="btn btn-ghost" onclick="openArticlePreview('${esc(slug)}', this)">
+            Preview &amp; edit
+          </button>
           <div class="spacer"></div>
           <button class="btn btn-ghost btn-sm" onclick="changeAuthorDialog(${pr.number}, '${esc(slug)}', this)">
             Change author
@@ -546,6 +601,181 @@ function copyGenPrompt(btn, text) {
     btn.textContent = 'Copied!';
     setTimeout(() => btn.textContent = orig, 2000);
   });
+}
+
+// ── ARTICLE PREVIEW / EDIT MODAL ─────────────────────────────────────────────
+let amData = null; // { json, sha, slug, branch }
+let amTab  = 'preview';
+
+async function openArticlePreview(slug, btn) {
+  const overlay = document.getElementById('am-overlay');
+  const body    = document.getElementById('am-body');
+  const titleEl = document.getElementById('am-head-title');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  body.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>Loading article…</div>';
+  titleEl.textContent = 'Loading…';
+  amTab = 'preview';
+  document.getElementById('am-tab-preview').className = 'am-tab active';
+  document.getElementById('am-tab-edit').className = 'am-tab';
+  const branch = `blog/${slug}`;
+  try {
+    const data = await getFile(`blog-content/${slug}.json`, branch);
+    amData = { ...data, slug, branch };
+    titleEl.textContent = data.json.title || slug;
+    body.innerHTML = renderAmPreview(data.json);
+  } catch (e) {
+    body.innerHTML = `<div class="empty-state">Could not load article: ${esc(e.message)}</div>`;
+  }
+}
+
+function closeArticleModal() {
+  document.getElementById('am-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function amOverlayClick(e) {
+  if (e.target === document.getElementById('am-overlay')) closeArticleModal();
+}
+
+function switchArticleTab(tab) {
+  if (!amData) return;
+  amTab = tab;
+  document.getElementById('am-tab-preview').className = 'am-tab' + (tab === 'preview' ? ' active' : '');
+  document.getElementById('am-tab-edit').className    = 'am-tab' + (tab === 'edit'    ? ' active' : '');
+  const body = document.getElementById('am-body');
+  body.innerHTML = tab === 'preview' ? renderAmPreview(amData.json) : renderAmEdit(amData.json);
+}
+
+function renderAmPreview(j) {
+  const authorName = (authorsData?.json?.authors || []).find(a => a.id === j.authorId)?.name || j.authorId || '—';
+  let html = `<div class="am-article">
+    <h1>${esc(j.title || '')}</h1>
+    <div class="am-meta-bar">
+      <span class="badge badge-gray">${esc(authorName)}</span>
+      <span class="badge badge-gray">${esc(j.datePublished || '')}</span>
+      <span class="badge badge-gray">${j.readingTimeMinutes || '?'} min</span>
+      <span class="badge badge-gray">${esc(j.cluster || '')}</span>
+    </div>
+    <p style="color:var(--gray-steel); font-size:0.82rem; font-style:italic; margin-bottom:1.5rem;">${esc(j.metaDescription || '')}</p>`;
+
+  (j.sections || []).forEach(s => {
+    html += `<h2>${esc(s.h2)}</h2>${s.html || ''}`;
+  });
+
+  if (j.faq?.length) {
+    html += `<h2>Frequently asked questions</h2>`;
+    j.faq.forEach(f => {
+      html += `<div class="am-faq-item"><p class="am-faq-q">${esc(f.q)}</p><p class="am-faq-a">${esc(f.a)}</p></div>`;
+    });
+  }
+
+  if (j.sources?.length) {
+    html += `<h2>Sources</h2><ul class="am-sources">`;
+    j.sources.forEach(s => {
+      html += `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`;
+    });
+    html += `</ul>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderAmEdit(j) {
+  let html = `<form id="am-edit-form" onsubmit="return false;">
+    <div class="am-edit-field">
+      <label>Title <span style="font-weight:400;">(≤60 chars — currently <span id="am-title-len">${(j.title||'').length}</span>)</span></label>
+      <input name="title" value="${esc(j.title||'')}" maxlength="80" oninput="document.getElementById('am-title-len').textContent=this.value.length">
+    </div>
+    <div class="am-edit-field">
+      <label>Meta description <span style="font-weight:400;">(140–160 chars — currently <span id="am-meta-len">${(j.metaDescription||'').length}</span>)</span></label>
+      <input name="metaDescription" value="${esc(j.metaDescription||'')}" maxlength="200" oninput="document.getElementById('am-meta-len').textContent=this.value.length">
+    </div>
+    <div class="section-label">Sections</div>`;
+
+  (j.sections||[]).forEach((s, i) => {
+    html += `<div class="am-section-block">
+      <div class="am-section-num">Section ${i+1}</div>
+      <div class="am-edit-field">
+        <label>Heading (H2)</label>
+        <input name="sh2_${i}" value="${esc(s.h2||'')}">
+      </div>
+      <div class="am-edit-field">
+        <label>Content (HTML)</label>
+        <textarea name="shtml_${i}" rows="7" style="font-family:monospace; font-size:0.78rem;">${esc(s.html||'')}</textarea>
+      </div>
+    </div>`;
+  });
+
+  if (j.faq?.length) {
+    html += `<div class="section-label">FAQ</div>`;
+    j.faq.forEach((f, i) => {
+      html += `<div class="am-section-block">
+        <div class="am-section-num">Question ${i+1}</div>
+        <div class="am-edit-field">
+          <label>Question</label>
+          <input name="fq_${i}" value="${esc(f.q||'')}">
+        </div>
+        <div class="am-edit-field">
+          <label>Answer</label>
+          <textarea name="fa_${i}" rows="3">${esc(f.a||'')}</textarea>
+        </div>
+      </div>`;
+    });
+  }
+
+  html += `<div class="am-save-bar">
+    <button type="button" class="btn btn-primary" onclick="saveAmEdit(this)">Save changes</button>
+    <button type="button" class="btn btn-ghost" onclick="switchArticleTab('preview')">Preview</button>
+    <span class="am-save-note">Saved JSON is rebuilt into HTML when you publish.</span>
+  </div></form>`;
+  return html;
+}
+
+async function saveAmEdit(btn) {
+  if (!amData) return;
+  const form = document.getElementById('am-edit-form');
+  if (!form) return;
+  const { json, sha, slug, branch } = amData;
+  const get = name => form.querySelector(`[name="${name}"]`)?.value ?? null;
+
+  const updated = {
+    ...json,
+    title:           (get('title') || json.title).trim(),
+    metaDescription: (get('metaDescription') || json.metaDescription).trim(),
+    dateModified:    new Date().toISOString().slice(0, 10),
+    sections: (json.sections || []).map((s, i) => ({
+      ...s,
+      h2:   (get(`sh2_${i}`) ?? s.h2).trim(),
+      html: get(`shtml_${i}`) ?? s.html,
+    })),
+  };
+  if (json.faq) {
+    updated.faq = (json.faq || []).map((f, i) => ({
+      ...f,
+      q: (get(`fq_${i}`) ?? f.q).trim(),
+      a: (get(`fa_${i}`) ?? f.a).trim(),
+    }));
+  }
+
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Saving…';
+  btn.disabled = true;
+  try {
+    const { sha: newSha } = await putFile(
+      `blog-content/${slug}.json`, updated, sha,
+      `Blog: edit ${slug}`, branch
+    );
+    amData = { json: updated, sha: newSha, slug, branch };
+    document.getElementById('am-head-title').textContent = updated.title;
+    toast('Saved! Changes go live when you publish the PR.', 'success');
+    switchArticleTab('preview');
+  } catch (e) {
+    toast('Save failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
 }
 
 async function loadPublishedMeta(slug) {
