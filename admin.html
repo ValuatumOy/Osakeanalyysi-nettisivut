@@ -220,17 +220,13 @@
         <div class="auth-logo-sub">Blog Admin</div>
       </div>
     </div>
-    <h1>Connect to GitHub</h1>
-    <p>Enter a GitHub personal access token with <strong>Contents</strong> and <strong>Pull requests</strong> read/write access on this repository.</p>
+    <h1>Admin</h1>
+    <p>Enter the admin password to access the blog dashboard.</p>
     <div id="auth-error" class="auth-error"></div>
-    <label for="token-input">Personal access token</label>
-    <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off">
-    <div class="auth-hint">
-      <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">Create a fine-grained token →</a><br>
-      Repo: <em>ValuatumOy/Osakeanalyysi-nettisivut</em> · Permissions: Contents <strong>Read &amp; write</strong>, Pull requests <strong>Read &amp; write</strong>, Actions <strong>Read</strong>.
-    </div>
-    <button class="btn btn-primary" id="connect-btn" onclick="connect()" style="width:100%; justify-content:center; padding:0.75rem; font-size:0.9rem;">
-      Connect
+    <label for="token-input">Password</label>
+    <input type="password" id="token-input" placeholder="••••••••" autocomplete="current-password">
+    <button class="btn btn-primary" id="connect-btn" onclick="connect()" style="width:100%; justify-content:center; padding:0.75rem; font-size:0.9rem; margin-top:1.25rem;">
+      Sign in
     </button>
   </div>
 </div>
@@ -419,22 +415,28 @@ async function connect() {
   const input = document.getElementById('token-input');
   const btn   = document.getElementById('connect-btn');
   const err   = document.getElementById('auth-error');
-  TOKEN = input.value.trim();
-  if (!TOKEN) return;
-  btn.innerHTML = '<span class="spinner"></span> Connecting…';
+  const password = input.value.trim();
+  if (!password) return;
+  btn.innerHTML = '<span class="spinner"></span> Signing in…';
   btn.disabled = true;
   err.style.display = 'none';
   try {
-    const user = await gh('GET', '/user');
+    const res = await fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) throw new Error('Wrong password');
+    const { token } = await res.json();
+    TOKEN = token;
     localStorage.setItem('valu_admin_token', TOKEN);
-    document.getElementById('topbar-user').textContent = user.login;
     document.getElementById('auth-screen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     loadAll();
   } catch (e) {
-    err.textContent = 'Could not connect: ' + e.message;
+    err.textContent = e.message;
     err.style.display = 'block';
-    btn.innerHTML = 'Connect';
+    btn.innerHTML = 'Sign in';
     btn.disabled = false;
   }
 }
@@ -1245,7 +1247,12 @@ function formatDate(iso) {
 // ── Init ──────────────────────────────────────────────────────────────────────
 updateNextRunDisplay();
 const saved = localStorage.getItem('valu_admin_token');
-if (saved) { TOKEN = saved; document.getElementById('token-input').value = saved; connect(); }
+if (saved) {
+  TOKEN = saved;
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  loadAll();
+}
 </script>
 </body>
 </html>
