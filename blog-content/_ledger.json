@@ -1,4 +1,18 @@
 {
   "_comment": "Publish/refresh log. Append one entry per publish or refresh action.",
-  "entries": []
+  "entries": [
+    {
+      "slug": "what-is-reverse-valuation",
+      "action": "publish",
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "targetQuery": "what is reverse valuation",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": "human",
+      "humanizerScore": 44,
+      "factcheck": "pass",
+      "onpage": "pass"
+    }
+  ]
 }
