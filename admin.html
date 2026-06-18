@@ -227,6 +227,19 @@
 
   <!-- ── Posts ── -->
   <div class="panel active" id="panel-posts">
+    <div class="idea-card" id="gen-card-wrapper" style="margin-bottom:1.25rem;">
+      <h3>Generate a new post</h3>
+      <p>Pick a queued topic to generate now. The AI researches and drafts it in ~30–45 min, then it appears below for review.</p>
+      <div class="idea-grid">
+        <select class="idea-input" id="gen-topic-dropdown" style="flex:1; cursor:pointer;">
+          <option value="">Loading topics…</option>
+        </select>
+        <button class="btn btn-primary" id="gen-btn" onclick="generatePost(this)" disabled>Generate →</button>
+      </div>
+      <div style="font-size:0.75rem; color:var(--gray-steel); margin-top:0.5rem;">
+        Add topics or reorder the queue in the <a href="#" onclick="switchTab('topics');return false;">Topics tab →</a>
+      </div>
+    </div>
     <div id="posts-content">
       <div class="empty-state"><div class="icon">⏳</div>Loading...</div>
     </div>
@@ -476,15 +489,15 @@ function renderPosts(pending, published) {
           <button class="btn btn-primary" onclick="publishPost(${pr.number}, this)">
             Publish &amp; go live
           </button>
-          <a class="btn btn-ghost" href="${esc(pr.html_url)}" target="_blank" rel="noopener">
-            Preview on GitHub →
+          <a class="btn btn-ghost" href="https://github.com/${REPO}/edit/blog/${esc(slug)}/blog-content/${esc(slug)}.json" target="_blank" rel="noopener">
+            Edit draft →
           </a>
           <div class="spacer"></div>
           <button class="btn btn-ghost btn-sm" onclick="changeAuthorDialog(${pr.number}, '${esc(slug)}', this)">
             Change author
           </button>
           <button class="btn btn-danger btn-sm" onclick="discardPost(${pr.number}, this)">
-            Discard
+            Remove
           </button>
         </div>
       </div>`;
@@ -512,6 +525,55 @@ function renderPosts(pending, published) {
   }
 
   el.innerHTML = html;
+  updateGenerateCard();
+}
+
+function updateGenerateCard() {
+  const sel = document.getElementById('gen-topic-dropdown');
+  const btn = document.getElementById('gen-btn');
+  if (!sel || !btn) return;
+  if (!topicsData) { sel.innerHTML = '<option value="">Loading topics…</option>'; btn.disabled = true; return; }
+  const queued = topicsData.json.queue.filter(t => t.status === 'queued');
+  if (!queued.length) {
+    sel.innerHTML = '<option value="">No queued topics — add some in the Topics tab</option>';
+    btn.disabled = true;
+    return;
+  }
+  btn.disabled = false;
+  sel.innerHTML = queued.map(t =>
+    `<option value="${esc(t.slug)}">${esc(t.targetQuery || t.slug)}</option>`
+  ).join('');
+}
+
+async function generatePost(btn) {
+  const sel = document.getElementById('gen-topic-dropdown');
+  const slug = sel?.value;
+  if (!slug) return;
+  const topic = topicsData?.json.queue.find(t => t.slug === slug);
+  const label = topic?.targetQuery || slug;
+  if (!confirm(`Generate "${label}"?\n\nThe AI will research and draft the article. It appears here for review in ~30–45 min.`)) return;
+
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Starting…';
+  btn.disabled = true;
+
+  try {
+    await gh('POST', `/repos/${REPO}/actions/workflows/blog-pipeline.yml/dispatches`, {
+      ref: 'main',
+      inputs: { mode: 'full' },
+    });
+    toast('Generation started! The draft will appear in Awaiting review in ~30–45 min.', 'success');
+    btn.innerHTML = 'Started ✓';
+  } catch (e) {
+    btn.innerHTML = orig;
+    btn.disabled = false;
+    if (e.message.includes('404')) {
+      const go = confirm('GitHub Actions is not configured yet.\n\nClick OK to open the cloud routine runner instead (you\'ll need to be logged in to claude.ai).');
+      if (go) window.open('https://claude.ai/code/routines/trig_01KFy9nJugM7s5wsqH2J4CoB', '_blank');
+    } else {
+      toast('Could not start generation: ' + e.message, 'error');
+    }
+  }
 }
 
 async function loadPublishedMeta(slug) {
@@ -603,6 +665,7 @@ async function loadTopics() {
     cnt.textContent = active;
     cnt.className = 'tab-count' + (active ? '' : ' zero');
     renderTopics();
+    updateGenerateCard();
   } catch (e) {
     document.getElementById('topics-content').innerHTML =
       `<div class="empty-state">Failed to load: ${esc(e.message)}</div>`;
