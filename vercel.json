@@ -1,4 +1,0 @@
-{
-  "buildCommand": "node scripts/build-blog-pages.mjs",
-  "outputDirectory": "."
-}
