@@ -1246,13 +1246,20 @@ function formatDate(iso) {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 updateNextRunDisplay();
-const saved = localStorage.getItem('valu_admin_token');
-if (saved) {
+(async () => {
+  const saved = localStorage.getItem('valu_admin_token');
+  if (!saved) return;
   TOKEN = saved;
-  document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  loadAll();
-}
+  try {
+    await gh('GET', '/user');
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadAll();
+  } catch {
+    localStorage.removeItem('valu_admin_token');
+    TOKEN = '';
+  }
+})();
 </script>
 </body>
 </html>
