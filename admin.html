@@ -804,7 +804,19 @@ async function publishPost(num, btn) {
     const cnt = document.getElementById('count-posts');
     cnt.textContent = prs.length;
     cnt.className = 'tab-count' + (prs.length ? '' : ' zero');
-    setTimeout(loadPosts, 5000); // reload to show in Published section
+    setTimeout(loadPosts, 5000);
+    // Mark topic as published in queue
+    try {
+      const { json: q, sha: qSha } = await getFile('blog-system/topic-queue.json');
+      const idx = q.queue.findIndex(t => t.prNumber === num);
+      if (idx !== -1) {
+        q.queue[idx].status = 'published';
+        delete q.queue[idx].prNumber;
+        await putFile('blog-system/topic-queue.json', q, qSha,
+          `Blog topics: mark "${q.queue[idx].slug}" as published`);
+        topicsData = null;
+      }
+    } catch (_) {}
   } catch (e) {
     toast('Merge failed: ' + e.message, 'error');
     btn.innerHTML = orig;
@@ -813,19 +825,31 @@ async function publishPost(num, btn) {
 }
 
 async function discardPost(num, btn) {
-  if (!confirm('Discard this draft? The PR will be closed without publishing.')) return;
+  if (!confirm('Discard this draft? The PR will be closed and the topic returned to the queue.')) return;
   const orig = btn.innerHTML;
   btn.innerHTML = '<span class="spinner spinner-dark"></span>';
   btn.disabled = true;
   try {
     await gh('PATCH', `/repos/${REPO}/pulls/${num}`, { state: 'closed' });
-    toast('Draft discarded.', 'success');
+    toast('Draft discarded. Topic returned to queue.', 'success');
     document.getElementById(`pr-${num}`)?.remove();
     prs = prs.filter(p => p.number !== num);
     const cnt = document.getElementById('count-posts');
     cnt.textContent = prs.length;
     cnt.className = 'tab-count' + (prs.length ? '' : ' zero');
     if (!prs.length) loadPosts();
+    // Return topic to queue
+    try {
+      const { json: q, sha: qSha } = await getFile('blog-system/topic-queue.json');
+      const idx = q.queue.findIndex(t => t.prNumber === num);
+      if (idx !== -1) {
+        q.queue[idx].status = 'queued';
+        delete q.queue[idx].prNumber;
+        await putFile('blog-system/topic-queue.json', q, qSha,
+          `Blog topics: return "${q.queue[idx].slug}" to queue (PR #${num} discarded)`);
+        topicsData = null;
+      }
+    } catch (_) {}
   } catch (e) {
     toast('Failed: ' + e.message, 'error');
     btn.innerHTML = orig;
