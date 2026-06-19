@@ -1,4 +1,21 @@
 {
   "_comment": "Publish/refresh log. Append one entry per publish or refresh action.",
-  "entries": []
+  "entries": [
+    {
+      "slug": "value-pool-analysis-explained",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "value pool analysis stocks",
+      "datePublished": "2026-06-19",
+      "dateModified": "2026-06-19",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "proprietaryDataPoints": 4,
+      "externalSources": 4,
+      "primarySources": 2,
+      "approval": { "auto": false, "status": "pr-open" }
+    }
+  ]
 }
