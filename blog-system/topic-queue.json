@@ -25,7 +25,7 @@
     }
   },
   "queue": [
-    { "slug": "how-to-value-a-stock", "cluster": "valuation-methodology", "role": "pillar", "targetQuery": "how to value a stock", "intent": "informational", "status": "in-review", "prNumber": 5, "notes": "Pillar. DCF + multiples + scenarios, each step shown with a real number from our published reports." },
+    { "slug": "how-to-value-a-stock", "cluster": "valuation-methodology", "role": "pillar", "targetQuery": "how to value a stock", "intent": "informational", "status": "published", "prNumber": 5, "publishedAt": "2026-06-22", "approval": "auto", "notes": "Pillar. DCF + multiples + scenarios, each step shown with a real number from our published reports. Auto-merged 2026-06-22 (PR #5 untouched >48h, gates green)." },
     { "slug": "what-is-reverse-valuation", "cluster": "valuation-methodology", "role": "support", "targetQuery": "what is reverse valuation", "intent": "informational", "status": "in-review", "prNumber": 4, "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain." },
     { "slug": "value-pool-analysis-explained", "cluster": "valuation-methodology", "role": "support", "targetQuery": "value pool analysis stocks", "intent": "informational", "status": "in-review", "prNumber": 6, "notes": "Use a real segment EV split from a free report (Tesla or UPM)." },
     { "slug": "ev-ebitda-vs-pe-ratio", "cluster": "valuation-methodology", "role": "support", "targetQuery": "ev/ebitda vs p/e which is better", "intent": "informational", "status": "queued", "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree." },
