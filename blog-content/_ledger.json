@@ -1,4 +1,19 @@
 {
   "_comment": "Publish/refresh log. Append one entry per publish or refresh action.",
-  "entries": []
+  "entries": [
+    {
+      "slug": "how-to-value-a-stock",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "pillar",
+      "targetQuery": "how to value a stock",
+      "datePublished": "2026-06-22",
+      "dateModified": "2026-06-22",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 5, "date": "2026-06-22" },
+      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "notes": "Cluster A pillar. Auto-merged: PR #5 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks. Published first (pillar before supports); supports what-is-reverse-valuation (PR #4) and value-pool-analysis-explained (PR #6) remain queued for subsequent runs."
+    }
+  ]
 }
