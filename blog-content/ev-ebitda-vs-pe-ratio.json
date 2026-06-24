@@ -1,0 +1,96 @@
+{
+  "slug": "ev-ebitda-vs-pe-ratio",
+  "cluster": "valuation-methodology",
+  "role": "support",
+  "targetQuery": "ev/ebitda vs p/e which is better",
+  "intent": "informational",
+  "title": "EV/EBITDA vs P/E ratio: which is better?",
+  "metaDescription": "EV/EBITDA vs P/E ratio: which is better? Two Helsinki cases where the multiples disagree, Stora Enso (BUY) and Nokia (SELL), show which one to trust.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "datePublished": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "EV/EBITDA vs P/E ratio: which is better?",
+      "html": "<p>Neither is better in the abstract. The useful question is what is driving the gap between them, because that gap is where the analysis sits. Two stocks we cover make the point. Stora Enso trades at 7.8x EV/EBITDA but 19.8x earnings in our 1 June 2026 model. Nokia trades at 19.7x EV/EBITDA but 43.6x earnings in our 5 June 2026 model. In both names the P/E is roughly two to two-and-a-half times the EV/EBITDA, and in both the gap is mostly depreciation.</p><p>Yet we rate Stora Enso a BUY and Nokia a SELL. The same ratio spread points in opposite directions. The rest of this article is why.</p><p>The mechanics are simple. P/E divides the share price by per-share earnings, so it carries the full weight of leverage, depreciation and tax. EV/EBITDA values the whole firm against operating profit measured before depreciation, interest and tax. Use the wrong one for the business in front of you and you will misread the price. We use both, and we read the distance between them.</p>"
+    },
+    {
+      "h2": "What each ratio actually measures",
+      "html": "<p>P/E is an equity multiple; EV/EBITDA is an enterprise multiple. That one difference explains most of what follows. P/E is the share price divided by earnings per share. It tells you how many years of current per-share profit you are paying for, after interest, tax and depreciation have all come out. It belongs to equity holders alone.</p><p>EV/EBITDA divides enterprise value by EBITDA. Enterprise value is market capitalisation plus net debt and minorities, so it is the price of the entire business, not just its equity. EBITDA is operating profit before depreciation and amortisation. Because the numerator already includes debt and the denominator is measured before financing and depreciation, EV/EBITDA is close to capital-structure neutral. Two companies with identical operations but different debt loads can show a similar EV/EBITDA while their P/E ratios diverge sharply. That property is why it is the default multiple for comparing leveraged or capital-heavy businesses (Corporate Finance Institute; Aswath Damodaran, NYU Stern).</p><table><thead><tr><th>Ratio</th><th>Price of</th><th>Profit measured</th><th>Includes debt?</th><th>Includes depreciation?</th></tr></thead><tbody><tr><td>P/E</td><td>Equity only</td><td>After interest, tax, depreciation</td><td>No (equity value)</td><td>Yes</td></tr><tr><td>EV/EBITDA</td><td>Whole firm</td><td>Before interest, tax, depreciation</td><td>Yes (in EV)</td><td>No</td></tr></tbody></table>"
+    },
+    {
+      "h2": "Why the same company looks cheap on one and dear on the other",
+      "html": "<p>The gap between P/E and EV/EBITDA is the bridge from EBITDA down to net earnings, and that bridge is mostly depreciation. Start at EBITDA. Subtract depreciation and amortisation to reach operating profit. Subtract net interest. Subtract tax. What survives is net earnings, the denominator of the P/E. When depreciation is large, a lot of EBITDA never reaches the bottom line, so the P/E looks far higher than the EV/EBITDA on the very same stock.</p><p>The two companies below carry almost the same ratio spread for the same reason, heavy depreciation, but their balance sheets sit on opposite sides of the enterprise-value bridge. Nokia holds net cash, so its enterprise value is below its market cap. Stora Enso holds net debt, so its enterprise value is well above it.</p><table><thead><tr><th>2026E, our models</th><th>Stora Enso</th><th>Nokia</th></tr></thead><tbody><tr><td>EBITDA</td><td>EUR 1,445m</td><td>EUR 3,788m</td></tr><tr><td>Depreciation &amp; amortisation</td><td>EUR 739m</td><td>EUR 1,416m</td></tr><tr><td>D&amp;A as % of EBITDA</td><td>51%</td><td>37%</td></tr><tr><td>EV/EBITDA</td><td>7.8x</td><td>19.7x</td></tr><tr><td>EV/EBIT</td><td>15.9x</td><td>31.5x</td></tr><tr><td>P/E</td><td>19.8x</td><td>43.6x</td></tr><tr><td>Net debt / (cash)</td><td>Net debt, 2.4x EBITDA</td><td>Net cash, -0.4x EBITDA</td></tr><tr><td>Our rating</td><td>BUY</td><td>SELL</td></tr></tbody></table><p>Heavy depreciation is exactly the condition under which P/E overstates how expensive a capital-intensive business is, while EV/EBITDA gives a steadier read (Corporate Finance Institute). But steadier is not the same as right. The next two sections show the metric being correct in one case and misleading in the other.</p>"
+    },
+    {
+      "h2": "Stora Enso: trust the EV/EBITDA",
+      "html": "<p>Stora Enso looks cheap on EV/EBITDA at 7.8x and only average on P/E at 19.8x, and we side with the cheaper signal: BUY, fair value EUR 12.76 against a EUR 10.05 price (1 June 2026 model). The 19.8x earnings multiple is inflated by depreciation, not by an expensive share price.</p><p>Here is the case for trusting EBITDA. Stora Enso's 2026 depreciation of EUR 739 million is 51% of its EBITDA, a hangover from a finished capital-spending cycle rather than a cash cost the business still carries. We assume that depreciation overstates the cash these mills need now, because the heavy Oulu board conversion is complete and reinvestment falls from here. If that holds, reported earnings understate cash generation and the 7.8x is the truer number. The asset backing is real: in our model the forest holdings absorb about EUR 8.0 billion, over 70% of the EUR 11.2 billion enterprise value, leaving the industrial business at under 6.7x operating profit against packaging peers at 8x to 12x.</p><p>The company's own accounts support the shape of this. Stora Enso reports EUR 3,181 million of net debt at 2.8x adjusted EBITDA, set against forest assets carried at a fair value of EUR 8,478 million (Financial Statements Release 2025). When a land bank that size sits behind the debt, an EV above market cap is not a warning sign. It is the forest. The full <a href=\"/reports/stora-enso-equity-report.html\">Stora Enso equity report</a> sets out the segment split.</p>"
+    },
+    {
+      "h2": "Nokia: trust the P/E",
+      "html": "<p>Nokia looks tolerable on EV/EBITDA at 19.7x and expensive on P/E at 43.6x, and here we trust the dearer signal: SELL, fair value EUR 11.50 against a EUR 13.90 price (5 June 2026 model). A 19.7x enterprise multiple is the kind of number an AI-networking growth story can carry. The 43.6x P/E, and the 31.5x EV/EBIT once depreciation is added back, say the operating profit behind that EBITDA is thin.</p><p>Capital structure is why the EV/EBITDA flatters here rather than misleads the other way. Nokia runs net cash of about EUR 1.5 billion, so its EUR 74.7 billion enterprise value is below its EUR 76 billion market cap. No debt is inflating EV. Unlike Stora Enso, leverage is not hiding value behind the multiple, so the rich earnings ratio is the operating reality, not an accounting artefact.</p><p>Most of the stretch is one segment. Our model assigns EUR 35.5 billion, 47.5% of enterprise value, to Optical &amp; IP Networks on EUR 725 million of 2026 EBIT, a 49x EV/EBIT multiple priced for flawless execution against Ciena and Arista. We could be wrong if optical revenue scales from EUR 5.8 billion toward EUR 9.0 billion at 800G and EBIT margins lift toward 19%, the bull path in our reverse valuation, which would justify today's price. We do not think Nokia's hyperscaler share is secure enough to underwrite it. The <a href=\"/reports/nokia-equity-report.html\">Nokia equity report</a> has the segment-level reverse valuation.</p>"
+    },
+    {
+      "h2": "When to use EV/EBITDA, and when to use P/E",
+      "html": "<p>Use EV/EBITDA when leverage or depreciation differs across the names you are comparing. That covers most industrials, materials, telecoms and other capital-heavy businesses, and any company not yet profitable at the net line where P/E is meaningless. Use P/E when capital structures are similar and earnings are clean, or when enterprise value itself does not apply, as with banks and insurers, where debt is raw material rather than financing.</p><p>For a fuller treatment of where each multiple fits alongside discounted cash flow, see our pillar on <a href=\"/blog/how-to-value-a-stock.html\">how to value a stock</a>. The Stora Enso and UPM <a href=\"/compare/stora-enso-vs-upm-kymmene-stock-comparison.html\">head-to-head comparison</a> shows two forestry balance sheets pulling the same two ratios in different directions.</p><p>EV/EBITDA has one blind spot worth stating plainly: it ignores the cash a business actually consumes, both capital expenditure and the interest on its debt (Corporate Finance Institute). That is precisely the risk in the Stora Enso call. The 7.8x looks cheap only while the forest value underwrites EUR 3.4 billion of net debt and capital spending keeps falling. If the planned 2027 Swedish forest demerger leaks tax, or loads that debt onto the industrial company, the cheap EV/EBITDA was a trap and the high P/E was the honest warning. Reconcile the two ratios before you trust either. The gap between them is not noise. It is the question. See <a href=\"/methodology.html\">how we build and check these models</a>.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is EV/EBITDA better than the P/E ratio?",
+      "a": "Neither is better in isolation. EV/EBITDA values the whole firm before depreciation and is close to capital-structure neutral, so it is more reliable for leveraged or capital-intensive companies. P/E reflects leverage, depreciation and tax, which matters when those land on equity holders. We read both and treat the gap between them as the real signal."
+    },
+    {
+      "q": "Why is a company's P/E higher than its EV/EBITDA?",
+      "a": "Because P/E is measured after depreciation, interest and tax, while EV/EBITDA is measured before all three. The larger a company's depreciation, the more EBITDA is lost before it reaches net earnings. Stora Enso's depreciation is 51% of EBITDA in our 2026 model, which is why its P/E of 19.8x towers over its EV/EBITDA of 7.8x."
+    },
+    {
+      "q": "When should you use EV/EBITDA instead of P/E?",
+      "a": "Use EV/EBITDA when comparing companies with different debt levels or heavy depreciation, common in materials, telecoms and industrials, or when a business is not yet profitable at the net line. Its weakness is that it ignores capital expenditure and debt service, so pair it with free cash flow before relying on it alone."
+    },
+    {
+      "q": "Can EV/EBITDA and P/E give opposite signals?",
+      "a": "Yes. We rate Stora Enso a BUY trusting its 7.8x EV/EBITDA over its 19.8x P/E, and Nokia a SELL trusting its 43.6x P/E over its 19.7x EV/EBITDA (June 2026 models). The two ratios diverge for the same reason in both names, depreciation, but the right call goes in opposite directions."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Stora Enso P/E 19.8x, EV/EBITDA 7.8x, EV/EBIT 15.9x, Net Debt/EBITDA 2.4x, BUY, EUR 12.76 target vs EUR 10.05 current (Valuatum, 1 June 2026)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Stora Enso 2026E EBITDA EUR 1,445m, depreciation EUR 739m (51% of EBITDA), EBIT EUR 705m; forest assets ~EUR 8.0bn (71% of EUR 11.2bn EV); industrial residual under 6.7x EBIT (Valuatum, 1 June 2026)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Nokia P/E 43.6x, EV/EBITDA 19.7x, EV/EBIT 31.5x, Net Debt/EBITDA -0.4x (net cash ~EUR 1.5bn), SELL, EUR 11.50 target vs EUR 13.90 current; EV EUR 74.7bn vs market cap EUR 76bn (Valuatum, 5 June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    },
+    {
+      "claim": "Nokia 2026E EBITDA EUR 3,788m, depreciation EUR 1,416m (37% of EBITDA), EBIT EUR 2,372m; Optical & IP Networks EUR 35.5bn (47.5% of EV) on EUR 725m EBIT at 49x EV/EBIT (Valuatum, 5 June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/blog/how-to-value-a-stock.html",
+    "/reports/nokia-equity-report.html",
+    "/reports/stora-enso-equity-report.html",
+    "/compare/stora-enso-vs-upm-kymmene-stock-comparison.html",
+    "/methodology.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
+    { "label": "Valuatum Stora Enso Equity Report, June 2026", "url": "/reports/stora-enso-equity-report.html" },
+    { "label": "Stora Enso Financial Statements Release 2025 (net debt EUR 3,181m; forest assets EUR 8,478m; Swedish forest separation H1 2027)", "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2026/2/stora-enso-financial-statements-release-2025-sharpened-strategic-focus" },
+    { "label": "EV/EBITDA Multiple, Corporate Finance Institute", "url": "https://corporatefinanceinstitute.com/resources/valuation/ev-ebitda/" },
+    { "label": "PE versus EV/EBITDA, Aswath Damodaran, NYU Stern", "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valquestions/pevsebitda.htm" },
+    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
