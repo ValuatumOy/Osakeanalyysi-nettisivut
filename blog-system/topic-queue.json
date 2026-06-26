@@ -198,7 +198,7 @@
       "role": "support",
       "targetQuery": "enterprise value vs market cap",
       "intent": "informational",
-      "status": "proposed",
+      "status": "queued",
       "proposedAt": "2026-06-21",
       "score": 72,
       "rationale": "Explicit Cluster-A support gap from DESIGN §3 not yet queued; thin/evergreen methodology SERP where our net-cash/net-debt bridges turn an abstract concept into live numbers.",
