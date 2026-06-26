@@ -75,8 +75,9 @@
       "role": "support",
       "targetQuery": "terminal growth rate dcf assumption",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Show fair-value sensitivity table from our own model."
+      "status": "blocked-no-data",
+      "blockedAt": "2026-06-26",
+      "notes": "BLOCKED (no data, flagged 26 Jun 2026 run): the data plan needs a fair-value sensitivity to the DCF terminal growth rate, but every report-content/*.json uses a reverse-valuation / multiple-bridge framework. None state a terminal growth rate g, a WACC, or a terminal-growth sensitivity table, so the core deliverable cannot be sourced without fabricating numbers (banned for YMYL). To unblock: either (a) reframe to 'exit-multiple sensitivity' using the existing bull/base/bear scenario bridges (e.g. Tesla 85.2x to 21.6x moves fair value 421.03 to 108.42 USD) and retarget the query, or (b) supply a report JSON exposing an explicit DCF with terminal-growth assumptions. Original note: Show fair-value sensitivity table from our own model."
     },
     {
       "slug": "how-to-read-an-equity-research-report",
@@ -84,8 +85,9 @@
       "role": "support",
       "targetQuery": "how to read an equity research report",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Walk through our own free Tesla report section by section; links to product."
+      "status": "in-review",
+      "prNumber": 9,
+      "notes": "Walk through our own free Tesla report section by section; links to product. Drafted 2026-06-26, PR #9 (humanizer 45/50, factcheck pass, lint pass)."
     },
     {
       "slug": "investing-in-helsinki-listed-stocks",
