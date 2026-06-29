@@ -81,16 +81,41 @@
     "/methodology.html"
   ],
   "sources": [
-    { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
-    { "label": "Valuatum Stora Enso Equity Report, June 2026", "url": "/reports/stora-enso-equity-report.html" },
-    { "label": "Stora Enso Financial Statements Release 2025 (net debt EUR 3,181m; forest assets EUR 8,478m; Swedish forest separation H1 2027)", "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2026/2/stora-enso-financial-statements-release-2025-sharpened-strategic-focus" },
-    { "label": "EV/EBITDA Multiple, Corporate Finance Institute", "url": "https://corporatefinanceinstitute.com/resources/valuation/ev-ebitda/" },
-    { "label": "PE versus EV/EBITDA, Aswath Damodaran, NYU Stern", "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valquestions/pevsebitda.htm" },
-    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+    {
+      "label": "Valuatum Nokia Equity Report, June 2026",
+      "url": "/reports/nokia-equity-report.html"
+    },
+    {
+      "label": "Valuatum Stora Enso Equity Report, June 2026",
+      "url": "/reports/stora-enso-equity-report.html"
+    },
+    {
+      "label": "Stora Enso Financial Statements Release 2025 (net debt EUR 3,181m; forest assets EUR 8,478m; Swedish forest separation H1 2027)",
+      "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2026/2/stora-enso-financial-statements-release-2025-sharpened-strategic-focus"
+    },
+    {
+      "label": "EV/EBITDA Multiple, Corporate Finance Institute",
+      "url": "https://corporatefinanceinstitute.com/resources/valuation/ev-ebitda/"
+    },
+    {
+      "label": "PE versus EV/EBITDA, Aswath Damodaran, NYU Stern",
+      "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valquestions/pevsebitda.htm"
+    },
+    {
+      "label": "Valuatum Research Methodology",
+      "url": "/methodology.html"
+    }
   ],
   "gateScores": {
     "humanizer": 45,
     "factcheck": "pass",
     "onpage": "pass"
+  },
+  "approval": {
+    "auto": true,
+    "mergedBy": "pipeline",
+    "date": "2026-06-29",
+    "prNumber": 8,
+    "note": "PR #8 untouched >48h, all gates green; auto-merged with default author/reviewer per PIPELINE.md merge policy."
   }
 }

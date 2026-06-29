@@ -45,9 +45,11 @@
       "role": "support",
       "targetQuery": "what is reverse valuation",
       "intent": "informational",
-      "status": "in-review",
+      "status": "published",
       "prNumber": 4,
-      "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain."
+      "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain.",
+      "publishedAt": "2026-06-29",
+      "approval": "auto"
     },
     {
       "slug": "value-pool-analysis-explained",
@@ -55,9 +57,11 @@
       "role": "support",
       "targetQuery": "value pool analysis stocks",
       "intent": "informational",
-      "status": "in-review",
+      "status": "published",
       "prNumber": 6,
-      "notes": "Use a real segment EV split from a free report (Tesla or UPM)."
+      "notes": "Use a real segment EV split from a free report (Tesla or UPM).",
+      "publishedAt": "2026-06-29",
+      "approval": "auto"
     },
     {
       "slug": "ev-ebitda-vs-pe-ratio",
@@ -65,9 +69,11 @@
       "role": "support",
       "targetQuery": "ev/ebitda vs p/e which is better",
       "intent": "informational",
-      "status": "in-review",
+      "status": "published",
       "prNumber": 8,
-      "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree. Nokia (net cash) vs Stora Enso (net debt) where EV/EBITDA and P/E reach opposite verdicts. Drafted 2026-06-24, PR #8."
+      "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree. Nokia (net cash) vs Stora Enso (net debt) where EV/EBITDA and P/E reach opposite verdicts. Drafted 2026-06-24, PR #8.",
+      "publishedAt": "2026-06-29",
+      "approval": "auto"
     },
     {
       "slug": "terminal-growth-rate-dcf",
@@ -85,9 +91,11 @@
       "role": "support",
       "targetQuery": "how to read an equity research report",
       "intent": "informational",
-      "status": "in-review",
+      "status": "published",
       "prNumber": 9,
-      "notes": "Walk through our own free Tesla report section by section; links to product. Drafted 2026-06-26, PR #9 (humanizer 45/50, factcheck pass, lint pass)."
+      "notes": "Walk through our own free Tesla report section by section; links to product. Drafted 2026-06-26, PR #9 (humanizer 45/50, factcheck pass, lint pass).",
+      "publishedAt": "2026-06-29",
+      "approval": "auto"
     },
     {
       "slug": "investing-in-helsinki-listed-stocks",
@@ -131,8 +139,10 @@
       "role": "pillar",
       "targetQuery": "can ai analyze stocks",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Pillar. Honest capabilities + limitations; our pipeline as the worked example."
+      "status": "published",
+      "notes": "Pillar. Honest capabilities + limitations; our pipeline as the worked example.",
+      "publishedAt": "2026-06-12",
+      "approval": "auto"
     },
     {
       "slug": "ai-vs-human-equity-analyst",

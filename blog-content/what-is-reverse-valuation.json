@@ -8,7 +8,13 @@
   "metaDescription": "Reverse valuation asks what a stock price implies, not what it is worth. Explained with live Tesla and Nokia scenarios from Valuatum's June 2026 reports.",
   "authorId": "author-1",
   "reviewerId": "reviewer-1",
-  "approval": { "auto": false },
+  "approval": {
+    "auto": true,
+    "mergedBy": "pipeline",
+    "date": "2026-06-29",
+    "prNumber": 4,
+    "note": "PR #4 untouched >48h, all gates green; auto-merged with default author/reviewer per PIPELINE.md merge policy."
+  },
   "datePublished": "2026-06-18",
   "dateModified": "2026-06-18",
   "readingTimeMinutes": 6,
@@ -73,17 +79,21 @@
   ],
   "sources": [
     {
-      "label": "Tesla, Inc. SEC EDGAR filings — 10-K annual reports (primary source for financial data underlying our model)",
+      "label": "Tesla, Inc. SEC EDGAR filings: 10-K annual reports (primary source for financial data underlying our model)",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001318605&type=10-K&dateb=&owner=include&count=40"
     },
     {
-      "label": "Wall Street Prep — Reverse DCF Model: Formula and Calculator",
+      "label": "Wall Street Prep, Reverse DCF Model: Formula and Calculator",
       "url": "https://www.wallstreetprep.com/knowledge/reverse-dcf-model/"
     },
     {
-      "label": "Investing.com — Reverse DCF: A Smart Way to Decode Stock Valuations",
+      "label": "Investing.com, Reverse DCF: A Smart Way to Decode Stock Valuations",
       "url": "https://www.investing.com/academy/analysis/reverse-dcf-definition/"
     }
   ],
-  "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" }
+  "gateScores": {
+    "humanizer": 44,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
 }

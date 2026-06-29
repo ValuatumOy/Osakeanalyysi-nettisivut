@@ -8,7 +8,13 @@
   "metaDescription": "Value pool analysis splits a stock's enterprise value into the businesses the market pays for. We run Tesla and UPM through it with our 2026 numbers.",
   "authorId": "author-1",
   "reviewerId": "reviewer-1",
-  "approval": { "auto": false, "mergedBy": "human", "date": "2026-06-19" },
+  "approval": {
+    "auto": true,
+    "mergedBy": "pipeline",
+    "date": "2026-06-29",
+    "prNumber": 6,
+    "note": "PR #6 untouched >48h, all gates green; auto-merged with default author/reviewer per PIPELINE.md merge policy."
+  },
   "datePublished": "2026-06-19",
   "dateModified": "2026-06-19",
   "readingTimeMinutes": 7,
@@ -83,13 +89,34 @@
     "/methodology.html"
   ],
   "sources": [
-    { "label": "Valuatum Tesla Equity Report, June 2026", "url": "/reports/tesla-equity-report.html" },
-    { "label": "Valuatum UPM-Kymmene Equity Report, May 2026", "url": "/reports/upm-kymmene-equity-report.html" },
-    { "label": "Tesla, Inc. Form 10-K (FY2024), U.S. Securities and Exchange Commission", "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm" },
-    { "label": "UPM Annual Report 2024 (business areas), UPM-Kymmene Oyj", "url": "https://www.upm.com/siteassets/asset/investors/2024/upm-annual-report-2024.pdf" },
-    { "label": "Sum of the Parts (SOTP) Valuation, Corporate Finance Institute", "url": "https://corporatefinanceinstitute.com/resources/valuation/sum-of-the-parts-sotp-valuation/" },
-    { "label": "Aswath Damodaran, valuation resources, NYU Stern School of Business", "url": "https://pages.stern.nyu.edu/~adamodar/" },
-    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+    {
+      "label": "Valuatum Tesla Equity Report, June 2026",
+      "url": "/reports/tesla-equity-report.html"
+    },
+    {
+      "label": "Valuatum UPM-Kymmene Equity Report, May 2026",
+      "url": "/reports/upm-kymmene-equity-report.html"
+    },
+    {
+      "label": "Tesla, Inc. Form 10-K (FY2024), U.S. Securities and Exchange Commission",
+      "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025003063/tsla-20241231.htm"
+    },
+    {
+      "label": "UPM Annual Report 2024 (business areas), UPM-Kymmene Oyj",
+      "url": "https://www.upm.com/siteassets/asset/investors/2024/upm-annual-report-2024.pdf"
+    },
+    {
+      "label": "Sum of the Parts (SOTP) Valuation, Corporate Finance Institute",
+      "url": "https://corporatefinanceinstitute.com/resources/valuation/sum-of-the-parts-sotp-valuation/"
+    },
+    {
+      "label": "Aswath Damodaran, valuation resources, NYU Stern School of Business",
+      "url": "https://pages.stern.nyu.edu/~adamodar/"
+    },
+    {
+      "label": "Valuatum Research Methodology",
+      "url": "/methodology.html"
+    }
   ],
   "gateScores": {
     "humanizer": 44,

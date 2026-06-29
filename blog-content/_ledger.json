@@ -2,6 +2,20 @@
   "_comment": "Publish/refresh log. Append one entry per publish or refresh action.",
   "entries": [
     {
+      "slug": "can-ai-analyze-stocks",
+      "action": "publish",
+      "cluster": "ai-equity-research",
+      "role": "pillar",
+      "targetQuery": "can ai analyze stocks",
+      "datePublished": "2026-06-12",
+      "dateModified": "2026-06-12",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": false, "mergedBy": "human", "date": "2026-06-12" },
+      "gateScores": { "humanizer": "n/a (pre-ledger)", "factcheck": "pass", "onpage": "pass" },
+      "notes": "Reconciliation entry (2026-06-29 run): article was already live in blog-content/ on main and published 2026-06-12 by human merge, but had no ledger record and queue status was still 'queued'. Logged here and marked published in the queue to fix the state drift. No content change."
+    },
+    {
       "slug": "how-to-value-a-stock",
       "action": "publish",
       "cluster": "valuation-methodology",
@@ -13,7 +27,63 @@
       "reviewerId": "reviewer-1",
       "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 5, "date": "2026-06-22" },
       "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
-      "notes": "Cluster A pillar. Auto-merged: PR #5 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks. Published first (pillar before supports); supports what-is-reverse-valuation (PR #4) and value-pool-analysis-explained (PR #6) remain queued for subsequent runs."
+      "notes": "Cluster A pillar. Auto-merged: PR #5 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks. Published first (pillar before supports)."
+    },
+    {
+      "slug": "what-is-reverse-valuation",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "what is reverse valuation",
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 4, "date": "2026-06-29" },
+      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #4 untouched >48h with all gates green, merged with default author/reviewer per PIPELINE.md §7."
+    },
+    {
+      "slug": "value-pool-analysis-explained",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "value pool analysis stocks",
+      "datePublished": "2026-06-19",
+      "dateModified": "2026-06-19",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 6, "date": "2026-06-29" },
+      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #6 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks."
+    },
+    {
+      "slug": "ev-ebitda-vs-pe-ratio",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "ev/ebitda vs p/e which is better",
+      "datePublished": "2026-06-24",
+      "dateModified": "2026-06-24",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 8, "date": "2026-06-29" },
+      "gateScores": { "humanizer": 45, "factcheck": "pass", "onpage": "pass" },
+      "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #8 untouched >48h with all gates green. Inbound backlink added from how-to-value-a-stock pillar."
+    },
+    {
+      "slug": "how-to-read-an-equity-research-report",
+      "action": "publish",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "how to read an equity research report",
+      "datePublished": "2026-06-26",
+      "dateModified": "2026-06-26",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 9, "date": "2026-06-29" },
+      "gateScores": { "humanizer": 45, "factcheck": "pass", "onpage": "pass" },
+      "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #9 untouched >48h with all gates green. Inbound backlink added from how-to-value-a-stock pillar."
     }
   ]
 }

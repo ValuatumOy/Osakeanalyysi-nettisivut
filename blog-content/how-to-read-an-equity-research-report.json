@@ -93,16 +93,41 @@
     "/reports.html"
   ],
   "sources": [
-    { "label": "Valuatum Tesla Equity Report, 1 June 2026 (free)", "url": "/reports/tesla-equity-report.html" },
-    { "label": "Analyzing Analyst Recommendations, U.S. SEC (investor.gov / sec.gov)", "url": "https://www.sec.gov/about/reports-publications/investorpubsanalystshtm" },
-    { "label": "FINRA Rule 2241: Research Analysts and Research Reports", "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2241" },
-    { "label": "Equity Research Report Essentials, CFA Institute", "url": "https://www.cfainstitute.org/sites/default/files/-/media/documents/support/research-challenge/challenge/rc-equity-research-report-essentials.pdf" },
-    { "label": "Equity Research Report: Definition, Types, Key Components, Corporate Finance Institute", "url": "https://corporatefinanceinstitute.com/resources/valuation/equity-research-report/" },
-    { "label": "Valuatum Research Methodology", "url": "/methodology.html" }
+    {
+      "label": "Valuatum Tesla Equity Report, 1 June 2026 (free)",
+      "url": "/reports/tesla-equity-report.html"
+    },
+    {
+      "label": "Analyzing Analyst Recommendations, U.S. SEC (investor.gov / sec.gov)",
+      "url": "https://www.sec.gov/about/reports-publications/investorpubsanalystshtm"
+    },
+    {
+      "label": "FINRA Rule 2241: Research Analysts and Research Reports",
+      "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2241"
+    },
+    {
+      "label": "Equity Research Report Essentials, CFA Institute",
+      "url": "https://www.cfainstitute.org/sites/default/files/-/media/documents/support/research-challenge/challenge/rc-equity-research-report-essentials.pdf"
+    },
+    {
+      "label": "Equity Research Report: Definition, Types, Key Components, Corporate Finance Institute",
+      "url": "https://corporatefinanceinstitute.com/resources/valuation/equity-research-report/"
+    },
+    {
+      "label": "Valuatum Research Methodology",
+      "url": "/methodology.html"
+    }
   ],
   "gateScores": {
     "humanizer": 45,
     "factcheck": "pass",
     "onpage": "pass"
+  },
+  "approval": {
+    "auto": true,
+    "mergedBy": "pipeline",
+    "date": "2026-06-29",
+    "prNumber": 9,
+    "note": "PR #9 untouched >48h, all gates green; auto-merged with default author/reviewer per PIPELINE.md merge policy."
   }
 }
