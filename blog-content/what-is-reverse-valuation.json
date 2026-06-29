@@ -1,0 +1,89 @@
+{
+  "slug": "what-is-reverse-valuation",
+  "cluster": "valuation-methodology",
+  "role": "support",
+  "targetQuery": "what is reverse valuation",
+  "intent": "informational",
+  "title": "What is reverse valuation in stock analysis?",
+  "metaDescription": "Reverse valuation asks what a stock price implies, not what it is worth. Explained with live Tesla and Nokia scenarios from Valuatum's June 2026 reports.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false },
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18",
+  "readingTimeMinutes": 6,
+  "sections": [
+    {
+      "h2": "Reverse valuation starts with the price, not a forecast",
+      "html": "<p>Tesla's June 2026 base-case implied share price in our model is $421, with a bear case of $108 and a bull case of $934. Those three numbers come from reverse valuation, a technique that takes the current market price and works backward to the assumptions it requires.</p><p>A standard DCF model runs in one direction: you estimate future cash flows, pick a discount rate, and arrive at a fair value. That fair value may sit above or below today's price, and the gap is called upside or downside. The problem is that every number in the model is your assumption. A convincing set of assumptions can justify almost any price.</p><p>Reverse valuation flips the sequence. You start from the observed price, fix the discount rate and terminal assumption, and ask the model what free-cash-flow growth rate, EBITDA margin, or subscriber count the price is embedding. The output is not a price. It is a claim the market is making. Your job is to decide whether that claim is plausible.</p><p>In every <a href=\"/methodology.html\">Valuatum equity report</a>, we run a variant of this: three scenario columns (Bull, Base, Bear) anchored to different multiples, each producing a per-share implied price. If the current price sits outside all three scenarios, that is a signal worth investigating.</p>"
+    },
+    {
+      "h2": "What Tesla's $438 price implies: three scenarios",
+      "html": "<p>In our June 2026 report, Tesla's base-case reverse valuation lands at $421.03 per share, with a bear case of $108.42 and a bull case of $934.07. The current price at the time, $438.26, sat just above the base case.</p><p>Tesla is one of the clearest cases for why reverse valuation is more useful than a top-down price target for high-multiple stocks. A traditional model targeting Tesla's fair value requires you to forecast FSD subscriber growth, robotaxi fleet utilization, and humanoid robot economics. Change any one assumption and your fair value shifts by hundreds of dollars.</p><p>Reverse valuation sidesteps the forecast and asks instead: what does the $438 price embed? The answer, from our sum-of-the-parts analysis, is that Tesla's $1.573 trillion enterprise value allocates $549.7 billion to FSD and Network Services. At a 15x EBIT multiple, that implies roughly $36.6 billion of FSD operating profit, which requires around 44 million active subscribers at $99 per month. Tesla had approximately 1.28 million active FSD subscribers in Q1 2026.</p><p>That gap, from 1.28 million to 44 million, is the claim the market is making. We think it is not achievable in any horizon that justifies today's premium, which is why our June 2026 report rates Tesla a SELL with a $350 target. The Bear scenario, which strips out software optionality and re-rates Tesla at 21.6x EBITDA, arrives at $108.42 per share, 75.3% below the June 2026 price. The full <a href=\"/reports/tesla-equity-report.html\">Tesla equity report</a> walks through each value pool.</p>"
+    },
+    {
+      "h2": "How Nokia illustrates the method on a lower-multiple stock",
+      "html": "<p>Nokia's base-case reverse valuation yields €13.43 per share against a June 2026 market price of €13.90, with a bull case of €15.99 and a bear case of €9.78. The spread is narrower than Tesla's but the downside remains material: a 29.6% decline from a stock that had risen +207.9% over the prior year.</p><p>Where Tesla's reverse valuation hinges on speculative future businesses, Nokia's hinges on margin expansion inside one existing division. The Optical and IP Networks segment carried a €35.5 billion enterprise-value allocation in our June 2026 model, implying a 49x EV/EBIT multiple on just €725 million of 2026E EBIT.</p><p>To justify that multiple, the segment must grow revenue from €5.8 billion to roughly €9.0 billion while expanding EBIT margins from 12.5% toward 19%. Achievable if Nokia's 800G and 1.6T coherent pluggables gain sustained share inside US hyperscaler data centers. Not achievable if gross-margin pressure from alternative sourcing compresses the optical hardware margin.</p><p>Our Bear scenario gives €9.78 per share using a 14.3x group EBITDA multiple. One sensitivity check shows why the optical segment drives it: if the segment re-rates from 49x EV/EBIT toward a mature hardware average of 20x, that single move erases roughly €20.5 billion of enterprise value. The reverse valuation does not predict which outcome unfolds. It shows how much is at stake depending on which does.</p>"
+    },
+    {
+      "h2": "Reverse valuation versus a standard price target",
+      "html": "<p>A price target tells you what an analyst thinks a stock is worth. A reverse valuation tells you what the stock price already claims about the future. Both are useful. They are not substitutes.</p><p>An analyst who publishes a $350 price target for Tesla is saying: here is my fair-value estimate, based on my assumed growth rates and margins. A reader who disagrees with those assumptions will discount the target. But the disagreement stays abstract.</p><p>Reverse valuation makes the disagreement concrete. Instead of arguing about whether Tesla's fair value is $350 or $450, you argue about whether 44 million FSD subscribers is plausible in the next five years. That is a falsifiable claim. You can track progress against it in each quarterly earnings release.</p><p>This is why we run both in our reports. The standard DCF gives the target price. The reverse valuation tables let a reader stress-test the assumptions without trusting our model. It also fits how we think <a href=\"/blog/can-ai-analyze-stocks.html\">AI-assisted equity research</a> should work: surface the assumptions, make them visible, and let the investor decide.</p>"
+    },
+    {
+      "h2": "When reverse valuation gives a misleading answer",
+      "html": "<p>Reverse valuation fails when the starting price is driven by a temporary factor rather than long-run fundamental views.</p><p>The technique assumes the discount rate and terminal growth assumption you apply are reasonable. If a stock is being driven by short-term momentum or a liquidity event, the price embeds those forces rather than the company's fundamental earnings power. Solving backward from a momentum-driven price gives you momentum-implied assumptions, not market consensus about the business.</p><p>Nokia illustrates this risk. A stock up +207.9% over one year raises a question the model cannot answer: is €13.90 a measured long-run market view, or an overshoot being priced as if permanent? The reverse valuation treats it as the former. We state that assumption explicitly in the report because it shapes every scenario output.</p><p>The second issue is multiple selection. We use EV/EBITDA multiples as the reversal mechanism rather than a full DCF solve. Tesla's base-case multiple of 85.2x and Nokia's of 19.7x reflect our read of sector pricing in June 2026. A reader who believes those multiples are too high or too low should adjust them. We publish the inputs so that adjustment is straightforward.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is reverse valuation in stocks?",
+      "a": "Reverse valuation takes the current market price and works backward to find the assumptions that would have to be true to justify it. Instead of producing a fair-value estimate, it surfaces the growth rates, margins, or subscriber counts the market is embedding in the price."
+    },
+    {
+      "q": "How is reverse valuation different from a DCF model?",
+      "a": "A DCF starts with your assumptions and produces a price. Reverse valuation starts with the observed price and produces the implied assumptions. Both use discounted cash flow logic, but the direction is opposite. The reverse approach shows you what you need to believe about a company, rather than asking you to form a view first."
+    },
+    {
+      "q": "What does Tesla's reverse valuation show?",
+      "a": "In Valuatum's June 2026 report, Tesla's base-case reverse valuation is $421.03 per share against a $438.26 market price. The bear case, which removes software optionality and re-rates Tesla as a hardware business, arrives at $108.42. The difference shows how much of the price depends on FSD and robotaxi succeeding at scale."
+    },
+    {
+      "q": "Can reverse valuation predict whether a stock will go up or down?",
+      "a": "No. Reverse valuation maps the market's embedded assumptions at a point in time. It cannot tell you whether those assumptions will prove correct or when the market will revise them. Its value is in making the assumptions explicit so you know what you are actually betting on."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Tesla base-case reverse valuation $421.03/sh, bear $108.42/sh, bull $934.07/sh (Valuatum, June 2026)",
+      "source": "report-content/tesla-01062026.json"
+    },
+    {
+      "claim": "Tesla FSD allocation $549.7bn implies 44 million active subscribers at $99/month; Q1 2026 actual FSD subscribers approximately 1.28 million (Valuatum, June 2026)",
+      "source": "report-content/tesla-01062026.json"
+    },
+    {
+      "claim": "Nokia base-case reverse valuation €13.43/sh, bear €9.78/sh (14.3x EBITDA), bull €15.99/sh; Optical and IP Networks at 49x EV/EBIT; re-rating to 20x erases ~€20.5bn EV (Valuatum, June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/methodology.html",
+    "/blog/can-ai-analyze-stocks.html",
+    "/reports/tesla-equity-report.html"
+  ],
+  "sources": [
+    {
+      "label": "Tesla, Inc. SEC EDGAR filings — 10-K annual reports (primary source for financial data underlying our model)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001318605&type=10-K&dateb=&owner=include&count=40"
+    },
+    {
+      "label": "Wall Street Prep — Reverse DCF Model: Formula and Calculator",
+      "url": "https://www.wallstreetprep.com/knowledge/reverse-dcf-model/"
+    },
+    {
+      "label": "Investing.com — Reverse DCF: A Smart Way to Decode Stock Valuations",
+      "url": "https://www.investing.com/academy/analysis/reverse-dcf-definition/"
+    }
+  ],
+  "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" }
+}
