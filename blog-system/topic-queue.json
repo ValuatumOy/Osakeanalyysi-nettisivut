@@ -239,6 +239,54 @@
       "score": 69,
       "rationale": "Symmetric companion to the queued amd-stock-fair-value, using the fresh 5 Jun 2026 Intel report; hard mega-cap SERP but the proprietary foundry-turnaround fair value is the differentiator.",
       "notes": "Cluster D; links to /compare/advanced-micro-devices-vs-intel-stock-comparison (head-to-head intent) + /reports/intel-equity-report. Proprietary data plan: intel-05062026.json — base-case fair value vs price, foundry segment assumptions, scenario range. Score: winnability 10 (US mega-cap, tier-1 media owns it) + proprietary 27 + cluster fit 16 + freshness 16 (5 Jun 2026 report)."
+    },
+    {
+      "slug": "is-oriola-stock-undervalued",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "is oriola stock undervalued",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-06-28",
+      "score": 87,
+      "rationale": "Brand-new uncovered OMXH name with a fresh 1 Jun 2026 BUY report and an essentially empty English SERP — the winnable Helsinki wedge applied to a sum-of-the-parts re-rating story nobody else has the numbers for.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + /reports/oriola-equity-report. Proprietary data plan: oriola-01062026.json — base-case target 1.15 EUR vs 0.93 EUR price (+23.5%), the sum-of-the-parts EV split (Services EUR 163m, Kronans Apotek JV EUR 75m, Products EUR 43m), the 3-scenario bridge (bear 1.36 / base 1.92 / bull 2.50 EUR per share), and the Kronans 0.4x price-to-book discount vs EUR 187m book value. CAVEAT: ORIOLA.HE is not yet in report-content/_catalog.json and reports/oriola-equity-report.html does not yet exist — the report page/catalog entry must be live before publish or the internal-link gate (link to /reports/oriola-equity-report) cannot be satisfied. Score: winnability 27 (OMXH micro-cap, English SERP empty) + proprietary 28 + cluster fit 17 + freshness 15 (1 Jun 2026 report, newly covered ticker)."
+    },
+    {
+      "slug": "how-to-value-an-unprofitable-company",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "how to value a company with no profit",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-06-28",
+      "score": 77,
+      "rationale": "Evergreen methodology gap (valuing loss-making / pre-revenue stocks) not yet in the queue, and we now hold two vivid proprietary worked examples — a zero-revenue optionality case and a positive-EBITDA / negative-net-earnings case — that turn an abstract topic into live numbers.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + what-is-reverse-valuation sibling. Proprietary data plan: nuholdings-02062026.json (zero forward revenue, EBITDA ~-1m, EV resting 100% on optionality, reverse-valuation scenarios USD 1.60 / 0.64 / -0.02 per share) + oriola-01062026.json (negative net earnings ~-18m EUR alongside positive EUR 44m EBITDA, P/E -9.6x — why EV/EBITDA can value a business a negative P/E cannot). CAVEAT: the nuholdings-02062026.json top-level metadata (slug, sector 'Banks - Diversified', country 'Brazil') is inconsistent with its body (New Era Helium, US helium/data-center) — the writer must verify company identity from the body and not cite those header fields. Score: winnability 23 (evergreen, moderate competition, strong unique angle) + proprietary 26 + cluster fit 18 + freshness 10 (evergreen, powered by two fresh reports)."
+    },
+    {
+      "slug": "can-ai-spot-a-value-trap",
+      "cluster": "ai-equity-research",
+      "role": "support",
+      "targetQuery": "how to spot a value trap stock",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-06-28",
+      "score": 74,
+      "rationale": "Low-competition brand-cluster angle that proves the product on a SELL call rather than a BUY — our pipeline flagging a distressed optionality stock as a value trap is honest, differentiated information gain under the can-ai pillar.",
+      "notes": "Cluster C support; links to can-ai-analyze-stocks pillar + ai-vs-human-equity-analyst sibling. Proprietary data plan: nuholdings-02062026.json — the SELL call (target 10.50 USD vs 12.39 USD, -15.3%), the finding that 0% of the $13m enterprise value is backed by current cash flow with 100% on future optionality, and reverse-valuation scenarios spanning -87.1% / -94.8% / -100.1% as the worked value-trap example. Leans on the analytical reasoning, not precise corporate identity. CAVEAT: same nuholdings metadata inconsistency as above — verify company facts from the report body. Score: winnability 24 (brand long-tail, low competition) + proprietary 22 + cluster fit 16 + freshness 12 (2 Jun 2026 report + topicality)."
+    },
+    {
+      "slug": "price-to-book-ratio-explained",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "price to book ratio explained",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-06-28",
+      "score": 70,
+      "rationale": "Common evergreen methodology query still missing from the queue, with a standout proprietary illustration — a distressed asset trading at 0.4x book against a net-cash franchise — that most generic explainers cannot supply.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + enterprise-value-vs-market-cap sibling. Distinct intent from value-pool-analysis-explained (segment EV allocation) — this is the P/B metric itself. Proprietary data plan: oriola-01062026.json (Kronans Apotek JV at 0.4x price-to-book vs EUR 187m book value, the EUR 112m book-vs-market gap, group P/BV 2.5x) contrasted with nokia-05062026.json (net-cash franchise) to show when low P/B signals distress vs value. Score: winnability 22 (common evergreen, more competition) + proprietary 23 + cluster fit 18 + freshness 7 (evergreen)."
     }
   ],
   "quarterly": [
