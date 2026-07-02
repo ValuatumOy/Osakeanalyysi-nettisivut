@@ -107,14 +107,23 @@ Topics enter the queue two ways:
     `Author: [x] author-1 (default) [ ] other → edit authorId`
     `Reviewed & accepted by: [x] reviewer-1 (default) [ ] other → edit reviewerId`
   - if topic was auto-promoted: "Topic auto-selected (no human pick within 48h)"
-- **Merge policy**: human merges = explicit acceptance; the merger's chosen
-  author/reviewer stand. If the PR is untouched for 48h AND all gates passed,
-  the next run merges it with the defaults and records
-  `approval: { "auto": true }` in the article JSON + ledger. Human edits to
-  the PR branch are honored (re-run lint + build after edits, then merge).
-- Update `_ledger.json`: slug, action, dates, gate scores, target query,
-  authorId, reviewerId, approval mode (human/auto). Mark queue item `"published"`.
-- Commit: `Blog: <title>`; Vercel auto-deploys on merge.
+- **Merge policy: human merge only, no exceptions, no timeout.** The pipeline
+  agent NEVER merges a blog-post PR itself, regardless of how long it has sat
+  open or how green its gates are. All gates passing is a precondition for a
+  human to review, not a substitute for the review. A human merging the PR is
+  the only valid publish action; the merger's chosen author/reviewer stand.
+  If a PR sits open past 48h, the next run leaves it open, does not touch it
+  further, and may note its age in a status summary for the human — it never
+  merges it, edits its base branch state to mark it published, or otherwise
+  treats it as accepted. Human edits to the PR branch are honored (re-run
+  lint + build after edits; a human still merges).
+- Until a human merges the PR, the topic's `status` in `topic-queue.json`
+  stays `"in-review"` — do not set it to `"published"` from the pipeline.
+  Only a human merge (or a subsequent run confirming the merge happened)
+  moves it to `"published"`, at which point `_ledger.json` gets the publish
+  entry: slug, action, dates, gate scores, target query, authorId,
+  reviewerId, `approval: { "auto": false, "mergedBy": "human" }`.
+- Commit: `Blog: <title>`; Vercel auto-deploys once a human merges the PR to main.
 
 ## Source policy
 - **Tier 1 (primary)**: company filings, IR releases, exchange data (Nasdaq

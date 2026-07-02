@@ -84,6 +84,51 @@
       "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 9, "date": "2026-06-29" },
       "gateScores": { "humanizer": 45, "factcheck": "pass", "onpage": "pass" },
       "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #9 untouched >48h with all gates green. Inbound backlink added from how-to-value-a-stock pillar."
+    },
+    {
+      "slug": "how-to-value-a-stock",
+      "action": "unpublish",
+      "datePublished": null,
+      "dateModified": "2026-07-02",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Pulled from main by human directive 2026-07-02. Reason: the article was live via the PIPELINE.md 48h auto-merge fallback with no human ever reviewing it before publish. Content itself passed an independent post-hoc review (sourced, fact-traced, no fabrication) but is being pulled pending explicit human read/approval per the policy change removing auto-merge. Article JSON moved to blog-content/pending-review/."
+    },
+    {
+      "slug": "what-is-reverse-valuation",
+      "action": "unpublish",
+      "datePublished": null,
+      "dateModified": "2026-07-02",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Pulled from main by human directive 2026-07-02. Same reason as how-to-value-a-stock. Article JSON moved to blog-content/pending-review/."
+    },
+    {
+      "slug": "value-pool-analysis-explained",
+      "action": "unpublish",
+      "datePublished": null,
+      "dateModified": "2026-07-02",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Pulled from main by human directive 2026-07-02. Same reason as how-to-value-a-stock. Article JSON moved to blog-content/pending-review/."
+    },
+    {
+      "slug": "ev-ebitda-vs-pe-ratio",
+      "action": "unpublish",
+      "datePublished": null,
+      "dateModified": "2026-07-02",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Pulled from main by human directive 2026-07-02. Same reason as how-to-value-a-stock. Article JSON moved to blog-content/pending-review/."
+    },
+    {
+      "slug": "how-to-read-an-equity-research-report",
+      "action": "unpublish",
+      "datePublished": null,
+      "dateModified": "2026-07-02",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Pulled from main by human directive 2026-07-02. Same reason as how-to-value-a-stock. Article JSON moved to blog-content/pending-review/."
     }
   ]
 }

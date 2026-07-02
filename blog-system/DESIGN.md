@@ -98,10 +98,10 @@ HTML — AI crawlers don't run JS.
 
 Who wrote / who reviewed is decided **at approval time**: every post ships as
 a PR whose description carries an author + reviewer checklist; whoever merges
-can switch either before accepting. Untouched 48h + all gates green → auto-merge
-with defaults, flagged `approval.auto: true`. Build hard-fails if the chosen
-author has TODO fields, no photo, or no LinkedIn URL — YMYL pages never ship
-with an anonymous or fake byline.
+can switch either before accepting. There is no auto-merge and no timeout —
+a post stays as an open PR indefinitely until a human merges it, however long
+that takes. Build hard-fails if the chosen author has TODO fields, no photo,
+or no LinkedIn URL — YMYL pages never ship with an anonymous or fake byline.
 
 ---
 
@@ -165,8 +165,8 @@ Stage prompts live in `prompts/`. Full operational detail in `PIPELINE.md`.
 5 FACTCHECK every claim traced to report JSON or re-fetched URL; source-policy
            compliance                       → gate: zero unverified claims
 6 BUILD+PR on-page lint → generate HTML (author box, sources section, schema)
-           → PR with author/reviewer checklist → human merge = acceptance
-           (or auto-merge with defaults after 48h, all gates green)
+           → PR with author/reviewer checklist → human merge = acceptance.
+           No auto-merge, no timeout: the pipeline never merges its own PRs.
 ```
 
 **Hard gates (publish blocked on failure):**
@@ -224,8 +224,8 @@ repo. Entry point: `blog-system/PIPELINE.md`.
   with extended thinking at highest effort ("xhigh")**; mechanical stages can
   use a cheaper model.
 - Every post ships as a PR — that PR is the approval surface (author/reviewer
-  selection + accept). Untouched 48h with all gates green → auto-merge with
-  defaults, flagged in ledger.
+  selection + accept). Merge is human-only and untimed: the pipeline never
+  merges its own PRs, no matter how long they sit open or how green the gates.
 - State lives in git: `topic-queue.json` (proposals + queue), `authors.json`,
   `_ledger.json` (what happened, who approved), article JSONs. No external state.
 

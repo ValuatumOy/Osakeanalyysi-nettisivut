@@ -33,11 +33,9 @@
       "role": "pillar",
       "targetQuery": "how to value a stock",
       "intent": "informational",
-      "status": "published",
+      "status": "pending-human-review",
       "prNumber": 5,
-      "publishedAt": "2026-06-22",
-      "approval": "auto",
-      "notes": "Pillar. DCF + multiples + scenarios, each step shown with a real number from our published reports. Auto-merged 2026-06-22 (PR #5 untouched >48h, gates green)."
+      "notes": "Pillar. DCF + multiples + scenarios, each step shown with a real number from our published reports. Drafted, gates green, but pulled from main 2026-07-02 (was live via auto-merge with no human review; auto-merge policy has been removed). Article JSON at blog-content/pending-review/how-to-value-a-stock.json awaiting explicit human approval."
     },
     {
       "slug": "what-is-reverse-valuation",
@@ -45,11 +43,9 @@
       "role": "support",
       "targetQuery": "what is reverse valuation",
       "intent": "informational",
-      "status": "published",
+      "status": "pending-human-review",
       "prNumber": 4,
-      "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain.",
-      "publishedAt": "2026-06-29",
-      "approval": "auto"
+      "notes": "Low competition; we publish bull/base/bear reverse valuations — pure information gain. Drafted, gates green, but pulled from main 2026-07-02 (was live via auto-merge with no human review; auto-merge policy has been removed). Article JSON at blog-content/pending-review/what-is-reverse-valuation.json awaiting explicit human approval."
     },
     {
       "slug": "value-pool-analysis-explained",
@@ -57,11 +53,9 @@
       "role": "support",
       "targetQuery": "value pool analysis stocks",
       "intent": "informational",
-      "status": "published",
+      "status": "pending-human-review",
       "prNumber": 6,
-      "notes": "Use a real segment EV split from a free report (Tesla or UPM).",
-      "publishedAt": "2026-06-29",
-      "approval": "auto"
+      "notes": "Use a real segment EV split from a free report (Tesla or UPM). Drafted, gates green, but pulled from main 2026-07-02 (was live via auto-merge with no human review; auto-merge policy has been removed). Article JSON at blog-content/pending-review/value-pool-analysis-explained.json awaiting explicit human approval."
     },
     {
       "slug": "ev-ebitda-vs-pe-ratio",
@@ -69,11 +63,9 @@
       "role": "support",
       "targetQuery": "ev/ebitda vs p/e which is better",
       "intent": "informational",
-      "status": "published",
+      "status": "pending-human-review",
       "prNumber": 8,
-      "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree. Nokia (net cash) vs Stora Enso (net debt) where EV/EBITDA and P/E reach opposite verdicts. Drafted 2026-06-24, PR #8.",
-      "publishedAt": "2026-06-29",
-      "approval": "auto"
+      "notes": "Comparison-format informational; illustrate with two covered companies where the two metrics disagree. Nokia (net cash) vs Stora Enso (net debt) where EV/EBITDA and P/E reach opposite verdicts. Drafted 2026-06-24, gates green, but pulled from main 2026-07-02 (was live via auto-merge with no human review; auto-merge policy has been removed). Article JSON at blog-content/pending-review/ev-ebitda-vs-pe-ratio.json awaiting explicit human approval."
     },
     {
       "slug": "terminal-growth-rate-dcf",
@@ -91,11 +83,9 @@
       "role": "support",
       "targetQuery": "how to read an equity research report",
       "intent": "informational",
-      "status": "published",
+      "status": "pending-human-review",
       "prNumber": 9,
-      "notes": "Walk through our own free Tesla report section by section; links to product. Drafted 2026-06-26, PR #9 (humanizer 45/50, factcheck pass, lint pass).",
-      "publishedAt": "2026-06-29",
-      "approval": "auto"
+      "notes": "Walk through our own free Tesla report section by section; links to product. Drafted 2026-06-26 (humanizer 45/50, factcheck pass, lint pass), but pulled from main 2026-07-02 (was live via auto-merge with no human review; auto-merge policy has been removed). Article JSON at blog-content/pending-review/how-to-read-an-equity-research-report.json awaiting explicit human approval."
     },
     {
       "slug": "investing-in-helsinki-listed-stocks",
