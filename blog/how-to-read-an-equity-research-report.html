@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to read an equity research report: a worked example | Valuatum Blog</title>
+  <meta name="description" content="How to read an equity research report: we walk through our June 2026 Tesla report (SELL, $350 target) section by section to show where the assumptions hide.">
+  <link rel="canonical" href="https://www.aiequityreports.com/blog/how-to-read-an-equity-research-report.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta property="og:title" content="How to read an equity research report: a worked example">
+  <meta property="og:description" content="How to read an equity research report: we walk through our June 2026 Tesla report (SELL, $350 target) section by section to show where the assumptions hide.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.aiequityreports.com/blog/how-to-read-an-equity-research-report.html">
+  <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-06-26">
+  <meta property="article:modified_time" content="2026-06-26">
+  <meta property="article:author" content="https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to read an equity research report: a worked example">
+  <meta name="twitter:description" content="How to read an equity research report: we walk through our June 2026 Tesla report (SELL, $350 target) section by section to show where the assumptions hide.">
+  <meta name="twitter:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.aiequityreports.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.aiequityreports.com/blog.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to read an equity research report: a worked example",
+          "item": "https://www.aiequityreports.com/blog/how-to-read-an-equity-research-report.html"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://www.aiequityreports.com/blog/how-to-read-an-equity-research-report.html#article",
+      "headline": "How to read an equity research report: a worked example",
+      "description": "How to read an equity research report: we walk through our June 2026 Tesla report (SELL, $350 target) section by section to show where the assumptions hide.",
+      "datePublished": "2026-06-26",
+      "dateModified": "2026-06-26",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://www.aiequityreports.com/blog/how-to-read-an-equity-research-report.html",
+      "author": {
+        "@type": "Person",
+        "name": "Lauri Hynönen",
+        "url": "https://www.aiequityreports.com/authors/lauri-hynonen.html",
+        "sameAs": [
+          "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
+        ],
+        "jobTitle": "AI Analyst, Valuatum Oy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Valuatum",
+        "url": "https://valuatum.com"
+      },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is in an equity research report?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every report has the same core parts: a rating and price target, an investment thesis, a multi-year financial forecast, a valuation that justifies the target, scenarios and risks, and a disclosures page. The CFA Institute treats the thesis, valuation, and risk sections as the essentials. The headline rating is a conclusion; the assumptions behind it are what you actually read for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do analyst ratings like buy, hold, and sell actually mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They mean whatever the firm defines them to mean, which varies. FINRA Rule 2241 requires each report to define its rating scale in plain terms, and the SEC notes a hold at one firm can imply what a sell does at another. Read the definition printed in the report, not the label. A rating is also tied to a target price and a date, so both age as facts change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which section of a research report matters most?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The valuation section, and specifically the single assumption it rests on. In our June 2026 Tesla report, the whole SELL case reduces to one figure: the 549.7 bn USD FSD pool implies roughly 44 million subscribers versus about 1.28 million today. Once you can name the load-bearing assumption, you can decide whether you believe the report. Everything else is supporting detail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are equity research reports biased?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They can be, which is why the disclosures page exists. FINRA Rule 2241 forces firms to disclose investment-banking relationships, analyst holdings, and their distribution of buy, hold, and sell ratings. The SEC advises investors not to rely solely on a recommendation. A rating from a bank that underwrote the stock carries a conflict an independent or AI-generated report may not, so always read who produced it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you read the price target in a research report?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Treat the target as a forecast with a date, then trace it back to the valuation method and the key assumption. Our Tesla target of 350.00 USD comes from a sum-of-the-parts model where 79.6% of enterprise value sits in pre-revenue pools. Check the scenario range too: Tesla spans 108.42 USD to 934.07 USD across bear and bull, so the single number understates the real spread."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .blog-post-hero { background: var(--forest); padding: var(--section-py) 0 2.5rem; }
+    .blog-post-body { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .blog-post-body h2 { font-size: var(--text-lg); font-weight: 500; color: var(--charcoal); margin-top: 0; letter-spacing: -0.02em; }
+    .blog-post-body p { font-size: var(--text-sm); line-height: 1.8; color: var(--charcoal); margin-top: 0; margin-bottom: 1.25rem; }
+    .blog-post-body p:last-child { margin-bottom: 0; }
+    .blog-post-body a { color: var(--green); }
+    .blog-post-body ul, .blog-post-body ol { font-size: var(--text-sm); line-height: 1.8; margin-bottom: 1.25rem; }
+    @media (max-width: 600px) { .blog-post-body { padding: 2rem 1rem 3rem; } }
+  </style>
+</head>
+<body>
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/reports.html" class="nav-link">Reports</a>
+        <a href="/comparisons.html" class="nav-link">Compare</a>
+        <a href="/pricing.html" class="nav-link">Pricing</a>
+        <a href="/methodology.html" class="nav-link">Methodology</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/faq.html" class="nav-link">FAQ</a>
+        <a href="/blog.html" class="nav-link" style="color:var(--green);">Blog</a>
+      </nav>
+      <a href="/reports.html" class="nav-cta">Browse reports</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-hero">
+      <div class="container" style="max-width:720px;">
+        <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); margin-bottom:1.5rem;">
+          <a href="/" style="color:rgba(255,255,255,0.6);">Home</a> ›
+          <a href="/blog.html" style="color:rgba(255,255,255,0.6);">Blog</a> ›
+          <span>Valuation Methodology</span>
+        </nav>
+        <div style="font-size:var(--text-xs); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-light); margin-bottom:1rem;">Valuation Methodology</div>
+        <h1 style="font-size:clamp(1.5rem,4vw,2.25rem); font-weight:300; color:white; line-height:1.25; letter-spacing:-0.03em; margin-bottom:1.25rem;">How to read an equity research report: a worked example</h1>
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <img src="/images/authors/lauri-hynonen.jpg" alt="Lauri Hynönen" width="32" height="32"
+            style="width:32px; height:32px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(255,255,255,0.3);">
+          <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.7);">
+            Lauri Hynönen · 26 June 2026 · 8 min read
+          </span>
+          
+        </div>
+      </div>
+    </section>
+
+    <div class="blog-post-body">
+
+      <section style="margin-top:2.5rem;" id="what-an-equity-research-report-actually-contains">
+          <h2>What an equity research report actually contains</h2>
+          <p>An equity research report is one analyst's argument for buying, holding, or selling a stock, with the evidence attached. Strip away the formatting and every report has the same skeleton: a rating and a price target, an investment thesis, a financial forecast, a valuation that justifies the target, a set of scenarios and risks, and a disclosures page.</p><p>We will use a real one to show how each part reads. Our 1 June 2026 Valuatum report on Tesla (TSLA) is free, so you can open it alongside this guide. It rates Tesla a SELL with a 350.00 USD twelve-month target against a 438.26 USD price, on a 1,567.1 bn USD market capitalisation. Those headline numbers are the conclusion. The job of reading a report well is to work backwards from them to the assumptions that produced them, because that is where you either agree or you don't.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="the-rating-and-target-price-are-conclusions-not-evidence">
+          <h2>The rating and target price are conclusions, not evidence</h2>
+          <p>Start at the top, but do not stop there. Tesla's SELL rating and 350.00 USD target imply about 20.1% downside from 438.26 USD in our June 2026 model. That single line tells you what we think and almost nothing about why.</p><p>Ratings also do not mean the same thing everywhere. The U.S. Securities and Exchange Commission warns that a firm's rating scale is its own, and a "hold" at one shop can carry the weight of a "sell" at another. FINRA Rule 2241 requires a firm to define each rating in plain terms inside the report. So read the definition, not the word. A target price is a forecast with a date on it: ours is twelve-month and tied to the 1 June 2026 model run. When the price or the facts move, the target is supposed to move too.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="read-the-investment-thesis-and-find-what-would-break-it">
+          <h2>Read the investment thesis and find what would break it</h2>
+          <p>The thesis is the falsifiable claim the whole report defends. Ours for Tesla is one sentence of tension: a 1,573.2 bn USD enterprise value has decoupled from the physical business, which generated 100% of 2025 net sales of 94.8 bn USD and only about 7.35 bn USD of combined Core Automotive and Energy operating profit. Everything else in the report is built to support or stress that claim.</p><p>A good report also tells you how it could be wrong. We name the thesis breaker explicitly: a regulatory mandate requiring LIDAR redundancy, or the commoditisation of autonomous software into a baseline safety feature. If you cannot find the thesis breaker in a report, the analyst has not done the hard half of the job. Look for it before you trust anything else.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="check-the-forecast-especially-the-out-years">
+          <h2>Check the forecast, especially the out-years</h2>
+          <p>The forecast is where optimism hides in plain sight. Our Tesla model runs net sales from 94.8 bn USD in 2025 to 138.1 bn USD in 2028, with operating profit climbing from 4.35 bn USD to 16.3 bn USD over the same window. Near-term years are usually anchored to known order books and contracts. The out-years carry the assumptions you most need to interrogate.</p><p>Cash flow deserves a separate look from earnings. We project 2026 gross capital expenditure spiking to 19.4 bn USD, which pushes free cash flow to negative 1.74 bn USD even as reported EBITDA rises. A company can show growing profit on the income statement and still burn cash. When a report shows you both, read the cash line first, because that is the one a business cannot fake for long.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="find-the-valuation-method-and-the-one-assumption-it-rests-on">
+          <h2>Find the valuation method and the one assumption it rests on</h2>
+          <p>This is the section most retail readers skim, and it is the one that decides everything. Our Tesla valuation is a sum-of-the-parts breakdown of the 1,573.2 bn USD enterprise value into five pools. About 79.6% of that value, roughly 1.25 trillion USD, sits in three pre-revenue pools: FSD, Robotaxi, and Optimus. The physical car and energy businesses that earn all of today's revenue carry only about 20.4% of the valuation.</p><p>Once you find the method, find the single assumption doing the heavy lifting. For Tesla it is the FSD pool. We value it at 549.7 bn USD, and justifying that at a 15x EBIT multiple requires about 36.6 bn USD of recurring profit, equivalent to roughly 44 million active subscribers. Tesla had about 1.28 million at 99 USD per month when we wrote the report. That gap, 1.28 million today versus 44 million implied, is the entire SELL case in one number.</p><table><thead><tr><th>Value pool</th><th>Share of EV</th><th>Implied value</th><th>What it earns today</th></tr></thead><tbody><tr><td>FSD &amp; Network Services</td><td>34.9%</td><td>549.7 bn USD</td><td>~1.28m subscribers, no segment profit</td></tr><tr><td>Robotaxi Network</td><td>30.1%</td><td>473.9 bn USD</td><td>Pre-revenue</td></tr><tr><td>Optimus (robots)</td><td>14.5%</td><td>227.5 bn USD</td><td>Pre-revenue</td></tr><tr><td>Core Automotive</td><td>10.8%</td><td>170.6 bn USD</td><td>82.1 bn USD 2025 sales</td></tr><tr><td>Energy</td><td>9.6%</td><td>151.6 bn USD</td><td>12.8 bn USD 2025 sales</td></tr></tbody></table><p>When you can name the load-bearing assumption, you can decide whether you believe it. Everything else is detail. The deeper mechanics are in the <a href="/blog/what-is-reverse-valuation.html">reverse valuation</a> and the broader <a href="/blog/how-to-value-a-stock.html">three ways to value a stock</a>.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="read-the-scenario-range-not-just-the-headline-number">
+          <h2>Read the scenario range, not just the headline number</h2>
+          <p>A single target price hides how wide the outcomes really are. Our Tesla report carries three scenarios, and the spread between them is the actual risk you are taking. The base case lands at 421.03 USD per share, close to the current price. The bull case reaches 934.07 USD if a Cybercab launch and FSD licensing land. The bear case falls to 108.42 USD if autonomous software fails to scale and the multiple compresses.</p><table><thead><tr><th>Scenario</th><th>EV/EBITDA multiple</th><th>Implied value</th><th>Vs. 438.26 USD</th></tr></thead><tbody><tr><td>Bull</td><td>150.0x</td><td>934.07 USD</td><td>+113.1%</td></tr><tr><td>Base</td><td>85.2x</td><td>421.03 USD</td><td>-3.9%</td></tr><tr><td>Bear</td><td>21.6x</td><td>108.42 USD</td><td>-75.3%</td></tr></tbody></table><p>The 75% downside in the bear case is not a tail. It is what the same stock is worth if one assumption, FSD scaling, turns out false. Our opinion is that the embedded assumptions are too aggressive, which is why we rate Tesla SELL. We could be wrong: if FSD take rates climb after EU approval, the bull math starts working, and the report tells you exactly which number to watch.</p>
+        </section>
+<section style="margin-top:2.5rem;" id="check-the-disclosures-who-wrote-it-and-who-paid-for-it">
+          <h2>Check the disclosures: who wrote it and who paid for it</h2>
+          <p>The disclosures page decides how much weight the rest deserves. FINRA Rule 2241 requires a firm to disclose investment-banking relationships with the company, the analyst's own holdings, and the share of its ratings that are buy, hold, or sell. A SELL rating from a bank that just underwrote the company's stock reads differently from an independent one. The SEC's investor guidance is blunt about it: do not rely solely on an analyst's recommendation, and confirm the work against primary filings yourself.</p><p>Our Tesla report is AI-generated equity research with no banking relationship to Tesla and no position in the stock, which removes one common conflict but adds the obvious caveat that a model is only as good as its inputs. So treat any report, ours included, as one input. Read the assumption behind the target, decide if you believe it, then go check the filings. The report that shows its work is the one worth your time.</p>
+        </section>
+
+      
+        <section id="faq" style="margin-top:3rem;">
+          <h2>Frequently asked questions</h2>
+          
+          <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
+            <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">What is in an equity research report?</h3>
+            <p style="margin:0;">Every report has the same core parts: a rating and price target, an investment thesis, a multi-year financial forecast, a valuation that justifies the target, scenarios and risks, and a disclosures page. The CFA Institute treats the thesis, valuation, and risk sections as the essentials. The headline rating is a conclusion; the assumptions behind it are what you actually read for.</p>
+          </div>
+          <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
+            <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">What do analyst ratings like buy, hold, and sell actually mean?</h3>
+            <p style="margin:0;">They mean whatever the firm defines them to mean, which varies. FINRA Rule 2241 requires each report to define its rating scale in plain terms, and the SEC notes a hold at one firm can imply what a sell does at another. Read the definition printed in the report, not the label. A rating is also tied to a target price and a date, so both age as facts change.</p>
+          </div>
+          <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
+            <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">Which section of a research report matters most?</h3>
+            <p style="margin:0;">The valuation section, and specifically the single assumption it rests on. In our June 2026 Tesla report, the whole SELL case reduces to one figure: the 549.7 bn USD FSD pool implies roughly 44 million subscribers versus about 1.28 million today. Once you can name the load-bearing assumption, you can decide whether you believe the report. Everything else is supporting detail.</p>
+          </div>
+          <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
+            <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">Are equity research reports biased?</h3>
+            <p style="margin:0;">They can be, which is why the disclosures page exists. FINRA Rule 2241 forces firms to disclose investment-banking relationships, analyst holdings, and their distribution of buy, hold, and sell ratings. The SEC advises investors not to rely solely on a recommendation. A rating from a bank that underwrote the stock carries a conflict an independent or AI-generated report may not, so always read who produced it.</p>
+          </div>
+          <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
+            <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">How do you read the price target in a research report?</h3>
+            <p style="margin:0;">Treat the target as a forecast with a date, then trace it back to the valuation method and the key assumption. Our Tesla target of 350.00 USD comes from a sum-of-the-parts model where 79.6% of enterprise value sits in pre-revenue pools. Check the scenario range too: Tesla spans 108.42 USD to 934.07 USD across bear and bull, so the single number understates the real spread.</p>
+          </div>
+        </section>
+
+      
+        <section id="sources" style="margin-top:2.5rem;">
+          <h2 style="font-size:var(--text-md);">Sources</h2>
+          <ul style="padding-left:1.2rem; margin:0;">
+            <li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="/reports/tesla-equity-report.html" style="color:var(--green);">Valuatum Tesla Equity Report, 1 June 2026 (free)</a>
+            </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="https://www.sec.gov/about/reports-publications/investorpubsanalystshtm" style="color:var(--green);">Analyzing Analyst Recommendations, U.S. SEC (investor.gov / sec.gov)</a>
+            </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="https://www.finra.org/rules-guidance/rulebooks/finra-rules/2241" style="color:var(--green);">FINRA Rule 2241: Research Analysts and Research Reports</a>
+            </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="https://www.cfainstitute.org/sites/default/files/-/media/documents/support/research-challenge/challenge/rc-equity-research-report-essentials.pdf" style="color:var(--green);">Equity Research Report Essentials, CFA Institute</a>
+            </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="https://corporatefinanceinstitute.com/resources/valuation/equity-research-report/" style="color:var(--green);">Equity Research Report: Definition, Types, Key Components, Corporate Finance Institute</a>
+            </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
+              <a href="/methodology.html" style="color:var(--green);">Valuatum Research Methodology</a>
+            </li>
+          </ul>
+        </section>
+
+      <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:2.5rem; border-left:3px solid var(--gray-steel);">
+        <p style="font-size:var(--text-xs); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute investment advice or a buy/sell recommendation. Always do your own research. See our <a href="/disclaimer.html">full disclaimer</a> and <a href="/methodology.html">methodology</a>. Valuatum Oy, Helsinki, Finland.</p>
+      </div>
+
+      
+        <div style="border-top:1px solid var(--color-border); margin-top:3rem; padding-top:2rem;">
+          <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap;">
+            <img src="/images/authors/lauri-hynonen.jpg" alt="Lauri Hynönen" width="72" height="72"
+              style="width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--color-border);">
+            <div style="flex:1; min-width:200px;">
+              <div style="font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-steel); margin-bottom:0.25rem;">Written by</div>
+              <div style="font-weight:600; color:var(--charcoal); margin-bottom:0.15rem;">Lauri Hynönen</div>
+              <div style="font-size:var(--text-sm); color:var(--gray-steel); margin-bottom:0.5rem;">AI Analyst, Valuatum Oy</div>
+              <p style="font-size:var(--text-sm); color:var(--charcoal-mid); line-height:1.65; margin:0 0 0.75rem;">Lauri Hynönen is an AI analyst at Valuatum Oy, where he designs and evaluates AI systems for equity research. His background is in artificial intelligence and business analysis, and he writes about what AI can and cannot do in stock analysis.</p>
+              <a href="https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/" target="_blank" rel="noopener noreferrer"
+                style="display:inline-flex; align-items:center; gap:0.4rem; font-size:var(--text-xs); font-weight:600; color:var(--green); text-decoration:none; border:1px solid var(--green); border-radius:var(--r-pill); padding:0.3rem 0.75rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57A1.32 1.32 0 0 1 14.24 12.25A1.32 1.32 0 0 1 15.56 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem; font-size:var(--text-xs); color:var(--gray-steel); border-top:1px solid var(--color-border); padding-top:0.75rem;">
+            Reviewed and accepted by <strong>Lauri Hynönen</strong> · AI Analyst, Valuatum Oy · 29 June 2026
+          </div>
+        </div>
+
+      <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
+        <a href="/blog.html" style="font-size:var(--text-sm); color:var(--green); text-decoration:none;">← Back to Blog</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+            <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+            <div class="nav-logo-text">
+              <span class="nav-logo-wordmark">Valuatum</span>
+              <span class="nav-logo-sub">AI Equity Reports</span>
+            </div>
+          </a>
+          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+        </div>
+        <div>
+          <div class="footer-col-label">Reports</div>
+          <div class="footer-links">
+            <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/pricing.html" class="footer-link">Pricing</a>
+            <a href="/methodology.html" class="footer-link">Methodology</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Company</div>
+          <div class="footer-links">
+            <a href="/about.html" class="footer-link">About Valuatum</a>
+            <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Legal</div>
+          <div class="footer-links">
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="/disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/script.js"></script>
+</body>
+</html>
