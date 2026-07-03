@@ -93,8 +93,9 @@
       "role": "pillar",
       "targetQuery": "how to invest in finnish stocks",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Pillar. OMXH structure, sectors, access for international investors; proprietary valuations of 5 covered names."
+      "status": "in-review",
+      "prNumber": 17,
+      "notes": "Pillar. OMXH structure, sectors, access for international investors; proprietary valuations of 5 covered names. Drafted 2026-07-03 (Fri full pipeline run) as PR #17 on branch blog/investing-in-helsinki-listed-stocks. Angle: live June 2026 fair values on 5 largest covered OMXH names (UPM/StoraEnso/Kesko BUY, Nokia/Wärtsilä SELL) vs generic broker SERP. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "is-nokia-stock-undervalued",
