@@ -230,6 +230,54 @@
       "score": 69,
       "rationale": "Symmetric companion to the queued amd-stock-fair-value, using the fresh 5 Jun 2026 Intel report; hard mega-cap SERP but the proprietary foundry-turnaround fair value is the differentiator.",
       "notes": "Cluster D; links to /compare/advanced-micro-devices-vs-intel-stock-comparison (head-to-head intent) + /reports/intel-equity-report. Proprietary data plan: intel-05062026.json — base-case fair value vs price, foundry segment assumptions, scenario range. Score: winnability 10 (US mega-cap, tier-1 media owns it) + proprietary 27 + cluster fit 16 + freshness 16 (5 Jun 2026 report)."
+    },
+    {
+      "slug": "oriola-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "oriola stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-05",
+      "score": 82,
+      "rationale": "A freshly-covered OMXH name (1 Jun 2026 report) with essentially zero structured English coverage in the SERP — the winnable Helsinki wedge applied to a BUY-rated Nordic pharma-distribution defensive nobody else values in English.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings (Kesko, forestry). Proprietary data plan: oriola-01062026.json — BUY, 12m target 1.15 EUR vs 0.93 EUR (+23.5% upside), Services segment 58% of EV at ~4.7x EV/EBITDA, group EV/EBITDA 6.4x, net debt/EBITDA 2.5x, and the bull/base/bear reverse-valuation scenarios. DEPENDENCY/CAVEAT: no /reports/oriola-equity-report page is published yet (Oriola JSON exists in report-content/ but is absent from _catalog.json and sitemap.xml), so at draft time the article can only link down to the pillar + Helsinki siblings, not to an Oriola report page. Ideally publish the Oriola report page first, or adjust internal-link gate expectations. Score: winnability 25 (OMXH pharma distribution, near-zero English SERP) + proprietary 27 + cluster fit 14 (docked for missing report page) + freshness 16 (1 Jun 2026 report + BUY call)."
+    },
+    {
+      "slug": "limitations-of-ai-stock-analysis",
+      "cluster": "ai-equity-research",
+      "role": "support",
+      "targetQuery": "limitations of ai stock analysis",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-05",
+      "score": 70,
+      "rationale": "The explicit Cluster-C 'limitations & failure modes' support from DESIGN §3 is still unqueued; honest-limitations content is rare in a hype-dominated SERP, so it is high information gain and directly builds the brand-trust the cluster exists for.",
+      "notes": "Cluster C support; links to can-ai-analyze-stocks pillar (goes deeper than the pillar's limitations section into concrete failure modes — flag overlap in review, keep intent distinct). Proprietary data plan: our own pipeline as the worked example plus real fragile-valuation cases from report-content — e.g. a distressed/pre-revenue name where a reverse valuation is inherently an option-value guess (New Era Helium, the NU/nuholdings JSON: $12m cap, $0 revenue, SELL) and a pre-commercial biotech (recursion-02062026.json). NOTE: the nuholdings-02062026.json has inconsistent metadata (companyName 'New Era Helium' but sector/country fields say Banks/Brazil) — use narrative content, not the metadata fields, and do not treat it as Nu Holdings. Score: winnability 26 (thin authentic SERP) + proprietary 18 (internal examples, not unique numbers) + cluster fit 18 + freshness 8 (evergreen + AI topicality)."
+    },
+    {
+      "slug": "margin-of-safety-investing",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "margin of safety investing",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-05",
+      "score": 66,
+      "rationale": "Classic evergreen value-investing concept where incumbents explain it abstractly; our differentiator is quantifying it with live upside/bear-case spreads from our own scenario models.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + what-is-reverse-valuation sibling. Proprietary data plan: bull/base/bear scenario spreads across reports to make the buffer concrete — e.g. Oriola +23.5% upside vs its bear scenario, plus Tesla and Nokia scenario ranges (reverseValuation.scenarios in tesla-01062026.json, nokia-05062026.json, oriola-01062026.json). Score: winnability 22 (strong incumbents like Investopedia, but live-number angle differentiates) + proprietary 22 + cluster fit 16 (Cluster A already saturated) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "how-analysts-set-price-targets",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "how do analysts set price targets",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-05",
+      "score": 67,
+      "rationale": "High-volume methodology query answered mostly with vague hand-waving; we can show the actual mechanics because every one of our reports carries an explicit target derived from a reverse-valuation scenario bridge.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + how-to-read-an-equity-research-report sibling. Proprietary data plan: headline.targetPrice vs currentPrice and the reverse-valuation scenario bridges across covered names (e.g. Oriola 1.15 EUR target from a 6.4x EV/EBITDA base, Tesla scenario bridge) to demonstrate target-setting end to end. Score: winnability 24 (moderate competition, 'shown with our own targets' is the info gain) + proprietary 22 + cluster fit 15 (Cluster A saturated) + freshness 6 (evergreen)."
     }
   ],
   "quarterly": [
