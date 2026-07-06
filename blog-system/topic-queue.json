@@ -103,8 +103,9 @@
       "role": "support",
       "targetQuery": "is nokia stock undervalued",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Cluster D pattern applied to OMXH; base-case fair value from nokia report JSON."
+      "status": "in-review",
+      "prNumber": 18,
+      "notes": "Cluster D pattern applied to OMXH; base-case fair value from nokia report JSON. Drafted 2026-07-06 (Mon full pipeline run) as PR #18 on branch blog/is-nokia-stock-undervalued. Angle: our 5 Jun 2026 SELL (fair value 11.50 vs 13.90) preceded a ~20% fall to ~11.00 (verified live via FMP, 6 Jul 2026), so the honest verdict is 'now roughly fairly valued, not cheap' vs the bullish SERP (Trefis/Simply Wall St); plus the 49x optical vs 21.3x mobile value-pool split. Inbound link added from live can-ai-analyze-stocks. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "finnish-forestry-stocks-upm-stora-enso",
