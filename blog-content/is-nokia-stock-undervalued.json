@@ -1,0 +1,87 @@
+{
+  "slug": "is-nokia-stock-undervalued",
+  "cluster": "helsinki-stocks",
+  "role": "support",
+  "targetQuery": "is nokia stock undervalued",
+  "intent": "informational-commercial",
+  "title": "Is Nokia Stock Undervalued? A 2026 Reverse-Valuation View",
+  "metaDescription": "Our 5 June 2026 model rated Nokia (NOKIA.HE) a SELL at €13.90 with an €11.50 fair value. After a ~20% slide to about €11, is Nokia stock undervalued now?",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "Is Nokia stock undervalued in 2026?",
+      "html": "<p>On our numbers, Nokia was overvalued at €13.90 and is close to fair value near €11. Our 5 June 2026 equity report rated Nokia (NOKIA.HE) a SELL, with a 12-month target price of €11.50 against a €13.90 share price at the time, about 17% downside. Since then the shares have fallen to roughly €11 (about €11.03 intraday on 6 July 2026, €11.17 the prior close), a drop of around 20% that has taken the price almost exactly to the fair value we published in June.</p><p>So the honest answer today is neither cheap nor expensive. At €11 Nokia no longer carries the wide premium we flagged, but it is not a bargain. The reverse-valuation math still leaves the price leaning on one segment to do a lot of the work, which is the part most screens miss. We walk through that below. Nokia is also one of the five Helsinki names we value in our <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">guide to investing in Helsinki-listed stocks</a>, and the full case is in our <a href=\"/reports/nokia-equity-report.html\">Nokia equity report</a>.</p>"
+    },
+    {
+      "h2": "How we get to an €11.50 fair value",
+      "html": "<p>Our €11.50 fair value comes from testing Nokia's whole €74.7 billion enterprise value against the profit it actually earns. In the 5 June 2026 model, market capitalisation was €76 billion and enterprise value €74.7 billion, sitting on 2026 estimated group EBIT of €2.37 billion. That is 31.5x EV/EBIT and a group P/E above 43x, the kind of multiple you pay for a fast compounder rather than a networking-equipment maker whose net sales have crept from €19.2 billion in 2024 to an estimated €20.8 billion in 2026.</p><p>Strip the group back to a historical 15x to 17x telecom multiple and that €2.37 billion of EBIT supports only €35 billion to €40 billion of enterprise value, a little over half of what the market assigns. The €11.50 target is where our model lands once we remove the part of that gap we think is unsupported. One detail matters for the mechanics: Nokia holds net cash of about €1.5 billion, so its equity value sits slightly above enterprise value. That net-cash quirk is exactly why we use Nokia as the worked example in our note on <a href=\"/blog/ev-ebitda-vs-pe-ratio.html\">EV/EBITDA versus the P/E ratio</a>.</p>"
+    },
+    {
+      "h2": "Nokia's valuation rests on one segment",
+      "html": "<p>Nearly half of Nokia's enterprise value sits in a segment that earns under a third of its profit. In our June 2026 company value map, Optical and IP Networks is valued at €35.5 billion, 47.5% of enterprise value, on just €725 million of 2026 estimated EBIT. That works out to roughly a 49x EBIT multiple. Mobile Infrastructure does the opposite: it produces €1.73 billion of EBIT, about 73% of the group total, but is priced at a mature 21.3x.</p><p>The market is paying a growth multiple for the smaller, faster part of Nokia and a cash-cow multiple for the larger part that pays the bills. That imbalance is the whole valuation argument.</p><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm); margin:0.5rem 0 0;\"><thead><tr style=\"border-bottom:1px solid var(--color-border); text-align:left;\"><th style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Segment</th><th style=\"padding:0.5rem; text-align:right;\">Enterprise value</th><th style=\"padding:0.5rem; text-align:right;\">Share of EV</th><th style=\"padding:0.5rem; text-align:right;\">2026E EBIT</th><th style=\"padding:0.5rem 0 0.5rem; text-align:right;\">Implied EBIT multiple</th></tr></thead><tbody><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Mobile Infrastructure</td><td style=\"padding:0.5rem; text-align:right;\">€36.8bn</td><td style=\"padding:0.5rem; text-align:right;\">49.3%</td><td style=\"padding:0.5rem; text-align:right;\">€1,728m</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">21.3x</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Optical and IP Networks</td><td style=\"padding:0.5rem; text-align:right;\">€35.5bn</td><td style=\"padding:0.5rem; text-align:right;\">47.5%</td><td style=\"padding:0.5rem; text-align:right;\">€725m</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">~49x</td></tr><tr><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Fixed Networks</td><td style=\"padding:0.5rem; text-align:right;\">€2.4bn</td><td style=\"padding:0.5rem; text-align:right;\">3.2%</td><td style=\"padding:0.5rem; text-align:right;\">€169m</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">~14x</td></tr></tbody></table>"
+    },
+    {
+      "h2": "What today's price still assumes",
+      "html": "<p>At about €11, Nokia's price still assumes the optical business roughly doubles in scale. Our reverse valuation holds Mobile Infrastructure at its mature multiple and lets Optical and IP Networks carry the swing. To support its €35.5 billion valuation, that segment has to grow revenue from €5.8 billion toward €9.0 billion over three to five years while lifting EBIT margins from 12.5% to about 19%, mostly on the Infinera integration and 800G and 1.6T coherent pluggables selling into US hyperscalers.</p><p>Our stated assumption is the opposite: that a 49x optical multiple normalises toward the 20x that mature networking hardware earns. On that assumption a de-rating erases around €20.5 billion of enterprise value and pushes the shares toward €9.92. The table shows the group-level scenarios from the same model. Those per-share figures were struck against the €13.90 June price, so at today's ~€11 the market already sits between our base and bear cases. If you want the mechanics behind this method, we cover it in <a href=\"/blog/what-is-reverse-valuation.html\">what reverse valuation is</a>.</p><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm); margin:0.5rem 0 0;\"><thead><tr style=\"border-bottom:1px solid var(--color-border); text-align:left;\"><th style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Scenario</th><th style=\"padding:0.5rem; text-align:right;\">2026E group revenue</th><th style=\"padding:0.5rem; text-align:right;\">EBITDA</th><th style=\"padding:0.5rem; text-align:right;\">EV/EBITDA</th><th style=\"padding:0.5rem 0 0.5rem; text-align:right;\">Implied value/share</th></tr></thead><tbody><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Bull</td><td style=\"padding:0.5rem; text-align:right;\">€23,500m</td><td style=\"padding:0.5rem; text-align:right;\">€5,000m</td><td style=\"padding:0.5rem; text-align:right;\">17.8x</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">€15.99</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Base</td><td style=\"padding:0.5rem; text-align:right;\">€20,833m</td><td style=\"padding:0.5rem; text-align:right;\">€3,788m</td><td style=\"padding:0.5rem; text-align:right;\">19.7x</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">€13.43</td></tr><tr><td style=\"padding:0.5rem 0.5rem 0.5rem 0;\">Bear</td><td style=\"padding:0.5rem; text-align:right;\">€20,833m</td><td style=\"padding:0.5rem; text-align:right;\">€3,800m</td><td style=\"padding:0.5rem; text-align:right;\">14.3x</td><td style=\"padding:0.5rem 0 0.5rem; text-align:right;\">€9.78</td></tr></tbody></table>"
+    },
+    {
+      "h2": "Where our SELL call could be wrong",
+      "html": "<p>Our SELL is wrong if Nokia executes flawlessly in hyperscaler optics. The bull case in our model reaches €15.99 per share, and it needs Optical EBIT near €2.0 billion, gross margins around 45%, and Infinera scaling into 800G and 1.6T volumes inside US data centres without a stumble. That is not fantasy. AI networking demand is real, and Nokia bought Infinera (completed 28 February 2025, about €2.5 billion, targeting over €200 million of operating-profit synergies by 2027) precisely to chase it.</p><p>Plenty of the market agrees. Simply Wall St's discounted cash flow puts fair value near €12.45 against an €11 price, and Trefis has argued the shares are still undervalued around $13. We take the other side for one reason: at 49x, the optical multiple leaves no room for the multi-sourcing and margin pressure that tend to arrive once hyperscalers standardise their supply chains. The €1.5 billion of net cash is the cushion if our timing is wrong. If 800G volumes land and margins hold, this call ages badly, and we would rather say that now than after the fact.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Nokia stock undervalued right now?",
+      "a": "Not clearly. Our 5 June 2026 model rated Nokia a SELL at €13.90 with an €11.50 fair value. The shares have since fallen about 20% to roughly €11, close to that fair value, so the large premium has gone. At today's price Nokia looks fairly valued rather than cheap, and still leans on its optical segment executing."
+    },
+    {
+      "q": "What is Nokia's price target?",
+      "a": "Our 5 June 2026 report set a 12-month target of €11.50 for Nokia (NOKIA.HE), against a €13.90 price at the time, implying about 17% downside and a SELL rating. The reverse-valuation scenarios ranged from €9.78 in the bear case to €15.99 in the bull case, with a €13.43 base."
+    },
+    {
+      "q": "Why is Nokia rated SELL despite the AI story?",
+      "a": "Because the AI story is already in the price. In our model, Optical and IP Networks is valued at €35.5 billion, 47.5% of enterprise value, on €725 million of 2026 EBIT, about a 49x multiple. That leaves no margin for the multi-sourcing and margin pressure that usually follow hyperscaler standardisation."
+    },
+    {
+      "q": "Has Nokia stock already fallen to its target?",
+      "a": "Roughly, yes. Nokia traded near €13.90 at our 5 June 2026 report date and about €11 in early July 2026, a fall of around 20% that brought it close to our €11.50 fair value and below the €13.43 base-case scenario. The move mostly closes the overvaluation we flagged in June."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum Nokia SELL, €11.50 12-month target vs €13.90 price, market cap €76bn, enterprise value €74.7bn, group P/E >43x (5 June 2026 model)",
+      "source": "report-content/nokia-05062026.json"
+    },
+    {
+      "claim": "Company value map: Optical & IP Networks €35.5bn (47.5% of EV) on €725m 2026E EBIT (~49x) vs Mobile Infrastructure €36.8bn on €1,728m EBIT (21.3x) (5 June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    },
+    {
+      "claim": "Reverse-valuation scenarios: bear €9.78, base €13.43, bull €15.99 per share; 20x optical de-rating erases ~€20.5bn EV (5 June 2026)",
+      "source": "report-content/nokia-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/nokia-equity-report.html",
+    "/blog/investing-in-helsinki-listed-stocks.html",
+    "/blog/ev-ebitda-vs-pe-ratio.html",
+    "/blog/what-is-reverse-valuation.html",
+    "/methodology.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Nokia Equity Report, 5 June 2026 (company value map; enterprise value €74,739m; SELL, €11.50 target)", "url": "/reports/nokia-equity-report.html" },
+    { "label": "Nokia newsroom: completion of the Infinera acquisition (28 February 2025)", "url": "https://www.nokia.com/newsroom/nokia-completes-acquisition-of-infinera-to-create-innovation-powerhouse-in-optical-networks-with-the-scale-to-power-the-data-center-revolution/" },
+    { "label": "Nokia Oyj (NOKIA.HE) share price and 52-week range, Nasdaq Helsinki market data (July 2026)", "url": "https://www.investing.com/equities/nokia-finland" },
+    { "label": "Simply Wall St: Nokia Oyj (HLSE:NOKIA) valuation and discounted cash flow", "url": "https://simplywall.st/stocks/fi/tech/hel-nokia/nokia-oyj-shares/valuation" },
+    { "label": "Trefis: Nokia (NOK) Reset, Is the Infrastructure Giant Still Undervalued At $13?", "url": "https://www.trefis.com/articles/599274/nokia-nok-reset-is-the-infrastructure-giant-still-undervalued-at-13/2026-05-13" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
