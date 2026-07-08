@@ -113,8 +113,9 @@
       "role": "support",
       "targetQuery": "finnish forestry stocks",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Sector angle; both reports free → reveal full numbers. Links to existing UPM vs Stora Enso comparison page (different intent: sector outlook vs head-to-head)."
+      "status": "in-review",
+      "prNumber": 19,
+      "notes": "Sector angle; both reports free → reveal full numbers. Links to existing UPM vs Stora Enso comparison page (different intent: sector outlook vs head-to-head). Drafted 2026-07-08 (Wed full pipeline run) as PR #19 on branch blog/finnish-forestry-stocks-upm-stora-enso. Angle: both large-cap OMXH forestry names priced as forest+energy land banks with the industrials discounted (Stora Enso forest 71.1% of EV, UPM energy+forestry floor ~half of ~€16.6bn EV); both our BUYs but both fell since report dates (UPM €25.31→€22.52, StoraEnso €10.05→€9.16 live via FMP 8 Jul 2026), widening upside to +51%/+39%. Inbound link added from live reports/upm-kymmene-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "finnish-dividend-stocks",
