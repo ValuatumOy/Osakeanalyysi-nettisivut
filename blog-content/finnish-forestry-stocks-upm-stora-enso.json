@@ -1,0 +1,88 @@
+{
+  "slug": "finnish-forestry-stocks-upm-stora-enso",
+  "cluster": "helsinki-stocks",
+  "role": "support",
+  "targetQuery": "finnish forestry stocks",
+  "intent": "informational",
+  "title": "Finnish forestry stocks: UPM and Stora Enso valued",
+  "metaDescription": "Our 2026 view on Finnish forestry stocks: we rate UPM (€34.00 target) and Stora Enso (€12.76) BUY, both priced as forest land banks with the mills sold cheap.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": null, "date": "2026-07-08" },
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08",
+  "readingTimeMinutes": 8,
+  "sections": [
+    {
+      "h2": "What counts as a Finnish forestry stock?",
+      "html": "<p>Two large-cap names dominate the listed Finnish forestry sector: UPM-Kymmene (UPM.HE) and Stora Enso (STERV.HE). Both trade on Nasdaq Helsinki, both are paper, pulp, packaging and forest-land groups, and both sit in our covered universe. A third listed name, Metsä Board, exists, but we do not model it, so this article stays with the two we value directly. It is part of our broader guide to <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">investing in Helsinki-listed stocks</a>.</p><p>We rate both a BUY. That is not a single sector call. It is two separate reverse-valuation models that happen to land on the same verdict, for a reason worth understanding: in each case the market is paying mostly for forest land and energy, and pricing the industrial business bolted on top at a heavy discount. Our UPM report is dated 21 May 2026 and our Stora Enso report 1 June 2026. Prices have moved since, and not in our favour yet.</p>"
+    },
+    {
+      "h2": "Are Finnish forestry stocks a buy in 2026?",
+      "html": "<p>In our June 2026 models, both screen as a BUY. Our UPM report sets a 12-month fair value of €34.00 against a €25.31 price on 21 May 2026, roughly +34% at the time. Our Stora Enso report sets €12.76 against €10.05 on 1 June 2026, about +27%. Neither call has worked so far. Both stocks have drifted lower since we published.</p><p>By 8 July 2026 UPM traded near €22.50 and Stora Enso near €9.16 on Nasdaq Helsinki, below where each sat on its report date. That widens the gap to our fair values rather than closing it. On the current prices the implied upside is about +51% for UPM and +39% for Stora Enso, if the theses hold. They might not. The honest read is that the market has pushed both further into the discount we already thought was too wide, and we have not been paid for that view yet.</p><table><thead><tr><th>Our June 2026 view</th><th>UPM-Kymmene</th><th>Stora Enso</th></tr></thead><tbody><tr><td>Rating</td><td>BUY</td><td>BUY</td></tr><tr><td>Fair value (12-month)</td><td>€34.00</td><td>€12.76</td></tr><tr><td>Price on report date</td><td>€25.31 (21 May)</td><td>€10.05 (1 Jun)</td></tr><tr><td>Price 8 Jul 2026</td><td>~€22.52</td><td>~€9.16</td></tr><tr><td>Implied upside now</td><td>~+51%</td><td>~+39%</td></tr><tr><td>Dividend yield 2026E</td><td>4.9%</td><td>4.0%</td></tr><tr><td>Net debt / EBITDA 2026E</td><td>1.3x</td><td>2.4x</td></tr></tbody></table>"
+    },
+    {
+      "h2": "Why the market prices both as land banks",
+      "html": "<p>The core of both cases is the same. Forest land and energy assets account for most of the enterprise value, and the industrial operations get priced on what is left. That is why we treat these as sum-of-the-parts stories, not multiple-of-earnings stories.</p><p>Take Stora Enso first. In our model its Forest Assets pool alone absorbs about €8.0 billion, or 71.1% of the €11.2 billion <a href=\"/reports/stora-enso-equity-report.html\">enterprise value</a>, backed by a reported biological fair value near €8.5 billion at the end of Q1 2026. That leaves roughly €3.2 billion for industrial segments that generate over €9 billion of revenue and most of the group's operating profit, an implied multiple under 6.7x. Packaging peers trade at 8x to 12x.</p><p>UPM works the same way, with a second leg. Its tangible floor, UPM Energy plus Finnish forestry, supports €8 billion to €9 billion of the roughly €16.6 billion <a href=\"/reports/upm-kymmene-equity-report.html\">enterprise value</a>, close to half. UPM Energy is 27% of group value on its own: zero-carbon Finnish hydropower plus a stake in the Olkiluoto nuclear plant, assets that cannot be rebuilt inside a decade. Add Advanced Materials and about €11 to €12.5 billion is covered, which leaves the entire pulp portfolio and the biochemicals option priced at €3 to €5 billion.</p><table><thead><tr><th>Value pool (our June 2026 split)</th><th>Share of enterprise value</th></tr></thead><tbody><tr><td>Stora Enso: Forest Assets</td><td>71.1%</td></tr><tr><td>Stora Enso: Consumer Packaging</td><td>13.2%</td></tr><tr><td>Stora Enso: packaging, biomaterials, wood</td><td>15.6%</td></tr><tr><td>UPM: Fibres (pulp &amp; forestry)</td><td>50%</td></tr><tr><td>UPM: Energy</td><td>27%</td></tr><tr><td>UPM: Advanced Materials</td><td>19%</td></tr></tbody></table>"
+    },
+    {
+      "h2": "UPM vs Stora Enso: how the two cases differ",
+      "html": "<p>The two BUYs rest on different catalysts. UPM is a cash-flow and pulp-cost story. Stora Enso is a corporate-action story built around a 2027 forest demerger. You can see the split <a href=\"/compare/stora-enso-vs-upm-kymmene-stock-comparison.html\">side by side</a>.</p><p>For UPM the mechanism is a collapse in growth capital expenditure. Capex falls from €715 million in 2024 toward a €300 million maintenance run-rate by 2026, converting €1.7 billion of EBITDA into over €687 million of free cash flow with no volume growth required. That is a 9.8% free-cash-flow yield on a balance sheet carrying net debt at just 1.3x EBITDA. Recovering pulp margins do the rest.</p><p>Stora Enso's catalyst is structural. Its board has begun a statutory cross-border demerger of the Swedish forest assets, about 1.2 million hectares with a fair value near €5.7 billion as of 30 September 2025, into a new company to be listed on Nasdaq Stockholm and Helsinki in the first half of 2027. On top of that, the converted Oulu board line is meant to lift Consumer Packaging margins from a depressed 6.8% toward 11%. The catch is leverage: net debt runs at 2.4x EBITDA, so how the €3.4 billion of group debt is split in the demerger matters as much as the forest value itself. This is the kind of question a <a href=\"/blog/what-is-reverse-valuation.html\">reverse valuation</a> is built to test.</p><table><thead><tr><th></th><th>UPM-Kymmene</th><th>Stora Enso</th></tr></thead><tbody><tr><td>Main catalyst</td><td>Capex collapse + pulp normalisation</td><td>2027 Swedish forest demerger + Oulu ramp</td></tr><tr><td>Key figure</td><td>Capex €715m → €300m; 9.8% FCF yield</td><td>€5.7bn forest spin-off; margin 6.8% → 11%</td></tr><tr><td>Balance sheet</td><td>Net debt/EBITDA 1.3x</td><td>Net debt/EBITDA 2.4x</td></tr><tr><td>Reverse-valuation base case</td><td>€22.93 / sh</td><td>€10.13 / sh</td></tr></tbody></table>"
+    },
+    {
+      "h2": "The risks to our forestry BUY calls",
+      "html": "<p>Both calls rest on pulp prices, and Stora Enso's also rests on a clean demerger. Get either wrong and the thesis fails.</p><p>For UPM the load-bearing assumption is a mid-cycle bleached kraft pulp price near $650 per tonne. Paso de los Toros runs at a cash cost around $280 per tonne, so most of a $650 price drops to the bottom line, and a €900 million EBITDA gap in Fibres closes on price normalisation alone. Cut that assumption and the call weakens fast. Our report's own thesis-breaker is pulp settling durably below $500 per tonne, which would stop the €3 billion Uruguay mill from clearing its cost of capital. This is not abstract. Stora Enso and UPM saw quarterly operating profit fall 17% and 15% recently on lower pulp prices, per Reuters reporting, though both guided to some easing in 2026.</p><p>For Stora Enso the risk is the demerger itself. A statutory cross-border split of the €5.7 billion Swedish forest that triggers capital-gains tax on embedded biological growth would destroy a chunk of the value it is meant to release. So would forcing most of the €3.4 billion group net debt onto the smaller industrial company. And there is the plain timing risk we are living through: both stocks have fallen since our reports, and a cheap stock can stay cheap for as long as the pulp cycle stays soft.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Are Finnish forestry stocks a good investment in 2026?",
+      "a": "In our June 2026 models both large-cap names are a BUY: UPM at a €34.00 fair value and Stora Enso at €12.76. Both trade well below those targets, and both have fallen since our reports. The case rests on forest and energy asset value plus a pulp-price recovery, neither of which is guaranteed."
+    },
+    {
+      "q": "What are the biggest Finnish forestry companies listed on the stock market?",
+      "a": "UPM-Kymmene (UPM.HE) and Stora Enso (STERV.HE) are the two large-cap forest, pulp and packaging groups on Nasdaq Helsinki. Metsä Board is a third listed name. We model UPM and Stora Enso directly and do not cover Metsä Board, so we take no view on it here."
+    },
+    {
+      "q": "Why are UPM and Stora Enso considered undervalued?",
+      "a": "In our sum-of-the-parts models, forest and energy assets absorb most of enterprise value and the industrial businesses are priced on the residual. Stora Enso's forests alone are about 71% of its enterprise value; UPM's energy and forestry floor is close to half of its roughly €16.6 billion enterprise value."
+    },
+    {
+      "q": "Does Stora Enso's forest demerger matter for the share price?",
+      "a": "Yes. Stora Enso plans a statutory cross-border demerger of about 1.2 million hectares of Swedish forest, fair value near €5.7 billion, into a new listed company by the first half of 2027. A clean split releases trapped land value, while capital-gains tax leakage on it is the main risk."
+    },
+    {
+      "q": "What is the biggest risk to Finnish forestry stocks right now?",
+      "a": "Pulp prices. Our UPM call assumes a mid-cycle price near $650 per tonne; a durable drop below $500 would strand its low-cost Uruguay mill. Weak pulp already cut both companies' recent quarterly profits, and a cheap stock can stay cheap while the cycle is soft."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "UPM-Kymmene BUY, €34.00 12-month fair value vs €25.31 price, +34.3% (21 May 2026); tangible floor of UPM Energy + Finnish forestry €8-9bn of ~€16.6bn EV; value pools Fibres 50% / Energy 27% / Advanced Materials 19%",
+      "source": "report-content/upm-21052026.json"
+    },
+    {
+      "claim": "Stora Enso BUY, €12.76 12-month fair value vs €10.05 price, +27.0% (1 Jun 2026); Forest Assets 71.1% / ~€8.0bn of €11.2bn EV; reverse-valuation base €10.13; 2027 Swedish forest demerger ~€5.7bn",
+      "source": "report-content/storaenso-01062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/blog/investing-in-helsinki-listed-stocks.html",
+    "/reports/upm-kymmene-equity-report.html",
+    "/reports/stora-enso-equity-report.html",
+    "/compare/stora-enso-vs-upm-kymmene-stock-comparison.html",
+    "/blog/what-is-reverse-valuation.html"
+  ],
+  "sources": [
+    { "label": "Valuatum UPM-Kymmene Equity Report, 21 May 2026 (BUY, €34.00 target)", "url": "/reports/upm-kymmene-equity-report.html" },
+    { "label": "Valuatum Stora Enso Equity Report, 1 June 2026 (BUY, €12.76 target)", "url": "/reports/stora-enso-equity-report.html" },
+    { "label": "Stora Enso — strategic review completed, plan to demerge Swedish forest assets (~1.2m ha, ~€5.7bn) into a new listed company, regulatory release, 14 November 2025", "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2025/11/stora-enso-completes-strategic-review-and-intends-to-create-the-largest-listed-pure-play-forest-company-in-europe-inside-information" },
+    { "label": "Nasdaq Helsinki share-price data — UPM.HE and STERV.HE, 8 July 2026", "url": "https://www.nasdaqomxnordic.com/shares" },
+    { "label": "Finnish forestry firms report lower profits, signal some easing in 2026 (Reuters, via ESM Magazine)", "url": "https://www.esmmagazine.com/packaging-design/finnish-forestry-firms-report-lower-profits-signal-some-easing-in-2026-305388" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
