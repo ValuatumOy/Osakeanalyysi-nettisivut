@@ -247,9 +247,11 @@
           <div class="cant-find-form-wrap">
             <div class="cant-find-price">€9.90 <span>per fresh report</span></div>
             <form class="fresh-order-form" id="freshOrderFormMain" novalidate>
-              <div class="fresh-form-row">
-                <input type="text" class="fresh-input" id="freshCompany" placeholder="Company name *" required aria-label="Company name">
-                <input type="text" class="fresh-input" id="freshTicker" placeholder="Ticker (optional)" aria-label="Ticker symbol">
+              <div class="company-picker">
+                <input type="text" class="fresh-input" id="freshCompany" placeholder="Search company or ticker, e.g. Neste, TSLA" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" required aria-label="Company">
+                <div class="company-picker-menu" id="freshMainPickerMenu" role="listbox"></div>
+                <div class="company-picker-chip" id="freshMainSelected" hidden></div>
+                <p class="company-picker-hint" id="freshMainHint"></p>
               </div>
               <input type="email" class="fresh-input" id="freshEmail" placeholder="Your email *" required aria-label="Email address">
               <select class="fresh-input fresh-select" id="freshPurpose" aria-label="Report purpose">
@@ -404,19 +406,12 @@
           <span class="rp-price-note-inline">Delivered by email · Fresh data</span>
         </div>
         <form class="rp-modal-form" id="freshModalForm" novalidate>
-          <div class="rp-form-row-2">
-            <div class="rp-form-group">
-              <label class="rp-form-label" for="freshModalCompany">Company name *</label>
-              <input type="text" class="rp-form-input" id="freshModalCompany" placeholder="e.g. Apple, Novo Nordisk" required>
-            </div>
-            <div class="rp-form-group">
-              <label class="rp-form-label" for="freshModalTicker">Ticker (optional)</label>
-              <input type="text" class="rp-form-input" id="freshModalTicker" placeholder="e.g. AAPL">
-            </div>
-          </div>
-          <div class="rp-form-group">
-            <label class="rp-form-label" for="freshModalExchange">Exchange (optional)</label>
-            <input type="text" class="rp-form-input" id="freshModalExchange" placeholder="e.g. NASDAQ, Helsinki, NYSE">
+          <div class="rp-form-group company-picker">
+            <label class="rp-form-label" for="freshModalCompany">Company *</label>
+            <input type="text" class="rp-form-input" id="freshModalCompany" placeholder="Search company or ticker, e.g. Neste, TSLA" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" required>
+            <div class="company-picker-menu" id="freshModalPickerMenu" role="listbox"></div>
+            <div class="company-picker-chip" id="freshModalSelected" hidden></div>
+            <p class="company-picker-hint" id="freshModalHint"></p>
           </div>
           <div class="rp-form-group">
             <label class="rp-form-label" for="freshModalEmail">Your email *</label>
@@ -453,6 +448,32 @@
     </div>
   </div>
 
+  <style>
+    /* Company picker (Task B) */
+    .company-picker { position: relative; }
+    .company-picker-menu {
+      display: none; position: absolute; left: 0; right: 0; top: calc(100% + 4px);
+      z-index: 60; background: #fff; border: 1px solid var(--color-border, #E2E9E5);
+      border-radius: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.12);
+      max-height: 280px; overflow-y: auto; text-align: left;
+    }
+    .company-picker-menu.open { display: block; }
+    .company-picker-item {
+      display: flex; align-items: baseline; gap: .6rem; padding: .6rem .85rem;
+      cursor: pointer; border-bottom: 1px solid #F0F4F2;
+    }
+    .company-picker-item:last-child { border-bottom: none; }
+    .company-picker-item:hover, .company-picker-item.active { background: #F3F8F5; }
+    .company-picker-ticker { font-weight: 700; font-size: .8rem; color: #1B3028; min-width: 78px; }
+    .company-picker-name { flex: 1; font-size: .9rem; color: #33413B; }
+    .company-picker-industry { font-size: .72rem; color: #8A9590; white-space: nowrap; }
+    .company-picker-chip {
+      margin-top: .5rem; display: inline-block; font-size: .78rem; font-weight: 600;
+      color: #1f7a52; background: #E7F3EC; border-radius: 100px; padding: .25rem .7rem;
+    }
+    .company-picker-chip[hidden] { display: none; }
+    .company-picker-hint { margin: .45rem 0 0; font-size: .78rem; color: #8A9590; line-height: 1.5; }
+  </style>
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
   <script src="js/reportsData.js"></script>
@@ -794,9 +815,7 @@
   function openFreshOrderModal() {
     document.getElementById('freshModalStep1').style.display = '';
     document.getElementById('freshModalStep2').style.display = 'none';
-    document.getElementById('freshModalCompany').value = '';
-    document.getElementById('freshModalTicker').value = '';
-    document.getElementById('freshModalExchange').value = '';
+    freshPickers.modal.reset();
     document.getElementById('freshModalEmail').value = '';
     const modal = document.getElementById('freshModal');
     modal.style.display = 'flex';
@@ -885,38 +904,125 @@
     }
   }
 
+  // ── Company picker (Task B): Wisdom-backed autocomplete ───────────────────
+  // Fresh orders must resolve to a company Wisdom actually covers, carrying its
+  // real SYMBOL.EXCHANGE ticker into checkout. Free text is not accepted — the
+  // submit handlers require a picked selection. Exchange/country are derived
+  // server-side from the ticker suffix (reconciler.js), so the picker only needs
+  // to carry the ticker.
+  function createCompanyPicker({ inputId, menuId, chipId, hintId }) {
+    const input = document.getElementById(inputId);
+    const menu = document.getElementById(menuId);
+    const chip = document.getElementById(chipId);
+    const hint = document.getElementById(hintId);
+    if (!input || !menu) return { getSelected: () => null, reset: () => {} };
+
+    let selected = null;
+    let results = [];
+    let activeIndex = -1;
+    let debounce = null;
+    let seq = 0;
+
+    const setHint = msg => { if (hint) hint.textContent = msg || ''; };
+    function closeMenu() { menu.classList.remove('open'); menu.innerHTML = ''; activeIndex = -1; input.setAttribute('aria-expanded', 'false'); }
+    function clearSelection() { if (chip) { chip.hidden = true; chip.textContent = ''; } selected = null; }
+
+    function choose(item) {
+      if (!item) return;
+      selected = item;
+      input.value = item.companyName;
+      if (chip) { chip.hidden = false; chip.textContent = 'Selected: ' + item.ticker; }
+      setHint('');
+      closeMenu();
+    }
+
+    function highlight() {
+      Array.from(menu.children).forEach((el, i) => el.classList.toggle('active', i === activeIndex));
+    }
+
+    function render(list) {
+      results = list;
+      if (!list.length) { closeMenu(); return; }
+      menu.innerHTML = list.map((r, i) =>
+        '<div class="company-picker-item" role="option" data-i="' + i + '">' +
+          '<span class="company-picker-ticker">' + escapeHTML(r.ticker) + '</span>' +
+          '<span class="company-picker-name">' + escapeHTML(r.companyName) + '</span>' +
+          (r.industry ? '<span class="company-picker-industry">' + escapeHTML(r.industry) + '</span>' : '') +
+        '</div>').join('');
+      menu.classList.add('open');
+      input.setAttribute('aria-expanded', 'true');
+      activeIndex = -1;
+      Array.from(menu.children).forEach(el => {
+        el.addEventListener('mousedown', ev => { ev.preventDefault(); choose(results[Number(el.dataset.i)]); });
+      });
+    }
+
+    async function runQuery(q) {
+      const mySeq = ++seq;
+      try {
+        const res = await fetch(CATALOG_BASE + '/api/search-companies?q=' + encodeURIComponent(q));
+        if (mySeq !== seq) return; // a newer keystroke superseded this one
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        const list = Array.isArray(data.results) ? data.results : [];
+        if (list.length) { setHint(''); render(list); }
+        else { render([]); setHint('No covered company matches "' + q + '". We can only generate reports for companies in our data universe.'); }
+      } catch (_) {
+        if (mySeq !== seq) return;
+        render([]); setHint('Search is temporarily unavailable — please try again.');
+      }
+    }
+
+    input.addEventListener('input', () => {
+      clearSelection(); // editing invalidates a previous pick
+      const q = input.value.trim();
+      clearTimeout(debounce);
+      if (q.length < 2) { closeMenu(); setHint(''); return; }
+      debounce = setTimeout(() => runQuery(q), 250);
+    });
+
+    input.addEventListener('keydown', e => {
+      if (!menu.classList.contains('open') || !menu.children.length) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); activeIndex = Math.min(activeIndex + 1, menu.children.length - 1); highlight(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); highlight(); }
+      else if (e.key === 'Enter') { if (activeIndex >= 0) { e.preventDefault(); choose(results[activeIndex]); } }
+      else if (e.key === 'Escape') { closeMenu(); }
+    });
+
+    input.addEventListener('blur', () => setTimeout(closeMenu, 150));
+
+    return {
+      getSelected: () => selected,
+      reset: () => { clearSelection(); input.value = ''; setHint(''); closeMenu(); },
+    };
+  }
+
+  const freshPickers = {
+    modal: createCompanyPicker({ inputId: 'freshModalCompany', menuId: 'freshModalPickerMenu', chipId: 'freshModalSelected', hintId: 'freshModalHint' }),
+    main: createCompanyPicker({ inputId: 'freshCompany', menuId: 'freshMainPickerMenu', chipId: 'freshMainSelected', hintId: 'freshMainHint' }),
+  };
+
   document.getElementById('freshModalForm')?.addEventListener('submit', e => {
     e.preventDefault();
-    const company = document.getElementById('freshModalCompany')?.value.trim();
+    const sel = freshPickers.modal.getSelected();
     const email = document.getElementById('freshModalEmail')?.value.trim();
-    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
-    handleFreshOrderSubmit(
-      company,
-      document.getElementById('freshModalTicker')?.value.trim(),
-      email,
-      'fresh_modal',
-      {
-        exchange: document.getElementById('freshModalExchange')?.value.trim(),
-        purpose: document.getElementById('freshModalPurpose')?.value,
-      }
-    );
+    if (!sel) { showToast('Please select a company from the list.'); return; }
+    if (!email || !email.includes('@')) { showToast('Please enter a valid email.'); return; }
+    handleFreshOrderSubmit(sel.companyName, sel.ticker, email, 'fresh_modal', {
+      purpose: document.getElementById('freshModalPurpose')?.value,
+    });
   });
 
   // ── Main fresh order form (cant-find section) ─────────────────────────────
   document.getElementById('freshOrderFormMain')?.addEventListener('submit', e => {
     e.preventDefault();
-    const company = document.getElementById('freshCompany')?.value.trim();
+    const sel = freshPickers.main.getSelected();
     const email = document.getElementById('freshEmail')?.value.trim();
-    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
-    handleFreshOrderSubmit(
-      company,
-      document.getElementById('freshTicker')?.value.trim(),
-      email,
-      'main_form',
-      {
-        purpose: document.getElementById('freshPurpose')?.value,
-      }
-    );
+    if (!sel) { showToast('Please select a company from the list.'); return; }
+    if (!email || !email.includes('@')) { showToast('Please enter a valid email.'); return; }
+    handleFreshOrderSubmit(sel.companyName, sel.ticker, email, 'main_form', {
+      purpose: document.getElementById('freshPurpose')?.value,
+    });
   });
 
   // ── Modal close handlers ──────────────────────────────────────────────────

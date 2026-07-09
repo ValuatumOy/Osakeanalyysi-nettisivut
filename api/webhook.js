@@ -1,6 +1,6 @@
 const Stripe = require('stripe');
 const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
-const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = require('../server/email');
+const { sendReportEmail, sendFreshConfirmEmail } = require('../server/email');
 
 // Vercel: disable body parser so Stripe signature verification receives the raw body.
 async function getRawBody(req) {
@@ -60,10 +60,13 @@ const handler = async (req, res) => {
           sessionId: session.id,
           companyName: session.metadata?.company || '',
           ticker: session.metadata?.ticker || '',
+          exchange: session.metadata?.exchange || '',
           customerEmail: email || '',
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
         };
 
+        // Forwards to the EC2 catalog API, which records the purchase AND
+        // enqueues a NEW order row for the reconciler to fulfil (Task D).
         await recordCatalogPurchase(purchase);
 
         if (email) {
@@ -71,7 +74,8 @@ const handler = async (req, res) => {
         } else {
           console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
         }
-        await sendAdminNotification(session.metadata, email);
+        // Admin notifications now come from the reconciler (success + failure),
+        // not from here — generation hasn't run yet at webhook time.
       } else {
         const report = await getCatalogReport(reportId);
         if (!email) {

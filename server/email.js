@@ -117,8 +117,8 @@ async function sendFreshConfirmEmail(toEmail, meta) {
           <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;">Order confirmed.</h1>
           <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">Fresh AI Equity Report for ${company}${ticker}</p>
           <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
-            We've received your order and will generate a fresh report using the latest available financial data.
-            Your PDF will arrive at this address within <strong>1 business day</strong>.
+            We've received your order and are generating a fresh report using the latest available financial data.
+            Your PDF will arrive at this address within <strong>about 30 minutes</strong>.
           </p>
           <div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:24px;">
             <p style="font-size:13px;color:#8A9590;margin:0;">
@@ -140,24 +140,46 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   }, 'fresh confirmation email');
 }
 
-// ── Fresh report: notify admin to generate ──────────────────────────────────
+// ── Fresh report: FAILURE fallback — ask admin to generate manually ─────────
+// Called by the reconciler when an order lands in FAILED. This is the old
+// manual path, now reserved for failures only.
 async function sendAdminNotification(meta, customerEmail) {
   await sendEmail({
     from: FROM,
     to: ADMIN,
-    subject: `New fresh report order: ${meta?.company || 'unknown'}`,
+    subject: `Fresh report failed — manual generation needed: ${meta?.company || 'unknown'}`,
     html: `
-      <p><strong>New fresh report order — action required.</strong></p>
+      <p><strong>Automated generation failed — please generate this report manually and send it to the customer.</strong></p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
         <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
         <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
         <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
         <tr><td style="color:#666;">Customer email</td><td><a href="mailto:${customerEmail}">${customerEmail || '—'}</a></td></tr>
-        <tr><td style="color:#666;">Purpose</td><td>${meta?.purpose || '—'}</td></tr>
+        ${meta?.error ? `<tr><td style="color:#666;">Error</td><td>${meta.error}</td></tr>` : ''}
+        ${meta?.purpose ? `<tr><td style="color:#666;">Purpose</td><td>${meta.purpose}</td></tr>` : ''}
       </table>
-      <p style="margin-top:16px;">Generate the report and send the PDF to the customer email above.</p>
     `,
-  }, 'admin notification email');
+  }, 'admin failure notification');
 }
 
-module.exports = { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification };
+// ── Fresh report: SUCCESS FYI — report generated & delivered (dev/testing) ──
+// Called by the reconciler on DELIVERED when ADMIN_NOTIFY_ON_SUCCESS is set.
+async function sendAdminDeliveryNotice(meta) {
+  await sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Fresh report delivered: ${meta?.company || meta?.ticker || 'unknown'}`,
+    html: `
+      <p><strong>Fresh report generated and emailed to the customer.</strong> No action needed.</p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
+        <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
+        <tr><td style="color:#666;">Customer</td><td><a href="mailto:${meta?.customerEmail || ''}">${meta?.customerEmail || '—'}</a></td></tr>
+        <tr><td style="color:#666;">PDF</td><td><a href="${meta?.pdfUrl || '#'}">${meta?.pdfUrl || '—'}</a></td></tr>
+      </table>
+    `,
+  }, 'admin delivery notice');
+}
+
+module.exports = { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification, sendAdminDeliveryNotice };

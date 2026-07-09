@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
           currency: 'eur',
           product_data: {
             name: `Fresh AI Equity Report - ${company}`,
-            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within 1 business day.`,
+            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
           },
           unit_amount: FRESH_REPORT_PRICE_CENTS,
         },
