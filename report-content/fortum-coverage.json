@@ -1,11 +1,13 @@
 {
   "id": "fortum-coverage",
+  "slug": "fortum-equity-report",
   "companyName": "Fortum Oyj",
   "ticker": "FORTUM",
   "exchange": "NASDAQ Helsinki",
   "country": "Finland",
   "sector": "Utilities",
   "currency": "EUR",
+  "reportDate": "2026-07-09",
   "headline": {
     "currentPrice": "19.80 EUR",
     "marketCap": "EUR 17.9 bn"

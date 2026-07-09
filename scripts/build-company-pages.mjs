@@ -405,7 +405,8 @@ ${FOOTER()}
 
 // run
 const catalog = loadCatalog();
-const entries = catalog.map((cat) => ({ cat, content: loadContent(cat.id) })).filter((e) => !['nuholdings-02062026'].includes(e.cat.id));
+// fortum-coverage: now has its own real report page (reports/fortum-equity-report.html) — no mockup needed.
+const entries = catalog.map((cat) => ({ cat, content: loadContent(cat.id) })).filter((e) => !['nuholdings-02062026', 'fortum-coverage'].includes(e.cat.id));
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const idx = [];
 for (const e of entries) {
