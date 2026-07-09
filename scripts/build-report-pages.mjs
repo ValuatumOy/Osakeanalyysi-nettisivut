@@ -12,7 +12,8 @@ const CONTENT_DIR = path.join(ROOT, 'report-content');
 const OUT_DIR = path.join(ROOT, 'reports');
 
 // Reports whose PDF content does not match their catalog identity — do not publish.
-const EXCLUDE = new Set(['nuholdings-02062026']);
+// fortum-coverage: coverage-only catalog entry (no report yet) — company page only, not a report landing page.
+const EXCLUDE = new Set(['nuholdings-02062026', 'fortum-coverage']);
 
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

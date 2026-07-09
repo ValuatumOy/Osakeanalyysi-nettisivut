@@ -241,5 +241,15 @@
       "Industrials",
       "PDF"
     ]
+  },
+  {
+    "id": "fortum-coverage",
+    "companyName": "Fortum Oyj",
+    "name": "Fortum Oyj",
+    "ticker": "FORTUM",
+    "exchange": "Helsinki",
+    "country": "FI",
+    "sector": "Utilities",
+    "profile": "Fortum Oyj is a Nordic energy group headquartered in Espoo, Finland, generating and selling low-carbon electricity and heat across Finland, Sweden, Norway and Poland. The Generation segment operates a portfolio of hydropower, nuclear and wind assets — including full or part ownership of more than 150 Nordic hydropower plants, the Loviisa nuclear plant, and stakes in the Oskarshamn, Forsmark and Olkiluoto nuclear plants — alongside district heating, cooling and decarbonisation services for industrial customers. The Consumer Solutions segment sells electricity products and services to more than two million households and businesses, predominantly in the Nordics and Poland. Since divesting its stake in the German utility Uniper in 2024, Fortum has repositioned around a leaner Nordic-Baltic clean-energy core, prioritising nuclear, hydro and grid-stability investments over international expansion. Fortum is listed on Nasdaq Helsinki (FORTUM) and is majority-owned by the Finnish State."
   }
 ]
