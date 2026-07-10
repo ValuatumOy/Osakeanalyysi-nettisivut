@@ -1,0 +1,9 @@
+{
+  "ticker": "NESTE.HE",
+  "companyName": "Neste",
+  "profile": "Neste is a Finnish energy company focused on renewable products and conventional oil products. It produces renewable diesel and sustainable aviation fuel, refines and markets transport fuels and other petroleum-based products, and operates a marketing and services business. The company also develops refining technologies and feedstock solutions for lower-carbon fuels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T12:20:02.373Z"
+}
