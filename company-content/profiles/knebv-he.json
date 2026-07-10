@@ -1,0 +1,9 @@
+{
+  "ticker": "KNEBV.HE",
+  "companyName": "Kone",
+  "profile": "KONE is a Finnish industrial company that designs, manufactures, installs, maintains and modernizes elevators, escalators, automatic building doors and related people-flow solutions. It serves residential, commercial and infrastructure buildings, with recurring service and modernization revenue alongside new equipment sales. The company operates globally from its headquarters in Espoo, Finland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T12:19:47.188Z"
+}

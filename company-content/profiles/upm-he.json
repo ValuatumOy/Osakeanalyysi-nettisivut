@@ -1,0 +1,9 @@
+{
+  "ticker": "UPM.HE",
+  "companyName": "UPM",
+  "profile": "UPM is a Finnish forest industry company that produces pulp, timber and sawmill products, label materials, specialty and communication papers, and plywood. It also operates low-emission energy and biorefining businesses, including wood-based biofuels and biochemicals. The company uses renewable and recyclable raw materials across its industrial operations and serves customers in packaging, paper and engineered materials.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T12:21:09.151Z"
+}
