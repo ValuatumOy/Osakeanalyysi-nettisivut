@@ -123,8 +123,9 @@
       "role": "support",
       "targetQuery": "best finnish dividend stocks",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Listicle format likely dominates SERP; use payout data from covered names only — no claims about uncovered stocks."
+      "status": "in-review",
+      "prNumber": 21,
+      "notes": "Drafted 2026-07-10 (Fri full pipeline run) as PR #21 on branch blog/finnish-dividend-stocks. Angle: coverage-first ranking of covered Finnish dividend names — rank by yield PAIRED with payout ratio + FCF yield, not headline yield. UPM and Kesko both 4.9% forward yield (our June 2026 models) but UPM better-covered (9.8% FCF yield vs 6.1%); Stora Enso 4.0% flagged as forward estimate assuming payout normalizes to ~80% above its 50%-of-EPS policy; Nokia 2.1%/94% payout SELL, Wärtsilä 1.4%/40% SELL; withholding-tax net-yield section for international investors. Payout data from covered names only, no claims on uncovered stocks. External dividend-policy sources verified via WebSearch (sandbox egress blocks WebFetch). Inbound links added from live reports/kesko-equity-report + reports/upm-kymmene-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "can-ai-analyze-stocks",
