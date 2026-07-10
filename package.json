@@ -2,6 +2,10 @@
   "name": "valuatum-ai-reports",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "generate:companies": "node scripts/generate-company-pages.mjs",
+    "test:company-pages": "node --test test/company-pages/*.test.mjs"
+  },
   "dependencies": {
     "resend": "^4.0.0",
     "stripe": "^17.3.1"

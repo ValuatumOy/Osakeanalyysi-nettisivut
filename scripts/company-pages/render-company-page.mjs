@@ -1,0 +1,262 @@
+const SITE = 'https://www.aiequityreports.com';
+const NEW_REPORT_PRICE = 50;
+
+export function pageSlug(company) {
+  return `${slugify(shortName(company.companyName))}-equity-report`;
+}
+
+export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date()) {
+  const name = shortName(company.companyName);
+  const slug = pageSlug(company);
+  const url = `${SITE}/reports/${slug}.html`;
+  const date = toIsoDate(generatedOn);
+  const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: revenue, EBIT, net earnings, book value, year-end share price and market capitalisation.`;
+  const metrics = metricDefinitions(company);
+  const related = relatedCompanies.filter((item) => item.ticker !== company.ticker);
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Reports', item: `${SITE}/reports.html` },
+          { '@type': 'ListItem', position: 3, name: `${name} overview`, item: url },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#page`,
+        name: `${name} (${company.ticker}) Stock Analysis & AI Equity Report`,
+        description,
+        dateModified: date,
+        inLanguage: 'en',
+        url,
+        mainEntity: {
+          '@type': 'Corporation',
+          name: company.companyName,
+          tickerSymbol: company.ticker,
+          identifier: company.companyCode || undefined,
+          description: company.profile,
+        },
+      },
+    ],
+  };
+  const jsonLdText = JSON.stringify(jsonLd, jsonReplacer, 2).replace(/</g, '\\u003c');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report &mdash; Price Target &amp; Valuation | Valuatum</title>
+  <meta name="description" content="${attr(description)}">
+  <link rel="canonical" href="${attr(url)}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta property="og:title" content="${attr(`${name} (${company.ticker}) Stock Analysis & AI Equity Report - Price Target & Valuation | Valuatum`)}">
+  <meta property="og:description" content="${attr(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${attr(url)}">
+  <meta property="og:image" content="${SITE}/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${attr(`${name} (${company.ticker}) AI Equity Report`)}">
+  <meta name="twitter:description" content="${attr(description)}">
+  <meta name="twitter:image" content="${SITE}/images/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
+  <script type="application/ld+json">
+${jsonLdText}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .cp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:0.6rem;margin-top:0.25rem;}
+    .cp-cell{background:#fff;border:1px solid var(--color-border);border-radius:var(--r-md);padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.2rem;min-width:0;}
+    .cp-l{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.05em;color:var(--gray-steel);line-height:1.25;}
+    .cp-v{font-size:1rem;font-weight:600;color:var(--charcoal);line-height:1.3;overflow-wrap:break-word;}
+    .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
+    .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .cp-scroll table{white-space:nowrap;min-width:100%;}
+    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
+    .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
+    .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
+    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
+  </style>
+</head>
+<body>
+${navHtml()}
+
+  <main class="report-full-page">
+    <section class="report-company-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.6); margin-bottom:1rem;">
+          <a href="/" style="color:rgba(255,255,255,0.7);">Home</a> &rsaquo;
+          <a href="/reports.html" style="color:rgba(255,255,255,0.7);">Reports</a> &rsaquo;
+          <span>${esc(name)}</span>
+        </nav>
+        <div class="company-header-inner">
+          <div class="company-ident">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
+              <span class="company-ticker">${esc(company.ticker)}</span>
+              <span class="company-status-badge"><span class="company-status-dot"></span>Coverage &middot; Added ${date}</span>
+            </div>
+            <h1 class="company-name">${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
+            <div class="company-meta">
+              ${company.industry ? `<span class="company-meta-chip">${esc(company.industry)}</span><span class="company-meta-sep"></span>` : ''}
+              <span class="company-meta-chip">${esc(company.currency)}</span>
+            </div>
+          </div>
+          <div class="company-header-actions">
+            <a href="#generate" class="btn btn-gold">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
+      <div class="report-full-content coverage-cols">
+        <section class="report-full-section" id="overview">
+          <h2>${esc(name)} (${esc(company.ticker)}) overview</h2>
+          <p>${esc(companyOverview(company, name))}</p>
+        </section>
+
+        <section class="report-full-section" id="metrics">
+          <h2>Key metrics &amp; valuation multiples</h2>
+          <div class="cp-grid">${metrics.map(metricCell).join('')}</div>
+        </section>
+
+        <section class="report-full-section" id="about">
+          <h2>About ${esc(name)}</h2>
+          <p>${esc(company.profile)}</p>
+        </section>
+
+        <section class="report-full-section" id="generate">
+          <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
+            <h2 style="color:white; margin-top:0;">Generate the ${esc(name)} report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.</p>
+            <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
+              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="report-full-section" id="sources">
+          <h2>Sources &amp; methodology</h2>
+          <p>Financial figures are sourced from Valuatum's financial model for ${esc(company.companyName)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
+            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
+          </div>
+        </section>
+
+        ${relatedSection(related)}
+      </div>
+    </div>
+  </main>
+
+${footerHtml()}
+  <script src="/js/script.js"></script>
+</body>
+</html>
+`;
+}
+
+function metricDefinitions(company) {
+  const { metrics, currency, financialYear } = company;
+  return [
+    { label: 'Book value', value: formatMillions(metrics.bookValue, currency), sub: `FY ${financialYear}` },
+    { label: 'Share price', value: formatPrice(metrics.sharePrice, currency), sub: `FY ${financialYear} year end` },
+    { label: 'Revenue', value: formatMillions(metrics.revenue, currency), sub: `FY ${financialYear}` },
+    { label: 'Operating profit', value: formatMillions(metrics.ebit, currency), sub: `FY ${financialYear}` },
+    { label: 'Net earnings', value: formatMillions(metrics.netEarnings, currency), sub: `FY ${financialYear}` },
+    { label: 'Market capitalisation', value: formatMillions(metrics.marketCap, currency), sub: `FY ${financialYear} year end` },
+  ];
+}
+
+function companyOverview(company, name) {
+  const revenue = formatMillions(company.metrics.revenue, company.currency);
+  const ebit = formatMillions(company.metrics.ebit, company.currency);
+  const sharePrice = formatPrice(company.metrics.sharePrice, company.currency);
+  const marketCap = formatMillions(company.metrics.marketCap, company.currency);
+  return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+}
+
+function metricCell(metric) {
+  return `<div class="cp-cell"><span class="cp-l">${esc(metric.label)}</span><span class="cp-v">${esc(metric.value)}</span><span class="cp-sub">${esc(metric.sub)}</span></div>`;
+}
+
+function formatMillions(value, currency) {
+  if (!Number.isFinite(value)) return 'N/A';
+  return `${currency} ${formatNumber(value, value === 0 || Math.abs(value) >= 100 ? 0 : 1)}m`;
+}
+
+function formatPrice(value, currency) {
+  if (!Number.isFinite(value)) return 'N/A';
+  return `${formatNumber(value, 2)} ${currency}`;
+}
+
+function formatNumber(value, fractionDigits) {
+  return new Intl.NumberFormat('en-GB', {
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  }).format(value);
+}
+
+function relatedSection(companies) {
+  if (!companies.length) return '';
+  const links = companies.map((company) => {
+    const name = shortName(company.companyName);
+    return `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${pageSlug(company)}.html">${esc(name)} (${esc(company.ticker)}) report &rarr;</a>`;
+  }).join('');
+  return `<section class="report-full-section" id="related"><h2>More AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
+}
+
+function navHtml() {
+  return `  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">
+        <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+        <div class="nav-logo-text"><span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span><span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span></div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/index.html" class="nav-link">Home</a><a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a><a href="/comparisons.html" class="nav-link">Compare</a><a href="/pricing.html" class="nav-link">Pricing</a><a href="/methodology.html" class="nav-link">Methodology</a><a href="/about.html" class="nav-link">About</a><a href="/faq.html" class="nav-link">FAQ</a><a href="/blog.html" class="nav-link">Blog</a>
+      </nav>
+      <a href="/reports.html" class="nav-cta">Browse reports</a>
+    </div>
+  </header>`;
+}
+
+function footerHtml() {
+  return `  <footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="/index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;"><img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum"><div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div></a><p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p></div>
+    <div><div class="footer-col-label">Reports</div><div class="footer-links"><a href="/reports.html" class="footer-link">Browse reports</a><a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a><a href="/pricing.html" class="footer-link">Pricing</a><a href="/methodology.html" class="footer-link">Methodology</a></div></div>
+    <div><div class="footer-col-label">Company</div><div class="footer-links"><a href="/about.html" class="footer-link">About Valuatum</a><a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a><a href="mailto:contact26@valuatum.com" class="footer-link">Support</a></div></div>
+    <div><div class="footer-col-label">Legal</div><div class="footer-links"><a href="/disclaimer.html" class="footer-link">Disclaimer</a><a href="/disclaimer.html#terms" class="footer-link">Terms of use</a><a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a></div></div>
+  </div><div class="footer-bottom"><span class="footer-copyright">&copy; 2026 Valuatum Oy &middot; Helsinki, Finland &middot; Est. 2000</span><span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span></div></div></footer>`;
+}
+
+function shortName(name) {
+  return String(name).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Plc|Corporation|Corp\.?|Abp|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+}
+
+function slugify(value) {
+  return String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function esc(value) {
+  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+const attr = esc;
+
+function toIsoDate(value) {
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.valueOf()) ? new Date().toISOString().slice(0, 10) : date.toISOString().slice(0, 10);
+}
+
+function jsonReplacer(_key, value) {
+  return value === undefined ? undefined : value;
+}
