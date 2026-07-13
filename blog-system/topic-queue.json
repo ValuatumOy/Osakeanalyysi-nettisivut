@@ -144,8 +144,9 @@
       "role": "support",
       "targetQuery": "ai vs human stock analyst",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples."
+      "status": "in-review",
+      "prNumber": 22,
+      "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples. Drafted 2026-07-13 (Mon full pipeline run) as PR #22 on branch blog/ai-vs-human-equity-analyst. Human-queued (oldest queued seed; Cluster C pillar can-ai-analyze-stocks is live on main so cluster order satisfied and all internal links resolve today). Angle: sell-side almost never says sell (FactSet <6% sells / 57%+ buys end-2025; 2003 Global Settlement + anchoring/herding) vs our AI book carrying 2 SELLs among 5 large-cap Helsinki names (Nokia, Wärtsilä), both of which fell to/through target by mid-Jul 2026 (Nokia 13.90->10.56 through 11.50 target; Wärtsilä 36.12->29.98 at 30.00 target, live FMP 13 Jul 2026); plus honest human-edge + named failure mode (bull 15.99). Inbound link added from live can-ai-analyze-stocks pillar (dateModified unchanged). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "is-tesla-overvalued",
