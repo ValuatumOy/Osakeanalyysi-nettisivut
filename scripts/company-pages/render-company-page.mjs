@@ -215,11 +215,11 @@ function relatedSection(companies) {
 }
 
 function navHtml() {
-  return `  <header class="nav scrolled" id="nav">
+  return `  <header class="nav scrolled nav-report" id="nav">
     <div class="nav-inner">
       <a href="/index.html" class="nav-logo">
         <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
-        <div class="nav-logo-text"><span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span><span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span></div>
+        <div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a><a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a><a href="/comparisons.html" class="nav-link">Compare</a><a href="/pricing.html" class="nav-link">Pricing</a><a href="/methodology.html" class="nav-link">Methodology</a><a href="/about.html" class="nav-link">About</a><a href="/faq.html" class="nav-link">FAQ</a><a href="/blog.html" class="nav-link">Blog</a>
