@@ -179,7 +179,8 @@ function slugify(value) {
 
 function runCommand(command, args, input) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { stdio: ['pipe', 'ignore', 'pipe'] });
+    const spawnOptions = commandForPlatform(command, args);
+    const child = spawn(spawnOptions.command, spawnOptions.args, { stdio: ['pipe', 'ignore', 'pipe'] });
     let stderr = '';
     child.stderr.setEncoding('utf8');
     child.stderr.on('data', (chunk) => {
@@ -193,4 +194,11 @@ function runCommand(command, args, input) {
     });
     child.stdin.end(input);
   });
+}
+
+function commandForPlatform(command, args) {
+  if (process.platform === 'win32' && /\.(?:cmd|bat)$/i.test(command)) {
+    return { command: 'cmd.exe', args: ['/d', '/s', '/c', command, ...args] };
+  }
+  return { command, args };
 }

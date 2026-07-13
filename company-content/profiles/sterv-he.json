@@ -1,0 +1,9 @@
+{
+  "ticker": "STERV.HE",
+  "companyName": "Stora Enso Oyj",
+  "profile": "Stora Enso Oyj is a forest products company that focuses on renewable materials and wood-based solutions. It produces packaging materials and packaging solutions, biomaterials, and wood products, and also manages forest assets and timber supply. Its products are used in building construction, retail, food and beverage, manufacturing, e-commerce, and other industrial applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-13T08:36:09.022Z"
+}

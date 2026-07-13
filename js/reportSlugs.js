@@ -9,5 +9,7 @@ window.REPORT_SLUGS = {
   "tesla-01062026": "tesla-equity-report",
   "upm-21052026": "upm-kymmene-equity-report",
   "wartsila-05062026": "wartsila-equity-report",
-  "fortum-coverage": "fortum-equity-report"
+  "fortum-coverage": "fortum-equity-report",
+  "oriola-01062026": "oriola-equity-report",
+  "orion-coverage": "orion-equity-report"
 };
