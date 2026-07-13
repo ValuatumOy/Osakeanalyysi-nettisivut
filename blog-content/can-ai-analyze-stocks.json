@@ -27,7 +27,7 @@
     },
     {
       "h2": "AI will be the default, not the supplement",
-      "html": "<p>My view: within two or three years, equity analysis workflows that do not use AI for the structured first pass will be at a systematic disadvantage. The question is not whether AI replaces analysts. The better frame is whether analysts who use AI well outcompete those who do not. On the dimensions that are measurable, consistency, coverage, and freedom from incentive-driven bias, AI already wins.</p><p>The honest story of AI in equity research is not about speed or cost, though both improve significantly. It is about removing sources of systematic error that are built into human cognition and the institutional structures analysts work within. Anchoring bias, herding toward consensus, incentive conflicts, and selective attention to data: these are not individual failures. They are structural features of how sell-side research has operated for decades.</p><p>Valuatum's approach is to apply AI to the structured analytical work and let the methodology speak for itself. The Nokia SELL rating stands or falls on the reverse valuation model, not on who published it or whether it matches the consensus. That is a different kind of equity research, and I think it is a better one. If you want to understand the valuation framework our system applies, the most direct starting point is our guide to <a href=\"/blog/how-to-value-a-stock.html\">how to value a stock</a>.</p>"
+      "html": "<p>My view: within two or three years, equity analysis workflows that do not use AI for the structured first pass will be at a systematic disadvantage. The question is not whether AI replaces analysts. The better frame is whether <a href=\"/blog/ai-vs-human-equity-analyst.html\">analysts who use AI well outcompete those who do not</a>. On the dimensions that are measurable, consistency, coverage, and freedom from incentive-driven bias, AI already wins.</p><p>The honest story of AI in equity research is not about speed or cost, though both improve significantly. It is about removing sources of systematic error that are built into human cognition and the institutional structures analysts work within. Anchoring bias, herding toward consensus, incentive conflicts, and selective attention to data: these are not individual failures. They are structural features of how sell-side research has operated for decades.</p><p>Valuatum's approach is to apply AI to the structured analytical work and let the methodology speak for itself. The Nokia SELL rating stands or falls on the reverse valuation model, not on who published it or whether it matches the consensus. That is a different kind of equity research, and I think it is a better one. If you want to understand the valuation framework our system applies, the most direct starting point is our guide to <a href=\"/blog/how-to-value-a-stock.html\">how to value a stock</a>.</p>"
     }
   ],
   "faq": [
@@ -54,7 +54,8 @@
     "/methodology.html",
     "/reports/nokia-equity-report.html",
     "/blog.html",
-    "/blog/how-to-value-a-stock.html"
+    "/blog/how-to-value-a-stock.html",
+    "/blog/ai-vs-human-equity-analyst.html"
   ],
   "sources": [
     { "label": "Valuatum Nokia Equity Report, June 2026", "url": "/reports/nokia-equity-report.html" },
