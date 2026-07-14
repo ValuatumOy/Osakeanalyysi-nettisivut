@@ -381,3 +381,50 @@ function trackEvent(event, props = {}) {
 
   trackEvent('preview_viewed', { ticker: company.ticker, exchange: company.exchange });
 })();
+
+// ── "Generate this report" button (generated company/coverage pages) ─────────
+// Entry point into the fresh-report pipeline. The button carries the covered
+// company's real SYMBOL.EXCHANGE ticker; exchange/country are derived server-side
+// from the ticker suffix, and Stripe Checkout collects the buyer email. The
+// coverage price is set server-side (source: 'coverage'), never from the client.
+(function initGenerateReportButton() {
+  var buttons = document.querySelectorAll('[data-generate-report]');
+  if (!buttons.length) return;
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+      var company = btn.getAttribute('data-company') || '';
+      var ticker = btn.getAttribute('data-ticker') || '';
+      if (!company || !ticker) return;
+      if (btn.dataset.loading === '1') return;
+
+      var label = btn.textContent;
+      btn.dataset.loading = '1';
+      btn.style.pointerEvents = 'none';
+      btn.style.opacity = '0.7';
+      btn.textContent = 'Redirecting to secure checkout...';
+      trackEvent('fresh_report_order_started', { company: company, ticker: ticker, source: 'coverage' });
+
+      try {
+        var res = await fetch('/api/create-fresh-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ company: company, ticker: ticker, source: 'coverage' }),
+        });
+        var data = await res.json();
+        if (data && data.url) {
+          trackEvent('stripe_checkout_clicked', { type: 'fresh', company: company, source: 'coverage' });
+          window.location.href = data.url;
+          return;
+        }
+      } catch (err) { /* fall through to reset below */ }
+
+      btn.dataset.loading = '';
+      btn.style.pointerEvents = '';
+      btn.style.opacity = '';
+      btn.textContent = label;
+      alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    });
+  });
+})();
