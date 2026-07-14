@@ -400,8 +400,8 @@ body::before {
 ===================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: 88vh;
+  min-height: 88svh;
   display: grid;
   place-items: center;
   background: var(--forest);
@@ -450,7 +450,7 @@ body::before {
   text-align: center;
   width: 100%;
   max-width: 860px;
-  padding: calc(var(--nav-h) + 3rem) var(--page-x) 6rem;
+  padding: calc(var(--nav-h) + 2rem) var(--page-x) 4.5rem;
 }
 
 .hero-headline {
@@ -467,6 +467,9 @@ body::before {
 .hero-headline strong { font-weight: 600; }
 .hero-headline-line {
   display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
   white-space: nowrap;
 }
 
@@ -2499,7 +2502,7 @@ body::before {
   .samples-section { padding: 4rem 0; }
   .inside-item:last-child { grid-column: span 1; }
   .hero-headline { letter-spacing: -0.02em; }
-  .hero-headline-line { white-space: normal; }
+  .hero-headline-line { width: auto; white-space: normal; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-disclaimer { text-align: left; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
