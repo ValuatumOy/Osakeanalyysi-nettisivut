@@ -14,7 +14,6 @@ window.COMPANY_PAGE_CATALOG = [
   { name: "Stora Enso", ticker: "STERV.HE", exchange: "Helsinki", url: "reports/stora-enso-equity-report.html" },
   { name: "Tesla", ticker: "TSLA", exchange: "NASDAQ", url: "reports/tesla-equity-report.html" },
   { name: "UPM", ticker: "UPM.HE", exchange: "Helsinki", url: "reports/upm-equity-report.html" },
-  { name: "UPM-Kymmene", ticker: "UPM.HE", exchange: "Helsinki", url: "reports/upm-kymmene-equity-report.html" },
   { name: "Wartsila", ticker: "WRT1V.HE", exchange: "Helsinki", url: "reports/wartsila-equity-report.html" },
   { name: "Wärtsilä Oyj Abp", ticker: "WRT1V.HE", exchange: "Helsinki", url: "reports/wartsila-equity-report.html" }
 ];

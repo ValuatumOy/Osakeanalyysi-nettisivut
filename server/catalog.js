@@ -34,8 +34,7 @@ function priceTiersEnv() {
   }
 
   return normalizePriceTiers([
-    { minAgeDays: 5, price: 4.9, label: 'Recent report' },
-    { minAgeDays: 30, price: 1.99, label: 'Archive report' },
+    { minAgeDays: 0, price: 20, label: 'Ready report' },
   ]);
 }
 
@@ -178,7 +177,7 @@ function formatDateLabel(dateValue) {
 function calculatePrice(ageDays, rules = DEFAULT_RULES) {
   const tier = [...rules.priceTiers].reverse().find(item => ageDays >= item.minAgeDays) || rules.priceTiers[0];
   return {
-    price: tier?.price ?? 4.9,
+    price: tier?.price ?? 20,
     priceLabel: tier?.label || null,
   };
 }

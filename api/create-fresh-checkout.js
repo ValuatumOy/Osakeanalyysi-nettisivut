@@ -1,6 +1,6 @@
 const Stripe = require('stripe');
 
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '990', 10);
+const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();

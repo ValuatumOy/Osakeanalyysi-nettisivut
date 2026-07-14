@@ -49,10 +49,10 @@ const PRICING_CONFIG = {
     {
       id: 'existing-report',
       name: 'Existing Report',
-      price: 4.90,
+      price: 20,
       launchPrice: null,
       period: 'per report',
-      description: 'Recent AI equity reports at a discounted price. Full PDF with all sections.',
+      description: 'Ready AI equity reports. Full PDF with all sections.',
       features: [
         'Full PDF report',
         'Company value map',
@@ -71,7 +71,7 @@ const PRICING_CONFIG = {
     {
       id: 'fresh-report',
       name: 'Fresh Report',
-      price: 9.90,
+      price: 50,
       launchPrice: null,
       period: 'per report',
       description: 'Order a newly generated report with the latest available financial data.',

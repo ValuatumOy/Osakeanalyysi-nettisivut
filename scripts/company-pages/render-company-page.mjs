@@ -133,6 +133,8 @@ ${navHtml()}
           <p>${esc(company.profile)}</p>
         </section>
 
+        ${readyReport ? sourcesSection(company) : ''}
+
         ${readyReportSection(name, readyReport)}
 
         <section class="report-full-section" id="generate">
@@ -146,13 +148,7 @@ ${navHtml()}
           </div>
         </section>
 
-        <section class="report-full-section" id="sources">
-          <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for ${esc(company.companyName)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
-          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
-            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
-          </div>
-        </section>
+        ${readyReport ? '' : sourcesSection(company)}
 
         ${relatedSection(related)}
       </div>
@@ -217,6 +213,16 @@ function relatedSection(companies) {
     return `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${pageSlug(company)}.html">${esc(name)} (${esc(company.ticker)}) report &rarr;</a>`;
   }).join('');
   return `<section class="report-full-section" id="related"><h2>More AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
+}
+
+function sourcesSection(company) {
+  return `<section class="report-full-section" id="sources">
+          <h2>Sources &amp; methodology</h2>
+          <p>Financial figures are sourced from Valuatum's financial model for ${esc(company.companyName)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
+            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
+          </div>
+        </section>`;
 }
 
 function readyReportSection(companyName, report) {

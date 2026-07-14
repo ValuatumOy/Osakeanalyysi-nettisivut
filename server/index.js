@@ -11,7 +11,7 @@ const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = requir
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '990', 10);
+const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
 app.use(cors({

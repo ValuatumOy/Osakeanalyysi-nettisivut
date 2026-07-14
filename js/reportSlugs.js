@@ -7,7 +7,7 @@ window.REPORT_SLUGS = {
   "recursion-02062026": "recursion-pharmaceuticals-equity-report",
   "storaenso-01062026": "stora-enso-equity-report",
   "tesla-01062026": "tesla-equity-report",
-  "upm-21052026": "upm-kymmene-equity-report",
+  "upm-21052026": "upm-equity-report",
   "wartsila-05062026": "wartsila-equity-report",
   "fortum-coverage": "fortum-equity-report",
   "oriola-01062026": "oriola-equity-report",
