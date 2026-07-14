@@ -15,6 +15,8 @@ const SITE = 'https://www.aiequityreports.com';
 const CONTENT_DIR = path.join(ROOT, 'report-content');
 const OUT_DIR = path.join(ROOT, 'mockups');
 const YEAR = '2026';
+// Starting price for generating a fresh report on a covered-but-not-yet-reported company. Inert for now — no checkout wired up.
+const NEW_REPORT_PRICE = 50;
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Plc|Corporation|Corp\.?|Abp|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').replace(/,?\s+(Oyj|Abp)$/i, '').trim();
@@ -242,7 +244,8 @@ function renderCompany(c, d, allEntries) {
   const desc = introText(c, d).slice(0, 300);
   const title = `${sn} (${c.ticker}) Stock Analysis & AI Equity Report ${YEAR} | Valuatum`;
 
-  const reports = allEntries.filter((e) => e.cat.ticker === c.ticker).map((e) => ({ ...e.cat, content: e.content }))
+  // reportDate required — coverage-only catalog entries (no report yet) must not count as a report.
+  const reports = allEntries.filter((e) => e.cat.ticker === c.ticker && e.cat.reportDate).map((e) => ({ ...e.cat, content: e.content }))
     .sort((a, b) => String(b.reportDate).localeCompare(String(a.reportDate)));
   const latest = reports[0];
   const isFree = !!(latest && latest.isFree);
@@ -250,13 +253,15 @@ function renderCompany(c, d, allEntries) {
   if (peerList.length < 4) peerList = peerList.concat(allEntries.filter((e) => e.cat.ticker !== c.ticker && !peerList.find((p) => p.ticker === e.cat.ticker)).map((e) => ({ ...e.cat, content: e.content })));
   peerList = peerList.slice(0, 4);
 
-  // hero CTAs
+  // hero CTAs. No report yet -> a priced "generate this report" CTA, inert until checkout is wired up.
   const reportCta = latest
     ? (latest.isFree
       ? `<a class="btn btn-primary" href="${esc(latest.pdfUrl)}" target="_blank" rel="noopener" download>Download free report</a>`
       : `<a class="btn btn-gold" href="#reports">Buy report — ${eur(latest.price)}</a>`)
+    : `<a class="btn btn-gold" href="#" onclick="return false;">Generate this report — ${eur(NEW_REPORT_PRICE)}</a>`;
+  const generateCta = latest
+    ? `<a class="btn btn-outline" href="/index.html#hero" style="border-color:rgba(255,255,255,0.35); color:#fff;">Generate fresh report</a>`
     : '';
-  const generateCta = `<a class="btn btn-outline" href="/index.html#hero" style="border-color:rgba(255,255,255,0.35); color:#fff;">Generate fresh report</a>`;
 
   // hero call stats (facts, the hook)
   const callStats = hasReport ? `
@@ -310,12 +315,18 @@ function renderCompany(c, d, allEntries) {
     }
   }
 
-  // rating history (public facts)
-  sections.push(`<section class="report-full-section" id="rating-history"><h2>${esc(sn)} rating &amp; price-target history</h2>${ratingHistory(reports)}</section>`);
+  // rating history (public facts) — only when there is at least one published report
+  if (reports.length) {
+    sections.push(`<section class="report-full-section" id="rating-history"><h2>${esc(sn)} rating &amp; price-target history</h2>${ratingHistory(reports)}</section>`);
+  }
 
-  // report library (download/buy)
-  sections.push(`<section class="report-full-section" id="reports"><h2>${esc(sn)} reports</h2><p style="color:var(--gray-steel); margin-bottom:1.25rem;">Download the free sample or buy any report. Need the latest data? Generate a fresh report on demand.</p>${reportLibrary(sn, reports)}
+  // report library (download/buy), or a generate-on-demand prompt when no report exists yet
+  sections.push(reports.length
+    ? `<section class="report-full-section" id="reports"><h2>${esc(sn)} reports</h2><p style="color:var(--gray-steel); margin-bottom:1.25rem;">Download the free sample or buy any report. Need the latest data? Generate a fresh report on demand.</p>${reportLibrary(sn, reports)}
     <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;"><a class="btn btn-primary" href="/index.html#hero">Generate fresh ${esc(sn)} report</a><a class="btn btn-outline-dark" href="/pricing.html">See pricing</a></div>
+  </section>`
+    : `<section class="report-full-section" id="reports"><h2>${esc(sn)} reports</h2><p style="color:var(--gray-steel); margin-bottom:1.25rem;">No published ${esc(sn)} report yet — generate a fresh AI equity report on demand, delivered by email.</p>
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;"><a class="btn btn-gold" href="#" onclick="return false;">Generate this report — ${eur(NEW_REPORT_PRICE)}</a><a class="btn btn-outline-dark" href="/pricing.html">See pricing</a></div>
   </section>`);
 
   // FAQ (templated facts)
@@ -394,7 +405,8 @@ ${FOOTER()}
 
 // run
 const catalog = loadCatalog();
-const entries = catalog.map((cat) => ({ cat, content: loadContent(cat.id) })).filter((e) => !['nuholdings-02062026'].includes(e.cat.id));
+// fortum-coverage: now has its own real report page (reports/fortum-equity-report.html) — no mockup needed.
+const entries = catalog.map((cat) => ({ cat, content: loadContent(cat.id) })).filter((e) => !['nuholdings-02062026', 'fortum-coverage'].includes(e.cat.id));
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const idx = [];
 for (const e of entries) {

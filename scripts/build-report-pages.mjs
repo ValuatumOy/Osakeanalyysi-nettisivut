@@ -13,6 +13,8 @@ const OUT_DIR = path.join(ROOT, 'reports');
 
 // Reports whose PDF content does not match their catalog identity — do not publish.
 const EXCLUDE = new Set(['nuholdings-02062026']);
+// Starting price for generating a fresh report on a covered-but-not-yet-reported company. Inert for now — no checkout wired up.
+const NEW_REPORT_PRICE = 50;
 
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -20,6 +22,7 @@ const attr = (s) => esc(s);
 const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
+const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
 // Stable comparison-page slug, order-independent (must match scripts/build-comparison-pages.mjs).
 const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
@@ -49,6 +52,9 @@ function pdfHrefOf(cat) {
 function metaDescription(d) {
   const h = d.headline || {};
   const sn = shortName(d.companyName);
+  if (!h.recommendation) {
+    return `${sn} (${d.ticker}) stock overview: share price, market cap and company profile. Generate a fresh Valuatum AI equity report for ${sn} — value-pool analysis, reverse valuation, financials, risks & catalysts.`.replace(/\s+/g, ' ').trim();
+  }
   const parts = [`${sn} (${d.ticker}) stock analysis & AI equity report: Valuatum rates ${d.ticker} ${h.recommendation}`];
   if (h.targetPrice) parts.push(`with a ${h.targetPrice} price target`);
   if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
@@ -62,10 +68,14 @@ function overviewIntro(d) {
   const sn = shortName(d.companyName);
   let s = `${sn} (${d.exchange ? d.exchange + ': ' : ''}${d.ticker}) stock analysis and AI equity research. `;
   if (h.currentPrice) s += `${sn} shares trade at ${h.currentPrice}; `;
-  s += `Valuatum rates ${d.ticker} ${h.recommendation || 'in this report'}`;
-  if (h.targetPrice) s += ` with a ${h.targetPrice} 12-month price target`;
-  if (h.impliedUpside) s += ` (${h.impliedUpside} vs the current share price)`;
-  s += `. This ${d.sector ? d.sector + ' ' : ''}equity research report covers ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  if (h.recommendation) {
+    s += `Valuatum rates ${d.ticker} ${h.recommendation}`;
+    if (h.targetPrice) s += ` with a ${h.targetPrice} 12-month price target`;
+    if (h.impliedUpside) s += ` (${h.impliedUpside} vs the current share price)`;
+    s += `. This ${d.sector ? d.sector + ' ' : ''}equity research report covers ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  } else {
+    s += `${sn} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  }
   return s.replace(/\s+/g, ' ').trim();
 }
 
@@ -75,10 +85,16 @@ function templatedFaqs(d) {
   const sn = shortName(d.companyName);
   const t = d.ticker;
   const out = [];
-  if (h.recommendation) out.push({ q: `Is ${sn} (${t}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sn} (${t}) ${h.recommendation}${h.targetPrice ? `, with a 12-month price target of ${h.targetPrice}` : ''}${h.currentPrice ? ` versus a ${h.currentPrice} share price` : ''}${h.impliedUpside ? ` (${h.impliedUpside})` : ''}. The full report explains the rationale behind the rating.` });
-  if (h.targetPrice) out.push({ q: `What is the ${sn} (${t}) share price target?`, a: `The current Valuatum 12-month price target for ${sn} is ${h.targetPrice}${h.impliedUpside ? `, implying ${h.impliedUpside} versus the current share price` : ''}. Unlock the report for the valuation behind the target.` });
-  out.push({ q: `How is ${sn} (${t}) valued?`, a: `The ${sn} AI equity report values the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts. Buy the report to read the full valuation.` });
-  out.push({ q: `Where can I get the ${sn} (${t}) equity research report?`, a: `Buy the ${sn} (${t}) AI equity report PDF on this page for instant download, or generate a fresh report for any listed company.` });
+  if (h.recommendation) {
+    out.push({ q: `Is ${sn} (${t}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sn} (${t}) ${h.recommendation}${h.targetPrice ? `, with a 12-month price target of ${h.targetPrice}` : ''}${h.currentPrice ? ` versus a ${h.currentPrice} share price` : ''}${h.impliedUpside ? ` (${h.impliedUpside})` : ''}. The full report explains the rationale behind the rating.` });
+    if (h.targetPrice) out.push({ q: `What is the ${sn} (${t}) share price target?`, a: `The current Valuatum 12-month price target for ${sn} is ${h.targetPrice}${h.impliedUpside ? `, implying ${h.impliedUpside} versus the current share price` : ''}. Unlock the report for the valuation behind the target.` });
+    out.push({ q: `How is ${sn} (${t}) valued?`, a: `The ${sn} AI equity report values the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts. Buy the report to read the full valuation.` });
+    out.push({ q: `Where can I get the ${sn} (${t}) equity research report?`, a: `Buy the ${sn} (${t}) AI equity report PDF on this page for instant download, or generate a fresh report for any listed company.` });
+  } else {
+    out.push({ q: `Does Valuatum have an AI equity report on ${sn} (${t})?`, a: `${sn} is on Valuatum's coverage list, but a full AI equity report has not been published yet. Generate a fresh report on demand to get the rating, price target, value-pool analysis and reverse valuation.` });
+    out.push({ q: `How is ${sn} (${t}) valued?`, a: `${indefiniteArticle(sn)} ${sn} AI equity report would value the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts.` });
+    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — typically within one business day of ordering.` });
+  }
   return out;
 }
 
@@ -101,13 +117,13 @@ function thesisTeaserList(thesis) {
 }
 
 function navHtml() {
-  return `  <header class="nav scrolled" id="nav">
+  return `  <header class="nav scrolled nav-report" id="nav">
     <div class="nav-inner">
       <a href="/index.html" class="nav-logo">
         <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
         <div class="nav-logo-text">
-          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
-          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+          <span class="nav-logo-wordmark">Valuatum</span>
+          <span class="nav-logo-sub">AI Equity Reports</span>
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
@@ -175,13 +191,13 @@ function footerHtml() {
 
 function metricsBand(h) {
   const cells = [
-    ['Recommendation', `<span class="num ${recClass(h.recommendation)}">${esc(h.recommendation)}</span>`, h.horizon || '12-month horizon'],
+    h.recommendation ? ['Recommendation', `<span class="num ${recClass(h.recommendation)}">${esc(h.recommendation)}</span>`, h.horizon || '12-month horizon'] : null,
     ['Target price', esc(h.targetPrice), '12-month fundamental'],
     ['Current price', esc(h.currentPrice), 'as of report date'],
-    ['Implied upside', `<span class="num ${firstPct(h.impliedUpside) === null ? '' : (String(h.impliedUpside).trim().startsWith('-') || String(h.impliedUpside).includes('−') ? 'neg' : 'pos')}">${esc(h.impliedUpside)}</span>`, 'vs. current price'],
+    h.impliedUpside ? ['Implied upside', `<span class="num ${firstPct(h.impliedUpside) === null ? '' : (String(h.impliedUpside).trim().startsWith('-') || String(h.impliedUpside).includes('−') ? 'neg' : 'pos')}">${esc(h.impliedUpside)}</span>`, 'vs. current price'] : null,
     ['Market cap', esc(h.marketCap), 'shares × price'],
     ['Enterprise value', esc(h.enterpriseValue), 'mcap + net debt'],
-  ].filter(([, v]) => v && v !== 'undefined' && !/>undefined</.test(v));
+  ].filter((c) => c && c[1] && c[1] !== 'undefined' && !/>undefined</.test(c[1]));
   return `<div class="cp-grid">${cells.map(([l, v, s]) =>
     `<div class="cp-cell"><span class="cp-l">${esc(l)}</span><span class="cp-v">${v}</span>${s ? `<span class="cp-sub">${esc(s)}</span>` : ''}</div>`).join('')}</div>`;
 }
@@ -335,6 +351,22 @@ function buyGate(d, cat) {
         </section>`;
 }
 
+// No report published yet on this (covered) company — sell generating one instead of unlocking one.
+function generateGate(d) {
+  const sn = shortName(d.companyName);
+  return `
+        <section class="report-full-section" id="generate">
+          <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
+            <h2 style="color:white; margin-top:0;">Generate the ${esc(sn)} report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
+            <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
+              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate this report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
+            </div>
+          </div>
+        </section>`;
+}
+
 const LOCK_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
 function lockedSection(title, desc, teaser, ctaLabel, reportId) {
   return `<div class="locked-section"><div class="locked-section-inner">
@@ -347,6 +379,7 @@ function lockedSection(title, desc, teaser, ctaLabel, reportId) {
 // ── page template ───────────────────────────────────────────────────────────
 function renderPage(d, cat, all) {
   const isFree = !!cat?.isFree;
+  const hasReport = !!(d.headline && d.headline.recommendation);
   const url = `${SITE}/reports/${d.slug}.html`;
   const desc = metaDescription(d);
   const sn = shortName(d.companyName);
@@ -355,7 +388,9 @@ function renderPage(d, cat, all) {
   const pdfHref = pdfHrefOf(cat);
   const downloadCta = isFree && pdfHref
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
-    : `<a href="#unlock" class="btn btn-primary">Get the full report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`;
+    : hasReport
+      ? `<a href="#unlock" class="btn btn-primary">Get the full report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
+      : `<a href="#generate" class="btn btn-gold">Generate this report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
 
   const sections = [];
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
@@ -377,7 +412,19 @@ function renderPage(d, cat, all) {
           ${d.priceStats ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:1rem;">52-week range ${esc(d.priceStats.week52Low)} – ${esc(d.priceStats.week52High)} · 1-year change ${esc(d.priceStats.oneYearChange)} · 3-year change ${esc(d.priceStats.threeYearChange)}.</p>` : ''}
         </section>`);
 
-  if (!isFree) {
+  // Company profile (public, SEO) — "what the company does", when the content has it.
+  if (d.profile) {
+    sections.push(`
+        <section class="report-full-section" id="about">
+          <h2>About ${esc(sn)}</h2>
+          <p>${esc(d.profile)}</p>
+        </section>`);
+  }
+
+  if (!hasReport) {
+    // Covered, no report yet — sell generating one instead of the (nonexistent) unlock/thesis/valuation teasers.
+    sections.push(generateGate(d));
+  } else if (!isFree) {
     // PAID — reveal a readable lead, then lock the deep analysis to drive purchase.
     const sumLead = (d.summary || [])[0] || '';
     const sumRest = (d.summary || []).slice(1).join(' ');
@@ -556,7 +603,10 @@ ${jsonLd(d, cat, desc)}
     .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
     .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
-    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
+    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}${!hasReport ? `
+    .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
+    .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
+    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}` : ''}
   </style>
 </head>
 <body>
@@ -572,10 +622,6 @@ ${navHtml()}
         </nav>
         <div class="company-header-inner">
           <div class="company-ident">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-              <span class="company-ticker">${esc(d.ticker)}</span>
-              <span class="company-status-badge"><span class="company-status-dot"></span>${isFree ? 'Free report' : 'Sample preview'} · Updated ${esc(updated)}</span>
-            </div>
             <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               <span class="company-meta-chip">${esc(d.exchange)}</span>
@@ -587,14 +633,14 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            <a href="/index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a report</a>
+            ${hasReport ? `<a href="/index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a report</a>` : ''}
           </div>
         </div>
       </div>
     </section>
 
-    <div class="container" style="max-width:880px; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content">
+    <div class="container" style="max-width:${hasReport ? '880px' : '1760px'}; padding-top:2.5rem; padding-bottom:3rem;">
+      <div class="report-full-content${hasReport ? '' : ' coverage-cols'}">
 ${sections.join('\n')}
       </div>
     </div>

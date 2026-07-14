@@ -1,0 +1,9 @@
+{
+  "ticker": "SAMPO.HE",
+  "companyName": "Sampo Oyj",
+  "profile": "Sampo Oyj is a Nordic property and casualty insurance group headquartered in Helsinki. Through its brands If, Topdanmark and Hastings, it offers motor, home, commercial and other non-life insurance products and services across the Nordics, the Baltics and the UK. The group also manages capital and insurance-related operations at holding-company level.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T12:20:39.135Z"
+}

@@ -2,7 +2,7 @@
   "reports": [
     {
       "id": "tesla-01062026",
-      "fileName": "Tesla_01062026.pdf",
+      "fileName": "Tesla_07072026.pdf",
       "companyName": "Tesla, Inc.",
       "ticker": "TSLA",
       "exchange": "NASDAQ",
@@ -16,7 +16,7 @@
     },
     {
       "id": "storaenso-01062026",
-      "fileName": "StoraEnso_01062026.pdf",
+      "fileName": "StoraEnso_06072026.pdf",
       "companyName": "Stora Enso Oyj",
       "ticker": "STERV.HE",
       "exchange": "Helsinki",
@@ -25,8 +25,24 @@
       "reportDate": "2026-06-01",
       "forceVisible": true,
       "forceFree": true,
+      "hidden": true,
       "description": "AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, and reverse valuation case.",
       "tags": ["AI Equity Report", "Nordic", "Materials", "PDF"]
+    },
+    {
+      "id": "storaenso-03072026",
+      "fileName": "StoraEnso_03072026.pdf",
+      "companyName": "Stora Enso Oyj",
+      "ticker": "STERV.HE",
+      "exchange": "Helsinki",
+      "country": "FI",
+      "sector": "Materials",
+      "reportDate": "2026-07-03",
+      "forceVisible": true,
+      "price": 20,
+      "priceLabel": "Ready report",
+      "description": "Ready AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, reverse valuation, risks and catalysts.",
+      "tags": ["AI Equity Report", "Ready Report", "Nordic", "Materials", "PDF"]
     },
     {
       "id": "oriola-01062026",

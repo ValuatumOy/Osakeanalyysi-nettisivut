@@ -113,8 +113,9 @@
       "role": "support",
       "targetQuery": "finnish forestry stocks",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Sector angle; both reports free → reveal full numbers. Links to existing UPM vs Stora Enso comparison page (different intent: sector outlook vs head-to-head)."
+      "status": "in-review",
+      "prNumber": 19,
+      "notes": "Sector angle; both reports free → reveal full numbers. Links to existing UPM vs Stora Enso comparison page (different intent: sector outlook vs head-to-head). Drafted 2026-07-08 (Wed full pipeline run) as PR #19 on branch blog/finnish-forestry-stocks-upm-stora-enso. Angle: both large-cap OMXH forestry names priced as forest+energy land banks with the industrials discounted (Stora Enso forest 71.1% of EV, UPM energy+forestry floor ~half of ~€16.6bn EV); both our BUYs but both fell since report dates (UPM €25.31→€22.52, StoraEnso €10.05→€9.16 live via FMP 8 Jul 2026), widening upside to +51%/+39%. Inbound link added from live reports/upm-kymmene-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "finnish-dividend-stocks",
@@ -122,8 +123,9 @@
       "role": "support",
       "targetQuery": "best finnish dividend stocks",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Listicle format likely dominates SERP; use payout data from covered names only — no claims about uncovered stocks."
+      "status": "in-review",
+      "prNumber": 21,
+      "notes": "Drafted 2026-07-10 (Fri full pipeline run) as PR #21 on branch blog/finnish-dividend-stocks. Angle: coverage-first ranking of covered Finnish dividend names — rank by yield PAIRED with payout ratio + FCF yield, not headline yield. UPM and Kesko both 4.9% forward yield (our June 2026 models) but UPM better-covered (9.8% FCF yield vs 6.1%); Stora Enso 4.0% flagged as forward estimate assuming payout normalizes to ~80% above its 50%-of-EPS policy; Nokia 2.1%/94% payout SELL, Wärtsilä 1.4%/40% SELL; withholding-tax net-yield section for international investors. Payout data from covered names only, no claims on uncovered stocks. External dividend-policy sources verified via WebSearch (sandbox egress blocks WebFetch). Inbound links added from live reports/kesko-equity-report + reports/upm-kymmene-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "can-ai-analyze-stocks",
@@ -142,8 +144,9 @@
       "role": "support",
       "targetQuery": "ai vs human stock analyst",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples."
+      "status": "in-review",
+      "prNumber": 22,
+      "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples. Drafted 2026-07-13 (Mon full pipeline run) as PR #22 on branch blog/ai-vs-human-equity-analyst. Human-queued (oldest queued seed; Cluster C pillar can-ai-analyze-stocks is live on main so cluster order satisfied and all internal links resolve today). Angle: sell-side almost never says sell (FactSet <6% sells / 57%+ buys end-2025; 2003 Global Settlement + anchoring/herding) vs our AI book carrying 2 SELLs among 5 large-cap Helsinki names (Nokia, Wärtsilä), both of which fell to/through target by mid-Jul 2026 (Nokia 13.90->10.56 through 11.50 target; Wärtsilä 36.12->29.98 at 30.00 target, live FMP 13 Jul 2026); plus honest human-edge + named failure mode (bull 15.99). Inbound link added from live can-ai-analyze-stocks pillar (dateModified unchanged). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "is-tesla-overvalued",

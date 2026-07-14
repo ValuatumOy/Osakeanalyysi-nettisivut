@@ -1,0 +1,7 @@
+# Local generation inputs and developer tooling are versioned, but not public assets.
+.env.example
+company-content/
+docs/
+test/
+scripts/*.mjs
+scripts/company-pages/

@@ -364,6 +364,37 @@ body::before {
 .nav.scrolled .nav-link::after { background: var(--green); }
 .nav.scrolled .nav-hamburger span { background: var(--charcoal); }
 
+.nav.nav-report,
+.nav.scrolled.nav-report {
+  background: var(--forest);
+  backdrop-filter: none;
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+.nav.nav-report .nav-logo-wordmark,
+.nav.scrolled.nav-report .nav-logo-wordmark {
+  color: var(--white);
+}
+.nav.nav-report .nav-logo-sub,
+.nav.scrolled.nav-report .nav-logo-sub {
+  color: rgba(255,255,255,0.55);
+}
+.nav.nav-report .nav-link,
+.nav.scrolled.nav-report .nav-link {
+  color: rgba(255,255,255,0.72);
+}
+.nav.nav-report .nav-link:hover,
+.nav.scrolled.nav-report .nav-link:hover {
+  color: var(--white);
+}
+.nav.nav-report .nav-link::after,
+.nav.scrolled.nav-report .nav-link::after {
+  background: var(--green-light);
+}
+.nav.nav-report .nav-hamburger span,
+.nav.scrolled.nav-report .nav-hamburger span {
+  background: var(--white);
+}
+
 /* =====================================================
    6. HERO — SEARCH FIRST
 ===================================================== */
