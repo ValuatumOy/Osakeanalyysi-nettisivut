@@ -622,10 +622,6 @@ ${navHtml()}
         </nav>
         <div class="company-header-inner">
           <div class="company-ident">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-              <span class="company-ticker">${esc(d.ticker)}</span>
-              <span class="company-status-badge"><span class="company-status-dot"></span>${hasReport ? (isFree ? 'Free report' : 'Sample preview') : 'Coverage'} · ${hasReport ? 'Updated' : 'Added'} ${esc(updated)}</span>
-            </div>
             <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               <span class="company-meta-chip">${esc(d.exchange)}</span>

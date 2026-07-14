@@ -8,10 +8,12 @@ import { getCompanyProfile } from './company-pages/profile-provider.mjs';
 import { pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'report-content', '_catalog.json');
 
 export async function generateCompanyPages(options) {
   const outputDir = options.outputDir || path.join(ROOT, 'reports');
   const profileDir = options.profileDir || path.join(ROOT, 'company-content', 'profiles');
+  const readyReports = options.readyReports || await loadReadyReports(options.reportCatalogPath || DEFAULT_REPORT_CATALOG_PATH);
   const client = options.client || new WisdomClient({
     baseUrl: options.apiBase || process.env.WISDOM_API_BASE || 'https://wisdom.valuatum.com/rest',
     token: options.apiToken || process.env.WISDOM_API_TOKEN,
@@ -48,7 +50,9 @@ export async function generateCompanyPages(options) {
     await fs.mkdir(outputDir, { recursive: true });
     for (const company of companies) {
       const outputPath = path.join(outputDir, `${pageSlug(company)}.html`);
-      const html = renderCompanyPage(company, companies, options.generatedOn || new Date());
+      const html = renderCompanyPage(company, companies, options.generatedOn || new Date(), {
+        readyReport: findReadyReport(company, readyReports),
+      });
       await writeFileAtomically(outputPath, html);
       options.onProgress?.(`wrote  ${path.relative(ROOT, outputPath)} (${company.profileSource})`);
     }
@@ -84,6 +88,34 @@ function requiredOptionValue(argv, index, option) {
 
 function uniqueTickers(tickers) {
   return [...new Set((tickers || []).map(normalizeTicker).filter(Boolean))];
+}
+
+async function loadReadyReports(catalogPath) {
+  try {
+    const raw = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .filter(report => report && report.availability !== 'hidden')
+      .filter(report => report.pdfUrl || report.fileName)
+      .filter(report => report.reportType !== 'fresh')
+      .filter(report => Number(report.price) > 0 || report.isFree === true)
+      .sort((a, b) => String(b.reportDate || '').localeCompare(String(a.reportDate || '')));
+  } catch {
+    return [];
+  }
+}
+
+function findReadyReport(company, readyReports) {
+  const companyTicker = normalizeTicker(company.ticker);
+  const companyCode = normalizeName(company.companyName);
+  return readyReports.find((report) => {
+    if (companyTicker && normalizeTicker(report.ticker) === companyTicker) return true;
+    return companyCode && normalizeName(report.companyName || report.name) === companyCode;
+  }) || null;
+}
+
+function normalizeName(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
 async function writeFileAtomically(filePath, content) {

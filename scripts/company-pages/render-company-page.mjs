@@ -5,11 +5,12 @@ export function pageSlug(company) {
   return `${slugify(shortName(company.companyName))}-equity-report`;
 }
 
-export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date()) {
+export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date(), options = {}) {
   const name = shortName(company.companyName);
   const slug = pageSlug(company);
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
+  const readyReport = options.readyReport || null;
   const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: revenue, EBIT, net earnings, book value, year-end share price and market capitalisation.`;
   const metrics = metricDefinitions(company);
   const related = relatedCompanies.filter((item) => item.ticker !== company.ticker);
@@ -99,10 +100,6 @@ ${navHtml()}
         </nav>
         <div class="company-header-inner">
           <div class="company-ident">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-              <span class="company-ticker">${esc(company.ticker)}</span>
-              <span class="company-status-badge"><span class="company-status-dot"></span>Coverage &middot; Added ${date}</span>
-            </div>
             <h1 class="company-name">${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               ${company.industry ? `<span class="company-meta-chip">${esc(company.industry)}</span><span class="company-meta-sep"></span>` : ''}
@@ -110,6 +107,7 @@ ${navHtml()}
             </div>
           </div>
           <div class="company-header-actions">
+            ${readyReport ? `<a href="/reports.html#report-${attr(readyReport.id)}" class="btn btn-primary">Buy ready report &mdash; &euro;${Number(readyReport.price || 0).toFixed(2)}</a>` : ''}
             <a href="#generate" class="btn btn-gold">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
           </div>
         </div>
@@ -120,7 +118,7 @@ ${navHtml()}
       <div class="report-full-content coverage-cols">
         <section class="report-full-section" id="overview">
           <h2>${esc(name)} (${esc(company.ticker)}) overview</h2>
-          <p>${esc(companyOverview(company, name))}</p>
+          <p>${esc(companyOverview(company, name, readyReport))}</p>
         </section>
 
         <section class="report-full-section" id="metrics">
@@ -133,10 +131,12 @@ ${navHtml()}
           <p>${esc(company.profile)}</p>
         </section>
 
+        ${readyReportSection(name, readyReport)}
+
         <section class="report-full-section" id="generate">
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
-            <h2 style="color:white; margin-top:0;">Generate the ${esc(name)} report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.</p>
+            <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
               <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
@@ -176,12 +176,15 @@ function metricDefinitions(company) {
   ];
 }
 
-function companyOverview(company, name) {
+function companyOverview(company, name, readyReport = null) {
   const revenue = formatMillions(company.metrics.revenue, company.currency);
   const ebit = formatMillions(company.metrics.ebit, company.currency);
   const sharePrice = formatPrice(company.metrics.sharePrice, company.currency);
   const marketCap = formatMillions(company.metrics.marketCap, company.currency);
-  return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  const reportText = readyReport
+    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can buy the ready PDF or generate a fresh report with the latest available data.`
+    : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+  return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
 }
 
 function metricCell(metric) {
@@ -212,6 +215,28 @@ function relatedSection(companies) {
     return `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${pageSlug(company)}.html">${esc(name)} (${esc(company.ticker)}) report &rarr;</a>`;
   }).join('');
   return `<section class="report-full-section" id="related"><h2>More AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
+}
+
+function readyReportSection(companyName, report) {
+  if (!report) return '';
+  const price = Number(report.price || 0).toFixed(2);
+  const reportDate = report.reportDateLabel || formatReportDate(report.reportDate);
+  return `<section class="report-full-section" id="ready-report">
+          <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
+            <h2 style="color:white; margin-top:0;">Buy the ready ${esc(companyName)} report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ${esc(companyName)} AI equity report is available from ${esc(reportDate)}. Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.</p>
+            <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
+              <a href="/reports.html#report-${attr(report.id)}" class="btn btn-primary btn-lg">Buy ready report &mdash; &euro;${price}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ${esc(reportDate)}</span>
+            </div>
+          </div>
+        </section>`;
+}
+
+function formatReportDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.valueOf())) return '';
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 }
 
 function navHtml() {
