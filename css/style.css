@@ -453,38 +453,6 @@ body::before {
   padding: calc(var(--nav-h) + 3rem) var(--page-x) 6rem;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(61,158,114,0.15);
-  border: 1px solid rgba(61,158,114,0.3);
-  border-radius: var(--r-pill);
-  padding: 0.3em 1em;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-}
-.hero-badge-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green-light);
-  animation: pulse 2s ease-in-out infinite;
-}
-.hero-badge-text {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green-light);
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.85); }
-  50%       { opacity: 1;   transform: scale(1.15); }
-}
-
 .hero-headline {
   font-size: var(--text-hero);
   font-weight: 300;
@@ -618,19 +586,6 @@ body::before {
   color: var(--gray-steel);
 }
 
-.availability-badge {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.2em 0.6em;
-  border-radius: var(--r-sm);
-  flex-shrink: 0;
-}
-.availability-badge--preview { background: var(--green-mist); color: var(--green-deep); }
-.availability-badge--generate { background: var(--off-white); color: var(--gray-steel); }
-.availability-badge--soon { background: #f0f0f0; color: #999; }
-
 /* Hero trust tags */
 .hero-trust {
   display: flex;
@@ -752,7 +707,6 @@ body::before {
 .hero-sample-link a:hover { color: rgba(255,255,255,0.85); }
 
 /* Hero loaded state */
-.hero-loaded .hero-badge,
 .hero-loaded .hero-headline,
 .hero-loaded .hero-sub,
 .hero-loaded .hero-search-wrap,
@@ -1153,17 +1107,6 @@ body::before {
   font-size: var(--text-xs);
   color: rgba(255,255,255,0.5);
   margin-top: 0.1rem;
-}
-.report-mockup-badge {
-  margin-left: auto;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(61,158,114,0.2);
-  color: var(--green-light);
-  padding: 0.3em 0.7em;
-  border-radius: var(--r-sm);
 }
 .report-mockup-body { padding: 1.5rem; }
 .mockup-metric-row {
@@ -1643,34 +1586,6 @@ body::before {
 .company-meta-sep {
   width: 1px; height: 12px;
   background: rgba(255,255,255,0.2);
-}
-.company-ticker {
-  font-family: 'Courier New', monospace;
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--green-light);
-  background: rgba(61,158,114,0.12);
-  border: 1px solid rgba(61,158,114,0.25);
-  border-radius: var(--r-sm);
-  padding: 0.2em 0.6em;
-}
-.company-status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--r-pill);
-  padding: 0.35em 0.9em;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: rgba(255,255,255,0.6);
-}
-.company-status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green-light);
-  flex-shrink: 0;
 }
 .company-header-actions {
   display: flex;

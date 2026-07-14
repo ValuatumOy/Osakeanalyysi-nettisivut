@@ -259,10 +259,6 @@ ${navHtml()}
         </nav>
         <div class="company-header-inner">
           <div class="company-ident">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-              <span class="company-ticker">${esc(A.d.ticker)} vs ${esc(B.d.ticker)}</span>
-              <span class="company-status-badge"><span class="company-status-dot"></span>${esc(A.d.sector || 'Stock')} comparison · Updated ${TODAY}</span>
-            </div>
             <h1 class="company-name">${esc(sa)} vs ${esc(sb)}: Stock Comparison &amp; AI Equity Analysis</h1>
             <div class="company-meta">
               <span class="company-meta-chip">${esc(A.d.exchange)} / ${esc(B.d.exchange)}</span>

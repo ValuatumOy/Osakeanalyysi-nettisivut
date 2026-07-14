@@ -84,7 +84,9 @@ ${jsonLdText}
     @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
+    .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
     @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
+    @media(max-width:960px){.report-full-content.coverage-cols #ready-report{break-before:auto;-webkit-column-break-before:auto;}}
   </style>
 </head>
 <body>
