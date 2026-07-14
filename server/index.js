@@ -10,6 +10,7 @@ const {
 const { sendReportEmail, sendFreshConfirmEmail } = require('./email');
 const orders = require('./orders');
 const reconciler = require('./reconciler');
+const reaper = require('./reaper');
 const { searchCompanies } = require('./search');
 
 const app = express();
@@ -367,4 +368,6 @@ app.listen(PORT, () => {
   console.log(`Valuatum API on port ${PORT}`);
   // Start the fresh-report generation loop (no-op if PDF_ENGINE_URL is unset).
   reconciler.start();
+  // Start the resale retention sweep (no-op unless RESALE_ENABLED).
+  reaper.start();
 });

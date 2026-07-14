@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "generate:companies": "node scripts/generate-company-pages.mjs",
-    "test:company-pages": "node --test test/company-pages/*.test.mjs"
+    "test:company-pages": "node --test test/company-pages/*.test.mjs",
+    "test:reaper": "node --test test/reaper/*.test.mjs"
   },
   "dependencies": {
     "resend": "^4.0.0",
