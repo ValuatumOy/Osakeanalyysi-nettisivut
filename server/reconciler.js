@@ -33,11 +33,24 @@ function boolEnv(name, fallback) {
   return /^(1|true|yes|on)$/i.test(value);
 }
 
+function floatEnv(name, fallback) {
+  const value = Number.parseFloat(process.env[name] || '');
+  return Number.isFinite(value) ? value : fallback;
+}
+
 const INTERVAL_MS = intEnv('RECONCILER_INTERVAL_MS', 45000);
 const MAX_POLLS = intEnv('RECONCILER_MAX_POLLS', 40);
 const MAX_ATTEMPTS = intEnv('RECONCILER_MAX_ATTEMPTS', 6);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
 const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
+// Phase 2 resale: when enabled, a delivered report is published immediately for
+// resale (visible + resale price) instead of the Phase 1 hidden email-only write.
+// RESALE_PRICE_EUR is set by the business and should always be set: leaving it
+// unset falls back to the catalog age tiers, which every real catalog report
+// overrides with an explicit sidecar price, so the fallback would undercut them.
+// See the reaper (server/reaper.js) for retention/deletion.
+const RESALE_ENABLED = boolEnv('RESALE_ENABLED', false);
+const RESALE_PRICE_EUR = floatEnv('RESALE_PRICE_EUR', null);
 
 const PDF_DIR = process.env.REPORT_PDF_DIR || '/var/www/html/reports/pdfs';
 const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.valuatum.com/reports/pdfs').replace(/\/$/, '');
@@ -140,9 +153,12 @@ async function deliver(order, job) {
   fs.mkdirSync(PDF_DIR, { recursive: true });
   writeFileAtomic(path.join(PDF_DIR, pdfFileName), pdf);
 
-  // Sidecar consumed by catalog.js at runtime. hidden + excludeFromFree keep a
-  // just-purchased report off the public site and out of the free rotation;
-  // provenance links it back to the order and engine job for Phase 2.
+  // Sidecar consumed by catalog.js at runtime. excludeFromFree always keeps a
+  // paid report out of the free rotation; provenance links it back to the order
+  // and engine job (and the reaper deletes only provenance-bearing reports).
+  // Phase 1 writes it hidden (email-only); with RESALE_ENABLED it is published
+  // for resale immediately -- hidden:false + forceVisible skips the catalog's
+  // visibleAfterDays delay -- at the configured discount price.
   const sidecar = {
     companyName: companyLabel,
     ticker: order.ticker || '',
@@ -152,10 +168,20 @@ async function deliver(order, job) {
     reportDate: reportDateIso,
     description: `AI equity report for ${companyLabel}, generated ${reportDateIso}.`,
     tags: ['AI Equity Report', 'PDF'],
-    hidden: true,
+    hidden: !RESALE_ENABLED,
     excludeFromFree: true,
     provenance: { sessionId: order.id, jobId: order.jobId },
   };
+  if (RESALE_ENABLED) {
+    sidecar.forceVisible = true;
+    // An explicit price matches how the existing catalog reports are written
+    // (price on the sidecar, no priceLabel) and overrides the age tiers, which
+    // the live catalog never falls back to. Leaving RESALE_PRICE_EUR unset would
+    // price a resale report off the tiers and undercut the rest of the catalog.
+    if (RESALE_PRICE_EUR != null) {
+      sidecar.price = RESALE_PRICE_EUR;
+    }
+  }
   writeFileAtomic(path.join(PDF_DIR, `${fileBase}.json`), Buffer.from(`${JSON.stringify(sidecar, null, 2)}\n`));
 
   const pdfUrl = `${PDF_BASE_URL}/${encodeURIComponent(pdfFileName)}`;
@@ -276,7 +302,7 @@ function start() {
   }
   console.log(
     `Reconciler started (interval ${INTERVAL_MS}ms, fresh import ${FRESH_IMPORT_ENABLED ? 'ON' : 'off'}, ` +
-    `admin-on-success ${ADMIN_NOTIFY_ON_SUCCESS ? 'on' : 'off'})`,
+    `admin-on-success ${ADMIN_NOTIFY_ON_SUCCESS ? 'on' : 'off'}, resale ${RESALE_ENABLED ? 'ON' : 'off'})`,
   );
   const timer = setInterval(() => {
     tick().catch(err => console.error('reconciler: tick error:', err.message));
