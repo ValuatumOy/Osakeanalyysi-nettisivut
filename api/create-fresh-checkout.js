@@ -1,18 +1,12 @@
 const Stripe = require('stripe');
 
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '990', 10);
-// Price for the "Generate this report" button on the generated company pages
-// (render-company-page.mjs NEW_REPORT_PRICE = 50 EUR). Kept server-side so the
-// charged amount is never taken from the client. Must match that page price.
-const FRESH_REPORT_COVERAGE_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_COVERAGE_PRICE_CENTS || '5000', 10);
+const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { company, ticker, exchange, email, purpose, source } = req.body;
   if (!company) return res.status(400).json({ error: 'Company name required' });
-
-  const priceCents = source === 'coverage' ? FRESH_REPORT_COVERAGE_PRICE_CENTS : FRESH_REPORT_PRICE_CENTS;
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -26,7 +20,7 @@ module.exports = async (req, res) => {
             name: `Fresh AI Equity Report - ${company}`,
             description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
           },
-          unit_amount: priceCents,
+          unit_amount: FRESH_REPORT_PRICE_CENTS,
         },
         quantity: 1,
       }],

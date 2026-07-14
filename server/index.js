@@ -14,10 +14,7 @@ const { searchCompanies } = require('./search');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '990', 10);
-// Coverage-page "Generate this report" price (render-company-page.mjs NEW_REPORT_PRICE
-// = 50 EUR). Server-side so the charged amount is never taken from the client.
-const FRESH_REPORT_COVERAGE_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_COVERAGE_PRICE_CENTS || '5000', 10);
+const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
 app.use(cors({
@@ -206,8 +203,6 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
   const { company, ticker, exchange, email, purpose, source } = req.body;
   if (!company) return res.status(400).json({ error: 'Company name required' });
 
-  const priceCents = source === 'coverage' ? FRESH_REPORT_COVERAGE_PRICE_CENTS : FRESH_REPORT_PRICE_CENTS;
-
   try {
     const session = await stripeClient().checkout.sessions.create({
       payment_method_types: ['card'],
@@ -218,7 +213,7 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
             name: `Fresh AI Equity Report - ${company}`,
             description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
           },
-          unit_amount: priceCents,
+          unit_amount: FRESH_REPORT_PRICE_CENTS,
         },
         quantity: 1,
       }],

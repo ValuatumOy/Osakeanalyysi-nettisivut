@@ -79,7 +79,9 @@
     @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
+    .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
     @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
+    @media(max-width:960px){.report-full-content.coverage-cols #ready-report{break-before:auto;-webkit-column-break-before:auto;}}
   </style>
 </head>
 <body>
@@ -137,6 +139,14 @@
           <p>Stora Enso Oyj is a forest products company that focuses on renewable materials and wood-based solutions. It produces packaging materials and packaging solutions, biomaterials, and wood products, and also manages forest assets and timber supply. Its products are used in building construction, retail, food and beverage, manufacturing, e-commerce, and other industrial applications.</p>
         </section>
 
+        <section class="report-full-section" id="sources">
+          <h2>Sources &amp; methodology</h2>
+          <p>Financial figures are sourced from Valuatum's financial model for Stora Enso Oyj and represent the latest completed financial year (2025). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
+            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
+          </div>
+        </section>
+
         <section class="report-full-section" id="ready-report">
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
             <h2 style="color:white; margin-top:0;">Buy the ready Stora Enso report</h2>
@@ -159,13 +169,7 @@
           </div>
         </section>
 
-        <section class="report-full-section" id="sources">
-          <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for Stora Enso Oyj and represent the latest completed financial year (2025). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
-          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
-            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
-          </div>
-        </section>
+        
 
         <section class="report-full-section" id="related"><h2>More AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;"><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/kesko-equity-report.html">Kesko (KESKOB.HE) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/oriola-equity-report.html">Oriola (ORIOLA.HE) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/orion-equity-report.html">Orion (ORNBV.HE) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/upm-equity-report.html">UPM (UPM.HE) report &rarr;</a></div></section>
       </div>

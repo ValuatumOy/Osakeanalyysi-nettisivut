@@ -377,10 +377,6 @@ ${NAV()}
       <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.6); margin-bottom:1rem;"><a href="/" style="color:rgba(255,255,255,0.7);">Home</a> › <a href="/reports.html" style="color:rgba(255,255,255,0.7);">Equity research</a> › ${esc(sn)}</nav>
       <div class="company-header-inner">
         <div class="company-ident">
-          <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-            <span class="company-ticker">${esc(c.ticker)}</span>
-            <span class="company-status-badge"><span class="company-status-dot"></span>${hasReport ? 'Report available' : 'Coverage'} · Updated ${esc(c.reportDateLabel || c.reportDate || YEAR)}</span>
-          </div>
           <h1 class="company-name">${esc(sn)} (${esc(c.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
           <div class="company-meta"><span class="company-meta-chip">${esc(c.exchange)}</span><span class="company-meta-sep"></span><span class="company-meta-chip">${esc(c.country || '')}</span><span class="company-meta-sep"></span><span class="company-meta-chip">${esc(c.sector || '')}</span></div>
           ${callStats}

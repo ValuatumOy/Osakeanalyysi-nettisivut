@@ -66,7 +66,7 @@
       input.addEventListener('input', () => {
         const q = input.value.trim().toLowerCase();
         if (q.length < 1) { autocomplete.classList.remove('open'); return; }
-        const matches = COMPANIES.filter(c =>
+        const matches = searchableCompanyPages().filter(c =>
           c.ticker.toLowerCase().includes(q) ||
           c.name.toLowerCase().includes(q)
         ).slice(0, 6);
@@ -98,30 +98,48 @@
 
 function renderAutocomplete(container, companies) {
   container.innerHTML = companies.map(c => `
-    <div class="autocomplete-item" onclick="handleSearch('${c.ticker}')">
+    <div class="autocomplete-item" onclick="openCompanyPage('${escapeAttr(c.url)}')">
       <span class="autocomplete-ticker">${c.ticker}</span>
       <span class="autocomplete-name">${c.name}</span>
-      <span class="autocomplete-exchange">${c.flag} ${c.exchange}</span>
-      <span class="availability-badge ${availBadgeClass(c.reportAvailability)}">${availLabel(c.reportAvailability)}</span>
+      <span class="autocomplete-exchange">${c.exchange}</span>
     </div>
   `).join('');
 }
 
-function availBadgeClass(status) {
-  if (status === 'preview_available') return 'availability-badge--preview';
-  if (status === 'can_generate') return 'availability-badge--generate';
-  return 'availability-badge--soon';
-}
-
-function availLabel(status) {
-  if (status === 'preview_available') return 'Free report';
-  if (status === 'can_generate') return 'Generate';
-  return 'Soon';
+function searchableCompanyPages() {
+  if (Array.isArray(window.COMPANY_PAGE_CATALOG)) return window.COMPANY_PAGE_CATALOG;
+  return [];
 }
 
 function handleSearch(query) {
-  if (!query) return;
+  if (!query) {
+    window.location.href = 'reports.html';
+    return;
+  }
+  const normalized = query.trim().toLowerCase();
+  const pages = searchableCompanyPages();
+  const exact = pages.find(c =>
+    c.ticker.toLowerCase() === normalized ||
+    c.name.toLowerCase() === normalized
+  );
+  const partial = exact || pages.find(c =>
+    c.ticker.toLowerCase().includes(normalized) ||
+    c.name.toLowerCase().includes(normalized)
+  );
+  if (partial) {
+    openCompanyPage(partial.url);
+    return;
+  }
   window.location.href = `reports.html?search=${encodeURIComponent(query)}`;
+}
+
+function openCompanyPage(url) {
+  if (!url) return;
+  window.location.href = url;
+}
+
+function escapeAttr(value) {
+  return String(value || '').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
 }
 
 // ── Value pool bars animation ──────────────────────

@@ -104,12 +104,9 @@
           stroke="rgba(61,158,114,0.5)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
       </svg>
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span class="hero-badge-text">AI Equity Research · Now Available</span>
-        </div>
         <h1 class="hero-headline">
-          AI equity research reports<br>for any listed company.
+          <span class="hero-headline-line">AI equity research reports</span>
+          <span class="hero-headline-line">for any listed company.</span>
         </h1>
         <p class="hero-sub">
           Browse available reports, open free samples, or order a fresh AI-generated equity report delivered by email. Each report includes value pool analysis, reverse valuation, risk assessment, and full financial statements.
@@ -122,16 +119,9 @@
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
             <input type="text" class="search-input" placeholder="Search company or ticker…" autocomplete="off" aria-label="Search reports">
-            <button class="search-btn" type="button" onclick="window.location.href='reports.html'">Browse reports</button>
+            <button class="search-btn" type="button">Browse reports</button>
           </div>
           <div class="search-autocomplete" id="heroAutocomplete" role="listbox"></div>
-        </div>
-
-        <div class="hero-trust">
-          <span class="hero-trust-item">Free sample reports available</span>
-          <span class="hero-trust-item">Full PDF download</span>
-          <span class="hero-trust-item">Built on financial data + AI</span>
-          <span class="hero-trust-item">25+ years of analysis expertise</span>
         </div>
 
         <div class="hero-sample-link">
@@ -139,15 +129,6 @@
             View available reports
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l5 4.5L7 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-        </div>
-
-        <!-- Coming soon notice -->
-        <div class="hero-coming-soon">
-          <span class="hero-cs-icon">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.2 3.6L6 8.2 2.7 10.5l1.2-3.6L1 4.6h3.8z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="hero-cs-text"><strong>Coming soon:</strong> type any ticker and get a full AI equity report generated instantly — no email, no waiting.</span>
-          <button class="hero-cs-link" onclick="document.getElementById('emailModal').classList.add('open')">Get notified →</button>
         </div>
 
       </div>
@@ -188,8 +169,8 @@
     <section class="samples-section" id="samples">
       <div class="container">
         <div class="samples-header">
-          <span class="section-eyebrow reveal">Free Report Examples</span>
-          <h2 class="section-headline reveal">See the quality before you buy.</h2>
+          <span class="section-eyebrow reveal">Company Pages</span>
+          <h2 class="section-headline reveal">Open company pages before you buy.</h2>
           <p class="section-sub reveal">Each report maps where company value comes from, what the valuation implies, and what could break the investment case.</p>
         </div>
         <div class="samples-grid">
@@ -217,8 +198,8 @@
                 <span class="sample-tag">Reverse valuation</span>
                 <span class="sample-tag">Value pools</span>
               </div>
-              <a href="reports/tesla-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'TSLA'})">
-                Open free report
+              <a href="reports/tesla-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'TSLA'})">
+                Open company page
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -247,8 +228,8 @@
                 <span class="sample-tag">EV/EBIT</span>
                 <span class="sample-tag">Nordic</span>
               </div>
-              <a href="reports/upm-kymmene-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'UPM'})">
-                Open free report
+              <a href="reports/upm-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'UPM'})">
+                Open company page
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -277,8 +258,8 @@
                 <span class="sample-tag">Renewable materials</span>
                 <span class="sample-tag">Nordic</span>
               </div>
-              <a href="reports/stora-enso-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'STERV'})">
-                Open free report
+              <a href="reports/stora-enso-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'STERV'})">
+                Open company page
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -476,7 +457,6 @@
                   <div class="report-mockup-title">Tesla, Inc. — AI Equity Report</div>
                   <div class="report-mockup-sub">TSLA · NASDAQ · Consumer Discretionary</div>
                 </div>
-                <span class="report-mockup-badge">Free report</span>
               </div>
               <div class="report-mockup-body">
                 <div class="mockup-metric-row">
@@ -516,7 +496,7 @@
                 <div class="mockup-locked-row">
                   <span class="mockup-lock-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                   <span class="mockup-locked-text">Robotaxi and Optimus pools are included in the free PDF</span>
-                  <span class="mockup-unlock-btn" onclick="window.location.href='https://files.valuatum.com/reports/pdfs/Tesla_07072026.pdf'">Open free</span>
+                  <span class="mockup-unlock-btn" onclick="window.location.href='reports/tesla-equity-report.html'">Open company page</span>
                 </div>
               </div>
             </div>
@@ -531,7 +511,7 @@
         <div class="pricing-teaser-header">
           <span class="section-eyebrow reveal">Pricing</span>
           <h2 class="section-headline reveal">Free samples. Discounted reports. Fresh on demand.</h2>
-          <p class="section-sub reveal" style="margin:0 auto;">Open free sample reports at no cost. Buy recent AI equity reports at a discounted price. Order a fresh report with the latest data.</p>
+          <p class="section-sub reveal" style="margin:0 auto;">Buy ready AI equity reports for €20. Order a fresh report with the latest data for €50.</p>
         </div>
         <div class="pricing-cards-grid reveal">
           <!-- Free -->
@@ -549,7 +529,7 @@
             <span class="pricing-badge">Available now</span>
             <div class="pricing-name">Existing Report</div>
             <div class="pricing-price-wrap">
-              <span class="pricing-price-main">€4.90</span>
+              <span class="pricing-price-main">€20.00</span>
             </div>
             <div class="pricing-period">per report · delivered by email</div>
             <div class="pricing-desc">Recent AI equity reports at a discounted price. Full PDF with value pool analysis, reverse valuation, risks, and financials.</div>
@@ -560,7 +540,7 @@
             <span class="pricing-badge" style="background:var(--gold); color:white;">Fresh</span>
             <div class="pricing-name">Fresh Report</div>
             <div class="pricing-price-wrap">
-              <span class="pricing-price-main">€9.90</span>
+              <span class="pricing-price-main">€50.00</span>
             </div>
             <div class="pricing-period">per report · latest data · delivered by email</div>
             <div class="pricing-desc">Order a newly generated report with the latest available data. Any listed company, delivered within 1 business day.</div>
@@ -774,18 +754,7 @@
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
   <script src="js/reportsData.js"></script>
+  <script src="js/companyPagesData.js"></script>
   <script src="js/script.js"></script>
-  <script>
-    // Override hero search button: search redirects to reports page
-    document.querySelector('.hero-search-wrap .search-btn')?.addEventListener('click', function() {
-      const q = document.querySelector('.hero-search-wrap .search-input')?.value.trim();
-      if (q) {
-        trackEvent('report_search', { query: q, source: 'hero' });
-        window.location.href = 'reports.html';
-      } else {
-        window.location.href = 'reports.html';
-      }
-    });
-  </script>
 </body>
 </html>
