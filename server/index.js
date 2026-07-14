@@ -7,7 +7,10 @@ const {
   getReportByIdSync,
   recordCatalogPurchase,
 } = require('./catalog');
-const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = require('./email');
+const { sendReportEmail, sendFreshConfirmEmail } = require('./email');
+const orders = require('./orders');
+const reconciler = require('./reconciler');
+const { searchCompanies } = require('./search');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -104,14 +107,51 @@ app.get('/api/reports/:reportId', (req, res) => {
   }
 });
 
+// Record a paid purchase in the catalog cooldown ledger, and — for a fresh
+// order — enqueue it as a NEW row in the generation pipeline so the reconciler
+// (Task D) can fulfil it. Idempotent on the Stripe session id (orders.create
+// no-ops on a repeat).
+function recordPurchaseAndQueue(input = {}) {
+  const purchase = recordCatalogPurchase(input);
+  if (input.type === 'fresh' && input.sessionId) {
+    orders.create({
+      id: input.sessionId,
+      email: input.customerEmail || input.email || '',
+      companyName: input.companyName || input.company || '',
+      ticker: input.ticker || '',
+      exchange: input.exchange || '',
+      sector: input.sector || '',
+      industry: input.industry || '',
+    });
+  }
+  return purchase;
+}
+
 // POST /api/report-purchases - Vercel webhook syncs paid purchases here.
 app.post('/api/report-purchases', requireCatalogSyncAuth, (req, res) => {
   try {
-    const purchase = recordCatalogPurchase(req.body || {});
+    const purchase = recordPurchaseAndQueue(req.body || {});
     res.json({ ok: true, purchase });
   } catch (err) {
     console.error('record purchase:', err.message);
     res.status(500).json({ error: 'Could not record purchase' });
+  }
+});
+
+// GET /api/search-companies?q= - Wisdom-backed picker for fresh orders. Returns
+// only companies Wisdom covers; an empty list means "not covered". The bearer
+// token stays server-side (server/search.js).
+app.get('/api/search-companies', async (req, res) => {
+  const q = String(req.query.q || '').trim();
+  if (q.length < 1) return res.json({ query: q, results: [] });
+
+  try {
+    const results = await searchCompanies(q);
+    res.set('Cache-Control', 'public, max-age=60');
+    res.json({ query: q, results });
+  } catch (err) {
+    console.error('search-companies:', err.message);
+    res.status(502).json({ error: 'Company search is unavailable' });
   }
 });
 
@@ -160,7 +200,7 @@ app.post('/api/create-checkout', async (req, res) => {
 
 // POST /api/create-fresh-checkout
 app.post('/api/create-fresh-checkout', async (req, res) => {
-  const { company, ticker, exchange, email, purpose } = req.body;
+  const { company, ticker, exchange, email, purpose, source } = req.body;
   if (!company) return res.status(400).json({ error: 'Company name required' });
 
   try {
@@ -171,7 +211,7 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
           currency: 'eur',
           product_data: {
             name: `Fresh AI Equity Report - ${company}`,
-            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within 1 business day.`,
+            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
           },
           unit_amount: FRESH_REPORT_PRICE_CENTS,
         },
@@ -186,6 +226,7 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
         exchange: exchange || '',
         customerEmail: email || '',
         purpose: purpose || '',
+        source: source || '',
       },
       success_url: `${process.env.SITE_URL}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}&type=fresh`,
       cancel_url: `${process.env.SITE_URL}/reports.html#order-fresh`,
@@ -269,11 +310,12 @@ app.post('/api/webhook', async (req, res) => {
 
     try {
       if (isFresh) {
-        recordCatalogPurchase({
+        recordPurchaseAndQueue({
           type: 'fresh',
           sessionId: session.id,
           companyName: session.metadata?.company || '',
           ticker: session.metadata?.ticker || '',
+          exchange: session.metadata?.exchange || '',
           customerEmail: email || '',
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
         });
@@ -283,7 +325,9 @@ app.post('/api/webhook', async (req, res) => {
         } else {
           console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
         }
-        await sendAdminNotification(session.metadata, email);
+        // Fulfilment is now the reconciler's job (Task D). The admin is emailed
+        // by the reconciler — on success (flag ADMIN_NOTIFY_ON_SUCCESS) and
+        // always on failure — not here, where generation hasn't happened yet.
       } else {
         const report = getReportByIdSync(reportId);
         if (!email) {
@@ -319,4 +363,8 @@ app.post('/api/webhook', async (req, res) => {
 // Health check
 app.get('/api/health', (_, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => console.log(`Valuatum API on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Valuatum API on port ${PORT}`);
+  // Start the fresh-report generation loop (no-op if PDF_ENGINE_URL is unset).
+  reconciler.start();
+});
