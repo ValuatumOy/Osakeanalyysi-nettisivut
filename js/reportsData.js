@@ -1,159 +1,26 @@
-// ── Report catalog configuration ──────────────────────────────────────────
-// Edit this file to add, remove, or update reports.
-// reportType: "free" | "existing" | "fresh"
-// availability: "available" | "coming_soon" | "hidden"
+// Report catalog fallback.
+// The reports page only lists companies that have both a company page and a ready PDF report.
 
 var REPORTS_CATALOG = [
-  {
-    id: "tesla-01062026",
-    slug: "tesla-equity-report",
-    companyName: "Tesla, Inc.",
-    ticker: "TSLA",
-    exchange: "NASDAQ",
-    country: "US",
-    sector: "Consumer Discretionary",
-    reportDate: "2026-06-01",
-    fileName: "Tesla_07072026.pdf",
-    pdfUrl: "reports/pdfs/Tesla_07072026.pdf",
-    reportType: "existing",
-    availability: "available",
-    price: 20,
-    priceLabel: "Ready report",
-    creditCost: 2,
-    isFree: false,
-    description: "AI equity report mapping Tesla's value pools across automotive, energy storage, FSD software, and Robotaxi option — with reverse valuation and risk analysis.",
-    tags: ["AI Equity Report", "Reverse Valuation", "Value Pools", "PDF"],
-  },
-  {
-    id: "storaenso-01062026",
-    slug: "stora-enso-equity-report",
-    companyName: "Stora Enso Oyj",
-    ticker: "STERV.HE",
-    exchange: "Helsinki",
-    country: "FI",
-    sector: "Materials",
-    reportDate: "2026-06-01",
-    fileName: "StoraEnso_06072026.pdf",
-    pdfUrl: "reports/pdfs/StoraEnso_06072026.pdf",
-    reportType: "free",
-    availability: "hidden",
-    price: 0,
-    creditCost: 0,
-    isFree: true,
-    description: "AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, and reverse valuation case.",
-    tags: ["AI Equity Report", "Nordic", "Materials", "PDF"],
-  },
-  {
-    id: "storaenso-03072026",
-    slug: "stora-enso-equity-report",
-    companyName: "Stora Enso Oyj",
-    ticker: "STERV.HE",
-    exchange: "Helsinki",
-    country: "FI",
-    sector: "Materials",
-    reportDate: "2026-07-03",
-    fileName: "StoraEnso_03072026.pdf",
-    pdfUrl: "reports/pdfs/StoraEnso_03072026.pdf",
-    reportType: "existing",
-    availability: "available",
-    price: 20,
-    priceLabel: "Ready report",
-    creditCost: 2,
-    isFree: false,
-    description: "Ready AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, reverse valuation, risks and catalysts.",
-    tags: ["AI Equity Report", "Ready Report", "Nordic", "Materials", "PDF"],
-  },
-  {
-    id: "oriola-01062026",
-    companyName: "Oriola Oyj",
-    ticker: "ORIH.HE",
-    exchange: "Helsinki",
-    country: "FI",
-    sector: "Health Care",
-    reportDate: "2026-06-01",
-    fileName: "Oriola_01062026.pdf",
-    pdfUrl: "reports/pdfs/Oriola_01062026.pdf",
-    reportType: "existing",
-    availability: "available",
-    price: 20,
-    creditCost: 2,
-    isFree: false,
-    description: "AI equity report on Oriola's pharmaceutical distribution business, margin recovery trajectory, Nordic healthcare market dynamics, and valuation case.",
-    tags: ["AI Equity Report", "Reverse Valuation", "Nordic", "PDF"],
-  },
-  {
-    id: "nuholdings-02062026",
-    companyName: "Nu Holdings Ltd.",
-    ticker: "NU",
-    exchange: "NYSE",
-    country: "US",
-    sector: "Financials",
-    reportDate: "2026-06-02",
-    fileName: "NuHoldings_02062026.pdf",
-    pdfUrl: "reports/pdfs/NuHoldings_02062026.pdf",
-    reportType: "existing",
-    availability: "available",
-    price: 20,
-    creditCost: 2,
-    isFree: false,
-    description: "AI equity report on Nu Holdings' digital banking platform, Latin America expansion, profitability ramp, and reverse valuation against current market pricing.",
-    tags: ["AI Equity Report", "Fintech", "LatAm", "PDF"],
-  },
-  {
-    id: "recursion-02062026",
-    slug: "recursion-pharmaceuticals-equity-report",
-    companyName: "Recursion Pharmaceuticals",
-    ticker: "RXRX",
-    exchange: "NASDAQ",
-    country: "US",
-    sector: "Health Care",
-    reportDate: "2026-06-02",
-    fileName: "RecursionPharmaceuticals_02062026.pdf",
-    pdfUrl: "reports/pdfs/RecursionPharmaceuticals_02062026.pdf",
-    reportType: "existing",
-    availability: "available",
-    price: 20,
-    creditCost: 2,
-    isFree: false,
-    description: "AI equity report on Recursion's AI drug discovery platform, pipeline optionality, path to commercial milestones, and reverse valuation.",
-    tags: ["AI Equity Report", "Biotech", "AI Drug Discovery", "PDF"],
-  },
+  { id: "amd-05062026", slug: "advanced-micro-devices-equity-report", companyName: "Advanced Micro Devices", ticker: "AMD", exchange: "NASDAQ", country: "US", sector: "Technology", reportDate: "2026-06-05", fileName: "AMD.pdf", pdfUrl: "reports/pdfs/AMD.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Advanced Micro Devices (AMD) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.", tags: ["AI Equity Report", "Semiconductors", "Ready Report", "PDF"] },
+  { id: "intel-05062026", slug: "intel-equity-report", companyName: "Intel", ticker: "INTC", exchange: "NASDAQ", country: "US", sector: "Technology", reportDate: "2026-06-05", fileName: "Intel.pdf", pdfUrl: "reports/pdfs/Intel.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Intel (INTC) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.", tags: ["AI Equity Report", "Semiconductors", "Ready Report", "PDF"] },
+  { id: "kesko-05062026", slug: "kesko-equity-report", companyName: "Kesko", ticker: "KESKOB.HE", exchange: "Helsinki", country: "FI", sector: "Consumer Staples", reportDate: "2026-06-05", fileName: "Kesko.pdf", pdfUrl: "reports/pdfs/Kesko.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Kesko (KESKOB.HE) financial overview and AI equity report covering revenue, EBIT, net earnings, book value, share price and market capitalisation.", tags: ["AI Equity Report", "Nordic", "Ready Report", "PDF"] },
+  { id: "nokia-05062026", slug: "nokia-equity-report", companyName: "Nokia", ticker: "NOKIA.HE", exchange: "Helsinki", country: "FI", sector: "Technology", reportDate: "2026-06-05", fileName: "Nokia.pdf", pdfUrl: "reports/pdfs/Nokia.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Nokia (NOKIA.HE) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.", tags: ["AI Equity Report", "Nordic", "Ready Report", "PDF"] },
+  { id: "recursion-02062026", slug: "recursion-pharmaceuticals-equity-report", companyName: "Recursion Pharmaceuticals", ticker: "RXRX", exchange: "NASDAQ", country: "US", sector: "Health Care", reportDate: "2026-06-02", fileName: "RecursionPharmaceuticals_02062026.pdf", pdfUrl: "reports/pdfs/RecursionPharmaceuticals_02062026.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Recursion Pharmaceuticals (RXRX) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.", tags: ["AI Equity Report", "Biotech", "Ready Report", "PDF"] },
+  { id: "storaenso-03072026", slug: "stora-enso-equity-report", companyName: "Stora Enso", ticker: "STERV.HE", exchange: "Helsinki", country: "FI", sector: "Materials", reportDate: "2026-07-03", fileName: "StoraEnso_03072026.pdf", pdfUrl: "reports/pdfs/StoraEnso_03072026.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Stora Enso (STERV.HE) financial overview and AI equity report covering revenue, EBIT, net earnings, book value, share price and market capitalisation.", tags: ["AI Equity Report", "Nordic", "Materials", "PDF"] },
+  { id: "tesla-01062026", slug: "tesla-equity-report", companyName: "Tesla", ticker: "TSLA", exchange: "NASDAQ", country: "US", sector: "Consumer Discretionary", reportDate: "2026-06-01", fileName: "Tesla_01062026.pdf", pdfUrl: "reports/pdfs/Tesla_01062026.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Tesla (TSLA) financial overview and AI equity report covering revenue, EBIT, net earnings, book value, share price and market capitalisation.", tags: ["AI Equity Report", "EV", "Ready Report", "PDF"] },
+  { id: "oriola-01062026", slug: "oriola-equity-report", companyName: "Oriola", ticker: "ORIOLA.HE", exchange: "Helsinki", country: "FI", sector: "Health Care", reportDate: "2026-06-01", fileName: "Oriola_01062026.pdf", pdfUrl: "reports/pdfs/Oriola_01062026.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Oriola (ORIOLA.HE) financial overview and AI equity report covering revenue, EBIT, net earnings, book value, share price and market capitalisation.", tags: ["AI Equity Report", "Nordic", "Health Care", "PDF"] },
+  { id: "wartsila-05062026", slug: "wartsila-equity-report", companyName: "Wärtsilä Oyj Abp", ticker: "WRT1V.HE", exchange: "Helsinki", country: "FI", sector: "Industrials", reportDate: "2026-06-05", fileName: "Wärtsilä.pdf", pdfUrl: "reports/pdfs/Wärtsilä.pdf", reportType: "existing", availability: "available", price: 20, priceLabel: "Ready report", isFree: false, description: "Wärtsilä Oyj Abp (WRT1V.HE) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.", tags: ["AI Equity Report", "Nordic", "Industrials", "PDF"] },
 ];
 
-// ── Payment configuration ──────────────────────────────────────────────────
-// Set mode to 'stripe' and fill stripeLinks when Stripe is configured.
+var PAYMENT_CONFIG = { mode: "stripe", currency: "EUR", currencySymbol: "€", readyReportPrice: 20, freshReportPrice: 50 };
 
-var PAYMENT_CONFIG = {
-  mode: "manual", // "manual" | "stripe"
-  currency: "EUR",
-  currencySymbol: "€",
-  freshReportPrice: 50,
-  freshReportCredits: 5,
-  manualInstructions: {
-    payee: "Valuatum Oy",
-    iban: "FI00 0000 0000 0000 00",  // PLACEHOLDER — replace with real IBAN
-    bic: "PLACEHOLDER",              // PLACEHOLDER — replace with real BIC
-    bank: "Placeholder Bank",
-    referenceNote: "Include your email address and the company ticker (e.g. TSLA) as the payment reference.",
-    deliveryNote: "After we confirm your payment, the report PDF will be delivered to your email address within one business day.",
-  },
-  stripeLinks: {
-    singleReport: "",   // Add Stripe Payment Link URL here
-    freshReport: "",    // Add Stripe Payment Link URL here
-    credits10: "",
-    credits25: "",
-    credits100: "",
-  },
-};
-
-// ── Helper: report age in days ─────────────────────────────────────────────
 function getReportAgeDays(reportDate) {
   const now = new Date();
   const rd = new Date(reportDate);
   return Math.floor((now - rd) / (1000 * 60 * 60 * 24));
 }
 
-// ── Helper: human-readable age label ──────────────────────────────────────
 function getReportAgeLabel(reportDate) {
   const days = getReportAgeDays(reportDate);
   if (days === 0) return "Generated today";
@@ -164,7 +31,6 @@ function getReportAgeLabel(reportDate) {
   return `Generated ${Math.floor(days / 30)} month${Math.floor(days / 30) > 1 ? "s" : ""} ago`;
 }
 
-// ── Helper: formatted date ─────────────────────────────────────────────────
 function formatReportDate(dateStr) {
   const d = new Date(dateStr);
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });

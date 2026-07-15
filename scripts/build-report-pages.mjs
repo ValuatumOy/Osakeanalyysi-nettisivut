@@ -129,7 +129,6 @@ function navHtml() {
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a>
-        <a href="/comparisons.html" class="nav-link">Compare</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -288,12 +287,7 @@ function relatedHtml(current, all) {
   const rest = others.filter(o => !(o.sector && o.sector === current.sector));
   const ordered = [...peers, ...rest];
   const reportChips = ordered.map(o => chip(`/reports/${o.slug}.html`, `${shortName(o.companyName)} (${o.ticker}) report →`)).join('');
-  // Head-to-head comparison chips for same-sector peers (highest-intent "X vs Y" queries).
-  const cmpChips = peers.map(o => chip(`/compare/${compareSlug(current.companyName, o.companyName)}.html`,
-    `${shortName(current.companyName)} vs ${shortName(o.companyName)} →`)).join('');
-  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>${cmpChips ? `
-          <h3 style="margin-top:1.5rem;">Head-to-head comparisons</h3>
-          <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${cmpChips}</div>` : ''}`;
+  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>`;
 }
 
 function jsonLd(d, cat, desc) {

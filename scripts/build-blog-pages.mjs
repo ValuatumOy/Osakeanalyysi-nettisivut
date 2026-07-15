@@ -68,7 +68,6 @@ function navHtml() {
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link">Reports</a>
-        <a href="/comparisons.html" class="nav-link">Compare</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -427,7 +426,6 @@ function renderBlogIndex(publishedArticles, authorsData) {
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html" class="nav-link" style="color:var(--gray-steel);">Home</a>
         <a href="reports.html" class="nav-link" style="color:var(--gray-steel);">Reports</a>
-        <a href="comparisons.html" class="nav-link" style="color:var(--gray-steel);">Compare</a>
         <a href="pricing.html" class="nav-link" style="color:var(--gray-steel);">Pricing</a>
         <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
         <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
