@@ -154,8 +154,9 @@
       "role": "support",
       "targetQuery": "is tesla stock overvalued 2026",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Free report → full numbers. Hard SERP (tier-1 media) but the proprietary fair value is the differentiator; refresh every report cycle."
+      "status": "in-review",
+      "prNumber": 25,
+      "notes": "Free report → full numbers. Hard SERP (tier-1 media) but the proprietary fair value is the differentiator; refresh every report cycle. Drafted 2026-07-15 (Wed full pipeline run) as PR #25 on branch blog/is-tesla-overvalued. Angle: our 1 Jun 2026 SELL (350 target vs 438.26) decomposed via sum-of-the-parts — physical car+energy business is only 20.4% of EV, 79.6% (~1.25T USD) sits in zero-revenue FSD/Robotaxi/Optimus pools; reverse valuation turns price into operational targets (44M FSD subs, 2.1M robotaxi fleet). Honest track record: stock fell ~9% to ~397 USD (live FMP 15 Jul 2026), still ~13% above target and below base-case 421. Inbound link added to live reports/tesla-equity-report. Gates: humanizer 43/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "amd-stock-fair-value",
