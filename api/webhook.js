@@ -40,7 +40,7 @@ const handler = async (req, res) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    if (session.payment_status !== 'paid') return res.json({ received: true });
+    if (!isCompletedCheckout(session)) return res.json({ received: true });
 
     const email = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
@@ -51,6 +51,7 @@ const handler = async (req, res) => {
       isFresh,
       reportId: reportId || null,
       paymentStatus: session.payment_status,
+      amountTotal: session.amount_total,
     });
 
     try {
@@ -106,3 +107,7 @@ const handler = async (req, res) => {
 
 module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
+
+function isCompletedCheckout(session) {
+  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
+}

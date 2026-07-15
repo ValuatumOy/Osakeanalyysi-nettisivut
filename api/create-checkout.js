@@ -18,18 +18,9 @@ module.exports = async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `AI Equity Report - ${report.name}`,
-            description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
-          },
-          unit_amount: Math.round(report.price * 100),
-        },
-        quantity: 1,
-      }],
+      line_items: [readyReportLineItem(report)],
       mode: 'payment',
+      allow_promotion_codes: true,
       metadata: {
         reportId: report.id,
         reportName: report.name,
@@ -46,3 +37,21 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: 'Checkout failed' });
   }
 };
+
+function readyReportLineItem(report) {
+  if (process.env.STRIPE_READY_REPORT_PRICE_ID) {
+    return { price: process.env.STRIPE_READY_REPORT_PRICE_ID, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: 'eur',
+      product_data: {
+        name: `AI Equity Report - ${report.name}`,
+        description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
+      },
+      unit_amount: Math.round(report.price * 100),
+    },
+    quantity: 1,
+  };
+}

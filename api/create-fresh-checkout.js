@@ -13,18 +13,9 @@ module.exports = async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `Fresh AI Equity Report - ${company}`,
-            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
-          },
-          unit_amount: FRESH_REPORT_PRICE_CENTS,
-        },
-        quantity: 1,
-      }],
+      line_items: [freshReportLineItem(company, ticker)],
       mode: 'payment',
+      allow_promotion_codes: true,
       customer_email: email || undefined,
       metadata: {
         isFresh: 'true',
@@ -45,3 +36,21 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: 'Checkout failed' });
   }
 };
+
+function freshReportLineItem(company, ticker) {
+  if (process.env.STRIPE_FRESH_REPORT_PRICE_ID) {
+    return { price: process.env.STRIPE_FRESH_REPORT_PRICE_ID, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: 'eur',
+      product_data: {
+        name: `Fresh AI Equity Report - ${company}`,
+        description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
+      },
+      unit_amount: FRESH_REPORT_PRICE_CENTS,
+    },
+    quantity: 1,
+  };
+}

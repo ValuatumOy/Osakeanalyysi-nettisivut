@@ -44,6 +44,42 @@ function stripeClient() {
   return new Stripe(process.env.STRIPE_SECRET_KEY);
 }
 
+function readyReportLineItem(report) {
+  if (process.env.STRIPE_READY_REPORT_PRICE_ID) {
+    return { price: process.env.STRIPE_READY_REPORT_PRICE_ID, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: 'eur',
+      product_data: {
+        name: `AI Equity Report - ${report.companyName}`,
+        description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
+      },
+      unit_amount: Math.round(report.price * 100),
+    },
+    quantity: 1,
+  };
+}
+
+function freshReportLineItem(company, ticker) {
+  if (process.env.STRIPE_FRESH_REPORT_PRICE_ID) {
+    return { price: process.env.STRIPE_FRESH_REPORT_PRICE_ID, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: 'eur',
+      product_data: {
+        name: `Fresh AI Equity Report - ${company}`,
+        description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
+      },
+      unit_amount: FRESH_REPORT_PRICE_CENTS,
+    },
+    quantity: 1,
+  };
+}
+
 function publicReportPayload(report) {
   if (!report) return null;
   return {
@@ -170,18 +206,9 @@ app.post('/api/create-checkout', async (req, res) => {
 
     const session = await stripeClient().checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `AI Equity Report - ${report.companyName}`,
-            description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
-          },
-          unit_amount: Math.round(report.price * 100),
-        },
-        quantity: 1,
-      }],
+      line_items: [readyReportLineItem(report)],
       mode: 'payment',
+      allow_promotion_codes: true,
       metadata: {
         reportId: report.id,
         reportName: report.companyName,
@@ -207,18 +234,9 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
   try {
     const session = await stripeClient().checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `Fresh AI Equity Report - ${company}`,
-            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
-          },
-          unit_amount: FRESH_REPORT_PRICE_CENTS,
-        },
-        quantity: 1,
-      }],
+      line_items: [freshReportLineItem(company, ticker)],
       mode: 'payment',
+      allow_promotion_codes: true,
       customer_email: email || undefined,
       metadata: {
         isFresh: 'true',
@@ -247,7 +265,7 @@ app.get('/api/get-report-link', async (req, res) => {
 
   try {
     const session = await stripeClient().checkout.sessions.retrieve(session_id);
-    if (session.payment_status !== 'paid') {
+    if (!isCompletedCheckout(session)) {
       return res.status(402).json({ error: 'Payment not completed' });
     }
 
@@ -296,7 +314,7 @@ app.post('/api/webhook', async (req, res) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    if (session.payment_status !== 'paid') return res.json({ received: true });
+    if (!isCompletedCheckout(session)) return res.json({ received: true });
 
     const email = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
@@ -307,6 +325,7 @@ app.post('/api/webhook', async (req, res) => {
       isFresh,
       reportId: reportId || null,
       paymentStatus: session.payment_status,
+      amountTotal: session.amount_total,
     });
 
     try {
@@ -360,6 +379,10 @@ app.post('/api/webhook', async (req, res) => {
 
   res.json({ received: true });
 });
+
+function isCompletedCheckout(session) {
+  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
+}
 
 // Health check
 app.get('/api/health', (_, res) => res.json({ ok: true }));
