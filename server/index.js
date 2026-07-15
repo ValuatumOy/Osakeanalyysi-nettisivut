@@ -17,6 +17,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const READY_REPORT_PRICE_CENTS = 2000;
 const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
+const DEFAULT_READY_REPORT_PRICE_ID = 'price_1TtPVO2FVkKDgcuUAOQ8uvIa';
+const DEFAULT_FRESH_REPORT_PRICE_ID = 'price_1TtPUr2FVkKDgcuUBSFqewde';
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
 app.use(cors({
@@ -46,8 +48,9 @@ function stripeClient() {
 }
 
 function readyReportLineItem(report) {
-  if (process.env.STRIPE_READY_REPORT_PRICE_ID) {
-    return { price: process.env.STRIPE_READY_REPORT_PRICE_ID, quantity: 1 };
+  const priceId = stripePriceId(process.env.STRIPE_READY_REPORT_PRICE_ID, DEFAULT_READY_REPORT_PRICE_ID);
+  if (priceId) {
+    return { price: priceId, quantity: 1 };
   }
 
   return {
@@ -64,8 +67,9 @@ function readyReportLineItem(report) {
 }
 
 function freshReportLineItem(company, ticker) {
-  if (process.env.STRIPE_FRESH_REPORT_PRICE_ID) {
-    return { price: process.env.STRIPE_FRESH_REPORT_PRICE_ID, quantity: 1 };
+  const priceId = stripePriceId(process.env.STRIPE_FRESH_REPORT_PRICE_ID, DEFAULT_FRESH_REPORT_PRICE_ID);
+  if (priceId) {
+    return { price: priceId, quantity: 1 };
   }
 
   return {
@@ -79,6 +83,12 @@ function freshReportLineItem(company, ticker) {
     },
     quantity: 1,
   };
+}
+
+function stripePriceId(value, fallback) {
+  const priceId = String(value || '').trim();
+  if (/^price_[A-Za-z0-9]+$/.test(priceId)) return priceId;
+  return fallback;
 }
 
 function publicReportPayload(report) {

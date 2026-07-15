@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 
 const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
+const DEFAULT_FRESH_REPORT_PRICE_ID = 'price_1TtPUr2FVkKDgcuUBSFqewde';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
@@ -38,8 +39,9 @@ module.exports = async (req, res) => {
 };
 
 function freshReportLineItem(company, ticker) {
-  if (process.env.STRIPE_FRESH_REPORT_PRICE_ID) {
-    return { price: process.env.STRIPE_FRESH_REPORT_PRICE_ID, quantity: 1 };
+  const priceId = stripePriceId(process.env.STRIPE_FRESH_REPORT_PRICE_ID, DEFAULT_FRESH_REPORT_PRICE_ID);
+  if (priceId) {
+    return { price: priceId, quantity: 1 };
   }
 
   return {
@@ -53,4 +55,10 @@ function freshReportLineItem(company, ticker) {
     },
     quantity: 1,
   };
+}
+
+function stripePriceId(value, fallback) {
+  const priceId = String(value || '').trim();
+  if (/^price_[A-Za-z0-9]+$/.test(priceId)) return priceId;
+  return fallback;
 }

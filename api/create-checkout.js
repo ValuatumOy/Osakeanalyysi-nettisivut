@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 const { getCatalogReport } = require('../server/catalog-client');
 const READY_REPORT_PRICE_CENTS = 2000;
+const DEFAULT_READY_REPORT_PRICE_ID = 'price_1TtPVO2FVkKDgcuUAOQ8uvIa';
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
@@ -40,8 +41,9 @@ module.exports = async (req, res) => {
 };
 
 function readyReportLineItem(report) {
-  if (process.env.STRIPE_READY_REPORT_PRICE_ID) {
-    return { price: process.env.STRIPE_READY_REPORT_PRICE_ID, quantity: 1 };
+  const priceId = stripePriceId(process.env.STRIPE_READY_REPORT_PRICE_ID, DEFAULT_READY_REPORT_PRICE_ID);
+  if (priceId) {
+    return { price: priceId, quantity: 1 };
   }
 
   return {
@@ -55,4 +57,10 @@ function readyReportLineItem(report) {
     },
     quantity: 1,
   };
+}
+
+function stripePriceId(value, fallback) {
+  const priceId = String(value || '').trim();
+  if (/^price_[A-Za-z0-9]+$/.test(priceId)) return priceId;
+  return fallback;
 }

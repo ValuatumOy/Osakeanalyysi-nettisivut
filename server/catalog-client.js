@@ -1,4 +1,5 @@
 const { getReportByIdSync, getPublicReportsSync, recordCatalogPurchase: recordLocalPurchase } = require('./catalog');
+const { REPORTS_CATALOG = [] } = require('../js/reportsData');
 const READY_REPORT_PRICE = 20;
 
 function catalogBaseUrl() {
@@ -37,6 +38,10 @@ function normalizeCatalogReport(report) {
   };
 }
 
+function getStaticCatalogReport(reportId) {
+  return REPORTS_CATALOG.find(report => report.id === reportId) || null;
+}
+
 async function fetchJson(url, options = {}) {
   const response = await fetch(url, options);
   const data = await response.json().catch(() => ({}));
@@ -58,7 +63,7 @@ async function getCatalogReport(reportId) {
     }
   }
 
-  return toBackendReport(getReportByIdSync(reportId, { persistState: false }));
+  return toBackendReport(getReportByIdSync(reportId, { persistState: false }) || getStaticCatalogReport(reportId));
 }
 
 async function getCatalogReports() {
