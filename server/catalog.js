@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const READY_REPORT_PRICE = 20;
 
 const DEFAULT_RULES = {
   visibleAfterDays: intEnv('REPORT_VISIBLE_AFTER_DAYS', 5),
@@ -373,7 +374,8 @@ function buildCatalog(options = {}) {
       ...report,
       reportType: isFree ? 'free' : 'existing',
       isFree,
-      price: isFree ? 0 : report.price,
+      price: isFree ? 0 : READY_REPORT_PRICE,
+      priceLabel: isFree ? report.priceLabel : 'Ready report',
       creditCost: isFree ? 0 : 2,
     };
   });

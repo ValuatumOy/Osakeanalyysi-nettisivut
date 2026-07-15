@@ -15,6 +15,7 @@ const { searchCompanies } = require('./search');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const READY_REPORT_PRICE_CENTS = 2000;
 const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
@@ -56,7 +57,7 @@ function readyReportLineItem(report) {
         name: `AI Equity Report - ${report.companyName}`,
         description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
       },
-      unit_amount: Math.round(report.price * 100),
+      unit_amount: READY_REPORT_PRICE_CENTS,
     },
     quantity: 1,
   };

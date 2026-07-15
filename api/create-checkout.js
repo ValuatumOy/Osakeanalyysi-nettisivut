@@ -1,5 +1,6 @@
 const Stripe = require('stripe');
 const { getCatalogReport } = require('../server/catalog-client');
+const READY_REPORT_PRICE_CENTS = 2000;
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
@@ -50,7 +51,7 @@ function readyReportLineItem(report) {
         name: `AI Equity Report - ${report.name}`,
         description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
       },
-      unit_amount: Math.round(report.price * 100),
+      unit_amount: READY_REPORT_PRICE_CENTS,
     },
     quantity: 1,
   };

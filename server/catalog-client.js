@@ -1,24 +1,39 @@
 const { getReportByIdSync, getPublicReportsSync, recordCatalogPurchase: recordLocalPurchase } = require('./catalog');
+const READY_REPORT_PRICE = 20;
 
 function catalogBaseUrl() {
   return (process.env.CATALOG_API_URL || '').replace(/\/$/, '');
 }
 
 function toBackendReport(report) {
-  if (!report) return null;
+  const normalized = normalizeCatalogReport(report);
+  if (!normalized) return null;
   return {
-    id: report.id,
-    name: report.name || report.companyName,
-    companyName: report.companyName || report.name,
-    ticker: report.ticker || '',
-    exchange: report.exchange || '',
-    reportDate: report.reportDateLabel || report.reportDate,
-    reportDateIso: report.reportDate,
-    pdfUrl: report.pdfUrl,
-    price: Number(report.price),
-    isFree: Boolean(report.isFree),
-    reportType: report.reportType,
-    fileName: report.fileName,
+    id: normalized.id,
+    name: normalized.name || normalized.companyName,
+    companyName: normalized.companyName || normalized.name,
+    ticker: normalized.ticker || '',
+    exchange: normalized.exchange || '',
+    reportDate: normalized.reportDateLabel || normalized.reportDate,
+    reportDateIso: normalized.reportDate,
+    pdfUrl: normalized.pdfUrl,
+    price: normalized.price,
+    isFree: normalized.isFree,
+    reportType: normalized.reportType,
+    fileName: normalized.fileName,
+  };
+}
+
+function normalizeCatalogReport(report) {
+  if (!report) return null;
+  const isFree = Boolean(report.isFree) || report.reportType === 'free' || Number(report.price) === 0;
+  return {
+    ...report,
+    isFree,
+    reportType: isFree ? 'free' : (report.reportType || 'existing'),
+    price: isFree ? 0 : READY_REPORT_PRICE,
+    priceLabel: isFree ? (report.priceLabel || 'Free report') : 'Ready report',
+    creditCost: isFree ? 0 : (report.creditCost || 2),
   };
 }
 
@@ -52,13 +67,13 @@ async function getCatalogReports() {
   if (base) {
     try {
       const data = await fetchJson(`${base}/api/reports`);
-      return Array.isArray(data.reports) ? data.reports : [];
+      return Array.isArray(data.reports) ? data.reports.map(normalizeCatalogReport).filter(Boolean) : [];
     } catch (err) {
       console.warn('Catalog API list failed, using local fallback:', err.message);
     }
   }
 
-  return getPublicReportsSync({ persistState: false });
+  return getPublicReportsSync({ persistState: false }).map(normalizeCatalogReport).filter(Boolean);
 }
 
 async function recordCatalogPurchase(purchase) {

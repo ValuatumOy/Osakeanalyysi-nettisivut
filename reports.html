@@ -276,11 +276,12 @@
         })
         .map(function(report) {
           const company = companyFor(report);
+          const isFree = !!report.isFree || report.reportType === 'free' || Number(report.price) === 0;
           return Object.assign({}, report, {
             companyPage: company,
             pageUrl: pageUrlFor(report),
-            price: report.isFree ? 0 : READY_PRICE,
-            isFree: !!report.isFree || report.reportType === 'free' || Number(report.price) === 0,
+            price: isFree ? 0 : READY_PRICE,
+            isFree: isFree,
             description: company.description || report.description || '',
             displayName: company.name || report.companyName,
             displayTicker: company.ticker || report.ticker,

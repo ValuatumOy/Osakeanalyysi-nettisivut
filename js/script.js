@@ -485,3 +485,57 @@ function trackEvent(event, props = {}) {
     });
   });
 })();
+
+// Direct Stripe checkout entry points on generated company pages.
+(function initCompanyPageCheckoutLinks() {
+  var readyLinks = document.querySelectorAll('a[href*="/reports.html#report-"], a[href^="reports.html#report-"]');
+
+  readyLinks.forEach(function (link) {
+    var href = link.getAttribute('href') || '';
+    var match = href.match(/#report-([^#?&]+)/);
+    if (!match) return;
+    var reportId = match[1];
+
+    link.addEventListener('click', async function (e) {
+      e.preventDefault();
+      if (link.dataset.loading === '1') return;
+
+      var label = link.textContent;
+      link.dataset.loading = '1';
+      link.style.pointerEvents = 'none';
+      link.style.opacity = '0.7';
+      link.textContent = 'Redirecting to secure checkout...';
+      trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page' });
+
+      try {
+        var res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reportId: reportId }),
+        });
+        var data = await res.json();
+        if (data && data.url) {
+          trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
+          window.location.href = data.url;
+          return;
+        }
+      } catch (err) { /* fall through to reset below */ }
+
+      link.dataset.loading = '';
+      link.style.pointerEvents = '';
+      link.style.opacity = '';
+      link.textContent = label;
+      alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    });
+  });
+
+  document.querySelectorAll('a[href="#generate"]').forEach(function (link) {
+    if (!/generate/i.test(link.textContent || '')) return;
+    link.addEventListener('click', function (e) {
+      var checkoutButton = document.querySelector('[data-generate-report]');
+      if (!checkoutButton) return;
+      e.preventDefault();
+      checkoutButton.click();
+    });
+  });
+})();
