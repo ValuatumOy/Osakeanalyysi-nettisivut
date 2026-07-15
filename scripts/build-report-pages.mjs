@@ -599,10 +599,10 @@ ${jsonLd(d, cat, desc)}
     .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
     .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
-    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}${!hasReport ? `
+    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
-    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}` : ''}
+    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
   </style>
 </head>
 <body>
@@ -635,8 +635,8 @@ ${navHtml()}
       </div>
     </section>
 
-    <div class="container" style="max-width:${hasReport ? '880px' : '1760px'}; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content${hasReport ? '' : ' coverage-cols'}">
+    <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
+      <div class="report-full-content coverage-cols">
 ${sections.join('\n')}
       </div>
     </div>

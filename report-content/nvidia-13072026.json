@@ -1,0 +1,79 @@
+{
+  "id": "nvidia-13072026",
+  "slug": "nvidia-equity-report",
+  "companyName": "NVIDIA Corporation",
+  "ticker": "NVDA",
+  "exchange": "NASDAQ",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-07-13",
+  "headline": {
+    "recommendation": "FREE REPORT",
+    "horizon": "AI equity report",
+    "currentPrice": "See PDF",
+    "targetPrice": "See PDF",
+    "impliedUpside": "See PDF",
+    "marketCap": "See PDF",
+    "enterpriseValue": "See PDF"
+  },
+  "multiples": [
+    {"label": "Report access", "value": "Free PDF"},
+    {"label": "Report date", "value": "13 July 2026"},
+    {"label": "Coverage", "value": "Full report"},
+    {"label": "Primary theme", "value": "AI infrastructure"}
+  ],
+  "summary": [
+    "NVIDIA Corporation (NVDA, NASDAQ) is an accelerated computing company whose investment case is tied to AI data center GPUs, networking, software ecosystems, gaming, professional visualization and automotive platforms.",
+    "The free Valuatum AI equity report PDF covers NVIDIA's company value map, valuation assumptions, key business drivers, risks, catalysts and financial outlook.",
+    "This public company page gives direct access to the complete NVIDIA AI equity report dated 13 July 2026. No card and no account are required."
+  ],
+  "thesis": [
+    {"num": "01", "title": "AI infrastructure demand", "metric": "Data center", "text": "NVIDIA's investment case is driven by demand for accelerated computing in AI training, inference, high-performance computing and data center networking."},
+    {"num": "02", "title": "Software and ecosystem depth", "metric": "Platform", "text": "The CUDA ecosystem, developer tools and full-stack AI platform make NVIDIA more than a component supplier and influence durability of margins and customer lock-in."},
+    {"num": "03", "title": "Valuation sensitivity", "metric": "Expectations", "text": "The report focuses on how much future growth and profitability the market is already capitalising, and what could change the valuation case."}
+  ],
+  "thesisBreaker": "A sustained slowdown in AI data center capex, materially weaker GPU demand, or loss of platform pricing power would challenge the core valuation case.",
+  "valuePools": [
+    {"name": "Data Center and AI", "share": "Core value pool", "economics": "AI accelerators, networking, systems and software ecosystem", "text": "The data center and AI platform is the central driver of NVIDIA's current investment case and the main area where market expectations are tested."},
+    {"name": "Gaming and visualization", "share": "Established business", "economics": "Gaming GPUs, professional visualization and creator workloads", "text": "Gaming and professional visualization provide established revenue pools and brand reach outside hyperscale AI infrastructure."},
+    {"name": "Automotive and edge platforms", "share": "Longer-term option", "economics": "Automotive compute, robotics and embedded acceleration", "text": "Automotive, robotics and edge AI represent longer-term optionality where adoption pace and software monetisation matter more than near-term scale."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation in the free PDF tests whether the revenue growth, margin and multiple assumptions implied by NVIDIA's market value are coherent against the operating outlook.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "See PDF", "EBITDA": "See PDF", "Margin": "See PDF", "Multiple": "See PDF", "EV": "See PDF", "Equity": "See PDF"}, "impliedValueOrUpside": "See PDF"},
+      {"scenario": "Base", "cols": {"Revenue": "See PDF", "EBITDA": "See PDF", "Margin": "See PDF", "Multiple": "See PDF", "EV": "See PDF", "Equity": "See PDF"}, "impliedValueOrUpside": "See PDF"},
+      {"scenario": "Bear", "cols": {"Revenue": "See PDF", "EBITDA": "See PDF", "Margin": "See PDF", "Multiple": "See PDF", "EV": "See PDF", "Equity": "See PDF"}, "impliedValueOrUpside": "See PDF"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How NVIDIA creates economic value", "text": "NVIDIA creates value through accelerated computing platforms that combine GPUs, networking, systems, software libraries and developer ecosystems. The company benefits when customers standardise AI workloads around its hardware and software stack."},
+    {"heading": "What the report tests", "text": "The full PDF tests how much future growth, margin resilience and platform monetisation are already embedded in NVIDIA's valuation, and where the most important sensitivities sit."},
+    {"heading": "Key monitoring points", "text": "Important indicators include hyperscaler capex, AI accelerator supply and demand, networking attach rates, software monetisation, competitive accelerators and gross margin trajectory."}
+  ],
+  "risks": [
+    "AI data center investment slows faster than expected or customers digest prior capacity additions.",
+    "Competitive accelerators, custom ASICs or alternative architectures reduce NVIDIA's pricing power.",
+    "Supply chain, export control or customer concentration risks create volatility in revenue visibility."
+  ],
+  "catalysts": [
+    "Continued strong AI infrastructure demand from hyperscalers, enterprises and sovereign AI programmes.",
+    "Broader software, networking and systems attach rates that reinforce the platform economics.",
+    "New product cycles that sustain performance leadership and customer adoption."
+  ],
+  "financials": {
+    "note": "The complete financial tables and valuation work are available in the free NVIDIA PDF report."
+  },
+  "faqs": [
+    {"q": "Is the NVIDIA AI equity report free?", "a": "Yes. The NVIDIA AI equity report dated 13 July 2026 is available as a free PDF on Valuatum's AI Equity Reports site."},
+    {"q": "What does the NVIDIA report cover?", "a": "The report covers NVIDIA's accelerated computing platform, AI data center demand, valuation assumptions, risks, catalysts and financial outlook."},
+    {"q": "Do I need an account or payment card to download the report?", "a": "No. The NVIDIA report is available as a free direct PDF download without an account or payment card."}
+  ],
+  "sources": [
+    "Primary report file: Valuatum AI Equity Report, NVIDIA Corporation, dated 13 July 2026.",
+    "Company profile and page metadata are maintained in the Valuatum AI Equity Reports company-page catalog."
+  ],
+  "profile": "NVIDIA designs accelerated computing platforms spanning graphics processing units, data center systems, networking, software libraries and developer ecosystems. Its products are used in AI training and inference, high-performance computing, gaming, visualization, robotics and automotive applications."
+}
