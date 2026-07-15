@@ -6,7 +6,7 @@ AI-generated company profile is cached in `company-content/profiles/`.
 
 ## Requirements
 
-- Node.js 18 or newer
+- Node.js 20 or newer
 - A Wisdom bearer token with `Controller.Company` and `Controller.ModelData` rights
 - An authenticated Codex CLI when profiles are not already cached
 

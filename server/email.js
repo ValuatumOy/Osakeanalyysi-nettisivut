@@ -1,4 +1,4 @@
-const { Resend } = require('resend');
+const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
 
 function envValue(name, fallback) {
   const value = process.env[name]?.trim();
@@ -8,19 +8,26 @@ function envValue(name, fallback) {
 const FROM = envValue('FROM_EMAIL', 'reports@valuatum.com');
 const ADMIN = envValue('ADMIN_EMAIL', 'contact26@valuatum.com');
 const SITE = envValue('SITE_URL', 'https://valuatum.com');
+const AWS_REGION = envValue('AWS_REGION', 'eu-west-1');
 
-function resend() {
-  return new Resend(process.env.RESEND_API_KEY);
+let sesClient;
+function ses() {
+  // The SDK's default credential chain resolves AWS_ACCESS_KEY_ID /
+  // AWS_SECRET_ACCESS_KEY or an EC2/Lambda instance role automatically.
+  if (!sesClient) {
+    sesClient = new SESv2Client({ region: AWS_REGION });
+  }
+  return sesClient;
 }
 
-function describeResendError(error) {
+function describeSesError(error) {
   if (!error) return 'unknown error';
   if (typeof error === 'string') return error;
 
   const fields = [
     error.name,
-    error.type,
-    error.statusCode || error.status,
+    error.Code || error.code,
+    error.$metadata?.httpStatusCode,
     error.message,
   ].filter(Boolean);
 
@@ -34,23 +41,31 @@ function describeResendError(error) {
 }
 
 async function sendEmail(message, label) {
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error('RESEND_API_KEY is not set');
+  const toAddresses = Array.isArray(message.to) ? message.to : [message.to];
+
+  let response;
+  try {
+    response = await ses().send(new SendEmailCommand({
+      FromEmailAddress: message.from,
+      Destination: { ToAddresses: toAddresses },
+      Content: {
+        Simple: {
+          Subject: { Data: message.subject, Charset: 'UTF-8' },
+          Body: { Html: { Data: message.html, Charset: 'UTF-8' } },
+        },
+      },
+    }));
+  } catch (error) {
+    throw new Error(`SES ${label} failed: ${describeSesError(error)}`);
   }
 
-  const { data, error } = await resend().emails.send(message);
-
-  if (error) {
-    throw new Error(`Resend ${label} failed: ${describeResendError(error)}`);
-  }
-
-  console.log(`Resend ${label} queued`, {
-    id: data?.id || null,
+  console.log(`SES ${label} queued`, {
+    id: response?.MessageId || null,
     from: message.from,
-    to: message.to,
+    to: toAddresses,
   });
 
-  return data;
+  return response;
 }
 
 // ── Existing report: deliver PDF link ────────────────────────────────────────
