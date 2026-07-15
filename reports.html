@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ready AI Equity Reports - Valuatum</title>
-  <meta name="description" content="Browse ready Valuatum AI equity reports for companies with an existing company page. Buy a ready PDF report for €20 or generate a fresh report from the company page.">
+  <meta name="description" content="Browse ready Valuatum AI equity reports for companies with an existing company page. Download free reports, buy paid ready reports for €20, or generate a fresh report from the company page.">
   <link rel="canonical" href="https://www.aiequityreports.com/reports.html">
   <meta property="og:title" content="Ready AI Equity Reports">
-  <meta property="og:description" content="Ready AI equity reports for listed companies. Buy an existing report for €20 or request coverage for a listed company that is not yet available.">
+  <meta property="og:description" content="Ready AI equity reports for listed companies. Download free reports, buy paid reports for €20, or request coverage for a listed company that is not yet available.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aiequityreports.com/reports.html">
   <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
@@ -64,7 +64,7 @@
           <div class="reports-hero-text">
             <span class="section-eyebrow section-eyebrow--light">Ready Reports</span>
             <h1 class="reports-hero-headline">Browse ready AI equity reports.</h1>
-            <p class="reports-hero-sub">This catalog only lists companies that already have a company page and a ready PDF report. Open the company page from search, buy the existing report for €20, or generate a new report from the same company page.</p>
+            <p class="reports-hero-sub">This catalog lists companies that already have a company page and a ready PDF report. Download selected free reports instantly, buy paid ready reports for €20, or generate a new report from the company page.</p>
           </div>
           <div class="reports-hero-search">
             <div class="rp-search-field">
@@ -90,20 +90,49 @@
         </div>
         <div class="catalog-controls">
           <div class="catalog-filters">
-            <select class="catalog-filter-select" id="filterMarket" aria-label="Filter by market"><option value="">All markets</option></select>
-            <select class="catalog-filter-select" id="filterSector" aria-label="Filter by sector"><option value="">All sectors</option></select>
+            <div class="catalog-select" data-select="access">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterAccessLabel">All reports</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" role="listbox" aria-label="Filter by report access">
+                <button type="button" class="catalog-select-option active" data-value="">All reports</button>
+                <button type="button" class="catalog-select-option" data-value="free">Free reports</button>
+                <button type="button" class="catalog-select-option" data-value="paid">Paid reports</button>
+              </div>
+            </div>
+            <div class="catalog-select" data-select="market">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterMarketLabel">All markets</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" id="filterMarketMenu" role="listbox" aria-label="Filter by market"></div>
+            </div>
+            <div class="catalog-select" data-select="sector">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterSectorLabel">All sectors</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" id="filterSectorMenu" role="listbox" aria-label="Filter by sector"></div>
+            </div>
           </div>
-          <select class="catalog-filter-select" id="sortSelect" aria-label="Sort reports">
-            <option value="newest">Newest first</option>
-            <option value="company">Company name</option>
-            <option value="market">Market</option>
-          </select>
+          <div class="catalog-select" data-select="sort">
+            <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="sortLabel">Newest first</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="catalog-select-menu" role="listbox" aria-label="Sort reports">
+              <button type="button" class="catalog-select-option active" data-value="newest">Newest first</button>
+              <button type="button" class="catalog-select-option" data-value="company">Company name</button>
+              <button type="button" class="catalog-select-option" data-value="market">Market</button>
+            </div>
+          </div>
         </div>
         <div class="catalog-grid" id="catalogGrid" role="list"></div>
         <div class="catalog-empty" id="catalogEmpty">
-          <p class="catalog-empty-title">No ready report matches your search.</p>
-          <p class="catalog-empty-sub">If the company is listed but not yet covered here, send us the details below and we can create the company page and report purchase path.</p>
-          <a href="#coverage-request" class="btn btn-primary">Request coverage</a>
+          <p class="catalog-empty-title" id="catalogEmptyTitle">No ready report matches your search.</p>
+          <p class="catalog-empty-sub" id="catalogEmptySub">If the company is listed but not yet covered here, send us the details below and we can create the company page and report purchase path.</p>
+          <a href="#coverage-request" class="btn btn-primary" id="catalogEmptyAction">Request coverage</a>
         </div>
       </div>
     </section>
@@ -135,12 +164,6 @@
       </div>
     </section>
 
-    <section class="crawlable-report-index">
-      <div class="container">
-        <h2>All ready AI equity reports</h2>
-        <ul id="crawlableReportList"></ul>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -202,6 +225,7 @@
     let readyReports = [];
     let visibleReports = [];
     let searchQuery = '';
+    let filterAccess = '';
     let filterMarket = '';
     let filterSector = '';
     let sortMode = 'newest';
@@ -243,7 +267,7 @@
       return (window.REPORTS_CATALOG || [])
         .filter(function(report) {
           if (report.availability === 'hidden') return false;
-          if (report.reportType !== 'existing') return false;
+          if (!['existing', 'free'].includes(report.reportType)) return false;
           if (!pageUrlFor(report)) return false;
           if (!companyFor(report)) return false;
           if (seen.has(pageUrlFor(report))) return false;
@@ -255,7 +279,8 @@
           return Object.assign({}, report, {
             companyPage: company,
             pageUrl: pageUrlFor(report),
-            price: READY_PRICE,
+            price: report.isFree ? 0 : READY_PRICE,
+            isFree: !!report.isFree || report.reportType === 'free' || Number(report.price) === 0,
             description: company.description || report.description || '',
             displayName: company.name || report.companyName,
             displayTicker: company.ticker || report.ticker,
@@ -264,12 +289,10 @@
         });
     }
     function populateFilters() {
-      const marketEl = document.getElementById('filterMarket');
-      const sectorEl = document.getElementById('filterSector');
       const markets = Array.from(new Set(readyReports.map(function(r) { return r.displayExchange; }).filter(Boolean))).sort();
       const sectors = Array.from(new Set(readyReports.map(function(r) { return r.sector; }).filter(Boolean))).sort();
-      marketEl.innerHTML = '<option value="">All markets</option>' + markets.map(function(v) { return '<option value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</option>'; }).join('');
-      sectorEl.innerHTML = '<option value="">All sectors</option>' + sectors.map(function(v) { return '<option value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</option>'; }).join('');
+      document.getElementById('filterMarketMenu').innerHTML = '<button type="button" class="catalog-select-option active" data-value="">All markets</button>' + markets.map(function(v) { return '<button type="button" class="catalog-select-option" data-value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</button>'; }).join('');
+      document.getElementById('filterSectorMenu').innerHTML = '<button type="button" class="catalog-select-option active" data-value="">All sectors</button>' + sectors.map(function(v) { return '<button type="button" class="catalog-select-option" data-value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</button>'; }).join('');
     }
     function filteredReports() {
       let list = readyReports.slice();
@@ -281,6 +304,8 @@
           });
         });
       }
+      if (filterAccess === 'free') list = list.filter(function(r) { return r.isFree; });
+      if (filterAccess === 'paid') list = list.filter(function(r) { return !r.isFree; });
       if (filterMarket) list = list.filter(function(r) { return r.displayExchange === filterMarket; });
       if (filterSector) list = list.filter(function(r) { return r.sector === filterSector; });
       list.sort(function(a, b) {
@@ -290,19 +315,34 @@
       });
       return list;
     }
+    function matchingCompanies(query) {
+      const q = String(query || '').trim().toLowerCase();
+      if (!q) return [];
+      return searchableCompanies.filter(function(company) {
+        return [company.name, company.ticker, company.exchange].some(function(v) {
+          return String(v || '').toLowerCase().includes(q);
+        });
+      });
+    }
     function card(report) {
       const tags = (report.tags || []).slice(0, 4).map(function(tag) { return '<span class="rc-tag">' + escapeHTML(tag) + '</span>'; }).join('');
+      const badge = report.isFree ? 'Free report' : 'Ready report';
+      const price = report.isFree ? 'Free' : '€20';
+      const priceNote = report.isFree ? 'Instant PDF download' : 'Existing PDF report';
+      const primaryCta = report.isFree
+        ? '<a class="btn btn-primary" href="/' + escapeHTML(report.pdfUrl || '') + '" target="_blank" rel="noopener" download>Download free PDF</a>'
+        : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>';
       return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '">' +
         '<div>' +
-          '<div class="rc-eyebrow"><span class="rc-badge">Ready report</span><span class="rc-date">' + escapeHTML(formatReportDate(report.reportDate)) + '</span></div>' +
+          '<div class="rc-eyebrow"><span class="rc-badge' + (report.isFree ? ' rc-badge-free' : '') + '">' + badge + '</span><span class="rc-date">' + escapeHTML(formatReportDate(report.reportDate)) + '</span></div>' +
           '<h3 class="rc-company-name"><a href="/' + escapeHTML(report.pageUrl) + '">' + escapeHTML(report.displayName) + '</a></h3>' +
           '<div class="rc-company-meta"><span class="rc-ticker">' + escapeHTML(report.displayTicker) + '</span><span>·</span><span>' + escapeHTML(report.displayExchange) + '</span><span>·</span><span>' + escapeHTML(report.sector) + '</span></div>' +
           '<p class="rc-desc">' + escapeHTML(report.description) + '</p>' +
           '<div class="rc-tags">' + tags + '</div>' +
         '</div>' +
         '<div class="rc-actions">' +
-          '<div><div class="rc-price">€20</div><div class="rc-price-note">Existing PDF report</div></div>' +
-          '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>' +
+          '<div><div class="rc-price">' + price + '</div><div class="rc-price-note">' + priceNote + '</div></div>' +
+          primaryCta +
           '<button class="btn btn-outline-dark" data-generate-company="' + escapeHTML(report.displayName) + '" data-generate-ticker="' + escapeHTML(report.displayTicker) + '">Generate new report</button>' +
           '<a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/' + escapeHTML(report.pageUrl) + '">Open company page</a>' +
         '</div>' +
@@ -311,28 +351,35 @@
     function render() {
       const grid = document.getElementById('catalogGrid');
       const empty = document.getElementById('catalogEmpty');
+      const emptyTitle = document.getElementById('catalogEmptyTitle');
+      const emptySub = document.getElementById('catalogEmptySub');
+      const emptyAction = document.getElementById('catalogEmptyAction');
       const count = document.getElementById('catalogCount');
       visibleReports = filteredReports();
       count.textContent = visibleReports.length + ' ready report' + (visibleReports.length === 1 ? '' : 's');
       grid.innerHTML = visibleReports.map(card).join('');
-      empty.style.display = visibleReports.length ? 'none' : 'block';
+      if (visibleReports.length) {
+        empty.style.display = 'none';
+      } else {
+        const companyMatches = matchingCompanies(searchQuery);
+        empty.style.display = 'block';
+        if (searchQuery && companyMatches.length) {
+          emptyTitle.textContent = 'Company page found.';
+          emptySub.textContent = 'Select ' + (companyMatches[0].name || 'the company') + ' from the search dropdown or press Enter to open the company page.';
+          emptyAction.style.display = 'none';
+        } else {
+          emptyTitle.textContent = 'No company page or ready report matches your search.';
+          emptySub.textContent = 'If the company is listed but not covered yet, send us the details below and we can create the company page and report purchase path.';
+          emptyAction.style.display = 'inline-flex';
+        }
+      }
       bindCardActions();
-    }
-    function renderCrawlable() {
-      const list = document.getElementById('crawlableReportList');
-      list.innerHTML = readyReports.map(function(report) {
-        return '<li><a class="footer-link" href="/' + escapeHTML(report.pageUrl) + '">' + escapeHTML(report.displayName) + ' (' + escapeHTML(report.displayTicker) + ') AI equity report</a></li>';
-      }).join('');
     }
     function renderAutocomplete() {
       const menu = document.getElementById('rpSearchAutocomplete');
       const q = searchQuery.toLowerCase();
       if (!q) { menu.classList.remove('open'); menu.innerHTML = ''; return; }
-      const matches = searchableCompanies.filter(function(company) {
-        return [company.name, company.ticker, company.exchange].some(function(v) {
-          return String(v || '').toLowerCase().includes(q);
-        });
-      }).slice(0, 8);
+      const matches = matchingCompanies(searchQuery).slice(0, 8);
       menu.innerHTML = matches.map(function(company) {
         return '<button class="rp-autocomplete-item" type="button" data-url="/' + escapeHTML(company.url) + '">' +
           '<span class="rp-autocomplete-ticker">' + escapeHTML(company.ticker) + '</span>' +
@@ -422,10 +469,53 @@
         if (!e.target.closest('.reports-hero-search')) menu.classList.remove('open');
       });
     }
+    function setSelectValue(type, value, label) {
+      const root = document.querySelector('[data-select="' + type + '"]');
+      if (!root) return;
+      root.querySelectorAll('.catalog-select-option').forEach(function(option) {
+        option.classList.toggle('active', option.getAttribute('data-value') === value);
+      });
+      const labelEl = document.getElementById(type === 'access' ? 'filterAccessLabel' : type === 'market' ? 'filterMarketLabel' : type === 'sector' ? 'filterSectorLabel' : 'sortLabel');
+      if (labelEl) labelEl.textContent = label;
+    }
+    function closeSelects(except) {
+      document.querySelectorAll('.catalog-select').forEach(function(select) {
+        if (except && select === except) return;
+        select.classList.remove('open');
+        const button = select.querySelector('.catalog-select-button');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
+    }
     function bindControls() {
-      document.getElementById('filterMarket').addEventListener('change', function(e) { filterMarket = e.target.value; render(); });
-      document.getElementById('filterSector').addEventListener('change', function(e) { filterSector = e.target.value; render(); });
-      document.getElementById('sortSelect').addEventListener('change', function(e) { sortMode = e.target.value; render(); });
+      document.querySelectorAll('.catalog-select-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const select = button.closest('.catalog-select');
+          const willOpen = !select.classList.contains('open');
+          closeSelects(select);
+          select.classList.toggle('open', willOpen);
+          button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        });
+      });
+      document.querySelectorAll('.catalog-select-menu').forEach(function(menu) {
+        menu.addEventListener('click', function(e) {
+          const option = e.target.closest('.catalog-select-option');
+          if (!option) return;
+          const select = option.closest('.catalog-select');
+          const type = select.getAttribute('data-select');
+          const value = option.getAttribute('data-value') || '';
+          const label = option.textContent.trim();
+          if (type === 'access') filterAccess = value;
+          if (type === 'market') filterMarket = value;
+          if (type === 'sector') filterSector = value;
+          if (type === 'sort') sortMode = value || 'newest';
+          setSelectValue(type, value, label);
+          closeSelects();
+          render();
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.catalog-select')) closeSelects();
+      });
       document.getElementById('coverageRequestForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const company = document.getElementById('coverageCompany').value.trim();
@@ -441,8 +531,11 @@
     document.addEventListener('DOMContentLoaded', function() {
       readyReports = buildReadyReports();
       populateFilters();
+      if (window.location.hash === '#free') {
+        filterAccess = 'free';
+        setSelectValue('access', 'free', 'Free reports');
+      }
       render();
-      renderCrawlable();
       bindSearch();
       bindControls();
     });

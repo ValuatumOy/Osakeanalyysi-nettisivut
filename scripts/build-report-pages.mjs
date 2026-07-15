@@ -152,13 +152,14 @@ function footerHtml() {
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
-            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/reports.html#free" class="footer-link">Free reports</a>
+            <a href="/reports.html#coverage-request" class="footer-link">Request coverage</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>
@@ -169,6 +170,7 @@ function footerHtml() {
             <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
           </div>
         </div>
         <div>
