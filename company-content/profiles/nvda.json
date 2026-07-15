@@ -1,0 +1,9 @@
+{
+  "ticker": "NVDA",
+  "companyName": "NVIDIA",
+  "profile": "NVIDIA designs accelerated computing platforms spanning graphics processing units, data center systems, networking, software libraries and developer ecosystems. Its products are used in AI training and inference, high-performance computing, gaming, professional visualization, robotics and automotive applications, with the data center platform increasingly central to the company.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

@@ -109,7 +109,7 @@ ${navHtml()}
             </div>
           </div>
           <div class="company-header-actions">
-            ${readyReport ? `<a href="/reports.html#report-${attr(readyReport.id)}" class="btn btn-primary">Buy ready report &mdash; &euro;${Number(readyReport.price || 0).toFixed(2)}</a>` : ''}
+            ${readyReport ? headerReportCta(readyReport) : ''}
             <a href="#generate" class="btn btn-gold">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
           </div>
         </div>
@@ -180,7 +180,7 @@ function companyOverview(company, name, readyReport = null) {
   const sharePrice = formatPrice(company.metrics.sharePrice, company.currency);
   const marketCap = formatMillions(company.metrics.marketCap, company.currency);
   const reportText = readyReport
-    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can buy the ready PDF or generate a fresh report with the latest available data.`
+    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
     : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
   return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
 }
@@ -227,18 +227,31 @@ function sourcesSection(company) {
 
 function readyReportSection(companyName, report) {
   if (!report) return '';
+  const isFree = report.isFree === true || Number(report.price || 0) === 0;
   const price = Number(report.price || 0).toFixed(2);
   const reportDate = report.reportDateLabel || formatReportDate(report.reportDate);
+  const reportHref = isFree && report.pdfUrl
+    ? `/${String(report.pdfUrl).replace(/^\/+/, '')}`
+    : `/reports.html#report-${attr(report.id)}`;
+  const ctaText = isFree ? 'Download free report' : `Buy ready report &mdash; &euro;${price}`;
   return `<section class="report-full-section" id="ready-report">
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
-            <h2 style="color:white; margin-top:0;">Buy the ready ${esc(companyName)} report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ${esc(companyName)} AI equity report is available from ${esc(reportDate)}. Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.</p>
+            <h2 style="color:white; margin-top:0;">${isFree ? 'Download the free' : 'Buy the ready'} ${esc(companyName)} report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ${esc(companyName)} AI equity report is available from ${esc(reportDate)}. ${isFree ? 'Download the ready PDF now for free, or generate a new report below if you want a fresh run with the latest available data.' : 'Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.'}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="/reports.html#report-${attr(report.id)}" class="btn btn-primary btn-lg">Buy ready report &mdash; &euro;${price}</a>
+              <a href="${attr(reportHref)}" class="btn btn-primary btn-lg"${isFree ? ' target="_blank" rel="noopener" download' : ''}>${ctaText}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ${esc(reportDate)}</span>
             </div>
           </div>
         </section>`;
+}
+
+function headerReportCta(report) {
+  const isFree = report.isFree === true || Number(report.price || 0) === 0;
+  if (isFree && report.pdfUrl) {
+    return `<a href="/${attr(String(report.pdfUrl).replace(/^\/+/, ''))}" class="btn btn-primary" target="_blank" rel="noopener" download>Download free report</a>`;
+  }
+  return `<a href="/reports.html#report-${attr(report.id)}" class="btn btn-primary">Buy ready report &mdash; &euro;${Number(report.price || 0).toFixed(2)}</a>`;
 }
 
 function formatReportDate(value) {
@@ -272,7 +285,7 @@ function footerHtml() {
 }
 
 function shortName(name) {
-  return String(name).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Plc|Corporation|Corp\.?|Abp|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+  return String(name).replace(/,?\s+(Oyj\s+Abp|Inc\.?|Oyj|Ltd\.?|plc|Plc|Corporation|Corp\.?|Abp|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
 }
 
 function slugify(value) {
