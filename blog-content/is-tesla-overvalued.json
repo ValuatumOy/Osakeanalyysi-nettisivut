@@ -1,0 +1,95 @@
+{
+  "slug": "is-tesla-overvalued",
+  "cluster": "company-deep-dives",
+  "role": "support",
+  "targetQuery": "is tesla stock overvalued 2026",
+  "intent": "informational-commercial",
+  "title": "Is Tesla Stock Overvalued in 2026? A Reverse Valuation",
+  "metaDescription": "Our 1 June 2026 model rates Tesla a SELL, 350 USD target. Only about 20% of its 1.5 trillion USD valuation is the car and energy business; the rest is bets.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": "2026-07-15" },
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "Is Tesla overvalued in 2026?",
+      "html": "<p>Tesla still looks modestly overvalued to us in mid-2026, though less stretched than it did six weeks ago. Our <a href=\"/reports/tesla-equity-report.html\">Tesla equity report</a> dated 1 June 2026 rates the stock a SELL, with a 12-month fair value of 350.00 USD against a 438.26 USD share price that day, about 20% downside. The stock has since fallen to <a href=\"https://www.nasdaq.com/market-activity/stocks/tsla\">roughly 397 USD</a> (15 July 2026). That gap has barely closed. The price is still about 13% above our target, and it now sits below even our own base-case reverse valuation of 421 USD a share.</p><p>So the honest read sits in between. Tesla is not crashing, but it is not cheap either. Its price has drifted toward our number without reaching it, while the thing that number rests on has not changed. We rate it SELL for one reason: about four-fifths of the enterprise value depends on businesses that earned nothing in 2025. We are not the only bears here, and some go further. One <a href=\"https://fortune.com/2026/04/07/a-j-p-morgan-analyst-sees-60-downside-to-tesla-stock-and-he-may-be-too-optimistic/\">J.P. Morgan view</a> has argued for roughly 60% downside, well below our own target.</p>"
+    },
+    {
+      "h2": "Where Tesla's 1.5 trillion dollar valuation sits",
+      "html": "<p>About 20% of Tesla's enterprise value is the business that makes money. The other 80% is not. In our 1 June 2026 sum-of-the-parts model, Tesla's 1,573 billion USD enterprise value splits into five pools. Core Automotive and Energy together are 20.4% of that value. They also produced 100% of the group's <a href=\"https://www.sec.gov/Archives/edgar/data/1318605/000162828025045861/exhibit991.htm\">94.8 billion USD of 2025 net sales</a> and an estimated 7.35 billion USD of combined operating profit. The remaining 79.6%, roughly 1.25 trillion USD, sits in three pools that had zero revenue in 2025: Full Self-Driving, the Robotaxi network, and the Optimus humanoid robot.</p><p>That split is the whole argument. If you buy Tesla at this price, you are paying about four dollars of pre-revenue optionality for every one dollar of operating business.</p><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm); margin:1rem 0 0.5rem;\"><thead><tr><th style=\"text-align:left; border-bottom:1px solid var(--color-border); padding:0.5rem;\">Value pool</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">Share of EV</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">2025 revenue</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">Our EV allocation</th></tr></thead><tbody><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">FSD and Network Services</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">34.9%</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">0 USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">549.7bn USD</td></tr><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">Robotaxi Network</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">30.1%</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">0 USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">473.9bn USD</td></tr><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">Optimus (humanoid robots)</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">14.5%</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">0 USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">227.5bn USD</td></tr><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">Core Automotive and Services</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">10.8%</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">82.1bn USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">170.6bn USD</td></tr><tr><td style=\"padding:0.5rem;\">Energy Generation and Storage</td><td style=\"text-align:right; padding:0.5rem;\">9.6%</td><td style=\"text-align:right; padding:0.5rem;\">12.8bn USD</td><td style=\"text-align:right; padding:0.5rem;\">151.6bn USD</td></tr></tbody></table><p style=\"font-size:var(--text-xs); color:var(--gray-steel);\">Tesla company value map, Valuatum model, 1 June 2026.</p>"
+    },
+    {
+      "h2": "What today's price implies about FSD and Robotaxi",
+      "html": "<p>The price implies Full Self-Driving grows from about 1.28 million subscribers to 44 million. That is the figure our reverse valuation backs out of the 549.7 billion USD the market assigns to FSD. At 99 USD a month and a 15x multiple on operating profit, justifying that allocation needs roughly 36.6 billion USD of recurring operating profit, which works out to about 44 million paying subscribers worldwide. Tesla had around 1.28 million at the start of 2026.</p><p>The Robotaxi pool asks for a similar leap. Its 473.9 billion USD allocation implies a deployed fleet of about 2.1 million vehicles, each driving 50,000 miles a year. Optimus, at 227.5 billion USD, implies selling more than 2.5 million humanoid robots a year. None of these products earned revenue in 2025. This is what a <a href=\"/blog/what-is-reverse-valuation.html\">reverse valuation</a> is for: it turns a share price into the operational targets you have to believe. Here, those targets are large.</p>"
+    },
+    {
+      "h2": "The scenario range runs from 108 to 934 dollars",
+      "html": "<p>Our reverse valuation spans from 108 USD to 934 USD a share, and the base case is 421 USD. All three cases turn on one input: the EV/EBITDA multiple the market is willing to pay. Our base case holds Tesla at its 85.2x 2026 EBITDA and lands at 421 USD, close to where the stock traded in early June and modestly above today's price. The bear case re-rates Tesla toward an automaker-style 21.6x, which drops the implied value to 108 USD, about 75% below the June price. The bull case needs the multiple to expand to 150x on higher margins, which reaches 934 USD.</p><p>We think the bear anchor is more defensible than the bull one. An 85x forward EBITDA multiple already prices in flawless execution on products that do not yet sell, so the risk to that multiple is asymmetric to the downside.</p><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm); margin:1rem 0 0.5rem;\"><thead><tr><th style=\"text-align:left; border-bottom:1px solid var(--color-border); padding:0.5rem;\">Scenario</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">EV/EBITDA</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">Implied value/share</th><th style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">vs 1 Jun price</th></tr></thead><tbody><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">Bull</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">150.0x</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">934.07 USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">+113.1%</td></tr><tr><td style=\"border-bottom:1px solid var(--color-border); padding:0.5rem;\">Base</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">85.2x</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">421.03 USD</td><td style=\"text-align:right; border-bottom:1px solid var(--color-border); padding:0.5rem;\">-3.9%</td></tr><tr><td style=\"padding:0.5rem;\">Bear</td><td style=\"text-align:right; padding:0.5rem;\">21.6x</td><td style=\"text-align:right; padding:0.5rem;\">108.42 USD</td><td style=\"text-align:right; padding:0.5rem;\">-75.3%</td></tr></tbody></table><p style=\"font-size:var(--text-xs); color:var(--gray-steel);\">Reverse-valuation scenarios, Valuatum Tesla report, 1 June 2026. Upside is measured against the 438.26 USD price on the report date.</p>"
+    },
+    {
+      "h2": "What would make our SELL call wrong",
+      "html": "<p>Our SELL is wrong if Tesla turns one of the pre-revenue pools into real cash faster than its hardware base allows. The clearest path is a commercial Cybercab that undercuts ride-hailing on cost, plus FSD licensed to other carmakers so the software scales beyond Tesla's own production of fewer than 2 million vehicles a year. If that happens, the 44 million-subscriber assumption stops looking impossible and the bull case near 934 USD comes into view.</p><p>The assumption doing the heavy lifting in our SELL is the opposite of that: we assume the 85x forward EBITDA multiple normalises toward the low-20s as the market reprices unproven optionality. That is the swing factor, so we state it plainly. There is a risk to our downside case too. A regulatory mandate for LIDAR redundancy, or the commoditisation of autonomous driving into a baseline safety feature, would gut the FSD economics regardless of the subscriber math, and make even our bear case look generous.</p><p>This is the kind of split verdict our process is meant to produce, a theme we cover in <a href=\"/blog/can-ai-analyze-stocks.html\">can AI analyze stocks</a>. We hold the SELL because the base case already sits below today's price. The burden of proof is on the optionality, not on the car business. If you want to see how the same value-pool method reads a very different company, our <a href=\"/blog/value-pool-analysis-explained.html\">value pool analysis</a> walkthrough is the next step. Full assumptions are in our <a href=\"/methodology.html\">methodology</a>.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Tesla a buy in 2026?",
+      "a": "Not in our view. Our 1 June 2026 equity report rates Tesla a SELL with a 350.00 USD 12-month target against a 438.26 USD price, and the stock at about 397 USD in mid-July 2026 still sits above that target. Roughly four-fifths of the enterprise value depends on pre-revenue products."
+    },
+    {
+      "q": "What is Tesla's fair value?",
+      "a": "Our base-case reverse valuation puts Tesla near 421 USD a share and our 12-month target is 350 USD, both from the 1 June 2026 report. The wider scenario range runs from 108 USD in a bear case to 934 USD in a bull case, driven mostly by the EBITDA multiple applied."
+    },
+    {
+      "q": "Why is Tesla considered overvalued?",
+      "a": "Because its physical business is about 20% of the valuation. In our June 2026 model, Core Automotive and Energy made 100% of 2025 revenue and about 7.35 billion USD of operating profit, yet the other roughly 1.25 trillion USD of enterprise value rests on FSD, Robotaxi and Optimus, which earned nothing in 2025."
+    },
+    {
+      "q": "Is Tesla a car company or an AI company?",
+      "a": "For valuation it is priced as an AI and robotics company, not a carmaker. On 2026 earnings Tesla trades near 239x, which only makes sense if you value the software and robot pools. Our model prices those pools explicitly and concludes the market pays too much for them today."
+    },
+    {
+      "q": "Could Tesla be undervalued instead?",
+      "a": "Yes, if the pre-revenue pools scale. A commercial Robotaxi and FSD licensing to other carmakers would support our 934 USD bull case. That needs FSD subscribers to rise from about 1.28 million toward 44 million. We think that is unlikely on the current hardware base, which is why we rate it SELL."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum Tesla SELL rating, 350.00 USD 12-month target vs 438.26 USD price (1 June 2026 report)",
+      "source": "report-content/tesla-01062026.json"
+    },
+    {
+      "claim": "Physical business (Core Automotive + Energy) is 20.4% of Tesla enterprise value; 79.6% (~1.25 trillion USD) sits in zero-revenue FSD, Robotaxi and Optimus pools (1 June 2026)",
+      "source": "report-content/tesla-01062026.json"
+    },
+    {
+      "claim": "Reverse-valuation scenarios: bear 108.42 USD / base 421.03 USD / bull 934.07 USD per share, driven by an EV/EBITDA multiple of 21.6x / 85.2x / 150.0x (1 June 2026)",
+      "source": "report-content/tesla-01062026.json"
+    },
+    {
+      "claim": "The 549.7 billion USD FSD allocation implies scaling from ~1.28 million to ~44 million subscribers; the 473.9 billion USD Robotaxi allocation implies a ~2.1 million-vehicle fleet (1 June 2026)",
+      "source": "report-content/tesla-01062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/tesla-equity-report.html",
+    "/methodology.html",
+    "/blog/can-ai-analyze-stocks.html",
+    "/blog/what-is-reverse-valuation.html",
+    "/blog/value-pool-analysis-explained.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Tesla Equity Report, 1 June 2026 (sum-of-the-parts value map, reverse valuation, SELL rating)", "url": "/reports/tesla-equity-report.html" },
+    { "label": "Tesla, Inc. Q4 and Full Year 2025 financial results, Form 8-K exhibit 99.1, SEC EDGAR (primary filing)", "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025045861/exhibit991.htm" },
+    { "label": "Tesla, Inc. (TSLA) share price, Nasdaq market data, 15 July 2026 (exchange market data)", "url": "https://www.nasdaq.com/market-activity/stocks/tsla" },
+    { "label": "A J.P. Morgan analyst sees 60% downside to Tesla stock, Fortune, April 2026 (opposing external view)", "url": "https://fortune.com/2026/04/07/a-j-p-morgan-analyst-sees-60-downside-to-tesla-stock-and-he-may-be-too-optimistic/" }
+  ],
+  "gateScores": {
+    "humanizer": 43,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
