@@ -82,7 +82,16 @@
       });
 
       document.addEventListener('click', e => {
-        if (!wrap?.contains(e.target)) autocomplete.classList.remove('open');
+        if (!wrap?.contains(e.target) && !autocomplete.contains(e.target)) {
+          autocomplete.classList.remove('open');
+        }
+      });
+
+      autocomplete.addEventListener('pointerdown', e => {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item) return;
+        e.preventDefault();
+        openCompanyPage(item.dataset.url);
       });
     }
   });
@@ -98,11 +107,11 @@
 
 function renderAutocomplete(container, companies) {
   container.innerHTML = companies.map(c => `
-    <div class="autocomplete-item" onclick="openCompanyPage('${escapeAttr(c.url)}')">
-      <span class="autocomplete-ticker">${c.ticker}</span>
-      <span class="autocomplete-name">${c.name}</span>
-      <span class="autocomplete-exchange">${c.exchange}</span>
-    </div>
+    <button class="autocomplete-item" type="button" data-url="${escapeAttr(c.url)}" role="option">
+      <span class="autocomplete-ticker">${escapeHtml(c.ticker)}</span>
+      <span class="autocomplete-name">${escapeHtml(c.name)}</span>
+      <span class="autocomplete-exchange">${escapeHtml(c.exchange)}</span>
+    </button>
   `).join('');
 }
 
@@ -110,6 +119,27 @@ function searchableCompanyPages() {
   if (Array.isArray(window.COMPANY_PAGE_CATALOG)) return window.COMPANY_PAGE_CATALOG;
   return [];
 }
+
+// ── Homepage company cards from catalog data ──────────────────────
+(function initSampleCompanyCards() {
+  const cards = document.querySelectorAll('[data-company-card]');
+  if (!cards.length) return;
+
+  const pages = searchableCompanyPages();
+  cards.forEach(card => {
+    const ticker = card.dataset.companyCard?.toLowerCase();
+    if (!ticker) return;
+
+    const company = pages.find(c => c.ticker.toLowerCase() === ticker);
+    if (!company) return;
+
+    const desc = card.querySelector('[data-company-description]');
+    if (desc && company.description) desc.textContent = company.description;
+
+    const image = card.querySelector('.sample-thumbnail-img');
+    if (image && company.thumbnail) image.src = company.thumbnail;
+  });
+})();
 
 function handleSearch(query) {
   if (!query) {
@@ -140,6 +170,15 @@ function openCompanyPage(url) {
 
 function escapeAttr(value) {
   return String(value || '').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 // ── Value pool bars animation ──────────────────────
