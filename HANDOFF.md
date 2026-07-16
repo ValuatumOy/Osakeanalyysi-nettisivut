@@ -44,7 +44,8 @@ that built this static site. Read this before migrating.
   AWS, set `window.VALUATUM_API_BASE` or keep `/api/*` same-origin.
 - **Required env vars** (must be set wherever the functions run):
   `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SITE_URL`, `CATALOG_API_URL`, `CATALOG_SYNC_SECRET`,
-  plus the email provider key (Resend) used by `server/email.js`.
+  plus the AWS SES credentials (`AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`,
+  or an instance role with `ses:SendEmail`) used by `server/email.js`.
 - On AWS: update the Stripe **webhook endpoint URL** in the Stripe dashboard, and `SITE_URL`
   (success/cancel URLs are built from it). Note the report PDFs are served from `files.valuatum.com`,
   not this app — they stay put.
