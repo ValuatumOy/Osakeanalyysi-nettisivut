@@ -106,6 +106,7 @@ ${navHtml()}
             <div class="company-meta">
               ${company.industry ? `<span class="company-meta-chip">${esc(company.industry)}</span><span class="company-meta-sep"></span>` : ''}
               <span class="company-meta-chip">${esc(company.currency)}</span>
+              <a class="company-meta-cta" href="https://osakeanalyysi-nettisivut.vercel.app/reports.html#free">Explore free reports</a>
             </div>
           </div>
           <div class="company-header-actions">

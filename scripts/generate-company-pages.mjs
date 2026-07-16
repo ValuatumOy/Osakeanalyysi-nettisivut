@@ -8,7 +8,7 @@ import { getCompanyProfile } from './company-pages/profile-provider.mjs';
 import { pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'report-content', '_catalog.json');
+const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'js', 'reportsData.js');
 
 export async function generateCompanyPages(options) {
   const outputDir = options.outputDir || path.join(ROOT, 'reports');
@@ -92,7 +92,7 @@ function uniqueTickers(tickers) {
 
 async function loadReadyReports(catalogPath) {
   try {
-    const raw = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
+    const raw = await readReportCatalog(catalogPath);
     if (!Array.isArray(raw)) return [];
     return raw
       .filter(report => report && report.availability !== 'hidden')
@@ -103,6 +103,15 @@ async function loadReadyReports(catalogPath) {
   } catch {
     return [];
   }
+}
+
+async function readReportCatalog(catalogPath) {
+  const source = await fs.readFile(catalogPath, 'utf8');
+  if (/\.js$/i.test(catalogPath)) {
+    const match = source.match(/var\s+REPORTS_CATALOG\s*=\s*(\[[\s\S]*?\]);/);
+    return match ? Function(`return ${match[1]};`)() : [];
+  }
+  return JSON.parse(source);
 }
 
 function findReadyReport(company, readyReports) {

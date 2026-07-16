@@ -8,6 +8,7 @@ const {
   recordCatalogPurchase,
 } = require('./catalog');
 const { sendReportEmail, sendFreshConfirmEmail } = require('./email');
+const { REPORTS_CATALOG = [] } = require('../js/reportsData');
 const orders = require('./orders');
 const reconciler = require('./reconciler');
 const reaper = require('./reaper');
@@ -146,7 +147,7 @@ app.get('/api/reports', (_, res) => {
 // GET /api/reports/:reportId - used by checkout to resolve current price.
 app.get('/api/reports/:reportId', (req, res) => {
   try {
-    const report = getReportByIdSync(req.params.reportId);
+    const report = getReadyReportById(req.params.reportId);
     if (!report) return res.status(404).json({ error: 'Report not found' });
     res.json({ report: publicReportPayload(report) });
   } catch (err) {
@@ -209,7 +210,7 @@ app.post('/api/create-checkout', async (req, res) => {
   if (!reportId) return res.status(400).json({ error: 'Missing report id' });
 
   try {
-    const report = getReportByIdSync(reportId);
+    const report = getReadyReportById(reportId);
     if (!report) return res.status(404).json({ error: 'Report not found' });
     if (report.isFree || report.price <= 0) {
       return res.status(400).json({ error: 'Report is free' });
@@ -360,7 +361,7 @@ app.post('/api/webhook', async (req, res) => {
         // by the reconciler — on success (flag ADMIN_NOTIFY_ON_SUCCESS) and
         // always on failure — not here, where generation hasn't happened yet.
       } else {
-        const report = getReportByIdSync(reportId);
+        const report = getReadyReportById(reportId);
         if (!email) {
           console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
         } else if (!report) {
@@ -393,6 +394,20 @@ app.post('/api/webhook', async (req, res) => {
 
 function isCompletedCheckout(session) {
   return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
+}
+
+function getReadyReportById(reportId) {
+  const report = REPORTS_CATALOG.find(item => item.id === reportId);
+  if (!report || report.availability === 'hidden') return null;
+  const isFree = Boolean(report.isFree) || report.reportType === 'free' || Number(report.price) === 0;
+  return {
+    ...report,
+    isFree,
+    reportType: isFree ? 'free' : (report.reportType || 'existing'),
+    price: isFree ? 0 : 20,
+    priceLabel: isFree ? (report.priceLabel || 'Free report') : 'Ready report',
+    creditCost: isFree ? 0 : (report.creditCost || 2),
+  };
 }
 
 // Health check

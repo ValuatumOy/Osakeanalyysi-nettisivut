@@ -52,6 +52,10 @@ async function fetchJson(url, options = {}) {
 }
 
 async function getCatalogReport(reportId) {
+  const staticReport = getStaticCatalogReport(reportId);
+  if (staticReport) return toBackendReport(staticReport);
+  if (REPORTS_CATALOG.length) return null;
+
   const base = catalogBaseUrl();
 
   if (base) {
@@ -63,10 +67,14 @@ async function getCatalogReport(reportId) {
     }
   }
 
-  return toBackendReport(getReportByIdSync(reportId, { persistState: false }) || getStaticCatalogReport(reportId));
+  return toBackendReport(getReportByIdSync(reportId, { persistState: false }));
 }
 
 async function getCatalogReports() {
+  if (REPORTS_CATALOG.length) {
+    return REPORTS_CATALOG.map(normalizeCatalogReport).filter(Boolean);
+  }
+
   const base = catalogBaseUrl();
 
   if (base) {
