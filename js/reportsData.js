@@ -9,10 +9,10 @@ var REPORTS_CATALOG = [
     "exchange": "NASDAQ",
     "country": "US",
     "sector": "Technology",
-    "reportDate": "2026-07-13",
-    "reportDateLabel": "13 July 2026",
-    "fileName": "Nvidia_13072026.pdf",
-    "pdfUrl": "reports/pdfs/Nvidia_13072026.pdf",
+    "reportDate": "2026-07-16",
+    "reportDateLabel": "16 July 2026",
+    "fileName": "Nvidia_16072026.pdf",
+    "pdfUrl": "reports/pdfs/Nvidia_16072026.pdf",
     "description": "Free AI equity report on NVIDIA's accelerated computing, data center AI platform, GPU ecosystem, valuation assumptions, risks, catalysts, and financial outlook.",
     "tags": [
       "Free Report",
@@ -36,9 +36,9 @@ var REPORTS_CATALOG = [
     "exchange": "NASDAQ",
     "country": "US",
     "sector": "Technology",
-    "reportDate": "2026-07-13",
-    "fileName": "Intel_13072026.pdf",
-    "pdfUrl": "reports/pdfs/Intel_13072026.pdf",
+    "reportDate": "2026-07-16",
+    "fileName": "Intel_16072026.pdf",
+    "pdfUrl": "reports/pdfs/Intel_16072026.pdf",
     "reportType": "free",
     "availability": "available",
     "price": 0,
@@ -51,7 +51,7 @@ var REPORTS_CATALOG = [
       "Semiconductors",
       "PDF"
     ],
-    "reportDateLabel": "13 July 2026",
+    "reportDateLabel": "16 July 2026",
     "creditCost": 0
   },
   {
@@ -62,9 +62,9 @@ var REPORTS_CATALOG = [
     "exchange": "Helsinki",
     "country": "FI",
     "sector": "Consumer Staples",
-    "reportDate": "2026-07-14",
-    "fileName": "Kesko_14072026.pdf",
-    "pdfUrl": "reports/pdfs/Kesko_14072026.pdf",
+    "reportDate": "2026-07-16",
+    "fileName": "Kesko_16072026.pdf",
+    "pdfUrl": "reports/pdfs/Kesko_16072026.pdf",
     "reportType": "free",
     "availability": "available",
     "price": 0,
@@ -77,7 +77,7 @@ var REPORTS_CATALOG = [
       "Nordic",
       "PDF"
     ],
-    "reportDateLabel": "14 July 2026",
+    "reportDateLabel": "16 July 2026",
     "creditCost": 0
   },
   {
