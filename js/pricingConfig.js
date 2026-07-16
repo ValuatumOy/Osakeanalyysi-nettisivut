@@ -15,7 +15,7 @@ const PRICING_CONFIG = {
       description: 'Open full free PDF reports before you buy. No card, no account required.',
       features: [
         'Full PDF report',
-        'Value pool analysis',
+        'Segment value analysis',
         'Reverse valuation',
         'Risk & catalyst analysis',
         'Financial statements',
@@ -35,7 +35,7 @@ const PRICING_CONFIG = {
       description: 'Open full free PDF reports before you buy. No card, no account required.',
       features: [
         'Full PDF report',
-        'Value pool analysis',
+        'Segment value analysis',
         'Reverse valuation',
         'Risk & catalyst analysis',
         'Financial statements',
@@ -74,7 +74,7 @@ const PRICING_CONFIG = {
       price: 50,
       launchPrice: null,
       period: 'per report',
-      description: 'Order a newly generated report with the latest available financial data.',
+      description: 'Generate a new report with the latest available financial data.',
       features: [
         'Everything in Existing Report',
         'Latest available data',
@@ -82,7 +82,7 @@ const PRICING_CONFIG = {
         'Delivered within 1 business day',
       ],
       notIncluded: [],
-      cta: 'Order fresh report',
+      cta: 'Generate fresh report',
       ctaHref: 'reports.html#order-fresh',
       featured: false,
       badge: 'Fresh',

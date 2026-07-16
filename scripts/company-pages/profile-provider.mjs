@@ -128,7 +128,7 @@ function buildPrompt(company) {
 
 [COVER_COMPANY_PROFILE]
 Write one neutral 45-65 word paragraph explaining what the company does.
-Mention the company's main businesses, products, services, or value pools.
+Mention the company's main businesses, products, services, or value drivers.
 If the company is undergoing a clear strategic transition, mention it briefly only if supported by the supplied company information.
 Do not include recommendation, valuation, target price, upside, investment thesis, or promotional language.
 Use plain institutional English that helps a reader quickly understand the company before reading the report.

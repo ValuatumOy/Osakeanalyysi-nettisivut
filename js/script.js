@@ -6,11 +6,7 @@
 (function initNav() {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  const onScroll = () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  nav.classList.add('scrolled');
 })();
 
 // ── Mobile menu ─────────────────────────────────────
@@ -138,6 +134,12 @@ function searchableCompanyPages() {
 
     const image = card.querySelector('.sample-thumbnail-img');
     if (image && company.thumbnail) image.src = company.thumbnail;
+
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
+      openCompanyPage(company.url);
+    });
+    card.style.cursor = 'pointer';
   });
 })();
 
@@ -160,7 +162,7 @@ function handleSearch(query) {
     openCompanyPage(partial.url);
     return;
   }
-  window.location.href = `reports.html?search=${encodeURIComponent(query)}`;
+  window.location.href = `reports.html?search=${encodeURIComponent(query)}#coverage-request`;
 }
 
 function openCompanyPage(url) {
@@ -181,7 +183,7 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
-// ── Value pool bars animation ──────────────────────
+// ── Value driver bars animation ──────────────────────
 (function initValuePools() {
   const bars = document.querySelectorAll('.pool-fill[data-pct]');
   if (!bars.length) return;
@@ -439,7 +441,7 @@ function trackEvent(event, props = {}) {
   trackEvent('preview_viewed', { ticker: company.ticker, exchange: company.exchange });
 })();
 
-// ── "Generate this report" button (generated company/coverage pages) ─────────
+// ── "Generate fresh report" button (generated company/coverage pages) ─────────
 // Entry point into the fresh-report pipeline. The button carries the covered
 // company's real SYMBOL.EXCHANGE ticker; exchange/country are derived server-side
 // from the ticker suffix, and Stripe Checkout collects the buyer email. The

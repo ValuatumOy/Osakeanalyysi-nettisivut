@@ -113,7 +113,7 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
-            <a href="#generate" class="btn btn-gold">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+            <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ ${navHtml()}
             <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate this report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
@@ -184,7 +184,7 @@ function companyOverview(company, name, readyReport = null) {
   const marketCap = formatMillions(company.metrics.marketCap, company.currency);
   const reportText = readyReport
     ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
-    : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+    : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
   return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
 }
 
@@ -215,7 +215,7 @@ function relatedSection(companies) {
     const name = shortName(company.companyName);
     return `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${pageSlug(company)}.html">${esc(name)} (${esc(company.ticker)}) report &rarr;</a>`;
   }).join('');
-  return `<section class="report-full-section" id="related"><h2>More AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
+  return `<section class="report-full-section" id="related"><h2>Related AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
 }
 
 function sourcesSection(company) {
@@ -280,8 +280,8 @@ function navHtml() {
 
 function footerHtml() {
   return `  <footer class="footer"><div class="container"><div class="footer-grid">
-    <div class="footer-brand"><a href="/index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;"><img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum"><div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div></a><p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p></div>
-    <div><div class="footer-col-label">Reports</div><div class="footer-links"><a href="/reports.html" class="footer-link">Browse reports</a><a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a><a href="/pricing.html" class="footer-link">Pricing</a><a href="/methodology.html" class="footer-link">Methodology</a></div></div>
+    <div class="footer-brand"><a href="/index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;"><img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum"><div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div></a><p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p></div>
+    <div><div class="footer-col-label">Reports</div><div class="footer-links"><a href="/reports.html" class="footer-link">Browse reports</a><a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a><a href="/pricing.html" class="footer-link">Pricing</a><a href="/methodology.html" class="footer-link">Methodology</a></div></div>
     <div><div class="footer-col-label">Company</div><div class="footer-links"><a href="/about.html" class="footer-link">About Valuatum</a><a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a><a href="mailto:contact26@valuatum.com" class="footer-link">Support</a></div></div>
     <div><div class="footer-col-label">Legal</div><div class="footer-links"><a href="/disclaimer.html" class="footer-link">Disclaimer</a><a href="/disclaimer.html#terms" class="footer-link">Terms of use</a><a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a></div></div>
   </div><div class="footer-bottom"><span class="footer-copyright">&copy; 2026 Valuatum Oy &middot; Helsinki, Finland &middot; Est. 2000</span><span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span></div></div></footer>`;

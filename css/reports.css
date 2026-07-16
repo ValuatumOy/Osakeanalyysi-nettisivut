@@ -228,6 +228,7 @@
   border-radius: var(--r-xl);
   padding: 1.5rem;
   transition: border-color var(--trs-md), box-shadow var(--trs-md), transform var(--trs-md);
+  cursor: pointer;
 }
 .report-card:hover {
   border-color: var(--green-light);
@@ -282,6 +283,12 @@
 .rc-price { font-size: var(--text-xl); font-weight: 600; color: var(--charcoal); text-align: right; margin-bottom: 0.25rem; }
 .rc-price-note { font-size: var(--text-xs); color: var(--gray-steel); text-align: right; margin-bottom: 0.55rem; }
 .rc-actions .btn { justify-content: center; min-height: 44px; }
+.catalog-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.catalog-more[hidden] { display: none; }
 .catalog-empty {
   display: none;
   background: var(--white);

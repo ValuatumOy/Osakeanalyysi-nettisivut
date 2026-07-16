@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ready AI Equity Reports - Valuatum</title>
-  <meta name="description" content="Browse ready Valuatum AI equity reports for companies with an existing company page. Download free reports, buy paid ready reports for €20, or generate a fresh report from the company page.">
+  <meta name="description" content="Browse ready Valuatum AI equity reports for companies with an existing company page. Download free reports, buy paid ready reports for €20, or generate a fresh report for €50.">
   <link rel="canonical" href="https://www.aiequityreports.com/reports.html">
   <meta property="og:title" content="Ready AI Equity Reports">
-  <meta property="og:description" content="Ready AI equity reports for listed companies. Download free reports, buy paid reports for €20, or request coverage for a listed company that is not yet available.">
+  <meta property="og:description" content="Ready AI equity reports for listed companies. Download free reports, buy paid reports for €20, generate fresh reports for €50, or request coverage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aiequityreports.com/reports.html">
   <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
@@ -64,7 +64,7 @@
           <div class="reports-hero-text">
             <span class="section-eyebrow section-eyebrow--light">Ready Reports</span>
             <h1 class="reports-hero-headline">Browse ready AI equity reports.</h1>
-            <p class="reports-hero-sub">This catalog lists companies that already have a company page and a ready PDF report. Download selected free reports instantly, buy paid ready reports for €20, or generate a new report from the company page.</p>
+            <p class="reports-hero-sub">This catalog lists companies that already have a company page and a ready PDF report. Download selected free reports instantly, buy paid ready reports for €20, or generate a fresh report from the company page for €50.</p>
           </div>
           <div class="reports-hero-search">
             <div class="rp-search-field">
@@ -129,6 +129,9 @@
           </div>
         </div>
         <div class="catalog-grid" id="catalogGrid" role="list"></div>
+        <div class="catalog-more" id="catalogMore" hidden>
+          <button type="button" class="btn btn-outline-dark" id="catalogShowMore">Show more reports</button>
+        </div>
         <div class="catalog-empty" id="catalogEmpty">
           <p class="catalog-empty-title" id="catalogEmptyTitle">No ready report matches your search.</p>
           <p class="catalog-empty-sub" id="catalogEmptySub">If the company is listed but not yet covered here, send us the details below and we can create the company page and report purchase path.</p>
@@ -222,9 +225,11 @@
   <script>
   (function() {
     const READY_PRICE = 20;
+    const PAGE_SIZE = 8;
     let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
+    let visibleLimit = PAGE_SIZE;
     let searchQuery = '';
     let filterAccess = '';
     let filterMarket = '';
@@ -334,7 +339,7 @@
       const primaryCta = report.isFree
         ? '<a class="btn btn-primary" href="/' + escapeHTML(report.pdfUrl || '') + '" target="_blank" rel="noopener" download>Download free PDF</a>'
         : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>';
-      return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '">' +
+      return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '" data-page-url="/' + escapeHTML(report.pageUrl) + '" tabindex="0" aria-label="Open ' + escapeHTML(report.displayName) + ' company page">' +
         '<div>' +
           '<div class="rc-eyebrow"><span class="rc-badge' + (report.isFree ? ' rc-badge-free' : '') + '">' + badge + '</span><span class="rc-date">' + escapeHTML(formatReportDate(report.reportDate)) + '</span></div>' +
           '<h3 class="rc-company-name"><a href="/' + escapeHTML(report.pageUrl) + '">' + escapeHTML(report.displayName) + '</a></h3>' +
@@ -357,9 +362,12 @@
       const emptySub = document.getElementById('catalogEmptySub');
       const emptyAction = document.getElementById('catalogEmptyAction');
       const count = document.getElementById('catalogCount');
+      const more = document.getElementById('catalogMore');
       visibleReports = filteredReports();
+      const pageReports = visibleReports.slice(0, visibleLimit);
       count.textContent = visibleReports.length + ' ready report' + (visibleReports.length === 1 ? '' : 's');
-      grid.innerHTML = visibleReports.map(card).join('');
+      grid.innerHTML = pageReports.map(card).join('');
+      if (more) more.hidden = visibleReports.length <= visibleLimit;
       if (visibleReports.length) {
         empty.style.display = 'none';
       } else {
@@ -424,6 +432,18 @@
       showToast('Could not start fresh report checkout. Please try again or contact contact26@valuatum.com.');
     }
     function bindCardActions() {
+      document.querySelectorAll('.report-card[data-page-url]').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('a, button')) return;
+          window.location.href = card.getAttribute('data-page-url');
+        });
+        card.addEventListener('keydown', function(e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          if (e.target.closest('a, button')) return;
+          e.preventDefault();
+          window.location.href = card.getAttribute('data-page-url');
+        });
+      });
       document.querySelectorAll('[data-buy-report]').forEach(function(btn) {
         btn.addEventListener('click', function() { buyReadyReport(btn.getAttribute('data-buy-report'), btn); });
       });
@@ -446,6 +466,7 @@
       const menu = document.getElementById('rpSearchAutocomplete');
       input.addEventListener('input', function() {
         searchQuery = input.value.trim();
+        visibleLimit = PAGE_SIZE;
         clear.style.display = searchQuery ? 'inline-flex' : 'none';
         renderAutocomplete();
         render();
@@ -510,6 +531,7 @@
           if (type === 'market') filterMarket = value;
           if (type === 'sector') filterSector = value;
           if (type === 'sort') sortMode = value || 'newest';
+          visibleLimit = PAGE_SIZE;
           setSelectValue(type, value, label);
           closeSelects();
           render();
@@ -518,6 +540,13 @@
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.catalog-select')) closeSelects();
       });
+      const showMore = document.getElementById('catalogShowMore');
+      if (showMore) {
+        showMore.addEventListener('click', function() {
+          visibleLimit += PAGE_SIZE;
+          render();
+        });
+      }
       document.getElementById('coverageRequestForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const company = document.getElementById('coverageCompany').value.trim();
@@ -533,6 +562,17 @@
     document.addEventListener('DOMContentLoaded', function() {
       readyReports = buildReadyReports();
       populateFilters();
+      const params = new URLSearchParams(window.location.search);
+      const initialSearch = params.get('search') || '';
+      if (initialSearch) {
+        const input = document.getElementById('rpSearchInput');
+        const clear = document.getElementById('rpSearchClear');
+        searchQuery = initialSearch.trim();
+        if (input) input.value = initialSearch;
+        if (clear) clear.style.display = 'inline-flex';
+        const coverageCompany = document.getElementById('coverageCompany');
+        if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
+      }
       if (window.location.hash === '#free') {
         filterAccess = 'free';
         setSelectValue('access', 'free', 'Free reports');
@@ -540,6 +580,12 @@
       render();
       bindSearch();
       bindControls();
+      if (window.location.hash === '#coverage-request') {
+        setTimeout(function() {
+          const target = document.getElementById('coverage-request');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
       if (window.SITE_PUBLIC_PRICING_PROMISE) {
         window.SITE_PUBLIC_PRICING_PROMISE.then(function(pricing) {
           if (!pricing || !pricing.ready) return;

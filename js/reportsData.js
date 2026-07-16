@@ -96,7 +96,7 @@ var REPORTS_CATALOG = [
     "price": 20,
     "priceLabel": "Ready report",
     "isFree": false,
-    "description": "Advanced Micro Devices (AMD) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.",
+    "description": "Advanced Micro Devices (AMD) stock analysis and AI equity report covering valuation, segment value analysis, reverse valuation, financials, risks and catalysts.",
     "tags": [
       "AI Equity Report",
       "Semiconductors",
@@ -120,7 +120,7 @@ var REPORTS_CATALOG = [
     "price": 20,
     "priceLabel": "Ready report",
     "isFree": false,
-    "description": "Nokia (NOKIA.HE) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.",
+    "description": "Nokia (NOKIA.HE) stock analysis and AI equity report covering valuation, segment value analysis, reverse valuation, financials, risks and catalysts.",
     "tags": [
       "AI Equity Report",
       "Nordic",
@@ -144,7 +144,7 @@ var REPORTS_CATALOG = [
     "price": 20,
     "priceLabel": "Ready report",
     "isFree": false,
-    "description": "Recursion Pharmaceuticals (RXRX) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.",
+    "description": "Recursion Pharmaceuticals (RXRX) stock analysis and AI equity report covering valuation, segment value analysis, reverse valuation, financials, risks and catalysts.",
     "tags": [
       "AI Equity Report",
       "Biotech",
@@ -240,7 +240,7 @@ var REPORTS_CATALOG = [
     "price": 20,
     "priceLabel": "Ready report",
     "isFree": false,
-    "description": "Wärtsilä Oyj Abp (WRT1V.HE) stock analysis and AI equity report covering valuation, value-pool analysis, reverse valuation, financials, risks and catalysts.",
+    "description": "Wärtsilä Oyj Abp (WRT1V.HE) stock analysis and AI equity report covering valuation, segment value analysis, reverse valuation, financials, risks and catalysts.",
     "tags": [
       "AI Equity Report",
       "Nordic",

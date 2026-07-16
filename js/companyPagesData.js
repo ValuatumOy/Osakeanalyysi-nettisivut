@@ -5,7 +5,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "AMD",
     "exchange": "NASDAQ",
     "url": "reports/advanced-micro-devices-equity-report.html",
-    "description": "Advanced Micro Devices is a semiconductor designer whose investment case is increasingly tied to AI data center accelerators, client CPUs, embedded chips and gaming products. The company page covers valuation, value-pool allocation, reverse valuation, risks and catalysts."
+    "description": "Advanced Micro Devices is a semiconductor designer whose investment case is increasingly tied to AI data center accelerators, client CPUs, embedded chips and gaming products. The company page covers valuation, segment value allocation, reverse valuation, risks and catalysts."
   },
   {
     "name": "Fortum",
@@ -47,7 +47,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "NOKIA.HE",
     "exchange": "Helsinki",
     "url": "reports/nokia-equity-report.html",
-    "description": "Nokia is a network infrastructure and mobile networks company serving telecom operators, enterprises and cloud customers. The company page covers valuation, value-pool analysis, reverse valuation, financials, risks and catalysts."
+    "description": "Nokia is a network infrastructure and mobile networks company serving telecom operators, enterprises and cloud customers. The company page covers valuation, segment value analysis, reverse valuation, financials, risks and catalysts."
   },
   {
     "name": "NVIDIA",
@@ -113,13 +113,13 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "WRT1V.HE",
     "exchange": "Helsinki",
     "url": "reports/wartsila-equity-report.html",
-    "description": "Wärtsilä Oyj Abp is an industrial technology company serving marine and energy markets. The company page covers valuation, value-pool analysis, reverse valuation, financials, risks and catalysts."
+    "description": "Wärtsilä Oyj Abp is an industrial technology company serving marine and energy markets. The company page covers valuation, segment value analysis, reverse valuation, financials, risks and catalysts."
   },
   {
     "name": "Wärtsilä Oyj Abp",
     "ticker": "WRT1V.HE",
     "exchange": "Helsinki",
     "url": "reports/wartsila-equity-report.html",
-    "description": "Wärtsilä Oyj Abp is an industrial technology company serving marine and energy markets. The company page covers valuation, value-pool analysis, reverse valuation, financials, risks and catalysts."
+    "description": "Wärtsilä Oyj Abp is an industrial technology company serving marine and energy markets. The company page covers valuation, segment value analysis, reverse valuation, financials, risks and catalysts."
   }
 ];

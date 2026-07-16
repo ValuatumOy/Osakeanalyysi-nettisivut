@@ -3,7 +3,7 @@
 // Design: uses the real site components (nav, report-company-header hero, metrics-grid,
 // locked-section gate, btn-gold, footer) from css/style.css — matches the live site.
 // Freemium: only templated FACTS are public (identity, key figures, rating+target, rating
-// history, report library, FAQ). The analysis (thesis, value pools, reverse valuation,
+// history, report library, FAQ). The analysis (thesis, value drivers, reverse valuation,
 // financials) is GATED behind locked-sections → buy / download / generate.
 // Text is 100% templated from data — no per-company prose — so it scales to thousands.
 import fs from 'node:fs';
@@ -79,9 +79,9 @@ function introText(c, d) {
   const h = (d && d.headline) || {};
   let s = `${c.companyName || c.name} (${c.exchange}: ${c.ticker}) is a ${c.sector || 'listed'} company${where}. `;
   if (h.recommendation) {
-    s += `Valuatum's latest AI equity report, published ${c.reportDateLabel || c.reportDate}, rates ${sn} ${h.recommendation} with a 12-month price target of ${h.targetPrice} — ${h.impliedUpside} versus the ${h.currentPrice} share price. Unlock the full report below for the investment thesis, value-pool breakdown, reverse valuation and financial estimates.`;
+    s += `Valuatum's latest AI equity report, published ${c.reportDateLabel || c.reportDate}, rates ${sn} ${h.recommendation} with a 12-month price target of ${h.targetPrice} — ${h.impliedUpside} versus the ${h.currentPrice} share price. Unlock the full report below for the investment thesis, segment-value breakdown, reverse valuation and financial estimates.`;
   } else {
-    s += `Generate a fresh AI equity report on ${sn} for the full investment thesis, value-pool breakdown, reverse valuation and financial estimates.`;
+    s += `Generate a fresh AI equity report on ${sn} for the full investment thesis, segment-value breakdown, reverse valuation and financial estimates.`;
   }
   return s;
 }
@@ -179,7 +179,7 @@ function valuePoolsFull(pools) {
     return `<div class="pool-row"><span class="pool-name" style="min-width:190px;">${esc(p.name)}</span><div class="pool-track"><div class="pool-fill" style="width:${pct == null ? 0 : Math.min(100, Math.max(2, pct))}%; background:${colors[i % colors.length]};"></div></div><span class="pool-pct">${esc(p.share)}</span></div>`;
   }).join('');
   const detail = pools.map((p) => `<h3>${esc(p.name)}</h3>${p.economics ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:0.4rem;">${esc(p.economics)}</p>` : ''}<p>${esc(p.text)}</p>`).join('');
-  return `<div class="value-pool-chart" style="margin:1rem 0 2rem;">${bars}</div>${detail}`;
+  return `<div class="segment-value-chart" style="margin:1rem 0 2rem;">${bars}</div>${detail}`;
 }
 
 function scenarioTableFull(rv) {
@@ -258,7 +258,7 @@ function renderCompany(c, d, allEntries) {
     ? (latest.isFree
       ? `<a class="btn btn-primary" href="${esc(latest.pdfUrl)}" target="_blank" rel="noopener" download>Download free report</a>`
       : `<a class="btn btn-gold" href="#reports">Buy report — ${eur(latest.price)}</a>`)
-    : `<a class="btn btn-gold" href="#" onclick="return false;">Generate this report — ${eur(NEW_REPORT_PRICE)}</a>`;
+    : `<a class="btn btn-gold" href="#" onclick="return false;">Generate fresh report — ${eur(NEW_REPORT_PRICE)}</a>`;
   const generateCta = latest
     ? `<a class="btn btn-outline" href="/index.html#hero" style="border-color:rgba(255,255,255,0.35); color:#fff;">Generate fresh report</a>`
     : '';
@@ -286,7 +286,7 @@ function renderCompany(c, d, allEntries) {
 
   // upsell bar — only when the report is paid (free reports show everything)
   if (hasReport && !isFree) {
-    sections.push(`<div class="upsell-bar"><div class="upsell-bar-text"><div class="upsell-bar-title">Full ${esc(sn)} investment case</div><div class="upsell-bar-desc">Thesis, value pools, reverse valuation and financials — in the report.</div></div>${reportCta || `<a class="btn btn-primary" href="/index.html#hero">Generate report</a>`}</div>`);
+    sections.push(`<div class="upsell-bar"><div class="upsell-bar-text"><div class="upsell-bar-title">Full ${esc(sn)} investment case</div><div class="upsell-bar-desc">Thesis, value drivers, reverse valuation and financials — in the report.</div></div>${reportCta || `<a class="btn btn-primary" href="/index.html#hero">Generate report</a>`}</div>`);
   }
 
   // ANALYSIS — free report: fully unlocked; paid report: gated previews
@@ -294,7 +294,7 @@ function renderCompany(c, d, allEntries) {
     if (isFree) {
       if (Array.isArray(d.summary) && d.summary.length) sections.push(`<section class="report-full-section"><h2>Executive summary</h2>${d.summary.map((p) => `<p>${esc(p)}</p>`).join('')}</section>`);
       if (Array.isArray(d.thesis) && d.thesis.length) sections.push(`<section class="report-full-section"><h2>Investment thesis &amp; rating rationale</h2>${thesisFull(d.thesis, d.thesisBreaker)}</section>`);
-      if (Array.isArray(d.valuePools) && d.valuePools.length) sections.push(`<section class="report-full-section"><h2>Value pool analysis</h2>${valuePoolsFull(d.valuePools)}</section>`);
+      if (Array.isArray(d.valuePools) && d.valuePools.length) sections.push(`<section class="report-full-section"><h2>Segment value analysis</h2>${valuePoolsFull(d.valuePools)}</section>`);
       if (d.reverseValuation) sections.push(`<section class="report-full-section"><h2>Reverse valuation</h2>${scenarioTableFull(d.reverseValuation)}</section>`);
       const fin = finFull(d.financials);
       if (fin) sections.push(`<section class="report-full-section"><h2>Financials &amp; estimates</h2>${fin}</section>`);
@@ -304,7 +304,7 @@ function renderCompany(c, d, allEntries) {
 
       const poolTeaser = (d.valuePools && d.valuePools[0] && d.valuePools[0].text) || '';
       const nPools = (d.valuePools || []).length;
-      sections.push(`<section class="report-full-section"><h2>Value pool analysis</h2>${lockedSection(sn + ' enterprise-value breakdown', `Full split of enterprise value across ${nPools || 'each'} business pool${nPools === 1 ? '' : 's'} with segment revenue, EBIT and EV economics.`, poolTeaser, 'Unlock the value pool breakdown')}</section>`);
+      sections.push(`<section class="report-full-section"><h2>Segment value analysis</h2>${lockedSection(sn + ' enterprise-value breakdown', `Full split of enterprise value across ${nPools || 'each'} business segment${nPools === 1 ? '' : 's'} with segment revenue, EBIT and EV economics.`, poolTeaser, 'Unlock the segment breakdown')}</section>`);
 
       const rvTeaser = (d.reverseValuation && d.reverseValuation.intro) || '';
       sections.push(`<section class="report-full-section"><h2>Reverse valuation</h2>${lockedSection('What the market is pricing into ' + sn, 'The bull / base / bear scenario model and the growth and margins implied by the current share price.', rvTeaser, 'Unlock the reverse valuation')}</section>`);
@@ -326,7 +326,7 @@ function renderCompany(c, d, allEntries) {
     <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;"><a class="btn btn-primary" href="/index.html#hero">Generate fresh ${esc(sn)} report</a><a class="btn btn-outline-dark" href="/pricing.html">See pricing</a></div>
   </section>`
     : `<section class="report-full-section" id="reports"><h2>${esc(sn)} reports</h2><p style="color:var(--gray-steel); margin-bottom:1.25rem;">No published ${esc(sn)} report yet — generate a fresh AI equity report on demand, delivered by email.</p>
-    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;"><a class="btn btn-gold" href="#" onclick="return false;">Generate this report — ${eur(NEW_REPORT_PRICE)}</a><a class="btn btn-outline-dark" href="/pricing.html">See pricing</a></div>
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;"><a class="btn btn-gold" href="#" onclick="return false;">Generate fresh report — ${eur(NEW_REPORT_PRICE)}</a><a class="btn btn-outline-dark" href="/pricing.html">See pricing</a></div>
   </section>`);
 
   // FAQ (templated facts)

@@ -91,13 +91,13 @@ function footerHtml() {
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
-            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>

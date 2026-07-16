@@ -148,6 +148,12 @@ body::before {
   margin-bottom: var(--gap-lg);
 }
 
+.report-full-section a[href="/methodology.html"] {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* =====================================================
    4. BUTTONS
 ===================================================== */
@@ -217,7 +223,9 @@ body::before {
   z-index: 100;
   height: var(--nav-h);
   transition: background var(--trs-md), border-color var(--trs-md), backdrop-filter var(--trs-md);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav-inner {
@@ -266,7 +274,7 @@ body::before {
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--white);
+  color: var(--charcoal);
   transition: color var(--trs-md);
 }
 
@@ -274,7 +282,7 @@ body::before {
   font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.55);
+  color: var(--gray-steel);
   text-transform: uppercase;
   transition: color var(--trs-md);
 }
@@ -290,7 +298,7 @@ body::before {
 .nav-link {
   font-size: var(--text-sm);
   font-weight: 400;
-  color: rgba(255,255,255,0.8);
+  color: var(--gray-steel);
   letter-spacing: 0.02em;
   transition: color var(--trs);
   position: relative;
@@ -303,7 +311,7 @@ body::before {
   background: var(--green-light);
   transition: width var(--trs-md);
 }
-.nav-link:hover { color: var(--white); }
+.nav-link:hover { color: var(--charcoal); }
 .nav-link:hover::after { width: 100%; }
 
 .nav-cta {
@@ -330,7 +338,7 @@ body::before {
 .nav-hamburger span {
   display: block;
   width: 22px; height: 1.5px;
-  background: var(--white);
+  background: var(--charcoal);
   transition: var(--trs-md);
 }
 
@@ -366,34 +374,22 @@ body::before {
 
 .nav.nav-report,
 .nav.scrolled.nav-report {
-  background: var(--forest);
-  backdrop-filter: none;
-  border-bottom-color: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--color-border);
 }
 .nav.nav-report .nav-logo-wordmark,
-.nav.scrolled.nav-report .nav-logo-wordmark {
-  color: var(--white);
-}
+.nav.scrolled.nav-report .nav-logo-wordmark { color: var(--charcoal); }
 .nav.nav-report .nav-logo-sub,
-.nav.scrolled.nav-report .nav-logo-sub {
-  color: rgba(255,255,255,0.55);
-}
+.nav.scrolled.nav-report .nav-logo-sub { color: var(--gray-steel); }
 .nav.nav-report .nav-link,
-.nav.scrolled.nav-report .nav-link {
-  color: rgba(255,255,255,0.72);
-}
+.nav.scrolled.nav-report .nav-link { color: var(--gray-steel); }
 .nav.nav-report .nav-link:hover,
-.nav.scrolled.nav-report .nav-link:hover {
-  color: var(--white);
-}
+.nav.scrolled.nav-report .nav-link:hover { color: var(--charcoal); }
 .nav.nav-report .nav-link::after,
-.nav.scrolled.nav-report .nav-link::after {
-  background: var(--green-light);
-}
+.nav.scrolled.nav-report .nav-link::after { background: var(--green); }
 .nav.nav-report .nav-hamburger span,
-.nav.scrolled.nav-report .nav-hamburger span {
-  background: var(--white);
-}
+.nav.scrolled.nav-report .nav-hamburger span { background: var(--charcoal); }
 
 /* =====================================================
    6. HERO — SEARCH FIRST

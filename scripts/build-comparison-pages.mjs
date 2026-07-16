@@ -87,9 +87,9 @@ function companyCta(d, cat) {
 }
 
 function poolBars(pools) {
-  if (!Array.isArray(pools) || !pools.length) return '<p style="color:var(--gray-steel); font-size:var(--text-sm);">See the report for the value-pool breakdown.</p>';
+  if (!Array.isArray(pools) || !pools.length) return '<p style="color:var(--gray-steel); font-size:var(--text-sm);">See the report for the segment-value breakdown.</p>';
   const colors = ['var(--green)', 'var(--green-light)', 'var(--green-deep)', 'var(--charcoal-mid)', 'var(--gray-steel)', 'var(--forest)'];
-  return `<div class="value-pool-chart" style="margin:0.5rem 0 0;">${pools.slice(0, 5).map((p, i) => {
+  return `<div class="segment-value-chart" style="margin:0.5rem 0 0;">${pools.slice(0, 5).map((p, i) => {
     const pct = firstNum(p.share);
     if (pct === null) return '';
     return `<div class="pool-row"><span class="pool-name" style="min-width:160px;">${esc(p.name)}</span><div class="pool-track"><div class="pool-fill" style="width:${Math.max(0, Math.min(100, pct))}%; background:${colors[i % colors.length]};"></div></div><span class="pool-pct">${esc(String(p.share).split('·')[0].trim())}</span></div>`;
@@ -145,7 +145,7 @@ function verdict(A, B) {
       s += `${win} screens with the higher implied upside to its price target (${hi}% versus ${lo}%). `;
     }
   }
-  s += `The full reasoning — value-pool allocation, reverse valuation, financial forecasts, risks and catalysts — is in each company's report below. This is AI-generated research for information only, not investment advice.`;
+  s += `The full reasoning — segment-value allocation, reverse valuation, financial forecasts, risks and catalysts — is in each company's report below. This is AI-generated research for information only, not investment advice.`;
   return s;
 }
 
@@ -160,7 +160,7 @@ function faqHtml(A, B) {
         : `Both ${sa} and ${sb} screen with a similar implied upside on Valuatum's current price targets. See the comparison table above for the full breakdown.` },
     { q: `Is ${sa} (${A.d.ticker}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sa} ${ha.recommendation || 'n/a'}${ha.targetPrice ? `, with a ${ha.targetPrice} 12-month price target` : ''}${ha.currentPrice ? ` versus a ${ha.currentPrice} share price` : ''}. Read the ${sa} report for the rationale.` },
     { q: `Is ${sb} (${B.d.ticker}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sb} ${hb.recommendation || 'n/a'}${hb.targetPrice ? `, with a ${hb.targetPrice} 12-month price target` : ''}${hb.currentPrice ? ` versus a ${hb.currentPrice} share price` : ''}. Read the ${sb} report for the rationale.` },
-    { q: `How are ${sa} and ${sb} valued?`, a: `Both companies are valued with Valuatum's value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts in each report.` },
+    { q: `How are ${sa} and ${sb} valued?`, a: `Both companies are valued with Valuatum's segment-value analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts in each report.` },
   ];
   return { html: faqs.map(f => `
         <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
@@ -208,10 +208,10 @@ function renderPage(A, B) {
   const slug = compareSlug(A.d.companyName, B.d.companyName);
   const url = `${SITE}/compare/${slug}.html`;
   const title = `${sa} vs ${sb} (${A.d.ticker} vs ${B.d.ticker}) Stock Comparison — Ratings, Price Targets & Valuation | Valuatum`;
-  const desc = `${sa} (${A.d.ticker}) vs ${sb} (${B.d.ticker}) stock comparison: AI equity ratings, 12-month price targets, implied upside, valuation multiples and value-pool analysis side by side.`;
+  const desc = `${sa} (${A.d.ticker}) vs ${sb} (${B.d.ticker}) stock comparison: AI equity ratings, 12-month price targets, implied upside, valuation multiples and segment-value analysis side by side.`;
   const ha = A.d.headline || {}, hb = B.d.headline || {};
   const { html: faqs, faqs: faqList } = faqHtml(A, B);
-  const intro = `Compare ${sa} (${A.d.exchange ? A.d.exchange + ': ' : ''}${A.d.ticker}) and ${sb} (${B.d.exchange ? B.d.exchange + ': ' : ''}${B.d.ticker}) side by side. Both are ${A.d.sector || ''} stocks covered by Valuatum's AI equity research. This comparison puts their recommendations, 12-month price targets, implied upside, valuation multiples and value-pool allocation in one view.`;
+  const intro = `Compare ${sa} (${A.d.exchange ? A.d.exchange + ': ' : ''}${A.d.ticker}) and ${sb} (${B.d.exchange ? B.d.exchange + ': ' : ''}${B.d.ticker}) side by side. Both are ${A.d.sector || ''} stocks covered by Valuatum's AI equity research. This comparison puts their recommendations, 12-month price targets, implied upside, valuation multiples and segment-value allocation in one view.`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -285,9 +285,9 @@ ${navHtml()}
           ${comparisonTable(A, B)}
         </section>
 
-        <section class="report-full-section" id="value-pools">
-          <h2>Value pool comparison</h2>
-          <p>How each company's enterprise value is allocated across its businesses, from Valuatum's <a href="/methodology.html">value pool analysis</a>.</p>
+        <section class="report-full-section" id="segment-values">
+          <h2>Value driver comparison</h2>
+          <p>How each company's enterprise value is allocated across its businesses, from Valuatum's <a href="/methodology.html">segment value analysis</a>.</p>
           <div class="vs-grid">
             <div><h3 style="margin-top:0;">${esc(sa)}</h3>${poolBars(A.d.valuePools)}</div>
             <div><h3 style="margin-top:0;">${esc(sb)}</h3>${poolBars(B.d.valuePools)}</div>
@@ -310,7 +310,7 @@ ${navHtml()}
 
         <section class="report-full-section" id="sources">
           <h2>Methodology</h2>
-          <p>Ratings, price targets and value pools are from Valuatum's AI equity research framework — a structured enterprise-value and value-pool methodology with reverse valuation, built on 25+ years of equity research practice. See the <a href="/methodology.html">methodology</a>.</p>
+          <p>Ratings, price targets and value drivers are from Valuatum's AI equity research framework — a structured enterprise-value and segment value methodology with reverse valuation, built on 25+ years of equity research practice. See the <a href="/methodology.html">methodology</a>.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> AI-generated research for informational purposes only. Not investment advice. Valuatum Oy, Helsinki, Finland.</p>
           </div>
@@ -330,7 +330,7 @@ ${footerHtml()}
 function renderHub(items) {
   const url = `${SITE}/comparisons.html`;
   const title = `Stock Comparisons — AI Equity Ratings & Price Targets Side by Side | Valuatum`;
-  const desc = `Compare listed companies side by side: AI equity recommendations, 12-month price targets, valuation multiples and value-pool analysis. Free head-to-head stock comparisons from Valuatum.`;
+  const desc = `Compare listed companies side by side: AI equity recommendations, 12-month price targets, valuation multiples and segment-value analysis. Free head-to-head stock comparisons from Valuatum.`;
   const cards = items.map(it => `
           <a href="/compare/${it.slug}.html" style="display:block; text-decoration:none; border:1px solid var(--color-border); border-radius:var(--r-lg); padding:1.25rem 1.5rem; background:#fff;">
             <div style="font-size:var(--text-xs); text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-steel); margin-bottom:0.35rem;">${esc(it.sector || 'Stock comparison')}</div>
@@ -386,7 +386,7 @@ ${navHtml()}
           <span>Stock comparisons</span>
         </nav>
         <h1 class="company-name" style="margin:0;">Stock comparisons</h1>
-        <p style="color:rgba(255,255,255,0.8); font-weight:300; margin-top:0.75rem; max-width:640px;">Free head-to-head comparisons of AI equity ratings, 12-month price targets, valuation multiples and value pools.</p>
+        <p style="color:rgba(255,255,255,0.8); font-weight:300; margin-top:0.75rem; max-width:640px;">Free head-to-head comparisons of AI equity ratings, 12-month price targets, valuation multiples and value drivers.</p>
       </div>
     </section>
 

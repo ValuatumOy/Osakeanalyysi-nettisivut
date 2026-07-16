@@ -55,7 +55,7 @@ function readyReportLineItem(report, pricing) {
       currency: pricing.currency || 'eur',
       product_data: {
         name: `AI Equity Report - ${report.companyName}`,
-        description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
+        description: `${report.ticker} - Full PDF with segment value analysis, reverse valuation, risks & financials.`,
       },
       unit_amount: pricing.unitAmount,
     },
