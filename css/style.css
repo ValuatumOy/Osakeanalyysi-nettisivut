@@ -1558,6 +1558,25 @@ body::before {
   font-weight: 500;
   color: rgba(255,255,255,0.55);
 }
+.company-meta-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--r-pill);
+  color: var(--green-light);
+  background: rgba(255,255,255,0.06);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.company-meta-cta:hover {
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(116, 230, 185, 0.55);
+  color: var(--white);
+}
 .company-meta-sep {
   width: 1px; height: 12px;
   background: rgba(255,255,255,0.2);
