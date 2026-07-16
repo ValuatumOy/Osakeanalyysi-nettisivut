@@ -80,8 +80,10 @@
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
     .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
+    .report-full-content.coverage-cols.no-ready #generate{break-before:column;-webkit-column-break-before:always;}
     @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
     @media(max-width:960px){.report-full-content.coverage-cols #ready-report{break-before:auto;-webkit-column-break-before:auto;}}
+    @media(max-width:960px){.report-full-content.coverage-cols.no-ready #generate{break-before:auto;-webkit-column-break-before:auto;}}
   </style>
 </head>
 <body>
@@ -123,7 +125,7 @@
     </section>
 
     <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content coverage-cols">
+      <div class="report-full-content coverage-cols no-ready">
         <section class="report-full-section" id="overview">
           <h2>UPM (UPM.HE) overview</h2>
           <p>UPM (UPM.HE) stock analysis and AI equity research. For the latest completed financial year, 2025, UPM reported revenue of EUR 9,656m and operating profit of EUR 757m; the year-end share price was 24.79 EUR and market capitalisation was EUR 13,103m. UPM does not yet have a published ready AI equity report. Generate a fresh report with the latest available data for the full valuation, value-pool analysis, reverse valuation, financial forecasts, risks and catalysts.</p>

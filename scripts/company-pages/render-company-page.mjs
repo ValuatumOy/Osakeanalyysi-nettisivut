@@ -85,8 +85,10 @@ ${jsonLdText}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
     .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
+    .report-full-content.coverage-cols.no-ready #generate{break-before:column;-webkit-column-break-before:always;}
     @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
     @media(max-width:960px){.report-full-content.coverage-cols #ready-report{break-before:auto;-webkit-column-break-before:auto;}}
+    @media(max-width:960px){.report-full-content.coverage-cols.no-ready #generate{break-before:auto;-webkit-column-break-before:auto;}}
   </style>
 </head>
 <body>
@@ -118,7 +120,7 @@ ${navHtml()}
     </section>
 
     <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content coverage-cols">
+      <div class="report-full-content coverage-cols${readyReport ? '' : ' no-ready'}">
         <section class="report-full-section" id="overview">
           <h2>${esc(name)} (${esc(company.ticker)}) overview</h2>
           <p>${esc(companyOverview(company, name, readyReport))}</p>
