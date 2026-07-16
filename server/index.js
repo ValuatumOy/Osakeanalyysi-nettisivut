@@ -147,8 +147,8 @@ app.get('/api/reports/:reportId', (req, res) => {
 
 app.get('/api/pricing', async (_, res) => {
   try {
-    res.set('Cache-Control', 'public, max-age=300');
-    res.json(await getPublicPricing(stripeClient()));
+    res.set('Cache-Control', 'no-store, max-age=0');
+    res.json(await getPublicPricing(stripeClient(), { bypassCache: true }));
   } catch (err) {
     console.error('pricing:', err.message);
     res.status(500).json({ error: 'Could not load pricing' });
@@ -216,7 +216,7 @@ app.post('/api/create-checkout', async (req, res) => {
     }
 
     const stripe = stripeClient();
-    const pricing = await getStripePricing(stripe, 'ready');
+    const pricing = await getStripePricing(stripe, 'ready', { bypassCache: true });
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [readyReportLineItem(report, pricing)],
@@ -246,7 +246,7 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
 
   try {
     const stripe = stripeClient();
-    const pricing = await getStripePricing(stripe, 'fresh');
+    const pricing = await getStripePricing(stripe, 'fresh', { bypassCache: true });
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [freshReportLineItem(company, ticker, pricing)],

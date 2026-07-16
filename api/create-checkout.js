@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Report is free' });
     }
 
-    const pricing = await getStripePricing(stripe, 'ready');
+    const pricing = await getStripePricing(stripe, 'ready', { bypassCache: true });
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [readyReportLineItem(report, pricing)],

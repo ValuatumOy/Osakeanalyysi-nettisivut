@@ -21,23 +21,25 @@ const PRICE_CONFIG = {
 
 const cache = new Map();
 
-async function getStripePricing(stripe, kind) {
+async function getStripePricing(stripe, kind, options = {}) {
   const config = PRICE_CONFIG[kind];
   if (!config) throw new Error(`Unknown Stripe price kind: ${kind}`);
 
   const cacheKey = `${kind}:${process.env[config.productEnv] || config.defaultProductId}:${process.env[config.priceEnv] || config.defaultPriceId}`;
   const cached = cache.get(cacheKey);
-  if (cached && cached.expiresAt > Date.now()) return cached.value;
+  if (!options.bypassCache && cached && cached.expiresAt > Date.now()) return cached.value;
 
   const value = await resolveStripePricing(stripe, kind, config);
-  cache.set(cacheKey, { value, expiresAt: Date.now() + CACHE_TTL_MS });
+  if (!options.bypassCache) {
+    cache.set(cacheKey, { value, expiresAt: Date.now() + CACHE_TTL_MS });
+  }
   return value;
 }
 
-async function getPublicPricing(stripe) {
+async function getPublicPricing(stripe, options = {}) {
   const [ready, fresh] = await Promise.all([
-    getStripePricing(stripe, 'ready'),
-    getStripePricing(stripe, 'fresh'),
+    getStripePricing(stripe, 'ready', options),
+    getStripePricing(stripe, 'fresh', options),
   ]);
   return {
     ready: publicPrice(ready),

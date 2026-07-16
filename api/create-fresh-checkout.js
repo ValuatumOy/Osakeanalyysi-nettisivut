@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
-    const pricing = await getStripePricing(stripe, 'fresh');
+    const pricing = await getStripePricing(stripe, 'fresh', { bypassCache: true });
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [freshReportLineItem(company, ticker, pricing)],

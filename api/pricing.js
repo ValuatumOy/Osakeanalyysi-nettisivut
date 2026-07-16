@@ -6,8 +6,8 @@ module.exports = async (req, res) => {
 
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=1800');
-    res.json(await getPublicPricing(stripe));
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
+    res.json(await getPublicPricing(stripe, { bypassCache: true }));
   } catch (err) {
     console.error('pricing:', err.message);
     res.status(500).json({ error: 'Could not load pricing' });
