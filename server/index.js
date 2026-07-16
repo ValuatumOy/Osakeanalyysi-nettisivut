@@ -13,13 +13,10 @@ const orders = require('./orders');
 const reconciler = require('./reconciler');
 const reaper = require('./reaper');
 const { searchCompanies } = require('./search');
+const { getPublicPricing, getStripePricing } = require('./stripe-pricing');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const READY_REPORT_PRICE_CENTS = 2000;
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '5000', 10);
-const DEFAULT_READY_REPORT_PRICE_ID = 'price_1TtPVO2FVkKDgcuUAOQ8uvIa';
-const DEFAULT_FRESH_REPORT_PRICE_ID = 'price_1TtPUr2FVkKDgcuUBSFqewde';
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
 app.use(cors({
@@ -48,48 +45,40 @@ function stripeClient() {
   return new Stripe(process.env.STRIPE_SECRET_KEY);
 }
 
-function readyReportLineItem(report) {
-  const priceId = stripePriceId(process.env.STRIPE_READY_REPORT_PRICE_ID, DEFAULT_READY_REPORT_PRICE_ID);
-  if (priceId) {
-    return { price: priceId, quantity: 1 };
+function readyReportLineItem(report, pricing) {
+  if (pricing.priceId) {
+    return { price: pricing.priceId, quantity: 1 };
   }
 
   return {
     price_data: {
-      currency: 'eur',
+      currency: pricing.currency || 'eur',
       product_data: {
         name: `AI Equity Report - ${report.companyName}`,
         description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
       },
-      unit_amount: READY_REPORT_PRICE_CENTS,
+      unit_amount: pricing.unitAmount,
     },
     quantity: 1,
   };
 }
 
-function freshReportLineItem(company, ticker) {
-  const priceId = stripePriceId(process.env.STRIPE_FRESH_REPORT_PRICE_ID, DEFAULT_FRESH_REPORT_PRICE_ID);
-  if (priceId) {
-    return { price: priceId, quantity: 1 };
+function freshReportLineItem(company, ticker, pricing) {
+  if (pricing.priceId) {
+    return { price: pricing.priceId, quantity: 1 };
   }
 
   return {
     price_data: {
-      currency: 'eur',
+      currency: pricing.currency || 'eur',
       product_data: {
         name: `Fresh AI Equity Report - ${company}`,
         description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
       },
-      unit_amount: FRESH_REPORT_PRICE_CENTS,
+      unit_amount: pricing.unitAmount,
     },
     quantity: 1,
   };
-}
-
-function stripePriceId(value, fallback) {
-  const priceId = String(value || '').trim();
-  if (/^price_[A-Za-z0-9]+$/.test(priceId)) return priceId;
-  return fallback;
 }
 
 function publicReportPayload(report) {
@@ -156,6 +145,16 @@ app.get('/api/reports/:reportId', (req, res) => {
   }
 });
 
+app.get('/api/pricing', async (_, res) => {
+  try {
+    res.set('Cache-Control', 'public, max-age=300');
+    res.json(await getPublicPricing(stripeClient()));
+  } catch (err) {
+    console.error('pricing:', err.message);
+    res.status(500).json({ error: 'Could not load pricing' });
+  }
+});
+
 // Record a paid purchase in the catalog cooldown ledger, and — for a fresh
 // order — enqueue it as a NEW row in the generation pipeline so the reconciler
 // (Task D) can fulfil it. Idempotent on the Stripe session id (orders.create
@@ -216,16 +215,18 @@ app.post('/api/create-checkout', async (req, res) => {
       return res.status(400).json({ error: 'Report is free' });
     }
 
-    const session = await stripeClient().checkout.sessions.create({
+    const stripe = stripeClient();
+    const pricing = await getStripePricing(stripe, 'ready');
+    const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [readyReportLineItem(report)],
+      line_items: [readyReportLineItem(report, pricing)],
       mode: 'payment',
       allow_promotion_codes: true,
       metadata: {
         reportId: report.id,
         reportName: report.companyName,
         ticker: report.ticker || '',
-        price: String(report.price),
+        price: String(pricing.unitAmount / 100),
       },
       success_url: `${process.env.SITE_URL}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.SITE_URL}/reports.html`,
@@ -244,9 +245,11 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
   if (!company) return res.status(400).json({ error: 'Company name required' });
 
   try {
-    const session = await stripeClient().checkout.sessions.create({
+    const stripe = stripeClient();
+    const pricing = await getStripePricing(stripe, 'fresh');
+    const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [freshReportLineItem(company, ticker)],
+      line_items: [freshReportLineItem(company, ticker, pricing)],
       mode: 'payment',
       allow_promotion_codes: true,
       customer_email: email || undefined,

@@ -222,6 +222,7 @@
   <script>
   (function() {
     const READY_PRICE = 20;
+    let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
     let searchQuery = '';
@@ -328,7 +329,7 @@
     function card(report) {
       const tags = (report.tags || []).slice(0, 4).map(function(tag) { return '<span class="rc-tag">' + escapeHTML(tag) + '</span>'; }).join('');
       const badge = report.isFree ? 'Free report' : 'Ready report';
-      const price = report.isFree ? 'Free' : '€20';
+      const price = report.isFree ? 'Free' : readyPriceLabel;
       const priceNote = report.isFree ? 'Instant PDF download' : 'Existing PDF report';
       const primaryCta = report.isFree
         ? '<a class="btn btn-primary" href="/' + escapeHTML(report.pdfUrl || '') + '" target="_blank" rel="noopener" download>Download free PDF</a>'
@@ -539,6 +540,14 @@
       render();
       bindSearch();
       bindControls();
+      if (window.SITE_PUBLIC_PRICING_PROMISE) {
+        window.SITE_PUBLIC_PRICING_PROMISE.then(function(pricing) {
+          if (!pricing || !pricing.ready) return;
+          readyPriceLabel = pricing.ready.shortLabel || pricing.ready.label || readyPriceLabel;
+          render();
+          if (window.applyStripeBackedPricing) window.applyStripeBackedPricing(pricing);
+        });
+      }
     });
   })();
   </script>

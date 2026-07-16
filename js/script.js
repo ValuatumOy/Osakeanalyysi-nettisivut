@@ -539,3 +539,54 @@ function trackEvent(event, props = {}) {
     });
   });
 })();
+
+// Keep visible sales-page prices in sync with Stripe product default prices.
+(function initStripeBackedPublicPricing() {
+  var fallbackPricing = {
+    ready: { label: '\u20ac20.00', shortLabel: '\u20ac20' },
+    fresh: { label: '\u20ac50.00', shortLabel: '\u20ac50' },
+  };
+  window.SITE_PUBLIC_PRICING = fallbackPricing;
+
+  function replacePriceText(text, pricing) {
+    return String(text || '')
+      .replace(/\u20ac20\.00/g, pricing.ready.label)
+      .replace(/\u20ac20(?![\d.])/g, pricing.ready.shortLabel)
+      .replace(/\u20ac50\.00/g, pricing.fresh.label)
+      .replace(/\u20ac50(?![\d.])/g, pricing.fresh.shortLabel);
+  }
+
+  function applyPricing(pricing) {
+    if (!pricing || !pricing.ready || !pricing.fresh) return;
+    window.SITE_PUBLIC_PRICING = pricing;
+
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentElement;
+        if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return /(\u20ac20|\u20ac50)/.test(node.nodeValue)
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_SKIP;
+      },
+    });
+
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      node.nodeValue = replacePriceText(node.nodeValue, pricing);
+    });
+
+    window.dispatchEvent(new CustomEvent('site:pricing', { detail: pricing }));
+  }
+
+  window.applyStripeBackedPricing = applyPricing;
+  window.SITE_PUBLIC_PRICING_PROMISE = fetch('/api/pricing')
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (pricing) {
+      if (pricing) applyPricing(pricing);
+      return pricing || fallbackPricing;
+    })
+    .catch(function () { return fallbackPricing; });
+})();

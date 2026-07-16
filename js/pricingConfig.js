@@ -2,7 +2,7 @@
 
 const PRICING_CONFIG = {
   currency: 'EUR',
-  currencySymbol: '€',
+  currencySymbol: '\u20ac',
   launchMode: false,
 
   tiers: [
