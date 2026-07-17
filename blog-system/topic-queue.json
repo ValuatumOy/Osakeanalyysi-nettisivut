@@ -164,8 +164,9 @@
       "role": "support",
       "targetQuery": "amd stock fair value",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Paid report: reveal base-case number, gate scenario detail. Link to AMD vs Intel comparison page."
+      "status": "in-review",
+      "notes": "Drafted 2026-07-17 (Fri full pipeline run) as PR #27 on branch blog/amd-stock-fair-value. Human-queued (oldest status:queued item). Angle: sum-of-the-parts vs the automated-DCF-aggregator SERP (fair-value outputs scatter ~70 to >550 USD with no segment decomposition); our 5 Jun 2026 SELL (413.00 target vs 516.10) rests on Data Center being 87.5% (~750bn) of EV yet only 67% of forward EBIT at ~80x, with a >515bn uncovered reverse-valuation premium. External anchor: AMD FY2025 actuals (Data Center 16.6bn +32%, total 34.6bn +34%) via AMD IR. Inbound link added from live reports/advanced-micro-devices-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge.",
+      "prNumber": 27
     },
     {
       "slug": "wartsila-stock-analysis",
