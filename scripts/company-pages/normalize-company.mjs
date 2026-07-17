@@ -45,6 +45,7 @@ export function normalizeCompanyData(company, model) {
     companyCode: String(company.companyCode || model.companyCode || '').trim(),
     ticker: String(company.ticker || '').trim().toUpperCase(),
     industry: String(company.industry || '').trim(),
+    exchange: String(company.exchange || company.market || '').trim(),
     currency: String(model.currency || '').trim().toUpperCase(),
     financialYear,
     metrics,

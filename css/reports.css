@@ -110,6 +110,8 @@
 }
 .rp-autocomplete-item:last-child { border-bottom: 0; }
 .rp-autocomplete-item:hover { background: var(--off-white); }
+.rp-autocomplete-item-fresh { background: rgba(61, 158, 114, 0.055); }
+.rp-autocomplete-item-fresh:hover { background: rgba(61, 158, 114, 0.11); }
 .rp-autocomplete-ticker {
   font-family: "Courier New", monospace;
   font-size: var(--text-xs);

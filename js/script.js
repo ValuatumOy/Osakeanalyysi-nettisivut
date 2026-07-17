@@ -52,22 +52,60 @@
 })();
 
 // ── Search functionality ─────────────────────────────
+(function exposeWisdomCompanySearch() {
+  const endpoint = '/api/search-companies';
+  window.searchWisdomCompanies = async function searchWisdomCompanies(rawQuery) {
+    const query = String(rawQuery || '').trim();
+    if (!query) return [];
+    const response = await fetch(endpoint + '?q=' + encodeURIComponent(query));
+    if (!response.ok) throw new Error('Company search returned ' + response.status);
+    const data = await response.json();
+    return Array.isArray(data.results) ? data.results : [];
+  };
+})();
+
 (function initSearch() {
   const inputs = document.querySelectorAll('.search-input');
   inputs.forEach(input => {
     const wrap = input.closest('.search-field-wrap') || input.parentElement;
     const autocomplete = wrap?.parentElement?.querySelector('.search-autocomplete');
+    let wisdomMatches = [];
+    let debounceTimer = null;
+    let requestSequence = 0;
 
     if (autocomplete) {
       input.addEventListener('input', () => {
         const q = input.value.trim().toLowerCase();
-        if (q.length < 1) { autocomplete.classList.remove('open'); return; }
-        const matches = searchableCompanyPages().filter(c =>
+        const sequence = ++requestSequence;
+        wisdomMatches = [];
+        if (q.length < 1) {
+          autocomplete.innerHTML = '';
+          autocomplete.classList.remove('open');
+          return;
+        }
+        const localMatches = searchableCompanyPages().filter(c =>
           c.ticker.toLowerCase().includes(q) ||
           c.name.toLowerCase().includes(q)
         ).slice(0, 6);
-        renderAutocomplete(autocomplete, matches);
-        autocomplete.classList.toggle('open', matches.length > 0);
+        renderAutocomplete(autocomplete, localMatches, wisdomMatches);
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(async () => {
+          try {
+            const results = await window.searchWisdomCompanies(input.value);
+            if (sequence !== requestSequence) return;
+            wisdomMatches = results;
+          } catch {
+            if (sequence !== requestSequence) return;
+            wisdomMatches = [];
+          }
+          const currentQuery = input.value.trim().toLowerCase();
+          const currentLocalMatches = searchableCompanyPages().filter(c =>
+            c.ticker.toLowerCase().includes(currentQuery) ||
+            c.name.toLowerCase().includes(currentQuery)
+          ).slice(0, 6);
+          renderAutocomplete(autocomplete, currentLocalMatches, wisdomMatches);
+        }, 250);
       });
 
       input.addEventListener('keydown', e => {
@@ -87,7 +125,16 @@
         const item = e.target.closest('.autocomplete-item');
         if (!item) return;
         e.preventDefault();
-        openCompanyPage(item.dataset.url);
+        if (item.dataset.url) {
+          openCompanyPage(item.dataset.url);
+          return;
+        }
+        if (item.dataset.freshTicker) {
+          openFreshReportCompany({
+            companyName: item.dataset.freshName,
+            ticker: item.dataset.freshTicker,
+          });
+        }
       });
     }
   });
@@ -101,14 +148,27 @@
   });
 })();
 
-function renderAutocomplete(container, companies) {
-  container.innerHTML = companies.map(c => `
+function renderAutocomplete(container, companies, wisdomCompanies = []) {
+  const localTickers = new Set(companies.map(c => String(c.ticker || '').toLowerCase()));
+  const freshCompanies = wisdomCompanies
+    .filter(c => !localTickers.has(String(c.ticker || '').toLowerCase()))
+    .slice(0, Math.max(0, 6 - companies.length));
+  const localHtml = companies.map(c => `
     <button class="autocomplete-item" type="button" data-url="${escapeAttr(c.url)}" role="option">
       <span class="autocomplete-ticker">${escapeHtml(c.ticker)}</span>
       <span class="autocomplete-name">${escapeHtml(c.name)}</span>
-      <span class="autocomplete-exchange">${escapeHtml(c.exchange)}</span>
+      <span class="autocomplete-exchange">Open company page</span>
     </button>
   `).join('');
+  const freshHtml = freshCompanies.map(c => `
+    <button class="autocomplete-item autocomplete-item-fresh" type="button" data-fresh-name="${escapeAttr(c.companyName)}" data-fresh-ticker="${escapeAttr(c.ticker)}" role="option">
+      <span class="autocomplete-ticker">${escapeHtml(c.ticker)}</span>
+      <span class="autocomplete-name">${escapeHtml(c.companyName)}</span>
+      <span class="autocomplete-exchange">Generate fresh report</span>
+    </button>
+  `).join('');
+  container.innerHTML = localHtml + freshHtml;
+  container.classList.toggle('open', companies.length + freshCompanies.length > 0);
 }
 
 function searchableCompanyPages() {
@@ -168,6 +228,15 @@ function handleSearch(query) {
 function openCompanyPage(url) {
   if (!url) return;
   window.location.href = url;
+}
+
+function openFreshReportCompany(company) {
+  const params = new URLSearchParams({
+    search: company.companyName || company.ticker,
+    freshTicker: company.ticker,
+    source: 'homepage',
+  });
+  window.location.href = `reports.html?${params.toString()}#order-fresh`;
 }
 
 function escapeAttr(value) {

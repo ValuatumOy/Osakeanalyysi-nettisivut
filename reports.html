@@ -274,7 +274,6 @@
   (function() {
     const READY_PRICE = 20;
     const PAGE_SIZE = 8;
-    const COMPANY_SEARCH_API = 'https://files.valuatum.com/api/search-companies';
     let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
@@ -286,6 +285,9 @@
     let sortMode = 'newest';
     let isRestoringUrlState = false;
     let freshCompanyPicker = null;
+    let wisdomSearchResults = [];
+    let wisdomSearchTimer = null;
+    let wisdomSearchSequence = 0;
 
     const byTicker = new Map();
     const byUrl = new Map();
@@ -472,14 +474,42 @@
       const q = searchQuery.toLowerCase();
       if (!q) { menu.classList.remove('open'); menu.innerHTML = ''; return; }
       const matches = matchingCompanies(searchQuery).slice(0, 8);
-      menu.innerHTML = matches.map(function(company) {
+      const localTickers = new Set(matches.map(function(company) { return normalize(company.ticker); }));
+      const wisdomMatches = wisdomSearchResults.filter(function(company) {
+        return !localTickers.has(normalize(company.ticker));
+      }).slice(0, Math.max(0, 8 - matches.length));
+      const pageResults = matches.map(function(company) {
         return '<button class="rp-autocomplete-item" type="button" data-url="/' + escapeHTML(company.url) + '">' +
           '<span class="rp-autocomplete-ticker">' + escapeHTML(company.ticker) + '</span>' +
           '<span class="rp-autocomplete-name">' + escapeHTML(company.name) + '</span>' +
-          '<span class="rp-autocomplete-exchange">' + escapeHTML(company.exchange) + '</span>' +
+          '<span class="rp-autocomplete-exchange">Open company page</span>' +
         '</button>';
       }).join('');
-      menu.classList.toggle('open', matches.length > 0);
+      const freshResults = wisdomMatches.map(function(company) {
+        return '<button class="rp-autocomplete-item rp-autocomplete-item-fresh" type="button" data-fresh-name="' + escapeHTML(company.companyName) + '" data-fresh-ticker="' + escapeHTML(company.ticker) + '" data-fresh-industry="' + escapeHTML(company.industry || '') + '">' +
+          '<span class="rp-autocomplete-ticker">' + escapeHTML(company.ticker) + '</span>' +
+          '<span class="rp-autocomplete-name">' + escapeHTML(company.companyName) + '</span>' +
+          '<span class="rp-autocomplete-exchange">Generate fresh report</span>' +
+        '</button>';
+      }).join('');
+      menu.innerHTML = pageResults + freshResults;
+      menu.classList.toggle('open', matches.length + wisdomMatches.length > 0);
+    }
+    async function searchWisdomForHero(rawQuery) {
+      const query = String(rawQuery || '').trim();
+      const sequence = ++wisdomSearchSequence;
+      wisdomSearchResults = [];
+      renderAutocomplete();
+      if (!query || typeof window.searchWisdomCompanies !== 'function') return;
+      try {
+        const results = await window.searchWisdomCompanies(query);
+        if (sequence !== wisdomSearchSequence || normalize(query) !== normalize(searchQuery)) return;
+        wisdomSearchResults = results;
+      } catch (error) {
+        if (sequence !== wisdomSearchSequence) return;
+        wisdomSearchResults = [];
+      }
+      renderAutocomplete();
     }
     function createFreshCompanyPicker() {
       const input = document.getElementById('freshCompany');
@@ -545,7 +575,7 @@
         });
         options[activeIndex].scrollIntoView({ block: 'nearest' });
       }
-      async function runSearch(rawQuery) {
+      async function runSearch(rawQuery, preferredTicker) {
         const query = String(rawQuery || '').trim();
         input.value = query;
         clearSelection();
@@ -560,11 +590,16 @@
         const sequence = ++requestSequence;
         setHint('Searching Wisdom...');
         try {
-          const response = await fetch(COMPANY_SEARCH_API + '?q=' + encodeURIComponent(query));
+          const companies = await window.searchWisdomCompanies(query);
           if (sequence !== requestSequence) return;
-          if (!response.ok) throw new Error('Company search returned ' + response.status);
-          const data = await response.json();
-          const companies = Array.isArray(data.results) ? data.results : [];
+          const preferred = companies.find(function(company) {
+            return normalize(company.ticker) === normalize(preferredTicker);
+          });
+          if (preferred) {
+            chooseCompany(preferred);
+            setHint('Selected from Wisdom coverage.');
+            return;
+          }
           renderCompanies(companies);
           setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found. You can request coverage below.');
         } catch (error) {
@@ -608,6 +643,7 @@
       return {
         getSelected: function() { return selected; },
         search: runSearch,
+        select: chooseCompany,
         reset: function() {
           input.value = '';
           clearSelection();
@@ -616,9 +652,9 @@
         },
       };
     }
-    function openFreshOrder(query) {
+    function openFreshOrder(query, ticker) {
       const section = document.getElementById('order-fresh');
-      if (query && freshCompanyPicker) freshCompanyPicker.search(query);
+      if (query && freshCompanyPicker) freshCompanyPicker.search(query, ticker);
       if (window.history && window.history.replaceState) {
         const nextUrl = window.location.pathname + window.location.search + '#order-fresh';
         window.history.replaceState({}, '', nextUrl);
@@ -706,15 +742,33 @@
         searchQuery = input.value.trim();
         currentPage = 1;
         clear.style.display = searchQuery ? 'inline-flex' : 'none';
+        clearTimeout(wisdomSearchTimer);
+        wisdomSearchResults = [];
         renderAutocomplete();
         render();
         syncUrlState('replace');
+        if (searchQuery) {
+          wisdomSearchTimer = setTimeout(function() {
+            searchWisdomForHero(searchQuery);
+          }, 250);
+        } else {
+          wisdomSearchSequence += 1;
+        }
       });
       input.addEventListener('keydown', function(e) {
         if (e.key !== 'Enter') return;
-        const first = menu.querySelector('[data-url]');
-        if (first) {
+        const first = menu.querySelector('[data-url], [data-fresh-ticker]');
+        if (first && first.hasAttribute('data-url')) {
           window.location.href = first.getAttribute('data-url');
+        } else if (first && first.hasAttribute('data-fresh-ticker')) {
+          e.preventDefault();
+          const company = {
+            companyName: first.getAttribute('data-fresh-name'),
+            ticker: first.getAttribute('data-fresh-ticker'),
+            industry: first.getAttribute('data-fresh-industry') || '',
+          };
+          if (freshCompanyPicker) freshCompanyPicker.select(company);
+          openFreshOrder();
         } else if (searchQuery) {
           e.preventDefault();
           openFreshOrder(searchQuery);
@@ -723,6 +777,9 @@
       clear.addEventListener('click', function() {
         input.value = '';
         searchQuery = '';
+        wisdomSearchResults = [];
+        wisdomSearchSequence += 1;
+        clearTimeout(wisdomSearchTimer);
         currentPage = 1;
         clear.style.display = 'none';
         menu.classList.remove('open');
@@ -731,8 +788,20 @@
         input.focus();
       });
       menu.addEventListener('pointerdown', function(e) {
-        const item = e.target.closest('[data-url]');
-        if (item) window.location.href = item.getAttribute('data-url');
+        const item = e.target.closest('[data-url], [data-fresh-ticker]');
+        if (!item) return;
+        e.preventDefault();
+        if (item.hasAttribute('data-url')) {
+          window.location.href = item.getAttribute('data-url');
+          return;
+        }
+        const company = {
+          companyName: item.getAttribute('data-fresh-name'),
+          ticker: item.getAttribute('data-fresh-ticker'),
+          industry: item.getAttribute('data-fresh-industry') || '',
+        };
+        if (freshCompanyPicker) freshCompanyPicker.select(company);
+        openFreshOrder();
       });
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.reports-hero-search')) menu.classList.remove('open');
@@ -914,13 +983,15 @@
       freshCompanyPicker = createFreshCompanyPicker();
       restoreUrlState();
       const initialSearch = searchQuery;
+      const initialFreshTicker = new URLSearchParams(window.location.search).get('freshTicker') || '';
       if (initialSearch) {
         const coverageCompany = document.getElementById('coverageCompany');
         if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
-        if (window.location.hash === '#order-fresh' && freshCompanyPicker) freshCompanyPicker.search(initialSearch);
+        if (window.location.hash === '#order-fresh' && freshCompanyPicker) freshCompanyPicker.search(initialSearch, initialFreshTicker);
       }
       render();
       bindSearch();
+      if (initialSearch) searchWisdomForHero(initialSearch);
       bindControls();
       window.addEventListener('popstate', function() {
         restoreUrlState();

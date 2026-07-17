@@ -5,10 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { WisdomClient, normalizeTicker } from './company-pages/wisdom-client.mjs';
 import { normalizeCompanyData, selectPrimaryModel } from './company-pages/normalize-company.mjs';
 import { getCompanyProfile } from './company-pages/profile-provider.mjs';
+import { publishCompanyDiscovery } from './company-pages/publish-company-page.mjs';
 import { pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'js', 'reportsData.js');
+const DEFAULT_COMPANY_CATALOG_PATH = path.join(ROOT, 'js', 'companyPagesData.js');
+const DEFAULT_SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 
 export async function generateCompanyPages(options) {
   const outputDir = options.outputDir || path.join(ROOT, 'reports');
@@ -56,6 +59,16 @@ export async function generateCompanyPages(options) {
       await writeFileAtomically(outputPath, html);
       options.onProgress?.(`wrote  ${path.relative(ROOT, outputPath)} (${company.profileSource})`);
     }
+    if (options.updateDiscovery !== false) {
+      await publishCompanyDiscovery({
+        companies,
+        catalogPath: options.companyCatalogPath || DEFAULT_COMPANY_CATALOG_PATH,
+        sitemapPath: options.sitemapPath || DEFAULT_SITEMAP_PATH,
+        generatedOn: options.generatedOn || new Date(),
+        siteOrigin: options.siteOrigin,
+      });
+      options.onProgress?.('updated company catalog and sitemap');
+    }
   }
 
   return { companies, failures };
@@ -67,6 +80,7 @@ function parseArgs(argv) {
     const arg = argv[index];
     if (arg === '--refresh-ai') options.refreshAi = true;
     else if (arg === '--skip-ai') options.skipAi = true;
+    else if (arg === '--skip-discovery') options.updateDiscovery = false;
     else if (arg === '--help' || arg === '-h') options.help = true;
     else if (arg === '--model') options.model = requiredOptionValue(argv, ++index, '--model');
     else if (arg.startsWith('--model=')) options.model = arg.slice('--model='.length);
@@ -141,6 +155,7 @@ Options:
   --provider NAME     AI provider (default: AI_PROVIDER or codex)
   --refresh-ai        Regenerate cached company profiles
   --skip-ai           Use cache or Wisdom background without calling AI
+  --skip-discovery    Do not update companyPagesData.js or sitemap.xml
   --output-dir PATH   HTML output directory (default: reports)
   -h, --help          Show this help
 
