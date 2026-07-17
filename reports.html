@@ -129,8 +129,10 @@
           </div>
         </div>
         <div class="catalog-grid" id="catalogGrid" role="list"></div>
-        <div class="catalog-more" id="catalogMore" hidden>
-          <button type="button" class="btn btn-outline-dark" id="catalogShowMore">Show more reports</button>
+        <nav class="catalog-pagination" id="catalogPagination" aria-label="Report catalog pages" hidden>
+          <button type="button" class="btn btn-outline-dark" id="catalogPrevious">Previous</button>
+          <span class="catalog-page-status" id="catalogPageStatus" aria-live="polite"></span>
+          <button type="button" class="btn btn-outline-dark" id="catalogNext">Next</button>
         </div>
         <div class="catalog-empty" id="catalogEmpty">
           <p class="catalog-empty-title" id="catalogEmptyTitle">No ready report matches your search.</p>
@@ -155,11 +157,13 @@
           </div>
           <div class="coverage-form-card">
             <form class="coverage-form" id="coverageRequestForm">
-              <input class="coverage-input" id="coverageCompany" type="text" placeholder="Company name *" required>
-              <input class="coverage-input" id="coverageTicker" type="text" placeholder="Ticker / exchange, e.g. AAPL, NOVO-B.CO">
-              <input class="coverage-input" id="coverageEmail" type="email" placeholder="Your email *" required>
-              <textarea class="coverage-input" id="coverageNotes" placeholder="Optional notes: company website, market, urgency, report purpose"></textarea>
-              <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center;">Send coverage request</button>
+              <input class="coverage-input" id="coverageCompany" name="company" type="text" placeholder="Company name *" autocomplete="organization" required>
+              <input class="coverage-input" id="coverageTicker" name="ticker" type="text" placeholder="Ticker / exchange, e.g. AAPL, NOVO-B.CO" autocomplete="off">
+              <input class="coverage-input" id="coverageEmail" name="email" type="email" placeholder="Your email *" autocomplete="email" required>
+              <textarea class="coverage-input" id="coverageNotes" name="notes" placeholder="Optional notes: company website, market, urgency, report purpose"></textarea>
+              <input class="coverage-honeypot" id="coverageWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit" class="btn btn-primary btn-lg" id="coverageSubmit" style="justify-content:center;">Send coverage request</button>
+              <p class="coverage-form-status" id="coverageFormStatus" role="status" aria-live="polite"></p>
             </form>
             <p class="coverage-note">This is not an instant paid fresh-report order. We first verify coverage and create the company page/report purchase path.</p>
           </div>
@@ -229,12 +233,13 @@
     let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
-    let visibleLimit = PAGE_SIZE;
+    let currentPage = 1;
     let searchQuery = '';
     let filterAccess = '';
     let filterMarket = '';
     let filterSector = '';
     let sortMode = 'newest';
+    let isRestoringUrlState = false;
 
     const byTicker = new Map();
     const byUrl = new Map();
@@ -271,8 +276,11 @@
     function buildReadyReports() {
       const seen = new Set();
       return (window.REPORTS_CATALOG || [])
+        .slice()
+        .sort(function(a, b) { return new Date(b.reportDate || 0) - new Date(a.reportDate || 0); })
         .filter(function(report) {
-          if (report.availability === 'hidden') return false;
+          const publication = report.publicationStatus || (report.availability === 'available' ? 'ready' : report.availability);
+          if (publication && publication !== 'ready') return false;
           if (!['existing', 'free'].includes(report.reportType)) return false;
           if (!pageUrlFor(report)) return false;
           if (!companyFor(report)) return false;
@@ -322,6 +330,24 @@
       });
       return list;
     }
+    function totalPages() {
+      return Math.max(1, Math.ceil(visibleReports.length / PAGE_SIZE));
+    }
+    function syncUrlState(mode) {
+      if (isRestoringUrlState) return;
+      const params = new URLSearchParams();
+      const source = new URLSearchParams(window.location.search).get('source');
+      if (source) params.set('source', source);
+      if (searchQuery) params.set('search', searchQuery);
+      if (filterAccess) params.set('access', filterAccess);
+      if (filterMarket) params.set('market', filterMarket);
+      if (filterSector) params.set('sector', filterSector);
+      if (sortMode !== 'newest') params.set('sort', sortMode);
+      if (currentPage > 1) params.set('page', String(currentPage));
+      const query = params.toString();
+      const nextUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
+      window.history[mode === 'push' ? 'pushState' : 'replaceState']({}, '', nextUrl);
+    }
     function matchingCompanies(query) {
       const q = String(query || '').trim().toLowerCase();
       if (!q) return [];
@@ -350,7 +376,7 @@
         '<div class="rc-actions">' +
           '<div><div class="rc-price">' + price + '</div><div class="rc-price-note">' + priceNote + '</div></div>' +
           primaryCta +
-          '<button class="btn btn-outline-dark" data-generate-company="' + escapeHTML(report.displayName) + '" data-generate-ticker="' + escapeHTML(report.displayTicker) + '">Generate new report</button>' +
+          '<button class="btn btn-outline-dark" data-generate-company="' + escapeHTML(report.displayName) + '" data-generate-ticker="' + escapeHTML(report.displayTicker) + '">Generate fresh report</button>' +
           '<a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/' + escapeHTML(report.pageUrl) + '">Open company page</a>' +
         '</div>' +
       '</article>';
@@ -362,12 +388,20 @@
       const emptySub = document.getElementById('catalogEmptySub');
       const emptyAction = document.getElementById('catalogEmptyAction');
       const count = document.getElementById('catalogCount');
-      const more = document.getElementById('catalogMore');
+      const pagination = document.getElementById('catalogPagination');
       visibleReports = filteredReports();
-      const pageReports = visibleReports.slice(0, visibleLimit);
+      const pages = totalPages();
+      currentPage = Math.min(Math.max(1, currentPage), pages);
+      const pageStart = (currentPage - 1) * PAGE_SIZE;
+      const pageReports = visibleReports.slice(pageStart, pageStart + PAGE_SIZE);
       count.textContent = visibleReports.length + ' ready report' + (visibleReports.length === 1 ? '' : 's');
       grid.innerHTML = pageReports.map(card).join('');
-      if (more) more.hidden = visibleReports.length <= visibleLimit;
+      if (pagination) {
+        pagination.hidden = visibleReports.length <= PAGE_SIZE;
+        document.getElementById('catalogPrevious').disabled = currentPage <= 1;
+        document.getElementById('catalogNext').disabled = currentPage >= pages;
+        document.getElementById('catalogPageStatus').textContent = 'Page ' + currentPage + ' of ' + pages;
+      }
       if (visibleReports.length) {
         empty.style.display = 'none';
       } else {
@@ -466,10 +500,11 @@
       const menu = document.getElementById('rpSearchAutocomplete');
       input.addEventListener('input', function() {
         searchQuery = input.value.trim();
-        visibleLimit = PAGE_SIZE;
+        currentPage = 1;
         clear.style.display = searchQuery ? 'inline-flex' : 'none';
         renderAutocomplete();
         render();
+        syncUrlState('replace');
       });
       input.addEventListener('keydown', function(e) {
         if (e.key !== 'Enter') return;
@@ -479,9 +514,11 @@
       clear.addEventListener('click', function() {
         input.value = '';
         searchQuery = '';
+        currentPage = 1;
         clear.style.display = 'none';
         menu.classList.remove('open');
         render();
+        syncUrlState('push');
         input.focus();
       });
       menu.addEventListener('pointerdown', function(e) {
@@ -531,55 +568,109 @@
           if (type === 'market') filterMarket = value;
           if (type === 'sector') filterSector = value;
           if (type === 'sort') sortMode = value || 'newest';
-          visibleLimit = PAGE_SIZE;
+          currentPage = 1;
           setSelectValue(type, value, label);
           closeSelects();
           render();
+          syncUrlState('push');
         });
       });
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.catalog-select')) closeSelects();
       });
-      const showMore = document.getElementById('catalogShowMore');
-      if (showMore) {
-        showMore.addEventListener('click', function() {
-          visibleLimit += PAGE_SIZE;
-          render();
-        });
-      }
-      document.getElementById('coverageRequestForm').addEventListener('submit', function(e) {
+      document.getElementById('catalogPrevious').addEventListener('click', function() {
+        if (currentPage <= 1) return;
+        currentPage -= 1;
+        render();
+        syncUrlState('push');
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      document.getElementById('catalogNext').addEventListener('click', function() {
+        if (currentPage >= totalPages()) return;
+        currentPage += 1;
+        render();
+        syncUrlState('push');
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      document.getElementById('coverageRequestForm').addEventListener('submit', async function(e) {
         e.preventDefault();
+        const form = e.currentTarget;
+        const submit = document.getElementById('coverageSubmit');
+        const status = document.getElementById('coverageFormStatus');
         const company = document.getElementById('coverageCompany').value.trim();
         const ticker = document.getElementById('coverageTicker').value.trim();
         const email = document.getElementById('coverageEmail').value.trim();
         const notes = document.getElementById('coverageNotes').value.trim();
         if (!company || !email) { showToast('Please fill in company name and email.'); return; }
-        const subject = encodeURIComponent('Coverage request: ' + company + (ticker ? ' / ' + ticker : ''));
-        const body = encodeURIComponent('Company: ' + company + '\nTicker / exchange: ' + ticker + '\nEmail: ' + email + '\n\nNotes:\n' + notes);
-        window.location.href = 'mailto:contact26@valuatum.com?subject=' + subject + '&body=' + body;
+        submit.disabled = true;
+        submit.textContent = 'Sending...';
+        status.textContent = '';
+        try {
+          const response = await fetch('/api/request-coverage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              company: company,
+              ticker: ticker,
+              email: email,
+              notes: notes,
+              website: document.getElementById('coverageWebsite').value,
+              source: new URLSearchParams(window.location.search).get('source') || 'reports',
+              pageUrl: window.location.href,
+            }),
+          });
+          const data = await response.json().catch(function() { return {}; });
+          if (!response.ok) throw new Error(data.error || 'Request could not be sent');
+          status.textContent = 'Thank you. Your coverage request has been sent to Valuatum.';
+          status.classList.remove('is-error');
+          status.classList.add('is-success');
+          if (typeof gtag === 'function') gtag('event', 'coverage_request_submitted', { company: company, ticker: ticker || undefined, source: 'reports' });
+          form.reset();
+        } catch (error) {
+          status.textContent = 'The request could not be sent. Please email contact26@valuatum.com.';
+          status.classList.remove('is-success');
+          status.classList.add('is-error');
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Send coverage request';
+        }
       });
+    }
+    function restoreUrlState() {
+      isRestoringUrlState = true;
+      const params = new URLSearchParams(window.location.search);
+      searchQuery = (params.get('search') || '').trim();
+      filterAccess = ['free', 'paid'].includes(params.get('access')) ? params.get('access') : '';
+      filterMarket = params.get('market') || '';
+      filterSector = params.get('sector') || '';
+      sortMode = ['newest', 'company', 'market'].includes(params.get('sort')) ? params.get('sort') : 'newest';
+      currentPage = Math.max(1, Number.parseInt(params.get('page') || '1', 10) || 1);
+      if (window.location.hash === '#free' && !filterAccess) filterAccess = 'free';
+      const input = document.getElementById('rpSearchInput');
+      input.value = searchQuery;
+      document.getElementById('rpSearchClear').style.display = searchQuery ? 'inline-flex' : 'none';
+      setSelectValue('access', filterAccess, filterAccess === 'free' ? 'Free reports' : filterAccess === 'paid' ? 'Paid reports' : 'All reports');
+      setSelectValue('market', filterMarket, filterMarket || 'All markets');
+      setSelectValue('sector', filterSector, filterSector || 'All sectors');
+      setSelectValue('sort', sortMode, sortMode === 'company' ? 'Company name' : sortMode === 'market' ? 'Market' : 'Newest first');
+      isRestoringUrlState = false;
     }
     document.addEventListener('DOMContentLoaded', function() {
       readyReports = buildReadyReports();
       populateFilters();
-      const params = new URLSearchParams(window.location.search);
-      const initialSearch = params.get('search') || '';
+      restoreUrlState();
+      const initialSearch = searchQuery;
       if (initialSearch) {
-        const input = document.getElementById('rpSearchInput');
-        const clear = document.getElementById('rpSearchClear');
-        searchQuery = initialSearch.trim();
-        if (input) input.value = initialSearch;
-        if (clear) clear.style.display = 'inline-flex';
         const coverageCompany = document.getElementById('coverageCompany');
         if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
-      }
-      if (window.location.hash === '#free') {
-        filterAccess = 'free';
-        setSelectValue('access', 'free', 'Free reports');
       }
       render();
       bindSearch();
       bindControls();
+      window.addEventListener('popstate', function() {
+        restoreUrlState();
+        render();
+      });
       if (window.location.hash === '#coverage-request') {
         setTimeout(function() {
           const target = document.getElementById('coverage-request');

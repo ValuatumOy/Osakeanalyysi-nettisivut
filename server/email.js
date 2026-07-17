@@ -197,4 +197,45 @@ async function sendAdminDeliveryNotice(meta) {
   }, 'admin delivery notice');
 }
 
-module.exports = { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification, sendAdminDeliveryNotice };
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function sendCoverageRequest(meta) {
+  const company = escapeHtml(meta?.company);
+  const ticker = escapeHtml(meta?.ticker || '—');
+  const requester = escapeHtml(meta?.email);
+  const notes = escapeHtml(meta?.notes || '—').replace(/\r?\n/g, '<br>');
+  const source = escapeHtml(meta?.source || 'reports');
+  const pageUrl = escapeHtml(meta?.pageUrl || '—');
+
+  return sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Coverage request: ${String(meta?.company || 'unknown').slice(0, 120)}`,
+    html: `
+      <p><strong>A new company coverage request was submitted on AI Equity Reports.</strong></p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Company</td><td><strong>${company}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker / exchange</td><td>${ticker}</td></tr>
+        <tr><td style="color:#666;">Requester</td><td><a href="mailto:${requester}">${requester}</a></td></tr>
+        <tr><td style="color:#666;">Notes</td><td>${notes}</td></tr>
+        <tr><td style="color:#666;">Source</td><td>${source}</td></tr>
+        <tr><td style="color:#666;">Page</td><td>${pageUrl}</td></tr>
+      </table>
+    `,
+  }, 'coverage request');
+}
+
+module.exports = {
+  sendReportEmail,
+  sendFreshConfirmEmail,
+  sendAdminNotification,
+  sendAdminDeliveryNotice,
+  sendCoverageRequest,
+};

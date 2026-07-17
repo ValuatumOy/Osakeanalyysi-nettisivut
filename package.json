@@ -7,8 +7,11 @@
   },
   "scripts": {
     "generate:companies": "node scripts/generate-company-pages.mjs",
+    "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
-    "test:reaper": "node --test test/reaper/*.test.mjs"
+    "test:catalog": "node --test test/catalog/*.test.mjs",
+    "test:reaper": "node --test test/reaper/*.test.mjs",
+    "validate:jsonld": "node scripts/validate-jsonld.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.700.0",

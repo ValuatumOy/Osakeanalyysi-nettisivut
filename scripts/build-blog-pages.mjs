@@ -180,10 +180,56 @@ function sourcesHtml(sources) {
         </section>`;
 }
 
+function internalLinksHtml(article) {
+  const links = (article.internalLinks || [])
+    .filter(href => href && href !== `/blog/${article.slug}.html` && href !== '/blog.html')
+    .filter(href => {
+      const local = href.split('#')[0].split('?')[0].replace(/^\/+/, '') || 'index.html';
+      return fs.existsSync(path.join(ROOT, local));
+    })
+    .slice(0, 4);
+  if (!links.length) return '';
+  const labels = {
+    '/methodology.html': 'Explore the Valuatum methodology',
+    '/reports.html': 'Browse AI equity reports',
+  };
+  return `
+        <section aria-labelledby="continue-researching" style="margin-top:2.5rem;background:var(--off-white);border-radius:var(--r-lg);padding:1.5rem;">
+          <h2 id="continue-researching" style="font-size:var(--text-md);margin-top:0;">Continue researching</h2>
+          <ul style="margin:0;padding-left:1.2rem;">
+            ${links.map(href => {
+              const fallback = href.split('/').pop().replace(/\.html$/, '').replace(/-/g, ' ');
+              return `<li style="margin-bottom:.55rem;"><a href="${attr(href)}">${esc(labels[href] || fallback)}</a></li>`;
+            }).join('')}
+          </ul>
+        </section>`;
+}
+
 // ── JSON-LD ────────────────────────────────────────────────────────────────
-function jsonLd(article, author) {
+function jsonLd(article, author, reviewer) {
   const url = `${SITE}/blog/${article.slug}.html`;
+  const authorId = `${SITE}${author.authorPage}#person`;
   const graph = [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#organization`,
+      name: 'Valuatum Oy',
+      url: 'https://valuatum.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE}/images/Valuatum_logo.png`,
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': authorId,
+      name: author.name,
+      url: `${SITE}${author.authorPage}`,
+      image: `${SITE}${author.photo}`,
+      sameAs: author.sameAs || [author.linkedin],
+      jobTitle: author.title,
+      worksFor: { '@id': `${SITE}/#organization` },
+    },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -201,14 +247,17 @@ function jsonLd(article, author) {
       dateModified: isoDate(article.dateModified),
       inLanguage: 'en',
       mainEntityOfPage: url,
-      author: {
+      image: `${SITE}/images/og-image.png`,
+      author: { '@id': authorId },
+      publisher: { '@id': `${SITE}/#organization` },
+      reviewedBy: reviewer ? {
         '@type': 'Person',
-        name: author.name,
-        url: `${SITE}${author.authorPage}`,
-        sameAs: author.sameAs || [],
-        jobTitle: author.title,
-      },
-      publisher: { '@type': 'Organization', name: 'Valuatum', url: 'https://valuatum.com' },
+        name: reviewer.name,
+        sameAs: reviewer.linkedin,
+        jobTitle: reviewer.title,
+      } : undefined,
+      keywords: [article.targetQuery, article.cluster, ...(article.keywords || [])].filter(Boolean),
+      about: article.cluster ? { '@type': 'Thing', name: String(article.cluster).replace(/-/g, ' ') } : undefined,
       isAccessibleForFree: true,
     },
   ];
@@ -266,7 +315,7 @@ function renderArticle(article, author, reviewer) {
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
   <script type="application/ld+json">
-${jsonLd(article, author)}
+${jsonLd(article, author, reviewer)}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,6 +365,8 @@ ${navHtml()}
       ${faqHtml(article.faq)}
 
       ${sourcesHtml(article.sources)}
+
+      ${internalLinksHtml(article)}
 
       <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:2.5rem; border-left:3px solid var(--gray-steel);">
         <p style="font-size:var(--text-xs); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute investment advice or a buy/sell recommendation. Always do your own research. See our <a href="/disclaimer.html">full disclaimer</a> and <a href="/methodology.html">methodology</a>. Valuatum Oy, Helsinki, Finland.</p>
@@ -550,6 +601,78 @@ function renderBlogIndex(publishedArticles, authorsData) {
 `;
 }
 
+function renderAuthorPage(author, articles) {
+  const url = `${SITE}${author.authorPage}`;
+  const articleLinks = articles.map(article =>
+    `<li style="margin-bottom:0.75rem;"><a href="/blog/${attr(article.slug)}.html">${esc(article.title)}</a></li>`
+  ).join('');
+  const schema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${url}#profile`,
+    url,
+    name: `${author.name} — Valuatum author`,
+    mainEntity: {
+      '@type': 'Person',
+      '@id': `${url}#person`,
+      name: author.name,
+      image: `${SITE}${author.photo}`,
+      jobTitle: author.title,
+      description: author.bio,
+      sameAs: author.sameAs || [author.linkedin],
+      worksFor: { '@type': 'Organization', name: 'Valuatum Oy', url: 'https://valuatum.com' },
+    },
+  }, null, 2);
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${esc(author.name)} — Author at Valuatum</title>
+  <meta name="description" content="${attr(author.bio)}">
+  <link rel="canonical" href="${url}">
+  <meta property="og:title" content="${attr(author.name + ' — Author at Valuatum')}">
+  <meta property="og:description" content="${attr(author.bio)}">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${SITE}${attr(author.photo)}">
+  <script type="application/ld+json">
+${schema}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+${navHtml()}
+  <main>
+    <section style="background:var(--forest);padding:var(--section-py) 0 3rem;">
+      <div class="container" style="max-width:760px;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;">
+        <img src="${attr(author.photo)}" alt="${attr(author.name)}" width="132" height="132" style="width:132px;height:132px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.2);">
+        <div style="flex:1;min-width:260px;">
+          <span class="section-eyebrow section-eyebrow--light">Valuatum author</span>
+          <h1 style="color:white;font-size:var(--text-2xl);font-weight:300;margin:.5rem 0;">${esc(author.name)}</h1>
+          <p style="color:var(--green-light);margin:0 0 .75rem;">${esc(author.title)}</p>
+          <p style="color:rgba(255,255,255,.72);line-height:1.7;margin:0;">${esc(author.credentials || '')}</p>
+        </div>
+      </div>
+    </section>
+    <section style="padding:3rem 0;">
+      <div class="container" style="max-width:760px;">
+        <h2>About ${esc(author.name)}</h2>
+        <p style="line-height:1.8;">${esc(author.bio)}</p>
+        <p><a href="${attr(author.linkedin)}" target="_blank" rel="noopener noreferrer">View LinkedIn profile &rarr;</a></p>
+        ${articles.length ? `<h2 style="margin-top:2.5rem;">Articles by ${esc(author.name)}</h2><ul>${articleLinks}</ul>` : ''}
+      </div>
+    </section>
+  </main>
+${footerHtml()}
+  <script src="/js/script.js"></script>
+</body>
+</html>`;
+}
+
 // ── run ────────────────────────────────────────────────────────────────────
 const authorsData = loadAuthors();
 const authorMap = Object.fromEntries(authorsData.authors.map(a => [a.id, a]));
@@ -589,11 +712,23 @@ published.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
 fs.writeFileSync(path.join(ROOT, 'blog.html'), renderBlogIndex(published, authorsData));
 console.log(`wrote  blog.html  (${published.length} live article${published.length !== 1 ? 's' : ''})`);
 
+const authorsDir = path.join(ROOT, 'authors');
+fs.mkdirSync(authorsDir, { recursive: true });
+for (const author of authorsData.authors) {
+  validateAuthor(author, 'Author');
+  const authorArticles = published.filter(article => article.authorId === author.id);
+  const authorSlug = path.basename(author.authorPage, '.html');
+  fs.writeFileSync(path.join(authorsDir, `${authorSlug}.html`), renderAuthorPage(author, authorArticles));
+  console.log(`wrote  authors/${authorSlug}.html`);
+}
+
 // Sitemap fragment
 const today = new Date().toISOString().substring(0, 10);
 const frag = published.map(a =>
   `  <url>\n    <loc>${SITE}/blog/${a.slug}.html</loc>\n    <lastmod>${isoDate(a.dateModified)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`
-).join('\n');
+).concat(authorsData.authors.map(author =>
+  `  <url>\n    <loc>${SITE}${author.authorPage}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`
+)).join('\n');
 fs.writeFileSync(path.join(ROOT, 'scripts', 'sitemap-blog.xml'), frag + '\n');
 console.log(`wrote  scripts/sitemap-blog.xml`);
 

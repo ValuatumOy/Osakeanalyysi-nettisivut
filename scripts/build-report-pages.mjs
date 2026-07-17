@@ -284,10 +284,17 @@ const chip = (href, label) => `<a style="display:inline-block; text-decoration:n
 function relatedHtml(current, all) {
   const others = all.filter(x => x.slug !== current.slug);
   if (!others.length) return '';
-  // Sector peers first (tighter topical links), then the rest.
-  const peers = others.filter(o => o.sector && o.sector === current.sector);
-  const rest = others.filter(o => !(o.sector && o.sector === current.sector));
-  const ordered = [...peers, ...rest];
+  const score = (candidate) =>
+    (candidate.sector && candidate.sector === current.sector ? 8 : 0) +
+    (candidate.exchange && candidate.exchange === current.exchange ? 4 : 0) +
+    (candidate.country && candidate.country === current.country ? 2 : 0);
+  const ordered = others
+    .sort((a, b) =>
+      score(b) - score(a) ||
+      new Date(b.reportDate || 0) - new Date(a.reportDate || 0) ||
+      String(a.companyName).localeCompare(String(b.companyName))
+    )
+    .slice(0, 4);
   const reportChips = ordered.map(o => chip(`/reports/${o.slug}.html`, `${shortName(o.companyName)} (${o.ticker}) report →`)).join('');
   return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>`;
 }

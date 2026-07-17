@@ -162,7 +162,7 @@ function handleSearch(query) {
     openCompanyPage(partial.url);
     return;
   }
-  window.location.href = `reports.html?search=${encodeURIComponent(query)}#coverage-request`;
+  window.location.href = `reports.html?search=${encodeURIComponent(query)}&source=homepage#coverage-request`;
 }
 
 function openCompanyPage(url) {

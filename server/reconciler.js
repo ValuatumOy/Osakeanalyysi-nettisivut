@@ -169,6 +169,8 @@ async function deliver(order, job) {
     description: `AI equity report for ${companyLabel}, generated ${reportDateIso}.`,
     tags: ['AI Equity Report', 'PDF'],
     hidden: !RESALE_ENABLED,
+    publicationStatus: RESALE_ENABLED ? 'ready' : 'hidden',
+    accessStatus: 'paid',
     excludeFromFree: true,
     provenance: { sessionId: order.id, jobId: order.jobId },
   };

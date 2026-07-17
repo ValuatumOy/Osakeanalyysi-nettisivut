@@ -13,7 +13,13 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
   const readyReport = options.readyReport || null;
   const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: revenue, EBIT, net earnings, book value, year-end share price and market capitalisation.`;
   const metrics = metricDefinitions(company);
-  const related = relatedCompanies.filter((item) => item.ticker !== company.ticker);
+  const relatedScore = (item) =>
+    (item.industry && item.industry === company.industry ? 8 : 0) +
+    (item.currency && item.currency === company.currency ? 3 : 0);
+  const related = relatedCompanies
+    .filter((item) => item.ticker !== company.ticker)
+    .sort((a, b) => relatedScore(b) - relatedScore(a) || String(a.companyName).localeCompare(String(b.companyName)))
+    .slice(0, 4);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -85,10 +91,10 @@ ${jsonLdText}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
     .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
-    .report-full-content.coverage-cols.no-ready #generate{break-before:column;-webkit-column-break-before:always;}
+    .report-full-content.coverage-cols[data-ready-report="false"] #generate{break-before:column;-webkit-column-break-before:always;}
     @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
     @media(max-width:960px){.report-full-content.coverage-cols #ready-report{break-before:auto;-webkit-column-break-before:auto;}}
-    @media(max-width:960px){.report-full-content.coverage-cols.no-ready #generate{break-before:auto;-webkit-column-break-before:auto;}}
+    @media(max-width:960px){.report-full-content.coverage-cols[data-ready-report="false"] #generate{break-before:auto;-webkit-column-break-before:auto;}}
   </style>
 </head>
 <body>
@@ -120,7 +126,7 @@ ${navHtml()}
     </section>
 
     <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content coverage-cols${readyReport ? '' : ' no-ready'}">
+      <div class="report-full-content coverage-cols" data-ready-report="${readyReport ? 'true' : 'false'}">
         <section class="report-full-section" id="overview">
           <h2>${esc(name)} (${esc(company.ticker)}) overview</h2>
           <p>${esc(companyOverview(company, name, readyReport))}</p>

@@ -26,6 +26,30 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://www.aiequityreports.com/#organization",
+      "name": "Valuatum Oy",
+      "url": "https://valuatum.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.aiequityreports.com/images/Valuatum_logo.png"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.aiequityreports.com/authors/lauri-hynonen.html#person",
+      "name": "Lauri Hynönen",
+      "url": "https://www.aiequityreports.com/authors/lauri-hynonen.html",
+      "image": "https://www.aiequityreports.com/images/authors/lauri-hynonen.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
+      ],
+      "jobTitle": "AI Analyst, Valuatum Oy",
+      "worksFor": {
+        "@id": "https://www.aiequityreports.com/#organization"
+      }
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {
@@ -57,19 +81,26 @@
       "dateModified": "2026-06-12",
       "inLanguage": "en",
       "mainEntityOfPage": "https://www.aiequityreports.com/blog/can-ai-analyze-stocks.html",
+      "image": "https://www.aiequityreports.com/images/og-image.png",
       "author": {
-        "@type": "Person",
-        "name": "Lauri Hynönen",
-        "url": "https://www.aiequityreports.com/authors/lauri-hynonen.html",
-        "sameAs": [
-          "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
-        ],
-        "jobTitle": "AI Analyst, Valuatum Oy"
+        "@id": "https://www.aiequityreports.com/authors/lauri-hynonen.html#person"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "Valuatum",
-        "url": "https://valuatum.com"
+        "@id": "https://www.aiequityreports.com/#organization"
+      },
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Lauri Hynönen",
+        "sameAs": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/",
+        "jobTitle": "AI Analyst, Valuatum Oy"
+      },
+      "keywords": [
+        "can ai analyze stocks",
+        "ai-equity-research"
+      ],
+      "about": {
+        "@type": "Thing",
+        "name": "ai equity research"
       },
       "isAccessibleForFree": true
     },
@@ -159,7 +190,7 @@
           <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.7);">
             Lauri Hynönen · 12 June 2026 · 7 min read
           </span>
-          
+
         </div>
       </div>
     </section>
@@ -183,10 +214,10 @@
           <p>My view: within two or three years, equity analysis workflows that do not use AI for the structured first pass will be at a systematic disadvantage. The question is not whether AI replaces analysts. The better frame is whether analysts who use AI well outcompete those who do not. On the dimensions that are measurable, consistency, coverage, and freedom from incentive-driven bias, AI already wins.</p><p>The honest story of AI in equity research is not about speed or cost, though both improve significantly. It is about removing sources of systematic error that are built into human cognition and the institutional structures analysts work within. Anchoring bias, herding toward consensus, incentive conflicts, and selective attention to data: these are not individual failures. They are structural features of how sell-side research has operated for decades.</p><p>Valuatum's approach is to apply AI to the structured analytical work and let the methodology speak for itself. The Nokia SELL rating stands or falls on the reverse valuation model, not on who published it or whether it matches the consensus. That is a different kind of equity research, and I think it is a better one. If you want to understand the valuation framework our system applies, the most direct starting point is our guide to <a href="/blog/how-to-value-a-stock.html">how to value a stock</a>.</p>
         </section>
 
-      
+
         <section id="faq" style="margin-top:3rem;">
           <h2>Frequently asked questions</h2>
-          
+
           <div style="border-bottom:1px solid var(--color-border); padding:1.1rem 0;">
             <h3 style="font-size:var(--text-md); margin:0 0 0.4rem;">Can AI replace a human stock analyst?</h3>
             <p style="margin:0;">On structured analytical tasks, AI already outperforms the average sell-side analyst on consistency and coverage. The remaining human advantage is qualitative judgment, particularly management assessment and interpreting genuinely novel situations. That gap is narrowing. The more useful question is whether analysts who integrate AI into their process will outcompete those who do not, and the answer to that is yes.</p>
@@ -201,7 +232,7 @@
           </div>
         </section>
 
-      
+
         <section id="sources" style="margin-top:2.5rem;">
           <h2 style="font-size:var(--text-md);">Sources</h2>
           <ul style="padding-left:1.2rem; margin:0;">
@@ -217,11 +248,19 @@
           </ul>
         </section>
 
+
+        <section aria-labelledby="continue-researching" style="margin-top:2.5rem;background:var(--off-white);border-radius:var(--r-lg);padding:1.5rem;">
+          <h2 id="continue-researching" style="font-size:var(--text-md);margin-top:0;">Continue researching</h2>
+          <ul style="margin:0;padding-left:1.2rem;">
+            <li style="margin-bottom:.55rem;"><a href="/methodology.html">Explore the Valuatum methodology</a></li><li style="margin-bottom:.55rem;"><a href="/reports/nokia-equity-report.html">nokia equity report</a></li>
+          </ul>
+        </section>
+
       <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:2.5rem; border-left:3px solid var(--gray-steel);">
         <p style="font-size:var(--text-xs); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This article is for informational purposes only and does not constitute investment advice or a buy/sell recommendation. Always do your own research. See our <a href="/disclaimer.html">full disclaimer</a> and <a href="/methodology.html">methodology</a>. Valuatum Oy, Helsinki, Finland.</p>
       </div>
 
-      
+
         <div style="border-top:1px solid var(--color-border); margin-top:3rem; padding-top:2rem;">
           <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap;">
             <img src="/images/authors/lauri-hynonen.jpg" alt="Lauri Hynönen" width="72" height="72"
@@ -250,7 +289,7 @@
     </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -261,13 +300,12 @@
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
+          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
-            <a href="/reports.html#free" class="footer-link">Free samples</a>
             <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
@@ -279,7 +317,6 @@
             <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
-            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
           </div>
         </div>
         <div>
@@ -293,7 +330,7 @@
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
-        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice. Past performance is not indicative of future results.</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
       </div>
     </div>
   </footer>

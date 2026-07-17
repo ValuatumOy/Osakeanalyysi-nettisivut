@@ -2118,6 +2118,8 @@ body::before {
 .sidebar-nav-link.active { color: var(--green); background: var(--green-faint); border-left-color: var(--green); }
 
 .report-full-content { padding: 2.5rem; }
+/* Related links are ranked by the page generators; keep the visible set focused. */
+#related > div > a:nth-of-type(n+5) { display: none !important; }
 .report-full-section {
   background: var(--white);
   border-radius: var(--r-xl);

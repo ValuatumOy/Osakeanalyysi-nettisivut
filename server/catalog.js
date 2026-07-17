@@ -183,6 +183,17 @@ function calculatePrice(ageDays, rules = DEFAULT_RULES) {
   };
 }
 
+function publicationStatus(meta, availableAt, now) {
+  const explicit = String(meta.publicationStatus || meta.lifecycleStatus || '').toLowerCase();
+  if (meta.archived || explicit === 'archived' || explicit === 'archive') return 'archived';
+  if (meta.expired || explicit === 'expired') return 'expired';
+  const expiresAt = parseDate(meta.expiresAt);
+  if (expiresAt && now >= expiresAt) return 'expired';
+  if (meta.hidden || explicit === 'hidden') return 'hidden';
+  if (meta.forceVisible || explicit === 'ready' || now >= availableAt) return 'ready';
+  return 'hidden';
+}
+
 function weekKey(now = new Date()) {
   const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const day = date.getUTCDay() || 7;
@@ -299,11 +310,8 @@ function buildRawReports(options = {}) {
       ? (parseDate(meta.availableAt) || availabilityBaseDate)
       : addDays(availabilityBaseDate, rules.visibleAfterDays);
     const forceVisible = Boolean(meta.forceVisible);
-    const availability = meta.hidden
-      ? 'hidden'
-      : forceVisible || now >= availableAt
-        ? 'available'
-        : 'hidden';
+    const publication = publicationStatus(meta, availableAt, now);
+    const availability = publication === 'ready' ? 'available' : publication;
     const ageDays = daysSince(reportDate, now);
     const pricing = meta.price != null
       ? { price: Number(meta.price), priceLabel: meta.priceLabel || null }
@@ -327,6 +335,8 @@ function buildRawReports(options = {}) {
       fileName: file.fileName,
       pdfUrl: meta.pdfUrl || `${pdfBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(file.fileName)}`,
       availability,
+      publicationStatus: publication,
+      expiresAt: meta.expiresAt || null,
       price: pricing.price,
       priceLabel: pricing.priceLabel,
       forceFree: Boolean(meta.forceFree),
@@ -359,8 +369,8 @@ function buildCatalog(options = {}) {
   const rules = options.rules || DEFAULT_RULES;
   const statePath = options.statePath || DEFAULT_STATE_PATH;
   const state = options.state || loadState(statePath);
-  const rawReports = buildRawReports({ ...options, now, rules })
-    .filter(report => report.availability === 'available');
+  const allReports = buildRawReports({ ...options, now, rules });
+  const rawReports = allReports.filter(report => report.publicationStatus === 'ready');
 
   const forcedFreeCount = rawReports.filter(report => report.forceFree).length;
   const rotationRules = {
@@ -373,6 +383,7 @@ function buildCatalog(options = {}) {
     return {
       ...report,
       reportType: isFree ? 'free' : 'existing',
+      accessStatus: isFree ? 'free' : 'paid',
       isFree,
       price: isFree ? 0 : READY_REPORT_PRICE,
       priceLabel: isFree ? report.priceLabel : 'Ready report',
@@ -382,11 +393,25 @@ function buildCatalog(options = {}) {
 
   if (options.persistState !== false) saveState(state, statePath);
 
+  const publicReports = reports;
   return {
     generatedAt: now.toISOString(),
     week: weekKey(now),
     rules,
-    reports,
+    reports: options.includeNonPublic
+      ? [
+          ...publicReports,
+          ...allReports
+            .filter(report => report.publicationStatus !== 'ready')
+            .map(report => ({
+              ...report,
+              reportType: null,
+              accessStatus: null,
+              isFree: false,
+              creditCost: null,
+            })),
+        ]
+      : publicReports,
   };
 }
 
@@ -454,5 +479,6 @@ module.exports = {
   getReportByIdSync,
   getReportMapSync,
   recordCatalogPurchase,
+  publicationStatus,
   weekKey,
 };
