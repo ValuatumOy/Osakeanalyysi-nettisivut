@@ -1,0 +1,96 @@
+{
+  "slug": "amd-stock-fair-value",
+  "cluster": "company-deep-dives",
+  "role": "support",
+  "targetQuery": "amd stock fair value",
+  "intent": "informational-commercial",
+  "title": "AMD Stock Fair Value: A Sum-of-the-Parts Look (2026)",
+  "metaDescription": "AMD stock fair value in our 5 June 2026 model is 413 USD, a SELL. We split enterprise value by segment to show why 87.5% of it rests on one business.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "datePublished": "2026-07-17",
+  "dateModified": "2026-07-17",
+  "readingTimeMinutes": 8,
+  "sections": [
+    {
+      "h2": "What is AMD's fair value in 2026?",
+      "html": "<p>AMD's fair value in our 5 June 2026 model is 413.00 USD per share. That is a SELL, against a 516.10 USD price the day we published, or roughly 20% downside. Our base-case scenario, which is more generous, lands at 525.00 USD, close to the market price. The bull case reaches 709.60 USD and the bear case 213.34 USD.</p><p>So the honest one-line answer is a wide band with a downward tilt, not a single tidy number. Why so wide? Because almost all of AMD's value now depends on one segment doing something it has not done yet.</p><p>The multiples set the scene. In our model AMD trades at 112.5x 2026 earnings and 58.3x EV/EBITDA, with free cash flow slightly negative. Those are growth-stock multiples on a company we think is priced for near-perfect execution of the AI build-out. We would rather show you the parts than argue about the headline number.</p>"
+    },
+    {
+      "h2": "Why do published AMD fair value estimates disagree so much?",
+      "html": "<p>Because the automated valuation sites run one blended discounted cash flow over a company that is really two businesses stapled together. The published numbers scatter accordingly. In mid-2026 GuruFocus put AMD's GF Value near 242 USD, Simply Wall St estimated around 333 USD, and various screener DCFs ran from under 100 USD to well above 500 USD. When the estimates span a five-fold range, the method is the problem, not the company.</p><p>Our objection is plain. A group DCF averages a cash-generative PC and FPGA business with a Data Center segment that is barely free-cash-flow positive and priced for enormous growth. Blend them and you get a number that describes neither.</p><p>We value the pieces instead, the way our <a href=\"/methodology.html\">valuation methodology</a> does. Split the enterprise value by segment, ask what each part has to earn to justify its slice, and the question stops being a single contested price. It becomes a set of assumptions you can test one at a time.</p>"
+    },
+    {
+      "h2": "Where does AMD's enterprise value actually sit?",
+      "html": "<p>Almost all of it sits in Data Center. In our <a href=\"/reports/advanced-micro-devices-equity-report.html\">5 June 2026 AMD report</a> that segment absorbs 87.5% of AMD's enterprise value, about 750 billion USD out of 857.5 billion, while producing 56% of estimated 2026 sales and 67% of forward operating profit. Everything else, the Client PC chips, the Embedded FPGA franchise, and Gaming, together carries the remaining 12.5%.</p><p>Put a number on it and the tension shows. At 750 billion USD of allocated value against an estimated 9.37 billion USD of 2026 Data Center EBIT, that one segment trades at roughly 80x forward operating profit. For context, AMD's actual 2025 Data Center revenue was 16.6 billion USD, up 32% on the year, per the company's own full-year results. Our model already assumes that jumps by about 70% to around 28 billion in 2026. The market is paying today for the growth that comes after.</p><table><thead><tr><th>Segment</th><th>Share of EV</th><th>2026E sales</th><th>2026E EBIT</th><th>Implied multiple</th></tr></thead><tbody><tr><td>Data Center</td><td>87.5% (~$750B)</td><td>$28.0B (56%)</td><td>$9.37B (67%)</td><td>~80x EBIT</td></tr><tr><td>Embedded</td><td>7.6% (~$65B)</td><td>$6.0B (12%)</td><td>$2.4B (17%)</td><td>~27x EBIT</td></tr><tr><td>Client</td><td>4.2% (~$36B)</td><td>$12.0B (24%)</td><td>$1.8B (13%)</td><td>~20x EBIT</td></tr><tr><td>Gaming</td><td>0.8% (~$6.5B)</td><td>$4.0B (8%)</td><td>$0.4B (3%)</td><td>declining pool</td></tr></tbody></table>"
+    },
+    {
+      "h2": "What has to happen for AMD to be worth today's price?",
+      "html": "<p>AMD has to add about 20 billion USD of sales in a single year, almost all of it in Data Center. Our reverse valuation takes the current price and asks what it already assumes. The answer: group revenue rises from an estimated 50 billion USD in 2026 to 70 billion in 2027, operating profit climbs 8.69 billion, and Data Center carries essentially the entire increase as it scales from roughly 28 billion to nearly 48 billion USD of revenue.</p><p>Now stress it. Apply a generous 25x multiple to Data Center's current 9.37 billion USD of operating profit and you support an enterprise value of about 234 billion USD. The market allocates 750 billion. That leaves an uncovered premium above 515 billion USD, resting on growth and pricing power AMD has not delivered yet.</p><p>Free cash flow stays negative across our forecast, so the premium is not being funded from within the business. That gap is the whole SELL case. Close it and the stock is fine. Leave it open and there is a long way to fall.</p>"
+    },
+    {
+      "h2": "The bull, base and bear cases for AMD",
+      "html": "<p>Our scenarios put AMD's fair value between 213 and 710 USD, and the spread is almost entirely a Data Center bet. Because the balance sheet is close to unlevered, with net debt of only 4.4 billion USD, enterprise value and equity value move nearly one for one. The share price tracks the segment's fortunes directly.</p><p>The assumption doing the heavy lifting is the AI accelerator multiple. Our bull case gives Data Center a 28.9x EV/EBITDA and assumes AMD wins 30% of a 400 billion USD accelerator market. The bear case cuts the multiple to 20.4x, the sort of number hardware trades at once growth normalizes, and lets segment profit stagnate as hyperscalers move inference onto their own silicon. Same company, two multiples, a three-fold difference in value.</p><table><thead><tr><th>Scenario</th><th>Revenue</th><th>EBITDA</th><th>Multiple</th><th>Value / share</th><th>vs 516.10</th></tr></thead><tbody><tr><td>Bull</td><td>$105.0B</td><td>$40.0B</td><td>28.9x</td><td>$709.60</td><td>+37.5%</td></tr><tr><td>Base</td><td>$85.0B</td><td>$30.0B</td><td>28.5x</td><td>$525.00</td><td>+1.7%</td></tr><tr><td>Bear</td><td>$65.0B</td><td>$17.0B</td><td>20.4x</td><td>$213.34</td><td>-58.7%</td></tr></tbody></table>"
+    },
+    {
+      "h2": "What would prove our SELL call wrong?",
+      "html": "<p>Widespread MI355X adoption that displaces Nvidia while holding operating margins above 35%. That is the thesis breaker, and we take it seriously. If AMD's next accelerator generation wins large enterprise deployments and defends pricing against both Nvidia and the hyperscalers' in-house chips, the Data Center bridge we called aggressive becomes merely ambitious, and the bull case at 709.60 USD is live. In our own catalyst work, a clear MI355X adoption signal is worth roughly plus 50 USD per share.</p><p>Here is where we could be wrong. Our bear case leans on hyperscaler custom silicon shrinking the merchant GPU market, and that shift is a forecast, not a fact. If it arrives slower than we assume, AMD earns into more of its multiple and the downside narrows.</p><p>We still think the risk is skewed down from 516 USD. But a SELL on a company priced almost entirely for the future is a call on that future, and we will not pretend otherwise.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is AMD overvalued in 2026?",
+      "a": "On our 5 June 2026 model, yes. A generous 25x multiple on Data Center's 9.37 billion USD of 2026 operating profit supports an enterprise value near 234 billion, against the 750 billion the market allocates to that segment. The gap of more than 515 billion USD implies about 20% downside to our 413 USD target."
+    },
+    {
+      "q": "What is AMD's fair value or price target?",
+      "a": "Our 12-month target is 413.00 USD per share, set in the 5 June 2026 report against a 516.10 USD price, a SELL with roughly 20% downside. The scenario work brackets a wider range: a 525 USD base case, a 709.60 USD bull case, and a 213.34 USD bear case."
+    },
+    {
+      "q": "Why is AMD rated SELL?",
+      "a": "Because 87.5% of AMD's enterprise value, about 750 billion USD, rests on the Data Center segment, which produces only 67% of forward operating profit and trades near 80x. Reaching the 2027 consensus needs sales to jump 20 billion in one year, leaving an uncovered premium above 515 billion USD exposed to hyperscaler competition."
+    },
+    {
+      "q": "How does AMD's reverse valuation work?",
+      "a": "We take the market price and derive the assumptions it already contains, rather than building a value up from scratch. For AMD that means group sales rising to 70 billion USD in 2027 with Data Center near 48 billion. We then test whether a defensible multiple supports the implied enterprise value. It does not, by about 515 billion USD."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum AMD SELL rating, 413.00 USD 12-month target vs 516.10 USD price, roughly 20% downside (5 June 2026 report)",
+      "source": "report-content/amd-05062026.json"
+    },
+    {
+      "claim": "Data Center absorbs 87.5% (~750 billion USD) of AMD enterprise value while generating 56% of 2026E sales and 67% of forward EBIT, trading near 80x forward EBIT on 9.37 billion USD of 2026E segment EBIT (5 June 2026)",
+      "source": "report-content/amd-05062026.json"
+    },
+    {
+      "claim": "Reverse valuation: group sales must rise ~20 billion USD to 70 billion in 2027E; a 25x multiple on current Data Center EBIT supports only ~234 billion USD of EV, leaving an uncovered premium above 515 billion USD (5 June 2026)",
+      "source": "report-content/amd-05062026.json"
+    },
+    {
+      "claim": "Scenario fair values: bull 709.60 USD (+37.5%), base 525.00 USD (+1.7%), bear 213.34 USD (-58.7%); net debt of only 4.4 billion USD makes EV and equity value move nearly one for one (5 June 2026)",
+      "source": "report-content/amd-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/advanced-micro-devices-equity-report.html",
+    "/compare/advanced-micro-devices-vs-intel-stock-comparison.html",
+    "/blog/how-to-value-a-stock.html",
+    "/blog/value-pool-analysis-explained.html",
+    "/blog/what-is-reverse-valuation.html",
+    "/blog/can-ai-analyze-stocks.html",
+    "/methodology.html"
+  ],
+  "sources": [
+    { "label": "Valuatum AMD Equity Report, 5 June 2026 (residual enterprise-value segment map, reverse valuation, SELL rating)", "url": "/reports/advanced-micro-devices-equity-report.html" },
+    { "label": "AMD Reports Fourth Quarter and Full Year 2025 Financial Results, AMD Investor Relations (Data Center revenue 16.6 billion USD, up 32%; total net revenue 34.6 billion USD, up 34%)", "url": "https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results" },
+    { "label": "Advanced Micro Devices, Inc. Form 10-K for fiscal year 2025, SEC EDGAR (primary filing, segment reporting)", "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm" },
+    { "label": "Advanced Micro Devices (AMD) fair value estimate, Simply Wall St (illustrative aggregator estimate, ~333 USD, mid-2026)", "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-amd/advanced-micro-devices" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
