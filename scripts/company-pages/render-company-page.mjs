@@ -184,7 +184,7 @@ ${footerHtml()}
   <script src="/js/script.js"></script>
 </body>
 </html>
-`;
+`.replace(/[ \t]+$/gm, '');
 }
 
 function metricDefinitions(company) {
