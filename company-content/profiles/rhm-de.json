@@ -1,0 +1,9 @@
+{
+  "ticker": "RHM.DE",
+  "companyName": "Rheinmetall AG",
+  "profile": "Rheinmetall AG is an integrated technology group headquartered in Düsseldorf that supplies products and services for the security and defence industry, with activities spanning land, naval, air and space applications. Its portfolio includes military vehicle systems, weapons and ammunition, air defence, digital systems and related training, logistics and support services, alongside mobility and industrial technologies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:48:48.988Z"
+}

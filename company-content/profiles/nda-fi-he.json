@@ -1,0 +1,9 @@
+{
+  "ticker": "NDA-FI.HE",
+  "companyName": "Nordea Bank Abp",
+  "profile": "Nordea Bank Abp is a Nordic financial services group serving personal, business, large corporate and institutional customers across Denmark, Finland, Norway and Sweden. It provides everyday banking, lending, payments, investment banking, cash management, savings, wealth management and insurance through digital and branch channels, with additional focus on private banking and asset and wealth management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:45:33.199Z"
+}

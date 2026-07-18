@@ -1,0 +1,9 @@
+{
+  "ticker": "VAIAS.HE",
+  "companyName": "Vaisala Oyj",
+  "profile": "Vaisala Oyj develops measurement instruments, sensors, and data solutions for weather, climate, and industrial applications. Its business is organized around industrial measurements, weather and environment systems, and Xweather data services. The company serves customers in sectors such as meteorology, aviation, energy, life sciences, and other process industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:55:03.872Z"
+}
