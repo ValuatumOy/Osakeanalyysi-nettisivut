@@ -284,6 +284,54 @@
       "score": 67,
       "rationale": "High-volume methodology query answered mostly with vague hand-waving; we can show the actual mechanics because every one of our reports carries an explicit target derived from a reverse-valuation scenario bridge.",
       "notes": "Cluster A support; links to how-to-value-a-stock pillar + how-to-read-an-equity-research-report sibling. Proprietary data plan: headline.targetPrice vs currentPrice and the reverse-valuation scenario bridges across covered names (e.g. Oriola 1.15 EUR target from a 6.4x EV/EBITDA base, Tesla scenario bridge) to demonstrate target-setting end to end. Score: winnability 24 (moderate competition, 'shown with our own targets' is the info gain) + proprietary 22 + cluster fit 15 (Cluster A saturated) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "are-ai-stock-predictions-accurate",
+      "cluster": "ai-equity-research",
+      "role": "support",
+      "targetQuery": "are ai stock predictions accurate",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 76,
+      "rationale": "The honest, track-record-first answer to a high-intent AI query is nearly absent from a hype-dominated SERP; we can show real, already-resolved calls rather than promises, which is exactly the brand-trust the AI cluster exists to build.",
+      "notes": "Cluster C support; links to can-ai-analyze-stocks pillar + ai-vs-human-equity-analyst sibling (distinct intent: pillar = capabilities/limits, ai-vs-human = process comparison, this = did the outputs come true). Proprietary data plan: our own resolved calls where price has since moved toward target — nokia-05062026.json (5 Jun SELL, 11.50 fair value vs 13.90; fell to ~11 by mid-Jul, verify live via FMP at draft time), wartsila-05062026.json (SELL ~30.00 target; fell 36.12->~30), tesla-01062026.json (SELL 350 target; fell toward ~397). Also show a NAMED failure/uncertainty case to stay honest (a bull scenario that did not play out) rather than cherry-picking wins; frame accuracy as directional + scenario-bounded, not point-precise. All numbers from covered report JSONs + a live price re-check at draft time; no claims on uncovered tickers. Score: winnability 26 (thin authentic track-record SERP) + proprietary 24 (real resolved calls, our own data) + cluster fit 18 (Cluster C has room, core brand-trust angle) + freshness 8 (evergreen + AI topicality + fresh mid-Jul price resolution)."
+    },
+    {
+      "slug": "sum-of-the-parts-valuation",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "sum of the parts valuation",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 74,
+      "rationale": "Sum-of-the-parts is our signature technique (every report decomposes EV into value pools) yet it is still not a Cluster-A support; the SERP explains it abstractly while we can show live segment-EV splits nobody else publishes.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + value-pool-analysis-explained sibling, and down to the Tesla/AMD deep-dive posts (distinct intent: this teaches the method across names, those deliver a single-name verdict). Proprietary data plan: value-pool / EV decompositions across tesla-01062026.json (physical car+energy ~20.4% of EV vs ~79.6% in future pools), amd-05062026.json (Data Center ~87.5% of EV), nokia-05062026.json (optical vs mobile pool split) and storaenso-01062026.json (forest ~71.1% of EV). Numbers only from these JSONs. Score: winnability 24 (moderate methodology competition, live segment splits are the info gain) + proprietary 28 (signature method, unique numbers across 4 named files) + cluster fit 16 (Cluster A saturated but SOTP genuinely missing) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "fortum-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "fortum stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 68,
+      "rationale": "A freshly-covered OMXH utility (9 Jul 2026) with near-zero structured English coverage and no utility yet in the blog — the winnable Helsinki wedge applied to a Nordic low-carbon energy name, filling an open sector gap in Cluster B.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings + /reports/fortum-equity-report (page is published). DATA CAVEAT: fortum-coverage.json is a THIN coverage file — only headline.currentPrice (19.80 EUR), marketCap (EUR 17.9 bn), one multiple (Dividend Yield 3.6%) and a qualitative profile (Generation hydro/nuclear/wind + Consumer Solutions). It carries NO fair value, target, rating or reverse-valuation scenarios, so a valuation-verdict article cannot be sourced from the JSON alone. To unblock: either (a) supply a full Fortum report JSON exposing a fair value/scenarios, or (b) narrow scope to a sourced qualitative profile + the 3.6% dividend yield and Nordic clean-energy business mix, explicitly NOT stating an over/undervalued verdict. Proprietary data plan (narrow version): fortum-coverage.json price/marketcap/yield/segment profile only; no fabricated fair value (banned for YMYL). Score: winnability 25 (OMXH utility, near-zero English SERP) + proprietary 12 (thin coverage file, docked heavily) + cluster fit 16 (fills open utilities sector gap in Cluster B) + freshness 15 (fresh 9 Jul 2026 coverage)."
+    },
+    {
+      "slug": "how-to-spot-a-value-trap",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "how to spot a value trap",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 63,
+      "rationale": "Classic value-investing query where incumbents explain 'cheap for a reason' abstractly; our differentiator is a live optically-cheap-but-SELL example decomposed by value pool, the inverse of the margin-of-safety angle.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + margin-of-safety-investing sibling (distinct: margin-of-safety = buffer on a real bargain, value-trap = why a cheap multiple is not a bargain). Proprietary data plan: nokia-05062026.json — a low headline multiple that our model still rates SELL once the optical vs mobile value-pool split and scenario range are shown; supported by the broader set of covered names where a cheap screen masks structural issues. Numbers only from covered report JSONs. Overlap risk with margin-of-safety-investing — keep intents distinct in review; both need not ship. Score: winnability 23 (evergreen, incumbents abstract; live cheap-but-SELL example differentiates) + proprietary 20 (real example, internal-example style) + cluster fit 14 (Cluster A saturated) + freshness 6 (evergreen)."
     }
   ],
   "quarterly": [
