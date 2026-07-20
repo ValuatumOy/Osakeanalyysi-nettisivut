@@ -478,6 +478,11 @@
   font-size: var(--text-xs);
   line-height: 1.5;
 }
+.company-picker-hint a {
+  color: var(--forest);
+  font-weight: 600;
+  text-decoration: underline;
+}
 .coverage-request-section { background: var(--forest); padding: var(--section-py) 0; position: relative; overflow: hidden; }
 .coverage-request-grid {
   display: grid;

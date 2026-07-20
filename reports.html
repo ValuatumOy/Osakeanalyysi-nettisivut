@@ -527,7 +527,25 @@
       let requestSequence = 0;
 
       function setHint(message) {
-        if (hint) hint.textContent = message || '';
+        if (hint) hint.innerHTML = message || '';
+      }
+      function goToCoverageRequest() {
+        const target = document.getElementById('coverage-request');
+        const coverageCompany = document.getElementById('coverageCompany');
+        if (coverageCompany && input.value) coverageCompany.value = input.value;
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.setTimeout(function() {
+          const focusTarget = coverageCompany && coverageCompany.value ? document.getElementById('coverageEmail') : coverageCompany;
+          if (focusTarget) focusTarget.focus();
+        }, 350);
+      }
+      if (hint) {
+        hint.addEventListener('click', function(event) {
+          if (event.target.closest('[data-go-to-coverage]')) {
+            event.preventDefault();
+            goToCoverageRequest();
+          }
+        });
       }
       function closeMenu() {
         menu.classList.remove('open');
@@ -601,7 +619,7 @@
             return;
           }
           renderCompanies(companies);
-          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found. You can request coverage below.');
+          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found in Wisdom. <a href="#coverage-request" data-go-to-coverage>Request coverage for this company</a> instead.');
         } catch (error) {
           if (sequence !== requestSequence) return;
           results = [];
