@@ -1,0 +1,96 @@
+{
+  "slug": "wartsila-stock-analysis",
+  "cluster": "company-deep-dives",
+  "role": "support",
+  "targetQuery": "wartsila stock analysis",
+  "intent": "informational-commercial",
+  "title": "Wärtsilä Stock Analysis: Why Our Model Says Sell",
+  "metaDescription": "Our Wärtsilä stock analysis rates WRT1V a sell: a EUR 30.00 target from our 5 June 2026 model, and the stock has already fallen to about EUR 29.71.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": "2026-07-20" },
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20",
+  "readingTimeMinutes": 7,
+  "sections": [
+    {
+      "h2": "Is Wärtsilä a buy or sell right now?",
+      "html": "<p>In our 5 June 2026 model, Wärtsilä (WRT1V.HE) is a sell. We set a 12-month target of EUR 30.00 against a EUR 36.12 share price that day, about 16.9% of downside. Six weeks later the stock trades near EUR 29.71 (16 July 2026), so most of that move has already happened.</p><p>That is not a victory lap. A sell call that reaches its target in six weeks usually means the easy part is over, and the useful question becomes what the price implies from here. The consensus has drifted our way. Analysts now sit at a neutral rating, roughly three buys against eight sells, with an average target close to EUR 31.82. We got there earlier, and for one specific reason: nearly all of Wärtsilä's value rests on two businesses priced as if today's margins are permanent. The full workings are in our <a href=\"/reports/wartsila-equity-report.html\">Wärtsilä equity report</a>.</p><p>One caveat on timing. Wärtsilä reports second-quarter results on 21 July 2026, the day after this piece. A strong order book could reset the debate. Our numbers below come from the 5 June report and a mid-July price check, not from those results.</p>"
+    },
+    {
+      "h2": "Where Wärtsilä's value actually sits",
+      "html": "<p>About 94% of Wärtsilä's EUR 19.0 billion enterprise value sits in just two businesses. In our June 2026 model, Wärtsilä Marine carries EUR 10,080 million of that value (52.9%) and Wärtsilä Energy EUR 7,770 million (40.8%). Energy Storage is a EUR 1,000 million call option on the battery transition, and a small Portfolio unit under disposal accounts for the rest.</p><table><thead><tr><th>Value pool</th><th>Enterprise value</th><th>Share of EV</th><th>EBIT margin</th><th>Role</th></tr></thead><tbody><tr><td>Wärtsilä Marine</td><td>EUR 10,080m</td><td>52.9%</td><td>13.7%</td><td>Profit engine</td></tr><tr><td>Wärtsilä Energy</td><td>EUR 7,770m</td><td>40.8%</td><td>16.5%</td><td>Growth engine</td></tr><tr><td>Energy Storage</td><td>EUR 1,000m</td><td>5.3%</td><td>6.5%</td><td>Option value</td></tr><tr><td>Portfolio Business</td><td>EUR 189m</td><td>1.0%</td><td>3.7%</td><td>Under disposal</td></tr></tbody></table><p>Both of the big pools are carried at roughly 21 times forward EBIT. Most stock pages quote a single P/E near 27x and stop there. The value-pool view shows where the risk actually lives: in whether Energy's 16.5% margin survives the next order cycle.</p>"
+    },
+    {
+      "h2": "Why the 20.7x multiple is the whole argument",
+      "html": "<p>Wärtsilä's EUR 19.0 billion enterprise value works out to 20.7 times forward EBIT in our model. That single multiple is the bull case. To justify it without the business shrinking, steady-state Energy EBIT has to climb toward EUR 450 million and Marine margins have to reach about 15%, both from a starting point that already looks like a peak.</p><p>We approach this backwards. Rather than forecast a price, we ask what the current price already assumes, then judge whether those assumptions hold. That is what <a href=\"/methodology.html\">reverse valuation</a> does. At 20.7x, the market has decided Wärtsilä is a transition compounder rather than an engine maker exposed to shipping and power cycles. We are not convinced the evidence supports that yet. Heavy industrials that re-rate to 20x on two strong years tend to give the multiple back when the cycle turns. This is the same process our <a href=\"/blog/can-ai-analyze-stocks.html\">AI research pipeline</a> applies to every covered name, from Wärtsilä to <a href=\"/reports/nokia-equity-report.html\">Nokia</a>.</p>"
+    },
+    {
+      "h2": "The bull, base and bear cases",
+      "html": "<p>Our scenario bridge runs from EUR 21.79 per share in the bear case to EUR 43.86 in the bull case. The base case lands at EUR 35.39, about 2% below the June price. Each scenario tests one thing: what EBIT multiple the engine business can hold, then adds Wärtsilä's EUR 2.25 billion net cash to reach equity value.</p><table><thead><tr><th>Scenario</th><th>EV/EBIT multiple</th><th>Enterprise value</th><th>Implied value/share</th><th>vs June price</th></tr></thead><tbody><tr><td>Bull</td><td>23.0x</td><td>EUR 23,989m</td><td>EUR 43.86</td><td>+21.4%</td></tr><tr><td>Base</td><td>20.7x</td><td>EUR 19,003m</td><td>EUR 35.39</td><td>-2.0%</td></tr><tr><td>Bear</td><td>12.0x</td><td>EUR 11,004m</td><td>EUR 21.79</td><td>-39.7%</td></tr></tbody></table><p>Our 12-month target of EUR 30.00 sits below even the base case, and that is deliberate. We weight the bear path more heavily than a straight average would, because the multiple, not the earnings, is doing the work. If sentiment on off-grid power cools, the re-rating from 20.7x toward 12x happens quickly while earnings barely move. The EUR 2.25 billion net cash pile is why the bear case is EUR 21.79 and not far lower. It is a real floor.</p>"
+    },
+    {
+      "h2": "The data-center order wave is the risk, not the reason",
+      "html": "<p>Wärtsilä Energy earns a 16.5% EBIT margin today because hyperscalers are buying off-grid gas power plants faster than the grid can connect them. Wärtsilä has sold over 2.4 gigawatts of this equipment in the U.S. In the first quarter of 2026 alone, developers added 16 gigawatts to the U.S. gas project queue, lifting the planned pipeline toward 64 gigawatts by 2030. The order book is real, and Wärtsilä reported it at an all-time high of EUR 8.9 billion after a 10% rise in first-quarter order intake.</p><p>So why sell into that? Because the buyers themselves now describe behind-the-meter gas as a bridge to the grid, not a permanent fix. Interconnection queues run for years, a dedicated gas plant goes up in about 18 months, and once the grid catches up the reason to keep ordering new engines weakens. Priced at 21x, Energy needs this demand to be structural. We think a large part of it is a one-time capacity scramble, and it is the single risk we would watch most closely.</p>"
+    },
+    {
+      "h2": "What would make this call wrong",
+      "html": "<p>We are wrong if two things hold at once: hyperscaler gas demand keeps compounding past 2028, and maritime decarbonization forces a retrofit cycle that keeps Marine margins high. In that world the 21x multiple is justified and the bull case at EUR 43.86 is live.</p><p>The maritime leg is where the timing works against the bulls for now. The IMO's Net-Zero Framework, the rulebook meant to push shipowners toward cleaner fuels and engine retrofits, was approved in April 2025 but stalled at an extraordinary session that October. Its earliest entry into force has slipped from March 2027 to March 2028. The eventual demand is probably coming. It is not the imminent, priced-in catalyst that a 20.7x multiple assumes.</p><p>That gap between an eventual driver and a priced-in one is the whole trade. If Wärtsilä's second-quarter numbers on 21 July show the Energy order book still climbing, we will revisit the weighting. Until then, at EUR 29.71 the stock has done what our model said it would, and the balance of risk still points down before it points up.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Wärtsilä a buy or sell in 2026?",
+      "a": "Sell, in our 5 June 2026 model. We rate Wärtsilä (WRT1V.HE) a sell with a 12-month target of EUR 30.00 against the EUR 36.12 price that day, about 16.9% downside. The call rests on a 20.7x forward EV/EBIT multiple that prices peak data-center and marine margins as permanent."
+    },
+    {
+      "q": "What is Wärtsilä's price target?",
+      "a": "Our 12-month target is EUR 30.00. The scenario bridge behind it runs from a bull case of EUR 43.86 per share (+21.4%) through a base case of EUR 35.39 (-2.0%) to a bear case of EUR 21.79 (-39.7%). Market consensus in mid-July 2026 was near EUR 31.82."
+    },
+    {
+      "q": "Why might Wärtsilä be overvalued?",
+      "a": "Wärtsilä's EUR 19.0 billion enterprise value trades at 20.7x forward EV/EBIT, rich for a heavy industrial. About 94% of that value sits in Marine (EUR 10.08bn) and Energy (EUR 7.77bn) at roughly 21x forward EBIT, which treats today's peak data-center and marine service margins as permanent rather than cyclical."
+    },
+    {
+      "q": "How much has Wärtsilä stock moved since the June 2026 report?",
+      "a": "It has fallen from EUR 36.12 on 5 June 2026 to about EUR 29.71 by 16 July 2026, roughly 18% lower. That reached our EUR 30.00 target in about six weeks. Wärtsilä's next earnings report, for the second quarter, is due on 21 July 2026 and could shift the picture."
+    },
+    {
+      "q": "What is the biggest risk to Wärtsilä's valuation?",
+      "a": "A data-center order cliff. Energy's 16.5% EBIT margin rests on off-grid U.S. gas orders that buyers now describe as a bridge to the grid, not a permanent fix. If that demand normalizes after the initial AI build and the multiple reverts toward 12x, our bear case near EUR 21.79 applies."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum Wärtsilä SELL rating, EUR 30.00 12-month target vs EUR 36.12 price, -16.9% (5 June 2026)",
+      "source": "report-content/wartsila-05062026.json"
+    },
+    {
+      "claim": "Value-pool split of EUR 19.0bn EV: Marine EUR 10,080m (52.9%), Energy EUR 7,770m (40.8%) at ~21x forward EBIT (June 2026 model)",
+      "source": "report-content/wartsila-05062026.json"
+    },
+    {
+      "claim": "Reverse-valuation scenarios: bull EUR 43.86 (+21.4%), base EUR 35.39 (-2.0%), bear EUR 21.79 (-39.7%); EUR 2.25bn net cash floor",
+      "source": "report-content/wartsila-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/wartsila-equity-report.html",
+    "/methodology.html",
+    "/blog/can-ai-analyze-stocks.html",
+    "/reports/nokia-equity-report.html",
+    "/blog.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Wärtsilä Equity Report, 5 June 2026", "url": "/reports/wartsila-equity-report.html" },
+    { "label": "Wärtsilä Interim Report January–March 2026 (28 April 2026)", "url": "https://www.wartsila.com/media/news/28-04-2026-wartsila-s-interim-report-january-march-2026-3744975" },
+    { "label": "IMO Net-Zero Framework: FAQs (International Maritime Organization)", "url": "https://www.imo.org/en/mediacentre/hottopics/pages/faqs-the-imo-net-zero-framework.aspx" },
+    { "label": "On-Site Natural Gas Generation Gains Favor with Hyperscalers as Bridge to Grid (Natural Gas Intelligence, 2026)", "url": "https://naturalgasintel.com/news/on-site-natural-gas-generation-gains-favor-with-hyperscalers-as-bridge-to-grid/" },
+    { "label": "Wärtsilä Oyj Abp (WRT1V.HE) price and analyst forecasts, Yahoo Finance (16 July 2026)", "url": "https://finance.yahoo.com/quote/WRT1V.HE/" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
