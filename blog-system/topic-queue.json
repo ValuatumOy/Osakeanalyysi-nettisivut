@@ -174,8 +174,9 @@
       "role": "support",
       "targetQuery": "wartsila stock analysis",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Low-competition English query for OMXH industrial; paid report pattern."
+      "status": "in-review",
+      "prNumber": 28,
+      "notes": "Low-competition English query for OMXH industrial; paid report pattern. Drafted 2026-07-20 (Mon full pipeline run) as PR #28 on branch blog/wartsila-stock-analysis. Human-queued (oldest queued seed). Angle: our 5 Jun 2026 SELL (EUR 30.00 target vs EUR 36.12) has essentially played out, stock ~EUR 29.71 by 16 Jul 2026 (verified via WebSearch; sandbox blocks WebFetch). Decomposes EUR 19.0bn EV into value pools (Marine 52.9%, Energy 40.8% at ~21x fwd EBIT) and the bull/base/bear reverse-valuation bridge; off-grid data-center order cliff as the named thesis-breaker, with the IMO Net-Zero entry-into-force slip to March 2028 as external support. Inbound link added from live reports/wartsila-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "kesko-stock-analysis",
