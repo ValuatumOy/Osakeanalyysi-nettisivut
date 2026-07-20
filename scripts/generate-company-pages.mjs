@@ -6,7 +6,7 @@ import { WisdomClient, normalizeTicker } from './company-pages/wisdom-client.mjs
 import { normalizeCompanyData, selectPrimaryModel } from './company-pages/normalize-company.mjs';
 import { getCompanyProfile } from './company-pages/profile-provider.mjs';
 import { publishCompanyDiscovery } from './company-pages/publish-company-page.mjs';
-import { pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
+import { isFinancialCompany, pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'js', 'reportsData.js');
@@ -31,6 +31,11 @@ export async function generateCompanyPages(options) {
       const sourceCompany = await client.findCompanyByTicker(ticker);
       const models = await client.getLatestActualModels(sourceCompany);
       const company = normalizeCompanyData(sourceCompany, selectPrimaryModel(models));
+
+      if (isFinancialCompany(company)) {
+        options.onProgress?.(`skip   ${ticker}: financial company, models do not apply`);
+        continue;
+      }
 
       options.onProgress?.(`profile ${ticker}`);
       const profileResult = await getCompanyProfile({

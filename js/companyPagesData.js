@@ -92,13 +92,6 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Intel is a semiconductor designer and manufacturer whose valuation is tied to product competitiveness, data center demand and the foundry turnaround. The company page includes a free downloadable AI equity report."
   },
   {
-    "name": "Investor AB",
-    "ticker": "INVE-B.ST",
-    "exchange": "Stockholm",
-    "url": "reports/investor-ab-equity-report.html",
-    "description": "Investor AB is an investment company that owns and develops a portfolio of businesses through three main areas: listed companies, Patricia Industries, and investments in EQT. It holds significant minority stakes in listed holdings, owns wholly owned and partner-owned subsidiaries through Patricia Industries, and also manages financial investments linked to EQT."
-  },
-  {
     "name": "Kempower",
     "ticker": "KEMPOWR.HE",
     "exchange": "Helsinki",
@@ -162,13 +155,6 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Nokia is a network infrastructure and mobile networks company serving telecom operators, enterprises and cloud customers. The company page covers valuation, segment value analysis, reverse valuation, financials, risks and catalysts."
   },
   {
-    "name": "Nordea",
-    "ticker": "NDA-FI.HE",
-    "exchange": "Helsinki",
-    "url": "reports/nordea-equity-report.html",
-    "description": "Nordea Bank Abp is a Nordic financial services group serving personal, business, large corporate and institutional customers across Denmark, Finland, Norway and Sweden. It provides everyday banking, lending, payments, investment banking, cash management, savings, wealth management and insurance through digital and branch channels, with additional focus on private banking and asset and wealth management."
-  },
-  {
     "name": "Novo Nordisk",
     "ticker": "NOVO-B.CO",
     "exchange": "Copenhagen",
@@ -230,13 +216,6 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/saab-equity-report.html",
     "description": "Saab AB is a Swedish defense and security company that develops, manufactures, and maintains advanced systems and solutions for military defense and civil security. Its portfolio includes aeronautics, weapons, command and control, sensors, underwater systems, and related support services. The company serves government and commercial customers in multiple markets worldwide."
-  },
-  {
-    "name": "Sampo",
-    "ticker": "SAMPO.HE",
-    "exchange": "Helsinki",
-    "url": "reports/sampo-equity-report.html",
-    "description": "Sampo is a Nordic financial services and insurance group. The company page provides the financial overview and a path to generate a fresh AI equity report."
   },
   {
     "name": "Stora Enso",

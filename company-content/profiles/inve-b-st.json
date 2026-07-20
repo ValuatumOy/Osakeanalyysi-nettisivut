@@ -1,9 +1,0 @@
-{
-  "ticker": "INVE-B.ST",
-  "companyName": "Investor AB (publ)",
-  "profile": "Investor AB is an investment company that owns and develops a portfolio of businesses through three main areas: listed companies, Patricia Industries, and investments in EQT. It holds significant minority stakes in listed holdings, owns wholly owned and partner-owned subsidiaries through Patricia Industries, and also manages financial investments linked to EQT.",
-  "provider": "codex",
-  "model": "gpt-5.4-mini",
-  "promptVersion": 2,
-  "generatedAt": "2026-07-18T10:55:29.515Z"
-}

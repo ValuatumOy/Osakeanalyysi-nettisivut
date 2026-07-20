@@ -11,6 +11,20 @@ const DISPLAY_NAME_OVERRIDES = new Map([
   ['ASML', 'ASML'],
 ]);
 
+// Valuatum's models don't fit financial companies (banks, insurers, investment/
+// holding companies): Wisdom's `ns`/`ebit`/etc. are meaningless or mislabelled for
+// them, so we never build pages for them at all (see generate-company-pages.mjs) and
+// never link to them from related lists. Auto-detected by industry; the ticker list
+// is a safety net for names whose industry string is unclear.
+const FINANCIAL_TICKERS = new Set(['NDA-FI.HE', 'SAMPO.HE', 'INVE-B.ST']);
+const FINANCIAL_INDUSTRY = /bank|insur|financ|capital market|asset manage|holding|investment/i;
+
+export function isFinancialCompany(company) {
+  const ticker = String(company?.ticker || '').trim().toUpperCase();
+  if (FINANCIAL_TICKERS.has(ticker)) return true;
+  return FINANCIAL_INDUSTRY.test(String(company?.industry || ''));
+}
+
 export function pageSlug(company) {
   return `${slugify(companyDisplayName(company))}-equity-report`;
 }
@@ -27,7 +41,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
     (item.industry && item.industry === company.industry ? 8 : 0) +
     (item.currency && item.currency === company.currency ? 3 : 0);
   const related = relatedCompanies
-    .filter((item) => item.ticker !== company.ticker)
+    .filter((item) => item.ticker !== company.ticker && !isFinancialCompany(item))
     .sort((a, b) => relatedScore(b) - relatedScore(a) || String(a.companyName).localeCompare(String(b.companyName)))
     .slice(0, 4);
 

@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { generateCompanyPages } from '../../scripts/generate-company-pages.mjs';
-import { companyDisplayName, pageSlug } from '../../scripts/company-pages/render-company-page.mjs';
+import { companyDisplayName, pageSlug, isFinancialCompany } from '../../scripts/company-pages/render-company-page.mjs';
 
 test('company display names and slugs remove legal suffixes and preserve Nordic letters', () => {
   assert.equal(companyDisplayName({ companyName: 'Evolution AB (publ)', ticker: 'EVO.ST' }), 'Evolution');
@@ -100,4 +100,48 @@ window.COMPANY_PAGE_CATALOG = [
   assert.match(sitemap, /https:\/\/www\.aiequityreports\.com\/reports\/example-equity-report\.html/);
   assert.doesNotMatch(sitemap, /example-oyj-equity-report/);
   assert.match(sitemap, /<lastmod>2026-07-10<\/lastmod>/);
+});
+
+test('financial companies are detected by ticker and industry keyword', () => {
+  assert.equal(isFinancialCompany({ ticker: 'NDA-FI.HE', industry: '' }), true);
+  assert.equal(isFinancialCompany({ ticker: 'INVE-B.ST', industry: '' }), true);
+  assert.equal(isFinancialCompany({ ticker: 'XYZ.HE', industry: 'Diversified Banks' }), true);
+  assert.equal(isFinancialCompany({ ticker: 'XYZ.HE', industry: 'Property & Casualty Insurance' }), true);
+  assert.equal(isFinancialCompany({ ticker: 'KNEBV.HE', industry: 'Industrial Machinery' }), false);
+});
+
+test('generator skips financial companies entirely (no page, no failure)', async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'company-generator-fin-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const client = {
+    async findCompanyByTicker(ticker) {
+      return {
+        companyId: 7, companyName: 'Example Bank', companyCode: 'FI9', ticker,
+        industry: 'Diversified Banks', models: [{ followedModelId: 11 }],
+      };
+    },
+    async getLatestActualModels() {
+      return [{
+        followedModelId: 11, companyId: 7, currentYear: 2026, orderNo: 1, currency: 'EUR',
+        dataMap: { 2025: { bv: 30_000, adj_share_price_a: 10.5, ns: 25_525, ebit: 6_548, net_earnings: 5_059, market_cap_ye: 36_761 } },
+      }];
+    },
+  };
+  const profileProvider = {
+    name: 'test', model: 'test-model',
+    async generate() { throw new Error('profile should not be generated for a financial company'); },
+  };
+
+  const result = await generateCompanyPages({
+    tickers: ['XYZ.HE'],
+    client,
+    profileProvider,
+    outputDir: path.join(root, 'reports'),
+    profileDir: path.join(root, 'profiles'),
+    updateDiscovery: false,
+  });
+
+  assert.equal(result.companies.length, 0);
+  assert.equal(result.failures.length, 0);
+  await assert.rejects(fs.readFile(path.join(root, 'reports', 'example-bank-equity-report.html'), 'utf8'));
 });
