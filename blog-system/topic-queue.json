@@ -184,11 +184,12 @@
       "role": "support",
       "targetQuery": "kesko stock analysis",
       "intent": "informational-commercial",
-      "status": "queued",
+      "status": "in-review",
       "proposedAt": "2026-06-21",
       "score": 82,
       "rationale": "Covered OMXH consumer-staples name with a fresh 5 Jun 2026 report and zero structured English coverage in the SERP — the winnable Helsinki wedge applied to a stable dividend defensive.",
-      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + /reports/kesko-equity-report. Proprietary data plan: kesko-05062026.json — base-case fair value vs price, dividend/payout, and the grocery/building-&-technical-trade/car-trade segment split. Score: winnability 24 (OMXH English underserved) + proprietary 26 + cluster fit 17 + freshness 15 (5 Jun 2026 report)."
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + /reports/kesko-equity-report. Proprietary data plan: kesko-05062026.json — base-case fair value vs price, dividend/payout, and the grocery/building-&-technical-trade/car-trade segment split. Score: winnability 24 (OMXH English underserved) + proprietary 26 + cluster fit 17 + freshness 15 (5 Jun 2026 report).",
+      "prNumber": 29
     },
     {
       "slug": "recursion-pharmaceuticals-stock-analysis",
