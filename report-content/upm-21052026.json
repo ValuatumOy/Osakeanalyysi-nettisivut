@@ -7,115 +7,87 @@
   "country": "Finland",
   "sector": "Paper, Lumber & Forest Products",
   "currency": "EUR",
-  "reportDate": "2026-05-21",
+  "reportDate": "2026-07-24",
   "headline": {
-    "recommendation": "BUY",
+    "recommendation": "HOLD",
     "horizon": "12-month",
-    "currentPrice": "25.31 EUR",
-    "targetPrice": "34.00 EUR",
-    "impliedUpside": "+34.3%",
-    "marketCap": "EUR 13.1 bn",
-    "enterpriseValue": "EUR 16.6 bn"
+    "currentPrice": "22.23 EUR",
+    "targetPrice": "21.10 EUR",
+    "impliedUpside": "-5.1%",
+    "marketCap": "EUR 11.7 bn",
+    "enterpriseValue": "EUR 14.8 bn"
   },
   "multiples": [
-    {"label": "P/E 2026E", "value": "16.4x"},
-    {"label": "EV/EBITDA 2026E", "value": "7.8x"},
-    {"label": "FCF Yield 2026E", "value": "9.8%"},
-    {"label": "Dividend Yield 2026E", "value": "4.9%"},
-    {"label": "Net Debt/EBITDA 2026E", "value": "1.3x"}
+    {
+      "label": "P/E 2026E",
+      "value": "17.2x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "8.2x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "10.1%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "4.7%"
+    },
+    {
+      "label": "Net Debt/EBITDA 2026E",
+      "value": "1.5x"
+    }
   ],
   "priceStats": {
-    "week52High": "26.98 EUR",
-    "week52Low": "22.75 EUR",
-    "oneYearChange": "+3.5%",
-    "threeYearChange": "-7.4%"
+    "week52High": "27.94 EUR",
+    "week52Low": "21.72 EUR",
+    "oneYearChange": "-5.0%",
+    "threeYearChange": "-21.5%"
   },
   "summary": [
-    "UPM-Kymmene Oyj (UPM.HE, NASDAQ Helsinki) is a Finnish paper, pulp, forestry and energy group, and this Valuatum equity research report dated 21 May 2026 rates it BUY with a 12-month target price of EUR 34.00 versus a current price of EUR 25.31, implying roughly +34.3% upside.",
-    "The core valuation tension is that the market prices UPM as though the EUR 3 billion-plus Paso de los Toros pulp investment failed and the Leuna biochemicals refinery will consume capital indefinitely. The tangible asset floor alone — UPM Energy plus Finnish forestry at EUR 8-9 billion and Advanced Materials at EUR 3-3.5 billion — accounts for roughly EUR 11-12.5 billion of the EUR 16.4 billion enterprise value, leaving the entire pulp portfolio and biochemicals option available at just EUR 3-5 billion.",
-    "The reverse-valuation conclusion is that a structural collapse in growth capital expenditure — from EUR 715 million in 2024 toward a EUR 300 million maintenance run-rate by 2026 — intersects with recovering pulp margins to roughly double free cash flow. With cash costs at Paso de los Toros near $280 per tonne against a mid-cycle BEK price of $650 per tonne, a EUR 900 million Fibres EBITDA gap closes on price normalisation alone, supporting the BUY call provided the biochemicals division proves its unit economics."
+    "UPM (UPM.HE, NASDAQ Helsinki) is a Finland-based forest industry group. This Valuatum equity research report dated 24 July 2026 rates the stock HOLD with a 12-month target price of EUR 21.10 versus a current price of EUR 22.23, implying roughly -5.1% downside.",
+    "The call is balanced between a recovery path in Fibres and a valuation that already embeds part of the improvement. Pulp spreads need to recover toward the level required to justify Fibres' EV allocation, while Paso de los Toros reaching full 2.1 million tonne capacity supports the EBITDA growth bridge.",
+    "The key constraint is valuation: UPM trades at a premium forward EV/EBITDA multiple versus peers, so the selected fair multiple caps upside despite free cash flow support and portfolio actions around Communication Papers and Plywood."
   ],
   "thesis": [
-    {"num": "01", "title": "Capital Expenditure Collapse", "metric": "€687m+ FCF", "text": "Capital expenditure falls from EUR 715 million in 2024 to approximately EUR 300 million by 2026, converting EUR 1.7 billion of EBITDA into over EUR 687 million of free cash flow with no volume growth required."},
-    {"num": "02", "title": "Paso de los Toros Normalization", "metric": "€900m EBITDA gap", "text": "The Paso de los Toros pulp mill carries a verified cash cost of $280 per tonne against a mid-cycle BEK price assumption of $650 per tonne, leaving a EUR 900 million EBITDA gap in Fibres that closes on price normalisation alone, not operational improvement."},
-    {"num": "03", "title": "Robust Tangible Asset Floor", "metric": "€8-9B EV floor", "text": "The tangible asset floor of UPM Energy and Finnish forestry supports EUR 8 billion to EUR 9 billion of the EUR 16.4 billion enterprise value, leaving the entire pulp portfolio and biochemicals option available at EUR 3 billion to EUR 5 billion in the current market price."}
-  ],
-  "thesisBreaker": "Global pulp prices settling durably below $500 per tonne, preventing the EUR 3 billion Paso de los Toros asset from clearing its cost of capital.",
-  "valuePools": [
-    {"name": "UPM Fibres (Pulp & Forestry)", "share": "50% · EUR 6,500m mcap", "economics": "~EUR 2,895m revenue · ~EUR 600m 2024 segment EBITDA · mid-cycle target EUR 1.4-1.6bn · 14.0% target ROCE", "text": "A commodity / spread business generating roughly EUR 3 billion in 2024 sales, valued on its position on the global pulp cost curve and the terminal value of its owned forestry; the market assigns about 45% of total enterprise value to the combined pulp and forestry base. With Paso de los Toros, total pulp capacity approaches 5.8 million tonnes at a $280/t first-quartile Uruguay cash cost."},
-    {"name": "UPM Energy", "share": "27% · EUR 3,500m mcap", "economics": "~EUR 517m revenue (~5% of group sales) · up to 15% of group EBIT · 6% long-term target ROCE on fair-value base", "text": "A regulated / infrastructure asset producing CO2-free baseload electricity in Finland through hydropower and a stake in the Olkiluoto nuclear plant. It serves as the defensive anchor of the equity, with an impenetrable moat as new hydro concessions or nuclear capacity cannot be replicated within a decade."},
-    {"name": "Advanced Materials (Raflatac & Specialty)", "share": "19% · EUR 2,500m mcap", "economics": "~EUR 3,722m revenue (over a third of group sales) · ~30% of group EBIT · 14-20% target ROCE · 9-10x stable EBIT", "text": "The current profit engine combining UPM Raflatac adhesive labels and UPM Specialty Papers, valued as the stable, compounding core. Demand is tied to GDP, e-commerce and FMCG, with growth driven by high-margin graphics and targeted M&A such as AMC in Germany and Grafityp in Belgium."},
-    {"name": "Next Generation Renewables", "share": "10% · EUR 1,250m mcap", "economics": "~EUR 103m revenue · ~-EUR 70m 2024 segment EBIT · required mid-cycle EBIT EUR 130-150m · 30%+ target margin", "text": "An emerging option valued as a long-duration call on decarbonisation, currently loss-making. The EUR 1.275 billion Leuna biorefinery is designed for 220,000 tonnes and at ~EUR 2,000/t implies ~EUR 440 million run-rate revenue, but must earn a 10-12% ROIC and a 30%+ EBIT margin to justify the investment."},
-    {"name": "Communication Papers", "share": "8% · EUR 1,000m mcap", "economics": "~EUR 3,102m revenue (~30% of group top line) · over 40% of group comparable EBIT at peak · 14% target FCF/CE (often >20%)", "text": "A defensive / declining cash flow business treated as a melting ice cube and valued on discounted terminal free cash flow. Graphic paper demand falls structurally by mid-single digits annually, and UPM closes capacity (Nordland Papier, Ettringen, Kaukas) to preserve pricing power and fund the dividend and growth capex."}
-  ],
-  "reverseValuation": {
-    "intro": "The valuation is a sum-of-the-parts reverse exercise: anchor roughly half of the EUR 16.4 billion enterprise value to the tangible asset floor of UPM Energy and Finnish forestry at EUR 8-9 billion, then test what revenue, EBITDA and trading multiple the residual pulp and biochemicals businesses must support. Scenarios diverge on Leuna execution and the macro pricing of pulp, with the largest swing dictated by UPM Fibres' operational leverage over 5.8 million tonnes of capacity.",
-    "scenarios": [
-      {"scenario": "Bull", "cols": {"Revenue": "10,800", "EBITDA": "2,200", "Margin": "20.3%", "Multiple": "9.5x", "EV": "20,900", "Equity": "17,821"}, "impliedValueOrUpside": "EUR 33.72 / sh · +33.2%"},
-      {"scenario": "Base", "cols": {"Revenue": "10,200", "EBITDA": "1,900", "Margin": "18.6%", "Multiple": "8.0x", "EV": "15,200", "Equity": "12,121"}, "impliedValueOrUpside": "EUR 22.93 / sh · -9.4%"},
-      {"scenario": "Bear", "cols": {"Revenue": "9,500", "EBITDA": "1,400", "Margin": "14.7%", "Multiple": "5.5x", "EV": "7,700", "Equity": "4,621"}, "impliedValueOrUpside": "EUR 8.74 / sh · -65.5%"}
-    ],
-    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
-  },
-  "coreAnalysis": [
-    {"heading": "Executive Map", "text": "UPM operates a business model with an unusual dual character: it derives the majority of revenue and operating profit from mature packaging materials and structurally declining graphic paper, yet the market assigns the vast majority of enterprise value to its long-duration infrastructure assets — zero-carbon Finnish energy generation, owned forestry land, and highly cost-competitive South American pulp. The market values UPM through a sum-of-the-parts framework that aggressively discounts the legacy European paper business while placing utility-like multiples on the Finnish electricity and pulp assets. The defining analytical question is whether the recently deployed capital — the EUR 3 billion-plus Paso de los Toros mill and the EUR 1.275 billion Leuna biochemicals refinery — can generate the required mid-cycle return on capital."},
-    {"heading": "Cross-Pool Bridge", "text": "The mechanical driver of the forward forecast is a massive expansion in free cash flow, facilitated by stabilisation of operating margins as the commodity cycle normalises and a structural collapse in capital expenditure toward a EUR 300 million maintenance run-rate by 2026. The portion supported by current businesses — UPM Energy, Advanced Materials and Communication Papers — is highly robust, and the Paso de los Toros volume is mechanically secure as the asset is already commissioned. The weakest part of the bridge is the margin recovery and mix shift dependent on Next Generation Renewables and a cyclical pulp recovery; if Leuna requires further corrective capital or misses its 30%+ EBIT margin, the consolidated margin expansion stalls. Current asset values support roughly half of the EUR 16.4 billion enterprise value, providing a profound margin of safety."},
-    {"heading": "Scenarios & Verdict", "text": "Scenarios differ fundamentally on the execution of growth options at Leuna and the macro pricing of pulp, with the largest valuation swing dictated by UPM Fibres given that a $100 per tonne move in global pulp prices translates almost directly to the bottom line across 5.8 million tonnes. The most important downside variable is the discipline of the Communication Papers division and the EUR 2.9 billion net debt load; the downside thesis breaker is a concurrent collapse in Nordic electricity and global pulp prices while the balance sheet absorbs the final Leuna capital. The bottom line is that the valuation is ultimately supported by current tangible economics — zero-carbon power and low-cost pulp — rather than future optionality; the biochemicals division provides the narrative, but the physical spread businesses provide the cash."}
-  ],
-  "risks": [
-    "Permanent pulp oversupply (HIGH, thesis-breaker if confirmed, UPM Fibres): a prolonged period where prices hover near marginal cash costs prevents clearing the cost of capital on the EUR 3 billion Paso de los Toros investment; early warning is continuous weakness in Asian pulp pricing.",
-    "Execution failure in Biochemicals (HIGH, manageable, Next Generation Renewables): technical failure to scale the sugars-to-chemicals process limits Leuna to cash consumption and could write off over EUR 1 billion in invested capital; early warning is further sequential startup delays.",
-    "Accelerated paper decline (MEDIUM, manageable, Communication Papers): structural decline accelerating beyond management's capacity to close facilities collapses fixed cost absorption and cash margins; early warning is the FCF/CE ratio falling below 14%.",
-    "Regulatory intervention in energy (MEDIUM, structural, UPM Energy): windfall taxes or interventions penalising low-cost baseload operators in the Nordics; early warning is adverse Finnish or EU energy tax proposals."
-  ],
-  "catalysts": [
-    "Leuna Commercialization (medium-term, Next Generation Renewables): first commercial customer deliveries and margin disclosure validate EUR 1.0B+ option value; following the EUR 373 million impairment, successful H2 2025 deliveries would remove the largest overhang on the stock.",
-    "Paso de los Toros Optimization (near-term, UPM Fibres): Uruguayan pulp cash cost per tonne below $280 secures the core EBITDA bridge.",
-    "Global Pulp Inventory Cycle (near-term, UPM Fibres): Chinese port inventories normalising toward historical averages re-rate mid-cycle pulp margins.",
-    "Paper Capacity Closures (medium-term, Communication Papers): European graphic paper supply/demand balance sustains FCF generation; often misunderstood by generalists who read aggressive capacity reduction as distress rather than value-accretive."
-  ],
-  "financials": {
-    "note": "All figures in EUR millions unless noted.",
-    "incomeStatement": {
-      "columns": ["2023A", "2024A", "2025E", "2026E", "2027E", "2028E"],
-      "rows": [
-        {"label": "Net Sales", "values": ["10,460", "10,339", "9,656", "9,861", "10,239", "10,348"]},
-        {"label": "EBITDA", "values": ["1,154", "1,698", "1,026", "2,122", "1,938", "1,990"]},
-        {"label": "EBITDA margin", "values": ["11.0%", "16.4%", "10.6%", "21.5%", "18.9%", "19.2%"]},
-        {"label": "Depreciation", "values": ["-546", "-1,094", "-594", "-995", "-547", "-547"]},
-        {"label": "Operating Profit (EBIT)", "values": ["608", "604", "432", "1,127", "1,391", "1,444"]},
-        {"label": "EBIT margin", "values": ["5.8%", "5.8%", "4.5%", "11.4%", "13.6%", "13.9%"]},
-        {"label": "Net financial items", "values": ["-143", "-104", "258", "-120", "-176", "-73"]},
-        {"label": "Pre-tax Profit", "values": ["465", "500", "690", "1,007", "1,215", "1,371"]},
-        {"label": "Net Earnings", "values": ["395", "463", "491", "818", "987", "1,113"]},
-        {"label": "EPS (EUR)", "values": ["0.7", "0.9", "0.9", "1.6", "1.9", "2.1"]},
-        {"label": "DPS (EUR)", "values": ["1.5", "1.5", "1.5", "1.2", "1.5", "1.7"]},
-        {"label": "Payout ratio", "values": ["202.5%", "172.8%", "161.5%", "80.0%", "80.0%", "80.0%"]}
-      ]
+    {
+      "num": "01",
+      "title": "EBITDA Growth Driven by Capacity Ramp",
+      "metric": "EUR 1,601m EBITDA",
+      "text": "Group EBITDA is forecast to climb from EUR 1,351 million in 2025 to EUR 1,601 million by 2027, driven by Paso de los Toros reaching full 2.1 million tonne capacity and lifting EBIT margin from 7.8% to 10.2%."
     },
-    "ratios": {
-      "columns": ["2026E"],
-      "rows": [
-        {"label": "P/E", "values": ["16.4x"]},
-        {"label": "EV/EBITDA", "values": ["7.8x"]},
-        {"label": "EV/EBIT", "values": ["14.6x"]},
-        {"label": "P/FCF", "values": ["10.2x"]},
-        {"label": "P/BV", "values": ["1.3x"]},
-        {"label": "Dividend Yield", "values": ["4.9%"]},
-        {"label": "Net Debt / EBITDA", "values": ["1.3x"]}
-      ]
+    {
+      "num": "02",
+      "title": "Pulp Spread Recovery Required",
+      "metric": "EUR 110/tonne",
+      "text": "Pulp spreads sit near EUR 110 per tonne against the EUR 122 per tonne needed to justify Fibres' EUR 5,340 million EV allocation, so the segment depends on Uruguay volumes and margin recovery."
+    },
+    {
+      "num": "03",
+      "title": "Premium Multiple Caps Upside",
+      "metric": "9.3x EV/EBITDA",
+      "text": "UPM trades at 9.3x 2027E EV/EBITDA versus a peer median of 7.5x. The selected 8.5x fair multiple reflects superior margins but keeps the blended EUR 21.10 target below the spot price."
     }
-  },
+  ],
+  "thesisBreaker": "Permanent structural impairment of Finnish wood costs due to loss of Russian timber, or EU regulatory block of the Sappi JV.",
   "faqs": [
-    {"q": "Is UPM-Kymmene a buy in 2026?", "a": "Yes. Valuatum's 21 May 2026 report rates UPM-Kymmene (UPM.HE) a BUY with a 12-month target of EUR 34.00 versus a EUR 25.31 price, about +34.3% upside. The call rests on a collapse in growth capex and recovering pulp margins structurally expanding free cash flow."},
-    {"q": "What is UPM's price target?", "a": "The 21 May 2026 Valuatum report sets a 12-month fundamental target price of EUR 34.00 for UPM-Kymmene (UPM.HE), implying roughly +34.3% upside from the EUR 25.31 current price. The Bull scenario implies EUR 33.72 per share and the Bear scenario EUR 8.74."},
-    {"q": "Why is UPM considered undervalued?", "a": "UPM's EUR 16.4 billion enterprise value is roughly half underpinned by a EUR 8-9 billion tangible floor from UPM Energy and Finnish forestry. With Advanced Materials added, EUR 11-12.5 billion is covered, leaving the entire pulp portfolio and biochemicals option priced at just EUR 3-5 billion."},
-    {"q": "How does the reverse valuation work for UPM?", "a": "It is a sum-of-the-parts test: anchor about half the EUR 16.4 billion enterprise value to the EUR 8-9 billion tangible asset floor, then check what EBITDA and multiple the residual pulp and biochemicals businesses must support. The Base case yields EUR 22.93 per share, the Bull case EUR 33.72 (+33.2%)."},
-    {"q": "What is the biggest risk to UPM's investment thesis?", "a": "The thesis-breaking risk is permanent structural oversupply in the global pulp market, where prices hover near marginal cash costs and prevent the EUR 3 billion Paso de los Toros mill from earning its cost of capital. A second HIGH risk is technical execution failure at the Leuna biochemicals refinery."}
+    {
+      "q": "Is UPM a buy in 2026?",
+      "a": "Valuatum's 24 July 2026 report rates UPM (UPM.HE) HOLD with a 12-month target price of EUR 21.10 versus a EUR 22.23 current price, implying roughly -5.1% downside."
+    },
+    {
+      "q": "What is UPM's price target?",
+      "a": "The 24 July 2026 Valuatum report sets a 12-month fundamental target price of EUR 21.10 for UPM, compared with a current price of EUR 22.23."
+    },
+    {
+      "q": "Why is UPM rated HOLD?",
+      "a": "UPM has a credible EBITDA recovery bridge from capacity ramp-up and pulp spread recovery, but the current valuation already prices in meaningful improvement and caps the upside."
+    }
   ],
   "sources": [
-    "Primary data: UPM-Kymmene financial snapshot and Company Value Map; UPM Fibres segment EBIT share 20%; 2024 actual EBIT margin 5.8%.",
-    "Consensus estimates: Consensus EBIT 2027 EUR 1,391m; analyst-generated forecast EBITDA EUR 2,122m for 2026.",
-    "Market data: Current share price EUR 25.31 as of 21 May 2026; forward multiples (P/E 16.4x, EV/EBITDA 7.8x) model output."
-  ]
+    "Primary source: Valuatum Equity Research, UPM report dated 24 July 2026.",
+    "Market data and valuation figures shown on this page are taken from the 24 July 2026 report PDF."
+  ],
+  "profile": "UPM is a Finland-based forest industry group that converts wood and other renewable raw materials into pulp, paper, energy, and bio-based materials. Its business areas include Fibres, Energy, Adhesive Materials, Specialty Papers, Communication Papers, and Plywood. UPM is currently reshaping its portfolio through a signed joint venture combining Communication Papers with Sappi's European graphic paper business, and a proposed demerger separating Plywood into an independently listed company, WISA Group."
 }

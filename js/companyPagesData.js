@@ -89,7 +89,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "INTC",
     "exchange": "NASDAQ",
     "url": "reports/intel-equity-report.html",
-    "description": "Intel is a semiconductor designer and manufacturer whose valuation is tied to product competitiveness, data center demand and the foundry turnaround. The company page includes a free downloadable AI equity report."
+    "description": "Intel is a semiconductor designer and manufacturer whose valuation is tied to product competitiveness, data center demand and the foundry turnaround. The company page includes a ready paid AI equity report."
   },
   {
     "name": "Kempower",
@@ -103,7 +103,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "KESKOB.HE",
     "exchange": "Helsinki",
     "url": "reports/kesko-equity-report.html",
-    "description": "Kesko is a Finnish trading-sector company with grocery, building and technical trade operations. The company page includes a free downloadable AI equity report."
+    "description": "Kesko is a Finnish trading-sector company with grocery, building and technical trade operations. The company page includes a ready paid AI equity report."
   },
   {
     "name": "Kone",
@@ -166,7 +166,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "NVDA",
     "exchange": "NASDAQ",
     "url": "reports/nvidia-equity-report.html",
-    "description": "NVIDIA is an accelerated computing company whose investment case is tied to AI data center GPUs, networking, software ecosystems, gaming, professional visualization and automotive platforms. The company page includes a free downloadable AI equity report."
+    "description": "NVIDIA is an accelerated computing company whose investment case is tied to AI data center GPUs, networking, software ecosystems, gaming, professional visualization and automotive platforms. The company page includes a ready paid AI equity report."
   },
   {
     "name": "Oriola",
@@ -223,7 +223,7 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/stora-enso-equity-report.html",
     "thumbnail": "images/stora-enso-report-header.png",
-    "description": "Stora Enso Oyj is a forest products company that focuses on renewable materials and wood-based solutions. It produces packaging materials and packaging solutions, biomaterials, and wood products, and also manages forest assets and timber supply. Its products are used in building construction, retail, food and beverage, manufacturing, e-commerce, and other industrial applications."
+    "description": "Stora Enso Oyj is a renewable materials, packaging and forest assets company. The company page includes a free downloadable AI equity report."
   },
   {
     "name": "Tesla",
@@ -231,7 +231,7 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "NASDAQ",
     "url": "reports/tesla-equity-report.html",
     "thumbnail": "images/tesla-report-header.png",
-    "description": "Tesla, Inc. designs, manufactures and sells electric vehicles, energy generation and storage products, software-enabled driver assistance features, and related services. The company operates automotive manufacturing, battery storage, charging, software and services businesses, with production and sales across North America, Europe and Asia."
+    "description": "Tesla designs and sells electric vehicles, energy storage products, autonomy software and related services. The company page includes a free downloadable AI equity report."
   },
   {
     "name": "UPM",
@@ -239,7 +239,7 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/upm-equity-report.html",
     "thumbnail": "images/upm-report-header.png",
-    "description": "UPM is a Finnish forest industry company that produces pulp, timber and sawmill products, label materials, specialty and communication papers, and plywood. It also operates low-emission energy and biorefining businesses, including wood-based biofuels and biochemicals. The company uses renewable and recyclable raw materials across its industrial operations and serves customers in packaging, paper and engineered materials."
+    "description": "UPM is a Finnish forest industry company with pulp, forestry, energy, paper and bio-based materials operations. The company page includes a free downloadable AI equity report."
   },
   {
     "name": "Vaisala",
