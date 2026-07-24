@@ -1,0 +1,81 @@
+{
+  "slug": "enterprise-value-vs-market-cap",
+  "cluster": "valuation-methodology",
+  "role": "support",
+  "targetQuery": "enterprise value vs market cap",
+  "intent": "informational",
+  "title": "Enterprise Value vs Market Cap: What the Gap Tells You",
+  "metaDescription": "Enterprise value vs market cap: EV adds net debt and nets out cash, so it can sit below or above market cap. We show the gap on Nokia and Stora Enso.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": "2026-07-24" },
+  "datePublished": "2026-07-24",
+  "dateModified": "2026-07-24",
+  "readingTimeMinutes": 6,
+  "keywords": ["enterprise value", "market cap", "net debt", "net cash", "EV/EBITDA"],
+  "sections": [
+    {
+      "h2": "Enterprise value vs market cap: what is the difference?",
+      "html": "<p>Market cap is what a company's equity is worth. Enterprise value is what the whole business would cost to take over. The two differ by one thing: net debt.</p><p>Market capitalisation multiplies the share price by the shares outstanding. It measures the equity, the slice that shareholders own. Enterprise value starts from that equity value and adjusts for the rest of the capital structure. The standard formula is enterprise value = market cap + total debt minus cash and equivalents. A buyer inherits the target's debt and keeps its cash, so debt raises the real cost of the business and cash lowers it. That is why enterprise value is sometimes called <a href=\"https://corporatefinanceinstitute.com/resources/capital_markets/what-is-enterprise-value-ev\" target=\"_blank\" rel=\"noopener noreferrer\">the takeover price</a>.</p><p>The gap between the two is not noise. It tells you how the business is financed. A cash-rich company trades at an enterprise value below its market cap. A debt-laden one trades above it. Two firms can carry the same market cap and have enterprise values billions apart. If you are working through <a href=\"/blog/how-to-value-a-stock.html\">how to value a stock</a>, this is the first number to get straight.</p>"
+    },
+    {
+      "h2": "When is enterprise value lower than market cap?",
+      "html": "<p>When a company holds more cash than debt. Nokia is the clean example. Our 5 June 2026 model bridges a EUR 75,950 million market cap down to a EUR 74,739 million <a href=\"/reports/nokia-equity-report.html\">enterprise value</a>, because the balance sheet is net cash.</p><p>Nokia ended 2025 in a <a href=\"https://www.nokia.com/newsroom/nokia-corporation-financial-report-for-q4-2025-and-full-year-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">net cash position</a>, and our model still carries it that way. In the enterprise-value bridge we net EUR 1,527 million of cash against EUR 316 million of other senior claims, which pulls value out rather than adding it. An acquirer would effectively get that cash back, so the price to control the business is lower than the equity is quoted at. In our model the net debt to EBITDA ratio is minus 0.4x, the sign that cash outweighs borrowings.</p><table><thead><tr><th>Nokia bridge (our 5 June 2026 model)</th><th>EUR m</th></tr></thead><tbody><tr><td>Market capitalisation</td><td>75,950</td></tr><tr><td>Less: net cash</td><td>(1,527)</td></tr><tr><td>Plus: other senior claims</td><td>316</td></tr><tr><td>Enterprise value</td><td>74,739</td></tr></tbody></table><p>The difference here is small, about EUR 1.2 billion on a EUR 76 billion company. Net cash trims the takeover price a little. It does not transform it.</p>"
+    },
+    {
+      "h2": "When is enterprise value higher than market cap?",
+      "html": "<p>When debt outweighs cash. Stora Enso is the mirror image. Our 24 July 2026 model bridges a EUR 7.2 billion market cap up to a EUR 10.6 billion <a href=\"/reports/stora-enso-equity-report.html\">enterprise value</a>, a gap of about EUR 3.4 billion.</p><p>Stora Enso carries real leverage. It reported roughly EUR 3.2 billion of <a href=\"https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2026/2/stora-enso-financial-statements-release-2025-sharpened-strategic-focus\" target=\"_blank\" rel=\"noopener noreferrer\">net debt</a> at the end of 2025, and our forward model puts net debt to EBITDA at 2.2x. Buy the equity for EUR 7.2 billion and you also take on that debt, so the business costs far more than its market cap suggests. Notice the gap is wider than net debt alone. Enterprise value also absorbs pension deficits, lease liabilities and minority interests, which is why the EUR 3.4 billion wedge sits above the headline borrowing figure.</p><table><thead><tr><th>Stora Enso bridge (our 24 July 2026 model)</th><th>EUR bn</th></tr></thead><tbody><tr><td>Market capitalisation</td><td>7.2</td></tr><tr><td>Plus: net debt and other claims</td><td>3.4</td></tr><tr><td>Enterprise value</td><td>10.6</td></tr></tbody></table><p>For a levered company the two numbers diverge hard. Ignore it and a EUR 7.2 billion price tag looks cheaper than the EUR 10.6 billion you would actually commit.</p>"
+    },
+    {
+      "h2": "Which one should you use, and when?",
+      "html": "<p>For comparing two companies, use enterprise value. Market cap on its own hides the balance sheet, and the balance sheet is exactly what separates Nokia from Stora Enso. We default to enterprise value for any cross-company multiple, and we think most screens that rank on market cap or raw P/E quietly mislead.</p><p>Enterprise value pairs with operating profits that sit above the interest line: EV/EBITDA, EV/EBIT, EV/Sales. Those multiples are capital-structure neutral, so they let you compare a net-cash business against a levered one on equal terms. In our models Nokia trades at 19.7x EV/EBITDA and Stora Enso at 6.7x, a spread that a P/E comparison of 43.6x against 17.8x frames differently. Market cap still has its place: index weighting, ownership stakes, and per-share ratios like P/E and dividend yield all work off equity value, not enterprise value. The two answer different questions. For a fuller comparison of the ratios, see <a href=\"/blog/ev-ebitda-vs-pe-ratio.html\">EV/EBITDA vs the P/E ratio</a>.</p><p>One caveat on our own method. The bridge assumes reported cash is fully available to an acquirer. If Nokia's cash is earmarked for the Infinera integration or held where it cannot move without a tax bill, subtracting it in full makes the enterprise look cheaper than it is. That is the main way our EV figure could flatter a company. So when a screen calls a stock cheap on price alone, check the enterprise value first. A low market cap sitting on top of EUR 3 billion of net debt is not cheap. It is leveraged.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is the difference between enterprise value and market cap?",
+      "a": "Market cap is the value of a company's equity, its share price times shares outstanding. Enterprise value is the cost to buy the whole business, adding net debt and subtracting cash. Enterprise value equals market cap plus total debt minus cash, so the gap between them reflects how the company is financed."
+    },
+    {
+      "q": "Can enterprise value be lower than market cap?",
+      "a": "Yes, when a company holds more cash than debt. In our 5 June 2026 model Nokia has a EUR 75,950 million market cap and a lower EUR 74,739 million enterprise value, because netting its cash against other claims pulls value out of the takeover price. Its net debt to EBITDA is minus 0.4x."
+    },
+    {
+      "q": "Why is a company's enterprise value higher than its market cap?",
+      "a": "Because it carries net debt. In our 24 July 2026 model Stora Enso has a EUR 7.2 billion market cap but a EUR 10.6 billion enterprise value. A buyer inherits roughly EUR 3.4 billion of net debt, pensions and other claims, so controlling the business costs more than the equity alone."
+    },
+    {
+      "q": "Should I use market cap or enterprise value?",
+      "a": "Use enterprise value to compare companies with different debt loads, and for multiples like EV/EBITDA and EV/EBIT that sit above the interest line. Use market cap for equity-level questions: index weighting, ownership stakes, and per-share ratios such as P/E and dividend yield. They answer different questions."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Nokia enterprise-value bridge: EUR 75,950m market cap, EUR 1,527m net cash, EUR 316m other senior claims, EUR 74,739m enterprise value; net debt/EBITDA -0.4x (5 June 2026 model)",
+      "source": "report-content/nokia-05062026.json"
+    },
+    {
+      "claim": "Stora Enso: EUR 7.2bn market cap, EUR 10.6bn enterprise value, net debt/EBITDA 2.2x (24 July 2026 model)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Nokia 19.7x EV/EBITDA and 43.6x P/E vs Stora Enso 6.7x EV/EBITDA and 17.8x P/E (2026E, our models)",
+      "source": "report-content/nokia-05062026.json, report-content/storaenso-01062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/nokia-equity-report.html",
+    "/reports/stora-enso-equity-report.html",
+    "/methodology.html",
+    "/blog/how-to-value-a-stock.html",
+    "/blog/ev-ebitda-vs-pe-ratio.html"
+  ],
+  "sources": [
+    { "label": "Valuatum Nokia Equity Report, 5 June 2026 (enterprise-value bridge, multiples)", "url": "/reports/nokia-equity-report.html" },
+    { "label": "Valuatum Stora Enso Equity Report, 24 July 2026 (enterprise value, net debt)", "url": "/reports/stora-enso-equity-report.html" },
+    { "label": "Corporate Finance Institute, Enterprise Value (EV) definition and formula", "url": "https://corporatefinanceinstitute.com/resources/capital_markets/what-is-enterprise-value-ev" },
+    { "label": "Financial Modeling Prep, Enterprise Value (EV) vs. Market Capitalization", "url": "https://site.financialmodelingprep.com/education/financial-analysis/Enterprise-Value-EV-vs-Market-Capitalization-Key-Differences-and-When-to-Use-Each" },
+    { "label": "Nokia Corporation, Financial Report for Q4 and full year 2025 (net cash position)", "url": "https://www.nokia.com/newsroom/nokia-corporation-financial-report-for-q4-2025-and-full-year-2025/" },
+    { "label": "Stora Enso, Financial Statements Release 2025 (net debt)", "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2026/2/stora-enso-financial-statements-release-2025-sharpened-strategic-focus" }
+  ]
+}
