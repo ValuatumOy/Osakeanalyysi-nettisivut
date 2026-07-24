@@ -209,11 +209,12 @@
       "role": "support",
       "targetQuery": "enterprise value vs market cap",
       "intent": "informational",
-      "status": "queued",
+      "status": "in-review",
+      "prNumber": 31,
       "proposedAt": "2026-06-21",
       "score": 72,
       "rationale": "Explicit Cluster-A support gap from DESIGN §3 not yet queued; thin/evergreen methodology SERP where our net-cash/net-debt bridges turn an abstract concept into live numbers.",
-      "notes": "Cluster A support; links to how-to-value-a-stock pillar + sibling ev-ebitda-vs-pe-ratio. Proprietary data plan: nokia-05062026.json (net cash) and storaenso-01062026.json (net debt) — show the market-cap → EV bridge both directions on real balance sheets. Score: winnability 26 (thin evergreen methodology SERP) + proprietary 22 + cluster fit 18 + freshness 6 (evergreen)."
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + sibling ev-ebitda-vs-pe-ratio. Proprietary data plan: nokia-05062026.json (net cash) and storaenso-01062026.json (net debt) — show the market-cap → EV bridge both directions on real balance sheets. Drafted 2026-07-24 (Fri full pipeline run) as PR #31 on branch blog/enterprise-value-vs-market-cap. Human-queued (only status:queued item). Angle: EV bridge run both directions on covered names — Nokia net cash EV EUR 74,739m below EUR 75,950m market cap (5 Jun 2026 model), Stora Enso net debt EV EUR 10.6bn above EUR 7.2bn market cap (24 Jul 2026 model), plus the pension/lease/minority wedge above headline net debt. Inbound link added from live can-ai-analyze-stocks pillar (dateModified left unchanged, single cross-link). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge. Score: winnability 26 (thin evergreen methodology SERP) + proprietary 22 + cluster fit 18 + freshness 6 (evergreen)."
     },
     {
       "slug": "free-cash-flow-yield-explained",
