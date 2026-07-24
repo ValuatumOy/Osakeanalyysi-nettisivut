@@ -1,0 +1,9 @@
+{
+  "ticker": "ACOU.ST",
+  "companyName": "AcouSort AB (publ)",
+  "profile": "AcouSort AB develops acoustofluidic products and solutions for the automated preparation of biological samples. Its technology uses sound waves and microfluidics to separate, concentrate, purify and stain cells, exosomes and bacteria. The company sells separation modules for diagnostic system manufacturers and research instruments for sample processing in laboratory and point-of-care applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:59:10.518Z"
+}

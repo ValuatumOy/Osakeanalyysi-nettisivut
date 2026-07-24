@@ -1,0 +1,9 @@
+{
+  "ticker": "ELUX-B.ST",
+  "companyName": "AB Electrolux (publ)",
+  "profile": "AB Electrolux is a global home appliance company that develops, markets, and sells refrigerators, freezers, ovens, cookers, dishwashers, washing machines, vacuum cleaners, and other household products. Its portfolio includes the Electrolux, AEG, and Frigidaire brands, and its value drivers include consumer demand, product innovation, brand strength, and sales across international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:43:45.190Z"
+}

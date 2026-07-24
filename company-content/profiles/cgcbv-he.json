@@ -1,0 +1,9 @@
+{
+  "ticker": "CGCBV.HE",
+  "companyName": "Cargotec Corporation",
+  "profile": "Cargotec is an industrial machinery company that provides cargo-handling solutions through its Hiab and MacGregor businesses. Hiab supplies on-road load-handling equipment, related services and digital solutions, while MacGregor serves marine cargo and load-handling needs for ships and offshore operations. The company is also in transition toward becoming an independent Hiab following the planned divestment of MacGregor.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:02:15.377Z"
+}

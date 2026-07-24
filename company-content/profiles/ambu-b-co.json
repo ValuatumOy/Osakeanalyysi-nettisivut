@@ -1,0 +1,9 @@
+{
+  "ticker": "AMBU-B.CO",
+  "companyName": "Ambu A/S",
+  "profile": "Ambu A/S is a Danish medical device company focused on single-use endoscopy, anesthesia, and patient monitoring products. Its portfolio includes bronchoscopes, gastroscopes, video laryngoscopes, ventilation equipment, and ECG, EMG and EEG electrodes. The company develops, manufactures, and sells these devices to hospitals and healthcare professionals worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:47:56.226Z"
+}

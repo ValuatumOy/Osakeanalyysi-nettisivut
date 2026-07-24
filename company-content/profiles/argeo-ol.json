@@ -1,0 +1,9 @@
+{
+  "ticker": "ARGEO.OL",
+  "companyName": "Argeo AS",
+  "profile": "Argeo AS is a Norwegian subsea service company that provides survey, inspection, maintenance, and repair services across oil and gas, marine minerals, and renewables. It combines owned vessels, autonomous underwater vehicles, sensors, digital imaging, and data visualization software to collect and interpret offshore data for industrial clients.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:01:13.008Z"
+}

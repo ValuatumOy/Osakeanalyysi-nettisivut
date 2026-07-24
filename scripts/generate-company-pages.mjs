@@ -17,6 +17,7 @@ export async function generateCompanyPages(options) {
   const outputDir = options.outputDir || path.join(ROOT, 'reports');
   const profileDir = options.profileDir || path.join(ROOT, 'company-content', 'profiles');
   const readyReports = options.readyReports || await loadReadyReports(options.reportCatalogPath || DEFAULT_REPORT_CATALOG_PATH);
+  const freshness = options.freshness || (options.freshnessPath ? await loadModelFreshness(options.freshnessPath) : new Map());
   const client = options.client || new WisdomClient({
     baseUrl: options.apiBase || process.env.WISDOM_API_BASE || 'https://wisdom.valuatum.com/rest',
     token: options.apiToken || process.env.WISDOM_API_TOKEN,
@@ -47,7 +48,12 @@ export async function generateCompanyPages(options) {
         model: options.model,
         provider: options.profileProvider,
       });
-      companies.push({ ...company, profile: profileResult.profile, profileSource: profileResult.source });
+      companies.push({
+        ...company,
+        profile: profileResult.profile,
+        profileSource: profileResult.source,
+        dataUpdated: freshness.get(normalizeTicker(company.ticker)) || null,
+      });
     } catch (error) {
       failures.push({ ticker, error });
       options.onProgress?.(`error  ${ticker}: ${error.message}`);
@@ -93,6 +99,8 @@ function parseArgs(argv) {
     else if (arg.startsWith('--provider=')) options.providerName = arg.slice('--provider='.length);
     else if (arg === '--output-dir') options.outputDir = path.resolve(requiredOptionValue(argv, ++index, '--output-dir'));
     else if (arg.startsWith('--output-dir=')) options.outputDir = path.resolve(arg.slice('--output-dir='.length));
+    else if (arg === '--freshness') options.freshnessPath = path.resolve(requiredOptionValue(argv, ++index, '--freshness'));
+    else if (arg.startsWith('--freshness=')) options.freshnessPath = path.resolve(arg.slice('--freshness='.length));
     else if (arg.startsWith('-')) throw new Error(`Unknown option ${arg}`);
     else options.tickers.push(...arg.split(','));
   }
@@ -122,6 +130,28 @@ async function loadReadyReports(catalogPath) {
   } catch {
     return [];
   }
+}
+
+// Reads a tab-separated export with TICKER and model_updated columns and returns a
+// Map from normalized ticker to the data freshness date (YYYY-MM-DD). The model
+// version/freshness is not available from the Wisdom REST API, so it is supplied
+// out of band via this file.
+async function loadModelFreshness(freshnessPath) {
+  const lines = (await fs.readFile(freshnessPath, 'utf8')).split(/\r?\n/).filter((line) => line.trim());
+  const header = (lines[0] || '').split('\t');
+  const tickerCol = header.indexOf('TICKER');
+  const updatedCol = header.indexOf('model_updated');
+  if (tickerCol === -1 || updatedCol === -1) {
+    throw new Error(`Freshness file ${freshnessPath} must have TICKER and model_updated columns`);
+  }
+  const freshness = new Map();
+  for (const line of lines.slice(1)) {
+    const columns = line.split('\t');
+    const ticker = normalizeTicker(columns[tickerCol]);
+    const date = String(columns[updatedCol] || '').trim().slice(0, 10);
+    if (ticker && /^\d{4}-\d{2}-\d{2}$/.test(date)) freshness.set(ticker, date);
+  }
+  return freshness;
 }
 
 async function readReportCatalog(catalogPath) {
@@ -162,6 +192,7 @@ Options:
   --skip-ai           Use cache or Wisdom background without calling AI
   --skip-discovery    Do not update companyPagesData.js or sitemap.xml
   --output-dir PATH   HTML output directory (default: reports)
+  --freshness PATH    TSV with TICKER and model_updated columns for data freshness
   -h, --help          Show this help
 
 Environment:

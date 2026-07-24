@@ -1,0 +1,9 @@
+{
+  "ticker": "AGF-B.CO",
+  "companyName": "AGF A/S",
+  "profile": "AGF A/S operates the professional football business of AGF in Aarhus. The company manages the men’s first team, women’s team and youth elite teams, and generates revenue mainly from sponsorships, ticket sales, media rights, matchday activity and events. It is the listed vehicle for the club’s elite football operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:42:15.509Z"
+}

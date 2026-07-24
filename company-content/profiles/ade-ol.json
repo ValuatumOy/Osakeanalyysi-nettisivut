@@ -1,0 +1,9 @@
+{
+  "ticker": "ADE.OL",
+  "companyName": "Adevinta ASA",
+  "profile": "Adevinta is an online classifieds group that operates digital marketplaces across Europe and selected other markets. Its platforms connect buyers, sellers and businesses in categories including consumer goods, mobility, real estate and jobs, with revenue driven by marketplace listings, advertising and related services. The company was delisted in June 2024 after being acquired.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:42:40.368Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "AGAT.CO",
+  "companyName": "Agat Ejendomme A/S",
+  "profile": "Agat Ejendomme A/S is a Danish listed real estate company focused on owning and operating properties, mainly shopping and outlet centres. It seeks to improve operating income, control costs in line with the portfolio, and wind down remaining land-related activities. The company also reviews strategic options for its assets and business structure.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:40:56.674Z"
+}

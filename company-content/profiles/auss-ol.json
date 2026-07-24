@@ -1,0 +1,9 @@
+{
+  "ticker": "AUSS.OL",
+  "companyName": "Austevoll Seafood ASA",
+  "profile": "Austevoll Seafood ASA is a seafood investment and operating company with activities across salmon and trout, whitefish, and pelagic fish. Through subsidiaries such as Lerøy Seafood Group, Austral Group, Foodcorp Chile and Pelagia, it owns fishing, farming, processing, fishmeal and fish oil, canning, freezing and sales operations in Norway, the UK, Peru, Chile and Ireland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:06:00.221Z"
+}
