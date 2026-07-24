@@ -1,0 +1,9 @@
+{
+  "ticker": "PEG.CO",
+  "companyName": "Blue Vision A/S",
+  "profile": "Blue Vision A/S, now operating as Pharma Equity Group A/S, is a Danish listed company focused on advancing pharmaceutical development through its subsidiary Reponex Pharmaceuticals A/S. Its activities center on supporting and financing drug-candidate development, including clinical and regulatory work on pipeline projects, and on building value through future licensing or strategic partnering.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:59:38.929Z"
+}

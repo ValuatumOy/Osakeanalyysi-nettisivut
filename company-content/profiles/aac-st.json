@@ -1,0 +1,9 @@
+{
+  "ticker": "AAC.ST",
+  "companyName": "AAC Clyde Space AB (publ)",
+  "profile": "AAC Clyde Space develops small satellite technologies and space-based data services for governments, businesses, and institutions. Its activities span satellite components, spacecraft platforms, mission services, launch integration, and data delivery and analytics. The company also supplies standardized subsystems for cube and small satellites and operates data services for applications such as Earth observation and maritime monitoring.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:41:58.523Z"
+}

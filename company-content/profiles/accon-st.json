@@ -1,0 +1,9 @@
+{
+  "ticker": "ACCON.ST",
+  "companyName": "Acconeer AB (publ)",
+  "profile": "Acconeer AB (publ) develops and sells low-power millimeter-wave radar sensors and related modules based on its pulsed coherent radar technology. Its products are used for distance, presence, motion, and object detection in applications such as industrial automation, consumer electronics, automotive, and IoT. The company also offers evaluation kits and support for integration.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:58:06.670Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ACC.OL",
+  "companyName": "Aker Carbon Capture ASA",
+  "profile": "Aker Carbon Capture ASA is a Norwegian carbon capture technology company that develops and commercializes systems to reduce industrial emissions. Its business has focused on amine-based capture solutions and project delivery for sectors such as cement, waste-to-energy, gas processing and other hard-to-abate industries, including through its stake in the SLB Capturi joint venture.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:48:36.033Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ACAD.ST",
+  "companyName": "AcadeMedia AB (publ)",
+  "profile": "AcadeMedia is a Nordic education company that operates preschools, primary schools, upper secondary schools and adult education providers in Sweden and other European markets. It also develops digital education services and technologies. The group’s value drivers are scale, centralised support functions and a broad portfolio of local education brands across the learning ladder.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:54:20.817Z"
+}

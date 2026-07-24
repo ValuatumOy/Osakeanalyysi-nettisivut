@@ -1,0 +1,9 @@
+{
+  "ticker": "CONSTI.HE",
+  "companyName": "Consti Oyj",
+  "profile": "Consti Oyj is a Finnish construction company focused on renovation contracting and technical building services. It provides comprehensive renovation, building technology, and selected new construction services, along with service contracts and maintenance, to housing companies, corporations, investors, and the public sector. Its work is concentrated in Finland’s growth centres.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:06:58.238Z"
+}

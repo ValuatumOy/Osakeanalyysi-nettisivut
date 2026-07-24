@@ -1,0 +1,9 @@
+{
+  "ticker": "BOREO.HE",
+  "companyName": "Boreo Oyj",
+  "profile": "Boreo Oyj is a Finnish industrial group that owns and develops small and medium-sized companies through two business areas, Electronics and Technical Trade. Its businesses distribute, manufacture and assemble electronic components and own products, and provide technical trade, industrial services, logistics and aftermarket support to customers in Finland and selected European and US markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:59:50.873Z"
+}

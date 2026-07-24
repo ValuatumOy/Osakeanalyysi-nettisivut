@@ -1,0 +1,9 @@
+{
+  "ticker": "AKAST.OL",
+  "companyName": "Akastor ASA",
+  "profile": "Akastor ASA is an oil-services investment company that manages a portfolio of industrial and financial holdings. Its activities center on active ownership, capital allocation and long-term value creation through stakes in businesses serving the offshore energy sector, including vessel-based subsea services and engineering and software operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:45:34.103Z"
+}

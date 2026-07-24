@@ -1,0 +1,9 @@
+{
+  "ticker": "APETIT",
+  "companyName": "Apetit",
+  "profile": "Apetit is a Finnish food company focused on plant-based food products and oilseed products. It develops and markets frozen vegetables, frozen foods, frozen pizzas and vegetable oils for retail, food service and industry customers. The company is rooted in domestic primary production and operates factories in Finland and Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:47:03.346Z"
+}

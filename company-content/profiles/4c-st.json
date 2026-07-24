@@ -1,0 +1,9 @@
+{
+  "ticker": "4C.ST",
+  "companyName": "4C Group AB (publ)",
+  "profile": "4C Group AB develops software and related expert services for operational readiness, training and exercise management, crisis response, and continuity management. Its Exonaut platform supports planning, coordination, and follow-up of exercises, incidents, and risks for defence, public sector, and enterprise customers. The company also provides implementation, support, and consulting services around these solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:40:34.852Z"
+}

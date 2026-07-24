@@ -1,0 +1,9 @@
+{
+  "ticker": "AQP.CO",
+  "companyName": "Aquaporin A/S",
+  "profile": "Aquaporin A/S develops water treatment membranes and systems based on its Aquaporin Inside technology, which uses aquaporin proteins in biomimetic filtration. The company serves residential, municipal and industrial applications, including drinking water purification, wastewater treatment, water reuse and forward osmosis concentration. It also works with partners on customized membrane solutions and related commercial products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:48:57.032Z"
+}

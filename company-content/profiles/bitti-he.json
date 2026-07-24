@@ -1,0 +1,9 @@
+{
+  "ticker": "BITTI.HE",
+  "companyName": "Bittium",
+  "profile": "Bittium develops secure communications and connectivity solutions, including tactical and secure mobile communications products, as well as biosignal measurement and monitoring technologies for cardiology and neurophysiology. The company also provides engineering services for high-end product development, with capabilities in embedded systems, hardware, software, and customized R&D support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:58:31.730Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "AGILC.CO",
+  "companyName": "Agillic A/S",
+  "profile": "Agillic A/S is a Danish software company that provides a cloud-based marketing automation and customer marketing platform. Its software helps organisations collect and use customer data to deliver personalised, omnichannel communications across email, SMS, web, app and print. The company earns revenue through platform subscriptions and transaction-based fees.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:43:06.145Z"
+}

@@ -109,6 +109,7 @@ ${jsonLdText}
     .cp-l{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.05em;color:var(--gray-steel);line-height:1.25;}
     .cp-v{font-size:1rem;font-weight:600;color:var(--charcoal);line-height:1.3;overflow-wrap:break-word;}
     .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
+    .cp-updated{font-size:var(--text-xs);color:var(--gray-steel);margin:0.85rem 0 0;line-height:1.4;}
     .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
     @media(max-width:520px){
@@ -165,6 +166,7 @@ ${navHtml()}
         <section class="report-full-section" id="metrics">
           <h2>Key metrics &amp; valuation multiples</h2>
           <div class="cp-grid">${metrics.map(metricCell).join('')}</div>
+          ${company.dataUpdated ? `<p class="cp-updated">Figures updated on ${esc(company.dataUpdated)}. Data will be refreshed during report generation.</p>` : ''}
         </section>
 
         <section class="report-full-section" id="about">

@@ -1,0 +1,9 @@
+{
+  "ticker": "OSSR.CO",
+  "companyName": "Össur hf.",
+  "profile": "Össur develops, manufactures, and sells non-invasive orthopaedic products for people with limb loss, joint instability, and injury. Its portfolio spans prosthetics, bracing and supports, and patient care through owned orthotic and prosthetic clinics. The company serves clinicians and patients globally, with revenue driven by innovative mobility solutions and related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:26:59.489Z"
+}

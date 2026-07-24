@@ -1,0 +1,9 @@
+{
+  "ticker": "ALMA.HE",
+  "companyName": "Alma Media",
+  "profile": "Alma Media is a Finnish digital media and service company focused on news media, recruitment services and online marketplaces. Its operations include financial, professional and consumer journalism, housing and automotive marketplaces, and digital recruitment platforms in Finland and several European countries. The company also provides data, advertising and related business services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:45:18.815Z"
+}

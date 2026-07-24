@@ -1,0 +1,9 @@
+{
+  "ticker": "BAVA.CO",
+  "companyName": "Bavarian Nordic A/S",
+  "profile": "Bavarian Nordic is a vaccines company focused on researching, developing, manufacturing, and commercializing preventive vaccines. Its portfolio includes travel vaccines such as rabies, tick-borne encephalitis, cholera, typhoid, and chikungunya vaccines, as well as smallpox and mpox vaccines supplied to governments and international organizations for public health preparedness.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:55:59.972Z"
+}
