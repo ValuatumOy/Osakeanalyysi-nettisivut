@@ -1,0 +1,9 @@
+{
+  "ticker": "TLT1V.HE",
+  "companyName": "Teleste Corporation",
+  "profile": "Teleste Corporation develops broadband network products, software and services for cable and telecommunications operators, including access network equipment, video headend systems and network services. It also provides public safety and mobility solutions such as video security, situational awareness and passenger information systems for public transport and other critical infrastructure users.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:44:26.493Z"
+}

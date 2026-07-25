@@ -1,0 +1,9 @@
+{
+  "ticker": "CDON.ST",
+  "companyName": "CDON AB",
+  "profile": "CDON AB operates online marketplaces in the Nordic region, primarily CDON and Fyndiq, and connects third-party merchants with consumers. The company offers a broad assortment that includes consumer electronics, home goods, media, clothing, sports, toys and other everyday products. Its business is driven by marketplace traffic, merchant participation and digital commerce services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:07:13.908Z"
+}

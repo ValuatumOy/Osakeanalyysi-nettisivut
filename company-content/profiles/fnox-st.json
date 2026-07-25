@@ -1,0 +1,9 @@
+{
+  "ticker": "FNOX.ST",
+  "companyName": "Fortnox AB (publ)",
+  "profile": "Fortnox AB develops cloud-based business software for Swedish companies and accounting firms. Its platform includes products for bookkeeping, invoicing, payroll, reporting, and other administrative workflows, alongside financial services such as financing and payment handling. The company also offers integrations and related services that help users manage and automate day-to-day business operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:02:18.067Z"
+}

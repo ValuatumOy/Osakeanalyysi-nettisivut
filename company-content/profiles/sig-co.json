@@ -1,0 +1,9 @@
+{
+  "ticker": "SIG.CO",
+  "companyName": "Scandinavian Investment Group A/S",
+  "profile": "Scandinavian Investment Group A/S is a Danish listed investment company based in Herlev. It invests primarily in real estate, corporate bonds, mortgage deeds and equity interests, and manages its capital through active screening and portfolio allocation. The company’s value is driven by returns and valuation changes across these investment holdings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:49:05.409Z"
+}

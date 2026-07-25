@@ -1,0 +1,9 @@
+{
+  "ticker": "WMA.CO",
+  "companyName": "WindowMaster International A/S",
+  "profile": "WindowMaster International A/S develops and supplies automated window control systems, actuators and related hardware for natural, mixed-mode and smoke ventilation in buildings. The company also provides engineering support for ventilation design and façade automation, with products aimed at improving indoor climate, energy efficiency and fire safety across commercial and other building types.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:14:57.785Z"
+}

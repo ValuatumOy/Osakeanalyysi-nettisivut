@@ -1,0 +1,9 @@
+{
+  "ticker": "GOD.OL",
+  "companyName": "Goodtech ASA",
+  "profile": "Goodtech ASA is a Nordic engineering and system integration company serving industrial customers with automation, digitalization, IT/OT infrastructure, cyber security, engineering, and service and support. It also delivers electrification, robotization, and control solutions across sectors such as manufacturing, energy, food, metals, and emerging industries, helping clients improve operations, data flow, and reliability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:32:12.885Z"
+}

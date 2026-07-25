@@ -1,0 +1,9 @@
+{
+  "ticker": "PNA1V.HE",
+  "companyName": "Panostaja Oyj",
+  "profile": "Panostaja Oyj is a Finnish investment company focused on growth-oriented small and medium-sized businesses in the service and software sectors. It acts as an active owner and growth partner, supporting portfolio companies with management tools, financing, strategic development and corporate acquisitions, while seeking value creation through long-term ownership and divestments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:53:40.320Z"
+}

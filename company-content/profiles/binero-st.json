@@ -1,0 +1,9 @@
+{
+  "ticker": "BINERO.ST",
+  "companyName": "Binero Group AB (publ)",
+  "profile": "Binero Group AB (publ) provides IT and technology services for companies and organisations in the Nordics. Its offering includes Swedish cloud services, managed services, connected services, project management for network services, and operation of its own data centre and server infrastructure. The company also supports customers with 24/7 service and related consulting activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:08:52.881Z"
+}

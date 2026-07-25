@@ -1,0 +1,9 @@
+{
+  "ticker": "NNIT.CO",
+  "companyName": "NNIT A/S",
+  "profile": "NNIT A/S is a publicly listed IT consultancy that serves life sciences companies, the public sector and other highly regulated industries. The company advises, implements and improves digital solutions, with work spanning cloud, data, cybersecurity and application services. Following its 2023 divestment of infrastructure operations, NNIT has been more focused on specialized consulting.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:08:01.026Z"
+}

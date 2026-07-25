@@ -1,0 +1,9 @@
+{
+  "ticker": "MUSTI.HE",
+  "companyName": "Musti Group Oyj",
+  "profile": "Musti Group Oyj is a Nordic pet care specialist that sells food and non-food pet products through an omnichannel retail model and offers selected services including grooming, training and veterinary care. It operates mainly in Finland, Sweden and Norway, and has recently expanded into the Baltics and Portugal.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:37:02.433Z"
+}

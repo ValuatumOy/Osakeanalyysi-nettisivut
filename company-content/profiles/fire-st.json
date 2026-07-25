@@ -1,0 +1,9 @@
+{
+  "ticker": "FIRE.ST",
+  "companyName": "Firefly AB (publ)",
+  "profile": "Firefly AB develops and sells industrial fire prevention and protection systems for the process industry worldwide. Its products and services include spark detection and extinguishing, flame detection, and water-mist suppression systems designed to prevent fires and dust explosions, protect production assets, and reduce process disruption across sectors such as woodworking, pulp and paper, food, recycling, and power generation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:00:02.486Z"
+}

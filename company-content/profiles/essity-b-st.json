@@ -1,0 +1,9 @@
+{
+  "ticker": "ESSITY-B.ST",
+  "companyName": "Essity AB (publ)",
+  "profile": "Essity AB is a global hygiene and health company that develops, manufactures and sells products and services for personal care, consumer tissue and professional hygiene. Its portfolio includes incontinence, feminine care and baby care products, tissue products, and workplace hygiene solutions, with additional medical offerings in wound care, compression and orthopedics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:55:42.354Z"
+}

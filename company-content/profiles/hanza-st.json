@@ -1,0 +1,9 @@
+{
+  "ticker": "HANZA.ST",
+  "companyName": "Hanza AB (publ)",
+  "profile": "HANZA AB is a Swedish contract manufacturer that provides integrated production services for industrial customers. Its offering spans electronics, sheet metal, heavy mechanics, wire harnesses, machining and assembly, supported by supply chain advisory and regional manufacturing clusters. The company aims to simplify complex manufacturing arrangements and deliver complete, locally coordinated production solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:13:10.637Z"
+}

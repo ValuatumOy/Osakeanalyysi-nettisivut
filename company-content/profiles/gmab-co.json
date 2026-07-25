@@ -1,0 +1,9 @@
+{
+  "ticker": "GMAB.CO",
+  "companyName": "Genmab A/S",
+  "profile": "Genmab A/S is an international biotechnology company focused on discovering, developing and commercializing antibody-based medicines for cancer and other serious diseases. Its portfolio spans approved therapies, proprietary technology platforms and a pipeline of investigational products, including bispecific antibodies, antibody-drug conjugates and immune-modulating antibodies. The company also relies on strategic partnerships to advance development and delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:17:04.981Z"
+}

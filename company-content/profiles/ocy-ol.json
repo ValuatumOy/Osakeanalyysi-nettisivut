@@ -1,0 +1,9 @@
+{
+  "ticker": "OCY.OL",
+  "companyName": "Ocean Yield ASA",
+  "profile": "Ocean Yield ASA is a ship-owning and ship leasing company that invests in modern vessels on long-term charters. Its portfolio spans gas carriers, container ships, LNG carriers, crude, product and chemical tankers, and dry bulk carriers. The business is driven by charter income and a large backlog that provides earnings visibility.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:54:40.499Z"
+}

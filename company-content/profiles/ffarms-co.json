@@ -1,0 +1,9 @@
+{
+  "ticker": "FFARMS.CO",
+  "companyName": "FirstFarms A/S",
+  "profile": "FirstFarms A/S is a Danish listed agricultural company with operations in the Czech Republic, Slovakia, Hungary and Romania. It produces crops, milk and pigs, and also manages and develops agricultural land. The group uses production assets across its farms to supply food and agricultural products, mainly through local sales channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:08:16.760Z"
+}

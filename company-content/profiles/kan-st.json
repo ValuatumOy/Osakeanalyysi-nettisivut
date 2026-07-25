@@ -1,0 +1,9 @@
+{
+  "ticker": "KAN.ST",
+  "companyName": "Kancera AB (publ)",
+  "profile": "Kancera AB (publ) is a clinical-stage biotechnology company developing small-molecule drugs that modulate immune-cell signaling, with a current focus on cardiovascular diseases. Its lead candidates include KAND567 and KAND145, which are being advanced through clinical and preclinical development. The company is also in the process of rebranding to Novakand Pharma as it sharpens its cardiovascular strategy.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:31:48.134Z"
+}

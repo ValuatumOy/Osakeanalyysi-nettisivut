@@ -1,0 +1,9 @@
+{
+  "ticker": "IVACC.ST",
+  "companyName": "Intervacc AB (publ)",
+  "profile": "Intervacc AB is a Swedish biotechnology company focused on animal health. It develops veterinary vaccines based on recombinant proteins, with Strangvac as its main product against equine strangles. Through its subsidiary Nordvacc, the group markets veterinary vaccines and animal health products, while Mybac-Vettech provides accredited bacteriological and mycological diagnostic services in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:25:35.774Z"
+}

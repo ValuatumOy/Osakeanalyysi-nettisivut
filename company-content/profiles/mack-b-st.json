@@ -1,0 +1,9 @@
+{
+  "ticker": "MACK-B.ST",
+  "companyName": "Mackmyra Svensk Whisky AB (publ)",
+  "profile": "Mackmyra Svensk Whisky AB produces and markets Swedish single malt whisky, along with related spirits and cask offerings. The company was founded in 1999 and operates from Gävle, with production centered at its distillery and whisky maturation sites. Its value drivers are branded whisky sales, cask business and distribution in Sweden and selected export markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:43:23.832Z"
+}

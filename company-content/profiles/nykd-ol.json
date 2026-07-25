@@ -1,0 +1,9 @@
+{
+  "ticker": "NYKD.OL",
+  "companyName": "Nykode Therapeutics AS",
+  "profile": "Nykode Therapeutics is a clinical-stage biopharmaceutical company developing modular immunotherapy and vaccine candidates based on its Vaccibody platform. Its pipeline includes abi-suva, an off-the-shelf therapeutic vaccine for HPV16-positive cancers, and VB10.NEO, an individualized neoantigen vaccine for solid tumors. The company also pursues autoimmune programs and selective partnerships to advance development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:53:31.030Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "OODA.ST",
+  "companyName": "EPTI AB",
+  "profile": "OODA AI AB is a Sweden-based software company focused on artificial intelligence and SaaS. It provides decentralized and distributed AI computing, AI tools, consulting, training, and implementation services for enterprise customers. The group also develops and operates its own platform and applications, and has recently moved from restructuring toward scaling its business.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:55:29.234Z"
+}

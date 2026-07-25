@@ -1,0 +1,9 @@
+{
+  "ticker": "BINV.ST",
+  "companyName": "BioInvent International AB (publ)",
+  "profile": "BioInvent International AB is a clinical-stage biotechnology company focused on discovering and developing antibody-based therapies for cancer, with programs in hematological cancers and solid tumors. It uses its proprietary F.I.R.S.T. screening platform and n-CoDeR antibody library to generate candidates, and also earns revenue from research collaborations, licensing agreements, and contract manufacturing services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:14:53.925Z"
+}

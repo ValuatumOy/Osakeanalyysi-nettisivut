@@ -1,0 +1,9 @@
+{
+  "ticker": "CODE.OL",
+  "companyName": "CodeLab Capital AS",
+  "profile": "CodeLab Capital AS is a Norwegian investment and operating company focused on technology businesses. Through its subsidiaries, it develops software tools and services for the healthcare and broader B2B market, while also providing capital, strategic support, and network access to portfolio companies. Recent activity includes acquisitions and investments in healthcare software and occupational health services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:51:35.360Z"
+}

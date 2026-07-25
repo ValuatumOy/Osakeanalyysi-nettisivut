@@ -1,0 +1,9 @@
+{
+  "ticker": "OPTOMED.HE",
+  "companyName": "Optomed Oyj",
+  "profile": "Optomed is a Finnish medical technology company that develops handheld and tabletop fundus cameras, retinal imaging devices, and ophthalmology software. Its products support eye screening, image capture, and workflow management for detecting and monitoring diseases such as diabetic retinopathy, glaucoma, and age-related macular degeneration across primary care, clinics, and screening programs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:50:42.638Z"
+}

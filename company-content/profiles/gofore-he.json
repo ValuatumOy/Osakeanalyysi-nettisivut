@@ -1,0 +1,9 @@
+{
+  "ticker": "GOFORE.HE",
+  "companyName": "Gofore Oyj",
+  "profile": "Gofore Oyj is a European consultancy, technology and solutions company that provides business consulting, AI adoption, transformation, and design and development of digital products and services. It serves public-sector, industrial, retail, health, defence and space customers, and its business is driven by digitalisation projects, software development and related advisory work.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:02:00.201Z"
+}

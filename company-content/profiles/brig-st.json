@@ -1,0 +1,9 @@
+{
+  "ticker": "BRIG.ST",
+  "companyName": "Brighter AB (publ)",
+  "profile": "Brighter AB is a Swedish health-tech company that develops daily-care solutions for people living with chronic diseases. Its products are designed to collect and share real-life treatment data between patients, relatives and care providers, supporting more informed care and research. The company is certified under ISO 13485 and listed on Nasdaq First North Growth Market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:45:10.286Z"
+}

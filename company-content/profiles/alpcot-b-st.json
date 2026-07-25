@@ -1,0 +1,9 @@
+{
+  "ticker": "ALPCOT-B.ST",
+  "companyName": "Alpcot Holding AB (publ)",
+  "profile": "Alpcot Holding AB operates a digital platform for savings, investments and insurance in Sweden. Through its subsidiaries, it provides financial advice and distributes financial products, with a main focus on occupational pension solutions for small and medium-sized companies. The group also offers life insurance, related risk products and asset management services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:58:21.198Z"
+}

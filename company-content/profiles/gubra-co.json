@@ -1,0 +1,9 @@
+{
+  "ticker": "GUBRA.CO",
+  "companyName": "Gubra A/S",
+  "profile": "Gubra A/S is a Danish biotechnology company focused on peptide-based drug discovery and preclinical research services. It operates through Biotech, CRO Services and Ventures, developing proprietary therapeutic programs and providing contract research for partners. The company’s value drivers are early-stage drug discovery, scientific data generation and collaboration with external clients and licensees.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:25:13.951Z"
+}

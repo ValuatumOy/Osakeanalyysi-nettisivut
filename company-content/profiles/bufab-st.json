@@ -1,0 +1,9 @@
+{
+  "ticker": "BUFAB.ST",
+  "companyName": "Bufab AB (publ)",
+  "profile": "Bufab AB (publ) is a global supplier of C-parts and technical components for industrial customers. The group sources, stocks and distributes fasteners and customer-specific parts, and provides logistics, quality control and supply-chain solutions that help customers simplify procurement, improve delivery reliability and reduce total cost.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:49:29.455Z"
+}

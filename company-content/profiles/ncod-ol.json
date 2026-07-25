@@ -1,0 +1,9 @@
+{
+  "ticker": "NCOD.OL",
+  "companyName": "Norcod AS",
+  "profile": "Norcod AS is a Norwegian seafood company that cultivates farmed Atlantic cod at marine sites in Central Norway. It focuses on breeding, farming, packing and delivering premium cod through its own operations and partnerships across the value chain. The company emphasizes stable supply, product quality and lower environmental impact.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:35:08.193Z"
+}

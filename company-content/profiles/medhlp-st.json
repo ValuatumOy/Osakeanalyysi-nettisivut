@@ -1,0 +1,9 @@
+{
+  "ticker": "MEDHLP.ST",
+  "companyName": "Medhelp Care Aktiebolag (publ)",
+  "profile": "MedHelp Care Aktiebolag (publ) provides a cloud-based SaaS platform for occupational health and sick-leave management, combined with qualified medical advice. The service is used by companies and organisations in the Nordic region to support preventive health work, improve employee attendance, and reduce absence-related costs. The company operates mainly in Sweden and Denmark.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:45:46.049Z"
+}

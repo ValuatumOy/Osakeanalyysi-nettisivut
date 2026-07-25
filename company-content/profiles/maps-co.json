@@ -1,0 +1,9 @@
+{
+  "ticker": "MAPS.CO",
+  "companyName": "Mapspeople A/S",
+  "profile": "MapsPeople A/S develops MapsIndoors, an enterprise indoor mapping and spatial intelligence platform. The company provides interactive maps, wayfinding, search, room and desk booking, occupancy visualization, and related integrations for offices, airports, hospitals, stadiums, and other large venues. Its software is used to connect building data with navigation and workplace applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:53:22.019Z"
+}

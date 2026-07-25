@@ -1,0 +1,9 @@
+{
+  "ticker": "CARE.ST",
+  "companyName": "Careium AB (Publ)",
+  "profile": "Careium AB (publ) provides technology-enabled care and digital safety solutions for older and vulnerable people. Its offering includes personal alarms, GPS alarms, remote monitoring, alarm receiving centres, field services and related software and support. The company serves care providers and end users across Europe, with recurring revenues driven largely by service contracts and public procurement.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:03:24.524Z"
+}

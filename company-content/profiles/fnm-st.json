@@ -1,0 +1,9 @@
+{
+  "ticker": "FNM.ST",
+  "companyName": "Ferronordic AB (publ)",
+  "profile": "Ferronordic AB (publ) is a service and sales company focused on construction equipment and trucks. It distributes and services brands including Volvo CE, Hitachi, Sandvik, Link-Belt, Volvo Trucks and Renault Trucks across the United States, Germany and Kazakhstan, with an emphasis on workshops, parts, aftermarket support and related customer service.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:59:37.456Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CYVIZ.OL",
+  "companyName": "Cyviz AS",
+  "profile": "Cyviz AS provides collaboration and visualization solutions for meeting rooms, command and control centers, and innovation spaces. The company develops and delivers integrated hardware and software platforms, plus design, installation, and support services, for enterprises and government customers. Its offerings are used to improve communication, situational awareness, and operational efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:55:46.147Z"
+}

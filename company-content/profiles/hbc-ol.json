@@ -1,0 +1,9 @@
+{
+  "ticker": "HBC.OL",
+  "companyName": "Hofseth BioCare ASA",
+  "profile": "Hofseth BioCare ASA is a Norwegian biotechnology and consumer health company that processes salmon side streams into marine ingredients for human and pet nutrition. Its main products include salmon oil, protein and peptide ingredients, and calcium-rich bone powder. The company also develops and commercializes these ingredients through research, processing and sales activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:42:02.809Z"
+}

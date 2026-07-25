@@ -1,0 +1,9 @@
+{
+  "ticker": "GREENM.CO",
+  "companyName": "GreenMobility A/S",
+  "profile": "GreenMobility A/S operates a free-floating electric car-sharing service in Denmark, primarily in Copenhagen and Aarhus. The company lets customers book electric vehicles for short or longer periods through its app, with charging, insurance and parking included in the service. It serves private users and businesses seeking flexible urban transport without owning a car.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:23:14.281Z"
+}

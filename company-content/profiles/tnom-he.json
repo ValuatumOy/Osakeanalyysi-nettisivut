@@ -1,0 +1,9 @@
+{
+  "ticker": "TNOM.HE",
+  "companyName": "Talenom",
+  "profile": "Talenom provides accounting, payroll and consulting services for entrepreneurs, small companies and medium-sized enterprises. It also offers digital financial management software and related banking, payment and card services. The company operates in Finland, Sweden and Spain, and serves customers through a combined service model that links software with advisory support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:40:40.736Z"
+}

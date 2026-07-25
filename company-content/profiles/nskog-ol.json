@@ -1,0 +1,9 @@
+{
+  "ticker": "NSKOG.OL",
+  "companyName": "Norske Skog ASA",
+  "profile": "Norske Skog ASA produces publication paper and packaging paper for customers in Europe and Australasia. Its portfolio includes newsprint and magazine grades under the Nor brand and recycled containerboard under the Strato brand. The group operates several mills, with a growing focus on packaging paper and other fibre-based products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:43:33.228Z"
+}

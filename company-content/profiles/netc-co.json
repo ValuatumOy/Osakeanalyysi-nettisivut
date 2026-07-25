@@ -1,0 +1,9 @@
+{
+  "ticker": "NETC.CO",
+  "companyName": "Netcompany Group A/S",
+  "profile": "Netcompany Group A/S provides IT services focused on digital transformation for governments, critical industries, and enterprises across Europe. The company designs, builds, and operates secure digital infrastructure and mission-critical solutions, and also develops products and platforms for regulated areas such as tax and customs, defence, financial services, aviation, and public administration.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:02:08.714Z"
+}

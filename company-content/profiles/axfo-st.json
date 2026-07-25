@@ -1,0 +1,9 @@
+{
+  "ticker": "AXFO.ST",
+  "companyName": "Axfood AB (publ)",
+  "profile": "Axfood AB is a Swedish food retail and wholesale group operating grocery chains including Willys, Hemköp and City Gross, together with Snabbgross restaurant wholesale and Dagab’s purchasing and logistics operations. The company also supports retailer-owned and e-commerce formats, with value driven by store sales, private labels, digital channels and supply-chain efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:43:22.393Z"
+}

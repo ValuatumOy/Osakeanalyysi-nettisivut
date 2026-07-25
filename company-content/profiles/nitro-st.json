@@ -1,0 +1,9 @@
+{
+  "ticker": "NITRO.ST",
+  "companyName": "Nitro Games Oyj",
+  "profile": "Nitro Games Oyj is a Finnish game developer and publisher focused on action and shooter titles for mobile and other platforms. The company also provides development and publishing services to partner studios and brands. Its operations are organized around original games and partner projects, with some recent activity in iGaming-related revenue.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:42:52.334Z"
+}

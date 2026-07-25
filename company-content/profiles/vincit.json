@@ -1,0 +1,9 @@
+{
+  "ticker": "VINCIT",
+  "companyName": "Vincit",
+  "profile": "Vincit is a Finnish listed IT services company that designs, develops and maintains software and digital business solutions for enterprise and public-sector clients. Its operations are split between service businesses and a SaaS product offering, with delivery focused on data and AI, SAP and Microsoft Azure cloud solutions, composable commerce, and tailored digital products and teams.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:56:53.776Z"
+}

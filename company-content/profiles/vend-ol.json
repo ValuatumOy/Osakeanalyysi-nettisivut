@@ -1,0 +1,9 @@
+{
+  "ticker": "VEND.OL",
+  "companyName": "Schibsted ASA",
+  "profile": "Schibsted ASA, now Vend, is a Nordic marketplace company that operates digital consumer platforms for buying, selling, and comparing goods and services. Its portfolio includes classifieds, real estate, jobs, cars, and price-comparison services across Norway, Sweden, Finland, and Denmark, with revenue driven mainly by listings, advertising, subscriptions, and related digital services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:21:01.728Z"
+}

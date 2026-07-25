@@ -1,0 +1,9 @@
+{
+  "ticker": "FARN.L",
+  "companyName": "Faron Pharmaceuticals Oy",
+  "profile": "Faron Pharmaceuticals Oy is a Finland-based clinical-stage biopharmaceutical company focused on developing immunotherapies for cancer. Its lead program, bexmarilimab, is a novel anti-Clever-1 antibody being studied in combination with standard treatments for hematological cancers and in solid tumors. The company’s value driver is its oncology pipeline and clinical development progress.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:55:16.629Z"
+}

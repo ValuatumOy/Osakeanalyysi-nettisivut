@@ -1,0 +1,9 @@
+{
+  "ticker": "ZLNA.OL",
+  "companyName": "Zelluna ASA",
+  "profile": "Zelluna ASA is a Norwegian biotechnology company developing allogeneic, off-the-shelf T cell receptor-guided natural killer, or TCR-NK, cell therapies for solid cancers. Its lead program, ZI-MA4-1, targets the MAGE-A4 antigen and is in clinical development. The company’s value driver is its proprietary platform for scalable manufacturing of cell therapies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:47:45.338Z"
+}

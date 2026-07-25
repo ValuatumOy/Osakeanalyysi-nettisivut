@@ -1,0 +1,9 @@
+{
+  "ticker": "FASTAT.ST",
+  "companyName": "Aktiebolaget Fastator (publ)",
+  "profile": "Aktiebolaget Fastator is a Swedish investment company focused on the real estate sector. It starts and invests in real-estate-related businesses, using active ownership to support development and long-term value creation. Its portfolio includes both listed and unlisted holdings across property segments and related management services, with exposure to Sweden and selected other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:46:32.550Z"
+}

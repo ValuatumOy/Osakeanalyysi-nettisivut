@@ -1,0 +1,9 @@
+{
+  "ticker": "ALZCUR.ST",
+  "companyName": "AlzeCure Pharma AB (publ)",
+  "profile": "AlzeCure Pharma is a Swedish pharmaceutical company developing small-molecule drug candidates for disorders of the central nervous system, with a focus on Alzheimer’s disease and pain. Its portfolio is organized around the NeuroRestore, Alzstatin and Painless platforms, covering symptomatic, disease-modifying and preventive programs in preclinical and clinical development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:59:29.314Z"
+}

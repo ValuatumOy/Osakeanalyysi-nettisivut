@@ -1,0 +1,9 @@
+{
+  "ticker": "ACT.CO",
+  "companyName": "DecideAct A/S",
+  "profile": "DecideAct A/S develops cloud-based strategy execution software for organizations. Its platform helps customers translate strategic plans into action by assigning accountability, tracking initiatives and key performance indicators, and improving follow-up and governance. The company serves public and private organizations across sectors with software and related services focused on strategy implementation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:49:58.506Z"
+}

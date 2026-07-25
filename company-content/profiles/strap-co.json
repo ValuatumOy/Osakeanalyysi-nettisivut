@@ -1,0 +1,9 @@
+{
+  "ticker": "STRAP.CO",
+  "companyName": "Orphazyme A/S",
+  "profile": "Orphazyme A/S is a Danish biopharmaceutical company that developed heat-shock-protein-based therapies for rare neurodegenerative and lysosomal storage diseases, including arimoclomol as its lead candidate. In 2022, it sold substantially all assets and business activities, and current company materials emphasize restructuring and limited corporate activities rather than active drug development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:19:45.368Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "AMNI.ST",
+  "companyName": "Amniotics AB (publ)",
+  "profile": "Amniotics AB was a clinical-stage biotechnology company focused on stem-cell-based therapies derived from amniotic fluid. It developed candidate treatments for diseases with unmet medical needs and operated a GMP manufacturing facility approved by Swedish regulators, including CDMO services for other biotech companies. In 2024, it merged into Magle Group and was dissolved.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:03:57.823Z"
+}

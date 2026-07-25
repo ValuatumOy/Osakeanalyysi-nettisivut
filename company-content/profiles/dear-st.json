@@ -1,0 +1,9 @@
+{
+  "ticker": "DEAR.ST",
+  "companyName": "Duearity AB (publ)",
+  "profile": "Duearity AB is a Swedish medical technology company focused on tinnitus. It develops and sells Tinearity G1, a non-invasive bone-conduction device that delivers white noise behind the ears to help relieve tinnitus symptoms. The company’s business is built around product development, regulatory approvals, and distribution in selected markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:42:36.086Z"
+}

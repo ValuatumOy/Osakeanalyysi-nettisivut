@@ -1,0 +1,9 @@
+{
+  "ticker": "ATORX.ST",
+  "companyName": "Alligator Bioscience AB (publ)",
+  "profile": "Alligator Bioscience is a clinical-stage biotechnology company developing tumor-directed immuno-oncology antibody drugs for cancer treatment. Its portfolio includes mono- and bispecific antibodies, with mitazalimab as a lead program and HLX22 now a strategic focus. The company is headquartered in Lund, Sweden, and listed on Nasdaq Stockholm under the ticker ATORX.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:53:09.487Z"
+}

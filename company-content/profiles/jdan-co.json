@@ -1,0 +1,9 @@
+{
+  "ticker": "JDAN.CO",
+  "companyName": "Jeudan A/S",
+  "profile": "Jeudan A/S is a listed Danish real estate and service company focused on owning, managing and maintaining primarily office, retail and residential properties in Copenhagen and Frederiksberg. It lets space to businesses and private tenants and provides property-related services, with a business model centered on long-term ownership, upkeep and preservation of its portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:42:35.430Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SANOMA.HE",
+  "companyName": "Sanoma Oyj",
+  "profile": "Sanoma is a European learning and media company with two main businesses: Sanoma Learning and Media Finland. It provides printed and digital learning materials, teaching platforms, independent journalism, magazines, television, radio, and online services. The group operates across Europe and generates revenue mainly from education and Finnish media.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:20:07.678Z"
+}

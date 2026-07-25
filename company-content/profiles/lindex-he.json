@@ -1,0 +1,9 @@
+{
+  "ticker": "LINDEX.HE",
+  "companyName": "Lindex Group Oyj",
+  "profile": "Lindex Group Oyj is a Finnish listed retail company with two divisions: Lindex and Stockmann. Lindex sells fashion through stores and online, focusing on womenswear, kidswear, lingerie and cosmetics. Stockmann operates department stores and webstores in Finland and the Baltics, offering fashion, beauty and home products. The group also emphasizes omnichannel retail and sustainability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:28:09.552Z"
+}

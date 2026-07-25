@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOWKS.ST",
+  "companyName": "Bio-Works Technologies AB (publ)",
+  "profile": "Bio-Works Technologies develops and sells agarose-based chromatography resins and pre-packed columns for purification of biomolecules. Its WorkBeads products are used in research, process development and manufacturing to separate antibodies, proteins, peptides, oligos, viruses and vaccines. The company also offers related purification formats and serves the biopharmaceutical and broader life science industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:09:57.461Z"
+}

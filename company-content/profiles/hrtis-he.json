@@ -1,0 +1,9 @@
+{
+  "ticker": "HRTIS.HE",
+  "companyName": "Herantis Pharma Oyj",
+  "profile": "Herantis Pharma Oyj is a clinical-stage biotechnology company focused on developing disease-modifying therapies for neurodegenerative diseases, particularly Parkinson’s disease. Its lead program, HER-096, is a CDNF-derived peptide being advanced through clinical development. The company aims to build value through product development and strategic partnerships for later-stage clinical testing and commercialization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:04:37.298Z"
+}

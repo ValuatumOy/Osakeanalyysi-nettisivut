@@ -1,0 +1,9 @@
+{
+  "ticker": "ALCA.ST",
+  "companyName": "Alcadon Group AB (publ)",
+  "profile": "Alcadon Group supplies products and systems for data and telecommunications infrastructure. The group combines value-added distribution with product development, serving network infrastructure, fiber-to-the-home, data center, and active equipment needs. It operates across the Nordics and other European markets through subsidiaries and partner relationships, with revenue driven by technical expertise, logistics, and a broad product offering.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:47:23.314Z"
+}

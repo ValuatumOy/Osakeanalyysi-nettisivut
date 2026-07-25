@@ -1,0 +1,9 @@
+{
+  "ticker": "EXS.ST",
+  "companyName": "Exsitec Holding AB (publ)",
+  "profile": "Exsitec Holding AB (publ) is a Nordic information technology services company that provides business-supporting software and implementation services for medium-sized companies. Its portfolio includes ERP systems, business intelligence, CRM, invoice management, e-commerce, warehouse management, budgeting and forecasting, and custom applications. The group is headquartered in Linköping and operates across several Nordic markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:56:52.049Z"
+}

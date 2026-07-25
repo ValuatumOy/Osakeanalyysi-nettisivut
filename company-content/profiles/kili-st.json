@@ -1,0 +1,9 @@
+{
+  "ticker": "KILI.ST",
+  "companyName": "Kiliaro AB (publ)",
+  "profile": "The company develops digital and physical photo services. Its platform Kiliaro focuses on private photo storage and sharing, while newer initiatives include the pho2book photo-book app and e-commerce activities through Posterton. The business is repositioning from a single photo-sharing app toward a broader group of image-related products and services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:33:15.904Z"
+}

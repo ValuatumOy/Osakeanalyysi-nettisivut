@@ -1,0 +1,9 @@
+{
+  "ticker": "CTT.ST",
+  "companyName": "CTT Systems AB (publ)",
+  "profile": "CTT Systems develops and supplies active humidity control systems for aircraft. Its products include humidifiers for passenger cabins, flight decks, crew rests and business jets, as well as dehumidifying anti-condensation systems for aircraft fuselages. The company serves both retrofit and line-fit markets across commercial airliners and large private aircraft.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:30:31.264Z"
+}

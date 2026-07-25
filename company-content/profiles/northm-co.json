@@ -1,0 +1,9 @@
+{
+  "ticker": "NORTHM.CO",
+  "companyName": "North Media A/S",
+  "profile": "North Media A/S develops and operates platforms and distribution channels that connect businesses with consumers. Its businesses include leaflet and local newspaper distribution, a digital rental-housing marketplace, and secure digital access solutions for buildings and homes. The group focuses on high-volume, low-unit-cost operations supported by technology, automation, and data.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:12:43.775Z"
+}

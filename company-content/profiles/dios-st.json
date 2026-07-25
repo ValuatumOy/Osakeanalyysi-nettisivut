@@ -1,0 +1,9 @@
+{
+  "ticker": "DIOS.ST",
+  "companyName": "Diös Fastigheter AB (publ)",
+  "profile": "Diös Fastigheter is a Swedish listed property company focused on commercial and residential real estate in selected growth cities across northern Sweden, from Borlänge to Luleå. It owns, develops and manages centrally located properties, including offices, retail, restaurants and housing, and derives value from local market presence, tenant demand and ongoing portfolio development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:38:49.746Z"
+}

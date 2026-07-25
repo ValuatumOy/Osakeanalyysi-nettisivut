@@ -1,0 +1,9 @@
+{
+  "ticker": "CALTX.ST",
+  "companyName": "Calliditas Therapeutics AB (publ)",
+  "profile": "Calliditas Therapeutics develops and commercializes medicines for rare diseases, with an initial focus on renal and hepatic conditions. Its lead products include TARPEYO/Kinpeygo, budesonide delayed-release capsules for primary IgA nephropathy, and it also advances partnered regional licenses and additional pipeline candidates. In 2024, Asahi Kasei acquired control of the company.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:59:44.625Z"
+}

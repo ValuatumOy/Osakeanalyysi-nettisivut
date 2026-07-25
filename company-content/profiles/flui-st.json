@@ -1,0 +1,9 @@
+{
+  "ticker": "FLUI.ST",
+  "companyName": "Fluicell AB (publ)",
+  "profile": "Fluicell develops microfluidic and single-cell technology for life science research and regenerative medicine. Its products include the BioPen, Biozone 6 and Dynaflow Resolve research tools, the Biopixlar bioprinting platform and the Nexocyte tissue production platform. The company also advances tissue-based therapeutics and screening models for applications such as type 1 diabetes, cardiac toxicity and kidney disease.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:01:04.902Z"
+}

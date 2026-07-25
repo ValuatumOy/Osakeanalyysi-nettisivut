@@ -1,0 +1,9 @@
+{
+  "ticker": "ISR.ST",
+  "companyName": "ISR Immune System Regulation Holding AB (publ)",
+  "profile": "ISR Immune System Regulation Holding AB is a Swedish biotechnology company focused on immunotherapy drug development. It develops immunostimulatory products and vaccine candidates intended to harness the immune system against viral and infectious diseases, including HIV and hepatitis B, as well as cancer. The company is based in Solna and listed on Nasdaq First North Growth Market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:27:37.679Z"
+}

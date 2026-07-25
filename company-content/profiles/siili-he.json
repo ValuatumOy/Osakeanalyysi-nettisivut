@@ -1,0 +1,9 @@
+{
+  "ticker": "SIILI.HE",
+  "companyName": "Siili Solutions Oyj",
+  "profile": "Siili Solutions is an information technology services company that designs and builds AI-powered digital solutions. Its services include software development, digital strategy, data analytics, and innovation work for corporate and public-sector clients. The company focuses on large customers in Finland and selected international markets, with demand driven by digital transformation projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:26:27.053Z"
+}

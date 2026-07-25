@@ -1,0 +1,9 @@
+{
+  "ticker": "PEXIP.OL",
+  "companyName": "Pexip Holding ASA",
+  "profile": "Pexip Holding ASA provides secure video communication software for enterprises and public-sector organizations. Its platform supports video meetings, room systems, and interoperability across meeting environments, with deployment options designed to meet security, privacy, and compliance requirements. The company also offers related services and integrations that help customers manage hybrid and mission-critical collaboration.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:04:38.192Z"
+}

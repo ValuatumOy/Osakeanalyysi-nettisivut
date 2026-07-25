@@ -1,0 +1,9 @@
+{
+  "ticker": "DNO.OL",
+  "companyName": "DNO ASA",
+  "profile": "DNO ASA is a Norwegian oil and gas operator engaged in exploration, development and production. Its portfolio is centered on assets in the North Sea, the Kurdistan region of Iraq and West Africa, with interests in Norway, the United Kingdom, Côte d’Ivoire and Yemen. The company’s value drivers are production, reserves growth and new discoveries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:59:04.724Z"
+}

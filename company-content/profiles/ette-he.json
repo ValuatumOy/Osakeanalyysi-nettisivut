@@ -1,0 +1,9 @@
+{
+  "ticker": "ETTE.HE",
+  "companyName": "Etteplan Oyj",
+  "profile": "Etteplan Oyj is a technology service company that provides engineering solutions, software and embedded services, and technical communication and data solutions. It supports industrial customers with product development, plant engineering, automation, digitalization, and technical documentation. The company serves clients across manufacturing and other industrial sectors through offices in several European countries and China.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:50:20.002Z"
+}

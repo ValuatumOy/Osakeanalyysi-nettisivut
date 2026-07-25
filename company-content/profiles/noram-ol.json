@@ -1,0 +1,9 @@
+{
+  "ticker": "NORAM.OL",
+  "companyName": "NorAm Drilling AS",
+  "profile": "NorAm Drilling AS owns and operates a portfolio of eleven high-spec onshore drilling rigs in the Permian Basin in Texas. The company provides drilling services for horizontal wells in the US land market, with its operations centered on safe, efficient and reliable rig performance for oil and gas customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:31:53.483Z"
+}

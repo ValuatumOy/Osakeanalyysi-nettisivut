@@ -1,0 +1,9 @@
+{
+  "ticker": "NOHO.HE",
+  "companyName": "NoHo Partners Oyj",
+  "profile": "NoHo Partners Oyj is a Finnish restaurant services group founded in 1996. It operates restaurants, entertainment venues and event venues in Finland, and also has activities in Norway and Denmark. The company develops a broad portfolio of restaurant concepts and related hospitality services, and it also makes selective investments connected to its international business.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:45:00.238Z"
+}

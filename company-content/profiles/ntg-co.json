@@ -1,0 +1,9 @@
+{
+  "ticker": "NTG.CO",
+  "companyName": "NTG Nordic Transport Group A/S",
+  "profile": "NTG Nordic Transport Group is an international freight forwarding company that provides transport and logistics solutions across road, rail, air, and ocean. Its services include project transport, express freight, customs handling, warehouse logistics, and 4PL solutions. The group serves customers worldwide through local operations in more than 20 countries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:15:07.286Z"
+}

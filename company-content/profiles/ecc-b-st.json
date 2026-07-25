@@ -1,0 +1,9 @@
+{
+  "ticker": "ECC-B.ST",
+  "companyName": "Ecoclime Group AB (publ)",
+  "profile": "Ecoclime Group AB develops and supplies products and services for energy-efficient buildings, with activities in cloud-based automation, circular energy recovery, ventilation and building automation. The group designs, manufactures, installs and services solutions that recover waste heat, improve indoor climate and reduce property energy use. It also acquires and develops specialist operating companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:46:20.358Z"
+}

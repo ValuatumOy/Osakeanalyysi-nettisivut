@@ -1,0 +1,9 @@
+{
+  "ticker": "CYB1.ST",
+  "companyName": "Cyber Security 1 AB (publ)",
+  "profile": "Cyber Security 1 AB provides cybersecurity services and software solutions across Sweden, Africa, the Middle East and Europe. Its operations are organized around distribution, advisory solutions, and managed security services, including security, risk and compliance offerings, incident response, forensics, implementation, and support. The company is also shifting toward higher-margin managed and implementation services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:31:08.242Z"
+}

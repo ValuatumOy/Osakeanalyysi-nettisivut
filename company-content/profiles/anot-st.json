@@ -1,0 +1,9 @@
+{
+  "ticker": "ANOT.ST",
+  "companyName": "Anoto Group AB (publ)",
+  "profile": "Anoto Group AB develops digital writing and drawing solutions built on its patented dot-pattern technology. The company sells smart pens and related software through brands such as Livescribe and inq, and also offers cloud-based tools for digital note taking, enterprise forms, secure interactive marketing, and biometric authentication. It is also repositioning toward the inq brand.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:07:59.529Z"
+}

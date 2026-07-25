@@ -1,0 +1,9 @@
+{
+  "ticker": "K2A-B.ST",
+  "companyName": "K2A Knaust & Andersson Fastigheter AB (publ)",
+  "profile": "K2A Knaust & Andersson Fastigheter AB is a Swedish real estate company that plans, develops, owns and manages rental apartments and community service properties for long-term operation. Its portfolio includes housing, student accommodation and selected community facilities, with activities concentrated in Stockholm, the Mälardalen region and university cities elsewhere in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:30:27.753Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "AKEL-D.ST",
+  "companyName": "Akelius Residential Property AB (publ)",
+  "profile": "Akelius Residential Property AB is a Swedish holding company focused on residential real estate. Through its subsidiaries, it owns and manages rental apartments in metropolitan cities across Europe and North America, with activities spanning property management, lettings, upgrades, acquisitions, disposals and valuation. Rental income and portfolio quality are key value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:45:35.864Z"
+}

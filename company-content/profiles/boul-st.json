@@ -1,0 +1,9 @@
+{
+  "ticker": "BOUL.ST",
+  "companyName": "Boule Diagnostics AB (publ)",
+  "profile": "Boule Diagnostics AB develops, manufactures and commercializes diagnostic instruments and consumables for blood analysis. Its Diagnostics segment provides hematology and clinical chemistry systems, reagents, controls and calibrators for human and veterinary care settings. Through OEM CDS, the company supplies custom reagents, blood controls and calibrators to other diagnostics companies worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:39:03.606Z"
+}

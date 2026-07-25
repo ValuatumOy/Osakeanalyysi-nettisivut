@@ -1,0 +1,9 @@
+{
+  "ticker": "CHEMM.CO",
+  "companyName": "ChemoMetec A/S",
+  "profile": "ChemoMetec develops, manufactures, and sells analytical instruments for cell counting and cell analysis. Its NucleoCounter and XcytoMatic systems are used in biopharmaceutical production, cell and gene therapy, research, and quality control, supported by consumables and software. The company also serves related applications in agriculture and other life science workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:33:25.712Z"
+}

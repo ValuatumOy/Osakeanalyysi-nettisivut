@@ -1,0 +1,9 @@
+{
+  "ticker": "ARJO-B.ST",
+  "companyName": "Arjo AB (publ)",
+  "profile": "Arjo AB develops and supplies medical devices and solutions for patient handling, hygiene, disinfection, medical beds, pressure injury prevention, and venous thromboembolism prevention. It also provides related services and training. The company sells to healthcare providers globally and focuses on helping caregivers improve mobility, safety, infection control, and care efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:20:23.262Z"
+}

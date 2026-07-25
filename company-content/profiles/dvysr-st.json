@@ -1,0 +1,9 @@
+{
+  "ticker": "DVYSR.ST",
+  "companyName": "Devyser Diagnostics AB (publ)",
+  "profile": "Devyser Diagnostics develops, manufactures and sells diagnostic kits and analysis services for complex DNA testing. Its products support clinical laboratories in hereditary disease, oncology, transplantation and other genetic testing areas, helping with targeted cancer therapy, diagnosis and post-transplant monitoring. The company also offers software and laboratory services that simplify workflows and improve testing throughput.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:35:07.057Z"
+}

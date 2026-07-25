@@ -1,0 +1,9 @@
+{
+  "ticker": "DSV.CO",
+  "companyName": "DSV A/S",
+  "profile": "DSV A/S is a global transport and logistics company that arranges air and sea freight, road transport, rail freight, project logistics, and contract logistics. It also provides warehousing, fulfillment, customs clearance, and supply chain management services across industries. Following the 2025 Schenker acquisition, it operates on a larger, more integrated global network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:57:39.687Z"
+}

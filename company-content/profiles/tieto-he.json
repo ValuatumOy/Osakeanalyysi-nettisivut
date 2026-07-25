@@ -1,0 +1,9 @@
+{
+  "ticker": "TIETO.HE",
+  "companyName": "TietoEVRY Oyj",
+  "profile": "TietoEVRY Oyj is a Nordic software and digital engineering services company that develops industry-specific software and consulting services for banking, healthcare and social care, and industrial and public-sector customers. It also provides cloud, data, design, and software engineering capabilities. In 2025, the company began shifting toward a narrower portfolio after divesting its Tech Services business.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:47:10.515Z"
+}

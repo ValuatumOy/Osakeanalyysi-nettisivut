@@ -1,0 +1,9 @@
+{
+  "ticker": "BIM.ST",
+  "companyName": "BIMobject AB",
+  "profile": "BIMobject AB provides a digital platform for the construction industry that helps building product manufacturers publish and maintain structured product information and BIM objects. Its services support architects, engineers, contractors, and property owners by making product data easier to find, compare, and use in design and project workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:07:42.280Z"
+}

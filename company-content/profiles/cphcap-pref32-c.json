@@ -1,0 +1,9 @@
+{
+  "ticker": "CPHCAP-PREF32.C",
+  "companyName": "Copenhagen Capital A/S",
+  "profile": "Copenhagen Capital A/S is a listed real estate investment company focused on direct and indirect investments in residential and commercial properties, mainly in Greater Copenhagen. The company acquires, owns and manages rental properties, with value driven by lease income, active property management, modernization and selective development aimed at improving returns and asset values.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:40:33.607Z"
+}

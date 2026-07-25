@@ -1,0 +1,9 @@
+{
+  "ticker": "DFDS.CO",
+  "companyName": "DFDS A/S",
+  "profile": "DFDS A/S is a European transport and logistics company. It operates ferry routes for freight and passengers across Europe and provides road, rail, and integrated logistics services for manufacturers, retailers, and industrial customers. The business also offers terminal operations, cargo handling, and supply chain solutions supported by its network of vessels and hubs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:52:08.023Z"
+}

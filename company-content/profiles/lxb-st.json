@@ -1,0 +1,9 @@
+{
+  "ticker": "LXB.ST",
+  "companyName": "Luxbright AB (publ)",
+  "profile": "Luxbright AB develops and manufactures X-ray tubes and X-ray sources for industrial imaging applications. Its main offerings include microfocus X-ray tubes, microfocus X-ray sources for integration in imaging systems, and custom-made tubes for specific customer requirements. The company also develops cold cathode technology intended to improve X-ray performance and efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:42:11.204Z"
+}

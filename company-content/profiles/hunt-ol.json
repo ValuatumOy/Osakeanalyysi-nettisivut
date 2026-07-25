@@ -1,0 +1,9 @@
+{
+  "ticker": "HUNT.OL",
+  "companyName": "Hunter Group ASA",
+  "profile": "Hunter Group ASA is a Norwegian investment company focused on maritime and energy-related activities. Its main business is oil tanker chartering, using eco scrubber-fitted VLCCs on fixed-rate charters and floating, index-linked charter-out contracts. The company also makes shipping and oil service investments through its broader portfolio and subsidiary interests.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:45:22.859Z"
+}

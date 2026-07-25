@@ -1,0 +1,9 @@
+{
+  "ticker": "DIAH.ST",
+  "companyName": "Diadrom Holding AB (publ)",
+  "profile": "Diadrom Holding AB (publ) develops diagnostics and software engineering solutions for complex, software-intensive systems, mainly in automotive and defence. Its offering includes embedded software components, diagnostic tools, automated testing systems and lifecycle support for configuration, traceability and secure updates. The company also provides specialist consultancy and project deliveries for mission-critical applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:35:41.257Z"
+}

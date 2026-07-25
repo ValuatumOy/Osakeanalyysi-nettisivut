@@ -1,0 +1,9 @@
+{
+  "ticker": "EOLU-B.ST",
+  "companyName": "Eolus Vind AB (publ)",
+  "profile": "Eolus Vind AB is a renewable energy developer and project operator focused on wind power, solar power and energy storage. The company develops projects from early stage through construction and operation, and also provides asset management services. Its activities span the Nordic region, parts of Europe and the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:54:35.225Z"
+}

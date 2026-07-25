@@ -1,0 +1,9 @@
+{
+  "ticker": "ZEAL.CO",
+  "companyName": "Zealand Pharma A/S",
+  "profile": "Zealand Pharma A/S is a biotechnology company focused on the discovery, design and development of peptide-based and small-molecule medicines. Its pipeline targets obesity and broader metabolic health, while also addressing rare diseases such as congenital hyperinsulinism and short bowel syndrome, and selected chronic inflammatory diseases. The company also pursues development and commercialization partnerships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:16:57.642Z"
+}

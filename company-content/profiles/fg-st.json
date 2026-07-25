@@ -1,0 +1,9 @@
+{
+  "ticker": "FG.ST",
+  "companyName": "Fasadgruppen Group AB (publ)",
+  "profile": "Fasadgruppen Group AB is a Nordic building-envelope specialist that acquires and develops local entrepreneurial companies. The group provides renovation, upgrading and new-build services for façades, windows, balconies and roofs, with related energy-efficiency and sustainability work. Its decentralized model combines local customer relationships with group-wide coordination and scale across Sweden and other Nordic markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:57:53.064Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "HAUTO.OL",
+  "companyName": "Höegh Autoliners ASA",
+  "profile": "Höegh Autoliners ASA is a global maritime transport company focused on roll-on/roll-off shipping. It operates deep-sea trades with pure car and truck carrier vessels, moving cars, trucks, buses, heavy machinery, and other rolling or static cargo. The company also offers shortsea services in the Caribbean and supports customers with specialized vehicle logistics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:47:02.477Z"
+}

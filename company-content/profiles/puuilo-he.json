@@ -1,0 +1,9 @@
+{
+  "ticker": "PUUILO.HE",
+  "companyName": "Puuilo Oyj",
+  "profile": "Puuilo is a Finnish discount retail chain selling a wide assortment of consumer goods, with particular focus on building materials, tools, HVAC and electrical supplies, household products, garden supplies, pet food and accessories, groceries, and related services. Its business is driven by low prices, convenient store locations, a standardised store concept and an online channel supporting multichannel sales.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:02:24.156Z"
+}

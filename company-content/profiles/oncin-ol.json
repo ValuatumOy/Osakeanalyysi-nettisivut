@@ -1,0 +1,9 @@
+{
+  "ticker": "ONCIN.OL",
+  "companyName": "BerGenBio ASA",
+  "profile": "BerGenBio ASA was a clinical-stage biopharmaceutical company focused on developing therapies targeting the AXL pathway for aggressive diseases, especially cancer, and previously severe respiratory infections. Its lead program was bemcentinib, a selective AXL inhibitor being developed for specific oncology indications. The company was based in Bergen, Norway, with a subsidiary in Oxford, UK.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:34:04.457Z"
+}

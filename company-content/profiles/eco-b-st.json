@@ -1,0 +1,9 @@
+{
+  "ticker": "ECO-B.ST",
+  "companyName": "EcoRub AB (publ)",
+  "profile": "EcoRub AB is a Swedish greentech company that develops and produces recycled rubber and plastic materials for industrial processing, including injection molding, extrusion and 3D printing. It also makes finished products such as gym floors, stable mats and ergonomic workplace mats. The company operates from its factory in Lövånger.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:46:53.520Z"
+}

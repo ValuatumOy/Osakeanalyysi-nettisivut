@@ -1,0 +1,9 @@
+{
+  "ticker": "COLUM.CO",
+  "companyName": "Columbus A/S",
+  "profile": "Columbus A/S is a Denmark-based international IT consultancy that helps medium and large enterprises design, implement, upgrade and manage digital business applications. It focuses on cloud services, ERP, data and AI, digital commerce, cybersecurity and related business-critical solutions, serving customers in manufacturing, food and beverage, retail and distribution, and life sciences.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:37:59.217Z"
+}

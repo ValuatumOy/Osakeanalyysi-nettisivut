@@ -1,0 +1,9 @@
+{
+  "ticker": "ENENTO.HE",
+  "companyName": "Enento Group Oyj",
+  "profile": "Enento Group provides digital business and consumer information services across the Nordic countries. Its offerings include credit, business, asset and marketing information, along with direct-to-consumer services, used for risk management, finance, administration, decision-making, sales and marketing. The company is also shifting to a country-based operating model and focusing more tightly on core services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:45:57.017Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ITECH.ST",
+  "companyName": "I-Tech AB",
+  "profile": "I-Tech AB is a biotechnology company focused on Selektope®, an active substance used in antifouling coatings to prevent barnacle attachment on submerged surfaces such as ship hulls and other marine installations. The company supplies the technology to marine paint manufacturers, supports improved vessel efficiency, and benefits from regulatory approvals and commercial customer relationships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:20:24.219Z"
+}

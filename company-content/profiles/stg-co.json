@@ -1,0 +1,9 @@
+{
+  "ticker": "STG.CO",
+  "companyName": "Scandinavian Tobacco Group A/S",
+  "profile": "Scandinavian Tobacco Group A/S is a global manufacturer and marketer of cigars and traditional pipe tobacco, with a strong position in fine-cut tobacco in selected markets. Its portfolio includes handmade and machine-rolled cigars, pipe tobacco, and fine-cut products, sold through retail, wholesale, online, and specialty channels across North America, Europe, and other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:51:02.599Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "HKFOODS.HE",
+  "companyName": "HKScan Oyj",
+  "profile": "HKScan Oyj is a Nordic food company that produces, markets and sells pork, beef, poultry and lamb products, processed meats and meals. Its portfolio includes both branded consumer products and food service and export offerings, with operations centered in Finland, Sweden, Denmark and the Baltics. The company also emphasizes responsible food production across the value chain.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:07:17.090Z"
+}

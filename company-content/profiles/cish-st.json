@@ -1,0 +1,9 @@
+{
+  "ticker": "CISH.ST",
+  "companyName": "Clean Industry Solutions Holding Europe AB",
+  "profile": "Clean Industry Solutions Holding Europe AB is a Swedish holding company that owns SolarSpring GmbH, which develops membrane distillation systems for industrial wastewater, process water reuse, and drinking water treatment. The group previously also operated Industrial Solar, focused on solar process heat, but that subsidiary was deconsolidated after insolvency in 2023.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:18:46.638Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "HUSCO.CO",
+  "companyName": "HusCompagniet A/S",
+  "profile": "HusCompagniet A/S is a residential builder focused on detached houses in Denmark, where it manages the full customer journey from design and sales to delivery. It also develops and sells semi-detached houses for private buyers and investors, and produces prefabricated wood-framed houses in Sweden. Its model relies on outsourced construction and flexible execution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:32:31.962Z"
+}

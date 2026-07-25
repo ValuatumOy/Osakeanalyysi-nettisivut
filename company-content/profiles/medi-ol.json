@@ -1,0 +1,9 @@
+{
+  "ticker": "MEDI.OL",
+  "companyName": "Medistim ASA",
+  "profile": "Medistim ASA develops and markets intraoperative surgical guidance systems and related consumables for cardiac, vascular and transplant surgery. Its MiraQ platform combines transit time flow measurement and high-frequency ultrasound imaging to help surgeons assess blood flow and tissue conditions during procedures. The company also distributes selected medical devices through Nordic sales operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:14:38.205Z"
+}

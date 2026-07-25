@@ -1,0 +1,9 @@
+{
+  "ticker": "VIRO.CO",
+  "companyName": "ViroGates A/S",
+  "profile": "ViroGates A/S is a Danish medical diagnostics company that develops and commercializes suPARnostic®, a product line for measuring the suPAR biomarker in blood samples. Its tests include point-of-care, automated laboratory, and ELISA formats, used to support clinical triage, research, and assessment of inflammation and disease severity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:13:58.617Z"
+}

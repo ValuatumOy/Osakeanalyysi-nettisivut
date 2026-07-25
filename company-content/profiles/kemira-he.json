@@ -1,0 +1,9 @@
+{
+  "ticker": "KEMIRA.HE",
+  "companyName": "Kemira Oyj",
+  "profile": "Kemira is a Finnish chemicals company focused on water-intensive industries. It supplies water treatment chemicals and related services to municipal and industrial customers, and provides chemistry for pulp and paper, packaging, hygiene, and fiber applications. Its products help improve water use, process efficiency, resource efficiency, and wastewater treatment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:16:01.479Z"
+}

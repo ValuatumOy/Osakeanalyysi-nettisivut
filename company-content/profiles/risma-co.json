@@ -1,0 +1,9 @@
+{
+  "ticker": "RISMA.CO",
+  "companyName": "RISMA Systems A/S",
+  "profile": "RISMA Systems A/S develops a governance, risk and compliance software platform for organizations. Its solutions help customers manage GDPR, information security, risk management, internal controls, contract management and related regulatory reporting through a single system. The company’s value drivers are subscription software, workflow automation and documentable compliance processes across Nordic markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:38:01.312Z"
+}

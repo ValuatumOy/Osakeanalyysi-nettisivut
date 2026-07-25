@@ -1,0 +1,9 @@
+{
+  "ticker": "CANDLE-B.ST",
+  "companyName": "Candles Scandinavia AB (publ)",
+  "profile": "Candles Scandinavia develops and manufactures natural wax candles, reed diffusers and room sprays for private-label customers. The company focuses on sustainable home fragrance products, using automated production and integrated manufacturing to provide scalable, customized solutions. It serves brand owners seeking a supplier for design, filling, packaging and delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:01:32.063Z"
+}

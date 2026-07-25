@@ -1,0 +1,9 @@
+{
+  "ticker": "DUELL",
+  "companyName": "Duell",
+  "profile": "Duell is a Finland-based powersports aftermarket distributor and wholesaler operating across Europe. It imports, manufactures, and sells spare parts, accessories, apparel, and technical products for motorcycles, bicycles, ATVs, snowmobiles, marine use, and garden and forest categories. Its business relies on brand portfolio management, logistics, warehousing, and dealer distribution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:36:52.314Z"
+}

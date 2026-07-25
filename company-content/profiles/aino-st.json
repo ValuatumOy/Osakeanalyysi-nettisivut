@@ -1,0 +1,9 @@
+{
+  "ticker": "AINO.ST",
+  "companyName": "Aino Health AB (publ)",
+  "profile": "Aino Health AB provides SaaS solutions and related services for corporate health management. Its platform helps employers manage work ability, track sickness absence, identify underlying causes of employee health issues, and support proactive interventions. The company serves public and private organizations, with revenue driven by software subscriptions, implementation, and customer support services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:44:10.353Z"
+}

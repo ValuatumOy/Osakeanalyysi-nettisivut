@@ -1,0 +1,9 @@
+{
+  "ticker": "METSB",
+  "companyName": "Metsa Board",
+  "profile": "Metsä Board is a European producer of premium lightweight paperboards, including folding boxboards, food service boards and white kraftliners. Its products are made from fully traceable fresh wood fibre and are used in packaging for consumer goods, food, healthcare and retail applications. The company also relies on pulp self-sufficiency and sells to customers globally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:33:41.078Z"
+}

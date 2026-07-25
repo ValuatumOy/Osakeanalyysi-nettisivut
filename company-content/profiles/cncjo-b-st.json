@@ -1,0 +1,9 @@
+{
+  "ticker": "CNCJO-B.ST",
+  "companyName": "Concejo AB (publ)",
+  "profile": "Concejo AB is a Swedish investment company that owns and develops operating businesses through two main areas: Concejo Industrier and SBF Fonder. The industrial units supply products and systems for fire safety and related services, while SBF Fonder manages Swedish residential property funds for institutional and private investors. The group also holds additional minority investments in growth companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:25:58.433Z"
+}
