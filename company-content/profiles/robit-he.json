@@ -1,0 +1,9 @@
+{
+  "ticker": "ROBIT.HE",
+  "companyName": "Robit Oyj",
+  "profile": "Robit is a Finnish company that designs, manufactures and sells drilling consumables for rock and ground drilling applications. Its product range includes top hammer, down-the-hole, geotechnical and rotary drilling tools for mining, construction, quarrying and well drilling. The company also supports customers through its global sales, service and dealer network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:14:24.538Z"
+}

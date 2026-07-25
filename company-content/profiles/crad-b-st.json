@@ -1,0 +1,9 @@
+{
+  "ticker": "CRAD-B.ST",
+  "companyName": "C-Rad AB (publ)",
+  "profile": "C-RAD AB develops surface-guided radiation therapy solutions for cancer treatment. Its systems use high-speed 3D cameras and related software to support patient positioning and monitor motion during radiotherapy, helping clinics deliver treatment more accurately while protecting healthy tissue. The company sells its products and services to hospitals and cancer centers internationally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:57:20.586Z"
+}

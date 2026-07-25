@@ -1,0 +1,9 @@
+{
+  "ticker": "DUNI.ST",
+  "companyName": "Duni AB (publ)",
+  "profile": "Duni AB develops and sells sustainable products and solutions for table settings, food packaging, and takeaway service. Its range includes napkins, table covers, cups, trays, sealing systems, candles, and rechargeable LED lights. The company serves hospitality, catering, retail, and foodservice customers through brands and product lines focused on convenience, design, and sustainability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:43:23.454Z"
+}

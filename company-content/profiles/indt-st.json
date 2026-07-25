@@ -1,0 +1,9 @@
+{
+  "ticker": "INDT.ST",
+  "companyName": "Indutrade AB (publ)",
+  "profile": "Indutrade is an international technology and industrial group that develops and acquires niche companies with high technical expertise. Its subsidiaries manufacture, develop and sell components, systems and services for customers in sectors such as engineering, infrastructure, medical technology, pharmaceuticals, energy, water and food. Growth is driven by decentralised management and acquisitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:23:03.269Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "LOKO.OL",
+  "companyName": "Harmonychain AS",
+  "profile": "Harmonychain AS, now operating as Lokotech Group AS, is a Norwegian technology holding company focused on blockchain mining infrastructure. Through its subsidiaries, it develops Scrypt ASIC hardware, mining pool software, and data center operations, while also providing related blockchain services and exploring adjacent computing workloads such as AI and edge processing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:35:26.071Z"
+}

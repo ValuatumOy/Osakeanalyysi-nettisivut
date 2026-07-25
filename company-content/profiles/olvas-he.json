@@ -1,0 +1,9 @@
+{
+  "ticker": "OLVAS.HE",
+  "companyName": "Olvi Oyj",
+  "profile": "Olvi Oyj is a Finnish beverage company that produces and markets beer, cider, soft drinks, mineral water and energy drinks. The group operates mainly in Finland, the Baltic states, Denmark and Belarus through local business units. Its value drivers are a broad product portfolio, regional market positions and multi-local distribution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:48:47.986Z"
+}

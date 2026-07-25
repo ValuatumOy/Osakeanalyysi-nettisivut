@@ -1,0 +1,9 @@
+{
+  "ticker": "BETS-B.ST",
+  "companyName": "Betsson AB",
+  "profile": "Betsson AB is an online gaming group that offers casino and sports betting products to customers through its own brands, websites, apps and partnerships. The group also provides its proprietary sportsbook to other operators as a B2B offering. Its operations are supported by in-house technology, local licences, marketing, customer support and regulatory compliance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:01:48.076Z"
+}

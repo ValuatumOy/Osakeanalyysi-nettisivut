@@ -1,0 +1,9 @@
+{
+  "ticker": "SCANA.OL",
+  "companyName": "Scana ASA",
+  "profile": "Scana ASA is a Norwegian industrial owner company that develops and operates a portfolio of businesses serving offshore, electrification and renewable energy markets. Its portfolio includes companies focused on power and automation, technology, subsea equipment, mooring and towing systems, and related services, with value driven by active ownership and industrial development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:19:26.925Z"
+}

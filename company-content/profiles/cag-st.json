@@ -1,0 +1,9 @@
+{
+  "ticker": "CAG.ST",
+  "companyName": "CAG Group AB (publ)",
+  "profile": "CAG Group AB is an IT consulting group organized around independent subsidiaries. It provides services in technology management, system development, cyber security, operations and maintenance, and training. The company serves customers in defense, banking and finance, industry and infrastructure, commerce and services, and health and care, combining strategy and implementation support across projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:58:22.470Z"
+}

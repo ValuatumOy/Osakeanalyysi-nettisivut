@@ -1,0 +1,9 @@
+{
+  "ticker": "VAR.OL",
+  "companyName": "Vår Energi AS",
+  "profile": "Vår Energi is a Norwegian upstream oil and gas company focused on exploration, development and production on the Norwegian Continental Shelf. It holds interests in a large share of producing assets and operates several fields, with gas sales to Europe a key value driver. The company also grows through development projects and targeted acquisitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:40:15.227Z"
+}

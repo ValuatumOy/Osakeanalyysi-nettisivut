@@ -1,0 +1,9 @@
+{
+  "ticker": "LCLEAN.ST",
+  "companyName": "LifeClean International AB (publ)",
+  "profile": "LifeClean International develops, manufactures and sells chemical solutions for cleaning, disinfection and decontamination. Its portfolio includes high-level disinfectants for healthcare, cleaning and disinfecting products for livestock and food production, and solutions for breaking down PFAS pollution. The company also works through partnerships and manufacturing capabilities to serve multiple industrial applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:38:17.453Z"
+}

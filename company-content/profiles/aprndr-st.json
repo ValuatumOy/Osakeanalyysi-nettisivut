@@ -1,0 +1,9 @@
+{
+  "ticker": "APRNDR.ST",
+  "companyName": "Aprendere Skolor AB (publ)",
+  "profile": "Aprendere Skolor AB (publ) operates independent education services in Sweden through schools covering compulsory education, adapted compulsory education, upper secondary education, adapted upper secondary education, and adult education. The company’s business is driven by student enrollment and school operations, with a portfolio of school units in different locations and educational programs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:10:39.352Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ELTEL.ST",
+  "companyName": "Eltel AB (publ)",
+  "profile": "Eltel AB provides services and turnkey solutions for critical infrastructure, mainly in communication and power networks. The company plans, builds, installs, maintains and upgrades network assets that support digitalization, electrification and renewable energy. It also works in adjacent growth areas such as data centers, energy storage, e-mobility charging infrastructure and private communication networks.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:51:10.123Z"
+}

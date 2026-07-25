@@ -1,0 +1,9 @@
+{
+  "ticker": "SHAPE.CO",
+  "companyName": "Shape Robotics A/S",
+  "profile": "Shape Robotics A/S is a Danish educational technology company that develops and supplies robotics-based learning solutions for schools and other education providers. Its offerings include the Fable modular robot system, smart classroom setups, and related software, teaching materials, consultancy, and support services designed to help students and teachers work with programming, robotics, and STEM subjects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:55:19.085Z"
+}

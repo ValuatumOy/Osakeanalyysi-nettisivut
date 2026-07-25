@@ -1,0 +1,9 @@
+{
+  "ticker": "QTCOM.HE",
+  "companyName": "Qt",
+  "profile": "Qt provides software development tools and frameworks for building cross-platform applications across desktop, mobile, embedded, XR and web environments. Its portfolio includes the Qt Framework, Qt Creator IDE, Qt Design Studio and other tooling for development, testing, localization and deployment, along with software quality products such as Squish, Coco, Test Center and Axivion.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:04:21.836Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NORDIC.CO",
+  "companyName": "Nordic Shipholding A/S",
+  "profile": "Nordic Shipholding A/S is a Danish ship-owning company focused on the management and operation of tankers. Its fleet has included handy tankers and an LR1 vessel, which are commercially operated and technically managed through external shipping partners. The company’s value driver is the deployment and chartering of tanker vessels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:11:25.063Z"
+}

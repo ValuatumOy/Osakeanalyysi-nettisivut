@@ -1,0 +1,9 @@
+{
+  "ticker": "MPCC.OL",
+  "companyName": "MPC Container Ships ASA",
+  "profile": "MPC Container Ships ASA owns and operates a portfolio of small to mid-size container ships, primarily on fixed-rate charters serving intra-regional trade lanes. The company earns revenue from chartering its fleet to customers worldwide and focuses on fleet renewal, operational efficiency, and capital allocation. It is headquartered in Oslo and listed on the Oslo Stock Exchange.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:20:43.327Z"
+}

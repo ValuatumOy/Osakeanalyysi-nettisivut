@@ -1,0 +1,9 @@
+{
+  "ticker": "CARL-B.CO",
+  "companyName": "Carlsberg A/S",
+  "profile": "Carlsberg A/S is a global brewery group that develops, produces and sells beer and other beverages through a portfolio of local and international brands. Its business spans mainstream and premium beers, alcohol-free brews, cider and soft drinks, with revenue driven by branded beverage sales, market presence and distribution across multiple regions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:29:31.325Z"
+}

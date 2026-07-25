@@ -1,0 +1,9 @@
+{
+  "ticker": "NORDH.OL",
+  "companyName": "Nordhealth AS",
+  "profile": "Nordhealth is a healthcare software company that develops and acquires cloud-based practice management products for veterinary and therapy providers. Its core offerings include Provet and Therapy Unified Platform, which support scheduling, booking, invoicing, patient communication, and workflow management. The company also provides related APIs and integrations for clinics and hospitals across multiple markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:36:59.309Z"
+}

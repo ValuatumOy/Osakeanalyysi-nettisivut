@@ -1,0 +1,9 @@
+{
+  "ticker": "EEZY.HE",
+  "companyName": "Eezy Oyj",
+  "profile": "Eezy Oyj is a Finnish staffing and employment services company that connects employers and workers through staffing, recruitment, light entrepreneurship, and employment services. It also provides personnel surveys, training, coaching, consulting, and organizational development services. The company’s value drivers are flexible workforce solutions, broad service coverage, and nationwide client relationships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:40:53.762Z"
+}

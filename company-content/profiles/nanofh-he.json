@@ -1,0 +1,9 @@
+{
+  "ticker": "NANOFH.HE",
+  "companyName": "Nanoform Finland Oyj",
+  "profile": "Nanoform Finland Oyj is a Finnish listed biotechnology company that provides nanoparticle engineering and formulation services to pharmaceutical manufacturers. Its proprietary CESS technology and GMP manufacturing capabilities are used to improve drug bioavailability, increase drug loading, and support alternative delivery routes for small-molecule and large-molecule therapeutics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:38:06.028Z"
+}

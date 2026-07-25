@@ -1,0 +1,9 @@
+{
+  "ticker": "BRIN-B.ST",
+  "companyName": "Brinova Fastigheter AB (publ)",
+  "profile": "Brinova Fastigheter AB (publ) owns, develops and manages rental housing and community properties in selected growth locations in southern Sweden. Its portfolio includes homes and public-service properties for care, education, offices and other municipal uses. The company creates value through selective acquisitions, property development and active local management, and it is headquartered in Helsingborg.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:47:51.203Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "DUST.ST",
+  "companyName": "Dustin Group AB (publ)",
+  "profile": "Dustin Group AB is an online IT partner in the Nordics and Benelux that serves small and medium-sized businesses, large enterprises and the public sector. The company sells hardware and software and provides related services, including managed services, product lifecycle services, financing and support. It also emphasizes online sales and a growing share of service revenue.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:44:52.854Z"
+}

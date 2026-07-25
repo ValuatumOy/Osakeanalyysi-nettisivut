@@ -1,0 +1,9 @@
+{
+  "ticker": "CYXO.ST",
+  "companyName": "Cyxone AB (publ)",
+  "profile": "Cyxone AB (publ) is a Swedish clinical-stage biotechnology company developing disease-modifying therapies for immune-related disorders. Its main programs are Rabeximod for rheumatoid arthritis and T20K for multiple sclerosis, supported by a portfolio of immunomodulating drug candidates. The company’s value drivers are clinical development, patent protection, and potential partnering opportunities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:31:43.947Z"
+}

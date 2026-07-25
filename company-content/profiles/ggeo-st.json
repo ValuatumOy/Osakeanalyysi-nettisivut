@@ -1,0 +1,9 @@
+{
+  "ticker": "GGEO.ST",
+  "companyName": "Guideline Geo AB (publ)",
+  "profile": "Guideline Geo develops and sells geophysical solutions for mapping the subsurface. Its main offerings include ground penetrating radar, resistivity, induced polarization, electromagnetics and seismic systems, along with related software, services and support. The company serves applications in groundwater detection, environmental and geological risk assessment, infrastructure site investigations and mineral exploration.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:11:44.650Z"
+}

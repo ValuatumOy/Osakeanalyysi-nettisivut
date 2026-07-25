@@ -1,0 +1,9 @@
+{
+  "ticker": "YAR.OL",
+  "companyName": "Yara International ASA",
+  "profile": "Yara International ASA produces crop nutrition products and ammonia, with a portfolio of nitrogen-based fertilizers and related agronomic services. The company serves farmers and the broader food value chain with crop nutrition advice, digital farming tools, and product formulations designed to improve nutrient use. It also supplies nitrogen-based industrial solutions to other industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:46:03.408Z"
+}

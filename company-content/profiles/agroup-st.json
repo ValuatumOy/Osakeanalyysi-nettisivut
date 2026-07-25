@@ -1,0 +1,9 @@
+{
+  "ticker": "AGROUP.ST",
+  "companyName": "Arlandastad Group AB (publ)",
+  "profile": "Arlandastad Group AB is a Swedish real estate development company focused on large strategically located areas. It acquires land, plans and develops infrastructure and building rights, constructs properties, and manages or divests completed assets. The company owns and operates the Arlandastad and Skavsta development areas, and also runs selected operational businesses where they add value.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:22:57.734Z"
+}

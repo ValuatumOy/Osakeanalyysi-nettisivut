@@ -1,0 +1,9 @@
+{
+  "ticker": "RECSI.OL",
+  "companyName": "REC Silicon ASA",
+  "profile": "REC Silicon ASA is a silicon materials company that produces high-purity silane gas, specialty silicon gases, and polysilicon for the solar, semiconductor, display, and other electronics industries. It operates manufacturing facilities in the United States and supplies materials used in applications ranging from solar cells and power devices to memory chips and flat-panel displays.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:14:15.033Z"
+}

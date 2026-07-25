@@ -1,0 +1,9 @@
+{
+  "ticker": "BORG.ST",
+  "companyName": "Björn Borg AB (publ)",
+  "profile": "Björn Borg AB is a Swedish brand company that owns, develops and commercializes the Björn Borg brand through products and licensing. Its main offerings are underwear, sports apparel, footwear and bags, sold through retailers, its own stores and e-commerce. The group also manages product development and brand marketing across its markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:21:11.854Z"
+}

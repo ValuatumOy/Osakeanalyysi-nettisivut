@@ -1,0 +1,9 @@
+{
+  "ticker": "BEIA-B.ST",
+  "companyName": "Beijer Alma AB (publ)",
+  "profile": "Beijer Alma is an international industrial group that owns and develops companies in component manufacturing and industrial trading. Its operations are organized mainly through Beijer Components, which supplies springs, wire and flat strip components, and Beijer Tech, which provides value-adding sales, manufacturing and automation solutions for industrial customers, particularly in the Nordic region and selected international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:54:22.727Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "BEAMMW-B.ST",
+  "companyName": "BeammWave AB (publ)",
+  "profile": "BeammWave AB develops communication solutions for frequencies above 24 GHz, centered on a radio chip, antenna system and associated algorithms for 5G and 6G. Its product portfolio includes an RF front-end, a digital beamforming accelerator and a development platform. The company targets applications in smartphones, fixed wireless access equipment and small base stations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:53:04.585Z"
+}

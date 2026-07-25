@@ -1,0 +1,9 @@
+{
+  "ticker": "LYGRD.ST",
+  "companyName": "Lyckegård Group AB (publ)",
+  "profile": "Lyckegård Group AB is a holding company whose subsidiaries provide products and services for irrigation and outdoor environments. Its activities cover green-space irrigation for golf courses, sports fields, parks and urban areas, as well as agricultural irrigation and pump station solutions. The group also offers installation and related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:42:24.753Z"
+}

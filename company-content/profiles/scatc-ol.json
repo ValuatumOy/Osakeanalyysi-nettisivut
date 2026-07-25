@@ -1,0 +1,9 @@
+{
+  "ticker": "SCATC.OL",
+  "companyName": "Scatec ASA",
+  "profile": "Scatec ASA is a renewable energy solutions provider that develops, builds, owns and operates utility-scale power projects, mainly solar PV and battery storage, with additional hydro, wind and green hydrogen assets. The company sells electricity under long-term agreements and focuses on emerging markets across multiple continents, combining project development, construction and operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:20:13.385Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "DONKEY.CO",
+  "companyName": "DonkeyRepublic Holding A/S",
+  "profile": "DonkeyRepublic Holding A/S provides bike-sharing and micromobility services in Europe. The company operates and partners with cities and organisations to offer rentable pedal bikes and e-bikes, supported by a technology platform for booking, access, fleet management and servicing. Its revenues are driven by ride demand, contract-based operations and fleet utilisation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:56:18.131Z"
+}

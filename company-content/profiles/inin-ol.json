@@ -1,0 +1,9 @@
+{
+  "ticker": "ININ.OL",
+  "companyName": "Elop AS",
+  "profile": "Elop AS develops and commercialises tools and software for inspecting, monitoring and managing large infrastructure, with a focus on concrete structures. Its offering includes rolling ultrasonic scanning systems, inspection equipment and an asset management system for health monitoring. The company serves asset owners and engineering users seeking data on safety, maintenance needs and lifecycle performance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:14:12.501Z"
+}

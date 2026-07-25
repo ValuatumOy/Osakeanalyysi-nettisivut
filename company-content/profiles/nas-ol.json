@@ -1,0 +1,9 @@
+{
+  "ticker": "NAS.OL",
+  "companyName": "Norwegian Air Shuttle ASA",
+  "profile": "Norwegian Air Shuttle ASA is a Nordic aviation company focused on passenger air transport. It operates scheduled short-haul flights connecting Norway and the wider Nordic region with destinations across Europe, and it also owns Widerøe’s Flyveselskap. The group’s activities include airline operations, aircraft assets, crew and support functions, and related travel services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:47:35.509Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "COLO-B.CO",
+  "companyName": "Coloplast A/S",
+  "profile": "Coloplast A/S develops and sells intimate healthcare products and related services for people with personal medical needs. Its main businesses include ostomy care, continence care, bowel care, wound and tissue repair, interventional urology, and voice and respiratory care. The company also offers support services for users and healthcare professionals.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:36:32.012Z"
+}

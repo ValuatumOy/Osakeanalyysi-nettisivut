@@ -1,0 +1,9 @@
+{
+  "ticker": "CANTA.ST",
+  "companyName": "Cantargia AB (publ)",
+  "profile": "Cantargia AB (publ) is a Swedish biotechnology company developing antibody-based treatments targeting IL1RAP. Its lead oncology program, nadunolimab (CAN04), is in clinical development for cancers including pancreatic, lung, and triple-negative breast cancer. The company also has programs for inflammatory and autoimmune diseases, and CAN10 was acquired by Otsuka Pharmaceutical in 2025.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:02:32.172Z"
+}

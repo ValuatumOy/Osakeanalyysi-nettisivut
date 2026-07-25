@@ -1,0 +1,9 @@
+{
+  "ticker": "BMAX.ST",
+  "companyName": "Byggmax Group AB (publ)",
+  "profile": "Byggmax Group AB (publ) is a Nordic retailer of building materials and do-it-yourself products. It operates a network of stores and online commerce in Sweden, Norway, Finland and Denmark, serving customers with low-cost, high-value products for home improvement and construction projects. Its value driver is a simple, cost-efficient retail model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:53:48.658Z"
+}

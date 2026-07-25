@@ -1,0 +1,9 @@
+{
+  "ticker": "SKARTA.HE",
+  "companyName": "SkartaNYAB Oyj",
+  "profile": "SkartaNYAB Oyj is a Nordic contractor that provides engineering, construction and maintenance services for infrastructure, industrial construction and energy projects. Its work includes civil engineering, consulting and project management for roads, railways, bridges, power networks and renewable energy facilities. The company operates mainly in Finland and Sweden, with expanding activities in Norway.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:29:25.118Z"
+}

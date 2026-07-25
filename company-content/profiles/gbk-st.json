@@ -1,0 +1,9 @@
+{
+  "ticker": "GBK.ST",
+  "companyName": "Goodbye Kansas Group AB (publ)",
+  "profile": "Goodbye Kansas Group AB is a Swedish entertainment and visual content company focused on technology-driven services for film, television, games and advertising. Through Goodbye Kansas Studios, it provides visual effects, animation, game trailers, motion capture, scanning and real-time production. The group has also narrowed its business focus toward studio operations in recent years.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:09:37.441Z"
+}

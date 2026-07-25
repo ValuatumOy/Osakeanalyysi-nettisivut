@@ -1,0 +1,9 @@
+{
+  "ticker": "HOLM-B.ST",
+  "companyName": "Holmen AB (publ)",
+  "profile": "Holmen AB is a Swedish forest products group with businesses in active forestry, wood products, board and paper, and renewable energy. It manages large forest holdings, produces sawn and processed timber for construction, makes paperboard and paper from fresh fibre, and generates hydropower and wind power, using forest raw material across a circular value chain.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:18:24.373Z"
+}

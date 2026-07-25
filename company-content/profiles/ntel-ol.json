@@ -1,0 +1,9 @@
+{
+  "ticker": "NTEL.OL",
+  "companyName": "Nortel AS",
+  "profile": "Nortel AS is a Norwegian telecommunications company focused on small and medium-sized businesses. It provides mobile subscriptions, data services and access to the Telenor network, and offers corporate communications solutions such as a cloud-based business phone system with switchboard functions. The company also sells related telecom equipment through its online store.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:44:43.148Z"
+}

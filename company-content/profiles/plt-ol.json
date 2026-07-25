@@ -1,0 +1,9 @@
+{
+  "ticker": "PLT.OL",
+  "companyName": "poLight ASA",
+  "profile": "poLight ASA develops patented tunable optics technology and sells the TLens product family, which provides fast autofocus and constant field of view in compact camera systems. Its products are used in smartphones, augmented reality devices, wearables, barcode scanners, machine vision, and healthcare applications. The company is fabless and headquartered in Tønsberg, Norway.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:07:41.840Z"
+}

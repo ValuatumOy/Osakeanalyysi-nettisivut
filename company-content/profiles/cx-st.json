@@ -1,0 +1,9 @@
+{
+  "ticker": "CX.ST",
+  "companyName": "CombinedX AB (publ)",
+  "profile": "CombinedX AB (publ) is a Swedish IT services group that helps companies and public-sector organizations use digitalization to improve operations. Through specialist subsidiaries, it provides services in digital transformation, service design, ERP and business processes, data analytics, automation, application development, digital workplace solutions, managed infrastructure, security, IoT, CRM, and change management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:24:49.694Z"
+}

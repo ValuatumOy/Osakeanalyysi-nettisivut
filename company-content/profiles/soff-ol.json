@@ -1,0 +1,9 @@
+{
+  "ticker": "SOFF.OL",
+  "companyName": "Solstad Offshore ASA",
+  "profile": "Solstad Offshore ASA provides specialized offshore shipping services to the global energy sector. The company operates a fleet of offshore vessels and earns revenue mainly through dayrate contracts and related vessel services. Its activities support offshore oil and gas and renewable energy projects, including anchor handling, subsea construction, and other marine support services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:24:28.268Z"
+}

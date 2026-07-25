@@ -1,0 +1,9 @@
+{
+  "ticker": "DWF.HE",
+  "companyName": "Digital Workforce Services Oyj",
+  "profile": "Digital Workforce Services Oyj provides business process automation services and technology solutions, centered on its Outsmart platform and related software and consulting. The company helps organizations automate repetitive knowledge work, improve operational efficiency, and support digital transformation. It serves more than 200 large customers and has a notable presence in healthcare process automation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:32:26.805Z"
+}

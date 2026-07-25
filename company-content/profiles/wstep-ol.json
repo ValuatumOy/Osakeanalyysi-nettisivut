@@ -1,0 +1,9 @@
+{
+  "ticker": "WSTEP.OL",
+  "companyName": "Webstep ASA",
+  "profile": "Webstep ASA is a Norwegian IT services and consulting company that provides software development, design and user experience, analytics, business intelligence, cloud, mobility, AI and technology management services. It serves clients across industries through local offices in several Norwegian cities, offering expert consultants, team deliveries, turnkey projects and hired IT specialists.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:41:33.350Z"
+}

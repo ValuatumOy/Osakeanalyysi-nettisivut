@@ -1,0 +1,9 @@
+{
+  "ticker": "KSL.HE",
+  "companyName": "Keskisuomalainen Oyj",
+  "profile": "Keskisuomalainen Oyj is a Finnish media company focused on publishing and related services. It publishes newspapers, magazines, city papers and digital news media, and also provides printing, distribution, marketing communication, research and digital outdoor advertising services. The group operates mainly in Finland through a network of local and regional brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:17:36.058Z"
+}

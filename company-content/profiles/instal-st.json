@@ -1,0 +1,9 @@
+{
+  "ticker": "INSTAL.ST",
+  "companyName": "Instalco AB (publ)",
+  "profile": "Instalco is a decentralized Nordic installation group that provides design, installation, service and maintenance in electricity, plumbing, ventilation, industry and technical consulting. Through its subsidiaries, the group serves property and infrastructure customers in Sweden, Norway, Finland and Germany, combining local operations with group-wide purchasing, business development and acquisition-led growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:24:25.363Z"
+}

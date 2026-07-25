@@ -1,0 +1,9 @@
+{
+  "ticker": "DIGIGR.HE",
+  "companyName": "Digitalist Group Plc",
+  "profile": "Digitalist Group Plc is a Finland-based digital services company that helps clients improve customer experience, brand, design, and technology execution. Through its group companies, it provides digital transformation, strategy, research, design, software development, integrations, e-commerce, content management, and maintenance services for business and public-sector customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:33:42.132Z"
+}

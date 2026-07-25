@@ -1,0 +1,9 @@
+{
+  "ticker": "HUM.ST",
+  "companyName": "Humana AB (publ)",
+  "profile": "Humana AB is a Nordic care provider offering services in personal assistance, individual and family care, LSS support, and elderly care. The company operates care homes, treatment and support services, and assisted living solutions for children, adults, and older people, with operations in Sweden and additional activities in Norway and Finland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:19:15.951Z"
+}

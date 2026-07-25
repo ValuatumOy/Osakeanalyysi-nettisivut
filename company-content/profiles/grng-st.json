@@ -1,0 +1,9 @@
+{
+  "ticker": "GRNG.ST",
+  "companyName": "Gränges AB (publ)",
+  "profile": "Gränges AB is a global supplier of rolled aluminium products and recycling services for selected niches. The company serves customers in thermal management, including automotive and HVAC applications, as well as specialty packaging and other industrial uses. It also provides technical support, production, sales, and customer-driven product development across its markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:11:15.208Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "IDLDX.ST",
+  "companyName": "AroCell AB (publ)",
+  "profile": "AroCell AB (publ), now operating as IDL Diagnostics, develops, manufactures and sells in vitro diagnostic tests for cancer and bacterial infections. Its portfolio includes point-of-care, rapid and laboratory tests, including TK 210 ELISA for thymidine kinase 1 measurement and UBC Rapid and TUBEX TF, supported by in-house research, production and sales.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:23:50.956Z"
+}

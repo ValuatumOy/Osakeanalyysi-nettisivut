@@ -1,0 +1,9 @@
+{
+  "ticker": "CEDER.ST",
+  "companyName": "Cedergrenska AB (publ)",
+  "profile": "Cedergrenska is a Swedish education group that operates preschool, primary, upper secondary, gymnasium and adult education schools. The company provides education services through a portfolio of locally run schools, supported by central functions and shared resources. Its business is driven by student enrolment, school quality, and the expansion and integration of acquired operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:07:59.063Z"
+}

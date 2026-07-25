@@ -1,0 +1,9 @@
+{
+  "ticker": "CIBUS",
+  "companyName": "Cibus",
+  "profile": "Cibus is a listed real estate company that owns and manages grocery-anchored and daily-goods properties across Europe, with a portfolio concentrated in the Nordics and Mainland Europe. Its properties are leased to food retailers and other daily-goods tenants under long-term agreements, making rental income the main value driver.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:14:41.139Z"
+}

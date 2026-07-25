@@ -1,0 +1,9 @@
+{
+  "ticker": "BNOR.OL",
+  "companyName": "BlueNord ASA",
+  "profile": "BlueNord ASA is an Oslo-listed oil and gas company focused on producing and developing resources in the Danish North Sea. Its operations centre on a 36.8% interest in the Danish Underground Consortium, including mature producing assets and infrastructure. The company also works on operational optimisation, reserve development, and emissions reduction initiatives.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:39:56.508Z"
+}

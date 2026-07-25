@@ -1,0 +1,9 @@
+{
+  "ticker": "LPGO.ST",
+  "companyName": "Lipigon Pharmaceuticals AB (publ)",
+  "profile": "Lipigon Pharmaceuticals AB is a clinical-stage pharmaceutical company focused on developing treatments for diseases linked to abnormal lipid metabolism. Its lead candidate, Lipisense, is designed to lower triglyceride levels in patients with elevated blood lipids, and the company is advancing three projects based on different mechanisms of action across lipid-related disorders.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:39:50.348Z"
+}

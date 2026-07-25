@@ -1,0 +1,9 @@
+{
+  "ticker": "NLFSK.CO",
+  "companyName": "Nilfisk Holding A/S",
+  "profile": "Nilfisk Holding A/S is the parent company of the Nilfisk group, which develops and sells professional cleaning equipment and services. Its core offerings include floorcare machines, vacuum cleaners, high-pressure washers, and related aftermarket support. The group also serves consumer customers with selected cleaning products and operates globally through manufacturing sites and international sales channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:05:11.055Z"
+}

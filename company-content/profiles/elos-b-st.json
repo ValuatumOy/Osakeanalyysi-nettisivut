@@ -1,0 +1,9 @@
+{
+  "ticker": "ELOS-B.ST",
+  "companyName": "Elos Medtech AB (publ)",
+  "profile": "Elos Medtech develops and manufactures medical technology products and components for customers in dental, orthopedics, advanced surgical and precision applications. The company provides product development, prototyping, testing, regulatory support, process optimization, packaging and contract manufacturing services, with additional expertise in dental implants and instruments, orthopedic components and other medical device solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:50:54.331Z"
+}

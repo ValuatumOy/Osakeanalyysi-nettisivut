@@ -1,0 +1,9 @@
+{
+  "ticker": "KCC.OL",
+  "companyName": "Klaveness Combination Carriers ASA",
+  "profile": "Klaveness Combination Carriers ASA owns and operates combination carrier vessels that transport both wet and dry bulk cargoes on the same trade routes, reducing ballast time and improving vessel utilization. Its fleet serves cargoes including caustic soda, clean petroleum products, alumina, iron ore, grains, and other bulk commodities, primarily through CABU and CLEANBU vessels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:00:25.307Z"
+}

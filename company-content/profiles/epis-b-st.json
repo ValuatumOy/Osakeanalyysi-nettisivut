@@ -1,0 +1,9 @@
+{
+  "ticker": "EPIS-B.ST",
+  "companyName": "Episurf Medical AB (publ)",
+  "profile": "Episurf Medical develops and markets patient-specific orthopedic implants and associated surgical instruments for focal cartilage and osteochondral lesions, mainly in the knee, ankle and patellofemoral joint. Its Episealer products use MRI- or CT-based 3D modeling and custom manufacturing to support surgeons with personalized joint-preservation treatment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:55:06.187Z"
+}

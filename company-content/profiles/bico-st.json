@@ -1,0 +1,9 @@
+{
+  "ticker": "BICO.ST",
+  "companyName": "BICO Group AB (publ)",
+  "profile": "BICO Group AB provides life science research tools and automation for laboratories. Its portfolio includes lab automation software, automated workstations, imaging systems, 3D bioprinters, bioprinting materials, single-cell dispensing, liquid handling, and mixing technologies. The company serves pharmaceutical, biotech, and academic customers seeking to streamline workflows, improve reproducibility, and support research in cell biology and drug development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:03:38.570Z"
+}

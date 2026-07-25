@@ -1,0 +1,9 @@
+{
+  "ticker": "EPEN.ST",
+  "companyName": "Beijer Electronics Group AB (publ)",
+  "profile": "Beijer Electronics Group is a Swedish industrial technology company focused on digital solutions for control, visualization, and data communication. Through its Beijer Electronics and Westermo businesses, it develops and sells hardware, software, and services for industrial automation, machine interfaces, networking, remote access, and rugged applications used in manufacturing, marine, and infrastructure environments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:55:44.312Z"
+}

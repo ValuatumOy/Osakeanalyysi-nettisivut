@@ -1,0 +1,9 @@
+{
+  "ticker": "FED.CO",
+  "companyName": "Fast Ejendom Danmark A/S",
+  "profile": "Fast Ejendom Danmark A/S is a Danish real estate company that owns and manages commercial properties, primarily office, production, and warehouse buildings. It focuses on leasing, property development, operational optimization, and administration to improve its portfolio. Its properties are located mainly on the outskirts of major Danish cities, including the Copenhagen area, Odense, and Aarhus.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:05:32.530Z"
+}

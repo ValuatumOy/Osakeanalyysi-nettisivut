@@ -1,0 +1,9 @@
+{
+  "ticker": "CRBX.ST",
+  "companyName": "Carbiotix AB",
+  "profile": "Carbiotix AB is a Swedish biotechnology company focused on the onsite upcycling of plant-based side-streams. Its NutraCycle service helps food, beverage, ingredient and feed producers convert by-products into fortified ingredients and other higher-value outputs. The company previously developed prebiotic ingredients and microbiome diagnostics, but has since centered on NutraCycle.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:02:49.023Z"
+}

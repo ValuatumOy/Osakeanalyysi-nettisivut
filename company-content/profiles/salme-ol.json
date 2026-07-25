@@ -1,0 +1,9 @@
+{
+  "ticker": "SALME.OL",
+  "companyName": "Salmon Evolution ASA",
+  "profile": "Salmon Evolution ASA is a Norwegian land-based salmon farming company. It produces salmon at its facility at Indre Harøy on the west coast of Norway using a hybrid flow-through system designed to provide controlled growth conditions. The company’s value drivers are fish production, operational efficiency, and planned capacity expansion.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:17:20.892Z"
+}

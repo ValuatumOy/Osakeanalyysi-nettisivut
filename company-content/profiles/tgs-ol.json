@@ -1,0 +1,9 @@
+{
+  "ticker": "TGS.OL",
+  "companyName": "TGS ASA",
+  "profile": "TGS ASA is a global energy data and intelligence company that provides seismic acquisition, multi-client subsurface data, processing and imaging, and digital data solutions for exploration and production clients. It also offers wind, renewable energy, and carbon storage data. In 2026, it sold its North American well data products business, further concentrating on offshore data capabilities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:33:53.648Z"
+}

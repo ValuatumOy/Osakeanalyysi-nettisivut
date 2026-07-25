@@ -1,0 +1,9 @@
+{
+  "ticker": "ELK.OL",
+  "companyName": "Elkem ASA",
+  "profile": "Elkem ASA is a global materials company that produces silicon, ferrosilicon, foundry alloys, carbon materials and microsilica for industries including infrastructure, manufacturing, transportation and the energy transition. Its businesses supply inputs to metallurgical and industrial processes, and in April 2026 the company sold its Silicones division, narrowing its portfolio to core materials activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:12:28.499Z"
+}

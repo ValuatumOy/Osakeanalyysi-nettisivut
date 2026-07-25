@@ -1,0 +1,9 @@
+{
+  "ticker": "LUOTEA.HE",
+  "companyName": "Lassila & Tikanoja Oyj",
+  "profile": "Lassila and Tikanoja Oyj is a Nordic circular economy company that provides waste management, recycling, hazardous waste treatment, remediation, and industrial and water treatment services. It helps customers turn waste streams into materials and supports cleaner operations across Finland and Sweden. The group is listed on Nasdaq Helsinki.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:22:22.730Z"
+}

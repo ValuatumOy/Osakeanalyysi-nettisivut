@@ -1,0 +1,9 @@
+{
+  "ticker": "PARKEN.CO",
+  "companyName": "PARKEN Sport & Entertainment A/S",
+  "profile": "PARKEN Sport & Entertainment A/S operates a group of businesses centered on F.C. København, Lalandia and Parken Ejendomme. Its activities include professional football, stadium operations, holiday and activity resorts, vacation home rental and development, and commercial property leasing around the Parken stadium. Revenue is driven by matchday, hospitality, leisure and real estate activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:25:09.010Z"
+}

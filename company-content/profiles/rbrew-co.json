@@ -1,0 +1,9 @@
+{
+  "ticker": "RBREW.CO",
+  "companyName": "Royal Unibrew A/S",
+  "profile": "Royal Unibrew is a regional multi-beverage company that develops, markets, and distributes a broad portfolio of drinks across Nordic, Baltic, and selected other markets. Its range includes beers, soft drinks, water, energy drinks, cider, ready-to-drink products, wine, and spirits, supported by local brands and partner brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:42:55.552Z"
+}

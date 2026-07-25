@@ -1,0 +1,9 @@
+{
+  "ticker": "HYPE.CO",
+  "companyName": "Hypefactors A/S",
+  "profile": "Hypefactors A/S is a Copenhagen-based software company that provides media intelligence and reputation management tools. Its platform monitors global news and other media channels in real time, applies automated sentiment and reputation scoring, and generates reports, insights, and monetary valuations of media coverage. It serves communications, PR, and reputation-focused teams.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:35:57.528Z"
+}

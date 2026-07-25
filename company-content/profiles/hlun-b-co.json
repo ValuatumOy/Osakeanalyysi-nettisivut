@@ -1,0 +1,9 @@
+{
+  "ticker": "HLUN-B.CO",
+  "companyName": "H. Lundbeck A/S",
+  "profile": "H. Lundbeck A/S is a biopharmaceutical company focused on brain health. It researches, develops, manufactures and commercializes medicines for neurological and psychiatric disorders, with strengths in psychiatry and neurology and an expanding portfolio in neuro-specialty and neuro-rare diseases. The company also works with external partners to advance research and develop new treatments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:27:55.463Z"
+}

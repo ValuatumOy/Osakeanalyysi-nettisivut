@@ -1,0 +1,9 @@
+{
+  "ticker": "IS.ST",
+  "companyName": "Image Systems AB",
+  "profile": "Image Systems AB develops and sells software and systems for non-contact measurement and high-resolution image processing. Its operations are organized in two business areas: Motion Analysis, which provides software for high-speed motion analysis used mainly in defense, automotive and university applications, and RemaSawco, which supplies systems for optimizing sawmill production and related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:21:41.599Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "L2S.ST",
+  "companyName": "Learning 2 Sleep L2S AB (publ)",
+  "profile": "Learning 2 Sleep L2S AB provides digital healthcare services focused on sleep problems. The company offers an app-based sleep analysis and CBT-I treatment program, supported by coaching, recommendations, and audio exercises for individuals. It also works with employers, insurers, researchers, and healthcare partners through adapted sleep programs and data-based services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:37:10.667Z"
+}

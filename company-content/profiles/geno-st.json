@@ -1,0 +1,9 @@
+{
+  "ticker": "GENO.ST",
+  "companyName": "Genovis AB (publ.)",
+  "profile": "Genovis AB develops and sells enzyme-based tools and related services for the biopharmaceutical and research industries. Its SmartEnzymes portfolio and antibody-focused offerings support protein characterization, glycan analysis, bioconjugation, and quality control in drug development, manufacturing, and diagnostics. The company serves scientists and pharmaceutical customers through product sales and specialized services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:07:40.583Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "KONT.ST",
+  "companyName": "Kontigo Care AB (publ)",
+  "profile": "Kontigo Care AB develops digital healthcare services for addiction treatment and workplace substance monitoring. Its main products are the Previct Care platform for remote support in addiction and mental health care, and Previct Safety for real-time drug testing and safer work environments. The company also provides support, technical service, and related care portal functionality.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:35:48.122Z"
+}

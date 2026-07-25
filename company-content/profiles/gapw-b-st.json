@@ -1,0 +1,9 @@
+{
+  "ticker": "GAPW-B.ST",
+  "companyName": "Gapwaves AB (publ)",
+  "profile": "Gapwaves AB develops wireless solutions based on patented waveguide technology for millimetre-wave applications. Its products are used mainly in antenna systems for automotive radar, supporting advanced driver assistance and autonomous driving, and in wireless communication applications. The company also serves related areas such as smart cities, industrial automation, telecom, and other high-frequency antenna markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:06:11.918Z"
+}

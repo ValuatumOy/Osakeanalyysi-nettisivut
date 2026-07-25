@@ -1,0 +1,9 @@
+{
+  "ticker": "BOMILL.ST",
+  "companyName": "BoMill AB (publ)",
+  "profile": "BoMill AB develops and markets grain sorting systems based on single-kernel analysis. Its BoMill InSight platform uses near-infrared transmittance technology to sort wheat and barley by internal quality factors such as protein content and fusarium contamination, helping customers produce more homogeneous batches, improve process efficiency, and optimize grain value.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:27:12.274Z"
+}

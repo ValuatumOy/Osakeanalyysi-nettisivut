@@ -1,0 +1,9 @@
+{
+  "ticker": "AVEN.ST",
+  "companyName": "Avensia AB (publ)",
+  "profile": "Avensia AB provides consulting and technology services for modern commerce. The company helps B2C and B2B clients design omnichannel strategies, implement e-commerce platforms, and manage product and master data. It also offers services in customer experience, order management, AI-enabled commerce, and related business transformation projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:38:29.651Z"
+}

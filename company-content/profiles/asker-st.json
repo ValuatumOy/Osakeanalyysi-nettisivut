@@ -1,0 +1,9 @@
+{
+  "ticker": "ASKER.ST",
+  "companyName": "Asker Healthcare Group AB",
+  "profile": "Asker Healthcare Group is a European healthcare group providing medical products and solutions to caregivers and patients. It operates a network of more than 50 companies across 19 countries, serving healthcare providers through medical supplies, devices and equipment. Growth is driven by organic expansion and acquisitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:28:47.078Z"
+}

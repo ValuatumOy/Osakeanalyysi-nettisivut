@@ -1,0 +1,9 @@
+{
+  "ticker": "LSG.OL",
+  "companyName": "Lerøy Seafood Group ASA",
+  "profile": "Lerøy Seafood Group ASA is a fully integrated seafood company that produces salmon and trout, catches whitefish, and processes, develops, markets, sells, and distributes seafood products. Its operations span farming, wild catch, value-added processing, and international sales channels, with customers in retail, food service, and industrial markets across many countries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:07:22.521Z"
+}

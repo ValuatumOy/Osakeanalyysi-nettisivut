@@ -1,0 +1,9 @@
+{
+  "ticker": "WETTERI.HE",
+  "companyName": "Soprano Oyj",
+  "profile": "Soprano Oyj, now Wetteri Oyj, is a Finnish automotive retail group focused on passenger cars, maintenance and repair services, used car sales, and heavy equipment. The company operates a nationwide network of locations in Finland and also sells spare parts and related services. Its revenues are driven by vehicle sales and recurring aftermarket service activity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:33:06.935Z"
+}

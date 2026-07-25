@@ -1,0 +1,9 @@
+{
+  "ticker": "GPX.ST",
+  "companyName": "Gasporox AB (publ)",
+  "profile": "Gasporox AB develops and sells laser-based inspection systems for non-destructive gas analysis and leak detection. Its products are used to measure headspace gases, verify container closure integrity, and detect microscopic leaks in packaging for pharmaceutical, food, and beverage applications. The company also offers sensors, instruments, laboratory services, calibration, training, and support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:06:47.726Z"
+}

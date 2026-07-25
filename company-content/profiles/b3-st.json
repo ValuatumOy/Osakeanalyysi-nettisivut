@@ -1,0 +1,9 @@
+{
+  "ticker": "B3.ST",
+  "companyName": "B3 Consulting Group AB (publ)",
+  "profile": "B3 Consulting Group is a Swedish IT and management consulting firm that provides senior advisory and implementation services across digital transformation, business development, and change management. The company works with clients in both the public and private sectors, with offices in Sweden and Poland, and draws value from specialized consulting expertise and recurring project assignments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:47:17.051Z"
+}

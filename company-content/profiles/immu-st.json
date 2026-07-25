@@ -1,0 +1,9 @@
+{
+  "ticker": "IMMU.ST",
+  "companyName": "Mendus AB (publ)",
+  "profile": "Mendus AB is a Swedish biopharmaceutical company developing immunotherapies for cancer, with a focus on preventing tumor recurrence and supporting longer disease-free survival. Its lead program is vididencel, a cell-based therapy being advanced in myeloid blood cancers, including chronic myeloid leukemia, alongside clinical development and manufacturing activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:47:04.525Z"
+}

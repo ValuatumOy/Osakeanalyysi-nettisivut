@@ -1,0 +1,9 @@
+{
+  "ticker": "BRICK-B.ST",
+  "companyName": "Bricknode Holding AB (publ)",
+  "profile": "Bricknode Holding AB is a Swedish holding company that previously developed cloud-based software for financial institutions through its Bricknode platform. In 2023, its operational assets were transferred to Huddlestock Fintech, and the company has since focused on the remaining holding-company structure and shareholder matters in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:43:54.310Z"
+}

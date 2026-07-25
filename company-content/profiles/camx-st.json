@@ -1,0 +1,9 @@
+{
+  "ticker": "CAMX.ST",
+  "companyName": "Camurus AB (publ)",
+  "profile": "Camurus AB is a Swedish biopharmaceutical company that develops and commercializes long-acting medicines for severe and chronic diseases. Its portfolio is built around the proprietary FluidCrystal technology and includes products and candidates in opioid dependence, endocrine disorders, pain, cancer, and other specialty care areas, supported by in-house research and commercial operations in Europe, Australia, and the US.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:00:42.117Z"
+}

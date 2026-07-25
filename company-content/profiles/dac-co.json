@@ -1,0 +1,9 @@
+{
+  "ticker": "DAC.CO",
+  "companyName": "Danish Aerospace Company A/S",
+  "profile": "Danish Aerospace Company A/S is a high-tech aerospace supplier focused on advanced medical instrumentation and engineering for space applications. It designs, manufactures, certifies, maintains, tests and operates custom equipment and systems, including astronaut respiratory gear, exercise ergometers, medical monitoring hardware and minus-80-degree freezers, serving spaceflight customers through engineering and production services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:44:34.687Z"
+}

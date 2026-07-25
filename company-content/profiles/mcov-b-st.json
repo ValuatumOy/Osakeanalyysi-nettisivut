@@ -1,0 +1,9 @@
+{
+  "ticker": "MCOV-B.ST",
+  "companyName": "Medicover AB (publ)",
+  "profile": "Medicover AB (publ) provides healthcare services and diagnostic laboratory testing through two divisions. Healthcare Services offers outpatient and inpatient care, dentistry, fertility treatments, pharmacies, gyms and other wellbeing services, while Diagnostic Services runs laboratories, blood-drawing points and clinics that provide routine and advanced tests across major clinical areas in multiple European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:46:03.627Z"
+}

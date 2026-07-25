@@ -1,0 +1,9 @@
+{
+  "ticker": "UNLGRP.CO",
+  "companyName": "Conferize A/S",
+  "profile": "Conferize A/S develops event management software for organizers of online, onsite, and hybrid events. Its platform includes tools for event planning, agenda management, websites, registration, ticketing, email communication, attendee data handling, networking, and feedback collection. The company sells these services to organizations that need to plan, promote, and run events.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:39:10.490Z"
+}

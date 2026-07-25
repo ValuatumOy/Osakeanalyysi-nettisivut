@@ -1,0 +1,9 @@
+{
+  "ticker": "MAS.OL",
+  "companyName": "Måsøval AS",
+  "profile": "Måsøval AS is a Norwegian aquaculture company based on Frøya. It produces Atlantic salmon and operates as a fully integrated business with farming at sea, smolt production, harvesting, processing, and sales. The company’s operations are concentrated along the central Norwegian coast, where it manages the value chain from roe to market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:24:27.868Z"
+}

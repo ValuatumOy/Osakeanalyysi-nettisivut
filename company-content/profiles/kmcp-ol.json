@@ -1,0 +1,9 @@
+{
+  "ticker": "KMCP.OL",
+  "companyName": "KMC Properties ASA",
+  "profile": "KMC Properties ASA is a Norwegian real estate company that owns and develops industrial and logistics properties across the Nordics and parts of continental Europe. Its portfolio has long lease agreements with tenants and has been supported by development projects and acquisitions. In 2024, it agreed to combine its operations with Logistea.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:01:30.203Z"
+}

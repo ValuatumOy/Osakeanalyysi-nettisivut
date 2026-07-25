@@ -1,0 +1,9 @@
+{
+  "ticker": "ZAL.OL",
+  "companyName": "Zalaris ASA",
+  "profile": "Zalaris ASA provides HR and payroll solutions and services for enterprises across Europe and Asia Pacific. Its business covers managed payroll and HR outsourcing, including software and administration services through its PeopleHub platform, as well as consulting and implementation support for SAP SuccessFactors and related HR technology, serving customers across multiple industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:46:36.069Z"
+}

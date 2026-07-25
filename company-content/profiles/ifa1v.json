@@ -1,0 +1,9 @@
+{
+  "ticker": "IFA1V",
+  "companyName": "Innofactor",
+  "profile": "Innofactor is a Nordic software and services company focused on Microsoft-based business solutions, cloud services, and digital workplace tools. It provides consulting, implementation, maintenance, and customized application development, and also offers proprietary products such as Dynasty for document and case management. The company serves private, public, and third-sector customers across the region.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:12:12.813Z"
+}

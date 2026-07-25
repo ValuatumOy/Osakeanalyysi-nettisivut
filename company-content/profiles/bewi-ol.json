@@ -1,0 +1,9 @@
+{
+  "ticker": "BEWI.OL",
+  "companyName": "BEWi ASA",
+  "profile": "BEWi ASA is a European provider of packaging, components and insulation solutions. It manufactures and sells EPS- and EPP-based products for food packaging, temperature-controlled transport, automotive components and building insulation. The company also operates recycling activities that collect and process used materials into new products, supporting its circular business model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:35:40.713Z"
+}

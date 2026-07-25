@@ -1,0 +1,9 @@
+{
+  "ticker": "ALIF-B.ST",
+  "companyName": "AddLife AB (publ)",
+  "profile": "AddLife AB is a Swedish life science company active mainly in Europe. It owns and develops niche subsidiaries in two business areas, Labtech and Medtech, supplying products, solutions and services for healthcare, laboratories and research. Its offering includes medical technology, diagnostics, laboratory instruments, advisory services, product service and training.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:30:23.320Z"
+}

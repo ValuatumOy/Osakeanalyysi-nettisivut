@@ -1,0 +1,9 @@
+{
+  "ticker": "STENO.CO",
+  "companyName": "Stenocare A/S",
+  "profile": "Stenocare A/S is a Danish pharmaceutical company focused on prescription-based medical cannabis. It develops and markets cannabis products, and imports and distributes them to patients in Denmark and several other European markets, as well as Australia. The company has also been shifting away from cultivation toward a trading model centered on approved medical cannabis products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:04:18.390Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "MAHA-A.ST",
+  "companyName": "Maha Energy AB (publ)",
+  "profile": "Maha Capital AB, formerly Maha Energy, is a Swedish listed investment company focused on fintech credit solutions and broader capital allocation opportunities across the Americas. The group is based mainly in Sweden and Brazil and is transitioning from its historical energy focus toward a diversified investment platform. It aims to support long-term growth through selective investments and portfolio management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:44:24.884Z"
+}

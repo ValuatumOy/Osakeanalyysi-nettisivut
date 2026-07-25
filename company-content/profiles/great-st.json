@@ -1,0 +1,9 @@
+{
+  "ticker": "GREAT.ST",
+  "companyName": "Greater Than AB",
+  "profile": "Greater Than AB develops predictive AI and data analytics for the mobility sector. Its software converts GPS and driving data into insights on crash probability and climate impact, helping customers assess risk, improve safety, and reduce emissions. The company serves organizations across transport, insurance, and related mobility applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:10:24.882Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "DNORD.CO",
+  "companyName": "Dampskibsselskabet Norden A/S",
+  "profile": "Dampskibsselskabet Norden A/S is a Danish shipping company that provides ocean-based freight services for bulk and project cargo. It offers freight solutions, port logistics, tanker pool services, asset management and logistics, using a mix of operator and asset-management models to serve industrial customers across global trade routes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:43:09.334Z"
+}

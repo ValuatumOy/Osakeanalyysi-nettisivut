@@ -1,0 +1,9 @@
+{
+  "ticker": "HEXA-B.ST",
+  "companyName": "Hexagon AB (publ)",
+  "profile": "Hexagon AB is a global industrial technology company focused on measurement, positioning, and autonomous solutions. It develops hardware and software for metrology, reality capture, digital twins, and geospatial and positioning applications used in manufacturing, construction, mining, infrastructure, and other industries. Its value drivers include sensor technology, software, and data-driven workflow solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:15:49.199Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "JM.ST",
+  "companyName": "JM AB (publ)",
+  "profile": "JM AB is a Nordic residential developer that focuses on new-build housing and residential areas in Sweden, Norway and Finland, mainly in metropolitan and growth regions. The company also develops commercial premises and carries out contract work, primarily in Greater Stockholm, with sustainability integrated across its operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:28:57.995Z"
+}

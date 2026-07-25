@@ -1,0 +1,9 @@
+{
+  "ticker": "CHECK.ST",
+  "companyName": "Checkin.Com Group AB (publ)",
+  "profile": "Checkin.com Group AB develops software that helps businesses manage online user onboarding and authentication. Its platform provides an end-to-end check-in solution for sign-up, registration, and log-in flows, with products including identity verification, face matching, liveness detection, biometric authentication, KYC and AML compliance, signature verification, bot detection, and proof of address.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:10:44.065Z"
+}

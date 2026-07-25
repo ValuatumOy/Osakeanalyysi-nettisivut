@@ -1,0 +1,9 @@
+{
+  "ticker": "FERRO.ST",
+  "companyName": "Ferroamp AB (publ)",
+  "profile": "Ferroamp AB (publ) develops, manufactures and markets systems for power and energy optimization in properties. Its platform connects solar generation, battery storage, electric vehicle charging and phase balancing, and it also supports energy sharing and grid services. The company aims to help customers lower electricity costs and improve control.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:59:20.025Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "QFUEL.OL",
+  "companyName": "Quantafuel ASA",
+  "profile": "Quantafuel ASA develops and operates technology for chemical recycling of post-consumer plastic waste. The company processes mixed and contaminated plastics into pyrolysis-based liquid products and feedstock for new plastics, using purification and catalytic steps to upgrade waste into reusable materials. Its business is built around waste collection, processing capacity, and product output from recycling plants.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:11:20.273Z"
+}

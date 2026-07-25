@@ -1,0 +1,9 @@
+{
+  "ticker": "VOW.OL",
+  "companyName": "VOW ASA",
+  "profile": "Vow ASA develops and supplies technologies that prevent pollution and convert waste and biomass into usable resources and energy. Its businesses include wastewater treatment for cruise and aquaculture customers, pyrolysis systems for industrial waste valorisation, and heat-treatment and sterilization solutions through C.H. Evensen and Safesteril for industrial, food and pharmaceutical applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:39:21.233Z"
+}

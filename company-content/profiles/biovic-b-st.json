@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOVIC-B.ST",
+  "companyName": "Biovica International AB (publ)",
+  "profile": "Biovica International develops and commercializes blood-based biomarker assays for cancer treatment monitoring. Its main product is DiviTum TKa, a test that measures cell proliferation and is used to assess therapy effectiveness, initially in metastatic breast cancer. The company also collaborates with cancer institutes and pharmaceutical companies on clinical development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:19:23.502Z"
+}

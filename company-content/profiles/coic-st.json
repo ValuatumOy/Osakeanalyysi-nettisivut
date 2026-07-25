@@ -1,0 +1,9 @@
+{
+  "ticker": "COIC.ST",
+  "companyName": "Concentric AB (publ)",
+  "profile": "Concentric AB develops and manufactures flow-control and fluid-power systems for off-highway, truck, bus, industrial and energy applications. Its products include oil, water and fuel pumps, fans, thermal management solutions, hydraulic systems and related electric components. The company also provides engineering, development, testing and manufacturing services, with growing emphasis on electric products and electrification.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:26:19.633Z"
+}

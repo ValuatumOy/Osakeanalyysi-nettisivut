@@ -1,0 +1,9 @@
+{
+  "ticker": "HH.CO",
+  "companyName": "H+H International A/S",
+  "profile": "H+H International A/S manufactures and sells wall-building materials across Europe, primarily autoclaved aerated concrete blocks and calcium silicate units. Its products are used mainly in residential new-build construction, with some applications in commercial and other building projects. The company operates production sites in Northern and Central Europe and is listed on Nasdaq Copenhagen.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:29:09.970Z"
+}

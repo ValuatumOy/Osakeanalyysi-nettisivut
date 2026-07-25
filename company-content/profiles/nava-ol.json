@@ -1,0 +1,9 @@
+{
+  "ticker": "NAVA.OL",
+  "companyName": "Navamedic ASA",
+  "profile": "Navamedic ASA is a Nordic pharmaceutical company that supplies healthcare products to hospitals and pharmacies across the Nordic region, the Baltics and Benelux. Its portfolio includes prescription medicines, consumer health products, medical nutrition and antibiotics, supported by in-licensing, distribution and market access capabilities built around local commercial expertise.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:25:29.246Z"
+}

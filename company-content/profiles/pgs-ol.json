@@ -1,0 +1,9 @@
+{
+  "ticker": "PGS.OL",
+  "companyName": "PGS ASA",
+  "profile": "PGS ASA is a marine geophysical company that provides seismic and reservoir services to the oil and gas industry and selected new energy markets. Its activities include marine data acquisition, seismic imaging, interpretation, and field evaluation, supported by a multi-client data library. The business is driven by demand for subsurface data and offshore resource development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:04:58.974Z"
+}

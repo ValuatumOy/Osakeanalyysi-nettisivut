@@ -1,0 +1,9 @@
+{
+  "ticker": "ENZY.ST",
+  "companyName": "Enzymatica AB (publ)",
+  "profile": "Enzymatica AB is a Swedish life science company that develops and markets medical devices for infection-related conditions in the upper airways. Its main product is ColdZyme, an oral spray for colds and cold-like symptoms, sold through pharmacy and other partners. The company’s growth depends on product development, clinical evidence, and geographic expansion through collaborations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:54:21.159Z"
+}

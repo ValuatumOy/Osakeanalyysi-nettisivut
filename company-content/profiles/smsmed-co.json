@@ -1,0 +1,9 @@
+{
+  "ticker": "SMSMED.CO",
+  "companyName": "Scandinavian Medical Solutions A/S",
+  "profile": "Scandinavian Medical Solutions A/S buys, sells, and rents pre-owned diagnostic imaging equipment, including MRI, CT, PET/CT, X-ray, and ultrasound systems. It also supplies spare parts and manages related deinstallation, logistics, and aftersales support for hospitals, clinics, and distributors, with operations centered in Denmark and serving international customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:49:46.526Z"
+}

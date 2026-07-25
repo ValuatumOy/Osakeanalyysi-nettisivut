@@ -1,0 +1,9 @@
+{
+  "ticker": "BTS-B.ST",
+  "companyName": "BTS Group AB (publ)",
+  "profile": "BTS Group AB provides professional services focused on strategy execution and leadership development. The company designs customized simulations, coaching, assessments, and other experiential learning programs that help organizations align leadership teams, strengthen business acumen, and improve decision-making. It serves clients across industries through engagements aimed at turning strategic plans into execution capabilities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:48:47.715Z"
+}

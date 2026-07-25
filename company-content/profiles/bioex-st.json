@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOEX.ST",
+  "companyName": "Bioextrax AB (publ)",
+  "profile": "Bioextrax AB is a Swedish biotechnology company that develops and licenses patented, chemical-free processes for producing biobased materials. Its main activities include PHA-based bioplastics and the upcycling of poultry feather waste into protein hydrolysates and keratin microfibres. The company works with partners to commercialise its technologies across industrial applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:12:26.630Z"
+}

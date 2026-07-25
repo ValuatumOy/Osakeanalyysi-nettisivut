@@ -1,0 +1,9 @@
+{
+  "ticker": "BULTEN.ST",
+  "companyName": "Bulten AB (publ)",
+  "profile": "Bulten AB is a Swedish industrial company that manufactures and distributes fasteners for the automotive industry and other sectors such as consumer electronics. Its offering ranges from standard to customized fasteners and includes engineering, development, sourcing, logistics and service through its Full Service Provider model. The group is headquartered in Gothenburg and operates internationally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:50:41.376Z"
+}

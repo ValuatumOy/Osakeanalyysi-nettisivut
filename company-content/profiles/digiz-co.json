@@ -1,0 +1,9 @@
+{
+  "ticker": "DIGIZ.CO",
+  "companyName": "Digizuite A/S",
+  "profile": "Digizuite A/S provides enterprise software for digital asset management. Its cloud platform helps organizations store, organize, search, distribute, and repurpose images, video, documents, and other brand assets from a central repository. The software uses automated workflows and integrations to support content governance, brand control, and faster distribution across channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:53:39.023Z"
+}

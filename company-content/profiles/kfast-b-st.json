@@ -1,0 +1,9 @@
+{
+  "ticker": "KFAST-B.ST",
+  "companyName": "K-Fast Holding AB (publ)",
+  "profile": "K-Fast Holding AB is a Swedish property group focused on rental housing. It develops residential projects, constructs buildings through in-house operations, and manages its own property portfolio. The group also produces prefabricated concrete frames through K-Prefab. Its business plan includes a shift toward selling completed residential properties to external customers as well as retaining assets for management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:30:12.728Z"
+}

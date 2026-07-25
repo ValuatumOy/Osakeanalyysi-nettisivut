@@ -1,0 +1,9 @@
+{
+  "ticker": "DANT.CO",
+  "companyName": "Dantax A/S",
+  "profile": "Dantax A/S is a Danish listed company that designs, develops, produces and sells audio products. Its portfolio includes loudspeakers and related hi-fi equipment marketed mainly under the Scansonic, Raidho and Harmony brands. The group operates through Dantax Radio A/S and sells products globally, with development carried out with partners abroad.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:47:41.866Z"
+}

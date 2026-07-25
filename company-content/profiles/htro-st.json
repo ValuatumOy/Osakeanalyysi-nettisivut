@@ -1,0 +1,9 @@
+{
+  "ticker": "HTRO.ST",
+  "companyName": "Hexatronic Group AB (publ)",
+  "profile": "Hexatronic Group develops and supplies fiber optic systems and related components for communication networks. Its businesses span fiber solutions, harsh-environment products, data center offerings, wireless infrastructure, and training services. The company also provides installation support, certification, and other services that help customers build, connect, and maintain network infrastructure across different applications and markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:16:16.348Z"
+}

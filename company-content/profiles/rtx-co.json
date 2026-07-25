@@ -1,0 +1,9 @@
+{
+  "ticker": "RTX.CO",
+  "companyName": "RTX A/S",
+  "profile": "RTX A/S is a Danish technology company that develops and manufactures wireless communication solutions for enterprise, healthcare, and professional audio markets. Its products and systems include wireless IP telephony, intercom, audio, and embedded monitoring solutions, delivered as standardized or customized, end-to-end offerings with lifecycle support for customers across multiple industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:44:10.177Z"
+}
