@@ -335,6 +335,42 @@
       "score": 63,
       "rationale": "Classic value-investing query where incumbents explain 'cheap for a reason' abstractly; our differentiator is a live optically-cheap-but-SELL example decomposed by value pool, the inverse of the margin-of-safety angle.",
       "notes": "Cluster A support; links to how-to-value-a-stock pillar + margin-of-safety-investing sibling (distinct: margin-of-safety = buffer on a real bargain, value-trap = why a cheap multiple is not a bargain). Proprietary data plan: nokia-05062026.json — a low headline multiple that our model still rates SELL once the optical vs mobile value-pool split and scenario range are shown; supported by the broader set of covered names where a cheap screen masks structural issues. Numbers only from covered report JSONs. Overlap risk with margin-of-safety-investing — keep intents distinct in review; both need not ship. Score: winnability 23 (evergreen, incumbents abstract; live cheap-but-SELL example differentiates) + proprietary 20 (real example, internal-example style) + cluster fit 14 (Cluster A saturated) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "stora-enso-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "stora enso stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-26",
+      "score": 83,
+      "rationale": "Explicitly a DESIGN §3 Cluster-B named support ('UPM / Stora Enso ... analysis takes') that is still not queued as a standalone, and the report just refreshed to 24 Jul 2026 with a live BUY and +45% upside — a fresh freshness trigger on a winnable OMXH English query nobody covers with a proprietary target.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings (forestry, UPM take) + /reports/stora-enso-equity-report. Proprietary data plan (from the refreshed storaenso-01062026.json, reportDate 24 Jul 2026): headline only — BUY, 12m target 13.30 EUR vs 9.17 EUR (+45.0% upside), market cap EUR 7.2 bn, enterprise value EUR 10.6 bn. NOTE: the 24 Jul refresh leaned the JSON out — it no longer carries reverseValuation.scenarios or valuePools, so this article can source a rating/target/upside/EV-bridge verdict but NOT a value-pool decomposition or bull/base/bear scenario table from the JSON (do not reuse the older 71.1%-of-EV forest split unless re-sourced). OVERLAP: keep intent distinct from the in-review forestry sector post (finnish-forestry-stocks-upm-stora-enso, PR #19 = sector thesis) and the /compare UPM-vs-Stora-Enso page (head-to-head); this = single-name valuation verdict + forecast. Score: winnability 25 (OMXH English underserved) + proprietary 26 (fresh full headline model) + cluster fit 15 (DESIGN-named but docked for forestry/compare overlap) + freshness 17 (fresh 24 Jul 2026 report)."
+    },
+    {
+      "slug": "upm-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "upm stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-26",
+      "score": 82,
+      "rationale": "The other DESIGN §3 Cluster-B named 'analysis take' still unqueued, and the 24 Jul 2026 refresh DOWNGRADED UPM to HOLD (target 21.10 EUR vs 22.23, -5.1%) — a genuine, timely change-of-view angle ('why we moved UPM to HOLD') that is high information gain and directly current.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings + /reports/upm-equity-report. Proprietary data plan (refreshed upm-21052026.json, reportDate 24 Jul 2026): headline only — HOLD, 12m target 21.10 EUR vs 22.23 EUR (-5.1%), market cap EUR 11.7 bn, enterprise value EUR 14.8 bn. Same JSON-leaning caveat as Stora Enso: no scenarios/valuePools in the current JSON, so no value-pool or scenario table without re-sourcing. STALE-DATA FLAG for the human: the in-review Helsinki pillar (PR #17) and forestry post (PR #19) both label UPM a BUY (forestry cited +51% upside); the current 24 Jul model is HOLD at -5.1%, so those posts need a refresh before merge and this single-name take should carry the current HOLD verdict. OVERLAP: keep intent distinct from forestry sector post (PR #19) and /compare page — single-name valuation-opinion vs sector/head-to-head. Score: winnability 25 (OMXH English underserved) + proprietary 25 (fresh full headline model) + cluster fit 14 (DESIGN-named, docked for forestry/compare overlap) + freshness 18 (fresh 24 Jul 2026 rating downgrade = strong news trigger)."
+    },
+    {
+      "slug": "exit-multiple-valuation",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "exit multiple valuation method",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-26",
+      "score": 64,
+      "rationale": "Constructively unblocks the shelved terminal-growth-rate-dcf topic via the sanctioned reframe (exit-multiple sensitivity from our own scenario bridges): a data-backed methodology piece showing how the terminal/exit multiple drives fair value, using real scenario multiple bridges nobody else publishes.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + what-is-reverse-valuation + sum-of-the-parts siblings (distinct intent: this isolates the exit/terminal MULTIPLE's leverage on fair value, not the full reverse-valuation walk). Proprietary data plan: reverseValuation.scenarios in amd-05062026.json (Bull 28.9x -> USD 709.60, Base 28.5x -> 525.00, Bear 20.4x -> 213.34) and nokia-05062026.json (Bull 17.8x -> EUR 15.99, Base 19.7x -> 13.43, Bear 14.3x -> 9.78) — show how a few turns of exit multiple swing implied fair value across a wide band. CAVEAT: tesla-01062026.json and the refreshed UPM/StoraEnso JSONs no longer carry scenarios, so source the multiple bridges only from AMD + Nokia (and any other covered JSON that still exposes reverseValuation.scenarios at draft time). Numbers only from those JSONs. This supersedes the intent behind blocked terminal-growth-rate-dcf without fabricating a WACC/g. Overlap risk with reverse-valuation/sum-of-the-parts — keep the lens on the exit multiple specifically. Score: winnability 22 (methodology, moderate competition; live scenario multiple bridges are the info gain) + proprietary 22 (real scenario multiples across 2 named files) + cluster fit 14 (Cluster A saturated, but fills the shelved terminal-growth gap) + freshness 6 (evergreen)."
     }
   ],
   "quarterly": [
