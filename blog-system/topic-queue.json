@@ -246,11 +246,14 @@
       "role": "support",
       "targetQuery": "oriola stock analysis",
       "intent": "informational-commercial",
-      "status": "proposed",
+      "status": "in-review",
+      "prNumber": 33,
+      "autoApproved": true,
+      "autoApprovedAt": "2026-07-27",
       "proposedAt": "2026-07-05",
       "score": 82,
       "rationale": "A freshly-covered OMXH name (1 Jun 2026 report) with essentially zero structured English coverage in the SERP — the winnable Helsinki wedge applied to a BUY-rated Nordic pharma-distribution defensive nobody else values in English.",
-      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings (Kesko, forestry). Proprietary data plan: oriola-01062026.json — BUY, 12m target 1.15 EUR vs 0.93 EUR (+23.5% upside), Services segment 58% of EV at ~4.7x EV/EBITDA, group EV/EBITDA 6.4x, net debt/EBITDA 2.5x, and the bull/base/bear reverse-valuation scenarios. DEPENDENCY/CAVEAT: no /reports/oriola-equity-report page is published yet (Oriola JSON exists in report-content/ but is absent from _catalog.json and sitemap.xml), so at draft time the article can only link down to the pillar + Helsinki siblings, not to an Oriola report page. Ideally publish the Oriola report page first, or adjust internal-link gate expectations. Score: winnability 25 (OMXH pharma distribution, near-zero English SERP) + proprietary 27 + cluster fit 14 (docked for missing report page) + freshness 16 (1 Jun 2026 report + BUY call)."
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Kesko/Stora Enso reports + /reports/oriola-equity-report. Drafted 2026-07-27 (Mon full pipeline run) as PR #33 on branch blog/oriola-stock-analysis. AUTO-PROMOTED: no status:queued item existed, so the pipeline promoted the highest-score proposed item >=48h old (oriola 82, proposed 2026-07-05); stora-enso (83) and upm (82) were proposed 2026-07-26, <48h, ineligible. Flagged autoApproved:true. DEPENDENCY NOW RESOLVED: /reports/oriola-equity-report.html is live in _catalog.json + sitemap, so the article links down to the report page and the internal-link gate passes cleanly. Angle: Oriola screens broken (P/E -9.6x, net sales 1.9bn->210m via 2026 IFRS 15 agent restatement, verified via Oriola stock-exchange release) but our 1 Jun 2026 model rates it BUY (1.15 EUR target vs 0.93; ~0.90 live via FMP 27 Jul 2026, +23.5% at report date); 100% of EUR 44m forward EBITDA from a ~4.7x distribution duopoly, entire re-rating hinges on the 50% Kronans Apotek JV (EUR 187m book vs ~EUR 75m assigned EV, EUR 112m gap, two EUR 16m impairments 2024+2025 verified via Oriola releases). Scenario brackets use the internally-consistent coreAnalysis figures (downside equity ~EUR 40m under a capital call; upside ~EUR 284m / ~EUR 1.54 per share by 2027), NOT the reverseValuation per-share table (which does not reconcile with EV minus net debt). Inbound link added from live reports/oriola-equity-report (ships in the PR). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge. Score: winnability 25 + proprietary 27 + cluster fit 14 + freshness 16."
     },
     {
       "slug": "limitations-of-ai-stock-analysis",
