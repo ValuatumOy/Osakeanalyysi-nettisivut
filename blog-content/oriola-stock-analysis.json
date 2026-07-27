@@ -1,0 +1,110 @@
+{
+  "slug": "oriola-stock-analysis",
+  "cluster": "helsinki-stocks",
+  "role": "support",
+  "targetQuery": "oriola stock analysis",
+  "intent": "informational-commercial",
+  "title": "Oriola Stock Analysis: Is ORIOLA.HE Undervalued?",
+  "metaDescription": "Our Oriola stock analysis rates ORIOLA.HE a BUY, with a 1.15 EUR target vs a 0.93 EUR price and the whole re-rating resting on the Kronans Apotek turnaround.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "status": "in-review" },
+  "datePublished": "2026-07-27",
+  "dateModified": "2026-07-27",
+  "readingTimeMinutes": 7,
+  "keywords": ["oriola stock", "ORIOLA.HE", "Kronans Apotek", "Helsinki stocks", "pharmaceutical distribution"],
+  "brief": {
+    "angle": "Oriola screens as broken: a negative P/E and reported net sales that just fell from ~EUR 1.9bn to ~EUR 210m. Our 1 June 2026 model still rates it BUY (1.15 EUR target vs 0.93 EUR, +23.5%) because 100% of the group's EUR 44m forward EBITDA comes from a stable ~4.7x distribution duopoly, and the entire equity re-rating hinges on one variable: the 50% Kronans Apotek JV, carried at EUR 187m book but assigned only ~EUR 75m of EV. No English-language page in the SERP decomposes Oriola this way with a proprietary target.",
+    "format": "Single-name analysis with an explicit verdict, sum-of-the-parts, and scenario range.",
+    "serpNotes": "Thin English SERP: quote pages (Bloomberg, MarketScreener, Investing.com), Oriola IR releases, one Oninvest feature, one Evli PDF preview. No structured English valuation with a target and value-pool decomposition. Real gap.",
+    "proprietaryDataPlan": [
+      "BUY, 1.15 EUR 12m target vs 0.93 EUR (+23.5%), market cap EUR 173m, EV EUR 281m (oriola-01062026.json headline).",
+      "Value pools: Services 58% / EUR 163m EV; Kronans Apotek 27% / EUR 75m EV (0.4x P/B vs EUR 187m book); Products 15% / EUR 43m EV (oriola-01062026.json valuePools).",
+      "Scenario brackets: downside equity ~EUR 40m (JV to zero, capital call); upside equity ~EUR 284m / ~EUR 1.54 per share (JV to book by 2027) (oriola-01062026.json summary + coreAnalysis)."
+    ],
+    "opinion": "The market is discounting the wrong thing. The negative P/E is an accounting artifact (IFRS 15 agent restatement plus JV losses below the operating line), while the cash-generative core supports the debt on its own. The stock is a binary on the Kronans Apotek turnaround, and it is priced as if that turnaround has already failed.",
+    "assumption": "Kronans Apotek recovers toward an industry-standard 3-4% retail EBIT margin by 2027, at which point its EUR 187m book value can be realized through resumed dividends or a sale.",
+    "risk": "If JV losses instead exhaust liquidity, the two 50% owners face a dilutive capital call (the report's thesis-breaker); in that downside the core absorbs the full net debt and equity value drops toward EUR 40m.",
+    "sourcePlan": [
+      "Primary: Oriola stock exchange release on the 2026 IFRS 15 agent restatement (net sales recognized net as a distribution fee; EBITDA and cash unchanged).",
+      "Primary: Oriola release on the ~EUR 16m Kronans Apotek impairment to net result (2025).",
+      "Primary: Oriola release on the ~EUR 16m Kronans Apotek impairment (2024).",
+      "Tier 2: Oninvest feature on Oriola losses, new targets, and a possible JV disposal."
+    ],
+    "internalLinks": ["/blog/investing-in-helsinki-listed-stocks.html", "/reports/oriola-equity-report.html", "/reports/kesko-equity-report.html", "/methodology.html"],
+    "inboundLink": "Added from live reports/oriola-equity-report.html (Related section) to /blog/oriola-stock-analysis.html.",
+    "lengthTarget": "900-1100 words"
+  },
+  "sections": [
+    {
+      "h2": "Is Oriola stock undervalued in 2026?",
+      "html": "<p>Yes, on our numbers. Our <a href=\"/reports/oriola-equity-report.html\">1 June 2026 equity report</a> rates Oriola Oyj (ORIOLA.HE) a BUY with a 1.15 EUR twelve-month target against a 0.93 EUR price, about 23.5% upside. The stock trades near 0.90 EUR today (27 July 2026), so the gap has widened a little since the report date.</p><p>The screen tells a different story. Oriola carries a negative 2026E P/E of -9.6x, and its reported net sales just fell from roughly EUR 1.9 billion to about EUR 210 million. Neither of those is what it looks like. One is an accounting change, the other is a joint venture sitting below the operating line.</p><p>Look at the operating business instead. Oriola's EUR 173 million equity value (EUR 281 million enterprise value) sits on top of a core distribution operation that produces 100% of the group's EUR 44 million forward EBITDA. Our view is that the market is discounting the wrong thing.</p>"
+    },
+    {
+      "h2": "Why does Oriola's P/E look negative and net sales collapse?",
+      "html": "<p>Two accounting facts, not two disasters. In 2026 Oriola changed its revenue recognition to an agent model under IFRS 15, recognizing only the distribution fee rather than the gross value of the drugs it moves. The company states the change leaves EBITDA and cash generation unaffected (<a href=\"https://www.oriola.com/news-and-releases/stock-exchange-releases/2026/oriola-changes-its-financial-reporting-to-better-reflect-its-value-creation-and-improve-transparency\" target=\"_blank\" rel=\"noopener\">Oriola stock exchange release, 2026</a>). In our model that restatement collapses reported net sales from about EUR 1.9 billion to roughly EUR 210 million and lifts the reported EBITDA margin from near 1% to over 20%.</p><p>The negative P/E is the second artifact. Because Kronans Apotek is a 50% joint venture, its net losses flow into Oriola's pre-tax profit but its revenue and EBITDA sit below the operating line. Strong group EBITDA and negative net earnings coexist. So the headline P/E is close to useless here. EV/EBITDA at 6.4x (2026E) is the fairer lens.</p>"
+    },
+    {
+      "h2": "What is Oriola actually worth? A sum-of-the-parts view",
+      "html": "<p>Our EUR 281 million enterprise value splits into three pools in the 1 June 2026 model. The distribution business does the work; the joint venture holds the argument.</p><table><thead><tr><th>Value pool</th><th>Share of EV</th><th>Allocated EV</th><th>Basis</th></tr></thead><tbody><tr><td>Services (distribution)</td><td>58%</td><td>EUR 163 m</td><td>~4.7x EV/EBITDA on ~EUR 35 m segment EBITDA</td></tr><tr><td>Kronans Apotek (50% JV)</td><td>27%</td><td>EUR 75 m</td><td>0.4x price-to-book vs EUR 187 m book value</td></tr><tr><td>Products (wholesale)</td><td>15%</td><td>EUR 43 m</td><td>~4.8x EV/EBITDA on ~EUR 9 m EBITDA</td></tr></tbody></table><p>Services is the profit engine: a regulated Nordic distribution duopoly, main competitor Tamro, valued at an undemanding ~4.7x. Products is a cleaner wholesale operation after the April 2025 sale of Svensk dos AB, also near 4.8x. Together those two core pools carry the full EUR 109 million forward net debt without heroic assumptions. That leaves the JV as the swing factor. Among <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">Helsinki-listed stocks</a>, Oriola sits in the same defensive bucket as grocery and pharmacy names such as <a href=\"/reports/kesko-equity-report.html\">Kesko</a>, but with a turnaround option bolted on.</p>"
+    },
+    {
+      "h2": "The whole thesis is Kronans Apotek",
+      "html": "<p>One asset drives almost all of the upside. The market assigns the 50% Kronans Apotek stake only about EUR 75 million of EV against a EUR 187 million book value. That is a roughly 60% discount (0.4x price-to-book), a gap of about EUR 112 million.</p><p>The discount has a cause. A flawed 2024 to 2025 ERP integration disrupted store operations, cost market share, and forced two identical impairments of about EUR 16 million each, in Q4 2024 (<a href=\"https://www.oriola.com/news-and-releases/stock-exchange-releases/2024/oriola-to-record-an-impairment-of-approximately-eur-16-million-related-to-its-joint-venture-kronans-apotek\" target=\"_blank\" rel=\"noopener\">Oriola release, 2024</a>) and again in Q4 2025 (<a href=\"https://www.oriola.com/news-and-releases/stock-exchange-releases/2025/kronans-apotek-to-record-an-impairment-with-an-impact-of-approximately-eur-16-million-to-oriolas-net-result\" target=\"_blank\" rel=\"noopener\">Oriola release, 2025</a>). Kronans is Sweden's third-largest pharmacy chain, with a 20.7% market share in 2025.</p><p>Here is the assumption doing the heavy lifting: we assume the JV recovers toward an industry-standard 3 to 4% retail EBIT margin by 2027, at which point its book value can be realized through resumed dividends or a sale. Inderes has floated a disposal of the stake as a logical first step (<a href=\"https://en.oninvest.com/article/finnish-healthcare-small-cap-oriola-losses-new-targets-and-hints-of-big-changes\" target=\"_blank\" rel=\"noopener\">Oninvest</a>). The named risk to our view: if the losses instead drain liquidity, the two 50% owners face a dilutive capital call. That is the thesis-breaker.</p>"
+    },
+    {
+      "h2": "What Oriola is worth if the JV turns, and if it doesn't",
+      "html": "<p>The scenario spread is wide because it all hinges on one variable. The table below brackets the two outcomes for the joint venture against today's numbers. Our 1.15 EUR twelve-month target sits between them, a deliberately conservative near-term call.</p><table><thead><tr><th>Scenario</th><th>What has to happen</th><th>Group EV</th><th>Equity value</th><th>Per share</th></tr></thead><tbody><tr><td>Today (1 June 2026)</td><td>current market pricing</td><td>EUR 281 m</td><td>EUR 173 m</td><td>0.93 EUR</td></tr><tr><td>Downside</td><td>JV written to zero, dilutive capital call (net debt ~EUR 140 m)</td><td>~EUR 180 m</td><td>~EUR 40 m</td><td>well below today</td></tr><tr><td>Upside (by 2027)</td><td>JV re-rates to its EUR 187 m book, 3-4% margin</td><td>~EUR 393 m</td><td>~EUR 284 m</td><td>~EUR 1.54</td></tr></tbody></table><p>The upside case is not our base target. It needs the turnaround to happen, and Swedish retail pharmacy margins have been the problem, not the solution, for two years. If the turnaround fails, the core distribution business and its EUR 44 million EBITDA still exist, but a capital call would push equity value down toward EUR 40 million against a EUR 173 million market cap today. That is the trade in front of you: a binary on one Swedish pharmacy chain, priced as if the turnaround has already failed.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Oriola a buy in 2026?",
+      "a": "On our 1 June 2026 model, yes. We rate Oriola Oyj (ORIOLA.HE) BUY with a 1.15 EUR twelve-month target against a 0.93 EUR price, about 23.5% upside. The call rests on a stable distribution core that supports the debt while the discounted Kronans Apotek joint venture re-rates."
+    },
+    {
+      "q": "Why does Oriola have a negative P/E?",
+      "a": "Because its 50% Kronans Apotek joint venture is loss-making at the net level, and those losses flow into Oriola's pre-tax profit while the JV's revenue and EBITDA sit below the operating line. Group EBITDA stays positive at about EUR 44 million forward, so we treat EV/EBITDA of 6.4x, not the -9.6x P/E, as the fair lens."
+    },
+    {
+      "q": "What is Oriola's price target?",
+      "a": "Our 1 June 2026 report sets a 1.15 EUR twelve-month target, about 23.5% above the 0.93 EUR price at the report date. If Kronans Apotek re-rates toward its EUR 187 million book value by 2027, our upside case values the equity near EUR 1.54 per share; a failed turnaround points much lower."
+    },
+    {
+      "q": "Why is Oriola undervalued?",
+      "a": "Two accounting effects hide the operating business. A 2026 IFRS 15 agent restatement cut reported net sales from about EUR 1.9 billion to EUR 210 million, and the loss-making JV drags net earnings negative. Underneath, the core distribution duopoly generates EUR 44 million forward EBITDA at an undemanding 4.7x EV/EBITDA."
+    },
+    {
+      "q": "What is the biggest risk to Oriola stock?",
+      "a": "A Kronans Apotek capital call. If the joint venture's losses exhaust its liquidity buffers, the two 50% owners could be forced into a dilutive capital injection, the report's thesis-breaker. In that downside the core carries the full net debt and our scenario math points to equity value near EUR 40 million."
+    }
+  ],
+  "proprietaryData": [
+    { "claim": "Oriola BUY, 1.15 EUR 12m target vs 0.93 EUR price (+23.5%), market cap EUR 173m, EV EUR 281m (1 June 2026 model)", "source": "report-content/oriola-01062026.json" },
+    { "claim": "2026E P/E -9.6x, EV/EBITDA 6.4x, Net Debt/EBITDA 2.5x; forward EBITDA EUR 44m; forward net debt EUR 109m", "source": "report-content/oriola-01062026.json" },
+    { "claim": "Value pools: Services 58% / EUR 163m EV (~4.7x); Kronans Apotek 27% / EUR 75m EV (0.4x P/B vs EUR 187m book); Products 15% / EUR 43m EV (~4.8x)", "source": "report-content/oriola-01062026.json" },
+    { "claim": "Kronans Apotek 20.7% Swedish market share (2025); EUR 112m book-vs-market gap; 3-4% target EBIT margin by 2027", "source": "report-content/oriola-01062026.json" },
+    { "claim": "Scenario brackets: downside group EV ~EUR 180m / equity ~EUR 40m (capital call, net debt EUR 140m); upside group EV ~EUR 393m / equity ~EUR 284m / ~EUR 1.54 per share (JV to book, 2027)", "source": "report-content/oriola-01062026.json" },
+    { "claim": "Current price 0.90 EUR, market cap ~EUR 166m (Nasdaq Helsinki, 27 July 2026)", "source": "Financial Modeling Prep live quote, ORIOLA.HE, 27 July 2026" }
+  ],
+  "internalLinks": [
+    "/blog/investing-in-helsinki-listed-stocks.html",
+    "/reports/oriola-equity-report.html",
+    "/reports/kesko-equity-report.html",
+    "/methodology.html",
+    "/reports/stora-enso-equity-report.html"
+  ],
+  "sources": [
+    { "label": "Valuatum AI Equity Report: Oriola Oyj, 1 June 2026", "url": "/reports/oriola-equity-report.html" },
+    { "label": "Oriola Oyj: Oriola changes its financial reporting (IFRS 15 agent model), stock exchange release, 2026", "url": "https://www.oriola.com/news-and-releases/stock-exchange-releases/2026/oriola-changes-its-financial-reporting-to-better-reflect-its-value-creation-and-improve-transparency" },
+    { "label": "Oriola Oyj: Kronans Apotek ~EUR 16m impairment to net result, stock exchange release, 2025", "url": "https://www.oriola.com/news-and-releases/stock-exchange-releases/2025/kronans-apotek-to-record-an-impairment-with-an-impact-of-approximately-eur-16-million-to-oriolas-net-result" },
+    { "label": "Oriola Oyj: ~EUR 16m impairment related to Kronans Apotek, stock exchange release, 2024", "url": "https://www.oriola.com/news-and-releases/stock-exchange-releases/2024/oriola-to-record-an-impairment-of-approximately-eur-16-million-related-to-its-joint-venture-kronans-apotek" },
+    { "label": "Oriola Corporation: Financial Statements Release 1 January to 31 December 2025", "url": "https://www.oriola.com/news-and-releases/stock-exchange-releases/2026/oriola-corporations-financial-statements-release-1-january-31-december-2025" },
+    { "label": "Oninvest, Finnish healthcare small cap Oriola: losses, new targets, and hints of big changes", "url": "https://en.oninvest.com/article/finnish-healthcare-small-cap-oriola-losses-new-targets-and-hints-of-big-changes" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
