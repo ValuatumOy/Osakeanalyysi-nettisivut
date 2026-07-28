@@ -1,0 +1,9 @@
+{
+  "ticker": "SEYE.ST",
+  "companyName": "Smart Eye AB (publ)",
+  "profile": "Smart Eye AB develops software and related solutions for understanding human behavior in complex environments. Its main businesses are automotive driver monitoring and interior sensing systems, eye-tracking technology, and biosensor software for behavioral research and training. The company also offers facial coding and other human-insight tools through its acquired businesses Affectiva and iMotions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:01.582Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "XPC.ST",
+  "companyName": "XP Chemistries AB (publ)",
+  "profile": "XP Chemistries AB develops and produces forest-based capsaicin and capsaicin analogues using patented catalytic technology and renewable feedstocks. The company focuses on fine chemicals and biologically active products for animal feed, cosmetics, personal care, and self-defense spray applications, while also carrying out research, development, and patent management related to these compounds.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:46.321Z"
+}

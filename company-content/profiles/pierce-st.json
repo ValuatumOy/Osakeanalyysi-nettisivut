@@ -1,0 +1,9 @@
+{
+  "ticker": "PIERCE.ST",
+  "companyName": "Pierce Group AB (publ)",
+  "profile": "Pierce Group AB (publ) is a European e-commerce retailer of motorcycle and snowmobile gear, parts and accessories. It sells through the online stores 24MX, XLMOTO and Sledstore, serving riders across multiple European markets. The company also offers a range of own brands and operates a logistics and customer support network to support online sales.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:07:14.400Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CMOTEC-B.ST",
+  "companyName": "Scandinavian ChemoTech AB (publ)",
+  "profile": "Scandinavian ChemoTech develops and markets medical technology based on electroporation for cancer treatment in humans and animals. The company operates through Human Care and Animal Care divisions, offering systems and solutions for oncology clinics and veterinary settings. Its business is supported by commercial activity in selected international markets, including India, Southeast Asia and other regions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:47:46.812Z"
+}

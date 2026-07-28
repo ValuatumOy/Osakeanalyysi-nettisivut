@@ -1,0 +1,9 @@
+{
+  "ticker": "OPTER.ST",
+  "companyName": "Opter AB (publ)",
+  "profile": "Opter develops a standardized, subscription-based transport management system for transport and logistics companies. Its software supports order handling, transport planning, communication with drivers and customers, EDI connections, route management, invoicing, and reporting through web and mobile tools. The company serves small and medium-sized operators across the Nordic region and adjacent markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:09.157Z"
+}

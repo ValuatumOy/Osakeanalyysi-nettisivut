@@ -1,0 +1,9 @@
+{
+  "ticker": "SVIK.ST",
+  "companyName": "Studsvik AB (publ)",
+  "profile": "Studsvik AB provides technical services and solutions for the nuclear and radioactive materials lifecycle. Its offerings include engineering and consultancy, fuel and materials testing, reactor analysis software, decommissioning and radiation protection services, and waste management technology for conditioning, handling and volume reduction of radioactive waste. The group operates internationally, mainly in Europe and North America.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:07:43.010Z"
+}

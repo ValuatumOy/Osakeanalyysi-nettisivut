@@ -1,0 +1,9 @@
+{
+  "ticker": "TRUE-B.ST",
+  "companyName": "Truecaller AB (publ)",
+  "profile": "Truecaller AB (publ) provides a communication platform focused on caller identification, spam blocking, and fraud protection. Its mobile apps help users identify unknown numbers, screen calls, and filter unwanted messages, while its business products help companies verify and reach consumers more efficiently. The company also earns revenue from subscriptions and advertising.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:41.840Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SALT-B.ST",
+  "companyName": "SaltX Technology Holding AB (publ)",
+  "profile": "SaltX Technology Holding AB develops and markets electrification and carbon capture technologies for hard-to-abate industrial processes. Its core offering is the Electric Arc Calciner, which enables fossil-free heating and CO2 separation for applications such as cement and quicklime production. The company also works with industrial partners to advance commercialization and scale-up.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:07:44.894Z"
+}

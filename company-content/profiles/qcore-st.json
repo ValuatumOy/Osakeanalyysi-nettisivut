@@ -1,0 +1,9 @@
+{
+  "ticker": "QCORE.ST",
+  "companyName": "Qlucore Ab (Publ)",
+  "profile": "Qlucore develops software for visualizing and analyzing complex biological data, with products used in life science, biotechnology and clinical research. Its main offering, Qlucore Omics Explorer, supports multi-omics and NGS analysis through interactive visualization, statistical tools and machine-learning based classifiers, while Qlucore also provides software for precision and companion diagnostics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:18.914Z"
+}

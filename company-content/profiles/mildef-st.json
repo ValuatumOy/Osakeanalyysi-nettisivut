@@ -1,0 +1,9 @@
+{
+  "ticker": "MILDEF.ST",
+  "companyName": "MilDef Group AB (publ)",
+  "profile": "MilDef Group AB supplies rugged IT solutions, systems integration and related services for defense and security customers. Its offering includes hardware, software and support designed to operate in demanding environments and to enable secure, resilient and interoperable tactical communications and command systems. The company serves customers across multiple markets through its international operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:21.762Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PAX.ST",
+  "companyName": "Paxman AB (publ)",
+  "profile": "Paxman AB develops and markets scalp cooling systems used during chemotherapy to help reduce hair loss in cancer patients. The company sells its Paxman and DigniCap systems to hospitals, clinics and treatment centres, and also provides related installation, service and support. Its business is driven by global device sales and recurring treatment-related demand.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:18.515Z"
+}

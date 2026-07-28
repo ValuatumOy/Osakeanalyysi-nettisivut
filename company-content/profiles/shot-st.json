@@ -1,0 +1,9 @@
+{
+  "ticker": "SHOT.ST",
+  "companyName": "Scandic Hotels Group AB (publ)",
+  "profile": "Scandic Hotels Group is the largest hotel operator in the Nordic region, running a network of more than 320 hotels and 68,000 rooms in operation and under development across six countries. The company operates mid-market hotels under the Scandic brand and supports demand through its loyalty programme, Scandic Friends, and sustainability-focused operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:30.342Z"
+}

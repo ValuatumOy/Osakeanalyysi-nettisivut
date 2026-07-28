@@ -1,0 +1,9 @@
+{
+  "ticker": "SIVE.ST",
+  "companyName": "Sivers Semiconductors AB (publ)",
+  "profile": "Sivers Semiconductors develops semiconductor products through two business areas, Wireless and Photonics. Wireless supplies mmWave beamforming ICs, transceivers and antenna modules for satellite communications, fixed wireless access and 5G/6G networks. Photonics provides high-power lasers and related optical components for data communications, AI infrastructure, sensing and LiDAR applications. The company is also preparing for a potential dual listing in the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:41.855Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NIO.ST",
+  "companyName": "Nordic Iron Ore AB (publ)",
+  "profile": "Nordic Iron Ore AB is a Swedish mining company focused on the Ludvika region. It explores, develops and plans to mine iron ore deposits, with the aim of producing ultra high-grade iron ore concentrate for steelmakers. The company also seeks to recover apatite and other critical raw materials, including phosphorus and rare earth elements, as by-products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:13:05.587Z"
+}

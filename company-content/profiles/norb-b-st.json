@@ -1,0 +1,9 @@
+{
+  "ticker": "NORB-B.ST",
+  "companyName": "Nordisk Bergteknik AB (publ)",
+  "profile": "Nordisk Bergteknik is a Swedish construction and engineering group focused on rock handling and foundation solutions. Through its operating subsidiaries, it provides drilling, blasting, rock excavation, ground reinforcement, piling, soil anchoring, and related services for mining, infrastructure, tunnels, and other complex projects in Sweden, Norway, and Finland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:00.220Z"
+}

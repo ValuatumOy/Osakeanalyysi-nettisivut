@@ -1,0 +1,9 @@
+{
+  "ticker": "ELMRA.OL",
+  "companyName": "Elmera Group ASA",
+  "profile": "Elmera Group ASA is a Nordic energy group that serves consumers, businesses and the wholesale market in Norway, Sweden and Finland. Its activities include selling electricity and power contracts, billing and rating services, and electricity-related technology solutions. The group also operates through several brands and segments, including consumer, business, Nordic and new growth initiatives.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:20:47.329Z"
+}

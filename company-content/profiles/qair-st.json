@@ -1,0 +1,9 @@
+{
+  "ticker": "QAIR.ST",
+  "companyName": "QleanAir AB (publ)",
+  "profile": "QleanAir AB (publ) provides air cleaning solutions for professional environments, including freestanding air cleaners, smoking cabins and modular cleanrooms. The company sells and delivers its systems as service contracts that include installation, maintenance, filter changes and performance monitoring. Its customers operate in industries such as pharmaceuticals, healthcare, MedTech, food production and other industrial settings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:48.874Z"
+}

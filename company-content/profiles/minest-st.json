@@ -1,0 +1,9 @@
+{
+  "ticker": "MINEST.ST",
+  "companyName": "Minesto AB (publ)",
+  "profile": "Minesto develops and commercializes marine energy systems that generate electricity from tidal streams and ocean currents using subsea kite-based power plants. The company’s business includes development and sale of power plants, site development services, operations and maintenance, site asset management, and geographical licensing, with a focus on predictable renewable power from the ocean.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:48.666Z"
+}

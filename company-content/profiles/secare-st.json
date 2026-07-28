@@ -1,0 +1,9 @@
+{
+  "ticker": "SECARE.ST",
+  "companyName": "Swedencare AB (publ)",
+  "profile": "Swedencare AB (publ) develops, produces, and sells premium pet health products for dogs, cats, and horses. Its portfolio includes dental care, supplements, topicals, treats, and veterinary-formulated products under brands such as ProDen PlaqueOff®, NaturVet®, Innovet, Pet MD®, Rx Vitamins®, and others. The company sells through veterinarians, pet stores, and online channels across international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:46.241Z"
+}

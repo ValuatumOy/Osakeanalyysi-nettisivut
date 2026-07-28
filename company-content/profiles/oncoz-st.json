@@ -1,0 +1,9 @@
+{
+  "ticker": "ONCOZ.ST",
+  "companyName": "OncoZenge AB (publ)",
+  "profile": "OncoZenge AB is a clinical-stage pharmaceutical company based in Stockholm that develops BupiZenge, an oral lozenge formulation of bupivacaine for oral pain. Its lead focus is oral mucositis linked to cancer therapy, with the aim of providing local pain relief where current treatments are limited or carry significant side effects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:11.342Z"
+}

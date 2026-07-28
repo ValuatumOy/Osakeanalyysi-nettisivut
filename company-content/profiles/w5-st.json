@@ -1,0 +1,9 @@
+{
+  "ticker": "W5.ST",
+  "companyName": "W5 Solutions AB (publ)",
+  "profile": "W5 Solutions AB develops and delivers systems and solutions for defence and civil protection. Its offering covers training and simulation, power supply, shelters, mobile systems, and systems integration, supported by training, repair, and maintenance services. The company serves government agencies, defence customers, and other security-related users in Sweden and internationally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:53.859Z"
+}

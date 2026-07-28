@@ -1,0 +1,9 @@
+{
+  "ticker": "NIVI-B.ST",
+  "companyName": "Nivika Fastigheter AB (publ)",
+  "profile": "Nivika Fastigheter AB is a Swedish property company that owns, manages and develops real estate in Småland and along Sweden’s west coast. Its portfolio includes commercial properties, especially industrial, warehouse, office and community premises, as well as residential buildings. The company also carries out new development and property improvement to support long-term portfolio growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:57.872Z"
+}

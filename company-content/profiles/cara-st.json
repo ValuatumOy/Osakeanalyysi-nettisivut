@@ -1,0 +1,9 @@
+{
+  "ticker": "CARA.ST",
+  "companyName": "Carasent AB",
+  "profile": "Carasent AB develops and provides mission-critical software for healthcare, rehabilitation and occupational health providers. Its portfolio includes electronic health record and EMR systems, SaaS-based workflow tools, partner integrations, ecosystem services and business intelligence applications. The company focuses on helping customers automate administration, improve operational efficiency and use data to support day-to-day care delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:07:30.366Z"
+}

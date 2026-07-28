@@ -1,0 +1,9 @@
+{
+  "ticker": "HACK.ST",
+  "companyName": "Hacksaw AB",
+  "profile": "Hacksaw AB is a B2B technology platform and game development company focused on the online gaming industry. It develops and distributes digital slots, scratch cards and instant win games through its modular remote gaming server platform. The company serves private and state-owned iGaming operators across licensed markets and continues to expand its distribution network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:19.705Z"
+}

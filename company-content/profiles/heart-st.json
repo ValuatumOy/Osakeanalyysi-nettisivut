@@ -1,0 +1,9 @@
+{
+  "ticker": "HEART.ST",
+  "companyName": "Scandinavian Real Heart AB (Publ)",
+  "profile": "Scandinavian Real Heart AB develops Realheart TAH, a total artificial heart designed to mimic the shape, function and blood flow of the human heart. The company is advancing the device through preclinical testing and regulatory preparation, while building patent protection around its core technology. Its value driver is future commercialization for patients with severe heart failure.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:14:15.528Z"
+}

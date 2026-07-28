@@ -1,0 +1,9 @@
+{
+  "ticker": "NOTE.ST",
+  "companyName": "NOTE AB (publ)",
+  "profile": "NOTE AB is a Northern European electronics manufacturing services company that produces printed circuit board assemblies, box-build systems and complete electronic products for customers in sectors such as industrial, medtech, communication, greentech, security and defence. Its services span early-stage production engineering, sourcing, manufacturing, testing, final assembly, logistics and after-sales support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:26.252Z"
+}

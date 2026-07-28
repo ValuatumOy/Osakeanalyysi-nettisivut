@@ -1,0 +1,9 @@
+{
+  "ticker": "PROGEN.ST",
+  "companyName": "Prostatype Genomics AB (publ)",
+  "profile": "Prostatype Genomics AB develops, manufactures and markets Prostatype®, a CE-marked genomic test for prostate cancer. The test analyzes biopsy tissue together with clinical parameters to help assess tumor aggressiveness and support treatment decisions. The company’s value drivers are test sales, laboratory services and ongoing commercialization efforts in Europe and the United States, including reimbursement approvals.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:20:15.013Z"
+}

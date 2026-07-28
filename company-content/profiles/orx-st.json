@@ -1,0 +1,9 @@
+{
+  "ticker": "ORX.ST",
+  "companyName": "Orexo AB (publ)",
+  "profile": "Orexo AB is a Swedish pharmaceutical company focused on developing and commercializing treatments for severe diseases and life-saving rescue medicines. Its core platform, AmorphOX, is a drug delivery technology designed to improve bioavailability and stability across large and small molecules. The company also has a diversified pipeline of clinical and preclinical programs and collaborates with partners on development and commercialization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:15:31.122Z"
+}

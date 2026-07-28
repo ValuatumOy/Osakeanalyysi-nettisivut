@@ -1,0 +1,9 @@
+{
+  "ticker": "MODEL.ST",
+  "companyName": "Modelon AB (publ)",
+  "profile": "Modelon AB develops systems modeling and simulation software used to design, analyze, and optimize physical systems before they are built. Its products include the cloud-based Modelon Impact platform, Modelon Library Suite, and FMI Toolbox, which support multi-domain simulation across thermal, fluid, mechanical, electrical, and chemical applications for industrial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:06.878Z"
+}

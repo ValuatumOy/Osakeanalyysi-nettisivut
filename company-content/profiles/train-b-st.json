@@ -1,0 +1,9 @@
+{
+  "ticker": "TRAIN-B.ST",
+  "companyName": "Train Alliance Sweden AB (publ)",
+  "profile": "Train Alliance Sweden AB develops, owns, and manages rail-connected facilities and land for the railway sector. Its operations include railway-ready land development, workshops, logistics sites, infrastructure management, and long-term leasing or sale of facilities in strategic locations. The company also provides specialist expertise, permits, and project development services for rail-related operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:04.325Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "S2M.ST",
+  "companyName": "S2Medical AB (publ)",
+  "profile": "S2Medical AB (publ) is a Swedish medical technology company focused on wound healing, infection control and cosmeceuticals. It develops and sells products including Epiprotect, IvaQ and Instagraft, and manufactures parts of its portfolio in-house. The company’s offerings are aimed at burns, chronic wounds and other hard-to-heal conditions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:20:31.305Z"
+}

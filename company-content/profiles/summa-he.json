@@ -1,0 +1,9 @@
+{
+  "ticker": "SUMMA.HE",
+  "companyName": "Summa Defence Oyj",
+  "profile": "Summa Defence Oyj is a Finnish defence and security technology group that builds and acquires dual-use businesses across maritime technologies, land technologies, and new technologies. Its portfolio includes shipbuilding, multipurpose machines and dredgers, portable spaces, drone manufacturing, XR technology, and related digital and renewable-energy solutions, with growth supported by its subsidiaries and M&A platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:00:55.938Z"
+}

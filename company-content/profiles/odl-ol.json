@@ -1,0 +1,9 @@
+{
+  "ticker": "ODL.OL",
+  "companyName": "Odfjell Drilling Ltd.",
+  "profile": "Odfjell Drilling Ltd. provides offshore drilling services through a fleet of harsh-environment semi-submersible rigs. The company operates in demanding offshore regions, including the North Sea, West of Shetland, the Barents Sea and offshore South Africa, and focuses on safe, efficient rig operations supported by experienced crews, rig management and QHSSE standards.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:40.384Z"
+}

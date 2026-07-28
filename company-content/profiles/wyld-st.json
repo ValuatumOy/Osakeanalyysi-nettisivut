@@ -1,0 +1,9 @@
+{
+  "ticker": "WYLD.ST",
+  "companyName": "Wyld Networks AB (publ)",
+  "profile": "Wyld Networks AB develops and sells wireless connectivity solutions for Internet of Things devices and sensors, with a focus on satellite and hybrid terrestrial-satellite networks. Its main offerings include Wyld Connect for remote device connectivity and Wyld Fusion for network management and data integration. The company serves industries such as agriculture, energy, utilities, logistics and environmental monitoring.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:19:42.802Z"
+}

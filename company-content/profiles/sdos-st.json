@@ -1,0 +1,9 @@
+{
+  "ticker": "SDOS.ST",
+  "companyName": "ScandiDos AB (publ)",
+  "profile": "ScandiDos develops and sells quality assurance solutions for radiation therapy, centered on the Delta4 product family of measurement phantoms, software and motion platforms. Its systems help hospitals and clinics verify dose delivery, machine performance and treatment accuracy for advanced cancer radiotherapy. The company also provides related support and service through an international sales network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:16:33.882Z"
+}

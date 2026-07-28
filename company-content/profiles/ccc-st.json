@@ -1,0 +1,9 @@
+{
+  "ticker": "CCC.ST",
+  "companyName": "Cavotec SA",
+  "profile": "Cavotec develops and manufactures automation and electrification solutions for ports, maritime, mining, construction, and other industrial applications. Its portfolio includes shore power and charging systems, power, data and fluid transmission products, control and interface equipment, and mooring and berthing solutions. The company also provides related life-cycle services and support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:19.104Z"
+}
