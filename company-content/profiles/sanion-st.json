@@ -1,0 +1,9 @@
+{
+  "ticker": "SANION.ST",
+  "companyName": "Saniona AB (publ)",
+  "profile": "Saniona AB is a clinical-stage biopharmaceutical company focused on discovering and developing ion channel-based medicines for neurological, psychiatric and other diseases with unmet medical need. Its work centers on an internal pipeline of drug candidates, supported by proprietary ion channel research, with additional programs advanced through partnerships and collaborations with pharmaceutical companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:08.819Z"
+}

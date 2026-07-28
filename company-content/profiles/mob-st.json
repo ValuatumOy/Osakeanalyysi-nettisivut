@@ -1,0 +1,9 @@
+{
+  "ticker": "MOB.ST",
+  "companyName": "Moberg Pharma AB (publ)",
+  "profile": "Moberg Pharma AB is a Swedish specialty pharmaceutical company focused on commercializing proprietary medicines based on proven substances. Its main product is MOB-015, a topical treatment for nail fungus sold as Terclara in Sweden and Norway and partnered in other markets. The company’s value driver is expanding this dermatology portfolio through direct sales and commercial partnerships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:47.576Z"
+}

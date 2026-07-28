@@ -1,0 +1,9 @@
+{
+  "ticker": "SAXG.ST",
+  "companyName": "Saxlund Group AB (publ)",
+  "profile": "Saxlund Group AB is an environmental technology group that develops, manufactures and services systems and equipment for bioenergy and related industrial applications. Its offering includes biomass-fired heat and combined heat and power plants, fuel handling and bulk material systems, pelleting plants, and flue gas condensation and cleaning, together with aftermarket service.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:15:31.379Z"
+}

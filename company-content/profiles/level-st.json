@@ -1,0 +1,9 @@
+{
+  "ticker": "LEVEL.ST",
+  "companyName": "Nordic LEVEL Group AB (publ.)",
+  "profile": "Nordic LEVEL Group AB provides security and safety solutions in the Nordic region through two main areas, Technology and Advisory. Its offerings include security system design, integration, installation and support, along with risk analysis, background checks, investigations, crisis management and related protective services for organizations, critical infrastructure and other commercial clients.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:17:01.950Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ASND",
+  "companyName": "Ascendis Pharma A/S",
+  "profile": "Ascendis Pharma A/S is a global biopharmaceutical company that develops TransCon-based therapies for endocrine rare diseases and oncology. Its portfolio includes approved products and product candidates for hypoparathyroidism and growth disorders, and it also pursues collaborations to expand TransCon applications in other therapeutic areas and markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:20:06.133Z"
+}

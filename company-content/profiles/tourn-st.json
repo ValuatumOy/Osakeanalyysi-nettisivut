@@ -1,0 +1,9 @@
+{
+  "ticker": "TOURN.ST",
+  "companyName": "Tourn International AB (publ)",
+  "profile": "Tourn International AB (publ) develops and operates digital marketing and influencer-tech services. The company runs advertising networks and platforms that connect brands with bloggers, influencers, and app publishers, and it provides campaign management and content marketing services through its agency operations. Its revenue is driven by software-based media and advertising solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:17:48.102Z"
+}

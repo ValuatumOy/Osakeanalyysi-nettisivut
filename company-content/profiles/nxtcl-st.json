@@ -1,0 +1,9 @@
+{
+  "ticker": "NXTCL.ST",
+  "companyName": "NextCell Pharma AB",
+  "profile": "NextCell Pharma AB is a Swedish biopharmaceutical company focused on cell therapies and advanced therapy medicinal products. Its main businesses are ProTrans, a stromal cell therapy in development for autoimmune and inflammatory diseases, Cellaviva, a private stem cell bank, and QVance, which provides analytical services for advanced therapies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:15:25.528Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "XBRANE.ST",
+  "companyName": "Xbrane Biopharma AB (publ)",
+  "profile": "Xbrane Biopharma AB develops biosimilars and related biological drugs using a patented production platform designed to lower manufacturing costs. Its portfolio includes candidates for ophthalmology and oncology, including Ximluci and Xdivane, and the company also generates revenue from product sales and licensing agreements. The company is headquartered in Solna and listed on Nasdaq Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:13:14.121Z"
+}

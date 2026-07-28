@@ -1,0 +1,9 @@
+{
+  "ticker": "UTG.ST",
+  "companyName": "Unlimited Travel Group UTG AB (publ)",
+  "profile": "Unlimited Travel Group UTG AB is a Swedish travel group that owns, develops, and acquires niche travel and event companies. Its operations cover travel agency services, packaged and tailor-made trips, corporate meetings and events, and related travel arrangements. The group focuses on specialist brands serving leisure, group, conference, and business travel customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:10.096Z"
+}

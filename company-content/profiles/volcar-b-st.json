@@ -1,0 +1,9 @@
+{
+  "ticker": "VOLCAR-B.ST",
+  "companyName": "Volvo Car AB (publ.)",
+  "profile": "Volvo Car AB develops, manufactures and sells premium passenger cars under the Volvo brand. Its lineup includes fully electric, plug-in hybrid and internal combustion models, with sales supported by financing, leasing and related services. The group also operates software, connectivity and safety development functions as it shifts toward greater electrification.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:01:53.218Z"
+}

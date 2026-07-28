@@ -1,0 +1,9 @@
+{
+  "ticker": "NETEL.ST",
+  "companyName": "Netel Holding AB (publ)",
+  "profile": "Netel Holding AB is a Swedish infrastructure services company that develops and maintains critical infrastructure in telecom, power and infraservices. Its operations cover the full value chain from design and production to construction, maintenance and related civil works. The group serves customers in Sweden, Norway, Finland and Germany through local specialist businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:13:56.468Z"
+}

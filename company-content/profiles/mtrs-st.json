@@ -1,0 +1,9 @@
+{
+  "ticker": "MTRS.ST",
+  "companyName": "Munters Group AB (publ)",
+  "profile": "Munters Group AB is a global provider of energy-efficient air treatment solutions for industrial and agricultural applications. Its offerings include dehumidification, cooling, and air quality systems used in food processing, pharmaceuticals, data centers, and livestock and greenhouse operations. The company also provides related service and support across its installed base.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:37.239Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ORRON.ST",
+  "companyName": "Orrön Energy AB (publ)",
+  "profile": "Orrön Energy AB is a Swedish renewable energy company that owns, operates and develops onshore assets. Its core portfolio includes wind farms in the Nordics, while its growth pipeline spans wind, solar, battery storage and data centre projects in the Nordics, the UK, Germany and France. The company also monetises selected greenfield projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:07:26.871Z"
+}
