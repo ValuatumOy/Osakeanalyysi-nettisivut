@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Generates static, indexable per-report landing pages from report-content/*.json + js/reportsData.js.
+// Generates static, indexable per-report landing pages from report-content/*.json + report-content/_catalog.json.
 // Free reports expose the full analysis (max SEO surface). Paid reports expose a citable teaser + a buy gate.
 // Run: node scripts/build-report-pages.mjs
 import fs from 'node:fs';
@@ -28,17 +28,14 @@ const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
 function loadCatalog() {
-  // Source of truth: snapshot of the live catalog API (report-content/_catalog.json),
-  // falling back to the bundled js/reportsData.js if the snapshot is absent.
+  // Source of truth: snapshot of the live catalog API (report-content/_catalog.json).
+  // Missing snapshot is a hard error — silently building pages from stale data is
+  // the failure mode that let the site serve an outdated catalog for weeks.
   const snap = path.join(CONTENT_DIR, '_catalog.json');
-  let cat;
-  if (fs.existsSync(snap)) {
-    cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
-  } else {
-    const src = fs.readFileSync(path.join(ROOT, 'js', 'reportsData.js'), 'utf8');
-    // eslint-disable-next-line no-new-func
-    cat = Function(src + '\n;return REPORTS_CATALOG;')();
+  if (!fs.existsSync(snap)) {
+    throw new Error(`Catalog snapshot missing: ${snap}. Refresh it from ${'https://files.valuatum.com/api/reports'}.`);
   }
+  const cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
   const byId = {};
   for (const r of cat) byId[r.id] = r;
   return byId;

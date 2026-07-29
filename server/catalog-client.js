@@ -1,9 +1,20 @@
 const { getReportByIdSync, getPublicReportsSync, recordCatalogPurchase: recordLocalPurchase } = require('./catalog');
-const { REPORTS_CATALOG = [] } = require('../js/reportsData');
 const READY_REPORT_PRICE = 20;
 
 function catalogBaseUrl() {
   return (process.env.CATALOG_API_URL || '').replace(/\/$/, '');
+}
+
+// The catalog may carry site-relative pdfUrls. reports.html prefixes them
+// itself, but the purchase flow does not: the success page assigns pdfUrl
+// straight to an href (resolving against /checkout/) and the confirmation email
+// has no base URL at all. Normalizing here — the one point every catalog report
+// passes through — keeps both correct.
+function absolutePdfUrl(pdfUrl) {
+  if (!pdfUrl) return pdfUrl;
+  if (/^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(pdfUrl)) return pdfUrl;
+  const site = (process.env.SITE_URL || 'https://valuatum.com').replace(/\/+$/, '');
+  return `${site}/${String(pdfUrl).replace(/^\/+/, '')}`;
 }
 
 function toBackendReport(report) {
@@ -30,16 +41,13 @@ function normalizeCatalogReport(report) {
   const isFree = Boolean(report.isFree) || report.reportType === 'free' || Number(report.price) === 0;
   return {
     ...report,
+    pdfUrl: absolutePdfUrl(report.pdfUrl),
     isFree,
     reportType: isFree ? 'free' : (report.reportType || 'existing'),
     price: isFree ? 0 : READY_REPORT_PRICE,
     priceLabel: isFree ? (report.priceLabel || 'Free report') : 'Ready report',
     creditCost: isFree ? 0 : (report.creditCost || 2),
   };
-}
-
-function getStaticCatalogReport(reportId) {
-  return REPORTS_CATALOG.find(report => report.id === reportId) || null;
 }
 
 async function fetchJson(url, options = {}) {
@@ -52,10 +60,6 @@ async function fetchJson(url, options = {}) {
 }
 
 async function getCatalogReport(reportId) {
-  const staticReport = getStaticCatalogReport(reportId);
-  if (staticReport) return toBackendReport(staticReport);
-  if (REPORTS_CATALOG.length) return null;
-
   const base = catalogBaseUrl();
 
   if (base) {
@@ -71,10 +75,6 @@ async function getCatalogReport(reportId) {
 }
 
 async function getCatalogReports() {
-  if (REPORTS_CATALOG.length) {
-    return REPORTS_CATALOG.map(normalizeCatalogReport).filter(Boolean);
-  }
-
   const base = catalogBaseUrl();
 
   if (base) {
@@ -116,5 +116,6 @@ module.exports = {
   getCatalogReport,
   getCatalogReports,
   recordCatalogPurchase,
+  normalizeCatalogReport,
   toBackendReport,
 };

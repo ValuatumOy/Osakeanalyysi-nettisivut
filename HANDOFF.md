@@ -17,15 +17,24 @@ that built this static site. Read this before migrating.
 - **Generators** (the real spec — keep these):
   - `scripts/build-report-pages.mjs` → report landing pages + `js/reportSlugs.js` + sitemap fragment.
   - `scripts/build-company-pages.mjs` → company-page mockups (the Astro design reference).
-  - `report-content/*.json` — per-report data extracted from PDFs. `report-content/_catalog.json` —
-    snapshot of the live catalog API. Regenerate with `pdftotext` (poppler).
+  - `report-content/*.json` — per-report data extracted from PDFs. Regenerate with `pdftotext`
+    (poppler).
+  - `report-content/_catalog.json` — snapshot of the live catalog API, and the only catalog the
+    build scripts read. Refresh it from `https://files.valuatum.com/api/reports`; it goes stale on
+    its own, and a missing snapshot now fails the build instead of falling back to stale data.
 
 ## 2. How the data flows (critical for the rebuild)
 
 - **Catalog source of truth = the external API**, NOT files in this repo:
-  `https://files.valuatum.com/api/reports` (configured as `CATALOG_BASE` in `reports.html`,
-  `CATALOG_API_URL` server-side). `js/reportsData.js` + `server/report-manifest.json` are only
-  offline fallbacks and drift from production — do not trust them.
+  `https://files.valuatum.com/api/reports` (`CATALOG_API_URL` server-side). `reports.html` fetches it
+  through the same-origin `/api/reports` function rather than calling it directly, so the browser
+  needs no CORS setup and the Vercel edge cache absorbs the load.
+- **`CATALOG_API_URL` is required in production.** Without it the catalog client skips the live fetch
+  and falls back to scanning a local PDF directory, which on Vercel is empty — the site would render
+  zero reports rather than an error.
+- There is no bundled catalog fallback any more: `js/reportsData.js` has been removed because it had
+  silently become the only catalog the site served. `server/report-manifest.json` is still an offline
+  fallback and drifts from production — do not trust it.
 - The catalog returns **reports** keyed by report id (e.g. `tesla-01062026`). Company pages must
   **group reports by company** (ticker) to build the "all reports" history/library.
 - **PDF enrichment**: rich page content (thesis, value pools, reverse valuation, financials) is
