@@ -1,0 +1,91 @@
+{
+  "slug": "stora-enso-stock-analysis",
+  "cluster": "helsinki-stocks",
+  "role": "support",
+  "targetQuery": "stora enso stock analysis",
+  "intent": "informational-commercial",
+  "title": "Stora Enso Stock Analysis: Our BUY, EUR 13.30 Target",
+  "metaDescription": "Our 24 July 2026 model rates Stora Enso stock a BUY, EUR 13.30 target vs EUR 9.17, above the roughly EUR 11.6 consensus. The 2027 forest demerger is why.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": { "auto": false, "mergedBy": "human", "date": null },
+  "datePublished": "2026-07-29",
+  "dateModified": "2026-07-29",
+  "readingTimeMinutes": 6,
+  "sections": [
+    {
+      "h2": "Is Stora Enso stock a buy right now?",
+      "html": "<p>Yes, on our numbers. Our 24 July 2026 model rates Stora Enso (STERV.HE) a BUY, with a 12-month target of EUR 13.30 against the EUR 9.17 price on the report date. That was about +45% upside when we published.</p><p>The share has since risen to roughly EUR 9.90 (verified via Financial Modeling Prep, 29 July 2026), so the gap to our target is now closer to +34%. The call moved our way early, but most of it is still ahead.</p><p>The stock is not screening as obviously cheap. It trades near 6.7x forward EV/EBITDA and 17.8x 2026 earnings in our model, with a 4.5% dividend yield. So this is not a low-multiple bargain. It is a bet on two things: that the market stops discounting the forest asset value, and that packaging margins keep climbing. We hold Stora Enso reports <a href=\"/reports/stora-enso-equity-report.html\">as a free equity report</a> if you want the full model.</p>"
+    },
+    {
+      "h2": "Why our target sits above the analyst consensus",
+      "html": "<p>Our EUR 13.30 target is roughly 15% above where the sell side sits. The published consensus target is about EUR 11.6, with 8 buy ratings against 1 sell, and JPMorgan recently cut its target to EUR 11.00 while keeping a Neutral rating, trimming its 2026 and 2027 EBITDA estimates by 4% and 3%.</p><p>We are not modelling faster growth than they are. The gap comes from one structural judgment. Most of the sell-side range prices Stora Enso as an industrial packaging and paper business and treats the Swedish forest as a slow-moving asset the market will keep discounting. We think the planned 2027 forest demerger forces that value into the open, and that is where our extra EUR 1.70 of target lives. If the demerger slips or arrives loaded with debt, our number should converge back toward theirs.</p>"
+    },
+    {
+      "h2": "The forest asset value the market is discounting",
+      "html": "<p>Our model carries Stora Enso's Swedish forest assets at about EUR 5.7bn of net asset value, against a EUR 7.2bn market capitalisation and a EUR 10.6bn enterprise value for the whole group. Put simply, the market is paying very little for the packaging, biomaterials and wood-products businesses once you back out the forest.</p><p>This is not a hidden asset. In its November 2025 strategic-review release, Stora Enso said it intends to separate the Swedish forest into what would be Europe's largest listed pure-play forest company, more than 1.2 million hectares, with the demerger targeted for the first half of 2027 and a listing on Nasdaq Helsinki and Nasdaq Stockholm. Its two anchor owners, Solidium and FAM, holding 21% of shares and 55% of votes, back the plan.</p><p>We assume the demerger completes near current asset marks. That assumption is the whole call. A listed forest company is priced on its NAV; forest buried inside a cyclical industrial is priced on group cash flows, and gets discounted.</p>"
+    },
+    {
+      "h2": "Does the packaging margin recovery back the call?",
+      "html": "<p>Partly, and the most recent quarter helped. Our model needs Consumer Packaging's adjusted EBIT margin to recover from 6.2% toward 10% or more as the Oulu board line ramps and fixed costs get absorbed. Group EBIT margin is modelled to rise from 7.4% in 2026 to 9.1% in 2027, with 2027 EBITDA reaching about EUR 1,520m.</p><p>Stora Enso's own half-year 2026 report gives the direction. Group adjusted EBIT rose 27% year on year to EUR 160m on stable sales of EUR 2,423m, and Consumer Packaging's EBIT margin reached 6.5%, up sharply from 2.3% a year earlier. So the recovery is real and it is showing up in the numbers.</p><p>We assume Oulu reaches design output without another margin air-pocket. Stora Enso says the ramp will keep weighing on profitability through 2027, so the path is not smooth. But the starting point in our model and the reported Q2 margin line up.</p>"
+    },
+    {
+      "h2": "What would make us wrong",
+      "html": "<p>Two things break this thesis, and both are in our own report. The first: if combined Nordic capacity additions permanently push fibre-based packaging margins below 8%, the packaging leg of the call goes away. The second: if the forest company, Bergslagets Skogar, is separated carrying more than EUR 3bn of debt, the market keeps discounting the forest NAV rather than recognising it, and our extra target evaporates.</p><p>The bear case already has evidence behind it. JPMorgan cut its EBITDA estimates, and the shares fell about 12% on the Q2 print despite the profit rise, which tells you sentiment is fragile. The balance sheet leaves little room: net debt is 2.2x EBITDA and 2026 free-cash-flow yield is only 1.2% in our model, so a heavy demerger debt load is a live risk, not a tail one. If the 2027 separation arrives with that debt on it, the re-rating we are underwriting does not happen.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Stora Enso stock a buy in 2026?",
+      "a": "On our numbers, yes. Valuatum's 24 July 2026 model rates Stora Enso (STERV.HE) a BUY with a 12-month target of EUR 13.30 versus a EUR 9.17 price on the report date. The share has since risen to about EUR 9.90, leaving roughly +34% of upside to our target."
+    },
+    {
+      "q": "What is Stora Enso's price target?",
+      "a": "Our 24 July 2026 model sets a 12-month target of EUR 13.30. That is above the published sell-side consensus of about EUR 11.6 and above JPMorgan's EUR 11.00 Neutral target. The difference reflects how much value we assign to the Swedish forest assets ahead of their planned 2027 separation."
+    },
+    {
+      "q": "Why is Stora Enso trading below its forest asset value?",
+      "a": "Our model values the Swedish forest at about EUR 5.7bn against a EUR 7.2bn group market cap, so the market pays little for everything else. Forest held inside a cyclical industrial gets priced on group cash flows and discounted, rather than on its net asset value the way a listed forest company would be."
+    },
+    {
+      "q": "When will Stora Enso separate its forest assets?",
+      "a": "In its November 2025 strategic-review release, Stora Enso said it intends to demerge its Swedish forest into a separately listed company, targeted for the first half of 2027, listed on Nasdaq Helsinki and Nasdaq Stockholm. Our BUY case assumes the demerger completes near current asset marks."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum BUY on Stora Enso (STERV.HE), 12-month target EUR 13.30 vs EUR 9.17 price on report date, +45.0% upside (24 July 2026 model)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Swedish forest asset NAV EUR 5.7bn vs EUR 7.2bn market cap and EUR 10.6bn enterprise value; forward EV/EBITDA 6.7x, P/E 17.8x, dividend yield 4.5%, net debt/EBITDA 2.2x, FCF yield 1.2% (24 July 2026 model)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Consumer Packaging adjusted EBIT margin modelled to recover from 6.2% toward 10%+; group EBIT margin 7.4% (2026E) to 9.1% (2027E); 2027E EBITDA about EUR 1,520m; thesis breaks if FBB margins stay below 8% or Bergslagets Skogar carries more than EUR 3bn debt (24 July 2026 model)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Live Stora Enso (STERV.HE) share price about EUR 9.90 as of 29 July 2026, leaving roughly +34% upside to the EUR 13.30 target",
+      "source": "Financial Modeling Prep real-time quote, 29 July 2026"
+    }
+  ],
+  "internalLinks": [
+    "/reports/stora-enso-equity-report.html",
+    "/compare/stora-enso-vs-upm-kymmene-stock-comparison.html",
+    "/reports/upm-equity-report.html",
+    "/methodology.html"
+  ],
+  "sources": [
+    { "label": "Valuatum AI Equity Report: Stora Enso (STERV.HE), 24 July 2026", "url": "/reports/stora-enso-equity-report.html" },
+    { "label": "Stora Enso: strategic review completed, plan to create Europe's largest listed pure-play forest company (inside information, November 2025)", "url": "https://www.storaenso.com/en/newsroom/regulatory-and-investor-releases/2025/11/stora-enso-completes-strategic-review-and-intends-to-create-the-largest-listed-pure-play-forest-company-in-europe-inside-information" },
+    { "label": "Stora Enso Half-year Report 2026: adjusted EBIT +27% to EUR 160m, Consumer Packaging margin 6.5%", "url": "https://www.prnewswire.com/news-releases/stora-enso-half-year-report-2026-optimising-our-portfolio-and-driving-results-through-our-own-actions-302833067.html" },
+    { "label": "JPMorgan cuts Stora Enso price target to EUR 11.00 on weak outlook (Investing.com)", "url": "https://www.investing.com/news/analyst-ratings/jpmorgan-cuts-stora-enso-stock-price-target-on-weak-outlook-93CH-4810555" },
+    { "label": "Stora Enso Oyj: analyst consensus and target price (MarketScreener)", "url": "https://www.marketscreener.com/quote/stock/STORA-ENSO-OYJ-1412452/consensus/" }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  }
+}
