@@ -1,8 +1,8 @@
 // AiEquityReportsApi Lambda — API Gateway HTTP API (payload v2) handler.
 // Replaces the Express app in server/index.js for the routes that survive the
-// migration (plan §2): public catalog reads, the purchase-sync endpoint the
+// migration: public catalog reads, the purchase-sync endpoint the
 // Vercel webhook calls, the Wisdom search proxy, Stripe pricing, and the admin
-// page's report management (plan §4). Reuses the existing server/ modules; the
+// page's report management. Reuses the existing server/ modules; the
 // only new logic here is routing, auth, and the admin CRUD glue.
 
 const crypto = require('crypto');
@@ -54,7 +54,7 @@ function secretsMatch(candidate, expected) {
   return crypto.timingSafeEqual(a, b);
 }
 
-// EMF metric for the plan §4 probing alarm: repeated admin 401s → SNS.
+// EMF metric for the admin-probing alarm: repeated admin 401s → SNS.
 function emitAdminUnauthorized() {
   console.log(JSON.stringify({
     _aws: {
@@ -163,7 +163,7 @@ async function getSearchCompanies(event) {
 
 // POST /api/report-purchases — the Vercel webhook syncs paid purchases here.
 // Same contract as the Express endpoint; a fresh order additionally lands in
-// the orders table and pushes the worker awake (plan §2.1).
+// the orders table and pushes the worker awake.
 async function postReportPurchases(event) {
   if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
@@ -188,7 +188,7 @@ async function postReportPurchases(event) {
     try {
       await invokeWorkerAsync();
     } catch (err) {
-      // The 5-minute sweep picks the order up anyway (plan §2.1).
+      // The 5-minute sweep picks the order up anyway.
       console.warn('worker push invoke failed (sweep will catch it):', err.message);
     }
   }
@@ -196,7 +196,7 @@ async function postReportPurchases(event) {
   return json(200, { ok: true, purchase });
 }
 
-// ── admin (plan §4) ──────────────────────────────────────────────────────────
+// ── admin ──────────────────────────────────────────────────────────
 
 function requireAdmin(event) {
   const expected = process.env.ADMIN_UPLOAD_PASSWORD;
@@ -306,7 +306,7 @@ async function postAdminUpdate(event) {
   return json(200, { ok: true, fileName, sidecar });
 }
 
-// Delete: the single deletion path in the system (plan §3/§4). The page has
+// Delete: the single deletion path in the system. The page has
 // already shown the buyer warning and the typed-name confirmation.
 async function postAdminDelete(event) {
   const body = parseBody(event);

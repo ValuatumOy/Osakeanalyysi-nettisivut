@@ -276,7 +276,7 @@ function selectWeeklyFreeIds(reports, state, rules, now) {
 }
 
 // Storage is injectable so the same catalog logic runs against the local
-// filesystem (the box, tests) and S3 (Lambda, via server/aws/catalog-aws.js):
+// filesystem (the legacy server, tests) and S3 (Lambda, via server/aws/catalog-aws.js):
 // options.scannedFiles replaces the directory scan, options.readSidecar
 // replaces the per-file sidecar read, options.manifest replaces the manifest
 // file read.

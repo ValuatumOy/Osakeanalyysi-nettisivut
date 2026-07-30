@@ -33,7 +33,7 @@ export class UsEast1Stack extends Stack {
       validation: acm.CertificateValidation.fromDns(zone),
     });
 
-    // Plan §2.3: outside-in "API down" detection.
+    // Outside-in "API down" detection.
     const healthCheck = new route53.CfnHealthCheck(this, 'ApiHealthCheck', {
       healthCheckConfig: {
         type: 'HTTPS',

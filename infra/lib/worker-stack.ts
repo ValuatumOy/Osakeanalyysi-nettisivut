@@ -23,7 +23,7 @@ export interface WorkerStackProps extends StackProps {
 }
 
 /**
- * Plan §2/§2.1: the reconciler + reaper worker. Event-driven with a scheduled
+ * The reconciler + reaper worker. Event-driven with a scheduled
  * backstop — async-invoked by the API on fresh orders, swept by EventBridge
  * every 5 minutes, reaped daily. Reserved concurrency 1 replaces the old
  * in-process single-flight guard.
@@ -59,7 +59,7 @@ export class WorkerStack extends Stack {
         REPORT_PDF_BASE_URL: config.pdfBaseUrl,
         SECRETS_SSM_PREFIX: config.secretsPrefix,
         SITE_URL: config.siteUrl,
-        // Reconciler cadence (plan §2.1): poll the engine inside one
+        // Reconciler cadence: poll the engine inside one
         // invocation (~8 min window, 20 s apart). The first live test render
         // took ~27 min (78 polls) — a real AI research pipeline, not a
         // template fill — so the budget is 150 polls (~50 min) to give slow
@@ -76,7 +76,7 @@ export class WorkerStack extends Stack {
       },
     });
 
-    // Grants (plan §2.2 item 3): tables, bucket, SES, engine invoke, secrets.
+    // Grants: tables, bucket, SES, engine invoke, secrets.
     props.ordersTable.grantReadWriteData(this.workerFunction);
     props.catalogStateTable.grantReadWriteData(this.workerFunction);
     props.pdfBucket.grantReadWrite(this.workerFunction);
@@ -106,7 +106,7 @@ export class WorkerStack extends Stack {
       })],
     });
 
-    // Daily reaper (plan §3: hides expired resales, never deletes).
+    // Daily reaper (hides expired resales, never deletes).
     new events.Rule(this, 'ReapRule', {
       ruleName: `AiEquityReportsWorkerReap${config.suffix}`,
       schedule: events.Schedule.cron({ minute: '15', hour: '3' }),
@@ -115,7 +115,7 @@ export class WorkerStack extends Stack {
       })],
     });
 
-    // ── alarms (plan §2.3) ──────────────────────────────────────────────────
+    // ── alarms ──────────────────────────────────────────────────
     const alarmAction = new cloudwatchActions.SnsAction(props.alertsTopic);
 
     new cloudwatch.Alarm(this, 'WorkerErrorsAlarm', {

@@ -51,13 +51,13 @@ function floatEnv(name, fallback) {
 const INTERVAL_MS = intEnv('RECONCILER_INTERVAL_MS', 45000);
 const MAX_POLLS = intEnv('RECONCILER_MAX_POLLS', 40);
 const MAX_ATTEMPTS = intEnv('RECONCILER_MAX_ATTEMPTS', 6);
-// In-invocation RENDERING poll loop (plan §2.1): with a 5-minute sweep cadence
+// In-invocation RENDERING poll loop: with a 5-minute sweep cadence
 // the worker keeps polling the engine inside one invocation instead of one
-// poll per tick. 0 (the box default) preserves the old one-poll-per-tick
+// poll per tick. 0 (the default outside Lambda) preserves the old one-poll-per-tick
 // behavior; the worker Lambda sets a window that fits its timeout.
 const POLL_WINDOW_MS = intEnv('RECONCILER_POLL_WINDOW_MS', 0);
 const POLL_DELAY_MS = intEnv('RECONCILER_POLL_DELAY_MS', 20000);
-// Emit CloudWatch EMF metrics for failed/stuck orders (plan §2.3); Lambda only.
+// Emit CloudWatch EMF metrics for failed/stuck orders; Lambda only.
 const EMIT_ORDER_METRICS = boolEnv('EMIT_ORDER_METRICS', false);
 const STUCK_AFTER_MINUTES = intEnv('ORDER_STUCK_AFTER_MINUTES', 30);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
@@ -309,7 +309,7 @@ async function advance(order) {
 let running = false;
 
 // CloudWatch Embedded Metric Format (no SDK, no extra IAM): one log line per
-// tick carrying the failed/stuck gauges the plan's §2.3 alarms watch.
+// tick carrying the failed/stuck gauges the CloudWatch alarms watch.
 function emitOrderMetrics(allOrders, now = new Date()) {
   const dayAgo = now.getTime() - 24 * 60 * 60 * 1000;
   const stuckCutoff = now.getTime() - STUCK_AFTER_MINUTES * 60 * 1000;

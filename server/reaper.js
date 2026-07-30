@@ -1,7 +1,7 @@
 // Resale reaper (Phase 2).
 //
 // Ends the resale window of auto-generated reports once they are older than
-// RESALE_WINDOW_DAYS. Because delivered download URLs are permanent (plan §3),
+// RESALE_WINDOW_DAYS. Because delivered download URLs are permanent,
 // the reaper NEVER deletes anything: it rewrites the sidecar to hidden, which
 // removes the report from the public catalog while the PDF object — and every
 // link already emailed to a buyer — keeps working. The engine's own copy
@@ -12,7 +12,7 @@
 // the reconciler) are ever touched. Curated free samples and manually added
 // catalog reports have no provenance and are left alone.
 //
-// Runs inside the always-on Express process on the box (started from index.js,
+// Runs inside the legacy always-on Express server (started from index.js,
 // gated by RESALE_ENABLED) and as the worker Lambda's daily EventBridge rule
 // in AWS ({action:'reap'}). Storage is the local PDF dir or S3, matching the
 // reconciler's switch. REAPER_DRY_RUN (default true) logs what it would hide
@@ -40,7 +40,7 @@ const DRY_RUN = boolEnv('REAPER_DRY_RUN', true);
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
-// Storage backend: S3 in Lambda (REPORT_PDF_BUCKET set), local dir on the box.
+// Storage backend: S3 in Lambda (REPORT_PDF_BUCKET set), local dir on the legacy server.
 const s3Store = process.env.REPORT_PDF_BUCKET ? require('./aws/pdf-store') : null;
 
 const store = s3Store

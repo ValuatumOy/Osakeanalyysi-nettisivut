@@ -1,4 +1,4 @@
-// S3 PDF catalog storage (plan §3). Same flat layout as the box:
+// S3 PDF catalog storage. Same flat layout as the legacy server's PDF dir:
 // <prefix><Name>_<ddmmyyyy>.pdf plus a sidecar <Name>_<ddmmyyyy>.json.
 // Serving happens through CloudFront (files.aiequityreports.com); this module
 // is only the backend's read/write path plus the admin page's presigned PUT.
@@ -29,7 +29,7 @@ function keyFor(fileName) {
 
 // List catalog PDFs in the same shape catalog.js's scanPdfDir produces.
 // uploadedAt falls back to S3 LastModified, but real upload times live in the
-// sidecars (stamped during migration — plan §2.2 item 2) which win in the
+// sidecars (stamped during migration) which win in the
 // metadata merge.
 async function listPdfs() {
   const files = [];
@@ -111,13 +111,13 @@ async function pdfExists(fileName) {
   }
 }
 
-// The one deletion path in the system (plan §3/§4): explicit admin delete.
+// The one deletion path in the system: explicit admin delete.
 async function deleteReport(pdfFileName) {
   await s3().send(new DeleteObjectCommand({ Bucket: BUCKET(), Key: keyFor(pdfFileName) }));
   await s3().send(new DeleteObjectCommand({ Bucket: BUCKET(), Key: keyFor(pdfFileName.replace(/\.pdf$/i, '.json')) }));
 }
 
-// Presigned PUT for the admin upload flow (§4): the browser uploads straight
+// Presigned PUT for the admin upload flow: the browser uploads straight
 // to S3; the URL is short-lived and pinned to one key + content type.
 async function presignPdfUpload(fileName, expiresInSeconds = 300) {
   const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');

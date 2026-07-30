@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// One-time ledger import (plan Phase 1 / re-run at Phase 3 cutover):
+// One-time ledger import (safe to re-run at cutover):
 //   server/data/orders.json         → AiEquityReportsOrders
 //   server/data/catalog-state.json  → AiEquityReportsCatalogState
 //

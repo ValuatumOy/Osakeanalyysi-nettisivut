@@ -1,11 +1,11 @@
-// AiEquityReportsWorker Lambda (plan §2). One function, three triggers:
+// AiEquityReportsWorker Lambda. One function, three triggers:
 //
 //   { action: 'tick' }  — async push from the API on a fresh order, and the
 //                         EventBridge rate(5 minutes) backstop sweep. Runs the
 //                         reconciler state machine and persists the weekly
-//                         free selection (single writer, plan §2.2 item 1).
+//                         free selection (single writer).
 //   { action: 'reap' }  — EventBridge daily rule. Ends expired resale windows
-//                         by hiding sidecars (never deletes — plan §3).
+//                         by hiding sidecars (never deletes).
 //
 // Reserved concurrency 1 serializes invocations; a push that lands during a
 // sweep is throttled into Lambda's async retry queue, which is intentional.

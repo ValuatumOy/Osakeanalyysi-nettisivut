@@ -27,9 +27,9 @@ export interface ApiStackProps extends StackProps {
 }
 
 /**
- * Plan §2: one NodejsFunction behind an API Gateway HTTP API at
+ * One NodejsFunction behind an API Gateway HTTP API at
  * api.aiequityreports.com. Provisioned concurrency 1 in prod (the company
- * search picker is interactive). Admin routes are throttled (plan §4).
+ * search picker is interactive). Admin routes are throttled.
  */
 export class ApiStack extends Stack {
   constructor(scope: Construct, id: string, props: ApiStackProps) {
@@ -115,7 +115,7 @@ export class ApiStack extends Stack {
     }
 
     // Stage-level default throttle plus a tight lid on the admin routes
-    // (plan §4: slow any brute force against the shared password).
+    // (slow any brute force against the shared password).
     const cfnStage = httpApi.defaultStage!.node.defaultChild as apigwv2.CfnStage;
     cfnStage.defaultRouteSettings = {
       throttlingRateLimit: 50,
@@ -139,7 +139,7 @@ export class ApiStack extends Stack {
     );
 
     // Custom domain: cert + record are both in the hosted zone (Route53 in
-    // this account), fully CDK-managed — no manual DNS step (plan §2).
+    // this account), fully CDK-managed — no manual DNS step.
     const certificate = new acm.Certificate(this, 'ApiCertificate', {
       domainName: config.apiDomain,
       validation: acm.CertificateValidation.fromDns(zone),
@@ -164,7 +164,7 @@ export class ApiStack extends Stack {
       ),
     });
 
-    // Plan §4: repeated admin 401s (EMF metric from the API handler) → email.
+    // Repeated admin 401s (EMF metric from the API handler) → email.
     new cloudwatch.Alarm(this, 'AdminUnauthorizedAlarm', {
       alarmName: `AiEquityReportsAdminUnauthorized${config.suffix}`,
       alarmDescription: 'Repeated failed admin logins — someone is probing the admin password',

@@ -242,7 +242,7 @@
         },
       });
       if (res.status === 401) {
-        // Wrong or rotated password: forget it and re-prompt (plan §4).
+        // Wrong or rotated password: forget it and re-prompt.
         signOut('Session rejected — the admin password may have changed. Sign in again.');
         throw new Error('Unauthorized');
       }
@@ -312,7 +312,7 @@
 
     $('signout').addEventListener('click', () => signOut());
 
-    // ── add flow: presign → PUT to S3 → publish (plan §4) ───────────────────
+    // ── add flow: presign → PUT to S3 → publish ───────────────────
     $('add-form').addEventListener('submit', async (event) => {
       event.preventDefault();
       const form = event.target;
@@ -426,7 +426,7 @@
       }
     });
 
-    // ── delete (with the buyer warning — plan §4) ────────────────────────────
+    // ── delete (with the buyer warning) ────────────────────────────
     function openDelete(report) {
       deleting = report;
       const buyers = report.buyerCount || 0;
