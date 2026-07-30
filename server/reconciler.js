@@ -14,17 +14,17 @@
 // buyer gets it by email now and Phase 2 resale is a later flag-flip. Admin is
 // emailed on failure always, and on success when ADMIN_NOTIFY_ON_SUCCESS is set.
 
-const fs = require('fs');
-const path = require('path');
-
 const engine = require('./engine-client');
 const email = require('./email');
 const fmp = require('./fmp-client');
 
-// Storage backends. On the box: JSON-file orders + local PDF dir. In Lambda
-// (ORDERS_TABLE / REPORT_PDF_BUCKET set by CDK): DynamoDB orders + S3 catalog.
-// The fs orders module is synchronous; every call site awaits, which is a
-// no-op for it and required for the DynamoDB store.
+// Storage backends. In Lambda, CDK sets ORDERS_TABLE / REPORT_PDF_BUCKET →
+// DynamoDB orders + S3 catalog. The JSON-file orders module remains only for
+// running the Express app locally (the fs module is synchronous; every call
+// site awaits, which is a no-op for it and required for the DynamoDB store).
+// There is deliberately NO local-disk publish path for delivered PDFs: it
+// died with the files.valuatum.com box, and deliver() errors loudly if the
+// bucket is not configured rather than writing to a disk nothing serves.
 const orders = process.env.ORDERS_TABLE
   ? require('./aws/orders-store')
   : require('./orders');
@@ -71,8 +71,7 @@ const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
 const RESALE_ENABLED = boolEnv('RESALE_ENABLED', false);
 const RESALE_PRICE_EUR = floatEnv('RESALE_PRICE_EUR', null);
 
-const PDF_DIR = process.env.REPORT_PDF_DIR || '/var/www/html/reports/pdfs';
-const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.valuatum.com/reports/pdfs').replace(/\/$/, '');
+const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
 
 // Yahoo/FMP-style exchange suffix on the ticker (SYMBOL.EXCHANGE) -> a short
 // market label (city, matching the existing Nordic style so the catalog market
@@ -129,12 +128,6 @@ function companyToken(name) {
   return cleaned.split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
 }
 
-function writeFileAtomic(filePath, buffer) {
-  const tmp = `${filePath}.tmp`;
-  fs.writeFileSync(tmp, buffer);
-  fs.renameSync(tmp, filePath);
-}
-
 // Terminal failure: mark FAILED and email the admin to generate manually.
 async function fail(order, reason) {
   await orders.update(order.id, {
@@ -155,6 +148,13 @@ async function fail(order, reason) {
 
 // DONE job -> download, publish (PDF + sidecar), email buyer, mark DELIVERED.
 async function deliver(order, job) {
+  if (!pdfStore) {
+    // Thrown as a transient error: the order stays RENDERING and retries, the
+    // admin gets emailed once attempts run out, and the stuck-order alarm
+    // fires — all preferable to silently "publishing" to a local disk.
+    throw new Error('REPORT_PDF_BUCKET is not set — cannot publish the delivered PDF');
+  }
+
   const pdf = await engine.downloadPdf(job.s3Url);
 
   const now = new Date();
@@ -169,12 +169,7 @@ async function deliver(order, job) {
   const exchange = order.exchange || deriveExchange(order.ticker);
   const companyLabel = order.companyName || order.ticker;
 
-  if (pdfStore) {
-    await pdfStore.putPdf(pdfFileName, pdf);
-  } else {
-    fs.mkdirSync(PDF_DIR, { recursive: true });
-    writeFileAtomic(path.join(PDF_DIR, pdfFileName), pdf);
-  }
+  await pdfStore.putPdf(pdfFileName, pdf);
 
   // Sidecar consumed by catalog.js at runtime. excludeFromFree always keeps a
   // paid report out of the free rotation; provenance links it back to the order
@@ -207,11 +202,7 @@ async function deliver(order, job) {
       sidecar.price = RESALE_PRICE_EUR;
     }
   }
-  if (pdfStore) {
-    await pdfStore.writeSidecar(pdfFileName, sidecar);
-  } else {
-    writeFileAtomic(path.join(PDF_DIR, `${fileBase}.json`), Buffer.from(`${JSON.stringify(sidecar, null, 2)}\n`));
-  }
+  await pdfStore.writeSidecar(pdfFileName, sidecar);
 
   const pdfUrl = `${PDF_BASE_URL}/${encodeURIComponent(pdfFileName)}`;
 
