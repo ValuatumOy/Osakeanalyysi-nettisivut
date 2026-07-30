@@ -68,9 +68,11 @@ export class WorkerStack extends Stack {
         RECONCILER_POLL_DELAY_MS: '20000',
         RECONCILER_MAX_POLLS: '150',
         EMIT_ORDER_METRICS: 'true',
-        // Matches prod-on-the-box today; flip via context when ready.
         FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? 'false',
-        RESALE_ENABLED: this.node.tryGetContext('resaleEnabled') ?? 'false',
+        // Delivered fresh reports are published for resale right away. No
+        // RESALE_PRICE_EUR: the catalog prices every paid report at the flat
+        // ready-report price, so sidecars carry no price.
+        RESALE_ENABLED: this.node.tryGetContext('resaleEnabled') ?? 'true',
         REAPER_DRY_RUN: this.node.tryGetContext('reaperDryRun') ?? 'true',
         ...(config.pdfEngineUrl ? { PDF_ENGINE_URL: config.pdfEngineUrl } : {}),
       },
