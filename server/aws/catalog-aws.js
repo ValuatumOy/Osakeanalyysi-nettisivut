@@ -1,15 +1,18 @@
 // Async catalog builder for the Lambda runtime: prefetches the PDF listing +
 // sidecars from S3 and the state from DynamoDB, then runs the exact same
-// (sync, pure) catalog logic as the box via injection (catalog.js
-// buildRawReports options). Reads never persist state (plan §2.2 item 1) —
+// sync catalog logic as the legacy Express server, via injection
+// (catalog.js buildRawReports options). Reads never persist state —
 // the worker tick is the single writer of the weekly free selection.
 
 const catalog = require('../catalog');
 const pdfStore = require('./pdf-store');
 const stateStore = require('./catalog-state-store');
 
-// Bundled into the Lambda artifact by esbuild (a JSON require, not an fs read).
-const manifest = require('../report-manifest.json');
+// report-manifest.json is deliberately NOT consumed here: the sidecar JSONs
+// next to the PDFs are the only metadata source. The manifest's hand-edited
+// entries carried stale flags (a stale `hidden: true` once hid a live
+// report), and everything useful in it has been copied into the sidecars.
+const manifest = { reports: [] };
 
 async function buildCatalogAws(options = {}) {
   const [scannedFiles, state] = await Promise.all([

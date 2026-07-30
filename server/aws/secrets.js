@@ -1,4 +1,4 @@
-// SSM Parameter Store secrets (plan §2.2 item 4). CDK sets SECRETS_SSM_PREFIX
+// SSM Parameter Store secrets. CDK sets SECRETS_SSM_PREFIX
 // (e.g. /aiequityreports/prod); at cold start the handler awaits
 // ensureSecrets(), which loads the SecureStrings below into process.env so the
 // existing server/ modules read them exactly as they always have. Values

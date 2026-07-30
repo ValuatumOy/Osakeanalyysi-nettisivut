@@ -168,6 +168,14 @@
             <option value="default">Default schedule</option>
           </select>
         </div>
+        <div class="field"><label>Free status</label>
+          <select name="freeStatus">
+            <option value="default">Weekly rotation (default)</option>
+            <option value="forceFree">Always free</option>
+            <option value="excludeFromFree">Never free</option>
+          </select>
+          <span class="form-note">"Never free" leaves this week's rotation untouched; it applies from the next rotation.</span>
+        </div>
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" type="submit">Save changes</button>
@@ -234,7 +242,7 @@
         },
       });
       if (res.status === 401) {
-        // Wrong or rotated password: forget it and re-prompt (plan §4).
+        // Wrong or rotated password: forget it and re-prompt.
         signOut('Session rejected — the admin password may have changed. Sign in again.');
         throw new Error('Unauthorized');
       }
@@ -304,7 +312,7 @@
 
     $('signout').addEventListener('click', () => signOut());
 
-    // ── add flow: presign → PUT to S3 → publish (plan §4) ───────────────────
+    // ── add flow: presign → PUT to S3 → publish ───────────────────
     $('add-form').addEventListener('submit', async (event) => {
       event.preventDefault();
       const form = event.target;
@@ -370,6 +378,8 @@
       form.reportDate.value = report.reportDate || '';
       form.visibility.value = report.availability === 'available' ? 'visible'
         : report.publicationStatus === 'hidden' ? 'hidden' : 'default';
+      form.freeStatus.value = report.forceFree ? 'forceFree'
+        : report.excludeFromFree ? 'excludeFromFree' : 'default';
       $('edit-backdrop').classList.add('open');
     }
 
@@ -393,6 +403,13 @@
       } else {
         patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = null;
       }
+      if (form.freeStatus.value === 'forceFree') {
+        patch.forceFree = true; patch.excludeFromFree = null;
+      } else if (form.freeStatus.value === 'excludeFromFree') {
+        patch.forceFree = null; patch.excludeFromFree = true;
+      } else {
+        patch.forceFree = null; patch.excludeFromFree = null;
+      }
       try {
         $('edit-status').textContent = 'Saving…';
         await api('/api/admin/update', {
@@ -409,7 +426,7 @@
       }
     });
 
-    // ── delete (with the buyer warning — plan §4) ────────────────────────────
+    // ── delete (with the buyer warning) ────────────────────────────
     function openDelete(report) {
       deleting = report;
       const buyers = report.buyerCount || 0;

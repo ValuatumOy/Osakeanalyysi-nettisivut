@@ -14,7 +14,7 @@ export interface FilesStackProps extends StackProps {
 }
 
 /**
- * Plan §3: the private PDF catalog bucket with CloudFront (OAC) in front,
+ * The private PDF catalog bucket with CloudFront (OAC) in front,
  * serving permanent, unsigned download URLs at files.aiequityreports.com. No
  * directory listing — the exact link is required, same threat model as the
  * old nginx setup. Bucket and distribution share a stack because the OAC
@@ -30,9 +30,10 @@ export class FilesStack extends Stack {
     const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: config.zoneDomain });
 
     // The catalog: reports/pdfs/<Name>_<ddmmyyyy>.pdf + sidecar JSONs, same
-    // flat layout as the box. Private — served only through CloudFront (OAC),
+    // flat layout as the legacy server's PDF dir. Private — served only
+    // through CloudFront (OAC),
     // written by the worker/admin API, PUT directly by the admin page via
-    // presigned URLs (hence the CORS rule). Never auto-deleted (plan §3).
+    // presigned URLs (hence the CORS rule). Never auto-deleted.
     this.pdfBucket = new s3.Bucket(this, 'PdfBucket', {
       bucketName: `aiequityreports-pdfs${config.suffix}`,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,

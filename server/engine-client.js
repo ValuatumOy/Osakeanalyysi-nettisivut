@@ -21,7 +21,7 @@ let cachedClient;
 function client() {
   if (!ENGINE_URL) throw new Error('PDF_ENGINE_URL is not set');
 
-  // Prefer the static invoker key pair (the box, outside the engine's AWS
+  // Prefer the static invoker key pair (the legacy server, outside the engine's AWS
   // account). In Lambda those are absent and we sign with the function role's
   // credentials from the runtime env — including the session token, which
   // temporary credentials require. Role creds rotate mid-lifetime, so the

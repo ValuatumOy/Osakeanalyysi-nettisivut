@@ -1,5 +1,5 @@
-// DynamoDB order ledger — the AWS replacement for server/orders.js (see plan
-// §2.2.1). Same shape and semantics, but async and safe under concurrent
+// DynamoDB order ledger — the AWS replacement for server/orders.js.
+// Same shape and semantics, but async and safe under concurrent
 // writers: the API Lambda only ever creates (conditional put, idempotent on
 // the Stripe session id) and the worker only ever updates, so no read-modify-
 // write of a shared file can lose a paid order.

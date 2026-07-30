@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// One-time sidecar cleanup before the S3 copy (plan §2.2 item 2), run against
-// a LOCAL copy of the box's reports/pdfs folder:
+// One-time sidecar cleanup before the S3 copy, run against
+// a LOCAL copy of the legacy server's reports/pdfs folder:
 //
 //   1. Drop absolute pdfUrl values — the catalog derives them from
 //      REPORT_PDF_BASE_URL, so files never carry a hostname again.
@@ -8,7 +8,7 @@
 //      without the stamp every report without an explicit date would go
 //      hidden for visibleAfterDays after cutover. Preference order:
 //      sidecar reportDate → date in the filename → file mtime (the mtime is
-//      last because a plain copy off the box flattens it to copy time).
+//      last because a plain copy off the server flattens it to copy time).
 //
 // Creates a sidecar for PDFs that have none (uploadedAt only). Idempotent.
 //

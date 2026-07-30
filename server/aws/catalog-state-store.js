@@ -1,5 +1,5 @@
-// DynamoDB catalog state — the AWS replacement for catalog-state.json (plan
-// §2.2.1). One table (AiEquityReportsCatalogState), PK `pk` (S), two item
+// DynamoDB catalog state — the AWS replacement for catalog-state.json.
+// One table (AiEquityReportsCatalogState), PK `pk` (S), two item
 // kinds:
 //
 //   PURCHASE#<sessionId>  — one purchase row, TTL (`expiresAt`, epoch seconds)
