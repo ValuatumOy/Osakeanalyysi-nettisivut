@@ -303,7 +303,8 @@ credentials, only single-use presigned URLs.
 **Phase 4 — decommission**
 - Stop the PM2 app; remove the nginx `/api/` proxy block; retire the WinSCP workflow.
 - Delete the dead duplicate Stripe routes from `server/index.js`; update
-  `HANDOFF.md` and `.env.example`; document `cdk deploy` in README.
+  `.env.example`; document `cdk deploy` in README. (`HANDOFF.md` was deleted
+  outright — its Astro/AWS handoff purpose was served.)
 
 ## 6. Cost (prod, monthly, rough)
 
