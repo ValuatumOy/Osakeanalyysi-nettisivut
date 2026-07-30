@@ -266,7 +266,7 @@
 
   <div class="rp-toast" id="rpToast" role="status" aria-live="polite"></div>
 
-  <script src="js/reportsData.js"></script>
+  <script src="js/reportFormat.js"></script>
   <script src="js/reportSlugs.js"></script>
   <script src="js/companyPagesData.js"></script>
   <script src="js/script.js"></script>
@@ -277,6 +277,11 @@
     let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
+    // The catalog is fetched from /api/reports, which proxies the live catalog
+    // API. 'loading' and 'error' render dedicated states so a catalog outage is
+    // never mistaken for an empty catalog.
+    let catalogReports = [];
+    let catalogState = 'loading';
     let currentPage = 1;
     let searchQuery = '';
     let filterAccess = '';
@@ -315,7 +320,12 @@
     }
     function pageUrlFor(report) {
       const slug = report.slug || (window.REPORT_SLUGS && window.REPORT_SLUGS[report.id]);
-      return slug ? 'reports/' + slug + '.html' : '';
+      if (slug) return 'reports/' + slug + '.html';
+      // Slugs are keyed by report id and only cover reports that have a
+      // landing page in report-content/. Newer catalog reports fall back to the
+      // company page, which is keyed by ticker.
+      const company = byTicker.get(normalize(report.ticker));
+      return company ? normalizeUrl(company.url) : '';
     }
     function companyFor(report) {
       const url = pageUrlFor(report);
@@ -323,7 +333,7 @@
     }
     function buildReadyReports() {
       const seen = new Set();
-      return (window.REPORTS_CATALOG || [])
+      return catalogReports
         .slice()
         .sort(function(a, b) { return new Date(b.reportDate || 0) - new Date(a.reportDate || 0); })
         .filter(function(report) {
@@ -350,6 +360,28 @@
             displayExchange: company.exchange || report.exchange,
           });
         });
+    }
+    async function loadCatalog() {
+      catalogState = 'loading';
+      render();
+      try {
+        const res = await fetch('/api/reports');
+        if (!res.ok) throw new Error('Catalog request failed with ' + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data.reports)) throw new Error('Catalog response has no reports');
+        catalogReports = data.reports;
+        catalogState = 'ready';
+      } catch (err) {
+        console.error('Could not load report catalog:', err.message);
+        catalogReports = [];
+        catalogState = 'error';
+        render();
+        return;
+      }
+      readyReports = buildReadyReports();
+      populateFilters();
+      restoreUrlState();
+      render();
     }
     function populateFilters() {
       const markets = Array.from(new Set(readyReports.map(function(r) { return r.displayExchange; }).filter(Boolean))).sort();
@@ -437,6 +469,23 @@
       const emptyAction = document.getElementById('catalogEmptyAction');
       const count = document.getElementById('catalogCount');
       const pagination = document.getElementById('catalogPagination');
+      if (catalogState !== 'ready') {
+        visibleReports = [];
+        grid.innerHTML = '';
+        if (pagination) pagination.hidden = true;
+        count.textContent = catalogState === 'loading' ? 'Loading reports…' : '';
+        empty.style.display = catalogState === 'error' ? 'block' : 'none';
+        if (catalogState === 'error') {
+          emptyTitle.textContent = 'Reports could not be loaded.';
+          emptySub.textContent = 'The report catalog is temporarily unavailable. Please try again in a moment.';
+          emptyAction.textContent = 'Try again';
+          emptyAction.setAttribute('href', '#');
+          emptyAction.style.display = 'inline-flex';
+          emptyAction.onclick = function(event) { event.preventDefault(); loadCatalog(); };
+        }
+        return;
+      }
+      emptyAction.onclick = null;
       visibleReports = filteredReports();
       const pages = totalPages();
       currentPage = Math.min(Math.max(1, currentPage), pages);
@@ -996,9 +1045,10 @@
       isRestoringUrlState = false;
     }
     document.addEventListener('DOMContentLoaded', function() {
-      readyReports = buildReadyReports();
-      populateFilters();
       freshCompanyPicker = createFreshCompanyPicker();
+      // Read the URL state up front so the search box and the fresh-report
+      // picker are correct immediately; loadCatalog() re-applies it once the
+      // market/sector menus exist.
       restoreUrlState();
       const initialSearch = searchQuery;
       const initialFreshTicker = new URLSearchParams(window.location.search).get('freshTicker') || '';
@@ -1007,10 +1057,10 @@
         if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
         if (window.location.hash === '#order-fresh' && freshCompanyPicker) freshCompanyPicker.search(initialSearch, initialFreshTicker);
       }
-      render();
       bindSearch();
       if (initialSearch) searchWisdomForHero(initialSearch);
       bindControls();
+      loadCatalog();
       window.addEventListener('popstate', function() {
         restoreUrlState();
         render();

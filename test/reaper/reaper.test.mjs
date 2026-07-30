@@ -67,6 +67,8 @@ function seed(dir) {
     expired: write(dir, 'Expired', 15, generated('Expired')),
     boundary: write(dir, 'Boundary', 14, generated('Boundary')),
     fresh: write(dir, 'Fresh', 1, generated('Fresh')),
+    // Already hidden (Phase-1 delivery or a previous sweep) -> not eligible again.
+    alreadyHidden: write(dir, 'Hidden', 40, { ...generated('Hidden'), hidden: true, publicationStatus: 'hidden' }),
     // Staff-curated free sample, 100 days old, no provenance -> must never be touched.
     curated: write(dir, 'Curated', 100, { companyName: 'Curated', ticker: 'CUR.HE', price: 0 }),
     // Staff-uploaded paid report, no sidecar at all -> must never be touched.
@@ -76,66 +78,87 @@ function seed(dir) {
 
 const exists = (dir, file) => fs.existsSync(path.join(dir, file));
 const sidecarOf = file => file.replace(/\.pdf$/, '.json');
+const readSidecar = (dir, file) => JSON.parse(fs.readFileSync(path.join(dir, sidecarOf(file)), 'utf8'));
 
-test('dry run reports the expired report but deletes nothing', (t) => {
+test('dry run reports the expired report but writes nothing', async (t) => {
   const dir = isolate(t);
   const files = seed(dir);
 
-  const result = loadReaper({ dir, dryRun: true }).sweep(NOW);
+  const result = await loadReaper({ dir, dryRun: true }).sweep(NOW);
 
-  assert.equal(result.scanned, 5);
-  assert.equal(result.eligible, 1, 'only the 15-day-old generated report is past the window');
-  assert.equal(result.reaped, 0, 'dry run must not delete');
-  for (const file of Object.values(files)) {
-    assert.ok(exists(dir, file), `${file} must survive a dry run`);
-  }
+  assert.equal(result.scanned, 6);
+  assert.equal(result.eligible, 1, 'only the 15-day-old visible generated report is past the window');
+  assert.equal(result.hidden, 0, 'dry run must not write');
+  assert.equal(readSidecar(dir, files.expired).hidden, false, 'sidecar untouched in dry run');
 });
 
-test('armed reaper deletes only the expired generated report', (t) => {
+test('armed reaper hides only the expired generated report — and deletes nothing', async (t) => {
   const dir = isolate(t);
   const files = seed(dir);
 
-  const result = loadReaper({ dir, dryRun: false }).sweep(NOW);
+  const result = await loadReaper({ dir, dryRun: false }).sweep(NOW);
 
-  assert.equal(result.reaped, 1);
-  assert.ok(!exists(dir, files.expired), 'expired pdf is deleted');
-  assert.ok(!exists(dir, sidecarOf(files.expired)), 'expired sidecar is deleted too');
-  assert.ok(exists(dir, files.fresh), 'a fresh report is kept');
+  assert.equal(result.hidden, 1);
+  // URL permanence: the PDF (and its emailed link) must survive the end of resale.
+  assert.ok(exists(dir, files.expired), 'expired pdf is NOT deleted');
+  assert.ok(exists(dir, sidecarOf(files.expired)), 'expired sidecar is NOT deleted');
+
+  const sidecar = readSidecar(dir, files.expired);
+  assert.equal(sidecar.hidden, true, 'expired report is hidden from the catalog');
+  assert.equal(sidecar.publicationStatus, 'hidden');
+  assert.equal(sidecar.forceVisible, false, 'forceVisible no longer overrides the hide');
+  assert.ok(sidecar.resaleEndedAt, 'hide is timestamped');
+  assert.deepEqual(sidecar.provenance, { sessionId: 'cs_test', jobId: 'job_test' }, 'provenance survives the rewrite');
+
+  const freshSidecar = readSidecar(dir, files.fresh);
+  assert.equal(freshSidecar.hidden, false, 'a fresh report stays visible');
 });
 
 // The guardrail that protects real inventory. A staff report has no provenance,
-// so no matter how old it gets it must never be deleted.
-test('never deletes reports it did not generate, however old', (t) => {
+// so no matter how old it gets it must never be touched.
+test('never touches reports it did not generate, however old', async (t) => {
   const dir = isolate(t);
   const files = seed(dir);
 
-  loadReaper({ dir, dryRun: false }).sweep(NOW);
+  await loadReaper({ dir, dryRun: false }).sweep(NOW);
 
-  assert.ok(exists(dir, files.curated), '100-day-old curated sample without provenance survives');
-  assert.ok(exists(dir, sidecarOf(files.curated)), 'its sidecar survives');
+  const curated = readSidecar(dir, files.curated);
+  assert.equal(curated.hidden, undefined, '100-day-old curated sample without provenance is untouched');
   assert.ok(exists(dir, files.orphan), '100-day-old report with no sidecar survives');
+  assert.ok(!exists(dir, sidecarOf(files.orphan)), 'and gains no sidecar');
 });
 
-test('window boundary: age must exceed the window, equal is kept', (t) => {
+test('an already-hidden report is not eligible again', async (t) => {
   const dir = isolate(t);
   const files = seed(dir);
 
-  loadReaper({ dir, dryRun: false }).sweep(NOW);
+  const result = await loadReaper({ dir, dryRun: false }).sweep(NOW);
 
-  assert.ok(exists(dir, files.boundary), 'exactly 14 days old is still inside the window');
-  assert.ok(!exists(dir, files.expired), '15 days old is outside it');
+  assert.equal(result.eligible, 1, 'the 40-day-old already-hidden report is not re-counted');
+  const sidecar = readSidecar(dir, files.alreadyHidden);
+  assert.equal(sidecar.resaleEndedAt, undefined, 'and not rewritten');
 });
 
-test('window is configurable', (t) => {
+test('window boundary: age must exceed the window, equal is kept', async (t) => {
+  const dir = isolate(t);
+  const files = seed(dir);
+
+  await loadReaper({ dir, dryRun: false }).sweep(NOW);
+
+  assert.equal(readSidecar(dir, files.boundary).hidden, false, 'exactly 14 days old is still inside the window');
+  assert.equal(readSidecar(dir, files.expired).hidden, true, '15 days old is outside it');
+});
+
+test('window is configurable', async (t) => {
   const dir = isolate(t);
   const files = seed(dir);
 
   // At a 7-day window the 14-day report also falls out; the 1-day one does not.
-  const result = loadReaper({ dir, dryRun: false, windowDays: 7 }).sweep(NOW);
+  const result = await loadReaper({ dir, dryRun: false, windowDays: 7 }).sweep(NOW);
 
-  assert.equal(result.reaped, 2);
-  assert.ok(!exists(dir, files.boundary), '14d is expired under a 7d window');
-  assert.ok(exists(dir, files.fresh), '1d is still inside a 7d window');
+  assert.equal(result.hidden, 2);
+  assert.equal(readSidecar(dir, files.boundary).hidden, true, '14d is expired under a 7d window');
+  assert.equal(readSidecar(dir, files.fresh).hidden, false, '1d is still inside a 7d window');
 });
 
 test('start() is a no-op unless resale is enabled', (t) => {
@@ -149,13 +172,13 @@ test('start() is a no-op unless resale is enabled', (t) => {
   assert.notEqual(timer, null, 'starts when enabled');
 });
 
-test('a missing pdf directory is survivable, not a crash', (t) => {
+test('a missing pdf directory is survivable, not a crash', async (t) => {
   const dir = isolate(t);
   const missing = path.join(dir, 'does-not-exist');
 
-  const result = loadReaper({ dir: missing, dryRun: false }).sweep(NOW);
+  const result = await loadReaper({ dir: missing, dryRun: false }).sweep(NOW);
 
-  assert.deepEqual(result, { scanned: 0, eligible: 0, reaped: 0 });
+  assert.deepEqual(result, { scanned: 0, eligible: 0, hidden: 0 });
 });
 
 test('provenance predicate accepts either id, rejects everything else', (t) => {

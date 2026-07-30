@@ -14,13 +14,23 @@
 // buyer gets it by email now and Phase 2 resale is a later flag-flip. Admin is
 // emailed on failure always, and on success when ADMIN_NOTIFY_ON_SUCCESS is set.
 
-const fs = require('fs');
-const path = require('path');
-
 const engine = require('./engine-client');
 const email = require('./email');
-const orders = require('./orders');
 const fmp = require('./fmp-client');
+
+// Storage backends. In Lambda, CDK sets ORDERS_TABLE / REPORT_PDF_BUCKET →
+// DynamoDB orders + S3 catalog. The JSON-file orders module remains only for
+// running the Express app locally (the fs module is synchronous; every call
+// site awaits, which is a no-op for it and required for the DynamoDB store).
+// There is deliberately NO local-disk publish path for delivered PDFs: it
+// died with the files.valuatum.com box, and deliver() errors loudly if the
+// bucket is not configured rather than writing to a disk nothing serves.
+const orders = process.env.ORDERS_TABLE
+  ? require('./aws/orders-store')
+  : require('./orders');
+const pdfStore = process.env.REPORT_PDF_BUCKET
+  ? require('./aws/pdf-store')
+  : null;
 
 function intEnv(name, fallback) {
   const value = Number.parseInt(process.env[name] || '', 10);
@@ -41,6 +51,15 @@ function floatEnv(name, fallback) {
 const INTERVAL_MS = intEnv('RECONCILER_INTERVAL_MS', 45000);
 const MAX_POLLS = intEnv('RECONCILER_MAX_POLLS', 40);
 const MAX_ATTEMPTS = intEnv('RECONCILER_MAX_ATTEMPTS', 6);
+// In-invocation RENDERING poll loop (plan §2.1): with a 5-minute sweep cadence
+// the worker keeps polling the engine inside one invocation instead of one
+// poll per tick. 0 (the box default) preserves the old one-poll-per-tick
+// behavior; the worker Lambda sets a window that fits its timeout.
+const POLL_WINDOW_MS = intEnv('RECONCILER_POLL_WINDOW_MS', 0);
+const POLL_DELAY_MS = intEnv('RECONCILER_POLL_DELAY_MS', 20000);
+// Emit CloudWatch EMF metrics for failed/stuck orders (plan §2.3); Lambda only.
+const EMIT_ORDER_METRICS = boolEnv('EMIT_ORDER_METRICS', false);
+const STUCK_AFTER_MINUTES = intEnv('ORDER_STUCK_AFTER_MINUTES', 30);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
 const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
 // Phase 2 resale: when enabled, a delivered report is published immediately for
@@ -52,8 +71,7 @@ const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
 const RESALE_ENABLED = boolEnv('RESALE_ENABLED', false);
 const RESALE_PRICE_EUR = floatEnv('RESALE_PRICE_EUR', null);
 
-const PDF_DIR = process.env.REPORT_PDF_DIR || '/var/www/html/reports/pdfs';
-const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.valuatum.com/reports/pdfs').replace(/\/$/, '');
+const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
 
 // Yahoo/FMP-style exchange suffix on the ticker (SYMBOL.EXCHANGE) -> a short
 // market label (city, matching the existing Nordic style so the catalog market
@@ -110,15 +128,9 @@ function companyToken(name) {
   return cleaned.split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
 }
 
-function writeFileAtomic(filePath, buffer) {
-  const tmp = `${filePath}.tmp`;
-  fs.writeFileSync(tmp, buffer);
-  fs.renameSync(tmp, filePath);
-}
-
 // Terminal failure: mark FAILED and email the admin to generate manually.
 async function fail(order, reason) {
-  orders.update(order.id, {
+  await orders.update(order.id, {
     status: orders.STATUS.FAILED,
     error: reason,
     attempts: (order.attempts || 0) + 1,
@@ -136,6 +148,13 @@ async function fail(order, reason) {
 
 // DONE job -> download, publish (PDF + sidecar), email buyer, mark DELIVERED.
 async function deliver(order, job) {
+  if (!pdfStore) {
+    // Thrown as a transient error: the order stays RENDERING and retries, the
+    // admin gets emailed once attempts run out, and the stuck-order alarm
+    // fires — all preferable to silently "publishing" to a local disk.
+    throw new Error('REPORT_PDF_BUCKET is not set — cannot publish the delivered PDF');
+  }
+
   const pdf = await engine.downloadPdf(job.s3Url);
 
   const now = new Date();
@@ -150,8 +169,7 @@ async function deliver(order, job) {
   const exchange = order.exchange || deriveExchange(order.ticker);
   const companyLabel = order.companyName || order.ticker;
 
-  fs.mkdirSync(PDF_DIR, { recursive: true });
-  writeFileAtomic(path.join(PDF_DIR, pdfFileName), pdf);
+  await pdfStore.putPdf(pdfFileName, pdf);
 
   // Sidecar consumed by catalog.js at runtime. excludeFromFree always keeps a
   // paid report out of the free rotation; provenance links it back to the order
@@ -184,24 +202,30 @@ async function deliver(order, job) {
       sidecar.price = RESALE_PRICE_EUR;
     }
   }
-  writeFileAtomic(path.join(PDF_DIR, `${fileBase}.json`), Buffer.from(`${JSON.stringify(sidecar, null, 2)}\n`));
+  await pdfStore.writeSidecar(pdfFileName, sidecar);
 
   const pdfUrl = `${PDF_BASE_URL}/${encodeURIComponent(pdfFileName)}`;
 
-  if (order.email) {
+  if (!order.email) {
+    console.warn('reconciler: delivered PDF but order has no email', { id: order.id, pdfFileName });
+  } else if (order.deliveredEmailAt) {
+    // A previous invocation died between sending and marking DELIVERED; the
+    // buyer already has (or is about to get) the email — don't send it twice.
+    console.warn('reconciler: skipping buyer email, already sent', { id: order.id, at: order.deliveredEmailAt });
+  } else {
+    // Mark before sending so a crash mid-send cannot re-email on retry.
+    await orders.update(order.id, { deliveredEmailAt: new Date().toISOString() });
     await email.sendReportEmail(order.email, {
       name: companyLabel,
       ticker: order.ticker,
       reportDate: reportDateIso,
       pdfUrl,
     });
-  } else {
-    console.warn('reconciler: delivered PDF but order has no email', { id: order.id, pdfFileName });
   }
 
   // Mark DELIVERED before the admin FYI: the buyer email already went out, and
   // DELIVERED removes the order from listPending so it is never re-processed.
-  orders.update(order.id, { status: orders.STATUS.DELIVERED, pdfFileName, error: null });
+  await orders.update(order.id, { status: orders.STATUS.DELIVERED, pdfFileName, error: null });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
 
   if (ADMIN_NOTIFY_ON_SUCCESS) {
@@ -228,7 +252,7 @@ async function advance(order) {
 
     // Optional fresh FMP import before rendering (Task E, flag-gated).
     if (FRESH_IMPORT_ENABLED && order.importStatus == null) {
-      orders.update(order.id, { status: orders.STATUS.IMPORTING });
+      await orders.update(order.id, { status: orders.STATUS.IMPORTING });
       const outcome = await fmp.fmpImport(order.ticker); // blocking, terminal
       if (outcome.status === 'FAILED') {
         return fail(order, `FMP import failed: ${outcome.message || 'unknown error'}`);
@@ -236,59 +260,110 @@ async function advance(order) {
       if (outcome.status === 'TIMEOUT') {
         // Worker still running server-side; leave in IMPORTING and retry (a
         // later call will SKIP quickly once the import has finished).
-        orders.update(order.id, { attempts: (order.attempts || 0) + 1 });
+        await orders.update(order.id, { attempts: (order.attempts || 0) + 1 });
         return;
       }
-      orders.update(order.id, { importStatus: outcome.status }); // SUCCESS | SKIPPED
+      await orders.update(order.id, { importStatus: outcome.status }); // SUCCESS | SKIPPED
     }
 
     const { jobId } = await engine.submitJob({ companyCode: order.ticker });
-    orders.update(order.id, { status: orders.STATUS.RENDERING, jobId, polls: 0, error: null });
-    return;
+    await orders.update(order.id, { status: orders.STATUS.RENDERING, jobId, polls: 0, error: null });
+    order = { ...order, status: orders.STATUS.RENDERING, jobId, polls: 0 };
+    // Fall through: with a poll window configured, start polling immediately.
+    if (POLL_WINDOW_MS <= 0) return;
   }
 
   if (order.status === orders.STATUS.RENDERING) {
     if (!order.jobId) return fail(order, 'order is RENDERING but has no jobId');
 
-    const job = await engine.getJob(order.jobId);
+    // Poll until DONE/FAILED, the poll budget (MAX_POLLS) runs out, or this
+    // invocation's window closes (POLL_WINDOW_MS=0 → exactly one poll, the
+    // original per-tick behavior; the next sweep resumes from stored state).
+    const windowDeadline = Date.now() + POLL_WINDOW_MS;
+    let polls = order.polls || 0;
 
-    if (job.status === 'DONE') {
-      if (!job.s3Url) return; // presigned URL not minted yet; re-fetch next tick
-      return deliver(order, job);
-    }
-    if (job.status === 'FAILED' || job.status === 'NOT_FOUND') {
-      return fail(order, `engine job ${job.status}${job.error ? `: ${job.error}` : ''}`);
-    }
+    for (;;) {
+      const job = await engine.getJob(order.jobId);
 
-    // PENDING / RUNNING -> keep waiting, bounded by MAX_POLLS.
-    const polls = (order.polls || 0) + 1;
-    if (polls > MAX_POLLS) {
-      return fail(order, `render did not finish within ${MAX_POLLS} polls`);
+      if (job.status === 'DONE') {
+        if (!job.s3Url) return; // presigned URL not minted yet; re-fetch next tick
+        return deliver(order, job);
+      }
+      if (job.status === 'FAILED' || job.status === 'NOT_FOUND') {
+        return fail(order, `engine job ${job.status}${job.error ? `: ${job.error}` : ''}`);
+      }
+
+      // PENDING / RUNNING -> keep waiting, bounded by MAX_POLLS.
+      polls += 1;
+      if (polls > MAX_POLLS) {
+        return fail(order, `render did not finish within ${MAX_POLLS} polls`);
+      }
+      await orders.update(order.id, { polls });
+
+      if (Date.now() + POLL_DELAY_MS >= windowDeadline) return;
+      await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
     }
-    orders.update(order.id, { polls });
-    return;
   }
 }
 
 let running = false;
 
+// CloudWatch Embedded Metric Format (no SDK, no extra IAM): one log line per
+// tick carrying the failed/stuck gauges the plan's §2.3 alarms watch.
+function emitOrderMetrics(allOrders, now = new Date()) {
+  const dayAgo = now.getTime() - 24 * 60 * 60 * 1000;
+  const stuckCutoff = now.getTime() - STUCK_AFTER_MINUTES * 60 * 1000;
+
+  const failedRecent = allOrders.filter(order =>
+    order.status === orders.STATUS.FAILED &&
+    (Date.parse(order.updatedAt) || 0) >= dayAgo,
+  ).length;
+  const stuck = allOrders.filter(order =>
+    (order.status === orders.STATUS.NEW || order.status === orders.STATUS.IMPORTING) &&
+    (Date.parse(order.createdAt) || 0) <= stuckCutoff,
+  ).length;
+
+  console.log(JSON.stringify({
+    _aws: {
+      Timestamp: now.getTime(),
+      CloudWatchMetrics: [{
+        Namespace: 'AiEquityReports',
+        Dimensions: [['Stage']],
+        Metrics: [{ Name: 'OrdersFailedRecent' }, { Name: 'OrdersStuck' }],
+      }],
+    },
+    Stage: process.env.STAGE || 'prod',
+    OrdersFailedRecent: failedRecent,
+    OrdersStuck: stuck,
+  }));
+}
+
 // One reconciliation pass over all pending orders. Single-flight: a pass already
-// in progress makes this a no-op (returns false).
+// in progress makes this a no-op (returns false). (In Lambda the real guard is
+// reserved concurrency 1; this stays as a harmless second line of defense.)
 async function tick() {
   if (running) return false;
   running = true;
   try {
-    for (const order of orders.listPending()) {
+    for (const order of await orders.listPending()) {
       try {
         await advance(order);
       } catch (err) {
         // Transient: bump attempts, keep status, retry next tick.
         console.error(`reconciler: transient error on order ${order.id}:`, err.message);
         try {
-          orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
+          await orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
         } catch (updateErr) {
           console.error('reconciler: could not record error for', order.id, updateErr.message);
         }
+      }
+    }
+
+    if (EMIT_ORDER_METRICS) {
+      try {
+        emitOrderMetrics(await orders.list());
+      } catch (err) {
+        console.warn('reconciler: metrics emission failed:', err.message);
       }
     }
     return true;

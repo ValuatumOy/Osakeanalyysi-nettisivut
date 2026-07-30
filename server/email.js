@@ -232,10 +232,29 @@ async function sendCoverageRequest(meta) {
   }, 'coverage request');
 }
 
+// ── Generic operational alert to the admin ──────────────────────────────────
+// Used for failures that need eyes but have no dedicated template (e.g. the
+// webhook's purchase-sync failing after retries).
+async function sendAdminAlert(subject, lines) {
+  const items = (Array.isArray(lines) ? lines : [lines])
+    .map(line => `<li style="margin-bottom:4px;">${escapeHtml(line)}</li>`)
+    .join('');
+  await sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `[AiEquityReports alert] ${subject}`,
+    html: `
+      <p><strong>${escapeHtml(subject)}</strong></p>
+      <ul style="font-family:Arial,sans-serif;font-size:14px;">${items}</ul>
+    `,
+  }, 'admin alert');
+}
+
 module.exports = {
   sendReportEmail,
   sendFreshConfirmEmail,
   sendAdminNotification,
   sendAdminDeliveryNotice,
   sendCoverageRequest,
+  sendAdminAlert,
 };

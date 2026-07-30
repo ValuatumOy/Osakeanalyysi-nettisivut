@@ -275,15 +275,21 @@ function selectWeeklyFreeIds(reports, state, rules, now) {
   return selected;
 }
 
+// Storage is injectable so the same catalog logic runs against the local
+// filesystem (the box, tests) and S3 (Lambda, via server/aws/catalog-aws.js):
+// options.scannedFiles replaces the directory scan, options.readSidecar
+// replaces the per-file sidecar read, options.manifest replaces the manifest
+// file read.
 function buildRawReports(options = {}) {
   const now = options.now || new Date();
   const rules = options.rules || DEFAULT_RULES;
   const manifestPath = options.manifestPath || DEFAULT_MANIFEST_PATH;
   const pdfDir = options.pdfDir || DEFAULT_PDF_DIR;
   const pdfBaseUrl = options.pdfBaseUrl || DEFAULT_PDF_BASE_URL;
+  const readSidecar = options.readSidecar || (fileName => readSidecarMeta(pdfDir, fileName));
 
-  const manifest = normalizeManifest(readJson(manifestPath, { reports: [] }));
-  const scanned = scanPdfDir(pdfDir);
+  const manifest = normalizeManifest(options.manifest || readJson(manifestPath, { reports: [] }));
+  const scanned = options.scannedFiles || scanPdfDir(pdfDir);
   const byFileName = new Map(scanned.map(file => [file.fileName, file]));
 
   for (const meta of manifest.reports) {
@@ -297,7 +303,7 @@ function buildRawReports(options = {}) {
   }
 
   return Array.from(byFileName.values()).filter(file => file.size !== null).map(file => {
-    const sidecarMeta = readSidecarMeta(pdfDir, file.fileName);
+    const sidecarMeta = readSidecar(file.fileName) || {};
     const meta = {
       ...(manifest.byFileName.get(file.fileName) || {}),
       ...sidecarMeta,
@@ -441,11 +447,10 @@ function getReportMapSync(options = {}) {
   ]));
 }
 
-function recordCatalogPurchase(purchase, options = {}) {
-  const statePath = options.statePath || DEFAULT_STATE_PATH;
-  const state = loadState(statePath);
-  const purchasedAt = purchase.purchasedAt || new Date().toISOString();
-  const normalized = {
+// Shared by the fs-backed state (below) and the DynamoDB store
+// (server/aws/catalog-state-store.js): one canonical purchase-row shape.
+function normalizePurchase(purchase) {
+  return {
     type: purchase.type || 'existing',
     reportId: purchase.reportId || '',
     fileName: purchase.fileName || '',
@@ -453,8 +458,14 @@ function recordCatalogPurchase(purchase, options = {}) {
     companyName: purchase.companyName || purchase.reportName || purchase.company || '',
     sessionId: purchase.sessionId || '',
     customerEmail: purchase.customerEmail || purchase.email || '',
-    purchasedAt,
+    purchasedAt: purchase.purchasedAt || new Date().toISOString(),
   };
+}
+
+function recordCatalogPurchase(purchase, options = {}) {
+  const statePath = options.statePath || DEFAULT_STATE_PATH;
+  const state = loadState(statePath);
+  const normalized = normalizePurchase(purchase);
 
   if (normalized.sessionId) {
     state.purchases = state.purchases.filter(item => item.sessionId !== normalized.sessionId);
@@ -479,6 +490,7 @@ module.exports = {
   getReportByIdSync,
   getReportMapSync,
   recordCatalogPurchase,
+  normalizePurchase,
   publicationStatus,
   weekKey,
 };

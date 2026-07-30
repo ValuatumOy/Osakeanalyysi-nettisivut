@@ -9,7 +9,7 @@ import { publishCompanyDiscovery } from './company-pages/publish-company-page.mj
 import { isFinancialCompany, pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'js', 'reportsData.js');
+const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'report-content', '_catalog.json');
 const DEFAULT_COMPANY_CATALOG_PATH = path.join(ROOT, 'js', 'companyPagesData.js');
 const DEFAULT_SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 
@@ -155,12 +155,7 @@ async function loadModelFreshness(freshnessPath) {
 }
 
 async function readReportCatalog(catalogPath) {
-  const source = await fs.readFile(catalogPath, 'utf8');
-  if (/\.js$/i.test(catalogPath)) {
-    const match = source.match(/var\s+REPORTS_CATALOG\s*=\s*(\[[\s\S]*?\]);/);
-    return match ? Function(`return ${match[1]};`)() : [];
-  }
-  return JSON.parse(source);
+  return JSON.parse(await fs.readFile(catalogPath, 'utf8'));
 }
 
 function findReadyReport(company, readyReports) {
