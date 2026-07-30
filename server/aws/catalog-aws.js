@@ -8,8 +8,12 @@ const catalog = require('../catalog');
 const pdfStore = require('./pdf-store');
 const stateStore = require('./catalog-state-store');
 
-// Bundled into the Lambda artifact by esbuild (a JSON require, not an fs read).
-const manifest = require('../report-manifest.json');
+// The legacy report-manifest.json is deliberately NOT consumed here: sidecars
+// are the sole metadata source in AWS. The manifest's hand-edited entries
+// carried stale flags that leaked through the merge (a stale `hidden: true`
+// hid a live report during migration) and its last real metadata was folded
+// into the sidecars. The box's fs path still reads it; Phase 4 deletes it.
+const manifest = { reports: [] };
 
 async function buildCatalogAws(options = {}) {
   const [scannedFiles, state] = await Promise.all([
