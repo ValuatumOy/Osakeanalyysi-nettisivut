@@ -437,13 +437,17 @@
         });
       });
     }
+    function pdfHref(url) {
+      const s = String(url || '');
+      return /^https?:\/\//.test(s) ? s : '/' + s.replace(/^\/+/, '');
+    }
     function card(report) {
       const tags = (report.tags || []).slice(0, 4).map(function(tag) { return '<span class="rc-tag">' + escapeHTML(tag) + '</span>'; }).join('');
       const badge = report.isFree ? 'Free report' : 'Ready report';
       const price = report.isFree ? 'Free' : readyPriceLabel;
       const priceNote = report.isFree ? 'Instant PDF download' : 'Existing PDF report';
       const primaryCta = report.isFree
-        ? '<a class="btn btn-primary" href="/' + escapeHTML(report.pdfUrl || '') + '" target="_blank" rel="noopener" download>Download free PDF</a>'
+        ? '<a class="btn btn-primary" href="' + escapeHTML(pdfHref(report.pdfUrl)) + '" target="_blank" rel="noopener" download>Download free PDF</a>'
         : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>';
       return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '" data-page-url="/' + escapeHTML(report.pageUrl) + '" tabindex="0" aria-label="Open ' + escapeHTML(report.displayName) + ' company page">' +
         '<div>' +

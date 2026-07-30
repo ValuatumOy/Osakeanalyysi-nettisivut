@@ -275,7 +275,9 @@ function readyReportSection(companyName, report) {
   const price = Number(report.price || 0).toFixed(2);
   const reportDate = report.reportDateLabel || formatReportDate(report.reportDate);
   const reportHref = isFree && report.pdfUrl
-    ? `/${String(report.pdfUrl).replace(/^\/+/, '')}`
+    ? (/^https?:\/\//.test(String(report.pdfUrl))
+        ? String(report.pdfUrl)
+        : `/${String(report.pdfUrl).replace(/^\/+/, '')}`)
     : `/reports.html#report-${attr(report.id)}`;
   const ctaText = isFree ? 'Download free report' : `Buy ready report &mdash; &euro;${price}`;
   return `<section class="report-full-section" id="ready-report">
