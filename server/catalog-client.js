@@ -89,11 +89,27 @@ async function getCatalogReports() {
   return getPublicReportsSync({ persistState: false }).map(normalizeCatalogReport).filter(Boolean);
 }
 
+const SYNC_ATTEMPTS = 3;
+const SYNC_RETRY_BASE_MS = 250;
+
+// Sync a paid purchase to the catalog backend. This must NOT fail silently:
+// on Vercel the "local fallback" writes to an ephemeral disk, which for a
+// fresh order means a paid report that never gets generated. So when a
+// backend is configured, failure here retries, alerts the admin, and THROWS —
+// the webhook returns 500 and Stripe redelivers the event (the backend is
+// idempotent on the session id). The local write remains only for
+// environments with no backend configured (local dev, tests).
 async function recordCatalogPurchase(purchase) {
   const base = catalogBaseUrl();
   const secret = process.env.CATALOG_SYNC_SECRET || '';
 
-  if (base && secret) {
+  if (!base || !secret) {
+    recordLocalPurchase(purchase);
+    return;
+  }
+
+  let lastError;
+  for (let attempt = 1; attempt <= SYNC_ATTEMPTS; attempt += 1) {
     try {
       await fetchJson(`${base}/api/report-purchases`, {
         method: 'POST',
@@ -105,11 +121,30 @@ async function recordCatalogPurchase(purchase) {
       });
       return;
     } catch (err) {
-      console.warn('Catalog purchase sync failed, using local fallback:', err.message);
+      lastError = err;
+      console.warn(`Catalog purchase sync attempt ${attempt}/${SYNC_ATTEMPTS} failed:`, err.message);
+      if (attempt < SYNC_ATTEMPTS) {
+        await new Promise(resolve => setTimeout(resolve, SYNC_RETRY_BASE_MS * attempt));
+      }
     }
   }
 
-  recordLocalPurchase(purchase);
+  console.error('Catalog purchase sync FAILED after retries:', lastError.message, {
+    sessionId: purchase?.sessionId, type: purchase?.type,
+  });
+  try {
+    const { sendAdminAlert } = require('./email');
+    await sendAdminAlert('Purchase sync to the catalog API failed', [
+      `Session: ${purchase?.sessionId || 'unknown'}`,
+      `Type: ${purchase?.type || 'existing'} — ${purchase?.companyName || purchase?.reportId || ''}`,
+      `Customer: ${purchase?.customerEmail || 'unknown'}`,
+      `Error: ${lastError.message}`,
+      'The webhook returned 500, so Stripe will retry the event automatically.',
+    ]);
+  } catch (alertErr) {
+    console.error('Purchase-sync failure alert email also failed:', alertErr.message);
+  }
+  throw new Error(`Catalog purchase sync failed after ${SYNC_ATTEMPTS} attempts: ${lastError.message}`);
 }
 
 module.exports = {

@@ -19,16 +19,28 @@ const USERNAME = process.env.PDF_ENGINE_USERNAME || 'osakeanalyysi-site';
 let cachedClient;
 
 function client() {
-  if (cachedClient) return cachedClient;
-
   if (!ENGINE_URL) throw new Error('PDF_ENGINE_URL is not set');
-  const accessKeyId = process.env.AWS_INVOKER_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_INVOKER_SECRET_ACCESS_KEY;
+
+  // Prefer the static invoker key pair (the box, outside the engine's AWS
+  // account). In Lambda those are absent and we sign with the function role's
+  // credentials from the runtime env — including the session token, which
+  // temporary credentials require. Role creds rotate mid-lifetime, so the
+  // client is rebuilt whenever the key id changes (no stale-cache 403s).
+  const staticKeyId = process.env.AWS_INVOKER_ACCESS_KEY_ID;
+  const accessKeyId = staticKeyId || process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = staticKeyId
+    ? process.env.AWS_INVOKER_SECRET_ACCESS_KEY
+    : process.env.AWS_SECRET_ACCESS_KEY;
+  const sessionToken = staticKeyId ? undefined : process.env.AWS_SESSION_TOKEN;
+
   if (!accessKeyId || !secretAccessKey) {
-    throw new Error('AWS_INVOKER_ACCESS_KEY_ID / AWS_INVOKER_SECRET_ACCESS_KEY are not set');
+    throw new Error('No AWS credentials for the engine: set AWS_INVOKER_ACCESS_KEY_ID / '
+      + 'AWS_INVOKER_SECRET_ACCESS_KEY, or run under an AWS role');
   }
 
-  cachedClient = new AwsClient({ accessKeyId, secretAccessKey, region: REGION, service: 'lambda' });
+  if (!cachedClient || cachedClient.accessKeyId !== accessKeyId) {
+    cachedClient = new AwsClient({ accessKeyId, secretAccessKey, sessionToken, region: REGION, service: 'lambda' });
+  }
   return cachedClient;
 }
 
