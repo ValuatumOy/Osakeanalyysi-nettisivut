@@ -168,6 +168,14 @@
             <option value="default">Default schedule</option>
           </select>
         </div>
+        <div class="field"><label>Free status</label>
+          <select name="freeStatus">
+            <option value="default">Weekly rotation (default)</option>
+            <option value="forceFree">Always free</option>
+            <option value="excludeFromFree">Never free</option>
+          </select>
+          <span class="form-note">"Never free" leaves this week's rotation untouched; it applies from the next rotation.</span>
+        </div>
       </div>
       <div class="form-actions">
         <button class="btn btn-primary" type="submit">Save changes</button>
@@ -370,6 +378,8 @@
       form.reportDate.value = report.reportDate || '';
       form.visibility.value = report.availability === 'available' ? 'visible'
         : report.publicationStatus === 'hidden' ? 'hidden' : 'default';
+      form.freeStatus.value = report.forceFree ? 'forceFree'
+        : report.excludeFromFree ? 'excludeFromFree' : 'default';
       $('edit-backdrop').classList.add('open');
     }
 
@@ -392,6 +402,13 @@
         patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = true;
       } else {
         patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = null;
+      }
+      if (form.freeStatus.value === 'forceFree') {
+        patch.forceFree = true; patch.excludeFromFree = null;
+      } else if (form.freeStatus.value === 'excludeFromFree') {
+        patch.forceFree = null; patch.excludeFromFree = true;
+      } else {
+        patch.forceFree = null; patch.excludeFromFree = null;
       }
       try {
         $('edit-status').textContent = 'Saving…';
