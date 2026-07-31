@@ -1,0 +1,174 @@
+{
+  "slug": "investing-in-helsinki-listed-stocks",
+  "cluster": "helsinki-stocks",
+  "role": "pillar",
+  "targetQuery": "how to invest in finnish stocks",
+  "intent": "informational",
+  "title": "How to invest in Finnish stocks: Nasdaq Helsinki guide",
+  "metaDescription": "How to invest in Finnish stocks on Nasdaq Helsinki: dividend withholding tax for non-residents, plus our July 2026 fair values on five OMXH names.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": {
+    "auto": false,
+    "mergedBy": "human",
+    "date": null
+  },
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-31",
+  "readingTimeMinutes": 9,
+  "sections": [
+    {
+      "h2": "How do you invest in Finnish stocks?",
+      "html": "<p>You invest in Finnish stocks the same way you buy any foreign share: through a broker that offers access to Nasdaq Helsinki, the exchange where Finnish equities trade. Around 140 companies list there, every one priced in euros, and the order book runs on weekdays from 10:00 to 18:30 Helsinki time.</p><p>The practical steps are short. Open an account with a broker that routes orders to Helsinki (most large international brokers do). Fund it in euros, or accept that your platform converts from your home currency at the point of trade. Place the order by ticker: Nokia is NOKIA.HE, UPM is UPM.HE. Your shares are almost always held in a nominee, or street-name, account, which matters for how your dividends get taxed. We cover that below.</p><p>You do not need to live in Finland or hold a Finnish account. What you do need to watch is the euro. If you report in dollars or pounds, your return is the stock's move plus or minus the currency.</p>"
+    },
+    {
+      "h2": "What is Nasdaq Helsinki?",
+      "html": "<p>Nasdaq Helsinki is Finland's only regulated stock exchange, home to roughly 140 listed companies and run by Nasdaq as part of its Nordic markets. It was the Helsinki Stock Exchange for most of its life, passed to OMX in the 2000s, and became part of Nasdaq when Nasdaq bought OMX in 2008. Trading and reporting are in euros.</p><p>The benchmark is the OMX Helsinki 25 (OMXH25), which tracks the 25 most-traded stocks on the exchange. It is capitalisation-weighted, with any single company capped at 10% so that one name cannot dominate the index. That cap tells you something about the market: without it, a handful of large caps would swamp everything else. Helsinki is a small, concentrated market by US standards, and a few companies carry most of the trading volume and most of the index.</p>"
+    },
+    {
+      "h2": "Which companies and sectors dominate Helsinki?",
+      "html": "<p>Four sectors carry most of the Helsinki market's weight: communication equipment, industrials, forest products, and consumer staples. The names below are five of the largest, and the five we publish full valuations on. Forestry is the sector that makes Helsinki distinctive. UPM and Stora Enso each own vast tracts of Nordic forest land, so their share prices are part industrial cash flow and part biological land bank.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Sector</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Market cap</th></tr></thead><tbody><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Communication equipment</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 57bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Industrials</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 19bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM-Kymmene (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 12bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Consumer staples</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 8bn</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem;'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem;'>EUR 7bn</td></tr></tbody></table><p>Market caps are from our July 2026 equity reports on each company. Nokia alone is bigger than the next three combined, which is why the OMXH25's 10% cap exists.</p>"
+    },
+    {
+      "h2": "Are Finnish stocks cheap in 2026? What our models say",
+      "html": "<p>Finnish stocks are not one trade. Across the five large caps we model, our July 2026 fair values give one buy, two holds and two sells, and the split is not random.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our call</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Price</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our fair value</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Implied</th></tr></thead><tbody><<tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>HOLD</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>22.23</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>21.10</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;5.1%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>BUY</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>9.17</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>13.30</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>+45.0%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>19.20</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>17.10</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;10.9%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>10.28</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>9.40</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;8.5%</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem;'>HOLD</td><td style='text-align:right; padding:0.5rem 0.6rem;'>31.89</td><td style='text-align:right; padding:0.5rem 0.6rem;'>32.10</td><td style='text-align:right; padding:0.5rem 0.6rem;'>+0.7%</td></tr></tbody></table><p>All prices and fair values are in euros, from our reports dated 7 July to 24 July 2026. Here is the pattern. Nokia is a sell on an AI-adjacent premium: Network Infrastructure earns a 9.8% margin but trades at 36.0x trailing EBIT, well above the 18.7x that would be justified even if segment EBIT doubled toward EUR 1.5 billion, which leaves a EUR 720 million valuation gap. Kesko is the other sell for an unrelated reason. The market applies one blended 15.8x EV/EBIT multiple across three divisions whose economics differ, and we put the fair blended figure at 14.5x.</p><p>Wärtsilä has come off the sell list. At 18.0x forward EV/EBIT it now trades below its own 19.5x normalised historical average, so the off-grid power premium we objected to has largely come out of the price. UPM moved the other way, from buy to hold, after the pulp spread stalled near EUR 110 per tonne against the EUR 122 per tonne the Fibres allocation needs. The recovery is still plausible. The price already embeds part of it, which is the difference between a buy and a hold.</p><p>That leaves Stora Enso as our one clear buy, at EUR 13.30 against a EUR 9.17 price. The assumption doing the heavy lifting is Consumer Packaging: its adjusted EBIT margin has to recover from 6.2% toward 10.0% as the Oulu site ramps and fixed costs are absorbed. If that ramp slips, the call is wrong. Our clearest opinion on Helsinki right now is that the value sits in unglamorous cash-generative materials and staples, on dividend yields of 4.5% to 5.3%, rather than in the AI-adjacent names.</p>"
+    },
+    {
+      "h2": "How are Finnish dividends and gains taxed for foreign investors?",
+      "html": "<p>Finland withholds tax at source on dividends before they reach a non-resident investor. According to the Finnish Tax Administration (Vero), the standard rate for a non-resident individual is 30%, and dividends on nominee-registered shares whose beneficiary the payer cannot identify are taxed at 35%. For a corporate beneficiary the rate is 20%.</p><p>A tax treaty between Finland and your country of residence usually cuts that rate, commonly to 15% for individuals, but only if you supply the identification and residence documents the payer needs. Since 2021 this runs through the OECD TRACE procedure for nominee-registered listed shares. If too much was withheld, you reclaim the difference from Vero. This is the part most foreign investors get wrong: without correct paperwork you can face the full 30% or 35% and have to claim the rest back later.</p><p>Capital gains on listed Finnish shares are generally taxable in your country of residence rather than in Finland, but that too depends on your treaty. None of this is tax advice. Confirm your own position with the tax authority where you live before you buy.</p>"
+    },
+    {
+      "h2": "What are the risks of investing in Helsinki-listed stocks?",
+      "html": "<p>The first risk is the one many foreign investors underweight: currency. Everything on Nasdaq Helsinki is priced in euros, so a strengthening home currency can erase a euro gain. The second is concentration. This is a small market where the OMXH25 leans on a few large caps, and liquidity in mid-caps is thinner than anything you see in US names. The third is single-name cyclicality. Forestry earnings swing with pulp prices, and industrials swing with the global capex cycle.</p><p>The risk to our own view is more specific. Both of our sell ratings, Nokia and Wärtsilä, rest on treating today's AI and data-centre demand as a cyclical peak. If hyperscaler demand for optical networking and off-grid power turns out to be structural and durable, both sells are wrong and the market's premium is the correct price, not an overpayment. That is the single assumption most likely to sink our Helsinki calls, and it is worth watching the hyperscaler order data before you lean on either rating.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can foreign investors buy Finnish stocks?",
+      "a": "Yes. Any investor can buy Finnish shares through a broker that offers access to Nasdaq Helsinki, where about 140 companies trade in euros. You do not need to be resident in Finland. Shares are usually held in a nominee account, which affects how your dividends are taxed at source."
+    },
+    {
+      "q": "How are Finnish dividends taxed for non-residents?",
+      "a": "The Finnish Tax Administration withholds 30% on dividends to a non-resident individual, or 35% on nominee-registered shares where the beneficiary is unknown. A tax treaty commonly reduces this to 15% if you file the right residence and identity documents; otherwise you reclaim the excess from Vero afterwards."
+    },
+    {
+      "q": "What is the main Finnish stock index?",
+      "a": "The OMX Helsinki 25 (OMXH25) is the benchmark. It tracks the 25 most-traded stocks on Nasdaq Helsinki, weighted by market capitalisation with any single company capped at 10% so that one large name cannot dominate the index. Nokia, UPM and Kesko are among its constituents."
+    },
+    {
+      "q": "Which Finnish stocks does Valuatum rate as buys?",
+      "a": "As of our July 2026 reports, Stora Enso (fair value EUR 13.30) is our only buy among the five OMXH large caps we model. Kesko (EUR 17.10) and Nokia (EUR 9.40) are sells, and UPM (EUR 21.10) and Wärtsilä (EUR 32.10) are holds. Stora Enso's case rests on a Consumer Packaging margin recovery from 6.2% toward 10.0%."
+    },
+    {
+      "q": "Is Helsinki a good market for dividend investors?",
+      "a": "Several large Helsinki names pay well. In our July 2026 models Kesko yields about 5.3%, UPM about 4.7% and Stora Enso about 4.5%. The AI-repriced names yield less: Nokia 2.8% and Wärtsilä 1.6%. So the higher-yielding stocks are the materials and staples rather than the momentum names."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Valuatum UPM HOLD, fair value EUR 21.10 vs EUR 22.23 price, -5.1% (24 July 2026 report)",
+      "source": "report-content/upm-21052026.json"
+    },
+    {
+      "claim": "Valuatum Stora Enso BUY, fair value EUR 13.30 vs EUR 9.17 price, +45.0% (24 July 2026 report)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Valuatum Kesko SELL, fair value EUR 17.10 vs EUR 19.20 price, -10.9% (7 July 2026 report)",
+      "source": "report-content/kesko-07072026.json"
+    },
+    {
+      "claim": "Valuatum Nokia SELL, fair value EUR 9.40 vs EUR 10.28 price, -8.5%; Network Infrastructure 36.0x trailing EBIT vs 18.7x justified (15 July 2026 report)",
+      "source": "report-content/nokia-15072026.json"
+    },
+    {
+      "claim": "Valuatum Wärtsilä HOLD, fair value EUR 32.10 vs EUR 31.89 price, +0.7%; 18.0x forward EV/EBIT (7 July 2026 report)",
+      "source": "report-content/wartsila-07072026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/upm-kymmene-equity-report.html",
+    "/reports/stora-enso-equity-report.html",
+    "/reports/kesko-equity-report.html",
+    "/reports/nokia-equity-report.html",
+    "/reports/wartsila-equity-report.html",
+    "/compare/stora-enso-vs-upm-kymmene-stock-comparison.html",
+    "/blog/can-ai-analyze-stocks.html",
+    "/methodology.html"
+  ],
+  "sources": [
+    {
+      "label": "Finnish Tax Administration (Vero): Paying dividends, interest and royalties to foreign beneficiaries",
+      "url": "https://www.vero.fi/en/individuals/tax-cards-and-tax-returns/moving_away_from_finland/paying_dividends_interest_and_royalties/"
+    },
+    {
+      "label": "Finnish Tax Administration (Vero): Withholding tax at source on dividends paid to nominee-registered shares",
+      "url": "https://www.vero.fi/en/businesses-and-corporations/business-operations/financial-sector/nominee-registered-shares/withholding-tax-at-source-on-dividends-paid-to-nominee-registered-shares/"
+    },
+    {
+      "label": "Nasdaq: OMX Helsinki 25 (OMXH25) index overview",
+      "url": "https://www.nasdaq.com/market-activity/index/omxh25"
+    },
+    {
+      "label": "Nasdaq: Helsinki Stock Exchange",
+      "url": "https://www.nasdaq.com/solutions/european-markets/helsinki"
+    },
+    {
+      "label": "Valuatum UPM-Kymmene Equity Report, 24 July 2026",
+      "url": "/reports/upm-kymmene-equity-report.html"
+    },
+    {
+      "label": "Valuatum Stora Enso Equity Report, 24 July 2026",
+      "url": "/reports/stora-enso-equity-report.html"
+    },
+    {
+      "label": "Valuatum Kesko Equity Report, 7 July 2026",
+      "url": "/reports/kesko-equity-report.html"
+    },
+    {
+      "label": "Valuatum Nokia Equity Report, 15 July 2026",
+      "url": "/reports/nokia-equity-report.html"
+    },
+    {
+      "label": "Valuatum Wärtsilä Equity Report, 7 July 2026",
+      "url": "/reports/wartsila-equity-report.html"
+    }
+  ],
+  "gateScores": {
+    "humanizer": 45,
+    "factcheck": "pass",
+    "onpage": "pass"
+  },
+  "dataProvenance": [
+    {
+      "reportId": "upm-21052026",
+      "slug": "upm-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, pulp spread"
+    },
+    {
+      "reportId": "storaenso-01062026",
+      "slug": "stora-enso-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, Consumer Packaging margin"
+    },
+    {
+      "reportId": "kesko-07072026",
+      "slug": "kesko-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, blended EV/EBIT multiple"
+    },
+    {
+      "reportId": "nokia-15072026",
+      "slug": "nokia-equity-report",
+      "reportDate": "2026-07-15",
+      "used": "rating, target, price, Network Infrastructure multiple and gap"
+    },
+    {
+      "reportId": "wartsila-07072026",
+      "slug": "wartsila-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, EV/EBIT multiple"
+    }
+  ]
+}
