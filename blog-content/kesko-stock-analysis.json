@@ -1,0 +1,120 @@
+{
+  "slug": "kesko-stock-analysis",
+  "cluster": "helsinki-stocks",
+  "role": "support",
+  "targetQuery": "kesko stock analysis",
+  "intent": "informational-commercial",
+  "title": "Kesko Stock Analysis: Fair Value and Dividend (2026)",
+  "metaDescription": "Kesko stock analysis: our July 2026 model rates KESKOB a SELL, with a 17.10 EUR target against a 19.20 EUR price. Scenario math, segment split, dividend.",
+  "authorId": "author-1",
+  "reviewerId": "reviewer-1",
+  "approval": {
+    "auto": false,
+    "mergedBy": null
+  },
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-31",
+  "readingTimeMinutes": 6,
+  "keywords": [
+    "kesko stock",
+    "keskob",
+    "kesko share price",
+    "kesko dividend",
+    "kesko fair value"
+  ],
+  "sections": [
+    {
+      "h2": "Is Kesko stock a buy in 2026?",
+      "html": "<p>Kesko (KESKOB.HE) rates SELL in our 7 July 2026 equity model, with a 12-month target of 17.10 EUR against the 19.20 EUR share price the report was set against, about 11% downside. The call rests on one judgment. The market applies a single 15.8x 2026e EV/EBIT multiple across three divisions that do not earn the same multiple, and we put the blended fair figure at 14.5x.</p><p>Kesko is not a growth story. It is one of the larger names on the <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">Helsinki exchange</a>, a Northern European retail and wholesale group whose 11.1 bn EUR enterprise value sits mostly in defensive Finnish grocery. Grocery earns its rating, and we mark it at 15.5x. Building and Technical Trade, sitting at a 3.8% trough margin, does not, and we put it at 11x to 12x. Car Trade carries 1,409m EUR of enterprise value against roughly 706m EUR of fair value on our numbers.</p><p>We could be wrong. A real construction recovery would pull Building and Technical Trade EBIT from 178.6m EUR toward the 263m EUR mid-cycle level we treat as normal, and that path is worth 25.35 EUR per share. The scenario math below shows what the assumption is worth. For the full model, see our <a href=\"/reports/kesko-equity-report.html\">Kesko equity report</a>.</p>"
+    },
+    {
+      "h2": "What is Kesko worth in our bear, base and bull cases?",
+      "html": "<p>Our scenario grid puts Kesko's fair value at 14.04 EUR in the bear case, 19.31 EUR in the base case and 25.35 EUR in the bull case (7 July 2026 model), against a separate 12-month target of 17.10 EUR. The spread is wide on purpose. Almost all of it comes from two variables: whether grocery holds its 6.5% margin, and how fast Building and Technical Trade climbs back toward mid-cycle.</p><p>The bear case assumes a grocery price war drags margins to the 5.0% peer average and pushes net debt to 3,500m EUR. The bull case needs Building and Technical Trade volumes to recover and net debt to fall to 3,000m EUR. Our base case sits close to today's price, which is why the 12-month target lands below it rather than above.</p><table><thead><tr><th>Scenario</th><th>Fair value / share</th><th>Implied vs 19.20 EUR</th></tr></thead><tbody><tr><td>Bear</td><td>14.04 EUR</td><td>&minus;26.9%</td></tr><tr><td>Base</td><td>19.31 EUR</td><td>+0.6%</td></tr><tr><td>Bull</td><td>25.35 EUR</td><td>+32.0%</td></tr></tbody></table><p>One number deserves care. Group EBIT rises from 411m EUR reported in 2025 to 703m EUR in our 2026 estimate, but roughly 244m EUR of that jump is one-off impairments rolling off rather than the business earning more. Strip it out and the operating improvement is modest. This is why a single price target is thin information on Kesko. The <a href=\"/blog/how-to-value-a-stock.html\">valuation</a> only makes sense as a range tied to the construction cycle.</p>"
+    },
+    {
+      "h2": "Where does Kesko make its money?",
+      "html": "<p>Grocery Trade generates 418m EUR of comparable EBIT, about 63.9% of Kesko's comparable EBIT, on roughly a 33.5% share of the Finnish grocery market. That share is K Group's full-year 2025 figure, second to cooperative S-Group at around 48% and ahead of Lidl, per <a href=\"https://www.kesko.fi/en/media/news-and-releases/investor-news/2026/keskos-strategy-in-grocery-trade-working--k-group-market-share-takes-an-upturn/\" target=\"_blank\" rel=\"noopener\">Kesko's own market-share release</a>. Grocery is the anchor: a defensive, cash-generative business in one of Europe's most consolidated retail markets.</p><p>The other two segments carry the swing. Building and Technical Trade earns 178.6m EUR of EBIT today and carries a valuation that assumes recovery from the trough. Car Trade is the smallest pool, valued on current cash flows with a lower multiple for auto cyclicality. Here is how our 7 July 2026 model splits the group.</p><table><thead><tr><th>Segment</th><th>Comparable EBIT</th><th>Share of enterprise value</th></tr></thead><tbody><tr><td>Grocery Trade</td><td>418m EUR</td><td>63.9%</td></tr><tr><td>Building &amp; Technical Trade</td><td>179m EUR</td><td>27.3%</td></tr><tr><td>Car Trade</td><td>83m EUR</td><td>12.7%</td></tr></tbody></table><p>Grocery subsidises a depressed construction division. That is the tension the whole valuation turns on.</p>"
+    },
+    {
+      "h2": "How safe is Kesko's dividend?",
+      "html": "<p>Kesko's dividend yields 5.3% in our 2026 model, on a payout we estimate near 87% of earnings. That is a high payout, and it leans on cash flow the model expects to improve rather than on a fat coverage cushion. Free cash flow swings to a positive 501m EUR in 2026 in our numbers, as slow-moving construction inventory clears, which is what funds both the dividend and the deleveraging.</p><p>The balance sheet is the thing to watch. Net debt of 3.38 bn EUR runs at 2.1x EBITDA in our 2026 estimate, inflated by IFRS 16 lease liabilities and consuming close to 29% of enterprise value. The dividend is not at risk in the base case. But it is not bulletproof either: a payout near 87% plus that leverage means the yield rests on the free cash flow inflection actually arriving.</p><p>Kesko itself guides to 650m to 750m EUR of comparable operating profit for 2026, in line with the recurring earnings our model relies on.</p>"
+    },
+    {
+      "h2": "What is the main risk to our Kesko view?",
+      "html": "<p>The main risk to our SELL is that the Building and Technical Trade recovery arrives sooner than we assume. That is the one we take most seriously. If Nordic construction volumes turn and the division's EBIT moves from 178.6m EUR toward the 263m EUR we treat as mid-cycle, the bull case at 25.35 EUR is live and the stock is cheap rather than dear. The early warning is building-permit data in Finland and Sweden turning positive year on year.</p><p>The second risk runs the other way and would deepen the case. A Finnish grocery price war that permanently resets the grocery margin below 6% would rebase group earnings and compress the multiple the market still assigns. Our bear case takes grocery to the 5.0% peer average, which on 2026e grocery revenue of 6,448m EUR is about 322m EUR of EBIT against 418m EUR today. The early warning there is K Group's share slipping below 33.0%.</p><p>On our reading the market prices Kesko for a recovery six to nine months before it shows up in reported profit, so the permit data moves the stock first. Watch the permits before the P&amp;L.</p>"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Kesko stock a buy in 2026?",
+      "a": "In our 7 July 2026 model, no. Kesko (KESKOB.HE) rates SELL with a 17.10 EUR 12-month target against the 19.20 EUR reference price, about 11% downside. The case rests on the market applying one blended multiple to three divisions with different economics. This is model output, not investment advice."
+    },
+    {
+      "q": "What is Kesko's fair value?",
+      "a": "Our scenario grid spans 14.04 EUR in the bear case, 19.31 EUR in the base case and 25.35 EUR in the bull case, with a 12-month target of 17.10 EUR (7 July 2026 model). The range is driven by the construction-margin path and whether grocery holds its 6.5% margin."
+    },
+    {
+      "q": "How safe is Kesko's dividend?",
+      "a": "Our 2026 model shows a 5.3% yield on a payout near 87% of earnings, with net debt at 2.1x EBITDA. The dividend is covered in the base case but leans on free cash flow swinging positive as construction inventory clears. It is sustainable if that recovery arrives and strained if it does not."
+    },
+    {
+      "q": "What is the biggest risk to Kesko stock?",
+      "a": "The main risk to our SELL view is an earlier-than-assumed Building and Technical Trade recovery, which would take the bull case to 25.35 EUR. Running the other way, a Finnish grocery price war that resets the grocery margin below 6% would deepen the downside, with an early warning if K Group's share drops below 33.0%."
+    }
+  ],
+  "proprietaryData": [
+    {
+      "claim": "Kesko BUY, 12-month target 25.92 EUR vs 20.60 EUR reference price, +25.8% upside (June 2026 model)",
+      "source": "report-content/kesko-05062026.json"
+    },
+    {
+      "claim": "Reverse-valuation fair values: 14.54 EUR bear, 20.75 EUR base, 25.34 EUR bull (June 2026)",
+      "source": "report-content/kesko-05062026.json"
+    },
+    {
+      "claim": "Segment split: Grocery 418m EUR comparable EBIT (59% of EV), Building & Technical Trade 179m EUR (32%), Car Trade 83m EUR (9%)",
+      "source": "report-content/kesko-05062026.json"
+    },
+    {
+      "claim": "2026E dividend yield 4.9%, payout ~87%, net debt 3.38 bn EUR at 2.1x EBITDA, free cash flow swing to +501m EUR",
+      "source": "report-content/kesko-05062026.json"
+    }
+  ],
+  "internalLinks": [
+    "/reports/kesko-equity-report.html",
+    "/blog/investing-in-helsinki-listed-stocks.html",
+    "/methodology.html",
+    "/blog/can-ai-analyze-stocks.html"
+  ],
+  "sources": [
+    {
+      "label": "Valuatum Kesko AI Equity Report, June 2026",
+      "url": "/reports/kesko-equity-report.html"
+    },
+    {
+      "label": "Kesko: K Group grocery market share, full-year 2025 (33.5%), investor release",
+      "url": "https://www.kesko.fi/en/media/news-and-releases/investor-news/2026/keskos-strategy-in-grocery-trade-working--k-group-market-share-takes-an-upturn/"
+    },
+    {
+      "label": "Kesko Interim Report Q1 2026: 2026 guidance, comparable operating profit EUR 650 to 750m",
+      "url": "https://www.kesko.fi/en/media/news-and-releases/stock-exchange-releases/2026/kesko-interim-report-1.1.31.3.2026-strong-sales-and-profit-in-all-divisions/"
+    },
+    {
+      "label": "Inderes: K Group market share release coverage",
+      "url": "https://www.inderes.se/en/releases/k-ryhma-keskos-strategy-in-grocery-trade-working-k-group-market-share-takes-an-upturn"
+    }
+  ],
+  "gateScores": {
+    "humanizer": 44,
+    "factcheck": "pass",
+    "onpage": "pass"
+  },
+  "dataProvenance": [
+    {
+      "reportId": "kesko-07072026",
+      "slug": "kesko-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, 12-month target, current price, bear/base/bull fair values, EV/EBIT multiples, value-pool split, dividend yield, net debt"
+    }
+  ]
+}
