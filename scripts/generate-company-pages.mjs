@@ -7,16 +7,16 @@ import { normalizeCompanyData, selectPrimaryModel } from './company-pages/normal
 import { getCompanyProfile } from './company-pages/profile-provider.mjs';
 import { publishCompanyDiscovery } from './company-pages/publish-company-page.mjs';
 import { isFinancialCompany, pageSlug, renderCompanyPage } from './company-pages/render-company-page.mjs';
+import { fetchLiveCatalog } from './live-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DEFAULT_REPORT_CATALOG_PATH = path.join(ROOT, 'report-content', '_catalog.json');
 const DEFAULT_COMPANY_CATALOG_PATH = path.join(ROOT, 'js', 'companyPagesData.js');
 const DEFAULT_SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
 
 export async function generateCompanyPages(options) {
   const outputDir = options.outputDir || path.join(ROOT, 'reports');
   const profileDir = options.profileDir || path.join(ROOT, 'company-content', 'profiles');
-  const readyReports = options.readyReports || await loadReadyReports(options.reportCatalogPath || DEFAULT_REPORT_CATALOG_PATH);
+  const readyReports = options.readyReports || await loadReadyReports();
   const freshness = options.freshness || (options.freshnessPath ? await loadModelFreshness(options.freshnessPath) : new Map());
   const client = options.client || new WisdomClient({
     baseUrl: options.apiBase || process.env.WISDOM_API_BASE || 'https://wisdom.valuatum.com/rest',
@@ -117,19 +117,15 @@ function uniqueTickers(tickers) {
   return [...new Set((tickers || []).map(normalizeTicker).filter(Boolean))];
 }
 
-async function loadReadyReports(catalogPath) {
-  try {
-    const raw = await readReportCatalog(catalogPath);
-    if (!Array.isArray(raw)) return [];
-    return raw
-      .filter(report => report && report.availability !== 'hidden')
-      .filter(report => report.pdfUrl || report.fileName)
-      .filter(report => report.reportType !== 'fresh')
-      .filter(report => Number(report.price) > 0 || report.isFree === true)
-      .sort((a, b) => String(b.reportDate || '').localeCompare(String(a.reportDate || '')));
-  } catch {
-    return [];
-  }
+// A fetch failure throws: generating pages without ready-report sections
+// because the catalog was unreachable must stop the build, not degrade it.
+async function loadReadyReports() {
+  return (await fetchLiveCatalog())
+    .filter(report => report && report.availability !== 'hidden')
+    .filter(report => report.pdfUrl || report.fileName)
+    .filter(report => report.reportType !== 'fresh')
+    .filter(report => Number(report.price) > 0 || report.isFree === true)
+    .sort((a, b) => String(b.reportDate || '').localeCompare(String(a.reportDate || '')));
 }
 
 // Reads a tab-separated export with TICKER and model_updated columns and returns a
@@ -152,10 +148,6 @@ async function loadModelFreshness(freshnessPath) {
     if (ticker && /^\d{4}-\d{2}-\d{2}$/.test(date)) freshness.set(ticker, date);
   }
   return freshness;
-}
-
-async function readReportCatalog(catalogPath) {
-  return JSON.parse(await fs.readFile(catalogPath, 'utf8'));
 }
 
 function findReadyReport(company, readyReports) {

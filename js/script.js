@@ -645,7 +645,11 @@ function bindReadyReportCheckoutLink(link) {
         ? 'Download free report'
         : 'Buy ready report — €' + Number(report.price || 0).toFixed(2);
       var dateLabel = report.reportDateLabel || report.reportDate || '';
-      var companyName = generateBtn.getAttribute('data-company') || ticker;
+      // Prefer the short display name from the page heading ("Nokia"), as the
+      // generator does; data-company carries the full legal name ("Nokia Oyj").
+      var heading = document.querySelector('.company-name');
+      var companyName = (heading && heading.textContent.split(' (')[0].trim())
+        || generateBtn.getAttribute('data-company') || ticker;
 
       function makeCtaLink(className) {
         var a = document.createElement('a');
@@ -688,8 +692,27 @@ function bindReadyReportCheckoutLink(link) {
           section.querySelector('div > div').firstChild
         );
         generateSection.parentNode.insertBefore(section, generateSection);
+        // Pages generated with a ready report place sources before the
+        // ready-report box (and the two-column break lands on the box), so
+        // mirror that order to render identically to a baked page.
+        var sources = document.getElementById('sources');
+        if (sources) section.parentNode.insertBefore(sources, section);
         var content = document.querySelector('.report-full-content');
         if (content) content.setAttribute('data-ready-report', 'true');
+      }
+
+      // The baked overview ends with an availability sentence; swap the
+      // "no report yet" copy for the same sentence a baked page would carry.
+      var overviewText = document.querySelector('#overview p');
+      if (overviewText) {
+        overviewText.textContent = overviewText.textContent.replace(
+          /(?:^|(\.\s+))([^.]+?) is covered by Valuatum but does not yet have a published AI equity report\. Generate a fresh report to get [\s\S]*$/,
+          function (m, sep, name) {
+            return (sep || '') + 'A completed ' + name + ' AI equity report is available from ' + dateLabel + '; you can ' +
+              (isFree ? 'download the ready PDF for free' : 'buy the ready PDF') +
+              ' or generate a fresh report with the latest available data.';
+          }
+        );
       }
     })
     .catch(function () { /* catalog unavailable — page just stays as built */ });

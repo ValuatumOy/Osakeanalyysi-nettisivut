@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchLiveCatalog } from './live-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -32,11 +33,9 @@ const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').t
 const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
-function loadCatalog() {
-  const snap = path.join(CONTENT_DIR, '_catalog.json');
-  const cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
+async function loadCatalog() {
   const byId = {};
-  for (const r of cat) byId[r.id] = r;
+  for (const r of await fetchLiveCatalog()) byId[r.id] = r;
   return byId;
 }
 
@@ -405,7 +404,7 @@ ${footerHtml()}
 }
 
 // ── run ───────────────────────────────────────────────────────────────────────
-const catalog = loadCatalog();
+const catalog = await loadCatalog();
 const docs = [];
 for (const [id, cat] of Object.entries(catalog)) {
   if (EXCLUDE.has(id)) continue;

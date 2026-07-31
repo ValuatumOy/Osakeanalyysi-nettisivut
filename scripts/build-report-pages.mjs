@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// Generates static, indexable per-report landing pages from report-content/*.json + report-content/_catalog.json.
+// Generates static, indexable per-report landing pages from report-content/*.json + the live catalog API.
 // Free reports expose the full analysis (max SEO surface). Paid reports expose a citable teaser + a buy gate.
 // Run: node scripts/build-report-pages.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchLiveCatalog } from './live-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -27,17 +28,9 @@ const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A'
 const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
-function loadCatalog() {
-  // Source of truth: snapshot of the live catalog API (report-content/_catalog.json).
-  // Missing snapshot is a hard error — silently building pages from stale data is
-  // the failure mode that let the site serve an outdated catalog for weeks.
-  const snap = path.join(CONTENT_DIR, '_catalog.json');
-  if (!fs.existsSync(snap)) {
-    throw new Error(`Catalog snapshot missing: ${snap}. Refresh it from ${'https://files.valuatum.com/api/reports'}.`);
-  }
-  const cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
+async function loadCatalog() {
   const byId = {};
-  for (const r of cat) byId[r.id] = r;
+  for (const r of await fetchLiveCatalog()) byId[r.id] = r;
   return byId;
 }
 
@@ -654,7 +647,7 @@ ${footerHtml()}
 }
 
 // ── run ─────────────────────────────────────────────────────────────────────
-const catalog = loadCatalog();
+const catalog = await loadCatalog();
 // Generate one page per LIVE catalog entry that has extracted content.
 const docs = [];
 for (const [id, cat] of Object.entries(catalog)) {
