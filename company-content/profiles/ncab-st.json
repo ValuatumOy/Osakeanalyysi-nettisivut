@@ -1,0 +1,9 @@
+{
+  "ticker": "NCAB.ST",
+  "companyName": "NCAB Group AB (publ)",
+  "profile": "NCAB Group is a global full-service supplier of printed circuit boards. It sources PCBs from selected manufacturers, mainly in Asia, and manages design support, prototyping, production, quality control and final delivery for customers. The company serves OEM, ODM and EMS clients across industries including automotive, industrial, medical, telecom, defense and other electronics applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:47.990Z"
+}

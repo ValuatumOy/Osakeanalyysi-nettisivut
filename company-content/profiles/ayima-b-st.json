@@ -1,0 +1,9 @@
+{
+  "ticker": "AYIMA-B.ST",
+  "companyName": "Ayima Group AB (publ)",
+  "profile": "Ayima Group AB is a digital marketing and search consultancy that provides enterprise SEO, AI visibility optimization, content strategy, authority link building, and related analytics services. The company helps clients improve organic search performance and online visibility across search engines and AI-driven discovery platforms, with work centered on traffic growth and revenue from digital channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:46:31.464Z"
+}

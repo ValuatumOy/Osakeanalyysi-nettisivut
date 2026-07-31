@@ -1,0 +1,9 @@
+{
+  "ticker": "NEO-B.ST",
+  "companyName": "Neovici Holding AB ser. B",
+  "profile": "Neovici Holding AB develops and provides automated financial services through its SaaS platform Cosmoz. The company uses AI-driven automation to handle and process large transaction flows, with applications in retail, energy and telecom. It serves customers in the Nordics, Latin America and Asia, and its value proposition centers on reducing manual work and improving decision processes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:10.360Z"
+}

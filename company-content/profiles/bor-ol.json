@@ -1,0 +1,9 @@
+{
+  "ticker": "BOR.OL",
+  "companyName": "Borgestad ASA",
+  "profile": "Borgestad ASA is an investment company with operations centered on two areas: industrial holdings through its majority-owned Höganäs Borgestad group and real estate through full ownership of the Agora Bytom shopping mall in Poland. Höganäs Borgestad supplies refractory products, installations and turnkey solutions for industrial customers, while the property business provides rental and development income.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:41:10.814Z"
+}

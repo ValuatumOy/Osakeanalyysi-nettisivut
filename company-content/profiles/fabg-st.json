@@ -1,0 +1,9 @@
+{
+  "ticker": "FABG.ST",
+  "companyName": "Fabege AB (publ)",
+  "profile": "Fabege AB is a Swedish property company focused on developing, owning and managing commercial real estate and selected housing in the Stockholm region. Its portfolio is concentrated in well-located submarkets such as Arenastaden, Solna Business Park, Stockholm city, Hammarby Sjöstad and Flemingsberg. Value is created through asset management, property refinement, project development and transactions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:57:08.317Z"
+}

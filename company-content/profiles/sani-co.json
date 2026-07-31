@@ -1,0 +1,9 @@
+{
+  "ticker": "SANI.CO",
+  "companyName": "Sanistål A/S",
+  "profile": "Sanistål A/S is a Danish distributor serving industry, construction and related trades with a broad range of products and services. Its offering includes plumbing, drainage, tools, technical and electrical products, steel and metals, fastening systems, consumables and personal protective equipment. The company also provides logistics, digital ordering solutions and customer support across a nationwide network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:46:46.661Z"
+}

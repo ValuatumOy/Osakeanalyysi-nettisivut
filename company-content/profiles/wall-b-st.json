@@ -1,0 +1,9 @@
+{
+  "ticker": "WALL-B.ST",
+  "companyName": "Wallenstam AB (publ)",
+  "profile": "Wallenstam AB is a Swedish property company that develops, owns and manages residential and commercial properties in Stockholm, Gothenburg and Uppsala. Its portfolio includes rental apartments, offices and retail premises, with property development, leasing, asset management and construction driving value through long-term ownership and operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:03.774Z"
+}

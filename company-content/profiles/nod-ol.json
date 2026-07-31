@@ -1,0 +1,9 @@
+{
+  "ticker": "NOD.OL",
+  "companyName": "Nordic Semiconductor ASA",
+  "profile": "Nordic Semiconductor ASA designs and sells low-power wireless connectivity solutions for connected devices. Its portfolio includes Bluetooth Low Energy, Wi-Fi, cellular IoT, Thread, Zigbee and DECT NR+, along with software, development tools, cloud services and power management products. Customers use these technologies in consumer, healthcare and industrial applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:39:46.580Z"
+}

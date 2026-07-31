@@ -1,0 +1,9 @@
+{
+  "ticker": "ADDERA.ST",
+  "companyName": "AdderaCare AB",
+  "profile": "AdderaCare AB is a Swedish group active in the assistive technology sector. Through its subsidiaries, it develops, markets and sells products and solutions for people with functional impairments, including ramps, adapted lifts, vehicle solutions and other assistive devices. The group also provides sensory-stimulation tools and motor skills training, with growth driven by acquisitions and operating subsidiaries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:29:09.190Z"
+}

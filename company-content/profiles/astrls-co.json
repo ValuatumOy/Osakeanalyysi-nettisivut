@@ -1,0 +1,9 @@
+{
+  "ticker": "ASTRLS.CO",
+  "companyName": "Astralis A/S",
+  "profile": "Astralis A/S is a Danish esports organization that competes in Counter-Strike 2 at the international level. The company operates professional teams, manages brand and media activities, and works with commercial partners to monetize audience reach, live competition, and fan engagement through its digital and event-driven platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:51:33.252Z"
+}

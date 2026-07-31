@@ -1,0 +1,9 @@
+{
+  "ticker": "LAUR.ST",
+  "companyName": "Lauritz.com Group A/S",
+  "profile": "Lauritz.com Group A/S operates an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offers valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver is transaction fees from auction turnover.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:47:34.895Z"
+}

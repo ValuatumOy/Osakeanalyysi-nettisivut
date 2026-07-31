@@ -1,0 +1,9 @@
+{
+  "ticker": "ASSA-B.ST",
+  "companyName": "ASSA ABLOY AB (publ)",
+  "profile": "ASSA ABLOY is a global provider of access solutions for homes, businesses and institutions. Its portfolio includes mechanical and smart locks, door hardware, security doors, access control systems, identification products and entrance automation. The group also serves hospitality and other secure environments through products and services for physical and digital access management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:31:15.510Z"
+}

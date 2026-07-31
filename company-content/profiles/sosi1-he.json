@@ -1,0 +1,9 @@
+{
+  "ticker": "SOSI1.HE",
+  "companyName": "Sotkamo Silver AB",
+  "profile": "Sotkamo Silver AB is a mining and ore prospecting company focused on developing mineral deposits in the Kainuu region of Finland. Its main asset is the Silver Mine in Sotkamo, which produces silver concentrate together with gold, zinc and lead. The company also holds exploration rights near the mine.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:47:26.376Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CBRAIN.CO",
+  "companyName": "cBrain A/S",
+  "profile": "cBrain A/S develops and sells software for public-sector organizations, centered on its F2 platform for digital government workflows. The company’s software is used to digitize and manage processes such as permitting, inspections, grants, and citizen services. It also provides implementation and support for government customers, with revenue driven by software sales and related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:30:44.355Z"
+}

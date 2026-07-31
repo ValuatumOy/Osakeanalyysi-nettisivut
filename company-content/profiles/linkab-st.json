@@ -1,0 +1,9 @@
+{
+  "ticker": "LINKAB.ST",
+  "companyName": "Link Prop Investment AB (publ)",
+  "profile": "Link Prop Investment AB (publ) is a Swedish real estate company that indirectly owns, manages and leases the property Linköping Idédebatten 3 in Mjärdevi Science Park, Linköping. The building comprises about 25,000 square metres of mainly research, laboratory and office space, with tenants from the IT and manufacturing sectors. Property management is handled through Wilfast.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:39:05.850Z"
+}

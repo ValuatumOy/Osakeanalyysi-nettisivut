@@ -1,0 +1,9 @@
+{
+  "ticker": "PNDORA.CO",
+  "companyName": "Pandora A/S",
+  "profile": "Pandora A/S designs, crafts, and markets accessible luxury jewellery, with a focus on bracelets, charms, rings, necklaces, and earrings. The company sells through its own stores, online channels, and other points of sale in more than 100 countries. Its main value drivers are brand strength, product design, retail execution, and global distribution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:21:40.888Z"
+}

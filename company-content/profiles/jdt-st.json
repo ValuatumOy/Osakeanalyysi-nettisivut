@@ -1,0 +1,9 @@
+{
+  "ticker": "JDT.ST",
+  "companyName": "JonDeTech Sensors AB (publ)",
+  "profile": "JonDeTech Sensors AB develops and sells ultra-thin infrared sensors and sensor applications based on nanotechnology. Its products include proximity, temperature and heat-flow sensing solutions, along with software and algorithms for integration into customer devices. The company serves applications in consumer electronics, medical technology, industrial uses and other connected products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:29:52.707Z"
+}

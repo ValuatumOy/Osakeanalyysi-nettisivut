@@ -1,0 +1,9 @@
+{
+  "ticker": "VOLUE.OL",
+  "companyName": "Volue ASA",
+  "profile": "Volue ASA provides software, market data and services for the energy and power-grid sectors. Its platforms support planning, optimisation, trading, forecasting and asset management across electricity production, distribution and consumption. The company serves utilities, grid operators, energy traders and other customers with tools designed to improve operational efficiency and market execution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:38:22.558Z"
+}

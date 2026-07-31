@@ -1,0 +1,9 @@
+{
+  "ticker": "MANTEX.ST",
+  "companyName": "Mantex AB (publ)",
+  "profile": "Mantex AB (publ) develops and sells X-ray-based measurement systems and software for analyzing wood-based raw materials and biomass. Its main products include the Biomass Analyzer and FlowScanner, used to measure moisture, ash content, and material quality for customers in the pulp and paper, bioenergy, and pellet industries. The company has also shifted focus toward its own Biomass Analyzer.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:44:58.153Z"
+}

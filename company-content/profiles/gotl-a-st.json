@@ -1,0 +1,9 @@
+{
+  "ticker": "GOTL-A.ST",
+  "companyName": "Rederiaktiebolaget Gotland (publ)",
+  "profile": "Rederiaktiebolaget Gotland operates passenger and freight ferry services, mainly connecting Gotland with mainland Sweden and also serving routes between Stockholm, Mariehamn, Oslo and Copenhagen. The group also develops maritime transport solutions, energy and ship technology, and owns hotels, properties and destination-related businesses that support travel and regional development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:01.271Z"
+}

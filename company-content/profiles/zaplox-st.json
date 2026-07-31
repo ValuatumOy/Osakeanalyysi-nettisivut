@@ -1,0 +1,9 @@
+{
+  "ticker": "ZAPLOX.ST",
+  "companyName": "Zaplox AB",
+  "profile": "Zaplox AB develops software for the hospitality industry, providing digital guest journey tools that support mobile and web check-in and check-out, payment handling, room access through mobile and wallet keys, and guest communication. Its products include a web app, mobile app, kiosk, and middleware that integrate with hotel property and lock systems.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:17:37.164Z"
+}

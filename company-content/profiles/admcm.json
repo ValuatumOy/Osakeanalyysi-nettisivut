@@ -1,0 +1,9 @@
+{
+  "ticker": "ADMCM",
+  "companyName": "Admicom",
+  "profile": "Admicom provides software solutions for construction and building services companies, covering enterprise resource planning, cost estimation, scheduling, project management, site documentation, invoicing and accounting. Its cloud-based products help customers digitalise operations across the construction value chain, and the group also offers industry-focused accounting and training services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:40:10.429Z"
+}

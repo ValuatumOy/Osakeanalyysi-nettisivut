@@ -1,0 +1,9 @@
+{
+  "ticker": "CHRO.ST",
+  "companyName": "ChromoGenics AB",
+  "profile": "ChromoGenics develops and sells smart glass solutions for buildings, centered on electrochromic ConverLight products. Its portfolio includes dynamic glass with controllable light and heat transmission, static solar-control glass, and solar-cell facade panels. The company also manufactures electrochromic foil and related components in Uppsala for use in laminated glass and facade applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:13:38.406Z"
+}

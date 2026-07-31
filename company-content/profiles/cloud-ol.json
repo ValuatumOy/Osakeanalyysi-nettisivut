@@ -1,0 +1,9 @@
+{
+  "ticker": "CLOUD.OL",
+  "companyName": "Cloudberry Clean Energy ASA",
+  "profile": "Cloudberry Clean Energy ASA is a Nordic renewable energy company that develops, owns and operates hydropower plants, wind farms, solar projects and battery storage assets. Its business model spans project development, active ownership and asset management, with operations in Norway, Sweden and Denmark and revenue tied to electricity production and portfolio optimization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:50:34.476Z"
+}

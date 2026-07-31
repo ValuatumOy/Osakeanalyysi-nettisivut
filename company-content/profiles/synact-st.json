@@ -1,0 +1,9 @@
+{
+  "ticker": "SYNACT.ST",
+  "companyName": "SynAct Pharma AB",
+  "profile": "SynAct Pharma AB is a clinical-stage biotechnology company developing treatments that aim to resolve inflammation rather than suppress the immune system. Its lead candidate, resomelagon (AP1189), is an oral melanocortin agonist in clinical development, alongside injectable peptide compounds. The company focuses on inflammatory and autoimmune diseases, including rheumatoid arthritis, and host-directed treatment in viral infections.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:28.915Z"
+}

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -56,7 +56,7 @@
             <span class="search-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
-            <input type="text" class="search-input" id="mainSearchInput" placeholder="Company name or ticker, e.g. Tesla, UPM.HE, Nordea…" autocomplete="off" aria-label="Search company">
+            <input type="text" class="search-input" id="mainSearchInput" placeholder="Company name or ticker, e.g. Tesla, UPM.HE, Fortum…" autocomplete="off" aria-label="Search company">
             <button class="search-btn" type="button">Generate report</button>
           </div>
           <div class="search-autocomplete" role="listbox"></div>
@@ -65,7 +65,7 @@
           <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.35); margin-right:0.25rem; padding-top:0.1rem;">Try:</span>
           <button onclick="quickSearch('Tesla')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Tesla</button>
           <button onclick="quickSearch('UPM')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">UPM</button>
-          <button onclick="quickSearch('Nordea')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Nordea</button>
+          <button onclick="quickSearch('Fortum')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Fortum</button>
           <button onclick="quickSearch('Apple')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Apple</button>
           <button onclick="quickSearch('NVIDIA')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">NVIDIA</button>
           <button onclick="quickSearch('KONE')" style="font-size:var(--text-xs); color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.25em 0.8em; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">KONE</button>
@@ -98,11 +98,50 @@
     </div>
   </main>
 
-  <footer class="footer">
+    <footer class="footer">
     <div class="container">
-      <div class="footer-bottom" style="border-top:none;">
-        <span class="footer-copyright">© 2026 Valuatum Oy</span>
-        <span class="footer-disclaimer">AI-generated research. Not investment advice. <a href="disclaimer.html" style="color:rgba(255,255,255,0.4);">Disclaimer</a></span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+            <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+            <div class="nav-logo-text">
+              <span class="nav-logo-wordmark">Valuatum</span>
+              <span class="nav-logo-sub">AI Equity Reports</span>
+            </div>
+          </a>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
+        </div>
+        <div>
+          <div class="footer-col-label">Reports</div>
+          <div class="footer-links">
+            <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#free" class="footer-link">Free samples</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/pricing.html" class="footer-link">Pricing</a>
+            <a href="/methodology.html" class="footer-link">Methodology</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Company</div>
+          <div class="footer-links">
+            <a href="/about.html" class="footer-link">About Valuatum</a>
+            <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Legal</div>
+          <div class="footer-links">
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="/disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice. Past performance is not indicative of future results.</span>
       </div>
     </div>
   </footer>

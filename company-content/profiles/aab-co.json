@@ -1,0 +1,9 @@
+{
+  "ticker": "AAB.CO",
+  "companyName": "Aalborg Boldspilklub A/S",
+  "profile": "Aalborg Boldspilklub A/S is a Danish listed football club based in Aalborg. Its activities center on operating the first team and AaB Akademiet, while generating revenue from broadcasting, sponsorship, matchday income, and player transfers. The club also manages its commercial platform and brand around professional football and talent development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:39:41.850Z"
+}

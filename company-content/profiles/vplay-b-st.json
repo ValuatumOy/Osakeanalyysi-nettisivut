@@ -1,0 +1,9 @@
+{
+  "ticker": "VPLAY-B.ST",
+  "companyName": "Viaplay Group AB (publ)",
+  "profile": "Viaplay Group AB provides streaming services, TV channels, and commercial radio, with operations focused on the Nordics and the Netherlands. Its offering includes live sports, films, series, documentaries, and music, supported by the Viaplay Select content concept and, in part, the Allente TV and broadband business. Revenue is driven by subscriptions, advertising, and content distribution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:57.764Z"
+}

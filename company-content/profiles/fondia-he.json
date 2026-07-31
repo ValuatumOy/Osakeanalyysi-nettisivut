@@ -1,0 +1,9 @@
+{
+  "ticker": "FONDIA.HE",
+  "companyName": "Fondia Oyj",
+  "profile": "Fondia Oyj is a Nordic business law firm that provides companies with a full range of legal services, including day-to-day operational support, transactional advice, dispute resolution, corporate law, and change projects. It also offers its Legal Department as a Service (LDaaS) model and other recurring legal services through teams operating in Finland, Sweden, Estonia and Lithuania.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:58:46.622Z"
+}

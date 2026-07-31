@@ -1,0 +1,9 @@
+{
+  "ticker": "BILOT.HE",
+  "companyName": "Bilot Oyj",
+  "profile": "Bilot Oyj was a Finnish software and IT services company that helped customers develop digital customer experiences and related business processes. Its work focused on enterprise software platforms, integration, customer experience, sales and marketing tools, and data and analytics services. In July 2022, Bilot merged with Vincit and continued under the Vincit name.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:56:20.834Z"
+}

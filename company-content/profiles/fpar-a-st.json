@@ -1,0 +1,9 @@
+{
+  "ticker": "FPAR-A.ST",
+  "companyName": "FastPartner AB (publ)",
+  "profile": "FastPartner AB is a listed Swedish property company that owns, manages and develops commercial real estate in major population centers, including Stockholm, the Mälardalen region, Gothenburg, Malmö and Uppsala. Its portfolio serves private businesses and public-sector tenants with functional premises, and its value drivers are rental income, property management and long-term development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:58:54.746Z"
+}

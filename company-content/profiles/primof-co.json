@@ -1,0 +1,9 @@
+{
+  "ticker": "PRIMOF.CO",
+  "companyName": "Prime Office A/S",
+  "profile": "Prime Office A/S is a Danish listed real estate company that invests primarily in centrally located residential, office and commercial properties, mainly in Germany. Its portfolio combines rental income from housing with office and commercial assets, and the company manages its property investments through acquisitions, ownership and ongoing asset administration.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:30:53.406Z"
+}

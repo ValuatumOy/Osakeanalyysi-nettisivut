@@ -1,0 +1,9 @@
+{
+  "ticker": "ORTHEX.HE",
+  "companyName": "Orthex Oyj",
+  "profile": "Orthex Oyj is a Nordic houseware company that manufactures and sells household products for storage, kitchen, home and garden use. Its main brands include SmartStore, GastroMax and Orthex. The company focuses on practical, durable products and on sustainability initiatives such as increasing the use of recycled and renewable raw materials.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:51:57.638Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SITOWS.HE",
+  "companyName": "Sitowise Group Oyj",
+  "profile": "Sitowise Group Oyj is a Nordic technical consulting and digital solutions company operating in Finland and Sweden. It provides services in buildings, infrastructure and digital solutions, including engineering, HVAC design, architecture, construction contracting, geospatial solutions, transport planning and environmental studies. The group serves built environment, forest and natural resources customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:27:50.083Z"
+}

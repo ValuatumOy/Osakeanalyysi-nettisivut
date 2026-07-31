@@ -1,0 +1,9 @@
+{
+  "ticker": "OUT1V.HE",
+  "companyName": "Outokumpu Oyj",
+  "profile": "Outokumpu is a stainless steel company with operations in Europe, the Americas and Ferrochrome. It processes recycled metals into stainless steel products and ferrochrome, supplying coil, strip, sheet, plate and related materials for industrial customers. The group also supports customers with lower-carbon stainless steel solutions and has launched a new growth-focused strategy, EVOLVE.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:53:10.055Z"
+}

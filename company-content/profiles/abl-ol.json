@@ -1,0 +1,9 @@
+{
+  "ticker": "ABL.OL",
+  "companyName": "ABL Group ASA",
+  "profile": "ABL Group ASA is a global independent consultancy providing energy, marine, engineering and digital services to clients in renewables, maritime and oil and gas. Its work includes advisory, survey, assurance, risk management and engineering support, delivered through brands such as ABL, OWC, Longitude and AGR across international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:41:42.477Z"
+}

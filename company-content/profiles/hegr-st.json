@@ -1,0 +1,9 @@
+{
+  "ticker": "HEGR.ST",
+  "companyName": "Hedera Group AB (publ)",
+  "profile": "Hedera Group AB is a Swedish staffing and recruitment group focused on healthcare and care services. Through subsidiaries including Hedera Doctor & Nurse, Hedera Assistans and Hedera Life Science, it provides staffing, recruitment and related services to private and public customers nationwide, with revenue driven by flexible workforce solutions in healthcare and social care.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:14:09.137Z"
+}

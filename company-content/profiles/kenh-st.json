@@ -1,0 +1,9 @@
+{
+  "ticker": "KENH.ST",
+  "companyName": "Kentima Holding AB (publ)",
+  "profile": "Kentima Holding develops, manufactures, and sells software and hardware for the automation and security markets. Its main offerings include WideQuick HMI/SCADA software and related operator panels, industrial computers, and Ethiris video management and surveillance solutions. The company sells primarily through system integrators and serves applications in process control, building automation, and security monitoring.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:32:47.109Z"
+}

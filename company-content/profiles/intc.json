@@ -1,0 +1,9 @@
+{
+  "ticker": "INTC",
+  "companyName": "Intel",
+  "profile": "Intel is a semiconductor designer and manufacturer focused on client computing, data center processors, artificial intelligence accelerators, networking products and foundry manufacturing. The company sells processors and platforms for PCs, servers, cloud infrastructure and edge devices, while investing in advanced process technology and external foundry services through Intel Foundry.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

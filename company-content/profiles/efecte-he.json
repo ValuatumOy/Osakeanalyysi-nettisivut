@@ -1,0 +1,9 @@
+{
+  "ticker": "EFECTE.HE",
+  "companyName": "Efecte Oy",
+  "profile": "Efecte provides cloud-based service management software and related consulting and support. Its platform is used for IT service management, ticketing, employee and customer service workflows, and identity governance and administration. The company sells SaaS solutions that help organizations automate processes, manage access rights, and run service operations more efficiently.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:42:05.737Z"
+}

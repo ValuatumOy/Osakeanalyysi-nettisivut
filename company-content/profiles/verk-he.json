@@ -1,0 +1,9 @@
+{
+  "ticker": "VERK.HE",
+  "companyName": "Verkkokauppa.com",
+  "profile": "Verkkokauppa.com is a Finnish omnichannel retailer focused on consumer electronics, IT products, home and leisure goods, toys, games, sports, and baby products. It sells online and through four megastores, and also offers installation and related services. The company relies on price competitiveness, logistics, and broad assortment as its main value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:55:33.670Z"
+}

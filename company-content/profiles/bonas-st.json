@@ -1,0 +1,9 @@
+{
+  "ticker": "BONAS.ST",
+  "companyName": "Bonäsudden Holding AB (publ)",
+  "profile": "Bonäsudden Holding AB (publ) develops and manages residential properties, public-service premises and commercial space in Sweden. Its activities center on long-term ownership, property management and asset development, with rental income as the main revenue source. The company also focuses on maintaining stable operations and improving the quality of its properties and tenant environment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:35:25.949Z"
+}

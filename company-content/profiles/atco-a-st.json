@@ -1,0 +1,9 @@
+{
+  "ticker": "ATCO-A.ST",
+  "companyName": "Atlas Copco AB",
+  "profile": "Atlas Copco AB is a Swedish industrial group that develops and sells compressors, vacuum solutions, industrial power tools, assembly systems, and power and flow equipment. It serves customers through products, services, and aftermarket support across the manufacturing, infrastructure, and process industries, with operations organized around four business areas.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:47:19.897Z"
+}

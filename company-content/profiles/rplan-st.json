@@ -1,0 +1,9 @@
+{
+  "ticker": "RPLAN.ST",
+  "companyName": "Ranplan Group AB",
+  "profile": "Ranplan Group AB develops and licenses software for planning, designing and optimizing in-building and urban outdoor wireless networks. Its platforms support radio propagation analysis, 3D simulation, site surveys, and network visualization for technologies including 4G, 5G, Wi-Fi, IoT, public safety, and private wireless systems. The company sells through software licenses and related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:15:49.734Z"
+}

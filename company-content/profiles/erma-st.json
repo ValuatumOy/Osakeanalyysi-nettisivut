@@ -1,0 +1,9 @@
+{
+  "ticker": "ERMA.ST",
+  "companyName": "Enorama Pharma AB (publ)",
+  "profile": "Enorama Pharma AB is a Swedish pharmaceutical company focused on developing, manufacturing and commercializing consumer-friendly oral nicotine products. Its portfolio includes nicotine pouches under the NIC-S brand and nicotine chewing gum, sold through own-brand and private-label arrangements. The company also has been exploring a divestment of its nicotine replacement chewing gum business to sharpen focus.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:54:05.548Z"
+}

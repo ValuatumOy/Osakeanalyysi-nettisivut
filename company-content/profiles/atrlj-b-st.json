@@ -1,0 +1,9 @@
+{
+  "ticker": "ATRLJ-B.ST",
+  "companyName": "Atrium Ljungberg AB (publ)",
+  "profile": "Atrium Ljungberg is one of Sweden’s largest listed property companies. It owns, develops and manages commercial and mixed-use properties in Stockholm, Uppsala, Gothenburg and Malmö, with offices, retail, residential units and community services such as culture, healthcare and education. The company’s value drivers are long-term ownership, active management and project development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:33:17.702Z"
+}

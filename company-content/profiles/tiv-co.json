@@ -1,0 +1,9 @@
+{
+  "ticker": "TIV.CO",
+  "companyName": "Tivoli A/S",
+  "profile": "Tivoli A/S operates Tivoli Gardens in Copenhagen, a leisure destination centered on admissions, rides, live performances, and seasonal entertainment. The company also earns revenue from restaurants, retail tenants, and the Nimb Hotel, supported by event and concert programming across its venues. Its business depends on visitor traffic and a broad in-park offer.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:09:12.125Z"
+}

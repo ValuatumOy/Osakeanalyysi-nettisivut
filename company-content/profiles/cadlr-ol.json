@@ -1,0 +1,9 @@
+{
+  "ticker": "CADLR.OL",
+  "companyName": "Cadeler A/S",
+  "profile": "Cadeler A/S provides offshore wind installation services worldwide. The company transports and installs wind turbine generators and, increasingly, foundations, using a fleet of heavy-lift jack-up vessels. It also supports operations, maintenance and decommissioning work for offshore wind projects. Cadeler’s business is built on vessel capability, project execution and fleet utilization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:06:38.930Z"
+}

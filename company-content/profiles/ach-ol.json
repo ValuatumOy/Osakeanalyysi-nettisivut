@@ -1,0 +1,9 @@
+{
+  "ticker": "ACH.OL",
+  "companyName": "Aker Clean Hydrogen AS",
+  "profile": "Aker Clean Hydrogen developed, built, owned and operated industrial-scale clean hydrogen production projects. Its activities focused on hydrogen and related value chains, using engineering, project execution and optimization capabilities from the Aker group to improve efficiency and reduce costs. In June 2022, the company was merged into Aker Horizons and its shares ceased trading.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:49:42.132Z"
+}

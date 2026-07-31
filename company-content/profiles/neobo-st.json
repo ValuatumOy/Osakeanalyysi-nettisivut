@@ -1,0 +1,9 @@
+{
+  "ticker": "NEOBO.ST",
+  "companyName": "Neobo Fastigheter AB (publ)",
+  "profile": "Neobo Fastigheter AB (publ) is a Swedish real estate company that long-term owns, develops and manages residential rental properties. Its portfolio is concentrated in municipalities with strong demand for housing, and the company focuses on property management, refurbishment and value-enhancing investments to improve rental income, operating income and portfolio quality.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:51.124Z"
+}

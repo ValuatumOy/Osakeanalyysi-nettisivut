@@ -1,0 +1,9 @@
+{
+  "ticker": "ELON.ST",
+  "companyName": "Electra Gruppen AB (publ)",
+  "profile": "Electra Gruppen AB operates a Nordic specialty retail network focused on home products, including white goods, consumer electronics, and related services. Through its B2C, B2B, and solutions segments, the company combines local independent retailers with centralized support in purchasing, logistics, marketing, IT, and customer service across Sweden and other Nordic markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:49:05.016Z"
+}

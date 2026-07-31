@@ -1,0 +1,9 @@
+{
+  "ticker": "BACTIQ.CO",
+  "companyName": "BactiQuant A/S",
+  "profile": "BactiQuant A/S develops and sells technology for measuring and monitoring bacterial levels in water. Its product range includes online systems and handheld mobile lab solutions used in water utilities, industrial processes, pharmaceuticals, aquaculture, and other water-dependent operations. The company’s value drivers are rapid bacterial detection, improved water quality control, and reduced waste.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:52:43.566Z"
+}

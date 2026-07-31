@@ -1,0 +1,9 @@
+{
+  "ticker": "NOHAL.OL",
+  "companyName": "Nordic Halibut AS",
+  "profile": "Nordic Halibut AS farms Atlantic halibut in Western Norway and sells fresh and processed seafood products, including whole and filleted fish. The company operates a largely integrated value chain from roe and breeding through farming, harvesting, processing, and sales. Its revenue is driven by halibut production volumes, product mix, and market prices.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:38:44.051Z"
+}

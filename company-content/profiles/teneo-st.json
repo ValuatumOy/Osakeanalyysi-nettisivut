@@ -1,0 +1,9 @@
+{
+  "ticker": "TENEO.ST",
+  "companyName": "Artificial Solutions International AB (publ)",
+  "profile": "Artificial Solutions International develops conversational AI software through its Teneo platform, which lets organizations build applications that interact with customers in natural language across voice, text and other channels. Its products support virtual assistants, chatbots and customer-service automation, with multilingual capabilities and analytics for enterprise and public-sector deployments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:24:49.762Z"
+}

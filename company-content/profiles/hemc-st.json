@@ -1,0 +1,9 @@
+{
+  "ticker": "HEMC.ST",
+  "companyName": "Hemcheck Sweden AB (publ)",
+  "profile": "Hemcheck Sweden AB (publ) develops and commercializes point-of-care products for detecting hemolysis in blood samples. Its Helge concept includes single-use tests for vacuum tubes and blood gas syringes, together with a reader and optional display. The company is based in Karlstad and serves healthcare settings where timely blood sample quality control matters.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:15:15.116Z"
+}

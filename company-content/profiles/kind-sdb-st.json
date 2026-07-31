@@ -1,0 +1,9 @@
+{
+  "ticker": "KIND-SDB.ST",
+  "companyName": "Kindred Group plc",
+  "profile": "Kindred Group plc is an online gambling operator that offers sports betting, casino, poker, and racing products through a portfolio of consumer brands. The group operates digital gaming platforms and related technology and customer services across regulated markets, with revenue driven by wagering activity, gaming margins, and player acquisition and retention.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:33:53.557Z"
+}

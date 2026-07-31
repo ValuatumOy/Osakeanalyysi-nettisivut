@@ -1,0 +1,9 @@
+{
+  "ticker": "CORE-B.ST",
+  "companyName": "Corem Property Group AB (publ)",
+  "profile": "Corem Property Group owns, develops and manages commercial properties in metropolitan areas and growth locations in the Nordic region, with additional properties in Copenhagen and New York. Its portfolio is concentrated in offices and logistics/warehouse premises, and it also offers development and property management services through local in-house teams.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:28:01.242Z"
+}

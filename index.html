@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valuatum AI Equity Reports — Professional AI-Generated Equity Research</title>
-  <meta name="description" content="Generate a professional AI equity research report for any listed company. Search a company, open the investment case, and unlock a full report with value pool analysis, reverse valuation, risks, catalysts, and financial tables.">
+  <meta name="description" content="Generate a professional AI equity research report for any listed company. Search a company, open the investment case, and unlock a full report with segment value analysis, reverse valuation, risks, catalysts, and financial tables.">
   <link rel="canonical" href="https://www.aiequityreports.com/">
   <meta property="og:title" content="Valuatum AI Equity Reports — Professional AI-Generated Equity Research">
-  <meta property="og:description" content="Generate professional AI equity research reports. Value pool analysis, reverse valuation, full financials, PDF download.">
+  <meta property="og:description" content="Generate professional AI equity research reports. Segment value analysis, reverse valuation, full financials, PDF download.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aiequityreports.com/">
   <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Valuatum AI Equity Reports">
-  <meta name="twitter:description" content="Professional AI-generated equity research. Value pool analysis, reverse valuation, risks, financials — PDF delivered instantly.">
+  <meta name="twitter:description" content="Professional AI-generated equity research. Segment value analysis, reverse valuation, risks, financials — PDF delivered instantly.">
   <meta name="twitter:image" content="https://www.aiequityreports.com/images/og-image.png">
   <!-- Google Analytics — replace G-HSRL85C0K5 with your Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
@@ -54,7 +54,7 @@
 <body>
 
   <!-- NAV -->
-  <header class="nav" id="nav" style="background:transparent;">
+  <header class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Valuatum AI Reports">
         <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
@@ -66,7 +66,6 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html" class="nav-link" style="color:var(--green-light);">Home</a>
         <a href="reports.html" class="nav-link">Reports</a>
-        <a href="comparisons.html" class="nav-link">Compare</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="methodology.html" class="nav-link">Methodology</a>
         <a href="about.html" class="nav-link">About</a>
@@ -104,15 +103,12 @@
           stroke="rgba(61,158,114,0.5)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
       </svg>
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span class="hero-badge-text">AI Equity Research · Now Available</span>
-        </div>
         <h1 class="hero-headline">
-          AI equity research reports<br>for any listed company.
+          <span class="hero-headline-line">AI equity research reports</span>
+          <span class="hero-headline-line">for any listed company.</span>
         </h1>
         <p class="hero-sub">
-          Browse available reports, open free samples, or order a fresh AI-generated equity report delivered by email. Each report includes value pool analysis, reverse valuation, risk assessment, and full financial statements.
+          Browse available reports, open free samples, or generate a fresh AI-generated equity report delivered by email. Each report includes segment value analysis, reverse valuation, risk assessment, and full financial statements.
         </p>
 
         <!-- Search -->
@@ -122,16 +118,9 @@
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
             <input type="text" class="search-input" placeholder="Search company or ticker…" autocomplete="off" aria-label="Search reports">
-            <button class="search-btn" type="button" onclick="window.location.href='reports.html'">Browse reports</button>
+            <button class="search-btn" type="button">Browse reports</button>
           </div>
           <div class="search-autocomplete" id="heroAutocomplete" role="listbox"></div>
-        </div>
-
-        <div class="hero-trust">
-          <span class="hero-trust-item">Free sample reports available</span>
-          <span class="hero-trust-item">Full PDF download</span>
-          <span class="hero-trust-item">Built on financial data + AI</span>
-          <span class="hero-trust-item">25+ years of analysis expertise</span>
         </div>
 
         <div class="hero-sample-link">
@@ -139,15 +128,6 @@
             View available reports
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l5 4.5L7 11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-        </div>
-
-        <!-- Coming soon notice -->
-        <div class="hero-coming-soon">
-          <span class="hero-cs-icon">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.2 3.6L6 8.2 2.7 10.5l1.2-3.6L1 4.6h3.8z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="hero-cs-text"><strong>Coming soon:</strong> type any ticker and get a full AI equity report generated instantly — no email, no waiting.</span>
-          <button class="hero-cs-link" onclick="document.getElementById('emailModal').classList.add('open')">Get notified →</button>
         </div>
 
       </div>
@@ -174,7 +154,7 @@
           </span>
           <span class="trust-bar-item">
             <span class="trust-bar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C3.96 1.5 1.5 3.96 1.5 7S3.96 12.5 7 12.5 12.5 10.04 12.5 7 10.04 1.5 7 1.5z" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5v3l2 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
-            Value pool + reverse valuation analysis
+            Value driver + reverse valuation analysis
           </span>
           <span class="trust-bar-item">
             <span class="trust-bar-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="5" width="10" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M5 5V4a2 2 0 014 0v1" stroke="currentColor" stroke-width="1.3"/></svg></span>
@@ -184,101 +164,104 @@
       </div>
     </div>
 
+    <section class="free-reports-section" id="free-reports">
+      <div class="container">
+        <div class="free-reports-inner">
+          <div class="free-reports-copy reveal">
+            <span class="section-eyebrow">Explore free reports</span>
+            <h2 class="free-reports-title">Start with a full report. No card required.</h2>
+            <p class="free-reports-sub">Open selected Valuatum AI equity reports instantly as complete PDFs. Browse UPM, Stora Enso and Tesla as free examples before choosing a paid ready report or generating a fresh run.</p>
+            <a href="reports.html#free" class="btn btn-primary btn-lg">Browse free reports</a>
+          </div>
+          <div class="free-reports-list reveal" aria-label="Free report examples">
+            <a class="free-report-row" href="reports/upm-equity-report.html">
+              <span class="free-report-ticker">UPM.HE</span>
+              <span class="free-report-name">UPM-Kymmene</span>
+              <span class="free-report-action">Free PDF</span>
+            </a>
+            <a class="free-report-row" href="reports/stora-enso-equity-report.html">
+              <span class="free-report-ticker">STERV.HE</span>
+              <span class="free-report-name">Stora Enso</span>
+              <span class="free-report-action">Free PDF</span>
+            </a>
+            <a class="free-report-row" href="reports/tesla-equity-report.html">
+              <span class="free-report-ticker">TSLA</span>
+              <span class="free-report-name">Tesla</span>
+              <span class="free-report-action">Free PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SAMPLE REPORTS -->
     <section class="samples-section" id="samples">
       <div class="container">
         <div class="samples-header">
-          <span class="section-eyebrow reveal">Free Report Examples</span>
-          <h2 class="section-headline reveal">See the quality before you buy.</h2>
+          <span class="section-eyebrow reveal">Company Pages</span>
+          <h2 class="section-headline reveal">Open company pages before you buy.</h2>
           <p class="section-sub reveal">Each report maps where company value comes from, what the valuation implies, and what could break the investment case.</p>
         </div>
         <div class="samples-grid">
-          <!-- Tesla -->
-          <div class="sample-card reveal">
-            <div class="sample-thumbnail">
-              <span class="sample-thumb-ticker">TSLA · NASDAQ</span>
-              <div class="sample-thumb-placeholder">
-                <div class="sample-thumb-lines">
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                </div>
-                <span class="sample-thumb-label">AI Equity Report</span>
-              </div>
-            </div>
-            <div class="sample-card-body">
-              <span class="sample-market">NASDAQ · US</span>
-              <div class="sample-company">Tesla, Inc.</div>
-              <div class="sample-title">Option-heavy valuation case</div>
-              <p class="sample-desc">This sample breaks Tesla's enterprise value into automotive earnings and future option pools (Robotaxi, FSD, Optimus) and tests each against current pricing.</p>
-              <div class="sample-tags">
-                <span class="sample-tag">Option value</span>
-                <span class="sample-tag">Reverse valuation</span>
-                <span class="sample-tag">Value pools</span>
-              </div>
-              <a href="reports/tesla-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'TSLA'})">
-                Open free report
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
-          </div>
           <!-- UPM -->
-          <div class="sample-card reveal">
+          <div class="sample-card reveal" data-company-card="UPM.HE">
             <div class="sample-thumbnail">
-              <span class="sample-thumb-ticker">UPM.HE · Helsinki</span>
-              <div class="sample-thumb-placeholder">
-                <div class="sample-thumb-lines">
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                </div>
-                <span class="sample-thumb-label">AI Equity Report</span>
-              </div>
+              <img class="sample-thumbnail-img" src="images/upm-report-header.png" alt="UPM report preview" loading="lazy">
             </div>
             <div class="sample-card-body">
-              <span class="sample-market">Helsinki · FI</span>
-              <div class="sample-company">UPM-Kymmene Oyj</div>
-              <div class="sample-title">Asset-backed value and profitability case</div>
-              <p class="sample-desc">A Nordic industrial with significant physical assets. This report shows how EV discipline separates real segment value from misleading market cap comparisons.</p>
+              <span class="sample-market">HELSINKI · FI</span>
+              <div class="sample-company">UPM-Kymmene</div>
+              <div class="sample-title">Free forest industry report</div>
+              <p class="sample-desc" data-company-description>UPM is a Finnish forest industry company with pulp, forestry, energy, paper and bio-based materials operations. The company page includes a free downloadable AI equity report.</p>
               <div class="sample-tags">
-                <span class="sample-tag">Asset-heavy</span>
-                <span class="sample-tag">EV/EBIT</span>
-                <span class="sample-tag">Nordic</span>
+                <span class="sample-tag">Free PDF</span>
+                <span class="sample-tag">Reverse valuation</span>
+                <span class="sample-tag">Helsinki</span>
               </div>
-              <a href="reports/upm-kymmene-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'UPM'})">
-                Open free report
+              <a href="reports/upm-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'UPM.HE'})">
+                Open company page
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
           </div>
           <!-- Stora Enso -->
-          <div class="sample-card reveal">
+          <div class="sample-card reveal" data-company-card="STERV.HE">
             <div class="sample-thumbnail">
-              <span class="sample-thumb-ticker">STERV.HE · Helsinki</span>
-              <div class="sample-thumb-placeholder">
-                <div class="sample-thumb-lines">
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                  <div class="sample-thumb-line"></div>
-                </div>
-                <span class="sample-thumb-label">AI Equity Report</span>
-              </div>
+              <img class="sample-thumbnail-img" src="images/stora-enso-report-header.png" alt="Stora Enso report preview" loading="lazy">
             </div>
             <div class="sample-card-body">
-              <span class="sample-market">Helsinki · FI</span>
-              <div class="sample-company">Stora Enso Oyj</div>
-              <div class="sample-title">Renewable materials transformation case</div>
-              <p class="sample-desc">A Nordic forest-industry leader shifting from paper toward packaging and biomaterials. This report allocates value across segments and tests it against the current market price.</p>
+              <span class="sample-market">HELSINKI · FI</span>
+              <div class="sample-company">Stora Enso</div>
+              <div class="sample-title">Free renewable materials report</div>
+              <p class="sample-desc" data-company-description>Stora Enso Oyj is a renewable materials, packaging and forest assets company. The company page includes a free downloadable AI equity report.</p>
               <div class="sample-tags">
-                <span class="sample-tag">Packaging</span>
-                <span class="sample-tag">Renewable materials</span>
-                <span class="sample-tag">Nordic</span>
+                <span class="sample-tag">Free PDF</span>
+                <span class="sample-tag">Materials</span>
+                <span class="sample-tag">Helsinki</span>
               </div>
-              <a href="reports/stora-enso-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('free_report_opened', {ticker:'STERV'})">
-                Open free report
+              <a href="reports/stora-enso-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'STERV.HE'})">
+                Open company page
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+          <!-- Tesla -->
+          <div class="sample-card reveal" data-company-card="TSLA">
+            <div class="sample-thumbnail">
+              <img class="sample-thumbnail-img" src="images/tesla-report-header.png" alt="Tesla report preview" loading="lazy">
+            </div>
+            <div class="sample-card-body">
+              <span class="sample-market">NASDAQ · US</span>
+              <div class="sample-company">Tesla</div>
+              <div class="sample-title">Free EV and autonomy report</div>
+              <p class="sample-desc" data-company-description>Tesla designs and sells electric vehicles, energy storage products, autonomy software and related services. The company page includes a free downloadable AI equity report.</p>
+              <div class="sample-tags">
+                <span class="sample-tag">Free PDF</span>
+                <span class="sample-tag">EV</span>
+                <span class="sample-tag">NASDAQ</span>
+              </div>
+              <a href="reports/tesla-equity-report.html" class="sample-card-cta" onclick="trackEvent && trackEvent('company_page_opened', {ticker:'TSLA'})">
+                Open company page
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -299,84 +282,91 @@
         <div class="whats-inside-header">
           <span class="section-eyebrow reveal">What's in the Report</span>
           <h2 class="section-headline reveal">A structured investment case, not a data dump.</h2>
-          <p class="section-sub reveal">Each section is built from financial statement data, consensus estimates, and reverse valuation logic. The goal is a clear analytical position, not more charts.</p>
+          <p class="section-sub reveal">Each report turns financial data, valuation work, scenarios, risks, and source material into a readable investment case. The goal is a clear analytical position, not more charts.</p>
         </div>
         <div class="whats-inside-grid reveal">
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M6 9h6M6 12h4M6 6h6"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Company Snapshot</div>
-              <div class="inside-desc">Ticker, exchange, sector, share price, market cap, and enterprise value in one clear header.</div>
+              <div class="inside-label">Company Profile</div>
+              <div class="inside-desc">A concise business profile, listing venue, sector, country, operating model, and the context needed before reading the analysis.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14l4-4 3 2 5-6"/><circle cx="15" cy="4" r="1.5"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Key Metrics</div>
-              <div class="inside-desc">Revenue, EBIT, margins, EPS, P/E, EV/EBIT, and dividend yield. Curated to what actually matters for the investment case.</div>
+              <div class="inside-label">Research Snapshot</div>
+              <div class="inside-desc">Recommendation, current price, target price, upside, market cap, enterprise value, headline multiples, thesis breaker, and the key reasons behind the call.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 9L14 5M9 9L13 13M9 9L5 13M9 9L4 7"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Company Value Map</div>
-              <div class="inside-desc">See how enterprise value is allocated across the company's current businesses, assets, and future option pools.</div>
+              <div class="inside-label">Share Price Development</div>
+              <div class="inside-desc">Recent share-price history with the target-price anchor, market data, 52-week range, one-year change, and report date.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="4" height="6"/><rect x="7" y="7" width="4" height="9"/><rect x="12" y="3" width="4" height="13"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Value Pool Analysis</div>
-              <div class="inside-desc">Each segment, asset pool, or option value gets its own EV allocation and quality assessment.</div>
+              <div class="inside-label">Value Breakdown</div>
+              <div class="inside-desc">Enterprise-value allocation by segment, revenue and EBIT contribution, segment economics, and an interpretation of what drives group value.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14V8l5-6 5 6v6H4zM7 14v-4h4v4"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Core Investment Analysis</div>
-              <div class="inside-desc">Full analysis of business quality, competitive position, historical performance, valuation tension, and scenarios.</div>
+              <div class="inside-label">Recommendation</div>
+              <div class="inside-desc">The rating rationale, target-price logic, main driver, main risk, thesis breaker, and supporting arguments behind the investment view.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h12M9 3v12"/><circle cx="9" cy="9" r="7"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Reverse Valuation</div>
-              <div class="inside-desc">What revenue growth and EBIT margin path would be required for the current valuation to make rational sense.</div>
+              <div class="inside-label">Core Analysis</div>
+              <div class="inside-desc">Executive map, segment deep dives, cross-segment bridge, scenario logic, and the bottom-line judgment on how the company creates value.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2v6l4 2"/><circle cx="9" cy="11" r="6"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Risks & Catalysts</div>
-              <div class="inside-desc">What could break the investment case and what could strengthen it. Company-specific, not boilerplate.</div>
+              <div class="inside-label">Financial Bridge</div>
+              <div class="inside-desc">Sales, EBITDA, EBIT, margins, free cash flow, leverage, and key forecast financials shown across historical and forward periods.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h14M4 4v10h10V4"/><path d="M7 8h4M7 11h3"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Financial Statements</div>
-              <div class="inside-desc">Income statement, balance sheet, and cash flow tables with consensus estimates for 2–3 years forward.</div>
+              <div class="inside-label">Valuation</div>
+              <div class="inside-desc">Target-price derivation, selected valuation method, historical and forecast multiples, peer comparison, valuation map, and sensitivity tables.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V9l6-7 6 7v6H3z"/><path d="M7 15v-4h4v4"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Investment Summary</div>
-              <div class="inside-desc">A structured summary of the investment case. Clear analytical position, no buy/sell recommendation.</div>
+              <div class="inside-label">Scenarios & Sensitivity</div>
+              <div class="inside-desc">Bear, base, and bull cases with revenue, EBITDA, margin, multiple, enterprise value, equity value, value per share, and upside.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M7 8h4M7 11h4M7 5h3"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">Sources & Methodology</div>
-              <div class="inside-desc">Data sources and valuation methodology are shown so you can understand how the report was built and where assumptions matter.</div>
+              <div class="inside-label">Catalysts & Risks</div>
+              <div class="inside-desc">Monitoring checklist and risk register covering timing, segment exposure, indicators, early-warning triggers, valuation impact, and risk type.</div>
             </div>
           </div>
           <div class="inside-item">
             <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v9M5 8l4 5 4-5"/><path d="M4 14h10"/></svg></div>
             <div class="inside-text">
-              <div class="inside-label">PDF Download</div>
-              <div class="inside-desc">Export the full report as a professional PDF. Filename: Valuatum_AI_Equity_Report_[Ticker]_[Date].pdf</div>
+              <div class="inside-label">Financial Appendix</div>
+              <div class="inside-desc">Income statement, balance sheet, cash flow, and quarterly snapshot tables with historical figures and forward estimates.</div>
+            </div>
+          </div>
+          <div class="inside-item">
+            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M6 6h6M6 9h6M6 12h3"/></svg></div>
+            <div class="inside-text">
+              <div class="inside-label">Sources & Disclaimer</div>
+              <div class="inside-desc">Source register, data categories, assumptions, AI assistance disclosure, limitations, and standard investment disclaimer.</div>
             </div>
           </div>
         </div>
@@ -413,8 +403,8 @@
           </div>
           <div class="step reveal">
             <div class="step-number">3</div>
-            <div class="step-title">Order fresh or enterprise</div>
-            <p class="step-desc">Need the latest data? Order a fresh report for any listed company. Delivered by email. Enterprise and team plans available on request.</p>
+            <div class="step-title">Generate fresh or enterprise</div>
+            <p class="step-desc">Need the latest data? Generate a fresh report for any listed company. Delivered by email. Enterprise and team plans available on request.</p>
           </div>
         </div>
       </div>
@@ -426,44 +416,44 @@
         <div class="why-grid">
           <div class="why-content">
             <span class="section-eyebrow reveal">Why It's Different</span>
-            <h2 class="section-headline reveal">Where other tools show more data,<br>this one builds the investment case.</h2>
+            <h2 class="section-headline reveal">From snapshot to scenario,<br>the report shows the whole investment case.</h2>
             <p class="section-sub reveal">
-              Valuatum AI equity reports are designed for analysts who want to understand what drives value, not for people who need another dashboard with more charts.
+              Valuatum AI equity reports are built like a professional research note: recommendation, value breakdown, valuation bridge, scenarios, catalysts, risks, and source register in one readable PDF.
             </p>
             <div class="why-pillars reveal">
               <div class="why-pillar">
                 <span class="why-pillar-num">01</span>
                 <div class="why-pillar-body">
-                  <div class="why-pillar-title">Report-first, not dashboard-first</div>
-                  <p class="why-pillar-desc">The output is a structured PDF you can read, share, and file. Not another interactive screen.</p>
+                  <div class="why-pillar-title">Research-note structure</div>
+                  <p class="why-pillar-desc">Starts with the recommendation, target price, thesis breaker, and evidence summary before moving into the detailed analysis.</p>
                 </div>
               </div>
               <div class="why-pillar">
                 <span class="why-pillar-num">02</span>
                 <div class="why-pillar-body">
-                  <div class="why-pillar-title">Enterprise value discipline</div>
-                  <p class="why-pillar-desc">Every analysis starts from enterprise value, not market cap. Value pools are allocated from EV with disclosed rationale.</p>
+                  <div class="why-pillar-title">Segment value breakdown</div>
+                  <p class="why-pillar-desc">Enterprise value is allocated across business segments with revenue, EBIT, EV share, and interpretation of what drives group value.</p>
                 </div>
               </div>
               <div class="why-pillar">
                 <span class="why-pillar-num">03</span>
                 <div class="why-pillar-body">
-                  <div class="why-pillar-title">Reverse valuation clarity</div>
-                  <p class="why-pillar-desc">Any target-price style output starts from reverse valuation: what growth rate, margin level, and cash flow path would have to be true for today's price to be rational.</p>
+                  <div class="why-pillar-title">Bridge from operations to valuation</div>
+                  <p class="why-pillar-desc">Financial bridge, peer multiples, target-price derivation, sensitivity tables, and bear/base/bull scenarios connect the model to the conclusion.</p>
                 </div>
               </div>
               <div class="why-pillar">
                 <span class="why-pillar-num">04</span>
                 <div class="why-pillar-body">
-                  <div class="why-pillar-title">Free reports before purchase</div>
-                  <p class="why-pillar-desc">Open full free PDF reports before you buy so you know exactly what you will receive. They are real reports, not gated previews.</p>
+                  <div class="why-pillar-title">Catalysts and risk register</div>
+                  <p class="why-pillar-desc">Monitoring checklist and risk register show what could change the recommendation, from early-warning triggers to valuation impact.</p>
                 </div>
               </div>
               <div class="why-pillar">
                 <span class="why-pillar-num">05</span>
                 <div class="why-pillar-body">
-                  <div class="why-pillar-title">Professional, readable output</div>
-                  <p class="why-pillar-desc">Designed for professional use, not retail entertainment. PDF output is suitable for internal analysis, presentations, and client work.</p>
+                  <div class="why-pillar-title">Audit trail included</div>
+                  <p class="why-pillar-desc">Appendix tables, quarterly snapshots, source register, assumptions, AI disclosure, and disclaimer make the report easier to review and verify.</p>
                 </div>
               </div>
             </div>
@@ -476,7 +466,6 @@
                   <div class="report-mockup-title">Tesla, Inc. — AI Equity Report</div>
                   <div class="report-mockup-sub">TSLA · NASDAQ · Consumer Discretionary</div>
                 </div>
-                <span class="report-mockup-badge">Free report</span>
               </div>
               <div class="report-mockup-body">
                 <div class="mockup-metric-row">
@@ -516,7 +505,7 @@
                 <div class="mockup-locked-row">
                   <span class="mockup-lock-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.5l3 3 6-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                   <span class="mockup-locked-text">Robotaxi and Optimus pools are included in the free PDF</span>
-                  <span class="mockup-unlock-btn" onclick="window.location.href='reports/pdfs/Tesla_01062026.pdf'">Open free</span>
+                  <span class="mockup-unlock-btn" onclick="window.location.href='reports/tesla-equity-report.html'">Open company page</span>
                 </div>
               </div>
             </div>
@@ -531,7 +520,7 @@
         <div class="pricing-teaser-header">
           <span class="section-eyebrow reveal">Pricing</span>
           <h2 class="section-headline reveal">Free samples. Discounted reports. Fresh on demand.</h2>
-          <p class="section-sub reveal" style="margin:0 auto;">Open free sample reports at no cost. Buy recent AI equity reports at a discounted price. Order a fresh report with the latest data.</p>
+          <p class="section-sub reveal" style="margin:0 auto;">Buy ready AI equity reports for €20. Generate a fresh report with the latest data for €50.</p>
         </div>
         <div class="pricing-cards-grid reveal">
           <!-- Free -->
@@ -549,10 +538,10 @@
             <span class="pricing-badge">Available now</span>
             <div class="pricing-name">Existing Report</div>
             <div class="pricing-price-wrap">
-              <span class="pricing-price-main">€4.90</span>
+              <span class="pricing-price-main">€20.00</span>
             </div>
             <div class="pricing-period">per report · delivered by email</div>
-            <div class="pricing-desc">Recent AI equity reports at a discounted price. Full PDF with value pool analysis, reverse valuation, risks, and financials.</div>
+            <div class="pricing-desc">Recent AI equity reports at a discounted price. Full PDF with segment value analysis, reverse valuation, risks, and financials.</div>
             <a href="reports.html" class="btn btn-primary pricing-card-cta">Browse reports</a>
           </div>
           <!-- Fresh -->
@@ -560,11 +549,11 @@
             <span class="pricing-badge" style="background:var(--gold); color:white;">Fresh</span>
             <div class="pricing-name">Fresh Report</div>
             <div class="pricing-price-wrap">
-              <span class="pricing-price-main">€9.90</span>
+              <span class="pricing-price-main">€50.00</span>
             </div>
             <div class="pricing-period">per report · latest data · delivered by email</div>
             <div class="pricing-desc">Order a newly generated report with the latest available data. Any listed company, delivered within 1 business day.</div>
-            <a href="reports.html#order-fresh" class="btn btn-outline-dark pricing-card-cta">Order fresh report</a>
+            <a href="reports.html#order-fresh" class="btn btn-outline-dark pricing-card-cta">Generate fresh report</a>
           </div>
         </div>
         <div class="pricing-all-link reveal">
@@ -694,10 +683,10 @@
     <section class="final-cta">
       <div class="container">
         <h2 class="final-cta-headline reveal">Start with a free report.</h2>
-        <p class="final-cta-sub reveal">Browse available reports, open free samples, or order a fresh AI equity report for any listed company.</p>
+        <p class="final-cta-sub reveal">Browse available reports, open free samples, or generate a fresh AI equity report for any listed company.</p>
         <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity:1; transform:none; margin-top:0.5rem;">
           <a href="reports.html" class="btn btn-primary btn-lg" onclick="trackEvent && trackEvent('final_cta_browse_clicked')">Browse reports</a>
-          <a href="reports.html#order-fresh" class="btn btn-outline btn-lg" onclick="trackEvent && trackEvent('final_cta_fresh_clicked')">Order fresh report</a>
+          <a href="reports.html#order-fresh" class="btn btn-outline btn-lg" onclick="trackEvent && trackEvent('final_cta_fresh_clicked')">Generate fresh report</a>
         </div>
         <p style="text-align:center; margin-top:1.5rem; font-size:var(--text-xs); color:rgba(255,255,255,0.3);">Live self-service generation coming soon — fresh reports are currently delivered by email</p>
       </div>
@@ -710,7 +699,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+          <a href="/index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
             <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
             <div class="nav-logo-text">
               <span class="nav-logo-wordmark">Valuatum</span>
@@ -722,17 +711,17 @@
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
-            <a href="reports.html" class="footer-link">Browse reports</a>
-            <a href="reports.html#free" class="footer-link">Free samples</a>
-            <a href="reports.html#order-fresh" class="footer-link">Order fresh report</a>
-            <a href="pricing.html" class="footer-link">Pricing</a>
-            <a href="methodology.html" class="footer-link">Methodology</a>
+            <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#free" class="footer-link">Free samples</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
+            <a href="/pricing.html" class="footer-link">Pricing</a>
+            <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>
         </div>
         <div>
           <div class="footer-col-label">Company</div>
           <div class="footer-links">
-            <a href="about.html" class="footer-link">About Valuatum</a>
+            <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
@@ -741,9 +730,9 @@
         <div>
           <div class="footer-col-label">Legal</div>
           <div class="footer-links">
-            <a href="disclaimer.html" class="footer-link">Disclaimer</a>
-            <a href="disclaimer.html#terms" class="footer-link">Terms of use</a>
-            <a href="disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="/disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a>
           </div>
         </div>
       </div>
@@ -773,19 +762,7 @@
 
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
-  <script src="js/reportsData.js"></script>
+  <script src="js/companyPagesData.js"></script>
   <script src="js/script.js"></script>
-  <script>
-    // Override hero search button: search redirects to reports page
-    document.querySelector('.hero-search-wrap .search-btn')?.addEventListener('click', function() {
-      const q = document.querySelector('.hero-search-wrap .search-input')?.value.trim();
-      if (q) {
-        trackEvent('report_search', { query: q, source: 'hero' });
-        window.location.href = 'reports.html';
-      } else {
-        window.location.href = 'reports.html';
-      }
-    });
-  </script>
 </body>
 </html>

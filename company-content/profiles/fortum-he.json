@@ -1,0 +1,9 @@
+{
+  "ticker": "FORTUM.HE",
+  "companyName": "Fortum",
+  "profile": "Fortum is a Finnish energy company that produces electricity and heat, operates hydropower, nuclear and combined heat and power plants, and sells electricity to households and businesses in the Nordic countries and Poland. It also provides district heating and selected circular-economy services, including waste recovery and recycling-related solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T11:49:48.068Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SFL.ST",
+  "companyName": "Safello Group AB (publ)",
+  "profile": "Safello Group AB is the listed parent of Safello, a Nordic cryptocurrency brokerage and exchange. Through its platform, the company enables customers to buy, sell, store, deposit and withdraw cryptocurrencies, with services for individuals and businesses in Sweden and Finland. Its business is built around trading volume, transaction fees and related crypto-asset services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:48:59.230Z"
+}

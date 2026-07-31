@@ -1,0 +1,9 @@
+{
+  "ticker": "KONSOL.CO",
+  "companyName": "Konsolidator A/S",
+  "profile": "Konsolidator A/S provides cloud-based software for financial consolidation, budgeting, planning and reporting. Its platform automates group and sub-group consolidation, including intercompany eliminations, currency translation, minority interest handling and audit trails, and connects to ERP systems for data collection and reporting. The company serves finance teams that need faster, more standardized group financial processes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:44:30.966Z"
+}

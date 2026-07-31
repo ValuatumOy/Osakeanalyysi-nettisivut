@@ -1,0 +1,9 @@
+{
+  "ticker": "ENRO.ST",
+  "companyName": "Eniro Group AB (publ)",
+  "profile": "Eniro Group provides digital marketing services for small and medium-sized businesses in the Nordics and customer service and directory assistance for larger companies. Its Marketing Partner business combines external partnerships with local search services, while Voice offers answering services and number information. The group is listed on Nasdaq Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:53:48.998Z"
+}

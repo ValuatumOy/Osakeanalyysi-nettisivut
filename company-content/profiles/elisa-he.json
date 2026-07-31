@@ -1,0 +1,9 @@
+{
+  "ticker": "ELISA.HE",
+  "companyName": "Elisa",
+  "profile": "Elisa is a Finnish telecommunications and technology company with operations in Finland and Estonia and software services internationally. Its business is organized around consumer services, corporate customer solutions and international software services. The company provides mobile and fixed communications, broadband, digital services and software that supports automation for industrial and telecom customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T09:10:27.930Z"
+}

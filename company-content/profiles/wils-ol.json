@@ -1,0 +1,9 @@
+{
+  "ticker": "WILS.OL",
+  "companyName": "Wilson ASA",
+  "profile": "Wilson ASA is a short-sea shipping company operating a fleet of around 135 vessels across Europe, transporting dry cargo for industrial customers. It combines long-term contracts and spot cargoes, and manages chartering, operations, ship management, crewing, purchasing, legal and insurance in-house. Recent reports highlight ongoing fleet renewal to support efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:43:50.094Z"
+}

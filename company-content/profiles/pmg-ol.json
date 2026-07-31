@@ -1,0 +1,9 @@
+{
+  "ticker": "PMG.OL",
+  "companyName": "Play Magnus AS",
+  "profile": "Play Magnus AS develops digital chess learning and entertainment products, including the Chessable platform, the Play Magnus app suite, chess24, and the Champions Chess Tour. It also sells chess books and related content through publishing brands such as Everyman Chess and New In Chess. The group was acquired by Chess.com in December 2022.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:06:22.810Z"
+}

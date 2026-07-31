@@ -1,0 +1,9 @@
+{
+  "ticker": "VWS.CO",
+  "companyName": "Vestas Wind Systems A/S",
+  "profile": "Vestas Wind Systems A/S designs, manufactures, installs, and services wind turbines and related wind energy projects worldwide. Its operations span onshore and offshore wind solutions, supported by a large service business that provides maintenance and lifetime asset management for installed turbines. The company’s value is driven by equipment sales, project execution, and recurring service contracts.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:47:43.833Z"
+}

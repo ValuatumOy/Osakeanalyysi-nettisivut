@@ -1,0 +1,9 @@
+{
+  "ticker": "KOLL.ST",
+  "companyName": "Kollect on Demand Holding AB (publ)",
+  "profile": "Kollect on Demand Holding AB operates a waste-management technology business built around two activities. Its online marketplace lets business and household customers book waste collection and recycling services through licensed local partners, covering domestic bins, commercial waste, skips and junk removal. It also operates BIGbin smart compactors at retail locations for pay-per-use waste disposal.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:35:29.024Z"
+}

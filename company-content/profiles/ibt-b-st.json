@@ -1,0 +1,9 @@
+{
+  "ticker": "IBT-B.ST",
+  "companyName": "Infant Bacterial Therapeutics AB (publ)",
+  "profile": "Infant Bacterial Therapeutics AB is a pharmaceutical company developing and commercializing medicines for diseases affecting premature infants. Its lead program, IBP-9414, is a bacterial strain-based drug candidate designed to prevent necrotizing enterocolitis and support gastrointestinal function. The company also advances additional candidates for gastroschisis, retinopathy of prematurity, and antibiotic-resistant hospital infections.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:23:24.372Z"
+}

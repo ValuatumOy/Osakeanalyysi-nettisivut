@@ -1,0 +1,9 @@
+{
+  "ticker": "LUMEN.ST",
+  "companyName": "LumenRadio AB (publ)",
+  "profile": "LumenRadio develops wireless communication technology, radio modules and software for mission-critical applications. Its products are used in professional lighting control, building automation, industrial communication and smart metering, with a focus on reliable wireless mesh connectivity that can replace cabling in demanding environments. The company also serves OEM customers that integrate its technology into their own products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:41:53.109Z"
+}

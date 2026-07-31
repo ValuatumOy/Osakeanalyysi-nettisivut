@@ -1,0 +1,9 @@
+{
+  "ticker": "NTR-B.CO",
+  "companyName": "NTR Holding A/S",
+  "profile": "NTR Holding A/S is a Danish listed holding company with limited operating activity. The group has reported no revenue, recurring operating losses, and a small equity base. Management has said it continues to examine strategic alternatives, including ways to capture value from the company’s listed platform, while it remains associated with its majority shareholder, Copenhagen Capital A/S.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:16:22.343Z"
+}

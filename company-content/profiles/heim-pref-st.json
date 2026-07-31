@@ -1,0 +1,9 @@
+{
+  "ticker": "HEIM-PREF.ST",
+  "companyName": "Heimstaden AB (publ)",
+  "profile": "Heimstaden AB is a European residential real estate company focused on acquiring, developing and managing rental homes. The group owns and operates apartments and other housing across multiple European markets, with property management, leasing and tenant services as core activities. Its value drivers are long-term rental income, portfolio management and operational efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:14:34.703Z"
+}

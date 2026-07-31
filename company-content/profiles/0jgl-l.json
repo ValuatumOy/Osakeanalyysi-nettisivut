@@ -1,0 +1,9 @@
+{
+  "ticker": "0JGL.L",
+  "companyName": "PCI Biotech Holding ASA",
+  "profile": "PCI Biotech Holding ASA is a Norwegian biopharmaceutical company in liquidation that previously developed photochemical technology platforms for life sciences applications. Its work focused on photochemical lysis for viral vector manufacturing and photochemical internalisation for light-triggered intracellular drug delivery. The company has also evaluated other bioprocessing-related opportunities while winding down operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:03:07.417Z"
+}

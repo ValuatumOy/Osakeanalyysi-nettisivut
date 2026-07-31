@@ -1,0 +1,9 @@
+{
+  "ticker": "SATS.OL",
+  "companyName": "Sats ASA",
+  "profile": "SATS ASA is a Nordic fitness and training company headquartered in Oslo. Through its SATS, ELIXIA and Fresh Fitness brands, it operates fitness clubs across Norway, Sweden, Finland and Denmark, offering gym access, group training, personal training, online training, physiotherapy and related health and fitness services to members.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:18:12.084Z"
+}

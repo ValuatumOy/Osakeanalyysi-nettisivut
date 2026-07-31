@@ -1,0 +1,9 @@
+{
+  "ticker": "AZT.OL",
+  "companyName": "ArcticZymes Technologies ASA",
+  "profile": "ArcticZymes Technologies ASA develops, manufactures, and sells specialized recombinant enzymes for life science applications. Its products are used in molecular research and diagnostics, as well as in biomanufacturing for gene therapy and vaccine production. The company’s portfolio includes salt-active nucleases, other nucleases, polymerases, and related kits for demanding laboratory and manufacturing conditions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:57:45.462Z"
+}

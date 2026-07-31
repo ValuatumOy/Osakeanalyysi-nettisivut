@@ -1,0 +1,9 @@
+{
+  "ticker": "SAGA.OL",
+  "companyName": "Saga Pure ASA",
+  "profile": "Saga Pure ASA is a listed investment company on the Oslo Stock Exchange that invests in sustainability-related and other assets. It takes positions in both listed and private companies and also works as an active owner and business developer. Its portfolio has included businesses in hydrogen, renewable energy, circular economy and carbon-related technologies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:15:23.671Z"
+}

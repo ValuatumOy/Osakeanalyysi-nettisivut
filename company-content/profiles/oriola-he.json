@@ -1,0 +1,9 @@
+{
+  "ticker": "ORIOLA.HE",
+  "companyName": "Oriola Oyj",
+  "profile": "Oriola Oyj is a Nordic healthcare company focused on pharmaceutical distribution, wholesale services and pharmacy retail. It supplies medicines, health and wellbeing products, and related services to pharmacies, consumers and healthcare providers in Finland and Sweden. The company also serves hospitals and other professional customers through its healthcare trade and distribution operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-13T08:34:51.094Z"
+}

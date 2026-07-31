@@ -1,0 +1,9 @@
+{
+  "ticker": "TGAMES.CO",
+  "companyName": "TROPHY GAMES Development A/S",
+  "profile": "Trophy Games Development A/S is a Danish game developer and publisher focused on mobile and online management games built around real-world interests. Its portfolio includes football, transport, airline, shipping, train, and other simulation titles, which it develops and self-publishes across multiple platforms. The company also works with partner studios on selected releases.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:11:01.907Z"
+}

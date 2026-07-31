@@ -1,0 +1,9 @@
+{
+  "ticker": "LIPUM.ST",
+  "companyName": "Lipum AB (publ)",
+  "profile": "Lipum AB (publ) is a clinical-stage biopharmaceutical company developing treatments for chronic inflammatory diseases. Its lead program, SOL-116, is a humanized monoclonal antibody designed to block BSSL, a target in the immune system, and is being studied primarily for rheumatoid arthritis. The company also evaluates other inflammatory diseases with unmet medical need.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:40:08.224Z"
+}

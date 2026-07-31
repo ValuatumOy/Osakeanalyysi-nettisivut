@@ -1,0 +1,9 @@
+{
+  "ticker": "SOLTEQ.HE",
+  "companyName": "Solteq Oyj",
+  "profile": "Solteq Oyj is a Nordic provider of IT services and software solutions focused on the digitalization of business. The company develops and delivers industry-specific software, consulting, implementation, maintenance, and cloud-based services for the energy sector, retail, and e-commerce. A meaningful share of revenue comes from continuous services and SaaS offerings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:31:20.412Z"
+}

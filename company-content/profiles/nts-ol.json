@@ -1,0 +1,9 @@
+{
+  "ticker": "NTS.OL",
+  "companyName": "NTS ASA",
+  "profile": "NTS ASA is a Norwegian aquaculture company focused on producing and selling farmed salmon. It also provides services to the seafood industry, including wellboat operations, service vessels, and sea transport. The group has grown through investments in related aquaculture businesses and has aimed to strengthen its position in salmon farming and marine services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:52:45.483Z"
+}

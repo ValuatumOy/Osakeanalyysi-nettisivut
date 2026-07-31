@@ -1,0 +1,9 @@
+{
+  "ticker": "BOUV.OL",
+  "companyName": "Bouvet ASA",
+  "profile": "Bouvet ASA is a Norwegian consulting company that provides IT and digital communication services to private and public sector clients. The company helps customers design and deliver digital solutions, drawing on broad technical, design, and advisory competence. Its business is driven by consulting assignments, long-term client relationships, and demand for digitalization services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:43:51.086Z"
+}

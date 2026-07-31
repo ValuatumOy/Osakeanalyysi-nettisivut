@@ -1,0 +1,9 @@
+{
+  "ticker": "M8G.ST",
+  "companyName": "MGI - Media and Games Invest SE",
+  "profile": "MGI - Media and Games Invest SE operates an advertising software platform that connects advertisers with publisher ad inventory across mobile apps, web, connected TV and digital out-of-home channels. It also owns a portfolio of casual and premium games, using first-party data from its games and apps to support targeting, monetization and user acquisition.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:48:01.993Z"
+}

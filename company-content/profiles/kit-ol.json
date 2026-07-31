@@ -1,0 +1,9 @@
+{
+  "ticker": "KIT.OL",
+  "companyName": "Kitron ASA",
+  "profile": "Kitron ASA is a Scandinavian electronics manufacturing services company that provides development, industrialisation, manufacturing, testing, logistics, and repair services for electronic products. It serves customers across connectivity, electrification, industry, medical devices, and defence and aerospace, delivering from circuit board assemblies to complete end products through a global network of production facilities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:59:29.102Z"
+}

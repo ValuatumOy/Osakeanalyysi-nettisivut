@@ -1,0 +1,9 @@
+{
+  "ticker": "ODF.OL",
+  "companyName": "Odfjell SE",
+  "profile": "Odfjell SE is a Norwegian shipping and logistics group focused on the global transport and storage of chemicals and other specialty bulk liquids. Its main activities are chemical tanker operations, ship management, and tank terminals that store chemical and petroleum products at strategic locations in the USA, Belgium, and Korea.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:57:09.029Z"
+}

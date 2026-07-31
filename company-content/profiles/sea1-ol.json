@@ -1,0 +1,9 @@
+{
+  "ticker": "SEA1.OL",
+  "companyName": "Siem Offshore Inc.",
+  "profile": "Siem Offshore Inc. owns and operates offshore support vessels for the offshore energy industry. Its fleet includes anchor handling tug supply vessels, platform supply vessels, subsea construction and well intervention vessels, and other specialized units. The company provides vessel services supporting oil and gas and offshore renewable activities across multiple global operating regions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:21:12.928Z"
+}

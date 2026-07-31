@@ -2,11 +2,17 @@
 window.REPORT_SLUGS = {
   "amd-05062026": "advanced-micro-devices-equity-report",
   "intel-05062026": "intel-equity-report",
-  "kesko-05062026": "kesko-equity-report",
-  "nokia-05062026": "nokia-equity-report",
+  "kesko-07072026": "kesko-equity-report",
+  "nvidia-16072026": "nvidia-equity-report",
+  "nokia-15072026": "nokia-equity-report",
+  "novonordiskas-30072026": "novo-nordisk-equity-report",
+  "oriola-07072026": "oriola-equity-report",
+  "orion-07072026": "orion-equity-report",
+  "pandoraas-30072026": "pandora-equity-report",
+  "puuilooyj-29072026": "puuilo-equity-report",
   "recursion-02062026": "recursion-pharmaceuticals-equity-report",
-  "storaenso-01062026": "stora-enso-equity-report",
-  "tesla-01062026": "tesla-equity-report",
-  "upm-21052026": "upm-kymmene-equity-report",
-  "wartsila-05062026": "wartsila-equity-report"
+  "storaenso-06072026": "stora-enso-equity-report",
+  "tesla-07072026": "tesla-equity-report",
+  "upm-08072026": "upm-equity-report",
+  "wartsila-07072026": "wartsila-equity-report"
 };

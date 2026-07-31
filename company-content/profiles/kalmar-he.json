@@ -1,0 +1,9 @@
+{
+  "ticker": "KALMAR.HE",
+  "companyName": "Kalmar Oyj",
+  "profile": "Kalmar Oyj designs, assembles, and services heavy material handling equipment for ports, terminals, distribution centres, manufacturing, and heavy logistics. Its portfolio includes terminal tractors, reachstackers, forklift trucks, empty container handlers, straddle carriers, and crane spreaders, supported by parts, maintenance, lifecycle services, and automation solutions that help customers improve uptime, safety, and productivity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:13:55.173Z"
+}

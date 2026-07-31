@@ -1,0 +1,9 @@
+{
+  "ticker": "KESKOB.HE",
+  "companyName": "Kesko",
+  "profile": "Kesko is a Finnish retail group operating in grocery trade, building and technical trade, and car trade. Its grocery chains include K-Market, K-Supermarket and K-Citymarket, while the building and technical business serves professionals and consumers through chains such as Onninen, K-Rauta, Byggmakker and K-Bygg. The car trade business is led by K-Auto.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-13T08:34:22.455Z"
+}

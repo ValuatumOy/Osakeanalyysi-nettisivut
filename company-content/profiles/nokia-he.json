@@ -1,0 +1,9 @@
+{
+  "ticker": "NOKIA.HE",
+  "companyName": "Nokia",
+  "profile": "Nokia designs and supplies telecommunications infrastructure and related software for mobile and fixed networks. Its main businesses include network infrastructure, mobile infrastructure, cloud and network services, and Nokia Technologies, which licenses patents and other intellectual property. The company also maintains Bell Labs research activities that support its network and technology portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-10T12:18:47.249Z"
+}

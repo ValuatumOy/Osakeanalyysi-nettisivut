@@ -1,0 +1,9 @@
+{
+  "ticker": "GREENH.CO",
+  "companyName": "Green Hydrogen Systems A/S",
+  "profile": "Green Hydrogen Systems A/S develops and supplies standardized, modular electrolyser systems for producing green hydrogen using renewable electricity. Its products include pressurized alkaline electrolysers and related on-site services such as maintenance, remote monitoring, and operational support. The company serves industrial customers, hydrogen fueling projects, power-to-X installations, and other applications that need cost-competitive renewable hydrogen.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:22:00.641Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "XVIVO.ST",
+  "companyName": "Xvivo Perfusion AB (publ)",
+  "profile": "XVIVO Perfusion AB develops and markets technologies and service solutions for organ preservation and transplantation. The company focuses on preserving, assessing, and transporting organs outside the body, with products and services for lungs, hearts, livers, and kidneys. It also provides organ recovery services, perfusion support, and communication tools for transplant clinics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:21.764Z"
+}

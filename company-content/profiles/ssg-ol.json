@@ -1,0 +1,9 @@
+{
+  "ticker": "SSG.OL",
+  "companyName": "Self Storage Group ASA",
+  "profile": "Self Storage Group ASA operates as a Scandinavian self-storage provider, offering rentable storage space through its City Self-Storage brand and related facilities in Norway. The company focuses on leasing units to private and business customers, supported by lean operations, automation, and customer service. It has also indicated a longer-term brand transition toward Green Storage.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:21:43.060Z"
+}

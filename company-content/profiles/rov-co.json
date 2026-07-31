@@ -1,0 +1,9 @@
+{
+  "ticker": "ROV.CO",
+  "companyName": "Rovsing A/S",
+  "profile": "Rovsing A/S develops and supplies functional testing and simulation solutions for the space and defense industry. Its offering includes EGSE systems, testing products, ground software, independent software verification and validation, and on-site engineering support. The company serves satellite and defense prime contractors, national space agencies, and other aerospace engineering customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:41:34.317Z"
+}

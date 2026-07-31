@@ -1,0 +1,9 @@
+{
+  "ticker": "NMAN.ST",
+  "companyName": "Nederman Holding AB (publ)",
+  "profile": "Nederman Holding AB is an environmental technology company focused on industrial air filtration. It develops and sells products and services for extracting, transporting, filtering and monitoring air and process emissions, including dust, fumes and gases. The group also provides digital tools and service support that help customers improve workplace safety, productivity and environmental compliance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:59.992Z"
+}

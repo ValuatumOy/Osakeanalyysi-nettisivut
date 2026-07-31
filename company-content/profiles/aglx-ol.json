@@ -1,0 +1,9 @@
+{
+  "ticker": "AGLX.OL",
+  "companyName": "Agilyx ASA",
+  "profile": "Agilyx ASA develops and commercialises solutions for plastic waste recycling. Its business includes feedstock management through GreenDot Global, technical services through arcLABS, and licensing of proprietary advanced recycling technologies such as Styrenyx and TruStyrenyx for polystyrene waste. The company focuses on recovering value from post-use plastics for circular and lower-carbon material production.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:21:57.017Z"
+}

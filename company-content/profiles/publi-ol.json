@@ -1,0 +1,9 @@
+{
+  "ticker": "PUBLI.OL",
+  "companyName": "Public Property Invest AS",
+  "profile": "Public Property Invest is a Nordic real estate company that owns, operates and develops social infrastructure properties with public-sector tenants. Its portfolio consists mainly of centrally located properties used for care homes, police stations, courts, healthcare services and other public offices. The group focuses on long-term leasing, property management and continued portfolio growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:09:47.787Z"
+}

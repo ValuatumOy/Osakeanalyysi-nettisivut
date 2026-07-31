@@ -1,0 +1,9 @@
+{
+  "ticker": "SCANFL.HE",
+  "companyName": "Scanfil Oyj",
+  "profile": "Scanfil Oyj is a European electronics manufacturing services company that provides design, prototyping, supply chain management, electronics assembly, mechanical assembly and system integration. It supports customers in industrial, energy and cleantech, aerospace and defense, and medtech and life science sectors through contract manufacturing, testing, packaging and global delivery across its production network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:24:04.039Z"
+}

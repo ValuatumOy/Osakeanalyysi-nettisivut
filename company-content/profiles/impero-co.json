@@ -1,0 +1,9 @@
+{
+  "ticker": "IMPERO.CO",
+  "companyName": "Impero A/S",
+  "profile": "Impero A/S is a Danish software-as-a-service company that provides a risk and internal control platform for compliance management. Its cloud-based software helps finance, tax and compliance teams document risks, run internal controls, track remediation and generate reporting. The company serves enterprise customers across multiple entities and markets from offices in Denmark and Germany.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:36:46.716Z"
+}

@@ -1,0 +1,134 @@
+{
+  "id": "nvidia-16072026",
+  "slug": "nvidia-equity-report",
+  "companyName": "NVIDIA Corporation",
+  "ticker": "NVDA",
+  "exchange": "NASDAQ",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-07-16",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "144.69 USD",
+    "targetPrice": "267.00 USD",
+    "impliedUpside": "+84.5%",
+    "marketCap": "USD 4,071.6 bn",
+    "enterpriseValue": "USD 3,898 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2027E", "value": "19.4x"},
+    {"label": "EV/EBITDA 2027E", "value": "15.4x"},
+    {"label": "FCF Yield 2027E", "value": "4.3%"},
+    {"label": "Dividend Yield 2027E", "value": "0.1%"},
+    {"label": "Net Debt/EBITDA 2027E", "value": "-0.7x"}
+  ],
+  "priceStats": {
+    "week52High": "236.54 USD",
+    "week52Low": "164.07 USD",
+    "oneYearChange": "+24.0%",
+    "threeYearChange": "+367.3%"
+  },
+  "summary": [
+    "NVIDIA Corporation (NVDA, NASDAQ) designs and supplies accelerated computing platforms, primarily graphics and AI processors, through two reportable segments — Compute & Networking, covering data center AI hardware, networking, automotive compute and robotics, and Graphics, covering GeForce gaming GPUs and professional visualization; in this Valuatum equity research report dated 16 July 2026 we rate the stock BUY with a 12-month target price of 267.00 USD against a current price of 144.69 USD, implying roughly 84.5% upside. Market capitalisation is USD 4,071.6 bn and enterprise value is USD 3,898 bn.",
+    "The core valuation tension is duration and cycle positioning, not current cash generation. The market has allocated 99.8% of enterprise value to Compute & Networking, which generates 89.6% of group net sales (USD 193.5 billion) and USD 130.1 billion of segment EBIT at a 67.3% operating margin. The stock reflects a 34.99x trailing 2026 EV/EBIT multiple but only 14.7x on 2027e EBIT of USD 240,008m — a meaningful discount to the peer median of 20.8x — and consensus EBIT must jump 84.0% from USD 130,387m in FY26 to USD 240,008m in FY27e, almost entirely sourced from Compute & Networking. That bridge requires hyperscaler capex to hold near USD 725bn in 2026, up 77% year on year.",
+    "On a reverse-valuation basis, a conservative 20x mature technology framework applied to current consolidated EBIT of USD 130.4 billion supports approximately USD 2.6 trillion of enterprise value, roughly 57% of the current allocation; the remaining 43% depends entirely on the forward consensus that EBIT reaches USD 240 billion by FY2027. Our 24.0x fair EV/EBIT multiple on 2027e EBIT of USD 240,008m (237.0 USD, 48% weight), blended with a 28.0x P/E on 2027e EPS of 8.65 (242.2 USD, 32% weight) and the ROE-versus-P/BV scatter framework (378.8 USD, 20% weight), yields the 267.0 USD weighted target. The scenario base case implies USD 267.30 per share (+84.7%), the bear case compresses EBITDA to USD 150,000m at 15.0x for USD 92.54 (-36.0%), and the bull case reaches USD 343.93 (+137.7%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Attractive Forward Multiple", "metric": "14.7x 2027e EV/EBIT", "text": "NVIDIA currently trades at 14.7x 2027e EV/EBIT, a meaningful discount to the peer median of 20.8x, and our selected fair multiple of 24.0x underpins most of the re-rating case for the target price."},
+    {"num": "02", "title": "Massive EBIT Scale-Up", "metric": "+84.0%", "text": "Consensus EBIT must jump 84.0% from USD 130,387mn in FY26 to USD 240,008mn in FY27e, an aggressive scale-up that underpins the higher target multiple and implied share price over time."},
+    {"num": "03", "title": "Sustained Hyperscaler Capex", "metric": "$725bn", "text": "Hyperscaler capex must hold near USD 725bn in 2026, up 77% year on year, since a bear case could compress FY28 EBIT to USD 150bn, sharply cutting enterprise value and pressuring the target price further."}
+  ],
+  "thesisBreaker": "If the 13:1 capex-to-software-revenue gap forces hyperscaler cuts, FY28 EBIT could compress to $150bn, cutting enterprise value by over 50%.",
+  "valuePools": [
+    {"name": "Compute & Networking", "share": "93.4% · USD 3,641,788m", "economics": "Revenue USD 193,479m (89.6%) · Comp. EBIT USD 130,141m (99.8% of EBIT, 67.3% margin) · EV USD 3,641,788m", "text": "Scaling pool at the core of the enterprise: Compute & Networking represents 89.6% of group net sales (USD 193.5 billion) and 99.8% of positive segment operating profit (USD 130.1 billion) at a 67.3% operating margin, and under the fallback EBIT allocation framework is assigned 99.8% of group enterprise value, or approximately USD 4.55 trillion. The market values the segment because it captures a large share of the global AI infrastructure buildout — a highly profitable, immediate cash-generating business rather than a speculative option — with investors assigning a mid-30x trailing EBIT multiple because they expect the shift from AI training workloads to AI inference workloads to keep expanding the total addressable market. The moat rests mainly on system-level integration rather than pure silicon performance: the CUDA software ecosystem provides a strong developer-level moat, while the physical moat in 2026 relies on proprietary networking — NVLink and InfiniBand — with systems like the GB300 NVL72 functioning essentially as a single, large logical GPU. Maintaining these margins requires controlling the bill of materials, particularly HBM3e and HBM4 memory sourced from SK Hynix, Micron and Samsung, and TSMC's advanced CoWoS packaging costs."},
+    {"name": "Graphics", "share": "6.6% · USD 256,217m", "economics": "Revenue USD 22,459m (10.4%) · Comp. EBIT USD 9,156m (7.0% of EBIT, 40.8% margin) · EV USD 256,217m", "text": "Profit-engine pool generating 10.4% of group net sales (USD 22.4 billion) and 7.0% of positive segment operating profit (USD 9.1 billion) at a healthy, though structurally lower, 40.8% EBIT margin; the fallback allocation assigns the segment roughly USD 320.3 billion in enterprise value, with low allocation confidence because applying the group's 35x trailing multiple to a mature consumer hardware business almost certainly overstates its standalone market value. Historically NVIDIA's foundational economic engine built on GeForce gaming GPUs and professional visualization workstations, today the market treats it mainly as a stabilizing cash generator that offsets the heavy capital needs and volatility of the data center business. NVIDIA holds a commanding market share in discrete desktop and laptop GPUs, consistently outperforming AMD's Radeon division, with the moat resting on the GeForce Experience software ecosystem, driver stability, and features like DLSS and ray-tracing performance. Margins are lower than in the data center segment because NVIDIA must share the profit pool with AIB manufacturers, distributors and retailers; required revenue for an 18x EV would be USD 43.4 billion."},
+    {"name": "Corporate / Unallocated", "share": "0.0% · USD 0m", "economics": "Revenue USD 0m (0.0%) · Comp. EBIT -USD 8,910m (-6.8% of EBIT) · EV USD 0m", "text": "Mixed corporate pool operating purely as a reconciling cost center containing stock-based compensation and acquisition-related expenses, with FY2026A revenue of USD 0m against a comparable EBIT of USD -8,910m and a zero enterprise-value allocation; it is modeled as a capitalized liability rather than an operating business."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests whether the revenue, EBITDA and multiple assumptions embedded in NVIDIA's enterprise value are coherent, and the scenarios depend heavily on the duration of hyperscaler AI capex budgets and the successful transition to the Vera Rubin architecture. Because NVIDIA's net debt is just USD 807 million, the enterprise value bridges almost one-for-one to equity value in every scenario, so the multiple applied to scenario EBITDA translates directly into value per share.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "560,000", "EBITDA": "380,000", "Margin": "68.0%", "Multiple": "22.0x", "EV": "8,360,000", "Equity": "8,359,193"}, "impliedValueOrUpside": "USD 343.93 / sh · +137.7%"},
+      {"scenario": "Base", "cols": {"Revenue": "479,971", "EBITDA": "324,880", "Margin": "67.7%", "Multiple": "20.0x", "EV": "6,497,600", "Equity": "6,496,793"}, "impliedValueOrUpside": "USD 267.30 / sh · +84.7%"},
+      {"scenario": "Bear", "cols": {"Revenue": "250,000", "EBITDA": "150,000", "Margin": "60.0%", "Multiple": "15.0x", "EV": "2,250,000", "Equity": "2,249,193"}, "impliedValueOrUpside": "USD 92.54 / sh · -36.0%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "NVIDIA operates as a dual-segment business, but the economics are heavily skewed toward one dominant segment: Compute & Networking is the core of the enterprise, generating nearly 90% of group revenue and effectively 99.8% of positive segment operating profit, and under the fallback uniform allocation framework it accounts for USD 4.55 trillion of the USD 4.56 trillion enterprise value. The enterprise value bridges to equity market capitalisation with little friction — net debt is just USD 807 million. Compute & Networking generates USD 130.1 billion of FY2026 segment EBIT at a 67.3% operating margin, driven by unprecedented hyperscaler data center investment, with a moat resting mainly on system-level integration: the CUDA software ecosystem plus proprietary NVLink and InfiniBand networking, where systems like the GB300 NVL72 function essentially as a single, large logical GPU. Graphics contributes 10.4% of net sales (USD 22.4 billion) at a 40.8% EBIT margin and is treated mainly as a stabilizing cash generator, while Corporate/Unallocated, a reconciling cost center with comparable EBIT of USD -8,910m, is modeled as a capitalized liability. The key tension is the sustainability of the current earnings base versus the duration implied by the valuation multiple: the valuation is not pricing speculative future optionality, it is capitalizing current peak margins and volumes at a growth multiple."},
+    {"heading": "Cross-pool bridge", "text": "The mechanical driver of the financial forecast is the scale of Compute & Networking absorbing the global hyperscaler capital expenditure wave: the jump from USD 215.9 billion in sales to USD 369.4 billion in a single year requires NVIDIA to successfully deploy and recognize revenue on a very large volume of Blackwell Ultra and initial Vera Rubin systems, overwhelmingly supported by hyperscalers' stated USD 725 billion 2026 capex commitments. The 89.8% expected EBITDA growth reflects operating leverage — once R&D for a silicon architecture is sunk, marginal gross profit drops almost cleanly to the operating line, expanding EBITDA margins to a projected 68.4%. The bridge is weakest on supply chain execution and sustained downstream demand: TSMC's CoWoS packaging capacity must scale in step with NVIDIA's orders, SK Hynix and Micron must deliver HBM memory without critical yield bottlenecks, and data center power provisioning delays could defer system deliveries. On valuation, a conservative 20x mature technology framework on current consolidated EBIT of USD 130.4 billion would support an enterprise value of approximately USD 2.6 trillion, roughly 57% of the current allocated enterprise value; the remaining 43% depends entirely on the forward consensus that EBIT reaches USD 240 billion by FY2027. The valuation is defensible because short-term visibility into hyperscaler budgets de-risks the immediate earnings bridge, but it could fail if the transition from AI training to AI inference shifts market share toward Broadcom's custom ASICs or AMD's memory-dense MI400 architecture."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ fundamentally on the duration and terminal architecture of the AI infrastructure market. In the base case, aligned with forward consensus, NVIDIA successfully transitions its customer base to the Vera Rubin architecture, maintaining its margin profile and scaling EBIT above USD 310 billion by FY2028, for an implied USD 267.30 per share (+84.7%). The bull case requires the total addressable market to expand structurally beyond the Big Four hyperscalers — sovereign nations building proprietary AI clusters and traditional enterprise data centers aggressively upgrading to on-premise AI infrastructure would diminish NVIDIA's volume dependency on Amazon, Meta, Microsoft and Google — reaching USD 343.93 per share (+137.7%). The bear case is the case that would break the thesis: it depends on the 13:1 investment-to-revenue ratio breaking the capex cycle, where Microsoft and Google cannot monetize AI software fast enough and extend the lifespan of their current Blackwell and Hopper fleets, sharply cutting new system orders in 2027 and 2028 for USD 92.54 per share (-36.0%). The central investment debate is whether NVIDIA has structurally reset the global semiconductor market or is instead navigating the most lucrative cyclical peak in hardware history: with 99.8% of the USD 4.56 trillion enterprise value allocated to Compute & Networking, NVIDIA's equity is effectively a single, highly leveraged bet on the continued expansion of data center AI infrastructure."}
+  ],
+  "risks": [
+    "Customer concentration and ROI gap (Compute & Networking): lack of downstream AI software monetization forces cloud providers to cut capex, with deceleration in hyperscaler cloud revenue as the early warning - HIGH impact and a thesis-breaker if it occurs; the top two direct customers represented 36% of FY2026 revenue.",
+    "Custom ASIC substitution (Compute & Networking): hyperscalers substitute internal custom silicon for merchant GPUs for inference, with Broadcom exceeding ASIC revenue targets as the early warning - HIGH impact, structural.",
+    "Geopolitical export controls (Compute & Networking): further U.S. restrictions on high-performance chip sales, with regulatory announcements as the early warning - MEDIUM impact, manageable.",
+    "Supply chain concentration at TSMC (Compute & Networking): disruption or capacity constraints at TSMC for 3nm and CoWoS, with TSMC capex or node delay announcements as the early warning - MEDIUM impact, structural."
+  ],
+  "catalysts": [
+    "Hyperscaler Q3/Q4 2026 capex guidance (near-term, Compute & Networking): changes in year-on-year capex plans from the Big Four feed directly into NVIDIA's order book, with high correlation to the target multiple.",
+    "TSMC CoWoS packaging capacity scaling (near-term, Compute & Networking): supply chain bottleneck easing enables FY27 revenue recognition.",
+    "Broadcom custom ASIC revenue targets (medium-term, Compute & Networking): Broadcom's run-rate toward its $100B goal signals merchant GPU share erosion and is an early warning of whether NVIDIA's merchant silicon is losing share in the high-volume inference market.",
+    "Vera Rubin (R100) commercial shipments (medium-term, Compute & Networking): a TCO advantage over AMD/ASICs protects the 65%+ EBIT margin."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": ["2024A", "2025A", "2026A", "2027E", "2028E", "2029E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["60,922", "130,497", "215,938", "369,421", "479,971", "561,020"]},
+        {"label": "EBITDA", "values": ["34,480", "83,317", "133,230", "252,848", "324,880", "394,968"]},
+        {"label": "EBITDA margin", "values": ["56.6%", "63.8%", "61.7%", "68.4%", "67.7%", "70.4%"]},
+        {"label": "Depreciation", "values": ["-1,508", "-1,864", "-2,843", "-12,840", "-6,623", "-24,378"]},
+        {"label": "Operating Profit (EBIT)", "values": ["32,972", "81,453", "130,387", "240,008", "318,257", "370,590"]},
+        {"label": "EBIT margin", "values": ["54.1%", "62.4%", "60.4%", "65.0%", "66.3%", "66.1%"]},
+        {"label": "Net financial items", "values": ["846", "2,573", "11,063", "-1,115", "-13,113", "-11,221"]},
+        {"label": "Pre-tax Profit", "values": ["33,818", "84,026", "141,450", "238,893", "305,144", "359,369"]},
+        {"label": "Net Earnings", "values": ["29,760", "72,880", "120,067", "210,288", "268,589", "316,318"]},
+        {"label": "EPS (USD)", "values": ["1.2", "3", "4.9", "8.7", "11.1", "13"]},
+        {"label": "DPS (USD)", "values": ["0.2", "0.1", "0", "0.1", "0.2", "0.2"]},
+        {"label": "Payout ratio", "values": ["13.3%", "2.4%", "0.8%", "1.4%", "1.4%", "1.4%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2024A", "2025A", "2026A", "2027E", "2028E", "2029E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["17,954", "48,938", "92,564", "200,023", "256,083", "326,672"]},
+        {"label": "Operating cash flow", "values": ["14,740", "42,232", "81,782", "201,005", "267,625", "336,549"]},
+        {"label": "Change in working capital", "values": ["13,313", "25,806", "30,346", "23,105", "19,129", "14,024"]},
+        {"label": "Gross capex", "values": ["2,097", "7,058", "50,287", "24,676", "15,119", "30,607"]},
+        {"label": "Capex (ex. M&A)", "values": ["-2,097", "-7,058", "-50,287", "-24,676", "-15,119", "-30,607"]},
+        {"label": "Free Operating Cash Flow", "values": ["13,004", "36,394", "33,584", "176,329", "252,506", "305,942"]},
+        {"label": "Free cash flow to firm", "values": ["13,004", "36,394", "33,584", "176,329", "252,506", "305,942"]},
+        {"label": "CF from financing", "values": ["-9,497", "-36,097", "-38,870", "-12,384", "-3,005", "-3,839"]},
+        {"label": "Dividends paid", "values": ["-3,979", "-3,950", "-1,719", "-972", "-3,005", "-3,839"]},
+        {"label": "Net change in cash", "values": ["6,360", "5,783", "3,407", "162,964", "237,959", "292,226"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2027E"],
+      "rows": [
+        {"label": "P/E", "values": ["19.4x"]},
+        {"label": "EV/EBITDA", "values": ["15.4x"]},
+        {"label": "EV/EBIT", "values": ["16.2x"]},
+        {"label": "P/FCF", "values": ["23.1x"]},
+        {"label": "P/BV", "values": ["11.1x"]},
+        {"label": "Dividend Yield", "values": ["0.1%"]},
+        {"label": "Net Debt / EBITDA", "values": ["-0.7x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is NVIDIA a buy in 2026?", "a": "Yes. Valuatum's 16 July 2026 equity report rates NVIDIA (NVDA) a BUY with a 267.00 USD 12-month target versus a 144.69 USD price, implying about 84.5% upside. The market is mispricing duration, not current cash generation — the valuation is fully supported by current, cash-generating economics and near-term forward visibility, with the stock at 14.7x 2027e EV/EBIT versus a 20.8x peer median."},
+    {"q": "What is NVIDIA's price target?", "a": "The Valuatum report dated 16 July 2026 sets a 12-month fundamental target price of 267.00 USD for NVIDIA (NVDA), against a current price of 144.69 USD. The target blends a 24.0x EV/EBIT multiple on 2027e EBIT of USD 240,008m (237.0 USD, 48% weight) with a 28.0x P/E on 2027e EPS of 8.65 USD (242.2 USD, 32% weight) and an ROE-versus-P/BV scatter framework on average forecast BVPS of 26.7 USD (378.8 USD, 20% weight)."},
+    {"q": "Why is NVIDIA rated BUY?", "a": "NVIDIA is rated BUY because it trades at 14.7x 2027e EV/EBIT, a meaningful discount to the peer median of 20.8x, while Compute & Networking generates USD 130.1 billion of segment EBIT at a 67.3% operating margin and carries 99.8% of enterprise value. Consensus EBIT jumps 84.0% from USD 130,387m in FY26 to USD 240,008m in FY27e, and a 24.0x fair multiple on that EBIT underpins the re-rating case toward 267.00 USD — contingent on hyperscaler capex holding near the USD 725bn 2026 run-rate."},
+    {"q": "Is NVIDIA overvalued in 2026?", "a": "On Valuatum's framework NVIDIA is not overvalued at 144.69 USD: a conservative 20x mature technology framework on current consolidated EBIT of USD 130.4 billion supports approximately USD 2.6 trillion of enterprise value, roughly 57% of the current allocation, with the remaining 43% depending entirely on the forward consensus that EBIT reaches USD 240 billion by FY2027. The fragility is that the market prices the data center AI buildout as a permanent upward step-change in global compute infrastructure that will not see a severe cyclical retrenchment."},
+    {"q": "How does the reverse valuation work for NVIDIA?", "a": "The scenario bridge tests whether the revenue, EBITDA and multiple assumptions embedded in NVIDIA's enterprise value are coherent, with hyperscaler AI capex duration and the Vera Rubin transition as the swing factors. The base case (revenue USD 479,971m, EBITDA USD 324,880m at 20.0x) implies USD 267.30 per share, or +84.7% versus the current price; the bear case compresses EBITDA to USD 150,000m at 15.0x for USD 92.54 (-36.0%), while the bull case at 22.0x reaches USD 343.93 (+137.7%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, NVIDIA report dated 16 July 2026 (company value map; allocated EV for Compute & Networking USD 4,553,330m, historical segment operating income USD 139,297m from NVIDIA's FY2026 Form 10-K segment note, current quote 144.69 USD).",
+    "Consensus estimates: FY2028 consensus net sales of USD 479,971m used in the scenario base case; consensus EBIT path from USD 130,387mn (FY26 actual) to USD 240,008mn (FY27e) underpins the target price bridge.",
+    "Market data: Ticker NVDA current price 144.69 USD as of 16 July 2026 (the report flags that price sources disagree — verify); 52-week high 236.54 USD, 52-week low 164.07 USD; FY2027e EBIT USD 240,008m (analyst-generated estimate)."
+  ]
+}

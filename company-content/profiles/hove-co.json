@@ -1,0 +1,9 @@
+{
+  "ticker": "HOVE.CO",
+  "companyName": "Hove A/S",
+  "profile": "Hove A/S develops and supplies advanced lubrication solutions for heavy machinery. Its products include lubrication pumps, grease cartridge systems and digital tracking tools that help customers control lubricant delivery, reduce manual maintenance work and downtime, and extend equipment life. The company sells primarily into wind power, with additional activity in mining and port operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:31:33.892Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NRS.OL",
+  "companyName": "Norway Royal Salmon AS",
+  "profile": "Norway Royal Salmon was a Norwegian aquaculture group focused on farming, processing, and selling Atlantic salmon. Its operations spanned salmon production, sales and marketing, and related value chain activities through owned and affiliated farming licences, with activity in Norway and Iceland. In 2022, the company merged into SalMar and was dissolved.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:46:02.209Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "IRLAB-A.ST",
+  "companyName": "IRLAB Therapeutics AB (publ)",
+  "profile": "IRLAB Therapeutics AB is a Swedish biotechnology company that discovers and develops treatments for Parkinson’s disease and other central nervous system disorders. Its pipeline includes clinical and preclinical drug candidates, and its value driver is the proprietary Integrative Screening Process research platform, which is used to identify and advance new drug candidates.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:27:03.890Z"
+}

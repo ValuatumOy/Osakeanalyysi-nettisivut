@@ -1,0 +1,9 @@
+{
+  "ticker": "NLG1V.HE",
+  "companyName": "Nurminen Logistics Oyj",
+  "profile": "Nurminen Logistics is a Finnish logistics company that provides international rail and multimodal transport services across the Nordics, Europe and Asia. Its offering also includes terminal operations, cargo handling, forwarding and customs clearance, heavy cargo and project logistics, and outsourced warehousing. The company serves businesses with door-to-door cross-border supply chain solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:47:57.935Z"
+}

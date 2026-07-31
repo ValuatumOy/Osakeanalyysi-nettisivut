@@ -180,7 +180,7 @@ const TESLA_PREVIEW = {
     { label: 'P/E (fwd)', value: '89x', change: null },
     { label: 'Div. Yield', value: '0.0%', change: null },
   ],
-  previewSummary: "Tesla's current enterprise value of ~$784B embeds far more than the company's near-term automotive profitability can justify. At an EBIT margin of 3.7% and EV/EBIT of 218x, the automotive business alone accounts for a relatively small share of total implied value. The preview suggests the market is pricing in a substantial option premium for future value pools — including Full Self-Driving software, the Robotaxi network, and energy storage. The full report maps each value pool, tests the required assumptions, and runs a reverse valuation on the path required to justify current pricing.",
+  previewSummary: "Tesla's current enterprise value of ~$784B embeds far more than the company's near-term automotive profitability can justify. At an EBIT margin of 3.7% and EV/EBIT of 218x, the automotive business alone accounts for a relatively small share of total implied value. The preview suggests the market is pricing in a substantial option premium for future value drivers — including Full Self-Driving software, the Robotaxi network, and energy storage. The full report maps each value driver, tests the required assumptions, and runs a reverse valuation on the path required to justify current pricing.",
   valuePoolsPreview: [
     { name: 'Automotive (Core)', pct: 38, locked: false, color: '#3D9E72' },
     { name: 'Energy & Storage', pct: 12, locked: false, color: '#6DBFA0' },
@@ -203,7 +203,7 @@ const SAMPLE_REPORTS = [
     pdfUrl: null,
     thumbnailUrl: null,
     isAvailable: false,
-    tags: ['Option value', 'Reverse valuation', 'Value pools', 'EV tech'],
+    tags: ['Option value', 'Reverse valuation', 'Value drivers', 'EV tech'],
   },
   {
     id: 'upm-sample',
@@ -270,7 +270,7 @@ const LOCKED_SECTIONS = [
   {
     id: 'core-analysis',
     title: 'Core Investment Analysis',
-    description: 'A full value pool-based analysis of business model quality, competitive position, historical performance, valuation tension, scenarios, risks, and catalysts.',
+    description: 'A full value driver-based analysis of business model quality, competitive position, historical performance, valuation tension, scenarios, risks, and catalysts.',
     icon: 'document',
     blurPreviewText: 'The automotive business faces increasing competitive pressure in China and Europe, while the US market remains relatively protected. FSD adoption trajectory is the single largest uncertainty factor in the valuation. Historical margin trajectory suggests...',
   },

@@ -1,0 +1,9 @@
+{
+  "ticker": "SOLNA.ST",
+  "companyName": "Solnaberg Property AB (publ)",
+  "profile": "Solnaberg Property AB (publ) owns and manages the Solna Bladet 3 property in Bergshamra, north of Stockholm, which consists of four connected office buildings with about 31,325 square meters of leasable space. The property is mainly leased on a long-term basis to If Skadeförsäkring AB, and rental income is the company’s main source of value.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:09.983Z"
+}

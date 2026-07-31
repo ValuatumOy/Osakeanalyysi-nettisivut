@@ -1,0 +1,9 @@
+{
+  "ticker": "WITTED.HE",
+  "companyName": "Witted Megacorp Oyj",
+  "profile": "Witted Megacorp Oyj is an IT services company that helps large digitally mature organizations build software development teams and advance digital transformation projects. The group provides software consulting, team augmentation, and advisory services, and has expanded its offering into AI and data through Witted AIcorp. It operates across several Nordic markets and the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:59:05.272Z"
+}

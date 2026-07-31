@@ -1,0 +1,9 @@
+{
+  "ticker": "MEKO.ST",
+  "companyName": "Meko AB (publ)",
+  "profile": "MEKO AB is a Northern European automotive aftermarket company that sells spare parts and accessories through wholesale operations and a network of branches. It serves workshops and car owners with products, logistics, and related services under brands including Mekonomen, MECA, BilXtra, FTZ, Fixus, Inter-Team, and Sørensen og Balchen.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:46:37.183Z"
+}

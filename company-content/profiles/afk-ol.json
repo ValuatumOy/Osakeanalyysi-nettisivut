@@ -1,0 +1,9 @@
+{
+  "ticker": "AFK.OL",
+  "companyName": "Arendals Fossekompani ASA",
+  "profile": "Arendals Fossekompani ASA is a long-term industrial investment company that owns and develops businesses in sectors including software and analytics, satellite communications, induction technology, industrial 3D printing, property and hydropower. The group acts as an active owner, supporting portfolio companies with capital, strategic development and operational improvement, while also retaining a renewable power and property platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:00:11.722Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "IDEX.OL",
+  "companyName": "IDEX Biometrics ASA",
+  "profile": "IDEX Biometrics ASA develops and sells biometric authentication cards and related components for physical access, digital access, and payment use cases. Its products combine fingerprint sensors, secure elements, and software for card enrolment and management, and are sold to enterprises, public-sector customers, banks, issuers, and channel partners.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:51:04.562Z"
+}

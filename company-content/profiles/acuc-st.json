@@ -1,0 +1,9 @@
+{
+  "ticker": "ACUC.ST",
+  "companyName": "AcuCort AB",
+  "profile": "AcuCort AB is a Swedish pharmaceutical company that develops and commercializes Zeqmelit, a fast-dissolving oral film containing dexamethasone. The product is designed for situations where simple administration is important and is approved in Sweden, Denmark, Norway and Finland for uses including acute allergic reactions, croup in children, chemotherapy-related nausea and vomiting, and respiratory support in COVID-19.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:06:21.068Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "TREL-B.ST",
+  "companyName": "Trelleborg AB (publ)",
+  "profile": "Trelleborg is a global industrial group focused on engineered polymer solutions. It develops and supplies sealing systems and components, polymer-based solutions for industrial and infrastructure applications, and integrated solutions for medical and life science uses. The company’s value drivers include materials expertise, application know-how, customer-specific engineering, and manufacturing for demanding environments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:01:38.303Z"
+}

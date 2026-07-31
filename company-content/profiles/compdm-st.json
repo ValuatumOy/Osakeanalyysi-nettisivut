@@ -1,0 +1,9 @@
+{
+  "ticker": "COMPDM.ST",
+  "companyName": "Compodium International AB (publ)",
+  "profile": "Compodium International AB develops and sells software for secure digital communication. Its platform supports browser-based video meetings, secure messaging, and embedded communication features for organizations that handle sensitive information. The company serves customers that need compliant collaboration, with offerings delivered as SaaS and, for some services, on-premises deployments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:25:06.720Z"
+}

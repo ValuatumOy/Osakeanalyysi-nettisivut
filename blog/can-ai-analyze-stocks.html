@@ -26,6 +26,30 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://www.aiequityreports.com/#organization",
+      "name": "Valuatum Oy",
+      "url": "https://valuatum.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.aiequityreports.com/images/Valuatum_logo.png"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.aiequityreports.com/authors/lauri-hynonen.html#person",
+      "name": "Lauri Hynönen",
+      "url": "https://www.aiequityreports.com/authors/lauri-hynonen.html",
+      "image": "https://www.aiequityreports.com/images/authors/lauri-hynonen.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
+      ],
+      "jobTitle": "AI Analyst, Valuatum Oy",
+      "worksFor": {
+        "@id": "https://www.aiequityreports.com/#organization"
+      }
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {
@@ -57,19 +81,26 @@
       "dateModified": "2026-06-12",
       "inLanguage": "en",
       "mainEntityOfPage": "https://www.aiequityreports.com/blog/can-ai-analyze-stocks.html",
+      "image": "https://www.aiequityreports.com/images/og-image.png",
       "author": {
-        "@type": "Person",
-        "name": "Lauri Hynönen",
-        "url": "https://www.aiequityreports.com/authors/lauri-hynonen.html",
-        "sameAs": [
-          "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/"
-        ],
-        "jobTitle": "AI Analyst, Valuatum Oy"
+        "@id": "https://www.aiequityreports.com/authors/lauri-hynonen.html#person"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "Valuatum",
-        "url": "https://valuatum.com"
+        "@id": "https://www.aiequityreports.com/#organization"
+      },
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Lauri Hynönen",
+        "sameAs": "https://www.linkedin.com/in/lauri-hyn%C3%B6nen-18372b22b/",
+        "jobTitle": "AI Analyst, Valuatum Oy"
+      },
+      "keywords": [
+        "can ai analyze stocks",
+        "ai-equity-research"
+      ],
+      "about": {
+        "@type": "Thing",
+        "name": "ai equity research"
       },
       "isAccessibleForFree": true
     },
@@ -133,7 +164,6 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link">Reports</a>
-        <a href="/comparisons.html" class="nav-link">Compare</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -173,7 +203,7 @@
         </section>
 <section style="margin-top:2.5rem;" id="what-ai-gets-right-in-equity-analysis">
           <h2>What AI gets right in equity analysis</h2>
-          <p>Structured financial modelling is where the advantage is clearest. Our June 2026 analysis on Nokia produced a SELL rating with an 11.50 EUR price target against a 13.90 EUR share price. Nokia is one of five Helsinki-listed companies we value in full; our guide to <a href="/blog/investing-in-helsinki-listed-stocks.html">investing in Finnish stocks</a> lays out the current buys and sells. The model applied a reverse valuation: what revenue growth and margin assumptions does the current share price imply, and are those assumptions realistic given what we know about Nokia's competitive position and order book? The same model also splits a company's enterprise value into <a href="/blog/value-pool-analysis-explained.html">value pools</a> to show which businesses the market is actually paying for. That process runs identically whether the subject is Nokia or any other company being modelled for the first time. There is no familiarity bias, no reluctance to cut a rating because a buy call was published three months ago, and no pressure to stay within a comfortable range of the analyst consensus.</p><p>Data coverage is the second structural advantage. A senior sell-side analyst covers 15 to 20 companies and reads selectively, prioritising the names generating the most trading activity or banking interest. An AI model reads every filing, every transcript, every footnote for every covered company. Nothing gets skipped because there were three other earnings calls that week.</p><p>Consistency across a coverage universe is underrated. When a human analyst covers both Nokia and Ericsson, the frameworks they apply to each will drift slightly depending on which company they know better, which management team they find more credible, and which numbers they have been tracking longest. AI applies the same methodology identically to both.</p>
+          <p>Structured financial modelling is where the advantage is clearest. Our June 2026 analysis on Nokia produced a SELL rating with an 11.50 EUR price target against a 13.90 EUR share price. Nokia is one of five Helsinki-listed companies we value in full; our guide to <a href="/blog/investing-in-helsinki-listed-stocks.html">investing in Finnish stocks</a> lays out the current buys and sells. The model applied a reverse valuation: what revenue growth and margin assumptions does the current share price imply, and are those assumptions realistic given what we know about Nokia's competitive position and order book? The same model also splits a company's enterprise value into <a href="/methodology.html">value drivers</a> to show which businesses the market is actually paying for. That process runs identically whether the subject is Nokia or any other company being modelled for the first time. There is no familiarity bias, no reluctance to cut a rating because a buy call was published three months ago, and no pressure to stay within a comfortable range of the analyst consensus.</p><p>Data coverage is the second structural advantage. A senior sell-side analyst covers 15 to 20 companies and reads selectively, prioritising the names generating the most trading activity or banking interest. An AI model reads every filing, every transcript, every footnote for every covered company. Nothing gets skipped because there were three other earnings calls that week.</p><p>Consistency across a coverage universe is underrated. When a human analyst covers both Nokia and Ericsson, the frameworks they apply to each will drift slightly depending on which company they know better, which management team they find more credible, and which numbers they have been tracking longest. AI applies the same methodology identically to both.</p>
         </section>
 <section style="margin-top:2.5rem;" id="where-humans-still-hold-an-edge">
           <h2>Where humans still hold an edge</h2>
@@ -215,6 +245,14 @@
             </li><li style="margin-bottom:0.4rem; font-size:var(--text-sm);">
               <a href="/methodology.html" style="color:var(--green);">Valuatum Research Methodology</a>
             </li>
+          </ul>
+        </section>
+
+      
+        <section aria-labelledby="continue-researching" style="margin-top:2.5rem;background:var(--off-white);border-radius:var(--r-lg);padding:1.5rem;">
+          <h2 id="continue-researching" style="font-size:var(--text-md);margin-top:0;">Continue researching</h2>
+          <ul style="margin:0;padding-left:1.2rem;">
+            <li style="margin-bottom:.55rem;"><a href="/methodology.html">Explore the Valuatum methodology</a></li><li style="margin-bottom:.55rem;"><a href="/reports/nokia-equity-report.html">nokia equity report</a></li>
           </ul>
         </section>
 
@@ -262,13 +300,13 @@
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
-            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>

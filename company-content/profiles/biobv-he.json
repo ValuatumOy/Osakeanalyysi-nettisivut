@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOBV.HE",
+  "companyName": "Biohit Oyj",
+  "profile": "Biohit Oyj is a Finnish biotechnology company focused on developing, manufacturing and marketing diagnostic products and analysis systems for gastrointestinal diseases, along with health-promoting products. Its portfolio includes the GastroPanel® diagnostic test, Acetium® products that bind acetaldehyde, and laboratory tests and instruments. The company sells through subsidiaries and a global network of distributors and partners.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:57:33.373Z"
+}

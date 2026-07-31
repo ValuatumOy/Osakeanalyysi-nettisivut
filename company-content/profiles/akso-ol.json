@@ -1,0 +1,9 @@
+{
+  "ticker": "AKSO.OL",
+  "companyName": "Aker Solutions ASA",
+  "profile": "Aker Solutions ASA provides integrated solutions, products and services to the global energy industry. Its work spans subsea systems, offshore engineering and project execution, maintenance, modifications and decommissioning, plus low-carbon offerings such as electrification, carbon capture and offshore wind. The company focuses on helping customers improve production, extend asset life and reduce emissions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:50:52.678Z"
+}

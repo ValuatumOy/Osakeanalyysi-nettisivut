@@ -1,0 +1,9 @@
+{
+  "ticker": "LARK.ST",
+  "companyName": "CombiGene AB (publ)",
+  "profile": "CombiGene AB (publ) is a Swedish biotechnology company focused on gene therapy and other advanced treatments for severe diseases. Its business model has centred on identifying promising assets, advancing them to proof of concept, and outlicensing them to partners for continued development and commercialization. In January 2025, it announced discontinuation of research activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:24:10.809Z"
+}

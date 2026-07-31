@@ -1,0 +1,9 @@
+{
+  "ticker": "FROY.OL",
+  "companyName": "Frøy ASA",
+  "profile": "Frøy ASA provides integrated aquaculture services to salmon farming companies, mainly in Norway and other North Atlantic markets. Its fleet of wellboats and service vessels supports transport of smolt and live fish, fish treatment, net cleaning, site installation and maintenance, and other day-to-day marine operations. The company also handles sea transport and related logistics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:24:29.127Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ALZ.ST",
+  "companyName": "Alzinova AB (publ)",
+  "profile": "Alzinova AB is a Swedish clinical-stage biopharmaceutical company focused on Alzheimer’s disease. It develops disease-modifying therapies based on its proprietary AβCC peptide technology, including the therapeutic vaccine ALZ-101 in clinical development and the antibody ALZ-201 in preclinical development. The company’s work centers on targeting toxic amyloid-β oligomers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:01:01.206Z"
+}

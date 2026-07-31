@@ -1,0 +1,9 @@
+{
+  "ticker": "RXRX",
+  "companyName": "Recursion Pharmaceuticals",
+  "profile": "Recursion Pharmaceuticals is a biotechnology company using automated biology, machine learning and large-scale data generation to discover and develop medicines. Its platform combines laboratory automation, cellular imaging, chemical and biological datasets, and computational models to identify disease biology, select drug candidates and advance internal or partnered therapeutic programmes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "GIAB.ST",
+  "companyName": "Godsinlösen Nordic AB (publ)",
+  "profile": "Godsinlösen Nordic AB provides circular-economy services focused on handling returns, complaints, and damaged goods. Its operations include logistics, inventory management, damage verification, repair, refurbishment, and resale for insurance companies, e-commerce businesses, producers, and distributors. The company also offers sustainability data and consulting related to reuse, resource efficiency, and circular business models.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:08:51.465Z"
+}

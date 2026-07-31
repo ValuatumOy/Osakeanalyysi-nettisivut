@@ -1,0 +1,9 @@
+{
+  "ticker": "AOJ-B.CO",
+  "companyName": "Brødrene A & O Johansen A/S",
+  "profile": "Brødrene A & O Johansen A/S is a Danish distributor serving professional and private customers through B2B and B2C channels. The company sells a broad range of products for plumbing, heating, electrical, tools, hardware, and related building needs, supported by stores, customer service, mobile sales, and digital ordering platforms.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:03:15.495Z"
+}

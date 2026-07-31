@@ -1,0 +1,9 @@
+{
+  "ticker": "WIRTEK.CO",
+  "companyName": "Wirtek A/S",
+  "profile": "Wirtek A/S is a Danish IT services and solutions company that provides software development, embedded engineering, R&D, quality assurance and testing for clients worldwide. It serves industries including energy, wireless communication, automation, IoT and digitalisation, and also develops proprietary solutions, particularly for energy and IoT. The company is broadening from services into a more platform-enabled model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:16:01.210Z"
+}

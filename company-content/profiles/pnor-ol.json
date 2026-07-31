@@ -1,0 +1,9 @@
+{
+  "ticker": "PNOR.OL",
+  "companyName": "PetroNor E&P ASA",
+  "profile": "PetroNor E&P ASA is an independent oil and gas exploration and production company focused on Sub-Saharan Africa. It holds producing assets and exploration licences offshore West Africa, including interests in Congo-Brazzaville and Nigeria. The company develops and operates these assets, with value driven by production, reserves growth, and improved recovery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:03:47.676Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CLAV.ST",
+  "companyName": "Clavister Holding AB (publ.)",
+  "profile": "Clavister Holding AB develops cybersecurity software and related solutions for mission-critical environments. Its product portfolio includes next-generation firewalls, identity and access management, and cross-domain security for secure data transfer between classified or separated networks. The company also provides professional services for deployment and optimisation, serving public sector, telecom, energy and defence customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:17:54.136Z"
+}

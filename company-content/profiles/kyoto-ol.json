@@ -1,0 +1,9 @@
+{
+  "ticker": "KYOTO.OL",
+  "companyName": "Kyoto Group AS",
+  "profile": "Kyoto Group AS develops and commercializes Heatcube, a molten-salt thermal battery system for industrial process heat. The company provides low-carbon, on-demand steam and heat to energy-intensive customers, replacing fossil-fired boilers with electricity-based storage. It also offers related energy management and commercial delivery models, including Heat-as-a-Service, to support flexible, cost-efficient heat supply.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:05:58.765Z"
+}

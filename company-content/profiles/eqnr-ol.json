@@ -1,0 +1,9 @@
+{
+  "ticker": "EQNR.OL",
+  "companyName": "Equinor ASA",
+  "profile": "Equinor ASA is an international energy company headquartered in Norway. Its core business is the exploration, development and production of oil and gas, mainly on the Norwegian continental shelf and in selected international markets. The company also develops renewable power, including offshore and onshore wind, and low-carbon solutions such as carbon capture and storage.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:56:41.332Z"
+}

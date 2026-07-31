@@ -1,0 +1,9 @@
+{
+  "ticker": "UPONOR.HE",
+  "companyName": "Uponor Oyj",
+  "profile": "Uponor, now part of GF Building Flow Solutions, supplies water-related building systems for residential, commercial and infrastructure projects. Its portfolio includes PEX plumbing, hot and cold water distribution, radiant heating and cooling, drainage, and prefabricated installation systems, with services that support planning, installation and efficient building performance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:54:21.525Z"
+}

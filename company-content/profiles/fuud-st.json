@@ -1,0 +1,9 @@
+{
+  "ticker": "FUUD.ST",
+  "companyName": "Fuud AB (publ)",
+  "profile": "Fuud AB (publ) is a Swedish food company that markets and sells functional foods under a portfolio of brands. Its products include functional beverages, dietary supplements, juices, sauces and healthy sweets, with distribution through grocery, convenience and specialty retail channels in the Nordic region. The company is headquartered in Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:05:01.011Z"
+}

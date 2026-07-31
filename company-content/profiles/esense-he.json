@@ -1,0 +1,9 @@
+{
+  "ticker": "ESENSE.HE",
+  "companyName": "Enersense International Oyj",
+  "profile": "Enersense International Oyj provides lifecycle services for energy transmission and generation, the industrial energy transition, telecommunications and data centres. The company designs, builds, maintains and modernises critical infrastructure, including power lines, substations, telecom networks, and power and data communication systems across the Nordics and the Baltics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:46:55.941Z"
+}

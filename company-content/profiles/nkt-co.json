@@ -1,0 +1,9 @@
+{
+  "ticker": "NKT.CO",
+  "companyName": "NKT A/S",
+  "profile": "NKT A/S develops, manufactures and installs power cable systems for electricity transmission and distribution. The company supplies high-, medium- and low-voltage cables, cable accessories and turnkey solutions for onshore and offshore projects, including wind farms, interconnectors and grid upgrades. It also provides lifecycle services, installation, maintenance and technology consulting.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:06:42.251Z"
+}

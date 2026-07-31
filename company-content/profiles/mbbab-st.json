@@ -1,0 +1,9 @@
+{
+  "ticker": "MBBAB.ST",
+  "companyName": "MoveByBike Europe AB (publ)",
+  "profile": "MoveByBike Europe AB provides urban logistics services using electric cargo bikes. It handles last-mile deliveries and goods transport for homes and businesses, with operations in Malmö, Stockholm and Copenhagen. The company also offers related mobility services, including battery swapping and charging for electric scooters and bicycles.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:50:49.642Z"
+}

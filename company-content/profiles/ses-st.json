@@ -1,0 +1,9 @@
+{
+  "ticker": "SES.ST",
+  "companyName": "Scandinavian Enviro Systems AB (publ)",
+  "profile": "Scandinavian Enviro Systems develops and operates patented pyrolysis-based technology for recycling end-of-life tires and other waste materials. Its process recovers carbon black, oil, steel and gas for use in new industrial products. The company has also entered a joint venture with Antin and Michelin to build a larger European tire recycling platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:24.303Z"
+}

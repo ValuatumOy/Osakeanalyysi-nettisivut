@@ -1,0 +1,9 @@
+{
+  "ticker": "PCOM-B.ST",
+  "companyName": "Precomp Solutions AB (publ)",
+  "profile": "Precomp Solutions AB is a Swedish manufacturer of precision metal components for the automotive and engineering industries. The company’s core capability is fine blanking, and it also offers stamping, pressing, assembly, tooling, and prototyping services. Production is concentrated at its facility in Ulricehamn, where it serves customers with high-precision sheet metal parts.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:16:52.105Z"
+}

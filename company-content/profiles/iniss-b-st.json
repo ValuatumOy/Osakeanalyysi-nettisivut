@@ -1,0 +1,9 @@
+{
+  "ticker": "INISS-B.ST",
+  "companyName": "Inission AB (publ)",
+  "profile": "Inission AB is a provider of customized manufacturing services and products in industrial electronics and mechanics. Its operations cover the full product lifecycle, including development, design, industrialization, volume production and aftermarket services. The group also includes Enedo, which develops, manufactures and sells customized power electronics products and systems.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:23:42.377Z"
+}

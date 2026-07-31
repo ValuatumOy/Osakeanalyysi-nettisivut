@@ -1,0 +1,9 @@
+{
+  "ticker": "PENNEO.CO",
+  "companyName": "Penneo A/S",
+  "profile": "Penneo A/S provides a digital trust platform for regulated businesses, centered on electronic signing, identity validation and document workflows. Its software helps companies send, sign, store and manage agreements and reports with eID-based signatures, audit trails, integrations and compliance controls, serving accounting, finance, legal, real estate and HR customers across Europe.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:26:12.684Z"
+}

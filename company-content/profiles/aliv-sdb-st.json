@@ -1,0 +1,9 @@
+{
+  "ticker": "ALIV-SDB.ST",
+  "companyName": "Autoliv, Inc.",
+  "profile": "Autoliv designs, manufactures, and markets automotive safety systems for vehicle makers worldwide. Its core products include airbags, seatbelts, steering wheels, and related restraint components, along with pedestrian protection and other mobility safety solutions. The company’s value driver is its role as a global supplier focused on occupant protection and crash safety.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:36:19.508Z"
+}

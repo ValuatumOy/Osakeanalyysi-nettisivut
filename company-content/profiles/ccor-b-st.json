@@ -1,0 +1,9 @@
+{
+  "ticker": "CCOR-B.ST",
+  "companyName": "Concordia Maritime AB (publ)",
+  "profile": "Concordia Maritime AB is an international tanker shipping company focused on transporting refined oil products, chemicals, and vegetable oils. The company has historically operated product tankers and has recently sold most of its fleet, with a continuing transition in its business direction after its B share was delisted from Nasdaq Stockholm in 2024.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:26:40.868Z"
+}

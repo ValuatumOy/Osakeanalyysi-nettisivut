@@ -1,0 +1,9 @@
+{
+  "ticker": "BOTX.ST",
+  "companyName": "Botnia Exploration Holding AB (publ)",
+  "profile": "Botnia Exploration Holding AB, now operating as Botnia Gold AB, is a Swedish mining and exploration company focused on gold and other base metals. It develops and operates small-scale mining projects in the Vindelgransele area, including Fäbodtjärn and Vargbäcken, and continues exploration alongside production and processing activities tied to those concessions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:37:39.257Z"
+}

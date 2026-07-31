@@ -1,0 +1,9 @@
+{
+  "ticker": "AFISH.OL",
+  "companyName": "Arctic Fish Holding AS",
+  "profile": "Arctic Fish Holding AS is a salmon farming company based in the Westfjords of Iceland. It produces Atlantic salmon through an integrated aquaculture chain that includes freshwater smolt production, seawater grow-out, harvesting and processing, and then sells the fish to customers in international markets. Its value is driven by production volumes, fish quality and operating efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:56:40.472Z"
+}

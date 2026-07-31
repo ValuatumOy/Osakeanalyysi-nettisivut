@@ -1,0 +1,9 @@
+{
+  "ticker": "VIVA.ST",
+  "companyName": "Viva Wine Group AB",
+  "profile": "Viva Wine Group AB is a European wine group that develops, markets and sells wines through operating companies across monopoly markets, retailers, restaurants and consumers. It offers wines under own and partner brands and grows through a decentralized model, data-led sales, sourcing scale and acquisitions. The company has also been expanding its European presence.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:15.619Z"
+}

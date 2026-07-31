@@ -1,0 +1,9 @@
+{
+  "ticker": "EMPLI.ST",
+  "companyName": "Emplicure AB (publ)",
+  "profile": "Emplicure AB (publ) develops bioceramic-based products in two business areas: oral nicotine pouches and pharmaceutical pain treatment. The company uses its patented bioceramic platforms to create nicotine delivery products and to advance formulations built around existing and approved molecules and pharmaceutical ingredients. It is based in Uppsala, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:52:37.269Z"
+}

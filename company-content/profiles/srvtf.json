@@ -1,0 +1,9 @@
+{
+  "ticker": "SRVTF",
+  "companyName": "Star Vault AB (publ)",
+  "profile": "Star Vault AB is a Swedish game developer based in Malmö. The company develops and markets online games, with a focus on massively multiplayer online role-playing games such as Mortal Online 2. It also has smaller titles in its portfolio and generates value mainly through game development, releases, and ongoing player monetization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:40.192Z"
+}

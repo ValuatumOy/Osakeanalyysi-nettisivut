@@ -1,0 +1,9 @@
+{
+  "ticker": "KMAR.OL",
+  "companyName": "Kongsberg Maritime ASA",
+  "profile": "Kongsberg Maritime develops and supplies equipment, software, and integrated systems for commercial and naval vessels. Its portfolio includes propulsion, automation, deck machinery, positioning, and marine electronics, together with ship design, retrofit, and lifecycle support services. The business serves operators seeking efficiency, safety, compliance, and lower emissions across vessel operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:20:28.461Z"
+}

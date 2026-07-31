@@ -1,0 +1,9 @@
+{
+  "ticker": "LEHTO.HE",
+  "companyName": "Lehto",
+  "profile": "Lehto Group Plc develops battery energy storage projects and related solutions for electricity markets and real estate. It designs, develops, sells and leases storage systems used to balance power supply and demand, and also builds projects for its own portfolio. The company has transitioned from construction toward energy storage after its construction business ended.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:24:09.782Z"
+}

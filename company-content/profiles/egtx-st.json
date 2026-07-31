@@ -1,0 +1,9 @@
+{
+  "ticker": "EGTX.ST",
+  "companyName": "Egetis Therapeutics AB (publ)",
+  "profile": "Egetis Therapeutics is a Swedish pharmaceutical company focused on late-stage development and commercialization of treatments for rare diseases with high unmet medical need. Its lead product, Emcitate (tiratricol), is approved in the EU for MCT8 deficiency and is being developed for the US market. The company also develops Aladote for paracetamol overdose-related acute liver injury.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:48:04.007Z"
+}

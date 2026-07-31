@@ -1,0 +1,9 @@
+{
+  "ticker": "HUMBLE.ST",
+  "companyName": "Humble Group AB (publ)",
+  "profile": "Humble Group AB is a Swedish FMCG group that develops, manufactures, brands and distributes consumer products across four segments: Future Snacking, Sustainable Care, Quality Nutrition and Nordic Distribution. Its portfolio includes healthier snacks and confectionery, personal and home care items, sports nutrition, and wholesale and logistics services for retail customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:19:33.657Z"
+}

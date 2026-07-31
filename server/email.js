@@ -1,4 +1,4 @@
-const { Resend } = require('resend');
+const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
 
 function envValue(name, fallback) {
   const value = process.env[name]?.trim();
@@ -8,19 +8,26 @@ function envValue(name, fallback) {
 const FROM = envValue('FROM_EMAIL', 'reports@valuatum.com');
 const ADMIN = envValue('ADMIN_EMAIL', 'contact26@valuatum.com');
 const SITE = envValue('SITE_URL', 'https://valuatum.com');
+const AWS_REGION = envValue('AWS_REGION', 'eu-west-1');
 
-function resend() {
-  return new Resend(process.env.RESEND_API_KEY);
+let sesClient;
+function ses() {
+  // The SDK's default credential chain resolves AWS_ACCESS_KEY_ID /
+  // AWS_SECRET_ACCESS_KEY or an EC2/Lambda instance role automatically.
+  if (!sesClient) {
+    sesClient = new SESv2Client({ region: AWS_REGION });
+  }
+  return sesClient;
 }
 
-function describeResendError(error) {
+function describeSesError(error) {
   if (!error) return 'unknown error';
   if (typeof error === 'string') return error;
 
   const fields = [
     error.name,
-    error.type,
-    error.statusCode || error.status,
+    error.Code || error.code,
+    error.$metadata?.httpStatusCode,
     error.message,
   ].filter(Boolean);
 
@@ -34,23 +41,31 @@ function describeResendError(error) {
 }
 
 async function sendEmail(message, label) {
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error('RESEND_API_KEY is not set');
+  const toAddresses = Array.isArray(message.to) ? message.to : [message.to];
+
+  let response;
+  try {
+    response = await ses().send(new SendEmailCommand({
+      FromEmailAddress: message.from,
+      Destination: { ToAddresses: toAddresses },
+      Content: {
+        Simple: {
+          Subject: { Data: message.subject, Charset: 'UTF-8' },
+          Body: { Html: { Data: message.html, Charset: 'UTF-8' } },
+        },
+      },
+    }));
+  } catch (error) {
+    throw new Error(`SES ${label} failed: ${describeSesError(error)}`);
   }
 
-  const { data, error } = await resend().emails.send(message);
-
-  if (error) {
-    throw new Error(`Resend ${label} failed: ${describeResendError(error)}`);
-  }
-
-  console.log(`Resend ${label} queued`, {
-    id: data?.id || null,
+  console.log(`SES ${label} queued`, {
+    id: response?.MessageId || null,
     from: message.from,
-    to: message.to,
+    to: toAddresses,
   });
 
-  return data;
+  return response;
 }
 
 // ── Existing report: deliver PDF link ────────────────────────────────────────
@@ -117,8 +132,8 @@ async function sendFreshConfirmEmail(toEmail, meta) {
           <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;">Order confirmed.</h1>
           <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">Fresh AI Equity Report for ${company}${ticker}</p>
           <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
-            We've received your order and will generate a fresh report using the latest available financial data.
-            Your PDF will arrive at this address within <strong>1 business day</strong>.
+            We've received your order and are generating a fresh report using the latest available financial data.
+            Your PDF will arrive at this address within <strong>about 30 minutes</strong>.
           </p>
           <div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:24px;">
             <p style="font-size:13px;color:#8A9590;margin:0;">
@@ -140,24 +155,106 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   }, 'fresh confirmation email');
 }
 
-// ── Fresh report: notify admin to generate ──────────────────────────────────
+// ── Fresh report: FAILURE fallback — ask admin to generate manually ─────────
+// Called by the reconciler when an order lands in FAILED. This is the old
+// manual path, now reserved for failures only.
 async function sendAdminNotification(meta, customerEmail) {
   await sendEmail({
     from: FROM,
     to: ADMIN,
-    subject: `New fresh report order: ${meta?.company || 'unknown'}`,
+    subject: `Fresh report failed — manual generation needed: ${meta?.company || 'unknown'}`,
     html: `
-      <p><strong>New fresh report order — action required.</strong></p>
+      <p><strong>Automated generation failed — please generate this report manually and send it to the customer.</strong></p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
         <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
         <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
         <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
         <tr><td style="color:#666;">Customer email</td><td><a href="mailto:${customerEmail}">${customerEmail || '—'}</a></td></tr>
-        <tr><td style="color:#666;">Purpose</td><td>${meta?.purpose || '—'}</td></tr>
+        ${meta?.error ? `<tr><td style="color:#666;">Error</td><td>${meta.error}</td></tr>` : ''}
+        ${meta?.purpose ? `<tr><td style="color:#666;">Purpose</td><td>${meta.purpose}</td></tr>` : ''}
       </table>
-      <p style="margin-top:16px;">Generate the report and send the PDF to the customer email above.</p>
     `,
-  }, 'admin notification email');
+  }, 'admin failure notification');
 }
 
-module.exports = { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification };
+// ── Fresh report: SUCCESS FYI — report generated & delivered (dev/testing) ──
+// Called by the reconciler on DELIVERED when ADMIN_NOTIFY_ON_SUCCESS is set.
+async function sendAdminDeliveryNotice(meta) {
+  await sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Fresh report delivered: ${meta?.company || meta?.ticker || 'unknown'}`,
+    html: `
+      <p><strong>Fresh report generated and emailed to the customer.</strong> No action needed.</p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
+        <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
+        <tr><td style="color:#666;">Customer</td><td><a href="mailto:${meta?.customerEmail || ''}">${meta?.customerEmail || '—'}</a></td></tr>
+        <tr><td style="color:#666;">PDF</td><td><a href="${meta?.pdfUrl || '#'}">${meta?.pdfUrl || '—'}</a></td></tr>
+      </table>
+    `,
+  }, 'admin delivery notice');
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function sendCoverageRequest(meta) {
+  const company = escapeHtml(meta?.company);
+  const ticker = escapeHtml(meta?.ticker || '—');
+  const requester = escapeHtml(meta?.email);
+  const notes = escapeHtml(meta?.notes || '—').replace(/\r?\n/g, '<br>');
+  const source = escapeHtml(meta?.source || 'reports');
+  const pageUrl = escapeHtml(meta?.pageUrl || '—');
+
+  return sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Coverage request: ${String(meta?.company || 'unknown').slice(0, 120)}`,
+    html: `
+      <p><strong>A new company coverage request was submitted on AI Equity Reports.</strong></p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Company</td><td><strong>${company}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker / exchange</td><td>${ticker}</td></tr>
+        <tr><td style="color:#666;">Requester</td><td><a href="mailto:${requester}">${requester}</a></td></tr>
+        <tr><td style="color:#666;">Notes</td><td>${notes}</td></tr>
+        <tr><td style="color:#666;">Source</td><td>${source}</td></tr>
+        <tr><td style="color:#666;">Page</td><td>${pageUrl}</td></tr>
+      </table>
+    `,
+  }, 'coverage request');
+}
+
+// ── Generic operational alert to the admin ──────────────────────────────────
+// Used for failures that need eyes but have no dedicated template (e.g. the
+// webhook's purchase-sync failing after retries).
+async function sendAdminAlert(subject, lines) {
+  const items = (Array.isArray(lines) ? lines : [lines])
+    .map(line => `<li style="margin-bottom:4px;">${escapeHtml(line)}</li>`)
+    .join('');
+  await sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `[AiEquityReports alert] ${subject}`,
+    html: `
+      <p><strong>${escapeHtml(subject)}</strong></p>
+      <ul style="font-family:Arial,sans-serif;font-size:14px;">${items}</ul>
+    `,
+  }, 'admin alert');
+}
+
+module.exports = {
+  sendReportEmail,
+  sendFreshConfirmEmail,
+  sendAdminNotification,
+  sendAdminDeliveryNotice,
+  sendCoverageRequest,
+  sendAdminAlert,
+};

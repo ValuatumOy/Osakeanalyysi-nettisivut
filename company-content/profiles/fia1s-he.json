@@ -1,0 +1,9 @@
+{
+  "ticker": "FIA1S.HE",
+  "companyName": "Finnair Oyj",
+  "profile": "Finnair is a network airline that operates passenger and cargo services between Europe, North America, Asia and the Middle East through its Helsinki hub. It also sells package tours under the Aurinkomatkat brand. The company’s business is built on scheduled air transport, cargo operations and route connectivity, supported by partnerships and a wide destination network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:54:25.194Z"
+}

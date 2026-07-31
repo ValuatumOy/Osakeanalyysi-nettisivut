@@ -1,0 +1,9 @@
+{
+  "ticker": "SVITZR.CO",
+  "companyName": "Svitzer Group A/S",
+  "profile": "Svitzer Group A/S provides towage and marine services for ports, terminals, and offshore facilities. Its tugboats assist large vessels with berthing, unberthing, and manoeuvring, and the company also offers line handling, firefighting, emergency response, personnel transfer, and related marine support services. Revenue is driven by port infrastructure activity and vessel operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:05:28.893Z"
+}

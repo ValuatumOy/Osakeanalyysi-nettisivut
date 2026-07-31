@@ -1,0 +1,9 @@
+{
+  "ticker": "BONAV-B.ST",
+  "companyName": "Bonava AB (publ)",
+  "profile": "Bonava AB is a European residential developer that plans, develops and sells homes and neighbourhoods in Germany, Sweden, Finland and the Baltics. Its portfolio includes multi-family housing, single-family homes and semi-detached houses, with a focus on metropolitan regions. The company also emphasizes sustainable development and value creation through land development and project execution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:28:30.234Z"
+}

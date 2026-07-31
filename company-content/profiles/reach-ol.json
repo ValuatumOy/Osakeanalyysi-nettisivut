@@ -1,0 +1,9 @@
+{
+  "ticker": "REACH.OL",
+  "companyName": "Reach Subsea ASA",
+  "profile": "Reach Subsea ASA provides subsea services in Norway and internationally. The company delivers engineering and project management, inspection, maintenance and repair, asset integrity and pipeline inspection, construction support, survey and positioning, and geophysical and environmental monitoring. Its work serves offshore oil and gas and other marine infrastructure customers through specialized vessels, ROVs, and technical personnel.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:13:22.432Z"
+}

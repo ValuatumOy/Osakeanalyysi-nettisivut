@@ -1,0 +1,9 @@
+{
+  "ticker": "TECO.OL",
+  "companyName": "Teco 2030 Asa",
+  "profile": "TECO 2030 is a Norwegian clean technology company focused on developing zero-emission solutions for maritime and heavy industry. It develops PEM hydrogen fuel cell stacks and modules for ships and other heavy-duty applications, and is building production capacity in Narvik, Norway. The company also draws on its maritime technology background and related engineering capabilities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:32:38.462Z"
+}

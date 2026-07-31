@@ -1,0 +1,9 @@
+{
+  "ticker": "PLAZ-B.ST",
+  "companyName": "Platzer Fastigheter Holding AB (publ)",
+  "profile": "Platzer Fastigheter Holding AB is a Gothenburg-based property company that owns, manages and develops commercial real estate, with a portfolio focused on offices and industrial and logistics properties. It also carries out project development and urban development in selected areas of Gothenburg, where its value creation comes from leasing, property management and development activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:47.069Z"
+}

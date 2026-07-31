@@ -5,12 +5,16 @@
   "targetQuery": "how to invest in finnish stocks",
   "intent": "informational",
   "title": "How to invest in Finnish stocks: Nasdaq Helsinki guide",
-  "metaDescription": "How to invest in Finnish stocks on Nasdaq Helsinki: dividend withholding tax for non-residents, plus our June 2026 fair values on five OMXH names.",
+  "metaDescription": "How to invest in Finnish stocks on Nasdaq Helsinki: dividend withholding tax for non-residents, plus our July 2026 fair values on five OMXH names.",
   "authorId": "author-1",
   "reviewerId": "reviewer-1",
-  "approval": { "auto": false, "mergedBy": "human", "date": null },
+  "approval": {
+    "auto": false,
+    "mergedBy": "human",
+    "date": null
+  },
   "datePublished": "2026-07-03",
-  "dateModified": "2026-07-03",
+  "dateModified": "2026-07-31",
   "readingTimeMinutes": 9,
   "sections": [
     {
@@ -23,11 +27,11 @@
     },
     {
       "h2": "Which companies and sectors dominate Helsinki?",
-      "html": "<p>Four sectors carry most of the Helsinki market's weight: communication equipment, industrials, forest products, and consumer staples. The names below are five of the largest, and the five we publish full valuations on. Forestry is the sector that makes Helsinki distinctive. UPM and Stora Enso each own vast tracts of Nordic forest land, so their share prices are part industrial cash flow and part biological land bank.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Sector</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Market cap</th></tr></thead><tbody><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Communication equipment</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 76bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Industrials</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 21bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM-Kymmene (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 13bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Consumer staples</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 8bn</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem;'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem;'>EUR 8bn</td></tr></tbody></table><p>Market caps are from our June 2026 equity reports on each company. Nokia alone is bigger than the next three combined, which is why the OMXH25's 10% cap exists.</p>"
+      "html": "<p>Four sectors carry most of the Helsinki market's weight: communication equipment, industrials, forest products, and consumer staples. The names below are five of the largest, and the five we publish full valuations on. Forestry is the sector that makes Helsinki distinctive. UPM and Stora Enso each own vast tracts of Nordic forest land, so their share prices are part industrial cash flow and part biological land bank.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Sector</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Market cap</th></tr></thead><tbody><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Communication equipment</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 57bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Industrials</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 19bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM-Kymmene (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 12bn</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Consumer staples</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>EUR 8bn</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem;'>Forest products</td><td style='text-align:right; padding:0.5rem 0.6rem;'>EUR 7bn</td></tr></tbody></table><p>Market caps are from our July 2026 equity reports on each company. Nokia alone is bigger than the next three combined, which is why the OMXH25's 10% cap exists.</p>"
     },
     {
       "h2": "Are Finnish stocks cheap in 2026? What our models say",
-      "html": "<p>Finnish stocks are not one trade. Across the five large caps we model, our June 2026 fair values split evenly: three buys and two sells, and the split is not random.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our call</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Price</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our fair value</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Implied</th></tr></thead><tbody><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>BUY</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>25.31</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>34.00</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>+34.3%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>BUY</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>10.05</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>12.76</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>+27.0%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>BUY</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>20.60</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>25.92</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>+25.8%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>13.90</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>11.50</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>-17.2%</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem;'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem;'>36.12</td><td style='text-align:right; padding:0.5rem 0.6rem;'>30.00</td><td style='text-align:right; padding:0.5rem 0.6rem;'>-16.9%</td></tr></tbody></table><p>All prices and fair values are in euros, from our reports dated 21 May to 5 June 2026. Here is the pattern. Both of our sells are names the market has re-rated on an artificial-intelligence story. Nokia's optical networking segment is priced at roughly 49x EV/EBIT on hyperscaler data-center demand. Wärtsilä trades at about 20.7x forward EV/EBIT because its engines now sell into off-grid power plants for US data centres. Both prices assume that a demand spike stays permanent.</p><p>Our three buys are the opposite kind of business: cash-generative materials and staples on normalising cycles, paying dividends of 4.0% to 4.9%. Our clearest opinion on Helsinki right now is that the value is in these unglamorous names, not in the AI-adjacent momentum. The assumption doing the heavy lifting for the UPM buy is a mid-cycle pulp price near $650 per tonne. UPM's Uruguayan mill produces at a cash cost around $280 per tonne, so a roughly EUR 900 million earnings gap closes on price normalisation alone. If global pulp settles near marginal cost instead, that buy is wrong.</p>"
+      "html": "<p>Finnish stocks are not one trade. Across the five large caps we model, our July 2026 fair values give one buy, two holds and two sells, and the split is not random.</p><table style='width:100%; border-collapse:collapse; font-size:var(--text-sm); margin-bottom:1rem;'><thead><tr><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Company</th><th style='text-align:left; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our call</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Price</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Our fair value</th><th style='text-align:right; padding:0.5rem 0.6rem; border-bottom:2px solid var(--color-border);'>Implied</th></tr></thead><tbody><<tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>UPM (UPM.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>HOLD</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>22.23</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>21.10</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;5.1%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Stora Enso (STERV.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>BUY</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>9.17</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>13.30</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>+45.0%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Kesko (KESKOB.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>19.20</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>17.10</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;10.9%</td></tr><tr><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>Nokia (NOKIA.HE)</td><td style='padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>SELL</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>10.28</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>9.40</td><td style='text-align:right; padding:0.5rem 0.6rem; border-bottom:1px solid var(--color-border);'>&minus;8.5%</td></tr><tr><td style='padding:0.5rem 0.6rem;'>Wärtsilä (WRT1V.HE)</td><td style='padding:0.5rem 0.6rem;'>HOLD</td><td style='text-align:right; padding:0.5rem 0.6rem;'>31.89</td><td style='text-align:right; padding:0.5rem 0.6rem;'>32.10</td><td style='text-align:right; padding:0.5rem 0.6rem;'>+0.7%</td></tr></tbody></table><p>All prices and fair values are in euros, from our reports dated 7 July to 24 July 2026. Here is the pattern. Nokia is a sell on an AI-adjacent premium: Network Infrastructure earns a 9.8% margin but trades at 36.0x trailing EBIT, well above the 18.7x that would be justified even if segment EBIT doubled toward EUR 1.5 billion, which leaves a EUR 720 million valuation gap. Kesko is the other sell for an unrelated reason. The market applies one blended 15.8x EV/EBIT multiple across three divisions whose economics differ, and we put the fair blended figure at 14.5x.</p><p>Wärtsilä has come off the sell list. At 18.0x forward EV/EBIT it now trades below its own 19.5x normalised historical average, so the off-grid power premium we objected to has largely come out of the price. UPM moved the other way, from buy to hold, after the pulp spread stalled near EUR 110 per tonne against the EUR 122 per tonne the Fibres allocation needs. The recovery is still plausible. The price already embeds part of it, which is the difference between a buy and a hold.</p><p>That leaves Stora Enso as our one clear buy, at EUR 13.30 against a EUR 9.17 price. The assumption doing the heavy lifting is Consumer Packaging: its adjusted EBIT margin has to recover from 6.2% toward 10.0% as the Oulu site ramps and fixed costs are absorbed. If that ramp slips, the call is wrong. Our clearest opinion on Helsinki right now is that the value sits in unglamorous cash-generative materials and staples, on dividend yields of 4.5% to 5.3%, rather than in the AI-adjacent names.</p>"
     },
     {
       "h2": "How are Finnish dividends and gains taxed for foreign investors?",
@@ -53,19 +57,34 @@
     },
     {
       "q": "Which Finnish stocks does Valuatum rate as buys?",
-      "a": "As of our May-June 2026 reports, we rate UPM (fair value EUR 34.00), Stora Enso (EUR 12.76) and Kesko (EUR 25.92) as buys, and Nokia (EUR 11.50) and Wärtsilä (EUR 30.00) as sells. The three buys are cash-generative materials and staples; the two sells trade on an AI-demand premium we think is fragile."
+      "a": "As of our July 2026 reports, Stora Enso (fair value EUR 13.30) is our only buy among the five OMXH large caps we model. Kesko (EUR 17.10) and Nokia (EUR 9.40) are sells, and UPM (EUR 21.10) and Wärtsilä (EUR 32.10) are holds. Stora Enso's case rests on a Consumer Packaging margin recovery from 6.2% toward 10.0%."
     },
     {
       "q": "Is Helsinki a good market for dividend investors?",
-      "a": "Several large Helsinki names pay well. In our June 2026 models UPM and Kesko both yield about 4.9% and Stora Enso about 4.0%. The AI-repriced names yield less: Nokia 2.1% and Wärtsilä 1.4%. So the higher-yielding stocks are the materials and staples, not the momentum names."
+      "a": "Several large Helsinki names pay well. In our July 2026 models Kesko yields about 5.3%, UPM about 4.7% and Stora Enso about 4.5%. The AI-repriced names yield less: Nokia 2.8% and Wärtsilä 1.6%. So the higher-yielding stocks are the materials and staples rather than the momentum names."
     }
   ],
   "proprietaryData": [
-    { "claim": "Valuatum UPM BUY, fair value EUR 34.00 vs EUR 25.31 price, +34.3% (21 May 2026 report)", "source": "report-content/upm-21052026.json" },
-    { "claim": "Valuatum Stora Enso BUY, fair value EUR 12.76 vs EUR 10.05 price, +27.0% (1 June 2026 report)", "source": "report-content/storaenso-01062026.json" },
-    { "claim": "Valuatum Kesko BUY, fair value EUR 25.92 vs EUR 20.60 price, +25.8% (5 June 2026 report)", "source": "report-content/kesko-05062026.json" },
-    { "claim": "Valuatum Nokia SELL, fair value EUR 11.50 vs EUR 13.90 price, -17.2%; optical segment ~49x EV/EBIT (5 June 2026 report)", "source": "report-content/nokia-05062026.json" },
-    { "claim": "Valuatum Wärtsilä SELL, fair value EUR 30.00 vs EUR 36.12 price, -16.9%; ~20.7x forward EV/EBIT (5 June 2026 report)", "source": "report-content/wartsila-05062026.json" }
+    {
+      "claim": "Valuatum UPM HOLD, fair value EUR 21.10 vs EUR 22.23 price, -5.1% (24 July 2026 report)",
+      "source": "report-content/upm-21052026.json"
+    },
+    {
+      "claim": "Valuatum Stora Enso BUY, fair value EUR 13.30 vs EUR 9.17 price, +45.0% (24 July 2026 report)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Valuatum Kesko SELL, fair value EUR 17.10 vs EUR 19.20 price, -10.9% (7 July 2026 report)",
+      "source": "report-content/kesko-07072026.json"
+    },
+    {
+      "claim": "Valuatum Nokia SELL, fair value EUR 9.40 vs EUR 10.28 price, -8.5%; Network Infrastructure 36.0x trailing EBIT vs 18.7x justified (15 July 2026 report)",
+      "source": "report-content/nokia-15072026.json"
+    },
+    {
+      "claim": "Valuatum Wärtsilä HOLD, fair value EUR 32.10 vs EUR 31.89 price, +0.7%; 18.0x forward EV/EBIT (7 July 2026 report)",
+      "source": "report-content/wartsila-07072026.json"
+    }
   ],
   "internalLinks": [
     "/reports/upm-kymmene-equity-report.html",
@@ -78,19 +97,78 @@
     "/methodology.html"
   ],
   "sources": [
-    { "label": "Finnish Tax Administration (Vero): Paying dividends, interest and royalties to foreign beneficiaries", "url": "https://www.vero.fi/en/individuals/tax-cards-and-tax-returns/moving_away_from_finland/paying_dividends_interest_and_royalties/" },
-    { "label": "Finnish Tax Administration (Vero): Withholding tax at source on dividends paid to nominee-registered shares", "url": "https://www.vero.fi/en/businesses-and-corporations/business-operations/financial-sector/nominee-registered-shares/withholding-tax-at-source-on-dividends-paid-to-nominee-registered-shares/" },
-    { "label": "Nasdaq: OMX Helsinki 25 (OMXH25) index overview", "url": "https://www.nasdaq.com/market-activity/index/omxh25" },
-    { "label": "Nasdaq: Helsinki Stock Exchange", "url": "https://www.nasdaq.com/solutions/european-markets/helsinki" },
-    { "label": "Valuatum UPM-Kymmene Equity Report, 21 May 2026", "url": "/reports/upm-kymmene-equity-report.html" },
-    { "label": "Valuatum Stora Enso Equity Report, 1 June 2026", "url": "/reports/stora-enso-equity-report.html" },
-    { "label": "Valuatum Kesko Equity Report, 5 June 2026", "url": "/reports/kesko-equity-report.html" },
-    { "label": "Valuatum Nokia Equity Report, 5 June 2026", "url": "/reports/nokia-equity-report.html" },
-    { "label": "Valuatum Wärtsilä Equity Report, 5 June 2026", "url": "/reports/wartsila-equity-report.html" }
+    {
+      "label": "Finnish Tax Administration (Vero): Paying dividends, interest and royalties to foreign beneficiaries",
+      "url": "https://www.vero.fi/en/individuals/tax-cards-and-tax-returns/moving_away_from_finland/paying_dividends_interest_and_royalties/"
+    },
+    {
+      "label": "Finnish Tax Administration (Vero): Withholding tax at source on dividends paid to nominee-registered shares",
+      "url": "https://www.vero.fi/en/businesses-and-corporations/business-operations/financial-sector/nominee-registered-shares/withholding-tax-at-source-on-dividends-paid-to-nominee-registered-shares/"
+    },
+    {
+      "label": "Nasdaq: OMX Helsinki 25 (OMXH25) index overview",
+      "url": "https://www.nasdaq.com/market-activity/index/omxh25"
+    },
+    {
+      "label": "Nasdaq: Helsinki Stock Exchange",
+      "url": "https://www.nasdaq.com/solutions/european-markets/helsinki"
+    },
+    {
+      "label": "Valuatum UPM-Kymmene Equity Report, 24 July 2026",
+      "url": "/reports/upm-kymmene-equity-report.html"
+    },
+    {
+      "label": "Valuatum Stora Enso Equity Report, 24 July 2026",
+      "url": "/reports/stora-enso-equity-report.html"
+    },
+    {
+      "label": "Valuatum Kesko Equity Report, 7 July 2026",
+      "url": "/reports/kesko-equity-report.html"
+    },
+    {
+      "label": "Valuatum Nokia Equity Report, 15 July 2026",
+      "url": "/reports/nokia-equity-report.html"
+    },
+    {
+      "label": "Valuatum Wärtsilä Equity Report, 7 July 2026",
+      "url": "/reports/wartsila-equity-report.html"
+    }
   ],
   "gateScores": {
     "humanizer": 45,
     "factcheck": "pass",
     "onpage": "pass"
-  }
+  },
+  "dataProvenance": [
+    {
+      "reportId": "upm-21052026",
+      "slug": "upm-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, pulp spread"
+    },
+    {
+      "reportId": "storaenso-01062026",
+      "slug": "stora-enso-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, Consumer Packaging margin"
+    },
+    {
+      "reportId": "kesko-07072026",
+      "slug": "kesko-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, blended EV/EBIT multiple"
+    },
+    {
+      "reportId": "nokia-15072026",
+      "slug": "nokia-equity-report",
+      "reportDate": "2026-07-15",
+      "used": "rating, target, price, Network Infrastructure multiple and gap"
+    },
+    {
+      "reportId": "wartsila-07072026",
+      "slug": "wartsila-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, EV/EBIT multiple"
+    }
+  ]
 }

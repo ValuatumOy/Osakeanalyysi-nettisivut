@@ -1,0 +1,9 @@
+{
+  "ticker": "EEVIA.ST",
+  "companyName": "Eevia Health Plc",
+  "profile": "Eevia Health Plc develops and manufactures standardized plant-based ingredients for dietary supplements, food and drink, cosmetics, and flavors. Its portfolio is built around polyphenol extracts and side-stream products from wild berries, pine bark, and chaga, produced in Finland using proprietary extraction and purification processes and sold to industrial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:39:35.998Z"
+}

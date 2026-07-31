@@ -1,0 +1,9 @@
+{
+  "ticker": "CHR.CO",
+  "companyName": "Chr. Hansen Holding A/S",
+  "profile": "Chr. Hansen Holding A/S develops microbial and fermentation-based biosolutions for food, nutrition, pharmaceutical and agricultural customers. Its portfolio includes cultures, enzymes, probiotics and natural colors used to improve taste, texture, shelf life, health benefits and production efficiency. In 2024, Chr. Hansen and Novozymes combined to form Novonesis.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:35:01.712Z"
+}
