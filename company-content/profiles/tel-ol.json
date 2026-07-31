@@ -1,0 +1,9 @@
+{
+  "ticker": "TEL.OL",
+  "companyName": "Telenor ASA",
+  "profile": "Telenor ASA is a telecommunications and technology company with operations in the Nordics and Asia. It provides mobile and fixed-line connectivity, broadband, TV and streaming services, and related digital offerings for consumers and businesses. The group also manages telecom infrastructure and adjacent businesses, with a recent reorganisation aimed at sharpening its country-focused operating structure.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:33:14.681Z"
+}

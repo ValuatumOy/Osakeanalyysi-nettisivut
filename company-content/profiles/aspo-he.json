@@ -1,0 +1,9 @@
+{
+  "ticker": "ASPO.HE",
+  "companyName": "Aspo Oyj",
+  "profile": "Aspo Oyj is a Finnish industrial conglomerate that owns and develops B2B businesses. Its core operations are Telko, a distributor of industrial raw materials and plastics, and ESL Shipping, which provides sea transportation and related logistics services. The group is also reshaping its portfolio after divesting Leipurin and is evaluating a future separation into two companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:49:25.241Z"
+}

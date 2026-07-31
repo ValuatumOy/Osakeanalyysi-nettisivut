@@ -1,0 +1,9 @@
+{
+  "ticker": "0L8Z.L",
+  "companyName": "ContextVision AB (publ)",
+  "profile": "ContextVision AB is a Swedish medical technology software company focused on image analysis and artificial intelligence. It develops proprietary software for image enhancement and interpretation, primarily for ultrasound, X-ray, and MRI equipment. The company serves medical device manufacturers and supports clinical decision-making by improving the quality and reliability of medical imaging.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:26:55.832Z"
+}

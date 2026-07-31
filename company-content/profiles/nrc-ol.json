@@ -1,0 +1,9 @@
+{
+  "ticker": "NRC.OL",
+  "companyName": "NRC Group ASA",
+  "profile": "NRC Group ASA is a Nordic infrastructure contractor that engineers, builds and maintains transport infrastructure, with a core focus on rail and related civil works. Its services include rail construction, maintenance, signaling, electrification, telecom and catenary systems across Norway, Sweden and Finland. The company also is expanding into selected civil infrastructure projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:51:36.572Z"
+}

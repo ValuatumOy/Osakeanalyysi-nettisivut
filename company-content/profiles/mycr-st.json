@@ -1,0 +1,9 @@
+{
+  "ticker": "MYCR.ST",
+  "companyName": "Mycronic AB (publ)",
+  "profile": "Mycronic AB develops, manufactures and markets high-precision production equipment for the electronics industry. Its product areas include PCB assembly solutions, photomask equipment for displays and semiconductors, dispensing and coating systems, bare board testing, and die bonding. The company serves electronics manufacturers by combining precision, flexibility, productivity, and long product lifecycles.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:01:01.223Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "VISC.ST",
+  "companyName": "Gruvaktiebolaget Viscaria",
+  "profile": "Gruvaktiebolaget Viscaria is a Swedish mining company focused on reopening and developing the Viscaria copper mine in Kiruna. It is building a modern operation to produce copper concentrate, supported by mineral resources, infrastructure, and processing facilities. The company also holds additional exploration and processing permits in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:10:59.813Z"
+}

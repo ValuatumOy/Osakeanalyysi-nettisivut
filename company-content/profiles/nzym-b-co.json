@@ -1,0 +1,9 @@
+{
+  "ticker": "NZYM-B.CO",
+  "companyName": "Novozymes A/S",
+  "profile": "Novozymes A/S develops enzyme- and microbe-based biosolutions used across food and beverages, human health, household care, agriculture, energy and other industrial applications. Its products help customers improve process efficiency, product performance and resource use. The company was combined with Chr. Hansen in 2024 to form Novonesis, reflecting a broader biosolutions platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:14:06.097Z"
+}

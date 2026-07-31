@@ -1,0 +1,138 @@
+{
+  "id": "upm-08072026",
+  "slug": "upm-equity-report",
+  "companyName": "UPM-Kymmene Oyj",
+  "ticker": "UPM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Paper, Lumber & Forest Products",
+  "currency": "EUR",
+  "reportDate": "2026-07-08",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "22.88 EUR",
+    "targetPrice": "23.40 EUR",
+    "impliedUpside": "+2.3%",
+    "marketCap": "EUR 12.1 bn",
+    "enterpriseValue": "EUR 15.2 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "17.7x"},
+    {"label": "EV/EBITDA 2026E", "value": "8.4x"},
+    {"label": "FCF Yield 2026E", "value": "9.9%"},
+    {"label": "Dividend Yield 2026E", "value": "4.5%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "1.5x"}
+  ],
+  "priceStats": {
+    "week52High": "27.94 EUR",
+    "week52Low": "21.72 EUR",
+    "oneYearChange": "-3.9%",
+    "threeYearChange": "-17.7%"
+  },
+  "summary": [
+    "UPM-Kymmene (UPM.HE, NASDAQ Helsinki) is a Finland-based forest-industry group repositioning its portfolio toward renewable fibres, advanced materials and decarbonization solutions; in this Valuatum equity research report dated 8 July 2026 we rate the stock HOLD with a 12-month target price of 23.40 EUR against a current price of 22.88 EUR, implying roughly 2.3% upside. Market capitalisation is EUR 12.1 bn and enterprise value is EUR 15.2 bn.",
+    "The core valuation tension is a mispriced enterprise-value allocation. A mechanical fallback assigns EUR 2.65 billion to the structurally declining Communication Papers segment, yet UPM's definitive graphic-paper joint-venture agreement with Sappi explicitly values the business at just EUR 1.1 billion (4.6x trailing EBITDA) — a EUR 1.55 billion gap implying the market applies structurally higher multiples to UPM Fibres' South American pulp capacity, UPM Energy's infrastructure cash flows, and the Leuna biorefinery's optionality. Meanwhile Fibres' EUR 4.65 billion allocation sits on depressed 2025 trough EBIT of EUR 130 million, with recovery hinging on the Paso de los Toros mill's $280/t cash cost against a $650/t Chinese hardwood spot price.",
+    "On a reverse-valuation basis the base case implies EUR 24.52 per share (+7.2%) on EUR 1,601 million of 2027E EBITDA at a 10.0x EV/EBITDA multiple, broadly consistent with the 23.40 EUR weighted target. The Bull case — global pulp tightness plus clean crystallization of the Sappi JV synergies — supports EUR 30.06 per share (+31.4%), while the Bear case of permanent Baltic wood cost impairment combined with a technical failure at Leuna contracts group EV toward EUR 13.5 billion and implies EUR 19.76 per share (-13.6%). With the stock close to fair value, we land at HOLD."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Fibres South Mill Utilization", "metric": "$370/t spread", "text": "UPM Fibres South's Paso de los Toros mill runs at a $280/t cash cost against $650/t pulp prices, and 90% utilization on 3.0m tonnes drives the EBIT recovery underpinning the target."},
+    {"num": "02", "title": "Communication Papers EV Overstatement", "metric": "EUR 1.55bn gap", "text": "Communication Papers is fallback-valued at EUR 2.65bn EV, but the Sappi JV prices it at just EUR 1.1bn (4.6x EBITDA), a EUR 1.55bn overstatement masking value elsewhere."},
+    {"num": "03", "title": "Group EBITDA and Leverage Normalization", "metric": "EUR 1.60bn 2027e EBITDA", "text": "Group EBITDA rises from EUR 1.35bn in 2025 to EUR 1.60bn by 2027, while net debt stays contained at 1.87x EBITDA, supporting the 10.0x EV/EBITDA-based target."}
+  ],
+  "thesisBreaker": "The thesis breaks if pulp stays flat at $600/t, Fibres North losses persist, and Leuna suffers a 50% impairment.",
+  "valuePools": [
+    {"name": "UPM Fibres", "share": "30.6% · EUR 4,652m", "economics": "Revenue EUR 3,283m (34.0%) · Comp. EBIT EUR 130m (17.2% of EBIT) · EV EUR 4,652m", "text": "Commodity pool valued on a mid-cycle recovery basis: the EUR 4.65 billion fallback allocation implies nearly 36x EV/EBIT on depressed 2025 trough earnings of EUR 130 million. The EUR 2.7 billion, 2.1-million-tonne Paso de los Toros eucalyptus mill in Uruguay gives Fibres South (3.4m tonnes capacity) a cash cost of approximately $280 per delivered tonne — a $370 per tonne gross cash spread at $650 per tonne pulp prices, firmly in the first quartile of the global cost curve — while Fibres North's three Finnish mills (3.3m tonnes) remain structurally impaired by elevated Baltic and Nordic wood costs after the cessation of Russian wood imports. Fibres South alone is capable of generating EUR 350-400 million in mid-cycle EBIT."},
+    {"name": "UPM Energy", "share": "21.9% · EUR 3,324m", "economics": "Revenue EUR 579m (6.0%) · Comp. EBIT EUR 260m (34.3% of EBIT, 44.9% margin) · EV EUR 3,324m", "text": "Regulated, quasi-infrastructure pool built on stakes in Finnish power companies, primarily Pohjolan Voima (PVO) and Kemijoki Oy, under the Finnish Mankala principle — low-cost, zero-carbon hydro and nuclear capacity delivered at cost and sold at market price. The balance sheet carries the energy shareholdings at a EUR 2.19 billion Level 3 fair value (7.23% discount rate); the EUR 3.32 billion fallback EV is a EUR 1.13 billion premium to book, yet EUR 260 million of EBIT implies just 12.8x EV/EBIT, which is highly conservative for long-duration, zero-carbon infrastructure assets."},
+    {"name": "UPM Communication Papers", "share": "17.5% · EUR 2,659m", "economics": "Revenue EUR 1,931m (20.0%) · Comp. EBIT EUR 290m (38.3% of EBIT) · EV EUR 2,659m", "text": "Declining pool whose EUR 2.65 billion fallback allocation is demonstrably false against direct transaction evidence: the definitive 50/50 graphic-paper joint venture with Sappi, signed in late 2025/early 2026, values UPM's contribution at an enterprise value of just EUR 1.1 billion, a 4.6x multiple on trailing EBITDA. The JV crystallizes value — extracting EUR 475 million in cash proceeds and EUR 98 million in shareholder loans while offloading pension liabilities — and removes structural capacity from the European market with EUR 100 million of targeted synergies."},
+    {"name": "Other Operations", "share": "7.7% · EUR 1,163m", "economics": "Revenue EUR 386m (4.0%) · Comp. EBIT -EUR 49m (-6.5% of EBIT) · EV EUR 1,163m", "text": "Emerging-option pool housing the EUR 1.18-1.33 billion Leuna biochemicals biorefinery in Germany, designed to produce 220,000 tonnes of wood-based biochemicals (BioMEG, BioMPG and renewable functional fillers) that replace fossil-based chemicals in plastics, textiles and rubber. The EUR 1.16 billion EV allocation effectively prices the segment at roughly 1.0x sunk capital: commercial operations were reached in 2026, with full production and positive EBIT expected during 2027 — the threshold for a re-rating from emerging option to scaling business."},
+    {"name": "UPM Adhesive Materials", "share": "16.4% · EUR 2,493m", "economics": "Revenue EUR 1,642m (17.0%) · Comp. EBIT EUR 140m (18.5% of EBIT, 8.5% margin) · EV EUR 2,493m", "text": "Scaling self-adhesive labeling business with 2025 net sales of EUR 1,642m and comparable EBIT of EUR 140m at an 8.5% EBIT margin."},
+    {"name": "UPM Specialty Papers", "share": "9.8% · EUR 1,496m", "economics": "Revenue EUR 1,352m (14.0%) · Comp. EBIT EUR 100m (13.2% of EBIT, 7.4% margin) · EV EUR 1,496m", "text": "Scaling pool with 2025 net sales of EUR 1,352m and comparable EBIT of EUR 100m at a 7.4% EBIT margin."},
+    {"name": "UPM Plywood", "share": "5.5% · EUR 831m", "economics": "Revenue EUR 483m (5.0%) · Comp. EBIT EUR 50m (6.6% of EBIT, 10.4% margin) · EV EUR 831m", "text": "Restructuring pool under a strategic review, with 2025 net sales of EUR 483m and comparable EBIT of EUR 50m at a 10.4% EBIT margin."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests what each scenario requires of the group, with outcomes driven almost entirely by the spread logic in UPM Fibres and the binary execution threshold at Leuna. The group enterprise value of EUR 16.61 billion in the fallback value map bridges to the EUR 13.10 billion equity market capitalization via EUR 3.08 billion of net debt and approximately EUR 436 million of implied other senior claims.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "10,550", "EBITDA": "1,820", "Margin": "17.2%", "Multiple": "10.4x", "EV": "18,928", "Equity": "15,849"}, "impliedValueOrUpside": "EUR 30.06 / sh · +31.4%"},
+      {"scenario": "Base", "cols": {"Revenue": "10,200", "EBITDA": "1,601", "Margin": "15.7%", "Multiple": "10.0x", "EV": "16,010", "Equity": "12,931"}, "impliedValueOrUpside": "EUR 24.52 / sh · +7.2%"},
+      {"scenario": "Bear", "cols": {"Revenue": "9,650", "EBITDA": "1,150", "Margin": "11.9%", "Multiple": "11.7x", "EV": "13,501", "Equity": "10,422"}, "impliedValueOrUpside": "EUR 19.76 / sh · -13.6%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "UPM-Kymmene operates as a diversified forest-industry and bio-materials group generating EUR 9.65 billion in net sales and EUR 921 million in comparable EBIT (adjusting the EUR 757 million reported statutory EBIT for one-off impairments, fair-value changes and restructuring). The consolidated figures hide a sharp structural split: UPM is effectively a high-margin, low-cost South American pulp producer combined with a Finnish nuclear/hydro energy portfolio, obscured by a structurally challenged Nordic wood-sourcing footprint and a mature graphic paper business in terminal decline. The group enterprise value of EUR 16.61 billion bridges to the EUR 13.10 billion equity market capitalization via EUR 3.08 billion of net debt and approximately EUR 436 million of implied other senior claims. Targeted transaction evidence reveals a large gap in the baseline EV allocation: the fallback method mechanically assigns EUR 2.65 billion to Communication Papers, yet the definitive Sappi joint-venture agreement explicitly values the business at only EUR 1.1 billion — so the market must be applying structurally higher implied multiples to UPM Fibres, UPM Energy and the Leuna biorefinery."},
+    {"heading": "Cross-pool bridge", "text": "The mechanical forecast bridge from EUR 757 million of 2025 reported EBIT to EUR 1.04 billion in 2027 depends entirely on two factors: the cyclical recovery of UPM Fibres and the successful commercialization of the Leuna biorefinery, with UPM Energy expected to remain a stable cash generator. Once the Sappi JV closes, Communication Papers will likely be deconsolidated and accounted for via the equity method, its EUR 290 million operating profit contribution replaced by share-of-profit from the JV — so UPM Fibres must step up massively to replace the lost paper earnings. Re-anchoring on the direct evidence — Communication Papers worth EUR 1.1 billion, UPM Energy's EUR 2.19 billion balance-sheet fair value easily supporting a ~EUR 3.3 billion valuation, and Leuna accounting for ~EUR 1.3 billion in sunk capital — leaves approximately EUR 10.9 billion of the EUR 16.6 billion group EV to be supported by Fibres, Adhesive Materials, Specialty Papers and Plywood. Given Fibres holds 3.4 million tonnes of top-tier Southern Hemisphere pulp capacity (replacement cost well over EUR 4 billion) plus 3.3 million tonnes of Nordic capacity and extensive forest holdings (EUR 1.8bn+ value), the residual valuation is highly defensible."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios are driven almost entirely by the spread logic in UPM Fibres and the binary execution threshold at Leuna. In the Bear scenario, permanent Baltic wood supply issues leave Fibres North unable to stem its losses, permanently dragging down the world-class cash generation of Fibres South; combined with a technical failure at Leuna, group EV contracts toward EUR 13.5 billion and the shares toward EUR 19.76. Upside in the Bull scenario relies on global pulp tightness and the successful crystallization of the Sappi JV synergies, allowing UPM to cleanly transition into a pure-play bio-materials and energy company at EUR 30.06 per share. Direct transaction evidence proves the market is valuing the cash-cow paper business at a highly conservative 4.6x EBITDA, leaving the bulk of the EUR 16.6 billion enterprise value supported by the recovery potential of Fibres, the infrastructure stability of Energy and the optionality of Leuna. Close to fair value at 22.88 EUR, the stock earns a HOLD with a 23.40 EUR target."}
+  ],
+  "risks": [
+    "Permanent Nordic wood cost impairment (UPM Fibres): permanent Baltic wood price elevation destroys Finnish asset competitiveness, with declining Finnish forest harvest rates as the early warning - HIGH impact, structural, and the most thesis-breaking risk.",
+    "Leuna technical scale-up failure (Other Operations): ramp-up delays fail to generate positive ROIC on the EUR 1.3bn of sunk capital, with delayed commercial deliveries and impairment charges as the early warning - MEDIUM impact, manageable.",
+    "Collapse in Nordic power prices (UPM Energy): lower electricity wholesale prices compress infrastructure margins, with forward electricity curves and reservoir levels as the early warning - MEDIUM impact, manageable.",
+    "JV regulatory block (UPM Communication Papers): European competition authorities block the Sappi JV consolidation, with EU competition authority objections as the early warning - MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "Sappi JV Closing (near-term, UPM Communication Papers): EU competition authority approvals close the transaction, crystallizing cash and transferring pension liabilities; deconsolidation will visually shrink the top line and reported EBITDA but vastly improve ROIC, carbon intensity and the growth profile.",
+    "Leuna Commercial Ramp (medium-term, Other Operations): quarterly EBIT of Other Operations turning positive validates the EUR 1.3bn capex transition to bio-chemicals.",
+    "Fibres North Restructuring (near-term, UPM Fibres): improvement in the Fibres North EBIT margin stems a EUR 30m+ quarterly cash bleed.",
+    "Pulp Cycle Normalization (near-term, UPM Fibres): recovery in Chinese spot hardwood pulp prices — the most easily observable catalyst, dictating the leverage on Fibres South's 3.4 million tonnes of capacity — restores group profitability and FCF."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["10,460", "10,339", "9,656", "9,800", "10,200", "10,550"]},
+        {"label": "EBITDA", "values": ["1,039", "1,698", "1,351", "1,820", "1,601", "1,677"]},
+        {"label": "EBITDA margin", "values": ["9.9%", "16.4%", "14.0%", "18.6%", "15.7%", "15.9%"]},
+        {"label": "Depreciation", "values": ["-431", "-1,094", "-594", "-851", "-560", "-570"]},
+        {"label": "Operating Profit (EBIT)", "values": ["608", "604", "757", "969", "1,041", "1,107"]},
+        {"label": "EBIT margin", "values": ["5.8%", "5.8%", "7.8%", "9.9%", "10.2%", "10.5%"]},
+        {"label": "Net financial items", "values": ["-143", "-104", "-67", "-60", "-55", "-50"]},
+        {"label": "Pre-tax Profit", "values": ["465", "500", "690", "909", "986", "1,057"]},
+        {"label": "Net Earnings", "values": ["395", "463", "491", "682", "740", "793"]},
+        {"label": "EPS (EUR)", "values": ["0.7", "0.9", "0.9", "1.3", "1.4", "1.5"]},
+        {"label": "DPS (EUR)", "values": ["1.5", "1.5", "1.5", "1", "1.1", "1.2"]},
+        {"label": "Payout ratio", "values": ["202.5%", "172.8%", "161.5%", "80.0%", "80.0%", "80.0%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["1,488", "1,353", "1,473", "1,288", "1,226", "1,298"]},
+        {"label": "Operating cash flow", "values": ["1,660", "1,411", "1,652", "1,333", "1,267", "1,336"]},
+        {"label": "Change in working capital", "values": ["-605", "204", "-387", "245", "74", "65"]},
+        {"label": "Gross capex", "values": ["-576", "1,146", "-16", "142", "955", "916"]},
+        {"label": "Capex (ex. M&A)", "values": ["576", "-1,146", "16", "-142", "-955", "-916"]},
+        {"label": "Free Operating Cash Flow", "values": ["2,291", "241", "1,587", "1,191", "312", "420"]},
+        {"label": "Free cash flow to firm", "values": ["2,292", "241", "1,588", "1,191", "312", "420"]},
+        {"label": "CF from financing", "values": ["-3,371", "-14", "-1,798", "-1,093", "-239", "-355"]},
+        {"label": "Dividends paid", "values": ["-693", "-800", "-800", "-793", "-545", "-592"]},
+        {"label": "Net change in cash", "values": ["-1,307", "193", "-309", "54", "31", "27"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["17.7x"]},
+        {"label": "EV/EBITDA", "values": ["8.4x"]},
+        {"label": "EV/EBIT", "values": ["15.7x"]},
+        {"label": "P/FCF", "values": ["10.2x"]},
+        {"label": "P/BV", "values": ["1.2x"]},
+        {"label": "Dividend Yield", "values": ["4.5%"]},
+        {"label": "Net Debt / EBITDA", "values": ["1.5x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is UPM a buy in 2026?", "a": "Not at current levels. Valuatum's 8 July 2026 equity report rates UPM-Kymmene (UPM.HE) a HOLD with a 23.40 EUR 12-month target versus a 22.88 EUR price, implying about 2.3% upside. The stock trades close to fair value, with the pulp cycle recovery offset by execution risks in Leuna and Nordic structural headwinds."},
+    {"q": "What is UPM's price target?", "a": "The Valuatum report dated 8 July 2026 sets a 12-month fundamental target price of 23.40 EUR for UPM-Kymmene (UPM.HE), against a current price of 22.88 EUR. The target is a weighted bridge: 10.0x EV/EBITDA on 2027e EBITDA of EUR 1,601m (60% weight, 23.9 EUR), 16.0x P/E on 2027e EPS of 1.40 EUR (20% weight, 22.4 EUR) and the reverse valuation (20% weight, 22.9 EUR)."},
+    {"q": "Why is UPM rated HOLD?", "a": "UPM is rated HOLD because the stock sits close to fair value at 22.88 EUR. The recovery case rests on UPM Fibres, where the Paso de los Toros mill's $280/t cash cost against $650/t pulp prices generates over $1.1bn in gross cash margin at 90% utilization, but it is offset by a structurally impaired Fibres North, execution risk on the EUR 1.3 billion Leuna biorefinery, and a declining paper business the Sappi JV values at just EUR 1.1 billion."},
+    {"q": "Is UPM overvalued in 2026?", "a": "On Valuatum's framework UPM does not look overvalued: it trades at 9.7x 2027e EV/EBITDA versus a peer median of 7.5x and its own normalized historical average of 12.62x. The selected fair multiple of 10.0x reflects a premium over standard packaging-heavy peers for UPM's low-cost Uruguay pulp platform and higher-margin energy and biochemicals exposure, while remaining conservatively below historical norms to account for ongoing market softness."},
+    {"q": "How does the reverse valuation work for UPM?", "a": "The reverse valuation stress-tests the enterprise value across Bear/Base/Bull scenarios driven almost entirely by the pulp spread logic in UPM Fibres and the binary execution threshold at Leuna. The base case — EUR 1,601m of EBITDA at a 10.0x multiple — implies EUR 24.52 per share (+7.2%); the bear case implies EUR 19.76 (-13.6%) and the bull case EUR 30.06 (+31.4%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, UPM report dated 8 July 2026 (company value map; enterprise value allocation EUR 16,618m, current quote EUR 22.88).",
+    "Consensus estimates: Sappi JV EBITDA multiple of 4.6x used for the Communication Papers valuation gap; Mondi plc market cap and EV/EBITDA 2026e web-sourced for the peer comparison.",
+    "Market data: Ticker UPM.HE current price 22.88 EUR as of 8 July 2026; 2025 net sales EUR 9,656m; 2027e EBITDA EUR 1,601m (analyst-generated estimate)."
+  ]
+}

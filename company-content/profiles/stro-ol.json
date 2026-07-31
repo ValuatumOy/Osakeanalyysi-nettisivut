@@ -1,0 +1,9 @@
+{
+  "ticker": "STRO.OL",
+  "companyName": "StrongPoint ASA",
+  "profile": "StrongPoint ASA is a retail technology company serving grocery and other retailers with solutions for in-store and online operations. Its portfolio includes self-checkout and cash management systems, electronic shelf labels, order picking and fulfillment tools, grocery and parcel lockers, warehouse automation, and shopfitting and installation services that help stores improve efficiency and customer flow.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:30:47.023Z"
+}

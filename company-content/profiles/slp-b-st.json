@@ -1,0 +1,9 @@
+{
+  "ticker": "SLP-B.ST",
+  "companyName": "Swedish Logistic Property AB",
+  "profile": "Swedish Logistic Property AB is a Swedish real estate company that acquires, develops and manages logistics properties. Its portfolio is concentrated mainly in southern Sweden and the Stockholm area, and includes both large logistics facilities and smaller urban logistics properties. The company also focuses on tenant adaptations, property development and sustainability-driven management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:59.842Z"
+}

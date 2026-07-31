@@ -1,0 +1,9 @@
+{
+  "ticker": "AFRY.ST",
+  "companyName": "Afry AB",
+  "profile": "AFRY AB provides engineering, project management and advisory services for clients in energy, industry and transportation & places. Its work spans feasibility studies, design, project delivery and operational support, with particular focus on supporting the energy and industrial transition. The group serves customers in many countries through multidisciplinary technical and consulting expertise.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:41:25.644Z"
+}

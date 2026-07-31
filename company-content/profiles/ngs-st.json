@@ -1,0 +1,9 @@
+{
+  "ticker": "NGS.ST",
+  "companyName": "NGS Group AB (publ)",
+  "profile": "NGS Group AB (publ) provides recruitment, staffing, interim management, assessment and executive search services through specialist subsidiaries in Sweden and Norway. The group serves both public and private sector clients, with offerings spanning healthcare staffing, leadership and specialist recruitment, background checks and related consulting services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:17:27.597Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "LIME.ST",
+  "companyName": "Lime Technologies AB (publ)",
+  "profile": "Lime Technologies AB (publ) develops and sells CRM software and related services for sales, marketing and customer service. Its product suite includes Lime CRM, Lime Go and Lime Connect, alongside implementation, support and change-management services through Lime Intenz. The company serves mainly small and medium-sized businesses and selected industry segments across Europe.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:38:30.065Z"
+}

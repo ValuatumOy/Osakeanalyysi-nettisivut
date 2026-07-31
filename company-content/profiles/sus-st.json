@@ -1,0 +1,9 @@
+{
+  "ticker": "SUS.ST",
+  "companyName": "Surgical Science Sweden AB (publ)",
+  "profile": "Surgical Science Sweden AB develops and sells medical simulation training products and software for healthcare education and MedTech companies. Its portfolio includes virtual reality simulators, customizable curricula, and performance-reporting tools used for laparoscopic, robotic, endoscopy, and other procedures. The company serves hospitals, training centers, and device manufacturers through direct sales and partnerships globally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:13:24.807Z"
+}

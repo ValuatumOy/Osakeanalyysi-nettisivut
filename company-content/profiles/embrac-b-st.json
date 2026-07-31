@@ -1,0 +1,9 @@
+{
+  "ticker": "EMBRAC-B.ST",
+  "companyName": "Embracer Group AB (publ)",
+  "profile": "Embracer Group AB is a Swedish-based global video game and entertainment group that develops and publishes PC, console and mobile games and other related media. It operates through multiple studios and brands, including owned and controlled intellectual property across its portfolio. The company is also undergoing portfolio restructuring, including planned separation of selected businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:51:37.647Z"
+}

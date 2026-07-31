@@ -1,0 +1,9 @@
+{
+  "ticker": "NEXT.OL",
+  "companyName": "NEXT Biometrics Group ASA",
+  "profile": "NEXT Biometrics Group ASA develops and sells biometric authentication technology, centered on fingerprint sensors, readers, and related software for secure identity verification. Its products are used in national ID programs, access control, point-of-sale terminals, and laptops or tablets. The company also offers integration support and biometric solutions based on its Active Thermal technology.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:29:50.766Z"
+}

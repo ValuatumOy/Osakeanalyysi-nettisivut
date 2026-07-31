@@ -1,0 +1,9 @@
+{
+  "ticker": "IDOGEN.ST",
+  "companyName": "Idogen AB (publ)",
+  "profile": "Idogen AB is a Swedish biotechnology company developing tolerogenic cell therapies intended to re-establish immune tolerance. Its programs are aimed at preventing the immune system from attacking biological treatments, transplanted organs, or the body’s own tissues, with lead work in hemophilia patients who have developed neutralizing antibodies and broader applications in transplantation and autoimmune disease.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:21:12.503Z"
+}

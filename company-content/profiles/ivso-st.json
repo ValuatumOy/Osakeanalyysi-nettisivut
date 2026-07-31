@@ -1,0 +1,9 @@
+{
+  "ticker": "IVSO.ST",
+  "companyName": "Invisio AB (publ)",
+  "profile": "INVISIO develops and markets integrated communication and hearing-protection systems for defense and public safety users in mission-critical environments. Its portfolio includes headsets, control units, intercoms, hubs, and software designed to support clear communication, situational awareness, and user safety in high-noise conditions. The company also relies on a modular system approach and international sales.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:25:51.045Z"
+}

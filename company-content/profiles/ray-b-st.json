@@ -1,0 +1,9 @@
+{
+  "ticker": "RAY-B.ST",
+  "companyName": "RaySearch Laboratories AB (publ)",
+  "profile": "RaySearch Laboratories is a medical technology company that develops software for improved cancer treatment. Its main products include the RayStation treatment planning system, the RayCare oncology information system, RayIntelligence analytics software, and RayCommand treatment control software. The company sells these solutions to cancer clinics worldwide and also works with partners in radiotherapy and oncology workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:01.701Z"
+}

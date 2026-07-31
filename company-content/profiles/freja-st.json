@@ -1,0 +1,9 @@
+{
+  "ticker": "FREJA.ST",
+  "companyName": "Freja eID Group AB (publ)",
+  "profile": "Freja eID Group develops digital identification products and services. Its main offering is the Freja eID mobile electronic identity platform, used for authentication, identity verification and electronic signatures for consumers, businesses and public-sector organisations. The group also provides secure fulfilment services supporting the issuance and management of digital identities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:03:50.144Z"
+}

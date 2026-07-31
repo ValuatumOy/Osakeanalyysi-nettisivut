@@ -1,0 +1,9 @@
+{
+  "ticker": "TRMED.OL",
+  "companyName": "Thor Medical ASA",
+  "profile": "Thor Medical ASA develops and supplies alpha-particle emitters for radiopharmaceutical companies working on targeted cancer therapies. The company uses a proprietary production process based on naturally occurring thorium, without nuclear reactors or irradiation, to produce high-purity isotopes. It operates pilot-scale production in Norway and is developing larger-scale capacity for commercial deliveries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:34:30.972Z"
+}

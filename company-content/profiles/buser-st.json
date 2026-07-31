@@ -1,0 +1,9 @@
+{
+  "ticker": "BUSER.ST",
+  "companyName": "Bambuser AB (publ)",
+  "profile": "Bambuser AB (publ) develops a video commerce software platform for retailers and brands. Its products include live shopping, shoppable video, video consultations and live chat, which let merchants present products through interactive video and collect customer engagement data. The company is headquartered in Stockholm and serves international enterprise customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:51:24.328Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "STORY-B.ST",
+  "companyName": "Storytel AB (publ)",
+  "profile": "Storytel AB is a Swedish digital platform and publishing group that provides subscription streaming for audiobooks and e-books under the Storytel and Mofibo brands. It operates in more than 25 markets and also runs a publishing business through imprints including Norstedts, StorySide, Printz Publishing, People’s Press, Rabén & Sjögren, B. Wahlströms, Gummerus and Lind & Co.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:39.169Z"
+}

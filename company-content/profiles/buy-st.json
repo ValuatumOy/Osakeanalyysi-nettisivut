@@ -1,0 +1,9 @@
+{
+  "ticker": "BUY.ST",
+  "companyName": "Sweden Buyersclub AB",
+  "profile": "Sweden Buyersclub AB operates a membership-based e-commerce platform in Sweden. The company sells more than one million products across categories including home and household, technology, beauty, toys, furniture, pets and books. Its value proposition is direct access to purchase prices, price guarantees and member-specific offers through its online store.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:33.960Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ARCUS.OL",
+  "companyName": "Arcus ASA",
+  "profile": "Arcus ASA was a Nordic branded consumer goods company focused on wine and spirits. It produced, imported, marketed, sold and distributed alcoholic beverages, with a strong position in aquavit and a broad wine portfolio. Its operations also included beverage logistics through Vectura. In 2021, Arcus merged with Altia to form Anora.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:58:52.347Z"
+}

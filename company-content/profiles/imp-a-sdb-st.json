@@ -1,0 +1,9 @@
+{
+  "ticker": "IMP-A-SDB.ST",
+  "companyName": "Implantica AG",
+  "profile": "Implantica AG is a medtech company developing implantable technologies and products for gastrointestinal and other conditions. Its lead product is RefluxStop, a CE-marked implant for gastroesophageal reflux disease. The company also is developing eHealth and wireless energizing platforms and a broader pipeline of smart medical implants.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:22:34.113Z"
+}

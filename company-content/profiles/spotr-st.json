@@ -1,0 +1,9 @@
+{
+  "ticker": "SPOTR.ST",
+  "companyName": "AppSpotr AB (publ)",
+  "profile": "AppSpotr develops and sells software for mobile app development. Its Appspotr 3 low-code platform lets users build, manage and publish native mobile applications without coding, while the company also offers custom app development and related services such as design, project management, maintenance and integrations. It serves businesses and organizations across private and public sectors.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:09:30.169Z"
+}

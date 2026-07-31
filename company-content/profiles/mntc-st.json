@@ -1,0 +1,9 @@
+{
+  "ticker": "MNTC.ST",
+  "companyName": "Mentice AB (publ)",
+  "profile": "Mentice develops simulation solutions for image-guided interventional therapies, combining virtual reality software, haptic-enabled hardware, and related services. Its platforms are used worldwide by healthcare providers and medical device companies for procedural training, device adoption, patient-specific rehearsal, and skills assessment across neurovascular, cardiovascular, and peripheral interventions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:47:24.358Z"
+}

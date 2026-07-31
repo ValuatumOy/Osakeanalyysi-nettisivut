@@ -1,0 +1,9 @@
+{
+  "ticker": "TSEC.ST",
+  "companyName": "Tempest Security AB (publ)",
+  "profile": "Tempest Security AB (publ) provides security services for corporate, public sector and private clients, mainly in Sweden but also internationally. Its offering includes security staffing, investigations, risk consulting, alarm receiving services, CCTV and other technical security solutions, delivered through the Security Solutions and Risk Solutions businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:14:30.796Z"
+}

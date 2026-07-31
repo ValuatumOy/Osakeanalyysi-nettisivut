@@ -1,0 +1,9 @@
+{
+  "ticker": "AVENT-B.ST",
+  "companyName": "Aventura Group AB (publ)",
+  "profile": "Aventura Group AB is a Stockholm-based e-commerce and brand accelerator focused on the Chinese consumer market. The company develops and invests in brands with growth potential in China and supports their scaling through brand management, marketing, channel development, logistics coordination and consumer insights. Its portfolio includes Aventura, TicToc Ventures, Aurora Beauty and Headway B2B.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:39:53.322Z"
+}

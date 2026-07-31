@@ -7,115 +7,87 @@
   "country": "Finland",
   "sector": "Paper, Lumber & Forest Products",
   "currency": "EUR",
-  "reportDate": "2026-06-01",
+  "reportDate": "2026-07-24",
   "headline": {
     "recommendation": "BUY",
     "horizon": "12-month",
-    "currentPrice": "10.05 EUR",
-    "targetPrice": "12.76 EUR",
-    "impliedUpside": "+27.0%",
-    "marketCap": "EUR 7.9 bn",
-    "enterpriseValue": "EUR 11.2 bn"
+    "currentPrice": "9.17 EUR",
+    "targetPrice": "13.30 EUR",
+    "impliedUpside": "+45.0%",
+    "marketCap": "EUR 7.2 bn",
+    "enterpriseValue": "EUR 10.6 bn"
   },
   "multiples": [
-    {"label": "P/E 2026E", "value": "19.8x"},
-    {"label": "EV/EBITDA 2026E", "value": "7.8x"},
-    {"label": "FCF Yield 2026E", "value": "1.8%"},
-    {"label": "Dividend Yield 2026E", "value": "4.0%"},
-    {"label": "Net Debt/EBITDA 2026E", "value": "2.4x"}
+    {
+      "label": "P/E 2026E",
+      "value": "17.8x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "6.7x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "1.2%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "4.5%"
+    },
+    {
+      "label": "Net Debt/EBITDA 2026E",
+      "value": "2.2x"
+    }
   ],
   "priceStats": {
-    "week52High": "11.51 EUR",
-    "week52Low": "9.03 EUR",
-    "oneYearChange": "+10.2%",
-    "threeYearChange": "-9.0%"
+    "week52High": "12.26 EUR",
+    "week52Low": "8.50 EUR",
+    "oneYearChange": "+0.3%",
+    "threeYearChange": "-6.3%"
   },
   "summary": [
-    "Stora Enso Oyj (STERV.HE, NASDAQ Helsinki) is a Nordic paper, packaging and forest products group, and this Valuatum equity research report dated 1 June 2026 rates it BUY with a 12-month target price of EUR 12.76 versus a current price of EUR 10.05, implying roughly +27.0% upside.",
-    "The core valuation tension is that Stora Enso's EUR 7,922 million equity capitalization prices a distressed industrial operation attached to an EUR 8,000 million biological land bank. The Forest Assets pool alone absorbs about EUR 8.0 billion, over 70% of the group's EUR 11,248 million enterprise value, leaving only a residual EUR 3.2 billion for the industrial segments that generate over EUR 9 billion of revenue and the majority of EBIT — an implied multiple of under 6.7x operating profit.",
-    "The reverse-valuation conclusion is that the case hinges on the H1 2027 statutory cross-border demerger of EUR 5,700 million in Swedish forest assets and the Oulu consumer board ramp-up that should lift Consumer Packaging margins from a depressed 6.8% toward an 11.0% mid-cycle rate. If the demerger cleanly separates asset value from industrial volatility and pushes adequate debt onto the new SpinCo without tax leakage, the current market capitalization represents a severe discount to the sum of the parts."
+    "Stora Enso Oyj (STERV.HE, NASDAQ Helsinki) is a renewable materials, packaging and forest assets group. This Valuatum equity research report dated 24 July 2026 rates the stock BUY with a 12-month target price of EUR 13.30 versus a current price of EUR 9.17, implying roughly +45.0% upside.",
+    "The investment case is driven by Consumer Packaging margin recovery, the Oulu ramp-up and the market discount applied to forest asset NAV ahead of the planned 2027 separation of Swedish forest assets.",
+    "The central debate is whether packaging margins recover and whether Bergslagets Skogar is separated with a debt load that allows the forest NAV to be recognized rather than discounted by the market."
   ],
   "thesis": [
-    {"num": "01", "title": "Swedish Forest Asset Demerger", "metric": "EUR 5,700m", "text": "The planned statutory demerger of the EUR 5,700 million Swedish forest assets unlocks trapped value and forces a positive re-rating of the residual EUR 3,248 million industrial enterprise value."},
-    {"num": "02", "title": "Oulu Consumer Board Ramp-up", "metric": "11.0%", "text": "The EUR 1 billion capital conversion at the Oulu site scales new board volumes and lifts the Consumer Packaging segment from a depressed 6.8% margin to an 11.0% rate, driving a valuation re-rating."},
-    {"num": "03", "title": "Mechanical Earnings Growth", "metric": "EUR 977m", "text": "Because heavy capital outlays are now complete, incremental volumes will mechanically lift group earnings from EUR 705 million to EUR 977 million by 2028, easing the currently mispriced debt burden."}
-  ],
-  "thesisBreaker": "The thesis breaks if the cross-border demerger triggers capital gains tax leakage on the biological assets, or if Oulu fails to lift Consumer Packaging margins above 8.0% by late 2027.",
-  "valuePools": [
-    {"name": "Forest Assets", "share": "71.1% · EUR 8,000m EV", "economics": "EUR 1,258m revenue (13.4%) · EUR 225m comp. EBIT (31.9%) · 17.9% margin · Asset-backed", "text": "Valued purely on a net asset value basis rather than a cash-flow multiple, this is one of the world's largest private forest holdings with a reported biological fair value of about EUR 8.5 billion at Q1 2026. The 2027 separation targets the Swedish holdings of over 1.2 million hectares carrying a fair value of roughly EUR 5.7 billion."},
-    {"name": "Consumer Packaging", "share": "13.2% · EUR 1,489m EV", "economics": "EUR 3,250m revenue (34.6%) · EUR 220m comp. EBIT (31.2%) · 6.8% margin · Profit engine", "text": "The group's primary industrial profit engine produces folding boxboard and solid bleached sulphate board for food, beverage and premium retail packaging. Margins are depressed at 6.8% amid a cyclical trough and the drag from ramping the converted Oulu line, with normalized 90%+ utilization assets earning 12-15% EBIT margins."},
-    {"name": "Integrated Packaging", "share": "7.8% · EUR 880m EV", "economics": "EUR 2,150m revenue (22.9%) · EUR 130m comp. EBIT (18.4%) · 6.0% margin · Commodity", "text": "A commodity or spread business operating in a state of structural oversupply, sensitive to European corrugated demand recovery."},
-    {"name": "Biomaterials", "share": "7.2% · EUR 812m EV", "economics": "EUR 1,126m revenue (12.0%) · EUR 120m comp. EBIT (17.0%) · 10.7% margin · Commodity", "text": "A commodity or spread business with a 10.7% EBIT margin whose earnings are highly sensitive to the global pulp price cycle, including NBSK and BHKP spot prices."},
-    {"name": "Other (Wood Products)", "share": "0.6% · EUR 67m EV", "economics": "EUR 1,600m revenue (17.1%) · EUR 10m comp. EBIT (1.4%) · 0.6% margin · Restructuring", "text": "A restructuring or disposal asset earning a 0.6% EBIT margin and under strategic review, with a potential Central European wood products divestment flagged as a near-term deleveraging catalyst."}
-  ],
-  "reverseValuation": {
-    "intro": "The valuation is framed as a sum-of-the-parts reverse exercise: allocate roughly EUR 8.0 billion of the EUR 11.2 billion enterprise value to the forests at NAV, then test what multiple and EBITDA the residual EUR 3.2 billion industrial business must support, and how the EUR 3.4 billion group net debt is apportioned in the 2027 demerger. Scenarios diverge on demerger execution and the Oulu margin ramp.",
-    "scenarios": [
-      {"scenario": "Bull", "cols": {"Revenue": "9,853", "EBITDA": "1,764", "Margin": "17.9%", "Multiple": "7.7x", "EV": "13,495", "Equity": "10,238"}, "impliedValueOrUpside": "EUR 12.98 / sh · +29.2%"},
-      {"scenario": "Base", "cols": {"Revenue": "9,384", "EBITDA": "1,445", "Margin": "15.4%", "Multiple": "7.8x", "EV": "11,242", "Equity": "7,985"}, "impliedValueOrUpside": "EUR 10.13 / sh · +0.8%"},
-      {"scenario": "Bear", "cols": {"Revenue": "9,384", "EBITDA": "1,445", "Margin": "15.4%", "Multiple": "6.6x", "EV": "9,494", "Equity": "6,237"}, "impliedValueOrUpside": "EUR 7.91 / sh · -21.3%"}
-    ],
-    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
-  },
-  "coreAnalysis": [
-    {"heading": "Executive Map", "text": "Stora Enso is priced as a massive land bank with a discounted, cyclical industrial operation attached. The EUR 11,248 million enterprise value is heavily skewed toward biological assets, with Forest Assets allocated about EUR 8.0 billion (over 70% of the total), supported by a reported biological fair value of roughly EUR 8.5 billion at end-Q1 2026. The industrial segments generate the vast majority of revenue and over 65% of adjusted operating profit yet are assigned less than 30% of enterprise value on a residual basis, suggesting either a punitive conglomerate discount on the forests or a structural impairment priced into the cyclical businesses."},
-    {"heading": "Cross-Pool Bridge", "text": "The forecast rests on completion of the heavy capex cycle and margin recovery at Consumer Packaging. Net sales grow modestly by about EUR 470 million from 2026 to 2028 while EBIT expands more sharply from EUR 705 million to EUR 977 million, an operating-leverage story driven by Oulu fixed-cost absorption. Forecast group net debt stays stubbornly around EUR 3.4-3.5 billion through 2028, so deleveraging must come from structural actions — the Swedish forest demerger and potential Central European wood products divestment."},
-    {"heading": "Scenarios & Verdict", "text": "Scenarios diverge entirely on 2027 demerger execution and the Oulu ramp. In the Bull case a favorable Swedish tax ruling allows the EUR 5.7 billion forest asset to demerge without capital gains leakage and Oulu lifts industrial EBIT above EUR 700 million; at a normalized 10x EBIT multiple combined enterprise value expands to EUR 13.5 billion and equity value per share rises over 25%. The bottom line is that the central debate is whether the severe conglomerate discount is justified or whether the 2027 demerger unlocks value, with the industrial operations currently priced for near-distress."}
-  ],
-  "risks": [
-    "Separation leakage from the 2027 demerger (HIGH, thesis-breaker): a statutory cross-border demerger that triggers capital gains taxes on embedded biological growth would destroy a significant portion of equity value; early warning is adverse Swedish tax rulings.",
-    "Debt allocation forces over-leverage (HIGH, structural): if the remaining industrial company is forced to retain the vast majority of the EUR 3.4 billion net debt against roughly EUR 480 million of EBIT, leverage would exceed 7x and trigger distress; early warning is unbalanced debt syndication in the prospectus.",
-    "Oulu ramp-up fails to absorb fixed costs (MEDIUM, manageable): slowed plastic-substitution prevents volume scaling, with quarterly margin progression stalling below 8% as the early warning.",
-    "Global pulp cycle collapse (MEDIUM, manageable): sudden South American capacity additions flood the market, with declining NBSK and BHKP spot prices as the early warning."
-  ],
-  "catalysts": [
-    "Demerger Prospectus Publication (near-term, Forest Assets): debt allocation and tax leakage details for SpinCo determine equity value unlock and are the main catalyst, often misunderstood by retail investors who assume the full EUR 5.7 billion accrues to equity.",
-    "Oulu Consumer Board Ramp-up (medium-term, Consumer Packaging): quarterly margin progression toward 11% drives industrial EV re-rating and is the easiest catalyst to track.",
-    "Central European Wood Products Divestment (near-term, Other/Wood Products): M&A announcements provide cash for deleveraging.",
-    "European Corrugated Demand Recovery (medium-term, Integrated Packaging): competitor commentary and volume lift support spread margins."
-  ],
-  "financials": {
-    "note": "All figures in EUR millions unless noted.",
-    "incomeStatement": {
-      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
-      "rows": [
-        {"label": "Net Sales", "values": ["9,396", "9,049", "9,326", "9,384", "9,646", "9,853"]},
-        {"label": "EBITDA", "values": ["982", "1,324", "1,449", "1,445", "1,667", "1,764"]},
-        {"label": "EBITDA margin", "values": ["10.5%", "14.6%", "15.5%", "15.4%", "17.3%", "17.9%"]},
-        {"label": "Depreciation", "values": ["-1,304", "-1,231", "-507", "-739", "-766", "-787"]},
-        {"label": "Operating Profit (EBIT)", "values": ["-322", "93", "942", "705", "901", "977"]},
-        {"label": "EBIT margin", "values": ["-3.4%", "1.0%", "10.1%", "7.5%", "9.3%", "9.9%"]},
-        {"label": "Net financial items", "values": ["-173", "-211", "-159", "-164", "-227", "-230"]},
-        {"label": "Pre-tax Profit", "values": ["-495", "-118", "783", "541", "674", "747"]},
-        {"label": "Net Earnings", "values": ["-431", "-183", "686", "401", "499", "552"]},
-        {"label": "EPS (EUR)", "values": ["-0.6", "-0.2", "0.9", "0.5", "0.6", "0.7"]},
-        {"label": "DPS (EUR)", "values": ["0.6", "0.2", "0.3", "0.4", "0.5", "0.6"]},
-        {"label": "Payout ratio", "values": ["-109.8%", "-86.2%", "28.7%", "80.0%", "80.0%", "80.0%"]}
-      ]
+    {
+      "num": "01",
+      "title": "Consumer Packaging Margin Recovery",
+      "metric": "10.0%",
+      "text": "Consumer Packaging adjusted EBIT margin needs to recover from 6.2% to over 10.0% as Oulu ramps up and fixed costs are absorbed, supporting the value allocated to the segment."
     },
-    "ratios": {
-      "columns": ["2026E"],
-      "rows": [
-        {"label": "P/E", "values": ["19.8x"]},
-        {"label": "EV/EBITDA", "values": ["7.8x"]},
-        {"label": "EV/EBIT", "values": ["15.9x"]},
-        {"label": "P/FCF", "values": ["55.3x"]},
-        {"label": "P/BV", "values": ["0.7x"]},
-        {"label": "Dividend Yield", "values": ["4.0%"]},
-        {"label": "Net Debt / EBITDA", "values": ["2.4x"]}
-      ]
+    {
+      "num": "02",
+      "title": "Group EBIT Margin Expansion",
+      "metric": "9.1%",
+      "text": "Group EBIT margin is modeled to expand from 7.4% in 2026E to 9.1% by 2027E as sales grow modestly and 2027E EBITDA reaches EUR 1,520 million."
+    },
+    {
+      "num": "03",
+      "title": "Discounted Forest Asset NAV",
+      "metric": "6.73x",
+      "text": "The market prices Stora Enso at 6.73x forward EV/EBITDA because it discounts both packaging margin recovery and the EUR 5.7 billion forest NAV pending 2027 demerger debt disclosure."
     }
-  },
+  ],
+  "thesisBreaker": "The thesis breaks if combined Nordic capacity additions permanently rebase FBB margins below 8%, or if Bergslagets Skogar is loaded with more than EUR 3bn of debt.",
   "faqs": [
-    {"q": "Is Stora Enso a buy in 2026?", "a": "Yes. Valuatum's 1 June 2026 report rates Stora Enso (STERV.HE) a BUY with a 12-month target of EUR 12.76 versus a EUR 10.05 price, about +27.0% upside. The call rests on the 2027 Swedish forest demerger unlocking trapped NAV and Oulu-driven margin recovery."},
-    {"q": "What is Stora Enso's price target?", "a": "The 1 June 2026 Valuatum report sets a 12-month fundamental target price of EUR 12.76 for Stora Enso (STERV.HE), implying roughly +27.0% upside from the EUR 10.05 current price. The Bull scenario implies EUR 12.98 per share and the Bear scenario EUR 7.91."},
-    {"q": "Why is Stora Enso considered undervalued?", "a": "Stora Enso's EUR 11.2 billion enterprise value allocates about EUR 8.0 billion to forest assets valued at NAV, leaving only a residual EUR 3.2 billion for industrial segments that generate over EUR 9 billion of revenue and most EBIT — an implied sub-6.7x EBIT multiple versus 8-12x for packaging peers."},
-    {"q": "How does the reverse valuation work for Stora Enso?", "a": "It is a sum-of-the-parts test: value the forests at roughly EUR 8.0 billion NAV, then check what multiple the residual EUR 3.2 billion industrial business must support and how the EUR 3.4 billion net debt is split in the 2027 demerger. Base case yields EUR 10.13 per share, Bull EUR 12.98 (+29.2%)."},
-    {"q": "What is the biggest risk to Stora Enso's investment thesis?", "a": "The thesis-breaking risk is tax leakage from the 2027 statutory cross-border Swedish forest demerger; capital gains taxes on embedded biological growth would destroy equity value. A second HIGH risk is the industrial company being forced to retain most of the EUR 3.4 billion net debt, pushing leverage above 7x."}
+    {
+      "q": "Is Stora Enso a buy in 2026?",
+      "a": "Yes. Valuatum's 24 July 2026 report rates Stora Enso (STERV.HE) BUY with a 12-month target of EUR 13.30 versus a EUR 9.17 current price, implying roughly +45.0% upside."
+    },
+    {
+      "q": "What is Stora Enso's price target?",
+      "a": "The 24 July 2026 Valuatum report sets a 12-month fundamental target price of EUR 13.30 for Stora Enso."
+    },
+    {
+      "q": "Why is Stora Enso considered undervalued?",
+      "a": "The report highlights discounted forest asset NAV, Consumer Packaging margin recovery and the potential 2027 forest asset separation as key value drivers."
+    }
   ],
   "sources": [
-    "Primary data: Stora Enso statutory disclosures and financial snapshot; Enterprise Value Allocation EUR 11,248m (Company Value Map); 2025 actual EBIT EUR 942m.",
-    "Consensus estimates: Consensus 2026 EBIT EUR 705m; analyst-generated 2026E EBIT EUR 705m.",
-    "Market data: Current share price EUR 10.045 as of 1 June 2026; forward multiples (P/E 19.78x) model output."
-  ]
+    "Primary source: Valuatum Equity Research, Stora Enso report dated 24 July 2026.",
+    "Market data and valuation figures shown on this page are taken from the 24 July 2026 report PDF."
+  ],
+  "profile": "Stora Enso Oyj is a Finland-headquartered renewable materials group producing fiber-based packaging materials and solutions, biomaterials, and wood products, while also owning substantial forest assets in the Nordics and Baltics. The company is restructuring its reporting and preparing to separate its Swedish forest assets into a new independently listed forest company."
 }

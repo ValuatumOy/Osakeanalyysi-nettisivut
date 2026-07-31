@@ -1,0 +1,9 @@
+{
+  "ticker": "NOSA.ST",
+  "companyName": "FRISQ Holding AB (publ)",
+  "profile": "Nosa Plugs AB, formerly FRISQ Holding AB, is a Swedish medical technology company focused on intranasal breathing products. Its portfolio includes odor-control plugs, nasal filters for airborne allergens, microbial protection products that reduce exposure to viruses and bacteria, smell training kits, and lubricating nasal spray. The company sells through professional and consumer channels in multiple markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:04:18.852Z"
+}

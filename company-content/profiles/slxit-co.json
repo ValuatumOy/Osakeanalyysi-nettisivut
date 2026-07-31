@@ -1,0 +1,9 @@
+{
+  "ticker": "SLXIT.CO",
+  "companyName": "Seluxit A/S",
+  "profile": "Seluxit A/S develops Internet of Things solutions that connect devices to the internet for monitoring, automation and data analysis. Its offering includes the Wappsto cloud platform, embedded hardware and firmware development, consulting, and energy management systems for residential and commercial customers. The company’s assets have been acquired by Wirtek, and its products continue under that ownership.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:54:05.255Z"
+}

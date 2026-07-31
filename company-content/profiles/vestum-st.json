@@ -1,0 +1,9 @@
+{
+  "ticker": "VESTUM.ST",
+  "companyName": "Vestum AB (publ)",
+  "profile": "Vestum AB (publ) is an industrial group focused on services and products for infrastructure. Its operations are organized into Flow Technology, Niche Products and Solutions, covering water infrastructure, selected technology niches, and specialist solutions for properties and transport networks. The group operates mainly in Scandinavia and the United Kingdom.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:39.005Z"
+}

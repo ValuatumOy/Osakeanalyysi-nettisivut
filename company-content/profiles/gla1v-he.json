@@ -1,0 +1,9 @@
+{
+  "ticker": "GLA1V.HE",
+  "companyName": "Glaston Oyj Abp",
+  "profile": "Glaston develops, manufactures, sells and services glass processing machinery, equipment and technology. Its portfolio covers tempering, laminating and insulating glass lines, along with upgrades, spare parts and lifecycle services. The company serves architectural, automotive, solar and display glass processors through a global sales and service network, with production in Europe and China.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:00:20.373Z"
+}

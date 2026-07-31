@@ -1,0 +1,9 @@
+{
+  "ticker": "NPRO.OL",
+  "companyName": "Norwegian Property ASA",
+  "profile": "Norwegian Property ASA is a pure-play, fully integrated real estate company that owns, develops and manages commercial properties, primarily in the Oslo area. Its portfolio is concentrated in offices and mixed-use buildings in locations such as Aker Brygge, Fornebu, Nydalen and the Oslo central business district. Rental income, property development and active asset management are the main value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:50:22.840Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NORSE.OL",
+  "companyName": "Norse Atlantic ASA",
+  "profile": "Norse Atlantic ASA operates an airline offering affordable fares on long-haul flights, primarily between Europe and the United States. It flies modern Boeing 787 Dreamliners on routes including major cities in Europe and North America. The group is headquartered in Arendal, Norway, and its business is centered on passenger traffic.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:41:08.574Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "HOYLU.ST",
+  "companyName": "Hoylu AB (publ)",
+  "profile": "Hoylu AB develops cloud-based software for visual collaboration and project management. Its Adaptive Workspaces combine whiteboarding, planning and task management for distributed teams, with use cases in construction and other complex project environments. The company also offers templates and integrations that support workflow coordination across different applications and work practices.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:18:42.850Z"
+}

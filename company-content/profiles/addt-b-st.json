@@ -1,0 +1,9 @@
+{
+  "ticker": "ADDT-B.ST",
+  "companyName": "Addtech AB (publ.)",
+  "profile": "Addtech AB is a Swedish publicly listed technical solutions group with around 150 independent companies. It sells high-tech products, components, and customised solutions to customers mainly in manufacturing and infrastructure, with operations organised across five business areas: Automation, Electrification, Energy, Industry, Process, and Safety. The group’s value driver is specialist, decentralised niche businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:33:06.206Z"
+}

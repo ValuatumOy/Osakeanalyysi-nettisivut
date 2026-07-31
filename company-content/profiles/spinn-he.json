@@ -1,0 +1,9 @@
+{
+  "ticker": "SPINN.HE",
+  "companyName": "Spinnova Oyj",
+  "profile": "Spinnova is a Finnish technology company that develops patented processes for making textile fibre from wood pulp or waste materials without harmful chemicals or dissolving. Its SPINNOVA® fibre is used in yarns, fabrics and other textile applications, often through partnerships with industry players. The company has also shifted to focus on selling its fibre technology.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:34:47.197Z"
+}

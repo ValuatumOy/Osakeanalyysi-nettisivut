@@ -1,0 +1,9 @@
+{
+  "ticker": "SONE.ST",
+  "companyName": "Sonetel AB (publ)",
+  "profile": "Sonetel AB (publ) provides a global AI-based communications platform for entrepreneurs and small businesses. Its services include virtual business phone numbers, cloud call forwarding, SIP trunking, interactive voice response, call recording, and AI-generated call, voicemail, and meeting summaries. The company also offers an API for automating number purchase, routing, and related workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:16:31.090Z"
+}

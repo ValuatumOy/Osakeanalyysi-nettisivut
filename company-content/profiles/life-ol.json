@@ -1,0 +1,9 @@
+{
+  "ticker": "LIFE.OL",
+  "companyName": "Lifecare AS",
+  "profile": "Lifecare AS is a medical sensor company developing miniaturized and implantable nanobiosensors for continuous monitoring of glucose and other biomarkers. Its core technology, Sencell, is designed for use in human and veterinary applications and is being developed through research, product validation, manufacturing scale-up, and regulatory preparation for commercial use.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:08:37.277Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "HARB-B.CO",
+  "companyName": "Harboes Bryggeri A/S",
+  "profile": "Harboes Bryggeri A/S produces and markets beer, malt beverages and other soft drinks, and also supplies malt extracts and related ingredients to beverage and food customers. The company sells both private-label and own-brand products in Denmark and export markets, with earnings driven by manufacturing scale, product mix and customer demand.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:30:16.379Z"
+}

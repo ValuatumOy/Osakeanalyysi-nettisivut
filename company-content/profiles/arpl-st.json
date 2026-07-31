@@ -1,0 +1,9 @@
+{
+  "ticker": "ARPL.ST",
+  "companyName": "Arla Plast AB",
+  "profile": "Arla Plast AB manufactures extruded plastic sheets for industrial customers. Its product range includes solid and multiwall polycarbonate sheets, plus PETG, ABS and PC/ABS materials. The company serves applications in transport, building, protection and signage, and provides related technical support, custom formats and logistics services from production sites in Sweden and the Czech Republic.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:21:44.822Z"
+}

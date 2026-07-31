@@ -1,0 +1,9 @@
+{
+  "ticker": "ITERA.OL",
+  "companyName": "Itera ASA",
+  "profile": "Itera ASA is a Nordic technology services company that provides business consulting, design, data and analytics, software development, cloud and application services, agile technology management, and test and quality assurance. It serves clients across multiple industries and countries, helping them develop digital products and services and improve operations through technology and data.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:55:20.476Z"
+}

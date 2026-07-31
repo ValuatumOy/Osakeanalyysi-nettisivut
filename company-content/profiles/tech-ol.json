@@ -1,0 +1,9 @@
+{
+  "ticker": "TECH.OL",
+  "companyName": "Techstep ASA",
+  "profile": "Techstep ASA provides mobile and circular technology solutions for enterprises and public-sector customers. The company combines mobile devices, software, security tools, managed mobility services, and lifecycle services such as procurement, deployment, logistics, and device management. Its offerings are designed to help organizations manage mobile workplaces more efficiently, securely, and sustainably.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:32:05.368Z"
+}

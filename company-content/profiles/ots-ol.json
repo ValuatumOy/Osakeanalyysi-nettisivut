@@ -1,0 +1,9 @@
+{
+  "ticker": "OTS.OL",
+  "companyName": "Oceanteam ASA",
+  "profile": "Oceanteam ASA provides offshore services focused on subsea cable and umbilical logistics, equipment rental, cable storage and transport, and project management for renewable energy and oil and gas clients. The company also owns, charters and manages offshore support vessels and related equipment used in marine operations, with activities spanning shipping and solutions segments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:55:54.776Z"
+}

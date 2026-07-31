@@ -1,0 +1,9 @@
+{
+  "ticker": "EWRK.ST",
+  "companyName": "Ework Group AB (publ)",
+  "profile": "Ework Group AB (publ) is a Swedish listed total talent solutions provider that connects clients with independent professionals and consultants. The company offers consulting, recruitment, managed service provider, talent advisory and total talent management services, with a focus on IT/OT, research and development, engineering and business development across private and public sector assignments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:56:18.062Z"
+}

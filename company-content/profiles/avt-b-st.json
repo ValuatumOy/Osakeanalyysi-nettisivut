@@ -1,0 +1,9 @@
+{
+  "ticker": "AVT-B.ST",
+  "companyName": "AVTECH Sweden AB (publ)",
+  "profile": "AVTECH Sweden AB develops digital air traffic management solutions for the aviation industry. Its services use real-time weather and flight data to help airlines optimize flight paths, fuel use, emissions, punctuality, and safety. The company’s main products include ClearPath, Aventus, SIGMA, and ProFlight, which support tactical decision-making in and around the cockpit.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:41:00.937Z"
+}

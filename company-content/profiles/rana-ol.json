@@ -1,0 +1,9 @@
+{
+  "ticker": "RANA.OL",
+  "companyName": "Rana Gruber ASA",
+  "profile": "Rana Gruber ASA is a Norwegian iron ore producer that mines and processes ore into hematite and magnetite concentrates. The company sells these products mainly to the European steel industry, while some grades are also used in water treatment and other industrial applications. Operations are centered in the Dunderland Valley near Mo i Rana, Norway.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:12:52.567Z"
+}

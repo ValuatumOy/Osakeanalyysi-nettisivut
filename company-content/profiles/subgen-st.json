@@ -1,0 +1,9 @@
+{
+  "ticker": "SUBGEN.ST",
+  "companyName": "AegirBio AB (publ)",
+  "profile": "AegirBio AB is a Swedish diagnostics company that develops and commercializes tests and technology for monitoring biologic drug levels and other health conditions. Its portfolio has included laboratory, point-of-care, and home-testing products, as well as rapid tests, aimed at making diagnostics easier to use and providing quantitative results for clinical and self-monitoring applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:40:15.360Z"
+}

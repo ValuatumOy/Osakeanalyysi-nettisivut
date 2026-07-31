@@ -4,3 +4,5 @@ node_modules/
 server/node_modules/
 .vercel
 server/data/
+infra/cdk.out/
+pdfs/

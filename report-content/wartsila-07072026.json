@@ -1,0 +1,135 @@
+{
+  "id": "wartsila-07072026",
+  "slug": "wartsila-equity-report",
+  "companyName": "Wärtsilä Oyj Abp",
+  "ticker": "WRT1V.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Industrial - Machinery",
+  "currency": "EUR",
+  "reportDate": "2026-07-07",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "31.89 EUR",
+    "targetPrice": "32.10 EUR",
+    "impliedUpside": "+0.7%",
+    "marketCap": "EUR 18.8 bn",
+    "enterpriseValue": "EUR 16.5 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "24.1x"},
+    {"label": "EV/EBITDA 2026E", "value": "13.7x"},
+    {"label": "FCF Yield 2026E", "value": "3.7%"},
+    {"label": "Dividend Yield 2026E", "value": "1.6%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "-1.9x"}
+  ],
+  "priceStats": {
+    "week52High": "40.75 EUR",
+    "week52Low": "19.36 EUR",
+    "oneYearChange": "+56.7%",
+    "threeYearChange": "+214.8%"
+  },
+  "summary": [
+    "Wärtsilä Oyj Abp (WRT1V.HE, NASDAQ Helsinki) is a Finnish technology group supplying power, propulsion and lifecycle solutions to the marine and energy markets, increasingly serving off-grid AI data-centre power demand; in this Valuatum equity research report dated 7 July 2026 we rate the stock HOLD with a 12-month target price of 32.10 EUR against a current price of 31.89 EUR, implying roughly 0.7% upside. Market capitalisation is EUR 18.8 bn and enterprise value is EUR 16.5 bn.",
+    "The core valuation tension is that the enterprise value is almost entirely supported by two dominant segments. Marine and Energy together represent 96.8% of the group's enterprise value, 80.2% of its revenue and 92.6% of its operating profit, and the market applies premium ~20-22x EV/EBIT multiples to both, pricing in structural growth from IMO decarbonisation retrofits and AI data-centre power demand. The group trades at an implied 18.0x EV/EBIT on 2026 estimates, already below the 19.5x normalized historical average and the 20.2x peer median, leaving limited room for further re-rating.",
+    "On a reverse-valuation basis, testing the EUR 16.1 billion enterprise value against EUR 826 million of operating profit at a mature 15x EBIT baseline supports roughly EUR 12.4 billion, meaning about 77% of the enterprise value is backed by existing, proven cash flows; the remaining ~EUR 3.7 billion growth premium depends on Energy converting 2.4 GW of installed US data-centre capacity into a service annuity (lifting EBIT from EUR 362m to EUR 517m) and on Marine advancing its 12.4% margin toward 14.0%. The scenario base case implies EUR 30.42 per share (-4.6%), the bull case EUR 36.34 (+14.0%) and the bear case EUR 22.67 (-28.9%), so with the stock trading near target we view Wärtsilä as appropriately valued."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Energy Segment Data-Centre Scale", "metric": "EUR 517m EBIT", "text": "Energy must convert 2.4 GW of installed US data-centre capacity into service revenue, lifting EBIT from EUR 362m to the required EUR 517m to justify its EUR 7.75bn allocated EV at 15x."},
+    {"num": "02", "title": "Marine Margin Advancement", "metric": "14.7-14.9% margin", "text": "Marine's 12.4% EBIT margin needs to rise toward Kongsberg's 14.7-14.9% benchmark, with EBIT increasing from EUR 403m to EUR 523m, as IMO retrofit demand pushes revenue toward EUR 3.7bn by 2027-29."},
+    {"num": "03", "title": "Limited Multiple Re-rating Potential", "metric": "18.0x EV/EBIT", "text": "Group EBIT bridges from EUR 826m to EUR 918m in 2026e at 18.0x EV/EBIT, below the 19.5x historical norm and 20.2x peer median, leaving limited room for further re-rating."}
+  ],
+  "thesisBreaker": "If US utility grid interconnection times normalize or IMO enforcement is delayed, the premium growth multiples assigned to the Energy and Marine segments will collapse.",
+  "valuePools": [
+    {"name": "Marine", "share": "48.7% · EUR 7,847m", "economics": "Revenue EUR 3,253m (47.1%) · Comp. EBIT EUR 403m (48.8% of EBIT, 12.4% margin) · EV EUR 7,847m", "text": "Profit engine valued as a dual-engine cash generator at a 20.0x EV/EBIT multiple, benefiting from a robust cyclical newbuild market (particularly LNG carriers and cruise ships) and a structural regulatory super-cycle driven by IMO decarbonisation targets that force fleet owners to retrofit existing vessels with dual-fuel or alternative-fuel engines. The large installed base ensures a captive market for high-margin spare parts and maintenance, and benchmark Kongsberg Maritime's 14.7-14.9% EBIT margins suggest the current 12.4% margin has room for structural expansion. To justify the EUR 7.85 billion enterprise value without an elevated 19.5x multiple, the segment needs EUR 523 million of EBIT at a normalized 15x — covered by expanding the margin to 14.0% and growing revenue modestly to EUR 3.7 billion."},
+    {"name": "Energy", "share": "48.1% · EUR 7,755m", "economics": "Revenue EUR 2,289m (33.1%) · Comp. EBIT EUR 362m (43.8% of EBIT, 15.8% margin) · EV EUR 7,755m", "text": "Scaling pool assigned a premium 22.0x multiple because its flexible reciprocating gas engines have become the primary off-grid power solution for hyperscale data centres facing US grid interconnection delays of three to five years. The modular 34SG and 50SG engines deploy in scalable 20 MW increments as server racks are populated, and a razor-and-blade model converts equipment sales into 10-to-15-year O&M lifecycle agreements delivering 99.999% uptime. To sustain the EUR 7.75 billion enterprise value if the current 21.4x AI-driven premium compresses to a standard industrial 15.0x, segment EBIT must grow to EUR 517 million on revenue of approximately EUR 3.2 billion — highly feasible given the existing 2.4 GW data-centre backlog and continued grid-balancing growth."},
+    {"name": "Energy Storage", "share": "1.2% · EUR 195m", "economics": "Revenue EUR 600m (8.7%) · Comp. EBIT EUR 20m (2.4% of EBIT, 3.3% margin) · EV EUR 195m", "text": "Emerging option carried at a 10.0x EV/EBIT multiple with only a 1.2% enterprise-value allocation. The thin 3.3% EBIT margin means low-margin risk is already fully priced in, while US import tariffs and FEOC regulations on battery supply chains remain the key swing factors for storage unit economics."},
+    {"name": "Portfolio Business", "share": "2.0% · EUR 317m", "economics": "Revenue EUR 772m (11.2%) · Comp. EBIT EUR 41m (5.0% of EBIT, 5.3% margin) · EV EUR 317m", "text": "Restructuring pool of non-core assets held at a residual 8.0x EV/EBIT multiple as the company streamlines toward its two core segments. The pending Gas Solutions divestment removes revenue but eliminates a non-core distraction and crystallizes cash, allowing management to focus purely on the two profit engines."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the revenue, margin and multiple assumptions embedded in Wärtsilä's EUR 16.5 billion enterprise value are coherent, with the Energy segment causing the largest valuation swing: outcomes depend heavily on the duration of US grid interconnection bottlenecks driving off-grid energy demand and the persistence of the IMO decarbonisation super-cycle in the maritime industry. Because Wärtsilä holds EUR 1.8 billion of net cash, equity value exceeds enterprise value in every scenario.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "8,396", "EBITDA": "1,331", "Margin": "15.9%", "Multiple": "14.7x", "EV": "19,566", "Equity": "21,386"}, "impliedValueOrUpside": "EUR 36.34 / sh · +14.0%"},
+      {"scenario": "Base", "cols": {"Revenue": "7,019", "EBITDA": "1,209", "Margin": "17.2%", "Multiple": "13.3x", "EV": "16,080", "Equity": "17,900"}, "impliedValueOrUpside": "EUR 30.42 / sh · -4.6%"},
+      {"scenario": "Bear", "cols": {"Revenue": "7,500", "EBITDA": "900", "Margin": "12.0%", "Multiple": "12.8x", "EV": "11,520", "Equity": "13,340"}, "impliedValueOrUpside": "EUR 22.67 / sh · -28.9%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Wärtsilä's enterprise value is almost entirely supported by two dominant segments, Marine and Energy, which together represent 96.8% of the group's enterprise value, 80.2% of its revenue and 92.6% of its operating profit. The group earns its economic output through the sale of high-margin reciprocating engines and the attached lifecycle services and maintenance contracts; because services represent 52% of total group net sales, a recurring revenue layer smooths the inherently cyclical nature of ship and power plant construction. The enterprise value of EUR 16.1 billion bridges to an equity market capitalization of EUR 17.9 billion because Wärtsilä holds a net cash position of EUR 1.8 billion on a conservative balance sheet, insulating shareholders from the interest-rate sensitivity that typically affects capital-heavy industrials. The central valuation question is whether the Energy segment's exposure to US data-centre power demand and the Marine segment's decarbonisation cycle can sustain the growth required to validate a ~20x consolidated earnings multiple."},
+    {"heading": "Cross-pool bridge", "text": "The forward financial bridge illustrates a classic industrial super-cycle peaking in 2028: consensus expects group revenue to grow from EUR 6.9 billion to EUR 8.4 billion over the next three years, driving EBIT to a peak of EUR 1.17 billion, before a sharp contraction in 2029 with EBIT retreating to EUR 886 million and margins compressing from 13.9% to 10.2%. The bridge is highly credible near term, underpinned by hard orders and the 52% recurring service revenue baseline, but free cash flow is the forecast's weakness, dropping sharply from the EUR 1.3 billion generated in 2025 toward a more sustainable EUR 550-700 million range as working capital normalizes. Testing the EUR 16.1 billion enterprise value against EUR 826 million of operating profit at a mature 15x EBIT baseline supports approximately EUR 12.4 billion, meaning roughly 77% of the enterprise value is backed by existing, proven, highly visible cash flows; the remaining 23% (roughly EUR 3.7 billion) is a growth premium entirely dependent on the off-grid data-centre power thesis in the US and the Marine division's seamless transition to green fuels. The EUR 1.8 billion net cash position provides a 10% cash buffer against the market capitalization, and projected 2026 ROE of 24.8% demonstrates minimal capital intensity."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ based entirely on the duration of the current equipment super-cycle and the market's willingness to assign a growth multiple to an industrial asset, with the Energy segment causing the largest valuation swing. In the Bull scenario, US grid interconnection delays worsen, forcing hyperscalers to rely far more heavily on Wärtsilä's off-grid gas engines; pricing peak 2028 EBITDA of EUR 1,331 million at 14.7x lifts the implied value to EUR 36.34 per share (+14.0%), further boosted by the continuous build-up of net cash. In the Bear scenario, data centres successfully connect to utility grids and IMO delays its emissions mandates, the combined equipment order book evaporates and the business reverts to roughly EUR 900 million of normalized EBITDA, implying EUR 22.67 per share (-28.9%). The base case of EUR 30.42 sits close to the EUR 31.89 quote: the analysis shows considerable merit in viewing Wärtsilä as a structurally advantaged infrastructure player enabling the green transition and the AI data-centre buildout, but that view is fully priced into the current ~19.5x EBIT valuation multiple, anchoring the HOLD."}
+  ],
+  "risks": [
+    "Grid Interconnection Resolution (Energy): expedited utility grid transmission upgrades eliminate the premium for off-grid power, with declining margins on new data-centre equipment contracts as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "IMO Regulatory Delays (Marine): political or regulatory rollback of IMO emissions targets destroys the retrofit demand curve, with political hesitation regarding IMO net-zero enforcement as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Asian Competitor Pricing (Marine): Asian manufacturers limit initial hardware margins, with pricing pressure on initial equipment sales as the early warning - MEDIUM impact, manageable.",
+    "Battery Supply Chain / Tariffs (Energy Storage): US import tariffs and FEOC regulations disrupt battery supply chains, with declining energy storage margins as the early warning - MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "Conversion of US data-center LOIs (near-term, Energy): conversion of early-stage data-centre power agreements into firm, booked orders with attached long-term service contracts, visible in quarterly Announced Orders disclosures, validates the structural growth premium; this is the most critical catalyst to monitor.",
+    "Gas Solutions divestment close (medium-term, Portfolio Business): divestment completion cleans the portfolio and adds pure cash to the balance sheet; while it removes revenue, it eliminates a non-core distraction and crystallizes cash.",
+    "Marine service order intake (near-term, Marine): quarterly intake figures prove margin resilience against cyclicality.",
+    "US tariff policy implementation (medium-term, Energy Storage): policy announcements determine the viability of storage unit economics."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["6,015", "6,449", "6,914", "7,019", "7,636", "8,396"]},
+        {"label": "EBITDA", "values": ["595", "847", "1,004", "1,209", "1,180", "1,331"]},
+        {"label": "EBITDA margin", "values": ["9.9%", "13.1%", "14.5%", "17.2%", "15.5%", "15.9%"]},
+        {"label": "Depreciation", "values": ["-193", "-131", "-178", "-291", "-162", "-164"]},
+        {"label": "Operating Profit (EBIT)", "values": ["402", "716", "826", "918", "1,018", "1,167"]},
+        {"label": "EBIT margin", "values": ["6.7%", "11.1%", "11.9%", "13.1%", "13.3%", "13.9%"]},
+        {"label": "Net financial items", "values": ["-38", "-29", "2", "-6", "19", "20"]},
+        {"label": "Pre-tax Profit", "values": ["364", "687", "828", "912", "1,037", "1,187"]},
+        {"label": "Net Earnings", "values": ["270", "507", "630", "779", "885", "1,013"]},
+        {"label": "EPS (EUR)", "values": ["0.5", "0.9", "1.1", "1.3", "1.5", "1.7"]},
+        {"label": "DPS (EUR)", "values": ["0.3", "0.3", "0.4", "0.5", "0.6", "0.7"]},
+        {"label": "Payout ratio", "values": ["56.5%", "37.2%", "41.1%", "39.5%", "39.5%", "39.5%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["737", "1,168", "1,272", "1,012", "817", "893"]},
+        {"label": "Operating cash flow", "values": ["751", "1,214", "1,295", "1,017", "800", "876"]},
+        {"label": "Change in working capital", "values": ["-275", "-530", "-465", "58", "231", "284"]},
+        {"label": "Gross capex", "values": ["171", "198", "267", "319", "250", "272"]},
+        {"label": "Capex (ex. M&A)", "values": ["-171", "-198", "-267", "-319", "-250", "-272"]},
+        {"label": "Free Operating Cash Flow", "values": ["657", "1,061", "1,304", "697", "551", "604"]},
+        {"label": "Free cash flow to firm", "values": ["658", "1,061", "1,304", "697", "551", "604"]},
+        {"label": "CF from financing", "values": ["-197", "-257", "2", "-981", "-356", "-350"]},
+        {"label": "Dividends paid", "values": ["-142", "-152", "-189", "-259", "-308", "-350"]},
+        {"label": "Net change in cash", "values": ["369", "713", "1,007", "-289", "211", "271"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["24.1x"]},
+        {"label": "EV/EBITDA", "values": ["13.7x"]},
+        {"label": "EV/EBIT", "values": ["18.0x"]},
+        {"label": "P/FCF", "values": ["26.9x"]},
+        {"label": "P/BV", "values": ["5.5x"]},
+        {"label": "Dividend Yield", "values": ["1.6%"]},
+        {"label": "Net Debt / EBITDA", "values": ["-1.9x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Wärtsilä a buy in 2026?", "a": "No — it is a HOLD. Valuatum's 7 July 2026 equity report rates Wärtsilä Oyj Abp (WRT1V.HE) HOLD with a 32.10 EUR 12-month target versus a 31.89 EUR price, implying only about 0.7% upside. With the stock trading near target, Wärtsilä is appropriately valued given the execution required to convert AI and decarbonisation optionality into long-term service annuities."},
+    {"q": "What is Wärtsilä's price target?", "a": "The Valuatum report dated 7 July 2026 sets a 12-month fundamental target price of 32.10 EUR for Wärtsilä (WRT1V.HE), against a current price of 31.89 EUR. The target blends an EV/EBIT method (18.5x on 2026e EBIT of EUR 918m, implying 32.0 EUR, weighted 60%) with a P/E method (24.5x on 2026e EPS of 1.32 EUR, implying 32.3 EUR, weighted 40%), giving a weighted target of 32.1 EUR."},
+    {"q": "Why is Wärtsilä rated HOLD?", "a": "Wärtsilä is rated HOLD because upside is minimal at the current quote: the group trades at 18.0x 2026e EV/EBIT, already modestly below its 19.5x normalized historical average and the 20.2x peer median, leaving limited room for further re-rating. The thesis breaks if Energy's US order conversion stalls below the EUR 517m EBIT threshold by 2027-28, or if Marine's margin fails to advance past 12.4% toward the 14% peer level."},
+    {"q": "Is Wärtsilä overvalued in 2026?", "a": "On Valuatum's framework Wärtsilä looks fairly valued rather than overvalued: at a mature 15x EBIT baseline, its EUR 826 million of operating profit supports approximately EUR 12.4 billion of enterprise value, so roughly 77% of the EUR 16.1 billion EV is backed by existing, proven cash flows. The remaining ~EUR 3.7 billion is a growth premium dependent on the US off-grid data-centre thesis and the Marine green-fuel transition, defensible given a projected 24.8% ROE in 2026 and EUR 1.8 billion of net cash."},
+    {"q": "How does the reverse valuation work for Wärtsilä?", "a": "The reverse valuation tests whether the assumptions embedded in Wärtsilä's enterprise value are coherent, with the Energy segment as the largest swing factor. Energy must convert 2.4 GW of installed US data-centre capacity into service revenue, lifting EBIT from EUR 362m to EUR 517m to justify its EUR 7.75bn allocated EV at 15x, while Marine needs EUR 523m of EBIT at a normalized 15x. The base case implies EUR 30.42 per share (-4.6%), the bull case EUR 36.34 (+14.0%) and the bear case EUR 22.67 (-28.9%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Wärtsilä Oyj Abp report dated 7 July 2026 (company value map; segment EV allocations EUR 7.85bn Marine and EUR 7.75bn Energy; FY2025 net sales EUR 6,914m and comparable EBIT EUR 826m).",
+    "Consensus estimates: competitor Kongsberg EBIT margin of 14.7-14.9% used for the Marine segment benchmark; historical normalized EV/EBIT of 19.53x used in the valuation reality check.",
+    "Market data: Ticker WRT1V.HE current price 31.89 EUR as of 7 July 2026 against the EUR 32.1 target; 2026e forward EBITDA EUR 1,209m (analyst-generated estimate)."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "EKTA-B.ST",
+  "companyName": "Elekta AB (publ)",
+  "profile": "Elekta develops and sells precision radiation therapy systems, radiosurgery platforms and oncology software used in cancer care. Its portfolio includes image-guided and adaptive radiotherapy, treatment planning and workflow tools, and Gamma Knife systems for stereotactic neurosurgery. The company serves hospitals and clinics worldwide through equipment, software, service and support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:49:43.252Z"
+}

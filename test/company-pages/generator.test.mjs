@@ -102,6 +102,73 @@ window.COMPANY_PAGE_CATALOG = [
   assert.match(sitemap, /<lastmod>2026-07-10<\/lastmod>/);
 });
 
+function freshnessTestClient() {
+  return {
+    async findCompanyByTicker(ticker) {
+      return {
+        companyId: 5, companyName: 'Example Oyj', companyCode: 'FI123', ticker,
+        industry: 'Industrials', models: [{ followedModelId: 10 }],
+      };
+    },
+    async getLatestActualModels() {
+      return [{
+        followedModelId: 10, companyId: 5, currentYear: 2026, orderNo: 1, currency: 'EUR',
+        dataMap: { 2025: { bv: 400, adj_share_price_a: 12.34, ns: 1_200, ebit: 110, net_earnings: 80, market_cap_ye: 2_500 } },
+      }];
+    },
+  };
+}
+
+const freshnessTestProfileProvider = {
+  name: 'test', model: 'test-model',
+  async generate() {
+    return 'Example designs and manufactures industrial equipment for business customers across Europe. Its main activities include production systems, maintenance services, spare parts, and software used to monitor installed machinery. The company serves manufacturing and infrastructure operators through direct sales and local service teams, generating revenue from both new equipment and recurring aftermarket support.';
+  },
+};
+
+test('data freshness line is rendered from a TSV freshness file', async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'company-generator-fresh-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const freshnessPath = path.join(root, 'freshness.tsv');
+  await fs.writeFile(freshnessPath, [
+    'tier\tcountry\tCOMPANYID\tNAME\tTICKER\tISIN\tmodel_updated\tmodel_version',
+    '1\tFI\t5\tExample Oyj\tEXAMPLE\tFI123\t2026-05-06 15:33:27.7680\t1778081607768',
+  ].join('\n') + '\n');
+
+  const result = await generateCompanyPages({
+    tickers: ['EXAMPLE'],
+    client: freshnessTestClient(),
+    profileProvider: freshnessTestProfileProvider,
+    outputDir: path.join(root, 'reports'),
+    profileDir: path.join(root, 'profiles'),
+    freshnessPath,
+    updateDiscovery: false,
+  });
+
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.companies[0].dataUpdated, '2026-05-06');
+  const html = await fs.readFile(path.join(root, 'reports', 'example-equity-report.html'), 'utf8');
+  assert.match(html, /Figures updated on 2026-05-06\. Data will be refreshed during report generation\./);
+});
+
+test('data freshness line is omitted when no freshness is available for the ticker', async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'company-generator-nofresh-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+
+  const result = await generateCompanyPages({
+    tickers: ['EXAMPLE'],
+    client: freshnessTestClient(),
+    profileProvider: freshnessTestProfileProvider,
+    outputDir: path.join(root, 'reports'),
+    profileDir: path.join(root, 'profiles'),
+    updateDiscovery: false,
+  });
+
+  assert.equal(result.companies[0].dataUpdated, null);
+  const html = await fs.readFile(path.join(root, 'reports', 'example-equity-report.html'), 'utf8');
+  assert.doesNotMatch(html, /Figures updated on/);
+});
+
 test('financial companies are detected by ticker and industry keyword', () => {
   assert.equal(isFinancialCompany({ ticker: 'NDA-FI.HE', industry: '' }), true);
   assert.equal(isFinancialCompany({ ticker: 'INVE-B.ST', industry: '' }), true);

@@ -1,0 +1,9 @@
+{
+  "ticker": "HMS.ST",
+  "companyName": "HMS Networks AB (publ)",
+  "profile": "HMS Networks develops industrial communication products that help equipment connect with software and control systems. Its portfolio includes network gateways and protocol converters, embedded communication interfaces, remote connectivity products, industrial wireless solutions, network diagnostics, cybersecurity products, and HMI and control hardware sold under brands such as Anybus, Ewon, Intesis, Ixxat, Red Lion and N-Tron.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:18:00.821Z"
+}

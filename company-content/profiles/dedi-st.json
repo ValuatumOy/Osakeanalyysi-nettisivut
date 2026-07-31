@@ -1,0 +1,9 @@
+{
+  "ticker": "DEDI.ST",
+  "companyName": "Dedicare AB (publ)",
+  "profile": "Dedicare AB is a Nordic staffing and recruitment company focused on healthcare, social work and life science. It places doctors, nurses, social workers, psychologists and other specialists with public and private clients, offering temporary staffing and permanent recruitment services. Its business is driven by matching scarce professional skills to customer demand.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:32:59.269Z"
+}

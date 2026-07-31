@@ -1,0 +1,9 @@
+{
+  "ticker": "LOHILO.ST",
+  "companyName": "Lohilo Foods Ab (Publ)",
+  "profile": "Lohilo Foods develops, markets and distributes branded frozen desserts and other functional food products, including ice cream, protein bars, protein powders, drinks and other health-oriented snacks. The company sells through grocery retail and other channels in the Nordic region and selected European markets, and also works with third-party manufacturers and logistics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:41:18.782Z"
+}

@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// Generates static, indexable per-report landing pages from report-content/*.json + js/reportsData.js.
+// Generates static, indexable per-report landing pages from report-content/*.json + the live catalog API.
 // Free reports expose the full analysis (max SEO surface). Paid reports expose a citable teaser + a buy gate.
 // Run: node scripts/build-report-pages.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchLiveCatalog } from './live-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -27,20 +28,9 @@ const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A'
 const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
-function loadCatalog() {
-  // Source of truth: snapshot of the live catalog API (report-content/_catalog.json),
-  // falling back to the bundled js/reportsData.js if the snapshot is absent.
-  const snap = path.join(CONTENT_DIR, '_catalog.json');
-  let cat;
-  if (fs.existsSync(snap)) {
-    cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
-  } else {
-    const src = fs.readFileSync(path.join(ROOT, 'js', 'reportsData.js'), 'utf8');
-    // eslint-disable-next-line no-new-func
-    cat = Function(src + '\n;return REPORTS_CATALOG;')();
-  }
+async function loadCatalog() {
   const byId = {};
-  for (const r of cat) byId[r.id] = r;
+  for (const r of await fetchLiveCatalog()) byId[r.id] = r;
   return byId;
 }
 
@@ -657,7 +647,7 @@ ${footerHtml()}
 }
 
 // ── run ─────────────────────────────────────────────────────────────────────
-const catalog = loadCatalog();
+const catalog = await loadCatalog();
 // Generate one page per LIVE catalog entry that has extracted content.
 const docs = [];
 for (const [id, cat] of Object.entries(catalog)) {

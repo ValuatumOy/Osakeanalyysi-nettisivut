@@ -1,0 +1,9 @@
+{
+  "ticker": "TOM.OL",
+  "companyName": "Tomra Systems ASA",
+  "profile": "TOMRA Systems ASA develops collection, sorting, recycling, and food-processing technologies. Its core businesses include reverse vending machines for beverage-container return systems, sensor-based sorting equipment for recycling and mining, and grading solutions for the food industry. The company also pursues adjacent circular-economy ventures through TOMRA Horizon while generating revenue from equipment sales, service, and recurring customer relationships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:35:23.819Z"
+}

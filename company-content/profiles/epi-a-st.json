@@ -1,0 +1,9 @@
+{
+  "ticker": "EPI-A.ST",
+  "companyName": "Epiroc AB (publ)",
+  "profile": "Epiroc AB is a Swedish industrial company that develops and sells equipment, tools, parts and services for mining and rock excavation, as well as construction applications. Its portfolio includes drill rigs, rock drilling tools, electrification and automation solutions, and aftermarket service support. The company’s value drivers are equipment sales, consumables and service revenue.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:54:48.292Z"
+}

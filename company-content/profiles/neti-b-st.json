@@ -1,0 +1,9 @@
+{
+  "ticker": "NETI-B.ST",
+  "companyName": "Net Insight AB (publ)",
+  "profile": "Net Insight AB develops and sells solutions for live media transport and network-based time synchronization. Its media products help broadcasters, service providers, and event organizers deliver live video content over IP, cloud, and hybrid networks, while its synchronization offerings support 5G and other critical infrastructure that requires precise, resilient timing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:40.223Z"
+}

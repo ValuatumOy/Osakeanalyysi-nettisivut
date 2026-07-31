@@ -1,0 +1,9 @@
+{
+  "ticker": "KEBNI-B.ST",
+  "companyName": "KebNi AB (publ)",
+  "profile": "KebNi AB (publ) develops and supplies stabilization technologies for inertial sensing and satellite communications. Its products include IMU and INS systems, satellite terminals and gimbal-based solutions for navigation, positioning and motion control. The company sells to government, military and commercial customers, with operations focused on Sweden and international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:32:34.210Z"
+}

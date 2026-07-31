@@ -1,0 +1,9 @@
+{
+  "ticker": "TOKMAN.HE",
+  "companyName": "Tokmanni",
+  "profile": "Tokmanni Group is a Nordic variety discount retailer operating stores and online channels in Finland, Sweden and Denmark. Its banner chains include Tokmanni, Click Shoes, Shoe House, Dollarstore and Big Dollar, with an exclusive SPAR license in Finland. The company sells a broad assortment spanning groceries, household goods, apparel, leisure products and other everyday items.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:50:03.837Z"
+}

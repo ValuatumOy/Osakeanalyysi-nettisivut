@@ -1,0 +1,9 @@
+{
+  "ticker": "KOPY.ST",
+  "companyName": "Kopy Goldfields AB (publ)",
+  "profile": "Kopy Goldfields AB (publ) is a Swedish gold exploration and production company focused on identifying and developing mineral deposits. It combines local geological knowledge with international management, industry practices, and modern technology. The company’s activities have centered on gold projects in Russia, with value driven by exploration, development, and production.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:36:11.118Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SYNSAM.ST",
+  "companyName": "Synsam AB (publ)",
+  "profile": "Synsam AB (publ) is a Nordic optical retail and eye health company that operates stores and online under the Synsam and Profil Optik brands. It sells spectacles, sunglasses, contact lenses and related services such as eye examinations, subscriptions and style advice, while also emphasizing digital tools, store expansion and sustainability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:44.021Z"
+}

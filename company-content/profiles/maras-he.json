@@ -1,0 +1,9 @@
+{
+  "ticker": "MARAS.HE",
+  "companyName": "Martela",
+  "profile": "Martela designs and manufactures office and school furniture and provides services for planning, installing, optimising and recycling workplaces and learning environments. Its offering includes ergonomic chairs, desks, screens, phone booths, storage and workspace solutions, supported by lifecycle services and circular-economy models such as Second Life and Workspace as a Service.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:32:46.171Z"
+}

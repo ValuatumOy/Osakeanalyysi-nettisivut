@@ -1,0 +1,9 @@
+{
+  "ticker": "FLOWS.ST",
+  "companyName": "Flowscape Technology AB (publ)",
+  "profile": "Flowscape Technology develops workplace management software for hybrid offices. Its platform lets companies book desks, meeting rooms, parking spaces, and other office resources, plan attendance, find colleagues, and track workplace usage. The company also offers workplace analytics, 3D office mapping, and connected hardware and app integrations that support space efficiency and user convenience.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:00:49.619Z"
+}

@@ -54,9 +54,13 @@ const handler = async (req, res) => {
       amountTotal: session.amount_total,
     });
 
+    // Purchase sync is the critical write: for a fresh order it is what
+    // enqueues generation. If it fails (after retries + admin alert inside
+    // recordCatalogPurchase), return 500 so Stripe redelivers the event — the
+    // backend is idempotent on the session id, so redelivery is safe.
     try {
       if (isFresh) {
-        const purchase = {
+        await recordCatalogPurchase({
           type: 'fresh',
           sessionId: session.id,
           companyName: session.metadata?.company || '',
@@ -64,25 +68,25 @@ const handler = async (req, res) => {
           exchange: session.metadata?.exchange || '',
           customerEmail: email || '',
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
-        };
+        });
 
-        // Forwards to the EC2 catalog API, which records the purchase AND
-        // enqueues a NEW order row for the reconciler to fulfil (Task D).
-        await recordCatalogPurchase(purchase);
-
-        if (email) {
-          await sendFreshConfirmEmail(email, session.metadata);
-        } else {
-          console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
+        // Confirmation email is best-effort: the purchase is recorded, and the
+        // reconciler sends the real delivery email later.
+        try {
+          if (email) {
+            await sendFreshConfirmEmail(email, session.metadata);
+          } else {
+            console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
+          }
+        } catch (emailErr) {
+          console.error('Fresh confirmation email failed:', emailErr.message, { sessionId: session.id });
         }
         // Admin notifications now come from the reconciler (success + failure),
         // not from here — generation hasn't run yet at webhook time.
       } else {
         const report = await getCatalogReport(reportId);
-        if (!email) {
-          console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
-        } else if (!report) {
-          console.error('Report email skipped: unknown report id', { sessionId: session.id, reportId });
+        if (!report) {
+          console.error('Purchase sync skipped: unknown report id', { sessionId: session.id, reportId });
         } else {
           await recordCatalogPurchase({
             type: 'existing',
@@ -91,14 +95,26 @@ const handler = async (req, res) => {
             ticker: report.ticker,
             companyName: report.name,
             sessionId: session.id,
-            customerEmail: email,
+            customerEmail: email || '',
             purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
           });
-          await sendReportEmail(email, report);
+
+          try {
+            if (email) {
+              await sendReportEmail(email, report);
+            } else {
+              console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
+            }
+          } catch (emailErr) {
+            console.error('Report email failed:', emailErr.message, { sessionId: session.id, reportId });
+          }
         }
       }
     } catch (e) {
-      console.error('Email or catalog sync error:', e.message, { sessionId: session.id, isFresh, reportId: reportId || null });
+      console.error('Catalog sync error — returning 500 for Stripe retry:', e.message, {
+        sessionId: session.id, isFresh, reportId: reportId || null,
+      });
+      return res.status(500).json({ error: 'Purchase sync failed; Stripe will retry' });
     }
   }
 

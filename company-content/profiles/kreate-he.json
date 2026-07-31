@@ -1,0 +1,9 @@
+{
+  "ticker": "KREATE.HE",
+  "companyName": "Kreate Group Oyj",
+  "profile": "Kreate Group Oyj is a Finnish infrastructure construction company that delivers demanding projects for bridges, roads, railways and other transport infrastructure, as well as foundation, environmental, rock and geotechnical work. It also provides circular economy and expert services, with value driven by project execution quality, cost efficiency and flexible delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:21:00.165Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SEZI.ST",
+  "companyName": "Senzime AB (publ)",
+  "profile": "Senzime AB is a medical technology company that develops and sells precision-based patient monitoring systems for use during and after surgery. Its main products are TetraGraph for neuromuscular monitoring and ExSpiron for respiratory monitoring. The company also offers software and related sensors, with sales through direct channels and distributors.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:27.725Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "OMDA.OL",
+  "companyName": "CSAM Health Group AS",
+  "profile": "CSAM Health Group AS, now Omda AS, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:54:24.041Z"
+}

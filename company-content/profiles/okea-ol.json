@@ -1,0 +1,9 @@
+{
+  "ticker": "OKEA.OL",
+  "companyName": "OKEA Asa",
+  "profile": "OKEA Asa is a full-scale operator on the Norwegian continental shelf focused on mid- and late-life oil and gas assets. The company extends field life, explores for new resources, and seeks to unlock value from existing infrastructure. Its portfolio is concentrated in the North Sea and Norwegian Sea, supported by accretive acquisitions and capital discipline.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:58:04.027Z"
+}

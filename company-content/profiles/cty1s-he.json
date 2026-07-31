@@ -1,0 +1,9 @@
+{
+  "ticker": "CTY1S.HE",
+  "companyName": "Citycon Oyj",
+  "profile": "Citycon Oyj owns, develops and manages mixed-use urban centres in major cities across the Nordics and Baltics. Its portfolio consists mainly of necessity-based shopping centres, often combined with retail, offices, housing and local services. The company’s value drivers are rental income, asset management, development projects and operating efficiency across its centres.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:04:42.904Z"
+}

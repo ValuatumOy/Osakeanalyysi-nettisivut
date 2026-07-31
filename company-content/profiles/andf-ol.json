@@ -1,0 +1,9 @@
+{
+  "ticker": "ANDF.OL",
+  "companyName": "Andfjord Salmon AS",
+  "profile": "Andfjord Salmon AS develops and operates land-based aquaculture facilities for Atlantic salmon at Andøya in northern Norway. The company uses a proprietary flow-through system designed to combine features of ocean and land-based farming, and its activities center on building and expanding production capacity, processing salmon, and advancing its Kvalnes site toward commercial scale.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:55:22.222Z"
+}

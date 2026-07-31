@@ -1,0 +1,9 @@
+{
+  "ticker": "HYDRCT.CO",
+  "companyName": "Hydract A/S",
+  "profile": "Hydract A/S develops and markets hydraulic process valves for sanitary applications, primarily serving breweries and other food and beverage producers. Its product range includes single-seat, double-seat mixproof and divert valves, designed to improve control, precision and energy efficiency in liquid-processing systems. The company also provides technical support and related customer service.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:34:46.400Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "LUMO.HE",
+  "companyName": "Kojamo Oyj",
+  "profile": "Kojamo Oyj is Finland's largest private residential real estate company. It owns and develops rental apartments and offers housing-related services under the Lumo brand, mainly in Finland's largest growth centres. The company also develops its property portfolio through new construction and the management of existing residential assets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:19:37.684Z"
+}

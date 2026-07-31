@@ -1,0 +1,9 @@
+{
+  "ticker": "REKA.HE",
+  "companyName": "Reka Industrial Oyj",
+  "profile": "Reka Industrial Oyj is a Finnish industrial holding company focused on technical rubber products through its subsidiary Reka Rubber. Reka Rubber supplies moulded products, rubber-metal products, heavy profiles and shaped hoses to OEM customers in transportation equipment and mechanical engineering. The group sold Reka Cables in 2023 and now concentrates on rubber operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:09:14.941Z"
+}

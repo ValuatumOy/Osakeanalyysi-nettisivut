@@ -1,0 +1,9 @@
+{
+  "ticker": "LOOMIS.ST",
+  "companyName": "Loomis AB (publ)",
+  "profile": "Loomis AB provides cash and payment services that support the movement, handling, storage and processing of cash. Its offerings include cash in transit, cash management services, ATM services, foreign exchange, automated cash-handling solutions and Loomis Pay. The company serves banks, retailers and other businesses through a decentralized network in multiple markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:41:39.983Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ASMDEE-B.ST",
+  "companyName": "Asmodee Group AB (publ)",
+  "profile": "Asmodee Group AB (publ) is a global tabletop gaming company that develops, publishes and distributes board games, card games and miniatures games through a portfolio of studios and brands. Its business depends on original intellectual property, licensed titles and worldwide distribution, with revenues driven by game sales, new releases and ongoing catalogue demand.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:29:56.466Z"
+}

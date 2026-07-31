@@ -1,0 +1,9 @@
+{
+  "ticker": "INIT.ST",
+  "companyName": "Initiator Pharma A/S",
+  "profile": "Initiator Pharma A/S is a Danish clinical-stage biotechnology company developing drug candidates that target the central and peripheral nervous system. Its lead program, pudafensine, is being advanced for erectile dysfunction and vulvodynia, with additional preclinical assets in the pipeline. The company has also said it is focusing resources on pudafensine as its main strategic priority.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:37:45.703Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "IWS.OL",
+  "companyName": "Integrated Wind Solutions ASA",
+  "profile": "Integrated Wind Solutions ASA provides offshore wind services through two main businesses: IWS Fleet, which owns and operates purpose-built walk-to-work service operation vessels, and IWS Services, which offers engineering, project management, installation, commissioning, maintenance, and consultancy across the offshore wind value chain. The company also holds stakes in related service companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:52:49.286Z"
+}

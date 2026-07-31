@@ -1,0 +1,9 @@
+{
+  "ticker": "HIGHCO-B.ST",
+  "companyName": "High Coast Distillery AB (Publ)",
+  "profile": "High Coast Distillery AB (publ) produces and sells single malt whisky under the High Coast Whisky brand. The company operates a distillery and visitor center in Bjärtrå, Sweden, and earns revenue from whisky sales, cask sales, and related brand and visitor activities. Its products are distributed in Sweden and selected export markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:17:35.705Z"
+}

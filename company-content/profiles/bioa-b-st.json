@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOA-B.ST",
+  "companyName": "BioArctic AB (publ)",
+  "profile": "BioArctic AB (publ) is a Swedish research-based biopharma company focused on treatments for neurodegenerative diseases. It develops antibody-based drug candidates for Alzheimer’s disease, Parkinson’s disease and ALS, and its BrainTransporter technology helps deliver medicines across the blood-brain barrier. Value is driven by royalties, partnerships, and license agreements, including Leqembi with Eisai.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:11:05.188Z"
+}

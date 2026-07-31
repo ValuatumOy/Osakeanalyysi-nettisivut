@@ -1,0 +1,9 @@
+{
+  "ticker": "SECU-B.ST",
+  "companyName": "Securitas AB (publ)",
+  "profile": "Securitas AB provides security services and technology-driven protection solutions for businesses and institutions. Its offering includes on-site, mobile and remote guarding, electronic security, fire and safety services, and corporate risk management. The company operates globally and increasingly combines data, technology and trained personnel to deliver integrated security services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:00:57.458Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "AKVA.OL",
+  "companyName": "AKVA group ASA",
+  "profile": "AKVA group ASA is a technology and service provider to the global aquaculture industry. The company supplies solutions for sea-based and land-based fish farming, including marine infrastructure, feed systems, nets, sensors, camera systems, and related service and support. Its business is driven by equipment sales, project delivery, and ongoing maintenance and digital solutions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:52:05.459Z"
+}

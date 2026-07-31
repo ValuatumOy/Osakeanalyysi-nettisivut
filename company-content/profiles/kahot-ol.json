@@ -1,0 +1,9 @@
+{
+  "ticker": "KAHOT.OL",
+  "companyName": "Kahoot! ASA",
+  "profile": "Kahoot! ASA is a global learning and engagement platform company that provides game-based software for schools, workplaces, and other group settings. Its products let users create, share, and host interactive quizzes, lessons, and presentations, with paid subscriptions and content offerings for educators, businesses, and content creators contributing to revenue.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:56:50.445Z"
+}

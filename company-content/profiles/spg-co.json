@@ -1,0 +1,9 @@
+{
+  "ticker": "SPG.CO",
+  "companyName": "SP Group A/S",
+  "profile": "SP Group A/S develops, manufactures and finishes advanced polymer and composite products for customers in healthcare, cleantech, foodtech and other industrial markets. Its activities include injection moulding, blow moulding, polyurethane, composites and surface treatment, supported by global production facilities and engineering capabilities. Growth is driven by customised solutions, scale, quality and customer relationships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:01:51.344Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CPHCAP-ST.CO",
+  "companyName": "Copenhagen Capital A/S",
+  "profile": "Copenhagen Capital A/S is a Danish listed investment company focused on direct and indirect investments in residential and commercial property in Copenhagen and the wider Greater Copenhagen area. It acquires, manages and leases properties, with value driven by rental income, refurbishment, re-letting opportunities and long-term development of the underlying real estate portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:21:15.908Z"
+}

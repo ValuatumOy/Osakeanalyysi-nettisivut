@@ -1,0 +1,9 @@
+{
+  "ticker": "BILI-A.ST",
+  "companyName": "Bilia AB (publ)",
+  "profile": "Bilia AB is a full-service automotive group operating in Sweden, Norway, Belgium and Luxembourg. Its business is divided into service, car sales and fuel operations, covering new and used passenger cars, transport vehicles and trucks, as well as workshop services, parts, repairs, car wash, fuel sales and related mobility services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:04:52.101Z"
+}

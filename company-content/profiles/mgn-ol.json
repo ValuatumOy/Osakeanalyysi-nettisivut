@@ -1,0 +1,9 @@
+{
+  "ticker": "MGN.OL",
+  "companyName": "Magnora ASA",
+  "profile": "Magnora ASA is a Norwegian renewable-energy developer that builds and manages early-stage projects in solar PV, onshore and offshore wind, and battery energy storage. It also develops data center projects and provides project management support, with revenues mainly coming from selling projects and companies at advanced development stages.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:12:07.493Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ODICO.CO",
+  "companyName": "Odico A/S",
+  "profile": "Odico A/S develops and manufactures robotic and digital fabrication solutions for the construction and wind turbine industries. Its activities include formwork technology, automated cutting and milling systems, and project-based fabrication services built around its Factory-On-The-Fly platform. The company also supplies software, tools, and equipment used to produce complex structural components and custom building elements.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:17:27.707Z"
+}

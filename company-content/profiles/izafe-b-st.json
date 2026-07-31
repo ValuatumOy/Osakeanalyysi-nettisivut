@@ -1,0 +1,9 @@
+{
+  "ticker": "IZAFE-B.ST",
+  "companyName": "iZafe Group AB (publ)",
+  "profile": "iZafe Group AB develops and markets digital medical solutions for safer medication management at home. Its main products are the Dosell medication dispenser and the Pilloxa smart pillbox platform, which support dose administration, reminders, and patient data capture. The company sells through partners to households, healthcare providers, and pharmaceutical customers in Sweden and other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:28:14.373Z"
+}

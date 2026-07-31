@@ -1,0 +1,9 @@
+{
+  "ticker": "GSF.OL",
+  "companyName": "Grieg Seafood ASA",
+  "profile": "Grieg Seafood ASA farms Atlantic salmon and sells fresh seafood products through operations in Norway and Canada. The company’s business is built around salmon farming, smolt production, and related aquaculture activities, with an emphasis on fish welfare, environmental performance, and operational efficiency. It is headquartered in Bergen, Norway.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:34:05.442Z"
+}

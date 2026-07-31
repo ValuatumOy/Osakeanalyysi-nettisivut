@@ -1,0 +1,9 @@
+{
+  "ticker": "GUARD.ST",
+  "companyName": "Guard Therapeutics International AB (publ)",
+  "profile": "Guard Therapeutics International AB is a Swedish clinical-stage biotechnology company focused on developing therapies for kidney disease. Its lead candidate, RMC-035, is being studied to protect the kidneys from injury in settings such as open-heart surgery, and the company also develops preclinical peptide-based programs derived from alpha-1-microglobulin. In June 2026, it announced a conditional reverse takeover with Disruptive Pharma.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:11:30.352Z"
+}

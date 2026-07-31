@@ -1,0 +1,9 @@
+{
+  "ticker": "COALA.ST",
+  "companyName": "Coala-Life Group AB (publ)",
+  "profile": "Coala-Life Group AB is a medical technology and digital health company focused on remote patient monitoring and cardiac diagnostics. It develops and markets the Coala Heart Monitor and related software for ECG and heart sound recording, serving healthcare providers with long-term monitoring, diagnostic analysis, and support for managing patients with chronic diseases, mainly in the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:22:57.768Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "BACTI-B.ST",
+  "companyName": "Bactiguard Holding AB (publ)",
+  "profile": "Bactiguard Holding AB develops and licenses a biocompatible coating technology for medical devices that helps prevent device-related infections by reducing bacterial adhesion and biofilm formation. Through partnerships with global MedTech companies, it applies the technology to products such as catheters and other devices, and it also offers a smaller wound care portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:48:22.014Z"
+}

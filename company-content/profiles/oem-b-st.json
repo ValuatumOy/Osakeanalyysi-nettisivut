@@ -1,0 +1,9 @@
+{
+  "ticker": "OEM-B.ST",
+  "companyName": "OEM International AB (publ)",
+  "profile": "OEM International is a European technology trading group that distributes industrial components and systems through local sales companies. It offers more than 60,000 products from over 400 suppliers, supported by technical expertise and application knowledge. The business serves customers mainly in manufacturing and related industrial segments across several Northern and Central European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:01:42.562Z"
+}

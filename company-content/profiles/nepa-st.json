@@ -1,0 +1,9 @@
+{
+  "ticker": "NEPA.ST",
+  "companyName": "Nepa AB (publ)",
+  "profile": "Nepa AB is a Swedish specialty business services company that provides consumer research, brand tracking, and marketing optimization services. It combines data, analytics, and research tools to help companies measure brand performance, understand customer behavior, and improve marketing effectiveness. The company serves clients across multiple markets through its proprietary platform and advisory services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:47.982Z"
+}

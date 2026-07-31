@@ -1,0 +1,9 @@
+{
+  "ticker": "TFSVF",
+  "companyName": "Done.ai Group AB",
+  "profile": "Done.ai Group AB develops an AI-driven software platform for Nordic small and medium-sized businesses. Its offering combines business tools, financial services, and operational workflows across areas such as CRM, marketing, HR, MRP, spend management, point of sale, accounting, and professional services. The group has also grown through acquisitions of specialist software and services companies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:16:38.721Z"
+}

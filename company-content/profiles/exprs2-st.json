@@ -1,0 +1,9 @@
+{
+  "ticker": "EXPRS2.ST",
+  "companyName": "ExpreS2ion Biotech Holding AB (publ)",
+  "profile": "ExpreS2ion Biotech Holding AB is a clinical-stage biotechnology company developing active immunotherapies and other biologic drug candidates using its proprietary ExpreS2 protein expression platform. Its pipeline includes an oncology lead asset for HER2-expressing cancers, and partnered infectious disease programmes, while the company also offers contract research services for complex protein expression.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:56:36.318Z"
+}

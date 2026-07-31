@@ -1,0 +1,9 @@
+{
+  "ticker": "LIPI.ST",
+  "companyName": "Lipidor AB (publ)",
+  "profile": "Lipidor AB is a Swedish pharmaceutical development company focused on topical treatments for skin diseases. It develops drug candidates through its patented AKVANO formulation technology, reformulating established active substances into sprayable, fast-drying medicines for conditions including psoriasis, acne, bacterial skin infections, and atopic dermatitis. Its lead project is AKP02G2 for psoriasis.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:39:30.346Z"
+}

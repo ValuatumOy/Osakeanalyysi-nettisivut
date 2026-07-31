@@ -1,0 +1,9 @@
+{
+  "ticker": "REG1V.HE",
+  "companyName": "Revenio Group Oyj",
+  "profile": "Revenio Group is a global provider of eye care diagnostic and vision care technology. It sells tonometers, retinal imaging devices, perimeters, OCT and refraction systems, plus clinical software under the iCare and Visionix brands. The company serves optometry, optical retail and ophthalmology, and in 2026 expanded through the acquisition of Visionix.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:13:06.576Z"
+}

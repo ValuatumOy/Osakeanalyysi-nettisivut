@@ -1,0 +1,9 @@
+{
+  "ticker": "OTLY",
+  "companyName": "Oatly Group AB",
+  "profile": "Oatly Group AB develops and sells oat-based food and beverage products. Its portfolio includes oat drinks for everyday use and coffee, chilled oat drinks, cooking creams, frozen desserts, yogurt-style products, and spreads. The company markets its products under the Oatly brand through retail, foodservice, and other channels in multiple countries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:08.775Z"
+}

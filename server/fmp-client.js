@@ -6,9 +6,8 @@
 // the whole import (tens of seconds, 5-minute server cap) and returns a terminal
 // outcome, so there is nothing to poll. See the fmp-import-java-dependency notes.
 //
-// Gated off by default (FRESH_IMPORT_ENABLED); untested against the live endpoint.
-// Do not enable until the endpoint is on the same environment the engine reads
-// (prod wisdom) and Controller.DataImport is granted to the service user.
+// Gated by FRESH_IMPORT_ENABLED. Requires FMP_IMPORT_URL (prod wisdom) and a
+// bearer token with the Controller.DataImport grant (FMP_IMPORT_TOKEN).
 
 const IMPORT_URL = process.env.FMP_IMPORT_URL || '';
 const TOKEN = process.env.FMP_IMPORT_TOKEN || '';

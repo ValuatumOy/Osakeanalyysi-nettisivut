@@ -1,0 +1,9 @@
+{
+  "ticker": "LYTIX.OL",
+  "companyName": "Lytix Biopharma AS",
+  "profile": "Lytix Biopharma is a clinical-stage biotechnology company developing oncolytic molecule immunotherapies for cancer. Its lead candidate, ruxotemitide (LTX-315), is being studied as an intratumoral treatment in melanoma and other solid tumors, while LTX-401 remains in preclinical development. The company focuses on therapies designed to stimulate immune responses against tumors.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:10:45.367Z"
+}

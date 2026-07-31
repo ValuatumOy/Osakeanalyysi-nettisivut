@@ -1,0 +1,9 @@
+{
+  "ticker": "SPEC.ST",
+  "companyName": "SpectraCure AB (publ)",
+  "profile": "SpectraCure AB is a Swedish medical technology company based in Lund that develops and commercialises Q-PRO, a treatment system for prostate cancer based on photodynamic therapy. The platform combines a laser device, dose-planning software and disposable components. The company is conducting clinical studies in recurrent and primary localised prostate cancer in North America and Europe.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:26.357Z"
+}

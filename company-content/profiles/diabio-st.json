@@ -1,0 +1,9 @@
+{
+  "ticker": "DIABIO.ST",
+  "companyName": "Diagonal Bio AB (publ)",
+  "profile": "Diagonal Bio is a Swedish biotechnology company developing diagnostic platforms for detecting genetic markers in DNA and RNA. Its products include the PANVIRAL platform for pathogen detection and the LAMPlify system for broader, less regulated uses. The company currently focuses on animal health applications, including equine diagnostics and other veterinary markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:35:59.024Z"
+}

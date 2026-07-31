@@ -1,0 +1,9 @@
+{
+  "ticker": "ARR.OL",
+  "companyName": "Arribatec Solutions ASA",
+  "profile": "Arribatec Solutions ASA provides IT consulting and digital business services, including ERP implementation and support, cloud solutions, integrations, software development, business intelligence, and IT operations. The company helps customers connect people, processes, and systems, and it also offers training and managed support across its business applications and infrastructure portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:02:32.626Z"
+}

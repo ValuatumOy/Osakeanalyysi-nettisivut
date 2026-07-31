@@ -1,0 +1,9 @@
+{
+  "ticker": "XSPRAY.ST",
+  "companyName": "Xspray Pharma AB (publ)",
+  "profile": "Xspray Pharma AB (publ) is a Swedish pharmaceutical company developing improved versions of marketed protein kinase inhibitors for cancer treatment. Using its patented HyNap technology, it advances product candidates such as dasatinib, nilotinib, axitinib and cabozantinib through clinical development and regulatory approval, with the aim of improving drug properties and commercial applicability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:21.689Z"
+}

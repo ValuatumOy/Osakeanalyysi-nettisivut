@@ -1,0 +1,9 @@
+{
+  "ticker": "RISH.OL",
+  "companyName": "GC Rieber Shipping ASA",
+  "profile": "GC Rieber Shipping is a ship-owning project house that develops and invests in maritime projects and solutions. The company focuses on tailored vessels and services for customers worldwide, drawing on capabilities in marine architecture and project management. Its activities center on creating and operating sustainable maritime assets and related shipping projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:25:50.191Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "GERHSP.CO",
+  "companyName": "German High Street Properties A/S",
+  "profile": "German High Street Properties A/S is a property investment company that owns and manages a portfolio of high street retail properties in Germany, with one property in Denmark. Its income comes mainly from rental revenue, and the portfolio also includes some residential and office units, together with related service-charge income and property management activity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:18:07.915Z"
+}

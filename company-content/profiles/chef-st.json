@@ -1,0 +1,9 @@
+{
+  "ticker": "CHEF.ST",
+  "companyName": "Cheffelo AB (publ)",
+  "profile": "Cheffelo AB is a Scandinavian meal-kit company that sells subscription-based home-delivery boxes with recipes and ingredients for preparing meals at home. Its brands include Linas Matkasse in Sweden, Godtlevert in Norway and RetNemt in Denmark. The company operates production and logistics itself and uses proprietary technology to manage ordering, packing and delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:11:40.043Z"
+}

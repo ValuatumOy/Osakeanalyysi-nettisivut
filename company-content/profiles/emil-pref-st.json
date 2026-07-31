@@ -1,0 +1,9 @@
+{
+  "ticker": "EMIL-PREF.ST",
+  "companyName": "Fastighetsbolaget Emilshus AB (publ)",
+  "profile": "Fastighetsbolaget Emilshus AB (publ) acquires, develops and manages commercial properties in southern Sweden. Its portfolio is concentrated in light industrial premises, industrial services and trade, with additional exposure to big-box, grocery retail and some office and community-service space. The company’s earnings are driven by rental income, property management and value creation from acquisitions and development projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:58:41.298Z"
+}

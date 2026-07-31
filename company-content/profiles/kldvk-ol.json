@@ -1,0 +1,9 @@
+{
+  "ticker": "KLDVK.OL",
+  "companyName": "Ice Fish Farm AS",
+  "profile": "Ice Fish Farm AS is an Icelandic salmon farming company that operates a fully integrated aquaculture business. It produces Atlantic salmon in the eastern fjords of Iceland and manages the value chain from hatchery and sea farming through harvesting, processing and sales. Its operations are supported by distribution and export to customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:49:14.794Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "EPR.OL",
+  "companyName": "Europris ASA",
+  "profile": "Europris ASA is Norway’s largest discount variety retailer, selling a broad range of private-label and branded goods through its store chain and selected online businesses. Its assortment covers everyday household items, seasonal products, groceries, pet supplies and other general merchandise. The company also operates in Sweden through ÖoB and related retail assets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:21:21.534Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SKIS-B.ST",
+  "companyName": "SkiStar AB (publ)",
+  "profile": "SkiStar AB operates alpine ski resorts and mountain destinations in Sweden and Norway, offering ski passes, lodging, rentals, activities, shops, and related guest services. The company also runs hotels and develops property in selected destinations. Its revenues are driven mainly by resort operations, seasonal travel demand, and accommodation and activity sales.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:00:07.172Z"
+}

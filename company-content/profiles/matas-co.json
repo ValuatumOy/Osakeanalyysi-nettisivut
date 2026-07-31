@@ -1,0 +1,9 @@
+{
+  "ticker": "MATAS.CO",
+  "companyName": "Matas A/S",
+  "profile": "Matas A/S is a Danish specialty retailer focused on beauty, health and wellbeing products. It sells skincare, haircare, cosmetics, supplements and related everyday essentials through its store network and online channels. The company also develops private-label ranges and offers pharmacy-related products and services through its digital platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:54:41.617Z"
+}

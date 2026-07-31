@@ -1,0 +1,9 @@
+{
+  "ticker": "SAGA-B.ST",
+  "companyName": "AB Sagax (publ)",
+  "profile": "AB Sagax (publ) is a property company that invests in and manages commercial real estate, with a primary focus on warehouse and light industrial properties. Its portfolio is spread across several European markets, including Sweden, Finland, France, the Netherlands, Belgium, Spain, Germany, Portugal and Denmark. The company emphasizes long-term ownership and rental cash flow.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:46:44.507Z"
+}

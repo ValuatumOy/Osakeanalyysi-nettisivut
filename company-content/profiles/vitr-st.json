@@ -1,0 +1,9 @@
+{
+  "ticker": "VITR.ST",
+  "companyName": "Vitrolife AB (publ)",
+  "profile": "Vitrolife AB develops and supplies products, technologies and genetic testing services for assisted reproduction, mainly to IVF clinics and laboratories. Its portfolio covers consumables used through the IVF process, time-lapse and laser systems, witnessing solutions, and reproductive genetics services and kits. The company also provides training, support and related services worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:27.144Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CAMBI.OL",
+  "companyName": "Cambi ASA",
+  "profile": "Cambi ASA supplies thermal hydrolysis technology and related solutions for wastewater treatment plants and anaerobic digestion facilities. Its systems process sewage sludge and other organic waste to improve biogas production, dewatering, and biosolids handling. The company also provides project delivery and customer support for installations used in municipal and industrial waste treatment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:47:06.404Z"
+}

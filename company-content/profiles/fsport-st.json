@@ -1,0 +1,9 @@
+{
+  "ticker": "FSPORT.ST",
+  "companyName": "FSport AB (publ)",
+  "profile": "FSport AB is a Swedish sports media and gaming company that runs digital sports portals and free-to-play prediction products. Its business is built around driving traffic, user engagement, and affiliate or advertising revenue through sites such as Tippa.se, Trav.se, and HockeyStakes.com, alongside related media content and competitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:04:43.543Z"
+}

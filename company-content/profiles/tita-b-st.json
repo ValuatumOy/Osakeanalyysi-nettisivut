@@ -1,0 +1,9 @@
+{
+  "ticker": "TITA-B.ST",
+  "companyName": "Titania Holding AB (publ)",
+  "profile": "Titania Holding AB is a Stockholm-focused property developer that plans, builds and manages residential projects. The company develops rental apartments and tenant-owned homes, working across the full value chain from zoning and land acquisition through construction and leasing to long-term property management. It retains a majority of the homes it develops as rental housing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:51.678Z"
+}

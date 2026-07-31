@@ -1,0 +1,9 @@
+{
+  "ticker": "SNX.ST",
+  "companyName": "Premium Snacks Nordic AB (publ)",
+  "profile": "Premium Snacks Nordic AB is a snack company that develops, produces, imports and distributes products under the Exotic Snacks and Gårdschips brands. Its range includes nuts, chocolate dragées, licorice, rice snacks, dried fruit and potato chips. The group sells mainly in Sweden and also in selected Nordic and northern European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:44.566Z"
+}

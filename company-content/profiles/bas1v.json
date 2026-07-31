@@ -1,0 +1,9 @@
+{
+  "ticker": "BAS1V",
+  "companyName": "Basware",
+  "profile": "Basware provides cloud-based software for invoice lifecycle management, accounts payable automation, e-invoicing, and e-procurement. Its platform helps finance and procurement teams capture, validate, route, and pay invoices, enforce compliance, and connect with ERP systems across multinational operations. The company also offers related implementation and support services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:53:05.905Z"
+}

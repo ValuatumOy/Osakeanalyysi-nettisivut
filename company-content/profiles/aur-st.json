@@ -1,0 +1,9 @@
+{
+  "ticker": "AUR.ST",
+  "companyName": "Auriant Mining AB (publ)",
+  "profile": "Auriant Mining AB is a Swedish junior mining company focused on gold exploration and production in Russia, mainly in Zabaikalye and the republics of Khakassia and Tyva. It operates two producing mines, Tardan and Staroverinskaya, and also holds one early-stage exploration asset and one development asset.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:35:42.591Z"
+}

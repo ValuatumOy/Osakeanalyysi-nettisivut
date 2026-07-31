@@ -1,0 +1,9 @@
+{
+  "ticker": "FOM.CO",
+  "companyName": "FOM Technologies A/S",
+  "profile": "FOM Technologies A/S designs and sells slot-die coating machines, coating heads, and related equipment for research, pilot-scale, and scale-up applications. Its systems are used to deposit functional thin films for areas such as batteries, solar cells, fuel cells, printed electronics, and power-to-x. The company also provides process knowledge and application support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:13:01.134Z"
+}

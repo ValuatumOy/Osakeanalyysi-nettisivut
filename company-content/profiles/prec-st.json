@@ -1,0 +1,9 @@
+{
+  "ticker": "PREC.ST",
+  "companyName": "Precise Biometrics AB (publ)",
+  "profile": "Precise Biometrics develops biometric software and solutions for secure authentication and access. Its portfolio includes fingerprint and palm recognition software, physical access control, and visitor management systems. The company sells primarily through licensing to sensor manufacturers and through enterprise SaaS offerings that help organizations manage access to devices, workplaces, and digital services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:14:32.683Z"
+}

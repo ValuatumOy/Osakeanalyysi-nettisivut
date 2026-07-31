@@ -1,0 +1,9 @@
+{
+  "ticker": "ALM-PREF.ST",
+  "companyName": "ALM Equity AB (publ)",
+  "profile": "ALM Equity AB (publ) is a Swedish real estate company that acquires and develops property assets through investments in businesses and projects with growth potential. It creates value by packaging, financing and restructuring assets, and through ownership of independent companies focused on housing development, property development and property management in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:57:20.159Z"
+}

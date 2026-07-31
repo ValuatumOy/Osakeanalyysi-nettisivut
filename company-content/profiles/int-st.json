@@ -1,0 +1,9 @@
+{
+  "ticker": "INT.ST",
+  "companyName": "Intellego Technologies AB",
+  "profile": "Intellego Technologies AB develops and manufactures color indicators that show the effects of ultraviolet irradiation. Its products include indicators for UV-A and UV-B exposure, as well as UVC dosimeters used to validate disinfection processes. The company’s solutions are built on patented photochromic ink and are sold across industries including disinfection, sunscreen, and manufacturing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:25:16.512Z"
+}

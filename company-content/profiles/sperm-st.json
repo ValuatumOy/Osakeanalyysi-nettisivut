@@ -1,0 +1,9 @@
+{
+  "ticker": "SPERM.ST",
+  "companyName": "Spermosens AB",
+  "profile": "Spermosens AB develops diagnostic medical devices for male infertility and assisted reproduction. Its main product, JUNO-Checked, is designed to measure sperm binding capacity to help assess fertility potential and guide IVF treatment decisions. The company focuses on clinical validation, intellectual property, and commercial partnerships as it works toward licensing its technology to laboratories and fertility providers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:17:53.519Z"
+}

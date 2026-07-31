@@ -1,0 +1,9 @@
+{
+  "ticker": "OTEC.OL",
+  "companyName": "Otello Corporation ASA",
+  "profile": "Otello Corporation ASA is a Norwegian holding company listed on the Oslo Stock Exchange. Its remaining principal asset is a significant stake in Bemobi Mobile Tech S.A., a mobile media and entertainment company. Otello’s history includes operations in browsers, mobile advertising and apps, but it now functions mainly as an investment holding company.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:01:17.125Z"
+}

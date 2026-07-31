@@ -1,0 +1,9 @@
+{
+  "ticker": "KLARA-B.ST",
+  "companyName": "KlaraBo Sverige AB (publ)",
+  "profile": "KlaraBo Sverige AB (publ) is a Swedish residential property company that acquires, develops, renovates and manages rental housing in growth locations across Sweden. Its business is centered on long-term ownership, in-house property management and value creation through upgrading existing homes, selective new construction and active management of its housing portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:34:28.421Z"
+}

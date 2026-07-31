@@ -1,0 +1,9 @@
+{
+  "ticker": "ONEF.ST",
+  "companyName": "Oneflow AB (publ)",
+  "profile": "Oneflow AB (publ) is a SaaS company that provides a contract automation and contract lifecycle management platform. Its software lets businesses create, send, track, review, and e-sign contracts, while managing approvals, workflows, and contract data in one system. The platform also connects with other business applications through integrations and APIs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:14.613Z"
+}

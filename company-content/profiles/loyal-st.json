@@ -1,0 +1,9 @@
+{
+  "ticker": "LOYAL.ST",
+  "companyName": "Loyal Solutions A/S",
+  "profile": "Loyal Solutions A/S develops software for managing documents, quality processes, risks, KPIs and regulatory compliance. Its platform centralizes information for organizations and supports related tasks such as automation, implementation, training and ongoing support. The company also offers cloud hosting and modular solutions for businesses seeking a single system for quality and compliance management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:51:45.657Z"
+}

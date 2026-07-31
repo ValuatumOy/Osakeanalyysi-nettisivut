@@ -1,0 +1,9 @@
+{
+  "ticker": "ADVE.ST",
+  "companyName": "Advenica AB (publ)",
+  "profile": "Advenica AB develops cybersecurity solutions focused on encryption and network segmentation for environments that require strong separation between systems. Its portfolio includes data diodes, data guards, encryption systems, remote access devices, and secure file import products, along with tailored solutions for sectors such as defence, public authorities, infrastructure, and industry.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:37:36.194Z"
+}

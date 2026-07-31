@@ -1,0 +1,9 @@
+{
+  "ticker": "WITH.HE",
+  "companyName": "WithSecure Oyj",
+  "profile": "WithSecure Oyj provides cybersecurity software and services for mid-sized and larger organizations. Its Elements platform combines exposure management, endpoint protection, extended detection and response, identity and cloud security, and collaboration protection. The company also offers managed detection and response, incident response, and security consulting delivered with expert support and monitoring.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:57:50.060Z"
+}

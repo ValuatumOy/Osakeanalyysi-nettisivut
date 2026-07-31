@@ -1,0 +1,9 @@
+{
+  "ticker": "SSH1V.HE",
+  "companyName": "SSH Communications Security Oyj",
+  "profile": "SSH Communications Security develops cybersecurity software for privileged access management, secure communications, key management, secure file transfer and quantum-safe network encryption. Its products help organizations control access to critical systems, protect data in transit and support compliance. The company is also shifting from license and support sales toward a more recurring-revenue business model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:36:43.907Z"
+}

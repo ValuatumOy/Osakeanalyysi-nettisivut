@@ -1,0 +1,9 @@
+{
+  "ticker": "BILL.ST",
+  "companyName": "BillerudKorsnäs AB (publ)",
+  "profile": "BillerudKorsnäs is a forest products company that makes packaging materials and paper from renewable fiber. It produces cartonboard, containerboard, sack paper, liquid packaging board, specialty and graphic papers, and market pulp, serving customers in Europe and North America. The company is gradually shifting its North American mix toward more paperboard packaging materials.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:06:17.503Z"
+}

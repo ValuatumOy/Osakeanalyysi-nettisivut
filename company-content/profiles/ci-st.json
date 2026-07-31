@@ -1,0 +1,9 @@
+{
+  "ticker": "CI.ST",
+  "companyName": "Cell Impact AB (publ)",
+  "profile": "Cell Impact AB develops and manufactures flow plates for fuel cells and electrolyzers, using its patented Cell Impact Forming technology. The company also provides design services, tools, prototype series, and production equipment linked to these applications. Its offerings are aimed at industrial customers in the hydrogen value chain and related metal forming uses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:08:56.706Z"
+}

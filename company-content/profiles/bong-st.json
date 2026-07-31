@@ -1,0 +1,9 @@
+{
+  "ticker": "BONG.ST",
+  "companyName": "Bong AB (publ)",
+  "profile": "Bong AB is a European supplier of envelope products and lightweight packaging solutions for distribution of information, advertising materials and goods. Its business spans postal and mailing products, retail and gift packaging, and e-logistics and industry packaging, with growth focused on retail, e-commerce and Eastern European envelope markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:32:08.885Z"
+}

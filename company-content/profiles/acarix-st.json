@@ -1,0 +1,9 @@
+{
+  "ticker": "ACARIX.ST",
+  "companyName": "Acarix AB (publ)",
+  "profile": "Acarix AB is a Swedish medical device company that develops and commercializes the CADScor System, a point-of-care diagnostic aid for assessing the risk of coronary artery disease in patients with chest pain. The system uses acoustic measurements and computational processing to support early risk stratification and help guide further cardiac evaluation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:55:40.476Z"
+}

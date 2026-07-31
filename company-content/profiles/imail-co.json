@@ -1,0 +1,9 @@
+{
+  "ticker": "IMAIL.CO",
+  "companyName": "InterMail A/S",
+  "profile": "InterMail A/S provides customer communication services through a mix of physical and digital channels. The company produces and distributes direct mail, e-mail, SMS and e-Boks communications, and offers related services such as lead generation, marketing automation, loyalty programs, printing, packaging and special mailing solutions. It also supports data-driven campaign execution and fulfillment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:38:52.846Z"
+}

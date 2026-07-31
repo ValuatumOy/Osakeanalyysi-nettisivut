@@ -1,0 +1,9 @@
+{
+  "ticker": "PRCO-B.ST",
+  "companyName": "Precio Fishbone AB (publ)",
+  "profile": "Precio Fishbone is a Swedish IT services company focused on consulting and software development. It builds tailored solutions for digital transformation, including system integration, cloud services, Microsoft-based applications, web development and automation. The company also offers NGO Online, a SaaS platform for aid organizations, and serves public-sector, private-sector and non-profit clients.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:14:38.756Z"
+}

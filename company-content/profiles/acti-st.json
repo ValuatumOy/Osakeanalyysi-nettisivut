@@ -1,0 +1,9 @@
+{
+  "ticker": "ACTI.ST",
+  "companyName": "Active Biotech AB (publ)",
+  "profile": "Active Biotech AB is a biotechnology company developing pharmaceutical products for cancer and inflammatory eye diseases. Its portfolio includes tasquinimod for hematological malignancies such as myelofibrosis, laquinimod eye drops for non-infectious uveitis, and naptumomab, an antibody-based immunotherapy licensed to NeoTX for solid tumors. The company is based in Lund, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:05:00.865Z"
+}

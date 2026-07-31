@@ -1,0 +1,9 @@
+{
+  "ticker": "KLAR.ST",
+  "companyName": "Klaria Pharma Holding AB (publ.)",
+  "profile": "Klaria Pharma Holding AB develops and commercialises oral transmucosal drug-delivery films based on a patented alginate platform. Its portfolio has included products for migraine, cancer-related pain, opioid overdose, cannabinoids and anaphylactic shock. The company has also described a recent strategic focus on indications where its films could replace injections or nasal sprays and address unmet patient needs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:34:50.164Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SKF-B.ST",
+  "companyName": "AB SKF (publ)",
+  "profile": "AB SKF is a global industrial technology company that develops and sells bearings, seals, lubrication systems, mechatronics and related services. Its products and solutions are used to reduce friction, improve reliability and extend equipment life in industrial, automotive and other rotating machinery applications. The company also provides condition monitoring, maintenance and engineering support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:47:39.187Z"
+}

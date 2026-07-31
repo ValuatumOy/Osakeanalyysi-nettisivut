@@ -1,0 +1,9 @@
+{
+  "ticker": "MTHH.CO",
+  "companyName": "MT Højgaard Holding A/S",
+  "profile": "MT Højgaard Holding A/S is a Danish construction and engineering group that develops, plans and executes projects in building, civil engineering, infrastructure and green transition services. Through its business units, the company serves private and public clients with new construction, renovation, building services and other project-based work across Denmark.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:58:53.754Z"
+}

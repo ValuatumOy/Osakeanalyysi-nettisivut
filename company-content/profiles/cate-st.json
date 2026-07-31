@@ -1,0 +1,9 @@
+{
+  "ticker": "CATE.ST",
+  "companyName": "Catena AB (publ)",
+  "profile": "Catena AB is a real estate company focused on owning, developing and managing logistics properties in strategically located Nordic markets. Its portfolio includes warehouses, distribution centres, terminals and related facilities in Sweden, Denmark and Finland. The company also develops new projects and adapts existing properties to support efficient goods flows for tenants.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:06:41.300Z"
+}

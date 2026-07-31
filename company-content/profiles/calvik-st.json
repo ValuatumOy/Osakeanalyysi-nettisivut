@@ -1,0 +1,9 @@
+{
+  "ticker": "CALVIK.ST",
+  "companyName": "Job Solution Sweden Holding AB (publ)",
+  "profile": "Job Solution Sweden Holding AB (publ) is an investment company that develops businesses focused on staffing, recruitment and broader competence supply. Through its subsidiaries, the group provides services in Sweden, Norway and Denmark, covering specialist and white-collar recruitment as well as temporary staffing. Growth is driven by acquisitions, cross-selling and expanding its Nordic service platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:29:13.933Z"
+}

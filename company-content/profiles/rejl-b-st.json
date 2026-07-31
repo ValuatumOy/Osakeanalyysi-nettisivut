@@ -1,0 +1,9 @@
+{
+  "ticker": "REJL-B.ST",
+  "companyName": "Rejlers AB (publ)",
+  "profile": "Rejlers AB is a Nordic engineering consultancy that provides technical, project and advisory services across energy, industry, infrastructure, buildings and real estate. The company supports customers with planning, design, optimization and project delivery, with particular focus on the energy transition, industrial transformation and sustainable development in Sweden, Finland, Norway and the United Arab Emirates.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:56.412Z"
+}

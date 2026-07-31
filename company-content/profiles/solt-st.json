@@ -1,0 +1,9 @@
+{
+  "ticker": "SOLT.ST",
+  "companyName": "SolTech Energy Sweden AB (publ)",
+  "profile": "SolTech Energy Sweden AB (publ) is a Swedish solar and energy-transition group that develops, sells, installs and services solar energy solutions, charging infrastructure and energy storage systems. Its operations also include electrical engineering, roofing and facade contracting, with integrated smart control and maintenance services for commercial, industrial and residential properties.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:48:03.884Z"
+}

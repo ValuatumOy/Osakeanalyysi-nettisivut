@@ -1,0 +1,9 @@
+{
+  "ticker": "ELO.OL",
+  "companyName": "Elopak ASA",
+  "profile": "Elopak ASA is a global supplier of paper-based packaging solutions, including Pure-Pak, D-PAK and Roll Fed cartons, as well as filling machines and related services. Its products are used mainly for liquid food and consumer goods applications, with customers in more than 70 countries. The company also emphasizes recyclable, low-carbon packaging development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:15:03.010Z"
+}

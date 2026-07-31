@@ -1,0 +1,9 @@
+{
+  "ticker": "AMBEA.ST",
+  "companyName": "Ambea AB (publ)",
+  "profile": "Ambea AB is a Nordic care provider focused on elderly care, disability services and psychosocial support. Through brands such as Vardaga, Nytida, Stendi, Altiden and Validia, it operates more than 1,000 care units across Sweden, Norway, Denmark and Finland. Its business is driven by staffed care homes, support services and related operational contracts.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:02:40.606Z"
+}
