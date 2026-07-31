@@ -558,47 +558,48 @@ function trackEvent(event, props = {}) {
 })();
 
 // Direct Stripe checkout entry points on generated company pages.
-(function initCompanyPageCheckoutLinks() {
-  var readyLinks = document.querySelectorAll('a[href*="/reports.html#report-"], a[href^="reports.html#report-"]');
+function bindReadyReportCheckoutLink(link) {
+  var href = link.getAttribute('href') || '';
+  var match = href.match(/#report-([^#?&]+)/);
+  if (!match) return;
+  var reportId = match[1];
 
-  readyLinks.forEach(function (link) {
-    var href = link.getAttribute('href') || '';
-    var match = href.match(/#report-([^#?&]+)/);
-    if (!match) return;
-    var reportId = match[1];
+  link.addEventListener('click', async function (e) {
+    e.preventDefault();
+    if (link.dataset.loading === '1') return;
 
-    link.addEventListener('click', async function (e) {
-      e.preventDefault();
-      if (link.dataset.loading === '1') return;
+    var label = link.textContent;
+    link.dataset.loading = '1';
+    link.style.pointerEvents = 'none';
+    link.style.opacity = '0.7';
+    link.textContent = 'Redirecting to secure checkout...';
+    trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page' });
 
-      var label = link.textContent;
-      link.dataset.loading = '1';
-      link.style.pointerEvents = 'none';
-      link.style.opacity = '0.7';
-      link.textContent = 'Redirecting to secure checkout...';
-      trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page' });
+    try {
+      var res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId: reportId }),
+      });
+      var data = await res.json();
+      if (data && data.url) {
+        trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
+        window.location.href = data.url;
+        return;
+      }
+    } catch (err) { /* fall through to reset below */ }
 
-      try {
-        var res = await fetch('/api/create-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reportId: reportId }),
-        });
-        var data = await res.json();
-        if (data && data.url) {
-          trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
-          window.location.href = data.url;
-          return;
-        }
-      } catch (err) { /* fall through to reset below */ }
-
-      link.dataset.loading = '';
-      link.style.pointerEvents = '';
-      link.style.opacity = '';
-      link.textContent = label;
-      alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
-    });
+    link.dataset.loading = '';
+    link.style.pointerEvents = '';
+    link.style.opacity = '';
+    link.textContent = label;
+    alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
   });
+}
+
+(function initCompanyPageCheckoutLinks() {
+  document.querySelectorAll('a[href*="/reports.html#report-"], a[href^="reports.html#report-"]')
+    .forEach(bindReadyReportCheckoutLink);
 
   document.querySelectorAll('a[href="#generate"]').forEach(function (link) {
     if (!/generate/i.test(link.textContent || '')) return;
@@ -609,6 +610,89 @@ function trackEvent(event, props = {}) {
       checkoutButton.click();
     });
   });
+})();
+
+// ── Live ready-report CTA on generated company pages ──────────────────────────
+// Company pages are static HTML built ahead of time. A report published after
+// the page was built (e.g. a fresh order resold as a ready report) would stay
+// invisible here until the next manual page rebuild, so look the company up in
+// the live catalog and inject the buy/download controls when the page lacks them.
+(function initLiveReadyReportCta() {
+  if (document.getElementById('ready-report')) return; // page already has one
+  var generateBtn = document.querySelector('[data-generate-report][data-ticker]');
+  if (!generateBtn) return; // not a generated company page
+  var ticker = (generateBtn.getAttribute('data-ticker') || '').trim();
+  if (!ticker) return;
+
+  fetch('/api/reports')
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) {
+      var reports = (data && data.reports) || [];
+      var report = reports
+        .filter(function (r) {
+          return r && r.ticker === ticker && r.availability === 'available' && (r.pdfUrl || r.fileName);
+        })
+        .sort(function (a, b) {
+          return String(b.reportDate || '').localeCompare(String(a.reportDate || ''));
+        })[0];
+      if (!report) return;
+
+      var isFree = report.isFree === true || Number(report.price || 0) === 0;
+      var pdfUrl = String(report.pdfUrl || '');
+      var pdfHref = /^https?:\/\//.test(pdfUrl) ? pdfUrl : '/' + pdfUrl.replace(/^\/+/, '');
+      var ctaHref = isFree && pdfUrl ? pdfHref : '/reports.html#report-' + encodeURIComponent(report.id);
+      var ctaText = isFree
+        ? 'Download free report'
+        : 'Buy ready report — €' + Number(report.price || 0).toFixed(2);
+      var dateLabel = report.reportDateLabel || report.reportDate || '';
+      var companyName = generateBtn.getAttribute('data-company') || ticker;
+
+      function makeCtaLink(className) {
+        var a = document.createElement('a');
+        a.className = className;
+        a.href = ctaHref;
+        a.textContent = ctaText;
+        if (isFree && pdfUrl) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.setAttribute('download', '');
+        } else {
+          bindReadyReportCheckoutLink(a);
+        }
+        return a;
+      }
+
+      var headerActions = document.querySelector('.company-header-actions');
+      if (headerActions) {
+        headerActions.insertBefore(makeCtaLink('btn btn-primary'), headerActions.firstChild);
+      }
+
+      var generateSection = document.getElementById('generate');
+      if (generateSection) {
+        var section = document.createElement('section');
+        section.className = 'report-full-section';
+        section.id = 'ready-report';
+        section.innerHTML =
+          '<div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">' +
+            '<h2 style="color:white; margin-top:0;">' + (isFree ? 'Download the free ' : 'Buy the ready ') + escapeHtml(companyName) + ' report</h2>' +
+            '<p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ' + escapeHtml(companyName) + ' AI equity report is available from ' + escapeHtml(dateLabel) + '. ' +
+              (isFree
+                ? 'Download the ready PDF now for free, or generate a new report below if you want a fresh run with the latest available data.'
+                : 'Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.') + '</p>' +
+            '<div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">' +
+              '<span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ' + escapeHtml(dateLabel) + '</span>' +
+            '</div>' +
+          '</div>';
+        section.querySelector('div > div').insertBefore(
+          makeCtaLink('btn btn-primary btn-lg'),
+          section.querySelector('div > div').firstChild
+        );
+        generateSection.parentNode.insertBefore(section, generateSection);
+        var content = document.querySelector('.report-full-content');
+        if (content) content.setAttribute('data-ready-report', 'true');
+      }
+    })
+    .catch(function () { /* catalog unavailable — page just stays as built */ });
 })();
 
 // Keep visible sales-page prices in sync with Stripe product default prices.
