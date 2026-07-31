@@ -1,0 +1,135 @@
+{
+  "id": "oriola-07072026",
+  "slug": "oriola-equity-report",
+  "companyName": "Oriola Oyj",
+  "ticker": "ORIOLA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Medical - Distribution",
+  "currency": "EUR",
+  "reportDate": "2026-07-07",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "0.93 EUR",
+    "targetPrice": "1.60 EUR",
+    "impliedUpside": "+71.9%",
+    "marketCap": "EUR 173 m",
+    "enterpriseValue": "EUR 281 m"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "-9.6x"},
+    {"label": "EV/EBITDA 2026E", "value": "6.4x"},
+    {"label": "FCF Yield 2026E", "value": "-78.6%"},
+    {"label": "Dividend Yield 2026E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "2.5x"}
+  ],
+  "priceStats": {
+    "week52High": "1.26 EUR",
+    "week52Low": "0.87 EUR",
+    "oneYearChange": "-10.3%",
+    "threeYearChange": "-23.8%"
+  },
+  "summary": [
+    "Oriola Oyj (ORIOLA.HE, NASDAQ Helsinki) is a Finland-based health and wellbeing company linking pharmaceutical manufacturers with the healthcare system in Finland and Sweden; in this Valuatum equity research report dated 7 July 2026 we rate the stock BUY with a 12-month target price of 1.60 EUR against a current price of 0.93 EUR, implying +71.9% upside. Market capitalisation is EUR 173 m and enterprise value is EUR 281 m.",
+    "The core valuation tension is a market that prices Oriola on its poor statutory cash conversion and ERP execution risk rather than its infrastructure monopoly and adjusted earnings power. The Distribution segment generates EUR 32.6 million of FY25 adjusted EBITDA against just EUR 128.1 million of allocated enterprise value, a 3.9x multiple well below Oriola's own normalized 5.5x EV/EBITDA average, while the company value map carries the whole group at only EUR 138 million of enterprise value and assigns the 50% Kronans Apotek retail pharmacy joint venture — Sweden's third-largest chain with an estimated book value of around EUR 206 million — an EV of zero.",
+    "On a reverse-valuation basis the market's assumptions look overly pessimistic: applying a conservative 8.0x multiple to the EUR 35.1 million of adjusted EBITDA would support roughly EUR 280 million of operating enterprise value against the current EUR 138 million, implying the market simply does not believe the adjusted EBITDA is real. The scenario base case implies EUR 1.34 per share (+44.3%), the bull case EUR 2.29 (+145.7%) on Agent Net Sales operating leverage plus realization of the Kronans Apotek asset, and even the bear case of a working capital failure with dilutive emergency financing implies EUR 0.94 (+0.8%). The key condition is keeping the estimated EUR -151 million 2026e operating cash outflow within the EUR 70 million unused revolver."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Distribution undervaluation", "metric": "3.9x multiple", "text": "Distribution generates EUR 32.6m adjusted EBITDA against just EUR 128.1m allocated EV, a 3.9x multiple well below Oriola's own normalized 5.5x average, leaving room for re-rating."},
+    {"num": "02", "title": "EBITDA recovery post-ERP", "metric": "EUR 44m EBITDA", "text": "Group EBITDA is set to recover from EUR 19m reported in FY25 to EUR 44m and EUR 42m in 2026e and 2027e, as the EUR 9.6m ERP drag rolls off by mid-2026."},
+    {"num": "03", "title": "Sum-of-the-parts re-rating", "metric": "+72% upside", "text": "Our EUR 1.60 target applies 5.5x to EUR 42m 2027e EBITDA with 60% weight and 9.5x to EUR 21m EBIT with 40% weight, supporting 72% upside from EUR 0.931."}
+  ],
+  "thesisBreaker": "A working capital/liquidity crisis causing a covenant breach that forces a highly dilutive equity issuance.",
+  "valuePools": [
+    {"name": "Distribution", "share": "92.8% · EUR 128m", "economics": "Revenue EUR 1,531m (80.3%) · Comp. EBIT EUR 33m (92.9% of EBIT) · EV EUR 128m", "text": "Regulated profit engine valued as a distressed asset rather than a stable infrastructure monopoly: EUR 128.1 million of allocated EV against EUR 32.6 million of adjusted EBITDA is a 3.9x multiple, a heavy penalty for years of bungled ERP rollouts and working capital volatility. Oriola and its main competitor Tamro control the Nordic single-channel duopoly with a ~42-46% Nordic share; from 2026 the IFRS 15 shift from principal to agent reporting means gross 'Invoicing' of over EUR 4 billion while Net Sales fall to an estimated EUR 210 million, revealing a ~20% margin infrastructure toll road."},
+    {"name": "Wholesale & Advisory", "share": "29.6% · EUR 41m", "economics": "Revenue EUR 375m (19.7%) · Comp. EBIT EUR 10m (29.6% of EBIT) · EV EUR 41m", "text": "Scaling pool with the highest growth and margin potential within Oriola, driven by OTC parallel imports and the 'Oriola Insights' data business sold back to pharmaceutical manufacturers at near 100% gross margins. FY25 net sales were EUR 374.8 million with 18.7% revenue growth and EUR 10.4 million of adjusted EBITDA, making the EUR 40.9 million allocation conservative; the main risk is that cyclical parallel-import revenue tied to specific drug shortages in Europe may not sustain current growth rates."},
+    {"name": "Kronans Apotek JV", "share": "0.0% · EUR 0m", "economics": "Revenue EUR 0m (0.0%) · Comp. EBIT EUR 0m (0.0% of EBIT) · EV EUR 0m", "text": "Asset-backed pool priced at zero or negative value despite being Sweden's third-largest pharmacy chain with roughly a 21% market share, approximately 500 physical locations and a SEK 7B+ (EUR 600m+) revenue run-rate. In FY2025 Oriola recognized a EUR -22.8 million share of JV losses, largely a EUR 15.8 million goodwill impairment. Even at a heavily discounted 0.5x EV/Sales, the whole JV would be worth EUR 300 million and Oriola's 50% stake EUR 150 million; the critical milestone is the conclusion of the 2026 strategic review pushed by activist investors."},
+    {"name": "Corporate / Transformation", "share": "-22.4% · EUR -31m", "economics": "Revenue EUR 0m (0.0%) · Comp. EBIT EUR -8m (-22.5% of EBIT) · EV EUR -31m", "text": "Restructuring drag carried at a negative EUR 31.0 million allocated EV, with a EUR -7.9m adjusted EBITDA allocation and the EUR 9.6m FY25 ERP drag that must be netted off group value until the Järvenpää ERP go-live ends the adjusting items."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the pessimism embedded in Oriola's EUR 138 million allocated enterprise value is coherent, with the 2026 working capital event and the finalization of the Järvenpää ERP go-live as the swing factors. Oriola holds a net cash position of EUR 74 million pre-2026 reset, but consensus estimates forecast a EUR -151 million operating cash flow in 2026 that would push the company into EUR 109 million of net debt; the Base case assumes standard EBITDA normalization but no JV sale, the Bull case assumes immediate operating leverage on Agent Net Sales and realization of the Kronans Apotek asset, and the Bear case assumes a working capital failure that necessitates highly dilutive emergency financing.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "221", "EBITDA": "44", "Margin": "19.9%", "Multiple": "8.0x", "EV": "350", "Equity": "424"}, "impliedValueOrUpside": "EUR 2.29 / sh · +145.7%"},
+      {"scenario": "Base", "cols": {"Revenue": "210", "EBITDA": "35", "Margin": "16.7%", "Multiple": "5.0x", "EV": "175", "Equity": "249"}, "impliedValueOrUpside": "EUR 1.34 / sh · +44.3%"},
+      {"scenario": "Bear", "cols": {"Revenue": "200", "EBITDA": "20", "Margin": "10.0%", "Multiple": "5.0x", "EV": "100", "Equity": "174"}, "impliedValueOrUpside": "EUR 0.94 / sh · +0.8%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "The enterprise value allocation for Oriola shows a wide gap between the company's underlying market position and its public market valuation. As one half of the highly consolidated Nordic pharmaceutical distribution duopoly, Oriola controls critical healthcare supply chain infrastructure, yet the market prices the entire enterprise at just EUR 138 million — a valuation implying severe distress, driven by years of erratic working capital management, multi-year ERP implementation costs, and structural losses at the unconsolidated Kronans Apotek retail joint venture. The group EV of EUR 138 million plus net cash of EUR 74 million bridges to a market capitalization of EUR 212 million, treating the 50% equity-accounted Kronans Apotek stake as contributing effectively zero or negative value despite its status as Sweden's third-largest pharmacy chain. Because reported group EBIT is distorted by EUR 14.8 million in adjusting items, the allocation applies a uniform 3.9x multiple to internal adjusted EBITDA — pointing to the underlying tension: the market prices Oriola on poor statutory cash conversion and IT execution risk, not its infrastructure monopoly."},
+    {"heading": "Cross-pool bridge", "text": "The forecast looks unusual because of the IFRS 15 accounting change taking effect in 2026, which forces net sales optically down from EUR 1,906m (FY25) to EUR 210m (2026e) while clarifying the true toll-road margins. The EBITDA bridge from EUR 19 million reported in 2025 to EUR 44 million in 2026 is fully supported by the current underlying businesses; stripping out the EUR 9.6 million annual ERP drag and the dose-dispensing disposal losses, the base business already generates EUR 35 million. The cash flow bridge is the weakest link: consensus forecasts a EUR -151 million operating cash flow in 2026, pushing Oriola from EUR 74 million of net cash into EUR 109 million of net debt. Under a normalized infrastructure framework, a conservative 8.0x multiple on the EUR 35.1 million adjusted EBITDA would support roughly EUR 280 million of operating enterprise value versus the current EUR 138 million — the market simply does not believe the 'adjusted' EBITDA is real — and the most fragile assumption is the zero valuation on Kronans Apotek, which requires assuming terminal bankruptcy unsupported by the JV's SEK 7 billion revenue base."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ sharply on the outcome of the 2026 working capital event. If the company consumes EUR 150 million in cash during the IFRS 15 / ERP transition, the enterprise value must be supported entirely by future debt capacity — and because invoicing volume is so large (EUR 4 billion+), a mere 3-day delay in receivable collection can lock up tens of millions of euros. Upside requires two catalysts: the new ERP system must go live smoothly, showing immediate margin leverage on the newly clarified Agent Net Sales, and the Board must realize value from the Kronans Apotek JV. The central debate is whether Oriola is a permanently mismanaged value trap or a misunderstood infrastructure asset nearing a financial inflection: Distribution volume is guaranteed by the healthcare system, and EUR 138m of EV against EUR 35m of underlying adjusted EBITDA implies a severely distressed multiple. If the balance sheet survives the 2026 working capital transition intact, the shift to Agent Net Sales will reveal a highly profitable logistics toll road with meaningful re-rating potential."}
+  ],
+  "risks": [
+    "Working capital / liquidity crisis (Distribution): a mere 3-day delay in receivable collection can lock up tens of millions of euros, triggering a catastrophic liquidity squeeze, with operating cash flow significantly missing estimates as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "ERP implementation failure (Corporate / Transformation): further delays in the Järvenpää facility require continued consulting expenditures and manual overrides, with renewed 'adjusting items' in earnings as the early warning - HIGH impact, structural.",
+    "Kronans Apotek market share loss (Kronans Apotek JV): intense competition from e-commerce players forces the JV to require emergency capital injections from Oriola, with the JV reporting deepening EBITDA losses as the early warning - MEDIUM impact, manageable.",
+    "Loss of pharma manufacturer contract (Distribution): a breakdown in the single-channel duopoly system causing volume loss to Tamro, with a major manufacturer shifting distributor as the early warning - HIGH impact, structural."
+  ],
+  "catalysts": [
+    "Q1/Q2 2026 IFRS 15 reporting (near-term, Distribution): stabilization of Agent Net Sales reporting reveals the ~20% true EBITDA margin.",
+    "Järvenpää ERP go-live (near-term, Corporate / Transformation): absence of IT consulting adjusting items ends the EUR 9.6m annual drag.",
+    "Kronans Apotek strategic review (medium-term, Kronans Apotek JV): announcement of a JV spin-off or sale unlocks up to EUR 150m of NAV.",
+    "Working capital normalization (medium-term, Distribution): operating cash flow returning to positive in H2 2026 de-risks the debt position."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["1,494", "1,680", "1,906", "210", "221", "236"]},
+        {"label": "EBITDA", "values": ["24", "25", "19", "44", "42", "6"]},
+        {"label": "EBITDA margin", "values": ["1.6%", "1.5%", "1.0%", "20.8%", "19.0%", "2.6%"]},
+        {"label": "Depreciation", "values": ["-10", "-12", "-18", "-29", "-21", "-2"]},
+        {"label": "Operating Profit (EBIT)", "values": ["14", "14", "1", "15", "21", "4"]},
+        {"label": "EBIT margin", "values": ["0.9%", "0.8%", "0.1%", "7.0%", "9.6%", "1.8%"]},
+        {"label": "Net financial items", "values": ["-31", "-32", "-28", "-31", "-47", "-50"]},
+        {"label": "Pre-tax Profit", "values": ["-18", "-19", "-27", "-16", "-26", "-46"]},
+        {"label": "Net Earnings", "values": ["-21", "-20", "-27", "-18", "-26", "-46"]},
+        {"label": "EPS (EUR)", "values": ["-0.1", "-0.1", "-0.2", "-0.1", "-0.1", "-0.3"]},
+        {"label": "DPS (EUR)", "values": ["0.1", "0.1", "0.1", "0", "0", "0"]},
+        {"label": "Payout ratio", "values": ["-52.6%", "-63.2%", "-47.4%", "-53.7%", "-53.7%", "-53.7%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["-42", "15", "38", "-186", "-4", "-42"]},
+        {"label": "Operating cash flow", "values": ["-8", "47", "66", "-151", "43", "8"]},
+        {"label": "Change in working capital", "values": ["33", "-23", "-48", "197", "-1", "-2"]},
+        {"label": "Gross capex", "values": ["-60", "-22", "-9", "-16", "21", "2"]},
+        {"label": "Capex (ex. M&A)", "values": ["61", "22", "9", "16", "-21", "-2"]},
+        {"label": "Free Operating Cash Flow", "values": ["55", "69", "70", "-135", "22", "6"]},
+        {"label": "Free cash flow to firm", "values": ["55", "69", "70", "-135", "22", "6"]},
+        {"label": "CF from financing", "values": ["-39", "-59", "-8", "33", "26", "45"]},
+        {"label": "Dividends paid", "values": ["-7", "-11", "-13", "-13", "—", "—"]},
+        {"label": "Net change in cash", "values": ["-21", "-22", "40", "-136", "1", "1"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["-9.6x"]},
+        {"label": "EV/EBITDA", "values": ["6.4x"]},
+        {"label": "EV/EBIT", "values": ["19.0x"]},
+        {"label": "P/FCF", "values": ["-1.3x"]},
+        {"label": "P/BV", "values": ["2.5x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["2.5x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Oriola a buy in 2026?", "a": "Yes. Valuatum's 7 July 2026 equity report rates Oriola Oyj (ORIOLA.HE) a BUY with a 1.60 EUR 12-month target versus a 0.93 EUR price, implying +71.9% upside. Oriola is poised for a significant re-rating as the EUR 9.6m ERP drag rolls off by mid-2026 and the IFRS 15 accounting shift clarifies the true toll-road margins of its core infrastructure."},
+    {"q": "What is Oriola's price target?", "a": "The Valuatum report dated 7 July 2026 sets a 12-month fundamental target price of 1.60 EUR for Oriola (ORIOLA.HE), against a current price of 0.93 EUR. The target applies a 5.5x multiple to EUR 42m of 2027e EBITDA with 60% weight (implying EUR 1.65) and 9.5x to EUR 21m of 2027e EBIT with 40% weight (implying EUR 1.48), supporting roughly 72% upside from EUR 0.931."},
+    {"q": "Why is Oriola rated BUY?", "a": "Oriola is rated BUY for three reasons: the Distribution segment's EUR 32.6m of adjusted EBITDA is valued at just EUR 128.1m of allocated EV, a 3.9x multiple well below the company's own normalized 5.5x average; group EBITDA is set to recover from EUR 19m in FY25 to EUR 44m in 2026e as the EUR 9.6m ERP drag rolls off; and the 50% Kronans Apotek JV stake, worth up to EUR 150m on a discounted 0.5x EV/Sales basis, is priced at zero."},
+    {"q": "Is Oriola undervalued in 2026?", "a": "On Valuatum's framework Oriola looks undervalued: applying a conservative 8.0x EBITDA multiple to the EUR 35.1 million of adjusted EBITDA would support roughly EUR 280 million of operating enterprise value, versus the EUR 138 million the market currently allocates. The current pricing implies severe distress and treats Sweden's third-largest pharmacy chain, with an estimated book value of around EUR 206 million, as worthless."},
+    {"q": "How does the reverse valuation work for Oriola?", "a": "The reverse valuation tests whether the pessimism in Oriola's EUR 138 million allocated enterprise value is coherent, with the 2026 working capital event and the Järvenpää ERP go-live as the swing factors. The base case implies EUR 1.34 per share (+44.3%), the bull case EUR 2.29 (+145.7%) on Agent Net Sales operating leverage plus realization of the Kronans Apotek asset, and even the bear case of dilutive emergency financing implies EUR 0.94 (+0.8%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Oriola report dated 7 July 2026 (company value map; FY25 Distribution adjusted EBITDA EUR 32.6m, current quote EUR 0.931).",
+    "Consensus estimates: consensus forecast of a EUR -151 million operating cash flow in 2026 used for the cash-bridge analysis.",
+    "Market data: Ticker ORIOLA.HE current price 0.93 EUR as of 7 July 2026; FY25 group net sales EUR 1,906m; 2026e group EBITDA EUR 44m (analyst-generated estimate)."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "id": "puuilooyj-29072026",
+  "slug": "puuilo-equity-report",
+  "companyName": "Puuilo Oyj",
+  "ticker": "PUUILO.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Department Stores",
+  "currency": "EUR",
+  "reportDate": "2026-07-29",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "17.22 EUR",
+    "targetPrice": "15.90 EUR",
+    "impliedUpside": "-7.7%",
+    "marketCap": "EUR 1.5 bn",
+    "enterpriseValue": "EUR 1.6 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "27.8x"},
+    {"label": "EV/EBITDA 2026E", "value": "14.3x"},
+    {"label": "FCF Yield 2026E", "value": "3.5%"},
+    {"label": "Dividend Yield 2026E", "value": "3.3%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "1.3x"}
+  ],
+  "priceStats": {
+    "week52High": "18.10 EUR",
+    "week52Low": "11.30 EUR",
+    "oneYearChange": "+33.2%",
+    "threeYearChange": "+132.4%"
+  },
+  "summary": [
+    "Puuilo Oyj (PUUILO.HE, NASDAQ Helsinki) is a Finnish discount retailer selling building supplies, tools, HVAC and electrical products, car accessories, garden equipment, pet products, household goods and leisure items through department stores and online; in this Valuatum equity research report dated 29 July 2026 we rate the stock HOLD with a 12-month target price of 15.90 EUR against a current price of 17.22 EUR, implying roughly 7.7% downside. Market capitalisation is EUR 1.5 bn and enterprise value is EUR 1.6 bn.",
+    "The core valuation tension is a premium multiple resting on unproven growth. The Finland Mature Store Base — 80.1% of FY2025A revenue and 85.3% of comparable EBIT — accounts for 65% of the EUR 1,599 million enterprise value and is well supported by recurring cash flow, but the market also assigns 30% (EUR 480m) to the Finnish store rollout pipeline, which requires near-flawless execution of 40+ new stores over the next five years, with a minor 5% allocated to unproven Swedish optionality. At 14.3x EV/EBITDA on 2026e EBITDA of EUR 112 million, the group trades well above the peer median of 7.0x and its own normalized 10.8x historical average.",
+    "On a reverse-valuation basis our 13.5x fair multiple suggests the current 14.3x already embeds more optimism than the fundamentals fully support, and the weighted target price of 15.90 EUR implies roughly 8% downside over the next 12 months. The base case implies EUR 17.44 per share (+1.3%); the bear case — like-for-like growth stalling below 2.0% with EBIT margin reversion toward the Nordic retail average of 12% — implies EUR 9.74 (-43.4%), while the bull case, assuming execution above an 18% EBIT margin along with confirmation of the Swedish pilot economics, implies EUR 24.54 (+42.5%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Mature Store Margin Durability Required", "metric": "17% EBIT margin", "text": "The Finland Mature Store Base must hold its ~17% EBIT margin as group EBITDA scales from EUR 112m to EUR 128m by 2028, because this base already generates EUR 76m EBITDA against the EUR 73m the 14.3x multiple requires, leaving no room for slippage before the premium unwinds."},
+    {"num": "02", "title": "Aggressive New Store Pipeline Pricing", "metric": "40+ new stores", "text": "The Finland New Store Growth pipeline, worth 30% of EV at EUR 480m, needs to add 40+ stores by 2028-2030 at a 19-month payback and EUR 4.1m mature run-rate each. Incremental EBITDA must rise from EUR 14m to EUR 34m, or the multiple cannot be sustained."},
+    {"num": "03", "title": "Cash Flow vs Capex Dynamic", "metric": "13.5x fair multiple", "text": "Net debt rises from EUR 147m to EUR 179m as EUR 37-44m of annual growth capex outpaces roughly flat EUR 87-88m operating cash flow, while a 90%+ payout continues from internal cash generation. This tests whether execution supports the 13.5x fair multiple against today's 14.3x."}
+  ],
+  "thesisBreaker": "Like-for-like growth falling below 2.0% alongside margin reversion toward the 12% Nordic retail average.",
+  "valuePools": [
+    {"name": "Finland Mature Store Base", "share": "65.0% · EUR 1,039m", "economics": "Revenue EUR 354m (80.1%) · Comp. EBIT EUR 64m (85.3% of EBIT) · EV EUR 1,039m", "text": "Profit engine valued as a highly profitable, cash-generative business operating at peak efficiency. The mature store network delivers adjusted EBIT margins around 17% and EBITDA margins near 20%, well above the broader European discount retail sector, with private label penetration of roughly 28% defending high gross margins (~39%) against input cost inflation. An average mature store generates roughly EUR 6-7 million in annual net sales on a lean asset base, supporting group-level return on equity above 55% — but the 14.3x implied multiple requires ~EUR 73m of EBITDA from a base already delivering it, leaving no valuation gap."},
+    {"name": "Finland New Store Growth Pipeline", "share": "30.0% · EUR 480m", "economics": "Revenue EUR 88m (19.9%) · Comp. EBIT EUR 11m (14.7% of EBIT) · EV EUR 480m", "text": "Scaling pool priced as a compounding growth story: Puuilo has publicly targeted a network of over 100 stores by 2030, roughly doubling its footprint from the low-50s base, with an announced pipeline of 7-10 new stores per year. New stores typically turn EBITDA positive after just 1-2 months with capital payback averaging roughly 19 months; to support the EUR 480m allocation the pipeline requires 40+ new stores by 2030, ~EUR 34m of incremental EBITDA and ~EUR 165m of incremental sales, with each store eventually reaching the EUR 4-5 million mature run-rate without cannibalizing the existing base."},
+    {"name": "Sweden Optionality", "share": "5.0% · EUR 80m", "economics": "Revenue EUR 0m (0.0%) · Comp. EBIT EUR 0m (0.0% of EBIT) · EV EUR 80m", "text": "Emerging option on international replication: a pre-revenue pilot with the first store scheduled to open in Örebro in late 2026 or 2027, at an FY26 expected cost of ~EUR 1m in setup expense. If the concept works the total addressable market roughly triples, but the Swedish market is competitive and defended by established players like Rusta, Jula and Biltema; a failed pilot would remove the 5% option premium and limit the long-term equity story to Finland."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the revenue, margin and multiple assumptions embedded in Puuilo's EUR 1,599 million enterprise value are coherent. The base case assumes sustained execution of the organic store pipeline in Finland, with stable like-for-like sales between 4.0% and 6.0%; the bear case assumes intense pricing pressure and margin reversion toward the regional norm of 12%; the bull case assumes execution above an 18% EBIT margin along with confirmation of the Swedish pilot economics. Because Puuilo carries EUR 147 million in projected 2026 net debt, equity value sits below enterprise value.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "550", "EBITDA": "135", "Margin": "18.5%", "Multiple": "16.3x", "EV": "2,201", "Equity": "2,070"}, "impliedValueOrUpside": "EUR 24.54 / sh · +42.5%"},
+      {"scenario": "Base", "cols": {"Revenue": "442", "EBITDA": "112", "Margin": "17.0%", "Multiple": "14.3x", "EV": "1,602", "Equity": "1,471"}, "impliedValueOrUpside": "EUR 17.44 / sh · +1.3%"},
+      {"scenario": "Bear", "cols": {"Revenue": "500", "EBITDA": "85", "Margin": "12.0%", "Multiple": "11.2x", "EV": "952", "Equity": "822"}, "impliedValueOrUpside": "EUR 9.74 / sh · -43.4%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Puuilo operates as a single reporting segment, generating EUR 442 million in net sales and EUR 75 million in reported EBIT in the 2025 financial year, so this analysis splits the EUR 1,599 million enterprise value across three model-based value pools rather than a directly observed market sum-of-the-parts. The Finland Mature Store Base receives 65% (EUR 1,039m), reflecting its status as a highly profitable, cash-generative business operating at peak efficiency that produces roughly 85% of modeled EBIT. The valuation tension lies in the remaining 35%: 30% (EUR 480m) goes to the Finland New Store Growth pipeline, which slightly dilutes group margins during ramp-up but is expected to drive the company toward its stated goal of 100+ stores and >EUR 800 million in sales by 2030, and the final 5% (EUR 80m) to the pre-revenue Sweden Optionality pilot. The group enterprise value reconciles to the equity market capitalization of EUR 1,452 million after deducting EUR 147 million in projected 2026 net debt."},
+    {"heading": "Cross-pool bridge", "text": "The main driver of the forward forecast is the interplay between the stable mature store base and the scheduled addition of 7-10 new stores annually. The base provides the EUR 75 million EBIT anchor, funding both the EUR 37-44 million in annual gross capital expenditure and the dividend payout policy without external equity financing, while the EUR 129 million projected increase in net sales by FY28 depends mainly on the pipeline executing on schedule. Under an EV/EBITDA framework, the EUR 1,599 million enterprise value implies a premium 14.3x multiple on FY26 estimated EBITDA of EUR 112 million — well above the 7x-10x multiples typically assigned to Nordic discount peers like Tokmanni or Rusta, a premium paid specifically for the 30% EV allocation to the growth pipeline and its 55%+ return on equity. The most fragile assumption is that the next 40 stores in Finland will match the identical 19-month payback of the first 50, and for the forecast to hold, private-label penetration must keep rising from its 28%+ mix to defend gross margins near 39% as EBIT moves from EUR 75 million to EUR 101 million."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ mainly on the resilience of the mature store margin and the pace of the growth pipeline; because Puuilo is priced as a high-margin compounder, any structural drop in the margin profile breaks the premium multiple thesis. In the bear case, like-for-like growth stalls below 2.0% and the EBIT margin reverts toward the Nordic retail average of 12%; after deducting EUR 147 million in net debt, equity value falls to roughly EUR 803 million, wiping out the premium assigned to the growth pipeline. The bull case requires everything to go right — margins holding above 17%, an accelerating private label mix, and proof that the Swedish pilot works — supporting EV expansion to EUR 2,200 million. The central debate is whether Puuilo's unit economics — 17% EBIT margins, 55%+ ROE, and 19-month store paybacks — reflect a lasting structural advantage or a cyclical peak in a concentrated domestic retail market. With the market's 14.3x already above our 13.5x fair multiple, we land at HOLD with a 15.90 EUR target, roughly 8% below the current 17.22 EUR."}
+  ],
+  "risks": [
+    "Market saturation and cannibalization (Finland New Store Growth Pipeline): new stores in regional municipalities fail to attract sufficient footfall, extending payback periods, with declining LFL growth in adjacent mature stores as the early warning - HIGH impact, structural.",
+    "Aggressive competitor counter-positioning (Finland Mature Store Base): peers like Tokmanni accept lower margins to win back DIY/hardware traffic, with a plateauing private label sales mix as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Swedish pilot failure (Sweden Optionality): the highly competitive Nordic market prevents a successful ramp-up of the Örebro pilot, with higher than planned setup costs/operating losses as the early warning - LOW impact, manageable."
+  ],
+  "catalysts": [
+    "Quarterly LFL sales growth (near-term, Finland Mature Store Base): validation of mature store productivity maintains the 14.3x multiple; it is the easiest metric to observe and signals the health of the base supporting 65% of enterprise value.",
+    "Store openings pace (medium-term, Finland New Store Growth Pipeline): 7-10 new store locations signed/opened annually derisks the EUR 480m growth pipeline.",
+    "Private label penetration (medium-term, Finland Mature Store Base): a mix sustaining above 28% defends the 17% EBIT margin.",
+    "Sweden pilot store data (long-term, Sweden Optionality): initial pilot unit economics act as a binary trigger for the 5% EV option."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["338", "384", "442", "442", "506", "571"]},
+        {"label": "EBITDA", "values": ["70", "78", "90", "112", "114", "128"]},
+        {"label": "EBITDA margin", "values": ["20.6%", "20.3%", "20.4%", "25.2%", "22.5%", "22.4%"]},
+        {"label": "Depreciation", "values": ["-17", "-13", "-15", "-36", "-24", "-27"]},
+        {"label": "Operating Profit (EBIT)", "values": ["53", "65", "75", "75", "90", "101"]},
+        {"label": "EBIT margin", "values": ["15.6%", "17.0%", "17.0%", "17.0%", "17.9%", "17.7%"]},
+        {"label": "Net financial items", "values": ["-4", "-5", "-5", "-5", "-6", "-6"]},
+        {"label": "Pre-tax Profit", "values": ["48", "60", "70", "70", "85", "95"]},
+        {"label": "Net Earnings", "values": ["39", "48", "56", "52", "64", "72"]},
+        {"label": "EPS (EUR)", "values": ["0.5", "0.6", "0.7", "0.6", "0.8", "0.8"]},
+        {"label": "DPS (EUR)", "values": ["0.3", "0.4", "0.7", "0.6", "0.7", "0.8"]},
+        {"label": "Payout ratio", "values": ["73.9%", "66.8%", "106.1%", "90.4%", "90.4%", "90.4%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["61", "40", "66", "83", "73", "84"]},
+        {"label": "Operating cash flow", "values": ["64", "43", "70", "87", "77", "88"]},
+        {"label": "Change in working capital", "values": ["-9", "18", "2", "5", "15", "15"]},
+        {"label": "Gross capex", "values": ["36", "25", "24", "37", "40", "44"]},
+        {"label": "Capex (ex. M&A)", "values": ["-36", "-25", "-24", "-37", "-40", "-44"]},
+        {"label": "Free Operating Cash Flow", "values": ["70", "18", "44", "50", "37", "44"]},
+        {"label": "Free cash flow to firm", "values": ["70", "18", "44", "50", "37", "44"]},
+        {"label": "CF from financing", "values": ["-35", "-21", "-30", "-51", "-28", "-35"]},
+        {"label": "Dividends paid", "values": ["-25", "-29", "-32", "-59", "-47", "-58"]},
+        {"label": "Net change in cash", "values": ["-10", "-6", "12", "-4", "4", "4"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["27.8x"]},
+        {"label": "EV/EBITDA", "values": ["14.3x"]},
+        {"label": "EV/EBIT", "values": ["21.3x"]},
+        {"label": "P/FCF", "values": ["29.0x"]},
+        {"label": "P/BV", "values": ["16.4x"]},
+        {"label": "Dividend Yield", "values": ["3.3%"]},
+        {"label": "Net Debt / EBITDA", "values": ["1.3x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Puuilo a buy in 2026?", "a": "No. Valuatum's 29 July 2026 equity report initiates Puuilo Oyj (PUUILO.HE) at HOLD with a 15.90 EUR 12-month target versus a 17.22 EUR price, implying about 7.7% downside. While Puuilo boasts exceptionally high capital returns, the 14.3x EV/EBITDA multiple leaves little room for execution missteps as it scales."},
+    {"q": "What is Puuilo's price target?", "a": "The Valuatum report dated 29 July 2026 sets a 12-month fundamental target price of 15.90 EUR for Puuilo Oyj (PUUILO.HE), against a current price of 17.22 EUR. The target is a weighted bridge: 13.5x EV/EBITDA on 2026e EBITDA of EUR 112m implies 16.25 EUR (60% weight), 22.0x P/E on 2026e EPS of 0.62 EUR implies 13.64 EUR (20%), and the market-implied reverse-valuation fair value of 17.22 EUR carries the final 20%."},
+    {"q": "Why is Puuilo rated HOLD?", "a": "Puuilo is rated HOLD because margin durability, not top-line growth, is what justifies the 14.3x EV/EBITDA multiple the market pays today — well above the peer median of 7.0x and Puuilo's own normalized 10.8x historical average. The 14.3x multiple already fully prices the mature base (EUR 1,039m EV against EUR 76m EBITDA, no gap) but is also paying for 40+ unbuilt stores expected to deliver the same 19-month payback."},
+    {"q": "Is Puuilo overvalued in 2026?", "a": "Modestly, on Valuatum's framework: the fair multiple of 13.5x suggests the current 14.3x already embeds more optimism than the fundamentals fully support, and the 15.90 EUR weighted target implies roughly 8% downside from 17.22 EUR. Key conditions for the premium to hold are like-for-like growth between 4.0% and 6.0%, a private-label mix above 28% through 2027, and store openings continuing at 7-10 per year."},
+    {"q": "How does the reverse valuation work for Puuilo?", "a": "The scenario bridge maps revenue, EBITDA, margin and multiple to implied value per share. The base case (EUR 442m revenue, EUR 112m EBITDA, 14.3x) implies EUR 17.44 per share, +1.3% versus the current price. The bear case — like-for-like growth below 2.0% and margin reversion to 12% — implies EUR 9.74 (-43.4%), while the bull case at an 18.5% margin and 16.3x implies EUR 24.54 (+42.5%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Puuilo Oyj report dated 29 July 2026 (company value map; group enterprise value EUR 1,599m, current quote 17.22 EUR).",
+    "Consensus estimates: peer consensus operating margins used for competitor benchmarking; B&M European Value Retail S.A. market cap, P/E 2026e/2027e and EV/EBITDA 2026e/2027e web-sourced.",
+    "Market data: Ticker PUUILO.HE current price 17.22 EUR as of 29 July 2026; FY2025 net sales EUR 442m; 2026E group EBITDA EUR 112m (analyst-generated estimate)."
+  ]
+}

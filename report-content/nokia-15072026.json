@@ -1,0 +1,132 @@
+{
+  "id": "nokia-15072026",
+  "slug": "nokia-equity-report",
+  "companyName": "Nokia",
+  "ticker": "NOKIA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Communication Equipment",
+  "currency": "EUR",
+  "reportDate": "2026-07-15",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "10.28 EUR",
+    "targetPrice": "9.40 EUR",
+    "impliedUpside": "-8.5%",
+    "marketCap": "EUR 57.4 bn",
+    "enterpriseValue": "EUR 56.1 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "32.9x"},
+    {"label": "EV/EBITDA 2026E", "value": "14.8x"},
+    {"label": "FCF Yield 2026E", "value": "4.2%"},
+    {"label": "Dividend Yield 2026E", "value": "2.8%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "-0.4x"}
+  ],
+  "priceStats": {
+    "week52High": "15.00 EUR",
+    "week52Low": "3.42 EUR",
+    "oneYearChange": "+155.8%",
+    "threeYearChange": "+197.7%"
+  },
+  "summary": [
+    "Nokia (NOKIA.HE, NASDAQ Helsinki) is a Finland-based network infrastructure and technology company that the market is pricing as an AI-driven optical infrastructure provider funded by a high-margin patent royalty stream; in this Valuatum equity research report dated 15 July 2026 we rate the stock SELL with a 12-month target price of 9.40 EUR against a current price of 10.28 EUR, implying roughly 8.5% downside. Market capitalisation is EUR 57.4 bn and enterprise value is EUR 56.1 bn.",
+    "The core valuation tension is a sharply split enterprise-value allocation. Mobile Networks generates 39.2% of group sales but only a 1.9% comparable operating margin and commands just 3.7% of enterprise value, while Network Infrastructure and Nokia Technologies combine for nearly 87% of EV despite generating less than half of group sales. Network Infrastructure carries a 9.8% margin on EUR 7,959m of FY2025 revenue yet trades at 36.0x trailing EBIT against its EUR 28.1 billion EV allocation, well above the 18.7x that would be justified if EBIT doubled toward EUR 1.5 billion, exposing a EUR 720m valuation gap.",
+    "On a reverse-valuation basis the embedded assumptions are demanding: Network Infrastructure must roughly double comparable EBIT from EUR 780 million to EUR 1.5 billion by 2028 on 6-8% CAGR revenue growth to EUR 10.0 billion, while the group trades at 19.5x EV/EBIT on 2027e estimates versus a 13.7x normalized historical average. Our 18.5x fair multiple on 2027e group EBIT of EUR 2,876m, blended 60/40 with a 22.0x P/E on 0.40 EUR EPS, yields the 9.40 EUR target. The scenario base case implies EUR 10.08 per share (-1.8%), the bear case compresses the multiple to 12.1x for EUR 7.20 (-29.9%), and the bull case reaches EUR 12.22 (+18.9%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Network Infrastructure Valuation Gap", "metric": "EUR 720m gap", "text": "Network Infrastructure carries a 9.8% margin but trades at 36.0x trailing EBIT, well above the 18.7x that would be justified if EBIT doubled toward EUR 1.5 billion, exposing a EUR 720m valuation gap."},
+    {"num": "02", "title": "Group EBIT Anchor at Risk", "metric": "13.7x norm", "text": "Group 2027e EBIT of EUR 2,876 million anchors our EV/EBIT approach, where an 18.5x fair multiple against the current 19.5x implies compression toward the 13.7x historical norm if growth disappoints."},
+    {"num": "03", "title": "Mobile Networks Drag", "metric": "1.9% margin", "text": "Mobile Networks generates 39.2% of group sales but only a 1.9% margin, so any further deterioration could offset optical gains and cap group EBIT below the EUR 2,876 million target."}
+  ],
+  "thesisBreaker": "A flawless Infinera integration yielding 15% margins in optical, alongside large and sustained 800G hyperscaler orders, would validate the current multiple and break the bear thesis.",
+  "valuePools": [
+    {"name": "Network Infrastructure", "share": "50.1% · EUR 28,100m", "economics": "Revenue EUR 7,959m (40.0%) · Comp. EBIT EUR 780m (47.4% of EBIT, 9.8% margin) · EV EUR 28,100m", "text": "Scaling pool assigned a premium valuation as Nokia's main route out of the stagnant telecom capex cycle, housing the Optical Networks and IP Networks units critical for data center interconnect (DCI) and AI cluster scaling. Following the February 2025 Infinera acquisition Nokia holds roughly 20% of the global market (excluding China) as the clear number two behind Ciena, with a moat built on in-house DSP design and a captive Indium Phosphide fabrication facility in San Jose. The valuation requires comparable EBIT to roughly double from EUR 780 million to EUR 1.5 billion to bring the segment EV/EBIT down to a justifiable 18.7x; if margins stall at 10%, EBIT reaches only EUR 1.0 billion, leaving the segment at an expensive 28x multiple."},
+    {"name": "Nokia Technologies", "share": "36.7% · EUR 20,600m", "economics": "Revenue EUR 1,500m (7.5%) · Comp. EBIT EUR 1,059m (64.3% of EBIT, 70.6% margin) · EV EUR 20,600m", "text": "Asset-backed pool operating as a pure-play intellectual property licensing business, valued at roughly 19.4x its 2025 EBIT at EUR 20.6 billion because top-line revenue converts directly into free cash flow with virtually no capital intensity. The 2024-2025 smartphone renewal cycle, including holdouts such as Oppo and Vivo and renewals with Apple and Samsung, stabilized the contracted net sales run-rate at EUR 1.4 billion, generating roughly EUR 1.0 billion of operating profit. To generate a 6.5% yield, EBIT needs to reach roughly EUR 1.3 billion on EUR 1.7 to 1.8 billion of revenue, so an additional EUR 300-400 million must come from automotive and IoT."},
+    {"name": "Cloud and Network Services", "share": "15.1% · EUR 8,450m", "economics": "Revenue EUR 2,606m (13.1%) · Comp. EBIT EUR 338m (20.5% of EBIT, 13.0% margin) · EV EUR 8,450m", "text": "Recurring pool bridging Nokia's hardware past and its software-defined future across core networks, network automation and monetization software, valued at approximately 25x EBIT on a software premium. High gross margins are diluted to a 13.0% operating margin by heavy ongoing R&D; to justify the EUR 8.45 billion valuation the segment must accelerate its shift toward as-a-service recurring revenue models, driving margins closer to the 18-20% standard for mature enterprise software while top-line grows at a mid-single-digit pace."},
+    {"name": "Mobile Networks", "share": "3.7% · EUR 2,100m", "economics": "Revenue EUR 7,790m (39.2%) · Comp. EBIT EUR 150m (9.1% of EBIT, 1.9% margin) · EV EUR 2,100m", "text": "Declining pool priced for managed decline: despite commanding nearly 40% of the revenue base, the market assigns it almost no enterprise value as the RAN market has commoditized rapidly under intense pricing pressure from Ericsson and Huawei, while Open RAN threatens to decouple hardware from software. The EUR 2.1 billion allocation (roughly 0.25x sales) prices the business as a distressed cash-cow; the central question is whether Nokia can aggressively restructure the cost base to halt the margin bleed before it turns cash-flow negative."},
+    {"name": "Group Common and Other", "share": "-5.7% · -EUR 3,178m", "economics": "Revenue EUR 33m (0.2%) · Comp. EBIT -EUR 320m (-19.4% of EBIT) · EV -EUR 3,178m", "text": "Mixed corporate pool carrying a negative enterprise-value allocation, with FY2025 revenue of EUR 33m against a comparable EBIT of -EUR 320m and a stated cost goal of a EUR 150m run-rate by 2028."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests whether the revenue, margin and multiple assumptions embedded in Nokia's EUR 56.1 billion enterprise value are coherent, with the Network Infrastructure operating margin as the variable causing the largest valuation swing between scenarios. Because Nokia operates with a net cash balance sheet, the enterprise value bridges cleanly to the EUR 57.4 billion equity market capitalisation, so equity value modestly exceeds enterprise value in each scenario.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "23,396", "EBITDA": "4,500", "Margin": "19.2%", "Multiple": "15.1x", "EV": "67,950", "Equity": "68,202"}, "impliedValueOrUpside": "EUR 12.22 / sh · +18.9%"},
+      {"scenario": "Base", "cols": {"Revenue": "21,981", "EBITDA": "3,787", "Margin": "17.2%", "Multiple": "14.8x", "EV": "56,048", "Equity": "56,300"}, "impliedValueOrUpside": "EUR 10.08 / sh · -1.8%"},
+      {"scenario": "Bear", "cols": {"Revenue": "20,833", "EBITDA": "3,300", "Margin": "15.8%", "Multiple": "12.1x", "EV": "39,930", "Equity": "40,182"}, "impliedValueOrUpside": "EUR 7.20 / sh · -29.9%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Nokia's enterprise value allocation shows a sharp gap between where the company currently generates revenue and where the market sees its future value. Historically understood as a telecommunications equipment vendor, Nokia is now priced as an AI-driven optical infrastructure provider funded by a high-margin patent royalty stream, while the legacy mobile networks business is largely written off as a margin-dilutive asset. Mobile Networks accounts for almost 40% of group revenue but commands less than 4% of enterprise value, reflecting a market view that its 1.9% comparable operating margin generates no meaningful surplus return on capital. Network Infrastructure and Nokia Technologies combine for nearly 87% of enterprise value despite generating less than half of group sales: the market prices Network Infrastructure for growth on data center interconnect (DCI) demand and Nokia Technologies for cash flow on a yield-based multiple over contracted patent royalties. The key question is whether Network Infrastructure can grow into its EUR 28.1 billion EV allocation."},
+    {"heading": "Cross-pool bridge", "text": "The financial forecast depends entirely on an aggressive margin recovery story: the bridge from EUR 1.65 billion of 2025 statutory EBIT to EUR 3.37 billion of 2028 EBIT rests on the fade of one-off restructuring charges and Infinera acquisition amortization, Network Infrastructure absorbing fixed costs over a larger revenue base to push its margin from 9.8% toward 15%, and roughly EUR 200 million of corporate cost cuts in Group Common and Other. The weakest link is the assumption that Mobile Networks will not deteriorate further. The EUR 56.1 billion group enterprise value bridges cleanly to the EUR 57.4 billion market capitalization thanks to a net cash balance sheet, but current recurring earnings, primarily from Nokia Technologies and Cloud and Network Services, support only roughly EUR 30 billion of enterprise value at market-standard rates; the remaining EUR 26 billion depends entirely on future optionality. If hyperscaler deployment slows or Ciena out-competes Nokia in the 800G upgrade cycle, the required multiple compression could wipe out EUR 10 billion to EUR 15 billion of group enterprise value."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ based on the severity of legacy telecom headwinds versus the pace of AI infrastructure tailwinds, with the Network Infrastructure operating margin causing the largest valuation swing: because the market has already attached a premium multiple, any shortfall in top-line growth or Infinera synergy capture delivers a double hit of lower absolute earnings and multiple compression, driving the bear case to 12.1x EV/EBITDA and EUR 7.20 per share. Downside risk is amplified by Mobile Networks, which could begin consuming the cash generated by Nokia Technologies if 5G capex remains depressed, breaking the group's dividend and buyback capacity. The bull case requires Nokia to isolate its growth engines from legacy anchors via direct, high-margin hyperscaler contracts, lifting the value to EUR 12.22 per share. The biggest unsupported assumption in the current valuation is that Network Infrastructure can command a near-36x trailing EBIT multiple without experiencing any cyclical hardware volatility, leaving little margin for error in execution."}
+  ],
+  "risks": [
+    "Mobile Networks margin collapse (Mobile Networks): global 5G capex stagnation forces structural margin declines, with restructuring charges exceeding guidance as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Infinera integration failure (Network Infrastructure): cultural clashes or supply chain bottlenecks erode expected synergies, with slipping optical network gross margins as the early warning - HIGH impact, structural.",
+    "Patent licensing regulatory cap (Nokia Technologies): adverse rulings lower FRAND royalty rates, with litigation losses in China or the EU as the early warning - MEDIUM impact, manageable.",
+    "Hyperscaler capex pause (Network Infrastructure): AI infrastructure buildout slows unexpectedly, with deceleration in DCI equipment sales as the early warning - MEDIUM impact, manageable.",
+    "Open RAN commoditization (Mobile Networks): hardware-software decoupling accelerates RAN pricing pressure, with market share losses in the European footprint as the early warning - LOW impact, structural."
+  ],
+  "catalysts": [
+    "AI optical traction (near-term, Network Infrastructure): quarterly order intake from AI and cloud customers validates the EV multiple premium; this is the clearest proxy for whether Nokia is successfully riding the DCI investment wave.",
+    "Infinera integration synergies (medium-term, Network Infrastructure): gross margin progression in Optical Networks drives margin expansion toward 15%.",
+    "Patent royalties in new verticals (medium-term, Nokia Technologies): new agreements in automotive and IoT secure the EUR 1.4 billion run-rate stability.",
+    "Mobile Networks restructuring (near-term, Mobile Networks): a stabilised segment comparable operating profit baseline halts the cash flow bleed.",
+    "Corporate cost reductions (long-term, Group Common and Other): the path toward a EUR 150m run-rate by 2028 boosts group EBIT by EUR 200m."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["22,258", "19,220", "19,889", "20,833", "21,981", "23,396"]},
+        {"label": "EBITDA", "values": ["2,509", "2,790", "2,765", "3,788", "3,787", "4,288"]},
+        {"label": "EBITDA margin", "values": ["11.3%", "14.5%", "13.9%", "18.2%", "17.2%", "18.3%"]},
+        {"label": "Depreciation", "values": ["-821", "-791", "-1,119", "-1,416", "-911", "-922"]},
+        {"label": "Operating Profit (EBIT)", "values": ["1,688", "1,999", "1,646", "2,372", "2,876", "3,366"]},
+        {"label": "EBIT margin", "values": ["7.6%", "10.4%", "8.3%", "11.4%", "13.1%", "14.4%"]},
+        {"label": "Net financial items", "values": ["-189", "92", "-731", "-355", "-355", "-365"]},
+        {"label": "Pre-tax Profit", "values": ["1,499", "2,091", "915", "2,017", "2,521", "3,001"]},
+        {"label": "Net Earnings", "values": ["679", "1,284", "638", "1,690", "2,175", "2,589"]},
+        {"label": "EPS (EUR)", "values": ["0.1", "0.2", "0.1", "0.3", "0.4", "0.5"]},
+        {"label": "DPS (EUR)", "values": ["0.1", "0.1", "0.1", "0.3", "0.4", "0.4"]},
+        {"label": "Payout ratio", "values": ["89.9%", "55.4%", "118.8%", "93.5%", "93.5%", "93.5%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["2,909", "2,434", "1,076", "3,553", "2,777", "3,131"]},
+        {"label": "Gross capex", "values": ["-201", "533", "1,718", "1,492", "1,129", "1,191"]},
+        {"label": "Free Operating Cash Flow", "values": ["3,443", "2,096", "-797", "2,358", "1,954", "2,254"]},
+        {"label": "Free cash flow to firm", "values": ["3,448", "1,669", "-797", "2,358", "1,954", "2,254"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["32.9x"]},
+        {"label": "EV/EBITDA", "values": ["14.8x"]},
+        {"label": "EV/EBIT", "values": ["23.6x"]},
+        {"label": "P/FCF", "values": ["23.6x"]},
+        {"label": "P/BV", "values": ["2.6x"]},
+        {"label": "Dividend Yield", "values": ["2.8%"]},
+        {"label": "Net Debt / EBITDA", "values": ["-0.4x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Nokia a buy in 2026?", "a": "No. Valuatum's 15 July 2026 equity report rates Nokia (NOKIA.HE) a SELL with a 9.40 EUR 12-month target versus a 10.28 EUR price, implying about 8.5% downside. Nokia looks stretched against fair value at current multiples, heavily dependent on flawless optical margin execution and sustained hyperscaler AI demand."},
+    {"q": "What is Nokia's price target?", "a": "The Valuatum report dated 15 July 2026 sets a 12-month fundamental target price of 9.40 EUR for Nokia (NOKIA.HE), against a current price of 10.28 EUR. The target blends an 18.5x EV/EBIT multiple on 2027e group EBIT of EUR 2,876m (9.76 EUR, 60% weight) with a 22.0x P/E on 2027e EPS of 0.40 EUR (8.80 EUR, 40% weight)."},
+    {"q": "Why is Nokia rated SELL?", "a": "Nokia is rated SELL because Network Infrastructure carries a 9.8% margin but trades at 36.0x trailing EBIT, well above the 18.7x justified if EBIT doubled toward EUR 1.5 billion, exposing a EUR 720m valuation gap. Meanwhile Mobile Networks generates 39.2% of group sales at only a 1.9% margin, and the group's 19.5x 2027e EV/EBIT sits far above its 13.7x normalized historical average."},
+    {"q": "Is Nokia overvalued in 2026?", "a": "On Valuatum's framework Nokia looks overvalued: current recurring earnings, primarily from Nokia Technologies and Cloud and Network Services, support roughly EUR 30 billion of the EUR 56.1 billion enterprise value, so the remaining EUR 26 billion depends entirely on Network Infrastructure proving its AI data center exposure is structural. A compression of its multiple could wipe out EUR 10 billion to EUR 15 billion of group enterprise value."},
+    {"q": "How does the reverse valuation work for Nokia?", "a": "The scenario bridge tests whether Nokia's EUR 56.1 billion enterprise value is coherent, with the Network Infrastructure operating margin as the swing factor. The base case (EBITDA EUR 3,787m at 14.8x) implies EUR 10.08 per share, or -1.8% versus the current price; the bear case compresses the multiple to 12.1x for EUR 7.20 (-29.9%), while the bull case at 15.1x reaches EUR 12.22 (+18.9%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Nokia report dated 15 July 2026 (company value map; Network Infrastructure EV allocation EUR 28,100m, current quote 10.275 EUR).",
+    "Consensus estimates: consensus 2026 pre-tax profit of EUR 2,017m used for consensus comparisons.",
+    "Market data: Ticker NOKIA.HE current price 10.28 EUR as of 15 July 2026; FY2025 reported EBIT EUR 1,646m; 2027e group EBIT EUR 2,876m (analyst-generated estimate)."
+  ]
+}
