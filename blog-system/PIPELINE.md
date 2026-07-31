@@ -10,9 +10,9 @@ once for context; this file is the loop.
   generation happens when interactive usage is idle, so the account's quota is
   free for it. Topic-proposal run: Sundays 21:30 (`30 21 * * 0`).
 - **Model**: writing-quality stages (4 DRAFT, 5 CRITIQUE/HUMANIZE) run on
-  **Claude Opus 4.8 (`claude-opus-4-8`) with extended thinking at the highest
+  **Claude Opus 5 (`claude-opus-5`) with extended thinking at the highest
   effort setting ("xhigh")**. Configure the scheduled routine / subagent model
-  accordingly (e.g. `model: "claude-opus-4-8"` + max thinking effort). Mechanical
+  accordingly (e.g. `model: "claude-opus-5"` + max thinking effort). Mechanical
   stages (sync, lint, build) may run on a cheaper model.
 - **Mode**: stages run as subagents with the stage prompt from `prompts/`;
   the orchestrating agent follows this file top to bottom.
@@ -63,12 +63,12 @@ Topics enter the queue two ways:
 - Pick ≥2 proprietary numbers from `report-content/*.json`.
 - Output brief into the article JSON skeleton (`blog-content/{slug}.json`).
 
-### 4. Draft — `prompts/02-draft.md` (Opus 4.8, xhigh thinking)
+### 4. Draft — `prompts/02-draft.md` (Opus 5, xhigh thinking)
 - Inputs: brief + `voice-guide.md` + raw facts pasted from report JSONs +
   fetched excerpts of the planned sources.
 - Numbers come ONLY from supplied data or the planned sources — never memory.
 
-### 5. Critique + humanize — `prompts/03-critique.md` (Opus 4.8, xhigh thinking)
+### 5. Critique + humanize — `prompts/03-critique.md` (Opus 5, xhigh thinking)
 - Fresh subagent, no draft context. Applies **`blog-system/humanizer.md`**
   (the full Humanizer skill: 24 AI-pattern checks + voice section + final
   checklist) plus the finance-specific bans in `voice-guide.md`.

@@ -157,9 +157,9 @@ Stage prompts live in `prompts/`. Full operational detail in `PIPELINE.md`.
 2 BRIEF    research target query: live SERP + AI answers; competitor headings/
            entities/PAA; unique angle; proprietary-data plan; SOURCE PLAN
            (≥3 external, ≥1 primary per source policy)
-3 DRAFT    Opus 4.8, xhigh thinking. Write from brief + voice-guide + report-
+3 DRAFT    Opus 5, xhigh thinking. Write from brief + voice-guide + report-
            content facts + fetched source excerpts (RAG — never model memory)
-4 HUMANIZE Opus 4.8, xhigh thinking. Fresh pass applying humanizer.md (full
+4 HUMANIZE Opus 5, xhigh thinking. Fresh pass applying humanizer.md (full
            Humanizer skill) + voice-guide bans → gate: rubric ≥ 40/50 else
            rewrite (max 3 iterations)
 5 FACTCHECK every claim traced to report JSON or re-fetched URL; source-policy
@@ -220,7 +220,7 @@ repo. Entry point: `blog-system/PIPELINE.md`.
   `30 21 * * 1,3,5`), plus topic-proposal run Sundays 21:30. Evening/night
   Finland time on purpose: generation runs when the account's interactive
   usage is idle, so quota goes to writing.
-- Model: draft + humanize stages on **Claude Opus 4.8 (`claude-opus-4-8`)
+- Model: draft + humanize stages on **Claude Opus 5 (`claude-opus-5`)
   with extended thinking at highest effort ("xhigh")**; mechanical stages can
   use a cheaper model.
 - Every post ships as a PR — that PR is the approval surface (author/reviewer

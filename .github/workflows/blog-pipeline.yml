@@ -101,5 +101,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUN_MODE: ${{ steps.mode.outputs.mode }}
         run: |
-          claude --dangerouslySkipPermissions --model claude-opus-4-8 \
+          claude --dangerouslySkipPermissions --model claude-opus-5 \
             -p "$(cat /tmp/prompt.txt)"
