@@ -1,0 +1,9 @@
+{
+  "ticker": "ALFA.ST",
+  "companyName": "Alfa Laval Corporate AB",
+  "profile": "Alfa Laval develops and sells equipment and services for heat transfer, separation and fluid handling. Its products include heat exchangers, separators, pumps, valves, tank cleaning systems and related service support for customers in energy, food and pharmaceuticals, marine, and water treatment. The company earns value from installed base, maintenance and process efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:49:35.306Z"
+}

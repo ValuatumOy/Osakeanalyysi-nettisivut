@@ -1,0 +1,9 @@
+{
+  "ticker": "LOGI-B.ST",
+  "companyName": "Logistea AB (publ)",
+  "profile": "Logistea AB (publ) is a Swedish real estate company focused on acquiring, owning and managing warehouse, logistics and light industrial properties, mainly in Nordic markets. Its portfolio also includes development projects and investments in existing assets. The business is driven by rental income, property management and value creation through acquisitions and facility development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:41:01.608Z"
+}

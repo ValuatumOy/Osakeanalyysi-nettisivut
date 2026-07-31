@@ -1,0 +1,9 @@
+{
+  "ticker": "INCOAX.ST",
+  "companyName": "InCoax Networks AB (publ)",
+  "profile": "InCoax Networks AB (publ) develops broadband access equipment that extends fiber and fixed wireless networks over existing in-building coaxial cabling. Its products include distribution point units, fiber extenders and access modems, supported by management software and related system components. The company serves telecom and broadband operators seeking higher-capacity connectivity in homes and multi-dwelling buildings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:22:48.054Z"
+}

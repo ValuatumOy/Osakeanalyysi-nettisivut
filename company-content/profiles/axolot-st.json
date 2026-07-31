@@ -1,0 +1,9 @@
+{
+  "ticker": "AXOLOT.ST",
+  "companyName": "Axolot Solutions Holding AB (publ)",
+  "profile": "Axolot Solutions Holding AB develops and sells systems for industrial water treatment. Its core offering is the AxoPur process, an electrocoagulation-based technology used to purify process water and wastewater, remove contaminants such as metals, solids and oil, and enable water recirculation. The company serves industries seeking circular water handling and reduced freshwater use.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:45:38.320Z"
+}

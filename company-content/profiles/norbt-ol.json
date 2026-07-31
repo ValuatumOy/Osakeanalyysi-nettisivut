@@ -1,0 +1,9 @@
+{
+  "ticker": "NORBT.OL",
+  "companyName": "Norbit ASA",
+  "profile": "Norbit ASA is a Norwegian technology company that develops tailored products and solutions for selected applications through three segments: Oceans, Connectivity and Product Innovation & Realization. Its business includes multibeam sonar and monitoring systems for maritime markets, secure wireless and RF solutions for defence and aviation, and R&D services, contract manufacturing and product realization for industrial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:33:35.656Z"
+}

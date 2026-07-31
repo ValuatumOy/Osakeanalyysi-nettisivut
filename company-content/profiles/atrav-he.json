@@ -1,0 +1,9 @@
+{
+  "ticker": "ATRAV.HE",
+  "companyName": "Atria Oyj",
+  "profile": "Atria Oyj is a Nordic food company that produces meat products, sausages, cold cuts, fresh poultry, and convenience foods. It operates in Finland, Sweden, Denmark and Estonia, with leading brands in several product categories. The company also serves grocery retail and foodservice customers through processing, slaughtering, packaging and distribution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:51:49.518Z"
+}

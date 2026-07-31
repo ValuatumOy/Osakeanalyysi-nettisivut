@@ -1,0 +1,9 @@
+{
+  "ticker": "INVEST.HE",
+  "companyName": "Investors House Oyj",
+  "profile": "Investors House Oyj is a Finnish real estate company that invests in, develops, owns, leases, and manages properties and property companies. Its activities also include property asset management and related services such as brokerage, housing management, financial administration, and development services. The company operates across the property value chain and also holds interests in other businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:13:15.096Z"
+}

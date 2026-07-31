@@ -1,0 +1,9 @@
+{
+  "ticker": "BAHN-B.ST",
+  "companyName": "Bahnhof AB (publ)",
+  "profile": "Bahnhof AB is a Swedish provider of broadband, network and IT infrastructure services for households and businesses. Its operations include internet access, managed network solutions and secure data centre services such as colocation and related connectivity. The company owns and operates its own infrastructure, which is central to its service delivery and control.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:49:32.830Z"
+}

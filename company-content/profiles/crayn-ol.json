@@ -1,0 +1,9 @@
+{
+  "ticker": "CRAYN.OL",
+  "companyName": "Crayon Group Holding ASA",
+  "profile": "Crayon Group Holding ASA is an information technology services company focused on software and cloud solutions. It provides software procurement, license advisory and optimization, software asset management, cloud migration and consulting, and related cloud economics services for enterprises and public sector customers. In 2025, SoftwareOne acquired the company, and Crayon has since been integrated into that broader group.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:52:50.988Z"
+}

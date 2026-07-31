@@ -1,0 +1,9 @@
+{
+  "ticker": "NETUM.HE",
+  "companyName": "Netum Group Oyj",
+  "profile": "Netum Group Oyj is a Finnish information technology services company that designs and delivers software, provides management consulting, and sells cloud capacity and software services through digital channels. It also offers cybersecurity and data protection consulting and auditing, along with supervision, control, and operational services for data systems and telecommunications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:39:08.482Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "G5EN.ST",
+  "companyName": "G5 Entertainment AB (publ)",
+  "profile": "G5 Entertainment develops and publishes free-to-play games for smartphones, tablets, and personal computers. Its portfolio is focused on casual puzzle and adventure titles, including hidden object, match-3, and mahjong solitaire games. The company distributes its games through its own G5 Store and major app marketplaces such as Apple App Store, Google Play, Amazon Appstore, and Microsoft Store.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:05:20.857Z"
+}

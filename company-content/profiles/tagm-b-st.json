@@ -1,0 +1,9 @@
+{
+  "ticker": "TAGM-B.ST",
+  "companyName": "TagMaster AB (publ)",
+  "profile": "TagMaster develops and sells sensor-based data solutions for smart cities, focusing on traffic and rail applications. Its products include radio frequency identification, automatic number plate recognition, radar, magnetic and vision-based systems used for vehicle access, traffic management, incident detection and rail identification. The company operates through the TagMaster, Sensys Networks, Citilog and Quercus brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:26.422Z"
+}

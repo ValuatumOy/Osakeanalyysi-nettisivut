@@ -1,12 +1,36 @@
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
+const DISPLAY_NAME_OVERRIDES = new Map([
+  ['NDA-FI.HE', 'Nordea'],
+  ['METSO.HE', 'Metso'],
+  ['INVE-B.ST', 'Investor AB'],
+  ['VOLV-B.ST', 'Volvo'],
+  ['ERIC-B.ST', 'Ericsson'],
+  ['VWS.CO', 'Vestas'],
+  ['MAERSK-B.CO', 'Maersk'],
+  ['ASML', 'ASML'],
+]);
+
+// Valuatum's models don't fit financial companies (banks, insurers, investment/
+// holding companies): Wisdom's `ns`/`ebit`/etc. are meaningless or mislabelled for
+// them, so we never build pages for them at all (see generate-company-pages.mjs) and
+// never link to them from related lists. Auto-detected by industry; the ticker list
+// is a safety net for names whose industry string is unclear.
+const FINANCIAL_TICKERS = new Set(['NDA-FI.HE', 'SAMPO.HE', 'INVE-B.ST']);
+const FINANCIAL_INDUSTRY = /bank|insur|financ|capital market|asset manage|holding|investment/i;
+
+export function isFinancialCompany(company) {
+  const ticker = String(company?.ticker || '').trim().toUpperCase();
+  if (FINANCIAL_TICKERS.has(ticker)) return true;
+  return FINANCIAL_INDUSTRY.test(String(company?.industry || ''));
+}
 
 export function pageSlug(company) {
-  return `${slugify(shortName(company.companyName))}-equity-report`;
+  return `${slugify(companyDisplayName(company))}-equity-report`;
 }
 
 export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date(), options = {}) {
-  const name = shortName(company.companyName);
+  const name = companyDisplayName(company);
   const slug = pageSlug(company);
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
@@ -17,7 +41,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
     (item.industry && item.industry === company.industry ? 8 : 0) +
     (item.currency && item.currency === company.currency ? 3 : 0);
   const related = relatedCompanies
-    .filter((item) => item.ticker !== company.ticker)
+    .filter((item) => item.ticker !== company.ticker && !isFinancialCompany(item))
     .sort((a, b) => relatedScore(b) - relatedScore(a) || String(a.companyName).localeCompare(String(b.companyName)))
     .slice(0, 4);
 
@@ -42,7 +66,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
         url,
         mainEntity: {
           '@type': 'Corporation',
-          name: company.companyName,
+          name,
           tickerSymbol: company.ticker,
           identifier: company.companyCode || undefined,
           description: company.profile,
@@ -85,9 +109,16 @@ ${jsonLdText}
     .cp-l{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.05em;color:var(--gray-steel);line-height:1.25;}
     .cp-v{font-size:1rem;font-weight:600;color:var(--charcoal);line-height:1.3;overflow-wrap:break-word;}
     .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
+    .cp-updated{font-size:var(--text-xs);color:var(--gray-steel);margin:0.85rem 0 0;line-height:1.4;}
     .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
-    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
+    @media(max-width:520px){
+      .cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+      .report-full-content{padding:1rem 0;}
+      .report-full-section{padding:1.5rem;}
+      .company-generate-card{padding:1.25rem!important;}
+      .report-full-section .btn-lg{width:100%;max-width:100%;white-space:normal;text-align:center;line-height:1.25;justify-content:center;padding-left:1rem;padding-right:1rem;font-size:var(--text-sm);}
+    }
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
     .report-full-content.coverage-cols #ready-report{break-before:column;-webkit-column-break-before:always;}
@@ -113,8 +144,8 @@ ${navHtml()}
             <h1 class="company-name">${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               ${company.industry ? `<span class="company-meta-chip">${esc(company.industry)}</span><span class="company-meta-sep"></span>` : ''}
-              <span class="company-meta-chip">${esc(company.currency)}</span>
-              <a class="company-meta-cta" href="https://osakeanalyysi-nettisivut.vercel.app/reports.html#free">Explore free reports</a>
+              <span class="company-meta-chip">${esc(company.marketCurrency || company.currency)}</span>
+              <a class="company-meta-cta" href="/reports.html#free">Explore free reports</a>
             </div>
           </div>
           <div class="company-header-actions">
@@ -135,6 +166,7 @@ ${navHtml()}
         <section class="report-full-section" id="metrics">
           <h2>Key metrics &amp; valuation multiples</h2>
           <div class="cp-grid">${metrics.map(metricCell).join('')}</div>
+          ${company.dataUpdated ? `<p class="cp-updated">Figures updated on ${esc(company.dataUpdated)}. Data will be refreshed during report generation.</p>` : ''}
         </section>
 
         <section class="report-full-section" id="about">
@@ -147,7 +179,7 @@ ${navHtml()}
         ${readyReportSection(name, readyReport)}
 
         <section class="report-full-section" id="generate">
-          <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
+          <div class="company-generate-card" style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
             <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
@@ -168,26 +200,28 @@ ${footerHtml()}
   <script src="/js/script.js"></script>
 </body>
 </html>
-`;
+`.replace(/[ \t]+$/gm, '');
 }
 
 function metricDefinitions(company) {
   const { metrics, currency, financialYear } = company;
+  const marketCurrency = company.marketCurrency || currency;
   return [
     { label: 'Book value', value: formatMillions(metrics.bookValue, currency), sub: `FY ${financialYear}` },
-    { label: 'Share price', value: formatPrice(metrics.sharePrice, currency), sub: `FY ${financialYear} year end` },
+    { label: 'Share price', value: formatPrice(metrics.sharePrice, marketCurrency), sub: `FY ${financialYear} year end` },
     { label: 'Revenue', value: formatMillions(metrics.revenue, currency), sub: `FY ${financialYear}` },
     { label: 'Operating profit', value: formatMillions(metrics.ebit, currency), sub: `FY ${financialYear}` },
     { label: 'Net earnings', value: formatMillions(metrics.netEarnings, currency), sub: `FY ${financialYear}` },
-    { label: 'Market capitalisation', value: formatMillions(metrics.marketCap, currency), sub: `FY ${financialYear} year end` },
+    { label: 'Market capitalisation', value: formatMillions(metrics.marketCap, marketCurrency), sub: `FY ${financialYear} year end` },
   ];
 }
 
 function companyOverview(company, name, readyReport = null) {
   const revenue = formatMillions(company.metrics.revenue, company.currency);
   const ebit = formatMillions(company.metrics.ebit, company.currency);
-  const sharePrice = formatPrice(company.metrics.sharePrice, company.currency);
-  const marketCap = formatMillions(company.metrics.marketCap, company.currency);
+  const marketCurrency = company.marketCurrency || company.currency;
+  const sharePrice = formatPrice(company.metrics.sharePrice, marketCurrency);
+  const marketCap = formatMillions(company.metrics.marketCap, marketCurrency);
   const reportText = readyReport
     ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
     : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
@@ -218,16 +252,17 @@ function formatNumber(value, fractionDigits) {
 function relatedSection(companies) {
   if (!companies.length) return '';
   const links = companies.map((company) => {
-    const name = shortName(company.companyName);
+    const name = companyDisplayName(company);
     return `<a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/${pageSlug(company)}.html">${esc(name)} (${esc(company.ticker)}) report &rarr;</a>`;
   }).join('');
   return `<section class="report-full-section" id="related"><h2>Related AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${links}</div></section>`;
 }
 
 function sourcesSection(company) {
+  const name = companyDisplayName(company);
   return `<section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for ${esc(company.companyName)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <p>Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>
@@ -240,7 +275,9 @@ function readyReportSection(companyName, report) {
   const price = Number(report.price || 0).toFixed(2);
   const reportDate = report.reportDateLabel || formatReportDate(report.reportDate);
   const reportHref = isFree && report.pdfUrl
-    ? `/${String(report.pdfUrl).replace(/^\/+/, '')}`
+    ? (/^https?:\/\//.test(String(report.pdfUrl))
+        ? String(report.pdfUrl)
+        : `/${String(report.pdfUrl).replace(/^\/+/, '')}`)
     : `/reports.html#report-${attr(report.id)}`;
   const ctaText = isFree ? 'Download free report' : `Buy ready report &mdash; &euro;${price}`;
   return `<section class="report-full-section" id="ready-report">
@@ -293,12 +330,32 @@ function footerHtml() {
   </div><div class="footer-bottom"><span class="footer-copyright">&copy; 2026 Valuatum Oy &middot; Helsinki, Finland &middot; Est. 2000</span><span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span></div></div></footer>`;
 }
 
+export function companyDisplayName(company) {
+  const ticker = String(company?.ticker || '').trim().toUpperCase();
+  return DISPLAY_NAME_OVERRIDES.get(ticker) || shortName(company?.companyName);
+}
+
 function shortName(name) {
-  return String(name).replace(/,?\s+(Oyj\s+Abp|Inc\.?|Oyj|Ltd\.?|plc|Plc|Corporation|Corp\.?|Abp|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+  return String(name || '')
+    .replace(/\s+\(publ\)$/i, '')
+    .replace(/,?\s+(Oyj\s+Abp|Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|Abp|AB|ASA|A\/S|AG|N\.V\.|S\.A\.)$/i, '')
+    .trim();
 }
 
 function slugify(value) {
-  return String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return String(value)
+    .replace(/[Øø]/g, 'o')
+    .replace(/[Ææ]/g, 'ae')
+    .replace(/[Ðð]/g, 'd')
+    .replace(/[Þþ]/g, 'th')
+    .replace(/[Łł]/g, 'l')
+    .replace(/ß/g, 'ss')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 function esc(value) {

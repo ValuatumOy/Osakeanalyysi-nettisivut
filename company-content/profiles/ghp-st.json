@@ -1,0 +1,9 @@
+{
+  "ticker": "GHP.ST",
+  "companyName": "GHP Specialty Care AB (publ)",
+  "profile": "GHP Specialty Care AB operates specialist clinics in selected diagnostic areas, providing healthcare services focused on patients with specific conditions. Its model centers on clinical specialization and collaboration with doctors and medical staff, with operations designed to improve efficiency and quality. The company also develops care processes and service models for defined patient groups.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:08:14.901Z"
+}

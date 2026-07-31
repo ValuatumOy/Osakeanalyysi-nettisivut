@@ -1,0 +1,9 @@
+{
+  "ticker": "ANOD-B.ST",
+  "companyName": "Addnode Group AB (publ)",
+  "profile": "Addnode Group develops and acquires software and services businesses that support digital workflows in design, construction, product data, facility management, and public administration. Its three divisions serve architects, engineers, manufacturers, and public-sector customers with solutions for BIM, product lifecycle management, and document and case management, while recurring software revenue and acquisitions underpin growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:31:48.284Z"
+}

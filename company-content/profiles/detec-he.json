@@ -1,0 +1,9 @@
+{
+  "ticker": "DETEC.HE",
+  "companyName": "Detection Technology Oyj",
+  "profile": "Detection Technology is a global provider of X-ray detector solutions and related services for medical, security, and industrial applications. Its offering ranges from sensor components to optimized detector subsystems that combine ASICs, electronics, mechanics, software, and algorithms. The company operates sites in Finland, China, France, India, and the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:29:54.099Z"
+}

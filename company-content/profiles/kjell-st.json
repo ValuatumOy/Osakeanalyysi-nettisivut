@@ -1,0 +1,9 @@
+{
+  "ticker": "KJELL.ST",
+  "companyName": "Kjell Group AB (publ)",
+  "profile": "Kjell Group AB operates a Nordic retail and e-commerce business focused on electronic accessories and everyday technology products. Through Kjell & Company and the Av-Cables subsidiary, it sells cables, adapters and related accessories, and also provides advisory services and installation through its store network and online channels in Sweden, Norway and Denmark.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:34:12.859Z"
+}

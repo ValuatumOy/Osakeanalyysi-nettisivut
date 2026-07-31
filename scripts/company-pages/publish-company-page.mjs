@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { pageSlug } from './render-company-page.mjs';
+import { companyDisplayName, pageSlug } from './render-company-page.mjs';
 
 const DEFAULT_SITE_ORIGIN = 'https://www.aiequityreports.com';
 
@@ -12,8 +12,8 @@ export async function publishCompanyDiscovery({
   siteOrigin = DEFAULT_SITE_ORIGIN,
 }) {
   if (!Array.isArray(companies) || companies.length === 0) return;
-  await updateCompanyCatalog(catalogPath, companies);
-  await updateSitemap(sitemapPath, companies, generatedOn, siteOrigin);
+  const replacedUrls = await updateCompanyCatalog(catalogPath, companies);
+  await updateSitemap(sitemapPath, companies, generatedOn, siteOrigin, replacedUrls);
 }
 
 export async function updateCompanyCatalog(catalogPath, companies) {
@@ -22,9 +22,17 @@ export async function updateCompanyCatalog(catalogPath, companies) {
   if (!match) throw new Error(`Could not parse company page catalog ${catalogPath}`);
 
   const existing = JSON.parse(match[1]);
+  const incomingTickers = new Set(companies.map((company) => normalizeTicker(company.ticker)).filter(Boolean));
+  const incomingUrls = new Set(companies.map((company) => normalizeUrl(`reports/${pageSlug(company)}.html`)));
+  const replacedUrls = [];
   const byUrl = new Map();
   for (const entry of existing) {
     const key = normalizeUrl(entry?.url);
+    const ticker = normalizeTicker(entry?.ticker);
+    if (ticker && incomingTickers.has(ticker) && !incomingUrls.has(key)) {
+      replacedUrls.push(entry.url);
+      continue;
+    }
     if (key && !byUrl.has(key)) byUrl.set(key, entry);
   }
 
@@ -34,7 +42,7 @@ export async function updateCompanyCatalog(catalogPath, companies) {
     const previous = byUrl.get(key) || {};
     byUrl.set(key, {
       ...previous,
-      name: company.companyName,
+      name: companyDisplayName(company),
       ticker: company.ticker,
       exchange: previous.exchange || company.exchange || exchangeFromTicker(company.ticker),
       url,
@@ -46,17 +54,29 @@ export async function updateCompanyCatalog(catalogPath, companies) {
     String(left.name || '').localeCompare(String(right.name || ''), 'en', { sensitivity: 'base' }));
   const output = `// Generated company pages available for direct search and report-card descriptions.\nwindow.COMPANY_PAGE_CATALOG = ${JSON.stringify(catalog, null, 2)};\n`;
   await writeFileAtomically(catalogPath, output);
+  return replacedUrls;
 }
 
-export async function updateSitemap(sitemapPath, companies, generatedOn, siteOrigin = DEFAULT_SITE_ORIGIN) {
+export async function updateSitemap(
+  sitemapPath,
+  companies,
+  generatedOn,
+  siteOrigin = DEFAULT_SITE_ORIGIN,
+  replacedUrls = [],
+) {
   let xml = await fs.readFile(sitemapPath, 'utf8');
   const lastmod = toIsoDate(generatedOn);
   const origin = String(siteOrigin || DEFAULT_SITE_ORIGIN).replace(/\/+$/, '');
 
+  for (const replacedUrl of replacedUrls) {
+    const loc = `${origin}/${String(replacedUrl || '').replace(/^\/+/, '')}`;
+    const blockPattern = sitemapBlockPattern(loc);
+    xml = xml.replace(blockPattern, '');
+  }
+
   for (const company of companies) {
     const loc = `${origin}/reports/${pageSlug(company)}.html`;
-    const escapedLoc = escapeRegExp(loc);
-    const blockPattern = new RegExp(`<url>\\s*<loc>${escapedLoc}<\\/loc>[\\s\\S]*?<\\/url>`, 'i');
+    const blockPattern = sitemapBlockPattern(loc);
     const existingBlock = xml.match(blockPattern)?.[0];
 
     if (existingBlock) {
@@ -104,6 +124,14 @@ function exchangeFromTicker(ticker) {
 
 function normalizeUrl(value) {
   return String(value || '').replace(/^\/+/, '').trim().toLowerCase();
+}
+
+function normalizeTicker(value) {
+  return String(value || '').trim().toUpperCase();
+}
+
+function sitemapBlockPattern(loc) {
+  return new RegExp(`\\s*<url>\\s*<loc>${escapeRegExp(loc)}<\\/loc>[\\s\\S]*?<\\/url>`, 'i');
 }
 
 function toIsoDate(value) {

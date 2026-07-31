@@ -8,7 +8,6 @@ const {
   recordCatalogPurchase,
 } = require('./catalog');
 const { sendReportEmail, sendFreshConfirmEmail } = require('./email');
-const { REPORTS_CATALOG = [] } = require('../js/reportsData');
 const orders = require('./orders');
 const reconciler = require('./reconciler');
 const reaper = require('./reaper');
@@ -400,7 +399,7 @@ function isCompletedCheckout(session) {
 }
 
 function getReadyReportById(reportId) {
-  const report = REPORTS_CATALOG.find(item => item.id === reportId);
+  const report = getReportByIdSync(reportId, { persistState: false });
   if (!report || report.availability === 'hidden') return null;
   const isFree = Boolean(report.isFree) || report.reportType === 'free' || Number(report.price) === 0;
   return {

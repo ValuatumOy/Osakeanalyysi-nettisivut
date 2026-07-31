@@ -1,0 +1,9 @@
+{
+  "ticker": "BONHR.OL",
+  "companyName": "Bonheur ASA",
+  "profile": "Bonheur ASA is a Norwegian investment company with subsidiaries active in renewable energy, wind service and cruise operations. Its renewable energy activities include ownership of operating wind farms and development projects, while its wind service business provides transportation, installation and maintenance services for offshore wind turbines. The group also has cruise-related operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:19:53.005Z"
+}

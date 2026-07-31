@@ -1,0 +1,9 @@
+{
+  "ticker": "FSECURE.HE",
+  "companyName": "F-Secure Oyj",
+  "profile": "F-Secure Oyj is a Finland-based consumer cybersecurity company that provides software and services for online protection. Its offering includes antivirus and scam protection, VPN, privacy, password management, identity protection, and related security tools. The company sells through service-provider partners, other channel partners, and direct ecommerce to consumers in more than 100 countries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:54:02.406Z"
+}

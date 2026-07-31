@@ -1,0 +1,9 @@
+{
+  "ticker": "FPIP.ST",
+  "companyName": "Formpipe Software AB (publ)",
+  "profile": "Formpipe Software AB provides software for regulated organizations, with a focus on the public sector. Its products support case and document management, archiving, e-services, digital signing, and workflow automation, helping customers manage information securely and comply with legal and administrative requirements. The company also emphasizes long-term customer relationships and local service delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:01:46.967Z"
+}

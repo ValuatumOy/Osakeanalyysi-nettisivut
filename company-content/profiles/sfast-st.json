@@ -1,0 +1,9 @@
+{
+  "ticker": "SFAST.ST",
+  "companyName": "Stenhus Fastigheter i Norden AB (publ)",
+  "profile": "Stenhus Fastigheter i Norden AB is a Swedish real estate company that owns, manages and develops public-sector and commercial properties, with a focus on well-located assets in Swedish growth regions. Its portfolio includes long-leased properties and selected project development, and growth is driven mainly by property acquisitions and, to a lesser extent, development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:49.861Z"
+}

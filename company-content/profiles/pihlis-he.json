@@ -1,0 +1,9 @@
+{
+  "ticker": "PIHLIS.HE",
+  "companyName": "Pihlajalinna Oyj",
+  "profile": "Pihlajalinna is one of Finland’s leading providers of social and healthcare services, offering private clinic and hospital care, remote services, occupational healthcare, and public-sector social and healthcare solutions. It serves insurance companies, businesses, wellbeing services counties, and private customers through nationwide operations focused on preventive and accessible care.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:56:23.967Z"
+}

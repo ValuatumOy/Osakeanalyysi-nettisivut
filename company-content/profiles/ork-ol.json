@@ -1,0 +1,9 @@
+{
+  "ticker": "ORK.OL",
+  "companyName": "Orkla ASA",
+  "profile": "Orkla ASA is an industrial investment company focused on branded consumer-oriented businesses. Its portfolio spans food, snacks, food ingredients, health, home and personal care, and selected industrial brands across Nordic, Baltic, Central European and other international markets. The group uses active ownership, brand building and operational support to develop local consumer businesses and create long-term value.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:00:26.602Z"
+}

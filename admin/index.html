@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3D9E72; --green-light: #6DBFA0; --green-deep: #2D7A58;
+      --forest: #1B3A2D; --charcoal: #1A1A2E; --charcoal-mid: #4A4A6A;
+      --gray-steel: #7A7A9A; --off-white: #F8F8FC; --white: #FFFFFF;
+      --border: #E5E5EF; --gold: #D4A843; --red: #C0392B;
+      --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--charcoal); font-size: 0.875rem; }
+    a { color: var(--green); }
+
+    /* ── auth ── */
+    #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--forest); }
+    .auth-card { background: white; border-radius: var(--r-xl); padding: 2.5rem; width: 100%; max-width: 420px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); }
+    .auth-card h1 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .auth-card p { font-size: 0.8rem; color: var(--gray-steel); margin-bottom: 1.5rem; line-height: 1.6; }
+    .auth-card label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .auth-card input { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.875rem; font-family: inherit; outline: none; }
+    .auth-card input:focus { border-color: var(--green); }
+    .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; color: var(--red); margin: 1rem 0 0; display: none; }
+
+    /* ── layout ── */
+    #app { display: none; min-height: 100vh; }
+    .topbar { background: var(--forest); color: white; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; position: sticky; top: 0; z-index: 100; }
+    .topbar-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; font-weight: 600; color: white; text-decoration: none; }
+    .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
+    .topbar-spacer { flex: 1; }
+    .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; }
+    .topbar-signout:hover { background: rgba(255,255,255,0.08); }
+    .panel { padding: 1.5rem; max-width: 1080px; margin: 0 auto; }
+    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-steel); margin: 1.5rem 0 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── buttons / badges ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: var(--r-md); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--green-deep); }
+    .btn-ghost { background: none; border: 1.5px solid var(--border); color: var(--charcoal); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--charcoal-mid); }
+    .btn-danger { background: none; border: 1.5px solid #FECACA; color: var(--red); }
+    .btn-danger:hover:not(:disabled) { background: #FEF2F2; }
+    .btn-danger-solid { background: var(--red); color: white; }
+    .btn-sm { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
+    .badge { display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: var(--r-pill); text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-yellow { background: #FEF3C7; color: #92400E; }
+    .badge-gray { background: var(--off-white); color: var(--gray-steel); border: 1px solid var(--border); }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+
+    /* ── table / cards ── */
+    .card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .table-wrap { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { text-align: left; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-steel); padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    td.company { font-weight: 600; }
+    td .muted { color: var(--gray-steel); font-weight: 400; }
+
+    /* ── forms ── */
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; }
+    .field label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--charcoal-mid); margin-bottom: 0.35rem; }
+    .field input, .field select { width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.85rem; font-family: inherit; outline: none; background: white; }
+    .field input:focus, .field select:focus { border-color: var(--green); }
+    .checkrow { display: flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--charcoal-mid); margin-top: 0.5rem; }
+    .form-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .form-note { font-size: 0.75rem; color: var(--gray-steel); }
+    .flash { border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; margin-bottom: 0.9rem; display: none; }
+    .flash-ok { background: #D1FAE5; color: #065F46; }
+    .flash-err { background: #FEF2F2; border: 1px solid #FECACA; color: var(--red); }
+
+    /* ── modal ── */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(26,26,46,0.5); display: none; align-items: center; justify-content: center; z-index: 200; padding: 1rem; }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: white; border-radius: var(--r-xl); padding: 1.75rem; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 48px rgba(0,0,0,0.3); }
+    .modal h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; }
+    .warn-box { background: #FEF3C7; border: 1px solid #FDE68A; border-radius: var(--r-md); padding: 0.8rem 1rem; font-size: 0.82rem; color: #92400E; line-height: 1.6; margin-bottom: 1rem; }
+    .warn-box strong { color: #78350F; }
+  </style>
+</head>
+<body>
+
+  <!-- ── password gate ── -->
+  <div id="auth-screen">
+    <form class="auth-card" id="auth-form">
+      <h1>Sign in</h1>
+      <label for="auth-password">Password</label>
+      <input type="password" id="auth-password" autocomplete="current-password" required>
+      <div class="auth-error" id="auth-error"></div>
+      <div style="margin-top:1.25rem;">
+        <button class="btn btn-primary" type="submit" id="auth-submit">Sign in</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ── app ── -->
+  <div id="app">
+    <div class="topbar">
+      <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
+      <span class="topbar-badge">Report admin</span>
+      <div class="topbar-spacer"></div>
+      <button class="topbar-signout" id="signout">Sign out</button>
+    </div>
+
+    <div class="panel">
+      <div class="flash flash-ok" id="flash-ok"></div>
+      <div class="flash flash-err" id="flash-err"></div>
+
+      <div class="section-label">Add a report</div>
+      <form class="card" id="add-form">
+        <div class="form-grid">
+          <div class="field"><label>Company name *</label><input name="companyName" required placeholder="Stora Enso"></div>
+          <div class="field"><label>Ticker</label><input name="ticker" placeholder="STERV.HE"></div>
+          <div class="field"><label>Exchange</label><input name="exchange" placeholder="Helsinki"></div>
+          <div class="field"><label>Country</label><input name="country" placeholder="Finland"></div>
+          <div class="field"><label>Sector</label><input name="sector" placeholder="Materials"></div>
+          <div class="field"><label>Report date *</label><input type="date" name="reportDate" required></div>
+          <div class="field"><label>PDF file *</label><input type="file" name="pdf" accept="application/pdf" required></div>
+        </div>
+        <label class="checkrow"><input type="checkbox" name="isFree"> Free report (otherwise standard ready-report price)</label>
+        <label class="checkrow"><input type="checkbox" name="visibleNow" checked> Visible immediately (otherwise appears after the standard delay)</label>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="add-submit">Upload &amp; publish</button>
+          <span class="form-note" id="add-status"></span>
+        </div>
+      </form>
+
+      <div class="section-label">Catalog</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Company</th><th>Ticker</th><th>Report date</th><th>Status</th>
+            <th>Buyers (12&nbsp;mo)</th><th></th>
+          </tr></thead>
+          <tbody id="report-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── edit modal ── -->
+  <div class="modal-backdrop" id="edit-backdrop">
+    <form class="modal" id="edit-form">
+      <h2>Edit report</h2>
+      <div class="form-grid">
+        <div class="field"><label>Company name</label><input name="companyName"></div>
+        <div class="field"><label>Ticker</label><input name="ticker"></div>
+        <div class="field"><label>Exchange</label><input name="exchange"></div>
+        <div class="field"><label>Country</label><input name="country"></div>
+        <div class="field"><label>Sector</label><input name="sector"></div>
+        <div class="field"><label>Report date</label><input type="date" name="reportDate"></div>
+        <div class="field"><label>Visibility</label>
+          <select name="visibility">
+            <option value="visible">Visible now</option>
+            <option value="hidden">Hidden</option>
+            <option value="default">Default schedule</option>
+          </select>
+        </div>
+        <div class="field"><label>Free status</label>
+          <select name="freeStatus">
+            <option value="default">Weekly rotation (default)</option>
+            <option value="forceFree">Always free</option>
+            <option value="excludeFromFree">Never free</option>
+          </select>
+          <span class="form-note">"Never free" leaves this week's rotation untouched; it applies from the next rotation.</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Save changes</button>
+        <button class="btn btn-ghost" type="button" id="edit-cancel">Cancel</button>
+        <span class="form-note" id="edit-status"></span>
+      </div>
+    </form>
+  </div>
+
+  <!-- ── delete modal ── -->
+  <div class="modal-backdrop" id="delete-backdrop">
+    <div class="modal">
+      <h2>Delete report</h2>
+      <div class="warn-box" id="delete-warning"></div>
+      <p style="font-size:0.82rem;color:var(--charcoal-mid);line-height:1.6;margin-bottom:0.9rem;">
+        Hiding removes the report from the catalog but keeps every link that buyers
+        already received working. <strong>Deleting kills those links permanently.</strong>
+      </p>
+      <div class="field" style="margin-bottom:1rem;">
+        <label>Type the company name to enable deletion</label>
+        <input id="delete-confirm-input" autocomplete="off" placeholder="">
+      </div>
+      <div class="form-actions" style="margin-top:0;">
+        <button class="btn btn-primary" id="delete-hide-instead">Hide instead (recommended)</button>
+        <button class="btn btn-danger-solid" id="delete-really" disabled>Delete permanently</button>
+        <button class="btn btn-ghost" id="delete-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    // Same-origin in production would need the API on the site host; the API
+    // lives on its own domain, so the base is fixed here and overridable for
+    // the test stage via localStorage.setItem('aerAdminApiBase', ...).
+    const API_BASE = localStorage.getItem('aerAdminApiBase') || 'https://api.aiequityreports.com';
+    const PASSWORD_KEY = 'aerAdminPassword';
+
+    const $ = (id) => document.getElementById(id);
+    let reports = [];
+    let editing = null;   // report being edited
+    let deleting = null;  // report pending deletion
+
+    // ── auth plumbing ────────────────────────────────────────────────────────
+    function password() { return localStorage.getItem(PASSWORD_KEY) || ''; }
+
+    function signOut(message) {
+      localStorage.removeItem(PASSWORD_KEY);
+      $('app').style.display = 'none';
+      $('auth-screen').style.display = 'flex';
+      const error = $('auth-error');
+      error.textContent = message || '';
+      error.style.display = message ? 'block' : 'none';
+    }
+
+    async function api(path, options = {}) {
+      const res = await fetch(`${API_BASE}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${password()}`,
+          ...(options.headers || {}),
+        },
+      });
+      if (res.status === 401) {
+        // Wrong or rotated password: forget it and re-prompt.
+        signOut('Session rejected — the admin password may have changed. Sign in again.');
+        throw new Error('Unauthorized');
+      }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      return data;
+    }
+
+    // ── flash helpers ────────────────────────────────────────────────────────
+    function flash(kind, message) {
+      const el = $(kind === 'ok' ? 'flash-ok' : 'flash-err');
+      el.textContent = message;
+      el.style.display = 'block';
+      setTimeout(() => { el.style.display = 'none'; }, 6000);
+    }
+
+    // ── catalog list ─────────────────────────────────────────────────────────
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function statusBadge(report) {
+      if (report.availability === 'available') return '<span class="badge badge-green">Live</span>';
+      if (report.publicationStatus === 'hidden') return '<span class="badge badge-gray">Hidden</span>';
+      if (report.publicationStatus === 'expired') return '<span class="badge badge-yellow">Expired</span>';
+      return `<span class="badge badge-gray">${esc(report.publicationStatus || '—')}</span>`;
+    }
+
+    function renderReports() {
+      const rows = reports.map((report, index) => `
+        <tr>
+          <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>
+          <td>${esc(report.ticker || '—')}</td>
+          <td>${esc(report.reportDate || '—')}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}</td>
+          <td>${report.buyerCount || 0}</td>
+          <td style="text-align:right;">
+            <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
+            <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
+          </td>
+        </tr>`).join('');
+      $('report-rows').innerHTML = rows || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+    }
+
+    async function refreshReports() {
+      const data = await api('/api/admin/reports');
+      reports = data.reports || [];
+      renderReports();
+    }
+
+    // ── sign in / out ────────────────────────────────────────────────────────
+    $('auth-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      $('auth-submit').disabled = true;
+      localStorage.setItem(PASSWORD_KEY, $('auth-password').value);
+      try {
+        await refreshReports();
+        $('auth-screen').style.display = 'none';
+        $('app').style.display = 'block';
+        $('auth-password').value = '';
+        $('auth-error').style.display = 'none';
+      } catch (err) {
+        if (err.message !== 'Unauthorized') signOut(err.message);
+      } finally {
+        $('auth-submit').disabled = false;
+      }
+    });
+
+    $('signout').addEventListener('click', () => signOut());
+
+    // ── add flow: presign → PUT to S3 → publish ───────────────────
+    $('add-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const status = $('add-status');
+      const file = form.pdf.files[0];
+      if (!file) return;
+      $('add-submit').disabled = true;
+      try {
+        status.textContent = 'Requesting upload URL…';
+        const { fileName, uploadUrl } = await api('/api/admin/upload-url', {
+          method: 'POST',
+          body: JSON.stringify({ companyName: form.companyName.value, reportDate: form.reportDate.value }),
+        });
+
+        status.textContent = 'Uploading PDF…';
+        const put = await fetch(uploadUrl, { method: 'PUT', headers: { 'Content-Type': 'application/pdf' }, body: file });
+        if (!put.ok) throw new Error(`S3 upload failed (${put.status})`);
+
+        status.textContent = 'Publishing…';
+        await api('/api/admin/publish', {
+          method: 'POST',
+          body: JSON.stringify({
+            fileName,
+            companyName: form.companyName.value,
+            ticker: form.ticker.value,
+            exchange: form.exchange.value,
+            country: form.country.value,
+            sector: form.sector.value,
+            reportDate: form.reportDate.value,
+            isFree: form.isFree.checked,
+            visibleNow: form.visibleNow.checked,
+          }),
+        });
+
+        await refreshReports();
+        form.reset();
+        form.visibleNow.checked = true;
+        flash('ok', `Published ${fileName}.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      } finally {
+        status.textContent = '';
+        $('add-submit').disabled = false;
+      }
+    });
+
+    // ── edit ─────────────────────────────────────────────────────────────────
+    document.addEventListener('click', (event) => {
+      const editIndex = event.target.dataset?.edit;
+      const deleteIndex = event.target.dataset?.delete;
+      if (editIndex != null) openEdit(reports[Number(editIndex)]);
+      if (deleteIndex != null) openDelete(reports[Number(deleteIndex)]);
+    });
+
+    function openEdit(report) {
+      editing = report;
+      const form = $('edit-form');
+      form.companyName.value = report.companyName || '';
+      form.ticker.value = report.ticker || '';
+      form.exchange.value = report.exchange === 'Unknown' ? '' : (report.exchange || '');
+      form.country.value = report.country || '';
+      form.sector.value = report.sector === 'Unclassified' ? '' : (report.sector || '');
+      form.reportDate.value = report.reportDate || '';
+      form.visibility.value = report.availability === 'available' ? 'visible'
+        : report.publicationStatus === 'hidden' ? 'hidden' : 'default';
+      form.freeStatus.value = report.forceFree ? 'forceFree'
+        : report.excludeFromFree ? 'excludeFromFree' : 'default';
+      $('edit-backdrop').classList.add('open');
+    }
+
+    $('edit-cancel').addEventListener('click', () => $('edit-backdrop').classList.remove('open'));
+
+    $('edit-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const patch = {
+        companyName: form.companyName.value.trim() || null,
+        ticker: form.ticker.value.trim() || null,
+        exchange: form.exchange.value.trim() || null,
+        country: form.country.value.trim() || null,
+        sector: form.sector.value.trim() || null,
+        reportDate: form.reportDate.value || null,
+      };
+      if (form.visibility.value === 'hidden') {
+        patch.hidden = true; patch.publicationStatus = 'hidden'; patch.forceVisible = null;
+      } else if (form.visibility.value === 'visible') {
+        patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = true;
+      } else {
+        patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = null;
+      }
+      if (form.freeStatus.value === 'forceFree') {
+        patch.forceFree = true; patch.excludeFromFree = null;
+      } else if (form.freeStatus.value === 'excludeFromFree') {
+        patch.forceFree = null; patch.excludeFromFree = true;
+      } else {
+        patch.forceFree = null; patch.excludeFromFree = null;
+      }
+      try {
+        $('edit-status').textContent = 'Saving…';
+        await api('/api/admin/update', {
+          method: 'POST',
+          body: JSON.stringify({ fileName: editing.fileName, patch }),
+        });
+        $('edit-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `Updated ${editing.fileName}.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      } finally {
+        $('edit-status').textContent = '';
+      }
+    });
+
+    // ── delete (with the buyer warning) ────────────────────────────
+    function openDelete(report) {
+      deleting = report;
+      const buyers = report.buyerCount || 0;
+      $('delete-warning').innerHTML = buyers > 0
+        ? `<strong>${buyers} buyer${buyers === 1 ? '' : 's'}</strong> received a permanent link to
+           <strong>${esc(report.companyName)}</strong> (${esc(report.fileName)}) in the last 12 months.
+           Deleting it kills those links — they will get a broken download.`
+        : `No recorded buyers in the last 12 months for <strong>${esc(report.companyName)}</strong>
+           (${esc(report.fileName)}). Older purchases may still exist beyond the ledger window.`;
+      $('delete-confirm-input').value = '';
+      $('delete-confirm-input').placeholder = report.companyName;
+      $('delete-really').disabled = true;
+      $('delete-backdrop').classList.add('open');
+    }
+
+    $('delete-confirm-input').addEventListener('input', (event) => {
+      $('delete-really').disabled =
+        event.target.value.trim().toLowerCase() !== String(deleting?.companyName || '').trim().toLowerCase();
+    });
+
+    $('delete-cancel').addEventListener('click', () => $('delete-backdrop').classList.remove('open'));
+
+    $('delete-hide-instead').addEventListener('click', async () => {
+      try {
+        await api('/api/admin/update', {
+          method: 'POST',
+          body: JSON.stringify({
+            fileName: deleting.fileName,
+            patch: { hidden: true, publicationStatus: 'hidden', forceVisible: null },
+          }),
+        });
+        $('delete-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `${deleting.companyName} hidden — sold links keep working.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      }
+    });
+
+    $('delete-really').addEventListener('click', async () => {
+      try {
+        await api('/api/admin/delete', {
+          method: 'POST',
+          body: JSON.stringify({ fileName: deleting.fileName }),
+        });
+        $('delete-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `${deleting.companyName} deleted.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      }
+    });
+
+    // ── boot: stored password → straight in; otherwise show the gate ────────
+    (async () => {
+      if (!password()) return;
+      try {
+        await refreshReports();
+        $('auth-screen').style.display = 'none';
+        $('app').style.display = 'block';
+      } catch (_) { /* signOut already handled 401; network errors leave the gate up */ }
+    })();
+  </script>
+</body>
+</html>

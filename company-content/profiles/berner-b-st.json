@@ -1,0 +1,9 @@
+{
+  "ticker": "BERNER-B.ST",
+  "companyName": "Christian Berner Tech Trade AB (publ)",
+  "profile": "Christian Berner Tech Trade AB (publ) supplies technical products, components, and system solutions to industrial and public-sector customers across the Nordic region. Its offering includes environmental technology, water treatment, packaging equipment, vibration damping, and related service and support activities. The company acts as a distributor and solution provider, combining third-party products with its own technical expertise.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:13:08.932Z"
+}

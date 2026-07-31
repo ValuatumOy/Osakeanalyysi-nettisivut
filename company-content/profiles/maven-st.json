@@ -1,0 +1,9 @@
+{
+  "ticker": "MAVEN.ST",
+  "companyName": "Maven Wireless Sweden AB (Publ)",
+  "profile": "Maven Wireless Sweden AB develops and sells digital wireless coverage systems for indoor, tunnel and other complex environments. Its solutions support public mobile networks and mission-critical communications for sectors such as transportation, stadiums, buildings and other venues. The company’s value drivers are proprietary software, system performance, energy efficiency and lower installation and operating costs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:45:08.994Z"
+}

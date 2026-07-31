@@ -1,0 +1,9 @@
+{
+  "ticker": "BETCO.ST",
+  "companyName": "Better Collective A/S",
+  "profile": "Better Collective A/S is a digital sports media group that owns and operates a house of brands across sports betting media, sports media and esports communities. It generates revenue through performance-based marketing with licensed sportsbooks, including revenue-share and cost-per-acquisition models, as well as premium subscriptions, advertising, sponsorships and other content-driven services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:57:12.846Z"
+}

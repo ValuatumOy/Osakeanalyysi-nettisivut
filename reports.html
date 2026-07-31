@@ -266,7 +266,7 @@
 
   <div class="rp-toast" id="rpToast" role="status" aria-live="polite"></div>
 
-  <script src="js/reportsData.js"></script>
+  <script src="js/reportFormat.js"></script>
   <script src="js/reportSlugs.js"></script>
   <script src="js/companyPagesData.js"></script>
   <script src="js/script.js"></script>
@@ -277,6 +277,11 @@
     let readyPriceLabel = '€20';
     let readyReports = [];
     let visibleReports = [];
+    // The catalog is fetched from /api/reports, which proxies the live catalog
+    // API. 'loading' and 'error' render dedicated states so a catalog outage is
+    // never mistaken for an empty catalog.
+    let catalogReports = [];
+    let catalogState = 'loading';
     let currentPage = 1;
     let searchQuery = '';
     let filterAccess = '';
@@ -315,7 +320,12 @@
     }
     function pageUrlFor(report) {
       const slug = report.slug || (window.REPORT_SLUGS && window.REPORT_SLUGS[report.id]);
-      return slug ? 'reports/' + slug + '.html' : '';
+      if (slug) return 'reports/' + slug + '.html';
+      // Slugs are keyed by report id and only cover reports that have a
+      // landing page in report-content/. Newer catalog reports fall back to the
+      // company page, which is keyed by ticker.
+      const company = byTicker.get(normalize(report.ticker));
+      return company ? normalizeUrl(company.url) : '';
     }
     function companyFor(report) {
       const url = pageUrlFor(report);
@@ -323,7 +333,7 @@
     }
     function buildReadyReports() {
       const seen = new Set();
-      return (window.REPORTS_CATALOG || [])
+      return catalogReports
         .slice()
         .sort(function(a, b) { return new Date(b.reportDate || 0) - new Date(a.reportDate || 0); })
         .filter(function(report) {
@@ -350,6 +360,28 @@
             displayExchange: company.exchange || report.exchange,
           });
         });
+    }
+    async function loadCatalog() {
+      catalogState = 'loading';
+      render();
+      try {
+        const res = await fetch('/api/reports');
+        if (!res.ok) throw new Error('Catalog request failed with ' + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data.reports)) throw new Error('Catalog response has no reports');
+        catalogReports = data.reports;
+        catalogState = 'ready';
+      } catch (err) {
+        console.error('Could not load report catalog:', err.message);
+        catalogReports = [];
+        catalogState = 'error';
+        render();
+        return;
+      }
+      readyReports = buildReadyReports();
+      populateFilters();
+      restoreUrlState();
+      render();
     }
     function populateFilters() {
       const markets = Array.from(new Set(readyReports.map(function(r) { return r.displayExchange; }).filter(Boolean))).sort();
@@ -405,13 +437,17 @@
         });
       });
     }
+    function pdfHref(url) {
+      const s = String(url || '');
+      return /^https?:\/\//.test(s) ? s : '/' + s.replace(/^\/+/, '');
+    }
     function card(report) {
       const tags = (report.tags || []).slice(0, 4).map(function(tag) { return '<span class="rc-tag">' + escapeHTML(tag) + '</span>'; }).join('');
       const badge = report.isFree ? 'Free report' : 'Ready report';
       const price = report.isFree ? 'Free' : readyPriceLabel;
       const priceNote = report.isFree ? 'Instant PDF download' : 'Existing PDF report';
       const primaryCta = report.isFree
-        ? '<a class="btn btn-primary" href="/' + escapeHTML(report.pdfUrl || '') + '" target="_blank" rel="noopener" download>Download free PDF</a>'
+        ? '<a class="btn btn-primary" href="' + escapeHTML(pdfHref(report.pdfUrl)) + '" target="_blank" rel="noopener" download>Download free PDF</a>'
         : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>';
       return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '" data-page-url="/' + escapeHTML(report.pageUrl) + '" tabindex="0" aria-label="Open ' + escapeHTML(report.displayName) + ' company page">' +
         '<div>' +
@@ -437,6 +473,23 @@
       const emptyAction = document.getElementById('catalogEmptyAction');
       const count = document.getElementById('catalogCount');
       const pagination = document.getElementById('catalogPagination');
+      if (catalogState !== 'ready') {
+        visibleReports = [];
+        grid.innerHTML = '';
+        if (pagination) pagination.hidden = true;
+        count.textContent = catalogState === 'loading' ? 'Loading reports…' : '';
+        empty.style.display = catalogState === 'error' ? 'block' : 'none';
+        if (catalogState === 'error') {
+          emptyTitle.textContent = 'Reports could not be loaded.';
+          emptySub.textContent = 'The report catalog is temporarily unavailable. Please try again in a moment.';
+          emptyAction.textContent = 'Try again';
+          emptyAction.setAttribute('href', '#');
+          emptyAction.style.display = 'inline-flex';
+          emptyAction.onclick = function(event) { event.preventDefault(); loadCatalog(); };
+        }
+        return;
+      }
+      emptyAction.onclick = null;
       visibleReports = filteredReports();
       const pages = totalPages();
       currentPage = Math.min(Math.max(1, currentPage), pages);
@@ -527,7 +580,25 @@
       let requestSequence = 0;
 
       function setHint(message) {
-        if (hint) hint.textContent = message || '';
+        if (hint) hint.innerHTML = message || '';
+      }
+      function goToCoverageRequest() {
+        const target = document.getElementById('coverage-request');
+        const coverageCompany = document.getElementById('coverageCompany');
+        if (coverageCompany && input.value) coverageCompany.value = input.value;
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.setTimeout(function() {
+          const focusTarget = coverageCompany && coverageCompany.value ? document.getElementById('coverageEmail') : coverageCompany;
+          if (focusTarget) focusTarget.focus();
+        }, 350);
+      }
+      if (hint) {
+        hint.addEventListener('click', function(event) {
+          if (event.target.closest('[data-go-to-coverage]')) {
+            event.preventDefault();
+            goToCoverageRequest();
+          }
+        });
       }
       function closeMenu() {
         menu.classList.remove('open');
@@ -601,7 +672,7 @@
             return;
           }
           renderCompanies(companies);
-          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found. You can request coverage below.');
+          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found in Wisdom. <a href="#coverage-request" data-go-to-coverage>Request coverage for this company</a> instead.');
         } catch (error) {
           if (sequence !== requestSequence) return;
           results = [];
@@ -978,9 +1049,10 @@
       isRestoringUrlState = false;
     }
     document.addEventListener('DOMContentLoaded', function() {
-      readyReports = buildReadyReports();
-      populateFilters();
       freshCompanyPicker = createFreshCompanyPicker();
+      // Read the URL state up front so the search box and the fresh-report
+      // picker are correct immediately; loadCatalog() re-applies it once the
+      // market/sector menus exist.
       restoreUrlState();
       const initialSearch = searchQuery;
       const initialFreshTicker = new URLSearchParams(window.location.search).get('freshTicker') || '';
@@ -989,10 +1061,10 @@
         if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
         if (window.location.hash === '#order-fresh' && freshCompanyPicker) freshCompanyPicker.search(initialSearch, initialFreshTicker);
       }
-      render();
       bindSearch();
       if (initialSearch) searchWisdomForHero(initialSearch);
       bindControls();
+      loadCatalog();
       window.addEventListener('popstate', function() {
         restoreUrlState();
         render();

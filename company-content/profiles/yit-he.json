@@ -1,0 +1,9 @@
+{
+  "ticker": "YIT.HE",
+  "companyName": "YIT",
+  "profile": "YIT is a Finnish construction and development company focused on housing, building construction and infrastructure. It develops and builds homes, commercial and public buildings, and technically demanding transport and civil engineering projects, including roads, bridges, railways, tunnels and maintenance services, mainly in Finland and selected Central and Eastern European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:00:04.435Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "GYLD-B.CO",
+  "companyName": "Gyldendal A/S",
+  "profile": "Gyldendal A/S is a Danish publishing group focused on literature and educational materials. Its businesses include general trade publishing, school and learning content for the Danish education system, and related activities such as tutoring and digital learning services through subsidiaries. The company also operates children’s, academic, and specialized publishing imprints.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:26:35.668Z"
+}

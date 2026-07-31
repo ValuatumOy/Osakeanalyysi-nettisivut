@@ -1,0 +1,9 @@
+{
+  "ticker": "RUSTA.ST",
+  "companyName": "Rusta AB (publ)",
+  "profile": "Rusta AB (publ) is a Nordic discount retailer that sells home and leisure products through a network of stores in Sweden, Norway, Finland and Germany, supported by an online channel in Sweden and Finland. Its assortment covers household goods, decor, storage, cleaning, seasonal and leisure items, with value driven by low prices and broad selection.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:05.643Z"
+}

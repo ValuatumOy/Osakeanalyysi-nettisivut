@@ -1,0 +1,9 @@
+{
+  "ticker": "TRIAN-B.ST",
+  "companyName": "Fastighets AB Trianon (publ)",
+  "profile": "Fastighets AB Trianon is a Swedish property company that owns, manages and develops residential, commercial and community service properties in the Malmö region. Its earnings are driven by rental income, property management and value creation from acquisitions, development projects and active portfolio management in a growing local market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:58:27.704Z"
+}

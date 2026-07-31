@@ -1,0 +1,9 @@
+{
+  "ticker": "HUFV-A.ST",
+  "companyName": "Hufvudstaden AB (publ)",
+  "profile": "Hufvudstaden owns and manages office and retail properties in prime locations in Stockholm and Gothenburg, with a focus on central city premises. Its income is driven by property management, leasing, and the long-term ownership and development of well-located commercial properties, including landmark retail environments such as NK.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:18:56.040Z"
+}

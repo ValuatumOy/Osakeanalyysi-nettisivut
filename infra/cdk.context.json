@@ -1,0 +1,10 @@
+{
+  "hosted-zone:account=892885731254:domainName=aiequityreports.com:region=us-east-1": {
+    "Id": "/hostedzone/Z00341173DS8TBO9WD7OG",
+    "Name": "aiequityreports.com."
+  },
+  "hosted-zone:account=892885731254:domainName=aiequityreports.com:region=eu-west-1": {
+    "Id": "/hostedzone/Z00341173DS8TBO9WD7OG",
+    "Name": "aiequityreports.com."
+  }
+}

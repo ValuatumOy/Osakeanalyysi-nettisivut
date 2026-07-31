@@ -1,0 +1,9 @@
+{
+  "ticker": "MAERSK-B.CO",
+  "companyName": "A.P. Møller - Mærsk A/S",
+  "profile": "A.P. Møller - Mærsk A/S is a Denmark-based global logistics company that provides container shipping, port terminal operations, and supply chain services. Through its Ocean, Terminals, and Logistics & Services businesses, it moves goods and supports customers with integrated transport and logistics solutions across international trade lanes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:56:22.530Z"
+}

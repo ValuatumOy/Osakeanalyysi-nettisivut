@@ -1,0 +1,9 @@
+{
+  "ticker": "CAST.ST",
+  "companyName": "Castellum AB (publ)",
+  "profile": "Castellum AB is a Swedish property company that owns, manages and develops commercial real estate in growth cities across Sweden, Denmark and Finland, with additional indirect exposure to Norway through Entra. Its portfolio is concentrated in offices and logistics properties, and the business also includes project development, transactions and local property management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:05:12.822Z"
+}

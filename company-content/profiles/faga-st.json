@@ -1,0 +1,9 @@
+{
+  "ticker": "FAGA.ST",
+  "companyName": "Fantasma Games AB (publ)",
+  "profile": "Fantasma Games AB develops online slot games and related casino content for regulated gambling operators. The company builds mobile-focused titles with bonus features, themed mechanics and multilingual distribution through operator and aggregation partners. In 2024 it was acquired by EveryMatrix, and its games now sit within that group’s casino content portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:57:33.563Z"
+}

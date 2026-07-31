@@ -1,0 +1,9 @@
+{
+  "ticker": "EAST.ST",
+  "companyName": "Eastnine AB (publ)",
+  "profile": "Eastnine AB (publ) is a Swedish real estate company focused on owning, managing and developing modern office properties in Poland and the Baltic states, mainly in Vilnius, Riga, Poznan and Warsaw. Its portfolio is centered on prime, sustainable office buildings, with leasing, property management and selective development projects as the main value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:45:43.001Z"
+}

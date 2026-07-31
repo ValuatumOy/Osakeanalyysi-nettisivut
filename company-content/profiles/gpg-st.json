@@ -1,0 +1,9 @@
+{
+  "ticker": "GPG.ST",
+  "companyName": "Genova Property Group AB (publ)",
+  "profile": "Genova Property Group AB (publ) is a Swedish property company that owns, manages and develops commercial premises, community properties and housing, mainly in Greater Stockholm and the Uppsala region, with additional holdings in western Sweden. Its business combines rental income from the portfolio with project development, property transactions and land-use rights for long-term value creation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:07:21.587Z"
+}

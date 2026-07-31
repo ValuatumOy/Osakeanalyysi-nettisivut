@@ -1,0 +1,9 @@
+{
+  "ticker": "HPOL-B.ST",
+  "companyName": "HEXPOL AB (publ)",
+  "profile": "HEXPOL AB is a global polymers group that develops and manufactures advanced polymer compounds, including rubber, silicone, thermoplastic elastomer and thermoplastic compounds. It also supplies engineered products such as gaskets for plate heat exchangers and wheels for material handling equipment. Its customers serve automotive, construction, energy, cable, healthcare and industrial markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:16:56.242Z"
+}

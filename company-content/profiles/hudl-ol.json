@@ -1,0 +1,9 @@
+{
+  "ticker": "HUDL.OL",
+  "companyName": "Huddlestock Fintech AS",
+  "profile": "Huddlestock Fintech AS provides software and professional services for capital markets, treasury, and wealth management customers. Its core offering is an investment-as-a-service platform that combines regulatory infrastructure, modular technology, white-label front ends, and support services to help banks, fintechs, and other firms launch or transform digital trading and investment products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:43:08.442Z"
+}

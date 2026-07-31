@@ -1,0 +1,9 @@
+{
+  "ticker": "BALD-B.ST",
+  "companyName": "Fastighets AB Balder (publ)",
+  "profile": "Fastighets AB Balder is a listed property group that owns, manages and develops residential and commercial properties. Its portfolio includes rental homes, commercial premises and new development projects, with operations in Sweden and several other Nordic and European markets. The company also works with property development and long-term asset management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:58:07.754Z"
+}

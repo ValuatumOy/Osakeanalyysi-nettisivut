@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOSGN.ST",
+  "companyName": "Biosergen AB",
+  "profile": "Biosergen AB is a Swedish clinical-stage biotechnology company focused on developing antifungal medicines for severe and life-threatening fungal infections. Its lead candidate, BSG005, is being developed as a treatment for invasive infections in immunocompromised patients, including those undergoing cancer therapy, transplantation, or living with AIDS. The company is listed on Nasdaq First North Growth Market Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:15:57.246Z"
+}

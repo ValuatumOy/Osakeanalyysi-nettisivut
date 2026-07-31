@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOPOR.CO",
+  "companyName": "BioPorto A/S",
+  "profile": "BioPorto A/S is an in vitro diagnostics company focused on biomarkers for early detection and management of acute kidney injury. Its main products are NGAL-based tests, including the CE-marked NGAL Test for Europe and the FDA-cleared ProNephro AKI test in the United States, alongside NGAL ELISA kits for research use.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:58:17.590Z"
+}

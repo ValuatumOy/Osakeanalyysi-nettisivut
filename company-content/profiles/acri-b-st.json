@@ -1,0 +1,9 @@
+{
+  "ticker": "ACRI-B.ST",
+  "companyName": "Acrinova AB (publ)",
+  "profile": "Acrinova AB (publ) is a Swedish real estate company focused on development and management of properties in southern Sweden. Its portfolio includes commercial premises, logistics properties, residential units and retail properties. The company acquires, develops and manages assets, with operations centered in Malmö and an emphasis on sustainability and long-term value creation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:01:33.449Z"
+}

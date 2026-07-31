@@ -1,0 +1,9 @@
+{
+  "ticker": "ENERS.ST",
+  "companyName": "Enersize Oyj",
+  "profile": "Enersize Oyj develops specialized software, tools and services for improving energy efficiency in industrial compressed air systems. Its platform provides monitoring, analysis and real-time optimization to help customers reduce energy consumption, detect leaks and improve operational performance. The company serves industrial users seeking lower costs and reduced environmental impact through better control of energy-intensive processes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:48:01.031Z"
+}

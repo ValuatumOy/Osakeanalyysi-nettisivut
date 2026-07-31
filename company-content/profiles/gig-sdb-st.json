@@ -1,0 +1,9 @@
+{
+  "ticker": "GIG-SDB.ST",
+  "companyName": "GiG Software PLC",
+  "profile": "GiG Software PLC provides B2B iGaming technology to online gambling operators. Its products include modular platform, sportsbook, sweepstakes and AI-enabled tools, along with data and automation services designed for regulated markets. The company operates internationally, helping customers manage player acquisition, compliance, retention and performance across multiple jurisdictions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:08:29.048Z"
+}

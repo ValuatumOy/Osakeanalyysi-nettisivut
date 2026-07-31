@@ -1,0 +1,9 @@
+{
+  "ticker": "SALM.OL",
+  "companyName": "SalMar ASA",
+  "profile": "SalMar ASA is a Norwegian aquaculture company that farms, harvests, processes and sells Atlantic salmon. It operates production sites along the Norwegian coast and has activities in offshore farming, Iceland and Scotland, with additional sales offices in Asia. The company also runs broodstock and smolt production and secondary processing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:16:25.057Z"
+}

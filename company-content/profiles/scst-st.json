@@ -1,0 +1,9 @@
+{
+  "ticker": "SCST.ST",
+  "companyName": "Scandi Standard AB (publ)",
+  "profile": "Scandi Standard is a Nordic chicken producer that processes, markets and sells ready-to-eat, chilled and frozen poultry products under brands including Kronfågel, Danpo, Den Stolte Hane, Naapurin Maalaiskana and Manor Farm. The group operates across the Nordic countries, Ireland, Lithuania and the Netherlands, and also has egg and feed operations in some markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:21.390Z"
+}

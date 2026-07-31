@@ -1,0 +1,9 @@
+{
+  "ticker": "HDLY.OL",
+  "companyName": "Huddly AS",
+  "profile": "Huddly AS develops AI-enabled video collaboration products for meeting rooms, including standalone conference cameras, multi-camera systems, and videobar solutions. Its devices are designed to improve hybrid meetings through on-device intelligence, smart framing, and room analytics, with products certified for major platforms such as Microsoft Teams and Zoom and sold through global partners.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:44:01.619Z"
+}

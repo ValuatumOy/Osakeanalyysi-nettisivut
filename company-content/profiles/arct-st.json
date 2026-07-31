@@ -1,0 +1,9 @@
+{
+  "ticker": "ARCT.ST",
+  "companyName": "Arctic Minerals AB (publ)",
+  "profile": "Arctic Minerals AB (publ) is a Nordic mineral exploration and development company focused on copper, gold and other strategically important minerals. It advances exploration projects in Sweden, Norway and Finland, with the Hennes Bay copper-silver project and other early-stage assets as key parts of its portfolio. The company’s value driver is discovering and developing new mineral resources.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:16:44.290Z"
+}

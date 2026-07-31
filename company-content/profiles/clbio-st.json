@@ -1,0 +1,9 @@
+{
+  "ticker": "CLBIO.ST",
+  "companyName": "Corline Biomedical AB",
+  "profile": "Corline Biomedical develops and sells antithrombotic and anti-inflammatory surface coating solutions for medical devices and regenerative medicine. Its core platform, CHC technology, is used in the CHS coating for device applications and in Renaparin and related products for kidney transplantation, cell therapy, and soft tissue repair. The company also provides coating services and reagent manufacturing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:28:18.077Z"
+}

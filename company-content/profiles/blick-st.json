@@ -1,0 +1,9 @@
+{
+  "ticker": "BLICK.ST",
+  "companyName": "Blick Global Group AB",
+  "profile": "Blick Global Group AB is a Swedish investment company that focuses on acquiring stakes in profitable unlisted businesses, mainly through purchases of existing shares. Its portfolio includes holdings in Klarna and Prisjakt, and the company emphasizes low operating costs and long-term value creation for shareholders across its investments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:23:02.185Z"
+}

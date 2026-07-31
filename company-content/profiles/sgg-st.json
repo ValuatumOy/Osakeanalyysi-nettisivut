@@ -1,0 +1,9 @@
+{
+  "ticker": "SGG.ST",
+  "companyName": "Sensys Gatso Group AB (publ)",
+  "profile": "Sensys Gatso Group provides automated traffic enforcement solutions for governments and other authorities. The company supplies speed and red-light enforcement systems, related software, and managed services for traffic safety, traffic management, and vehicle access control. Its business is driven by hardware sales, recurring service contracts, and turnkey enforcement programs delivered in multiple markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:46.453Z"
+}

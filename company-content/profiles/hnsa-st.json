@@ -1,0 +1,9 @@
+{
+  "ticker": "HNSA.ST",
+  "companyName": "Hansa Biopharma AB (publ)",
+  "profile": "Hansa Biopharma is a commercial-stage biopharmaceutical company that develops and commercializes immunomodulating therapies for rare immunological conditions. Its proprietary antibody-cleaving enzyme platform includes imlifidase and HNSA-5487, with applications in transplantation, autoimmune diseases and gene therapy. The company is based in Lund, Sweden and operates in Europe and the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:12:45.525Z"
+}

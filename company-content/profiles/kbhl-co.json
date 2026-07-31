@@ -1,0 +1,9 @@
+{
+  "ticker": "KBHL.CO",
+  "companyName": "Københavns Lufthavne A/S",
+  "profile": "Københavns Lufthavne A/S operates and develops the airports in Copenhagen and Roskilde. Its business covers airport operations, route development, passenger services, and the management of commercial activities including retail, parking, real estate, marketing and communications. The company also oversees infrastructure, safety, and sustainability initiatives tied to airport operations and passenger experience.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:46:48.979Z"
+}

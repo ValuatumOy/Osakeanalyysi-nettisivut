@@ -1,0 +1,9 @@
+{
+  "ticker": "FIFAX.HE",
+  "companyName": "FIFAX Abp",
+  "profile": "FIFAX Abp is a land-based fish farming company based in Åland. It operates a recirculating aquaculture system that covers the full production chain for rainbow trout, from hatchery and grow-out to slaughtering and processing at its Eckerö facility. The company supplies fresh, whole gutted fish mainly to customers in Finland and Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:56:38.816Z"
+}

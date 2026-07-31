@@ -1,0 +1,9 @@
+{
+  "ticker": "BHG.ST",
+  "companyName": "BHG Group AB (publ)",
+  "profile": "BHG Group is a Nordic consumer e-commerce company focused on DIY, home improvement, furniture, and home furnishings. It sells through a portfolio of online destinations and showrooms, offering a wide assortment of products across categories such as renovation, garden, leisure, furniture, and interior design. The group is headquartered in Malmö, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:03:00.853Z"
+}

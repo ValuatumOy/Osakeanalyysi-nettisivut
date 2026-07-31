@@ -1,0 +1,9 @@
+{
+  "ticker": "MOWI.OL",
+  "companyName": "Mowi ASA",
+  "profile": "Mowi ASA is a global seafood company and the world’s largest producer of Atlantic salmon. Its business spans breeding, feed production, farming, harvesting, processing, logistics, sales and marketing. The company sells fresh and value-added salmon products to customers in more than 70 countries and invests in research, development and operational efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:19:08.309Z"
+}

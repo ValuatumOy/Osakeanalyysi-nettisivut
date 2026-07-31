@@ -1,0 +1,9 @@
+{
+  "ticker": "TRANS.ST",
+  "companyName": "Transtema Group AB",
+  "profile": "Transtema Group AB provides services for communication networks in Sweden and Norway. Through its operating companies, it designs, builds, maintains, and monitors telecom and other infrastructure, including mobile networks, fiber, and related field services. The group serves operators, municipalities, businesses, property owners, and other customers that depend on reliable connectivity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:40.067Z"
+}

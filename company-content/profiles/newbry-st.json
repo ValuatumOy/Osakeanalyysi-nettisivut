@@ -1,0 +1,9 @@
+{
+  "ticker": "NEWBRY.ST",
+  "companyName": "Newbury Pharmaceuticals AB (publ)",
+  "profile": "Newbury Pharmaceuticals AB is a Swedish hybrid pharmaceutical company focused on the Nordic region and selective international sales. It develops a portfolio of in-licensed and licensed medicines and acts as an exclusive distributor and local representative for partners. Its main focus areas include specialty and branded treatments in oncology, rare diseases, and neurology.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:19.160Z"
+}

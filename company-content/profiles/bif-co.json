@@ -1,0 +1,9 @@
+{
+  "ticker": "BIF.CO",
+  "companyName": "Brøndbyernes IF Fodbold A/S",
+  "profile": "Brøndbyernes IF Fodbold A/S is a Danish professional football club that operates Brøndby IF’s football business from Brøndby Stadion. Its activities include the men’s and women’s teams, matchday operations, partner and sponsorship income, media-related revenue, and player transfers. The company’s results are also influenced by sporting performance and European competition participation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:05:25.910Z"
+}

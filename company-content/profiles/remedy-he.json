@@ -1,0 +1,9 @@
+{
+  "ticker": "REMEDY.HE",
+  "companyName": "Remedy",
+  "profile": "Remedy Entertainment is a Finnish video game company that develops story-driven action games for PC and consoles. Its portfolio includes the Control and Alan Wake franchises, and it also builds the proprietary Northlight engine and related tools. The company works with publishing and co-development partners and is moving toward self-publishing selected owned games.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:11:47.249Z"
+}

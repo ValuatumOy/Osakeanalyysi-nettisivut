@@ -1,0 +1,9 @@
+{
+  "ticker": "ELEAV.HE",
+  "companyName": "Elecster Oyj",
+  "profile": "Elecster Oyj supplies equipment and materials for dairy processing and packaging, with a focus on UHT lines, aseptic pouch filling machines, pouch packaging materials and related downstream equipment. The company serves dairy producers globally from Finland, combining machinery, packaging and technical know-how for milk and other liquid dairy products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:43:29.612Z"
+}

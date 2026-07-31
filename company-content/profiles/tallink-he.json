@@ -1,0 +1,9 @@
+{
+  "ticker": "TALLINK.HE",
+  "companyName": "AS Tallink Grupp",
+  "profile": "AS Tallink Grupp provides passenger and cargo transport services across the Baltic Sea, operating cruise, shuttle and freight vessels on routes linking Estonia, Finland and Sweden. The group also runs hotels in Tallinn and Riga, alongside onboard and shore-based retail, catering and other travel-related services under the Tallink Silja Line and Tallink Shuttle brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:48:16.504Z"
+}

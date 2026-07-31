@@ -1,0 +1,9 @@
+{
+  "ticker": "ISS.CO",
+  "companyName": "ISS A/S",
+  "profile": "ISS A/S provides integrated facility services to commercial and industrial clients across multiple countries. Its business covers cleaning, technical maintenance, workplace and support services, culinary services, and related project work, delivered through self-managed operations. The company serves offices, laboratories, manufacturing sites, airports and other facilities, helping customers run buildings efficiently and consistently.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:41:25.665Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SCAPE.CO",
+  "companyName": "Scape Technologies A/S",
+  "profile": "Scape Technologies A/S develops software and industrial vision systems for robotic automation, with a long focus on bin-picking and object recognition in manufacturing. Its products include 3D scanners, scanner software, and standardized robotic guidance solutions for tasks such as bin-picking, depalletizing, inspection, and machine tending. The company is also expanding toward a broader automation platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:53:17.125Z"
+}

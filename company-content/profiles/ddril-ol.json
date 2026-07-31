@@ -1,0 +1,9 @@
+{
+  "ticker": "DDRIL.OL",
+  "companyName": "Dolphin Drilling AS",
+  "profile": "Dolphin Drilling AS is an offshore drilling contractor serving the oil and gas industry. The company owns and operates a fleet of three harsh-environment semi-submersible rigs, including Borgland Dolphin, Blackford Dolphin and Paul B. Loyd Jr., and provides drilling services worldwide. Its business depends on rig utilization, contract backlog and operational performance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:03:38.339Z"
+}

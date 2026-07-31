@@ -1,0 +1,9 @@
+{
+  "ticker": "GETI-B.ST",
+  "companyName": "Getinge AB (publ)",
+  "profile": "Getinge develops and sells equipment, systems and services for hospitals and life science institutions, with offerings across intensive care, cardiovascular procedures, operating rooms, sterile reprocessing and life science. Its portfolio includes ventilators, anesthesia and operating room equipment, sterilization systems, and digital workflow solutions designed to improve clinical results and hospital efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:07:53.699Z"
+}

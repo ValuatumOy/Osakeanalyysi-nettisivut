@@ -1,0 +1,9 @@
+{
+  "ticker": "AKBM.OL",
+  "companyName": "Aker BioMarine AS",
+  "profile": "Aker BioMarine develops krill-based and algae-based ingredients, supplements, and related nutrition products for human health. Its portfolio includes Superba Krill Oil, Revervia algae oil, Lysoveta, and other delivery and specialty nutrition platforms. The company has also been narrowing its focus toward human health after completing the sale of its feed ingredients business.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:46:26.193Z"
+}

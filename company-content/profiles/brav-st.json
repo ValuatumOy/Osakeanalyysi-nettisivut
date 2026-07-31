@@ -1,0 +1,9 @@
+{
+  "ticker": "BRAV.ST",
+  "companyName": "Bravida Holding AB (publ)",
+  "profile": "Bravida Holding AB provides technical installation and service solutions for buildings, facilities, and infrastructure across the Nordic region. Its operations cover electrical systems, heating and plumbing, ventilation, fire and security, sprinklers, cooling, technical facility management, and energy optimisation. The company works across the full lifecycle from design and installation to maintenance and renovation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:41:19.142Z"
+}

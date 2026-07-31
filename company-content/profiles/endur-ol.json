@@ -1,0 +1,9 @@
+{
+  "ticker": "ENDUR.OL",
+  "companyName": "Endúr ASA",
+  "profile": "Endúr ASA is a Nordic industrial group that supplies infrastructure solutions, land-based aquaculture systems and maritime services. Its operations include total delivery of fish farms and feed rafts for the aquaculture industry, as well as products and services for infrastructure projects and marine customers, mainly in Norway and the wider Nordic region.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:16:26.771Z"
+}

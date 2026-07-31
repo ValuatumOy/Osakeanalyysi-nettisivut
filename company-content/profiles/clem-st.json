@@ -1,0 +1,9 @@
+{
+  "ticker": "CLEM.ST",
+  "companyName": "Clemondo Group AB (publ)",
+  "profile": "Clemondo Group AB is a Nordic chemical company based in Helsingborg that develops, produces, and markets professional cleaning and maintenance products. Its offering spans vehicle care, industrial cleaning, and hygiene solutions under brands such as Lahega, Liv, and Strovels, alongside private label contract manufacturing and related production services for customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:19:53.929Z"
+}

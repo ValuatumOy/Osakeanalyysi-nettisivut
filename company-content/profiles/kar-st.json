@@ -1,0 +1,9 @@
+{
+  "ticker": "KAR.ST",
+  "companyName": "Karnov Group AB (publ)",
+  "profile": "Karnov Group provides mission-critical information and workflow solutions for professionals in legal, tax, accounting, and environmental, health and safety fields. Its offerings combine editorial content, digital research tools, legal templates, compliance workflows, and related services across Nordic and other European markets. The company serves lawyers, accountants, and other professional users.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:32:01.762Z"
+}

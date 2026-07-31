@@ -1,0 +1,9 @@
+{
+  "ticker": "DOXA.ST",
+  "companyName": "Doxa AB (publ)",
+  "profile": "Doxa AB (publ) is a Swedish real estate investment company that acquires, owns, develops and sells properties and property-related assets, directly and through subsidiaries. It focuses on development opportunities, cash flow and value creation, and also works with project development across the full value chain from concept to completion.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:41:15.255Z"
+}

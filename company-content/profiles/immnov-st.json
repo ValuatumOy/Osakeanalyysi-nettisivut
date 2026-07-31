@@ -1,0 +1,9 @@
+{
+  "ticker": "IMMNOV.ST",
+  "companyName": "Immunovia AB (publ)",
+  "profile": "Immunovia AB (publ) develops and commercializes blood-based diagnostics for early detection of pancreatic cancer, primarily for people at elevated genetic or family risk. Its main product is PancreaSure, a test based on protein and biomarker analysis, and the company also provides clinical, laboratory, and commercialization capabilities as it focuses on the U.S. market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:21:58.831Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PREV-B.ST",
+  "companyName": "Prevas AB",
+  "profile": "Prevas AB is a Nordic engineering and technology consultancy that helps industrial customers develop products, production systems and digital solutions. Its services include product development, production development, industrial automation, digitalization, software, electronics and mechanical engineering. The company serves clients across manufacturing and related industries in Sweden, Finland, Norway and Denmark.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:31.494Z"
+}

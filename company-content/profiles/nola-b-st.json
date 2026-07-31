@@ -1,0 +1,9 @@
+{
+  "ticker": "NOLA-B.ST",
+  "companyName": "Nolato AB (publ)",
+  "profile": "Nolato is a Swedish industrial group that develops and manufactures polymer-based products, including plastic, silicone and TPE components and systems, for customers in medical technology, pharmaceuticals, consumer electronics, telecom, automotive, hygiene and selected industrial segments. Its operations are organized into Medical Solutions and Engineered Solutions, covering development, industrialization, high-volume production and delivery across a global manufacturing network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:00.705Z"
+}

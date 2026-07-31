@@ -164,8 +164,9 @@
       "role": "support",
       "targetQuery": "amd stock fair value",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Paid report: reveal base-case number, gate scenario detail. Link to AMD vs Intel comparison page."
+      "status": "in-review",
+      "notes": "Drafted 2026-07-17 (Fri full pipeline run) as PR #27 on branch blog/amd-stock-fair-value. Human-queued (oldest status:queued item). Angle: sum-of-the-parts vs the automated-DCF-aggregator SERP (fair-value outputs scatter ~70 to >550 USD with no segment decomposition); our 5 Jun 2026 SELL (413.00 target vs 516.10) rests on Data Center being 87.5% (~750bn) of EV yet only 67% of forward EBIT at ~80x, with a >515bn uncovered reverse-valuation premium. External anchor: AMD FY2025 actuals (Data Center 16.6bn +32%, total 34.6bn +34%) via AMD IR. Inbound link added from live reports/advanced-micro-devices-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge.",
+      "prNumber": 27
     },
     {
       "slug": "wartsila-stock-analysis",
@@ -173,8 +174,9 @@
       "role": "support",
       "targetQuery": "wartsila stock analysis",
       "intent": "informational-commercial",
-      "status": "queued",
-      "notes": "Low-competition English query for OMXH industrial; paid report pattern."
+      "status": "in-review",
+      "prNumber": 28,
+      "notes": "Low-competition English query for OMXH industrial; paid report pattern. Drafted 2026-07-20 (Mon full pipeline run) as PR #28 on branch blog/wartsila-stock-analysis. Human-queued (oldest queued seed). Angle: our 5 Jun 2026 SELL (EUR 30.00 target vs EUR 36.12) has essentially played out, stock ~EUR 29.71 by 16 Jul 2026 (verified via WebSearch; sandbox blocks WebFetch). Decomposes EUR 19.0bn EV into value pools (Marine 52.9%, Energy 40.8% at ~21x fwd EBIT) and the bull/base/bear reverse-valuation bridge; off-grid data-center order cliff as the named thesis-breaker, with the IMO Net-Zero entry-into-force slip to March 2028 as external support. Inbound link added from live reports/wartsila-equity-report. Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
     },
     {
       "slug": "kesko-stock-analysis",
@@ -182,11 +184,12 @@
       "role": "support",
       "targetQuery": "kesko stock analysis",
       "intent": "informational-commercial",
-      "status": "queued",
+      "status": "in-review",
       "proposedAt": "2026-06-21",
       "score": 82,
       "rationale": "Covered OMXH consumer-staples name with a fresh 5 Jun 2026 report and zero structured English coverage in the SERP — the winnable Helsinki wedge applied to a stable dividend defensive.",
-      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + /reports/kesko-equity-report. Proprietary data plan: kesko-05062026.json — base-case fair value vs price, dividend/payout, and the grocery/building-&-technical-trade/car-trade segment split. Score: winnability 24 (OMXH English underserved) + proprietary 26 + cluster fit 17 + freshness 15 (5 Jun 2026 report)."
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + /reports/kesko-equity-report. Proprietary data plan: kesko-05062026.json — base-case fair value vs price, dividend/payout, and the grocery/building-&-technical-trade/car-trade segment split. Score: winnability 24 (OMXH English underserved) + proprietary 26 + cluster fit 17 + freshness 15 (5 Jun 2026 report).",
+      "prNumber": 29
     },
     {
       "slug": "recursion-pharmaceuticals-stock-analysis",
@@ -206,11 +209,12 @@
       "role": "support",
       "targetQuery": "enterprise value vs market cap",
       "intent": "informational",
-      "status": "queued",
+      "status": "in-review",
+      "prNumber": 31,
       "proposedAt": "2026-06-21",
       "score": 72,
       "rationale": "Explicit Cluster-A support gap from DESIGN §3 not yet queued; thin/evergreen methodology SERP where our net-cash/net-debt bridges turn an abstract concept into live numbers.",
-      "notes": "Cluster A support; links to how-to-value-a-stock pillar + sibling ev-ebitda-vs-pe-ratio. Proprietary data plan: nokia-05062026.json (net cash) and storaenso-01062026.json (net debt) — show the market-cap → EV bridge both directions on real balance sheets. Score: winnability 26 (thin evergreen methodology SERP) + proprietary 22 + cluster fit 18 + freshness 6 (evergreen)."
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + sibling ev-ebitda-vs-pe-ratio. Proprietary data plan: nokia-05062026.json (net cash) and storaenso-01062026.json (net debt) — show the market-cap → EV bridge both directions on real balance sheets. Drafted 2026-07-24 (Fri full pipeline run) as PR #31 on branch blog/enterprise-value-vs-market-cap. Human-queued (only status:queued item). Angle: EV bridge run both directions on covered names — Nokia net cash EV EUR 74,739m below EUR 75,950m market cap (5 Jun 2026 model), Stora Enso net debt EV EUR 10.6bn above EUR 7.2bn market cap (24 Jul 2026 model), plus the pension/lease/minority wedge above headline net debt. Inbound link added from live can-ai-analyze-stocks pillar (dateModified left unchanged, single cross-link). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge. Score: winnability 26 (thin evergreen methodology SERP) + proprietary 22 + cluster fit 18 + freshness 6 (evergreen)."
     },
     {
       "slug": "free-cash-flow-yield-explained",
@@ -242,11 +246,14 @@
       "role": "support",
       "targetQuery": "oriola stock analysis",
       "intent": "informational-commercial",
-      "status": "proposed",
+      "status": "in-review",
+      "prNumber": 33,
+      "autoApproved": true,
+      "autoApprovedAt": "2026-07-27",
       "proposedAt": "2026-07-05",
       "score": 82,
       "rationale": "A freshly-covered OMXH name (1 Jun 2026 report) with essentially zero structured English coverage in the SERP — the winnable Helsinki wedge applied to a BUY-rated Nordic pharma-distribution defensive nobody else values in English.",
-      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings (Kesko, forestry). Proprietary data plan: oriola-01062026.json — BUY, 12m target 1.15 EUR vs 0.93 EUR (+23.5% upside), Services segment 58% of EV at ~4.7x EV/EBITDA, group EV/EBITDA 6.4x, net debt/EBITDA 2.5x, and the bull/base/bear reverse-valuation scenarios. DEPENDENCY/CAVEAT: no /reports/oriola-equity-report page is published yet (Oriola JSON exists in report-content/ but is absent from _catalog.json and sitemap.xml), so at draft time the article can only link down to the pillar + Helsinki siblings, not to an Oriola report page. Ideally publish the Oriola report page first, or adjust internal-link gate expectations. Score: winnability 25 (OMXH pharma distribution, near-zero English SERP) + proprietary 27 + cluster fit 14 (docked for missing report page) + freshness 16 (1 Jun 2026 report + BUY call)."
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Kesko/Stora Enso reports + /reports/oriola-equity-report. Drafted 2026-07-27 (Mon full pipeline run) as PR #33 on branch blog/oriola-stock-analysis. AUTO-PROMOTED: no status:queued item existed, so the pipeline promoted the highest-score proposed item >=48h old (oriola 82, proposed 2026-07-05); stora-enso (83) and upm (82) were proposed 2026-07-26, <48h, ineligible. Flagged autoApproved:true. DEPENDENCY NOW RESOLVED: /reports/oriola-equity-report.html is live in _catalog.json + sitemap, so the article links down to the report page and the internal-link gate passes cleanly. Angle: Oriola screens broken (P/E -9.6x, net sales 1.9bn->210m via 2026 IFRS 15 agent restatement, verified via Oriola stock-exchange release) but our 1 Jun 2026 model rates it BUY (1.15 EUR target vs 0.93; ~0.90 live via FMP 27 Jul 2026, +23.5% at report date); 100% of EUR 44m forward EBITDA from a ~4.7x distribution duopoly, entire re-rating hinges on the 50% Kronans Apotek JV (EUR 187m book vs ~EUR 75m assigned EV, EUR 112m gap, two EUR 16m impairments 2024+2025 verified via Oriola releases). Scenario brackets use the internally-consistent coreAnalysis figures (downside equity ~EUR 40m under a capital call; upside ~EUR 284m / ~EUR 1.54 per share by 2027), NOT the reverseValuation per-share table (which does not reconcile with EV minus net debt). Inbound link added from live reports/oriola-equity-report (ships in the PR). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge. Score: winnability 25 + proprietary 27 + cluster fit 14 + freshness 16."
     },
     {
       "slug": "limitations-of-ai-stock-analysis",
@@ -283,6 +290,93 @@
       "score": 67,
       "rationale": "High-volume methodology query answered mostly with vague hand-waving; we can show the actual mechanics because every one of our reports carries an explicit target derived from a reverse-valuation scenario bridge.",
       "notes": "Cluster A support; links to how-to-value-a-stock pillar + how-to-read-an-equity-research-report sibling. Proprietary data plan: headline.targetPrice vs currentPrice and the reverse-valuation scenario bridges across covered names (e.g. Oriola 1.15 EUR target from a 6.4x EV/EBITDA base, Tesla scenario bridge) to demonstrate target-setting end to end. Score: winnability 24 (moderate competition, 'shown with our own targets' is the info gain) + proprietary 22 + cluster fit 15 (Cluster A saturated) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "are-ai-stock-predictions-accurate",
+      "cluster": "ai-equity-research",
+      "role": "support",
+      "targetQuery": "are ai stock predictions accurate",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 76,
+      "rationale": "The honest, track-record-first answer to a high-intent AI query is nearly absent from a hype-dominated SERP; we can show real, already-resolved calls rather than promises, which is exactly the brand-trust the AI cluster exists to build.",
+      "notes": "Cluster C support; links to can-ai-analyze-stocks pillar + ai-vs-human-equity-analyst sibling (distinct intent: pillar = capabilities/limits, ai-vs-human = process comparison, this = did the outputs come true). Proprietary data plan: our own resolved calls where price has since moved toward target — nokia-05062026.json (5 Jun SELL, 11.50 fair value vs 13.90; fell to ~11 by mid-Jul, verify live via FMP at draft time), wartsila-05062026.json (SELL ~30.00 target; fell 36.12->~30), tesla-01062026.json (SELL 350 target; fell toward ~397). Also show a NAMED failure/uncertainty case to stay honest (a bull scenario that did not play out) rather than cherry-picking wins; frame accuracy as directional + scenario-bounded, not point-precise. All numbers from covered report JSONs + a live price re-check at draft time; no claims on uncovered tickers. Score: winnability 26 (thin authentic track-record SERP) + proprietary 24 (real resolved calls, our own data) + cluster fit 18 (Cluster C has room, core brand-trust angle) + freshness 8 (evergreen + AI topicality + fresh mid-Jul price resolution)."
+    },
+    {
+      "slug": "sum-of-the-parts-valuation",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "sum of the parts valuation",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 74,
+      "rationale": "Sum-of-the-parts is our signature technique (every report decomposes EV into value pools) yet it is still not a Cluster-A support; the SERP explains it abstractly while we can show live segment-EV splits nobody else publishes.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + value-pool-analysis-explained sibling, and down to the Tesla/AMD deep-dive posts (distinct intent: this teaches the method across names, those deliver a single-name verdict). Proprietary data plan: value-pool / EV decompositions across tesla-01062026.json (physical car+energy ~20.4% of EV vs ~79.6% in future pools), amd-05062026.json (Data Center ~87.5% of EV), nokia-05062026.json (optical vs mobile pool split) and storaenso-01062026.json (forest ~71.1% of EV). Numbers only from these JSONs. Score: winnability 24 (moderate methodology competition, live segment splits are the info gain) + proprietary 28 (signature method, unique numbers across 4 named files) + cluster fit 16 (Cluster A saturated but SOTP genuinely missing) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "fortum-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "fortum stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 68,
+      "rationale": "A freshly-covered OMXH utility (9 Jul 2026) with near-zero structured English coverage and no utility yet in the blog — the winnable Helsinki wedge applied to a Nordic low-carbon energy name, filling an open sector gap in Cluster B.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings + /reports/fortum-equity-report (page is published). DATA CAVEAT: fortum-coverage.json is a THIN coverage file — only headline.currentPrice (19.80 EUR), marketCap (EUR 17.9 bn), one multiple (Dividend Yield 3.6%) and a qualitative profile (Generation hydro/nuclear/wind + Consumer Solutions). It carries NO fair value, target, rating or reverse-valuation scenarios, so a valuation-verdict article cannot be sourced from the JSON alone. To unblock: either (a) supply a full Fortum report JSON exposing a fair value/scenarios, or (b) narrow scope to a sourced qualitative profile + the 3.6% dividend yield and Nordic clean-energy business mix, explicitly NOT stating an over/undervalued verdict. Proprietary data plan (narrow version): fortum-coverage.json price/marketcap/yield/segment profile only; no fabricated fair value (banned for YMYL). Score: winnability 25 (OMXH utility, near-zero English SERP) + proprietary 12 (thin coverage file, docked heavily) + cluster fit 16 (fills open utilities sector gap in Cluster B) + freshness 15 (fresh 9 Jul 2026 coverage)."
+    },
+    {
+      "slug": "how-to-spot-a-value-trap",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "how to spot a value trap",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-19",
+      "score": 63,
+      "rationale": "Classic value-investing query where incumbents explain 'cheap for a reason' abstractly; our differentiator is a live optically-cheap-but-SELL example decomposed by value pool, the inverse of the margin-of-safety angle.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + margin-of-safety-investing sibling (distinct: margin-of-safety = buffer on a real bargain, value-trap = why a cheap multiple is not a bargain). Proprietary data plan: nokia-05062026.json — a low headline multiple that our model still rates SELL once the optical vs mobile value-pool split and scenario range are shown; supported by the broader set of covered names where a cheap screen masks structural issues. Numbers only from covered report JSONs. Overlap risk with margin-of-safety-investing — keep intents distinct in review; both need not ship. Score: winnability 23 (evergreen, incumbents abstract; live cheap-but-SELL example differentiates) + proprietary 20 (real example, internal-example style) + cluster fit 14 (Cluster A saturated) + freshness 6 (evergreen)."
+    },
+    {
+      "slug": "stora-enso-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "stora enso stock analysis",
+      "intent": "informational-commercial",
+      "status": "in-review",
+      "prNumber": 35,
+      "autoApproved": true,
+      "autoApprovedAt": "2026-07-29",
+      "proposedAt": "2026-07-26",
+      "score": 83,
+      "rationale": "Explicitly a DESIGN §3 Cluster-B named support ('UPM / Stora Enso ... analysis takes') that is still not queued as a standalone, and the report just refreshed to 24 Jul 2026 with a live BUY and +45% upside — a fresh freshness trigger on a winnable OMXH English query nobody covers with a proprietary target.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings (forestry, UPM take) + /reports/stora-enso-equity-report. Proprietary data plan (from the refreshed storaenso-01062026.json, reportDate 24 Jul 2026): headline only — BUY, 12m target 13.30 EUR vs 9.17 EUR (+45.0% upside), market cap EUR 7.2 bn, enterprise value EUR 10.6 bn. NOTE: the 24 Jul refresh leaned the JSON out — it no longer carries reverseValuation.scenarios or valuePools, so this article can source a rating/target/upside/EV-bridge verdict but NOT a value-pool decomposition or bull/base/bear scenario table from the JSON (do not reuse the older 71.1%-of-EV forest split unless re-sourced). OVERLAP: keep intent distinct from the in-review forestry sector post (finnish-forestry-stocks-upm-stora-enso, PR #19 = sector thesis) and the /compare UPM-vs-Stora-Enso page (head-to-head); this = single-name valuation verdict + forecast. Score: winnability 25 (OMXH English underserved) + proprietary 26 (fresh full headline model) + cluster fit 15 (DESIGN-named but docked for forestry/compare overlap) + freshness 17 (fresh 24 Jul 2026 report)."
+    },
+    {
+      "slug": "upm-stock-analysis",
+      "cluster": "helsinki-stocks",
+      "role": "support",
+      "targetQuery": "upm stock analysis",
+      "intent": "informational-commercial",
+      "status": "proposed",
+      "proposedAt": "2026-07-26",
+      "score": 82,
+      "rationale": "The other DESIGN §3 Cluster-B named 'analysis take' still unqueued, and the 24 Jul 2026 refresh DOWNGRADED UPM to HOLD (target 21.10 EUR vs 22.23, -5.1%) — a genuine, timely change-of-view angle ('why we moved UPM to HOLD') that is high information gain and directly current.",
+      "notes": "Cluster B support; links to investing-in-helsinki-listed-stocks pillar + Helsinki siblings + /reports/upm-equity-report. Proprietary data plan (refreshed upm-21052026.json, reportDate 24 Jul 2026): headline only — HOLD, 12m target 21.10 EUR vs 22.23 EUR (-5.1%), market cap EUR 11.7 bn, enterprise value EUR 14.8 bn. Same JSON-leaning caveat as Stora Enso: no scenarios/valuePools in the current JSON, so no value-pool or scenario table without re-sourcing. STALE-DATA FLAG for the human: the in-review Helsinki pillar (PR #17) and forestry post (PR #19) both label UPM a BUY (forestry cited +51% upside); the current 24 Jul model is HOLD at -5.1%, so those posts need a refresh before merge and this single-name take should carry the current HOLD verdict. OVERLAP: keep intent distinct from forestry sector post (PR #19) and /compare page — single-name valuation-opinion vs sector/head-to-head. Score: winnability 25 (OMXH English underserved) + proprietary 25 (fresh full headline model) + cluster fit 14 (DESIGN-named, docked for forestry/compare overlap) + freshness 18 (fresh 24 Jul 2026 rating downgrade = strong news trigger)."
+    },
+    {
+      "slug": "exit-multiple-valuation",
+      "cluster": "valuation-methodology",
+      "role": "support",
+      "targetQuery": "exit multiple valuation method",
+      "intent": "informational",
+      "status": "proposed",
+      "proposedAt": "2026-07-26",
+      "score": 64,
+      "rationale": "Constructively unblocks the shelved terminal-growth-rate-dcf topic via the sanctioned reframe (exit-multiple sensitivity from our own scenario bridges): a data-backed methodology piece showing how the terminal/exit multiple drives fair value, using real scenario multiple bridges nobody else publishes.",
+      "notes": "Cluster A support; links to how-to-value-a-stock pillar + what-is-reverse-valuation + sum-of-the-parts siblings (distinct intent: this isolates the exit/terminal MULTIPLE's leverage on fair value, not the full reverse-valuation walk). Proprietary data plan: reverseValuation.scenarios in amd-05062026.json (Bull 28.9x -> USD 709.60, Base 28.5x -> 525.00, Bear 20.4x -> 213.34) and nokia-05062026.json (Bull 17.8x -> EUR 15.99, Base 19.7x -> 13.43, Bear 14.3x -> 9.78) — show how a few turns of exit multiple swing implied fair value across a wide band. CAVEAT: tesla-01062026.json and the refreshed UPM/StoraEnso JSONs no longer carry scenarios, so source the multiple bridges only from AMD + Nokia (and any other covered JSON that still exposes reverseValuation.scenarios at draft time). Numbers only from those JSONs. This supersedes the intent behind blocked terminal-growth-rate-dcf without fabricating a WACC/g. Overlap risk with reverse-valuation/sum-of-the-parts — keep the lens on the exit multiple specifically. Score: winnability 22 (methodology, moderate competition; live scenario multiple bridges are the info gain) + proprietary 22 (real scenario multiples across 2 named files) + cluster fit 14 (Cluster A saturated, but fills the shelved terminal-growth gap) + freshness 6 (evergreen)."
     }
   ],
   "quarterly": [

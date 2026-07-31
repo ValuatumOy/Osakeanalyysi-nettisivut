@@ -1,0 +1,9 @@
+{
+  "ticker": "BERG-B.ST",
+  "companyName": "Bergman & Beving AB (publ)",
+  "profile": "Bergman & Beving is a Swedish industrial group that acquires and develops niche technology companies serving the construction and manufacturing sectors. Its subsidiaries provide products and solutions including fastening systems, safety equipment, tools, machinery, and related consumables. Growth is driven by decentralized management, selective acquisitions, and a portfolio of market-leading niche businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:58:40.145Z"
+}

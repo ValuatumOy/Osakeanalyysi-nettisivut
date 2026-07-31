@@ -1,0 +1,9 @@
+{
+  "ticker": "PCAT.ST",
+  "companyName": "Photocat A/S",
+  "profile": "Photocat A/S develops and manufactures photocatalytic materials and related products that help reduce NOx and VOC emissions in outdoor and indoor applications. Its portfolio includes solutions for building materials, asphalt, de-icing and dust control, with customers and partners in municipalities, infrastructure, construction and industrial markets focused on environmental performance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:28:54.557Z"
+}

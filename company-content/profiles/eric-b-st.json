@@ -1,0 +1,9 @@
+{
+  "ticker": "ERIC-B.ST",
+  "companyName": "Telefonaktiebolaget LM Ericsson (publ)",
+  "profile": "Telefonaktiebolaget LM Ericsson (publ) develops and supplies hardware, software, and services for communications networks. Its portfolio includes radio access and transport equipment, core network and automation software, OSS/BSS, managed network services, and cloud infrastructure solutions. The company serves communications service providers as they build, operate, and modernize mobile and cloud-native networks.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:56:07.120Z"
+}

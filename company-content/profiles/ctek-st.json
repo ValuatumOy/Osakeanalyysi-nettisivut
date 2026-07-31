@@ -1,0 +1,9 @@
+{
+  "ticker": "CTEK.ST",
+  "companyName": "CTEK AB (publ)",
+  "profile": "CTEK AB (publ) develops and sells battery charging and battery management products for vehicles, including 12V and 24V chargers, accessories, and EV charging solutions. Its business is organized around Consumer and Professional divisions, serving private customers, workshops, vehicle manufacturers, charging point operators, and other commercial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:30:16.898Z"
+}

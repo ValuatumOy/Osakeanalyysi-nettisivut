@@ -1,0 +1,9 @@
+{
+  "ticker": "EIOF.OL",
+  "companyName": "Eidesvik Offshore ASA",
+  "profile": "Eidesvik Offshore ASA owns and operates a fleet of purpose-built offshore vessels that provide shipping services to the offshore supply, subsea and offshore wind markets. Its vessels support cargo transport, subsea construction, inspection, maintenance and repair, and commissioning and service work for wind farms. The company also focuses on lower-emission shipping technologies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:09:04.046Z"
+}

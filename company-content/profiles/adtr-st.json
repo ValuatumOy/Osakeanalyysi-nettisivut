@@ -1,0 +1,9 @@
+{
+  "ticker": "ADTR.ST",
+  "companyName": "Adtraction Group AB",
+  "profile": "Adtraction Group AB operates a partner marketing platform that connects brands with publishers, influencers, media sites, apps and other partners to drive online sales on a commission basis. The company provides tracking, payments and active partnership management, and serves advertisers across Europe through local teams and a proprietary technology platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:34:27.214Z"
+}

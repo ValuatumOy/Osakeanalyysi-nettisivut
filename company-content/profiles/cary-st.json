@@ -1,0 +1,9 @@
+{
+  "ticker": "CARY.ST",
+  "companyName": "Cary Group Holding AB (publ)",
+  "profile": "Cary Group Holding AB (publ) provides vehicle glass repair and replacement services across a broad European network, with complementary auto body repair and SMART repair in the Nordics. The group serves insurance companies and end customers through local workshop brands, emphasizing accessibility, quality, and repair-led solutions that support efficient operations and recycling.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:04:02.544Z"
+}

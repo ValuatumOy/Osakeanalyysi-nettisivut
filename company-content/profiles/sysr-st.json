@@ -1,0 +1,9 @@
+{
+  "ticker": "SYSR.ST",
+  "companyName": "Systemair AB (publ)",
+  "profile": "Systemair AB is a global supplier of ventilation, heating and cooling products and systems for commercial, residential and industrial buildings. Its range includes fans, air handling units, air distribution products, air conditioning, air curtains, filters and heating products, marketed mainly under the Systemair, Frico, Fantech and Menerga brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:10.976Z"
+}

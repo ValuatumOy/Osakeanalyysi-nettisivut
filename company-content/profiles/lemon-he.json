@@ -1,0 +1,9 @@
+{
+  "ticker": "LEMON.HE",
+  "companyName": "Lemonsoft Oyj",
+  "profile": "Lemonsoft Oyj develops and sells enterprise resource planning software for Finnish small and medium-sized businesses. Its cloud-based SaaS solutions combine core business functions such as production, warehouse, project, customer relationship, financial, payroll and HR management, with related services and reporting tools. Customers are mainly in manufacturing, wholesale, construction, services and accounting.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:25:25.336Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "MNTR.OL",
+  "companyName": "Mintra Holding AS",
+  "profile": "Mintra Holding AS develops cloud-based software and digital training solutions for safety-critical industries, especially maritime and energy. Its main products include Trainingportal, a learning and competence management platform, and OCS HR, a crew and workforce management system. The company also offers compliance courses, content libraries, and related services to help clients manage training and operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:18:05.081Z"
+}

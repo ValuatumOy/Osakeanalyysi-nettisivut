@@ -1,0 +1,9 @@
+{
+  "ticker": "UPSALE.ST",
+  "companyName": "Upsales Technology AB (publ)",
+  "profile": "Upsales Technology develops a cloud-based software platform for B2B sales organizations. Its subscription products combine CRM, marketing automation, customer support, subscription management, project management and business intelligence with company data and AI tools to help users find prospects, manage pipelines and grow revenue. The company serves customers mainly in the Nordic region.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:19:07.562Z"
+}

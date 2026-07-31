@@ -1,0 +1,134 @@
+{
+  "id": "kesko-07072026",
+  "slug": "kesko-equity-report",
+  "companyName": "Kesko Oyj",
+  "ticker": "KESKOB.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Grocery Stores",
+  "currency": "EUR",
+  "reportDate": "2026-07-07",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "19.20 EUR",
+    "targetPrice": "17.10 EUR",
+    "impliedUpside": "-10.9%",
+    "marketCap": "EUR 7.6 bn",
+    "enterpriseValue": "EUR 11.1 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "16.5x"},
+    {"label": "EV/EBITDA 2026E", "value": "6.8x"},
+    {"label": "FCF Yield 2026E", "value": "6.6%"},
+    {"label": "Dividend Yield 2026E", "value": "5.3%"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "2.1x"}
+  ],
+  "priceStats": {
+    "week52High": "22.20 EUR",
+    "week52Low": "17.80 EUR",
+    "oneYearChange": "-8.0%",
+    "threeYearChange": "+12.5%"
+  },
+  "summary": [
+    "Kesko Oyj (KESKOB.HE, NASDAQ Helsinki) is a Finnish trading group with three divisions — grocery trade, building and technical trade, and car trade; in this Valuatum equity research report dated 7 July 2026 we rate the stock SELL with a 12-month target price of 17.10 EUR against a current price of 19.20 EUR, implying roughly 10.9% downside. Market capitalisation is EUR 7.6 bn and enterprise value is EUR 11.1 bn.",
+    "The core valuation tension is a flat blended multiple applied to very different businesses. The market values the group at 15.8x 2026e EV/EBIT across the board, ignoring that the defensive Grocery trade franchise — 51.7% of revenue, 63.9% of comparable EBIT at a 6.5% margin, and EUR 7,091 million (63.9%) of the EUR 11,107 million enterprise value — deserves 15.5x, while Building & Technical Trade at a trough 3.8% margin warrants only 11-12x and Car trade, allocated EUR 1,409 million against a fair value of roughly EUR 706 million, only 8.5x. The headline EBIT jump from EUR 411 million reported in 2025 to EUR 703 million in 2026e is mainly an accounting normalization — the roll-off of roughly EUR 244 million in one-off impairments — not underlying operational improvement.",
+    "On a reverse-valuation basis, applying the selected 14.5x fair multiple to EUR 703 million of 2026e EBIT yields EUR 17.1 per share against the EUR 19.20 quote — roughly 11% downside in the base case — and we rate the stock SELL. The scenario base case implies EUR 19.31 per share (+0.6%); in the Bear case a grocery price war drives margins to the 5.0% peer average and pushes net debt to EUR 3,500 million, implying EUR 14.04 per share (-26.9%), while the Bull case of a B&TT volume recovery and de-leveraging to EUR 3,000 million implies EUR 25.35 (+32.0%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Flat Division Multiples Overstate Valuation", "metric": "15.8x vs 14.5x target", "text": "The market applies a flat 15.8x EV/EBIT multiple across divisions, ignoring that grocery deserves 15.5x while B&TT and Car Trade warrant only 11-12x and 8.5x respectively."},
+    {"num": "02", "title": "EBIT Jump Driven by Accounting Normalization", "metric": "EUR 703m 2026e EBIT", "text": "Group EBIT rises from EUR 411m reported in 2025 to EUR 703m in 2026e mainly through the roll-off of roughly EUR 244m in one-off impairments, not underlying operational improvement."},
+    {"num": "03", "title": "B&TT and Car Trade Are Overvalued", "metric": "~EUR 700m over-allocation", "text": "B&TT EBIT sits at a depressed EUR 178.6m against a mid-cycle EUR 263m target, while Car Trade's EUR 1,409m EV allocation overstates its fair value of roughly EUR 706m."}
+  ],
+  "thesisBreaker": "A 150-basis-point compression in the grocery margin would permanently rebase group earnings and compress the premium multiple currently assigned to the stock.",
+  "valuePools": [
+    {"name": "Grocery trade", "share": "63.9% · EUR 7,091m", "economics": "Revenue EUR 6,448m (51.7%) · Comp. EBIT EUR 418m (63.9% of EBIT, 6.5% margin) · EV EUR 7,091m", "text": "Profit engine valued strictly on current, recurring earnings rather than future optionality. The K-retailer franchise model shifts store-level execution risk to retailers while Kesko keeps the wholesale margin, logistics scale, and brand royalties, producing a 6.5% operating margin that is structurally better than many pure-play supermarket peers. Kesko holds approximately 34% of a consolidated Finnish duopoly against S-Group, with Lidl as a smaller but disruptive third player; at a normalized 15.5x EV/EBIT the EUR 7,091 million enterprise value requires approximately EUR 457 million in division EBIT — achievable given current run-rates."},
+    {"name": "Building & technical trade", "share": "27.3% · EUR 3,029m", "economics": "Revenue EUR 4,686m (37.6%) · Comp. EBIT EUR 179m (27.3% of EBIT, 3.8% margin) · EV EUR 3,029m", "text": "Commodity pool valued on mid-cycle recovery potential rather than currently depressed trough earnings. The division operates across eight countries (Nordics and Baltics), combining technical trade (Onninen) with building and home improvement (K-Rauta, Byggmakker); high interest rates have compressed the margin from a historical >6% peak to the current 3.8%, while the fallback allocation prices the segment at 17.0x trough EBIT. Reaching EUR 263 million in mid-cycle EBIT on an expanded EUR 5,100 million sales base implies a 5.1% operating margin — realistic once interest rates ease and construction resumes."},
+    {"name": "Car trade", "share": "12.7% · EUR 1,409m", "economics": "Revenue EUR 1,341m (10.8%) · Comp. EBIT EUR 83m (12.7% of EBIT, 6.2% margin) · EV EUR 1,409m", "text": "Scaling pool that generated EUR 1,341.2 million in sales and EUR 83.1 million in comparable EBIT in 2025 from vehicle imports, retail, and aftermarket services. The fallback allocation assigns it EUR 1,409 million of enterprise value at an implied 17x EV/EBIT, disconnected from the 7.0x to 9.0x forward EBIT at which pure-play auto dealership groups typically trade; at a more realistic 8.5x EBIT the standalone enterprise value would be approximately EUR 706 million, leaving a roughly EUR 700 million over-allocation."},
+    {"name": "Common functions & eliminations", "share": "-3.8% · EUR -422m", "economics": "Revenue EUR 0m (0.0%) · Comp. EBIT -EUR 25m (-3.8% of EBIT) · EV -EUR 422m", "text": "Mixed corporate overhead and eliminations with a 2025 comparable EBIT of EUR -24.9 million and a negative EUR 422 million enterprise-value allocation; the Kesko Senukai joint venture (equity method) sits here as an unallocated associate."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the blended 15.8x EV/EBIT multiple embedded in Kesko's EUR 11,107 million enterprise value is coherent once each segment is valued on its own merits, with the durability of the 6.5% grocery margin amid intense duopoly competition and the pace of the macroeconomic recovery driving Building & Technical Trade volumes as the two swing factors. Because Kesko carries EUR 3,382 million in net debt plus EUR 77 million in residual senior claims, equity market capitalization of EUR 7,648 million sits well below enterprise value.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "13,500", "EBITDA": "1,850", "Margin": "13.7%", "Multiple": "7.3x", "EV": "13,505", "Equity": "10,099"}, "impliedValueOrUpside": "EUR 25.35 / sh · +32.0%"},
+      {"scenario": "Base", "cols": {"Revenue": "13,082", "EBITDA": "1,630", "Margin": "12.5%", "Multiple": "6.8x", "EV": "11,100", "Equity": "7,694"}, "impliedValueOrUpside": "EUR 19.31 / sh · +0.6%"},
+      {"scenario": "Bear", "cols": {"Revenue": "12,500", "EBITDA": "1,200", "Margin": "9.6%", "Multiple": "7.5x", "EV": "9,000", "Equity": "5,594"}, "impliedValueOrUpside": "EUR 14.04 / sh · -26.9%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Kesko earns the clear majority of its economic output from Grocery trade, which generates over half of group revenue and nearly two-thirds of comparable operating profit from a defensive, stable-margin wholesale and franchise network in Finland. Building & technical trade (B&TT) is the second-largest revenue engine, but its profit contribution is currently held down by a severe trough in the Nordic construction cycle, while Car trade is smaller and distinct, covering vehicle imports, retail, and services. For the 2026 forward anchor, enterprise value of EUR 11,107 million bridges to an equity market capitalization of EUR 7,648 million after deducting EUR 3,382 million in net debt and EUR 77 million in residual senior claims. The allocation uses a fallback method that spreads enterprise value across segments in proportion to each segment's 2025 comparable operating profit at a blended 15.8x EV/EBIT multiple — it reconciles to the control total but obscures the reality that auto dealerships and cyclically depressed construction wholesalers do not trade at the same multiples as a defensive grocery business."},
+    {"heading": "Cross-pool bridge", "text": "Mechanically, the jump from EUR 411 million reported EBIT in 2025 to the EUR 703 million forecast for 2026 is an accounting normalization, not an operational turnaround: comparable operating profit in 2025 was EUR 654.9 million, and reported profit was dragged down by roughly EUR 244 million in items affecting comparability (impairments and restructuring, notably in B&TT and corporate functions). On a sum-of-the-parts basis, Grocery trade's roughly EUR 440-450 million in forward EBIT justifies an enterprise value of approximately EUR 7.0-7.2 billion at a defensive 15.5x multiple, and Car trade's EUR 83 million EBIT supports approximately EUR 700 million at a sector-appropriate 8.5x, leaving roughly EUR 3.2 billion to be supported by Building & technical trade — which requires EUR 265 million in mid-cycle EBIT at a 12x multiple, achievable given its historical margin profile and EUR 4.7 billion revenue base. The most fragile assumption is that Nordic construction starts recover before Kesko's net debt load (forecast at 2.07x EBITDA in 2026, rising slightly thereafter) creates capital allocation pressure."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios diverge mainly on two factors: whether the 6.5% grocery margin holds, and how fast construction recovers. In the Bear scenario, continued inflation fatigue forces Kesko to accelerate price investments, driving grocery margins down to the 5.0% peer average while B&TT stagnates and net debt rises to EUR 3,500 million — implying EUR 14.04 per share (-26.9%). The Bull scenario needs both fronts to go right: B&TT volumes recover and push division margins back above 6.0%, grocery holds margins while taking further share from S-Group, and healthy operating cash flow de-levers the balance sheet to EUR 3,000 million — implying EUR 25.35 (+32.0%). The EUR 11.1 billion enterprise value is mathematically defensible provided one applies the right sum-of-the-parts multiples, but applying the selected 14.5x to EUR 703 million of 2026e EBIT yields EUR 17.1 versus the EUR 19.20 quote — roughly 11% downside in the base case and a SELL."}
+  ],
+  "risks": [
+    "Grocery price war eroding margins (Grocery trade): K-Group sacrifices premium margins to defend volumes from S-Group and Lidl, with monthly market share losses as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Prolonged construction recession (Building & technical trade): sustained high interest rates keep Nordic construction depressed, destroying B&TT operating leverage, with falling regional building permits as the early warning - HIGH impact, structural.",
+    "Rising financial leverage limiting flexibility (Group): net debt/EBITDA nears the 2.5x limit, forcing capital allocation trade-offs or dividend cuts, with rising net debt per EBITDA forecasts as the early warning - MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "Grocery market share data releases (near-term, Grocery trade): Finnish Grocery Trade Association monthly data validates price investments; the most important catalyst, as it directly tests whether the division carrying 65%+ of enterprise value is defending its moat.",
+    "Nordic housing starts rebound (medium-term, Building & technical trade): Nordic housing starts and building permits signal B&TT margin recovery.",
+    "Baltic JV performance updates (near-term, Building & technical trade): Kesko Senukai equity-method profit contribution flags inventory and regional macro risks.",
+    "Capital allocation to bolt-on M&A (long-term, Building & technical trade): bolt-on M&A in the B&TT space consolidates a fragmented technical market."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2023", "2024", "2025", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["11,784", "11,920", "12,475", "13,082", "13,581", "13,980"]},
+        {"label": "EBITDA", "values": ["1,104", "1,203", "1,008", "1,630", "1,413", "1,479"]},
+        {"label": "EBITDA margin", "values": ["9.4%", "10.1%", "8.1%", "12.5%", "10.4%", "10.6%"]},
+        {"label": "Depreciation", "values": ["-408", "-623", "-597", "-927", "-645", "-667"]},
+        {"label": "Operating Profit (EBIT)", "values": ["695", "580", "411", "703", "768", "812"]},
+        {"label": "EBIT margin", "values": ["5.9%", "4.9%", "3.3%", "5.4%", "5.7%", "5.8%"]},
+        {"label": "Net financial items", "values": ["-82", "-108", "100", "-129", "-128", "-129"]},
+        {"label": "Pre-tax Profit", "values": ["614", "472", "510", "573", "640", "682"]},
+        {"label": "Net Earnings", "values": ["496", "380", "405", "463", "516", "551"]},
+        {"label": "EPS (EUR)", "values": ["1.3", "1", "1", "1.2", "1.3", "1.4"]},
+        {"label": "DPS (EUR)", "values": ["1.1", "0.8", "0.9", "1", "1.1", "1.2"]},
+        {"label": "Payout ratio", "values": ["86.7%", "80.7%", "91.4%", "87.2%", "87.2%", "87.2%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023", "2024", "2025", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["996", "1,187", "798", "1,491", "1,121", "1,186"]},
+        {"label": "Operating cash flow", "values": ["1,061", "1,276", "741", "1,595", "1,225", "1,290"]},
+        {"label": "Change in working capital", "values": ["-71", "-184", "204", "-101", "40", "32"]},
+        {"label": "Gross capex", "values": ["868", "1,081", "1,084", "1,094", "837", "821"]},
+        {"label": "Capex (ex. M&A)", "values": ["-868", "-1,081", "-1,084", "-1,094", "-837", "-821"]},
+        {"label": "Free Operating Cash Flow", "values": ["167", "142", "-249", "501", "387", "469"]},
+        {"label": "Free cash flow to firm", "values": ["167", "142", "-249", "501", "387", "469"]},
+        {"label": "CF from financing", "values": ["-136", "153", "-43", "-268", "-272", "-356"]},
+        {"label": "Dividends paid", "values": ["-421", "-430", "-306", "-370", "-403", "-450"]},
+        {"label": "Net change in cash", "values": ["-9", "259", "-329", "129", "11", "9"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026"],
+      "rows": [
+        {"label": "P/E", "values": ["16.5x"]},
+        {"label": "EV/EBITDA", "values": ["6.8x"]},
+        {"label": "EV/EBIT", "values": ["15.8x"]},
+        {"label": "P/FCF", "values": ["15.3x"]},
+        {"label": "P/BV", "values": ["2.6x"]},
+        {"label": "Dividend Yield", "values": ["5.3%"]},
+        {"label": "Net Debt / EBITDA", "values": ["2.1x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Kesko a buy in 2026?", "a": "No. Valuatum's 7 July 2026 equity report rates Kesko (KESKOB.HE) a SELL with a 17.10 EUR 12-month target versus a 19.20 EUR price, implying about 10.9% downside. The market applies a flat 15.8x blended EV/EBIT multiple across divisions, overstating the sum-of-the-parts value of a group where B&TT and Car Trade warrant only 11-12x and 8.5x."},
+    {"q": "What is Kesko's price target?", "a": "The Valuatum report dated 7 July 2026 sets a 12-month fundamental target price of 17.10 EUR for Kesko (KESKOB.HE), against a current price of 19.20 EUR. The target bridge weights EV/EBIT at 60% (14.5x on EUR 703m 2026e EBIT, implying 16.9 EUR) and P/E at 40% (15.0x on 1.16 EUR 2026e EPS, implying 17.4 EUR), for a weighted target of 17.1 EUR."},
+    {"q": "Why is Kesko rated SELL?", "a": "Kesko is rated SELL because the market's flat 15.8x blended EV/EBIT multiple does not distinguish a grocery franchise worth 15.5x from a mid-cycle B&TT business worth 11-12x and an auto dealer worth 8.5x. The EBIT jump from EUR 411m reported in 2025 to EUR 703m in 2026e is mainly the roll-off of roughly EUR 244m in one-off impairments, while B&TT EBIT sits at a depressed EUR 178.6m and Car Trade's EUR 1,409m EV allocation overstates its roughly EUR 706m fair value."},
+    {"q": "Is Kesko overvalued in 2026?", "a": "On Valuatum's framework Kesko looks moderately overvalued: it trades at 15.8x 2026e EV/EBIT, below its own normalized historical average of 17.8x but modestly above the peer group median of 14.7x. Applying the selected fair multiple of 14.5x to EUR 703m of 2026e EBIT yields EUR 17.1 versus the EUR 19.20 quote — roughly 11% downside in the base case."},
+    {"q": "How does the reverse valuation work for Kesko?", "a": "The reverse valuation tests the durability of the 6.5% grocery margin and the pace of the B&TT construction recovery. The base case applies 6.8x to EUR 1,630m of 2026 EBITDA for an EV of EUR 11,100m and equity of EUR 7,694m, implying EUR 19.31 per share (+0.6%). In the Bear case grocery margins fall to the 5.0% peer average and the stock is worth EUR 14.04 (-26.9%); the Bull case implies EUR 25.35 (+32.0%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Kesko report dated 7 July 2026 (company value map; Grocery trade EV allocation EUR 7,091m, current quote 19.20 EUR).",
+    "Consensus estimates: 2026 EBIT consensus of EUR 703m used in the forward model.",
+    "Market data: Ticker KESKOB.HE current price 19.20 EUR as of 7 July 2026; group EV/EBIT 2026 multiple 15.81x; 2025 comparable EBIT EUR 654.9m; 2026 forward EBITDA EUR 1,630m (analyst-generated estimate)."
+  ]
+}

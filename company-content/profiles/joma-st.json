@@ -1,0 +1,9 @@
+{
+  "ticker": "JOMA.ST",
+  "companyName": "John Mattson Fastighetsföretagen AB (publ)",
+  "profile": "John Mattson Fastighetsföretagen is a Swedish residential property company focused on owning, managing and developing rental apartments and commercial premises in the Stockholm region and Uppsala. Its portfolio is concentrated in Lidingö, Sollentuna, Stockholm, Nacka and Upplands Väsby, with growth driven by property management, densification, value creation and acquisitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:29:31.769Z"
+}

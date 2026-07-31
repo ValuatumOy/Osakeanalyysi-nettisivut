@@ -1,0 +1,9 @@
+{
+  "ticker": "CDMIL.ST",
+  "companyName": "CodeMill AB (publ)",
+  "profile": "Codemill AB (publ) develops cloud-based software and related services for media and entertainment customers. Its product portfolio includes the Accurate.Video suite, the Accurate Player SDK and Cantemo MAM, which support broadcast, VOD and content supply chain workflows. The company also provides Digital Services, licensing and subscription offerings, service agreements and customer-specific consulting.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:23:32.324Z"
+}

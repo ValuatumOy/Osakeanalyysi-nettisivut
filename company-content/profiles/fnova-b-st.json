@@ -1,0 +1,9 @@
+{
+  "ticker": "FNOVA-B.ST",
+  "companyName": "Fortinova Fastigheter AB (Publ)",
+  "profile": "Fortinova Fastigheter AB (publ) is a Swedish property company focused on acquiring, developing and managing residential properties, mainly in growth municipalities in western Sweden. Its portfolio also includes community and commercial properties. The company’s value drivers are recurring rental income, active property management and long-term cash flow from its real estate holdings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:02:04.834Z"
+}

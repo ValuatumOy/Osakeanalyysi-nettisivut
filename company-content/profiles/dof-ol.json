@@ -1,0 +1,9 @@
+{
+  "ticker": "DOF.OL",
+  "companyName": "DOF ASA",
+  "profile": "DOF ASA is an offshore and subsea services company serving the energy industry. It owns and operates a fleet of offshore and subsea vessels and provides integrated marine and engineering services, including survey, inspection, maintenance and repair, construction, decommissioning, and other project support. Its revenues are driven by vessel operations and offshore project execution.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:00:37.301Z"
+}

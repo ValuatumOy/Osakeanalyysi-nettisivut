@@ -1,0 +1,9 @@
+{
+  "ticker": "GENT.OL",
+  "companyName": "Gentian Diagnostics ASA",
+  "profile": "Gentian Diagnostics ASA develops and manufactures in vitro diagnostic reagents and open-channel turbidimetric assays for clinical chemistry analyzers. Its portfolio covers kidney disease, cardiac disease, inflammation, infection and veterinary medicine. The company sells through OEM partners, distributors and direct channels in global human and animal diagnostics markets, with manufacturing and offices in Norway and abroad.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:27:12.383Z"
+}

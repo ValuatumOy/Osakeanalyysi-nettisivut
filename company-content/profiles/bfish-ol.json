@@ -1,0 +1,9 @@
+{
+  "ticker": "BFISH.OL",
+  "companyName": "BioFish Holding AS",
+  "profile": "BioFish Holding AS is a Norwegian aquaculture company that produces smolt and post-smolt for salmon farming. Its main facility is a recirculating aquaculture system in Ljones on the Hardangerfjord, and it supplies fish farms along the Norwegian coast and, to a lesser extent, Northern Europe. In 2025, the company entered a strategic review and sale process.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:37:11.240Z"
+}

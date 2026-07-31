@@ -1,0 +1,9 @@
+{
+  "ticker": "ZAP.OL",
+  "companyName": "Zaptec AS",
+  "profile": "Zaptec is a Norwegian manufacturer of electric vehicle charging equipment and software. It develops and sells home chargers, commercial charging systems, and related services such as load balancing, a charging portal and app. The company serves residential, workplace and public parking segments, with products designed and manufactured in Norway.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:47:06.624Z"
+}

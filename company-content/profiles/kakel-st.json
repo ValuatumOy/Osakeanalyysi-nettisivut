@@ -1,0 +1,9 @@
+{
+  "ticker": "KAKEL.ST",
+  "companyName": "Kakel Max AB (publ)",
+  "profile": "Kakel Max AB (publ) is a Swedish specialist retailer and wholesaler focused on tiles, ceramic slabs, natural stone and related bathroom products. The company serves private and project customers through its own store network, main warehouse and resellers. Its value drivers are product range, service, logistics and purchasing scale.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:31:07.434Z"
+}

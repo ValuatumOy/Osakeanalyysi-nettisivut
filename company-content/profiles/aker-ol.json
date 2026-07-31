@@ -1,0 +1,9 @@
+{
+  "ticker": "AKER.OL",
+  "companyName": "Aker ASA",
+  "profile": "Aker ASA is an industrial investment company that manages a portfolio of listed and unlisted holdings. Its investments span energy, marine, industrial software, green technologies, real estate and related sectors. The company uses active ownership, capital allocation and strategic partnerships to develop portfolio companies and generate value through long-term investment returns.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:19:10.938Z"
+}

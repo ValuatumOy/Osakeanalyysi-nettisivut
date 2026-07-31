@@ -1,0 +1,9 @@
+{
+  "ticker": "ARISE.ST",
+  "companyName": "Arise AB (publ)",
+  "profile": "Arise AB (publ) is a Swedish renewable energy company that develops, builds, sells and manages renewable electricity production. Its activities span project development, onshore wind generation, and related services such as construction management and asset management. The company operates mainly in the Nordics, the UK and Germany, with wind, solar and battery storage in its portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:19:01.437Z"
+}

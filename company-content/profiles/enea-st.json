@@ -1,0 +1,9 @@
+{
+  "ticker": "ENEA.ST",
+  "companyName": "Enea AB (publ)",
+  "profile": "Enea AB is a Swedish software company that develops telecommunications and cybersecurity solutions for operators, communication service providers, enterprises and public-sector customers. Its products include messaging firewalls, traffic management, network intelligence and access control tools that help secure networks, improve performance and support revenue generation. The company is headquartered in Stockholm and listed on Nasdaq Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:53:16.282Z"
+}

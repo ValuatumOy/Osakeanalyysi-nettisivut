@@ -1,0 +1,9 @@
+{
+  "ticker": "SMOP.OL",
+  "companyName": "Smartoptics Group AS",
+  "profile": "Smartoptics Group AS develops optical networking solutions and devices for open networking environments. Its products and software are used by cable and telecom operators, cloud providers, internet exchanges, governments and enterprises in metro, regional and metro-access networks. The company also emphasizes vendor-neutral architectures that help customers scale capacity and lower network costs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:23:50.810Z"
+}

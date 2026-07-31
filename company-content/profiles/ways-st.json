@@ -1,0 +1,9 @@
+{
+  "ticker": "WAYS.ST",
+  "companyName": "Waystream Holding AB (publ)",
+  "profile": "Waystream Holding AB develops and sells network equipment for fiber optic access networks, including switches, routers and optical accessories for FTTH and FTTB deployments. Its products are used by network carriers, city networks and broadband providers to deliver residential and business services over fiber, with related support, training and consulting services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:57.538Z"
+}

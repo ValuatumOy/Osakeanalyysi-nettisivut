@@ -1,0 +1,9 @@
+{
+  "ticker": "BRG.OL",
+  "companyName": "Borregaard ASA",
+  "profile": "Borregaard is a specialty chemicals company that operates a biorefinery in Sarpsborg, Norway, and related production sites abroad. It develops and sells lignin-based biopolymers, speciality cellulose, cellulose fibrils, biovanillin and bioethanol for industrial and consumer applications, with products used in construction, agriculture, food, pharmaceuticals, batteries and other niches.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:42:25.975Z"
+}

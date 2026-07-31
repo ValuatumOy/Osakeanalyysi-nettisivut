@@ -1,0 +1,9 @@
+{
+  "ticker": "NAPA.OL",
+  "companyName": "Napatech A/S",
+  "profile": "Napatech A/S develops programmable Smart Network Interface Cards (SmartNICs) and Data Processing Units for cloud, enterprise, and telecom data centers. Its products and software are used to accelerate AI, network, storage, and security workloads, with a focus on packet capture, inline processing, virtualization, and related data-delivery applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:00:59.444Z"
+}

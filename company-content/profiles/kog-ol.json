@@ -1,0 +1,9 @@
+{
+  "ticker": "KOG.OL",
+  "companyName": "Kongsberg Gruppen ASA",
+  "profile": "Kongsberg Gruppen ASA is an international technology group focused on defence, security and surveillance, with activities in advanced missiles, remote weapon systems, air and missile defence, command and control, naval systems and aerospace-related solutions. The company also provides ocean-space and satellite technologies, serving customers in demanding environments worldwide after the 2026 demerger of Kongsberg Maritime.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:48:29.217Z"
+}

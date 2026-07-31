@@ -1,0 +1,9 @@
+{
+  "ticker": "MAGI.ST",
+  "companyName": "MAG Interactive AB (publ)",
+  "profile": "MAG Interactive AB (publ) develops and publishes casual mobile games for a global audience. Its portfolio includes word, trivia and puzzle titles such as Ruzzle, WordBrain and QuizDuel, distributed mainly through app stores on iOS and Android. Revenue is generated primarily from in-app purchases and advertising, supported by ongoing game updates and marketing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:43:39.500Z"
+}

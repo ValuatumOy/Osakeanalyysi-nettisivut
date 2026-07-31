@@ -1,0 +1,9 @@
+{
+  "ticker": "WIHL.ST",
+  "companyName": "Wihlborgs Fastigheter AB (publ)",
+  "profile": "Wihlborgs Fastigheter is a property company focused on commercial real estate in the Öresund region, with holdings in Malmö, Helsingborg, Lund and Copenhagen. Its business centers on letting and managing office, retail, logistics and production properties, alongside project and urban development. Rental income, occupancy and property value growth are its main value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:07.317Z"
+}

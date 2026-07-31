@@ -1,0 +1,9 @@
+{
+  "ticker": "GOMX.ST",
+  "companyName": "GomSpace Group AB (publ)",
+  "profile": "GomSpace Group AB develops and supplies small satellite and CubeSat solutions for academic, government and commercial customers. Its portfolio includes satellite platforms, miniaturized radio technology, integrated spacecraft systems, project delivery and satellite operations software. The company also serves defense and civil markets with space-based technologies for communications, surveillance and mission operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:09:13.391Z"
+}

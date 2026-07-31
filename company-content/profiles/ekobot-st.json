@@ -1,0 +1,9 @@
+{
+  "ticker": "EKOBOT.ST",
+  "companyName": "Ekobot AB (publ)",
+  "profile": "Ekobot AB (publ) develops, manufactures and sells autonomous agricultural robots for precision weed control. Its WEAI system combines AI, robotics and electrification to detect and remove weeds mechanically, helping growers reduce herbicide use and labor costs. The company is based in Västerås and focuses on sustainable production for vegetables and other crops.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:48:24.139Z"
+}

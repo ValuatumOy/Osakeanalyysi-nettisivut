@@ -1,0 +1,9 @@
+{
+  "ticker": "ANNE-B.ST",
+  "companyName": "Annehem Fastigheter AB",
+  "profile": "Annehem Fastigheter AB is a Swedish property company that owns, manages and develops sustainable commercial, community service and residential properties in Nordic growth regions, mainly Stockholm, Skåne, Gothenburg and Helsinki. Its portfolio is concentrated in office buildings, with selected logistics, community and residential assets, and the company focuses on customer-focused property management and long-term value creation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:05:14.960Z"
+}

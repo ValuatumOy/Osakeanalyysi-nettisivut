@@ -1,0 +1,9 @@
+{
+  "ticker": "DLAB.ST",
+  "companyName": "Dlaboratory Sweden AB (publ)",
+  "profile": "Dlaboratory Sweden AB develops and sells software-based solutions for monitoring and optimizing electricity grids. Its offering combines SaaS, hardware, cloud data storage and patented algorithms for grid analysis, together with independent inspection services through its Svensk Linjebesiktning subsidiary. The company serves grid operators and owners in Sweden and selected international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:39:04.853Z"
+}

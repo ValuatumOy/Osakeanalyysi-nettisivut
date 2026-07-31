@@ -1,0 +1,9 @@
+{
+  "ticker": "RUG.ST",
+  "companyName": "Rugvista Group AB (publ)",
+  "profile": "Rugvista Group AB is a European direct-to-consumer e-commerce company that sells rugs and carpets through the Rugvista and CarpetVista brands. It offers a broad assortment of design and traditional rugs, together with selected accessories, via multilingual web shops. The company is headquartered in Malmö, Sweden, with operations focused on online retail and customer service.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:35.140Z"
+}

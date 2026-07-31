@@ -1,0 +1,9 @@
+{
+  "ticker": "VICO.ST",
+  "companyName": "Vicore Pharma Holding AB (publ)",
+  "profile": "Vicore Pharma Holding AB (publ) is a clinical-stage biopharmaceutical company developing treatments for respiratory and fibrotic diseases, with a focus on idiopathic pulmonary fibrosis. Its lead program, buloxibutid, is an oral small-molecule angiotensin II type 2 receptor agonist being studied in late-stage clinical trials. The company also advances additional ATRAG-based assets and related pipeline programs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:37.208Z"
+}

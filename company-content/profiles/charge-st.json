@@ -1,0 +1,9 @@
+{
+  "ticker": "CHARGE.ST",
+  "companyName": "ChargePanel AB (publ)",
+  "profile": "ChargePanel AB provides a cloud-based software platform for managing, operating and monetizing electric vehicle charging networks. Its products include white-label back-office tools, driver apps, payment and billing functions, roaming connections and fleet-related services. The company serves charge point operators, mobility service providers, energy companies, installers and other businesses in the EV charging market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:10:03.015Z"
+}

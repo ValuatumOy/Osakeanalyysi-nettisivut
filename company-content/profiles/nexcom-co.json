@@ -1,0 +1,9 @@
+{
+  "ticker": "NEXCOM.CO",
+  "companyName": "Nexcom A/S",
+  "profile": "Nexcom A/S develops and delivers SaaS software platforms that automate and improve customer service operations, primarily for large B2C companies. Its solutions are designed to streamline workflows, handle customer interactions more efficiently, and support service quality through data-driven tools and AI-based functionality. The company’s value drivers are software subscription sales and related implementation and support services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:04:04.476Z"
+}

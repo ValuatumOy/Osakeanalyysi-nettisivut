@@ -1,0 +1,9 @@
+{
+  "ticker": "BESQAB.ST",
+  "companyName": "Besqab AB (publ)",
+  "profile": "Besqab AB (publ) develops sustainable, high-quality residential housing in the Greater Stockholm and Uppsala regions. Its core business covers project development across the full process from land acquisition and market analysis to completion and handover. The company also manages completed rental housing and care-related properties as a complementary property management activity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:00:41.632Z"
+}

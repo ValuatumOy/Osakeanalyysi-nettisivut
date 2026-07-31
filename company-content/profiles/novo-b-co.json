@@ -1,0 +1,9 @@
+{
+  "ticker": "NOVO-B.CO",
+  "companyName": "Novo Nordisk A/S",
+  "profile": "Novo Nordisk is a Denmark-based global healthcare company focused on discovering, developing and delivering medicines and delivery systems for diabetes, obesity, rare blood disorders and other chronic diseases. Its portfolio includes insulin, GLP-1 treatments and injection devices, supported by research, manufacturing and global access programs. The company is also streamlining operations to refocus resources on core growth areas.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:46:01.405Z"
+}

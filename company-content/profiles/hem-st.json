@@ -1,0 +1,9 @@
+{
+  "ticker": "HEM.ST",
+  "companyName": "Hemnet Group AB (publ)",
+  "profile": "Hemnet Group AB (publ) operates Sweden’s leading property portal, bringing together home buyers, sellers and real estate agents on its digital platform. The company’s business is built around property listings and related products and services that help users search, market and transact homes, while generating revenue from the housing market’s activity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:15:31.222Z"
+}

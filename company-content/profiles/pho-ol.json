@@ -1,0 +1,9 @@
+{
+  "ticker": "PHO.OL",
+  "companyName": "Photocure ASA",
+  "profile": "Photocure ASA is a specialty pharmaceutical company focused on bladder cancer. It develops and commercializes Hexvix/Cysview, a blue light cystoscopy product used to improve detection and management of bladder tumors. The company sells directly in the United States and parts of Europe and works with partners in other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:05:47.749Z"
+}

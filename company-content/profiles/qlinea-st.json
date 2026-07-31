@@ -1,0 +1,9 @@
+{
+  "ticker": "QLINEA.ST",
+  "companyName": "Q-linea AB (publ)",
+  "profile": "Q-linea AB is a Swedish medical technology company that develops and commercialises diagnostic systems for severe infectious diseases. Its ASTar platform provides rapid antibiotic susceptibility testing from positive blood cultures, supported by consumables, software and related services. The company’s products are aimed at shortening time to targeted treatment and helping laboratories manage antimicrobial resistance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:15:43.912Z"
+}

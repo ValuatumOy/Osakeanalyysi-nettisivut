@@ -1,0 +1,9 @@
+{
+  "ticker": "ECO.OL",
+  "companyName": "EcoOnline Holding AS",
+  "profile": "EcoOnline Holding AS develops cloud-based software for workplace health and safety, chemical management, and ESG reporting. Its platform helps organizations manage incidents, audits, risk, training, compliance tasks, and environmental reporting, with products for EHS operations, chemical safety, crisis readiness, and climate-related disclosures across multiple industries globally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:06:17.554Z"
+}

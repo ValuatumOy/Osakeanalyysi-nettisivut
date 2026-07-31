@@ -1,0 +1,9 @@
+{
+  "ticker": "SFTR.ST",
+  "companyName": "Safeture AB (publ)",
+  "profile": "Safeture AB provides a software-as-a-service platform for people risk management and duty of care. Its system combines a web portal and mobile app to help organizations monitor employee locations, receive alerts, manage incidents, and communicate during emergencies. The company serves risk management and assistance providers, global companies, and other organizations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:14:07.685Z"
+}

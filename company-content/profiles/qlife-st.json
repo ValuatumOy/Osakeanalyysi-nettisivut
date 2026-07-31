@@ -1,0 +1,9 @@
+{
+  "ticker": "QLIFE.ST",
+  "companyName": "Qlife Holding AB (publ)",
+  "profile": "Qlife Holding AB develops and commercializes the Egoo.health platform, a home-based biomarker testing system that uses a small blood sample to measure and analyze health markers. The company focuses on point-of-care diagnostics for chronic disease monitoring and related clinical applications, and it also works through partnerships on development, regulatory approval, manufacturing, and commercialization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:51:14.123Z"
+}

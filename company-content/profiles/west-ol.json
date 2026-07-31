@@ -1,0 +1,9 @@
+{
+  "ticker": "WEST.OL",
+  "companyName": "Western Bulk Chartering AS",
+  "profile": "Western Bulk Chartering AS is a global dry bulk shipping operator that charters vessels from shipowners and transports cargo for customers worldwide. Its business is built on matching cargo with suitable vessels, supported by market data, risk management and fleet deployment. The company also handles freight-related trading and voyage coordination.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:42:10.173Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "BMA.OL",
+  "companyName": "Byggma ASA",
+  "profile": "Byggma ASA is a Nordic building materials group that develops, manufactures and distributes products for walls, floors and ceilings, as well as I-joists, doors, windows and lighting. Through its brands and production facilities in Norway and Sweden, it serves building supply chains and customers in the Nordic region and the UK.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:46:13.549Z"
+}

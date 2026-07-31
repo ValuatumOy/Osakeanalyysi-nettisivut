@@ -1,0 +1,9 @@
+{
+  "ticker": "BRAIN.ST",
+  "companyName": "BrainCool AB (publ)",
+  "profile": "BrainCool AB (publ) develops and markets medical cooling systems for targeted temperature management and cryotherapy. Its products include the BrainCool System, used for controlled patient cooling, RhinoChill for rapid pre-hospital cooling, and Cooral for reducing chemotherapy-induced oral mucositis. The company serves stroke, cardiac arrest and oncology care settings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:40:02.623Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NIXU",
+  "companyName": "Nixu",
+  "profile": "Nixu is a cybersecurity services company that helps organizations assess risks, strengthen defenses, and improve compliance. Its work has focused on advisory, security testing, incident response, and protection of critical IT and industrial systems across sectors such as finance, government, healthcare, and industry. The business later became part of DNV Cyber.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:43:42.996Z"
+}

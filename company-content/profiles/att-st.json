@@ -1,0 +1,9 @@
+{
+  "ticker": "ATT.ST",
+  "companyName": "Attendo AB (publ)",
+  "profile": "Attendo AB is a Nordic care provider operating in Sweden, Finland and Denmark. The company offers home care, residential care for older people, services for people with disabilities, and individual and family care. Its business is built on publicly funded care delivery, scale, staffing, occupancy and operational efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:34:26.199Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PERP-B.ST",
+  "companyName": "Pharmacolog i Uppsala AB (publ)",
+  "profile": "Pharmacolog i Uppsala AB develops medical technology for the preparation and verification of injectable drugs. Its products, including DrugLog, WasteLog and PrepLog, are used in pharmacies, hospital wards and surgical settings to reduce medication errors, support compounding quality and help detect possible tampering or diversion of controlled substances.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:26.473Z"
+}

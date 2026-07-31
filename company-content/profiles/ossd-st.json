@@ -1,0 +1,9 @@
+{
+  "ticker": "OSSD.ST",
+  "companyName": "OssDsign AB (publ)",
+  "profile": "OssDsign AB is a Swedish medical device company focused on orthobiologics. It develops and markets next-generation bone graft products based on material science, including OssDsign Catalyst, an off-the-shelf nanosynthetic bone graft used in spinal fusion and other skeletal repair applications. The company has also shifted away from its former cranial implant business to concentrate on orthobiologics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:23.769Z"
+}

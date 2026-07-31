@@ -1,0 +1,9 @@
+{
+  "ticker": "FJORD.OL",
+  "companyName": "Fjord1 ASA",
+  "profile": "Fjord1 ASA operates ferry and passenger boat services along Norway’s coast, mainly on the west coast, and is the country’s largest ferry operator. The company also has catering activities through Ferdamat and interests in tourism-related fjord travel. Its business depends on transport contracts, vessel operations, and investment in low- and zero-emission technology.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:22:38.045Z"
+}

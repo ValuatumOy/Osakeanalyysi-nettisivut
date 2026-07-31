@@ -1,0 +1,9 @@
+{
+  "ticker": "SWISS.CO",
+  "companyName": "Swiss Properties Invest A/S",
+  "profile": "Swiss Properties Invest A/S is a Danish listed real estate company that owns, acquires, operates, develops and optimizes commercial properties in Switzerland. Through its Swiss subsidiary, it generates income from commercial property ownership and rental of space, with a focus on managing a portfolio of selected properties and expanding it over time.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:06:00.506Z"
+}

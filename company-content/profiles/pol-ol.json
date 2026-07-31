@@ -1,0 +1,9 @@
+{
+  "ticker": "POL.OL",
+  "companyName": "Polaris Media ASA",
+  "profile": "Polaris Media ASA is a Nordic media group that operates local and regional newspapers and related digital publishing businesses. Its activities include editorial content, information and publishing services, and printing operations, supported by advertising and other media revenues. The company also states that it is moving toward a more digital operating model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:06:55.781Z"
+}

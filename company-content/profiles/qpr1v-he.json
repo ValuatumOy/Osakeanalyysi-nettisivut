@@ -1,0 +1,9 @@
+{
+  "ticker": "QPR1V.HE",
+  "companyName": "QPR Software Oyj",
+  "profile": "QPR Software Oyj develops and sells software for analyzing, monitoring and modeling organizations’ operations. Its product portfolio includes process mining, strategy and performance management, and enterprise architecture tools, supported by consulting services. The company has also been focusing more strongly on SaaS-based process mining and Digital Twin of an Organization solutions as part of its strategy.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:03:20.591Z"
+}

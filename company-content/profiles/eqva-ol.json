@@ -1,0 +1,9 @@
+{
+  "ticker": "EQVA.OL",
+  "companyName": "Eqva ASA",
+  "profile": "Eqva ASA is a Norwegian industrial services group that owns and develops niche companies serving maritime, offshore, process, aquaculture, power-intensive and renewable industries. Its businesses provide engineering services, mechanical solutions, steel structures, piping and tank systems, ventilation, power and automation, and hydropower development and operations. The group also pursues growth through targeted acquisitions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:20:02.487Z"
+}

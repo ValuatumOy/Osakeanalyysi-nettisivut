@@ -1,0 +1,9 @@
+{
+  "ticker": "FRAM-B.ST",
+  "companyName": "Fram Skandinavien AB",
+  "profile": "Fram Skandinavien AB is a Sweden-based investment and technology group focused on digital businesses in Southeast Asia and the Nordic region. Its activities include venture building, minority investments in technology companies, and IT development services through its standing teams. The group also maintains a listed structure in Sweden while managing its portfolio and operational support from Vietnam.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:03:14.187Z"
+}

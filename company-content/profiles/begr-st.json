@@ -1,0 +1,9 @@
+{
+  "ticker": "BEGR.ST",
+  "companyName": "BE Group AB (publ)",
+  "profile": "BE Group AB is a trading and service company in steel, stainless steel and aluminium. It supplies inventory sales, production services and direct deliveries, with processing and logistics tailored to customer needs. Its main customers are in the manufacturing and construction industries, and its operations are concentrated in Sweden and Finland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:52:17.506Z"
+}

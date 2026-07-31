@@ -1,0 +1,9 @@
+{
+  "ticker": "HAVI.OL",
+  "companyName": "Havila Shipping ASA",
+  "profile": "Havila Shipping ASA is a Norwegian shipowner and offshore service company based in Fosnavåg. It provides quality-assured supply services to the international offshore industry through vessels used in subsea construction, platform supply, rescue and recovery, and related marine operations. The company also has management responsibilities for additional ships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:37:22.903Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "LEADD.HE",
+  "companyName": "LeadDesk Oy",
+  "profile": "LeadDesk is a European provider of cloud-based sales enablement and customer service software for contact centers. Its platform supports outbound sales, omnichannel customer service, call handling, reporting, and API-based integrations. The company serves customers across industries such as media, energy, telecommunications, financial services, security services, and market research.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:23:28.233Z"
+}

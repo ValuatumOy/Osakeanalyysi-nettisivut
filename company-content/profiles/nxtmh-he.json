@@ -1,0 +1,9 @@
+{
+  "ticker": "NXTMH.HE",
+  "companyName": "Nexstim Plc",
+  "profile": "Nexstim Plc is a Finnish medical technology company that develops and sells navigated transcranial magnetic stimulation systems for brain diagnostics, neurosurgical planning and therapy. Its NBS 6 platform and related software are used for mapping motor and language areas and for treating conditions such as major depression and chronic neuropathic pain, with sales supported by direct and partner channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:40:15.918Z"
+}

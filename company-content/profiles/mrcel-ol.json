@@ -1,0 +1,9 @@
+{
+  "ticker": "MRCEL.OL",
+  "companyName": "Mercell Holding ASA",
+  "profile": "Mercell Holding ASA provides digital procurement software for public buyers and suppliers. Its platform supports tender planning, publication, contract management, supplier discovery, bid submission, and related analytics and support services. The company’s products are designed to streamline compliance-heavy procurement workflows and connect public institutions with potential suppliers across European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:16:56.088Z"
+}

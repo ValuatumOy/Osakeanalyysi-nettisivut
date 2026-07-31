@@ -1,0 +1,9 @@
+{
+  "ticker": "VEI.OL",
+  "companyName": "Veidekke ASA",
+  "profile": "Veidekke ASA is a Scandinavian construction and civil engineering group that provides building, infrastructure and property development services. The company develops and builds roads, tunnels, bridges and houses, and also operates asphalt and aggregates businesses as well as road maintenance activities. It serves public and private customers across Norway, Sweden and Denmark.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:37:41.109Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "VALUER.CO",
+  "companyName": "Valuer Holding A/S",
+  "profile": "Valuer Holding A/S develops a data-driven AI platform that supports corporations, accelerators, and venture funds in identifying relevant technologies, new market opportunities, and strategic initiatives. Its services center on using advanced algorithms and analytics to help users search, assess, and prioritize innovation and business development opportunities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:49:36.175Z"
+}

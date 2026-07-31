@@ -1,0 +1,9 @@
+{
+  "ticker": "NREST.ST",
+  "companyName": "Nordrest Holding AB (publ)",
+  "profile": "Nordrest Holding AB is a Swedish foodservice group that operates contract-based meal solutions, restaurants and cafes, and catering services. Its activities serve customers in sectors such as defence, workplaces, schools, campuses, healthcare and travel. The company also develops branded food concepts and long-shelf-life meal solutions through its Special Foods Division.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:48.482Z"
+}

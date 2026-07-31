@@ -1,0 +1,9 @@
+{
+  "ticker": "ENTRA.OL",
+  "companyName": "Entra ASA",
+  "profile": "Entra ASA is a Norwegian property company focused on office real estate, mainly in the Oslo region and other major Norwegian cities. It develops, leases and manages centrally located buildings and city-center properties, with a portfolio concentrated near transport hubs. Rental income is supported by long leases, public-sector tenants and active project development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:18:45.956Z"
+}

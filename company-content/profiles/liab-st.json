@@ -1,0 +1,9 @@
+{
+  "ticker": "LIAB.ST",
+  "companyName": "Lindab International AB (publ)",
+  "profile": "Lindab International AB develops, manufactures and sells ventilation systems and building products. Its operations are organised in Ventilation Systems and Profile Systems, supplying duct systems, indoor climate solutions, roofs, walls and rainwater systems, mainly in Europe. The company also provides related distribution and installation-oriented products and services through its branch network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:38:46.682Z"
+}

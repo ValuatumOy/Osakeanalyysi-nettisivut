@@ -1,0 +1,9 @@
+{
+  "ticker": "MAGLE.ST",
+  "companyName": "Magle Chemoswed Holding AB (publ)",
+  "profile": "Magle Chemoswed Holding AB is a Swedish contract development and manufacturing organization serving pharmaceutical and medical device customers. The company provides services from process development and analytical support through GMP manufacturing, fill-finish, freeze-drying, and related regulatory support. It also develops and supplies products and technologies based on its proprietary microsphere platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:43:56.406Z"
+}

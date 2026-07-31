@@ -1,0 +1,9 @@
+{
+  "ticker": "TTALO.HE",
+  "companyName": "Terveystalo",
+  "profile": "Terveystalo is Finland's largest private healthcare services provider and one of the leading occupational health providers in Finland and Sweden. It offers primary care, specialist care, diagnostics, day surgery, rehabilitation and digital appointments to corporate, insurance, consumer and public-sector customers through clinics, hospitals and the Feelgood subsidiary in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:45:40.598Z"
+}

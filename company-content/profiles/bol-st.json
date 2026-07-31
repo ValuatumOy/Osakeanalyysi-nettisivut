@@ -1,0 +1,9 @@
+{
+  "ticker": "BOL.ST",
+  "companyName": "Boliden AB (publ)",
+  "profile": "Boliden AB is a high-tech metals company that mines and processes base metals and precious metals through its own mines and smelters in Sweden, Finland, Norway, Ireland and Portugal. It produces zinc, copper, lead, nickel, gold and silver, and also sells by-products such as sulphuric acid and concentrates to industrial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:25:49.909Z"
+}

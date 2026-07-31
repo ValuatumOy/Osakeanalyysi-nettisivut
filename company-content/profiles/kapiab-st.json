@@ -1,0 +1,9 @@
+{
+  "ticker": "KAPIAB.ST",
+  "companyName": "Kallebäck Property Invest AB (publ)",
+  "profile": "Kallebäck Property Invest AB (publ) is a Swedish property company that indirectly owns, manages and leases the Kallebäck 17:2 property in Gothenburg. The asset is a modern office building with laboratory and production space, and related parking facilities. Its income is driven primarily by rental revenue from Saab AB, the sole tenant through 2031.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:31:26.537Z"
+}

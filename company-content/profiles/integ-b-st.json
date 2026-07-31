@@ -1,0 +1,9 @@
+{
+  "ticker": "INTEG-B.ST",
+  "companyName": "Integrum AB (publ)",
+  "profile": "Integrum AB develops and markets bone-anchored implant systems for amputees, centered on its OPRA implant system based on osseointegration. The company’s products are designed to connect prostheses directly to the skeleton for both upper and lower limb applications. It also supports surgeons and clinical partners involved in implant planning, surgery, and rehabilitation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:24:59.232Z"
+}

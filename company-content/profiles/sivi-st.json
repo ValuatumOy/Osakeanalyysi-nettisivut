@@ -1,0 +1,9 @@
+{
+  "ticker": "SIVI.ST",
+  "companyName": "Dala Energi AB (publ)",
+  "profile": "Dala Energi AB (publ) develops and owns locally rooted businesses within energy and digital infrastructure in Dalarna. Its activities include electricity networks, fiber networks, infraservice and power production, alongside investments in regional energy-related companies. The group also manages network services and infrastructure for households and businesses, with a stated focus on long-term local development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:32:26.643Z"
+}

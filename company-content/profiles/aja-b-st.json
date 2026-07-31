@@ -1,0 +1,9 @@
+{
+  "ticker": "AJA-B.ST",
+  "companyName": "Byggmästare Anders J Ahlström Holding AB (publ)",
+  "profile": "Byggmästare Anders J Ahlström Holding AB is an investment company focused on active ownership and long-term value creation. It invests primarily in small and medium-sized companies in Sweden and the rest of the Nordics, in both listed and unlisted holdings. The company seeks businesses with scalable models, strong management and organic or acquisition-driven growth opportunities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:55:01.554Z"
+}

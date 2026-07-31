@@ -1,0 +1,9 @@
+{
+  "ticker": "INSP.ST",
+  "companyName": "Insplorion AB (publ)",
+  "profile": "Insplorion AB develops and sells sensor solutions based on its NanoPlasmonic Sensing platform. The company operates in hydrogen sensing, where its detectors are designed for fast and selective leak detection, and in research instruments used for real-time measurements in battery research, catalysis, materials science and life science. It is also reviewing its business portfolio, including a possible divestment of the hydrogen sensor unit.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:24:00.852Z"
+}

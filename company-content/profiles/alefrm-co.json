@@ -1,0 +1,9 @@
+{
+  "ticker": "ALEFRM.CO",
+  "companyName": "Alefarm Brewing A/S",
+  "profile": "Alefarm Brewing A/S is a Danish microbrewery based in Greve that produces contemporary, handcrafted beers. Its portfolio includes clean beers, barrel-aged offerings and mixed-fermentation styles, which it sells through its tap room, webshop and distribution channels. The company also supports sales to bars and retailers through direct commercial outreach.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:45:06.247Z"
+}

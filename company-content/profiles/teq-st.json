@@ -1,0 +1,9 @@
+{
+  "ticker": "TEQ.ST",
+  "companyName": "Teqnion AB (publ)",
+  "profile": "Teqnion AB is a Swedish industrial group that owns and develops a portfolio of wholly owned subsidiaries operating in narrow technology niches across industrial markets. The group provides leading products, specialist expertise, and related services, and grows primarily through acquisitions, while each subsidiary remains independently run with local entrepreneurial management.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:34.335Z"
+}

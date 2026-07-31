@@ -1,0 +1,9 @@
+{
+  "ticker": "MSAB-B.ST",
+  "companyName": "Micro Systemation AB (publ)",
+  "profile": "Micro Systemation AB, known as MSAB, develops software and related platforms for mobile device forensics. Its products are used by law enforcement, military, customs and forensic laboratories to extract, analyze and manage data from seized devices. The company also provides training and professional services through a global sales and distributor network.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:48:17.742Z"
+}

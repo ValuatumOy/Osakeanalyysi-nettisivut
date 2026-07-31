@@ -1,0 +1,9 @@
+{
+  "ticker": "KDEV.ST",
+  "companyName": "Karolinska Development AB (publ)",
+  "profile": "Karolinska Development is a Nordic life sciences investment company focused on identifying medical innovations in the region and building companies around them. It invests in the creation and growth of portfolio companies developing treatments and other health-related products, and supports them through development, financing, commercialization, licensing, divestments and possible listings.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:32:20.854Z"
+}

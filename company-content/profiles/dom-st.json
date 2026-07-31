@@ -1,0 +1,9 @@
+{
+  "ticker": "DOM.ST",
+  "companyName": "Dometic Group AB (publ)",
+  "profile": "Dometic Group is a Swedish outdoor technology company that develops and sells products for mobile living and outdoor use. Its portfolio includes installed and standalone solutions for vehicles, boats and leisure settings, with categories such as cooling, heating, power and electronics, mobility, and space optimization. The company sells globally through multiple channels.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:39:47.350Z"
+}

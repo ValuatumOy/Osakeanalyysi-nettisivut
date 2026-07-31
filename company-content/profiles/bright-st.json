@@ -1,0 +1,9 @@
+{
+  "ticker": "BRIGHT.ST",
+  "companyName": "Speqta AB (publ)",
+  "profile": "BrightBid Group AB, formerly Speqta AB, is an adtech company that provides traffic-generating services for online advertisers. Its main offering is the BrightBid SaaS platform, which includes Bidbrain, software designed to help customers optimize digital marketing using data and AI and to manage activity across different ad platforms.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:19:14.654Z"
+}

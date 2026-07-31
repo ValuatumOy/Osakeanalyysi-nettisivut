@@ -1,0 +1,9 @@
+{
+  "ticker": "FLS.CO",
+  "companyName": "FLSmidth & Co. A/S",
+  "profile": "FLSmidth & Co. A/S supplies technology and services to the global mining industry. Its portfolio includes minerals processing equipment, related systems, spare parts, and lifecycle services that help customers improve plant performance, operating efficiency, and environmental outcomes. The company has also been simplifying its business structure after divesting its cement operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:09:53.095Z"
+}

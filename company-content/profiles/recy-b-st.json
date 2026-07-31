@@ -1,0 +1,9 @@
+{
+  "ticker": "RECY-B.ST",
+  "companyName": "Recyctec Holding AB ser. B",
+  "profile": "Recyctec Holding AB develops and operates a recycling process that cleans used ethylene and propylene glycol so it can be reused. The company receives returned glycol, analyzes and purifies it, then formulates and sells recycled products under the EarthCare brand for applications in real estate, vehicles and marine use.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:02.223Z"
+}

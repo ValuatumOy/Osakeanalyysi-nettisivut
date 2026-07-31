@@ -1,0 +1,9 @@
+{
+  "ticker": "HEBA-B.ST",
+  "companyName": "Heba Fastighets AB (publ)",
+  "profile": "Heba Fastighets AB is a Swedish property company that develops, owns and manages rental housing and care properties, mainly in the Stockholm region and Mälardalen. Its portfolio includes apartment housing, youth housing and care and nursing homes, and it also undertakes new construction and renovation while managing properties in-house.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:13:49.443Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "BYGGP.ST",
+  "companyName": "ByggPartner Gruppen AB (publ)",
+  "profile": "ByggPartnerGruppen is a Swedish listed construction group focused on building contracting and construction services. Its operations are organized into ByggPartner, Åhlin & Ekeroth and Flodéns, which work independently in local markets. The group serves public-sector and private clients across social infrastructure, housing, industrial and commercial projects, with a particular emphasis on timber construction and collaborative contracting.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:56:08.655Z"
+}

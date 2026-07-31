@@ -1,0 +1,9 @@
+{
+  "ticker": "SCIB.ST",
+  "companyName": "SciBase Holding AB (publ)",
+  "profile": "SciBase Holding AB is a medical technology company focused on dermatology. It develops and commercializes Nevisense and Nevisense Go, point-of-care platforms that use electrical impedance spectroscopy and AI to support detection of melanoma and other skin conditions, as well as skin barrier assessment for research and clinical applications. Disposable electrodes are a key recurring revenue driver.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:47.103Z"
+}

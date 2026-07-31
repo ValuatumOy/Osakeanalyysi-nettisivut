@@ -1,0 +1,9 @@
+{
+  "ticker": "SDIP-B.ST",
+  "companyName": "Sdiptech AB (publ)",
+  "profile": "Sdiptech AB is an infrastructure technology group that acquires and develops niche companies providing specialized technology, solutions, and services to public and private customers, primarily in Europe. Its business areas include supply chain and transportation, energy and electrification, water and bioeconomy, and safety and security. The group focuses on infrastructure-related value creation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:03:02.483Z"
+}

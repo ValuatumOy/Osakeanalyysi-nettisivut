@@ -1,0 +1,9 @@
+{
+  "ticker": "GEOS.OL",
+  "companyName": "Golden Energy Offshore Services AS",
+  "profile": "Golden Energy Offshore Services AS is a Norwegian offshore service company that owns and charters out a fleet of modern vessels to international oil and gas customers. Its activities center on vessel ownership and operations, technical and crew management, and chartering services, with vessels used for supply, subsea support, inspection, maintenance, and related offshore work.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:30:34.433Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CRNA.OL",
+  "companyName": "Targovax ASA",
+  "profile": "Targovax ASA is a biotechnology company developing circular RNA and immunotherapy medicines for cancer. Its programs include a proprietary circRNA platform and earlier-stage oncology assets such as ONCOS-102 and mutant RAS cancer vaccine candidates. The company is in a strategic transition toward circRNA-based therapeutics while continuing to advance selected immunotherapy programs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:31:28.771Z"
+}
