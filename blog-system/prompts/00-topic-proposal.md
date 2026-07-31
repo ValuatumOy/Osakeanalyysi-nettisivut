@@ -6,7 +6,9 @@ topic candidates for human review.
 ## Inputs
 - `topic-queue.json` (current clusters, queued/published/rejected topics)
 - `blog-content/_ledger.json` (what's published, what performed — GSC notes if present)
-- `report-content/_catalog.json` (which tickers have fresh data = freshness triggers)
+- `node scripts/report-index.mjs` (the CURRENT report per company = freshness
+  triggers). Resolve companies only through this — filenames are not reliable
+  dates, and companies with a coverage stub only have no rating to write about.
 - Cluster strategy in `DESIGN.md` §3
 
 ## Produce 3–5 candidates, each with:

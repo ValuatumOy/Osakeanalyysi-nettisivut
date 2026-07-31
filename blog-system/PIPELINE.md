@@ -21,13 +21,27 @@ once for context; this file is the loop.
 
 ### 0. Sync state
 - Read `blog-system/topic-queue.json`, `blog-system/authors.json`,
-  `blog-content/_ledger.json`, `report-content/_catalog.json`, `sitemap.xml`.
+  `blog-content/_ledger.json`, `sitemap.xml`.
+- Run `node scripts/report-index.mjs` — this is the ONLY way to learn which
+  report is current for a company. Do not glob `report-content/*.json` and pick
+  by filename: reports are re-issued under a new dated filename AND updated in
+  place, so the date in the name is not the date of the data. As of writing,
+  `tesla-01062026.json` holds a 2026-07-23 report while `tesla-07072026.json`
+  holds 2026-07-07. The resolver reads the `reportDate` FIELD, ignores coverage
+  stubs that carry no rating, and skips reports the site excludes.
+- Run `node scripts/report-index.mjs --live` to compare against the live
+  catalog the rest of the site builds from (`scripts/live-catalog.mjs`). If it
+  reports newer reports live than in `report-content/`, then report-content is
+  itself stale — say so in the run summary rather than writing from it.
 - Velocity check: 3 new posts already this calendar week → refresh-only run.
 
 ### 1. Refresh check (before new content)
-Queue a refresh if either:
-- A covered ticker has a new report date in `_catalog.json` newer than the
-  related post's `dateModified` (Cluster D posts), or
+Queue a refresh if any of:
+- `node scripts/check-blog-freshness.mjs` exits non-zero — a published article
+  cites a superseded report, or states a rating that the current report
+  contradicts. This is the primary trigger and it is authoritative.
+- A covered company's current report (per `report-index.mjs`) is newer than the
+  `dateModified` of a post that cites it.
 - Any published post has `dateModified` > 90 days old.
 
 A refresh: re-run stages 4–7 on the existing article JSON with current report
@@ -60,7 +74,11 @@ Topics enter the queue two ways:
 - **Source plan**: select ≥3 external sources per the source policy (below):
   at least 1 primary (company filing/IR release/exchange/regulator data),
   rest Tier 1–2. Record URL + what each will support.
-- Pick ≥2 proprietary numbers from `report-content/*.json`.
+- Pick ≥2 proprietary numbers from the CURRENT report for each company, as
+  named by `node scripts/report-index.mjs`. Never open a report file chosen by
+  filename. A company whose only entry is a coverage stub has no rating or
+  target and cannot support a valuation claim — pick another company or narrow
+  the article.
 - Output brief into the article JSON skeleton (`blog-content/{slug}.json`).
 
 ### 4. Draft — `prompts/02-draft.md` (Opus 5, xhigh thinking)
@@ -82,6 +100,19 @@ Topics enter the queue two ways:
 - GATE: zero unverified claims; ≥3 external sources, ≥1 primary, all Tier 1–2
   (Tier 3 allowed only in addition, never as sole support for a claim).
 - Populate `sources` + `proprietaryData` arrays.
+- **Populate `dataProvenance`** — one entry per company whose numbers appear:
+  ```json
+  "dataProvenance": [
+    { "reportId": "upm-21052026", "slug": "upm-equity-report",
+      "reportDate": "2026-07-24", "used": "rating, 12-month target, EV/EBITDA" }
+  ]
+  ```
+  `reportDate` is the `reportDate` FIELD of the report, never the date in its
+  filename. This is what lets a later run detect that the article has gone
+  stale; without it an article can only be checked by the weaker rating scan.
+  Set `"ratingCheckExempt": true` on an entry only when the article discusses a
+  rating generically rather than asserting one (rare — justify it in the PR).
+- GATE: `node scripts/check-blog-freshness.mjs` must exit 0.
 
 ### 7. Build + publish (approval flow)
 - On-page lint (all must pass):
@@ -92,6 +123,10 @@ Topics enter the queue two ways:
     ≥1 link added TO this post from an existing related page
   - sources rendered as a visible "Sources" section with links
   - hard gates from DESIGN.md §4
+  - `node scripts/check-blog-freshness.mjs` exits 0 — no article cites a
+    superseded report or states a rating the current report contradicts.
+    CI runs this on every blog PR (`.github/workflows/blog-freshness.yml`),
+    so a stale post cannot be merged even if this step is skipped locally.
 - **Author/reviewer assignment**: set `authorId`/`reviewerId` to the defaults
   from `authors.json`. The human can change both during PR review — that is
   the moment "who wrote this / who read and accepted this" is decided.
@@ -154,4 +189,10 @@ Topics enter the queue two ways:
 - Any gate fails after retries → `status: "needs-human"`, ledger note, move on. Never force-publish.
 - Never invent author credentials, numbers, or sources. Missing data → narrow the article scope.
 - Build must hard-fail on TODO author fields — no article ships without a real, named author with photo + LinkedIn.
+- Never resolve a report by filename. `report-index.mjs` is the only source of
+  truth for "which report is current"; a number taken from a superseded file is
+  a wrong number even when it was right when written.
+- A stale-data failure is a refresh, never a suppression: fix the article
+  against the current report. Do not silence the gate with `ratingCheckExempt`
+  to get a merge through.
 - Quarterly original-data piece is human-collaborative, not autonomous.

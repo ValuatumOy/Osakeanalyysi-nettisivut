@@ -72,8 +72,12 @@ Deploy: git push → Vercel auto-deploy (existing flow).
   "sections": [{ "h2": "...", "html": "..." }],
   "faq": [{ "q": "...", "a": "..." }],
   "proprietaryData": [
-    { "claim": "Our base-case DCF puts Nokia fair value at €X (June 2026)",
-      "source": "report-content/nokia-05062026.json" }
+    { "claim": "Our base-case DCF puts Nokia fair value at €X (July 2026)",
+      "source": "report-content/nokia-15072026.json" }
+  ],
+  "dataProvenance": [
+    { "reportId": "nokia-15072026", "slug": "nokia-equity-report",
+      "reportDate": "2026-07-15", "used": "rating, 12-month target, EV/EBITDA" }
   ],
   "internalLinks": ["/reports/nokia-equity-report.html", "/methodology.html"],
   "sources": [{ "label": "...", "url": "..." }],
@@ -202,12 +206,25 @@ transparent about assumptions and track record. Never hype.
 
 ## 6. Refresh loop
 
-Triggers, checked every run from `_ledger.json` + `report-content/_catalog.json`:
-1. New report date for a covered ticker → refresh that ticker's Cluster D post(s)
-   within 7 days.
-2. Any post `dateModified` > 90 days → queue refresh.
-3. Refresh = new numbers + ≥1 new/updated paragraph + updated dateModified
+Reports are re-issued under a new dated filename AND updated in place, so the
+date in a filename is not the date of the data inside it. `scripts/report-index.mjs`
+resolves the current report per company from the `reportDate` field and is the
+only permitted way to answer "which report is current" — see PIPELINE.md §0.
+
+Triggers, checked every run from `_ledger.json` + `scripts/report-index.mjs`:
+1. `scripts/check-blog-freshness.mjs` exits non-zero → refresh the articles it
+   names. It fails an article that cites a superseded report (`dataProvenance`)
+   or states a rating the current report contradicts. CI enforces the same
+   check on every blog PR via `.github/workflows/blog-freshness.yml`.
+2. A covered company's current report is newer than the `dateModified` of a post
+   citing it → refresh that post within 7 days.
+3. Any post `dateModified` > 90 days → queue refresh.
+4. Refresh = new numbers + ≥1 new/updated paragraph + updated dateModified
    (visible + schema). Never a date-bump alone.
+
+`report-index.mjs --live` compares `report-content/` against the live catalog
+the rest of the site builds from, catching the case where report-content is
+itself the stale thing.
 
 ---
 

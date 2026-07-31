@@ -54,6 +54,35 @@ function validateReviewer(reviewer, role) {
   }
 }
 
+// ── data provenance ────────────────────────────────────────────────────────
+// Which report each proprietary number came from. Shape is enforced here so a
+// malformed entry cannot silently disable the staleness gate in
+// scripts/check-blog-freshness.mjs, which is what reads this.
+function validateProvenance(article) {
+  const prov = article.dataProvenance;
+  if (prov === undefined) return;            // absent is a warning in the gate, not a build failure
+  if (!Array.isArray(prov)) {
+    throw new Error(`HARD FAIL: article "${article.slug}" has dataProvenance that is not an array.`);
+  }
+  prov.forEach((p, i) => {
+    for (const field of ['reportId', 'slug', 'reportDate']) {
+      if (!p || !p[field]) {
+        throw new Error(
+          `HARD FAIL: article "${article.slug}" dataProvenance[${i}] is missing "${field}". ` +
+          `Each entry needs { reportId, slug, reportDate, used } naming the report a number came from. ` +
+          `Run 'node scripts/report-index.mjs' to see the current report for each company.`
+        );
+      }
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(p.reportDate)) {
+      throw new Error(
+        `HARD FAIL: article "${article.slug}" dataProvenance[${i}].reportDate "${p.reportDate}" ` +
+        `is not YYYY-MM-DD. It must be the reportDate FIELD of the report, not the date in its filename.`
+      );
+    }
+  });
+}
+
 // ── nav / footer (match site layout) ──────────────────────────────────────
 function navHtml() {
   return `  <header class="nav scrolled" id="nav">
@@ -80,6 +109,9 @@ function navHtml() {
 }
 
 function footerHtml() {
+  // Canonical site footer, kept identical to index.html / reports.html.
+  // Generated blog pages drifted from the hand-maintained pages once before;
+  // if the site footer changes, change it here too.
   return `  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -91,12 +123,13 @@ function footerHtml() {
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#free" class="footer-link">Free samples</a>
             <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
@@ -108,6 +141,7 @@ function footerHtml() {
             <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
           </div>
         </div>
         <div>
@@ -121,7 +155,7 @@ function footerHtml() {
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
-        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice. Past performance is not indicative of future results.</span>
       </div>
     </div>
   </footer>`;
@@ -586,14 +620,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
 
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="border-top:none;">
-        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland</span>
-        <span class="footer-disclaimer">AI-generated research. Not investment advice. <a href="disclaimer.html" style="color:rgba(255,255,255,0.4);">Disclaimer</a></span>
-      </div>
-    </div>
-  </footer>
+${footerHtml()}
 
   <script src="js/script.js"></script>
 </body>
@@ -697,6 +724,7 @@ for (const file of files) {
 
   validateAuthor(author, 'Author');
   validateReviewer(reviewer, 'Reviewer');
+  validateProvenance(article);
 
   const html = renderArticle(article, author, reviewer);
   const outPath = path.join(OUT_DIR, `${article.slug}.html`);
