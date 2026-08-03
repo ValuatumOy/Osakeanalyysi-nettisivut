@@ -129,6 +129,13 @@
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
       "notes": "Pulled from main by human directive 2026-07-02. Same reason as how-to-value-a-stock. Article JSON moved to blog-content/pending-review/."
+    },
+    {
+      "slug": null,
+      "action": "run-held",
+      "date": "2026-08-03",
+      "dateModified": "2026-08-03",
+      "notes": "Monday 2026-08-03 full-pipeline run HELD — no new article generated, no PR touched, nothing merged (pipeline never merges). Reasons, all verified this run: (1) The refresh machinery on main is dead code — PIPELINE.md step 0 keys freshness on report-content/_catalog.json, which was deleted when the committed catalog snapshot was dropped (commit 3f9d9aa). It has never fired; the only backstop is a 90-day rule the ~7-week-old blog has not hit. (2) 18 blog PRs (#12-#39) are stacked open and unmerged; the human has merged none since the 2026-07-02 auto-merge-removal directive. (3) The freshness gate that would stop stale-rating merges is PR #38 (branch claude/gifted-davinci-awtwzy), still open/draft — it also flips the model to Opus 5 and needs the human to confirm ANTHROPIC_API_KEY account access before merge. (4) PR #38 found 12 rating contradictions across 8 in-review articles; independently re-verified here from the freshest-by-reportDate JSONs (reportDate field, NOT filename): UPM HOLD EUR 21.10 (upm-21052026.json, 24 Jul) vs posts' BUY; Kesko SELL EUR 17.10 (kesko-07072026.json, 7 Jul) vs post #29 BUY EUR 25.92; Wartsila HOLD EUR 32.10 (wartsila-07072026.json, 7 Jul) vs post #28 SELL EUR 30.00. New reports since PR #38 make it worse: tesla-31072026.json is now SELL USD 243.40 (post #25 built on USD 350); nokia-15072026.json SELL EUR 9.40. (5) No status:'queued' topic exists, so AI-fallback selection would pick the highest-scored proposed>=48h item — recursion (76) or are-ai-stock-predictions-accurate (76), both ticker-rating-dependent, i.e. the exact failure class currently blocking the backlog. Generating on main without the gate would add correctness debt with near-zero value against an unreviewed pile. Action required from human: review/merge PR #38 (after confirming Opus 5 entitlement), then work down / refresh the stale in-review PRs before merging them. Next scheduled run: Wed 2026-08-05."
     }
   ]
 }
