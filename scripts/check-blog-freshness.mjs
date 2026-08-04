@@ -35,6 +35,10 @@ const PROXIMITY = 140;
 const EXPLICIT_RATING = /\brate[sd]?\b[^.?!]{0,30}$/i;
 // Either/or phrasing is a question, not a verdict: "a buy or sell right now".
 const ENUMERATION = /\b(buy|hold|sell)\b\s*(,|\/|\bor\b|\band\b)\s*\b(buy|hold|sell)\b/i;
+// A rating explicitly scoped to a superseded report is history, not a claim:
+// "our previous report rated the stock a sell". Articles should be able to say
+// how a view changed without tripping the gate.
+const HISTORICAL = /\b(previous(ly)?|prior|earlier|former(ly)?|used to|no longer|last (report|model)|superseded)\b/i;
 const CONTEXT_WINDOW = 45;
 
 // ── helpers ────────────────────────────────────────────────────────────────
@@ -170,6 +174,8 @@ function checkRatingContradictions(article, index, errors) {
       const before = text.slice(Math.max(0, m.index - CONTEXT_WINDOW), m.index);
       const around = text.slice(Math.max(0, m.index - CONTEXT_WINDOW), m.index + m[0].length + CONTEXT_WINDOW);
       if (ENUMERATION.test(around)) continue;
+      // Scoped to an older report, so not a claim about the current one.
+      if (HISTORICAL.test(text.slice(Math.max(0, m.index - 90), m.index))) continue;
       // A rhetorical question ("Is Tesla a buy in 2026?") is not a verdict.
       const sentence = text.slice(Math.max(0, m.index - 120), m.index + 120);
       const isUpper = m[0] === m[0].toUpperCase();
