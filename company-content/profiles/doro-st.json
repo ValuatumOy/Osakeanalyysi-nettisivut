@@ -1,0 +1,9 @@
+{
+  "ticker": "DORO.ST",
+  "companyName": "Doro AB (publ)",
+  "profile": "Doro AB develops and sells easy-to-use mobile phones, smartphones and telecare products and services for older people and other users needing simpler communication and safety solutions. Its offer includes feature phones, connected devices, alarm services and support services, with revenue driven by consumer hardware and recurring security-related services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:40:35.685Z"
+}

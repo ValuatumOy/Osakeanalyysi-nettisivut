@@ -1,0 +1,9 @@
+{
+  "ticker": "DMYD-B.ST",
+  "companyName": "Diamyd Medical AB (publ)",
+  "profile": "Diamyd Medical AB develops precision medicine therapies for type 1 diabetes, with a focus on the antigen-specific immunotherapy retogatein, based on recombinant GAD65. The company is conducting clinical development in stage 1 to stage 3 disease and is also building manufacturing capacity in Umeå for its active pharmaceutical ingredient and related biologic production.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:36:16.070Z"
+}

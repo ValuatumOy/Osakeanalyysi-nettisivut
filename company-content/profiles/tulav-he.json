@@ -1,0 +1,9 @@
+{
+  "ticker": "TULAV.HE",
+  "companyName": "Tulikivi Corporation",
+  "profile": "Tulikivi Corporation is a Finnish stone-processing company that designs, manufactures and sells heat-retaining soapstone fireplaces, wood-burning and electric sauna heaters, and soapstone tiles and slabs for interiors. It also provides custom fireplaces and related dealer, service and spare-parts support, with production based mainly in Finland and using its own soapstone reserves.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:52:18.975Z"
+}

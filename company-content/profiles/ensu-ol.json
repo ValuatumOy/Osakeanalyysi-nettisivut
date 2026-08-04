@@ -1,0 +1,9 @@
+{
+  "ticker": "ENSU.OL",
+  "companyName": "Ensurge Micropower ASA",
+  "profile": "Ensurge Micropower ASA develops and commercializes ultrathin solid-state microbatteries for small connected devices, including wearables, hearables, medical products and industrial sensors. Its technology uses anode-free, multilayer lithium chemistry and scalable manufacturing methods designed to deliver high energy density, fast charging and flexible form factors that can be integrated into compact electronic products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:17:50.890Z"
+}

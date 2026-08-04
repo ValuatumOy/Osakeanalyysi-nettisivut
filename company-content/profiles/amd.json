@@ -1,0 +1,9 @@
+{
+  "ticker": "AMD",
+  "companyName": "Advanced Micro Devices",
+  "profile": "Advanced Micro Devices is a semiconductor company designing CPUs, GPUs, adaptive SoCs, FPGAs and AI accelerators for data centers, personal computers, gaming, embedded systems and edge applications. Its businesses include EPYC server processors, Ryzen client processors, Radeon graphics, Instinct accelerators and embedded products used by cloud, enterprise, consumer and industrial customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

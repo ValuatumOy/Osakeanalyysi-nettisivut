@@ -1,0 +1,9 @@
+{
+  "ticker": "PRS.OL",
+  "companyName": "Prosafe SE",
+  "profile": "Prosafe SE owns and operates semi-submersible accommodation, safety and support vessels for offshore oil and gas projects. Its fleet provides living quarters, catering, workshops, offices, medical services and marine support to installations during maintenance, hook-up, commissioning and decommissioning work. The company serves markets including Norway, the UK, Brazil and other offshore regions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:08:38.906Z"
+}

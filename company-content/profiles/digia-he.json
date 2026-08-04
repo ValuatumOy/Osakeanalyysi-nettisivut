@@ -1,0 +1,9 @@
+{
+  "ticker": "DIGIA.HE",
+  "companyName": "Digia Oyj",
+  "profile": "Digia is a Finnish listed consulting, software and services company that helps customers develop and maintain digital business solutions. Its offerings cover AI-enabled business development, IT solutions, system maintenance and long-term service relationships across several specialized service areas. The company also works with public administration and private-sector customers in Finland and internationally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:31:25.105Z"
+}

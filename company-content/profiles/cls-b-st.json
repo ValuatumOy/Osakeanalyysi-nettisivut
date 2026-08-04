@@ -1,0 +1,9 @@
+{
+  "ticker": "CLS-B.ST",
+  "companyName": "Clinical Laserthermia Systems AB (publ)",
+  "profile": "Clinical Laserthermia Systems develops and sells TRANBERG thermal therapy systems for minimally invasive treatment of cancerous tumors and drug-resistant epilepsy. Its products include the Thermoguide Workstation, laser applicators, introducers, and sterile disposables used for image-guided laser ablation, along with temperature and treatment monitoring devices. The company is headquartered in Lund, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:22:01.226Z"
+}

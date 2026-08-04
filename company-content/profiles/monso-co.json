@@ -1,0 +1,9 @@
+{
+  "ticker": "MONSO.CO",
+  "companyName": "Monsenso A/S",
+  "profile": "Monsenso A/S develops a digital health software platform for mental health care and research. Its cloud-based solution collects patient-reported and sensor data from smartphones and wearables, supports remote monitoring and treatment support, and gives clinicians a web portal for viewing patient information. The company also serves healthcare providers, researchers and pharmaceutical users.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:56:03.586Z"
+}

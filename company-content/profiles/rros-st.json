@@ -1,0 +1,9 @@
+{
+  "ticker": "RROS.ST",
+  "companyName": "Rottneros AB (publ)",
+  "profile": "Rottneros AB is a Swedish producer of market pulp and molded fiber solutions. Its two pulp mills supply chemical and mechanical pulp for selected niche applications, including filters, electrical insulation, tissue and packaging. The group also develops recyclable molded fiber packaging, with raw material procurement and timber sourcing supporting its production chain.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:11:45.042Z"
+}

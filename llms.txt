@@ -20,8 +20,6 @@
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): SELL, target 30.00 EUR (current 36.12 EUR).
 
 ## Stock comparisons
-- [AMD vs Intel (AMD vs INTC) stock comparison](https://www.aiequityreports.com/compare/advanced-micro-devices-vs-intel-stock-comparison.html): semiconductor ratings, price targets, valuation multiples and value pools side by side.
-- [Stora Enso vs UPM-Kymmene (STERV.HE vs UPM.HE) stock comparison](https://www.aiequityreports.com/compare/stora-enso-vs-upm-kymmene-stock-comparison.html): Nordic forest-materials ratings, price targets and value pools side by side.
 
 ## Methodology & company
 - [Methodology](https://www.aiequityreports.com/methodology.html): how value-pool analysis and reverse valuation work.

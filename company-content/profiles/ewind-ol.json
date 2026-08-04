@@ -1,0 +1,9 @@
+{
+  "ticker": "EWIND.OL",
+  "companyName": "Edda Wind ASA",
+  "profile": "Edda Wind ASA is an offshore wind service company that develops, builds, owns and operates service operation vessels and commissioning service operation vessels for wind farms worldwide. Its fleet supports commissioning and maintenance work at offshore wind sites, and the company is expanding its vessel base with newbuilds designed for lower-emission operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:07:40.479Z"
+}

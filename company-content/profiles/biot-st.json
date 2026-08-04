@@ -1,0 +1,9 @@
+{
+  "ticker": "BIOT.ST",
+  "companyName": "Biotage AB (publ)",
+  "profile": "Biotage AB develops and sells separation and purification technologies for laboratories in drug discovery, development, and analytical testing. Its portfolio includes automated sample preparation systems, flash and peptide purification tools, biomolecule purification products, and related consumables and services. The company also serves applications in environmental, forensic, food, and other testing workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:18:27.996Z"
+}

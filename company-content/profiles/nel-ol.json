@@ -1,0 +1,9 @@
+{
+  "ticker": "NEL.OL",
+  "companyName": "Nel ASA",
+  "profile": "Nel ASA develops and supplies electrolyser technology and related hydrogen systems for producing renewable hydrogen. Its core products are alkaline and PEM electrolysers for industrial and power-to-x applications, supported by service and global project delivery. Following the 2024 spin-off of its fueling division, the company is now focused on electrolyser equipment.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:28:11.866Z"
+}

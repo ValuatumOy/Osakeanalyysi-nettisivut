@@ -1,0 +1,9 @@
+{
+  "ticker": "RIAS-B.CO",
+  "companyName": "RIAS A/S",
+  "profile": "RIAS A/S supplies semi-finished plastics and related building products. Its portfolio includes plastic sheets, rods, tubes, foils and technical and high-performance plastics, together with roof and light-transmission solutions for construction applications. The company serves customers in Denmark and broader Scandinavia through production, processing and distribution from its base in Roskilde.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:35:38.947Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CAV1V.HE",
+  "companyName": "Caverion Oyj",
+  "profile": "Caverion provides technical services, installations, and lifecycle solutions for buildings, infrastructure, and industrial sites. Its work includes project delivery, maintenance, facility management, advisory services, and digital building technologies, with offerings across heating, ventilation, electrical, cooling, security, and automation systems. The company serves customers seeking efficient, reliable, and sustainable built environments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:03:28.824Z"
+}

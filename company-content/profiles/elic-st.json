@@ -1,0 +1,9 @@
+{
+  "ticker": "ELIC.ST",
+  "companyName": "Elicera Therapeutics AB (publ)",
+  "profile": "Elicera Therapeutics is a clinical-stage immuno-oncology company developing cell and gene therapies for cancer. Its portfolio includes CAR T-cell candidates and oncolytic virus programs, supported by the proprietary iTANK platform, which is designed to enhance immune response and broaden application across tumor types. The company also pursues out-licensing of its technology.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:50:01.738Z"
+}

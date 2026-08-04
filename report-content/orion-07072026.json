@@ -1,0 +1,135 @@
+{
+  "id": "orion-07072026",
+  "slug": "orion-equity-report",
+  "companyName": "Orion Corporation",
+  "ticker": "ORNBV.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Drug Manufacturers - General",
+  "currency": "EUR",
+  "reportDate": "2026-07-07",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "70.50 EUR",
+    "targetPrice": "74.80 EUR",
+    "impliedUpside": "+6.1%",
+    "marketCap": "EUR 9.9 bn",
+    "enterpriseValue": "EUR 10 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2025E", "value": "20.5x"},
+    {"label": "EV/EBITDA 2025E", "value": "15.4x"},
+    {"label": "FCF Yield 2025E", "value": "2.4%"},
+    {"label": "Dividend Yield 2025E", "value": "4.0%"},
+    {"label": "Net Debt/EBITDA 2025E", "value": "0.2x"}
+  ],
+  "priceStats": {
+    "week52High": "75.30 EUR",
+    "week52Low": "56.50 EUR",
+    "oneYearChange": "+13.4%",
+    "threeYearChange": "+98.6%"
+  },
+  "summary": [
+    "Orion Corporation (ORNBV.HE, NASDAQ Helsinki) is a Finnish pharmaceutical company whose growth profile is increasingly shaped by the rapid scale-up of Nubeqa royalties from its partnership with Bayer; in this Valuatum equity research report dated 7 July 2026 we rate the stock BUY with a 12-month target price of 74.80 EUR against a current price of 70.50 EUR, implying roughly 6.1% upside. Market capitalisation is EUR 9.9 bn and enterprise value is EUR 10 bn.",
+    "The core valuation tension is extreme concentration: approximately 83.6% of the EUR 10,030 million group enterprise value (EUR 8,385 million) is allocated to the Innovative Medicines segment and its Nubeqa royalty stream, even though the segment generates only about 34% of current group revenue. Adjusting reported 2024 segment EBIT of EUR 289 million for EUR 130 million of positive one-off milestones and EUR 41 million of pipeline write-downs leaves underlying recurring operating profit closer to EUR 200 million, so the allocation implies a demanding multiple of over 40x trailing recurring EBIT, while the legacy divisions supplying nearly two-thirds of revenue carry minimal valuation weight.",
+    "On a reverse-valuation basis the embedded assumptions are already priced but achievable: Bayer's Nubeqa in-market sales of EUR 1.52 bn in 2024 must clear EUR 3.0 bn by 2027-2030 to justify the Innovative Medicines allocation, lifting group EBIT from EUR 417 million in 2024 to EUR 694 million by 2027. The base scenario implies EUR 70.46 per share (-0.1%), essentially the current price; the Bull scenario with label expansions lifts the value to EUR 84.45 (+19.8%), while a Nubeqa plateau near EUR 2 billion in the Bear case would compress the shares to EUR 45.35 (-35.7%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Nubeqa Must Scale to €3bn", "metric": "83.6% EV", "text": "Nubeqa's EUR 1.52bn 2024 sales must scale toward EUR 3.0bn by 2027 to sustain the EUR 8,385m Innovative Medicines EV allocation, which represents 83.6% of the EUR 10,030m group EV."},
+    {"num": "02", "title": "Massive Margin Flow-Through", "metric": "EUR 694m EBIT", "text": "Recurring segment EBIT of roughly EUR 200m needs to reach approximately EUR 650m via over 80% incremental margins, lifting group EBIT from EUR 417m in 2024 to EUR 694m by 2027."},
+    {"num": "03", "title": "Valuation Leaves Narrow Margin", "metric": "-36% Bear Risk", "text": "Our EUR 74.8 target applies 15.5x 2027e EBIT of EUR 694m and 18x 2027e EPS of EUR 4.10, but a Nubeqa plateau near EUR 2.0bn could cut the share price to EUR 45.27."}
+  ],
+  "thesisBreaker": "A plateauing of Nubeqa® sales near EUR 2 billion would break the recurring EBIT bridge, triggering severe multiple compression and eroding the equity upside.",
+  "valuePools": [
+    {"name": "Innovative Medicines", "share": "83.6% · EUR 8,385m", "economics": "Revenue EUR 525m (34.1%) · Comp. EBIT EUR 289m (69.3% of EBIT, 55.0% margin) · EV EUR 8,385m", "text": "Scaling pool valued as a scalable, asset-light biotechnology royalty stream: under the Bayer partnership Orion receives a tiered royalty on global Nubeqa sales that begins at approximately 20% and escalates with volume, paired with captive tablet manufacturing. In 2024 Bayer reported global in-market Nubeqa sales of EUR 1.52 billion, from which Orion recognized EUR 368.3 million of recurring revenue (EUR 267.5 million in royalties, EUR 100.8 million in product sales), an effective blended monetization rate of approximately 24%. Adjusting reported 2024 EBIT of EUR 289 million for EUR 130 million in positive one-off milestones and EUR 41 million in pipeline write-downs leaves recurring EBIT near EUR 200 million, so the EUR 8,385 million allocation implies a demanding multiple of over 40x trailing recurring EBIT."},
+    {"name": "Generics and Consumer Health", "share": "3.9% · EUR 387m", "economics": "Revenue EUR 458m (29.7%) · Comp. EBIT EUR 45m (10.8% of EBIT, 9.8% margin) · EV EUR 387m", "text": "Declining pool anchored by legacy products - most notably the heart failure drug Simdax and the sedative Dexdor - that have long since lost patent protection. The EUR 387 million enterprise value implies an EV/EBIT multiple of approximately 8.6x, reflecting the market's view of these as defensive harvest cash flows amid severe, continual European price deflation. Orion competes against Sandoz, Teva and regional Indian suppliers with far greater economies of scale; its only durable advantage is regional, as a trusted domestic supplier in Finland and the broader Nordics."},
+    {"name": "Branded Products", "share": "8.2% · EUR 822m", "economics": "Revenue EUR 305m (19.8%) · Comp. EBIT EUR 51m (12.2% of EBIT, 16.7% margin) · EV EUR 822m", "text": "Profit engine valued at a higher multiple than generics (approximately 16x EBIT) because the Easyhaler portfolio has genuine brand equity, device-level patent protection and sticky patient adherence. Respiratory combination devices are difficult to substitute at the pharmacy level, and the moat is defined by the technical difficulty of manufacturing dry-powder inhalers and the regulatory hurdles of proving device bioequivalence, allowing Orion to compete effectively against global respiratory giants like GSK and AstraZeneca."},
+    {"name": "Animal Health", "share": "3.9% · EUR 391m", "economics": "Revenue EUR 183m (11.9%) · Comp. EBIT EUR 26m (6.2% of EBIT, 14.2% margin) · EV EUR 391m", "text": "Scaling pool serving companion-animal and livestock markets, with 2024 net sales of EUR 183.0 million, an allocated enterprise value of EUR 391 million and a 14.2% EBIT margin."},
+    {"name": "Fermion", "share": "0.4% · EUR 45m", "economics": "Revenue EUR 71m (4.6%) · Comp. EBIT EUR 6m (1.4% of EBIT, 8.4% margin) · EV EUR 45m", "text": "Commodity pool manufacturing active pharmaceutical ingredients that support Orion's other divisions, with 2024 net sales of EUR 71.2 million, an allocated enterprise value of EUR 45 million and an 8.4% EBIT margin."}
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests whether the Nubeqa volume, margin and multiple assumptions embedded in Orion's EUR 10,030 million enterprise value are coherent, with the terminal volume of Nubeqa as the variable on which the scenarios almost entirely differ while the legacy manufacturing and branded divisions are held as a stable industrial base. Because Orion carries negligible net debt of EUR 116 million on 2025 forward estimates, the enterprise value bridges cleanly to a EUR 9,913 million equity market capitalisation, leaving equity holders directly exposed to operating performance.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "2,400", "EBITDA": "900", "Margin": "37.5%", "Multiple": "13.3x", "EV": "11,997", "Equity": "11,875"}, "impliedValueOrUpside": "EUR 84.45 / sh · +19.8%"},
+      {"scenario": "Base", "cols": {"Revenue": "2,194", "EBITDA": "753", "Margin": "34.3%", "Multiple": "13.3x", "EV": "10,030", "Equity": "9,908"}, "impliedValueOrUpside": "EUR 70.46 / sh · -0.1%"},
+      {"scenario": "Bear", "cols": {"Revenue": "2,000", "EBITDA": "450", "Margin": "22.5%", "Multiple": "14.4x", "EV": "6,498", "Equity": "6,376"}, "impliedValueOrUpside": "EUR 45.35 / sh · -35.7%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Orion's enterprise value is almost entirely driven by a single high-margin royalty and product-supply arrangement, creating a stark gap between where the company currently earns its revenue and where the market places its valuation. The group's total enterprise value of EUR 10,030 million reconciles to an equity market capitalisation of EUR 9,913 million after deducting a modest net debt position of EUR 116 million on 2025 forward estimates, and within this total the market allocates approximately 83.6% (EUR 8,385 million) to the Innovative Medicines segment. The segment's reported 2024 EBIT of EUR 289 million needs adjustment before use in valuation: stripping EUR 130 million of positive one-off milestones and adding back EUR 41 million of pipeline write-downs puts underlying recurring operating profit closer to EUR 200 million, implying a demanding multiple of over 40x trailing recurring EBIT. The remaining 16.4% of enterprise value is spread across the legacy manufacturing and branded divisions, which together account for nearly two-thirds of group revenue - Generics and Consumer Health alone represents nearly 30% of revenue but only 3.9% of enterprise value."},
+    {"heading": "Cross-pool bridge", "text": "The group forecast is driven mechanically by the anticipated scale-up of Innovative Medicines: from 2024 to 2027 consensus estimates show net sales growing from EUR 1.54 billion to EUR 2.19 billion while EBIT expands from EUR 417 million to EUR 694 million. Because 2024 reported EBIT included EUR 89 million in net positive one-off items, the underlying growth needed is steeper - from a recurring base of about EUR 328 million to nearly EUR 700 million, closing a EUR 450 million gap purely on partner execution. The sharp decline in estimated 2028 EBIT from EUR 694 million to EUR 507 million reflects conservative consensus modeling of unannounced milestones rather than a patent cliff, as Nubeqa retains US exclusivity into the 2030s. Using a normalized multiple framework, the recurring cash flows of the legacy businesses (Generics, Branded Products, Animal Health, Fermion) support approximately EUR 1.6 billion of enterprise value, leaving over EUR 8.3 billion of the EUR 10 billion entirely dependent on Bayer pushing Nubeqa toward the EUR 3 billion peak sales mark and triggering the higher royalty tiers that expand Orion's EBIT margin above 30%."},
+    {"heading": "Scenarios and verdict", "text": "The scenarios differ almost entirely on the terminal volume of Nubeqa. In the Base scenario Bayer executes its stated commercial plan, Nubeqa reaches more than EUR 3 billion in peak sales, Orion achieves its targeted EUR 1 billion in recorded net sales, and the current EUR 10.03 billion enterprise value is fully justified. The Bull scenario assumes further label expansions via the ARANOTE or ARASTEP trials push peak sales past EUR 3.5 billion while Orion's internal pipeline (such as ODM-212) demonstrates clinical success, lifting enterprise value toward EUR 12 billion. The Bear scenario - the main risk to the case - has Nubeqa plateauing around EUR 2 billion, where valuing a flat EUR 400 million EBIT stream at a mature 12x multiple plus the legacy businesses compresses group EV to approximately EUR 6.5 billion. The 74.8 EUR target is built from 15.5x 2027e EBIT of EUR 694 million (60% weight) and 18.00x 2027e EPS of EUR 4.10 (40% weight); the stock will trade largely on the slope of the Nubeqa adoption curve."}
+  ],
+  "risks": [
+    "Commercial execution reliance on Bayer (Innovative Medicines): Bayer under-invests in marketing due to internal constraints, causing Nubeqa to lose share, with stalled Nubeqa volume growth as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Multiple compression upon product maturity (Innovative Medicines): as Nubeqa reaches peak sales, growth slows and the market reduces the terminal multiple, with peaking royalty tiers as the early warning - HIGH impact, structural.",
+    "Accelerated generic price erosion (Generics and Consumer Health): European healthcare budget constraints force steeper price cuts on Simdax and Dexdor, with margin contraction below 9% as the early warning - MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "Bayer quarterly Nubeqa sales updates (near-term, Innovative Medicines): quarter-over-quarter volume growth in the US/EU mHSPC market confirms the trajectory toward the €3bn peak target; this is the most critical catalyst and the easiest to observe.",
+    "ARANOTE / ARASTEP clinical readouts (near-term, Innovative Medicines): label expansion potential into earlier treatment settings expands the addressable volume base.",
+    "ODM-212 clinical progress (medium-term, Innovative Medicines): proof of concept and trial advancements validate Orion's pipeline beyond a single asset.",
+    "Simdax / Dexdor price stabilization (medium-term, Generics and Consumer Health): slowing margin decay on legacy products secures base cash flow generation."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": ["2022", "2023", "2024", "2025E", "2026E", "2027E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["1,341", "1,190", "1,542", "1,847", "1,987", "2,194"]},
+        {"label": "EBITDA", "values": ["452", "326", "455", "652", "679", "753"]},
+        {"label": "EBITDA margin", "values": ["33.7%", "27.4%", "29.5%", "35.3%", "34.1%", "34.3%"]},
+        {"label": "Depreciation", "values": ["-12", "-51", "-38", "-54", "-67", "-59"]},
+        {"label": "Operating Profit (EBIT)", "values": ["440", "275", "417", "598", "612", "694"]},
+        {"label": "EBIT margin", "values": ["32.8%", "23.1%", "27.0%", "32.4%", "30.8%", "31.6%"]},
+        {"label": "Net financial items", "values": ["1", "-3", "-3", "-5", "-4", "-3"]},
+        {"label": "Pre-tax Profit", "values": ["440", "272", "413", "593", "608", "691"]},
+        {"label": "Net Earnings", "values": ["350", "217", "330", "484", "507", "577"]},
+        {"label": "EPS (EUR)", "values": ["2.5", "1.5", "2.4", "3.4", "3.6", "4.1"]},
+        {"label": "DPS (EUR)", "values": ["1.5", "1.6", "1.6", "2.9", "3", "3.4"]},
+        {"label": "Payout ratio", "values": ["60.3%", "103.6%", "69.0%", "82.8%", "82.8%", "82.8%"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2022", "2023", "2024", "2025E", "2026E", "2027E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["424", "73", "285", "431", "512", "544"]},
+        {"label": "Operating cash flow", "values": ["435", "64", "288", "435", "515", "547"]},
+        {"label": "Change in working capital", "values": ["20", "195", "83", "107", "62", "91"]},
+        {"label": "Gross capex", "values": ["217", "39", "34", "197", "116", "132"]},
+        {"label": "Capex (ex. M&A)", "values": ["-217", "-39", "-34", "-197", "-116", "-132"]},
+        {"label": "Free Operating Cash Flow", "values": ["281", "25", "189", "238", "399", "415"]},
+        {"label": "Free cash flow to firm", "values": ["281", "25", "189", "238", "399", "415"]},
+        {"label": "CF from financing", "values": ["-21", "-249", "-152", "-222", "-380", "-388"]},
+        {"label": "Dividends paid", "values": ["-211", "-211", "-225", "-228", "-401", "-420"]},
+        {"label": "Net change in cash", "values": ["186", "-214", "99", "12", "17", "24"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2025E"],
+      "rows": [
+        {"label": "P/E", "values": ["20.5x"]},
+        {"label": "EV/EBITDA", "values": ["15.4x"]},
+        {"label": "EV/EBIT", "values": ["16.8x"]},
+        {"label": "P/FCF", "values": ["41.6x"]},
+        {"label": "P/BV", "values": ["7.9x"]},
+        {"label": "Dividend Yield", "values": ["4.0%"]},
+        {"label": "Net Debt / EBITDA", "values": ["0.2x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Orion a buy in 2026?", "a": "Yes. Valuatum's 7 July 2026 equity report rates Orion (ORNBV.HE) a BUY with a 74.80 EUR 12-month target versus a 70.50 EUR price, implying about 6.1% upside. Orion's equity trajectory relies almost entirely on Bayer's commercial execution of Nubeqa scaling toward its multi-billion-euro peak sales ambition."},
+    {"q": "What is Orion's price target?", "a": "The Valuatum report dated 7 July 2026 sets a 12-month fundamental target price of 74.80 EUR for Orion (ORNBV.HE), against a current price of 70.50 EUR. The target is built from 15.5x 2027e EBIT of EUR 694 million (60% weight) and 18.00x 2027e EPS of EUR 4.10 (40% weight), producing a weighted target of 74.8 EUR."},
+    {"q": "Why is Orion rated BUY?", "a": "Orion is rated BUY because the Nubeqa royalty structure is highly visible, legally secured and shielded from the commercial execution costs that typically drag down pharmaceutical margins: Bayer assumes the SG&A risk while Orion collects the tiered upside. The base case - EUR 3.0bn Nubeqa peak sales and EUR 650m segment EBIT - supports the EUR 10,030m enterprise value and the 70.50 EUR share price, with further upside if Bayer sustains mHSPC share gains and label expansion."},
+    {"q": "Is Orion overvalued in 2026?", "a": "On Valuatum's framework the valuation is defensible but fragile: nearly 84% of the enterprise value sits in the Innovative Medicines segment, whose EUR 8,385 million allocation implies over 40x trailing recurring EBIT of about EUR 200 million, while the legacy businesses support only around EUR 1.6 billion of EV. If Nubeqa plateaus near EUR 2 billion in sales, the Bear scenario compresses the shares to EUR 45.35, or -35.7%."},
+    {"q": "How does the reverse valuation work for Orion?", "a": "The reverse valuation tests whether the assumptions embedded in Orion's EUR 10,030 million enterprise value are coherent, with the terminal volume of Nubeqa as the swing factor. Bayer's EUR 1.52 billion of 2024 in-market sales must clear EUR 3.0 billion by 2027-2030, lifting group EBIT from EUR 417 million to EUR 694 million. The base case implies EUR 70.46 per share, essentially the current price, with the Bull case at EUR 84.45 and the Bear case at EUR 45.35."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Orion report dated 7 July 2026 (company value map; group enterprise value EUR 10,030m, Innovative Medicines allocation EUR 8,385m, current quote 70.5 EUR).",
+    "Consensus estimates: 2027E consensus EBIT of EUR 694m used in the target price formula; 2024-2027 consensus net sales growing from EUR 1.54 billion to EUR 2.19 billion.",
+    "Market data: Ticker ORNBV.HE current price 70.50 EUR as of 7 July 2026; 2024 net sales EUR 1,542m; 2027E group EBITDA EUR 753m (analyst-generated estimate)."
+  ]
+}

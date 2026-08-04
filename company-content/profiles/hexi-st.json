@@ -1,0 +1,9 @@
+{
+  "ticker": "HEXI.ST",
+  "companyName": "Hexicon AB (publ)",
+  "profile": "Hexicon AB is a Swedish company that develops projects and technology for floating offshore wind power. It works with local partners on early-stage project development, site selection, permitting and project divestiture, and also pursues licensing and consulting revenues from its patented TwinWind platform. The company operates through projects across multiple markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:16:40.018Z"
+}

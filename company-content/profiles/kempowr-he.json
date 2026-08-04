@@ -1,0 +1,9 @@
+{
+  "ticker": "KEMPOWR.HE",
+  "companyName": "Kempower Oyj",
+  "profile": "Kempower designs and manufactures modular DC fast-charging systems and charging management software for electric vehicles. Its products include power units, satellite chargers, station chargers and related cloud services used in public charging, fleet depots and heavy-duty applications. The company is based in Finland and serves customers in Europe, North America and other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:54:04.192Z"
+}

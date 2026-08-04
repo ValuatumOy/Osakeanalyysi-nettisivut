@@ -1,0 +1,9 @@
+{
+  "ticker": "AFG.OL",
+  "companyName": "AF Gruppen ASA",
+  "profile": "AF Gruppen ASA is a Norwegian contracting and industrial group with operations mainly in Norway and Sweden. It provides civil engineering, building, property development, energy, environmental services and offshore services, including infrastructure projects, demolition, remediation and decommissioning work. The group’s value drivers are project execution, specialist expertise and a diversified portfolio of activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:43:26.653Z"
+}

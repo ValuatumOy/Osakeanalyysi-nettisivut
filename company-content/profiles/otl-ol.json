@@ -1,0 +1,9 @@
+{
+  "ticker": "OTL.OL",
+  "companyName": "Odfjell Technology Ltd.",
+  "profile": "Odfjell Technology provides offshore operations, well services technology, and engineering solutions for the oil and gas industry. Its activities include platform drilling and production support, well management, tubular running, drilling tool rental, intervention, abandonment, and engineering services for facilities, subsea systems, and modifications. The company operates mainly in Norway, the UK, and other international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:57:20.071Z"
+}

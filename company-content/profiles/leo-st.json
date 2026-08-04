@@ -1,0 +1,9 @@
+{
+  "ticker": "LEO.ST",
+  "companyName": "LeoVegas AB (publ)",
+  "profile": "LeoVegas is an online gaming operator focused on mobile-first casino and sports betting. Through its brands and platforms, it offers slots, live casino, sportsbook and bingo products on mobile and desktop, supported by technology development in Sweden and operations based mainly in Malta. The business depends on regulated market access, product development and customer acquisition.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:37:30.892Z"
+}

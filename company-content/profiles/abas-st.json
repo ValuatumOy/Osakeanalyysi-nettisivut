@@ -1,0 +1,9 @@
+{
+  "ticker": "ABAS.ST",
+  "companyName": "ABAS Protect AB",
+  "profile": "ABAS Protect AB manufactures and installs perimeter protection solutions for industrial, construction and security environments. Its portfolio includes sliding, folding and swing gates, pedestrian gates, turnstiles, fences and related access control equipment, with products adapted to different security classes and Nordic conditions. The company also provides service and project support from its base in Ambjörnarp, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:49:56.688Z"
+}

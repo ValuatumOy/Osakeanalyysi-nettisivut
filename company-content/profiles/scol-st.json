@@ -1,0 +1,9 @@
+{
+  "ticker": "SCOL.ST",
+  "companyName": "Scandion Oncology A/S",
+  "profile": "Scandion Oncology A/S is a Danish clinical-stage biotechnology company developing medicines designed to overcome cancer drug resistance. Its lead program, SCO-101, has been studied in colorectal and pancreatic cancer, supported by a screening platform and earlier-stage compounds aimed at solid tumors. In March 2025, shareholders approved voluntary liquidation.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:51:59.506Z"
+}

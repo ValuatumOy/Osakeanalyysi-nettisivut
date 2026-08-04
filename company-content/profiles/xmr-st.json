@@ -1,0 +1,9 @@
+{
+  "ticker": "XMR.ST",
+  "companyName": "XMReality AB (publ)",
+  "profile": "XMReality AB develops remote visual assistance software that lets experts guide, inspect, and troubleshoot work from a distance using live video, augmented reality tools, annotations, and documentation features. The platform is used for field service, customer support, inspections, and training, with cloud-based session records and usage tracking for business customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:53.719Z"
+}

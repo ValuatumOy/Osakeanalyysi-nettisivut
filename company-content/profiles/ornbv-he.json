@@ -1,0 +1,9 @@
+{
+  "ticker": "ORNBV.HE",
+  "companyName": "Orion",
+  "profile": "Orion is a Finnish pharmaceutical company that develops, manufactures and markets medicines and related healthcare products. Its portfolio includes proprietary and generic drugs, self-care products such as non-prescription medicines, vitamins and skincare products, veterinary medicines and animal well-being products, and active pharmaceutical ingredients. Its products are sold in more than 100 countries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-13T08:35:43.599Z"
+}

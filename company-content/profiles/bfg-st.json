@@ -1,0 +1,9 @@
+{
+  "ticker": "BFG.ST",
+  "companyName": "BYGGFAKTA GROUP Nordic HoldCo AB (publ)",
+  "profile": "BYGGFAKTA GROUP Nordic HoldCo AB is a provider of digital information and software for the construction industry. Its services cover project intelligence, specification software, product information platforms and e-tendering tools used by contractors, suppliers and other market participants. The company’s value driver is helping customers identify projects, improve sales efficiency and streamline procurement workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:52:58.512Z"
+}

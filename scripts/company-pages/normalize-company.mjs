@@ -6,6 +6,10 @@ const METRIC_VARIABLES = {
   netEarnings: 'net_earnings',
   marketCap: 'market_cap_ye',
 };
+const INDUSTRY_OVERRIDES = new Map([
+  ['KCR.HE', 'Industrial Machinery'],
+  ['VOLV-B.ST', 'Commercial Vehicles'],
+]);
 
 export function selectPrimaryModel(models) {
   if (!Array.isArray(models) || models.length === 0) {
@@ -38,18 +42,44 @@ export function normalizeCompanyData(company, model) {
     Object.entries(METRIC_VARIABLES).map(([key, variable]) => [key, finiteNumberOrNull(yearData[variable])]),
   );
 
+  const ticker = String(company.ticker || '').trim().toUpperCase();
+  const currency = String(model.currency || '').trim().toUpperCase();
+
   return {
     companyId: Number(company.companyId),
     followedModelId: Number(model.followedModelId),
     companyName: String(company.companyName || model.companyName || '').trim(),
     companyCode: String(company.companyCode || model.companyCode || '').trim(),
-    ticker: String(company.ticker || '').trim().toUpperCase(),
-    industry: String(company.industry || '').trim(),
-    currency: String(model.currency || '').trim().toUpperCase(),
+    ticker,
+    industry: INDUSTRY_OVERRIDES.get(ticker) || String(company.industry || '').trim(),
+    exchange: String(company.exchange || company.market || '').trim(),
+    currency,
+    marketCurrency: marketCurrencyForTicker(ticker, currency),
     financialYear,
     metrics,
     background: normalizeBackground(model.background),
   };
+}
+
+function marketCurrencyForTicker(ticker, fallbackCurrency) {
+  const suffix = String(ticker || '').split('.').pop();
+  const currencies = {
+    HE: 'EUR',
+    ST: 'SEK',
+    CO: 'DKK',
+    OL: 'NOK',
+    DE: 'EUR',
+    MI: 'EUR',
+    AS: 'EUR',
+    PA: 'EUR',
+    MC: 'EUR',
+    L: 'GBP',
+    SW: 'CHF',
+    TO: 'CAD',
+    AX: 'AUD',
+    US: 'USD',
+  };
+  return currencies[suffix] || fallbackCurrency;
 }
 
 function normalizeBackground(background) {

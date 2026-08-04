@@ -1,0 +1,9 @@
+{
+  "ticker": "DRIL.ST",
+  "companyName": "Drillcon AB (publ)",
+  "profile": "Drillcon AB provides drilling services for the mining and infrastructure sectors, mainly through core drilling and raise boring. The group also carries out exploration, production and geotechnical drilling, plus related technical surveys and shaft work. It operates primarily in Europe and serves customers through long-term and shorter project-based contracts.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:41:56.651Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "MULTI.OL",
+  "companyName": "Multiconsult ASA",
+  "profile": "Multiconsult ASA is a Norwegian engineering and architecture consultancy that provides multidisciplinary advisory, design and project services. Its work covers sustainable design, project engineering and management, verification, inspection, supervision and architecture for clients in infrastructure, energy, industry, urban development and mobility across Norway and other markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:22:41.322Z"
+}

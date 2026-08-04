@@ -1,0 +1,9 @@
+{
+  "ticker": "CEMAT.CO",
+  "companyName": "Cemat A/S",
+  "profile": "CeMat A/S is a Denmark-based real estate company with operations focused mainly in Warsaw, Poland. Its business combines property development and asset management, including residential and commercial projects, leasing of small business units, self-storage, offices and warehouse space, and management of its owned property portfolio. The company also holds land for future development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:32:06.052Z"
+}

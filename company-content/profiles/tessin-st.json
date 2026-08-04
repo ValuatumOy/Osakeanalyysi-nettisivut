@@ -1,0 +1,9 @@
+{
+  "ticker": "TESSIN.ST",
+  "companyName": "Tessin Nordic Holding AB (publ)",
+  "profile": "Tessin Nordic Holding AB operates a digital platform for real estate financing. It connects investors with property developers and other borrowers seeking funding for residential and commercial projects, mainly through crowdfunding and secured loans. The company’s business is focused on arranging capital for real estate projects in Sweden and the wider Nordic market.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:52:02.093Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "REALFI.ST",
+  "companyName": "Realfiction Holding AB (publ)",
+  "profile": "Realfiction Holding AB is a Swedish-listed company that develops 3D display technologies through its Directional Pixel Technology platform and related intellectual property. Its business includes holographic and mixed-reality display products, such as the Dreamoc family and DeepFrame, while it also pursues licensing of its technology to OEM and other commercial partners across display markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:48:39.554Z"
+}

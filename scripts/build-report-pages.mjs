@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// Generates static, indexable per-report landing pages from report-content/*.json + js/reportsData.js.
+// Generates static, indexable per-report landing pages from report-content/*.json + the live catalog API.
 // Free reports expose the full analysis (max SEO surface). Paid reports expose a citable teaser + a buy gate.
 // Run: node scripts/build-report-pages.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fetchLiveCatalog } from './live-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -22,24 +23,14 @@ const attr = (s) => esc(s);
 const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
+const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
 // Stable comparison-page slug, order-independent (must match scripts/build-comparison-pages.mjs).
 const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
-function loadCatalog() {
-  // Source of truth: snapshot of the live catalog API (report-content/_catalog.json),
-  // falling back to the bundled js/reportsData.js if the snapshot is absent.
-  const snap = path.join(CONTENT_DIR, '_catalog.json');
-  let cat;
-  if (fs.existsSync(snap)) {
-    cat = JSON.parse(fs.readFileSync(snap, 'utf8'));
-  } else {
-    const src = fs.readFileSync(path.join(ROOT, 'js', 'reportsData.js'), 'utf8');
-    // eslint-disable-next-line no-new-func
-    cat = Function(src + '\n;return REPORTS_CATALOG;')();
-  }
+async function loadCatalog() {
   const byId = {};
-  for (const r of cat) byId[r.id] = r;
+  for (const r of await fetchLiveCatalog()) byId[r.id] = r;
   return byId;
 }
 
@@ -52,12 +43,12 @@ function metaDescription(d) {
   const h = d.headline || {};
   const sn = shortName(d.companyName);
   if (!h.recommendation) {
-    return `${sn} (${d.ticker}) stock overview: share price, market cap and company profile. Generate a fresh Valuatum AI equity report for ${sn} — value-pool analysis, reverse valuation, financials, risks & catalysts.`.replace(/\s+/g, ' ').trim();
+    return `${sn} (${d.ticker}) stock overview: share price, market cap and company profile. Generate a fresh Valuatum AI equity report for ${sn} — segment-value analysis, reverse valuation, financials, risks & catalysts.`.replace(/\s+/g, ' ').trim();
   }
   const parts = [`${sn} (${d.ticker}) stock analysis & AI equity report: Valuatum rates ${d.ticker} ${h.recommendation}`];
   if (h.targetPrice) parts.push(`with a ${h.targetPrice} price target`);
   if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
-  let s = parts.join(' ') + `. Share price forecast, valuation, value-pool analysis, reverse valuation, financials, risks & catalysts.`;
+  let s = parts.join(' ') + `. Share price forecast, valuation, segment-value analysis, reverse valuation, financials, risks & catalysts.`;
   return s.replace(/\s+/g, ' ').trim();
 }
 
@@ -71,9 +62,9 @@ function overviewIntro(d) {
     s += `Valuatum rates ${d.ticker} ${h.recommendation}`;
     if (h.targetPrice) s += ` with a ${h.targetPrice} 12-month price target`;
     if (h.impliedUpside) s += ` (${h.impliedUpside} vs the current share price)`;
-    s += `. This ${d.sector ? d.sector + ' ' : ''}equity research report covers ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+    s += `. This ${d.sector ? d.sector + ' ' : ''}equity research report covers ${sn}'s valuation, segment-value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
   } else {
-    s += `${sn} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${sn}'s valuation, value-pool analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+    s += `${sn} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${sn}'s valuation, segment-value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
   }
   return s.replace(/\s+/g, ' ').trim();
 }
@@ -87,12 +78,12 @@ function templatedFaqs(d) {
   if (h.recommendation) {
     out.push({ q: `Is ${sn} (${t}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sn} (${t}) ${h.recommendation}${h.targetPrice ? `, with a 12-month price target of ${h.targetPrice}` : ''}${h.currentPrice ? ` versus a ${h.currentPrice} share price` : ''}${h.impliedUpside ? ` (${h.impliedUpside})` : ''}. The full report explains the rationale behind the rating.` });
     if (h.targetPrice) out.push({ q: `What is the ${sn} (${t}) share price target?`, a: `The current Valuatum 12-month price target for ${sn} is ${h.targetPrice}${h.impliedUpside ? `, implying ${h.impliedUpside} versus the current share price` : ''}. Unlock the report for the valuation behind the target.` });
-    out.push({ q: `How is ${sn} (${t}) valued?`, a: `The ${sn} AI equity report values the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts. Buy the report to read the full valuation.` });
+    out.push({ q: `How is ${sn} (${t}) valued?`, a: `The ${sn} AI equity report values the company using segment-value analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts. Buy the report to read the full valuation.` });
     out.push({ q: `Where can I get the ${sn} (${t}) equity research report?`, a: `Buy the ${sn} (${t}) AI equity report PDF on this page for instant download, or generate a fresh report for any listed company.` });
   } else {
-    out.push({ q: `Does Valuatum have an AI equity report on ${sn} (${t})?`, a: `${sn} is on Valuatum's coverage list, but a full AI equity report has not been published yet. Generate a fresh report on demand to get the rating, price target, value-pool analysis and reverse valuation.` });
-    out.push({ q: `How is ${sn} (${t}) valued?`, a: `A ${sn} AI equity report would value the company using value-pool analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts.` });
-    out.push({ q: `How long does it take to generate a ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — typically within one business day of ordering.` });
+    out.push({ q: `Does Valuatum have an AI equity report on ${sn} (${t})?`, a: `${sn} is on Valuatum's coverage list, but a full AI equity report has not been published yet. Generate a fresh report on demand to get the rating, price target, segment-value analysis and reverse valuation.` });
+    out.push({ q: `How is ${sn} (${t}) valued?`, a: `${indefiniteArticle(sn)} ${sn} AI equity report would value the company using segment-value analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts.` });
+    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — typically within one business day of ordering.` });
   }
   return out;
 }
@@ -108,7 +99,7 @@ function valuePoolBars(pools) {
     const pct = firstPct(p.share);
     return pct === null ? '' : `<div class="pool-row"><span class="pool-name" style="min-width:200px;">${esc(p.name)}</span><div class="pool-track"><div class="pool-fill" style="width:${pct}%; background:${colors[i % colors.length]};"></div></div><span class="pool-pct">${esc(p.share)}</span></div>`;
   }).join('');
-  return bars ? `<div class="value-pool-chart" style="margin:1rem 0 1.5rem;">${bars}</div>` : '';
+  return bars ? `<div class="segment-value-chart" style="margin:1rem 0 1.5rem;">${bars}</div>` : '';
 }
 
 function thesisTeaserList(thesis) {
@@ -116,19 +107,18 @@ function thesisTeaserList(thesis) {
 }
 
 function navHtml() {
-  return `  <header class="nav scrolled" id="nav">
+  return `  <header class="nav scrolled nav-report" id="nav">
     <div class="nav-inner">
       <a href="/index.html" class="nav-logo">
         <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
         <div class="nav-logo-text">
-          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
-          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+          <span class="nav-logo-wordmark">Valuatum</span>
+          <span class="nav-logo-sub">AI Equity Reports</span>
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a>
-        <a href="/comparisons.html" class="nav-link">Compare</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -152,13 +142,14 @@ function footerHtml() {
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
-            <a href="/reports.html#order-fresh" class="footer-link">Order fresh report</a>
+            <a href="/reports.html#free" class="footer-link">Free reports</a>
+            <a href="/reports.html#coverage-request" class="footer-link">Request coverage</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
             <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>
@@ -169,6 +160,7 @@ function footerHtml() {
             <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
           </div>
         </div>
         <div>
@@ -233,7 +225,7 @@ function valuePoolsHtml(pools) {
         <h3>${esc(p.name)}${p.share ? ` <span style="font-weight:400; color:var(--gray-steel); font-size:var(--text-sm);">— ${esc(p.share)}</span>` : ''}</h3>
         ${p.economics ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:0.4rem;">${esc(p.economics)}</p>` : ''}
         <p>${esc(p.text)}</p>`).join('');
-  return `${bars ? `<div class="value-pool-chart" style="margin:1rem 0 2rem;">${bars}</div>` : ''}${detail}`;
+  return `${bars ? `<div class="segment-value-chart" style="margin:1rem 0 2rem;">${bars}</div>` : ''}${detail}`;
 }
 
 function scenarioTable(rv) {
@@ -282,17 +274,19 @@ const chip = (href, label) => `<a style="display:inline-block; text-decoration:n
 function relatedHtml(current, all) {
   const others = all.filter(x => x.slug !== current.slug);
   if (!others.length) return '';
-  // Sector peers first (tighter topical links), then the rest.
-  const peers = others.filter(o => o.sector && o.sector === current.sector);
-  const rest = others.filter(o => !(o.sector && o.sector === current.sector));
-  const ordered = [...peers, ...rest];
+  const score = (candidate) =>
+    (candidate.sector && candidate.sector === current.sector ? 8 : 0) +
+    (candidate.exchange && candidate.exchange === current.exchange ? 4 : 0) +
+    (candidate.country && candidate.country === current.country ? 2 : 0);
+  const ordered = others
+    .sort((a, b) =>
+      score(b) - score(a) ||
+      new Date(b.reportDate || 0) - new Date(a.reportDate || 0) ||
+      String(a.companyName).localeCompare(String(b.companyName))
+    )
+    .slice(0, 4);
   const reportChips = ordered.map(o => chip(`/reports/${o.slug}.html`, `${shortName(o.companyName)} (${o.ticker}) report →`)).join('');
-  // Head-to-head comparison chips for same-sector peers (highest-intent "X vs Y" queries).
-  const cmpChips = peers.map(o => chip(`/compare/${compareSlug(current.companyName, o.companyName)}.html`,
-    `${shortName(current.companyName)} vs ${shortName(o.companyName)} →`)).join('');
-  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>${cmpChips ? `
-          <h3 style="margin-top:1.5rem;">Head-to-head comparisons</h3>
-          <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${cmpChips}</div>` : ''}`;
+  return `<div style="display:flex; flex-wrap:wrap; gap:0.6rem;">${reportChips}</div>`;
 }
 
 function jsonLd(d, cat, desc) {
@@ -359,7 +353,7 @@ function generateGate(d) {
             <h2 style="color:white; margin-top:0;">Generate the ${esc(sn)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate this report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
             </div>
           </div>
@@ -389,7 +383,7 @@ function renderPage(d, cat, all) {
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
     : hasReport
       ? `<a href="#unlock" class="btn btn-primary">Get the full report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
-      : `<a href="#generate" class="btn btn-gold">Generate this report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
+      : `<a href="#generate" class="btn btn-gold">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
 
   const sections = [];
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
@@ -443,11 +437,11 @@ function renderPage(d, cat, all) {
     }
     if (Array.isArray(d.valuePools) && d.valuePools.length) {
       sections.push(`
-        <section class="report-full-section" id="value-pools">
-          <h2>Value pool analysis — enterprise-value allocation</h2>
-          <p>The <a href="/methodology.html">value pool analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for. The allocation across each pool is shown below; the full segment economics are in the report.</p>
+        <section class="report-full-section" id="segment-values">
+          <h2>Segment value analysis — enterprise-value allocation</h2>
+          <p>The <a href="/methodology.html">segment value analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for. The allocation across each segment is shown below; the full segment economics are in the report.</p>
           ${valuePoolBars(d.valuePools)}
-          ${lockedSection(`Full ${sn} value-pool breakdown`, `Per-pool revenue, EBIT and EV economics with the implied valuation of each business.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
+          ${lockedSection(`Full ${sn} segment-value breakdown`, `Per-segment revenue, EBIT and EV economics with the implied valuation of each business.`, (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}
         </section>`);
     }
     if (d.reverseValuation) {
@@ -483,9 +477,9 @@ function renderPage(d, cat, all) {
     }
     if (Array.isArray(d.valuePools) && d.valuePools.length) {
       sections.push(`
-        <section class="report-full-section" id="value-pools">
-          <h2>Value pool analysis — enterprise-value allocation</h2>
-          <p>The <a href="/methodology.html">value pool analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for, each shown with its share of total EV and segment economics.</p>
+        <section class="report-full-section" id="segment-values">
+          <h2>Segment value analysis — enterprise-value allocation</h2>
+          <p>The <a href="/methodology.html">segment value analysis</a> decomposes ${esc(sn)}'s enterprise value into the distinct businesses and options the market is paying for, each shown with its share of total EV and segment economics.</p>
           ${valuePoolsHtml(d.valuePools)}
         </section>`);
     }
@@ -550,7 +544,7 @@ function renderPage(d, cat, all) {
         <section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
           ${(d.sources && d.sources.length) ? listSection(d.sources) : ''}
-          <p>This report was generated using Valuatum's AI equity research framework — a structured enterprise-value and value-pool methodology built on 25+ years of professional equity research practice. See the <a href="/methodology.html">methodology</a> for the full approach.</p>
+          <p>This report was generated using Valuatum's AI equity research framework — a structured enterprise-value and segment value methodology built on 25+ years of professional equity research practice. See the <a href="/methodology.html">methodology</a> for the full approach.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>
@@ -561,7 +555,7 @@ function renderPage(d, cat, all) {
   if (related) {
     sections.push(`
         <section class="report-full-section" id="related">
-          <h2>More AI equity reports</h2>
+          <h2>Related AI equity reports</h2>
           ${related}
         </section>`);
   }
@@ -602,10 +596,10 @@ ${jsonLd(d, cat, desc)}
     .cp-sub{font-size:var(--text-xs);color:var(--gray-steel);font-weight:400;}
     .cp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
     .cp-scroll table{white-space:nowrap;min-width:100%;}
-    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}${!hasReport ? `
+    @media(max-width:520px){.cp-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}}
     .report-full-content.coverage-cols{column-count:2;column-gap:2.5rem;}
     .report-full-content.coverage-cols .report-full-section{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.5rem;}
-    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}` : ''}
+    @media(max-width:960px){.report-full-content.coverage-cols{column-count:1;}}
   </style>
 </head>
 <body>
@@ -621,10 +615,6 @@ ${navHtml()}
         </nav>
         <div class="company-header-inner">
           <div class="company-ident">
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.5rem; flex-wrap:wrap;">
-              <span class="company-ticker">${esc(d.ticker)}</span>
-              <span class="company-status-badge"><span class="company-status-dot"></span>${hasReport ? (isFree ? 'Free report' : 'Sample preview') : 'Coverage'} · ${hasReport ? 'Updated' : 'Added'} ${esc(updated)}</span>
-            </div>
             <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) Stock Analysis &amp; AI Equity Report</h1>
             <div class="company-meta">
               <span class="company-meta-chip">${esc(d.exchange)}</span>
@@ -642,8 +632,8 @@ ${navHtml()}
       </div>
     </section>
 
-    <div class="container" style="max-width:${hasReport ? '880px' : '1760px'}; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content${hasReport ? '' : ' coverage-cols'}">
+    <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
+      <div class="report-full-content coverage-cols">
 ${sections.join('\n')}
       </div>
     </div>
@@ -657,7 +647,7 @@ ${footerHtml()}
 }
 
 // ── run ─────────────────────────────────────────────────────────────────────
-const catalog = loadCatalog();
+const catalog = await loadCatalog();
 // Generate one page per LIVE catalog entry that has extracted content.
 const docs = [];
 for (const [id, cat] of Object.entries(catalog)) {

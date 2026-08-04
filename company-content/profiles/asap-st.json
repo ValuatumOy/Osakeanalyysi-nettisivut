@@ -1,0 +1,9 @@
+{
+  "ticker": "ASAP.ST",
+  "companyName": "Asarina Pharma AB (publ)",
+  "profile": "Asarina Pharma AB (publ) is a Swedish biotechnology company that developed Sepranolone for stress-, compulsion- and menstrual-related disorders, including Tourette syndrome, PMDD and menstrual migraine. The company also built a broader GAMSA neurosteroid platform. Following a decision to enter voluntary liquidation, it sold its Sepranolone intellectual property and is winding down remaining operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:26:18.758Z"
+}

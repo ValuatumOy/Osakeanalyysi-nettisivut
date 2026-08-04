@@ -1,0 +1,62 @@
+import { App } from 'aws-cdk-lib';
+
+export interface StageConfig {
+  /** 'prod' | 'test' — selected with `-c stage=test`; prod is the default. */
+  stage: string;
+  /** '' for prod, '-test' for test — appended to stack/table/bucket/domain names. */
+  suffix: string;
+  zoneDomain: string;
+  apiDomain: string;
+  filesDomain: string;
+  /** REPORT_PDF_BASE_URL for the Lambdas. */
+  pdfBaseUrl: string;
+  /** Origins allowed to call the API / PUT to the bucket (site + local dev). */
+  corsOrigins: string[];
+  siteUrl: string;
+  alertEmail: string;
+  /** SSM SecureString prefix, e.g. /aiequityreports/prod (see infra/README.md). */
+  secretsPrefix: string;
+  /** pdf-report-engine Lambda: function URL + function ARN for IAM-auth invoke. */
+  pdfEngineUrl?: string;
+  engineFunctionArn?: string;
+}
+
+export function stageConfig(app: App): StageConfig {
+  const stage = app.node.tryGetContext('stage') ?? 'prod';
+  if (!['prod', 'test'].includes(stage)) {
+    throw new Error(`Unknown stage "${stage}" — use -c stage=prod or -c stage=test`);
+  }
+  const suffix = stage === 'prod' ? '' : `-${stage}`;
+  const zoneDomain = 'aiequityreports.com';
+
+  // pdf-report-engine (same account): each stage talks to its own engine
+  // stage. Overridable with -c pdfEngineUrl=… / -c engineFunctionArn=….
+  const engine = stage === 'prod'
+    ? {
+        url: 'https://jdnrhdk37rmqzayy2km4jyrlgq0uapaw.lambda-url.eu-west-1.on.aws',
+        arn: 'arn:aws:lambda:eu-west-1:892885731254:function:pdf-report-api',
+      }
+    : {
+        url: 'https://7zqqrejifzqphtwfb2imxtn67q0yzekq.lambda-url.eu-west-1.on.aws',
+        arn: 'arn:aws:lambda:eu-west-1:892885731254:function:pdf-report-api-test',
+      };
+
+  return {
+    stage,
+    suffix,
+    zoneDomain,
+    apiDomain: `api${suffix}.${zoneDomain}`,
+    filesDomain: `files${suffix}.${zoneDomain}`,
+    pdfBaseUrl: `https://files${suffix}.${zoneDomain}/reports/pdfs`,
+    corsOrigins: [
+      `https://www.${zoneDomain}`,
+      `https://${zoneDomain}`,
+      'http://localhost:3000',
+    ],
+    siteUrl: app.node.tryGetContext('siteUrl') ?? `https://www.${zoneDomain}`,
+    alertEmail: app.node.tryGetContext('alertEmail') ?? 'awswatchdog@valuatum.com',
+    secretsPrefix: `/aiequityreports/${stage}`,
+    pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
+    engineFunctionArn: app.node.tryGetContext('engineFunctionArn') ?? engine.arn,
+  };
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "2CUREX.ST",
+  "companyName": "2cureX AB (publ)",
+  "profile": "2cureX AB is a biotechnology company focused on functional precision oncology. It develops and commercialises the IndiTreat® family of cancer drug-sensitivity tests, which use patient tumour samples to create 3D tumoroids and help identify treatments likely to work for metastatic colorectal cancer. The company is also pursuing a revised commercial structure and broader indications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:27:14.133Z"
+}

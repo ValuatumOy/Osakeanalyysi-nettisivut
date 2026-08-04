@@ -1,0 +1,9 @@
+{
+  "ticker": "AKRBP.OL",
+  "companyName": "Aker BP ASA",
+  "profile": "Aker BP ASA explores for, develops and produces oil and gas on the Norwegian continental shelf. Its portfolio includes operated field centres such as Valhall, Ula, Edvard Grieg/Ivar Aasen, Alvheim and Skarv, and a non-operated interest in Johan Sverdrup. The company’s value drivers are production, field development, exploration and operating efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:47:19.221Z"
+}

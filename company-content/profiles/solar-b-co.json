@@ -1,0 +1,9 @@
+{
+  "ticker": "SOLAR-B.CO",
+  "companyName": "Solar A/S",
+  "profile": "Solar A/S is a European sourcing and services company serving professional contractors mainly in electrical, heating and plumbing, ventilation, climate and energy solutions. It supplies a broad range of products and supports customers with logistics, product availability, value-adding services and digital tools designed to improve efficiency and help them run their businesses more effectively.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:01:01.413Z"
+}

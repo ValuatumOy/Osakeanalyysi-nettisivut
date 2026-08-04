@@ -1,0 +1,9 @@
+{
+  "ticker": "ISLAX.OL",
+  "companyName": "Icelandic Salmon AS",
+  "profile": "Icelandic Salmon AS is a fully integrated salmon farming group in Iceland, operating through its subsidiary Arnarlax. The company produces farmed salmon across the value chain, including hatchery and smolt production, sea farming, harvesting, and sales. Its operations are centered in the Westfjords, with facilities and offices supporting production and customer delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:50:14.618Z"
+}

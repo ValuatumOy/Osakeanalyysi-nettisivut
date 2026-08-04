@@ -128,7 +128,7 @@ function buildPrompt(company) {
 
 [COVER_COMPANY_PROFILE]
 Write one neutral 45-65 word paragraph explaining what the company does.
-Mention the company's main businesses, products, services, or value pools.
+Mention the company's main businesses, products, services, or value drivers.
 If the company is undergoing a clear strategic transition, mention it briefly only if supported by the supplied company information.
 Do not include recommendation, valuation, target price, upside, investment thesis, or promotional language.
 Use plain institutional English that helps a reader quickly understand the company before reading the report.
@@ -179,7 +179,8 @@ function slugify(value) {
 
 function runCommand(command, args, input) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { stdio: ['pipe', 'ignore', 'pipe'] });
+    const spawnOptions = commandForPlatform(command, args);
+    const child = spawn(spawnOptions.command, spawnOptions.args, { stdio: ['pipe', 'ignore', 'pipe'] });
     let stderr = '';
     child.stderr.setEncoding('utf8');
     child.stderr.on('data', (chunk) => {
@@ -193,4 +194,11 @@ function runCommand(command, args, input) {
     });
     child.stdin.end(input);
   });
+}
+
+function commandForPlatform(command, args) {
+  if (process.platform === 'win32' && /\.(?:cmd|bat)$/i.test(command)) {
+    return { command: 'cmd.exe', args: ['/d', '/s', '/c', command, ...args] };
+  }
+  return { command, args };
 }

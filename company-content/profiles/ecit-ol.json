@@ -1,0 +1,9 @@
+{
+  "ticker": "ECIT.OL",
+  "companyName": "ECIT As",
+  "profile": "ECIT provides finance and accounting services, payroll administration, advisory support, IT outsourcing, IT security, and business solutions for companies across the Nordic region and other European markets. The group combines local service delivery with technology-enabled processes to help clients manage bookkeeping, compliance, reporting, and core operational systems.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:04:55.156Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SVEAF.ST",
+  "companyName": "Sveafastigheter AB",
+  "profile": "Sveafastigheter AB owns, manages and develops rental apartments in Sweden, with a focus on growth regions such as Stockholm-Mälardalen, Malmö-Öresund and Greater Gothenburg. Its business combines long-term property management with new residential development, supported by project development, local market presence, tenant services and sustainability efforts that drive occupancy, cash flow and portfolio growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:04:21.927Z"
+}

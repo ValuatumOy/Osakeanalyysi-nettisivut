@@ -1,0 +1,9 @@
+{
+  "ticker": "CEVI.ST",
+  "companyName": "CellaVision AB (publ)",
+  "profile": "CellaVision develops and sells digital hematology microscopy solutions for clinical laboratories. Its portfolio includes analyzers, instruments, reagents, staining systems, software and applications used to automate, standardize and simplify blood and body fluid analysis. The company serves laboratories through global partners and local market support, with products designed to improve workflow efficiency and diagnostic certainty.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:09:28.256Z"
+}

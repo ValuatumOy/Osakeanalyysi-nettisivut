@@ -1,0 +1,9 @@
+{
+  "ticker": "KAMUX.HE",
+  "companyName": "Kamux",
+  "profile": "Kamux is a retail chain specializing in used car sales and related integrated services. It combines online commerce with a showroom network to help customers buy and sell vehicles. The company operates in Finland, Sweden and Germany, where it sources, sells and offers services connected to preowned cars.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:14:46.181Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "STUDBO.ST",
+  "companyName": "Studentbostäder i Norden AB (publ)",
+  "profile": "Studentbostäder i Norden AB owns, develops and manages student housing in Sweden and other Nordic markets. The company provides rental apartments and student residences, with a focus on housing near universities and campus areas. Its operations are supported by a housing queue, digital tenant services and ongoing development projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:45.462Z"
+}

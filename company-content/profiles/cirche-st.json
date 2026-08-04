@@ -1,0 +1,9 @@
+{
+  "ticker": "CIRCHE.ST",
+  "companyName": "CirChem AB (publ)",
+  "profile": "CirChem AB provides industrial solvent recycling services in Sweden. The company collects used solvents from industrial customers, then filters, purifies and distills them for reuse. At its Vargön facility, it also produces related chemical products, including washer fluid and hand sanitizer, while serving manufacturers seeking to reduce waste and replace virgin solvent use.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:16:43.753Z"
+}

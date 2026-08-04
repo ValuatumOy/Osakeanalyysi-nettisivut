@@ -1,0 +1,9 @@
+{
+  "ticker": "JETPAK.ST",
+  "companyName": "Jetpak Top Holding AB (publ)",
+  "profile": "Jetpak Top Holding AB is a Nordic logistics company focused on time-critical express deliveries and door-to-door shipments. It offers ad hoc transport and customized logistics solutions, using air and ground networks to serve business customers across the Nordic region, Europe, and other markets. The company’s value drivers are speed, reliability, and real-time shipment control.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:28:29.420Z"
+}

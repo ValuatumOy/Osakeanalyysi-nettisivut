@@ -6,11 +6,7 @@
 (function initNav() {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  const onScroll = () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  nav.classList.add('scrolled');
 })();
 
 // ── Mobile menu ─────────────────────────────────────
@@ -56,22 +52,60 @@
 })();
 
 // ── Search functionality ─────────────────────────────
+(function exposeWisdomCompanySearch() {
+  const endpoint = '/api/search-companies';
+  window.searchWisdomCompanies = async function searchWisdomCompanies(rawQuery) {
+    const query = String(rawQuery || '').trim();
+    if (!query) return [];
+    const response = await fetch(endpoint + '?q=' + encodeURIComponent(query));
+    if (!response.ok) throw new Error('Company search returned ' + response.status);
+    const data = await response.json();
+    return Array.isArray(data.results) ? data.results : [];
+  };
+})();
+
 (function initSearch() {
   const inputs = document.querySelectorAll('.search-input');
   inputs.forEach(input => {
     const wrap = input.closest('.search-field-wrap') || input.parentElement;
     const autocomplete = wrap?.parentElement?.querySelector('.search-autocomplete');
+    let wisdomMatches = [];
+    let debounceTimer = null;
+    let requestSequence = 0;
 
     if (autocomplete) {
       input.addEventListener('input', () => {
         const q = input.value.trim().toLowerCase();
-        if (q.length < 1) { autocomplete.classList.remove('open'); return; }
-        const matches = COMPANIES.filter(c =>
+        const sequence = ++requestSequence;
+        wisdomMatches = [];
+        if (q.length < 1) {
+          autocomplete.innerHTML = '';
+          autocomplete.classList.remove('open');
+          return;
+        }
+        const localMatches = searchableCompanyPages().filter(c =>
           c.ticker.toLowerCase().includes(q) ||
           c.name.toLowerCase().includes(q)
         ).slice(0, 6);
-        renderAutocomplete(autocomplete, matches);
-        autocomplete.classList.toggle('open', matches.length > 0);
+        renderAutocomplete(autocomplete, localMatches, wisdomMatches);
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(async () => {
+          try {
+            const results = await window.searchWisdomCompanies(input.value);
+            if (sequence !== requestSequence) return;
+            wisdomMatches = results;
+          } catch {
+            if (sequence !== requestSequence) return;
+            wisdomMatches = [];
+          }
+          const currentQuery = input.value.trim().toLowerCase();
+          const currentLocalMatches = searchableCompanyPages().filter(c =>
+            c.ticker.toLowerCase().includes(currentQuery) ||
+            c.name.toLowerCase().includes(currentQuery)
+          ).slice(0, 6);
+          renderAutocomplete(autocomplete, currentLocalMatches, wisdomMatches);
+        }, 250);
       });
 
       input.addEventListener('keydown', e => {
@@ -82,7 +116,25 @@
       });
 
       document.addEventListener('click', e => {
-        if (!wrap?.contains(e.target)) autocomplete.classList.remove('open');
+        if (!wrap?.contains(e.target) && !autocomplete.contains(e.target)) {
+          autocomplete.classList.remove('open');
+        }
+      });
+
+      autocomplete.addEventListener('pointerdown', e => {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item) return;
+        e.preventDefault();
+        if (item.dataset.url) {
+          openCompanyPage(item.dataset.url);
+          return;
+        }
+        if (item.dataset.freshTicker) {
+          openFreshReportCompany({
+            companyName: item.dataset.freshName,
+            ticker: item.dataset.freshTicker,
+          });
+        }
       });
     }
   });
@@ -96,35 +148,111 @@
   });
 })();
 
-function renderAutocomplete(container, companies) {
-  container.innerHTML = companies.map(c => `
-    <div class="autocomplete-item" onclick="handleSearch('${c.ticker}')">
-      <span class="autocomplete-ticker">${c.ticker}</span>
-      <span class="autocomplete-name">${c.name}</span>
-      <span class="autocomplete-exchange">${c.flag} ${c.exchange}</span>
-      <span class="availability-badge ${availBadgeClass(c.reportAvailability)}">${availLabel(c.reportAvailability)}</span>
-    </div>
+function renderAutocomplete(container, companies, wisdomCompanies = []) {
+  const localTickers = new Set(companies.map(c => String(c.ticker || '').toLowerCase()));
+  const freshCompanies = wisdomCompanies
+    .filter(c => !localTickers.has(String(c.ticker || '').toLowerCase()))
+    .slice(0, Math.max(0, 6 - companies.length));
+  const localHtml = companies.map(c => `
+    <button class="autocomplete-item" type="button" data-url="${escapeAttr(c.url)}" role="option">
+      <span class="autocomplete-ticker">${escapeHtml(c.ticker)}</span>
+      <span class="autocomplete-name">${escapeHtml(c.name)}</span>
+      <span class="autocomplete-exchange">Open company page</span>
+    </button>
   `).join('');
+  const freshHtml = freshCompanies.map(c => `
+    <button class="autocomplete-item autocomplete-item-fresh" type="button" data-fresh-name="${escapeAttr(c.companyName)}" data-fresh-ticker="${escapeAttr(c.ticker)}" role="option">
+      <span class="autocomplete-ticker">${escapeHtml(c.ticker)}</span>
+      <span class="autocomplete-name">${escapeHtml(c.companyName)}</span>
+      <span class="autocomplete-exchange">Generate fresh report</span>
+    </button>
+  `).join('');
+  container.innerHTML = localHtml + freshHtml;
+  container.classList.toggle('open', companies.length + freshCompanies.length > 0);
 }
 
-function availBadgeClass(status) {
-  if (status === 'preview_available') return 'availability-badge--preview';
-  if (status === 'can_generate') return 'availability-badge--generate';
-  return 'availability-badge--soon';
+function searchableCompanyPages() {
+  if (Array.isArray(window.COMPANY_PAGE_CATALOG)) return window.COMPANY_PAGE_CATALOG;
+  return [];
 }
 
-function availLabel(status) {
-  if (status === 'preview_available') return 'Free report';
-  if (status === 'can_generate') return 'Generate';
-  return 'Soon';
-}
+// ── Homepage company cards from catalog data ──────────────────────
+(function initSampleCompanyCards() {
+  const cards = document.querySelectorAll('[data-company-card]');
+  if (!cards.length) return;
+
+  const pages = searchableCompanyPages();
+  cards.forEach(card => {
+    const ticker = card.dataset.companyCard?.toLowerCase();
+    if (!ticker) return;
+
+    const company = pages.find(c => c.ticker.toLowerCase() === ticker);
+    if (!company) return;
+
+    const desc = card.querySelector('[data-company-description]');
+    if (desc && company.description) desc.textContent = company.description;
+
+    const image = card.querySelector('.sample-thumbnail-img');
+    if (image && company.thumbnail) image.src = company.thumbnail;
+
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
+      openCompanyPage(company.url);
+    });
+    card.style.cursor = 'pointer';
+  });
+})();
 
 function handleSearch(query) {
-  if (!query) return;
-  window.location.href = `reports.html?search=${encodeURIComponent(query)}`;
+  if (!query) {
+    window.location.href = 'reports.html';
+    return;
+  }
+  const normalized = query.trim().toLowerCase();
+  const pages = searchableCompanyPages();
+  const exact = pages.find(c =>
+    c.ticker.toLowerCase() === normalized ||
+    c.name.toLowerCase() === normalized
+  );
+  const partial = exact || pages.find(c =>
+    c.ticker.toLowerCase().includes(normalized) ||
+    c.name.toLowerCase().includes(normalized)
+  );
+  if (partial) {
+    openCompanyPage(partial.url);
+    return;
+  }
+  window.location.href = `reports.html?search=${encodeURIComponent(query)}&source=homepage#order-fresh`;
 }
 
-// ── Value pool bars animation ──────────────────────
+function openCompanyPage(url) {
+  if (!url) return;
+  window.location.href = url;
+}
+
+function openFreshReportCompany(company) {
+  const params = new URLSearchParams({
+    search: company.companyName || company.ticker,
+    freshTicker: company.ticker,
+    source: 'homepage',
+  });
+  window.location.href = `reports.html?${params.toString()}#order-fresh`;
+}
+
+function escapeAttr(value) {
+  return String(value || '').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// ── Value driver bars animation ──────────────────────
 (function initValuePools() {
   const bars = document.querySelectorAll('.pool-fill[data-pct]');
   if (!bars.length) return;
@@ -380,4 +508,263 @@ function trackEvent(event, props = {}) {
   document.title = `${company.name} (${company.ticker}) AI Equity Report | Valuatum`;
 
   trackEvent('preview_viewed', { ticker: company.ticker, exchange: company.exchange });
+})();
+
+// ── "Generate fresh report" button (generated company/coverage pages) ─────────
+// Entry point into the fresh-report pipeline. The button carries the covered
+// company's real SYMBOL.EXCHANGE ticker; exchange/country are derived server-side
+// from the ticker suffix, and Stripe Checkout collects the buyer email. The
+// coverage price is set server-side (source: 'coverage'), never from the client.
+(function initGenerateReportButton() {
+  var buttons = document.querySelectorAll('[data-generate-report]');
+  if (!buttons.length) return;
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+      var company = btn.getAttribute('data-company') || '';
+      var ticker = btn.getAttribute('data-ticker') || '';
+      if (!company || !ticker) return;
+      if (btn.dataset.loading === '1') return;
+
+      var label = btn.textContent;
+      btn.dataset.loading = '1';
+      btn.style.pointerEvents = 'none';
+      btn.style.opacity = '0.7';
+      btn.textContent = 'Redirecting to secure checkout...';
+      trackEvent('fresh_report_order_started', { company: company, ticker: ticker, source: 'coverage' });
+
+      try {
+        var res = await fetch('/api/create-fresh-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ company: company, ticker: ticker, source: 'coverage' }),
+        });
+        var data = await res.json();
+        if (data && data.url) {
+          trackEvent('stripe_checkout_clicked', { type: 'fresh', company: company, source: 'coverage' });
+          window.location.href = data.url;
+          return;
+        }
+      } catch (err) { /* fall through to reset below */ }
+
+      btn.dataset.loading = '';
+      btn.style.pointerEvents = '';
+      btn.style.opacity = '';
+      btn.textContent = label;
+      alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    });
+  });
+})();
+
+// Direct Stripe checkout entry points on generated company pages.
+function bindReadyReportCheckoutLink(link) {
+  var href = link.getAttribute('href') || '';
+  var match = href.match(/#report-([^#?&]+)/);
+  if (!match) return;
+  var reportId = match[1];
+
+  link.addEventListener('click', async function (e) {
+    e.preventDefault();
+    if (link.dataset.loading === '1') return;
+
+    var label = link.textContent;
+    link.dataset.loading = '1';
+    link.style.pointerEvents = 'none';
+    link.style.opacity = '0.7';
+    link.textContent = 'Redirecting to secure checkout...';
+    trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page' });
+
+    try {
+      var res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId: reportId }),
+      });
+      var data = await res.json();
+      if (data && data.url) {
+        trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
+        window.location.href = data.url;
+        return;
+      }
+    } catch (err) { /* fall through to reset below */ }
+
+    link.dataset.loading = '';
+    link.style.pointerEvents = '';
+    link.style.opacity = '';
+    link.textContent = label;
+    alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+  });
+}
+
+(function initCompanyPageCheckoutLinks() {
+  document.querySelectorAll('a[href*="/reports.html#report-"], a[href^="reports.html#report-"]')
+    .forEach(bindReadyReportCheckoutLink);
+
+  document.querySelectorAll('a[href="#generate"]').forEach(function (link) {
+    if (!/generate/i.test(link.textContent || '')) return;
+    link.addEventListener('click', function (e) {
+      var checkoutButton = document.querySelector('[data-generate-report]');
+      if (!checkoutButton) return;
+      e.preventDefault();
+      checkoutButton.click();
+    });
+  });
+})();
+
+// ── Live ready-report CTA on generated company pages ──────────────────────────
+// Company pages are static HTML built ahead of time. A report published after
+// the page was built (e.g. a fresh order resold as a ready report) would stay
+// invisible here until the next manual page rebuild, so look the company up in
+// the live catalog and inject the buy/download controls when the page lacks them.
+(function initLiveReadyReportCta() {
+  if (document.getElementById('ready-report')) return; // page already has one
+  var generateBtn = document.querySelector('[data-generate-report][data-ticker]');
+  if (!generateBtn) return; // not a generated company page
+  var ticker = (generateBtn.getAttribute('data-ticker') || '').trim();
+  if (!ticker) return;
+
+  fetch('/api/reports')
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) {
+      var reports = (data && data.reports) || [];
+      var report = reports
+        .filter(function (r) {
+          return r && r.ticker === ticker && r.availability === 'available' && (r.pdfUrl || r.fileName);
+        })
+        .sort(function (a, b) {
+          return String(b.reportDate || '').localeCompare(String(a.reportDate || ''));
+        })[0];
+      if (!report) return;
+
+      var isFree = report.isFree === true || Number(report.price || 0) === 0;
+      var pdfUrl = String(report.pdfUrl || '');
+      var pdfHref = /^https?:\/\//.test(pdfUrl) ? pdfUrl : '/' + pdfUrl.replace(/^\/+/, '');
+      var ctaHref = isFree && pdfUrl ? pdfHref : '/reports.html#report-' + encodeURIComponent(report.id);
+      var ctaText = isFree
+        ? 'Download free report'
+        : 'Buy ready report — €' + Number(report.price || 0).toFixed(2);
+      var dateLabel = report.reportDateLabel || report.reportDate || '';
+      // Prefer the short display name from the page heading ("Nokia"), as the
+      // generator does; data-company carries the full legal name ("Nokia Oyj").
+      var heading = document.querySelector('.company-name');
+      var companyName = (heading && heading.textContent.split(' (')[0].trim())
+        || generateBtn.getAttribute('data-company') || ticker;
+
+      function makeCtaLink(className) {
+        var a = document.createElement('a');
+        a.className = className;
+        a.href = ctaHref;
+        a.textContent = ctaText;
+        if (isFree && pdfUrl) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.setAttribute('download', '');
+        } else {
+          bindReadyReportCheckoutLink(a);
+        }
+        return a;
+      }
+
+      var headerActions = document.querySelector('.company-header-actions');
+      if (headerActions) {
+        headerActions.insertBefore(makeCtaLink('btn btn-primary'), headerActions.firstChild);
+      }
+
+      var generateSection = document.getElementById('generate');
+      if (generateSection) {
+        var section = document.createElement('section');
+        section.className = 'report-full-section';
+        section.id = 'ready-report';
+        section.innerHTML =
+          '<div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">' +
+            '<h2 style="color:white; margin-top:0;">' + (isFree ? 'Download the free ' : 'Buy the ready ') + escapeHtml(companyName) + ' report</h2>' +
+            '<p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ' + escapeHtml(companyName) + ' AI equity report is available from ' + escapeHtml(dateLabel) + '. ' +
+              (isFree
+                ? 'Download the ready PDF now for free, or generate a new report below if you want a fresh run with the latest available data.'
+                : 'Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.') + '</p>' +
+            '<div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">' +
+              '<span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ' + escapeHtml(dateLabel) + '</span>' +
+            '</div>' +
+          '</div>';
+        section.querySelector('div > div').insertBefore(
+          makeCtaLink('btn btn-primary btn-lg'),
+          section.querySelector('div > div').firstChild
+        );
+        generateSection.parentNode.insertBefore(section, generateSection);
+        // Pages generated with a ready report place sources before the
+        // ready-report box (and the two-column break lands on the box), so
+        // mirror that order to render identically to a baked page.
+        var sources = document.getElementById('sources');
+        if (sources) section.parentNode.insertBefore(sources, section);
+        var content = document.querySelector('.report-full-content');
+        if (content) content.setAttribute('data-ready-report', 'true');
+      }
+
+      // The baked overview ends with an availability sentence; swap the
+      // "no report yet" copy for the same sentence a baked page would carry.
+      var overviewText = document.querySelector('#overview p');
+      if (overviewText) {
+        overviewText.textContent = overviewText.textContent.replace(
+          /(?:^|(\.\s+))([^.]+?) is covered by Valuatum but does not yet have a published AI equity report\. Generate a fresh report to get [\s\S]*$/,
+          function (m, sep, name) {
+            return (sep || '') + 'A completed ' + name + ' AI equity report is available from ' + dateLabel + '; you can ' +
+              (isFree ? 'download the ready PDF for free' : 'buy the ready PDF') +
+              ' or generate a fresh report with the latest available data.';
+          }
+        );
+      }
+    })
+    .catch(function () { /* catalog unavailable — page just stays as built */ });
+})();
+
+// Keep visible sales-page prices in sync with Stripe product default prices.
+(function initStripeBackedPublicPricing() {
+  var fallbackPricing = {
+    ready: { label: '\u20ac20.00', shortLabel: '\u20ac20' },
+    fresh: { label: '\u20ac50.00', shortLabel: '\u20ac50' },
+  };
+  window.SITE_PUBLIC_PRICING = fallbackPricing;
+
+  function replacePriceText(text, pricing) {
+    return String(text || '')
+      .replace(/\u20ac20\.00/g, pricing.ready.label)
+      .replace(/\u20ac20(?![\d.])/g, pricing.ready.shortLabel)
+      .replace(/\u20ac50\.00/g, pricing.fresh.label)
+      .replace(/\u20ac50(?![\d.])/g, pricing.fresh.shortLabel);
+  }
+
+  function applyPricing(pricing) {
+    if (!pricing || !pricing.ready || !pricing.fresh) return;
+    window.SITE_PUBLIC_PRICING = pricing;
+
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentElement;
+        if (!parent || ['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return /(\u20ac20|\u20ac50)/.test(node.nodeValue)
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_SKIP;
+      },
+    });
+
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      node.nodeValue = replacePriceText(node.nodeValue, pricing);
+    });
+
+    window.dispatchEvent(new CustomEvent('site:pricing', { detail: pricing }));
+  }
+
+  window.applyStripeBackedPricing = applyPricing;
+  window.SITE_PUBLIC_PRICING_PROMISE = fetch('/api/pricing')
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (pricing) {
+      if (pricing) applyPricing(pricing);
+      return pricing || fallbackPricing;
+    })
+    .catch(function () { return fallbackPricing; });
 })();

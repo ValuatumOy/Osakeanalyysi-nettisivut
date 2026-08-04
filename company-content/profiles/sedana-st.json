@@ -1,0 +1,9 @@
+{
+  "ticker": "SEDANA.ST",
+  "companyName": "Sedana Medical AB (publ)",
+  "profile": "Sedana Medical is a medtech and pharmaceutical company focused on inhaled sedation for mechanically ventilated patients in intensive care. Its portfolio includes the Sedaconda ACD medical device and Sedaconda (isoflurane), which are used together to deliver sedation. The company sells directly in several European markets and uses distributors in other regions, while also preparing for a future US launch.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:03.572Z"
+}

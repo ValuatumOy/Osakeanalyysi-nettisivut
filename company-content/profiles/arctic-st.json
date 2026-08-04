@@ -1,0 +1,9 @@
+{
+  "ticker": "ARCTIC.ST",
+  "companyName": "Arctic Blue Beverages AB (publ)",
+  "profile": "Arctic Blue Beverages AB is a Nordic beverage company and craft distillery focused on premium spirits and ready-to-drink products. Its portfolio includes Arctic Blue Gin, gin-based liqueurs, oat liqueur and long drinks. The company emphasizes Arctic-inspired ingredients and sells its products in Finland, Sweden, Japan, Australia and other export markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:15:16.604Z"
+}

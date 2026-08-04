@@ -1,0 +1,9 @@
+{
+  "ticker": "DIVIO-B.ST",
+  "companyName": "Divio Technologies AB (publ)",
+  "profile": "Divio Technologies AB provides a cloud management software platform and PaaS for containerized web applications. Its services help customers develop, deploy, scale and maintain applications through Docker-based hosting, local development tools, deployment workflows and cloud management features. The company serves digital agencies, developers and enterprises through a subscription-based platform.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:38:04.290Z"
+}

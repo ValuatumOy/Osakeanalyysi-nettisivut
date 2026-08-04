@@ -1,0 +1,9 @@
+{
+  "ticker": "PRISMA.ST",
+  "companyName": "Prisma Properties AB (publ)",
+  "profile": "Prisma Properties AB is a Nordic property owner and developer focused on modern retail properties for grocery, discount retail and quick-service restaurants. The company mainly operates in Sweden, Denmark and Finland, managing and developing sites with long-term leases and tenant relationships. It also provides EV charging stations at some properties.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:36.686Z"
+}

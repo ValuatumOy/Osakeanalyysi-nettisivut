@@ -1,0 +1,9 @@
+{
+  "ticker": "DEMANT.CO",
+  "companyName": "Demant A/S",
+  "profile": "Demant A/S is a Denmark-based hearing healthcare group that develops, manufactures and sells hearing aids, hearing care services and diagnostic equipment. Its operations span retail hearing care clinics, branded hearing aid solutions and hearing and balance assessment instruments used by audiologists, ENT specialists and balance clinics in global markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:51:17.646Z"
+}

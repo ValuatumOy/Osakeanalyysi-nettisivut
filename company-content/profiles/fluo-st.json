@@ -1,0 +1,9 @@
+{
+  "ticker": "FLUO.ST",
+  "companyName": "FluoGuide A/S",
+  "profile": "FluoGuide A/S is a clinical-stage biotechnology company developing FG001, a fluorescent guidance product designed to highlight cancer during surgery and improve surgical precision. Its programs focus on oncology, with lead indications in glioblastoma and head and neck cancer. The company is also advancing clinical development and working with MedTech partners to support commercialization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:10:54.689Z"
+}

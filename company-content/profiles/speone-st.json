@@ -1,0 +1,9 @@
+{
+  "ticker": "SPEONE.ST",
+  "companyName": "SpectrumOne AB (publ)",
+  "profile": "SpectrumOne AB (publ) is a technology company that provides a commercial insights and performance platform for businesses. Through its Prism Cloud offering, it helps customers understand commercial operations, analyse performance data and support decision-making across sales, marketing, finance and operations. The company also develops related products and services through its group businesses.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:00:14.978Z"
+}

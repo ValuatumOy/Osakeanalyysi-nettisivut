@@ -1,0 +1,9 @@
+{
+  "ticker": "STW.ST",
+  "companyName": "SeaTwirl AB (publ)",
+  "profile": "SeaTwirl develops floating vertical-axis wind turbines for deep-water offshore wind. Its integrated design combines turbine and SPAR foundation into one rotating unit, aiming to simplify installation and maintenance and reduce steel use. The company targets offshore wind projects and other remote applications where fixed-bottom turbines are not practical.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:46:17.388Z"
+}

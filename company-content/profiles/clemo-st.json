@@ -1,0 +1,9 @@
+{
+  "ticker": "CLEMO.ST",
+  "companyName": "Clean Motion AB (publ)",
+  "profile": "Clean Motion AB develops, manufactures and sells lightweight electric vehicles for urban use. Its main product is EVIG, a solar-powered vehicle designed for city mobility, last-mile delivery and service or utility operations. The company emphasizes energy and resource efficiency, low energy consumption and local production from its base in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:19:08.545Z"
+}

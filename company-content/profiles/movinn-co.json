@@ -1,0 +1,9 @@
+{
+  "ticker": "MOVINN.CO",
+  "companyName": "Movinn A/S",
+  "profile": "Movinn A/S provides fully furnished, serviced apartments in Denmark and Sweden for expats, corporate clients, project workers and other temporary residents. The company’s offering includes move-in-ready accommodation, flexible stays and related services such as cleaning, maintenance, Wi-Fi, laundry and 24-hour assistance. It also serves corporate housing and relocation needs through digital booking platforms.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:57:52.566Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "CLINE-B.ST",
+  "companyName": "Cline Scientific AB (publ)",
+  "profile": "Cline Scientific AB develops cancer diagnostics and regenerative medicine products based on patented surface nanotechnology. The company’s offerings include nano-gradient surfaces and related tools for cell research, along with projects aimed at stem cell therapy for joint repair and cancer diagnostics to predict metastasis. It serves life science and biomedical research applications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:21:22.818Z"
+}

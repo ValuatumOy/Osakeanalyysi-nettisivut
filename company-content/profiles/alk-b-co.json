@@ -1,0 +1,9 @@
+{
+  "ticker": "ALK-B.CO",
+  "companyName": "ALK-Abelló A/S",
+  "profile": "ALK-Abelló A/S is a Denmark-based specialty pharmaceutical company focused on allergy prevention, diagnosis and treatment. It develops and markets allergy immunotherapy products, including tablet, drop and injectable treatments, along with allergen extracts and diagnostics. The company also supplies source materials used in manufacturing allergy products and operates internationally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:45:54.725Z"
+}

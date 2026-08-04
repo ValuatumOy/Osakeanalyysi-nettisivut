@@ -1,0 +1,9 @@
+{
+  "ticker": "LIQT",
+  "companyName": "LiqTech International, Inc.",
+  "profile": "LiqTech International, Inc. is a clean technology company that designs, manufactures, and markets filtration products and systems for liquid and gas applications. Its core offerings include silicon carbide ceramic membranes and automated filtration systems for industrial water treatment, plus diesel particulate filters for emissions control. The company sells through offices in Denmark and a network of representatives and distributors.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:21:32.447Z"
+}

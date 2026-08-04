@@ -1,0 +1,9 @@
+{
+  "ticker": "IAR-B.ST",
+  "companyName": "IAR Systems Group AB (publ)",
+  "profile": "IAR Systems Group AB develops commercial embedded software tools used to program, debug, and analyze code for microcontrollers and microprocessors. Its product range includes the IAR Embedded Workbench toolchain, build tools, static and runtime analysis software, and security-related offerings. The company serves customers in automotive, industrial, medical, and other embedded system markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:20:41.413Z"
+}

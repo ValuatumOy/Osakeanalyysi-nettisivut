@@ -1,0 +1,9 @@
+{
+  "ticker": "DEVP-B.ST",
+  "companyName": "DevPort AB (publ)",
+  "profile": "DevPort AB is a Swedish technical consulting company that provides independent advisory and development services to industrial customers. Its operations are organized around product development, production development, and digital solutions, with assignments spanning design, industrialization, and related support work. The company serves clients in development-intensive industries and operates from several offices in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:34:08.031Z"
+}

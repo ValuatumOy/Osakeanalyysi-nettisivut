@@ -1,0 +1,9 @@
+{
+  "ticker": "PION-B.ST",
+  "companyName": "PION Group AB (publ)",
+  "profile": "PION Group AB is a Swedish staffing and consultancy group operating through QRIOS, Poolia, Uniflex and Dreamwork. It provides recruitment, staffing, interim management, executive search and consulting in areas such as IT, tech, strategy and life science. The company’s value driver is combining human expertise with technology and shared methods across its brands.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:13:11.050Z"
+}

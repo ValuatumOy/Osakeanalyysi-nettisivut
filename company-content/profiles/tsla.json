@@ -1,0 +1,9 @@
+{
+  "ticker": "TSLA",
+  "companyName": "Tesla",
+  "profile": "Tesla designs, manufactures and sells electric vehicles, energy generation and storage products, software-enabled driver assistance features, charging infrastructure and related services. Its operations include automotive manufacturing, battery storage, solar and energy products, software services and an expanding ecosystem around vehicle connectivity, autonomy, charging and fleet data.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

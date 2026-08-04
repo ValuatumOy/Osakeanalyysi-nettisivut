@@ -1,0 +1,9 @@
+{
+  "ticker": "NEOLA.ST",
+  "companyName": "Neola Medical AB (publ)",
+  "profile": "Neola Medical AB (publ) develops Neola, a medical device for continuous, non-invasive lung monitoring in preterm newborns. The company focuses on neonatal intensive care and is working toward market authorization and commercial launch. Its business is built around device development, regulatory approval, and future sales of monitoring systems and disposable probes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:18:35.012Z"
+}

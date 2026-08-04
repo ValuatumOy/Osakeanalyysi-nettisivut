@@ -1,0 +1,9 @@
+{
+  "ticker": "MEKKO.HE",
+  "companyName": "Marimekko",
+  "profile": "Marimekko is a Finnish lifestyle design company that develops and sells clothing, bags and accessories, and home décor products such as textiles and tableware. Its offering is built around original prints and colors, with products designed for seasonal collections and continuing classics. The company also uses its own textile printing factory in Helsinki.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:31:50.579Z"
+}

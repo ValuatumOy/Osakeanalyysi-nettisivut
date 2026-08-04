@@ -1,0 +1,9 @@
+{
+  "ticker": "QUEST.OL",
+  "companyName": "Questback Group AS",
+  "profile": "Questback Group AS provides a survey and feedback software platform used by organizations to collect, analyze and act on input from customers, employees and other stakeholders. Its services include survey design and distribution, analytics, consulting and support, with subscription-based products centered on the Questback Essentials platform for experience management and decision support.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:12:01.034Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "QINTER.CO",
+  "companyName": "Q-Interline A/S",
+  "profile": "Q-Interline A/S develops and sells near-infrared and FT-NIR analytical solutions for process and quality control. Its systems and software help industrial customers measure product composition and monitor production in real time, with applications in dairy, food, agriculture, and selected chemical and pharmaceutical markets. The company also provides support, service, and cloud-based monitoring.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:32:42.011Z"
+}

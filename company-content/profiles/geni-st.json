@@ -1,0 +1,9 @@
+{
+  "ticker": "GENI.ST",
+  "companyName": "Generic Sweden AB",
+  "profile": "Generic Sweden AB is a technology company that provides messaging and digital communication services through a CPaaS platform. Its solutions integrate into customers’ internal and external communication flows and are used for business messaging, automated workflows, and secure mobile communications. The company serves sectors including alarm and security, healthcare and e-health, e-commerce, and logistics.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:07:02.298Z"
+}

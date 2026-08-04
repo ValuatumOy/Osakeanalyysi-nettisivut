@@ -1,0 +1,9 @@
+{
+  "ticker": "QIIWI.ST",
+  "companyName": "Qiiwi Games AB (publ)",
+  "profile": "Qiiwi Games AB is a Swedish mobile game studio that develops and publishes casual and hybrid-casual titles for smartphones and other digital platforms. Its portfolio includes word, puzzle and board-game-inspired games, with revenue driven by game launches, in-app purchases and other platform-based monetization. The company is based in Alingsås, Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:51:36.961Z"
+}

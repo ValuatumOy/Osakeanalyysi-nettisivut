@@ -1,0 +1,9 @@
+{
+  "ticker": "PROF-B.ST",
+  "companyName": "ProfilGruppen AB (publ)",
+  "profile": "ProfilGruppen develops and manufactures customized aluminium profiles and components for customers mainly in Northern Europe. The company supplies extruded aluminium products together with related production, refinement, and logistics services, and also offers contract manufacturing and support from design through finished product. Its business is driven by tailored industrial solutions and efficient delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:24.233Z"
+}

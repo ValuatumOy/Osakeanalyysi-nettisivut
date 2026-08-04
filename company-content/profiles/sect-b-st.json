@@ -1,0 +1,9 @@
+{
+  "ticker": "SECT-B.ST",
+  "companyName": "Sectra AB (publ)",
+  "profile": "Sectra AB (publ) develops and sells medical imaging IT and cybersecurity solutions. Its medical systems support healthcare providers with imaging software and related services for diagnostics and workflow efficiency, while its secure communications and security operations offerings help authorities, defense organizations, and other critical functions protect sensitive information and communications.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:48.892Z"
+}

@@ -41,9 +41,34 @@ test('normalizeCompanyData reads the latest completed financial year', () => {
 
   assert.equal(result.financialYear, 2025);
   assert.equal(result.currency, 'EUR');
+  assert.equal(result.marketCurrency, 'EUR');
   assert.equal(result.metrics.revenue, 1_200);
   assert.equal(result.metrics.sharePrice, 12.34);
   assert.equal(result.background.website, 'https://example.com');
+});
+
+test('normalizeCompanyData separates reporting and listing currencies', () => {
+  const result = normalizeCompanyData(
+    { companyId: 1, companyName: 'Evolution AB', ticker: 'EVO.ST', models: [] },
+    {
+      followedModelId: 2,
+      currentYear: 2026,
+      currency: 'EUR',
+      dataMap: { 2025: { ns: 2_000, adj_share_price_a: 850, market_cap_ye: 175_000 } },
+    },
+  );
+
+  assert.equal(result.currency, 'EUR');
+  assert.equal(result.marketCurrency, 'SEK');
+});
+
+test('normalizeCompanyData corrects known Wisdom industry mismatches', () => {
+  const result = normalizeCompanyData(
+    { companyId: 1, companyName: 'Konecranes Plc', ticker: 'KCR.HE', industry: 'Agricultural - Machinery' },
+    { followedModelId: 2, currentYear: 2026, currency: 'EUR', dataMap: { 2025: {} } },
+  );
+
+  assert.equal(result.industry, 'Industrial Machinery');
 });
 
 test('normalizeCompanyData preserves missing values as null', () => {

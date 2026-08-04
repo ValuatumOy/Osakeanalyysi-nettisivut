@@ -1,0 +1,9 @@
+{
+  "ticker": "NIPG",
+  "companyName": "NIP Group Inc.",
+  "profile": "NIP Group Inc. operates as a global digital entertainment company with businesses spanning esports teams, live events, talent management, content and influencer networks, game publishing, and gaming-related hospitality. The company also reports compute infrastructure and bitcoin mining operations, reflecting a broader business mix built around gaming media, fan engagement, and digital asset activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:52:19.830Z"
+}

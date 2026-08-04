@@ -1,0 +1,9 @@
+{
+  "ticker": "COPP-B.ST",
+  "companyName": "Copperstone Resources AB",
+  "profile": "Copperstone Resources AB is a Swedish mining company focused on reopening the Viscaria copper mine in Kiruna. Its business centres on developing and eventually producing copper, supported by processing concessions and exploration permits in Arvidsjaur and Smedjebacken. The company’s value drivers are the Viscaria deposit, its resource base, and progress toward mine restart.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:27:39.794Z"
+}

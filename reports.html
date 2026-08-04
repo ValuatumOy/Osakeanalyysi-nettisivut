@@ -1,13 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Equity Reports — Browse & Buy — Valuatum</title>
-  <meta name="description" content="Browse available AI equity research reports. Open free sample reports or buy existing reports. Order a fresh AI-generated equity report delivered by email.">
+  <title>Ready AI Equity Reports - Valuatum</title>
+  <meta name="description" content="Browse ready Valuatum AI equity reports for companies with an existing company page. Download free reports, buy paid ready reports for €20, or generate a fresh report for €50.">
   <link rel="canonical" href="https://www.aiequityreports.com/reports.html">
-  <meta property="og:title" content="AI Equity Reports — Browse & Buy">
-  <meta property="og:description" content="Browse AI-generated equity research reports. Free samples available. Order a fresh report for any listed company — delivered by email within 1 business day.">
+  <meta property="og:title" content="Ready AI Equity Reports">
+  <meta property="og:description" content="Ready AI equity reports for listed companies. Download free reports, buy paid reports for €20, generate fresh reports for €50, or request coverage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aiequityreports.com/reports.html">
   <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
@@ -22,8 +22,6 @@
   <link rel="stylesheet" href="css/reports.css">
 </head>
 <body>
-
-  <!-- NAV -->
   <header class="nav scrolled" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -36,14 +34,13 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html" class="nav-link" style="color:var(--gray-steel);">Home</a>
         <a href="reports.html" class="nav-link" style="color:var(--green);">Reports</a>
-        <a href="comparisons.html" class="nav-link" style="color:var(--gray-steel);">Compare</a>
         <a href="pricing.html" class="nav-link" style="color:var(--gray-steel);">Pricing</a>
         <a href="methodology.html" class="nav-link" style="color:var(--gray-steel);">Methodology</a>
         <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
         <a href="faq.html" class="nav-link" style="color:var(--gray-steel);">FAQ</a>
         <a href="blog.html" class="nav-link" style="color:var(--gray-steel);">Blog</a>
       </nav>
-      <a href="reports.html#order-fresh" class="nav-cta">Order fresh report</a>
+      <a href="#order-fresh" class="nav-cta">Generate fresh report</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
       </button>
@@ -56,277 +53,196 @@
       <a href="about.html" class="nav-mobile-link">About</a>
       <a href="faq.html" class="nav-mobile-link">FAQ</a>
       <a href="blog.html" class="nav-mobile-link">Blog</a>
-      <a href="#order-fresh" class="nav-mobile-link nav-mobile-cta">Order fresh report →</a>
+      <a href="#order-fresh" class="nav-mobile-link nav-mobile-cta">Generate fresh report -></a>
     </div>
   </header>
 
   <main class="reports-page">
-
-    <!-- PAGE HERO -->
     <section class="reports-hero">
-      <!-- Background chart decoration -->
-      <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.07;" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="0,320 80,290 160,305 240,265 320,275 400,230 480,245 560,200 640,215 720,175 800,160 880,130 960,145 1040,105 1120,90 1200,60" stroke="#6DBFA0" stroke-width="2" fill="none"/>
-        <polyline points="0,360 100,340 200,355 300,325 400,310 500,280 600,295 700,260 800,240 900,210 1000,225 1100,190 1200,170" stroke="#3D9E72" stroke-width="1.5" fill="none" stroke-dasharray="6 4"/>
-        <polyline points="0,380 150,365 300,350 450,330 600,315 750,290 900,270 1050,250 1200,230" stroke="#6DBFA0" stroke-width="1" fill="none" opacity="0.5"/>
-        <!-- Candlestick marks -->
-        <g stroke="#6DBFA0" stroke-width="1.5">
-          <line x1="200" y1="260" x2="200" y2="310"/><rect x="195" y="270" width="10" height="25" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
-          <line x1="400" y1="215" x2="400" y2="255"/><rect x="395" y="220" width="10" height="22" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
-          <line x1="640" y1="195" x2="640" y2="240"/><rect x="635" y="202" width="10" height="24" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
-          <line x1="860" y1="120" x2="860" y2="168"/><rect x="855" y="128" width="10" height="28" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
-          <line x1="1060" y1="88" x2="1060" y2="132"/><rect x="1055" y="95" width="10" height="25" fill="rgba(61,158,114,0.15)" stroke="#6DBFA0" stroke-width="1"/>
-        </g>
-        <!-- Grid lines -->
-        <line x1="0" y1="200" x2="1200" y2="200" stroke="#3D9E72" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.3"/>
-        <line x1="0" y1="300" x2="1200" y2="300" stroke="#3D9E72" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.3"/>
-      </svg>
       <div class="container">
         <div class="reports-hero-inner">
           <div class="reports-hero-text">
-            <span class="section-eyebrow section-eyebrow--light">AI Equity Reports</span>
-            <h1 class="reports-hero-headline">Browse, sample, and buy<br>equity research reports.</h1>
-            <p class="reports-hero-sub">Open free sample reports, buy recent AI equity reports at a discounted price, or order a fresh report with the latest available data — delivered by email.</p>
+            <span class="section-eyebrow section-eyebrow--light">Ready Reports</span>
+            <h1 class="reports-hero-headline">Browse ready AI equity reports.</h1>
+            <p class="reports-hero-sub">This catalog lists companies that already have a company page and a ready PDF report. Download selected free reports instantly, buy paid ready reports for €20, or generate a fresh report from the company page for €50.</p>
           </div>
           <div class="reports-hero-search">
             <div class="rp-search-field">
               <svg class="rp-search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 13L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <input type="text" id="rpSearchInput" class="rp-search-input" placeholder="Search company or ticker…" autocomplete="off" aria-label="Search reports">
-              <button class="rp-search-clear" id="rpSearchClear" style="display:none;" aria-label="Clear search">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </button>
+              <input type="text" id="rpSearchInput" class="rp-search-input" placeholder="Search company or ticker..." autocomplete="off" aria-label="Search reports">
+              <button class="rp-search-clear" id="rpSearchClear" style="display:none;" aria-label="Clear search"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+              <div class="rp-search-autocomplete" id="rpSearchAutocomplete" role="listbox"></div>
             </div>
-            <div class="rp-coming-soon-note">
-              <div class="rp-csn-row">
-                <span class="rp-csn-badge rp-csn-badge--now">Now</span>
-                <span>Browse &amp; buy existing reports or order any company by email</span>
-              </div>
-              <div class="rp-csn-row">
-                <span class="rp-csn-badge rp-csn-badge--soon">Soon</span>
-                <span>Type any ticker → instant report, no email needed</span>
-              </div>
-            </div>
+            <p class="reports-hero-note">Select an existing company page, or generate a fresh report for any Wisdom-supported listed company below.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CATALOG -->
     <section class="reports-catalog" id="catalog">
       <div class="container">
-
-        <!-- TABS -->
-        <div class="catalog-tabs" id="catalogTabs" role="tablist">
-          <button class="catalog-tab active" data-tab="all" role="tab" aria-selected="true">All reports</button>
-          <button class="catalog-tab" data-tab="free" role="tab" aria-selected="false">
-            Free samples
-            <span class="tab-count" id="tabCountFree"></span>
-          </button>
-          <button class="catalog-tab" data-tab="existing" role="tab" aria-selected="false">
-            Existing reports
-            <span class="tab-count" id="tabCountExisting"></span>
-          </button>
-          <button class="catalog-tab catalog-tab--fresh" data-tab="fresh" role="tab" aria-selected="false">
-            Order fresh report
-          </button>
-        </div>
-
-        <!-- FILTERS + SORT -->
-        <div class="catalog-controls" id="catalogControls">
-          <div class="catalog-filters">
-            <select class="catalog-filter-select" id="filterMarket" aria-label="Filter by market">
-              <option value="">All markets</option>
-              <option value="NASDAQ">NASDAQ</option>
-              <option value="NYSE">NYSE</option>
-              <option value="Helsinki">Helsinki</option>
-            </select>
-            <select class="catalog-filter-select" id="filterSector" aria-label="Filter by sector">
-              <option value="">All sectors</option>
-              <option value="Consumer Discretionary">Consumer Discretionary</option>
-              <option value="Financials">Financials</option>
-              <option value="Health Care">Health Care</option>
-              <option value="Materials">Materials</option>
-            </select>
+        <div class="catalog-header">
+          <div>
+            <h2 class="catalog-title">Available ready reports</h2>
+            <p class="catalog-sub">Descriptions are pulled from the company-page catalog, so the listing stays consistent with the company pages.</p>
           </div>
-          <div class="catalog-sort-wrap">
-            <label for="sortSelect" class="catalog-sort-label">Sort:</label>
-            <select class="catalog-filter-select" id="sortSelect" aria-label="Sort reports">
-              <option value="newest">Newest first</option>
-              <option value="oldest">Oldest first</option>
-              <option value="free_first">Free first</option>
-              <option value="price_asc">Lowest price</option>
-              <option value="company">Company name</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- RESULTS META -->
-        <div class="catalog-meta" id="catalogMeta">
           <span class="catalog-count" id="catalogCount"></span>
         </div>
-
-        <!-- REPORT CARDS GRID -->
-        <div class="catalog-grid" id="catalogGrid" role="list"></div>
-
-        <!-- EMPTY STATE -->
-        <div class="catalog-empty" id="catalogEmpty" style="display:none;">
-          <div class="catalog-empty-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8v4M12 15v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <p class="catalog-empty-title">No reports match your search.</p>
-          <p class="catalog-empty-sub">Try a different company name or ticker — or order a fresh report for any listed company.</p>
-          <button class="btn btn-primary" onclick="openFreshOrderModal()">Order fresh report</button>
-        </div>
-
-        <!-- FRESH ORDER TAB PANEL -->
-        <div class="fresh-tab-panel" id="freshTabPanel" style="display:none;">
-          <div class="fresh-tab-intro">
-            <div class="fresh-tab-intro-text">
-              <span class="section-eyebrow">Fresh Report</span>
-              <h2 class="section-headline" style="font-size:var(--text-2xl);">Order a newly generated equity report.</h2>
-              <p class="section-sub">Can't find your company in the catalog? Order a fresh AI equity report generated with the latest available financial data. Delivered to your email.</p>
-            </div>
-            <div class="fresh-tab-price-card">
-              <div class="fresh-price-amount">€9.90</div>
-              <div class="fresh-price-label">per fresh report</div>
-              <div class="fresh-price-note">Delivered by email after payment</div>
-            </div>
-          </div>
-          <div id="freshOrderFormWrap"></div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- COMPARE STOCKS -->
-    <section class="container" style="padding:2.5rem 1.5rem;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.25rem;">
-        <div>
-          <h2 style="margin:0;">Compare stocks side by side</h2>
-          <p style="margin:0.4rem 0 0; color:var(--gray-steel);">Free head-to-head comparisons — ratings, price targets, multiples and value pools.</p>
-        </div>
-        <a href="comparisons.html" class="btn btn-outline">All comparisons</a>
-      </div>
-      <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
-        <a style="display:inline-block; text-decoration:none; padding:0.6rem 1.1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); color:var(--charcoal); background:#fff;" href="compare/advanced-micro-devices-vs-intel-stock-comparison.html">AMD vs Intel →</a>
-        <a style="display:inline-block; text-decoration:none; padding:0.6rem 1.1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); color:var(--charcoal); background:#fff;" href="compare/stora-enso-vs-upm-kymmene-stock-comparison.html">Stora Enso vs UPM →</a>
-      </div>
-    </section>
-
-    <!-- CANT FIND BLOCK -->
-    <section class="cant-find-section" id="order-fresh" style="position:relative;overflow:hidden;">
-      <!-- Background candlestick decoration -->
-      <svg aria-hidden="true" style="position:absolute;right:0;bottom:0;height:100%;width:55%;pointer-events:none;opacity:0.055;" viewBox="0 0 600 400" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#6DBFA0">
-          <line x1="50" y1="60" x2="50" y2="160"/><rect x="40" y="75" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
-          <line x1="110" y1="90" x2="110" y2="175"/><rect x="100" y="105" width="20" height="45" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
-          <line x1="170" y1="50" x2="170" y2="140"/><rect x="160" y="65" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
-          <line x1="230" y1="110" x2="230" y2="200"/><rect x="220" y="125" width="20" height="45" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
-          <line x1="290" y1="70" x2="290" y2="155"/><rect x="280" y="85" width="20" height="50" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
-          <line x1="350" y1="40" x2="350" y2="125"/><rect x="340" y="52" width="20" height="55" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
-          <line x1="410" y1="85" x2="410" y2="170"/><rect x="400" y="98" width="20" height="48" fill="rgba(109,191,160,0.15)" stroke-width="1.5"/>
-          <line x1="470" y1="30" x2="470" y2="110"/><rect x="460" y="42" width="20" height="50" fill="rgba(109,191,160,0.25)" stroke-width="1.5"/>
-          <line x1="530" y1="55" x2="530" y2="140"/><rect x="520" y="68" width="20" height="52" fill="rgba(109,191,160,0.2)" stroke-width="1.5"/>
-        </g>
-        <polyline points="50,118 110,148 170,118 230,170 290,135 350,107 410,145 470,80 530,118" stroke="#6DBFA0" stroke-width="1.5" fill="none" opacity="0.6"/>
-        <line x1="0" y1="250" x2="600" y2="250" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.4"/>
-        <line x1="0" y1="350" x2="600" y2="350" stroke="#6DBFA0" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.4"/>
-      </svg>
-      <div class="container">
-        <div class="cant-find-block">
-          <div class="cant-find-text">
-            <span class="section-eyebrow">Fresh Report</span>
-            <h2 class="cant-find-headline">Need a report for another company?</h2>
-            <p class="cant-find-sub">Order a fresh AI equity report with the latest available data. Any listed company — delivered by email.</p>
-            <div class="cant-find-trust">
-              <span class="cant-find-trust-item">Latest available data</span>
-              <span class="cant-find-trust-item">Full PDF report</span>
-              <span class="cant-find-trust-item">Delivered by email</span>
-            </div>
-          </div>
-          <div class="cant-find-form-wrap">
-            <div class="cant-find-price">€9.90 <span>per fresh report</span></div>
-            <form class="fresh-order-form" id="freshOrderFormMain" novalidate>
-              <div class="fresh-form-row">
-                <input type="text" class="fresh-input" id="freshCompany" placeholder="Company name *" required aria-label="Company name">
-                <input type="text" class="fresh-input" id="freshTicker" placeholder="Ticker (optional)" aria-label="Ticker symbol">
+        <div class="catalog-controls">
+          <div class="catalog-filters">
+            <div class="catalog-select" data-select="access">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterAccessLabel">All reports</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" role="listbox" aria-label="Filter by report access">
+                <button type="button" class="catalog-select-option active" data-value="">All reports</button>
+                <button type="button" class="catalog-select-option" data-value="free">Free reports</button>
+                <button type="button" class="catalog-select-option" data-value="paid">Paid reports</button>
               </div>
-              <input type="email" class="fresh-input" id="freshEmail" placeholder="Your email *" required aria-label="Email address">
-              <select class="fresh-input fresh-select" id="freshPurpose" aria-label="Report purpose">
-                <option value="">Purpose (optional)</option>
+            </div>
+            <div class="catalog-select" data-select="market">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterMarketLabel">All markets</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" id="filterMarketMenu" role="listbox" aria-label="Filter by market"></div>
+            </div>
+            <div class="catalog-select" data-select="sector">
+              <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="filterSectorLabel">All sectors</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="catalog-select-menu" id="filterSectorMenu" role="listbox" aria-label="Filter by sector"></div>
+            </div>
+          </div>
+          <div class="catalog-select" data-select="sort">
+            <button type="button" class="catalog-select-button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="sortLabel">Newest first</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="catalog-select-menu" role="listbox" aria-label="Sort reports">
+              <button type="button" class="catalog-select-option active" data-value="newest">Newest first</button>
+              <button type="button" class="catalog-select-option" data-value="company">Company name</button>
+              <button type="button" class="catalog-select-option" data-value="market">Market</button>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-grid" id="catalogGrid" role="list"></div>
+        <nav class="catalog-pagination" id="catalogPagination" aria-label="Report catalog pages" hidden>
+          <button type="button" class="btn btn-outline-dark" id="catalogPrevious">Previous</button>
+          <span class="catalog-page-status" id="catalogPageStatus" aria-live="polite"></span>
+          <button type="button" class="btn btn-outline-dark" id="catalogNext">Next</button>
+        </div>
+        <div class="catalog-empty" id="catalogEmpty">
+          <p class="catalog-empty-title" id="catalogEmptyTitle">No ready report matches your search.</p>
+          <p class="catalog-empty-sub" id="catalogEmptySub">If the company is supported by Wisdom, you can generate a fresh report below.</p>
+          <a href="#order-fresh" class="btn btn-primary" id="catalogEmptyAction">Generate fresh report</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fresh-order-section" id="order-fresh">
+      <div class="container">
+        <div class="fresh-order-grid">
+          <div>
+            <span class="section-eyebrow">Fresh Report</span>
+            <h2 class="fresh-order-title">Generate a report for another company.</h2>
+            <p class="fresh-order-sub">Search by company name or ticker. Select any listed company available in Wisdom and generate a fresh AI equity report using the latest available data.</p>
+            <div class="fresh-order-benefits">
+              <span>Latest available Wisdom data</span>
+              <span>Complete downloadable PDF</span>
+              <span>Delivered by email, typically within about 30 minutes</span>
+            </div>
+          </div>
+          <div class="fresh-order-form-card">
+            <div class="fresh-order-price"><span id="freshOrderPrice">€50</span> <small>per fresh report</small></div>
+            <form class="fresh-order-form" id="freshOrderFormMain" novalidate>
+              <div class="company-picker">
+                <label class="fresh-order-label" for="freshCompany">Company or ticker</label>
+                <input type="text" class="fresh-order-input" id="freshCompany" placeholder="Search e.g. Neste, AAPL or NOVO-B.CO" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="freshMainPickerMenu" aria-expanded="false" required>
+                <div class="company-picker-menu" id="freshMainPickerMenu" role="listbox"></div>
+                <div class="company-picker-chip" id="freshMainSelected" hidden></div>
+                <p class="company-picker-hint" id="freshMainHint" role="status" aria-live="polite"></p>
+              </div>
+              <label class="fresh-order-label" for="freshEmail">Your email</label>
+              <input type="email" class="fresh-order-input" id="freshEmail" placeholder="you@company.com" autocomplete="email" required>
+              <label class="fresh-order-label" for="freshPurpose">Purpose <span>(optional)</span></label>
+              <select class="fresh-order-input fresh-order-select" id="freshPurpose">
+                <option value="">Select purpose</option>
                 <option value="personal">Personal investing</option>
                 <option value="professional">Professional research</option>
                 <option value="client">Client work</option>
                 <option value="other">Other</option>
               </select>
-              <button type="submit" class="btn btn-primary btn-lg fresh-submit-btn">
-                Order fresh report — €9.90
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <button type="submit" class="btn btn-primary btn-lg" id="freshOrderSubmit" style="justify-content:center;">
+                Generate fresh report — <span id="freshOrderButtonPrice">€50</span>
               </button>
+              <p class="fresh-order-status" id="freshOrderStatus" role="status" aria-live="polite"></p>
             </form>
-            <p class="fresh-form-note">After submitting, you'll receive payment instructions. Report delivered within 1 business day after payment.</p>
+            <p class="fresh-order-note">Secure payment by Stripe. Companies not found in Wisdom can be requested below.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ENTERPRISE CTA -->
-    <section style="background:var(--off-white); padding:3rem 0; border-top:1px solid var(--color-border);">
+    <section class="coverage-request-section" id="coverage-request">
       <div class="container">
-        <div class="enterprise-cta-row">
-          <div class="enterprise-cta-text">
-            <strong>Enterprise / Unlimited</strong> — For teams needing recurring report generation, API access, or custom coverage lists.
+        <div class="coverage-request-grid">
+          <div>
+            <span class="section-eyebrow section-eyebrow--light">Missing Company?</span>
+            <h2 class="coverage-request-title">Company not available in Wisdom?</h2>
+            <p class="coverage-request-sub">Use this form if the company does not appear in the fresh report search. We will verify whether it can be added to coverage.</p>
+            <div class="coverage-list">
+              <span>Listed companies only</span>
+              <span>Coverage checked by Valuatum</span>
+              <span>We will contact you about the next step</span>
+            </div>
           </div>
-          <a href="mailto:contact26@valuatum.com" class="btn btn-outline-dark" onclick="trackEvent('enterprise_contact_clicked')">Contact sales →</a>
+          <div class="coverage-form-card">
+            <form class="coverage-form" id="coverageRequestForm">
+              <input class="coverage-input" id="coverageCompany" name="company" type="text" placeholder="Company name *" autocomplete="organization" required>
+              <input class="coverage-input" id="coverageTicker" name="ticker" type="text" placeholder="Ticker / exchange, e.g. AAPL, NOVO-B.CO" autocomplete="off">
+              <input class="coverage-input" id="coverageEmail" name="email" type="email" placeholder="Your email *" autocomplete="email" required>
+              <textarea class="coverage-input" id="coverageNotes" name="notes" placeholder="Optional notes: company website, market, urgency, report purpose"></textarea>
+              <input class="coverage-honeypot" id="coverageWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit" class="btn btn-primary btn-lg" id="coverageSubmit" style="justify-content:center;">Send coverage request</button>
+              <p class="coverage-form-status" id="coverageFormStatus" role="status" aria-live="polite"></p>
+            </form>
+            <p class="coverage-note">This form is only for companies that are not available in the Wisdom-powered search above.</p>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- Static crawlable report index (always in DOM for search/AI crawlers) -->
-    <section class="container" style="padding:2rem 1.5rem 3rem;">
-      <h2 style="font-size:var(--text-lg); margin-bottom:1rem;">All AI equity reports</h2>
-      <ul style="list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:0.75rem;">
-        <li><a class="footer-link" href="/reports/tesla-equity-report.html">Tesla (TSLA) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/stora-enso-equity-report.html">Stora Enso (STERV.HE) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/upm-kymmene-equity-report.html">UPM-Kymmene (UPM.HE) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/advanced-micro-devices-equity-report.html">AMD (AMD) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/intel-equity-report.html">Intel (INTC) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/kesko-equity-report.html">Kesko (KESKOB.HE) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/nokia-equity-report.html">Nokia (NOKIA.HE) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/recursion-pharmaceuticals-equity-report.html">Recursion Pharmaceuticals (RXRX) AI equity report</a></li>
-        <li><a class="footer-link" href="/reports/wartsila-equity-report.html">Wärtsilä (WRT1V.HE) AI equity report</a></li>
-      </ul>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+          <a href="/index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
             <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
             <div class="nav-logo-text">
               <span class="nav-logo-wordmark">Valuatum</span>
               <span class="nav-logo-sub">AI Equity Reports</span>
             </div>
           </a>
-          <p>Professional AI-generated equity research reports. Browse available reports, open free samples, or order a fresh report delivered by email.</p>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
         </div>
         <div>
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
-            <a href="reports.html" class="footer-link">Browse reports</a>
-            <a href="reports.html#order-fresh" class="footer-link">Order fresh report</a>
-            <a href="pricing.html" class="footer-link">Pricing</a>
-            <a href="methodology.html" class="footer-link">Methodology</a>
+            <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#coverage-request" class="footer-link">Request coverage</a>
+            <a href="/pricing.html" class="footer-link">Pricing</a>
+            <a href="/methodology.html" class="footer-link">Methodology</a>
           </div>
         </div>
         <div>
           <div class="footer-col-label">Company</div>
           <div class="footer-links">
-            <a href="about.html" class="footer-link">About Valuatum</a>
+            <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
@@ -335,668 +251,851 @@
         <div>
           <div class="footer-col-label">Legal</div>
           <div class="footer-links">
-            <a href="disclaimer.html" class="footer-link">Disclaimer</a>
-            <a href="disclaimer.html#terms" class="footer-link">Terms of use</a>
-            <a href="disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="/disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
-        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice. Past performance is not indicative of future results.</span>
       </div>
     </div>
   </footer>
 
-  <!-- PURCHASE MODAL -->
-  <div class="rp-modal-overlay" id="purchaseModal" role="dialog" aria-modal="true" aria-labelledby="purchaseModalTitle" style="display:none;">
-    <div class="rp-modal">
-      <button class="rp-modal-close" id="purchaseModalClose" aria-label="Close">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
+  <div class="rp-toast" id="rpToast" role="status" aria-live="polite"></div>
 
-      <!-- Step 1: Order form -->
-      <div id="purchaseStep1">
-        <div class="rp-modal-report-summary" id="purchaseReportSummary"></div>
-        <h2 class="rp-modal-title" id="purchaseModalTitle">Buy this report</h2>
-        <p class="rp-modal-sub">Enter your email — we'll send payment instructions and deliver the report after confirmation.</p>
-        <form class="rp-modal-form" id="purchaseForm" novalidate>
-          <div class="rp-form-group">
-            <label class="rp-form-label" for="purchaseEmail">Your email address</label>
-            <input type="email" class="rp-form-input" id="purchaseEmail" placeholder="your@email.com" required aria-label="Email">
-          </div>
-          <div class="rp-price-row" id="purchasePriceRow"></div>
-          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit" id="purchaseSubmitBtn">
-            Proceed to payment
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </form>
-      </div>
-
-      <!-- Step 2: Payment instructions -->
-      <div id="purchaseStep2" style="display:none;">
-        <div class="rp-payment-success-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h2 class="rp-modal-title">Order received</h2>
-        <p class="rp-modal-sub" id="purchaseConfirmSub"></p>
-        <div class="rp-payment-instructions" id="paymentInstructions"></div>
-        <div class="rp-modal-note">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          The PDF report will be delivered to your email within 1 business day after we confirm your payment.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FRESH ORDER MODAL (standalone) -->
-  <div class="rp-modal-overlay" id="freshModal" role="dialog" aria-modal="true" aria-labelledby="freshModalTitle" style="display:none;">
-    <div class="rp-modal">
-      <button class="rp-modal-close" id="freshModalClose" aria-label="Close">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div id="freshModalStep1">
-        <div class="rp-modal-type-badge rp-modal-type-badge--fresh">Fresh Report</div>
-        <h2 class="rp-modal-title" id="freshModalTitle">Order a fresh AI equity report</h2>
-        <p class="rp-modal-sub">Enter the company details and your email. We'll send payment instructions and generate a report with the latest available data.</p>
-        <div class="rp-price-row" style="margin-bottom:1.5rem;">
-          <span class="rp-price-tag">€9.90</span>
-          <span class="rp-price-note-inline">Delivered by email · Fresh data</span>
-        </div>
-        <form class="rp-modal-form" id="freshModalForm" novalidate>
-          <div class="rp-form-row-2">
-            <div class="rp-form-group">
-              <label class="rp-form-label" for="freshModalCompany">Company name *</label>
-              <input type="text" class="rp-form-input" id="freshModalCompany" placeholder="e.g. Apple, Novo Nordisk" required>
-            </div>
-            <div class="rp-form-group">
-              <label class="rp-form-label" for="freshModalTicker">Ticker (optional)</label>
-              <input type="text" class="rp-form-input" id="freshModalTicker" placeholder="e.g. AAPL">
-            </div>
-          </div>
-          <div class="rp-form-group">
-            <label class="rp-form-label" for="freshModalExchange">Exchange (optional)</label>
-            <input type="text" class="rp-form-input" id="freshModalExchange" placeholder="e.g. NASDAQ, Helsinki, NYSE">
-          </div>
-          <div class="rp-form-group">
-            <label class="rp-form-label" for="freshModalEmail">Your email *</label>
-            <input type="email" class="rp-form-input" id="freshModalEmail" placeholder="your@email.com" required>
-          </div>
-          <div class="rp-form-group">
-            <label class="rp-form-label" for="freshModalPurpose">Purpose (optional)</label>
-            <select class="rp-form-input rp-form-select" id="freshModalPurpose">
-              <option value="">Select…</option>
-              <option value="personal">Personal investing</option>
-              <option value="professional">Professional research</option>
-              <option value="client">Client work</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit">
-            Order fresh report — €9.90
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </form>
-      </div>
-      <div id="freshModalStep2" style="display:none;">
-        <div class="rp-payment-success-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h2 class="rp-modal-title">Order received</h2>
-        <p class="rp-modal-sub" id="freshConfirmSub"></p>
-        <div class="rp-payment-instructions" id="freshPaymentInstructions"></div>
-        <div class="rp-modal-note">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          We'll generate a fresh report with the latest available data. Delivered to your email within 1 business day after payment.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/mockData.js"></script>
-  <script src="js/pricingConfig.js"></script>
-  <script src="js/reportsData.js"></script>
+  <script src="js/reportFormat.js"></script>
   <script src="js/reportSlugs.js"></script>
+  <script src="js/companyPagesData.js"></script>
   <script src="js/script.js"></script>
   <script>
-  // Keep nav white on this page regardless of scroll position
-  // (dark hero behind nav → transparent nav looks wrong)
   (function() {
-    const nav = document.getElementById('nav');
-    if (!nav) return;
-    nav.classList.add('scrolled');
-    window.addEventListener('scroll', () => nav.classList.add('scrolled'), { passive: true });
-  })();
-  </script>
-  <script>
+    const READY_PRICE = 20;
+    const PAGE_SIZE = 8;
+    let readyPriceLabel = '€20';
+    let readyReports = [];
+    let visibleReports = [];
+    // The catalog is fetched from /api/reports, which proxies the live catalog
+    // API. 'loading' and 'error' render dedicated states so a catalog outage is
+    // never mistaken for an empty catalog.
+    let catalogReports = [];
+    let catalogState = 'loading';
+    let currentPage = 1;
+    let searchQuery = '';
+    let filterAccess = '';
+    let filterMarket = '';
+    let filterSector = '';
+    let sortMode = 'newest';
+    let isRestoringUrlState = false;
+    let freshCompanyPicker = null;
+    let wisdomSearchResults = [];
+    let wisdomSearchTimer = null;
+    let wisdomSearchSequence = 0;
 
-  // ── Config ───────────────────────────────────────────────────────────────
-  const API_BASE = window.VALUATUM_API_BASE || '';
-  const CATALOG_BASE = 'https://files.valuatum.com';
+    const byTicker = new Map();
+    const byUrl = new Map();
+    (window.COMPANY_PAGE_CATALOG || []).forEach(function(company) {
+      const tickerKey = normalize(company.ticker);
+      const urlKey = normalizeUrl(company.url);
+      if (tickerKey && !byTicker.has(tickerKey)) byTicker.set(tickerKey, company);
+      if (urlKey && !byUrl.has(urlKey)) byUrl.set(urlKey, company);
+    });
+    const searchableCompanies = [];
+    const seenCompanyUrls = new Set();
+    (window.COMPANY_PAGE_CATALOG || []).forEach(function(company) {
+      const urlKey = normalizeUrl(company.url);
+      if (!urlKey || seenCompanyUrls.has(urlKey)) return;
+      seenCompanyUrls.add(urlKey);
+      searchableCompanies.push(company);
+    });
 
-  // ── State ─────────────────────────────────────────────────────────────────
-  let activeTab = 'all';
-  let searchQuery = '';
-  let filterMarket = '';
-  let filterSector = '';
-  let sortMode = 'newest';
-  let activePurchaseReport = null;
-
-  function escapeHTML(value) {
-    return String(value ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  async function loadDynamicReports() {
-    try {
-      const res = await fetch(`${CATALOG_BASE}/api/reports`, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`Report API returned ${res.status}`);
-      const data = await res.json();
-      if (Array.isArray(data.reports) && data.reports.length) {
-        REPORTS_CATALOG = data.reports;
+    function normalize(value) { return String(value || '').trim().toLowerCase(); }
+    function normalizeUrl(value) { return String(value || '').replace(/^\//, '').trim().toLowerCase(); }
+    function escapeHTML(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function pageUrlFor(report) {
+      const slug = report.slug || (window.REPORT_SLUGS && window.REPORT_SLUGS[report.id]);
+      if (slug) return 'reports/' + slug + '.html';
+      // Slugs are keyed by report id and only cover reports that have a
+      // landing page in report-content/. Newer catalog reports fall back to the
+      // company page, which is keyed by ticker.
+      const company = byTicker.get(normalize(report.ticker));
+      return company ? normalizeUrl(company.url) : '';
+    }
+    function companyFor(report) {
+      const url = pageUrlFor(report);
+      return byUrl.get(normalizeUrl(url)) || byTicker.get(normalize(report.ticker)) || null;
+    }
+    function buildReadyReports() {
+      const seen = new Set();
+      return catalogReports
+        .slice()
+        .sort(function(a, b) { return new Date(b.reportDate || 0) - new Date(a.reportDate || 0); })
+        .filter(function(report) {
+          const publication = report.publicationStatus || (report.availability === 'available' ? 'ready' : report.availability);
+          if (publication && publication !== 'ready') return false;
+          if (!['existing', 'free'].includes(report.reportType)) return false;
+          if (!pageUrlFor(report)) return false;
+          if (!companyFor(report)) return false;
+          if (seen.has(pageUrlFor(report))) return false;
+          seen.add(pageUrlFor(report));
+          return true;
+        })
+        .map(function(report) {
+          const company = companyFor(report);
+          const isFree = !!report.isFree || report.reportType === 'free' || Number(report.price) === 0;
+          return Object.assign({}, report, {
+            companyPage: company,
+            pageUrl: pageUrlFor(report),
+            price: isFree ? 0 : READY_PRICE,
+            isFree: isFree,
+            description: company.description || report.description || '',
+            displayName: company.name || report.companyName,
+            displayTicker: company.ticker || report.ticker,
+            displayExchange: company.exchange || report.exchange,
+          });
+        });
+    }
+    async function loadCatalog() {
+      catalogState = 'loading';
+      render();
+      try {
+        const res = await fetch('/api/reports');
+        if (!res.ok) throw new Error('Catalog request failed with ' + res.status);
+        const data = await res.json();
+        if (!Array.isArray(data.reports)) throw new Error('Catalog response has no reports');
+        catalogReports = data.reports;
+        catalogState = 'ready';
+      } catch (err) {
+        console.error('Could not load report catalog:', err.message);
+        catalogReports = [];
+        catalogState = 'error';
+        render();
+        return;
       }
-    } catch (err) {
-      console.warn('Using bundled report catalog fallback:', err.message);
+      readyReports = buildReadyReports();
+      populateFilters();
+      restoreUrlState();
+      render();
     }
-  }
-
-  function populateCatalogFilters() {
-    const marketSelect = document.getElementById('filterMarket');
-    const sectorSelect = document.getElementById('filterSector');
-    if (!marketSelect || !sectorSelect) return;
-
-    const currentMarket = marketSelect.value;
-    const currentSector = sectorSelect.value;
-    const markets = [...new Set(REPORTS_CATALOG.map(r => r.exchange).filter(Boolean))].sort();
-    const sectors = [...new Set(REPORTS_CATALOG.map(r => r.sector).filter(Boolean))].sort();
-
-    marketSelect.innerHTML = '<option value="">All markets</option>' +
-      markets.map(value => `<option value="${escapeHTML(value)}">${escapeHTML(value)}</option>`).join('');
-    sectorSelect.innerHTML = '<option value="">All sectors</option>' +
-      sectors.map(value => `<option value="${escapeHTML(value)}">${escapeHTML(value)}</option>`).join('');
-
-    if (markets.includes(currentMarket)) marketSelect.value = currentMarket;
-    if (sectors.includes(currentSector)) sectorSelect.value = currentSector;
-  }
-
-  // ── Render report cards ──────────────────────────────────────────────────
-  function getFilteredReports() {
-    let list = [...REPORTS_CATALOG].filter(r => r.availability !== 'hidden');
-
-    // Tab filter
-    if (activeTab === 'free') list = list.filter(r => r.reportType === 'free');
-    if (activeTab === 'existing') list = list.filter(r => r.reportType === 'existing');
-
-    // Search
-    if (searchQuery) {
-      const q = searchQuery.toLowerCase();
-      list = list.filter(r =>
-        String(r.companyName || '').toLowerCase().includes(q) ||
-        String(r.ticker || '').toLowerCase().includes(q) ||
-        String(r.sector || '').toLowerCase().includes(q) ||
-        String(r.exchange || '').toLowerCase().includes(q)
-      );
+    function populateFilters() {
+      const markets = Array.from(new Set(readyReports.map(function(r) { return r.displayExchange; }).filter(Boolean))).sort();
+      const sectors = Array.from(new Set(readyReports.map(function(r) { return r.sector; }).filter(Boolean))).sort();
+      document.getElementById('filterMarketMenu').innerHTML = '<button type="button" class="catalog-select-option active" data-value="">All markets</button>' + markets.map(function(v) { return '<button type="button" class="catalog-select-option" data-value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</button>'; }).join('');
+      document.getElementById('filterSectorMenu').innerHTML = '<button type="button" class="catalog-select-option active" data-value="">All sectors</button>' + sectors.map(function(v) { return '<button type="button" class="catalog-select-option" data-value="' + escapeHTML(v) + '">' + escapeHTML(v) + '</button>'; }).join('');
     }
-
-    // Market filter
-    if (filterMarket) list = list.filter(r => r.exchange === filterMarket);
-
-    // Sector filter
-    if (filterSector) list = list.filter(r => r.sector === filterSector);
-
-    // Sort
-    list.sort((a, b) => {
-      if (sortMode === 'newest') return new Date(b.reportDate) - new Date(a.reportDate);
-      if (sortMode === 'oldest') return new Date(a.reportDate) - new Date(b.reportDate);
-      if (sortMode === 'free_first') {
-        if (a.isFree && !b.isFree) return -1;
-        if (!a.isFree && b.isFree) return 1;
+    function filteredReports() {
+      let list = readyReports.slice();
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        list = list.filter(function(r) {
+          return [r.displayName, r.displayTicker, r.displayExchange, r.sector].some(function(v) {
+            return String(v || '').toLowerCase().includes(q);
+          });
+        });
+      }
+      if (filterAccess === 'free') list = list.filter(function(r) { return r.isFree; });
+      if (filterAccess === 'paid') list = list.filter(function(r) { return !r.isFree; });
+      if (filterMarket) list = list.filter(function(r) { return r.displayExchange === filterMarket; });
+      if (filterSector) list = list.filter(function(r) { return r.sector === filterSector; });
+      list.sort(function(a, b) {
+        if (sortMode === 'company') return String(a.displayName).localeCompare(String(b.displayName));
+        if (sortMode === 'market') return String(a.displayExchange).localeCompare(String(b.displayExchange)) || String(a.displayName).localeCompare(String(b.displayName));
         return new Date(b.reportDate) - new Date(a.reportDate);
-      }
-      if (sortMode === 'price_asc') return Number(a.price || 0) - Number(b.price || 0);
-      if (sortMode === 'company') return String(a.companyName || '').localeCompare(String(b.companyName || ''));
-      return 0;
-    });
-
-    return list;
-  }
-
-  function buildReportCard(report) {
-    const ageDays = getReportAgeDays(report.reportDate);
-    const ageLabel = getReportAgeLabel(report.reportDate);
-    const dateFormatted = formatReportDate(report.reportDate);
-    const companyName = escapeHTML(report.companyName || report.name || 'Unknown company');
-    const ticker = escapeHTML(report.ticker || '');
-    const exchange = escapeHTML(report.exchange || 'Unknown');
-    const sector = escapeHTML(report.sector || 'Unclassified');
-    const description = escapeHTML(report.description || '');
-    const reportId = escapeHTML(report.id);
-    const _slug = (window.REPORT_SLUGS && window.REPORT_SLUGS[report.id]) || report.slug || '';
-    const landingUrl = _slug ? `/reports/${escapeHTML(_slug)}.html` : '';
-
-    const typeBadge = report.reportType === 'free'
-      ? `<span class="rc-badge rc-badge--free">Free Sample</span>`
-      : report.reportType === 'existing'
-      ? `<span class="rc-badge rc-badge--existing">Existing Report</span>`
-      : `<span class="rc-badge rc-badge--fresh">Fresh Report</span>`;
-
-    const tags = (report.tags || []).map(t => `<span class="rc-tag">${escapeHTML(t)}</span>`).join('');
-
-    const ageClass = ageDays <= 7 ? 'rc-age--fresh' : ageDays <= 14 ? 'rc-age--recent' : 'rc-age--older';
-
-    let ctaBtn, pricePart;
-    if (report.isFree) {
-      pricePart = `<span class="rc-price rc-price--free">Free</span>`;
-      const freeHref = landingUrl || escapeHTML(report.pdfUrl);
-      ctaBtn = `<a href="${freeHref}" class="btn btn-primary btn-sm rc-cta" onclick="trackEvent('free_report_opened', {ticker:'${ticker}', reportId:'${reportId}'})">Read free report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
-    } else {
-      pricePart = `<span class="rc-price">€${Number(report.price || 0).toFixed(2)}</span>`;
-      const preview = landingUrl ? `<a href="${landingUrl}" class="btn btn-outline btn-sm rc-cta" style="margin-right:0.5rem;">Preview</a>` : '';
-      ctaBtn = `${preview}<button class="btn btn-primary btn-sm rc-cta" onclick="handleStripeCheckout('${reportId}')">Buy report <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+      });
+      return list;
     }
-
-    return `
-      <article class="report-card" role="listitem" data-report-id="${reportId}">
-        <div class="rc-top">
-          ${typeBadge}
-          <span class="rc-date-badge ${ageClass}">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="5.5" r="4.5" stroke="currentColor" stroke-width="1.1"/><path d="M5.5 3v2.5l1.5 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-            ${ageLabel}
-          </span>
-        </div>
-        <div class="rc-company">
-          <div class="rc-company-name">${landingUrl ? `<a href="${landingUrl}" style="color:inherit; text-decoration:none;">${companyName}</a>` : companyName}</div>
-          <div class="rc-company-meta">
-            <span class="rc-ticker">${ticker}</span>
-            <span class="rc-sep">·</span>
-            <span>${exchange}</span>
-            <span class="rc-sep">·</span>
-            <span>${sector}</span>
-          </div>
-        </div>
-        <p class="rc-desc">${description}</p>
-        <div class="rc-tags">${tags}</div>
-        <div class="rc-footer">
-          <div class="rc-footer-left">
-            ${pricePart}
-            <span class="rc-report-date">${dateFormatted}</span>
-          </div>
-          ${ctaBtn}
-        </div>
-      </article>
-    `;
-  }
-
-  function renderCatalog() {
-    const grid = document.getElementById('catalogGrid');
-    const empty = document.getElementById('catalogEmpty');
-    const count = document.getElementById('catalogCount');
-    const freshPanel = document.getElementById('freshTabPanel');
-    const controls = document.getElementById('catalogControls');
-
-    if (activeTab === 'fresh') {
-      grid.style.display = 'none';
-      empty.style.display = 'none';
-      controls.style.display = 'none';
-      freshPanel.style.display = 'block';
-      count.textContent = '';
-      renderFreshTabForm();
-      trackEvent('report_filter_used', { tab: 'fresh' });
-      return;
+    function totalPages() {
+      return Math.max(1, Math.ceil(visibleReports.length / PAGE_SIZE));
     }
-
-    grid.style.display = '';
-    controls.style.display = '';
-    freshPanel.style.display = 'none';
-
-    const reports = getFilteredReports();
-
-    if (reports.length === 0) {
-      grid.innerHTML = '';
-      empty.style.display = 'flex';
-      count.textContent = '0 reports';
-      return;
+    function syncUrlState(mode) {
+      if (isRestoringUrlState) return;
+      const params = new URLSearchParams();
+      const source = new URLSearchParams(window.location.search).get('source');
+      if (source) params.set('source', source);
+      if (searchQuery) params.set('search', searchQuery);
+      if (filterAccess) params.set('access', filterAccess);
+      if (filterMarket) params.set('market', filterMarket);
+      if (filterSector) params.set('sector', filterSector);
+      if (sortMode !== 'newest') params.set('sort', sortMode);
+      if (currentPage > 1) params.set('page', String(currentPage));
+      const query = params.toString();
+      const nextUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
+      window.history[mode === 'push' ? 'pushState' : 'replaceState']({}, '', nextUrl);
     }
-
-    empty.style.display = 'none';
-    count.textContent = `${reports.length} report${reports.length !== 1 ? 's' : ''}`;
-    grid.innerHTML = reports.map(buildReportCard).join('');
-  }
-
-  function renderFreshTabForm() {
-    const wrap = document.getElementById('freshOrderFormWrap');
-    if (!wrap) return;
-    wrap.innerHTML = `
-      <div class="fresh-tab-form-card">
-        <form class="rp-modal-form fresh-tab-form" id="freshTabForm" novalidate>
-          <div class="rp-form-row-2">
-            <div class="rp-form-group">
-              <label class="rp-form-label">Company name *</label>
-              <input type="text" class="rp-form-input" id="freshTabCompany" placeholder="e.g. Apple, Novo Nordisk" required>
-            </div>
-            <div class="rp-form-group">
-              <label class="rp-form-label">Ticker (optional)</label>
-              <input type="text" class="rp-form-input" id="freshTabTicker" placeholder="e.g. AAPL">
-            </div>
-          </div>
-          <div class="rp-form-row-2">
-            <div class="rp-form-group">
-              <label class="rp-form-label">Exchange (optional)</label>
-              <input type="text" class="rp-form-input" id="freshTabExchange" placeholder="e.g. NASDAQ, Helsinki">
-            </div>
-            <div class="rp-form-group">
-              <label class="rp-form-label">Purpose (optional)</label>
-              <select class="rp-form-input rp-form-select" id="freshTabPurpose">
-                <option value="">Select…</option>
-                <option value="personal">Personal investing</option>
-                <option value="professional">Professional research</option>
-                <option value="client">Client work</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="rp-form-group">
-            <label class="rp-form-label">Your email *</label>
-            <input type="email" class="rp-form-input" id="freshTabEmail" placeholder="your@email.com" required>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg rp-modal-submit" style="width:100%; justify-content:center;">
-            Order fresh report — €9.90
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </form>
-        <p class="fresh-form-note" style="margin-top:1rem; text-align:center;">After submitting, you'll receive payment instructions. Report delivered within 1 business day after payment.</p>
-      </div>
-    `;
-    document.getElementById('freshTabForm')?.addEventListener('submit', e => {
-      e.preventDefault();
-      const company = document.getElementById('freshTabCompany')?.value.trim();
-      const email = document.getElementById('freshTabEmail')?.value.trim();
-      if (!company || !email) { showToast('Please fill in company name and email.'); return; }
-      handleFreshOrderSubmit(
-        company,
-        document.getElementById('freshTabTicker')?.value.trim(),
-        email,
-        'fresh_tab',
-        {
-          exchange: document.getElementById('freshTabExchange')?.value.trim(),
-          purpose: document.getElementById('freshTabPurpose')?.value,
+    function matchingCompanies(query) {
+      const q = String(query || '').trim().toLowerCase();
+      if (!q) return [];
+      return searchableCompanies.filter(function(company) {
+        return [company.name, company.ticker, company.exchange].some(function(v) {
+          return String(v || '').toLowerCase().includes(q);
+        });
+      });
+    }
+    function pdfHref(url) {
+      const s = String(url || '');
+      return /^https?:\/\//.test(s) ? s : '/' + s.replace(/^\/+/, '');
+    }
+    function card(report) {
+      const tags = (report.tags || []).slice(0, 4).map(function(tag) { return '<span class="rc-tag">' + escapeHTML(tag) + '</span>'; }).join('');
+      const badge = report.isFree ? 'Free report' : 'Ready report';
+      const price = report.isFree ? 'Free' : readyPriceLabel;
+      const priceNote = report.isFree ? 'Instant PDF download' : 'Existing PDF report';
+      const primaryCta = report.isFree
+        ? '<a class="btn btn-primary" href="' + escapeHTML(pdfHref(report.pdfUrl)) + '" target="_blank" rel="noopener" download>Download free PDF</a>'
+        : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(report.id) + '">Buy ready report</button>';
+      return '<article class="report-card" role="listitem" id="report-' + escapeHTML(report.id) + '" data-page-url="/' + escapeHTML(report.pageUrl) + '" tabindex="0" aria-label="Open ' + escapeHTML(report.displayName) + ' company page">' +
+        '<div>' +
+          '<div class="rc-eyebrow"><span class="rc-badge' + (report.isFree ? ' rc-badge-free' : '') + '">' + badge + '</span><span class="rc-date">' + escapeHTML(formatReportDate(report.reportDate)) + '</span></div>' +
+          '<h3 class="rc-company-name"><a href="/' + escapeHTML(report.pageUrl) + '">' + escapeHTML(report.displayName) + '</a></h3>' +
+          '<div class="rc-company-meta"><span class="rc-ticker">' + escapeHTML(report.displayTicker) + '</span><span>·</span><span>' + escapeHTML(report.displayExchange) + '</span><span>·</span><span>' + escapeHTML(report.sector) + '</span></div>' +
+          '<p class="rc-desc">' + escapeHTML(report.description) + '</p>' +
+          '<div class="rc-tags">' + tags + '</div>' +
+        '</div>' +
+        '<div class="rc-actions">' +
+          '<div><div class="rc-price">' + price + '</div><div class="rc-price-note">' + priceNote + '</div></div>' +
+          primaryCta +
+          '<button class="btn btn-outline-dark" data-generate-company="' + escapeHTML(report.displayName) + '" data-generate-ticker="' + escapeHTML(report.displayTicker) + '">Generate fresh report</button>' +
+          '<a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/' + escapeHTML(report.pageUrl) + '">Open company page</a>' +
+        '</div>' +
+      '</article>';
+    }
+    function render() {
+      const grid = document.getElementById('catalogGrid');
+      const empty = document.getElementById('catalogEmpty');
+      const emptyTitle = document.getElementById('catalogEmptyTitle');
+      const emptySub = document.getElementById('catalogEmptySub');
+      const emptyAction = document.getElementById('catalogEmptyAction');
+      const count = document.getElementById('catalogCount');
+      const pagination = document.getElementById('catalogPagination');
+      if (catalogState !== 'ready') {
+        visibleReports = [];
+        grid.innerHTML = '';
+        if (pagination) pagination.hidden = true;
+        count.textContent = catalogState === 'loading' ? 'Loading reports…' : '';
+        empty.style.display = catalogState === 'error' ? 'block' : 'none';
+        if (catalogState === 'error') {
+          emptyTitle.textContent = 'Reports could not be loaded.';
+          emptySub.textContent = 'The report catalog is temporarily unavailable. Please try again in a moment.';
+          emptyAction.textContent = 'Try again';
+          emptyAction.setAttribute('href', '#');
+          emptyAction.style.display = 'inline-flex';
+          emptyAction.onclick = function(event) { event.preventDefault(); loadCatalog(); };
         }
-      );
-    });
-  }
-
-  // ── Tab switching ─────────────────────────────────────────────────────────
-  function setTab(tab) {
-    activeTab = tab;
-    document.querySelectorAll('.catalog-tab').forEach(btn => {
-      const isActive = btn.dataset.tab === tab;
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-selected', isActive);
-    });
-    renderCatalog();
-    trackEvent('report_filter_used', { tab });
-  }
-
-  // ── Tab counts ────────────────────────────────────────────────────────────
-  function updateTabCounts() {
-    const visibleReports = REPORTS_CATALOG.filter(r => r.availability !== 'hidden');
-    const free = visibleReports.filter(r => r.reportType === 'free').length;
-    const existing = visibleReports.filter(r => r.reportType === 'existing').length;
-    const freeEl = document.getElementById('tabCountFree');
-    const existingEl = document.getElementById('tabCountExisting');
-    if (freeEl) freeEl.textContent = free;
-    if (existingEl) existingEl.textContent = existing;
-  }
-
-  // ── Purchase modal ────────────────────────────────────────────────────────
-  function openPurchaseModal(reportId) {
-    const report = REPORTS_CATALOG.find(r => r.id === reportId);
-    if (!report) return;
-    activePurchaseReport = report;
-
-    const summary = document.getElementById('purchaseReportSummary');
-    const priceRow = document.getElementById('purchasePriceRow');
-
-    summary.innerHTML = `
-      <div class="rp-modal-type-badge ${report.reportType === 'free' ? 'rp-modal-type-badge--free' : 'rp-modal-type-badge--existing'}">
-        ${report.reportType === 'free' ? 'Free Sample' : 'Existing Report'}
-      </div>
-      <div class="rp-modal-summary-company">${report.companyName}</div>
-      <div class="rp-modal-summary-meta">${report.ticker} · ${report.exchange} · ${formatReportDate(report.reportDate)}</div>
-    `;
-
-    priceRow.innerHTML = `
-      <span class="rp-price-tag">€${report.price.toFixed(2)}</span>
-      <span class="rp-price-note-inline">Full PDF report · Delivered by email</span>
-    `;
-
-    document.getElementById('purchaseStep1').style.display = '';
-    document.getElementById('purchaseStep2').style.display = 'none';
-    document.getElementById('purchaseEmail').value = '';
-
-    const modal = document.getElementById('purchaseModal');
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('open'), 10);
-    trackEvent('paid_report_buy_clicked', { reportId, ticker: report.ticker });
-  }
-
-  function closePurchaseModal() {
-    const modal = document.getElementById('purchaseModal');
-    modal.classList.remove('open');
-    setTimeout(() => { modal.style.display = 'none'; }, 250);
-    activePurchaseReport = null;
-  }
-
-  function openFreshOrderModal() {
-    document.getElementById('freshModalStep1').style.display = '';
-    document.getElementById('freshModalStep2').style.display = 'none';
-    document.getElementById('freshModalCompany').value = '';
-    document.getElementById('freshModalTicker').value = '';
-    document.getElementById('freshModalExchange').value = '';
-    document.getElementById('freshModalEmail').value = '';
-    const modal = document.getElementById('freshModal');
-    modal.style.display = 'flex';
-    setTimeout(() => modal.classList.add('open'), 10);
-    trackEvent('fresh_report_order_started');
-  }
-
-  function closeFreshModal() {
-    const modal = document.getElementById('freshModal');
-    modal.classList.remove('open');
-    setTimeout(() => { modal.style.display = 'none'; }, 250);
-  }
-
-  // ── Build payment instructions HTML ───────────────────────────────────────
-  function buildManualPaymentHTML(reference) {
-    const p = PAYMENT_CONFIG.manualInstructions;
-    return `
-      <div class="rp-payment-method">
-        <div class="rp-payment-method-title">Bank transfer</div>
-        <div class="rp-payment-field"><span>Payee</span><strong>${p.payee}</strong></div>
-        <div class="rp-payment-field"><span>IBAN</span><strong>${p.iban}</strong></div>
-        <div class="rp-payment-field"><span>BIC</span><strong>${p.bic}</strong></div>
-        <div class="rp-payment-field"><span>Amount</span><strong>${PAYMENT_CONFIG.currencySymbol}${reference.amount}</strong></div>
-        <div class="rp-payment-field"><span>Reference</span><strong>${reference.ref}</strong></div>
-      </div>
-      <div class="rp-payment-ref-note">${p.referenceNote}</div>
-    `;
-  }
-
-  // ── Stripe checkout for existing reports ─────────────────────────────────
-  async function handleStripeCheckout(reportId) {
-    const report = REPORTS_CATALOG.find(r => r.id === reportId);
-    if (!report) return;
-
-    trackEvent('paid_report_buy_clicked', { reportId, ticker: report.ticker });
-    showToast('Redirecting to secure checkout…');
-
-    try {
-      const res = await fetch(`${API_BASE}/api/create-checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reportId: report.id }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        trackEvent('stripe_checkout_clicked', { reportId });
-        window.location.href = data.url;
+        return;
+      }
+      emptyAction.onclick = null;
+      visibleReports = filteredReports();
+      const pages = totalPages();
+      currentPage = Math.min(Math.max(1, currentPage), pages);
+      const pageStart = (currentPage - 1) * PAGE_SIZE;
+      const pageReports = visibleReports.slice(pageStart, pageStart + PAGE_SIZE);
+      count.textContent = visibleReports.length + ' ready report' + (visibleReports.length === 1 ? '' : 's');
+      grid.innerHTML = pageReports.map(card).join('');
+      if (pagination) {
+        pagination.hidden = visibleReports.length <= PAGE_SIZE;
+        document.getElementById('catalogPrevious').disabled = currentPage <= 1;
+        document.getElementById('catalogNext').disabled = currentPage >= pages;
+        document.getElementById('catalogPageStatus').textContent = 'Page ' + currentPage + ' of ' + pages;
+      }
+      if (visibleReports.length) {
+        empty.style.display = 'none';
       } else {
-        showToast('Could not start checkout — try again or contact contact26@valuatum.com');
+        const companyMatches = matchingCompanies(searchQuery);
+        empty.style.display = 'block';
+        if (searchQuery && companyMatches.length) {
+          emptyTitle.textContent = 'Company page found.';
+          emptySub.textContent = 'Select ' + (companyMatches[0].name || 'the company') + ' from the search dropdown or press Enter to open the company page.';
+          emptyAction.style.display = 'none';
+        } else {
+          emptyTitle.textContent = 'No company page or ready report matches your search.';
+          emptySub.textContent = 'Search Wisdom below and generate a fresh report if the company is supported.';
+          emptyAction.textContent = 'Generate fresh report';
+          emptyAction.setAttribute('href', '#order-fresh');
+          emptyAction.style.display = 'inline-flex';
+        }
       }
-    } catch {
-      showToast('Connection error — please try again.');
+      bindCardActions();
     }
-  }
-
-  // ── Stripe checkout for fresh reports ────────────────────────────────────
-  async function handleFreshOrderSubmit(company, ticker, email, source, options = {}) {
-    if (!company || !email || !email.includes('@')) {
-      showToast('Please fill in company name and email.');
-      return;
+    function renderAutocomplete() {
+      const menu = document.getElementById('rpSearchAutocomplete');
+      const q = searchQuery.toLowerCase();
+      if (!q) { menu.classList.remove('open'); menu.innerHTML = ''; return; }
+      const matches = matchingCompanies(searchQuery).slice(0, 8);
+      const localTickers = new Set(matches.map(function(company) { return normalize(company.ticker); }));
+      const wisdomMatches = wisdomSearchResults.filter(function(company) {
+        return !localTickers.has(normalize(company.ticker));
+      }).slice(0, Math.max(0, 8 - matches.length));
+      const pageResults = matches.map(function(company) {
+        return '<button class="rp-autocomplete-item" type="button" data-url="/' + escapeHTML(company.url) + '">' +
+          '<span class="rp-autocomplete-ticker">' + escapeHTML(company.ticker) + '</span>' +
+          '<span class="rp-autocomplete-name">' + escapeHTML(company.name) + '</span>' +
+          '<span class="rp-autocomplete-exchange">Open company page</span>' +
+        '</button>';
+      }).join('');
+      const freshResults = wisdomMatches.map(function(company) {
+        return '<button class="rp-autocomplete-item rp-autocomplete-item-fresh" type="button" data-fresh-name="' + escapeHTML(company.companyName) + '" data-fresh-ticker="' + escapeHTML(company.ticker) + '" data-fresh-industry="' + escapeHTML(company.industry || '') + '">' +
+          '<span class="rp-autocomplete-ticker">' + escapeHTML(company.ticker) + '</span>' +
+          '<span class="rp-autocomplete-name">' + escapeHTML(company.companyName) + '</span>' +
+          '<span class="rp-autocomplete-exchange">Generate fresh report</span>' +
+        '</button>';
+      }).join('');
+      menu.innerHTML = pageResults + freshResults;
+      menu.classList.toggle('open', matches.length + wisdomMatches.length > 0);
     }
-    trackEvent('fresh_report_order_started', { company, ticker, source });
-    showToast('Redirecting to secure checkout…');
+    async function searchWisdomForHero(rawQuery) {
+      const query = String(rawQuery || '').trim();
+      const sequence = ++wisdomSearchSequence;
+      wisdomSearchResults = [];
+      renderAutocomplete();
+      if (!query || typeof window.searchWisdomCompanies !== 'function') return;
+      try {
+        const results = await window.searchWisdomCompanies(query);
+        if (sequence !== wisdomSearchSequence || normalize(query) !== normalize(searchQuery)) return;
+        wisdomSearchResults = results;
+      } catch (error) {
+        if (sequence !== wisdomSearchSequence) return;
+        wisdomSearchResults = [];
+      }
+      renderAutocomplete();
+    }
+    function createFreshCompanyPicker() {
+      const input = document.getElementById('freshCompany');
+      const menu = document.getElementById('freshMainPickerMenu');
+      const chip = document.getElementById('freshMainSelected');
+      const hint = document.getElementById('freshMainHint');
+      if (!input || !menu) {
+        return { getSelected: function() { return null; }, search: function() {}, reset: function() {} };
+      }
 
-    try {
-      const res = await fetch(`${API_BASE}/api/create-fresh-checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          company,
-          ticker,
-          email,
-          exchange: options.exchange || '',
-          purpose: options.purpose || '',
-        }),
+      let selected = null;
+      let results = [];
+      let activeIndex = -1;
+      let debounceTimer = null;
+      let requestSequence = 0;
+
+      function setHint(message) {
+        if (hint) hint.innerHTML = message || '';
+      }
+      function goToCoverageRequest() {
+        const target = document.getElementById('coverage-request');
+        const coverageCompany = document.getElementById('coverageCompany');
+        if (coverageCompany && input.value) coverageCompany.value = input.value;
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.setTimeout(function() {
+          const focusTarget = coverageCompany && coverageCompany.value ? document.getElementById('coverageEmail') : coverageCompany;
+          if (focusTarget) focusTarget.focus();
+        }, 350);
+      }
+      if (hint) {
+        hint.addEventListener('click', function(event) {
+          if (event.target.closest('[data-go-to-coverage]')) {
+            event.preventDefault();
+            goToCoverageRequest();
+          }
+        });
+      }
+      function closeMenu() {
+        menu.classList.remove('open');
+        input.setAttribute('aria-expanded', 'false');
+        activeIndex = -1;
+      }
+      function clearSelection() {
+        selected = null;
+        if (chip) {
+          chip.hidden = true;
+          chip.textContent = '';
+        }
+      }
+      function chooseCompany(company) {
+        if (!company) return;
+        selected = company;
+        input.value = company.companyName;
+        if (chip) {
+          chip.hidden = false;
+          chip.textContent = 'Selected: ' + company.ticker;
+        }
+        setHint('');
+        closeMenu();
+      }
+      function renderCompanies(companies) {
+        results = companies;
+        activeIndex = -1;
+        menu.innerHTML = companies.map(function(company, index) {
+          return '<button class="company-picker-item" type="button" role="option" data-company-index="' + index + '">' +
+            '<span class="company-picker-ticker">' + escapeHTML(company.ticker) + '</span>' +
+            '<span class="company-picker-name">' + escapeHTML(company.companyName) + '</span>' +
+            (company.industry ? '<span class="company-picker-industry">' + escapeHTML(company.industry) + '</span>' : '') +
+          '</button>';
+        }).join('');
+        menu.classList.toggle('open', companies.length > 0);
+        input.setAttribute('aria-expanded', companies.length > 0 ? 'true' : 'false');
+      }
+      function updateActiveOption(nextIndex) {
+        const options = Array.from(menu.querySelectorAll('[data-company-index]'));
+        if (!options.length) return;
+        activeIndex = (nextIndex + options.length) % options.length;
+        options.forEach(function(option, index) {
+          option.classList.toggle('active', index === activeIndex);
+          option.setAttribute('aria-selected', index === activeIndex ? 'true' : 'false');
+        });
+        options[activeIndex].scrollIntoView({ block: 'nearest' });
+      }
+      async function runSearch(rawQuery, preferredTicker) {
+        const query = String(rawQuery || '').trim();
+        input.value = query;
+        clearSelection();
+        if (!query) {
+          results = [];
+          menu.innerHTML = '';
+          closeMenu();
+          setHint('');
+          return;
+        }
+
+        const sequence = ++requestSequence;
+        setHint('Searching Wisdom...');
+        try {
+          const companies = await window.searchWisdomCompanies(query);
+          if (sequence !== requestSequence) return;
+          const preferred = companies.find(function(company) {
+            return normalize(company.ticker) === normalize(preferredTicker);
+          });
+          if (preferred) {
+            chooseCompany(preferred);
+            setHint('Selected from Wisdom coverage.');
+            return;
+          }
+          renderCompanies(companies);
+          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found in Wisdom. <a href="#coverage-request" data-go-to-coverage>Request coverage for this company</a> instead.');
+        } catch (error) {
+          if (sequence !== requestSequence) return;
+          results = [];
+          menu.innerHTML = '';
+          closeMenu();
+          setHint('Company search is temporarily unavailable. Please try again.');
+        }
+      }
+
+      input.addEventListener('input', function() {
+        if (!selected || input.value !== selected.companyName) clearSelection();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() { runSearch(input.value); }, 250);
       });
-      const data = await res.json();
-      if (data.url) {
-        trackEvent('stripe_checkout_clicked', { type: 'fresh', company });
-        window.location.href = data.url;
-      } else {
-        showToast('Could not start checkout — try again or contact contact26@valuatum.com');
-      }
-    } catch {
-      showToast('Connection error — please try again.');
+      input.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          updateActiveOption(activeIndex + 1);
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          updateActiveOption(activeIndex - 1);
+        } else if (event.key === 'Enter' && results.length) {
+          event.preventDefault();
+          chooseCompany(results[activeIndex >= 0 ? activeIndex : 0]);
+        } else if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+      menu.addEventListener('pointerdown', function(event) {
+        const option = event.target.closest('[data-company-index]');
+        if (!option) return;
+        event.preventDefault();
+        chooseCompany(results[Number(option.getAttribute('data-company-index'))]);
+      });
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.company-picker')) closeMenu();
+      });
+
+      return {
+        getSelected: function() { return selected; },
+        search: runSearch,
+        select: chooseCompany,
+        reset: function() {
+          input.value = '';
+          clearSelection();
+          setHint('');
+          closeMenu();
+        },
+      };
     }
-  }
-
-  document.getElementById('freshModalForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const company = document.getElementById('freshModalCompany')?.value.trim();
-    const email = document.getElementById('freshModalEmail')?.value.trim();
-    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
-    handleFreshOrderSubmit(
-      company,
-      document.getElementById('freshModalTicker')?.value.trim(),
-      email,
-      'fresh_modal',
-      {
-        exchange: document.getElementById('freshModalExchange')?.value.trim(),
-        purpose: document.getElementById('freshModalPurpose')?.value,
+    function openFreshOrder(query, ticker) {
+      const section = document.getElementById('order-fresh');
+      if (query && freshCompanyPicker) freshCompanyPicker.search(query, ticker);
+      if (window.history && window.history.replaceState) {
+        const nextUrl = window.location.pathname + window.location.search + '#order-fresh';
+        window.history.replaceState({}, '', nextUrl);
       }
-    );
-  });
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(function() {
+        const input = document.getElementById('freshCompany');
+        if (input) input.focus();
+      }, 350);
+    }
+    async function buyReadyReport(reportId, button) {
+      if (button && button.dataset.loading === '1') return;
+      const old = button ? button.textContent : '';
+      if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
+      try {
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reportId: reportId }),
+        });
+        const data = await res.json();
+        if (data && data.url) { window.location.href = data.url; return; }
+      } catch (err) {}
+      if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
+      showToast('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    }
+    async function generateNewReport(company, ticker, button, options) {
+      if (button && button.dataset.loading === '1') return;
+      options = options || {};
+      const old = button ? button.textContent : '';
+      if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
+      try {
+        const res = await fetch('/api/create-fresh-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company: company,
+            ticker: ticker,
+            email: options.email || '',
+            purpose: options.purpose || '',
+            source: options.source || 'company_page',
+          }),
+        });
+        const data = await res.json();
+        if (res.ok && data && data.url) { window.location.href = data.url; return true; }
+      } catch (err) {}
+      if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
+      showToast('Could not start fresh report checkout. Please try again or contact contact26@valuatum.com.');
+      return false;
+    }
+    function bindCardActions() {
+      document.querySelectorAll('.report-card[data-page-url]').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('a, button')) return;
+          window.location.href = card.getAttribute('data-page-url');
+        });
+        card.addEventListener('keydown', function(e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          if (e.target.closest('a, button')) return;
+          e.preventDefault();
+          window.location.href = card.getAttribute('data-page-url');
+        });
+      });
+      document.querySelectorAll('[data-buy-report]').forEach(function(btn) {
+        btn.addEventListener('click', function() { buyReadyReport(btn.getAttribute('data-buy-report'), btn); });
+      });
+      document.querySelectorAll('[data-generate-company]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          generateNewReport(btn.getAttribute('data-generate-company'), btn.getAttribute('data-generate-ticker'), btn);
+        });
+      });
+    }
+    function showToast(message) {
+      const toast = document.getElementById('rpToast');
+      toast.textContent = message;
+      toast.classList.add('open');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(function() { toast.classList.remove('open'); }, 3500);
+    }
+    function bindSearch() {
+      const input = document.getElementById('rpSearchInput');
+      const clear = document.getElementById('rpSearchClear');
+      const menu = document.getElementById('rpSearchAutocomplete');
+      input.addEventListener('input', function() {
+        searchQuery = input.value.trim();
+        currentPage = 1;
+        clear.style.display = searchQuery ? 'inline-flex' : 'none';
+        clearTimeout(wisdomSearchTimer);
+        wisdomSearchResults = [];
+        renderAutocomplete();
+        render();
+        syncUrlState('replace');
+        if (searchQuery) {
+          wisdomSearchTimer = setTimeout(function() {
+            searchWisdomForHero(searchQuery);
+          }, 250);
+        } else {
+          wisdomSearchSequence += 1;
+        }
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter') return;
+        const first = menu.querySelector('[data-url], [data-fresh-ticker]');
+        if (first && first.hasAttribute('data-url')) {
+          window.location.href = first.getAttribute('data-url');
+        } else if (first && first.hasAttribute('data-fresh-ticker')) {
+          e.preventDefault();
+          const company = {
+            companyName: first.getAttribute('data-fresh-name'),
+            ticker: first.getAttribute('data-fresh-ticker'),
+            industry: first.getAttribute('data-fresh-industry') || '',
+          };
+          if (freshCompanyPicker) freshCompanyPicker.select(company);
+          openFreshOrder();
+        } else if (searchQuery) {
+          e.preventDefault();
+          openFreshOrder(searchQuery);
+        }
+      });
+      clear.addEventListener('click', function() {
+        input.value = '';
+        searchQuery = '';
+        wisdomSearchResults = [];
+        wisdomSearchSequence += 1;
+        clearTimeout(wisdomSearchTimer);
+        currentPage = 1;
+        clear.style.display = 'none';
+        menu.classList.remove('open');
+        render();
+        syncUrlState('push');
+        input.focus();
+      });
+      menu.addEventListener('pointerdown', function(e) {
+        const item = e.target.closest('[data-url], [data-fresh-ticker]');
+        if (!item) return;
+        e.preventDefault();
+        if (item.hasAttribute('data-url')) {
+          window.location.href = item.getAttribute('data-url');
+          return;
+        }
+        const company = {
+          companyName: item.getAttribute('data-fresh-name'),
+          ticker: item.getAttribute('data-fresh-ticker'),
+          industry: item.getAttribute('data-fresh-industry') || '',
+        };
+        if (freshCompanyPicker) freshCompanyPicker.select(company);
+        openFreshOrder();
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.reports-hero-search')) menu.classList.remove('open');
+      });
+    }
+    function setSelectValue(type, value, label) {
+      const root = document.querySelector('[data-select="' + type + '"]');
+      if (!root) return;
+      root.querySelectorAll('.catalog-select-option').forEach(function(option) {
+        option.classList.toggle('active', option.getAttribute('data-value') === value);
+      });
+      const labelEl = document.getElementById(type === 'access' ? 'filterAccessLabel' : type === 'market' ? 'filterMarketLabel' : type === 'sector' ? 'filterSectorLabel' : 'sortLabel');
+      if (labelEl) labelEl.textContent = label;
+    }
+    function closeSelects(except) {
+      document.querySelectorAll('.catalog-select').forEach(function(select) {
+        if (except && select === except) return;
+        select.classList.remove('open');
+        const button = select.querySelector('.catalog-select-button');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
+    }
+    function bindControls() {
+      document.querySelectorAll('.catalog-select-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const select = button.closest('.catalog-select');
+          const willOpen = !select.classList.contains('open');
+          closeSelects(select);
+          select.classList.toggle('open', willOpen);
+          button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        });
+      });
+      document.querySelectorAll('.catalog-select-menu').forEach(function(menu) {
+        menu.addEventListener('click', function(e) {
+          const option = e.target.closest('.catalog-select-option');
+          if (!option) return;
+          const select = option.closest('.catalog-select');
+          const type = select.getAttribute('data-select');
+          const value = option.getAttribute('data-value') || '';
+          const label = option.textContent.trim();
+          if (type === 'access') filterAccess = value;
+          if (type === 'market') filterMarket = value;
+          if (type === 'sector') filterSector = value;
+          if (type === 'sort') sortMode = value || 'newest';
+          currentPage = 1;
+          setSelectValue(type, value, label);
+          closeSelects();
+          render();
+          syncUrlState('push');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.catalog-select')) closeSelects();
+      });
+      document.getElementById('catalogPrevious').addEventListener('click', function() {
+        if (currentPage <= 1) return;
+        currentPage -= 1;
+        render();
+        syncUrlState('push');
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      document.getElementById('catalogNext').addEventListener('click', function() {
+        if (currentPage >= totalPages()) return;
+        currentPage += 1;
+        render();
+        syncUrlState('push');
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      document.getElementById('catalogEmptyAction').addEventListener('click', function(e) {
+        e.preventDefault();
+        openFreshOrder(searchQuery);
+      });
+      document.getElementById('freshOrderFormMain').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const selectedCompany = freshCompanyPicker && freshCompanyPicker.getSelected();
+        const email = document.getElementById('freshEmail').value.trim();
+        const purpose = document.getElementById('freshPurpose').value;
+        const submit = document.getElementById('freshOrderSubmit');
+        const status = document.getElementById('freshOrderStatus');
+        status.textContent = '';
+        status.classList.remove('is-error');
 
-  // ── Main fresh order form (cant-find section) ─────────────────────────────
-  document.getElementById('freshOrderFormMain')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const company = document.getElementById('freshCompany')?.value.trim();
-    const email = document.getElementById('freshEmail')?.value.trim();
-    if (!company || !email || !email.includes('@')) { showToast('Please fill in company name and email.'); return; }
-    handleFreshOrderSubmit(
-      company,
-      document.getElementById('freshTicker')?.value.trim(),
-      email,
-      'main_form',
-      {
-        purpose: document.getElementById('freshPurpose')?.value,
+        if (!selectedCompany) {
+          status.textContent = 'Select a company from the Wisdom search results.';
+          status.classList.add('is-error');
+          document.getElementById('freshCompany').focus();
+          return;
+        }
+        if (!email || !email.includes('@')) {
+          status.textContent = 'Enter a valid email address.';
+          status.classList.add('is-error');
+          document.getElementById('freshEmail').focus();
+          return;
+        }
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'fresh_report_order_started', {
+            company: selectedCompany.companyName,
+            ticker: selectedCompany.ticker,
+            source: 'wisdom_picker',
+          });
+        }
+        const started = await generateNewReport(selectedCompany.companyName, selectedCompany.ticker, submit, {
+          email: email,
+          purpose: purpose,
+          source: 'wisdom_picker',
+        });
+        if (started === false) {
+          status.textContent = 'Checkout could not be started. Please try again.';
+          status.classList.add('is-error');
+        }
+      });
+      document.getElementById('coverageRequestForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const submit = document.getElementById('coverageSubmit');
+        const status = document.getElementById('coverageFormStatus');
+        const company = document.getElementById('coverageCompany').value.trim();
+        const ticker = document.getElementById('coverageTicker').value.trim();
+        const email = document.getElementById('coverageEmail').value.trim();
+        const notes = document.getElementById('coverageNotes').value.trim();
+        if (!company || !email) { showToast('Please fill in company name and email.'); return; }
+        submit.disabled = true;
+        submit.textContent = 'Sending...';
+        status.textContent = '';
+        try {
+          const response = await fetch('/api/request-coverage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              company: company,
+              ticker: ticker,
+              email: email,
+              notes: notes,
+              website: document.getElementById('coverageWebsite').value,
+              source: new URLSearchParams(window.location.search).get('source') || 'reports',
+              pageUrl: window.location.href,
+            }),
+          });
+          const data = await response.json().catch(function() { return {}; });
+          if (!response.ok) throw new Error(data.error || 'Request could not be sent');
+          status.textContent = 'Thank you. Your coverage request has been sent to Valuatum.';
+          status.classList.remove('is-error');
+          status.classList.add('is-success');
+          if (typeof gtag === 'function') gtag('event', 'coverage_request_submitted', { company: company, ticker: ticker || undefined, source: 'reports' });
+          form.reset();
+        } catch (error) {
+          status.textContent = 'The request could not be sent. Please email contact26@valuatum.com.';
+          status.classList.remove('is-success');
+          status.classList.add('is-error');
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Send coverage request';
+        }
+      });
+    }
+    function restoreUrlState() {
+      isRestoringUrlState = true;
+      const params = new URLSearchParams(window.location.search);
+      searchQuery = (params.get('search') || '').trim();
+      filterAccess = ['free', 'paid'].includes(params.get('access')) ? params.get('access') : '';
+      filterMarket = params.get('market') || '';
+      filterSector = params.get('sector') || '';
+      sortMode = ['newest', 'company', 'market'].includes(params.get('sort')) ? params.get('sort') : 'newest';
+      currentPage = Math.max(1, Number.parseInt(params.get('page') || '1', 10) || 1);
+      if (window.location.hash === '#free' && !filterAccess) filterAccess = 'free';
+      const input = document.getElementById('rpSearchInput');
+      input.value = searchQuery;
+      document.getElementById('rpSearchClear').style.display = searchQuery ? 'inline-flex' : 'none';
+      setSelectValue('access', filterAccess, filterAccess === 'free' ? 'Free reports' : filterAccess === 'paid' ? 'Paid reports' : 'All reports');
+      setSelectValue('market', filterMarket, filterMarket || 'All markets');
+      setSelectValue('sector', filterSector, filterSector || 'All sectors');
+      setSelectValue('sort', sortMode, sortMode === 'company' ? 'Company name' : sortMode === 'market' ? 'Market' : 'Newest first');
+      isRestoringUrlState = false;
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      freshCompanyPicker = createFreshCompanyPicker();
+      // Read the URL state up front so the search box and the fresh-report
+      // picker are correct immediately; loadCatalog() re-applies it once the
+      // market/sector menus exist.
+      restoreUrlState();
+      const initialSearch = searchQuery;
+      const initialFreshTicker = new URLSearchParams(window.location.search).get('freshTicker') || '';
+      if (initialSearch) {
+        const coverageCompany = document.getElementById('coverageCompany');
+        if (coverageCompany && window.location.hash === '#coverage-request') coverageCompany.value = initialSearch;
+        if (window.location.hash === '#order-fresh' && freshCompanyPicker) freshCompanyPicker.search(initialSearch, initialFreshTicker);
       }
-    );
-  });
-
-  // ── Modal close handlers ──────────────────────────────────────────────────
-  document.getElementById('purchaseModalClose')?.addEventListener('click', closePurchaseModal);
-  document.getElementById('freshModalClose')?.addEventListener('click', closeFreshModal);
-  document.getElementById('purchaseModal')?.addEventListener('click', e => {
-    if (e.target === e.currentTarget) closePurchaseModal();
-  });
-  document.getElementById('freshModal')?.addEventListener('click', e => {
-    if (e.target === e.currentTarget) closeFreshModal();
-  });
-
-  // ── Keyboard: Escape closes modals ────────────────────────────────────────
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closePurchaseModal();
-      closeFreshModal();
-    }
-  });
-
-  // ── Search ────────────────────────────────────────────────────────────────
-  document.getElementById('rpSearchInput')?.addEventListener('input', e => {
-    searchQuery = e.target.value.trim();
-    const clearBtn = document.getElementById('rpSearchClear');
-    if (clearBtn) clearBtn.style.display = searchQuery ? '' : 'none';
-    if (searchQuery) trackEvent('report_search', { query: searchQuery });
-    renderCatalog();
-  });
-
-  document.getElementById('rpSearchClear')?.addEventListener('click', () => {
-    document.getElementById('rpSearchInput').value = '';
-    searchQuery = '';
-    document.getElementById('rpSearchClear').style.display = 'none';
-    renderCatalog();
-  });
-
-  // ── Filters ───────────────────────────────────────────────────────────────
-  document.getElementById('filterMarket')?.addEventListener('change', e => {
-    filterMarket = e.target.value;
-    trackEvent('report_filter_used', { filter: 'market', value: filterMarket });
-    renderCatalog();
-  });
-  document.getElementById('filterSector')?.addEventListener('change', e => {
-    filterSector = e.target.value;
-    trackEvent('report_filter_used', { filter: 'sector', value: filterSector });
-    renderCatalog();
-  });
-  document.getElementById('sortSelect')?.addEventListener('change', e => {
-    sortMode = e.target.value;
-    renderCatalog();
-  });
-
-  // ── Tab buttons ───────────────────────────────────────────────────────────
-  document.querySelectorAll('.catalog-tab').forEach(btn => {
-    btn.addEventListener('click', () => setTab(btn.dataset.tab));
-  });
-
-  // ── Init ──────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', async () => {
-    await loadDynamicReports();
-    populateCatalogFilters();
-
-    const params = new URLSearchParams(window.location.search);
-    const initialSearch = params.get('search')?.trim();
-    if (initialSearch) {
-      searchQuery = initialSearch;
-      const searchInput = document.getElementById('rpSearchInput');
-      const clearBtn = document.getElementById('rpSearchClear');
-      if (searchInput) searchInput.value = initialSearch;
-      if (clearBtn) clearBtn.style.display = '';
-    }
-
-    updateTabCounts();
-    renderCatalog();
-
-    // Hash-based tab activation
-    if (window.location.hash === '#free') setTab('free');
-    if (window.location.hash === '#order-fresh-tab') setTab('fresh');
-  });
-
+      bindSearch();
+      if (initialSearch) searchWisdomForHero(initialSearch);
+      bindControls();
+      loadCatalog();
+      window.addEventListener('popstate', function() {
+        restoreUrlState();
+        render();
+      });
+      if (window.location.hash === '#coverage-request') {
+        setTimeout(function() {
+          const target = document.getElementById('coverage-request');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+      if (window.location.hash === '#order-fresh') {
+        setTimeout(function() {
+          const target = document.getElementById('order-fresh');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+      if (window.SITE_PUBLIC_PRICING_PROMISE) {
+        window.SITE_PUBLIC_PRICING_PROMISE.then(function(pricing) {
+          if (!pricing || !pricing.ready) return;
+          readyPriceLabel = pricing.ready.shortLabel || pricing.ready.label || readyPriceLabel;
+          if (pricing.fresh) {
+            const freshLabel = pricing.fresh.shortLabel || pricing.fresh.label || '€50';
+            document.getElementById('freshOrderPrice').textContent = freshLabel;
+            document.getElementById('freshOrderButtonPrice').textContent = freshLabel;
+          }
+          render();
+          if (window.applyStripeBackedPricing) window.applyStripeBackedPricing(pricing);
+        });
+      }
+    });
+  })();
   </script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "ticker": "GIGA.OL",
+  "companyName": "Gigante Salmon AS",
+  "profile": "Gigante Salmon AS is a Norwegian land-based salmon farming company that develops and operates a flow-through aquaculture facility on Lille Indre Rosøy in Rødøy. The company produces salmon for harvest and is ramping toward full production capacity. In 2025, it moved from a development project to an operating producer.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:28:26.214Z"
+}

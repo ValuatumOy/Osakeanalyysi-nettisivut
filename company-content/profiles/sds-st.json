@@ -1,0 +1,9 @@
+{
+  "ticker": "SDS.ST",
+  "companyName": "Seamless Distribution Systems AB (publ)",
+  "profile": "Seamless Distribution Systems AB develops software for telecom operators and mobile financial services providers. Its platforms support distribution management, channel management, omnichannel retailing, and transaction processing, helping customers manage sales networks and digital services in emerging markets. The company also uses data and automation capabilities to improve operational efficiency and decision making.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:25.207Z"
+}

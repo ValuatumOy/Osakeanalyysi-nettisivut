@@ -1,0 +1,9 @@
+{
+  "ticker": "YOYO.CO",
+  "companyName": "OrderYOYO A/S",
+  "profile": "OrderYOYO provides software and marketing tools for independent takeaway restaurants and small food operators. Its platform helps customers build branded websites and mobile apps, manage online ordering and payments, run digital marketing, and use data and reporting tools to support direct sales and customer retention across European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:18:52.236Z"
+}

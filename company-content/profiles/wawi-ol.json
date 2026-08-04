@@ -1,0 +1,9 @@
+{
+  "ticker": "WAWI.OL",
+  "companyName": "Wallenius Wilhelmsen ASA",
+  "profile": "Wallenius Wilhelmsen ASA is a global provider of integrated vehicle transportation and logistics. The company operates ocean and inland transport, terminal and processing services, freight forwarding, and supply chain management for cars, trucks, rolling equipment, and breakbulk cargo. Its business is built on a large RoRo fleet, port network, and end-to-end logistics capabilities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:40:54.526Z"
+}

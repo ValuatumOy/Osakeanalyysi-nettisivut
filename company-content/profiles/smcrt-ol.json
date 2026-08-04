@@ -1,0 +1,9 @@
+{
+  "ticker": "SMCRT.OL",
+  "companyName": "SmartCraft ASA",
+  "profile": "SmartCraft ASA is a Nordic software company that provides mission-critical SaaS solutions for craftsmen and small and mid-sized construction businesses. Its products support quoting, planning, project management, documentation, compliance and invoicing, helping customers improve productivity, control and profitability across field and office workflows in Norway, Sweden, Finland and the UK.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:23:11.465Z"
+}

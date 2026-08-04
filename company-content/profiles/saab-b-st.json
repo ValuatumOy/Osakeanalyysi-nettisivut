@@ -1,0 +1,9 @@
+{
+  "ticker": "SAAB-B.ST",
+  "companyName": "Saab AB (publ)",
+  "profile": "Saab AB is a Swedish defense and security company that develops, manufactures, and maintains advanced systems and solutions for military defense and civil security. Its portfolio includes aeronautics, weapons, command and control, sensors, underwater systems, and related support services. The company serves government and commercial customers in multiple markets worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:46:48.839Z"
+}

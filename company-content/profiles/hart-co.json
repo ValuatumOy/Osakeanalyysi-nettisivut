@@ -1,0 +1,9 @@
+{
+  "ticker": "HART.CO",
+  "companyName": "Brødrene Hartmann A/S",
+  "profile": "Brødrene Hartmann A/S manufactures moulded fibre packaging, mainly egg cartons and egg trays, and also supplies fruit packaging and related technology services. The company uses recycled paper to produce recyclable, biodegradable packaging for food producers, packers and retailers, while its Hartmann Technology business provides machinery and know-how for moulded fibre production.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:04:24.958Z"
+}

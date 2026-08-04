@@ -1,0 +1,9 @@
+{
+  "ticker": "SENZA.ST",
+  "companyName": "SenzaGen AB",
+  "profile": "SenzaGen AB provides in vitro toxicity testing and advisory services focused on non-animal chemical safety assessment. Its GARD platform uses genomics and machine learning to test skin and respiratory sensitization, including quantitative potency assessment and methods for medical device materials. The company also offers biological evaluation and biocompatibility services through GLP-certified laboratories.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:58:09.443Z"
+}

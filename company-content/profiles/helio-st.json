@@ -1,0 +1,9 @@
+{
+  "ticker": "HELIO.ST",
+  "companyName": "Heliospectra AB (publ)",
+  "profile": "Heliospectra AB develops intelligent LED lighting systems, control software and related services for greenhouse, indoor farming and plant research applications. Its products are used to manage light intensity and spectrum, helping growers and researchers support crop growth, consistency and energy efficiency. The company also offers technical support and customized lighting strategies.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:14:54.550Z"
+}

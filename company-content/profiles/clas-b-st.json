@@ -1,0 +1,9 @@
+{
+  "ticker": "CLAS-B.ST",
+  "companyName": "Clas Ohlson AB (publ)",
+  "profile": "Clas Ohlson is a Nordic specialty retailer that sells practical products, spare parts and related services for home fixing and everyday tasks. Its assortment includes tools, hardware, electrical items and accessories, supported by stores and e-commerce in Sweden, Norway and Finland. The company also emphasizes solutions that help customers repair, maintain and extend product life.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:17:40.441Z"
+}

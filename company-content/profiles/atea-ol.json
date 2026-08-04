@@ -1,0 +1,9 @@
+{
+  "ticker": "ATEA.OL",
+  "companyName": "Atea ASA",
+  "profile": "Atea ASA is a Nordic and Baltic information technology services company that supplies IT infrastructure products and related services to businesses and public-sector organizations. Its offering spans hardware, software, procurement, implementation, operations, and lifecycle management of IT assets, supported by local delivery across its regional markets and vendor partnerships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:03:42.568Z"
+}

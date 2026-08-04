@@ -1,0 +1,9 @@
+{
+  "ticker": "NORCO.OL",
+  "companyName": "Norconsult ASA",
+  "profile": "Norconsult ASA is a Nordic consulting engineering and architecture company that provides multidisciplinary advisory services across infrastructure, buildings, energy, industry, transport, water, environment and project management. It supports clients from concept development and planning through engineering design, construction follow-up and operations, and also offers digital solutions through its Norconsult Digital subsidiary.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:36:10.075Z"
+}

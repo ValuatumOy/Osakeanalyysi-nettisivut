@@ -1,0 +1,9 @@
+{
+  "ticker": "SIM.CO",
+  "companyName": "SimCorp A/S",
+  "profile": "SimCorp develops integrated investment management software for asset managers, pension funds, insurers, sovereign wealth funds, and other buy-side firms. Its platform supports portfolio construction, trading, risk analytics, operations, accounting, and client reporting across public and private assets. The company also provides managed services and cloud or on-premise deployment options.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:57:37.415Z"
+}

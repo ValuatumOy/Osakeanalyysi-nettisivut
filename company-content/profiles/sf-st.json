@@ -1,0 +1,9 @@
+{
+  "ticker": "SF.ST",
+  "companyName": "Stillfront Group AB (publ)",
+  "profile": "Stillfront Group is a global games company that develops and operates digital free-to-play games for mobile and other platforms. Its portfolio includes established franchises and niche titles across strategy, simulation, RPG, action and casual genres. The company generates revenue mainly through in-app purchases, advertising and related game services, supported by studios and central platform functions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:44.987Z"
+}

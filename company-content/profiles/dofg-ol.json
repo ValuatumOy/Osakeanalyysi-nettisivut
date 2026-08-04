@@ -1,0 +1,9 @@
+{
+  "ticker": "DOFG.OL",
+  "companyName": "DOF Group ASA",
+  "profile": "DOF Group ASA provides offshore and subsea services to the energy industry, combining ownership and operation of purpose-built vessels with project management, engineering, survey, remote intervention and diving capabilities. It also supports offshore wind and other marine operations, with activities centered on integrated offshore execution and fleet-based service delivery.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:02:19.732Z"
+}

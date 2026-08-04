@@ -1,0 +1,9 @@
+{
+  "ticker": "ANNX.ST",
+  "companyName": "Annexin Pharmaceuticals AB (publ)",
+  "profile": "Annexin Pharmaceuticals AB (publ) is a clinical-stage biotechnology company focused on developing ANXV, a recombinant form of human Annexin A5. The company is advancing the program for diseases associated with vascular damage and inflammation, with current clinical work in ophthalmology and oncology. Its value drivers include product development, patent protection, and potential future licensing or commercialization.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:06:34.829Z"
+}

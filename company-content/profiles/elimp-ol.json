@@ -1,0 +1,9 @@
+{
+  "ticker": "ELIMP.OL",
+  "companyName": "Elektroimportøren AS",
+  "profile": "Elektroimportøren AS is a Norwegian specialty retailer and wholesaler of electrical equipment for private and professional customers. The company sells electrical installation materials, lighting, heating, ventilation and related products through physical stores, pick-up locations and online channels in Norway and Sweden. It also offers SpotOn, a digital service connecting customers with installers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:11:13.121Z"
+}

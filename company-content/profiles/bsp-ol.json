@@ -1,0 +1,9 @@
+{
+  "ticker": "BSP.OL",
+  "companyName": "Black Sea Property AS",
+  "profile": "Black Sea Property AS is a Norwegian property company focused on development and ownership interests in Aheloy Beach Resort on Bulgaria’s Black Sea coast. The project is planned as a large holiday resort with apartments and commercial areas, while completed phases are already operating as Midia Grand Resort. The company’s value drivers are project completion, sales, and hotel operations.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:38:24.205Z"
+}

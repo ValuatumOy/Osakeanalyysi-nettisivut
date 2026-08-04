@@ -1,0 +1,9 @@
+{
+  "ticker": "GREEN.ST",
+  "companyName": "Green Landscaping Group AB (publ)",
+  "profile": "Green Landscaping Group is a Nordic and German provider of outdoor environment services, including ground maintenance, green space management, landscaping, park and facility care, and related infrastructure services. The group operates through a decentralized network of local companies and also provides services such as snow and ice control, aiming to maintain safe and functional public and private environments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:10:40.695Z"
+}

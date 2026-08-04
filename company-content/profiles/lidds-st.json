@@ -1,0 +1,9 @@
+{
+  "ticker": "LIDDS.ST",
+  "companyName": "LIDDS AB (publ)",
+  "profile": "LIDDS AB (publ) is a Swedish biotechnology company focused on drug delivery and oncology. It develops NanoZolid, a proprietary platform for local, controlled release of medicines, and uses it in its own cancer pipeline and partner programs. The company also develops the NOV202 drug candidate and works with pharmaceutical partners on selected projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:37:46.801Z"
+}

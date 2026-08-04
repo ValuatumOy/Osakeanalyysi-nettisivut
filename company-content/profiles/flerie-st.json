@@ -1,0 +1,9 @@
+{
+  "ticker": "FLERIE.ST",
+  "companyName": "Flerie AB (publ)",
+  "profile": "Flerie is a long-term life science investor focused on biotechnology and pharmaceutical companies. It invests globally in private businesses, with positions in product development and commercial growth, and also makes selective investments in public companies and funds. The company aims to support portfolio development through active ownership, network access, and operational resources.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:00:17.298Z"
+}

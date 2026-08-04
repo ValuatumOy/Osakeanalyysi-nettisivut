@@ -1,0 +1,9 @@
+{
+  "ticker": "WRT1V.HE",
+  "companyName": "Wärtsilä Oyj Abp",
+  "profile": "Wärtsilä is a Finnish industrial technology company serving marine and energy markets. It provides engines, propulsion systems, power plants, energy storage, lifecycle services and digital solutions for shipping companies, vessel owners, utilities and industrial customers. The company focuses on efficiency, fuel flexibility, decarbonisation and installed-base service revenue.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-15T09:40:00.000Z"
+}

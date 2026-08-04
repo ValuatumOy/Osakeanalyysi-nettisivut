@@ -1,0 +1,9 @@
+{
+  "ticker": "SAGCV.HE",
+  "companyName": "Saga Furs Oyj",
+  "profile": "Saga Furs Oyj is a Finnish fur auction house that markets mink, fox and Finnraccoon pelts through international auctions. It operates between fur breeders and suppliers on one side and clothing manufacturers and fashion houses on the other, and also provides product development, traceability and sustainability-related services across its value chain.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:17:44.139Z"
+}

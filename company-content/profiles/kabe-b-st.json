@@ -1,0 +1,9 @@
+{
+  "ticker": "KABE-B.ST",
+  "companyName": "KABE Group AB (publ.)",
+  "profile": "KABE Group AB is a Scandinavian leisure vehicle group focused on manufacturing and selling caravans and motorhomes, together with camping accessories. Its portfolio includes the KABE, Adria, Affinity and Coachman brands, as well as KAMA Fritid, the group’s accessory wholesale business. The company serves customers across several European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:30:49.376Z"
+}

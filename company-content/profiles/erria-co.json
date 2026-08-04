@@ -1,0 +1,9 @@
+{
+  "ticker": "ERRIA.CO",
+  "companyName": "Erria A/S",
+  "profile": "Erria A/S is a Denmark-listed maritime services group focused on shipping, offshore operations and logistics. It provides ship management, marine warranty surveying and offshore personnel services, and also operates container depot handling and repair in Vietnam. Through subsidiaries, it services lifesaving and firefighting equipment and manufactures security seals for cargo transport.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:02:57.279Z"
+}

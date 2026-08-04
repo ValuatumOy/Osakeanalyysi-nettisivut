@@ -1,0 +1,9 @@
+{
+  "ticker": "FLEXQ.ST",
+  "companyName": "FlexQube AB (publ)",
+  "profile": "FlexQube AB develops and sells modular material handling solutions for industrial customers, including cart systems, AGVs and AMRs. Its patented concept uses standardized components to create customizable, reconfigurable products for logistics in manufacturing, warehousing and distribution. The company also provides robotic and mechanical trolley-based solutions and related design expertise.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:00:34.705Z"
+}

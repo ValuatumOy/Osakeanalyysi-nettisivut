@@ -1,0 +1,9 @@
+{
+  "ticker": "GPXMED.ST",
+  "companyName": "GPX Medical AB (publ)",
+  "profile": "GPX Medical AB develops and commercializes NEOLA, a medical device for continuous lung monitoring of preterm infants in neonatal intensive care. The company’s business is built around improving respiratory monitoring through its patented technology, with revenue potential tied to product sales, clinical adoption, and related commercialization efforts in neonatal care markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:10:07.939Z"
+}

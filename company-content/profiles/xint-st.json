@@ -1,0 +1,9 @@
+{
+  "ticker": "XINT.ST",
+  "companyName": "Xintela AB (publ)",
+  "profile": "Xintela AB is a clinical-stage biopharma company developing stem cell therapies and targeted cancer therapies based on its integrin alpha10beta1 platform. Its main programs include the XSTEM stem cell product for osteoarthritis and difficult-to-heal wounds, manufacturing and process development through its GMP facility, and antibody-based oncology candidates under its Targinta subsidiary.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:12:25.622Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "NTEK-B.ST",
+  "companyName": "Novotek AB",
+  "profile": "Novotek AB is an industrial IT and automation company that provides software, consulting and system integration services for manufacturing and process industries. Its offerings help customers connect, structure, store, visualize and optimize production data and operations. The group works with standard products and components and operates across the Nordic region, Benelux, Switzerland and the UK and Ireland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:10:40.343Z"
+}

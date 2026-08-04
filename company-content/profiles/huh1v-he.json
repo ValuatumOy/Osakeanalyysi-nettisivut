@@ -1,0 +1,9 @@
+{
+  "ticker": "HUH1V.HE",
+  "companyName": "Huhtamaki",
+  "profile": "Huhtamaki is a global packaging company that develops and manufactures food packaging solutions for the food-on-the-go and food-on-the-shelf markets. Its portfolio includes paperboard, molded fiber and flexible packaging, as well as cups, trays, cartons, containers and tableware. The business serves foodservice operators, retailers and consumer goods customers across multiple regions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:53:31.866Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PEAB-B.ST",
+  "companyName": "Peab AB (publ)",
+  "profile": "Peab AB is a Nordic construction and civil engineering company with operations organized across construction, civil engineering, industry and project development. It builds and maintains housing, commercial buildings and infrastructure, and supplies materials and services including aggregates, concrete, paving, prefabricated elements, crane and machine rental, and related project support. The group emphasizes local execution supported by central resources.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:26.737Z"
+}

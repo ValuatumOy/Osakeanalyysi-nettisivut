@@ -1,0 +1,9 @@
+{
+  "ticker": "EFUEL.OL",
+  "companyName": "Everfuel A/S",
+  "profile": "Everfuel A/S develops, owns, and operates infrastructure for green hydrogen production and supply. The company uses renewable electricity and electrolysis to produce hydrogen, then delivers it through trailers and refuelling solutions to bus and truck fleets, industrial customers, and mobility users. Its activities also include hydrogen storage, distribution, and related project development.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:04:14.964Z"
+}

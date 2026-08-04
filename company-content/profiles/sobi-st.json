@@ -1,0 +1,9 @@
+{
+  "ticker": "SOBI.ST",
+  "companyName": "Swedish Orphan Biovitrum AB (publ)",
+  "profile": "Swedish Orphan Biovitrum is a global biopharmaceutical company focused on rare diseases. It develops and commercialises medicines across haematology, immunology and specialty care, with products and programmes for conditions including haemophilia, immune thrombocytopenia, PNH and several rare genetic disorders. The company also emphasises expanding access to approved therapies in international markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:02:48.829Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ULTI.OL",
+  "companyName": "Ultimovacs ASA",
+  "profile": "Ultimovacs ASA is a Norwegian biotechnology company that originally developed cancer immunotherapies, including the UV1 therapeutic vaccine platform. In March 2025 it completed a business combination with Zelluna Immunotherapy AS and changed its name to Zelluna ASA, shifting the group toward off-the-shelf TCR-NK cell therapies for solid tumours and related oncology development activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:37:01.004Z"
+}

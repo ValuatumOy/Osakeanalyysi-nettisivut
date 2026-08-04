@@ -1,0 +1,9 @@
+{
+  "ticker": "ACE.ST",
+  "companyName": "Ascelia Pharma AB (publ)",
+  "profile": "Ascelia Pharma AB is a Swedish biotechnology company focused on orphan oncology treatments. It develops and commercializes drug candidates including Orviglance, an oral MRI contrast agent for detecting focal liver lesions in patients with impaired kidney function, and Oncoral, an oral irinotecan tablet in development for gastric cancer. The company is headquartered in Malmö and listed on Nasdaq Stockholm.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:27:28.110Z"
+}

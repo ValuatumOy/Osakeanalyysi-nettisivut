@@ -6,7 +6,7 @@ AI-generated company profile is cached in `company-content/profiles/`.
 
 ## Requirements
 
-- Node.js 18 or newer
+- Node.js 20 or newer
 - A Wisdom bearer token with `Controller.Company` and `Controller.ModelData` rights
 - An authenticated Codex CLI when profiles are not already cached
 
@@ -52,6 +52,11 @@ npm run generate:companies -- --skip-ai FORTUM
 Generated pages are written to `reports/{company}-equity-report.html`. The
 financial figures always come from relative position `Y-1` with history enabled
 and estimates disabled.
+
+After a successful run, the generator also adds or updates each page in
+`js/companyPagesData.js` and `sitemap.xml`. This keeps the homepage and Reports
+searches, internal discovery and search-engine discovery in sync with the
+generated HTML pages. Use `--skip-discovery` only for isolated previews or tests.
 
 ## Selection rules
 

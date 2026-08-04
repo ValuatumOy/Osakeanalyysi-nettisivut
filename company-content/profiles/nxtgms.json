@@ -1,0 +1,9 @@
+{
+  "ticker": "NXTGMS",
+  "companyName": "Next Games",
+  "profile": "Next Games is a Helsinki-based mobile game developer and publisher now part of Netflix’s games organization. It creates story-driven and live-service mobile games, often built around entertainment franchises, and contributes to Netflix’s growing mobile games portfolio alongside internal studios focused on interactive titles for subscribers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:41:46.709Z"
+}

@@ -10,8 +10,9 @@
       "sector": "Consumer Discretionary",
       "reportDate": "2026-06-01",
       "forceVisible": true,
-      "forceFree": true,
-      "description": "AI equity report mapping Tesla's value pools across automotive, energy storage, FSD software, and Robotaxi option - with reverse valuation and risk analysis.",
+      "price": 20,
+      "priceLabel": "Ready report",
+      "description": "AI equity report mapping Tesla's value drivers across automotive, energy storage, FSD software, and Robotaxi option - with reverse valuation and risk analysis.",
       "tags": ["AI Equity Report", "Reverse Valuation", "Value Pools", "PDF"]
     },
     {
@@ -24,9 +25,24 @@
       "sector": "Materials",
       "reportDate": "2026-06-01",
       "forceVisible": true,
-      "forceFree": true,
+      "hidden": true,
       "description": "AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, and reverse valuation case.",
       "tags": ["AI Equity Report", "Nordic", "Materials", "PDF"]
+    },
+    {
+      "id": "storaenso-03072026",
+      "fileName": "StoraEnso_03072026.pdf",
+      "companyName": "Stora Enso Oyj",
+      "ticker": "STERV.HE",
+      "exchange": "Helsinki",
+      "country": "FI",
+      "sector": "Materials",
+      "reportDate": "2026-07-03",
+      "forceVisible": true,
+      "price": 20,
+      "priceLabel": "Ready report",
+      "description": "Ready AI equity report on Stora Enso's renewable materials transformation, segment value allocation, packaging growth, reverse valuation, risks and catalysts.",
+      "tags": ["AI Equity Report", "Ready Report", "Nordic", "Materials", "PDF"]
     },
     {
       "id": "oriola-01062026",
@@ -38,6 +54,8 @@
       "sector": "Health Care",
       "reportDate": "2026-06-01",
       "forceVisible": true,
+      "price": 20,
+      "priceLabel": "Ready report",
       "description": "AI equity report on Oriola's pharmaceutical distribution business, margin recovery trajectory, Nordic healthcare market dynamics, and valuation case.",
       "tags": ["AI Equity Report", "Reverse Valuation", "Nordic", "PDF"]
     },
@@ -51,6 +69,8 @@
       "sector": "Health Care",
       "reportDate": "2026-06-02",
       "forceVisible": true,
+      "price": 20,
+      "priceLabel": "Ready report",
       "description": "AI equity report on Recursion's AI drug discovery platform, pipeline optionality, path to commercial milestones, and reverse valuation.",
       "tags": ["AI Equity Report", "Biotech", "AI Drug Discovery", "PDF"]
     }

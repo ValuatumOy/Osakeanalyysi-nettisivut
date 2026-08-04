@@ -1,0 +1,9 @@
+{
+  "ticker": "BRE2.ST",
+  "companyName": "Bredband2 i Skandinavien AB (publ)",
+  "profile": "Bredband2 i Skandinavien AB (publ) provides fiber broadband, telecommunications, and security services to both households and businesses in Sweden. The company also offers related products and services such as routers, television, streaming, mobile telephony, mobile broadband, and network solutions. It operates as one of Sweden’s larger fiber providers and serves a broad customer base.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:42:37.544Z"
+}

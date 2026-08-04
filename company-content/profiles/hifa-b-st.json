@@ -1,0 +1,9 @@
+{
+  "ticker": "HIFA-B.ST",
+  "companyName": "Hifab Group AB (publ.)",
+  "profile": "Hifab Group is a consultancy in real estate and infrastructure that provides independent advice, project management and technical services. Its work covers strategy, change management, digitalization, energy, sustainability and implementation across buildings, facilities and public infrastructure. In 2026, the group agreed to be sold to Vaaka Partners and to operate under a new ownership structure.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:17:17.302Z"
+}

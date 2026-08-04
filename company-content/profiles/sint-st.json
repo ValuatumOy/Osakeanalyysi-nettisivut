@@ -1,0 +1,9 @@
+{
+  "ticker": "SINT.ST",
+  "companyName": "SinterCast AB (publ)",
+  "profile": "SinterCast develops and supplies process control technology, software, hardware and technical support for the high-volume production of compacted graphite iron in foundries. Its systems use thermal analysis and automated feedforward correction to control casting quality, and the company also offers tracking technologies that help foundries monitor ladles, molds, castings and production performance.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:07.331Z"
+}

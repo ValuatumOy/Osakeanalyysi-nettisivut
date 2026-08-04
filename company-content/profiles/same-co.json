@@ -1,0 +1,9 @@
+{
+  "ticker": "SAME.CO",
+  "companyName": "Samesystem A/S",
+  "profile": "Samesystem A/S develops workforce management software for retail and hospitality businesses. Its platform supports scheduling, time registration, attendance tracking, HR administration, and operational reporting, with tools for compliance and planning based on staffing needs. The company serves international customers through cloud-based software and related support services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:45:22.313Z"
+}

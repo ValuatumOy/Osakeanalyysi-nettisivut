@@ -1,0 +1,9 @@
+{
+  "ticker": "SCHO.CO",
+  "companyName": "Aktieselskabet Schouw & Co.",
+  "profile": "Aktieselskabet Schouw & Co. is a Danish industrial conglomerate that makes long-term investments in leading businesses and exercises active ownership. Its portfolio comprises several independent subsidiaries, mainly in B2B manufacturing and trade, with interests across food, marine, industrial technology and other niche industrial segments. The group is also reshaping its portfolio through acquisitions and a potential BioMar listing.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:44:12.313Z"
+}

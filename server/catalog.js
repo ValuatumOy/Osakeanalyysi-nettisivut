@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const READY_REPORT_PRICE = 20;
 
 const DEFAULT_RULES = {
   visibleAfterDays: intEnv('REPORT_VISIBLE_AFTER_DAYS', 5),
@@ -34,8 +35,7 @@ function priceTiersEnv() {
   }
 
   return normalizePriceTiers([
-    { minAgeDays: 5, price: 4.9, label: 'Recent report' },
-    { minAgeDays: 30, price: 1.99, label: 'Archive report' },
+    { minAgeDays: 0, price: 20, label: 'Ready report' },
   ]);
 }
 
@@ -178,9 +178,20 @@ function formatDateLabel(dateValue) {
 function calculatePrice(ageDays, rules = DEFAULT_RULES) {
   const tier = [...rules.priceTiers].reverse().find(item => ageDays >= item.minAgeDays) || rules.priceTiers[0];
   return {
-    price: tier?.price ?? 4.9,
+    price: tier?.price ?? 20,
     priceLabel: tier?.label || null,
   };
+}
+
+function publicationStatus(meta, availableAt, now) {
+  const explicit = String(meta.publicationStatus || meta.lifecycleStatus || '').toLowerCase();
+  if (meta.archived || explicit === 'archived' || explicit === 'archive') return 'archived';
+  if (meta.expired || explicit === 'expired') return 'expired';
+  const expiresAt = parseDate(meta.expiresAt);
+  if (expiresAt && now >= expiresAt) return 'expired';
+  if (meta.hidden || explicit === 'hidden') return 'hidden';
+  if (meta.forceVisible || explicit === 'ready' || now >= availableAt) return 'ready';
+  return 'hidden';
 }
 
 function weekKey(now = new Date()) {
@@ -264,15 +275,21 @@ function selectWeeklyFreeIds(reports, state, rules, now) {
   return selected;
 }
 
+// Storage is injectable so the same catalog logic runs against the local
+// filesystem (the legacy server, tests) and S3 (Lambda, via server/aws/catalog-aws.js):
+// options.scannedFiles replaces the directory scan, options.readSidecar
+// replaces the per-file sidecar read, options.manifest replaces the manifest
+// file read.
 function buildRawReports(options = {}) {
   const now = options.now || new Date();
   const rules = options.rules || DEFAULT_RULES;
   const manifestPath = options.manifestPath || DEFAULT_MANIFEST_PATH;
   const pdfDir = options.pdfDir || DEFAULT_PDF_DIR;
   const pdfBaseUrl = options.pdfBaseUrl || DEFAULT_PDF_BASE_URL;
+  const readSidecar = options.readSidecar || (fileName => readSidecarMeta(pdfDir, fileName));
 
-  const manifest = normalizeManifest(readJson(manifestPath, { reports: [] }));
-  const scanned = scanPdfDir(pdfDir);
+  const manifest = normalizeManifest(options.manifest || readJson(manifestPath, { reports: [] }));
+  const scanned = options.scannedFiles || scanPdfDir(pdfDir);
   const byFileName = new Map(scanned.map(file => [file.fileName, file]));
 
   for (const meta of manifest.reports) {
@@ -286,7 +303,7 @@ function buildRawReports(options = {}) {
   }
 
   return Array.from(byFileName.values()).filter(file => file.size !== null).map(file => {
-    const sidecarMeta = readSidecarMeta(pdfDir, file.fileName);
+    const sidecarMeta = readSidecar(file.fileName) || {};
     const meta = {
       ...(manifest.byFileName.get(file.fileName) || {}),
       ...sidecarMeta,
@@ -299,11 +316,8 @@ function buildRawReports(options = {}) {
       ? (parseDate(meta.availableAt) || availabilityBaseDate)
       : addDays(availabilityBaseDate, rules.visibleAfterDays);
     const forceVisible = Boolean(meta.forceVisible);
-    const availability = meta.hidden
-      ? 'hidden'
-      : forceVisible || now >= availableAt
-        ? 'available'
-        : 'hidden';
+    const publication = publicationStatus(meta, availableAt, now);
+    const availability = publication === 'ready' ? 'available' : publication;
     const ageDays = daysSince(reportDate, now);
     const pricing = meta.price != null
       ? { price: Number(meta.price), priceLabel: meta.priceLabel || null }
@@ -327,6 +341,8 @@ function buildRawReports(options = {}) {
       fileName: file.fileName,
       pdfUrl: meta.pdfUrl || `${pdfBaseUrl.replace(/\/$/, '')}/${encodeURIComponent(file.fileName)}`,
       availability,
+      publicationStatus: publication,
+      expiresAt: meta.expiresAt || null,
       price: pricing.price,
       priceLabel: pricing.priceLabel,
       forceFree: Boolean(meta.forceFree),
@@ -359,8 +375,8 @@ function buildCatalog(options = {}) {
   const rules = options.rules || DEFAULT_RULES;
   const statePath = options.statePath || DEFAULT_STATE_PATH;
   const state = options.state || loadState(statePath);
-  const rawReports = buildRawReports({ ...options, now, rules })
-    .filter(report => report.availability === 'available');
+  const allReports = buildRawReports({ ...options, now, rules });
+  const rawReports = allReports.filter(report => report.publicationStatus === 'ready');
 
   const forcedFreeCount = rawReports.filter(report => report.forceFree).length;
   const rotationRules = {
@@ -373,19 +389,35 @@ function buildCatalog(options = {}) {
     return {
       ...report,
       reportType: isFree ? 'free' : 'existing',
+      accessStatus: isFree ? 'free' : 'paid',
       isFree,
-      price: isFree ? 0 : report.price,
+      price: isFree ? 0 : READY_REPORT_PRICE,
+      priceLabel: isFree ? report.priceLabel : 'Ready report',
       creditCost: isFree ? 0 : 2,
     };
   });
 
   if (options.persistState !== false) saveState(state, statePath);
 
+  const publicReports = reports;
   return {
     generatedAt: now.toISOString(),
     week: weekKey(now),
     rules,
-    reports,
+    reports: options.includeNonPublic
+      ? [
+          ...publicReports,
+          ...allReports
+            .filter(report => report.publicationStatus !== 'ready')
+            .map(report => ({
+              ...report,
+              reportType: null,
+              accessStatus: null,
+              isFree: false,
+              creditCost: null,
+            })),
+        ]
+      : publicReports,
   };
 }
 
@@ -415,11 +447,10 @@ function getReportMapSync(options = {}) {
   ]));
 }
 
-function recordCatalogPurchase(purchase, options = {}) {
-  const statePath = options.statePath || DEFAULT_STATE_PATH;
-  const state = loadState(statePath);
-  const purchasedAt = purchase.purchasedAt || new Date().toISOString();
-  const normalized = {
+// Shared by the fs-backed state (below) and the DynamoDB store
+// (server/aws/catalog-state-store.js): one canonical purchase-row shape.
+function normalizePurchase(purchase) {
+  return {
     type: purchase.type || 'existing',
     reportId: purchase.reportId || '',
     fileName: purchase.fileName || '',
@@ -427,8 +458,14 @@ function recordCatalogPurchase(purchase, options = {}) {
     companyName: purchase.companyName || purchase.reportName || purchase.company || '',
     sessionId: purchase.sessionId || '',
     customerEmail: purchase.customerEmail || purchase.email || '',
-    purchasedAt,
+    purchasedAt: purchase.purchasedAt || new Date().toISOString(),
   };
+}
+
+function recordCatalogPurchase(purchase, options = {}) {
+  const statePath = options.statePath || DEFAULT_STATE_PATH;
+  const state = loadState(statePath);
+  const normalized = normalizePurchase(purchase);
 
   if (normalized.sessionId) {
     state.purchases = state.purchases.filter(item => item.sessionId !== normalized.sessionId);
@@ -453,5 +490,7 @@ module.exports = {
   getReportByIdSync,
   getReportMapSync,
   recordCatalogPurchase,
+  normalizePurchase,
+  publicationStatus,
   weekKey,
 };

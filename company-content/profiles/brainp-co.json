@@ -1,0 +1,9 @@
+{
+  "ticker": "BRAINP.CO",
+  "companyName": "Brain+ A/S",
+  "profile": "Brain+ A/S develops digital healthcare software for dementia care. Its main offering is the Ayla platform and Ayla CST assistant, which deliver cognitive stimulation therapy and related tools for healthcare providers, patients, and carers. The company focuses on software-based treatment and care solutions for cognitive decline, with sales in Denmark and the United Kingdom.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:00:54.508Z"
+}

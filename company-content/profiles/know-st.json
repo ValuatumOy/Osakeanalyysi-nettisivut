@@ -1,0 +1,9 @@
+{
+  "ticker": "KNOW.ST",
+  "companyName": "Knowit AB (publ)",
+  "profile": "Knowit AB is a Nordic IT and management consultancy that helps companies and public-sector organisations with digital transformation. Its services span custom software development, digital customer experiences, cloud and IoT solutions, cybersecurity, data and analytics, and advisory services. The company also offers proprietary digital products and operates mainly in the Nordic region, with additional presence in Germany and Poland.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:35:14.732Z"
+}

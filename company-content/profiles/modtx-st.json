@@ -1,0 +1,9 @@
+{
+  "ticker": "MODTX.ST",
+  "companyName": "Modus Therapeutics Holding AB (publ)",
+  "profile": "Modus Therapeutics Holding AB is a Swedish biotechnology company developing sevuparin, a proprietary polysaccharide candidate, for diseases with severe inflammatory components. Its research focuses on sepsis and septic shock, severe malaria, and anemia linked to chronic inflammation, including kidney disease. The company aims to advance development through clinical data and partnerships.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:02.702Z"
+}

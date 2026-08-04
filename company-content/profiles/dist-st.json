@@ -1,0 +1,9 @@
+{
+  "ticker": "DIST.ST",
+  "companyName": "DistIT AB (publ)",
+  "profile": "DistIT AB is a Nordic distribution group focused on IT accessories, data communications, consumer electronics, networking, audio and video products, and electric vehicle charging. Through its subsidiaries, it serves both consumer and business customers via retailers, e-commerce, installers, telecom operators, discount chains, and specialist stores. Private label products, delivery reliability, and service levels are key value drivers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:37:25.054Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "SOF-B.ST",
+  "companyName": "Softronic AB (publ)",
+  "profile": "Softronic AB provides IT consulting and digital transformation services for Swedish and Nordic customers, with work spanning infrastructure, operations, application management, system development, AI, cybersecurity, cloud transformation, and advisory services. The company also delivers managed and outsourcing solutions, including application and business process services, aimed at improving efficiency, availability, security, and business continuity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:06:11.023Z"
+}

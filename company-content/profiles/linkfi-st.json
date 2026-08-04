@@ -1,0 +1,9 @@
+{
+  "ticker": "LINKFI.ST",
+  "companyName": "Linkfire A/S",
+  "profile": "Linkfire A/S provides a digital marketing platform for the music and audio industry. Its smart-link products route listeners to streaming, podcast, ticketing, and other content destinations, while analytics tools track engagement and attribution. The company serves artists, labels, streaming services, social media platforms, and media publishers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:49:50.705Z"
+}

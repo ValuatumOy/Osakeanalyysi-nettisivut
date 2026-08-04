@@ -1,0 +1,9 @@
+{
+  "ticker": "ICP1V.HE",
+  "companyName": "Incap",
+  "profile": "Incap is a global electronics manufacturing services company that manages customers’ manufacturing needs across the product lifecycle. It provides prototyping, engineering, PCB assembly, box-build assembly, cable and wire harness manufacturing, sourcing and logistics, serving industrial, medical, defence, transportation and other sectors through a network of factories in Europe, Asia and the United States.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:10:11.583Z"
+}

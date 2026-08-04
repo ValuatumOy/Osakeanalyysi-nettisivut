@@ -1,0 +1,9 @@
+{
+  "ticker": "OVZON.ST",
+  "companyName": "Ovzon AB (publ)",
+  "profile": "Ovzon AB provides integrated mobile satellite communications services and satellite solutions to customers globally. Its offerings combine high-throughput satellite capacity, mobile terminals, gateway services, network management, and customer support. The company focuses on mission-critical connectivity for defense, national security, and public safety users, and operates commercial service through its proprietary Ovzon 3 satellite.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:05:21.389Z"
+}

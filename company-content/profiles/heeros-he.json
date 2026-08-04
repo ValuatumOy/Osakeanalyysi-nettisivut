@@ -1,0 +1,9 @@
+{
+  "ticker": "HEEROS.HE",
+  "companyName": "Heeros Oyj",
+  "profile": "Heeros Oyj provides cloud-based financial administration and business software for small and medium-sized companies, including purchase and sales invoice automation, e-invoicing, accounting-related workflows, integrations, and professional services automation. The company also serves payroll and human resources use cases. Heeros is currently being integrated into the Finago brand and product portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:03:19.533Z"
+}

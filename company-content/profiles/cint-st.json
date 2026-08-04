@@ -1,0 +1,9 @@
+{
+  "ticker": "CINT.ST",
+  "companyName": "Cint Group AB (publ)",
+  "profile": "Cint Group AB provides software for digital insights gathering and research measurement. Its platform automates survey-based research, connecting brands, researchers and other users to a global network of suppliers and respondents across more than 130 countries. The company also offers media measurement tools that help advertisers assess campaign effectiveness and brand lift.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:15:39.637Z"
+}

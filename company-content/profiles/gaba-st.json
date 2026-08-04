@@ -1,0 +1,9 @@
+{
+  "ticker": "GABA.ST",
+  "companyName": "Gabather AB (publ)",
+  "profile": "Gabather AB is a clinical-stage pharmaceutical company developing novel drug candidates for central nervous system disorders. Its work centers on GABA_A receptor modulators designed to restore brain balance and improve cognition. The company’s pipeline includes GT-002 and other proprietary compounds, supported by patent-protected research aimed at neuropsychiatric conditions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:05:40.636Z"
+}

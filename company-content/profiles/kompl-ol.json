@@ -1,0 +1,9 @@
+{
+  "ticker": "KOMPL.OL",
+  "companyName": "Komplett ASA",
+  "profile": "Komplett ASA is an online-first retailer of consumer electronics and related products in Scandinavia. The company sells computers, components, gaming products, household electronics and other technology items through its consumer and business channels. It also provides business solutions and wholesale distribution, operating across B2C, B2B and distribution segments and through webshops and retail stores in Sweden.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:02:40.082Z"
+}

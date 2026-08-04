@@ -1,0 +1,9 @@
+{
+  "ticker": "SBO.OL",
+  "companyName": "Selvaag Bolig ASA",
+  "profile": "Selvaag Bolig ASA is a Norwegian residential property developer that acquires and develops housing projects for sale, handling the value chain from land purchase to completed homes and residential areas. Its activities are concentrated in growth areas around major cities in Norway and Sweden, and it also offers standardized housing concepts such as Selvaag Pluss®.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:22:19.968Z"
+}

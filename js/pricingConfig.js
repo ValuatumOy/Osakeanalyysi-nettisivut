@@ -2,7 +2,7 @@
 
 const PRICING_CONFIG = {
   currency: 'EUR',
-  currencySymbol: '€',
+  currencySymbol: '\u20ac',
   launchMode: false,
 
   tiers: [
@@ -15,7 +15,7 @@ const PRICING_CONFIG = {
       description: 'Open full free PDF reports before you buy. No card, no account required.',
       features: [
         'Full PDF report',
-        'Value pool analysis',
+        'Segment value analysis',
         'Reverse valuation',
         'Risk & catalyst analysis',
         'Financial statements',
@@ -35,7 +35,7 @@ const PRICING_CONFIG = {
       description: 'Open full free PDF reports before you buy. No card, no account required.',
       features: [
         'Full PDF report',
-        'Value pool analysis',
+        'Segment value analysis',
         'Reverse valuation',
         'Risk & catalyst analysis',
         'Financial statements',
@@ -49,10 +49,10 @@ const PRICING_CONFIG = {
     {
       id: 'existing-report',
       name: 'Existing Report',
-      price: 4.90,
+      price: 20,
       launchPrice: null,
       period: 'per report',
-      description: 'Recent AI equity reports at a discounted price. Full PDF with all sections.',
+      description: 'Ready AI equity reports. Full PDF with all sections.',
       features: [
         'Full PDF report',
         'Company value map',
@@ -71,10 +71,10 @@ const PRICING_CONFIG = {
     {
       id: 'fresh-report',
       name: 'Fresh Report',
-      price: 9.90,
+      price: 50,
       launchPrice: null,
       period: 'per report',
-      description: 'Order a newly generated report with the latest available financial data.',
+      description: 'Generate a new report with the latest available financial data.',
       features: [
         'Everything in Existing Report',
         'Latest available data',
@@ -82,7 +82,7 @@ const PRICING_CONFIG = {
         'Delivered within 1 business day',
       ],
       notIncluded: [],
-      cta: 'Order fresh report',
+      cta: 'Generate fresh report',
       ctaHref: 'reports.html#order-fresh',
       featured: false,
       badge: 'Fresh',

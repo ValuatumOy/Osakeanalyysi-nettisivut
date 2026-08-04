@@ -1,0 +1,9 @@
+{
+  "ticker": "VOLV-B.ST",
+  "companyName": "AB Volvo (publ)",
+  "profile": "AB Volvo is a global manufacturer of trucks, buses, construction equipment, and marine and industrial power solutions. The group also provides financing and service offerings that support customers’ uptime and productivity. Headquartered in Gothenburg, Sweden, it sells through a portfolio of brands across many markets and serves transport and infrastructure customers worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-18T10:55:51.667Z"
+}

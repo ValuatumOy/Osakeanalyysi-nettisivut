@@ -1,0 +1,9 @@
+{
+  "ticker": "TOBII.ST",
+  "companyName": "Tobii AB (publ)",
+  "profile": "Tobii AB develops and sells eye-tracking hardware, software, and integration technologies that measure gaze and attention for research, gaming, automotive, healthcare, assistive communication, and other device applications. It also provides related SDKs, analytics tools, and services to help customers build, calibrate, and deploy eye-tracking solutions across products and environments.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:09:36.233Z"
+}

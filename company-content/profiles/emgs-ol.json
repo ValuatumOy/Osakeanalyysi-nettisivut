@@ -1,0 +1,9 @@
+{
+  "ticker": "EMGS.OL",
+  "companyName": "Electromagnetic Geoservices ASA",
+  "profile": "Electromagnetic Geoservices ASA provides marine electromagnetic data and technology for offshore oil and gas exploration and development. Its services cover survey planning, data acquisition, processing, imaging, modelling, interpretation and integration of electromagnetic information with seismic and geological data. Following a 2026 transaction, the company no longer owns or operates the EM business and now holds limited remaining assets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:10:28.500Z"
+}

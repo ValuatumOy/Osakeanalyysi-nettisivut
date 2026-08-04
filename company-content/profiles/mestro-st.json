@@ -1,0 +1,9 @@
+{
+  "ticker": "MESTRO.ST",
+  "companyName": "Mestro AB (publ)",
+  "profile": "Mestro AB develops cloud-based energy management software for property owners, municipalities, retailers and other organizations with building portfolios. Its platform collects, validates and visualizes energy and emissions data, helping users monitor consumption, compare properties, detect anomalies and support reporting, efficiency improvements and sustainability compliance across multiple sites. It is now part of EG's Nordic software portfolio.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:47:47.349Z"
+}

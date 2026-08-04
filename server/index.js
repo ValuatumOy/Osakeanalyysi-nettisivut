@@ -7,11 +7,15 @@ const {
   getReportByIdSync,
   recordCatalogPurchase,
 } = require('./catalog');
-const { sendReportEmail, sendFreshConfirmEmail, sendAdminNotification } = require('./email');
+const { sendReportEmail, sendFreshConfirmEmail } = require('./email');
+const orders = require('./orders');
+const reconciler = require('./reconciler');
+const reaper = require('./reaper');
+const { searchCompanies } = require('./search');
+const { getPublicPricing, getStripePricing } = require('./stripe-pricing');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const FRESH_REPORT_PRICE_CENTS = Number.parseInt(process.env.FRESH_REPORT_PRICE_CENTS || '990', 10);
 
 // Allow the static frontend (Vercel or any *.valuatum.com) to call the API.
 app.use(cors({
@@ -38,6 +42,42 @@ app.use((req, res, next) => {
 
 function stripeClient() {
   return new Stripe(process.env.STRIPE_SECRET_KEY);
+}
+
+function readyReportLineItem(report, pricing) {
+  if (pricing.priceId) {
+    return { price: pricing.priceId, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: pricing.currency || 'eur',
+      product_data: {
+        name: `AI Equity Report - ${report.companyName}`,
+        description: `${report.ticker} - Full PDF with segment value analysis, reverse valuation, risks & financials.`,
+      },
+      unit_amount: pricing.unitAmount,
+    },
+    quantity: 1,
+  };
+}
+
+function freshReportLineItem(company, ticker, pricing) {
+  if (pricing.priceId) {
+    return { price: pricing.priceId, quantity: 1 };
+  }
+
+  return {
+    price_data: {
+      currency: pricing.currency || 'eur',
+      product_data: {
+        name: `Fresh AI Equity Report - ${company}`,
+        description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`,
+      },
+      unit_amount: pricing.unitAmount,
+    },
+    quantity: 1,
+  };
 }
 
 function publicReportPayload(report) {
@@ -95,7 +135,7 @@ app.get('/api/reports', (_, res) => {
 // GET /api/reports/:reportId - used by checkout to resolve current price.
 app.get('/api/reports/:reportId', (req, res) => {
   try {
-    const report = getReportByIdSync(req.params.reportId);
+    const report = getReadyReportById(req.params.reportId);
     if (!report) return res.status(404).json({ error: 'Report not found' });
     res.json({ report: publicReportPayload(report) });
   } catch (err) {
@@ -104,14 +144,61 @@ app.get('/api/reports/:reportId', (req, res) => {
   }
 });
 
+app.get('/api/pricing', async (_, res) => {
+  try {
+    res.set('Cache-Control', 'no-store, max-age=0');
+    res.json(await getPublicPricing(stripeClient(), { bypassCache: true }));
+  } catch (err) {
+    console.error('pricing:', err.message);
+    res.status(500).json({ error: 'Could not load pricing' });
+  }
+});
+
+// Record a paid purchase in the catalog cooldown ledger, and — for a fresh
+// order — enqueue it as a NEW row in the generation pipeline so the reconciler
+// (Task D) can fulfil it. Idempotent on the Stripe session id (orders.create
+// no-ops on a repeat).
+function recordPurchaseAndQueue(input = {}) {
+  const purchase = recordCatalogPurchase(input);
+  if (input.type === 'fresh' && input.sessionId) {
+    orders.create({
+      id: input.sessionId,
+      email: input.customerEmail || input.email || '',
+      companyName: input.companyName || input.company || '',
+      ticker: input.ticker || '',
+      exchange: input.exchange || '',
+      sector: input.sector || '',
+      industry: input.industry || '',
+    });
+  }
+  return purchase;
+}
+
 // POST /api/report-purchases - Vercel webhook syncs paid purchases here.
 app.post('/api/report-purchases', requireCatalogSyncAuth, (req, res) => {
   try {
-    const purchase = recordCatalogPurchase(req.body || {});
+    const purchase = recordPurchaseAndQueue(req.body || {});
     res.json({ ok: true, purchase });
   } catch (err) {
     console.error('record purchase:', err.message);
     res.status(500).json({ error: 'Could not record purchase' });
+  }
+});
+
+// GET /api/search-companies?q= - Wisdom-backed picker for fresh orders. Returns
+// only companies Wisdom covers; an empty list means "not covered". The bearer
+// token stays server-side (server/search.js).
+app.get('/api/search-companies', async (req, res) => {
+  const q = String(req.query.q || '').trim();
+  if (q.length < 1) return res.json({ query: q, results: [] });
+
+  try {
+    const results = await searchCompanies(q);
+    res.set('Cache-Control', 'public, max-age=60');
+    res.json({ query: q, results });
+  } catch (err) {
+    console.error('search-companies:', err.message);
+    res.status(502).json({ error: 'Company search is unavailable' });
   }
 });
 
@@ -121,31 +208,24 @@ app.post('/api/create-checkout', async (req, res) => {
   if (!reportId) return res.status(400).json({ error: 'Missing report id' });
 
   try {
-    const report = getReportByIdSync(reportId);
+    const report = getReadyReportById(reportId);
     if (!report) return res.status(404).json({ error: 'Report not found' });
     if (report.isFree || report.price <= 0) {
       return res.status(400).json({ error: 'Report is free' });
     }
 
-    const session = await stripeClient().checkout.sessions.create({
+    const stripe = stripeClient();
+    const pricing = await getStripePricing(stripe, 'ready', { bypassCache: true });
+    const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `AI Equity Report - ${report.companyName}`,
-            description: `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`,
-          },
-          unit_amount: Math.round(report.price * 100),
-        },
-        quantity: 1,
-      }],
+      line_items: [readyReportLineItem(report, pricing)],
       mode: 'payment',
+      allow_promotion_codes: true,
       metadata: {
         reportId: report.id,
         reportName: report.companyName,
         ticker: report.ticker || '',
-        price: String(report.price),
+        price: String(pricing.unitAmount / 100),
       },
       success_url: `${process.env.SITE_URL}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.SITE_URL}/reports.html`,
@@ -160,24 +240,17 @@ app.post('/api/create-checkout', async (req, res) => {
 
 // POST /api/create-fresh-checkout
 app.post('/api/create-fresh-checkout', async (req, res) => {
-  const { company, ticker, exchange, email, purpose } = req.body;
+  const { company, ticker, exchange, email, purpose, source } = req.body;
   if (!company) return res.status(400).json({ error: 'Company name required' });
 
   try {
-    const session = await stripeClient().checkout.sessions.create({
+    const stripe = stripeClient();
+    const pricing = await getStripePricing(stripe, 'fresh', { bypassCache: true });
+    const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: `Fresh AI Equity Report - ${company}`,
-            description: `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within 1 business day.`,
-          },
-          unit_amount: FRESH_REPORT_PRICE_CENTS,
-        },
-        quantity: 1,
-      }],
+      line_items: [freshReportLineItem(company, ticker, pricing)],
       mode: 'payment',
+      allow_promotion_codes: true,
       customer_email: email || undefined,
       metadata: {
         isFresh: 'true',
@@ -186,6 +259,7 @@ app.post('/api/create-fresh-checkout', async (req, res) => {
         exchange: exchange || '',
         customerEmail: email || '',
         purpose: purpose || '',
+        source: source || '',
       },
       success_url: `${process.env.SITE_URL}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}&type=fresh`,
       cancel_url: `${process.env.SITE_URL}/reports.html#order-fresh`,
@@ -205,7 +279,7 @@ app.get('/api/get-report-link', async (req, res) => {
 
   try {
     const session = await stripeClient().checkout.sessions.retrieve(session_id);
-    if (session.payment_status !== 'paid') {
+    if (!isCompletedCheckout(session)) {
       return res.status(402).json({ error: 'Payment not completed' });
     }
 
@@ -254,7 +328,7 @@ app.post('/api/webhook', async (req, res) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    if (session.payment_status !== 'paid') return res.json({ received: true });
+    if (!isCompletedCheckout(session)) return res.json({ received: true });
 
     const email = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
@@ -265,15 +339,17 @@ app.post('/api/webhook', async (req, res) => {
       isFresh,
       reportId: reportId || null,
       paymentStatus: session.payment_status,
+      amountTotal: session.amount_total,
     });
 
     try {
       if (isFresh) {
-        recordCatalogPurchase({
+        recordPurchaseAndQueue({
           type: 'fresh',
           sessionId: session.id,
           companyName: session.metadata?.company || '',
           ticker: session.metadata?.ticker || '',
+          exchange: session.metadata?.exchange || '',
           customerEmail: email || '',
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
         });
@@ -283,9 +359,11 @@ app.post('/api/webhook', async (req, res) => {
         } else {
           console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
         }
-        await sendAdminNotification(session.metadata, email);
+        // Fulfilment is now the reconciler's job (Task D). The admin is emailed
+        // by the reconciler — on success (flag ADMIN_NOTIFY_ON_SUCCESS) and
+        // always on failure — not here, where generation hasn't happened yet.
       } else {
-        const report = getReportByIdSync(reportId);
+        const report = getReadyReportById(reportId);
         if (!email) {
           console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
         } else if (!report) {
@@ -316,7 +394,31 @@ app.post('/api/webhook', async (req, res) => {
   res.json({ received: true });
 });
 
+function isCompletedCheckout(session) {
+  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
+}
+
+function getReadyReportById(reportId) {
+  const report = getReportByIdSync(reportId, { persistState: false });
+  if (!report || report.availability === 'hidden') return null;
+  const isFree = Boolean(report.isFree) || report.reportType === 'free' || Number(report.price) === 0;
+  return {
+    ...report,
+    isFree,
+    reportType: isFree ? 'free' : (report.reportType || 'existing'),
+    price: isFree ? 0 : 20,
+    priceLabel: isFree ? (report.priceLabel || 'Free report') : 'Ready report',
+    creditCost: isFree ? 0 : (report.creditCost || 2),
+  };
+}
+
 // Health check
 app.get('/api/health', (_, res) => res.json({ ok: true }));
 
-app.listen(PORT, () => console.log(`Valuatum API on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Valuatum API on port ${PORT}`);
+  // Start the fresh-report generation loop (no-op if PDF_ENGINE_URL is unset).
+  reconciler.start();
+  // Start the resale retention sweep (no-op unless RESALE_ENABLED).
+  reaper.start();
+});

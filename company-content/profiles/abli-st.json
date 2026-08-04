@@ -1,0 +1,9 @@
+{
+  "ticker": "ABLI.ST",
+  "companyName": "Abliva AB (publ)",
+  "profile": "Abliva AB is a Swedish biotechnology company developing medicines for primary mitochondrial disease, a rare condition caused by impaired cellular energy production. Its portfolio includes clinical and earlier-stage programs, led by KL1333 and NV354, and the company is focused on advancing therapies for severe orphan diseases. Since July 2025, it has been a wholly owned subsidiary of Pharming Group N.V.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:51:08.985Z"
+}

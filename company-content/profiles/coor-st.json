@@ -1,0 +1,9 @@
+{
+  "ticker": "COOR.ST",
+  "companyName": "Coor Service Management Holding AB",
+  "profile": "Coor Service Management Holding AB provides facility management services across the Nordic region and Belgium. Its offering includes integrated workplace services and individual contracts covering property services, cleaning, food and beverage, office support, security, outdoor environments, workplace design and conference services. The company helps customers run their operations more efficiently and focus on core activities.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:27:13.380Z"
+}

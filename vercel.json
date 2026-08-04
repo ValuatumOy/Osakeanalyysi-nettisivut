@@ -1,5 +1,42 @@
 {
   "buildCommand": null,
   "outputDirectory": null,
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/reports/upm-kymmene-equity-report.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/reports/upm-kymmene-oyj-equity-report.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/reports/upm-kymmene-stock-analysis.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/reports/upm-kymmene-oyj-stock-analysis.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/reports/upm-stock-analysis.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/upm-kymmene-equity-report.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    },
+    {
+      "source": "/upm-kymmene-oyj-equity-report.html",
+      "destination": "/reports/upm-equity-report.html",
+      "permanent": true
+    }
+  ]
 }

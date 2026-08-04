@@ -1,0 +1,9 @@
+{
+  "ticker": "BOKUS.ST",
+  "companyName": "Bokusgruppen AB (publ)",
+  "profile": "Bokusgruppen is Sweden’s leading book retailer, operating the Bokus, Akademibokhandeln and Bokus Play brands. It sells books in physical stores, online and through a digital subscription service, and also offers related products such as stationery, games and gifts. The group serves private customers as well as companies, libraries and public-sector customers.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:24:46.773Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "FING-B.ST",
+  "companyName": "Fingerprint Cards AB (publ)",
+  "profile": "Fingerprint Cards AB develops and sells biometric systems combining sensors, microcontroller units, algorithms, software and packaging technologies for secure user authentication. Its products are used in applications such as FIDO security keys, crypto wallets and payment cards, and the company also monetizes intellectual property through licensing. It is shifting toward higher-value segments such as payments, access control and digital identity.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:59:50.057Z"
+}

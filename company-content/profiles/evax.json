@@ -1,0 +1,9 @@
+{
+  "ticker": "EVAX",
+  "companyName": "Evaxion Biotech A/S",
+  "profile": "Evaxion Biotech A/S is a Danish biotechnology company developing AI-based immunotherapies and vaccines through its AI-Immunology platform. Its work focuses on discovering and designing candidates for cancer, bacterial diseases and viral infections, with programs advancing through preclinical and clinical development. The company also relies on its AI prediction models as a core value driver.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:53:17.055Z"
+}

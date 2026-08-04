@@ -1,0 +1,9 @@
+{
+  "ticker": "NHY.OL",
+  "companyName": "Norsk Hydro ASA",
+  "profile": "Norsk Hydro ASA is a global aluminium and renewable energy company. It operates across the aluminium value chain, including bauxite mining and alumina refining, primary aluminium production, extrusion, and recycling, and also owns hydropower assets and other energy operations. The company sells aluminium products and solutions to industrial and construction customers worldwide.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:42:20.572Z"
+}

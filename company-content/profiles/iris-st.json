@@ -1,0 +1,9 @@
+{
+  "ticker": "IRIS.ST",
+  "companyName": "Irisity AB (publ)",
+  "profile": "Irisity develops AI-powered video analytics software for security and surveillance applications. Its IRIS+ platform and related products turn standard IP cameras into real-time detection and monitoring systems for threats, incidents, and other events, with options for cloud, hybrid, on-premise, and edge deployment. The company also emphasizes privacy-preserving anonymization and forensic search.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:26:43.759Z"
+}

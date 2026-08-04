@@ -1,0 +1,9 @@
+{
+  "ticker": "TEM1V.HE",
+  "companyName": "Tecnotree Oyj",
+  "profile": "Tecnotree Oyj develops software for telecom and other digital service providers, offering full-stack digital business management and BSS platforms. Its products and services cover order-to-cash processes, customer and subscription management, billing, charging, catalog, and partner ecosystem capabilities, along with customization, maintenance, support, and related professional services.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:43:12.300Z"
+}

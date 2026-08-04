@@ -5,47 +5,51 @@
   "targetQuery": "best finnish dividend stocks",
   "intent": "informational-commercial",
   "title": "Best Finnish Dividend Stocks: Yield vs Coverage (2026)",
-  "metaDescription": "We rank the best Finnish dividend stocks we cover by yield and payout coverage, not headline yield. UPM and Kesko both yield 4.9%, but only one is cash-backed.",
+  "metaDescription": "We rank the Finnish dividend stocks we cover by yield and coverage, not headline yield. Kesko leads at 5.3%, but UPM's cash cover is far stronger.",
   "authorId": "author-1",
   "reviewerId": "reviewer-1",
-  "approval": { "auto": false, "mergedBy": "pending-human-review", "date": "2026-07-10" },
+  "approval": {
+    "auto": false,
+    "mergedBy": "pending-human-review",
+    "date": "2026-07-10"
+  },
   "datePublished": "2026-07-10",
-  "dateModified": "2026-07-10",
+  "dateModified": "2026-07-31",
   "readingTimeMinutes": 8,
   "sections": [
     {
       "h2": "How the Finnish dividend stocks we cover rank",
-      "html": "<p>Two of the Finnish large-caps we cover, <a href=\"/reports/upm-kymmene-equity-report.html\">UPM</a> and <a href=\"/reports/kesko-equity-report.html\">Kesko</a>, lead our dividend list at a 4.9% forward yield in our June 2026 models. Both carry a BUY rating. That tie is where the useful part starts, because an identical yield can rest on very different foundations.</p><p>The table ranks the Finnish names in our coverage by the 2026 estimated dividend yield from our own models. We have paired every yield with two coverage checks: the payout ratio, meaning how much of earnings goes out as dividend, and the free cash flow yield, meaning how much cash the business throws off relative to its market value. A high yield with thin cover is a dividend at risk. A high yield with fat cash cover is a dividend you can lean on.</p><div style=\"overflow-x:auto; margin:0 0 1.25rem;\"><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm);\"><thead><tr style=\"text-align:left; border-bottom:2px solid var(--color-border);\"><th style=\"padding:0.5rem 0.6rem;\">Company (our rating)</th><th style=\"padding:0.5rem 0.6rem;\">Div. yield 2026E</th><th style=\"padding:0.5rem 0.6rem;\">Payout ratio 2026E</th><th style=\"padding:0.5rem 0.6rem;\">FCF yield 2026E</th><th style=\"padding:0.5rem 0.6rem;\">Our fair value vs price</th></tr></thead><tbody><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">UPM (BUY)</td><td style=\"padding:0.5rem 0.6rem;\">4.9%</td><td style=\"padding:0.5rem 0.6rem;\">80%</td><td style=\"padding:0.5rem 0.6rem;\">9.8%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 34.00 vs 25.31 (+34.3%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Kesko (BUY)</td><td style=\"padding:0.5rem 0.6rem;\">4.9%</td><td style=\"padding:0.5rem 0.6rem;\">87%</td><td style=\"padding:0.5rem 0.6rem;\">6.1%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 25.92 vs 20.60 (+25.8%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Stora Enso (BUY)</td><td style=\"padding:0.5rem 0.6rem;\">4.0%</td><td style=\"padding:0.5rem 0.6rem;\">80%</td><td style=\"padding:0.5rem 0.6rem;\">1.8%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 12.76 vs 10.05 (+27.0%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Fortum (coverage only)</td><td style=\"padding:0.5rem 0.6rem;\">3.6%</td><td style=\"padding:0.5rem 0.6rem;\">n/a</td><td style=\"padding:0.5rem 0.6rem;\">n/a</td><td style=\"padding:0.5rem 0.6rem;\">not yet modelled</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Nokia (SELL)</td><td style=\"padding:0.5rem 0.6rem;\">2.1%</td><td style=\"padding:0.5rem 0.6rem;\">94%</td><td style=\"padding:0.5rem 0.6rem;\">3.2%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 11.50 vs 13.90 (-17.2%)</td></tr><tr><td style=\"padding:0.5rem 0.6rem;\">W&auml;rtsil&auml; (SELL)</td><td style=\"padding:0.5rem 0.6rem;\">1.4%</td><td style=\"padding:0.5rem 0.6rem;\">40%</td><td style=\"padding:0.5rem 0.6rem;\">3.3%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 30.00 vs 36.12 (-16.9%)</td></tr></tbody></table></div><p>One caveat first. This ranks only the companies we cover, not every dividend payer on Nasdaq Helsinki. Screeners like TradingView or Stockopedia will surface higher raw yields from names we do not model. What they will not tell you is whether the payout is covered or whether the share is cheap. That is the gap we are filling here, with our own numbers. For the wider market picture, see our guide to <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">investing in Helsinki-listed stocks</a>.</p>"
+      "html": "<p>Kesko leads the Finnish large caps we cover at a 5.3% forward dividend yield in our July 2026 models, ahead of UPM at 4.7% and Stora Enso at 4.5%. Kesko is also the one we rate SELL. That is where the useful part starts, because the highest yield on a list is rarely the best-funded one.</p><table style=\"width:100%; border-collapse:collapse; font-size:var(--text-sm);\"><thead><tr style=\"text-align:left; border-bottom:2px solid var(--color-border);\"><th style=\"padding:0.5rem 0.6rem;\">Company (our rating)</th><th style=\"padding:0.5rem 0.6rem;\">Div. yield 2026E</th><th style=\"padding:0.5rem 0.6rem;\">Payout ratio 2026E</th><th style=\"padding:0.5rem 0.6rem;\">FCF yield 2026E</th><th style=\"padding:0.5rem 0.6rem;\">Our fair value vs price</th></tr></thead><tbody><<tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Kesko (SELL)</td><td style=\"padding:0.5rem 0.6rem;\">5.3%</td><td style=\"padding:0.5rem 0.6rem;\">87%</td><td style=\"padding:0.5rem 0.6rem;\">6.6%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 17.10 vs 19.20 (&minus;10.9%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">UPM (HOLD)</td><td style=\"padding:0.5rem 0.6rem;\">4.7%</td><td style=\"padding:0.5rem 0.6rem;\">not disclosed</td><td style=\"padding:0.5rem 0.6rem;\">10.1%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 21.10 vs 22.23 (&minus;5.1%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Stora Enso (BUY)</td><td style=\"padding:0.5rem 0.6rem;\">4.5%</td><td style=\"padding:0.5rem 0.6rem;\">not disclosed</td><td style=\"padding:0.5rem 0.6rem;\">1.2%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 13.30 vs 9.17 (+45.0%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Nokia (SELL)</td><td style=\"padding:0.5rem 0.6rem;\">2.8%</td><td style=\"padding:0.5rem 0.6rem;\">not disclosed</td><td style=\"padding:0.5rem 0.6rem;\">4.2%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 9.40 vs 10.28 (&minus;8.5%)</td></tr><tr style=\"border-bottom:1px solid var(--color-border);\"><td style=\"padding:0.5rem 0.6rem;\">Wärtsilä (HOLD)</td><td style=\"padding:0.5rem 0.6rem;\">1.6%</td><td style=\"padding:0.5rem 0.6rem;\">not disclosed</td><td style=\"padding:0.5rem 0.6rem;\">3.7%</td><td style=\"padding:0.5rem 0.6rem;\">EUR 32.10 vs 31.89 (+0.7%)</td></tr></tbody></table><p>The table ranks our covered Finnish names by 2026 estimated dividend yield from our own models, paired with two coverage checks: the payout ratio, meaning how much of earnings goes out as dividend, and the free cash flow yield, meaning how much cash the business throws off relative to its market value. A high yield with thin cover is a warning rather than an opportunity. Payout ratios are shown only where the current report states one.</p>"
     },
     {
       "h2": "Yield alone is misleading: check payout and free cash flow",
-      "html": "<p>UPM and Kesko both yield 4.9% in our models, but UPM covers that dividend far more comfortably. UPM's free cash flow yield is 9.8% in our 2026 estimate, against Kesko's 6.1%. Put plainly, UPM generates roughly twice the free cash, relative to its market value, that it needs to fund the payout. Kesko's cushion is real but thinner.</p><p>The payout ratio tells the same story from the earnings side. Our 2026 model has Kesko paying out about 87% of earnings as dividend, against 80% for UPM. Neither is reckless. But the closer a payout ratio sits to 100%, the less room a company has to hold the dividend through a bad year without dipping into the balance sheet or borrowing to pay shareholders.</p><p>This is why we rank on coverage, not yield. A 6% yield sitting on a 120% payout and negative free cash flow is a cut waiting to happen. A 4% yield covered twice over by cash is worth more than the headline suggests. Two identical yields are not the same dividend.</p>"
+      "html": "<p>Kesko out-yields UPM by 0.6 percentage points and covers that dividend far less comfortably. UPM's free cash flow yield is 10.1% in our 2026 estimate against Kesko's 6.6%. Put plainly, UPM throws off roughly half again as much free cash, relative to market value, as the company paying the bigger dividend.</p><p>The payout ratio tells the same story from the earnings side. Our 2026 model has Kesko distributing about 87% of earnings, and its own policy allows 60% to 100% of comparable earnings per share, so 87% leaves little headroom. The closer a payout sits to 100%, the less room a company has to hold the dividend through a bad year without borrowing. That matters more for Kesko than for most, because net debt already runs at 2.1x EBITDA.</p><p>Stora Enso is the sharpest illustration on the list. It shows a 4.5% forward yield against a free cash flow yield of just 1.2%. The dividend is a forecast of recovery, not a distribution the current cash generation supports.</p>"
     },
     {
-      "h2": "UPM is the best-covered 4.9% yield in our coverage",
-      "html": "<p>UPM is our top dividend pick in the covered set. It offers a 4.9% forward yield, the best cash cover on the list, and a BUY rating with a EUR 34.00 fair value against a EUR 25.31 share price when we published on 21 May 2026, about 34% of upside. The income case and the value case point the same way, which is unusual.</p><p>The assumption doing the work is that UPM's payout normalises. The company paid EUR 1.50 per share for 2025, and its dividend has run above reported earnings for three straight years in our model, with the payout above 160% in 2025 as pulp earnings troughed. UPM's stated policy, renewed in 2023, is to pay at least half of comparable earnings per share over time. Our model assumes earnings recover toward the existing dividend and pull the payout down to about 80% by 2026.</p><p>The risk is the mirror image of that assumption. If pulp prices stay weak and earnings do not recover, the 4.9% yield leans on a payout we already flag as high, and the EUR 1.50 gets harder to hold. We think the free cash flow supports it. We would be wrong if the pulp cycle stays at the bottom into 2027.</p>"
+      "h2": "UPM has the best-covered yield in our coverage",
+      "html": "<p>UPM offers a 4.7% forward yield with the best cash cover on the list, a 10.1% free cash flow yield in our 2026 estimate. On income grounds it is the most comfortable dividend among the Finnish names we model.</p><p>The valuation no longer points the same way. We rate UPM HOLD at a EUR 21.10 fair value against a EUR 22.23 share price in our 24 July 2026 report, about 5% of downside. The income case and the value case have separated, which is a change from our previous model. The swing factor is the pulp spread: it sits near EUR 110 per tonne against the EUR 122 per tonne the Fibres enterprise-value allocation needs. If spreads recover to that level the earnings gap closes and the dividend gets easier still. If they stall, the payout leans on a balance sheet running at 1.5x net debt to EBITDA. See the <a href=\"/reports/upm-kymmene-equity-report.html\">UPM equity report</a> for the full bridge.</p>"
     },
     {
-      "h2": "Kesko is a defensive 4.9% yield with a fuller payout",
-      "html": "<p>Kesko is the defensive alternative to UPM: the same 4.9% forward yield, but from a consumer-staples grocer rather than a pulp and paper cyclical. It is a BUY in our model, with a EUR 25.92 fair value against EUR 20.60 at our 5 June 2026 report, about 26% of upside. Grocery demand does not swing with the pulp cycle, so the earnings behind this dividend are steadier than UPM's.</p><p>The trade-off is coverage. Kesko's payout ratio is about 87% in our 2026 model, higher than UPM's 80%, and its free cash flow yield of 6.1% is lower. Kesko's own policy is to distribute 60 to 100% of comparable earnings per share, so an 87% payout sits inside plan rather than stretching it. The company proposed a EUR 0.90 dividend for 2025, paid in four instalments across the year, which suits an investor who wants income spread out rather than in one or two lumps.</p><p>Our read: Kesko for the stability of the payout, UPM for the size of the cash cushion behind it. Both are BUYs in our June 2026 models, and an income investor could hold both without much overlap in what drives the earnings.</p>"
+      "h2": "Kesko is the highest yield and the fullest payout",
+      "html": "<p>Kesko pays the biggest dividend on our Finnish list, a 5.3% forward yield from a consumer-staples grocer rather than a pulp and paper cyclical. We still rate it SELL, at a EUR 17.10 fair value against EUR 19.20 in our 7 July 2026 report, about 11% of downside.</p><p>Grocery demand does not swing with the pulp cycle, so the earnings behind this dividend are steadier than UPM's. The trade-off is coverage and price. The payout ratio is about 87% in our 2026 model and the free cash flow yield is 6.6%, both weaker than UPM. On valuation, the market applies one blended 15.8x EV/EBIT multiple across three divisions whose economics differ, and we put the fair blended figure at 14.5x. A 5.3% yield does not compensate for buying the whole group at the grocery division's multiple. Our full workings are in the <a href=\"/reports/kesko-equity-report.html\">Kesko equity report</a>.</p>"
     },
     {
       "h2": "Stora Enso, Nokia and Wärtsilä: yields we would not chase",
-      "html": "<p>The other three Finnish names we cover are not dividends we would buy for income today. <a href=\"/reports/stora-enso-equity-report.html\">Stora Enso</a> shows a 4.0% forward yield in our model, but that figure is a forecast, not a record. The company paid just EUR 0.25 per share for 2025 and currently yields about 2.5%. Our 4.0% assumes the dividend recovers as Stora Enso returns to profit, and it assumes a payout near 80%, above the company's own stated policy of 50% of earnings over the cycle. Treat it as the least certain yield on the list. We still rate the share a BUY at a EUR 12.76 fair value versus EUR 10.05, but on the asset value, not the dividend. We look at both forest-products names together in our note on <a href=\"/blog/finnish-forestry-stocks-upm-stora-enso.html\">Finnish forestry stocks</a>.</p><p><a href=\"/reports/nokia-equity-report.html\">Nokia</a> yields only 2.1%, and pays out about 94% of earnings to manage even that. We rate Nokia a SELL, with a EUR 11.50 fair value against a EUR 13.90 price, because the share is expensive on our numbers, not because of the payout. <a href=\"/reports/wartsila-equity-report.html\">Wärtsilä</a> yields the least at 1.4%, but on the most conservative payout on the list, about 40%. It has the most headroom to raise its dividend and, in our view, the least reason to own it now: we rate it a SELL at a EUR 30.00 fair value versus EUR 36.12. A low, well-covered yield can still sit on an expensive share.</p>"
+      "html": "<p>The other three Finnish names we cover are not dividends we would buy for income today. Stora Enso shows a 4.5% forward yield, but that figure is a forecast rather than a record, and its 1.2% free cash flow yield is the thinnest cover on the list. We rate the share a BUY at a EUR 13.30 fair value versus EUR 9.17, the largest upside in our Finnish coverage, but the case rests on Consumer Packaging margins recovering from 6.2% toward 10.0% as Oulu ramps. Own it for that recovery, not for the income.</p><p>Nokia yields 2.8% and Wärtsilä 1.6%, both too low to anchor an income case, and both carry valuation calls that dominate the dividend. We rate Nokia SELL at EUR 9.40 against EUR 10.28, and Wärtsilä HOLD at EUR 32.10 against EUR 31.89. For a fuller picture of how we value the whole exchange, see our guide to <a href=\"/blog/investing-in-helsinki-listed-stocks.html\">investing in Finnish stocks</a>.</p>"
     },
     {
       "h2": "What international investors keep after Finnish dividend tax",
-      "html": "<p>A non-resident individual pays up to 30% Finnish withholding tax on a dividend before it reaches the account, and a tax treaty usually cuts that to 15%. The gross yield is not what a foreign investor keeps. On a 4.9% gross yield, treaty-rate withholding of 15% leaves about 4.2%, while the full 30% domestic rate leaves about 3.4%. Corporate holders face a 20% standard rate.</p><p>The number to watch is the nominee-registered rate. When shares are held through a nominee, which is the normal setup for most foreign brokerage accounts, Finland withholds 35% unless the holding is documented for a lower treaty rate. Many brokers apply or reclaim the treaty rate for you, but not all do it automatically. Check how your broker handles Finnish withholding before you buy a Helsinki name for income, because a 35% haircut turns a 4.9% gross yield into roughly 3.2% net. On dividends, the tax wrapper can matter as much as the yield you started from.</p>"
+      "html": "<p>A non-resident individual pays up to 30% Finnish withholding tax on a dividend before it reaches the account, and a tax treaty usually cuts that to 15%. The gross yield is not what a foreign investor keeps. On a 5.3% gross yield, treaty-rate withholding of 15% leaves about 4.5%, while the full 30% domestic rate leaves about 3.7%. Corporate holders face a 20% standard rate.</p><p>The number to watch is the nominee-registered rate. When shares are held through a nominee, which is the normal setup for most foreign brokerage accounts, Finland withholds 35% unless the holding is documented for a lower treaty rate. Many brokers apply or reclaim the treaty rate for you, but not all do it automatically. Check how your broker handles Finnish withholding before you buy a Helsinki name for income, because a 35% haircut turns a 5.3% gross yield into roughly 3.4% net. On dividends, the tax wrapper can matter as much as the yield you started from.</p>"
     }
   ],
   "faq": [
     {
       "q": "What are the highest-yielding Finnish dividend stocks we cover?",
-      "a": "Among the Finnish large-caps we cover, UPM and Kesko lead at a 4.9% forward dividend yield in our June 2026 models, followed by Stora Enso at 4.0% and Fortum at 3.6%. Once payout coverage is added we rank UPM first, because its 9.8% free cash flow yield backs the dividend more comfortably than any peer on the list."
+      "a": "Among the Finnish large caps we cover, Kesko leads at a 5.3% forward dividend yield in our July 2026 models, followed by UPM at 4.7% and Stora Enso at 4.5%. Once payout coverage is added we rank UPM first, because its 10.1% free cash flow yield backs the dividend more comfortably than any peer on the list."
     },
     {
       "q": "Is UPM a good dividend stock?",
-      "a": "In our view, yes, on both income and value. UPM yields 4.9% in our 2026 model, covers the payout with a 9.8% free cash flow yield, and traded about 34% below our EUR 34.00 fair value as of 21 May 2026. The main risk is a prolonged weak pulp cycle that delays the earnings recovery the payout assumes."
+      "a": "On income, yes. On valuation, no longer. UPM yields 4.7% in our 2026 model and covers the payout with a 10.1% free cash flow yield, the best cover in our Finnish coverage. But we rate the share HOLD at a EUR 21.10 fair value against EUR 22.23 as of our 24 July 2026 report. The main risk is a prolonged weak pulp cycle that delays the earnings recovery the payout assumes."
     },
     {
       "q": "How safe is Stora Enso's dividend?",
@@ -53,7 +57,7 @@
     },
     {
       "q": "How much tax do foreign investors pay on Finnish dividends?",
-      "a": "A non-resident individual faces up to 30% Finnish withholding tax, usually reduced to 15% under a tax treaty. Shares held through a nominee are withheld at 35% unless documented for a lower rate, and corporate holders face 20%. On a 4.9% gross yield, treaty-rate withholding leaves about 4.2% net."
+      "a": "A non-resident individual faces up to 30% Finnish withholding tax, usually reduced to 15% under a tax treaty. Shares held through a nominee are withheld at 35% unless documented for a lower rate, and corporate holders face 20%. On a 5.3% gross yield, treaty-rate withholding leaves about 4.2% net."
     },
     {
       "q": "Do Finnish dividend stocks pay dividends quarterly?",
@@ -61,12 +65,26 @@
     }
   ],
   "proprietaryData": [
-    { "claim": "UPM: 4.9% dividend yield 2026E, 80% payout 2026E, 9.8% FCF yield 2026E, BUY, fair value EUR 34.00 vs EUR 25.31 (21 May 2026 model)", "source": "report-content/upm-21052026.json" },
-    { "claim": "Kesko: 4.9% dividend yield 2026E, 87% payout 2026E, 6.1% FCF yield 2026E, BUY, fair value EUR 25.92 vs EUR 20.60 (5 June 2026 model)", "source": "report-content/kesko-05062026.json" },
-    { "claim": "Stora Enso: 4.0% dividend yield 2026E, 80% payout 2026E (from 28.7% 2025A), 1.8% FCF yield, BUY, fair value EUR 12.76 vs EUR 10.05 (1 June 2026 model)", "source": "report-content/storaenso-01062026.json" },
-    { "claim": "Nokia: 2.1% dividend yield 2026E, 94% payout 2026E, SELL, fair value EUR 11.50 vs EUR 13.90 (5 June 2026 model)", "source": "report-content/nokia-05062026.json" },
-    { "claim": "Wartsila: 1.4% dividend yield 2026E, 40% payout 2026E, SELL, fair value EUR 30.00 vs EUR 36.12 (5 June 2026 model)", "source": "report-content/wartsila-05062026.json" },
-    { "claim": "Fortum: 3.6% dividend yield (coverage snapshot, no full model)", "source": "report-content/fortum-coverage.json" }
+    {
+      "claim": "Valuatum Kesko SELL, dividend yield 5.3% 2026E, payout ~87%, FCF yield 6.6%, fair value EUR 17.10 vs EUR 19.20 (7 July 2026 report)",
+      "source": "report-content/kesko-07072026.json"
+    },
+    {
+      "claim": "Valuatum UPM HOLD, dividend yield 4.7% 2026E, FCF yield 10.1%, fair value EUR 21.10 vs EUR 22.23 (24 July 2026 report)",
+      "source": "report-content/upm-21052026.json"
+    },
+    {
+      "claim": "Valuatum Stora Enso BUY, dividend yield 4.5% 2026E, FCF yield 1.2%, fair value EUR 13.30 vs EUR 9.17 (24 July 2026 report)",
+      "source": "report-content/storaenso-01062026.json"
+    },
+    {
+      "claim": "Valuatum Nokia SELL, dividend yield 2.8% 2026E, FCF yield 4.2%, fair value EUR 9.40 vs EUR 10.28 (15 July 2026 report)",
+      "source": "report-content/nokia-15072026.json"
+    },
+    {
+      "claim": "Valuatum Wärtsilä HOLD, dividend yield 1.6% 2026E, FCF yield 3.7%, fair value EUR 32.10 vs EUR 31.89 (7 July 2026 report)",
+      "source": "report-content/wartsila-07072026.json"
+    }
   ],
   "internalLinks": [
     "/blog/investing-in-helsinki-listed-stocks.html",
@@ -79,19 +97,78 @@
     "/methodology.html"
   ],
   "sources": [
-    { "label": "Valuatum UPM-Kymmene Equity Report, May 2026 (dividend yield, payout, FCF yield, fair value)", "url": "/reports/upm-kymmene-equity-report.html" },
-    { "label": "Valuatum Kesko Equity Report, June 2026 (dividend yield, payout, FCF yield, fair value)", "url": "/reports/kesko-equity-report.html" },
-    { "label": "Valuatum Stora Enso Equity Report, June 2026 (dividend yield, payout, fair value)", "url": "/reports/stora-enso-equity-report.html" },
-    { "label": "Valuatum Nokia Equity Report, June 2026 (dividend yield, payout, fair value)", "url": "/reports/nokia-equity-report.html" },
-    { "label": "Valuatum Wärtsilä Equity Report, June 2026 (dividend yield, payout, fair value)", "url": "/reports/wartsila-equity-report.html" },
-    { "label": "UPM renews its dividend policy (company release, Feb 2023): target at least half of comparable EPS over time", "url": "https://www.globenewswire.com/news-release/2023/02/02/2600181/0/en/UPM-renews-its-dividend-policy.html" },
-    { "label": "Kesko Oyj: Dividend policy and dividend (60 to 100% of comparable EPS; EUR 0.90 for 2025 in four instalments)", "url": "https://www.kesko.fi/en/investor/share-information/dividend-policy-and-dividend/" },
-    { "label": "Stora Enso: Shares and shareholders / dividend policy (50% of EPS over the cycle; EUR 0.25 for 2025)", "url": "https://www.storaenso.com/en/investors/shares-and-shareholders" },
-    { "label": "Finnish Tax Administration (vero.fi): Tax rates on dividends and other payments from Finland to non-residents", "url": "https://www.vero.fi/en/detailed-guidance/guidance/49131/tax_rates_on_dividends_and_other_paymen/" }
+    {
+      "label": "Valuatum UPM-Kymmene Equity Report, 24 July 2026 (dividend yield, payout, FCF yield, fair value)",
+      "url": "/reports/upm-kymmene-equity-report.html"
+    },
+    {
+      "label": "Valuatum Kesko Equity Report, 7 July 2026 (dividend yield, payout, FCF yield, fair value)",
+      "url": "/reports/kesko-equity-report.html"
+    },
+    {
+      "label": "Valuatum Stora Enso Equity Report, 24 July 2026 (dividend yield, payout, fair value)",
+      "url": "/reports/stora-enso-equity-report.html"
+    },
+    {
+      "label": "Valuatum Nokia Equity Report, 15 July 2026 (dividend yield, payout, fair value)",
+      "url": "/reports/nokia-equity-report.html"
+    },
+    {
+      "label": "Valuatum Wärtsilä Equity Report, 7 July 2026 (dividend yield, payout, fair value)",
+      "url": "/reports/wartsila-equity-report.html"
+    },
+    {
+      "label": "UPM renews its dividend policy (company release, Feb 2023): target at least half of comparable EPS over time",
+      "url": "https://www.globenewswire.com/news-release/2023/02/02/2600181/0/en/UPM-renews-its-dividend-policy.html"
+    },
+    {
+      "label": "Kesko Oyj: Dividend policy and dividend (60 to 100% of comparable EPS; EUR 0.90 for 2025 in four instalments)",
+      "url": "https://www.kesko.fi/en/investor/share-information/dividend-policy-and-dividend/"
+    },
+    {
+      "label": "Stora Enso: Shares and shareholders / dividend policy (50% of EPS over the cycle; EUR 0.25 for 2025)",
+      "url": "https://www.storaenso.com/en/investors/shares-and-shareholders"
+    },
+    {
+      "label": "Finnish Tax Administration (vero.fi): Tax rates on dividends and other payments from Finland to non-residents",
+      "url": "https://www.vero.fi/en/detailed-guidance/guidance/49131/tax_rates_on_dividends_and_other_paymen/"
+    }
   ],
   "gateScores": {
     "humanizer": 45,
     "factcheck": "pass",
     "onpage": "pass"
-  }
+  },
+  "dataProvenance": [
+    {
+      "reportId": "kesko-07072026",
+      "slug": "kesko-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, dividend yield, payout ratio, FCF yield, EV/EBIT multiple"
+    },
+    {
+      "reportId": "upm-21052026",
+      "slug": "upm-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, dividend yield, FCF yield, pulp spread, net debt"
+    },
+    {
+      "reportId": "storaenso-01062026",
+      "slug": "stora-enso-equity-report",
+      "reportDate": "2026-07-24",
+      "used": "rating, target, price, dividend yield, FCF yield, Consumer Packaging margin"
+    },
+    {
+      "reportId": "nokia-15072026",
+      "slug": "nokia-equity-report",
+      "reportDate": "2026-07-15",
+      "used": "rating, target, price, dividend yield, FCF yield"
+    },
+    {
+      "reportId": "wartsila-07072026",
+      "slug": "wartsila-equity-report",
+      "reportDate": "2026-07-07",
+      "used": "rating, target, price, dividend yield, FCF yield"
+    }
+  ]
 }

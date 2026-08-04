@@ -1,0 +1,9 @@
+{
+  "ticker": "SAFETY-B.ST",
+  "companyName": "Empir Group AB",
+  "profile": "Empir Group AB is a Swedish IT group that provides system development, IT management, support and infrastructure services through a network of operating companies. It also develops and sells proprietary applications and products, including solutions for telecom and vehicle administration, and serves customers across several industries.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:52:21.103Z"
+}

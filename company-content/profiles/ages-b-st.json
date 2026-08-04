@@ -1,0 +1,9 @@
+{
+  "ticker": "AGES-B.ST",
+  "companyName": "AGES Industri AB (publ)",
+  "profile": "AGES Industri AB is a Swedish industrial group that provides aluminium die casting, metal machining, tooling, welding and assembly. It manufactures components and tools, mainly in medium to large series, with a focus on high-volume production for customers in the automotive and engineering industries. The company positions itself as a one-stop supplier across several stages of the value chain.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:42:47.428Z"
+}

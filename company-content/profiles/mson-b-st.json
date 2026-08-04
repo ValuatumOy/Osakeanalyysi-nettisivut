@@ -1,0 +1,9 @@
+{
+  "ticker": "MSON-B.ST",
+  "companyName": "Midsona AB (publ)",
+  "profile": "Midsona AB (publ) develops and markets health-oriented food products and related consumer brands across the Nordic region and selected European markets. Its portfolio includes plant-based, vegetarian, natural and organic foods, along with private label and licensed products. The company also emphasizes sourcing, product development, and distribution efficiency to support growth and profitability.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:48:38.664Z"
+}

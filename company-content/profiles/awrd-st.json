@@ -1,0 +1,9 @@
+{
+  "ticker": "AWRD.ST",
+  "companyName": "Awardit AB (publ)",
+  "profile": "Awardit AB provides SaaS-based loyalty, incentive, shop and gift card solutions for businesses and organizations. The company designs and operates complete systems for customer loyalty, employee motivation and sales incentives, and also manages gift card processing and related digital reward services. Its business is focused on recurring software and service revenues across Nordic and wider European markets.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:42:18.634Z"
+}

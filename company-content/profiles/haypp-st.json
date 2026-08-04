@@ -1,0 +1,9 @@
+{
+  "ticker": "HAYPP.ST",
+  "companyName": "Haypp Group AB (publ)",
+  "profile": "Haypp Group AB (publ) is an e-commerce retailer of reduced-risk nicotine products, primarily nicotine pouches and related smoke-free alternatives. It operates multiple online brands in Europe and the United States, combining digital sales, distribution, and regulatory compliance capabilities. The company’s business is driven by consumer demand for online nicotine purchases and category growth.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:13:25.649Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PCELL.ST",
+  "companyName": "PowerCell Sweden AB (publ)",
+  "profile": "PowerCell Sweden AB develops and produces hydrogen fuel cell stacks and systems for stationary and mobile applications. Its products generate electricity and heat from pure or reformed hydrogen and are used in sectors including marine, aviation, rail, off-road, on-road and stationary power generation. The company also provides related products and services to customers globally.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:00.262Z"
+}

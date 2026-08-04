@@ -1,0 +1,9 @@
+{
+  "ticker": "CARA.OL",
+  "companyName": "Carasent ASA",
+  "profile": "Carasent ASA develops and provides mission-critical healthcare software, including cloud-based electronic health record and medical record systems, workflow automation tools, partner integrations, business intelligence, and digital communication services. Its products serve healthcare, rehabilitation, and occupational health providers, helping customers streamline administration, improve data use, and support clinical and operational workflows.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:48:23.453Z"
+}

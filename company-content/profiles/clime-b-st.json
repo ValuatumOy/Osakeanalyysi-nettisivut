@@ -1,0 +1,9 @@
+{
+  "ticker": "CLIME-B.ST",
+  "companyName": "Climeon AB (publ)",
+  "profile": "Climeon AB (publ) is a Swedish energy technology company that develops and sells HeatPower systems based on an Organic Rankine Cycle process. Its technology converts low-temperature waste heat into electricity for maritime, industrial, energy, and geothermal applications, helping customers improve energy efficiency, reduce fuel use, and lower emissions.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:20:30.297Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "ISOFOL.ST",
+  "companyName": "Isofol Medical AB (publ)",
+  "profile": "Isofol Medical AB is a clinical-stage biotechnology company focused on developing arfolitixorin, a drug candidate designed to improve the effect of standard chemotherapy for patients with severe forms of cancer. Its current development work centers on metastatic colorectal cancer, and the company’s value driver is advancing this oncology program through clinical testing and regulatory progress.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T21:27:19.956Z"
+}

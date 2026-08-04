@@ -1,0 +1,9 @@
+{
+  "ticker": "COPY.CO",
+  "companyName": "Copyright Agent A/S",
+  "profile": "Copyright Agent A/S is a Danish legal-tech and copyright protection company based in Copenhagen. It helps creators, image agencies and other rights holders detect unauthorized online use of copyrighted works, manage infringement cases and pursue compensation claims. Its services combine software for image protection with end-to-end case handling and market education.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:41:43.981Z"
+}

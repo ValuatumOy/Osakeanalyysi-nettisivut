@@ -1,0 +1,9 @@
+{
+  "ticker": "SPOT",
+  "companyName": "Spotify Technology S.A.",
+  "profile": "Spotify Technology S.A. operates a digital audio streaming platform that offers music, podcasts and audiobooks to listeners in many markets. The service is available on mobile, desktop, tablets, cars, speakers and other connected devices, and it generates revenue through both advertising-supported access and paid Premium subscriptions. It also provides discovery and recommendation features for users and creators.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:00:43.922Z"
+}

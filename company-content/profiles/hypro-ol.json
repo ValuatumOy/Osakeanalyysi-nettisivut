@@ -1,0 +1,9 @@
+{
+  "ticker": "HYPRO.OL",
+  "companyName": "HydrogenPro ASA",
+  "profile": "HydrogenPro ASA develops and supplies high-pressure alkaline electrolyser technology and related gas separation systems for large-scale green hydrogen production. The company also provides engineering support, system integration, and lifecycle services through partnerships with customers and industrial collaborators. Its operations are centered on improving efficiency, scalability, and deployment of hydrogen production projects.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T18:46:10.948Z"
+}

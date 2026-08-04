@@ -1,0 +1,9 @@
+{
+  "ticker": "TRIBO-B.ST",
+  "companyName": "Triboron International AB (publ)",
+  "profile": "Triboron International AB is a Swedish specialty chemicals and environmental technology company that develops and commercializes patented tribology-based products for fuel and lubrication applications. Its technologies are designed to reduce friction, lower fuel consumption, and cut emissions in engines and machinery. The group also works through subsidiaries focused on lubricants, fuel additives, and related industrial products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:50:01.711Z"
+}

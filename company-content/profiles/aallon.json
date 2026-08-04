@@ -1,0 +1,9 @@
+{
+  "ticker": "AALLON",
+  "companyName": "Aallon Group",
+  "profile": "Aallon Group is a Finnish accounting and financial administration services company serving domestic businesses. It provides bookkeeping, financial reporting, payroll and HR services, tax and legal advisory, and management support such as controller and CFO services. The group also offers industry-specific solutions and digital tools that support outsourced back-office processes.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T13:26:42.179Z"
+}

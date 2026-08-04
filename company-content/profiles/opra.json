@@ -1,0 +1,9 @@
+{
+  "ticker": "OPRA",
+  "companyName": "Opera Limited",
+  "profile": "Opera Limited develops desktop and mobile internet browsers and related software services for consumers and enterprises. Its products include the Opera browser family, AI-assisted browsing features, and newer agentic browsing tools, with revenue driven mainly by advertising, search and query monetization, and other browser-related services. The company also offers digital products such as MiniPay.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T09:54:13.202Z"
+}

@@ -1,0 +1,9 @@
+{
+  "ticker": "PSNY",
+  "companyName": "Polestar Automotive Holding UK PLC",
+  "profile": "Polestar Automotive Holding UK PLC designs and sells electric performance vehicles under the Polestar brand. The company offers models such as Polestar 2, 3 and 4, and generates revenue from vehicle sales, leasing and related services. It operates an asset-light model, relying on partners for manufacturing, supply chain and certain development work.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T08:08:05.764Z"
+}

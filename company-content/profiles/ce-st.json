@@ -1,0 +1,9 @@
+{
+  "ticker": "CE.ST",
+  "companyName": "Cortus Energy AB (publ)",
+  "profile": "Cortus Energy AB develops industrial-scale technology that converts waste and non-food biomass into renewable fuels and gases. The company’s systems are designed for use in carbon-intensive sectors such as steel, transport and other industrial applications, with output that can be used directly or upgraded for hydrogen, biogas or other renewable energy products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T20:28:40.460Z"
+}

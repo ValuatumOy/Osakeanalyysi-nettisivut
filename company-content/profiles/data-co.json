@@ -1,0 +1,9 @@
+{
+  "ticker": "DATA.CO",
+  "companyName": "Dataproces Group A/S",
+  "profile": "Dataproces Group A/S provides software, data analysis and consulting services for Danish municipalities and other public-sector customers. Its solutions help clients optimize financial management, automate routine administrative work and improve decision support. The company also develops SaaS products and delivers analysis services in areas such as intermunicipal settlements, reimbursements and process efficiency.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T17:48:57.770Z"
+}

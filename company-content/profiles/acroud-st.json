@@ -1,0 +1,9 @@
+{
+  "ticker": "ACROUD.ST",
+  "companyName": "Acroud AB (publ)",
+  "profile": "Acroud AB is a digital iGaming group that operates affiliate media brands, comparison and news sites, and related marketing services that direct players to casino and sportsbook operators. The company also provides SaaS data-collection and analytics tools for affiliates and offers streaming services. It has been shifting toward a more software-based affiliation model.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T14:02:50.580Z"
+}

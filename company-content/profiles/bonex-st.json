@@ -1,0 +1,9 @@
+{
+  "ticker": "BONEX.ST",
+  "companyName": "Bonesupport Holding AB (publ)",
+  "profile": "BONESUPPORT Holding AB is a Scandinavian orthobiologics company that develops and commercializes CERAMENT, a range of injectable bioceramic bone graft substitutes used to treat fractures and bone voids caused by trauma, infection, disease or surgery. Its products are designed to remodel to host bone and can also elute drugs.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-24T19:30:28.247Z"
+}

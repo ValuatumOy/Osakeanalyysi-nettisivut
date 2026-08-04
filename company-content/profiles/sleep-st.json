@@ -1,0 +1,9 @@
+{
+  "ticker": "SLEEP.ST",
+  "companyName": "Sleep Cycle AB (publ)",
+  "profile": "Sleep Cycle AB develops and sells sleep-tracking software for smartphones and tablets. Its core product is the Sleep Cycle app, which uses phone sensors and sound analysis to track sleep, provide alarms, and generate sleep insights. The company also offers Sleep Cycle SDK for partners and is expanding into additional sleep-related products.",
+  "provider": "codex",
+  "model": "gpt-5.4-mini",
+  "promptVersion": 2,
+  "generatedAt": "2026-07-28T07:59:11.510Z"
+}
