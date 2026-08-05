@@ -154,9 +154,10 @@
       "role": "support",
       "targetQuery": "is tesla stock overvalued 2026",
       "intent": "informational-commercial",
-      "status": "in-review",
+      "status": "rejected",
       "prNumber": 25,
-      "notes": "Free report → full numbers. Hard SERP (tier-1 media) but the proprietary fair value is the differentiator; refresh every report cycle. Drafted 2026-07-15 (Wed full pipeline run) as PR #25 on branch blog/is-tesla-overvalued. Angle: our 1 Jun 2026 SELL (350 target vs 438.26) decomposed via sum-of-the-parts — physical car+energy business is only 20.4% of EV, 79.6% (~1.25T USD) sits in zero-revenue FSD/Robotaxi/Optimus pools; reverse valuation turns price into operational targets (44M FSD subs, 2.1M robotaxi fleet). Honest track record: stock fell ~9% to ~397 USD (live FMP 15 Jul 2026), still ~13% above target and below base-case 421. Inbound link added to live reports/tesla-equity-report. Gates: humanizer 43/50, factcheck pass, onpage pass. Awaiting human merge."
+      "closedWithoutMergeAt": "2026-08-05",
+      "notes": "Free report → full numbers. Hard SERP (tier-1 media) but the proprietary fair value is the differentiator; refresh every report cycle. Drafted 2026-07-15 as PR #25 on branch blog/is-tesla-overvalued: sum-of-the-parts decomposition of our 1 Jun 2026 SELL (350 target vs 438.26), showing only 20.4% of EV is the physical car+energy business and 79.6% (~1.25T USD) in zero-revenue FSD/Robotaxi/Optimus pools. Gates: humanizer 43/50, factcheck pass, onpage pass. UPDATE: PR #25 was closed by a human without merging. Per operating instructions the pipeline is NOT reopening it or regenerating the same article; no article files ever reached main (they lived only on the closed branch), so main needs no cleanup beyond this status reconciliation. NOTE: the underlying Tesla report has since been refreshed to 31 Jul 2026 (SELL, 243.40 target vs 307.02), so PR #25 was built on the now-superseded 1 Jun report. The topic is not dead — to request a fresh draft on current report data, a human should flip this status back to 'queued'."
     },
     {
       "slug": "amd-stock-fair-value",
