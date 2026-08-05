@@ -12,7 +12,7 @@ window.REPORT_SLUGS = {
   "puuilooyj-29072026": "puuilo-equity-report",
   "recursion-02062026": "recursion-pharmaceuticals-equity-report",
   "storaenso-06072026": "stora-enso-equity-report",
-  "tesla-07072026": "tesla-equity-report",
+  "tesla-31072026": "tesla-equity-report",
   "upm-08072026": "upm-equity-report",
   "wartsila-07072026": "wartsila-equity-report"
 };
