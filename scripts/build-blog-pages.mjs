@@ -22,6 +22,32 @@ const humanDate = (s) => {
   return isNaN(d) ? String(s) : d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
+// An article carries its own lifecycle state. "hidden" means the human pulled
+// it from the site via scripts/blog-admin.mjs: the JSON stays so it can be
+// restored, but nothing is emitted for it — no page, no card, no sitemap entry.
+const isHidden = (article) => article.status === 'hidden';
+
+// The visible edit notice. Readers are told when an article changed after
+// publication, to the minute, in Helsinki time — the stamp written by
+// scripts/blog-admin.mjs, not the build clock.
+function editedLabel(article) {
+  const edits = article.editHistory;
+  if (!Array.isArray(edits) || !edits.length) return null;
+  const last = edits[edits.length - 1];
+  if (!last?.date || !last?.time) return null;
+  const [y, m, d] = last.date.split('-');
+  return `Edited ${Number(d)}.${Number(m)}.${y} at ${last.time}`;
+}
+
+function editedNoticeHtml(edited) {
+  if (!edited) return '';
+  return `
+      <div style="background:var(--off-white); border-left:3px solid var(--green); border-radius:var(--r-md); padding:0.75rem 1rem; margin-bottom:2rem;">
+        <p style="font-size:var(--text-xs); color:var(--charcoal-mid); margin:0;"><strong>${esc(edited)}</strong> · This article was updated after publication. Times are Europe/Helsinki.</p>
+      </div>
+`;
+}
+
 function loadAuthors() {
   if (!fs.existsSync(AUTHORS_FILE)) throw new Error(`authors.json not found at ${AUTHORS_FILE}`);
   return JSON.parse(fs.readFileSync(AUTHORS_FILE, 'utf8'));
@@ -317,6 +343,7 @@ function renderArticle(article, author, reviewer) {
     'helsinki-stocks': 'Helsinki Stocks',
     'company-deep-dives': 'Company Analysis',
   }[article.cluster] || article.cluster;
+  const edited = editedLabel(article);
 
   const sectionsHtml = (article.sections || []).map(s =>
     `<section style="margin-top:2.5rem;" id="${attr(s.h2.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}">
@@ -385,15 +412,17 @@ ${navHtml()}
           <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.7);">
             ${esc(author.name)} · ${humanDate(article.datePublished)}${article.readingTimeMinutes ? ` · ${article.readingTimeMinutes} min read` : ''}
           </span>
-          ${article.dateModified && article.dateModified !== article.datePublished
-            ? `<span style="font-size:var(--text-xs); color:rgba(255,255,255,0.45);">Updated ${humanDate(article.dateModified)}</span>`
-            : ''}
+          ${edited
+            ? `<span style="font-size:var(--text-xs); color:var(--green-light);">${esc(edited)}</span>`
+            : article.dateModified && article.dateModified !== article.datePublished
+              ? `<span style="font-size:var(--text-xs); color:rgba(255,255,255,0.45);">Updated ${humanDate(article.dateModified)}</span>`
+              : ''}
         </div>
       </div>
     </section>
 
     <div class="blog-post-body">
-
+${editedNoticeHtml(edited)}
       ${sectionsHtml}
 
       ${faqHtml(article.faq)}
@@ -716,6 +745,16 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 const published = [];
 for (const file of files) {
   const article = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
+
+  if (isHidden(article)) {
+    // Delete any page left from when it was live, or hiding would only remove
+    // the card and leave the article itself served at its old URL.
+    const stale = path.join(OUT_DIR, `${article.slug}.html`);
+    if (fs.existsSync(stale)) fs.unlinkSync(stale);
+    console.log(`hidden ${article.slug} — no page, card, or sitemap entry`);
+    continue;
+  }
+
   const author = authorMap[article.authorId];
   const reviewer = reviewerMap[article.reviewerId];
 
