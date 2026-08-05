@@ -5,15 +5,21 @@ once for context; this file is the loop.
 
 ## Run configuration
 
-- **Schedule**: 3 runs/week — Mon/Wed/Fri **21:30 Europe/Helsinki** (cron
-  `30 21 * * 1,3,5`, timezone Europe/Helsinki). Evening/night runs by design:
-  generation happens when interactive usage is idle, so the account's quota is
-  free for it. Topic-proposal run: Sundays 21:30 (`30 21 * * 0`).
-- **Model**: writing-quality stages (4 DRAFT, 5 CRITIQUE/HUMANIZE) run on
-  **Claude Opus 5 (`claude-opus-5`) with extended thinking at the highest
-  effort setting ("xhigh")**. Configure the scheduled routine / subagent model
-  accordingly (e.g. `model: "claude-opus-5"` + max thinking effort). Mechanical
-  stages (sync, lint, build) may run on a cheaper model.
+- **Scheduler**: a **Claude Routine** ("Valuatum Blog Pipeline"), managed in the
+  claude.ai UI, NOT in this repo. There is no GitHub Actions workflow for the
+  pipeline and no `ANTHROPIC_API_KEY`. The old `.github/workflows/blog-pipeline.yml`
+  was deleted in August 2026: it had failed all 27 of its scheduled runs (empty
+  API key, and `--dangerouslySkipPermissions` no longer exists), and if it had
+  ever worked it would have double-run the pipeline against the Routine.
+- **Schedule**: **once per week, Sunday 21:30 Europe/Helsinki** (Routine cron
+  `30 18 * * 0` in UTC during EEST; it becomes `30 19 * * 0` when Finland
+  returns to EET in late October). Evening runs by design: generation happens
+  when interactive usage is idle. There is no longer a separate proposal day —
+  the single weekly run does refresh, then article, then tops up proposals.
+- **Model**: set on the Routine itself (`session_context.model`), not in this
+  repo. Writing-quality stages (4 DRAFT, 5 CRITIQUE/HUMANIZE) want **Claude
+  Opus 5 (`claude-opus-5`) at the highest thinking effort**. Changing the model
+  means editing the Routine in the claude.ai UI; nothing in git affects it.
 - **Mode**: stages run as subagents with the stage prompt from `prompts/`;
   the orchestrating agent follows this file top to bottom.
 
@@ -174,11 +180,16 @@ Topics enter the queue two ways:
   section. (Outbound citations to authoritative sources are also a measured
   +40% AI-citation factor — cite generously.)
 
-## Weekly (Sunday run)
-- Run `prompts/00-topic-proposal.md` → append 3–5 scored proposals to
+## Topic top-up (end of every run)
+This used to be a separate Sunday run. With a single weekly run it is the last
+step of that run instead.
+- If fewer than 6 items sit at `status` `"proposed"` or `"queued"`, run
+  `prompts/00-topic-proposal.md` → append 3–5 scored proposals to
   `topic-queue.json`, commit with message `Blog topics: N proposals — pick or
   ignore (auto-pick after 48h)`. Human approves by flipping `status` to
   `"queued"` (or `"rejected"`) any time.
+- Do this even when the run held or refreshed instead of publishing, so the
+  queue never runs dry between weekly runs.
 
 ## Monthly (first run of month)
 - AI-visibility check: top 20 target queries × ChatGPT / Perplexity / Google

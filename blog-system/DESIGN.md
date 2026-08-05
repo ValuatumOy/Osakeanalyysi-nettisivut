@@ -233,13 +233,16 @@ itself the stale thing.
 The system is **file-complete**: another Claude Code instance needs only this
 repo. Entry point: `blog-system/PIPELINE.md`.
 
-- Schedule: 3 runs/week, **Mon/Wed/Fri 21:30 Europe/Helsinki** (cron
-  `30 21 * * 1,3,5`), plus topic-proposal run Sundays 21:30. Evening/night
-  Finland time on purpose: generation runs when the account's interactive
-  usage is idle, so quota goes to writing.
+- Scheduler: a **Claude Routine** managed in the claude.ai UI, not in this repo.
+  There is no GitHub Actions workflow for the pipeline and no API key. The
+  schedule, model and run prompt all live on the Routine; nothing in git changes
+  them.
+- Schedule: **once per week, Sunday 21:30 Europe/Helsinki** (Routine cron
+  `30 18 * * 0` while Finland is on EEST). Evening Finland time on purpose:
+  generation runs when the account's interactive usage is idle. One run now
+  does refresh, then article, then topic top-up.
 - Model: draft + humanize stages on **Claude Opus 5 (`claude-opus-5`)
-  with extended thinking at highest effort ("xhigh")**; mechanical stages can
-  use a cheaper model.
+  with extended thinking at highest effort ("xhigh")**, set on the Routine.
 - Every post ships as a PR — that PR is the approval surface (author/reviewer
   selection + accept). Merge is human-only and untimed: the pipeline never
   merges its own PRs, no matter how long they sit open or how green the gates.
