@@ -1,0 +1,36 @@
+name: Blog freshness
+
+# Blocks a blog PR whose report numbers have gone stale.
+#
+# Reports are updated in place and re-issued under new filenames, so an article
+# written weeks ago can quietly contradict the live model — this is how posts
+# came to call UPM a BUY at EUR 34.00 while the current report said HOLD at
+# 21.10. Runs on report-content changes too: a new report can invalidate an
+# article that was accurate when it was written.
+on:
+  pull_request:
+    paths:
+      - 'blog-content/**'
+      - 'report-content/**'
+      - 'scripts/report-index.mjs'
+      - 'scripts/check-blog-freshness.mjs'
+  workflow_dispatch:
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Which report is current for each company
+        run: node scripts/report-index.mjs
+
+      - name: Check articles against current reports
+        run: node scripts/check-blog-freshness.mjs
+
+      - name: Build blog pages
+        run: node scripts/build-blog-pages.mjs

@@ -3,7 +3,7 @@
     "newPostsPerWeek": 3
   },
   "topicGovernance": {
-    "proposalRun": "Sunday 21:30 Europe/Helsinki",
+    "proposalRun": "End of the weekly Sunday run (no separate proposal day)",
     "humanApprovalWindowHours": 48,
     "autoPromoteRule": "if no status:'queued' item exists, promote highest-score 'proposed' item older than window; set autoApproved:true",
     "minProposalsInList": 6
