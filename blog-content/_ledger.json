@@ -11,8 +11,16 @@
       "dateModified": "2026-06-12",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": false, "mergedBy": "human", "date": "2026-06-12" },
-      "gateScores": { "humanizer": "n/a (pre-ledger)", "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": false,
+        "mergedBy": "human",
+        "date": "2026-06-12"
+      },
+      "gateScores": {
+        "humanizer": "n/a (pre-ledger)",
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Reconciliation entry (2026-06-29 run): article was already live in blog-content/ on main and published 2026-06-12 by human merge, but had no ledger record and queue status was still 'queued'. Logged here and marked published in the queue to fix the state drift. No content change."
     },
     {
@@ -25,8 +33,17 @@
       "dateModified": "2026-06-22",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 5, "date": "2026-06-22" },
-      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": true,
+        "mergedBy": "pipeline",
+        "prNumber": 5,
+        "date": "2026-06-22"
+      },
+      "gateScores": {
+        "humanizer": 44,
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Cluster A pillar. Auto-merged: PR #5 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks. Published first (pillar before supports)."
     },
     {
@@ -39,8 +56,17 @@
       "dateModified": "2026-06-18",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 4, "date": "2026-06-29" },
-      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": true,
+        "mergedBy": "pipeline",
+        "prNumber": 4,
+        "date": "2026-06-29"
+      },
+      "gateScores": {
+        "humanizer": 44,
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #4 untouched >48h with all gates green, merged with default author/reviewer per PIPELINE.md §7."
     },
     {
@@ -53,8 +79,17 @@
       "dateModified": "2026-06-19",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 6, "date": "2026-06-29" },
-      "gateScores": { "humanizer": 44, "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": true,
+        "mergedBy": "pipeline",
+        "prNumber": 6,
+        "date": "2026-06-29"
+      },
+      "gateScores": {
+        "humanizer": 44,
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #6 untouched >48h with all gates green. Inbound backlink added from can-ai-analyze-stocks."
     },
     {
@@ -67,8 +102,17 @@
       "dateModified": "2026-06-24",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 8, "date": "2026-06-29" },
-      "gateScores": { "humanizer": 45, "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": true,
+        "mergedBy": "pipeline",
+        "prNumber": 8,
+        "date": "2026-06-29"
+      },
+      "gateScores": {
+        "humanizer": 45,
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #8 untouched >48h with all gates green. Inbound backlink added from how-to-value-a-stock pillar."
     },
     {
@@ -81,8 +125,17 @@
       "dateModified": "2026-06-26",
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
-      "approval": { "auto": true, "mergedBy": "pipeline", "prNumber": 9, "date": "2026-06-29" },
-      "gateScores": { "humanizer": 45, "factcheck": "pass", "onpage": "pass" },
+      "approval": {
+        "auto": true,
+        "mergedBy": "pipeline",
+        "prNumber": 9,
+        "date": "2026-06-29"
+      },
+      "gateScores": {
+        "humanizer": 45,
+        "factcheck": "pass",
+        "onpage": "pass"
+      },
       "notes": "Cluster A support. Auto-merged in the 2026-06-29 Monday run: PR #9 untouched >48h with all gates green. Inbound backlink added from how-to-value-a-stock pillar."
     },
     {
@@ -136,6 +189,15 @@
       "date": "2026-08-03",
       "dateModified": "2026-08-03",
       "notes": "Monday 2026-08-03 full-pipeline run HELD — no new article generated, no PR touched, nothing merged (pipeline never merges). Reasons, all verified this run: (1) The refresh machinery on main is dead code — PIPELINE.md step 0 keys freshness on report-content/_catalog.json, which was deleted when the committed catalog snapshot was dropped (commit 3f9d9aa). It has never fired; the only backstop is a 90-day rule the ~7-week-old blog has not hit. (2) 18 blog PRs (#12-#39) are stacked open and unmerged; the human has merged none since the 2026-07-02 auto-merge-removal directive. (3) The freshness gate that would stop stale-rating merges is PR #38 (branch claude/gifted-davinci-awtwzy), still open/draft — it also flips the model to Opus 5 and needs the human to confirm ANTHROPIC_API_KEY account access before merge. (4) PR #38 found 12 rating contradictions across 8 in-review articles; independently re-verified here from the freshest-by-reportDate JSONs (reportDate field, NOT filename): UPM HOLD EUR 21.10 (upm-21052026.json, 24 Jul) vs posts' BUY; Kesko SELL EUR 17.10 (kesko-07072026.json, 7 Jul) vs post #29 BUY EUR 25.92; Wartsila HOLD EUR 32.10 (wartsila-07072026.json, 7 Jul) vs post #28 SELL EUR 30.00. New reports since PR #38 make it worse: tesla-31072026.json is now SELL USD 243.40 (post #25 built on USD 350); nokia-15072026.json SELL EUR 9.40. (5) No status:'queued' topic exists, so AI-fallback selection would pick the highest-scored proposed>=48h item — recursion (76) or are-ai-stock-predictions-accurate (76), both ticker-rating-dependent, i.e. the exact failure class currently blocking the backlog. Generating on main without the gate would add correctness debt with near-zero value against an unreviewed pile. Action required from human: review/merge PR #38 (after confirming Opus 5 entitlement), then work down / refresh the stale in-review PRs before merging them. Next scheduled run: Wed 2026-08-05."
+    },
+    {
+      "slug": "can-ai-analyze-stocks",
+      "action": "refresh",
+      "date": "2026-08-05",
+      "dateModified": "2026-08-05",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Refreshed the Nokia figures in the only live article. It cited a SELL at an 11.50 EUR target vs 13.90 EUR from nokia-05062026.json, a report file that no longer exists; the current 15 July 2026 model is SELL at 9.40 EUR vs 10.28 EUR. The rating still matched, which is why the rating scan passed it, so this was caught by comparing the cited report against report-index.mjs rather than by the gate. Added dataProvenance so the gate can verify it automatically from now on."
     }
   ]
 }
