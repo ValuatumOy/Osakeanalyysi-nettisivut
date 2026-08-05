@@ -101,6 +101,10 @@ GIT WORKFLOW for a new article:
   gh pr create --base main --title "Blog: {article title}" --body "{full PR body per PIPELINE.md section 7}"
   git checkout main
 
+For an edit, hide, or unhide of a live article, use the same PR flow on a
+branch named blog/{slug}-{edit|hide|unhide}, and include the ledger and
+vercel.json changes in the commit.
+
 CRITICAL: The PR is the human approval surface. Always create a PR, never push
 an article directly to main, and NEVER merge your own PR regardless of how long
 it has been open or how green its gates are. The human reviews and merges from
