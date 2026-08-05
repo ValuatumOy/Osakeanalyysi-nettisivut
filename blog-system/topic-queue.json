@@ -145,9 +145,8 @@
       "role": "support",
       "targetQuery": "ai vs human stock analyst",
       "intent": "informational",
-      "status": "in-review",
-      "prNumber": 22,
-      "notes": "Comparison format. Where our AI process beats/loses to a human team; concrete examples. Drafted 2026-07-13 (Mon full pipeline run) as PR #22 on branch blog/ai-vs-human-equity-analyst. Human-queued (oldest queued seed; Cluster C pillar can-ai-analyze-stocks is live on main so cluster order satisfied and all internal links resolve today). Angle: sell-side almost never says sell (FactSet <6% sells / 57%+ buys end-2025; 2003 Global Settlement + anchoring/herding) vs our AI book carrying 2 SELLs among 5 large-cap Helsinki names (Nokia, Wärtsilä), both of which fell to/through target by mid-Jul 2026 (Nokia 13.90->10.56 through 11.50 target; Wärtsilä 36.12->29.98 at 30.00 target, live FMP 13 Jul 2026); plus honest human-edge + named failure mode (bull 15.99). Inbound link added from live can-ai-analyze-stocks pillar (dateModified unchanged). Gates: humanizer 45/50, factcheck pass, onpage pass. Awaiting human merge."
+      "status": "queued",
+      "notes": "Comparison format; the worked examples must be LIVE rating calls. First draft was PR #22 (branch blog/ai-vs-human-equity-analyst, drafted 2026-07-13), CLOSED without merging on 2026-08-05 as stale: the Nokia report was replaced 15 Jul 2026 and Wärtsilä is now HOLD at EUR 32.10 whereas the draft used SELL at EUR 36.12, which fails the freshness gate merged in PR #38. Per the human close comment the topic STAYS QUEUED for a fresh redraft; do NOT reopen PR #22 (branch left intact) — open a new PR on redraft. Before redrafting: re-pull the current Nokia + Wärtsilä + Helsinki-book reports from report-content, re-verify each rating/target/price against the latest reportDate and a live quote, and rebuild every worked example so no superseded call remains. Original angle still valid: the sell-side almost never says sell (FactSet <6% sells / 57%+ buys) vs our AI book's live SELLs; external sources (FactSet, FINRA 2003 Global Settlement, Kahneman & Tversky, Hong & Kubik) were verified via WebSearch and remain reusable."
     },
     {
       "slug": "is-tesla-overvalued",
