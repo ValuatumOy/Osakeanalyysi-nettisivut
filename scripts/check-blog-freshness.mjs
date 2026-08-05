@@ -79,7 +79,11 @@ function loadArticles(dir) {
   return fs
     .readdirSync(dir)
     .filter((f) => f.endsWith('.json') && !f.startsWith('_'))
-    .map((f) => ({ file: path.join(dir, f), article: JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) }));
+    .map((f) => ({ file: path.join(dir, f), article: JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) }))
+    // Hidden articles are not served, so stale numbers in one cannot mislead a
+    // reader and must not block an unrelated merge. `blog-admin.mjs unhide`
+    // tells you to re-run this before putting one back.
+    .filter(({ article }) => article.status !== 'hidden');
 }
 
 // ── checks ─────────────────────────────────────────────────────────────────

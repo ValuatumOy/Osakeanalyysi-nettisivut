@@ -166,6 +166,47 @@ Topics enter the queue two ways:
   reviewerId, `approval: { "auto": false, "mergedBy": "human" }`.
 - Commit: `Blog: <title>`; Vercel auto-deploys once a human merges the PR to main.
 
+## Post-publication lifecycle (edit / hide / delete)
+
+Publishing is not the end of an article's life. A report moves under it, a
+number turns out wrong, or the human simply wants it off the site. All three
+go through `scripts/blog-admin.mjs`, never by hand-editing JSON and hoping the
+bookkeeping follows.
+
+```
+node scripts/blog-admin.mjs list
+node scripts/blog-admin.mjs edit   <slug> --note "what changed"
+node scripts/blog-admin.mjs hide   <slug> --note "why"
+node scripts/blog-admin.mjs unhide <slug> [--note "why"]
+node scripts/blog-admin.mjs delete <slug> --confirm <slug> --note "why"
+```
+
+Every one of them is followed by `node scripts/build-blog-pages.mjs`, and every
+one of them lands as a PR like any other change — the human approval surface
+does not stop applying because an article is already live.
+
+- **Edit.** Change the article JSON first, then run `edit`. It sets
+  `dateModified` and appends to `editHistory` with a Helsinki timestamp. The
+  build turns the newest entry into a visible **"Edited 5.8.2026 at 14:32"**
+  line, both under the byline and above the article body, so a reader is never
+  shown silently-altered text. Only run it for a real content change; the stamp
+  is a claim to the reader, so a whitespace fix does not earn one.
+  Re-run `node scripts/check-blog-freshness.mjs` before opening the PR — an
+  edit is the most common way a fresh article becomes a stale one.
+- **Hide.** Sets `status: "hidden"`. The build then emits nothing for the
+  article: no page (any existing one is deleted), no card on `blog.html`, no
+  sitemap entry, and the freshness gate skips it. The JSON stays in the repo,
+  so `unhide` restores it exactly. This is the reversible option and the right
+  one for "take it down while we check something".
+- **Delete.** Removes the JSON and the page for good and adds a permanent
+  redirect from the old URL to `/blog.html` in `vercel.json`, so an inbound
+  link or a search result does not land on a 404. It needs `--confirm <slug>`
+  spelled out. Prefer `hide` unless the content must not exist; git history
+  keeps the text either way (`git show <ref>:blog-content/<slug>.json`).
+
+The pipeline agent may edit and hide on its own when the freshness gate names
+an article — those are corrections. It never deletes: deletion is a human call.
+
 ## Source policy
 - **Tier 1 (primary)**: company filings, IR releases, exchange data (Nasdaq
   Helsinki/NASDAQ), regulators, central banks, official statistics, our own

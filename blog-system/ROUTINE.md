@@ -62,6 +62,15 @@ A non-zero exit means published or in-review articles state ratings the current
 reports contradict. Refreshing those takes priority over writing anything new.
 Fix what it names, per PIPELINE.md section 1.
 
+When you correct an article that is already live, stamp it so readers see the
+change (PIPELINE.md "Post-publication lifecycle"):
+  node scripts/blog-admin.mjs edit <slug> --note "what changed"
+If a live article cannot be corrected this run, take it down rather than leave
+wrong numbers up:
+  node scripts/blog-admin.mjs hide <slug> --note "why"
+NEVER run 'blog-admin.mjs delete'. Deleting a published article is a human
+decision; hide is reversible and is always the pipeline's option.
+
 STEP 4 - Then the weekly article, if velocity allows:
 Follow PIPELINE.md sections 2 to 7. Populate dataProvenance on every article you
 write or refresh so the freshness gate can verify it later. Before opening the
@@ -92,6 +101,10 @@ GIT WORKFLOW for a new article:
   gh pr create --base main --title "Blog: {article title}" --body "{full PR body per PIPELINE.md section 7}"
   git checkout main
 
+For an edit, hide, or unhide of a live article, use the same PR flow on a
+branch named blog/{slug}-{edit|hide|unhide}, and include the ledger and
+vercel.json changes in the commit.
+
 CRITICAL: The PR is the human approval surface. Always create a PR, never push
 an article directly to main, and NEVER merge your own PR regardless of how long
 it has been open or how green its gates are. The human reviews and merges from
@@ -104,6 +117,12 @@ Before August 2026 the Routine fired four times a week (`30 18 * * 0,1,3,5`)
 with day-of-week branching in the prompt: Sunday proposed topics, Mon/Wed/Fri
 ran the full pipeline. That branching is gone, because with one run a week
 there is no day to branch on.
+
+August 2026 also gave the Routine the post-publication verbs. Before that, a
+live article could only be corrected by hand-editing its JSON, which left no
+record and told the reader nothing. `scripts/blog-admin.mjs` now handles edit,
+hide, unhide, and delete, and a corrected article carries a visible "Edited
+&lt;date&gt; at &lt;time&gt;" line. The Routine may edit and hide; it may not delete.
 
 Two steps were added that did not exist before. `report-index.mjs` resolves the
 current report per company, because report filenames do not reliably indicate
