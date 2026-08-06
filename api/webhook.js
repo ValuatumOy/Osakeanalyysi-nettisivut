@@ -101,7 +101,13 @@ const handler = async (req, res) => {
 
           try {
             if (email) {
-              await sendReportEmail(email, report);
+              // The catalog no longer hands out a URL for a paid report, so the
+              // receipt links to the gated download keyed on this session.
+              await sendReportEmail(email, {
+                ...report,
+                pdfUrl: `${(process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '')}` +
+                  `/api/report-download?session_id=${encodeURIComponent(session.id)}`,
+              });
             } else {
               console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
             }
