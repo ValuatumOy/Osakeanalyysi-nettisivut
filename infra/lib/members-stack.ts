@@ -104,7 +104,12 @@ export class MembersStack extends Stack {
     const httpApi = new apigwv2.HttpApi(this, 'MembersHttpApi', {
       apiName: `AiEquityReportsMembers${config.suffix}`,
       corsPreflight: {
-        allowOrigins: ['http://localhost:3000', 'http://localhost:3100', config.siteUrl],
+        allowOrigins: [
+          'http://localhost:3000',
+          'http://localhost:3100',
+          config.siteUrl,
+          `https://${config.zoneDomain}`, // apex — the site answers on both
+        ],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
         maxAge: Duration.days(1),
