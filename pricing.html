@@ -84,7 +84,7 @@
       <div class="container">
         <span class="section-eyebrow section-eyebrow--light">Pricing</span>
         <h1 class="section-headline section-headline--light" style="max-width:600px;">Simple, transparent pricing.</h1>
-        <p style="font-size:var(--text-md); font-weight:300; color:rgba(255,255,255,0.6); max-width:520px;">Ready reports and fresh reports on demand. No subscriptions required.</p>
+        <p style="font-size:var(--text-md); font-weight:300; color:rgba(255,255,255,0.6); max-width:520px;">Ready reports and fresh reports on demand — or a membership that fits how much research you read.</p>
       </div>
     </section>
 
@@ -165,6 +165,82 @@
 
         </div>
 
+        <!-- MEMBERSHIPS -->
+        <div style="margin-bottom:3rem;">
+          <span class="section-eyebrow">Memberships</span>
+          <h2 class="section-headline" style="margin-bottom:0.75rem;">Read more, pay less.</h2>
+          <p style="font-size:var(--text-md); font-weight:300; color:var(--gray-steel); max-width:640px; margin-bottom:2rem;">Pick reports from our catalog every month at a fraction of the one-off price. Billed by Stripe, cancel anytime. <a href="members.html" style="color:var(--green);">Go to the member area →</a></p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem;">
+
+            <!-- Analyst freemium -->
+            <div class="pricing-card">
+              <span class="pricing-badge" style="background:#0A66C2; color:white;">For analysts</span>
+              <div class="pricing-name">Analyst</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€0</span></div>
+              <div class="pricing-period">free · sign in with LinkedIn</div>
+              <p class="pricing-desc">For equity analysts who want to build a public track record. You get free generations — in exchange your finished report and your modification prompts are published on the site.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>1 fresh report generation per month</li>
+                <li>You publish the report + your prompts</li>
+                <li>2 catalog reports per month (30+ days old)</li>
+                <li>LinkedIn identity on your published work</li>
+              </ul>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Sign in with LinkedIn</a>
+            </div>
+
+            <!-- Investor -->
+            <div class="pricing-card">
+              <div class="pricing-name">Investor</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€19</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/month</span></div>
+              <div class="pricing-period">or €190/year — 2 months free</div>
+              <p class="pricing-desc">For active private investors. Pick any five reports from the catalog every month — that's €3.80 per report versus €20 one-off.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>5 self-picked catalog reports per month</li>
+                <li>Any report, including the newest</li>
+                <li>Fresh generations at member price</li>
+                <li>Cancel anytime</li>
+              </ul>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Investor</a>
+            </div>
+
+            <!-- Investor Plus -->
+            <div class="pricing-card pricing-card--featured">
+              <span class="pricing-badge">Best value</span>
+              <div class="pricing-name">Investor Plus</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€39</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/month</span></div>
+              <div class="pricing-period">or €390/year — 2 months free</div>
+              <p class="pricing-desc">For investors who cover a wide portfolio. Fifteen catalog reports a month plus one private fresh generation — a €50 value on its own.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>15 self-picked catalog reports per month</li>
+                <li>1 private fresh generation per month</li>
+                <li>Fresh report stays private to you</li>
+                <li>Cancel anytime</li>
+              </ul>
+              <a href="members.html" class="btn btn-primary pricing-card-cta" style="width:100%; justify-content:center;">Start Investor Plus</a>
+            </div>
+
+            <!-- Company Coverage -->
+            <div class="pricing-card">
+              <span class="pricing-badge" style="background:var(--gold); color:white;">Follow one company</span>
+              <div class="pricing-name">Company Coverage</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€59</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/year</span></div>
+              <div class="pricing-period">one company · a year of coverage</div>
+              <p class="pricing-desc">Own shares in one company and want to stay on top of it? Get its latest report now and every update through the year.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>One listed company of your choice</li>
+                <li>Latest report immediately</li>
+                <li>4 report updates per year</li>
+                <li>Roughly quarterly coverage</li>
+              </ul>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Coverage</a>
+            </div>
+
+          </div>
+
+          <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-top:1.25rem; line-height:1.7;">Monthly quotas reset on the 1st of each calendar month and unused picks don't roll over. Reports opened with a membership are available for as long as the subscription is active; one-off purchases are yours to keep. Analyst freemium picks are limited to reports older than 30 days.</p>
+        </div>
+
         <!-- Comparison table hint -->
         <div style="background:var(--off-white); border:1px solid var(--color-border); border-radius:var(--r-xl); padding:2rem; margin-bottom:3rem;">
           <h3 style="font-size:var(--text-md); font-weight:500; color:var(--charcoal); margin-bottom:1rem;">What's included in every paid report</h3>
@@ -209,6 +285,18 @@
           <div class="faq-item">
             <button class="faq-question">What is the difference between an existing report and a fresh report?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
             <div class="faq-answer"><p>Ready reports (€20) were generated recently and reflect data from their generation date — available for the companies listed in our catalog. Fresh reports (€50) are generated specifically for your order with the latest available financial data, for any listed company you request.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How does the free Analyst membership work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Sign in with LinkedIn and you can generate one fresh AI report every month for free. In exchange, your finished report and the modification prompts you used are published on the site under your name. You don't get a new free generation until the previous one has been submitted for publication. You can also open two catalog reports per month, as long as they are older than 30 days.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Do unused monthly picks roll over?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>No. Quotas reset on the 1st of each calendar month and unused picks or generations don't carry over.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What happens to my reports if I cancel my subscription?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Reports opened with a membership are available for as long as your subscription is active. Reports bought as one-off purchases (€20 ready / €50 fresh) are yours to keep regardless of any subscription.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Can I use reports in client work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
