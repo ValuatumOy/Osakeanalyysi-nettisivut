@@ -24,9 +24,16 @@ non-prod. Nothing here ships with the prod API Lambda.
   Submitting also publishes the modification prompts (`promptsText` on the PUB item).
 - **Regular visitors**: weekly free-rotation reports only (`isFree` reports gate
   nothing) — unchanged from prod behaviour.
-- **Investor 19 €/mo / 190 €/yr**: 5 picks/month. **Investor Plus 39 €/mo /
-  390 €/yr**: 15 picks/month. **Company Coverage 59 €/yr**: covered company only,
-  initial report once + 4 updates/calendar year.
+- **Investor 19 €/mo / 190 €/yr**: 3 picks/month monthly, 5 annual. **Investor
+  Plus 39 €/mo / 390 €/yr**: 10 picks/month monthly, 15 annual, plus one private
+  generation per month (no publish obligation). **Company Coverage 59 €/yr**:
+  covered company only, initial report once + 4 updates/calendar year.
+- Monthly plans deliberately get a smaller allowance than annual ones: at the
+  20 € one-off price, 5 picks for one 19 € month is 100 € of product and the
+  subscriber can cancel immediately (the PDF is already downloaded).
+- **Fresh reports cost members 40 €** instead of 50 €. The discount is applied
+  server-side in `POST /billing/fresh-checkout` from the live subscription
+  status — the client never selects the price.
 - Quota period = calendar month (UTC), key `YYYY-MM`. No rollover.
 - All quota writes are DynamoDB TransactWriteItems with condition expressions
   (`server/members/quota.js` builders) — concurrent requests cannot overspend.
