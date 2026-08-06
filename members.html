@@ -146,8 +146,8 @@
               <div class="name">Investor</div>
               <div class="price">€19 <span>/ month · €190 / year</span></div>
               <ul>
-                <li>5 self-picked reports every month</li>
-                <li>Fresh generation at member price</li>
+                <li>3 reports per month, 5 on the yearly plan</li>
+                <li>Fresh generations at the €40 member price</li>
               </ul>
               <div class="actions">
                 <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
@@ -158,7 +158,7 @@
               <div class="name">Investor Plus</div>
               <div class="price">€39 <span>/ month · €390 / year</span></div>
               <ul>
-                <li>15 self-picked reports every month</li>
+                <li>10 reports per month, 15 on the yearly plan</li>
                 <li>1 private fresh generation per month</li>
               </ul>
               <div class="actions">
@@ -182,8 +182,8 @@
         </div>
 
         <div class="m-card m-section" id="genCard" hidden>
-          <h2>Monthly free generation</h2>
-          <p class="sub">Reserve your free report generation. Before the next one unlocks you must submit the finished report and your modification prompts for publication.</p>
+          <h2 id="genTitle">Monthly generation</h2>
+          <p class="sub" id="genSub">Reserve your report generation for this month.</p>
           <div id="genStatus" class="muted"></div>
           <div class="gen-row">
             <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Reserve free generation</button>
@@ -289,13 +289,22 @@
         '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>').join('');
 
       document.getElementById('plansCard').hidden = data.tier !== 'none';
+
+      // Analysts owe a publication for their free run; Investor Plus members
+      // get a private one with no strings attached.
+      const isAnalyst = data.role === 'analyst';
       const genCard = document.getElementById('genCard');
-      genCard.hidden = data.role !== 'analyst';
-      if (data.role === 'analyst') {
+      genCard.hidden = !data.hasGeneration;
+      if (data.hasGeneration) {
         const ob = data.openObligationId;
+        document.getElementById('genTitle').textContent =
+          isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
+        document.getElementById('genSub').textContent = isAnalyst
+          ? 'Reserve your free report generation. Before the next one unlocks you must submit the finished report and your modification prompts for publication.'
+          : 'Reserve your monthly fresh report. It stays private to you — nothing is published.';
         document.getElementById('genStatus').textContent = ob
           ? 'Open publication obligation — submit your report and prompts to unlock the next generation.'
-          : (u.genReserved ? 'This month’s generation is used.' : 'Your free generation is available.');
+          : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
         document.getElementById('reserveBtn').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
         window._openObligationId = ob;

@@ -2,9 +2,18 @@
 // here — every function returns command params so tests can assert the exact
 // ConditionExpressions. All quota periods are calendar-based (UTC).
 
-const PICK_LIMITS = { free: 2, investor: 5, investor_plus: 15 };
+// Monthly plans deliberately get fewer picks than annual ones: at the €20
+// one-off price, 5 picks for one €19 month is worth €100 and nothing stops a
+// subscriber cancelling straight after (the PDF is already downloaded).
+const PICK_LIMITS = {
+  free: { month: 2, year: 2 },
+  investor: { month: 3, year: 5 },
+  investor_plus: { month: 10, year: 15 },
+};
 const FREEMIUM_MIN_AGE_DAYS = 30;
 const COVERAGE_UPDATES_PER_YEAR = 4;
+// Tiers that include a private monthly generation (no publish obligation).
+const GENERATION_TIERS = new Set(['investor_plus']);
 
 function monthKey(now) {
   return now.toISOString().slice(0, 7); // YYYY-MM
@@ -14,8 +23,15 @@ function yearKey(now) {
   return now.toISOString().slice(0, 4); // YYYY
 }
 
-function pickLimitForTier(tier) {
-  return PICK_LIMITS[tier] ?? 0;
+// Annual subscribers get the larger allowance; anything unknown gets none.
+function pickLimitForTier(tier, interval = 'month') {
+  const limits = PICK_LIMITS[tier];
+  if (!limits) return 0;
+  return limits[interval === 'year' ? 'year' : 'month'];
+}
+
+function hasMemberGeneration(tier) {
+  return GENERATION_TIERS.has(tier);
 }
 
 // Freemium picks only reports older than 30 days. ageDays comes from the
@@ -46,6 +62,37 @@ function buildPickTransact({ table, userId, now, limit, reportId, source }) {
             sk: `ENT#${reportId}`,
             source,
             grantedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// Reserve a paying member's monthly generation (Investor Plus). No publish
+// obligation — the report stays private — so the only gate is one per month.
+function buildReserveMemberGenerationTransact({ table, userId, now, genId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'SET genReserved = :true, genId = :genId',
+          ConditionExpression: 'attribute_not_exists(genReserved)',
+          ExpressionAttributeValues: { ':true': true, ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            reservedAt: now.toISOString(),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
         },
@@ -181,12 +228,15 @@ module.exports = {
   PICK_LIMITS,
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
+  GENERATION_TIERS,
   monthKey,
   yearKey,
   pickLimitForTier,
+  hasMemberGeneration,
   freemiumPickEligible,
   buildPickTransact,
   buildReserveGenerationTransact,
+  buildReserveMemberGenerationTransact,
   buildSubmitTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,

@@ -102,6 +102,15 @@ function requestNow(event) {
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
 
+// Monthly and annual plans have different allowances — see quota.PICK_LIMITS.
+const billingInterval = (profile) => (profile.billingInterval === 'year' ? 'year' : 'month');
+
+const FRESH_LIST_PRICE = 50;
+const FRESH_MEMBER_PRICE = 40;
+
+const freshReportPrice = (profile) =>
+  activeTier(profile) !== 'none' ? FRESH_MEMBER_PRICE : FRESH_LIST_PRICE;
+
 async function findReport(reportId, now) {
   const { catalog } = await catalogAws.buildCatalogAws({ now });
   return catalog.reports.find(item => item.id === reportId) || null;
@@ -189,8 +198,9 @@ async function getMe(event) {
   ]);
 
   const tier = activeTier(profile);
-  const pickLimit = tier !== 'none' ? quota.pickLimitForTier(tier)
-    : profile.role === 'analyst' ? quota.PICK_LIMITS.free : 0;
+  const interval = billingInterval(profile);
+  const pickLimit = tier !== 'none' ? quota.pickLimitForTier(tier, interval)
+    : profile.role === 'analyst' ? quota.pickLimitForTier('free') : 0;
 
   return json(200, {
     userId: profile.userId,
@@ -198,9 +208,12 @@ async function getMe(event) {
     role: profile.role,
     tier: profile.tier,
     tierStatus: profile.tierStatus,
+    billingInterval: profile.billingInterval || null,
     coverageCompanyId: profile.coverageCompanyId || null,
     banned: Boolean(profile.banned),
     month: monthKey,
+    freshReportPrice: freshReportPrice(profile),
+    hasGeneration: profile.role === 'analyst' || quota.hasMemberGeneration(tier),
     usage: {
       picks: usage?.picks || 0,
       pickLimit,
@@ -268,10 +281,16 @@ async function postReportOpen(event) {
     return json(429, { error: 'Yearly coverage updates used up' });
   }
 
-  // Investor tiers: N self-picked reports per calendar month.
+  // Investor tiers: N self-picked reports per calendar month (annual plans
+  // get more — see quota.PICK_LIMITS).
   if (tier === 'investor' || tier === 'investor_plus') {
     const committed = await store.runTransact(quota.buildPickTransact({
-      table, userId: profile.userId, now, limit: quota.pickLimitForTier(tier), reportId, source: 'pick',
+      table,
+      userId: profile.userId,
+      now,
+      limit: quota.pickLimitForTier(tier, billingInterval(profile)),
+      reportId,
+      source: 'pick',
     }));
     if (committed) return sign('pick');
     if (await store.getEntitlement(profile.userId, reportId)) return sign('pick');
@@ -284,7 +303,7 @@ async function postReportOpen(event) {
       return json(403, { error: `Freemium picks must be older than ${quota.FREEMIUM_MIN_AGE_DAYS} days` });
     }
     const committed = await store.runTransact(quota.buildPickTransact({
-      table, userId: profile.userId, now, limit: quota.PICK_LIMITS.free, reportId, source: 'free_pick',
+      table, userId: profile.userId, now, limit: quota.pickLimitForTier('free'), reportId, source: 'free_pick',
     }));
     if (committed) return sign('free_pick');
     if (await store.getEntitlement(profile.userId, reportId)) return sign('free_pick');
@@ -296,30 +315,38 @@ async function postReportOpen(event) {
 
 // POST /generations/free — reserve the analyst's monthly free generation.
 // The real engine run is wired later; the reservation + obligation is the point.
+// Analysts get a free generation against a publish obligation; Investor Plus
+// members get a private one as part of the subscription. Same monthly slot.
 async function postGenerationsFree(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
   if (deny) return deny;
-  if (profile.role !== 'analyst') return json(403, { error: 'Free generations are for analysts only' });
+
+  const isAnalyst = profile.role === 'analyst';
+  const isMember = quota.hasMemberGeneration(activeTier(profile));
+  if (!isAnalyst && !isMember) {
+    return json(403, { error: 'Your plan does not include a monthly generation' });
+  }
 
   const genId = crypto.randomUUID();
-  const committed = await store.runTransact(quota.buildReserveGenerationTransact({
+  const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
+  const committed = await store.runTransact(build({
     table: store.table(), userId: profile.userId, now, genId,
   }));
   if (!committed) {
     const fresh = await store.getProfile(profile.userId);
-    if (fresh?.openObligationId) {
+    if (isAnalyst && fresh?.openObligationId) {
       return json(409, {
         error: 'Previous generated report must be submitted for publication first',
         openObligationId: fresh.openObligationId,
       });
     }
-    return json(429, { error: 'Monthly free generation already used' });
+    return json(429, { error: 'Monthly generation already used' });
   }
-  await store.audit(profile.userId, 'generation-reserved', { genId });
+  await store.audit(profile.userId, 'generation-reserved', { genId, private: !isAnalyst });
   // ponytail: engine invocation stubbed — status stays 'generating' until the
   // worker wiring lands (real runs cost real engine time).
-  return json(200, { genId, status: 'generating' });
+  return json(200, { genId, status: 'generating', private: !isAnalyst });
 }
 
 async function postGenerationSubmit(event) {
@@ -403,6 +430,44 @@ async function postBillingCheckout(event) {
   return json(200, { url: session.url });
 }
 
+// POST /billing/fresh-checkout — a fresh report at the member price. The
+// discount is applied server-side from the live subscription status; the client
+// never picks the price.
+async function postFreshCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const company = String(body.company || '').trim();
+  if (!company) return json(400, { error: 'company is required' });
+
+  const isMember = activeTier(profile) !== 'none';
+  const priceId = memberPrices().fresh?.[isMember ? 'member' : 'list'];
+  if (!priceId) return json(503, { error: 'Fresh report pricing is not configured' });
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    customer: profile.stripeCustomerId || undefined,
+    customer_email: profile.stripeCustomerId ? undefined : (profile.email || undefined),
+    line_items: [{ price: priceId, quantity: 1 }],
+    client_reference_id: profile.userId,
+    metadata: {
+      isFresh: 'true',
+      userId: profile.userId,
+      company,
+      ticker: String(body.ticker || '').toUpperCase(),
+      exchange: String(body.exchange || ''),
+      memberPrice: String(isMember),
+    },
+    success_url: `${auth.frontendUrl(body.returnTo)}#fresh=ordered`,
+    cancel_url: `${auth.frontendUrl(body.returnTo)}#fresh=cancel`,
+  });
+  await store.audit(profile.userId, 'fresh-checkout', { company, memberPrice: isMember });
+  return json(200, { url: session.url, price: freshReportPrice(profile) });
+}
+
 const SUB_STATUS_MAP = {
   active: 'active',
   trialing: 'active',
@@ -416,9 +481,13 @@ const SUB_STATUS_MAP = {
 async function applySubscription(userId, subscription) {
   const status = SUB_STATUS_MAP[subscription.status] || 'none';
   const plan = subscription.metadata?.plan || 'investor';
+  // Annual plans carry a larger monthly allowance, so the interval is part of
+  // the entitlement, not just billing trivia.
+  const interval = subscription.items?.data?.[0]?.price?.recurring?.interval === 'year' ? 'year' : 'month';
   const patch = {
     tierStatus: status,
     tier: status === 'canceled' || status === 'none' ? 'none' : plan,
+    billingInterval: interval,
     stripeSubscriptionId: subscription.id,
     currentPeriodEnd: subscription.current_period_end || 0,
   };
@@ -552,6 +621,7 @@ const AUTHED_ROUTES = {
   'POST /generations/free': postGenerationsFree,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /billing/checkout': postBillingCheckout,
+  'POST /billing/fresh-checkout': postFreshCheckout,
 };
 
 const ADMIN_ROUTES = {

@@ -18,12 +18,40 @@ test('yearKey', () => {
   assert.equal(quota.yearKey(new Date('2027-01-01T00:00:00Z')), '2027');
 });
 
-test('tier pick limits: freemium 2, investor 5, plus 15', () => {
-  assert.equal(quota.PICK_LIMITS.free, 2);
-  assert.equal(quota.pickLimitForTier('investor'), 5);
-  assert.equal(quota.pickLimitForTier('investor_plus'), 15);
+test('pick limits: monthly plans get fewer picks than annual ones', () => {
+  assert.equal(quota.pickLimitForTier('free'), 2);
+  assert.equal(quota.pickLimitForTier('investor', 'month'), 3);
+  assert.equal(quota.pickLimitForTier('investor', 'year'), 5);
+  assert.equal(quota.pickLimitForTier('investor_plus', 'month'), 10);
+  assert.equal(quota.pickLimitForTier('investor_plus', 'year'), 15);
+});
+
+test('pick limits: unknown tier/interval never grants access', () => {
   assert.equal(quota.pickLimitForTier('none'), 0);
   assert.equal(quota.pickLimitForTier(undefined), 0);
+  assert.equal(quota.pickLimitForTier('coverage'), 0); // coverage picks go through its own path
+  assert.equal(quota.pickLimitForTier('investor'), 3); // defaults to the monthly (smaller) allowance
+  assert.equal(quota.pickLimitForTier('investor', 'nonsense'), 3);
+});
+
+test('only Investor Plus includes a private monthly generation', () => {
+  assert.equal(quota.hasMemberGeneration('investor_plus'), true);
+  assert.equal(quota.hasMemberGeneration('investor'), false);
+  assert.equal(quota.hasMemberGeneration('coverage'), false);
+  assert.equal(quota.hasMemberGeneration('none'), false);
+});
+
+test('member generation reserves the month slot without a publish obligation', () => {
+  const now = new Date('2026-08-06T12:00:00Z');
+  const params = quota.buildReserveMemberGenerationTransact({
+    table: TABLE, userId: 'u1', now, genId: 'g1',
+  });
+  const items = params.TransactItems;
+  assert.equal(items.length, 2); // no PROFILE obligation write
+  assert.equal(items[0].Update.Key.sk, 'USAGE#2026-08');
+  assert.equal(items[0].Update.ConditionExpression, 'attribute_not_exists(genReserved)');
+  assert.equal(items[1].Put.Item.private, true);
+  assert.ok(!JSON.stringify(params).includes('openObligationId'));
 });
 
 test('freemium age gate: only reports 30 days or older', () => {

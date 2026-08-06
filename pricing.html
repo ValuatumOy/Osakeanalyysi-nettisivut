@@ -22,6 +22,17 @@
   <style>
     .enterprise-features-list li { color: rgba(255,255,255,0.85) !important; }
     .enterprise-features-list li::before { background: var(--green-light) !important; }
+
+    .billing-toggle { display:inline-flex; gap:0.25rem; padding:0.25rem; margin-bottom:2rem;
+      background:var(--off-white); border:1px solid var(--color-border); border-radius:999px; }
+    .billing-toggle-btn { border:none; background:none; cursor:pointer; font:inherit;
+      font-size:var(--text-sm); font-weight:500; color:var(--gray-steel);
+      padding:0.55em 1.4em; border-radius:999px; transition:background var(--trs), color var(--trs); }
+    .billing-toggle-btn:hover { color:var(--charcoal); }
+    .billing-toggle-btn.is-active { background:var(--white); color:var(--charcoal);
+      box-shadow:0 1px 3px rgba(26,36,32,0.10); }
+    .billing-save { display:inline-block; margin-left:0.5em; font-size:var(--text-xs); font-weight:600;
+      color:var(--green-deep); background:var(--green-mist); border-radius:999px; padding:0.15em 0.7em; }
   </style>
 </head>
 <body>
@@ -169,7 +180,13 @@
         <div style="margin-bottom:3rem;">
           <span class="section-eyebrow">Memberships</span>
           <h2 class="section-headline" style="margin-bottom:0.75rem;">Read more, pay less.</h2>
-          <p style="font-size:var(--text-md); font-weight:300; color:var(--gray-steel); max-width:640px; margin-bottom:2rem;">Pick reports from our catalog every month at a fraction of the one-off price. Billed by Stripe, cancel anytime. <a href="members.html" style="color:var(--green);">Go to the member area →</a></p>
+          <p style="font-size:var(--text-md); font-weight:300; color:var(--gray-steel); max-width:640px; margin-bottom:1.75rem;">Pick reports from our catalog every month at a fraction of the one-off price. Billed by Stripe, cancel anytime. <a href="members.html" style="color:var(--green);">Go to the member area →</a></p>
+
+          <!-- Billing toggle -->
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button type="button" class="billing-toggle-btn is-active" data-interval="month" aria-pressed="true">Monthly</button>
+            <button type="button" class="billing-toggle-btn" data-interval="year" aria-pressed="false">Yearly <span class="billing-save">2 months free</span></button>
+          </div>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem;">
 
@@ -192,13 +209,16 @@
             <!-- Investor -->
             <div class="pricing-card">
               <div class="pricing-name">Investor</div>
-              <div class="pricing-price-wrap"><span class="pricing-price-main">€19</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/month</span></div>
-              <div class="pricing-period">or €190/year — 2 months free</div>
-              <p class="pricing-desc">For active private investors. Pick any five reports from the catalog every month — that's €3.80 per report versus €20 one-off.</p>
+              <div class="pricing-price-wrap">
+                <span class="pricing-price-main" data-price-month="€19" data-price-year="€190">€19</span><span style="font-size:var(--text-sm); color:var(--gray-steel);" data-suffix-month="/month" data-suffix-year="/year">/month</span>
+              </div>
+              <div class="pricing-period" data-period-month="€19/month · billed monthly" data-period-year="€190/year · €15.83/month">€19/month · billed monthly</div>
+              <p class="pricing-desc">For active private investors who follow a handful of companies. Pick reports from the catalog every month at a fraction of the €20 one-off price.</p>
               <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
-                <li>5 self-picked catalog reports per month</li>
+                <li data-feat-month="3 self-picked reports per month" data-feat-year="5 self-picked reports per month">3 self-picked reports per month</li>
+                <li data-feat-month="€6.33 per report" data-feat-year="€3.17 per report">€6.33 per report</li>
                 <li>Any report, including the newest</li>
-                <li>Fresh generations at member price</li>
+                <li>Fresh generations at the €40 member price</li>
                 <li>Cancel anytime</li>
               </ul>
               <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Investor</a>
@@ -208,13 +228,16 @@
             <div class="pricing-card pricing-card--featured">
               <span class="pricing-badge">Best value</span>
               <div class="pricing-name">Investor Plus</div>
-              <div class="pricing-price-wrap"><span class="pricing-price-main">€39</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/month</span></div>
-              <div class="pricing-period">or €390/year — 2 months free</div>
-              <p class="pricing-desc">For investors who cover a wide portfolio. Fifteen catalog reports a month plus one private fresh generation — a €50 value on its own.</p>
+              <div class="pricing-price-wrap">
+                <span class="pricing-price-main" data-price-month="€39" data-price-year="€390">€39</span><span style="font-size:var(--text-sm); color:var(--gray-steel);" data-suffix-month="/month" data-suffix-year="/year">/month</span>
+              </div>
+              <div class="pricing-period" data-period-month="€39/month · billed monthly" data-period-year="€390/year · €32.50/month">€39/month · billed monthly</div>
+              <p class="pricing-desc">For investors covering a wide portfolio. A large monthly report allowance plus one private fresh generation — a €50 product on its own.</p>
               <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
-                <li>15 self-picked catalog reports per month</li>
+                <li data-feat-month="10 self-picked reports per month" data-feat-year="15 self-picked reports per month">10 self-picked reports per month</li>
                 <li>1 private fresh generation per month</li>
-                <li>Fresh report stays private to you</li>
+                <li>Your fresh report stays private to you</li>
+                <li>Extra generations at the €40 member price</li>
                 <li>Cancel anytime</li>
               </ul>
               <a href="members.html" class="btn btn-primary pricing-card-cta" style="width:100%; justify-content:center;">Start Investor Plus</a>
@@ -225,7 +248,7 @@
               <span class="pricing-badge" style="background:var(--gold); color:white;">Follow one company</span>
               <div class="pricing-name">Company Coverage</div>
               <div class="pricing-price-wrap"><span class="pricing-price-main">€59</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/year</span></div>
-              <div class="pricing-period">one company · a year of coverage</div>
+              <div class="pricing-period">one company · billed yearly only</div>
               <p class="pricing-desc">Own shares in one company and want to stay on top of it? Get its latest report now and every update through the year.</p>
               <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
                 <li>One listed company of your choice</li>
@@ -238,7 +261,7 @@
 
           </div>
 
-          <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-top:1.25rem; line-height:1.7;">Monthly quotas reset on the 1st of each calendar month and unused picks don't roll over. Reports opened with a membership are available for as long as the subscription is active; one-off purchases are yours to keep. Analyst freemium picks are limited to reports older than 30 days.</p>
+          <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-top:1.25rem; line-height:1.7;">Yearly plans include a larger monthly report allowance and cost the equivalent of ten months. Quotas reset on the 1st of each calendar month and unused picks don't roll over. Reports opened with a membership are available for as long as the subscription is active; one-off purchases are yours to keep. Analyst freemium picks are limited to reports older than 30 days.</p>
         </div>
 
         <!-- Comparison table hint -->
@@ -292,7 +315,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-question">Do unused monthly picks roll over?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-            <div class="faq-answer"><p>No. Quotas reset on the 1st of each calendar month and unused picks or generations don't carry over.</p></div>
+            <div class="faq-answer"><p>No. Quotas reset on the 1st of each calendar month and unused picks or generations don't carry over. Yearly plans carry a larger monthly allowance than the equivalent monthly plan.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">What happens to my reports if I cancel my subscription?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
@@ -370,5 +393,32 @@
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Monthly/yearly toggle: every switchable bit of copy carries both values
+    // as data-*-month / data-*-year, so there is one source of truth per card.
+    (function () {
+      const buttons = document.querySelectorAll('.billing-toggle-btn');
+      if (!buttons.length) return;
+
+      const SWAPS = ['price', 'suffix', 'period', 'feat'];
+
+      function apply(interval) {
+        for (const key of SWAPS) {
+          for (const el of document.querySelectorAll(`[data-${key}-${interval}]`)) {
+            el.textContent = el.dataset[`${key}${interval === 'year' ? 'Year' : 'Month'}`];
+          }
+        }
+        for (const btn of buttons) {
+          const active = btn.dataset.interval === interval;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+        }
+      }
+
+      for (const btn of buttons) {
+        btn.addEventListener('click', () => apply(btn.dataset.interval));
+      }
+    })();
+  </script>
 </body>
 </html>

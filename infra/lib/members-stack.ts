@@ -135,6 +135,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/generations/free'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
+      [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
       [apigwv2.HttpMethod.POST, '/admin/members/reject-publication'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],
