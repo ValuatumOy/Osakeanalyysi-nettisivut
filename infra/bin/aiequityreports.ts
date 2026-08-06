@@ -66,7 +66,9 @@ if (config.stage !== 'prod') {
     env: euWest1,
     config,
     catalogStateTable: storage.catalogStateTable,
+    ordersTable: storage.ordersTable,
     pdfBucket: files.pdfBucket,
     alertsTopic: storage.alertsTopic,
+    workerFunction: worker.workerFunction,
   });
 }

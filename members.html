@@ -185,9 +185,12 @@
           <h2 id="genTitle">Monthly generation</h2>
           <p class="sub" id="genSub">Reserve your report generation for this month.</p>
           <div id="genStatus" class="muted"></div>
-          <div class="gen-row">
-            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Reserve free generation</button>
+          <div class="gen-row" id="reserveRow">
+            <input id="genCompany" placeholder="Company name, e.g. Nokia Oyj" style="flex:1 1 220px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+            <input id="genTicker" placeholder="Ticker, e.g. NOKIA" style="flex:0 1 130px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Start generation</button>
           </div>
+          <div id="genProgress" class="muted" style="margin-top:0.75rem;"></div>
           <div class="gen-row" id="submitRow" hidden>
             <textarea id="prompts" placeholder="Your modification prompts (will be published with the report)"></textarea>
             <button class="btn btn-gold btn-sm" onclick="submitGen()">Submit for publication</button>
@@ -305,9 +308,12 @@
         document.getElementById('genStatus').textContent = ob
           ? 'Open publication obligation — submit your report and prompts to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
-        document.getElementById('reserveBtn').hidden = Boolean(ob) || u.genReserved;
+        document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
         window._openObligationId = ob;
+        // Resume watching a run that was already going when the page loaded.
+        const active = u.genId || localStorage.activeGenId;
+        if (active && u.genReserved) pollGeneration(active);
       }
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
       loadReports();
@@ -344,10 +350,39 @@
       else notice('err', (data && data.error) || ('Checkout failed (' + status + ')'));
     }
 
+    // A real engine run: minutes, not seconds. Poll until it settles.
+    const GEN_STATUS_TEXT = {
+      NEW: 'Queued — waiting for the generator to pick it up.',
+      IMPORTING: 'Refreshing the company’s financial data…',
+      RENDERING: 'Writing the report — this typically takes 20–40 minutes.',
+      DELIVERED: 'Done. The PDF is in your library and on its way by email.',
+      FAILED: 'Generation failed.',
+    };
+
     async function reserveGen() {
-      const { status, data } = await api('POST', '/generations/free');
-      if (status === 200) { notice('ok', 'Generation reserved (' + data.genId + '). Submit it for publication once finished.'); loadMe(); }
-      else notice('err', (data && data.error) || ('Reservation failed (' + status + ')'));
+      const company = document.getElementById('genCompany').value.trim();
+      const ticker = document.getElementById('genTicker').value.trim();
+      if (!company || !ticker) { notice('err', 'Enter both the company name and its ticker.'); return; }
+
+      const { status, data } = await api('POST', '/generations/free', { company, ticker });
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }
+      notice('ok', 'Generation started for ' + data.company + '. You can leave this page — the report is emailed when it is ready.');
+      localStorage.activeGenId = data.genId;
+      loadMe();
+      pollGeneration(data.genId);
+    }
+
+    async function pollGeneration(genId) {
+      const out = document.getElementById('genProgress');
+      const { status, data } = await api('GET', '/generations/' + genId);
+      if (status !== 200) { out.textContent = ''; return; }
+      out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      if (data.status === 'DELIVERED' || data.status === 'FAILED') {
+        delete localStorage.activeGenId;
+        loadMe();
+        return;
+      }
+      setTimeout(() => pollGeneration(genId), 30000);
     }
 
     async function submitGen() {

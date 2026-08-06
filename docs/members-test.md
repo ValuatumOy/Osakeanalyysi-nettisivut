@@ -37,8 +37,18 @@ non-prod. Nothing here ships with the prod API Lambda.
 - Quota period = calendar month (UTC), key `YYYY-MM`. No rollover.
 - All quota writes are DynamoDB TransactWriteItems with condition expressions
   (`server/members/quota.js` builders) — concurrent requests cannot overspend.
-- Entitlements: `oneoff` permanent; `pick`/`coverage` require active (or
-  past_due) subscription at sign time; `free_pick` requires analyst role.
+- **Generations run the real pipeline.** `POST /generations/free` reserves the
+  monthly slot, then creates an order in the stage's Orders table and pushes the
+  worker — the same reconciler path as a paid fresh report, against the stage's
+  engine (`pdf-report-api-test`). **Every reservation spends real engine time.**
+  The quota transaction commits first, so a rejected reservation never starts a
+  run. `GET /generations/{genId}` reports progress and hands over the
+  entitlement once the report is delivered.
+- Membership reports are ordered with `visibility: 'private'`, which makes
+  `reconciler.deliver()` write a hidden, unpriced sidecar even when
+  `RESALE_ENABLED` is on — a member's report is never resold from the catalog.
+- Entitlements: `oneoff` and `generation` permanent; `pick`/`coverage` require
+  active (or past_due) subscription at sign time; `free_pick` requires analyst role.
   Downloads are 5-minute S3 presigned GETs from `POST /reports/{id}/open`;
   the members `GET /reports` payload never exposes `pdfUrl`.
 
@@ -88,13 +98,20 @@ members-test API. All three sites share that API: the sign-in flows pass a
 lands back on the site they started from and an arbitrary URL cannot be
 injected.
 
-After any infra change: `cd infra && npx cdk diff -c stage=prod --all` must show
-**no changes** before anything is merged.
+After any infra change: `cd infra && npx cdk diff -c stage=prod --all`. It is
+**no longer zero** — wiring generations to the real pipeline touched
+`server/reconciler.js` and `server/aws/orders-store.js`, which the prod Worker
+and API Lambdas bundle, so their code hashes differ. The change is additive
+(`visibility` is only ever set by the members flow; without it every branch
+behaves exactly as before, covered by
+`test/members/generation-visibility.test.mjs`). Read the diff before any prod
+deploy rather than expecting an empty one.
 
 ## Known gaps / prod-rollout blockers
 
 - Prod public `/api/reports` still exposes permanent unsigned `pdfUrl` for paid
   reports — the paywall side door. Must be stripped when membership goes to prod.
-- Free-generation engine invocation is stubbed (PUB stays `generating`); wire
-  `ordersStore` + worker push when real runs are wanted (they cost engine time).
+- An analyst's submitted report is not auto-published: submitting records the
+  state, and an admin publishes it from the admin page (the members Lambda has
+  read-only access to the PDF bucket by design).
 - Final prices are business decisions; 19/39/59 are test points.

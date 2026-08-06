@@ -20,8 +20,10 @@ import { StageConfig } from './config';
 export interface MembersStackProps extends StackProps {
   config: StageConfig;
   catalogStateTable: dynamodb.ITable;
+  ordersTable: dynamodb.ITable;
   pdfBucket: s3.IBucket;
   alertsTopic: sns.ITopic;
+  workerFunction: lambda.IFunction;
 }
 
 /**
@@ -74,6 +76,11 @@ export class MembersStack extends Stack {
         STAGE: config.stage,
         MEMBERS_TABLE: membersTable.tableName,
         CATALOG_STATE_TABLE: props.catalogStateTable.tableName,
+        // Membership generations run through the same order pipeline as paid
+        // fresh reports: create the order, wake the worker, the reconciler does
+        // the rest.
+        ORDERS_TABLE: props.ordersTable.tableName,
+        WORKER_FUNCTION_NAME: props.workerFunction.functionName,
         REPORT_PDF_BUCKET: props.pdfBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
         REPORT_PDF_BASE_URL: config.pdfBaseUrl,
@@ -93,6 +100,9 @@ export class MembersStack extends Stack {
     membersTable.grantReadWriteData(membersFunction);
     props.catalogStateTable.grantReadData(membersFunction);
     props.pdfBucket.grantRead(membersFunction); // presigned GETs for entitled opens
+    // Create-only in practice: the worker owns order state transitions.
+    props.ordersTable.grantReadWriteData(membersFunction);
+    props.workerFunction.grantInvoke(membersFunction);
     membersFunction.addToRolePolicy(new iam.PolicyStatement({
       actions: ['ses:SendEmail'],
       resources: ['*'],
@@ -133,6 +143,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.GET, '/me'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
+      [apigwv2.HttpMethod.GET, '/generations/{genId}'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],

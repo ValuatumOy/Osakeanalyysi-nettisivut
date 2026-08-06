@@ -177,6 +177,11 @@ async function deliver(order, job) {
   // Phase 1 writes it hidden (email-only); with RESALE_ENABLED it is published
   // for resale immediately -- hidden:false + forceVisible skips the catalog's
   // visibleAfterDays delay -- at the configured discount price.
+  // A membership generation belongs to the member who ordered it: it is never
+  // resold from the catalog, whatever RESALE_ENABLED says.
+  const isPrivate = order.visibility === 'private';
+  const resell = RESALE_ENABLED && !isPrivate;
+
   const sidecar = {
     companyName: companyLabel,
     ticker: order.ticker || '',
@@ -186,13 +191,13 @@ async function deliver(order, job) {
     reportDate: reportDateIso,
     description: `AI equity report for ${companyLabel}, generated ${reportDateIso}.`,
     tags: ['AI Equity Report', 'PDF'],
-    hidden: !RESALE_ENABLED,
-    publicationStatus: RESALE_ENABLED ? 'ready' : 'hidden',
+    hidden: !resell,
+    publicationStatus: resell ? 'ready' : 'hidden',
     accessStatus: 'paid',
     excludeFromFree: true,
     provenance: { sessionId: order.id, jobId: order.jobId },
   };
-  if (RESALE_ENABLED) {
+  if (resell) {
     sidecar.forceVisible = true;
     // An explicit price matches how the existing catalog reports are written
     // (price on the sidecar, no priceLabel) and overrides the age tiers, which

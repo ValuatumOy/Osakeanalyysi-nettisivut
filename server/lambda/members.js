@@ -7,6 +7,7 @@
 const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
+const ordersStore = require('../aws/orders-store');
 const auth = require('../members/auth');
 const quota = require('../members/quota');
 const store = require('../members/store');
@@ -111,9 +112,18 @@ const FRESH_MEMBER_PRICE = 40;
 const freshReportPrice = (profile) =>
   activeTier(profile) !== 'none' ? FRESH_MEMBER_PRICE : FRESH_LIST_PRICE;
 
-async function findReport(reportId, now) {
-  const { catalog } = await catalogAws.buildCatalogAws({ now });
-  return catalog.reports.find(item => item.id === reportId) || null;
+// Wake the worker so a new order starts rendering now instead of waiting for
+// the 5-minute sweep. Same push the API Lambda does for paid fresh orders.
+async function invokeWorkerAsync() {
+  const functionName = process.env.WORKER_FUNCTION_NAME;
+  if (!functionName) return;
+  const { InvokeCommand } = require('@aws-sdk/client-lambda');
+  const { lambda } = require('../aws/clients');
+  await lambda().send(new InvokeCommand({
+    FunctionName: functionName,
+    InvocationType: 'Event',
+    Payload: JSON.stringify({ action: 'tick', reason: 'member-generation' }),
+  }));
 }
 
 async function presignReport(report) {
@@ -239,20 +249,26 @@ async function postReportOpen(event) {
   if (deny) return deny;
 
   const reportId = event.pathParameters?.id || '';
-  const report = await findReport(reportId, now);
+  const existing = await store.getEntitlement(profile.userId, reportId);
+
+  // A member's own generated report is hidden from the catalog, so it is only
+  // reachable through the non-public view — and only by whoever holds the
+  // entitlement. Everyone else sees the public catalog exactly as before.
+  const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: Boolean(existing) });
+  const report = catalog.reports.find(item => item.id === reportId);
   if (!report) return json(404, { error: 'Report not found' });
-  if (report.isFree) return json(200, await presignReport(report)); // weekly-rotation free reports gate nothing
+  if (!existing && report.isFree) return json(200, await presignReport(report)); // weekly-rotation free reports gate nothing
 
   const sign = async (source) => {
     await store.audit(profile.userId, 'report-open', { reportId, source });
     return json(200, await presignReport(report));
   };
 
-  // Existing entitlement: one-off purchases are permanent; subscription- and
-  // freemium-sourced access lapses with the subscription/role.
-  const existing = await store.getEntitlement(profile.userId, reportId);
+  // Existing entitlement: one-off purchases and reports the member generated
+  // are permanent; subscription- and freemium-sourced access lapses with the
+  // subscription/role.
   if (existing) {
-    if (existing.source === 'oneoff') return sign('oneoff');
+    if (existing.source === 'oneoff' || existing.source === 'generation') return sign(existing.source);
     if (existing.source === 'free_pick') {
       return profile.role === 'analyst' ? sign('free_pick')
         : json(402, { error: 'Freemium access is for analysts only' });
@@ -316,7 +332,9 @@ async function postReportOpen(event) {
 // POST /generations/free — reserve the analyst's monthly free generation.
 // The real engine run is wired later; the reservation + obligation is the point.
 // Analysts get a free generation against a publish obligation; Investor Plus
-// members get a private one as part of the subscription. Same monthly slot.
+// members get a private one as part of the subscription. Same monthly slot,
+// and both run through the real order pipeline (orders table → worker →
+// reconciler → engine), so a reservation spends real engine time.
 async function postGenerationsFree(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
@@ -328,6 +346,16 @@ async function postGenerationsFree(event) {
     return json(403, { error: 'Your plan does not include a monthly generation' });
   }
 
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const company = String(body.company || '').trim();
+  const ticker = String(body.ticker || '').trim().toUpperCase();
+  if (!company) return json(400, { error: 'company is required' });
+  if (!ticker) return json(400, { error: 'ticker is required' });
+  if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  // Reserve the quota slot first: a failed reservation must never start a
+  // billable engine run.
   const genId = crypto.randomUUID();
   const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
   const committed = await store.runTransact(build({
@@ -343,10 +371,65 @@ async function postGenerationsFree(event) {
     }
     return json(429, { error: 'Monthly generation already used' });
   }
-  await store.audit(profile.userId, 'generation-reserved', { genId, private: !isAnalyst });
-  // ponytail: engine invocation stubbed — status stays 'generating' until the
-  // worker wiring lands (real runs cost real engine time).
-  return json(200, { genId, status: 'generating', private: !isAnalyst });
+
+  // Membership reports are always written hidden: an analyst's goes public only
+  // once it is submitted and an admin publishes it, and a Plus member's never
+  // does.
+  await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: company,
+    ticker,
+    exchange: String(body.exchange || '').trim(),
+    visibility: 'private',
+  });
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-reserved', { genId, company, ticker, private: !isAnalyst });
+  return json(200, { genId, status: 'NEW', company, ticker, private: !isAnalyst });
+}
+
+// GET /generations/{genId} — order progress, and the entitlement handover once
+// the reconciler has delivered the PDF.
+async function getGeneration(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+
+  const order = await ordersStore.get(genId);
+  if (!order) return json(200, { genId, status: publication.status, publication: publication.status });
+
+  const result = {
+    genId,
+    status: order.status,
+    publication: publication.status,
+    private: Boolean(publication.private),
+    company: order.companyName,
+    ticker: order.ticker,
+    error: order.error || null,
+  };
+
+  if (order.status === 'DELIVERED' && order.pdfFileName) {
+    // The delivered report is hidden, so it needs the non-public catalog view.
+    const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: true });
+    const report = catalog.reports.find(item => item.fileName === order.pdfFileName);
+    if (report) {
+      // Idempotent: the member owns what they generated, no quota involved.
+      if (!await store.getEntitlement(profile.userId, report.id)) {
+        await store.putEntitlement(profile.userId, report.id, 'generation', { genId });
+      }
+      result.reportId = report.id;
+    }
+  }
+  return json(200, result);
 }
 
 async function postGenerationSubmit(event) {
@@ -619,6 +702,7 @@ const AUTHED_ROUTES = {
   'GET /me': getMe,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
+  'GET /generations/{genId}': getGeneration,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,

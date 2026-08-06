@@ -82,6 +82,11 @@ async function create(input) {
     exchange: input.exchange || '',
     sector: input.sector || '',
     industry: input.industry || '',
+    // 'private' keeps the delivered report out of the catalog even when resale
+    // is on — membership generations belong to one member, not the shop.
+    // Undefined is dropped by the document client, so ordinary orders are
+    // stored exactly as before.
+    visibility: input.visibility || undefined,
     status: STATUS.NEW,
     jobId: null,
     importStatus: null,
