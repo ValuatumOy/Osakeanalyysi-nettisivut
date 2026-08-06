@@ -8,6 +8,7 @@ const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
+const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const quota = require('../members/quota');
 const store = require('../members/store');
@@ -28,6 +29,7 @@ const SECRET_ENV_BY_NAME = {
   'members-stripe-prices': 'MEMBERS_STRIPE_PRICES',
   'stripe-secret-key': 'STRIPE_SECRET_KEY',
   'admin-upload-password': 'ADMIN_UPLOAD_PASSWORD',
+  'wisdom-api-token': 'WISDOM_API_TOKEN', // company lookup before a billable run
 };
 
 let secretsLoaded = null;
@@ -111,6 +113,19 @@ const FRESH_MEMBER_PRICE = 40;
 
 const freshReportPrice = (profile) =>
   activeTier(profile) !== 'none' ? FRESH_MEMBER_PRICE : FRESH_LIST_PRICE;
+
+// Tickers are not free text: the catalog holds 'NOKIA.HE', a customer types
+// 'NOKIA', and a Coverage subscription that matches nothing is a year of
+// nothing. Resolve against the catalog and accept the unambiguous match.
+function resolveTicker(catalog, input) {
+  const wanted = String(input || '').trim().toUpperCase();
+  if (!wanted) return null;
+  const tickers = [...new Set(catalog.reports.map(r => String(r.ticker || '').toUpperCase()).filter(Boolean))];
+  if (tickers.includes(wanted)) return wanted;
+  // 'NOKIA' → 'NOKIA.HE', but only when exactly one listing matches.
+  const prefixed = tickers.filter(t => t.split('.')[0] === wanted);
+  return prefixed.length === 1 ? prefixed[0] : null;
+}
 
 // Wake the worker so a new order starts rendering now instead of waiting for
 // the 5-minute sweep. Same push the API Lambda does for paid fresh orders.
@@ -349,10 +364,29 @@ async function postGenerationsFree(event) {
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
   const company = String(body.company || '').trim();
-  const ticker = String(body.ticker || '').trim().toUpperCase();
+  const requestedTicker = String(body.ticker || '').trim().toUpperCase();
   if (!company) return json(400, { error: 'company is required' });
-  if (!ticker) return json(400, { error: 'ticker is required' });
+  if (!requestedTicker) return json(400, { error: 'ticker is required' });
   if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  // A typo here costs a full engine run, so resolve the company against the
+  // same source the paid fresh-report flow searches, and generate for the
+  // canonical match rather than whatever was typed.
+  let match;
+  try {
+    const results = await searchCompanies(requestedTicker);
+    match = results.find(item => item.ticker.toUpperCase() === requestedTicker)
+      || results.find(item => item.ticker.toUpperCase().split('.')[0] === requestedTicker);
+  } catch (err) {
+    console.error('generation company lookup failed:', err.message);
+    return json(503, { error: 'Company lookup is unavailable right now — please try again shortly' });
+  }
+  if (!match) {
+    return json(400, {
+      error: `We couldn't find "${requestedTicker}". Use the ticker as listed, e.g. NOKIA.HE or AMD.`,
+    });
+  }
+  const ticker = match.ticker;
 
   // Reserve the quota slot first: a failed reservation must never start a
   // billable engine run.
@@ -378,9 +412,10 @@ async function postGenerationsFree(event) {
   await ordersStore.create({
     id: genId,
     email: profile.email,
-    companyName: company,
+    companyName: match.companyName || company,
     ticker,
     exchange: String(body.exchange || '').trim(),
+    industry: match.industry || '',
     visibility: 'private',
   });
   try {
@@ -389,8 +424,8 @@ async function postGenerationsFree(event) {
     console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
   }
 
-  await store.audit(profile.userId, 'generation-reserved', { genId, company, ticker, private: !isAnalyst });
-  return json(200, { genId, status: 'NEW', company, ticker, private: !isAnalyst });
+  await store.audit(profile.userId, 'generation-reserved', { genId, ticker, private: !isAnalyst });
+  return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
 }
 
 // GET /generations/{genId} — order progress, and the entitlement handover once
@@ -480,8 +515,20 @@ async function postBillingCheckout(event) {
   const interval = plan === 'coverage' ? 'year' : (String(body.interval || 'month'));
   const priceId = memberPrices()[plan]?.[interval];
   if (!priceId) return json(400, { error: `Unknown plan/interval: ${plan}/${interval}` });
-  if (plan === 'coverage' && !String(body.coverageCompanyId || '').trim()) {
-    return json(400, { error: 'coverageCompanyId is required for coverage' });
+
+  // Coverage is a year of one company: refuse the sale rather than take money
+  // for a ticker nothing in the catalog will ever match.
+  let coverageCompanyId = '';
+  if (plan === 'coverage') {
+    const requested = String(body.coverageCompanyId || '').trim();
+    if (!requested) return json(400, { error: 'coverageCompanyId is required for coverage' });
+    const { catalog } = await catalogAws.buildCatalogAws({ now });
+    coverageCompanyId = resolveTicker(catalog, requested);
+    if (!coverageCompanyId) {
+      return json(400, {
+        error: `We don't cover "${requested}" yet — pick a company from the reports page or request coverage.`,
+      });
+    }
   }
 
   let customerId = profile.stripeCustomerId;
@@ -501,11 +548,7 @@ async function postBillingCheckout(event) {
     line_items: [{ price: priceId, quantity: 1 }],
     client_reference_id: profile.userId,
     subscription_data: {
-      metadata: {
-        userId: profile.userId,
-        plan,
-        coverageCompanyId: String(body.coverageCompanyId || '').toUpperCase(),
-      },
+      metadata: { userId: profile.userId, plan, coverageCompanyId },
     },
     success_url: `${auth.frontendUrl()}#checkout=success`,
     cancel_url: `${auth.frontendUrl()}#checkout=cancel`,

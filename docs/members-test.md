@@ -109,8 +109,26 @@ deploy rather than expecting an empty one.
 
 ## Known gaps / prod-rollout blockers
 
-- Prod public `/api/reports` still exposes permanent unsigned `pdfUrl` for paid
-  reports — the paywall side door. Must be stripped when membership goes to prod.
+- **The public catalog no longer publishes `pdfUrl` for paid reports** (only for
+  free ones). Buyers download through `GET /api/report-download?session_id=…`,
+  which verifies the Stripe session and 302s to a 15-minute signed S3 URL;
+  the backend route `POST /api/report-download` is guarded by the catalog-sync
+  secret and is never called from the browser. Deployed to the test stage;
+  **production still serves the old payload until it is deployed there.**
+- Remaining gap in that fix: `files*.aiequityreports.com` still serves the whole
+  bucket publicly, so a *guessed* filename (`AMD_05062026.pdf`) still downloads.
+  Closing that means either CloudFront signed URLs (key-group setup) or dropping
+  the public origin — both break the permanent links in already-sent receipt
+  emails, so it is a business decision, not a code one.
+- Fresh-report delivery emails (reconciler) still link the PDF directly; that
+  path needs the same treatment as the ready-report receipt.
+- VAT: no `automatic_tax` anywhere, one-off or subscription. Selling digital
+  subscriptions to EU consumers needs an OSS registration decision.
+- The analyst freemium has **no off switch**: any LinkedIn sign-in becomes an
+  analyst with picks and a generation. The editing/publishing flow it depends on
+  is not designed yet, so this must be gated before production.
+- No Stripe billing portal: cancelling is an email to support, and the site copy
+  says exactly that.
 - An analyst's submitted report is not auto-published: submitting records the
   state, and an admin publishes it from the admin page (the members Lambda has
   read-only access to the PDF bucket by design).

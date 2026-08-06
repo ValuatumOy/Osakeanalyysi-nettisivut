@@ -249,7 +249,10 @@
         } else {
           document.getElementById('reportName').textContent = data.reportName || '—';
           document.getElementById('reportMeta').textContent = `${data.ticker} · Generated ${data.reportDate}`;
-          document.getElementById('downloadBtn').href = data.pdfUrl;
+          // Paid reports have no public URL any more: the download goes
+          // through the gated endpoint, which re-checks this Stripe session.
+          document.getElementById('downloadBtn').href =
+            data.downloadUrl || ('/api/report-download?session_id=' + encodeURIComponent(sessionId));
           document.getElementById('customerEmail').textContent = data.email || 'your email';
           show('stateReport');
         }
