@@ -1,0 +1,131 @@
+{
+  "id": "teslainc-05082026",
+  "slug": "tesla-equity-report",
+  "companyName": "Tesla, Inc.",
+  "ticker": "TSLA",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Auto - Manufacturers",
+  "currency": "USD",
+  "reportDate": "2026-08-05",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "324.96 USD",
+    "targetPrice": "332.50 USD",
+    "impliedUpside": "+2.3%",
+    "marketCap": "USD 1,567.1 bn",
+    "enterpriseValue": "USD 1,573.2 bn"
+  },
+  "multiples": [
+    {"label": "P/E 2026E", "value": "239.4x"},
+    {"label": "EV/EBITDA 2026E", "value": "85.2x"},
+    {"label": "FCF Yield 2026E", "value": "-0.1%"},
+    {"label": "Dividend Yield 2026E", "value": "—"},
+    {"label": "Net Debt/EBITDA 2026E", "value": "-0.4x"}
+  ],
+  "priceStats": {
+    "week52High": "498.83 USD",
+    "week52Low": "297.38 USD",
+    "oneYearChange": "+6.0%",
+    "threeYearChange": "+28.9%"
+  },
+  "summary": [
+    "Tesla, Inc. (TSLA, NASDAQ) designs, manufactures and sells battery-electric vehicles alongside a growing Energy Generation & Storage business, and is investing heavily in Full Self-Driving software, a supervised and expanding robotaxi network and the Optimus humanoid robot; in this Valuatum equity research report dated 5 August 2026 we rate the stock HOLD with a 12-month target price of 332.50 USD against a current price of 324.96 USD, implying roughly 2.3% upside. Market capitalisation is USD 1,567.1 bn and enterprise value is USD 1,573.2 bn.",
+    "The core valuation tension persists: Automotive and Energy generate 100% of reported revenue and gross profit today but support only 22.3% (USD 351,664 million) of enterprise value, while FSD Software & Network Services, Robotaxi and Optimus — together 77.7% of EV at USD 1,221,569 million — remain pre-commercial with near-zero cash EBIT through 2028e. At 85.2x 2026e EV/EBITDA and 273.8x EV/EBIT, the quote already prices meaningful progress on autonomy monetization and humanoid-robot commercialization that is not yet visible in earnings.",
+    "The blended target weights 45.0x 2028e EV/EBITDA of USD 28,167m (USD 335.8, 60% weight) and 65.0x 2028e EPS of USD 5.04 (USD 327.6, 40% weight) to USD 332.5, essentially fair value against the USD 324.965 spot. Scenario analysis shows the range around that call: the base case implies USD 420.65 (+29.4%) if optionality converts on schedule, the bear case of a LiDAR/radar mandate compresses shares to USD 121.98 (-62.5%), and a bull case of monopoly-like autonomy adoption supports USD 667.15 (+105.3%)."
+  ],
+  "thesis": [
+    {"num": "01", "title": "Hardware Margins Pressured", "metric": "4.6% margin", "text": "Automotive EBIT margin fell to 4.6% in 2025 from 16.8% in 2022 as price cuts and cost normalization pressured hardware economics. Even so, 2026e group EBITDA rises 75.9% to USD 18,475m on cost normalization alone, supporting the 45.0x EBITDA multiple."},
+    {"num": "02", "title": "Autonomy Option Dominates", "metric": "77.7% EV share", "text": "Autonomy and Robotics account for USD 1,221,569m, or 77.7%, of enterprise value despite near-zero cash EBIT through 2028e. FSD, Robotaxi and Optimus remain pre-commercial. This optionality, rather than current operations, drives most of the USD 332.5 target."},
+    {"num": "03", "title": "Steep Subscription Demands", "metric": "20-25m subs", "text": "Current operations — Auto and Energy — support only USD 351,664m, or 22.3%, of the USD 1,573,233m enterprise value. FSD alone requires 20 to 25 million subscribers to generate USD 25 to 30bn of revenue. Underdelivery would compress the multiple toward the target price."}
+  ],
+  "thesisBreaker": "Regulators require LiDAR/radar redundancy for unsupervised L5 operation, making Tesla's vision-only installed base technically obsolete and collapsing the FSD and Robotaxi valuation toward the bear case of USD 450,000m EV (roughly 121.98 USD/share).",
+  "valuePools": [
+    {"name": "FSD Software & Network Services", "share": "34.1% · USD 536,749m", "economics": "Revenue USD 4,741m (5.0%) · Gross profit USD 0m (0.0%) · EV USD 536,749m", "text": "FSD Software & Network Services is estimated at roughly 5% of group revenue (USD 4,741m), embedded within Automotive, yet carries USD 536,749 million (34.1%) of enterprise value as a recurring, high-margin software platform akin to Apple's Services model. Justifying that allocation at a 20x-25x EV/EBIT multiple requires USD 21-27 billion of recurring EBIT, implying USD 25-30 billion of subscription revenue and 20 to 25 million active paying subscribers at a USD 1,200 annual ARPU — against an estimated 1-2 million active subscribers today and a global fleet of only 7-8 million capable vehicles. The Netherlands' provisional FSD type approval (10 April 2026) is now with the European Commission for a bloc-wide vote, the key near-term unlock."},
+    {"name": "Robotaxi / Autonomous Mobility", "share": "29.4% · USD 462,716m", "economics": "Revenue USD 95m (0.1%) · Gross profit USD -500m (-2.9%) · EV USD 462,716m", "text": "Robotaxi / Autonomous Mobility carries USD 462,716 million (29.4%) of enterprise value while generating virtually no commercial revenue (USD 95m) and a negative USD -500m modelled gross profit; the fleet remains in supervised, geofenced pilots under the newly enforceable Texas SB 2807 framework. Justifying the allocation at a 20x multiple requires roughly USD 23 billion of operating profit, implying 46 billion paid miles a year from an active fleet of about 1.5 million robotaxis — close to Uber's entire global ride-hailing scale today — at a targeted USD 0.81 cost per mile versus Waymo's proven USD 1.40. No comparable unsupervised commercial fleet exists yet outside Waymo's low thousands of vehicles."},
+    {"name": "Optimus / Humanoid Robotics", "share": "14.1% · USD 222,104m", "economics": "Revenue not separately reported · Gross profit not separately reported · EV USD 222,104m", "text": "Optimus / Humanoid Robotics is allocated USD 222,104 million (14.1%) of enterprise value on zero commercial revenue, remaining an internal-pilot R&D cost center. At a USD 20,000 unit price and USD 4,000 EBIT per unit, supporting the allocation at a generous 25x multiple requires selling over 2.2 million robots annually — a market that is effectively zero today — while XPeng's competing Iron humanoid targets only 1,000 units per month by end-2026."},
+    {"name": "Automotive (Core)", "share": "12.9% · USD 203,595m", "economics": "Revenue USD 82,056m (86.5%) · Gross profit USD 13,292m (77.8%, 16.2% margin) · EV USD 203,595m", "text": "Automotive (Core) generated 86.5% of FY2025 external sales (USD 82,056m) and 77.8% of reported gross profit (USD 13,292m, 16.2% margin) yet holds only 12.9% of enterprise value (USD 203,595m), roughly a 10x EV/EBIT multiple on the ~USD 20 billion of EBIT required to support it at 5 million vehicles and USD 4,000 EBIT per vehicle. Group EBIT margin fell from 16.8% in 2022 to 4.6% in 2025 as price cuts outran cost reductions and BYD and other Chinese OEMs pressured global ASPs; the allocation is the most secure piece of Tesla's valuation, provided margins stabilize rather than compress further."},
+    {"name": "Energy Generation & Storage", "share": "9.4% · USD 148,069m", "economics": "Revenue USD 12,771m (13.5%) · Gross profit USD 3,802m (22.2%, 29.8% margin) · EV USD 148,069m", "text": "Energy Generation & Storage is Tesla's highest-margin current business at 29.8% gross margin on USD 12,771m of FY2025 revenue and USD 3,802m of gross profit (22.2% of group), yet holds only 9.4% of enterprise value (USD 148,069m) — roughly a 35x EBIT multiple on an implied ~USD 4 billion of operating profit if the division scales past USD 20 billion of revenue at a ~20% operating margin. Megapack demand from utilities and AI data centers, plus proprietary Autobidder software, support the allocation; battery-cell commoditization from Chinese suppliers is the main risk to the margin premium."}
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests whether the revenue, EBITDA, margin and multiple assumptions embedded in Tesla's USD 1,573.2 bn enterprise value are coherent, isolating the primary swing factor: whether unsupervised Autonomy and Optimus succeed or fail. The bear case removes the entire USD 1.22 trillion Autonomy and Robotics option premium and re-rates Tesla as a capital-intensive manufacturer toward a ~USD 450 billion EV. The bull case requires monopoly-like Robotaxi adoption and generalized L5 autonomy. Because Tesla holds essentially zero net debt, nearly every dollar of EV creation or destruction flows to equity holders.",
+    "scenarios": [
+      {"scenario": "Bull", "cols": {"Revenue": "180,000", "EBITDA": "45,000", "Margin": "25.0%", "Multiple": "55.5x", "EV": "2,497,500", "Equity": "2,505,637"}, "impliedValueOrUpside": "USD 667.15 / sh · +105.3%"},
+      {"scenario": "Base", "cols": {"Revenue": "138,122", "EBITDA": "28,167", "Margin": "20.4%", "Multiple": "55.8x", "EV": "1,571,719", "Equity": "1,579,856"}, "impliedValueOrUpside": "USD 420.65 / sh · +29.4%"},
+      {"scenario": "Bear", "cols": {"Revenue": "100,000", "EBITDA": "15,000", "Margin": "15.0%", "Multiple": "30.0x", "EV": "450,000", "Equity": "458,137"}, "impliedValueOrUpside": "USD 121.98 / sh · -62.5%"}
+    ],
+    "scenarioColumns": ["Revenue", "EBITDA", "Margin", "Multiple", "EV", "Equity"]
+  },
+  "coreAnalysis": [
+    {"heading": "How the company creates economic value", "text": "Tesla generates almost all revenue from two physical-asset businesses: Automotive, at 86.5% of FY2025 external sales, and Energy Generation & Storage, at 13.5%. Automotive remains the main source of absolute gross profit, but reported EBIT margins fell from 16.8% in 2022 to 4.6% by the end of 2025, while Energy is scaling rapidly at a materially higher 29.8% gross margin and contributes 22.2% of group gross profit. Under a normalized SOTP framework, approximately 77.6% of the USD 1,573,233 million enterprise value is instead assigned to FSD Software & Network Services, Robotaxi and Optimus — three divisions that generate negligible distinct external revenue and remain cash-consuming research and pilot programs. Tesla's group EV/EBITDA multiple of 85.15x for 2026 cannot be explained by traditional auto or industrial multiples; the key question is whether unit economics can generate the tens of billions of recurring EBIT the option premium requires."},
+    {"heading": "Cross-division bridge", "text": "The 2026 forecast is a transition year: revenue grows 7.9% to USD 102,329 million, entirely supported by stabilizing Automotive deliveries and continued Energy Generation & Storage growth, while EBITDA rises 75.9% to USD 18,475 million as margin pressure stops and reverses to a 5.6% EBIT margin despite a USD 12,729 million depreciation burden. The divisions holding 78% of enterprise value — FSD, Robotaxi and Optimus — do not drive this earnings forecast; instead they drive cash burn, with free cash flow falling to negative USD 1,741 million on USD 19,488 million of gross capex funding AI compute infrastructure and future Robotaxi depots. At a standard 15x-20x industrial or auto multiple, Tesla's USD 5,746 million of 2026 recurring EBIT supports less than USD 115 billion of enterprise value; the remaining USD 1.22 trillion requires Autonomy and Robotics to eventually generate roughly USD 48 billion of new recurring annual EBIT at a 25x multiple."},
+    {"heading": "Scenarios and verdict", "text": "The bear scenario shows what breaks the thesis: if regulators conclude vision-only hardware is inadequate for unsupervised autonomy, the USD 1.22 trillion option premium disappears and Tesla is valued on Automotive and Energy alone, producing an EV of USD 450,000 million, equity of USD 458,137 million and a share price of USD 121.98 (-62.5%). The base scenario requires execution on the current roadmap — commercial robotaxis under Texas SB 2807, an EU-wide FSD rollout building on the Netherlands provisional approval, and continued Megapack scaling — implying USD 420.65 (+29.4%). The bull scenario assumes monopoly-like adoption of the Robotaxi network and generalized L5 autonomy, implying USD 667.15 (+105.3%). FSD Software and Robotaxi together represent approximately 63.5% of enterprise value: the debate over Tesla is no longer about EV adoption or manufacturing efficiency, but the probability of solving generalized AI for physical applications."}
+  ],
+  "risks": [
+    "Vision-only deemed unsafe for L5 (FSD Software & Network Services): regulators mandate LiDAR or radar redundancy for unsupervised operation, with NHTSA or EU regulatory blockage as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Chinese OEMs achieve parity in ADAS & robotics (Automotive (Core)): BYD and XPeng commoditize EV hardware and humanoid robotics, with market share loss in China / EU as the early warning - HIGH impact, structural.",
+    "Capital burn (Robotaxi / Autonomous Mobility): Dojo and fleet capex drain cash flow before the network scales, with free cash flow staying structurally negative as the early warning - MEDIUM impact, manageable.",
+    "Margin degradation (Automotive (Core)): the auto price war forces margins structurally below 5%, with additional vehicle price cuts as the early warning - MEDIUM impact, manageable."
+  ],
+  "catalysts": [
+    "Texas SB 2807 commercial robotaxi launch (near-term, Robotaxi / Autonomous Mobility): paid autonomous miles logged and cost per mile validate L4 commercial unit economics; the most observable near-term catalyst.",
+    "EU Commission FSD vote (near-term, FSD Software & Network Services): conversion of the Netherlands provisional type approval to a full EU approval unlocks the European software TAM.",
+    "Auto gross margin stabilization (near-term, Automotive (Core)): margin excluding regulatory credits secures the cash flow that funds Autonomy and Robotics R&D burn.",
+    "Optimus Gen-3 mass production (medium-term, Optimus / Humanoid Robotics): production rate versus XPeng's 1,000-unit/month target validates physical manufacturing scaling.",
+    "Energy Megapack deployments (long-term, Energy Generation & Storage): the division's gross profit share of the group provides a high-margin earnings floor."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "Net Sales", "values": ["96,773", "97,690", "94,827", "102,329", "118,214", "138,122"]},
+        {"label": "EBITDA", "values": ["12,512", "12,444", "10,503", "18,475", "19,747", "28,167"]},
+        {"label": "EBITDA margin", "values": ["12.9%", "12.7%", "11.1%", "18.1%", "16.7%", "20.4%"]},
+        {"label": "Depreciation", "values": ["-3,621", "-5,368", "-6,148", "-12,729", "-9,966", "-11,864"]},
+        {"label": "Operating Profit (EBIT)", "values": ["8,891", "7,076", "4,355", "5,746", "9,781", "16,303"]},
+        {"label": "EBIT margin", "values": ["9.2%", "7.2%", "4.6%", "5.6%", "8.3%", "11.8%"]},
+        {"label": "Net financial items", "values": ["1,082", "1,914", "923", "540", "949", "1,259"]},
+        {"label": "Pre-tax Profit", "values": ["9,973", "8,990", "5,278", "6,286", "10,730", "17,562"]},
+        {"label": "Net Earnings", "values": ["14,976", "7,153", "3,855", "5,622", "9,940", "16,269"]},
+        {"label": "EPS (USD)", "values": ["4.7", "2.2", "1.2", "1.7", "3.1", "5"]},
+        {"label": "DPS (USD)", "values": ["0", "0", "0", "0", "0", "0"]},
+        {"label": "Payout ratio", "values": ["—", "—", "—", "—", "—", "—"]}
+      ]
+    },
+    "cashFlow": {
+      "columns": ["2023A", "2024A", "2025A", "2026E", "2027E", "2028E"],
+      "rows": [
+        {"label": "CF from operations", "values": ["11,384", "3,171", "3,691", "18,230", "19,916", "28,146"]},
+        {"label": "Gross capex", "values": ["12,797", "12,285", "11,201", "19,488", "17,345", "21,112"]},
+        {"label": "Free Operating Cash Flow", "values": ["-6,957", "-8,791", "-383", "-1,741", "1,692", "5,868"]},
+        {"label": "Free cash flow to firm", "values": ["-6,955", "-8,791", "-383", "-1,741", "1,692", "5,868"]}
+      ]
+    },
+    "ratios": {
+      "columns": ["2026E"],
+      "rows": [
+        {"label": "P/E", "values": ["239.4x"]},
+        {"label": "EV/EBITDA", "values": ["85.2x"]},
+        {"label": "EV/EBIT", "values": ["273.8x"]},
+        {"label": "P/FCF", "values": ["-772.8x"]},
+        {"label": "P/BV", "values": ["17.9x"]},
+        {"label": "Dividend Yield", "values": ["—"]},
+        {"label": "Net Debt / EBITDA", "values": ["-0.4x"]}
+      ]
+    }
+  },
+  "faqs": [
+    {"q": "Is Tesla a buy in 2026?", "a": "Not outright. Valuatum's 5 August 2026 equity report rates Tesla (TSLA) a HOLD with a 332.50 USD 12-month target versus a 324.96 USD price, implying about 2.3% upside. The stock is close to fair value: roughly 77.7% of the USD 1.57 trillion enterprise value sits in pre-commercial FSD, Robotaxi and Optimus optionality that is not yet reflected in cash earnings."},
+    {"q": "What is Tesla's price target?", "a": "The Valuatum report dated 5 August 2026 sets a 12-month fundamental target price of 332.50 USD for Tesla (TSLA), against a current price of 324.96 USD. The target blends a 45.0x EV/EBITDA method on 2028e EBITDA of 28,167 USDm (335.8 USD, 60% weight) with a 65.0x P/E method on 2028e EPS of 5.04 USD (327.6 USD, 40% weight)."},
+    {"q": "Why is Tesla rated HOLD?", "a": "Tesla is rated HOLD because the current price already balances the USD 1.22 trillion optionality premium in FSD, Robotaxi and Optimus against real automotive margin compression — EBIT margin fell to 4.6% in 2025 from 16.8% in 2022 — and execution risk. The stock trades near its blended fair value of 332.50 USD, so it is neither a clear bargain nor priced for imminent downside, pending gating events like the Texas SB 2807 robotaxi launch and the EU Commission's FSD vote."},
+    {"q": "Is Tesla overvalued in 2026?", "a": "Not on Valuatum's framework — the blended USD 332.50 fair value implies only about 2.3% upside from USD 324.96, so the stock sits close to fair value rather than overvalued or undervalued. Using a normalized 15x-20x industrial multiple, current Automotive and Energy earnings alone would support less than USD 115 billion of enterprise value, leaving roughly USD 1.22 trillion resting on Autonomy and Robotics eventually generating about USD 48 billion of new recurring EBIT."},
+    {"q": "What is Tesla's bear and bull case?", "a": "In Valuatum's scenario bridge, the bear case removes the entire autonomy option premium if regulators require LiDAR/radar redundancy, cutting enterprise value to USD 450,000m and the share price to USD 121.98 (-62.5%). The bull case assumes monopoly-like Robotaxi adoption and generalized L5 autonomy, supporting USD 667.15 (+105.3%). The base case, assuming execution on the current roadmap, implies USD 420.65 (+29.4%)."}
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Tesla report dated 5 August 2026 (company value map; FSD Software & Network Services EV allocation 34.1% / USD 536,749m, Robotaxi / Autonomous Mobility 29.4% / USD 462,716m, Optimus / Humanoid Robotics 14.1% / USD 222,104m, anchor market cap USD 1,567,112m, share price 324.96 USD).",
+    "Competitor context: Waymo ~450,000 paid rides/week at ~USD 1.40/mile; XPeng Iron humanoid targeting 1,000 units/month by end-2026; XPeng XNGP ADAS fleet ~500k-600k vehicles.",
+    "Market data: Ticker TSLA current price 324.96 USD as of 5 August 2026; 2025 net sales USD 94,827m; 2026E EBITDA USD 18,475m; 2028E EBITDA USD 28,167m and EPS 5.04 USD (analyst-generated estimates); target bridge 45.0x EV/EBITDA (60%) / 65.0x P/E (40%)."
+  ]
+}
