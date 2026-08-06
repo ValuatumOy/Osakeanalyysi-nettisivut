@@ -54,7 +54,7 @@
 <body>
 
   <!-- NAV -->
-  <header class="nav" id="nav">
+  <header class="nav nav--over-hero" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Valuatum AI Reports">
         <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
@@ -64,13 +64,13 @@
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link" style="color:var(--green-light);">Home</a>
+        <a href="index.html" class="nav-link is-active" aria-current="page">Home</a>
         <a href="reports.html" class="nav-link">Reports</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="methodology.html" class="nav-link">Methodology</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link" style="color:var(--gray-steel);">FAQ</a>
-        <a href="blog.html" class="nav-link" style="color:var(--gray-steel);">Blog</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="blog.html" class="nav-link">Blog</a>
       </nav>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -78,7 +78,7 @@
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="index.html" class="nav-mobile-link" style="color:var(--green-light);">Home</a>
+      <a href="index.html" class="nav-mobile-link" aria-current="page" style="color:var(--green-light);">Home</a>
       <a href="reports.html" class="nav-mobile-link">Reports</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
@@ -168,7 +168,6 @@
       <div class="container">
         <div class="free-reports-inner">
           <div class="free-reports-copy reveal">
-            <span class="section-eyebrow">Explore free reports</span>
             <h2 class="free-reports-title">Start with a full report. No card required.</h2>
             <p class="free-reports-sub">Open selected Valuatum AI equity reports instantly as complete PDFs. Browse UPM, Stora Enso and Tesla as free examples before choosing a paid ready report or generating a fresh run.</p>
             <a href="reports.html#free" class="btn btn-primary btn-lg">Browse free reports</a>
@@ -198,7 +197,6 @@
     <section class="samples-section" id="samples">
       <div class="container">
         <div class="samples-header">
-          <span class="section-eyebrow reveal">Company Pages</span>
           <h2 class="section-headline reveal">Open company pages before you buy.</h2>
           <p class="section-sub reveal">Each report maps where company value comes from, what the valuation implies, and what could break the investment case.</p>
         </div>
@@ -280,96 +278,149 @@
     <section class="whats-inside" id="inside">
       <div class="container">
         <div class="whats-inside-header">
-          <span class="section-eyebrow reveal">What's in the Report</span>
           <h2 class="section-headline reveal">A structured investment case, not a data dump.</h2>
           <p class="section-sub reveal">Each report turns financial data, valuation work, scenarios, risks, and source material into a readable investment case. The goal is a clear analytical position, not more charts.</p>
         </div>
-        <div class="whats-inside-grid reveal">
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M6 9h6M6 12h4M6 6h6"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Company Profile</div>
-              <div class="inside-desc">A concise business profile, listing venue, sector, country, operating model, and the context needed before reading the analysis.</div>
+
+        <!-- ponytail: exclusive accordion via native <details name>, no JS -->
+        <div class="report-index reveal">
+          <div class="chapter-list">
+          <p class="report-index-caption">Contents · 12 sections</p>
+
+          <details class="chapter" name="report-chapter" open>
+            <summary class="chapter-row"><span class="chapter-num">01</span><span class="chapter-name">Company Profile</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Company Profile</h3>
+              <p class="chapter-panel-lead">The context you need before reading the analysis: what the company does, where it trades, and how it makes money.</p>
+              <ul class="chapter-fields">
+                <li>Business profile</li><li>Listing venue</li><li>Sector</li><li>Country</li><li>Operating model</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14l4-4 3 2 5-6"/><circle cx="15" cy="4" r="1.5"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Research Snapshot</div>
-              <div class="inside-desc">Recommendation, current price, target price, upside, market cap, enterprise value, headline multiples, thesis breaker, and the key reasons behind the call.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">02</span><span class="chapter-name">Research Snapshot</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Research Snapshot</h3>
+              <p class="chapter-panel-lead">The entire call on one page — rating, price, and the reasons behind it, before any of the detail.</p>
+              <ul class="chapter-fields">
+                <li>Recommendation</li><li>Current price</li><li>Target price</li><li>Upside</li><li>Market cap</li><li>Enterprise value</li><li>Headline multiples</li><li>Thesis breaker</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 9L14 5M9 9L13 13M9 9L5 13M9 9L4 7"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Share Price Development</div>
-              <div class="inside-desc">Recent share-price history with the target-price anchor, market data, 52-week range, one-year change, and report date.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">03</span><span class="chapter-name">Share Price Development</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Share Price Development</h3>
+              <p class="chapter-panel-lead">Where the price has been, and where the target sits relative to it.</p>
+              <ul class="chapter-fields">
+                <li>Recent price history</li><li>Target-price anchor</li><li>52-week range</li><li>One-year change</li><li>Market data</li><li>Report date</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="4" height="6"/><rect x="7" y="7" width="4" height="9"/><rect x="12" y="3" width="4" height="13"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Value Breakdown</div>
-              <div class="inside-desc">Enterprise-value allocation by segment, revenue and EBIT contribution, segment economics, and an interpretation of what drives group value.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">04</span><span class="chapter-name">Value Breakdown</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Value Breakdown</h3>
+              <p class="chapter-panel-lead">Which part of the business actually carries the group's value — segment by segment.</p>
+              <ul class="chapter-fields">
+                <li>Enterprise value by segment</li><li>Revenue contribution</li><li>EBIT contribution</li><li>Segment economics</li><li>Group value drivers</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14V8l5-6 5 6v6H4zM7 14v-4h4v4"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Recommendation</div>
-              <div class="inside-desc">The rating rationale, target-price logic, main driver, main risk, thesis breaker, and supporting arguments behind the investment view.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">05</span><span class="chapter-name">Recommendation</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Recommendation</h3>
+              <p class="chapter-panel-lead">The investment view stated plainly, with the logic that produced it and the fact that would break it.</p>
+              <ul class="chapter-fields">
+                <li>Rating rationale</li><li>Target-price logic</li><li>Main driver</li><li>Main risk</li><li>Thesis breaker</li><li>Supporting arguments</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h12M9 3v12"/><circle cx="9" cy="9" r="7"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Core Analysis</div>
-              <div class="inside-desc">Executive map, segment deep dives, cross-segment bridge, scenario logic, and the bottom-line judgment on how the company creates value.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">06</span><span class="chapter-name">Core Analysis</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Core Analysis</h3>
+              <p class="chapter-panel-lead">The long form: how the company creates value, segment by segment, and what that implies.</p>
+              <ul class="chapter-fields">
+                <li>Executive map</li><li>Segment deep dives</li><li>Cross-segment bridge</li><li>Scenario logic</li><li>Bottom-line judgment</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2v6l4 2"/><circle cx="9" cy="11" r="6"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Financial Bridge</div>
-              <div class="inside-desc">Sales, EBITDA, EBIT, margins, free cash flow, leverage, and key forecast financials shown across historical and forward periods.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">07</span><span class="chapter-name">Financial Bridge</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Financial Bridge</h3>
+              <p class="chapter-panel-lead">Historical and forecast financials in one continuous line, so the forecast is visibly connected to the record.</p>
+              <ul class="chapter-fields">
+                <li>Sales</li><li>EBITDA</li><li>EBIT</li><li>Margins</li><li>Free cash flow</li><li>Leverage</li><li>Forecast periods</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h14M4 4v10h10V4"/><path d="M7 8h4M7 11h3"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Valuation</div>
-              <div class="inside-desc">Target-price derivation, selected valuation method, historical and forecast multiples, peer comparison, valuation map, and sensitivity tables.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">08</span><span class="chapter-name">Valuation</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Valuation</h3>
+              <p class="chapter-panel-lead">How the target price was derived, which method was chosen, and how sensitive the answer is.</p>
+              <ul class="chapter-fields">
+                <li>Target-price derivation</li><li>Selected method</li><li>Historical multiples</li><li>Forecast multiples</li><li>Peer comparison</li><li>Valuation map</li><li>Sensitivity tables</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V9l6-7 6 7v6H3z"/><path d="M7 15v-4h4v4"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Scenarios & Sensitivity</div>
-              <div class="inside-desc">Bear, base, and bull cases with revenue, EBITDA, margin, multiple, enterprise value, equity value, value per share, and upside.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">09</span><span class="chapter-name">Scenarios &amp; Sensitivity</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Scenarios &amp; Sensitivity</h3>
+              <p class="chapter-panel-lead">Bear, base, and bull cases carried all the way through to value per share.</p>
+              <ul class="chapter-fields">
+                <li>Bear / base / bull</li><li>Revenue</li><li>EBITDA</li><li>Margin</li><li>Multiple</li><li>Enterprise value</li><li>Equity value</li><li>Value per share</li><li>Upside</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M7 8h4M7 11h4M7 5h3"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Catalysts & Risks</div>
-              <div class="inside-desc">Monitoring checklist and risk register covering timing, segment exposure, indicators, early-warning triggers, valuation impact, and risk type.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">10</span><span class="chapter-name">Catalysts &amp; Risks</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Catalysts &amp; Risks</h3>
+              <p class="chapter-panel-lead">What to watch, when it lands, and what it would do to the valuation.</p>
+              <ul class="chapter-fields">
+                <li>Monitoring checklist</li><li>Risk register</li><li>Timing</li><li>Segment exposure</li><li>Early-warning triggers</li><li>Valuation impact</li><li>Risk type</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v9M5 8l4 5 4-5"/><path d="M4 14h10"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Financial Appendix</div>
-              <div class="inside-desc">Income statement, balance sheet, cash flow, and quarterly snapshot tables with historical figures and forward estimates.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">11</span><span class="chapter-name">Financial Appendix</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Financial Appendix</h3>
+              <p class="chapter-panel-lead">The full statements behind every figure used in the analysis.</p>
+              <ul class="chapter-fields">
+                <li>Income statement</li><li>Balance sheet</li><li>Cash flow</li><li>Quarterly snapshot</li><li>Historical figures</li><li>Forward estimates</li>
+              </ul>
             </div>
-          </div>
-          <div class="inside-item">
-            <div class="inside-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M6 6h6M6 9h6M6 12h3"/></svg></div>
-            <div class="inside-text">
-              <div class="inside-label">Sources & Disclaimer</div>
-              <div class="inside-desc">Source register, data categories, assumptions, AI assistance disclosure, limitations, and standard investment disclaimer.</div>
+          </details>
+
+          <details class="chapter" name="report-chapter">
+            <summary class="chapter-row"><span class="chapter-num">12</span><span class="chapter-name">Sources &amp; Disclaimer</span></summary>
+            <div class="chapter-panel">
+              <h3 class="chapter-panel-title">Sources &amp; Disclaimer</h3>
+              <p class="chapter-panel-lead">Where the data came from, what was assumed, and where the analysis stops.</p>
+              <ul class="chapter-fields">
+                <li>Source register</li><li>Data categories</li><li>Assumptions</li><li>AI assistance disclosure</li><li>Limitations</li><li>Investment disclaimer</li>
+              </ul>
             </div>
+          </details>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -387,7 +438,6 @@
       </svg>
       <div class="container">
         <div class="how-it-works-header">
-          <span class="section-eyebrow section-eyebrow--light reveal">How It Works</span>
           <h2 class="section-headline section-headline--light reveal">From search to report in minutes.</h2>
         </div>
         <div class="steps-grid">
@@ -415,7 +465,6 @@
       <div class="container">
         <div class="why-grid">
           <div class="why-content">
-            <span class="section-eyebrow reveal">Why It's Different</span>
             <h2 class="section-headline reveal">From snapshot to scenario,<br>the report shows the whole investment case.</h2>
             <p class="section-sub reveal">
               Valuatum AI equity reports are built like a professional research note: recommendation, value breakdown, valuation bridge, scenarios, catalysts, risks, and source register in one readable PDF.
@@ -518,7 +567,6 @@
     <section class="pricing-teaser" id="pricing-teaser">
       <div class="container">
         <div class="pricing-teaser-header">
-          <span class="section-eyebrow reveal">Pricing</span>
           <h2 class="section-headline reveal">Free samples. Discounted reports. Fresh on demand.</h2>
           <p class="section-sub reveal" style="margin:0 auto;">Buy ready AI equity reports for €20. Generate a fresh report with the latest data for €50.</p>
         </div>
@@ -567,7 +615,6 @@
       <div class="container">
         <div class="method-trust-grid">
           <div>
-            <span class="section-eyebrow reveal">Built on Financial Data</span>
             <h2 class="section-headline reveal">Real methodology.<br>Known limitations.</h2>
             <p class="section-sub reveal">Valuatum AI equity reports are built by a team with 25+ years of equity research and credit analysis experience. The AI handles structure and scale. The methodology comes from that background.</p>
             <div class="method-trust-pillars reveal">
@@ -615,7 +662,6 @@
     <section class="faq-section" id="faq">
       <div class="container">
         <div class="faq-header">
-          <span class="section-eyebrow reveal">Frequently Asked</span>
           <h2 class="section-headline reveal">Common questions answered.</h2>
         </div>
         <div class="faq-list reveal">
