@@ -46,9 +46,10 @@ non-prod. Nothing here ships with the prod API Lambda.
 
 `members-jwt-secret`, `members-test-utils-secret`, `members-stripe-prices`
 (JSON of price ids, created by `scripts/stripe-setup-members-test.mjs`),
-`stripe-webhook-secret-members`, `stripe-secret-key` (sk_test), plus pending:
-`linkedin-client-id`, `linkedin-client-secret`. LinkedIn app must register
-redirect URI `https://members-test.aiequityreports.com/auth/linkedin/callback`.
+`stripe-webhook-secret-members`, `stripe-secret-key` (sk_test),
+`linkedin-client-id`, `linkedin-client-secret` (Valuatum's shared LinkedIn app —
+every environment uses the same credentials; each new redirect URI must be added
+in the LinkedIn developer console).
 
 ## Test utilities (never on prod; bearer = members-test-utils-secret)
 
@@ -96,5 +97,4 @@ After any infra change: `cd infra && npx cdk diff -c stage=prod --all` must show
   reports — the paywall side door. Must be stripped when membership goes to prod.
 - Free-generation engine invocation is stubbed (PUB stays `generating`); wire
   `ordersStore` + worker push when real runs are wanted (they cost engine time).
-- Investor member-priced fresh generation not implemented yet.
 - Final prices are business decisions; 19/39/59 are test points.
