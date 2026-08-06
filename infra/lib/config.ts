@@ -8,6 +8,8 @@ export interface StageConfig {
   zoneDomain: string;
   apiDomain: string;
   filesDomain: string;
+  /** Members API (test-only stack for now), e.g. members-test.aiequityreports.com. */
+  membersApiDomain: string;
   /** REPORT_PDF_BASE_URL for the Lambdas. */
   pdfBaseUrl: string;
   /** Origins allowed to call the API / PUT to the bucket (site + local dev). */
@@ -47,6 +49,7 @@ export function stageConfig(app: App): StageConfig {
     zoneDomain,
     apiDomain: `api${suffix}.${zoneDomain}`,
     filesDomain: `files${suffix}.${zoneDomain}`,
+    membersApiDomain: `members${suffix}.${zoneDomain}`,
     pdfBaseUrl: `https://files${suffix}.${zoneDomain}/reports/pdfs`,
     corsOrigins: [
       `https://www.${zoneDomain}`,

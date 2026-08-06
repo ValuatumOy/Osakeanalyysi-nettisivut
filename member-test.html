@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- Members TEST stack harness. Serve locally (npx serve -l 3000 or python3 -m
+     http.server 3000) — NOT deployed to the production site. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Members test harness</title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; }
+  section { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+  button { margin: 2px; cursor: pointer; }
+  pre { background: #f5f5f5; padding: .5rem; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border: 1px solid #ddd; padding: 4px 8px; text-align: left; }
+  .muted { color: #888; }
+</style>
+</head>
+<body>
+<h1>Members test harness <span class="muted">(members-test)</span></h1>
+
+<section id="login">
+  <h2>Login</h2>
+  <p><a href="https://members-test.aiequityreports.com/auth/linkedin/start"><button>Sign in with LinkedIn (analyst)</button></a></p>
+  <p>
+    <input id="email" type="email" placeholder="email for magic link">
+    <button onclick="magicLink()">Send magic link (subscriber)</button>
+  </p>
+  <p><button onclick="logout()">Log out</button> <span id="loginStatus" class="muted"></span></p>
+</section>
+
+<section>
+  <h2>Me</h2>
+  <button onclick="loadMe()">Refresh /me</button>
+  <pre id="me">—</pre>
+</section>
+
+<section>
+  <h2>Subscribe (Stripe test mode)</h2>
+  <button onclick="checkout('investor','month')">Investor 19 €/mo</button>
+  <button onclick="checkout('investor','year')">Investor 190 €/yr</button>
+  <button onclick="checkout('investor_plus','month')">Plus 39 €/mo</button>
+  <button onclick="checkout('investor_plus','year')">Plus 390 €/yr</button>
+  <br>
+  <input id="coverageTicker" placeholder="ticker e.g. AMD">
+  <button onclick="checkout('coverage','year')">Coverage 59 €/yr</button>
+</section>
+
+<section>
+  <h2>Free generation (analyst)</h2>
+  <button onclick="reserveGen()">Reserve free generation</button>
+  <input id="genId" placeholder="genId">
+  <input id="prompts" placeholder="modification prompts">
+  <button onclick="submitGen()">Submit for publication</button>
+  <pre id="genOut">—</pre>
+</section>
+
+<section>
+  <h2>Reports</h2>
+  <button onclick="loadReports()">Load catalog</button>
+  <table id="reports"></table>
+</section>
+
+<script>
+const MEMBERS_API = 'https://members-test.aiequityreports.com';
+
+// token arrives in the URL fragment from the auth redirects
+const frag = new URLSearchParams(location.hash.slice(1));
+if (frag.get('token')) { localStorage.memberToken = frag.get('token'); history.replaceState(null, '', location.pathname); }
+if (frag.get('error')) { alert('Auth error: ' + frag.get('error')); history.replaceState(null, '', location.pathname); }
+
+const token = () => localStorage.memberToken || '';
+document.getElementById('loginStatus').textContent = token() ? 'token present' : 'not logged in';
+
+async function api(method, path, body) {
+  const res = await fetch(MEMBERS_API + path, {
+    method,
+    headers: { 'content-type': 'application/json', ...(token() ? { authorization: 'Bearer ' + token() } : {}) },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  return { status: res.status, data: await res.json().catch(() => null) };
+}
+
+function logout() { delete localStorage.memberToken; location.reload(); }
+
+async function magicLink() {
+  await api('POST', '/auth/magic-link', { email: document.getElementById('email').value });
+  alert('If the address is valid, a sign-in link is on its way.');
+}
+
+async function loadMe() {
+  const { status, data } = await api('GET', '/me');
+  document.getElementById('me').textContent = status + '\n' + JSON.stringify(data, null, 2);
+}
+
+async function checkout(plan, interval) {
+  const body = { plan, interval };
+  if (plan === 'coverage') body.coverageCompanyId = document.getElementById('coverageTicker').value.trim().toUpperCase();
+  const { status, data } = await api('POST', '/billing/checkout', body);
+  if (data?.url) location.href = data.url;
+  else alert(status + ' ' + JSON.stringify(data));
+}
+
+async function reserveGen() {
+  const { status, data } = await api('POST', '/generations/free');
+  document.getElementById('genOut').textContent = status + ' ' + JSON.stringify(data);
+  if (data?.genId) document.getElementById('genId').value = data.genId;
+}
+
+async function submitGen() {
+  const genId = document.getElementById('genId').value.trim();
+  const { status, data } = await api('POST', '/generations/' + genId + '/submit',
+    { promptsText: document.getElementById('prompts').value });
+  document.getElementById('genOut').textContent = status + ' ' + JSON.stringify(data);
+}
+
+async function loadReports() {
+  const { reports } = await (await fetch(MEMBERS_API + '/reports')).json();
+  const rows = reports.map((r, i) =>
+    `<tr><td>${r.companyName}</td><td>${r.ticker}</td><td>${r.reportDate}</td>` +
+    `<td>${r.isFree ? 'free' : r.priceLabel || r.price + ' €'}</td>` +
+    `<td><button onclick="openReport('${r.id}')">Open</button></td></tr>`);
+  document.getElementById('reports').innerHTML =
+    '<tr><th>Company</th><th>Ticker</th><th>Date</th><th>Price</th><th></th></tr>' + rows.join('');
+}
+
+async function openReport(id) {
+  const { status, data } = await api('POST', '/reports/' + encodeURIComponent(id) + '/open');
+  if (data?.url) window.open(data.url, '_blank');
+  else alert(status + ' ' + JSON.stringify(data));
+}
+</script>
+</body>
+</html>

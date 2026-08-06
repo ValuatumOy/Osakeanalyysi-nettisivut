@@ -1,0 +1,170 @@
+// Auth for the members API: LinkedIn OIDC (analysts) + email magic link
+// (subscribers), both minting the same HMAC bearer token (server/members/jwt.js).
+
+const crypto = require('crypto');
+const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
+const jwt = require('./jwt');
+const store = require('./store');
+
+const LINKEDIN_AUTH_URL = 'https://www.linkedin.com/oauth/v2/authorization';
+const LINKEDIN_TOKEN_URL = 'https://www.linkedin.com/oauth/v2/accessToken';
+const LINKEDIN_USERINFO_URL = 'https://api.linkedin.com/v2/userinfo';
+
+const membersApiUrl = () => (process.env.MEMBERS_API_URL || '').replace(/\/$/, '');
+const redirectUri = () => `${membersApiUrl()}/auth/linkedin/callback`;
+// Where the browser lands with the token. Token travels in the URL fragment —
+// fragments never reach servers/logs.
+const frontendUrl = () => process.env.MEMBERS_FRONTEND_URL || 'http://localhost:3000/member-test.html';
+
+function jwtSecret() {
+  const secret = process.env.MEMBERS_JWT_SECRET;
+  if (!secret) throw new Error('MEMBERS_JWT_SECRET is not configured');
+  return secret;
+}
+
+function mintToken(profile, now) {
+  return jwt.sign({ uid: profile.userId, role: profile.role || '', tier: profile.tier || 'none' }, jwtSecret(), { now });
+}
+
+// ── LinkedIn OIDC ────────────────────────────────────────────────────────────
+
+// Stateless CSRF state: ts.sig, HMAC-signed, valid 10 min.
+function makeState(now = new Date()) {
+  const ts = String(now.getTime());
+  const sig = crypto.createHmac('sha256', jwtSecret()).update(`state:${ts}`).digest('base64url');
+  return `${ts}.${sig}`;
+}
+
+function checkState(state, now = new Date()) {
+  const [ts, sig] = String(state || '').split('.');
+  if (!ts || !sig) return false;
+  const expected = crypto.createHmac('sha256', jwtSecret()).update(`state:${ts}`).digest('base64url');
+  const given = Buffer.from(sig);
+  const want = Buffer.from(expected);
+  if (given.length !== want.length || !crypto.timingSafeEqual(given, want)) return false;
+  return now.getTime() - Number(ts) < 10 * 60 * 1000;
+}
+
+function linkedinStartUrl(now = new Date()) {
+  const clientId = process.env.LINKEDIN_CLIENT_ID;
+  if (!clientId) throw new Error('LINKEDIN_CLIENT_ID is not configured');
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: clientId,
+    redirect_uri: redirectUri(),
+    scope: 'openid profile email',
+    state: makeState(now),
+  });
+  return `${LINKEDIN_AUTH_URL}?${params}`;
+}
+
+async function linkedinCallback(code, state, now = new Date()) {
+  if (!checkState(state, now)) return { error: 'Invalid state' };
+
+  const tokenRes = await fetch(LINKEDIN_TOKEN_URL, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'authorization_code',
+      code,
+      client_id: process.env.LINKEDIN_CLIENT_ID,
+      client_secret: process.env.LINKEDIN_CLIENT_SECRET,
+      redirect_uri: redirectUri(),
+    }),
+  });
+  if (!tokenRes.ok) {
+    console.error('linkedin token exchange failed:', tokenRes.status, await tokenRes.text());
+    return { error: 'LinkedIn sign-in failed' };
+  }
+  const { access_token: accessToken } = await tokenRes.json();
+
+  const userRes = await fetch(LINKEDIN_USERINFO_URL, {
+    headers: { authorization: `Bearer ${accessToken}` },
+  });
+  if (!userRes.ok) {
+    console.error('linkedin userinfo failed:', userRes.status);
+    return { error: 'LinkedIn sign-in failed' };
+  }
+  const info = await userRes.json(); // { sub, email, name, ... }
+  if (!info.sub) return { error: 'LinkedIn sign-in failed' };
+
+  const userId = await store.ensureUser(`LINKEDIN#${info.sub}`, {
+    role: 'analyst',
+    email: String(info.email || '').toLowerCase(),
+    name: info.name || '',
+    linkedinSub: info.sub,
+  });
+  const profile = await store.getProfile(userId);
+  await store.audit(userId, 'login', { method: 'linkedin' });
+  return { token: mintToken(profile, now), userId };
+}
+
+// ── email magic link ─────────────────────────────────────────────────────────
+
+let sesClient;
+function ses() {
+  if (!sesClient) sesClient = new SESv2Client({ region: process.env.AWS_REGION || 'eu-west-1' });
+  return sesClient;
+}
+
+const hashToken = (token) => crypto.createHash('sha256').update(token).digest('hex');
+
+async function sendMagicLink(email) {
+  const normalized = String(email || '').trim().toLowerCase();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(normalized)) return; // caller always answers 200
+  const token = crypto.randomBytes(32).toString('base64url');
+  await store.putMagicToken(hashToken(token), normalized);
+  const link = `${membersApiUrl()}/auth/magic/verify?token=${token}`;
+  await ses().send(new SendEmailCommand({
+    FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
+    Destination: { ToAddresses: [normalized] },
+    Content: {
+      Simple: {
+        Subject: { Data: 'Your AI Equity Reports sign-in link', Charset: 'UTF-8' },
+        Body: {
+          Html: {
+            Data: `<p>Click to sign in (valid 15 minutes):</p><p><a href="${link}">Sign in to AI Equity Reports</a></p>`,
+            Charset: 'UTF-8',
+          },
+        },
+      },
+    },
+  }));
+}
+
+async function verifyMagicLink(token, now = new Date()) {
+  const item = await store.consumeMagicToken(hashToken(String(token || '')));
+  if (!item) return { error: 'Invalid or expired link' };
+  const userId = await store.ensureUser(`EMAIL#${item.email}`, {
+    role: 'subscriber',
+    email: item.email,
+  });
+  const profile = await store.getProfile(userId);
+  await store.audit(userId, 'login', { method: 'magic-link' });
+  return { token: mintToken(profile, now), userId };
+}
+
+// ── request auth ─────────────────────────────────────────────────────────────
+
+// Verifies the bearer token and loads the live PROFILE (tier/ban always
+// current). Returns { profile } or { deny: <lambda response> }.
+// Token expiry is always checked against the real clock — the x-test-now
+// time-travel clock only moves quota periods, not session validity.
+async function requireUser(event, { bearerToken, json }) {
+  const claims = jwt.verify(bearerToken(event), process.env.MEMBERS_JWT_SECRET, { now: new Date() });
+  if (!claims) return { deny: json(401, { error: 'Unauthorized' }) };
+  const profile = await store.getProfile(claims.uid);
+  if (!profile) return { deny: json(401, { error: 'Unauthorized' }) };
+  if (profile.banned) return { deny: json(403, { error: 'Account is suspended' }) };
+  return { profile };
+}
+
+module.exports = {
+  linkedinStartUrl,
+  linkedinCallback,
+  sendMagicLink,
+  verifyMagicLink,
+  requireUser,
+  mintToken,
+  frontendUrl,
+};

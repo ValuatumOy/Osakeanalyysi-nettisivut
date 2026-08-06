@@ -10,6 +10,7 @@ import { UsEast1Stack } from '../lib/us-east-1-stack';
 import { FilesStack } from '../lib/files-stack';
 import { WorkerStack } from '../lib/worker-stack';
 import { ApiStack } from '../lib/api-stack';
+import { MembersStack } from '../lib/members-stack';
 
 const app = new App();
 const config = stageConfig(app);
@@ -58,3 +59,14 @@ new ApiStack(app, `AiEquityReportsApi${config.suffix}`, {
   alertsTopic: storage.alertsTopic,
   workerFunction: worker.workerFunction,
 });
+
+// Membership system: test stage only for now (the stack also guards itself).
+if (config.stage !== 'prod') {
+  new MembersStack(app, `AiEquityReportsMembers${config.suffix}`, {
+    env: euWest1,
+    config,
+    catalogStateTable: storage.catalogStateTable,
+    pdfBucket: files.pdfBucket,
+    alertsTopic: storage.alertsTopic,
+  });
+}
