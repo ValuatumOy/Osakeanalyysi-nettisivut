@@ -57,8 +57,9 @@ npm run test:members                     # unit: quota builders + jwt
 MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 22 checks against the deployed stack
 ```
 
-Browser harness: `member-test.html` served on `http://localhost:3100`
-(`.claude/launch.json` static-site) — not deployed to the prod site.
+Member page: `members.html` — live at `https://www.aiequityreports.com/members.html`
+(branded, unlinked from nav; talks only to the members-test API). Local dev:
+`http://localhost:3100/members.html` (`.claude/launch.json` static-site).
 
 After any infra change: `cd infra && npx cdk diff -c stage=prod --all` must show
 **no changes** before anything is merged.

@@ -80,7 +80,7 @@ export class MembersStack extends Stack {
         SECRETS_SSM_PREFIX: config.secretsPrefix,
         SITE_URL: config.siteUrl,
         MEMBERS_API_URL: membersApiUrl,
-        MEMBERS_FRONTEND_URL: 'http://localhost:3100/member-test.html',
+        MEMBERS_FRONTEND_URL: `${config.siteUrl}/members.html`,
       },
     });
 
