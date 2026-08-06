@@ -128,8 +128,21 @@ async function presignPdfUpload(fileName, expiresInSeconds = 300) {
   );
 }
 
+// Presigned GET for a buyer's download. Short-lived on purpose: the link is
+// minted per click behind a Stripe-session check, so it never needs to outlive
+// the redirect that follows it.
+async function presignPdfDownload(fileName, expiresInSeconds = 900) {
+  const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
+  return getSignedUrl(
+    s3(),
+    new GetObjectCommand({ Bucket: BUCKET(), Key: keyFor(fileName) }),
+    { expiresIn: expiresInSeconds },
+  );
+}
+
 module.exports = {
   listPdfs,
+  presignPdfDownload,
   readSidecar,
   readSidecars,
   putPdf,

@@ -72,6 +72,12 @@ function emitAdminUnauthorized() {
 
 // Same public shape server/index.js exposes today — the Vercel frontend
 // normalizes on top of this, so the payload must not change at cutover.
+//
+// One deliberate exception: `pdfUrl` is published only for FREE reports. It is
+// a permanent unsigned link, so handing it out for paid reports turned the
+// paywall into a suggestion — anyone could read /api/reports and download the
+// lot. Buyers reach their PDF through /api/report-download, which checks the
+// Stripe session and mints a short-lived signed URL.
 function publicReportPayload(report) {
   if (!report) return null;
   return {
@@ -86,7 +92,7 @@ function publicReportPayload(report) {
     reportDateLabel: report.reportDateLabel,
     uploadedAt: report.uploadedAt,
     fileName: report.fileName,
-    pdfUrl: report.pdfUrl,
+    pdfUrl: report.isFree ? report.pdfUrl : undefined,
     reportType: report.reportType,
     availability: report.availability,
     price: report.price,
@@ -194,6 +200,32 @@ async function postReportPurchases(event) {
   }
 
   return json(200, { ok: true, purchase });
+}
+
+// POST /api/report-download — mint a short-lived signed URL for one report.
+// Called server-side by the Vercel function that has already verified the
+// buyer's Stripe session, so the shared catalog-sync secret is the auth here;
+// the browser never talks to this route directly.
+async function postReportDownload(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const reportId = String(body.reportId || '').trim();
+  if (!reportId) return json(400, { error: 'reportId is required' });
+
+  // includeNonPublic: a delivered fresh report is hidden by design, and its
+  // buyer still has to be able to download it.
+  const { catalog } = await catalogAws.buildCatalogAws({ includeNonPublic: true });
+  const report = catalog.reports.find(item => item.id === reportId);
+  if (!report) return json(404, { error: 'Report not found' });
+
+  const url = await pdfStore.presignPdfDownload(report.fileName);
+  return json(200, { url, expiresIn: 900, fileName: report.fileName }, { 'cache-control': 'no-store' });
 }
 
 // ── admin ──────────────────────────────────────────────────────────
@@ -330,6 +362,7 @@ const PUBLIC_ROUTES = {
   'GET /api/pricing': getPricing,
   'GET /api/search-companies': getSearchCompanies,
   'POST /api/report-purchases': postReportPurchases,
+  'POST /api/report-download': postReportDownload,
 };
 
 const ADMIN_ROUTES = {
@@ -339,6 +372,8 @@ const ADMIN_ROUTES = {
   'POST /api/admin/update': postAdminUpdate,
   'POST /api/admin/delete': postAdminDelete,
 };
+
+exports.publicReportPayload = publicReportPayload; // exported for tests
 
 exports.handler = async (event) => {
   await ensureSecrets();
