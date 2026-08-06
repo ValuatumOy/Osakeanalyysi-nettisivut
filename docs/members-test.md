@@ -57,9 +57,28 @@ npm run test:members                     # unit: quota builders + jwt
 MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 22 checks against the deployed stack
 ```
 
-Member page: `members.html` — live at `https://www.aiequityreports.com/members.html`
-(branded, unlinked from nav; talks only to the members-test API). Local dev:
-`http://localhost:3100/members.html` (`.claude/launch.json` static-site).
+## Environments
+
+| Site | URL | Git branch |
+|---|---|---|
+| Production | `www.aiequityreports.com` | `main` |
+| Staging | `test.aiequityreports.com` | `staging` |
+| Local | `http://localhost:3100` | working tree (`.claude/launch.json`) |
+
+**Deploy only by pushing a branch.** Never run `vercel deploy` from this repo —
+`--prod=false` does *not* prevent a production deployment (it published an
+unreviewed branch to www on 6.8.2026; recovered with `vercel rollback`).
+
+The staging domain is a branch-assigned domain on the same Vercel project
+(`vercel domains add` + `PATCH /v9/projects/{id}/domains/{domain}` with
+`gitBranch: staging`), with a Route53 CNAME to the project's
+`…vercel-dns-017.com` target.
+
+Member page: `members.html` — branded, unlinked from the nav, talks only to the
+members-test API. All three sites share that API: the sign-in flows pass a
+`returnTo` that must be on the `MEMBERS_FRONTEND_URLS` allowlist, so a user
+lands back on the site they started from and an arbitrary URL cannot be
+injected.
 
 After any infra change: `cd infra && npx cdk diff -c stage=prod --all` must show
 **no changes** before anything is merged.
