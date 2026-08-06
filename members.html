@@ -221,7 +221,10 @@
     const MEMBERS_API = USE_PROD_MEMBERS
       ? 'https://members.aiequityreports.com'
       : 'https://members-test.aiequityreports.com';
-    document.getElementById('linkedinBtn').href = MEMBERS_API + '/auth/linkedin/start';
+    // Come back to whichever site started the flow (prod / staging / local).
+    const RETURN_TO = location.origin + location.pathname;
+    document.getElementById('linkedinBtn').href =
+      MEMBERS_API + '/auth/linkedin/start?returnTo=' + encodeURIComponent(RETURN_TO);
     if (USE_PROD_MEMBERS) document.getElementById('envBadge').remove();
 
     const frag = new URLSearchParams(location.hash.slice(1));
@@ -254,7 +257,7 @@
     async function magicLink() {
       const email = document.getElementById('email').value.trim();
       if (!email) return;
-      await api('POST', '/auth/magic-link', { email });
+      await api('POST', '/auth/magic-link', { email, returnTo: RETURN_TO });
       notice('ok', 'If the address is valid, a sign-in link is on its way. The link is valid for 15 minutes.');
     }
 

@@ -107,13 +107,14 @@ async function getIdentity(identityPk) {
 
 // ── magic-link tokens ────────────────────────────────────────────────────────
 
-async function putMagicToken(tokenHash, email, { ttlSeconds = 900 } = {}) {
+async function putMagicToken(tokenHash, email, { ttlSeconds = 900, returnTo } = {}) {
   await dynamo().send(new PutCommand({
     TableName: table(),
     Item: {
       pk: `MAGIC#${tokenHash}`,
       sk: 'TOKEN',
       email,
+      returnTo,
       expiresAt: Math.floor(Date.now() / 1000) + ttlSeconds,
     },
   }));

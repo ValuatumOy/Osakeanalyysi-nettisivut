@@ -80,7 +80,13 @@ export class MembersStack extends Stack {
         SECRETS_SSM_PREFIX: config.secretsPrefix,
         SITE_URL: config.siteUrl,
         MEMBERS_API_URL: membersApiUrl,
-        MEMBERS_FRONTEND_URL: `${config.siteUrl}/members.html`,
+        // Auth redirects may return to any of these; the first is the default.
+        // Anything not on this list is rejected (open-redirect guard).
+        MEMBERS_FRONTEND_URLS: [
+          `https://test.${config.zoneDomain}/members.html`,
+          `${config.siteUrl}/members.html`,
+          'http://localhost:3100/members.html',
+        ].join(','),
       },
     });
 
@@ -109,6 +115,7 @@ export class MembersStack extends Stack {
           'http://localhost:3100',
           config.siteUrl,
           `https://${config.zoneDomain}`, // apex — the site answers on both
+          `https://test.${config.zoneDomain}`, // staging branch site
         ],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],

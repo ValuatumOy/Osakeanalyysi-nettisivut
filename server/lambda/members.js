@@ -142,8 +142,11 @@ async function getReportsList(event) {
 
 // ── auth routes ──────────────────────────────────────────────────────────────
 
+// `returnTo` lets the prod site, the staging site and local dev share one API;
+// auth.frontendUrl() rejects anything off the allowlist.
 async function getLinkedinStart(event) {
-  return redirect(auth.linkedinStartUrl(requestNow(event)));
+  const returnTo = event.queryStringParameters?.returnTo;
+  return redirect(auth.linkedinStartUrl(returnTo, requestNow(event)));
 }
 
 async function getLinkedinCallback(event) {
@@ -151,14 +154,14 @@ async function getLinkedinCallback(event) {
   if (!q.code) return redirect(`${auth.frontendUrl()}#error=linkedin_denied`);
   const result = await auth.linkedinCallback(q.code, q.state, requestNow(event));
   if (result.error) return redirect(`${auth.frontendUrl()}#error=${encodeURIComponent(result.error)}`);
-  return redirect(`${auth.frontendUrl()}#token=${result.token}`);
+  return redirect(`${result.returnTo}#token=${result.token}`);
 }
 
 async function postMagicLink(event) {
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
   try {
-    await auth.sendMagicLink(body.email);
+    await auth.sendMagicLink(body.email, body.returnTo);
   } catch (err) {
     console.error('magic-link send failed:', err.message); // still 200 — no enumeration
   }
@@ -168,7 +171,7 @@ async function postMagicLink(event) {
 async function getMagicVerify(event) {
   const result = await auth.verifyMagicLink(event.queryStringParameters?.token, requestNow(event));
   if (result.error) return redirect(`${auth.frontendUrl()}#error=${encodeURIComponent(result.error)}`);
-  return redirect(`${auth.frontendUrl()}#token=${result.token}`);
+  return redirect(`${result.returnTo}#token=${result.token}`);
 }
 
 // ── member routes ────────────────────────────────────────────────────────────
