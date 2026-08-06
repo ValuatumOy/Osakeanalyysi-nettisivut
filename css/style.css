@@ -492,7 +492,9 @@ input, textarea { font: inherit; }
   z-index: 2;
   text-align: center;
   width: 100%;
-  max-width: 860px;
+  /* wide enough that the headline's longest line never hits max-width:100% —
+     a clamped nowrap line stops centering and both lines flush left */
+  max-width: 1060px;
   padding: calc(var(--nav-h) + 2rem) var(--page-x) 4.5rem;
 }
 
