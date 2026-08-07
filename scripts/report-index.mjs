@@ -27,8 +27,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT_DIR = path.join(ROOT, 'report-content');
 
-// Kept in sync with the same constant in build-report-pages.mjs: reports whose
-// content does not match their catalog identity. The site refuses to publish
+// Kept in sync with the same constant in scripts/report-pages/owners.mjs: reports
+// whose content does not match their catalog identity. The site refuses to publish
 // them, so a blog post must not cite them either.
 const EXCLUDE = new Set(['nuholdings-02062026']);
 

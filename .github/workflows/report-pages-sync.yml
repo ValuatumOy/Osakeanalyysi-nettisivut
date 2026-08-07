@@ -1,0 +1,64 @@
+name: Report pages sync
+
+# Keeps every catalog-derived page in step with the live catalog (docs/report-page-automation.md):
+# extracts content for newly published reports, rebuilds the landing pages, the reports.html
+# card grid and the sitemap, verifies the result, and commits straight to main (Vercel deploys
+# on push). Hourly, because three catalog changes are time-driven and fire no event; a no-change
+# run writes nothing and costs seconds. workflow_dispatch is the manual "sync now" button.
+#
+# The guard runs BEFORE the commit, so an inconsistent state never reaches main — a failing run
+# is a red workflow and no commit, and the site freezes at its last consistent state. A rejected
+# push (someone pushed during the run) also just fails red; the next hourly run catches up.
+on:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: report-pages-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pdftotext
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends poppler-utils
+
+      - name: Sync pages from the live catalog
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node scripts/report-pages/sync.mjs --failures-out /tmp/extraction-failures
+
+      - name: Guard — built state must agree with the live catalog
+        run: node scripts/report-pages/check.mjs --allow-missing-file /tmp/extraction-failures
+
+      - name: Commit and push
+        run: |
+          git add report-content reports reports.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No changes — catalog and pages already agree."
+            exit 0
+          fi
+          git config user.name "report-pages-sync"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Report pages: sync with the live catalog"
+          git push
+
+      # After the good work is committed: a failed extraction means a live report has no page
+      # content. Nothing else surfaces a silently failing sync, so be loud.
+      - name: Fail loudly on extraction failures
+        run: |
+          if [ -s /tmp/extraction-failures ]; then
+            echo "::error::Extraction failed for: $(paste -sd, /tmp/extraction-failures). Their pages were left untouched — see the job summary."
+            exit 1
+          fi

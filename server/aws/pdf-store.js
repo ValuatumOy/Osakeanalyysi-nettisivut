@@ -92,6 +92,28 @@ async function putPdf(fileName, buffer) {
   }));
 }
 
+// Atomic create: the write succeeds only if nothing exists at the key, so two concurrent
+// deliveries for the same company on the same day can never overwrite each other — S3
+// arbitrates, not a check-then-act probe. Returns false when the key is already taken.
+// A 409 means another conditional write on the same key is in flight; treating it as taken
+// costs at most a skipped suffix, never an overwrite.
+async function putPdfIfAbsent(fileName, buffer) {
+  try {
+    await s3().send(new PutObjectCommand({
+      Bucket: BUCKET(),
+      Key: keyFor(fileName),
+      Body: buffer,
+      ContentType: 'application/pdf',
+      IfNoneMatch: '*',
+    }));
+    return true;
+  } catch (err) {
+    const status = err.$metadata?.httpStatusCode;
+    if (err.name === 'PreconditionFailed' || status === 412 || status === 409) return false;
+    throw err;
+  }
+}
+
 async function writeSidecar(pdfFileName, sidecar) {
   await s3().send(new PutObjectCommand({
     Bucket: BUCKET(),
@@ -133,6 +155,7 @@ module.exports = {
   readSidecar,
   readSidecars,
   putPdf,
+  putPdfIfAbsent,
   writeSidecar,
   pdfExists,
   deleteReport,

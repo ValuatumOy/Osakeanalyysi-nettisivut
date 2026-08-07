@@ -24,7 +24,7 @@ const NAV_SOLID_CSS = `    .nav{background:rgba(255,255,255,0.97);backdrop-filte
     .nav .nav-link{color:var(--gray-steel);}
     .nav .nav-link:hover{color:var(--charcoal);}`;
 
-// ── helpers (kept in sync with scripts/build-report-pages.mjs) ────────────────
+// ── helpers (kept in sync with scripts/report-pages/render.mjs) ───────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = (s) => esc(s);
 const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();

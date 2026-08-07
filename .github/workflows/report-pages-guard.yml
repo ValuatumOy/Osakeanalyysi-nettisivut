@@ -1,0 +1,39 @@
+name: Report pages guard
+
+# Verifies that the committed report pages, the baked reports.html cards and the live catalog
+# agree under the page-owner rule. This workflow covers HUMAN edits (pushes and PRs); the sync
+# workflow runs the same scripts/report-pages/check.mjs itself before committing, because pushes
+# made with a workflow's own GITHUB_TOKEN deliberately do not trigger other workflows — an
+# on-push guard alone would never run on sync commits.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reports/**'
+      - 'reports.html'
+      - 'report-content/**'
+      - 'js/companyPagesData.js'
+      - 'sitemap.xml'
+      - 'scripts/report-pages/**'
+  pull_request:
+    paths:
+      - 'reports/**'
+      - 'reports.html'
+      - 'report-content/**'
+      - 'js/companyPagesData.js'
+      - 'sitemap.xml'
+      - 'scripts/report-pages/**'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check pages against the live catalog
+        run: node scripts/report-pages/check.mjs
