@@ -7,6 +7,8 @@
   },
   "scripts": {
     "generate:companies": "node scripts/generate-company-pages.mjs",
+    "report:sync": "node scripts/report-pages/sync.mjs",
+    "report:check": "node scripts/report-pages/check.mjs",
     "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",

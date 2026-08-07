@@ -1,0 +1,758 @@
+{
+  "id": "nokia-05062026",
+  "slug": "nokia-equity-report",
+  "companyName": "Nokia Corporation",
+  "ticker": "NOKIA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Communication Equipment",
+  "currency": "EUR",
+  "reportDate": "2026-06-05",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "13.90 EUR",
+    "targetPrice": "11.50 EUR",
+    "impliedUpside": "-17.2%",
+    "marketCap": "EUR 76 bn",
+    "enterpriseValue": "EUR 74.7 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "43.6x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "19.7x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "3.2%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "2.1%"
+    },
+    {
+      "label": "Net Debt/EBITDA 2026E",
+      "value": "-0.4x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "13.58 EUR",
+    "week52Low": "3.59 EUR",
+    "oneYearChange": "+207.9%",
+    "threeYearChange": "+279.3%"
+  },
+  "summary": [
+    "Nokia Corporation (NOKIA.HE, NASDAQ Helsinki) supplies optical, IP, mobile, fixed-network and licensing technologies in the communication equipment industry. The call is SELL in this Valuatum equity research report dated 5 June 2026, with a 12-month target price of 11.50 EUR against a current price of 13.90 EUR, implying -17.2% downside. Market capitalisation is EUR 76 bn and enterprise value is EUR 74.7 bn. The investment case rests on Nokia becoming a major artificial-intelligence data-centre networking provider, but the valuation already assumes flawless execution in hyperscaler optical infrastructure and leaves little protection against margin or market-share disappointment.",
+    "The central tension is between current earnings and the enterprise-value allocation. Mobile Infrastructure produces revenue of EUR 11,896m and EBIT of EUR 1,728m, representing 72.8% of group EBIT, yet receives EUR 36,839m of EV at 21.3x EBIT. Optical & IP Networks contributes revenue of EUR 5,800m and EBIT of EUR 725m, but receives EUR 35,500m of EV at 49.0x EBIT. That allocation prices AI data-centre optionality more aggressively than the existing profit engine. Group valuation is correspondingly demanding at 43.6x 2026E P/E and 19.7x 2026E EV/EBITDA, while FCF yield is only 3.2%.",
+    "The 11.50 EUR target is supported by a pool-based enterprise-value framework that values Optical & IP Networks at EUR 35,500m, Mobile Infrastructure at EUR 36,839m and Fixed Networks at EUR 2,400m, with Portfolio Businesses and Group Common & Other at EUR 0m. The scenario bridge produces a bear value of 9.78 EUR per share (-29.6%), a base value of 13.43 EUR (-3.3%) and a bull value of 15.99 EUR (+15.1%). The SELL call reflects the narrow upside even in the base case and the severe downside if optical margins or hyperscaler adoption disappoint."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Optical Overvaluation",
+      "metric": "49.0x EBIT",
+      "text": "Optical & IP Networks carries EUR 35,500m of enterprise value against EBIT of EUR 725m, implying 49.0x EBIT. Reaching the valuation requires revenue to rise from EUR 5,800m to roughly EUR 9,000m and EBIT margin to expand from 12.5% to approximately 19%, making the SELL rating sensitive to execution in AI networking."
+    },
+    {
+      "num": "02",
+      "title": "Mobile Profit Engine",
+      "metric": "72.8% EBIT",
+      "text": "Mobile Infrastructure generates EBIT of EUR 1,728m, or 72.8% of group EBIT, from revenue of EUR 11,896m. Around EUR 1,500m of intellectual-property licensing revenue carries operating margins above 70%, masking roughly 4% hardware margins. Flat 5G deployment volumes preserve cash generation but limit the segment's growth contribution."
+    },
+    {
+      "num": "03",
+      "title": "Margin Compression",
+      "metric": "-20.5bn EV",
+      "text": "If hyperscalers shift towards open architectures or alternative sourcing, Optical & IP Networks could be re-rated from 49.0x to a mature 20.0x hardware multiple. The resulting potential reduction of EUR 20.5 bn in enterprise value would drive the shares towards 9.92 EUR, making commoditisation the principal valuation threat."
+    }
+  ],
+  "thesisBreaker": "Flawless execution in scaling 800G shipments to US hyperscalers without sacrificing gross margins to merchant silicon would break the SELL thesis by supporting sustained high-margin growth and a higher optical valuation.",
+  "valuePools": [
+    {
+      "name": "Mobile Infrastructure",
+      "share": "49.3% · EUR 36,839m",
+      "economics": "Revenue EUR 11,896m (57.1%) · EBIT EUR 1,728m (72.8%, 14.5% margin) · EV EUR 36,839m (49.3%)",
+      "text": "Mobile Infrastructure is Nokia's current profit engine, combining traditional radio hardware with Technology Standards intellectual-property licensing. Revenue of EUR 11,896m represents 57.1% of the group, while EBIT of EUR 1,728m represents 72.8% at a 14.5% margin. Its EUR 36,839m EV allocation implies 21.3x EBIT, materially below the optical multiple but still dependent on recurring licensing economics. Around EUR 1,500m of annual licensing revenue earns margins above 70%, supported by patent contributions to 5G standards and agreements with Apple and Samsung. Hardware demand is stagnant as operators have completed much of their 5G mid-band rollout and remain indebted. High switching costs and installed-base maintenance support the pool, but Ericsson's pricing aggression and weaker replacement contracts could erode the hardware base needed to absorb fixed R&D."
+    },
+    {
+      "name": "Optical & IP Networks",
+      "share": "47.5% · EUR 35,500m",
+      "economics": "Revenue EUR 5,800m (27.8%) · EBIT EUR 725m (30.6%, 12.5% margin) · EV EUR 35,500m (47.5%)",
+      "text": "Optical & IP Networks supplies optical transport and routing hardware, increasingly aimed at hyperscaler AI data-centre interconnects. It generates revenue of EUR 5,800m, or 27.8% of group revenue, and EBIT of EUR 725m, or 30.6% of group EBIT, yet receives EUR 35,500m of EV, equal to 49.0x EBIT. The allocation demands revenue growth to roughly EUR 9,000m and margin expansion from 12.5% to approximately 19% over three to five years. Nokia's Infinera integration, vertical DSP design and indium phosphide fabrication provide a stated strategic edge in 800G and 1.6T coherent pluggables. Alphabet, Microsoft and Meta offer the volume opportunity, while Ciena and Arista create concentrated competitive pressure. Open architectures, merchant silicon and wafer bottlenecks would undermine the required scale-up."
+    },
+    {
+      "name": "Fixed Networks",
+      "share": "3.2% · EUR 2,400m",
+      "economics": "Revenue EUR 2,200m (10.6%) · EBIT EUR 169m (7.1%, 7.7% margin) · EV EUR 2,400m (3.2%)",
+      "text": "Fixed Networks provides passive optical networking equipment, broadband gateways and optical line terminals outside China. Revenue of EUR 2,200m represents 10.6% of group revenue, while EBIT of EUR 169m represents 7.1% at a 7.7% margin. Its EUR 2,400m EV allocation implies approximately 14.2x EBIT, reflecting post-pandemic revenue contraction after fibre deployment was pulled forward. Sticky customer relationships and maintenance attach rates preserve defensive value. The USD 42.45 bn US BEAD subsidy programme provides a visible long-duration pipeline, and US-compliant production facilities support eligibility where domestic manufacturing is required. The pool need only avoid a margin collapse while government-funded deployment volumes recover, but muted organic operator investment keeps the earnings profile declining rather than growth-led."
+    },
+    {
+      "name": "Portfolio Businesses",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue EUR 917m (4.4%) · EBIT EUR -100m (-4.2%, -10.9% margin) · EV EUR 0m (0.0%)",
+      "text": "Portfolio Businesses generate revenue of EUR 917m and EBIT of EUR -100m, producing a loss-making drag with a -10.9% margin. The pool is designated for disposal, so its restructuring or disposal status means the EUR 0m EV allocation does not value it as an operating segment."
+    },
+    {
+      "name": "Group Common & Other",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue EUR 20m (0.1%) · EBIT EUR -150m (-6.3%, -750.0% margin) · EV EUR 0m (0.0%)",
+      "text": "Group Common & Other comprises corporate overhead and Bell Labs, with revenue of EUR 20m and EBIT of EUR -150m. The stated efficiency target is a EUR 150m corporate run-rate. Its EUR 0m EV allocation excludes it from operating-segment valuation, leaving cost reduction as the relevant economic objective."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how Nokia's equity value changes when group operating scale and the valuation multiple applied to earnings move together. Mobile Infrastructure remains broadly stable at its maturity valuation, so the primary swing factor is Optical & IP Networks: hyperscaler volume, Infinera execution, supply-chain capacity and the market's willingness to sustain an AI networking premium. The bridge therefore captures both operating delivery and de-rating risk.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "EUR 23,500m",
+          "EBITDA": "EUR 5,000m",
+          "Margin": "21.0%",
+          "Multiple": "17.8x",
+          "EV": "EUR 89,000m",
+          "Equity": "EUR 89,252m"
+        },
+        "impliedValueOrUpside": "EUR 15.99 / sh · +15.1%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "EUR 20,833m",
+          "EBITDA": "EUR 3,788m",
+          "Margin": "18.2%",
+          "Multiple": "19.7x",
+          "EV": "EUR 74,737m",
+          "Equity": "EUR 74,989m"
+        },
+        "impliedValueOrUpside": "EUR 13.43 / sh · -3.3%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "EUR 20,833m",
+          "EBITDA": "EUR 3,800m",
+          "Margin": "18.2%",
+          "Multiple": "14.3x",
+          "EV": "EUR 54,340m",
+          "Equity": "EUR 54,592m"
+        },
+        "impliedValueOrUpside": "EUR 9.78 / sh · -29.6%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Nokia has two economically different businesses. Mobile Infrastructure produces revenue of EUR 11,896m and EBIT of EUR 1,728m, or 72.8% of group EBIT, yet its EUR 36,839m EV allocation reflects mature 5G hardware economics. The segment's cash generation is supported by approximately EUR 1,500m of intellectual-property licensing revenue at margins above 70%, while hardware operates at roughly 4% and depends on scale to absorb fixed R&D. Optical & IP Networks is the opposite: revenue of EUR 5,800m and EBIT of EUR 725m represent only 27.8% and 30.6% of group totals, but EUR 35,500m of EV assigns it 47.5% of group value. The allocation reflects the EUR 2.3 bn Infinera acquisition and expected AI data-centre demand from Alphabet, Microsoft and Meta. Nokia's DSP design and indium phosphide fabrication offer vertical integration, but Ciena and Arista remain capable competitors. Fixed Networks contributes revenue of EUR 2,200m and EBIT of EUR 169m, with the USD 42.45 bn BEAD programme offering a recovery path. The group therefore creates present cash through licensing and legacy infrastructure while asking investors to fund a future optical transition."
+    },
+    {
+      "heading": "Putting the pools back together",
+      "text": "The 2026 forecast is anchored by comparable EBIT of EUR 2,372m. Mobile Infrastructure contributes more than 57% of sales and most operating profit, but flat hardware deployments mean group growth depends on Optical & IP Networks winning hyperscaler volume. Optical revenue must rise from EUR 5,800m to roughly EUR 9,000m and EBIT margin from 12.5% to approximately 19% over three to five years for its allocation to remain defensible. A conventional 15x-17x telecom-equipment multiple applied to current EBIT of EUR 2,372m supports only approximately EUR 35 bn to EUR 40 bn of EV. The quoted EUR 74.7 bn EV therefore leaves roughly EUR 34.7 bn to EUR 39.7 bn resting on future execution and optical optionality, rather than current group earnings. The bridge from EV to equity is supportive because 2026 net debt is EUR -1,527m, or net cash of EUR 1,527m, partly offset by EUR 316m of other senior claims; the detailed bridge gives market capitalisation of EUR 75,950m. That balance sheet supports a 2.1% dividend yield and continued R&D, but it cannot remove competitive or margin risk. The valuation holds only if vertically integrated optical products retain a meaningful advantage over merchant silicon and open architectures."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear case produces 9.78 EUR per share, down 29.6%, if optical supply constraints or competition from Ciena and Arista removes the AI premium. The base case produces 13.43 EUR, down 3.3%, assuming the existing operating model remains intact but the market does not deliver additional valuation upside. The bull case reaches 15.99 EUR, up 15.1%, if Nokia executes the Infinera integration, scales 800G and 1.6T coherent pluggables and captures substantial US hyperscaler deployments. The decisive observable is not broad hyperscaler capex alone: specific shipment and deployment volumes into Alphabet, Microsoft and other US hyperscalers would show whether spending converts into Nokia revenue. Indium phosphide fab capacity and sequential optical revenue would reveal whether supply can meet demand, while gross-margin progression would show whether merchant silicon is taking pricing power. Smartphone patent renewals would test the cash engine supporting R&D, and European Tier-1 replacement contracts would signal RAN deterioration. The central debate is whether Nokia can transcend a cyclical telecom-equipment vendor and become a durable AI data-centre infrastructure provider, or whether hyperscalers will treat coherent pluggables as interchangeable hardware. With 43.6x 2026E P/E and nearly half of EV in Optical & IP Networks, the balance of evidence supports SELL."
+    }
+  ],
+  "risks": [
+    "Hyperscaler multi-sourcing commoditisation (Optical & IP Networks): open architectures could bypass Nokia's proprietary DSPs and compress optical gross margins, with gross-margin compression as the early warning - HIGH impact and a thesis-breaker if it occurs / structural.",
+    "Patent licensing pricing pressure (Mobile Infrastructure): successful litigation by major smartphone OEMs could reduce royalty rates and impair the highest-margin profit engine, with extended litigation involving major smartphone OEMs as the early warning - HIGH impact and structural.",
+    "Indium phosphide supply-chain constraints (Optical & IP Networks): internal fabrication capacity may fail to scale with hyperscaler demand and stall sequential revenue growth despite a high backlog, with stalled sequential revenue growth as the early warning - MEDIUM impact and manageable.",
+    "RAN market-share loss to Ericsson (Mobile Infrastructure): Ericsson's pricing aggression could remove key Western replacement contracts and weaken the hardware base supporting fixed R&D, with loss of Tier-1 telecom replacement contracts in Europe as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "Hyperscaler capex announcements (near-term, Optical & IP Networks): continued growth above 20% year-on-year in AI infrastructure would validate the addressable-market expansion supporting the optical valuation.",
+    "Smartphone patent renewals (near-term, Mobile Infrastructure): no material degradation in IP royalties would secure the high-margin baseline cash flow.",
+    "800G coherent pluggable shipments (medium-term, Optical & IP Networks): material shipment volumes inside US hyperscalers would prove Infinera integration and competitive access.",
+    "Indium phosphide fab capacity (medium-term, Optical & IP Networks): resolution of wafer bottlenecks would allow Optical & IP Networks revenue growth to accelerate without supply constraints."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "22,258",
+            "19,220",
+            "19,889",
+            "20,833",
+            "21,981",
+            "23,396"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "2,509",
+            "2,790",
+            "2,765",
+            "3,788",
+            "3,787",
+            "4,288"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "11.3%",
+            "14.5%",
+            "13.9%",
+            "18.2%",
+            "17.2%",
+            "18.3%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-821",
+            "-791",
+            "-1,119",
+            "-1,416",
+            "-911",
+            "-922"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,688",
+            "1,999",
+            "1,646",
+            "2,372",
+            "2,876",
+            "3,366"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "7.6%",
+            "10.4%",
+            "8.3%",
+            "11.4%",
+            "13.1%",
+            "14.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-189",
+            "92",
+            "-731",
+            "-355",
+            "-355",
+            "-365"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,499",
+            "2,091",
+            "915",
+            "2,017",
+            "2,521",
+            "3,001"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "679",
+            "1,284",
+            "638",
+            "1,690",
+            "2,175",
+            "2,589"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.1",
+            "0.2",
+            "0.1",
+            "0.3",
+            "0.4",
+            "0.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.1",
+            "0.1",
+            "0.1",
+            "0.3",
+            "0.4",
+            "0.4"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "89.9%",
+            "55.4%",
+            "118.8%",
+            "93.5%",
+            "93.5%",
+            "93.5%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,857",
+            "2,120",
+            "2,490",
+            "2,500",
+            "2,637",
+            "2,807"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,086",
+            "802",
+            "1,399",
+            "1,465",
+            "1,546",
+            "1,646"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "5,504",
+            "5,736",
+            "5,996",
+            "5,996",
+            "5,996",
+            "5,996"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "17,821",
+            "17,563",
+            "18,162",
+            "18,238",
+            "18,456",
+            "18,726"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "2,719",
+            "2,163",
+            "2,209",
+            "2,325",
+            "2,453",
+            "2,611"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "9,134",
+            "9,201",
+            "8,121",
+            "8,501",
+            "8,897",
+            "9,386"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "6,234",
+            "6,623",
+            "5,462",
+            "6,231",
+            "6,575",
+            "6,998"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "18,087",
+            "17,987",
+            "15,792",
+            "17,057",
+            "17,925",
+            "18,995"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,938",
+            "40,024",
+            "41,364"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "20,628",
+            "20,747",
+            "21,058",
+            "21,962",
+            "22,557",
+            "23,113"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,637",
+            "2,918",
+            "3,126",
+            "2,352",
+            "2,490",
+            "2,748"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "554",
+            "969",
+            "1,287",
+            "2,352",
+            "2,490",
+            "2,748"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "6,577",
+            "5,583",
+            "5,346",
+            "4,572",
+            "4,710",
+            "4,968"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "10,933",
+            "11,394",
+            "10,004",
+            "12,011",
+            "12,365",
+            "12,890"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,938",
+            "40,024",
+            "41,364"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-1,046",
+            "-1,873",
+            "-252",
+            "-1,527",
+            "-1,595",
+            "-1,501"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "18,585",
+            "18,011",
+            "20,009",
+            "20,435",
+            "20,962",
+            "21,612"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "51.8%",
+            "53.0%",
+            "56.0%",
+            "56.4%",
+            "56.4%",
+            "55.9%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-5.1%",
+            "-9.0%",
+            "-1.2%",
+            "-7.0%",
+            "-7.1%",
+            "-6.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.4x",
+            "-0.7x",
+            "-0.1x",
+            "-0.4x",
+            "-0.4x",
+            "-0.4x"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028"
+      ],
+      "rows": [
+        {
+          "label": "CF from operations",
+          "values": [
+            "2,909",
+            "2,434",
+            "1,076",
+            "3,553",
+            "2,777",
+            "3,131"
+          ]
+        },
+        {
+          "label": "Operating cash flow",
+          "values": [
+            "3,422",
+            "2,904",
+            "1,366",
+            "3,850",
+            "3,084",
+            "3,446"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-779",
+            "-535",
+            "674",
+            "-447",
+            "309",
+            "381"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-201",
+            "533",
+            "1,718",
+            "1,492",
+            "1,129",
+            "1,191"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "201",
+            "-533",
+            "-1,718",
+            "-1,492",
+            "-1,129",
+            "-1,191"
+          ]
+        },
+        {
+          "label": "Free Operating Cash Flow",
+          "values": [
+            "3,443",
+            "2,096",
+            "-797",
+            "2,358",
+            "1,954",
+            "2,254"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "3,448",
+            "1,669",
+            "-797",
+            "2,358",
+            "1,954",
+            "2,254"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-1,988",
+            "-1,878",
+            "-312",
+            "-1,292",
+            "-1,305",
+            "-1,516"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-337",
+            "-610",
+            "-712",
+            "-758",
+            "-1,580",
+            "-2,033"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "1,122",
+            "23",
+            "-954",
+            "769",
+            "343",
+            "423"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "43.6x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "19.7x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "31.5x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "31.2x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "3.5x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.1%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.4x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Nokia a buy in 2026?",
+      "a": "No. Nokia is rated SELL with a 12-month target price of 11.50 EUR versus 13.90 EUR currently, implying -17.2% downside. The stock trades at 43.6x 2026E P/E and 19.7x EV/EBITDA, while EUR 35,500m of Optical & IP Networks EV depends on scaling revenue from EUR 5,800m to roughly EUR 9,000m and expanding EBIT margin from 12.5% to approximately 19%. The balance of valuation risk remains unfavourable despite a EUR 1,527m net cash position."
+    },
+    {
+      "q": "What is Nokia's price target?",
+      "a": "Nokia's 12-month fundamental price target is 11.50 EUR per share, compared with a current price of 13.90 EUR and implied downside of -17.2%. The scenario bridge gives a bear value of 9.78 EUR per share, a base value of 13.43 EUR and a bull value of 15.99 EUR. The target reflects EUR 35,500m of EV for Optical & IP Networks, EUR 36,839m for Mobile Infrastructure and EUR 2,400m for Fixed Networks."
+    },
+    {
+      "q": "Why is Nokia rated SELL?",
+      "a": "Nokia is rated SELL because EUR 74.7 bn of enterprise value already assumes successful transformation into an AI networking provider. Optical & IP Networks receives EUR 35,500m of EV, or 47.5% of group EV, despite EBIT of EUR 725m and a 12.5% margin. The 49.0x EBIT allocation requires substantial hyperscaler volume and margin expansion, while open architectures, merchant silicon and competitors such as Ciena and Arista could compress returns."
+    },
+    {
+      "q": "Is Nokia overvalued in 2026?",
+      "a": "The valuation is demanding rather than supported by current earnings alone. Nokia trades at 43.6x 2026E P/E and 31.5x EV/EBIT, with only a 3.2% FCF yield. A conventional 15x-17x telecom-equipment multiple on 2026E EBIT of EUR 2,372m supports approximately EUR 35 bn to EUR 40 bn of EV, versus EUR 74.7 bn quoted. The difference rests primarily on Optical & IP Networks capturing the AI data-centre opportunity."
+    },
+    {
+      "q": "What is Nokia's bear and bull case?",
+      "a": "The bear case is 9.78 EUR per share, or -29.6%, if optical supply constraints or competition from Ciena and Arista removes the AI premium. The base case is 13.43 EUR, or -3.3%, while the bull case is 15.99 EUR, or +15.1%, if Nokia completes the Infinera integration and scales 800G and 1.6T coherent pluggables into US hyperscalers. Specific shipment volumes and optical gross-margin progression are the key indicators."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Nokia Corporation report dated 5 June 2026 (the value-map allocations, anchor market capitalisation of EUR 76 bn and share price of 13.90 EUR). Estimates rely on subjective segment value allocations and forward-looking hyperscaler market assumptions.",
+    "Competitor context: Ciena and Arista Networks are cited as concentrated competitors in data-centre routing and optical transport; Ericsson is cited for pricing aggression in RAN; Apple and Samsung are cited as major smartphone OEMs in multi-year intellectual-property licensing agreements. The report also warns that hyperscalers may prefer open architectures or merchant silicon, so the 49.0x Optical & IP Networks EBIT multiple is not a clean peer-derived multiple.",
+    "Market data: NOKIA.HE, 13.895 EUR current quote as of 5 June 2026; key bridge figures are 2026E net sales of EUR 20,833m, EBITDA of EUR 3,788m, comparable EBIT of EUR 2,372m, 2026E P/E of 43.60x, 2026E EV/EBITDA of 19.7x and Optical & IP Networks EV of EUR 35,500m. The market-data quote is 13.895 EUR while the landing-page current price is 13.90 EUR."
+  ]
+}

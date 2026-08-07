@@ -165,11 +165,29 @@ async function deliver(order, job) {
   const reportDateIso = `${yyyy}-${mm}-${dd}`;
 
   const fileBase = `${companyToken(order.companyName || order.ticker)}_${dateToken}`;
-  const pdfFileName = `${fileBase}.pdf`;
   const exchange = order.exchange || deriveExchange(order.ticker);
   const companyLabel = order.companyName || order.ticker;
 
-  await pdfStore.putPdf(pdfFileName, pdf);
+  // Company + UTC date is the whole identity of a report, so a bare put here would let a
+  // second same-day delivery (or an admin upload) silently replace the first. Claim a name
+  // with an atomic conditional create instead, taking the next _2/_3 suffix on collision;
+  // the suffix survives into the catalog id (tesla-07082026-2), so the second report becomes
+  // a second catalog entry rather than an overwrite. A retry of this order after a crash
+  // reuses the name it already claimed instead of claiming a duplicate.
+  let pdfFileName = order.pdfFileName || null;
+  if (pdfFileName) {
+    await pdfStore.putPdf(pdfFileName, pdf);
+  } else {
+    for (let attempt = 1; attempt <= 20 && !pdfFileName; attempt += 1) {
+      const candidate = `${fileBase}${attempt === 1 ? '' : `_${attempt}`}.pdf`;
+      if (await pdfStore.putPdfIfAbsent(candidate, pdf)) pdfFileName = candidate;
+    }
+    if (!pdfFileName) {
+      // Transient by design: the order stays RENDERING and retries next tick.
+      throw new Error(`no free PDF name for ${fileBase} after 20 attempts`);
+    }
+    await orders.update(order.id, { pdfFileName });
+  }
 
   // Sidecar consumed by catalog.js at runtime. excludeFromFree always keeps a
   // paid report out of the free rotation; provenance links it back to the order
