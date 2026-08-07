@@ -147,10 +147,27 @@ async function recordCatalogPurchase(purchase) {
   throw new Error(`Catalog purchase sync failed after ${SYNC_ATTEMPTS} attempts: ${lastError.message}`);
 }
 
+// Ask the backend for a short-lived signed download URL. The caller must have
+// already established that this buyer is entitled to the report — the shared
+// secret is what lets us mint the URL, not proof of purchase.
+async function requestReportDownload(reportId) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot sign a download');
+  }
+  return fetchJson(`${base}/api/report-download`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${secret}` },
+    body: JSON.stringify({ reportId }),
+  });
+}
+
 module.exports = {
   getCatalogReport,
   getCatalogReports,
   recordCatalogPurchase,
+  requestReportDownload,
   normalizeCatalogReport,
   toBackendReport,
 };

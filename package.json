@@ -12,6 +12,7 @@
     "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",
+    "test:members": "node --test test/members/*.test.mjs",
     "test:reaper": "node --test test/reaper/*.test.mjs",
     "validate:jsonld": "node scripts/validate-jsonld.mjs"
   },

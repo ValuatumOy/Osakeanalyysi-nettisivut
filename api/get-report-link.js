@@ -31,7 +31,9 @@ module.exports = async (req, res) => {
       reportName: report.name,
       ticker: report.ticker,
       reportDate: report.reportDate,
-      pdfUrl: report.pdfUrl,
+      // Paid reports have no public URL; the buyer downloads through the gated
+      // endpoint, which re-verifies this session every time.
+      downloadUrl: `/api/report-download?session_id=${encodeURIComponent(session_id)}`,
       email: session.customer_details?.email,
     });
   } catch (err) {

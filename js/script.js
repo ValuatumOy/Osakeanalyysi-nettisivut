@@ -6,7 +6,10 @@
 (function initNav() {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  nav.classList.add('scrolled');
+  if (!nav.classList.contains('nav--over-hero')) { nav.classList.add('scrolled'); return; }
+  const sync = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
 })();
 
 // ── Mobile menu ─────────────────────────────────────

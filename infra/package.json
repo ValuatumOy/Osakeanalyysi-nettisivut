@@ -2,7 +2,9 @@
   "name": "aiequityreports-infra",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsc --noEmit",
     "cdk": "cdk",
@@ -17,7 +19,7 @@
   "devDependencies": {
     "@types/node": "^22.10.0",
     "aws-cdk": "^2.170.0",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.28.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.0"
   }
