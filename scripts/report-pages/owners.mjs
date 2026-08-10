@@ -19,7 +19,12 @@ export const PAGES_DIR = path.join(ROOT, 'reports');
 
 // Reports whose PDF content does not match their catalog identity — never published and never
 // re-extracted. Kept in sync with the same constant in scripts/report-index.mjs.
-export const EXCLUDE = new Set(['nuholdings-02062026']);
+export const EXCLUDE = new Set([
+  'nuholdings-02062026',
+  // Sandisk (SNDK) request rendered with Smart Sand data — the engine stripped the
+  // ticker's trailing "K" as a Konserni suffix and fetched SND instead.
+  'sandiskcorporation-07082026',
+]);
 
 /** Every committed report-content document, keyed by id. Throws on invalid JSON. */
 export function loadContentDocs() {
