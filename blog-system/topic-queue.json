@@ -140,13 +140,14 @@
       "approval": "auto"
     },
     {
-      "slug": "ai-vs-human-equity-analyst",
+      "slug": "ai-vs-human-stock-analyst",
       "cluster": "ai-equity-research",
       "role": "support",
       "targetQuery": "ai vs human stock analyst",
       "intent": "informational",
-      "status": "queued",
-      "notes": "Comparison format; the worked examples must be LIVE rating calls. First draft was PR #22 (branch blog/ai-vs-human-equity-analyst, drafted 2026-07-13), CLOSED without merging on 2026-08-05 as stale: the Nokia report was replaced 15 Jul 2026 and Wärtsilä is now HOLD at EUR 32.10 whereas the draft used SELL at EUR 36.12, which fails the freshness gate merged in PR #38. Per the human close comment the topic STAYS QUEUED for a fresh redraft; do NOT reopen PR #22 (branch left intact) — open a new PR on redraft. Before redrafting: re-pull the current Nokia + Wärtsilä + Helsinki-book reports from report-content, re-verify each rating/target/price against the latest reportDate and a live quote, and rebuild every worked example so no superseded call remains. Original angle still valid: the sell-side almost never says sell (FactSet <6% sells / 57%+ buys) vs our AI book's live SELLs; external sources (FactSet, FINRA 2003 Global Settlement, Kahneman & Tversky, Hong & Kubik) were verified via WebSearch and remain reusable."
+      "status": "in-review",
+      "notes": "Comparison format; worked examples are LIVE rating calls. Redrafted from scratch 2026-08-09 after PR #22 was closed unmerged on 2026-08-05 as stale (do NOT reopen #22; branch blog/ai-vs-human-equity-analyst left intact). Slug renamed from ai-vs-human-equity-analyst so the target query \"ai vs human stock analyst\" appears in the slug, as PIPELINE.md section 7 on-page lint requires; nothing was ever live at the old slug, so no redirect is needed. New angle is measured rather than asserted: 396 published sell-side grades on the seven companies we also cover contain 32 sells (8.1%), against 3 of 7 from our model. All report numbers re-resolved via scripts/report-index.mjs and all live prices and analyst grade counts pulled from FMP on 2026-08-09. Gates: humanizer 44/50, factcheck pass, onpage pass, freshness exit 0.",
+      "prNumber": 47
     },
     {
       "slug": "is-tesla-overvalued",
