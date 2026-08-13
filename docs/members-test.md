@@ -67,6 +67,9 @@ in the LinkedIn developer console).
 
 - `POST /test/users {email?, role, tier?, tierStatus?, coverageCompanyId?}` → `{userId, token}`
 - `POST /test/force-publish {userId, genId, companyId?, jobId?}`
+- `POST /test/publications {userId, companyId?, publishedAt?}` → seeds a published
+  PUB item with a backdatable date, so the bounty rules can be exercised without
+  spending an engine run
 - Time travel: headers `x-test-now: <ISO>` + `x-test-secret: <utils secret>` move
   the quota clock (token expiry always uses the real clock).
 
@@ -74,7 +77,9 @@ in the LinkedIn developer console).
 
 ```bash
 npm run test:members                     # unit: quota builders + jwt
-MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 25 checks against the deployed stack
+MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 26 checks against the deployed stack
+# ADMIN_PASSWORD=… adds the payout/takedown checks; SMOKE_ENGINE=1 adds the
+# generation loop and costs one real engine run
 ```
 
 ## Environments
@@ -127,13 +132,12 @@ deploy rather than expecting an empty one.
 - VAT: no `automatic_tax` anywhere, one-off or subscription. Selling digital
   subscriptions to EU consumers needs an OSS registration decision.
 - The analyst freemium has **no off switch**: any LinkedIn sign-in becomes an
-  analyst with picks and a generation. The editing/publishing flow it depends on
-  is not designed yet, so this must be gated before production.
+  analyst with picks and a generation. Nothing verifies that the person is an
+  analyst, so this must be gated before production.
 - No Stripe billing portal: cancelling is an email to support, and the site copy
   says exactly that.
-- An analyst's submitted report is not auto-published: submitting records the
-  state, and an admin publishes it from the admin page (the members Lambda has
-  read-only access to the PDF bucket by design).
+- Submitting auto-publishes and post-moderation takes it back down
+  (`POST /admin/members/takedown`) — the admin page has no UI for either yet.
 - Final prices are business decisions; 19/39/59 are test points.
 - Published analyses are recorded but nothing renders them on the site yet —
   blocked on the handoff contract with the engine team

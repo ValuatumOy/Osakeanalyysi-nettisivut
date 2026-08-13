@@ -160,6 +160,10 @@ async function putEntitlement(userId, reportId, source, extra = {}) {
   }));
 }
 
+async function putItem(item) {
+  await dynamo().send(new PutCommand({ TableName: table(), Item: item }));
+}
+
 async function getPublication(userId, genId) {
   return getItem(`USER#${userId}`, `PUB#${genId}`);
 }
@@ -245,6 +249,7 @@ module.exports = {
   listUserItems,
   getEntitlement,
   putEntitlement,
+  putItem,
   getPublication,
   putPayout,
   runTransact,

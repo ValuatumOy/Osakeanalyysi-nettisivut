@@ -799,6 +799,25 @@ async function postTestForcePublish(event) {
   return json(200, { ok: true, committed });
 }
 
+// Seeds a published PUB item directly, with a backdatable publishedAt. The real
+// route to one is a reservation, which spends a full engine run — the bounty
+// rules (maturity, quarter, cap, takedown) need none of that to be exercised.
+async function postTestPublication(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  const genId = body.genId || crypto.randomUUID();
+  await store.putItem({
+    pk: `USER#${body.userId}`,
+    sk: `PUB#${genId}`,
+    status: 'published',
+    publishedAt: body.publishedAt || requestNow(event).toISOString(),
+    companyId: String(body.companyId || 'TEST.HE').toUpperCase(),
+    jobId: body.jobId || 'test-job',
+    promptsText: '[test seed]',
+  });
+  return json(200, { ok: true, genId });
+}
+
 // ── dispatch ─────────────────────────────────────────────────────────────────
 
 const PUBLIC_ROUTES = {
@@ -831,6 +850,7 @@ const ADMIN_ROUTES = {
 const TEST_ROUTES = {
   'POST /test/users': postTestUsers,
   'POST /test/force-publish': postTestForcePublish,
+  'POST /test/publications': postTestPublication,
 };
 
 function requireAdmin(event) {

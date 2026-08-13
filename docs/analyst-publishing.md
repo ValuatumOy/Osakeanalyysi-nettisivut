@@ -63,10 +63,13 @@ a migration.
 Auto-publish with post-moderation (business decision, 13.8.2026).
 
 ```
-reserve free generation ──► engine job (+ revisions, engine team's UI)
-        │
-        └─► POST /generations/{genId}/submit {jobId, companyId, promptsText}
-                  │  releases the obligation, PUB item → status "published"
+POST /generations/free {company, ticker} ──► order → worker → engine
+        │                                    (+ revisions, engine team's UI)
+        └─► POST /generations/{genId}/submit {promptsText}
+                  │  company + jobId come from the order, never from the request:
+                  │  the bounty keys on the company, so a client-supplied ticker
+                  │  would be a way to farm one bounty per spelling of a name.
+                  │  Releases the obligation, PUB item → status "published"
                   ▼
             company page section (renderer: see open questions)
                   │

@@ -145,6 +145,47 @@ async function main() {
     check('next month after publication: reserve works', gen4.status === 200, `got ${gen4.status}`);
   }
 
+  // — bounty ledger (seeded publications, no engine run) —
+  const adminApi = (method, path, body) => api(method, path, { body, token: process.env.ADMIN_PASSWORD });
+  const ago = (days) => new Date(Date.now() - days * 86400000).toISOString();
+  const seed = (userId, companyId, publishedAt) =>
+    testApi('POST', '/test/publications', { userId, companyId, publishedAt });
+
+  const matured = (await seed(analyst.userId, 'UPM.HE', ago(20))).data?.genId;
+  await seed(analyst.userId, 'FORTUM.HE', ago(2));            // still in the window
+  await seed(analyst.userId, 'UPM.HE', ago(19));              // same company, same quarter
+
+  const ledger = (await api('GET', '/me/earnings', { token: analyst.token })).data;
+  const byState = (state) => ledger.entries.filter(e => e.state === state).length;
+  check('ledger: matured → eligible, fresh → pending, repeat company → void',
+    byState('eligible') === 1 && byState('pending') === 1 && byState('void') === 1,
+    JSON.stringify(ledger.entries.map(e => [e.companyId, e.state, e.reason])));
+
+  if (process.env.ADMIN_PASSWORD) {
+    const payout = await adminApi('POST', '/admin/members/payout', { userId: analyst.userId });
+    check('payout: pays only the eligible one', payout.status === 200 && payout.data?.paid?.length === 1,
+      JSON.stringify(payout.data));
+
+    const afterPay = (await api('GET', '/me/earnings', { token: analyst.token })).data;
+    check('ledger after payout: that entry is paid',
+      afterPay.entries.filter(e => e.state === 'paid').length === 1,
+      JSON.stringify(afterPay.totals));
+
+    const again = await adminApi('POST', '/admin/members/payout', { userId: analyst.userId });
+    check('payout is not repeatable → 409', again.status === 409, `got ${again.status}`);
+
+    const down = await adminApi('POST', '/admin/members/takedown',
+      { userId: analyst.userId, genId: matured, reason: 'smoke test' });
+    check('takedown of a published analysis', down.status === 200, JSON.stringify(down.data));
+
+    const afterDown = (await api('GET', '/me/earnings', { token: analyst.token })).data;
+    check('takedown claws back a paid bounty',
+      afterDown.entries.some(e => e.genId === matured && e.state === 'clawback'),
+      JSON.stringify(afterDown.totals));
+  } else {
+    console.log('· skip: payout/takedown checks (set ADMIN_PASSWORD to include them)');
+  }
+
   // — investor tier —
   if (oldPaid.length + newPaid.length >= 6) {
     const investor = (await testApi('POST', '/test/users', {
@@ -152,25 +193,27 @@ async function main() {
     })).data;
     check('create investor test user', Boolean(investor?.token));
     const candidates = [...oldPaid, ...newPaid].slice(0, 6);
+    // A test user has no billing interval, so it gets the monthly allowance.
+    const LIMIT = 3;
     let opened = 0;
-    for (const report of candidates.slice(0, 5)) {
+    for (const report of candidates.slice(0, LIMIT)) {
       const res = await api('POST', `/reports/${report.id}/open`, { token: investor.token });
       if (res.status === 200) opened++;
     }
-    check('investor: 5 picks succeed (incl. fresh reports)', opened === 5, `${opened}/5`);
-    const sixth = await api('POST', `/reports/${candidates[5].id}/open`, { token: investor.token });
-    check('investor: 6th pick → 429', sixth.status === 429, `got ${sixth.status}`);
+    check(`investor: ${LIMIT} monthly picks succeed (incl. fresh reports)`, opened === LIMIT, `${opened}/${LIMIT}`);
+    const overLimit = await api('POST', `/reports/${candidates[LIMIT].id}/open`, { token: investor.token });
+    check('investor: one pick over the limit → 429', overLimit.status === 429, `got ${overLimit.status}`);
 
-    // concurrency: fresh user, burn 4 picks, then race 2 opens for the last slot
+    // concurrency: fresh user, burn all but one pick, then race 2 opens for the last slot
     const racer = (await testApi('POST', '/test/users', {
       role: 'subscriber', tier: 'investor', tierStatus: 'active',
     })).data;
-    for (const report of candidates.slice(0, 4)) {
+    for (const report of candidates.slice(0, LIMIT - 1)) {
       await api('POST', `/reports/${report.id}/open`, { token: racer.token });
     }
     const [a, b] = await Promise.all([
-      api('POST', `/reports/${candidates[4].id}/open`, { token: racer.token }),
-      api('POST', `/reports/${candidates[5].id}/open`, { token: racer.token }),
+      api('POST', `/reports/${candidates[LIMIT - 1].id}/open`, { token: racer.token }),
+      api('POST', `/reports/${candidates[LIMIT].id}/open`, { token: racer.token }),
     ]);
     const successes = [a, b].filter(r => r.status === 200).length;
     check('race on last pick: exactly 1 succeeds', successes === 1, `${successes} succeeded (${a.status}, ${b.status})`);
