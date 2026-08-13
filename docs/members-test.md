@@ -20,8 +20,10 @@ non-prod. Nothing here ships with the prod API Lambda.
 - **Freemium = analysts only** (LinkedIn login). 2 self-picked report views/month,
   only reports with `ageDays >= 30` (server-side, from the catalog). 1 free
   generation/month, reserved at start; **no new reservation until the previous
-  one is submitted for publication** (obligation on PROFILE, spans months).
-  Submitting also publishes the modification prompts (`promptsText` on the PUB item).
+  one is published** (obligation on PROFILE, spans months). Submit publishes
+  immediately (`companyId` required, `jobId` for provenance, `promptsText`
+  published with it) — post-moderation via `POST /admin/members/takedown`.
+  Bounty ledger at `GET /me/earnings`; see [analyst-publishing.md](analyst-publishing.md).
 - **Regular visitors**: weekly free-rotation reports only (`isFree` reports gate
   nothing) — unchanged from prod behaviour.
 - **Investor 19 €/mo / 190 €/yr**: 3 picks/month monthly, 5 annual. **Investor
@@ -64,7 +66,7 @@ in the LinkedIn developer console).
 ## Test utilities (never on prod; bearer = members-test-utils-secret)
 
 - `POST /test/users {email?, role, tier?, tierStatus?, coverageCompanyId?}` → `{userId, token}`
-- `POST /test/force-publish {userId, genId}`
+- `POST /test/force-publish {userId, genId, companyId?, jobId?}`
 - Time travel: headers `x-test-now: <ISO>` + `x-test-secret: <utils secret>` move
   the quota clock (token expiry always uses the real clock).
 
@@ -72,7 +74,7 @@ in the LinkedIn developer console).
 
 ```bash
 npm run test:members                     # unit: quota builders + jwt
-MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 22 checks against the deployed stack
+MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 25 checks against the deployed stack
 ```
 
 ## Environments
@@ -133,3 +135,8 @@ deploy rather than expecting an empty one.
   state, and an admin publishes it from the admin page (the members Lambda has
   read-only access to the PDF bucket by design).
 - Final prices are business decisions; 19/39/59 are test points.
+- Published analyses are recorded but nothing renders them on the site yet —
+  blocked on the handoff contract with the engine team
+  ([analyst-publishing.md](analyst-publishing.md), open question 1).
+- `BOUNTY_EUR_PER_REPORT` defaults to 0, so the ledger states are real but the
+  amounts are not.

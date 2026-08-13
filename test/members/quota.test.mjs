@@ -98,10 +98,11 @@ test('generation reservation: obligation gate + one per month + analyst only', (
   assert.equal(pubPut.Item.status, 'generating');
 });
 
-test('submit releases the obligation only for the matching genId', () => {
+test('submit publishes and releases the obligation only for the matching genId', () => {
   const now = new Date('2026-09-01T00:00:00Z');
   const params = quota.buildSubmitTransact({
     table: TABLE, userId: 'u1', now, genId: 'g1', promptsText: 'prompts',
+    companyId: 'nokia.he', jobId: '01JOB',
   });
   const [profileUpdate, pubUpdate] = params.TransactItems.map(i => i.Update);
 
@@ -109,6 +110,18 @@ test('submit releases the obligation only for the matching genId', () => {
   assert.equal(profileUpdate.ConditionExpression, 'openObligationId = :genId');
   assert.equal(pubUpdate.ConditionExpression, '#status = :generating');
   assert.equal(pubUpdate.ExpressionAttributeValues[':prompts'], 'prompts');
+  assert.equal(pubUpdate.ExpressionAttributeValues[':published'], 'published');
+  assert.equal(pubUpdate.ExpressionAttributeValues[':company'], 'NOKIA.HE'); // bounty keys on it
+  assert.equal(pubUpdate.ExpressionAttributeValues[':job'], '01JOB');
+});
+
+test('takedown only applies to a published publication', () => {
+  const params = quota.buildTakedownTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-02T00:00:00Z'), genId: 'g1', reason: 'bad',
+  });
+  const [update] = params.TransactItems.map(i => i.Update);
+  assert.equal(update.ConditionExpression, '#status = :published');
+  assert.equal(update.ExpressionAttributeValues[':down'], 'takendown');
 });
 
 test('coverage: initial once per subscription, updates capped at 4 per year', () => {

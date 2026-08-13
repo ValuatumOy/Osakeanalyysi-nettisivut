@@ -10,6 +10,7 @@ const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
 const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
+const bounty = require('../members/bounty');
 const quota = require('../members/quota');
 const store = require('../members/store');
 
@@ -476,12 +477,48 @@ async function postGenerationSubmit(event) {
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
+  // The company comes from the order the reservation resolved, never from the
+  // request: the bounty keys on it, so a client-supplied ticker would be a way
+  // to farm one bounty per spelling of the same company.
+  const order = await ordersStore.get(genId);
+  if (!order?.ticker) return json(409, { error: 'No generated report to publish for this id' });
+
   const committed = await store.runTransact(quota.buildSubmitTransact({
-    table: store.table(), userId: profile.userId, now, genId, promptsText: String(body.promptsText || ''),
+    table: store.table(), userId: profile.userId, now, genId,
+    promptsText: String(body.promptsText || ''),
+    companyId: order.ticker,
+    jobId: order.jobId || '',
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
-  await store.audit(profile.userId, 'generation-submitted', { genId });
-  return json(200, { ok: true, genId, status: 'submitted' });
+  await store.audit(profile.userId, 'generation-published', { genId, companyId: order.ticker });
+  return json(200, { ok: true, genId, status: 'published' });
+}
+
+// PAYOUT# items → what bounty.ledger() needs. The amount comes from the item, not
+// from the current env: a later fee change must not rewrite past payouts.
+function paidFrom(payouts) {
+  const paidAmounts = {};
+  const paidGenIds = payouts.map((p) => {
+    const genId = String(p.sk).replace(/^PAYOUT#/, '');
+    if (p.amount !== undefined) paidAmounts[genId] = Number(p.amount);
+    return genId;
+  });
+  return { paidGenIds, paidAmounts };
+}
+
+// GET /me/earnings — the analyst's bounty ledger, derived from their own items.
+async function getMeEarnings(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+  if (profile.role !== 'analyst') return json(403, { error: 'Analysts only' });
+
+  const [pubs, payouts] = await Promise.all([
+    store.listUserItems(profile.userId, 'PUB#'),
+    store.listUserItems(profile.userId, 'PAYOUT#'),
+  ]);
+  const { paidGenIds, paidAmounts } = paidFrom(payouts);
+  return json(200, bounty.ledger(pubs, { now, paidGenIds, paidAmounts }));
 }
 
 // ── billing ──────────────────────────────────────────────────────────────────
@@ -683,12 +720,43 @@ async function postBillingWebhook(event) {
 
 // ── admin ────────────────────────────────────────────────────────────────────
 
-async function postAdminRejectPublication(event) {
+// Post-moderation: publication is automatic, so this is how a bad analysis comes
+// down. Also voids (or claws back) its bounty — bounty.ledger() reads the status.
+async function postAdminTakedown(event) {
   const body = parseBody(event);
   if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
-  await store.updatePublicationStatus(body.userId, body.genId, 'rejected');
-  await store.audit(body.userId, 'publication-rejected', { genId: body.genId });
-  return json(200, { ok: true });
+  const committed = await store.runTransact(quota.buildTakedownTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    reason: String(body.reason || ''),
+  }));
+  if (!committed) return json(409, { error: 'No published publication with that id' });
+  await store.audit(body.userId, 'publication-takendown', { genId: body.genId, reason: body.reason || '' });
+  return json(200, { ok: true, status: 'takendown' });
+}
+
+// Records a manual payout. No payment rails on purpose — Stripe Connect means
+// KYC and tax; the ledger is the deliverable, the transfer happens by hand.
+async function postAdminPayout(event) {
+  const now = requestNow(event);
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+
+  const [pubs, payouts] = await Promise.all([
+    store.listUserItems(body.userId, 'PUB#'),
+    store.listUserItems(body.userId, 'PAYOUT#'),
+  ]);
+  const { paidGenIds, paidAmounts } = paidFrom(payouts);
+  const payable = bounty.payableGenIds(pubs, { now, paidGenIds, paidAmounts });
+  const requested = Array.isArray(body.genIds) ? body.genIds : payable;
+  const toPay = requested.filter((id) => payable.includes(id));
+  if (!toPay.length) return json(409, { error: 'Nothing payable', payable });
+
+  const amount = bounty.ledger(pubs, { now, paidGenIds, paidAmounts }).totals.amount;
+  for (const genId of toPay) {
+    await store.putPayout(body.userId, genId, { amount, paidAt: now.toISOString(), note: String(body.note || '') });
+  }
+  await store.audit(body.userId, 'bounty-paid', { genIds: toPay, amount });
+  return json(200, { ok: true, paid: toPay, amount, total: amount * toPay.length });
 }
 
 async function postAdminBan(event) {
@@ -725,6 +793,8 @@ async function postTestForcePublish(event) {
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
     promptsText: '[test force-publish]',
+    companyId: body.companyId || 'TEST.HE',
+    jobId: body.jobId || 'test-job',
   }));
   return json(200, { ok: true, committed });
 }
@@ -743,6 +813,7 @@ const PUBLIC_ROUTES = {
 
 const AUTHED_ROUTES = {
   'GET /me': getMe,
+  'GET /me/earnings': getMeEarnings,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
   'GET /generations/{genId}': getGeneration,
@@ -752,7 +823,8 @@ const AUTHED_ROUTES = {
 };
 
 const ADMIN_ROUTES = {
-  'POST /admin/members/reject-publication': postAdminRejectPublication,
+  'POST /admin/members/takedown': postAdminTakedown,
+  'POST /admin/members/payout': postAdminPayout,
   'POST /admin/members/ban': postAdminBan,
 };
 

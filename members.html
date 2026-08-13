@@ -193,7 +193,15 @@
           <div id="genProgress" class="muted" style="margin-top:0.75rem;"></div>
           <div class="gen-row" id="submitRow" hidden>
             <textarea id="prompts" placeholder="Your modification prompts (will be published with the report)"></textarea>
-            <button class="btn btn-gold btn-sm" onclick="submitGen()">Submit for publication</button>
+            <button class="btn btn-gold btn-sm" onclick="submitGen()">Publish analysis</button>
+          </div>
+        </div>
+
+        <div class="m-card m-section" id="earningsCard" hidden>
+          <h2>Earnings</h2>
+          <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
+          <div class="table-wrap">
+            <table class="reports-table" id="earningsTable"></table>
           </div>
         </div>
 
@@ -303,10 +311,10 @@
         document.getElementById('genTitle').textContent =
           isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
         document.getElementById('genSub').textContent = isAnalyst
-          ? 'Reserve your free report generation. Before the next one unlocks you must submit the finished report and your modification prompts for publication.'
+          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished analysis together with your modification prompts.'
           : 'Reserve your monthly fresh report. It stays private to you — nothing is published.';
         document.getElementById('genStatus').textContent = ob
-          ? 'Open publication obligation — submit your report and prompts to unlock the next generation.'
+          ? 'Open publication obligation — publish your analysis and prompts to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
         document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
@@ -314,6 +322,7 @@
         // Resume watching a run that was already going when the page loaded.
         const active = u.genId || localStorage.activeGenId;
         if (active && u.genReserved) pollGeneration(active);
+        if (isAnalyst) loadEarnings();
       }
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
       loadReports();
@@ -388,8 +397,28 @@
     async function submitGen() {
       const { status, data } = await api('POST', '/generations/' + window._openObligationId + '/submit',
         { promptsText: document.getElementById('prompts').value });
-      if (status === 200) { notice('ok', 'Submitted for publication — thank you!'); loadMe(); }
-      else notice('err', (data && data.error) || ('Submit failed (' + status + ')'));
+      if (status === 200) { notice('ok', 'Published — thank you!'); loadMe(); }
+      else notice('err', (data && data.error) || ('Publishing failed (' + status + ')'));
+    }
+
+    const EARNING_LABELS = {
+      pending: 'Maturing', eligible: 'Payable', paid: 'Paid',
+      clawback: 'Clawed back', void: 'No fee',
+    };
+
+    async function loadEarnings() {
+      const { status, data } = await api('GET', '/me/earnings');
+      const card = document.getElementById('earningsCard');
+      if (status !== 200 || !data.entries?.length) { card.hidden = true; return; }
+      card.hidden = false;
+      const t = data.totals;
+      document.getElementById('earningsTable').innerHTML =
+        '<thead><tr><th>Company</th><th>Published</th><th>Status</th><th>Fee</th></tr></thead><tbody>'
+        + data.entries.map(e => '<tr><td>' + e.companyId + '</td><td>' + e.publishedAt.slice(0, 10)
+          + '</td><td>' + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+          + '</td><td>' + e.amount + ' €</td></tr>').join('')
+        + '</tbody><tfoot><tr><td colspan="3">Payable now / maturing / paid</td><td>'
+        + t.eligible + ' € / ' + t.pending + ' € / ' + t.paid + ' €</td></tr></tfoot>';
     }
 
     if (token()) loadMe();

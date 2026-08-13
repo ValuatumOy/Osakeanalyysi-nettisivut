@@ -143,8 +143,11 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
   };
 }
 
-// Submit-to-publish releases the obligation (next month's generation unlocks).
-function buildSubmitTransact({ table, userId, now, genId, promptsText }) {
+// Submit publishes straight away (auto-publish + post-moderation) and releases
+// the obligation, so next month's generation unlocks. companyId and jobId are
+// required: the bounty ledger keys on the company, and jobId is the provenance
+// link back to the engine job the published PDF came from.
+function buildSubmitTransact({ table, userId, now, genId, promptsText, companyId, jobId }) {
   return {
     TransactItems: [
       {
@@ -160,14 +163,41 @@ function buildSubmitTransact({ table, userId, now, genId, promptsText }) {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
-          UpdateExpression: 'SET #status = :submitted, submittedAt = :at, promptsText = :prompts',
+          UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
+            + 'companyId = :company, jobId = :job',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
-            ':submitted': 'submitted',
+            ':published': 'published',
             ':generating': 'generating',
             ':at': now.toISOString(),
             ':prompts': promptsText || '',
+            ':company': String(companyId).toUpperCase(),
+            ':job': jobId || '',
+          },
+        },
+      },
+    ],
+  };
+}
+
+// Admin takedown: the post-moderation half of auto-publish. Voids the bounty by
+// construction — bounty.ledger() reads the status.
+function buildTakedownTransact({ table, userId, now, genId, reason }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+          UpdateExpression: 'SET #status = :down, takenDownAt = :at, takedownReason = :reason',
+          ConditionExpression: '#status = :published',
+          ExpressionAttributeNames: { '#status': 'status' },
+          ExpressionAttributeValues: {
+            ':down': 'takendown',
+            ':published': 'published',
+            ':at': now.toISOString(),
+            ':reason': reason || '',
           },
         },
       },
@@ -238,6 +268,7 @@ module.exports = {
   buildReserveGenerationTransact,
   buildReserveMemberGenerationTransact,
   buildSubmitTransact,
+  buildTakedownTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
 };

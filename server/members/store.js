@@ -164,15 +164,20 @@ async function getPublication(userId, genId) {
   return getItem(`USER#${userId}`, `PUB#${genId}`);
 }
 
-async function updatePublicationStatus(userId, genId, status) {
-  await dynamo().send(new UpdateCommand({
-    TableName: table(),
-    Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
-    UpdateExpression: 'SET #status = :status',
-    ConditionExpression: 'attribute_exists(pk)',
-    ExpressionAttributeNames: { '#status': 'status' },
-    ExpressionAttributeValues: { ':status': status },
-  }));
+// One row per paid-out bounty. Existence is what makes bounty.ledger() call a
+// publication 'paid', so the write is conditional — never pay the same one twice.
+async function putPayout(userId, genId, fields) {
+  try {
+    await dynamo().send(new PutCommand({
+      TableName: table(),
+      Item: { pk: `USER#${userId}`, sk: `PAYOUT#${genId}`, ...fields },
+      ConditionExpression: 'attribute_not_exists(sk)',
+    }));
+    return true;
+  } catch (err) {
+    if (err?.name === 'ConditionalCheckFailedException') return false;
+    throw err;
+  }
 }
 
 // Runs a builder result from server/members/quota.js. Returns true on commit,
@@ -241,7 +246,7 @@ module.exports = {
   getEntitlement,
   putEntitlement,
   getPublication,
-  updatePublicationStatus,
+  putPayout,
   runTransact,
   claimStripeEvent,
   audit,

@@ -103,25 +103,47 @@ async function main() {
   }
 
   // — generation obligation loop —
-  const gen1 = await api('POST', '/generations/free', { token: analyst.token });
-  check('reserve free generation', gen1.status === 200 && gen1.data?.genId, JSON.stringify(gen1.data));
-  const gen2 = await api('POST', '/generations/free', { token: analyst.token });
-  check('second reserve blocked by obligation → 409', gen2.status === 409, `got ${gen2.status}`);
+  // A reservation creates a real order and spends a real engine run (~20 min),
+  // so this block is opt-in. Everything else in the smoke is free.
+  const genBody = { company: 'Nokia Oyj', ticker: 'NOKIA.HE' };
+  const missing = await api('POST', '/generations/free', { token: analyst.token, body: {} });
+  check('reserve without a company → 400', missing.status === 400, `got ${missing.status}`);
 
-  const submit = await api('POST', `/generations/${gen1.data?.genId}/submit`, {
-    token: analyst.token, body: { promptsText: 'smoke-test prompts' },
-  });
-  check('submit for publication', submit.status === 200, JSON.stringify(submit.data));
+  const emptyEarnings = await api('GET', '/me/earnings', { token: analyst.token });
+  check('earnings endpoint answers for an analyst', emptyEarnings.status === 200,
+    JSON.stringify(emptyEarnings.data));
 
-  const gen3 = await api('POST', '/generations/free', { token: analyst.token });
-  check('same month after submit: still 429 (one per month)', gen3.status === 429, `got ${gen3.status}`);
+  if (!process.env.SMOKE_ENGINE) {
+    console.log('· skip: generation + publication loop (set SMOKE_ENGINE=1 — costs one engine run)');
+  } else {
+    const gen1 = await api('POST', '/generations/free', { token: analyst.token, body: genBody });
+    check('reserve free generation', gen1.status === 200 && gen1.data?.genId, JSON.stringify(gen1.data));
+    const gen2 = await api('POST', '/generations/free', { token: analyst.token, body: genBody });
+    check('second reserve blocked by obligation → 409', gen2.status === 409, `got ${gen2.status}`);
 
-  const nextMonth = new Date();
-  nextMonth.setUTCMonth(nextMonth.getUTCMonth() + 1, 1);
-  const gen4 = await api('POST', '/generations/free', {
-    token: analyst.token, testNow: nextMonth.toISOString(),
-  });
-  check('next month after submit: reserve works', gen4.status === 200, `got ${gen4.status}`);
+    const submit = await api('POST', `/generations/${gen1.data?.genId}/submit`, {
+      token: analyst.token, body: { promptsText: 'smoke-test prompts' },
+    });
+    check('submit publishes', submit.status === 200 && submit.data?.status === 'published',
+      JSON.stringify(submit.data));
+
+    // Published today, so the 14-day moderation window is still open.
+    const earnings = await api('GET', '/me/earnings', { token: analyst.token });
+    const entry = earnings.data?.entries?.[0];
+    check('earnings ledger: freshly published bounty is pending',
+      earnings.status === 200 && entry?.state === 'pending' && entry?.companyId === 'NOKIA.HE',
+      JSON.stringify(earnings.data));
+
+    const gen3 = await api('POST', '/generations/free', { token: analyst.token, body: genBody });
+    check('same month after publishing: still 429 (one per month)', gen3.status === 429, `got ${gen3.status}`);
+
+    const nextMonth = new Date();
+    nextMonth.setUTCMonth(nextMonth.getUTCMonth() + 1, 1);
+    const gen4 = await api('POST', '/generations/free', {
+      token: analyst.token, body: genBody, testNow: nextMonth.toISOString(),
+    });
+    check('next month after publication: reserve works', gen4.status === 200, `got ${gen4.status}`);
+  }
 
   // — investor tier —
   if (oldPaid.length + newPaid.length >= 6) {

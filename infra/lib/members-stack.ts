@@ -94,6 +94,9 @@ export class MembersStack extends Stack {
           `${config.siteUrl}/members.html`,
           'http://localhost:3100/members.html',
         ].join(','),
+        // Fixed fee per published analysis. 0 until the business decision lands,
+        // so the ledger records states without promising anyone money.
+        BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
       },
     });
 
@@ -141,6 +144,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/auth/magic-link'],
       [apigwv2.HttpMethod.GET, '/auth/magic/verify'],
       [apigwv2.HttpMethod.GET, '/me'],
+      [apigwv2.HttpMethod.GET, '/me/earnings'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
@@ -148,7 +152,8 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
-      [apigwv2.HttpMethod.POST, '/admin/members/reject-publication'],
+      [apigwv2.HttpMethod.POST, '/admin/members/takedown'],
+      [apigwv2.HttpMethod.POST, '/admin/members/payout'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],
       [apigwv2.HttpMethod.POST, '/test/users'],
       [apigwv2.HttpMethod.POST, '/test/force-publish'],
