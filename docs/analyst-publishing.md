@@ -117,7 +117,82 @@ Visibility only — it does not decide money (the bounty does). Minimum viable:
 
 Credibility scoring against realised returns (was the call right?) is the
 obvious later step and needs the target price and date per analysis — both
-already on the engine job. Record them now, score later.
+already on the engine job. Record them now, score later — and see the next
+section, because Valuatum already built that scoring once.
+
+## What the 2004 freelance system already solved
+
+Valuatum ran a freelance equity-analyst marketplace with ~40 analysts in Finland
+(`old.valuatum.com/freelance/`). Read before reinventing: `rewarding.shtml`,
+`points.shtml`, `admin-points.shtml`, `automatic-points.shtml`,
+`customer-points.shtml`, `coaching-analysts.shtml`, `original_analyst.shtml`,
+`pay_salary.shtml`.
+
+The economics do not transfer — back then the analyst built the whole model, so
+they earned 50% of revenue. The engine does the modelling now. The **mechanics**
+transfer almost unchanged:
+
+**Rank per company, not globally.** Every covered company was ranked separately,
+so one analyst held a different position for each company they followed. That is
+exactly what our company-page section needs: an ordering, per company.
+
+**Rank-weighted revenue split.** #1 got 2× #2, #2 got 2× #3, and so on. One line
+of code, and it makes competing for a company worth something. The page itself
+flags the failure mode: if #2 gets too little to stay motivated, flatten the
+curve, or make the split track the *distance* between ranks rather than the ranks
+themselves. Worth grafting on top of the flat bounty once there is more than one
+analyst per company.
+
+**Three point categories whose weights shift over time** — admin (human review),
+customer, automatic — starting at ~100% admin and moving to automatic + customer
+as data accumulates. This is the right answer to our cold-start problem: on day
+one there is nothing to compute a score from.
+
+**Automatic points = was the call right.** The best idea on those pages, and the
+one we can build with what the engine already produces. Monthly, per analysis:
+compare the recommendation against the realised share-price move, score
+`Successful +1 / OK 0 / Not available -0.1 / Unsuccessful -1` against per-rating
+thresholds (Buy: >1% successful, 0–1% OK; Hold: ±2% successful, ±5% OK; Sell:
+< -1% successful; Accumulate and Reduce in between), convert to a **percentile
+against every other analysis that month**, then combine months with recent ones
+weighted heavier — old mistakes fade, so a bad month is recoverable. Every input
+exists: rating and target price are on the engine job, the price series is in
+Valuatum REST.
+
+**Percentile, not raw score, in the UI.** "This analysis ranks better than 76% of
+all analyses" reads better than a number and needs no explaining.
+
+**A quality floor with teeth.** Below 0.5 admin points the analysis was labelled
+UNRELIABLE, dropped out of the ranking lists, and earned nothing. Softer and more
+useful than our binary takedown: a floor demotes, takedown removes.
+
+**Coaching analysts — peer review as a paid role.** Any analyst holding at least
+one 1.1-point analysis could apply to review others' work, and the reviewers
+shared 10% of revenue. This is the answer to our unstaffed moderation queue: it
+scales with the analyst pool instead of with our headcount. The booking step
+(claim a request so two reviewers don't duplicate) is worth copying too.
+
+**The feedback-request loop.** The analyst signals "ready for review", gets
+points *plus* concrete improvement suggestions, fixes, and re-requests. Rating
+without a fix path just ranks people; this makes the ranking a ladder.
+
+**Customer ratings count only with a written comment.** Ratings without one were
+stored but excluded from anything that decided money or position. Cheap rule,
+kills drive-by noise.
+
+**The non-monetary pitch was the real one.** Public track record against
+consensus, an objective accuracy score to show an employer, and a visible
+shop-window: six of about forty freelancers were hired as analysts by brokers or
+corporate finance units within nine months. That is what analyst profile pages
+are for.
+
+Deliberately **not** taken: the 50% revenue share (the engine does the modelling
+now); the original-analyst incentive of 20% for 3 years (nobody has to bring a
+company in — the engine does); company reservations to avoid overlapping
+coverage (coverage is no longer scarce); and payroll (35% social costs, tax
+cards, 12 € payroll fee) — invoice-only stays our rule. Two payout mechanics are
+worth keeping: a **minimum payout threshold** so tiny transfers never happen, and
+a **fixed due date** on the invoice rather than ad-hoc payment dates.
 
 ## Open questions
 
@@ -129,6 +204,11 @@ already on the engine job. Record them now, score later.
    we resolve jobId → PDF → `scripts/report-pages/extract.mjs` → section. Needs
    1 answered first.
 3. `BOUNTY_EUR_PER_REPORT` and the monthly cap N.
+5. Whether the flat bounty stays flat, or gets the 2004 rank weighting on top
+   once a company has more than one analyst (see the section above).
+6. Whether peer review ("coaching analysts") is the moderation model. It is the
+   only one that scales without headcount, but it needs a paid role and a
+   seniority bar before anyone is trusted with it.
 4. Analyst display identity: LinkedIn name/photo directly, or a declared handle
    plus a moderated profile? Affects the profile-page surface above.
 </content>
