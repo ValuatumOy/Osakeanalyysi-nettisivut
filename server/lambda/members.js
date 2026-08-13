@@ -480,8 +480,13 @@ async function postGenerationSubmit(event) {
   // The company comes from the order the reservation resolved, never from the
   // request: the bounty keys on it, so a client-supplied ticker would be a way
   // to farm one bounty per spelling of the same company.
+  // DELIVERED is also what makes the report exist at all: without this an
+  // analyst could reserve, publish an empty shell and start a bounty maturing.
   const order = await ordersStore.get(genId);
   if (!order?.ticker) return json(409, { error: 'No generated report to publish for this id' });
+  if (order.status !== 'DELIVERED') {
+    return json(409, { error: 'The report is still generating', status: order.status });
+  }
 
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: profile.userId, now, genId,

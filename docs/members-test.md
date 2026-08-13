@@ -138,6 +138,9 @@ deploy rather than expecting an empty one.
   says exactly that.
 - Submitting auto-publishes and post-moderation takes it back down
   (`POST /admin/members/takedown`) — the admin page has no UI for either yet.
+- Publishing requires the order to be `DELIVERED`, so a `FAILED` generation
+  leaves the analyst's obligation stuck for good. It needs a release path
+  (admin clear, or auto-release when the reconciler fails an order).
 - Final prices are business decisions; 19/39/59 are test points.
 - Published analyses are recorded but nothing renders them on the site yet —
   blocked on the handoff contract with the engine team
