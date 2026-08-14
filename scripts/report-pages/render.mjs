@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const SITE = 'https://www.aiequityreports.com';
 
-// Starting price for generating a fresh report on a covered-but-not-yet-reported company. Inert for now — no checkout wired up.
+// Starting price for generating a fresh report on a covered-but-not-yet-reported company.
 const NEW_REPORT_PRICE = 50;
 
 // ── helpers ────────────────────────────────────────────────────────────────
@@ -665,7 +665,7 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            ${hasReport ? `<a href="/index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a report</a>` : ''}
+            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report</a>` : ''}
           </div>
         </div>
       </div>
