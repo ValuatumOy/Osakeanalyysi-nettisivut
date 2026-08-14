@@ -1,0 +1,433 @@
+!!! AI Equity Reports — site and report backend
+
+The public site __www.aiequityreports.com__ and the backend that sells,
+generates and delivers Valuatum's AI equity research reports.
+
+Repository: [ValuatumOy/Osakeanalyysi-nettisivut|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut]
+
+;Live site:[https://www.aiequityreports.com]
+;Admin page:[https://www.aiequityreports.com/admin]
+;Report API:[https://api.aiequityreports.com]
+;PDF hosting:[https://files.aiequityreports.com]
+;Hosting dashboard:[Vercel project|https://vercel.com/valuatum-dk/osakeanalyysi-nettisivut]
+
+Related pages: [PDFGenerationEngine] for the engine that renders the PDFs and
+how to change what is inside a report, and [RaporttienIlmaiskoodit] for
+discount and test codes.
+
+----
+
+!! Part 1 — For everyone
+
+!! What the product is
+
+We sell AI-generated equity research reports on listed companies. Each report is
+a PDF built on Valuatum's methodology: value-pool analysis, reverse valuation,
+risks and catalysts, and full financial estimates.
+
+This site sells and delivers the reports; it does not produce them. The PDFs are
+rendered by a separate service — __to change what a report actually contains or
+how it looks, see [PDFGenerationEngine]__, not this repository.
+
+A visitor can get a report in three ways:
+
+* __Free report__ — a handful of reports are free at any given time. Direct PDF
+  download, no card, no account.
+* __Ready report__ — a report that already exists in our catalog. Pay by card,
+  get the PDF immediately on the success page and by email.
+* __Fresh report__ — no report exists yet for that company, so we generate one
+  on demand from live financial data and email it, normally within about
+  30 minutes.
+
+Pricing is __not__ set in this repository. It is read live from Stripe products,
+so changing the price in the Stripe dashboard changes both checkout and the
+prices shown on the site (after a short cache expiry). Free reports are €0; the
+code's fallback price for a ready report is €20.
+
+!! Discount and test codes
+
+Both checkouts — ready report and fresh report — accept Stripe promotion codes,
+so the buyer sees a "Add promotion code" field on the Stripe payment page. This
+is also how a purchase is tested end to end without paying: a 100% code walks
+through the real checkout, webhook, delivery and email path.
+
+Codes are created and managed in Stripe. The codes in use, and how to test with
+them, are on [RaporttienIlmaiskoodit].
+
+!! What a visitor does
+
+# Lands on the site, or on one of the thousands of generated company pages
+  (typically from Google or an AI assistant).
+# Searches or browses to a company.
+# If a report exists, they see it on the __Reports__ page or the company page and
+  can buy it — or download it if it is currently free.
+# If no report exists, they order a fresh one: pick the company, pay, and the
+  report arrives by email.
+# Anyone can also ask us to cover a company through the "request coverage"
+  form, which just emails the admin.
+
+Main pages: home, __Reports__ (the catalog and the fresh-report order form),
+__Pricing__, __Methodology__, __FAQ__, __About__, __Blog__, and per-company
+pages under {{/reports/}}.
+
+!! The admin page
+
+;Address:[https://www.aiequityreports.com/admin]
+;Password:{{valuosake2}}
+
+The password is shared, typed once, and then remembered in the browser. Sign out
+clears it. If the password is ever changed, the page notices on the next action,
+clears the stored value and asks again.
+
+__Keep the access list for this wiki page tight.__ Anyone who can read this page
+can add, edit and delete reports in the live catalog.
+
+What you can do there:
+
+* __See the whole catalog__, including reports that are hidden from the public
+  site, with the number of buyers per report.
+* __Add a report__ — pick the PDF file and fill in company name, ticker,
+  exchange, sector, country, report date, whether it is visible now, and whether
+  it is free. The file uploads straight to storage from your browser.
+* __Edit a report__ — change any of the same fields afterwards, including
+  flipping a report between free and paid, or hiding it.
+* __Delete a report__ — possible, but see the warning below.
+
+!! Delete versus hide
+
+__Hide, don't delete.__ Every buyer's download link is permanent. Hiding a report
+removes it from the public site, the search, the sitemap and checkout, while every
+link already emailed keeps working. Deleting removes the file, and those links
+die.
+
+The admin page reflects this: it shows the buyer count, offers "Hide instead" as
+the recommended action, and requires you to type a confirmation before a real
+delete is enabled. Nothing else in the system ever deletes a PDF automatically.
+
+!! What happens on its own
+
+|| What || When || What it does
+| Free-report rotation | Weekly | Picks the free reports automatically from the eligible ready reports. Curated samples can be pinned free, and any report can be excluded from rotation.
+| Fresh-order processing | Continuously | Watches for paid fresh orders, generates the report, emails the buyer, and emails the admin if anything fails.
+| Resale retirement ("the reaper") | Daily | If resale of generated reports is switched on, hides them again once their resale window ends. It never deletes.
+| Blog pipeline | Mon / Wed / Fri evenings, plus Sunday topic proposals | Drafts, fact-checks and lints a blog article, then __opens a pull request__. A human always merges. It never publishes by itself.
+
+!! Common tasks
+
+;__Publish a new report__:Admin page → Add. Set it visible and choose free or paid.
+;__Take a report off the site__:Admin page → Edit → set visibility to hidden. Do not delete.
+;__Make a report free (or paid)__:Admin page → Edit → free status.
+;__Change prices__:Stripe dashboard — edit the default price of the ready-report or fresh-report product. Nothing to deploy.
+;__Publish a blog post__:Review and merge the pull request the pipeline opened. The site deploys itself on merge.
+;__Add company pages__:A developer runs the company page generator and commits the result.
+;__Change what is inside a report__:Not here — see [PDFGenerationEngine].
+;__Test a purchase without paying__:Use a 100% discount code — see [RaporttienIlmaiskoodit].
+;__Check a deploy or roll one back__:[Vercel project|https://vercel.com/valuatum-dk/osakeanalyysi-nettisivut]
+
+----
+
+!! Part 2 — Technical overview
+
+!! Shape of the system
+
+Two halves, deployed separately:
+
+* __Static site on Vercel__ — all pre-rendered HTML is committed to the repo,
+  so there is no build step. A small set of serverless functions under
+  {{api/}} handles Stripe and proxies the backend.
+* __Serverless backend on AWS__ (eu-west-1) — defined as a CDK app in
+  {{infra/}}, with the handler code in {{server/}}. It owns the report catalog,
+  the order state machine and PDF storage.
+
+Rendering itself belongs to neither half: PDFs come from the separate
+pdf-report-engine Lambda, documented on [PDFGenerationEngine]. This system only
+asks it for a report and delivers the result.
+
+{{{
+  browser
+     │
+     ▼
+  Vercel  www.aiequityreports.com
+     static HTML (reports/, blog/, compare/ …)
+     api/*.js — Stripe checkout, webhook, catalog + pricing proxies
+     │  CATALOG_API_URL
+     ▼
+  AWS eu-west-1  (infra/ CDK)
+     API Lambda      api.aiequityreports.com
+     Worker Lambda   reconciler + reaper
+     DynamoDB        Orders, CatalogState
+     S3 + CloudFront files.aiequityreports.com
+     │                        │
+     ▼                        ▼
+  pdf-report-engine     Wisdom (model data) / FMP
+}}}
+
+The backend moved off an EC2 box in July 2026. {{server/index.js}} is the old
+always-on Express app; it is retained for local development, and production runs
+the two Lambdas. The full design and cutover plan is in
+{{docs/aws-migration-plan.md}}.
+
+!! Repository layout
+
+|| Path || Contents
+| {{index.html}}, {{reports.html}}, {{pricing.html}} … | Marketing and catalog pages
+| {{reports/}} | ~1,170 generated company and report pages, committed
+| {{compare/}}, {{blog/}}, {{authors/}} | Generated comparison, article and author pages
+| {{checkout/}} | Stripe success and cancel pages
+| {{css/}}, {{js/}}, {{images/}} | Shared front-end assets
+| {{api/}} | Vercel serverless functions
+| {{server/}} | Backend modules shared by Express and Lambda
+| {{server/lambda/}} | {{api.js}} and {{worker.js}} handlers
+| {{server/aws/}} | DynamoDB, S3, SSM adapters
+| {{infra/}} | AWS CDK app (TypeScript)
+| {{scripts/}} | Static page generators
+| {{report-content/}}, {{company-content/}}, {{blog-content/}} | Source data for the generators
+| {{blog-system/}} | Blog pipeline design, prompts, topic queue, authors
+| {{docs/}} | Architecture and lifecycle documentation
+| {{test/}} | {{node:test}} suites
+
+!! The catalog
+
+The catalog is derived from the PDF store: each PDF may carry a JSON __sidecar__
+of the same name holding its metadata. State that is not a property of the file —
+purchases, the weekly free rotation — lives in the {{AiEquityReportsCatalogState}}
+DynamoDB table.
+
+Visibility and price are separate concerns
+(contract in {{docs/report-lifecycle.md}}):
+
+;__Publication status__:{{ready}} (public), {{hidden}} (exists but not public — the default for a newly delivered customer report), {{archived}}, {{expired}}.
+;__Access status__:a ready report is either {{free}} (direct download) or {{paid}} (checkout).
+
+Every consumer — the reports page, company pages, checkout, sitemap, related
+links — takes only {{ready}} entries. Free rotation picks only from ready
+reports. {{forceFree}} pins a curated sample into the free tier;
+{{excludeFromFree}} keeps a report out of it.
+
+The weekly free selection is a __deterministic seeded hash of the ISO week and
+the report ids__, so concurrent readers agree without writing anything; the
+worker records the week's choice with a conditional put for the repeat-cooldown
+history.
+
+!! Order flows
+
+!!! Ready report
+
+# {{reports.html}} loads {{/api/reports}} and renders the catalog.
+# {{api/create-checkout.js}} verifies the report is {{ready}} + {{paid}}, reads
+  the current Stripe price and creates a Checkout Session.
+# {{checkout/success.html}} exchanges the session id for the PDF URL through
+  {{api/get-report-link.js}}.
+# {{api/webhook.js}} records the purchase via {{POST /api/report-purchases}} and
+  emails the report.
+
+!!! Fresh report
+
+# The company picker calls {{/api/search-companies}}, a Wisdom proxy that keeps
+  the token server-side.
+# {{api/create-fresh-checkout.js}} creates a Checkout Session carrying company,
+  ticker and email in metadata.
+# The webhook posts the order to the backend, which enqueues it and
+  asynchronously invokes the worker.
+# The reconciler walks the state machine:
+
+{{{
+NEW ──(FRESH_IMPORT_ENABLED)──▶ IMPORTING ──▶ RENDERING ──poll──▶ DELIVERED
+                                                          └─────▶ FAILED
+}}}
+
+{{IMPORTING}} pulls fresh FMP data into Wisdom (up to about six minutes).
+{{RENDERING}} submits the job to pdf-report-engine ([PDFGenerationEngine] — the
+report template and content live there) and polls it roughly every 20 seconds
+inside one invocation, then across five-minute sweeps, bounded by
+{{RECONCILER_MAX_POLLS}}.
+
+Delivery uploads the PDF and a sidecar to S3 and emails the buyer. The new
+report starts {{hidden}} and excluded from free rotation, or {{ready}} + {{paid}}
+when resale is enabled. The __reaper__ later ends the resale window by rewriting
+the sidecar to {{hidden}} — it never deletes, it only touches reports whose
+sidecar carries reconciler provenance, and {{REAPER_DRY_RUN}} (default on) makes
+it log its targets without writing.
+
+The admin is emailed on every failure, and on success when
+{{ADMIN_NOTIFY_ON_SUCCESS}} is set.
+
+!! Static page generators
+
+All generated HTML is committed; Vercel serves the repo as-is. Run a generator
+locally, review the diff, commit.
+
+Generators that need the catalog fetch it live from
+{{https://www.aiequityreports.com/api/reports}}. There is deliberately no
+local-snapshot fallback and any fetch error is fatal — building from a stale
+snapshot once served outdated pages for weeks.
+
+;{{npm run generate:companies -- FORTUM NOKIA …}}:Company pages from Wisdom model data plus a cached one-paragraph AI profile. Financial data is refetched every run; only the profile text is cached. Also updates {{js/companyPagesData.js}} and {{sitemap.xml}}. See {{docs/company-page-generator.md}}.
+;{{node scripts/build-report-pages.mjs}}:Report landing pages from {{report-content/*.json}}. Free reports expose the full analysis for maximum SEO surface; paid reports expose a citable teaser and a buy gate.
+;{{node scripts/build-comparison-pages.mjs}}:"X vs Y stock comparison" pages for every same-sector pair that has extracted report content.
+;{{node scripts/build-blog-pages.mjs}}:Blog articles and the blog index. Hard-fails if an article references an author with TODO fields, a missing photo or a missing LinkedIn URL.
+;{{npm run validate:jsonld}}:Parses every JSON-LD block in every HTML file and fails on the first invalid one.
+
+__Caveat:__ the company-page and report-page generators both write to
+{{reports/<slug>.html}}. For a company that has both a profile and extracted
+report content, whichever generator ran last owns the file. Re-run the
+report-page build after a company-page sweep if the full report page should win.
+
+!! Blog pipeline
+
+An automated but human-approved pipeline in {{blog-system/}}, driven by a Claude
+Code agent from {{.github/workflows/blog-pipeline.yml}} — Mon/Wed/Fri 21:30
+Europe/Helsinki, plus a Sunday topic-proposal run.
+
+Per run: sync state, refresh check, topic selection, brief, draft, critique and
+humanize, fact-check, lint and build, then __open a pull request__.
+
+Two rules dominate:
+
+* __Human merge only — no exceptions, no timeout.__ The pipeline never merges a
+  blog PR however green its gates are. Passing gates are a precondition for
+  review, not a substitute for it.
+* __Gates are hard.__ Zero unverified numeric claims; at least three external
+  sources with at least one primary; a humanizer score of 40/50 or better;
+  on-page SEO lint.
+
+Topics are approved by flipping an entry in {{blog-system/topic-queue.json}} to
+{{queued}}. If nobody picks within 48 hours the agent promotes the
+highest-scoring proposal itself and says so in the PR.
+
+!! Local development
+
+Requires __Node.js 20+__.
+
+{{{
+npm install
+npx serve -l 5173 .          # static site at http://localhost:5173
+}}}
+
+Calls to {{/api/*}} are not served that way — use {{vercel dev}}, or point the
+page at a deployed API. For the legacy backend:
+
+{{{
+cd server
+npm install
+cp .env.example .env
+node index.js                # http://localhost:3001
+}}}
+
+Without {{ORDERS_TABLE}} and {{REPORT_PDF_BUCKET}} set, the backend falls back
+to local JSON files and a local PDF directory, so catalog work runs without AWS
+credentials. Delivery of a fresh report has no local-disk path by design and
+fails loudly if the bucket is unset.
+
+!! Tests
+
+{{node:test}}, no network access or credentials required — Wisdom and catalog
+responses are supplied in memory.
+
+{{{
+npm run test:api             # Vercel function handlers
+npm run test:catalog         # catalog client, lifecycle rules, PDF URLs
+npm run test:reaper          # resale-window retirement
+npm run test:company-pages   # generator, normalization, Wisdom client
+npm run validate:jsonld
+}}}
+
+!! Configuration and secrets
+
+Two annotated example files document the full surface: {{.env.example}} for
+Vercel and {{server/.env.example}} for the backend. The ones worth knowing:
+
+|| Variable || Meaning
+| {{STRIPE_SECRET_KEY}}, {{STRIPE_WEBHOOK_SECRET}} | Stripe credentials
+| {{STRIPE_READY_REPORT_PRODUCT_ID}}, {{STRIPE_FRESH_REPORT_PRODUCT_ID}} | Pricing source — the app reads each product's current default price
+| {{CATALOG_API_URL}} | Backend base URL the Vercel functions call; flipping it is the migration rollback switch
+| {{CATALOG_SYNC_SECRET}} | Bearer shared between the Vercel webhook and {{POST /api/report-purchases}}
+| {{WISDOM_API_TOKEN}} | Server-side token for company search and the page generator
+| {{PDF_ENGINE_URL}}, {{AWS_INVOKER_*}} | pdf-report-engine URL and the keys used to sign calls to it
+| {{FRESH_IMPORT_ENABLED}}, {{RESALE_ENABLED}}, {{REAPER_DRY_RUN}} | Feature flags
+| {{REPORT_VISIBLE_AFTER_DAYS}}, {{REPORT_FREE_*}} | Catalog visibility and free-rotation rules
+| {{ADMIN_UPLOAD_PASSWORD}} | The admin page password
+
+In AWS, secrets are SSM Parameter Store SecureStrings under
+{{/aiequityreports/<stage>/}}, loaded at cold start by {{server/aws/secrets.js}}.
+Everything else is plain Lambda environment set by CDK.
+
+The admin password is deliberately never hardcoded in the page or the repo. To
+read or rotate it:
+
+{{{
+# read
+aws ssm get-parameter --with-decryption \
+  --name /aiequityreports/prod/admin-upload-password
+
+# rotate
+aws ssm put-parameter --overwrite --type SecureString \
+  --name /aiequityreports/prod/admin-upload-password --value '<NEW>'
+}}}
+
+After rotating, redeploy or wait for the Lambda containers to recycle. Admins are
+re-prompted automatically on their next action.
+
+Admin auth is one shared bearer password held in {{localStorage}}. That is a
+known and accepted trade-off: it guards catalog administration only, and two
+server-side compensations make abuse slow and visible — API Gateway throttling on
+{{/api/admin/*}}, and a CloudWatch alarm on repeated 401s.
+
+The older blog admin at {{/admin.html}} is a separate surface with its own
+{{ADMIN_PASSWORD}} variable and works against the GitHub API. Both admin pages
+are {{noindex}} and disallowed in {{robots.txt}}.
+
+!! Deployment
+
+!!! Website
+
+Push to {{main}}. Vercel serves the repository as-is — {{vercel.json}} sets no
+build command and carries the legacy URL redirects, and {{.vercelignore}} keeps
+generator inputs, docs and tests out of the deployment.
+
+Deployments, build logs, environment variables and instant rollback are in the
+[Vercel project|https://vercel.com/valuatum-dk/osakeanalyysi-nettisivut]. Note
+that the Stripe and catalog environment variables listed below are set there,
+not in the repository.
+
+!!! Backend
+
+{{{
+cd infra && npm install
+npm run deploy:test          # cdk deploy -c stage=test --all
+npm run deploy:prod
+}}}
+
+Five stacks:
+
+|| Stack || Contents
+| {{AiEquityReportsUsEast1}} | CloudFront certificate and the Route53 health check (us-east-1 is mandatory for both)
+| {{AiEquityReportsStorage}} | S3 PDF bucket, Orders and CatalogState tables, SNS alerts topic
+| {{AiEquityReportsWorker}} | Reconciler and reaper Lambda, five-minute sweep and daily reap rules
+| {{AiEquityReportsApi}} | API Lambda and HTTP API, provisioned concurrency 1 in production
+| {{AiEquityReportsFiles}} | CloudFront over the private PDF bucket
+
+DNS is Route53 in the same account, so records and certificate validation are
+fully CDK-managed. Secrets are created once per stage by hand as SSM
+SecureStrings. Details in {{infra/README.md}}.
+
+__Discuss and get approval before deploying infrastructure or environment
+changes to production.__
+
+!! Further reading
+
+|| Document || Covers
+| [PDFGenerationEngine] | The service that renders the PDFs, and how to change report content and layout
+| [RaporttienIlmaiskoodit] | Discount codes, including how to test a purchase without paying
+| [Vercel project|https://vercel.com/valuatum-dk/osakeanalyysi-nettisivut] | Deployments, build logs, environment variables, rollback
+| [docs/aws-migration-plan.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/docs/aws-migration-plan.md] | Full backend architecture, rationale, cutover and rollback
+| [docs/report-lifecycle.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/docs/report-lifecycle.md] | The publication and access status contract
+| [docs/company-page-generator.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/docs/company-page-generator.md] | Company page generation and selection rules
+| [infra/README.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/infra/README.md] | CDK stacks, secrets, deploys, one-time migration
+| [blog-system/PIPELINE.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/blog-system/PIPELINE.md] | Blog pipeline runbook
+| [README.md|https://github.com/ValuatumOy/Osakeanalyysi-nettisivut/blob/main/README.md] | Developer-facing summary of this same material
+
+----
+
+All published report content is AI-generated research for informational purposes
+only and is not investment advice.
