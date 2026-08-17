@@ -300,6 +300,15 @@ behind a link — see `analyst-story.html`.
 | Ordered analyses per company | `GET /analyses`, `server/members/ranking.js` |
 | Reads paid for with a score + written comparison | `POST /analyses/{genId}/open` + `/review` |
 
+`analysts.html` now promises two of these in public: a good analysis clears the
+next generation ("an administrator or another analyst reads what you published")
+and roughly every fifth to tenth analysis goes free to all readers. Both are
+half-machine: the clearance is a manual admin call
+(`POST /admin/members/grant-generation`) informed by peer scores, and the free
+window is hand-picked (`POST /admin/members/feature`). The page says as much —
+hand-picked first, randomised later — so nothing there is a promise the system
+cannot keep, but both need a human in the loop until the draw is automated.
+
 Not built from it: rendering the ordered list onto the static company pages
 (open question 2), randomising the free draw (hand-picking first, by design),
 at-cost generations netted off earnings (waits for the fee decision), and any
