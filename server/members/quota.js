@@ -204,6 +204,7 @@ function buildSubmitTransact({
             genId,
             companyId: company,
             analystName,
+            jobId: jobId || '',
             publishedAt: at,
             status: 'published',
             priceEur: price,

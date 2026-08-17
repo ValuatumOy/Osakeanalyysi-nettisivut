@@ -283,6 +283,12 @@
 
     const token = () => localStorage.memberToken || '';
 
+    // Analyst names and comments are member-supplied (LinkedIn), and they are
+    // rendered to OTHER members — the only user-controlled strings on this page.
+    const esc = (value) => String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
     function notice(kind, text) {
       const el = document.getElementById('notice');
       el.className = 'notice ' + kind;
@@ -459,10 +465,10 @@
       const { status, data } = await api('GET', '/analyses' + (ticker ? '?companyId=' + encodeURIComponent(ticker) : ''));
       if (status !== 200) { notice('err', 'Could not load analyses (' + status + ')'); return; }
       const rows = (data.analyses || []).map(a =>
-        '<tr><td>' + a.companyId + '</td><td>' + a.analyst + '</td><td>' + a.publishedAt.slice(0, 10)
+        '<tr><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + '</td><td>' + esc(a.publishedAt.slice(0, 10))
         + '</td><td>' + (a.free ? '<span class="pill-free">Free</span>' : (a.priceEur ? a.priceEur + ' €' : '—'))
         + '</td><td>' + (a.reviewCount ? a.peerScore + ' (' + a.reviewCount + ')' : 'no reviews')
-        + '</td><td style="text-align:right"><button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + a.genId + '\')">Open (uses a read)</button></td></tr>');
+        + '</td><td style="text-align:right"><button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button></td></tr>');
       document.getElementById('analysesTable').innerHTML =
         '<tr><th>Company</th><th>Analyst</th><th>Published</th><th>Price</th><th>Peer score</th><th></th></tr>'
         + (rows.join('') || '<tr><td colspan="6" class="muted">No published analyses yet.</td></tr>');
@@ -471,9 +477,15 @@
     async function openAnalysis(genId) {
       const { status, data } = await api('POST', '/analyses/' + genId + '/open');
       if (status !== 200) { notice('err', (data && data.error) || ('Could not open the analysis (' + status + ')')); loadMe(); return; }
-      window._openReviewId = genId;
-      renderReviewRow();
-      notice('ok', 'Analysis opened. Score and comment it to unlock your next read.');
+      if (data.url) window.open(data.url, '_blank');
+      if (!data.free) {
+        window._openReviewId = genId;
+        renderReviewRow();
+      }
+      notice('ok', data.free
+        ? 'This analysis is free right now — no read spent.'
+        : (data.url ? 'Analysis opened. Score and comment it to unlock your next read.'
+                    : 'Read recorded, but the PDF is not available for this analysis.'));
       loadMe();
     }
 

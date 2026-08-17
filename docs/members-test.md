@@ -103,7 +103,7 @@ in the LinkedIn developer console).
 
 ```bash
 npm run test:members                     # unit: quota builders + jwt
-MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 26 checks against the deployed stack
+MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # ~45 checks against the deployed stack
 # ADMIN_PASSWORD=… adds the payout/takedown checks; SMOKE_ENGINE=1 adds the
 # generation loop and costs one real engine run
 ```

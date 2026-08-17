@@ -233,7 +233,6 @@ async function getMe(event) {
     store.listUserItems(profile.userId, 'ENT#'),
   ]);
 
-  const tier = activeTier(profile);
   const limits = limitsFor(profile);
 
   return json(200, {
@@ -771,6 +770,15 @@ async function postAnalysisOpen(event) {
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
   if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
 
+  const deliver = async (extra) => json(200, {
+    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId, now)), ...extra,
+  });
+
+  // Inside a hand-picked free window, or past the analyst's own decay time, the
+  // analysis is free for everyone — no read spent, no review owed. Removing the
+  // gate is the whole point of the free window.
+  if (ranking.isFreeNow(index, now)) return deliver({ free: true });
+
   const limit = limitsFor(profile).analystReads;
   if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
 
@@ -785,13 +793,26 @@ async function postAnalysisOpen(event) {
         openReviewId: fresh.openReviewId,
       });
     }
+    // Already paid for: re-opening never charges twice.
     if (await store.getItem(`USER#${profile.userId}`, `READ#${genId}`)) {
-      return json(200, { ok: true, genId, jobId: index.jobId || null, alreadyOpen: true });
+      return deliver({ alreadyOpen: true });
     }
     return json(429, { error: 'Monthly analyst reads used up' });
   }
   await store.audit(profile.userId, 'analysis-opened', { genId, ownerId: index.userId });
-  return json(200, { ok: true, genId, ownerId: index.userId });
+  return deliver({});
+}
+
+// The published analysis itself: the engine PDF the generation delivered, behind
+// a 5-minute presigned GET like every other download here. Seeded/test
+// publications have no order behind them and simply come back without a url.
+async function analysisDocument(genId, now) {
+  const order = await ordersStore.get(genId);
+  if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
+  const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: true });
+  const report = catalog.reports.find(item => item.fileName === order.pdfFileName);
+  if (!report) return { url: null, jobId: order.jobId || null };
+  return { ...(await presignReport(report)), jobId: order.jobId || null, company: order.companyName };
 }
 
 // POST /analyses/{genId}/review {score, comment} — the price of the read. The
@@ -1032,6 +1053,7 @@ async function postTestPublication(event) {
     genId,
     companyId,
     analystName: '[test seed]',
+    jobId: body.jobId || 'test-job',
     publishedAt,
     status: 'published',
     priceEur: 0,
