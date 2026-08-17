@@ -4,6 +4,10 @@ How an analyst's edited report reaches the site, what they earn for it, and how
 they are ranked. Test stack only — see [members-test.md](members-test.md) for the
 membership/quota system this builds on.
 
+Public-facing description of the programme: [`analysts.html`](../analysts.html)
+— it describes the intended flow, so parts of it are ahead of implementation
+(revision UX, the company-page section, analyst profile pages).
+
 ## What an "edited report" is
 
 The analyst gets a report — bought, or the freemium one free generation per month
