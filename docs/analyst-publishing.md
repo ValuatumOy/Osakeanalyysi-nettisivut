@@ -198,6 +198,87 @@ cards, 12 € payroll fee) — invoice-only stays our rule. Two payout mechanics
 worth keeping: a **minimum payout threshold** so tiny transfers never happen, and
 a **fixed due date** on the invoice rather than ad-hoc payment dates.
 
+## Direction from Esa, 17.8.2026
+
+Feedback on the draft programme. Recorded as given; the parts that contradict the
+13.8.2026 decisions are listed under "Conflicts" below rather than silently
+applied.
+
+**Analysts are unpaid labour that creates value — stop throttling them.** The
+current design blocks the next generation until the previous one is published
+and caps the month. Esa wants the opposite default: we look at the analysis,
+and if it added value we grant the next generation immediately. That needs two
+things we do not have: an admin view of what an analyst actually produced, and
+an admin action that releases the obligation/monthly slot. Neither exists —
+`ADMIN_ROUTES` is takedown, payout, ban.
+
+**Three tunable numbers per tier, e.g. 1 / 10 / 20.** Generations per month,
+already-generated base analyses readable, other analysts' analyses viewable. All
+three must be tunable per tier and changed by demand — today `PICK_LIMITS` and
+the single generation slot are hard-coded constants in `server/members/quota.js`.
+The third number is conditional: an analyst may read others' analyses only while
+giving them points **and** written comparative comments (against the base
+analysis: does this add value, or against other analysts on the same company).
+No comments → no more reading. Worthless comments → downgrade to a normal user.
+
+**A survival funnel instead of a flat role.** Roughly 50% of analysts continue
+past the first months; the rest are downgraded to normal users when their work
+does not add value. The top ~10% are upgraded to coaching analysts. This is the
+2004 model's floor-and-ladder, with explicit percentages.
+
+**Every ~5th or ~10th analysis goes free to everyone for a while**, not on day
+one but a little later. Hand-picked from the good ones at first, randomised
+later, with the analysis's own points allowed to influence the draw. The
+machinery for this mostly exists: `server/catalog.js` already runs a weekly free
+rotation (`selectWeeklyFreeIds`) and honours a per-report `forceFree` flag, which
+is exactly the hand-pick.
+
+**Analysts price their own analysis, including its decay to free.** The analyst
+sets the price and the "nollaantumisaika" — how long until the analysis becomes
+free — capped at one year. Free archive material then accumulates by itself.
+
+**A reader account below the analyst tier.** LinkedIn sign-in, no publishing
+obligation, no public profile, roughly half of what an analyst sees, one free
+generation (possibly without the right to steer it, unless they pay a little)
+and some number of other people's generations. Paid monthly packages sit above
+that, with their own three numbers.
+
+**Prices go up later, including for analysts.** A small joining fee (~5 €) so
+nobody generates entirely on our account before proving useful. Proven analysts
+then generate as much as they like at cost (~2 €/report), deducted from their
+earnings rather than paid up front.
+
+**The pitch is two things, and the second one is the point.** Superior tools
+that let anyone produce a reasonable analysis by pressing a button, plus wisdom
+of crowds: for every company someone out there knows it better than the
+professional analysts do, and exposing that expertise to near-perfect
+competition and free copying is what produces the best analysis in the world.
+Compensation tied straight to the cash flow your own analysis generates is the
+engine of it: the best Nvidia analyst in the world is read by every Nvidia
+investor, including the biggest ones. Long term that is how the analyst covering
+a company earns the most. The full story of the 2000s freelance network goes
+behind a link — see `analyst-story.html`.
+
+### Conflicts with the 13.8.2026 decisions — not resolved here
+
+1. **Compensation model.** Esa describes revenue sharing ("iso osuus suoraan
+   tuottamastasi kassavirrasta"). The recorded decision is a flat fee per
+   published analysis, and this document explicitly rejects the 2004 50% share
+   because the engine now does the modelling. Both cannot be the pitch.
+2. **Throttling.** "Ei heitä kannata jarrutella" versus the implemented
+   finish-before-next obligation, the monthly cap and one fee per company per
+   quarter. The backend enforces the current rules.
+3. **1 / 10 / 20 versus the built allowances.** Today an analyst gets one
+   generation and two catalog picks (30+ days old). Does the new triple replace
+   that now, or after the pilot?
+4. **The 5 € joining fee** contradicts "€0 membership" on `analysts.html` and the
+   analyst card on `pricing.html`. When does it apply — new analysts only, or
+   everyone?
+5. **Analyst-set pricing** assumes published analyses are sold. The current flow
+   publishes them into the company page, and member generations are ordered
+   `visibility: 'private'` so they are never resold. Selling analyst analyses is
+   a different product surface.
+
 ## Open questions
 
 1. **Handoff contract with the engine team.** Where does their "tuomassa
