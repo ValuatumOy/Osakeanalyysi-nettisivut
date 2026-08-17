@@ -168,6 +168,31 @@ async function getPublication(userId, genId) {
   return getItem(`USER#${userId}`, `PUB#${genId}`);
 }
 
+// The cross-analyst view of publications: one partition, sort key
+// `<companyId>#<publishedAt>#<genId>`. A company page is a begins_with query; the
+// admin list reads the partition and sorts in memory.
+// ponytail: fine while the partition is small (a page is 1 MB). If publications
+// outgrow that, this is where a GSI on publishedAt goes.
+async function listPublicationIndex({ companyId, limit = 200 } = {}) {
+  const prefix = companyId ? `${String(companyId).toUpperCase()}#` : '';
+  const res = await dynamo().send(new QueryCommand({
+    TableName: table(),
+    KeyConditionExpression: prefix ? 'pk = :pk AND begins_with(sk, :prefix)' : 'pk = :pk',
+    ExpressionAttributeValues: prefix ? { ':pk': 'PUBINDEX', ':prefix': prefix } : { ':pk': 'PUBINDEX' },
+    Limit: limit,
+  }));
+  return res.Items || [];
+}
+
+async function findPublicationIndex(genId) {
+  const items = await listPublicationIndex({ limit: 1000 });
+  return items.find((item) => item.genId === genId) || null;
+}
+
+async function listReviews(ownerId, genId) {
+  return listUserItems(ownerId, `REVIEW#${genId}#`);
+}
+
 // One row per paid-out bounty. Existence is what makes bounty.ledger() call a
 // publication 'paid', so the write is conditional — never pay the same one twice.
 async function putPayout(userId, genId, fields) {
@@ -251,6 +276,9 @@ module.exports = {
   putEntitlement,
   putItem,
   getPublication,
+  listPublicationIndex,
+  findPublicationIndex,
+  listReviews,
   putPayout,
   runTransact,
   claimStripeEvent,

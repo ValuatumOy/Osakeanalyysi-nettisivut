@@ -85,6 +85,10 @@ export class MembersStack extends Stack {
         REPORT_PDF_PREFIX: 'reports/pdfs/',
         REPORT_PDF_BASE_URL: config.pdfBaseUrl,
         SECRETS_SSM_PREFIX: config.secretsPrefix,
+        // Allowances are demand-tuned (Esa, 17.8.2026): overriding this variable
+        // changes the three numbers per role/tier without a code change. Empty
+        // means the defaults in server/members/tiers.js.
+        MEMBERS_LIMITS_JSON: process.env.MEMBERS_LIMITS_JSON || '',
         SITE_URL: config.siteUrl,
         MEMBERS_API_URL: membersApiUrl,
         // Auth redirects may return to any of these; the first is the default.
@@ -143,8 +147,12 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.GET, '/auth/linkedin/callback'],
       [apigwv2.HttpMethod.POST, '/auth/magic-link'],
       [apigwv2.HttpMethod.GET, '/auth/magic/verify'],
+      [apigwv2.HttpMethod.GET, '/analyses'],
       [apigwv2.HttpMethod.GET, '/me'],
       [apigwv2.HttpMethod.GET, '/me/earnings'],
+      [apigwv2.HttpMethod.POST, '/me/role'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/open'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/review'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
@@ -152,6 +160,10 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
+      [apigwv2.HttpMethod.GET, '/admin/members/publications'],
+      [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
+      [apigwv2.HttpMethod.POST, '/admin/members/role'],
+      [apigwv2.HttpMethod.POST, '/admin/members/feature'],
       [apigwv2.HttpMethod.POST, '/admin/members/takedown'],
       [apigwv2.HttpMethod.POST, '/admin/members/payout'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],

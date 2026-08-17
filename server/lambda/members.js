@@ -12,7 +12,9 @@ const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const bounty = require('../members/bounty');
 const quota = require('../members/quota');
+const ranking = require('../members/ranking');
 const store = require('../members/store');
+const tiers = require('../members/tiers');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -106,8 +108,16 @@ function requestNow(event) {
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
 
-// Monthly and annual plans have different allowances — see quota.PICK_LIMITS.
+// Monthly and annual plans have different allowances — see server/members/tiers.js.
 const billingInterval = (profile) => (profile.billingInterval === 'year' ? 'year' : 'month');
+
+// The three tunable numbers for this member: generations, basePicks,
+// analystReads. Role and subscription are merged, larger wins.
+const limitsFor = (profile) => tiers.limitsFor({
+  role: profile.role,
+  tier: activeTier(profile),
+  interval: billingInterval(profile),
+});
 
 const FRESH_LIST_PRICE = 50;
 const FRESH_MEMBER_PRICE = 40;
@@ -224,9 +234,7 @@ async function getMe(event) {
   ]);
 
   const tier = activeTier(profile);
-  const interval = billingInterval(profile);
-  const pickLimit = tier !== 'none' ? quota.pickLimitForTier(tier, interval)
-    : profile.role === 'analyst' ? quota.pickLimitForTier('free') : 0;
+  const limits = limitsFor(profile);
 
   return json(200, {
     userId: profile.userId,
@@ -239,16 +247,21 @@ async function getMe(event) {
     banned: Boolean(profile.banned),
     month: monthKey,
     freshReportPrice: freshReportPrice(profile),
-    hasGeneration: profile.role === 'analyst' || quota.hasMemberGeneration(tier),
+    hasGeneration: limits.generations > 0,
+    publishes: tiers.isPublishingRole(profile.role),
+    limits,
     usage: {
       picks: usage?.picks || 0,
-      pickLimit,
+      pickLimit: limits.basePicks,
+      analystReads: usage?.analystReads || 0,
+      analystReadLimit: limits.analystReads,
       genReserved: Boolean(usage?.genReserved),
       genId: usage?.genId || null,
       coverageUpdates: yearUsage?.coverageUpdates || 0,
       coverageUpdateLimit: quota.COVERAGE_UPDATES_PER_YEAR,
     },
     openObligationId: profile.openObligationId || null,
+    openReviewId: profile.openReviewId || null,
     entitlements: entitlements.map(item => ({
       reportId: item.sk.slice(4),
       source: item.source,
@@ -286,8 +299,8 @@ async function postReportOpen(event) {
   if (existing) {
     if (existing.source === 'oneoff' || existing.source === 'generation') return sign(existing.source);
     if (existing.source === 'free_pick') {
-      return profile.role === 'analyst' ? sign('free_pick')
-        : json(402, { error: 'Freemium access is for analysts only' });
+      return tiers.isLinkedinRole(profile.role) ? sign('free_pick')
+        : json(402, { error: 'Freemium access is for LinkedIn members only' });
     }
     return activeTier(profile) !== 'none' ? sign(existing.source)
       : json(402, { error: 'Subscription is not active' });
@@ -313,33 +326,22 @@ async function postReportOpen(event) {
     return json(429, { error: 'Yearly coverage updates used up' });
   }
 
-  // Investor tiers: N self-picked reports per calendar month (annual plans
-  // get more — see quota.PICK_LIMITS).
-  if (tier === 'investor' || tier === 'investor_plus') {
-    const committed = await store.runTransact(quota.buildPickTransact({
-      table,
-      userId: profile.userId,
-      now,
-      limit: quota.pickLimitForTier(tier, billingInterval(profile)),
-      reportId,
-      source: 'pick',
-    }));
-    if (committed) return sign('pick');
-    if (await store.getEntitlement(profile.userId, reportId)) return sign('pick');
-    return json(429, { error: 'Monthly report picks used up' });
-  }
-
-  // Freemium (analysts): 2 picks per month, only reports older than 30 days.
-  if (profile.role === 'analyst') {
-    if (!quota.freemiumPickEligible(report)) {
-      return json(403, { error: `Freemium picks must be older than ${quota.FREEMIUM_MIN_AGE_DAYS} days` });
+  // Everyone else spends one of their monthly base picks. How many that is comes
+  // from tiers.js — the numbers are demand-tuned, so they are data, not code.
+  // Subscribers may pick any report; the free LinkedIn roles only the archive.
+  const limits = limitsFor(profile);
+  if (limits.basePicks > 0) {
+    const paying = tier !== 'none';
+    if (!paying && !quota.freemiumPickEligible(report)) {
+      return json(403, { error: `Free picks must be older than ${quota.FREEMIUM_MIN_AGE_DAYS} days` });
     }
+    const source = paying ? 'pick' : 'free_pick';
     const committed = await store.runTransact(quota.buildPickTransact({
-      table, userId: profile.userId, now, limit: quota.pickLimitForTier('free'), reportId, source: 'free_pick',
+      table, userId: profile.userId, now, limit: limits.basePicks, reportId, source,
     }));
-    if (committed) return sign('free_pick');
-    if (await store.getEntitlement(profile.userId, reportId)) return sign('free_pick');
-    return json(429, { error: 'Monthly free picks used up' });
+    if (committed) return sign(source);
+    if (await store.getEntitlement(profile.userId, reportId)) return sign(source);
+    return json(429, { error: 'Monthly report picks used up' });
   }
 
   return json(402, { error: 'Subscription required' });
@@ -356,9 +358,9 @@ async function postGenerationsFree(event) {
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
   if (deny) return deny;
 
-  const isAnalyst = profile.role === 'analyst';
-  const isMember = quota.hasMemberGeneration(activeTier(profile));
-  if (!isAnalyst && !isMember) {
+  // Publishing roles carry the obligation; everyone else's generation is private.
+  const isAnalyst = tiers.isPublishingRole(profile.role);
+  if (limitsFor(profile).generations < 1) {
     return json(403, { error: 'Your plan does not include a monthly generation' });
   }
 
@@ -488,15 +490,24 @@ async function postGenerationSubmit(event) {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
 
+  // The analyst prices their own analysis and decides how long until it falls
+  // free (max a year, quota.clampFreeAfterDays). Both are recorded now; the
+  // surface that sells an analysis is not built yet.
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: profile.userId, now, genId,
     promptsText: String(body.promptsText || ''),
     companyId: order.ticker,
     jobId: order.jobId || '',
+    priceEur: body.priceEur,
+    freeAfterDays: body.freeAfterDays,
+    analystName: String(profile.name || profile.email || '').slice(0, 120),
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
   await store.audit(profile.userId, 'generation-published', { genId, companyId: order.ticker });
-  return json(200, { ok: true, genId, status: 'published' });
+  return json(200, {
+    ok: true, genId, status: 'published',
+    freeAfterDays: quota.clampFreeAfterDays(body.freeAfterDays),
+  });
 }
 
 // PAYOUT# items → what bounty.ledger() needs. The amount comes from the item, not
@@ -516,7 +527,7 @@ async function getMeEarnings(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
   if (deny) return deny;
-  if (profile.role !== 'analyst') return json(403, { error: 'Analysts only' });
+  if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
 
   const [pubs, payouts] = await Promise.all([
     store.listUserItems(profile.userId, 'PUB#'),
@@ -723,6 +734,119 @@ async function postBillingWebhook(event) {
   return json(200, { ok: true });
 }
 
+// ── analyst analyses: the layer on top of the engine report ─────────────────
+
+// GET /analyses?companyId=NOKIA.HE — what sits above the engine's own report on
+// a company page: every published analyst take, best first (server/members/
+// ranking.js). Public metadata only; opening one is a separate, quota'd call.
+async function getAnalyses(event) {
+  const now = requestNow(event);
+  const companyId = event.queryStringParameters?.companyId || '';
+  const items = await store.listPublicationIndex({ companyId });
+  return json(200, {
+    companyId: companyId ? String(companyId).toUpperCase() : null,
+    analyses: ranking.orderAnalyses(items, now).map((item) => ({
+      genId: item.genId,
+      companyId: item.companyId,
+      analyst: item.analystName || 'Analyst',
+      publishedAt: item.publishedAt,
+      priceEur: item.priceEur || 0,
+      reviewCount: item.reviewCount || 0,
+      peerScore: Math.round(item.peerScore * 100) / 100,
+      free: ranking.isFreeNow(item, now),
+    })),
+  });
+}
+
+// POST /analyses/{genId}/open — spend one of the monthly analyst reads. The read
+// leaves a review obligation behind: the next one stays locked until this
+// analysis has been scored and commented (Esa, 17.8.2026).
+async function postAnalysisOpen(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
+
+  const limit = limitsFor(profile).analystReads;
+  if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
+
+  const committed = await store.runTransact(quota.buildOpenAnalysisTransact({
+    table: store.table(), userId: profile.userId, now, limit, genId, ownerId: index.userId,
+  }));
+  if (!committed) {
+    const fresh = await store.getProfile(profile.userId);
+    if (fresh?.openReviewId && fresh.openReviewId !== genId) {
+      return json(409, {
+        error: 'Score and comment the analysis you opened last before opening another',
+        openReviewId: fresh.openReviewId,
+      });
+    }
+    if (await store.getItem(`USER#${profile.userId}`, `READ#${genId}`)) {
+      return json(200, { ok: true, genId, jobId: index.jobId || null, alreadyOpen: true });
+    }
+    return json(429, { error: 'Monthly analyst reads used up' });
+  }
+  await store.audit(profile.userId, 'analysis-opened', { genId, ownerId: index.userId });
+  return json(200, { ok: true, genId, ownerId: index.userId });
+}
+
+// POST /analyses/{genId}/review {score, comment} — the price of the read. The
+// comment must compare: does this add value over the base report, or over the
+// other takes on the same company? A score with no reasoning is noise.
+async function postAnalysisReview(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const score = Number(body.score);
+  if (!Number.isInteger(score) || score < 1 || score > 5) {
+    return json(400, { error: 'score must be an integer 1-5' });
+  }
+  const comment = String(body.comment || '').trim();
+  if (comment.length < 40) {
+    return json(400, { error: 'A written comparison of at least 40 characters is required' });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+
+  const committed = await store.runTransact(quota.buildReviewTransact({
+    table: store.table(), userId: profile.userId, now, genId,
+    ownerId: index.userId, indexSk: index.sk, score, comment: comment.slice(0, 4000),
+  }));
+  if (!committed) return json(409, { error: 'No open review for that analysis' });
+  await store.audit(profile.userId, 'analysis-reviewed', { genId, score });
+  return json(200, { ok: true, genId, score });
+}
+
+// POST /me/role {role:'reader'} — an analyst who does not want the publish
+// obligation steps down to a reader. Downward only, and never while a report is
+// waiting to be published.
+async function postMeRole(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+  const body = parseBody(event);
+  if (body?.role !== 'reader') return json(400, { error: 'Only role "reader" can be selected' });
+  if (!tiers.isLinkedinRole(profile.role)) return json(403, { error: 'LinkedIn members only' });
+
+  const committed = await store.runTransact(quota.buildRoleChangeTransact({
+    table: store.table(), userId: profile.userId, role: 'reader',
+  }));
+  if (!committed) {
+    return json(409, { error: 'Publish your generated report before changing role' });
+  }
+  await store.audit(profile.userId, 'role-changed', { role: 'reader', by: 'self' });
+  return json(200, { ok: true, role: 'reader' });
+}
+
 // ── admin ────────────────────────────────────────────────────────────────────
 
 // Post-moderation: publication is automatic, so this is how a bad analysis comes
@@ -730,9 +854,10 @@ async function postBillingWebhook(event) {
 async function postAdminTakedown(event) {
   const body = parseBody(event);
   if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const index = await store.findPublicationIndex(body.genId);
   const committed = await store.runTransact(quota.buildTakedownTransact({
     table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
-    reason: String(body.reason || ''),
+    reason: String(body.reason || ''), indexSk: index?.sk,
   }));
   if (!committed) return json(409, { error: 'No published publication with that id' });
   await store.audit(body.userId, 'publication-takendown', { genId: body.genId, reason: body.reason || '' });
@@ -762,6 +887,82 @@ async function postAdminPayout(event) {
   }
   await store.audit(body.userId, 'bounty-paid', { genIds: toPay, amount });
   return json(200, { ok: true, paid: toPay, amount, total: amount * toPay.length });
+}
+
+// GET /admin/members/publications — what each analyst actually produced, newest
+// first, with their prompts and the peer scores. Judging that is the gate for
+// granting the next generation, so it has to be one call (Esa, 17.8.2026).
+async function getAdminPublications(event) {
+  const now = requestNow(event);
+  const companyId = event.queryStringParameters?.companyId || '';
+  const limit = Math.min(200, Math.max(1, Number(event.queryStringParameters?.limit) || 50));
+  const items = await store.listPublicationIndex({ companyId });
+  const recent = items
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .slice(0, limit);
+
+  const publications = await Promise.all(recent.map(async (item) => {
+    const pub = await store.getPublication(item.userId, item.genId);
+    return {
+      userId: item.userId,
+      genId: item.genId,
+      companyId: item.companyId,
+      analyst: item.analystName || null,
+      publishedAt: item.publishedAt,
+      status: item.status,
+      priceEur: item.priceEur || 0,
+      freeFrom: item.freeFrom || null,
+      freeUntil: item.freeUntil || null,
+      reviewCount: item.reviewCount || 0,
+      peerScore: Math.round(ranking.peerScore(item) * 100) / 100,
+      jobId: pub?.jobId || null,
+      promptsText: pub?.promptsText || '',
+      takedownReason: pub?.takedownReason || null,
+    };
+  }));
+  return json(200, { now: now.toISOString(), count: publications.length, publications });
+}
+
+// POST /admin/members/grant-generation {userId} — "the last one was good, go
+// again". Clears the publish obligation and the month's used slot.
+async function postAdminGrantGeneration(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  await store.runTransact(quota.buildGrantGenerationTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event),
+  }));
+  await store.audit(body.userId, 'generation-granted', { note: String(body.note || '') });
+  return json(200, { ok: true, userId: body.userId });
+}
+
+// POST /admin/members/role {userId, role} — the funnel: analysts whose work adds
+// nothing go back to being readers, the best move up to coaching.
+async function postAdminRole(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  if (!tiers.ROLES.includes(body.role)) {
+    return json(400, { error: `role must be one of ${tiers.ROLES.join(', ')}` });
+  }
+  await store.updateProfile(body.userId, { role: body.role });
+  await store.audit(body.userId, 'role-changed', { role: body.role, by: 'admin' });
+  return json(200, { ok: true, userId: body.userId, role: body.role });
+}
+
+// POST /admin/members/feature {userId, genId, days} — hand-pick an analysis to
+// be free for everyone for a while. Randomisation comes later; picking the good
+// ones by hand is how it starts.
+async function postAdminFeature(event) {
+  const body = parseBody(event);
+  if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const index = await store.findPublicationIndex(body.genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+  const committed = await store.runTransact(quota.buildFeatureTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    indexSk: index.sk, days: Number(body.days) || 14,
+  }));
+  if (!committed) return json(409, { error: 'No published analysis with that id' });
+  await store.audit(body.userId, 'analysis-featured', { genId: body.genId, days: Number(body.days) || 14 });
+  return json(200, { ok: true, genId: body.genId });
 }
 
 async function postAdminBan(event) {
@@ -811,14 +1012,31 @@ async function postTestPublication(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
   const genId = body.genId || crypto.randomUUID();
+  const publishedAt = body.publishedAt || requestNow(event).toISOString();
+  const companyId = String(body.companyId || 'TEST.HE').toUpperCase();
   await store.putItem({
     pk: `USER#${body.userId}`,
     sk: `PUB#${genId}`,
     status: 'published',
-    publishedAt: body.publishedAt || requestNow(event).toISOString(),
-    companyId: String(body.companyId || 'TEST.HE').toUpperCase(),
+    publishedAt,
+    companyId,
     jobId: body.jobId || 'test-job',
     promptsText: '[test seed]',
+  });
+  // Same index row a real submit writes, so the analyses list and the review
+  // loop can be exercised without spending an engine run.
+  await store.putItem({
+    pk: 'PUBINDEX',
+    sk: quota.publicationIndexSk({ companyId, publishedAt, genId }),
+    userId: body.userId,
+    genId,
+    companyId,
+    analystName: '[test seed]',
+    publishedAt,
+    status: 'published',
+    priceEur: 0,
+    reviewCount: 0,
+    scoreSum: 0,
   });
   return json(200, { ok: true, genId });
 }
@@ -828,6 +1046,7 @@ async function postTestPublication(event) {
 const PUBLIC_ROUTES = {
   'GET /health': async () => json(200, { ok: true, stage: STAGE }),
   'GET /reports': getReportsList,
+  'GET /analyses': getAnalyses,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,
   'POST /auth/magic-link': postMagicLink,
@@ -838,6 +1057,9 @@ const PUBLIC_ROUTES = {
 const AUTHED_ROUTES = {
   'GET /me': getMe,
   'GET /me/earnings': getMeEarnings,
+  'POST /me/role': postMeRole,
+  'POST /analyses/{genId}/open': postAnalysisOpen,
+  'POST /analyses/{genId}/review': postAnalysisReview,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
   'GET /generations/{genId}': getGeneration,
@@ -847,6 +1069,10 @@ const AUTHED_ROUTES = {
 };
 
 const ADMIN_ROUTES = {
+  'GET /admin/members/publications': getAdminPublications,
+  'POST /admin/members/grant-generation': postAdminGrantGeneration,
+  'POST /admin/members/role': postAdminRole,
+  'POST /admin/members/feature': postAdminFeature,
   'POST /admin/members/takedown': postAdminTakedown,
   'POST /admin/members/payout': postAdminPayout,
   'POST /admin/members/ban': postAdminBan,

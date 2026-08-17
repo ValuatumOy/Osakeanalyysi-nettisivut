@@ -17,13 +17,38 @@ non-prod. Nothing here ships with the prod API Lambda.
 
 ## Product rules implemented
 
-- **Freemium = analysts only** (LinkedIn login). 2 self-picked report views/month,
-  only reports with `ageDays >= 30` (server-side, from the catalog). 1 free
-  generation/month, reserved at start; **no new reservation until the previous
-  one is published** (obligation on PROFILE, spans months). Submit publishes
-  immediately (`companyId` required, `jobId` for provenance, `promptsText`
-  published with it) — post-moderation via `POST /admin/members/takedown`.
-  Bounty ledger at `GET /me/earnings`; see [analyst-publishing.md](analyst-publishing.md).
+- **Three numbers per role/tier** (`server/members/tiers.js`): `generations`,
+  `basePicks` (engine reports read/month) and `analystReads` (other analysts'
+  analyses opened/month). Demand-tuned, so they are data: `MEMBERS_LIMITS_JSON`
+  overrides any subset without a code change. Defaults — analyst 1/10/20,
+  reader 1/5/10, Investor 0/3/10 (5 picks annual), Investor Plus 1/10/20
+  (15 picks annual).
+- **LinkedIn roles**: `analyst` publishes what it generates, `reader` is the same
+  login without the publish obligation and about half the allowance, `coaching`
+  is a promoted analyst. `POST /me/role {role:'reader'}` steps down (refused
+  while an obligation is open — otherwise the report walks); `POST
+  /admin/members/role` moves anyone either way.
+- **Analyst loop**: picks are limited to reports with `ageDays >= 30`
+  (server-side, from the catalog). One generation/month, reserved at start;
+  **no new reservation until the previous one is published** (obligation on
+  PROFILE, spans months) — unless an admin says otherwise: `POST
+  /admin/members/grant-generation` clears both gates, which is how a good
+  analyst is let straight through. Submit publishes immediately (`companyId`
+  required, `jobId` for provenance, `promptsText`, plus the analyst's own
+  `priceEur` and `freeAfterDays` ≤ 365) — post-moderation via `POST
+  /admin/members/takedown`. Bounty ledger at `GET /me/earnings`; see
+  [analyst-publishing.md](analyst-publishing.md).
+- **Analyses on top of the engine report**: every publication also writes a row
+  in the `PUBINDEX` partition (`<companyId>#<publishedAt>#<genId>`).
+  `GET /analyses?companyId=` returns them ordered by `server/members/ranking.js`
+  (peer score with a neutral prior, review count, age decay).
+  `POST /analyses/{genId}/open` spends one `analystReads` slot **and** leaves a
+  review obligation; `POST /analyses/{genId}/review {score 1-5, comment ≥40
+  chars}` clears it. No comment, no further reads — worthless comments are an
+  admin downgrade. `POST /admin/members/feature {userId, genId, days}` hands an
+  analysis out free to everyone for a window (hand-picked now, randomised later),
+  and `GET /admin/members/publications` is the one call that shows what each
+  analyst produced, with prompts and peer scores.
 - **Regular visitors**: weekly free-rotation reports only (`isFree` reports gate
   nothing) — unchanged from prod behaviour.
 - **Investor 19 €/mo / 190 €/yr**: 3 picks/month monthly, 5 annual. **Investor
@@ -69,7 +94,8 @@ in the LinkedIn developer console).
 - `POST /test/force-publish {userId, genId, companyId?, jobId?}`
 - `POST /test/publications {userId, companyId?, publishedAt?}` → seeds a published
   PUB item with a backdatable date, so the bounty rules can be exercised without
-  spending an engine run
+  spending an engine run (it also writes the `PUBINDEX` row, so the analyses
+  list and the review loop can be smoke-tested for free)
 - Time travel: headers `x-test-now: <ISO>` + `x-test-secret: <utils secret>` move
   the quota clock (token expiry always uses the real clock).
 
@@ -115,6 +141,17 @@ behaves exactly as before, covered by
 deploy rather than expecting an empty one.
 
 ## Known gaps / prod-rollout blockers
+
+- **Anyone with a LinkedIn account can spend an engine run.** A `reader` gets a
+  free generation with no publish obligation, so nothing is returned for the
+  compute. Esa's answer to this was a small joining fee (~5 €) plus at-cost
+  generations for proven analysts, deliberately deferred until there are enough
+  analysts to matter (17.8.2026). Fine on the test stack, **not fine on prod** —
+  the fee, or a role gate on the free generation, has to land before this ships.
+- **Analyst analyses do not render on the company pages yet.** The ordered list
+  is served by `GET /analyses`, but the static `reports/<company>-equity-report.html`
+  pages do not consume it; that handoff is open question 1/2 in
+  [analyst-publishing.md](analyst-publishing.md).
 
 - **The public catalog no longer publishes `pdfUrl` for paid reports** (only for
   free ones). Buyers download through `GET /api/report-download?session_id=…`,

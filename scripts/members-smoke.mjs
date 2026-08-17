@@ -52,6 +52,8 @@ async function catalogReports() {
 
 // ── scenarios ────────────────────────────────────────────────────────────────
 
+const adminApi = (method, path, body) => api(method, path, { body, token: process.env.ADMIN_PASSWORD });
+
 async function main() {
   const health = await api('GET', '/health');
   check('health', health.status === 200 && health.data?.ok, JSON.stringify(health.data));
@@ -67,10 +69,17 @@ async function main() {
   check('create analyst test user', Boolean(analyst?.token), analyst?.userId);
 
   const me = await api('GET', '/me', { token: analyst.token });
-  check('analyst /me: pickLimit 2', me.data?.usage?.pickLimit === 2, JSON.stringify(me.data?.usage));
+  // The three numbers are demand-tuned (MEMBERS_LIMITS_JSON), so the smoke reads
+  // them instead of asserting a constant.
+  const pickLimit = me.data?.usage?.pickLimit || 0;
+  check('analyst /me: three allowances present',
+    pickLimit > 0 && me.data?.usage?.analystReadLimit > 0 && me.data?.limits?.generations === 1,
+    JSON.stringify(me.data?.usage));
+  check('analyst /me: publishing role', me.data?.publishes === true, String(me.data?.role));
 
-  if (oldPaid.length >= 4) {
-    const [r1, r2, r3] = oldPaid;
+  if (oldPaid.length >= pickLimit + 2) {
+    const [r1, r2] = oldPaid;
+    const overLimitReport = oldPaid[pickLimit];
     const open1 = await api('POST', `/reports/${r1.id}/open`, { token: analyst.token });
     check('freemium pick 1 → signed URL', open1.status === 200 && open1.data?.url?.includes('X-Amz-Signature'));
     if (open1.status === 200) {
@@ -82,17 +91,22 @@ async function main() {
     check('re-open same report: no extra quota', reopen.status === 200);
     const open2 = await api('POST', `/reports/${r2.id}/open`, { token: analyst.token });
     check('freemium pick 2', open2.status === 200);
-    const open3 = await api('POST', `/reports/${r3.id}/open`, { token: analyst.token });
-    check('freemium pick 3 → 429', open3.status === 429, `got ${open3.status}`);
+    // Burn the rest of the month's allowance, then one over it.
+    for (const report of oldPaid.slice(2, pickLimit)) {
+      await api('POST', `/reports/${report.id}/open`, { token: analyst.token });
+    }
+    const overLimit = await api('POST', `/reports/${overLimitReport.id}/open`, { token: analyst.token });
+    check(`freemium pick ${pickLimit + 1} → 429`, overLimit.status === 429, `got ${overLimit.status}`);
 
     const nextMonth = new Date();
     nextMonth.setUTCMonth(nextMonth.getUTCMonth() + 2, 1); // +2 keeps genId month distinct too
-    const timeTravel = await api('POST', `/reports/${r3.id}/open`, {
+    const timeTravel = await api('POST', `/reports/${overLimitReport.id}/open`, {
       token: analyst.token, testNow: nextMonth.toISOString(),
     });
     check('next month (x-test-now): pick works again', timeTravel.status === 200, `got ${timeTravel.status}`);
   } else {
-    check('freemium pick scenarios', false, 'not enough >30d paid reports in the test catalog');
+    check('freemium pick scenarios', false,
+      `not enough >30d paid reports in the test catalog (need ${pickLimit + 2})`);
   }
 
   if (newPaid.length) {
@@ -146,7 +160,6 @@ async function main() {
   }
 
   // — bounty ledger (seeded publications, no engine run) —
-  const adminApi = (method, path, body) => api(method, path, { body, token: process.env.ADMIN_PASSWORD });
   const ago = (days) => new Date(Date.now() - days * 86400000).toISOString();
   const seed = (userId, companyId, publishedAt) =>
     testApi('POST', '/test/publications', { userId, companyId, publishedAt });
@@ -184,6 +197,87 @@ async function main() {
       JSON.stringify(afterDown.totals));
   } else {
     console.log('· skip: payout/takedown checks (set ADMIN_PASSWORD to include them)');
+  }
+
+  // — reader role, analyst reads and the review obligation —
+  const reader = (await testApi('POST', '/test/users', { role: 'reader' })).data;
+  const readerMe = await api('GET', '/me', { token: reader.token });
+  check('reader: no publish obligation, roughly half the picks',
+    readerMe.data?.publishes === false && readerMe.data?.usage?.pickLimit < pickLimit,
+    JSON.stringify(readerMe.data?.usage));
+  const readerGen = await api('POST', '/generations/free', { token: reader.token, body: {} });
+  check('reader still has a generation (400 for the missing company, not 403)',
+    readerGen.status === 400, `got ${readerGen.status}`);
+
+  const seedForReads = (userId, companyId, publishedAt) =>
+    testApi('POST', '/test/publications', { userId, companyId, publishedAt });
+  const readable = (await seedForReads(analyst.userId, 'KESKOB.HE', new Date().toISOString())).data?.genId;
+
+  const listed = await api('GET', '/analyses?companyId=KESKOB.HE');
+  check('company analyses are listed publicly, best first',
+    listed.status === 200 && listed.data?.analyses?.some(a => a.genId === readable),
+    JSON.stringify(listed.data?.analyses?.slice(0, 2)));
+
+  const ownOpen = await api('POST', `/analyses/${readable}/open`, { token: analyst.token });
+  check('an analyst cannot spend a read on their own analysis → 400', ownOpen.status === 400,
+    `got ${ownOpen.status}`);
+
+  const open = await api('POST', `/analyses/${readable}/open`, { token: reader.token });
+  check('opening another analyst\'s analysis', open.status === 200, JSON.stringify(open.data));
+
+  const second = await api('POST', `/analyses/${readable}/open`, { token: reader.token });
+  check('re-opening the same analysis does not double-charge', second.status === 200,
+    `got ${second.status}`);
+
+  const shortComment = await api('POST', `/analyses/${readable}/review`, {
+    token: reader.token, body: { score: 4, comment: 'good' },
+  });
+  check('a review without a real comparison → 400', shortComment.status === 400,
+    `got ${shortComment.status}`);
+
+  const review = await api('POST', `/analyses/${readable}/review`, {
+    token: reader.token,
+    body: { score: 4, comment: 'Adds a genuine argument over the base report on the margin outlook.' },
+  });
+  check('scoring and commenting clears the review obligation', review.status === 200,
+    JSON.stringify(review.data));
+
+  const afterReview = await api('GET', '/analyses?companyId=KESKOB.HE');
+  check('the review counts towards the company ordering',
+    afterReview.data?.analyses?.find(a => a.genId === readable)?.reviewCount === 1,
+    JSON.stringify(afterReview.data?.analyses?.[0]));
+
+  // — the funnel: self-downgrade, admin role change —
+  const stepDown = (await testApi('POST', '/test/users', { role: 'analyst' })).data;
+  const downgraded = await api('POST', '/me/role', { token: stepDown.token, body: { role: 'reader' } });
+  check('an analyst can step down to reader', downgraded.status === 200, JSON.stringify(downgraded.data));
+  const upgradeSelf = await api('POST', '/me/role', { token: stepDown.token, body: { role: 'analyst' } });
+  check('self-service upgrade is refused → 400', upgradeSelf.status === 400, `got ${upgradeSelf.status}`);
+
+  if (process.env.ADMIN_PASSWORD) {
+    const publications = await adminApi('GET', '/admin/members/publications');
+    check('admin sees what analysts published, with their prompts',
+      publications.status === 200 && publications.data?.publications?.some(p => p.genId === readable),
+      `count ${publications.data?.count}`);
+
+    const featured = await adminApi('POST', '/admin/members/feature',
+      { userId: analyst.userId, genId: readable, days: 7 });
+    check('an analysis can be handed out free for a period', featured.status === 200,
+      JSON.stringify(featured.data));
+    const freeNow = await api('GET', '/analyses?companyId=KESKOB.HE');
+    check('a featured analysis shows as free',
+      freeNow.data?.analyses?.find(a => a.genId === readable)?.free === true,
+      JSON.stringify(freeNow.data?.analyses?.[0]));
+
+    const coach = await adminApi('POST', '/admin/members/role',
+      { userId: stepDown.userId, role: 'coaching' });
+    check('admin can promote to coaching analyst', coach.status === 200, JSON.stringify(coach.data));
+
+    const grant = await adminApi('POST', '/admin/members/grant-generation', { userId: analyst.userId });
+    check('admin can clear the gates for the next generation', grant.status === 200,
+      JSON.stringify(grant.data));
+  } else {
+    console.log('· skip: admin publications/feature/role/grant checks (set ADMIN_PASSWORD)');
   }
 
   // — investor tier —

@@ -259,25 +259,51 @@ investor, including the biggest ones. Long term that is how the analyst covering
 a company earns the most. The full story of the 2000s freelance network goes
 behind a link — see `analyst-story.html`.
 
-### Conflicts with the 13.8.2026 decisions — not resolved here
+### Conflicts — resolved 17.8.2026 unless marked open
 
-1. **Compensation model.** Esa describes revenue sharing ("iso osuus suoraan
-   tuottamastasi kassavirrasta"). The recorded decision is a flat fee per
-   published analysis, and this document explicitly rejects the 2004 50% share
-   because the engine now does the modelling. Both cannot be the pitch.
-2. **Throttling.** "Ei heitä kannata jarrutella" versus the implemented
-   finish-before-next obligation, the monthly cap and one fee per company per
-   quarter. The backend enforces the current rules.
-3. **1 / 10 / 20 versus the built allowances.** Today an analyst gets one
-   generation and two catalog picks (30+ days old). Does the new triple replace
-   that now, or after the pilot?
-4. **The 5 € joining fee** contradicts "€0 membership" on `analysts.html` and the
-   analyst card on `pricing.html`. When does it apply — new analysts only, or
-   everyone?
-5. **Analyst-set pricing** assumes published analyses are sold. The current flow
-   publishes them into the company page, and member generations are ordered
-   `visibility: 'private'` so they are never resold. Selling analyst analyses is
-   a different product surface.
+1. **Compensation model — still open.** Esa describes revenue sharing ("iso osuus
+   suoraan tuottamastasi kassavirrasta"); the 13.8 decision is a flat fee per
+   published analysis. Nothing computes a share today because analyst analyses
+   are not sold anywhere, so the flat fee stands and `priceEur` /
+   `freeAfterDays` are recorded on every publication — switching to a share
+   needs no migration, only a formula.
+2. **Throttling — resolved: keep the gates, add the override.** Esa's own wording
+   is "1/kk *kunnes annamme luvan seuraavaan*", so the obligation and the monthly
+   slot stay and `POST /admin/members/grant-generation` clears both. Bounty
+   quarter/month caps untouched.
+3. **1 / 10 / 20 — implemented now** as the defaults in `server/members/tiers.js`,
+   replacing the hard-coded 2 catalog picks. Tunable through
+   `MEMBERS_LIMITS_JSON` without a deploy.
+4. **The 5 € joining fee — deferred** until there are enough analysts to matter.
+   Its purpose (nobody generates entirely on our account) is unmet in the
+   meantime, which is now a prod-rollout blocker in
+   [members-test.md](members-test.md), not a silent hole.
+5. **Analyst-set pricing — resolved: the company page is the surface.** Published
+   analyses are the ordered layer *on top of* the engine's own report on
+   `/reports/<company>-equity-report.html`. That layer is the actual product —
+   the heavy work is done for the analyst, and they contribute direction and a
+   view. `GET /analyses?companyId=` serves that order today
+   (`server/members/ranking.js`); wiring it into the static pages is open
+   question 2.
+
+### Implemented from this direction (17.8.2026)
+
+| Piece | Where |
+|---|---|
+| Three tunable numbers per role/tier | `server/members/tiers.js`, `MEMBERS_LIMITS_JSON` |
+| Reader role (LinkedIn, no publish obligation, ~half the allowance) | `tiers.js`, `POST /me/role` |
+| Coaching role as a promotion | `POST /admin/members/role` |
+| See what an analyst produced | `GET /admin/members/publications` |
+| Clear the gates for a good analyst | `POST /admin/members/grant-generation` |
+| Analyst sets price + decay to free (≤ 1 year) | `POST /generations/{genId}/submit` |
+| Hand-picked free window | `POST /admin/members/feature` |
+| Ordered analyses per company | `GET /analyses`, `server/members/ranking.js` |
+| Reads paid for with a score + written comparison | `POST /analyses/{genId}/open` + `/review` |
+
+Not built from it: rendering the ordered list onto the static company pages
+(open question 2), randomising the free draw (hand-picking first, by design),
+at-cost generations netted off earnings (waits for the fee decision), and any
+revenue-share computation (nothing sells an analysis yet).
 
 ## Open questions
 
