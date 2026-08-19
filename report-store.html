@@ -316,15 +316,22 @@
 
       let companies = 0;
       let rows = 0;
+      const analystFilter = document.getElementById('fAnalyst').value;
       const html = visible.map((entry) => {
         const base = kind === 'analyst' ? [] : entry.base;
-        const analyses = kind === 'base' ? [] : entry.analyses;
+        let analyses = kind === 'base' ? [] : entry.analyses;
+        // Filtering by analyst means their work, not every analysis under the
+        // companies they happen to cover. The base report stays: it is what
+        // their analysis was built on.
+        if (analystFilter) analyses = analyses.filter((a) => a.analystId === analystFilter);
         if (!base.length && !analyses.length) return '';
         companies += 1;
         rows += base.length + analyses.length;
-        const count = analyses.length
-          ? analyses.length + ' analyst ' + (analyses.length === 1 ? 'analysis' : 'analyses')
-          : 'No analyst analysis yet';
+        const shown = analyses.length;
+        const total = entry.analyses.length;
+        const count = !total ? 'No analyst analysis yet'
+          : (shown < total ? shown + ' of ' + total + ' analyst analyses'
+                           : total + ' analyst ' + (total === 1 ? 'analysis' : 'analyses'));
         return '<section class="store-company">' +
           '<div class="store-company-head">' +
             '<h2>' + esc(entry.name) + '</h2>' +
@@ -333,7 +340,7 @@
             '<span class="store-row-meta">' + count + '</span>' +
           '</div>' +
           base.map(baseRow).join('') +
-          analyses.map((analysis, i) => analysisRow(analysis, i + 1)).join('') +
+          analyses.map((analysis) => analysisRow(analysis, entry.analyses.indexOf(analysis) + 1)).join('') +
         '</section>';
       }).join('');
 
