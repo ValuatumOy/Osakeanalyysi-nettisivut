@@ -15,6 +15,29 @@ non-prod. Nothing here ships with the prod API Lambda.
 | PDF source | test bucket `aiequityreports-pdfs-test` (read-only, presigned GETs) |
 | Stripe | TEST mode only; webhook endpoint `we_…` → `/billing/webhook`, own signing secret |
 
+## The catalog members see is production's
+
+`config.ts` pins three member-facing values to production in **every** stage —
+`memberCatalogBucket` (`aiequityreports-pdfs`), `memberCatalogStateTable`
+(`AiEquityReportsCatalogState`) and `memberCatalogPdfBaseUrl`
+(`files.aiequityreports.com`). The members Lambda imports both by name and gets
+`grantRead` only; it never writes catalog state (the worker tick is the single
+writer of the weekly free selection). An analyst choosing a report to build on
+has to see what the public site actually sells, not the handful of PDFs that
+happen to sit in a test bucket.
+
+Reports this stage *generates* for a member still land in this stage's own
+bucket, which the production catalog will never list. Those are presigned
+straight from the order's `pdfFileName` against `GENERATED_PDF_BUCKET` —
+`GET /generations/{genId}` and `POST /analyses/{genId}/open` both take that
+path, and the DELIVERED status is the entitlement. Verified 19.8.2026:
+`GET /reports` on members-test returns the same 19 report ids and the same free
+rotation as `https://www.aiequityreports.com/api/reports`.
+
+One consequence: a generated report's sidecar (resale, visibility) is written
+into the test bucket, which the members catalog no longer lists, so the
+resale-on-test path cannot be exercised from the member UI until prod rollout.
+
 ## Product rules implemented
 
 - **Three numbers per role/tier** (`server/members/tiers.js`): `generations`,
