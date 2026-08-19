@@ -104,6 +104,8 @@ export class ApiStack extends Stack {
       [apigwv2.HttpMethod.GET, '/api/search-companies'],
       [apigwv2.HttpMethod.POST, '/api/report-purchases'],
       [apigwv2.HttpMethod.POST, '/api/report-download'],
+      [apigwv2.HttpMethod.GET, '/api/orders/{id}'],
+      [apigwv2.HttpMethod.POST, '/api/orders/{id}/revisions'],
       [apigwv2.HttpMethod.GET, '/api/admin/reports'],
       [apigwv2.HttpMethod.POST, '/api/admin/upload-url'],
       [apigwv2.HttpMethod.POST, '/api/admin/publish'],

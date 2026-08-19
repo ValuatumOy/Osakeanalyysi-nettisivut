@@ -526,6 +526,10 @@
                 <option value="client">Client work</option>
                 <option value="other">Other</option>
               </select>
+              <label class="fresh-order-checkbox" id="freshRevisionsOption" hidden>
+                <input type="checkbox" id="freshRevisions">
+                <span>Add <span id="freshRevisionsCount">3</span> forecast revisions — +<span id="freshRevisionsPrice"></span>. After delivery, describe a change in plain language (e.g. "assume faster margin recovery") and we'll update the forecast and regenerate the report.</span>
+              </label>
               <button type="submit" class="btn btn-primary btn-lg" id="freshOrderSubmit" style="justify-content:center;">
                 Generate fresh report — <span id="freshOrderButtonPrice">€50</span>
               </button>
@@ -1016,6 +1020,7 @@
             email: options.email || '',
             purpose: options.purpose || '',
             source: options.source || 'company_page',
+            withRevisions: Boolean(options.withRevisions),
           }),
         });
         const data = await res.json();
@@ -1224,10 +1229,12 @@
             source: 'wisdom_picker',
           });
         }
+        const revisionsCheckbox = document.getElementById('freshRevisions');
         const started = await generateNewReport(selectedCompany.companyName, selectedCompany.ticker, submit, {
           email: email,
           purpose: purpose,
           source: 'wisdom_picker',
+          withRevisions: revisionsCheckbox && revisionsCheckbox.checked,
         });
         if (started === false) {
           status.textContent = 'Checkout could not be started. Please try again.';
@@ -1362,7 +1369,25 @@
           if (pricing.fresh) {
             const freshLabel = pricing.fresh.shortLabel || pricing.fresh.label || '€50';
             document.getElementById('freshOrderPrice').textContent = freshLabel;
-            document.getElementById('freshOrderButtonPrice').textContent = freshLabel;
+            const revisionsOption = document.getElementById('freshRevisionsOption');
+            const revisionsCheckbox = document.getElementById('freshRevisions');
+            const buttonPriceEl = document.getElementById('freshOrderButtonPrice');
+            const updateButtonPrice = function() {
+              const withRevisions = revisionsCheckbox && revisionsCheckbox.checked && pricing.freshRevisions;
+              buttonPriceEl.textContent = withRevisions
+                ? (pricing.freshRevisions.shortLabel || pricing.freshRevisions.label || freshLabel)
+                : freshLabel;
+            };
+            buttonPriceEl.textContent = freshLabel;
+            if (pricing.revisionsEnabled && pricing.freshRevisions && revisionsOption) {
+              document.getElementById('freshRevisionsCount').textContent = pricing.revisionsIncluded || 3;
+              const delta = Math.max(0, pricing.freshRevisions.unitAmount - pricing.fresh.unitAmount);
+              document.getElementById('freshRevisionsPrice').textContent =
+                (pricing.freshRevisions.currency === 'eur' ? '€' : pricing.freshRevisions.currency + ' ') +
+                (delta / 100).toFixed(Number.isInteger(delta / 100) ? 0 : 2);
+              revisionsOption.hidden = false;
+              if (revisionsCheckbox) revisionsCheckbox.addEventListener('change', updateButtonPrice);
+            }
           }
           if (window.applyStripeBackedPricing) window.applyStripeBackedPricing(pricing);
         });

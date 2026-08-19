@@ -20,10 +20,11 @@ const STATUS = Object.freeze({
   IMPORTING: 'IMPORTING',
   RENDERING: 'RENDERING',
   DELIVERED: 'DELIVERED',
+  REVISING: 'REVISING',
   FAILED: 'FAILED',
 });
 
-const PENDING_STATUSES = new Set([STATUS.NEW, STATUS.IMPORTING, STATUS.RENDERING]);
+const PENDING_STATUSES = new Set([STATUS.NEW, STATUS.IMPORTING, STATUS.RENDERING, STATUS.REVISING]);
 
 function nowIso() {
   return new Date().toISOString();
@@ -58,8 +59,14 @@ function listPending(statePath = STATE_PATH) {
   return readAll(statePath).filter(order => PENDING_STATUSES.has(order.status));
 }
 
-// Create a NEW order. Idempotent on the Stripe session id: a repeated webhook
+// Create an order. Idempotent on the Stripe session id: a repeated webhook
 // delivery returns the existing row rather than duplicating it.
+//
+// A fresh order (the default) starts at NEW and the reconciler drives it
+// through generation. A ready-report "+ Revisions" purchase instead starts
+// directly at DELIVERED, with `jobId`/`pdfFileName` copied from the catalog
+// entry it was bought against — there is nothing to generate, only to
+// revise later.
 function create(input, statePath = STATE_PATH) {
   if (!input || !input.id) throw new Error('orders.create: id (stripe session id) is required');
 
@@ -77,19 +84,57 @@ function create(input, statePath = STATE_PATH) {
     exchange: input.exchange || '',
     sector: input.sector || '',
     industry: input.industry || '',
-    status: STATUS.NEW,
-    jobId: null,
+    origin: input.origin === 'ready' ? 'ready' : 'fresh',
+    reportId: input.reportId || null, // catalog entry id, origin: 'ready' only
+    status: input.status || STATUS.NEW,
+    jobId: input.jobId || null,
     importStatus: null, // SUCCESS | SKIPPED | FAILED (Task E FMP import)
-    pdfFileName: null,
+    pdfFileName: input.pdfFileName || null,
+    revisionsAllowed: Number(input.revisionsAllowed || 0),
+    revisionsUsed: 0,
+    // The in-flight revision's engine job id, distinct from `jobId` (the last
+    // *delivered* job): a revision that fails must not lose the still-good
+    // base to revise from next time.
+    revisionJobId: null,
+    pendingRevisionComment: null,
+    revisionError: null,
     error: null,
     attempts: 0, // transient-error retries (network); terminal failures set FAILED
-    polls: 0, // engine getJob poll count while RENDERING
+    revisionAttempts: 0, // same, but scoped to the current revision request only
+    polls: 0, // engine getJob poll count while RENDERING/REVISING
     createdAt: nowIso(),
     updatedAt: nowIso(),
   };
 
   writeAll([order, ...orders], statePath);
   return order;
+}
+
+// Claim the right to submit a forecast-revision request: only from DELIVERED,
+// and only while the order still has revisions left. A conditional
+// check-then-write, so a double-click or a second open tab loses the race
+// instead of starting two revision jobs. Returns null (not an error) when the
+// claim fails — the caller turns that into a 409.
+function claimRevision(id, comment, statePath = STATE_PATH) {
+  const orders = readAll(statePath);
+  const idx = orders.findIndex(order => order.id === id);
+  if (idx === -1) return null;
+
+  const current = orders[idx];
+  if (current.status !== STATUS.DELIVERED) return null;
+  if ((current.revisionsUsed || 0) >= (current.revisionsAllowed || 0)) return null;
+
+  orders[idx] = {
+    ...current,
+    status: STATUS.REVISING,
+    pendingRevisionComment: comment,
+    revisionError: null,
+    revisionAttempts: 0,
+    polls: 0,
+    updatedAt: nowIso(),
+  };
+  writeAll(orders, statePath);
+  return orders[idx];
 }
 
 // Patch an order in place and bump updatedAt. `id` and `createdAt` are protected.
@@ -118,5 +163,6 @@ module.exports = {
   list,
   listPending,
   update,
+  claimRevision,
   STATE_PATH,
 };

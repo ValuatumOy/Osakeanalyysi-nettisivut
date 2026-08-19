@@ -16,6 +16,7 @@ const { ensureSecrets } = require('../aws/secrets');
 const { searchCompanies } = require('../search');
 const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
+const { sendAdminAlert } = require('../email');
 
 const STAGE = process.env.STAGE || 'prod';
 
@@ -101,6 +102,9 @@ function publicReportPayload(report) {
     isFree: report.isFree,
     description: report.description,
     tags: report.tags,
+    // Whether a "+ Revisions" purchase can be offered on this report — see
+    // server/catalog.js. Never the raw jobId itself.
+    revisable: Boolean(report.revisable),
   };
 }
 
@@ -190,12 +194,56 @@ async function postReportPurchases(event) {
       exchange: input.exchange || '',
       sector: input.sector || '',
       industry: input.industry || '',
+      revisionsAllowed: Number(input.revisionsAllowed || 0),
     });
     try {
       await invokeWorkerAsync();
     } catch (err) {
       // The 5-minute sweep picks the order up anyway.
       console.warn('worker push invoke failed (sweep will catch it):', err.message);
+    }
+  } else if (input.type === 'existing' && input.withRevisions && input.sessionId && input.fileName) {
+    // A "+ Revisions" purchase on an already-published catalog report: seed
+    // an order row directly at DELIVERED (there is nothing to generate),
+    // pinned to the engine jobId that produced it — read fresh from the
+    // sidecar here, server-side, never from anything the browser sent.
+    try {
+      const sidecar = await pdfStore.readSidecar(input.fileName);
+      const jobId = sidecar?.provenance?.jobId || null;
+      if (!jobId) {
+        throw new Error(`report ${input.fileName} has no revisable jobId (sidecar provenance missing)`);
+      }
+      await ordersStore.create({
+        id: input.sessionId,
+        origin: 'ready',
+        reportId: input.reportId || '',
+        email: input.customerEmail || '',
+        companyName: input.companyName || '',
+        ticker: input.ticker || '',
+        status: ordersStore.STATUS.DELIVERED,
+        jobId,
+        pdfFileName: input.fileName,
+        revisionsAllowed: Number(input.revisionsAllowed || 0),
+      });
+    } catch (err) {
+      // Non-fatal: the purchase itself is already recorded above and the
+      // customer already has their PDF. Losing the revision entitlement is
+      // a real problem, just not one worth a Stripe-retry loop — alert
+      // instead of throwing.
+      console.error('ready+revisions order seeding failed:', err.message, {
+        sessionId: input.sessionId, reportId: input.reportId,
+      });
+      try {
+        await sendAdminAlert('A "+ Revisions" purchase could not be linked to its report', [
+          `Session: ${input.sessionId}`,
+          `Report: ${input.reportId || 'unknown'} (${input.fileName})`,
+          `Customer: ${input.customerEmail || 'unknown'}`,
+          `Error: ${err.message}`,
+          'The customer paid for revisions but has no order row to use them on — needs manual follow-up.',
+        ]);
+      } catch (alertErr) {
+        console.error('ready+revisions seeding-failure alert also failed:', alertErr.message);
+      }
     }
   }
 
@@ -226,6 +274,87 @@ async function postReportDownload(event) {
 
   const url = await pdfStore.presignPdfDownload(report.fileName);
   return json(200, { url, expiresIn: 900, fileName: report.fileName }, { 'cache-control': 'no-store' });
+}
+
+// No ASCII control characters except \n — the same charset rule the report
+// engine enforces on params.userComments / revision comments.
+const FORBIDDEN_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
+const MAX_REVISION_COMMENT_LENGTH = 4000;
+
+// GET /api/orders/{id} — order-page state. Called server-side by the Vercel
+// proxy that has already verified the Stripe session id (same trust model as
+// /api/report-download): the shared catalog-sync secret is the auth here.
+async function getOrder(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+
+  const payload = {
+    status: order.status,
+    origin: order.origin,
+    companyName: order.companyName,
+    ticker: order.ticker,
+    reportId: order.reportId,
+    revisionsAllowed: order.revisionsAllowed || 0,
+    revisionsUsed: order.revisionsUsed || 0,
+    revisionError: order.revisionError || null,
+    error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
+  };
+
+  // Only DELIVERED gets a PDF link — while REVISING, the order page shows
+  // progress, not the (about to be superseded) previous file.
+  if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
+    payload.pdfUrl = await pdfStore.presignPdfDownload(order.pdfFileName);
+  }
+
+  return json(200, payload, { 'cache-control': 'no-store' });
+}
+
+// POST /api/orders/{id}/revisions — the order page's one mutating call.
+// Claims the order for a revision (DELIVERED -> REVISING, conditional on
+// revisionsUsed < revisionsAllowed) and wakes the worker; the worker submits
+// the comment to the report engine's own scope: "estimates" revision
+// endpoint, which interprets it and updates the forecast — nothing here
+// interprets the comment itself.
+async function postOrderRevision(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const comments = String(body.comments || '').trim();
+  if (!comments) return json(400, { error: 'comments is required' });
+  if (comments.length > MAX_REVISION_COMMENT_LENGTH) {
+    return json(400, { error: `comments must be ${MAX_REVISION_COMMENT_LENGTH} characters or fewer` });
+  }
+  if (FORBIDDEN_CONTROL_CHARS.test(comments)) {
+    return json(400, { error: 'comments contains invalid control characters' });
+  }
+
+  const claimed = await ordersStore.claimRevision(id, comments);
+  if (!claimed) {
+    const existing = await ordersStore.get(id);
+    if (!existing) return json(404, { error: 'Order not found' });
+    return json(409, { error: 'This order cannot take a revision request right now', status: existing.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    // The 5-minute sweep picks the order up anyway.
+    console.warn('worker push invoke failed (sweep will catch it):', err.message);
+  }
+
+  return json(200, { ok: true, status: claimed.status });
 }
 
 // ── admin ──────────────────────────────────────────────────────────
@@ -363,6 +492,8 @@ const PUBLIC_ROUTES = {
   'GET /api/search-companies': getSearchCompanies,
   'POST /api/report-purchases': postReportPurchases,
   'POST /api/report-download': postReportDownload,
+  'GET /api/orders/{id}': getOrder,
+  'POST /api/orders/{id}/revisions': postOrderRevision,
 };
 
 const ADMIN_ROUTES = {

@@ -70,6 +70,10 @@ async function sendEmail(message, label) {
 
 // ── Existing report: deliver PDF link ────────────────────────────────────────
 async function sendReportEmail(toEmail, report) {
+  const orderLink = report.orderUrl
+    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">This order includes forecast revisions — request one &rarr;</a></p>`
+    : '';
+
   await sendEmail({
     from: FROM,
     to: toEmail,
@@ -88,9 +92,10 @@ async function sendReportEmail(toEmail, report) {
           <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">Your report is ready.</h1>
           <p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>
           <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Generated ${report.reportDate}</p>
-          <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:28px;">
+          <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
             Download PDF report &rarr;
           </a>
+          ${orderLink}
           <div style="border-top:1px solid #E2E9E5;padding-top:20px;">
             <p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">
               This report is licensed for your personal research and reference use.
@@ -109,10 +114,62 @@ async function sendReportEmail(toEmail, report) {
   }, 'report email');
 }
 
+// ── "+ Revisions" order: a requested forecast revision was delivered ────────
+async function sendReportRevisedEmail(toEmail, report) {
+  const orderLink = report.orderUrl
+    ? `<p style="margin:16px 0 0;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Request another revision &rarr;</a></p>`
+    : '';
+  await sendEmail({
+    from: FROM,
+    to: toEmail,
+    subject: `Your report has been updated — ${report.ticker}`,
+    html: `<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
+        <tr><td style="background:#1B3028;border-radius:12px 12px 0 0;padding:24px 32px;">
+          <p style="color:#6DBFA0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;">Valuatum</p>
+          <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
+        </td></tr>
+        <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
+          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">Your report has been updated.</h1>
+          <p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>
+          <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Revised forecast, generated ${report.reportDate}</p>
+          <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:12px;">
+            Download the updated PDF &rarr;
+          </a>
+          ${orderLink}
+          <div style="border-top:1px solid #E2E9E5;padding-top:20px;margin-top:24px;">
+            <p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">
+              This report is licensed for your personal research and reference use.
+            </p>
+            <p style="font-size:11px;color:#8A9590;line-height:1.65;margin:0;">
+              Questions? <a href="mailto:contact26@valuatum.com" style="color:#3D9E72;text-decoration:none;">contact26@valuatum.com</a>
+              &nbsp;&middot;&nbsp; <em>AI-generated research. Not investment advice.</em>
+            </p>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`,
+  }, 'report revised email');
+}
+
 // ── Fresh report: confirm to customer ───────────────────────────────────────
 async function sendFreshConfirmEmail(toEmail, meta) {
   const company = meta?.company || 'your company';
   const ticker = meta?.ticker ? ` (${meta.ticker})` : '';
+  const orderLinkBox = meta?.orderUrl
+    ? `<div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
+         <p style="font-size:13px;color:#8A9590;margin:0;">
+           This order includes forecast revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the forecast.
+         </p>
+       </div>`
+    : '';
 
   await sendEmail({
     from: FROM,
@@ -135,6 +192,7 @@ async function sendFreshConfirmEmail(toEmail, meta) {
             We've received your order and are generating a fresh report using the latest available financial data.
             Your PDF will arrive at this address within <strong>about 30 minutes</strong>.
           </p>
+          ${orderLinkBox}
           <div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:24px;">
             <p style="font-size:13px;color:#8A9590;margin:0;">
               While you wait, browse our
@@ -252,6 +310,7 @@ async function sendAdminAlert(subject, lines) {
 
 module.exports = {
   sendReportEmail,
+  sendReportRevisedEmail,
   sendFreshConfirmEmail,
   sendAdminNotification,
   sendAdminDeliveryNotice,

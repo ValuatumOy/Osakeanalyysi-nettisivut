@@ -82,6 +82,34 @@ async function submitJob({
   return { jobId: data.jobId };
 }
 
+// POST /jobs/{jobId}/revisions — revise a DONE job with further comments.
+// scope "estimates" turns the comment into forecast values, imports them into
+// a new branch model and regenerates the report; the analyst's base model and
+// the parent job are never modified. Returns { jobId } for the new (child) job,
+// same shape as submitJob — poll it with getJob like any other job.
+async function submitRevision({
+  parentJobId,
+  username = USERNAME,
+  comments,
+  scope = 'estimates',
+} = {}) {
+  if (!parentJobId) throw new Error('submitRevision: parentJobId is required');
+  if (!comments) throw new Error('submitRevision: comments is required');
+
+  const body = JSON.stringify({ username, comments, scope });
+
+  const res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(parentJobId)}/revisions`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body,
+  });
+  const data = await readJson(res);
+
+  if (!res.ok) throw new Error(`engine submitRevision ${describeError(res, data)}`);
+  if (!data.jobId) throw new Error('engine submitRevision: response had no jobId');
+  return { jobId: data.jobId };
+}
+
 // GET /jobs/{jobId} — job status. status is PENDING | RUNNING | DONE | FAILED
 // (NOT_FOUND is synthesised for a 404). On DONE the response carries s3Url.
 async function getJob(jobId) {
@@ -111,4 +139,4 @@ async function downloadPdf(s3Url) {
   return Buffer.from(await res.arrayBuffer());
 }
 
-module.exports = { submitJob, getJob, downloadPdf };
+module.exports = { submitJob, submitRevision, getJob, downloadPdf };

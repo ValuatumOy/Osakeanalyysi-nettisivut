@@ -33,6 +33,7 @@ function toBackendReport(report) {
     isFree: normalized.isFree,
     reportType: normalized.reportType,
     fileName: normalized.fileName,
+    revisable: Boolean(normalized.revisable),
   };
 }
 
@@ -54,7 +55,12 @@ async function fetchJson(url, options = {}) {
   const response = await fetch(url, options);
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(data.error || `Catalog API failed with ${response.status}`);
+    // .status lets callers (the order-page proxy endpoints) forward a
+    // meaningful code — 409 for a double-submit, 402/404 — instead of
+    // collapsing every backend error to a generic 500.
+    const err = new Error(data.error || `Catalog API failed with ${response.status}`);
+    err.status = response.status;
+    throw err;
   }
   return data;
 }
@@ -163,11 +169,42 @@ async function requestReportDownload(reportId) {
   });
 }
 
+// Order-page state for a "+ Revisions" order (fresh or ready). The order id
+// is the Stripe checkout session id, same as everywhere else in this file.
+async function getOrderState(orderId) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot read order state');
+  }
+  return fetchJson(`${base}/api/orders/${encodeURIComponent(orderId)}`, {
+    headers: { Authorization: `Bearer ${secret}` },
+  });
+}
+
+// Submit a forecast-revision request. The caller must have already verified
+// the buyer's Stripe session — the shared secret only authorizes the backend
+// call, it is not proof of purchase on its own.
+async function submitOrderRevision(orderId, comments) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot submit a revision');
+  }
+  return fetchJson(`${base}/api/orders/${encodeURIComponent(orderId)}/revisions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${secret}` },
+    body: JSON.stringify({ comments }),
+  });
+}
+
 module.exports = {
   getCatalogReport,
   getCatalogReports,
   recordCatalogPurchase,
   requestReportDownload,
+  getOrderState,
+  submitOrderRevision,
   normalizeCatalogReport,
   toBackendReport,
 };

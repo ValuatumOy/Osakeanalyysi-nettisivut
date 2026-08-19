@@ -12,9 +12,11 @@
     "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",
-    "test:estimates": "node --test test/estimates/*.test.mjs",
     "test:members": "node --test test/members/*.test.mjs",
+    "test:orders": "node --test test/orders/*.test.mjs",
     "test:reaper": "node --test test/reaper/*.test.mjs",
+    "test:reconciler": "node --test test/reconciler/*.test.mjs",
+    "test:stripe-pricing": "node --test test/stripe-pricing/*.test.mjs",
     "validate:jsonld": "node scripts/validate-jsonld.mjs"
   },
   "dependencies": {
