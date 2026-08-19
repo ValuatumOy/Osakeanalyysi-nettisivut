@@ -180,7 +180,7 @@
               <p class="sub" id="genSub">Reserve your report generation for this month.</p>
             </div>
             <div class="ws-panel">
-              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished analysis on the site under your own name and LinkedIn profile.</p>
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
               <div id="genStatus" class="muted"></div>
               <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
                 <label class="field"><span>Company</span>
@@ -193,7 +193,7 @@
               </div>
               <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
               <div id="submitRow" hidden style="margin-top:1.1rem;">
-                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish — you do not retype them here. Set what your analysis costs and how long until it stops costing other members a read.</p>
+                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish — you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
                 <div class="form-row">
                   <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
                     <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
@@ -210,7 +210,7 @@
           <div class="ws-section" id="earningsCard" hidden>
             <div class="ws-section-head">
               <h2>Earnings</h2>
-              <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
+              <p class="sub">A fee per published report. It matures 14 days after publication — a report taken down in that window earns nothing.</p>
             </div>
             <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
@@ -385,10 +385,10 @@
         document.getElementById('genTitle').textContent =
           isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
         document.getElementById('genSub').textContent = isAnalyst
-          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished analysis.'
+          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished report.'
           : 'Reserve your monthly fresh report. It stays private to you — nothing is published.';
         document.getElementById('genStatus').textContent = ob
-          ? 'Open publication obligation — publish your analysis to unlock the next generation.'
+          ? 'Open publication obligation — publish your report to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
         document.getElementById('genCommit').hidden = !isAnalyst;
         window._publishes = isAnalyst;
