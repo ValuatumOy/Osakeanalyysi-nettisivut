@@ -32,6 +32,14 @@
     .a-card { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.75rem; }
     .a-card h3 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
     .a-card p { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel); }
+    .a-worth-head { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400;
+      letter-spacing: -0.015em; color: var(--charcoal); margin: 3.5rem 0 0.25rem; }
+    .a-worth { columns: 2; column-gap: 3.5rem; }
+    .a-worth-item { break-inside: avoid; padding: 1.25rem 0; border-top: 1px solid rgba(26,36,32,0.1); }
+    .a-worth-item h4 { font-size: var(--text-base); font-weight: 500; letter-spacing: -0.005em;
+      color: var(--charcoal); margin-bottom: 0.4rem; }
+    .a-worth-item p { font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: #5B6A63; }
+    @media (max-width: 720px) { .a-worth { columns: 1; } }
     .a-rules { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: var(--text-sm); }
     .a-rules th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-steel); font-weight: 600; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--color-border); }
     .a-rules td { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--color-border); font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
@@ -139,27 +147,27 @@
           </div>
         </div>
 
-        <h3 style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:0.5rem;">What that is worth to you</h3>
-        <div class="a-cards">
-          <div class="a-card">
-            <h3>A public track record</h3>
-            <p>Every analysis you publish is dated, attributed, and stays up. A rating and a target price with a timestamp is something an employer, a client, or a reader can actually verify — unlike a CV bullet.</p>
+        <h3 class="a-worth-head">What that is worth to you</h3>
+        <div class="a-worth">
+          <div class="a-worth-item">
+            <h4>A public track record</h4>
+            <p>Every report you publish is dated, attributed, and stays up. A rating and a target price with a timestamp is something an employer, a client, or a reader can actually verify, unlike a CV bullet.</p>
           </div>
-          <div class="a-card">
-            <h3>A shop window</h3>
+          <div class="a-worth-item">
+            <h4>A shop window</h4>
             <p>In the old freelance network, six of roughly forty analysts were hired by brokers or corporate finance units within nine months. Published work you can point to is the reason that worked.</p>
           </div>
-          <div class="a-card">
-            <h3>Good work is not made to wait</h3>
-            <p>One generation a month is the floor, not the ceiling. As soon as an administrator or another analyst judges your analysis good enough — that it adds something over the base report — you are cleared for the next one. No waiting for the calendar to turn.</p>
+          <div class="a-worth-item">
+            <h4>Good work is not made to wait</h4>
+            <p>One generation a month is the floor, not the ceiling. As soon as an administrator or another analyst judges your report good enough — that it adds something over the engine's report — you are cleared for the next one. No waiting for the calendar to turn.</p>
           </div>
-          <div class="a-card">
-            <h3>The free rotation puts you in front of everyone</h3>
-            <p>Roughly every fifth to tenth published analysis is opened up free to every reader on the site for a period. That is the widest audience your work will get, and it costs the reader nothing to open — so it is read by people who would never have paid to find you.</p>
+          <div class="a-worth-item">
+            <h4>The free rotation puts you in front of everyone</h4>
+            <p>Roughly every fifth to tenth published report is opened up free to every reader on the site for a period. That is the widest audience your work will get, and it costs the reader nothing to open, so it is read by people who would never have paid to find you.</p>
           </div>
-          <div class="a-card">
-            <h3>Paid for what you produce</h3>
-            <p>The pilot pays a fixed fee per published analysis. Where it is heading is demand-based: the more investors want your analysis on that company, the larger your share of what it earns — so that the person covering a company best is the person paid most for it.</p>
+          <div class="a-worth-item">
+            <h4>Paid for what you produce</h4>
+            <p>The pilot pays a fixed fee per published report. Where it is heading is demand-based: the more investors want your report on that company, the larger your share of what it earns, so that the person covering a company best is the person paid most for it.</p>
           </div>
         </div>
       </div>
@@ -181,7 +189,7 @@
               <span class="a-step-time">2 minutes</span>
               <h3>Sign in with LinkedIn</h3>
               <p>Analyst membership is free and uses LinkedIn sign-in, on the <a href="members.html" style="color:var(--green);">member area</a>. LinkedIn is the identity check: your published analyses carry your real name, so we need to know it is yours.</p>
-              <p>Membership also gives you ten reports from the catalog every month, once they are at least 30 days old, and twenty of other analysts’ published analyses.</p>
+              <p>Membership also gives you ten reports from the catalog every month, once they are at least 30 days old, and twenty of other analysts’ published reports.</p>
             </div>
           </div>
 
@@ -233,7 +241,7 @@
               <span class="a-step-time">Days to weeks later</span>
               <h3>Your analysis may be given away — to your benefit</h3>
               <p>About every fifth to tenth published analysis is released free to every reader for a while. Free means genuinely free: no purchase, no monthly allowance spent, no account required beyond signing in. Your name and your prompts travel with it.</p>
-              <p>At the start we pick those by hand from the analyses that deserve the audience. Once there are enough of them the draw becomes random, weighted by the scores an analysis has earned — so a good analysis is more likely to be the one that goes out, and nobody can arrange to be picked.</p>
+              <p>At the start we pick those by hand from the reports that deserve the audience. Once there are enough of them the draw becomes random, weighted by the scores a report has earned — so a good report is more likely to be the one that goes out, and nobody can arrange to be picked.</p>
               <p>It is not a tax on your work. An analysis nobody has read earns you nothing and proves nothing; the widest possible readership is exactly what a track record is for.</p>
             </div>
           </div>
@@ -258,12 +266,12 @@
       <div class="container">
         <span class="section-eyebrow">Reading each other</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">The ranking is built by the people who had to read the work.</h2>
-        <p class="section-sub" style="max-width:680px;">Twenty of other analysts' published analyses a month, and every one you open costs you a review. That is what makes the ranking in the <a href="report-store.html" style="color:var(--green);">report store</a> worth anything: nobody scores an analysis they have not read.</p>
+        <p class="section-sub" style="max-width:680px;">Twenty of other analysts' published reports a month, and every one you open costs you a review. That is what makes the ranking in the <a href="report-store.html" style="color:var(--green);">report store</a> worth anything: nobody scores a report they have not read.</p>
 
         <div class="a-cards">
           <div class="a-card">
             <h3>One at a time</h3>
-            <p>Opening an analysis locks the next one until you have rated the one you opened and written why. Not a queue you can work through and review later — one open obligation, and it carries until you clear it.</p>
+            <p>Opening an analyst report locks the next one until you have rated the one you opened and written why. Not a queue you can work through and review later — one open obligation, and it carries until you clear it.</p>
           </div>
           <div class="a-card">
             <h3>A number and a reason</h3>
@@ -275,7 +283,7 @@
           </div>
           <div class="a-card">
             <h3>You cannot rate your own</h3>
-            <p>Your own analyses are not openable and not rateable by you, and one reader can rate a given analysis once. Every open is logged with who read whose work, so patterns between accounts are visible to us.</p>
+            <p>Your own reports are not openable and not rateable by you, and one reader can rate a given report once. Every open is logged with who read whose work, so patterns between accounts are visible to us.</p>
           </div>
         </div>
 
@@ -318,12 +326,12 @@
               <td>The engine wrote most of every analysis on this site, and some base reports are simply better than others through no fault of the analyst. So the score answers one question only: <strong>what did this analyst's own work add?</strong> Which assumption did they challenge, which risk did they weight differently, what does the reader now know that the base report did not tell them? A polished report that the analyst barely touched is a low score, not a high one.</td>
             </tr>
             <tr>
-              <td>Twenty analyst analyses a month</td>
-              <td>You may open twenty other analysts' published analyses per month, <strong>one at a time</strong>: opening one locks the next until you have rated it and written why. The rating is 1–5 and takes decimals, because the distance between two analyses of the same company is rarely a whole point.</td>
+              <td>Twenty analyst reports a month</td>
+              <td>You may open twenty other analysts' published reports per month, <strong>one at a time</strong>: opening one locks the next until you have rated it and written why. The rating is 1–5 and takes decimals, because the distance between two reports on the same company is rarely a whole point.</td>
             </tr>
             <tr>
               <td>Your analysis is ranked, per company</td>
-              <td>Published analyses sit on the company's page above the engine's own report, ordered by peer scores, review count and how recent they are. Being first on a company is the thing worth competing for.</td>
+              <td>Published analyst reports sit on the company's page above the engine's own report, ordered by peer scores, review count and how recent they are. Being first on a company is the thing worth competing for.</td>
             </tr>
             <tr>
               <td>You set the price and the decay</td>
@@ -355,7 +363,7 @@
             </tr>
             <tr>
               <td>A monthly cap</td>
-              <td>A cap on how many analyses can earn a fee in one calendar month, per analyst.</td>
+              <td>A cap on how many reports can earn a fee in one calendar month, per analyst.</td>
             </tr>
             <tr>
               <td>Invoice, not payroll</td>

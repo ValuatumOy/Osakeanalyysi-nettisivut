@@ -68,7 +68,7 @@
       <div class="container">
         <span class="section-eyebrow section-eyebrow--light">Report store</span>
         <h1 class="section-headline section-headline--light">Every report on one page.</h1>
-        <p class="ws-hero-lede">For each company: the engine's own report, and every analyst's published analysis on top of it. The analyses are ordered by what other analysts said they added — a score out of five and a written comparison, from people who had to read the report to give it.</p>
+        <p class="ws-hero-lede">For each company: the engine's own report, and every analyst report published on top of it. The analyst reports are ordered by what other analysts said they added, a score out of five and a written comparison, from people who had to read the report to give it.</p>
       </div>
     </section>
 
@@ -87,7 +87,7 @@
           <label class="field"><span>Show</span>
             <select id="fKind" class="input">
               <option value="">Everything</option>
-              <option value="analyst">Analyst analyses only</option>
+              <option value="analyst">Analyst reports only</option>
               <option value="base">Engine reports only</option>
             </select>
           </label>
@@ -99,7 +99,7 @@
         <div id="storeList"></div>
 
         <p class="store-note">
-          An analyst analysis is the engine's report re-run with that analyst's own assumptions and instructions, published under their own name. The rating measures <strong>what the analyst's work added</strong> over the base report — not how good the base report was. Reading one costs a member a monthly allowance and a written review, which is why the ratings come from people who actually read it. Anyone can read the engine's free weekly reports, and the analyst analyses we hand-pick into a free window — those say <em>Free to read</em>.
+          An analyst report is the engine's report re-run with that analyst's own assumptions and instructions, published under their own name. The rating measures <strong>what the analyst's work added</strong> over the engine's report, not how good that report was. Reading one costs a member a monthly allowance and a written review, which is why the ratings come from people who actually read it. Anyone can read the engine's free weekly reports, and the analyst reports we hand-pick into a free window — those say <em>Free to read</em>.
           <span id="storeEnvNote"></span>
         </p>
       </div>
@@ -117,7 +117,7 @@
 
   <script>
     // Engine reports come from this site's own catalog (same origin, so staging
-    // shows staging's and production shows production's). Analyst analyses come
+    // shows staging's and production shows production's). Analyst reports come
     // from the members API, which is still the test stack until it ships.
     const USE_PROD_MEMBERS = false;
     const MEMBERS_API = USE_PROD_MEMBERS
@@ -248,7 +248,7 @@
       return '<div class="store-row">' +
         '<div class="store-row-main">' +
           '<div class="store-row-title"><span class="store-rank">' + rank + '</span>' +
-            '<span class="store-kind store-kind--analyst">Analyst</span>' + esc(analysis.analyst) + '</div>' +
+            '<span class="store-kind store-kind--analyst">Analyst report</span>' + esc(analysis.analyst) + '</div>' +
           '<div class="store-row-meta">' + score +
             '<span class="sep">·</span>' + price +
             (date ? '<span class="sep">·</span>published ' + date : '') + '</div>' +
@@ -353,9 +353,9 @@
         rows += base.length + analyses.length;
         const shown = analyses.length;
         const total = entry.analyses.length;
-        const count = !total ? 'No analyst analysis yet'
-          : (shown < total ? shown + ' of ' + total + ' analyst analyses'
-                           : total + ' analyst ' + (total === 1 ? 'analysis' : 'analyses'));
+        const count = !total ? 'No analyst report yet'
+          : (shown < total ? shown + ' of ' + total + ' analyst reports'
+                           : total + ' analyst ' + (total === 1 ? 'report' : 'reports'));
         return '<section class="store-company">' +
           '<div class="store-company-head">' +
             '<h2>' + esc(entry.name) + '</h2>' +
@@ -380,7 +380,7 @@
     document.getElementById('fSearch').addEventListener('input', render);
     if (!USE_PROD_MEMBERS) {
       document.getElementById('storeEnvNote').textContent =
-        ' Analyst analyses are served from the test stack while the member system is in testing.';
+        ' Analyst reports are served from the test stack while the member system is in testing.';
     }
     load().then(collectPurchase);
   </script>
