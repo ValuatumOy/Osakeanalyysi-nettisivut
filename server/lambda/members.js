@@ -1041,7 +1041,7 @@ async function postTestUsers(event) {
     email,
   });
   const patch = {};
-  for (const key of ['role', 'tier', 'tierStatus', 'coverageCompanyId']) {
+  for (const key of ['role', 'tier', 'tierStatus', 'coverageCompanyId', 'name']) {
     if (body[key] !== undefined) patch[key] = body[key];
   }
   if (Object.keys(patch).length) await store.updateProfile(userId, patch);
@@ -1070,6 +1070,8 @@ async function postTestPublication(event) {
   const genId = body.genId || crypto.randomUUID();
   const publishedAt = body.publishedAt || requestNow(event).toISOString();
   const companyId = String(body.companyId || 'TEST.HE').toUpperCase();
+  const seeded = await store.getProfile(body.userId);
+  const analystName = body.analystName || seeded?.name || seeded?.email || '[test seed]';
   await store.putItem({
     pk: `USER#${body.userId}`,
     sk: `PUB#${genId}`,
@@ -1077,7 +1079,8 @@ async function postTestPublication(event) {
     publishedAt,
     companyId,
     jobId: body.jobId || 'test-job',
-    promptsText: '[test seed]',
+    promptsText: body.promptsText || '[test seed]',
+    ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
   });
   // Same index row a real submit writes, so the analyses list and the review
   // loop can be exercised without spending an engine run.
@@ -1087,13 +1090,15 @@ async function postTestPublication(event) {
     userId: body.userId,
     genId,
     companyId,
-    analystName: '[test seed]',
+    analystName,
     jobId: body.jobId || 'test-job',
     publishedAt,
     status: 'published',
-    priceEur: 0,
-    reviewCount: 0,
-    scoreSum: 0,
+    priceEur: Number(body.priceEur) || 0,
+    // A store demo needs a spread: a clear leader, an unreviewed one, a weak one.
+    reviewCount: Number(body.reviewCount) || 0,
+    scoreSum: Number(body.scoreSum) || 0,
+    ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
   });
   return json(200, { ok: true, genId });
 }
