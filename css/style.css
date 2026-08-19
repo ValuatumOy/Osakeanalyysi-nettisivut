@@ -3121,9 +3121,11 @@ select.input {
   background-position: right 0.9em center;
   cursor: pointer;
 }
-.form-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-end; }
+/* Labels line up at the top even when one control is a textarea; the button
+   still sits on the bottom edge of the tallest control. */
+.form-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-start; }
 .form-row .field { flex: 1 1 220px; }
-.form-row .btn { flex: none; }
+.form-row .btn { flex: none; align-self: flex-end; }
 
 /* ---- Data tables ---- */
 .table-wrap { overflow-x: auto; }

@@ -346,7 +346,7 @@
       const badge = document.getElementById('tierBadge');
       badge.textContent = TIER_LABELS[data.tier] || data.tier;
       badge.className = 'tier-badge' + (data.tier === 'none' ? ' none' : '');
-      const ROLE_LABELS = { analyst: ' · Analyst', reader: ' · Reader', coaching: ' · Coaching analyst' };
+      const ROLE_LABELS = { analyst: 'Analyst', reader: 'Reader', coaching: 'Coaching analyst' };
       document.getElementById('roleLabel').textContent = ROLE_LABELS[data.role] || '';
       // "Member" covers two different people; name the one who actually signed in.
       document.getElementById('pageTitle').textContent =
