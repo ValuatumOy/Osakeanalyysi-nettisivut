@@ -151,7 +151,9 @@ function navHtml() {
         <a href="/about.html" class="nav-link">About</a>
         <a href="/faq.html" class="nav-link">FAQ</a>
         <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
     </div>
   </header>`;

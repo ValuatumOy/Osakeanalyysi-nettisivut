@@ -129,6 +129,7 @@ function navHtml() {
         <a href="/faq.html" class="nav-link">FAQ</a>
         <a href="/blog.html" class="nav-link is-active" aria-current="page">Blog</a>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
     </div>
   </header>`;
@@ -546,6 +547,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="blog.html" class="nav-link is-active" aria-current="page">Blog</a>
       </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
@@ -559,6 +561,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
       <a href="about.html" class="nav-mobile-link">About</a>
       <a href="faq.html" class="nav-mobile-link">FAQ</a>
       <a href="blog.html" class="nav-mobile-link" style="color:var(--green-light);">Blog</a>
+      <a href="analysts.html" class="nav-mobile-link" style="color:var(--green-light);">Analysts</a>
     </div>
   </header>
 

@@ -56,6 +56,14 @@ export class MembersStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
+    // The member-facing catalog is production's, in every stage. Imported by
+    // name and read-only: nothing here writes to a production resource, and on
+    // the prod stage these resolve to the same bucket/table props carry anyway.
+    const catalogBucket = s3.Bucket.fromBucketName(
+      this, 'MemberCatalogBucket', config.memberCatalogBucket);
+    const catalogStateTable = dynamodb.Table.fromTableName(
+      this, 'MemberCatalogStateTable', config.memberCatalogStateTable);
+
     const membersApiUrl = `https://${config.membersApiDomain}`;
 
     const membersFunction = new NodejsFunction(this, 'MembersFunction', {
@@ -75,15 +83,21 @@ export class MembersStack extends Stack {
       environment: {
         STAGE: config.stage,
         MEMBERS_TABLE: membersTable.tableName,
-        CATALOG_STATE_TABLE: props.catalogStateTable.tableName,
+        // Always production's catalog, whatever stage this is: an analyst must
+        // pick from the reports the public site actually sells (see config.ts).
+        CATALOG_STATE_TABLE: catalogStateTable.tableName,
         // Membership generations run through the same order pipeline as paid
         // fresh reports: create the order, wake the worker, the reconciler does
         // the rest.
         ORDERS_TABLE: props.ordersTable.tableName,
         WORKER_FUNCTION_NAME: props.workerFunction.functionName,
-        REPORT_PDF_BUCKET: props.pdfBucket.bucketName,
+        REPORT_PDF_BUCKET: catalogBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
-        REPORT_PDF_BASE_URL: config.pdfBaseUrl,
+        REPORT_PDF_BASE_URL: config.memberCatalogPdfBaseUrl,
+        // This stage's own bucket, where the reconciler delivers what members
+        // generate. Those PDFs are never in the production catalog listing, so
+        // they are presigned straight from the order's pdfFileName.
+        GENERATED_PDF_BUCKET: props.pdfBucket.bucketName,
         SECRETS_SSM_PREFIX: config.secretsPrefix,
         // Allowances are demand-tuned (Esa, 17.8.2026): overriding this variable
         // changes the three numbers per role/tier without a code change. Empty
@@ -105,8 +119,9 @@ export class MembersStack extends Stack {
     });
 
     membersTable.grantReadWriteData(membersFunction);
-    props.catalogStateTable.grantReadData(membersFunction);
-    props.pdfBucket.grantRead(membersFunction); // presigned GETs for entitled opens
+    catalogStateTable.grantReadData(membersFunction);
+    catalogBucket.grantRead(membersFunction); // presigned GETs for entitled opens
+    props.pdfBucket.grantRead(membersFunction); // this stage's own generations
     // Create-only in practice: the worker owns order state transitions.
     props.ordersTable.grantReadWriteData(membersFunction);
     props.workerFunction.grantInvoke(membersFunction);

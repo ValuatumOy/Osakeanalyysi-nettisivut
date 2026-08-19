@@ -354,6 +354,23 @@ input, textarea { font: inherit; }
   background: var(--green);
 }
 
+/* Sign in sits between the tabs and the CTA: reachable from every page, but
+   quiet enough that it never competes with the page's own call to action. */
+.nav-signin {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  background: var(--white);
+  border: 1px solid var(--color-border);
+  padding: 0.65em 1.1em;
+  border-radius: 8px;
+  margin-left: 0.75rem;
+  transition: background var(--trs), border-color var(--trs), color var(--trs);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-signin:hover { background: var(--off-white); border-color: var(--gray-steel); }
+
 .nav-cta {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -428,6 +445,17 @@ input, textarea { font: inherit; }
 .nav--over-hero:not(.scrolled) .nav-link.is-active { color: var(--white); }
 .nav--over-hero:not(.scrolled) .nav-link.is-active::after { background: var(--green-light); }
 .nav--over-hero:not(.scrolled) .nav-hamburger span { background: var(--white); }
+.nav--over-hero:not(.scrolled) .nav-signin {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.28);
+}
+.nav--over-hero:not(.scrolled) .nav-signin:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(255,255,255,0.45);
+  color: var(--white);
+}
+
 .nav--over-hero:not(.scrolled) .nav-cta {
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.3);
@@ -2698,6 +2726,7 @@ input, textarea { font: inherit; }
 
 @media (max-width: 900px) {
   .nav-links { display: none; }
+  .nav-signin { display: none; }
   .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
 

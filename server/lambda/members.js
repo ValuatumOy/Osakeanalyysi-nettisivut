@@ -152,18 +152,27 @@ async function invokeWorkerAsync() {
   }));
 }
 
-async function presignReport(report) {
+async function presignPdf(bucket, fileName) {
   const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
   const { GetObjectCommand } = require('@aws-sdk/client-s3');
   const { s3 } = require('../aws/clients');
   const prefix = process.env.REPORT_PDF_PREFIX || 'reports/pdfs/';
   const url = await getSignedUrl(
     s3(),
-    new GetObjectCommand({ Bucket: process.env.REPORT_PDF_BUCKET, Key: `${prefix}${report.fileName}` }),
+    new GetObjectCommand({ Bucket: bucket, Key: `${prefix}${fileName}` }),
     { expiresIn: 300 },
   );
   return { url, expiresIn: 300 };
 }
+
+// A catalog report: production's bucket, in every stage (see infra/lib/config.ts).
+const presignReport = report => presignPdf(process.env.REPORT_PDF_BUCKET, report.fileName);
+
+// A report this stage generated for a member. It is delivered into this stage's
+// own bucket and is deliberately not in the production catalog listing, so the
+// order's own pdfFileName is the key — the DELIVERED status is the entitlement.
+const presignGenerated = fileName =>
+  presignPdf(process.env.GENERATED_PDF_BUCKET || process.env.REPORT_PDF_BUCKET, fileName);
 
 // GET /reports — the member-facing catalog. Unlike the prod public payload
 // this NEVER exposes pdfUrl: the presigned /open route is the only door.
@@ -455,16 +464,8 @@ async function getGeneration(event) {
   };
 
   if (order.status === 'DELIVERED' && order.pdfFileName) {
-    // The delivered report is hidden, so it needs the non-public catalog view.
-    const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: true });
-    const report = catalog.reports.find(item => item.fileName === order.pdfFileName);
-    if (report) {
-      // Idempotent: the member owns what they generated, no quota involved.
-      if (!await store.getEntitlement(profile.userId, report.id)) {
-        await store.putEntitlement(profile.userId, report.id, 'generation', { genId });
-      }
-      result.reportId = report.id;
-    }
+    // The member owns what they generated — no quota, no entitlement row.
+    Object.assign(result, await presignGenerated(order.pdfFileName));
   }
   return json(200, result);
 }
@@ -771,7 +772,7 @@ async function postAnalysisOpen(event) {
   if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
 
   const deliver = async (extra) => json(200, {
-    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId, now)), ...extra,
+    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId)), ...extra,
   });
 
   // Inside a hand-picked free window, or past the analyst's own decay time, the
@@ -806,13 +807,14 @@ async function postAnalysisOpen(event) {
 // The published analysis itself: the engine PDF the generation delivered, behind
 // a 5-minute presigned GET like every other download here. Seeded/test
 // publications have no order behind them and simply come back without a url.
-async function analysisDocument(genId, now) {
+async function analysisDocument(genId) {
   const order = await ordersStore.get(genId);
   if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
-  const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: true });
-  const report = catalog.reports.find(item => item.fileName === order.pdfFileName);
-  if (!report) return { url: null, jobId: order.jobId || null };
-  return { ...(await presignReport(report)), jobId: order.jobId || null, company: order.companyName };
+  return {
+    ...(await presignGenerated(order.pdfFileName)),
+    jobId: order.jobId || null,
+    company: order.companyName,
+  };
 }
 
 // POST /analyses/{genId}/review {score, comment} — the price of the read. The

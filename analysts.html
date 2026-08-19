@@ -37,6 +37,13 @@
     .a-rules td { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--color-border); font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
     .a-rules td:first-child { font-weight: 600; color: var(--charcoal); white-space: nowrap; }
     .a-note { border-left: 2px solid var(--gold); background: var(--gold-faint); border-radius: 0 10px 10px 0; padding: 1.1rem 1.4rem; font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: var(--gray-steel); margin-top: 2rem; }
+    .a-hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem 3rem;
+      margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .a-hero-stats .v { font-size: 2rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; }
+    .a-hero-stats .k { font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-top: 0.35rem; line-height: 1.5; }
+    /* The rules table is wide; let it scroll inside its own box rather than the page. */
+    .a-rules-wrap { overflow-x: auto; }
     .a-section { padding: var(--section-py) 0; }
     .a-section--alt { background: var(--off-white); }
     @media (max-width: 640px) {
@@ -64,6 +71,7 @@
         <a href="about.html" class="nav-link" style="color:var(--gray-steel);">About</a>
         <a href="faq.html" class="nav-link" style="color:var(--gray-steel);">FAQ</a>
         <a href="blog.html" class="nav-link" style="color:var(--gray-steel);">Blog</a>
+        <a href="analysts.html" class="nav-link is-active" aria-current="page" style="color:var(--charcoal);">Analysts</a>
       </nav>
       <a href="members.html" class="nav-cta">Member area</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -78,6 +86,7 @@
       <a href="about.html" class="nav-mobile-link">About</a>
       <a href="faq.html" class="nav-mobile-link">FAQ</a>
       <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="analysts.html" class="nav-mobile-link" aria-current="page" style="color:var(--green-light);">Analysts</a>
     </div>
   </header>
 
@@ -89,11 +98,15 @@
         <span class="section-eyebrow section-eyebrow--light">For analysts</span>
         <h1 class="section-headline section-headline--light" style="max-width:760px;">Your analysis.<br>Your name on it.</h1>
         <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:600px; line-height:1.75;">Free membership for equity analysts. Generate a fresh report every month, steer it toward your own view, and publish it under your own name — a public, dated track record anyone can check.</p>
-        <div style="display:flex; gap:3rem; margin-top:3rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.08); flex-wrap:wrap;">
-          <div><div style="font-size:2rem; font-weight:300; color:white; letter-spacing:-0.02em;">€0</div><div style="font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-top:0.25rem;">Membership</div></div>
-          <div><div style="font-size:2rem; font-weight:300; color:white; letter-spacing:-0.02em;">1+ / month</div><div style="font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-top:0.25rem;">Reports you generate — more when they are good</div></div>
-          <div><div style="font-size:2rem; font-weight:300; color:white; letter-spacing:-0.02em;">~45 min</div><div style="font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-top:0.25rem;">Per published analysis</div></div>
-          <div><div style="font-size:2rem; font-weight:300; color:white; letter-spacing:-0.02em;">Instant</div><div style="font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-top:0.25rem;">Publication, no queue</div></div>
+        <div style="display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap;">
+          <a href="members.html" class="btn btn-primary">Sign in with LinkedIn</a>
+          <a href="#steps" class="btn btn-outline">See the seven steps</a>
+        </div>
+        <div class="a-hero-stats">
+          <div><div class="v">€0</div><div class="k">Membership</div></div>
+          <div><div class="v">1+ / month</div><div class="k">Generations — more when the work is good</div></div>
+          <div><div class="v">~45 min</div><div class="k">Per published analysis</div></div>
+          <div><div class="v">Instant</div><div class="k">Publication, no queue</div></div>
         </div>
       </div>
     </section>
@@ -145,7 +158,7 @@
     </section>
 
     <!-- HOW IT WORKS -->
-    <section class="a-section a-section--alt">
+    <section class="a-section a-section--alt" id="steps">
       <div class="container">
         <span class="section-eyebrow">Step by step</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">From sign-in to published analysis.</h2>
@@ -160,7 +173,7 @@
               <span class="a-step-time">2 minutes</span>
               <h3>Sign in with LinkedIn</h3>
               <p>Analyst membership is free and uses LinkedIn sign-in, on the <a href="members.html" style="color:var(--green);">member area</a>. LinkedIn is the identity check: your published analyses carry your real name, so we need to know it is yours.</p>
-              <p>Membership also gives you two reports from the catalog every month, once they are at least 30 days old.</p>
+              <p>Membership also gives you ten reports from the catalog every month, once they are at least 30 days old, and twenty of other analysts’ published analyses.</p>
             </div>
           </div>
 
@@ -237,6 +250,7 @@
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">All of them, in one table.</h2>
         <p class="section-sub" style="max-width:660px;">Publishing is instant and unreviewed, so the quality gate sits on the payment side instead. These are the pilot's limits — the allowances are tuned by demand, and an analyst whose work adds value is cleared for the next one rather than held to the number.</p>
 
+        <div class="a-rules-wrap">
         <table class="a-rules">
           <thead>
             <tr><th style="width:220px;">Rule</th><th>What it means</th></tr>
@@ -304,6 +318,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <div class="a-note">
           <strong>Rating and target price are yours, and so is the responsibility.</strong> A published analysis carries your name. It is general research material, not investment advice to any individual reader — the same standard the rest of the site is held to. See the <a href="disclaimer.html" style="color:var(--green);">disclaimer</a>.
