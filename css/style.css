@@ -354,6 +354,46 @@ input, textarea { font: inherit; }
   background: var(--green);
 }
 
+/* Nine tabs did not fit. Four of them — the ones a returning visitor rarely
+   needs — live under More instead. <details>/<summary> rather than a scripted
+   menu: keyboard, touch and no-JS all work without a line of JavaScript. */
+.nav-more { position: relative; }
+.nav-more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.nav-more > summary::-webkit-details-marker { display: none; }
+.nav-more > summary::after {
+  content: '';
+  width: 5px; height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--trs);
+}
+.nav-more[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+.nav-more-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem;
+  background: var(--white);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -2px rgba(26,36,32,0.08), 0 12px 28px -12px rgba(26,36,32,0.28);
+}
+.nav-more-menu .nav-link { border-radius: 6px; padding: 0.5rem 0.7rem; }
+/* The menu is a white card whatever the header is doing, so its links keep the
+   dark palette even while the header is transparent over the hero. */
+.nav--over-hero:not(.scrolled) .nav-more-menu .nav-link { color: rgba(26,36,32,0.62); }
+.nav--over-hero:not(.scrolled) .nav-more-menu .nav-link:hover { color: var(--charcoal); background: rgba(26,36,32,0.045); }
+
 /* Sign in sits between the tabs and the CTA: reachable from every page, but
    quiet enough that it never competes with the page's own call to action. */
 .nav-signin {
@@ -1531,6 +1571,53 @@ input, textarea { font: inherit; }
 /* =====================================================
    13. METHODOLOGY / TRUST SECTION
 ===================================================== */
+/* Analyst programme teaser: the same two-column shape as the trust block below,
+   on white so the two sections do not run together. */
+.analyst-teaser {
+  padding: var(--section-py) 0;
+  border-top: 1px solid var(--color-border);
+}
+.analyst-teaser-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+.analyst-teaser-cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.analyst-teaser-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.analyst-teaser-card {
+  background: var(--off-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-xl);
+  padding: 1.6rem 1.75rem;
+}
+.analyst-teaser-card .t {
+  font-size: var(--text-xs);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 0.6rem;
+}
+.analyst-teaser-card p {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--gray-steel);
+}
+@media (max-width: 900px) {
+  .analyst-teaser-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
 .method-trust {
   padding: var(--section-py) 0;
   background: var(--off-white);
@@ -2724,18 +2811,13 @@ input, textarea { font: inherit; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* Nine tabs plus Sign in and the CTA need about 1210px; below that the row
-   overflowed its container. The hamburger takes over earlier than the 900px
-   layout breakpoint below, which is deliberately left alone — it governs the
-   report layout, not the header. */
-@media (max-width: 1220px) {
+@media (max-width: 900px) {
+  /* Four tabs, More, Sign in and the CTA fit above this; nine tabs did not,
+     which is what the More dropdown is for. */
   .nav-links { display: none; }
   .nav-signin { display: none; }
   .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
-}
-
-@media (max-width: 900px) {
 
   .report-layout {
     grid-template-columns: 1fr;

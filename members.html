@@ -86,16 +86,20 @@
           <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
         </div>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="reports.html" class="nav-link">Reports</a>
         <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
         <a href="analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -522,7 +526,9 @@
       if (status !== 200) { notice('err', 'Could not load analyses (' + status + ')'); return; }
       const rows = (data.analyses || []).map(a =>
         '<tr><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + '</td><td>' + esc(a.publishedAt.slice(0, 10))
-        + '</td><td>' + (a.free ? '<span class="pill-free">Free</span>' : (a.priceEur ? a.priceEur + ' €' : '—'))
+        + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
+                        : a.free ? '<span class="pill-free">Free for you</span>'
+                        : (a.priceEur ? a.priceEur + ' €' : '—'))
         + '</td><td>' + (a.reviewCount ? a.peerScore + ' (' + a.reviewCount + ')' : 'no reviews')
         + '</td><td style="text-align:right"><button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button></td></tr>');
       document.getElementById('analysesTable').innerHTML =
