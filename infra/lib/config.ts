@@ -56,7 +56,11 @@ export function stageConfig(app: App): StageConfig {
       `https://${zoneDomain}`,
       'http://localhost:3000',
     ],
-    siteUrl: app.node.tryGetContext('siteUrl') ?? `https://www.${zoneDomain}`,
+    // Every other stage-dependent URL above uses `suffix` and defaults
+    // correctly per stage; this one didn't, and a `stage=test` deploy that
+    // forgot the `-c siteUrl=…` override silently fell back to prod's
+    // domain — baking a prod link into test's emails and checkout redirects.
+    siteUrl: app.node.tryGetContext('siteUrl') ?? (stage === 'prod' ? `https://www.${zoneDomain}` : `https://test.${zoneDomain}`),
     alertEmail: app.node.tryGetContext('alertEmail') ?? 'awswatchdog@valuatum.com',
     secretsPrefix: `/aiequityreports/${stage}`,
     pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
