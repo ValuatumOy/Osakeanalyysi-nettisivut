@@ -71,7 +71,7 @@ async function sendEmail(message, label) {
 // ── Existing report: deliver PDF link ────────────────────────────────────────
 async function sendReportEmail(toEmail, report) {
   const orderLink = report.orderUrl
-    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">This order includes forecast revisions — request one &rarr;</a></p>`
+    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">This order includes report revisions — request one &rarr;</a></p>`
     : '';
 
   await sendEmail({
@@ -136,7 +136,7 @@ async function sendReportRevisedEmail(toEmail, report) {
         <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
           <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">Your report has been updated.</h1>
           <p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>
-          <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Revised forecast, generated ${report.reportDate}</p>
+          <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Revised report, generated ${report.reportDate}</p>
           <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:12px;">
             Download the updated PDF &rarr;
           </a>
@@ -166,7 +166,7 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   const orderLinkBox = meta?.orderUrl
     ? `<div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
          <p style="font-size:13px;color:#8A9590;margin:0;">
-           This order includes forecast revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the forecast.
+           This order includes report revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the report.
          </p>
        </div>`
     : '';

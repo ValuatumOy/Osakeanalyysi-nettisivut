@@ -52,7 +52,7 @@ function freshReportLineItem(company, ticker, pricing, revisions) {
     ? `Fresh AI Equity Report + Revisions - ${company}`
     : `Fresh AI Equity Report - ${company}`;
   const description = revisions
-    ? `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}, plus ${REPORT_REVISIONS_INCLUDED} forecast-revision requests after delivery.`
+    ? `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}, plus ${REPORT_REVISIONS_INCLUDED} report-revision requests after delivery.`
     : `Latest-data report for ${company}${ticker ? ` (${ticker})` : ''}. Delivered by email within about 30 minutes.`;
 
   return {

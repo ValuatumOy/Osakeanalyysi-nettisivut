@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
     // Never trust the client's button state alone — a report only supports
     // revisions when the engine jobId that produced it was recoverable.
     if (revisions && !report.revisable) {
-      return res.status(400).json({ error: 'This report does not support forecast revisions' });
+      return res.status(400).json({ error: 'This report does not support revisions' });
     }
 
     const pricing = await getStripePricing(stripe, revisions ? 'ready-revisions' : 'ready', { bypassCache: true });
@@ -58,7 +58,7 @@ function readyReportLineItem(report, pricing, revisions) {
 
   const name = revisions ? `AI Equity Report + Revisions - ${report.name}` : `AI Equity Report - ${report.name}`;
   const description = revisions
-    ? `${report.ticker} - Full PDF, plus ${REPORT_REVISIONS_INCLUDED} forecast-revision requests after purchase.`
+    ? `${report.ticker} - Full PDF, plus ${REPORT_REVISIONS_INCLUDED} report-revision requests after purchase.`
     : `${report.ticker} - Full PDF with value pool analysis, reverse valuation, risks & financials.`;
 
   return {

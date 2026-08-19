@@ -37,8 +37,8 @@
     const sub = document.getElementById('progressSub');
     const meta = document.getElementById('progressMeta');
     if (order.status === 'REVISING') {
-      title.textContent = 'Updating your forecast…';
-      sub.textContent = 'The report engine is interpreting your request, updating the forecast, and regenerating the report. This usually takes a few minutes.';
+      title.textContent = 'Updating your report…';
+      sub.textContent = 'The report engine is interpreting your request and regenerating the report. This usually takes around 15 minutes.';
     } else {
       title.textContent = 'Preparing your report…';
       sub.textContent = 'This can take a little while. This page updates on its own — no need to refresh.';
@@ -66,7 +66,7 @@
 
     if (remaining > 0) {
       document.getElementById('revisionCount').textContent =
-        remaining + ' of ' + order.revisionsAllowed + ' forecast revisions remaining.';
+        remaining + ' of ' + order.revisionsAllowed + ' report revisions remaining.';
       show('revisionBox');
       hide('revisionExhausted');
     } else if ((order.revisionsAllowed || 0) > 0) {
