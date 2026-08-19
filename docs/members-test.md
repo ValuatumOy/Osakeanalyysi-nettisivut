@@ -142,6 +142,21 @@ deploy rather than expecting an empty one.
 
 ## Known gaps / prod-rollout blockers
 
+- **Nothing merges to `main` until the engine team has deployed the revision
+  feature to production** (decision 19.8.2026). Everything — analyst pages,
+  membership pricing cards, the members UI — lives on `staging` /
+  test.aiequityreports.com until then. This is the gate; the items below are the
+  work that has to be done inside it.
+- **Stripe must be switched to live mode with the same merge.** Every price,
+  product, webhook endpoint and signing secret in `MembersStack` is TEST mode
+  today, and `scripts/stripe-setup-members-test.mjs` only creates test objects.
+  Shipping the pricing cards without this sells subscriptions against a test
+  backend. The live keys are secrets — set them in the stack's environment, do
+  not commit them.
+- **`MembersStack` refuses `stage=prod` and `infra/bin/aiequityreports.ts` only
+  instantiates it for non-prod.** Both guards are deliberate and both have to be
+  lifted in the same change that flips `USE_PROD_MEMBERS` in `members.html`
+  (line 269) from `false` to `true`.
 - **Anyone with a LinkedIn account can spend an engine run.** A `reader` gets a
   free generation with no publish obligation, so nothing is returned for the
   compute. Esa's answer to this was a small joining fee (~5 €) plus at-cost
