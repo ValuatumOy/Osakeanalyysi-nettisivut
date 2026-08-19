@@ -112,14 +112,6 @@
     }
   }
 
-  document.addEventListener('click', function (e) {
-    const chip = e.target.closest('.revision-chip');
-    if (chip) {
-      document.getElementById('revisionText').value = chip.getAttribute('data-fill') || '';
-      document.getElementById('revisionText').focus();
-    }
-  });
-
   document.getElementById('revisionSubmit').addEventListener('click', async function () {
     const textarea = document.getElementById('revisionText');
     const status = document.getElementById('revisionStatus');
