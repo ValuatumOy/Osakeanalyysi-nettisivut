@@ -11,75 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .member-main { background: var(--off-white); min-height: 70vh; padding: 7.5rem 0 5rem; }
-    .member-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
-    .member-header h1 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .env-badge { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: var(--gold-faint); border: 1px solid var(--gold-light); border-radius: 999px; padding: 0.25em 0.9em; }
-
-    .m-card { background: var(--white); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.75rem; box-shadow: 0 1px 2px rgba(26,36,32,0.04); }
-    .m-card + .m-card, .m-section { margin-top: 1.5rem; }
-    .m-offer { list-style: none; margin: 0 0 1.1rem; padding: 0; }
-    .m-offer li { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel);
-      padding: 0.5rem 0 0.5rem 1.1rem; border-top: 1px solid var(--color-border); position: relative; }
-    .m-offer li::before { content: ''; position: absolute; left: 0; top: 1.05rem;
-      width: 4px; height: 4px; border-radius: 50%; background: var(--green); }
-    .m-offer strong { color: var(--charcoal); font-weight: 600; }
-    /* The one thing standing between the analyst and their next read. */
-    .review-open { border-left: 3px solid var(--gold); background: var(--gold-faint);
-      border-radius: 0 10px 10px 0; padding: 1.1rem 1.3rem; }
-    .review-open textarea, .review-open input, .review-open select { background: var(--white); }
-    .review-open .btn-primary { box-shadow: 0 0 0 3px rgba(191,143,63,0.18); }
-    tr.is-open-review td { background: var(--gold-faint); }
-    .a-commit { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel);
-      border-left: 2px solid var(--gold); background: var(--gold-faint);
-      border-radius: 0 8px 8px 0; padding: 0.8rem 1.1rem; margin-bottom: 1rem; }
-    .m-card h2 { font-size: var(--text-lg); font-weight: 650; margin-bottom: 0.35rem; }
-    .m-card .sub { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 1.25rem; }
-
-    .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    @media (max-width: 760px) { .auth-grid { grid-template-columns: 1fr; } }
-    .btn-linkedin { display: inline-flex; align-items: center; gap: 0.6em; background: #0A66C2; color: #fff; border: 1px solid #0A66C2; border-radius: 8px; font-weight: 600; font-size: var(--text-sm); padding: 0.7em 1.4em; text-decoration: none; transition: background .15s; }
-    .btn-linkedin:hover { background: #084d92; }
-    .magic-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .magic-row input { flex: 1 1 220px; border: 1px solid var(--color-border); border-radius: 8px; padding: 0.65em 0.9em; font: inherit; font-size: var(--text-sm); }
-    .magic-row input:focus { outline: 2px solid var(--green-light); border-color: var(--green); }
-
-    .account-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    #accEmail { overflow-wrap: anywhere; font-size: var(--text-md); }
-    .tier-badge { display: inline-block; font-size: var(--text-xs); font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 0.3em 1em; background: var(--green-mist); color: var(--green-deep); }
-    .tier-badge.none { background: var(--off-white); color: var(--gray-steel); }
-    .usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
-    .usage-stat { background: var(--green-faint); border: 1px solid var(--green-mist); border-radius: 10px; padding: 0.9rem 1.1rem; }
-    .usage-stat .val { font-size: var(--text-lg); font-weight: 700; color: var(--green-deep); }
-    .usage-stat .lbl { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.15rem; }
-
-    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
-    .plan { border: 1px solid var(--color-border); border-radius: 12px; padding: 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .plan.highlight { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
-    .plan .name { font-weight: 650; }
-    .plan .price { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; }
-    .plan .price span { font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); }
-    .plan ul { list-style: none; padding: 0; margin: 0 0 0.5rem; font-size: var(--text-sm); color: var(--color-text-muted); }
-    .plan ul li { padding-left: 1.1em; position: relative; margin: 0.25em 0; }
-    .plan ul li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
-    .plan .actions { margin-top: auto; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-    .reports-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
-    .reports-table th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); font-weight: 600; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-border); }
-    .reports-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--color-border); }
-    .reports-table tr:last-child td { border-bottom: none; }
-    .pill-free { color: var(--green-deep); background: var(--green-mist); border-radius: 999px; padding: 0.15em 0.8em; font-size: var(--text-xs); font-weight: 600; }
-    .table-wrap { overflow-x: auto; }
-
-    .notice { border-radius: 10px; padding: 0.8rem 1.1rem; font-size: var(--text-sm); margin-top: 1rem; display: none; }
-    .notice.ok { display: block; background: var(--green-faint); border: 1px solid var(--green-mist); color: var(--green-deep); }
-    .notice.err { display: block; background: #FDF0EE; border: 1px solid #F2C9C2; color: #A2402F; }
-    .muted { color: var(--color-text-muted); font-size: var(--text-sm); }
-    .gen-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem; }
-    .gen-row textarea { flex: 1 1 320px; border: 1px solid var(--color-border); border-radius: 8px; padding: 0.65em 0.9em; font: inherit; font-size: var(--text-sm); min-height: 70px; }
-    [hidden] { display: none !important; }
-  </style>
+  <style>[hidden] { display: none !important; }</style>
 </head>
 <body>
 
@@ -127,174 +59,212 @@
     </div>
   </header>
 
-  <main class="member-main">
-    <div class="container">
-      <div class="member-header">
-        <h1 id="pageTitle">Sign in</h1>
-        <span class="env-badge" id="envBadge">Test environment</span>
-      </div>
-
-      <div id="notice" class="notice"></div>
-
-      <!-- Logged out -->
-      <div id="authView">
-        <div class="auth-grid">
-          <div class="m-card">
-            <h2>Analysts — free</h2>
-            <p class="sub">Sign in with LinkedIn. Every month you get:</p>
-            <ul class="m-offer">
-              <li><strong>10 engine reports</strong> from the catalog — the €20 report as it is sold, 30 days or older.</li>
-              <li><strong>20 analyst analyses</strong> — unlocked one at a time: rate the one you opened and say what it adds, and the next unlocks.</li>
-              <li><strong>1 fresh generation</strong> — free because you publish it, under your own name and LinkedIn profile, with the prompts you used.</li>
-            </ul>
-            <p class="sub">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance.</p>
-            <a id="linkedinBtn" class="btn-linkedin" href="#">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-              Sign in with LinkedIn
-            </a>
-            <p class="muted" style="margin-top:0.9rem;"><a href="analysts.html" style="color:var(--green);">How the analyst programme works →</a></p>
+  <main class="ws-page">
+    <section class="ws-hero">
+      <div class="container">
+        <div class="ws-hero-top">
+          <div>
+            <span class="section-eyebrow section-eyebrow--light">Member area</span>
+            <h1 class="section-headline section-headline--light" id="pageTitle">Sign in</h1>
           </div>
-          <div class="m-card">
-            <h2>Subscribers</h2>
-            <p class="sub">Investor, Investor Plus and Company Coverage plans sign in with an email link — no password. <a href="pricing.html" style="color:var(--green);">See the plans →</a></p>
-            <div class="magic-row">
-              <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-              <button class="btn btn-primary" onclick="magicLink()">Email me a sign-in link</button>
-            </div>
-          </div>
+          <span class="env-badge" id="envBadge">Test environment</span>
         </div>
-      </div>
 
-      <!-- Logged in -->
-      <div id="memberView" hidden>
-        <div class="m-card">
-          <div class="account-row">
-            <div>
-              <h2 id="accEmail">—</h2>
+        <!-- Logged in: who you are and what you have left, on the band itself. -->
+        <div id="identityStrip" hidden>
+          <div class="ws-identity">
+            <div class="ws-identity-who">
+              <span id="accEmail">—</span>
               <span id="tierBadge" class="tier-badge none">—</span>
-              <span id="roleLabel" class="muted"></span>
+              <span id="roleLabel" class="ws-role"></span>
             </div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <button class="btn btn-outline-dark btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
-              <button class="btn btn-outline-dark btn-sm" onclick="logout()">Sign out</button>
+              <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
+              <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
             </div>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
         </div>
-
-        <div class="m-card m-section">
-          <h2>Report library</h2>
-          <p class="sub" id="libraryHint">Ten reports a month from the live public catalog — the €20 engine reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
-          <div class="table-wrap">
-            <table class="reports-table" id="reportsTable"></table>
-          </div>
-        </div>
-
-        <div class="m-card m-section" id="analysesCard" hidden>
-          <h2>Analyst analyses</h2>
-          <p class="sub">Published analyses on top of the engine's own report, best first. <strong>One at a time:</strong> opening an analysis spends one of your twenty monthly reads and locks the next one until you have rated it and written what it adds.</p>
-          <div class="gen-row">
-            <input id="analysesTicker" placeholder="Ticker, e.g. NOKIA.HE" style="flex:0 1 180px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <button class="btn btn-outline-dark btn-sm" onclick="loadAnalyses()">Show analyses</button>
-          </div>
-          <div id="reviewRow" class="review-open" hidden style="margin-top:1rem;">
-            <p class="muted" id="reviewPrompt"></p>
-            <div class="gen-row">
-              <label class="muted" style="flex:0 1 220px;">Rating 1–5 (decimals allowed)
-                <input id="reviewScore" type="number" min="1" max="5" step="0.1" value="4"
-                  style="width:100%; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-              </label>
-              <textarea id="reviewComment" placeholder="What does this add over the base report, or over the other analyses of the same company? (min 40 characters)"></textarea>
-              <button class="btn btn-primary btn-sm" onclick="submitReview()">Submit review</button>
-            </div>
-          </div>
-          <div class="table-wrap" style="margin-top:1rem;">
-            <table class="reports-table" id="analysesTable"></table>
-          </div>
-        </div>
-
-        <div class="m-card m-section" id="genCard" hidden>
-          <h2 id="genTitle">Monthly generation</h2>
-          <p class="sub" id="genSub">Reserve your report generation for this month.</p>
-          <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished analysis on the site under your own name and LinkedIn profile.</p>
-          <div id="genStatus" class="muted"></div>
-          <div class="gen-row" id="reserveRow">
-            <input id="genCompany" placeholder="Company name, e.g. Nokia Oyj" style="flex:1 1 220px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <input id="genTicker" placeholder="Ticker, e.g. NOKIA" style="flex:0 1 130px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Start generation</button>
-          </div>
-          <div id="genProgress" class="muted" style="margin-top:0.75rem;"></div>
-          <div class="gen-row" id="submitRow" hidden>
-            <p class="muted" style="flex:1 1 100%; margin:0;">The revisions you made and the prompts behind them are attached automatically when you publish — you do not retype them here. Set what your analysis costs and how long until it stops costing other members a read.</p>
-            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; flex:1 1 100%;">
-              <label class="muted">Price €
-                <input id="pubPrice" type="number" min="0" step="1" value="0" style="width:90px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
-              </label>
-              <label class="muted">Free to members after (days, max 365)
-                <input id="pubFreeAfter" type="number" min="1" max="365" step="1" value="365" style="width:100px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
-              </label>
-              <button class="btn btn-gold btn-sm" onclick="submitGen()">Publish analysis</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="m-card m-section" id="earningsCard" hidden>
-          <h2>Earnings</h2>
-          <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
-          <div class="table-wrap">
-            <table class="reports-table" id="earningsTable"></table>
-          </div>
-        </div>
-
-        <div class="m-card m-section" id="plansCard">
-          <h2>Plans</h2>
-          <p class="sub">Subscriptions are billed by Stripe. One-off purchases (€20 ready / €50 fresh) remain available on the <a href="reports.html">reports page</a>.</p>
-          <div class="plan-grid">
-            <div class="plan">
-              <div class="name">Investor</div>
-              <div class="price">€19 <span>/ month · €190 / year</span></div>
-              <ul>
-                <li>3 reports per month, 5 on the yearly plan</li>
-                <li>Fresh generations at the €40 member price</li>
-              </ul>
-              <div class="actions">
-                <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
-                <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor','year')">Yearly</button>
-              </div>
-            </div>
-            <div class="plan highlight">
-              <div class="name">Investor Plus</div>
-              <div class="price">€39 <span>/ month · €390 / year</span></div>
-              <ul>
-                <li>10 reports per month, 15 on the yearly plan</li>
-                <li>1 private fresh generation per month</li>
-              </ul>
-              <div class="actions">
-                <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
-                <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor_plus','year')">Yearly</button>
-              </div>
-            </div>
-            <div class="plan">
-              <div class="name">Company Coverage</div>
-              <div class="price">€59 <span>/ year</span></div>
-              <ul>
-                <li>One company of your choice</li>
-                <li>Latest report + 4 updates a year</li>
-              </ul>
-              <div class="actions">
-                <input id="coverageTicker" placeholder="Ticker, e.g. AMD" style="flex:1 1 110px; border:1px solid var(--color-border); border-radius:8px; padding:0.5em 0.8em; font:inherit; font-size:var(--text-xs);">
-                <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
       </div>
-    </div>
+    </section>
+
+    <section class="ws-body">
+      <div class="container">
+        <div id="notice" class="notice"></div>
+
+        <!-- Logged out -->
+        <div id="authView">
+          <div class="auth-grid">
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Analysts — free</h2>
+              <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
+              <ul class="m-offer">
+                <li><strong>10 engine reports</strong> from the catalog — the €20 report as it is sold, 30 days or older.</li>
+                <li><strong>20 analyst analyses</strong> — unlocked one at a time: rate the one you opened and say what it adds, and the next unlocks.</li>
+                <li><strong>1 fresh generation</strong> — free because you publish it, under your own name and LinkedIn profile, with the prompts you used.</li>
+              </ul>
+              <a id="linkedinBtn" class="btn btn-linkedin" href="#">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                Sign in with LinkedIn
+              </a>
+              <p class="muted" style="margin-top:1rem;">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance. <a href="analysts.html">How the analyst programme works →</a></p>
+            </div>
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Subscribers</h2>
+              <p class="muted" style="margin-top:0.5rem; margin-bottom:1.4rem;">Investor, Investor Plus and Company Coverage plans sign in with an email link — no password. <a href="pricing.html">See the plans →</a></p>
+              <div class="form-row">
+                <label class="field"><span>Email address</span>
+                  <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email">
+                </label>
+                <button class="btn btn-primary" onclick="magicLink()">Email me a link</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logged in -->
+        <div id="memberView" hidden>
+
+          <div class="ws-section">
+            <div class="ws-section-head">
+              <h2>Report library</h2>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog — the €20 engine reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+            </div>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="reportsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="analysesCard" hidden>
+            <div class="ws-section-head">
+              <h2>Analyst analyses</h2>
+              <p class="sub">Published analyses on top of the engine's own report, best first. <strong>One at a time:</strong> opening an analysis spends one of your twenty monthly reads and locks the next one until you have rated it and written what it adds.</p>
+            </div>
+
+            <div class="form-row" style="margin-bottom:1.25rem;">
+              <label class="field" style="flex:0 1 200px;"><span>Company</span>
+                <input id="analysesTicker" class="input" placeholder="Ticker, e.g. NOKIA.HE">
+              </label>
+              <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show analyses</button>
+            </div>
+
+            <div id="reviewRow" class="review-open" hidden>
+              <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
+              <div class="form-row">
+                <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
+                  <input id="reviewScore" class="input input--num" type="number" min="1" max="5" step="0.1" value="4">
+                </label>
+                <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
+                  <textarea id="reviewComment" class="input" placeholder="What does this add over the base report, or over the other analyses of the same company? (min 40 characters)"></textarea>
+                </label>
+                <button class="btn btn-gold" onclick="submitReview()">Submit review</button>
+              </div>
+            </div>
+
+            <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+              <div class="table-wrap">
+                <table class="reports-table" id="analysesTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="genCard" hidden>
+            <div class="ws-section-head">
+              <h2 id="genTitle">Monthly generation</h2>
+              <p class="sub" id="genSub">Reserve your report generation for this month.</p>
+            </div>
+            <div class="ws-panel">
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished analysis on the site under your own name and LinkedIn profile.</p>
+              <div id="genStatus" class="muted"></div>
+              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
+                <label class="field"><span>Company</span>
+                  <input id="genCompany" class="input" placeholder="Company name, e.g. Nokia Oyj">
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="genTicker" class="input" placeholder="e.g. NOKIA">
+                </label>
+                <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
+              </div>
+              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
+              <div id="submitRow" hidden style="margin-top:1.1rem;">
+                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish — you do not retype them here. Set what your analysis costs and how long until it stops costing other members a read.</p>
+                <div class="form-row">
+                  <label class="field" style="flex:0 1 130px;"><span>Price €</span>
+                    <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
+                  </label>
+                  <label class="field" style="flex:0 1 210px;"><span>Free to members after (days)</span>
+                    <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
+                  </label>
+                  <button class="btn btn-gold" onclick="submitGen()">Publish analysis</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="earningsCard" hidden>
+            <div class="ws-section-head">
+              <h2>Earnings</h2>
+              <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
+            </div>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="earningsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="plansCard">
+            <div class="ws-section-head">
+              <h2>Plans</h2>
+              <p class="sub">Subscriptions are billed by Stripe. One-off purchases (€20 ready / €50 fresh) remain available on the <a href="reports.html">reports page</a>.</p>
+            </div>
+            <div class="plan-grid">
+              <div class="plan">
+                <div class="name">Investor</div>
+                <div class="price">€19 <span>/ month · €190 / year</span></div>
+                <ul>
+                  <li>3 reports per month, 5 on the yearly plan</li>
+                  <li>Fresh generations at the €40 member price</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan highlight">
+                <div class="name">Investor Plus</div>
+                <div class="price">€39 <span>/ month · €390 / year</span></div>
+                <ul>
+                  <li>10 reports per month, 15 on the yearly plan</li>
+                  <li>1 private fresh generation per month</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor_plus','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan">
+                <div class="name">Company Coverage</div>
+                <div class="price">€59 <span>/ year</span></div>
+                <ul>
+                  <li>One company of your choice</li>
+                  <li>Latest report + 4 updates a year</li>
+                </ul>
+                <div class="actions">
+                  <label class="field" style="flex:1 1 120px;"><span>Ticker</span>
+                    <input id="coverageTicker" class="input" placeholder="e.g. AMD">
+                  </label>
+                  <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -370,6 +340,7 @@
       if (status !== 200) { notice('err', 'Something went wrong (' + status + ') — please reload.'); return; }
       document.getElementById('authView').hidden = true;
       document.getElementById('memberView').hidden = false;
+      document.getElementById('identityStrip').hidden = false;
 
       document.getElementById('accEmail').textContent = data.email || 'Member';
       const badge = document.getElementById('tierBadge');
@@ -549,7 +520,7 @@
           + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
                           : a.free ? '<span class="pill-free">Free for you</span>'
                           : (a.priceEur ? a.priceEur + ' €' : '—'))
-          + '</td><td>' + (a.reviewCount ? a.peerScore + ' (' + a.reviewCount + ')' : 'no reviews')
+          + '</td><td>' + (a.reviewCount ? Number(a.peerScore).toFixed(1) + ' (' + a.reviewCount + ')' : 'no reviews')
           + '</td><td style="text-align:right">' + button + '</td></tr>';
       });
       document.getElementById('analysesTable').innerHTML =
