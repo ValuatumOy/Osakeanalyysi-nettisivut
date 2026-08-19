@@ -123,6 +123,7 @@ function navHtml() {
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -541,6 +542,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html" class="nav-link">Home</a>
         <a href="reports.html" class="nav-link">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="methodology.html" class="nav-link">Methodology</a>
         <a href="about.html" class="nav-link">About</a>
@@ -556,6 +558,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="index.html" class="nav-mobile-link">Home</a>
       <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="about.html" class="nav-mobile-link">About</a>
