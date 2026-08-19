@@ -6,7 +6,10 @@
 (function initNav() {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  nav.classList.add('scrolled');
+  if (!nav.classList.contains('nav--over-hero')) { nav.classList.add('scrolled'); return; }
+  const sync = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
 })();
 
 // ── Mobile menu ─────────────────────────────────────
@@ -610,112 +613,6 @@ function bindReadyReportCheckoutLink(link) {
       checkoutButton.click();
     });
   });
-})();
-
-// ── Live ready-report CTA on generated company pages ──────────────────────────
-// Company pages are static HTML built ahead of time. A report published after
-// the page was built (e.g. a fresh order resold as a ready report) would stay
-// invisible here until the next manual page rebuild, so look the company up in
-// the live catalog and inject the buy/download controls when the page lacks them.
-(function initLiveReadyReportCta() {
-  if (document.getElementById('ready-report')) return; // page already has one
-  var generateBtn = document.querySelector('[data-generate-report][data-ticker]');
-  if (!generateBtn) return; // not a generated company page
-  var ticker = (generateBtn.getAttribute('data-ticker') || '').trim();
-  if (!ticker) return;
-
-  fetch('/api/reports')
-    .then(function (res) { return res.ok ? res.json() : null; })
-    .then(function (data) {
-      var reports = (data && data.reports) || [];
-      var report = reports
-        .filter(function (r) {
-          return r && r.ticker === ticker && r.availability === 'available' && (r.pdfUrl || r.fileName);
-        })
-        .sort(function (a, b) {
-          return String(b.reportDate || '').localeCompare(String(a.reportDate || ''));
-        })[0];
-      if (!report) return;
-
-      var isFree = report.isFree === true || Number(report.price || 0) === 0;
-      var pdfUrl = String(report.pdfUrl || '');
-      var pdfHref = /^https?:\/\//.test(pdfUrl) ? pdfUrl : '/' + pdfUrl.replace(/^\/+/, '');
-      var ctaHref = isFree && pdfUrl ? pdfHref : '/reports.html#report-' + encodeURIComponent(report.id);
-      var ctaText = isFree
-        ? 'Download free report'
-        : 'Buy ready report — €' + Number(report.price || 0).toFixed(2);
-      var dateLabel = report.reportDateLabel || report.reportDate || '';
-      // Prefer the short display name from the page heading ("Nokia"), as the
-      // generator does; data-company carries the full legal name ("Nokia Oyj").
-      var heading = document.querySelector('.company-name');
-      var companyName = (heading && heading.textContent.split(' (')[0].trim())
-        || generateBtn.getAttribute('data-company') || ticker;
-
-      function makeCtaLink(className) {
-        var a = document.createElement('a');
-        a.className = className;
-        a.href = ctaHref;
-        a.textContent = ctaText;
-        if (isFree && pdfUrl) {
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.setAttribute('download', '');
-        } else {
-          bindReadyReportCheckoutLink(a);
-        }
-        return a;
-      }
-
-      var headerActions = document.querySelector('.company-header-actions');
-      if (headerActions) {
-        headerActions.insertBefore(makeCtaLink('btn btn-primary'), headerActions.firstChild);
-      }
-
-      var generateSection = document.getElementById('generate');
-      if (generateSection) {
-        var section = document.createElement('section');
-        section.className = 'report-full-section';
-        section.id = 'ready-report';
-        section.innerHTML =
-          '<div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">' +
-            '<h2 style="color:white; margin-top:0;">' + (isFree ? 'Download the free ' : 'Buy the ready ') + escapeHtml(companyName) + ' report</h2>' +
-            '<p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ' + escapeHtml(companyName) + ' AI equity report is available from ' + escapeHtml(dateLabel) + '. ' +
-              (isFree
-                ? 'Download the ready PDF now for free, or generate a new report below if you want a fresh run with the latest available data.'
-                : 'Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.') + '</p>' +
-            '<div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">' +
-              '<span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ' + escapeHtml(dateLabel) + '</span>' +
-            '</div>' +
-          '</div>';
-        section.querySelector('div > div').insertBefore(
-          makeCtaLink('btn btn-primary btn-lg'),
-          section.querySelector('div > div').firstChild
-        );
-        generateSection.parentNode.insertBefore(section, generateSection);
-        // Pages generated with a ready report place sources before the
-        // ready-report box (and the two-column break lands on the box), so
-        // mirror that order to render identically to a baked page.
-        var sources = document.getElementById('sources');
-        if (sources) section.parentNode.insertBefore(sources, section);
-        var content = document.querySelector('.report-full-content');
-        if (content) content.setAttribute('data-ready-report', 'true');
-      }
-
-      // The baked overview ends with an availability sentence; swap the
-      // "no report yet" copy for the same sentence a baked page would carry.
-      var overviewText = document.querySelector('#overview p');
-      if (overviewText) {
-        overviewText.textContent = overviewText.textContent.replace(
-          /(?:^|(\.\s+))([^.]+?) is covered by Valuatum but does not yet have a published AI equity report\. Generate a fresh report to get [\s\S]*$/,
-          function (m, sep, name) {
-            return (sep || '') + 'A completed ' + name + ' AI equity report is available from ' + dateLabel + '; you can ' +
-              (isFree ? 'download the ready PDF for free' : 'buy the ready PDF') +
-              ' or generate a fresh report with the latest available data.';
-          }
-        );
-      }
-    })
-    .catch(function () { /* catalog unavailable — page just stays as built */ });
 })();
 
 // Keep visible sales-page prices in sync with Stripe product default prices.

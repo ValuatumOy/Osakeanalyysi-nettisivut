@@ -64,6 +64,9 @@
     .table-wrap { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     th { text-align: left; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-steel); padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { color: var(--charcoal); }
+    th.sortable .sort-arrow { display: inline-block; width: 1em; color: var(--green); }
     td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; white-space: nowrap; }
     tr:last-child td { border-bottom: none; }
     td.company { font-weight: 600; }
@@ -141,8 +144,12 @@
       <div class="table-wrap">
         <table>
           <thead><tr>
-            <th>Company</th><th>Ticker</th><th>Report date</th><th>Status</th>
-            <th>Buyers (12&nbsp;mo)</th><th></th>
+            <th class="sortable" data-sort="companyName">Company<span class="sort-arrow"></span></th>
+            <th class="sortable" data-sort="ticker">Ticker<span class="sort-arrow"></span></th>
+            <th class="sortable" data-sort="reportDate">Report date<span class="sort-arrow"></span></th>
+            <th>Status</th>
+            <th class="sortable" data-sort="buyerCount">Buyers (12&nbsp;mo)<span class="sort-arrow"></span></th>
+            <th></th>
           </tr></thead>
           <tbody id="report-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
         </table>
@@ -270,7 +277,49 @@
       return `<span class="badge badge-gray">${esc(report.publicationStatus || '—')}</span>`;
     }
 
+    // ── sorting ──────────────────────────────────────────────────────────────
+    // 'desc' first for dates and buyer counts (newest / most-sold on top),
+    // 'asc' first for text columns.
+    let sortKey = 'reportDate';
+    let sortDir = 'desc';
+    const NUMERIC_COLUMNS = new Set(['buyerCount']);
+    const DESC_FIRST_COLUMNS = new Set(['reportDate', 'buyerCount']);
+
+    function sortReports() {
+      const dir = sortDir === 'asc' ? 1 : -1;
+      reports.sort((a, b) => {
+        if (NUMERIC_COLUMNS.has(sortKey)) return dir * ((a[sortKey] || 0) - (b[sortKey] || 0));
+        const av = String(a[sortKey] || '');
+        const bv = String(b[sortKey] || '');
+        // Rows missing a value sink to the bottom regardless of direction.
+        if (!av || !bv) return !av && !bv ? 0 : (av ? -1 : 1);
+        return dir * av.localeCompare(bv, undefined, { sensitivity: 'base' });
+      });
+    }
+
+    function renderSortArrows() {
+      document.querySelectorAll('th.sortable').forEach((th) => {
+        th.querySelector('.sort-arrow').textContent =
+          th.dataset.sort === sortKey ? (sortDir === 'asc' ? ' ↑' : ' ↓') : '';
+      });
+    }
+
+    document.querySelectorAll('th.sortable').forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (sortKey === key) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortKey = key;
+          sortDir = DESC_FIRST_COLUMNS.has(key) ? 'desc' : 'asc';
+        }
+        renderReports();
+      });
+    });
+
     function renderReports() {
+      sortReports();
+      renderSortArrows();
       const rows = reports.map((report, index) => `
         <tr>
           <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>

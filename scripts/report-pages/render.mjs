@@ -1,42 +1,69 @@
-#!/usr/bin/env node
-// Generates static, indexable per-report landing pages from report-content/*.json + the live catalog API.
-// Free reports expose the full analysis (max SEO surface). Paid reports expose a citable teaser + a buy gate.
-// Run: node scripts/build-report-pages.mjs
+// Renders every catalog-derived byte the sync owns: per-report landing pages
+// (reports/<slug>.html), the baked card grid + ItemList JSON-LD in reports.html, and the
+// sitemap entries for both. Free reports expose the full analysis (max SEO surface); paid
+// reports expose a citable teaser + a buy gate; companies with no live report get a coverage
+// page that keeps the URL and sells generating a fresh report.
+//
+// Each landing page carries two machine-readable meta tags (valuatum-report-id,
+// valuatum-page-mode) so check.mjs can verify a built page against the page-owner rule
+// without re-rendering it.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { fetchLiveCatalog } from './live-catalog.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://www.aiequityreports.com';
-const CONTENT_DIR = path.join(ROOT, 'report-content');
-const OUT_DIR = path.join(ROOT, 'reports');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+export const SITE = 'https://www.aiequityreports.com';
 
-// Reports whose PDF content does not match their catalog identity — do not publish.
-const EXCLUDE = new Set(['nuholdings-02062026']);
-// Starting price for generating a fresh report on a covered-but-not-yet-reported company. Inert for now — no checkout wired up.
+// Starting price for generating a fresh report on a covered-but-not-yet-reported company.
 const NEW_REPORT_PRICE = 50;
 
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = (s) => esc(s);
-const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+export const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
 const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
-// Stable comparison-page slug, order-independent (must match scripts/build-comparison-pages.mjs).
-const cmpStem = (name) => shortName(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const compareSlug = (a, b) => [cmpStem(a), cmpStem(b)].sort().join('-vs-') + '-stock-comparison';
 
-async function loadCatalog() {
-  const byId = {};
-  for (const r of await fetchLiveCatalog()) byId[r.id] = r;
-  return byId;
+export const formatReportDate = (iso) =>
+  new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+/** The generated company-page catalog (js/companyPagesData.js), for card names/descriptions. */
+export function loadCompanyPageCatalog() {
+  const file = path.join(ROOT, 'js', 'companyPagesData.js');
+  if (!fs.existsSync(file)) return [];
+  const src = fs.readFileSync(file, 'utf8');
+  const start = src.indexOf('[');
+  const end = src.lastIndexOf(']');
+  if (start === -1 || end <= start) return [];
+  return JSON.parse(src.slice(start, end + 1));
 }
 
 function pdfHrefOf(cat) {
   if (!cat || !cat.pdfUrl) return null;
   return /^https?:\/\//.test(cat.pdfUrl) ? cat.pdfUrl : '/' + String(cat.pdfUrl).replace(/^\//, '');
+}
+
+/**
+ * A company whose reports have all left the catalog degrades to a coverage page: the URL and
+ * its search ranking survive, the stale figures and the dead unlock link go. Company identity
+ * comes from the newest historical content file — the one place it survives — but none of the
+ * analysis does.
+ */
+export function coverageDocFrom(doc) {
+  return {
+    id: doc.id,
+    slug: doc.slug,
+    companyName: doc.companyName,
+    ticker: doc.ticker,
+    exchange: doc.exchange,
+    country: doc.country,
+    sector: doc.sector,
+    currency: doc.currency,
+    reportDate: doc.reportDate,
+    headline: {},
+    ...(doc.profile ? { profile: doc.profile } : {}),
+  };
 }
 
 function metaDescription(d) {
@@ -118,7 +145,7 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/index.html" class="nav-link">Home</a>
-        <a href="/reports.html" class="nav-link" style="color:var(--green);">Reports</a>
+        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/methodology.html" class="nav-link">Methodology</a>
         <a href="/about.html" class="nav-link">About</a>
@@ -189,6 +216,7 @@ function metricsBand(h) {
     ['Market cap', esc(h.marketCap), 'shares × price'],
     ['Enterprise value', esc(h.enterpriseValue), 'mcap + net debt'],
   ].filter((c) => c && c[1] && c[1] !== 'undefined' && !/>undefined</.test(c[1]));
+  if (!cells.length) return '';
   return `<div class="cp-grid">${cells.map(([l, v, s]) =>
     `<div class="cp-cell"><span class="cp-l">${esc(l)}</span><span class="cp-v">${v}</span>${s ? `<span class="cp-sub">${esc(s)}</span>` : ''}</div>`).join('')}</div>`;
 }
@@ -370,9 +398,14 @@ function lockedSection(title, desc, teaser, ctaLabel, reportId) {
 }
 
 // ── page template ───────────────────────────────────────────────────────────
-function renderPage(d, cat, all) {
+/**
+ * One landing page. `cat` is the live catalog entry of the page-owner report, or null for a
+ * coverage page. `all` is every company's page doc, for the related-reports chips.
+ */
+export function renderPage(d, cat, all) {
   const isFree = !!cat?.isFree;
   const hasReport = !!(d.headline && d.headline.recommendation);
+  const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
   const url = `${SITE}/reports/${d.slug}.html`;
   const desc = metaDescription(d);
   const sn = shortName(d.companyName);
@@ -396,14 +429,18 @@ function renderPage(d, cat, all) {
           <p>${esc(overviewIntro(d))}</p>
         </section>`);
 
-  // Key metrics / multiples (public facts — the hook)
-  sections.push(`
+  // Key metrics / multiples (public facts — the hook). A degraded coverage page has none.
+  const metrics = metricsBand(d.headline || {});
+  const multiples = multiplesGrid(d.multiples);
+  if (metrics || multiples || d.priceStats) {
+    sections.push(`
         <section class="report-full-section" id="metrics">
           <h2>Key metrics &amp; valuation multiples</h2>
-          ${metricsBand(d.headline || {})}
-          ${multiplesGrid(d.multiples)}
+          ${metrics}
+          ${multiples}
           ${d.priceStats ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:1rem;">52-week range ${esc(d.priceStats.week52Low)} – ${esc(d.priceStats.week52High)} · 1-year change ${esc(d.priceStats.oneYearChange)} · 3-year change ${esc(d.priceStats.threeYearChange)}.</p>` : ''}
         </section>`);
+  }
 
   // Company profile (public, SEO) — "what the company does", when the content has it.
   if (d.profile) {
@@ -569,6 +606,8 @@ function renderPage(d, cat, all) {
   <meta name="description" content="${attr(desc)}">
   <link rel="canonical" href="${url}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="valuatum-report-id" content="${attr(hasReport ? d.id : '')}">
+  <meta name="valuatum-page-mode" content="${attr(mode)}">
   <meta property="og:title" content="${attr(title)}">
   <meta property="og:description" content="${attr(desc)}">
   <meta property="og:type" content="article">
@@ -626,7 +665,7 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            ${hasReport ? `<a href="/index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a report</a>` : ''}
+            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report</a>` : ''}
           </div>
         </div>
       </div>
@@ -646,37 +685,133 @@ ${footerHtml()}
 `;
 }
 
-// ── run ─────────────────────────────────────────────────────────────────────
-const catalog = await loadCatalog();
-// Generate one page per LIVE catalog entry that has extracted content.
-const docs = [];
-for (const [id, cat] of Object.entries(catalog)) {
-  if (EXCLUDE.has(id)) { console.log(`skip   ${id} (excluded — content/identity mismatch)`); continue; }
-  if (cat.availability && cat.availability !== 'available') { console.log(`skip   ${id} (availability=${cat.availability})`); continue; }
-  const cf = path.join(CONTENT_DIR, `${id}.json`);
-  if (!fs.existsSync(cf)) { console.log(`skip   ${id} (no extracted content yet)`); continue; }
-  const d = JSON.parse(fs.readFileSync(cf, 'utf8'));
-  docs.push({ d, cat });
-}
-const all = docs.map(x => x.d);
-fs.mkdirSync(OUT_DIR, { recursive: true });
-const written = [];
-const slugMap = {};
-for (const { d, cat } of docs) {
-  const html = renderPage(d, cat, all);
-  fs.writeFileSync(path.join(OUT_DIR, `${d.slug}.html`), html);
-  written.push({ slug: d.slug, free: !!cat?.isFree });
-  slugMap[d.id] = d.slug;
-  console.log(`wrote  reports/${d.slug}.html  (${cat?.isFree ? 'free/full' : 'paid/teaser'})`);
+// ── reports.html listing ────────────────────────────────────────────────────
+const CARDS_BEGIN = '<!-- BEGIN report-cards — auto-generated by scripts/report-pages/sync.mjs; do not edit by hand -->';
+const CARDS_END = '<!-- END report-cards -->';
+const ITEMLIST_BEGIN = '<!-- BEGIN report-itemlist -->';
+const ITEMLIST_END = '<!-- END report-itemlist -->';
+
+/**
+ * One card per company, page owners only, newest first — the baked replacement for the old
+ * client-side buildReadyReports(). Markup matches the card the browser used to build, plus
+ * data attributes the (much thinner) client script filters and sorts on.
+ */
+export function renderCards(companies, companyPageCatalog) {
+  const byTicker = new Map();
+  for (const c of companyPageCatalog) {
+    const key = String(c.ticker || '').trim().toLowerCase();
+    if (key && !byTicker.has(key)) byTicker.set(key, c);
+  }
+
+  const owners = [...companies.values()]
+    .filter((c) => c.owner)
+    .sort((a, b) => String(b.owner.cat.reportDateIso || b.owner.cat.reportDate || '')
+      .localeCompare(String(a.owner.cat.reportDateIso || a.owner.cat.reportDate || '')));
+
+  const cards = owners.map(({ owner, slug }) => {
+    const { doc, cat } = owner;
+    const company = byTicker.get(String(cat.ticker || doc.ticker || '').trim().toLowerCase()) || null;
+    const isFree = !!cat.isFree;
+    const pageUrl = `reports/${slug}.html`;
+    const name = company?.name || cat.companyName || doc.companyName;
+    const ticker = company?.ticker || cat.ticker || doc.ticker;
+    const exchange = company?.exchange || cat.exchange || doc.exchange;
+    const sector = cat.sector || doc.sector || '';
+    const dateIso = String(cat.reportDateIso || cat.reportDate || doc.reportDate).slice(0, 10);
+    const description = company?.description || cat.description || '';
+    const tags = (cat.tags || []).slice(0, 4).map((t) => `<span class="rc-tag">${esc(t)}</span>`).join('');
+    const pdfUrl = pdfHrefOf(cat) || '';
+    const price = isFree ? 'Free' : `€${Number(cat.price || 20).toFixed(0)}`;
+    const primaryCta = isFree
+      ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>`
+      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}">Buy ready report</button>`;
+    return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
+          <div>
+            <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>
+            <h3 class="rc-company-name"><a href="/${attr(pageUrl)}">${esc(name)}</a></h3>
+            <div class="rc-company-meta"><span class="rc-ticker">${esc(ticker)}</span><span>·</span><span>${esc(exchange)}</span><span>·</span><span>${esc(sector)}</span></div>
+            <p class="rc-desc">${esc(description)}</p>
+            <div class="rc-tags">${tags}</div>
+          </div>
+          <div class="rc-actions">
+            <div><div class="rc-price">${esc(price)}</div><div class="rc-price-note">${isFree ? 'Instant PDF download' : 'Existing PDF report'}</div></div>
+            ${primaryCta}
+            <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report</button>
+            <a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/${attr(pageUrl)}">Open report page</a>
+          </div>
+        </article>`;
+  });
+
+  const itemList = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Valuatum AI equity reports',
+    numberOfItems: owners.length,
+    itemListElement: owners.map(({ owner, slug }, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${shortName(owner.doc.companyName)} (${owner.doc.ticker}) AI Equity Report`,
+      url: `${SITE}/reports/${slug}.html`,
+    })),
+  }, null, 2);
+
+  return { cardsHtml: cards.join('\n        '), itemListJsonLd: itemList, count: owners.length };
 }
 
-// Emit id->slug map for the JS catalog to deep-link cards to landing pages.
-fs.writeFileSync(path.join(ROOT, 'js', 'reportSlugs.js'),
-  `// Auto-generated by scripts/build-report-pages.mjs — maps report id -> landing-page slug.\nwindow.REPORT_SLUGS = ${JSON.stringify(slugMap, null, 2)};\n`);
+function replaceBetween(html, begin, end, replacement, file) {
+  const from = html.indexOf(begin);
+  const to = html.indexOf(end);
+  if (from === -1 || to === -1 || to < from) {
+    throw new Error(`${file}: expected the ${begin.slice(0, 40)}… / ${end} markers.`);
+  }
+  return html.slice(0, from + begin.length) + '\n        ' + replacement + '\n        ' + html.slice(to);
+}
 
-// Emit sitemap fragment for the report pages
-const today = '2026-06-08';
-const frag = written.map(w =>
-  `  <url>\n    <loc>${SITE}/reports/${w.slug}.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`).join('\n');
-fs.writeFileSync(path.join(ROOT, 'scripts', 'sitemap-fragment.xml'), frag + '\n');
-console.log(`\n${written.length} pages written. Slug map -> js/reportSlugs.js. Sitemap fragment -> scripts/sitemap-fragment.xml`);
+/** Replace the marked card-grid and ItemList JSON-LD regions of reports.html. */
+export function injectListing(html, { cardsHtml, itemListJsonLd }) {
+  let out = replaceBetween(html, CARDS_BEGIN, CARDS_END, cardsHtml, 'reports.html');
+  out = replaceBetween(
+    out,
+    ITEMLIST_BEGIN,
+    ITEMLIST_END,
+    `<script type="application/ld+json">\n${itemListJsonLd}\n  </script>`,
+    'reports.html',
+  );
+  return out;
+}
+
+/** The baked cards currently in reports.html, parsed for the guard. */
+export function parseListingCards(html) {
+  const from = html.indexOf(CARDS_BEGIN);
+  const to = html.indexOf(CARDS_END);
+  if (from === -1 || to === -1) return null;
+  const region = html.slice(from, to);
+  const cards = [];
+  for (const m of region.matchAll(/<article class="report-card"[^>]*>/g)) {
+    const tag = m[0];
+    const get = (name) => (tag.match(new RegExp(`${name}="([^"]*)"`)) || [])[1] ?? '';
+    cards.push({
+      id: get('id').replace(/^report-/, ''),
+      pageUrl: get('data-page-url'),
+      free: get('data-free') === '1',
+      date: get('data-date'),
+    });
+  }
+  return cards;
+}
+
+// ── sitemap ─────────────────────────────────────────────────────────────────
+/**
+ * Upsert one <url> block in sitemap.xml. Passing lastmod=null keeps the existing lastmod (or
+ * stamps today when the block is new) so an unchanged page never dirties the sitemap.
+ */
+export function upsertSitemapEntry(xml, loc, lastmod, today) {
+  const escapedLoc = loc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const blockRe = new RegExp(`  <url>\\s*<loc>${escapedLoc}</loc>[\\s\\S]*?</url>\\n`, '');
+  const existing = xml.match(blockRe);
+  const currentLastmod = existing ? (existing[0].match(/<lastmod>([^<]*)<\/lastmod>/) || [])[1] : null;
+  const stamp = lastmod || currentLastmod || today;
+  const block = `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${stamp}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
+  if (existing) return xml.replace(blockRe, block);
+  return xml.replace(/<\/urlset>/, `${block}</urlset>`);
+}

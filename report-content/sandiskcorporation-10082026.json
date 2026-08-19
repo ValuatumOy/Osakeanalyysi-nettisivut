@@ -1,0 +1,768 @@
+{
+  "id": "sandiskcorporation-10082026",
+  "slug": "sandisk-equity-report",
+  "companyName": "Sandisk Corporation",
+  "ticker": "SNDK",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Computer Hardware",
+  "currency": "USD",
+  "reportDate": "2026-08-10",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "1,212.21 USD",
+    "targetPrice": "1,382.70 USD",
+    "impliedUpside": "+14.1%",
+    "marketCap": "USD 179.5 bn",
+    "enterpriseValue": "USD 164.6 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2027E",
+      "value": "14.4x"
+    },
+    {
+      "label": "EV/EBITDA 2027E",
+      "value": "11.3x"
+    },
+    {
+      "label": "FCF Yield 2027E",
+      "value": "5.6%"
+    },
+    {
+      "label": "Dividend Yield 2027E",
+      "value": "—"
+    },
+    {
+      "label": "Net Debt/EBITDA 2027E",
+      "value": "-1.0x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "2,354.39 USD",
+    "week52Low": "42.82 USD",
+    "oneYearChange": "+2,633.9%",
+    "threeYearChange": "+3,267.3%"
+  },
+  "summary": [
+    "Sandisk Corporation (SNDK, NASDAQ Global Select) develops, manufactures and sells NAND flash-based data-storage devices for Cloud/Datacenter, Client/Edge and Consumer customers. BUY is assigned in this Valuatum equity research report dated 10 August 2026, with a 12-month target price of 1,382.70 USD against a current price of 1,212.21 USD, implying +14.1% upside. Market capitalisation is USD 179.5 bn and enterprise value is USD 164.6 bn, supported by USD 14,890m of net cash. The investment case depends on AI-led enterprise SSD pricing, BiCS10 execution and Kioxia joint-venture capital efficiency.",
+    "The central tension is whether FY2027 EBIT margins near 60% represent a structural change in NAND economics or peak-cycle earnings. Cloud carries 32.0% of enterprise value, or USD 52,680m, against 13.1% of FY2025 revenue, while Consumer carries 22.0% of enterprise value, or USD 36,218m, against 30.8% of revenue. Client is 46.0% of enterprise value, or USD 75,728m, against 56.1% of revenue. Group valuation is 11.3x EV/EBITDA and 14.4x P/E on FY2027 estimates, below the 22.1x peer EV/EBITDA median but above trough-cycle valuations.",
+    "The target price combines a 48% EV/EBITDA weighting at 12.0x FY2027 EBITDA of USD 14,543m, a 32% P/E weighting at 15.0x FY2027 EPS of 84.23 USD, and a 20% ROE/P/BV scatter weighting at 6.5x average forecast BVPS of 281.6 USD. The scenario bridge gives Bear 505.71 USD per share and -58.3%, Base 1,212.22 USD and 0.0%, and Bull 1,585.86 USD and +30.8%. BUY therefore requires sustained hyperscaler demand and supply discipline rather than a return to historical NAND margins."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "AI pricing power",
+      "metric": "$14,457m",
+      "text": "Group EBIT rose from negative USD 1,377m in FY2025 to USD 12,389m in FY2026 on revenue of USD 20,248m. Consensus forecasts EBIT of USD 14,457m on revenue of USD 24,298m in FY2027, supporting the 11.4x FY2027 EV/EBIT multiple if AI enterprise SSD pricing remains durable."
+    },
+    {
+      "num": "02",
+      "title": "Cloud share capture",
+      "metric": "15% share",
+      "text": "Cloud/Datacenter must retain a 15% share of the roughly USD 70,000m enterprise SSD market and execute the 332-layer BiCS10 ramp. That implies revenue of USD 10,500m and EBIT of USD 5,260m at a 50.1% margin, broadly matching its USD 52,680m EV allocation."
+    },
+    {
+      "num": "03",
+      "title": "JV capital efficiency",
+      "metric": "12.0x EV/EBITDA",
+      "text": "Operating cash flow of USD 10,720m against gross capex of USD 653m highlights the Kioxia joint venture's capital efficiency. That cash conversion supports the selected 12.0x EV/EBITDA multiple and the 1,382.70 USD target, although faster equipment upgrades could erode free-cash-flow conversion."
+    }
+  ],
+  "thesisBreaker": "Simultaneous 2027-28 capacity additions from Kioxia's K2 fab and Samsung's Korean expansion, triggering a 30% ASP decline, would push EV toward the bear case.",
+  "valuePools": [
+    {
+      "name": "Client",
+      "share": "46.0% · USD 75,728m",
+      "economics": "Revenue USD 4,127m (56.1%) · EBIT USD -773m (-6.2%) · EV USD 75,728m (46.0%)",
+      "text": "Client / Edge supplies embedded storage and client SSDs to PC, mobile, gaming and automotive OEMs, providing the volume anchor and keeping joint-venture fabs utilised. Its USD 4,127m of FY2025 revenue is 56.1% of group revenue, while model-estimate EBIT is negative USD 773m, yet the pool receives USD 75,728m, or 46.0% of EV. The bridge requires revenue of USD 13,500m, a 55.6% share of FY2027 group revenue, and a 56% margin to produce EBIT of USD 7,560m at a 10x multiple. That margin is historically unprecedented outside extreme supply shortages. AI PCs and premium smartphones may lift storage tiers from 256GB to 1TB, while design wins and OEM integration support sticky volumes. OEM price concessions, Samsung, SK Hynix, Micron and Kioxia competition, and elastic demand leave the allocation highly exposed to cycle reversion."
+    },
+    {
+      "name": "Cloud",
+      "share": "32.0% · USD 52,680m",
+      "economics": "Revenue USD 960m (13.1%) · EBIT USD -180m (-1.5%) · EV USD 52,680m (32.0%)",
+      "text": "Cloud / Datacenter is valued as the principal AI-memory opportunity. FY2025 revenue of USD 960m represents 13.1% of group revenue and model-estimate EBIT is negative USD 180m, but the allocation is USD 52,680m, or 32.0% of EV. The bridge requires a 15% share of the roughly USD 70,000m enterprise SSD market, producing revenue of USD 10,500m and EBIT of USD 5,260m at a 50.1% margin. The requirement is effectively at parity with the USD 5,268m required EBIT. Hyperscaler demand for 30TB to 256TB NVMe drives, the Kioxia manufacturing JV and a 59% BiCS10 bit-density improvement support the case. TrendForce pricing, 10–15% share retention and BiCS10 yield execution are the decisive evidence; Samsung and SK Hynix capacity expansion could compress margins."
+    },
+    {
+      "name": "Consumer",
+      "share": "22.0% · USD 36,218m",
+      "economics": "Revenue USD 2,268m (30.8%) · EBIT USD -424m (-3.4%) · EV USD 36,218m (22.0%)",
+      "text": "Consumer covers retail SD cards, USB drives and branded external SSDs. Revenue of USD 2,268m represents 30.8% of group revenue, while model-estimate EBIT is negative USD 424m and the EV allocation is USD 36,218m, or 22.0% of group EV. The pool is underweighted because demand is elastic and private-label and Chinese entrants constrain the SanDisk brand premium. Retail storage remains useful for absorbing lower-binned NAND and maintaining factory utilisation, but its terminal growth and through-cycle margins are structurally below Cloud and Client. A 1TB retail NVMe SSD reaching roughly USD 120 by 2026 illustrates the pricing pressure. Deferred upgrades, lower-capacity purchases and commodity pass-through limit the scope for multiple expansion."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how the valuation changes with the duration of the hyperscaler capex cycle and oligopoly pricing discipline. The primary swing factor is whether new Kioxia, Samsung and other capacity reaches the market before AI inference demand absorbs it. A traditional NAND glut and 30% ASP decline would largely eliminate operating profit, while sustained tight capacity permits elevated pricing across Cloud, Client and Consumer. These are operating boundary cases rather than probability-weighted inputs; the 1,382.70 USD target sits between the Base and Bull outcomes.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "28,000",
+          "EBITDA": "18,000",
+          "Margin": "64.2%",
+          "Multiple": "12.2x",
+          "EV": "219,960",
+          "Equity": "234,850"
+        },
+        "impliedValueOrUpside": "1,585.86 USD / sh · +30.8%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "24,298",
+          "EBITDA": "14,543",
+          "Margin": "59.9%",
+          "Multiple": "11.3x",
+          "EV": "164,627",
+          "Equity": "179,517"
+        },
+        "impliedValueOrUpside": "1,212.22 USD / sh · 0.0%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "24,000",
+          "EBITDA": "4,800",
+          "Margin": "20.0%",
+          "Multiple": "12.5x",
+          "EV": "60,000",
+          "Equity": "74,890"
+        },
+        "impliedValueOrUpside": "505.71 USD / sh · -58.3%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Sandisk makes NAND flash storage and serves three economically different channels: Cloud/Datacenter enterprise SSDs, Client/Edge OEM solutions and Consumer retail products. It reports as one segment, so the division split is an analytical fallback based on FY2025 revenue shares and adjusted for current-cycle margin shifts. Cloud receives 32.0% of EV, or USD 52,680m, despite revenue of USD 960m and negative USD 180m of model-estimate EBIT. The allocation assumes AI inference and agentic workloads keep enterprise SSD capacity tight, allowing 15% share of a roughly USD 70,000m market and EBIT of USD 5,260m. Client receives 46.0% of EV, or USD 75,728m, against revenue of USD 4,127m and negative USD 773m of EBIT. It supplies the volume base, but the USD 13,500m revenue and 56% margin required by the bridge are historically exceptional for OEM hardware. Consumer receives 22.0% of EV, or USD 36,218m, against revenue of USD 2,268m and negative USD 424m of EBIT. Its commodity pricing and elastic retail demand explain the discount. Group EBIT reached USD 12,389m on revenue of USD 20,248m in FY2026, with forward EBIT margins remaining near 60%. BUY rests on that margin holding as BiCS10 improves density by 59%."
+    },
+    {
+      "heading": "Valuation bridge and required execution",
+      "text": "At EV of USD 164,626m, Sandisk is valued at 11.4x FY2027 estimated EBIT of USD 14,457m. Applying that multiple to current earnings produces the quoted EV, so the bridge leaves the valuation resting on future execution rather than current disclosed end-market profitability. Historical NAND manufacturers with 60% operating margins traded at 3x–5x EBIT because earnings were expected to fall; Sandisk's 11.4x multiple instead assumes AI demand has reduced boom-and-bust volatility. EV bridges to market capitalisation of USD 179,516m through net cash of USD 14,890m, creating balance-sheet support but not protection against earnings normalisation. The target price uses 48% EV/EBITDA at 12.0x FY2027 EBITDA, implying 1,278.9 USD per share; 32% P/E at 15.0x FY2027 EPS of 84.23 USD, implying 1,263.5 USD; and 20% ROE/P/BV scatter at 6.5x average forecast BVPS of 281.6 USD, implying 1,822.6 USD. The weighted result is 1,382.70 USD. The peer median EV/EBITDA is 22.1x, but Sandisk's 11.3x multiple carries a cyclicality discount that reflects the market's reluctance to assign the peer multiple. Its forward multiple is only modestly above its 10.4x normalised historical average."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The Bull outcome of 1,585.86 USD per share, or +30.8%, requires AI inference to absorb enough wafer capacity that Client and Consumer remain undersupplied while Cloud retains hyperscaler volumes. BiCS10 must move from sampling to full-volume production without yield disruption, and Samsung, SK Hynix and Kioxia must preserve pricing discipline. The Base outcome of 1,212.22 USD per share, or 0.0%, requires capacity to remain tight enough for elevated pricing to persist across OEM and retail channels. The Bear outcome of 505.71 USD per share, or -58.3%, requires Kioxia's Kitakami K2 fab and Samsung's South Korean expansions to add substantial 300-plus-layer supply in 2027/2028, creating a memory glut. TrendForce enterprise SSD contract prices, BiCS10 yield data, competitor capex announcements and PC and mobile shipments provide early signals. The central debate is whether AI demand has structurally changed NAND profitability or merely extended a peak memory cycle. The balance of evidence supports BUY because current demand, net cash of USD 14,890m and Kioxia capital efficiency support the target, but the downside is severe if supply discipline fails."
+    }
+  ],
+  "risks": [
+    "Breakdown in oligopoly discipline (Client): aggressive capacity aimed at market share could trigger a price war and decimate 60% EBIT margins, with aggressive capex as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Operational integration in Kioxia JV (Cloud): low yields during the CBA architecture transition could prevent cost-per-bit reductions, with yield delay as the early warning - HIGH impact and structural.",
+    "OEM pushback on elevated NAND pricing (Client): customers could accept lower margins or throttle base storage capacities, with throttled capacities as the early warning - MEDIUM impact and manageable.",
+    "Consumer retail price elasticity (Consumer): extreme price increases could defer upgrades or shift buyers to lower capacities, with deferred upgrades as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "TrendForce enterprise SSD contract prices (near-term, Cloud): quarterly pricing data would validate whether enterprise SSD ASPs and EBIT margins remain supported.",
+    "Samsung / SK Hynix capex announcements (near-term, Consumer): next-12-month supply decisions would test whether the NAND super-cycle multiple can persist.",
+    "PC and mobile unit shipments (near-term, Client): monthly and quarterly volumes would determine whether Client can absorb production and sustain revenue growth.",
+    "BiCS10 332-layer volume ramp (medium-term, Cloud): H2 2026 to H1 2027 yield execution would validate the 59% bit-cost reduction."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2024",
+        "2025",
+        "2026",
+        "2027 E",
+        "2028 E",
+        "2029 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "6,663",
+            "7,355",
+            "20,248",
+            "24,298",
+            "27,213",
+            "29,380"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "-244",
+            "-1,214",
+            "12,389",
+            "14,543",
+            "15,784",
+            "16,747"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "-3.7%",
+            "-16.5%",
+            "61.2%",
+            "59.9%",
+            "58.0%",
+            "57.0%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-224",
+            "-163",
+            "—",
+            "-85",
+            "-136",
+            "-147"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "-468",
+            "-1,377",
+            "12,389",
+            "14,457",
+            "15,648",
+            "16,600"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "-7.0%",
+            "-18.7%",
+            "61.2%",
+            "59.5%",
+            "57.5%",
+            "56.5%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-35",
+            "-102",
+            "628",
+            "550",
+            "500",
+            "450"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-503",
+            "-1,479",
+            "13,017",
+            "15,007",
+            "16,148",
+            "17,050"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-672",
+            "-1,641",
+            "11,433",
+            "12,382",
+            "13,334",
+            "14,068"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-4.7",
+            "-11.3",
+            "77.8",
+            "84.2",
+            "90.7",
+            "95.7"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2024",
+        "2025",
+        "2026",
+        "2027 E",
+        "2028 E",
+        "2029 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "970",
+            "619",
+            "674",
+            "1,241",
+            "1,390",
+            "1,501"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "7,207",
+            "4,999",
+            "4,994",
+            "4,994",
+            "4,994",
+            "4,994"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "9,958",
+            "7,841",
+            "9,661",
+            "10,228",
+            "10,377",
+            "10,488"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,955",
+            "2,079",
+            "2,698",
+            "4,508",
+            "5,049",
+            "5,451"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,265",
+            "1,526",
+            "5,320",
+            "5,591",
+            "6,191",
+            "6,637"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "328",
+            "1,481",
+            "4,762",
+            "5,427",
+            "6,078",
+            "6,562"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "3,548",
+            "5,086",
+            "12,780",
+            "24,989",
+            "38,447",
+            "52,607"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "13,506",
+            "12,985",
+            "22,507",
+            "35,284",
+            "48,891",
+            "63,162"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "11,082",
+            "9,216",
+            "15,736",
+            "28,118",
+            "41,452",
+            "55,520"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "—",
+            "1,829",
+            "393",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "814",
+            "20",
+            "—",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "115",
+            "2,132",
+            "1,029",
+            "636",
+            "636",
+            "636"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,123",
+            "1,427",
+            "5,581",
+            "6,369",
+            "6,642",
+            "6,844"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "13,506",
+            "12,985",
+            "22,507",
+            "35,284",
+            "48,891",
+            "63,162"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "657",
+            "561",
+            "-4,369",
+            "-14,890",
+            "-27,207",
+            "-40,519"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "11,568",
+            "9,584",
+            "11,367",
+            "13,228",
+            "14,245",
+            "15,001"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "82.1%",
+            "71.0%",
+            "69.9%",
+            "79.7%",
+            "84.8%",
+            "87.9%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "5.9%",
+            "6.1%",
+            "-27.8%",
+            "-53.0%",
+            "-65.6%",
+            "-73.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-2.7x",
+            "-0.5x",
+            "-0.4x",
+            "-1.0x",
+            "-1.7x",
+            "-2.4x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "3.6",
+            "2.3",
+            "3.9",
+            "5.8",
+            "7.7"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2024",
+        "2025",
+        "2026",
+        "2027 E",
+        "2028 E",
+        "2029 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "-506",
+            "-1,765",
+            "11,194",
+            "11,174",
+            "12,602",
+            "13,569"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "-444",
+            "-1,708",
+            "10,778",
+            "10,720",
+            "12,189",
+            "13,198"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "58",
+            "287",
+            "239",
+            "1,293",
+            "868",
+            "645"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-238",
+            "-1,954",
+            "1,820",
+            "653",
+            "285",
+            "258"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "238",
+            "1,954",
+            "-1,820",
+            "-653",
+            "-285",
+            "-258"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-744",
+            "-3,719",
+            "9,374",
+            "10,521",
+            "12,317",
+            "13,312"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum definition)",
+          "values": [
+            "-197",
+            "434",
+            "9,291",
+            "10,067",
+            "11,904",
+            "12,941"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-197",
+            "434",
+            "9,291",
+            "10,067",
+            "11,904",
+            "12,941"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "289",
+            "1,020",
+            "-6,229",
+            "-393",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "21",
+            "1,209",
+            "3,145",
+            "10,128",
+            "12,317",
+            "13,312"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2027"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "14.4x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "11.3x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "11.4x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "17.7x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "6.4x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-1.0x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Sandisk Corporation a buy in 2026?",
+      "a": "Yes. Sandisk Corporation is rated BUY with a 12-month target price of 1,382.70 USD versus 1,212.21 USD currently, implying +14.1% upside. The case depends on FY2027 EBIT of USD 14,457m, Cloud/Datacenter retaining 15% of the roughly USD 70,000m enterprise SSD market, successful 332-layer BiCS10 execution and net cash of USD 14,890m. The principal risk is a 30% ASP decline caused by simultaneous competitor capacity additions."
+    },
+    {
+      "q": "What is Sandisk Corporation's price target?",
+      "a": "Sandisk Corporation's 12-month fundamental price target is 1,382.70 USD. The bridge weights EV/EBITDA at 48%, using 12.0x FY2027 EBITDA of USD 14,543m; P/E at 32%, using 15.0x FY2027 EPS of 84.23 USD; and an ROE/P/BV scatter method at 20%, using 6.5x average forecast BVPS of 281.6 USD. The resulting weighted target is above the current price of 1,212.21 USD by +14.1%."
+    },
+    {
+      "q": "Why is Sandisk Corporation rated BUY?",
+      "a": "Sandisk Corporation is rated BUY because AI-driven enterprise SSD pricing lifted EBIT from negative USD 1,377m in FY2025 to USD 12,389m in FY2026, while FY2027 EBIT is forecast at USD 14,457m on revenue of USD 24,298m. Cloud receives 32.0% of EV and the Kioxia joint venture supports low capital intensity. The rating remains conditional: a NAND glut, 30% ASP decline or BiCS10 yield failure would materially weaken valuation."
+    },
+    {
+      "q": "Is Sandisk Corporation overvalued in 2027?",
+      "a": "Sandisk Corporation is valued at 11.3x FY2027 EV/EBITDA and 11.4x FY2027 EBIT, below the 22.1x peer median but above the sub-1x trough multiples seen in FY2023–2025. The stock is not clearly overvalued if roughly 60% EBIT margins remain sustainable, supported by AI demand and supply discipline. If margins normalise to 20%, EBIT could fall to USD 4,800m and the Bear value is 505.71 USD per share."
+    },
+    {
+      "q": "What is Sandisk Corporation's bear and bull case?",
+      "a": "The Bear case is 505.71 USD per share, or -58.3%, based on revenue of USD 24,000m, EBITDA of USD 4,800m and a 20.0% margin after new fab capacity creates a memory glut. The Base case is 1,212.22 USD per share, or 0.0%. The Bull case is 1,585.86 USD per share, or +30.8%, requiring revenue of USD 28,000m, EBITDA of USD 18,000m and sustained AI-led capacity tightness."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Sandisk Corporation report dated 10 August 2026 (the value-map allocations, anchor market capitalisation of USD 179.5 bn and share price of 1,212.21 USD). The enterprise-value segment breakdown is an analytical fallback and does not reflect company-reported segment profitability.",
+    "Competitor context: Samsung has approximately 34% Q1 2026 enterprise SSD share, SK Hynix / Solidigm approximately 30%, Micron approximately 16% and Sandisk approximately 13% total NAND share. The peer median EV/EBITDA is 22.1x, but Sandisk's 11.3x multiple carries a cyclicality discount and the market is not assigning the peer multiple.",
+    "Market data: SNDK, 1,212.21 USD as of 10 August 2026; FY2026 revenue is USD 20,248m, FY2027E revenue is USD 24,298m, FY2027E EBITDA is USD 14,543m and FY2027E EBIT is USD 14,457m. Price history and market profile use Financial Modeling Prep; financial statements and forecasts use the Valuatum Wisdom model, and reported segment data uses Sandisk Corporation's Form 10-K for the fiscal year ended 27 June 2025. Figures should be independently verified because generative-AI assistance may introduce inaccuracies."
+  ]
+}

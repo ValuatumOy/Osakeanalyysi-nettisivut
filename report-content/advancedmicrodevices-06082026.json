@@ -1,0 +1,769 @@
+{
+  "id": "advancedmicrodevices-06082026",
+  "slug": "advanced-micro-devices-equity-report",
+  "companyName": "Advanced Micro Devices, Inc.",
+  "ticker": "AMD",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-08-06",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "482.05 USD",
+    "targetPrice": "490.50 USD",
+    "impliedUpside": "+1.8%",
+    "marketCap": "USD 786 bn",
+    "enterpriseValue": "USD 791.1 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "118.4x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "55.7x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "-1.3%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "—"
+    },
+    {
+      "label": "Net Debt/EBITDA 2026E",
+      "value": "0.4x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "584.73 USD",
+    "week52Low": "149.22 USD",
+    "oneYearChange": "+195.5%",
+    "threeYearChange": "+316.2%"
+  },
+  "summary": [
+    "Advanced Micro Devices, Inc. (AMD, NASDAQ Global Select) designs and sells semiconductor products across Data Center, Client and Gaming, and Embedded. The call is HOLD in this Valuatum equity research report dated 6 August 2026, with a 12-month target price of 490.50 USD against a current price of 482.05 USD, implying +1.8% upside. Market capitalisation is USD 786 bn and enterprise value is USD 791.1 bn. The investment case depends on scaling Instinct AI accelerators while preserving margins, alongside recurring earnings from EPYC server CPUs, Ryzen client processors and embedded adaptive-computing products.",
+    "The central tension is between current earnings and forward value. Data Center – AI Accelerators receives 48.0% of enterprise value, or USD 379,741m, but contributes modelled revenue of USD 7,500m and comparable EBIT of USD 1,000m. Server CPUs receive 17.0% of EV and already produce USD 9,100m of revenue and USD 3,100m of comparable EBIT. Group EBITDA is forecast to rise from USD 14,194m in 2026 to USD 39,971m in 2028, reducing EV/EBITDA from 55.7x to 20.05x. The stock therefore prices substantial execution before free cash flow turns positive.",
+    "The target price combines a 2028e EV/EBITDA valuation of 25.0x on EBITDA of USD 39,971m, weighted at 54%, a 2028e P/E valuation of 35.0x on EPS of 15.63 USD, weighted at 36%, and an XY scatter valuation of 122.8 USD, weighted at 10%. The weighted target is 490.50 USD. The bear case is 230.63 USD, or -52.2%, the base case is 490.92 USD, or +1.8%, and the bull case is 742.71 USD, or +54.1%. HOLD reflects limited base-case re-rating despite substantial scenario dispersion."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "AI Volume Scales",
+      "metric": "31,645m USD",
+      "text": "The AI accelerator allocation requires roughly 2.5 million Instinct GPU units at a 12,500 USD blended ASP to generate revenue of USD 31,645m by 2027-2028. Sustaining a 40% operating margin would support the 48.0% EV allocation, but production, HBM3e supply and OpenAI deployment milestones must remain on schedule."
+    },
+    {
+      "num": "02",
+      "title": "Margin Expansion",
+      "metric": "36.7%",
+      "text": "Group EBITDA is forecast to rise from USD 14,194m in 2026 to USD 39,971m in 2028, while EBITDA margin expands from 28.6% to 36.7%. That progression lowers EV/EBITDA from 55.74x to 20.05x and supports the selected 25.0x fair multiple, provided AI revenue improves the group mix."
+    },
+    {
+      "num": "03",
+      "title": "Delayed Cash Inflection",
+      "metric": "-10,509m",
+      "text": "Free cash flow remains negative at USD -10,509m in 2026 as AI-ramp inventory absorbs USD 9,352m of working capital. Free cash flow turns positive at USD 2,522m in 2028, so the constructive EBITDA outlook does not translate into near-term cash support for a stronger rating."
+    }
+  ],
+  "thesisBreaker": "If Nvidia cuts H100/B200 prices aggressively to defend its dominant market share, AMD’s required 40% AI margin would collapse, undermining the main driver of its valuation.",
+  "valuePools": [
+    {
+      "name": "Data Center – AI Accelerators",
+      "share": "48.0% · USD 379,741m",
+      "economics": "Revenue USD 7,500m (21.7%) · Comparable EBIT USD 1,000m (27.1%) · EV USD 379,741m (48.0%)",
+      "text": "Data Center – AI Accelerators is the principal forward-looking value pool: USD 379,741m of EV is allocated to a business with modelled revenue of USD 7,500m and comparable EBIT of USD 1,000m. The allocation requires annual revenue of about USD 31,645m and EBITDA of roughly USD 12,658m, implying approximately 2.5 million GPUs at a 12,500 USD ASP and a 40% operating margin. AMD needs only 7% to 12% of the expanded USD 400 billion merchant market, but Nvidia retains roughly 85% share, a CUDA software advantage and 25,000 USD to 40,000 USD ASPs. The 6-gigawatt OpenAI commitment and initial 1GW deployment from 2H 2026 support demand, while CoWoS and HBM3e supply constrain execution."
+    },
+    {
+      "name": "Data Center – Server CPUs (EPYC)",
+      "share": "17.0% · USD 134,492m",
+      "economics": "Revenue USD 9,100m (26.3%) · Comparable EBIT USD 3,100m (83.9%) · EV USD 134,492m (17.0%)",
+      "text": "Data Center – Server CPUs (EPYC) is the earnings floor, with USD 134,492m of EV against modelled revenue of USD 9,100m and comparable EBIT of USD 3,100m. The required revenue of about USD 14,943m and EBITDA of USD 6,724m assume a 45% operating margin and are broadly supported by current run-rates. AMD held 46.2% of x86 server revenue and 33.2% of units in early 2026, showing premium ASP capture versus Intel. A USD 220 billion server CPU TAM by 2030 makes the required revenue less than 7% of the market. The key threat is not only Intel’s Xeon response but AWS, Google and Microsoft shifting general workloads to internal Arm processors."
+    },
+    {
+      "name": "Client Computing",
+      "share": "15.0% · USD 118,669m",
+      "economics": "Revenue USD 9,000m (26.0%) · Comparable EBIT USD 1,000m (27.1%) · EV USD 118,669m (15.0%)",
+      "text": "Client Computing carries USD 118,669m of EV against modelled revenue of USD 9,000m and comparable EBIT of USD 1,000m. Supporting the allocation requires roughly USD 6,000m of EBITDA at a roughly 20x multiple, while AMD must maintain 20% to 25% of the approximately 300-million-unit PC market. The AI-PC refresh could improve blended ASPs and help absorb fixed R&D costs, but consumer demand remains price-sensitive and promotional. Intel’s fab-utilisation pressure could produce margin-destroying price competition. The value pool is therefore plausible as a steady-state cash contributor, but it offers less operating leverage than AI accelerators and depends on share retention through the refresh cycle."
+    },
+    {
+      "name": "Embedded",
+      "share": "13.0% · USD 102,846m",
+      "economics": "Revenue USD 3,500m (10.1%) · Comparable EBIT USD 1,050m (28.4%) · EV USD 102,846m (13.0%)",
+      "text": "Embedded is allocated USD 102,846m of EV against modelled revenue of USD 3,500m and comparable EBIT of USD 1,050m. The allocation requires roughly USD 5,000m of EBITDA after industrial inventory clears, while historical gross margins above 65% provide operating leverage. Xilinx assets supply USD 25,126m of goodwill and USD 16,705m of other intangibles, supporting an asset and strategic-IP framework. Embedded products have 10-to-15-year lifecycles and sticky aerospace, defence and communications customers, but current macro weakness depresses run-rates. The valuation works on a mid-cycle recovery in industrial and telecom spending rather than on current profitability, leaving inventory normalisation as the key evidence."
+    },
+    {
+      "name": "Gaming",
+      "share": "7.0% · USD 55,379m",
+      "economics": "Revenue USD 5,539m (16.0%) · Comparable EBIT USD 450m (12.2%) · EV USD 55,379m (7.0%)",
+      "text": "Gaming carries USD 55,379m of EV against modelled revenue of USD 5,539m and comparable EBIT of USD 450m. It is a mature, cash-generative console business valued on a revenue multiple, but the current cycle is maturing and the growth profile is structurally declining. The allocation is less demanding than the AI pool in strategic terms, yet it provides limited support for a higher group valuation because volume is expected to fall rather than expand."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how AI accelerator execution, group EBITDA and the applied multiple translate into enterprise value, equity value and the share price. The primary swing factor is whether AMD converts OpenAI and other hyperscaler commitments into a durable AI revenue ramp without Nvidia-led price pressure. The base case assumes a USD 400 billion merchant TAM and a 20.0x multiple; the bull case requires the market to approach USD 1.4 trillion and AMD to capture more than 10% share, while the bear case reflects aggressive pricing and a 15.0x multiple.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "137,500",
+          "EBITDA": "55,000",
+          "Margin": "40.0%",
+          "Multiple": "22.0x",
+          "EV": "1,210,000",
+          "Equity": "1,211,067"
+        },
+        "impliedValueOrUpside": "742.71 USD / sh · +54.1%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "108,870",
+          "EBITDA": "39,971",
+          "Margin": "36.7%",
+          "Multiple": "20.0x",
+          "EV": "799,420",
+          "Equity": "800,487"
+        },
+        "impliedValueOrUpside": "490.92 USD / sh · +1.8%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "75,000",
+          "EBITDA": "25,000",
+          "Margin": "33.3%",
+          "Multiple": "15.0x",
+          "EV": "375,000",
+          "Equity": "376,067"
+        },
+        "impliedValueOrUpside": "230.63 USD / sh · -52.2%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "AMD creates current recurring earnings through EPYC server CPUs, Ryzen client processors and embedded adaptive SoCs, while the market assigns the largest strategic option to Data Center – AI Accelerators. AI receives 48.0% of EV, or USD 379,741m, despite modelled revenue of USD 7,500m and comparable EBIT of USD 1,000m. EPYC is more grounded: its USD 134,492m allocation requires about USD 14,943m of revenue and USD 6,724m of EBITDA, while AMD already holds 46.2% of x86 server revenue and 33.2% of units. Client Computing contributes scale at USD 9,000m of modelled revenue and depends on 20% to 25% PC share. Embedded contributes long-lived industrial, aerospace and communications products, backed by USD 25,126m of goodwill and USD 16,705m of intangibles. AMD’s fabless model and estimated operating cash flow of USD 8,502m in 2026 limit capital intensity, but USD 10,260m of depreciation in 2026 distorts EBIT. EBITDA and operating cash flow therefore better capture economics. The value creation question is whether AI scale can lift group EBITDA from USD 14,194m in 2026 to USD 39,971m in 2028."
+    },
+    {
+      "heading": "Cross-division valuation bridge",
+      "text": "The bridge separates operating support from future execution. Server CPUs, Client Computing and Gaming together support approximately 45% of EV through current operating cash flow and recurring market share, while Embedded’s 13.0% allocation rests on goodwill and strategic IP assuming normalised industrial demand. AI Accelerators account for the remaining 48.0%, or USD 379,741m, and require roughly USD 31,645m of revenue, USD 12,658m of recurring EBITDA and a 40% operating margin by 2027-2028. Applying 30x EV/EBITDA to current AI economics does not support that allocation; the market instead assumes the OpenAI 6-gigawatt deployment and similar hyperscaler commitments proceed at semiconductor margins. At group level, 2026 EBITDA of USD 14,194m against the current EV of USD 791.1 bn leaves the stock at 55.7x EV/EBITDA. Even the 2028 forecast of USD 39,971m EBITDA produces 20.05x. The bridge also requires funding: free cash flow is USD -10,509m in 2026 because AI inventory absorbs USD 9,352m of working capital, before turning positive at USD 2,522m in 2028. The quoted EV therefore rests materially on future AI volume, pricing, packaging capacity and margin defence rather than balance-sheet optionality."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome of 230.63 USD per share, or -52.2%, requires aggressive Nvidia H100/B200 price cuts or lower hyperscaler capital expenditure to compress AMD’s AI margin and the valuation multiple. Early evidence would be lower Instinct GPU ASPs, delayed OpenAI deliveries or CoWoS and HBM3e constraints. The base outcome of 490.92 USD per share, or +1.8%, requires the initial 1GW OpenAI deployment from 2H 2026 to convert into recognised revenue, followed by execution of the broader 6-gigawatt commitment and stable EPYC share. Data Center revenue growth, unit shipments and server CPU share against Intel are the earliest indicators. The bull outcome of 742.71 USD per share, or +54.1%, requires the AI merchant market to approach management’s USD 1.4 trillion estimate and AMD to capture more than 10% share, with the OpenAI deployment becoming a template for other operators. The central debate is whether AMD can remain the credible merchant alternative to Nvidia with 40% AI margins, or whether Nvidia pricing and custom Arm silicon commoditise the opportunity. The balance supports HOLD because the base case is close to fair value while execution risk remains unusually concentrated."
+    }
+  ],
+  "risks": [
+    "Competitive Pricing (Data Center – AI Accelerators): Nvidia uses B200 efficiency to slash merchant pricing, breaking the 40% margin assumption, with lowered Instinct GPU ASPs as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Supply Chain Concentration (Data Center – Server CPUs (EPYC)): Sole reliance on TSMC for fabrication and advanced packaging caps volumes, with CoWoS bottleneck announcements as the early warning - HIGH impact and structural.",
+    "Customer Concentration (Data Center – AI Accelerators): Heavy reliance on a few hyperscalers leads to sudden order cancellations or delays, with hyperscaler capex reductions as the early warning - MEDIUM impact and manageable.",
+    "Custom Silicon Encroachment (Data Center – AI Accelerators): Hyperscalers shift workloads to internal Arm chips and erode merchant TAMs, with AWS and Google custom-silicon milestones as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "OpenAI 1GW Initial Deployment (near-term, Data Center – AI Accelerators): Beginning in 2H 2026, successful deployment proves commercial scalability of MI325X and MI355X architecture and validates the primary volume driver.",
+    "TSMC CoWoS / HBM3e Supply Data (near-term, Data Center – AI Accelerators): Secure advanced wafers and memory determine the physical revenue ceiling behind the 2027 revenue bridge.",
+    "Server CPU Unit Share vs Intel (medium-term, Data Center – Server CPUs (EPYC)): Stable or rising share tests durability of the cash engine and protects against Intel pricing pressure.",
+    "Embedded Segment Inventory (medium-term, Embedded): Inventory normalisation signals a cycle turn for Xilinx assets and supports realisability of the USD 102,846m EV allocation."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "22,680",
+            "25,785",
+            "34,639",
+            "49,714",
+            "79,383",
+            "108,870"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "2,073",
+            "5,077",
+            "6,698",
+            "14,194",
+            "26,613",
+            "39,971"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "9.1%",
+            "19.7%",
+            "19.3%",
+            "28.6%",
+            "33.5%",
+            "36.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-1,672",
+            "-3,177",
+            "-3,004",
+            "-10,260",
+            "-121",
+            "-1,746"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "401",
+            "1,900",
+            "3,694",
+            "3,934",
+            "26,492",
+            "38,225"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "1.8%",
+            "7.4%",
+            "10.7%",
+            "7.9%",
+            "33.4%",
+            "35.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "107",
+            "122",
+            "472",
+            "6,048",
+            "-4,981",
+            "-3,927"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "508",
+            "2,022",
+            "4,166",
+            "9,982",
+            "21,511",
+            "34,298"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "854",
+            "1,641",
+            "4,335",
+            "6,611",
+            "15,918",
+            "25,381"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.5",
+            "1",
+            "2.7",
+            "4.1",
+            "9.8",
+            "15.6"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,222",
+            "2,425",
+            "2,312",
+            "3,793",
+            "6,057",
+            "8,307"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "21,363",
+            "18,930",
+            "16,705",
+            "23,975",
+            "38,283",
+            "52,504"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "24,262",
+            "24,839",
+            "25,126",
+            "25,126",
+            "25,126",
+            "25,126"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "50,751",
+            "49,489",
+            "49,595",
+            "58,346",
+            "74,918",
+            "91,389"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "4,351",
+            "5,734",
+            "7,920",
+            "11,258",
+            "17,976",
+            "24,654"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "8,484",
+            "9,528",
+            "13,488",
+            "17,743",
+            "24,050",
+            "30,320"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "3,933",
+            "3,787",
+            "5,539",
+            "7,723",
+            "12,332",
+            "16,912"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "16,768",
+            "19,049",
+            "26,947",
+            "36,723",
+            "54,358",
+            "71,886"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "67,885",
+            "69,226",
+            "76,926",
+            "95,453",
+            "129,661",
+            "163,658"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "55,892",
+            "57,568",
+            "62,999",
+            "69,951",
+            "85,869",
+            "111,249"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "1,717",
+            "1,721",
+            "2,973",
+            "6,023",
+            "13,249",
+            "15,673"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "751",
+            "—",
+            "874",
+            "6,023",
+            "13,249",
+            "15,673"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "3,567",
+            "3,537",
+            "3,534",
+            "6,584",
+            "13,810",
+            "16,234"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "6,689",
+            "7,281",
+            "9,455",
+            "17,833",
+            "28,734",
+            "34,810"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "67,885",
+            "69,226",
+            "76,926",
+            "95,453",
+            "129,661",
+            "163,658"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-930",
+            "-1,575",
+            "-1,067",
+            "5,096",
+            "15,102",
+            "15,485"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "54,427",
+            "55,502",
+            "61,307",
+            "74,275",
+            "100,035",
+            "125,683"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "82.3%",
+            "83.2%",
+            "81.9%",
+            "73.3%",
+            "66.2%",
+            "68.0%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-1.7%",
+            "-2.7%",
+            "-1.7%",
+            "7.3%",
+            "17.6%",
+            "13.9%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.4x",
+            "-0.3x",
+            "-0.2x",
+            "0.4x",
+            "0.6x",
+            "0.4x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2.5",
+            "2.6",
+            "2.9",
+            "2.1",
+            "1.9",
+            "2.1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "CF from operations",
+          "values": [
+            "-566",
+            "3,734",
+            "2,493",
+            "12,508",
+            "6,688",
+            "17,832"
+          ]
+        },
+        {
+          "label": "Operating cash flow",
+          "values": [
+            "-1,685",
+            "2,460",
+            "2,211",
+            "8,502",
+            "10,374",
+            "20,738"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "3,082",
+            "1,084",
+            "4,846",
+            "4,364",
+            "9,352",
+            "9,294"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-80",
+            "1,915",
+            "3,110",
+            "19,011",
+            "16,693",
+            "18,216"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "80",
+            "-1,915",
+            "-3,110",
+            "-19,011",
+            "-16,693",
+            "-18,216"
+          ]
+        },
+        {
+          "label": "Free Operating Cash Flow",
+          "values": [
+            "-1,419",
+            "511",
+            "-2,154",
+            "-10,509",
+            "-6,319",
+            "2,522"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-1,419",
+            "511",
+            "-2,088",
+            "-10,509",
+            "-6,319",
+            "2,522"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "614",
+            "-790",
+            "2,101",
+            "8,687",
+            "14,614",
+            "4,965"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "128",
+            "1,029",
+            "1,484",
+            "2,184",
+            "4,609",
+            "4,581"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "118.4x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "55.7x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "201.1x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "-74.5x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "11.2x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "0.4x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is AMD a buy in 2026?",
+      "a": "No. AMD is rated HOLD for 2026, with a current price of 482.05 USD, a 12-month target of 490.50 USD and implied upside of +1.8%. The valuation requires AI accelerator revenue of about USD 31,645m, roughly 2.5 million Instinct GPUs and a 40% operating margin. Free cash flow is forecast at USD -10,509m in 2026, so the upside does not compensate for concentrated execution and pricing risk."
+    },
+    {
+      "q": "What is AMD's price target?",
+      "a": "AMD’s 12-month price target is 490.50 USD, compared with a current price of 482.05 USD and implied upside of +1.8%. The target uses 2028e EV/EBITDA of 25.0x weighted at 54%, 2028e P/E of 35.0x weighted at 36%, and an XY scatter valuation of 122.8 USD weighted at 10%. The weighted outcome is close to fair value because the market already prices substantial AI execution."
+    },
+    {
+      "q": "Why is AMD rated HOLD?",
+      "a": "AMD is rated HOLD because the base valuation is broadly full while the AI ramp remains demanding. Group EBITDA is forecast to rise from USD 14,194m in 2026 to USD 39,971m in 2028, but free cash flow is USD -10,509m in 2026 before reaching USD 2,522m in 2028. AI Accelerators represent 48.0% of EV and require roughly 2.5 million units at a 12,500 USD ASP."
+    },
+    {
+      "q": "Is AMD overvalued in 2026?",
+      "a": "AMD is expensive on near-term earnings but not conclusively overvalued if the AI ramp succeeds. The stock trades at 118.4x 2026E P/E and 55.7x EV/EBITDA, while the 2028E EV/EBITDA falls to 20.05x on EBITDA of USD 39,971m. A separate ROE/P/BV framework implies 122.8 USD per share, or 75% downside, but it receives only a 10% target weighting."
+    },
+    {
+      "q": "What is AMD's bear and bull case?",
+      "a": "The bear case is 230.63 USD per share, or -52.2%, if Nvidia cuts prices, hyperscaler spending falls and the multiple contracts to 15.0x. The base case is 490.92 USD, or +1.8%, with 2028 EBITDA of USD 39,971m. The bull case is 742.71 USD, or +54.1%, if the AI merchant TAM approaches USD 1.4 trillion and AMD captures more than 10% share."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Advanced Micro Devices, Inc. report dated 6 August 2026 (the value-map allocations, anchor market capitalisation of USD 786 bn and share price of 482.05 USD). The report states that figures should be independently verified because it was produced with generative AI and may contain inaccuracies.",
+    "Competitor context: Nvidia Corporation has roughly 85% data centre accelerator share and 2026E EV/EBITDA of 34.2x; Intel Corporation has 2026E EV/EBITDA of 40.5x; Qualcomm Incorporated has 2026E EV/EBITDA of 9.2x; the peer median is 32.3x for 2026E EV/EBITDA and 21.6x for 2027E EV/EBITDA. The selected 25.0x fair multiple is a premium to the 2027E peer median, justified by AMD’s data-centre GPU share gains and top-line growth.",
+    "Market data: AMD, 482.05 USD as of 6 August 2026; 2026E EBITDA is USD 14,194m and 2028E EBITDA is USD 39,971m. The target bridge applies 25.0x EV/EBITDA to 2028e EBITDA for an implied price of 551.9 USD with 54% weighting, 35.0x P/E to 2028e EPS of 15.63 USD for 500.5 USD with 36% weighting, and an XY scatter valuation of 122.8 USD with 10% weighting. The report flags the projections and value allocations as independent analytical estimates requiring verification."
+  ]
+}

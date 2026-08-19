@@ -27,10 +27,15 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT_DIR = path.join(ROOT, 'report-content');
 
-// Kept in sync with the same constant in build-report-pages.mjs: reports whose
-// content does not match their catalog identity. The site refuses to publish
+// Kept in sync with the same constant in scripts/report-pages/owners.mjs: reports
+// whose content does not match their catalog identity. The site refuses to publish
 // them, so a blog post must not cite them either.
-const EXCLUDE = new Set(['nuholdings-02062026']);
+const EXCLUDE = new Set([
+  'nuholdings-02062026',
+  // Sandisk (SNDK) request rendered with Smart Sand data — the engine stripped the
+  // ticker's trailing "K" as a Konserni suffix and fetched SND instead.
+  'sandiskcorporation-07082026',
+]);
 
 /**
  * The ddmmyyyy encoded in a report id (upm-21052026 → 2026-05-21), or null for
