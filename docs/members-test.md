@@ -172,10 +172,10 @@ this stage actually delivered — so the documents behind them are real PDFs. It
 is what the report store should be demoed against.
 
 **It does not survive a smoke run.** `members-smoke.mjs` seeds its own
-publications under an analyst called `[test seed]` and leaves them published, so
-running the smoke re-pollutes the store the demo just cleaned. Clear them with
-`POST /admin/members/takedown` (they are listed by
-`GET /admin/members/publications`) before showing the store to anyone.
+throwaway analysts and leaves their publications live, so running the smoke puts
+them back in the store next to the demo. `node scripts/seed-store-demo.mjs
+--clean` (with `ADMIN_PASSWORD`) takes them down again — run it after any smoke,
+before showing the store to anyone.
 
 ## Known gaps / prod-rollout blockers
 
@@ -194,6 +194,15 @@ running the smoke re-pollutes the store the demo just cleaned. Clear them with
   instantiates it for non-prod.** Both guards are deliberate and both have to be
   lifted in the same change that flips `USE_PROD_MEMBERS` in `members.html`
   (line 269) from `false` to `true`.
+- **Analyst analyses are purchasable by card, in Stripe TEST mode.**
+  `POST /analyses/{genId}/buy-checkout` creates a session at the price the
+  analyst set, and `GET /analyses/{genId}/purchased?session_id=` hands over the
+  PDF against the Stripe session — no account, the same trust model as
+  `api/report-download.js`. The live-keys flip in the prod-rollout merge covers
+  it, and the VAT gap below applies to these sales too. **Revenue share is still
+  not computed**: the money lands in the platform account and the sale is
+  written to the audit trail (`analysis-sold`, with the amount), which is what
+  makes the analyst's cut computable when the model is decided.
 - **Anyone with a LinkedIn account can spend an engine run.** A `reader` gets a
   free generation with no publish obligation, so nothing is returned for the
   compute. Esa's answer to this was a small joining fee (~5 €) plus at-cost

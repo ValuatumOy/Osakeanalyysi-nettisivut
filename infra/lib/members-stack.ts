@@ -33,6 +33,11 @@ export interface MembersStackProps extends StackProps {
  * now — the bin only instantiates it for non-prod, and the constructor guard
  * makes a prod deploy a hard error.
  */
+// The staging branch's own Vercel URL. Named once because both the CORS list
+// and the auth return allowlist need it whenever another branch's preview is
+// holding the test.aiequityreports.com alias.
+const STAGING_BRANCH_ORIGIN = 'https://osakeanalyysi-nettisivut-git-staging-valuatum-dk.vercel.app';
+
 export class MembersStack extends Stack {
   constructor(scope: Construct, id: string, props: MembersStackProps) {
     super(scope, id, props);
@@ -111,6 +116,13 @@ export class MembersStack extends Stack {
           `https://test.${config.zoneDomain}/members.html`,
           `${config.siteUrl}/members.html`,
           'http://localhost:3100/members.html',
+          // Same reason as the CORS entry: another branch's preview can hold the
+          // test.aiequityreports.com alias, and without this a sign-in started
+          // on the staging branch URL returns to whatever that alias points at.
+          ...(config.stage === 'prod' ? [] : [
+            `${STAGING_BRANCH_ORIGIN}/members.html`,
+            `${STAGING_BRANCH_ORIGIN}/report-store.html`,
+          ]),
         ].join(','),
         // Fixed fee per published analysis. 0 until the business decision lands,
         // so the ledger records states without promising anyone money.
@@ -151,7 +163,7 @@ export class MembersStack extends Stack {
           // test.aiequityreports.com is a Vercel alias and another branch's
           // preview can hold it, which leaves the staging site reachable only
           // by its own branch URL. Non-prod only.
-          ...(config.stage === 'prod' ? [] : ['https://osakeanalyysi-nettisivut-git-staging-valuatum-dk.vercel.app']),
+          ...(config.stage === 'prod' ? [] : [STAGING_BRANCH_ORIGIN]),
         ],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
@@ -180,6 +192,8 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/buy-checkout'],
+      [apigwv2.HttpMethod.GET, '/analyses/{genId}/purchased'],
       [apigwv2.HttpMethod.GET, '/admin/members/publications'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
@@ -212,7 +226,14 @@ export class MembersStack extends Stack {
     // document is free by design, but presigning is Lambda and S3 cost on
     // demand, so it gets a lid of its own — looser than the secret-bearing
     // routes, tighter than the default.
-    const publicFreeOpen = 'GET /analyses/{genId}/free';
+    // Unauthenticated routes that cost money to serve: presigning S3 URLs and
+    // creating Stripe sessions. Looser than the secret-bearing routes, tighter
+    // than the default.
+    const publicPaid = [
+      'GET /analyses/{genId}/free',
+      'POST /analyses/{genId}/buy-checkout',
+      'GET /analyses/{genId}/purchased',
+    ];
     cfnStage.routeSettings = {
       ...Object.fromEntries(
         routes
@@ -222,7 +243,8 @@ export class MembersStack extends Stack {
             { ThrottlingRateLimit: 5, ThrottlingBurstLimit: 10 },
           ]),
       ),
-      [publicFreeOpen]: { ThrottlingRateLimit: 10, ThrottlingBurstLimit: 20 },
+      ...Object.fromEntries(publicPaid.map((route) =>
+        [route, { ThrottlingRateLimit: 10, ThrottlingBurstLimit: 20 }])),
     };
 
     const certificate = new acm.Certificate(this, 'MembersCertificate', {

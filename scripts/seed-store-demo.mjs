@@ -4,8 +4,12 @@
 // window, and two publications backed by real delivered PDFs from this stage.
 //
 //   MEMBERS_TEST_SECRET=... node scripts/seed-store-demo.mjs
+//   MEMBERS_TEST_SECRET=... ADMIN_PASSWORD=... node scripts/seed-store-demo.mjs --clean
 //
-// Idempotent enough to re-run: it adds, it never deletes. Test stack only.
+// Idempotent enough to re-run: it adds, it never deletes. --clean takes down the
+// publications members-smoke.mjs leaves behind — it seeds its own throwaway
+// analysts on every run, and they otherwise sit in the store next to the demo.
+// Test stack only.
 
 const MEMBERS_API = (process.env.MEMBERS_API || 'https://members-test.aiequityreports.com').replace(/\/$/, '');
 const SECRET = process.env.MEMBERS_TEST_SECRET;
@@ -70,7 +74,38 @@ const PUBLICATIONS = [
     prompts: 'Re-ran the public-sector outsourcing pipeline on the slower award schedule and flagged the wellbeing-services-county payment terms as the real risk.' },
 ];
 
+// A throwaway from the smoke: its analysts are created with a generated
+// test-<uuid>@example.com address and no name.
+const isSmokeSeed = (name) => /@example\.com$/.test(name) && /^test-/.test(name);
+
+async function clean() {
+  const admin = process.env.ADMIN_PASSWORD;
+  if (!admin) {
+    console.error('--clean needs ADMIN_PASSWORD (SSM /aiequityreports/test/admin-upload-password)');
+    process.exit(1);
+  }
+  const adminFetch = (path, body) => fetch(`${MEMBERS_API}${path}`, {
+    method: body ? 'POST' : 'GET',
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${admin}` },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+
+  const { publications } = await (await adminFetch('/admin/members/publications')).json();
+  const { analyses } = await (await fetch(`${MEMBERS_API}/analyses`)).json();
+  const junk = analyses.filter((a) => isSmokeSeed(a.analyst) || a.analyst.includes('test seed'));
+  for (const a of junk) {
+    const owner = publications.find((p) => p.genId === a.genId);
+    const res = await adminFetch('/admin/members/takedown',
+      { userId: owner ? owner.userId : a.analystId, genId: a.genId });
+    console.log(`${res.ok ? 'took down' : 'FAILED   '} ${a.companyId.padEnd(11)} ${a.analyst}`);
+  }
+  const after = await (await fetch(`${MEMBERS_API}/analyses`)).json();
+  console.log(`\n${after.analyses.length} analyses left, by ` +
+    `${new Set(after.analyses.map((a) => a.analyst)).size} analysts`);
+}
+
 async function main() {
+  if (process.argv.includes('--clean')) return clean();
   const users = [];
   for (const a of ANALYSTS) {
     const { status, data } = await api('POST', '/test/users', { ...a, role: 'analyst' });

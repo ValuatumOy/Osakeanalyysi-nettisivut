@@ -847,6 +847,84 @@ async function analysisDocument(genId) {
   };
 }
 
+// POST /analyses/{genId}/buy-checkout — a reader with no account buying one
+// analyst's analysis at the price that analyst set. Members spend a monthly read
+// instead; this is the door for everyone else, so it takes no token. The Stripe
+// checkout session id is the receipt, exactly as the ready-report flow on the
+// main site works (api/report-download.js).
+async function postAnalysisBuyCheckout(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+
+  const price = Number(index.priceEur) || 0;
+  if (price <= 0) return json(400, { error: 'This analysis is not for sale' });
+  if (ranking.isPublicFreeNow(index, now)) {
+    return json(400, { error: 'This analysis is free to read right now' });
+  }
+  // Never take money for a document that cannot be handed over afterwards.
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(409, { error: 'This analysis has no document to deliver' });
+
+  const body = parseBody(event) || {};
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    line_items: [{
+      quantity: 1,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(price * 100),
+        product_data: {
+          name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
+          description: 'One analyst\'s re-run of the Valuatum AI equity report, with the prompts used to steer it.',
+        },
+      },
+    }],
+    metadata: { analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
+    success_url: `${returnTo}?bought=${genId}&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?bought=cancelled`,
+  });
+  return json(200, { url: session.url, priceEur: price });
+}
+
+// GET /analyses/{genId}/purchased?session_id=… — the buyer's way in. The session
+// id is long, unguessable and only ever handed to the person who paid, which is
+// the same trust model the ready-report download already uses.
+async function getAnalysisPurchased(event) {
+  const genId = event.pathParameters?.genId || '';
+  const sessionId = event.queryStringParameters?.session_id || '';
+  if (!sessionId) return json(400, { error: 'session_id is required' });
+
+  let session;
+  try {
+    session = await stripe().checkout.sessions.retrieve(sessionId);
+  } catch (err) {
+    return json(404, { error: 'Unknown purchase' });
+  }
+  if (session.payment_status !== 'paid') return json(402, { error: 'Payment not completed' });
+  if (session.metadata?.analysisGenId !== genId) return json(404, { error: 'Unknown purchase' });
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(404, { error: 'No document for this analysis' });
+
+  // The sale belongs to the analyst; revenue share is not computed yet, so this
+  // row is what makes it computable later.
+  await store.audit(index.userId, 'analysis-sold', {
+    genId, sessionId, amountTotal: session.amount_total, currency: session.currency,
+  });
+  return json(200, {
+    genId,
+    analyst: index.analystName || 'Analyst',
+    companyId: index.companyId,
+    url: document.url,
+    expiresIn: document.expiresIn,
+  });
+}
+
 // POST /analyses/{genId}/review {score, comment} — the price of the read. The
 // comment must compare: does this add value over the base report, or over the
 // other takes on the same company? A score with no reasoning is noise.
@@ -1110,6 +1188,8 @@ const PUBLIC_ROUTES = {
   'GET /reports': getReportsList,
   'GET /analyses': getAnalyses,
   'GET /analyses/{genId}/free': getAnalysisFree,
+  'POST /analyses/{genId}/buy-checkout': postAnalysisBuyCheckout,
+  'GET /analyses/{genId}/purchased': getAnalysisPurchased,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,
   'POST /auth/magic-link': postMagicLink,

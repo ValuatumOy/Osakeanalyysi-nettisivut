@@ -67,6 +67,10 @@
     .pill-free { display: inline-block; font-size: var(--text-xs); font-weight: 650;
       color: var(--green-deep); background: var(--green-faint); border-radius: 999px; padding: 0.15em 0.7em; }
 
+    .store-banner { background: var(--green-faint); border: 1px solid var(--green-mist);
+      border-radius: 10px; padding: 0.9rem 1.2rem; margin-top: 1.25rem;
+      font-size: var(--text-sm); font-weight: 300; color: var(--charcoal);
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
     .store-empty { background: var(--white); border: 1px dashed var(--color-border); border-radius: 14px;
       padding: 2.5rem 1.75rem; text-align: center; margin-top: 1.5rem;
       font-size: var(--text-sm); font-weight: 300; color: var(--gray-steel); }
@@ -156,6 +160,8 @@
         </label>
         <span class="store-count" id="storeCount"></span>
       </div>
+
+      <p class="store-banner" id="storeBanner" hidden></p>
 
       <div id="storeList"></div>
 
@@ -316,7 +322,10 @@
         '<div class="store-row-cta">' +
           (analysis.publicFree
             ? '<button class="btn btn-primary btn-sm" onclick="openFree(\'' + esc(analysis.genId) + '\', this)">Read free</button>'
-            : '<a class="btn btn-outline-dark btn-sm" href="members.html">Sign in to read</a>') +
+            : (analysis.priceEur > 0
+                ? '<button class="btn btn-primary btn-sm" onclick="buy(\'' + esc(analysis.genId) + '\', this)">Buy — €' + analysis.priceEur + '</button>'
+                : '') +
+              '<a class="btn btn-outline-dark btn-sm" href="members.html">Sign in to read</a>') +
         '</div>' +
       '</div>';
     }
@@ -339,6 +348,56 @@
       }
     }
     window.openFree = openFree;
+
+    // Buying needs no account: the analyst set the price, Stripe takes the
+    // payment, and the checkout session id is the receipt that opens the PDF.
+    async function buy(genId, button) {
+      button.disabled = true;
+      const label = button.textContent;
+      button.textContent = 'Opening checkout…';
+      try {
+        const res = await fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/buy-checkout', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ returnTo: location.origin + location.pathname }),
+        });
+        const data = await res.json().catch(() => null);
+        if (res.ok && data?.url) { location.href = data.url; return; }
+        button.textContent = data?.error || 'Not available';
+      } catch (_) {
+        button.textContent = 'Not available';
+      }
+      button.disabled = false;
+    }
+    window.buy = buy;
+
+    // Coming back from Stripe: hand over what was paid for, once.
+    async function collectPurchase() {
+      const params = new URLSearchParams(location.search);
+      const genId = params.get('bought');
+      const sessionId = params.get('session_id');
+      if (!genId || genId === 'cancelled' || !sessionId) return;
+      const banner = document.getElementById('storeBanner');
+      banner.hidden = false;
+      banner.textContent = 'Confirming your purchase…';
+      const res = await fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) +
+        '/purchased?session_id=' + encodeURIComponent(sessionId));
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.url) {
+        banner.innerHTML = 'Thank you — your copy of <strong>' + esc(data.companyId) +
+          '</strong> by ' + esc(data.analyst) + ' is ready. ';
+        const link = document.createElement('a');
+        link.href = data.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'btn btn-primary btn-sm';
+        link.textContent = 'Download the PDF';
+        banner.appendChild(link);
+        window.open(data.url, '_blank', 'noopener');
+      } else {
+        banner.textContent = (data && data.error) || 'That purchase could not be confirmed.';
+      }
+    }
 
     function render() {
       const kind = document.getElementById('fKind').value;
@@ -389,7 +448,7 @@
       document.getElementById('storeEnvNote').textContent =
         ' Analyst analyses are served from the test stack while the member system is in testing.';
     }
-    load();
+    load().then(collectPurchase);
   </script>
   <script src="js/script.js"></script>
 </body>

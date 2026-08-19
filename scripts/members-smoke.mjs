@@ -308,6 +308,32 @@ async function main() {
     check('an unknown analysis is a 404 to a logged-out visitor', anonUnknown.status === 404,
       `got ${anonUnknown.status}`);
 
+    // Buying: a checkout session is created, never driven. The hosted page and
+    // the card belong to a human.
+    const sale = freeNow.data?.analyses?.find(a => a.priceEur > 0 && !a.publicFree);
+    if (sale) {
+      const buy = await api('POST', `/analyses/${sale.genId}/buy-checkout`, { body: {} });
+      // 409 when the seeded analysis has no delivered order behind it. The point
+      // is that it never returns a payable link for an undeliverable document.
+      check('a priced analysis returns a checkout link, or refuses to sell what it cannot deliver',
+        (buy.status === 200 && String(buy.data?.url || '').startsWith('https://checkout.stripe.com/'))
+          || buy.status === 409,
+        `got ${buy.status} ${JSON.stringify(buy.data)}`);
+    } else {
+      console.log('· skip: no priced analysis in the index to check the buy path against');
+    }
+
+    const buyFree = await api('POST', `/analyses/${readable}/buy-checkout`, { body: {} });
+    check('an analysis inside its free window is not for sale → 400', buyFree.status === 400,
+      `got ${buyFree.status}`);
+
+    const noSession = await api('GET', `/analyses/${readable}/purchased`);
+    check('collecting a purchase without a session id → 400', noSession.status === 400,
+      `got ${noSession.status}`);
+
+    const badSession = await api('GET', `/analyses/${readable}/purchased?session_id=cs_test_nope`);
+    check('an unknown checkout session is a 404', badSession.status === 404, `got ${badSession.status}`);
+
     const coach = await adminApi('POST', '/admin/members/role',
       { userId: stepDown.userId, role: 'coaching' });
     check('admin can promote to coaching analyst', coach.status === 200, JSON.stringify(coach.data));
