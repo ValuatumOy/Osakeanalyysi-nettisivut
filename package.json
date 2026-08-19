@@ -9,6 +9,8 @@
     "generate:companies": "node scripts/generate-company-pages.mjs",
     "report:sync": "node scripts/report-pages/sync.mjs",
     "report:check": "node scripts/report-pages/check.mjs",
+    "report:thumbs": "python3 scripts/report-thumbnails.py",
+    "report:thumbs:check": "python3 scripts/report-thumbnails.py --check",
     "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",
