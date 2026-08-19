@@ -33,6 +33,11 @@
       box-shadow:0 1px 3px rgba(26,36,32,0.10); }
     .billing-save { display:inline-block; margin-left:0.5em; font-size:var(--text-xs); font-weight:600;
       color:var(--green-deep); background:var(--green-mist); border-radius:999px; padding:0.15em 0.7em; }
+
+    /* Four narrow cards, and the yearly prices carry decimals — €32.50/month
+       does not fit the one-off cards' display size. */
+    .pricing-member-grid .pricing-price-main { font-size: clamp(2.25rem, 3vw, 3rem); }
+    .pricing-member-grid .pricing-price-wrap { display:flex; align-items:baseline; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -198,7 +203,7 @@
             <button type="button" class="billing-toggle-btn" data-interval="year" aria-pressed="false">Yearly <span class="billing-save">2 months free</span></button>
           </div>
 
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem;">
+          <div class="pricing-member-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem;">
 
             <!-- Analyst freemium -->
             <div class="pricing-card">
