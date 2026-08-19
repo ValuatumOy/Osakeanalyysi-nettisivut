@@ -31,6 +31,7 @@ stub('../../server/email.js', {
 });
 stub('../../server/aws/pdf-store.js', {
   putPdf: async () => {},
+  putPdfIfAbsent: async () => true,
   writeSidecar: async (fileName, sidecar) => written.push({ fileName, sidecar }),
 });
 stub('../../server/aws/orders-store.js', {
