@@ -748,6 +748,8 @@ async function getAnalyses(event) {
     analyses: ranking.orderAnalyses(items, now).map((item) => ({
       genId: item.genId,
       companyId: item.companyId,
+      // The store filters by analyst, and two analysts can share a display name.
+      analystId: item.userId,
       analyst: item.analystName || 'Analyst',
       publishedAt: item.publishedAt,
       priceEur: item.priceEur || 0,

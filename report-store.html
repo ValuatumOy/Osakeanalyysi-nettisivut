@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Store — Every Report, Every Analyst — Valuatum AI Equity Reports</title>
+  <meta name="description" content="Every AI equity report on the site: the engine's own report for each company, and every analyst's published analysis on top of it, ranked by what other analysts said it added.">
+  <link rel="canonical" href="https://www.aiequityreports.com/report-store.html">
+  <meta property="og:title" content="Report Store — Every Report, Every Analyst">
+  <meta property="og:description" content="The engine's report for each company, and every analyst's published analysis on top of it — ranked by peer review.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aiequityreports.com/report-store.html">
+  <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .store-main { background: var(--off-white); min-height: 70vh; padding: 7.5rem 0 5rem; }
+    .store-head { margin-bottom: 2rem; }
+    .store-head h1 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .store-head p { font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: var(--gray-steel); max-width: 62ch; }
+
+    /* Filters: native controls, sticky so they stay reachable down a long list. */
+    .store-filters { position: sticky; top: 72px; z-index: 5; display: flex; gap: 0.75rem; flex-wrap: wrap;
+      align-items: flex-end; background: var(--off-white); padding: 1rem 0 1.25rem; border-bottom: 1px solid var(--color-border); }
+    .store-filters label { display: flex; flex-direction: column; gap: 0.3rem;
+      font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); }
+    .store-filters select, .store-filters input {
+      border: 1px solid var(--color-border); border-radius: 8px; background: var(--white);
+      padding: 0.6em 0.9em; font: inherit; font-size: var(--text-sm); color: var(--charcoal); min-width: 190px; }
+    .store-filters select:focus, .store-filters input:focus { outline: 2px solid var(--green-light); border-color: var(--green); }
+    .store-count { margin-left: auto; font-size: var(--text-xs); color: var(--gray-steel); padding-bottom: 0.7rem; }
+
+    .store-company { background: var(--white); border: 1px solid var(--color-border); border-radius: 14px;
+      padding: 1.5rem 1.75rem; margin-top: 1.5rem; box-shadow: 0 1px 2px rgba(26,36,32,0.04); }
+    .store-company-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--color-border); }
+    .store-company-head h2 { font-size: var(--text-lg); font-weight: 650; letter-spacing: -0.01em; }
+    .store-ticker { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.06em;
+      color: var(--gray-steel); background: var(--off-white); border: 1px solid var(--color-border);
+      border-radius: 999px; padding: 0.2em 0.8em; }
+    .store-company-head .spacer { margin-left: auto; }
+
+    .store-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem 1.5rem;
+      align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--color-border); }
+    .store-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .store-row-main { min-width: 0; }
+    .store-row-title { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); }
+    .store-row-meta { font-size: var(--text-xs); color: var(--gray-steel); margin-top: 0.25rem; line-height: 1.7; }
+    .store-row-meta .sep { opacity: 0.4; margin: 0 0.45em; }
+    .store-row-cta { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+
+    /* The engine report is the base every analyst builds on; mark it as such. */
+    .store-kind { display: inline-block; font-size: var(--text-xs); font-weight: 650;
+      letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px;
+      padding: 0.2em 0.8em; margin-right: 0.6em; vertical-align: 0.05em; }
+    .store-kind--base { background: var(--green-mist); color: var(--green-deep); }
+    .store-kind--analyst { background: var(--gold-faint); color: var(--gold); border: 1px solid var(--gold-light); }
+    .store-rank { display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--off-white);
+      border: 1px solid var(--color-border); font-size: var(--text-xs); font-weight: 650;
+      color: var(--gray-steel); margin-right: 0.55em; }
+    .store-score { font-weight: 650; color: var(--charcoal); }
+    .store-noscore { color: var(--gray-steel); }
+    .pill-free { display: inline-block; font-size: var(--text-xs); font-weight: 650;
+      color: var(--green-deep); background: var(--green-faint); border-radius: 999px; padding: 0.15em 0.7em; }
+
+    .store-empty { background: var(--white); border: 1px dashed var(--color-border); border-radius: 14px;
+      padding: 2.5rem 1.75rem; text-align: center; margin-top: 1.5rem;
+      font-size: var(--text-sm); font-weight: 300; color: var(--gray-steel); }
+    .store-note { font-size: var(--text-xs); font-weight: 300; line-height: 1.75; color: var(--gray-steel);
+      border-left: 2px solid var(--green-mist); padding: 0.15rem 0 0.15rem 1rem; margin-top: 2.5rem; max-width: 70ch; }
+
+    @media (max-width: 640px) {
+      .store-filters { position: static; }
+      .store-filters select, .store-filters input { min-width: 0; width: 100%; }
+      .store-filters label { flex: 1 1 100%; }
+      .store-count { margin-left: 0; }
+      .store-row { grid-template-columns: 1fr; }
+      .store-row-cta { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Valuatum AI Equity Reports — home">
+        <img src="images/logo.svg" alt="" width="34" height="34">
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="reports.html" class="nav-link">Reports</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="methodology.html" class="nav-link">Methodology</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+      </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
+      <a href="reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="index.html" class="nav-mobile-link">Home</a>
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
+    </div>
+  </header>
+
+  <main class="store-main">
+    <div class="container">
+      <div class="store-head">
+        <span class="section-eyebrow">Report store</span>
+        <h1>Every report on one page.</h1>
+        <p>For each company: the engine's own report, and every analyst's published analysis on top of it. The analyses are ordered by what other analysts said they added — a score out of five and a written comparison, from people who had to read the report to give it.</p>
+      </div>
+
+      <div class="store-filters">
+        <label>Company
+          <select id="fCompany"><option value="">All companies</option></select>
+        </label>
+        <label>Analyst
+          <select id="fAnalyst"><option value="">All analysts</option></select>
+        </label>
+        <label>Search
+          <input id="fSearch" type="search" placeholder="Company, ticker or analyst" autocomplete="off">
+        </label>
+        <label>Show
+          <select id="fKind">
+            <option value="">Everything</option>
+            <option value="analyst">Analyst analyses only</option>
+            <option value="base">Engine reports only</option>
+          </select>
+        </label>
+        <span class="store-count" id="storeCount"></span>
+      </div>
+
+      <div id="storeList"></div>
+
+      <p class="store-note">
+        An analyst analysis is the engine's report re-run with that analyst's own assumptions and instructions, published under their own name. The rating measures <strong>what the analyst's work added</strong> over the base report — not how good the base report was. Reading one costs a monthly allowance and a written review, which is why the ratings come from people who actually read it.
+        <span id="storeEnvNote"></span>
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Engine reports come from this site's own catalog (same origin, so staging
+    // shows staging's and production shows production's). Analyst analyses come
+    // from the members API, which is still the test stack until it ships.
+    const USE_PROD_MEMBERS = false;
+    const MEMBERS_API = USE_PROD_MEMBERS
+      ? 'https://members.aiequityreports.com'
+      : 'https://members-test.aiequityreports.com';
+
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g,
+      (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+    // The join key between the two sources. The catalog calls it `ticker`, the
+    // publication index calls it `companyId`; both are the exchange ticker.
+    const key = (value) => String(value || '').trim().toUpperCase();
+
+    const state = { companies: [], analysts: new Map() };
+
+    async function load() {
+      const [reports, analyses] = await Promise.all([
+        fetch('/api/reports').then((r) => r.ok ? r.json() : { reports: [] }).catch(() => ({ reports: [] })),
+        fetch(MEMBERS_API + '/analyses').then((r) => r.ok ? r.json() : { analyses: [] }).catch(() => ({ analyses: [] })),
+      ]);
+
+      const byTicker = new Map();
+      const company = (ticker, name) => {
+        const id = key(ticker);
+        if (!byTicker.has(id)) byTicker.set(id, { ticker: id, name: name || id, base: [], analyses: [] });
+        const entry = byTicker.get(id);
+        // The longest name wins: the catalog carries both "Tesla" and "Tesla, Inc."
+        if (name && name.length > entry.name.length) entry.name = name;
+        return entry;
+      };
+
+      for (const report of (reports.reports || [])) {
+        company(report.ticker, report.companyName || report.name).base.push(report);
+      }
+      // Already ranked by the API (server/members/ranking.js) — never re-sort here.
+      for (const analysis of (analyses.analyses || [])) {
+        const entry = company(analysis.companyId, null);
+        entry.analyses.push(analysis);
+        if (analysis.analystId) state.analysts.set(analysis.analystId, analysis.analyst || 'Analyst');
+      }
+
+      for (const entry of byTicker.values()) {
+        entry.base.sort((a, b) => String(b.reportDate).localeCompare(String(a.reportDate)));
+      }
+      state.companies = [...byTicker.values()]
+        .sort((a, b) => (b.analyses.length - a.analyses.length) || a.name.localeCompare(b.name));
+
+      fillFilters();
+      applyUrlFilter();
+      render();
+    }
+
+    function fillFilters() {
+      const companySelect = document.getElementById('fCompany');
+      for (const entry of [...state.companies].sort((a, b) => a.name.localeCompare(b.name))) {
+        const option = document.createElement('option');
+        option.value = entry.ticker;
+        option.textContent = entry.name + ' (' + entry.ticker + ')';
+        companySelect.appendChild(option);
+      }
+      const analystSelect = document.getElementById('fAnalyst');
+      for (const [id, name] of [...state.analysts].sort((a, b) => a[1].localeCompare(b[1]))) {
+        const option = document.createElement('option');
+        option.value = id;
+        option.textContent = name;
+        analystSelect.appendChild(option);
+      }
+    }
+
+    // Arriving from a company page: /report-store.html?company=TSLA
+    function applyUrlFilter() {
+      const wanted = key(new URLSearchParams(location.search).get('company'));
+      if (!wanted) return;
+      const select = document.getElementById('fCompany');
+      if ([...select.options].some((option) => option.value === wanted)) select.value = wanted;
+    }
+
+    function matches(entry) {
+      const companyFilter = document.getElementById('fCompany').value;
+      const analystFilter = document.getElementById('fAnalyst').value;
+      const search = document.getElementById('fSearch').value.trim().toLowerCase();
+      if (companyFilter && entry.ticker !== companyFilter) return false;
+      if (analystFilter && !entry.analyses.some((a) => a.analystId === analystFilter)) return false;
+      if (search) {
+        const hay = (entry.name + ' ' + entry.ticker + ' ' +
+          entry.analyses.map((a) => a.analyst).join(' ')).toLowerCase();
+        if (!hay.includes(search)) return false;
+      }
+      return true;
+    }
+
+    function baseRow(report) {
+      const price = report.isFree
+        ? '<span class="pill-free">Free this week</span>'
+        : '€' + Number(report.price || 20);
+      return '<div class="store-row">' +
+        '<div class="store-row-main">' +
+          '<div class="store-row-title"><span class="store-kind store-kind--base">Engine report</span>' +
+            esc(report.companyName || report.name) + '</div>' +
+          '<div class="store-row-meta">' + esc(report.reportDateLabel || report.reportDate) +
+            '<span class="sep">·</span>Unmodified, generated by the engine' +
+            '<span class="sep">·</span>' + price + '</div>' +
+        '</div>' +
+        '<div class="store-row-cta">' +
+          '<a class="btn btn-primary btn-sm" href="/reports.html#report-' + esc(report.id) + '">' +
+            (report.isFree ? 'Open' : 'Get the full report') + '</a>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function analysisRow(analysis, rank) {
+      const score = analysis.reviewCount
+        ? '<span class="store-score">' + analysis.peerScore.toFixed(2) + ' / 5</span>' +
+          ' <span>from ' + analysis.reviewCount + ' review' + (analysis.reviewCount === 1 ? '' : 's') + '</span>'
+        : '<span class="store-noscore">Not reviewed yet</span>';
+      // free:true means free for signed-in members; nothing opens a document
+      // anonymously yet, so do not promise a free download here.
+      const price = analysis.free
+        ? '<span class="pill-free">Free for members</span>'
+        : (analysis.priceEur > 0 ? '€' + analysis.priceEur : 'Costs one monthly read');
+      const published = new Date(analysis.publishedAt);
+      const date = isNaN(published) ? '' : published.toISOString().slice(0, 10);
+      return '<div class="store-row">' +
+        '<div class="store-row-main">' +
+          '<div class="store-row-title"><span class="store-rank">' + rank + '</span>' +
+            '<span class="store-kind store-kind--analyst">Analyst</span>' + esc(analysis.analyst) + '</div>' +
+          '<div class="store-row-meta">' + score +
+            '<span class="sep">·</span>' + price +
+            (date ? '<span class="sep">·</span>published ' + date : '') + '</div>' +
+        '</div>' +
+        '<div class="store-row-cta">' +
+          '<a class="btn btn-outline-dark btn-sm" href="members.html">Sign in to read</a>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function render() {
+      const kind = document.getElementById('fKind').value;
+      const list = document.getElementById('storeList');
+      const visible = state.companies.filter(matches);
+
+      let companies = 0;
+      let rows = 0;
+      const html = visible.map((entry) => {
+        const base = kind === 'analyst' ? [] : entry.base;
+        const analyses = kind === 'base' ? [] : entry.analyses;
+        if (!base.length && !analyses.length) return '';
+        companies += 1;
+        rows += base.length + analyses.length;
+        const count = analyses.length
+          ? analyses.length + ' analyst ' + (analyses.length === 1 ? 'analysis' : 'analyses')
+          : 'No analyst analysis yet';
+        return '<section class="store-company">' +
+          '<div class="store-company-head">' +
+            '<h2>' + esc(entry.name) + '</h2>' +
+            '<span class="store-ticker">' + esc(entry.ticker) + '</span>' +
+            '<span class="spacer"></span>' +
+            '<span class="store-row-meta">' + count + '</span>' +
+          '</div>' +
+          base.map(baseRow).join('') +
+          analyses.map((analysis, i) => analysisRow(analysis, i + 1)).join('') +
+        '</section>';
+      }).join('');
+
+      list.innerHTML = html || '<div class="store-empty">Nothing matches that filter yet.</div>';
+      document.getElementById('storeCount').textContent =
+        rows + ' report' + (rows === 1 ? '' : 's') + ' across ' + companies +
+        ' compan' + (companies === 1 ? 'y' : 'ies');
+    }
+
+    for (const id of ['fCompany', 'fAnalyst', 'fKind']) {
+      document.getElementById(id).addEventListener('change', render);
+    }
+    document.getElementById('fSearch').addEventListener('input', render);
+    if (!USE_PROD_MEMBERS) {
+      document.getElementById('storeEnvNote').textContent =
+        ' Analyst analyses are served from the test stack while the member system is in testing.';
+    }
+    load();
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
