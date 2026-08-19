@@ -463,8 +463,12 @@
         out.appendChild(link);
       }
       if (data.status === 'DELIVERED' || data.status === 'FAILED') {
+        // Refresh only for a run we were actually watching. loadMe() resumes the
+        // poll from u.genId, so refreshing on a run that finished before the page
+        // loaded would bounce between the two calls forever.
+        const wasWatching = localStorage.activeGenId === genId;
         delete localStorage.activeGenId;
-        loadMe();
+        if (wasWatching) loadMe();
         return;
       }
       setTimeout(() => pollGeneration(genId), 30000);
