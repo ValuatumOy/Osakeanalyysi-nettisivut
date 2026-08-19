@@ -163,6 +163,20 @@ behaves exactly as before, covered by
 `test/members/generation-visibility.test.mjs`). Read the diff before any prod
 deploy rather than expecting an empty one.
 
+## Filling the test stack with something worth looking at
+
+`scripts/seed-store-demo.mjs` (needs `MEMBERS_TEST_SECRET`) seeds five named
+analysts and nine publications across five companies, with peer scores that
+differ, one hand-picked free window, and three publications pointing at orders
+this stage actually delivered — so the documents behind them are real PDFs. It
+is what the report store should be demoed against.
+
+**It does not survive a smoke run.** `members-smoke.mjs` seeds its own
+publications under an analyst called `[test seed]` and leaves them published, so
+running the smoke re-pollutes the store the demo just cleaned. Clear them with
+`POST /admin/members/takedown` (they are listed by
+`GET /admin/members/publications`) before showing the store to anyone.
+
 ## Known gaps / prod-rollout blockers
 
 - **Nothing merges to `main` until the engine team has deployed the revision
