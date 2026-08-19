@@ -1,12 +1,41 @@
 # The report store
 
-Design note for the second step of the analyst programme (Esa's direction,
-19.8.2026). **Nothing here is built yet** — this is the plan, plus an honest
-inventory of what the backend already does and what it does not.
+Design note and build record for the second step of the analyst programme
+(Esa's direction, 19.8.2026). The page is **built and on staging** —
+`report-store.html`. What remains open is listed under *Still not built*.
 
 The first step is done and on staging: the member area now states the offer as
 10 engine reports, 20 analyst analyses unlocked one at a time, and one fresh
 generation you commit to publishing. See [members-test.md](members-test.md).
+
+## Built
+
+- **`report-store.html`** — every company, its engine reports, and its analyst
+  analyses underneath in the order `server/members/ranking.js` returns. The page
+  never re-sorts; the API is the ranking authority. Filters: company, analyst
+  (keyed on `analystId`, not the display name), kind, and free-text search across
+  company, ticker and analyst name.
+- **`?company=<ticker>`** pre-selects the company filter, which is how the
+  company pages link in.
+- **The third company-page button** — "See all analyst reports" — in
+  `scripts/report-pages/render.mjs`, with the 17 generated pages regenerated.
+  `npm run report:sync` without `--extract` is pure templating from
+  `report-content/*.json`, so this cost nothing.
+- **`analystId` on `GET /analyses`** — two analysts can share a display name.
+- Both sources are fetched at runtime: engine reports from this site's own
+  `/api/reports` (same origin, so each environment shows its own catalog), and
+  analyses from the members API.
+
+## Still not built
+
+- **Opening an analysis anonymously.** A logged-out visitor sees the row —
+  analyst, rating, price — and the CTA is "Sign in to read". `free: true` rows
+  are labelled *Free for members*, deliberately: nothing opens a document
+  without a member token, so a bare "Free" would be a promise the backend
+  cannot keep. This is the one product decision the store still needs.
+- **Checkout behind `priceEur`.** Still nothing sells an analysis.
+- **Analyst profile pages.** The store filters by analyst; there is no page
+  per analyst yet.
 
 ## What the store is
 
@@ -33,6 +62,7 @@ More than the shape of the plan suggests.
 |---|---|
 | Ranked list of analyses for one company | `GET /analyses?companyId=NOKIA.HE` — live, public, no auth |
 | Ranked list of **all** analyses | `GET /analyses` with no query — live, public, no auth. Returns the whole `PUBINDEX` partition ordered by `server/members/ranking.js` |
+| A stable key to filter analysts by | `analystId` on every row (built 19.8.2026) |
 | Ranking that means something | peer score with a neutral prior, review count, age decay — `ranking.js`, 6 unit tests |
 | Analyst's own price | `priceEur` on every row, set at submit |
 | Free-window flag | `free: true` while a hand-picked or decayed free window is open |
@@ -43,10 +73,8 @@ The page is mostly front-end work over payloads that exist today.
 
 ## What does not exist
 
-1. **Filtering by analyst has no stable key.** `GET /analyses` returns
-   `analyst` as a display name only. Two analysts called Mikko Virtanen collapse
-   into one filter. Fix: add the LinkedIn-derived user id to the payload and
-   filter on that, showing the name. Small change in `getAnalyses`.
+1. ~~Filtering by analyst has no stable key.~~ Done — `analystId` is on every
+   row now.
 2. **Nothing lets a visitor open an analyst analysis.**
    `POST /analyses/{genId}/open` requires a member token and spends a monthly
    read. A logged-out visitor can see the row — name, rating, price — and cannot
@@ -56,10 +84,12 @@ The page is mostly front-end work over payloads that exist today.
 3. **Nothing sells an analyst analysis.** `priceEur` is stored and displayed;
    there is no checkout behind it, so revenue share is still not computable.
    Deferred, see [analyst-publishing.md](analyst-publishing.md).
-4. **The two kinds are not joined.** The catalog and `PUBINDEX` are separate
-   reads keyed differently — the catalog by report id (`nokia-05062026`), the
-   index by `companyId` (`NOKIA.HE`). The store page has to join them, and the
-   join key is the ticker. Worth pinning down before the page is written.
+4. ~~The two kinds are not joined.~~ Joined on the uppercased ticker —
+   the catalog's `ticker` against the index's `companyId`. Verified against the
+   live data: `KESKOB.HE` and `UPM.HE` match exactly on both sides. A company
+   can hold several engine reports (AMD, Nokia and Stora Enso each have two
+   dated ones) and analyses can exist for a company with no engine report at
+   all (`FORTUM.HE`), so the page handles both.
 5. **`PUBINDEX` is a single partition** capped at a 1 MB page. Fine now, and
    `store.js` already records where the GSI on `publishedAt` goes when it
    is not.
@@ -111,10 +141,9 @@ and monetised, which is the step after it.
 
 ## Suggested order
 
-1. Add the analyst id to `GET /analyses`, so filtering by analyst is sound.
-2. Build the store page against the two existing endpoints, filterable by
-   company and analyst, joined on ticker.
-3. Third button on the company-page template, regenerate the report pages.
+1. ~~Add the analyst id to `GET /analyses`.~~ Done.
+2. ~~Build the store page.~~ Done.
+3. ~~Third button on the company-page template.~~ Done.
 4. Decide the anonymous free-window open — the one product decision this needs.
 5. Reviewer-pair report on the audit trail, before ratings go public.
 6. Per-reviewer normalisation of ratings.

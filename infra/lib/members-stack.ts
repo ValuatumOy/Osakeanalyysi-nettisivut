@@ -148,6 +148,10 @@ export class MembersStack extends Stack {
           config.siteUrl,
           `https://${config.zoneDomain}`, // apex — the site answers on both
           `https://test.${config.zoneDomain}`, // staging branch site
+          // test.aiequityreports.com is a Vercel alias and another branch's
+          // preview can hold it, which leaves the staging site reachable only
+          // by its own branch URL. Non-prod only.
+          ...(config.stage === 'prod' ? [] : ['https://osakeanalyysi-nettisivut-git-staging-valuatum-dk.vercel.app']),
         ],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
