@@ -245,11 +245,19 @@ async function main() {
   check('a review without a real comparison → 400', shortComment.status === 400,
     `got ${shortComment.status}`);
 
+  for (const [label, score] of [['0.5', 0.5], ['5.5', 5.5], ['not a number', 'good']]) {
+    const bad = await api('POST', `/analyses/${readable}/review`, {
+      token: reader.token,
+      body: { score, comment: 'A long enough comparison to clear the forty-character minimum.' },
+    });
+    check(`a score of ${label} is refused → 400`, bad.status === 400, `got ${bad.status}`);
+  }
+
   const review = await api('POST', `/analyses/${readable}/review`, {
     token: reader.token,
-    body: { score: 4, comment: 'Adds a genuine argument over the base report on the margin outlook.' },
+    body: { score: 4.5, comment: 'Adds a genuine argument over the base report on the margin outlook.' },
   });
-  check('scoring and commenting clears the review obligation', review.status === 200,
+  check('a decimal score is accepted and stored as given', review.status === 200 && review.data?.score === 4.5,
     JSON.stringify(review.data));
 
   const afterReview = await api('GET', '/analyses?companyId=KESKOB.HE');

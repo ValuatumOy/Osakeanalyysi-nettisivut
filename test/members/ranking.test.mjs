@@ -47,3 +47,11 @@ test('free now: inside a hand-picked window, or after the analyst\'s own decay',
   assert.equal(ranking.isFreeNow({ freeFrom: '2026-12-01T00:00:00Z' }, NOW), false);
   assert.equal(ranking.isFreeNow({}, NOW), false);
 });
+
+test('decimal peer scores order as written — 4.5 beats 4.2', () => {
+  const better = pub('better', { reviewCount: 2, scoreSum: 9.0 }); // two 4.5s
+  const worse = pub('worse', { reviewCount: 2, scoreSum: 8.4 });   // two 4.2s
+  const [first] = ranking.orderAnalyses([worse, better], NOW);
+  assert.equal(first.genId, 'better');
+  assert.equal(Math.round(first.peerScore * 100) / 100, 3.75);
+});

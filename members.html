@@ -19,6 +19,15 @@
 
     .m-card { background: var(--white); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.75rem; box-shadow: 0 1px 2px rgba(26,36,32,0.04); }
     .m-card + .m-card, .m-section { margin-top: 1.5rem; }
+    .m-offer { list-style: none; margin: 0 0 1.1rem; padding: 0; }
+    .m-offer li { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel);
+      padding: 0.5rem 0 0.5rem 1.1rem; border-top: 1px solid var(--color-border); position: relative; }
+    .m-offer li::before { content: ''; position: absolute; left: 0; top: 1.05rem;
+      width: 4px; height: 4px; border-radius: 50%; background: var(--green); }
+    .m-offer strong { color: var(--charcoal); font-weight: 600; }
+    .a-commit { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel);
+      border-left: 2px solid var(--gold); background: var(--gold-faint);
+      border-radius: 0 8px 8px 0; padding: 0.8rem 1.1rem; margin-bottom: 1rem; }
     .m-card h2 { font-size: var(--text-lg); font-weight: 650; margin-bottom: 0.35rem; }
     .m-card .sub { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 1.25rem; }
 
@@ -119,7 +128,13 @@
         <div class="auth-grid">
           <div class="m-card">
             <h2>Analysts — free</h2>
-            <p class="sub">Sign in with LinkedIn, generate one fresh report a month and open ten from the catalog. In exchange you publish the finished analysis together with the prompts you used. Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance.</p>
+            <p class="sub">Sign in with LinkedIn. Every month you get:</p>
+            <ul class="m-offer">
+              <li><strong>10 engine reports</strong> from the catalog — the €20 report as it is sold, 30 days or older.</li>
+              <li><strong>20 analyst analyses</strong> — unlocked one at a time: rate the one you opened and say what it adds, and the next unlocks.</li>
+              <li><strong>1 fresh generation</strong> — free because you publish it, under your own name and LinkedIn profile, with the prompts you used.</li>
+            </ul>
+            <p class="sub">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance.</p>
             <a id="linkedinBtn" class="btn-linkedin" href="#">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
               Sign in with LinkedIn
@@ -152,6 +167,70 @@
             </div>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
+        </div>
+
+        <div class="m-card m-section">
+          <h2>Report library</h2>
+          <p class="sub" id="libraryHint">Ten reports a month from the live public catalog — the €20 engine reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+          <div class="table-wrap">
+            <table class="reports-table" id="reportsTable"></table>
+          </div>
+        </div>
+
+        <div class="m-card m-section" id="analysesCard" hidden>
+          <h2>Analyst analyses</h2>
+          <p class="sub">Published analyses on top of the engine's own report, best first. <strong>One at a time:</strong> opening an analysis spends one of your twenty monthly reads and locks the next one until you have rated it and written what it adds.</p>
+          <div class="gen-row">
+            <input id="analysesTicker" placeholder="Ticker, e.g. NOKIA.HE" style="flex:0 1 180px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+            <button class="btn btn-outline-dark btn-sm" onclick="loadAnalyses()">Show analyses</button>
+          </div>
+          <div id="reviewRow" hidden style="margin-top:1rem;">
+            <p class="muted" id="reviewPrompt"></p>
+            <div class="gen-row">
+              <label class="muted" style="flex:0 1 220px;">Rating 1–5 (decimals allowed)
+                <input id="reviewScore" type="number" min="1" max="5" step="0.1" value="4"
+                  style="width:100%; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+              </label>
+              <textarea id="reviewComment" placeholder="What does this add over the base report, or over the other analyses of the same company? (min 40 characters)"></textarea>
+              <button class="btn btn-primary btn-sm" onclick="submitReview()">Submit review</button>
+            </div>
+          </div>
+          <div class="table-wrap" style="margin-top:1rem;">
+            <table class="reports-table" id="analysesTable"></table>
+          </div>
+        </div>
+
+        <div class="m-card m-section" id="genCard" hidden>
+          <h2 id="genTitle">Monthly generation</h2>
+          <p class="sub" id="genSub">Reserve your report generation for this month.</p>
+          <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished analysis on the site under your own name and LinkedIn profile.</p>
+          <div id="genStatus" class="muted"></div>
+          <div class="gen-row" id="reserveRow">
+            <input id="genCompany" placeholder="Company name, e.g. Nokia Oyj" style="flex:1 1 220px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+            <input id="genTicker" placeholder="Ticker, e.g. NOKIA" style="flex:0 1 130px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
+            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Start generation</button>
+          </div>
+          <div id="genProgress" class="muted" style="margin-top:0.75rem;"></div>
+          <div class="gen-row" id="submitRow" hidden>
+            <textarea id="prompts" placeholder="Your modification prompts (will be published with the report)"></textarea>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; flex:1 1 100%;">
+              <label class="muted">Price €
+                <input id="pubPrice" type="number" min="0" step="1" value="0" style="width:90px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
+              </label>
+              <label class="muted">Free after (days, max 365)
+                <input id="pubFreeAfter" type="number" min="1" max="365" step="1" value="365" style="width:100px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
+              </label>
+              <button class="btn btn-gold btn-sm" onclick="submitGen()">Publish analysis</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card m-section" id="earningsCard" hidden>
+          <h2>Earnings</h2>
+          <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
+          <div class="table-wrap">
+            <table class="reports-table" id="earningsTable"></table>
+          </div>
         </div>
 
         <div class="m-card m-section" id="plansCard">
@@ -197,71 +276,10 @@
           </div>
         </div>
 
-        <div class="m-card m-section" id="genCard" hidden>
-          <h2 id="genTitle">Monthly generation</h2>
-          <p class="sub" id="genSub">Reserve your report generation for this month.</p>
-          <div id="genStatus" class="muted"></div>
-          <div class="gen-row" id="reserveRow">
-            <input id="genCompany" placeholder="Company name, e.g. Nokia Oyj" style="flex:1 1 220px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <input id="genTicker" placeholder="Ticker, e.g. NOKIA" style="flex:0 1 130px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Start generation</button>
-          </div>
-          <div id="genProgress" class="muted" style="margin-top:0.75rem;"></div>
-          <div class="gen-row" id="submitRow" hidden>
-            <textarea id="prompts" placeholder="Your modification prompts (will be published with the report)"></textarea>
-            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; flex:1 1 100%;">
-              <label class="muted">Price €
-                <input id="pubPrice" type="number" min="0" step="1" value="0" style="width:90px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
-              </label>
-              <label class="muted">Free after (days, max 365)
-                <input id="pubFreeAfter" type="number" min="1" max="365" step="1" value="365" style="width:100px; border:1px solid var(--color-border); border-radius:8px; padding:0.45em 0.6em; font:inherit; font-size:var(--text-sm);">
-              </label>
-              <button class="btn btn-gold btn-sm" onclick="submitGen()">Publish analysis</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="m-card m-section" id="earningsCard" hidden>
-          <h2>Earnings</h2>
-          <p class="sub">A fee per published analysis. It matures 14 days after publication — an analysis taken down in that window earns nothing.</p>
-          <div class="table-wrap">
-            <table class="reports-table" id="earningsTable"></table>
-          </div>
-        </div>
 
-        <div class="m-card m-section" id="analysesCard" hidden>
-          <h2>Analyst analyses</h2>
-          <p class="sub">Published analyses on top of the engine's own report, best first. Opening one spends a monthly read — and you owe it a score and a written comparison before you can open the next.</p>
-          <div class="gen-row">
-            <input id="analysesTicker" placeholder="Ticker, e.g. NOKIA.HE" style="flex:0 1 180px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-            <button class="btn btn-outline-dark btn-sm" onclick="loadAnalyses()">Show analyses</button>
-          </div>
-          <div id="reviewRow" hidden style="margin-top:1rem;">
-            <p class="muted" id="reviewPrompt"></p>
-            <div class="gen-row">
-              <select id="reviewScore" style="flex:0 1 130px; border:1px solid var(--color-border); border-radius:8px; padding:0.65em 0.9em; font:inherit; font-size:var(--text-sm);">
-                <option value="5">5 — outstanding</option>
-                <option value="4" selected>4 — good</option>
-                <option value="3">3 — adds a little</option>
-                <option value="2">2 — thin</option>
-                <option value="1">1 — adds nothing</option>
-              </select>
-              <textarea id="reviewComment" placeholder="What does this add over the base report, or over the other analyses of the same company? (min 40 characters)"></textarea>
-              <button class="btn btn-primary btn-sm" onclick="submitReview()">Submit review</button>
-            </div>
-          </div>
-          <div class="table-wrap" style="margin-top:1rem;">
-            <table class="reports-table" id="analysesTable"></table>
-          </div>
-        </div>
 
-        <div class="m-card m-section">
-          <h2>Report library</h2>
-          <p class="sub" id="libraryHint">The live catalog from the public site — the same reports, updated as they are published. Opening one uses a monthly pick; re-opening it never costs another.</p>
-          <div class="table-wrap">
-            <table class="reports-table" id="reportsTable"></table>
-          </div>
-        </div>
+
       </div>
     </div>
   </main>
@@ -382,6 +400,8 @@
         document.getElementById('genStatus').textContent = ob
           ? 'Open publication obligation — publish your analysis and prompts to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
+        document.getElementById('genCommit').hidden = !isAnalyst;
+        window._publishes = isAnalyst;
         document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
         window._openObligationId = ob;
@@ -438,6 +458,10 @@
       const company = document.getElementById('genCompany').value.trim();
       const ticker = document.getElementById('genTicker').value.trim();
       if (!company || !ticker) { notice('err', 'Enter both the company name and its ticker.'); return; }
+      if (window._publishes && !confirm(
+        'This generation is free because you publish it.\n\n' +
+        'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
+        'and you get no further generation until it is published.\n\nStart the generation for ' + company + '?')) return;
 
       const { status, data } = await api('POST', '/generations/free', { company, ticker });
       if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }

@@ -828,10 +828,13 @@ async function postAnalysisReview(event) {
   const genId = event.pathParameters?.genId || '';
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
-  const score = Number(body.score);
-  if (!Number.isInteger(score) || score < 1 || score > 5) {
-    return json(400, { error: 'score must be an integer 1-5' });
+  // Decimals are the point: an analysis is rarely a whole number better than
+  // the one before it. Rounded to one place so the stored sum stays exact.
+  const raw = Number(body.score);
+  if (!Number.isFinite(raw) || raw < 1 || raw > 5) {
+    return json(400, { error: 'score must be a number between 1 and 5, decimals allowed' });
   }
+  const score = Math.round(raw * 10) / 10;
   const comment = String(body.comment || '').trim();
   if (comment.length < 40) {
     return json(400, { error: 'A written comparison of at least 40 characters is required' });
