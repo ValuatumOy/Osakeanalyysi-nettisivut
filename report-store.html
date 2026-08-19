@@ -71,6 +71,8 @@
       border-radius: 10px; padding: 0.9rem 1.2rem; margin-top: 1.25rem;
       font-size: var(--text-sm); font-weight: 300; color: var(--charcoal);
       display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    /* display:flex would otherwise beat the hidden attribute and leave an empty box. */
+    .store-banner[hidden] { display: none; }
     .store-empty { background: var(--white); border: 1px dashed var(--color-border); border-radius: 14px;
       padding: 2.5rem 1.75rem; text-align: center; margin-top: 1.5rem;
       font-size: var(--text-sm); font-weight: 300; color: var(--gray-steel); }
