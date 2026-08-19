@@ -28,11 +28,21 @@ generation you commit to publishing. See [members-test.md](members-test.md).
 
 ## Still not built
 
-- **Opening an analysis anonymously.** A logged-out visitor sees the row —
-  analyst, rating, price — and the CTA is "Sign in to read". `free: true` rows
-  are labelled *Free for members*, deliberately: nothing opens a document
-  without a member token, so a bare "Free" would be a promise the backend
-  cannot keep. This is the one product decision the store still needs.
+- ~~Opening an analysis anonymously.~~ Decided and built, 19.8.2026. Esa's
+  rule: *a logged-out visitor can see the free default reports, or a free
+  analyst report if we manually decide it becomes available.* So the two kinds
+  of free were split. `freeUntil` — the window an administrator opens with
+  `POST /admin/members/feature` — is the only one that opens the document to
+  the public, served by `GET /analyses/{genId}/free` with no auth, no allowance
+  and no review owed. `freeFrom`, the decay time the analyst sets themselves,
+  stops costing a member one of their monthly reads and nothing more; the
+  submit form and the analyst page now say so. `GET /analyses` carries both
+  flags: `free` for members, `publicFree` for everyone.
+
+  The public route is throttled on its own (10/s, burst 20) — the document is
+  free by design, but presigning is Lambda and S3 cost on demand. A missing
+  analysis and a taken-down one both answer 404, so a takedown is not
+  discoverable.
 - **Checkout behind `priceEur`.** Still nothing sells an analysis.
 - **Analyst profile pages.** The store filters by analyst; there is no page
   per analyst yet.

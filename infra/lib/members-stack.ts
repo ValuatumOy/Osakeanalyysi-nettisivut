@@ -179,6 +179,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
+      [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
       [apigwv2.HttpMethod.GET, '/admin/members/publications'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
@@ -207,14 +208,22 @@ export class MembersStack extends Stack {
     }
     const throttled = (routePath: string) =>
       routePath.startsWith('/admin/') || routePath.startsWith('/test/') || routePath.startsWith('/auth/magic');
-    cfnStage.routeSettings = Object.fromEntries(
-      routes
-        .filter(([, routePath]) => throttled(routePath))
-        .map(([method, routePath]) => [
-          `${method} ${routePath}`,
-          { ThrottlingRateLimit: 5, ThrottlingBurstLimit: 10 },
-        ]),
-    );
+    // The one route that mints a signed S3 URL with no account behind it. The
+    // document is free by design, but presigning is Lambda and S3 cost on
+    // demand, so it gets a lid of its own — looser than the secret-bearing
+    // routes, tighter than the default.
+    const publicFreeOpen = 'GET /analyses/{genId}/free';
+    cfnStage.routeSettings = {
+      ...Object.fromEntries(
+        routes
+          .filter(([, routePath]) => throttled(routePath))
+          .map(([method, routePath]) => [
+            `${method} ${routePath}`,
+            { ThrottlingRateLimit: 5, ThrottlingBurstLimit: 10 },
+          ]),
+      ),
+      [publicFreeOpen]: { ThrottlingRateLimit: 10, ThrottlingBurstLimit: 20 },
+    };
 
     const certificate = new acm.Certificate(this, 'MembersCertificate', {
       domainName: config.membersApiDomain,

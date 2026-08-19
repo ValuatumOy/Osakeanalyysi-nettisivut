@@ -157,7 +157,7 @@
       <div id="storeList"></div>
 
       <p class="store-note">
-        An analyst analysis is the engine's report re-run with that analyst's own assumptions and instructions, published under their own name. The rating measures <strong>what the analyst's work added</strong> over the base report — not how good the base report was. Reading one costs a monthly allowance and a written review, which is why the ratings come from people who actually read it.
+        An analyst analysis is the engine's report re-run with that analyst's own assumptions and instructions, published under their own name. The rating measures <strong>what the analyst's work added</strong> over the base report — not how good the base report was. Reading one costs a member a monthly allowance and a written review, which is why the ratings come from people who actually read it. Anyone can read the engine's free weekly reports, and the analyst analyses we hand-pick into a free window — those say <em>Free to read</em>.
         <span id="storeEnvNote"></span>
       </p>
     </div>
@@ -279,8 +279,10 @@
             '<span class="sep">·</span>' + price + '</div>' +
         '</div>' +
         '<div class="store-row-cta">' +
-          '<a class="btn btn-primary btn-sm" href="/reports.html#report-' + esc(report.id) + '">' +
-            (report.isFree ? 'Open' : 'Get the full report') + '</a>' +
+          (report.isFree && report.pdfUrl
+            ? '<a class="btn btn-primary btn-sm" href="' + esc(report.pdfUrl) + '" target="_blank" rel="noopener">Read free</a>'
+            : '<a class="btn btn-primary btn-sm" href="/reports.html#report-' + esc(report.id) + '">' +
+                (report.isFree ? 'Open' : 'Get the full report') + '</a>') +
         '</div>' +
       '</div>';
     }
@@ -290,11 +292,14 @@
         ? '<span class="store-score">' + analysis.peerScore.toFixed(2) + ' / 5</span>' +
           ' <span>from ' + analysis.reviewCount + ' review' + (analysis.reviewCount === 1 ? '' : 's') + '</span>'
         : '<span class="store-noscore">Not reviewed yet</span>';
-      // free:true means free for signed-in members; nothing opens a document
-      // anonymously yet, so do not promise a free download here.
-      const price = analysis.free
-        ? '<span class="pill-free">Free for members</span>'
-        : (analysis.priceEur > 0 ? '€' + analysis.priceEur : 'Costs one monthly read');
+      // publicFree is the window an administrator opened by hand — the only one
+      // a logged-out visitor may open. `free` alone is the analyst's own decay,
+      // which spares a member a read but does not open the document publicly.
+      const price = analysis.publicFree
+        ? '<span class="pill-free">Free to read</span>'
+        : analysis.free
+          ? '<span class="pill-free">Free for members</span>'
+          : (analysis.priceEur > 0 ? '€' + analysis.priceEur : 'Costs one monthly read');
       const published = new Date(analysis.publishedAt);
       const date = isNaN(published) ? '' : published.toISOString().slice(0, 10);
       return '<div class="store-row">' +
@@ -306,10 +311,31 @@
             (date ? '<span class="sep">·</span>published ' + date : '') + '</div>' +
         '</div>' +
         '<div class="store-row-cta">' +
-          '<a class="btn btn-outline-dark btn-sm" href="members.html">Sign in to read</a>' +
+          (analysis.publicFree
+            ? '<button class="btn btn-primary btn-sm" onclick="openFree(\'' + esc(analysis.genId) + '\', this)">Read free</button>'
+            : '<a class="btn btn-outline-dark btn-sm" href="members.html">Sign in to read</a>') +
         '</div>' +
       '</div>';
     }
+
+    // No account needed: the API only answers for an analysis an administrator
+    // has put in a free window, and hands back a short-lived signed URL.
+    async function openFree(genId, button) {
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Opening…';
+      try {
+        const res = await fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/free');
+        const data = await res.json().catch(() => null);
+        if (res.ok && data?.url) { window.open(data.url, '_blank', 'noopener'); button.textContent = label; }
+        else button.textContent = res.status === 403 ? 'No longer free' : 'Not available';
+      } catch (_) {
+        button.textContent = 'Not available';
+      } finally {
+        button.disabled = false;
+      }
+    }
+    window.openFree = openFree;
 
     function render() {
       const kind = document.getElementById('fKind').value;

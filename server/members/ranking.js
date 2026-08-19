@@ -40,12 +40,21 @@ function orderAnalyses(items, now = new Date()) {
       || String(a.genId).localeCompare(String(b.genId)));
 }
 
-// An analysis is readable without spending anything while its hand-picked free
-// window is open, or once the analyst's own decay time has passed.
-function isFreeNow(item, now = new Date()) {
-  const at = now.toISOString();
-  if (item?.freeUntil && at <= item.freeUntil) return true;
-  return Boolean(item?.freeFrom && at >= item.freeFrom);
+// Two different kinds of free, and the difference decides who may read it.
+//
+// `freeUntil` is a window an administrator opened by hand — the only thing that
+// makes an analysis readable by a logged-out visitor (Esa, 19.8.2026: visitors
+// see the free engine reports, and an analyst analysis only when we decide it).
+// `freeFrom` is the analyst's own decay time: it stops costing a member one of
+// their monthly reads, but it does not open the document to the public.
+function isPublicFreeNow(item, now = new Date()) {
+  return Boolean(item?.freeUntil && now.toISOString() <= item.freeUntil);
 }
 
-module.exports = { orderAnalyses, score, peerScore, isFreeNow };
+// Free for a signed-in member: either of the two.
+function isFreeNow(item, now = new Date()) {
+  if (isPublicFreeNow(item, now)) return true;
+  return Boolean(item?.freeFrom && now.toISOString() >= item.freeFrom);
+}
+
+module.exports = { orderAnalyses, score, peerScore, isFreeNow, isPublicFreeNow };

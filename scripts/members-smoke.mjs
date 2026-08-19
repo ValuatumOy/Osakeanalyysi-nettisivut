@@ -4,10 +4,9 @@
 //
 //   MEMBERS_TEST_SECRET=... node scripts/members-smoke.mjs
 //
-// Optional: MEMBERS_API (default members-test), CATALOG_API (default api-test).
+// Optional: MEMBERS_API (default members-test).
 
 const MEMBERS_API = (process.env.MEMBERS_API || 'https://members-test.aiequityreports.com').replace(/\/$/, '');
-const CATALOG_API = (process.env.CATALOG_API || 'https://api-test.aiequityreports.com').replace(/\/$/, '');
 const TEST_SECRET = process.env.MEMBERS_TEST_SECRET;
 if (!TEST_SECRET) {
   console.error('Set MEMBERS_TEST_SECRET (SSM /aiequityreports/test/members-test-utils-secret)');
@@ -43,8 +42,11 @@ const testApi = (method, path, body) => api(method, path, {
 
 const daysOld = (report) => (Date.now() - new Date(report.reportDate).getTime()) / 86400000;
 
+// The members API's own catalog, not the stage's public API. Since the members
+// stack reads production's catalog in every stage, any other source hands the
+// smoke report ids the API it is testing has never heard of.
 async function catalogReports() {
-  const res = await fetch(`${CATALOG_API}/api/reports`);
+  const res = await fetch(`${MEMBERS_API}/reports`);
   if (!res.ok) return [];
   const { reports } = await res.json();
   return reports || [];
@@ -283,9 +285,28 @@ async function main() {
     check('an analysis can be handed out free for a period', featured.status === 200,
       JSON.stringify(featured.data));
     const freeNow = await api('GET', '/analyses?companyId=KESKOB.HE');
-    check('a featured analysis shows as free',
-      freeNow.data?.analyses?.find(a => a.genId === readable)?.free === true,
-      JSON.stringify(freeNow.data?.analyses?.[0]));
+    const featuredRow = freeNow.data?.analyses?.find(a => a.genId === readable);
+    check('a featured analysis shows as free', featuredRow?.free === true, JSON.stringify(featuredRow));
+    check('a featured analysis is public-free', featuredRow?.publicFree === true, JSON.stringify(featuredRow));
+
+    // The whole point of the rule: no token at all on these two calls.
+    const anonFeatured = await api('GET', `/analyses/${readable}/free`);
+    check('a logged-out visitor may open a featured analysis',
+      anonFeatured.status === 200 || anonFeatured.status === 404,
+      `got ${anonFeatured.status} ${JSON.stringify(anonFeatured.data)}`);
+
+    const notFeatured = freeNow.data?.analyses?.find(a => a.genId !== readable && !a.publicFree);
+    if (notFeatured) {
+      const anonDenied = await api('GET', `/analyses/${notFeatured.genId}/free`);
+      check('a logged-out visitor may not open an analysis outside a free window',
+        anonDenied.status === 403, `got ${anonDenied.status}`);
+    } else {
+      console.log('· skip: no un-featured analysis in the index to check the anonymous refusal against');
+    }
+
+    const anonUnknown = await api('GET', '/analyses/00000000-0000-0000-0000-000000000000/free');
+    check('an unknown analysis is a 404 to a logged-out visitor', anonUnknown.status === 404,
+      `got ${anonUnknown.status}`);
 
     const coach = await adminApi('POST', '/admin/members/role',
       { userId: stepDown.userId, role: 'coaching' });

@@ -755,8 +755,36 @@ async function getAnalyses(event) {
       priceEur: item.priceEur || 0,
       reviewCount: item.reviewCount || 0,
       peerScore: Math.round(item.peerScore * 100) / 100,
+      // `free` costs a member no read; `publicFree` is the administrator's
+      // hand-picked window, the only one a logged-out visitor may open.
       free: ranking.isFreeNow(item, now),
+      publicFree: ranking.isPublicFreeNow(item, now),
     })),
+  });
+}
+
+// GET /analyses/{genId}/free — no account, no allowance, no review owed. The
+// only analyst analysis a logged-out visitor can open is one an administrator
+// hand-picked into a free window (Esa, 19.8.2026). The analyst's own decay time
+// deliberately does NOT open this door: it only stops costing members a read.
+async function getAnalysisFree(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  // Same 404 for missing and taken-down: a takedown should not be discoverable.
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  if (!ranking.isPublicFreeNow(index, now)) {
+    return json(403, { error: 'This analysis is not in a free window' });
+  }
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(404, { error: 'No document for this analysis' });
+  await store.audit(index.userId, 'analysis-opened-free', { genId });
+  return json(200, {
+    genId,
+    analyst: index.analystName || 'Analyst',
+    companyId: index.companyId,
+    url: document.url,
+    expiresIn: document.expiresIn,
   });
 }
 
@@ -1076,6 +1104,7 @@ const PUBLIC_ROUTES = {
   'GET /health': async () => json(200, { ok: true, stage: STAGE }),
   'GET /reports': getReportsList,
   'GET /analyses': getAnalyses,
+  'GET /analyses/{genId}/free': getAnalysisFree,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,
   'POST /auth/magic-link': postMagicLink,

@@ -55,3 +55,21 @@ test('decimal peer scores order as written — 4.5 beats 4.2', () => {
   assert.equal(first.genId, 'better');
   assert.equal(Math.round(first.peerScore * 100) / 100, 3.75);
 });
+
+test('public free is the hand-picked window only, never the analyst’s own decay', () => {
+  const decayed = pub('decayed', { freeFrom: '2026-08-01T00:00:00Z' });
+  const featured = pub('featured', { freeUntil: '2026-09-30T00:00:00Z' });
+  const expired = pub('expired', { freeUntil: '2026-08-01T00:00:00Z' });
+  const plain = pub('plain');
+
+  // Free to a member: the decayed one and the open window.
+  assert.equal(ranking.isFreeNow(decayed, NOW), true);
+  assert.equal(ranking.isFreeNow(featured, NOW), true);
+  assert.equal(ranking.isFreeNow(plain, NOW), false);
+
+  // Free to a logged-out visitor: only what an administrator opened.
+  assert.equal(ranking.isPublicFreeNow(decayed, NOW), false);
+  assert.equal(ranking.isPublicFreeNow(featured, NOW), true);
+  assert.equal(ranking.isPublicFreeNow(expired, NOW), false);
+  assert.equal(ranking.isPublicFreeNow(plain, NOW), false);
+});
