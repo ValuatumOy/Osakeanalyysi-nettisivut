@@ -16,6 +16,9 @@ const DEFAULT_LIMITS = {
   // Revising toward their own view is the analyst's whole job, so they get
   // the most rounds; every round is a real engine run, hence a cap at all.
   analyst: { generations: 1, basePicks: 10, analystReads: 20, revisions: 5 },
+  // A promoted analyst: the reservation transact accepts the role, so it must
+  // have allowances — same as analyst until coaching gets its own tuning.
+  coaching: { generations: 1, basePicks: 10, analystReads: 20, revisions: 5 },
   reader: { generations: 1, basePicks: 5, analystReads: 10, revisions: 2 },
 
   // Subscription tiers. Monthly plans deliberately get less than annual ones:

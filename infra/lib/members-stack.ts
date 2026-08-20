@@ -111,9 +111,17 @@ export class MembersStack extends Stack {
         MEMBERS_API_URL: membersApiUrl,
         // Auth redirects may return to any of these; the first is the default.
         // Anything not on this list is rejected (open-redirect guard).
-        MEMBERS_FRONTEND_URLS: [
-          `https://test.${config.zoneDomain}/members.html`,
+        // The FIRST entry is the fallback for a rejected/missing returnTo, so
+        // it must be this stage's own site — a prod error page must never land
+        // on the test domain. The store page is a valid return target too: the
+        // anonymous buy flow returns there to hand over the purchased PDF.
+        MEMBERS_FRONTEND_URLS: [...new Set([
           `${config.siteUrl}/members.html`,
+          `${config.siteUrl}/report-store.html`,
+          `https://${config.zoneDomain}/members.html`, // apex — the site answers on both
+          `https://${config.zoneDomain}/report-store.html`,
+          `https://test.${config.zoneDomain}/members.html`,
+          `https://test.${config.zoneDomain}/report-store.html`,
           'http://localhost:3100/members.html',
           // Same reason as the CORS entry: another branch's preview can hold the
           // test.aiequityreports.com alias, and without this a sign-in started
@@ -122,7 +130,7 @@ export class MembersStack extends Stack {
             `${STAGING_BRANCH_ORIGIN}/members.html`,
             `${STAGING_BRANCH_ORIGIN}/report-store.html`,
           ]),
-        ].join(','),
+        ])].join(','),
         // Fixed fee per published analysis. 0 until the business decision lands,
         // so the ledger records states without promising anyone money.
         BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
