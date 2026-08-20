@@ -7,3 +7,4 @@ server/node_modules/
 server/data/
 infra/cdk.out/
 pdfs/
+.env*
