@@ -611,8 +611,10 @@ async function postBillingCheckout(event) {
     subscription_data: {
       metadata: { userId: profile.userId, plan, coverageCompanyId },
     },
-    success_url: `${auth.frontendUrl()}#checkout=success`,
-    cancel_url: `${auth.frontendUrl()}#checkout=cancel`,
+    // Come back to whichever site started the checkout (prod / staging / dev);
+    // frontendUrl falls back to this stage's own members page.
+    success_url: `${auth.frontendUrl(body.returnTo)}#checkout=success`,
+    cancel_url: `${auth.frontendUrl(body.returnTo)}#checkout=cancel`,
   });
   return json(200, { url: session.url });
 }

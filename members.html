@@ -425,7 +425,7 @@
     }
 
     async function checkout(plan, interval) {
-      const body = { plan, interval };
+      const body = { plan, interval, returnTo: RETURN_TO };
       if (plan === 'coverage') {
         body.coverageCompanyId = document.getElementById('coverageTicker').value.trim().toUpperCase();
         if (!body.coverageCompanyId) { notice('err', 'Enter the ticker of the company you want covered.'); return; }
