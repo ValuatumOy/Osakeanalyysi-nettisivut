@@ -980,7 +980,7 @@
     async function buyReadyReport(reportId, button, withRevisions) {
       if (button && button.dataset.loading === '1') return;
       const old = button ? button.textContent : '';
-      if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
+      if (button) { button.dataset.loading = '1'; button.dataset.originalLabel = old; button.textContent = 'Redirecting...'; button.disabled = true; }
       try {
         const res = await fetch('/api/create-checkout', {
           method: 'POST',
@@ -997,7 +997,7 @@
       if (button && button.dataset.loading === '1') return;
       options = options || {};
       const old = button ? button.textContent : '';
-      if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
+      if (button) { button.dataset.loading = '1'; button.dataset.originalLabel = old; button.textContent = 'Redirecting...'; button.disabled = true; }
       try {
         const res = await fetch('/api/create-fresh-checkout', {
           method: 'POST',

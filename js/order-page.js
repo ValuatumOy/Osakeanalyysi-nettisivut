@@ -361,6 +361,13 @@
     if (remaining > 0) {
       document.getElementById('revisionCount').textContent =
         remaining + ' of ' + order.revisionsAllowed + ' report revisions remaining.';
+      // Reset the button every time this box is (re)shown: after a
+      // successful submit it stays disabled/"Submitting..." from the click
+      // handler below, and if a revision then fails, the flow lands back
+      // here with the button still stuck that way.
+      const revisionButton = document.getElementById('revisionSubmit');
+      revisionButton.disabled = false;
+      revisionButton.textContent = 'Request revision';
       show('revisionBox');
       hide('revisionExhausted');
     } else if ((order.revisionsAllowed || 0) > 0) {
@@ -453,6 +460,14 @@
       button.disabled = false;
       button.textContent = 'Request revision';
     }
+  });
+
+  // If this tab is restored from the browser's back/forward cache (e.g. the
+  // customer navigated away and back), polling timers can be paused for an
+  // unpredictable amount of time. Refresh immediately rather than waiting
+  // for the next scheduled poll, so the page never sits on stale status.
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) load();
   });
 
   load();

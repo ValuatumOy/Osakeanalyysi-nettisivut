@@ -2,6 +2,25 @@
    VALUATUM AI EQUITY REPORTS — Main Script
 ===================================================== */
 
+// ── Un-stick checkout buttons after a bfcache restore ──────────────────
+// When a customer hits "back" from Stripe Checkout, browsers often restore
+// this page from the back/forward cache instead of reloading it. That
+// restores the DOM exactly as it was when they left — still showing
+// "Redirecting to secure checkout..." with the button disabled — because no
+// script re-runs on a bfcache restore. `pageshow` with `persisted: true`
+// fires in that case (unlike a normal load), so use it to reset anything
+// still marked as loading.
+window.addEventListener('pageshow', function (event) {
+  if (!event.persisted) return;
+  document.querySelectorAll('[data-loading="1"]').forEach(function (el) {
+    el.dataset.loading = '';
+    el.style.pointerEvents = '';
+    el.style.opacity = '';
+    el.disabled = false;
+    if (el.dataset.originalLabel) el.textContent = el.dataset.originalLabel;
+  });
+});
+
 // ── Nav scroll ──────────────────────────────────────
 (function initNav() {
   const nav = document.getElementById('nav');
@@ -617,6 +636,7 @@ function openRevisionsModal(choice, onChoose) {
   async function submitFreshReport(btn, company, ticker, withRevisions) {
     var label = btn.textContent;
     btn.dataset.loading = '1';
+    btn.dataset.originalLabel = label;
     btn.style.pointerEvents = 'none';
     btn.style.opacity = '0.7';
     btn.textContent = 'Redirecting to secure checkout...';
@@ -665,6 +685,7 @@ function openRevisionsModal(choice, onChoose) {
 async function submitReadyReportCheckout(link, reportId, withRevisions) {
   var label = link.textContent;
   link.dataset.loading = '1';
+  link.dataset.originalLabel = label;
   link.style.pointerEvents = 'none';
   link.style.opacity = '0.7';
   link.textContent = 'Redirecting to secure checkout...';
