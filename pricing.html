@@ -22,6 +22,22 @@
   <style>
     .enterprise-features-list li { color: rgba(255,255,255,0.85) !important; }
     .enterprise-features-list li::before { background: var(--green-light) !important; }
+
+    .billing-toggle { display:inline-flex; gap:0.25rem; padding:0.25rem; margin-bottom:2rem;
+      background:var(--off-white); border:1px solid var(--color-border); border-radius:999px; }
+    .billing-toggle-btn { border:none; background:none; cursor:pointer; font:inherit;
+      font-size:var(--text-sm); font-weight:500; color:var(--gray-steel);
+      padding:0.55em 1.4em; border-radius:999px; transition:background var(--trs), color var(--trs); }
+    .billing-toggle-btn:hover { color:var(--charcoal); }
+    .billing-toggle-btn.is-active { background:var(--white); color:var(--charcoal);
+      box-shadow:0 1px 3px rgba(26,36,32,0.10); }
+    .billing-save { display:inline-block; margin-left:0.5em; font-size:var(--text-xs); font-weight:600;
+      color:var(--green-deep); background:var(--green-mist); border-radius:999px; padding:0.15em 0.7em; }
+
+    /* Four narrow cards, and the yearly prices carry decimals — €32.50/month
+       does not fit the one-off cards' display size. */
+    .pricing-member-grid .pricing-price-main { font-size: clamp(2.25rem, 3vw, 3rem); }
+    .pricing-member-grid .pricing-price-wrap { display:flex; align-items:baseline; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -35,28 +51,38 @@
           <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
         </div>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="reports.html" class="nav-link">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link is-active" aria-current="page">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="index.html" class="nav-mobile-link">Home</a>
       <a href="reports.html" class="nav-mobile-link">Reports</a>
-      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
+      <a href="pricing.html" class="nav-mobile-link is-active" aria-current="page">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="about.html" class="nav-mobile-link">About</a>
       <a href="faq.html" class="nav-mobile-link">FAQ</a>
       <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>
 
@@ -84,7 +110,7 @@
       <div class="container">
         <span class="section-eyebrow section-eyebrow--light">Pricing</span>
         <h1 class="section-headline section-headline--light" style="max-width:600px;">Simple, transparent pricing.</h1>
-        <p style="font-size:var(--text-md); font-weight:300; color:rgba(255,255,255,0.6); max-width:520px;">Ready reports and fresh reports on demand. No subscriptions required.</p>
+        <p style="font-size:var(--text-md); font-weight:300; color:rgba(255,255,255,0.6); max-width:520px;">Ready reports and fresh reports on demand — or a membership that fits how much research you read.</p>
       </div>
     </section>
 
@@ -165,6 +191,95 @@
 
         </div>
 
+        <!-- MEMBERSHIPS -->
+        <div style="margin-bottom:3rem;">
+          <span class="section-eyebrow">Memberships</span>
+          <h2 class="section-headline" style="margin-bottom:0.75rem;">Read more, pay less.</h2>
+          <p style="font-size:var(--text-md); font-weight:300; color:var(--gray-steel); max-width:640px; margin-bottom:1.75rem;">Pick reports from our catalog every month at a fraction of the one-off price. Billed securely by Stripe. <a href="members.html" style="color:var(--green);">Go to the member area →</a></p>
+
+          <!-- Billing toggle -->
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button type="button" class="billing-toggle-btn is-active" data-interval="month" aria-pressed="true">Monthly</button>
+            <button type="button" class="billing-toggle-btn" data-interval="year" aria-pressed="false">Yearly <span class="billing-save">2 months free</span></button>
+          </div>
+
+          <div class="pricing-member-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem;">
+
+            <!-- Analyst freemium -->
+            <div class="pricing-card">
+              <span class="pricing-badge" style="background:#0A66C2; color:white;">For analysts</span>
+              <div class="pricing-name">Analyst</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€0</span></div>
+              <div class="pricing-period">free · sign in with LinkedIn</div>
+              <p class="pricing-desc">For equity analysts who want to build a public track record. You get free generations — in exchange your finished report and your modification prompts are published on the site.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>1 fresh report generation per month</li>
+                <li>You publish the report + your prompts</li>
+                <li>10 catalog reports per month (30+ days old)</li>
+                <li>LinkedIn identity on your published work</li>
+              </ul>
+              <p style="text-align:center; margin-bottom:1rem; font-size:var(--text-xs);"><a href="analysts.html" style="color:var(--green);">How the analyst programme works →</a></p>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Sign in with LinkedIn</a>
+            </div>
+
+            <!-- Investor -->
+            <div class="pricing-card">
+              <div class="pricing-name">Investor</div>
+              <div class="pricing-price-wrap">
+                <span class="pricing-price-main" data-price-month="€19" data-price-year="€15.83">€19</span><span style="font-size:var(--text-sm); color:var(--gray-steel);" data-suffix-month="/month" data-suffix-year="/month">/month</span>
+              </div>
+              <div class="pricing-period" data-period-month="€19/month · billed monthly" data-period-year="€190 billed yearly · save €38">€19/month · billed monthly</div>
+              <p class="pricing-desc">For active private investors who follow a handful of companies. Pick reports from the catalog every month at a fraction of the €20 one-off price.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li data-feat-month="3 self-picked reports per month" data-feat-year="5 self-picked reports per month">3 self-picked reports per month</li>
+                <li data-feat-month="€6.33 per report" data-feat-year="€3.17 per report">€6.33 per report</li>
+                <li>Any report, including the newest</li>
+                <li>Fresh generations at the €40 member price</li>
+                <li>Email us to cancel or change your plan</li>
+              </ul>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Investor</a>
+            </div>
+
+            <!-- Investor Plus -->
+            <div class="pricing-card pricing-card--featured">
+              <span class="pricing-badge">Best value</span>
+              <div class="pricing-name">Investor Plus</div>
+              <div class="pricing-price-wrap">
+                <span class="pricing-price-main" data-price-month="€39" data-price-year="€32.50">€39</span><span style="font-size:var(--text-sm); color:var(--gray-steel);" data-suffix-month="/month" data-suffix-year="/month">/month</span>
+              </div>
+              <div class="pricing-period" data-period-month="€39/month · billed monthly" data-period-year="€390 billed yearly · save €78">€39/month · billed monthly</div>
+              <p class="pricing-desc">For investors covering a wide portfolio. A large monthly report allowance plus one private fresh generation — a €50 product on its own.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li data-feat-month="10 self-picked reports per month" data-feat-year="15 self-picked reports per month">10 self-picked reports per month</li>
+                <li>1 private fresh generation per month</li>
+                <li>Your fresh report stays private to you</li>
+                <li>Extra generations at the €40 member price</li>
+                <li>Email us to cancel or change your plan</li>
+              </ul>
+              <a href="members.html" class="btn btn-primary pricing-card-cta" style="width:100%; justify-content:center;">Start Investor Plus</a>
+            </div>
+
+            <!-- Company Coverage -->
+            <div class="pricing-card">
+              <span class="pricing-badge" style="background:var(--gold); color:white;">Follow one company</span>
+              <div class="pricing-name">Company Coverage</div>
+              <div class="pricing-price-wrap"><span class="pricing-price-main">€59</span><span style="font-size:var(--text-sm); color:var(--gray-steel);">/year</span></div>
+              <div class="pricing-period">one company · billed yearly only</div>
+              <p class="pricing-desc">Own shares in one company and want to stay on top of it? Get its latest report now and every update through the year.</p>
+              <ul class="pricing-features-list" style="margin-bottom:1.5rem;">
+                <li>One listed company of your choice</li>
+                <li>Latest report immediately</li>
+                <li>4 report updates per year</li>
+                <li>Roughly quarterly coverage</li>
+              </ul>
+              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Coverage</a>
+            </div>
+
+          </div>
+
+          <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-top:1.25rem; line-height:1.7;">Yearly plans include a larger monthly report allowance and cost the equivalent of ten months. Quotas reset on the 1st of each calendar month and unused picks don't roll over. Reports opened with a membership are available for as long as the subscription is active; one-off purchases are yours to keep. Analyst freemium picks are limited to reports older than 30 days.</p>
+        </div>
+
         <!-- Comparison table hint -->
         <div style="background:var(--off-white); border:1px solid var(--color-border); border-radius:var(--r-xl); padding:2rem; margin-bottom:3rem;">
           <h3 style="font-size:var(--text-md); font-weight:500; color:var(--charcoal); margin-bottom:1rem;">What's included in every paid report</h3>
@@ -209,6 +324,18 @@
           <div class="faq-item">
             <button class="faq-question">What is the difference between an existing report and a fresh report?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
             <div class="faq-answer"><p>Ready reports (€20) were generated recently and reflect data from their generation date — available for the companies listed in our catalog. Fresh reports (€50) are generated specifically for your order with the latest available financial data, for any listed company you request.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How does the free Analyst membership work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Sign in with LinkedIn and you can generate one fresh AI report every month for free. In exchange, your finished report and the modification prompts you used are published on the site under your name. You don't get a new free generation until the previous one has been submitted for publication. You can also open ten catalog reports per month, as long as they are older than 30 days, and twenty analyses published by other analysts.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Do unused monthly picks roll over?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>No. Quotas reset on the 1st of each calendar month and unused picks or generations don't carry over. Yearly plans carry a larger monthly allowance than the equivalent monthly plan.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What happens to my reports if I cancel my subscription?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="faq-answer"><p>Reports opened with a membership are available for as long as your subscription is active. Reports bought as one-off purchases (€20 ready / €50 fresh) are yours to keep regardless of any subscription.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question">Can I use reports in client work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
@@ -282,5 +409,32 @@
   <script src="js/mockData.js"></script>
   <script src="js/pricingConfig.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    // Monthly/yearly toggle: every switchable bit of copy carries both values
+    // as data-*-month / data-*-year, so there is one source of truth per card.
+    (function () {
+      const buttons = document.querySelectorAll('.billing-toggle-btn');
+      if (!buttons.length) return;
+
+      const SWAPS = ['price', 'suffix', 'period', 'feat'];
+
+      function apply(interval) {
+        for (const key of SWAPS) {
+          for (const el of document.querySelectorAll(`[data-${key}-${interval}]`)) {
+            el.textContent = el.dataset[`${key}${interval === 'year' ? 'Year' : 'Month'}`];
+          }
+        }
+        for (const btn of buttons) {
+          const active = btn.dataset.interval === interval;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+        }
+      }
+
+      for (const btn of buttons) {
+        btn.addEventListener('click', () => apply(btn.dataset.interval));
+      }
+    })();
+  </script>
 </body>
 </html>

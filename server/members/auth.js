@@ -12,9 +12,22 @@ const LINKEDIN_USERINFO_URL = 'https://api.linkedin.com/v2/userinfo';
 
 const membersApiUrl = () => (process.env.MEMBERS_API_URL || '').replace(/\/$/, '');
 const redirectUri = () => `${membersApiUrl()}/auth/linkedin/callback`;
+
 // Where the browser lands with the token. Token travels in the URL fragment —
-// fragments never reach servers/logs.
-const frontendUrl = () => process.env.MEMBERS_FRONTEND_URL || 'http://localhost:3000/member-test.html';
+// fragments never reach servers/logs. The same API serves the prod site, the
+// staging site and local dev, so the caller says where it wants to come back
+// to; anything not on the allowlist falls back to the default (open-redirect
+// guard — never echo an arbitrary URL here).
+function allowedFrontends() {
+  const configured = (process.env.MEMBERS_FRONTEND_URLS || '')
+    .split(',').map(url => url.trim()).filter(Boolean);
+  return configured.length ? configured : ['http://localhost:3100/members.html'];
+}
+
+function frontendUrl(requested) {
+  const allowed = allowedFrontends();
+  return allowed.includes(String(requested || '')) ? String(requested) : allowed[0];
+}
 
 function jwtSecret() {
   const secret = process.env.MEMBERS_JWT_SECRET;
@@ -28,24 +41,30 @@ function mintToken(profile, now) {
 
 // ── LinkedIn OIDC ────────────────────────────────────────────────────────────
 
-// Stateless CSRF state: ts.sig, HMAC-signed, valid 10 min.
-function makeState(now = new Date()) {
-  const ts = String(now.getTime());
-  const sig = crypto.createHmac('sha256', jwtSecret()).update(`state:${ts}`).digest('base64url');
-  return `${ts}.${sig}`;
+// Stateless CSRF state: <ts>~<returnTo>.<sig>, HMAC-signed, valid 10 min.
+// The return URL rides along so the callback knows which site started the flow.
+function makeState(returnTo, now = new Date()) {
+  const payload = `${now.getTime()}~${returnTo}`;
+  const sig = crypto.createHmac('sha256', jwtSecret()).update(`state:${payload}`).digest('base64url');
+  return `${payload}.${sig}`;
 }
 
-function checkState(state, now = new Date()) {
-  const [ts, sig] = String(state || '').split('.');
-  if (!ts || !sig) return false;
-  const expected = crypto.createHmac('sha256', jwtSecret()).update(`state:${ts}`).digest('base64url');
-  const given = Buffer.from(sig);
+// Returns the verified returnTo, or null when the state is bad/expired.
+function readState(state, now = new Date()) {
+  const raw = String(state || '');
+  const dot = raw.lastIndexOf('.');
+  if (dot < 1) return null;
+  const payload = raw.slice(0, dot);
+  const expected = crypto.createHmac('sha256', jwtSecret()).update(`state:${payload}`).digest('base64url');
+  const given = Buffer.from(raw.slice(dot + 1));
   const want = Buffer.from(expected);
-  if (given.length !== want.length || !crypto.timingSafeEqual(given, want)) return false;
-  return now.getTime() - Number(ts) < 10 * 60 * 1000;
+  if (given.length !== want.length || !crypto.timingSafeEqual(given, want)) return null;
+  const [ts, ...rest] = payload.split('~');
+  if (now.getTime() - Number(ts) >= 10 * 60 * 1000) return null;
+  return frontendUrl(rest.join('~'));
 }
 
-function linkedinStartUrl(now = new Date()) {
+function linkedinStartUrl(returnTo, now = new Date()) {
   const clientId = process.env.LINKEDIN_CLIENT_ID;
   if (!clientId) throw new Error('LINKEDIN_CLIENT_ID is not configured');
   const params = new URLSearchParams({
@@ -53,13 +72,14 @@ function linkedinStartUrl(now = new Date()) {
     client_id: clientId,
     redirect_uri: redirectUri(),
     scope: 'openid profile email',
-    state: makeState(now),
+    state: makeState(frontendUrl(returnTo), now),
   });
   return `${LINKEDIN_AUTH_URL}?${params}`;
 }
 
 async function linkedinCallback(code, state, now = new Date()) {
-  if (!checkState(state, now)) return { error: 'Invalid state' };
+  const returnTo = readState(state, now);
+  if (!returnTo) return { error: 'Invalid state' };
 
   const tokenRes = await fetch(LINKEDIN_TOKEN_URL, {
     method: 'POST',
@@ -96,7 +116,7 @@ async function linkedinCallback(code, state, now = new Date()) {
   });
   const profile = await store.getProfile(userId);
   await store.audit(userId, 'login', { method: 'linkedin' });
-  return { token: mintToken(profile, now), userId };
+  return { token: mintToken(profile, now), userId, returnTo };
 }
 
 // ── email magic link ─────────────────────────────────────────────────────────
@@ -109,11 +129,11 @@ function ses() {
 
 const hashToken = (token) => crypto.createHash('sha256').update(token).digest('hex');
 
-async function sendMagicLink(email) {
+async function sendMagicLink(email, returnTo) {
   const normalized = String(email || '').trim().toLowerCase();
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(normalized)) return; // caller always answers 200
   const token = crypto.randomBytes(32).toString('base64url');
-  await store.putMagicToken(hashToken(token), normalized);
+  await store.putMagicToken(hashToken(token), normalized, { returnTo: frontendUrl(returnTo) });
   const link = `${membersApiUrl()}/auth/magic/verify?token=${token}`;
   await ses().send(new SendEmailCommand({
     FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
@@ -141,7 +161,7 @@ async function verifyMagicLink(token, now = new Date()) {
   });
   const profile = await store.getProfile(userId);
   await store.audit(userId, 'login', { method: 'magic-link' });
-  return { token: mintToken(profile, now), userId };
+  return { token: mintToken(profile, now), userId, returnTo: frontendUrl(item.returnTo) };
 }
 
 // ── request auth ─────────────────────────────────────────────────────────────

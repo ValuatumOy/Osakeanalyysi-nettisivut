@@ -12,6 +12,15 @@ export interface StageConfig {
   membersApiDomain: string;
   /** REPORT_PDF_BASE_URL for the Lambdas. */
   pdfBaseUrl: string;
+  /**
+   * The catalog members browse is ALWAYS production's, whatever stage the
+   * members stack runs in: an analyst picking a report to build on must see the
+   * reports the public site sells, not a stale test bucket. Read-only —
+   * the members Lambda never writes catalog state.
+   */
+  memberCatalogBucket: string;
+  memberCatalogStateTable: string;
+  memberCatalogPdfBaseUrl: string;
   /** Origins allowed to call the API / PUT to the bucket (site + local dev). */
   corsOrigins: string[];
   siteUrl: string;
@@ -57,6 +66,9 @@ export function stageConfig(app: App): StageConfig {
     filesDomain: `files${suffix}.${zoneDomain}`,
     membersApiDomain: `members${suffix}.${zoneDomain}`,
     pdfBaseUrl: `https://files${suffix}.${zoneDomain}/reports/pdfs`,
+    memberCatalogBucket: 'aiequityreports-pdfs',
+    memberCatalogStateTable: 'AiEquityReportsCatalogState',
+    memberCatalogPdfBaseUrl: `https://files.${zoneDomain}/reports/pdfs`,
     // Derived from `siteUrl` (not hardcoded to prod's domains) so the stage
     // actually serving the frontend is always an allowed CORS origin — this
     // had the same non-stage-aware bug siteUrl did, just silent instead of

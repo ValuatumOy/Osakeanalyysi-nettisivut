@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Analysts — Publish Your Equity Research | Valuatum AI Equity Reports</title>
+  <meta name="description" content="Free membership for equity analysts: generate a fresh AI report every month, revise it toward your own view, and publish it under your name to build a public track record.">
+  <link rel="canonical" href="https://www.aiequityreports.com/analysts.html">
+  <meta property="og:title" content="For Analysts — Build a Public Track Record">
+  <meta property="og:description" content="Generate a fresh equity report every month, steer it toward your own view, publish it under your own name. Free for analysts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aiequityreports.com/analysts.html">
+  <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.aiequityreports.com/images/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .a-steps { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; }
+    .a-step { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; padding: 2rem 0; border-top: 1px solid var(--color-border); }
+    .a-step:last-child { border-bottom: 1px solid var(--color-border); }
+    .a-step-num { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--green-mist); background: var(--green-faint); color: var(--green-deep); display: flex; align-items: center; justify-content: center; font-size: var(--text-lg); font-weight: 300; }
+    .a-step h3 { font-size: var(--text-md); font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .a-step p { font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: var(--gray-steel); max-width: 62ch; }
+    .a-step p + p { margin-top: 0.6rem; }
+    .a-step-time { display: inline-block; font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); background: var(--off-white); border: 1px solid var(--color-border); border-radius: 999px; padding: 0.2em 0.9em; margin-bottom: 0.75rem; }
+    .a-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .a-card { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.75rem; }
+    .a-card h3 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .a-card p { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel); }
+    .a-worth-head { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400;
+      letter-spacing: -0.015em; color: var(--charcoal); margin: 3.5rem 0 0.25rem; }
+    .a-worth { columns: 2; column-gap: 3.5rem; }
+    .a-worth-item { break-inside: avoid; padding: 1.25rem 0; border-top: 1px solid rgba(26,36,32,0.1); }
+    .a-worth-item h4 { font-size: var(--text-base); font-weight: 500; letter-spacing: -0.005em;
+      color: var(--charcoal); margin-bottom: 0.4rem; }
+    .a-worth-item p { font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: #5B6A63; }
+    @media (max-width: 720px) { .a-worth { columns: 1; } }
+    .a-rules { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: var(--text-sm); }
+    .a-rules th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-steel); font-weight: 600; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--color-border); }
+    .a-rules td { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--color-border); font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
+    .a-rules td:first-child { font-weight: 600; color: var(--charcoal); white-space: nowrap; }
+    /* Same shape as the review box in the member area: tinted fill, hairline
+       all round, no accent bar. */
+    .a-note { background: var(--gold-faint); border: 1px solid rgba(200,150,62,0.3);
+      border-radius: var(--r-md); padding: 1.25rem 1.35rem; font-size: var(--text-sm);
+      font-weight: 300; line-height: 1.75; color: #5B6A63; margin-top: 2rem; }
+    .a-note strong { color: var(--charcoal); font-weight: 500; }
+    .a-hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem 3rem;
+      margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .a-hero-stats .v { font-size: 2rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; }
+    .a-hero-stats .k { font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-top: 0.35rem; line-height: 1.5; }
+    /* The rules table is wide; let it scroll inside its own box rather than the page. */
+    .a-rules-wrap { overflow-x: auto; }
+    .a-section { padding: var(--section-py) 0; }
+    .a-section--alt { background: var(--off-white); }
+    @media (max-width: 640px) {
+      .a-step { grid-template-columns: 1fr; gap: 0.9rem; }
+      .a-rules td:first-child { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="reports.html" class="nav-link">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="analysts.html" class="nav-link is-active" aria-current="page">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
+      </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
+      <a href="members.html" class="nav-cta">Member area</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link is-active" aria-current="page">Analysts</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="members.html" class="nav-mobile-link nav-mobile-cta">Member area →</a>
+    </div>
+  </header>
+
+  <main class="about-page">
+
+    <!-- HERO -->
+    <section class="about-hero">
+      <div class="container">
+        <span class="section-eyebrow section-eyebrow--light">For analysts</span>
+        <h1 class="section-headline section-headline--light" style="max-width:760px;">Your report.<br>Your name on it.</h1>
+        <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:600px; line-height:1.75;">Free membership for equity analysts. Generate a fresh report every month, steer it toward your own view, and publish it under your own name. The result is a public, dated track record anyone can check.</p>
+        <div style="display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap;">
+          <a href="members.html" class="btn btn-primary">Sign in with LinkedIn</a>
+          <a href="#steps" class="btn btn-outline">See the seven steps</a>
+        </div>
+        <div class="a-hero-stats">
+          <div><div class="v">€0</div><div class="k">Membership</div></div>
+          <div><div class="v">1+ / month</div><div class="k">Generations, more when the work is good</div></div>
+          <div><div class="v">~45 min</div><div class="k">Per published report</div></div>
+          <div><div class="v">Instant</div><div class="k">Publication, no queue</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="a-section">
+      <div class="container">
+        <span class="section-eyebrow">The idea</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">The best analysis in the world is not written by the best-paid analyst.</h2>
+        <p class="section-sub" style="max-width:680px;">It is written by whoever understands that one company best, and for almost every listed company that person does not work at a broker. Two things make this programme possible. The second one matters more.</p>
+
+        <div class="a-cards" style="margin-bottom:2.5rem;">
+          <div class="a-card">
+            <h3>1 · Tools that remove the grunt work</h3>
+            <p>Twenty-five years of Valuatum's institutional analysis software now sits behind one button. Financials, peer set, segment structure, DCF and multiples arrive already built, for any listed company, in minutes. Anyone competent can produce a reasonable analysis without touching a spreadsheet.</p>
+            <p style="margin-top:0.6rem;">Which means the analysis itself is no longer what distinguishes you. What you do to it is.</p>
+          </div>
+          <div class="a-card">
+            <h3>2 · Wisdom of crowds, under real competition</h3>
+            <p>For any given company, someone out there knows something the professionals covering it do not: a customer, a competitor's controller, an engineer in the industry, a private investor who has followed it for fifteen years. That expertise is worth nothing until it is exposed to open competition and free copying.</p>
+            <p style="margin-top:0.6rem;">Put every report on the same company side by side, ranked, and let the best one win the readers. We have run it before: <a href="analyst-story.html" style="color:var(--green);">the story of the Valuatum freelance network →</a></p>
+          </div>
+        </div>
+
+        <h3 class="a-worth-head">What that is worth to you</h3>
+        <div class="a-worth">
+          <div class="a-worth-item">
+            <h4>A public track record</h4>
+            <p>Every report you publish is dated, attributed, and stays up. A rating and a target price with a timestamp is something an employer, a client, or a reader can actually verify, unlike a CV bullet.</p>
+          </div>
+          <div class="a-worth-item">
+            <h4>A shop window</h4>
+            <p>In the old freelance network, six of roughly forty analysts were hired by brokers or corporate finance units within nine months. Published work you can point to is the reason that worked.</p>
+          </div>
+          <div class="a-worth-item">
+            <h4>Good work is not made to wait</h4>
+            <p>One generation a month is the floor rather than the ceiling. As soon as an administrator or another analyst judges your report good enough, meaning it adds something over the engine's report, you are cleared for the next one without waiting for the calendar to turn.</p>
+          </div>
+          <div class="a-worth-item">
+            <h4>The free rotation puts you in front of everyone</h4>
+            <p>Roughly every fifth to tenth published report is opened up free to every reader on the site for a period. That is the widest audience your work will get, and it costs the reader nothing to open, so it is read by people who would never have paid to find you.</p>
+          </div>
+          <div class="a-worth-item">
+            <h4>Paid for what you produce</h4>
+            <p>The pilot pays a fixed fee per published report. Where it is heading is demand-based: the more investors want your report on that company, the larger your share of what it earns, so that the person covering a company best is the person paid most for it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="a-section a-section--alt" id="steps">
+      <div class="container">
+        <span class="section-eyebrow">Step by step</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">From sign-in to published report.</h2>
+        <p class="section-sub" style="max-width:660px;">Seven steps, and you do six of them. The times are rough estimates for someone who has done it before and hits no problems. Your first one will take longer, mostly in step 4.</p>
+        <p class="section-sub" style="max-width:680px; margin-top:-0.5rem;"><strong style="color:var(--charcoal); font-weight:600;">Who it suits:</strong> active investors, finance and accounting students, and professionals who already follow an industry. A controller analysing their own competitors and customers is exactly the profile that worked before. <strong style="color:var(--charcoal); font-weight:600;">What you need:</strong> a LinkedIn account, enough finance knowledge to argue with a valuation, and about an hour a month. No Excel, no modelling, no prior published research.</p>
+
+        <div class="a-steps">
+
+          <div class="a-step">
+            <div class="a-step-num">1</div>
+            <div>
+              <span class="a-step-time">2 minutes</span>
+              <h3>Sign in with LinkedIn</h3>
+              <p>Analyst membership is free and uses LinkedIn sign-in, on the <a href="members.html" style="color:var(--green);">member area</a>. LinkedIn is the identity check: your published analyses carry your real name, so we need to know it is yours.</p>
+              <p>Membership also gives you ten reports from the catalog every month, once they are at least 30 days old, and twenty of other analysts’ published reports.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">2</div>
+            <div>
+              <span class="a-step-time">2 minutes</span>
+              <h3>Pick a company and start the generation</h3>
+              <p>Enter the company and its ticker in the member area and start your monthly generation. Any listed company we can cover is fair game. Nothing is reserved, and two analysts covering the same company is what we want.</p>
+              <p>Pick a company you can argue about. The engine handles breadth; you are there for the part where someone has to take a position.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">3</div>
+            <div>
+              <span class="a-step-time">Unattended, usually under 20 minutes</span>
+              <h3>The engine builds the report</h3>
+              <p>The full pipeline runs: financial data, peer comparison, segment structure, DCF and multiples, and the written analysis. This is the same generation a paying customer gets for a fresh report. Nothing about it is a trial version.</p>
+              <p>You do not have to sit and watch it. Progress shows in the member area and the report appears there when it is done.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">4</div>
+            <div>
+              <span class="a-step-time">20–30 minutes</span>
+              <h3>Revise it toward your view</h3>
+              <p>Read the draft and prompt the AI to change it. This step is the whole job, and it is what gets judged: a report that clearly adds something over the engine's report is what earns you the next generation without waiting for the month to turn.</p>
+              <p>You can redirect emphasis, challenge assumptions, swap the peer set, argue for a different valuation method, or tell it which risk it has underweighted. Comments accumulate, so you can keep going until the report says what you actually think.</p>
+              <p>There is a hard boundary: instructions steer <em>evidence and assumptions</em>, not conclusions. You cannot instruct a rating into existence or overwrite reported financial data. The rating follows arithmetically from the target price, so "make this a SELL" only lands as a change to an assumption upstream, which is the honest way to get there anyway.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">5</div>
+            <div>
+              <span class="a-step-time">3 minutes</span>
+              <h3>Publish</h3>
+              <p><strong>Using the free generation is the commitment.</strong> Whatever comes out is published under your name and your LinkedIn profile, whether you revised it heavily or not at all. There is no private draft and no way to generate one and keep it. If you want a report that stays yours, that is the Investor Plus private generation, not this.</p>
+              <p>Submitting publishes immediately. There is no queue and no waiting for approval. Your report goes into the <a href="report-store.html" style="color:var(--green);">report store</a> next to the engine's own report on that company, ranked among the other analysts covering it, under your name and dated. You set its price and how long until it stops costing other members a read.</p>
+              <p>Your revision prompts are published with it, so readers see both the report and the reasoning you used to steer it. It is also what makes the work yours rather than the machine's.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">6</div>
+            <div>
+              <span class="a-step-time">Days to weeks later</span>
+              <h3>Your report may be given away, to your benefit</h3>
+              <p>About every fifth to tenth published report is released free to every reader for a while. Free means genuinely free: no purchase, no monthly allowance spent, no account required beyond signing in. Your name and your prompts travel with it.</p>
+              <p>At the start we pick those by hand from the reports that deserve the audience. Once there are enough of them the draw becomes random, weighted by the scores a report has earned, so a good report is more likely to be the one that goes out and nobody can arrange to be picked.</p>
+              <p>It is not a tax on your work. An analysis nobody has read earns you nothing and proves nothing; the widest possible readership is exactly what a track record is for.</p>
+            </div>
+          </div>
+
+          <div class="a-step">
+            <div class="a-step-num">7</div>
+            <div>
+              <span class="a-step-time">14 days later</span>
+              <h3>The fee matures</h3>
+              <p>Publication is instant; payment is not. A published analysis earns its fee 14 days after publication, provided it has not been taken down. Moderation happens after the fact, and the maturity window is where it bites.</p>
+              <p>Your earnings ledger is visible in the member area: published, maturing, and payable.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <!-- THE EXCHANGE -->
+    <section class="a-section">
+      <div class="container">
+        <span class="section-eyebrow">Reading each other</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">The ranking is built by the people who had to read the work.</h2>
+        <p class="section-sub" style="max-width:680px;">Twenty of other analysts' published reports a month, and every one you open costs you a review. That is what makes the ranking in the <a href="report-store.html" style="color:var(--green);">report store</a> worth anything: nobody scores a report they have not read.</p>
+
+        <div class="a-cards">
+          <div class="a-card">
+            <h3>One at a time</h3>
+            <p>Opening an analyst report locks the next one until you have rated the one you opened and written why. You cannot work through a queue and review them later. There is one open obligation and it carries until you clear it.</p>
+          </div>
+          <div class="a-card">
+            <h3>A number and a reason</h3>
+            <p>A rating from 1 to 5, decimals allowed, plus written text. A number on its own tells the analyst nothing. The text is what they learn from, and what an administrator reads when deciding whether to clear your next generation.</p>
+          </div>
+          <div class="a-card">
+            <h3>You score the analyst's contribution</h3>
+            <p>Not the report's polish. The engine wrote most of it, and some engine reports start out better than others. The question is what this analyst's prompting added: which assumption moved, which risk got reweighted, what the reader now knows that the engine's report did not say.</p>
+          </div>
+          <div class="a-card">
+            <h3>You cannot rate your own</h3>
+            <p>Your own reports are not openable and not rateable by you, and one reader can rate a given report once. Every open is logged with who read whose work, so patterns between accounts are visible to us.</p>
+          </div>
+        </div>
+
+        <div class="a-note">
+          <strong>Why it is worth reading the competition.</strong> The scores are the ranking, and the ranking is what a reader sees first on a company. Reading what the analysts above you did differently is the fastest way to work out why they are above you, and the twenty reads are there so it costs you nothing but the review.
+        </div>
+      </div>
+    </section>
+
+    <section class="a-section a-section--alt">
+      <div class="container">
+        <span class="section-eyebrow">The rules</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">All of them, in one table.</h2>
+        <p class="section-sub" style="max-width:660px;">Publishing is instant and unreviewed, so the quality gate sits on the payment side instead. These are the pilot's limits. The allowances are tuned by demand, and an analyst whose work adds value is cleared for the next one rather than held to the number.</p>
+
+        <div class="a-rules-wrap">
+        <table class="a-rules">
+          <thead>
+            <tr><th style="width:220px;">Rule</th><th>What it means</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One generation a month</td>
+              <td>One fresh report generation per calendar month, and unused months do not roll over. See the next rule though, because the month is not the real limit.</td>
+            </tr>
+            <tr>
+              <td>A good analysis unlocks the next one</td>
+              <td>An administrator or another analyst reads what you published. If it adds value, we clear your next generation immediately instead of making you wait out the month. Analysts who produce something worth reading are not the ones we want to slow down.</td>
+            </tr>
+            <tr>
+              <td>Finish before you start again</td>
+              <td>No new generation until the previous one is published. The obligation carries across months, so an unpublished report blocks next month's slot too. Every generation costs real engine time, which is why the rule exists.</td>
+            </tr>
+            <tr>
+              <td>Ten catalog reports a month</td>
+              <td>Ten self-picked reports from the archive per month, limited to reports at least 30 days old. Newer reports are for paying members. The number is tuned by demand, not carved in stone.</td>
+            </tr>
+            <tr>
+              <td>You rate the prompting, not the report</td>
+              <td>The engine wrote most of every analysis on this site, and some base reports are simply better than others through no fault of the analyst. So the score answers one question only: <strong>what did this analyst's own work add?</strong> Which assumption did they challenge, which risk did they weight differently, what does the reader now know that the base report did not tell them? A polished report that the analyst barely touched is a low score, not a high one.</td>
+            </tr>
+            <tr>
+              <td>Twenty analyst reports a month</td>
+              <td>You may open twenty other analysts' published reports per month, <strong>one at a time</strong>: opening one locks the next until you have rated it and written why. The rating is 1–5 and takes decimals, because the distance between two reports on the same company is rarely a whole point.</td>
+            </tr>
+            <tr>
+              <td>Your analysis is ranked, per company</td>
+              <td>Published analyst reports sit on the company's page above the engine's own report, ordered by peer scores, review count and how recent they are. Being first on a company is the thing worth competing for.</td>
+            </tr>
+            <tr>
+              <td>You set the price and the decay</td>
+              <td>You choose what your report costs and how long until it stops costing other members one of their monthly reads, at most a year. That only affects members. A report opens to logged-out visitors when we hand-pick it into a free window.</td>
+            </tr>
+            <tr>
+              <td>The free rotation</td>
+              <td>Roughly every fifth to tenth published analysis is opened free to all readers for a period, on top of whatever you set. Hand-picked from the good ones at first, later a random draw weighted by the scores an analysis has earned.</td>
+            </tr>
+            <tr>
+              <td>Not publishing is allowed</td>
+              <td>Same LinkedIn login, reader account instead: no publish obligation, no public profile, about half the allowance. You can step down at any time, once your current report is published.</td>
+            </tr>
+            <tr>
+              <td>Publication is the price</td>
+              <td>The report and your revision prompts are published. Analyst membership has no private option. If you need a report that stays yours, that is a paid plan.</td>
+            </tr>
+            <tr>
+              <td>Post-moderation</td>
+              <td>Nothing is reviewed before it goes live. Anything can be taken down after the fact: junk, an unreadable thesis, a prompt chain that is obviously trying to game the fee.</td>
+            </tr>
+            <tr>
+              <td>A takedown voids the fee</td>
+              <td>A taken-down analysis earns nothing, and a fee already paid on it is clawed back.</td>
+            </tr>
+            <tr>
+              <td>One fee per company per quarter</td>
+              <td>You can publish the same company as often as you like, but only one analysis per company per calendar quarter earns a fee. Five takes on one company is not five fees.</td>
+            </tr>
+            <tr>
+              <td>A monthly cap</td>
+              <td>A cap on how many reports can earn a fee in one calendar month, per analyst.</td>
+            </tr>
+            <tr>
+              <td>Invoice, not payroll</td>
+              <td>Fees are settled against an invoice, with a minimum payout threshold so tiny transfers never happen. You are not an employee and there is no employment relationship.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="a-note">
+          <strong>Rating and target price are yours, and so is the responsibility.</strong> A published analysis carries your name. It is general research material, not investment advice to any individual reader, the same standard the rest of the site is held to. See the <a href="disclaimer.html" style="color:var(--green);">disclaimer</a>.
+        </div>
+      </div>
+    </section>
+
+    <!-- COMING NEXT -->
+    <section class="a-section">
+      <div class="container">
+        <span class="section-eyebrow">Coming next</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">Being ranked on whether you were right.</h2>
+        <p class="section-sub" style="max-width:660px;">Not built yet, and deliberately described here as a plan rather than a promise. The direction is settled: a track record is only worth something if it is scored, and a good analyst should not be kept waiting.</p>
+        <div class="a-cards">
+          <div class="a-card">
+            <h3>Ranking per company</h3>
+            <p>Analysts ranked separately for each company they cover, not on one global leaderboard. Your position on one company says nothing about your position on another.</p>
+          </div>
+          <div class="a-card">
+            <h3>Accuracy scoring</h3>
+            <p>Your recommendation compared against the realised share-price move, scored monthly and reported as a percentile against every other analysis that month. Recent months weigh more, so a bad month is recoverable.</p>
+          </div>
+          <div class="a-card">
+            <h3>Coaching analysts</h3>
+            <p>The strongest analysts reviewing others' work for a share of the pot. Moderation would scale with the analyst pool instead of our headcount, and the feedback would tell you how to improve rather than just where you rank.</p>
+          </div>
+          <div class="a-card">
+            <h3>A pool that stays sharp</h3>
+            <p>The role is not permanent in either direction. Analysts whose work does not add value go back to being ordinary readers; the ones at the top move up into coaching. Both are how the ranking stays worth something.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="a-section">
+      <div class="container" style="text-align:center;">
+        <h2 class="section-headline" style="font-size:var(--text-2xl);">Start with one company.</h2>
+        <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-bottom:1.5rem;">Sign in with LinkedIn, pick a company you have an opinion about, and publish it this month.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="members.html" class="btn btn-primary">Sign in with LinkedIn</a>
+          <a href="methodology.html" class="btn btn-outline-dark">Read the methodology</a>
+        </div>
+        <p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:1.5rem;">Questions about the programme? <a href="mailto:contact26@valuatum.com" style="color:var(--green);">contact26@valuatum.com</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/index.html" class="nav-logo" style="margin-bottom:1rem; display:inline-flex;">
+            <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+            <div class="nav-logo-text">
+              <span class="nav-logo-wordmark">Valuatum</span>
+              <span class="nav-logo-sub">AI Equity Reports</span>
+            </div>
+          </a>
+          <p>Professional AI-generated equity research reports for listed companies. Built on financial data, structured methodology, and 25+ years of analysis expertise.</p>
+        </div>
+        <div>
+          <div class="footer-col-label">Reports</div>
+          <div class="footer-links">
+            <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/reports.html#free" class="footer-link">Free samples</a>
+            <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
+            <a href="/pricing.html" class="footer-link">Pricing</a>
+            <a href="/methodology.html" class="footer-link">Methodology</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Company</div>
+          <div class="footer-links">
+            <a href="/about.html" class="footer-link">About Valuatum</a>
+            <a href="/analysts.html" class="footer-link">For analysts</a>
+            <a href="/analyst-story.html" class="footer-link">The freelance network story</a>
+            <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
+            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Legal</div>
+          <div class="footer-links">
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+            <a href="/disclaimer.html#terms" class="footer-link">Terms of use</a>
+            <a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice. Past performance is not indicative of future results.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

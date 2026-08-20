@@ -15,23 +15,90 @@ non-prod. Nothing here ships with the prod API Lambda.
 | PDF source | test bucket `aiequityreports-pdfs-test` (read-only, presigned GETs) |
 | Stripe | TEST mode only; webhook endpoint `we_…` → `/billing/webhook`, own signing secret |
 
+## The catalog members see is production's
+
+`config.ts` pins three member-facing values to production in **every** stage —
+`memberCatalogBucket` (`aiequityreports-pdfs`), `memberCatalogStateTable`
+(`AiEquityReportsCatalogState`) and `memberCatalogPdfBaseUrl`
+(`files.aiequityreports.com`). The members Lambda imports both by name and gets
+`grantRead` only; it never writes catalog state (the worker tick is the single
+writer of the weekly free selection). An analyst choosing a report to build on
+has to see what the public site actually sells, not the handful of PDFs that
+happen to sit in a test bucket.
+
+Reports this stage *generates* for a member still land in this stage's own
+bucket, which the production catalog will never list. Those are presigned
+straight from the order's `pdfFileName` against `GENERATED_PDF_BUCKET` —
+`GET /generations/{genId}` and `POST /analyses/{genId}/open` both take that
+path, and the DELIVERED status is the entitlement. Verified 19.8.2026:
+`GET /reports` on members-test returns the same 19 report ids and the same free
+rotation as `https://www.aiequityreports.com/api/reports`.
+
+One consequence: a generated report's sidecar (resale, visibility) is written
+into the test bucket, which the members catalog no longer lists, so the
+resale-on-test path cannot be exercised from the member UI until prod rollout.
+
 ## Product rules implemented
 
-- **Freemium = analysts only** (LinkedIn login). 2 self-picked report views/month,
-  only reports with `ageDays >= 30` (server-side, from the catalog). 1 free
-  generation/month, reserved at start; **no new reservation until the previous
-  one is submitted for publication** (obligation on PROFILE, spans months).
-  Submitting also publishes the modification prompts (`promptsText` on the PUB item).
+- **Three numbers per role/tier** (`server/members/tiers.js`): `generations`,
+  `basePicks` (engine reports read/month) and `analystReads` (other analysts'
+  analyses opened/month). Demand-tuned, so they are data: `MEMBERS_LIMITS_JSON`
+  overrides any subset without a code change. Defaults — analyst 1/10/20,
+  reader 1/5/10, Investor 0/3/10 (5 picks annual), Investor Plus 1/10/20
+  (15 picks annual).
+- **LinkedIn roles**: `analyst` publishes what it generates, `reader` is the same
+  login without the publish obligation and about half the allowance, `coaching`
+  is a promoted analyst. `POST /me/role {role:'reader'}` steps down (refused
+  while an obligation is open — otherwise the report walks); `POST
+  /admin/members/role` moves anyone either way.
+- **Analyst loop**: picks are limited to reports with `ageDays >= 30`
+  (server-side, from the catalog). One generation/month, reserved at start;
+  **no new reservation until the previous one is published** (obligation on
+  PROFILE, spans months) — unless an admin says otherwise: `POST
+  /admin/members/grant-generation` clears both gates, which is how a good
+  analyst is let straight through. Submit publishes immediately (`companyId`
+  required, `jobId` for provenance, `promptsText`, plus the analyst's own
+  `priceEur` and `freeAfterDays` ≤ 365) — post-moderation via `POST
+  /admin/members/takedown`. Bounty ledger at `GET /me/earnings`; see
+  [analyst-publishing.md](analyst-publishing.md).
+- **Analyses on top of the engine report**: every publication also writes a row
+  in the `PUBINDEX` partition (`<companyId>#<publishedAt>#<genId>`).
+  `GET /analyses?companyId=` returns them ordered by `server/members/ranking.js`
+  (peer score with a neutral prior, review count, age decay).
+  `POST /analyses/{genId}/open` spends one `analystReads` slot **and** leaves a
+  review obligation; `POST /analyses/{genId}/review {score 1-5, comment ≥40
+  chars}` clears it. No comment, no further reads — worthless comments are an
+  admin downgrade. `POST /admin/members/feature {userId, genId, days}` hands an
+  analysis out free to everyone for a window (hand-picked now, randomised later),
+  and `GET /admin/members/publications` is the one call that shows what each
+  analyst produced, with prompts and peer scores.
 - **Regular visitors**: weekly free-rotation reports only (`isFree` reports gate
   nothing) — unchanged from prod behaviour.
-- **Investor 19 €/mo / 190 €/yr**: 5 picks/month. **Investor Plus 39 €/mo /
-  390 €/yr**: 15 picks/month. **Company Coverage 59 €/yr**: covered company only,
-  initial report once + 4 updates/calendar year.
+- **Investor 19 €/mo / 190 €/yr**: 3 picks/month monthly, 5 annual. **Investor
+  Plus 39 €/mo / 390 €/yr**: 10 picks/month monthly, 15 annual, plus one private
+  generation per month (no publish obligation). **Company Coverage 59 €/yr**:
+  covered company only, initial report once + 4 updates/calendar year.
+- Monthly plans deliberately get a smaller allowance than annual ones: at the
+  20 € one-off price, 5 picks for one 19 € month is 100 € of product and the
+  subscriber can cancel immediately (the PDF is already downloaded).
+- **Fresh reports cost members 40 €** instead of 50 €. The discount is applied
+  server-side in `POST /billing/fresh-checkout` from the live subscription
+  status — the client never selects the price.
 - Quota period = calendar month (UTC), key `YYYY-MM`. No rollover.
 - All quota writes are DynamoDB TransactWriteItems with condition expressions
   (`server/members/quota.js` builders) — concurrent requests cannot overspend.
-- Entitlements: `oneoff` permanent; `pick`/`coverage` require active (or
-  past_due) subscription at sign time; `free_pick` requires analyst role.
+- **Generations run the real pipeline.** `POST /generations/free` reserves the
+  monthly slot, then creates an order in the stage's Orders table and pushes the
+  worker — the same reconciler path as a paid fresh report, against the stage's
+  engine (`pdf-report-api-test`). **Every reservation spends real engine time.**
+  The quota transaction commits first, so a rejected reservation never starts a
+  run. `GET /generations/{genId}` reports progress and hands over the
+  entitlement once the report is delivered.
+- Membership reports are ordered with `visibility: 'private'`, which makes
+  `reconciler.deliver()` write a hidden, unpriced sidecar even when
+  `RESALE_ENABLED` is on — a member's report is never resold from the catalog.
+- Entitlements: `oneoff` and `generation` permanent; `pick`/`coverage` require
+  active (or past_due) subscription at sign time; `free_pick` requires analyst role.
   Downloads are 5-minute S3 presigned GETs from `POST /reports/{id}/open`;
   the members `GET /reports` payload never exposes `pdfUrl`.
 
@@ -39,14 +106,19 @@ non-prod. Nothing here ships with the prod API Lambda.
 
 `members-jwt-secret`, `members-test-utils-secret`, `members-stripe-prices`
 (JSON of price ids, created by `scripts/stripe-setup-members-test.mjs`),
-`stripe-webhook-secret-members`, `stripe-secret-key` (sk_test), plus pending:
-`linkedin-client-id`, `linkedin-client-secret`. LinkedIn app must register
-redirect URI `https://members-test.aiequityreports.com/auth/linkedin/callback`.
+`stripe-webhook-secret-members`, `stripe-secret-key` (sk_test),
+`linkedin-client-id`, `linkedin-client-secret` (Valuatum's shared LinkedIn app —
+every environment uses the same credentials; each new redirect URI must be added
+in the LinkedIn developer console).
 
 ## Test utilities (never on prod; bearer = members-test-utils-secret)
 
 - `POST /test/users {email?, role, tier?, tierStatus?, coverageCompanyId?}` → `{userId, token}`
-- `POST /test/force-publish {userId, genId}`
+- `POST /test/force-publish {userId, genId, companyId?, jobId?}`
+- `POST /test/publications {userId, companyId?, publishedAt?}` → seeds a published
+  PUB item with a backdatable date, so the bounty rules can be exercised without
+  spending an engine run (it also writes the `PUBINDEX` row, so the analyses
+  list and the review loop can be smoke-tested for free)
 - Time travel: headers `x-test-now: <ISO>` + `x-test-secret: <utils secret>` move
   the quota clock (token expiry always uses the real clock).
 
@@ -54,21 +126,122 @@ redirect URI `https://members-test.aiequityreports.com/auth/linkedin/callback`.
 
 ```bash
 npm run test:members                     # unit: quota builders + jwt
-MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # 22 checks against the deployed stack
+MEMBERS_TEST_SECRET=… node scripts/members-smoke.mjs   # ~45 checks against the deployed stack
+# ADMIN_PASSWORD=… adds the payout/takedown checks; SMOKE_ENGINE=1 adds the
+# generation loop and costs one real engine run
 ```
 
-Member page: `members.html` — live at `https://www.aiequityreports.com/members.html`
-(branded, unlinked from nav; talks only to the members-test API). Local dev:
-`http://localhost:3100/members.html` (`.claude/launch.json` static-site).
+## Environments
 
-After any infra change: `cd infra && npx cdk diff -c stage=prod --all` must show
-**no changes** before anything is merged.
+| Site | URL | Git branch |
+|---|---|---|
+| Production | `www.aiequityreports.com` | `main` |
+| Staging | `test.aiequityreports.com` | `staging` |
+| Local | `http://localhost:3100` | working tree (`.claude/launch.json`) |
+
+**Deploy only by pushing a branch.** Never run `vercel deploy` from this repo —
+`--prod=false` does *not* prevent a production deployment (it published an
+unreviewed branch to www on 6.8.2026; recovered with `vercel rollback`).
+
+The staging domain is a branch-assigned domain on the same Vercel project
+(`vercel domains add` + `PATCH /v9/projects/{id}/domains/{domain}` with
+`gitBranch: staging`), with a Route53 CNAME to the project's
+`…vercel-dns-017.com` target.
+
+Member page: `members.html` — branded, unlinked from the nav, talks only to the
+members-test API. All three sites share that API: the sign-in flows pass a
+`returnTo` that must be on the `MEMBERS_FRONTEND_URLS` allowlist, so a user
+lands back on the site they started from and an arbitrary URL cannot be
+injected.
+
+After any infra change: `cd infra && npx cdk diff -c stage=prod --all`. It is
+**no longer zero** — wiring generations to the real pipeline touched
+`server/reconciler.js` and `server/aws/orders-store.js`, which the prod Worker
+and API Lambdas bundle, so their code hashes differ. The change is additive
+(`visibility` is only ever set by the members flow; without it every branch
+behaves exactly as before, covered by
+`test/members/generation-visibility.test.mjs`). Read the diff before any prod
+deploy rather than expecting an empty one.
+
+## Filling the test stack with something worth looking at
+
+`scripts/seed-store-demo.mjs` (needs `MEMBERS_TEST_SECRET`) seeds five named
+analysts and nine publications across five companies, with peer scores that
+differ, one hand-picked free window, and three publications pointing at orders
+this stage actually delivered — so the documents behind them are real PDFs. It
+is what the report store should be demoed against.
+
+**It does not survive a smoke run.** `members-smoke.mjs` seeds its own
+throwaway analysts and leaves their publications live, so running the smoke puts
+them back in the store next to the demo. `node scripts/seed-store-demo.mjs
+--clean` (with `ADMIN_PASSWORD`) takes them down again — run it after any smoke,
+before showing the store to anyone.
 
 ## Known gaps / prod-rollout blockers
 
-- Prod public `/api/reports` still exposes permanent unsigned `pdfUrl` for paid
-  reports — the paywall side door. Must be stripped when membership goes to prod.
-- Free-generation engine invocation is stubbed (PUB stays `generating`); wire
-  `ordersStore` + worker push when real runs are wanted (they cost engine time).
-- Investor member-priced fresh generation not implemented yet.
+- **Nothing merges to `main` until the engine team has deployed the revision
+  feature to production** (decision 19.8.2026). Everything — analyst pages,
+  membership pricing cards, the members UI — lives on `staging` /
+  test.aiequityreports.com until then. This is the gate; the items below are the
+  work that has to be done inside it.
+- **Stripe must be switched to live mode with the same merge.** Every price,
+  product, webhook endpoint and signing secret in `MembersStack` is TEST mode
+  today, and `scripts/stripe-setup-members-test.mjs` only creates test objects.
+  Shipping the pricing cards without this sells subscriptions against a test
+  backend. The live keys are secrets — set them in the stack's environment, do
+  not commit them.
+- **`MembersStack` refuses `stage=prod` and `infra/bin/aiequityreports.ts` only
+  instantiates it for non-prod.** Both guards are deliberate and both have to be
+  lifted in the same change that flips `USE_PROD_MEMBERS` in `members.html`
+  (line 269) from `false` to `true`.
+- **Analyst analyses are purchasable by card, in Stripe TEST mode.**
+  `POST /analyses/{genId}/buy-checkout` creates a session at the price the
+  analyst set, and `GET /analyses/{genId}/purchased?session_id=` hands over the
+  PDF against the Stripe session — no account, the same trust model as
+  `api/report-download.js`. The live-keys flip in the prod-rollout merge covers
+  it, and the VAT gap below applies to these sales too. **Revenue share is still
+  not computed**: the money lands in the platform account and the sale is
+  written to the audit trail (`analysis-sold`, with the amount), which is what
+  makes the analyst's cut computable when the model is decided.
+- **Anyone with a LinkedIn account can spend an engine run.** A `reader` gets a
+  free generation with no publish obligation, so nothing is returned for the
+  compute. Esa's answer to this was a small joining fee (~5 €) plus at-cost
+  generations for proven analysts, deliberately deferred until there are enough
+  analysts to matter (17.8.2026). Fine on the test stack, **not fine on prod** —
+  the fee, or a role gate on the free generation, has to land before this ships.
+- **Analyst analyses do not render on the company pages yet.** The ordered list
+  is served by `GET /analyses`, but the static `reports/<company>-equity-report.html`
+  pages do not consume it; that handoff is open question 1/2 in
+  [analyst-publishing.md](analyst-publishing.md).
+
+- **The public catalog no longer publishes `pdfUrl` for paid reports** (only for
+  free ones). Buyers download through `GET /api/report-download?session_id=…`,
+  which verifies the Stripe session and 302s to a 15-minute signed S3 URL;
+  the backend route `POST /api/report-download` is guarded by the catalog-sync
+  secret and is never called from the browser. Deployed to the test stage;
+  **production still serves the old payload until it is deployed there.**
+- Remaining gap in that fix: `files*.aiequityreports.com` still serves the whole
+  bucket publicly, so a *guessed* filename (`AMD_05062026.pdf`) still downloads.
+  Closing that means either CloudFront signed URLs (key-group setup) or dropping
+  the public origin — both break the permanent links in already-sent receipt
+  emails, so it is a business decision, not a code one.
+- Fresh-report delivery emails (reconciler) still link the PDF directly; that
+  path needs the same treatment as the ready-report receipt.
+- VAT: no `automatic_tax` anywhere, one-off or subscription. Selling digital
+  subscriptions to EU consumers needs an OSS registration decision.
+- The analyst freemium has **no off switch**: any LinkedIn sign-in becomes an
+  analyst with picks and a generation. Nothing verifies that the person is an
+  analyst, so this must be gated before production.
+- No Stripe billing portal: cancelling is an email to support, and the site copy
+  says exactly that.
+- Submitting auto-publishes and post-moderation takes it back down
+  (`POST /admin/members/takedown`) — the admin page has no UI for either yet.
+- Publishing requires the order to be `DELIVERED`, so a `FAILED` generation
+  leaves the analyst's obligation stuck for good. It needs a release path
+  (admin clear, or auto-release when the reconciler fails an order).
 - Final prices are business decisions; 19/39/59 are test points.
+- Published analyses are recorded but nothing renders them on the site yet —
+  blocked on the handoff contract with the engine team
+  ([analyst-publishing.md](analyst-publishing.md), open question 1).
+- `BOUNTY_EUR_PER_REPORT` defaults to 0, so the ledger states are real but the
+  amounts are not.

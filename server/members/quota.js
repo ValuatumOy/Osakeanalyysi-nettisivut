@@ -2,9 +2,13 @@
 // here — every function returns command params so tests can assert the exact
 // ConditionExpressions. All quota periods are calendar-based (UTC).
 
-const PICK_LIMITS = { free: 2, investor: 5, investor_plus: 15 };
+// Allowances live in tiers.js — three tunable numbers per role/tier.
 const FREEMIUM_MIN_AGE_DAYS = 30;
 const COVERAGE_UPDATES_PER_YEAR = 4;
+// An analysis may be given away free for at most a year (Esa, 17.8.2026): the
+// analyst sets the decay themselves, and free archive accumulates by itself.
+const MAX_FREE_AFTER_DAYS = 365;
+const DAY_MS = 24 * 3600 * 1000;
 
 function monthKey(now) {
   return now.toISOString().slice(0, 7); // YYYY-MM
@@ -14,8 +18,18 @@ function yearKey(now) {
   return now.toISOString().slice(0, 4); // YYYY
 }
 
-function pickLimitForTier(tier) {
-  return PICK_LIMITS[tier] ?? 0;
+// Publications are listed per company (company page ordering) and, rarely, all
+// of them (admin review). One index partition serves both: the sort key starts
+// with the company so a company query is a begins_with, and the whole partition
+// is small enough to read and sort in memory for the admin view.
+function publicationIndexSk({ companyId, publishedAt, genId }) {
+  return `${String(companyId).toUpperCase()}#${publishedAt}#${genId}`;
+}
+
+function clampFreeAfterDays(days) {
+  const n = Number(days);
+  if (!Number.isFinite(n) || n <= 0) return MAX_FREE_AFTER_DAYS;
+  return Math.min(Math.round(n), MAX_FREE_AFTER_DAYS);
 }
 
 // Freemium picks only reports older than 30 days. ageDays comes from the
@@ -54,6 +68,37 @@ function buildPickTransact({ table, userId, now, limit, reportId, source }) {
   };
 }
 
+// Reserve a paying member's monthly generation (Investor Plus). No publish
+// obligation — the report stays private — so the only gate is one per month.
+function buildReserveMemberGenerationTransact({ table, userId, now, genId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'SET genReserved = :true, genId = :genId',
+          ConditionExpression: 'attribute_not_exists(genReserved)',
+          ExpressionAttributeValues: { ':true': true, ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            reservedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 // Reserve the analyst's monthly free generation. Two gates in one transaction:
 // the publish obligation on PROFILE (spans months by design — no new free run
 // until the previous one is submitted) and the one-per-calendar-month flag.
@@ -66,9 +111,12 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           UpdateExpression: 'SET openObligationId = :genId',
           ConditionExpression:
-            'attribute_not_exists(openObligationId) AND (attribute_not_exists(banned) OR banned = :false) AND #role = :analyst',
+            'attribute_not_exists(openObligationId) AND (attribute_not_exists(banned) OR banned = :false) '
+            + 'AND #role IN (:analyst, :coaching)',
           ExpressionAttributeNames: { '#role': 'role' },
-          ExpressionAttributeValues: { ':genId': genId, ':false': false, ':analyst': 'analyst' },
+          ExpressionAttributeValues: {
+            ':genId': genId, ':false': false, ':analyst': 'analyst', ':coaching': 'coaching',
+          },
         },
       },
       {
@@ -96,8 +144,20 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
   };
 }
 
-// Submit-to-publish releases the obligation (next month's generation unlocks).
-function buildSubmitTransact({ table, userId, now, genId, promptsText }) {
+// Submit publishes straight away (auto-publish + post-moderation) and releases
+// the obligation, so next month's generation unlocks. companyId and jobId are
+// required: the bounty ledger keys on the company, and jobId is the provenance
+// link back to the engine job the published PDF came from.
+function buildSubmitTransact({
+  table, userId, now, genId, promptsText, companyId, jobId,
+  priceEur = 0, freeAfterDays, analystName = '',
+}) {
+  const at = now.toISOString();
+  const company = String(companyId).toUpperCase();
+  const days = clampFreeAfterDays(freeAfterDays);
+  // The analyst sets both the price and how long until the analysis falls free.
+  const freeFrom = new Date(now.getTime() + days * DAY_MS).toISOString();
+  const price = Math.max(0, Math.round(Number(priceEur) || 0));
   return {
     TransactItems: [
       {
@@ -105,7 +165,10 @@ function buildSubmitTransact({ table, userId, now, genId, promptsText }) {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           UpdateExpression: 'REMOVE openObligationId',
-          ConditionExpression: 'openObligationId = :genId',
+          // Tolerates an admin having already cleared the obligation to unblock
+          // the next generation (buildGrantGenerationTransact) — the report
+          // still gets published.
+          ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
           ExpressionAttributeValues: { ':genId': genId },
         },
       },
@@ -113,19 +176,240 @@ function buildSubmitTransact({ table, userId, now, genId, promptsText }) {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
-          UpdateExpression: 'SET #status = :submitted, submittedAt = :at, promptsText = :prompts',
+          UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
+            + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
+            + 'freeFrom = :freeFrom',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
-            ':submitted': 'submitted',
+            ':published': 'published',
             ':generating': 'generating',
-            ':at': now.toISOString(),
+            ':at': at,
             ':prompts': promptsText || '',
+            ':company': company,
+            ':job': jobId || '',
+            ':price': price,
+            ':days': days,
+            ':freeFrom': freeFrom,
+          },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: 'PUBINDEX',
+            sk: publicationIndexSk({ companyId: company, publishedAt: at, genId }),
+            userId,
+            genId,
+            companyId: company,
+            analystName,
+            jobId: jobId || '',
+            publishedAt: at,
+            status: 'published',
+            priceEur: price,
+            freeFrom,
+            reviewCount: 0,
+            scoreSum: 0,
           },
         },
       },
     ],
   };
+}
+
+// Admin: release the analyst so they can generate again immediately, without
+// waiting for the calendar (Esa, 17.8.2026 — a good analyst is free labour and
+// should not be throttled). Unconditional on purpose: it must work whether the
+// analyst is blocked by the obligation, by the month's slot, or by both.
+function buildGrantGenerationTransact({ table, userId, now }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'REMOVE openObligationId SET generationGrantedAt = :at',
+          ExpressionAttributeValues: { ':at': now.toISOString() },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'REMOVE genReserved, genId',
+        },
+      },
+    ],
+  };
+}
+
+// Self-service role change, downward only (analyst → reader). Blocked while an
+// obligation is open: otherwise an analyst generates a report, drops the role,
+// and walks away with it unpublished.
+function buildRoleChangeTransact({ table, userId, role }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'SET #role = :role',
+          ConditionExpression: 'attribute_not_exists(openObligationId)',
+          ExpressionAttributeNames: { '#role': 'role' },
+          ExpressionAttributeValues: { ':role': role },
+        },
+      },
+    ],
+  };
+}
+
+// Opening another analyst's analysis costs one monthly read AND leaves a review
+// obligation: the next one stays locked until this one has been scored and
+// commented (Esa, 17.8.2026). Same shape as the publish obligation.
+function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'SET analystReads = if_not_exists(analystReads, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(analystReads) OR analystReads < :limit',
+          ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':limit': limit },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'SET openReviewId = :genId',
+          ConditionExpression: 'attribute_not_exists(openReviewId)',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `READ#${genId}`,
+            ownerId,
+            openedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// The review that pays for the read: a score plus a written comparison. Counters
+// on the index item are what orders the analyses on a company page.
+function buildReviewTransact({ table, userId, now, genId, ownerId, indexSk, score, comment }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'REMOVE openReviewId',
+          ConditionExpression: 'openReviewId = :genId',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${ownerId}`,
+            sk: `REVIEW#${genId}#${userId}`,
+            genId,
+            reviewerId: userId,
+            score,
+            comment,
+            reviewedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'ADD reviewCount :one, scoreSum :score',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':one': 1, ':score': score },
+        },
+      },
+    ],
+  };
+}
+
+// Hand-picked free window: every fifth or tenth analysis goes free to everyone
+// for a while (Esa, 17.8.2026). Hand-picked now, randomised later.
+function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 }) {
+  const until = new Date(now.getTime() + Math.max(1, Math.round(days)) * DAY_MS).toISOString();
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+          UpdateExpression: 'SET freeUntil = :until',
+          ConditionExpression: '#status = :published',
+          ExpressionAttributeNames: { '#status': 'status' },
+          ExpressionAttributeValues: { ':until': until, ':published': 'published' },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'SET freeUntil = :until',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':until': until },
+        },
+      },
+    ],
+  };
+}
+
+// Admin takedown: the post-moderation half of auto-publish. Voids the bounty by
+// construction — bounty.ledger() reads the status.
+function buildTakedownTransact({ table, userId, now, genId, reason, indexSk }) {
+  const items = [
+    {
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+        UpdateExpression: 'SET #status = :down, takenDownAt = :at, takedownReason = :reason',
+        ConditionExpression: '#status = :published',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: {
+          ':down': 'takendown',
+          ':published': 'published',
+          ':at': now.toISOString(),
+          ':reason': reason || '',
+        },
+      },
+    },
+  ];
+  // A taken-down analysis must leave the company-page listing too. Publications
+  // from before the index existed have no row, hence the conditional builder.
+  if (indexSk) {
+    items.push({
+      Update: {
+        TableName: table,
+        Key: { pk: 'PUBINDEX', sk: indexSk },
+        UpdateExpression: 'SET #status = :down',
+        ConditionExpression: 'attribute_exists(sk)',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: { ':down': 'takendown' },
+      },
+    });
+  }
+  return { TransactItems: items };
 }
 
 // Company Coverage: the initial report is free once per subscription
@@ -178,16 +462,24 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
 }
 
 module.exports = {
-  PICK_LIMITS,
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
+  MAX_FREE_AFTER_DAYS,
   monthKey,
   yearKey,
-  pickLimitForTier,
+  publicationIndexSk,
+  clampFreeAfterDays,
   freemiumPickEligible,
   buildPickTransact,
   buildReserveGenerationTransact,
+  buildReserveMemberGenerationTransact,
   buildSubmitTransact,
+  buildTakedownTransact,
+  buildGrantGenerationTransact,
+  buildRoleChangeTransact,
+  buildOpenAnalysisTransact,
+  buildReviewTransact,
+  buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
 };

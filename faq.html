@@ -136,27 +136,37 @@
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">Home</a>
         <a href="reports.html" class="nav-link">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link is-active">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link is-active" aria-current="page">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
       <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="index.html" class="nav-mobile-link">Home</a>
       <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="about.html" class="nav-mobile-link">About</a>
-      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="faq.html" class="nav-mobile-link is-active" aria-current="page">FAQ</a>
       <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>
 
@@ -245,12 +255,33 @@
             </div>
           </div>
 
+          <h2 style="font-size:var(--text-lg); font-weight:600; color:var(--charcoal); margin:0 0 1.5rem; padding-bottom:0.75rem; border-bottom:2px solid var(--green);">Memberships</h2>
+
+          <div class="faq-list" style="margin-bottom:3rem;">
+            <div class="faq-item">
+              <button class="faq-question">What memberships are available?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+              <div class="faq-answer"><p>Three paid plans and a free analyst membership. Investor (€19/month or €190/year) includes three self-picked catalog reports a month on the monthly plan, five a month on the yearly plan. Investor Plus (€39/month or €390/year) includes ten reports a month (fifteen on the yearly plan) plus one private fresh generation. Members also order fresh reports at €40 instead of €50. Company Coverage (€59/year) follows a single company of your choice: its latest report immediately and four updates over the year. All plans are billed by Stripe. To cancel or change a plan, email contact26@valuatum.com — a subscription runs to the end of the period already paid for.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">How does the free Analyst membership work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+              <div class="faq-answer"><p>Analysts sign in with LinkedIn and can generate one fresh AI report per month for free. In exchange, the finished report and the modification prompts used to refine it are published on the site under the analyst's name. A new free generation unlocks only after the previous one has been submitted for publication. Analysts can additionally open ten catalog reports per month that are older than 30 days, plus twenty reports published by other analysts.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Do unused monthly picks roll over?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+              <div class="faq-answer"><p>No. Quotas reset on the 1st of each calendar month (UTC) and unused picks or generations don't carry over to the next month.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">What happens to my reports if I cancel?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+              <div class="faq-answer"><p>Reports opened with a membership are available for as long as the subscription is active. One-off purchases (€20 ready / €50 fresh) are permanent and remain yours regardless of any subscription.</p></div>
+            </div>
+          </div>
+
           <h2 style="font-size:var(--text-lg); font-weight:600; color:var(--charcoal); margin:0 0 1.5rem; padding-bottom:0.75rem; border-bottom:2px solid var(--green);">Pricing and commercial use</h2>
 
           <div class="faq-list" style="margin-bottom:3rem;">
             <div class="faq-item">
               <button class="faq-question">How much do reports cost?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
-              <div class="faq-answer"><p>Free sample reports are always free with no account required. Existing reports in the catalog are €20. Fresh reports generated with the latest data are €50 and delivered within one business day. Enterprise pricing is available for teams and institutions needing volume, API access, or branded outputs.</p></div>
+              <div class="faq-answer"><p>Free sample reports are always free with no account required. Existing reports in the catalog are €20. Fresh reports generated with the latest data are €50 and delivered within one business day. Memberships bring the per-report price down: Investor €19/month (3 reports, 5 on the yearly plan), Investor Plus €39/month (10 reports, 15 yearly, plus a private fresh generation) and Company Coverage €59/year (one company, latest report + 4 updates). Members pay €40 for fresh reports. Enterprise pricing is available for teams and institutions needing volume, API access, or branded outputs.</p></div>
             </div>
             <div class="faq-item">
               <button class="faq-question">Can I use reports in client work?<span class="faq-question-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>

@@ -7,9 +7,14 @@
 const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
+const ordersStore = require('../aws/orders-store');
+const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
+const bounty = require('../members/bounty');
 const quota = require('../members/quota');
+const ranking = require('../members/ranking');
 const store = require('../members/store');
+const tiers = require('../members/tiers');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -27,6 +32,7 @@ const SECRET_ENV_BY_NAME = {
   'members-stripe-prices': 'MEMBERS_STRIPE_PRICES',
   'stripe-secret-key': 'STRIPE_SECRET_KEY',
   'admin-upload-password': 'ADMIN_UPLOAD_PASSWORD',
+  'wisdom-api-token': 'WISDOM_API_TOKEN', // company lookup before a billable run
 };
 
 let secretsLoaded = null;
@@ -102,23 +108,71 @@ function requestNow(event) {
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
 
-async function findReport(reportId, now) {
-  const { catalog } = await catalogAws.buildCatalogAws({ now });
-  return catalog.reports.find(item => item.id === reportId) || null;
+// Monthly and annual plans have different allowances — see server/members/tiers.js.
+const billingInterval = (profile) => (profile.billingInterval === 'year' ? 'year' : 'month');
+
+// The three tunable numbers for this member: generations, basePicks,
+// analystReads. Role and subscription are merged, larger wins.
+const limitsFor = (profile) => tiers.limitsFor({
+  role: profile.role,
+  tier: activeTier(profile),
+  interval: billingInterval(profile),
+});
+
+const FRESH_LIST_PRICE = 50;
+const FRESH_MEMBER_PRICE = 40;
+
+const freshReportPrice = (profile) =>
+  activeTier(profile) !== 'none' ? FRESH_MEMBER_PRICE : FRESH_LIST_PRICE;
+
+// Tickers are not free text: the catalog holds 'NOKIA.HE', a customer types
+// 'NOKIA', and a Coverage subscription that matches nothing is a year of
+// nothing. Resolve against the catalog and accept the unambiguous match.
+function resolveTicker(catalog, input) {
+  const wanted = String(input || '').trim().toUpperCase();
+  if (!wanted) return null;
+  const tickers = [...new Set(catalog.reports.map(r => String(r.ticker || '').toUpperCase()).filter(Boolean))];
+  if (tickers.includes(wanted)) return wanted;
+  // 'NOKIA' → 'NOKIA.HE', but only when exactly one listing matches.
+  const prefixed = tickers.filter(t => t.split('.')[0] === wanted);
+  return prefixed.length === 1 ? prefixed[0] : null;
 }
 
-async function presignReport(report) {
+// Wake the worker so a new order starts rendering now instead of waiting for
+// the 5-minute sweep. Same push the API Lambda does for paid fresh orders.
+async function invokeWorkerAsync() {
+  const functionName = process.env.WORKER_FUNCTION_NAME;
+  if (!functionName) return;
+  const { InvokeCommand } = require('@aws-sdk/client-lambda');
+  const { lambda } = require('../aws/clients');
+  await lambda().send(new InvokeCommand({
+    FunctionName: functionName,
+    InvocationType: 'Event',
+    Payload: JSON.stringify({ action: 'tick', reason: 'member-generation' }),
+  }));
+}
+
+async function presignPdf(bucket, fileName) {
   const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
   const { GetObjectCommand } = require('@aws-sdk/client-s3');
   const { s3 } = require('../aws/clients');
   const prefix = process.env.REPORT_PDF_PREFIX || 'reports/pdfs/';
   const url = await getSignedUrl(
     s3(),
-    new GetObjectCommand({ Bucket: process.env.REPORT_PDF_BUCKET, Key: `${prefix}${report.fileName}` }),
+    new GetObjectCommand({ Bucket: bucket, Key: `${prefix}${fileName}` }),
     { expiresIn: 300 },
   );
   return { url, expiresIn: 300 };
 }
+
+// A catalog report: production's bucket, in every stage (see infra/lib/config.ts).
+const presignReport = report => presignPdf(process.env.REPORT_PDF_BUCKET, report.fileName);
+
+// A report this stage generated for a member. It is delivered into this stage's
+// own bucket and is deliberately not in the production catalog listing, so the
+// order's own pdfFileName is the key — the DELIVERED status is the entitlement.
+const presignGenerated = fileName =>
+  presignPdf(process.env.GENERATED_PDF_BUCKET || process.env.REPORT_PDF_BUCKET, fileName);
 
 // GET /reports — the member-facing catalog. Unlike the prod public payload
 // this NEVER exposes pdfUrl: the presigned /open route is the only door.
@@ -142,8 +196,11 @@ async function getReportsList(event) {
 
 // ── auth routes ──────────────────────────────────────────────────────────────
 
+// `returnTo` lets the prod site, the staging site and local dev share one API;
+// auth.frontendUrl() rejects anything off the allowlist.
 async function getLinkedinStart(event) {
-  return redirect(auth.linkedinStartUrl(requestNow(event)));
+  const returnTo = event.queryStringParameters?.returnTo;
+  return redirect(auth.linkedinStartUrl(returnTo, requestNow(event)));
 }
 
 async function getLinkedinCallback(event) {
@@ -151,14 +208,14 @@ async function getLinkedinCallback(event) {
   if (!q.code) return redirect(`${auth.frontendUrl()}#error=linkedin_denied`);
   const result = await auth.linkedinCallback(q.code, q.state, requestNow(event));
   if (result.error) return redirect(`${auth.frontendUrl()}#error=${encodeURIComponent(result.error)}`);
-  return redirect(`${auth.frontendUrl()}#token=${result.token}`);
+  return redirect(`${result.returnTo}#token=${result.token}`);
 }
 
 async function postMagicLink(event) {
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
   try {
-    await auth.sendMagicLink(body.email);
+    await auth.sendMagicLink(body.email, body.returnTo);
   } catch (err) {
     console.error('magic-link send failed:', err.message); // still 200 — no enumeration
   }
@@ -168,7 +225,7 @@ async function postMagicLink(event) {
 async function getMagicVerify(event) {
   const result = await auth.verifyMagicLink(event.queryStringParameters?.token, requestNow(event));
   if (result.error) return redirect(`${auth.frontendUrl()}#error=${encodeURIComponent(result.error)}`);
-  return redirect(`${auth.frontendUrl()}#token=${result.token}`);
+  return redirect(`${result.returnTo}#token=${result.token}`);
 }
 
 // ── member routes ────────────────────────────────────────────────────────────
@@ -185,9 +242,7 @@ async function getMe(event) {
     store.listUserItems(profile.userId, 'ENT#'),
   ]);
 
-  const tier = activeTier(profile);
-  const pickLimit = tier !== 'none' ? quota.pickLimitForTier(tier)
-    : profile.role === 'analyst' ? quota.PICK_LIMITS.free : 0;
+  const limits = limitsFor(profile);
 
   return json(200, {
     userId: profile.userId,
@@ -195,18 +250,26 @@ async function getMe(event) {
     role: profile.role,
     tier: profile.tier,
     tierStatus: profile.tierStatus,
+    billingInterval: profile.billingInterval || null,
     coverageCompanyId: profile.coverageCompanyId || null,
     banned: Boolean(profile.banned),
     month: monthKey,
+    freshReportPrice: freshReportPrice(profile),
+    hasGeneration: limits.generations > 0,
+    publishes: tiers.isPublishingRole(profile.role),
+    limits,
     usage: {
       picks: usage?.picks || 0,
-      pickLimit,
+      pickLimit: limits.basePicks,
+      analystReads: usage?.analystReads || 0,
+      analystReadLimit: limits.analystReads,
       genReserved: Boolean(usage?.genReserved),
       genId: usage?.genId || null,
       coverageUpdates: yearUsage?.coverageUpdates || 0,
       coverageUpdateLimit: quota.COVERAGE_UPDATES_PER_YEAR,
     },
     openObligationId: profile.openObligationId || null,
+    openReviewId: profile.openReviewId || null,
     entitlements: entitlements.map(item => ({
       reportId: item.sk.slice(4),
       source: item.source,
@@ -223,23 +286,29 @@ async function postReportOpen(event) {
   if (deny) return deny;
 
   const reportId = event.pathParameters?.id || '';
-  const report = await findReport(reportId, now);
+  const existing = await store.getEntitlement(profile.userId, reportId);
+
+  // A member's own generated report is hidden from the catalog, so it is only
+  // reachable through the non-public view — and only by whoever holds the
+  // entitlement. Everyone else sees the public catalog exactly as before.
+  const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: Boolean(existing) });
+  const report = catalog.reports.find(item => item.id === reportId);
   if (!report) return json(404, { error: 'Report not found' });
-  if (report.isFree) return json(200, await presignReport(report)); // weekly-rotation free reports gate nothing
+  if (!existing && report.isFree) return json(200, await presignReport(report)); // weekly-rotation free reports gate nothing
 
   const sign = async (source) => {
     await store.audit(profile.userId, 'report-open', { reportId, source });
     return json(200, await presignReport(report));
   };
 
-  // Existing entitlement: one-off purchases are permanent; subscription- and
-  // freemium-sourced access lapses with the subscription/role.
-  const existing = await store.getEntitlement(profile.userId, reportId);
+  // Existing entitlement: one-off purchases and reports the member generated
+  // are permanent; subscription- and freemium-sourced access lapses with the
+  // subscription/role.
   if (existing) {
-    if (existing.source === 'oneoff') return sign('oneoff');
+    if (existing.source === 'oneoff' || existing.source === 'generation') return sign(existing.source);
     if (existing.source === 'free_pick') {
-      return profile.role === 'analyst' ? sign('free_pick')
-        : json(402, { error: 'Freemium access is for analysts only' });
+      return tiers.isLinkedinRole(profile.role) ? sign('free_pick')
+        : json(402, { error: 'Freemium access is for LinkedIn members only' });
     }
     return activeTier(profile) !== 'none' ? sign(existing.source)
       : json(402, { error: 'Subscription is not active' });
@@ -265,27 +334,22 @@ async function postReportOpen(event) {
     return json(429, { error: 'Yearly coverage updates used up' });
   }
 
-  // Investor tiers: N self-picked reports per calendar month.
-  if (tier === 'investor' || tier === 'investor_plus') {
-    const committed = await store.runTransact(quota.buildPickTransact({
-      table, userId: profile.userId, now, limit: quota.pickLimitForTier(tier), reportId, source: 'pick',
-    }));
-    if (committed) return sign('pick');
-    if (await store.getEntitlement(profile.userId, reportId)) return sign('pick');
-    return json(429, { error: 'Monthly report picks used up' });
-  }
-
-  // Freemium (analysts): 2 picks per month, only reports older than 30 days.
-  if (profile.role === 'analyst') {
-    if (!quota.freemiumPickEligible(report)) {
-      return json(403, { error: `Freemium picks must be older than ${quota.FREEMIUM_MIN_AGE_DAYS} days` });
+  // Everyone else spends one of their monthly base picks. How many that is comes
+  // from tiers.js — the numbers are demand-tuned, so they are data, not code.
+  // Subscribers may pick any report; the free LinkedIn roles only the archive.
+  const limits = limitsFor(profile);
+  if (limits.basePicks > 0) {
+    const paying = tier !== 'none';
+    if (!paying && !quota.freemiumPickEligible(report)) {
+      return json(403, { error: `Free picks must be older than ${quota.FREEMIUM_MIN_AGE_DAYS} days` });
     }
+    const source = paying ? 'pick' : 'free_pick';
     const committed = await store.runTransact(quota.buildPickTransact({
-      table, userId: profile.userId, now, limit: quota.PICK_LIMITS.free, reportId, source: 'free_pick',
+      table, userId: profile.userId, now, limit: limits.basePicks, reportId, source,
     }));
-    if (committed) return sign('free_pick');
-    if (await store.getEntitlement(profile.userId, reportId)) return sign('free_pick');
-    return json(429, { error: 'Monthly free picks used up' });
+    if (committed) return sign(source);
+    if (await store.getEntitlement(profile.userId, reportId)) return sign(source);
+    return json(429, { error: 'Monthly report picks used up' });
   }
 
   return json(402, { error: 'Subscription required' });
@@ -293,30 +357,117 @@ async function postReportOpen(event) {
 
 // POST /generations/free — reserve the analyst's monthly free generation.
 // The real engine run is wired later; the reservation + obligation is the point.
+// Analysts get a free generation against a publish obligation; Investor Plus
+// members get a private one as part of the subscription. Same monthly slot,
+// and both run through the real order pipeline (orders table → worker →
+// reconciler → engine), so a reservation spends real engine time.
 async function postGenerationsFree(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
   if (deny) return deny;
-  if (profile.role !== 'analyst') return json(403, { error: 'Free generations are for analysts only' });
 
+  // Publishing roles carry the obligation; everyone else's generation is private.
+  const isAnalyst = tiers.isPublishingRole(profile.role);
+  if (limitsFor(profile).generations < 1) {
+    return json(403, { error: 'Your plan does not include a monthly generation' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const company = String(body.company || '').trim();
+  const requestedTicker = String(body.ticker || '').trim().toUpperCase();
+  if (!company) return json(400, { error: 'company is required' });
+  if (!requestedTicker) return json(400, { error: 'ticker is required' });
+  if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  // A typo here costs a full engine run, so resolve the company against the
+  // same source the paid fresh-report flow searches, and generate for the
+  // canonical match rather than whatever was typed.
+  let match;
+  try {
+    const results = await searchCompanies(requestedTicker);
+    match = results.find(item => item.ticker.toUpperCase() === requestedTicker)
+      || results.find(item => item.ticker.toUpperCase().split('.')[0] === requestedTicker);
+  } catch (err) {
+    console.error('generation company lookup failed:', err.message);
+    return json(503, { error: 'Company lookup is unavailable right now — please try again shortly' });
+  }
+  if (!match) {
+    return json(400, {
+      error: `We couldn't find "${requestedTicker}". Use the ticker as listed, e.g. NOKIA.HE or AMD.`,
+    });
+  }
+  const ticker = match.ticker;
+
+  // Reserve the quota slot first: a failed reservation must never start a
+  // billable engine run.
   const genId = crypto.randomUUID();
-  const committed = await store.runTransact(quota.buildReserveGenerationTransact({
+  const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
+  const committed = await store.runTransact(build({
     table: store.table(), userId: profile.userId, now, genId,
   }));
   if (!committed) {
     const fresh = await store.getProfile(profile.userId);
-    if (fresh?.openObligationId) {
+    if (isAnalyst && fresh?.openObligationId) {
       return json(409, {
         error: 'Previous generated report must be submitted for publication first',
         openObligationId: fresh.openObligationId,
       });
     }
-    return json(429, { error: 'Monthly free generation already used' });
+    return json(429, { error: 'Monthly generation already used' });
   }
-  await store.audit(profile.userId, 'generation-reserved', { genId });
-  // ponytail: engine invocation stubbed — status stays 'generating' until the
-  // worker wiring lands (real runs cost real engine time).
-  return json(200, { genId, status: 'generating' });
+
+  // Membership reports are always written hidden: an analyst's goes public only
+  // once it is submitted and an admin publishes it, and a Plus member's never
+  // does.
+  await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: match.companyName || company,
+    ticker,
+    exchange: String(body.exchange || '').trim(),
+    industry: match.industry || '',
+    visibility: 'private',
+  });
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-reserved', { genId, ticker, private: !isAnalyst });
+  return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
+}
+
+// GET /generations/{genId} — order progress, and the entitlement handover once
+// the reconciler has delivered the PDF.
+async function getGeneration(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+
+  const order = await ordersStore.get(genId);
+  if (!order) return json(200, { genId, status: publication.status, publication: publication.status });
+
+  const result = {
+    genId,
+    status: order.status,
+    publication: publication.status,
+    private: Boolean(publication.private),
+    company: order.companyName,
+    ticker: order.ticker,
+    error: order.error || null,
+  };
+
+  if (order.status === 'DELIVERED' && order.pdfFileName) {
+    // The member owns what they generated — no quota, no entitlement row.
+    Object.assign(result, await presignGenerated(order.pdfFileName));
+  }
+  return json(200, result);
 }
 
 async function postGenerationSubmit(event) {
@@ -328,12 +479,62 @@ async function postGenerationSubmit(event) {
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
+  // The company comes from the order the reservation resolved, never from the
+  // request: the bounty keys on it, so a client-supplied ticker would be a way
+  // to farm one bounty per spelling of the same company.
+  // DELIVERED is also what makes the report exist at all: without this an
+  // analyst could reserve, publish an empty shell and start a bounty maturing.
+  const order = await ordersStore.get(genId);
+  if (!order?.ticker) return json(409, { error: 'No generated report to publish for this id' });
+  if (order.status !== 'DELIVERED') {
+    return json(409, { error: 'The report is still generating', status: order.status });
+  }
+
+  // The analyst prices their own analysis and decides how long until it falls
+  // free (max a year, quota.clampFreeAfterDays). Both are recorded now; the
+  // surface that sells an analysis is not built yet.
   const committed = await store.runTransact(quota.buildSubmitTransact({
-    table: store.table(), userId: profile.userId, now, genId, promptsText: String(body.promptsText || ''),
+    table: store.table(), userId: profile.userId, now, genId,
+    promptsText: String(body.promptsText || ''),
+    companyId: order.ticker,
+    jobId: order.jobId || '',
+    priceEur: body.priceEur,
+    freeAfterDays: body.freeAfterDays,
+    analystName: String(profile.name || profile.email || '').slice(0, 120),
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
-  await store.audit(profile.userId, 'generation-submitted', { genId });
-  return json(200, { ok: true, genId, status: 'submitted' });
+  await store.audit(profile.userId, 'generation-published', { genId, companyId: order.ticker });
+  return json(200, {
+    ok: true, genId, status: 'published',
+    freeAfterDays: quota.clampFreeAfterDays(body.freeAfterDays),
+  });
+}
+
+// PAYOUT# items → what bounty.ledger() needs. The amount comes from the item, not
+// from the current env: a later fee change must not rewrite past payouts.
+function paidFrom(payouts) {
+  const paidAmounts = {};
+  const paidGenIds = payouts.map((p) => {
+    const genId = String(p.sk).replace(/^PAYOUT#/, '');
+    if (p.amount !== undefined) paidAmounts[genId] = Number(p.amount);
+    return genId;
+  });
+  return { paidGenIds, paidAmounts };
+}
+
+// GET /me/earnings — the analyst's bounty ledger, derived from their own items.
+async function getMeEarnings(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+  if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
+
+  const [pubs, payouts] = await Promise.all([
+    store.listUserItems(profile.userId, 'PUB#'),
+    store.listUserItems(profile.userId, 'PAYOUT#'),
+  ]);
+  const { paidGenIds, paidAmounts } = paidFrom(payouts);
+  return json(200, bounty.ledger(pubs, { now, paidGenIds, paidAmounts }));
 }
 
 // ── billing ──────────────────────────────────────────────────────────────────
@@ -367,8 +568,20 @@ async function postBillingCheckout(event) {
   const interval = plan === 'coverage' ? 'year' : (String(body.interval || 'month'));
   const priceId = memberPrices()[plan]?.[interval];
   if (!priceId) return json(400, { error: `Unknown plan/interval: ${plan}/${interval}` });
-  if (plan === 'coverage' && !String(body.coverageCompanyId || '').trim()) {
-    return json(400, { error: 'coverageCompanyId is required for coverage' });
+
+  // Coverage is a year of one company: refuse the sale rather than take money
+  // for a ticker nothing in the catalog will ever match.
+  let coverageCompanyId = '';
+  if (plan === 'coverage') {
+    const requested = String(body.coverageCompanyId || '').trim();
+    if (!requested) return json(400, { error: 'coverageCompanyId is required for coverage' });
+    const { catalog } = await catalogAws.buildCatalogAws({ now });
+    coverageCompanyId = resolveTicker(catalog, requested);
+    if (!coverageCompanyId) {
+      return json(400, {
+        error: `We don't cover "${requested}" yet — pick a company from the reports page or request coverage.`,
+      });
+    }
   }
 
   let customerId = profile.stripeCustomerId;
@@ -388,16 +601,50 @@ async function postBillingCheckout(event) {
     line_items: [{ price: priceId, quantity: 1 }],
     client_reference_id: profile.userId,
     subscription_data: {
-      metadata: {
-        userId: profile.userId,
-        plan,
-        coverageCompanyId: String(body.coverageCompanyId || '').toUpperCase(),
-      },
+      metadata: { userId: profile.userId, plan, coverageCompanyId },
     },
     success_url: `${auth.frontendUrl()}#checkout=success`,
     cancel_url: `${auth.frontendUrl()}#checkout=cancel`,
   });
   return json(200, { url: session.url });
+}
+
+// POST /billing/fresh-checkout — a fresh report at the member price. The
+// discount is applied server-side from the live subscription status; the client
+// never picks the price.
+async function postFreshCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const company = String(body.company || '').trim();
+  if (!company) return json(400, { error: 'company is required' });
+
+  const isMember = activeTier(profile) !== 'none';
+  const priceId = memberPrices().fresh?.[isMember ? 'member' : 'list'];
+  if (!priceId) return json(503, { error: 'Fresh report pricing is not configured' });
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    customer: profile.stripeCustomerId || undefined,
+    customer_email: profile.stripeCustomerId ? undefined : (profile.email || undefined),
+    line_items: [{ price: priceId, quantity: 1 }],
+    client_reference_id: profile.userId,
+    metadata: {
+      isFresh: 'true',
+      userId: profile.userId,
+      company,
+      ticker: String(body.ticker || '').toUpperCase(),
+      exchange: String(body.exchange || ''),
+      memberPrice: String(isMember),
+    },
+    success_url: `${auth.frontendUrl(body.returnTo)}#fresh=ordered`,
+    cancel_url: `${auth.frontendUrl(body.returnTo)}#fresh=cancel`,
+  });
+  await store.audit(profile.userId, 'fresh-checkout', { company, memberPrice: isMember });
+  return json(200, { url: session.url, price: freshReportPrice(profile) });
 }
 
 const SUB_STATUS_MAP = {
@@ -413,9 +660,13 @@ const SUB_STATUS_MAP = {
 async function applySubscription(userId, subscription) {
   const status = SUB_STATUS_MAP[subscription.status] || 'none';
   const plan = subscription.metadata?.plan || 'investor';
+  // Annual plans carry a larger monthly allowance, so the interval is part of
+  // the entitlement, not just billing trivia.
+  const interval = subscription.items?.data?.[0]?.price?.recurring?.interval === 'year' ? 'year' : 'month';
   const patch = {
     tierStatus: status,
     tier: status === 'canceled' || status === 'none' ? 'none' : plan,
+    billingInterval: interval,
     stripeSubscriptionId: subscription.id,
     currentPeriodEnd: subscription.current_period_end || 0,
   };
@@ -483,14 +734,369 @@ async function postBillingWebhook(event) {
   return json(200, { ok: true });
 }
 
+// ── analyst analyses: the layer on top of the engine report ─────────────────
+
+// GET /analyses?companyId=NOKIA.HE — what sits above the engine's own report on
+// a company page: every published analyst take, best first (server/members/
+// ranking.js). Public metadata only; opening one is a separate, quota'd call.
+async function getAnalyses(event) {
+  const now = requestNow(event);
+  const companyId = event.queryStringParameters?.companyId || '';
+  const items = await store.listPublicationIndex({ companyId });
+  return json(200, {
+    companyId: companyId ? String(companyId).toUpperCase() : null,
+    analyses: ranking.orderAnalyses(items, now).map((item) => ({
+      genId: item.genId,
+      companyId: item.companyId,
+      // The store filters by analyst, and two analysts can share a display name.
+      analystId: item.userId,
+      analyst: item.analystName || 'Analyst',
+      publishedAt: item.publishedAt,
+      priceEur: item.priceEur || 0,
+      reviewCount: item.reviewCount || 0,
+      peerScore: Math.round(item.peerScore * 100) / 100,
+      // `free` costs a member no read; `publicFree` is the administrator's
+      // hand-picked window, the only one a logged-out visitor may open.
+      free: ranking.isFreeNow(item, now),
+      publicFree: ranking.isPublicFreeNow(item, now),
+    })),
+  });
+}
+
+// GET /analyses/{genId}/free — no account, no allowance, no review owed. The
+// only analyst analysis a logged-out visitor can open is one an administrator
+// hand-picked into a free window (Esa, 19.8.2026). The analyst's own decay time
+// deliberately does NOT open this door: it only stops costing members a read.
+async function getAnalysisFree(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  // Same 404 for missing and taken-down: a takedown should not be discoverable.
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  if (!ranking.isPublicFreeNow(index, now)) {
+    return json(403, { error: 'This analysis is not in a free window' });
+  }
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(404, { error: 'No document for this analysis' });
+  await store.audit(index.userId, 'analysis-opened-free', { genId });
+  return json(200, {
+    genId,
+    analyst: index.analystName || 'Analyst',
+    companyId: index.companyId,
+    url: document.url,
+    expiresIn: document.expiresIn,
+  });
+}
+
+// POST /analyses/{genId}/open — spend one of the monthly analyst reads. The read
+// leaves a review obligation behind: the next one stays locked until this
+// analysis has been scored and commented (Esa, 17.8.2026).
+async function postAnalysisOpen(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
+
+  const deliver = async (extra) => json(200, {
+    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId)), ...extra,
+  });
+
+  // Inside a hand-picked free window, or past the analyst's own decay time, the
+  // analysis is free for everyone — no read spent, no review owed. Removing the
+  // gate is the whole point of the free window.
+  if (ranking.isFreeNow(index, now)) return deliver({ free: true });
+
+  const limit = limitsFor(profile).analystReads;
+  if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
+
+  const committed = await store.runTransact(quota.buildOpenAnalysisTransact({
+    table: store.table(), userId: profile.userId, now, limit, genId, ownerId: index.userId,
+  }));
+  if (!committed) {
+    const fresh = await store.getProfile(profile.userId);
+    if (fresh?.openReviewId && fresh.openReviewId !== genId) {
+      return json(409, {
+        error: 'Score and comment the analysis you opened last before opening another',
+        openReviewId: fresh.openReviewId,
+      });
+    }
+    // Already paid for: re-opening never charges twice.
+    if (await store.getItem(`USER#${profile.userId}`, `READ#${genId}`)) {
+      return deliver({ alreadyOpen: true });
+    }
+    return json(429, { error: 'Monthly analyst reads used up' });
+  }
+  await store.audit(profile.userId, 'analysis-opened', { genId, ownerId: index.userId });
+  return deliver({});
+}
+
+// The published analysis itself: the engine PDF the generation delivered, behind
+// a 5-minute presigned GET like every other download here. Seeded/test
+// publications have no order behind them and simply come back without a url.
+async function analysisDocument(genId) {
+  const order = await ordersStore.get(genId);
+  if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
+  return {
+    ...(await presignGenerated(order.pdfFileName)),
+    jobId: order.jobId || null,
+    company: order.companyName,
+  };
+}
+
+// POST /analyses/{genId}/buy-checkout — a reader with no account buying one
+// analyst's analysis at the price that analyst set. Members spend a monthly read
+// instead; this is the door for everyone else, so it takes no token. The Stripe
+// checkout session id is the receipt, exactly as the ready-report flow on the
+// main site works (api/report-download.js).
+async function postAnalysisBuyCheckout(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+
+  const price = Number(index.priceEur) || 0;
+  if (price <= 0) return json(400, { error: 'This analysis is not for sale' });
+  if (ranking.isPublicFreeNow(index, now)) {
+    return json(400, { error: 'This analysis is free to read right now' });
+  }
+  // Never take money for a document that cannot be handed over afterwards.
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(409, { error: 'This analysis has no document to deliver' });
+
+  const body = parseBody(event) || {};
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    line_items: [{
+      quantity: 1,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(price * 100),
+        product_data: {
+          name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
+          description: 'One analyst\'s re-run of the Valuatum AI equity report, with the prompts used to steer it.',
+        },
+      },
+    }],
+    metadata: { analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
+    success_url: `${returnTo}?bought=${genId}&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?bought=cancelled`,
+  });
+  return json(200, { url: session.url, priceEur: price });
+}
+
+// GET /analyses/{genId}/purchased?session_id=… — the buyer's way in. The session
+// id is long, unguessable and only ever handed to the person who paid, which is
+// the same trust model the ready-report download already uses.
+async function getAnalysisPurchased(event) {
+  const genId = event.pathParameters?.genId || '';
+  const sessionId = event.queryStringParameters?.session_id || '';
+  if (!sessionId) return json(400, { error: 'session_id is required' });
+
+  let session;
+  try {
+    session = await stripe().checkout.sessions.retrieve(sessionId);
+  } catch (err) {
+    return json(404, { error: 'Unknown purchase' });
+  }
+  if (session.payment_status !== 'paid') return json(402, { error: 'Payment not completed' });
+  if (session.metadata?.analysisGenId !== genId) return json(404, { error: 'Unknown purchase' });
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+  const document = await analysisDocument(genId);
+  if (!document.url) return json(404, { error: 'No document for this analysis' });
+
+  // The sale belongs to the analyst; revenue share is not computed yet, so this
+  // row is what makes it computable later.
+  await store.audit(index.userId, 'analysis-sold', {
+    genId, sessionId, amountTotal: session.amount_total, currency: session.currency,
+  });
+  return json(200, {
+    genId,
+    analyst: index.analystName || 'Analyst',
+    companyId: index.companyId,
+    url: document.url,
+    expiresIn: document.expiresIn,
+  });
+}
+
+// POST /analyses/{genId}/review {score, comment} — the price of the read. The
+// comment must compare: does this add value over the base report, or over the
+// other takes on the same company? A score with no reasoning is noise.
+async function postAnalysisReview(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  // Decimals are the point: an analysis is rarely a whole number better than
+  // the one before it. Rounded to one place so the stored sum stays exact.
+  const raw = Number(body.score);
+  if (!Number.isFinite(raw) || raw < 1 || raw > 5) {
+    return json(400, { error: 'score must be a number between 1 and 5, decimals allowed' });
+  }
+  const score = Math.round(raw * 10) / 10;
+  const comment = String(body.comment || '').trim();
+  if (comment.length < 40) {
+    return json(400, { error: 'A written comparison of at least 40 characters is required' });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+
+  const committed = await store.runTransact(quota.buildReviewTransact({
+    table: store.table(), userId: profile.userId, now, genId,
+    ownerId: index.userId, indexSk: index.sk, score, comment: comment.slice(0, 4000),
+  }));
+  if (!committed) return json(409, { error: 'No open review for that analysis' });
+  await store.audit(profile.userId, 'analysis-reviewed', { genId, score });
+  return json(200, { ok: true, genId, score });
+}
+
+// POST /me/role {role:'reader'} — an analyst who does not want the publish
+// obligation steps down to a reader. Downward only, and never while a report is
+// waiting to be published.
+async function postMeRole(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+  const body = parseBody(event);
+  if (body?.role !== 'reader') return json(400, { error: 'Only role "reader" can be selected' });
+  if (!tiers.isLinkedinRole(profile.role)) return json(403, { error: 'LinkedIn members only' });
+
+  const committed = await store.runTransact(quota.buildRoleChangeTransact({
+    table: store.table(), userId: profile.userId, role: 'reader',
+  }));
+  if (!committed) {
+    return json(409, { error: 'Publish your generated report before changing role' });
+  }
+  await store.audit(profile.userId, 'role-changed', { role: 'reader', by: 'self' });
+  return json(200, { ok: true, role: 'reader' });
+}
+
 // ── admin ────────────────────────────────────────────────────────────────────
 
-async function postAdminRejectPublication(event) {
+// Post-moderation: publication is automatic, so this is how a bad analysis comes
+// down. Also voids (or claws back) its bounty — bounty.ledger() reads the status.
+async function postAdminTakedown(event) {
   const body = parseBody(event);
   if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
-  await store.updatePublicationStatus(body.userId, body.genId, 'rejected');
-  await store.audit(body.userId, 'publication-rejected', { genId: body.genId });
-  return json(200, { ok: true });
+  const index = await store.findPublicationIndex(body.genId);
+  const committed = await store.runTransact(quota.buildTakedownTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    reason: String(body.reason || ''), indexSk: index?.sk,
+  }));
+  if (!committed) return json(409, { error: 'No published publication with that id' });
+  await store.audit(body.userId, 'publication-takendown', { genId: body.genId, reason: body.reason || '' });
+  return json(200, { ok: true, status: 'takendown' });
+}
+
+// Records a manual payout. No payment rails on purpose — Stripe Connect means
+// KYC and tax; the ledger is the deliverable, the transfer happens by hand.
+async function postAdminPayout(event) {
+  const now = requestNow(event);
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+
+  const [pubs, payouts] = await Promise.all([
+    store.listUserItems(body.userId, 'PUB#'),
+    store.listUserItems(body.userId, 'PAYOUT#'),
+  ]);
+  const { paidGenIds, paidAmounts } = paidFrom(payouts);
+  const payable = bounty.payableGenIds(pubs, { now, paidGenIds, paidAmounts });
+  const requested = Array.isArray(body.genIds) ? body.genIds : payable;
+  const toPay = requested.filter((id) => payable.includes(id));
+  if (!toPay.length) return json(409, { error: 'Nothing payable', payable });
+
+  const amount = bounty.ledger(pubs, { now, paidGenIds, paidAmounts }).totals.amount;
+  for (const genId of toPay) {
+    await store.putPayout(body.userId, genId, { amount, paidAt: now.toISOString(), note: String(body.note || '') });
+  }
+  await store.audit(body.userId, 'bounty-paid', { genIds: toPay, amount });
+  return json(200, { ok: true, paid: toPay, amount, total: amount * toPay.length });
+}
+
+// GET /admin/members/publications — what each analyst actually produced, newest
+// first, with their prompts and the peer scores. Judging that is the gate for
+// granting the next generation, so it has to be one call (Esa, 17.8.2026).
+async function getAdminPublications(event) {
+  const now = requestNow(event);
+  const companyId = event.queryStringParameters?.companyId || '';
+  const limit = Math.min(200, Math.max(1, Number(event.queryStringParameters?.limit) || 50));
+  const items = await store.listPublicationIndex({ companyId });
+  const recent = items
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .slice(0, limit);
+
+  const publications = await Promise.all(recent.map(async (item) => {
+    const pub = await store.getPublication(item.userId, item.genId);
+    return {
+      userId: item.userId,
+      genId: item.genId,
+      companyId: item.companyId,
+      analyst: item.analystName || null,
+      publishedAt: item.publishedAt,
+      status: item.status,
+      priceEur: item.priceEur || 0,
+      freeFrom: item.freeFrom || null,
+      freeUntil: item.freeUntil || null,
+      reviewCount: item.reviewCount || 0,
+      peerScore: Math.round(ranking.peerScore(item) * 100) / 100,
+      jobId: pub?.jobId || null,
+      promptsText: pub?.promptsText || '',
+      takedownReason: pub?.takedownReason || null,
+    };
+  }));
+  return json(200, { now: now.toISOString(), count: publications.length, publications });
+}
+
+// POST /admin/members/grant-generation {userId} — "the last one was good, go
+// again". Clears the publish obligation and the month's used slot.
+async function postAdminGrantGeneration(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  await store.runTransact(quota.buildGrantGenerationTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event),
+  }));
+  await store.audit(body.userId, 'generation-granted', { note: String(body.note || '') });
+  return json(200, { ok: true, userId: body.userId });
+}
+
+// POST /admin/members/role {userId, role} — the funnel: analysts whose work adds
+// nothing go back to being readers, the best move up to coaching.
+async function postAdminRole(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  if (!tiers.ROLES.includes(body.role)) {
+    return json(400, { error: `role must be one of ${tiers.ROLES.join(', ')}` });
+  }
+  await store.updateProfile(body.userId, { role: body.role });
+  await store.audit(body.userId, 'role-changed', { role: body.role, by: 'admin' });
+  return json(200, { ok: true, userId: body.userId, role: body.role });
+}
+
+// POST /admin/members/feature {userId, genId, days} — hand-pick an analysis to
+// be free for everyone for a while. Randomisation comes later; picking the good
+// ones by hand is how it starts.
+async function postAdminFeature(event) {
+  const body = parseBody(event);
+  if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const index = await store.findPublicationIndex(body.genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+  const committed = await store.runTransact(quota.buildFeatureTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    indexSk: index.sk, days: Number(body.days) || 14,
+  }));
+  if (!committed) return json(409, { error: 'No published analysis with that id' });
+  await store.audit(body.userId, 'analysis-featured', { genId: body.genId, days: Number(body.days) || 14 });
+  return json(200, { ok: true, genId: body.genId });
 }
 
 async function postAdminBan(event) {
@@ -513,7 +1119,7 @@ async function postTestUsers(event) {
     email,
   });
   const patch = {};
-  for (const key of ['role', 'tier', 'tierStatus', 'coverageCompanyId']) {
+  for (const key of ['role', 'tier', 'tierStatus', 'coverageCompanyId', 'name']) {
     if (body[key] !== undefined) patch[key] = body[key];
   }
   if (Object.keys(patch).length) await store.updateProfile(userId, patch);
@@ -527,8 +1133,52 @@ async function postTestForcePublish(event) {
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
     promptsText: '[test force-publish]',
+    companyId: body.companyId || 'TEST.HE',
+    jobId: body.jobId || 'test-job',
   }));
   return json(200, { ok: true, committed });
+}
+
+// Seeds a published PUB item directly, with a backdatable publishedAt. The real
+// route to one is a reservation, which spends a full engine run — the bounty
+// rules (maturity, quarter, cap, takedown) need none of that to be exercised.
+async function postTestPublication(event) {
+  const body = parseBody(event);
+  if (!body?.userId) return json(400, { error: 'userId is required' });
+  const genId = body.genId || crypto.randomUUID();
+  const publishedAt = body.publishedAt || requestNow(event).toISOString();
+  const companyId = String(body.companyId || 'TEST.HE').toUpperCase();
+  const seeded = await store.getProfile(body.userId);
+  const analystName = body.analystName || seeded?.name || seeded?.email || '[test seed]';
+  await store.putItem({
+    pk: `USER#${body.userId}`,
+    sk: `PUB#${genId}`,
+    status: 'published',
+    publishedAt,
+    companyId,
+    jobId: body.jobId || 'test-job',
+    promptsText: body.promptsText || '[test seed]',
+    ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
+  });
+  // Same index row a real submit writes, so the analyses list and the review
+  // loop can be exercised without spending an engine run.
+  await store.putItem({
+    pk: 'PUBINDEX',
+    sk: quota.publicationIndexSk({ companyId, publishedAt, genId }),
+    userId: body.userId,
+    genId,
+    companyId,
+    analystName,
+    jobId: body.jobId || 'test-job',
+    publishedAt,
+    status: 'published',
+    priceEur: Number(body.priceEur) || 0,
+    // A store demo needs a spread: a clear leader, an unreviewed one, a weak one.
+    reviewCount: Number(body.reviewCount) || 0,
+    scoreSum: Number(body.scoreSum) || 0,
+    ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
+  });
+  return json(200, { ok: true, genId });
 }
 
 // ── dispatch ─────────────────────────────────────────────────────────────────
@@ -536,6 +1186,10 @@ async function postTestForcePublish(event) {
 const PUBLIC_ROUTES = {
   'GET /health': async () => json(200, { ok: true, stage: STAGE }),
   'GET /reports': getReportsList,
+  'GET /analyses': getAnalyses,
+  'GET /analyses/{genId}/free': getAnalysisFree,
+  'POST /analyses/{genId}/buy-checkout': postAnalysisBuyCheckout,
+  'GET /analyses/{genId}/purchased': getAnalysisPurchased,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,
   'POST /auth/magic-link': postMagicLink,
@@ -545,20 +1199,32 @@ const PUBLIC_ROUTES = {
 
 const AUTHED_ROUTES = {
   'GET /me': getMe,
+  'GET /me/earnings': getMeEarnings,
+  'POST /me/role': postMeRole,
+  'POST /analyses/{genId}/open': postAnalysisOpen,
+  'POST /analyses/{genId}/review': postAnalysisReview,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
+  'GET /generations/{genId}': getGeneration,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /billing/checkout': postBillingCheckout,
+  'POST /billing/fresh-checkout': postFreshCheckout,
 };
 
 const ADMIN_ROUTES = {
-  'POST /admin/members/reject-publication': postAdminRejectPublication,
+  'GET /admin/members/publications': getAdminPublications,
+  'POST /admin/members/grant-generation': postAdminGrantGeneration,
+  'POST /admin/members/role': postAdminRole,
+  'POST /admin/members/feature': postAdminFeature,
+  'POST /admin/members/takedown': postAdminTakedown,
+  'POST /admin/members/payout': postAdminPayout,
   'POST /admin/members/ban': postAdminBan,
 };
 
 const TEST_ROUTES = {
   'POST /test/users': postTestUsers,
   'POST /test/force-publish': postTestForcePublish,
+  'POST /test/publications': postTestPublication,
 };
 
 function requireAdmin(event) {

@@ -90,6 +90,11 @@ async function create(input) {
     exchange: input.exchange || '',
     sector: input.sector || '',
     industry: input.industry || '',
+    // 'private' keeps the delivered report out of the catalog even when resale
+    // is on — membership generations belong to one member, not the shop.
+    // Undefined is dropped by the document client, so ordinary orders are
+    // stored exactly as before.
+    visibility: input.visibility || undefined,
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
     reportId: input.reportId || null,
     status: input.status || STATUS.NEW,

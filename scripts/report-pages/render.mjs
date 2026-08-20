@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const SITE = 'https://www.aiequityreports.com';
 
-// Starting price for generating a fresh report on a covered-but-not-yet-reported company. Inert for now — no checkout wired up.
+// Starting price for generating a fresh report on a covered-but-not-yet-reported company.
 const NEW_REPORT_PRICE = 50;
 
 // ── helpers ────────────────────────────────────────────────────────────────
@@ -144,15 +144,37 @@ function navHtml() {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/methodology.html" class="nav-link">Methodology</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/faq.html" class="nav-link">FAQ</a>
-        <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="/methodology.html" class="nav-link">Methodology</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/faq.html" class="nav-link">FAQ</a>
+            <a href="/blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="/about.html" class="nav-mobile-link">About</a>
+      <a href="/faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/members.html" class="nav-mobile-link">Sign in</a>
+      <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>`;
 }
@@ -665,7 +687,8 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            ${hasReport ? `<a href="/index.html#hero" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a report</a>` : ''}
+            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report</a>` : ''}
+            <a href="/report-store.html?company=${encodeURIComponent(d.ticker)}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">See all analyst reports</a>
           </div>
         </div>
       </div>

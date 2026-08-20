@@ -20,8 +20,10 @@ import { StageConfig } from './config';
 export interface MembersStackProps extends StackProps {
   config: StageConfig;
   catalogStateTable: dynamodb.ITable;
+  ordersTable: dynamodb.ITable;
   pdfBucket: s3.IBucket;
   alertsTopic: sns.ITopic;
+  workerFunction: lambda.IFunction;
 }
 
 /**
@@ -31,6 +33,11 @@ export interface MembersStackProps extends StackProps {
  * now — the bin only instantiates it for non-prod, and the constructor guard
  * makes a prod deploy a hard error.
  */
+// The staging branch's own Vercel URL. Named once because both the CORS list
+// and the auth return allowlist need it whenever another branch's preview is
+// holding the test.aiequityreports.com alias.
+const STAGING_BRANCH_ORIGIN = 'https://osakeanalyysi-nettisivut-git-staging-valuatum-dk.vercel.app';
+
 export class MembersStack extends Stack {
   constructor(scope: Construct, id: string, props: MembersStackProps) {
     super(scope, id, props);
@@ -54,6 +61,14 @@ export class MembersStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
+    // The member-facing catalog is production's, in every stage. Imported by
+    // name and read-only: nothing here writes to a production resource, and on
+    // the prod stage these resolve to the same bucket/table props carry anyway.
+    const catalogBucket = s3.Bucket.fromBucketName(
+      this, 'MemberCatalogBucket', config.memberCatalogBucket);
+    const catalogStateTable = dynamodb.Table.fromTableName(
+      this, 'MemberCatalogStateTable', config.memberCatalogStateTable);
+
     const membersApiUrl = `https://${config.membersApiDomain}`;
 
     const membersFunction = new NodejsFunction(this, 'MembersFunction', {
@@ -73,20 +88,55 @@ export class MembersStack extends Stack {
       environment: {
         STAGE: config.stage,
         MEMBERS_TABLE: membersTable.tableName,
-        CATALOG_STATE_TABLE: props.catalogStateTable.tableName,
-        REPORT_PDF_BUCKET: props.pdfBucket.bucketName,
+        // Always production's catalog, whatever stage this is: an analyst must
+        // pick from the reports the public site actually sells (see config.ts).
+        CATALOG_STATE_TABLE: catalogStateTable.tableName,
+        // Membership generations run through the same order pipeline as paid
+        // fresh reports: create the order, wake the worker, the reconciler does
+        // the rest.
+        ORDERS_TABLE: props.ordersTable.tableName,
+        WORKER_FUNCTION_NAME: props.workerFunction.functionName,
+        REPORT_PDF_BUCKET: catalogBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
-        REPORT_PDF_BASE_URL: config.pdfBaseUrl,
+        REPORT_PDF_BASE_URL: config.memberCatalogPdfBaseUrl,
+        // This stage's own bucket, where the reconciler delivers what members
+        // generate. Those PDFs are never in the production catalog listing, so
+        // they are presigned straight from the order's pdfFileName.
+        GENERATED_PDF_BUCKET: props.pdfBucket.bucketName,
         SECRETS_SSM_PREFIX: config.secretsPrefix,
+        // Allowances are demand-tuned (Esa, 17.8.2026): overriding this variable
+        // changes the three numbers per role/tier without a code change. Empty
+        // means the defaults in server/members/tiers.js.
+        MEMBERS_LIMITS_JSON: process.env.MEMBERS_LIMITS_JSON || '',
         SITE_URL: config.siteUrl,
         MEMBERS_API_URL: membersApiUrl,
-        MEMBERS_FRONTEND_URL: `${config.siteUrl}/members.html`,
+        // Auth redirects may return to any of these; the first is the default.
+        // Anything not on this list is rejected (open-redirect guard).
+        MEMBERS_FRONTEND_URLS: [
+          `https://test.${config.zoneDomain}/members.html`,
+          `${config.siteUrl}/members.html`,
+          'http://localhost:3100/members.html',
+          // Same reason as the CORS entry: another branch's preview can hold the
+          // test.aiequityreports.com alias, and without this a sign-in started
+          // on the staging branch URL returns to whatever that alias points at.
+          ...(config.stage === 'prod' ? [] : [
+            `${STAGING_BRANCH_ORIGIN}/members.html`,
+            `${STAGING_BRANCH_ORIGIN}/report-store.html`,
+          ]),
+        ].join(','),
+        // Fixed fee per published analysis. 0 until the business decision lands,
+        // so the ledger records states without promising anyone money.
+        BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
       },
     });
 
     membersTable.grantReadWriteData(membersFunction);
-    props.catalogStateTable.grantReadData(membersFunction);
-    props.pdfBucket.grantRead(membersFunction); // presigned GETs for entitled opens
+    catalogStateTable.grantReadData(membersFunction);
+    catalogBucket.grantRead(membersFunction); // presigned GETs for entitled opens
+    props.pdfBucket.grantRead(membersFunction); // this stage's own generations
+    // Create-only in practice: the worker owns order state transitions.
+    props.ordersTable.grantReadWriteData(membersFunction);
+    props.workerFunction.grantInvoke(membersFunction);
     membersFunction.addToRolePolicy(new iam.PolicyStatement({
       actions: ['ses:SendEmail'],
       resources: ['*'],
@@ -109,6 +159,11 @@ export class MembersStack extends Stack {
           'http://localhost:3100',
           config.siteUrl,
           `https://${config.zoneDomain}`, // apex — the site answers on both
+          `https://test.${config.zoneDomain}`, // staging branch site
+          // test.aiequityreports.com is a Vercel alias and another branch's
+          // preview can hold it, which leaves the staging site reachable only
+          // by its own branch URL. Non-prod only.
+          ...(config.stage === 'prod' ? [] : [STAGING_BRANCH_ORIGIN]),
         ],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
@@ -123,16 +178,32 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.GET, '/auth/linkedin/callback'],
       [apigwv2.HttpMethod.POST, '/auth/magic-link'],
       [apigwv2.HttpMethod.GET, '/auth/magic/verify'],
+      [apigwv2.HttpMethod.GET, '/analyses'],
       [apigwv2.HttpMethod.GET, '/me'],
+      [apigwv2.HttpMethod.GET, '/me/earnings'],
+      [apigwv2.HttpMethod.POST, '/me/role'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/open'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/review'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
+      [apigwv2.HttpMethod.GET, '/generations/{genId}'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
+      [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
-      [apigwv2.HttpMethod.POST, '/admin/members/reject-publication'],
+      [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/buy-checkout'],
+      [apigwv2.HttpMethod.GET, '/analyses/{genId}/purchased'],
+      [apigwv2.HttpMethod.GET, '/admin/members/publications'],
+      [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
+      [apigwv2.HttpMethod.POST, '/admin/members/role'],
+      [apigwv2.HttpMethod.POST, '/admin/members/feature'],
+      [apigwv2.HttpMethod.POST, '/admin/members/takedown'],
+      [apigwv2.HttpMethod.POST, '/admin/members/payout'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],
       [apigwv2.HttpMethod.POST, '/test/users'],
       [apigwv2.HttpMethod.POST, '/test/force-publish'],
+      [apigwv2.HttpMethod.POST, '/test/publications'],
     ];
     const createdRoutes: apigwv2.HttpRoute[] = [];
     for (const [method, routePath] of routes) {
@@ -151,14 +222,30 @@ export class MembersStack extends Stack {
     }
     const throttled = (routePath: string) =>
       routePath.startsWith('/admin/') || routePath.startsWith('/test/') || routePath.startsWith('/auth/magic');
-    cfnStage.routeSettings = Object.fromEntries(
-      routes
-        .filter(([, routePath]) => throttled(routePath))
-        .map(([method, routePath]) => [
-          `${method} ${routePath}`,
-          { ThrottlingRateLimit: 5, ThrottlingBurstLimit: 10 },
-        ]),
-    );
+    // The one route that mints a signed S3 URL with no account behind it. The
+    // document is free by design, but presigning is Lambda and S3 cost on
+    // demand, so it gets a lid of its own — looser than the secret-bearing
+    // routes, tighter than the default.
+    // Unauthenticated routes that cost money to serve: presigning S3 URLs and
+    // creating Stripe sessions. Looser than the secret-bearing routes, tighter
+    // than the default.
+    const publicPaid = [
+      'GET /analyses/{genId}/free',
+      'POST /analyses/{genId}/buy-checkout',
+      'GET /analyses/{genId}/purchased',
+    ];
+    cfnStage.routeSettings = {
+      ...Object.fromEntries(
+        routes
+          .filter(([, routePath]) => throttled(routePath))
+          .map(([method, routePath]) => [
+            `${method} ${routePath}`,
+            { ThrottlingRateLimit: 5, ThrottlingBurstLimit: 10 },
+          ]),
+      ),
+      ...Object.fromEntries(publicPaid.map((route) =>
+        [route, { ThrottlingRateLimit: 10, ThrottlingBurstLimit: 20 }])),
+    };
 
     const certificate = new acm.Certificate(this, 'MembersCertificate', {
       domainName: config.membersApiDomain,

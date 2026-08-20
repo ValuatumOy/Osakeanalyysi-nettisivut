@@ -121,15 +121,37 @@ function navHtml() {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/reports.html" class="nav-link">Reports</a>
+        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/methodology.html" class="nav-link">Methodology</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/faq.html" class="nav-link">FAQ</a>
-        <a href="/blog.html" class="nav-link is-active" aria-current="page">Blog</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="/methodology.html" class="nav-link">Methodology</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/faq.html" class="nav-link">FAQ</a>
+            <a href="/blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="/about.html" class="nav-mobile-link">About</a>
+      <a href="/faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/members.html" class="nav-mobile-link">Sign in</a>
+      <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>`;
 }
@@ -538,27 +560,37 @@ function renderBlogIndex(publishedArticles, authorsData) {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="reports.html" class="nav-link">Reports</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link is-active" aria-current="page">Blog</a>
+        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/pricing.html" class="nav-link">Pricing</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="/methodology.html" class="nav-link">Methodology</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/faq.html" class="nav-link">FAQ</a>
+            <a href="/blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
-      <a href="reports.html" class="nav-cta">Browse reports</a>
+      <a href="/members.html" class="nav-signin">Sign in</a>
+      <a href="/reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="index.html" class="nav-mobile-link">Home</a>
-      <a href="reports.html" class="nav-mobile-link">Reports</a>
-      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
-      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
-      <a href="about.html" class="nav-mobile-link">About</a>
-      <a href="faq.html" class="nav-mobile-link">FAQ</a>
-      <a href="blog.html" class="nav-mobile-link" style="color:var(--green-light);">Blog</a>
+      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="/about.html" class="nav-mobile-link">About</a>
+      <a href="/faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/members.html" class="nav-mobile-link">Sign in</a>
+      <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>
 
