@@ -7,7 +7,10 @@ const { getStripePricing } = require('../../server/stripe-pricing.js');
 
 function failingStripe() {
   return {
-    products: { retrieve: async () => { throw new Error('no network in tests'); } },
+    products: {
+      retrieve: async () => { throw new Error('no network in tests'); },
+      list: async () => { throw new Error('no network in tests'); },
+    },
     prices: { retrieve: async () => { throw new Error('no network in tests'); } },
   };
 }
@@ -50,5 +53,32 @@ test('a "+ revisions" kind resolves once a real price id is configured', async (
   } finally {
     if (saved === undefined) delete process.env.STRIPE_FRESH_REPORT_REVISIONS_PRICE_ID;
     else process.env.STRIPE_FRESH_REPORT_REVISIONS_PRICE_ID = saved;
+  }
+});
+
+test('a "+ revisions" kind resolves by metadata.kind with no env vars set at all', async () => {
+  const saved = {
+    p: process.env.STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID,
+    k: process.env.STRIPE_READY_REPORT_REVISIONS_PRICE_ID,
+  };
+  delete process.env.STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID;
+  delete process.env.STRIPE_READY_REPORT_REVISIONS_PRICE_ID;
+  try {
+    const stripe = {
+      products: {
+        list: async () => ({
+          data: [
+            { id: 'prod_other1', metadata: { kind: 'fresh-revisions' }, default_price: { id: 'price_other1', unit_amount: 7500, currency: 'eur' } },
+            { id: 'prod_readyrev1', metadata: { kind: 'ready-revisions' }, default_price: { id: 'price_readyrev1', unit_amount: 3500, currency: 'eur' } },
+          ],
+        }),
+      },
+    };
+    const pricing = await getStripePricing(stripe, 'ready-revisions', { bypassCache: true });
+    assert.equal(pricing.unitAmount, 3500);
+    assert.equal(pricing.priceId, 'price_readyrev1');
+  } finally {
+    if (saved.p !== undefined) process.env.STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID = saved.p;
+    if (saved.k !== undefined) process.env.STRIPE_READY_REPORT_REVISIONS_PRICE_ID = saved.k;
   }
 });

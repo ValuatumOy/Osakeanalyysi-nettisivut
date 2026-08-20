@@ -17,14 +17,19 @@ const PRICE_CONFIG = {
     fallbackUnitAmount: 5000,
     currency: 'eur',
   },
-  // The "+ Revisions" tiers, deliberately with no default/fallback price: a
+  // The "+ Revisions" tiers, deliberately with no fallback unit amount: a
   // misconfigured paid add-on should fail loudly rather than silently sell at
-  // a guessed amount. Set the env vars once the Stripe products exist.
+  // a guessed amount. No hardcoded default product id either (unlike ready/
+  // fresh above) — instead the product is found by its `kind` metadata tag
+  // (see scripts/stripe-setup-revisions-test.mjs, which sets it on create),
+  // so nothing needs to be pasted into env vars once the product exists.
+  // productEnv/priceEnv still work as an explicit override if ever needed.
   'ready-revisions': {
     productEnv: 'STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID',
     priceEnv: 'STRIPE_READY_REPORT_REVISIONS_PRICE_ID',
     defaultProductId: '',
     defaultPriceId: '',
+    lookupMetadataKind: 'ready-revisions',
     fallbackUnitAmount: null,
     currency: 'eur',
   },
@@ -33,6 +38,7 @@ const PRICE_CONFIG = {
     priceEnv: 'STRIPE_FRESH_REPORT_REVISIONS_PRICE_ID',
     defaultProductId: '',
     defaultPriceId: '',
+    lookupMetadataKind: 'fresh-revisions',
     fallbackUnitAmount: null,
     currency: 'eur',
   },
@@ -92,6 +98,16 @@ async function resolveStripePricing(stripe, kind, config) {
     } catch (err) {
       console.warn(`Stripe ${kind} product pricing lookup failed:`, err.message);
     }
+  } else if (config.lookupMetadataKind) {
+    try {
+      const product = await findProductByMetadataKind(stripe, config.lookupMetadataKind);
+      const price = product && product.default_price;
+      if (price && typeof price === 'object' && stripePriceId(price.id)) {
+        return normalizePrice(kind, price);
+      }
+    } catch (err) {
+      console.warn(`Stripe ${kind} metadata product lookup failed:`, err.message);
+    }
   }
 
   const priceId = stripePriceId(process.env[config.priceEnv], config.defaultPriceId);
@@ -105,7 +121,11 @@ async function resolveStripePricing(stripe, kind, config) {
 
   if (config.fallbackUnitAmount == null) {
     throw new Error(
-      `No Stripe price configured for "${kind}" — set ${config.productEnv} or ${config.priceEnv}`,
+      config.lookupMetadataKind
+        ? `No Stripe price configured for "${kind}" — create the product with `
+          + `metadata.kind="${config.lookupMetadataKind}" (see scripts/stripe-setup-revisions-test.mjs), `
+          + `or set ${config.productEnv} / ${config.priceEnv} to override`
+        : `No Stripe price configured for "${kind}" — set ${config.productEnv} or ${config.priceEnv}`,
     );
   }
 
@@ -115,6 +135,18 @@ async function resolveStripePricing(stripe, kind, config) {
     unitAmount: config.fallbackUnitAmount,
     currency: config.currency,
   };
+}
+
+// Finds the active product tagged with the given `kind` in its metadata
+// (set by scripts/stripe-setup-revisions-test.mjs on create) so revisions
+// pricing works without ever pasting a product/price id into env vars.
+async function findProductByMetadataKind(stripe, metadataKind) {
+  const products = await stripe.products.list({
+    active: true,
+    limit: 100,
+    expand: ['data.default_price'],
+  });
+  return products.data.find(p => p.metadata && p.metadata.kind === metadataKind) || null;
 }
 
 function normalizePrice(kind, price) {

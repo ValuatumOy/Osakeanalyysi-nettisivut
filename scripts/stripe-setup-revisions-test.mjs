@@ -75,5 +75,8 @@ for (const tier of TIERS) {
   envLines.push(`${tier.envPrice}=${price.id}`);
 }
 
-console.error('\nSet these as Vercel env vars (checkout + pricing display run there):\n');
+console.error(
+  '\nDone. server/stripe-pricing.js finds these products by their `kind` metadata tag, '
+  + 'so no env vars are needed. For reference, or to override which product/price is used:\n',
+);
 console.log(envLines.join('\n'));
