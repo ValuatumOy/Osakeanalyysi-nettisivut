@@ -596,7 +596,17 @@
       }
       // The workspace enforces the revision count; the link only has to get
       // the member there.
-      if (data.status === 'DELIVERED') out.appendChild(workspaceLink(genId, 'Revise it'));
+      if (data.status === 'DELIVERED') {
+        out.appendChild(workspaceLink(genId, 'Revise it'));
+        // Temporary, 20.8.2026: a revision is written by the previous pipeline
+        // and comes back shorter. The analyst publishes what they revise, so
+        // they hear it before they click, not after. Remove with the engine fix.
+        const caution = document.createElement('p');
+        caution.className = 'muted';
+        caution.style.marginTop = '0.75rem';
+        caution.textContent = 'Revising regenerates the report with our previous writing pipeline: different headings, noticeably fewer pages. The original is kept as version 1.';
+        out.appendChild(caution);
+      }
       if (data.status === 'DELIVERED' || data.status === 'FAILED') {
         loadGenerations();
         // Refresh only for a run we were actually watching. loadMe() resumes the

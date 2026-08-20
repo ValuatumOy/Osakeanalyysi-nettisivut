@@ -70,6 +70,16 @@
     .revision-textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(61,158,114,0.12); }
     .revision-status { min-height: 1.4em; margin: .6rem 0 0; font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.5; }
     .revision-status.is-error { color: #a63b32; }
+    .revision-caution {
+      font-size: var(--text-xs);
+      color: var(--gold-ink, #8A6420);
+      background: rgba(232,185,106,0.12);
+      border: 1px solid rgba(232,185,106,0.4);
+      border-radius: var(--r-md);
+      padding: .75rem 1rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
     .revision-error-banner {
       font-size: var(--text-xs);
       color: #a63b32;
@@ -248,6 +258,13 @@
 
         <div class="revision-box" id="revisionBox" style="display:none;">
           <div class="revision-error-banner" id="revisionErrorBanner" style="display:none;"></div>
+          <!-- Temporary, 20.8.2026: a revision is written by the previous
+               writing pipeline, so the regenerated report has a different
+               structure and is materially shorter than the original. The
+               engine team has the fix. Remove this note with it. -->
+          <div class="revision-caution">
+            <strong>Before you revise:</strong> a revision regenerates the whole report with our previous writing pipeline, so it comes back with different section headings and noticeably fewer pages than the report you have now. Your original is never deleted — after a revision it appears in the revision history as version 1. If the report you have now is one you intend to publish or share, download it first.
+          </div>
           <h2 style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:.4rem;">Request a report revision</h2>
           <p class="order-sub" style="margin-bottom:.65rem;">To make changes to the report, describe in plain language what you'd like to see — e.g. "assume gold price doubles in 2027", "use a different peer group", or "take a more conservative growth approach". We'll interpret it, update the report accordingly, and regenerate it. No numbers to fill in yourself.</p>
           <p class="order-sub" style="margin-bottom:.85rem;">Feel free to write in your own language instead of English — Finnish worked great in our testing, and other languages should too. If one doesn't work well, English is the safe fallback.</p>
