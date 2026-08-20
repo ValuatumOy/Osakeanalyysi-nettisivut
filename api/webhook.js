@@ -68,13 +68,21 @@ const handler = async (req, res) => {
           exchange: session.metadata?.exchange || '',
           customerEmail: email || '',
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
+          withRevisions: session.metadata?.withRevisions === 'true',
+          revisionsAllowed: session.metadata?.revisionsAllowed || '0',
         });
 
         // Confirmation email is best-effort: the purchase is recorded, and the
         // reconciler sends the real delivery email later.
         try {
           if (email) {
-            await sendFreshConfirmEmail(email, session.metadata);
+            const withRevisions = session.metadata?.withRevisions === 'true';
+            await sendFreshConfirmEmail(email, {
+              ...session.metadata,
+              orderUrl: withRevisions
+                ? `${(process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '')}/order/index.html?session_id=${encodeURIComponent(session.id)}`
+                : null,
+            });
           } else {
             console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
           }
@@ -97,16 +105,20 @@ const handler = async (req, res) => {
             sessionId: session.id,
             customerEmail: email || '',
             purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
+            withRevisions: session.metadata?.withRevisions === 'true',
+            revisionsAllowed: session.metadata?.revisionsAllowed || '0',
           });
 
           try {
             if (email) {
+              const siteUrl = (process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '');
+              const withRevisions = session.metadata?.withRevisions === 'true';
               // The catalog no longer hands out a URL for a paid report, so the
               // receipt links to the gated download keyed on this session.
               await sendReportEmail(email, {
                 ...report,
-                pdfUrl: `${(process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '')}` +
-                  `/api/report-download?session_id=${encodeURIComponent(session.id)}`,
+                pdfUrl: `${siteUrl}/api/report-download?session_id=${encodeURIComponent(session.id)}`,
+                orderUrl: withRevisions ? `${siteUrl}/order/index.html?session_id=${encodeURIComponent(session.id)}` : null,
               });
             } else {
               console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });

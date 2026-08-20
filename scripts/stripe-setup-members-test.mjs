@@ -26,6 +26,12 @@ const PLANS = [
   { plan: 'coverage', name: 'AI Equity Reports — Company Coverage (test)', prices: { year: 5900 } },
 ];
 
+// One-off fresh report: list price and the member price the API applies when
+// the caller has an active subscription.
+const ONE_OFF = [
+  { plan: 'fresh', name: 'AI Equity Reports — Fresh Report (test)', prices: { list: 5000, member: 4000 } },
+];
+
 async function findOrCreateProduct(name, plan) {
   const existing = await stripe.products.search({ query: `name:"${name}" AND active:"true"` });
   if (existing.data[0]) return existing.data[0];
@@ -53,6 +59,23 @@ for (const { plan, name, prices } of PLANS) {
     const price = await findOrCreatePrice(product.id, interval, unitAmount);
     out[plan][interval] = price.id;
     console.error(`${plan} ${interval}: ${price.id} (${unitAmount / 100} €)`);
+  }
+}
+
+async function findOrCreateOneOffPrice(productId, unitAmount) {
+  const prices = await stripe.prices.list({ product: productId, active: true, limit: 100 });
+  const match = prices.data.find(p => !p.recurring && p.unit_amount === unitAmount && p.currency === 'eur');
+  if (match) return match;
+  return stripe.prices.create({ product: productId, currency: 'eur', unit_amount: unitAmount });
+}
+
+for (const { plan, name, prices } of ONE_OFF) {
+  const product = await findOrCreateProduct(name, plan);
+  out[plan] = {};
+  for (const [key, unitAmount] of Object.entries(prices)) {
+    const price = await findOrCreateOneOffPrice(product.id, unitAmount);
+    out[plan][key] = price.id;
+    console.error(`${plan} ${key}: ${price.id} (${unitAmount / 100} €)`);
   }
 }
 

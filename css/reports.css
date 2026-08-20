@@ -407,6 +407,25 @@
   box-shadow: 0 0 0 4px rgba(61,158,114,0.12);
 }
 .fresh-order-select { cursor: pointer; }
+.fresh-order-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.15rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  background: var(--sand-light, #f4f7f5);
+  color: var(--charcoal-mid);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.fresh-order-checkbox[hidden] { display: none; }
+.fresh-order-checkbox input { margin-top: 0.2rem; flex-shrink: 0; cursor: pointer; }
+.fresh-order-checkbox span { color: var(--charcoal-mid); }
+.fresh-order-checkbox #freshRevisionsCount,
+.fresh-order-checkbox #freshRevisionsPrice { font-weight: 600; color: var(--charcoal); }
 .fresh-order-status {
   min-height: 1.4em;
   margin: 0;

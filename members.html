@@ -3,68 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Member Area — AI Equity Reports — Valuatum</title>
-  <meta name="description" content="Sign in to your Valuatum AI Equity Reports membership: analyst freemium, Investor plans and Company Coverage.">
+  <title>Sign In — Analysts and Subscribers — Valuatum AI Equity Reports</title>
+  <meta name="description" content="Sign in to Valuatum AI Equity Reports: the free analyst programme with LinkedIn, or an Investor or Company Coverage subscription by email link.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://www.aiequityreports.com/members.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .member-main { background: var(--off-white); min-height: 70vh; padding: 7.5rem 0 5rem; }
-    .member-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
-    .member-header h1 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em; }
-    .env-badge { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: var(--gold-faint); border: 1px solid var(--gold-light); border-radius: 999px; padding: 0.25em 0.9em; }
-
-    .m-card { background: var(--white); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.75rem; box-shadow: 0 1px 2px rgba(26,36,32,0.04); }
-    .m-card + .m-card, .m-section { margin-top: 1.5rem; }
-    .m-card h2 { font-size: var(--text-lg); font-weight: 650; margin-bottom: 0.35rem; }
-    .m-card .sub { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: 1.25rem; }
-
-    .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    @media (max-width: 760px) { .auth-grid { grid-template-columns: 1fr; } }
-    .btn-linkedin { display: inline-flex; align-items: center; gap: 0.6em; background: #0A66C2; color: #fff; border: 1px solid #0A66C2; border-radius: 8px; font-weight: 600; font-size: var(--text-sm); padding: 0.7em 1.4em; text-decoration: none; transition: background .15s; }
-    .btn-linkedin:hover { background: #084d92; }
-    .magic-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .magic-row input { flex: 1 1 220px; border: 1px solid var(--color-border); border-radius: 8px; padding: 0.65em 0.9em; font: inherit; font-size: var(--text-sm); }
-    .magic-row input:focus { outline: 2px solid var(--green-light); border-color: var(--green); }
-
-    .account-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    #accEmail { overflow-wrap: anywhere; font-size: var(--text-md); }
-    .tier-badge { display: inline-block; font-size: var(--text-xs); font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 0.3em 1em; background: var(--green-mist); color: var(--green-deep); }
-    .tier-badge.none { background: var(--off-white); color: var(--gray-steel); }
-    .usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
-    .usage-stat { background: var(--green-faint); border: 1px solid var(--green-mist); border-radius: 10px; padding: 0.9rem 1.1rem; }
-    .usage-stat .val { font-size: var(--text-lg); font-weight: 700; color: var(--green-deep); }
-    .usage-stat .lbl { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 0.15rem; }
-
-    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
-    .plan { border: 1px solid var(--color-border); border-radius: 12px; padding: 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .plan.highlight { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
-    .plan .name { font-weight: 650; }
-    .plan .price { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; }
-    .plan .price span { font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); }
-    .plan ul { list-style: none; padding: 0; margin: 0 0 0.5rem; font-size: var(--text-sm); color: var(--color-text-muted); }
-    .plan ul li { padding-left: 1.1em; position: relative; margin: 0.25em 0; }
-    .plan ul li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
-    .plan .actions { margin-top: auto; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-    .reports-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
-    .reports-table th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); font-weight: 600; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-border); }
-    .reports-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--color-border); }
-    .reports-table tr:last-child td { border-bottom: none; }
-    .pill-free { color: var(--green-deep); background: var(--green-mist); border-radius: 999px; padding: 0.15em 0.8em; font-size: var(--text-xs); font-weight: 600; }
-    .table-wrap { overflow-x: auto; }
-
-    .notice { border-radius: 10px; padding: 0.8rem 1.1rem; font-size: var(--text-sm); margin-top: 1rem; display: none; }
-    .notice.ok { display: block; background: var(--green-faint); border: 1px solid var(--green-mist); color: var(--green-deep); }
-    .notice.err { display: block; background: #FDF0EE; border: 1px solid #F2C9C2; color: #A2402F; }
-    .muted { color: var(--color-text-muted); font-size: var(--text-sm); }
-    .gen-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem; }
-    .gen-row textarea { flex: 1 1 320px; border: 1px solid var(--color-border); border-radius: 8px; padding: 0.65em 0.9em; font: inherit; font-size: var(--text-sm); min-height: 70px; }
-    [hidden] { display: none !important; }
-  </style>
+  <style>[hidden] { display: none !important; }</style>
 </head>
 <body>
 
@@ -77,132 +24,251 @@
           <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
         </div>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="reports.html" class="nav-link">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
-      <a href="members.html" class="nav-cta">Member area</a>
+      <a href="members.html" class="nav-signin">Sign in</a>
+      <a href="reports.html" class="nav-cta">Browse reports</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
       </button>
     </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
+    </div>
   </header>
 
-  <main class="member-main">
-    <div class="container">
-      <div class="member-header">
-        <h1>Member area</h1>
-        <span class="env-badge" id="envBadge">Test environment</span>
-      </div>
-
-      <div id="notice" class="notice"></div>
-
-      <!-- Logged out -->
-      <div id="authView">
-        <div class="auth-grid">
-          <div class="m-card">
-            <h2>Analysts</h2>
-            <p class="sub">Free membership for analysts. Sign in with LinkedIn, generate one fresh report per month and pick two archived reports — in exchange you publish your analysis and modification prompts.</p>
-            <a id="linkedinBtn" class="btn-linkedin" href="#">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-              Sign in with LinkedIn
-            </a>
+  <main class="ws-page">
+    <section class="ws-hero">
+      <div class="container">
+        <div class="ws-hero-top">
+          <div>
+            <span class="section-eyebrow section-eyebrow--light">Member area</span>
+            <h1 class="section-headline section-headline--light" id="pageTitle">Sign in</h1>
           </div>
-          <div class="m-card">
-            <h2>Members</h2>
-            <p class="sub">Investor and Company Coverage subscribers sign in with an email link — no password needed.</p>
-            <div class="magic-row">
-              <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
-              <button class="btn btn-primary" onclick="magicLink()">Email me a sign-in link</button>
-            </div>
-          </div>
+          <span class="env-badge" id="envBadge">Test environment</span>
         </div>
-      </div>
 
-      <!-- Logged in -->
-      <div id="memberView" hidden>
-        <div class="m-card">
-          <div class="account-row">
-            <div>
-              <h2 id="accEmail">—</h2>
+        <!-- Logged in: who you are and what you have left, on the band itself. -->
+        <div id="identityStrip" hidden>
+          <div class="ws-identity">
+            <div class="ws-identity-who">
+              <span id="accEmail">—</span>
               <span id="tierBadge" class="tier-badge none">—</span>
-              <span id="roleLabel" class="muted"></span>
+              <span id="roleLabel" class="ws-role"></span>
             </div>
-            <button class="btn btn-outline-dark btn-sm" onclick="logout()">Sign out</button>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
+              <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
+            </div>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
         </div>
+      </div>
+    </section>
 
-        <div class="m-card m-section" id="plansCard">
-          <h2>Plans</h2>
-          <p class="sub">Subscriptions are billed by Stripe. One-off purchases (€20 ready / €50 fresh) remain available on the <a href="reports.html">reports page</a>.</p>
-          <div class="plan-grid">
-            <div class="plan">
-              <div class="name">Investor</div>
-              <div class="price">€19 <span>/ month · €190 / year</span></div>
-              <ul>
-                <li>5 self-picked reports every month</li>
-                <li>Fresh generation at member price</li>
+    <section class="ws-body">
+      <div class="container">
+        <div id="notice" class="notice"></div>
+
+        <!-- Logged out -->
+        <div id="authView">
+          <div class="auth-grid">
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Analysts, free</h2>
+              <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
+              <ul class="m-offer">
+                <li><strong>10 engine reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
+                <li><strong>20 analyst reports</strong>, unlocked one at a time. Rate the one you opened and say what it adds, and the next unlocks.</li>
+                <li><strong>1 fresh generation</strong>, free because you publish it under your own name and LinkedIn profile, with the prompts you used.</li>
               </ul>
-              <div class="actions">
-                <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
-                <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor','year')">Yearly</button>
-              </div>
+              <a id="linkedinBtn" class="btn btn-linkedin" href="#">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                Sign in with LinkedIn
+              </a>
+              <p class="muted" style="margin-top:1rem;">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance. <a href="analysts.html">How the analyst programme works →</a></p>
             </div>
-            <div class="plan highlight">
-              <div class="name">Investor Plus</div>
-              <div class="price">€39 <span>/ month · €390 / year</span></div>
-              <ul>
-                <li>15 self-picked reports every month</li>
-                <li>1 private fresh generation per month</li>
-              </ul>
-              <div class="actions">
-                <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
-                <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor_plus','year')">Yearly</button>
-              </div>
-            </div>
-            <div class="plan">
-              <div class="name">Company Coverage</div>
-              <div class="price">€59 <span>/ year</span></div>
-              <ul>
-                <li>One company of your choice</li>
-                <li>Latest report + 4 updates a year</li>
-              </ul>
-              <div class="actions">
-                <input id="coverageTicker" placeholder="Ticker, e.g. AMD" style="flex:1 1 110px; border:1px solid var(--color-border); border-radius:8px; padding:0.5em 0.8em; font:inherit; font-size:var(--text-xs);">
-                <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Subscribers</h2>
+              <p class="muted" style="margin-top:0.5rem; margin-bottom:1.4rem;">Investor, Investor Plus and Company Coverage plans sign in with an email link, no password. <a href="pricing.html">See the plans →</a></p>
+              <div class="form-row">
+                <label class="field"><span>Email address</span>
+                  <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email">
+                </label>
+                <button class="btn btn-primary" onclick="magicLink()">Email me a link</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="m-card m-section" id="genCard" hidden>
-          <h2>Monthly free generation</h2>
-          <p class="sub">Reserve your free report generation. Before the next one unlocks you must submit the finished report and your modification prompts for publication.</p>
-          <div id="genStatus" class="muted"></div>
-          <div class="gen-row">
-            <button class="btn btn-primary btn-sm" id="reserveBtn" onclick="reserveGen()">Reserve free generation</button>
-          </div>
-          <div class="gen-row" id="submitRow" hidden>
-            <textarea id="prompts" placeholder="Your modification prompts (will be published with the report)"></textarea>
-            <button class="btn btn-gold btn-sm" onclick="submitGen()">Submit for publication</button>
-          </div>
-        </div>
+        <!-- Logged in -->
+        <div id="memberView" hidden>
 
-        <div class="m-card m-section">
-          <h2>Report library</h2>
-          <p class="sub" id="libraryHint">Open a report to use one of your monthly picks. Already-opened reports don’t consume additional picks.</p>
-          <div class="table-wrap">
-            <table class="reports-table" id="reportsTable"></table>
+          <div class="ws-section">
+            <div class="ws-section-head">
+              <h2>Report library</h2>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 engine reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+            </div>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="reportsTable"></table>
+              </div>
+            </div>
           </div>
+
+          <div class="ws-section" id="analysesCard" hidden>
+            <div class="ws-section-head">
+              <h2>Analyst reports</h2>
+              <p class="sub">Analysts' own reports, built on top of the engine's report for the same company, best first. <strong>One at a time:</strong> opening one spends a read and locks the next until you have rated it and written what it adds.</p>
+            </div>
+
+            <div class="form-row" style="margin-bottom:1.25rem;">
+              <label class="field" style="flex:0 1 200px;"><span>Company</span>
+                <input id="analysesTicker" class="input" placeholder="Ticker, e.g. NOKIA.HE">
+              </label>
+              <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show reports</button>
+            </div>
+
+            <div id="reviewRow" class="review-open" hidden>
+              <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
+              <p style="margin-bottom:1rem;">
+                <button class="btn btn-outline-dark btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report again</button>
+                <span class="muted" style="margin-left:0.75rem;">Already paid for, so re-opening costs nothing.</span>
+              </p>
+              <div class="form-row">
+                <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
+                  <input id="reviewScore" class="input input--num" type="number" min="1" max="5" step="0.1" value="4">
+                </label>
+                <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
+                  <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
+                </label>
+                <button class="btn btn-gold" onclick="submitReview()">Submit review</button>
+              </div>
+            </div>
+
+            <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+              <div class="table-wrap">
+                <table class="reports-table" id="analysesTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="genCard" hidden>
+            <div class="ws-section-head">
+              <h2 id="genTitle">Monthly generation</h2>
+              <p class="sub" id="genSub">Reserve your report generation for this month.</p>
+            </div>
+            <div class="ws-panel">
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
+              <div id="genStatus" class="muted"></div>
+              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
+                <label class="field"><span>Company</span>
+                  <input id="genCompany" class="input" placeholder="Company name, e.g. Nokia Oyj">
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="genTicker" class="input" placeholder="e.g. NOKIA">
+                </label>
+                <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
+              </div>
+              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
+              <div id="submitRow" hidden style="margin-top:1.1rem;">
+                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
+                <div class="form-row">
+                  <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
+                    <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
+                  </label>
+                  <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
+                    <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
+                  </label>
+                  <button class="btn btn-gold" onclick="submitGen()">Publish report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="earningsCard" hidden>
+            <div class="ws-section-head">
+              <h2>Earnings</h2>
+              <p class="sub">A fee per published report. It matures 14 days after publication, and a report taken down in that window earns nothing.</p>
+            </div>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="earningsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="plansCard">
+            <div class="ws-section-head">
+              <h2>Plans</h2>
+              <p class="sub">Subscriptions are billed by Stripe. One-off purchases (€20 ready / €50 fresh) remain available on the <a href="reports.html">reports page</a>.</p>
+            </div>
+            <div class="plan-grid">
+              <div class="plan">
+                <div class="name">Investor</div>
+                <div class="price">€19 <span>/ month · €190 / year</span></div>
+                <ul>
+                  <li>3 reports per month, 5 on the yearly plan</li>
+                  <li>Fresh generations at the €40 member price</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan highlight">
+                <div class="name">Investor Plus</div>
+                <div class="price">€39 <span>/ month · €390 / year</span></div>
+                <ul>
+                  <li>10 reports per month, 15 on the yearly plan</li>
+                  <li>1 private fresh generation per month</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor_plus','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan">
+                <div class="name">Company Coverage</div>
+                <div class="price">€59 <span>/ year</span></div>
+                <ul>
+                  <li>One company of your choice</li>
+                  <li>Latest report + 4 updates a year</li>
+                </ul>
+                <div class="actions">
+                  <label class="field" style="flex:1 1 120px;"><span>Ticker</span>
+                    <input id="coverageTicker" class="input" placeholder="e.g. AMD">
+                  </label>
+                  <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -221,15 +287,24 @@
     const MEMBERS_API = USE_PROD_MEMBERS
       ? 'https://members.aiequityreports.com'
       : 'https://members-test.aiequityreports.com';
-    document.getElementById('linkedinBtn').href = MEMBERS_API + '/auth/linkedin/start';
+    // Come back to whichever site started the flow (prod / staging / local).
+    const RETURN_TO = location.origin + location.pathname;
+    document.getElementById('linkedinBtn').href =
+      MEMBERS_API + '/auth/linkedin/start?returnTo=' + encodeURIComponent(RETURN_TO);
     if (USE_PROD_MEMBERS) document.getElementById('envBadge').remove();
 
     const frag = new URLSearchParams(location.hash.slice(1));
     if (frag.get('token')) { localStorage.memberToken = frag.get('token'); history.replaceState(null, '', location.pathname); }
     if (frag.get('error')) { notice('err', 'Sign-in failed: ' + frag.get('error')); history.replaceState(null, '', location.pathname); }
-    if (frag.get('checkout') === 'success') { notice('ok', 'Subscription active in a few seconds — refresh if it doesn’t show yet.'); history.replaceState(null, '', location.pathname); }
+    if (frag.get('checkout') === 'success') { notice('ok', 'Subscription active in a few seconds. Refresh if it does not show yet.'); history.replaceState(null, '', location.pathname); }
 
     const token = () => localStorage.memberToken || '';
+
+    // Analyst names and comments are member-supplied (LinkedIn), and they are
+    // rendered to OTHER members — the only user-controlled strings on this page.
+    const esc = (value) => String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
     function notice(kind, text) {
       const el = document.getElementById('notice');
@@ -254,7 +329,7 @@
     async function magicLink() {
       const email = document.getElementById('email').value.trim();
       if (!email) return;
-      await api('POST', '/auth/magic-link', { email });
+      await api('POST', '/auth/magic-link', { email, returnTo: RETURN_TO });
       notice('ok', 'If the address is valid, a sign-in link is on its way. The link is valid for 15 minutes.');
     }
 
@@ -263,39 +338,67 @@
     async function loadMe() {
       let result;
       try { result = await api('GET', '/me'); }
-      catch (_) { notice('err', 'Network error — please reload.'); return; }
+      catch (_) { notice('err', 'Network error. Please reload.'); return; }
       const { status, data } = result;
       if (status === 401 || status === 403) { logout(); return; } // invalid/expired session only
-      if (status !== 200) { notice('err', 'Something went wrong (' + status + ') — please reload.'); return; }
+      if (status !== 200) { notice('err', 'Something went wrong (' + status + '). Please reload.'); return; }
       document.getElementById('authView').hidden = true;
       document.getElementById('memberView').hidden = false;
+      document.getElementById('identityStrip').hidden = false;
 
       document.getElementById('accEmail').textContent = data.email || 'Member';
       const badge = document.getElementById('tierBadge');
       badge.textContent = TIER_LABELS[data.tier] || data.tier;
       badge.className = 'tier-badge' + (data.tier === 'none' ? ' none' : '');
-      document.getElementById('roleLabel').textContent = data.role === 'analyst' ? ' · Analyst (freemium)' : '';
+      const ROLE_LABELS = { analyst: 'Analyst', reader: 'Reader', coaching: 'Coaching analyst' };
+      document.getElementById('roleLabel').textContent = ROLE_LABELS[data.role] || '';
+      // "Member" covers two different people; name the one who actually signed in.
+      document.getElementById('pageTitle').textContent =
+        ROLE_LABELS[data.role] ? 'Analyst workspace' : 'Your subscription';
 
       const u = data.usage;
+      // Counting down: what is left is the number a member acts on.
+      const left = (used, limit) => Math.max(0, limit - used) + ' / ' + limit;
       const stats = [
-        [u.picks + ' / ' + u.pickLimit, 'Report picks this month'],
+        [left(u.picks, u.pickLimit), 'Report picks left this month'],
       ];
-      if (data.role === 'analyst') stats.push([u.genReserved ? '1 / 1' : '0 / 1', 'Free generation this month']);
-      if (data.tier === 'coverage') stats.push([u.coverageUpdates + ' / ' + u.coverageUpdateLimit, 'Coverage updates this year']);
+      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read']);
+      if (data.hasGeneration) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
+      if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
       document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl]) =>
         '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>').join('');
 
       document.getElementById('plansCard').hidden = data.tier !== 'none';
+
+      // Analysts owe a publication for their free run; Investor Plus members
+      // get a private one with no strings attached.
+      const isAnalyst = data.publishes;
+      document.getElementById('stepDownBtn').hidden = !isAnalyst;
+      const analysesCard = document.getElementById('analysesCard');
+      analysesCard.hidden = !(u.analystReadLimit > 0);
+      window._openReviewId = data.openReviewId || null;
+      renderReviewRow();
       const genCard = document.getElementById('genCard');
-      genCard.hidden = data.role !== 'analyst';
-      if (data.role === 'analyst') {
+      genCard.hidden = !data.hasGeneration;
+      if (data.hasGeneration) {
         const ob = data.openObligationId;
+        document.getElementById('genTitle').textContent =
+          isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
+        document.getElementById('genSub').textContent = isAnalyst
+          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished report.'
+          : 'Reserve your monthly fresh report. It stays private to you and nothing is published.';
         document.getElementById('genStatus').textContent = ob
-          ? 'Open publication obligation — submit your report and prompts to unlock the next generation.'
-          : (u.genReserved ? 'This month’s generation is used.' : 'Your free generation is available.');
-        document.getElementById('reserveBtn').hidden = Boolean(ob) || u.genReserved;
+          ? 'Open publication obligation. Publish your report to unlock the next generation.'
+          : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
+        document.getElementById('genCommit').hidden = !isAnalyst;
+        window._publishes = isAnalyst;
+        document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
         window._openObligationId = ob;
+        // Resume watching a run that was already going when the page loaded.
+        const active = u.genId || localStorage.activeGenId;
+        if (active && u.genReserved) pollGeneration(active);
+        if (isAnalyst) loadEarnings();
       }
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
       loadReports();
@@ -332,20 +435,197 @@
       else notice('err', (data && data.error) || ('Checkout failed (' + status + ')'));
     }
 
+    // A real engine run: minutes, not seconds. Poll until it settles.
+    const GEN_STATUS_TEXT = {
+      NEW: 'Queued, waiting for the generator to pick it up.',
+      IMPORTING: 'Refreshing the company’s financial data…',
+      RENDERING: 'Writing the report. This typically takes 20 to 40 minutes.',
+      DELIVERED: 'Done, the report is ready.',
+      FAILED: 'Generation failed.',
+    };
+
     async function reserveGen() {
-      const { status, data } = await api('POST', '/generations/free');
-      if (status === 200) { notice('ok', 'Generation reserved (' + data.genId + '). Submit it for publication once finished.'); loadMe(); }
-      else notice('err', (data && data.error) || ('Reservation failed (' + status + ')'));
+      const company = document.getElementById('genCompany').value.trim();
+      const ticker = document.getElementById('genTicker').value.trim();
+      if (!company || !ticker) { notice('err', 'Enter both the company name and its ticker.'); return; }
+      if (window._publishes && !confirm(
+        'This generation is free because you publish it.\n\n' +
+        'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
+        'and you get no further generation until it is published.\n\nStart the generation for ' + company + '?')) return;
+
+      const { status, data } = await api('POST', '/generations/free', { company, ticker });
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }
+      notice('ok', 'Generation started for ' + data.company + '. You can leave this page — the report is emailed when it is ready.');
+      localStorage.activeGenId = data.genId;
+      loadMe();
+      pollGeneration(data.genId);
+    }
+
+    async function pollGeneration(genId) {
+      const out = document.getElementById('genProgress');
+      const { status, data } = await api('GET', '/generations/' + genId);
+      if (status !== 200) { out.textContent = ''; return; }
+      out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      if (data.url) {
+        const link = document.createElement('a');
+        link.href = data.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'btn btn-outline-dark btn-sm';
+        link.style.marginLeft = '0.6rem';
+        link.textContent = 'Download the PDF';
+        out.appendChild(link);
+      }
+      if (data.status === 'DELIVERED' || data.status === 'FAILED') {
+        // Refresh only for a run we were actually watching. loadMe() resumes the
+        // poll from u.genId, so refreshing on a run that finished before the page
+        // loaded would bounce between the two calls forever.
+        const wasWatching = localStorage.activeGenId === genId;
+        delete localStorage.activeGenId;
+        if (wasWatching) loadMe();
+        return;
+      }
+      setTimeout(() => pollGeneration(genId), 30000);
+    }
+
+    async function stepDown() {
+      if (!confirm('Continue as a reader? You keep the LinkedIn login and a smaller allowance, but you no longer publish.')) return;
+      const { status, data } = await api('POST', '/me/role', { role: 'reader' });
+      if (status === 200) { notice('ok', 'You are now a reader.'); loadMe(); }
+      else notice('err', (data && data.error) || ('Could not change the role (' + status + ')'));
+    }
+
+    function renderReviewRow() {
+      const row = document.getElementById('reviewRow');
+      row.hidden = !window._openReviewId;
+      if (window._openReviewId) {
+        document.getElementById('reviewPrompt').textContent =
+          'You opened this report and owe it a review. Score and comment it to unlock the next read.';
+      }
+    }
+
+    async function loadAnalyses() {
+      const ticker = document.getElementById('analysesTicker').value.trim().toUpperCase();
+      const { status, data } = await api('GET', '/analyses' + (ticker ? '?companyId=' + encodeURIComponent(ticker) : ''));
+      if (status !== 200) { notice('err', 'Could not load reports (' + status + ')'); return; }
+      window._analyses = data.analyses || [];
+      // One open obligation at a time, so everything else is locked until it is
+      // cleared. Saying so on the button beats a message at the top of the page.
+      const blocked = Boolean(window._openReviewId);
+      const rows = window._analyses.map(a => {
+        const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
+        const lock = blocked && !isOpenOne && !a.publicFree;
+        const button = isOpenOne
+          ? '<button class="btn btn-gold btn-sm" onclick="focusReview()">Review this one</button>'
+          : lock
+            ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
+            : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
+        return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + '</td><td>' + esc(a.publishedAt.slice(0, 10))
+          + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
+                          : a.free ? '<span class="pill-free">Free for you</span>'
+                          : (a.priceEur ? a.priceEur + ' €' : '—'))
+          + '</td><td>' + (a.reviewCount ? Number(a.peerScore).toFixed(1) + ' (' + a.reviewCount + ')' : 'no reviews')
+          + '</td><td style="text-align:right">' + button + '</td></tr>';
+      });
+      document.getElementById('analysesTable').innerHTML =
+        '<tr><th>Company</th><th>Analyst</th><th>Published</th><th>Price</th><th>Peer score</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="6" class="muted">No published analyst reports yet.</td></tr>');
+    }
+
+    function focusReview() {
+      const row = document.getElementById('reviewRow');
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('reviewComment').focus();
+    }
+
+    // The PDF opens in a new tab, so it is trivially lost — a closed tab must not
+    // cost the read again. POST /analyses/{genId}/open answers an already-open
+    // analysis with the document and alreadyOpen, charging nothing.
+    async function reopenAnalysis() {
+      if (!window._openReviewId) return;
+      const button = document.getElementById('reopenBtn');
+      button.disabled = true;
+      const { status, data } = await api('POST', '/analyses/' + window._openReviewId + '/open');
+      button.disabled = false;
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); return; }
+      if (data.url) window.open(data.url, '_blank');
+      else notice('err', 'This report has no document to open.');
+    }
+
+    async function openAnalysis(genId) {
+      if (window._openReviewId) { focusReview(); return; }
+      const analysis = (window._analyses || []).find(a => encodeURIComponent(a.genId) === genId);
+      // Free-window analyses cost nothing and owe nothing; everything else does
+      // both, and the analyst should know that before the PDF is on screen.
+      if (!analysis?.publicFree && !confirm(
+        'Opening this report spends one of your monthly analyst reads, and you owe it a review: ' +
+        'a score from 1 to 5 and a written comparison of at least 40 characters.\n\n' +
+        'You cannot open another report until that review is written.\n\nOpen it?')) return;
+      const { status, data } = await api('POST', '/analyses/' + genId + '/open');
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); loadMe(); return; }
+      if (data.url) window.open(data.url, '_blank');
+      if (!data.free) {
+        window._openReviewId = genId;
+        renderReviewRow();
+        loadAnalyses();
+        focusReview();
+      }
+      notice('ok', data.free
+        ? 'This report is free right now — no read spent.'
+        : (data.url ? 'Report opened. Score and comment it to unlock your next read.'
+                    : 'Read recorded, but the PDF is not available for this report.'));
+      loadMe();
+    }
+
+    async function submitReview() {
+      const { status, data } = await api('POST', '/analyses/' + window._openReviewId + '/review', {
+        score: Number(document.getElementById('reviewScore').value),
+        comment: document.getElementById('reviewComment').value,
+      });
+      if (status !== 200) { notice('err', (data && data.error) || ('Review failed (' + status + ')')); return; }
+      document.getElementById('reviewComment').value = '';
+      window._openReviewId = null;
+      renderReviewRow();
+      notice('ok', 'Review recorded — thank you.');
+      loadAnalyses();
+      loadMe();
     }
 
     async function submitGen() {
       const { status, data } = await api('POST', '/generations/' + window._openObligationId + '/submit',
-        { promptsText: document.getElementById('prompts').value });
-      if (status === 200) { notice('ok', 'Submitted for publication — thank you!'); loadMe(); }
-      else notice('err', (data && data.error) || ('Submit failed (' + status + ')'));
+        {
+          // Empty until the revision pipeline supplies them; the server has
+          // always treated this as optional.
+          promptsText: '',
+          priceEur: Number(document.getElementById('pubPrice').value) || 0,
+          freeAfterDays: Number(document.getElementById('pubFreeAfter').value) || 365,
+        });
+      if (status === 200) { notice('ok', 'Published — thank you!'); loadMe(); }
+      else notice('err', (data && data.error) || ('Publishing failed (' + status + ')'));
+    }
+
+    const EARNING_LABELS = {
+      pending: 'Maturing', eligible: 'Payable', paid: 'Paid',
+      clawback: 'Clawed back', void: 'No fee',
+    };
+
+    async function loadEarnings() {
+      const { status, data } = await api('GET', '/me/earnings');
+      const card = document.getElementById('earningsCard');
+      if (status !== 200 || !data.entries?.length) { card.hidden = true; return; }
+      card.hidden = false;
+      const t = data.totals;
+      document.getElementById('earningsTable').innerHTML =
+        '<thead><tr><th>Company</th><th>Published</th><th>Status</th><th>Fee</th></tr></thead><tbody>'
+        + data.entries.map(e => '<tr><td>' + e.companyId + '</td><td>' + e.publishedAt.slice(0, 10)
+          + '</td><td>' + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+          + '</td><td>' + e.amount + ' €</td></tr>').join('')
+        + '</tbody><tfoot><tr><td colspan="3">Payable now / maturing / paid</td><td>'
+        + t.eligible + ' € / ' + t.pending + ' € / ' + t.paid + ' €</td></tr></tfoot>';
     }
 
     if (token()) loadMe();
   </script>
+  <script src="js/script.js"></script>
 </body>
 </html>

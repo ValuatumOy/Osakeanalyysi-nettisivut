@@ -15,11 +15,17 @@ module.exports = async (req, res) => {
       return res.status(402).json({ error: 'Payment not completed' });
     }
 
+    const withRevisions = session.metadata?.withRevisions === 'true';
+    const orderUrl = withRevisions
+      ? `/order/index.html?session_id=${encodeURIComponent(session_id)}`
+      : null;
+
     if (session.metadata?.isFresh === 'true') {
       return res.json({
         type: 'fresh',
         company: session.metadata.company,
         email: session.customer_details?.email,
+        orderUrl,
       });
     }
 
@@ -35,6 +41,7 @@ module.exports = async (req, res) => {
       // endpoint, which re-verifies this session every time.
       downloadUrl: `/api/report-download?session_id=${encodeURIComponent(session_id)}`,
       email: session.customer_details?.email,
+      orderUrl,
     });
   } catch (err) {
     console.error('get-report-link:', err.message);

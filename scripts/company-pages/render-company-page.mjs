@@ -285,7 +285,7 @@ function readyReportSection(companyName, report) {
             <h2 style="color:white; margin-top:0;">${isFree ? 'Download the free' : 'Buy the ready'} ${esc(companyName)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">A completed ${esc(companyName)} AI equity report is available from ${esc(reportDate)}. ${isFree ? 'Download the ready PDF now for free, or generate a new report below if you want a fresh run with the latest available data.' : 'Buy the ready PDF now, or generate a new report below if you want a fresh run with the latest available data.'}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="${attr(reportHref)}" class="btn btn-primary btn-lg"${isFree ? ' target="_blank" rel="noopener" download' : ''}>${ctaText}</a>
+              <a href="${attr(reportHref)}" class="btn btn-primary btn-lg" data-revisable="${report.revisable ? '1' : ''}"${isFree ? ' target="_blank" rel="noopener" download' : ''}>${ctaText}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Report date: ${esc(reportDate)}</span>
             </div>
           </div>
@@ -297,7 +297,7 @@ function headerReportCta(report) {
   if (isFree && report.pdfUrl) {
     return `<a href="/${attr(String(report.pdfUrl).replace(/^\/+/, ''))}" class="btn btn-primary" target="_blank" rel="noopener" download>Download free report</a>`;
   }
-  return `<a href="/reports.html#report-${attr(report.id)}" class="btn btn-primary">Buy ready report &mdash; &euro;${Number(report.price || 0).toFixed(2)}</a>`;
+  return `<a href="/reports.html#report-${attr(report.id)}" class="btn btn-primary" data-revisable="${report.revisable ? '1' : ''}">Buy ready report &mdash; &euro;${Number(report.price || 0).toFixed(2)}</a>`;
 }
 
 function formatReportDate(value) {
@@ -314,9 +314,37 @@ function navHtml() {
         <div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/index.html" class="nav-link">Home</a><a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a><a href="/pricing.html" class="nav-link">Pricing</a><a href="/methodology.html" class="nav-link">Methodology</a><a href="/about.html" class="nav-link">About</a><a href="/faq.html" class="nav-link">FAQ</a><a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/pricing.html" class="nav-link">Pricing</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="/methodology.html" class="nav-link">Methodology</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/faq.html" class="nav-link">FAQ</a>
+            <a href="/blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="/about.html" class="nav-mobile-link">About</a>
+      <a href="/faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/members.html" class="nav-mobile-link">Sign in</a>
+      <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>`;
 }

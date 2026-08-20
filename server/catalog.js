@@ -347,6 +347,12 @@ function buildRawReports(options = {}) {
       priceLabel: pricing.priceLabel,
       forceFree: Boolean(meta.forceFree),
       excludeFromFree: Boolean(meta.excludeFromFree),
+      // Whether a "+ Revisions" purchase can be offered on this report: only
+      // true when the sidecar carries the engine jobId that produced it
+      // (server/reconciler.js writes it on every delivery), since a forecast
+      // revision needs a job to call POST /jobs/{jobId}/revisions against.
+      // The raw jobId itself is never exposed here — only this boolean.
+      revisable: Boolean(meta.provenance && meta.provenance.jobId),
       description: meta.description || `AI equity report for ${baseCompany}.`,
       tags: Array.isArray(meta.tags) && meta.tags.length ? meta.tags : ['AI Equity Report', 'PDF'],
       ageDays,

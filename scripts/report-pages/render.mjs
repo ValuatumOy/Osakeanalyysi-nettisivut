@@ -144,15 +144,37 @@ function navHtml() {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/index.html" class="nav-link">Home</a>
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/report-store.html" class="nav-link">Store</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/methodology.html" class="nav-link">Methodology</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/faq.html" class="nav-link">FAQ</a>
-        <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="/methodology.html" class="nav-link">Methodology</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/faq.html" class="nav-link">FAQ</a>
+            <a href="/blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="/members.html" class="nav-signin">Sign in</a>
       <a href="/reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="/about.html" class="nav-mobile-link">About</a>
+      <a href="/faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/members.html" class="nav-mobile-link">Sign in</a>
+      <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
   </header>`;
 }
@@ -365,7 +387,7 @@ function buyGate(d, cat) {
             <h2 style="color:white; margin-top:0;">Unlock the full ${esc(shortName(d.companyName))} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.${price ? ` Instant download for ${price}.` : ''}</p>
             <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg">${price ? `Buy full report — ${price}` : 'Get the full report'}</a>
+              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg" data-revisable="${cat?.revisable ? '1' : ''}">${price ? `Buy full report — ${price}` : 'Get the full report'}</a>
               <a href="/pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white;">See pricing</a>
             </div>
           </div>
@@ -381,8 +403,8 @@ function generateGate(d) {
             <h2 style="color:white; margin-top:0;">Generate the ${esc(sn)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
         </section>`;
@@ -666,6 +688,7 @@ ${navHtml()}
           <div class="company-header-actions">
             ${downloadCta}
             ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report</a>` : ''}
+            <a href="/report-store.html?company=${encodeURIComponent(d.ticker)}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">See all analyst reports</a>
           </div>
         </div>
       </div>
@@ -724,7 +747,7 @@ export function renderCards(companies, companyPageCatalog) {
     const price = isFree ? 'Free' : `€${Number(cat.price || 20).toFixed(0)}`;
     const primaryCta = isFree
       ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>`
-      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}">Buy ready report</button>`;
+      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
     return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>
             <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>

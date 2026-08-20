@@ -18,12 +18,99 @@ test('yearKey', () => {
   assert.equal(quota.yearKey(new Date('2027-01-01T00:00:00Z')), '2027');
 });
 
-test('tier pick limits: freemium 2, investor 5, plus 15', () => {
-  assert.equal(quota.PICK_LIMITS.free, 2);
-  assert.equal(quota.pickLimitForTier('investor'), 5);
-  assert.equal(quota.pickLimitForTier('investor_plus'), 15);
-  assert.equal(quota.pickLimitForTier('none'), 0);
-  assert.equal(quota.pickLimitForTier(undefined), 0);
+test('submit publishes and releases the obligation, and indexes the publication', () => {
+  const now = new Date('2026-09-01T00:00:00Z');
+  const params = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now, genId: 'g1', promptsText: 'prompts',
+    companyId: 'nokia.he', jobId: '01JOB', priceEur: 12.4, freeAfterDays: 30, analystName: 'A',
+  });
+  const [profileUpdate, pubUpdate, indexPut] = params.TransactItems.map(i => i.Update || i.Put);
+
+  // Tolerant of an admin having cleared the obligation to unblock the next run.
+  assert.equal(profileUpdate.ConditionExpression,
+    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+  assert.equal(pubUpdate.ExpressionAttributeValues[':price'], 12);
+  assert.equal(pubUpdate.ExpressionAttributeValues[':days'], 30);
+  assert.equal(pubUpdate.ExpressionAttributeValues[':freeFrom'], '2026-10-01T00:00:00.000Z');
+  assert.equal(indexPut.Item.pk, 'PUBINDEX');
+  assert.equal(indexPut.Item.sk, 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1');
+  assert.equal(indexPut.Item.reviewCount, 0);
+});
+
+test('free decay is capped at a year and defaults to it', () => {
+  assert.equal(quota.clampFreeAfterDays(30), 30);
+  assert.equal(quota.clampFreeAfterDays(9999), 365);
+  assert.equal(quota.clampFreeAfterDays(0), 365);
+  assert.equal(quota.clampFreeAfterDays(undefined), 365);
+  assert.equal(quota.clampFreeAfterDays(-5), 365);
+});
+
+test('admin grant clears both gates unconditionally', () => {
+  const params = quota.buildGrantGenerationTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-08-20T00:00:00Z'),
+  });
+  const [profile, usage] = params.TransactItems.map(i => i.Update);
+  assert.match(profile.UpdateExpression, /REMOVE openObligationId/);
+  assert.equal(profile.ConditionExpression, undefined); // must work whichever gate blocked
+  assert.equal(usage.Key.sk, 'USAGE#2026-08');
+  assert.equal(usage.UpdateExpression, 'REMOVE genReserved, genId');
+});
+
+test('self-service downgrade is blocked while a report is unpublished', () => {
+  const params = quota.buildRoleChangeTransact({ table: TABLE, userId: 'u1', role: 'reader' });
+  const [update] = params.TransactItems.map(i => i.Update);
+  assert.equal(update.ConditionExpression, 'attribute_not_exists(openObligationId)');
+  assert.equal(update.ExpressionAttributeValues[':role'], 'reader');
+});
+
+test('opening another analysis costs a read and leaves a review obligation', () => {
+  const now = new Date('2026-08-06T12:00:00Z');
+  const params = quota.buildOpenAnalysisTransact({
+    table: TABLE, userId: 'u1', now, limit: 20, genId: 'g9', ownerId: 'u2',
+  });
+  const [usage, profile, read] = params.TransactItems.map(i => i.Update || i.Put);
+  assert.equal(usage.ConditionExpression, 'attribute_not_exists(analystReads) OR analystReads < :limit');
+  assert.equal(usage.ExpressionAttributeValues[':limit'], 20);
+  assert.equal(profile.ConditionExpression, 'attribute_not_exists(openReviewId)');
+  assert.equal(read.Item.sk, 'READ#g9');
+  assert.equal(read.Item.ownerId, 'u2');
+});
+
+test('a review clears its own obligation and counts towards the ordering', () => {
+  const params = quota.buildReviewTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-08-07T00:00:00Z'), genId: 'g9',
+    ownerId: 'u2', indexSk: 'NOKIA.HE#2026-08-01T00:00:00.000Z#g9', score: 4, comment: 'adds value because…',
+  });
+  const [profile, review, index] = params.TransactItems.map(i => i.Update || i.Put);
+  assert.equal(profile.ConditionExpression, 'openReviewId = :genId');
+  assert.equal(review.Item.pk, 'USER#u2'); // stored under the analysis it reviews
+  assert.equal(review.ConditionExpression, 'attribute_not_exists(sk)'); // one review per reviewer
+  assert.equal(index.UpdateExpression, 'ADD reviewCount :one, scoreSum :score');
+  assert.equal(index.ExpressionAttributeValues[':score'], 4);
+});
+
+test('featuring an analysis opens a free window on both the item and the index', () => {
+  const params = quota.buildFeatureTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-08-01T00:00:00Z'), genId: 'g1',
+    indexSk: 'NOKIA.HE#2026-07-01T00:00:00.000Z#g1', days: 10,
+  });
+  const [pub, index] = params.TransactItems.map(i => i.Update);
+  assert.equal(pub.ConditionExpression, '#status = :published');
+  assert.equal(pub.ExpressionAttributeValues[':until'], '2026-08-11T00:00:00.000Z');
+  assert.equal(index.ExpressionAttributeValues[':until'], '2026-08-11T00:00:00.000Z');
+});
+
+test('member generation reserves the month slot without a publish obligation', () => {
+  const now = new Date('2026-08-06T12:00:00Z');
+  const params = quota.buildReserveMemberGenerationTransact({
+    table: TABLE, userId: 'u1', now, genId: 'g1',
+  });
+  const items = params.TransactItems;
+  assert.equal(items.length, 2); // no PROFILE obligation write
+  assert.equal(items[0].Update.Key.sk, 'USAGE#2026-08');
+  assert.equal(items[0].Update.ConditionExpression, 'attribute_not_exists(genReserved)');
+  assert.equal(items[1].Put.Item.private, true);
+  assert.ok(!JSON.stringify(params).includes('openObligationId'));
 });
 
 test('freemium age gate: only reports 30 days or older', () => {
@@ -60,7 +147,7 @@ test('generation reservation: obligation gate + one per month + analyst only', (
 
   assert.equal(profileUpdate.Key.sk, 'PROFILE');
   assert.match(profileUpdate.ConditionExpression, /attribute_not_exists\(openObligationId\)/);
-  assert.match(profileUpdate.ConditionExpression, /#role = :analyst/);
+  assert.match(profileUpdate.ConditionExpression, /#role IN \(:analyst, :coaching\)/);
   assert.match(profileUpdate.ConditionExpression, /attribute_not_exists\(banned\) OR banned = :false/);
 
   assert.equal(usageUpdate.Key.sk, 'USAGE#2026-08');
@@ -70,17 +157,17 @@ test('generation reservation: obligation gate + one per month + analyst only', (
   assert.equal(pubPut.Item.status, 'generating');
 });
 
-test('submit releases the obligation only for the matching genId', () => {
-  const now = new Date('2026-09-01T00:00:00Z');
-  const params = quota.buildSubmitTransact({
-    table: TABLE, userId: 'u1', now, genId: 'g1', promptsText: 'prompts',
+test('takedown only applies to a published publication', () => {
+  const params = quota.buildTakedownTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-02T00:00:00Z'), genId: 'g1', reason: 'bad',
+    indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
   });
-  const [profileUpdate, pubUpdate] = params.TransactItems.map(i => i.Update);
-
-  assert.equal(profileUpdate.UpdateExpression, 'REMOVE openObligationId');
-  assert.equal(profileUpdate.ConditionExpression, 'openObligationId = :genId');
-  assert.equal(pubUpdate.ConditionExpression, '#status = :generating');
-  assert.equal(pubUpdate.ExpressionAttributeValues[':prompts'], 'prompts');
+  const [update, index] = params.TransactItems.map(i => i.Update);
+  assert.equal(update.ConditionExpression, '#status = :published');
+  assert.equal(update.ExpressionAttributeValues[':down'], 'takendown');
+  // A taken-down analysis must also leave the company listing.
+  assert.equal(index.Key.pk, 'PUBINDEX');
+  assert.equal(index.ExpressionAttributeValues[':down'], 'takendown');
 });
 
 test('coverage: initial once per subscription, updates capped at 4 per year', () => {

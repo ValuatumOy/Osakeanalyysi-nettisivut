@@ -134,28 +134,37 @@
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">Home</a>
         <a href="reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="report-store.html" class="nav-link">Store</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="methodology.html" class="nav-link">Methodology</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
       </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
       <a href="#order-fresh" class="nav-cta">Generate fresh report</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="index.html" class="nav-mobile-link">Home</a>
-      <a href="reports.html" class="nav-mobile-link" style="color:var(--green-light);">Reports</a>
+      <a href="reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="report-store.html" class="nav-mobile-link">Store</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="about.html" class="nav-mobile-link">About</a>
       <a href="faq.html" class="nav-mobile-link">FAQ</a>
       <a href="blog.html" class="nav-mobile-link">Blog</a>
-      <a href="#order-fresh" class="nav-mobile-link nav-mobile-cta">Generate fresh report -></a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="#order-fresh" class="nav-mobile-link nav-mobile-cta">Generate fresh report →</a>
     </div>
   </header>
 
@@ -186,7 +195,7 @@
         <div class="catalog-header">
           <div>
             <h2 class="catalog-title">Available ready reports</h2>
-            <p class="catalog-sub">Descriptions are pulled from the company-page catalog, so the listing stays consistent with the company pages.</p>
+            <p class="catalog-sub">Descriptions are pulled from the company-page catalog, so the listing stays consistent with the company pages. Looking for the analysts' own takes on these companies? They are in the <a href="report-store.html" style="color:var(--green);">report store</a>.</p>
           </div>
           <span class="catalog-count" id="catalogCount"></span>
         </div>
@@ -505,6 +514,10 @@
                 <option value="client">Client work</option>
                 <option value="other">Other</option>
               </select>
+              <label class="fresh-order-checkbox" id="freshRevisionsOption" hidden>
+                <input type="checkbox" id="freshRevisions">
+                <span>Add <span id="freshRevisionsCount">3</span> forecast revisions for <span id="freshRevisionsPrice"></span> extra. After delivery, describe a change in plain language (e.g. "assume faster margin recovery") and we'll update the forecast and regenerate the report.</span>
+              </label>
               <button type="submit" class="btn btn-primary btn-lg" id="freshOrderSubmit" style="justify-content:center;">
                 Generate fresh report — <span id="freshOrderButtonPrice">€50</span>
               </button>
@@ -964,7 +977,7 @@
         if (input) input.focus();
       }, 350);
     }
-    async function buyReadyReport(reportId, button) {
+    async function buyReadyReport(reportId, button, withRevisions) {
       if (button && button.dataset.loading === '1') return;
       const old = button ? button.textContent : '';
       if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
@@ -972,7 +985,7 @@
         const res = await fetch('/api/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reportId: reportId }),
+          body: JSON.stringify({ reportId: reportId, withRevisions: Boolean(withRevisions) }),
         });
         const data = await res.json();
         if (data && data.url) { window.location.href = data.url; return; }
@@ -995,6 +1008,7 @@
             email: options.email || '',
             purpose: options.purpose || '',
             source: options.source || 'company_page',
+            withRevisions: Boolean(options.withRevisions),
           }),
         });
         const data = await res.json();
@@ -1018,11 +1032,29 @@
         });
       });
       document.querySelectorAll('[data-buy-report]').forEach(function(btn) {
-        btn.addEventListener('click', function() { buyReadyReport(btn.getAttribute('data-buy-report'), btn); });
+        btn.addEventListener('click', function() {
+          const reportId = btn.getAttribute('data-buy-report');
+          const revisable = btn.getAttribute('data-revisable') === '1';
+          const choice = getRevisionsChoice('ready', revisable);
+          if (choice.available) {
+            openRevisionsModal(choice, function(withRevisions) { buyReadyReport(reportId, btn, withRevisions); });
+          } else {
+            buyReadyReport(reportId, btn, false);
+          }
+        });
       });
       document.querySelectorAll('[data-generate-company]').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          generateNewReport(btn.getAttribute('data-generate-company'), btn.getAttribute('data-generate-ticker'), btn);
+          const company = btn.getAttribute('data-generate-company');
+          const ticker = btn.getAttribute('data-generate-ticker');
+          const choice = getRevisionsChoice('fresh');
+          if (choice.available) {
+            openRevisionsModal(choice, function(withRevisions) {
+              generateNewReport(company, ticker, btn, { withRevisions: withRevisions });
+            });
+          } else {
+            generateNewReport(company, ticker, btn);
+          }
         });
       });
     }
@@ -1203,10 +1235,12 @@
             source: 'wisdom_picker',
           });
         }
+        const revisionsCheckbox = document.getElementById('freshRevisions');
         const started = await generateNewReport(selectedCompany.companyName, selectedCompany.ticker, submit, {
           email: email,
           purpose: purpose,
           source: 'wisdom_picker',
+          withRevisions: revisionsCheckbox && revisionsCheckbox.checked,
         });
         if (started === false) {
           status.textContent = 'Checkout could not be started. Please try again.';
@@ -1341,7 +1375,25 @@
           if (pricing.fresh) {
             const freshLabel = pricing.fresh.shortLabel || pricing.fresh.label || '€50';
             document.getElementById('freshOrderPrice').textContent = freshLabel;
-            document.getElementById('freshOrderButtonPrice').textContent = freshLabel;
+            const revisionsOption = document.getElementById('freshRevisionsOption');
+            const revisionsCheckbox = document.getElementById('freshRevisions');
+            const buttonPriceEl = document.getElementById('freshOrderButtonPrice');
+            const updateButtonPrice = function() {
+              const withRevisions = revisionsCheckbox && revisionsCheckbox.checked && pricing.freshRevisions;
+              buttonPriceEl.textContent = withRevisions
+                ? (pricing.freshRevisions.shortLabel || pricing.freshRevisions.label || freshLabel)
+                : freshLabel;
+            };
+            buttonPriceEl.textContent = freshLabel;
+            if (pricing.revisionsEnabled && pricing.freshRevisions && revisionsOption) {
+              document.getElementById('freshRevisionsCount').textContent = pricing.revisionsIncluded || 3;
+              const delta = Math.max(0, pricing.freshRevisions.unitAmount - pricing.fresh.unitAmount);
+              document.getElementById('freshRevisionsPrice').textContent =
+                (pricing.freshRevisions.currency === 'eur' ? '€' : pricing.freshRevisions.currency + ' ') +
+                (delta / 100).toFixed(Number.isInteger(delta / 100) ? 0 : 2);
+              revisionsOption.hidden = false;
+              if (revisionsCheckbox) revisionsCheckbox.addEventListener('change', updateButtonPrice);
+            }
           }
           if (window.applyStripeBackedPricing) window.applyStripeBackedPricing(pricing);
         });

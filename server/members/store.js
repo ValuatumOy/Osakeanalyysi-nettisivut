@@ -107,13 +107,14 @@ async function getIdentity(identityPk) {
 
 // ── magic-link tokens ────────────────────────────────────────────────────────
 
-async function putMagicToken(tokenHash, email, { ttlSeconds = 900 } = {}) {
+async function putMagicToken(tokenHash, email, { ttlSeconds = 900, returnTo } = {}) {
   await dynamo().send(new PutCommand({
     TableName: table(),
     Item: {
       pk: `MAGIC#${tokenHash}`,
       sk: 'TOKEN',
       email,
+      returnTo,
       expiresAt: Math.floor(Date.now() / 1000) + ttlSeconds,
     },
   }));
@@ -159,19 +160,53 @@ async function putEntitlement(userId, reportId, source, extra = {}) {
   }));
 }
 
+async function putItem(item) {
+  await dynamo().send(new PutCommand({ TableName: table(), Item: item }));
+}
+
 async function getPublication(userId, genId) {
   return getItem(`USER#${userId}`, `PUB#${genId}`);
 }
 
-async function updatePublicationStatus(userId, genId, status) {
-  await dynamo().send(new UpdateCommand({
+// The cross-analyst view of publications: one partition, sort key
+// `<companyId>#<publishedAt>#<genId>`. A company page is a begins_with query; the
+// admin list reads the partition and sorts in memory.
+// ponytail: fine while the partition is small (a page is 1 MB). If publications
+// outgrow that, this is where a GSI on publishedAt goes.
+async function listPublicationIndex({ companyId, limit = 200 } = {}) {
+  const prefix = companyId ? `${String(companyId).toUpperCase()}#` : '';
+  const res = await dynamo().send(new QueryCommand({
     TableName: table(),
-    Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
-    UpdateExpression: 'SET #status = :status',
-    ConditionExpression: 'attribute_exists(pk)',
-    ExpressionAttributeNames: { '#status': 'status' },
-    ExpressionAttributeValues: { ':status': status },
+    KeyConditionExpression: prefix ? 'pk = :pk AND begins_with(sk, :prefix)' : 'pk = :pk',
+    ExpressionAttributeValues: prefix ? { ':pk': 'PUBINDEX', ':prefix': prefix } : { ':pk': 'PUBINDEX' },
+    Limit: limit,
   }));
+  return res.Items || [];
+}
+
+async function findPublicationIndex(genId) {
+  const items = await listPublicationIndex({ limit: 1000 });
+  return items.find((item) => item.genId === genId) || null;
+}
+
+async function listReviews(ownerId, genId) {
+  return listUserItems(ownerId, `REVIEW#${genId}#`);
+}
+
+// One row per paid-out bounty. Existence is what makes bounty.ledger() call a
+// publication 'paid', so the write is conditional — never pay the same one twice.
+async function putPayout(userId, genId, fields) {
+  try {
+    await dynamo().send(new PutCommand({
+      TableName: table(),
+      Item: { pk: `USER#${userId}`, sk: `PAYOUT#${genId}`, ...fields },
+      ConditionExpression: 'attribute_not_exists(sk)',
+    }));
+    return true;
+  } catch (err) {
+    if (err?.name === 'ConditionalCheckFailedException') return false;
+    throw err;
+  }
 }
 
 // Runs a builder result from server/members/quota.js. Returns true on commit,
@@ -239,8 +274,12 @@ module.exports = {
   listUserItems,
   getEntitlement,
   putEntitlement,
+  putItem,
   getPublication,
-  updatePublicationStatus,
+  listPublicationIndex,
+  findPublicationIndex,
+  listReviews,
+  putPayout,
   runTransact,
   claimStripeEvent,
   audit,

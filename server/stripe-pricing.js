@@ -17,6 +17,31 @@ const PRICE_CONFIG = {
     fallbackUnitAmount: 5000,
     currency: 'eur',
   },
+  // The "+ Revisions" tiers, deliberately with no fallback unit amount: a
+  // misconfigured paid add-on should fail loudly rather than silently sell at
+  // a guessed amount. No hardcoded default product id either (unlike ready/
+  // fresh above) — instead the product is found by its `kind` metadata tag
+  // (see scripts/stripe-setup-revisions-test.mjs, which sets it on create),
+  // so nothing needs to be pasted into env vars once the product exists.
+  // productEnv/priceEnv still work as an explicit override if ever needed.
+  'ready-revisions': {
+    productEnv: 'STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID',
+    priceEnv: 'STRIPE_READY_REPORT_REVISIONS_PRICE_ID',
+    defaultProductId: '',
+    defaultPriceId: '',
+    lookupMetadataKind: 'ready-revisions',
+    fallbackUnitAmount: null,
+    currency: 'eur',
+  },
+  'fresh-revisions': {
+    productEnv: 'STRIPE_FRESH_REPORT_REVISIONS_PRODUCT_ID',
+    priceEnv: 'STRIPE_FRESH_REPORT_REVISIONS_PRICE_ID',
+    defaultProductId: '',
+    defaultPriceId: '',
+    lookupMetadataKind: 'fresh-revisions',
+    fallbackUnitAmount: null,
+    currency: 'eur',
+  },
 };
 
 const cache = new Map();
@@ -36,15 +61,29 @@ async function getStripePricing(stripe, kind, options = {}) {
   return value;
 }
 
+function revisionsEnabled() {
+  return /^(1|true|yes|on)$/i.test(process.env.FORECAST_REVISIONS_ENABLED || '');
+}
+
 async function getPublicPricing(stripe, options = {}) {
   const [ready, fresh] = await Promise.all([
     getStripePricing(stripe, 'ready', options),
     getStripePricing(stripe, 'fresh', options),
   ]);
-  return {
-    ready: publicPrice(ready),
-    fresh: publicPrice(fresh),
-  };
+  const pricing = { ready: publicPrice(ready), fresh: publicPrice(fresh), revisionsEnabled: revisionsEnabled() };
+  if (!pricing.revisionsEnabled) return pricing;
+
+  // The revisions kinds throw when unconfigured (see resolveStripePricing) —
+  // catch per-kind so a half-set-up "ready" tier doesn't hide a working
+  // "fresh" one, and vice versa.
+  const [readyRevisions, freshRevisions] = await Promise.all([
+    getStripePricing(stripe, 'ready-revisions', options).catch(() => null),
+    getStripePricing(stripe, 'fresh-revisions', options).catch(() => null),
+  ]);
+  pricing.readyRevisions = readyRevisions ? publicPrice(readyRevisions) : null;
+  pricing.freshRevisions = freshRevisions ? publicPrice(freshRevisions) : null;
+  pricing.revisionsIncluded = Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3;
+  return pricing;
 }
 
 async function resolveStripePricing(stripe, kind, config) {
@@ -59,6 +98,16 @@ async function resolveStripePricing(stripe, kind, config) {
     } catch (err) {
       console.warn(`Stripe ${kind} product pricing lookup failed:`, err.message);
     }
+  } else if (config.lookupMetadataKind) {
+    try {
+      const product = await findProductByMetadataKind(stripe, config.lookupMetadataKind);
+      const price = product && product.default_price;
+      if (price && typeof price === 'object' && stripePriceId(price.id)) {
+        return normalizePrice(kind, price);
+      }
+    } catch (err) {
+      console.warn(`Stripe ${kind} metadata product lookup failed:`, err.message);
+    }
   }
 
   const priceId = stripePriceId(process.env[config.priceEnv], config.defaultPriceId);
@@ -70,12 +119,34 @@ async function resolveStripePricing(stripe, kind, config) {
     }
   }
 
+  if (config.fallbackUnitAmount == null) {
+    throw new Error(
+      config.lookupMetadataKind
+        ? `No Stripe price configured for "${kind}" — create the product with `
+          + `metadata.kind="${config.lookupMetadataKind}" (see scripts/stripe-setup-revisions-test.mjs), `
+          + `or set ${config.productEnv} / ${config.priceEnv} to override`
+        : `No Stripe price configured for "${kind}" — set ${config.productEnv} or ${config.priceEnv}`,
+    );
+  }
+
   return {
     kind,
     priceId: null,
     unitAmount: config.fallbackUnitAmount,
     currency: config.currency,
   };
+}
+
+// Finds the active product tagged with the given `kind` in its metadata
+// (set by scripts/stripe-setup-revisions-test.mjs on create) so revisions
+// pricing works without ever pasting a product/price id into env vars.
+async function findProductByMetadataKind(stripe, metadataKind) {
+  const products = await stripe.products.list({
+    active: true,
+    limit: 100,
+    expand: ['data.default_price'],
+  });
+  return products.data.find(p => p.metadata && p.metadata.kind === metadataKind) || null;
 }
 
 function normalizePrice(kind, price) {

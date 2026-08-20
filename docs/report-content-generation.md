@@ -126,7 +126,10 @@ scored 4.0/4.0/4.0/4.0 against terra's 3.3/4.0/4.0/4.0 over three samples each. 
 both models still lands on *publishable-after-light-edit*; neither reaches publish-as-is.
 
 What moved the numbers was not more prose instruction but naming the specific mechanical defects
-and letting the tooling check them — see `style.mjs`.
+and letting the tooling check them. (That checker, `scripts/report-pages/style.mjs`, was later
+removed — see `docs/report-page-automation.md` — after its `unitless-figure` and
+`scenario-recitation` rules started producing unfixable false positives on real reports; this
+section's numbers still describe why it was built.)
 
 Two findings worth keeping in mind when reading a low score:
 
