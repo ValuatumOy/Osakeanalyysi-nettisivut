@@ -451,17 +451,25 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
   if (!publication || publication.status !== 'generating') return false;
   if (order.originalPdfFileName || order.deliveredEmailAt) return false;
 
-  const restored = await store.runTransact(quota.buildRestoreFailedGenerationTransact({
+  // Close the run out first: it is over regardless of who holds the month now.
+  await store.runTransact(quota.buildFailPublicationTransact({
+    table: store.table(), userId: profile.userId, genId, now,
+  }));
+
+  // Then hand the month back, but only while this run still holds it. An admin
+  // who already credited the member by hand, or a newer generation, owns those
+  // rows now and must not be overwritten.
+  const released = await store.runTransact(quota.buildReleaseReservationTransact({
     table: store.table(),
     userId: profile.userId,
     genId,
     reservedAt: publication.reservedAt,
     now,
   }));
-  if (restored) {
+  if (released) {
     await store.audit(profile.userId, 'generation-restored', { genId, reason: order.error || 'generation failed' });
   }
-  return restored;
+  return released;
 }
 
 // GET /generations/{genId} — order progress, and the entitlement handover once

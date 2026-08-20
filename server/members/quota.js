@@ -232,12 +232,12 @@ function buildSubmitTransact({
 // should not be throttled). Unconditional on purpose: it must work whether the
 // analyst is blocked by the obligation, by the month's slot, or by both.
 // A generation the engine could not deliver must not cost the member their
-// month. Exactly-once by construction: the PUB row moves out of 'generating',
-// and every clause names this genId, so a later run's reservation survives.
-// The USAGE row is the month the generation was RESERVED in — a run that
-// starts in August and fails in September must clear August's flag.
-function buildRestoreFailedGenerationTransact({ table, userId, genId, reservedAt, now }) {
-  const reservedMonth = monthKey(reservedAt ? new Date(reservedAt) : now);
+// month. Two steps, because they answer different questions.
+//
+// The publication row is closed out on its own: that run is over whatever else
+// has happened since, and leaving it 'generating' would show a dead run as
+// still working in the member's list.
+function buildFailPublicationTransact({ table, userId, genId, now }) {
   return {
     TransactItems: [
       {
@@ -250,11 +250,25 @@ function buildRestoreFailedGenerationTransact({ table, userId, genId, reservedAt
           ExpressionAttributeValues: { ':failed': 'failed', ':generating': 'generating', ':at': now.toISOString() },
         },
       },
+    ],
+  };
+}
+
+// The reservation is released only while it still belongs to this run. An
+// admin who already credited the member by hand, or a member who has since
+// started another generation, owns those two rows now — cancelling the
+// transaction is the correct outcome there, not a failure to handle.
+// The USAGE row is the month the generation was RESERVED in: a run that starts
+// in August and fails in September must clear August's flag.
+function buildReleaseReservationTransact({ table, userId, genId, reservedAt, now }) {
+  const reservedMonth = monthKey(reservedAt ? new Date(reservedAt) : now);
+  return {
+    TransactItems: [
       {
         Update: {
           TableName: table,
           // A private generation (reader, Investor Plus) carries no obligation,
-          // so "no obligation" is a pass, not a reason to abort the restore.
+          // so "no obligation" is a pass, not a reason to abort the release.
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           UpdateExpression: 'REMOVE openObligationId',
           ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
@@ -529,7 +543,8 @@ module.exports = {
   buildSubmitTransact,
   buildTakedownTransact,
   buildGrantGenerationTransact,
-  buildRestoreFailedGenerationTransact,
+  buildFailPublicationTransact,
+  buildReleaseReservationTransact,
   buildRoleChangeTransact,
   buildOpenAnalysisTransact,
   buildReviewTransact,
