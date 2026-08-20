@@ -3020,6 +3020,7 @@ input, textarea { font: inherit; }
   color: rgba(255,255,255,0.62);
   max-width: 66ch;
 }
+.ws-hero-lede a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
 .ws-hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
 .ws-body { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem); }
 
