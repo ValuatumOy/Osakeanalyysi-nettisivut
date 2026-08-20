@@ -71,7 +71,7 @@ async function sendEmail(message, label) {
 // ── Existing report: deliver PDF link ────────────────────────────────────────
 async function sendReportEmail(toEmail, report) {
   const orderLink = report.orderUrl
-    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">This order includes report revisions — request one &rarr;</a></p>`
+    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Request revision &rarr;</a></p>`
     : '';
 
   await sendEmail({
