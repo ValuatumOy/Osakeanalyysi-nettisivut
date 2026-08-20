@@ -365,7 +365,7 @@ function buyGate(d, cat) {
             <h2 style="color:white; margin-top:0;">Unlock the full ${esc(shortName(d.companyName))} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.${price ? ` Instant download for ${price}.` : ''}</p>
             <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg">${price ? `Buy full report — ${price}` : 'Get the full report'}</a>
+              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg" data-revisable="${cat?.revisable ? '1' : ''}">${price ? `Buy full report — ${price}` : 'Get the full report'}</a>
               <a href="/pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white;">See pricing</a>
             </div>
           </div>
@@ -381,8 +381,8 @@ function generateGate(d) {
             <h2 style="color:white; margin-top:0;">Generate the ${esc(sn)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" onclick="return false;" class="btn btn-gold btn-lg">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within 1 business day</span>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
         </section>`;
@@ -724,7 +724,7 @@ export function renderCards(companies, companyPageCatalog) {
     const price = isFree ? 'Free' : `€${Number(cat.price || 20).toFixed(0)}`;
     const primaryCta = isFree
       ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>`
-      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}">Buy ready report</button>`;
+      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
     return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>
             <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>

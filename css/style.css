@@ -2646,6 +2646,48 @@ input, textarea { font: inherit; }
 .modal-skip button:hover { color: var(--charcoal); }
 
 /* =====================================================
+   25b. REVISIONS CHOICE MODAL
+===================================================== */
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.modal-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: border-color var(--trs-md), background var(--trs-md);
+}
+.modal-option:hover { border-color: var(--green); }
+.modal-option.selected {
+  border-color: var(--green);
+  background: var(--green-mist);
+}
+.modal-option input[type="radio"] { margin-top: 0.2rem; flex-shrink: 0; cursor: pointer; }
+.modal-option-text { flex: 1; }
+.modal-option-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--charcoal);
+}
+.modal-option-desc {
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--gray-steel);
+  margin-top: 0.2rem;
+  line-height: 1.5;
+}
+
+/* =====================================================
    26. DISCLAIMER PAGE
 ===================================================== */
 .disclaimer-page {

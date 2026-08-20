@@ -989,7 +989,7 @@
         if (input) input.focus();
       }, 350);
     }
-    async function buyReadyReport(reportId, button) {
+    async function buyReadyReport(reportId, button, withRevisions) {
       if (button && button.dataset.loading === '1') return;
       const old = button ? button.textContent : '';
       if (button) { button.dataset.loading = '1'; button.textContent = 'Redirecting...'; button.disabled = true; }
@@ -997,7 +997,7 @@
         const res = await fetch('/api/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reportId: reportId }),
+          body: JSON.stringify({ reportId: reportId, withRevisions: Boolean(withRevisions) }),
         });
         const data = await res.json();
         if (data && data.url) { window.location.href = data.url; return; }
@@ -1044,11 +1044,29 @@
         });
       });
       document.querySelectorAll('[data-buy-report]').forEach(function(btn) {
-        btn.addEventListener('click', function() { buyReadyReport(btn.getAttribute('data-buy-report'), btn); });
+        btn.addEventListener('click', function() {
+          const reportId = btn.getAttribute('data-buy-report');
+          const revisable = btn.getAttribute('data-revisable') === '1';
+          const choice = getRevisionsChoice('ready', revisable);
+          if (choice.available) {
+            openRevisionsModal(choice, function(withRevisions) { buyReadyReport(reportId, btn, withRevisions); });
+          } else {
+            buyReadyReport(reportId, btn, false);
+          }
+        });
       });
       document.querySelectorAll('[data-generate-company]').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          generateNewReport(btn.getAttribute('data-generate-company'), btn.getAttribute('data-generate-ticker'), btn);
+          const company = btn.getAttribute('data-generate-company');
+          const ticker = btn.getAttribute('data-generate-ticker');
+          const choice = getRevisionsChoice('fresh');
+          if (choice.available) {
+            openRevisionsModal(choice, function(withRevisions) {
+              generateNewReport(company, ticker, btn, { withRevisions: withRevisions });
+            });
+          } else {
+            generateNewReport(company, ticker, btn);
+          }
         });
       });
     }

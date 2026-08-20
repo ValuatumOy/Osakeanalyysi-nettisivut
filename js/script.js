@@ -513,6 +513,98 @@ function trackEvent(event, props = {}) {
   trackEvent('preview_viewed', { ticker: company.ticker, exchange: company.exchange });
 })();
 
+// ── Revisions choice modal (shared by every "buy report" entry point below) ──
+// Lets a buyer pick standard vs. "+ Revisions" before checkout starts. Built
+// lazily as a single reused overlay, since it needs to appear on 1000+
+// generated pages with per-trigger pricing rather than being baked into
+// every page's markup.
+function formatEurAmount(cents) {
+  var amount = cents / 100;
+  return '€' + amount.toFixed(Number.isInteger(amount) ? 0 : 2);
+}
+
+function getRevisionsChoice(kind, revisable) {
+  var pricing = window.SITE_PUBLIC_PRICING;
+  var unavailable = { available: false };
+  if (!pricing || !pricing.revisionsEnabled) return unavailable;
+  if (kind === 'ready' && revisable === false) return unavailable;
+  var base = kind === 'fresh' ? pricing.fresh : pricing.ready;
+  var tier = kind === 'fresh' ? pricing.freshRevisions : pricing.readyRevisions;
+  if (!base || !tier) return unavailable;
+  return {
+    available: true,
+    basePrice: base.unitAmount,
+    revisionsPrice: tier.unitAmount,
+    revisionsCount: pricing.revisionsIncluded || 3,
+  };
+}
+
+function closeRevisionsModal() {
+  var modal = document.getElementById('revisionsModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openRevisionsModal(choice, onChoose) {
+  var modal = document.getElementById('revisionsModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.id = 'revisionsModal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'revisionsModalTitle');
+    modal.innerHTML =
+      '<div class="modal">' +
+        '<div class="modal-close" id="revisionsModalClose">&times;</div>' +
+        '<div class="modal-title" id="revisionsModalTitle">Choose your report</div>' +
+        '<div class="modal-body">Buy the standard report, or add report revisions now.</div>' +
+        '<div class="modal-options">' +
+          '<label class="modal-option"><input type="radio" name="revisionsChoice" value="0">' +
+            '<span class="modal-option-text"><span class="modal-option-title"><span>Standard</span><span id="revisionsModalBasePrice"></span></span>' +
+            '<span class="modal-option-desc">The complete AI equity report, delivered by email.</span></span></label>' +
+          '<label class="modal-option"><input type="radio" name="revisionsChoice" value="1">' +
+            '<span class="modal-option-text"><span class="modal-option-title"><span>+ Revisions</span><span id="revisionsModalRevisionsPrice"></span></span>' +
+            '<span class="modal-option-desc" id="revisionsModalRevisionsDesc"></span></span></label>' +
+        '</div>' +
+        '<button type="button" class="btn btn-primary modal-submit" id="revisionsModalContinue">Continue to checkout</button>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeRevisionsModal(); });
+    modal.querySelector('#revisionsModalClose').addEventListener('click', closeRevisionsModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeRevisionsModal();
+    });
+    modal.querySelectorAll('.modal-option').forEach(function (option) {
+      option.addEventListener('click', function () {
+        modal.querySelectorAll('.modal-option').forEach(function (o) { o.classList.remove('selected'); });
+        option.classList.add('selected');
+      });
+    });
+  }
+
+  modal.querySelector('#revisionsModalBasePrice').textContent = formatEurAmount(choice.basePrice);
+  modal.querySelector('#revisionsModalRevisionsPrice').textContent = formatEurAmount(choice.revisionsPrice);
+  modal.querySelector('#revisionsModalRevisionsDesc').textContent =
+    'Includes ' + choice.revisionsCount + ' report-revision requests after delivery. Describe a change in plain ' +
+    'language and we\'ll update the forecast and regenerate the report.';
+
+  modal.querySelectorAll('.modal-option').forEach(function (option, i) {
+    option.classList.toggle('selected', i === 0);
+    option.querySelector('input').checked = i === 0;
+  });
+
+  // Overwriting .onclick (rather than addEventListener) keeps this a single
+  // handler even though the same modal element is reused across many opens.
+  modal.querySelector('#revisionsModalContinue').onclick = function () {
+    var checked = modal.querySelector('input[name="revisionsChoice"]:checked');
+    closeRevisionsModal();
+    onChoose(checked && checked.value === '1');
+  };
+
+  modal.classList.add('open');
+}
+
 // ── "Generate fresh report" button (generated company/coverage pages) ─────────
 // Entry point into the fresh-report pipeline. The button carries the covered
 // company's real SYMBOL.EXCHANGE ticker; exchange/country are derived server-side
@@ -522,81 +614,100 @@ function trackEvent(event, props = {}) {
   var buttons = document.querySelectorAll('[data-generate-report]');
   if (!buttons.length) return;
 
+  async function submitFreshReport(btn, company, ticker, withRevisions) {
+    var label = btn.textContent;
+    btn.dataset.loading = '1';
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.7';
+    btn.textContent = 'Redirecting to secure checkout...';
+    trackEvent('fresh_report_order_started', { company: company, ticker: ticker, source: 'coverage', withRevisions: withRevisions });
+
+    try {
+      var res = await fetch('/api/create-fresh-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ company: company, ticker: ticker, source: 'coverage', withRevisions: withRevisions }),
+      });
+      var data = await res.json();
+      if (data && data.url) {
+        trackEvent('stripe_checkout_clicked', { type: 'fresh', company: company, source: 'coverage' });
+        window.location.href = data.url;
+        return;
+      }
+    } catch (err) { /* fall through to reset below */ }
+
+    btn.dataset.loading = '';
+    btn.style.pointerEvents = '';
+    btn.style.opacity = '';
+    btn.textContent = label;
+    alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+  }
+
   buttons.forEach(function (btn) {
-    btn.addEventListener('click', async function (e) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       var company = btn.getAttribute('data-company') || '';
       var ticker = btn.getAttribute('data-ticker') || '';
       if (!company || !ticker) return;
       if (btn.dataset.loading === '1') return;
 
-      var label = btn.textContent;
-      btn.dataset.loading = '1';
-      btn.style.pointerEvents = 'none';
-      btn.style.opacity = '0.7';
-      btn.textContent = 'Redirecting to secure checkout...';
-      trackEvent('fresh_report_order_started', { company: company, ticker: ticker, source: 'coverage' });
-
-      try {
-        var res = await fetch('/api/create-fresh-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ company: company, ticker: ticker, source: 'coverage' }),
-        });
-        var data = await res.json();
-        if (data && data.url) {
-          trackEvent('stripe_checkout_clicked', { type: 'fresh', company: company, source: 'coverage' });
-          window.location.href = data.url;
-          return;
-        }
-      } catch (err) { /* fall through to reset below */ }
-
-      btn.dataset.loading = '';
-      btn.style.pointerEvents = '';
-      btn.style.opacity = '';
-      btn.textContent = label;
-      alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+      var choice = getRevisionsChoice('fresh');
+      if (choice.available) {
+        openRevisionsModal(choice, function (withRevisions) { submitFreshReport(btn, company, ticker, withRevisions); });
+      } else {
+        submitFreshReport(btn, company, ticker, false);
+      }
     });
   });
 })();
 
 // Direct Stripe checkout entry points on generated company pages.
+async function submitReadyReportCheckout(link, reportId, withRevisions) {
+  var label = link.textContent;
+  link.dataset.loading = '1';
+  link.style.pointerEvents = 'none';
+  link.style.opacity = '0.7';
+  link.textContent = 'Redirecting to secure checkout...';
+  trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page', withRevisions: withRevisions });
+
+  try {
+    var res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reportId: reportId, withRevisions: withRevisions }),
+    });
+    var data = await res.json();
+    if (data && data.url) {
+      trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
+      window.location.href = data.url;
+      return;
+    }
+  } catch (err) { /* fall through to reset below */ }
+
+  link.dataset.loading = '';
+  link.style.pointerEvents = '';
+  link.style.opacity = '';
+  link.textContent = label;
+  alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+}
+
 function bindReadyReportCheckoutLink(link) {
   var href = link.getAttribute('href') || '';
   var match = href.match(/#report-([^#?&]+)/);
   if (!match) return;
   var reportId = match[1];
+  var revisable = link.getAttribute('data-revisable') === '1';
 
-  link.addEventListener('click', async function (e) {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
     if (link.dataset.loading === '1') return;
 
-    var label = link.textContent;
-    link.dataset.loading = '1';
-    link.style.pointerEvents = 'none';
-    link.style.opacity = '0.7';
-    link.textContent = 'Redirecting to secure checkout...';
-    trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page' });
-
-    try {
-      var res = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reportId: reportId }),
-      });
-      var data = await res.json();
-      if (data && data.url) {
-        trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });
-        window.location.href = data.url;
-        return;
-      }
-    } catch (err) { /* fall through to reset below */ }
-
-    link.dataset.loading = '';
-    link.style.pointerEvents = '';
-    link.style.opacity = '';
-    link.textContent = label;
-    alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    var choice = getRevisionsChoice('ready', revisable);
+    if (choice.available) {
+      openRevisionsModal(choice, function (withRevisions) { submitReadyReportCheckout(link, reportId, withRevisions); });
+    } else {
+      submitReadyReportCheckout(link, reportId, false);
+    }
   });
 }
 
