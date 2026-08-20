@@ -231,6 +231,32 @@ function buildSubmitTransact({
 // waiting for the calendar (Esa, 17.8.2026 — a good analyst is free labour and
 // should not be throttled). Unconditional on purpose: it must work whether the
 // analyst is blocked by the obligation, by the month's slot, or by both.
+// A generation the member paid for. It touches neither the monthly flag nor
+// the publish obligation — those govern the free run, and a bought report is
+// private and owes nothing. The PUB row is what makes it theirs: the member
+// area lists it, and the revision workspace checks ownership through it.
+// Idempotent, because the same Stripe receipt may be presented twice.
+function buildPaidGenerationTransact({ table, userId, now, genId }) {
+  return {
+    TransactItems: [
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            paid: true,
+            reservedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 // A generation the engine could not deliver must not cost the member their
 // month. Two steps, because they answer different questions.
 //
@@ -543,6 +569,7 @@ module.exports = {
   buildSubmitTransact,
   buildTakedownTransact,
   buildGrantGenerationTransact,
+  buildPaidGenerationTransact,
   buildFailPublicationTransact,
   buildReleaseReservationTransact,
   buildRoleChangeTransact,

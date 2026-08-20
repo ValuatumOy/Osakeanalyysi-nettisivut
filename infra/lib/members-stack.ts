@@ -194,6 +194,8 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/review'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
+      // A bought generation: the Stripe receipt becomes a running order.
+      [apigwv2.HttpMethod.POST, '/generations/fresh'],
       [apigwv2.HttpMethod.GET, '/generations'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
       // The order page's revision workspace, for a member's own run.
