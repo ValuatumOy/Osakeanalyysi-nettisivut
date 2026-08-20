@@ -473,7 +473,7 @@
       IMPORTING: 'Refreshing the company’s financial data…',
       RENDERING: 'Writing the report. This typically takes 20 to 40 minutes.',
       DELIVERED: 'Done, the report is ready.',
-      FAILED: 'Generation failed.',
+      FAILED: 'Generation failed. Your monthly generation has been given back.',
     };
 
     // A generation is one a month, so the company must not hinge on the member
@@ -546,6 +546,11 @@
       const { status, data } = await api('GET', '/generations/' + genId);
       if (status !== 200) { out.textContent = ''; return; }
       out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      // A run the engine could not deliver hands the month back automatically.
+      if (data.generationRestored) {
+        notice('ok', 'That generation failed, so your monthly generation is available again.');
+        loadMe();
+      }
       if (data.url) {
         const link = document.createElement('a');
         link.href = data.url;

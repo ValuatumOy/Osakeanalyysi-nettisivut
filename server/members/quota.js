@@ -231,6 +231,49 @@ function buildSubmitTransact({
 // waiting for the calendar (Esa, 17.8.2026 — a good analyst is free labour and
 // should not be throttled). Unconditional on purpose: it must work whether the
 // analyst is blocked by the obligation, by the month's slot, or by both.
+// A generation the engine could not deliver must not cost the member their
+// month. Exactly-once by construction: the PUB row moves out of 'generating',
+// and every clause names this genId, so a later run's reservation survives.
+// The USAGE row is the month the generation was RESERVED in — a run that
+// starts in August and fails in September must clear August's flag.
+function buildRestoreFailedGenerationTransact({ table, userId, genId, reservedAt, now }) {
+  const reservedMonth = monthKey(reservedAt ? new Date(reservedAt) : now);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+          UpdateExpression: 'SET #status = :failed, failedAt = :at',
+          ConditionExpression: '#status = :generating',
+          ExpressionAttributeNames: { '#status': 'status' },
+          ExpressionAttributeValues: { ':failed': 'failed', ':generating': 'generating', ':at': now.toISOString() },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          // A private generation (reader, Investor Plus) carries no obligation,
+          // so "no obligation" is a pass, not a reason to abort the restore.
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'REMOVE openObligationId',
+          ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${reservedMonth}` },
+          UpdateExpression: 'REMOVE genReserved, genId',
+          ConditionExpression: 'genId = :genId',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+    ],
+  };
+}
+
 function buildGrantGenerationTransact({ table, userId, now }) {
   return {
     TransactItems: [
@@ -486,6 +529,7 @@ module.exports = {
   buildSubmitTransact,
   buildTakedownTransact,
   buildGrantGenerationTransact,
+  buildRestoreFailedGenerationTransact,
   buildRoleChangeTransact,
   buildOpenAnalysisTransact,
   buildReviewTransact,
