@@ -355,6 +355,29 @@ async function postReportOpen(event) {
   return json(402, { error: 'Subscription required' });
 }
 
+// A typo costs a full engine run, and on the paid path it would take money for
+// a company we cannot generate. Resolve against the same source the site's
+// fresh-report search uses and work from the canonical match.
+async function resolveGenerationCompany(requestedTicker) {
+  let results;
+  try {
+    results = await searchCompanies(requestedTicker);
+  } catch (err) {
+    console.error('generation company lookup failed:', err.message);
+    return { error: json(503, { error: 'Company lookup is unavailable right now — please try again shortly' }) };
+  }
+  const match = results.find(item => item.ticker.toUpperCase() === requestedTicker)
+    || results.find(item => item.ticker.toUpperCase().split('.')[0] === requestedTicker);
+  if (!match) {
+    return {
+      error: json(400, {
+        error: `We couldn't find "${requestedTicker}". Use the ticker as listed, e.g. NOKIA.HE or AMD.`,
+      }),
+    };
+  }
+  return { match };
+}
+
 // POST /generations/free — reserve the analyst's monthly free generation.
 // The real engine run is wired later; the reservation + obligation is the point.
 // Analysts get a free generation against a publish obligation; Investor Plus
@@ -380,23 +403,9 @@ async function postGenerationsFree(event) {
   if (!requestedTicker) return json(400, { error: 'ticker is required' });
   if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
 
-  // A typo here costs a full engine run, so resolve the company against the
-  // same source the paid fresh-report flow searches, and generate for the
-  // canonical match rather than whatever was typed.
-  let match;
-  try {
-    const results = await searchCompanies(requestedTicker);
-    match = results.find(item => item.ticker.toUpperCase() === requestedTicker)
-      || results.find(item => item.ticker.toUpperCase().split('.')[0] === requestedTicker);
-  } catch (err) {
-    console.error('generation company lookup failed:', err.message);
-    return json(503, { error: 'Company lookup is unavailable right now — please try again shortly' });
-  }
-  if (!match) {
-    return json(400, {
-      error: `We couldn't find "${requestedTicker}". Use the ticker as listed, e.g. NOKIA.HE or AMD.`,
-    });
-  }
+  const resolved = await resolveGenerationCompany(requestedTicker);
+  if (resolved.error) return resolved.error;
+  const match = resolved.match;
   const ticker = match.ticker;
 
   // Reserve the quota slot first: a failed reservation must never start a
@@ -442,6 +451,100 @@ async function postGenerationsFree(event) {
   return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
 }
 
+// A generation the engine could not deliver gives the month back. Only a run
+// that never delivered: a failed REVISION drives an already-delivered order to
+// FAILED, and that member is holding a finished report — they owe the
+// publication and must not also get a new generation.
+async function restoreIfFailed({ profile, genId, order, publication, now }) {
+  if (!order || order.status !== ordersStore.STATUS.FAILED) return false;
+  if (!publication || publication.status !== 'generating') return false;
+  if (order.originalPdfFileName || order.deliveredEmailAt) return false;
+
+  // Close the run out first: it is over regardless of who holds the month now.
+  await store.runTransact(quota.buildFailPublicationTransact({
+    table: store.table(), userId: profile.userId, genId, now,
+  }));
+
+  // Then hand the month back, but only while this run still holds it. An admin
+  // who already credited the member by hand, or a newer generation, owns those
+  // rows now and must not be overwritten.
+  const released = await store.runTransact(quota.buildReleaseReservationTransact({
+    table: store.table(),
+    userId: profile.userId,
+    genId,
+    reservedAt: publication.reservedAt,
+    now,
+  }));
+  if (released) {
+    await store.audit(profile.userId, 'generation-restored', { genId, reason: order.error || 'generation failed' });
+  }
+  return released;
+}
+
+// POST /generations/fresh {sessionId} — turn a paid checkout into a running
+// generation. The Stripe session is the receipt: it names the payer, the
+// company and the fact that money changed hands, so nothing here trusts the
+// caller for any of it. Idempotent by construction — the session id IS the
+// order id, and both the order and the PUB row refuse to be created twice.
+async function postGenerationFresh(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const sessionId = String(body.sessionId || '').trim();
+  if (!sessionId) return json(400, { error: 'sessionId is required' });
+
+  let session;
+  try {
+    session = await stripe().checkout.sessions.retrieve(sessionId);
+  } catch (err) {
+    return json(404, { error: 'Unknown purchase' });
+  }
+  if (session.payment_status !== 'paid') return json(402, { error: 'Payment not completed' });
+  if (session.metadata?.isFresh !== 'true') return json(404, { error: 'Unknown purchase' });
+  // Someone else's receipt buys them a report, not you one.
+  if (session.metadata?.userId !== profile.userId) return json(403, { error: 'This purchase belongs to another member' });
+  if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  const genId = session.id;
+  const existing = await store.getPublication(profile.userId, genId);
+  if (!existing) {
+    await store.runTransact(quota.buildPaidGenerationTransact({
+      table: store.table(), userId: profile.userId, now, genId,
+    }));
+  }
+
+  const order = await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: session.metadata.company || '',
+    ticker: session.metadata.ticker || '',
+    exchange: session.metadata.exchange || '',
+    visibility: 'private',
+    revisionsAllowed: limitsFor(profile).revisions,
+  });
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  if (!existing) {
+    await store.audit(profile.userId, 'generation-purchased', {
+      genId, ticker: session.metadata.ticker || '', amountTotal: session.amount_total, currency: session.currency,
+    });
+  }
+  return json(200, {
+    genId,
+    status: order.status,
+    company: order.companyName,
+    ticker: order.ticker,
+    alreadyCollected: Boolean(existing),
+  });
+}
+
 // GET /generations/{genId} — order progress, and the entitlement handover once
 // the reconciler has delivered the PDF.
 async function getGeneration(event) {
@@ -470,6 +573,7 @@ async function getGeneration(event) {
     // The member owns what they generated — no quota, no entitlement row.
     Object.assign(result, await presignGenerated(order.pdfFileName));
   }
+  result.generationRestored = await restoreIfFailed({ profile, genId, order, publication, now });
   return json(200, result);
 }
 
@@ -593,9 +697,12 @@ async function listGenerations(event) {
   const rows = await Promise.all(pubs.map(async (pub) => {
     const genId = String(pub.sk || '').replace(/^PUB#/, '');
     const order = await ordersStore.get(genId);
+    // Seeing the list is enough to get a failed month back — the member does
+    // not have to open the run that broke.
+    const restored = await restoreIfFailed({ profile, genId, order, publication: pub, now });
     return {
       genId,
-      publication: pub.status,
+      publication: restored ? 'failed' : pub.status,
       companyId: pub.companyId || order?.ticker || '',
       companyName: order?.companyName || pub.companyName || '',
       startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
@@ -768,6 +875,14 @@ async function postFreshCheckout(event) {
   if (!body) return json(400, { error: 'Invalid JSON body' });
   const company = String(body.company || '').trim();
   if (!company) return json(400, { error: 'company is required' });
+  const requestedTicker = String(body.ticker || '').trim().toUpperCase();
+  if (!requestedTicker) return json(400, { error: 'ticker is required' });
+
+  // Resolve before charging: money must never be taken for a company the
+  // engine cannot be pointed at.
+  const resolved = await resolveGenerationCompany(requestedTicker);
+  if (resolved.error) return resolved.error;
+  const match = resolved.match;
 
   const isMember = activeTier(profile) !== 'none';
   const priceId = memberPrices().fresh?.[isMember ? 'member' : 'list'];
@@ -782,12 +897,15 @@ async function postFreshCheckout(event) {
     metadata: {
       isFresh: 'true',
       userId: profile.userId,
-      company,
-      ticker: String(body.ticker || '').toUpperCase(),
+      company: match.companyName || company,
+      ticker: match.ticker,
       exchange: String(body.exchange || ''),
       memberPrice: String(isMember),
     },
-    success_url: `${auth.frontendUrl(body.returnTo)}#fresh=ordered`,
+    // The session id is the receipt the member comes back with: POST
+    // /generations/fresh turns it into the order. A payment-mode checkout is
+    // not a subscription, so the webhook deliberately ignores it.
+    success_url: `${auth.frontendUrl(body.returnTo)}#fresh={CHECKOUT_SESSION_ID}`,
     cancel_url: `${auth.frontendUrl(body.returnTo)}#fresh=cancel`,
   });
   await store.audit(profile.userId, 'fresh-checkout', { company, memberPrice: isMember });
@@ -1352,6 +1470,7 @@ const AUTHED_ROUTES = {
   'POST /analyses/{genId}/review': postAnalysisReview,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
+  'POST /generations/fresh': postGenerationFresh,
   'GET /generations': listGenerations,
   'GET /generations/{genId}': getGeneration,
   'GET /generations/{genId}/order': getGenerationOrder,

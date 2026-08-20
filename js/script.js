@@ -40,6 +40,30 @@ window.addEventListener('pageshow', function (event) {
     .forEach(link => { link.textContent = 'Member area'; });
 })();
 
+// ── Button press ────────────────────────────────────
+// A ripple from where the button was actually pressed. Delegated, so it covers
+// every button on the page including the ones rendered later.
+(function initButtonRipple() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('pointerdown', (event) => {
+    if (!event.isPrimary) return;
+    const button = event.target.closest('.btn, .nav-cta, .search-btn');
+    if (!button || button.disabled) return;
+    const box = button.getBoundingClientRect();
+    const x = event.clientX - box.left;
+    const y = event.clientY - box.top;
+    // Reach the farthest corner, so the ripple always fills the button.
+    const size = Math.hypot(Math.max(x, box.width - x), Math.max(y, box.height - y)) * 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'btn-ripple';
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (x - size / 2) + 'px';
+    ripple.style.top = (y - size / 2) + 'px';
+    ripple.addEventListener('animationend', () => ripple.remove());
+    button.appendChild(ripple);
+  });
+})();
+
 // ── Mobile menu ─────────────────────────────────────
 (function initMobileMenu() {
   const btn = document.querySelector('.nav-hamburger');

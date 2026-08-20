@@ -164,7 +164,7 @@
                 <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
                   <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
                 </label>
-                <button class="btn btn-gold" onclick="submitReview()">Submit review</button>
+                <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
               </div>
             </div>
 
@@ -208,9 +208,29 @@
                   <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
                     <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
                   </label>
-                  <button class="btn btn-gold" onclick="submitGen()">Publish report</button>
+                  <button class="btn btn-primary" onclick="submitGen()">Publish report</button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="buyGenCard">
+            <div class="ws-section-head">
+              <h2>Another report, on demand</h2>
+              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time — it stays private, owes no publication, and carries the same revision rounds as your monthly one.</p>
+            </div>
+            <div class="ws-panel">
+              <div class="form-row">
+                <label class="field" style="position:relative;"><span>Company</span>
+                  <input id="buyCompany" class="input" placeholder="Start typing a company, e.g. Airbus" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="buySuggest">
+                  <div class="search-autocomplete" id="buySuggest" role="listbox"></div>
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="buyTicker" class="input" placeholder="picked for you">
+                </label>
+                <button class="btn btn-primary" id="buyGenBtn" onclick="buyGeneration()">Buy a generation</button>
+              </div>
+              <p class="muted" id="buyGenPrice" style="margin-top:1rem;"></p>
             </div>
           </div>
 
@@ -315,6 +335,9 @@
       history.replaceState(null, '', location.pathname);
     }
     if (frag.get('checkout') === 'success') { notice('ok', 'Subscription active in a few seconds. Refresh if it does not show yet.'); history.replaceState(null, '', location.pathname); }
+    const freshReceipt = frag.get('fresh');
+    if (freshReceipt) { history.replaceState(null, '', location.pathname); }
+    if (freshReceipt === 'cancel') { notice('ok', 'Purchase cancelled — nothing was charged.'); }
 
     const token = () => localStorage.memberToken || '';
 
@@ -400,6 +423,14 @@
         '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>').join('');
 
       document.getElementById('plansCard').hidden = data.tier !== 'none';
+      // The price is the live subscription status, not a number the page picked.
+      document.getElementById('buyGenPrice').textContent = data.tier === 'none'
+        ? '€' + data.freshReportPrice + ' per report. Investor and Investor Plus members pay €40.'
+        : '€' + data.freshReportPrice + ' per report, your member price.';
+      if (freshReceipt && freshReceipt !== 'cancel' && !window._freshCollected) {
+        window._freshCollected = true;
+        collectFreshPurchase(freshReceipt);
+      }
 
       // Analysts owe a publication for their free run; Investor Plus members
       // get a private one with no strings attached.
@@ -473,17 +504,17 @@
       IMPORTING: 'Refreshing the company’s financial data…',
       RENDERING: 'Writing the report. This typically takes 20 to 40 minutes.',
       DELIVERED: 'Done, the report is ready.',
-      FAILED: 'Generation failed.',
+      FAILED: 'Generation failed. Your monthly generation has been given back.',
     };
 
     // A generation is one a month, so the company must not hinge on the member
     // remembering an exact ticker. Same search the paid fresh-report flow uses,
     // and the same one the server resolves against — pick a row and the ticker
     // arrives in the exact form the engine wants.
-    (function initGenCompanySearch() {
-      const input = document.getElementById('genCompany');
-      const list = document.getElementById('genSuggest');
-      const ticker = document.getElementById('genTicker');
+    function bindCompanySearch(inputId, listId, tickerId) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      const ticker = document.getElementById(tickerId);
       let timer = null;
       let sequence = 0;
 
@@ -522,7 +553,9 @@
       document.addEventListener('click', (e) => {
         if (e.target !== input && !list.contains(e.target)) close();
       });
-    })();
+    }
+    bindCompanySearch('genCompany', 'genSuggest', 'genTicker');
+    bindCompanySearch('buyCompany', 'buySuggest', 'buyTicker');
 
     async function reserveGen() {
       const company = document.getElementById('genCompany').value.trim();
@@ -546,6 +579,11 @@
       const { status, data } = await api('GET', '/generations/' + genId);
       if (status !== 200) { out.textContent = ''; return; }
       out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      // A run the engine could not deliver hands the month back automatically.
+      if (data.generationRestored) {
+        notice('ok', 'That generation failed, so your monthly generation is available again.');
+        loadMe();
+      }
       if (data.url) {
         const link = document.createElement('a');
         link.href = data.url;
@@ -581,7 +619,7 @@
     function workspaceLink(genId, label) {
       const link = document.createElement('a');
       link.href = workspaceUrl(genId);
-      link.className = 'btn btn-gold btn-sm';
+      link.className = 'btn btn-primary btn-sm';
       link.style.marginLeft = '0.6rem';
       link.textContent = label;
       return link;
@@ -614,6 +652,36 @@
         + (rows.join('') || '<tr><td colspan="6" class="muted">You have not generated a report yet.</td></tr>');
     }
 
+    async function buyGeneration() {
+      const company = document.getElementById('buyCompany').value.trim();
+      const ticker = document.getElementById('buyTicker').value.trim();
+      if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
+      const button = document.getElementById('buyGenBtn');
+      button.disabled = true;
+      const { status, data } = await api('POST', '/billing/fresh-checkout', { company, ticker, returnTo: RETURN_TO });
+      button.disabled = false;
+      if (status !== 200 || !data?.url) {
+        notice('err', (data && data.error) || ('Could not start the purchase (' + status + ')'));
+        return;
+      }
+      location.href = data.url;
+    }
+
+    // Coming back from Stripe: the session id in the URL is the receipt, and it
+    // is what turns the payment into a running generation. Safe to repeat — the
+    // server keys the order on that same id.
+    async function collectFreshPurchase(sessionId) {
+      const { status, data } = await api('POST', '/generations/fresh', { sessionId });
+      if (status !== 200) {
+        notice('err', (data && data.error) || 'We could not start the report you paid for. Contact contact26@valuatum.com with this page open.');
+        return;
+      }
+      notice('ok', 'Paid. Your report on ' + data.company + ' is generating — it is emailed when ready, and it is in your runs below.');
+      localStorage.activeGenId = data.genId;
+      loadGenerations();
+      pollGeneration(data.genId);
+    }
+
     async function stepDown() {
       if (!confirm('Continue as a reader? You keep the LinkedIn login and a smaller allowance, but you no longer publish.')) return;
       const { status, data } = await api('POST', '/me/role', { role: 'reader' });
@@ -642,7 +710,7 @@
         const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
         const lock = blocked && !isOpenOne && !a.publicFree;
         const button = isOpenOne
-          ? '<button class="btn btn-gold btn-sm" onclick="focusReview()">Review this one</button>'
+          ? '<button class="btn btn-primary btn-sm" onclick="focusReview()">Review this one</button>'
           : lock
             ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
             : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
