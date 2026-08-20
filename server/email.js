@@ -117,7 +117,7 @@ async function sendReportEmail(toEmail, report) {
 // ── "+ Revisions" order: a requested forecast revision was delivered ────────
 async function sendReportRevisedEmail(toEmail, report) {
   const orderLink = report.orderUrl
-    ? `<p style="margin:16px 0 0;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Request another revision &rarr;</a></p>`
+    ? `<p style="margin:16px 0 0;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">View revision summary or request another &rarr;</a></p>`
     : '';
   await sendEmail({
     from: FROM,

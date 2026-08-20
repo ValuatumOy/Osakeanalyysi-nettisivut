@@ -90,6 +90,10 @@ function create(input, statePath = STATE_PATH) {
     jobId: input.jobId || null,
     importStatus: null, // SUCCESS | SKIPPED | FAILED (Task E FMP import)
     pdfFileName: input.pdfFileName || null,
+    // Set once, on first delivery, and never touched again — pdfFileName itself
+    // gets overwritten by every later revision, so this is the only place the
+    // original PDF's name survives for a re-download link. See reconciler.js deliver().
+    originalPdfFileName: null,
     revisionsAllowed: Number(input.revisionsAllowed || 0),
     revisionsUsed: 0,
     // The in-flight revision's engine job id, distinct from `jobId` (the last
@@ -102,7 +106,7 @@ function create(input, statePath = STATE_PATH) {
     // cleared as soon as it's submitted to the engine).
     activeRevisionComment: null,
     // Delivered revisions, oldest first; v1 (the original delivery) is never
-    // appended here — see server/reconciler.js deliverRevision.
+    // appended here — see originalPdfFileName above instead.
     revisionHistory: [],
     revisionError: null,
     error: null,

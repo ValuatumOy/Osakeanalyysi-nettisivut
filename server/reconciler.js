@@ -263,7 +263,11 @@ async function deliver(order, job) {
 
   // Mark DELIVERED before the admin FYI: the buyer email already went out, and
   // DELIVERED removes the order from listPending so it is never re-processed.
-  await orders.update(order.id, { status: orders.STATUS.DELIVERED, pdfFileName, error: null });
+  // originalPdfFileName is stamped once here and never overwritten by a later
+  // revision, so the original PDF stays downloadable after pdfFileName moves on.
+  await orders.update(order.id, {
+    status: orders.STATUS.DELIVERED, pdfFileName, originalPdfFileName: pdfFileName, error: null,
+  });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
 
   if (ADMIN_NOTIFY_ON_SUCCESS) {

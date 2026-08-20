@@ -325,6 +325,19 @@ async function getOrder(event) {
     })),
   );
 
+  // Once at least one revision exists, order.pdfUrl above points at the latest
+  // version — append the original as the oldest entry so it stays downloadable
+  // too. Orders that revised before originalPdfFileName existed have none; that
+  // original is unrecoverable, so it's simply omitted rather than shown broken.
+  if (payload.revisionHistory.length && order.originalPdfFileName) {
+    payload.revisionHistory.push({
+      version: 1,
+      original: true,
+      completedAt: order.deliveredEmailAt || null,
+      pdfUrl: await pdfStore.presignPdfDownload(order.originalPdfFileName),
+    });
+  }
+
   return json(200, payload, { 'cache-control': 'no-store' });
 }
 

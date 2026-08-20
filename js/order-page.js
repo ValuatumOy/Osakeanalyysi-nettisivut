@@ -282,17 +282,23 @@
     if (!list || !list.length) return '';
     let html = '<div class="revision-history"><div class="revision-history-title">Revision history</div>';
     list.forEach((entry, index) => {
+      const label = entry.original ? 'Original report' : 'Revision ' + escapeHtml(entry.version);
+      const date = formatDate(entry.completedAt);
       html += '<details class="revision-entry"' + (index === 0 ? ' open' : '') + '>';
       html += '<summary class="revision-entry-summary">'
-        + '<span><span class="revision-entry-label">Revision ' + escapeHtml(entry.version) + '</span>'
-        + ' <span class="revision-entry-date">' + escapeHtml(formatDate(entry.completedAt)) + '</span></span>';
+        + '<span><span class="revision-entry-label">' + label + '</span>'
+        + (date ? ' <span class="revision-entry-date">' + escapeHtml(date) + '</span>' : '') + '</span>';
       if (entry.pdfUrl) {
         html += '<a class="revision-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">Download this version</a>';
       }
       html += '</summary>';
       html += '<div class="revision-entry-body">';
-      if (entry.comments) html += '<p class="revision-comment">' + escapeHtml(entry.comments) + '</p>';
-      html += renderChangeMemo(entry.changes);
+      if (entry.original) {
+        html += '<p class="revision-no-memo">The report as originally delivered, before any revisions.</p>';
+      } else {
+        if (entry.comments) html += '<p class="revision-comment">' + escapeHtml(entry.comments) + '</p>';
+        html += renderChangeMemo(entry.changes);
+      }
       html += '</div></details>';
     });
     html += '</div>';
@@ -347,7 +353,6 @@
     }
 
     document.getElementById('revisionHistory').innerHTML = renderRevisionHistory(order.revisionHistory);
-    document.querySelector('.order-card').classList.toggle('has-history', Boolean(order.revisionHistory && order.revisionHistory.length));
 
     show('stateDelivered');
     stopPolling(); // nothing changes until the customer submits a revision
