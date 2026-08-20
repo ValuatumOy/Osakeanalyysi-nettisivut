@@ -31,6 +31,14 @@
     pollTimer = setTimeout(load, POLL_MS);
   }
 
+  // A 404 right after checkout does not mean the order is missing — it means
+  // the Stripe webhook that creates it hasn't landed yet (it's async and can
+  // trail the redirect by a few seconds). Give it a grace period of polls
+  // before treating "not found" as final, so a customer who clicks through
+  // immediately doesn't get stuck on a dead-end error.
+  const NOT_FOUND_GRACE_POLLS = 12; // ~96s at POLL_MS
+  let notFoundStreak = 0;
+
   // ── Revision history rendering ──────────────────────────────────────
   // Renders the engine's change memo (pdf-report-engine/docs/api.md, "The
   // change memo") for each delivered revision — ported from the equivalent
@@ -322,6 +330,18 @@
     pollAgain();
   }
 
+  // Shown while notFoundStreak is within its grace period: the order record
+  // may just not have landed yet.
+  function renderAwaitingOrder() {
+    hideAll();
+    document.getElementById('progressTitle').textContent = 'Confirming your order…';
+    document.getElementById('progressSub').textContent =
+      'Your payment is being confirmed. This usually only takes a few seconds.';
+    document.getElementById('progressMeta').textContent = '—';
+    show('stateProgress');
+    pollAgain();
+  }
+
   function renderDelivered(order) {
     hideAll();
     document.getElementById('deliveredMeta').textContent =
@@ -372,9 +392,14 @@
 
       if (!res.ok) {
         if (res.status === 402) return renderError('Payment has not completed yet. If you just paid, give it a moment and reload.');
-        if (res.status === 404) return renderError('We could not find this order. If you completed a payment, contact contact26@valuatum.com.');
+        if (res.status === 404) {
+          notFoundStreak += 1;
+          if (notFoundStreak <= NOT_FOUND_GRACE_POLLS) return renderAwaitingOrder();
+          return renderError('We could not find this order. If you completed a payment, contact contact26@valuatum.com.');
+        }
         return renderError(data.error || 'We could not load your order.');
       }
+      notFoundStreak = 0;
 
       if (data.status === 'FAILED') {
         return renderError(data.error || 'Report generation failed. Contact contact26@valuatum.com and we will sort it out.');
