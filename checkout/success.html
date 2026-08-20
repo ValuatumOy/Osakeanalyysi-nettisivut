@@ -117,6 +117,7 @@
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3l5 3 5-3M1 3v6h10V3H1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
           Also sent to <span id="customerEmail" style="font-weight:500;">your email</span>
         </p>
+        <a id="reportOrderLink" href="#" class="btn btn-outline-dark btn-full" style="display:none; margin-top:1rem;">Track order &amp; request a revision</a>
       </div>
 
       <!-- Success: fresh report (no immediate PDF) -->
@@ -135,6 +136,7 @@
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3l5 3 5-3M1 3v6h10V3H1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
           Confirmation sent to <span id="freshEmail" style="font-weight:500;">your email</span>
         </p>
+        <a id="freshOrderLink" href="#" class="btn btn-outline-dark btn-full" style="display:none;">Track your order</a>
       </div>
 
       <!-- Error state -->
@@ -245,6 +247,11 @@
         if (data.type === 'fresh') {
           document.getElementById('freshCompany').textContent = data.company || 'Your requested company';
           document.getElementById('freshEmail').textContent = data.email || 'your email';
+          if (data.orderUrl) {
+            const link = document.getElementById('freshOrderLink');
+            link.href = data.orderUrl;
+            link.style.display = '';
+          }
           show('stateFresh');
         } else {
           document.getElementById('reportName').textContent = data.reportName || '—';
@@ -254,6 +261,11 @@
           document.getElementById('downloadBtn').href =
             data.downloadUrl || ('/api/report-download?session_id=' + encodeURIComponent(sessionId));
           document.getElementById('customerEmail').textContent = data.email || 'your email';
+          if (data.orderUrl) {
+            const link = document.getElementById('reportOrderLink');
+            link.href = data.orderUrl;
+            link.style.display = '';
+          }
           show('stateReport');
         }
       } catch (err) {

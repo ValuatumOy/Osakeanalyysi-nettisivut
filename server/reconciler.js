@@ -5,6 +5,14 @@
 //
 //   NEW ─(FRESH_IMPORT_ENABLED)→ IMPORTING → RENDERING ─poll→ DELIVERED | FAILED
 //
+// A "+ Revisions" order also cycles DELIVERED ⇄ REVISING: a customer's
+// POST /revisions claims the order and stashes a free-text comment, the
+// worker submits it to the report engine's native revision endpoint
+// (scope: "estimates" — the engine interprets it and updates the forecast
+// itself, no local interpreter here) and polls the resulting job, same
+// shape as RENDERING. A ready-report "+ Revisions" order starts life already
+// DELIVERED — there is nothing to generate, only to revise later.
+//
 // It runs inside the always-on Express process (started from index.js). Because
 // a fresh FMP import can block up to ~5 minutes and rendering is polled across
 // ticks, a run in progress blocks the next tick from re-entering (single-flight).
@@ -72,6 +80,11 @@ const RESALE_ENABLED = boolEnv('RESALE_ENABLED', false);
 const RESALE_PRICE_EUR = floatEnv('RESALE_PRICE_EUR', null);
 
 const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '');
+
+function orderUrl(order) {
+  return `${SITE_URL}/order/index.html?session_id=${encodeURIComponent(order.id)}`;
+}
 
 // Yahoo/FMP-style exchange suffix on the ticker (SYMBOL.EXCHANGE) -> a short
 // market label (city, matching the existing Nordic style so the catalog market
@@ -146,6 +159,17 @@ async function fail(order, reason) {
   }
 }
 
+// Claim a free PDF file name for `pdf`, taking the next _2/_3 suffix on
+// collision. An atomic conditional create, so two workers racing on the same
+// base name can never overwrite each other.
+async function claimPdfFileName(fileBase, pdf) {
+  for (let attempt = 1; attempt <= 20; attempt += 1) {
+    const candidate = `${fileBase}${attempt === 1 ? '' : `_${attempt}`}.pdf`;
+    if (await pdfStore.putPdfIfAbsent(candidate, pdf)) return candidate;
+  }
+  throw new Error(`no free PDF name for ${fileBase} after 20 attempts`);
+}
+
 // DONE job -> download, publish (PDF + sidecar), email buyer, mark DELIVERED.
 async function deliver(order, job) {
   if (!pdfStore) {
@@ -178,14 +202,9 @@ async function deliver(order, job) {
   if (pdfFileName) {
     await pdfStore.putPdf(pdfFileName, pdf);
   } else {
-    for (let attempt = 1; attempt <= 20 && !pdfFileName; attempt += 1) {
-      const candidate = `${fileBase}${attempt === 1 ? '' : `_${attempt}`}.pdf`;
-      if (await pdfStore.putPdfIfAbsent(candidate, pdf)) pdfFileName = candidate;
-    }
-    if (!pdfFileName) {
-      // Transient by design: the order stays RENDERING and retries next tick.
-      throw new Error(`no free PDF name for ${fileBase} after 20 attempts`);
-    }
+    // Transient by design if this throws: the order stays RENDERING and
+    // retries next tick.
+    pdfFileName = await claimPdfFileName(fileBase, pdf);
     await orders.update(order.id, { pdfFileName });
   }
 
@@ -243,12 +262,17 @@ async function deliver(order, job) {
       ticker: order.ticker,
       reportDate: reportDateIso,
       pdfUrl,
+      orderUrl: (order.revisionsAllowed || 0) > 0 ? orderUrl(order) : null,
     });
   }
 
   // Mark DELIVERED before the admin FYI: the buyer email already went out, and
   // DELIVERED removes the order from listPending so it is never re-processed.
-  await orders.update(order.id, { status: orders.STATUS.DELIVERED, pdfFileName, error: null });
+  // originalPdfFileName is stamped once here and never overwritten by a later
+  // revision, so the original PDF stays downloadable after pdfFileName moves on.
+  await orders.update(order.id, {
+    status: orders.STATUS.DELIVERED, pdfFileName, originalPdfFileName: pdfFileName, error: null,
+  });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
 
   if (ADMIN_NOTIFY_ON_SUCCESS) {
@@ -262,11 +286,161 @@ async function deliver(order, job) {
   }
 }
 
+// DONE revision job -> download into its OWN private PDF file (never
+// overwrite order.pdfFileName in place: for a ready-origin order that name
+// IS the shared public catalog file, and even a resold fresh-origin report
+// must not have its public copy silently replaced by one customer's
+// requested scenario). Always hidden — a forecast revision reflects one
+// customer's scenario, never the analyst's base case, so it never enters
+// resale or free rotation. Bumps revisionsUsed and goes back to DELIVERED.
+async function deliverRevision(order, job) {
+  if (!pdfStore) {
+    throw new Error('REPORT_PDF_BUCKET is not set — cannot publish the revised PDF');
+  }
+
+  const pdf = await engine.downloadPdf(job.s3Url);
+
+  const now = new Date();
+  const dd = String(now.getUTCDate()).padStart(2, '0');
+  const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+  const yyyy = now.getUTCFullYear();
+  const dateToken = `${dd}${mm}${yyyy}`;
+  const reportDateIso = `${yyyy}-${mm}-${dd}`;
+
+  const companyLabel = order.companyName || order.ticker || 'Report';
+  // Suffixed with the order id so a revised copy can never collide with (or
+  // be mistaken for) the shared catalog file it started from.
+  const fileBase = `${companyToken(companyLabel)}_${dateToken}_rev-${order.id.slice(-8)}`;
+  const pdfFileName = await claimPdfFileName(fileBase, pdf);
+
+  // Best-effort: the engine itself treats the change memo as best-effort (it
+  // may be absent even on a successful revision), so a fetch failure here
+  // must not block delivery — the customer still gets their PDF, just
+  // without the "what changed" writeup.
+  let changes = null;
+  if (job.changesUrl) {
+    try {
+      changes = await engine.fetchChangeMemo(job.changesUrl);
+    } catch (err) {
+      console.warn('reconciler: change memo fetch failed', { id: order.id, error: err.message });
+    }
+  }
+
+  await pdfStore.writeSidecar(pdfFileName, {
+    companyName: companyLabel,
+    ticker: order.ticker || '',
+    reportDate: reportDateIso,
+    description: `Revised report for ${companyLabel}, generated ${reportDateIso}.`,
+    tags: ['AI Equity Report', 'PDF', 'Report revision'],
+    hidden: true,
+    publicationStatus: 'hidden',
+    accessStatus: 'paid',
+    excludeFromFree: true,
+    provenance: { sessionId: order.id, jobId: job.jobId, revisionOf: order.jobId },
+  });
+
+  const pdfUrl = `${PDF_BASE_URL}/${encodeURIComponent(pdfFileName)}`;
+
+  if (!order.email) {
+    console.warn('reconciler: delivered revision but order has no email', { id: order.id, pdfFileName });
+  } else {
+    await email.sendReportRevisedEmail(order.email, {
+      name: companyLabel,
+      ticker: order.ticker,
+      reportDate: reportDateIso,
+      pdfUrl,
+      orderUrl: orderUrl(order),
+    });
+  }
+
+  // v1 is the original delivery (handled by deliver(), never appended here),
+  // so the first entry through this function is v2.
+  const revisionEntry = {
+    version: (order.revisionHistory?.length || 0) + 2,
+    jobId: job.jobId,
+    comments: order.activeRevisionComment || '',
+    pdfFileName,
+    completedAt: job.completedAt || new Date().toISOString(),
+    changes,
+  };
+
+  await orders.update(order.id, {
+    status: orders.STATUS.DELIVERED,
+    pdfFileName,
+    jobId: job.jobId,
+    revisionJobId: null,
+    revisionsUsed: (order.revisionsUsed || 0) + 1,
+    pendingRevisionComment: null,
+    activeRevisionComment: null,
+    revisionError: null,
+    error: null,
+    revisionHistory: [...(order.revisionHistory || []), revisionEntry],
+  });
+  console.log('reconciler: revision delivered', { id: order.id, pdfFileName });
+}
+
+// A revision that hard-fails is NOT terminal for the order and does not cost
+// the customer their allowance: back to DELIVERED with the previous PDF and
+// jobId untouched (revisionJobId — not jobId — held the failed attempt) and
+// revisionError set, so they can retry or just keep what they already have.
+// Bounded by the same per-order MAX_ATTEMPTS as any transient error.
+async function failRevision(order, reason) {
+  await orders.update(order.id, {
+    status: orders.STATUS.DELIVERED,
+    revisionJobId: null,
+    pendingRevisionComment: null,
+    activeRevisionComment: null,
+    revisionError: reason,
+    revisionAttempts: (order.revisionAttempts || 0) + 1,
+  });
+  console.warn('reconciler: revision failed, reverted to DELIVERED', { id: order.id, reason });
+}
+
+// Poll engine.getJob(jobId) until DONE/FAILED, the poll budget (MAX_POLLS)
+// runs out, or this invocation's window closes (POLL_WINDOW_MS=0 → exactly
+// one poll per tick; the next sweep resumes from stored state). onDone/
+// onFail decide what happens on completion. Shared by RENDERING (polls
+// order.jobId) and REVISING (polls order.revisionJobId, so a failed revision
+// leaves the previously-delivered order.jobId untouched and re-revisable).
+async function pollEngineJob(order, jobId, onDone, onFail) {
+  const windowDeadline = Date.now() + POLL_WINDOW_MS;
+  let polls = order.polls || 0;
+
+  for (;;) {
+    const job = await engine.getJob(jobId);
+
+    if (job.status === 'DONE') {
+      if (!job.s3Url) return; // presigned URL not minted yet; re-fetch next tick
+      return onDone(order, job);
+    }
+    if (job.status === 'FAILED' || job.status === 'NOT_FOUND') {
+      return onFail(order, `engine job ${job.status}${job.error ? `: ${job.error}` : ''}`);
+    }
+
+    // PENDING / RUNNING -> keep waiting, bounded by MAX_POLLS.
+    polls += 1;
+    if (polls > MAX_POLLS) {
+      return onFail(order, `render did not finish within ${MAX_POLLS} polls`);
+    }
+    await orders.update(order.id, { polls });
+
+    if (Date.now() + POLL_DELAY_MS >= windowDeadline) return;
+    await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
+  }
+}
+
 // Advance one order by one step. Throwing signals a TRANSIENT error (network,
 // etc.) -> the order keeps its status and is retried next tick until MAX_ATTEMPTS.
 // Terminal problems call fail() and return.
 async function advance(order) {
-  if ((order.attempts || 0) >= MAX_ATTEMPTS) {
+  // Revision retries are bounded by their own counter, reset per revision
+  // request (claimRevision): exhausting it must not flip an already-
+  // delivered order to the terminal FAILED status the generation path uses.
+  if (order.status === orders.STATUS.REVISING) {
+    if ((order.revisionAttempts || 0) >= MAX_ATTEMPTS) {
+      return failRevision(order, `exceeded ${MAX_ATTEMPTS} retry attempts (last error: ${order.revisionError || 'unknown'})`);
+    }
+  } else if ((order.attempts || 0) >= MAX_ATTEMPTS) {
     return fail(order, `exceeded ${MAX_ATTEMPTS} retry attempts (last error: ${order.error || 'unknown'})`);
   }
 
@@ -298,34 +472,33 @@ async function advance(order) {
 
   if (order.status === orders.STATUS.RENDERING) {
     if (!order.jobId) return fail(order, 'order is RENDERING but has no jobId');
+    return pollEngineJob(order, order.jobId, deliver, fail);
+  }
 
-    // Poll until DONE/FAILED, the poll budget (MAX_POLLS) runs out, or this
-    // invocation's window closes (POLL_WINDOW_MS=0 → exactly one poll, the
-    // original per-tick behavior; the next sweep resumes from stored state).
-    const windowDeadline = Date.now() + POLL_WINDOW_MS;
-    let polls = order.polls || 0;
+  if (order.status === orders.STATUS.REVISING) {
+    // A customer's POST /revisions claimed the order (DELIVERED -> REVISING)
+    // and stashed their comment; this is the first tick to see it, so submit
+    // it to the engine before polling. order.jobId is the last *delivered*
+    // job — the base to revise from — and is left untouched here; only
+    // revisionJobId tracks this in-flight attempt.
+    if (order.pendingRevisionComment) {
+      if (!order.jobId) return failRevision(order, 'order is REVISING but has no base jobId to revise');
 
-    for (;;) {
-      const job = await engine.getJob(order.jobId);
-
-      if (job.status === 'DONE') {
-        if (!job.s3Url) return; // presigned URL not minted yet; re-fetch next tick
-        return deliver(order, job);
-      }
-      if (job.status === 'FAILED' || job.status === 'NOT_FOUND') {
-        return fail(order, `engine job ${job.status}${job.error ? `: ${job.error}` : ''}`);
-      }
-
-      // PENDING / RUNNING -> keep waiting, bounded by MAX_POLLS.
-      polls += 1;
-      if (polls > MAX_POLLS) {
-        return fail(order, `render did not finish within ${MAX_POLLS} polls`);
-      }
-      await orders.update(order.id, { polls });
-
-      if (Date.now() + POLL_DELAY_MS >= windowDeadline) return;
-      await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
+      const comments = order.pendingRevisionComment;
+      const { jobId: revisionJobId } = await engine.submitRevision({
+        parentJobId: order.jobId,
+        comments,
+      });
+      await orders.update(order.id, {
+        revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0, error: null,
+      });
+      order = { ...order, revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0 };
+      // Fall through: with a poll window configured, start polling immediately.
+      if (POLL_WINDOW_MS <= 0) return;
     }
+
+    if (!order.revisionJobId) return failRevision(order, 'order is REVISING but has no revisionJobId');
+    return pollEngineJob(order, order.revisionJobId, deliverRevision, failRevision);
   }
 }
 
@@ -372,10 +545,19 @@ async function tick() {
       try {
         await advance(order);
       } catch (err) {
-        // Transient: bump attempts, keep status, retry next tick.
+        // Transient: bump attempts, keep status, retry next tick. A REVISING
+        // order tracks this against revisionAttempts/revisionError instead —
+        // see the note in advance().
         console.error(`reconciler: transient error on order ${order.id}:`, err.message);
         try {
-          await orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
+          if (order.status === orders.STATUS.REVISING) {
+            await orders.update(order.id, {
+              revisionError: err.message,
+              revisionAttempts: (order.revisionAttempts || 0) + 1,
+            });
+          } else {
+            await orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
+          }
         } catch (updateErr) {
           console.error('reconciler: could not record error for', order.id, updateErr.message);
         }
@@ -411,4 +593,9 @@ function start() {
   return timer;
 }
 
-module.exports = { start, tick, advance, deliver, fail, companyToken, deriveExchange, deriveCountry };
+module.exports = {
+  start, tick, advance,
+  deliver, fail,
+  deliverRevision, failRevision,
+  companyToken, deriveExchange, deriveCountry,
+};

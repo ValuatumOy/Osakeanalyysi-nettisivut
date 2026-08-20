@@ -52,6 +52,12 @@ export function stageConfig(app: App): StageConfig {
         arn: 'arn:aws:lambda:eu-west-1:892885731254:function:pdf-report-api-test',
       };
 
+  // Every other stage-dependent URL below uses `suffix` and defaults
+  // correctly per stage; this one didn't, and a `stage=test` deploy that
+  // forgot the `-c siteUrl=…` override silently fell back to prod's
+  // domain — baking a prod link into test's emails and checkout redirects.
+  const siteUrl = app.node.tryGetContext('siteUrl') ?? (stage === 'prod' ? `https://www.${zoneDomain}` : `https://test.${zoneDomain}`);
+
   return {
     stage,
     suffix,
@@ -63,12 +69,16 @@ export function stageConfig(app: App): StageConfig {
     memberCatalogBucket: 'aiequityreports-pdfs',
     memberCatalogStateTable: 'AiEquityReportsCatalogState',
     memberCatalogPdfBaseUrl: `https://files.${zoneDomain}/reports/pdfs`,
+    // Derived from `siteUrl` (not hardcoded to prod's domains) so the stage
+    // actually serving the frontend is always an allowed CORS origin — this
+    // had the same non-stage-aware bug siteUrl did, just silent instead of
+    // link-visible: test's API/PDF bucket only ever allowed prod's domains.
     corsOrigins: [
-      `https://www.${zoneDomain}`,
-      `https://${zoneDomain}`,
+      siteUrl,
+      ...(stage === 'prod' ? [`https://${zoneDomain}`] : []),
       'http://localhost:3000',
     ],
-    siteUrl: app.node.tryGetContext('siteUrl') ?? `https://www.${zoneDomain}`,
+    siteUrl,
     alertEmail: app.node.tryGetContext('alertEmail') ?? 'awswatchdog@valuatum.com',
     secretsPrefix: `/aiequityreports/${stage}`,
     pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
