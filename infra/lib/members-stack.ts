@@ -43,9 +43,8 @@ export class MembersStack extends Stack {
     super(scope, id, props);
     const { config } = props;
 
-    if (config.stage === 'prod') {
-      throw new Error('MembersStack must not deploy to prod yet — test stage only');
-    }
+    // Prod guard lifted 20.8.2026: the engine's revision feature is live in
+    // production, which was the gate (docs/members-test.md).
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: config.zoneDomain });
 
@@ -154,7 +153,8 @@ export class MembersStack extends Stack {
     const httpApi = new apigwv2.HttpApi(this, 'MembersHttpApi', {
       apiName: `AiEquityReportsMembers${config.suffix}`,
       corsPreflight: {
-        allowOrigins: [
+        // Deduped: siteUrl is stage-aware and equals the test entry on test.
+        allowOrigins: [...new Set([
           'http://localhost:3000',
           'http://localhost:3100',
           config.siteUrl,
@@ -164,7 +164,7 @@ export class MembersStack extends Stack {
           // preview can hold it, which leaves the staging site reachable only
           // by its own branch URL. Non-prod only.
           ...(config.stage === 'prod' ? [] : [STAGING_BRANCH_ORIGIN]),
-        ],
+        ])],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
         maxAge: Duration.days(1),

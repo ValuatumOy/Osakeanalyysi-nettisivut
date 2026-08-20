@@ -119,7 +119,7 @@
     // Engine reports come from this site's own catalog (same origin, so staging
     // shows staging's and production shows production's). Analyst reports come
     // from the members API, which is still the test stack until it ships.
-    const USE_PROD_MEMBERS = false;
+    const USE_PROD_MEMBERS = true;
     const MEMBERS_API = USE_PROD_MEMBERS
       ? 'https://members.aiequityreports.com'
       : 'https://members-test.aiequityreports.com';
