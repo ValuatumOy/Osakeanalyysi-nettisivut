@@ -108,6 +108,7 @@
                 Sign in with LinkedIn
               </a>
               <p class="muted" style="margin-top:1rem;">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance. <a href="analysts.html">How the analyst programme works →</a></p>
+              <p class="muted" style="margin-top:0.75rem;" id="switchHint" hidden>Wrong LinkedIn account? LinkedIn keeps its own session, so signing out here is not enough: <a href="https://www.linkedin.com/m/logout/" target="_blank" rel="noopener">sign out at linkedin.com</a> first, then come back and sign in again.</p>
             </div>
             <div class="ws-panel">
               <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Subscribers</h2>
@@ -324,7 +325,18 @@
       return { status: res.status, data: await res.json().catch(() => null) };
     }
 
-    function logout() { delete localStorage.memberToken; location.reload(); }
+    function logout() {
+      localStorage.removeItem('memberToken');
+      // LinkedIn will silently re-authorize the same account on the next
+      // sign-in; the hint tells the member where the switch actually happens.
+      sessionStorage.justSignedOut = '1';
+      location.reload();
+    }
+    if (sessionStorage.justSignedOut) {
+      delete sessionStorage.justSignedOut;
+      const hint = document.getElementById('switchHint');
+      if (hint) hint.hidden = false;
+    }
 
     async function magicLink() {
       const email = document.getElementById('email').value.trim();
