@@ -177,6 +177,24 @@ them back in the store next to the demo. `node scripts/seed-store-demo.mjs
 --clean` (with `ADMIN_PASSWORD`) takes them down again — run it after any smoke,
 before showing the store to anyone.
 
+## Prod rollout — DONE 20.8.2026
+
+The gate (engine revision feature in production) was met and the rollout is
+complete: `AiEquityReportsMembers` runs on prod at
+`https://members.aiequityreports.com` with LIVE Stripe products, prices and
+webhook (`scripts/stripe-setup-members-live.mjs`), prod SSM secrets
+(linkedin-*, members-jwt-secret, members-stripe-prices,
+stripe-webhook-secret-members — deliberately NO members-test-utils-secret;
+`/test/*` hard-404s on prod), and `USE_PROD_MEMBERS = true` on members.html and
+report-store.html. Both prod guards are removed. The test stack stays for
+development; everything below about the test stage still applies to it.
+
+Still open after rollout: the LinkedIn app must list
+`https://members.aiequityreports.com/auth/linkedin/callback` as a redirect URI
+(console access needed), the pay-and-collect round trip has not been
+human-click-tested, and the €5 joining fee / at-cost generations decision
+remains open.
+
 ## Known gaps / prod-rollout blockers
 
 - **Nothing merges to `main` until the engine team has deployed the revision

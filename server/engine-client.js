@@ -67,7 +67,10 @@ async function submitJob({
     username,
     templateName,
     output,
-    params: { companyCode, aspQueryKey, ...params },
+    // The engine defaults to lang 'fi', which only shows in the PDF's own
+    // metadata title ("Osakeanalyysi – Intel Corporation") — the report text
+    // is English either way, and most readers see that title, not the filename.
+    params: { companyCode, aspQueryKey, lang: 'en', ...params },
   });
 
   const res = await client().fetch(`${ENGINE_URL}/jobs`, {

@@ -13,6 +13,42 @@
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get('session_id');
 
+  // Two kinds of order land on this page. A paying buyer carries a Stripe
+  // checkout session id, verified by the /api/* proxies. A member's own
+  // generation has a plain UUID and no payment to verify — it is authenticated
+  // by the member token the member area stored, against the members API. Same
+  // payload either way, so everything below this point is unchanged.
+  const MEMBER_GEN_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const memberToken = () => window.localStorage.memberToken || '';
+  const isMemberRun = () => MEMBER_GEN_ID.test(sessionId || '') && Boolean(memberToken());
+  const MEMBERS_API = /^(www\.)?aiequityreports\.com$/.test(location.hostname)
+    ? 'https://members.aiequityreports.com'
+    : 'https://members-test.aiequityreports.com';
+
+  function fetchOrderState() {
+    if (!isMemberRun()) {
+      return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/order', {
+      headers: { authorization: 'Bearer ' + memberToken() },
+    });
+  }
+
+  function postRevision(comments) {
+    if (!isMemberRun()) {
+      return fetch('/api/order-revision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, comments: comments }),
+      });
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/revisions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+      body: JSON.stringify({ comments: comments }),
+    });
+  }
+
   if (!sessionId) {
     hideAll();
     document.getElementById('errorMsg').textContent =
@@ -393,11 +429,23 @@
   }
 
   async function load() {
+    // The delivery email is the main way into this page, and it can be opened
+    // in a browser the member has never signed in on. Without the token the
+    // Stripe proxy would be asked to verify a UUID and answer 500, so say what
+    // is actually missing.
+    if (MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
+      return renderError('This is your own generation. Sign in to the member area first, then open this link again.');
+    }
     try {
-      const res = await fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
+      const res = await fetchOrderState();
       const data = await res.json();
 
       if (!res.ok) {
+        if (res.status === 401 || res.status === 403) {
+          return renderError(MEMBER_GEN_ID.test(sessionId || '')
+            ? 'Sign in to the member area first, then open this link again.'
+            : 'This link is no longer valid.');
+        }
         if (res.status === 402) return renderError('Payment has not completed yet. If you just paid, give it a moment and reload.');
         if (res.status === 404) {
           notFoundStreak += 1;
@@ -439,11 +487,7 @@
     button.disabled = true;
     button.textContent = 'Submitting…';
     try {
-      const res = await fetch('/api/order-revision', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId, comments: comments }),
-      });
+      const res = await postRevision(comments);
       const data = await res.json();
       if (!res.ok) {
         status.textContent = data.error || 'Could not submit your request. Please try again.';

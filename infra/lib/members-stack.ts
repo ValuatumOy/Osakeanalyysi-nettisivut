@@ -43,9 +43,8 @@ export class MembersStack extends Stack {
     super(scope, id, props);
     const { config } = props;
 
-    if (config.stage === 'prod') {
-      throw new Error('MembersStack must not deploy to prod yet — test stage only');
-    }
+    // Prod guard lifted 20.8.2026: the engine's revision feature is live in
+    // production, which was the gate (docs/members-test.md).
 
     const zone = route53.HostedZone.fromLookup(this, 'Zone', { domainName: config.zoneDomain });
 
@@ -112,9 +111,17 @@ export class MembersStack extends Stack {
         MEMBERS_API_URL: membersApiUrl,
         // Auth redirects may return to any of these; the first is the default.
         // Anything not on this list is rejected (open-redirect guard).
-        MEMBERS_FRONTEND_URLS: [
-          `https://test.${config.zoneDomain}/members.html`,
+        // The FIRST entry is the fallback for a rejected/missing returnTo, so
+        // it must be this stage's own site — a prod error page must never land
+        // on the test domain. The store page is a valid return target too: the
+        // anonymous buy flow returns there to hand over the purchased PDF.
+        MEMBERS_FRONTEND_URLS: [...new Set([
           `${config.siteUrl}/members.html`,
+          `${config.siteUrl}/report-store.html`,
+          `https://${config.zoneDomain}/members.html`, // apex — the site answers on both
+          `https://${config.zoneDomain}/report-store.html`,
+          `https://test.${config.zoneDomain}/members.html`,
+          `https://test.${config.zoneDomain}/report-store.html`,
           'http://localhost:3100/members.html',
           // Same reason as the CORS entry: another branch's preview can hold the
           // test.aiequityreports.com alias, and without this a sign-in started
@@ -123,7 +130,7 @@ export class MembersStack extends Stack {
             `${STAGING_BRANCH_ORIGIN}/members.html`,
             `${STAGING_BRANCH_ORIGIN}/report-store.html`,
           ]),
-        ].join(','),
+        ])].join(','),
         // Fixed fee per published analysis. 0 until the business decision lands,
         // so the ledger records states without promising anyone money.
         BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
@@ -154,7 +161,8 @@ export class MembersStack extends Stack {
     const httpApi = new apigwv2.HttpApi(this, 'MembersHttpApi', {
       apiName: `AiEquityReportsMembers${config.suffix}`,
       corsPreflight: {
-        allowOrigins: [
+        // Deduped: siteUrl is stage-aware and equals the test entry on test.
+        allowOrigins: [...new Set([
           'http://localhost:3000',
           'http://localhost:3100',
           config.siteUrl,
@@ -164,7 +172,7 @@ export class MembersStack extends Stack {
           // preview can hold it, which leaves the staging site reachable only
           // by its own branch URL. Non-prod only.
           ...(config.stage === 'prod' ? [] : [STAGING_BRANCH_ORIGIN]),
-        ],
+        ])],
         allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.POST, apigwv2.CorsHttpMethod.OPTIONS],
         allowHeaders: ['authorization', 'content-type', 'x-test-now'],
         maxAge: Duration.days(1),
@@ -186,7 +194,11 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/review'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
+      [apigwv2.HttpMethod.GET, '/generations'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
+      // The order page's revision workspace, for a member's own run.
+      [apigwv2.HttpMethod.GET, '/generations/{genId}/order'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],

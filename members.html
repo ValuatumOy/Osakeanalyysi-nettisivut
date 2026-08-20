@@ -67,7 +67,7 @@
             <span class="section-eyebrow section-eyebrow--light">Member area</span>
             <h1 class="section-headline section-headline--light" id="pageTitle">Sign in</h1>
           </div>
-          <span class="env-badge" id="envBadge">Test environment</span>
+          <span class="env-badge" id="envBadge" hidden>Test environment — not the live site</span>
         </div>
 
         <!-- Logged in: who you are and what you have left, on the band itself. -->
@@ -108,6 +108,7 @@
                 Sign in with LinkedIn
               </a>
               <p class="muted" style="margin-top:1rem;">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance. <a href="analysts.html">How the analyst programme works →</a></p>
+              <p class="muted" style="margin-top:0.75rem;" id="switchHint" hidden>Wrong LinkedIn account? LinkedIn keeps its own session, so signing out here is not enough: <a href="https://www.linkedin.com/m/logout/" target="_blank" rel="noopener">sign out at linkedin.com</a> first, then come back and sign in again.</p>
             </div>
             <div class="ws-panel">
               <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Subscribers</h2>
@@ -183,15 +184,21 @@
               <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
               <div id="genStatus" class="muted"></div>
               <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
-                <label class="field"><span>Company</span>
-                  <input id="genCompany" class="input" placeholder="Company name, e.g. Nokia Oyj">
+                <label class="field" style="position:relative;"><span>Company</span>
+                  <input id="genCompany" class="input" placeholder="Start typing a company, e.g. Nokia" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="genSuggest">
+                  <div class="search-autocomplete" id="genSuggest" role="listbox"></div>
                 </label>
                 <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
-                  <input id="genTicker" class="input" placeholder="e.g. NOKIA">
+                  <input id="genTicker" class="input" placeholder="picked for you">
                 </label>
                 <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
               </div>
               <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
+              <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+                <div class="table-wrap">
+                  <table class="reports-table" id="generationsTable"></table>
+                </div>
+              </div>
               <div id="submitRow" hidden style="margin-top:1.1rem;">
                 <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
                 <div class="form-row">
@@ -281,21 +288,32 @@
   </footer>
 
   <script>
-    // PROD CUTOVER: flip to true once the production members stack
-    // (members.aiequityreports.com) is deployed — nothing else to change here.
-    const USE_PROD_MEMBERS = false;
+    // The site a member is standing on decides which member system they use.
+    // A hardcoded flag put the test site on the LIVE members API — a colleague
+    // testing on test.aiequityreports.com would have spent a real generation
+    // and paid with a live card. Host wins, per stage, like the rest of the
+    // system: www / apex → prod, anything else → test.
+    const USE_PROD_MEMBERS = /^(www\.)?aiequityreports\.com$/.test(location.hostname);
     const MEMBERS_API = USE_PROD_MEMBERS
       ? 'https://members.aiequityreports.com'
       : 'https://members-test.aiequityreports.com';
     // Come back to whichever site started the flow (prod / staging / local).
     const RETURN_TO = location.origin + location.pathname;
+    if (!USE_PROD_MEMBERS) document.getElementById('envBadge').hidden = false;
     document.getElementById('linkedinBtn').href =
       MEMBERS_API + '/auth/linkedin/start?returnTo=' + encodeURIComponent(RETURN_TO);
-    if (USE_PROD_MEMBERS) document.getElementById('envBadge').remove();
 
     const frag = new URLSearchParams(location.hash.slice(1));
     if (frag.get('token')) { localStorage.memberToken = frag.get('token'); history.replaceState(null, '', location.pathname); }
-    if (frag.get('error')) { notice('err', 'Sign-in failed: ' + frag.get('error')); history.replaceState(null, '', location.pathname); }
+    // The server sends a code for the one case it cannot phrase itself: the
+    // member said no on LinkedIn's screen, or closed it.
+    const SIGNIN_ERRORS = { linkedin_denied: 'LinkedIn sign-in was cancelled.' };
+    if (frag.get('error')) {
+      const code = frag.get('error');
+      // Some codes are already whole sentences from the server; do not prefix those.
+      notice('err', SIGNIN_ERRORS[code] || (code.includes(' ') ? code : 'Sign-in failed: ' + code));
+      history.replaceState(null, '', location.pathname);
+    }
     if (frag.get('checkout') === 'success') { notice('ok', 'Subscription active in a few seconds. Refresh if it does not show yet.'); history.replaceState(null, '', location.pathname); }
 
     const token = () => localStorage.memberToken || '';
@@ -324,7 +342,18 @@
       return { status: res.status, data: await res.json().catch(() => null) };
     }
 
-    function logout() { delete localStorage.memberToken; location.reload(); }
+    function logout() {
+      localStorage.removeItem('memberToken');
+      // LinkedIn will silently re-authorize the same account on the next
+      // sign-in; the hint tells the member where the switch actually happens.
+      sessionStorage.justSignedOut = '1';
+      location.reload();
+    }
+    if (sessionStorage.justSignedOut) {
+      delete sessionStorage.justSignedOut;
+      const hint = document.getElementById('switchHint');
+      if (hint) hint.hidden = false;
+    }
 
     async function magicLink() {
       const email = document.getElementById('email').value.trim();
@@ -353,8 +382,10 @@
       const ROLE_LABELS = { analyst: 'Analyst', reader: 'Reader', coaching: 'Coaching analyst' };
       document.getElementById('roleLabel').textContent = ROLE_LABELS[data.role] || '';
       // "Member" covers two different people; name the one who actually signed in.
-      document.getElementById('pageTitle').textContent =
-        ROLE_LABELS[data.role] ? 'Analyst workspace' : 'Your subscription';
+      const pageTitle = ROLE_LABELS[data.role] ? 'Analyst workspace' : 'Your subscription';
+      document.getElementById('pageTitle').textContent = pageTitle;
+      // The tab still said "Sign In" to someone already signed in.
+      document.title = pageTitle + ' — Valuatum AI Equity Reports';
 
       const u = data.usage;
       // Counting down: what is left is the number a member acts on.
@@ -398,6 +429,7 @@
         // Resume watching a run that was already going when the page loaded.
         const active = u.genId || localStorage.activeGenId;
         if (active && u.genReserved) pollGeneration(active);
+        loadGenerations();
         if (isAnalyst) loadEarnings();
       }
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
@@ -425,7 +457,7 @@
     }
 
     async function checkout(plan, interval) {
-      const body = { plan, interval };
+      const body = { plan, interval, returnTo: RETURN_TO };
       if (plan === 'coverage') {
         body.coverageCompanyId = document.getElementById('coverageTicker').value.trim().toUpperCase();
         if (!body.coverageCompanyId) { notice('err', 'Enter the ticker of the company you want covered.'); return; }
@@ -444,10 +476,58 @@
       FAILED: 'Generation failed.',
     };
 
+    // A generation is one a month, so the company must not hinge on the member
+    // remembering an exact ticker. Same search the paid fresh-report flow uses,
+    // and the same one the server resolves against — pick a row and the ticker
+    // arrives in the exact form the engine wants.
+    (function initGenCompanySearch() {
+      const input = document.getElementById('genCompany');
+      const list = document.getElementById('genSuggest');
+      const ticker = document.getElementById('genTicker');
+      let timer = null;
+      let sequence = 0;
+
+      const close = () => { list.classList.remove('open'); input.setAttribute('aria-expanded', 'false'); };
+
+      input.addEventListener('input', () => {
+        ticker.value = ''; // typing again invalidates the ticker of the last pick
+        const query = input.value.trim();
+        const mine = ++sequence;
+        clearTimeout(timer);
+        if (query.length < 2) { close(); return; }
+        timer = setTimeout(async () => {
+          let results = [];
+          try { results = await window.searchWisdomCompanies(query); } catch (_) { results = []; }
+          if (mine !== sequence) return;
+          list.innerHTML = results.slice(0, 6).map(c =>
+            '<button class="autocomplete-item" type="button" role="option" data-ticker="' + esc(c.ticker) + '" data-name="' + esc(c.companyName) + '">' +
+              '<span class="autocomplete-ticker">' + esc(c.ticker) + '</span>' +
+              '<span class="autocomplete-name">' + esc(c.companyName) + '</span>' +
+              (c.industry ? '<span class="autocomplete-exchange">' + esc(c.industry) + '</span>' : '') +
+            '</button>').join('');
+          list.classList.toggle('open', results.length > 0);
+          input.setAttribute('aria-expanded', results.length > 0 ? 'true' : 'false');
+        }, 250);
+      });
+
+      list.addEventListener('pointerdown', (e) => {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item) return;
+        e.preventDefault();
+        input.value = item.dataset.name;
+        ticker.value = item.dataset.ticker;
+        close();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target !== input && !list.contains(e.target)) close();
+      });
+    })();
+
     async function reserveGen() {
       const company = document.getElementById('genCompany').value.trim();
       const ticker = document.getElementById('genTicker').value.trim();
-      if (!company || !ticker) { notice('err', 'Enter both the company name and its ticker.'); return; }
+      if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
       if (window._publishes && !confirm(
         'This generation is free because you publish it.\n\n' +
         'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
@@ -476,7 +556,11 @@
         link.textContent = 'Download the PDF';
         out.appendChild(link);
       }
+      // The workspace enforces the revision count; the link only has to get
+      // the member there.
+      if (data.status === 'DELIVERED') out.appendChild(workspaceLink(genId, 'Revise it'));
       if (data.status === 'DELIVERED' || data.status === 'FAILED') {
+        loadGenerations();
         // Refresh only for a run we were actually watching. loadMe() resumes the
         // poll from u.genId, so refreshing on a run that finished before the page
         // loaded would bounce between the two calls forever.
@@ -486,6 +570,48 @@
         return;
       }
       setTimeout(() => pollGeneration(genId), 30000);
+    }
+
+    // The revision loop lives on the order page — the same workspace a paying
+    // buyer gets. It was reachable only from the delivery email until now.
+    function workspaceUrl(genId) {
+      return 'order/index.html?session_id=' + encodeURIComponent(genId);
+    }
+
+    function workspaceLink(genId, label) {
+      const link = document.createElement('a');
+      link.href = workspaceUrl(genId);
+      link.className = 'btn btn-gold btn-sm';
+      link.style.marginLeft = '0.6rem';
+      link.textContent = label;
+      return link;
+    }
+
+    const GEN_ROW_STATUS = {
+      NEW: 'Queued', IMPORTING: 'Importing data', RENDERING: 'Writing',
+      REVISING: 'Revising', DELIVERED: 'Ready', FAILED: 'Failed',
+    };
+
+    async function loadGenerations() {
+      const { status, data } = await api('GET', '/generations');
+      if (status !== 200) return;
+      const rows = (data.generations || []).map(g => {
+        const done = g.status === 'DELIVERED';
+        const left = Math.max(0, (g.revisionsAllowed || 0) - (g.revisionsUsed || 0));
+        const action = done
+          ? '<a class="btn btn-outline-dark btn-sm" href="' + workspaceUrl(g.genId) + '">'
+            + (g.publication === 'published' ? 'Open' : 'Open and revise') + '</a>'
+          : '<span class="muted">—</span>';
+        return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
+          + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
+          + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
+          + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
+          + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
+          + '<td style="text-align:right">' + action + '</td></tr>';
+      });
+      document.getElementById('generationsTable').innerHTML =
+        '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="6" class="muted">You have not generated a report yet.</td></tr>');
     }
 
     async function stepDown() {

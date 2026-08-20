@@ -32,6 +32,15 @@ function clampFreeAfterDays(days) {
   return Math.min(Math.round(n), MAX_FREE_AFTER_DAYS);
 }
 
+// The prompts published with an analyst's report are the revision comments they
+// actually sent the engine, oldest first — not whatever the client posts.
+function revisionPrompts(order) {
+  return (order?.revisionHistory || [])
+    .map((entry) => String(entry.comments || '').trim())
+    .filter(Boolean)
+    .join('\n\n');
+}
+
 // Freemium picks only reports older than 30 days. ageDays comes from the
 // server-side catalog (reportDate), never from the client.
 function freemiumPickEligible(report) {
@@ -469,6 +478,7 @@ module.exports = {
   yearKey,
   publicationIndexSk,
   clampFreeAfterDays,
+  revisionPrompts,
   freemiumPickEligible,
   buildPickTransact,
   buildReserveGenerationTransact,

@@ -118,8 +118,9 @@
   <script>
     // Engine reports come from this site's own catalog (same origin, so staging
     // shows staging's and production shows production's). Analyst reports come
-    // from the members API, which is still the test stack until it ships.
-    const USE_PROD_MEMBERS = false;
+    // from the members API — matched to the same stage by hostname, so the test
+    // site never buys from, or pays into, the live member system.
+    const USE_PROD_MEMBERS = /^(www\.)?aiequityreports\.com$/.test(location.hostname);
     const MEMBERS_API = USE_PROD_MEMBERS
       ? 'https://members.aiequityreports.com'
       : 'https://members-test.aiequityreports.com';
@@ -380,7 +381,7 @@
     document.getElementById('fSearch').addEventListener('input', render);
     if (!USE_PROD_MEMBERS) {
       document.getElementById('storeEnvNote').textContent =
-        ' Analyst reports are served from the test stack while the member system is in testing.';
+        ' This is the test site: analyst reports come from the test member stack, and buying one charges nothing real.';
     }
     load().then(collectPurchase);
   </script>
