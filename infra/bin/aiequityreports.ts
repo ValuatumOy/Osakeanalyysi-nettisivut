@@ -60,8 +60,8 @@ new ApiStack(app, `AiEquityReportsApi${config.suffix}`, {
   workerFunction: worker.workerFunction,
 });
 
-// Membership system: test stage only for now (the stack also guards itself).
-if (config.stage !== 'prod') {
+// Membership system (prod rollout 20.8.2026, after the revision feature shipped).
+{
   new MembersStack(app, `AiEquityReportsMembers${config.suffix}`, {
     env: euWest1,
     config,

@@ -428,6 +428,9 @@ async function postGenerationsFree(event) {
     exchange: String(body.exchange || '').trim(),
     industry: match.industry || '',
     visibility: 'private',
+    // The revision loop on the order page is where the member steers the
+    // report toward their own view; each round is a real engine run.
+    revisionsAllowed: limitsFor(profile).revisions,
   });
   try {
     await invokeWorkerAsync();
@@ -495,7 +498,9 @@ async function postGenerationSubmit(event) {
   // surface that sells an analysis is not built yet.
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: profile.userId, now, genId,
-    promptsText: String(body.promptsText || ''),
+    // The comments the analyst sent the revision pipeline ARE the prompts;
+    // the client's promptsText only fills in for an unrevised publication.
+    promptsText: quota.revisionPrompts(order) || String(body.promptsText || ''),
     companyId: order.ticker,
     jobId: order.jobId || '',
     priceEur: body.priceEur,
@@ -503,6 +508,9 @@ async function postGenerationSubmit(event) {
     analystName: String(profile.name || profile.email || '').slice(0, 120),
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
+  // Published means frozen: a revision after this would change the PDF under
+  // readers who already opened or bought it.
+  await ordersStore.update(genId, { revisionsAllowed: order.revisionsUsed || 0 });
   await store.audit(profile.userId, 'generation-published', { genId, companyId: order.ticker });
   return json(200, {
     ok: true, genId, status: 'published',
