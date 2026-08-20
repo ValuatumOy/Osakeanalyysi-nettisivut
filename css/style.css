@@ -18,7 +18,9 @@
   --green-deep:    #2A7452;
   --green-faint:   #F2FAF6;
   --forest:        #1B3028;
-  --forest-hover:  #24402F;
+  /* The button green: a pine that reads serious without going to ink. */
+  --forest-btn:    #27523F;
+  --forest-hover:  #31654E;
   --forest-mid:    #243D30;
   --charcoal:      #1A2420;
   --charcoal-mid:  #2C3832;
@@ -73,7 +75,7 @@
   /* Radii */
   --r-sm:   4px;
   --r-md:   8px;
-  --r-btn:  10px;
+  --r-btn:  0px;   /* squared — a soft corner reads consumer, not research */
   --r-lg:   16px;
   --r-xl:   24px;
   --r-pill: 100em;
@@ -83,7 +85,7 @@
   --shadow-md:    0 1px 2px rgba(26,36,32,0.08), 0 10px 28px -12px rgba(26,36,32,0.20);
   --shadow-green: 0 1px 2px rgba(26,36,32,0.10), 0 10px 24px -10px rgba(42,116,82,0.55);
   /* Buttons cast a neutral shadow: a coloured glow reads as a toy. */
-  --shadow-btn:   0 1px 2px rgba(26,36,32,0.12), 0 10px 24px -12px rgba(26,36,32,0.5);
+  --shadow-btn:   0 1px 2px rgba(26,36,32,0.10), 0 10px 24px -14px rgba(26,36,32,0.45);
 }
 
 /* =====================================================
@@ -174,11 +176,12 @@ input, textarea { font: inherit; }
   align-items: center;
   justify-content: center;
   gap: 0.55em;
-  padding: 0.85em 1.6em;
+  padding: 1.05em 1.9em;
   border-radius: var(--r-btn);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 500;
-  letter-spacing: -0.005em;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   line-height: 1;
   transition: background var(--trs-md), color var(--trs-md), border-color var(--trs-md), transform var(--trs), box-shadow var(--trs-md);
   white-space: nowrap;
@@ -191,9 +194,9 @@ input, textarea { font: inherit; }
 .btn:hover svg:last-child { transform: translateX(2px); }
 
 .btn-primary {
-  background: var(--forest);
+  background: var(--forest-btn);
   color: var(--white);
-  border-color: var(--forest);
+  border-color: var(--forest-btn);
   box-shadow: var(--shadow-btn), inset 0 1px 0 rgba(255,255,255,0.10);
 }
 .btn-primary:hover {
@@ -252,11 +255,18 @@ input, textarea { font: inherit; }
 
 /* Retired: gold as a button fill put two saturated hues side by side. Kept as
    an alias of the primary so the old mockups in /mockups still render. */
-.btn-gold { background: var(--forest); color: var(--white); border-color: var(--forest); box-shadow: var(--shadow-btn); }
+.btn-gold { background: var(--forest-btn); color: var(--white); border-color: var(--forest-btn); box-shadow: var(--shadow-btn); }
 .btn-gold:hover { background: var(--forest-hover); border-color: var(--forest-hover); }
 
-.btn-lg { padding: 1em 2.1em; font-size: var(--text-base); border-radius: 12px; }
-.btn-sm { padding: 0.62em 1.15em; font-size: var(--text-xs); border-radius: 8px; }
+.btn-lg { padding: 1.15em 2.3em; font-size: var(--text-sm); border-radius: var(--r-btn); }
+.btn-sm { padding: 0.8em 1.25em; font-size: 0.6875rem; letter-spacing: 0.1em; border-radius: var(--r-btn); }
+.btn.btn-primary, .btn.btn-outline, .btn.btn-outline-dark,
+.btn.btn-ghost, .btn.btn-gold, .btn.btn-linkedin { text-decoration: none; }
+.btn.btn-primary, .btn.btn-gold, .btn.btn-outline { color: var(--white); }
+.btn.btn-outline-dark { color: var(--charcoal); }
+.btn.btn-ghost { color: var(--green-deep); }
+.btn.btn-linkedin { color: var(--white); }
+
 .btn:disabled, .btn[aria-disabled="true"] {
   opacity: 0.45;
   cursor: not-allowed;
@@ -414,13 +424,15 @@ input, textarea { font: inherit; }
 /* Sign in sits between the tabs and the CTA: reachable from every page, but
    quiet enough that it never competes with the page's own call to action. */
 .nav-signin {
-  font-size: 0.8125rem;
+  font-size: var(--text-xs);
   font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   color: var(--charcoal);
   background: var(--white);
   border: 1px solid var(--color-border);
-  padding: 0.65em 1.1em;
-  border-radius: 8px;
+  padding: 0.7em 1.15em;
+  border-radius: var(--r-btn);
   margin-left: 0.75rem;
   transition: background var(--trs), border-color var(--trs), color var(--trs);
   white-space: nowrap;
@@ -429,13 +441,15 @@ input, textarea { font: inherit; }
 .nav-signin:hover { background: var(--off-white); border-color: var(--gray-steel); }
 
 .nav-cta {
-  font-size: 0.8125rem;
+  font-size: var(--text-xs);
   font-weight: 500;
   color: var(--white);
-  background: var(--forest);
-  border: 1px solid var(--forest);
-  padding: 0.65em 1.15em;
-  border-radius: 8px;
+  background: var(--forest-btn);
+  border: 1px solid var(--forest-btn);
+  padding: 0.7em 1.2em;
+  border-radius: var(--r-btn);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
   margin-left: 1rem;
   box-shadow: 0 1px 2px rgba(26,36,32,0.12), 0 6px 16px -8px rgba(26,36,32,0.5), inset 0 1px 0 rgba(255,255,255,0.10);
   transition: background var(--trs-md), border-color var(--trs-md), box-shadow var(--trs-md), transform var(--trs);
@@ -667,9 +681,9 @@ input, textarea { font: inherit; }
 .search-btn {
   margin: 0.5rem;
   padding: 0.65em 1.5em;
-  background: var(--forest);
+  background: var(--forest-btn);
   color: var(--white);
-  border-radius: var(--r-md);
+  border-radius: var(--r-btn);
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: -0.005em;
