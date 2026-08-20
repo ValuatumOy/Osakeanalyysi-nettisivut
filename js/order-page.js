@@ -402,6 +402,13 @@
   }
 
   async function load() {
+    // The delivery email is the main way into this page, and it can be opened
+    // in a browser the member has never signed in on. Without the token the
+    // Stripe proxy would be asked to verify a UUID and answer 500, so say what
+    // is actually missing.
+    if (MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
+      return renderError('This is your own generation. Sign in to the member area first, then open this link again.');
+    }
     try {
       const res = await fetchOrderState();
       const data = await res.json();
