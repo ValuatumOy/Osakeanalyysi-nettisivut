@@ -18,6 +18,7 @@
   --green-deep:    #2A7452;
   --green-faint:   #F2FAF6;
   --forest:        #1B3028;
+  --forest-hover:  #24402F;
   --forest-mid:    #243D30;
   --charcoal:      #1A2420;
   --charcoal-mid:  #2C3832;
@@ -81,6 +82,8 @@
   --shadow-sm:    0 1px 2px rgba(26,36,32,0.06), 0 2px 8px -4px rgba(26,36,32,0.10);
   --shadow-md:    0 1px 2px rgba(26,36,32,0.08), 0 10px 28px -12px rgba(26,36,32,0.20);
   --shadow-green: 0 1px 2px rgba(26,36,32,0.10), 0 10px 24px -10px rgba(42,116,82,0.55);
+  /* Buttons cast a neutral shadow: a coloured glow reads as a toy. */
+  --shadow-btn:   0 1px 2px rgba(26,36,32,0.12), 0 10px 24px -12px rgba(26,36,32,0.5);
 }
 
 /* =====================================================
@@ -188,17 +191,17 @@ input, textarea { font: inherit; }
 .btn:hover svg:last-child { transform: translateX(2px); }
 
 .btn-primary {
-  background: var(--green);
+  background: var(--forest);
   color: var(--white);
-  border-color: var(--green-deep);
-  box-shadow: var(--shadow-green), inset 0 1px 0 rgba(255,255,255,0.18);
+  border-color: var(--forest);
+  box-shadow: var(--shadow-btn), inset 0 1px 0 rgba(255,255,255,0.10);
 }
 .btn-primary:hover {
-  background: var(--green-deep);
-  border-color: var(--green-deep);
-  box-shadow: 0 2px 4px rgba(26,36,32,0.12), 0 16px 32px -12px rgba(42,116,82,0.6), inset 0 1px 0 rgba(255,255,255,0.16);
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+  box-shadow: 0 2px 4px rgba(26,36,32,0.14), 0 16px 32px -14px rgba(26,36,32,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
 }
-.btn-primary:active { box-shadow: 0 1px 2px rgba(26,36,32,0.14), inset 0 1px 2px rgba(0,0,0,0.16); }
+.btn-primary:active { box-shadow: 0 1px 2px rgba(26,36,32,0.14), inset 0 1px 2px rgba(0,0,0,0.18); }
 
 .btn-outline {
   background: rgba(255,255,255,0.04);
@@ -230,13 +233,27 @@ input, textarea { font: inherit; }
 }
 .btn-ghost:hover { color: var(--charcoal); transform: none; }
 
-.btn-gold {
-  background: var(--gold);
-  color: var(--white);
-  border-color: #a87832;
-  box-shadow: 0 1px 2px rgba(26,36,32,0.10), 0 10px 24px -10px rgba(200,150,62,0.55), inset 0 1px 0 rgba(255,255,255,0.22);
+.btn, .nav-cta, .search-btn { position: relative; overflow: hidden; }
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.26;
+  transform: scale(0);
+  pointer-events: none;
+  animation: btn-ripple 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.btn-gold:hover { background: #a87832; border-color: #a87832; }
+@keyframes btn-ripple {
+  to { transform: scale(1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-ripple { display: none; }
+}
+
+/* Retired: gold as a button fill put two saturated hues side by side. Kept as
+   an alias of the primary so the old mockups in /mockups still render. */
+.btn-gold { background: var(--forest); color: var(--white); border-color: var(--forest); box-shadow: var(--shadow-btn); }
+.btn-gold:hover { background: var(--forest-hover); border-color: var(--forest-hover); }
 
 .btn-lg { padding: 1em 2.1em; font-size: var(--text-base); border-radius: 12px; }
 .btn-sm { padding: 0.62em 1.15em; font-size: var(--text-xs); border-radius: 8px; }
@@ -415,21 +432,21 @@ input, textarea { font: inherit; }
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--white);
-  background: var(--green);
-  border: 1px solid var(--green-deep);
+  background: var(--forest);
+  border: 1px solid var(--forest);
   padding: 0.65em 1.15em;
   border-radius: 8px;
   margin-left: 1rem;
-  box-shadow: 0 1px 2px rgba(26,36,32,0.10), 0 6px 16px -8px rgba(42,116,82,0.6), inset 0 1px 0 rgba(255,255,255,0.18);
+  box-shadow: 0 1px 2px rgba(26,36,32,0.12), 0 6px 16px -8px rgba(26,36,32,0.5), inset 0 1px 0 rgba(255,255,255,0.10);
   transition: background var(--trs-md), border-color var(--trs-md), box-shadow var(--trs-md), transform var(--trs);
   white-space: nowrap;
   flex-shrink: 0;
 }
 .nav-cta:hover {
-  background: var(--green-deep);
-  border-color: var(--green-deep);
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(26,36,32,0.12), 0 10px 22px -8px rgba(42,116,82,0.65), inset 0 1px 0 rgba(255,255,255,0.16);
+  box-shadow: 0 2px 4px rgba(26,36,32,0.14), 0 10px 22px -8px rgba(26,36,32,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
 }
 
 .nav-hamburger {
@@ -650,23 +667,23 @@ input, textarea { font: inherit; }
 .search-btn {
   margin: 0.5rem;
   padding: 0.65em 1.5em;
-  background: var(--green);
+  background: var(--forest);
   color: var(--white);
   border-radius: var(--r-md);
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: -0.005em;
-  border: 1px solid var(--green-deep);
-  box-shadow: var(--shadow-green), inset 0 1px 0 rgba(255,255,255,0.18);
+  border: 1px solid var(--forest);
+  box-shadow: var(--shadow-btn), inset 0 1px 0 rgba(255,255,255,0.10);
   cursor: pointer;
   transition: background var(--trs-md), box-shadow var(--trs-md), transform var(--trs);
   white-space: nowrap;
   flex-shrink: 0;
 }
 .search-btn:hover {
-  background: var(--green-deep);
+  background: var(--forest-hover);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(26,36,32,0.12), 0 14px 28px -12px rgba(42,116,82,0.6), inset 0 1px 0 rgba(255,255,255,0.16);
+  box-shadow: 0 2px 4px rgba(26,36,32,0.14), 0 14px 28px -12px rgba(26,36,32,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
 }
 
 /* Autocomplete dropdown */

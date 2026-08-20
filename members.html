@@ -164,7 +164,7 @@
                 <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
                   <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
                 </label>
-                <button class="btn btn-gold" onclick="submitReview()">Submit review</button>
+                <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
               </div>
             </div>
 
@@ -208,7 +208,7 @@
                   <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
                     <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
                   </label>
-                  <button class="btn btn-gold" onclick="submitGen()">Publish report</button>
+                  <button class="btn btn-primary" onclick="submitGen()">Publish report</button>
                 </div>
               </div>
             </div>
@@ -619,7 +619,7 @@
     function workspaceLink(genId, label) {
       const link = document.createElement('a');
       link.href = workspaceUrl(genId);
-      link.className = 'btn btn-gold btn-sm';
+      link.className = 'btn btn-primary btn-sm';
       link.style.marginLeft = '0.6rem';
       link.textContent = label;
       return link;
@@ -710,7 +710,7 @@
         const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
         const lock = blocked && !isOpenOne && !a.publicFree;
         const button = isOpenOne
-          ? '<button class="btn btn-gold btn-sm" onclick="focusReview()">Review this one</button>'
+          ? '<button class="btn btn-primary btn-sm" onclick="focusReview()">Review this one</button>'
           : lock
             ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
             : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
