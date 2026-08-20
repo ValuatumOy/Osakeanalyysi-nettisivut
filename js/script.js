@@ -12,6 +12,15 @@
   window.addEventListener('scroll', sync, { passive: true });
 })();
 
+// ── Nav sign-in link ────────────────────────────────
+// A signed-in member was still being invited to sign in. The token is the
+// only site-wide signal we have; the member area itself owns signing out.
+(function initNavAccountLink() {
+  if (!localStorage.memberToken) return;
+  document.querySelectorAll('.nav-signin, .nav-mobile-link[href="members.html"]')
+    .forEach(link => { link.textContent = 'Member area'; });
+})();
+
 // ── Mobile menu ─────────────────────────────────────
 (function initMobileMenu() {
   const btn = document.querySelector('.nav-hamburger');
