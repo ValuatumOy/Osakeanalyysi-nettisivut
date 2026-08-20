@@ -16,6 +16,26 @@ const ASP_QUERY_KEY = process.env.PDF_ENGINE_ASP_QUERY_KEY || 'Wisdom';
 const TEMPLATE_NAME = process.env.PDF_ENGINE_TEMPLATE || 'osakeanalyysi';
 const USERNAME = process.env.PDF_ENGINE_USERNAME || 'osakeanalyysi-site';
 
+function intEnv(name, fallback) {
+  const value = Number.parseInt(process.env[name] || '', 10);
+  return Number.isFinite(value) ? value : fallback;
+}
+
+// A stalled connection (engine cold start, network stall) must fail fast
+// instead of hanging the caller indefinitely: reconciler.js's poll loop only
+// checks its own time budget between calls, so one fetch that never resolves
+// can outlast that budget and the whole Lambda invocation, up to its hard
+// timeout — with nothing logged in between. See fmp-client.js for the same
+// pattern applied to the other outbound call in this pipeline.
+const REQUEST_TIMEOUT_MS = intEnv('PDF_ENGINE_TIMEOUT_MS', 20 * 1000);
+const DOWNLOAD_TIMEOUT_MS = intEnv('PDF_ENGINE_DOWNLOAD_TIMEOUT_MS', 60 * 1000);
+
+function withTimeout(ms) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return { signal: controller.signal, cancel: () => clearTimeout(timer) };
+}
+
 let cachedClient;
 
 function client() {
@@ -73,11 +93,18 @@ async function submitJob({
     params: { companyCode, aspQueryKey, lang: 'en', ...params },
   });
 
-  const res = await client().fetch(`${ENGINE_URL}/jobs`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body,
-  });
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await client().fetch(`${ENGINE_URL}/jobs`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body,
+      signal,
+    });
+  } finally {
+    cancel();
+  }
   const data = await readJson(res);
 
   if (!res.ok) throw new Error(`engine submitJob ${describeError(res, data)}`);
@@ -101,11 +128,18 @@ async function submitRevision({
 
   const body = JSON.stringify({ username, comments, scope });
 
-  const res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(parentJobId)}/revisions`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body,
-  });
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(parentJobId)}/revisions`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body,
+      signal,
+    });
+  } finally {
+    cancel();
+  }
   const data = await readJson(res);
 
   if (!res.ok) throw new Error(`engine submitRevision ${describeError(res, data)}`);
@@ -118,7 +152,13 @@ async function submitRevision({
 async function getJob(jobId) {
   if (!jobId) throw new Error('getJob: jobId is required');
 
-  const res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(jobId)}`, { method: 'GET' });
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(jobId)}`, { method: 'GET', signal });
+  } finally {
+    cancel();
+  }
   if (res.status === 404) return { jobId, status: 'NOT_FOUND' };
 
   const data = await readJson(res);
@@ -138,7 +178,13 @@ async function getJob(jobId) {
 // Download the finished PDF from its presigned S3 URL (no signing needed).
 async function downloadPdf(s3Url) {
   if (!s3Url) throw new Error('downloadPdf: s3Url is required');
-  const res = await fetch(s3Url);
+  const { signal, cancel } = withTimeout(DOWNLOAD_TIMEOUT_MS);
+  let res;
+  try {
+    res = await fetch(s3Url, { signal });
+  } finally {
+    cancel();
+  }
   if (!res.ok) throw new Error(`engine downloadPdf ${res.status}: ${res.statusText}`);
   return Buffer.from(await res.arrayBuffer());
 }
@@ -149,7 +195,13 @@ async function downloadPdf(s3Url) {
 // failing the whole delivery.
 async function fetchChangeMemo(changesUrl) {
   if (!changesUrl) throw new Error('fetchChangeMemo: changesUrl is required');
-  const res = await fetch(changesUrl);
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await fetch(changesUrl, { signal });
+  } finally {
+    cancel();
+  }
   if (!res.ok) throw new Error(`engine fetchChangeMemo ${res.status}: ${res.statusText}`);
   return res.json();
 }
