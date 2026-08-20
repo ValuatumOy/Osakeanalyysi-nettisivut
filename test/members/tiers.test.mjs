@@ -5,14 +5,22 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const tiers = require('../../server/members/tiers.js');
 
-test('the three numbers: analyst gets the full set, reader about half', () => {
+test('the four numbers: analyst gets the full set, reader about half', () => {
   const analyst = tiers.limitsFor({ role: 'analyst', tier: 'none' });
-  assert.deepEqual(analyst, { generations: 1, basePicks: 10, analystReads: 20 });
+  assert.deepEqual(analyst, { generations: 1, basePicks: 10, analystReads: 20, revisions: 5 });
 
   const reader = tiers.limitsFor({ role: 'reader', tier: 'none' });
   assert.equal(reader.generations, 1); // a reader still gets one generation
   assert.equal(reader.basePicks, 5);
   assert.equal(reader.analystReads, 10);
+  assert.equal(reader.revisions, 2);
+});
+
+test('revision rounds follow who generates: plans without a generation get none', () => {
+  assert.equal(tiers.limitsFor({ role: 'subscriber', tier: 'investor' }).revisions, 0);
+  assert.equal(tiers.limitsFor({ role: 'subscriber', tier: 'investor_plus' }).revisions, 2);
+  // An analyst who also subscribes keeps the larger revision allowance.
+  assert.equal(tiers.limitsFor({ role: 'analyst', tier: 'investor_plus' }).revisions, 5);
 });
 
 test('annual subscriptions get the larger allowance', () => {
@@ -25,8 +33,8 @@ test('annual subscriptions get the larger allowance', () => {
 
 test('unknown role and tier grant nothing', () => {
   assert.deepEqual(tiers.limitsFor({ role: 'nobody', tier: 'nonsense' }),
-    { generations: 0, basePicks: 0, analystReads: 0 });
-  assert.deepEqual(tiers.limitsFor({}), { generations: 0, basePicks: 0, analystReads: 0 });
+    { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 });
+  assert.deepEqual(tiers.limitsFor({}), { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 });
 });
 
 test('a subscribing analyst keeps the larger of each number — an upgrade never takes away', () => {
