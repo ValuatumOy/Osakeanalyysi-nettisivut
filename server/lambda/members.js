@@ -473,6 +473,143 @@ async function getGeneration(event) {
   return json(200, result);
 }
 
+// The order page is the revision workspace, and it authenticates a paying
+// buyer by their Stripe session id. A member generation has no session — it was
+// never bought — so these two routes are the member's door into the same order:
+// the member JWT proves who they are, and the PUB# row proves the generation is
+// theirs. Payload shape matches GET /api/orders/{id} so the order page can read
+// either without knowing which one it is talking to.
+const REVISION_COMMENT_MAX = 4000;
+const REVISION_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
+
+async function ownedOrder(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return { deny };
+
+  const genId = event.pathParameters?.genId || '';
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return { deny: json(404, { error: 'Unknown generation' }) };
+
+  const order = await ordersStore.get(genId);
+  if (!order) return { deny: json(404, { error: 'Order not found' }) };
+  return { profile, genId, order, publication };
+}
+
+// GET /generations/{genId}/order — order-page state for a member's own run.
+async function getGenerationOrder(event) {
+  const { deny, order, publication } = await ownedOrder(event);
+  if (deny) return deny;
+
+  const payload = {
+    status: order.status,
+    origin: order.origin,
+    companyName: order.companyName,
+    ticker: order.ticker,
+    reportId: order.reportId,
+    revisionsAllowed: order.revisionsAllowed || 0,
+    revisionsUsed: order.revisionsUsed || 0,
+    revisionError: order.revisionError || null,
+    error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
+    // Publishing freezes the PDF, so the order page must stop offering revisions.
+    publication: publication.status,
+  };
+
+  // The order page reads `pdfUrl`; presignGenerated answers { url, expiresIn }.
+  if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
+    payload.pdfUrl = (await presignGenerated(order.pdfFileName)).url;
+  }
+
+  payload.revisionHistory = await Promise.all(
+    (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
+      version: entry.version,
+      comments: entry.comments || '',
+      completedAt: entry.completedAt,
+      changes: entry.changes || null,
+      pdfUrl: entry.pdfFileName ? (await presignGenerated(entry.pdfFileName)).url : null,
+    })),
+  );
+  if (payload.revisionHistory.length && order.originalPdfFileName) {
+    payload.revisionHistory.push({
+      version: 1,
+      original: true,
+      completedAt: order.deliveredEmailAt || null,
+      pdfUrl: (await presignGenerated(order.originalPdfFileName)).url,
+    });
+  }
+
+  return json(200, payload, { 'cache-control': 'no-store' });
+}
+
+// POST /generations/{genId}/revisions — steer a delivered generation.
+async function postGenerationRevision(event) {
+  const { deny, genId, order, profile, publication } = await ownedOrder(event);
+  if (deny) return deny;
+
+  // Published means frozen: buyers must not find the PDF changed under them.
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const comments = String(body.comments || '').trim();
+  if (!comments) return json(400, { error: 'comments is required' });
+  if (comments.length > REVISION_COMMENT_MAX) {
+    return json(400, { error: `comments must be ${REVISION_COMMENT_MAX} characters or fewer` });
+  }
+  if (REVISION_CONTROL_CHARS.test(comments)) {
+    return json(400, { error: 'comments contains invalid control characters' });
+  }
+
+  const claimed = await ordersStore.claimRevision(genId, comments);
+  if (!claimed) {
+    return json(409, {
+      error: order.revisionsUsed >= order.revisionsAllowed
+        ? 'You have used every revision on this generation'
+        : 'This generation cannot take a revision right now',
+      status: order.status,
+    });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-revised', { genId, version: (order.revisionsUsed || 0) + 2 });
+  return json(200, { ok: true, status: claimed.status });
+}
+
+// GET /generations — every run this member has started, newest first. Without
+// it the order page was reachable only from the delivery email.
+async function listGenerations(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const pubs = await store.listUserItems(profile.userId, 'PUB#');
+  const rows = await Promise.all(pubs.map(async (pub) => {
+    const genId = String(pub.sk || '').replace(/^PUB#/, '');
+    const order = await ordersStore.get(genId);
+    return {
+      genId,
+      publication: pub.status,
+      companyId: pub.companyId || order?.ticker || '',
+      companyName: order?.companyName || pub.companyName || '',
+      startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
+      publishedAt: pub.publishedAt || null,
+      status: order?.status || pub.status,
+      revisionsAllowed: order?.revisionsAllowed || 0,
+      revisionsUsed: order?.revisionsUsed || 0,
+      private: Boolean(pub.private),
+    };
+  }));
+  rows.sort((a, b) => String(b.startedAt || '').localeCompare(String(a.startedAt || '')));
+  return json(200, { generations: rows });
+}
+
 async function postGenerationSubmit(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
@@ -1215,7 +1352,10 @@ const AUTHED_ROUTES = {
   'POST /analyses/{genId}/review': postAnalysisReview,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
+  'GET /generations': listGenerations,
   'GET /generations/{genId}': getGeneration,
+  'GET /generations/{genId}/order': getGenerationOrder,
+  'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
