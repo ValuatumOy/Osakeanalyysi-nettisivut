@@ -442,6 +442,28 @@ async function postGenerationsFree(event) {
   return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
 }
 
+// A generation the engine could not deliver gives the month back. Only a run
+// that never delivered: a failed REVISION drives an already-delivered order to
+// FAILED, and that member is holding a finished report — they owe the
+// publication and must not also get a new generation.
+async function restoreIfFailed({ profile, genId, order, publication, now }) {
+  if (!order || order.status !== ordersStore.STATUS.FAILED) return false;
+  if (!publication || publication.status !== 'generating') return false;
+  if (order.originalPdfFileName || order.deliveredEmailAt) return false;
+
+  const restored = await store.runTransact(quota.buildRestoreFailedGenerationTransact({
+    table: store.table(),
+    userId: profile.userId,
+    genId,
+    reservedAt: publication.reservedAt,
+    now,
+  }));
+  if (restored) {
+    await store.audit(profile.userId, 'generation-restored', { genId, reason: order.error || 'generation failed' });
+  }
+  return restored;
+}
+
 // GET /generations/{genId} — order progress, and the entitlement handover once
 // the reconciler has delivered the PDF.
 async function getGeneration(event) {
@@ -470,6 +492,7 @@ async function getGeneration(event) {
     // The member owns what they generated — no quota, no entitlement row.
     Object.assign(result, await presignGenerated(order.pdfFileName));
   }
+  result.generationRestored = await restoreIfFailed({ profile, genId, order, publication, now });
   return json(200, result);
 }
 
@@ -593,9 +616,12 @@ async function listGenerations(event) {
   const rows = await Promise.all(pubs.map(async (pub) => {
     const genId = String(pub.sk || '').replace(/^PUB#/, '');
     const order = await ordersStore.get(genId);
+    // Seeing the list is enough to get a failed month back — the member does
+    // not have to open the run that broke.
+    const restored = await restoreIfFailed({ profile, genId, order, publication: pub, now });
     return {
       genId,
-      publication: pub.status,
+      publication: restored ? 'failed' : pub.status,
       companyId: pub.companyId || order?.ticker || '',
       companyName: order?.companyName || pub.companyName || '',
       startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
