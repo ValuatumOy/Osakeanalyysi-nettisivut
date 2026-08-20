@@ -37,7 +37,7 @@ function fakePdfStore() {
 
 function fakeEngine(overrides = {}) {
   return {
-    calls: { submitRevision: [], getJob: [], downloadPdf: [] },
+    calls: { submitRevision: [], getJob: [], downloadPdf: [], fetchChangeMemo: [] },
     async submitJob() { throw new Error('not used in these tests'); },
     async submitRevision(args) {
       this.calls.submitRevision.push(args);
@@ -45,11 +45,28 @@ function fakeEngine(overrides = {}) {
     },
     async getJob(jobId) {
       this.calls.getJob.push(jobId);
-      return overrides.getJob ? overrides.getJob(jobId) : { jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf' };
+      return overrides.getJob
+        ? overrides.getJob(jobId)
+        : { jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', changesUrl: 'https://s3.example/changes.json', completedAt: '2026-01-01T00:00:00.000Z' };
     },
     async downloadPdf(s3Url) {
       this.calls.downloadPdf.push(s3Url);
       return Buffer.from('PDFDATA');
+    },
+    async fetchChangeMemo(changesUrl) {
+      this.calls.fetchChangeMemo.push(changesUrl);
+      if (overrides.fetchChangeMemo) return overrides.fetchChangeMemo(changesUrl);
+      return {
+        jobId: 'job_rev1', revisionOf: 'job_base', revisionNumber: 2, scope: 'estimates',
+        comment: 'assume 8% EBIT margin from 2027',
+        headline: { targetPrice: { before: 12.3, after: 14.1, currency: 'EUR' }, rating: { before: 'BUY', after: 'HOLD' } },
+        differences: { summary: 'moved the margin assumption', items: [{ area: 'Estimates', what: 'EBIT margin raised' }], unchanged: 'peer set' },
+        forecastRevision: {
+          baseFid: 1, resultFid: 2, writeup: '## Assumptions\n\n- higher margin',
+          wrote: [{ varname: 'ebit', year: 2027, before: 100, after: 108 }],
+          dropped: [], recomputed: [],
+        },
+      };
     },
   };
 }
@@ -141,6 +158,46 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
 
   assert.equal(email.calls.sendReportRevisedEmail.length, 1);
   assert.equal(email.calls.sendReportRevisedEmail[0].to, 'buyer@example.com');
+
+  // The change memo is fetched and stored as the first revisionHistory entry.
+  assert.equal(engine.calls.fetchChangeMemo.length, 1);
+  assert.equal(engine.calls.fetchChangeMemo[0], 'https://s3.example/changes.json');
+  assert.equal(order.revisionHistory.length, 1);
+  const entry = order.revisionHistory[0];
+  assert.equal(entry.version, 2);
+  assert.equal(entry.jobId, 'job_rev1');
+  assert.equal(entry.comments, 'assume 8% EBIT margin from 2027');
+  assert.equal(entry.pdfFileName, order.pdfFileName);
+  assert.equal(entry.changes.headline.targetPrice.after, 14.1);
+  assert.equal(order.activeRevisionComment, null);
+});
+
+test('a change memo fetch failure does not block delivery — the entry just has changes: null', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    getJob: (jobId) => ({ jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', changesUrl: 'https://s3.example/gone.json' }),
+    fetchChangeMemo: () => { throw new Error('404: not found'); },
+  });
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  pdfStore.files.set('Base.pdf', Buffer.from('ORIGINAL'));
+  orders.create({
+    id: 'cs_rev_nomemo', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+  }, statePath);
+  orders.claimRevision('cs_rev_nomemo', 'go faster', statePath);
+
+  await reconciler.advance(orders.get('cs_rev_nomemo', statePath)); // submits
+  await reconciler.advance(orders.get('cs_rev_nomemo', statePath)); // polls -> DONE -> delivers
+
+  const order = orders.get('cs_rev_nomemo', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.revisionHistory.length, 1);
+  assert.equal(order.revisionHistory[0].changes, null);
+  assert.equal(order.revisionHistory[0].comments, 'go faster');
 });
 
 test('a hard-failed revision reverts to DELIVERED without consuming the allowance', async (t) => {

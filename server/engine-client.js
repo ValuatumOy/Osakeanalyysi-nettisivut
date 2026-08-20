@@ -126,6 +126,7 @@ async function getJob(jobId) {
     status: data.status,
     outputType: data.outputType,
     s3Url: data.s3Url,
+    changesUrl: data.changesUrl,
     error: data.error,
     completedAt: data.completedAt,
   };
@@ -139,4 +140,15 @@ async function downloadPdf(s3Url) {
   return Buffer.from(await res.arrayBuffer());
 }
 
-module.exports = { submitJob, submitRevision, getJob, downloadPdf };
+// Fetch the change memo for an in-place revision from its presigned URL (see
+// "The change memo" in pdf-report-engine/docs/api.md). Best-effort by design
+// upstream — the caller should treat a rejection as "no memo" rather than
+// failing the whole delivery.
+async function fetchChangeMemo(changesUrl) {
+  if (!changesUrl) throw new Error('fetchChangeMemo: changesUrl is required');
+  const res = await fetch(changesUrl);
+  if (!res.ok) throw new Error(`engine fetchChangeMemo ${res.status}: ${res.statusText}`);
+  return res.json();
+}
+
+module.exports = { submitJob, submitRevision, getJob, downloadPdf, fetchChangeMemo };

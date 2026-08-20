@@ -34,7 +34,13 @@ function fakeOrdersStore(orders) {
 }
 
 function fakePdfStore() {
-  return { async presignPdfDownload(fileName) { return `https://signed.example/${fileName}`; } };
+  return {
+    calls: { presignPdfDownload: [] },
+    async presignPdfDownload(fileName) {
+      this.calls.presignPdfDownload.push(fileName);
+      return `https://signed.example/${fileName}`;
+    },
+  };
 }
 
 function loadApi({ orders = new Map(), secret = 'test-secret' } = {}) {
@@ -48,7 +54,7 @@ function loadApi({ orders = new Map(), secret = 'test-secret' } = {}) {
   require.cache[ORDERS_STORE_ID] = { id: ORDERS_STORE_ID, filename: ORDERS_STORE_ID, loaded: true, exports: ordersStore };
   require.cache[PDF_STORE_ID] = { id: PDF_STORE_ID, filename: PDF_STORE_ID, loaded: true, exports: pdfStore };
 
-  return { handler: require(API_ID).handler, orders };
+  return { handler: require(API_ID).handler, orders, pdfStore };
 }
 
 function event(routeKey, { id, body, secret = 'test-secret' } = {}) {
@@ -92,6 +98,29 @@ test('GET /api/orders/{id} presigns a PDF link only when DELIVERED', async (t) =
   const revising = JSON.parse((await handler(event('GET /api/orders/{id}', { id: 'cs_revising' }))).body);
   assert.equal(revising.pdfUrl, undefined);
   assert.equal(revising.status, STATUS.REVISING);
+});
+
+test('GET /api/orders/{id} returns revisionHistory newest-first with a presigned pdfUrl per entry', async (t) => {
+  const orders = new Map([
+    ['cs_history', {
+      id: 'cs_history', status: STATUS.DELIVERED, pdfFileName: 'latest.pdf', revisionsAllowed: 3, revisionsUsed: 2,
+      revisionHistory: [
+        { version: 2, comments: 'first change', pdfFileName: 'rev1.pdf', completedAt: '2026-01-01T00:00:00.000Z', changes: { headline: {} } },
+        { version: 3, comments: 'second change', pdfFileName: 'rev2.pdf', completedAt: '2026-01-02T00:00:00.000Z', changes: null },
+      ],
+    }],
+  ]);
+  const { handler, pdfStore } = loadApi({ orders });
+  t.after(() => { delete require.cache[API_ID]; delete require.cache[ORDERS_STORE_ID]; delete require.cache[PDF_STORE_ID]; });
+
+  const body = JSON.parse((await handler(event('GET /api/orders/{id}', { id: 'cs_history' }))).body);
+  assert.equal(body.revisionHistory.length, 2);
+  assert.equal(body.revisionHistory[0].version, 3); // newest first
+  assert.equal(body.revisionHistory[0].pdfUrl, 'https://signed.example/rev2.pdf');
+  assert.equal(body.revisionHistory[0].changes, null);
+  assert.equal(body.revisionHistory[1].version, 2);
+  assert.equal(body.revisionHistory[1].comments, 'first change');
+  assert.deepEqual(pdfStore.calls.presignPdfDownload.sort(), ['latest.pdf', 'rev1.pdf', 'rev2.pdf']);
 });
 
 test('POST /api/orders/{id}/revisions rejects empty, oversized and control-character comments', async (t) => {

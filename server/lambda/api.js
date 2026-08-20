@@ -312,6 +312,19 @@ async function getOrder(event) {
     payload.pdfUrl = await pdfStore.presignPdfDownload(order.pdfFileName);
   }
 
+  // Every delivered revision's change memo + a re-download link for that
+  // specific PDF, newest first — the order page renders these under "revision
+  // history". Presigning is cheap local SigV4 signing, no extra round trip.
+  payload.revisionHistory = await Promise.all(
+    (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
+      version: entry.version,
+      comments: entry.comments || '',
+      completedAt: entry.completedAt,
+      changes: entry.changes || null,
+      pdfUrl: entry.pdfFileName ? await pdfStore.presignPdfDownload(entry.pdfFileName) : null,
+    })),
+  );
+
   return json(200, payload, { 'cache-control': 'no-store' });
 }
 

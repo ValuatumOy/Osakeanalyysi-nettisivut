@@ -103,6 +103,13 @@ async function create(input) {
     // base to revise from next time.
     revisionJobId: null,
     pendingRevisionComment: null,
+    // The comment behind the in-flight revisionJobId, kept until delivery
+    // labels the resulting revisionHistory entry (pendingRevisionComment is
+    // cleared as soon as it's submitted to the engine).
+    activeRevisionComment: null,
+    // Delivered revisions, oldest first; v1 (the original delivery) is never
+    // appended here — see server/reconciler.js deliverRevision.
+    revisionHistory: [],
     revisionError: null,
     deliveredEmailAt: null,
     error: null,

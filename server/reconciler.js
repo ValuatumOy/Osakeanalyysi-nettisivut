@@ -304,6 +304,19 @@ async function deliverRevision(order, job) {
   const fileBase = `${companyToken(companyLabel)}_${dateToken}_rev-${order.id.slice(-8)}`;
   const pdfFileName = await claimPdfFileName(fileBase, pdf);
 
+  // Best-effort: the engine itself treats the change memo as best-effort (it
+  // may be absent even on a successful revision), so a fetch failure here
+  // must not block delivery — the customer still gets their PDF, just
+  // without the "what changed" writeup.
+  let changes = null;
+  if (job.changesUrl) {
+    try {
+      changes = await engine.fetchChangeMemo(job.changesUrl);
+    } catch (err) {
+      console.warn('reconciler: change memo fetch failed', { id: order.id, error: err.message });
+    }
+  }
+
   await pdfStore.writeSidecar(pdfFileName, {
     companyName: companyLabel,
     ticker: order.ticker || '',
@@ -331,6 +344,17 @@ async function deliverRevision(order, job) {
     });
   }
 
+  // v1 is the original delivery (handled by deliver(), never appended here),
+  // so the first entry through this function is v2.
+  const revisionEntry = {
+    version: (order.revisionHistory?.length || 0) + 2,
+    jobId: job.jobId,
+    comments: order.activeRevisionComment || '',
+    pdfFileName,
+    completedAt: job.completedAt || new Date().toISOString(),
+    changes,
+  };
+
   await orders.update(order.id, {
     status: orders.STATUS.DELIVERED,
     pdfFileName,
@@ -338,8 +362,10 @@ async function deliverRevision(order, job) {
     revisionJobId: null,
     revisionsUsed: (order.revisionsUsed || 0) + 1,
     pendingRevisionComment: null,
+    activeRevisionComment: null,
     revisionError: null,
     error: null,
+    revisionHistory: [...(order.revisionHistory || []), revisionEntry],
   });
   console.log('reconciler: revision delivered', { id: order.id, pdfFileName });
 }
@@ -354,6 +380,7 @@ async function failRevision(order, reason) {
     status: orders.STATUS.DELIVERED,
     revisionJobId: null,
     pendingRevisionComment: null,
+    activeRevisionComment: null,
     revisionError: reason,
     revisionAttempts: (order.revisionAttempts || 0) + 1,
   });
@@ -448,12 +475,15 @@ async function advance(order) {
     if (order.pendingRevisionComment) {
       if (!order.jobId) return failRevision(order, 'order is REVISING but has no base jobId to revise');
 
+      const comments = order.pendingRevisionComment;
       const { jobId: revisionJobId } = await engine.submitRevision({
         parentJobId: order.jobId,
-        comments: order.pendingRevisionComment,
+        comments,
       });
-      await orders.update(order.id, { revisionJobId, pendingRevisionComment: null, polls: 0, error: null });
-      order = { ...order, revisionJobId, pendingRevisionComment: null, polls: 0 };
+      await orders.update(order.id, {
+        revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0, error: null,
+      });
+      order = { ...order, revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0 };
       // Fall through: with a poll window configured, start polling immediately.
       if (POLL_WINDOW_MS <= 0) return;
     }
