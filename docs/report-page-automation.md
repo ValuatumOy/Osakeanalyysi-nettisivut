@@ -316,9 +316,15 @@ the only input it holds by construction.
 
 - **`prompt.mjs`, verbatim.** It is the tuned artefact and the reason the output is publishable.
 - **The JSON schema.** The prompt is written against it; it is the contract, not scaffolding.
-- **`style.mjs` and the repair pass.** Per the measurements in
-  `docs/report-content-generation.md` this is what moved the chosen model from 3.2 to 4.0 on house
-  style. It is a quality mechanism, not a comparison tool, and it becomes the strict CI gate.
+
+`style.mjs` and its repair pass (a mechanical prose-defect checker plus a one-shot repair call,
+detailed in `docs/report-content-generation.md`) shipped as part of the strict CI gate, but was
+removed on 2026-08-20: two live reports (Stora Enso, Tesla) got stuck failing every scheduled sync
+because its `unitless-figure` regex flagged real, correctly-written figures (unit nouns like
+"hectares" and adjective-qualified units like "500,000 paid rides" weren't recognised) and its
+`scenario-recitation` check kept rejecting a draft the repair pass couldn't converge on within its
+two-round budget. Both checks are gone; extraction is a single ungated model call again, checked
+only by the structural gate below.
 
 Dropped: `compare.mjs`, the LLM judge, `runs.jsonl`, `pdf-cache/`, and every flag that exists to
 vary the model — `--model`, `--latest`, `--dry-run`, `--example`, `--pdf-native`, `--pdf-engine`,
@@ -330,20 +336,17 @@ the price on prose. The findings behind that choice stay in
 `docs/report-content-generation.md`.
 
 New home `scripts/report-pages/`: `sync.mjs`, `extract.mjs`, `prompt.mjs`, `schema.mjs`,
-`style.mjs`, `openrouter.mjs`. `scripts/build-report-pages.mjs` folds into it, including the
-listing build.
+`openrouter.mjs`. `scripts/build-report-pages.mjs` folds into it, including the listing build.
 
 **Gate before publishing.** Structure valid (schema-enforced structured outputs, plus a
-BUY/HOLD/SELL and ISO-date sanity check), style clean after up to two repair rounds, and
-JSON-LD valid; a report that fails the gate is skipped (its page stays a coverage page) and the
-run fails loudly rather than publishing a bad extraction. One tolerance, found on the first
-corpus run: a single scenario-table figure may reappear in `coreAnalysis`, because the prompt
-requires the bridge section to state the enterprise value its reverse test supports and that
-figure can legitimately coincide with a scenario cell — two or more echoes still fail. Figures cannot be verified automatically
-— no reference file exists for a new report — so the generated headline block (rating, current
-price, target, upside) goes into the job summary and the existing admin delivery email, where a
-five-second glance catches the fatal class of error after the fact; a bad figure is fixed by
-correcting the content file and letting the next run rebuild.
+BUY/HOLD/SELL and ISO-date sanity check) and JSON-LD valid; a report that fails the gate is
+skipped (its page stays a coverage page) and the run fails loudly rather than publishing a bad
+extraction. There is no prose-style check any more (see the note under "Extraction" above) —
+figures cannot be verified automatically either way, no reference file exists for a new report —
+so the generated headline block (rating, current price, target, upside) goes into the job summary
+and the existing admin delivery email, where a five-second glance catches the fatal class of error
+after the fact; a bad figure is fixed by correcting the content file and letting the next run
+rebuild.
 
 ## Fixed along the way
 
@@ -367,7 +370,7 @@ Prerequisites rather than scope creep:
 3. **`reports.html` is baked by the sync**, and the client-side catalog rendering
    (`buildReadyReports()`, `initLiveReadyReportCta()`) is deleted. Checkout remains the only live
    call in the browser.
-4. **Fully automated, no human approval step.** The gate is structural (schema, style, JSON-LD);
+4. **Fully automated, no human approval step.** The gate is structural (schema, JSON-LD);
    figure review is retrospective via the job summary and admin email.
 
 Decided in the second review, same day:
