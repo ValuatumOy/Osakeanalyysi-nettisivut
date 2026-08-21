@@ -265,14 +265,25 @@ async function main() {
         afterPay?.totals?.sharePaid === 10 && afterPay?.totals?.shareEligible === 0,
         JSON.stringify(afterPay?.totals));
 
+      // Before the takedown, so the row shows the state an arriving invoice is
+      // checked against: one sale settled, one still held.
+      const owed = await adminApi('GET', '/admin/members/earnings');
+      const row = owed.data?.analysts?.find(a => a.userId === seller.userId);
+      check('admin sees what each analyst is owed, against an arriving invoice',
+        owed.status === 200 && row && row.paid === 10 && row.readyToInvoice === 0
+          && row.held === 17.5 && row.grossSales === 55,
+        JSON.stringify(row || owed.data));
+
       const down = await adminApi('POST', '/admin/members/takedown',
         { userId: seller.userId, genId: soldGen, reason: 'smoke test' });
       check('takedown of a sold analysis', down.status === 200, JSON.stringify(down.data));
 
       const afterDown = (await api('GET', '/me/earnings', { token: seller.token })).data;
-      check('a takedown claws the paid share back and voids the maturing one',
+      check('a takedown claws the paid share back and voids the held one',
         afterDown?.totals?.shareClawback === -10 && afterDown?.totals?.sharePending === 0,
         JSON.stringify(afterDown?.totals));
+
+
     }
   }
 

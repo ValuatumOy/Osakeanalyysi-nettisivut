@@ -1325,6 +1325,56 @@ async function postAdminPayout(event) {
   return json(200, { ok: true, paid: toPay, total });
 }
 
+// GET /admin/members/earnings — who is owed what, in one call. An analyst
+// invoices us for their "ready to invoice" balance, so the question this answers
+// is the one an arriving invoice asks: is that number right, and what is behind
+// it? Derived from the same ledger the analyst sees, so the two cannot disagree.
+async function getAdminEarnings(event) {
+  const now = requestNow(event);
+  const index = await store.listPublicationIndex({});
+  const userIds = [...new Set(index.map((item) => item.userId).filter(Boolean))];
+  const nameOf = new Map();
+  for (const item of index) {
+    if (item.userId && item.analystName && !nameOf.has(item.userId)) {
+      nameOf.set(item.userId, item.analystName);
+    }
+  }
+
+  const analysts = await Promise.all(userIds.map(async (userId) => {
+    const [pubs, payouts, sales] = await Promise.all([
+      store.listUserItems(userId, 'PUB#'),
+      store.listUserItems(userId, 'PAYOUT#'),
+      store.listUserItems(userId, 'SALE#'),
+    ]);
+    const { paidGenIds, paidAmounts } = paidFrom(payouts);
+    const led = bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts });
+    const profile = await store.getProfile(userId);
+    return {
+      userId,
+      analyst: nameOf.get(userId) || profile?.name || profile?.email || null,
+      email: profile?.email || null,
+      published: led.entries.length,
+      salesCount: led.totals.salesCount,
+      grossSales: led.totals.grossSales,
+      readyToInvoice: Math.round((led.totals.shareEligible + led.totals.eligible) * 100) / 100,
+      held: Math.round((led.totals.sharePending + led.totals.pending) * 100) / 100,
+      paid: Math.round((led.totals.sharePaid + led.totals.paid) * 100) / 100,
+      clawback: Math.round((led.totals.shareClawback + led.totals.clawback) * 100) / 100,
+      payable: bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts }),
+    };
+  }));
+
+  const owed = analysts.filter((a) => a.readyToInvoice > 0 || a.held > 0 || a.salesCount > 0)
+    .sort((a, b) => b.readyToInvoice - a.readyToInvoice);
+  return json(200, {
+    now: now.toISOString(),
+    share: bounty.REVENUE_SHARE,
+    totalReadyToInvoice: Math.round(owed.reduce((acc, a) => acc + a.readyToInvoice, 0) * 100) / 100,
+    totalHeld: Math.round(owed.reduce((acc, a) => acc + a.held, 0) * 100) / 100,
+    analysts: owed,
+  });
+}
+
 // GET /admin/members/publications — what each analyst actually produced, newest
 // first, with their prompts and the peer scores. Judging that is the gate for
 // granting the next generation, so it has to be one call (Esa, 17.8.2026).
@@ -1540,6 +1590,7 @@ const AUTHED_ROUTES = {
 
 const ADMIN_ROUTES = {
   'GET /admin/members/publications': getAdminPublications,
+  'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,
   'POST /admin/members/role': postAdminRole,
   'POST /admin/members/feature': postAdminFeature,
