@@ -381,13 +381,14 @@ function jsonLd(d, cat, desc) {
 
 function buyGate(d, cat) {
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : null;
+  const written = d.reportDate ? formatReportDate(d.reportDate) : null;
   return `
         <section class="report-full-section" id="unlock">
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
-            <h2 style="color:white; margin-top:0;">Unlock the full ${esc(shortName(d.companyName))} report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.${price ? ` Instant download for ${price}.` : ''}</p>
+            <h2 style="color:white; margin-top:0;">Unlock the ${esc(shortName(d.companyName))} ready report</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.${price ? ` Instant download for ${price}.` : ''}${written ? ` Written on ${written}, from the figures available then.` : ''}</p>
             <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg" data-revisable="${cat?.revisable ? '1' : ''}">${price ? `Buy full report — ${price}` : 'Get the full report'}</a>
+              <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg" data-revisable="${cat?.revisable ? '1' : ''}">${price ? `Buy the ready report — ${price}` : 'Get the ready report'}</a>
               <a href="/pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white;">See pricing</a>
             </div>
           </div>
@@ -437,8 +438,15 @@ export function renderPage(d, cat, all) {
   const downloadCta = isFree && pdfHref
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
     : hasReport
-      ? `<a href="#unlock" class="btn btn-primary">Get the full report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
+      ? `<a href="#unlock" class="btn btn-primary">Get the ready report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
       : `<a href="#generate" class="btn btn-gold">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
+
+  // Two buttons, two products, and nothing on the page said what separated them.
+  // The report date is the only honest answer: it is what the ready report knew.
+  const writtenOn = updated ? formatReportDate(updated) : null;
+  const actionsNote = !hasReport
+    ? `A fresh report is written when you order it, from the data available today, and arrives by email — usually within about 30 minutes.`
+    : `${isFree ? 'This report was' : 'The ready report was'} written by the Valuatum engine on ${writtenOn || 'its publication date'} and holds the figures available then. A fresh report is written today, from today's data, and arrives by email — usually within about 30 minutes.`;
 
   const sections = [];
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
@@ -687,9 +695,10 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report</a>` : ''}
+            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>` : ''}
             <a href="/report-store.html?company=${encodeURIComponent(d.ticker)}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">See all analyst reports</a>
           </div>
+          <p class="company-header-note">${esc(actionsNote)}</p>
         </div>
       </div>
     </section>
@@ -757,7 +766,7 @@ export function renderCards(companies, companyPageCatalog) {
             <div class="rc-tags">${tags}</div>
           </div>
           <div class="rc-actions">
-            <div><div class="rc-price">${esc(price)}</div><div class="rc-price-note">${isFree ? 'Instant PDF download' : 'Existing PDF report'}</div></div>
+            <div><div class="rc-price">${esc(price)}</div><div class="rc-price-note">Instant PDF download</div></div>
             ${primaryCta}
             <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report</button>
             <a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/${attr(pageUrl)}">Open report page</a>

@@ -99,7 +99,7 @@
               <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Analysts, free</h2>
               <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
               <ul class="m-offer">
-                <li><strong>10 engine reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
+                <li><strong>10 ready reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
                 <li><strong>20 analyst reports</strong>, unlocked one at a time. Rate the one you opened and say what it adds, and the next unlocks.</li>
                 <li><strong>1 fresh generation</strong>, free because you publish it under your own name and LinkedIn profile, with the prompts you used.</li>
               </ul>
@@ -129,7 +129,7 @@
           <div class="ws-section">
             <div class="ws-section-head">
               <h2>Report library</h2>
-              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 engine reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
             </div>
             <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
@@ -237,13 +237,13 @@
           <div class="ws-section" id="earningsCard" hidden>
             <div class="ws-section-head">
               <h2>Income</h2>
-              <p class="sub">You set the price of every analysis you publish, and half of what it sells for is yours. Each sale matures 14 days after the reader pays — that is the refund and moderation window — and is payable to you after that.</p>
+              <p class="sub">You set the price of every analysis you publish, and half of what it sells for is yours. Every sale is held for 14 days after the reader pays, because a card payment can still be refunded in that time. After that it is ready to invoice: you send us an invoice for the balance, and we pay it.</p>
             </div>
             <div class="ws-panel">
               <div class="earn-grid">
                 <div class="earn-stat"><div class="val" id="earnPaid">€0</div><div class="lbl">Paid to you</div></div>
-                <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Payable now</div></div>
-                <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Maturing</div></div>
+                <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Ready to invoice</div></div>
+                <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Held for 14 days</div></div>
                 <div class="earn-stat"><div class="val" id="earnGross">€0</div><div class="lbl">Your reports sold for</div></div>
               </div>
               <p class="muted" id="earnSummary" style="margin-top:1.5rem;"></p>
@@ -258,8 +258,8 @@
               <ol>
                 <li><strong>You set the price.</strong> When you publish, you choose what your analysis costs and how long until it decays to free (up to a year). A reader without a membership pays that price by card; a member spends one of their monthly reads instead.</li>
                 <li><strong>The split is 50/50.</strong> Half of what the reader pays is yours, half is ours. The split is taken on the price the reader paid, before card fees — those come out of our half.</li>
-                <li><strong>A sale matures in 14 days.</strong> Card payments can be refunded or disputed, and moderation happens after publication rather than before it. Until that window closes the sale shows as <em>Maturing</em>.</li>
-                <li><strong>Then it is payable.</strong> Matured sales move to <em>Payable now</em>. You invoice us for that balance; there is a minimum payout so tiny transfers never happen, and the invoice has a fixed due date rather than an ad-hoc payment date.</li>
+                <li><strong>Every sale is held for 14 days.</strong> A card payment can be refunded or disputed for a while after it happens, and moderation happens after publication rather than before it. For those 14 days your half shows as <em>Held 14 days</em>: counted, but not yet yours to invoice.</li>
+                <li><strong>Then you invoice us.</strong> After the 14 days the money moves to <em>Ready to invoice</em> — that total is what you bill us for, from you or your company. There is a minimum before a payout is worth making, so tiny balances wait for the next sale, and the invoice has a fixed due date rather than an ad-hoc payment date.</li>
                 <li><strong>A takedown voids the sale.</strong> If an analysis is taken down, its sales earn nothing, and anything already paid on it is clawed back against your next invoice. The reader is refunded.</li>
                 <li><strong>You are not an employee.</strong> Payment is against an invoice from you or your company; there is no employment relationship, and any taxes on what you earn are yours to handle.</li>
                 <li><strong>Member reads are not counted here yet.</strong> When a member opens your analysis with one of their monthly reads, nothing is attributed to you today. Only direct sales appear above. That is the next thing to change, and it is the reason a low price and a slow decay to free are worth more than they look: they buy readership, and readership is what the ranking pays for.</li>
@@ -830,7 +830,7 @@
     }
 
     const EARNING_LABELS = {
-      pending: 'Maturing', eligible: 'Payable now', paid: 'Paid',
+      pending: 'Held 14 days', eligible: 'Ready to invoice', paid: 'Paid',
       clawback: 'Clawed back', void: 'Nothing owed',
     };
     const eur = (n) => '€' + (Math.round(Number(n || 0) * 100) / 100).toLocaleString('en-IE',

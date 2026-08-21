@@ -1912,6 +1912,16 @@ input, textarea { font: inherit; }
   gap: 0.75rem;
   flex-wrap: wrap;
 }
+/* Two buttons priced differently need one line saying what separates them. */
+.company-header-note {
+  flex: 0 0 100%;   /* its own row under both buttons, whatever the header wraps to */
+  margin-top: -0.4rem;
+  max-width: 62ch;
+  font-size: var(--text-xs);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
 
 /* Key metrics */
 .key-metrics-section {
