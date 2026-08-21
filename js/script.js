@@ -36,8 +36,13 @@ window.addEventListener('pageshow', function (event) {
 // only site-wide signal we have; the member area itself owns signing out.
 (function initNavAccountLink() {
   if (!localStorage.memberToken) return;
-  document.querySelectorAll('.nav-signin, .nav-mobile-link[href="members.html"]')
-    .forEach(link => { link.textContent = 'Member area'; });
+  // Pages whose CTA is already the member area do not need a second link to it.
+  const hasMemberCta = document.querySelector('[href="members.html"].nav-cta, [href="members.html"].nav-mobile-cta');
+  document.querySelectorAll('.nav-signin, .nav-mobile-link:not(.nav-mobile-cta)[href="members.html"]')
+    .forEach(link => {
+      if (hasMemberCta) link.remove();
+      else link.textContent = 'Member area';
+    });
 })();
 
 // ── Button press ────────────────────────────────────

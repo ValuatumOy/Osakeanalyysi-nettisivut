@@ -668,7 +668,7 @@ input, textarea { font: inherit; }
   color: var(--white);
   font-size: var(--text-md);
   font-weight: 300;
-  padding: 1rem 0;
+  padding: 1rem 1rem 1rem 0;
   min-width: 0;
 }
 .search-input::placeholder { color: rgba(255,255,255,0.38); }
