@@ -75,6 +75,11 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.aiequityreports.com/analyst-terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>weekly</changefreq>
