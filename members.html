@@ -840,9 +840,13 @@
       const { status, data } = await api('GET', '/me/earnings');
       const card = document.getElementById('earningsCard');
       const sales = data?.saleEntries || [];
-      if (status !== 200 || (!data.entries?.length && !sales.length)) { card.hidden = true; return; }
+      // An analyst who has not sold anything yet still needs to see how being
+      // paid works — hiding the section until the first sale hid the answer from
+      // exactly the people asking the question. Only a non-analyst (403) has no
+      // income at all.
+      if (status !== 200) { card.hidden = true; return; }
       card.hidden = false;
-      const t = data.totals;
+      const t = data.totals || {};
 
       // The four numbers cover both what a sale earns and the pilot fee, so the
       // headline stays true whichever of the two is actually running.
@@ -859,7 +863,9 @@
         ? sales.length + (sales.length === 1 ? ' sale' : ' sales') + ' of your analyses, '
           + eur(gross) + ' paid by readers, your half is ' + eur(gross / 2)
           + '. Half of every sale is yours; card fees come out of our half.'
-        : 'No sales yet. Every analysis you publish stays on its company page and can sell at any time.';
+        : (data.entries?.length
+          ? 'Nothing sold yet. Your published analyses stay on their company pages and can sell at any time — the numbers above fill in as they do.'
+          : 'Nothing published yet, so nothing to sell. Publish an analysis with a price on it and every sale shows up here: what the reader paid, your half, and when you can invoice us for it.');
 
       // Sales first — that is the income. The pilot fee rows follow, and vanish
       // once nothing is on a fee any more.
@@ -876,7 +882,8 @@
 
       document.getElementById('earningsTable').innerHTML =
         '<thead><tr><th>Company</th><th>What</th><th>Date</th><th>Reader paid</th><th>Status</th><th>Yours</th></tr></thead><tbody>'
-        + (saleRows + feeRows || '<tr><td colspan="6" class="muted">Nothing to show yet.</td></tr>')
+        + (saleRows + feeRows
+          || '<tr><td colspan="6" class="muted">No sales yet. Every sale of your work appears here as its own row.</td></tr>')
         + '</tbody>';
     }
 
