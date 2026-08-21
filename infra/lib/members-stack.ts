@@ -218,6 +218,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/test/users'],
       [apigwv2.HttpMethod.POST, '/test/force-publish'],
       [apigwv2.HttpMethod.POST, '/test/publications'],
+      [apigwv2.HttpMethod.POST, '/test/sales'],
     ];
     const createdRoutes: apigwv2.HttpRoute[] = [];
     for (const [method, routePath] of routes) {

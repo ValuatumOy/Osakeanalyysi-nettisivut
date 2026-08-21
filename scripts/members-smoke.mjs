@@ -220,6 +220,62 @@ async function main() {
     console.log('· skip: payout/takedown checks (set ADMIN_PASSWORD to include them)');
   }
 
+  // — the income an analyst actually sees: half of every sale of their work —
+  {
+    const seller = (await testApi('POST', '/test/users', { role: 'analyst' })).data;
+    const soldGen = (await seed(seller.userId, 'SALES.HE', ago(30))).data?.genId;
+    const seedSale = (grossEur, soldAt) => testApi('POST', '/test/sales',
+      { userId: seller.userId, genId: soldGen, companyId: 'SALES.HE', grossEur, soldAt });
+
+    const first = await seedSale(20, ago(20));   // matured
+    await seedSale(35, ago(2));                  // still inside the 14-day window
+    check('a sale can be recorded against a publication', first.status === 200 && first.data?.wrote,
+      JSON.stringify(first.data));
+
+    const dup = await testApi('POST', '/test/sales', {
+      userId: seller.userId, genId: soldGen, companyId: 'SALES.HE', grossEur: 20,
+      soldAt: ago(20), sessionId: first.data.sessionId,
+    });
+    check('the same checkout session never pays twice', dup.status === 200 && dup.data?.wrote === false,
+      JSON.stringify(dup.data));
+
+    const income = (await api('GET', '/me/earnings', { token: seller.token })).data;
+    check('the analyst sees half of each sale: €10 payable, €17.50 maturing',
+      income?.totals?.shareEligible === 10 && income?.totals?.sharePending === 17.5
+        && income?.totals?.grossSales === 55,
+      JSON.stringify(income?.totals));
+    check('each sale is its own row, with what the reader paid',
+      income?.saleEntries?.length === 2 && income.saleEntries[0].grossEur === 20
+        && income.saleEntries[0].amount === 10,
+      JSON.stringify(income?.saleEntries));
+
+    const readerOfSales = (await testApi('POST', '/test/users', { role: 'reader' })).data;
+    const denied = await api('GET', '/me/earnings', { token: readerOfSales.token });
+    check('a reader has no earnings ledger → 403', denied.status === 403, `got ${denied.status}`);
+
+    if (process.env.ADMIN_PASSWORD) {
+      const pay = await adminApi('POST', '/admin/members/payout', { userId: seller.userId });
+      check('the payable half settles, and only that half',
+        pay.status === 200 && pay.data?.total === 10 && pay.data?.paid?.length === 1
+          && pay.data.paid[0].kind === 'share',
+        JSON.stringify(pay.data));
+
+      const afterPay = (await api('GET', '/me/earnings', { token: seller.token })).data;
+      check('a settled sale reads as paid, not payable',
+        afterPay?.totals?.sharePaid === 10 && afterPay?.totals?.shareEligible === 0,
+        JSON.stringify(afterPay?.totals));
+
+      const down = await adminApi('POST', '/admin/members/takedown',
+        { userId: seller.userId, genId: soldGen, reason: 'smoke test' });
+      check('takedown of a sold analysis', down.status === 200, JSON.stringify(down.data));
+
+      const afterDown = (await api('GET', '/me/earnings', { token: seller.token })).data;
+      check('a takedown claws the paid share back and voids the maturing one',
+        afterDown?.totals?.shareClawback === -10 && afterDown?.totals?.sharePending === 0,
+        JSON.stringify(afterDown?.totals));
+    }
+  }
+
   // — reader role, analyst reads and the review obligation —
   const reader = (await testApi('POST', '/test/users', { role: 'reader' })).data;
   const readerMe = await api('GET', '/me', { token: reader.token });

@@ -867,7 +867,8 @@
         + String(e.soldAt).slice(0, 10) + '</td><td>' + eur(e.grossEur) + '</td><td>'
         + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
         + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
-      const feeRows = (data.entries || []).filter(e => e.amount || e.state !== 'void')
+      // The flat pilot fee is off, so its rows are all €0 — noise next to real money.
+      const feeRows = (data.entries || []).filter(e => e.amount)
         .map(e => '<tr><td>' + e.companyId + '</td><td>Publication fee</td><td>'
           + e.publishedAt.slice(0, 10) + '</td><td>—</td><td>'
           + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')

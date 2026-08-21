@@ -1483,6 +1483,27 @@ async function postTestPublication(event) {
   return json(200, { ok: true, genId });
 }
 
+// POST /test/sales {userId, genId, companyId, grossEur, soldAt} — a sale without
+// Stripe. The webhook is the only thing that writes these in real life, and its
+// signature cannot be forged from a test, so this is how the earnings chain is
+// exercised end to end.
+async function postTestSale(event) {
+  const body = parseBody(event);
+  if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const soldAt = body.soldAt || requestNow(event).toISOString();
+  const sessionId = body.sessionId || `cs_test_${crypto.randomUUID()}`;
+  const wrote = await store.putSale(body.userId, `${body.genId}#${sessionId}`, {
+    genId: body.genId,
+    companyId: String(body.companyId || 'TEST.HE').toUpperCase(),
+    sessionId,
+    paymentIntent: body.paymentIntent || null,
+    grossEur: Number(body.grossEur) || 0,
+    currency: 'eur',
+    soldAt,
+  });
+  return json(200, { ok: true, genId: body.genId, sessionId, wrote });
+}
+
 // ── dispatch ─────────────────────────────────────────────────────────────────
 
 const PUBLIC_ROUTES = {
@@ -1531,6 +1552,7 @@ const TEST_ROUTES = {
   'POST /test/users': postTestUsers,
   'POST /test/force-publish': postTestForcePublish,
   'POST /test/publications': postTestPublication,
+  'POST /test/sales': postTestSale,
 };
 
 function requireAdmin(event) {
