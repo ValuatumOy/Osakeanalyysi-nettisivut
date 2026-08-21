@@ -29,6 +29,10 @@
     .a-step p + p { margin-top: 0.6rem; }
     .a-step-time { display: inline-block; font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); background: var(--off-white); border: 1px solid var(--color-border); border-radius: 999px; padding: 0.2em 0.9em; margin-bottom: 0.75rem; }
     .a-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    /* Six cards fall 4 + 2 on a wide screen. Three to a row makes two even rows. */
+    .a-cards--three { grid-template-columns: 1fr; }
+    @media (min-width: 620px) { .a-cards--three { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 940px) { .a-cards--three { grid-template-columns: repeat(3, 1fr); } }
     .a-card { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.75rem; }
     .a-card h3 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
     .a-card p { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel); }
@@ -276,7 +280,7 @@
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">Half of every sale, on a price you set yourself.</h2>
         <p class="section-sub" style="max-width:680px;">No rate card, no fixed fee per report, no cap on how much one analysis can earn. What follows is the whole arrangement, including the parts that are not yet finished.</p>
 
-        <div class="a-cards" style="margin-bottom:2.5rem;">
+        <div class="a-cards a-cards--three" style="margin-bottom:2.5rem;">
           <div class="a-card">
             <h3>You price it</h3>
             <p>At publication you set what your analysis costs and how long until it decays to free, up to a year. A reader without a membership pays your price by card. A member spends one of their monthly reads instead.</p>
