@@ -104,3 +104,76 @@ test('quarterKey boundaries', () => {
   assert.equal(bounty.quarterKey('2026-04-01T00:00:00Z'), '2026-Q2');
   assert.equal(bounty.quarterKey('2026-12-31T23:59:59Z'), '2026-Q4');
 });
+
+// ── revenue share (21.8.2026): half of every sale, on top of the flat fee ─────
+
+const sale = (genId, soldAt, grossEur, extra = {}) => ({
+  sk: `SALE#${genId}#cs_${soldAt}`, genId, companyId: 'NOKIA.HE', soldAt, grossEur, ...extra,
+});
+
+test('half of every sale, maturing on the same 14-day window as the fee', () => {
+  const pubs = [pub('a', '2026-08-01T00:00:00Z', 'NOKIA.HE')];
+  const sales = [sale('a', '2026-08-10T00:00:00Z', 30)];
+
+  const early = bounty.ledger(pubs, opts('2026-08-20T00:00:00Z', { sales }));
+  assert.equal(early.saleEntries[0].amount, 15);
+  assert.equal(early.saleEntries[0].state, 'pending');
+  assert.equal(early.totals.sharePending, 15);
+  assert.equal(early.totals.grossSales, 30);
+
+  const late = bounty.ledger(pubs, opts('2026-08-25T00:00:00Z', { sales }));
+  assert.equal(late.saleEntries[0].state, 'eligible');
+  assert.equal(late.totals.shareEligible, 15);
+});
+
+test('the share ignores the quarter and month caps — a sale funds itself', () => {
+  const pubs = [
+    pub('a', '2026-08-01T00:00:00Z', 'NOKIA.HE'),
+    pub('b', '2026-08-05T00:00:00Z', 'NOKIA.HE'), // same company, same quarter: no fee
+  ];
+  const sales = [sale('b', '2026-08-06T00:00:00Z', 40)];
+  const res = bounty.ledger(pubs, opts('2026-09-01T00:00:00Z', { sales }));
+
+  assert.equal(res.entries.find((e) => e.genId === 'b').state, 'void');
+  assert.equal(res.saleEntries[0].state, 'eligible');
+  assert.equal(res.saleEntries[0].amount, 20);
+});
+
+test('a takedown voids the share too, and claws back one already paid', () => {
+  const pubs = [pub('a', '2026-08-01T00:00:00Z', 'NOKIA.HE', {
+    status: 'takendown', takenDownAt: '2026-08-20T00:00:00Z',
+  })];
+  const sales = [sale('a', '2026-08-10T00:00:00Z', 30)];
+  const payoutId = 'SALE#a#cs_2026-08-10T00:00:00Z';
+
+  const voided = bounty.ledger(pubs, opts('2026-09-01T00:00:00Z', { sales }));
+  assert.equal(voided.saleEntries[0].state, 'void');
+  assert.equal(voided.totals.shareEligible, 0);
+
+  const clawed = bounty.ledger(pubs, opts('2026-09-01T00:00:00Z', {
+    sales, paidGenIds: [payoutId], paidAmounts: { [payoutId]: 15 },
+  }));
+  assert.equal(clawed.saleEntries[0].state, 'clawback');
+  assert.equal(clawed.totals.shareClawback, -15);
+});
+
+test('a paid share is what was actually paid, not what today’s split would give', () => {
+  const pubs = [pub('a', '2026-08-01T00:00:00Z', 'NOKIA.HE')];
+  const sales = [sale('a', '2026-08-02T00:00:00Z', 30)];
+  const payoutId = 'SALE#a#cs_2026-08-02T00:00:00Z';
+  const res = bounty.ledger(pubs, opts('2026-09-01T00:00:00Z', {
+    sales, paidGenIds: [payoutId], paidAmounts: { [payoutId]: 12 },
+  }));
+  assert.equal(res.saleEntries[0].state, 'paid');
+  assert.equal(res.totals.sharePaid, 12);
+});
+
+test('payableItems settles fees and shares through one list', () => {
+  const pubs = [pub('a', '2026-08-01T00:00:00Z', 'NOKIA.HE')];
+  const sales = [sale('a', '2026-08-02T00:00:00Z', 30)];
+  const items = bounty.payableItems(pubs, opts('2026-09-01T00:00:00Z', { sales }));
+  assert.deepEqual(items, [
+    { id: 'a', kind: 'fee', amount: AMOUNT },
+    { id: 'SALE#a#cs_2026-08-02T00:00:00Z', kind: 'share', amount: 15 },
+  ]);
+});

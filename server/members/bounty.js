@@ -7,7 +7,14 @@
 
 // Publish is automatic, so the moderation window is the quality gate: a bounty
 // only matures once the analysis has survived MATURITY_DAYS without takedown.
+// A sale waits the same window, which doubles as the refund/dispute window.
 const MATURITY_DAYS = 14;
+
+// The analyst's half of every sale of their analysis (decision 21.8.2026,
+// replacing the flat fee as the headline). Share of gross: what the reader paid,
+// before Stripe's cut, so the number in the member area matches the price the
+// analyst set.
+const REVENUE_SHARE = 0.5;
 // Bounds worst-case spend, and one company per quarter kills "same company,
 // five takes" farming.
 const MONTHLY_CAP = 4;
@@ -27,6 +34,10 @@ function amountEur() {
   return Number(process.env.BOUNTY_EUR_PER_REPORT || 0);
 }
 
+function shareOf(grossEur, share) {
+  return Math.round(Number(grossEur || 0) * share * 100) / 100;
+}
+
 /**
  * @param pubs  PUB# items: { sk, status, publishedAt, companyId, takenDownAt }
  * @param opts  { now: Date, paidGenIds: Set|Array, paidAmounts, maturityDays, monthlyCap, amount }
@@ -37,11 +48,13 @@ function amountEur() {
  */
 function ledger(pubs, {
   now,
+  sales = [],
   paidGenIds = [],
   paidAmounts = {},
   maturityDays = MATURITY_DAYS,
   monthlyCap = MONTHLY_CAP,
   amount = amountEur(),
+  share = REVENUE_SHARE,
 } = {}) {
   const paid = paidGenIds instanceof Set ? paidGenIds : new Set(paidGenIds);
   const paidAmount = (genId) => (paidAmounts[genId] === undefined ? amount : paidAmounts[genId]);
@@ -102,17 +115,68 @@ function ledger(pubs, {
     else entry.state = 'eligible';
   }
 
-  const sum = (state) => entries.filter((e) => e.state === state)
-    .reduce((acc, e) => acc + e.amount, 0);
+  // Sales of the analyst's own analyses. No quarter or month cap here: those
+  // bound flat-fee spam, and a share is self-funding — no sale, no payout.
+  const statusOf = new Map(rows.map((p) => [String(p.sk || '').replace(/^PUB#/, ''), p.status]));
+  const saleEntries = sales
+    .filter((s) => s.soldAt && s.genId)
+    .sort((a, b) => String(a.soldAt).localeCompare(String(b.soldAt)))
+    .map((s) => {
+      const saleId = String(s.sk || '').replace(/^SALE#/, '') || `${s.genId}#${s.sessionId || ''}`;
+      const payoutId = `SALE#${saleId}`;
+      const isPaid = paid.has(payoutId);
+      const gross = Number(s.grossEur || 0);
+      const entry = {
+        saleId,
+        payoutId,
+        genId: s.genId,
+        companyId: s.companyId || null,
+        soldAt: s.soldAt,
+        grossEur: gross,
+        amount: 0,
+        state: 'void',
+        reason: null,
+      };
+      const share_ = paidAmounts[payoutId] === undefined ? shareOf(gross, share) : paidAmounts[payoutId];
+
+      if (statusOf.get(s.genId) === 'takendown') {
+        entry.state = isPaid ? 'clawback' : 'void';
+        entry.reason = 'takendown';
+        if (isPaid) entry.amount = -share_;
+        return entry;
+      }
+
+      entry.amount = share_;
+      const maturesAt = new Date(new Date(s.soldAt).getTime() + maturityDays * DAY_MS);
+      entry.maturesAt = maturesAt.toISOString();
+      if (isPaid) entry.state = 'paid';
+      else if (nowMs < maturesAt.getTime()) entry.state = 'pending';
+      else entry.state = 'eligible';
+      return entry;
+    });
+
+  const sumOf = (list, state) => Math.round(list.filter((e) => e.state === state)
+    .reduce((acc, e) => acc + e.amount, 0) * 100) / 100;
+  const sum = (state) => sumOf(entries, state);
 
   return {
     entries,
+    saleEntries,
     totals: {
       amount,
+      share,
       pending: sum('pending'),
       eligible: sum('eligible'),
       paid: sum('paid'),
       clawback: sum('clawback'),
+      salesCount: saleEntries.filter((e) => e.state !== 'void').length,
+      grossSales: Math.round(saleEntries
+        .filter((e) => e.state !== 'void' && e.state !== 'clawback')
+        .reduce((acc, e) => acc + e.grossEur, 0) * 100) / 100,
+      sharePending: sumOf(saleEntries, 'pending'),
+      shareEligible: sumOf(saleEntries, 'eligible'),
+      sharePaid: sumOf(saleEntries, 'paid'),
+      shareClawback: sumOf(saleEntries, 'clawback'),
     },
   };
 }
@@ -122,4 +186,18 @@ function payableGenIds(pubs, opts) {
   return ledger(pubs, opts).entries.filter((e) => e.state === 'eligible').map((e) => e.genId);
 }
 
-module.exports = { MATURITY_DAYS, MONTHLY_CAP, quarterKey, ledger, payableGenIds };
+/** Everything payable right now, fee and revenue share alike, with its amount. */
+function payableItems(pubs, opts) {
+  const { entries, saleEntries } = ledger(pubs, opts);
+  return [
+    // The flat fee is off by default, and a €0 payout row is not a payment.
+    ...entries.filter((e) => e.state === 'eligible' && e.amount > 0)
+      .map((e) => ({ id: e.genId, kind: 'fee', amount: e.amount })),
+    ...saleEntries.filter((e) => e.state === 'eligible')
+      .map((e) => ({ id: e.payoutId, kind: 'share', amount: e.amount })),
+  ];
+}
+
+module.exports = {
+  MATURITY_DAYS, MONTHLY_CAP, REVENUE_SHARE, quarterKey, ledger, payableGenIds, payableItems,
+};

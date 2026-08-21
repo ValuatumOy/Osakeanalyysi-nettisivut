@@ -83,10 +83,48 @@ POST /generations/free {company, ticker} ──► order → worker → engine
 Statuses on the `PUB#<genId>` item: `generating` → `published` → optionally
 `takendown`. There is no `submitted` holding state any more — submit publishes.
 
-## Bounty — per published report
+## Compensation — 50/50 revenue share (decision 21.8.2026)
+
+**The analyst keeps half of every sale of their analysis, on a price they set
+themselves.** This supersedes the 13.8.2026 flat-fee decision and closes conflict
+1 below: Esa's revenue-share reading won. The flat fee is not removed — it stays
+behind `BOUNTY_EUR_PER_REPORT` (default 0, so off) as a pilot instrument for
+seeding coverage before there is anything to sell.
+
+| Rule | Value | Why |
+|---|---|---|
+| Share | 50% of gross, i.e. of the price the reader paid | Stripe's cut comes out of our half, so the analyst's number matches the price they set |
+| Maturity | `soldAt + 14 days` | refund/dispute window and the moderation window at once |
+| Caps | none on the share | quarter/month caps bound flat-fee spam; a share is self-funding — no sale, no payout |
+| Takedown | voids the sale, claws back anything paid | takedown stays the only real gate |
+| Settlement | invoice, minimum payout threshold, fixed due date | unchanged from the flat fee |
+| Refunds | handled by hand against the ledger | nothing marks a refunded sale yet: a refund on day 3 still matures. `paymentIntent` is stored on every `SALE#` row so a `charge.refunded` handler can void one without a migration |
+
+Mechanics, all in `server/members/bounty.js` (still pure) and derived, never
+accrued:
+
+- `SALE#<genId>#<sessionId>` under the analyst's own pk — written by the Stripe
+  webhook on `checkout.session.completed` with `metadata.analysisGenId`, and
+  again (conditionally, so never twice) from `GET /analyses/{genId}/purchased` as
+  a fallback for a stage with no webhook. The old audit-only row was wrong for
+  this: `store.audit()` is best-effort and has a 90-day TTL, so it could not
+  carry money.
+- `bounty.ledger(pubs, { sales, … })` returns `saleEntries` alongside the fee
+  `entries`, with `grossSales`, `sharePending/Eligible/Paid/Clawback` in totals.
+- Payouts still write one `PAYOUT#` row, keyed `SALE#<saleId>` for a share and
+  `<genId>` for a fee, so `POST /admin/members/payout` settles both through
+  `bounty.payableItems()`.
+
+**Subscription reads are not attributed yet.** `READ#` rows sit under the reader,
+with no money on them, so a member opening an analysis earns the analyst nothing
+today. Both `analysts.html` and the member area say so in as many words. That
+attribution is the next piece of this work.
+
+## Bounty — per published report (pilot instrument, off by default)
 
 Business decision (13.8.2026): fixed fee per published analysis, not a revenue
-pool.
+pool. Superseded as the headline by the section above; the machinery below still
+runs whenever `BOUNTY_EUR_PER_REPORT` is set.
 
 Auto-publish plus pay-per-report is a spam incentive if the two happen at the
 same moment, so **payment is where the quality gate moved**:
@@ -261,12 +299,9 @@ behind a link — see `analyst-story.html`.
 
 ### Conflicts — resolved 17.8.2026 unless marked open
 
-1. **Compensation model — still open.** Esa describes revenue sharing ("iso osuus
-   suoraan tuottamastasi kassavirrasta"); the 13.8 decision is a flat fee per
-   published analysis. Nothing computes a share today because analyst analyses
-   are not sold anywhere, so the flat fee stands and `priceEur` /
-   `freeAfterDays` are recorded on every publication — switching to a share
-   needs no migration, only a formula.
+1. **Compensation model — resolved 21.8.2026: 50/50 revenue share.** Esa's
+   reading won; see "Compensation" above. The prediction held — the switch was a
+   formula plus a durable `SALE#` row, no migration.
 2. **Throttling — resolved: keep the gates, add the override.** Esa's own wording
    is "1/kk *kunnes annamme luvan seuraavaan*", so the obligation and the monthly
    slot stay and `POST /admin/members/grant-generation` clears both. Bounty
@@ -323,9 +358,11 @@ revenue-share computation (nothing sells an analysis yet).
 2. **Rendering the section.** Assumed: submit carries the final revision `jobId`,
    we resolve jobId → PDF → `scripts/report-pages/extract.mjs` → section. Needs
    1 answered first.
-3. `BOUNTY_EUR_PER_REPORT` and the monthly cap N.
-5. Whether the flat bounty stays flat, or gets the 2004 rank weighting on top
-   once a company has more than one analyst (see the section above).
+3. `BOUNTY_EUR_PER_REPORT` and the monthly cap N — only if the flat-fee pilot is
+   ever switched on alongside the share.
+5. Attributing subscription reads, so a member's monthly read pays the analyst
+   something rather than nothing. The 2004 rank weighting (#1 earns twice #2) is
+   the obvious shape for splitting a subscription pot per company.
 6. Whether peer review ("coaching analysts") is the moderation model. It is the
    only one that scales without headcount, but it needs a paid role and a
    seniority bar before anyone is trusted with it.

@@ -209,6 +209,25 @@ async function putPayout(userId, genId, fields) {
   }
 }
 
+// One row per sale of an analyst's analysis, under the analyst's own pk so the
+// earnings ledger is a single query. This is money, so unlike audit() it is
+// durable, has no TTL, and is written from the Stripe webhook rather than from
+// the buyer's return trip — a buyer who never comes back still owes the analyst
+// their share. Conditional, so a replayed event cannot pay twice.
+async function putSale(userId, saleId, fields) {
+  try {
+    await dynamo().send(new PutCommand({
+      TableName: table(),
+      Item: { pk: `USER#${userId}`, sk: `SALE#${saleId}`, ...fields },
+      ConditionExpression: 'attribute_not_exists(sk)',
+    }));
+    return true;
+  } catch (err) {
+    if (err?.name === 'ConditionalCheckFailedException') return false;
+    throw err;
+  }
+}
+
 // Runs a builder result from server/members/quota.js. Returns true on commit,
 // false on a condition failure (quota exhausted / already reserved / raced).
 async function runTransact(params) {
@@ -280,6 +299,7 @@ module.exports = {
   findPublicationIndex,
   listReviews,
   putPayout,
+  putSale,
   runTransact,
   claimStripeEvent,
   audit,

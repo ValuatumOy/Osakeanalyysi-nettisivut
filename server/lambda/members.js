@@ -781,12 +781,13 @@ async function getMeEarnings(event) {
   if (deny) return deny;
   if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
 
-  const [pubs, payouts] = await Promise.all([
+  const [pubs, payouts, sales] = await Promise.all([
     store.listUserItems(profile.userId, 'PUB#'),
     store.listUserItems(profile.userId, 'PAYOUT#'),
+    store.listUserItems(profile.userId, 'SALE#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
-  return json(200, bounty.ledger(pubs, { now, paidGenIds, paidAmounts }));
+  return json(200, bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts }));
 }
 
 // ── billing ──────────────────────────────────────────────────────────────────
@@ -946,6 +947,27 @@ async function userIdForCustomer(customerId) {
   return customerId ? store.getIdentity(`STRIPECUST#${customerId}`) : null;
 }
 
+// Writes the SALE# row the earnings ledger reads. Gross is what the reader paid,
+// which is the price the analyst set; Stripe's cut comes off our half.
+async function recordAnalysisSale(session) {
+  const genId = session.metadata.analysisGenId;
+  const ownerId = session.metadata.ownerId
+    || (await store.findPublicationIndex(genId))?.userId;
+  if (!ownerId) return;
+  const wrote = await store.putSale(ownerId, `${genId}#${session.id}`, {
+    genId,
+    companyId: session.metadata.companyId || null,
+    sessionId: session.id,
+    // Refund events carry the payment intent, not the session, so a later
+    // charge.refunded handler can find this row without a migration.
+    paymentIntent: session.payment_intent || null,
+    grossEur: Math.round(Number(session.amount_total || 0)) / 100,
+    currency: session.currency || 'eur',
+    soldAt: new Date((session.created || 0) * 1000 || Date.now()).toISOString(),
+  });
+  if (wrote) await store.audit(ownerId, 'analysis-sold', { genId, sessionId: session.id });
+}
+
 async function postBillingWebhook(event) {
   const secret = process.env.MEMBERS_STRIPE_WEBHOOK_SECRET;
   if (!secret) return json(503, { error: 'Webhook secret not configured' });
@@ -965,6 +987,14 @@ async function postBillingWebhook(event) {
   const object = stripeEvent.data.object;
   switch (stripeEvent.type) {
     case 'checkout.session.completed': {
+      // A sale of one analyst's analysis. The webhook, not the buyer's return
+      // trip, is what records it: the analyst's half is owed whether or not the
+      // buyer ever lands back on the site.
+      if (object.metadata?.analysisGenId) {
+        if (object.payment_status !== 'paid') break;
+        await recordAnalysisSale(object);
+        break;
+      }
       if (object.mode !== 'subscription') break;
       const userId = object.client_reference_id || await userIdForCustomer(object.customer);
       if (!userId) break;
@@ -1176,11 +1206,10 @@ async function getAnalysisPurchased(event) {
   const document = await analysisDocument(genId);
   if (!document.url) return json(404, { error: 'No document for this analysis' });
 
-  // The sale belongs to the analyst; revenue share is not computed yet, so this
-  // row is what makes it computable later.
-  await store.audit(index.userId, 'analysis-sold', {
-    genId, sessionId, amountTotal: session.amount_total, currency: session.currency,
-  });
+  // Normally the webhook has already recorded this sale; doing it here too costs
+  // one conditional write and keeps the ledger right if the webhook is not
+  // configured on this stage.
+  await recordAnalysisSale(session);
   return json(200, {
     genId,
     analyst: index.analystName || 'Analyst',
@@ -1270,22 +1299,30 @@ async function postAdminPayout(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
 
-  const [pubs, payouts] = await Promise.all([
+  const [pubs, payouts, sales] = await Promise.all([
     store.listUserItems(body.userId, 'PUB#'),
     store.listUserItems(body.userId, 'PAYOUT#'),
+    store.listUserItems(body.userId, 'SALE#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
-  const payable = bounty.payableGenIds(pubs, { now, paidGenIds, paidAmounts });
-  const requested = Array.isArray(body.genIds) ? body.genIds : payable;
-  const toPay = requested.filter((id) => payable.includes(id));
-  if (!toPay.length) return json(409, { error: 'Nothing payable', payable });
-
-  const amount = bounty.ledger(pubs, { now, paidGenIds, paidAmounts }).totals.amount;
-  for (const genId of toPay) {
-    await store.putPayout(body.userId, genId, { amount, paidAt: now.toISOString(), note: String(body.note || '') });
+  // Fees and revenue shares settle through the same call and the same PAYOUT#
+  // rows; a share's id carries its own SALE# prefix, so the two never collide.
+  const payable = bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts });
+  const requested = Array.isArray(body.ids) ? body.ids
+    : (Array.isArray(body.genIds) ? body.genIds : payable.map((p) => p.id));
+  const toPay = payable.filter((p) => requested.includes(p.id));
+  if (!toPay.length) {
+    return json(409, { error: 'Nothing payable', payable: payable.map((p) => p.id) });
   }
-  await store.audit(body.userId, 'bounty-paid', { genIds: toPay, amount });
-  return json(200, { ok: true, paid: toPay, amount, total: amount * toPay.length });
+
+  for (const item of toPay) {
+    await store.putPayout(body.userId, item.id, {
+      amount: item.amount, kind: item.kind, paidAt: now.toISOString(), note: String(body.note || ''),
+    });
+  }
+  const total = Math.round(toPay.reduce((acc, p) => acc + p.amount, 0) * 100) / 100;
+  await store.audit(body.userId, 'bounty-paid', { ids: toPay.map((p) => p.id), total });
+  return json(200, { ok: true, paid: toPay, total });
 }
 
 // GET /admin/members/publications — what each analyst actually produced, newest

@@ -187,25 +187,34 @@ async function main() {
     JSON.stringify(ledger.entries.map(e => [e.companyId, e.state, e.reason])));
 
   if (process.env.ADMIN_PASSWORD) {
+    // The flat fee is off by default (BOUNTY_EUR_PER_REPORT=0) and nothing pays
+    // out €0, so the payout path is only assertable when a fee is configured.
+    const feeOn = Number(ledger.totals?.amount) > 0;
     const payout = await adminApi('POST', '/admin/members/payout', { userId: analyst.userId });
-    check('payout: pays only the eligible one', payout.status === 200 && payout.data?.paid?.length === 1,
-      JSON.stringify(payout.data));
+    if (feeOn) {
+      check('payout: pays only the eligible one', payout.status === 200 && payout.data?.paid?.length === 1,
+        JSON.stringify(payout.data));
 
-    const afterPay = (await api('GET', '/me/earnings', { token: analyst.token })).data;
-    check('ledger after payout: that entry is paid',
-      afterPay.entries.filter(e => e.state === 'paid').length === 1,
-      JSON.stringify(afterPay.totals));
+      const afterPay = (await api('GET', '/me/earnings', { token: analyst.token })).data;
+      check('ledger after payout: that entry is paid',
+        afterPay.entries.filter(e => e.state === 'paid').length === 1,
+        JSON.stringify(afterPay.totals));
 
-    const again = await adminApi('POST', '/admin/members/payout', { userId: analyst.userId });
-    check('payout is not repeatable → 409', again.status === 409, `got ${again.status}`);
+      const again = await adminApi('POST', '/admin/members/payout', { userId: analyst.userId });
+      check('payout is not repeatable → 409', again.status === 409, `got ${again.status}`);
+    } else {
+      check('payout: nothing owed while the flat fee is 0 → 409', payout.status === 409,
+        `got ${payout.status}: ${JSON.stringify(payout.data)}`);
+    }
 
     const down = await adminApi('POST', '/admin/members/takedown',
       { userId: analyst.userId, genId: matured, reason: 'smoke test' });
     check('takedown of a published analysis', down.status === 200, JSON.stringify(down.data));
 
     const afterDown = (await api('GET', '/me/earnings', { token: analyst.token })).data;
-    check('takedown claws back a paid bounty',
-      afterDown.entries.some(e => e.genId === matured && e.state === 'clawback'),
+    check('takedown voids the entry, and claws it back if it had been paid',
+      afterDown.entries.some(e => e.genId === matured
+        && e.state === (feeOn ? 'clawback' : 'void')),
       JSON.stringify(afterDown.totals));
   } else {
     console.log('· skip: payout/takedown checks (set ADMIN_PASSWORD to include them)');

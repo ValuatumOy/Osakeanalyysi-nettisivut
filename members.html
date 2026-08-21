@@ -236,14 +236,35 @@
 
           <div class="ws-section" id="earningsCard" hidden>
             <div class="ws-section-head">
-              <h2>Earnings</h2>
-              <p class="sub">A fee per published report. It matures 14 days after publication, and a report taken down in that window earns nothing.</p>
+              <h2>Income</h2>
+              <p class="sub">You set the price of every analysis you publish, and half of what it sells for is yours. Each sale matures 14 days after the reader pays — that is the refund and moderation window — and is payable to you after that.</p>
             </div>
-            <div class="ws-panel ws-panel--flush">
+            <div class="ws-panel">
+              <div class="earn-grid">
+                <div class="earn-stat"><div class="val" id="earnPaid">€0</div><div class="lbl">Paid to you</div></div>
+                <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Payable now</div></div>
+                <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Maturing</div></div>
+                <div class="earn-stat"><div class="val" id="earnGross">€0</div><div class="lbl">Your reports sold for</div></div>
+              </div>
+              <p class="muted" id="earnSummary" style="margin-top:1.5rem;"></p>
+            </div>
+            <div class="ws-panel ws-panel--flush" style="margin-top:1rem;">
               <div class="table-wrap">
                 <table class="reports-table" id="earningsTable"></table>
               </div>
             </div>
+            <details class="earn-help">
+              <summary>How payment works, in detail</summary>
+              <ol>
+                <li><strong>You set the price.</strong> When you publish, you choose what your analysis costs and how long until it decays to free (up to a year). A reader without a membership pays that price by card; a member spends one of their monthly reads instead.</li>
+                <li><strong>The split is 50/50.</strong> Half of what the reader pays is yours, half is ours. The split is taken on the price the reader paid, before card fees — those come out of our half.</li>
+                <li><strong>A sale matures in 14 days.</strong> Card payments can be refunded or disputed, and moderation happens after publication rather than before it. Until that window closes the sale shows as <em>Maturing</em>.</li>
+                <li><strong>Then it is payable.</strong> Matured sales move to <em>Payable now</em>. You invoice us for that balance; there is a minimum payout so tiny transfers never happen, and the invoice has a fixed due date rather than an ad-hoc payment date.</li>
+                <li><strong>A takedown voids the sale.</strong> If an analysis is taken down, its sales earn nothing, and anything already paid on it is clawed back against your next invoice. The reader is refunded.</li>
+                <li><strong>You are not an employee.</strong> Payment is against an invoice from you or your company; there is no employment relationship, and any taxes on what you earn are yours to handle.</li>
+                <li><strong>Member reads are not counted here yet.</strong> When a member opens your analysis with one of their monthly reads, nothing is attributed to you today. Only direct sales appear above. That is the next thing to change, and it is the reason a low price and a slow decay to free are worth more than they look: they buy readership, and readership is what the ranking pays for.</li>
+              </ol>
+            </details>
           </div>
 
           <div class="ws-section" id="plansCard">
@@ -809,23 +830,53 @@
     }
 
     const EARNING_LABELS = {
-      pending: 'Maturing', eligible: 'Payable', paid: 'Paid',
-      clawback: 'Clawed back', void: 'No fee',
+      pending: 'Maturing', eligible: 'Payable now', paid: 'Paid',
+      clawback: 'Clawed back', void: 'Nothing owed',
     };
+    const eur = (n) => '€' + (Math.round(Number(n || 0) * 100) / 100).toLocaleString('en-IE',
+      { minimumFractionDigits: Number.isInteger(Number(n)) ? 0 : 2, maximumFractionDigits: 2 });
 
     async function loadEarnings() {
       const { status, data } = await api('GET', '/me/earnings');
       const card = document.getElementById('earningsCard');
-      if (status !== 200 || !data.entries?.length) { card.hidden = true; return; }
+      const sales = data?.saleEntries || [];
+      if (status !== 200 || (!data.entries?.length && !sales.length)) { card.hidden = true; return; }
       card.hidden = false;
       const t = data.totals;
+
+      // The four numbers cover both what a sale earns and the pilot fee, so the
+      // headline stays true whichever of the two is actually running.
+      // The API may be a deploy behind this page, in which case the share totals
+      // are simply absent — zero, not NaN.
+      const n = (v) => Number(v) || 0;
+      const gross = n(t.grossSales);
+      document.getElementById('earnPaid').textContent =
+        eur(n(t.sharePaid) + n(t.paid) + n(t.shareClawback) + n(t.clawback));
+      document.getElementById('earnPayable').textContent = eur(n(t.shareEligible) + n(t.eligible));
+      document.getElementById('earnMaturing').textContent = eur(n(t.sharePending) + n(t.pending));
+      document.getElementById('earnGross').textContent = eur(gross);
+      document.getElementById('earnSummary').textContent = sales.length
+        ? sales.length + (sales.length === 1 ? ' sale' : ' sales') + ' of your analyses, '
+          + eur(gross) + ' paid by readers, your half is ' + eur(gross / 2)
+          + '. Half of every sale is yours; card fees come out of our half.'
+        : 'No sales yet. Every analysis you publish stays on its company page and can sell at any time.';
+
+      // Sales first — that is the income. The pilot fee rows follow, and vanish
+      // once nothing is on a fee any more.
+      const saleRows = sales.map(e => '<tr><td>' + (e.companyId || '—') + '</td><td>Sale</td><td>'
+        + String(e.soldAt).slice(0, 10) + '</td><td>' + eur(e.grossEur) + '</td><td>'
+        + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+        + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+      const feeRows = (data.entries || []).filter(e => e.amount || e.state !== 'void')
+        .map(e => '<tr><td>' + e.companyId + '</td><td>Publication fee</td><td>'
+          + e.publishedAt.slice(0, 10) + '</td><td>—</td><td>'
+          + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+          + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+
       document.getElementById('earningsTable').innerHTML =
-        '<thead><tr><th>Company</th><th>Published</th><th>Status</th><th>Fee</th></tr></thead><tbody>'
-        + data.entries.map(e => '<tr><td>' + e.companyId + '</td><td>' + e.publishedAt.slice(0, 10)
-          + '</td><td>' + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
-          + '</td><td>' + e.amount + ' €</td></tr>').join('')
-        + '</tbody><tfoot><tr><td colspan="3">Payable now / maturing / paid</td><td>'
-        + t.eligible + ' € / ' + t.pending + ' € / ' + t.paid + ' €</td></tr></tfoot>';
+        '<thead><tr><th>Company</th><th>What</th><th>Date</th><th>Reader paid</th><th>Status</th><th>Yours</th></tr></thead><tbody>'
+        + (saleRows + feeRows || '<tr><td colspan="6" class="muted">Nothing to show yet.</td></tr>')
+        + '</tbody>';
     }
 
     if (token()) loadMe();
