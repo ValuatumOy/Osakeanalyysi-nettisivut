@@ -2065,8 +2065,11 @@ input, textarea { font: inherit; }
   padding: 2rem;
 }
 .locked-preview {
+  display: block;
   margin-bottom: 1.5rem;
   position: relative;
+  cursor: pointer;
+  text-decoration: none;
 }
 .locked-preview-text {
   font-size: var(--text-sm);

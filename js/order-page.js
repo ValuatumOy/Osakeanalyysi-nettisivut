@@ -356,7 +356,7 @@
     const meta = document.getElementById('progressMeta');
     if (order.status === 'REVISING') {
       title.textContent = 'Updating your report…';
-      sub.textContent = 'The report engine is interpreting your request and regenerating the report. This usually takes around 15 minutes.';
+      sub.textContent = 'The report engine is interpreting your request and regenerating the report. This usually takes 20 to 40 minutes.';
     } else {
       title.textContent = 'Preparing your report…';
       sub.textContent = 'This can take a little while. This page updates on its own — no need to refresh.';

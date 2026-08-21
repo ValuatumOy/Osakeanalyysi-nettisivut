@@ -110,13 +110,21 @@ function templatedFaqs(d) {
   } else {
     out.push({ q: `Does Valuatum have an AI equity report on ${sn} (${t})?`, a: `${sn} is on Valuatum's coverage list, but a full AI equity report has not been published yet. Generate a fresh report on demand to get the rating, price target, segment-value analysis and reverse valuation.` });
     out.push({ q: `How is ${sn} (${t}) valued?`, a: `${indefiniteArticle(sn)} ${sn} AI equity report would value the company using segment-value analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts.` });
-    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — typically within one business day of ordering.` });
+    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — usually within about 30 minutes of ordering.` });
   }
   return out;
 }
 
 function faqsFor(d, cat) {
-  return cat?.isFree ? (Array.isArray(d.faqs) ? d.faqs : []) : templatedFaqs(d);
+  // "Is X a buy? Yes." reads as advice, and the disclaimer under it says the
+  // opposite. Drop the assent; the sentence after it already states the rating
+  // as the fact it is. Done at render so no extraction can reintroduce it.
+  const neutralised = (Array.isArray(d.faqs) ? d.faqs : []).map((f) => {
+    if (!/\ba (buy|sell)\b/i.test(f.q || '')) return f;
+    const a = String(f.a || '').replace(/^(Yes|No)[.,]\s+/i, '');
+    return { ...f, a: a.charAt(0).toUpperCase() + a.slice(1) };
+  });
+  return cat?.isFree ? neutralised : templatedFaqs(d);
 }
 
 function valuePoolBars(pools) {
@@ -414,7 +422,7 @@ function generateGate(d) {
 const LOCK_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
 function lockedSection(title, desc, teaser, ctaLabel, reportId) {
   return `<div class="locked-section"><div class="locked-section-inner">
-            ${teaser ? `<div class="locked-preview"><p class="locked-preview-text">${esc(teaser)}</p><div class="locked-gate"></div></div>` : ''}
+            ${teaser ? `<a class="locked-preview" href="/reports.html#report-${esc(reportId)}" aria-label="${esc(ctaLabel)}"><p class="locked-preview-text">${esc(teaser)}</p><div class="locked-gate"></div></a>` : ''}
             <div class="locked-section-header"><div class="locked-icon">${LOCK_SVG}</div><div><div class="locked-section-title">${esc(title)}</div><div class="locked-section-desc">${esc(desc)}</div></div></div>
             <a class="locked-cta" href="/reports.html#report-${esc(reportId)}">${LOCK_SVG}${esc(ctaLabel)}</a>
           </div></div>`;
@@ -611,9 +619,9 @@ export function renderPage(d, cat, all) {
         <section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
           ${(d.sources && d.sources.length) ? listSection(d.sources) : ''}
-          <p>This report was generated using Valuatum's AI equity research framework — a structured enterprise-value and segment value methodology built on 25+ years of professional equity research practice. See the <a href="/methodology.html">methodology</a> for the full approach.</p>
+          <p>Valuatum reports are generated using Valuatum's AI equity research framework — a structured enterprise-value and segment value methodology built on 25+ years of professional equity research practice. See the <a href="/methodology.html">methodology</a> for the full approach.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
-            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
+            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is AI-generated research material for informational purposes only. It may include analytical rating and target-price language, but it is general research, not investment advice to any individual reader. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>
         </section>`);
 
@@ -748,7 +756,9 @@ export function renderCards(companies, companyPageCatalog) {
     const name = company?.name || cat.companyName || doc.companyName;
     const ticker = company?.ticker || cat.ticker || doc.ticker;
     const exchange = company?.exchange || cat.exchange || doc.exchange;
-    const sector = cat.sector || doc.sector || '';
+    // The live catalog's sector is admin-typed upload metadata and often missing;
+    // the company page always knows its sector, so it backstops "Unclassified".
+    const sector = (cat.sector && cat.sector !== 'Unclassified' ? cat.sector : doc.sector) || '';
     const dateIso = String(cat.reportDateIso || cat.reportDate || doc.reportDate).slice(0, 10);
     const description = company?.description || cat.description || '';
     const tags = (cat.tags || []).slice(0, 4).map((t) => `<span class="rc-tag">${esc(t)}</span>`).join('');
