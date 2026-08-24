@@ -204,6 +204,20 @@
         <section class="report-full-section" id="related"><h2>Related AI equity reports</h2><div style="display:flex; flex-wrap:wrap; gap:0.6rem;"><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/incap-equity-report.html">Incap (ICP1V.HE) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/akelius-residential-property-equity-report.html">Akelius Residential Property (AKEL-D.ST) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/asmodee-group-equity-report.html">Asmodee Group (ASMDEE-B.ST) report &rarr;</a><a style="display:inline-block; text-decoration:none; padding:0.55rem 1rem; border:1px solid var(--color-border); border-radius:var(--r-pill); font-size:var(--text-sm); color:var(--charcoal); background:#fff;" href="/reports/bewi-equity-report.html">BEWi (BEWI.OL) report &rarr;</a></div></section>
       </div>
     </div>
+    <!-- Public surface for the analyst layer: hidden until the members API returns an
+         analysis for this company, so a company nobody has covered shows nothing. -->
+    <section class="container analyst-reports" data-analyst-reports data-ticker="LEHTO.HE" hidden
+             style="max-width:1760px; padding-bottom:3rem;">
+      <div class="store-company-head">
+        <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on Lehto</h2>
+        <span class="store-count" data-analyst-count></span>
+      </div>
+      <p class="store-note" style="max-width:70ch;">Each is this company's Valuatum report re-run with an analyst's own
+        assumptions and published under their name. They are ordered by what other analysts said the work added over the
+        engine's report &mdash; a score out of five from people who had to read it to give it.</p>
+      <div class="store-banner" data-analyst-banner hidden></div>
+      <div data-analyst-list></div>
+    </section>
   </main>
 
   <footer class="footer"><div class="container"><div class="footer-grid">
@@ -214,5 +228,6 @@
     <div><div class="footer-col-label">Legal</div><div class="footer-links"><a href="/disclaimer.html" class="footer-link">Disclaimer</a><a href="/disclaimer.html#terms" class="footer-link">Terms of use</a><a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a></div></div>
   </div><div class="footer-bottom"><span class="footer-copyright">&copy; 2026 Valuatum Oy &middot; Helsinki, Finland &middot; Est. 2000</span><span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span></div></div></footer>
   <script src="/js/script.js"></script>
+  <script src="/js/analyst-reports.js" defer></script>
 </body>
 </html>

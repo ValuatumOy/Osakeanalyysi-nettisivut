@@ -721,10 +721,25 @@ ${navHtml()}
 ${sections.join('\n')}
       </div>
     </div>
+    <!-- Public surface for the analyst layer: hidden until the members API returns an
+         analysis for this company, so a company nobody has covered shows nothing. -->
+    <section class="container analyst-reports" data-analyst-reports data-ticker="${attr(d.ticker)}" hidden
+             style="max-width:1760px; padding-bottom:3rem;">
+      <div class="store-company-head">
+        <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(sn)}</h2>
+        <span class="store-count" data-analyst-count></span>
+      </div>
+      <p class="store-note" style="max-width:70ch;">Each is this company's Valuatum report re-run with an analyst's own
+        assumptions and published under their name. They are ordered by what other analysts said the work added over the
+        engine's report &mdash; a score out of five from people who had to read it to give it.</p>
+      <div class="store-banner" data-analyst-banner hidden></div>
+      <div data-analyst-list></div>
+    </section>
   </main>
 
 ${footerHtml()}
   <script src="/js/script.js"></script>
+  <script src="/js/analyst-reports.js" defer></script>
 </body>
 </html>
 `;

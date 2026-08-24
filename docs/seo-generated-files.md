@@ -19,6 +19,7 @@ systems as ground truth, on a site that publishes investment ratings.
 | `npm run seo:pricing` | `pricing.md`, JSON-LD in `pricing.html` | `pricing.html` pricing cards |
 | `npm run seo:freshness` | `WebPage` JSON-LD on top-level pages | `git log -1` per file |
 | `npm run seo:og` | `images/og-image.png`, `images/og/*.png` | `images/og-image.svg`, page ratings |
+| `npm run seo:analyst-section` | analyst-reports section on `reports/*.html` | each page's own title |
 
 `npm run seo:build` runs all but the images (which need Chrome).
 `npm run seo:check` runs every script in `--check` mode plus the JSON-LD validator — this is
@@ -50,6 +51,31 @@ a redirect stub to an AI system points it at a redirect.
 group. Every one of these scripts uses function replacements; a string replacement silently
 corrupted `og:title` on every USD-priced page before that was caught.
 
+## The analyst layer
+
+`report-store.html` was retired, but it was the only caller of three members-API endpoints
+that exist for readers with **no account**:
+
+```
+GET  /analyses/{genId}/free           an administrator's public free window
+POST /analyses/{genId}/buy-checkout   buying one without an account
+GET  /analyses/{genId}/purchased      collecting it after Stripe
+```
+
+Those are the income side of the analyst programme — an analyst's report has to be buyable
+by someone who is not a member, or publishing earns nothing. They now live in
+[`js/analyst-reports.js`](../js/analyst-reports.js), mounted on the page for the company the
+report is about, which is better placed than a separate shop: scoped to one company it needs
+no company filter, no analyst filter and no search, because the page already is the filter.
+
+The section is `hidden` until the API returns an analysis for that ticker, so a company
+nobody has covered renders nothing and the first published report lights it up with no
+deploy. Ordering comes from the API (`server/members/ranking.js`) and is never re-sorted
+client-side.
+
+The signed-in browser in `members.html` is unchanged and still owns reading against
+allowance, the review obligation and the one-open-at-a-time lock.
+
 ## Deliberately not done
 
 - **`AnalysisNewsArticle` on the 1,157 company pages.** They carry company data, not an
@@ -58,6 +84,10 @@ corrupted `og:title` on every USD-priced page before that was caught.
 - **Comparison pages.** `scripts/build-comparison-pages.mjs` needs the live catalog, and the
   content is an editorial decision, not a mechanical one. `llms.txt` will list them the
   moment real pages replace the stubs.
+- **A public analyst *index* across all companies.** That was the store, and it is what made
+  the nav confusing. Per-company sections cover discovery from the pages people actually
+  land on; if a cross-company index is wanted later it should be one browsable page, not a
+  second storefront in the nav.
 - **A visible "Last updated" line.** The machine-readable half is done (`dateModified`);
   putting a date in front of readers is a design change and wants a person's eye.
 

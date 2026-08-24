@@ -57,6 +57,7 @@ jobs:
           node scripts/build-pricing-md.mjs --check
           node scripts/build-page-freshness.mjs --check
           node scripts/retire-report-store.mjs --check
+          node scripts/add-analyst-section.mjs --check
           node scripts/validate-jsonld.mjs
 
       # Rendering needs Chrome, so this one only asserts the files are present and that the

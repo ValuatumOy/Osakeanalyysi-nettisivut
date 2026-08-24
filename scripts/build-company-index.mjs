@@ -68,7 +68,11 @@ const HEAD_LINKS = (source.match(/<link rel="stylesheet"[^>]*>/g) || []).join('\
 const GA = chunk(/<script async src="https:\/\/www\.googletagmanager\.com[\s\S]*?<\/script>\s*<script>[\s\S]*?<\/script>/, 'analytics');
 const NAV = chunk(/<header[\s\S]*?<\/header>/, 'header');
 const FOOTER = chunk(/<footer[\s\S]*?<\/footer>/, 'footer');
-const BODY_SCRIPTS = (source.match(/<script src="[^"]*"[^>]*><\/script>/g) || []).join('\n  ');
+// analyst-reports.js is for a page about one company and no-ops anywhere else; an index
+// page has no mount for it, so it is not worth the request.
+const BODY_SCRIPTS = (source.match(/<script src="[^"]*"[^>]*><\/script>/g) || [])
+  .filter((tag) => !tag.includes('analyst-reports.js'))
+  .join('\n  ');
 
 function page({ url, title, description, breadcrumbName, h1, intro, bodyHtml, extraJsonLd = [] }) {
   const jsonLd = JSON.stringify({
