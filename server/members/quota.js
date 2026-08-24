@@ -157,9 +157,22 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
 // the obligation, so next month's generation unlocks. companyId and jobId are
 // required: the bounty ledger keys on the company, and jobId is the provenance
 // link back to the engine job the published PDF came from.
+const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
+
+/** Only the three the engine issues; anything else is stored as unknown, never shown. */
+function normaliseRecommendation(value) {
+  const v = String(value || '').trim().toUpperCase();
+  return RECOMMENDATIONS.has(v) ? v : null;
+}
+
 function buildSubmitTransact({
   table, userId, now, genId, promptsText, companyId, jobId,
   priceEur = 0, freeAfterDays, analystName = '',
+  // The engine's own output for this job, taken from the delivered order rather than from
+  // the request: an analyst supplying their own rating could publish one the report does
+  // not support, and the whole compliance story here is that a published claim is traceable
+  // to an engine job. Null until the engine surfaces it.
+  recommendation = null, targetPrice = null,
 }) {
   const at = now.toISOString();
   const company = String(companyId).toUpperCase();
@@ -167,6 +180,9 @@ function buildSubmitTransact({
   // The analyst sets both the price and how long until the analysis falls free.
   const freeFrom = new Date(now.getTime() + days * DAY_MS).toISOString();
   const price = Math.max(0, Math.round(Number(priceEur) || 0));
+  // DynamoDB rejects undefined; null is a value and reads back as "not known".
+  const rating = normaliseRecommendation(recommendation);
+  const target = targetPrice ? String(targetPrice).trim().slice(0, 40) : null;
   return {
     TransactItems: [
       {
@@ -187,7 +203,7 @@ function buildSubmitTransact({
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
           UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
-            + 'freeFrom = :freeFrom',
+            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
@@ -200,6 +216,8 @@ function buildSubmitTransact({
             ':price': price,
             ':days': days,
             ':freeFrom': freeFrom,
+            ':rec': rating,
+            ':target': target,
           },
         },
       },
@@ -220,6 +238,8 @@ function buildSubmitTransact({
             freeFrom,
             reviewCount: 0,
             scoreSum: 0,
+            recommendation: rating,
+            targetPrice: target,
           },
         },
       },

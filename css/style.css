@@ -3449,6 +3449,15 @@ select.input {
 .analyst-jump[hidden],
 .analyst-reports[hidden] { display: none !important; }
 
+/* The analyst's own call, next to the peer score. Coloured like the engine's own rating so
+   a reader can compare the two at a glance. Absent on anything published before
+   GET /analyses carried a recommendation. */
+.analyst-call { font-weight: 600; letter-spacing: .04em; margin-right: .35rem; }
+.analyst-call.rating-buy  { color: #2f7a3f; }
+.analyst-call.rating-hold { color: #a97c1e; }
+.analyst-call.rating-sell { color: #b12a3f; }
+.analyst-target { color: var(--gray-steel, #5b6a63); }
+
 .store-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

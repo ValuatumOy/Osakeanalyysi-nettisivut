@@ -37,6 +37,37 @@ test('submit publishes and releases the obligation, and indexes the publication'
   assert.equal(indexPut.Item.reviewCount, 0);
 });
 
+test('the engine rating is recorded on both rows, and only the three it issues', () => {
+  const now = new Date('2026-09-01T00:00:00Z');
+  const build = (extra) => quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now, genId: 'g1', promptsText: 'p',
+    companyId: 'NOKIA.HE', jobId: '01JOB', analystName: 'A', ...extra,
+  });
+
+  const [, pubUpdate, indexPut] = build({ recommendation: 'buy', targetPrice: ' 12.00 EUR ' })
+    .TransactItems.map(i => i.Update || i.Put);
+  // Upper-cased and trimmed, and on the index row too -- GET /analyses reads that one.
+  assert.equal(pubUpdate.ExpressionAttributeValues[':rec'], 'BUY');
+  assert.equal(pubUpdate.ExpressionAttributeValues[':target'], '12.00 EUR');
+  assert.equal(indexPut.Item.recommendation, 'BUY');
+  assert.equal(indexPut.Item.targetPrice, '12.00 EUR');
+
+  // Anything that is not BUY/HOLD/SELL is stored as unknown rather than shown. A rating is
+  // a published claim; an unrecognised one must not reach a company page.
+  for (const junk of ['STRONG BUY', 'OUTPERFORM', 'accumulate', '', null, undefined, 5]) {
+    const [, pub, idx] = build({ recommendation: junk }).TransactItems.map(i => i.Update || i.Put);
+    assert.equal(pub.ExpressionAttributeValues[':rec'], null, `rejected: ${junk}`);
+    assert.equal(idx.Item.recommendation, null, `rejected: ${junk}`);
+  }
+
+  // Absent, not undefined: DynamoDB rejects undefined, and null reads back as "not known".
+  const [, pubBare, idxBare] = build({}).TransactItems.map(i => i.Update || i.Put);
+  assert.equal(pubBare.ExpressionAttributeValues[':rec'], null);
+  assert.equal(pubBare.ExpressionAttributeValues[':target'], null);
+  assert.equal(idxBare.Item.recommendation, null);
+  assert.equal(idxBare.Item.targetPrice, null);
+});
+
 test('free decay is capped at a year and defaults to it', () => {
   assert.equal(quota.clampFreeAfterDays(30), 30);
   assert.equal(quota.clampFreeAfterDays(9999), 365);

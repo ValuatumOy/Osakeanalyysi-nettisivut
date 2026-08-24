@@ -149,6 +149,19 @@ async function submitRevision({
 
 // GET /jobs/{jobId} — job status. status is PENDING | RUNNING | DONE | FAILED
 // (NOT_FOUND is synthesised for a 404). On DONE the response carries s3Url.
+const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
+
+/** Only the three the engine issues; anything else is treated as absent rather than shown. */
+function normaliseRecommendation(value) {
+  const v = String(value || '').trim().toUpperCase();
+  return RECOMMENDATIONS.has(v) ? v : null;
+}
+
+function cleanStr(value) {
+  const v = String(value ?? '').trim();
+  return v ? v.slice(0, 40) : null;
+}
+
 async function getJob(jobId) {
   if (!jobId) throw new Error('getJob: jobId is required');
 
@@ -164,6 +177,10 @@ async function getJob(jobId) {
   const data = await readJson(res);
   if (!res.ok) throw new Error(`engine getJob ${describeError(res, data)}`);
 
+  // The headline is the engine's own output, so it is taken from the job rather than read
+  // back out of the PDF. Undefined when the engine does not send it -- every consumer
+  // treats it as optional, so this costs nothing until the engine surfaces it.
+  const headline = data.headline || {};
   return {
     jobId: data.jobId || jobId,
     status: data.status,
@@ -172,6 +189,9 @@ async function getJob(jobId) {
     changesUrl: data.changesUrl,
     error: data.error,
     completedAt: data.completedAt,
+    recommendation: normaliseRecommendation(data.recommendation ?? headline.recommendation),
+    targetPrice: cleanStr(data.targetPrice ?? headline.targetPrice),
+    currentPrice: cleanStr(data.currentPrice ?? headline.currentPrice),
   };
 }
 

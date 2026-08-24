@@ -63,6 +63,18 @@
     return a.priceEur > 0 ? '€' + a.priceEur : 'Costs one monthly read';
   }
 
+  var RATING_CLASS = { BUY: 'rating-buy', HOLD: 'rating-hold', SELL: 'rating-sell' };
+
+  // The analyst's own call, as the engine issued it for their job. Null on anything
+  // published before GET /analyses carried it, so this renders nothing rather than guessing.
+  function callCell(a) {
+    if (!a.recommendation) return '';
+    var cls = RATING_CLASS[a.recommendation] || '';
+    return '<span class="analyst-call ' + cls + '">' + esc(a.recommendation) + '</span>'
+      + (a.targetPrice ? '<span class="analyst-target">' + esc(a.targetPrice) + '</span>' : '')
+      + '<span class="sep">·</span>';
+  }
+
   function row(a, rank) {
     var published = new Date(a.publishedAt);
     var date = isNaN(published) ? '' : published.toISOString().slice(0, 10);
@@ -77,7 +89,7 @@
       + '<div class="store-row-main">'
         + '<div class="store-row-title"><span class="store-rank">' + rank + '</span>'
           + '<span class="store-kind store-kind--analyst">Analyst report</span>' + esc(a.analyst) + '</div>'
-        + '<div class="store-row-meta">' + scoreCell(a)
+        + '<div class="store-row-meta">' + callCell(a) + scoreCell(a)
           + '<span class="sep">·</span>' + priceCell(a)
           + (date ? '<span class="sep">·</span>published ' + date : '') + '</div>'
       + '</div>'

@@ -159,7 +159,14 @@ Visibility only — it does not decide money (the bounty does). Minimum viable:
 
 Credibility scoring against realised returns (was the call right?) is the
 obvious later step and needs the target price and date per analysis — both
-already on the engine job. Record them now, score later — and see the next
+already on the engine job. **Recorded as of 24.8.2026**: `recommendation` and
+`targetPrice` are written to the `PUB#` row and the `PUBINDEX` row by
+`quota.buildSubmitTransact`, and returned by `GET /analyses`. They come from the
+delivered order, never the request body — same rule as `companyId`, and for the
+same reason: a client-supplied rating could publish a call the report does not
+support. Null on anything published before this, so every consumer handles null.
+The engine has to send them for them to be non-null; `engine-client.getJob` now
+passes `recommendation`/`targetPrice` through instead of dropping them. Score later — and see the next
 section, because Valuatum already built that scoring once.
 
 ## What the 2004 freelance system already solved

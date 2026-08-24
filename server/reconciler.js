@@ -368,6 +368,10 @@ async function deliverRevision(order, job) {
     status: orders.STATUS.DELIVERED,
     pdfFileName,
     jobId: job.jobId,
+    // Recorded per delivery so a revision's new rating replaces the old one, and so a
+    // published analysis can carry the rating it was published with.
+    ...(job.recommendation ? { recommendation: job.recommendation } : {}),
+    ...(job.targetPrice ? { targetPrice: job.targetPrice } : {}),
     revisionJobId: null,
     revisionsUsed: (order.revisionsUsed || 0) + 1,
     pendingRevisionComment: null,

@@ -750,6 +750,9 @@ async function postGenerationSubmit(event) {
     priceEur: body.priceEur,
     freeAfterDays: body.freeAfterDays,
     analystName: String(profile.name || profile.email || '').slice(0, 120),
+    // From the delivered order, never the request body — same rule as companyId above.
+    recommendation: order.recommendation || null,
+    targetPrice: order.targetPrice || null,
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
   // Published means frozen: a revision after this would change the PDF under
@@ -1054,6 +1057,11 @@ async function getAnalyses(event) {
       // hand-picked window, the only one a logged-out visitor may open.
       free: ranking.isFreeNow(item, now),
       publicFree: ranking.isPublicFreeNow(item, now),
+      // The analyst's own call, as the engine issued it for their job. Null for anything
+      // published before the engine surfaced it, so consumers must handle null rather than
+      // assume a rating exists.
+      recommendation: item.recommendation || null,
+      targetPrice: item.targetPrice || null,
     })),
   });
 }
@@ -1528,6 +1536,8 @@ async function postTestPublication(event) {
     // A store demo needs a spread: a clear leader, an unreviewed one, a weak one.
     reviewCount: Number(body.reviewCount) || 0,
     scoreSum: Number(body.scoreSum) || 0,
+    recommendation: body.recommendation || null,
+    targetPrice: body.targetPrice || null,
     ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
   });
   return json(200, { ok: true, genId });
