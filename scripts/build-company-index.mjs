@@ -21,6 +21,7 @@ import { upsertUrl } from './seo-sitemap.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
 const CHECK = process.argv.includes('--check');
+const n = (x) => x.toLocaleString('en-US');
 
 const dec = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
   .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ');
@@ -180,11 +181,11 @@ const files = new Map();
 // hub
 files.set('companies.html', page({
   url: `${SITE}/companies.html`,
-  title: `Company Index — ${companies.length} Listed Companies | Valuatum`.slice(0, 60),
-  description: `Every listed company with an AI equity analysis page on Valuatum: ${companies.length} companies across the Nordics, Europe and the US, each with share price, valuation metrics and a report available on demand.`,
+  title: `Company Index — ${n(companies.length)} Listed Companies | Valuatum`.slice(0, 60),
+  description: `Every listed company with an AI equity analysis page on Valuatum: ${n(companies.length)} companies across the Nordics, Europe and the US, each with share price, valuation metrics and a report available on demand.`,
   breadcrumbName: '',
   h1: 'Every company on this site',
-  intro: `${companies.length} listed companies have an analysis page here, each with share price, valuation metrics, a company profile and a fresh AI equity report available on demand. Pick a letter to browse, or <a href="/reports.html">see the reports ready to buy today</a>.`,
+  intro: `${n(companies.length)} listed companies have an analysis page here, each with share price, valuation metrics, a company profile and a fresh AI equity report available on demand. Pick a letter to browse, or <a href="/reports.html">see the reports ready to buy today</a>.`,
   bodyHtml: `${alphaNav(null)}
       <div class="idx-group">
 ${letters.map((l) => `        <p style="margin:.2rem 0;"><a href="/companies/${slugOf(l)}.html"><strong>${esc(l)}</strong></a> <span class="idx-tk">${buckets.get(l).length} ${buckets.get(l).length === 1 ? 'company' : 'companies'}</span></p>`).join('\n')}
@@ -193,7 +194,7 @@ ${letters.map((l) => `        <p style="margin:.2rem 0;"><a href="/companies/${s
     '@type': 'CollectionPage',
     '@id': `${SITE}/companies.html#index`,
     name: 'Company index',
-    description: `Index of ${companies.length} listed companies with AI equity analysis pages.`,
+    description: `Index of ${n(companies.length)} listed companies with AI equity analysis pages.`,
     isPartOf: { '@type': 'WebSite', name: 'Valuatum AI Equity Reports', url: `${SITE}/` },
   }],
 }));
