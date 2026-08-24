@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sameText } from './same-text.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = process.argv.includes('--check');
@@ -173,10 +174,10 @@ if (/data-pricing-offers/.test(pricingHtml)) {
 
 const target = path.join(ROOT, 'pricing.md');
 const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
-const htmlStale = pricingHtml !== html;
+const htmlStale = !sameText(pricingHtml, html);
 
 if (CHECK) {
-  if (current.trim() !== body.trim() || htmlStale) {
+  if (!sameText(current.trim(), body.trim()) || htmlStale) {
     console.error('pricing.md / pricing.html JSON-LD are out of date — run: node scripts/build-pricing-md.mjs');
     process.exit(1);
   }

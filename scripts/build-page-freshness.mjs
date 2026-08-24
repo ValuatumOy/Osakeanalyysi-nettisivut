@@ -19,6 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { sameText } from './same-text.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -94,7 +95,7 @@ for (const rel of PAGES) {
       : html.replace(/<\/head>/, () => `${block}\n</head>`);
   }
 
-  if (next === html) continue;
+  if (sameText(next, html)) continue;
   changed++;
   if (!CHECK) fs.writeFileSync(abs, next);
 }

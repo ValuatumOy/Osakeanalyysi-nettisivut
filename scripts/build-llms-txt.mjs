@@ -14,6 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sameText } from './same-text.mjs';
 import { headlineOf } from './report-headline.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -143,7 +144,7 @@ const target = path.join(ROOT, 'llms.txt');
 const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
 
 if (CHECK) {
-  if (current.trim() !== body.trim()) {
+  if (!sameText(current.trim(), body.trim())) {
     console.error('llms.txt is out of date with the report pages — run: node scripts/build-llms-txt.mjs');
     process.exit(1);
   }

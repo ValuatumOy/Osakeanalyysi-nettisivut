@@ -16,6 +16,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sameText } from './same-text.mjs';
 import { headlineOf } from './report-headline.mjs';
 import { upsertUrl } from './seo-sitemap.mjs';
 
@@ -242,7 +243,7 @@ fs.mkdirSync(path.join(ROOT, 'companies'), { recursive: true });
 for (const [rel, html] of files) {
   const abs = path.join(ROOT, rel);
   const current = fs.existsSync(abs) ? fs.readFileSync(abs, 'utf8') : null;
-  if (current === html) continue;
+  if (current !== null && sameText(current, html)) continue;
   stale++;
   if (!CHECK) fs.writeFileSync(abs, html);
 }
@@ -256,7 +257,7 @@ xml = upsertUrl(xml, `${SITE}/companies.html`, { changefreq: 'weekly', priority:
 for (const l of letters) {
   xml = upsertUrl(xml, `${SITE}/companies/${slugOf(l)}.html`, { changefreq: 'weekly', priority: '0.7' });
 }
-const sitemapStale = xml !== fs.readFileSync(sitemapFile, 'utf8');
+const sitemapStale = !sameText(xml, fs.readFileSync(sitemapFile, 'utf8'));
 if (sitemapStale && !CHECK) fs.writeFileSync(sitemapFile, xml);
 
 console.log(`${CHECK ? '[check] ' : ''}${files.size} index pages (${letters.length} letters, ${companies.length} companies), ${stale} ${CHECK ? 'out of date' : 'written'}${sitemapStale ? `, sitemap ${CHECK ? 'out of date' : 'updated'}` : ''}`);
