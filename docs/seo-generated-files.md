@@ -68,10 +68,12 @@ by someone who is not a member, or publishing earns nothing. They now live in
 report is about, which is better placed than a separate shop: scoped to one company it needs
 no company filter, no analyst filter and no search, because the page already is the filter.
 
-The section is `hidden` until the API returns an analysis for that ticker, so a company
-nobody has covered renders nothing and the first published report lights it up with no
-deploy. Ordering comes from the API (`server/members/ranking.js`) and is never re-sorted
-client-side.
+The section and its header button are always shown. When nobody has published on a company
+it says so in as many words, because an absent section tells a reader nothing about whether
+the layer exists at all. A failed request says something different again — "could not be
+loaded" — since on a site publishing ratings, "we could not reach the API" and "nobody has
+covered this company" are not the same statement. Ordering comes from the API
+(`server/members/ranking.js`) and is never re-sorted client-side.
 
 The signed-in browser in `members.html` is unchanged and still owns reading against
 allowance, the review obligation and the one-open-at-a-time lock.

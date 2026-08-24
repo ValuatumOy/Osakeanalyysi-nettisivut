@@ -415,7 +415,7 @@ function generateGate(d) {
             <h2 style="color:white; margin-top:0;">Generate the ${esc(sn)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(d.companyName)}" data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
@@ -709,8 +709,8 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
-            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>` : ''}
-            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump hidden style="font-size:var(--text-xs);">Analyst reports</a>
+            ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>` : ''}
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
           <p class="company-header-note">${esc(actionsNote)}</p>
         </div>
@@ -724,7 +724,7 @@ ${sections.join('\n')}
     </div>
     <!-- Public surface for the analyst layer: hidden until the members API returns an
          analysis for this company, so a company nobody has covered shows nothing. -->
-    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-ticker="${attr(d.ticker)}" hidden
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}"
              style="max-width:1760px; padding-bottom:3rem;">
       <div class="store-company-head">
         <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(sn)}</h2>
@@ -788,7 +788,7 @@ export function renderCards(companies, companyPageCatalog) {
     const primaryCta = isFree
       ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>`
       : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
-    return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
+    return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-company="${attr(d.companyName)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>
             <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>
             <h3 class="rc-company-name"><a href="/${attr(pageUrl)}">${esc(name)}</a></h3>

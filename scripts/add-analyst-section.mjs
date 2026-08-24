@@ -20,9 +20,9 @@ const dec = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const attr = (s) => esc(s).replace(/"/g, '&quot;');
 
-const section = (ticker, name) => `    <!-- Public surface for the analyst layer: hidden until the members API returns an
-         analysis for this company, so a company nobody has covered shows nothing. -->
-    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-ticker="${attr(ticker)}" hidden
+const section = (ticker, name) => `    <!-- Public surface for the analyst layer. Always shown: when nobody has published on
+         this company the script says so, which tells a reader the layer exists. -->
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-company="${attr(name)}" data-ticker="${attr(ticker)}"
              style="max-width:1760px; padding-bottom:3rem;">
       <div class="store-company-head">
         <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(name)}</h2>
@@ -38,7 +38,7 @@ const section = (ticker, name) => `    <!-- Public surface for the analyst layer
 
 const SCRIPT = '  <script src="/js/analyst-reports.js" defer></script>';
 
-const JUMP = '  <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump hidden'
+const JUMP = '  <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump'
   + ' style="font-size:var(--text-xs);">Analyst reports</a>\n          ';
 
 let added = 0, already = 0, skipped = 0;
@@ -62,15 +62,27 @@ for (const f of fs.readdirSync(DIR).filter((x) => x.endsWith('.html'))) {
     const closeMain = next.lastIndexOf('  </main>');
     if (closeMain === -1) { skipped++; continue; }
     next = next.slice(0, closeMain) + section(ticker.trim(), name.trim()) + next.slice(closeMain);
-  } else if (!/id="analyst-reports"/.test(next)) {
-    // Present from an earlier run, but without the anchor the jump button needs.
-    next = next.replace('<section class="container analyst-reports" data-analyst-reports',
-      '<section class="container analyst-reports" id="analyst-reports" data-analyst-reports');
+  } else {
+    // Present from an earlier run: bring it up to date in place rather than adding another.
+    if (!/id="analyst-reports"/.test(next)) {
+      next = next.replace('<section class="container analyst-reports" data-analyst-reports',
+        '<section class="container analyst-reports" id="analyst-reports" data-analyst-reports');
+    }
+    // The section and the button used to be hidden when a company had no coverage. They are
+    // always shown now: the section states that nobody has published on this company yet,
+    // which tells a reader the layer exists, where an absent section tells them nothing.
+    next = next.replace(/(<section class="container analyst-reports"[^>]*?) hidden(\r?\n)/, '$1$2');
+    next = next.replace(' class="btn btn-gold analyst-jump" data-analyst-jump hidden',
+      ' class="btn btn-gold analyst-jump" data-analyst-jump');
+    if (!/data-analyst-reports data-company=/.test(next)) {
+      next = next.replace('data-analyst-reports data-ticker=',
+        `data-analyst-reports data-company="${attr(name.trim())}" data-ticker=`);
+    }
   }
 
   // Top-of-page entry point. The section sits below the report body, so without this the
-  // marketplace is only findable by scrolling past the whole thing. Hidden until the API
-  // says this company has coverage; the script fills in the count.
+  // marketplace is only findable by scrolling past the whole thing. The script replaces the
+  // label with a count once it knows one.
   if (!next.includes('data-analyst-jump')) {
     const actions = next.indexOf('</div>', next.indexOf('class="company-header-actions"'));
     if (actions !== -1) {

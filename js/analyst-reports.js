@@ -29,6 +29,7 @@
 
   var ticker = String(mount.getAttribute('data-ticker') || '').trim().toUpperCase();
   if (!ticker) return;
+  var companyName = String(mount.getAttribute('data-company') || '').trim() || ticker;
 
   // Matched to the stage by hostname, so the test site never buys from, or pays into, the
   // live member system.
@@ -160,32 +161,74 @@
       .catch(function () { bannerEl.textContent = 'That purchase could not be confirmed.'; });
   }
 
+  var jump = document.querySelector('[data-analyst-jump]');
+
+  // Nobody has covered this company yet. Saying so beats an absent section: it tells a
+  // reader the layer exists and is empty here, rather than leaving them to wonder whether
+  // the site has one at all.
+  function emptyState() {
+    return '<div class="store-empty">'
+      + '<p><strong>No analyst has published a report on ' + esc(companyName) + ' yet.</strong></p>'
+      + '<p>When one does it appears here: this company\'s Valuatum report re-run with that '
+      + 'analyst\'s own assumptions and instructions, published under their name and dated. '
+      + 'Reports are ordered by what other analysts said the work added over the engine\'s '
+      + 'report, scored out of five by people who had to read it to say so.</p>'
+      + '<p><a href="/analysts.html">How the analyst programme works</a></p>'
+      + '</div>';
+  }
+
+  // A failed request is not the same statement as "nobody has published one", and on a site
+  // that publishes ratings the difference is worth the extra branch.
+  function errorState() {
+    return '<div class="store-empty"><p>Analyst reports could not be loaded just now. '
+      + 'Please try again shortly.</p></div>';
+  }
+
+  // The standing intro explains what an analyst report is; so does the empty state. Showing
+  // both means reading the same explanation twice on a company nobody has covered.
+  var noteEl = mount.querySelector('.store-note');
+  function showNote(on) { if (noteEl) noteEl.hidden = !on; }
+
+  function paint(list, failed) {
+    if (failed) {
+      listEl.innerHTML = errorState();
+      showNote(true);
+      if (countEl) countEl.textContent = '';
+      if (jump) jump.textContent = 'Analyst reports';
+      return;
+    }
+    if (!list.length) {
+      listEl.innerHTML = emptyState();
+      showNote(false);
+      if (countEl) countEl.textContent = 'None yet';
+      if (jump) jump.textContent = 'Analyst reports';
+      return;
+    }
+    showNote(true);
+    listEl.innerHTML = list.map(function (a, i) { return row(a, i + 1); }).join('');
+    // "3 analyst reports" is a reason to click; "Analyst reports" is not.
+    var label = list.length === 1 ? '1 analyst report' : list.length + ' analyst reports';
+    if (countEl) countEl.textContent = label;
+    if (jump) {
+      jump.textContent = label;
+      var free = list.filter(function (a) { return a.publicFree; }).length;
+      if (free) jump.setAttribute('data-free-count', String(free));
+    }
+  }
+
   function load() {
     fetch(MEMBERS_API + '/analyses?companyId=' + encodeURIComponent(ticker))
-      .then(function (r) { return r.ok ? r.json() : { analyses: [] }; })
-      .catch(function () { return { analyses: [] }; })
+      .then(function (r) {
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.json();
+      })
       .then(function (data) {
         // Already ranked by the API (server/members/ranking.js) -- never re-sort here.
-        var list = (data.analyses || []).filter(function (a) {
+        paint((data.analyses || []).filter(function (a) {
           return String(a.companyId || '').trim().toUpperCase() === ticker;
-        });
-        if (!list.length) return; // nobody has covered this company; section stays hidden
-        listEl.innerHTML = list.map(function (a, i) { return row(a, i + 1); }).join('');
-        var label = list.length === 1 ? '1 analyst report' : list.length + ' analyst reports';
-        if (countEl) countEl.textContent = label;
-        mount.hidden = false;
-
-        // The section sits below the report body, so without this the marketplace is only
-        // findable by scrolling past the whole thing. The button carries the count because
-        // "3 analyst reports" is a reason to click and "Analyst reports" is not.
-        var jump = document.querySelector('[data-analyst-jump]');
-        if (jump) {
-          jump.textContent = label;
-          var free = list.filter(function (a) { return a.publicFree; }).length;
-          if (free) jump.setAttribute('data-free-count', String(free));
-          jump.hidden = false;
-        }
-      });
+        }), false);
+      })
+      .catch(function () { paint([], true); });
   }
 
   listEl.addEventListener('click', function (ev) {

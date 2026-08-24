@@ -154,7 +154,7 @@ ${navHtml()}
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
             <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
-            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump hidden style="font-size:var(--text-xs);">Analyst reports</a>
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@ ${navHtml()}
             <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-company="${attr(name)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
@@ -200,7 +200,7 @@ ${navHtml()}
     </div>
     <!-- Public surface for the analyst layer: hidden until the members API returns an
          analysis for this company, so a company nobody has covered shows nothing. -->
-    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-ticker="${attr(company.ticker)}" hidden
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-company="${attr(name)}" data-ticker="${attr(company.ticker)}"
              style="max-width:1760px; padding-bottom:3rem;">
       <div class="store-company-head">
         <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(name)}</h2>
