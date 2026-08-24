@@ -20,6 +20,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'images', 'og');
@@ -48,7 +49,9 @@ const RATING_COLOR = { BUY: '#3d9e72', HOLD: '#c9962c', SELL: '#c4553f' };
  * the opposite of the card, which on a share image is the only thing most people read.
  */
 function trendLine(rating) {
-  const slope = { BUY: -1, SELL: 1, HOLD: 0 }[rating] ?? -1;
+  // No rating means no direction: a sloped line would still argue a case the card does not
+  // make. Flat, with the same wobble, so it still reads as a chart.
+  const slope = rating ? ({ BUY: -1, SELL: 1, HOLD: 0 }[rating] ?? 0) : 0;
   const wobble = [0, 8, -6, 10, -4, 6, -8, 4, -10, 2, -6, 0];
   return wobble.map((w, i) => {
     const x = 60 + i * 100;
@@ -59,10 +62,20 @@ function trendLine(rating) {
 
 /** One report's card, on the same grid as og-image.svg so the set looks like a set. */
 function reportCard({ name, ticker, rating, target, current }) {
-  const accent = RATING_COLOR[rating] || '#3d9e72';
+  // With ratings off, the verdict leaves the card entirely -- and so do the two things that
+  // encode it without words: the accent colour (red reads SELL at a glance) and the slope of
+  // the trend line. What is left describes what the report contains.
+  if (!SHOW_RATINGS_IN_METADATA) {
+    rating = null;
+    target = null;
+    current = null;
+  }
+  const accent = (rating && RATING_COLOR[rating]) || '#3d9e72';
+  // A 240px tile holds about 11 characters at 30px; longer headings step down rather than
+  // overflow the tile.
   const stat = (x, label, value, color = 'white') => `
   <rect x="${x}" y="380" width="240" height="96" rx="8" fill="rgba(61,158,114,0.08)" stroke="rgba(61,158,114,0.2)" stroke-width="1"/>
-  <text x="${x + 120}" y="420" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="30" font-weight="400" fill="${color}">${esc(value)}</text>
+  <text x="${x + 120}" y="420" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="${String(value).length > 11 ? 23 : 30}" font-weight="400" fill="${color}">${esc(value)}</text>
   <text x="${x + 120}" y="450" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.4)">${esc(label)}</text>`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
@@ -83,9 +96,14 @@ function reportCard({ name, ticker, rating, target, current }) {
   <text x="104" y="185" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="400" fill="${accent}" letter-spacing="0.06em">${esc(ticker)}</text>
   <text x="104" y="245" font-family="Inter, -apple-system, sans-serif" font-size="54" font-weight="300" fill="white" letter-spacing="-1">${esc(fit(name, 30))}</text>
   <text x="104" y="300" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="300" fill="rgba(255,255,255,0.5)">AI equity report · value pool analysis · reverse valuation</text>
-${stat(104, 'rating', rating, accent)}
+${rating
+    ? `${stat(104, 'rating', rating, accent)}
 ${stat(364, 'price target', target)}
-${current ? stat(624, 'current price', current) : ''}
+${current ? stat(624, 'current price', current) : ''}`
+    // No verdict on the card: say what the reader gets instead of what we concluded.
+    : `${stat(104, 'each business priced', 'Value pools')}
+${stat(364, 'what the price implies', 'Reverse valuation')}
+${stat(624, 'estimates & statements', 'Financials')}`}
   <text x="104" y="560" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#3d9e72" letter-spacing="0.05em">VALUATUM</text>
   <text x="230" y="560" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="300" fill="rgba(255,255,255,0.3)">· aiequityreports.com</text>
 </svg>`;

@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { reportTitle, companyTitle, TITLE_LIMIT } from './seo-title.mjs';
+import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'reports');
@@ -55,6 +56,21 @@ for (const f of files) {
   // twitter:title stays its own shorter line; only rewrite it when it carried the old boilerplate.
   out = out.replace(/(<meta name="twitter:title" content=")[\s\S]*?(">)/, (mm, a, b) =>
     /Price Target & Valuation \| Valuatum/.test(mm) ? `${a}${attr(next)}${b}` : mm);
+
+  // The share card is one surface: neutral art beside text reading "rates KESKOB.HE SELL"
+  // is worse than either alone. The plain <meta name="description"> is left alone on purpose
+  // -- that is the Google snippet, a wider question than the share card.
+  if (!SHOW_RATINGS_IN_METADATA && d.headline) {
+    const share = `${d.name} (${d.ticker}) stock analysis & AI equity report: segment-value `
+      + `analysis, reverse valuation, financial estimates, risks & catalysts, with a 12-month price target.`;
+    for (const tag of ['og:description', 'twitter:description']) {
+      const attrName = tag.startsWith('og:') ? 'property' : 'name';
+      // Double-escaped: inside a template literal "\s" collapses to "s", which would build
+      // the character class [sS] and match almost nothing.
+      out = out.replace(new RegExp(`(<meta ${attrName}="${tag}" content=")[\\s\\S]*?(">)`),
+        (_m, a, b) => `${a}${attr(share)}${b}`);
+    }
+  }
 
   if (out !== html) {
     changed++;

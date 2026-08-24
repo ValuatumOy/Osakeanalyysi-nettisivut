@@ -8,6 +8,8 @@
 // The rules below pick the longest variant that still fits, so the rating and price target
 // — the only things on the page a competitor cannot copy — survive the truncation.
 
+import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
+
 export const TITLE_LIMIT = 60;
 
 /**
@@ -18,6 +20,20 @@ export const TITLE_LIMIT = 60;
  * @param {object} h       headline: { recommendation, targetPrice }
  */
 export function reportTitle(name, ticker, h = {}) {
+  // With ratings off, a page that HAS a report still says so -- "& Price Target" describes
+  // what the page contains without stating the verdict, and keeps these 17 pages distinct
+  // from the 1,157 overview pages so the two do not compete for the same query.
+  if (!SHOW_RATINGS_IN_METADATA) {
+    return pick([
+      `${name} (${ticker}) Stock Analysis & Price Target`,
+      `${name} (${ticker}) Stock Analysis & Valuation`,
+      `${name} (${ticker}) Stock Analysis`,
+      `${name} (${ticker}) Valuation`,
+      `${name} Stock Analysis & Price Target`,
+      `${name} Stock Analysis`,
+    ], name);
+  }
+
   const rec = (h.recommendation || '').trim().toUpperCase();
   const target = compactPrice(h.targetPrice);
   const candidates = [];

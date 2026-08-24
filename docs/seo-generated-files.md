@@ -78,6 +78,32 @@ covered this company" are not the same statement. Ordering comes from the API
 The signed-in browser in `members.html` is unchanged and still owns reading against
 allowance, the review obligation and the one-open-at-a-time lock.
 
+## Ratings in metadata (`scripts/seo-flags.mjs`)
+
+One switch, **off by default**, controls whether a rating and price target appear in the
+surfaces that travel away from the page: the `<title>`, `og:title`, `og:/twitter:description`
+and the Open Graph card art (including its accent colour and the slope of its trend line,
+which encode a verdict without words).
+
+Off because a search result reading "SELL, €17.10 Target" carries none of the page's
+"AI-generated research, not investment advice", and an AI answer will repeat the verdict
+stripped of every qualifier. Whether Valuatum publishes recommendations in that form is a
+compliance question, and it is open.
+
+The SEO cost is small: only 17 of 1,174 pages ever carried a rating, and the win was title
+*length* (median 108 → 49 against Google's ~60), which the flag does not touch. Those 17
+read "Stock Analysis & Price Target", which also keeps them distinct from the 1,157 overview
+pages rather than competing for the same query.
+
+**What the flag does not cover**, deliberately: the plain `<meta name="description">` — the
+Google snippet — still states the rating, as does the visible page body above the paywall
+and `llms.txt`. Those predate the flag and are the wider publication decision. Turning this
+switch on does not make the site compliant; leaving it off does not make it silent.
+
+```
+SEO_SHOW_RATINGS=1 npm run seo:build && SEO_SHOW_RATINGS=1 npm run seo:og
+```
+
 ## Deliberately not done
 
 - **`AnalysisNewsArticle` on the 1,157 company pages.** They carry company data, not an

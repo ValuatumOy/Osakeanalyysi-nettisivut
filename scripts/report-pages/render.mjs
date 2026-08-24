@@ -9,6 +9,7 @@
 // without re-rendering it.
 import fs from 'node:fs';
 import { reportTitle } from '../seo-title.mjs';
+import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -78,6 +79,13 @@ function metaDescription(d) {
   if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
   let s = parts.join(' ') + `. Share price forecast, valuation, segment-value analysis, reverse valuation, financials, risks & catalysts.`;
   return s.replace(/\s+/g, ' ').trim();
+}
+
+/** Share-card description with no rating or price target in it. */
+function shareDescription(d) {
+  const sn = shortName(d.companyName);
+  return `${sn} (${d.ticker}) stock analysis & AI equity report: segment-value analysis, `
+    + `reverse valuation, financial estimates, risks & catalysts, with a 12-month price target.`;
 }
 
 // Keyword-rich public overview paragraph (templated; safe to show on paid pages).
@@ -442,6 +450,12 @@ export function renderPage(d, cat, all) {
   const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
   const url = `${SITE}/reports/${d.slug}.html`;
   const desc = metaDescription(d);
+  // The share card is one surface: a neutral image next to text reading "rates KESKOB.HE
+  // SELL" is worse than either alone. og:/twitter: descriptions follow the same switch as
+  // the title and the card art. The plain <meta name="description"> is deliberately NOT
+  // changed here -- that is the Google snippet, and whether the rating belongs in it is the
+  // wider publication question, not a share-card one.
+  const shareDesc = SHOW_RATINGS_IN_METADATA ? desc : shareDescription(d);
   const sn = shortName(d.companyName);
   const title = reportTitle(sn, d.ticker, d.headline || {});
   const updated = d.reportDate;
@@ -653,14 +667,14 @@ export function renderPage(d, cat, all) {
   <meta name="valuatum-report-id" content="${attr(hasReport ? d.id : '')}">
   <meta name="valuatum-page-mode" content="${attr(mode)}">
   <meta property="og:title" content="${attr(title)}">
-  <meta property="og:description" content="${attr(desc)}">
+  <meta property="og:description" content="${attr(shareDesc)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
   <meta property="og:image" content="${ogImage}">
   <meta property="article:published_time" content="${esc(updated)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${attr(sn + ' (' + d.ticker + ') AI Equity Report')}">
-  <meta name="twitter:description" content="${attr(desc)}">
+  <meta name="twitter:description" content="${attr(shareDesc)}">
   <meta name="twitter:image" content="${ogImage}">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
