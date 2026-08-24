@@ -171,12 +171,20 @@
         });
         if (!list.length) return; // nobody has covered this company; section stays hidden
         listEl.innerHTML = list.map(function (a, i) { return row(a, i + 1); }).join('');
-        if (countEl) {
-          countEl.textContent = list.length === 1
-            ? '1 analyst report'
-            : list.length + ' analyst reports';
-        }
+        var label = list.length === 1 ? '1 analyst report' : list.length + ' analyst reports';
+        if (countEl) countEl.textContent = label;
         mount.hidden = false;
+
+        // The section sits below the report body, so without this the marketplace is only
+        // findable by scrolling past the whole thing. The button carries the count because
+        // "3 analyst reports" is a reason to click and "Analyst reports" is not.
+        var jump = document.querySelector('[data-analyst-jump]');
+        if (jump) {
+          jump.textContent = label;
+          var free = list.filter(function (a) { return a.publicFree; }).length;
+          if (free) jump.setAttribute('data-free-count', String(free));
+          jump.hidden = false;
+        }
       });
   }
 

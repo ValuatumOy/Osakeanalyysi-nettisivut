@@ -154,6 +154,7 @@ ${navHtml()}
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
             <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump hidden style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
         </div>
       </div>
@@ -199,7 +200,7 @@ ${navHtml()}
     </div>
     <!-- Public surface for the analyst layer: hidden until the members API returns an
          analysis for this company, so a company nobody has covered shows nothing. -->
-    <section class="container analyst-reports" data-analyst-reports data-ticker="${attr(company.ticker)}" hidden
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-ticker="${attr(company.ticker)}" hidden
              style="max-width:1760px; padding-bottom:3rem;">
       <div class="store-company-head">
         <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(name)}</h2>

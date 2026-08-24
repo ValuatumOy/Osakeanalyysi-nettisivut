@@ -188,6 +188,7 @@
           </div>
           <div class="company-header-actions">
             <a href="#generate" class="btn btn-gold">Generate fresh report — €50.00</a>
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump hidden style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
           <p class="company-header-note">A fresh report is written when you order it, from the data available today, and arrives by email — usually within about 30 minutes.</p>
         </div>
@@ -235,7 +236,7 @@
     </div>
     <!-- Public surface for the analyst layer: hidden until the members API returns an
          analysis for this company, so a company nobody has covered shows nothing. -->
-    <section class="container analyst-reports" data-analyst-reports data-ticker="FORTUM" hidden
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-ticker="FORTUM" hidden
              style="max-width:1760px; padding-bottom:3rem;">
       <div class="store-company-head">
         <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on Fortum</h2>

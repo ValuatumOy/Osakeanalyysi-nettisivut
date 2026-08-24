@@ -3443,6 +3443,12 @@ select.input {
 }
 .store-company-head .spacer { margin-left: auto; }
 
+/* The `hidden` attribute sets display:none in the UA stylesheet, which any class rule with
+   its own display beats -- .btn declares display:inline-flex. Without this, every company
+   nobody has covered rendered an empty 48x39 "Analyst reports" button in its header. */
+.analyst-jump[hidden],
+.analyst-reports[hidden] { display: none !important; }
+
 .store-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
