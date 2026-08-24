@@ -1,3 +1,5 @@
+import { companyTitle } from '../seo-title.mjs';
+
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
 const DISPLAY_NAME_OVERRIDES = new Map([
@@ -31,6 +33,7 @@ export function pageSlug(company) {
 
 export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date(), options = {}) {
   const name = companyDisplayName(company);
+  const pageTitle = companyTitle(name, company.ticker);
   const slug = pageSlug(company);
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
@@ -81,11 +84,11 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report &mdash; Price Target &amp; Valuation | Valuatum</title>
+  <title>${esc(pageTitle)}</title>
   <meta name="description" content="${attr(description)}">
   <link rel="canonical" href="${attr(url)}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta property="og:title" content="${attr(`${name} (${company.ticker}) Stock Analysis & AI Equity Report - Price Target & Valuation | Valuatum`)}">
+  <meta property="og:title" content="${attr(pageTitle)}">
   <meta property="og:description" content="${attr(description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${attr(url)}">

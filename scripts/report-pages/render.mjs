@@ -8,6 +8,7 @@
 // valuatum-page-mode) so check.mjs can verify a built page against the page-owner rule
 // without re-rendering it.
 import fs from 'node:fs';
+import { reportTitle } from '../seo-title.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -441,7 +442,7 @@ export function renderPage(d, cat, all) {
   const url = `${SITE}/reports/${d.slug}.html`;
   const desc = metaDescription(d);
   const sn = shortName(d.companyName);
-  const title = `${sn} (${d.ticker}) Stock Analysis & AI Equity Report — Price Target & Valuation | Valuatum`;
+  const title = reportTitle(sn, d.ticker, d.headline || {});
   const updated = d.reportDate;
   const pdfHref = pdfHrefOf(cat);
   const downloadCta = isFree && pdfHref
