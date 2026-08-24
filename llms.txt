@@ -5,29 +5,50 @@
 > risk and catalyst analysis, and full financial estimates — built on Valuatum's 25+ years of equity research
 > practice (Helsinki, Finland, est. 2000). Reports are delivered as web pages and downloadable PDFs.
 > All content is AI-generated research for informational purposes only and is not investment advice.
+>
+> Ratings and price targets below are read directly from each report page when this file is generated.
+> Every figure is the one that page carried at that moment; the page itself is always authoritative.
 
 ## Free sample equity reports
-- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): SELL, target 350.00 USD (current 438.26 USD).
-- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): BUY, target 12.76 EUR (current 10.05 EUR).
-- [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-kymmene-equity-report.html): BUY, target 34.00 EUR (current 25.31 EUR).
+- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): BUY, target 15.80 EUR (current 9.44 EUR).
+- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): SELL, target 276.00 USD (current 328.58 USD).
+- [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): BUY, target 27.30 EUR (current 23.40 EUR).
 
 ## Paid equity reports (free preview available)
-- [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): SELL, target 413.00 USD (current 516.10 USD).
+- [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): HOLD, target 490.50 USD (current 482.05 USD).
 - [Intel (INTC) AI equity report](https://www.aiequityreports.com/reports/intel-equity-report.html): SELL, target 98.00 USD (current 114.68 USD).
-- [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): BUY, target 25.92 EUR (current 20.60 EUR).
-- [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 11.50 EUR (current 13.90 EUR).
+- [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): SELL, target 17.10 EUR (current 19.20 EUR).
+- [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
+- [Novo Nordisk A/S (NOVO-B.CO) AI equity report](https://www.aiequityreports.com/reports/novo-nordisk-equity-report.html): BUY, target 404.50 DKK (current 300.15 DKK).
+- [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): BUY, target 267.00 USD (current 144.69 USD).
+- [Oriola (ORIOLA.HE) AI equity report](https://www.aiequityreports.com/reports/oriola-equity-report.html): BUY, target 1.60 EUR (current 0.93 EUR).
+- [Orion (ORNBV.HE) AI equity report](https://www.aiequityreports.com/reports/orion-equity-report.html): BUY, target 74.80 EUR (current 70.50 EUR).
+- [Pandora A/S (PNDORA.CO) AI equity report](https://www.aiequityreports.com/reports/pandora-equity-report.html): BUY, target 1,112.30 DKK (current 807.40 DKK).
+- [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): HOLD, target 15.90 EUR (current 17.22 EUR).
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
-- [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): SELL, target 30.00 EUR (current 36.12 EUR).
+- [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
+- [Wärtsilä Oyj Abp (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): HOLD, target 32.10 EUR (current 31.89 EUR).
 
 ## Stock comparisons
+- None published right now.
+
+## Articles
+- [Can AI Analyze Stocks? What AI Equity Research Can and Cannot Do](https://www.aiequityreports.com/blog/can-ai-analyze-stocks.html): AI removes the systematic biases built into sell-side research: anchoring, herding, and incentive conflicts.
 
 ## Methodology & company
 - [Methodology](https://www.aiequityreports.com/methodology.html): how value-pool analysis and reverse valuation work.
 - [Reports catalogue](https://www.aiequityreports.com/reports.html): browse all available reports and order a fresh report.
+- [Company index](https://www.aiequityreports.com/companies.html): every company with a page on this site.
 - [Pricing](https://www.aiequityreports.com/pricing.html): credits and per-report pricing.
+- [Pricing (machine-readable)](https://www.aiequityreports.com/pricing.md): the same prices as plain markdown.
 - [FAQ](https://www.aiequityreports.com/faq.html): common questions about AI equity research, methodology and delivery.
 - [About Valuatum](https://www.aiequityreports.com/about.html): the company behind the reports.
 
 ## Key concepts
 - Reverse valuation: works backwards from the current market price to reveal the growth and margin assumptions investors are implicitly paying for.
 - Value pool analysis: decomposes a company's enterprise value into its distinct businesses and embedded options, each priced separately.
+
+## Company overview pages
+1158 listed companies have a page with share price, valuation metrics and company profile,
+each able to generate a fresh AI equity report on demand. They are listed in
+[the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

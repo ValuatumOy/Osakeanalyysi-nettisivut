@@ -27,7 +27,7 @@ function parse(html) {
   const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
   const desc = dec((html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1] || '');
   // "Kesko (KESKOB.HE) Stock Analysis & AI Equity Report — ..."
-  const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*Stock Analysis/);
+  const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*(?:Stock Analysis|Stock Forecast|Valuation)/);
   if (!m) return null;
   const [, name, ticker] = m;
   // "...Valuatum rates KESKOB.HE SELL with a 17.10 EUR price target vs 19.20 EUR."
@@ -48,8 +48,10 @@ for (const f of files) {
   const next = d.headline ? reportTitle(d.name, d.ticker, d.headline) : companyTitle(d.name, d.ticker);
   if (next.length > TITLE_LIMIT) tooLong++;
 
-  let out = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(next)}</title>`);
-  out = out.replace(/(<meta property="og:title" content=")[\s\S]*?(">)/, `$1${attr(next)}$2`);
+  // Function replacements throughout: a literal "$276" in a string replacement would be
+  // read as capture group $2 followed by "76" and silently corrupt the tag.
+  let out = html.replace(/<title>[\s\S]*?<\/title>/, () => `<title>${esc(next)}</title>`);
+  out = out.replace(/(<meta property="og:title" content=")[\s\S]*?(">)/, (_m, a, b) => `${a}${attr(next)}${b}`);
   // twitter:title stays its own shorter line; only rewrite it when it carried the old boilerplate.
   out = out.replace(/(<meta name="twitter:title" content=")[\s\S]*?(">)/, (mm, a, b) =>
     /Price Target & Valuation \| Valuatum/.test(mm) ? `${a}${attr(next)}${b}` : mm);
