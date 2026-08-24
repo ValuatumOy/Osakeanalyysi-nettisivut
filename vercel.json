@@ -4,6 +4,16 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/report-store.html",
+      "destination": "/reports.html",
+      "permanent": true
+    },
+    {
+      "source": "/report-store",
+      "destination": "/reports.html",
+      "permanent": true
+    },
+    {
       "source": "/reports/upm-kymmene-equity-report.html",
       "destination": "/reports/upm-equity-report.html",
       "permanent": true

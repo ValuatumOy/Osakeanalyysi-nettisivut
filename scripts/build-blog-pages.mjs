@@ -122,7 +122,7 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <details class="nav-more">
@@ -143,7 +143,7 @@ function navHtml() {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
@@ -177,6 +177,7 @@ function footerHtml() {
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/companies.html" class="footer-link">Company index</a>
             <a href="/reports.html#free" class="footer-link">Free samples</a>
             <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
@@ -561,7 +562,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <details class="nav-more">
@@ -582,7 +583,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>

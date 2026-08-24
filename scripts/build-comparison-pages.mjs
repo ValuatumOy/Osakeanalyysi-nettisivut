@@ -51,7 +51,7 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <details class="nav-more">
@@ -72,7 +72,7 @@ function navHtml() {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
