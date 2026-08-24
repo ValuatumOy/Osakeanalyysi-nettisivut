@@ -492,6 +492,9 @@ async function advance(order) {
       const { jobId: revisionJobId } = await engine.submitRevision({
         parentJobId: order.jobId,
         comments,
+        // Only a member generation carries a name: a revised report says who
+        // steered it, an unrevised or shop report stays engine-only.
+        analystName: order.analystName || undefined,
       });
       await orders.update(order.id, {
         revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0, error: null,

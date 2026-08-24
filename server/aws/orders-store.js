@@ -95,6 +95,9 @@ async function create(input) {
     // Undefined is dropped by the document client, so ordinary orders are
     // stored exactly as before.
     visibility: input.visibility || undefined,
+    // The member who owns this generation, for the PDF cover byline on any
+    // report they revise. Undefined on shop orders, which stay engine-only.
+    analystName: input.analystName || undefined,
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
     reportId: input.reportId || null,
     status: input.status || STATUS.NEW,

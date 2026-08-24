@@ -437,6 +437,10 @@ async function postGenerationsFree(event) {
     exchange: String(body.exchange || '').trim(),
     industry: match.industry || '',
     visibility: 'private',
+    // LinkedIn sign-in is the analyst path and always yields a name; a
+    // magic-link member has none and their report stays engine-bylined. An
+    // email address is never printed on a public cover.
+    analystName: String(profile.name || '').slice(0, 120),
     // The revision loop on the order page is where the member steers the
     // report toward their own view; each round is a real engine run.
     revisionsAllowed: limitsFor(profile).revisions,

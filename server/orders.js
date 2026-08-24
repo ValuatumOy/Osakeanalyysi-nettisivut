@@ -84,6 +84,8 @@ function create(input, statePath = STATE_PATH) {
     exchange: input.exchange || '',
     sector: input.sector || '',
     industry: input.industry || '',
+    // Member generations carry the analyst's name for the PDF cover byline.
+    analystName: input.analystName || '',
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
     reportId: input.reportId || null, // catalog entry id, origin: 'ready' only
     status: input.status || STATUS.NEW,

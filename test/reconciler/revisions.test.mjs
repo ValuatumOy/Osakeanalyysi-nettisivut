@@ -129,6 +129,7 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   orders.create({
     id: 'cs_rev_ok', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
     status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+    analystName: 'Esa Virtanen',
   }, statePath);
   orders.claimRevision('cs_rev_ok', 'assume 8% EBIT margin from 2027', statePath);
 
@@ -141,6 +142,9 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   assert.equal(engine.calls.submitRevision.length, 1);
   assert.equal(engine.calls.submitRevision[0].parentJobId, 'job_base');
   assert.equal(engine.calls.submitRevision[0].comments, 'assume 8% EBIT margin from 2027');
+  // The revised report names the analyst who steered it; a shop order has no
+  // name and stays engine-bylined.
+  assert.equal(engine.calls.submitRevision[0].analystName, 'Esa Virtanen');
 
   // Tick 2: polls the revision job, which is already DONE -> delivers.
   await reconciler.advance(order);
