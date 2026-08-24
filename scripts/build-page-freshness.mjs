@@ -44,12 +44,25 @@ function lastModified(rel) {
 }
 
 const MARKER = 'data-page-freshness';
-let changed = 0, missing = 0;
+let changed = 0, missing = 0, skipped = 0;
 
 for (const rel of PAGES) {
   const abs = path.join(ROOT, rel);
   if (!fs.existsSync(abs)) { missing++; continue; }
   const html = fs.readFileSync(abs, 'utf8');
+
+  // comparisons.html is a noindex redirect stub whose canonical points at reports.html;
+  // stamping it would publish a WebPage node claiming to be a page it is not. Strip one if
+  // an earlier run added it.
+  if (/noindex/i.test((html.match(/<meta name="robots" content="([^"]*)"/) || [])[1] || '')) {
+    skipped++;
+    if (html.includes(MARKER)) {
+      const stripped = html.replace(new RegExp(`\\s*<script type="application/ld\\+json" ${MARKER}>[\\s\\S]*?</script>`), '');
+      changed++;
+      if (!CHECK) fs.writeFileSync(abs, stripped);
+    }
+    continue;
+  }
 
   const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || rel);
   const description = dec((html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1] || '');
@@ -86,7 +99,8 @@ for (const rel of PAGES) {
   if (!CHECK) fs.writeFileSync(abs, next);
 }
 
-console.log(`${CHECK ? '[check] ' : ''}${changed} pages ${CHECK ? 'out of date' : 'stamped'}${missing ? `, ${missing} not found` : ''}`);
+console.log(`${CHECK ? '[check] ' : ''}${changed} pages ${CHECK ? 'out of date' : 'stamped'}`
+  + `${skipped ? `, ${skipped} skipped (noindex)` : ''}${missing ? `, ${missing} not found` : ''}`);
 if (CHECK && changed) {
   console.error('Page freshness JSON-LD is out of date — run: node scripts/build-page-freshness.mjs');
   process.exit(1);

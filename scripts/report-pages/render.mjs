@@ -445,6 +445,9 @@ export function renderPage(d, cat, all) {
   const sn = shortName(d.companyName);
   const title = reportTitle(sn, d.ticker, d.headline || {});
   const updated = d.reportDate;
+  // A rated page gets the share card built for it by scripts/build-og-images.mjs; an
+  // unrated overview page has nothing specific to put on one and keeps the default.
+  const ogImage = hasReport ? `${SITE}/images/og/${d.slug}.png` : `${SITE}/images/og-image.png`;
   const pdfHref = pdfHrefOf(cat);
   const downloadCta = isFree && pdfHref
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
@@ -653,12 +656,12 @@ export function renderPage(d, cat, all) {
   <meta property="og:description" content="${attr(desc)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${SITE}/images/og-image.png">
+  <meta property="og:image" content="${ogImage}">
   <meta property="article:published_time" content="${esc(updated)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${attr(sn + ' (' + d.ticker + ') AI Equity Report')}">
   <meta name="twitter:description" content="${attr(desc)}">
-  <meta name="twitter:image" content="${SITE}/images/og-image.png">
+  <meta name="twitter:image" content="${ogImage}">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
   <script type="application/ld+json">
