@@ -16,6 +16,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { headlineOf } from './report-headline.mjs';
 import { upsertUrl } from './seo-sitemap.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -37,15 +38,14 @@ function collect() {
     const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
     const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*(?:Stock|Valuation)/);
     if (!m) continue;
-    const desc = dec((html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1] || '');
-    const r = desc.match(/rates\s+\S+\s+([A-Z]+)\s+with a\s+([\d.,]+\s*[A-Z]{3})\s+price target/);
+    const h = headlineOf(html);
     out.push({
       slug: f.replace(/\.html$/, ''),
       name: m[1].trim(),
       ticker: m[2].trim(),
       mode: (html.match(/valuatum-page-mode" content="([a-z]+)"/) || [])[1] || 'company',
-      rating: r ? r[1] : null,
-      target: r ? r[2].replace(/\s+/g, ' ') : null,
+      rating: h ? h.recommendation : null,
+      target: h && h.targetPrice ? String(h.targetPrice).replace(/\s+/g, ' ') : null,
     });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name, 'en'));

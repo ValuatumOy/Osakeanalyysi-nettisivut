@@ -13,7 +13,8 @@ systems as ground truth, on a site that publishes investment ratings.
 
 | Command | Writes | Reads from |
 |---|---|---|
-| `npm run seo:titles` | `<title>`, `og:title` on `reports/*.html` | each page's own title + description |
+| `npm run seo:titles` | `<title>`, `og:title` on `reports/*.html` | page title + `report-content/<id>.json` |
+| `npm run seo:descriptions` | `<meta name="description">` on the 17 report pages | `report-content/<id>.json` + members API |
 | `npm run seo:companies` | `companies.html`, `companies/<letter>.html`, sitemap entries | `reports/*.html` |
 | `npm run seo:llms` | `llms.txt` | `reports/*.html`, `compare/`, `blog/` |
 | `npm run seo:pricing` | `pricing.md`, JSON-LD in `pricing.html` | `pricing.html` pricing cards |
@@ -46,6 +47,24 @@ reader and five in the file.
 `members.html` are noindex (the comparison feature was retired to redirect stubs). They are
 kept out of `llms.txt`, out of the company index and out of the freshness stamping. Listing
 a redirect stub to an AI system points it at a redirect.
+
+**Ratings come from `report-content/<id>.json`, never from the page's own prose.** Every
+page carries `<meta name="valuatum-report-id">` naming the JSON it was built from;
+`scripts/report-headline.mjs` resolves it. The scripts used to recover the rating by regexing
+the meta description, which broke the moment that sentence was rewritten — and rewriting it
+is exactly what `seo:descriptions` does.
+
+**The snippet has its own switch.** `SHOW_RATINGS_IN_SNIPPET` (on by default) is independent
+of `SHOW_RATINGS_IN_METADATA` (off by default). A snippet sits under the page's own link, one
+click from the disclaimer; a title or a share card travels without it. Decided 24.8.2026.
+
+**Analyst counts are baked at build time.** A meta description cannot be filled in by the
+browser, so `scripts/analyst-index.mjs` reads `GET /analyses` during the build.
+It degrades rather than fails — the live catalog hard-fails on purpose, but an analyst count
+is an enhancement on a page that is correct without it, so an outage returns null and leaves
+existing descriptions alone rather than silently rewriting them all down to "no analysts".
+Defaults to the **prod** members API; `MEMBERS_STAGE=test` for the test stack. Production has
+0 published analyses today, so no committed page carries an analyst clause.
 
 **`$` in a replacement string.** `String.replace(re, "…$276…")` reads `$2` as a capture
 group. Every one of these scripts uses function replacements; a string replacement silently

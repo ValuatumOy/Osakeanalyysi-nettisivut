@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { headlineOf } from './report-headline.mjs';
 import { reportTitle, companyTitle, TITLE_LIMIT } from './seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
@@ -26,14 +27,13 @@ const attr = (s) => esc(s).replace(/"/g, '&quot;');
 /** Pull company name, ticker and (where present) the rating out of the built page. */
 function parse(html) {
   const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
-  const desc = dec((html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1] || '');
-  // "Kesko (KESKOB.HE) Stock Analysis & AI Equity Report — ..."
+  // "Kesko (KESKOB.HE) Stock Analysis & Price Target"
   const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*(?:Stock Analysis|Stock Forecast|Valuation)/);
   if (!m) return null;
   const [, name, ticker] = m;
-  // "...Valuatum rates KESKOB.HE SELL with a 17.10 EUR price target vs 19.20 EUR."
-  const r = desc.match(/rates\s+\S+\s+([A-Z]+)\s+with a\s+([\d.,]+\s*[A-Z]{3})\s+price target/);
-  return { name: name.trim(), ticker: ticker.trim(), headline: r ? { recommendation: r[1], targetPrice: r[2] } : null };
+  // The rating comes from report-content/<id>.json, not from the description sentence --
+  // that sentence is now built by seo-description.mjs and its wording varies by name length.
+  return { name: name.trim(), ticker: ticker.trim(), headline: headlineOf(html) };
 }
 
 const files = fs.readdirSync(DIR).filter((f) => f.endsWith('.html'));

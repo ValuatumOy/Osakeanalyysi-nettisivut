@@ -10,6 +10,7 @@
 import fs from 'node:fs';
 import { reportTitle } from '../seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
+import { reportDescription } from '../seo-description.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -68,17 +69,21 @@ export function coverageDocFrom(doc) {
   };
 }
 
-function metaDescription(d) {
-  const h = d.headline || {};
-  const sn = shortName(d.companyName);
-  if (!h.recommendation) {
-    return `${sn} (${d.ticker}) stock overview: share price, market cap and company profile. Generate a fresh Valuatum AI equity report for ${sn} — segment-value analysis, reverse valuation, financials, risks & catalysts.`.replace(/\s+/g, ' ').trim();
-  }
-  const parts = [`${sn} (${d.ticker}) stock analysis & AI equity report: Valuatum rates ${d.ticker} ${h.recommendation}`];
-  if (h.targetPrice) parts.push(`with a ${h.targetPrice} price target`);
-  if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
-  let s = parts.join(' ') + `. Share price forecast, valuation, segment-value analysis, reverse valuation, financials, risks & catalysts.`;
-  return s.replace(/\s+/g, ' ').trim();
+/**
+ * Google renders about 160 characters. This used to build 206-245 and lose the tail every
+ * time; scripts/seo-description.mjs holds the budget and the reasoning. `analysts` comes
+ * from the members API at build time (a static description cannot be filled in by the
+ * browser), and is 0 when it could not be read.
+ */
+function metaDescription(d, analysts = 0, disagrees = null) {
+  return reportDescription({
+    name: shortName(d.companyName),
+    ticker: d.ticker,
+    recommendation: d.headline?.recommendation,
+    targetPrice: d.headline?.targetPrice,
+    analysts,
+    disagrees,
+  });
 }
 
 /** Share-card description with no rating or price target in it. */
@@ -449,7 +454,7 @@ export function renderPage(d, cat, all) {
   const hasReport = !!(d.headline && d.headline.recommendation);
   const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
   const url = `${SITE}/reports/${d.slug}.html`;
-  const desc = metaDescription(d);
+  const desc = metaDescription(d, d.analystCount || 0, d.analystDisagrees ?? null);
   // The share card is one surface: a neutral image next to text reading "rates KESKOB.HE
   // SELL" is worse than either alone. og:/twitter: descriptions follow the same switch as
   // the title and the card art. The plain <meta name="description"> is deliberately NOT

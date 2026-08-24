@@ -20,3 +20,15 @@
 // To turn it back on once that question is answered:
 //   SEO_SHOW_RATINGS=1 npm run seo:build && SEO_SHOW_RATINGS=1 npm run seo:og
 export const SHOW_RATINGS_IN_METADATA = process.env.SEO_SHOW_RATINGS === '1';
+
+// The Google snippet is a separate decision and is ON by default (decided 24.8.2026).
+//
+// It is not the same surface as a title or a share card. The snippet sits directly under
+// the page's own link, one click from the disclaimer and the methodology, and it is where
+// the rating does the most commercial work -- it is the reason a searcher opens the page
+// rather than a competitor's. The two switches are independent on purpose: the naked
+// surfaces can stay off while this one stays on.
+//
+// If the compliance answer comes back "no public ratings anywhere":
+//   SEO_SHOW_SNIPPET_RATINGS=0 npm run seo:build
+export const SHOW_RATINGS_IN_SNIPPET = process.env.SEO_SHOW_SNIPPET_RATINGS !== '0';

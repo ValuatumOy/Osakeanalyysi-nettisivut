@@ -26,9 +26,10 @@
     "seo:freshness": "node scripts/build-page-freshness.mjs",
     "seo:og": "node scripts/build-og-images.mjs",
     "seo:titles": "node scripts/retitle-report-pages.mjs",
-    "seo:build": "npm run seo:titles && npm run seo:companies && npm run seo:llms && npm run seo:pricing && npm run seo:freshness && npm run seo:analyst-section",
-    "seo:check": "node scripts/retitle-report-pages.mjs --check && node scripts/build-company-index.mjs --check && node scripts/build-llms-txt.mjs --check && node scripts/build-pricing-md.mjs --check && node scripts/build-page-freshness.mjs --check && node scripts/build-og-images.mjs --check && node scripts/retire-report-store.mjs --check && node scripts/add-analyst-section.mjs --check && node scripts/validate-jsonld.mjs",
-    "seo:analyst-section": "node scripts/add-analyst-section.mjs"
+    "seo:build": "npm run seo:titles && npm run seo:descriptions && npm run seo:companies && npm run seo:llms && npm run seo:pricing && npm run seo:freshness && npm run seo:analyst-section",
+    "seo:check": "node scripts/retitle-report-pages.mjs --check && node scripts/redescribe-report-pages.mjs --check && node scripts/build-company-index.mjs --check && node scripts/build-llms-txt.mjs --check && node scripts/build-pricing-md.mjs --check && node scripts/build-page-freshness.mjs --check && node scripts/build-og-images.mjs --check && node scripts/retire-report-store.mjs --check && node scripts/add-analyst-section.mjs --check && node scripts/validate-jsonld.mjs",
+    "seo:analyst-section": "node scripts/add-analyst-section.mjs",
+    "seo:descriptions": "node scripts/redescribe-report-pages.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.700.0",

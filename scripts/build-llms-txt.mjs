@@ -14,6 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { headlineOf } from './report-headline.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -33,17 +34,18 @@ function collect() {
     const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
     const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*(?:Stock|Valuation)/);
     if (!m) continue;
-    const desc = meta(html, 'description');
-    const r = desc.match(/rates\s+\S+\s+([A-Z]+)\s+with a\s+([\d.,]+\s*[A-Z]{3})\s+price target(?:\s+vs\s+([\d.,]+\s*[A-Z]{3}))?/);
+    // From report-content/<id>.json, not from the description prose: the description is a
+    // marketing sentence whose wording changes, and it no longer carries the current price.
+    const h = headlineOf(html);
     out.push({
       slug: f.replace(/\.html$/, ''),
       name: m[1].trim(),
       ticker: m[2].trim(),
       mode: meta(html, 'valuatum-page-mode') || 'company',
       published: prop(html, 'article:published_time') || '',
-      rating: r ? r[1] : null,
-      target: r ? r[2].replace(/\s+/g, ' ') : null,
-      current: r && r[3] ? r[3].replace(/\s+/g, ' ') : null,
+      rating: h ? h.recommendation : null,
+      target: h && h.targetPrice ? String(h.targetPrice).replace(/\s+/g, ' ') : null,
+      current: h && h.currentPrice ? String(h.currentPrice).replace(/\s+/g, ' ') : null,
     });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name));

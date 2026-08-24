@@ -20,6 +20,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { headlineOf, identity } from './report-headline.mjs';
 import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -133,12 +134,18 @@ function ratedReports() {
   const out = [];
   for (const f of fs.readdirSync(path.join(ROOT, 'reports')).filter((x) => x.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(ROOT, 'reports', f), 'utf8');
-    const desc = dec((html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1] || '');
-    const r = desc.match(/rates\s+(\S+)\s+([A-Z]+)\s+with a\s+([\d.,]+\s*[A-Z]{3})\s+price target(?:\s+vs\s+([\d.,]+\s*[A-Z]{3}))?/);
-    if (!r) continue; // company overview pages share the default card
-    const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
-    const name = (title.match(/^(.*?)\s*\(/) || [])[1] || r[1];
-    out.push({ slug: f.replace(/\.html$/, ''), name: name.trim(), ticker: r[1], rating: r[2], target: r[3], current: r[4] || '' });
+    const h = headlineOf(html);
+    if (!h) continue; // company overview pages share the default card
+    const id = identity(html);
+    if (!id) continue;
+    out.push({
+      slug: f.replace(/\.html$/, ''),
+      name: id.name,
+      ticker: id.ticker,
+      rating: h.recommendation,
+      target: h.targetPrice || '',
+      current: h.currentPrice || '',
+    });
   }
   return out.sort((a, b) => a.slug.localeCompare(b.slug));
 }
