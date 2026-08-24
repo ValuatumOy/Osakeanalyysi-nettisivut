@@ -9,7 +9,10 @@ let blockCount = 0;
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
-  const blocks = html.matchAll(/<script\s+type=["']application\/ld\+json["']\s*>([\s\S]*?)<\/script>/gi);
+  // Blocks may carry marker attributes (data-page-freshness, data-pricing-offers) that the
+  // build scripts use to find and rewrite their own node; without [^>]* those were skipped
+  // silently and never validated at all.
+  const blocks = html.matchAll(/<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
   for (const match of blocks) {
     try {
       JSON.parse(match[1]);
