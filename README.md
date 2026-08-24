@@ -396,7 +396,8 @@ setup, context values and the migration scripts.
 | [`infra/README.md`](infra/README.md) | CDK stacks, secrets, deploy commands, one-time migration. |
 | [`blog-system/PIPELINE.md`](blog-system/PIPELINE.md) / [`DESIGN.md`](blog-system/DESIGN.md) | Blog pipeline runbook and design. |
 | [`ai_equity_report_website_prd.md`](ai_equity_report_website_prd.md) | The original product requirements document. |
-| [`llms.txt`](llms.txt) | Machine-readable site summary for AI answer engines. |
+| [`docs/seo-generated-files.md`](docs/seo-generated-files.md) | Which SEO files are generated, from what, and how to regenerate them. |
+| [`llms.txt`](llms.txt) | Machine-readable site summary for AI answer engines &mdash; generated, never hand-edited. |
 
 ---
 

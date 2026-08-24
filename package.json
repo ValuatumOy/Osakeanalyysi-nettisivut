@@ -19,7 +19,15 @@
     "test:reaper": "node --test test/reaper/*.test.mjs",
     "test:reconciler": "node --test test/reconciler/*.test.mjs",
     "test:stripe-pricing": "node --test test/stripe-pricing/*.test.mjs",
-    "validate:jsonld": "node scripts/validate-jsonld.mjs"
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
+    "seo:llms": "node scripts/build-llms-txt.mjs",
+    "seo:companies": "node scripts/build-company-index.mjs",
+    "seo:pricing": "node scripts/build-pricing-md.mjs",
+    "seo:freshness": "node scripts/build-page-freshness.mjs",
+    "seo:og": "node scripts/build-og-images.mjs",
+    "seo:titles": "node scripts/retitle-report-pages.mjs",
+    "seo:build": "npm run seo:titles && npm run seo:companies && npm run seo:llms && npm run seo:pricing && npm run seo:freshness",
+    "seo:check": "node scripts/retitle-report-pages.mjs --check && node scripts/build-company-index.mjs --check && node scripts/build-llms-txt.mjs --check && node scripts/build-pricing-md.mjs --check && node scripts/build-page-freshness.mjs --check && node scripts/build-og-images.mjs --check && node scripts/retire-report-store.mjs --check && node scripts/validate-jsonld.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.700.0",
