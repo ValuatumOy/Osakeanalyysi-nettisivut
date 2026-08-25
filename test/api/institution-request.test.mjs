@@ -9,9 +9,10 @@ const email = require('../../server/email.js');
 const sent = [];
 email.sendInstitutionRequest = async (meta) => { sent.push(meta); };
 
-const handler = require('../../api/request-institution-access.js');
+const handler = require('../../api/request-coverage.js');
 
 const VALID = {
+  kind: 'institution',
   organisation: 'Example Asset Management',
   orgWebsite: 'example.com',
   contactName: 'A Person',

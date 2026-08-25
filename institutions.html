@@ -664,7 +664,8 @@
         analystCount: document.getElementById('instAnalysts').value,
         notes: document.getElementById('instNotes').value.trim(),
         website: document.getElementById('instHoneypot').value,
-        pageUrl: window.location.href
+        pageUrl: window.location.href,
+        kind: 'institution'
       };
       if (!payload.organisation || !payload.orgWebsite || !payload.contactName || !payload.email
           || !payload.analysesPerYear || !payload.analystCount) {
@@ -678,7 +679,7 @@
       status.textContent = '';
       status.classList.remove('is-error', 'is-success');
       try {
-        var response = await fetch('/api/request-institution-access', {
+        var response = await fetch('/api/request-coverage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
