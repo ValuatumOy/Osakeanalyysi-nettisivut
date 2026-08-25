@@ -265,27 +265,42 @@ function escapeHtml(value) {
 }
 
 async function sendCoverageRequest(meta) {
-  const company = escapeHtml(meta?.company);
-  const ticker = escapeHtml(meta?.ticker || '—');
+  const companies = Array.isArray(meta?.companies) && meta.companies.length
+    ? meta.companies
+    : [meta?.company].filter(Boolean);
   const requester = escapeHtml(meta?.email);
   const notes = escapeHtml(meta?.notes || '—').replace(/\r?\n/g, '<br>');
   const source = escapeHtml(meta?.source || 'reports');
   const pageUrl = escapeHtml(meta?.pageUrl || '—');
 
+  // One row per company so a long list stays readable, and stays copyable into
+  // whatever the import is driven from.
+  const rows = companies
+    .map((entry, i) => `<tr><td style="color:#666;">${i + 1}</td><td><strong>${escapeHtml(entry)}</strong></td></tr>`)
+    .join('');
+  const heading = companies.length === 1
+    ? 'A new company coverage request was submitted on AI Equity Reports.'
+    : `A coverage request for ${companies.length} companies was submitted on AI Equity Reports.`;
+
   return sendEmail({
     from: FROM,
     to: ADMIN,
-    subject: `Coverage request: ${String(meta?.company || 'unknown').slice(0, 120)}`,
+    subject: companies.length === 1
+      ? `Coverage request: ${String(companies[0] || 'unknown').slice(0, 120)}`
+      : `Coverage request: ${companies.length} companies`,
     html: `
-      <p><strong>A new company coverage request was submitted on AI Equity Reports.</strong></p>
+      <p><strong>${heading}</strong></p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
-        <tr><td style="color:#666;">Company</td><td><strong>${company}</strong></td></tr>
-        <tr><td style="color:#666;">Ticker / exchange</td><td>${ticker}</td></tr>
+        ${rows}
+      </table>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;margin-top:12px;">
         <tr><td style="color:#666;">Requester</td><td><a href="mailto:${requester}">${requester}</a></td></tr>
         <tr><td style="color:#666;">Notes</td><td>${notes}</td></tr>
         <tr><td style="color:#666;">Source</td><td>${source}</td></tr>
         <tr><td style="color:#666;">Page</td><td>${pageUrl}</td></tr>
       </table>
+      <p style="font-family:Arial,sans-serif;font-size:12px;color:#666;">Plain list, one per line:</p>
+      <pre style="font-family:monospace;font-size:12px;background:#f4f7f5;padding:10px;border-radius:6px;">${escapeHtml(companies.join('\n'))}</pre>
     `,
   }, 'coverage request');
 }

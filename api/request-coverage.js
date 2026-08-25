@@ -25,16 +25,33 @@ module.exports = async (req, res) => {
   }
 };
 
+const MAX_COMPANIES = 200;
+
+// One request may name a whole watchlist. The old single-company shape
+// (company + ticker) still works, so anything already posting it keeps working.
+function companyList(body) {
+  const raw = Array.isArray(body.companies)
+    ? body.companies
+    : String(body.companies || '').split('\n');
+  const listed = raw.map((line) => clean(line, 200)).filter(Boolean);
+  if (listed.length) return listed;
+
+  const single = clean(body.company, 160);
+  if (!single) return [];
+  const ticker = clean(body.ticker, 80);
+  return [ticker ? `${single}, ${ticker}` : single];
+}
+
 async function coverageRequest(body) {
-  const company = clean(body.company, 160);
+  const companies = companyList(body);
   const email = clean(body.email, 254);
-  if (!company) return 'Company name is required';
+  if (!companies.length) return 'At least one company is required';
+  if (companies.length > MAX_COMPANIES) return `Please send at most ${MAX_COMPANIES} companies per request`;
   if (!EMAIL_RE.test(email)) return 'A valid email is required';
 
   await sendCoverageRequest({
-    company,
+    companies,
     email,
-    ticker: clean(body.ticker, 80),
     notes: clean(body.notes, 2000),
     source: clean(body.source, 80) || 'reports',
     pageUrl: clean(body.pageUrl, 500),

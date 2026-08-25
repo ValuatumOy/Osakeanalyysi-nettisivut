@@ -578,26 +578,25 @@
       <div class="container">
         <div class="coverage-request-grid">
           <div>
-            <span class="section-eyebrow section-eyebrow--light">Missing Company?</span>
-            <h2 class="coverage-request-title">Company not in the search?</h2>
-            <p class="coverage-request-sub">Use this form if the company does not appear in the fresh report search. We will verify whether it can be added to coverage.</p>
+            <span class="section-eyebrow section-eyebrow--light">Missing Companies?</span>
+            <h2 class="coverage-request-title">Companies not in the search?</h2>
+            <p class="coverage-request-sub">Use this form for any listed company the fresh report search does not find. Send one or a whole list — a line per company, with the ticker if you have it. We check them and tell you which can be added.</p>
             <div class="coverage-list">
-              <span>Listed companies only</span>
+              <span>Listed companies only, up to 200 per request</span>
               <span>Coverage checked by Valuatum</span>
               <span>We will contact you about the next step</span>
             </div>
           </div>
           <div class="coverage-form-card">
             <form class="coverage-form" id="coverageRequestForm">
-              <input class="coverage-input" id="coverageCompany" name="company" type="text" placeholder="Company name *" autocomplete="organization" required>
-              <input class="coverage-input" id="coverageTicker" name="ticker" type="text" placeholder="Ticker / exchange, e.g. AAPL, NOVO-B.CO" autocomplete="off">
+              <textarea class="coverage-input coverage-companies" id="coverageCompany" name="companies" placeholder="Companies, one per line *&#10;Nokia, NOKIA.HE&#10;Novo Nordisk, NOVO-B.CO&#10;Apple, AAPL" required></textarea>
               <input class="coverage-input" id="coverageEmail" name="email" type="email" placeholder="Your email *" autocomplete="email" required>
               <textarea class="coverage-input" id="coverageNotes" name="notes" placeholder="Optional notes: company website, market, urgency, report purpose"></textarea>
               <input class="coverage-honeypot" id="coverageWebsite" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
               <button type="submit" class="btn btn-primary btn-lg" id="coverageSubmit" style="justify-content:center;">Send coverage request</button>
               <p class="coverage-form-status" id="coverageFormStatus" role="status" aria-live="polite"></p>
             </form>
-            <p class="coverage-note">This form is only for companies the search above does not find.</p>
+            <p class="coverage-note">This form is only for companies the search above does not find. A ticker is optional but makes a company faster to place.</p>
           </div>
         </div>
       </div>
@@ -1299,11 +1298,12 @@
         const form = e.currentTarget;
         const submit = document.getElementById('coverageSubmit');
         const status = document.getElementById('coverageFormStatus');
-        const company = document.getElementById('coverageCompany').value.trim();
-        const ticker = document.getElementById('coverageTicker').value.trim();
+        const companies = document.getElementById('coverageCompany').value
+          .split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
         const email = document.getElementById('coverageEmail').value.trim();
         const notes = document.getElementById('coverageNotes').value.trim();
-        if (!company || !email) { showToast('Please fill in company name and email.'); return; }
+        if (!companies.length || !email) { showToast('Please list at least one company and your email.'); return; }
+        if (companies.length > 200) { showToast('Please send at most 200 companies per request.'); return; }
         submit.disabled = true;
         submit.textContent = 'Sending...';
         status.textContent = '';
@@ -1312,8 +1312,7 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              company: company,
-              ticker: ticker,
+              companies: companies,
               email: email,
               notes: notes,
               website: document.getElementById('coverageWebsite').value,
@@ -1323,10 +1322,12 @@
           });
           const data = await response.json().catch(function() { return {}; });
           if (!response.ok) throw new Error(data.error || 'Request could not be sent');
-          status.textContent = 'Thank you. Your coverage request has been sent to Valuatum.';
+          status.textContent = companies.length === 1
+            ? 'Thank you. Your coverage request has been sent to Valuatum.'
+            : 'Thank you. Your request for ' + companies.length + ' companies has been sent to Valuatum.';
           status.classList.remove('is-error');
           status.classList.add('is-success');
-          if (typeof gtag === 'function') gtag('event', 'coverage_request_submitted', { company: company, ticker: ticker || undefined, source: 'reports' });
+          if (typeof gtag === 'function') gtag('event', 'coverage_request_submitted', { company: companies[0], company_count: companies.length, source: 'reports' });
           form.reset();
         } catch (error) {
           status.textContent = 'The request could not be sent. Please email contact26@valuatum.com.';
