@@ -290,6 +290,38 @@ async function sendCoverageRequest(meta) {
   }, 'coverage request');
 }
 
+// -- Institutional pilot request from institutions.html ----------------------
+async function sendInstitutionRequest(meta) {
+  const organisation = escapeHtml(meta?.organisation);
+  const orgWebsite = escapeHtml(meta?.orgWebsite || '—');
+  const contactName = escapeHtml(meta?.contactName || '—');
+  const contactRole = escapeHtml(meta?.contactRole || '—');
+  const requester = escapeHtml(meta?.email);
+  const analysesPerYear = escapeHtml(meta?.analysesPerYear || '—');
+  const analystCount = escapeHtml(meta?.analystCount || '—');
+  const notes = escapeHtml(meta?.notes || '—').replace(/\r?\n/g, '<br>');
+  const pageUrl = escapeHtml(meta?.pageUrl || '—');
+
+  return sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Institution pilot request: ${String(meta?.organisation || 'unknown').slice(0, 120)}`,
+    html: `
+      <p><strong>An institution requested limited free access on AI Equity Reports.</strong></p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Organisation</td><td><strong>${organisation}</strong></td></tr>
+        <tr><td style="color:#666;">Website</td><td>${orgWebsite}</td></tr>
+        <tr><td style="color:#666;">Contact</td><td>${contactName} (${contactRole})</td></tr>
+        <tr><td style="color:#666;">Email</td><td><a href="mailto:${requester}">${requester}</a></td></tr>
+        <tr><td style="color:#666;">Analyses per year</td><td>${analysesPerYear}</td></tr>
+        <tr><td style="color:#666;">Analysts on the team</td><td>${analystCount}</td></tr>
+        <tr><td style="color:#666;">Intended use</td><td>${notes}</td></tr>
+        <tr><td style="color:#666;">Page</td><td>${pageUrl}</td></tr>
+      </table>
+    `,
+  }, 'institution pilot request');
+}
+
 // ── Generic operational alert to the admin ──────────────────────────────────
 // Used for failures that need eyes but have no dedicated template (e.g. the
 // webhook's purchase-sync failing after retries).
@@ -315,5 +347,6 @@ module.exports = {
   sendAdminNotification,
   sendAdminDeliveryNotice,
   sendCoverageRequest,
+  sendInstitutionRequest,
   sendAdminAlert,
 };

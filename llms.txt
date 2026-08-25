@@ -43,6 +43,7 @@
 - [Pricing (machine-readable)](https://www.aiequityreports.com/pricing.md): the same prices as plain markdown.
 - [FAQ](https://www.aiequityreports.com/faq.html): common questions about AI equity research, methodology and delivery.
 - [About Valuatum](https://www.aiequityreports.com/about.html): the company behind the reports.
+- [For institutions](https://www.aiequityreports.com/institutions.html): how asset managers, brokers, advisory firms and IR teams use the reports, and how to request a free pilot.
 
 ## Key concepts
 - Reverse valuation: works backwards from the current market price to reveal the growth and margin assumptions investors are implicitly paying for.
