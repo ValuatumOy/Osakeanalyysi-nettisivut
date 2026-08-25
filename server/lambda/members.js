@@ -587,7 +587,12 @@ async function getGeneration(event) {
 // the member JWT proves who they are, and the PUB# row proves the generation is
 // theirs. Payload shape matches GET /api/orders/{id} so the order page can read
 // either without knowing which one it is talking to.
-const REVISION_COMMENT_MAX = 4000;
+// Long enough that no one writing instructions by hand will meet it: 4,000
+// characters was about 600 words, which a single detailed objection can use
+// up. Not unbounded — comments accumulate in the order item across the
+// revision chain, and DynamoDB refuses an item over 400 KB, so an
+// unbounded field trades a clear error for a confusing write failure.
+const REVISION_COMMENT_MAX = 40000;
 const REVISION_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
 
 async function ownedOrder(event) {

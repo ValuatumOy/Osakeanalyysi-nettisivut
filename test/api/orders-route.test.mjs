@@ -133,7 +133,12 @@ test('POST /api/orders/{id}/revisions rejects empty, oversized and control-chara
   const empty = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: '   ' } }));
   assert.equal(empty.statusCode, 400);
 
-  const tooLong = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'x'.repeat(4001) } }));
+  // The cap is a DynamoDB-item guard, not an editorial one: a long briefing
+  // has to get through, a pasted document does not.
+  const longButFine = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'x'.repeat(20000) } }));
+  assert.notEqual(longButFine.statusCode, 400);
+
+  const tooLong = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'x'.repeat(40001) } }));
   assert.equal(tooLong.statusCode, 400);
 
   const controlChar = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'bad\x07comment' } }));

@@ -279,7 +279,12 @@ async function postReportDownload(event) {
 // No ASCII control characters except \n — the same charset rule the report
 // engine enforces on params.userComments / revision comments.
 const FORBIDDEN_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
-const MAX_REVISION_COMMENT_LENGTH = 4000;
+// Long enough that no one writing instructions by hand will meet it: 4,000
+// characters was about 600 words, which a single detailed objection can use
+// up. Not unbounded — comments accumulate in the order item across the
+// revision chain, and DynamoDB refuses an item over 400 KB, so an
+// unbounded field trades a clear error for a confusing write failure.
+const MAX_REVISION_COMMENT_LENGTH = 40000;
 
 // GET /api/orders/{id} — order-page state. Called server-side by the Vercel
 // proxy that has already verified the Stripe session id (same trust model as
