@@ -123,6 +123,44 @@
       justify-content: center; font-size: var(--text-sm); font-weight: 400; }
     .i-next-step h4 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem; }
     .i-next-step p { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: var(--gray-steel); }
+    /* Worked example: before, the comment, after. */
+    .i-ba-step { margin-top: 3rem; }
+    .i-ba-head { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .i-ba-num { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; border: 1px solid var(--green-mist);
+      background: var(--green-faint); color: var(--green-deep); display: flex; align-items: center;
+      justify-content: center; font-size: var(--text-xs); font-weight: 500; }
+    .i-ba-head h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 400;
+      letter-spacing: -0.015em; color: var(--charcoal); }
+    .i-ba-date { font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); }
+    .i-verdict { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: stretch; margin-bottom: 1.25rem; }
+    .i-chip { border: 1px solid var(--color-border); background: var(--white); border-radius: var(--r-md);
+      padding: 0.7rem 1.1rem; }
+    .i-chip .l { display: block; font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gray-steel); margin-bottom: 0.2rem; }
+    .i-chip .n { font-size: var(--text-md); font-weight: 500; color: var(--charcoal); letter-spacing: -0.01em; }
+    .i-chip--after { border-color: var(--green-mist); background: var(--green-faint); }
+    .i-chip--after .n { color: var(--green-deep); }
+    .i-pull { border-left: 2px solid var(--color-border); padding: 0.2rem 0 0.2rem 1.25rem; margin: 1rem 0;
+      font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: #5B6A63; }
+    .i-pull--after { border-left-color: var(--green); }
+    .i-pull cite { display: block; font-style: normal; font-size: var(--text-xs); letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--gray-steel); margin-top: 0.6rem; }
+    .i-says { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.75rem; }
+    .i-says + .i-says { margin-top: 1rem; }
+    .i-says h4 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .i-says p { font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: var(--gray-steel); }
+    .i-says blockquote { margin: 0.75rem 0 0; padding-left: 1rem; border-left: 2px solid var(--gold-mist, rgba(200,150,62,0.35));
+      font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: #5B6A63; }
+    .i-diff-wrap { overflow-x: auto; margin-top: 1.5rem; }
+    .i-diff { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 640px; }
+    .i-diff th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--gray-steel); font-weight: 600; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--color-border); }
+    .i-diff td { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--color-border);
+      font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
+    .i-diff td:first-child { font-weight: 600; color: var(--charcoal); }
+    .i-diff td.after { color: var(--green-deep); }
+    @media (max-width: 640px) { .i-ba-head h3 { font-size: var(--text-md); } }
+
   </style>
 </head>
 <body>
@@ -183,7 +221,7 @@
         <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:660px; line-height:1.75;">Valuatum has built equity and credit analysis software for banks, brokers and asset managers since 2000. AI Equity Reports is that same modelling, generated on demand for any listed company in the world, around 50,000 of them — and <strong style="color:rgba(255,255,255,0.92); font-weight:400;">steered by your analysts rather than written around them</strong>.</p>
         <div style="display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap;">
           <a href="#pilot" class="btn btn-primary">Request a free pilot</a>
-          <a href="#process" class="btn btn-outline">See how a report is made</a>
+          <a href="#example" class="btn btn-outline">See a real revision</a>
           <a href="reports.html#free" class="btn btn-outline">Read a finished report</a>
         </div>
         <!-- ~50,000 = listed companies worldwide, i.e. what can be ordered, not
@@ -395,6 +433,119 @@
 
         <div class="i-note">
           <strong>One boundary worth knowing before you pilot this.</strong> Instructions steer evidence and assumptions, not conclusions. Your analyst can argue for a lower terminal growth rate, a different peer set, or more weight on a risk, and the valuation will follow. They cannot instruct a rating into existence or overwrite reported financial data — the rating follows arithmetically from the target price. If you want a SELL, you have to make the case upstream, which is the only honest way to get there.
+        </div>
+
+        <p class="section-sub" style="max-width:700px; margin-top:2rem;">That is the mechanism. <a href="#example" style="color:var(--green);">Here is one that actually ran, with the comment and both versions of the numbers →</a></p>
+      </div>
+    </section>
+
+    <!-- WORKED EXAMPLE: BEFORE / COMMENT / AFTER -->
+    <section class="i-section i-section--alt" id="example">
+      <div class="container">
+        <span class="section-eyebrow">Worked example</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:700px;">One comment, and a HOLD became a BUY.</h2>
+        <p class="section-sub" style="max-width:700px;">This is a real revision from this pipeline, not an illustration. The engine produced a Stora Enso report on 24 August 2026. One of our analysts, Esa, read it and wrote down what he thought was wrong with it. The report was regenerated the next morning against those objections. Both versions, the comment and the differences between them are kept together, which is why it can be shown at this level of detail.</p>
+
+        <!-- 1 · BEFORE -->
+        <div class="i-ba-step">
+          <div class="i-ba-head">
+            <div class="i-ba-num">1</div>
+            <h3>What the engine produced</h3>
+            <span class="i-ba-date">24 August 2026</span>
+          </div>
+          <div class="i-verdict">
+            <div class="i-chip"><span class="l">Recommendation</span><span class="n">HOLD</span></div>
+            <div class="i-chip"><span class="l">Target price</span><span class="n">EUR 9.50</span></div>
+            <div class="i-chip"><span class="l">Share price</span><span class="n">EUR 9.82</span></div>
+            <div class="i-chip"><span class="l">Implied</span><span class="n">−3.3%</span></div>
+          </div>
+          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch;">A competent report. It valued the Swedish forest estate by discounting the reported fair value, and it was explicit about why:</p>
+          <div class="i-pull">
+            “This report applies a 30.4% discount to the EUR 8.5 billion reported fair value, producing approximately EUR 5.92 billion for the forest part in the target SOTP. The discount explicitly covers appraisal-to-market uncertainty, tax and transaction leakage, protected acreage, minority and ownership complexity, listed-company liquidity, the 18-year wood-supply commitment and the possibility that debt is allocated to Bergslagets Skogar.”
+            <cite>Original report, forest valuation</cite>
+          </div>
+        </div>
+
+        <!-- 2 · THE COMMENT -->
+        <div class="i-ba-step">
+          <div class="i-ba-head">
+            <div class="i-ba-num">2</div>
+            <h3>What the analyst said back</h3>
+            <span class="i-ba-date">Written in Finnish, rendered here in English</span>
+          </div>
+          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch; margin-bottom:1.25rem;">Four objections. None of them asks for a different rating; every one of them attacks a piece of evidence or an assumption. That distinction is the whole method.</p>
+
+          <div class="i-says">
+            <h4>The discount was priced for risks that cannot happen</h4>
+            <blockquote>“The company's valuation as a whole — both today and after next year's split into two separate companies — is completely independent of how debt is allocated between the two companies. The total debt is taken from shareholders' pockets in exactly the same way. The current owners will initially own both companies outright, so it makes no difference in which ‘pocket' the debt sits.”</blockquote>
+            <p style="margin-top:0.75rem;">Same for the supply contracts, he argued: Stora Enso already buys wood at market prices from private owners and from its own companies, so an 18-year commitment prices nothing new. And no tax effect is coming.</p>
+          </div>
+
+          <div class="i-says">
+            <h4>The peer set was measuring the wrong thing</h4>
+            <blockquote>“These peers should be genuinely pure investment companies — not forest companies such as SCA or Holmen that have other businesses, because that muddles the valuation of the investment assets. Use companies whose business consists almost entirely of investment assets and the cash flow they generate, where NAV is clearly reported and the share price can be compared with NAV. Nordic companies are preferable.”</blockquote>
+          </div>
+
+          <div class="i-says">
+            <h4>One number looked simply wrong</h4>
+            <blockquote>“‘The Swedish estate's annual biological growth is approximately 1%.' I think this is seriously wrong. Sources indicate that biological forest assets grow by roughly 3–5% at the latitude in Sweden where Stora Enso's forests are located. It should be removed, or its source should be disclosed and the report should explain why other sources give different figures.”</blockquote>
+          </div>
+
+          <div class="i-says">
+            <h4>The comparisons were not comparable</h4>
+            <blockquote>“Why are Metsä Board, Billerud, Smurfit Westrock and Mondi described using different types of figures — percentages for some, tonnes for others, and then EBITDA margins for Smurfit and Mondi? Why not report tonnes, market share or margins on a comparable basis for all of them?”</blockquote>
+          </div>
+        </div>
+
+        <!-- 3 · AFTER -->
+        <div class="i-ba-step">
+          <div class="i-ba-head">
+            <div class="i-ba-num">3</div>
+            <h3>What came back the next morning</h3>
+            <span class="i-ba-date">25 August 2026</span>
+          </div>
+          <div class="i-verdict">
+            <div class="i-chip i-chip--after"><span class="l">Recommendation</span><span class="n">BUY</span></div>
+            <div class="i-chip i-chip--after"><span class="l">Target price</span><span class="n">EUR 12.50</span></div>
+            <div class="i-chip"><span class="l">Share price</span><span class="n">EUR 9.82</span></div>
+            <div class="i-chip i-chip--after"><span class="l">Implied</span><span class="n">+27.3%</span></div>
+          </div>
+          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch;">The rating was never instructed. It moved because the forest discount fell from 30.4% to 12.5% once the objections were accepted, and the rating follows the target price arithmetically. On the debt point the report now says the opposite of what it said the day before:</p>
+          <div class="i-pull i-pull--after">
+            “The demerger's allocation of debt between Stora Enso and Bergslagets Skogar is not an economic value driver for shareholders who initially own both companies. Combined enterprise value less combined net debt produces the same combined equity value whether debt is placed in the forest company, the industrial company or split between them.”
+            <cite>Revised report, forest valuation</cite>
+          </div>
+          <div class="i-pull i-pull--after">
+            “The most relevant evidence for a post-demerger valuation discount comes from companies where reported NAV and market capitalization are observable, not integrated forest companies whose manufacturing earnings obscure asset pricing.”
+            <cite>Revised report, on the new peer set</cite>
+          </div>
+        </div>
+
+        <!-- THE DIFF -->
+        <h3 class="a-worth-head" style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em; color:var(--charcoal); margin:3.5rem 0 0.25rem;">Line by line</h3>
+        <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel);">Every row below is a difference the system recorded between the two versions, not a summary written afterwards.</p>
+        <div class="i-diff-wrap">
+          <table class="i-diff">
+            <thead>
+              <tr><th style="width:22%;">Item</th><th style="width:39%;">Before</th><th style="width:39%;">After</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Recommendation</td><td>HOLD</td><td class="after">BUY</td></tr>
+              <tr><td>Target price</td><td>EUR 9.50</td><td class="after">EUR 12.50</td></tr>
+              <tr><td>Implied upside</td><td>−3.3%</td><td class="after">+27.3%</td></tr>
+              <tr><td>Forest discount</td><td>30.4%</td><td class="after">12.5%</td></tr>
+              <tr><td>Forest value in the bridge</td><td>EUR 5.92bn</td><td class="after">EUR 7.4375bn</td></tr>
+              <tr><td>Forest peer set</td><td>SCA and Holmen, mixed with operating-business metrics</td><td class="after">Pure NAV reporters: Investor AB 12.4%, Industrivärden 9% five-year average, Lundbergföretagen 13.5%, with HAL Trust and GBL as wide-discount cases</td></tr>
+              <tr><td>Biological growth</td><td>An unqualified 1% a year</td><td class="after">A 1.0–4.3% evidence range including Stora Enso's own reported 3.3%; the 1% figure treated as a possible net-growth measure</td></tr>
+              <tr><td>Debt allocation</td><td>Listed as a possible value leak</td><td class="after">EUR 3.718bn consolidated net debt deducted once; allocation between two initially shareholder-owned entities treated as value-neutral</td></tr>
+              <tr><td>Industrial divisions</td><td>Valued on EBITDA</td><td class="after">Valued on modelled EBIT</td></tr>
+              <tr><td>Bear / base / bull</td><td>EUR 9.31 / 9.51 / 9.97</td><td class="after">EUR 12.43 / 12.54 / 12.87</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="i-note">
+          <strong>Two things this example is not.</strong> It is not proof that every comment moves a rating by three euros — most do not, and a comment that turns out to be wrong changes nothing, because the evidence has to carry it. And it is not a finished report: the revision also left a list of questions it could not answer from public disclosure, including Oulu's realised price per tonne and comparable consumer-board capacity for every competitor on the same basis. That list ships with the report rather than being quietly dropped, which is the part your analysts should judge us on.
         </div>
       </div>
     </section>
