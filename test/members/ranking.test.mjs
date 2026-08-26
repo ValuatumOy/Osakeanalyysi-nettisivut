@@ -73,3 +73,15 @@ test('public free is the hand-picked window only, never the analyst’s own deca
   assert.equal(ranking.isPublicFreeNow(expired, NOW), false);
   assert.equal(ranking.isPublicFreeNow(plain, NOW), false);
 });
+
+test('the shown score is what reviewers gave; the prior belongs to ranking only', () => {
+  const one5 = { reviewCount: 1, scoreSum: 5 };
+  // A reviewer who gives 5 must see 5, or they conclude the review did not save.
+  assert.equal(ranking.averageScore(one5), 5);
+  // Ranking still pulls a lone review toward neutral, which is what stops one
+  // grumpy or one generous review deciding an ordering.
+  assert.equal(Math.round(ranking.peerScore(one5) * 100) / 100, 3.67);
+
+  assert.equal(ranking.averageScore({ reviewCount: 2, scoreSum: 7 }), 3.5);
+  assert.equal(ranking.averageScore({ reviewCount: 0, scoreSum: 0 }), null);
+});

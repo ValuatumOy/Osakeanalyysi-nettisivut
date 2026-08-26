@@ -49,7 +49,7 @@
 
   function scoreCell(a) {
     return a.reviewCount
-      ? '<span class="store-score">' + Number(a.peerScore).toFixed(1) + ' / 5</span>'
+      ? '<span class="store-score">' + Number(a.averageScore != null ? a.averageScore : a.peerScore).toFixed(1) + ' / 5</span>'
         + ' <span>from ' + a.reviewCount + ' review' + (a.reviewCount === 1 ? '' : 's') + '</span>'
       : '<span class="store-noscore">Not reviewed yet</span>';
   }

@@ -158,6 +158,14 @@
               <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show reports</button>
             </div>
 
+            <div id="myReviewsPanel" class="ws-panel" hidden style="margin-top:1.25rem;">
+              <div class="ws-section-head" style="margin-bottom:.75rem;">
+                <h3 style="font-size:var(--text-md); font-weight:600;">Reviews you have written</h3>
+                <p class="sub">Scores you can still correct. The number shown on an analysis is the average of what reviewers gave it.</p>
+              </div>
+              <div class="table-wrap"><table class="reports-table" id="myReviewsTable"></table></div>
+            </div>
+
             <div id="reviewRow" class="review-open" hidden>
               <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
               <p style="margin-bottom:1rem;">
@@ -712,29 +720,52 @@
     // LinkedIn's basic scope gives us no public profile URL, so the analyst
     // supplies it — and chooses whether to be linked at all.
     async function myReviews() {
+      const panel = document.getElementById('myReviewsPanel');
+      if (!panel.hidden) { panel.hidden = true; return; }
+      await reloadMyReviews();
+      if (!window._myReviews) { notice('err', 'Could not load your reviews.'); return; }
+      panel.hidden = false;
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    async function reloadMyReviews() {
       const { status, data } = await api('GET', '/reviews/mine');
-      if (status !== 200) { notice('err', 'Could not load your reviews.'); return; }
-      const list = data.reviews || [];
-      if (!list.length) { notice('ok', 'You have not reviewed anything yet.'); return; }
-      const menu = list.map((r, i) =>
-        (i + 1) + ') ' + r.companyId + ' by ' + r.analyst + ' — ' + r.score
-        + (r.edits ? ' (edited ' + r.edits + '×)' : '')).join('\n');
-      const pick = prompt('Which review do you want to change?\n\n' + menu + '\n\nType a number:', '1');
-      if (pick === null) return;
-      const chosen = list[Number(pick) - 1];
-      if (!chosen) { notice('err', 'No review with that number.'); return; }
+      if (status !== 200) return;
+      window._myReviews = data.reviews || [];
+      renderMyReviews();
+    }
 
-      const score = prompt('Score for ' + chosen.companyId + ' (1–5, decimals allowed):', chosen.score);
-      if (score === null) return;
-      const comment = prompt('What it adds (at least 40 characters):', chosen.comment);
-      if (comment === null) return;
+    function renderMyReviews() {
+      const list = window._myReviews || [];
+      const rows = list.map((r, i) => {
+        const was = r.history && r.history.length
+          ? '<div class="muted" style="font-size:var(--text-xs);">was ' + r.history.map(h => h.score).join(' → ') + '</div>'
+          : '';
+        return '<tr><td>' + esc(r.companyId) + '<br><span class="muted">' + esc(r.analyst) + '</span></td>'
+          + '<td><input class="input input--num" style="max-width:90px;" type="number" min="1" max="5" step="0.1"'
+            + ' id="mr-score-' + i + '" value="' + Number(r.score) + '">' + was + '</td>'
+          + '<td><textarea class="input" id="mr-comment-' + i + '" rows="2">' + esc(r.comment || '') + '</textarea></td>'
+          + '<td style="text-align:right"><button class="btn btn-primary btn-sm" onclick="saveReview(' + i + ')">Save</button></td></tr>';
+      });
+      document.getElementById('myReviewsTable').innerHTML =
+        '<tr><th>Analysis</th><th>Your score</th><th>What it adds</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="4" class="muted">You have not reviewed anything yet.</td></tr>');
+    }
 
-      const res = await api('POST', '/analyses/' + encodeURIComponent(chosen.genId) + '/review/edit',
-        { score: Number(score), comment });
-      if (res.status === 200) {
-        notice('ok', 'Review changed from ' + res.data.previousScore + ' to ' + res.data.score + '.');
-        loadAnalyses();
-      } else notice('err', (res.data && res.data.error) || ('Could not change the review (' + res.status + ')'));
+    async function saveReview(i) {
+      const r = (window._myReviews || [])[i];
+      if (!r) return;
+      const score = Number(document.getElementById('mr-score-' + i).value);
+      const comment = document.getElementById('mr-comment-' + i).value.trim();
+      if (!Number.isFinite(score) || score < 1 || score > 5) { notice('err', 'Score has to be between 1 and 5.'); return; }
+      if (comment.length < 40) { notice('err', 'The written comparison needs at least 40 characters (now ' + comment.length + ').'); return; }
+
+      const { status, data } = await api('POST', '/analyses/' + encodeURIComponent(r.genId) + '/review/edit',
+        { score, comment });
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not save (' + status + ')')); return; }
+      notice('ok', 'Saved. ' + esc(r.companyId) + ' now shows the average of what reviewers gave it.');
+      await reloadMyReviews();
+      loadAnalyses();
     }
 
     async function setLinkedin() {
@@ -846,7 +877,10 @@
           + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
                           : a.free ? '<span class="pill-free">Free for you</span>'
                           : (a.priceEur ? a.priceEur + ' €' : '—'))
-          + '</td><td>' + (a.reviewCount ? Number(a.peerScore).toFixed(1) + ' (' + a.reviewCount + ')' : 'no reviews')
+          + '</td><td>' + (a.reviewCount
+              ? Number(a.averageScore != null ? a.averageScore : a.peerScore).toFixed(1)
+                + ' <span class="muted">(' + a.reviewCount + (a.reviewCount === 1 ? ' review' : ' reviews') + ')</span>'
+              : '<span class="muted">no reviews</span>')
           + '</td><td style="text-align:right">' + button + fork + '</td></tr>';
       });
       document.getElementById('analysesTable').innerHTML =

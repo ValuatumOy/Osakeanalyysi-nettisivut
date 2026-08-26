@@ -1298,6 +1298,9 @@ async function getAnalyses(event) {
       priceEur: item.priceEur || 0,
       reviewCount: item.reviewCount || 0,
       peerScore: Math.round(item.peerScore * 100) / 100,
+      // What reviewers gave. peerScore is the ranking number, pulled toward
+      // the neutral prior, and is not what a reader should be shown.
+      averageScore: ranking.averageScore(item) === null ? null : Math.round(ranking.averageScore(item) * 100) / 100,
       // `free` costs a member no read; `publicFree` is the administrator's
       // hand-picked window, the only one a logged-out visitor may open.
       free: ranking.isFreeNow(item, now),
@@ -1842,6 +1845,7 @@ async function getAdminPublications(event) {
       freeUntil: item.freeUntil || null,
       reviewCount: item.reviewCount || 0,
       peerScore: Math.round(ranking.peerScore(item) * 100) / 100,
+      averageScore: ranking.averageScore(item) === null ? null : Math.round(ranking.averageScore(item) * 100) / 100,
       jobId: pub?.jobId || null,
       promptsText: pub?.promptsText || '',
       takedownReason: pub?.takedownReason || null,
