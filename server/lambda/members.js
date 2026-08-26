@@ -549,6 +549,44 @@ async function postGenerationFresh(event) {
   });
 }
 
+// POST /generations/{genId}/price — reprice a live analysis.
+//
+// The analyst sets the price at publication and, until now, was stuck with it.
+// It matters more since forking: the price is what a derivative pays them, so
+// guessing wrong once shouldn't be permanent.
+async function postGenerationPrice(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown analysis' });
+  if (publication.status !== 'published') {
+    return json(409, { error: 'Only a published analysis has a price to change', status: publication.status });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  const committed = await store.runTransact(quota.buildRepriceTransact({
+    table: store.table(),
+    userId: profile.userId,
+    genId,
+    indexSk: index?.sk,
+    priceEur: body.priceEur,
+    freeAfterDays: body.freeAfterDays === undefined ? publication.freeAfterDays : body.freeAfterDays,
+    publishedAt: publication.publishedAt,
+  }));
+  if (!committed) return json(409, { error: 'The price could not be changed right now' });
+
+  await store.audit(profile.userId, 'analysis-repriced', {
+    genId, priceEur: Number(body.priceEur) || 0,
+  });
+  return json(200, { ok: true, genId, priceEur: Math.max(0, Math.round(Number(body.priceEur) || 0)) });
+}
+
 // GET /generations/{genId} — order progress, and the entitlement handover once
 // the reconciler has delivered the PDF.
 async function getGeneration(event) {
@@ -716,6 +754,7 @@ async function listGenerations(event) {
       companyName: order?.companyName || pub.companyName || '',
       startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
       publishedAt: pub.publishedAt || null,
+      priceEur: Number(pub.priceEur) || 0,
       status: order?.status || pub.status,
       revisionsAllowed: order?.revisionsAllowed || 0,
       revisionsUsed: order?.revisionsUsed || 0,
@@ -1787,6 +1826,7 @@ const AUTHED_ROUTES = {
   'GET /generations/{genId}/order': getGenerationOrder,
   'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/submit': postGenerationSubmit,
+  'POST /generations/{genId}/price': postGenerationPrice,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
 };

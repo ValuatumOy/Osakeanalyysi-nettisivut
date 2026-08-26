@@ -487,6 +487,59 @@ function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 })
   };
 }
 
+// Repricing a live analysis. The price was written once at publication and
+// never again, so an analyst who guessed wrong was stuck with it — and after
+// forking arrived, the price is also what a derivative pays them.
+//
+// Sales already made are untouched: a SALE row records the gross it was sold
+// at, so repricing moves what the next reader pays and nothing that already
+// happened. freeFrom is recomputed from the original publication date rather
+// than from now, or repeatedly repricing would push the free date away forever.
+function buildRepriceTransact({ table, userId, genId, indexSk, priceEur, freeAfterDays, publishedAt }) {
+  const price = Math.max(0, Math.round(Number(priceEur) || 0));
+  const days = clampFreeAfterDays(freeAfterDays);
+  const base = publishedAt ? new Date(publishedAt) : null;
+  const freeFrom = base && !Number.isNaN(base.getTime())
+    ? new Date(base.getTime() + days * DAY_MS).toISOString()
+    : null;
+
+  const setPub = ['priceEur = :price', 'freeAfterDays = :days']
+    .concat(freeFrom ? ['freeFrom = :freeFrom'] : []).join(', ');
+  const values = { ':price': price, ':days': days, ':published': 'published' };
+  if (freeFrom) values[':freeFrom'] = freeFrom;
+
+  const items = [
+    {
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+        UpdateExpression: `SET ${setPub}`,
+        // Only a live analysis has a price worth changing: a taken-down or
+        // still-generating one has no listing for the new one to reach.
+        ConditionExpression: '#status = :published',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: values,
+      },
+    },
+  ];
+  // The listing is what every buyer and forker actually reads the price from,
+  // so the two must move together or the checkout charges the old one.
+  if (indexSk) {
+    const indexValues = { ':price': price };
+    if (freeFrom) indexValues[':freeFrom'] = freeFrom;
+    items.push({
+      Update: {
+        TableName: table,
+        Key: { pk: 'PUBINDEX', sk: indexSk },
+        UpdateExpression: freeFrom ? 'SET priceEur = :price, freeFrom = :freeFrom' : 'SET priceEur = :price',
+        ConditionExpression: 'attribute_exists(sk)',
+        ExpressionAttributeValues: indexValues,
+      },
+    });
+  }
+  return { TransactItems: items };
+}
+
 // An analyst deriving from someone else's published analysis. The fee is what
 // bounds this, not the monthly generation: a fork is paid for (the parent's
 // price goes to its author as an ordinary sale, plus a derivation fee), so the
@@ -692,6 +745,7 @@ module.exports = {
   buildTakedownTransact,
   buildReopenTransact,
   buildForkTransact,
+  buildRepriceTransact,
   buildGrantGenerationTransact,
   buildPaidGenerationTransact,
   buildFailPublicationTransact,

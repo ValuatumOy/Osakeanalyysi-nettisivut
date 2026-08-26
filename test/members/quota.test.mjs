@@ -270,3 +270,34 @@ test('a fork owes a publication and does not touch the monthly generation', () =
   assert.equal(put.Item.companyId, 'NOKIA.HE');
   assert.equal(put.ConditionExpression, 'attribute_not_exists(sk)');
 });
+
+test('repricing moves the listing with the publication, and only while live', () => {
+  const params = quota.buildRepriceTransact({
+    table: TABLE, userId: 'u1', genId: 'g1',
+    indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+    priceEur: 25, freeAfterDays: 30, publishedAt: '2026-09-01T00:00:00.000Z',
+  });
+  const [pub, index] = params.TransactItems.map(i => i.Update);
+
+  assert.equal(pub.ConditionExpression, '#status = :published');
+  assert.equal(pub.ExpressionAttributeValues[':price'], 25);
+  // The listing is where every checkout reads the price, so it has to move too.
+  assert.equal(index.Key.pk, 'PUBINDEX');
+  assert.equal(index.ExpressionAttributeValues[':price'], 25);
+
+  // freeFrom counts from publication, not from the reprice: otherwise repeated
+  // repricing would push the free date away indefinitely.
+  assert.equal(pub.ExpressionAttributeValues[':freeFrom'], '2026-10-01T00:00:00.000Z');
+});
+
+test('a price is clamped to whole euros at or above zero', () => {
+  const of = (priceEur) => quota.buildRepriceTransact({
+    table: TABLE, userId: 'u1', genId: 'g1', priceEur, freeAfterDays: 30,
+    publishedAt: '2026-09-01T00:00:00.000Z',
+  }).TransactItems[0].Update.ExpressionAttributeValues[':price'];
+
+  assert.equal(of(-5), 0);
+  assert.equal(of(19.6), 20);
+  assert.equal(of('12'), 12);
+  assert.equal(of(undefined), 0);
+});

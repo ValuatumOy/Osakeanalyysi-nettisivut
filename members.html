@@ -682,16 +682,32 @@
           ? '<a class="btn btn-outline-dark btn-sm" href="' + workspaceUrl(g.genId) + '">'
             + (g.publication === 'published' ? 'Open' : 'Open and revise') + '</a>'
           : '<span class="muted">—</span>';
+        // The price was fixed at publication and is what a forker pays too, so
+        // it has to be changeable afterwards.
+        const reprice = g.publication === 'published'
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
+            + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
+          : '';
         return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
           + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
           + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
           + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
           + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
-          + '<td style="text-align:right">' + action + '</td></tr>';
+          + '<td style="text-align:right">' + action + reprice + '</td></tr>';
       });
       document.getElementById('generationsTable').innerHTML =
         '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
         + (rows.join('') || '<tr><td colspan="6" class="muted">You have not generated a report yet.</td></tr>');
+    }
+
+    async function repriceAnalysis(genId, current) {
+      const answer = prompt('New price in euros for this analysis (0 makes it free to read):', current);
+      if (answer === null) return;
+      const priceEur = Number(answer);
+      if (!Number.isFinite(priceEur) || priceEur < 0) { notice('err', 'Give the price as a number, 0 or more.'); return; }
+      const { status, data } = await api('POST', '/generations/' + genId + '/price', { priceEur });
+      if (status === 200) { notice('ok', 'Price updated to ' + data.priceEur + ' €.'); loadGenerations(); loadAnalyses(); }
+      else notice('err', (data && data.error) || ('Could not change the price (' + status + ')'));
     }
 
     async function buyGeneration() {

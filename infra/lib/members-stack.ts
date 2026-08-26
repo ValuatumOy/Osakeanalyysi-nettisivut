@@ -202,6 +202,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.GET, '/generations/{genId}/order'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/price'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
