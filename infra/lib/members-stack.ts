@@ -214,6 +214,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
       [apigwv2.HttpMethod.POST, '/admin/members/feature'],
       [apigwv2.HttpMethod.POST, '/admin/members/takedown'],
+      [apigwv2.HttpMethod.POST, '/admin/members/reopen'],
       [apigwv2.HttpMethod.POST, '/admin/members/payout'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],
       [apigwv2.HttpMethod.POST, '/test/users'],

@@ -487,6 +487,65 @@ function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 })
   };
 }
 
+// The other half of a takedown: put the analysis back to `generating` so the
+// analyst can fix what was wrong, spend a remaining revision round and publish
+// it again. analyst-terms.html has always promised this ("fix the cause and
+// republish"); until now the code could not do it, because buildSubmitTransact
+// requires `generating` and a takedown leaves `takendown`.
+//
+// voidSalesBefore is the part that matters for money. bounty.ledger() voids a
+// sale by reading the PUB status, so without a cutoff every sale voided by the
+// takedown — including refunded ones and shares already clawed back — would
+// turn payable again the moment the analysis is published a second time. The
+// cutoff is the reopen time rather than takenDownAt: no legitimate sale happens
+// while an analysis is down, and a late webhook writing a straggler soldAt
+// inside that window must be void too. A later reopen overwrites it, so
+// repeated cycles keep only the newest cutoff, which is the correct one.
+function buildReopenTransact({ table, userId, now, genId, indexSk }) {
+  const items = [
+    {
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+        UpdateExpression: 'SET #status = :generating, voidSalesBefore = :now'
+          + ' REMOVE publishedAt, takenDownAt, takedownReason',
+        ConditionExpression: '#status = :takendown',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: {
+          ':generating': 'generating',
+          ':takendown': 'takendown',
+          ':now': now.toISOString(),
+        },
+      },
+    },
+    {
+      // Republishing goes through the normal submit button, which reads the
+      // obligation off the profile — without this there is no way to publish it
+      // again. Conditional so a reopen can never displace a different
+      // generation the analyst already owes.
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+        UpdateExpression: 'SET openObligationId = :genId',
+        ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
+        ExpressionAttributeValues: { ':genId': genId },
+      },
+    },
+  ];
+  // The index row is keyed on the old publishedAt, and a republish writes a new
+  // one under a new sort key. Dropping it here stops the same analysis
+  // appearing twice on a company page, once as takendown.
+  if (indexSk) {
+    items.push({
+      Delete: {
+        TableName: table,
+        Key: { pk: 'PUBINDEX', sk: indexSk },
+      },
+    });
+  }
+  return { TransactItems: items };
+}
+
 // Admin takedown: the post-moderation half of auto-publish. Voids the bounty by
 // construction — bounty.ledger() reads the status.
 function buildTakedownTransact({ table, userId, now, genId, reason, indexSk }) {
@@ -588,6 +647,7 @@ module.exports = {
   buildReserveMemberGenerationTransact,
   buildSubmitTransact,
   buildTakedownTransact,
+  buildReopenTransact,
   buildGrantGenerationTransact,
   buildPaidGenerationTransact,
   buildFailPublicationTransact,

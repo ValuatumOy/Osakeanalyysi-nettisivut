@@ -1296,6 +1296,31 @@ async function postMeRole(event) {
 
 // Post-moderation: publication is automatic, so this is how a bad analysis comes
 // down. Also voids (or claws back) its bounty — bounty.ledger() reads the status.
+async function postAdminReopen(event) {
+  const body = parseBody(event);
+  if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const index = await store.findPublicationIndex(body.genId);
+  const committed = await store.runTransact(quota.buildReopenTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    indexSk: index?.sk,
+  }));
+  // Two conditions can fail: the publication is not taken down, or the analyst
+  // already owes a different generation. Say which, because the second one is
+  // fixed by publishing that other report rather than by retrying this.
+  if (!committed) {
+    const profile = await store.getProfile(body.userId);
+    if (profile?.openObligationId && profile.openObligationId !== body.genId) {
+      return json(409, {
+        error: 'This analyst already has another generation open — it has to be published first',
+        openObligationId: profile.openObligationId,
+      });
+    }
+    return json(409, { error: 'No taken-down publication with that id' });
+  }
+  await store.audit(body.userId, 'publication-reopened', { genId: body.genId, note: String(body.note || '') });
+  return json(200, { ok: true, status: 'generating', genId: body.genId });
+}
+
 async function postAdminTakedown(event) {
   const body = parseBody(event);
   if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
@@ -1614,6 +1639,7 @@ const ADMIN_ROUTES = {
   'POST /admin/members/role': postAdminRole,
   'POST /admin/members/feature': postAdminFeature,
   'POST /admin/members/takedown': postAdminTakedown,
+  'POST /admin/members/reopen': postAdminReopen,
   'POST /admin/members/payout': postAdminPayout,
   'POST /admin/members/ban': postAdminBan,
 };

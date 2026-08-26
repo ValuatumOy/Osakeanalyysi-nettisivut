@@ -39,7 +39,7 @@ function shareOf(grossEur, share) {
 }
 
 /**
- * @param pubs  PUB# items: { sk, status, publishedAt, companyId, takenDownAt }
+ * @param pubs  PUB# items: { sk, status, publishedAt, companyId, takenDownAt, voidSalesBefore }
  * @param opts  { now: Date, paidGenIds: Set|Array, paidAmounts, maturityDays, monthlyCap, amount }
  *              paidAmounts (genId → €) is what was actually paid; without it a
  *              later fee change would retroactively rewrite past payouts.
@@ -117,7 +117,10 @@ function ledger(pubs, {
 
   // Sales of the analyst's own analyses. No quarter or month cap here: those
   // bound flat-fee spam, and a share is self-funding — no sale, no payout.
-  const statusOf = new Map(rows.map((p) => [String(p.sk || '').replace(/^PUB#/, ''), p.status]));
+  // Status voids a sale while the analysis is down; voidSalesBefore keeps it
+  // voided after a reopen, when the status has gone back to published. Without
+  // the cutoff, republishing would turn every refunded sale payable again.
+  const pubOf = new Map(rows.map((p) => [String(p.sk || '').replace(/^PUB#/, ''), p]));
   const saleEntries = sales
     .filter((s) => s.soldAt && s.genId)
     .sort((a, b) => String(a.soldAt).localeCompare(String(b.soldAt)))
@@ -139,7 +142,11 @@ function ledger(pubs, {
       };
       const share_ = paidAmounts[payoutId] === undefined ? shareOf(gross, share) : paidAmounts[payoutId];
 
-      if (statusOf.get(s.genId) === 'takendown') {
+      const pub = pubOf.get(s.genId);
+      const voidBefore = pub?.voidSalesBefore || null;
+      const voided = pub?.status === 'takendown'
+        || (voidBefore && String(s.soldAt) < String(voidBefore));
+      if (voided) {
         entry.state = isPaid ? 'clawback' : 'void';
         entry.reason = 'takendown';
         if (isPaid) entry.amount = -share_;

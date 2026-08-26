@@ -177,3 +177,36 @@ test('payableItems settles fees and shares through one list', () => {
     { id: 'SALE#a#cs_2026-08-02T00:00:00Z', kind: 'share', amount: 15 },
   ]);
 });
+
+test('reopening a taken-down analysis does not resurrect the sales it voided', () => {
+  // Sold, taken down, reopened, revised and published again. The first sale was
+  // refunded when it came down; republishing must not turn it payable.
+  const pubs = [pub('a', '2026-09-02T00:00:00Z', 'NOKIA.HE', {
+    voidSalesBefore: '2026-08-20T00:00:00Z',
+  })];
+  const before = sale('a', '2026-08-10T00:00:00Z', 30);
+  const after = sale('a', '2026-09-03T00:00:00Z', 40);
+
+  const res = bounty.ledger(pubs, opts('2026-10-01T00:00:00Z', { sales: [before, after] }));
+  const entryFor = (soldAt) => res.saleEntries.find((e) => e.soldAt === soldAt);
+
+  assert.equal(entryFor('2026-08-10T00:00:00Z').state, 'void');
+  assert.equal(entryFor('2026-08-10T00:00:00Z').reason, 'takendown');
+  assert.equal(entryFor('2026-09-03T00:00:00Z').state, 'eligible');
+  assert.equal(entryFor('2026-09-03T00:00:00Z').amount, 20);
+  assert.equal(res.totals.shareEligible, 20);
+});
+
+test('a share already paid before a takedown is still clawed back after a reopen', () => {
+  const pubs = [pub('a', '2026-09-02T00:00:00Z', 'NOKIA.HE', {
+    voidSalesBefore: '2026-08-20T00:00:00Z',
+  })];
+  const sales = [sale('a', '2026-08-10T00:00:00Z', 30)];
+  const payoutId = 'SALE#a#cs_2026-08-10T00:00:00Z';
+
+  const res = bounty.ledger(pubs, opts('2026-10-01T00:00:00Z', {
+    sales, paidGenIds: [payoutId], paidAmounts: { [payoutId]: 15 },
+  }));
+  assert.equal(res.saleEntries[0].state, 'clawback');
+  assert.equal(res.totals.shareClawback, -15);
+});

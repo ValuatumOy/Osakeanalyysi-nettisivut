@@ -212,3 +212,37 @@ test('coverage: initial once per subscription, updates capped at 4 per year', ()
   assert.equal(usage.ConditionExpression, 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max');
   assert.equal(usage.ExpressionAttributeValues[':max'], 4);
 });
+
+test('reopen returns a taken-down analysis to generating and restores the obligation', () => {
+  const params = quota.buildReopenTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-10T00:00:00Z'), genId: 'g1',
+    indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+  });
+  const [pub, profile] = params.TransactItems.map(i => i.Update);
+
+  // Only a taken-down analysis can be reopened — never a live one.
+  assert.equal(pub.ConditionExpression, '#status = :takendown');
+  assert.equal(pub.ExpressionAttributeValues[':generating'], 'generating');
+  assert.match(pub.UpdateExpression, /REMOVE publishedAt, takenDownAt, takedownReason/);
+  // The cutoff that stops the voided sales becoming payable on republication.
+  assert.equal(pub.ExpressionAttributeValues[':now'], '2026-09-10T00:00:00.000Z');
+  assert.match(pub.UpdateExpression, /voidSalesBefore = :now/);
+
+  // Republishing goes through the obligation, and must not displace another one.
+  assert.equal(profile.Key.sk, 'PROFILE');
+  assert.equal(profile.ConditionExpression,
+    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+
+  // The stale index row goes, or the republish leaves two rows for one analysis.
+  const del = params.TransactItems.find(i => i.Delete);
+  assert.equal(del.Delete.Key.pk, 'PUBINDEX');
+  assert.equal(del.Delete.Key.sk, 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1');
+});
+
+test('reopen without an index row still reopens the publication', () => {
+  const params = quota.buildReopenTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-10T00:00:00Z'), genId: 'g1',
+  });
+  assert.equal(params.TransactItems.length, 2);
+  assert.ok(!params.TransactItems.some(i => i.Delete));
+});
