@@ -870,6 +870,7 @@ async function postBillingCheckout(event) {
 
   const session = await stripe().checkout.sessions.create({
     mode: 'subscription',
+    allow_promotion_codes: true,
     customer: customerId,
     line_items: [{ price: priceId, quantity: 1 }],
     client_reference_id: profile.userId,
@@ -911,6 +912,7 @@ async function postFreshCheckout(event) {
 
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
+    allow_promotion_codes: true,
     customer: profile.stripeCustomerId || undefined,
     customer_email: profile.stripeCustomerId ? undefined : (profile.email || undefined),
     line_items: [{ price: priceId, quantity: 1 }],
@@ -1196,6 +1198,7 @@ async function postAnalysisBuyCheckout(event) {
   const returnTo = auth.frontendUrl(body.returnTo);
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
+    allow_promotion_codes: true,
     line_items: [{
       quantity: 1,
       price_data: {
@@ -1337,6 +1340,7 @@ async function postAnalysisForkCheckout(event) {
 
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
+    allow_promotion_codes: true,
     line_items: lineItems,
     ...(profile?.email ? { customer_email: profile.email } : {}),
     metadata: {
