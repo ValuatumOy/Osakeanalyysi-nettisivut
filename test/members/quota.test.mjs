@@ -320,3 +320,47 @@ test('publishing carries the analyst LinkedIn link onto the public listing', () 
   const bare = without.TransactItems.find(i => i.Put && i.Put.Item.pk === 'PUBINDEX').Put.Item;
   assert.ok(!('analystLinkedin' in bare));
 });
+
+test('editing a review moves the score sum by the difference, not by the score', () => {
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'owner', reviewerId: 'r1', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g1', indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+    oldScore: 3.3, oldComment: 'the first take', score: 4.5, comment: 'the corrected one',
+  });
+  const [review, index] = params.TransactItems.map(i => i.Update);
+
+  // One reviewer stays one review however often they fix it, so reviewCount
+  // is untouched and only the sum moves.
+  assert.equal(index.UpdateExpression, 'ADD scoreSum :delta');
+  assert.equal(index.ExpressionAttributeValues[':delta'], 1.2);
+
+  // Optimistic lock: two edits racing must not both add a delta to a sum only
+  // one of them read.
+  assert.equal(review.ConditionExpression, 'attribute_exists(sk) AND score = :oldScore');
+  assert.equal(review.ExpressionAttributeValues[':oldScore'], 3.3);
+
+  // A changed public rating leaves a trace of what it was.
+  const history = review.ExpressionAttributeValues[':history'];
+  assert.equal(history.length, 1);
+  assert.equal(history[0].score, 3.3);
+  assert.equal(history[0].comment, 'the first take');
+});
+
+test('review history keeps the newest twenty entries and no more', () => {
+  const history = Array.from({ length: 25 }, (_, i) => ({ score: 1, comment: `old ${i}`, at: 'x' }));
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'owner', reviewerId: 'r1', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g1', indexSk: 'i', oldScore: 2, oldComment: 'previous', score: 3, comment: 'next', history,
+  });
+  const kept = params.TransactItems[0].Update.ExpressionAttributeValues[':history'];
+  assert.equal(kept.length, 20);
+  assert.equal(kept.at(-1).comment, 'previous');
+});
+
+test('a downward correction moves the sum down', () => {
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'o', reviewerId: 'r', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g', indexSk: 'i', oldScore: 4.8, oldComment: 'a', score: 2.1, comment: 'b',
+  });
+  assert.equal(params.TransactItems[1].Update.ExpressionAttributeValues[':delta'], -2.7);
+});

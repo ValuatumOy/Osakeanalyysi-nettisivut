@@ -84,6 +84,7 @@
             </div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
               <button class="btn btn-outline btn-sm" id="linkedinBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
+              <button class="btn btn-outline btn-sm" id="myReviewsBtn" hidden onclick="myReviews()">My reviews</button>
               <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
               <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
             </div>
@@ -160,8 +161,8 @@
             <div id="reviewRow" class="review-open" hidden>
               <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
               <p style="margin-bottom:1rem;">
-                <button class="btn btn-outline-dark btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report again</button>
-                <span class="muted" style="margin-left:0.75rem;">Already paid for, so re-opening costs nothing.</span>
+                <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
+                <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for.</span>
               </p>
               <div class="form-row">
                 <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
@@ -470,6 +471,7 @@
       const isAnalyst = data.publishes;
       document.getElementById('stepDownBtn').hidden = !isAnalyst;
       document.getElementById('linkedinBtn').hidden = !isAnalyst;
+      document.getElementById('myReviewsBtn').hidden = !isAnalyst;
       window._linkedinUrl = data.linkedinUrl || '';
       const analysesCard = document.getElementById('analysesCard');
       analysesCard.hidden = !(u.analystReadLimit > 0);
@@ -709,6 +711,32 @@
 
     // LinkedIn's basic scope gives us no public profile URL, so the analyst
     // supplies it — and chooses whether to be linked at all.
+    async function myReviews() {
+      const { status, data } = await api('GET', '/reviews/mine');
+      if (status !== 200) { notice('err', 'Could not load your reviews.'); return; }
+      const list = data.reviews || [];
+      if (!list.length) { notice('ok', 'You have not reviewed anything yet.'); return; }
+      const menu = list.map((r, i) =>
+        (i + 1) + ') ' + r.companyId + ' by ' + r.analyst + ' — ' + r.score
+        + (r.edits ? ' (edited ' + r.edits + '×)' : '')).join('\n');
+      const pick = prompt('Which review do you want to change?\n\n' + menu + '\n\nType a number:', '1');
+      if (pick === null) return;
+      const chosen = list[Number(pick) - 1];
+      if (!chosen) { notice('err', 'No review with that number.'); return; }
+
+      const score = prompt('Score for ' + chosen.companyId + ' (1–5, decimals allowed):', chosen.score);
+      if (score === null) return;
+      const comment = prompt('What it adds (at least 40 characters):', chosen.comment);
+      if (comment === null) return;
+
+      const res = await api('POST', '/analyses/' + encodeURIComponent(chosen.genId) + '/review/edit',
+        { score: Number(score), comment });
+      if (res.status === 200) {
+        notice('ok', 'Review changed from ' + res.data.previousScore + ' to ' + res.data.score + '.');
+        loadAnalyses();
+      } else notice('err', (res.data && res.data.error) || ('Could not change the review (' + res.status + ')'));
+    }
+
     async function setLinkedin() {
       const answer = prompt(
         'Your LinkedIn profile address. It appears beside your name on every analysis you have published.\n'
@@ -788,7 +816,7 @@
       row.hidden = !window._openReviewId;
       if (window._openReviewId) {
         document.getElementById('reviewPrompt').textContent =
-          'You opened this report and owe it a review. Score and comment it to unlock the next read.';
+          'Read the report first, then score it. Open it with the button above — you owe this one a review before your next read.';
       }
     }
 
@@ -879,9 +907,18 @@
         'Opening this report spends one of your monthly analyst reads, and you owe it a review: ' +
         'a score from 1 to 5 and a written comparison of at least 40 characters.\n\n' +
         'You cannot open another report until that review is written.\n\nOpen it?')) return;
+      // Claimed synchronously, while the click is still the reason a window is
+      // opening: a window.open after the await is what a popup blocker stops,
+      // which left the reviewer at the comment box with no report on screen.
+      const tab = window.open('', '_blank');
       const { status, data } = await api('POST', '/analyses/' + genId + '/open');
-      if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); loadMe(); return; }
-      if (data.url) window.open(data.url, '_blank');
+      if (status !== 200) {
+        if (tab) tab.close();
+        notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); loadMe(); return;
+      }
+      if (data.url && tab) tab.location = data.url;
+      else if (data.url) window.open(data.url, '_blank');
+      window._openReportUrl = data.url || '';
       if (!data.free) {
         window._openReviewId = genId;
         renderReviewRow();
@@ -910,6 +947,21 @@
     }
 
     async function submitGen() {
+      // Asked here rather than left in a settings button nobody finds: this is
+      // the moment the name goes public, and it is only ever asked once.
+      if (!window._linkedinUrl) {
+        const answer = prompt(
+          'Your analysis is about to be published under your name.\n\n'
+          + 'LinkedIn profile address, shown beside your name so readers can check who wrote it.\n'
+          + 'Leave empty to publish without it — you can add it later.',
+          'https://www.linkedin.com/in/');
+        if (answer !== null && String(answer).trim() && String(answer).trim() !== 'https://www.linkedin.com/in/') {
+          const li = await api('POST', '/me/linkedin', { linkedinUrl: String(answer).trim() });
+          if (li.status === 200) window._linkedinUrl = li.data.linkedinUrl || '';
+          else notice('err', (li.data && li.data.error) || 'That did not look like a LinkedIn profile address — publishing without it.');
+        }
+      }
+
       const { status, data } = await api('POST', '/generations/' + window._openObligationId + '/submit',
         {
           // Empty until the revision pipeline supplies them; the server has

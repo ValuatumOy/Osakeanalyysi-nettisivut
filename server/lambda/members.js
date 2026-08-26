@@ -606,6 +606,83 @@ async function postGenerationRevisionsCheckout(event) {
   return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
 }
 
+// GET /reviews/mine — the reviews this member has written, newest first.
+//
+// A review used to be write-once and invisible afterwards, so a misclicked
+// score was permanent and unfindable. This is how a reviewer finds one again.
+async function getMyReviews(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const index = await store.listPublicationIndex({});
+  const mine = [];
+  for (const item of index) {
+    if (!item.genId || !item.userId) continue;
+    const rows = await store.listReviews(item.userId, item.genId);
+    const own = rows.find((r) => r.reviewerId === profile.userId);
+    if (!own) continue;
+    mine.push({
+      genId: item.genId,
+      companyId: item.companyId,
+      analyst: item.analystName || 'Analyst',
+      score: own.score,
+      comment: own.comment || '',
+      reviewedAt: own.reviewedAt || null,
+      edits: Array.isArray(own.history) ? own.history.length : 0,
+      history: Array.isArray(own.history) ? own.history : [],
+    });
+  }
+  mine.sort((a, b) => String(b.reviewedAt || '').localeCompare(String(a.reviewedAt || '')));
+  return json(200, { reviews: mine });
+}
+
+// POST /analyses/{genId}/review/edit — correct a review already written.
+async function postAnalysisReviewEdit(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const raw = Number(body.score);
+  if (!Number.isFinite(raw) || raw < 1 || raw > 5) {
+    return json(400, { error: 'score must be a number between 1 and 5, decimals allowed' });
+  }
+  const score = Math.round(raw * 10) / 10;
+  const comment = String(body.comment || '').trim();
+  if (comment.length < 40) {
+    return json(400, { error: 'A written comparison of at least 40 characters is required' });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+
+  const rows = await store.listReviews(index.userId, genId);
+  const own = rows.find((r) => r.reviewerId === profile.userId);
+  if (!own) return json(404, { error: 'You have not reviewed this analysis' });
+
+  const committed = await store.runTransact(quota.buildReviewEditTransact({
+    table: store.table(),
+    ownerId: index.userId,
+    reviewerId: profile.userId,
+    now, genId, indexSk: index.sk,
+    oldScore: Number(own.score),
+    oldComment: own.comment || '',
+    score,
+    comment: comment.slice(0, 4000),
+    history: Array.isArray(own.history) ? own.history : [],
+  }));
+  // The condition is on the old score, so a failure means someone else's edit
+  // landed first and the caller is working from a stale number.
+  if (!committed) return json(409, { error: 'That review changed while you were editing it — reload and try again' });
+
+  await store.audit(profile.userId, 'analysis-review-edited', { genId, from: own.score, to: score });
+  return json(200, { ok: true, genId, score, previousScore: Number(own.score) });
+}
+
 // POST /me/linkedin — the analyst's public profile link.
 //
 // LinkedIn's OIDC scope ("openid profile email") returns sub, name and email
@@ -1944,6 +2021,8 @@ const AUTHED_ROUTES = {
   'POST /me/linkedin': postMeLinkedin,
   'POST /analyses/{genId}/open': postAnalysisOpen,
   'POST /analyses/{genId}/review': postAnalysisReview,
+  'POST /analyses/{genId}/review/edit': postAnalysisReviewEdit,
+  'GET /reviews/mine': getMyReviews,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
   'POST /generations/fresh': postGenerationFresh,

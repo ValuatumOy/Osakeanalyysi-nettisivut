@@ -419,6 +419,53 @@ function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }
 
 // The review that pays for the read: a score plus a written comparison. Counters
 // on the index item are what orders the analyses on a company page.
+// Correcting a review that has already been written. A misclicked score used
+// to be permanent: the review row is written once, conditional on not existing,
+// and the score is baked into the analysis's running scoreSum.
+//
+// So the edit moves scoreSum by the difference and leaves reviewCount alone —
+// one reviewer stays one review however often they fix it. The condition on the
+// old score is an optimistic lock: two edits racing would otherwise both add
+// their own delta to a sum only one of them read.
+function buildReviewEditTransact({
+  table, ownerId, reviewerId, now, genId, indexSk,
+  oldScore, oldComment, score, comment, history = [],
+}) {
+  // What is being replaced, kept so an analyst can see a score was changed and
+  // to what — a silent edit to a public rating is worse than no edit at all.
+  // Capped: the newest nineteen plus this one, so the row cannot grow forever.
+  const previous = [...history, { score: oldScore, comment: oldComment || '', at: now.toISOString() }].slice(-20);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${ownerId}`, sk: `REVIEW#${genId}#${reviewerId}` },
+          UpdateExpression: 'SET score = :score, #c = :comment, reviewedAt = :at, history = :history',
+          ConditionExpression: 'attribute_exists(sk) AND score = :oldScore',
+          ExpressionAttributeNames: { '#c': 'comment' },
+          ExpressionAttributeValues: {
+            ':score': score,
+            ':comment': comment,
+            ':at': now.toISOString(),
+            ':oldScore': oldScore,
+            ':history': previous,
+          },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'ADD scoreSum :delta',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':delta': Math.round((score - oldScore) * 10) / 10 },
+        },
+      },
+    ],
+  };
+}
+
 function buildReviewTransact({ table, userId, now, genId, ownerId, indexSk, score, comment }) {
   return {
     TransactItems: [
@@ -754,6 +801,7 @@ module.exports = {
   buildRoleChangeTransact,
   buildOpenAnalysisTransact,
   buildReviewTransact,
+  buildReviewEditTransact,
   buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
