@@ -659,6 +659,12 @@ async function postAnalysisReviewEdit(event) {
 
   const index = await store.findPublicationIndex(genId);
   if (!index) return json(404, { error: 'Unknown analysis' });
+  // Same rule as opening one, stated where the review is actually written: the
+  // open path is what makes a review possible, so this is unreachable today,
+  // and it stops a later change to that path from quietly allowing self-review.
+  if (index.userId === profile.userId) {
+    return json(403, { error: 'You cannot review your own analysis' });
+  }
 
   const rows = await store.listReviews(index.userId, genId);
   const own = rows.find((r) => r.reviewerId === profile.userId);
@@ -1663,6 +1669,12 @@ async function postAnalysisReview(event) {
 
   const index = await store.findPublicationIndex(genId);
   if (!index) return json(404, { error: 'Unknown analysis' });
+  // Same rule as opening one, stated where the review is actually written: the
+  // open path is what makes a review possible, so this is unreachable today,
+  // and it stops a later change to that path from quietly allowing self-review.
+  if (index.userId === profile.userId) {
+    return json(403, { error: 'You cannot review your own analysis' });
+  }
 
   const committed = await store.runTransact(quota.buildReviewTransact({
     table: store.table(), userId: profile.userId, now, genId,
