@@ -87,6 +87,11 @@ function create(input, statePath = STATE_PATH) {
     // Member generations carry the analyst's name for the PDF cover byline.
     analystName: input.analystName || '',
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
+    // The published analysis this one derives from. Never carries the
+    // parent's pdfFileName: the reconciler overwrites an existing key in
+    // place and readers resolve a published PDF live, so a shared key would
+    // republish the parent under its readers on the fork's first revision.
+    forkedFrom: input.forkedFrom || null,
     reportId: input.reportId || null, // catalog entry id, origin: 'ready' only
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,

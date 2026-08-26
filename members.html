@@ -756,16 +756,28 @@
           : lock
             ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
             : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
+        // Deriving is a separate, paid thing from reading: the price goes to the
+        // analyst whose work you are building on, and you get your own report to
+        // revise from theirs.
+        const fork = '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="forkAnalysis(\''
+          + encodeURIComponent(a.genId) + '\')" title="Pay to build your own analysis on top of this one">Build on this</button>';
         return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + '</td><td>' + esc(a.publishedAt.slice(0, 10))
           + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
                           : a.free ? '<span class="pill-free">Free for you</span>'
                           : (a.priceEur ? a.priceEur + ' €' : '—'))
           + '</td><td>' + (a.reviewCount ? Number(a.peerScore).toFixed(1) + ' (' + a.reviewCount + ')' : 'no reviews')
-          + '</td><td style="text-align:right">' + button + '</td></tr>';
+          + '</td><td style="text-align:right">' + button + fork + '</td></tr>';
       });
       document.getElementById('analysesTable').innerHTML =
         '<tr><th>Company</th><th>Analyst</th><th>Published</th><th>Price</th><th>Peer score</th><th></th></tr>'
         + (rows.join('') || '<tr><td colspan="6" class="muted">No published analyst reports yet.</td></tr>');
+    }
+
+    async function forkAnalysis(genId) {
+      const { status, data } = await api('POST', '/analyses/' + genId + '/fork-checkout',
+        { returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
     }
 
     function focusReview() {

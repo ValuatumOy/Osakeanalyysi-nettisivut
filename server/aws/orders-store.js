@@ -99,6 +99,13 @@ async function create(input) {
     // report they revise. Undefined on shop orders, which stay engine-only.
     analystName: input.analystName || undefined,
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
+    // A derived analysis: the genId of the published analysis this one was
+    // forked from. The fork revises the parent's engine job but is a separate
+    // order, and it deliberately starts with pdfFileName null — the reconciler
+    // writes an existing key in place, so inheriting the parent's name would
+    // make the forker's first revision overwrite the published report under
+    // every reader of it.
+    forkedFrom: input.forkedFrom || undefined,
     reportId: input.reportId || null,
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,

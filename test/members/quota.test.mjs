@@ -246,3 +246,27 @@ test('reopen without an index row still reopens the publication', () => {
   assert.equal(params.TransactItems.length, 2);
   assert.ok(!params.TransactItems.some(i => i.Delete));
 });
+
+test('a fork owes a publication and does not touch the monthly generation', () => {
+  const params = quota.buildForkTransact({
+    table: TABLE, userId: 'u2', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'fork1', parentGenId: 'g1', parentUserId: 'u1', companyId: 'nokia.he',
+  });
+  const profile = params.TransactItems.find(i => i.Update).Update;
+  const put = params.TransactItems.find(i => i.Put).Put;
+
+  // The fee is what limits forking, so genReserved is deliberately untouched:
+  // the free monthly generation stays for work started from nothing.
+  const json = JSON.stringify(params);
+  assert.ok(!json.includes('genReserved'), 'a paid fork must not spend the free generation');
+  assert.ok(!json.includes('USAGE#'), 'a paid fork must not touch the monthly usage row');
+
+  // It still owes a publication, and cannot displace one already owed.
+  assert.equal(profile.ConditionExpression,
+    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+  assert.equal(put.Item.status, 'generating');
+  assert.equal(put.Item.forkedFrom, 'g1');
+  assert.equal(put.Item.forkedFromUserId, 'u1');
+  assert.equal(put.Item.companyId, 'NOKIA.HE');
+  assert.equal(put.ConditionExpression, 'attribute_not_exists(sk)');
+});

@@ -745,6 +745,14 @@ async function postGenerationSubmit(event) {
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
+  // A fork with no revision on it is somebody else's analysis with a new name on
+  // the cover. The whole point of deriving is what you add, so at least one
+  // revision has to have landed before it can be published.
+  if (order.forkedFrom && !(order.revisionsUsed > 0)) {
+    return json(409, {
+      error: 'Revise this analysis at least once before publishing it — a fork with no revision is the analysis you derived it from',
+    });
+  }
 
   // The analyst prices their own analysis and decides how long until it falls
   // free (max a year, quota.clampFreeAfterDays). Both are recorded now; the
@@ -973,7 +981,11 @@ async function recordAnalysisSale(session) {
     // Refund events carry the payment intent, not the session, so a later
     // charge.refunded handler can find this row without a migration.
     paymentIntent: session.payment_intent || null,
-    grossEur: Math.round(Number(session.amount_total || 0)) / 100,
+    // A fork session also carries a derivation fee, which is ours and not the
+    // author's, so it names the author's share explicitly. A plain purchase has
+    // no such field and stays the whole session total.
+    grossEur: Number(session.metadata.saleGrossEur)
+      || Math.round(Number(session.amount_total || 0)) / 100,
     currency: session.currency || 'eur',
     soldAt: new Date((session.created || 0) * 1000 || Date.now()).toISOString(),
   });
@@ -1005,6 +1017,7 @@ async function postBillingWebhook(event) {
       if (object.metadata?.analysisGenId) {
         if (object.payment_status !== 'paid') break;
         await recordAnalysisSale(object);
+        if (object.metadata.fork === 'true') await createForkOrder(object);
         break;
       }
       if (object.mode !== 'subscription') break;
@@ -1199,6 +1212,147 @@ async function postAnalysisBuyCheckout(event) {
     cancel_url: `${returnTo}?bought=cancelled`,
   });
   return json(200, { url: session.url, priceEur: price });
+}
+
+// The paid fork itself, created from the webhook so it exists whether or not
+// the buyer returns to the site. The order revises the parent's engine job —
+// the engine's ownership key is one site-wide username, so branching another
+// member's job needs no engine change — but it is a separate order with its own
+// revision budget and, critically, no pdfFileName. The reconciler writes an
+// existing key in place, so inheriting the parent's would make the first
+// revision overwrite the published report under everyone reading it.
+async function createForkOrder(session) {
+  const parentGenId = session.metadata.analysisGenId;
+  const genId = session.id;
+  if (await ordersStore.get(genId)) return;
+
+  const parent = await ordersStore.get(parentGenId);
+  if (!parent?.jobId) {
+    console.error('fork: parent has no job to build on', { parentGenId, genId });
+    return;
+  }
+
+  const forkUserId = session.metadata.forkUserId || '';
+  const profile = forkUserId ? await store.getProfile(forkUserId) : null;
+  const publishes = Boolean(profile && tiers.isPublishingRole(profile.role));
+
+  // An analyst's fork is publishable and owes a publication; anyone else's is
+  // theirs alone. buildForkTransact refuses when another publication is already
+  // owed, and then the fork stays private rather than being lost.
+  let obligation = false;
+  if (publishes) {
+    obligation = await store.runTransact(quota.buildForkTransact({
+      table: store.table(),
+      userId: profile.userId,
+      now: new Date((session.created || 0) * 1000 || Date.now()),
+      genId,
+      parentGenId,
+      parentUserId: session.metadata.ownerId || null,
+      companyId: session.metadata.companyId || parent.ticker || '',
+    }));
+  }
+
+  await ordersStore.create({
+    id: genId,
+    email: profile?.email || session.customer_details?.email || session.customer_email || '',
+    companyName: parent.companyName || '',
+    ticker: parent.ticker || '',
+    exchange: parent.exchange || '',
+    status: ordersStore.STATUS.DELIVERED,
+    jobId: parent.jobId,
+    forkedFrom: parentGenId,
+    analystName: profile?.name || undefined,
+    ...(obligation ? {} : { visibility: 'private' }),
+    revisionsAllowed: publishes
+      ? limitsFor(profile).revisions
+      : (Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3),
+  });
+
+  if (profile) {
+    await store.audit(profile.userId, 'analysis-forked', {
+      genId, parentGenId, publishable: obligation,
+    });
+  }
+}
+
+// POST /analyses/{genId}/fork-checkout — pay to build on a published analysis.
+//
+// One session, two things in it: the analysis at its own price, which reaches
+// its author as an ordinary SALE row with the usual 50/50 and 14-day hold, and
+// a derivation fee which is ours. Routing the author's half through the sale
+// machinery means a later takedown of the parent claws these back like any
+// other sale, with no separate accounting.
+//
+// Signed in as an analyst, the fork becomes a publishable generation carrying
+// the publish obligation. Signed out, or as a reader, it is a private report
+// that owes nothing — the same split the paid generation already makes.
+const FORK_FEE_EUR = Number(process.env.FORK_FEE_EUR || '') || 10;
+
+async function postAnalysisForkCheckout(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  // Only a live publication can be derived from. A taken-down one is a 404
+  // everywhere else, and a reopened one is mid-edit by its own author.
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+
+  const parentOrder = await ordersStore.get(genId);
+  if (!parentOrder?.jobId || parentOrder.status !== 'DELIVERED') {
+    return json(409, { error: 'This analysis has no report to build on' });
+  }
+
+  const body = parseBody(event) || {};
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const analysisPrice = Number(index.priceEur) || 0;
+
+  // Signed in is optional here: a reader without an account can still buy a
+  // fork, exactly as they can buy an analysis. requireUser denies rather than
+  // throwing, so an anonymous caller just comes back without a profile.
+  const { profile } = await auth.requireUser(event, { bearerToken, json, now });
+
+  const lineItems = [{
+    quantity: 1,
+    price_data: {
+      currency: 'eur',
+      unit_amount: Math.round(FORK_FEE_EUR * 100),
+      product_data: {
+        name: `Build on ${index.companyId} — derivation`,
+        description: 'Revision rounds on top of a published analyst analysis, delivered as your own report.',
+      },
+    },
+  }];
+  if (analysisPrice > 0 && !ranking.isPublicFreeNow(index, now)) {
+    lineItems.unshift({
+      quantity: 1,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(analysisPrice * 100),
+        product_data: {
+          name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
+          description: 'The analysis you are building on. Half of this reaches its author.',
+        },
+      },
+    });
+  }
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    line_items: lineItems,
+    ...(profile?.email ? { customer_email: profile.email } : {}),
+    metadata: {
+      analysisGenId: genId,
+      ownerId: index.userId,
+      companyId: index.companyId,
+      fork: 'true',
+      // Only the author's half of the session is their sale; the rest is the
+      // derivation fee. recordAnalysisSale reads this.
+      saleGrossEur: String(analysisPrice),
+      forkUserId: profile?.userId || '',
+    },
+    success_url: `${returnTo}?forked=${genId}&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?forked=cancelled`,
+  });
+  return json(200, { url: session.url, priceEur: analysisPrice + FORK_FEE_EUR });
 }
 
 // GET /analyses/{genId}/purchased?session_id=… — the buyer's way in. The session
@@ -1606,6 +1760,7 @@ const PUBLIC_ROUTES = {
   'GET /analyses': getAnalyses,
   'GET /analyses/{genId}/free': getAnalysisFree,
   'POST /analyses/{genId}/buy-checkout': postAnalysisBuyCheckout,
+  'POST /analyses/{genId}/fork-checkout': postAnalysisForkCheckout,
   'GET /analyses/{genId}/purchased': getAnalysisPurchased,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,

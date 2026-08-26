@@ -487,6 +487,49 @@ function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 })
   };
 }
 
+// An analyst deriving from someone else's published analysis. The fee is what
+// bounds this, not the monthly generation: a fork is paid for (the parent's
+// price goes to its author as an ordinary sale, plus a derivation fee), so the
+// free 1/month stays reserved for work started from nothing.
+//
+// It does carry the publish obligation, because a derivative that never appears
+// is the one case where the competition mechanic pays nothing back to the
+// analyst whose work it was built on. Same single obligation slot as any
+// generation: an analyst who already owes a publication settles that first,
+// which is what the condition enforces.
+function buildForkTransact({ table, userId, now, genId, parentGenId, parentUserId, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'SET openObligationId = :genId',
+          ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            reservedAt: now.toISOString(),
+            companyId: String(companyId || '').toUpperCase(),
+            // Lineage, carried to the publication index at submit time so a
+            // reader of the derived analysis can see what it was built on.
+            forkedFrom: parentGenId,
+            forkedFromUserId: parentUserId,
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 // The other half of a takedown: put the analysis back to `generating` so the
 // analyst can fix what was wrong, spend a remaining revision round and publish
 // it again. analyst-terms.html has always promised this ("fix the cause and
@@ -648,6 +691,7 @@ module.exports = {
   buildSubmitTransact,
   buildTakedownTransact,
   buildReopenTransact,
+  buildForkTransact,
   buildGrantGenerationTransact,
   buildPaidGenerationTransact,
   buildFailPublicationTransact,
