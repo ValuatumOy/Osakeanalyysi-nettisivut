@@ -83,6 +83,7 @@
               <span id="roleLabel" class="ws-role"></span>
             </div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" id="linkedinBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
               <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
               <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
             </div>
@@ -468,6 +469,8 @@
       // get a private one with no strings attached.
       const isAnalyst = data.publishes;
       document.getElementById('stepDownBtn').hidden = !isAnalyst;
+      document.getElementById('linkedinBtn').hidden = !isAnalyst;
+      window._linkedinUrl = data.linkedinUrl || '';
       const analysesCard = document.getElementById('analysesCard');
       analysesCard.hidden = !(u.analystReadLimit > 0);
       window._openReviewId = data.openReviewId || null;
@@ -684,6 +687,10 @@
           : '<span class="muted">—</span>';
         // The price was fixed at publication and is what a forker pays too, so
         // it has to be changeable afterwards.
+        const more = (done && g.publication !== 'published')
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyRevisions(\''
+            + encodeURIComponent(g.genId) + '\')" title="Buy more revision rounds on this report">+ rounds</button>'
+          : '';
         const reprice = g.publication === 'published'
           ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
             + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
@@ -693,11 +700,40 @@
           + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
           + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
           + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
-          + '<td style="text-align:right">' + action + reprice + '</td></tr>';
+          + '<td style="text-align:right">' + action + more + reprice + '</td></tr>';
       });
       document.getElementById('generationsTable').innerHTML =
         '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
         + (rows.join('') || '<tr><td colspan="6" class="muted">You have not generated a report yet.</td></tr>');
+    }
+
+    // LinkedIn's basic scope gives us no public profile URL, so the analyst
+    // supplies it — and chooses whether to be linked at all.
+    async function setLinkedin() {
+      const answer = prompt(
+        'Your LinkedIn profile address. It appears beside your name on every analysis you have published.\n'
+        + 'Leave empty to remove it.',
+        window._linkedinUrl || 'https://www.linkedin.com/in/');
+      if (answer === null) return;
+      const { status, data } = await api('POST', '/me/linkedin', { linkedinUrl: String(answer).trim() });
+      if (status === 200) {
+        window._linkedinUrl = data.linkedinUrl || '';
+        notice('ok', data.linkedinUrl
+          ? 'Saved, and added to ' + data.publications + ' published ' + (data.publications === 1 ? 'analysis' : 'analyses') + '.'
+          : 'Removed from your published analyses.');
+        loadAnalyses();
+      } else notice('err', (data && data.error) || ('Could not save the link (' + status + ')'));
+    }
+
+    async function buyRevisions(genId) {
+      const answer = prompt('How many extra revision rounds?', '2');
+      if (answer === null) return;
+      const rounds = Number(answer);
+      if (!Number.isInteger(rounds) || rounds < 1) { notice('err', 'Give a whole number of rounds, 1 or more.'); return; }
+      const { status, data } = await api('POST', '/generations/' + genId + '/revisions-checkout',
+        { rounds, returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
     }
 
     async function repriceAnalysis(genId, current) {
@@ -775,9 +811,10 @@
         // Deriving is a separate, paid thing from reading: the price goes to the
         // analyst whose work you are building on, and you get your own report to
         // revise from theirs.
-        const fork = '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="forkAnalysis(\''
-          + encodeURIComponent(a.genId) + '\')" title="Pay to build your own analysis on top of this one">Build on this</button>';
-        return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + '</td><td>' + esc(a.publishedAt.slice(0, 10))
+        const fork = '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyOrFork(\''
+          + encodeURIComponent(a.genId) + '\', ' + (Number(a.priceEur) || 0) + ')"'
+          + ' title="Buy this analysis, or buy it with revision rounds and build your own on top">Buy or build on</button>';
+        return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + (a.analystLinkedin ? ' <a href="' + esc(a.analystLinkedin) + '" target="_blank" rel="noopener nofollow" title="LinkedIn">in</a>' : '') + '</td><td>' + esc(a.publishedAt.slice(0, 10))
           + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
                           : a.free ? '<span class="pill-free">Free for you</span>'
                           : (a.priceEur ? a.priceEur + ' €' : '—'))
@@ -787,6 +824,23 @@
       document.getElementById('analysesTable').innerHTML =
         '<tr><th>Company</th><th>Analyst</th><th>Published</th><th>Price</th><th>Peer score</th><th></th></tr>'
         + (rows.join('') || '<tr><td colspan="6" class="muted">No published analyst reports yet.</td></tr>');
+    }
+
+    // Reading someone's analysis and building on it are the same decision at the
+    // moment of buying, so it is one dialog rather than two buttons.
+    async function buyOrFork(genId, priceEur) {
+      const answer = prompt(
+        'Buy this analysis?\n\n'
+        + '1 = the report only' + (priceEur ? ' (' + priceEur + ' €)' : '')
+        + '\n2 = the report plus revision rounds, as your own report you can steer\n\n'
+        + 'Type 1 or 2:', '1');
+      if (answer === null) return;
+      if (String(answer).trim() === '2') return forkAnalysis(genId);
+      if (String(answer).trim() !== '1') { notice('err', 'Type 1 or 2.'); return; }
+      const { status, data } = await api('POST', '/analyses/' + genId + '/buy-checkout',
+        { returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
     }
 
     async function forkAnalysis(genId) {

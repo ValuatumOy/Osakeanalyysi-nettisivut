@@ -184,6 +184,22 @@ async function claimRevision(id, comment) {
 }
 
 // Patch an order in place and bump updatedAt. `id` and `createdAt` are protected.
+// Raise the revision allowance by a paid amount. ADD rather than a read and a
+// write, so two purchases landing together both count.
+async function addRevisionsAllowed(id, rounds) {
+  const n = Math.round(Number(rounds) || 0);
+  if (n <= 0) return null;
+  const res = await dynamo().send(new UpdateCommand({
+    TableName: TABLE(),
+    Key: { orderId: id },
+    UpdateExpression: 'SET revisionsAllowed = if_not_exists(revisionsAllowed, :zero) + :n',
+    ConditionExpression: 'attribute_exists(orderId)',
+    ExpressionAttributeValues: { ':zero': 0, ':n': n },
+    ReturnValues: 'ALL_NEW',
+  }));
+  return res.Attributes || null;
+}
+
 async function update(id, patch = {}) {
   const names = {};
   const values = { ':updatedAt': nowIso() };
@@ -226,5 +242,6 @@ module.exports = {
   list,
   listPending,
   update,
+  addRevisionsAllowed,
   claimRevision,
 };

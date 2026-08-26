@@ -3578,3 +3578,8 @@ select.input {
   .store-row-cta { justify-content: flex-start; }
   .usage-stat .val { font-size: 1.6rem; }
 }
+
+/* The analyst's profile link beside their name on a published analysis. */
+.analyst-linkedin { display: inline-flex; align-items: center; color: var(--gray-steel);
+  margin-left: 0.4em; vertical-align: -0.15em; transition: color 0.15s ease; }
+.analyst-linkedin:hover { color: #0A66C2; }

@@ -269,6 +269,7 @@ async function getMe(event) {
       coverageUpdateLimit: quota.COVERAGE_UPDATES_PER_YEAR,
     },
     openObligationId: profile.openObligationId || null,
+    linkedinUrl: profile.linkedinUrl || null,
     openReviewId: profile.openReviewId || null,
     entitlements: entitlements.map(item => ({
       reportId: item.sk.slice(4),
@@ -549,6 +550,103 @@ async function postGenerationFresh(event) {
   });
 }
 
+// POST /generations/{genId}/revisions-checkout — buy more revision rounds on a
+// report you already own.
+//
+// revisionsAllowed is fixed when an order is created, so an analyst or a buyer
+// who runs out has no way forward but to start again. This tops it up; the
+// webhook is what actually raises the number, so an abandoned return trip
+// cannot lose rounds that were paid for.
+const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
+
+async function postGenerationRevisionsCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+  // A published analysis is frozen — its PDF can no longer change, so more
+  // rounds would buy nothing. Same rule as the revision endpoint itself.
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const order = await ordersStore.get(genId);
+  if (!order) return json(404, { error: 'Unknown generation' });
+
+  const body = parseBody(event) || {};
+  const rounds = Math.min(10, Math.max(1, Math.round(Number(body.rounds) || 1)));
+  const returnTo = auth.frontendUrl(body.returnTo);
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    allow_promotion_codes: true,
+    ...(profile.email ? { customer_email: profile.email } : {}),
+    line_items: [{
+      quantity: rounds,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
+        product_data: {
+          name: `Extra revision round — ${order.companyName || order.ticker || 'report'}`,
+          description: 'One more round of steering on a report you already have.',
+        },
+      },
+    }],
+    metadata: {
+      extraRevisions: String(rounds),
+      generationId: genId,
+      userId: profile.userId,
+    },
+    success_url: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?revisions=cancelled`,
+  });
+  return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+}
+
+// POST /me/linkedin — the analyst's public profile link.
+//
+// LinkedIn's OIDC scope ("openid profile email") returns sub, name and email
+// and no public profile URL — the vanity name needs partner access we do not
+// have. So the analyst supplies it, which also means they choose whether to be
+// linked at all.
+const LINKEDIN_PROFILE_RE = /^https:\/\/(?:[a-z]{2,3}\.)?linkedin\.com\/(?:in|pub)\/[^\s/?#]+\/?$/i;
+
+async function postMeLinkedin(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const raw = String(body.linkedinUrl || '').trim();
+  if (raw && !LINKEDIN_PROFILE_RE.test(raw)) {
+    return json(400, { error: 'Give the address of your LinkedIn profile, e.g. https://www.linkedin.com/in/your-name' });
+  }
+  const url = raw.replace(/\/$/, '');
+
+  await store.putProfileFields(profile.userId, { linkedinUrl: url || null });
+
+  // Publications carry a copy so the public listing needs no per-analyst
+  // lookup. Backfilling the analyst's own rows keeps the link from being
+  // something only future publications get.
+  const pubs = await store.listUserItems(profile.userId, 'PUB#');
+  let updated = 0;
+  for (const pub of pubs.filter((x) => x.status === 'published')) {
+    const genId = String(pub.sk || '').replace(/^PUB#/, '');
+    const index = await store.findPublicationIndex(genId);
+    if (!index?.sk) continue;
+    await store.putIndexFields(index.sk, { analystLinkedin: url || null });
+    updated += 1;
+  }
+
+  await store.audit(profile.userId, 'linkedin-url-set', { present: Boolean(url), publications: updated });
+  return json(200, { ok: true, linkedinUrl: url || null, publications: updated });
+}
+
 // POST /generations/{genId}/price — reprice a live analysis.
 //
 // The analyst sets the price at publication and, until now, was stuck with it.
@@ -806,6 +904,7 @@ async function postGenerationSubmit(event) {
     priceEur: body.priceEur,
     freeAfterDays: body.freeAfterDays,
     analystName: String(profile.name || profile.email || '').slice(0, 120),
+    analystLinkedin: profile.linkedinUrl || null,
     // From the delivered order, never the request body — same rule as companyId above.
     recommendation: order.recommendation || null,
     targetPrice: order.targetPrice || null,
@@ -1061,6 +1160,11 @@ async function postBillingWebhook(event) {
         if (object.metadata.fork === 'true') await createForkOrder(object);
         break;
       }
+      if (object.metadata?.extraRevisions) {
+        if (object.payment_status !== 'paid') break;
+        await addRevisionRounds(object);
+        break;
+      }
       if (object.mode !== 'subscription') break;
       const userId = object.client_reference_id || await userIdForCustomer(object.customer);
       if (!userId) break;
@@ -1112,6 +1216,7 @@ async function getAnalyses(event) {
       // The store filters by analyst, and two analysts can share a display name.
       analystId: item.userId,
       analyst: item.analystName || 'Analyst',
+      analystLinkedin: item.analystLinkedin || null,
       publishedAt: item.publishedAt,
       priceEur: item.priceEur || 0,
       reviewCount: item.reviewCount || 0,
@@ -1254,6 +1359,26 @@ async function postAnalysisBuyCheckout(event) {
     cancel_url: `${returnTo}?bought=cancelled`,
   });
   return json(200, { url: session.url, priceEur: price });
+}
+
+// Extra revision rounds, applied from the webhook so they survive a buyer who
+// never returns. claimStripeEvent already makes the webhook idempotent, which
+// is what keeps a Stripe retry from granting the rounds twice.
+async function addRevisionRounds(session) {
+  const genId = session.metadata.generationId;
+  const rounds = Math.round(Number(session.metadata.extraRevisions) || 0);
+  if (!genId || rounds <= 0) return;
+
+  const updated = await ordersStore.addRevisionsAllowed(genId, rounds);
+  if (!updated) {
+    console.error('extra revisions: no order to credit', { genId, rounds });
+    return;
+  }
+  if (session.metadata.userId) {
+    await store.audit(session.metadata.userId, 'revisions-purchased', {
+      genId, rounds, revisionsAllowed: updated.revisionsAllowed,
+    });
+  }
 }
 
 // The paid fork itself, created from the webhook so it exists whether or not
@@ -1816,6 +1941,7 @@ const AUTHED_ROUTES = {
   'GET /me': getMe,
   'GET /me/earnings': getMeEarnings,
   'POST /me/role': postMeRole,
+  'POST /me/linkedin': postMeLinkedin,
   'POST /analyses/{genId}/open': postAnalysisOpen,
   'POST /analyses/{genId}/review': postAnalysisReview,
   'POST /reports/{id}/open': postReportOpen,
@@ -1827,6 +1953,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
+  'POST /generations/{genId}/revisions-checkout': postGenerationRevisionsCheckout,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
 };

@@ -167,7 +167,7 @@ function normaliseRecommendation(value) {
 
 function buildSubmitTransact({
   table, userId, now, genId, promptsText, companyId, jobId,
-  priceEur = 0, freeAfterDays, analystName = '',
+  priceEur = 0, freeAfterDays, analystName = '', analystLinkedin = null,
   // The engine's own output for this job, taken from the delivered order rather than from
   // the request: an analyst supplying their own rating could publish one the report does
   // not support, and the whole compliance story here is that a published claim is traceable
@@ -231,6 +231,7 @@ function buildSubmitTransact({
             genId,
             companyId: company,
             analystName,
+            ...(analystLinkedin ? { analystLinkedin } : {}),
             jobId: jobId || '',
             publishedAt: at,
             status: 'published',

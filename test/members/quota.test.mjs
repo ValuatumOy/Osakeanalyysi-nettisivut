@@ -301,3 +301,22 @@ test('a price is clamped to whole euros at or above zero', () => {
   assert.equal(of('12'), 12);
   assert.equal(of(undefined), 0);
 });
+
+test('publishing carries the analyst LinkedIn link onto the public listing', () => {
+  const withLink = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-01T00:00:00Z'), genId: 'g1',
+    companyId: 'NOKIA.HE', jobId: 'job1', promptsText: 'x',
+    analystName: 'A Person', analystLinkedin: 'https://www.linkedin.com/in/a-person',
+  });
+  const index = withLink.TransactItems.find(i => i.Put && i.Put.Item.pk === 'PUBINDEX').Put.Item;
+  assert.equal(index.analystLinkedin, 'https://www.linkedin.com/in/a-person');
+
+  // An analyst who gives no link is not written with an empty one — the public
+  // card keys off the field being absent.
+  const without = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-01T00:00:00Z'), genId: 'g1',
+    companyId: 'NOKIA.HE', jobId: 'job1', promptsText: 'x', analystName: 'A Person',
+  });
+  const bare = without.TransactItems.find(i => i.Put && i.Put.Item.pk === 'PUBINDEX').Put.Item;
+  assert.ok(!('analystLinkedin' in bare));
+});

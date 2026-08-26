@@ -195,6 +195,37 @@ async function listReviews(ownerId, genId) {
 
 // One row per paid-out bounty. Existence is what makes bounty.ledger() call a
 // publication 'paid', so the write is conditional — never pay the same one twice.
+// Set or clear a handful of named fields on one item. Null clears, which is how
+// an analyst removes their LinkedIn link rather than being stuck with it.
+async function setFields(pk, sk, fields) {
+  const names = {};
+  const values = {};
+  const sets = [];
+  const removes = [];
+  Object.entries(fields).forEach(([key, value], i) => {
+    names[`#f${i}`] = key;
+    if (value === null || value === undefined) {
+      removes.push(`#f${i}`);
+    } else {
+      values[`:v${i}`] = value;
+      sets.push(`#f${i} = :v${i}`);
+    }
+  });
+  if (!sets.length && !removes.length) return;
+  const expression = [sets.length ? `SET ${sets.join(', ')}` : '', removes.length ? `REMOVE ${removes.join(', ')}` : '']
+    .filter(Boolean).join(' ');
+  await dynamo().send(new UpdateCommand({
+    TableName: table(),
+    Key: { pk, sk },
+    UpdateExpression: expression,
+    ExpressionAttributeNames: names,
+    ...(Object.keys(values).length ? { ExpressionAttributeValues: values } : {}),
+  }));
+}
+
+const putProfileFields = (userId, fields) => setFields(`USER#${userId}`, 'PROFILE', fields);
+const putIndexFields = (indexSk, fields) => setFields('PUBINDEX', indexSk, fields);
+
 async function putPayout(userId, genId, fields) {
   try {
     await dynamo().send(new PutCommand({
@@ -299,6 +330,8 @@ module.exports = {
   findPublicationIndex,
   listReviews,
   putPayout,
+  putProfileFields,
+  putIndexFields,
   putSale,
   runTransact,
   claimStripeEvent,

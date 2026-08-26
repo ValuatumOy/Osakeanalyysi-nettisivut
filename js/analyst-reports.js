@@ -84,11 +84,26 @@
           ? '<button class="btn btn-primary btn-sm" data-buy="' + esc(a.genId) + '">Buy for €' + a.priceEur + '</button>'
           : '')
         + '<a class="btn btn-outline-dark btn-sm" href="/members.html">Sign in to read</a>';
+    cta += '<button class="btn btn-outline-dark btn-sm" data-fork="' + esc(a.genId) + '"'
+      + ' title="Buy this analysis with revision rounds and steer it yourself">Build on this</button>';
+
+  // The analyst's own profile link, when they have given one. A published call
+  // with a name on it is more checkable if the name goes somewhere.
+  function linkedinCell(a) {
+    if (!a.analystLinkedin) return '';
+    return ' <a class="analyst-linkedin" href="' + esc(a.analystLinkedin) + '"'
+      + ' target="_blank" rel="noopener nofollow"'
+      + ' aria-label="' + esc(a.analyst) + ' on LinkedIn" title="' + esc(a.analyst) + ' on LinkedIn">'
+      + '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">'
+      + '<path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V24H8V8z"/>'
+      + '</svg></a>';
+  }
 
     return '<div class="store-row">'
       + '<div class="store-row-main">'
         + '<div class="store-row-title"><span class="store-rank">' + rank + '</span>'
-          + '<span class="store-kind store-kind--analyst">Analyst report</span>' + esc(a.analyst) + '</div>'
+          + '<span class="store-kind store-kind--analyst">Analyst report</span>' + esc(a.analyst)
+          + linkedinCell(a) + '</div>'
         + '<div class="store-row-meta">' + callCell(a) + scoreCell(a)
           + '<span class="sep">·</span>' + priceCell(a)
           + (date ? '<span class="sep">·</span>published ' + date : '') + '</div>'
@@ -120,6 +135,29 @@
 
   // Buying needs no account: the analyst set the price, Stripe takes the payment, and the
   // checkout session id is the receipt that opens the PDF.
+  // Same shape as buy(), against the fork checkout: what comes back is the
+  // buyer's own report to revise rather than a copy of this one.
+  function fork(genId, button) {
+    button.disabled = true;
+    button.textContent = 'Opening checkout…';
+    fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/fork-checkout', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ returnTo: location.origin + location.pathname }),
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return null; }).then(function (data) {
+          if (res.ok && data && data.url) { location.href = data.url; return; }
+          button.textContent = (data && data.error) || 'Not available';
+          button.disabled = false;
+        });
+      })
+      .catch(function () {
+        button.textContent = 'Not available';
+        button.disabled = false;
+      });
+  }
+
   function buy(genId, button) {
     button.disabled = true;
     button.textContent = 'Opening checkout…';
@@ -247,7 +285,9 @@
     var freeBtn = ev.target.closest('[data-free]');
     if (freeBtn) { openFree(freeBtn.getAttribute('data-free'), freeBtn); return; }
     var buyBtn = ev.target.closest('[data-buy]');
-    if (buyBtn) buy(buyBtn.getAttribute('data-buy'), buyBtn);
+    if (buyBtn) { buy(buyBtn.getAttribute('data-buy'), buyBtn); return; }
+    var forkBtn = ev.target.closest('[data-fork]');
+    if (forkBtn) fork(forkBtn.getAttribute('data-fork'), forkBtn);
   });
 
   collectPurchase();
