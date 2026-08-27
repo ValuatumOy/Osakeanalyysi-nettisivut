@@ -402,23 +402,76 @@
       });
     });
 
-    function renderReports() {
-      sortReports();
-      renderSortArrows();
-      const rows = reports.map((report, index) => `
-        <tr>
+    const ORIGIN_BADGE = {
+      uploaded: '<span class="badge badge-gray">Uploaded</span>',
+      order: '<span class="badge badge-blue">Fresh order</span>',
+      generation: '<span class="badge badge-yellow">Member generation</span>',
+    };
+
+    function reportRow(report, index, extra) {
+      const who = report.generatedBy
+        ? `<br><span class="muted" style="font-size:0.7rem;">by ${esc(report.generatedBy)}</span>` : '';
+      return `
+        <tr${extra || ''}>
           <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>
           <td>${esc(report.ticker || '—')}</td>
           <td>${esc(report.reportDate || '—')}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
-          <td style="text-align:right;">
+          <td style="text-align:right; white-space:nowrap;">
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
             <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
           </td>
-        </tr>`).join('');
-      $('report-rows').innerHTML = rows || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+        </tr>`;
     }
+
+    // One row per report, its revised copies folded away behind a count. All of
+    // one order's files share a groupId, which is what turns fifteen Tesla rows
+    // into a handful — the catalog is meant to be read as reports, not files.
+    function renderReports() {
+      sortReports();
+      renderSortArrows();
+      const chains = new Map();
+      reports.forEach((report, index) => {
+        const key = report.groupId || report.id;
+        if (!chains.has(key)) chains.set(key, { main: null, revs: [] });
+        const chain = chains.get(key);
+        if (report.isRevision) chain.revs.push({ report, index });
+        else chain.main = { report, index };
+      });
+
+      const rows = [];
+      for (const [key, chain] of chains) {
+        // Every file of the chain is a revision (the base left the catalog):
+        // the newest revision fronts it rather than the chain disappearing.
+        const main = chain.main || chain.revs.shift();
+        if (!main) continue;
+        rows.push(reportRow(main.report, main.index));
+        if (chain.revs.length) {
+          const gid = esc(String(key));
+          rows.push(`<tr class="rev-toggle-row"><td colspan="6" style="padding:0.25rem 0.9rem 0.55rem;">
+            <button class="btn-xs" data-revs="${gid}">▸ ${chain.revs.length} revised ${chain.revs.length === 1 ? 'version' : 'versions'}</button>
+          </td></tr>`);
+          for (const rev of chain.revs) {
+            rows.push(reportRow(rev.report, rev.index,
+              ` class="rev-row" data-rev-of="${gid}" hidden style="background:var(--off-white);"`));
+          }
+        }
+      }
+      $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+    }
+
+    $('report-rows').addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-revs]');
+      if (!btn) return;
+      const gid = btn.dataset.revs;
+      let shown = false;
+      document.querySelectorAll(`tr.rev-row[data-rev-of="${CSS.escape(gid)}"]`).forEach((tr) => {
+        tr.hidden = !tr.hidden;
+        shown = !tr.hidden;
+      });
+      btn.textContent = btn.textContent.replace(shown ? '▸' : '▾', shown ? '▾' : '▸');
+    });
 
     async function refreshReports() {
       const data = await api('/api/admin/reports');
