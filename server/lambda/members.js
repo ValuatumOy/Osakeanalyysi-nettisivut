@@ -666,6 +666,15 @@ async function postAnalysisReviewEdit(event) {
     return json(403, { error: 'You cannot review your own analysis' });
   }
 
+  // Started covering the company since writing the review: editing now would be
+  // marking a rival down. The review already written stands as it is.
+  if (await coversCompany(profile.userId, index.companyId)) {
+    return json(403, {
+      error: 'You cover this company yourself now, so this review can no longer be changed',
+      covers: index.companyId,
+    });
+  }
+
   const rows = await store.listReviews(index.userId, genId);
   const own = rows.find((r) => r.reviewerId === profile.userId);
   if (!own) return json(404, { error: 'You have not reviewed this analysis' });
@@ -1320,6 +1329,29 @@ async function getAnalyses(event) {
   });
 }
 
+// An analyst who covers a company must not grade the rivals covering it: the
+// cheapest way up the ranking would be to mark down everyone else on Tesla
+// (Lauri, 27.8.2026). Buying their analysis stays open — reading is not the
+// problem, scoring is.
+async function coversCompany(userId, companyId) {
+  const target = String(companyId || '').toUpperCase();
+  if (!target) return false;
+  const pubs = await store.listUserItems(userId, 'PUB#');
+  for (const pub of pubs) {
+    // A run the engine never delivered produced no coverage and no rival.
+    if (pub.status === 'failed') continue;
+    const own = String(pub.companyId || '').toUpperCase();
+    if (own) {
+      if (own === target) return true;
+      continue;
+    }
+    // Still generating: the company lives on the order until publication.
+    const order = await ordersStore.get(String(pub.sk || '').replace(/^PUB#/, ''));
+    if (String(order?.ticker || '').toUpperCase() === target) return true;
+  }
+  return false;
+}
+
 // GET /analyses/{genId}/free — no account, no allowance, no review owed. The
 // only analyst analysis a logged-out visitor can open is one an administrator
 // hand-picked into a free window (Esa, 19.8.2026). The analyst's own decay time
@@ -1372,6 +1404,19 @@ async function postAnalysisOpen(event) {
   // analysis is free for everyone — no read spent, no review owed. Removing the
   // gate is the whole point of the free window.
   if (ranking.isFreeNow(index, now)) return deliver({ free: true });
+
+  // Re-opening something already paid for comes first, so an analyst who opened
+  // a rival and only afterwards started covering the company can still read what
+  // they owe a review on.
+  if (await store.getItem(`USER#${profile.userId}`, `READ#${genId}`)) {
+    return deliver({ alreadyOpen: true });
+  }
+  if (await coversCompany(profile.userId, index.companyId)) {
+    return json(403, {
+      error: 'You cover this company yourself, so you cannot read and score a rival analysis on it — buy it instead',
+      covers: index.companyId,
+    });
+  }
 
   const limit = limitsFor(profile).analystReads;
   if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });

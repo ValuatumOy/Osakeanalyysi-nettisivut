@@ -692,6 +692,13 @@
     async function loadGenerations() {
       const { status, data } = await api('GET', '/generations');
       if (status !== 200) return;
+      // Companies this analyst covers: the server refuses to let them read and
+      // score a rival on one, so the button says so before the click.
+      window._myCompanies = new Set((data.generations || [])
+        .filter(g => g.publication !== 'failed')
+        .map(g => String(g.companyId || '').toUpperCase())
+        .filter(Boolean));
+      if (window._analyses) loadAnalyses();
       const rows = (data.generations || []).map(g => {
         const done = g.status === 'DELIVERED';
         const left = Math.max(0, (g.revisionsAllowed || 0) - (g.revisionsUsed || 0));
@@ -872,11 +879,14 @@
       const rows = window._analyses.map(a => {
         const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
         const lock = blocked && !isOpenOne && !a.publicFree;
+        const rival = !isOpenOne && (window._myCompanies || new Set()).has(String(a.companyId || '').toUpperCase());
         const button = isOpenOne
           ? '<button class="btn btn-primary btn-sm" onclick="focusReview()">Review this one</button>'
-          : lock
-            ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
-            : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
+          : rival
+            ? '<button class="btn btn-outline-dark btn-sm" disabled title="You cover this company yourself — you can buy this analysis, but not score it">Your coverage</button>'
+            : lock
+              ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
+              : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
         // Deriving is a separate, paid thing from reading: the price goes to the
         // analyst whose work you are building on, and you get your own report to
         // revise from theirs.
