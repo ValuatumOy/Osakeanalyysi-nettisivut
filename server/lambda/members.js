@@ -1358,9 +1358,15 @@ async function postAnalysisOpen(event) {
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
   if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
 
-  const deliver = async (extra) => json(200, {
-    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId)), ...extra,
-  });
+  // The revision prompts come with the document: a reviewer is asked to grade what
+  // the analyst added on top of the engine, and the prompts are that addition.
+  const deliver = async (extra) => {
+    const pub = await store.getPublication(index.userId, genId);
+    return json(200, {
+      ok: true, genId, ownerId: index.userId, promptsText: pub?.promptsText || '',
+      ...(await analysisDocument(genId)), ...extra,
+    });
+  };
 
   // Inside a hand-picked free window, or past the analyst's own decay time, the
   // analysis is free for everyone — no read spent, no review owed. Removing the

@@ -168,6 +168,10 @@
 
             <div id="reviewRow" class="review-open" hidden>
               <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
+              <details id="reviewPrompts" hidden style="margin-bottom:1rem;">
+                <summary style="cursor:pointer;">What the analyst told the engine — the revision prompts you are grading</summary>
+                <pre id="reviewPromptsText" style="white-space:pre-wrap; max-height:18rem; overflow:auto; margin-top:.5rem; font-size:var(--text-sm);"></pre>
+              </details>
               <p style="margin-bottom:1rem;">
                 <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
                 <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for.</span>
@@ -849,6 +853,12 @@
         document.getElementById('reviewPrompt').textContent =
           'Read the report first, then score it. Open it with the button above — you owe this one a review before your next read.';
       }
+      // Analyst-supplied free text, so textContent rather than innerHTML. Empty
+      // until the report is opened on a reloaded page, and empty for good on an
+      // unrevised publication — either way there is nothing to show.
+      const prompts = window._openPrompts || '';
+      document.getElementById('reviewPrompts').hidden = !prompts;
+      document.getElementById('reviewPromptsText').textContent = prompts;
     }
 
     async function loadAnalyses() {
@@ -928,6 +938,8 @@
       const { status, data } = await api('POST', '/analyses/' + window._openReviewId + '/open');
       button.disabled = false;
       if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); return; }
+      window._openPrompts = data.promptsText || '';
+      renderReviewRow();
       if (data.url) window.open(data.url, '_blank');
       else notice('err', 'This report has no document to open.');
     }
@@ -953,6 +965,7 @@
       if (data.url && tab) tab.location = data.url;
       else if (data.url) window.open(data.url, '_blank');
       window._openReportUrl = data.url || '';
+      window._openPrompts = data.promptsText || '';
       if (!data.free) {
         window._openReviewId = genId;
         renderReviewRow();
@@ -974,6 +987,7 @@
       if (status !== 200) { notice('err', (data && data.error) || ('Review failed (' + status + ')')); return; }
       document.getElementById('reviewComment').value = '';
       window._openReviewId = null;
+      window._openPrompts = '';
       renderReviewRow();
       notice('ok', 'Review recorded — thank you.');
       loadAnalyses();
