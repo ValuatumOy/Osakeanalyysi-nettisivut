@@ -444,6 +444,9 @@
       document.getElementById('memberView').hidden = false;
       document.getElementById('identityStrip').hidden = false;
 
+      // Only worth offering to someone who has no plan running.
+      if (data.tier === 'none' || data.tierStatus !== 'active') offerPendingPlan();
+
       document.getElementById('accEmail').textContent = data.email || 'Member';
       const badge = document.getElementById('tierBadge');
       badge.textContent = TIER_LABELS[data.tier] || data.tier;
@@ -1111,6 +1114,39 @@
         + (saleRows + readRows + feeRows
           || '<tr><td colspan="6" class="muted">Nothing earned yet. Every sale of your work — and every read of it by a subscriber — appears here as its own row.</td></tr>')
         + '</tbody>';
+    }
+
+    // The plan chosen on the pricing page. Stashed rather than acted on: signing
+    // in with LinkedIn is a round trip that loses the query string, and starting
+    // a Stripe checkout unasked on page load is not something a reader consented
+    // to. It becomes one button once they are signed in.
+    (function rememberPlanChoice() {
+      const params = new URLSearchParams(location.search);
+      const plan = params.get('plan');
+      if (!['investor', 'investor_plus', 'coverage'].includes(plan)) return;
+      const interval = params.get('interval') === 'year' ? 'year' : 'month';
+      try { localStorage.pendingPlan = JSON.stringify({ plan, interval }); } catch (_) { /* private mode */ }
+      history.replaceState(null, '', location.pathname);
+    })();
+
+    const PLAN_NAMES = { investor: 'Investor', investor_plus: 'Investor Plus', coverage: 'Company Coverage' };
+
+    function offerPendingPlan() {
+      let choice = null;
+      try { choice = JSON.parse(localStorage.pendingPlan || 'null'); } catch (_) { /* ignore */ }
+      if (!choice || !PLAN_NAMES[choice.plan]) return;
+      const el = document.getElementById('notice');
+      el.className = 'notice ok';
+      el.textContent = 'You picked ' + PLAN_NAMES[choice.plan] + ', billed '
+        + (choice.interval === 'year' ? 'yearly' : 'monthly') + '. ';
+      const go = document.createElement('button');
+      go.className = 'btn btn-primary btn-sm';
+      go.textContent = 'Continue to checkout';
+      go.onclick = () => {
+        try { delete localStorage.pendingPlan; } catch (_) { /* ignore */ }
+        checkout(choice.plan, choice.interval);
+      };
+      el.appendChild(go);
     }
 
     // Coming back from Stripe. A purchase must be handed over here whether or not

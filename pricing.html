@@ -367,7 +367,7 @@
                 <li>Fresh generations at the €40 member price</li>
                 <li>Email us to cancel or change your plan</li>
               </ul>
-              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Investor</a>
+              <a href="members.html?plan=investor&amp;interval=month" data-plan-cta="investor" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Investor</a>
             </div>
 
             <!-- Investor Plus -->
@@ -386,7 +386,7 @@
                 <li>Extra generations at the €40 member price</li>
                 <li>Email us to cancel or change your plan</li>
               </ul>
-              <a href="members.html" class="btn btn-primary pricing-card-cta" style="width:100%; justify-content:center;">Start Investor Plus</a>
+              <a href="members.html?plan=investor_plus&amp;interval=month" data-plan-cta="investor_plus" class="btn btn-primary pricing-card-cta" style="width:100%; justify-content:center;">Start Investor Plus</a>
             </div>
 
             <!-- Company Coverage -->
@@ -402,7 +402,7 @@
                 <li>4 report updates per year</li>
                 <li>Roughly quarterly coverage</li>
               </ul>
-              <a href="members.html" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Coverage</a>
+              <a href="members.html?plan=coverage&amp;interval=month" data-plan-cta="coverage" class="btn btn-outline-dark pricing-card-cta" style="width:100%; justify-content:center;">Start Coverage</a>
             </div>
 
           </div>
@@ -559,6 +559,13 @@
           const active = btn.dataset.interval === interval;
           btn.classList.toggle('is-active', active);
           btn.setAttribute('aria-pressed', String(active));
+        }
+        // The choice made here has to survive the trip to the member area, or
+        // the reader picks yearly, lands on a page that knows nothing about it,
+        // and has to choose again from a different set of buttons.
+        for (const cta of document.querySelectorAll('[data-plan-cta]')) {
+          cta.href = `members.html?plan=${cta.dataset.planCta}&interval=`
+            + (cta.dataset.planCta === 'coverage' ? 'year' : interval);
         }
       }
 

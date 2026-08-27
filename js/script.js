@@ -614,7 +614,7 @@ function openRevisionsModal(choice, onChoose) {
       '<div class="modal">' +
         '<div class="modal-close" id="revisionsModalClose">&times;</div>' +
         '<div class="modal-title" id="revisionsModalTitle">Choose your report</div>' +
-        '<div class="modal-body">Buy the standard report, or add report revisions now.</div>' +
+        '<div class="modal-body" id="revisionsModalBody">Buy the standard report, or add report revisions now.</div>' +
         '<div class="modal-options">' +
           '<label class="modal-option"><input type="radio" name="revisionsChoice" value="0">' +
             '<span class="modal-option-text"><span class="modal-option-title"><span>Standard</span><span id="revisionsModalBasePrice"></span></span>' +
@@ -640,6 +640,13 @@ function openRevisionsModal(choice, onChoose) {
     });
   }
 
+  // Two buttons on a catalog page open the same modal, so without the company in
+  // it there is nothing on screen saying which report is about to be bought.
+  modal.querySelector('#revisionsModalTitle').textContent =
+    choice.company ? 'Choose your ' + choice.company + ' report' : 'Choose your report';
+  modal.querySelector('#revisionsModalBody').textContent = choice.company
+    ? 'Buy the standard ' + choice.company + ' report, or add report revisions now.'
+    : 'Buy the standard report, or add report revisions now.';
   modal.querySelector('#revisionsModalBasePrice').textContent = formatEurAmount(choice.basePrice);
   modal.querySelector('#revisionsModalRevisionsPrice').textContent = formatEurAmount(choice.revisionsPrice);
   modal.querySelector('#revisionsModalRevisionsDesc').textContent =
@@ -684,7 +691,10 @@ function openRevisionsModal(choice, onChoose) {
       var res = await fetch('/api/create-fresh-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ company: company, ticker: ticker, source: 'coverage', withRevisions: withRevisions }),
+        body: JSON.stringify({
+          company: company, ticker: ticker, source: 'coverage', withRevisions: withRevisions,
+          returnTo: location.pathname,
+        }),
       });
       var data = await res.json();
       if (data && data.url) {
@@ -710,6 +720,7 @@ function openRevisionsModal(choice, onChoose) {
       if (btn.dataset.loading === '1') return;
 
       var choice = getRevisionsChoice('fresh');
+      choice.company = company;
       if (choice.available) {
         openRevisionsModal(choice, function (withRevisions) { submitFreshReport(btn, company, ticker, withRevisions); });
       } else {
@@ -762,6 +773,7 @@ function bindReadyReportCheckoutLink(link) {
     if (link.dataset.loading === '1') return;
 
     var choice = getRevisionsChoice('ready', revisable);
+    choice.company = link.getAttribute('data-company') || (document.querySelector('[data-generate-report]') || {}).getAttribute?.('data-company') || '';
     if (choice.available) {
       openRevisionsModal(choice, function (withRevisions) { submitReadyReportCheckout(link, reportId, withRevisions); });
     } else {

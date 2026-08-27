@@ -1357,6 +1357,10 @@ async function getAnalyses(event) {
   const items = await store.listPublicationIndex({ companyId });
   return json(200, {
     companyId: companyId ? String(companyId).toUpperCase() : null,
+    // What deriving adds on top of an analysis's own price. The buttons that
+    // offer it are on 1,232 static pages, so the fee cannot be a constant
+    // duplicated there — a reader must see the real total before Stripe does.
+    forkFeeEur: FORK_FEE_EUR,
     analyses: ranking.orderAnalyses(items, now).map((item) => ({
       genId: item.genId,
       companyId: item.companyId,

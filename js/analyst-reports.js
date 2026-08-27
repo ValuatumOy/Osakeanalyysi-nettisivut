@@ -43,6 +43,10 @@
     });
   }
 
+  // Set from the API on load; until then a fork button simply omits the total
+  // rather than guessing one.
+  var forkFeeEur = null;
+
   var listEl = mount.querySelector('[data-analyst-list]');
   var bannerEl = mount.querySelector('[data-analyst-banner]');
   var countEl = mount.querySelector('[data-analyst-count]');
@@ -84,8 +88,12 @@
           ? '<button class="btn btn-primary btn-sm" data-buy="' + esc(a.genId) + '">Buy for €' + a.priceEur + '</button>'
           : '')
         + '<a class="btn btn-outline-dark btn-sm" href="/members.html">Sign in to read</a>';
+    // The total, not the label alone: "Build on this" led to a Stripe page
+    // showing a price the reader had never been told.
+    var forkTotal = forkFeeEur == null ? null : (Number(a.priceEur) || 0) + forkFeeEur;
     cta += '<button class="btn btn-outline-dark btn-sm" data-fork="' + esc(a.genId) + '"'
-      + ' title="Buy this analysis with revision rounds and steer it yourself">Build on this</button>';
+      + ' title="Buy this analysis with revision rounds and steer it yourself">Build on this'
+      + (forkTotal ? ' — €' + forkTotal : '') + '</button>';
 
   // The analyst's own profile link, when they have given one. A published call
   // with a name on it is more checkable if the name goes somewhere.
@@ -294,6 +302,7 @@
         return r.json();
       })
       .then(function (data) {
+        if (typeof data.forkFeeEur === 'number') forkFeeEur = data.forkFeeEur;
         // Already ranked by the API (server/members/ranking.js) -- never re-sort here.
         paint((data.analyses || []).filter(function (a) {
           return String(a.companyId || '').trim().toUpperCase() === ticker;

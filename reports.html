@@ -14,7 +14,7 @@
   "url": "https://www.aiequityreports.com/reports.html",
   "name": "AI Equity Research Reports — Buy or Order Fresh | Valuatum",
   "description": "Ready AI equity research reports for 1,100+ Nordic, European and US listed companies. Free samples, ready reports from &euro;20, or a fresh report written on demand for &euro;50.",
-  "dateModified": "2026-08-25",
+  "dateModified": "2026-08-27",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -958,11 +958,11 @@
           });
           if (preferred) {
             chooseCompany(preferred);
-            setHint('Selected from Wisdom coverage.');
+            setHint('Selected from our covered companies.');
             return;
           }
           renderCompanies(companies);
-          setHint(companies.length ? 'Select the correct company from the list.' : 'No supported company found in Wisdom. <a href="#coverage-request" data-go-to-coverage>Request coverage for this company</a> instead.');
+          setHint(companies.length ? 'Select the correct company from the list.' : 'That company is not covered yet. <a href="#coverage-request" data-go-to-coverage>Request coverage for this company</a> instead.');
         } catch (error) {
           if (sequence !== requestSequence) return;
           results = [];
@@ -1085,6 +1085,8 @@
           const reportId = btn.getAttribute('data-buy-report');
           const revisable = btn.getAttribute('data-revisable') === '1';
           const choice = getRevisionsChoice('ready', revisable);
+          choice.company = btn.closest('[data-report-card]')?.getAttribute('data-company-name')
+            || btn.closest('.report-card')?.querySelector('.report-card-title, h3')?.textContent.trim() || '';
           if (choice.available) {
             openRevisionsModal(choice, function(withRevisions) { buyReadyReport(reportId, btn, withRevisions); });
           } else {
@@ -1097,6 +1099,7 @@
           const company = btn.getAttribute('data-generate-company');
           const ticker = btn.getAttribute('data-generate-ticker');
           const choice = getRevisionsChoice('fresh');
+          choice.company = company;
           if (choice.available) {
             openRevisionsModal(choice, function(withRevisions) {
               generateNewReport(company, ticker, btn, { withRevisions: withRevisions });
@@ -1265,7 +1268,7 @@
         status.classList.remove('is-error');
 
         if (!selectedCompany) {
-          status.textContent = 'Select a company from the Wisdom search results.';
+          status.textContent = 'Select a company from the search results.';
           status.classList.add('is-error');
           document.getElementById('freshCompany').focus();
           return;
