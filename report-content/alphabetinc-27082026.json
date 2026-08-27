@@ -1,0 +1,812 @@
+{
+  "id": "alphabetinc-27082026",
+  "slug": "alphabet-equity-report",
+  "companyName": "Alphabet Inc.",
+  "ticker": "GOOGL",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Internet Content & Information",
+  "currency": "USD",
+  "reportDate": "2026-08-27",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "342.00 USD",
+    "targetPrice": "312.70 USD",
+    "impliedUpside": "-8.6%",
+    "marketCap": "USD 4,138.9 bn",
+    "enterpriseValue": "USD 4,089.3 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "32.1x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "16.3x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "1.5%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "0.2%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "USD 534.4 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "408.61 USD",
+    "week52Low": "205.65 USD",
+    "oneYearChange": "+64.8%",
+    "threeYearChange": "+163.3%"
+  },
+  "summary": [
+    "Alphabet Inc. (GOOGL, NASDAQ Global Select) operates Search, YouTube, Cloud, software, subscriptions, devices and autonomous-mobility businesses. HOLD is appropriate in this Valuatum equity research report dated 27 August 2026, with a 12-month target price of 312.70 USD against a current price of 342.00 USD, implying -8.6%. Market capitalisation is USD 4,138.9 bn and enterprise value is USD 4,089.3 bn. The call reflects strong operating evidence, including Q2 Search revenue growth of 17% and Google Cloud operating margin of 35.6%, but also a capital-expenditure programme that could reach USD 195–205bn in 2026.",
+    "The central tension is whether AI strengthens Alphabet's distribution economics or converts an asset-light advertising franchise into a capital-intensive infrastructure platform. Google Search Advertising carries 53.8% of enterprise value at USD 2,200,000m, while Google Cloud carries 19.1% at USD 780,000m; YouTube Advertising adds 10.5% at USD 430,000m. The shares trade at 32.1x 2026E P/E and 16.3x 2026E EV/EBITDA, while the reverse valuation requires 2026 EBIT of USD 209.2bn and a 42.0% margin against the maintained forecast of USD 153.4bn and 30.8%.",
+    "The 312.70 USD target is built from a 100%-weighted sum-of-the-parts valuation: 2028E or 2029E operating metrics receive division-specific multiples, while Waymo New-Market Expansion uses discounted, probability-weighted 2035 success legs. Search is valued at 18.0x 2028E EBITDA and Cloud at 17.0x; the bridge also assigns 15.0x to each YouTube pool and Waymo Commercial Operations. Bear, base and bull values are 301.15 USD (-11.9%), 312.68 USD (-8.6%) and 352.74 USD (+3.1%), respectively."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Search survives AI",
+      "metric": "17% growth",
+      "text": "AI Overviews appeared on roughly 43–50% of measured queries by mid-2026, yet Q2 Search revenue grew 17% to USD 63.3bn. That weakens the immediate displacement case, although the 2028 value still requires approximately USD 290bn of revenue and USD 122.2bn of EBITDA from commercial-query economics."
+    },
+    {
+      "num": "02",
+      "title": "Cloud scales profitably",
+      "metric": "35.6% margin",
+      "text": "Google Cloud reached a 35.6% Q2 operating margin, up from 20.7% a year earlier, while remaining performance obligations reached USD 514bn. The valuation requires USD 125bn of 2028 revenue and USD 45.88bn of EBITDA, so backlog conversion and sustained utilisation must offset accelerating infrastructure depreciation."
+    },
+    {
+      "num": "03",
+      "title": "Capex governs returns",
+      "metric": "USD 200bn",
+      "text": "The maintained model forecasts USD 137.19bn of 2026 capital expenditure, but updated company guidance is USD 195–205bn. Group free cash flow is forecast at USD 63.193bn in 2026 and USD 100.033bn in 2027; sustained investment near USD 200bn without recovery would constrain the valuation."
+    }
+  ],
+  "thesisBreaker": "The thesis breaks if AI preserves user engagement but permanently lowers commercial-query monetisation while infrastructure investment remains near USD 200bn annually.",
+  "valuePools": [
+    {
+      "name": "Google Search Advertising",
+      "share": "53.8% · USD 2,200,000m",
+      "economics": "Revenue USD 253,200m (62.9%) · Comparable EBIT USD 130,000m (100.7%, 51.3% margin) · EV USD 2,200,000m",
+      "text": "Google Search Advertising is the principal profit engine, converting commercial intent into auction revenue across a global query base. Its USD 253,200m of revenue and USD 130,000m of comparable EBIT support the largest allocation, but the USD 2,200,000m EV requires 2028E EBITDA of USD 122.2bn at 18.0x. The operating requirement is approximately USD 290bn of 2028 revenue, with aggregate monetised activity growing 5% annually and revenue per monetised activity growing 2%. Google retains 89.82–91.32% global query share, while Amazon advertising revenue reached USD 19.81bn in Q2 2026, growing 26%. AI Overviews reached 43–50% penetration, making paid commercial actions, advertiser returns and inference cost more important than total searches. The September 2025 remedies order also removes exclusive default-search contracts, limiting distribution certainty."
+    },
+    {
+      "name": "Google Cloud",
+      "share": "19.1% · USD 780,000m",
+      "economics": "Revenue USD 95,000m (23.6%) · Comparable EBIT USD 33,820m (26.2%, 35.6% margin) · EV USD 780,000m",
+      "text": "Google Cloud is the second valuation engine, with USD 95,000m of revenue, USD 33,820m of comparable EBIT and USD 780,000m of EV. The allocation requires 2028 revenue of USD 125bn and EBITDA of USD 45.88bn at 17.0x, implying a 36.7% EBITDA margin. Remaining performance obligations of USD 514bn provide visibility but are not immediately recognised revenue, while Alphabet's wider purchase commitments reached USD 811bn. Google held 15% of Q2 2026 cloud-infrastructure services, behind AWS at 28% and Microsoft Azure at 20%. The Q2 margin expansion from 20.7% to 35.6% supports utilisation and operating leverage, but updated 2026 capital-expenditure guidance of USD 195–205bn and a six-year server life expose returns to power, accelerator and depreciation risk. The premium to the 12.0x peer median therefore requires backlog conversion and cash returns."
+    },
+    {
+      "name": "YouTube Advertising",
+      "share": "10.5% · USD 430,000m",
+      "economics": "Revenue USD 42,400m (10.5%) · Comparable EBIT USD 16,000m (12.4%, 37.7% margin) · EV USD 430,000m",
+      "text": "YouTube Advertising monetises creator video, Shorts and connected television, with USD 42,400m of revenue and USD 16,000m of comparable EBIT supporting USD 430,000m of EV. The allocation uses 15.0x 2028E EBITDA of USD 28.7bn on USD 52bn of revenue. YouTube held 13.4% of US television viewing in April 2026, ahead of Netflix at 7.7%, and external estimates placed its 2026 US connected-TV advertising revenue at USD 12.1bn. The opportunity is television-budget migration, but standard video CPM of USD 9.29 contrasts with Shorts at about USD 4.00. The model assumes Shorts closes one third of the relative monetisation gap by 2028. Creator payments, content moderation and potential ad-tech remedies limit operating leverage, while the relevant test is revenue growth per viewing hour rather than viewing share alone."
+    },
+    {
+      "name": "YouTube Paid Products",
+      "share": "3.9% · USD 160,000m",
+      "economics": "Revenue USD 24,000m (6.0%) · Comparable EBIT USD 3,500m (2.7%, 14.6% margin) · EV USD 160,000m",
+      "text": "YouTube Paid Products combines Premium, Music and YouTube TV, generating modelled revenue of USD 24,000m and comparable EBIT of USD 3,500m. The USD 160,000m EV is based on 15.0x 2028E EBITDA of USD 10.67bn on USD 31bn of revenue. The subscriber build starts with 125m Premium and Music users including trials, 110m paying equivalents at an assumed USD 8.50 monthly net price and approximately 8m YouTube TV subscribers at USD 92 monthly net revenue. YouTube TV holds 40–44% of the US vMVPD market, while YouTube Music has an estimated 9.7% global music-subscription share against Spotify's 31.7%. Content-rights costs make live television structurally lower margin than Premium and Music. A price war or sports-rights escalation would challenge the 45% gross-margin and 38% EBITDA-margin assumptions."
+    },
+    {
+      "name": "Waymo New-Market Expansion",
+      "share": "3.8% · USD 154,276m",
+      "economics": "Revenue USD 0m (0.0%) · Comparable EBIT USD -8,000m (-6.2%) · EV USD 154,276m",
+      "text": "Waymo New-Market Expansion is an option on autonomous mobility rather than a current operating business. Revenue is not separately reported and comparable EBIT is USD -8,000m, while USD 154,276m of EV reflects discounted, probability-weighted success legs. The base case requires 5% of the USD 2.2tn autonomous-mobility pool by 2035, or USD 110bn of revenue and USD 44bn of EBITDA at a 40% margin, with a 25% probability. California approved paid driverless expansion across 18 counties and Nevada authorised up to 1,000 vehicles, but the current fleet of 3,500 vehicles is less than 1% of the approximately 484,000 vehicles required for the base leg. Tesla and Baidu provide credible competition. Fleet scale, safety, insurance, vehicle supply and jurisdictional approvals must develop together; a permit alone does not establish economic scale."
+    },
+    {
+      "name": "Android and Google Play",
+      "share": "2.9% · USD 120,000m",
+      "economics": "Revenue USD 28,000m (7.0%) · Comparable EBIT USD 8,000m (6.2%, 28.6% margin) · EV USD 120,000m",
+      "text": "Android and Google Play monetise mobile distribution, applications, payments and services. The pool carries USD 28,000m of modelled revenue and USD 8,000m of comparable EBIT against USD 120,000m of EV. The valuation applies 14.0x 2028E EBITDA of USD 8.57bn on USD 30bn of revenue. Android held 68.36% of global mobile usage in July 2026, while Google Play was estimated to capture 85% of Android-store revenue. The installed base supports platform reach, but the April 2026 USD 700m settlement and requirements for alternative billing, off-store price communication and third-party stores compress the effective take rate. The value depends on transaction growth offsetting commission decline. Leading developers moving high-value spending off-store, or interoperability weakening security differentiation, would challenge the premium to commodity distribution."
+    },
+    {
+      "name": "Google Network Advertising",
+      "share": "2.4% · USD 100,000m",
+      "economics": "Revenue USD 28,600m (7.1%) · Comparable EBIT USD 5,000m (3.9%, 17.5% margin) · EV USD 100,000m",
+      "text": "Google Network Advertising is a mature open-web intermediation business with USD 28,600m of modelled revenue and USD 5,000m of comparable EBIT. Its USD 100,000m EV uses 12.0x 2028E EBITDA of USD 8.33bn on USD 30bn of revenue. Q1 2026 revenue fell from USD 7.26bn to USD 6.97bn, a 4% decline, before Q2 returned to approximately USD 7.3bn. Google DV360 was estimated to handle 32% of global demand-side-platform spend, ahead of The Trade Desk at 19% and Amazon DSP at 14%, although spend handled is not equivalent to recognised revenue. The April 2025 ad-tech ruling creates separation and interoperability risk. AI answers could reduce publisher page views, while retail media, connected television and closed social platforms divert inventory. The base case assumes lower take rates without a disorderly forced sale."
+    },
+    {
+      "name": "Waymo Commercial Operations",
+      "share": "2.2% · USD 90,000m",
+      "economics": "Revenue USD 355m (0.1%) · Comparable EBIT USD -4,000m (-3.1%) · EV USD 90,000m",
+      "text": "Waymo Commercial Operations is the current paid robotaxi business, with USD 355m of modelled revenue, USD -4,000m of comparable EBIT and USD 90,000m of EV. The bridge applies 15.0x 2029E revenue of USD 6bn because the operation remains below mature profitability during the ramp. That revenue requires approximately 240m annual rides, or 4.6m rides per week, around nine times the current 500,000 weekly rides, and roughly 26,300 active vehicles at 25 daily rides per vehicle. Waymo held 69% of US monthly active robotaxi users in June 2026, against Zoox at 25% and Tesla at 6%. The economic bridge is utilisation, not merely authorisation: realised revenue per ride, deadhead miles, remote assistance, insurance and vehicle cost determine whether density becomes profit. Utilisation below 15 rides per vehicle per day would break the allocation."
+    },
+    {
+      "name": "Other Bets Operating Portfolio ex-Waymo",
+      "share": "0.7% · USD 30,000m",
+      "economics": "Revenue USD 6,145m (1.5%) · Comparable EBIT USD -27,948m (-21.7%) · EV USD 30,000m",
+      "text": "Other Bets Operating Portfolio ex-Waymo contains GFiber, Wing and life-science activities with USD 6,145m of modelled revenue and USD -27,948m of comparable EBIT. Its USD 30,000m allocation uses 6.0x 2028E sales of USD 5,000m after expected deconsolidation, portfolio pruning and external financing. Wing has surpassed 1m cumulative deliveries, GFiber offers an 8 Gbps plan at USD 150 per month, and Isomorphic Labs raised USD 2.1bn. The pool is not valued on a common operating-profit basis because individual cash flows are unavailable and aggregate losses remain negative. It costs Alphabet through funding and operating losses; value survives only through third-party capital, customer contracts, GFiber network density, positive Wing route economics or life-science milestone payments."
+    },
+    {
+      "name": "Google Devices and Connected Home",
+      "share": "0.6% · USD 25,000m",
+      "economics": "Revenue USD 20,000m (5.0%) · Comparable EBIT USD -3,000m (-2.3%) · EV USD 25,000m",
+      "text": "Google Devices and Connected Home covers Pixel, Nest, wearables and streaming hardware. Modelled revenue is USD 20,000m and comparable EBIT is USD -3,000m, against USD 25,000m of EV. The bridge applies 7.0x 2028E EBITDA of USD 3.57bn after revenue reaches USD 22bn. Pixel shipments grew 16% year-on-year in Q2 2026, but Samsung held 24% of global smartphones and Apple 20%; Nest had only 7% of US home-security users against Ring at 43%. The strategic benefit is placing Gemini, Search and home-control software at the point of use, but bills of materials, warranty, promotion and inventory costs constrain returns. The allocation requires premium mix and shared silicon to turn a modelled loss into positive EBITDA. Promotion-led Pixel growth, Nest relevance loss or inventory charges would undermine the value."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how group revenue, EBITDA, margin and the implied EV/EBITDA multiple translate into equity value after net debt and other senior claims. The primary swing factor is whether AI-driven Search monetisation and Cloud capacity utilisation generate cash returns sufficient to support the capital programme. The bear case removes Waymo New-Market Expansion value, the base case retains its probability-weighted legs, and the bull case gives the highest Waymo success leg certainty.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "USD 700,000m",
+          "EBITDA": "USD 245,000m",
+          "Margin": "35.0%",
+          "Multiple": "17.2x",
+          "EV": "USD 4,219,271m",
+          "Equity": "USD 4,268,917m"
+        },
+        "impliedValueOrUpside": "352.74 USD / sh · +3.1%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "USD 620,007m",
+          "EBITDA": "USD 196,575m",
+          "Margin": "31.7%",
+          "Multiple": "19.0x",
+          "EV": "USD 3,734,482m",
+          "Equity": "USD 3,784,128m"
+        },
+        "impliedValueOrUpside": "312.68 USD / sh · -8.6%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "USD 540,000m",
+          "EBITDA": "USD 145,800m",
+          "Margin": "27.0%",
+          "Multiple": "24.7x",
+          "EV": "USD 3,594,856m",
+          "Equity": "USD 3,644,501m"
+        },
+        "impliedValueOrUpside": "301.15 USD / sh · -11.9%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Alphabet creates value through scarce distribution, data, computing infrastructure and advertising auctions, with Search and Cloud accounting for 53.8% and 19.1% of EV respectively. Search generated modelled 2026 revenue of USD 253,200m and comparable EBIT of USD 130,000m, while Q2 revenue grew 17% to USD 63.3bn despite AI Overviews appearing on 43–50% of measured queries. The economic question is revenue per commercial query, not query volume: Amazon advertising revenue reached USD 19.81bn in Q2 2026, growing 26%, while US paid-search estimates conflict. Cloud adds a second engine with USD 95,000m of modelled revenue, USD 33,820m of comparable EBIT, 15% infrastructure share and USD 514bn of remaining performance obligations. Its Q2 operating margin of 35.6% suggests utilisation and mix benefits, but the USD 195–205bn 2026 capital-expenditure guidance raises the cash-return hurdle. YouTube Advertising contributes USD 430,000m of EV and benefits from 13.4% US television viewing share, while Shorts CPM of about USD 4.00 remains below standard video CPM of USD 9.29. Smaller pools add platform, subscription and autonomy options, but Waymo New-Market Expansion requires 5% of a USD 2.2tn mobility pool by 2035. HOLD follows because operating growth is credible while cash conversion remains unproven."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The sum-of-the-parts bridge values the profit engines on 2028E or 2029E metrics and discounts the probability-weighted Waymo expansion legs. Search receives 18.0x 2028E EBITDA of USD 122.222bn, producing a 181.8 USD pre-discount price and 166.4 USD after discounting. Cloud receives 17.0x USD 45.882bn of 2028E EBITDA, while YouTube Advertising and YouTube Paid Products each receive 15.0x their forecast EBITDA. Network receives 12.0x, Android and Google Play 14.0x, Devices 7.0x and Waymo Commercial Operations 15.0x 2029E revenue of USD 6,000m. Other Bets receives 6.0x 2028E revenue of USD 5,000m. These allocations produce a profit-engine EV of USD 3.935tn before Waymo New-Market Expansion. The reverse test explains why the current price remains demanding: at 342.00 USD, the shares require 2026 EBIT of USD 209.2bn and a 42.0% margin, against the maintained forecast of USD 153.4bn and 30.8%. The implied 2026 valuation is 32.09x earnings, 16.34x EBITDA and 65.57x free cash flow. The quoted EV of USD 4,089.3bn therefore depends on future execution beyond current accounting profit, including USD 4.18tn of cumulative discounted free cash flow, of which USD 2.77tn comes from terminal value."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome is 301.15 USD (-11.9%) and requires commercial-query migration towards retail and AI interfaces, underfilled infrastructure and structurally discounted Shorts. The base outcome is 312.68 USD (-8.6%) and requires Search monetisation to remain broadly stable, Cloud margin to remain above 30% and investment intensity to normalise. The bull outcome is 352.74 USD (+3.1%) and requires sustained high utilisation, stronger YouTube yield, television-budget migration and the highest Waymo success economics rather than a probability-weighted option. Early evidence should distinguish the cases: Search revenue and paid commercial activity must remain resilient after AI Overview penetration stabilises; Cloud revenue, margin and RPO conversion must rise while capex intensity falls; and Waymo must turn authorisations into vehicles, rides and utilisation. The central debate is whether AI preserves Alphabet's high-return commercial distribution while Cloud becomes a durable profit engine, or whether inference, depreciation, regulation and lower-value interactions turn growth into inadequate cash returns. Q2 Search growth and Cloud margin expansion support the former, but USD 195–205bn of 2026 capex and negative USD 5.9bn quarterly free cash flow reported for Q2 keep the evidence balanced. HOLD remains appropriate until cash return and monetisation durability become observable."
+    }
+  ],
+  "risks": [
+    "AI reduces monetisable commercial actions (Google Network Advertising): generated answers reduce paid clicks and publisher inventory, with Search and Network revenue slowing as the early warning - HIGH impact and a thesis-breaker if it occurs / structural.",
+    "AI capacity earns below cost of capital (Google Search Advertising): capex, depreciation and energy outpace gross profit, with capex staying near USD 200bn as growth decelerates as the early warning - HIGH impact and a thesis-breaker if it occurs / thesis-breaker.",
+    "Search remedies weaken default distribution (Android and Google Play): choice screens and data sharing increase switching and rivalry, with commercial-query share falling after remedy rollout as the early warning - HIGH impact and a thesis-breaker if it occurs / structural.",
+    "Ad-tech divestiture fragments the stack (YouTube Advertising): separation reduces data integration and auction efficiency, with court orders requiring divestiture or broad interoperability as the early warning - HIGH impact and a thesis-breaker if it occurs / structural.",
+    "App-store take rate compresses (Android and Google Play): alternative billing diverts high-value transactions, with leading applications adopting off-store payment at scale as the early warning - MEDIUM impact and manageable if platform transaction growth offsets commission pressure / manageable."
+  ],
+  "catalysts": [
+    "Search growth after AI Overview penetration stabilises (near-term, Google Search Advertising): Search revenue and paid commercial activity would confirm the USD 2,200,000m core value.",
+    "Cloud sustains operating margin above 30% (near-term, Google Cloud): revenue, margin and RPO conversion would support the 17.0x EBITDA multiple.",
+    "Final U.S. ad-tech remedy is non-structural (near-term, Google Network Advertising): limited remedy scope and no required divestiture would protect integrated-stack economics.",
+    "Capital expenditure peaks and free cash flow recovers (medium-term, Google Cloud): lower capex-to-sales and annual FCFF of USD 100.033bn in 2027 would reduce the infrastructure-return discount.",
+    "Waymo deploys permitted California and Nevada fleets (medium-term, Waymo Commercial Operations): rising vehicles, rides and utilisation would de-risk the USD 6bn revenue ramp."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "307,394",
+            "350,018",
+            "402,836",
+            "497,700",
+            "569,142",
+            "620,007"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "89,027",
+            "127,701",
+            "150,175",
+            "250,240",
+            "189,962",
+            "196,575"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "29.0%",
+            "36.5%",
+            "37.3%",
+            "50.3%",
+            "33.4%",
+            "31.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-4,734",
+            "-15,311",
+            "-21,136",
+            "-96,868",
+            "-24,624",
+            "-28,159"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "84,293",
+            "112,390",
+            "129,039",
+            "153,372",
+            "165,338",
+            "168,416"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "27.4%",
+            "32.1%",
+            "32.0%",
+            "30.8%",
+            "29.1%",
+            "27.2%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1,424",
+            "7,425",
+            "29,787",
+            "36,984",
+            "53,636",
+            "129,026"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "85,717",
+            "119,815",
+            "158,826",
+            "190,356",
+            "218,974",
+            "297,442"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "73,795",
+            "100,118",
+            "132,170",
+            "129,145",
+            "187,315",
+            "254,438"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "5.8",
+            "8.1",
+            "10.9",
+            "10.7",
+            "15.5",
+            "21"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0.6",
+            "0.8",
+            "0.8",
+            "1.2",
+            "1.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "7.4%",
+            "7.6%",
+            "7.5%",
+            "7.5%",
+            "7.5%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "148,436",
+            "184,624",
+            "261,818",
+            "302,140",
+            "345,511",
+            "376,390"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "29,198",
+            "31,885",
+            "33,380",
+            "33,380",
+            "33,380",
+            "33,380"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "218,693",
+            "269,365",
+            "380,130",
+            "420,452",
+            "463,823",
+            "494,702"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "147,482",
+            "140,245",
+            "175,330",
+            "188,994",
+            "199,982",
+            "207,806"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "24,048",
+            "23,466",
+            "30,708",
+            "36,339",
+            "41,555",
+            "45,269"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "171,530",
+            "163,711",
+            "206,038",
+            "253,229",
+            "402,516",
+            "622,709"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "402,392",
+            "450,256",
+            "595,281",
+            "682,794",
+            "875,452",
+            "1,126,524"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "283,379",
+            "325,084",
+            "415,265",
+            "534,354",
+            "711,959",
+            "952,314"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "11,870",
+            "10,883",
+            "46,547",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "21,463",
+            "21,472",
+            "64,527",
+            "17,980",
+            "17,980",
+            "17,980"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "81,814",
+            "89,122",
+            "102,745",
+            "115,871",
+            "128,830",
+            "138,056"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "402,392",
+            "450,256",
+            "595,281",
+            "682,794",
+            "875,452",
+            "1,126,524"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "3,073",
+            "1,995",
+            "28,583",
+            "-49,646",
+            "-185,850",
+            "-396,730"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "271,201",
+            "312,501",
+            "431,104",
+            "470,119",
+            "509,426",
+            "537,411"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "70.4%",
+            "72.2%",
+            "69.8%",
+            "78.3%",
+            "81.3%",
+            "84.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "1.1%",
+            "0.6%",
+            "6.9%",
+            "-9.3%",
+            "-26.1%",
+            "-41.7%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.0x",
+            "0.0x",
+            "0.2x",
+            "-0.2x",
+            "-1.0x",
+            "-2.0x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2.1",
+            "1.8",
+            "2",
+            "2.2",
+            "3.1",
+            "4.5"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "93,166",
+            "129,974",
+            "131,844",
+            "225,475",
+            "213,909",
+            "283,999"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "84,892",
+            "118,274",
+            "115,123",
+            "200,384",
+            "168,027",
+            "173,628"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-7,948",
+            "-14,545",
+            "21,462",
+            "538",
+            "-1,970",
+            "-1,403"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "28,219",
+            "65,983",
+            "131,901",
+            "137,190",
+            "67,995",
+            "59,037"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-28,219",
+            "-65,983",
+            "-131,901",
+            "-137,190",
+            "-67,995",
+            "-59,037"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "64,947",
+            "63,991",
+            "-57",
+            "88,285",
+            "145,914",
+            "224,962"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "56,639",
+            "53,287",
+            "-9,387",
+            "63,193",
+            "100,033",
+            "114,591"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "56,639",
+            "53,287",
+            "-9,387",
+            "63,193",
+            "100,033",
+            "114,591"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-49,152",
+            "-59,077",
+            "-768",
+            "-54,758",
+            "-7,615",
+            "-12,592"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "-7,391",
+            "-10,056",
+            "-9,709",
+            "-14,083"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "15,795",
+            "4,914",
+            "-825",
+            "33,527",
+            "138,299",
+            "212,370"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "32.1x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "16.3x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "26.7x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "65.6x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "7.7x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "0.2%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.2x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Alphabet a buy in 2026?",
+      "a": "No. Alphabet is rated HOLD for 2026, with a current price of 342.00 USD and a 12-month target of 312.70 USD, implying -8.6%. Search revenue grew 17% in Q2 2026 and Cloud operating margin reached 35.6%, but 2026 capital-expenditure guidance of USD 195–205bn creates a material cash-return hurdle. The call would move towards BUY if Search maintained mid-teens growth, capex fell below 20% of sales and Cloud sustained a margin above 30%."
+    },
+    {
+      "q": "What is Alphabet's price target?",
+      "a": "Alphabet's 12-month price target is 312.70 USD, versus a current price of 342.00 USD and implied downside of -8.6%. The target comes from a 100%-weighted sum-of-the-parts valuation. Search receives 18.0x 2028E EBITDA, Cloud 17.0x, YouTube pools 15.0x, Network 12.0x and Android and Google Play 14.0x. Waymo New-Market Expansion is valued through discounted, probability-weighted 2035 success legs."
+    },
+    {
+      "q": "Why is Alphabet rated HOLD?",
+      "a": "Alphabet is rated HOLD because strong Search and Cloud execution is offset by a demanding cash-conversion requirement. The current price requires 2026 EBIT of USD 209.2bn and a 42.0% margin, against the maintained forecast of USD 153.4bn and 30.8%. Updated capital-expenditure guidance is USD 195–205bn, while Q2 free cash flow was reported at negative USD 5.9bn. Search monetisation, Cloud utilisation and cash recovery must become observable before a higher rating is justified."
+    },
+    {
+      "q": "Is Alphabet overvalued in 2026?",
+      "a": "Alphabet appears fully valued on the report's sum-of-the-parts framework, with a target of 312.70 USD below the current 342.00 USD. The shares trade at 32.1x 2026E P/E and 16.3x EV/EBITDA. The reverse valuation requires a 42.0% 2026 EBIT margin, compared with the forecast 30.8%, and cumulative discounted free cash flow of USD 4.18tn. Premium Search and Cloud values are supportable only if AI monetisation and infrastructure returns hold."
+    },
+    {
+      "q": "What is Alphabet's bear and bull case?",
+      "a": "The bear case is 301.15 USD, or -11.9%, if commercial-query growth falls to mid-single digits, Cloud capacity remains subscale, Shorts stays structurally discounted and Waymo New-Market Expansion is worth zero. The bull case is 352.74 USD, or +3.1%, if Search monetisation holds, Cloud capacity remains highly utilised, YouTube captures television budgets and the highest Waymo success leg is realised with certainty. The base value is 312.68 USD, or -8.6%."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Alphabet Inc. report dated 27 August 2026 (the value-map allocations, anchor market capitalisation of USD 4,138.9 bn and share price of 342.00 USD). Business-division revenue and profit allocations are analyst estimates, not company-reported segments; figures should be independently verified.",
+    "Competitor context: Google Search held 89.82–91.32% global query share; Amazon Advertising generated USD 19.81bn in Q2 2026 and grew 26%; Google Cloud held 15% of Q2 infrastructure services versus AWS at 28% and Microsoft Azure at 20%; YouTube held 13.4% of US television viewing; Waymo held 69% of US active monthly robotaxi users. Azure's Q1 share estimate varies between 20% and 25%, and published market-share, CPM and peer datasets are not directly comparable.",
+    "Market data: GOOGL, 342.00 USD as of 27 August 2026; the target bridge uses 2028E group EBITDA of USD 196,575m, Search EBITDA of USD 122,222.222m at 18.0x, Cloud EBITDA of USD 45,882.353m at 17.0x and probability-weighted Waymo New-Market Expansion. The maintained 2026 capex forecast is USD 137.19bn, below updated company guidance of USD 195–205bn; Q2 2026 free cash flow was reported at negative USD 5.9bn, creating an explicit data-quality and timing caveat."
+  ]
+}
