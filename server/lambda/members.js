@@ -114,6 +114,15 @@ const coveredCompanies = (profile) => {
   return [...new Set(all.map((c) => String(c || '').trim().toUpperCase()).filter(Boolean))];
 };
 
+// What a meter allows this month: the plan's number plus anything topped up.
+// The top-up lives on the month's usage item, so it resets with the meter it
+// raises — nobody is quietly on a bigger plan for having bought one extra read.
+const withTopUps = (limits, usage) => ({
+  ...limits,
+  basePicks: (limits.basePicks || 0) + (Number(usage?.picksExtra) || 0),
+  analystReads: (limits.analystReads || 0) + (Number(usage?.analystReadsExtra) || 0),
+});
+
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
 
@@ -270,9 +279,11 @@ async function getMe(event) {
     limits,
     usage: {
       picks: usage?.picks || 0,
-      pickLimit: limits.basePicks,
+      pickLimit: (limits.basePicks || 0) + (Number(usage?.picksExtra) || 0),
+      picksExtra: Number(usage?.picksExtra) || 0,
       analystReads: usage?.analystReads || 0,
-      analystReadLimit: limits.analystReads,
+      analystReadLimit: (limits.analystReads || 0) + (Number(usage?.analystReadsExtra) || 0),
+      analystReadsExtra: Number(usage?.analystReadsExtra) || 0,
       genReserved: Boolean(usage?.genReserved),
       genId: usage?.genId || null,
       // Per company now: the four are four for each company on the subscription.
@@ -360,7 +371,9 @@ async function postReportOpen(event) {
   // Everyone else spends one of their monthly base picks. How many that is comes
   // from tiers.js — the numbers are demand-tuned, so they are data, not code.
   // Subscribers may pick any report; the free LinkedIn roles only the archive.
-  const limits = limitsFor(profile);
+  // The month's own usage row carries any top-up, so the limit is read here
+  // rather than taken from the plan alone.
+  const limits = withTopUps(limitsFor(profile), await store.getUsage(profile.userId, quota.monthKey(now)));
   if (limits.basePicks > 0) {
     const paying = tier !== 'none';
     if (!paying && !quota.freemiumPickEligible(report)) {
@@ -1179,6 +1192,68 @@ function memberPrices() {
   }
 }
 
+// POST /billing/topup-checkout {kind: 'picks'|'reads', units} — buy more of the
+// meter you just ran out of.
+//
+// Running out of picks on the 19 EUR tier used to leave one option: upgrade the
+// whole subscription for the sake of one more report. A tier is a permanent
+// commitment; this is a step where there was a cliff. It raises the month's
+// meter only, so it resets with it.
+//
+// Priced below the plan's own marginal rate on purpose — the report already
+// exists, and serving it again costs nothing. A read costs more than it earns us
+// only if the rate to the analyst ever passes this.
+const TOPUP_PICK_EUR = Number(process.env.TOPUP_PICK_EUR || '') || 5;
+const TOPUP_READ_EUR = Number(process.env.TOPUP_READ_EUR || '') || 2;
+const TOPUP_MAX_UNITS = 20;
+
+async function postBillingTopUpCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const kind = String(body.kind || '');
+  if (!quota.TOPUP_FIELDS[kind]) return json(400, { error: 'kind must be "picks" or "reads"' });
+
+  const units = Math.min(TOPUP_MAX_UNITS, Math.max(1, Math.round(Number(body.units) || 1)));
+  // A meter the member's plan does not have at all is not a meter to top up:
+  // selling reads to someone who cannot open an analysis sells nothing.
+  const planLimits = limitsFor(profile);
+  if (kind === 'picks' && planLimits.basePicks < 1) {
+    return json(403, { error: 'Your plan does not include report picks' });
+  }
+  if (kind === 'reads' && planLimits.analystReads < 1) {
+    return json(403, { error: 'Your plan does not include reading other analysts' });
+  }
+
+  const unitEur = kind === 'picks' ? TOPUP_PICK_EUR : TOPUP_READ_EUR;
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    allow_promotion_codes: true,
+    ...(profile.email ? { customer_email: profile.email } : {}),
+    line_items: [{
+      quantity: units,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(unitEur * 100),
+        product_data: {
+          name: kind === 'picks' ? 'One more report this month' : 'One more analyst report to read',
+          description: kind === 'picks'
+            ? 'Adds one report pick to this month\u2019s allowance.'
+            : 'Adds one analyst report to this month\u2019s reading allowance.',
+        },
+      },
+    }],
+    metadata: { topup: kind, topupUnits: String(units), userId: profile.userId },
+    success_url: `${returnTo}?topup=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?topup=cancelled`,
+  });
+  return json(200, { url: session.url, units, priceEur: units * unitEur });
+}
+
 async function postBillingCheckout(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
@@ -1414,6 +1489,24 @@ async function sendAnalysisReceipt(session) {
   }
 }
 
+// Crediting a bought top-up. The month comes from the clock now rather than from
+// the checkout, so one bought at the turn of the month lands where it can
+// actually be spent.
+async function addTopUp(session, now) {
+  const kind = String(session.metadata?.topup || '');
+  const units = Math.round(Number(session.metadata?.topupUnits) || 0);
+  const userId = session.metadata?.userId;
+  if (!quota.TOPUP_FIELDS[kind] || units <= 0 || !userId) {
+    console.error('top-up: nothing to credit', { kind, units, userId });
+    return;
+  }
+  const credited = await store.runTransact(quota.buildTopUpTransact({
+    table: store.table(), userId, now, kind, units, sessionId: session.id,
+  }));
+  if (!credited) return; // already credited: a redelivered event, not a failure
+  await store.audit(userId, 'topup-credited', { kind, units, sessionId: session.id });
+}
+
 async function postBillingWebhook(event) {
   const secret = process.env.MEMBERS_STRIPE_WEBHOOK_SECRET;
   if (!secret) return json(503, { error: 'Webhook secret not configured' });
@@ -1446,6 +1539,11 @@ async function postBillingWebhook(event) {
       if (object.metadata?.extraRevisions) {
         if (object.payment_status !== 'paid') break;
         await addRevisionRounds(object);
+        break;
+      }
+      if (object.metadata?.topup) {
+        if (object.payment_status !== 'paid') break;
+        await addTopUp(object, requestNow(event));
         break;
       }
       if (object.mode !== 'subscription') break;
@@ -1642,7 +1740,9 @@ async function postAnalysisOpen(event) {
     });
   }
 
-  const limit = limitsFor(profile).analystReads;
+  const limit = withTopUps(
+    limitsFor(profile), await store.getUsage(profile.userId, quota.monthKey(now)),
+  ).analystReads;
   if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
 
   // A subscriber's read is the only one anybody paid us for, so it is the only
@@ -2338,6 +2438,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions-checkout': postGenerationRevisionsCheckout,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
+  'POST /billing/topup-checkout': postBillingTopUpCheckout,
 };
 
 const ADMIN_ROUTES = {

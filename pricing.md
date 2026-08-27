@@ -44,7 +44,7 @@ Canonical page: https://www.aiequityreports.com/pricing.html
 - Price: €19/month (€19/month · billed monthly)
 - Billed yearly: €190 billed yearly · save €38
 - Summary: For active private investors who follow a handful of companies. Pick reports from the catalog every month at a fraction of the €20 one-off price.
-- Includes: 3 self-picked reports per month; €6.33 per report; Any report, including the newest; Fresh generations at the €40 member price; Email us to cancel or change your plan
+- Includes: 3 self-picked reports per month; €6.33 per report; Any report, including the newest; Run out? Add reports for €5 each, no upgrade needed; Fresh generations at the €40 member price; Email us to cancel or change your plan
 - On the yearly plan: 5 self-picked reports per month; €3.17 per report
 
 ### Investor Plus

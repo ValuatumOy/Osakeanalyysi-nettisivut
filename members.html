@@ -470,13 +470,21 @@
       // Counting down: what is left is the number a member acts on.
       const left = (used, limit) => Math.max(0, limit - used) + ' / ' + limit;
       const stats = [
-        [left(u.picks, u.pickLimit), 'Report picks left this month'],
+        [left(u.picks, u.pickLimit), 'Report picks left this month', 'picks'],
       ];
-      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read']);
+      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read', 'reads']);
       if (data.hasGeneration) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
       if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
-      document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl]) =>
-        '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>').join('');
+      // Running out of a meter used to mean upgrading the whole plan for one more
+      // report. The step belongs where the wall is, so the button lives on the
+      // number itself.
+      const CAN_TOP_UP = { picks: u.pickLimit > 0, reads: u.analystReadLimit > 0 };
+      document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl, kind]) =>
+        '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div>'
+        + (kind && CAN_TOP_UP[kind]
+            ? '<button class="btn btn-outline btn-sm" style="margin-top:.5rem;" data-topup="' + kind + '">Add more</button>'
+            : '')
+        + '</div>').join('');
 
       document.getElementById('plansCard').hidden = data.tier !== 'none';
       // The price is the live subscription status, not a number the page picked.
@@ -840,6 +848,26 @@
       const btn = ev.target.closest('[data-coverage-update]');
       if (btn) requestCoverageUpdate(btn.getAttribute('data-coverage-update'), btn);
     });
+
+    const TOPUP_LABEL = { picks: 'report picks', reads: 'analyst reports to read' };
+
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-topup]');
+      if (btn) buyTopUp(btn.getAttribute('data-topup'), btn);
+    });
+
+    async function buyTopUp(kind, button) {
+      const answer = prompt('How many more ' + TOPUP_LABEL[kind] + ' this month?', '3');
+      if (answer === null) return;
+      const units = Number(answer);
+      if (!Number.isInteger(units) || units < 1 || units > 20) { notice('err', 'Give a whole number, 1 to 20.'); return; }
+      button.disabled = true;
+      const { status, data } = await api('POST', '/billing/topup-checkout',
+        { kind, units, returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      button.disabled = false;
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
 
     async function requestCoverageUpdate(ticker, button) {
       if (!confirm('Start a fresh report on ' + ticker + '?\n\n'
@@ -1216,8 +1244,17 @@
       const bought = params.get('bought');
       const forked = params.get('forked');
       const sessionId = params.get('session_id');
-      // Extra revision rounds are credited by the webhook, so the return trip
-      // only has to say so — but saying nothing read as a checkout that failed.
+      // Both of these are credited by the webhook, so the return trip only has to
+      // say so — but saying nothing read as a checkout that failed.
+      const topup = params.get('topup');
+      if (topup) {
+        notice(topup === 'added' ? 'ok' : 'err', topup === 'added'
+          ? 'Added to this month\u2019s allowance. It shows above within a few seconds.'
+          : 'The checkout was cancelled — nothing was added and nothing was charged.');
+        history.replaceState(null, '', location.pathname);
+        if (token()) setTimeout(loadMe, 2500);
+        return;
+      }
       const revisions = params.get('revisions');
       if (revisions) {
         notice(revisions === 'added' ? 'ok' : 'err', revisions === 'added'

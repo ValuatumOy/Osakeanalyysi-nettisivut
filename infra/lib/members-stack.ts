@@ -212,6 +212,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/me/linkedin'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
+      [apigwv2.HttpMethod.POST, '/billing/topup-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/buy-checkout'],

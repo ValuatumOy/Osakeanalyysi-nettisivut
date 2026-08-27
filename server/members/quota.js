@@ -907,6 +907,51 @@ function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyI
   };
 }
 
+// Topping a meter up rather than moving plan. The two monthly meters — report
+// picks and analyst reads — are the ones that run out mid-month, and running out
+// used to mean upgrading the whole subscription for one more report. The extra
+// sits beside the used count on the same monthly item, so it resets with it: a
+// top-up is for the month it was bought in, not a permanent raise.
+//
+// The month comes from the clock at crediting time, not from the checkout, so a
+// top-up is always usable the moment it is paid for.
+const TOPUP_FIELDS = { picks: 'picksExtra', reads: 'analystReadsExtra' };
+
+function buildTopUpTransact({ table, userId, now, kind, units, sessionId }) {
+  const field = TOPUP_FIELDS[kind];
+  if (!field) throw new Error(`unknown top-up kind: ${kind}`);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'ADD #f :units',
+          ExpressionAttributeNames: { '#f': field },
+          ExpressionAttributeValues: { ':units': Math.round(units) },
+        },
+      },
+      {
+        // The receipt, and what stops a redelivered Stripe event crediting
+        // twice: the members webhook claims each event id, and this refuses a
+        // second write for the same checkout even if that ever changes.
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `TOPUP#${sessionId}`,
+            kind,
+            units: Math.round(units),
+            creditedAt: now.toISOString(),
+            month: monthKey(now),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 module.exports = {
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
@@ -920,6 +965,8 @@ module.exports = {
   revisionPrompts,
   freemiumPickEligible,
   buildPickTransact,
+  buildTopUpTransact,
+  TOPUP_FIELDS,
   buildReserveGenerationTransact,
   buildReserveMemberGenerationTransact,
   buildSubmitTransact,

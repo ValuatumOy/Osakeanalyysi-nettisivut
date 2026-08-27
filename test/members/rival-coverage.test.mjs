@@ -36,6 +36,7 @@ stub('../../server/members/store.js', {
   getPublication: async () => ({ promptsText: 'prompts' }),
   listUserItems: async (userId, prefix) => (prefix === 'PUB#' ? state.pubs : []),
   listReviews: async () => [{ reviewerId: 'reviewer', score: 4, comment: 'x'.repeat(40) }],
+  getUsage: async () => null,
   runTransact: async () => true,
   getProfile: async () => ({ userId: 'reviewer' }),
   getItem: async (pk, sk) => state.reads[sk] || null,
