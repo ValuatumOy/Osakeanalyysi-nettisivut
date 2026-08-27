@@ -330,6 +330,7 @@ module.exports = {
   findPublicationIndex,
   listReviews,
   putPayout,
+  setFields,
   putProfileFields,
   putIndexFields,
   putSale,

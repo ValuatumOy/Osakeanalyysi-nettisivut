@@ -208,6 +208,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/price'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/prompts-public'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions-checkout'],
       [apigwv2.HttpMethod.POST, '/me/linkedin'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],

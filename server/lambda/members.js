@@ -829,6 +829,29 @@ async function postAnalysisReviewEdit(event) {
   return json(200, { ok: true, genId, score, previousScore: Number(own.score) });
 }
 
+// POST /generations/{genId}/prompts-public {public: boolean} — whether the first
+// revision prompt is shown to readers who have not paid.
+//
+// Public by default, because an unexplained call is not worth much to anyone.
+// But the prompts are the analyst's own words on their own work, and some of
+// them will be notes never meant for a company page, so it is their switch.
+async function postGenerationPromptsPublic(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (typeof body?.public !== 'boolean') return json(400, { error: 'public must be true or false' });
+
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+
+  await store.setFields(`USER#${profile.userId}`, `PUB#${genId}`, { promptsPublic: body.public });
+  await store.audit(profile.userId, 'prompts-visibility', { genId, public: body.public });
+  return json(200, { ok: true, genId, promptsPublic: body.public });
+}
+
 // POST /me/linkedin — the analyst's public profile link.
 //
 // LinkedIn's OIDC scope ("openid profile email") returns sub, name and email
@@ -1076,6 +1099,8 @@ async function listGenerations(event) {
       startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
       publishedAt: pub.publishedAt || null,
       priceEur: Number(pub.priceEur) || 0,
+      // Whether readers see this analysis's first prompt before paying.
+      promptsPublic: quota.promptsArePublic(pub),
       status: order?.status || pub.status,
       revisionsAllowed: order?.revisionsAllowed || 0,
       revisionsUsed: order?.revisionsUsed || 0,
@@ -1589,6 +1614,13 @@ async function getAnalyses(event) {
   const now = requestNow(event);
   const companyId = event.queryStringParameters?.companyId || '';
   const items = await store.listPublicationIndex({ companyId });
+  // The teaser lives on the analyst's own PUB item, so this reads one item per
+  // listed analysis. A company page lists a handful; the admin-wide listing is
+  // the one that would not scale, and it does not call this.
+  const teasers = new Map(await Promise.all(items.map(async (item) => {
+    const pub = await store.getPublication(item.userId, item.genId);
+    return [item.genId, quota.promptsArePublic(pub) ? quota.promptTeaser(pub?.promptsText) : null];
+  })));
   return json(200, {
     companyId: companyId ? String(companyId).toUpperCase() : null,
     // What deriving adds on top of an analysis's own price. The buttons that
@@ -1613,11 +1645,10 @@ async function getAnalyses(event) {
       // hand-picked window, the only one a logged-out visitor may open.
       free: ranking.isFreeNow(item, now),
       publicFree: ranking.isPublicFreeNow(item, now),
-      // The analyst's own call, as the engine issued it for their job. Null for anything
-      // published before the engine surfaced it, so consumers must handle null rather than
-      // assume a rating exists.
-      recommendation: item.recommendation || null,
-      targetPrice: item.targetPrice || null,
+      // What the analyst told the engine, first round only and truncated. This is
+      // the reason to buy — the call it produced is not shown here, because the
+      // call is the thing being bought (Lauri, 27.8.2026).
+      promptTeaser: teasers.get(item.genId) || null,
     })),
   });
 }
@@ -2435,6 +2466,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
+  'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,
   'POST /generations/{genId}/revisions-checkout': postGenerationRevisionsCheckout,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,

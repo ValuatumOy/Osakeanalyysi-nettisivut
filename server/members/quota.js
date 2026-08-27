@@ -907,6 +907,41 @@ function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyI
   };
 }
 
+// What a reader who has not paid gets to see of an analyst's steering.
+//
+// A company page already shows the analyst's name, their peer score and their
+// price. It showed no reason to believe any of it, because the reasoning was
+// entirely behind the paywall — so the call read as an unsupported opinion
+// rather than a thesis (Lauri, 27.8.2026).
+//
+// The first round only, and truncated. The first round is where an analyst
+// states the thesis; the later rounds are the refinements, and those are what
+// the reader is buying. The round count carries its own weight — "5 rounds of
+// steering" says effort in a way a paragraph cannot.
+const PROMPT_TEASER_CHARS = 200;
+
+function promptTeaser(promptsText) {
+  const rounds = String(promptsText || '').split('\n\n').map((r) => r.trim()).filter(Boolean);
+  if (!rounds.length) return null;
+  const first = rounds[0].replace(/\s+/g, ' ');
+  return {
+    rounds: rounds.length,
+    // Cut on a word boundary where there is one nearby, so the tease does not
+    // end mid-word for the sake of four characters.
+    text: first.length <= PROMPT_TEASER_CHARS
+      ? first
+      : first.slice(0, PROMPT_TEASER_CHARS).replace(/\s+\S*$/, '') + '…',
+    truncated: first.length > PROMPT_TEASER_CHARS || rounds.length > 1,
+  };
+}
+
+// A published analysis shows its first prompt unless the analyst has said not
+// to. Absent means yes: everything published from here on is public by default,
+// and an analyst turns it off on their own work.
+function promptsArePublic(pub) {
+  return pub?.promptsPublic !== false;
+}
+
 // Topping a meter up rather than moving plan. The two monthly meters — report
 // picks and analyst reads — are the ones that run out mid-month, and running out
 // used to mean upgrading the whole subscription for one more report. The extra
@@ -963,6 +998,9 @@ module.exports = {
   publicationIndexSk,
   clampFreeAfterDays,
   revisionPrompts,
+  promptTeaser,
+  promptsArePublic,
+  PROMPT_TEASER_CHARS,
   freemiumPickEligible,
   buildPickTransact,
   buildTopUpTransact,

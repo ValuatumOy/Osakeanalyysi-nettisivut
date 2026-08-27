@@ -67,16 +67,21 @@
     return a.priceEur > 0 ? '€' + a.priceEur : 'Costs one monthly read';
   }
 
-  var RATING_CLASS = { BUY: 'rating-buy', HOLD: 'rating-hold', SELL: 'rating-sell' };
-
-  // The analyst's own call, as the engine issued it for their job. Null on anything
-  // published before GET /analyses carried it, so this renders nothing rather than guessing.
-  function callCell(a) {
-    if (!a.recommendation) return '';
-    var cls = RATING_CLASS[a.recommendation] || '';
-    return '<span class="analyst-call ' + cls + '">' + esc(a.recommendation) + '</span>'
-      + (a.targetPrice ? '<span class="analyst-target">' + esc(a.targetPrice) + '</span>' : '')
-      + '<span class="sep">·</span>';
+  // What the analyst told the engine, first round only and truncated by the API.
+  // This is the reason to buy: the rating and target price it produced are not
+  // shown, because those are the thing being bought.
+  //
+  // Analyst-written free text, so it is escaped like any other.
+  function promptCell(a) {
+    var t = a.promptTeaser;
+    if (!t || !t.text) return '';
+    return '<div class="analyst-prompt">'
+      + '<span class="analyst-prompt-label">Steered with</span>'
+      + '<span class="analyst-prompt-text">' + esc(t.text) + '</span>'
+      + (t.rounds > 1
+          ? '<span class="analyst-prompt-rounds">' + t.rounds + ' rounds of steering</span>'
+          : '<span class="analyst-prompt-rounds">1 round of steering</span>')
+      + '</div>';
   }
 
   function row(a, rank) {
@@ -112,9 +117,10 @@
         + '<div class="store-row-title"><span class="store-rank">' + rank + '</span>'
           + '<span class="store-kind store-kind--analyst">Analyst report</span>' + esc(a.analyst)
           + linkedinCell(a) + '</div>'
-        + '<div class="store-row-meta">' + callCell(a) + scoreCell(a)
+        + '<div class="store-row-meta">' + scoreCell(a)
           + '<span class="sep">·</span>' + priceCell(a)
           + (date ? '<span class="sep">·</span>published ' + date : '') + '</div>'
+        + promptCell(a)
       + '</div>'
       + '<div class="store-row-cta">' + cta + '</div>'
     + '</div>';

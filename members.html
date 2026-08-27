@@ -757,12 +757,20 @@
           ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
             + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
           : '';
+        // A published analysis shows its first steering prompt on the company
+        // page unless the analyst says otherwise. It is their own words on their
+        // own work, so it is their switch.
+        const prompts = g.publication === 'published'
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" data-prompts="'
+            + encodeURIComponent(g.genId) + '" data-public="' + (g.promptsPublic ? '1' : '0') + '">'
+            + (g.promptsPublic ? 'Hide my prompt' : 'Show my prompt') + '</button>'
+          : '';
         return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
           + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
           + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
           + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
           + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
-          + '<td style="text-align:right">' + action + more + reprice + '</td></tr>';
+          + '<td style="text-align:right">' + action + more + reprice + prompts + '</td></tr>';
       });
       document.getElementById('generationsTable').innerHTML =
         '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
@@ -847,6 +855,22 @@
     document.addEventListener('click', (ev) => {
       const btn = ev.target.closest('[data-coverage-update]');
       if (btn) requestCoverageUpdate(btn.getAttribute('data-coverage-update'), btn);
+    });
+
+    document.addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-prompts]');
+      if (!btn) return;
+      const makePublic = btn.getAttribute('data-public') !== '1';
+      btn.disabled = true;
+      const { status, data } = await api(
+        'POST', '/generations/' + btn.getAttribute('data-prompts') + '/prompts-public',
+        { public: makePublic });
+      btn.disabled = false;
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not change that (' + status + ')')); return; }
+      notice('ok', makePublic
+        ? 'Your first steering prompt now shows on the company page.'
+        : 'Your prompts are hidden from readers who have not paid.');
+      loadGenerations();
     });
 
     const TOPUP_LABEL = { picks: 'report picks', reads: 'analyst reports to read' };
