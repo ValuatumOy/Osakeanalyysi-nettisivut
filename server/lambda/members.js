@@ -2460,8 +2460,24 @@ async function getAdminStats(event) {
   // genId → company for READ# rows, which carry only the genId.
   const companyOf = new Map(index.map((i) => [i.genId, i.companyId]));
 
+  // Entitlements key on the report id (teslainc-18082026) while everything else
+  // keys on the ticker (TSLA), which split one company into two rows. The
+  // catalog knows both, so it is the join — best effort, because a stats page
+  // that dies when the catalog read hiccups helps nobody, and a report that
+  // has left the catalog falls back to its id's company token.
+  const tickerOf = new Map();
+  try {
+    const { catalog } = await catalogAws.buildCatalogAws({ now });
+    for (const report of catalog.reports) {
+      if (report.id && report.ticker) tickerOf.set(report.id, String(report.ticker).toUpperCase());
+    }
+  } catch (err) {
+    console.warn('stats: catalog join unavailable, falling back to id tokens:', err.message);
+  }
+
   // A report id starts with the company token: teslainc-18082026 → teslainc.
   const reportCompany = (reportId) => String(reportId || '').replace(/-\d{8}(-\d+)?$/, '');
+  const entCompany = (reportId) => tickerOf.get(reportId) || reportCompany(reportId);
 
   const companies = new Map();
   const bucket = (key) => {
@@ -2476,7 +2492,7 @@ async function getAdminStats(event) {
     if (sk === 'PROFILE') totals.users += 1;
     else if (sk.startsWith('ENT#')) {
       totals.entitlements += 1;
-      bucket(reportCompany(sk.slice(4))).reportOpens += 1;
+      bucket(entCompany(sk.slice(4))).reportOpens += 1;
     } else if (sk.startsWith('READ#')) {
       totals.analystReads += 1;
       bucket(companyOf.get(sk.slice(5))).analystReads += 1;

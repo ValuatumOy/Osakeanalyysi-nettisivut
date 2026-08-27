@@ -18,7 +18,11 @@ process.env.SECRETS_SSM_PREFIX = ''; // ensureSecrets: nothing to fetch
 
 const state = { profiles: [], items: {}, scan: [], index: [], transacts: [] };
 
-stub('../../server/aws/catalog-aws.js', {});
+stub('../../server/aws/catalog-aws.js', {
+  buildCatalogAws: async () => ({ catalog: { reports: [
+    { id: 'teslainc-18082026', ticker: 'TSLA' },
+  ] } }),
+});
 stub('../../server/search.js', { searchCompanies: async () => [] });
 stub('../../server/members/bounty.js', { readRateEur: () => 0.5 });
 stub('../../server/members/auth.js', { requireUser: async () => ({ profile: null, deny: { statusCode: 401 } }) });
@@ -95,9 +99,13 @@ test('stats bucket by company and never read the audit trail', async () => {
   const tesla = byCompany.find((c) => c.companyId === 'TSLA');
   assert.equal(tesla.analystReads, 1, 'READ rows resolve their company through the index');
   assert.equal(tesla.sales, 1);
-  // The date suffix comes off whole, collision suffix included.
+  // The entitlement's report id joins to its ticker through the catalog, so one
+  // company is ONE row — reads and opens together — not one per naming scheme.
+  assert.equal(tesla.reportOpens, 1, JSON.stringify(byCompany));
+  assert.ok(!byCompany.some((c) => c.companyId === 'teslainc'), 'the raw token must not appear beside the ticker');
+  // A report no longer in the catalog still counts, under its id's company
+  // token (date suffix off whole, collision suffix included).
   assert.ok(byCompany.some((c) => c.companyId === 'nokia'), JSON.stringify(byCompany));
-  assert.ok(byCompany.some((c) => c.companyId === 'teslainc'));
 });
 
 test('voiding a review takes its score out of the totals, once', async () => {
