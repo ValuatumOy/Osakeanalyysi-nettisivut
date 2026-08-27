@@ -506,6 +506,36 @@ function buildReviewTransact({ table, userId, now, genId, ownerId, indexSk, scor
   };
 }
 
+// A reviewer who takes up coverage of the company they reviewed loses that score:
+// otherwise the ladder is climbed by marking every rival down first and only then
+// starting your own report (Lauri, 27.8.2026). The row stays as evidence, flagged;
+// only its contribution to the published totals is taken back.
+function buildVoidReviewTransact({ table, ownerId, reviewerId, now, genId, indexSk, score }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${ownerId}`, sk: `REVIEW#${genId}#${reviewerId}` },
+          UpdateExpression: 'SET voided = :true, voidedAt = :at',
+          // Voiding twice would double-subtract from the totals.
+          ConditionExpression: 'attribute_exists(sk) AND attribute_not_exists(voided)',
+          ExpressionAttributeValues: { ':true': true, ':at': now.toISOString() },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'ADD reviewCount :minusOne, scoreSum :minusScore',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':minusOne': -1, ':minusScore': -Number(score) },
+        },
+      },
+    ],
+  };
+}
+
 // Hand-picked free window: every fifth or tenth analysis goes free to everyone
 // for a while (Esa, 17.8.2026). Hand-picked now, randomised later.
 function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 }) {
@@ -802,6 +832,7 @@ module.exports = {
   buildOpenAnalysisTransact,
   buildReviewTransact,
   buildReviewEditTransact,
+  buildVoidReviewTransact,
   buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,

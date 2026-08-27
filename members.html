@@ -752,6 +752,14 @@
         const was = r.history && r.history.length
           ? '<div class="muted" style="font-size:var(--text-xs);">was ' + r.history.map(h => h.score).join(' → ') + '</div>'
           : '';
+        // Voided once the reviewer took up the company: it no longer counts and
+        // can no longer be changed, so the row is read-only and says why.
+        if (r.voided) {
+          return '<tr><td>' + esc(r.companyId) + '<br><span class="muted">' + esc(r.analyst) + '</span></td>'
+            + '<td><span class="muted">' + Number(r.score) + '</span>' + was + '</td>'
+            + '<td class="muted">' + esc(r.comment || '') + '</td>'
+            + '<td style="text-align:right"><span class="muted">Withdrawn — you cover this company</span></td></tr>';
+        }
         return '<tr><td>' + esc(r.companyId) + '<br><span class="muted">' + esc(r.analyst) + '</span></td>'
           + '<td><input class="input input--num" style="max-width:90px;" type="number" min="1" max="5" step="0.1"'
             + ' id="mr-score-' + i + '" value="' + Number(r.score) + '">' + was + '</td>'

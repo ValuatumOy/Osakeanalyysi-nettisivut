@@ -4,6 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
 
@@ -95,4 +96,29 @@ test('covering a different company blocks nothing', async () => {
   state.pubs = [{ sk: 'PUB#mine', status: 'published', companyId: 'NOKIA.HE' }];
   state.reads = {};
   assert.equal((await open()).statusCode, 200);
+});
+
+// The order coversCompany() cannot catch: score every rival down first, start
+// your own report afterwards. Taking up coverage withdraws those scores.
+test('starting a Tesla generation withdraws the reviews the analyst gave Tesla rivals', async () => {
+  const { buildVoidReviewTransact } = require('../../server/members/quota.js');
+  const t = buildVoidReviewTransact({
+    table: 'stub', ownerId: 'author', reviewerId: 'reviewer',
+    now: new Date('2026-08-27T00:00:00.000Z'), genId: 'rival',
+    indexSk: 'TSLA#2026-08-20#rival', score: 1.5,
+  });
+  const [review, index] = t.TransactItems;
+  assert.equal(review.Update.Key.sk, 'REVIEW#rival#reviewer');
+  assert.match(review.Update.ConditionExpression, /attribute_not_exists\(voided\)/,
+    'voiding twice would subtract from the totals twice');
+  assert.equal(index.Update.ExpressionAttributeValues[':minusOne'], -1);
+  assert.equal(index.Update.ExpressionAttributeValues[':minusScore'], -1.5);
+});
+
+test('every path that gives a member coverage withdraws their reviews of it', () => {
+  const src = readFileSync(new URL('../../server/lambda/members.js', import.meta.url), 'utf8');
+  const calls = src.match(/voidReviewsOnCoverage\(/g) || [];
+  // The definition plus the three doors into coverage: the monthly generation,
+  // the paid fresh generation, and a publishable fork.
+  assert.equal(calls.length, 4, 'a new way to take up coverage that does not withdraw reviews');
 });

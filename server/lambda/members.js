@@ -453,6 +453,7 @@ async function postGenerationsFree(event) {
   }
 
   await store.audit(profile.userId, 'generation-reserved', { genId, ticker, private: !isAnalyst });
+  await voidReviewsOnCoverage(profile.userId, ticker, now);
   return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
 }
 
@@ -540,6 +541,7 @@ async function postGenerationFresh(event) {
     await store.audit(profile.userId, 'generation-purchased', {
       genId, ticker: session.metadata.ticker || '', amountTotal: session.amount_total, currency: session.currency,
     });
+    await voidReviewsOnCoverage(profile.userId, order.ticker, now);
   }
   return json(200, {
     genId,
@@ -631,6 +633,10 @@ async function getMyReviews(event) {
       reviewedAt: own.reviewedAt || null,
       edits: Array.isArray(own.history) ? own.history.length : 0,
       history: Array.isArray(own.history) ? own.history : [],
+      // Withdrawn from the analysis's totals because the reviewer now covers the
+      // company. Shown rather than hidden: the reviewer should see why it stopped
+      // counting.
+      voided: Boolean(own.voided),
     });
   }
   mine.sort((a, b) => String(b.reviewedAt || '').localeCompare(String(a.reviewedAt || '')));
@@ -678,6 +684,9 @@ async function postAnalysisReviewEdit(event) {
   const rows = await store.listReviews(index.userId, genId);
   const own = rows.find((r) => r.reviewerId === profile.userId);
   if (!own) return json(404, { error: 'You have not reviewed this analysis' });
+  // A voided review no longer contributes to the totals, so editing it would move
+  // a number it is not part of. Unreachable while the coverage check above stands.
+  if (own.voided) return json(403, { error: 'This review was withdrawn when you took up coverage of the company' });
 
   const committed = await store.runTransact(quota.buildReviewEditTransact({
     table: store.table(),
@@ -1352,6 +1361,35 @@ async function coversCompany(userId, companyId) {
   return false;
 }
 
+// Taking up coverage of a company takes back every score this member gave the
+// rivals covering it. coversCompany() stops the reverse order; this closes the
+// one it cannot — lowball everyone on Tesla first, start your own Tesla report
+// afterwards. Best-effort: it runs after the generation exists, so a failure
+// here must not cost the member the run they just started.
+async function voidReviewsOnCoverage(userId, companyId, now) {
+  const target = String(companyId || '').toUpperCase();
+  if (!target) return 0;
+  let voided = 0;
+  try {
+    const rivals = await store.listPublicationIndex({ companyId: target });
+    for (const index of rivals) {
+      if (!index.genId || !index.userId || index.userId === userId) continue;
+      const review = await store.getItem(`USER#${index.userId}`, `REVIEW#${index.genId}#${userId}`);
+      if (!review || review.voided) continue;
+      const committed = await store.runTransact(quota.buildVoidReviewTransact({
+        table: store.table(), ownerId: index.userId, reviewerId: userId, now,
+        genId: index.genId, indexSk: index.sk, score: Number(review.score) || 0,
+      }));
+      if (!committed) continue;
+      voided += 1;
+      await store.audit(userId, 'review-voided', { genId: index.genId, companyId: target, score: review.score });
+    }
+  } catch (err) {
+    console.error('voidReviewsOnCoverage failed:', err);
+  }
+  return voided;
+}
+
 // GET /analyses/{genId}/free — no account, no allowance, no review owed. The
 // only analyst analysis a logged-out visitor can open is one an administrator
 // hand-picked into a free window (Esa, 19.8.2026). The analyst's own decay time
@@ -1576,6 +1614,9 @@ async function createForkOrder(session) {
     await store.audit(profile.userId, 'analysis-forked', {
       genId, parentGenId, publishable: obligation,
     });
+    // A publishable fork is coverage of the parent's company — including of the
+    // parent itself, which the forker may well have reviewed on the way in.
+    if (obligation) await voidReviewsOnCoverage(profile.userId, parent.ticker, new Date());
   }
 }
 
