@@ -19,6 +19,15 @@ const REVENUE_SHARE = 0.5;
 // five takes" farming.
 const MONTHLY_CAP = 4;
 
+// What one read by a paying subscriber is worth to the analyst who wrote the
+// analysis (decision 27.8.2026). A subscription buys a fixed monthly allowance,
+// so this is bounded by allowance x rate: 10 reads on the EUR 19 tier, 20 on the
+// EUR 39 one. Reads by analysts and readers are not subscription revenue and pay
+// nothing — the open path passes no rate for them, so no row is ever written.
+function readRateEur() {
+  return Number(process.env.SUBSCRIBER_READ_EUR || 0.5);
+}
+
 const DAY_MS = 24 * 3600 * 1000;
 
 function quarterKey(iso) {
@@ -40,7 +49,7 @@ function shareOf(grossEur, share) {
 
 /**
  * @param pubs  PUB# items: { sk, status, publishedAt, companyId, takenDownAt, voidSalesBefore }
- * @param opts  { now: Date, paidGenIds: Set|Array, paidAmounts, maturityDays, monthlyCap, amount }
+ * @param opts  { now: Date, sales, reads, paidGenIds: Set|Array, paidAmounts, maturityDays, monthlyCap, amount }
  *              paidAmounts (genId → €) is what was actually paid; without it a
  *              later fee change would retroactively rewrite past payouts.
  * @returns { entries, totals } — entries in publish order, state one of
@@ -49,6 +58,7 @@ function shareOf(grossEur, share) {
 function ledger(pubs, {
   now,
   sales = [],
+  reads = [],
   paidGenIds = [],
   paidAmounts = {},
   maturityDays = MATURITY_DAYS,
@@ -162,6 +172,48 @@ function ledger(pubs, {
       return entry;
     });
 
+  // Subscriber reads. One row per (analysis, reader), mirrored into this analyst's
+  // partition when the read was spent, carrying the rate that applied then. Same
+  // takedown rules as a sale: an analysis that came down earns nothing for the
+  // reads it collected, and a reopen does not resurrect them.
+  const readEntries = reads
+    .filter((r) => r.openedAt && r.genId)
+    .sort((a, b) => String(a.openedAt).localeCompare(String(b.openedAt)))
+    .map((r) => {
+      const readerId = r.readerId || String(r.sk || '').split('#')[2] || '';
+      const payoutId = `SUBREAD#${r.genId}#${readerId}`;
+      const isPaid = paid.has(payoutId);
+      const entry = {
+        payoutId,
+        genId: r.genId,
+        companyId: r.companyId || null,
+        openedAt: r.openedAt,
+        amount: 0,
+        state: 'void',
+        reason: null,
+      };
+      const rate = paidAmounts[payoutId] === undefined
+        ? (Number(r.rateEur) || 0)
+        : paidAmounts[payoutId];
+
+      const pub = pubOf.get(r.genId);
+      const voidBefore = pub?.voidSalesBefore || null;
+      if (pub?.status === 'takendown' || (voidBefore && String(r.openedAt) < String(voidBefore))) {
+        entry.state = isPaid ? 'clawback' : 'void';
+        entry.reason = 'takendown';
+        if (isPaid) entry.amount = -rate;
+        return entry;
+      }
+
+      entry.amount = rate;
+      const maturesAt = new Date(new Date(r.openedAt).getTime() + maturityDays * DAY_MS);
+      entry.maturesAt = maturesAt.toISOString();
+      if (isPaid) entry.state = 'paid';
+      else if (nowMs < maturesAt.getTime()) entry.state = 'pending';
+      else entry.state = 'eligible';
+      return entry;
+    });
+
   const sumOf = (list, state) => Math.round(list.filter((e) => e.state === state)
     .reduce((acc, e) => acc + e.amount, 0) * 100) / 100;
   const sum = (state) => sumOf(entries, state);
@@ -169,6 +221,7 @@ function ledger(pubs, {
   return {
     entries,
     saleEntries,
+    readEntries,
     totals: {
       amount,
       share,
@@ -184,6 +237,11 @@ function ledger(pubs, {
       shareEligible: sumOf(saleEntries, 'eligible'),
       sharePaid: sumOf(saleEntries, 'paid'),
       shareClawback: sumOf(saleEntries, 'clawback'),
+      readsCount: readEntries.filter((e) => e.state !== 'void').length,
+      readPending: sumOf(readEntries, 'pending'),
+      readEligible: sumOf(readEntries, 'eligible'),
+      readPaid: sumOf(readEntries, 'paid'),
+      readClawback: sumOf(readEntries, 'clawback'),
     },
   };
 }
@@ -195,16 +253,19 @@ function payableGenIds(pubs, opts) {
 
 /** Everything payable right now, fee and revenue share alike, with its amount. */
 function payableItems(pubs, opts) {
-  const { entries, saleEntries } = ledger(pubs, opts);
+  const { entries, saleEntries, readEntries } = ledger(pubs, opts);
   return [
     // The flat fee is off by default, and a €0 payout row is not a payment.
     ...entries.filter((e) => e.state === 'eligible' && e.amount > 0)
       .map((e) => ({ id: e.genId, kind: 'fee', amount: e.amount })),
     ...saleEntries.filter((e) => e.state === 'eligible')
       .map((e) => ({ id: e.payoutId, kind: 'share', amount: e.amount })),
+    ...readEntries.filter((e) => e.state === 'eligible' && e.amount > 0)
+      .map((e) => ({ id: e.payoutId, kind: 'read', amount: e.amount })),
   ];
 }
 
 module.exports = {
-  MATURITY_DAYS, MONTHLY_CAP, REVENUE_SHARE, quarterKey, ledger, payableGenIds, payableItems,
+  MATURITY_DAYS, MONTHLY_CAP, REVENUE_SHARE, readRateEur,
+  quarterKey, ledger, payableGenIds, payableItems,
 };

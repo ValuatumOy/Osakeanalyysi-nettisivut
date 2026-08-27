@@ -380,7 +380,27 @@ function buildRoleChangeTransact({ table, userId, role }) {
 // Opening another analyst's analysis costs one monthly read AND leaves a review
 // obligation: the next one stays locked until this one has been scored and
 // commented (Esa, 17.8.2026). Same shape as the publish obligation.
-function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }) {
+// readRateEur > 0 mirrors the read into the author's own partition, which is what
+// turns a subscriber's monthly allowance into money for the analyst they read.
+// The rate is stamped on the row, not read from the env at payout time: changing
+// it later must not rewrite what an earlier read was worth. A read by an analyst
+// or a reader — nobody paid us for it — passes 0 and writes no mirror row.
+function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId, readRateEur = 0, companyId = '' }) {
+  const mirror = Number(readRateEur) > 0 ? [{
+    Put: {
+      TableName: table,
+      Item: {
+        pk: `USER#${ownerId}`,
+        sk: `SUBREAD#${genId}#${userId}`,
+        genId,
+        companyId: String(companyId || '').toUpperCase(),
+        readerId: userId,
+        openedAt: now.toISOString(),
+        rateEur: Math.round(Number(readRateEur) * 100) / 100,
+      },
+      ConditionExpression: 'attribute_not_exists(sk)',
+    },
+  }] : [];
   return {
     TransactItems: [
       {
@@ -413,6 +433,7 @@ function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }
           ConditionExpression: 'attribute_not_exists(sk)',
         },
       },
+      ...mirror,
     ],
   };
 }

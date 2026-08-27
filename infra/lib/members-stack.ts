@@ -134,6 +134,8 @@ export class MembersStack extends Stack {
         // Fixed fee per published analysis. 0 until the business decision lands,
         // so the ledger records states without promising anyone money.
         BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
+        // What one read by a paying subscriber pays the analyst who wrote it.
+        SUBSCRIBER_READ_EUR: process.env.SUBSCRIBER_READ_EUR || '0.5',
       },
     });
 

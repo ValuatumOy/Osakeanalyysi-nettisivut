@@ -1066,17 +1066,27 @@
       const n = (v) => Number(v) || 0;
       const gross = n(t.grossSales);
       document.getElementById('earnPaid').textContent =
-        eur(n(t.sharePaid) + n(t.paid) + n(t.shareClawback) + n(t.clawback));
-      document.getElementById('earnPayable').textContent = eur(n(t.shareEligible) + n(t.eligible));
-      document.getElementById('earnMaturing').textContent = eur(n(t.sharePending) + n(t.pending));
+        eur(n(t.sharePaid) + n(t.paid) + n(t.readPaid) + n(t.shareClawback) + n(t.clawback) + n(t.readClawback));
+      document.getElementById('earnPayable').textContent =
+        eur(n(t.shareEligible) + n(t.eligible) + n(t.readEligible));
+      document.getElementById('earnMaturing').textContent =
+        eur(n(t.sharePending) + n(t.pending) + n(t.readPending));
       document.getElementById('earnGross').textContent = eur(gross);
-      document.getElementById('earnSummary').textContent = sales.length
+      // Subscriber reads are the other income: a member's monthly allowance is
+      // revenue we collected, and each read of your work pays its fixed rate.
+      const reads = data.readEntries || [];
+      const readMoney = n(t.readPaid) + n(t.readEligible) + n(t.readPending);
+      const readLine = reads.length
+        ? ' ' + reads.length + (reads.length === 1 ? ' subscriber read' : ' subscriber reads')
+          + ' of your work, ' + eur(readMoney) + '.'
+        : '';
+      document.getElementById('earnSummary').textContent = (sales.length
         ? sales.length + (sales.length === 1 ? ' sale' : ' sales') + ' of your analyses, '
           + eur(gross) + ' paid by readers, your half is ' + eur(gross / 2)
           + '. Half of every sale is yours; card fees come out of our half.'
         : (data.entries?.length
           ? 'Nothing sold yet. Your published analyses stay on their company pages and can sell at any time — the numbers above fill in as they do.'
-          : 'Nothing published yet, so nothing to sell. Publish an analysis with a price on it and every sale shows up here: what the reader paid, your half, and when you can invoice us for it.');
+          : 'Nothing published yet, so nothing to sell. Publish an analysis with a price on it and every sale shows up here: what the reader paid, your half, and when you can invoice us for it.')) + readLine;
 
       // Sales first — that is the income. The pilot fee rows follow, and vanish
       // once nothing is on a fee any more.
@@ -1091,10 +1101,15 @@
           + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
           + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
 
+      const readRows = reads.map(e => '<tr><td>' + (e.companyId || '—') + '</td><td>Subscriber read</td><td>'
+        + String(e.openedAt).slice(0, 10) + '</td><td>—</td><td>'
+        + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+        + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+
       document.getElementById('earningsTable').innerHTML =
         '<thead><tr><th>Company</th><th>What</th><th>Date</th><th>Reader paid</th><th>Status</th><th>Yours</th></tr></thead><tbody>'
-        + (saleRows + feeRows
-          || '<tr><td colspan="6" class="muted">No sales yet. Every sale of your work appears here as its own row.</td></tr>')
+        + (saleRows + readRows + feeRows
+          || '<tr><td colspan="6" class="muted">Nothing earned yet. Every sale of your work — and every read of it by a subscriber — appears here as its own row.</td></tr>')
         + '</tbody>';
     }
 

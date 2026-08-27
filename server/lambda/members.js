@@ -1040,13 +1040,14 @@ async function getMeEarnings(event) {
   if (deny) return deny;
   if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
 
-  const [pubs, payouts, sales] = await Promise.all([
+  const [pubs, payouts, sales, reads] = await Promise.all([
     store.listUserItems(profile.userId, 'PUB#'),
     store.listUserItems(profile.userId, 'PAYOUT#'),
     store.listUserItems(profile.userId, 'SALE#'),
+    store.listUserItems(profile.userId, 'SUBREAD#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
-  return json(200, bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts }));
+  return json(200, bounty.ledger(pubs, { now, sales, reads, paidGenIds, paidAmounts }));
 }
 
 // ── billing ──────────────────────────────────────────────────────────────────
@@ -1459,8 +1460,13 @@ async function postAnalysisOpen(event) {
   const limit = limitsFor(profile).analystReads;
   if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
 
+  // A subscriber's read is the only one anybody paid us for, so it is the only
+  // one that pays the analyst. An analyst or reader spending their own free
+  // allowance passes rate 0 and writes no payable row.
+  const readRateEur = activeTier(profile) === 'none' ? 0 : bounty.readRateEur();
   const committed = await store.runTransact(quota.buildOpenAnalysisTransact({
     table: store.table(), userId: profile.userId, now, limit, genId, ownerId: index.userId,
+    readRateEur, companyId: index.companyId,
   }));
   if (!committed) {
     const fresh = await store.getProfile(profile.userId);
@@ -1847,15 +1853,16 @@ async function postAdminPayout(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
 
-  const [pubs, payouts, sales] = await Promise.all([
+  const [pubs, payouts, sales, reads] = await Promise.all([
     store.listUserItems(body.userId, 'PUB#'),
     store.listUserItems(body.userId, 'PAYOUT#'),
     store.listUserItems(body.userId, 'SALE#'),
+    store.listUserItems(body.userId, 'SUBREAD#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
   // Fees and revenue shares settle through the same call and the same PAYOUT#
   // rows; a share's id carries its own SALE# prefix, so the two never collide.
-  const payable = bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts });
+  const payable = bounty.payableItems(pubs, { now, sales, reads, paidGenIds, paidAmounts });
   const requested = Array.isArray(body.ids) ? body.ids
     : (Array.isArray(body.genIds) ? body.genIds : payable.map((p) => p.id));
   const toPay = payable.filter((p) => requested.includes(p.id));
@@ -1889,13 +1896,14 @@ async function getAdminEarnings(event) {
   }
 
   const analysts = await Promise.all(userIds.map(async (userId) => {
-    const [pubs, payouts, sales] = await Promise.all([
+    const [pubs, payouts, sales, reads] = await Promise.all([
       store.listUserItems(userId, 'PUB#'),
       store.listUserItems(userId, 'PAYOUT#'),
       store.listUserItems(userId, 'SALE#'),
+      store.listUserItems(userId, 'SUBREAD#'),
     ]);
     const { paidGenIds, paidAmounts } = paidFrom(payouts);
-    const led = bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts });
+    const led = bounty.ledger(pubs, { now, sales, reads, paidGenIds, paidAmounts });
     const profile = await store.getProfile(userId);
     return {
       userId,
@@ -1904,11 +1912,12 @@ async function getAdminEarnings(event) {
       published: led.entries.length,
       salesCount: led.totals.salesCount,
       grossSales: led.totals.grossSales,
-      readyToInvoice: Math.round((led.totals.shareEligible + led.totals.eligible) * 100) / 100,
-      held: Math.round((led.totals.sharePending + led.totals.pending) * 100) / 100,
-      paid: Math.round((led.totals.sharePaid + led.totals.paid) * 100) / 100,
-      clawback: Math.round((led.totals.shareClawback + led.totals.clawback) * 100) / 100,
-      payable: bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts }),
+      readsCount: led.totals.readsCount,
+      readyToInvoice: Math.round((led.totals.shareEligible + led.totals.eligible + led.totals.readEligible) * 100) / 100,
+      held: Math.round((led.totals.sharePending + led.totals.pending + led.totals.readPending) * 100) / 100,
+      paid: Math.round((led.totals.sharePaid + led.totals.paid + led.totals.readPaid) * 100) / 100,
+      clawback: Math.round((led.totals.shareClawback + led.totals.clawback + led.totals.readClawback) * 100) / 100,
+      payable: bounty.payableItems(pubs, { now, sales, reads, paidGenIds, paidAmounts }),
     };
   }));
 
