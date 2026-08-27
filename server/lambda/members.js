@@ -1147,6 +1147,9 @@ async function postGenerationSubmit(event) {
     // The comments the analyst sent the revision pipeline ARE the prompts;
     // the client's promptsText only fills in for an unrevised publication.
     promptsText: quota.revisionPrompts(order) || String(body.promptsText || ''),
+    // Counted from the revision history, never from the joined text: a single
+    // comment has blank lines of its own.
+    promptRounds: (order.revisionHistory || []).filter((e) => String(e.comments || '').trim()).length,
     companyId: order.ticker,
     jobId: order.jobId || '',
     priceEur: body.priceEur,
@@ -1619,7 +1622,8 @@ async function getAnalyses(event) {
   // the one that would not scale, and it does not call this.
   const teasers = new Map(await Promise.all(items.map(async (item) => {
     const pub = await store.getPublication(item.userId, item.genId);
-    return [item.genId, quota.promptsArePublic(pub) ? quota.promptTeaser(pub?.promptsText) : null];
+    return [item.genId,
+      quota.promptsArePublic(pub) ? quota.promptTeaser(pub?.promptsText, pub?.promptRounds) : null];
   })));
   return json(200, {
     companyId: companyId ? String(companyId).toUpperCase() : null,

@@ -78,9 +78,10 @@
     return '<div class="analyst-prompt">'
       + '<span class="analyst-prompt-label">Steered with</span>'
       + '<span class="analyst-prompt-text">' + esc(t.text) + '</span>'
-      + (t.rounds > 1
-          ? '<span class="analyst-prompt-rounds">' + t.rounds + ' rounds of steering</span>'
-          : '<span class="analyst-prompt-rounds">1 round of steering</span>')
+      + (t.rounds
+          ? '<span class="analyst-prompt-rounds">' + t.rounds
+            + (t.rounds === 1 ? ' round of steering' : ' rounds of steering') + '</span>'
+          : (t.truncated ? '<span class="analyst-prompt-rounds">Full steering in the report</span>' : ''))
       + '</div>';
   }
 

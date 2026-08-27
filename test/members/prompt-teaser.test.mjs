@@ -11,16 +11,26 @@ import { readFileSync } from 'node:fs';
 const require = createRequire(import.meta.url);
 const quota = require('../../server/members/quota.js');
 
-test('the first round only, and the count of the rest', () => {
-  const t = quota.promptTeaser('Flat 2027 capex.\n\nPush mobile margin to 2024.\n\nCut the terminal growth.');
+test('the opening paragraph only, and the round count as given', () => {
+  const t = quota.promptTeaser('Flat 2027 capex.\n\nPush mobile margin to 2024.\n\nCut the terminal growth.', 3);
   assert.equal(t.text, 'Flat 2027 capex.');
   assert.equal(t.rounds, 3, 'effort is part of the pitch');
   assert.equal(t.truncated, true, 'there is more behind the paywall and the reader should know');
 });
 
+// revisionPrompts() joins rounds with a blank line and a single comment has
+// blank lines of its own, so counting them from the stored text reported 188
+// rounds on a two-round analysis. The count is passed in or it is not shown.
+test('the round count is never guessed from the text', () => {
+  const oneRoundManyParagraphs = 'Recalculate the valuation.\n\nKeep the structure.\n\nShow your work.';
+  assert.equal(quota.promptTeaser(oneRoundManyParagraphs, 1).rounds, 1);
+  assert.equal(quota.promptTeaser(oneRoundManyParagraphs).rounds, null);
+  assert.equal(quota.promptTeaser(oneRoundManyParagraphs, 0).rounds, null);
+});
+
 test('a long first round is cut on a word boundary', () => {
   const long = 'a'.repeat(80) + ' ' + 'b'.repeat(80) + ' ' + 'c'.repeat(120);
-  const t = quota.promptTeaser(long);
+  const t = quota.promptTeaser(long, 1);
   assert.ok(t.text.length <= quota.PROMPT_TEASER_CHARS + 1, t.text.length);
   assert.match(t.text, /…$/);
   assert.ok(!t.text.includes('ccc'), 'the cut must not land mid-word');

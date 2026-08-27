@@ -176,7 +176,7 @@ function normaliseRecommendation(value) {
 }
 
 function buildSubmitTransact({
-  table, userId, now, genId, promptsText, companyId, jobId,
+  table, userId, now, genId, promptsText, promptRounds = 0, companyId, jobId,
   priceEur = 0, freeAfterDays, analystName = '', analystLinkedin = null,
   // The engine's own output for this job, taken from the delivered order rather than from
   // the request: an analyst supplying their own rating could publish one the report does
@@ -213,7 +213,8 @@ function buildSubmitTransact({
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
           UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
-            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target',
+            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target, '
+            + 'promptRounds = :rounds',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
@@ -228,6 +229,7 @@ function buildSubmitTransact({
             ':freeFrom': freeFrom,
             ':rec': rating,
             ':target': target,
+            ':rounds': Math.max(0, Math.round(Number(promptRounds) || 0)),
           },
         },
       },
@@ -920,18 +922,24 @@ function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyI
 // steering" says effort in a way a paragraph cannot.
 const PROMPT_TEASER_CHARS = 200;
 
-function promptTeaser(promptsText) {
-  const rounds = String(promptsText || '').split('\n\n').map((r) => r.trim()).filter(Boolean);
-  if (!rounds.length) return null;
-  const first = rounds[0].replace(/\s+/g, ' ');
+// The round count is passed in, never parsed out: revisionPrompts() joins rounds
+// with a blank line and a single comment contains blank lines of its own, so
+// splitting the stored text counted paragraphs and reported 188 rounds on a
+// two-round analysis. Publications from before the count was stored show the
+// prompt without one rather than a made-up number.
+function promptTeaser(promptsText, rounds = null) {
+  const text = String(promptsText || '').trim();
+  if (!text) return null;
+  // The opening paragraph, which is where an analyst states the thesis.
+  const first = text.split('\n\n')[0].trim().replace(/\s+/g, ' ');
+  if (!first) return null;
+  const cut = first.length > PROMPT_TEASER_CHARS;
   return {
-    rounds: rounds.length,
+    rounds: Number.isFinite(rounds) && rounds > 0 ? Math.round(rounds) : null,
     // Cut on a word boundary where there is one nearby, so the tease does not
     // end mid-word for the sake of four characters.
-    text: first.length <= PROMPT_TEASER_CHARS
-      ? first
-      : first.slice(0, PROMPT_TEASER_CHARS).replace(/\s+\S*$/, '') + '…',
-    truncated: first.length > PROMPT_TEASER_CHARS || rounds.length > 1,
+    text: cut ? first.slice(0, PROMPT_TEASER_CHARS).replace(/\s+\S*$/, '') + '…' : first,
+    truncated: cut || first.length < text.length,
   };
 }
 
