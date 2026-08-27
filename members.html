@@ -1143,8 +1143,16 @@
       go.className = 'btn btn-primary btn-sm';
       go.textContent = 'Continue to checkout';
       go.onclick = () => {
+        // Coverage needs the company before it can be priced, and that field is
+        // further down the page — send them to it rather than to an error.
+        if (choice.plan === 'coverage' && !document.getElementById('coverageTicker').value.trim()) {
+          document.getElementById('coverageTicker').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('coverageTicker').focus();
+          notice('err', 'Name the company you want covered, then start the checkout.');
+          return;
+        }
         try { delete localStorage.pendingPlan; } catch (_) { /* ignore */ }
-        checkout(choice.plan, choice.interval);
+        checkout(choice.plan, choice.interval === 'year' || choice.plan === 'coverage' ? 'year' : 'month');
       };
       el.appendChild(go);
     }
