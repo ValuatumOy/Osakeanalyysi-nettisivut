@@ -827,6 +827,67 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
   };
 }
 
+// Company Coverage, the other direction: not opening a report that already
+// exists but asking for one to be made. The subscription sells four updates a
+// year and nothing in the system produced them, so this is what a subscriber
+// spends one of those four on. Same yearly counter as an opened update — the
+// four are four, however they are taken.
+//
+// No ENT# row here: there is no report id yet. The order page is the way in
+// until the engine delivers, exactly as it is for any other private generation.
+function buildCoverageGenerationTransact({ table, userId, now, genId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
+          UpdateExpression: 'SET coverageUpdates = if_not_exists(coverageUpdates, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max',
+          ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            // What the restore path keys on: this run spent a yearly update, not
+            // a monthly slot, and the two are given back differently.
+            coverage: true,
+            reservedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// The refund of the above. A run the engine never delivered must not cost a
+// quarter of the year's coverage: without this a single failure silently eats
+// one of the four the subscriber paid for.
+function buildReleaseCoverageTransact({ table, userId, now, reservedAt }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          // Credited back to the year it was spent in, which is not necessarily
+          // the year the failure is noticed in.
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(reservedAt ? new Date(reservedAt) : now)}` },
+          UpdateExpression: 'SET coverageUpdates = coverageUpdates - :one',
+          ConditionExpression: 'coverageUpdates > :zero',
+          ExpressionAttributeValues: { ':one': 1, ':zero': 0 },
+        },
+      },
+    ],
+  };
+}
+
 module.exports = {
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
@@ -857,4 +918,6 @@ module.exports = {
   buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
+  buildCoverageGenerationTransact,
+  buildReleaseCoverageTransact,
 };

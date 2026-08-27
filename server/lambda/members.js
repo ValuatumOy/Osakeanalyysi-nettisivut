@@ -471,6 +471,17 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
     table: store.table(), userId: profile.userId, genId, now,
   }));
 
+  // A coverage update is not a monthly slot: it came off the year's four, and
+  // there is no reservation row naming this run to check against, so the credit
+  // is guarded by the PUB row having been 'generating' until a moment ago.
+  if (publication.coverage) {
+    const back = await store.runTransact(quota.buildReleaseCoverageTransact({
+      table: store.table(), userId: profile.userId, now, reservedAt: publication.reservedAt,
+    }));
+    if (back) await store.audit(profile.userId, 'coverage-update-restored', { genId, reason: order.error || 'generation failed' });
+    return back;
+  }
+
   // Then hand the month back, but only while this run still holds it. An admin
   // who already credited the member by hand, or a newer generation, owns those
   // rows now and must not be overwritten.
@@ -485,6 +496,68 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
     await store.audit(profile.userId, 'generation-restored', { genId, reason: order.error || 'generation failed' });
   }
   return released;
+}
+
+// POST /generations/coverage — the update a Company Coverage subscription sells.
+//
+// The subscription promised four report updates a year and nothing in the system
+// ever produced one: the yearly counter only ever let a subscriber open a report
+// somebody else had already generated. This is the other half — the subscriber
+// asks, one of the four is spent, and a real engine run starts on their company.
+//
+// The company comes from the profile, never the request. It is what they paid to
+// have covered, and taking it from the body would be a way to spend a coverage
+// update on any company at all.
+async function postGenerationCoverage(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  if (activeTier(profile) !== 'coverage') {
+    return json(403, { error: 'Report updates are part of Company Coverage' });
+  }
+  const covered = String(profile.coverageCompanyId || '').toUpperCase();
+  if (!covered) return json(409, { error: 'Your subscription has no covered company yet' });
+  if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  const resolved = await resolveGenerationCompany(covered);
+  if (resolved.error) return resolved.error;
+  const match = resolved.match;
+
+  // The quota first: a refused update must never start a billable engine run.
+  const genId = crypto.randomUUID();
+  const committed = await store.runTransact(quota.buildCoverageGenerationTransact({
+    table: store.table(), userId: profile.userId, now, genId,
+  }));
+  if (!committed) {
+    return json(429, {
+      error: `All ${quota.COVERAGE_UPDATES_PER_YEAR} coverage updates for this year have been used`,
+    });
+  }
+
+  await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: match.companyName || covered,
+    ticker: match.ticker,
+    exchange: match.exchange || '',
+    industry: match.industry || '',
+    // A coverage report is the subscriber's own copy, never resold.
+    visibility: 'private',
+    // An update is the report as the engine writes it. Steering one toward a
+    // view is what the generation tiers are for.
+    revisionsAllowed: 0,
+  });
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'coverage-update-requested', { genId, ticker: match.ticker });
+  // A subscriber who also publishes now covers this company with a running report.
+  await voidReviewsOnCoverage(profile.userId, match.ticker, now);
+  return json(200, { genId, status: 'NEW', company: match.companyName || covered, ticker: match.ticker });
 }
 
 // POST /generations/fresh {sessionId} — turn a paid checkout into a running
@@ -2192,6 +2265,7 @@ const AUTHED_ROUTES = {
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
   'POST /generations/fresh': postGenerationFresh,
+  'POST /generations/coverage': postGenerationCoverage,
   'GET /generations': listGenerations,
   'GET /generations/{genId}': getGeneration,
   'GET /generations/{genId}/order': getGenerationOrder,

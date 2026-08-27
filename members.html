@@ -90,6 +90,13 @@
             </div>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
+          <!-- Company Coverage sells four report updates a year. This is how one
+               is taken: the subscriber asks, and a real engine run starts on the
+               company they pay to have covered. -->
+          <div id="coverageCard" hidden style="margin-top:1rem;">
+            <button class="btn btn-primary btn-sm" id="coverageUpdateBtn" onclick="requestCoverageUpdate()">Request a report update</button>
+            <span class="muted" id="coverageUpdateHint" style="margin-left:0.75rem;"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -492,6 +499,18 @@
       analysesCard.hidden = !(u.analystReadLimit > 0);
       window._openReviewId = data.openReviewId || null;
       renderReviewRow();
+      const coverageCard = document.getElementById('coverageCard');
+      coverageCard.hidden = data.tier !== 'coverage';
+      if (data.tier === 'coverage') {
+        const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (u.coverageUpdates || 0));
+        document.getElementById('coverageUpdateBtn').disabled = left_ < 1;
+        document.getElementById('coverageUpdateHint').textContent = left_
+          ? 'A fresh report on ' + (data.coverageCompanyId || 'your company')
+            + ', written from today\u2019s figures. Takes 20 to 40 minutes and arrives by email. '
+            + left_ + ' left this year.'
+          : 'All of this year\u2019s updates have been used.';
+      }
+
       const genCard = document.getElementById('genCard');
       genCard.hidden = !data.hasGeneration;
       if (data.hasGeneration) {
@@ -804,6 +823,23 @@
           : 'Removed from your published analyses.');
         loadAnalyses();
       } else notice('err', (data && data.error) || ('Could not save the link (' + status + ')'));
+    }
+
+    async function requestCoverageUpdate() {
+      if (!confirm('Start a fresh report on your covered company?\n\n'
+        + 'It spends one of your four updates for this year and takes 20 to 40 minutes. '
+        + 'You will get it by email, and it appears in your reports below.')) return;
+      const button = document.getElementById('coverageUpdateBtn');
+      button.disabled = true;
+      const { status, data } = await api('POST', '/generations/coverage');
+      if (status !== 200) {
+        button.disabled = false;
+        notice('err', (data && data.error) || ('Could not start the update (' + status + ')'));
+        return;
+      }
+      notice('ok', 'Started. Your updated ' + (data.company || 'report') + ' arrives by email in 20 to 40 minutes.');
+      loadMe();
+      loadGenerations();
     }
 
     async function buyRevisions(genId) {
