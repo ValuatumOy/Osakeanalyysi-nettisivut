@@ -47,6 +47,11 @@
       "source": "/upm-kymmene-oyj-equity-report.html",
       "destination": "/reports/upm-equity-report.html",
       "permanent": true
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/blog-admin.html",
+      "permanent": true
     }
   ],
   "headers": [

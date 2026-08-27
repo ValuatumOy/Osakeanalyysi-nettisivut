@@ -5,7 +5,7 @@ Disallow: /search.html
 Disallow: /report-preview.html
 Disallow: /report-full.html
 Disallow: /mockups/
-Disallow: /admin.html
+Disallow: /blog-admin.html
 
 # AI search & answer engines — explicitly allowed so they can cite our reports.
 User-agent: GPTBot

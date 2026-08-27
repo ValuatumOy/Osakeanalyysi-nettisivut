@@ -331,13 +331,16 @@ See [`blog-system/PIPELINE.md`](blog-system/PIPELINE.md) for the runbook and
 
 ## Admin pages
 
-- **`/admin`** (`admin/index.html`) — report catalog management: upload,
-  publish, edit (including free status) and delete. Talks to the AWS API with
-  the `admin-upload-password` secret, kept in `localStorage`. To point it at the
-  test stage:
-  `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')`.
-- **`/admin.html`** — the older blog admin, which authenticates through
-  `api/auth.js` and works against the GitHub API.
+- **`/admin`** (`admin/index.html`) — the admin dashboard: report catalog
+  management (upload, publish, edit including free status, delete) plus the
+  members side — analyst publications, users, earnings and payouts, activity
+  stats, and live promo codes. One password (`admin-upload-password`, kept in
+  `localStorage`) unlocks both APIs. To point it at the test stage:
+  `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')` and
+  `localStorage.setItem('aerAdminMembersApiBase', 'https://members-test.aiequityreports.com')`.
+- **`/blog-admin.html`** — the older blog admin, which authenticates through
+  `api/auth.js` and works against the GitHub API. Renamed from `admin.html`,
+  which read as the site's main admin while sitting next to `/admin`.
 
 Both are `noindex` and disallowed in `robots.txt`.
 
