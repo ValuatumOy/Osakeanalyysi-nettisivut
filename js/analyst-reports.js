@@ -180,14 +180,32 @@
   }
 
   // Coming back from Stripe: hand over what was paid for, once.
+  //
+  // Both doors have to be handled here, not only the buy: a fork is bought from
+  // this same page and returns to it, and handling it in the members workspace
+  // alone left anyone who forked from a company page with no route to the report
+  // they had just paid for.
   function collectPurchase() {
     var params = new URLSearchParams(location.search);
-    var genId = params.get('bought');
+    var forked = params.get('forked');
+    var genId = params.get('bought') || forked;
     var sessionId = params.get('session_id');
     if (!genId || genId === 'cancelled' || !sessionId || !bannerEl) return;
 
     mount.hidden = false;
     bannerEl.hidden = false;
+    // The section sits near the foot of a long report page, so a banner left
+    // where it is renders below thousands of pixels of report and reads as
+    // nothing having happened at all.
+    bannerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // A fork is a report of the buyer's own to revise, not a finished PDF: it
+    // belongs in the workspace, where the revision rounds they paid for are.
+    if (forked) {
+      bannerEl.textContent = 'Your copy is ready to revise. Opening your workspace…';
+      location.href = '/order/index.html?session_id=' + encodeURIComponent(genId);
+      return;
+    }
     bannerEl.textContent = 'Confirming your purchase…';
     fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/purchased?session_id=' + encodeURIComponent(sessionId))
       .then(function (res) {
@@ -202,6 +220,9 @@
             link.className = 'btn btn-primary btn-sm';
             link.textContent = 'Download the PDF';
             bannerEl.appendChild(link);
+            bannerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Runs outside a user gesture, so a popup blocker usually stops it.
+            // The button above is the delivery; this is the convenience.
             window.open(data.url, '_blank', 'noopener');
           } else {
             bannerEl.textContent = (data && data.error) || 'That purchase could not be confirmed.';

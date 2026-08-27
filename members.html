@@ -83,7 +83,7 @@
               <span id="roleLabel" class="ws-role"></span>
             </div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <button class="btn btn-outline btn-sm" id="linkedinBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
+              <button class="btn btn-outline btn-sm" id="linkedinProfileBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
               <button class="btn btn-outline btn-sm" id="myReviewsBtn" hidden onclick="myReviews()">My reviews</button>
               <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
               <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
@@ -482,7 +482,7 @@
       // get a private one with no strings attached.
       const isAnalyst = data.publishes;
       document.getElementById('stepDownBtn').hidden = !isAnalyst;
-      document.getElementById('linkedinBtn').hidden = !isAnalyst;
+      document.getElementById('linkedinProfileBtn').hidden = !isAnalyst;
       document.getElementById('myReviewsBtn').hidden = !isAnalyst;
       window._linkedinUrl = data.linkedinUrl || '';
       const analysesCard = document.getElementById('analysesCard');

@@ -89,3 +89,52 @@ test('the parameter names actually got extracted — a silent empty set would pa
     assert.ok(found.has(expected), `${expected} was not extracted from the members Lambda`);
   }
 });
+
+// "Read somewhere" is not enough on its own: ?forked= was read by the members
+// workspace while the button that starts a fork also lives on 1,232 report
+// pages, whose script read only ?bought=. Whoever offers the checkout has to
+// handle the way back from it.
+test('whatever page offers a checkout also collects what comes back from it', () => {
+  const DOORS = [
+    { checkout: '/buy-checkout', param: 'bought' },
+    { checkout: '/fork-checkout', param: 'forked' },
+    { checkout: '/revisions-checkout', param: 'revisions' },
+  ];
+  const named = [];
+  const walk = (dir) => {
+    for (const name of readdirSync(path.join(ROOT, dir))) {
+      if (name === 'node_modules' || name.startsWith('.')) continue;
+      const rel = path.join(dir, name);
+      if (statSync(path.join(ROOT, rel)).isDirectory()) continue;
+      if (name.endsWith('.html') || name.endsWith('.js')) {
+        named.push([rel, readFileSync(path.join(ROOT, rel), 'utf8')]);
+      }
+    }
+  };
+  walk('.');
+  for (const dir of ['js', 'order', 'checkout']) walk(dir);
+
+  const gaps = [];
+  for (const [file, src] of named) {
+    for (const { checkout, param } of DOORS) {
+      if (!src.includes(checkout)) continue;
+      if (!src.includes(`get('${param}')`)) gaps.push(`${file} starts ${checkout} but never reads ?${param}=`);
+    }
+  }
+  assert.deepEqual(gaps, [], gaps.join('\n'));
+});
+
+// One id, one element. Two elements shared id="linkedinBtn" on the members page,
+// so the line that pointed the sign-in link at LinkedIn set a property on the
+// hidden button next to it instead and the whole funnel dead-ended on "#".
+test('no page reuses an id', () => {
+  const clashes = [];
+  for (const page of ['members.html', 'reports.html', 'pricing.html', 'order/index.html']) {
+    const seen = new Map();
+    for (const m of readFileSync(path.join(ROOT, page), 'utf8').matchAll(/\sid="([^"]+)"/g)) {
+      seen.set(m[1], (seen.get(m[1]) || 0) + 1);
+    }
+    for (const [id, count] of seen) if (count > 1) clashes.push(`${page} has ${count} elements with id="${id}"`);
+  }
+  assert.deepEqual(clashes, [], clashes.join('\n'));
+});
