@@ -1234,6 +1234,50 @@ async function recordAnalysisSale(session) {
   if (wrote) await store.audit(ownerId, 'analysis-sold', { genId, sessionId: session.id });
 }
 
+// The buyer's copy, sent the moment Stripe says it is paid. Nothing is generated
+// for an analyst analysis — the PDF already exists — so waiting for the buyer to
+// land back on the site was the only delivery, and a lost return trip meant a
+// paid-for report nobody ever received (Lauri, 27.8.2026).
+//
+// The link is the receipt, not the document: the session id re-verifies against
+// Stripe on every visit and the page presigns the PDF again, so this works for
+// as long as the analysis stands rather than for the five minutes a presigned
+// URL lasts.
+async function sendAnalysisReceipt(session) {
+  const to = session.customer_details?.email || session.customer_email || '';
+  const genId = session.metadata?.analysisGenId || '';
+  if (!to || !genId) return;
+  const base = auth.frontendUrl('');
+  const isFork = session.metadata?.fork === 'true';
+  const link = `${base}?${isFork ? 'forked' : 'bought'}=${encodeURIComponent(genId)}&session_id=${encodeURIComponent(session.id)}`;
+  const company = session.metadata?.companyId || 'the company';
+  try {
+    const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
+    const ses = new SESv2Client({ region: process.env.AWS_REGION || 'eu-west-1' });
+    await ses.send(new SendEmailCommand({
+      FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
+      Destination: { ToAddresses: [to] },
+      Content: {
+        Simple: {
+          Subject: { Data: `Your analyst analysis of ${company}`, Charset: 'UTF-8' },
+          Body: {
+            Html: {
+              Data: `<p>Thank you — your purchase is complete.</p>`
+                + `<p><a href="${link}">Open your analyst analysis of ${company}</a></p>`
+                + `<p>This link stays valid: it re-checks your purchase and opens the PDF each time.</p>`,
+              Charset: 'UTF-8',
+            },
+          },
+        },
+      },
+    }));
+  } catch (err) {
+    // Stripe retries the whole event on a non-200, which would re-record the
+    // sale; a mail that did not go out is not worth that.
+    console.error('analysis receipt email failed:', err);
+  }
+}
+
 async function postBillingWebhook(event) {
   const secret = process.env.MEMBERS_STRIPE_WEBHOOK_SECRET;
   if (!secret) return json(503, { error: 'Webhook secret not configured' });
@@ -1260,6 +1304,7 @@ async function postBillingWebhook(event) {
         if (object.payment_status !== 'paid') break;
         await recordAnalysisSale(object);
         if (object.metadata.fork === 'true') await createForkOrder(object);
+        await sendAnalysisReceipt(object);
         break;
       }
       if (object.metadata?.extraRevisions) {

@@ -24,9 +24,29 @@ function allowedFrontends() {
   return configured.length ? configured : ['http://localhost:3100/members.html'];
 }
 
+// A return URL is accepted whole when it is one of the configured pages, and on
+// its origin otherwise — the 1,232 company report pages each sell the analyst
+// analyses on them and cannot all be listed. Falling back to the first allowed
+// page is what sent buyers to a page that could not hand over what they bought.
+// Only our own origins are ever accepted, so this is not an open redirect.
 function frontendUrl(requested) {
   const allowed = allowedFrontends();
-  return allowed.includes(String(requested || '')) ? String(requested) : allowed[0];
+  const raw = String(requested || '');
+  if (allowed.includes(raw)) return raw;
+  try {
+    const url = new URL(raw);
+    if (!['http:', 'https:'].includes(url.protocol)) return allowed[0];
+    const origins = new Set(allowed.map((a) => new URL(a).origin));
+    if (!origins.has(url.origin)) return allowed[0];
+    // The caller often passes the page it is on, which may already carry the
+    // parameters of an earlier round trip. Stacking more onto them breaks the
+    // reader that parses them.
+    url.search = '';
+    url.hash = '';
+    return url.toString();
+  } catch (err) {
+    return allowed[0];
+  }
 }
 
 function jwtSecret() {

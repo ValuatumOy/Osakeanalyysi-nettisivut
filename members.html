@@ -1113,6 +1113,48 @@
         + '</tbody>';
     }
 
+    // Coming back from Stripe. A purchase must be handed over here whether or not
+    // anyone is signed in: the session id is the receipt, so this runs before and
+    // without a login, and it is also where the receipt email points.
+    async function collectPurchase() {
+      const params = new URLSearchParams(location.search);
+      const bought = params.get('bought');
+      const forked = params.get('forked');
+      const sessionId = params.get('session_id');
+      const genId = bought || forked;
+      if (!genId || genId === 'cancelled' || !sessionId) {
+        if (bought === 'cancelled' || forked === 'cancelled') notice('err', 'The checkout was cancelled — nothing was charged.');
+        return;
+      }
+      // A fork is a report of your own to revise, so it belongs on the order page
+      // rather than being handed over as a finished PDF.
+      if (forked) {
+        notice('ok', 'Your copy is ready to revise.');
+        location.replace(workspaceUrl(genId));
+        return;
+      }
+      notice('ok', 'Confirming your purchase…');
+      const res = await fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId)
+        + '/purchased?session_id=' + encodeURIComponent(sessionId));
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data || !data.url) {
+        notice('err', (data && data.error) || 'That purchase could not be confirmed.');
+        return;
+      }
+      const el = document.getElementById('notice');
+      el.className = 'notice ok';
+      el.textContent = 'Thank you. Your copy of ' + data.companyId + ' by ' + data.analyst + ' is ready. ';
+      const link = document.createElement('a');
+      link.href = data.url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.className = 'btn btn-primary btn-sm';
+      link.textContent = 'Open the PDF';
+      el.appendChild(link);
+      window.open(data.url, '_blank', 'noopener');
+    }
+
+    collectPurchase();
     if (token()) loadMe();
   </script>
   <script src="js/script.js"></script>
