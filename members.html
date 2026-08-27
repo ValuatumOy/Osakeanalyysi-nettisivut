@@ -1121,6 +1121,16 @@
       const bought = params.get('bought');
       const forked = params.get('forked');
       const sessionId = params.get('session_id');
+      // Extra revision rounds are credited by the webhook, so the return trip
+      // only has to say so — but saying nothing read as a checkout that failed.
+      const revisions = params.get('revisions');
+      if (revisions) {
+        notice(revisions === 'added' ? 'ok' : 'err', revisions === 'added'
+          ? 'Your extra revision rounds have been added. They appear on the report within a few seconds.'
+          : 'The checkout was cancelled — no rounds were added and nothing was charged.');
+        history.replaceState(null, '', location.pathname);
+        return;
+      }
       const genId = bought || forked;
       if (!genId || genId === 'cancelled' || !sessionId) {
         if (bought === 'cancelled' || forked === 'cancelled') notice('err', 'The checkout was cancelled — nothing was charged.');
