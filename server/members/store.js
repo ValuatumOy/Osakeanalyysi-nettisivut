@@ -5,7 +5,7 @@
 
 const crypto = require('crypto');
 const {
-  GetCommand, PutCommand, UpdateCommand, DeleteCommand, QueryCommand,
+  GetCommand, PutCommand, UpdateCommand, DeleteCommand, QueryCommand, ScanCommand,
   TransactWriteCommand,
 } = require('@aws-sdk/lib-dynamodb');
 const { dynamo } = require('../aws/clients');
@@ -291,6 +291,45 @@ async function claimStripeEvent(eventId) {
   }
 }
 
+// Every member, for the admin dashboard. A paginated Scan filtered on the
+// PROFILE sort key — the one full-table read in the store.
+// ponytail: a Scan reads every item to find the profiles. Fine for hundreds of
+// members; at thousands this becomes a GSI on sk.
+async function listProfiles() {
+  const profiles = [];
+  let startKey;
+  do {
+    const res = await dynamo().send(new ScanCommand({
+      TableName: table(),
+      FilterExpression: 'sk = :profile',
+      ExpressionAttributeValues: { ':profile': 'PROFILE' },
+      ExclusiveStartKey: startKey,
+    }));
+    profiles.push(...(res.Items || []));
+    startKey = res.LastEvaluatedKey;
+  } while (startKey);
+  return profiles;
+}
+
+// The rows the admin stats aggregate over, projected down to the fields the
+// aggregation reads so a 40k-character prompt never rides along.
+// ponytail: same full-table Scan tradeoff as listProfiles, same GSI upgrade path.
+async function scanForStats() {
+  const items = [];
+  let startKey;
+  do {
+    const res = await dynamo().send(new ScanCommand({
+      TableName: table(),
+      ProjectionExpression: 'pk, sk, companyId, grossEur, soldAt, #src, openedAt, rateEur, kind, units, #st, publishedAt, priceEur',
+      ExpressionAttributeNames: { '#src': 'source', '#st': 'status' },
+      ExclusiveStartKey: startKey,
+    }));
+    items.push(...(res.Items || []));
+    startKey = res.LastEvaluatedKey;
+  } while (startKey);
+  return items;
+}
+
 // ── audit trail ──────────────────────────────────────────────────────────────
 
 async function audit(userId, type, detail) {
@@ -322,6 +361,8 @@ module.exports = {
   consumeMagicToken,
   getUsage,
   listUserItems,
+  listProfiles,
+  scanForStats,
   getEntitlement,
   putEntitlement,
   putItem,

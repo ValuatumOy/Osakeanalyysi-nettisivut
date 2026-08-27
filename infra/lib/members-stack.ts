@@ -220,6 +220,12 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/fork-checkout'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/purchased'],
       [apigwv2.HttpMethod.GET, '/admin/members/publications'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users/{userId}'],
+      [apigwv2.HttpMethod.GET, '/admin/members/stats'],
+      [apigwv2.HttpMethod.GET, '/admin/members/promo-codes'],
+      [apigwv2.HttpMethod.POST, '/admin/members/promo-deactivate'],
+      [apigwv2.HttpMethod.POST, '/admin/members/void-review'],
       [apigwv2.HttpMethod.GET, '/admin/members/earnings'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
@@ -237,6 +243,18 @@ export class MembersStack extends Stack {
     for (const [method, routePath] of routes) {
       createdRoutes.push(...httpApi.addRoutes({ path: routePath, methods: [method], integration }));
     }
+
+    // One invoke permission for the whole API instead of one per route. CDK
+    // writes a separate Lambda::Permission per route, each ~300 bytes of the
+    // function's resource policy, and at ~70 routes the policy crossed AWS's
+    // hard 20 KB cap and every further route failed to deploy.
+    for (const route of createdRoutes) {
+      route.node.tryRemoveChild('MembersIntegration-Permission');
+    }
+    if (!this.node.tryGetContext('permissionPhase1')) membersFunction.addPermission('MembersApiInvokeAll', {
+      principal: new iam.ServicePrincipal('apigateway.amazonaws.com'),
+      sourceArn: `arn:aws:execute-api:${this.region}:${this.account}:${httpApi.apiId}/*/*/*`,
+    });
 
     // Same throttle pattern as ApiStack: sane default, tight lid on the
     // brute-forceable routes (magic link spam, admin/test secrets).

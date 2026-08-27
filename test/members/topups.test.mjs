@@ -47,8 +47,8 @@ test('both meters read the top-up when they check their limit', () => {
   const src = readFileSync(new URL('../../server/lambda/members.js', import.meta.url), 'utf8');
   // Both spend paths have to add the extra, or a member pays for picks that the
   // transact then refuses to let them spend.
-  assert.equal((src.match(/withTopUps\(/g) || []).length, 2,
-    'the pick path and the analyst-read path both call it');
+  assert.equal((src.match(/withTopUps\(/g) || []).length, 3,
+    'the pick path, the analyst-read path, and the admin user table');
   assert.match(src, /basePicks: \(limits\.basePicks \|\| 0\) \+ \(Number\(usage\?\.picksExtra\) \|\| 0\)/);
   assert.match(src, /analystReads: \(limits\.analystReads \|\| 0\) \+ \(Number\(usage\?\.analystReadsExtra\) \|\| 0\)/);
 });

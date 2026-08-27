@@ -2329,6 +2329,234 @@ async function postAdminFeature(event) {
   return json(200, { ok: true, genId: body.genId });
 }
 
+// GET /admin/members/users — every member, for the dashboard's user table.
+// Profile fields plus this month's meters; the detail view is a separate call.
+async function getAdminUsers(event) {
+  const now = requestNow(event);
+  const profiles = await store.listProfiles();
+  const month = quota.monthKey(now);
+  const users = await Promise.all(profiles.map(async (p) => {
+    const userId = String(p.pk || '').replace(/^USER#/, '');
+    const usage = await store.getUsage(userId, month);
+    const limits = withTopUps(limitsFor(p), usage);
+    return {
+      userId,
+      email: p.email || null,
+      name: p.name || null,
+      role: p.role || null,
+      tier: p.tier || 'none',
+      tierStatus: p.tierStatus || null,
+      billingInterval: p.billingInterval || null,
+      coverageCompanyIds: coveredCompanies(p),
+      banned: Boolean(p.banned),
+      createdAt: p.createdAt || null,
+      linkedinUrl: p.linkedinUrl || null,
+      openObligationId: p.openObligationId || null,
+      openReviewId: p.openReviewId || null,
+      usage: {
+        picks: usage?.picks || 0,
+        pickLimit: limits.basePicks,
+        analystReads: usage?.analystReads || 0,
+        analystReadLimit: limits.analystReads,
+        genReserved: Boolean(usage?.genReserved),
+      },
+    };
+  }));
+  users.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+  return json(200, { count: users.length, users });
+}
+
+// GET /admin/members/users/{userId} — one member, whole: everything in their
+// partition that tells the story. Publications with their reviews, what they
+// read, what they sold and were paid, and the last-90-days audit trail.
+async function getAdminUserDetail(event) {
+  const userId = event.pathParameters?.userId || '';
+  const profile = await store.getProfile(userId);
+  if (!profile) return json(404, { error: 'Unknown user' });
+
+  const [pubs, reads, sales, payouts, topups, entitlements, reviews, audits] = await Promise.all([
+    store.listUserItems(userId, 'PUB#'),
+    store.listUserItems(userId, 'READ#'),
+    store.listUserItems(userId, 'SALE#'),
+    store.listUserItems(userId, 'PAYOUT#'),
+    store.listUserItems(userId, 'TOPUP#'),
+    store.listUserItems(userId, 'ENT#'),
+    store.listUserItems(userId, 'REVIEW#'),
+    store.listUserItems(userId, 'AUDIT#'),
+  ]);
+
+  const publications = await Promise.all(pubs.map(async (pub) => {
+    const genId = String(pub.sk || '').replace(/^PUB#/, '');
+    const order = await ordersStore.get(genId);
+    return {
+      genId,
+      status: pub.status,
+      companyId: pub.companyId || order?.ticker || null,
+      companyName: order?.companyName || null,
+      publishedAt: pub.publishedAt || null,
+      reservedAt: pub.reservedAt || null,
+      priceEur: Number(pub.priceEur) || 0,
+      promptsPublic: quota.promptsArePublic(pub),
+      promptsText: pub.promptsText || '',
+      orderStatus: order?.status || null,
+      revisionsUsed: order?.revisionsUsed || 0,
+      revisionsAllowed: order?.revisionsAllowed || 0,
+      forkedFrom: order?.forkedFrom || null,
+      takedownReason: pub.takedownReason || null,
+      coverage: Boolean(pub.coverage),
+    };
+  }));
+
+  return json(200, {
+    profile: {
+      userId,
+      email: profile.email || null,
+      name: profile.name || null,
+      role: profile.role || null,
+      tier: profile.tier || 'none',
+      tierStatus: profile.tierStatus || null,
+      billingInterval: profile.billingInterval || null,
+      coverageCompanyIds: coveredCompanies(profile),
+      banned: Boolean(profile.banned),
+      createdAt: profile.createdAt || null,
+      linkedinUrl: profile.linkedinUrl || null,
+      stripeCustomerId: profile.stripeCustomerId || null,
+      openObligationId: profile.openObligationId || null,
+      openReviewId: profile.openReviewId || null,
+    },
+    publications,
+    // Reviews RECEIVED on this member's publications — the row lives in the
+    // owner's partition, keyed REVIEW#<genId>#<reviewerId>.
+    reviewsReceived: reviews.map((r) => ({
+      genId: r.genId,
+      reviewerId: r.reviewerId,
+      score: r.score,
+      comment: r.comment || '',
+      reviewedAt: r.reviewedAt || null,
+      voided: Boolean(r.voided),
+      edits: Array.isArray(r.history) ? r.history.length : 0,
+    })),
+    reads: reads.map((r) => ({ genId: String(r.sk || '').replace(/^READ#/, ''), ownerId: r.ownerId || null, openedAt: r.openedAt || null })),
+    sales: sales.map((sl) => ({ genId: sl.genId, companyId: sl.companyId || null, grossEur: Number(sl.grossEur) || 0, soldAt: sl.soldAt || null })),
+    payouts: payouts.map((po) => ({ id: String(po.sk || '').replace(/^PAYOUT#/, ''), amount: Number(po.amount) || 0, kind: po.kind || 'fee', paidAt: po.paidAt || null })),
+    topups: topups.map((t) => ({ kind: t.kind, units: t.units, creditedAt: t.creditedAt, month: t.month })),
+    entitlements: entitlements.map((e) => ({ reportId: String(e.sk || '').replace(/^ENT#/, ''), source: e.source || null, grantedAt: e.grantedAt || null })),
+    // 90-day TTL on audit rows, so this is recent activity, not history.
+    audit: audits.slice(-200).reverse().map((a) => ({ at: String(a.sk || '').slice(6, 30), type: a.type, detail: a.detail || null })),
+  });
+}
+
+// GET /admin/members/stats — what moved, bucketed by company. Derived from the
+// permanent rows (entitlements, reads, sales), never from the audit trail,
+// whose 90-day TTL would silently shrink history. Free-report downloads from
+// the public site are direct CDN links and leave no row anywhere — this counts
+// member activity and purchases, and the dashboard says so.
+async function getAdminStats(event) {
+  const now = requestNow(event);
+  const [items, index] = await Promise.all([
+    store.scanForStats(),
+    store.listPublicationIndex({}),
+  ]);
+  // genId → company for READ# rows, which carry only the genId.
+  const companyOf = new Map(index.map((i) => [i.genId, i.companyId]));
+
+  // A report id starts with the company token: teslainc-18082026 → teslainc.
+  const reportCompany = (reportId) => String(reportId || '').replace(/-\d{8}(-\d+)?$/, '');
+
+  const companies = new Map();
+  const bucket = (key) => {
+    const k = key || '(unknown)';
+    if (!companies.has(k)) companies.set(k, { reportOpens: 0, analystReads: 0, subscriberReads: 0, sales: 0, grossEur: 0, published: 0 });
+    return companies.get(k);
+  };
+
+  const totals = { users: 0, entitlements: 0, analystReads: 0, sales: 0, grossEur: 0, publications: 0, topups: 0, payoutsEur: 0 };
+  for (const item of items) {
+    const sk = String(item.sk || '');
+    if (sk === 'PROFILE') totals.users += 1;
+    else if (sk.startsWith('ENT#')) {
+      totals.entitlements += 1;
+      bucket(reportCompany(sk.slice(4))).reportOpens += 1;
+    } else if (sk.startsWith('READ#')) {
+      totals.analystReads += 1;
+      bucket(companyOf.get(sk.slice(5))).analystReads += 1;
+    } else if (sk.startsWith('SUBREAD#')) {
+      bucket(item.companyId).subscriberReads += 1;
+    } else if (sk.startsWith('SALE#')) {
+      totals.sales += 1;
+      totals.grossEur += Number(item.grossEur) || 0;
+      const b = bucket(item.companyId);
+      b.sales += 1;
+      b.grossEur += Number(item.grossEur) || 0;
+    } else if (sk.startsWith('PUB#') && item.publishedAt) {
+      totals.publications += 1;
+      bucket(item.companyId).published += 1;
+    } else if (sk.startsWith('TOPUP#')) totals.topups += 1;
+    else if (sk.startsWith('PAYOUT#')) totals.payoutsEur += Number(item.amount) || 0;
+  }
+
+  const byCompany = [...companies.entries()]
+    .map(([companyId, counts]) => ({ companyId, ...counts, grossEur: Math.round(counts.grossEur * 100) / 100 }))
+    .sort((a, b) => (b.reportOpens + b.analystReads + b.sales) - (a.reportOpens + a.analystReads + a.sales));
+
+  totals.grossEur = Math.round(totals.grossEur * 100) / 100;
+  totals.payoutsEur = Math.round(totals.payoutsEur * 100) / 100;
+  return json(200, { now: now.toISOString(), totals, byCompany });
+}
+
+// GET /admin/members/promo-codes — every live promotion code, with what it
+// gives away. This is how AINAILMAINEN2026 stops being a surprise: the codes
+// live in Stripe, the secret key lives here, so the listing has to too.
+async function getAdminPromoCodes() {
+  const res = await stripe().promotionCodes.list({ limit: 100 });
+  const codes = res.data.map((pc) => ({
+    code: pc.code,
+    active: pc.active,
+    percentOff: pc.coupon?.percent_off || null,
+    amountOffEur: pc.coupon?.amount_off ? pc.coupon.amount_off / 100 : null,
+    duration: pc.coupon?.duration || null,
+    timesRedeemed: pc.times_redeemed || 0,
+    maxRedemptions: pc.max_redemptions || null,
+    expiresAt: pc.expires_at ? new Date(pc.expires_at * 1000).toISOString() : null,
+    restrictions: pc.restrictions?.minimum_amount ? `min ${pc.restrictions.minimum_amount / 100} EUR` : null,
+    promoId: pc.id,
+  }));
+  return json(200, { count: codes.length, codes });
+}
+
+// POST /admin/members/promo-deactivate {promoId} — switch one off. Deactivation
+// only: creating codes stays in the Stripe dashboard, where the coupon terms are.
+async function postAdminPromoDeactivate(event) {
+  const body = parseBody(event);
+  if (!body?.promoId) return json(400, { error: 'promoId is required' });
+  const updated = await stripe().promotionCodes.update(String(body.promoId), { active: false });
+  return json(200, { ok: true, code: updated.code, active: updated.active });
+}
+
+// POST /admin/members/void-review {ownerId, genId, reviewerId} — take one
+// review out of the totals. The same transact the coverage rules use: the row
+// stays, flagged, and reviewCount/scoreSum give back exactly what it added.
+async function postAdminVoidReview(event) {
+  const now = requestNow(event);
+  const body = parseBody(event);
+  if (!body?.ownerId || !body?.genId || !body?.reviewerId) {
+    return json(400, { error: 'ownerId, genId and reviewerId are required' });
+  }
+  const review = await store.getItem(`USER#${body.ownerId}`, `REVIEW#${body.genId}#${body.reviewerId}`);
+  if (!review) return json(404, { error: 'No such review' });
+  if (review.voided) return json(409, { error: 'Already voided' });
+  const index = await store.findPublicationIndex(body.genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+
+  const committed = await store.runTransact(quota.buildVoidReviewTransact({
+    table: store.table(), ownerId: body.ownerId, reviewerId: body.reviewerId, now,
+    genId: body.genId, indexSk: index.sk, score: Number(review.score) || 0,
+  }));
+  if (!committed) return json(409, { error: 'Could not void — the review changed underneath' });
+  await store.audit(body.reviewerId, 'review-voided-by-admin', { genId: body.genId, score: review.score });
+  return json(200, { ok: true, genId: body.genId, reviewerId: body.reviewerId, scoreRemoved: review.score });
+}
+
 async function postAdminBan(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
@@ -2479,6 +2707,12 @@ const AUTHED_ROUTES = {
 
 const ADMIN_ROUTES = {
   'GET /admin/members/publications': getAdminPublications,
+  'GET /admin/members/users': getAdminUsers,
+  'GET /admin/members/users/{userId}': getAdminUserDetail,
+  'GET /admin/members/stats': getAdminStats,
+  'GET /admin/members/promo-codes': getAdminPromoCodes,
+  'POST /admin/members/promo-deactivate': postAdminPromoDeactivate,
+  'POST /admin/members/void-review': postAdminVoidReview,
   'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,
   'POST /admin/members/role': postAdminRole,
