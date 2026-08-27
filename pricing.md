@@ -58,8 +58,8 @@ Canonical page: https://www.aiequityreports.com/pricing.html
 ### Company Coverage
 
 - Price: €59 (one company · billed yearly only)
-- Summary: Own shares in one company and want to stay on top of it? Get its latest report now, then ask for a freshly generated one whenever you want, four times a year.
-- Includes: One listed company of your choice; Latest report immediately; 4 fresh reports a year, on request; Each written from that day’s figures
+- Summary: Own shares in a handful of companies and want to stay on top of them? Get each one's latest report now, then ask for a freshly generated one whenever you want, four times a year each.
+- Includes: One to five listed companies, €59 each; Latest report immediately; 4 fresh reports a year per company, on request; Each written from that day’s figures
 
 Yearly plans include a larger monthly report allowance and cost the equivalent of ten months. Quotas reset on the 1st of each calendar month and unused picks don't roll over. Reports opened with a membership are available for as long as the subscription is active; one-off purchases are yours to keep. Analyst freemium picks are limited to reports older than 30 days.
 

@@ -105,6 +105,15 @@ function requestNow(event) {
   return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
 }
 
+// A Company Coverage subscription used to be one company on the profile and is
+// now a list, priced per company. The single field stays readable so a
+// subscription sold before the list existed keeps working untouched.
+const coveredCompanies = (profile) => {
+  const many = Array.isArray(profile.coverageCompanyIds) ? profile.coverageCompanyIds : [];
+  const all = many.length ? many : [profile.coverageCompanyId];
+  return [...new Set(all.map((c) => String(c || '').trim().toUpperCase()).filter(Boolean))];
+};
+
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
 
@@ -252,6 +261,7 @@ async function getMe(event) {
     tierStatus: profile.tierStatus,
     billingInterval: profile.billingInterval || null,
     coverageCompanyId: profile.coverageCompanyId || null,
+    coverageCompanyIds: coveredCompanies(profile),
     banned: Boolean(profile.banned),
     month: monthKey,
     freshReportPrice: freshReportPrice(profile),
@@ -265,8 +275,11 @@ async function getMe(event) {
       analystReadLimit: limits.analystReads,
       genReserved: Boolean(usage?.genReserved),
       genId: usage?.genId || null,
+      // Per company now: the four are four for each company on the subscription.
       coverageUpdates: yearUsage?.coverageUpdates || 0,
       coverageUpdateLimit: quota.COVERAGE_UPDATES_PER_YEAR,
+      coverageUpdatesByCompany: Object.fromEntries(coveredCompanies(profile)
+        .map((c) => [c, yearUsage?.[quota.coverageCounter(c)] || 0])),
     },
     openObligationId: profile.openObligationId || null,
     linkedinUrl: profile.linkedinUrl || null,
@@ -321,15 +334,24 @@ async function postReportOpen(event) {
   // Company Coverage: only the covered company; initial report free once,
   // then 4 updates per year.
   if (tier === 'coverage') {
-    const covered = String(profile.coverageCompanyId || '').toUpperCase();
-    if (String(report.ticker || '').toUpperCase() !== covered) {
-      return json(403, { error: 'Company Coverage only includes your covered company' });
+    const covered = coveredCompanies(profile);
+    const ticker = String(report.ticker || '').toUpperCase();
+    if (!covered.includes(ticker)) {
+      return json(403, {
+        error: covered.length > 1
+          ? 'Company Coverage only includes the companies you cover'
+          : 'Company Coverage only includes your covered company',
+        covers: covered,
+      });
     }
+    // The free first report is per company: a three-company subscription that
+    // handed out one free report in total would be selling the same thing three
+    // times.
     const initial = await store.runTransact(
-      quota.buildCoverageInitialTransact({ table, userId: profile.userId, now, reportId }));
+      quota.buildCoverageInitialTransact({ table, userId: profile.userId, now, reportId, companyId: ticker }));
     if (initial) return sign('coverage');
     const update = await store.runTransact(
-      quota.buildCoverageUpdateTransact({ table, userId: profile.userId, now, reportId }));
+      quota.buildCoverageUpdateTransact({ table, userId: profile.userId, now, reportId, companyId: ticker }));
     if (update) return sign('coverage');
     if (await store.getEntitlement(profile.userId, reportId)) return sign('coverage'); // lost a benign race
     return json(429, { error: 'Yearly coverage updates used up' });
@@ -476,7 +498,11 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
   // is guarded by the PUB row having been 'generating' until a moment ago.
   if (publication.coverage) {
     const back = await store.runTransact(quota.buildReleaseCoverageTransact({
-      table: store.table(), userId: profile.userId, now, reservedAt: publication.reservedAt,
+      table: store.table(), userId: profile.userId, now,
+      reservedAt: publication.reservedAt,
+      // Written on the row when the update was spent: the counter it came off is
+      // that one company's, and crediting another company's would be a gift.
+      companyId: publication.coverageCompanyId || order.ticker,
     }));
     if (back) await store.audit(profile.userId, 'coverage-update-restored', { genId, reason: order.error || 'generation failed' });
     return back;
@@ -516,29 +542,39 @@ async function postGenerationCoverage(event) {
   if (activeTier(profile) !== 'coverage') {
     return json(403, { error: 'Report updates are part of Company Coverage' });
   }
-  const covered = String(profile.coverageCompanyId || '').toUpperCase();
-  if (!covered) return json(409, { error: 'Your subscription has no covered company yet' });
+  const covered = coveredCompanies(profile);
+  if (!covered.length) return json(409, { error: 'Your subscription has no covered company yet' });
   if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
 
-  const resolved = await resolveGenerationCompany(covered);
+  // With several companies on one subscription the request has to say which —
+  // but it may only ever name one of theirs, and with a single company it need
+  // not say anything at all.
+  const body = parseBody(event) || {};
+  const asked = String(body.ticker || body.companyId || '').trim().toUpperCase();
+  const target = asked || covered[0];
+  if (!covered.includes(target)) {
+    return json(403, { error: 'That company is not on your coverage subscription', covers: covered });
+  }
+
+  const resolved = await resolveGenerationCompany(target);
   if (resolved.error) return resolved.error;
   const match = resolved.match;
 
   // The quota first: a refused update must never start a billable engine run.
   const genId = crypto.randomUUID();
   const committed = await store.runTransact(quota.buildCoverageGenerationTransact({
-    table: store.table(), userId: profile.userId, now, genId,
+    table: store.table(), userId: profile.userId, now, genId, companyId: target,
   }));
   if (!committed) {
     return json(429, {
-      error: `All ${quota.COVERAGE_UPDATES_PER_YEAR} coverage updates for this year have been used`,
+      error: `All ${quota.COVERAGE_UPDATES_PER_YEAR} updates on ${target} for this year have been used`,
     });
   }
 
   await ordersStore.create({
     id: genId,
     email: profile.email,
-    companyName: match.companyName || covered,
+    companyName: match.companyName || target,
     ticker: match.ticker,
     exchange: match.exchange || '',
     industry: match.industry || '',
@@ -557,7 +593,7 @@ async function postGenerationCoverage(event) {
   await store.audit(profile.userId, 'coverage-update-requested', { genId, ticker: match.ticker });
   // A subscriber who also publishes now covers this company with a running report.
   await voidReviewsOnCoverage(profile.userId, match.ticker, now);
-  return json(200, { genId, status: 'NEW', company: match.companyName || covered, ticker: match.ticker });
+  return json(200, { genId, status: 'NEW', company: match.companyName || target, ticker: match.ticker });
 }
 
 // POST /generations/fresh {sessionId} — turn a paid checkout into a running
@@ -1155,18 +1191,28 @@ async function postBillingCheckout(event) {
   const priceId = memberPrices()[plan]?.[interval];
   if (!priceId) return json(400, { error: `Unknown plan/interval: ${plan}/${interval}` });
 
-  // Coverage is a year of one company: refuse the sale rather than take money
-  // for a ticker nothing in the catalog will ever match.
-  let coverageCompanyId = '';
+  // Coverage is a year of one company, or of several — priced per company, so a
+  // three-company subscription is three times the line. Refuse the sale rather
+  // than take money for a ticker nothing in the catalog will ever match.
+  let coverage = [];
   if (plan === 'coverage') {
-    const requested = String(body.coverageCompanyId || '').trim();
-    if (!requested) return json(400, { error: 'coverageCompanyId is required for coverage' });
+    const requested = (Array.isArray(body.coverageCompanyIds) && body.coverageCompanyIds.length
+      ? body.coverageCompanyIds
+      : [body.coverageCompanyId])
+      .map((c) => String(c || '').trim()).filter(Boolean);
+    if (!requested.length) return json(400, { error: 'Name at least one company to cover' });
+    if (requested.length > quota.COVERAGE_MAX_COMPANIES) {
+      return json(400, { error: `A coverage subscription carries at most ${quota.COVERAGE_MAX_COMPANIES} companies` });
+    }
     const { catalog } = await catalogAws.buildCatalogAws({ now });
-    coverageCompanyId = resolveTicker(catalog, requested);
-    if (!coverageCompanyId) {
-      return json(400, {
-        error: `We don't cover "${requested}" yet — pick a company from the reports page or request coverage.`,
-      });
+    for (const one of requested) {
+      const resolvedTicker = resolveTicker(catalog, one);
+      if (!resolvedTicker) {
+        return json(400, {
+          error: `We don't cover "${one}" yet — pick a company from the reports page or request coverage.`,
+        });
+      }
+      if (!coverage.includes(resolvedTicker)) coverage.push(resolvedTicker);
     }
   }
 
@@ -1185,10 +1231,20 @@ async function postBillingCheckout(event) {
     mode: 'subscription',
     allow_promotion_codes: true,
     customer: customerId,
-    line_items: [{ price: priceId, quantity: 1 }],
+    // Quantity is the company count: one Stripe price, no per-pack price ids to
+    // keep in step. A discount for covering several is a Stripe coupon, not a
+    // second price.
+    line_items: [{ price: priceId, quantity: plan === 'coverage' ? coverage.length : 1 }],
     client_reference_id: profile.userId,
     subscription_data: {
-      metadata: { userId: profile.userId, plan, coverageCompanyId },
+      metadata: {
+        userId: profile.userId,
+        plan,
+        // Both spellings: the list is what is read, and the single field keeps
+        // anything still looking for it working.
+        coverageCompanyId: coverage[0] || '',
+        coverageCompanyIds: coverage.join(','),
+      },
     },
     // Come back to whichever site started the checkout (prod / staging / dev);
     // frontendUrl falls back to this stage's own members page.
@@ -1271,8 +1327,15 @@ async function applySubscription(userId, subscription) {
     stripeSubscriptionId: subscription.id,
     currentPeriodEnd: subscription.current_period_end || 0,
   };
-  if (plan === 'coverage' && subscription.metadata?.coverageCompanyId) {
-    patch.coverageCompanyId = subscription.metadata.coverageCompanyId;
+  if (plan === 'coverage') {
+    const listed = String(subscription.metadata?.coverageCompanyIds || '')
+      .split(',').map((c) => c.trim().toUpperCase()).filter(Boolean);
+    const single = String(subscription.metadata?.coverageCompanyId || '').trim().toUpperCase();
+    const companies = listed.length ? listed : (single ? [single] : []);
+    if (companies.length) {
+      patch.coverageCompanyIds = companies;
+      patch.coverageCompanyId = companies[0];
+    }
   }
   await store.updateProfile(userId, patch);
   await store.audit(userId, 'subscription-status', { status: subscription.status, plan });

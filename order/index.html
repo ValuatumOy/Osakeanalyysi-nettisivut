@@ -259,6 +259,12 @@
         <div id="revisionExhausted" style="display:none;">
           <p class="order-sub" style="margin-top:1.5rem;">You've used all <span id="revisionExhaustedCount">—</span> included report revisions for this order.</p>
         </div>
+        <!-- Every delivered report can take more rounds, whether it came with any
+             or not. Running out used to be the end of the page. -->
+        <div id="revisionBuy" style="display:none; margin-top:1rem;">
+          <button type="button" class="btn btn-outline-dark btn-sm" id="revisionBuyBtn">Buy more revision rounds</button>
+          <span class="order-sub" id="revisionBuyHint" style="margin-left:0.75rem;"></span>
+        </div>
 
         <div id="revisionHistory"></div>
       </div>

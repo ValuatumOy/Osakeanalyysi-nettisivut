@@ -94,8 +94,8 @@
                is taken: the subscriber asks, and a real engine run starts on the
                company they pay to have covered. -->
           <div id="coverageCard" hidden style="margin-top:1rem;">
-            <button class="btn btn-primary btn-sm" id="coverageUpdateBtn" onclick="requestCoverageUpdate()">Request a report update</button>
-            <span class="muted" id="coverageUpdateHint" style="margin-left:0.75rem;"></span>
+            <div id="coverageCompanies"></div>
+            <p class="muted" style="font-size:var(--text-sm);">A fresh report written from today&rsquo;s figures. Takes 20 to 40 minutes and arrives by email.</p>
           </div>
         </div>
       </div>
@@ -328,12 +328,12 @@
                 <div class="name">Company Coverage</div>
                 <div class="price">€59 <span>/ year</span></div>
                 <ul>
-                  <li>One company of your choice</li>
-                  <li>Latest report + 4 updates a year</li>
+                  <li>Up to five companies, €59 each</li>
+                  <li>Latest report + 4 updates a year, per company</li>
                 </ul>
                 <div class="actions">
-                  <label class="field" style="flex:1 1 120px;"><span>Ticker</span>
-                    <input id="coverageTicker" class="input" placeholder="e.g. AMD">
+                  <label class="field" style="flex:1 1 200px;"><span>Tickers, comma separated</span>
+                    <input id="coverageTicker" class="input" placeholder="e.g. AMD, NOKIA.HE">
                   </label>
                   <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
                 </div>
@@ -502,13 +502,21 @@
       const coverageCard = document.getElementById('coverageCard');
       coverageCard.hidden = data.tier !== 'coverage';
       if (data.tier === 'coverage') {
-        const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (u.coverageUpdates || 0));
-        document.getElementById('coverageUpdateBtn').disabled = left_ < 1;
-        document.getElementById('coverageUpdateHint').textContent = left_
-          ? 'A fresh report on ' + (data.coverageCompanyId || 'your company')
-            + ', written from today\u2019s figures. Takes 20 to 40 minutes and arrives by email. '
-            + left_ + ' left this year.'
-          : 'All of this year\u2019s updates have been used.';
+        // One button per covered company: the four updates are four each, so a
+        // single button could not say whose they were.
+        const companies = data.coverageCompanyIds && data.coverageCompanyIds.length
+          ? data.coverageCompanyIds : [data.coverageCompanyId].filter(Boolean);
+        const used = u.coverageUpdatesByCompany || {};
+        document.getElementById('coverageCompanies').innerHTML = companies.map(c => {
+          const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (used[c] || 0));
+          return '<div style="margin-bottom:.5rem;">'
+            + '<button class="btn btn-primary btn-sm" data-coverage-update="' + esc(c) + '"'
+            + (left_ ? '' : ' disabled') + '>Request a ' + esc(c) + ' update</button>'
+            + '<span class="muted" style="margin-left:.75rem;">'
+            + (left_ ? left_ + ' of ' + u.coverageUpdateLimit + ' left this year'
+                     : 'All of this year\u2019s updates used')
+            + '</span></div>';
+        }).join('');
       }
 
       const genCard = document.getElementById('genCard');
@@ -561,8 +569,11 @@
     async function checkout(plan, interval) {
       const body = { plan, interval, returnTo: RETURN_TO };
       if (plan === 'coverage') {
-        body.coverageCompanyId = document.getElementById('coverageTicker').value.trim().toUpperCase();
-        if (!body.coverageCompanyId) { notice('err', 'Enter the ticker of the company you want covered.'); return; }
+        // Priced per company, so the list is the quantity.
+        body.coverageCompanyIds = document.getElementById('coverageTicker').value
+          .split(',').map(t => t.trim().toUpperCase()).filter(Boolean);
+        if (!body.coverageCompanyIds.length) { notice('err', 'Enter the ticker of each company you want covered.'); return; }
+        if (body.coverageCompanyIds.length > 5) { notice('err', 'A coverage subscription carries at most five companies.'); return; }
       }
       const { status, data } = await api('POST', '/billing/checkout', body);
       if (data?.url) location.href = data.url;
@@ -825,13 +836,17 @@
       } else notice('err', (data && data.error) || ('Could not save the link (' + status + ')'));
     }
 
-    async function requestCoverageUpdate() {
-      if (!confirm('Start a fresh report on your covered company?\n\n'
-        + 'It spends one of your four updates for this year and takes 20 to 40 minutes. '
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-coverage-update]');
+      if (btn) requestCoverageUpdate(btn.getAttribute('data-coverage-update'), btn);
+    });
+
+    async function requestCoverageUpdate(ticker, button) {
+      if (!confirm('Start a fresh report on ' + ticker + '?\n\n'
+        + 'It spends one of that company\u2019s four updates for this year and takes 20 to 40 minutes. '
         + 'You will get it by email, and it appears in your reports below.')) return;
-      const button = document.getElementById('coverageUpdateBtn');
       button.disabled = true;
-      const { status, data } = await api('POST', '/generations/coverage');
+      const { status, data } = await api('POST', '/generations/coverage', { ticker });
       if (status !== 200) {
         button.disabled = false;
         notice('err', (data && data.error) || ('Could not start the update (' + status + ')'));

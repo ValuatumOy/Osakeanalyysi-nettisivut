@@ -5,6 +5,16 @@
 // Allowances live in tiers.js — three tunable numbers per role/tier.
 const FREEMIUM_MIN_AGE_DAYS = 30;
 const COVERAGE_UPDATES_PER_YEAR = 4;
+// A Company Coverage subscription may carry more than one company, priced per
+// company. The four updates are therefore four PER company — otherwise a
+// three-company subscriber pays three times over for the same four reports.
+const COVERAGE_MAX_COMPANIES = 5;
+
+// One counter per covered company on the year's usage item. The ticker goes
+// through ExpressionAttributeNames, so dots and dashes in it need no escaping.
+function coverageCounter(companyId) {
+  return `cov#${String(companyId || '').toUpperCase()}`;
+}
 // An analysis may be given away free for at most a year (Esa, 17.8.2026): the
 // analyst sets the decay themselves, and free archive accumulates by itself.
 const MAX_FREE_AFTER_DAYS = 365;
@@ -781,15 +791,19 @@ function buildTakedownTransact({ table, userId, now, genId, reason, indexSk }) {
 // Company Coverage: the initial report is free once per subscription
 // (coverageInitialGranted flag on PROFILE); after that each new report of the
 // covered company consumes one of the 4 yearly updates.
-function buildCoverageInitialTransact({ table, userId, now, reportId }) {
+function buildCoverageInitialTransact({ table, userId, now, reportId, companyId }) {
+  // Per company, not per subscription: a three-company subscriber is paying for
+  // three companies' initial reports, not for one.
+  const flag = `coverageInitial#${String(companyId || '').toUpperCase()}`;
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
-          UpdateExpression: 'SET coverageInitialGranted = :true',
-          ConditionExpression: 'attribute_not_exists(coverageInitialGranted)',
+          UpdateExpression: 'SET #f = :true',
+          ConditionExpression: 'attribute_not_exists(#f)',
+          ExpressionAttributeNames: { '#f': flag },
           ExpressionAttributeValues: { ':true': true },
         },
       },
@@ -804,15 +818,16 @@ function buildCoverageInitialTransact({ table, userId, now, reportId }) {
   };
 }
 
-function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
+function buildCoverageUpdateTransact({ table, userId, now, reportId, companyId }) {
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
-          UpdateExpression: 'SET coverageUpdates = if_not_exists(coverageUpdates, :zero) + :one',
-          ConditionExpression: 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max',
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
           ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
         },
       },
@@ -835,15 +850,16 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
 //
 // No ENT# row here: there is no report id yet. The order page is the way in
 // until the engine delivers, exactly as it is for any other private generation.
-function buildCoverageGenerationTransact({ table, userId, now, genId }) {
+function buildCoverageGenerationTransact({ table, userId, now, genId, companyId }) {
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
-          UpdateExpression: 'SET coverageUpdates = if_not_exists(coverageUpdates, :zero) + :one',
-          ConditionExpression: 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max',
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
           ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
         },
       },
@@ -856,8 +872,10 @@ function buildCoverageGenerationTransact({ table, userId, now, genId }) {
             status: 'generating',
             private: true,
             // What the restore path keys on: this run spent a yearly update, not
-            // a monthly slot, and the two are given back differently.
+            // a monthly slot, and the two are given back differently. The company
+            // rides along because the counter it came off is that company's own.
             coverage: true,
+            coverageCompanyId: String(companyId || '').toUpperCase(),
             reservedAt: now.toISOString(),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
@@ -870,7 +888,7 @@ function buildCoverageGenerationTransact({ table, userId, now, genId }) {
 // The refund of the above. A run the engine never delivered must not cost a
 // quarter of the year's coverage: without this a single failure silently eats
 // one of the four the subscriber paid for.
-function buildReleaseCoverageTransact({ table, userId, now, reservedAt }) {
+function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyId }) {
   return {
     TransactItems: [
       {
@@ -879,8 +897,9 @@ function buildReleaseCoverageTransact({ table, userId, now, reservedAt }) {
           // Credited back to the year it was spent in, which is not necessarily
           // the year the failure is noticed in.
           Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(reservedAt ? new Date(reservedAt) : now)}` },
-          UpdateExpression: 'SET coverageUpdates = coverageUpdates - :one',
-          ConditionExpression: 'coverageUpdates > :zero',
+          UpdateExpression: 'SET #c = #c - :one',
+          ConditionExpression: '#c > :zero',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
           ExpressionAttributeValues: { ':one': 1, ':zero': 0 },
         },
       },
@@ -891,6 +910,8 @@ function buildReleaseCoverageTransact({ table, userId, now, reservedAt }) {
 module.exports = {
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
+  COVERAGE_MAX_COMPANIES,
+  coverageCounter,
   MAX_FREE_AFTER_DAYS,
   monthKey,
   yearKey,
