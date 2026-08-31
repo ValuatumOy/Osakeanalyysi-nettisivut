@@ -198,6 +198,41 @@ async function submitOrderRevision(orderId, comments) {
   });
 }
 
+// Submit the customer's hand edits to the report text. Same trust model as
+// submitOrderRevision: the caller has verified the Stripe session.
+async function submitOrderEdit(orderId, { edits, originals, editedBy }) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot submit an edit');
+  }
+  return fetchJson(`${base}/api/orders/${encodeURIComponent(orderId)}/edits`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${secret}` },
+    body: JSON.stringify({ edits, originals, editedBy }),
+  });
+}
+
+// The rendered report as HTML for the text editor. Resolves { html } or throws
+// with `.status` from the backend (409 when the report cannot be edited).
+async function getOrderPreview(orderId) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot read the report preview');
+  }
+  const response = await fetch(`${base}/api/orders/${encodeURIComponent(orderId)}/preview`, {
+    headers: { Authorization: `Bearer ${secret}` },
+  });
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}));
+    const error = new Error(data.error || `Preview request failed: ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  return { html: await response.text() };
+}
+
 module.exports = {
   getCatalogReport,
   getCatalogReports,
@@ -205,6 +240,8 @@ module.exports = {
   requestReportDownload,
   getOrderState,
   submitOrderRevision,
+  submitOrderEdit,
+  getOrderPreview,
   normalizeCatalogReport,
   toBackendReport,
 };

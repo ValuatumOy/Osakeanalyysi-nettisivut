@@ -109,6 +109,11 @@ async function create(input) {
     reportId: input.reportId || null,
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,
+    // The engine job behind version 1. `jobId` moves on with every delivered
+    // revision or edit, so this is the only place the original's job survives
+    // (needed to edit or revise the original again later). Stamped here for
+    // an order that starts delivered, by deliver() for a fresh one.
+    originalJobId: input.jobId || null,
     importStatus: null,
     pdfFileName: input.pdfFileName || null,
     // Set once, on first delivery, and never touched again — pdfFileName itself
@@ -130,6 +135,14 @@ async function create(input) {
     // appended here — see originalPdfFileName above instead.
     revisionHistory: [],
     revisionError: null,
+    // A hand edit in flight, `{ edits, originals, editedBy, fromVersion }`:
+    // pendingEdit until the worker has submitted it to the engine, activeEdit
+    // from then until delivery labels the resulting revisionHistory entry.
+    // Edits are free and unlimited, so they have no allowance; editsUsed only
+    // counts them (a forked analysis must add something before it publishes).
+    pendingEdit: null,
+    activeEdit: null,
+    editsUsed: 0,
     deliveredEmailAt: null,
     error: null,
     attempts: 0,
@@ -183,7 +196,36 @@ async function claimRevision(id, comment) {
   }
 }
 
-// Patch an order in place and bump updatedAt. `id` and `createdAt` are protected.
+// Claim the right to apply hand edits: only from DELIVERED. Edits are free
+// and unlimited, so unlike claimRevision there is no allowance to check —
+// only the status, so two tabs cannot start two edit jobs on the same base.
+// Returns null when the claim fails; the caller turns that into a 409.
+async function claimEdit(id, edit) {
+  try {
+    const res = await dynamo().send(new UpdateCommand({
+      TableName: TABLE(),
+      Key: { orderId: id },
+      UpdateExpression: 'SET #s = :revising, pendingEdit = :edit, pendingRevisionComment = :null, '
+        + 'revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
+      ConditionExpression: '#s = :delivered',
+      ExpressionAttributeNames: { '#s': 'status' },
+      ExpressionAttributeValues: {
+        ':revising': STATUS.REVISING,
+        ':delivered': STATUS.DELIVERED,
+        ':edit': edit,
+        ':null': null,
+        ':zero': 0,
+        ':now': nowIso(),
+      },
+      ReturnValues: 'ALL_NEW',
+    }));
+    return toRow(res.Attributes);
+  } catch (err) {
+    if (err.name === 'ConditionalCheckFailedException') return null;
+    throw err;
+  }
+}
+
 // Raise the revision allowance by a paid amount. ADD rather than a read and a
 // write, so two purchases landing together both count.
 async function addRevisionsAllowed(id, rounds) {
@@ -244,4 +286,5 @@ module.exports = {
   update,
   addRevisionsAllowed,
   claimRevision,
+  claimEdit,
 };

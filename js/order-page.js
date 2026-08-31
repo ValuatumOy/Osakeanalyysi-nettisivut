@@ -116,9 +116,9 @@
     if (pollTimer) clearTimeout(pollTimer);
     pollTimer = null;
   }
-  function pollAgain() {
+  function pollAgain(delayMs) {
     stopPolling();
-    pollTimer = setTimeout(load, POLL_MS);
+    pollTimer = setTimeout(load, delayMs || POLL_MS);
   }
 
   // A 404 right after checkout does not mean the order is missing — it means
@@ -416,13 +416,13 @@
 
   function renderRevisionHistory(list) {
     if (!list || !list.length) return '';
-    let html = '<div class="revision-history"><div class="revision-history-title">Revision history</div>';
+    let html = '<div class="revision-history"><div class="revision-history-title">Versions</div>';
     list.forEach((entry, index) => {
-      const label = entry.original ? 'Original report' : 'Revision ' + escapeHtml(entry.version);
       const date = formatDate(entry.completedAt);
       html += '<details class="revision-entry"' + (index === 0 ? ' open' : '') + '>';
       html += '<summary class="revision-entry-summary">'
-        + '<span><span class="revision-entry-label">' + label + '</span>'
+        + '<span><span class="revision-entry-label">' + versionLabel(entry) + '</span>'
+        + versionBadge(entry)
         + (date ? ' <span class="revision-entry-date">' + escapeHtml(date) + '</span>' : '') + '</span>';
       if (entry.pdfUrl) {
         html += '<a class="revision-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">Download this version</a>';
@@ -430,10 +430,14 @@
       html += '</summary>';
       html += '<div class="revision-entry-body">';
       if (entry.original) {
-        html += '<p class="revision-no-memo">The report as originally delivered, before any revisions.</p>';
+        html += '<p class="revision-no-memo">The report as originally delivered, written by the AI, before any revisions or edits.</p>';
+      } else if (entry.kind === 'edit') {
+        html += renderEditDetails(entry);
       } else {
         if (entry.comments) html += '<p class="revision-comment">' + escapeHtml(entry.comments) + '</p>';
+        html += renderAnalystProse(entry.changes);
         html += renderChangeMemo(entry.changes);
+        html += renderFit(entry.fit);
       }
       html += '</div></details>';
     });
@@ -441,12 +445,479 @@
     return html;
   }
 
+  // ── Who wrote a version ─────────────────────────────────────────────
+  // Every version is either the AI's work (the original, or a revision from
+  // the customer's instructions), the customer's own hand edit, or an AI
+  // revision that kept hand-edited paragraphs from an earlier version.
+  function versionLabel(entry) {
+    if (entry.original) return 'Version 1 · Original report';
+    if (entry.kind === 'edit') return 'Version ' + escapeHtml(entry.version) + ' · Edited by hand';
+    return 'Version ' + escapeHtml(entry.version) + ' · AI revision';
+  }
+
+  function versionBadge(entry) {
+    if (entry.kind === 'edit') {
+      const who = entry.editedBy ? 'Written by ' + escapeHtml(entry.editedBy) : 'Written by you';
+      const from = entry.editedFrom != null && entry.editedFrom !== entry.version - 1
+        ? ' · from version ' + escapeHtml(entry.editedFrom) : '';
+      return '<span class="version-badge version-badge--hand">' + who + from + '</span>';
+    }
+    if (entry.authorship === 'mixed') {
+      return '<span class="version-badge version-badge--mixed">AI-written · keeps your hand edits</span>';
+    }
+    return '<span class="version-badge version-badge--ai">AI-written</span>';
+  }
+
+  // A pointer names a field in the report's data ("recommendation/prose/0",
+  // "chrome:thesis_title/title"). Turn it into something a reader can place.
+  const POINTER_SECTIONS = {
+    recommendation: 'Recommendation', coreAnalysis: 'Core analysis', valuePools: 'Value pools',
+    valuation: 'Valuation', risks: 'Risks', catalysts: 'Catalysts', thesisReasons: 'Investment thesis',
+    company: 'Company', summary: 'Summary', financials: 'Financials', outlook: 'Outlook',
+  };
+  function pointerLabel(pointer) {
+    const p = String(pointer || '');
+    if (p.startsWith('chrome:')) return 'Heading';
+    const parts = p.split('/');
+    const head = POINTER_SECTIONS[parts[0]] || parts[0].replace(/([a-z])([A-Z])/g, '$1 $2').replace(/^./, (c) => c.toUpperCase());
+    const rest = parts.slice(1).filter((seg) => !/^(prose|paragraphs|body|text)$/.test(seg));
+    // A trailing index is a paragraph ("…, paragraph 3"); an index in the
+    // middle numbers the item before it ("Value pools 2, deep dive, …").
+    let label = head;
+    rest.forEach((seg, i) => {
+      if (/^\d+$/.test(seg)) label += (i === rest.length - 1 ? ', paragraph ' : ' ') + (Number(seg) + 1);
+      else label += ', ' + seg.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    });
+    return label;
+  }
+
+  // Word-level before/after: a longest-common-subsequence over word tokens,
+  // rendered with <del>/<ins>. Small texts only (one paragraph), so the
+  // quadratic table is fine.
+  function diffWords(before, after) {
+    const a = String(before || '').split(/(\s+)/).filter((t) => t !== '');
+    const b = String(after || '').split(/(\s+)/).filter((t) => t !== '');
+    if (a.length * b.length > 250000) {
+      return '<del>' + escapeHtml(before) + '</del> <ins>' + escapeHtml(after) + '</ins>';
+    }
+    const table = [];
+    for (let i = a.length; i >= 0; i -= 1) {
+      table[i] = [];
+      for (let j = b.length; j >= 0; j -= 1) {
+        if (i === a.length || j === b.length) table[i][j] = 0;
+        else if (a[i] === b[j]) table[i][j] = table[i + 1][j + 1] + 1;
+        else table[i][j] = Math.max(table[i + 1][j], table[i][j + 1]);
+      }
+    }
+    let html = '';
+    let i = 0, j = 0;
+    let del = '', ins = '';
+    const flush = () => {
+      if (del) html += '<del>' + escapeHtml(del) + '</del>';
+      if (ins) html += '<ins>' + escapeHtml(ins) + '</ins>';
+      del = ''; ins = '';
+    };
+    while (i < a.length && j < b.length) {
+      if (a[i] === b[j]) { flush(); html += escapeHtml(a[i]); i += 1; j += 1; }
+      else if (table[i + 1][j] >= table[i][j + 1]) { del += a[i]; i += 1; }
+      else { ins += b[j]; j += 1; }
+    }
+    while (i < a.length) { del += a[i]; i += 1; }
+    while (j < b.length) { ins += b[j]; j += 1; }
+    flush();
+    return html;
+  }
+
+  // The renderer's page-fit report on a delivered version: pages that printed
+  // smaller to fit, and pages whose tail is cut off even at the smallest size.
+  function renderFit(fit) {
+    if (!fit) return '';
+    const clipped = fit.clipped || [];
+    const shrunk = fit.shrunk || [];
+    if (clipped.length) {
+      return '<p class="version-fit version-fit--clipped">Page' + (clipped.length > 1 ? 's ' : ' ')
+        + clipped.map((p) => escapeHtml(p.page)).join(', ') + ' cut off in the PDF — the text no longer fits. Shorten it and save again.</p>';
+    }
+    if (shrunk.length) {
+      return '<p class="version-fit version-fit--shrunk">Page' + (shrunk.length > 1 ? 's ' : ' ')
+        + shrunk.map((p) => escapeHtml(p.page) + ' printed at ' + Math.round(p.zoom * 100) + '%').join(', ') + ' to fit the text.</p>';
+    }
+    return '';
+  }
+
+  // A hand-edited version: who changed what, side by side, plus what the
+  // engine noticed about the edit (figures changed in prose, over-long text).
+  function renderEditDetails(entry) {
+    const edits = entry.edits || [];
+    const warnings = entry.editWarnings || {};
+    const who = entry.editedBy ? escapeHtml(entry.editedBy) : 'You';
+    let html = '<p class="revision-comment">' + who + ' changed ' + edits.length + ' ' + (edits.length === 1 ? 'paragraph' : 'paragraphs')
+      + ' by hand. No AI pass ran: every other paragraph, and every table, chart and figure, is exactly as in version '
+      + escapeHtml(entry.editedFrom != null ? entry.editedFrom : entry.version - 1) + '.</p>';
+
+    if (!edits.length) {
+      html += renderChangeMemo(entry.changes);
+    } else {
+      edits.forEach((edit) => {
+        html += '<div class="edit-diff"><div class="edit-diff-label">' + escapeHtml(pointerLabel(edit.pointer)) + '</div>';
+        if (edit.after === '') {
+          html += '<p class="edit-removed">Paragraph removed.</p>'
+            + (edit.before ? '<div class="edit-diff-text"><del>' + escapeHtml(edit.before) + '</del></div>' : '');
+        } else if (edit.before == null) {
+          html += '<div class="edit-diff-text">' + escapeHtml(edit.after) + '</div>';
+        } else {
+          html += '<div class="edit-diff-text">' + diffWords(edit.before, edit.after) + '</div>';
+        }
+        const numbers = warnings.changedNumbers && warnings.changedNumbers[edit.pointer];
+        if (numbers) {
+          const parts = [];
+          if (numbers.retained === false) parts.push('a figure from the original text was changed or dropped');
+          if (numbers.added && numbers.added.length) parts.push('figures introduced: ' + numbers.added.map(escapeHtml).join(', '));
+          html += '<p class="edit-diff-note">Figures changed by hand — ' + parts.join('; ') + '. The tables were not updated and may now disagree with this text.</p>';
+        }
+        const over = warnings.overBudget && warnings.overBudget[edit.pointer];
+        if (over) {
+          html += '<p class="edit-diff-note">Longer than the space allows (' + escapeHtml(over.length) + ' characters, suggested at most ' + escapeHtml(over.budget) + ').</p>';
+        }
+        html += '</div>';
+      });
+      if (warnings.unknownPointers && warnings.unknownPointers.length) {
+        html += '<p class="revision-caveat">' + warnings.unknownPointers.length + ' change' + (warnings.unknownPointers.length > 1 ? 's' : '')
+          + ' could not be applied because the paragraph no longer exists in the report.</p>';
+      }
+    }
+    html += renderFit(entry.fit);
+    return html;
+  }
+
+  // An AI revision of a version that carried hand-edited paragraphs: what
+  // happened to each of them.
+  function renderAnalystProse(memo) {
+    const prose = memo && memo.analystProse;
+    if (!prose) return '';
+    const restored = prose.restored || [];
+    const rewritten = prose.rewritten || [];
+    const dropped = prose.dropped || [];
+    if (!restored.length && !rewritten.length && !dropped.length) return '';
+    let html = '<div class="analyst-prose"><strong>Your hand edits in this version.</strong> ';
+    if (restored.length) html += restored.length + ' hand-edited paragraph' + (restored.length > 1 ? 's were' : ' was') + ' kept word for word (' + restored.map((p) => escapeHtml(pointerLabel(p))).join('; ') + '). ';
+    if (rewritten.length) html += rewritten.length + ' ' + (rewritten.length > 1 ? 'were' : 'was') + ' rewritten by the AI (' + rewritten.map((p) => escapeHtml(pointerLabel(p))).join('; ') + '). ';
+    if (dropped.length) html += dropped.length + ' lost ' + (dropped.length > 1 ? 'their places' : 'its place') + ' because the revision rebuilt that section (' + dropped.map((p) => escapeHtml(pointerLabel(p))).join('; ') + ').';
+    return html + '</div>';
+  }
+
+  // ── The text editor ─────────────────────────────────────────────────
+  // The report is shown as the engine's own rendered HTML in a frame, so the
+  // customer edits exactly what will print. Every editable paragraph in that
+  // document carries a data-pointer (the field it maps to); a small script
+  // appended to the document handles click-to-edit and reports edits and a
+  // page-fit estimate back to this page through postMessage. The frame is
+  // sandboxed to scripts only (no same-origin access), so this page never
+  // touches the document's DOM and the document cannot touch this page.
+  const PAGE_WIDTH = 794; // the width the engine renders at
+  const FIT_FLOOR = 0.85;  // the engine's smallest print size before a page clips
+
+  // Plain, old-style JavaScript: it runs inside the sandboxed frame.
+  const AGENT = [
+    '<style>',
+    '  [data-pointer]:not([data-derived]) { cursor: text; transition: box-shadow .12s; border-radius: 2px; }',
+    '  [data-pointer]:not([data-derived]):hover { box-shadow: 0 0 0 2px rgba(61,158,114,.5); }',
+    '  [data-pointer][contenteditable] { box-shadow: 0 0 0 2px rgb(61,158,114); outline: none; background: rgba(61,158,114,.06); }',
+    '  [data-pointer][data-edited="true"] { box-shadow: 0 0 0 2px rgba(217,119,6,.55); }',
+    '  [data-derived] { cursor: not-allowed; }',
+    '</style>',
+    '<script>',
+    '(function () {',
+    '  var FLOOR = ' + FIT_FLOOR + ';',
+    '  var originals = {};',
+    '  var post = function (m) { window.parent.postMessage(m, "*"); };',
+    '  var editable = Array.prototype.slice.call(document.querySelectorAll("[data-pointer]:not([data-derived])"));',
+    '  editable.forEach(function (el) {',
+    '    var pointer = el.getAttribute("data-pointer");',
+    '    originals[pointer] = el.textContent;',
+    '    el.addEventListener("click", function (e) {',
+    '      if (el.getAttribute("contenteditable")) return;',
+    '      e.preventDefault();',
+    '      el.setAttribute("contenteditable", "plaintext-only");',
+    '      if (el.getAttribute("contenteditable") !== "plaintext-only") el.setAttribute("contenteditable", "true");',
+    '      el.focus();',
+    '    });',
+    '    el.addEventListener("input", function () {',
+    '      var text = el.textContent;',
+    '      el.setAttribute("data-edited", text !== originals[pointer] ? "true" : "false");',
+    '      post({ type: "edit", pointer: pointer, text: text, original: originals[pointer] });',
+    '      scheduleFit();',
+    '    });',
+    '    el.addEventListener("blur", function () { el.removeAttribute("contenteditable"); });',
+    '    el.addEventListener("keydown", function (e) {',
+    '      if (e.key === "Escape") { el.blur(); }',
+    '      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); }', // one element is one paragraph
+    '    });',
+    '  });',
+    '  window.addEventListener("message", function (e) {',
+    '    var m = e.data || {};',
+    '    if (m.type !== "restore") return;',
+    '    editable.forEach(function (el) {',
+    '      if (el.getAttribute("data-pointer") !== m.pointer) return;',
+    '      el.textContent = originals[m.pointer];',
+    '      el.setAttribute("data-edited", "false");',
+    '    });',
+    '    scheduleFit();',
+    '  });',
+    '  var fitTimer = null;',
+    '  function scheduleFit() { clearTimeout(fitTimer); fitTimer = setTimeout(measureFit, 250); }',
+    '  function measureFit() {',
+    '    var bodies = Array.prototype.slice.call(document.querySelectorAll(".page-body"));',
+    '    var pages = [];',
+    '    bodies.forEach(function (el, i) {',
+    '      el.style.zoom = "";',
+    '      var zoom = 1;',
+    '      for (var pass = 0; pass < 3 && el.scrollHeight - el.clientHeight > 2 && zoom > FLOOR; pass++) {',
+    '        zoom = Math.max(FLOOR, zoom * Math.min(1, (el.clientHeight / el.scrollHeight) - 0.01));',
+    '        el.style.zoom = String(zoom);',
+    '      }',
+    '      var over = Math.max(0, el.scrollHeight - el.clientHeight);',
+    '      if (zoom < 1 || over > 2) pages.push({ page: i + 1, zoom: Math.round(zoom * 1000) / 1000, over: over });',
+    '    });',
+    '    post({ type: "fit", pages: pages });',
+    '  }',
+    '  function whenReady(fn) {',
+    '    if (window.__CHARTS_READY__ === true) return fn();',
+    '    var n = 0; var t = setInterval(function () { if (window.__CHARTS_READY__ === true || ++n > 200) { clearInterval(t); fn(); } }, 100);',
+    '  }',
+    '  whenReady(function () { post({ type: "ready", editable: editable.length }); measureFit(); });',
+    '})();',
+    '</script>',
+  ].join('\n');
+
+  // The suggested length per paragraph: +35% or +200 characters, the same hint
+  // the engine reports. A warning, not a limit — the page fit below is the
+  // real answer.
+  function editBudget(originalLength) {
+    return Math.round(Math.max(originalLength * 1.35, originalLength + 200));
+  }
+
+  const editor = {
+    open: false,
+    frame: null,
+    edits: new Map(), // pointer -> { text, original, budget }
+    fit: null,
+    editableCount: null,
+    nextVersion: 2,
+    saving: false,
+  };
+
+  function fetchPreviewHtml() {
+    if (!isMemberRun()) {
+      return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId) + '&preview=1');
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/preview', {
+      headers: { authorization: 'Bearer ' + memberToken() },
+    });
+  }
+
+  function postEdits(payload) {
+    if (!isMemberRun()) {
+      return fetch('/api/order-revision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign({ session_id: sessionId }, payload)),
+      });
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/edits', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+      body: JSON.stringify(payload),
+    });
+  }
+
+  function shortText(text, n) {
+    const s = String(text || '');
+    return s.length > n ? s.slice(0, n).trimEnd() + '…' : s;
+  }
+
+  function renderEditorPanel() {
+    const changesEl = document.getElementById('editorChanges');
+    const warningsEl = document.getElementById('editorWarnings');
+    const saveBtn = document.getElementById('editSaveBtn');
+    const changed = [...editor.edits.values()];
+
+    if (!changed.length) {
+      changesEl.innerHTML = '<p class="editor-empty">No changes yet' + (editor.editableCount != null ? ' — ' + editor.editableCount + ' paragraphs can be edited.' : '.') + '</p>';
+    } else {
+      changesEl.innerHTML = '<ol class="editor-changes">' + changed.map((e) => {
+        const over = e.text.length > e.budget;
+        return '<li class="editor-change" data-pointer="' + escapeAttr(e.pointer) + '">'
+          + '<div class="editor-change-head"><span class="label" title="' + escapeAttr(e.pointer) + '">' + escapeHtml(pointerLabel(e.pointer)) + '</span>'
+          + '<span class="count' + (over ? ' is-over' : '') + '">' + e.text.length + '/' + e.budget + '</span>'
+          + '<button type="button" data-discard="' + escapeAttr(e.pointer) + '" title="Discard this change">✕</button></div>'
+          + (e.text === '' ? '<p class="editor-change-text is-removed">Paragraph will be removed</p>'
+            : '<p class="editor-change-text">' + escapeHtml(shortText(e.text, 140)) + '</p>')
+          + '</li>';
+      }).join('') + '</ol>';
+    }
+
+    const overBudget = changed.filter((e) => e.text.length > e.budget);
+    const clipped = (editor.fit && editor.fit.pages.filter((p) => p.over > 2)) || [];
+    const shrunk = (editor.fit && editor.fit.pages.filter((p) => p.over <= 2 && p.zoom < 1)) || [];
+    if (overBudget.length || clipped.length || shrunk.length) {
+      let html = '<div class="editor-warnings">';
+      if (overBudget.length) html += '<p>' + (overBudget.length === 1 ? 'One paragraph is' : overBudget.length + ' paragraphs are') + ' longer than the space suggests. It will still be applied; check the page fit.</p>';
+      if (shrunk.length) html += '<p>Page' + (shrunk.length > 1 ? 's ' : ' ') + shrunk.map((p) => p.page + ' (' + Math.round(p.zoom * 100) + '%)').join(', ') + ' would print smaller to fit.</p>';
+      if (clipped.length) html += '<p><strong>Page' + (clipped.length > 1 ? 's ' : ' ') + clipped.map((p) => p.page).join(', ') + ' would be cut off even at ' + Math.round(FIT_FLOOR * 100) + '%. Shorten the text.</strong></p>';
+      html += '<p>An estimate while you type — the saved version reports the real page fit.</p></div>';
+      warningsEl.innerHTML = html;
+    } else {
+      warningsEl.innerHTML = '';
+    }
+
+    saveBtn.disabled = editor.saving || !changed.length;
+    saveBtn.textContent = editor.saving ? 'Saving…' : 'Save as version ' + editor.nextVersion;
+  }
+
+  function fitFrame() {
+    const wrap = document.getElementById('editorFrameWrap');
+    if (!editor.frame || !wrap) return;
+    const scale = Math.min(1, (wrap.clientWidth - 32) / PAGE_WIDTH);
+    editor.frame.style.width = PAGE_WIDTH + 'px';
+    editor.frame.style.height = ((wrap.clientHeight - 32) / scale) + 'px';
+    editor.frame.style.transform = 'scale(' + scale + ')';
+    editor.frame.style.transformOrigin = 'top left';
+  }
+
+  function onFrameMessage(e) {
+    if (!editor.frame || e.source !== editor.frame.contentWindow) return;
+    const m = e.data;
+    if (!m || typeof m !== 'object') return;
+    if (m.type === 'edit') {
+      if (m.text === m.original) editor.edits.delete(m.pointer);
+      else editor.edits.set(m.pointer, { pointer: m.pointer, text: m.text, original: m.original, budget: editBudget(m.original.length) });
+      renderEditorPanel();
+    } else if (m.type === 'fit') {
+      editor.fit = { pages: m.pages || [] };
+      renderEditorPanel();
+    } else if (m.type === 'ready') {
+      editor.editableCount = m.editable;
+      document.getElementById('editorFrameNote').style.display = 'none';
+      renderEditorPanel();
+    }
+  }
+  window.addEventListener('message', onFrameMessage);
+  window.addEventListener('resize', fitFrame);
+
+  async function openEditor(order) {
+    const box = document.getElementById('editorBox');
+    const wrap = document.getElementById('editorFrameWrap');
+    const note = document.getElementById('editorFrameNote');
+    const status = document.getElementById('editorStatus');
+    document.querySelector('.order-card').classList.add('order-card--editing');
+    editor.open = true;
+    editor.edits = new Map();
+    editor.fit = null;
+    editor.editableCount = null;
+    editor.nextVersion = (order.currentVersion || 1) + 1;
+    editor.saving = false;
+    document.getElementById('editorNameRow').style.display = isMemberRun() ? 'none' : '';
+    status.textContent = '';
+    status.classList.remove('is-error');
+    note.style.display = '';
+    note.textContent = 'Loading the report…';
+    if (editor.frame) { editor.frame.remove(); editor.frame = null; }
+    box.style.display = '';
+    renderEditorPanel();
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+      const res = await fetchPreviewHtml();
+      if (!res.ok) {
+        const data = await res.json().catch(function () { return {}; });
+        note.textContent = data.error || 'The report could not be loaded for editing.';
+        return;
+      }
+      const html = await res.text();
+      if (!editor.open) return;
+      const frame = document.createElement('iframe');
+      frame.title = 'Editable report';
+      frame.setAttribute('sandbox', 'allow-scripts');
+      // The editing script goes last, so every element it looks for exists.
+      frame.srcdoc = html.replace(/<\/body>\s*<\/html>\s*$/i, '') + AGENT + '</body></html>';
+      wrap.appendChild(frame);
+      editor.frame = frame;
+      fitFrame();
+      note.textContent = 'Drawing the report…';
+    } catch (err) {
+      note.textContent = 'Network error while loading the report. Please try again.';
+    }
+  }
+
+  function closeEditor() {
+    editor.open = false;
+    if (editor.frame) { editor.frame.remove(); editor.frame = null; }
+    editor.edits = new Map();
+    document.getElementById('editorBox').style.display = 'none';
+    document.querySelector('.order-card').classList.remove('order-card--editing');
+  }
+
+  async function saveEdits() {
+    const status = document.getElementById('editorStatus');
+    const changed = [...editor.edits.values()];
+    if (!changed.length || editor.saving) return;
+    editor.saving = true;
+    status.textContent = '';
+    status.classList.remove('is-error');
+    renderEditorPanel();
+
+    const payload = {
+      edits: Object.fromEntries(changed.map((e) => [e.pointer, e.text])),
+      originals: Object.fromEntries(changed.map((e) => [e.pointer, e.original])),
+    };
+    const name = (document.getElementById('editorName').value || '').trim();
+    if (name && !isMemberRun()) payload.editedBy = name;
+
+    try {
+      const res = await postEdits(payload);
+      const data = await res.json().catch(function () { return {}; });
+      if (!res.ok) {
+        status.textContent = data.error || 'Could not save your changes. Please try again.';
+        status.classList.add('is-error');
+        editor.saving = false;
+        renderEditorPanel();
+        return;
+      }
+      closeEditor();
+      load(); // switches to the progress state and starts polling
+    } catch (err) {
+      status.textContent = 'Network error. Please try again.';
+      status.classList.add('is-error');
+      editor.saving = false;
+      renderEditorPanel();
+    }
+  }
+
+  document.getElementById('editOpenBtn').addEventListener('click', function () {
+    if (editor.open) { closeEditor(); return; }
+    openEditor(editor.order || {});
+  });
+  document.getElementById('editCancelBtn').addEventListener('click', closeEditor);
+  document.getElementById('editSaveBtn').addEventListener('click', saveEdits);
+  document.getElementById('editorChanges').addEventListener('click', function (e) {
+    const button = e.target.closest('button[data-discard]');
+    if (!button) return;
+    const pointer = button.getAttribute('data-discard');
+    editor.edits.delete(pointer);
+    if (editor.frame) editor.frame.contentWindow.postMessage({ type: 'restore', pointer: pointer }, '*');
+    renderEditorPanel();
+  });
+
   function renderProgress(order) {
     hideAll();
     const title = document.getElementById('progressTitle');
     const sub = document.getElementById('progressSub');
     const meta = document.getElementById('progressMeta');
-    if (order.status === 'REVISING') {
+    if (order.status === 'REVISING' && order.activity === 'editing') {
+      title.textContent = 'Applying your edits…';
+      sub.textContent = 'The report is being re-rendered with your text. No AI is involved, so this usually takes under a minute.';
+    } else if (order.status === 'REVISING') {
       title.textContent = 'Updating your report…';
       sub.textContent = 'The report engine is interpreting your request and regenerating the report. This usually takes 20 to 40 minutes.';
     } else {
@@ -455,7 +926,7 @@
     }
     meta.textContent = [order.companyName, order.ticker].filter(Boolean).join(' · ') || '—';
     show('stateProgress');
-    pollAgain();
+    pollAgain(order.activity === 'editing' ? 3000 : POLL_MS);
   }
 
   // Shown while notFoundStreak is within its grace period: the order record
@@ -497,11 +968,19 @@
       }
     }
 
+    // Editing the text by hand: free and unlimited, offered on any delivered
+    // version the engine can show as an editable document (a published
+    // analysis is frozen and gets no button). The editor closes on every
+    // reload so a freshly delivered version starts from a clean slate.
+    editor.order = order;
+    if (editor.open) closeEditor();
+    document.getElementById('editOpenBtn').style.display = order.editable ? '' : 'none';
+
     const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');
     if (order.revisionError) {
-      errorBanner.textContent = 'Your last revision request could not be completed: ' + order.revisionError
-        + ' You can try again below.';
+      errorBanner.textContent = 'Your last request could not be completed: ' + order.revisionError
+        + ' Your current report is unchanged; you can try again below.';
       errorBanner.style.display = '';
     } else {
       errorBanner.style.display = 'none';
