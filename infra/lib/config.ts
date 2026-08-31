@@ -77,6 +77,9 @@ export function stageConfig(app: App): StageConfig {
       siteUrl,
       ...(stage === 'prod' ? [`https://${zoneDomain}`] : []),
       'http://localhost:3000',
+      // The static-site preview, which is where the admin dashboard is driven
+      // against the test stage.
+      'http://localhost:3100',
     ],
     siteUrl,
     alertEmail: app.node.tryGetContext('alertEmail') ?? 'awswatchdog@valuatum.com',

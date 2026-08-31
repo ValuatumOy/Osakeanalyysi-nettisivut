@@ -36,6 +36,7 @@ stub('../../server/members/store.js', {
   getPublication: async () => ({ promptsText: 'prompts' }),
   listUserItems: async (userId, prefix) => (prefix === 'PUB#' ? state.pubs : []),
   listReviews: async () => [{ reviewerId: 'reviewer', score: 4, comment: 'x'.repeat(40) }],
+  getUsage: async () => null,
   runTransact: async () => true,
   getProfile: async () => ({ userId: 'reviewer' }),
   getItem: async (pk, sk) => state.reads[sk] || null,
@@ -118,7 +119,8 @@ test('starting a Tesla generation withdraws the reviews the analyst gave Tesla r
 test('every path that gives a member coverage withdraws their reviews of it', () => {
   const src = readFileSync(new URL('../../server/lambda/members.js', import.meta.url), 'utf8');
   const calls = src.match(/voidReviewsOnCoverage\(/g) || [];
-  // The definition plus the three doors into coverage: the monthly generation,
-  // the paid fresh generation, and a publishable fork.
-  assert.equal(calls.length, 4, 'a new way to take up coverage that does not withdraw reviews');
+  // The definition plus the four doors into coverage: the monthly generation,
+  // the paid fresh generation, a publishable fork, and a Company Coverage
+  // subscriber asking for one of their yearly updates.
+  assert.equal(calls.length, 5, 'a new way to take up coverage that does not withdraw reviews');
 });

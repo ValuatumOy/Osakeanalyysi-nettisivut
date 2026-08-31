@@ -3449,14 +3449,34 @@ select.input {
 .analyst-jump[hidden],
 .analyst-reports[hidden] { display: none !important; }
 
-/* The analyst's own call, next to the peer score. Coloured like the engine's own rating so
-   a reader can compare the two at a glance. Absent on anything published before
-   GET /analyses carried a recommendation. */
-.analyst-call { font-weight: 600; letter-spacing: .04em; margin-right: .35rem; }
-.analyst-call.rating-buy  { color: #2f7a3f; }
-.analyst-call.rating-hold { color: #a97c1e; }
-.analyst-call.rating-sell { color: #b12a3f; }
-.analyst-target { color: var(--gray-steel, #5b6a63); }
+/* What the analyst told the engine — the first round of steering, truncated by the API.
+   The call and target price it produced are deliberately not shown: those are what the
+   reader is buying, and this is the reason to. Analyst-written text, so it is quoted
+   rather than presented as the site's own words. */
+.analyst-prompt {
+  margin-top: .5rem;
+  padding-left: .75rem;
+  border-left: 2px solid var(--green, #9CDB06);
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  max-width: 62ch;
+}
+.analyst-prompt-label {
+  font-size: var(--text-xs, .75rem);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gray-steel, #5b6a63);
+}
+.analyst-prompt-text {
+  font-style: italic;
+  color: var(--ink, #14201a);
+  line-height: 1.5;
+}
+.analyst-prompt-rounds {
+  font-size: var(--text-xs, .75rem);
+  color: var(--gray-steel, #5b6a63);
+}
 
 .store-row {
   display: grid;

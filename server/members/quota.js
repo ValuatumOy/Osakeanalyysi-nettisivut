@@ -5,6 +5,16 @@
 // Allowances live in tiers.js — three tunable numbers per role/tier.
 const FREEMIUM_MIN_AGE_DAYS = 30;
 const COVERAGE_UPDATES_PER_YEAR = 4;
+// A Company Coverage subscription may carry more than one company, priced per
+// company. The four updates are therefore four PER company — otherwise a
+// three-company subscriber pays three times over for the same four reports.
+const COVERAGE_MAX_COMPANIES = 5;
+
+// One counter per covered company on the year's usage item. The ticker goes
+// through ExpressionAttributeNames, so dots and dashes in it need no escaping.
+function coverageCounter(companyId) {
+  return `cov#${String(companyId || '').toUpperCase()}`;
+}
 // An analysis may be given away free for at most a year (Esa, 17.8.2026): the
 // analyst sets the decay themselves, and free archive accumulates by itself.
 const MAX_FREE_AFTER_DAYS = 365;
@@ -166,7 +176,7 @@ function normaliseRecommendation(value) {
 }
 
 function buildSubmitTransact({
-  table, userId, now, genId, promptsText, companyId, jobId,
+  table, userId, now, genId, promptsText, promptRounds = 0, companyId, jobId,
   priceEur = 0, freeAfterDays, analystName = '', analystLinkedin = null,
   // The engine's own output for this job, taken from the delivered order rather than from
   // the request: an analyst supplying their own rating could publish one the report does
@@ -203,7 +213,8 @@ function buildSubmitTransact({
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
           UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
-            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target',
+            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target, '
+            + 'promptRounds = :rounds',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
@@ -218,6 +229,7 @@ function buildSubmitTransact({
             ':freeFrom': freeFrom,
             ':rec': rating,
             ':target': target,
+            ':rounds': Math.max(0, Math.round(Number(promptRounds) || 0)),
           },
         },
       },
@@ -781,15 +793,19 @@ function buildTakedownTransact({ table, userId, now, genId, reason, indexSk }) {
 // Company Coverage: the initial report is free once per subscription
 // (coverageInitialGranted flag on PROFILE); after that each new report of the
 // covered company consumes one of the 4 yearly updates.
-function buildCoverageInitialTransact({ table, userId, now, reportId }) {
+function buildCoverageInitialTransact({ table, userId, now, reportId, companyId }) {
+  // Per company, not per subscription: a three-company subscriber is paying for
+  // three companies' initial reports, not for one.
+  const flag = `coverageInitial#${String(companyId || '').toUpperCase()}`;
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
-          UpdateExpression: 'SET coverageInitialGranted = :true',
-          ConditionExpression: 'attribute_not_exists(coverageInitialGranted)',
+          UpdateExpression: 'SET #f = :true',
+          ConditionExpression: 'attribute_not_exists(#f)',
+          ExpressionAttributeNames: { '#f': flag },
           ExpressionAttributeValues: { ':true': true },
         },
       },
@@ -804,15 +820,16 @@ function buildCoverageInitialTransact({ table, userId, now, reportId }) {
   };
 }
 
-function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
+function buildCoverageUpdateTransact({ table, userId, now, reportId, companyId }) {
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
-          UpdateExpression: 'SET coverageUpdates = if_not_exists(coverageUpdates, :zero) + :one',
-          ConditionExpression: 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max',
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
           ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
         },
       },
@@ -827,17 +844,175 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
   };
 }
 
+// Company Coverage, the other direction: not opening a report that already
+// exists but asking for one to be made. The subscription sells four updates a
+// year and nothing in the system produced them, so this is what a subscriber
+// spends one of those four on. Same yearly counter as an opened update — the
+// four are four, however they are taken.
+//
+// No ENT# row here: there is no report id yet. The order page is the way in
+// until the engine delivers, exactly as it is for any other private generation.
+function buildCoverageGenerationTransact({ table, userId, now, genId, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
+          ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            // What the restore path keys on: this run spent a yearly update, not
+            // a monthly slot, and the two are given back differently. The company
+            // rides along because the counter it came off is that company's own.
+            coverage: true,
+            coverageCompanyId: String(companyId || '').toUpperCase(),
+            reservedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// The refund of the above. A run the engine never delivered must not cost a
+// quarter of the year's coverage: without this a single failure silently eats
+// one of the four the subscriber paid for.
+function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          // Credited back to the year it was spent in, which is not necessarily
+          // the year the failure is noticed in.
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(reservedAt ? new Date(reservedAt) : now)}` },
+          UpdateExpression: 'SET #c = #c - :one',
+          ConditionExpression: '#c > :zero',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
+          ExpressionAttributeValues: { ':one': 1, ':zero': 0 },
+        },
+      },
+    ],
+  };
+}
+
+// What a reader who has not paid gets to see of an analyst's steering.
+//
+// A company page already shows the analyst's name, their peer score and their
+// price. It showed no reason to believe any of it, because the reasoning was
+// entirely behind the paywall — so the call read as an unsupported opinion
+// rather than a thesis (Lauri, 27.8.2026).
+//
+// The first round only, and truncated. The first round is where an analyst
+// states the thesis; the later rounds are the refinements, and those are what
+// the reader is buying. The round count carries its own weight — "5 rounds of
+// steering" says effort in a way a paragraph cannot.
+const PROMPT_TEASER_CHARS = 200;
+
+// The round count is passed in, never parsed out: revisionPrompts() joins rounds
+// with a blank line and a single comment contains blank lines of its own, so
+// splitting the stored text counted paragraphs and reported 188 rounds on a
+// two-round analysis. Publications from before the count was stored show the
+// prompt without one rather than a made-up number.
+function promptTeaser(promptsText, rounds = null) {
+  const text = String(promptsText || '').trim();
+  if (!text) return null;
+  // The opening paragraph, which is where an analyst states the thesis.
+  const first = text.split('\n\n')[0].trim().replace(/\s+/g, ' ');
+  if (!first) return null;
+  const cut = first.length > PROMPT_TEASER_CHARS;
+  return {
+    rounds: Number.isFinite(rounds) && rounds > 0 ? Math.round(rounds) : null,
+    // Cut on a word boundary where there is one nearby, so the tease does not
+    // end mid-word for the sake of four characters.
+    text: cut ? first.slice(0, PROMPT_TEASER_CHARS).replace(/\s+\S*$/, '') + '…' : first,
+    truncated: cut || first.length < text.length,
+  };
+}
+
+// A published analysis shows its first prompt unless the analyst has said not
+// to. Absent means yes: everything published from here on is public by default,
+// and an analyst turns it off on their own work.
+function promptsArePublic(pub) {
+  return pub?.promptsPublic !== false;
+}
+
+// Topping a meter up rather than moving plan. The two monthly meters — report
+// picks and analyst reads — are the ones that run out mid-month, and running out
+// used to mean upgrading the whole subscription for one more report. The extra
+// sits beside the used count on the same monthly item, so it resets with it: a
+// top-up is for the month it was bought in, not a permanent raise.
+//
+// The month comes from the clock at crediting time, not from the checkout, so a
+// top-up is always usable the moment it is paid for.
+const TOPUP_FIELDS = { picks: 'picksExtra', reads: 'analystReadsExtra' };
+
+function buildTopUpTransact({ table, userId, now, kind, units, sessionId }) {
+  const field = TOPUP_FIELDS[kind];
+  if (!field) throw new Error(`unknown top-up kind: ${kind}`);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'ADD #f :units',
+          ExpressionAttributeNames: { '#f': field },
+          ExpressionAttributeValues: { ':units': Math.round(units) },
+        },
+      },
+      {
+        // The receipt, and what stops a redelivered Stripe event crediting
+        // twice: the members webhook claims each event id, and this refuses a
+        // second write for the same checkout even if that ever changes.
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `TOPUP#${sessionId}`,
+            kind,
+            units: Math.round(units),
+            creditedAt: now.toISOString(),
+            month: monthKey(now),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 module.exports = {
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
+  COVERAGE_MAX_COMPANIES,
+  coverageCounter,
   MAX_FREE_AFTER_DAYS,
   monthKey,
   yearKey,
   publicationIndexSk,
   clampFreeAfterDays,
   revisionPrompts,
+  promptTeaser,
+  promptsArePublic,
+  PROMPT_TEASER_CHARS,
   freemiumPickEligible,
   buildPickTransact,
+  buildTopUpTransact,
+  TOPUP_FIELDS,
   buildReserveGenerationTransact,
   buildReserveMemberGenerationTransact,
   buildSubmitTransact,
@@ -857,4 +1032,6 @@ module.exports = {
   buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
+  buildCoverageGenerationTransact,
+  buildReleaseCoverageTransact,
 };

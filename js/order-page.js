@@ -34,6 +34,47 @@
     });
   }
 
+  // Buying more rounds, from whichever side of the wall this order lives on. A
+  // one-off buyer had no way at all: the page told them they were out and
+  // stopped there.
+  function postBuyRounds(rounds) {
+    if (!isMemberRun()) {
+      return fetch('/api/order-revision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, buyRounds: true, rounds: rounds }),
+      });
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/revisions-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+      body: JSON.stringify({ rounds: rounds, returnTo: location.origin + location.pathname }),
+    });
+  }
+
+  async function buyMoreRounds(button) {
+    const answer = window.prompt('How many more revision rounds?', '2');
+    if (answer === null) return;
+    const rounds = Number(answer);
+    if (!Number.isInteger(rounds) || rounds < 1 || rounds > 10) {
+      window.alert('Give a whole number of rounds, 1 to 10.');
+      return;
+    }
+    button.disabled = true;
+    const label = button.textContent;
+    button.textContent = 'Opening checkout…';
+    try {
+      const res = await postBuyRounds(rounds);
+      const data = await res.json().catch(function () { return null; });
+      if (res.ok && data && data.url) { location.href = data.url; return; }
+      window.alert((data && data.error) || 'Could not start the checkout.');
+    } catch (err) {
+      window.alert('Could not start the checkout.');
+    }
+    button.disabled = false;
+    button.textContent = label;
+  }
+
   function postRevision(comments) {
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
@@ -48,6 +89,19 @@
       body: JSON.stringify({ comments: comments }),
     });
   }
+
+  // Back from the rounds checkout. The webhook is what credits them, so this
+  // only has to say so and reload — silence read as a checkout that failed.
+  (function reportRoundsPurchase() {
+    const outcome = params.get('revisions');
+    if (!outcome) return;
+    window.setTimeout(function () {
+      window.alert(outcome === 'added'
+        ? 'Your extra revision rounds have been added. They appear on this page within a few seconds.'
+        : 'The checkout was cancelled — no rounds were added and nothing was charged.');
+    }, 300);
+    history.replaceState(null, '', location.pathname + '?session_id=' + encodeURIComponent(sessionId || ''));
+  })();
 
   if (!sessionId) {
     hideAll();
@@ -415,6 +469,17 @@
       hide('revisionExhausted');
     }
 
+    // Offered on any delivered report, not only an exhausted one — a report with
+    // no rounds at all (a bought analysis, a coverage update) is exactly the case
+    // that had nowhere to go.
+    const buyBox = document.getElementById('revisionBuy');
+    if (buyBox) {
+      buyBox.style.display = '';
+      document.getElementById('revisionBuyHint').textContent = remaining > 0
+        ? 'Need more than ' + remaining + '? Add rounds to this report.'
+        : 'Add more rounds to this report and keep steering it.';
+    }
+
     document.getElementById('revisionHistory').innerHTML = renderRevisionHistory(order.revisionHistory);
 
     show('stateDelivered');
@@ -467,6 +532,10 @@
       renderError('Network error. If this persists, email contact26@valuatum.com.');
     }
   }
+
+  document.getElementById('revisionBuyBtn').addEventListener('click', function () {
+    buyMoreRounds(this);
+  });
 
   document.getElementById('revisionSubmit').addEventListener('click', async function () {
     const textarea = document.getElementById('revisionText');

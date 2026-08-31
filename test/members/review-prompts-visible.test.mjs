@@ -34,6 +34,7 @@ stub('../../server/members/store.js', {
   getPublication: async (userId, genId) =>
     (userId === 'author' && genId === 'g1' ? { promptsText: PROMPTS } : null),
   listUserItems: async () => [],
+  getUsage: async () => null,
   runTransact: async () => true,
   getProfile: async () => ({ userId: 'reviewer' }),
   getItem: async () => null,

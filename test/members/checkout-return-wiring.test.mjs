@@ -20,6 +20,9 @@ const BACKENDS = [
   'server/lambda/members.js',
   'api/create-checkout.js',
   'api/create-fresh-checkout.js',
+  // Buying more revision rounds on an order rides in this one, the Vercel
+  // function ceiling being what it is.
+  'api/order-revision.js',
 ];
 
 // Every page and script a buyer can land on. Anything under these roots counts

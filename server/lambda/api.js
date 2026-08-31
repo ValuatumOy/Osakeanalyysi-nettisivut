@@ -403,17 +403,42 @@ function requireAdmin(event) {
 async function getAdminReports() {
   const { catalog, state } = await catalogAws.buildCatalogAws({ includeNonPublic: true });
   const purchases = state.purchases || [];
+
+  // Who made what. Every file an order produced — the delivered report and each
+  // revised copy — carries that order's id in its sidecar, and the order names
+  // the customer and how it came to exist. One scan; the table is small, and
+  // this endpoint is one admin's page load.
+  const orderOf = new Map();
+  try {
+    for (const order of await ordersStore.list()) orderOf.set(order.id, order);
+  } catch (err) {
+    console.warn('admin reports: orders join unavailable:', err.message);
+  }
+
   return json(200, {
     generatedAt: catalog.generatedAt,
     week: catalog.week,
-    reports: catalog.reports.map(report => ({
-      ...publicReportPayload(report),
-      publicationStatus: report.publicationStatus,
-      excludeFromFree: report.excludeFromFree,
-      forceFree: report.forceFree,
-      ageDays: report.ageDays,
-      buyerCount: buyerCount(report, purchases),
-    })),
+    reports: catalog.reports.map(report => {
+      const order = report.provenanceSessionId ? orderOf.get(report.provenanceSessionId) : null;
+      return {
+        ...publicReportPayload(report),
+        publicationStatus: report.publicationStatus,
+        excludeFromFree: report.excludeFromFree,
+        forceFree: report.forceFree,
+        ageDays: report.ageDays,
+        buyerCount: buyerCount(report, purchases),
+        // The grouping key: all of one order's files fold into one chain, and a
+        // hand-uploaded report (no provenance) stands alone under its own id.
+        groupId: report.provenanceSessionId || report.id,
+        isRevision: Boolean(report.isRevision),
+        // uploaded: an admin put the PDF here by hand. order: a customer's paid
+        // fresh report. generation: a member's monthly/coverage run (private by
+        // construction, only in the catalog as plumbing).
+        origin: !report.provenanceSessionId ? 'uploaded'
+          : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
+        generatedBy: order ? (order.analystName || order.email || null) : null,
+      };
+    }),
   });
 }
 

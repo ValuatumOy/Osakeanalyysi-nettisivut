@@ -201,16 +201,32 @@ test('takedown only applies to a published publication', () => {
   assert.equal(index.ExpressionAttributeValues[':down'], 'takendown');
 });
 
-test('coverage: initial once per subscription, updates capped at 4 per year', () => {
+// A coverage subscription may carry several companies, priced per company, so
+// both the free first report and the four updates are counted per company. One
+// counter shared across them would sell the same four reports three times.
+test('coverage: initial once per company, updates capped at 4 per company per year', () => {
   const now = new Date('2026-08-06T12:00:00Z');
-  const initial = quota.buildCoverageInitialTransact({ table: TABLE, userId: 'u1', now, reportId: 'r1' });
-  assert.equal(initial.TransactItems[0].Update.ConditionExpression, 'attribute_not_exists(coverageInitialGranted)');
+  const initial = quota.buildCoverageInitialTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r1', companyId: 'NOKIA.HE',
+  });
+  const grant = initial.TransactItems[0].Update;
+  assert.equal(grant.ConditionExpression, 'attribute_not_exists(#f)');
+  assert.equal(grant.ExpressionAttributeNames['#f'], 'coverageInitial#NOKIA.HE');
 
-  const update = quota.buildCoverageUpdateTransact({ table: TABLE, userId: 'u1', now, reportId: 'r2' });
+  const update = quota.buildCoverageUpdateTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r2', companyId: 'NOKIA.HE',
+  });
   const usage = update.TransactItems[0].Update;
   assert.equal(usage.Key.sk, 'USAGE#Y#2026');
-  assert.equal(usage.ConditionExpression, 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max');
+  assert.equal(usage.ConditionExpression, 'attribute_not_exists(#c) OR #c < :max');
+  assert.equal(usage.ExpressionAttributeNames['#c'], 'cov#NOKIA.HE');
   assert.equal(usage.ExpressionAttributeValues[':max'], 4);
+
+  // A second company on the same subscription counts on its own.
+  const other = quota.buildCoverageUpdateTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r3', companyId: 'TSLA',
+  });
+  assert.equal(other.TransactItems[0].Update.ExpressionAttributeNames['#c'], 'cov#TSLA');
 });
 
 test('reopen returns a taken-down analysis to generating and restores the obligation', () => {

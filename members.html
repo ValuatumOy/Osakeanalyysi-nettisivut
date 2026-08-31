@@ -90,6 +90,13 @@
             </div>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
+          <!-- Company Coverage sells four report updates a year. This is how one
+               is taken: the subscriber asks, and a real engine run starts on the
+               company they pay to have covered. -->
+          <div id="coverageCard" hidden style="margin-top:1rem;">
+            <div id="coverageCompanies"></div>
+            <p class="muted" style="font-size:var(--text-sm);">A fresh report written from today&rsquo;s figures. Takes 20 to 40 minutes and arrives by email.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -321,12 +328,12 @@
                 <div class="name">Company Coverage</div>
                 <div class="price">€59 <span>/ year</span></div>
                 <ul>
-                  <li>One company of your choice</li>
-                  <li>Latest report + 4 updates a year</li>
+                  <li>Up to five companies, €59 each</li>
+                  <li>Latest report + 4 updates a year, per company</li>
                 </ul>
                 <div class="actions">
-                  <label class="field" style="flex:1 1 120px;"><span>Ticker</span>
-                    <input id="coverageTicker" class="input" placeholder="e.g. AMD">
+                  <label class="field" style="flex:1 1 200px;"><span>Tickers, comma separated</span>
+                    <input id="coverageTicker" class="input" placeholder="e.g. AMD, NOKIA.HE">
                   </label>
                   <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
                 </div>
@@ -463,13 +470,21 @@
       // Counting down: what is left is the number a member acts on.
       const left = (used, limit) => Math.max(0, limit - used) + ' / ' + limit;
       const stats = [
-        [left(u.picks, u.pickLimit), 'Report picks left this month'],
+        [left(u.picks, u.pickLimit), 'Report picks left this month', 'picks'],
       ];
-      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read']);
+      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read', 'reads']);
       if (data.hasGeneration) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
       if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
-      document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl]) =>
-        '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>').join('');
+      // Running out of a meter used to mean upgrading the whole plan for one more
+      // report. The step belongs where the wall is, so the button lives on the
+      // number itself.
+      const CAN_TOP_UP = { picks: u.pickLimit > 0, reads: u.analystReadLimit > 0 };
+      document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl, kind]) =>
+        '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div>'
+        + (kind && CAN_TOP_UP[kind]
+            ? '<button class="btn btn-outline btn-sm" style="margin-top:.5rem;" data-topup="' + kind + '">Add more</button>'
+            : '')
+        + '</div>').join('');
 
       document.getElementById('plansCard').hidden = data.tier !== 'none';
       // The price is the live subscription status, not a number the page picked.
@@ -492,6 +507,26 @@
       analysesCard.hidden = !(u.analystReadLimit > 0);
       window._openReviewId = data.openReviewId || null;
       renderReviewRow();
+      const coverageCard = document.getElementById('coverageCard');
+      coverageCard.hidden = data.tier !== 'coverage';
+      if (data.tier === 'coverage') {
+        // One button per covered company: the four updates are four each, so a
+        // single button could not say whose they were.
+        const companies = data.coverageCompanyIds && data.coverageCompanyIds.length
+          ? data.coverageCompanyIds : [data.coverageCompanyId].filter(Boolean);
+        const used = u.coverageUpdatesByCompany || {};
+        document.getElementById('coverageCompanies').innerHTML = companies.map(c => {
+          const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (used[c] || 0));
+          return '<div style="margin-bottom:.5rem;">'
+            + '<button class="btn btn-primary btn-sm" data-coverage-update="' + esc(c) + '"'
+            + (left_ ? '' : ' disabled') + '>Request a ' + esc(c) + ' update</button>'
+            + '<span class="muted" style="margin-left:.75rem;">'
+            + (left_ ? left_ + ' of ' + u.coverageUpdateLimit + ' left this year'
+                     : 'All of this year\u2019s updates used')
+            + '</span></div>';
+        }).join('');
+      }
+
       const genCard = document.getElementById('genCard');
       genCard.hidden = !data.hasGeneration;
       if (data.hasGeneration) {
@@ -542,8 +577,11 @@
     async function checkout(plan, interval) {
       const body = { plan, interval, returnTo: RETURN_TO };
       if (plan === 'coverage') {
-        body.coverageCompanyId = document.getElementById('coverageTicker').value.trim().toUpperCase();
-        if (!body.coverageCompanyId) { notice('err', 'Enter the ticker of the company you want covered.'); return; }
+        // Priced per company, so the list is the quantity.
+        body.coverageCompanyIds = document.getElementById('coverageTicker').value
+          .split(',').map(t => t.trim().toUpperCase()).filter(Boolean);
+        if (!body.coverageCompanyIds.length) { notice('err', 'Enter the ticker of each company you want covered.'); return; }
+        if (body.coverageCompanyIds.length > 5) { notice('err', 'A coverage subscription carries at most five companies.'); return; }
       }
       const { status, data } = await api('POST', '/billing/checkout', body);
       if (data?.url) location.href = data.url;
@@ -719,12 +757,20 @@
           ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
             + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
           : '';
+        // A published analysis shows its first steering prompt on the company
+        // page unless the analyst says otherwise. It is their own words on their
+        // own work, so it is their switch.
+        const prompts = g.publication === 'published'
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" data-prompts="'
+            + encodeURIComponent(g.genId) + '" data-public="' + (g.promptsPublic ? '1' : '0') + '">'
+            + (g.promptsPublic ? 'Hide my prompt' : 'Show my prompt') + '</button>'
+          : '';
         return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
           + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
           + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
           + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
           + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
-          + '<td style="text-align:right">' + action + more + reprice + '</td></tr>';
+          + '<td style="text-align:right">' + action + more + reprice + prompts + '</td></tr>';
       });
       document.getElementById('generationsTable').innerHTML =
         '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
@@ -804,6 +850,63 @@
           : 'Removed from your published analyses.');
         loadAnalyses();
       } else notice('err', (data && data.error) || ('Could not save the link (' + status + ')'));
+    }
+
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-coverage-update]');
+      if (btn) requestCoverageUpdate(btn.getAttribute('data-coverage-update'), btn);
+    });
+
+    document.addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-prompts]');
+      if (!btn) return;
+      const makePublic = btn.getAttribute('data-public') !== '1';
+      btn.disabled = true;
+      const { status, data } = await api(
+        'POST', '/generations/' + btn.getAttribute('data-prompts') + '/prompts-public',
+        { public: makePublic });
+      btn.disabled = false;
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not change that (' + status + ')')); return; }
+      notice('ok', makePublic
+        ? 'Your first steering prompt now shows on the company page.'
+        : 'Your prompts are hidden from readers who have not paid.');
+      loadGenerations();
+    });
+
+    const TOPUP_LABEL = { picks: 'report picks', reads: 'analyst reports to read' };
+
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-topup]');
+      if (btn) buyTopUp(btn.getAttribute('data-topup'), btn);
+    });
+
+    async function buyTopUp(kind, button) {
+      const answer = prompt('How many more ' + TOPUP_LABEL[kind] + ' this month?', '3');
+      if (answer === null) return;
+      const units = Number(answer);
+      if (!Number.isInteger(units) || units < 1 || units > 20) { notice('err', 'Give a whole number, 1 to 20.'); return; }
+      button.disabled = true;
+      const { status, data } = await api('POST', '/billing/topup-checkout',
+        { kind, units, returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      button.disabled = false;
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
+
+    async function requestCoverageUpdate(ticker, button) {
+      if (!confirm('Start a fresh report on ' + ticker + '?\n\n'
+        + 'It spends one of that company\u2019s four updates for this year and takes 20 to 40 minutes. '
+        + 'You will get it by email, and it appears in your reports below.')) return;
+      button.disabled = true;
+      const { status, data } = await api('POST', '/generations/coverage', { ticker });
+      if (status !== 200) {
+        button.disabled = false;
+        notice('err', (data && data.error) || ('Could not start the update (' + status + ')'));
+        return;
+      }
+      notice('ok', 'Started. Your updated ' + (data.company || 'report') + ' arrives by email in 20 to 40 minutes.');
+      loadMe();
+      loadGenerations();
     }
 
     async function buyRevisions(genId) {
@@ -1143,8 +1246,16 @@
       go.className = 'btn btn-primary btn-sm';
       go.textContent = 'Continue to checkout';
       go.onclick = () => {
+        // Coverage needs the company before it can be priced, and that field is
+        // further down the page — send them to it rather than to an error.
+        if (choice.plan === 'coverage' && !document.getElementById('coverageTicker').value.trim()) {
+          document.getElementById('coverageTicker').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('coverageTicker').focus();
+          notice('err', 'Name the company you want covered, then start the checkout.');
+          return;
+        }
         try { delete localStorage.pendingPlan; } catch (_) { /* ignore */ }
-        checkout(choice.plan, choice.interval);
+        checkout(choice.plan, choice.interval === 'year' || choice.plan === 'coverage' ? 'year' : 'month');
       };
       el.appendChild(go);
     }
@@ -1157,8 +1268,17 @@
       const bought = params.get('bought');
       const forked = params.get('forked');
       const sessionId = params.get('session_id');
-      // Extra revision rounds are credited by the webhook, so the return trip
-      // only has to say so — but saying nothing read as a checkout that failed.
+      // Both of these are credited by the webhook, so the return trip only has to
+      // say so — but saying nothing read as a checkout that failed.
+      const topup = params.get('topup');
+      if (topup) {
+        notice(topup === 'added' ? 'ok' : 'err', topup === 'added'
+          ? 'Added to this month\u2019s allowance. It shows above within a few seconds.'
+          : 'The checkout was cancelled — nothing was added and nothing was charged.');
+        history.replaceState(null, '', location.pathname);
+        if (token()) setTimeout(loadMe, 2500);
+        return;
+      }
       const revisions = params.get('revisions');
       if (revisions) {
         notice(revisions === 'added' ? 'ok' : 'err', revisions === 'added'

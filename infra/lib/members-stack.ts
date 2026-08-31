@@ -200,6 +200,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/generations/free'],
       // A bought generation: the Stripe receipt becomes a running order.
       [apigwv2.HttpMethod.POST, '/generations/fresh'],
+      [apigwv2.HttpMethod.POST, '/generations/coverage'],
       [apigwv2.HttpMethod.GET, '/generations'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
       // The order page's revision workspace, for a member's own run.
@@ -207,16 +208,24 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/price'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/prompts-public'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions-checkout'],
       [apigwv2.HttpMethod.POST, '/me/linkedin'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
+      [apigwv2.HttpMethod.POST, '/billing/topup-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/buy-checkout'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/fork-checkout'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/purchased'],
       [apigwv2.HttpMethod.GET, '/admin/members/publications'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users/{userId}'],
+      [apigwv2.HttpMethod.GET, '/admin/members/stats'],
+      [apigwv2.HttpMethod.GET, '/admin/members/promo-codes'],
+      [apigwv2.HttpMethod.POST, '/admin/members/promo-deactivate'],
+      [apigwv2.HttpMethod.POST, '/admin/members/void-review'],
       [apigwv2.HttpMethod.GET, '/admin/members/earnings'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
@@ -234,6 +243,18 @@ export class MembersStack extends Stack {
     for (const [method, routePath] of routes) {
       createdRoutes.push(...httpApi.addRoutes({ path: routePath, methods: [method], integration }));
     }
+
+    // One invoke permission for the whole API instead of one per route. CDK
+    // writes a separate Lambda::Permission per route, each ~300 bytes of the
+    // function's resource policy, and at ~70 routes the policy crossed AWS's
+    // hard 20 KB cap and every further route failed to deploy.
+    for (const route of createdRoutes) {
+      route.node.tryRemoveChild('MembersIntegration-Permission');
+    }
+    if (!this.node.tryGetContext('permissionPhase1')) membersFunction.addPermission('MembersApiInvokeAll', {
+      principal: new iam.ServicePrincipal('apigateway.amazonaws.com'),
+      sourceArn: `arn:aws:execute-api:${this.region}:${this.account}:${httpApi.apiId}/*/*/*`,
+    });
 
     // Same throttle pattern as ApiStack: sane default, tight lid on the
     // brute-forceable routes (magic link spam, admin/test secrets).
