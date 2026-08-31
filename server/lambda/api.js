@@ -195,6 +195,8 @@ async function postReportPurchases(event) {
       sector: input.sector || '',
       industry: input.industry || '',
       revisionsAllowed: Number(input.revisionsAllowed || 0),
+      amountTotal: input.amountTotal,
+      currency: input.currency,
     });
     try {
       await invokeWorkerAsync();
@@ -224,6 +226,8 @@ async function postReportPurchases(event) {
         jobId,
         pdfFileName: input.fileName,
         revisionsAllowed: Number(input.revisionsAllowed || 0),
+        amountTotal: input.amountTotal,
+        currency: input.currency,
       });
     } catch (err) {
       // Non-fatal: the purchase itself is already recorded above and the

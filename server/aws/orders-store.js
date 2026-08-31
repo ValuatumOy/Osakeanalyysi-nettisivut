@@ -107,6 +107,9 @@ async function create(input) {
     // every reader of it.
     forkedFrom: input.forkedFrom || undefined,
     reportId: input.reportId || null,
+    // What Stripe charged, in minor units
+    amountTotal: Number.isFinite(input.amountTotal) ? input.amountTotal : null,
+    currency: input.currency || null,
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,
     importStatus: null,
