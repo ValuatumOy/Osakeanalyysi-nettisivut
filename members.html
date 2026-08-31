@@ -1173,10 +1173,13 @@
         return;
       }
       // A fork is a report of your own to revise, so it belongs on the order page
-      // rather than being handed over as a finished PDF.
+      // rather than being handed over as a finished PDF. The fork's own order is
+      // keyed by the Stripe session id (createForkOrder in server/lambda/members.js
+      // sets genId = session.id) — `forked` is the parent analysis's genId, which
+      // belongs to a different user and would 404 on the order page.
       if (forked) {
         notice('ok', 'Your copy is ready to revise.');
-        location.replace(workspaceUrl(genId));
+        location.replace(workspaceUrl(sessionId));
         return;
       }
       notice('ok', 'Confirming your purchase…');
