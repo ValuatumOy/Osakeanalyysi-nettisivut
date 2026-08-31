@@ -28,8 +28,8 @@
   <text x="230" y="540" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="300" fill="rgba(255,255,255,0.3)">· aiequityreports.com</text>
   <!-- Stats row -->
   <rect x="104" y="350" width="200" height="80" rx="8" fill="rgba(61,158,114,0.08)" stroke="rgba(61,158,114,0.2)" stroke-width="1"/>
-  <text x="204" y="382" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="300" fill="white">€4.90</text>
-  <text x="204" y="410" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">from per report</text>
+  <text x="204" y="382" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="300" fill="white">€20</text>
+  <text x="204" y="410" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">per ready report</text>
   <rect x="324" y="350" width="200" height="80" rx="8" fill="rgba(61,158,114,0.08)" stroke="rgba(61,158,114,0.2)" stroke-width="1"/>
   <text x="424" y="382" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="300" fill="white">Free</text>
   <text x="424" y="410" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">samples available</text>

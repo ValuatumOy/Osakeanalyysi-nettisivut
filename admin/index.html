@@ -29,6 +29,30 @@
     .auth-card input:focus { border-color: var(--green); }
     .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; color: var(--red); margin: 1rem 0 0; display: none; }
 
+    /* ── tabs ── */
+    .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; overflow-x: auto; position: sticky; top: 52px; z-index: 90; }
+    .tab-btn { font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none; cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; white-space: nowrap; }
+    .tab-btn.active { color: var(--forest); border-bottom-color: var(--green); font-weight: 600; }
+    .tabpane[hidden] { display: none; }
+    .stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+    .stat-card { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.9rem 1rem; }
+    .stat-card .num { font-size: 1.35rem; font-weight: 600; color: var(--forest); }
+    .stat-card .lbl { font-size: 0.72rem; color: var(--gray-steel); margin-top: 0.15rem; }
+    .detail-row td { background: var(--off-white); }
+    .detail-box { padding: 0.9rem 1.1rem; font-size: 0.8rem; line-height: 1.7; }
+    .detail-box h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-steel); margin: 0.8rem 0 0.3rem; }
+    .detail-box h4:first-child { margin-top: 0; }
+    .detail-box table { font-size: 0.78rem; }
+    .pill-warn { background: #FEF3C7; color: #92400E; border-radius: var(--r-pill); padding: 0.1rem 0.55rem; font-size: 0.7rem; font-weight: 600; }
+    .pill-danger { background: #FEE2E2; color: #991B1B; border-radius: var(--r-pill); padding: 0.1rem 0.55rem; font-size: 0.7rem; font-weight: 600; }
+    .btn-xs { font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: var(--r-sm); border: 1px solid var(--border); background: white; cursor: pointer; font-family: inherit; color: var(--charcoal); }
+    .btn-xs:hover { border-color: var(--green); color: var(--green-deep); }
+    .btn-xs.danger { color: var(--red); }
+    .btn-xs.danger:hover { border-color: var(--red); }
+    .note-line { font-size: 0.75rem; color: var(--gray-steel); margin: 0.4rem 0 1rem; line-height: 1.6; }
+    details.prompts { max-width: 60ch; }
+    details.prompts pre { white-space: pre-wrap; font-family: inherit; font-size: 0.75rem; background: var(--off-white); border-radius: var(--r-sm); padding: 0.5rem 0.7rem; margin-top: 0.3rem; max-height: 14rem; overflow: auto; }
+
     /* ── layout ── */
     #app { display: none; min-height: 100vh; }
     .topbar { background: var(--forest); color: white; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; position: sticky; top: 0; z-index: 100; }
@@ -112,12 +136,21 @@
   <div id="app">
     <div class="topbar">
       <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
-      <span class="topbar-badge">Report admin</span>
+      <span class="topbar-badge">Admin</span>
       <div class="topbar-spacer"></div>
       <button class="topbar-signout" id="signout">Sign out</button>
     </div>
 
-    <div class="panel">
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-pane="reports">Reports</button>
+      <button class="tab-btn" data-pane="analysts">Analyst reports</button>
+      <button class="tab-btn" data-pane="users">Users</button>
+      <button class="tab-btn" data-pane="earnings">Earnings &amp; payouts</button>
+      <button class="tab-btn" data-pane="stats">Stats</button>
+      <button class="tab-btn" data-pane="promos">Promo codes</button>
+    </div>
+
+    <div class="panel tabpane" id="pane-reports">
       <div class="flash flash-ok" id="flash-ok"></div>
       <div class="flash flash-err" id="flash-err"></div>
 
@@ -154,6 +187,58 @@
           <tbody id="report-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
         </table>
       </div>
+    </div>
+
+    <!-- ── analyst publications ── -->
+    <div class="panel tabpane" id="pane-analysts" hidden>
+      <div class="section-label">Published analyst reports</div>
+      <p class="note-line">Publication is automatic; this is post-moderation. Takedown voids the bounty and every sale; Reopen sends it back to the analyst as a generating report. Feature puts it in a free window for everyone.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Company</th><th>Analyst</th><th>Published</th><th>Status</th><th>Price</th><th>Reviews</th><th>Prompts</th><th></th></tr></thead>
+        <tbody id="analyst-rows"><tr><td colspan="8" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── users ── -->
+    <div class="panel tabpane" id="pane-users" hidden>
+      <div class="section-label">Members</div>
+      <p class="note-line">Click a row for everything on the account: publications, reviews received, purchases, payouts and the last 90 days of activity. Grant next generation clears an analyst's publish obligation.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Member</th><th>Role</th><th>Plan</th><th>This month</th><th>Flags</th><th></th></tr></thead>
+        <tbody id="user-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── earnings ── -->
+    <div class="panel tabpane" id="pane-earnings" hidden>
+      <div class="section-label">Analyst earnings</div>
+      <p class="note-line">Derived from the same ledger each analyst sees, so the two cannot disagree. "Pay out" settles everything currently payable for that analyst and records the PAYOUT rows.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Analyst</th><th>Published</th><th>Sales</th><th>Gross</th><th>Ready to invoice</th><th>Held (14&nbsp;d)</th><th>Paid</th><th></th></tr></thead>
+        <tbody id="earning-rows"><tr><td colspan="8" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── stats ── -->
+    <div class="panel tabpane" id="pane-stats" hidden>
+      <div class="section-label">Activity</div>
+      <div class="stat-cards" id="stat-cards"></div>
+      <div class="section-label">By company</div>
+      <p class="note-line">Counted from member entitlements, analyst reads and sales — the permanent rows. Public free-report downloads are direct CDN links and leave no row, so they are not in these numbers.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Company</th><th>Report opens</th><th>Analyst reads</th><th>Subscriber reads</th><th>Sales</th><th>Gross</th><th>Published</th></tr></thead>
+        <tbody id="stats-rows"><tr><td colspan="7" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── promo codes ── -->
+    <div class="panel tabpane" id="pane-promos" hidden>
+      <div class="section-label">Live promotion codes</div>
+      <p class="note-line">Everything active in Stripe live mode. A 100%-off code with no restrictions and no expiry is highlighted — that is a free-everything key anyone can type. Creating codes stays in the Stripe dashboard; here they can only be switched off.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Code</th><th>Gives</th><th>Duration</th><th>Used</th><th>Limits</th><th></th></tr></thead>
+        <tbody id="promo-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+      </table></div>
     </div>
   </div>
 
@@ -317,23 +402,76 @@
       });
     });
 
-    function renderReports() {
-      sortReports();
-      renderSortArrows();
-      const rows = reports.map((report, index) => `
-        <tr>
+    const ORIGIN_BADGE = {
+      uploaded: '<span class="badge badge-gray">Uploaded</span>',
+      order: '<span class="badge badge-blue">Fresh order</span>',
+      generation: '<span class="badge badge-yellow">Member generation</span>',
+    };
+
+    function reportRow(report, index, extra) {
+      const who = report.generatedBy
+        ? `<br><span class="muted" style="font-size:0.7rem;">by ${esc(report.generatedBy)}</span>` : '';
+      return `
+        <tr${extra || ''}>
           <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>
           <td>${esc(report.ticker || '—')}</td>
           <td>${esc(report.reportDate || '—')}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
-          <td style="text-align:right;">
+          <td style="text-align:right; white-space:nowrap;">
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
             <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
           </td>
-        </tr>`).join('');
-      $('report-rows').innerHTML = rows || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+        </tr>`;
     }
+
+    // One row per report, its revised copies folded away behind a count. All of
+    // one order's files share a groupId, which is what turns fifteen Tesla rows
+    // into a handful — the catalog is meant to be read as reports, not files.
+    function renderReports() {
+      sortReports();
+      renderSortArrows();
+      const chains = new Map();
+      reports.forEach((report, index) => {
+        const key = report.groupId || report.id;
+        if (!chains.has(key)) chains.set(key, { main: null, revs: [] });
+        const chain = chains.get(key);
+        if (report.isRevision) chain.revs.push({ report, index });
+        else chain.main = { report, index };
+      });
+
+      const rows = [];
+      for (const [key, chain] of chains) {
+        // Every file of the chain is a revision (the base left the catalog):
+        // the newest revision fronts it rather than the chain disappearing.
+        const main = chain.main || chain.revs.shift();
+        if (!main) continue;
+        rows.push(reportRow(main.report, main.index));
+        if (chain.revs.length) {
+          const gid = esc(String(key));
+          rows.push(`<tr class="rev-toggle-row"><td colspan="6" style="padding:0.25rem 0.9rem 0.55rem;">
+            <button class="btn-xs" data-revs="${gid}">▸ ${chain.revs.length} revised ${chain.revs.length === 1 ? 'version' : 'versions'}</button>
+          </td></tr>`);
+          for (const rev of chain.revs) {
+            rows.push(reportRow(rev.report, rev.index,
+              ` class="rev-row" data-rev-of="${gid}" hidden style="background:var(--off-white);"`));
+          }
+        }
+      }
+      $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+    }
+
+    $('report-rows').addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-revs]');
+      if (!btn) return;
+      const gid = btn.dataset.revs;
+      let shown = false;
+      document.querySelectorAll(`tr.rev-row[data-rev-of="${CSS.escape(gid)}"]`).forEach((tr) => {
+        tr.hidden = !tr.hidden;
+        shown = !tr.hidden;
+      });
+      btn.textContent = btn.textContent.replace(shown ? '▸' : '▾', shown ? '▾' : '▸');
+    });
 
     async function refreshReports() {
       const data = await api('/api/admin/reports');
@@ -529,14 +667,328 @@
       }
     });
 
+    // ── members admin ────────────────────────────────────────────────────────
+    // Second API, same password: both Lambdas read the same admin secret, so one
+    // sign-in unlocks both. Overridable for the test stage like API_BASE above.
+    const MEMBERS_API = localStorage.getItem('aerAdminMembersApiBase') || 'https://members.aiequityreports.com';
+
+    async function mapi(path, options = {}) {
+      const res = await fetch(`${MEMBERS_API}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${password()}`,
+          ...(options.headers || {}),
+        },
+      });
+      if (res.status === 401) { signOut('Session rejected — sign in again.'); throw new Error('Unauthorized'); }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      return data;
+    }
+
+    // ── tabs: lazy-load each pane on first open ──────────────────────────────
+    const PANE_LOADERS = {
+      analysts: loadAnalystPane,
+      users: loadUsersPane,
+      earnings: loadEarningsPane,
+      stats: loadStatsPane,
+      promos: loadPromosPane,
+    };
+    const paneLoaded = {};
+
+    $('tabs').addEventListener('click', (ev) => {
+      const btn = ev.target.closest('.tab-btn');
+      if (!btn) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tabpane').forEach(pane => { pane.hidden = pane.id !== `pane-${btn.dataset.pane}`; });
+      const loader = PANE_LOADERS[btn.dataset.pane];
+      if (loader && !paneLoaded[btn.dataset.pane]) {
+        paneLoaded[btn.dataset.pane] = true;
+        loader().catch(err => { if (err.message !== 'Unauthorized') flash('err', err.message); });
+      }
+    });
+
+    const eur = (n) => '€' + (Math.round((Number(n) || 0) * 100) / 100).toLocaleString('en-IE');
+    const day = (iso) => String(iso || '').slice(0, 10) || '—';
+    const reload = (pane) => { paneLoaded[pane] = false; PANE_LOADERS[pane]().catch(e => flash('err', e.message)); };
+
+    // ── analyst publications ─────────────────────────────────────────────────
+    async function loadAnalystPane() {
+      const { publications } = await mapi('/admin/members/publications?limit=200');
+      $('analyst-rows').innerHTML = publications.map(p => {
+        const score = p.reviewCount
+          ? `${(p.averageScore ?? p.peerScore).toFixed(1)} / 5 <span class="muted">(${p.reviewCount})</span>`
+          : '<span class="muted">none</span>';
+        const status = p.status === 'published' ? '<span class="badge badge-green">Published</span>'
+          : p.status === 'takendown' ? `<span class="badge badge-gray">Taken down</span>`
+          : `<span class="badge badge-yellow">${esc(p.status)}</span>`;
+        const acts = p.status === 'published'
+          ? `<button class="btn-xs" data-act="feature" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}">Feature free</button>
+             <button class="btn-xs danger" data-act="takedown" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}" data-name="${esc(p.companyId)}">Take down</button>`
+          : p.status === 'takendown'
+            ? `<button class="btn-xs" data-act="reopen" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}">Reopen</button>`
+            : '';
+        return `<tr>
+          <td class="company">${esc(p.companyId)}</td>
+          <td>${esc(p.analyst || p.userId.slice(0, 8))}</td>
+          <td>${day(p.publishedAt)}</td>
+          <td>${status}${p.takedownReason ? `<br><span class="muted" style="font-size:0.7rem;">${esc(p.takedownReason)}</span>` : ''}</td>
+          <td>${p.priceEur ? eur(p.priceEur) : 'free'}</td>
+          <td>${score}</td>
+          <td>${p.promptsText ? `<details class="prompts"><summary>${esc(p.promptsText.slice(0, 60))}…</summary><pre>${esc(p.promptsText)}</pre></details>` : '<span class="muted">—</span>'}</td>
+          <td style="text-align:right; white-space:nowrap;">${acts}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="8" class="muted">Nothing published yet.</td></tr>';
+    }
+
+    $('analyst-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-act]');
+      if (!btn) return;
+      const { act, user, gen, name } = btn.dataset;
+      try {
+        if (act === 'feature') {
+          const days = prompt('Free window length in days?', '14');
+          if (days === null) return;
+          await mapi('/admin/members/feature', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen, days: Number(days) || 14 }) });
+          flash('ok', 'Featured — free for everyone for ' + (Number(days) || 14) + ' days.');
+        } else if (act === 'takedown') {
+          // Money moves on this one (bounty void + sale clawback), so the same
+          // type-the-name gate as report deletion.
+          const typed = prompt(`Taking this down voids its bounty and claws back its sales.\nType the company id (${name}) to confirm:`);
+          if (typed === null) return;
+          if (typed.trim().toUpperCase() !== String(name).toUpperCase()) { flash('err', 'Name did not match — nothing done.'); return; }
+          const reason = prompt('Reason (shown to the analyst):', '') || '';
+          await mapi('/admin/members/takedown', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen, reason }) });
+          flash('ok', 'Taken down.');
+        } else if (act === 'reopen') {
+          await mapi('/admin/members/reopen', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen }) });
+          flash('ok', 'Reopened — back with the analyst as a generating report.');
+        }
+        reload('analysts');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
+    // ── users ────────────────────────────────────────────────────────────────
+    let userRows = [];
+    async function loadUsersPane() {
+      const { users } = await mapi('/admin/members/users');
+      userRows = users;
+      $('user-rows').innerHTML = users.map((u, i) => {
+        const plan = u.tier === 'none' ? '<span class="muted">—</span>'
+          : `${esc(u.tier)}${u.billingInterval === 'year' ? '/yr' : ''}` +
+            (u.tierStatus !== 'active' ? ` <span class="pill-warn">${esc(u.tierStatus)}</span>` : '') +
+            (u.coverageCompanyIds.length ? `<br><span class="muted" style="font-size:0.7rem;">${esc(u.coverageCompanyIds.join(', '))}</span>` : '');
+        const flags = [
+          u.banned ? '<span class="pill-danger">banned</span>' : '',
+          u.openObligationId ? '<span class="pill-warn">owes publication</span>' : '',
+          u.openReviewId ? '<span class="pill-warn">owes review</span>' : '',
+        ].filter(Boolean).join(' ') || '<span class="muted">—</span>';
+        return `<tr class="user-row" data-i="${i}" style="cursor:pointer;">
+          <td class="company">${esc(u.name || u.email || u.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(u.email || u.userId)}</span></td>
+          <td>${esc(u.role || '—')}</td>
+          <td>${plan}</td>
+          <td>${u.usage.picks}/${u.usage.pickLimit} picks · ${u.usage.analystReads}/${u.usage.analystReadLimit} reads${u.usage.genReserved ? ' · gen used' : ''}</td>
+          <td>${flags}</td>
+          <td style="text-align:right; white-space:nowrap;">
+            ${u.role && u.role !== 'reader' ? `<button class="btn-xs" data-uact="grant" data-user="${esc(u.userId)}">Grant next generation</button>` : ''}
+            <button class="btn-xs ${u.banned ? '' : 'danger'}" data-uact="ban" data-user="${esc(u.userId)}" data-banned="${u.banned ? '1' : '0'}">${u.banned ? 'Unban' : 'Ban'}</button>
+          </td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="6" class="muted">No members yet.</td></tr>';
+    }
+
+    $('user-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-uact]');
+      if (btn) {
+        const { uact, user } = btn.dataset;
+        try {
+          if (uact === 'ban') {
+            const banning = btn.dataset.banned !== '1';
+            if (banning && !confirm('Ban this member? They keep what they bought but can do nothing new.')) return;
+            await mapi('/admin/members/ban', { method: 'POST', body: JSON.stringify({ userId: user, banned: banning }) });
+            flash('ok', banning ? 'Banned.' : 'Unbanned.');
+          } else if (uact === 'grant') {
+            if (!confirm('Clear the publish obligation and give back this month\'s generation?')) return;
+            await mapi('/admin/members/grant-generation', { method: 'POST', body: JSON.stringify({ userId: user }) });
+            flash('ok', 'Granted — their next generation is unlocked.');
+          }
+          reload('users');
+        } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+        return;
+      }
+      const row = ev.target.closest('.user-row');
+      if (!row || ev.target.closest('details')) return;
+      const existing = row.nextElementSibling;
+      if (existing && existing.classList.contains('detail-row')) { existing.remove(); return; }
+      document.querySelectorAll('.detail-row').forEach(r => r.remove());
+      const u = userRows[Number(row.dataset.i)];
+      const detailRow = document.createElement('tr');
+      detailRow.className = 'detail-row';
+      detailRow.innerHTML = '<td colspan="6"><div class="detail-box muted">Loading…</div></td>';
+      row.after(detailRow);
+      try {
+        const d = await mapi(`/admin/members/users/${encodeURIComponent(u.userId)}`);
+        detailRow.innerHTML = `<td colspan="6"><div class="detail-box">${renderUserDetail(d)}</div></td>`;
+      } catch (err) {
+        detailRow.innerHTML = `<td colspan="6"><div class="detail-box">${esc(err.message)}</div></td>`;
+      }
+    });
+
+    function renderUserDetail(d) {
+      const parts = [];
+      if (d.publications.length) {
+        parts.push('<h4>Generations & publications</h4><table><tr><th>Company</th><th>Status</th><th>Published</th><th>Price</th><th>Revisions</th><th>Prompts</th></tr>'
+          + d.publications.map(p => `<tr><td>${esc(p.companyName || p.companyId || '—')}${p.forkedFrom ? ' <span class="muted">(fork)</span>' : ''}${p.coverage ? ' <span class="muted">(coverage)</span>' : ''}</td>
+            <td>${esc(p.status)}${p.takedownReason ? ` — ${esc(p.takedownReason)}` : ''}</td><td>${day(p.publishedAt || p.reservedAt)}</td>
+            <td>${p.priceEur ? eur(p.priceEur) : '—'}</td><td>${p.revisionsUsed}/${p.revisionsAllowed}</td>
+            <td>${p.promptsText ? `<details class="prompts"><summary>show</summary><pre>${esc(p.promptsText)}</pre></details>` : '—'}</td></tr>`).join('') + '</table>');
+      }
+      if (d.reviewsReceived.length) {
+        parts.push('<h4>Reviews received</h4><table><tr><th>Analysis</th><th>Reviewer</th><th>Score</th><th>Comment</th><th></th></tr>'
+          + d.reviewsReceived.map(r => `<tr${r.voided ? ' style="opacity:.5;"' : ''}><td>${esc(r.genId.slice(0, 8))}</td><td>${esc(r.reviewerId.slice(0, 8))}</td>
+            <td>${r.score}${r.voided ? ' <span class="pill-warn">voided</span>' : ''}${r.edits ? ` <span class="muted">(${r.edits} edits)</span>` : ''}</td>
+            <td style="max-width:34ch;">${esc(String(r.comment).slice(0, 160))}</td>
+            <td>${r.voided ? '' : `<button class="btn-xs danger" data-void="1" data-owner="${esc(d.profile.userId)}" data-gen="${esc(r.genId)}" data-reviewer="${esc(r.reviewerId)}">Void</button>`}</td></tr>`).join('') + '</table>');
+      }
+      if (d.sales.length) {
+        parts.push('<h4>Sales of their work</h4>' + d.sales.map(sl => `${day(sl.soldAt)} · ${esc(sl.companyId || sl.genId.slice(0, 8))} · ${eur(sl.grossEur)}`).join('<br>'));
+      }
+      if (d.payouts.length) {
+        parts.push('<h4>Payouts</h4>' + d.payouts.map(po => `${day(po.paidAt)} · ${esc(po.kind)} · ${eur(po.amount)}`).join('<br>'));
+      }
+      if (d.entitlements.length) {
+        parts.push(`<h4>Reports opened (${d.entitlements.length})</h4>` + d.entitlements.slice(0, 30).map(e => `${esc(e.reportId)} <span class="muted">(${esc(e.source || '?')})</span>`).join('<br>')
+          + (d.entitlements.length > 30 ? `<br><span class="muted">…and ${d.entitlements.length - 30} more</span>` : ''));
+      }
+      if (d.reads.length) {
+        parts.push(`<h4>Analyst reads (${d.reads.length})</h4>` + d.reads.slice(0, 20).map(r => `${day(r.openedAt)} · ${esc(r.genId.slice(0, 8))}`).join('<br>'));
+      }
+      if (d.topups.length) {
+        parts.push('<h4>Top-ups</h4>' + d.topups.map(t => `${esc(t.month)} · ${t.units} ${esc(t.kind)}`).join('<br>'));
+      }
+      if (d.audit.length) {
+        parts.push('<h4>Recent activity (90-day window)</h4>' + d.audit.slice(0, 25).map(a => `${esc(a.at)} · ${esc(a.type)}`).join('<br>'));
+      }
+      return parts.join('') || '<span class="muted">Nothing on this account yet.</span>';
+    }
+
+    // Void buttons live inside the detail box, which is re-rendered per open, so
+    // the handler sits on the table and survives.
+    $('user-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-void]');
+      if (!btn) return;
+      ev.stopPropagation();
+      if (!confirm('Void this review? Its score comes out of the totals; the row stays, flagged.')) return;
+      try {
+        await mapi('/admin/members/void-review', {
+          method: 'POST',
+          body: JSON.stringify({ ownerId: btn.dataset.owner, genId: btn.dataset.gen, reviewerId: btn.dataset.reviewer }),
+        });
+        flash('ok', 'Voided — the analysis shows its average without it.');
+        btn.closest('.detail-row')?.remove();
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    }, true);
+
+    // ── earnings ─────────────────────────────────────────────────────────────
+    async function loadEarningsPane() {
+      const data = await mapi('/admin/members/earnings');
+      const analysts = data.analysts || data.owed || [];
+      $('earning-rows').innerHTML = analysts.map(a => `<tr>
+        <td class="company">${esc(a.analyst || a.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(a.email || '')}</span></td>
+        <td>${a.published || 0}</td>
+        <td>${a.salesCount || 0}${a.readsCount ? ` <span class="muted">+ ${a.readsCount} reads</span>` : ''}</td>
+        <td>${eur(a.grossSales)}</td>
+        <td><strong>${eur(a.readyToInvoice)}</strong></td>
+        <td>${eur(a.held)}</td>
+        <td>${eur(a.paid)}${a.clawback ? ` <span class="pill-danger">${eur(a.clawback)} clawed</span>` : ''}</td>
+        <td style="text-align:right;">${a.readyToInvoice > 0
+          ? `<button class="btn-xs" data-pay="${esc(a.userId)}" data-amount="${a.readyToInvoice}">Pay out ${eur(a.readyToInvoice)}</button>` : ''}</td>
+      </tr>`).join('') || '<tr><td colspan="8" class="muted">Nobody is owed anything.</td></tr>';
+    }
+
+    $('earning-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-pay]');
+      if (!btn) return;
+      // Recording a payout is stating that money left the bank — hence the gate.
+      const typed = prompt(`This records ${eur(btn.dataset.amount)} as PAID for this analyst.\nDo it only after the invoice is actually settled.\nType PAID to confirm:`);
+      if (typed === null) return;
+      if (typed.trim().toUpperCase() !== 'PAID') { flash('err', 'Not confirmed — nothing recorded.'); return; }
+      try {
+        const res = await mapi('/admin/members/payout', { method: 'POST', body: JSON.stringify({ userId: btn.dataset.pay }) });
+        flash('ok', `Recorded — ${eur(res.total)} marked paid.`);
+        reload('earnings');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
+    // ── stats ────────────────────────────────────────────────────────────────
+    async function loadStatsPane() {
+      const { totals, byCompany } = await mapi('/admin/members/stats');
+      $('stat-cards').innerHTML = [
+        [totals.users, 'Members'],
+        [totals.publications, 'Published analyses'],
+        [totals.entitlements, 'Reports opened'],
+        [totals.analystReads, 'Analyst reads'],
+        [totals.sales, 'Analysis sales'],
+        [eur(totals.grossEur), 'Gross analysis sales'],
+        [totals.topups, 'Top-ups bought'],
+        [eur(totals.payoutsEur), 'Paid to analysts'],
+      ].map(([n, l]) => `<div class="stat-card"><div class="num">${n}</div><div class="lbl">${l}</div></div>`).join('');
+      $('stats-rows').innerHTML = byCompany.map(c => `<tr>
+        <td class="company">${esc(c.companyId)}</td>
+        <td>${c.reportOpens}</td><td>${c.analystReads}</td><td>${c.subscriberReads}</td>
+        <td>${c.sales}</td><td>${c.grossEur ? eur(c.grossEur) : '—'}</td><td>${c.published}</td>
+      </tr>`).join('') || '<tr><td colspan="7" class="muted">No activity yet.</td></tr>';
+    }
+
+    // ── promo codes ──────────────────────────────────────────────────────────
+    async function loadPromosPane() {
+      const { codes } = await mapi('/admin/members/promo-codes');
+      const live = codes.filter(c => c.active);
+      $('promo-rows').innerHTML = live.map(c => {
+        const gives = c.percentOff ? `${c.percentOff}% off` : c.amountOffEur ? `${eur(c.amountOffEur)} off` : '—';
+        const dangerous = c.percentOff === 100 && !c.maxRedemptions && !c.expiresAt && !c.restrictions;
+        const limits = [
+          c.maxRedemptions ? `max ${c.maxRedemptions}` : '',
+          c.expiresAt ? `until ${day(c.expiresAt)}` : '',
+          c.restrictions || '',
+        ].filter(Boolean).join(' · ') || (dangerous ? '<span class="pill-danger">none — free everything</span>' : '<span class="muted">none</span>');
+        return `<tr${dangerous ? ' style="background:#FEF2F2;"' : ''}>
+          <td class="company">${esc(c.code)}</td>
+          <td>${gives}</td>
+          <td>${esc(c.duration || '—')}</td>
+          <td>${c.timesRedeemed}</td>
+          <td>${limits}</td>
+          <td style="text-align:right;"><button class="btn-xs danger" data-promo="${esc(c.promoId)}" data-code="${esc(c.code)}">Deactivate</button></td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="6" class="muted">No active codes.</td></tr>';
+    }
+
+    $('promo-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-promo]');
+      if (!btn) return;
+      if (!confirm(`Deactivate ${btn.dataset.code}? Anyone typing it after this gets "invalid code". Cannot be reactivated here.`)) return;
+      try {
+        await mapi('/admin/members/promo-deactivate', { method: 'POST', body: JSON.stringify({ promoId: btn.dataset.promo }) });
+        flash('ok', `${btn.dataset.code} deactivated.`);
+        reload('promos');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
     // ── boot: stored password → straight in; otherwise show the gate ────────
+    // A wrong password keeps the gate up; an unreachable reports API does not —
+    // the members tabs are a different origin and may be fine, and an admin
+    // locked out of everything because one API is down can fix nothing.
     (async () => {
       if (!password()) return;
       try {
         await refreshReports();
-        $('auth-screen').style.display = 'none';
-        $('app').style.display = 'block';
-      } catch (_) { /* signOut already handled 401; network errors leave the gate up */ }
+      } catch (err) {
+        if (err.message === 'Unauthorized') return;
+        flash('err', 'Report catalog unreachable: ' + err.message + ' — the other tabs still work.');
+      }
+      $('auth-screen').style.display = 'none';
+      $('app').style.display = 'block';
     })();
   </script>
 </body>

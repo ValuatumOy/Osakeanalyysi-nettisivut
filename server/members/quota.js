@@ -5,6 +5,16 @@
 // Allowances live in tiers.js — three tunable numbers per role/tier.
 const FREEMIUM_MIN_AGE_DAYS = 30;
 const COVERAGE_UPDATES_PER_YEAR = 4;
+// A Company Coverage subscription may carry more than one company, priced per
+// company. The four updates are therefore four PER company — otherwise a
+// three-company subscriber pays three times over for the same four reports.
+const COVERAGE_MAX_COMPANIES = 5;
+
+// One counter per covered company on the year's usage item. The ticker goes
+// through ExpressionAttributeNames, so dots and dashes in it need no escaping.
+function coverageCounter(companyId) {
+  return `cov#${String(companyId || '').toUpperCase()}`;
+}
 // An analysis may be given away free for at most a year (Esa, 17.8.2026): the
 // analyst sets the decay themselves, and free archive accumulates by itself.
 const MAX_FREE_AFTER_DAYS = 365;
@@ -157,9 +167,22 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
 // the obligation, so next month's generation unlocks. companyId and jobId are
 // required: the bounty ledger keys on the company, and jobId is the provenance
 // link back to the engine job the published PDF came from.
+const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
+
+/** Only the three the engine issues; anything else is stored as unknown, never shown. */
+function normaliseRecommendation(value) {
+  const v = String(value || '').trim().toUpperCase();
+  return RECOMMENDATIONS.has(v) ? v : null;
+}
+
 function buildSubmitTransact({
-  table, userId, now, genId, promptsText, companyId, jobId,
-  priceEur = 0, freeAfterDays, analystName = '',
+  table, userId, now, genId, promptsText, promptRounds = 0, companyId, jobId,
+  priceEur = 0, freeAfterDays, analystName = '', analystLinkedin = null,
+  // The engine's own output for this job, taken from the delivered order rather than from
+  // the request: an analyst supplying their own rating could publish one the report does
+  // not support, and the whole compliance story here is that a published claim is traceable
+  // to an engine job. Null until the engine surfaces it.
+  recommendation = null, targetPrice = null,
 }) {
   const at = now.toISOString();
   const company = String(companyId).toUpperCase();
@@ -167,6 +190,9 @@ function buildSubmitTransact({
   // The analyst sets both the price and how long until the analysis falls free.
   const freeFrom = new Date(now.getTime() + days * DAY_MS).toISOString();
   const price = Math.max(0, Math.round(Number(priceEur) || 0));
+  // DynamoDB rejects undefined; null is a value and reads back as "not known".
+  const rating = normaliseRecommendation(recommendation);
+  const target = targetPrice ? String(targetPrice).trim().slice(0, 40) : null;
   return {
     TransactItems: [
       {
@@ -187,7 +213,8 @@ function buildSubmitTransact({
           Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
           UpdateExpression: 'SET #status = :published, publishedAt = :at, promptsText = :prompts, '
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
-            + 'freeFrom = :freeFrom',
+            + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target, '
+            + 'promptRounds = :rounds',
           ConditionExpression: '#status = :generating',
           ExpressionAttributeNames: { '#status': 'status' },
           ExpressionAttributeValues: {
@@ -200,6 +227,9 @@ function buildSubmitTransact({
             ':price': price,
             ':days': days,
             ':freeFrom': freeFrom,
+            ':rec': rating,
+            ':target': target,
+            ':rounds': Math.max(0, Math.round(Number(promptRounds) || 0)),
           },
         },
       },
@@ -213,6 +243,7 @@ function buildSubmitTransact({
             genId,
             companyId: company,
             analystName,
+            ...(analystLinkedin ? { analystLinkedin } : {}),
             jobId: jobId || '',
             publishedAt: at,
             status: 'published',
@@ -220,6 +251,8 @@ function buildSubmitTransact({
             freeFrom,
             reviewCount: 0,
             scoreSum: 0,
+            recommendation: rating,
+            targetPrice: target,
           },
         },
       },
@@ -359,7 +392,27 @@ function buildRoleChangeTransact({ table, userId, role }) {
 // Opening another analyst's analysis costs one monthly read AND leaves a review
 // obligation: the next one stays locked until this one has been scored and
 // commented (Esa, 17.8.2026). Same shape as the publish obligation.
-function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }) {
+// readRateEur > 0 mirrors the read into the author's own partition, which is what
+// turns a subscriber's monthly allowance into money for the analyst they read.
+// The rate is stamped on the row, not read from the env at payout time: changing
+// it later must not rewrite what an earlier read was worth. A read by an analyst
+// or a reader — nobody paid us for it — passes 0 and writes no mirror row.
+function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId, readRateEur = 0, companyId = '' }) {
+  const mirror = Number(readRateEur) > 0 ? [{
+    Put: {
+      TableName: table,
+      Item: {
+        pk: `USER#${ownerId}`,
+        sk: `SUBREAD#${genId}#${userId}`,
+        genId,
+        companyId: String(companyId || '').toUpperCase(),
+        readerId: userId,
+        openedAt: now.toISOString(),
+        rateEur: Math.round(Number(readRateEur) * 100) / 100,
+      },
+      ConditionExpression: 'attribute_not_exists(sk)',
+    },
+  }] : [];
   return {
     TransactItems: [
       {
@@ -392,12 +445,60 @@ function buildOpenAnalysisTransact({ table, userId, now, limit, genId, ownerId }
           ConditionExpression: 'attribute_not_exists(sk)',
         },
       },
+      ...mirror,
     ],
   };
 }
 
 // The review that pays for the read: a score plus a written comparison. Counters
 // on the index item are what orders the analyses on a company page.
+// Correcting a review that has already been written. A misclicked score used
+// to be permanent: the review row is written once, conditional on not existing,
+// and the score is baked into the analysis's running scoreSum.
+//
+// So the edit moves scoreSum by the difference and leaves reviewCount alone —
+// one reviewer stays one review however often they fix it. The condition on the
+// old score is an optimistic lock: two edits racing would otherwise both add
+// their own delta to a sum only one of them read.
+function buildReviewEditTransact({
+  table, ownerId, reviewerId, now, genId, indexSk,
+  oldScore, oldComment, score, comment, history = [],
+}) {
+  // What is being replaced, kept so an analyst can see a score was changed and
+  // to what — a silent edit to a public rating is worse than no edit at all.
+  // Capped: the newest nineteen plus this one, so the row cannot grow forever.
+  const previous = [...history, { score: oldScore, comment: oldComment || '', at: now.toISOString() }].slice(-20);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${ownerId}`, sk: `REVIEW#${genId}#${reviewerId}` },
+          UpdateExpression: 'SET score = :score, #c = :comment, reviewedAt = :at, history = :history',
+          ConditionExpression: 'attribute_exists(sk) AND score = :oldScore',
+          ExpressionAttributeNames: { '#c': 'comment' },
+          ExpressionAttributeValues: {
+            ':score': score,
+            ':comment': comment,
+            ':at': now.toISOString(),
+            ':oldScore': oldScore,
+            ':history': previous,
+          },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'ADD scoreSum :delta',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':delta': Math.round((score - oldScore) * 10) / 10 },
+        },
+      },
+    ],
+  };
+}
+
 function buildReviewTransact({ table, userId, now, genId, ownerId, indexSk, score, comment }) {
   return {
     TransactItems: [
@@ -438,6 +539,36 @@ function buildReviewTransact({ table, userId, now, genId, ownerId, indexSk, scor
   };
 }
 
+// A reviewer who takes up coverage of the company they reviewed loses that score:
+// otherwise the ladder is climbed by marking every rival down first and only then
+// starting your own report (Lauri, 27.8.2026). The row stays as evidence, flagged;
+// only its contribution to the published totals is taken back.
+function buildVoidReviewTransact({ table, ownerId, reviewerId, now, genId, indexSk, score }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${ownerId}`, sk: `REVIEW#${genId}#${reviewerId}` },
+          UpdateExpression: 'SET voided = :true, voidedAt = :at',
+          // Voiding twice would double-subtract from the totals.
+          ConditionExpression: 'attribute_exists(sk) AND attribute_not_exists(voided)',
+          ExpressionAttributeValues: { ':true': true, ':at': now.toISOString() },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: 'PUBINDEX', sk: indexSk },
+          UpdateExpression: 'ADD reviewCount :minusOne, scoreSum :minusScore',
+          ConditionExpression: 'attribute_exists(sk)',
+          ExpressionAttributeValues: { ':minusOne': -1, ':minusScore': -Number(score) },
+        },
+      },
+    ],
+  };
+}
+
 // Hand-picked free window: every fifth or tenth analysis goes free to everyone
 // for a while (Esa, 17.8.2026). Hand-picked now, randomised later.
 function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 }) {
@@ -465,6 +596,161 @@ function buildFeatureTransact({ table, userId, now, genId, indexSk, days = 14 })
       },
     ],
   };
+}
+
+// Repricing a live analysis. The price was written once at publication and
+// never again, so an analyst who guessed wrong was stuck with it — and after
+// forking arrived, the price is also what a derivative pays them.
+//
+// Sales already made are untouched: a SALE row records the gross it was sold
+// at, so repricing moves what the next reader pays and nothing that already
+// happened. freeFrom is recomputed from the original publication date rather
+// than from now, or repeatedly repricing would push the free date away forever.
+function buildRepriceTransact({ table, userId, genId, indexSk, priceEur, freeAfterDays, publishedAt }) {
+  const price = Math.max(0, Math.round(Number(priceEur) || 0));
+  const days = clampFreeAfterDays(freeAfterDays);
+  const base = publishedAt ? new Date(publishedAt) : null;
+  const freeFrom = base && !Number.isNaN(base.getTime())
+    ? new Date(base.getTime() + days * DAY_MS).toISOString()
+    : null;
+
+  const setPub = ['priceEur = :price', 'freeAfterDays = :days']
+    .concat(freeFrom ? ['freeFrom = :freeFrom'] : []).join(', ');
+  const values = { ':price': price, ':days': days, ':published': 'published' };
+  if (freeFrom) values[':freeFrom'] = freeFrom;
+
+  const items = [
+    {
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+        UpdateExpression: `SET ${setPub}`,
+        // Only a live analysis has a price worth changing: a taken-down or
+        // still-generating one has no listing for the new one to reach.
+        ConditionExpression: '#status = :published',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: values,
+      },
+    },
+  ];
+  // The listing is what every buyer and forker actually reads the price from,
+  // so the two must move together or the checkout charges the old one.
+  if (indexSk) {
+    const indexValues = { ':price': price };
+    if (freeFrom) indexValues[':freeFrom'] = freeFrom;
+    items.push({
+      Update: {
+        TableName: table,
+        Key: { pk: 'PUBINDEX', sk: indexSk },
+        UpdateExpression: freeFrom ? 'SET priceEur = :price, freeFrom = :freeFrom' : 'SET priceEur = :price',
+        ConditionExpression: 'attribute_exists(sk)',
+        ExpressionAttributeValues: indexValues,
+      },
+    });
+  }
+  return { TransactItems: items };
+}
+
+// An analyst deriving from someone else's published analysis. The fee is what
+// bounds this, not the monthly generation: a fork is paid for (the parent's
+// price goes to its author as an ordinary sale, plus a derivation fee), so the
+// free 1/month stays reserved for work started from nothing.
+//
+// It does carry the publish obligation, because a derivative that never appears
+// is the one case where the competition mechanic pays nothing back to the
+// analyst whose work it was built on. Same single obligation slot as any
+// generation: an analyst who already owes a publication settles that first,
+// which is what the condition enforces.
+function buildForkTransact({ table, userId, now, genId, parentGenId, parentUserId, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'SET openObligationId = :genId',
+          ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
+          ExpressionAttributeValues: { ':genId': genId },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            reservedAt: now.toISOString(),
+            companyId: String(companyId || '').toUpperCase(),
+            // Lineage, carried to the publication index at submit time so a
+            // reader of the derived analysis can see what it was built on.
+            forkedFrom: parentGenId,
+            forkedFromUserId: parentUserId,
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// The other half of a takedown: put the analysis back to `generating` so the
+// analyst can fix what was wrong, spend a remaining revision round and publish
+// it again. analyst-terms.html has always promised this ("fix the cause and
+// republish"); until now the code could not do it, because buildSubmitTransact
+// requires `generating` and a takedown leaves `takendown`.
+//
+// voidSalesBefore is the part that matters for money. bounty.ledger() voids a
+// sale by reading the PUB status, so without a cutoff every sale voided by the
+// takedown — including refunded ones and shares already clawed back — would
+// turn payable again the moment the analysis is published a second time. The
+// cutoff is the reopen time rather than takenDownAt: no legitimate sale happens
+// while an analysis is down, and a late webhook writing a straggler soldAt
+// inside that window must be void too. A later reopen overwrites it, so
+// repeated cycles keep only the newest cutoff, which is the correct one.
+function buildReopenTransact({ table, userId, now, genId, indexSk }) {
+  const items = [
+    {
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+        UpdateExpression: 'SET #status = :generating, voidSalesBefore = :now'
+          + ' REMOVE publishedAt, takenDownAt, takedownReason',
+        ConditionExpression: '#status = :takendown',
+        ExpressionAttributeNames: { '#status': 'status' },
+        ExpressionAttributeValues: {
+          ':generating': 'generating',
+          ':takendown': 'takendown',
+          ':now': now.toISOString(),
+        },
+      },
+    },
+    {
+      // Republishing goes through the normal submit button, which reads the
+      // obligation off the profile — without this there is no way to publish it
+      // again. Conditional so a reopen can never displace a different
+      // generation the analyst already owes.
+      Update: {
+        TableName: table,
+        Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+        UpdateExpression: 'SET openObligationId = :genId',
+        ConditionExpression: 'attribute_not_exists(openObligationId) OR openObligationId = :genId',
+        ExpressionAttributeValues: { ':genId': genId },
+      },
+    },
+  ];
+  // The index row is keyed on the old publishedAt, and a republish writes a new
+  // one under a new sort key. Dropping it here stops the same analysis
+  // appearing twice on a company page, once as takendown.
+  if (indexSk) {
+    items.push({
+      Delete: {
+        TableName: table,
+        Key: { pk: 'PUBINDEX', sk: indexSk },
+      },
+    });
+  }
+  return { TransactItems: items };
 }
 
 // Admin takedown: the post-moderation half of auto-publish. Voids the bounty by
@@ -507,15 +793,19 @@ function buildTakedownTransact({ table, userId, now, genId, reason, indexSk }) {
 // Company Coverage: the initial report is free once per subscription
 // (coverageInitialGranted flag on PROFILE); after that each new report of the
 // covered company consumes one of the 4 yearly updates.
-function buildCoverageInitialTransact({ table, userId, now, reportId }) {
+function buildCoverageInitialTransact({ table, userId, now, reportId, companyId }) {
+  // Per company, not per subscription: a three-company subscriber is paying for
+  // three companies' initial reports, not for one.
+  const flag = `coverageInitial#${String(companyId || '').toUpperCase()}`;
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
-          UpdateExpression: 'SET coverageInitialGranted = :true',
-          ConditionExpression: 'attribute_not_exists(coverageInitialGranted)',
+          UpdateExpression: 'SET #f = :true',
+          ConditionExpression: 'attribute_not_exists(#f)',
+          ExpressionAttributeNames: { '#f': flag },
           ExpressionAttributeValues: { ':true': true },
         },
       },
@@ -530,15 +820,16 @@ function buildCoverageInitialTransact({ table, userId, now, reportId }) {
   };
 }
 
-function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
+function buildCoverageUpdateTransact({ table, userId, now, reportId, companyId }) {
   return {
     TransactItems: [
       {
         Update: {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
-          UpdateExpression: 'SET coverageUpdates = if_not_exists(coverageUpdates, :zero) + :one',
-          ConditionExpression: 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max',
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
           ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
         },
       },
@@ -553,21 +844,182 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId }) {
   };
 }
 
+// Company Coverage, the other direction: not opening a report that already
+// exists but asking for one to be made. The subscription sells four updates a
+// year and nothing in the system produced them, so this is what a subscriber
+// spends one of those four on. Same yearly counter as an opened update — the
+// four are four, however they are taken.
+//
+// No ENT# row here: there is no report id yet. The order page is the way in
+// until the engine delivers, exactly as it is for any other private generation.
+function buildCoverageGenerationTransact({ table, userId, now, genId, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(now)}` },
+          UpdateExpression: 'SET #c = if_not_exists(#c, :zero) + :one',
+          ConditionExpression: 'attribute_not_exists(#c) OR #c < :max',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
+          ExpressionAttributeValues: { ':zero': 0, ':one': 1, ':max': COVERAGE_UPDATES_PER_YEAR },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `PUB#${genId}`,
+            status: 'generating',
+            private: true,
+            // What the restore path keys on: this run spent a yearly update, not
+            // a monthly slot, and the two are given back differently. The company
+            // rides along because the counter it came off is that company's own.
+            coverage: true,
+            coverageCompanyId: String(companyId || '').toUpperCase(),
+            reservedAt: now.toISOString(),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+// The refund of the above. A run the engine never delivered must not cost a
+// quarter of the year's coverage: without this a single failure silently eats
+// one of the four the subscriber paid for.
+function buildReleaseCoverageTransact({ table, userId, now, reservedAt, companyId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          // Credited back to the year it was spent in, which is not necessarily
+          // the year the failure is noticed in.
+          Key: { pk: `USER#${userId}`, sk: `USAGE#Y#${yearKey(reservedAt ? new Date(reservedAt) : now)}` },
+          UpdateExpression: 'SET #c = #c - :one',
+          ConditionExpression: '#c > :zero',
+          ExpressionAttributeNames: { '#c': coverageCounter(companyId) },
+          ExpressionAttributeValues: { ':one': 1, ':zero': 0 },
+        },
+      },
+    ],
+  };
+}
+
+// What a reader who has not paid gets to see of an analyst's steering.
+//
+// A company page already shows the analyst's name, their peer score and their
+// price. It showed no reason to believe any of it, because the reasoning was
+// entirely behind the paywall — so the call read as an unsupported opinion
+// rather than a thesis (Lauri, 27.8.2026).
+//
+// The first round only, and truncated. The first round is where an analyst
+// states the thesis; the later rounds are the refinements, and those are what
+// the reader is buying. The round count carries its own weight — "5 rounds of
+// steering" says effort in a way a paragraph cannot.
+const PROMPT_TEASER_CHARS = 200;
+
+// The round count is passed in, never parsed out: revisionPrompts() joins rounds
+// with a blank line and a single comment contains blank lines of its own, so
+// splitting the stored text counted paragraphs and reported 188 rounds on a
+// two-round analysis. Publications from before the count was stored show the
+// prompt without one rather than a made-up number.
+function promptTeaser(promptsText, rounds = null) {
+  const text = String(promptsText || '').trim();
+  if (!text) return null;
+  // The opening paragraph, which is where an analyst states the thesis.
+  const first = text.split('\n\n')[0].trim().replace(/\s+/g, ' ');
+  if (!first) return null;
+  const cut = first.length > PROMPT_TEASER_CHARS;
+  return {
+    rounds: Number.isFinite(rounds) && rounds > 0 ? Math.round(rounds) : null,
+    // Cut on a word boundary where there is one nearby, so the tease does not
+    // end mid-word for the sake of four characters.
+    text: cut ? first.slice(0, PROMPT_TEASER_CHARS).replace(/\s+\S*$/, '') + '…' : first,
+    truncated: cut || first.length < text.length,
+  };
+}
+
+// A published analysis shows its first prompt unless the analyst has said not
+// to. Absent means yes: everything published from here on is public by default,
+// and an analyst turns it off on their own work.
+function promptsArePublic(pub) {
+  return pub?.promptsPublic !== false;
+}
+
+// Topping a meter up rather than moving plan. The two monthly meters — report
+// picks and analyst reads — are the ones that run out mid-month, and running out
+// used to mean upgrading the whole subscription for one more report. The extra
+// sits beside the used count on the same monthly item, so it resets with it: a
+// top-up is for the month it was bought in, not a permanent raise.
+//
+// The month comes from the clock at crediting time, not from the checkout, so a
+// top-up is always usable the moment it is paid for.
+const TOPUP_FIELDS = { picks: 'picksExtra', reads: 'analystReadsExtra' };
+
+function buildTopUpTransact({ table, userId, now, kind, units, sessionId }) {
+  const field = TOPUP_FIELDS[kind];
+  if (!field) throw new Error(`unknown top-up kind: ${kind}`);
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `USAGE#${monthKey(now)}` },
+          UpdateExpression: 'ADD #f :units',
+          ExpressionAttributeNames: { '#f': field },
+          ExpressionAttributeValues: { ':units': Math.round(units) },
+        },
+      },
+      {
+        // The receipt, and what stops a redelivered Stripe event crediting
+        // twice: the members webhook claims each event id, and this refuses a
+        // second write for the same checkout even if that ever changes.
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`,
+            sk: `TOPUP#${sessionId}`,
+            kind,
+            units: Math.round(units),
+            creditedAt: now.toISOString(),
+            month: monthKey(now),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
 module.exports = {
   FREEMIUM_MIN_AGE_DAYS,
   COVERAGE_UPDATES_PER_YEAR,
+  COVERAGE_MAX_COMPANIES,
+  coverageCounter,
   MAX_FREE_AFTER_DAYS,
   monthKey,
   yearKey,
   publicationIndexSk,
   clampFreeAfterDays,
   revisionPrompts,
+  promptTeaser,
+  promptsArePublic,
+  PROMPT_TEASER_CHARS,
   freemiumPickEligible,
   buildPickTransact,
+  buildTopUpTransact,
+  TOPUP_FIELDS,
   buildReserveGenerationTransact,
   buildReserveMemberGenerationTransact,
   buildSubmitTransact,
   buildTakedownTransact,
+  buildReopenTransact,
+  buildForkTransact,
+  buildRepriceTransact,
   buildGrantGenerationTransact,
   buildPaidGenerationTransact,
   buildFailPublicationTransact,
@@ -575,7 +1027,11 @@ module.exports = {
   buildRoleChangeTransact,
   buildOpenAnalysisTransact,
   buildReviewTransact,
+  buildReviewEditTransact,
+  buildVoidReviewTransact,
   buildFeatureTransact,
   buildCoverageInitialTransact,
   buildCoverageUpdateTransact,
+  buildCoverageGenerationTransact,
+  buildReleaseCoverageTransact,
 };

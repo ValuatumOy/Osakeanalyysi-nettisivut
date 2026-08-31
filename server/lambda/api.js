@@ -17,6 +17,8 @@ const { searchCompanies } = require('../search');
 const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
 const { sendAdminAlert } = require('../email');
+const { validateEditRequest, EditValidationError } = require('../report-edits');
+const editing = require('../order-editing');
 
 const STAGE = process.env.STAGE || 'prod';
 
@@ -279,7 +281,12 @@ async function postReportDownload(event) {
 // No ASCII control characters except \n — the same charset rule the report
 // engine enforces on params.userComments / revision comments.
 const FORBIDDEN_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
-const MAX_REVISION_COMMENT_LENGTH = 4000;
+// Long enough that no one writing instructions by hand will meet it: 4,000
+// characters was about 600 words, which a single detailed objection can use
+// up. Not unbounded — comments accumulate in the order item across the
+// revision chain, and DynamoDB refuses an item over 400 KB, so an
+// unbounded field trades a clear error for a confusing write failure.
+const MAX_REVISION_COMMENT_LENGTH = 40000;
 
 // GET /api/orders/{id} — order-page state. Called server-side by the Vercel
 // proxy that has already verified the Stripe session id (same trust model as
@@ -304,6 +311,13 @@ async function getOrder(event) {
     revisionsUsed: order.revisionsUsed || 0,
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
+    // Text editing: whether the current version can be edited by hand, which
+    // version number that is, and — while REVISING — whether the wait is an
+    // edit (seconds) or an AI revision (tens of minutes).
+    editable: editing.editableNow(order),
+    currentVersion: editing.currentVersion(order),
+    activity: editing.activityOf(order),
+    editsUsed: order.editsUsed || 0,
   };
 
   // Only DELIVERED gets a PDF link — while REVISING, the order page shows
@@ -312,15 +326,26 @@ async function getOrder(event) {
     payload.pdfUrl = await pdfStore.presignPdfDownload(order.pdfFileName);
   }
 
+  // A "build on" order (server/lambda/members.js createForkOrder) is deliberately
+  // created with no pdfFileName of its own — the parent's key is never shared,
+  // so a fork's first revision can never overwrite the analyst's published PDF
+  // (see test/orders/fork-order.test.mjs). Until that first revision lands, this
+  // buyer has nothing to download under their own order — but they did pay for
+  // the parent's analysis, so resolve it here, live, from the parent's own
+  // current row. Read-only: nothing is written back to either order.
+  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
+    const parent = await ordersStore.get(order.forkedFrom);
+    if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
+      payload.originalUrl = await pdfStore.presignPdfDownload(parent.pdfFileName);
+    }
+  }
+
   // Every delivered revision's change memo + a re-download link for that
   // specific PDF, newest first — the order page renders these under "revision
   // history". Presigning is cheap local SigV4 signing, no extra round trip.
   payload.revisionHistory = await Promise.all(
     (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
-      version: entry.version,
-      comments: entry.comments || '',
-      completedAt: entry.completedAt,
-      changes: entry.changes || null,
+      ...editing.historyEntryPayload(entry),
       pdfUrl: entry.pdfFileName ? await pdfStore.presignPdfDownload(entry.pdfFileName) : null,
     })),
   );
@@ -383,6 +408,84 @@ async function postOrderRevision(event) {
   return json(200, { ok: true, status: claimed.status });
 }
 
+// POST /api/orders/{id}/edits — the customer's hand edits to the report text.
+// Body `{ edits: { pointer: text }, originals?: { pointer: text }, editedBy? }`.
+// Claims the order (DELIVERED -> REVISING, no allowance: edits are free and
+// unlimited) and wakes the worker, which submits the edits to the engine's
+// edit endpoint — a re-render in seconds with no AI pass.
+async function postOrderEdits(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  let request;
+  try {
+    request = validateEditRequest(body);
+  } catch (err) {
+    if (err instanceof EditValidationError) return json(400, { error: err.message });
+    throw err;
+  }
+
+  const existing = await ordersStore.get(id);
+  if (!existing) return json(404, { error: 'Order not found' });
+  if (!editing.editableNow(existing)) {
+    return json(409, {
+      error: existing.status === ordersStore.STATUS.DELIVERED
+        ? 'This report cannot be edited.'
+        : 'This order is busy right now — wait for it to finish, then try again.',
+      status: existing.status,
+    });
+  }
+
+  const claimed = await ordersStore.claimEdit(id, {
+    edits: request.edits,
+    originals: request.originals,
+    editedBy: request.editedBy,
+    fromVersion: editing.currentVersion(existing),
+  });
+  if (!claimed) {
+    return json(409, { error: 'This order cannot take an edit right now', status: existing.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push invoke failed (sweep will catch it):', err.message);
+  }
+
+  return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(existing) + 1 });
+}
+
+// GET /api/orders/{id}/preview — the engine's rendered HTML of the current
+// version, which the order page's text editor shows in a sandboxed frame.
+async function getOrderPreview(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+
+  const result = await editing.loadPreviewHtml(order);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, max-age=300',
+      'x-report-version': String(editing.currentVersion(order)),
+    },
+    body: result.html,
+  };
+}
+
 // ── admin ──────────────────────────────────────────────────────────
 
 function requireAdmin(event) {
@@ -398,17 +501,42 @@ function requireAdmin(event) {
 async function getAdminReports() {
   const { catalog, state } = await catalogAws.buildCatalogAws({ includeNonPublic: true });
   const purchases = state.purchases || [];
+
+  // Who made what. Every file an order produced — the delivered report and each
+  // revised copy — carries that order's id in its sidecar, and the order names
+  // the customer and how it came to exist. One scan; the table is small, and
+  // this endpoint is one admin's page load.
+  const orderOf = new Map();
+  try {
+    for (const order of await ordersStore.list()) orderOf.set(order.id, order);
+  } catch (err) {
+    console.warn('admin reports: orders join unavailable:', err.message);
+  }
+
   return json(200, {
     generatedAt: catalog.generatedAt,
     week: catalog.week,
-    reports: catalog.reports.map(report => ({
-      ...publicReportPayload(report),
-      publicationStatus: report.publicationStatus,
-      excludeFromFree: report.excludeFromFree,
-      forceFree: report.forceFree,
-      ageDays: report.ageDays,
-      buyerCount: buyerCount(report, purchases),
-    })),
+    reports: catalog.reports.map(report => {
+      const order = report.provenanceSessionId ? orderOf.get(report.provenanceSessionId) : null;
+      return {
+        ...publicReportPayload(report),
+        publicationStatus: report.publicationStatus,
+        excludeFromFree: report.excludeFromFree,
+        forceFree: report.forceFree,
+        ageDays: report.ageDays,
+        buyerCount: buyerCount(report, purchases),
+        // The grouping key: all of one order's files fold into one chain, and a
+        // hand-uploaded report (no provenance) stands alone under its own id.
+        groupId: report.provenanceSessionId || report.id,
+        isRevision: Boolean(report.isRevision),
+        // uploaded: an admin put the PDF here by hand. order: a customer's paid
+        // fresh report. generation: a member's monthly/coverage run (private by
+        // construction, only in the catalog as plumbing).
+        origin: !report.provenanceSessionId ? 'uploaded'
+          : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
+        generatedBy: order ? (order.analystName || order.email || null) : null,
+      };
+    }),
   });
 }
 
@@ -520,6 +648,8 @@ const PUBLIC_ROUTES = {
   'POST /api/report-download': postReportDownload,
   'GET /api/orders/{id}': getOrder,
   'POST /api/orders/{id}/revisions': postOrderRevision,
+  'POST /api/orders/{id}/edits': postOrderEdits,
+  'GET /api/orders/{id}/preview': getOrderPreview,
 };
 
 const ADMIN_ROUTES = {

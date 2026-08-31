@@ -23,3 +23,20 @@ test('the revision workspace routes are wired end to end', () => {
     assert.ok(stackRoutes.includes(route), `${route} missing from the stack`);
   }
 });
+
+// Self-review is refused in three places: opening the analysis (which is what
+// makes a review possible at all), writing one, and editing one. The first is
+// the only reachable path today; the other two exist so a change to it cannot
+// quietly reopen the hole.
+test('no path lets an analyst review their own analysis', () => {
+  const owners = [...lambda.matchAll(/index\.userId === profile\.userId/g)];
+  assert.ok(owners.length >= 3,
+    `expected the owner check on open, review and review/edit, found ${owners.length}`);
+
+  for (const fn of ['postAnalysisReview', 'postAnalysisReviewEdit']) {
+    const start = lambda.indexOf(`async function ${fn}(`);
+    assert.ok(start > 0, `${fn} not found`);
+    const body = lambda.slice(start, lambda.indexOf('\n}', start));
+    assert.match(body, /index\.userId === profile\.userId/, `${fn} must refuse the owner`);
+  }
+});

@@ -37,6 +37,37 @@ test('submit publishes and releases the obligation, and indexes the publication'
   assert.equal(indexPut.Item.reviewCount, 0);
 });
 
+test('the engine rating is recorded on both rows, and only the three it issues', () => {
+  const now = new Date('2026-09-01T00:00:00Z');
+  const build = (extra) => quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now, genId: 'g1', promptsText: 'p',
+    companyId: 'NOKIA.HE', jobId: '01JOB', analystName: 'A', ...extra,
+  });
+
+  const [, pubUpdate, indexPut] = build({ recommendation: 'buy', targetPrice: ' 12.00 EUR ' })
+    .TransactItems.map(i => i.Update || i.Put);
+  // Upper-cased and trimmed, and on the index row too -- GET /analyses reads that one.
+  assert.equal(pubUpdate.ExpressionAttributeValues[':rec'], 'BUY');
+  assert.equal(pubUpdate.ExpressionAttributeValues[':target'], '12.00 EUR');
+  assert.equal(indexPut.Item.recommendation, 'BUY');
+  assert.equal(indexPut.Item.targetPrice, '12.00 EUR');
+
+  // Anything that is not BUY/HOLD/SELL is stored as unknown rather than shown. A rating is
+  // a published claim; an unrecognised one must not reach a company page.
+  for (const junk of ['STRONG BUY', 'OUTPERFORM', 'accumulate', '', null, undefined, 5]) {
+    const [, pub, idx] = build({ recommendation: junk }).TransactItems.map(i => i.Update || i.Put);
+    assert.equal(pub.ExpressionAttributeValues[':rec'], null, `rejected: ${junk}`);
+    assert.equal(idx.Item.recommendation, null, `rejected: ${junk}`);
+  }
+
+  // Absent, not undefined: DynamoDB rejects undefined, and null reads back as "not known".
+  const [, pubBare, idxBare] = build({}).TransactItems.map(i => i.Update || i.Put);
+  assert.equal(pubBare.ExpressionAttributeValues[':rec'], null);
+  assert.equal(pubBare.ExpressionAttributeValues[':target'], null);
+  assert.equal(idxBare.Item.recommendation, null);
+  assert.equal(idxBare.Item.targetPrice, null);
+});
+
 test('free decay is capped at a year and defaults to it', () => {
   assert.equal(quota.clampFreeAfterDays(30), 30);
   assert.equal(quota.clampFreeAfterDays(9999), 365);
@@ -170,14 +201,182 @@ test('takedown only applies to a published publication', () => {
   assert.equal(index.ExpressionAttributeValues[':down'], 'takendown');
 });
 
-test('coverage: initial once per subscription, updates capped at 4 per year', () => {
+// A coverage subscription may carry several companies, priced per company, so
+// both the free first report and the four updates are counted per company. One
+// counter shared across them would sell the same four reports three times.
+test('coverage: initial once per company, updates capped at 4 per company per year', () => {
   const now = new Date('2026-08-06T12:00:00Z');
-  const initial = quota.buildCoverageInitialTransact({ table: TABLE, userId: 'u1', now, reportId: 'r1' });
-  assert.equal(initial.TransactItems[0].Update.ConditionExpression, 'attribute_not_exists(coverageInitialGranted)');
+  const initial = quota.buildCoverageInitialTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r1', companyId: 'NOKIA.HE',
+  });
+  const grant = initial.TransactItems[0].Update;
+  assert.equal(grant.ConditionExpression, 'attribute_not_exists(#f)');
+  assert.equal(grant.ExpressionAttributeNames['#f'], 'coverageInitial#NOKIA.HE');
 
-  const update = quota.buildCoverageUpdateTransact({ table: TABLE, userId: 'u1', now, reportId: 'r2' });
+  const update = quota.buildCoverageUpdateTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r2', companyId: 'NOKIA.HE',
+  });
   const usage = update.TransactItems[0].Update;
   assert.equal(usage.Key.sk, 'USAGE#Y#2026');
-  assert.equal(usage.ConditionExpression, 'attribute_not_exists(coverageUpdates) OR coverageUpdates < :max');
+  assert.equal(usage.ConditionExpression, 'attribute_not_exists(#c) OR #c < :max');
+  assert.equal(usage.ExpressionAttributeNames['#c'], 'cov#NOKIA.HE');
   assert.equal(usage.ExpressionAttributeValues[':max'], 4);
+
+  // A second company on the same subscription counts on its own.
+  const other = quota.buildCoverageUpdateTransact({
+    table: TABLE, userId: 'u1', now, reportId: 'r3', companyId: 'TSLA',
+  });
+  assert.equal(other.TransactItems[0].Update.ExpressionAttributeNames['#c'], 'cov#TSLA');
+});
+
+test('reopen returns a taken-down analysis to generating and restores the obligation', () => {
+  const params = quota.buildReopenTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-10T00:00:00Z'), genId: 'g1',
+    indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+  });
+  const [pub, profile] = params.TransactItems.map(i => i.Update);
+
+  // Only a taken-down analysis can be reopened — never a live one.
+  assert.equal(pub.ConditionExpression, '#status = :takendown');
+  assert.equal(pub.ExpressionAttributeValues[':generating'], 'generating');
+  assert.match(pub.UpdateExpression, /REMOVE publishedAt, takenDownAt, takedownReason/);
+  // The cutoff that stops the voided sales becoming payable on republication.
+  assert.equal(pub.ExpressionAttributeValues[':now'], '2026-09-10T00:00:00.000Z');
+  assert.match(pub.UpdateExpression, /voidSalesBefore = :now/);
+
+  // Republishing goes through the obligation, and must not displace another one.
+  assert.equal(profile.Key.sk, 'PROFILE');
+  assert.equal(profile.ConditionExpression,
+    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+
+  // The stale index row goes, or the republish leaves two rows for one analysis.
+  const del = params.TransactItems.find(i => i.Delete);
+  assert.equal(del.Delete.Key.pk, 'PUBINDEX');
+  assert.equal(del.Delete.Key.sk, 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1');
+});
+
+test('reopen without an index row still reopens the publication', () => {
+  const params = quota.buildReopenTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-10T00:00:00Z'), genId: 'g1',
+  });
+  assert.equal(params.TransactItems.length, 2);
+  assert.ok(!params.TransactItems.some(i => i.Delete));
+});
+
+test('a fork owes a publication and does not touch the monthly generation', () => {
+  const params = quota.buildForkTransact({
+    table: TABLE, userId: 'u2', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'fork1', parentGenId: 'g1', parentUserId: 'u1', companyId: 'nokia.he',
+  });
+  const profile = params.TransactItems.find(i => i.Update).Update;
+  const put = params.TransactItems.find(i => i.Put).Put;
+
+  // The fee is what limits forking, so genReserved is deliberately untouched:
+  // the free monthly generation stays for work started from nothing.
+  const json = JSON.stringify(params);
+  assert.ok(!json.includes('genReserved'), 'a paid fork must not spend the free generation');
+  assert.ok(!json.includes('USAGE#'), 'a paid fork must not touch the monthly usage row');
+
+  // It still owes a publication, and cannot displace one already owed.
+  assert.equal(profile.ConditionExpression,
+    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+  assert.equal(put.Item.status, 'generating');
+  assert.equal(put.Item.forkedFrom, 'g1');
+  assert.equal(put.Item.forkedFromUserId, 'u1');
+  assert.equal(put.Item.companyId, 'NOKIA.HE');
+  assert.equal(put.ConditionExpression, 'attribute_not_exists(sk)');
+});
+
+test('repricing moves the listing with the publication, and only while live', () => {
+  const params = quota.buildRepriceTransact({
+    table: TABLE, userId: 'u1', genId: 'g1',
+    indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+    priceEur: 25, freeAfterDays: 30, publishedAt: '2026-09-01T00:00:00.000Z',
+  });
+  const [pub, index] = params.TransactItems.map(i => i.Update);
+
+  assert.equal(pub.ConditionExpression, '#status = :published');
+  assert.equal(pub.ExpressionAttributeValues[':price'], 25);
+  // The listing is where every checkout reads the price, so it has to move too.
+  assert.equal(index.Key.pk, 'PUBINDEX');
+  assert.equal(index.ExpressionAttributeValues[':price'], 25);
+
+  // freeFrom counts from publication, not from the reprice: otherwise repeated
+  // repricing would push the free date away indefinitely.
+  assert.equal(pub.ExpressionAttributeValues[':freeFrom'], '2026-10-01T00:00:00.000Z');
+});
+
+test('a price is clamped to whole euros at or above zero', () => {
+  const of = (priceEur) => quota.buildRepriceTransact({
+    table: TABLE, userId: 'u1', genId: 'g1', priceEur, freeAfterDays: 30,
+    publishedAt: '2026-09-01T00:00:00.000Z',
+  }).TransactItems[0].Update.ExpressionAttributeValues[':price'];
+
+  assert.equal(of(-5), 0);
+  assert.equal(of(19.6), 20);
+  assert.equal(of('12'), 12);
+  assert.equal(of(undefined), 0);
+});
+
+test('publishing carries the analyst LinkedIn link onto the public listing', () => {
+  const withLink = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-01T00:00:00Z'), genId: 'g1',
+    companyId: 'NOKIA.HE', jobId: 'job1', promptsText: 'x',
+    analystName: 'A Person', analystLinkedin: 'https://www.linkedin.com/in/a-person',
+  });
+  const index = withLink.TransactItems.find(i => i.Put && i.Put.Item.pk === 'PUBINDEX').Put.Item;
+  assert.equal(index.analystLinkedin, 'https://www.linkedin.com/in/a-person');
+
+  // An analyst who gives no link is not written with an empty one — the public
+  // card keys off the field being absent.
+  const without = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-01T00:00:00Z'), genId: 'g1',
+    companyId: 'NOKIA.HE', jobId: 'job1', promptsText: 'x', analystName: 'A Person',
+  });
+  const bare = without.TransactItems.find(i => i.Put && i.Put.Item.pk === 'PUBINDEX').Put.Item;
+  assert.ok(!('analystLinkedin' in bare));
+});
+
+test('editing a review moves the score sum by the difference, not by the score', () => {
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'owner', reviewerId: 'r1', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g1', indexSk: 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1',
+    oldScore: 3.3, oldComment: 'the first take', score: 4.5, comment: 'the corrected one',
+  });
+  const [review, index] = params.TransactItems.map(i => i.Update);
+
+  // One reviewer stays one review however often they fix it, so reviewCount
+  // is untouched and only the sum moves.
+  assert.equal(index.UpdateExpression, 'ADD scoreSum :delta');
+  assert.equal(index.ExpressionAttributeValues[':delta'], 1.2);
+
+  // Optimistic lock: two edits racing must not both add a delta to a sum only
+  // one of them read.
+  assert.equal(review.ConditionExpression, 'attribute_exists(sk) AND score = :oldScore');
+  assert.equal(review.ExpressionAttributeValues[':oldScore'], 3.3);
+
+  // A changed public rating leaves a trace of what it was.
+  const history = review.ExpressionAttributeValues[':history'];
+  assert.equal(history.length, 1);
+  assert.equal(history[0].score, 3.3);
+  assert.equal(history[0].comment, 'the first take');
+});
+
+test('review history keeps the newest twenty entries and no more', () => {
+  const history = Array.from({ length: 25 }, (_, i) => ({ score: 1, comment: `old ${i}`, at: 'x' }));
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'owner', reviewerId: 'r1', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g1', indexSk: 'i', oldScore: 2, oldComment: 'previous', score: 3, comment: 'next', history,
+  });
+  const kept = params.TransactItems[0].Update.ExpressionAttributeValues[':history'];
+  assert.equal(kept.length, 20);
+  assert.equal(kept.at(-1).comment, 'previous');
+});
+
+test('a downward correction moves the sum down', () => {
+  const params = quota.buildReviewEditTransact({
+    table: TABLE, ownerId: 'o', reviewerId: 'r', now: new Date('2026-09-10T00:00:00Z'),
+    genId: 'g', indexSk: 'i', oldScore: 4.8, oldComment: 'a', score: 2.1, comment: 'b',
+  });
+  assert.equal(params.TransactItems[1].Update.ExpressionAttributeValues[':delta'], -2.7);
 });

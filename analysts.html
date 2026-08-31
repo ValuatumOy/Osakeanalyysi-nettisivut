@@ -6,6 +6,28 @@
   <title>For Analysts — Publish Your Equity Research | Valuatum AI Equity Reports</title>
   <meta name="description" content="Free membership for equity analysts: generate a fresh AI report every month, revise it toward your own view, and publish it under your name to build a public track record.">
   <link rel="canonical" href="https://www.aiequityreports.com/analysts.html">
+  <script type="application/ld+json" data-page-freshness>
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.aiequityreports.com/analysts.html#page",
+  "url": "https://www.aiequityreports.com/analysts.html",
+  "name": "For Analysts — Publish Your Equity Research | Valuatum AI Equity Reports",
+  "description": "Free membership for equity analysts: generate a fresh AI report every month, revise it toward your own view, and publish it under your name to build a public track record.",
+  "dateModified": "2026-08-25",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Valuatum AI Equity Reports",
+    "url": "https://www.aiequityreports.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Valuatum Oy",
+    "url": "https://www.aiequityreports.com/"
+  }
+}
+  </script>
   <meta property="og:title" content="For Analysts — Build a Public Track Record">
   <meta property="og:description" content="Generate a fresh equity report every month, steer it toward your own view, publish it under your own name. Free for analysts.">
   <meta property="og:type" content="website">
@@ -61,6 +83,49 @@
       color: rgba(255,255,255,0.35); margin-top: 0.35rem; line-height: 1.5; }
     /* The rules table is wide; let it scroll inside its own box rather than the page. */
     .a-rules-wrap { overflow-x: auto; }
+    /* Revision loop: the diagram, and one that actually ran. */
+    .a-flow-wrap { overflow-x: auto; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; }
+    .a-flow { display: block; min-width: 900px; width: 100%; height: auto; }
+    .a-ba-step { margin-top: 2.5rem; }
+    .a-ba-head { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .a-ba-num { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; border: 1px solid var(--green-mist);
+      background: var(--green-faint); color: var(--green-deep); display: flex; align-items: center;
+      justify-content: center; font-size: var(--text-xs); font-weight: 500; }
+    .a-ba-head h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 400;
+      letter-spacing: -0.015em; color: var(--charcoal); }
+    .a-ba-date { font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); }
+    .a-verdict { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .a-chip { border: 1px solid var(--color-border); background: var(--white); border-radius: var(--r-md); padding: 0.7rem 1.1rem; }
+    .a-chip .l { display: block; font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gray-steel); margin-bottom: 0.2rem; }
+    .a-chip .n { font-size: var(--text-md); font-weight: 500; color: var(--charcoal); letter-spacing: -0.01em; }
+    .a-chip--after { border-color: var(--green-mist); background: var(--green-faint); }
+    .a-chip--after .n { color: var(--green-deep); }
+    .a-says { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.5rem 1.75rem; }
+    .a-says + .a-says { margin-top: 1rem; }
+    .a-says h4 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .a-says blockquote { margin: 0; padding-left: 1rem; border-left: 2px solid rgba(200,150,62,0.35);
+      font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: #5B6A63; }
+    .a-says p { font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: var(--gray-steel); margin-top: 0.75rem; }
+    .a-diff-wrap { overflow-x: auto; margin-top: 1.5rem; }
+    .a-diff { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 560px; }
+    .a-diff th { text-align: left; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--gray-steel); font-weight: 600; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--color-border); }
+    .a-diff td { padding: 0.9rem 1rem 0.9rem 0; border-bottom: 1px solid var(--color-border);
+      font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
+    .a-diff td:first-child { font-weight: 600; color: var(--charcoal); }
+    .a-diff td.after { color: var(--green-deep); }
+    /* PDF links sit under the Before and After columns, so the pair reads as
+       part of the comparison rather than as an afterthought below it. */
+    .a-diff tfoot td { border-bottom: none; padding-top: 1.25rem; }
+    .a-pdf { display: inline-flex; align-items: center; gap: 0.55rem; font-size: var(--text-sm);
+      font-weight: 400; color: var(--charcoal); text-decoration: none; border: 1px solid var(--color-border);
+      background: var(--white); border-radius: var(--r-md); padding: 0.7rem 1rem; line-height: 1.3; }
+    .a-pdf:hover { border-color: var(--green); }
+    .a-pdf--after { border-color: var(--green-mist); background: var(--green-faint); color: var(--green-deep); }
+    .a-pdf .x { font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); }
+    .a-pdf--after .x { color: #6E8579; }
+
     .a-section { padding: var(--section-py) 0; }
     .a-section--alt { background: var(--off-white); }
     @media (max-width: 640px) {
@@ -82,7 +147,7 @@
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="reports.html" class="nav-link">Reports</a>
-        <a href="report-store.html" class="nav-link">Store</a>
+        <a href="companies.html" class="nav-link">Companies</a>
         <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="analysts.html" class="nav-link is-active" aria-current="page">Analysts</a>
         <details class="nav-more">
@@ -103,7 +168,7 @@
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="reports.html" class="nav-mobile-link">Reports</a>
-      <a href="report-store.html" class="nav-mobile-link">Store</a>
+      <a href="companies.html" class="nav-mobile-link">Companies</a>
       <a href="pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="analysts.html" class="nav-mobile-link is-active" aria-current="page">Analysts</a>
       <a href="methodology.html" class="nav-mobile-link">Methodology</a>
@@ -125,7 +190,7 @@
         <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:640px; line-height:1.75;">Free membership for equity analysts. Generate a fresh report every month, steer it toward your own view, and publish it under your own name. You set what it costs to read, and <strong style="color:rgba(255,255,255,0.92); font-weight:400;">half of every sale is yours</strong>. What you also get is a public, dated track record anyone can check.</p>
         <div style="display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap;">
           <a href="members.html" class="btn btn-primary">Sign in with LinkedIn</a>
-          <a href="#steps" class="btn btn-outline">See the seven steps</a>
+          <a href="#revision-example" class="btn btn-outline">See a real revision</a>
           <a href="analyst-terms.html" class="btn btn-outline">Read the terms</a>
         </div>
         <div class="a-hero-stats">
@@ -195,6 +260,86 @@
         <p class="section-sub" style="max-width:660px;">Seven steps, and you do six of them. The times are rough estimates for someone who has done it before and hits no problems. Your first one will take longer, mostly in step 4.</p>
         <p class="section-sub" style="max-width:680px; margin-top:-0.5rem;"><strong style="color:var(--charcoal); font-weight:600;">Who it suits:</strong> active investors, finance and accounting students, and professionals who already follow an industry. A controller analysing their own competitors and customers is exactly the profile that worked before. <strong style="color:var(--charcoal); font-weight:600;">What you need:</strong> a LinkedIn account, enough finance knowledge to argue with a valuation, and about an hour a month. No Excel, no modelling, no prior published research.</p>
 
+        <div class="a-flow-wrap">
+          <svg class="a-flow" viewBox="0 0 1072 330" role="img" aria-labelledby="aFlowTitle aFlowDesc" xmlns="http://www.w3.org/2000/svg">
+            <title id="aFlowTitle">The seven steps, as a loop</title>
+            <desc id="aFlowDesc">Five stages: pick a company, the engine builds the report, you read the draft, you prompt it toward your view, and you publish under your own name. Stages three and four repeat, up to five rounds per generation.</desc>
+            <defs>
+              <marker id="aArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#8A9590"></path>
+              </marker>
+              <marker id="aArrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#3D9E72"></path>
+              </marker>
+            </defs>
+
+            <g>
+              <rect x="20" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
+              <circle cx="44" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
+              <text x="44" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">1</text>
+              <text x="68" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Pick one</text>
+              <text x="40" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">A company you can</text>
+              <text x="40" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">argue about. Nothing</text>
+              <text x="40" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">is reserved.</text>
+              <text x="40" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">2 MINUTES</text>
+            </g>
+            <line x1="204" y1="112" x2="224" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#aArrow)"></line>
+
+            <g>
+              <rect x="228" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
+              <circle cx="252" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
+              <text x="252" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">2</text>
+              <text x="276" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Engine builds</text>
+              <text x="248" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">Financials, peers,</text>
+              <text x="248" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">segments, DCF,</text>
+              <text x="248" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">multiples, the write-up.</text>
+              <text x="248" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">UNATTENDED, 20–40 MIN</text>
+            </g>
+            <line x1="412" y1="112" x2="432" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#aArrow)"></line>
+
+            <g>
+              <rect x="436" y="46" width="180" height="132" rx="14" fill="#EDF5F0" stroke="#C6E0D3"></rect>
+              <circle cx="460" cy="72" r="13" fill="#FFFFFF" stroke="#C6E0D3"></circle>
+              <text x="460" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">3</text>
+              <text x="484" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">You read it</text>
+              <text x="456" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">A finished report, not</text>
+              <text x="456" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">a draft. Find what you</text>
+              <text x="456" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">disagree with.</text>
+              <text x="456" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#6E8579">THIS IS THE JOB</text>
+            </g>
+            <line x1="620" y1="112" x2="640" y2="112" stroke="#3D9E72" stroke-width="1.4" marker-end="url(#aArrowGreen)"></line>
+
+            <g>
+              <rect x="644" y="46" width="180" height="132" rx="14" fill="#EDF5F0" stroke="#C6E0D3"></rect>
+              <circle cx="668" cy="72" r="13" fill="#FFFFFF" stroke="#C6E0D3"></circle>
+              <text x="668" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">4</text>
+              <text x="692" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">You prompt it</text>
+              <text x="664" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">Assumptions, peer set,</text>
+              <text x="664" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">emphasis, what you</text>
+              <text x="664" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">know that it cannot.</text>
+              <text x="664" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#6E8579">UP TO 5 ROUNDS</text>
+            </g>
+            <line x1="828" y1="112" x2="848" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#aArrow)"></line>
+
+            <g>
+              <rect x="852" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
+              <circle cx="876" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
+              <text x="876" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">5</text>
+              <text x="900" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">You publish</text>
+              <text x="872" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">Your name, your price,</text>
+              <text x="872" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">dated. Your prompts</text>
+              <text x="872" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">are published too.</text>
+              <text x="872" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">HALF OF EVERY SALE</text>
+            </g>
+
+            <path d="M 734 182 L 734 232 Q 734 244 722 244 L 546 244 Q 534 244 534 232 L 534 186"
+                  fill="none" stroke="#3D9E72" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#aArrowGreen)"></path>
+            <text x="634" y="272" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#2A6B4F">Repeat until the report says what you actually think</text>
+            <text x="634" y="292" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="300" fill="#6E8579">Five rounds per generation. Every round re-runs the model, not just the prose.</text>
+          </svg>
+        </div>
+        <p class="section-sub" style="max-width:680px;">Steps 6 and 7 — the free rotation, and getting paid — happen after publication and need nothing from you. Below, the same thing written out.</p>
+
         <div class="a-steps">
 
           <div class="a-step">
@@ -234,6 +379,7 @@
               <h3>Revise it toward your view</h3>
               <p>Read the draft and prompt the AI to change it. This step is the whole job, and it is what gets judged: a report that clearly adds something over the engine's report is what earns you the next generation without waiting for the month to turn.</p>
               <p>You can redirect emphasis, challenge assumptions, swap the peer set, argue for a different valuation method, or tell it which risk it has underweighted. Comments accumulate, so you can keep going until the report says what you actually think.</p>
+              <p><a href="#revision-example" style="color:var(--green);">Here is a real revision, with the comments that drove it →</a></p>
               <p>There is a hard boundary: instructions steer <em>evidence and assumptions</em>, not conclusions. You cannot instruct a rating into existence or overwrite reported financial data. The rating follows arithmetically from the target price, so "make this a SELL" only lands as a change to an assumption upstream, which is the honest way to get there anyway.</p>
             </div>
           </div>
@@ -244,7 +390,7 @@
               <span class="a-step-time">3 minutes</span>
               <h3>Publish</h3>
               <p><strong>Using the free generation is the commitment.</strong> Whatever comes out is published under your name and your LinkedIn profile, whether you revised it heavily or not at all. There is no private draft and no way to generate one and keep it. If you want a report that stays yours, that is the Investor Plus private generation, not this.</p>
-              <p>Submitting publishes immediately. There is no queue and no waiting for approval. Your report goes into the <a href="report-store.html" style="color:var(--green);">report store</a> next to the engine's own report on that company, ranked among the other analysts covering it, under your name and dated. You set its price and how long until it stops costing other members a read.</p>
+              <p>Submitting publishes immediately. There is no queue and no waiting for approval. Your report goes into the <a href="reports.html" style="color:var(--green);">reports page</a> next to the engine's own report on that company, ranked among the other analysts covering it, under your name and dated. You set its price and how long until it stops costing other members a read.</p>
               <p>Your revision prompts are published with it, so readers see both the report and the reasoning you used to steer it. It is also what makes the work yours rather than the machine's.</p>
             </div>
           </div>
@@ -271,6 +417,96 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- STEP 4, IN PRACTICE -->
+    <section class="a-section" id="revision-example">
+      <div class="container">
+        <span class="section-eyebrow">Step 4, in practice</span>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">What a revision that counts actually looks like.</h2>
+        <p class="section-sub" style="max-width:700px;">Step 4 is the one you are judged on, and "revise it toward your view" is easy to say and hard to picture. So here is a real one, run through this engine on a Stora Enso report. Read it as a template for the kind of thing worth writing, not as a target to hit.</p>
+
+        <div class="a-verdict" style="margin-top:2rem;">
+          <div class="a-chip"><span class="l">Engine's report</span><span class="n">HOLD · EUR 9.50</span></div>
+          <div class="a-chip"><span class="l">After the revision</span><span class="n">BUY · EUR 12.50</span></div>
+          <div class="a-chip a-chip--after"><span class="l">Moved by</span><span class="n">Four objections</span></div>
+        </div>
+
+        <p class="section-sub" style="max-width:700px;">The engine had discounted the Swedish forest estate by 30.4%, partly because it treated debt allocation, wood-supply contracts and possible tax leakage as risks to the asset's value. The analyst disagreed, in four separate places.</p>
+
+        <div class="a-ba-step">
+          <div class="a-ba-head">
+            <div class="a-ba-num">1</div>
+            <h3>A valuation argument that did not hold</h3>
+          </div>
+          <div class="a-says">
+            <blockquote>"The company's valuation as a whole — both today and after next year's split into two separate companies — is completely independent of how debt is allocated between the two companies. The total debt is taken from shareholders' pockets in exactly the same way. The current owners will initially own both companies outright, so it makes no difference in which 'pocket' the debt sits."</blockquote>
+            <p>This is the strongest kind of comment you can write: not a preference, a demonstration that a stated reason does not do what the report claims it does. Nothing here needs data the engine lacked. It needed someone to notice.</p>
+          </div>
+        </div>
+
+        <div class="a-ba-step">
+          <div class="a-ba-head">
+            <div class="a-ba-num">2</div>
+            <h3>A peer set chosen for the wrong reason</h3>
+          </div>
+          <div class="a-says">
+            <blockquote>"These peers should be genuinely pure investment companies — not forest companies such as SCA or Holmen that have other businesses, because that muddles the valuation of the investment assets. Use companies whose business consists almost entirely of investment assets and the cash flow they generate, where NAV is clearly reported and the share price can be compared with NAV. Nordic companies are preferable."</blockquote>
+            <p>Note what makes it usable: it says what to replace the peers with and on what test. "The peer set is bad" would have changed nothing.</p>
+          </div>
+        </div>
+
+        <div class="a-ba-step">
+          <div class="a-ba-head">
+            <div class="a-ba-num">3</div>
+            <h3>A number that domain knowledge says is wrong</h3>
+          </div>
+          <div class="a-says">
+            <blockquote>"'The Swedish estate's annual biological growth is approximately 1%.' I think this is seriously wrong. Sources indicate that biological forest assets grow by roughly 3–5% at the latitude in Sweden where Stora Enso's forests are located. It should be removed, or its source should be disclosed and the report should explain why other sources give different figures."</blockquote>
+            <p>This is the part no engine gets to on its own, and the reason you are here. The revision did not simply swap the number — it set out a 1.0–4.3% range of published evidence, including the company's own 3.3%, and explained where the 1% figure probably came from.</p>
+          </div>
+        </div>
+
+        <div class="a-ba-step">
+          <div class="a-ba-head">
+            <div class="a-ba-num">4</div>
+            <h3>A comparison that was not comparable</h3>
+          </div>
+          <div class="a-says">
+            <blockquote>"Why are Metsä Board, Billerud, Smurfit Westrock and Mondi described using different types of figures — percentages for some, tonnes for others, and then EBITDA margins for Smurfit and Mondi? Why not report tonnes, market share or margins on a comparable basis for all of them?"</blockquote>
+            <p>Small, and worth writing anyway. A reader who cannot line four competitors up in one unit cannot use the table, and you will be the one whose name is on it.</p>
+          </div>
+        </div>
+
+        <h3 class="a-worth-head">What that did to the report</h3>
+        <div class="a-diff-wrap">
+          <table class="a-diff">
+            <thead><tr><th style="width:26%;">Item</th><th style="width:37%;">Before</th><th style="width:37%;">After</th></tr></thead>
+            <tbody>
+              <tr><td>Recommendation</td><td>HOLD</td><td class="after">BUY</td></tr>
+              <tr><td>Target price</td><td>EUR 9.50</td><td class="after">EUR 12.50</td></tr>
+              <tr><td>Forest discount</td><td>30.4%</td><td class="after">12.5%</td></tr>
+              <tr><td>Forest value in the bridge</td><td>EUR 5.92bn</td><td class="after">EUR 7.4375bn</td></tr>
+              <tr><td>Forest peer set</td><td>SCA and Holmen, mixed with operating-business metrics</td><td class="after">Pure NAV reporters: Investor AB, Industrivärden, Lundbergföretagen</td></tr>
+              <tr><td>Biological growth</td><td>An unqualified 1% a year</td><td class="after">A 1.0–4.3% evidence range, sources given</td></tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>The reports themselves</td>
+                <td><a class="a-pdf" href="/reports/pdfs/StoraEnso_revision_before_24082026.pdf" target="_blank" rel="noopener">Original PDF <span class="x">53 pp · 24 Aug</span></a></td>
+                <td><a class="a-pdf a-pdf--after" href="/reports/pdfs/StoraEnso_revision_after_25082026.pdf" target="_blank" rel="noopener">Revised PDF <span class="x">59 pp · 25 Aug</span></a></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p style="font-size:var(--text-xs); font-weight:300; line-height:1.7; color:var(--gray-steel); margin-top:0.75rem;">Both are the complete reports as they were produced, not extracts. Every figure in the table above can be checked against them.</p>
+
+        <div class="a-note">
+          <strong>The rating was never asked for.</strong> Every one of the four objections attacks evidence or an assumption, and not one of them says "make this a BUY". The rating moved because the forest discount fell once the arguments were accepted, and the rating follows the target price arithmetically. This is the difference between steering a report and trying to dictate one — the second does not work here, and it is also the version nobody would trust with your name on it.
+        </div>
+
+        <p class="section-sub" style="max-width:700px; margin-top:2rem;">Your prompts are published alongside your report, so a reader sees the reasoning as well as the result. That is a large part of what a track record is: not that you said BUY, but that anyone can check why.</p>
       </div>
     </section>
 
@@ -325,7 +561,7 @@
       <div class="container">
         <span class="section-eyebrow">Reading each other</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:640px;">The ranking is built by the people who had to read the work.</h2>
-        <p class="section-sub" style="max-width:680px;">Twenty of other analysts' published reports a month, and every one you open costs you a review. That is what makes the ranking in the <a href="report-store.html" style="color:var(--green);">report store</a> worth anything: nobody scores a report they have not read.</p>
+        <p class="section-sub" style="max-width:680px;">Twenty of other analysts' published reports a month, and every one you open costs you a review. That is what makes the ranking on the <a href="reports.html" style="color:var(--green);">reports page</a> worth anything: nobody scores a report they have not read.</p>
 
         <div class="a-cards">
           <div class="a-card">
@@ -497,6 +733,7 @@
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/companies.html" class="footer-link">Company index</a>
             <a href="/reports.html#free" class="footer-link">Free samples</a>
             <a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
@@ -511,7 +748,7 @@
             <a href="/analyst-story.html" class="footer-link">The freelance network story</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
-            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
+            <a href="/institutions.html" class="footer-link">For institutions</a>
           </div>
         </div>
         <div>

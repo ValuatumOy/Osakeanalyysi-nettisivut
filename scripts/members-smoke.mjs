@@ -5,8 +5,14 @@
 //   MEMBERS_TEST_SECRET=... node scripts/members-smoke.mjs
 //
 // Optional: MEMBERS_API (default members-test).
+// Optional: STRIPE_TEST_SECRET_KEY (sk_test_…) — lets the purchase scenario read
+//   the created checkout session back and assert its success_url. Without it the
+//   scenario still runs, minus that one readback.
+// Optional: SMOKE_SITE_ORIGIN (default https://test.aiequityreports.com) — the
+//   site the buyer is returned to.
 
 const MEMBERS_API = (process.env.MEMBERS_API || 'https://members-test.aiequityreports.com').replace(/\/$/, '');
+const SITE_ORIGIN = (process.env.SMOKE_SITE_ORIGIN || 'https://test.aiequityreports.com').replace(/\/$/, '');
 const TEST_SECRET = process.env.MEMBERS_TEST_SECRET;
 if (!TEST_SECRET) {
   console.error('Set MEMBERS_TEST_SECRET (SSM /aiequityreports/test/members-test-utils-secret)');
@@ -55,6 +61,22 @@ async function catalogReports() {
 // ── scenarios ────────────────────────────────────────────────────────────────
 
 const adminApi = (method, path, body) => api(method, path, { body, token: process.env.ADMIN_PASSWORD });
+
+// The API hands back the hosted checkout URL and never the session it built, so
+// the only way to see where a buyer would be sent afterwards is to ask Stripe.
+// The session id is in the hosted URL. Test-mode key, and optional: without it
+// the purchase scenario runs, minus this one readback.
+const STRIPE_KEY = process.env.STRIPE_TEST_SECRET_KEY;
+let stripeClient = null;
+async function checkoutSession(url) {
+  const id = String(url || '').match(/cs_(?:test|live)_[A-Za-z0-9]+/)?.[0];
+  if (!id || !STRIPE_KEY) return null;
+  if (!stripeClient) {
+    const { default: Stripe } = await import('stripe');
+    stripeClient = new Stripe(STRIPE_KEY);
+  }
+  return stripeClient.checkout.sessions.retrieve(id);
+}
 
 async function main() {
   const health = await api('GET', '/health');
@@ -343,6 +365,83 @@ async function main() {
     afterReview.data?.analyses?.find(a => a.genId === readable)?.reviewCount === 1,
     JSON.stringify(afterReview.data?.analyses?.[0]));
 
+  // — buying an analysis, and landing back on the page it was bought from —
+  //
+  // The buyer's copy is handed over by the return trip alone, so the return page
+  // is the delivery mechanism. frontendUrl() used to swap any page it did not
+  // recognise for the members page, and the company report pages that sell these
+  // analyses are far too many to list, so buyers were returned to a page that
+  // could not hand over what they had paid for. What follows asserts a report
+  // page survives the round trip whole, receipt and all.
+  {
+    const returnTo = `${SITE_ORIGIN}/reports/tesla-equity-report.html`;
+
+    const seeded = (await testApi('POST', '/test/publications', {
+      userId: analyst.userId, companyId: 'BUYME.HE', priceEur: 12,
+    })).data?.genId;
+    check('seed a priced publication to buy', Boolean(seeded), String(seeded));
+
+    // A seeded publication has no engine order behind it, which is the
+    // undeliverable case: priced, published, and still not payable for.
+    const undeliverable = await api('POST', `/analyses/${seeded}/buy-checkout`, { body: { returnTo } });
+    check('a priced analysis with no document to hand over → 409', undeliverable.status === 409,
+      `got ${undeliverable.status} ${JSON.stringify(undeliverable.data)}`);
+    const forkUndeliverable = await api('POST', `/analyses/${seeded}/fork-checkout`, { body: { returnTo } });
+    check('an analysis with no report to build on cannot be forked → 409', forkUndeliverable.status === 409,
+      `got ${forkUndeliverable.status} ${JSON.stringify(forkUndeliverable.data)}`);
+
+    // The collection endpoint the return page calls, refusing on its own terms.
+    const noSession = await api('GET', `/analyses/${seeded}/purchased`);
+    check('collecting a purchase without a session id → 400', noSession.status === 400,
+      `got ${noSession.status}`);
+    const madeUp = await api('GET', `/analyses/${seeded}/purchased?session_id=cs_test_madeup`);
+    check('collecting with a made-up session id → 404', madeUp.status === 404, `got ${madeUp.status}`);
+
+    // A real session needs a delivered engine report behind the publication, and
+    // no test-utils route seeds one — so the success_url checks ride on whatever
+    // the stage has genuinely published rather than on a seed.
+    const listed = (await api('GET', '/analyses')).data?.analyses || [];
+    let sellable = null;
+    let buyUrl = null;
+    for (const candidate of listed.filter(a => a.priceEur > 0 && !a.publicFree).slice(0, 8)) {
+      const buy = await api('POST', `/analyses/${candidate.genId}/buy-checkout`, { body: { returnTo } });
+      if (buy.status === 200 && String(buy.data?.url || '').startsWith('https://checkout.stripe.com/')) {
+        sellable = candidate;
+        buyUrl = buy.data.url;
+        break;
+      }
+    }
+
+    if (!sellable) {
+      console.log('· skip: buy/fork return-page checks — no deliverable priced analysis published on this stage');
+    } else {
+      check('buying an analysis returns a hosted checkout link', Boolean(buyUrl), sellable.genId);
+
+      const fork = await api('POST', `/analyses/${sellable.genId}/fork-checkout`, { body: { returnTo } });
+      check('forking the same analysis returns a hosted checkout link',
+        fork.status === 200 && String(fork.data?.url || '').startsWith('https://checkout.stripe.com/'),
+        `got ${fork.status} ${JSON.stringify(fork.data)}`);
+
+      const buySession = await checkoutSession(buyUrl);
+      const forkSession = await checkoutSession(fork.data?.url);
+      if (!buySession) {
+        console.log('· skip: where the buyer is returned to (set STRIPE_TEST_SECRET_KEY to include it)');
+      } else {
+        // An exact string: frontendUrl() strips query and fragment off the
+        // caller's page, so the whole success_url is predictable, and anything
+        // else means the buyer lands somewhere that cannot deliver. This also
+        // fails when the stage's MEMBERS_FRONTEND_URLS does not carry this
+        // origin — which is the same bug wearing a config hat.
+        check('the buyer comes back to the report page they bought from, carrying the receipt',
+          buySession.success_url === `${returnTo}?bought=${sellable.genId}&session_id={CHECKOUT_SESSION_ID}`,
+          buySession.success_url);
+        check('a fork comes back to the caller\'s own page, marked as a fork',
+          forkSession?.success_url === `${returnTo}?forked=${sellable.genId}&session_id={CHECKOUT_SESSION_ID}`,
+          forkSession?.success_url);
+      }
+    }
+  }
+
   // — the funnel: self-downgrade, admin role change —
   const stepDown = (await testApi('POST', '/test/users', { role: 'analyst' })).data;
   const downgraded = await api('POST', '/me/role', { token: stepDown.token, body: { role: 'reader' } });
@@ -404,7 +503,7 @@ async function main() {
       `got ${buyFree.status}`);
 
     const noSession = await api('GET', `/analyses/${readable}/purchased`);
-    check('collecting a purchase without a session id → 400', noSession.status === 400,
+    check('collecting a purchase on a free analysis without a session id → 400', noSession.status === 400,
       `got ${noSession.status}`);
 
     const badSession = await api('GET', `/analyses/${readable}/purchased?session_id=cs_test_nope`);

@@ -5,7 +5,7 @@
 
 const crypto = require('crypto');
 const {
-  GetCommand, PutCommand, UpdateCommand, DeleteCommand, QueryCommand,
+  GetCommand, PutCommand, UpdateCommand, DeleteCommand, QueryCommand, ScanCommand,
   TransactWriteCommand,
 } = require('@aws-sdk/lib-dynamodb');
 const { dynamo } = require('../aws/clients');
@@ -195,6 +195,37 @@ async function listReviews(ownerId, genId) {
 
 // One row per paid-out bounty. Existence is what makes bounty.ledger() call a
 // publication 'paid', so the write is conditional — never pay the same one twice.
+// Set or clear a handful of named fields on one item. Null clears, which is how
+// an analyst removes their LinkedIn link rather than being stuck with it.
+async function setFields(pk, sk, fields) {
+  const names = {};
+  const values = {};
+  const sets = [];
+  const removes = [];
+  Object.entries(fields).forEach(([key, value], i) => {
+    names[`#f${i}`] = key;
+    if (value === null || value === undefined) {
+      removes.push(`#f${i}`);
+    } else {
+      values[`:v${i}`] = value;
+      sets.push(`#f${i} = :v${i}`);
+    }
+  });
+  if (!sets.length && !removes.length) return;
+  const expression = [sets.length ? `SET ${sets.join(', ')}` : '', removes.length ? `REMOVE ${removes.join(', ')}` : '']
+    .filter(Boolean).join(' ');
+  await dynamo().send(new UpdateCommand({
+    TableName: table(),
+    Key: { pk, sk },
+    UpdateExpression: expression,
+    ExpressionAttributeNames: names,
+    ...(Object.keys(values).length ? { ExpressionAttributeValues: values } : {}),
+  }));
+}
+
+const putProfileFields = (userId, fields) => setFields(`USER#${userId}`, 'PROFILE', fields);
+const putIndexFields = (indexSk, fields) => setFields('PUBINDEX', indexSk, fields);
+
 async function putPayout(userId, genId, fields) {
   try {
     await dynamo().send(new PutCommand({
@@ -260,6 +291,45 @@ async function claimStripeEvent(eventId) {
   }
 }
 
+// Every member, for the admin dashboard. A paginated Scan filtered on the
+// PROFILE sort key — the one full-table read in the store.
+// ponytail: a Scan reads every item to find the profiles. Fine for hundreds of
+// members; at thousands this becomes a GSI on sk.
+async function listProfiles() {
+  const profiles = [];
+  let startKey;
+  do {
+    const res = await dynamo().send(new ScanCommand({
+      TableName: table(),
+      FilterExpression: 'sk = :profile',
+      ExpressionAttributeValues: { ':profile': 'PROFILE' },
+      ExclusiveStartKey: startKey,
+    }));
+    profiles.push(...(res.Items || []));
+    startKey = res.LastEvaluatedKey;
+  } while (startKey);
+  return profiles;
+}
+
+// The rows the admin stats aggregate over, projected down to the fields the
+// aggregation reads so a 40k-character prompt never rides along.
+// ponytail: same full-table Scan tradeoff as listProfiles, same GSI upgrade path.
+async function scanForStats() {
+  const items = [];
+  let startKey;
+  do {
+    const res = await dynamo().send(new ScanCommand({
+      TableName: table(),
+      ProjectionExpression: 'pk, sk, companyId, grossEur, soldAt, #src, openedAt, rateEur, kind, units, #st, publishedAt, priceEur',
+      ExpressionAttributeNames: { '#src': 'source', '#st': 'status' },
+      ExclusiveStartKey: startKey,
+    }));
+    items.push(...(res.Items || []));
+    startKey = res.LastEvaluatedKey;
+  } while (startKey);
+  return items;
+}
+
 // ── audit trail ──────────────────────────────────────────────────────────────
 
 async function audit(userId, type, detail) {
@@ -291,6 +361,8 @@ module.exports = {
   consumeMagicToken,
   getUsage,
   listUserItems,
+  listProfiles,
+  scanForStats,
   getEntitlement,
   putEntitlement,
   putItem,
@@ -299,6 +371,9 @@ module.exports = {
   findPublicationIndex,
   listReviews,
   putPayout,
+  setFields,
+  putProfileFields,
+  putIndexFields,
   putSale,
   runTransact,
   claimStripeEvent,

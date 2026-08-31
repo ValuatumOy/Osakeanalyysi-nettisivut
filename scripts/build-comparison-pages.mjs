@@ -51,9 +51,10 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
+        <a href="/institutions.html" class="nav-link">Institutions</a>
         <details class="nav-more">
           <summary class="nav-link">More</summary>
           <div class="nav-more-menu">
@@ -72,9 +73,10 @@ function navHtml() {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/institutions.html" class="nav-mobile-link">Institutions</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="/about.html" class="nav-mobile-link">About</a>
       <a href="/faq.html" class="nav-mobile-link">FAQ</a>

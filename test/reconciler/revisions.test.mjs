@@ -37,8 +37,12 @@ function fakePdfStore() {
 
 function fakeEngine(overrides = {}) {
   return {
-    calls: { submitRevision: [], getJob: [], downloadPdf: [], fetchChangeMemo: [] },
+    calls: { submitRevision: [], submitEdit: [], getJob: [], downloadPdf: [], fetchChangeMemo: [] },
     async submitJob() { throw new Error('not used in these tests'); },
+    async submitEdit(args) {
+      this.calls.submitEdit.push(args);
+      return overrides.submitEdit ? overrides.submitEdit(args) : { jobId: 'job_edit1' };
+    },
     async submitRevision(args) {
       this.calls.submitRevision.push(args);
       return overrides.submitRevision ? overrides.submitRevision(args) : { jobId: 'job_rev1' };
@@ -129,6 +133,7 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   orders.create({
     id: 'cs_rev_ok', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
     status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+    analystName: 'Esa Virtanen',
   }, statePath);
   orders.claimRevision('cs_rev_ok', 'assume 8% EBIT margin from 2027', statePath);
 
@@ -141,6 +146,9 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   assert.equal(engine.calls.submitRevision.length, 1);
   assert.equal(engine.calls.submitRevision[0].parentJobId, 'job_base');
   assert.equal(engine.calls.submitRevision[0].comments, 'assume 8% EBIT margin from 2027');
+  // The revised report names the analyst who steered it; a shop order has no
+  // name and stays engine-bylined.
+  assert.equal(engine.calls.submitRevision[0].analystName, 'Esa Virtanen');
 
   // Tick 2: polls the revision job, which is already DONE -> delivers.
   await reconciler.advance(order);
@@ -272,4 +280,159 @@ test('a delivered order with prior generation attempts is unaffected by revision
   const order = orders.get('cs_rev_separate_budget', statePath);
   assert.equal(order.status, orders.STATUS.REVISING); // proceeded normally
   assert.equal(engine.calls.submitRevision.length, 1);
+});
+
+// ── Hand edits ─────────────────────────────────────────────────────────
+
+const EDIT = {
+  edits: { 'recommendation/prose/0': 'BUY. Our target is EUR 13.', 'recommendation/prose/4': '' },
+  originals: { 'recommendation/prose/0': 'HOLD. Our target is EUR 11.' },
+  editedBy: 'Maija Analyst',
+  fromVersion: 1,
+};
+
+function editJob(jobId) {
+  return {
+    jobId, status: 'DONE', s3Url: 'https://s3.example/edit.pdf', changesUrl: 'https://s3.example/edit-changes.json',
+    completedAt: '2026-02-01T00:00:00.000Z', revisionScope: 'edit', authorship: 'analyst', editedBy: 'Maija Analyst',
+    previewUrl: 'https://s3.example/edit.preview.html',
+    fit: { shrunk: [{ page: 11, where: 'body', zoom: 0.92, over: 0 }], clipped: [] },
+    editWarnings: { unknownPointers: [], overBudget: {}, changedNumbers: { 'recommendation/prose/0': { added: ['13'], retained: false } }, removed: ['recommendation/prose/4'], blanked: [] },
+  };
+}
+
+test('a hand edit: submitted to the engine edit endpoint, delivered as a version of its own, free of charge and without email', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({ getJob: editJob });
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  pdfStore.files.set('Base.pdf', Buffer.from('ORIGINAL'));
+  orders.create({
+    id: 'cs_edit_ok', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 0,
+  }, statePath);
+  orders.claimEdit('cs_edit_ok', EDIT, statePath);
+
+  // Tick 1: submits the edits, not a revision.
+  await reconciler.advance(orders.get('cs_edit_ok', statePath));
+  let order = orders.get('cs_edit_ok', statePath);
+  assert.equal(order.status, orders.STATUS.REVISING);
+  assert.equal(order.revisionJobId, 'job_edit1');
+  assert.equal(order.pendingEdit, null);
+  assert.deepEqual(order.activeEdit, EDIT);
+  assert.equal(engine.calls.submitRevision.length, 0);
+  assert.equal(engine.calls.submitEdit.length, 1);
+  assert.deepEqual(engine.calls.submitEdit[0], { parentJobId: 'job_base', edits: EDIT.edits, editedBy: 'Maija Analyst' });
+
+  // Tick 2: delivers.
+  await reconciler.advance(order);
+  order = orders.get('cs_edit_ok', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.jobId, 'job_edit1');
+  assert.equal(order.revisionsUsed, 0); // free
+  assert.equal(order.editsUsed, 1);
+  assert.equal(order.activeEdit, null);
+  assert.equal(order.hasPreview, true);
+  assert.equal(pdfStore.files.get('Base.pdf').toString(), 'ORIGINAL');
+  assert.match(order.pdfFileName, /edit-/);
+  assert.equal(pdfStore.sidecars.get(order.pdfFileName).provenance.editedBy, 'Maija Analyst');
+  assert.equal(email.calls.sendReportRevisedEmail.length, 0);
+
+  const entry = order.revisionHistory[0];
+  assert.equal(entry.version, 2);
+  assert.equal(entry.kind, 'edit');
+  assert.equal(entry.authorship, 'analyst');
+  assert.equal(entry.editedBy, 'Maija Analyst');
+  assert.equal(entry.editedFrom, 1);
+  assert.equal(entry.comments, '');
+  assert.deepEqual(entry.edits, [
+    { pointer: 'recommendation/prose/0', before: 'HOLD. Our target is EUR 11.', after: 'BUY. Our target is EUR 13.' },
+    { pointer: 'recommendation/prose/4', before: null, after: '' },
+  ]);
+  assert.equal(entry.fit.shrunk[0].page, 11);
+  assert.equal(entry.editWarnings.changedNumbers['recommendation/prose/0'].retained, false);
+  assert.ok(entry.changes); // the engine's memo is kept alongside
+});
+
+test('an AI revision after a hand edit is labelled as keeping it, and an edit with no name uses the analyst on the order', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    getJob: (jobId) => (jobId === 'job_edit1'
+      ? editJob(jobId)
+      : { jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', changesUrl: 'https://s3.example/changes.json', authorship: 'mixed', completedAt: '2026-03-01T00:00:00.000Z' }),
+  });
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_mixed', email: 'a@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE', analystName: 'Esa Virtanen',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 1,
+  }, statePath);
+  orders.claimEdit('cs_mixed', { ...EDIT, editedBy: '' }, statePath);
+  await reconciler.advance(orders.get('cs_mixed', statePath));
+  assert.equal(engine.calls.submitEdit[0].editedBy, 'Esa Virtanen');
+  await reconciler.advance(orders.get('cs_mixed', statePath));
+
+  orders.claimRevision('cs_mixed', 'more conservative', statePath);
+  await reconciler.advance(orders.get('cs_mixed', statePath));
+  await reconciler.advance(orders.get('cs_mixed', statePath));
+
+  const order = orders.get('cs_mixed', statePath);
+  assert.equal(order.revisionHistory.length, 2);
+  assert.equal(order.revisionHistory[0].kind, 'edit');
+  assert.equal(order.revisionHistory[1].kind, 'revision');
+  assert.equal(order.revisionHistory[1].authorship, 'mixed');
+  assert.equal(order.revisionHistory[1].version, 3);
+  assert.equal(order.revisionsUsed, 1);
+  assert.equal(order.editsUsed, 1);
+});
+
+test('an engine 409 on an edit (nothing saved to edit) fails the edit with a plain message and leaves the order usable', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    submitEdit: () => { const err = new Error('engine submitEdit 409: no snapshot'); err.status = 409; throw err; },
+  });
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_edit_409', email: 'a@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf',
+  }, statePath);
+  orders.claimEdit('cs_edit_409', EDIT, statePath);
+  await reconciler.advance(orders.get('cs_edit_409', statePath));
+
+  const order = orders.get('cs_edit_409', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.jobId, 'job_base');
+  assert.equal(order.pendingEdit, null);
+  assert.equal(order.activeEdit, null);
+  assert.equal(order.editsUsed, 0);
+  assert.match(order.revisionError, /before text editing was supported/);
+});
+
+test('a fresh delivery records the original job id and whether the engine produced an editable preview', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    getJob: (jobId) => ({ jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', previewUrl: 'https://s3.example/x.preview.html', completedAt: '2026-01-01T00:00:00.000Z' }),
+  });
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  orders.create({ id: 'cs_fresh', email: 'a@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE', status: orders.STATUS.RENDERING, jobId: 'job_base' }, statePath);
+  await reconciler.advance(orders.get('cs_fresh', statePath));
+
+  const order = orders.get('cs_fresh', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.originalJobId, 'job_base');
+  assert.equal(order.hasPreview, true);
 });

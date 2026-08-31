@@ -1,3 +1,5 @@
+import { companyTitle } from '../seo-title.mjs';
+
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
 const DISPLAY_NAME_OVERRIDES = new Map([
@@ -31,6 +33,7 @@ export function pageSlug(company) {
 
 export function renderCompanyPage(company, relatedCompanies = [], generatedOn = new Date(), options = {}) {
   const name = companyDisplayName(company);
+  const pageTitle = companyTitle(name, company.ticker);
   const slug = pageSlug(company);
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
@@ -81,11 +84,11 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report &mdash; Price Target &amp; Valuation | Valuatum</title>
+  <title>${esc(pageTitle)}</title>
   <meta name="description" content="${attr(description)}">
   <link rel="canonical" href="${attr(url)}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-  <meta property="og:title" content="${attr(`${name} (${company.ticker}) Stock Analysis & AI Equity Report - Price Target & Valuation | Valuatum`)}">
+  <meta property="og:title" content="${attr(pageTitle)}">
   <meta property="og:description" content="${attr(description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${attr(url)}">
@@ -151,6 +154,7 @@ ${navHtml()}
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
             <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
         </div>
       </div>
@@ -183,7 +187,7 @@ ${navHtml()}
             <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-company="${attr(name)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
               <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
             </div>
           </div>
@@ -194,10 +198,25 @@ ${navHtml()}
         ${relatedSection(related)}
       </div>
     </div>
+    <!-- Public surface for the analyst layer: hidden until the members API returns an
+         analysis for this company, so a company nobody has covered shows nothing. -->
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-company="${attr(name)}" data-ticker="${attr(company.ticker)}"
+             style="max-width:1760px; padding-bottom:3rem;">
+      <div class="store-company-head">
+        <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(name)}</h2>
+        <span class="store-count" data-analyst-count></span>
+      </div>
+      <p class="store-note" style="max-width:70ch;">Each is this company's Valuatum report re-run with an analyst's own
+        assumptions and published under their name. They are ordered by what other analysts said the work added over the
+        engine's report &mdash; a score out of five from people who had to read it to give it.</p>
+      <div class="store-banner" data-analyst-banner hidden></div>
+      <div data-analyst-list></div>
+    </section>
   </main>
 
 ${footerHtml()}
   <script src="/js/script.js"></script>
+  <script src="/js/analyst-reports.js" defer></script>
 </body>
 </html>
 `.replace(/[ \t]+$/gm, '');
@@ -315,9 +334,10 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
+        <a href="/institutions.html" class="nav-link">Institutions</a>
         <details class="nav-more">
           <summary class="nav-link">More</summary>
           <div class="nav-more-menu">
@@ -336,9 +356,10 @@ function navHtml() {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/institutions.html" class="nav-mobile-link">Institutions</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="/about.html" class="nav-mobile-link">About</a>
       <a href="/faq.html" class="nav-mobile-link">FAQ</a>
@@ -352,7 +373,8 @@ function navHtml() {
 function footerHtml() {
   return `  <footer class="footer"><div class="container"><div class="footer-grid">
     <div class="footer-brand"><a href="/index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;"><img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum"><div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div></a><p>Professional AI-generated equity research reports. Browse available reports, open free samples, or generate a fresh report delivered by email.</p></div>
-    <div><div class="footer-col-label">Reports</div><div class="footer-links"><a href="/reports.html" class="footer-link">Browse reports</a><a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a><a href="/pricing.html" class="footer-link">Pricing</a><a href="/methodology.html" class="footer-link">Methodology</a></div></div>
+    <div><div class="footer-col-label">Reports</div><div class="footer-links"><a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/companies.html" class="footer-link">Company index</a><a href="/reports.html#order-fresh" class="footer-link">Generate fresh report</a><a href="/pricing.html" class="footer-link">Pricing</a><a href="/methodology.html" class="footer-link">Methodology</a></div></div>
     <div><div class="footer-col-label">Company</div><div class="footer-links"><a href="/about.html" class="footer-link">About Valuatum</a><a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a><a href="mailto:contact26@valuatum.com" class="footer-link">Support</a></div></div>
     <div><div class="footer-col-label">Legal</div><div class="footer-links"><a href="/disclaimer.html" class="footer-link">Disclaimer</a><a href="/disclaimer.html#terms" class="footer-link">Terms of use</a><a href="/disclaimer.html#privacy" class="footer-link">Privacy policy</a></div></div>
   </div><div class="footer-bottom"><span class="footer-copyright">&copy; 2026 Valuatum Oy &middot; Helsinki, Finland &middot; Est. 2000</span><span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span></div></div></footer>`;

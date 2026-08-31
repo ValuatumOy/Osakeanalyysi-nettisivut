@@ -14,6 +14,16 @@ const PRIOR_WEIGHT = 2;
 // A dated take goes stale: half a year of no reviews costs about one point.
 const AGE_PENALTY_PER_DAY = 1 / 180;
 
+// What reviewers actually gave, for showing. peerScore below is the same
+// number pulled toward the neutral prior, which is right for ordering and wrong
+// for display: a reviewer who gives 5 and is shown 3.7 concludes their review
+// did not save.
+function averageScore(item) {
+  const count = Number(item?.reviewCount) || 0;
+  if (!count) return null;
+  return (Number(item?.scoreSum) || 0) / count;
+}
+
 function peerScore(item) {
   const count = Number(item?.reviewCount) || 0;
   const sum = Number(item?.scoreSum) || 0;
@@ -57,4 +67,4 @@ function isFreeNow(item, now = new Date()) {
   return Boolean(item?.freeFrom && now.toISOString() >= item.freeFrom);
 }
 
-module.exports = { orderAnalyses, score, peerScore, isFreeNow, isPublicFreeNow };
+module.exports = { orderAnalyses, score, peerScore, averageScore, isFreeNow, isPublicFreeNow };

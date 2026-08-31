@@ -134,6 +134,8 @@ export class MembersStack extends Stack {
         // Fixed fee per published analysis. 0 until the business decision lands,
         // so the ledger records states without promising anyone money.
         BOUNTY_EUR_PER_REPORT: process.env.BOUNTY_EUR_PER_REPORT || '0',
+        // What one read by a paying subscriber pays the analyst who wrote it.
+        SUBSCRIBER_READ_EUR: process.env.SUBSCRIBER_READ_EUR || '0.5',
       },
     });
 
@@ -192,28 +194,46 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.POST, '/me/role'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/open'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/review'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/review/edit'],
+      [apigwv2.HttpMethod.GET, '/reviews/mine'],
       [apigwv2.HttpMethod.POST, '/reports/{id}/open'],
       [apigwv2.HttpMethod.POST, '/generations/free'],
       // A bought generation: the Stripe receipt becomes a running order.
       [apigwv2.HttpMethod.POST, '/generations/fresh'],
+      [apigwv2.HttpMethod.POST, '/generations/coverage'],
       [apigwv2.HttpMethod.GET, '/generations'],
       [apigwv2.HttpMethod.GET, '/generations/{genId}'],
       // The order page's revision workspace, for a member's own run.
       [apigwv2.HttpMethod.GET, '/generations/{genId}/order'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/edits'],
+      [apigwv2.HttpMethod.GET, '/generations/{genId}/preview'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/price'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/prompts-public'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions-checkout'],
+      [apigwv2.HttpMethod.POST, '/me/linkedin'],
       [apigwv2.HttpMethod.POST, '/billing/checkout'],
       [apigwv2.HttpMethod.POST, '/billing/fresh-checkout'],
+      [apigwv2.HttpMethod.POST, '/billing/topup-checkout'],
       [apigwv2.HttpMethod.POST, '/billing/webhook'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/free'],
       [apigwv2.HttpMethod.POST, '/analyses/{genId}/buy-checkout'],
+      [apigwv2.HttpMethod.POST, '/analyses/{genId}/fork-checkout'],
       [apigwv2.HttpMethod.GET, '/analyses/{genId}/purchased'],
       [apigwv2.HttpMethod.GET, '/admin/members/publications'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users'],
+      [apigwv2.HttpMethod.GET, '/admin/members/users/{userId}'],
+      [apigwv2.HttpMethod.GET, '/admin/members/stats'],
+      [apigwv2.HttpMethod.GET, '/admin/members/promo-codes'],
+      [apigwv2.HttpMethod.POST, '/admin/members/promo-deactivate'],
+      [apigwv2.HttpMethod.POST, '/admin/members/void-review'],
       [apigwv2.HttpMethod.GET, '/admin/members/earnings'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
       [apigwv2.HttpMethod.POST, '/admin/members/role'],
       [apigwv2.HttpMethod.POST, '/admin/members/feature'],
       [apigwv2.HttpMethod.POST, '/admin/members/takedown'],
+      [apigwv2.HttpMethod.POST, '/admin/members/reopen'],
       [apigwv2.HttpMethod.POST, '/admin/members/payout'],
       [apigwv2.HttpMethod.POST, '/admin/members/ban'],
       [apigwv2.HttpMethod.POST, '/test/users'],
@@ -225,6 +245,18 @@ export class MembersStack extends Stack {
     for (const [method, routePath] of routes) {
       createdRoutes.push(...httpApi.addRoutes({ path: routePath, methods: [method], integration }));
     }
+
+    // One invoke permission for the whole API instead of one per route. CDK
+    // writes a separate Lambda::Permission per route, each ~300 bytes of the
+    // function's resource policy, and at ~70 routes the policy crossed AWS's
+    // hard 20 KB cap and every further route failed to deploy.
+    for (const route of createdRoutes) {
+      route.node.tryRemoveChild('MembersIntegration-Permission');
+    }
+    if (!this.node.tryGetContext('permissionPhase1')) membersFunction.addPermission('MembersApiInvokeAll', {
+      principal: new iam.ServicePrincipal('apigateway.amazonaws.com'),
+      sourceArn: `arn:aws:execute-api:${this.region}:${this.account}:${httpApi.apiId}/*/*/*`,
+    });
 
     // Same throttle pattern as ApiStack: sane default, tight lid on the
     // brute-forceable routes (magic link spam, admin/test secrets).

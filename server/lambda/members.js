@@ -8,6 +8,8 @@ const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
+const { validateEditRequest, EditValidationError } = require('../report-edits');
+const editing = require('../order-editing');
 const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const bounty = require('../members/bounty');
@@ -104,6 +106,24 @@ function requestNow(event) {
   const parsed = new Date(header);
   return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
 }
+
+// A Company Coverage subscription used to be one company on the profile and is
+// now a list, priced per company. The single field stays readable so a
+// subscription sold before the list existed keeps working untouched.
+const coveredCompanies = (profile) => {
+  const many = Array.isArray(profile.coverageCompanyIds) ? profile.coverageCompanyIds : [];
+  const all = many.length ? many : [profile.coverageCompanyId];
+  return [...new Set(all.map((c) => String(c || '').trim().toUpperCase()).filter(Boolean))];
+};
+
+// What a meter allows this month: the plan's number plus anything topped up.
+// The top-up lives on the month's usage item, so it resets with the meter it
+// raises — nobody is quietly on a bigger plan for having bought one extra read.
+const withTopUps = (limits, usage) => ({
+  ...limits,
+  basePicks: (limits.basePicks || 0) + (Number(usage?.picksExtra) || 0),
+  analystReads: (limits.analystReads || 0) + (Number(usage?.analystReadsExtra) || 0),
+});
 
 const activeTier = (profile) =>
   ['active', 'past_due'].includes(profile.tierStatus) ? profile.tier : 'none';
@@ -252,6 +272,7 @@ async function getMe(event) {
     tierStatus: profile.tierStatus,
     billingInterval: profile.billingInterval || null,
     coverageCompanyId: profile.coverageCompanyId || null,
+    coverageCompanyIds: coveredCompanies(profile),
     banned: Boolean(profile.banned),
     month: monthKey,
     freshReportPrice: freshReportPrice(profile),
@@ -260,15 +281,21 @@ async function getMe(event) {
     limits,
     usage: {
       picks: usage?.picks || 0,
-      pickLimit: limits.basePicks,
+      pickLimit: (limits.basePicks || 0) + (Number(usage?.picksExtra) || 0),
+      picksExtra: Number(usage?.picksExtra) || 0,
       analystReads: usage?.analystReads || 0,
-      analystReadLimit: limits.analystReads,
+      analystReadLimit: (limits.analystReads || 0) + (Number(usage?.analystReadsExtra) || 0),
+      analystReadsExtra: Number(usage?.analystReadsExtra) || 0,
       genReserved: Boolean(usage?.genReserved),
       genId: usage?.genId || null,
+      // Per company now: the four are four for each company on the subscription.
       coverageUpdates: yearUsage?.coverageUpdates || 0,
       coverageUpdateLimit: quota.COVERAGE_UPDATES_PER_YEAR,
+      coverageUpdatesByCompany: Object.fromEntries(coveredCompanies(profile)
+        .map((c) => [c, yearUsage?.[quota.coverageCounter(c)] || 0])),
     },
     openObligationId: profile.openObligationId || null,
+    linkedinUrl: profile.linkedinUrl || null,
     openReviewId: profile.openReviewId || null,
     entitlements: entitlements.map(item => ({
       reportId: item.sk.slice(4),
@@ -320,15 +347,24 @@ async function postReportOpen(event) {
   // Company Coverage: only the covered company; initial report free once,
   // then 4 updates per year.
   if (tier === 'coverage') {
-    const covered = String(profile.coverageCompanyId || '').toUpperCase();
-    if (String(report.ticker || '').toUpperCase() !== covered) {
-      return json(403, { error: 'Company Coverage only includes your covered company' });
+    const covered = coveredCompanies(profile);
+    const ticker = String(report.ticker || '').toUpperCase();
+    if (!covered.includes(ticker)) {
+      return json(403, {
+        error: covered.length > 1
+          ? 'Company Coverage only includes the companies you cover'
+          : 'Company Coverage only includes your covered company',
+        covers: covered,
+      });
     }
+    // The free first report is per company: a three-company subscription that
+    // handed out one free report in total would be selling the same thing three
+    // times.
     const initial = await store.runTransact(
-      quota.buildCoverageInitialTransact({ table, userId: profile.userId, now, reportId }));
+      quota.buildCoverageInitialTransact({ table, userId: profile.userId, now, reportId, companyId: ticker }));
     if (initial) return sign('coverage');
     const update = await store.runTransact(
-      quota.buildCoverageUpdateTransact({ table, userId: profile.userId, now, reportId }));
+      quota.buildCoverageUpdateTransact({ table, userId: profile.userId, now, reportId, companyId: ticker }));
     if (update) return sign('coverage');
     if (await store.getEntitlement(profile.userId, reportId)) return sign('coverage'); // lost a benign race
     return json(429, { error: 'Yearly coverage updates used up' });
@@ -337,7 +373,9 @@ async function postReportOpen(event) {
   // Everyone else spends one of their monthly base picks. How many that is comes
   // from tiers.js — the numbers are demand-tuned, so they are data, not code.
   // Subscribers may pick any report; the free LinkedIn roles only the archive.
-  const limits = limitsFor(profile);
+  // The month's own usage row carries any top-up, so the limit is read here
+  // rather than taken from the plan alone.
+  const limits = withTopUps(limitsFor(profile), await store.getUsage(profile.userId, quota.monthKey(now)));
   if (limits.basePicks > 0) {
     const paying = tier !== 'none';
     if (!paying && !quota.freemiumPickEligible(report)) {
@@ -437,6 +475,10 @@ async function postGenerationsFree(event) {
     exchange: String(body.exchange || '').trim(),
     industry: match.industry || '',
     visibility: 'private',
+    // LinkedIn sign-in is the analyst path and always yields a name; a
+    // magic-link member has none and their report stays engine-bylined. An
+    // email address is never printed on a public cover.
+    analystName: String(profile.name || '').slice(0, 120),
     // The revision loop on the order page is where the member steers the
     // report toward their own view; each round is a real engine run.
     revisionsAllowed: limitsFor(profile).revisions,
@@ -448,6 +490,7 @@ async function postGenerationsFree(event) {
   }
 
   await store.audit(profile.userId, 'generation-reserved', { genId, ticker, private: !isAnalyst });
+  await voidReviewsOnCoverage(profile.userId, ticker, now);
   return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
 }
 
@@ -465,6 +508,21 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
     table: store.table(), userId: profile.userId, genId, now,
   }));
 
+  // A coverage update is not a monthly slot: it came off the year's four, and
+  // there is no reservation row naming this run to check against, so the credit
+  // is guarded by the PUB row having been 'generating' until a moment ago.
+  if (publication.coverage) {
+    const back = await store.runTransact(quota.buildReleaseCoverageTransact({
+      table: store.table(), userId: profile.userId, now,
+      reservedAt: publication.reservedAt,
+      // Written on the row when the update was spent: the counter it came off is
+      // that one company's, and crediting another company's would be a gift.
+      companyId: publication.coverageCompanyId || order.ticker,
+    }));
+    if (back) await store.audit(profile.userId, 'coverage-update-restored', { genId, reason: order.error || 'generation failed' });
+    return back;
+  }
+
   // Then hand the month back, but only while this run still holds it. An admin
   // who already credited the member by hand, or a newer generation, owns those
   // rows now and must not be overwritten.
@@ -479,6 +537,78 @@ async function restoreIfFailed({ profile, genId, order, publication, now }) {
     await store.audit(profile.userId, 'generation-restored', { genId, reason: order.error || 'generation failed' });
   }
   return released;
+}
+
+// POST /generations/coverage — the update a Company Coverage subscription sells.
+//
+// The subscription promised four report updates a year and nothing in the system
+// ever produced one: the yearly counter only ever let a subscriber open a report
+// somebody else had already generated. This is the other half — the subscriber
+// asks, one of the four is spent, and a real engine run starts on their company.
+//
+// The company comes from the profile, never the request. It is what they paid to
+// have covered, and taking it from the body would be a way to spend a coverage
+// update on any company at all.
+async function postGenerationCoverage(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  if (activeTier(profile) !== 'coverage') {
+    return json(403, { error: 'Report updates are part of Company Coverage' });
+  }
+  const covered = coveredCompanies(profile);
+  if (!covered.length) return json(409, { error: 'Your subscription has no covered company yet' });
+  if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  // With several companies on one subscription the request has to say which —
+  // but it may only ever name one of theirs, and with a single company it need
+  // not say anything at all.
+  const body = parseBody(event) || {};
+  const asked = String(body.ticker || body.companyId || '').trim().toUpperCase();
+  const target = asked || covered[0];
+  if (!covered.includes(target)) {
+    return json(403, { error: 'That company is not on your coverage subscription', covers: covered });
+  }
+
+  const resolved = await resolveGenerationCompany(target);
+  if (resolved.error) return resolved.error;
+  const match = resolved.match;
+
+  // The quota first: a refused update must never start a billable engine run.
+  const genId = crypto.randomUUID();
+  const committed = await store.runTransact(quota.buildCoverageGenerationTransact({
+    table: store.table(), userId: profile.userId, now, genId, companyId: target,
+  }));
+  if (!committed) {
+    return json(429, {
+      error: `All ${quota.COVERAGE_UPDATES_PER_YEAR} updates on ${target} for this year have been used`,
+    });
+  }
+
+  await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: match.companyName || target,
+    ticker: match.ticker,
+    exchange: match.exchange || '',
+    industry: match.industry || '',
+    // A coverage report is the subscriber's own copy, never resold.
+    visibility: 'private',
+    // An update is the report as the engine writes it. Steering one toward a
+    // view is what the generation tiers are for.
+    revisionsAllowed: 0,
+  });
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'coverage-update-requested', { genId, ticker: match.ticker });
+  // A subscriber who also publishes now covers this company with a running report.
+  await voidReviewsOnCoverage(profile.userId, match.ticker, now);
+  return json(200, { genId, status: 'NEW', company: match.companyName || target, ticker: match.ticker });
 }
 
 // POST /generations/fresh {sessionId} — turn a paid checkout into a running
@@ -535,6 +665,7 @@ async function postGenerationFresh(event) {
     await store.audit(profile.userId, 'generation-purchased', {
       genId, ticker: session.metadata.ticker || '', amountTotal: session.amount_total, currency: session.currency,
     });
+    await voidReviewsOnCoverage(profile.userId, order.ticker, now);
   }
   return json(200, {
     genId,
@@ -543,6 +674,263 @@ async function postGenerationFresh(event) {
     ticker: order.ticker,
     alreadyCollected: Boolean(existing),
   });
+}
+
+// POST /generations/{genId}/revisions-checkout — buy more revision rounds on a
+// report you already own.
+//
+// revisionsAllowed is fixed when an order is created, so an analyst or a buyer
+// who runs out has no way forward but to start again. This tops it up; the
+// webhook is what actually raises the number, so an abandoned return trip
+// cannot lose rounds that were paid for.
+const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
+
+async function postGenerationRevisionsCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+  // A published analysis is frozen — its PDF can no longer change, so more
+  // rounds would buy nothing. Same rule as the revision endpoint itself.
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const order = await ordersStore.get(genId);
+  if (!order) return json(404, { error: 'Unknown generation' });
+
+  const body = parseBody(event) || {};
+  const rounds = Math.min(10, Math.max(1, Math.round(Number(body.rounds) || 1)));
+  const returnTo = auth.frontendUrl(body.returnTo);
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    allow_promotion_codes: true,
+    ...(profile.email ? { customer_email: profile.email } : {}),
+    line_items: [{
+      quantity: rounds,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
+        product_data: {
+          name: `Extra revision round — ${order.companyName || order.ticker || 'report'}`,
+          description: 'One more round of steering on a report you already have.',
+        },
+      },
+    }],
+    metadata: {
+      extraRevisions: String(rounds),
+      generationId: genId,
+      userId: profile.userId,
+    },
+    success_url: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?revisions=cancelled`,
+  });
+  return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+}
+
+// GET /reviews/mine — the reviews this member has written, newest first.
+//
+// A review used to be write-once and invisible afterwards, so a misclicked
+// score was permanent and unfindable. This is how a reviewer finds one again.
+async function getMyReviews(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const index = await store.listPublicationIndex({});
+  const mine = [];
+  for (const item of index) {
+    if (!item.genId || !item.userId) continue;
+    const rows = await store.listReviews(item.userId, item.genId);
+    const own = rows.find((r) => r.reviewerId === profile.userId);
+    if (!own) continue;
+    mine.push({
+      genId: item.genId,
+      companyId: item.companyId,
+      analyst: item.analystName || 'Analyst',
+      score: own.score,
+      comment: own.comment || '',
+      reviewedAt: own.reviewedAt || null,
+      edits: Array.isArray(own.history) ? own.history.length : 0,
+      history: Array.isArray(own.history) ? own.history : [],
+      // Withdrawn from the analysis's totals because the reviewer now covers the
+      // company. Shown rather than hidden: the reviewer should see why it stopped
+      // counting.
+      voided: Boolean(own.voided),
+    });
+  }
+  mine.sort((a, b) => String(b.reviewedAt || '').localeCompare(String(a.reviewedAt || '')));
+  return json(200, { reviews: mine });
+}
+
+// POST /analyses/{genId}/review/edit — correct a review already written.
+async function postAnalysisReviewEdit(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const raw = Number(body.score);
+  if (!Number.isFinite(raw) || raw < 1 || raw > 5) {
+    return json(400, { error: 'score must be a number between 1 and 5, decimals allowed' });
+  }
+  const score = Math.round(raw * 10) / 10;
+  const comment = String(body.comment || '').trim();
+  if (comment.length < 40) {
+    return json(400, { error: 'A written comparison of at least 40 characters is required' });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+  // Same rule as opening one, stated where the review is actually written: the
+  // open path is what makes a review possible, so this is unreachable today,
+  // and it stops a later change to that path from quietly allowing self-review.
+  if (index.userId === profile.userId) {
+    return json(403, { error: 'You cannot review your own analysis' });
+  }
+
+  // Started covering the company since writing the review: editing now would be
+  // marking a rival down. The review already written stands as it is.
+  if (await coversCompany(profile.userId, index.companyId)) {
+    return json(403, {
+      error: 'You cover this company yourself now, so this review can no longer be changed',
+      covers: index.companyId,
+    });
+  }
+
+  const rows = await store.listReviews(index.userId, genId);
+  const own = rows.find((r) => r.reviewerId === profile.userId);
+  if (!own) return json(404, { error: 'You have not reviewed this analysis' });
+  // A voided review no longer contributes to the totals, so editing it would move
+  // a number it is not part of. Unreachable while the coverage check above stands.
+  if (own.voided) return json(403, { error: 'This review was withdrawn when you took up coverage of the company' });
+
+  const committed = await store.runTransact(quota.buildReviewEditTransact({
+    table: store.table(),
+    ownerId: index.userId,
+    reviewerId: profile.userId,
+    now, genId, indexSk: index.sk,
+    oldScore: Number(own.score),
+    oldComment: own.comment || '',
+    score,
+    comment: comment.slice(0, 4000),
+    history: Array.isArray(own.history) ? own.history : [],
+  }));
+  // The condition is on the old score, so a failure means someone else's edit
+  // landed first and the caller is working from a stale number.
+  if (!committed) return json(409, { error: 'That review changed while you were editing it — reload and try again' });
+
+  await store.audit(profile.userId, 'analysis-review-edited', { genId, from: own.score, to: score });
+  return json(200, { ok: true, genId, score, previousScore: Number(own.score) });
+}
+
+// POST /generations/{genId}/prompts-public {public: boolean} — whether the first
+// revision prompt is shown to readers who have not paid.
+//
+// Public by default, because an unexplained call is not worth much to anyone.
+// But the prompts are the analyst's own words on their own work, and some of
+// them will be notes never meant for a company page, so it is their switch.
+async function postGenerationPromptsPublic(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (typeof body?.public !== 'boolean') return json(400, { error: 'public must be true or false' });
+
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown generation' });
+
+  await store.setFields(`USER#${profile.userId}`, `PUB#${genId}`, { promptsPublic: body.public });
+  await store.audit(profile.userId, 'prompts-visibility', { genId, public: body.public });
+  return json(200, { ok: true, genId, promptsPublic: body.public });
+}
+
+// POST /me/linkedin — the analyst's public profile link.
+//
+// LinkedIn's OIDC scope ("openid profile email") returns sub, name and email
+// and no public profile URL — the vanity name needs partner access we do not
+// have. So the analyst supplies it, which also means they choose whether to be
+// linked at all.
+const LINKEDIN_PROFILE_RE = /^https:\/\/(?:[a-z]{2,3}\.)?linkedin\.com\/(?:in|pub)\/[^\s/?#]+\/?$/i;
+
+async function postMeLinkedin(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const raw = String(body.linkedinUrl || '').trim();
+  if (raw && !LINKEDIN_PROFILE_RE.test(raw)) {
+    return json(400, { error: 'Give the address of your LinkedIn profile, e.g. https://www.linkedin.com/in/your-name' });
+  }
+  const url = raw.replace(/\/$/, '');
+
+  await store.putProfileFields(profile.userId, { linkedinUrl: url || null });
+
+  // Publications carry a copy so the public listing needs no per-analyst
+  // lookup. Backfilling the analyst's own rows keeps the link from being
+  // something only future publications get.
+  const pubs = await store.listUserItems(profile.userId, 'PUB#');
+  let updated = 0;
+  for (const pub of pubs.filter((x) => x.status === 'published')) {
+    const genId = String(pub.sk || '').replace(/^PUB#/, '');
+    const index = await store.findPublicationIndex(genId);
+    if (!index?.sk) continue;
+    await store.putIndexFields(index.sk, { analystLinkedin: url || null });
+    updated += 1;
+  }
+
+  await store.audit(profile.userId, 'linkedin-url-set', { present: Boolean(url), publications: updated });
+  return json(200, { ok: true, linkedinUrl: url || null, publications: updated });
+}
+
+// POST /generations/{genId}/price — reprice a live analysis.
+//
+// The analyst sets the price at publication and, until now, was stuck with it.
+// It matters more since forking: the price is what a derivative pays them, so
+// guessing wrong once shouldn't be permanent.
+async function postGenerationPrice(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const genId = event.pathParameters?.genId || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  const publication = await store.getPublication(profile.userId, genId);
+  if (!publication) return json(404, { error: 'Unknown analysis' });
+  if (publication.status !== 'published') {
+    return json(409, { error: 'Only a published analysis has a price to change', status: publication.status });
+  }
+
+  const index = await store.findPublicationIndex(genId);
+  const committed = await store.runTransact(quota.buildRepriceTransact({
+    table: store.table(),
+    userId: profile.userId,
+    genId,
+    indexSk: index?.sk,
+    priceEur: body.priceEur,
+    freeAfterDays: body.freeAfterDays === undefined ? publication.freeAfterDays : body.freeAfterDays,
+    publishedAt: publication.publishedAt,
+  }));
+  if (!committed) return json(409, { error: 'The price could not be changed right now' });
+
+  await store.audit(profile.userId, 'analysis-repriced', {
+    genId, priceEur: Number(body.priceEur) || 0,
+  });
+  return json(200, { ok: true, genId, priceEur: Math.max(0, Math.round(Number(body.priceEur) || 0)) });
 }
 
 // GET /generations/{genId} — order progress, and the entitlement handover once
@@ -583,7 +971,12 @@ async function getGeneration(event) {
 // the member JWT proves who they are, and the PUB# row proves the generation is
 // theirs. Payload shape matches GET /api/orders/{id} so the order page can read
 // either without knowing which one it is talking to.
-const REVISION_COMMENT_MAX = 4000;
+// Long enough that no one writing instructions by hand will meet it: 4,000
+// characters was about 600 words, which a single detailed objection can use
+// up. Not unbounded — comments accumulate in the order item across the
+// revision chain, and DynamoDB refuses an item over 400 KB, so an
+// unbounded field trades a clear error for a confusing write failure.
+const REVISION_COMMENT_MAX = 40000;
 const REVISION_CONTROL_CHARS = /[\x00-\x09\x0B-\x1F\x7F]/;
 
 async function ownedOrder(event) {
@@ -615,8 +1008,13 @@ async function getGenerationOrder(event) {
     revisionsUsed: order.revisionsUsed || 0,
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
-    // Publishing freezes the PDF, so the order page must stop offering revisions.
+    // Publishing freezes the PDF, so the order page must stop offering
+    // revisions — and hand edits, which would change it just the same.
     publication: publication.status,
+    editable: publication.status !== 'published' && editing.editableNow(order),
+    currentVersion: editing.currentVersion(order),
+    activity: editing.activityOf(order),
+    editsUsed: order.editsUsed || 0,
   };
 
   // The order page reads `pdfUrl`; presignGenerated answers { url, expiresIn }.
@@ -626,10 +1024,7 @@ async function getGenerationOrder(event) {
 
   payload.revisionHistory = await Promise.all(
     (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
-      version: entry.version,
-      comments: entry.comments || '',
-      completedAt: entry.completedAt,
-      changes: entry.changes || null,
+      ...editing.historyEntryPayload(entry),
       pdfUrl: entry.pdfFileName ? (await presignGenerated(entry.pdfFileName)).url : null,
     })),
   );
@@ -686,6 +1081,75 @@ async function postGenerationRevision(event) {
   return json(200, { ok: true, status: claimed.status });
 }
 
+// POST /generations/{genId}/edits — the member's hand edits to the report
+// text, as the next version. Free and unlimited: no round is consumed. The
+// byline is the member's own name; the request cannot say otherwise.
+async function postGenerationEdits(event) {
+  const { deny, genId, order, profile, publication } = await ownedOrder(event);
+  if (deny) return deny;
+
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  let request;
+  try {
+    request = validateEditRequest(body);
+  } catch (err) {
+    if (err instanceof EditValidationError) return json(400, { error: err.message });
+    throw err;
+  }
+
+  if (!editing.editableNow(order)) {
+    return json(409, {
+      error: order.status === ordersStore.STATUS.DELIVERED
+        ? 'This report cannot be edited.'
+        : 'This generation is busy right now — wait for it to finish, then try again.',
+      status: order.status,
+    });
+  }
+
+  const claimed = await ordersStore.claimEdit(genId, {
+    edits: request.edits,
+    originals: request.originals,
+    editedBy: String(profile.name || profile.email || '').slice(0, 120),
+    fromVersion: editing.currentVersion(order),
+  });
+  if (!claimed) {
+    return json(409, { error: 'This generation cannot take an edit right now', status: order.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-edited', { genId, version: editing.currentVersion(order) + 1 });
+  return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(order) + 1 });
+}
+
+// GET /generations/{genId}/preview — the engine's rendered HTML of the
+// current version, for the text editor on the order page.
+async function getGenerationPreview(event) {
+  const { deny, order } = await ownedOrder(event);
+  if (deny) return deny;
+
+  const result = await editing.loadPreviewHtml(order);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, max-age=300',
+      'x-report-version': String(editing.currentVersion(order)),
+    },
+    body: result.html,
+  };
+}
+
 // GET /generations — every run this member has started, newest first. Without
 // it the order page was reachable only from the delivery email.
 async function listGenerations(event) {
@@ -707,6 +1171,9 @@ async function listGenerations(event) {
       companyName: order?.companyName || pub.companyName || '',
       startedAt: pub.reservedAt || pub.createdAt || order?.createdAt || null,
       publishedAt: pub.publishedAt || null,
+      priceEur: Number(pub.priceEur) || 0,
+      // Whether readers see this analysis's first prompt before paying.
+      promptsPublic: quota.promptsArePublic(pub),
       status: order?.status || pub.status,
       revisionsAllowed: order?.revisionsAllowed || 0,
       revisionsUsed: order?.revisionsUsed || 0,
@@ -736,6 +1203,15 @@ async function postGenerationSubmit(event) {
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
+  // A fork with nothing changed on it is somebody else's analysis with a new
+  // name on the cover. The whole point of deriving is what you add, so at
+  // least one revision or hand edit has to have landed before it can be
+  // published.
+  if (order.forkedFrom && !(order.revisionsUsed > 0 || order.editsUsed > 0)) {
+    return json(409, {
+      error: 'Revise or edit this analysis at least once before publishing it — a fork with no changes is the analysis you derived it from',
+    });
+  }
 
   // The analyst prices their own analysis and decides how long until it falls
   // free (max a year, quota.clampFreeAfterDays). Both are recorded now; the
@@ -745,11 +1221,18 @@ async function postGenerationSubmit(event) {
     // The comments the analyst sent the revision pipeline ARE the prompts;
     // the client's promptsText only fills in for an unrevised publication.
     promptsText: quota.revisionPrompts(order) || String(body.promptsText || ''),
+    // Counted from the revision history, never from the joined text: a single
+    // comment has blank lines of its own.
+    promptRounds: (order.revisionHistory || []).filter((e) => String(e.comments || '').trim()).length,
     companyId: order.ticker,
     jobId: order.jobId || '',
     priceEur: body.priceEur,
     freeAfterDays: body.freeAfterDays,
     analystName: String(profile.name || profile.email || '').slice(0, 120),
+    analystLinkedin: profile.linkedinUrl || null,
+    // From the delivered order, never the request body — same rule as companyId above.
+    recommendation: order.recommendation || null,
+    targetPrice: order.targetPrice || null,
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
   // Published means frozen: a revision after this would change the PDF under
@@ -781,13 +1264,14 @@ async function getMeEarnings(event) {
   if (deny) return deny;
   if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
 
-  const [pubs, payouts, sales] = await Promise.all([
+  const [pubs, payouts, sales, reads] = await Promise.all([
     store.listUserItems(profile.userId, 'PUB#'),
     store.listUserItems(profile.userId, 'PAYOUT#'),
     store.listUserItems(profile.userId, 'SALE#'),
+    store.listUserItems(profile.userId, 'SUBREAD#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
-  return json(200, bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts }));
+  return json(200, bounty.ledger(pubs, { now, sales, reads, paidGenIds, paidAmounts }));
 }
 
 // ── billing ──────────────────────────────────────────────────────────────────
@@ -810,6 +1294,68 @@ function memberPrices() {
   }
 }
 
+// POST /billing/topup-checkout {kind: 'picks'|'reads', units} — buy more of the
+// meter you just ran out of.
+//
+// Running out of picks on the 19 EUR tier used to leave one option: upgrade the
+// whole subscription for the sake of one more report. A tier is a permanent
+// commitment; this is a step where there was a cliff. It raises the month's
+// meter only, so it resets with it.
+//
+// Priced below the plan's own marginal rate on purpose — the report already
+// exists, and serving it again costs nothing. A read costs more than it earns us
+// only if the rate to the analyst ever passes this.
+const TOPUP_PICK_EUR = Number(process.env.TOPUP_PICK_EUR || '') || 5;
+const TOPUP_READ_EUR = Number(process.env.TOPUP_READ_EUR || '') || 2;
+const TOPUP_MAX_UNITS = 20;
+
+async function postBillingTopUpCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const kind = String(body.kind || '');
+  if (!quota.TOPUP_FIELDS[kind]) return json(400, { error: 'kind must be "picks" or "reads"' });
+
+  const units = Math.min(TOPUP_MAX_UNITS, Math.max(1, Math.round(Number(body.units) || 1)));
+  // A meter the member's plan does not have at all is not a meter to top up:
+  // selling reads to someone who cannot open an analysis sells nothing.
+  const planLimits = limitsFor(profile);
+  if (kind === 'picks' && planLimits.basePicks < 1) {
+    return json(403, { error: 'Your plan does not include report picks' });
+  }
+  if (kind === 'reads' && planLimits.analystReads < 1) {
+    return json(403, { error: 'Your plan does not include reading other analysts' });
+  }
+
+  const unitEur = kind === 'picks' ? TOPUP_PICK_EUR : TOPUP_READ_EUR;
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    allow_promotion_codes: true,
+    ...(profile.email ? { customer_email: profile.email } : {}),
+    line_items: [{
+      quantity: units,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(unitEur * 100),
+        product_data: {
+          name: kind === 'picks' ? 'One more report this month' : 'One more analyst report to read',
+          description: kind === 'picks'
+            ? 'Adds one report pick to this month\u2019s allowance.'
+            : 'Adds one analyst report to this month\u2019s reading allowance.',
+        },
+      },
+    }],
+    metadata: { topup: kind, topupUnits: String(units), userId: profile.userId },
+    success_url: `${returnTo}?topup=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?topup=cancelled`,
+  });
+  return json(200, { url: session.url, units, priceEur: units * unitEur });
+}
+
 async function postBillingCheckout(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
@@ -822,18 +1368,28 @@ async function postBillingCheckout(event) {
   const priceId = memberPrices()[plan]?.[interval];
   if (!priceId) return json(400, { error: `Unknown plan/interval: ${plan}/${interval}` });
 
-  // Coverage is a year of one company: refuse the sale rather than take money
-  // for a ticker nothing in the catalog will ever match.
-  let coverageCompanyId = '';
+  // Coverage is a year of one company, or of several — priced per company, so a
+  // three-company subscription is three times the line. Refuse the sale rather
+  // than take money for a ticker nothing in the catalog will ever match.
+  let coverage = [];
   if (plan === 'coverage') {
-    const requested = String(body.coverageCompanyId || '').trim();
-    if (!requested) return json(400, { error: 'coverageCompanyId is required for coverage' });
+    const requested = (Array.isArray(body.coverageCompanyIds) && body.coverageCompanyIds.length
+      ? body.coverageCompanyIds
+      : [body.coverageCompanyId])
+      .map((c) => String(c || '').trim()).filter(Boolean);
+    if (!requested.length) return json(400, { error: 'Name at least one company to cover' });
+    if (requested.length > quota.COVERAGE_MAX_COMPANIES) {
+      return json(400, { error: `A coverage subscription carries at most ${quota.COVERAGE_MAX_COMPANIES} companies` });
+    }
     const { catalog } = await catalogAws.buildCatalogAws({ now });
-    coverageCompanyId = resolveTicker(catalog, requested);
-    if (!coverageCompanyId) {
-      return json(400, {
-        error: `We don't cover "${requested}" yet — pick a company from the reports page or request coverage.`,
-      });
+    for (const one of requested) {
+      const resolvedTicker = resolveTicker(catalog, one);
+      if (!resolvedTicker) {
+        return json(400, {
+          error: `We don't cover "${one}" yet — pick a company from the reports page or request coverage.`,
+        });
+      }
+      if (!coverage.includes(resolvedTicker)) coverage.push(resolvedTicker);
     }
   }
 
@@ -850,11 +1406,22 @@ async function postBillingCheckout(event) {
 
   const session = await stripe().checkout.sessions.create({
     mode: 'subscription',
+    allow_promotion_codes: true,
     customer: customerId,
-    line_items: [{ price: priceId, quantity: 1 }],
+    // Quantity is the company count: one Stripe price, no per-pack price ids to
+    // keep in step. A discount for covering several is a Stripe coupon, not a
+    // second price.
+    line_items: [{ price: priceId, quantity: plan === 'coverage' ? coverage.length : 1 }],
     client_reference_id: profile.userId,
     subscription_data: {
-      metadata: { userId: profile.userId, plan, coverageCompanyId },
+      metadata: {
+        userId: profile.userId,
+        plan,
+        // Both spellings: the list is what is read, and the single field keeps
+        // anything still looking for it working.
+        coverageCompanyId: coverage[0] || '',
+        coverageCompanyIds: coverage.join(','),
+      },
     },
     // Come back to whichever site started the checkout (prod / staging / dev);
     // frontendUrl falls back to this stage's own members page.
@@ -891,6 +1458,7 @@ async function postFreshCheckout(event) {
 
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
+    allow_promotion_codes: true,
     customer: profile.stripeCustomerId || undefined,
     customer_email: profile.stripeCustomerId ? undefined : (profile.email || undefined),
     line_items: [{ price: priceId, quantity: 1 }],
@@ -936,8 +1504,15 @@ async function applySubscription(userId, subscription) {
     stripeSubscriptionId: subscription.id,
     currentPeriodEnd: subscription.current_period_end || 0,
   };
-  if (plan === 'coverage' && subscription.metadata?.coverageCompanyId) {
-    patch.coverageCompanyId = subscription.metadata.coverageCompanyId;
+  if (plan === 'coverage') {
+    const listed = String(subscription.metadata?.coverageCompanyIds || '')
+      .split(',').map((c) => c.trim().toUpperCase()).filter(Boolean);
+    const single = String(subscription.metadata?.coverageCompanyId || '').trim().toUpperCase();
+    const companies = listed.length ? listed : (single ? [single] : []);
+    if (companies.length) {
+      patch.coverageCompanyIds = companies;
+      patch.coverageCompanyId = companies[0];
+    }
   }
   await store.updateProfile(userId, patch);
   await store.audit(userId, 'subscription-status', { status: subscription.status, plan });
@@ -961,11 +1536,77 @@ async function recordAnalysisSale(session) {
     // Refund events carry the payment intent, not the session, so a later
     // charge.refunded handler can find this row without a migration.
     paymentIntent: session.payment_intent || null,
-    grossEur: Math.round(Number(session.amount_total || 0)) / 100,
+    // A fork session also carries a derivation fee, which is ours and not the
+    // author's, so it names the author's share explicitly. A plain purchase has
+    // no such field and stays the whole session total.
+    grossEur: Number(session.metadata.saleGrossEur)
+      || Math.round(Number(session.amount_total || 0)) / 100,
     currency: session.currency || 'eur',
     soldAt: new Date((session.created || 0) * 1000 || Date.now()).toISOString(),
   });
   if (wrote) await store.audit(ownerId, 'analysis-sold', { genId, sessionId: session.id });
+}
+
+// The buyer's copy, sent the moment Stripe says it is paid. Nothing is generated
+// for an analyst analysis — the PDF already exists — so waiting for the buyer to
+// land back on the site was the only delivery, and a lost return trip meant a
+// paid-for report nobody ever received (Lauri, 27.8.2026).
+//
+// The link is the receipt, not the document: the session id re-verifies against
+// Stripe on every visit and the page presigns the PDF again, so this works for
+// as long as the analysis stands rather than for the five minutes a presigned
+// URL lasts.
+async function sendAnalysisReceipt(session) {
+  const to = session.customer_details?.email || session.customer_email || '';
+  const genId = session.metadata?.analysisGenId || '';
+  if (!to || !genId) return;
+  const base = auth.frontendUrl('');
+  const isFork = session.metadata?.fork === 'true';
+  const link = `${base}?${isFork ? 'forked' : 'bought'}=${encodeURIComponent(genId)}&session_id=${encodeURIComponent(session.id)}`;
+  const company = session.metadata?.companyId || 'the company';
+  try {
+    const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
+    const ses = new SESv2Client({ region: process.env.AWS_REGION || 'eu-west-1' });
+    await ses.send(new SendEmailCommand({
+      FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
+      Destination: { ToAddresses: [to] },
+      Content: {
+        Simple: {
+          Subject: { Data: `Your analyst analysis of ${company}`, Charset: 'UTF-8' },
+          Body: {
+            Html: {
+              Data: `<p>Thank you — your purchase is complete.</p>`
+                + `<p><a href="${link}">Open your analyst analysis of ${company}</a></p>`
+                + `<p>This link stays valid: it re-checks your purchase and opens the PDF each time.</p>`,
+              Charset: 'UTF-8',
+            },
+          },
+        },
+      },
+    }));
+  } catch (err) {
+    // Stripe retries the whole event on a non-200, which would re-record the
+    // sale; a mail that did not go out is not worth that.
+    console.error('analysis receipt email failed:', err);
+  }
+}
+
+// Crediting a bought top-up. The month comes from the clock now rather than from
+// the checkout, so one bought at the turn of the month lands where it can
+// actually be spent.
+async function addTopUp(session, now) {
+  const kind = String(session.metadata?.topup || '');
+  const units = Math.round(Number(session.metadata?.topupUnits) || 0);
+  const userId = session.metadata?.userId;
+  if (!quota.TOPUP_FIELDS[kind] || units <= 0 || !userId) {
+    console.error('top-up: nothing to credit', { kind, units, userId });
+    return;
+  }
+  const credited = await store.runTransact(quota.buildTopUpTransact({
+    table: store.table(), userId, now, kind, units, sessionId: session.id,
+  }));
+  if (!credited) return; // already credited: a redelivered event, not a failure
+  await store.audit(userId, 'topup-credited', { kind, units, sessionId: session.id });
 }
 
 async function postBillingWebhook(event) {
@@ -993,6 +1634,18 @@ async function postBillingWebhook(event) {
       if (object.metadata?.analysisGenId) {
         if (object.payment_status !== 'paid') break;
         await recordAnalysisSale(object);
+        if (object.metadata.fork === 'true') await createForkOrder(object);
+        await sendAnalysisReceipt(object);
+        break;
+      }
+      if (object.metadata?.extraRevisions) {
+        if (object.payment_status !== 'paid') break;
+        await addRevisionRounds(object);
+        break;
+      }
+      if (object.metadata?.topup) {
+        if (object.payment_status !== 'paid') break;
+        await addTopUp(object, requestNow(event));
         break;
       }
       if (object.mode !== 'subscription') break;
@@ -1038,24 +1691,96 @@ async function getAnalyses(event) {
   const now = requestNow(event);
   const companyId = event.queryStringParameters?.companyId || '';
   const items = await store.listPublicationIndex({ companyId });
+  // The teaser lives on the analyst's own PUB item, so this reads one item per
+  // listed analysis. A company page lists a handful; the admin-wide listing is
+  // the one that would not scale, and it does not call this.
+  const teasers = new Map(await Promise.all(items.map(async (item) => {
+    const pub = await store.getPublication(item.userId, item.genId);
+    return [item.genId,
+      quota.promptsArePublic(pub) ? quota.promptTeaser(pub?.promptsText, pub?.promptRounds) : null];
+  })));
   return json(200, {
     companyId: companyId ? String(companyId).toUpperCase() : null,
+    // What deriving adds on top of an analysis's own price. The buttons that
+    // offer it are on 1,232 static pages, so the fee cannot be a constant
+    // duplicated there — a reader must see the real total before Stripe does.
+    forkFeeEur: FORK_FEE_EUR,
     analyses: ranking.orderAnalyses(items, now).map((item) => ({
       genId: item.genId,
       companyId: item.companyId,
       // The store filters by analyst, and two analysts can share a display name.
       analystId: item.userId,
       analyst: item.analystName || 'Analyst',
+      analystLinkedin: item.analystLinkedin || null,
       publishedAt: item.publishedAt,
       priceEur: item.priceEur || 0,
       reviewCount: item.reviewCount || 0,
       peerScore: Math.round(item.peerScore * 100) / 100,
+      // What reviewers gave. peerScore is the ranking number, pulled toward
+      // the neutral prior, and is not what a reader should be shown.
+      averageScore: ranking.averageScore(item) === null ? null : Math.round(ranking.averageScore(item) * 100) / 100,
       // `free` costs a member no read; `publicFree` is the administrator's
       // hand-picked window, the only one a logged-out visitor may open.
       free: ranking.isFreeNow(item, now),
       publicFree: ranking.isPublicFreeNow(item, now),
+      // What the analyst told the engine, first round only and truncated. This is
+      // the reason to buy — the call it produced is not shown here, because the
+      // call is the thing being bought (Lauri, 27.8.2026).
+      promptTeaser: teasers.get(item.genId) || null,
     })),
   });
+}
+
+// An analyst who covers a company must not grade the rivals covering it: the
+// cheapest way up the ranking would be to mark down everyone else on Tesla
+// (Lauri, 27.8.2026). Buying their analysis stays open — reading is not the
+// problem, scoring is.
+async function coversCompany(userId, companyId) {
+  const target = String(companyId || '').toUpperCase();
+  if (!target) return false;
+  const pubs = await store.listUserItems(userId, 'PUB#');
+  for (const pub of pubs) {
+    // A run the engine never delivered produced no coverage and no rival.
+    if (pub.status === 'failed') continue;
+    const own = String(pub.companyId || '').toUpperCase();
+    if (own) {
+      if (own === target) return true;
+      continue;
+    }
+    // Still generating: the company lives on the order until publication.
+    const order = await ordersStore.get(String(pub.sk || '').replace(/^PUB#/, ''));
+    if (String(order?.ticker || '').toUpperCase() === target) return true;
+  }
+  return false;
+}
+
+// Taking up coverage of a company takes back every score this member gave the
+// rivals covering it. coversCompany() stops the reverse order; this closes the
+// one it cannot — lowball everyone on Tesla first, start your own Tesla report
+// afterwards. Best-effort: it runs after the generation exists, so a failure
+// here must not cost the member the run they just started.
+async function voidReviewsOnCoverage(userId, companyId, now) {
+  const target = String(companyId || '').toUpperCase();
+  if (!target) return 0;
+  let voided = 0;
+  try {
+    const rivals = await store.listPublicationIndex({ companyId: target });
+    for (const index of rivals) {
+      if (!index.genId || !index.userId || index.userId === userId) continue;
+      const review = await store.getItem(`USER#${index.userId}`, `REVIEW#${index.genId}#${userId}`);
+      if (!review || review.voided) continue;
+      const committed = await store.runTransact(quota.buildVoidReviewTransact({
+        table: store.table(), ownerId: index.userId, reviewerId: userId, now,
+        genId: index.genId, indexSk: index.sk, score: Number(review.score) || 0,
+      }));
+      if (!committed) continue;
+      voided += 1;
+      await store.audit(userId, 'review-voided', { genId: index.genId, companyId: target, score: review.score });
+    }
+  } catch (err) {
+    console.error('voidReviewsOnCoverage failed:', err);
+  }
+  return voided;
 }
 
 // GET /analyses/{genId}/free — no account, no allowance, no review owed. The
@@ -1096,20 +1821,46 @@ async function postAnalysisOpen(event) {
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
   if (index.userId === profile.userId) return json(400, { error: 'That is your own analysis' });
 
-  const deliver = async (extra) => json(200, {
-    ok: true, genId, ownerId: index.userId, ...(await analysisDocument(genId)), ...extra,
-  });
+  // The revision prompts come with the document: a reviewer is asked to grade what
+  // the analyst added on top of the engine, and the prompts are that addition.
+  const deliver = async (extra) => {
+    const pub = await store.getPublication(index.userId, genId);
+    return json(200, {
+      ok: true, genId, ownerId: index.userId, promptsText: pub?.promptsText || '',
+      ...(await analysisDocument(genId)), ...extra,
+    });
+  };
 
   // Inside a hand-picked free window, or past the analyst's own decay time, the
   // analysis is free for everyone — no read spent, no review owed. Removing the
   // gate is the whole point of the free window.
   if (ranking.isFreeNow(index, now)) return deliver({ free: true });
 
-  const limit = limitsFor(profile).analystReads;
+  // Re-opening something already paid for comes first, so an analyst who opened
+  // a rival and only afterwards started covering the company can still read what
+  // they owe a review on.
+  if (await store.getItem(`USER#${profile.userId}`, `READ#${genId}`)) {
+    return deliver({ alreadyOpen: true });
+  }
+  if (await coversCompany(profile.userId, index.companyId)) {
+    return json(403, {
+      error: 'You cover this company yourself, so you cannot read and score a rival analysis on it — buy it instead',
+      covers: index.companyId,
+    });
+  }
+
+  const limit = withTopUps(
+    limitsFor(profile), await store.getUsage(profile.userId, quota.monthKey(now)),
+  ).analystReads;
   if (limit < 1) return json(403, { error: 'Your plan does not include reading other analysts' });
 
+  // A subscriber's read is the only one anybody paid us for, so it is the only
+  // one that pays the analyst. An analyst or reader spending their own free
+  // allowance passes rate 0 and writes no payable row.
+  const readRateEur = activeTier(profile) === 'none' ? 0 : bounty.readRateEur();
   const committed = await store.runTransact(quota.buildOpenAnalysisTransact({
     table: store.table(), userId: profile.userId, now, limit, genId, ownerId: index.userId,
+    readRateEur, companyId: index.companyId,
   }));
   if (!committed) {
     const fresh = await store.getProfile(profile.userId);
@@ -1166,6 +1917,7 @@ async function postAnalysisBuyCheckout(event) {
   const returnTo = auth.frontendUrl(body.returnTo);
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
+    allow_promotion_codes: true,
     line_items: [{
       quantity: 1,
       price_data: {
@@ -1182,6 +1934,171 @@ async function postAnalysisBuyCheckout(event) {
     cancel_url: `${returnTo}?bought=cancelled`,
   });
   return json(200, { url: session.url, priceEur: price });
+}
+
+// Extra revision rounds, applied from the webhook so they survive a buyer who
+// never returns. claimStripeEvent already makes the webhook idempotent, which
+// is what keeps a Stripe retry from granting the rounds twice.
+async function addRevisionRounds(session) {
+  const genId = session.metadata.generationId;
+  const rounds = Math.round(Number(session.metadata.extraRevisions) || 0);
+  if (!genId || rounds <= 0) return;
+
+  const updated = await ordersStore.addRevisionsAllowed(genId, rounds);
+  if (!updated) {
+    console.error('extra revisions: no order to credit', { genId, rounds });
+    return;
+  }
+  if (session.metadata.userId) {
+    await store.audit(session.metadata.userId, 'revisions-purchased', {
+      genId, rounds, revisionsAllowed: updated.revisionsAllowed,
+    });
+  }
+}
+
+// The paid fork itself, created from the webhook so it exists whether or not
+// the buyer returns to the site. The order revises the parent's engine job —
+// the engine's ownership key is one site-wide username, so branching another
+// member's job needs no engine change — but it is a separate order with its own
+// revision budget and, critically, no pdfFileName. The reconciler writes an
+// existing key in place, so inheriting the parent's would make the first
+// revision overwrite the published report under everyone reading it.
+async function createForkOrder(session) {
+  const parentGenId = session.metadata.analysisGenId;
+  const genId = session.id;
+  if (await ordersStore.get(genId)) return;
+
+  const parent = await ordersStore.get(parentGenId);
+  if (!parent?.jobId) {
+    console.error('fork: parent has no job to build on', { parentGenId, genId });
+    return;
+  }
+
+  const forkUserId = session.metadata.forkUserId || '';
+  const profile = forkUserId ? await store.getProfile(forkUserId) : null;
+  const publishes = Boolean(profile && tiers.isPublishingRole(profile.role));
+
+  // An analyst's fork is publishable and owes a publication; anyone else's is
+  // theirs alone. buildForkTransact refuses when another publication is already
+  // owed, and then the fork stays private rather than being lost.
+  let obligation = false;
+  if (publishes) {
+    obligation = await store.runTransact(quota.buildForkTransact({
+      table: store.table(),
+      userId: profile.userId,
+      now: new Date((session.created || 0) * 1000 || Date.now()),
+      genId,
+      parentGenId,
+      parentUserId: session.metadata.ownerId || null,
+      companyId: session.metadata.companyId || parent.ticker || '',
+    }));
+  }
+
+  await ordersStore.create({
+    id: genId,
+    email: profile?.email || session.customer_details?.email || session.customer_email || '',
+    companyName: parent.companyName || '',
+    ticker: parent.ticker || '',
+    exchange: parent.exchange || '',
+    status: ordersStore.STATUS.DELIVERED,
+    jobId: parent.jobId,
+    forkedFrom: parentGenId,
+    analystName: profile?.name || undefined,
+    ...(obligation ? {} : { visibility: 'private' }),
+    revisionsAllowed: publishes
+      ? limitsFor(profile).revisions
+      : (Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3),
+  });
+
+  if (profile) {
+    await store.audit(profile.userId, 'analysis-forked', {
+      genId, parentGenId, publishable: obligation,
+    });
+    // A publishable fork is coverage of the parent's company — including of the
+    // parent itself, which the forker may well have reviewed on the way in.
+    if (obligation) await voidReviewsOnCoverage(profile.userId, parent.ticker, new Date());
+  }
+}
+
+// POST /analyses/{genId}/fork-checkout — pay to build on a published analysis.
+//
+// One session, two things in it: the analysis at its own price, which reaches
+// its author as an ordinary SALE row with the usual 50/50 and 14-day hold, and
+// a derivation fee which is ours. Routing the author's half through the sale
+// machinery means a later takedown of the parent claws these back like any
+// other sale, with no separate accounting.
+//
+// Signed in as an analyst, the fork becomes a publishable generation carrying
+// the publish obligation. Signed out, or as a reader, it is a private report
+// that owes nothing — the same split the paid generation already makes.
+const FORK_FEE_EUR = Number(process.env.FORK_FEE_EUR || '') || 10;
+
+async function postAnalysisForkCheckout(event) {
+  const now = requestNow(event);
+  const genId = event.pathParameters?.genId || '';
+  const index = await store.findPublicationIndex(genId);
+  // Only a live publication can be derived from. A taken-down one is a 404
+  // everywhere else, and a reopened one is mid-edit by its own author.
+  if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
+
+  const parentOrder = await ordersStore.get(genId);
+  if (!parentOrder?.jobId || parentOrder.status !== 'DELIVERED') {
+    return json(409, { error: 'This analysis has no report to build on' });
+  }
+
+  const body = parseBody(event) || {};
+  const returnTo = auth.frontendUrl(body.returnTo);
+  const analysisPrice = Number(index.priceEur) || 0;
+
+  // Signed in is optional here: a reader without an account can still buy a
+  // fork, exactly as they can buy an analysis. requireUser denies rather than
+  // throwing, so an anonymous caller just comes back without a profile.
+  const { profile } = await auth.requireUser(event, { bearerToken, json, now });
+
+  const lineItems = [{
+    quantity: 1,
+    price_data: {
+      currency: 'eur',
+      unit_amount: Math.round(FORK_FEE_EUR * 100),
+      product_data: {
+        name: `Build on ${index.companyId} — derivation`,
+        description: 'Revision rounds on top of a published analyst analysis, delivered as your own report.',
+      },
+    },
+  }];
+  if (analysisPrice > 0 && !ranking.isPublicFreeNow(index, now)) {
+    lineItems.unshift({
+      quantity: 1,
+      price_data: {
+        currency: 'eur',
+        unit_amount: Math.round(analysisPrice * 100),
+        product_data: {
+          name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
+          description: 'The analysis you are building on. Half of this reaches its author.',
+        },
+      },
+    });
+  }
+
+  const session = await stripe().checkout.sessions.create({
+    mode: 'payment',
+    allow_promotion_codes: true,
+    line_items: lineItems,
+    ...(profile?.email ? { customer_email: profile.email } : {}),
+    metadata: {
+      analysisGenId: genId,
+      ownerId: index.userId,
+      companyId: index.companyId,
+      fork: 'true',
+      // Only the author's half of the session is their sale; the rest is the
+      // derivation fee. recordAnalysisSale reads this.
+      saleGrossEur: String(analysisPrice),
+      forkUserId: profile?.userId || '',
+    },
+    success_url: `${returnTo}?forked=${genId}&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${returnTo}?forked=cancelled`,
+  });
+  return json(200, { url: session.url, priceEur: analysisPrice + FORK_FEE_EUR });
 }
 
 // GET /analyses/{genId}/purchased?session_id=… — the buyer's way in. The session
@@ -1244,6 +2161,12 @@ async function postAnalysisReview(event) {
 
   const index = await store.findPublicationIndex(genId);
   if (!index) return json(404, { error: 'Unknown analysis' });
+  // Same rule as opening one, stated where the review is actually written: the
+  // open path is what makes a review possible, so this is unreachable today,
+  // and it stops a later change to that path from quietly allowing self-review.
+  if (index.userId === profile.userId) {
+    return json(403, { error: 'You cannot review your own analysis' });
+  }
 
   const committed = await store.runTransact(quota.buildReviewTransact({
     table: store.table(), userId: profile.userId, now, genId,
@@ -1279,6 +2202,31 @@ async function postMeRole(event) {
 
 // Post-moderation: publication is automatic, so this is how a bad analysis comes
 // down. Also voids (or claws back) its bounty — bounty.ledger() reads the status.
+async function postAdminReopen(event) {
+  const body = parseBody(event);
+  if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
+  const index = await store.findPublicationIndex(body.genId);
+  const committed = await store.runTransact(quota.buildReopenTransact({
+    table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
+    indexSk: index?.sk,
+  }));
+  // Two conditions can fail: the publication is not taken down, or the analyst
+  // already owes a different generation. Say which, because the second one is
+  // fixed by publishing that other report rather than by retrying this.
+  if (!committed) {
+    const profile = await store.getProfile(body.userId);
+    if (profile?.openObligationId && profile.openObligationId !== body.genId) {
+      return json(409, {
+        error: 'This analyst already has another generation open — it has to be published first',
+        openObligationId: profile.openObligationId,
+      });
+    }
+    return json(409, { error: 'No taken-down publication with that id' });
+  }
+  await store.audit(body.userId, 'publication-reopened', { genId: body.genId, note: String(body.note || '') });
+  return json(200, { ok: true, status: 'generating', genId: body.genId });
+}
+
 async function postAdminTakedown(event) {
   const body = parseBody(event);
   if (!body?.userId || !body?.genId) return json(400, { error: 'userId and genId are required' });
@@ -1299,15 +2247,16 @@ async function postAdminPayout(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
 
-  const [pubs, payouts, sales] = await Promise.all([
+  const [pubs, payouts, sales, reads] = await Promise.all([
     store.listUserItems(body.userId, 'PUB#'),
     store.listUserItems(body.userId, 'PAYOUT#'),
     store.listUserItems(body.userId, 'SALE#'),
+    store.listUserItems(body.userId, 'SUBREAD#'),
   ]);
   const { paidGenIds, paidAmounts } = paidFrom(payouts);
   // Fees and revenue shares settle through the same call and the same PAYOUT#
   // rows; a share's id carries its own SALE# prefix, so the two never collide.
-  const payable = bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts });
+  const payable = bounty.payableItems(pubs, { now, sales, reads, paidGenIds, paidAmounts });
   const requested = Array.isArray(body.ids) ? body.ids
     : (Array.isArray(body.genIds) ? body.genIds : payable.map((p) => p.id));
   const toPay = payable.filter((p) => requested.includes(p.id));
@@ -1341,13 +2290,14 @@ async function getAdminEarnings(event) {
   }
 
   const analysts = await Promise.all(userIds.map(async (userId) => {
-    const [pubs, payouts, sales] = await Promise.all([
+    const [pubs, payouts, sales, reads] = await Promise.all([
       store.listUserItems(userId, 'PUB#'),
       store.listUserItems(userId, 'PAYOUT#'),
       store.listUserItems(userId, 'SALE#'),
+      store.listUserItems(userId, 'SUBREAD#'),
     ]);
     const { paidGenIds, paidAmounts } = paidFrom(payouts);
-    const led = bounty.ledger(pubs, { now, sales, paidGenIds, paidAmounts });
+    const led = bounty.ledger(pubs, { now, sales, reads, paidGenIds, paidAmounts });
     const profile = await store.getProfile(userId);
     return {
       userId,
@@ -1356,11 +2306,12 @@ async function getAdminEarnings(event) {
       published: led.entries.length,
       salesCount: led.totals.salesCount,
       grossSales: led.totals.grossSales,
-      readyToInvoice: Math.round((led.totals.shareEligible + led.totals.eligible) * 100) / 100,
-      held: Math.round((led.totals.sharePending + led.totals.pending) * 100) / 100,
-      paid: Math.round((led.totals.sharePaid + led.totals.paid) * 100) / 100,
-      clawback: Math.round((led.totals.shareClawback + led.totals.clawback) * 100) / 100,
-      payable: bounty.payableItems(pubs, { now, sales, paidGenIds, paidAmounts }),
+      readsCount: led.totals.readsCount,
+      readyToInvoice: Math.round((led.totals.shareEligible + led.totals.eligible + led.totals.readEligible) * 100) / 100,
+      held: Math.round((led.totals.sharePending + led.totals.pending + led.totals.readPending) * 100) / 100,
+      paid: Math.round((led.totals.sharePaid + led.totals.paid + led.totals.readPaid) * 100) / 100,
+      clawback: Math.round((led.totals.shareClawback + led.totals.clawback + led.totals.readClawback) * 100) / 100,
+      payable: bounty.payableItems(pubs, { now, sales, reads, paidGenIds, paidAmounts }),
     };
   }));
 
@@ -1401,6 +2352,7 @@ async function getAdminPublications(event) {
       freeUntil: item.freeUntil || null,
       reviewCount: item.reviewCount || 0,
       peerScore: Math.round(ranking.peerScore(item) * 100) / 100,
+      averageScore: ranking.averageScore(item) === null ? null : Math.round(ranking.averageScore(item) * 100) / 100,
       jobId: pub?.jobId || null,
       promptsText: pub?.promptsText || '',
       takedownReason: pub?.takedownReason || null,
@@ -1449,6 +2401,250 @@ async function postAdminFeature(event) {
   if (!committed) return json(409, { error: 'No published analysis with that id' });
   await store.audit(body.userId, 'analysis-featured', { genId: body.genId, days: Number(body.days) || 14 });
   return json(200, { ok: true, genId: body.genId });
+}
+
+// GET /admin/members/users — every member, for the dashboard's user table.
+// Profile fields plus this month's meters; the detail view is a separate call.
+async function getAdminUsers(event) {
+  const now = requestNow(event);
+  const profiles = await store.listProfiles();
+  const month = quota.monthKey(now);
+  const users = await Promise.all(profiles.map(async (p) => {
+    const userId = String(p.pk || '').replace(/^USER#/, '');
+    const usage = await store.getUsage(userId, month);
+    const limits = withTopUps(limitsFor(p), usage);
+    return {
+      userId,
+      email: p.email || null,
+      name: p.name || null,
+      role: p.role || null,
+      tier: p.tier || 'none',
+      tierStatus: p.tierStatus || null,
+      billingInterval: p.billingInterval || null,
+      coverageCompanyIds: coveredCompanies(p),
+      banned: Boolean(p.banned),
+      createdAt: p.createdAt || null,
+      linkedinUrl: p.linkedinUrl || null,
+      openObligationId: p.openObligationId || null,
+      openReviewId: p.openReviewId || null,
+      usage: {
+        picks: usage?.picks || 0,
+        pickLimit: limits.basePicks,
+        analystReads: usage?.analystReads || 0,
+        analystReadLimit: limits.analystReads,
+        genReserved: Boolean(usage?.genReserved),
+      },
+    };
+  }));
+  users.sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+  return json(200, { count: users.length, users });
+}
+
+// GET /admin/members/users/{userId} — one member, whole: everything in their
+// partition that tells the story. Publications with their reviews, what they
+// read, what they sold and were paid, and the last-90-days audit trail.
+async function getAdminUserDetail(event) {
+  const userId = event.pathParameters?.userId || '';
+  const profile = await store.getProfile(userId);
+  if (!profile) return json(404, { error: 'Unknown user' });
+
+  const [pubs, reads, sales, payouts, topups, entitlements, reviews, audits] = await Promise.all([
+    store.listUserItems(userId, 'PUB#'),
+    store.listUserItems(userId, 'READ#'),
+    store.listUserItems(userId, 'SALE#'),
+    store.listUserItems(userId, 'PAYOUT#'),
+    store.listUserItems(userId, 'TOPUP#'),
+    store.listUserItems(userId, 'ENT#'),
+    store.listUserItems(userId, 'REVIEW#'),
+    store.listUserItems(userId, 'AUDIT#'),
+  ]);
+
+  const publications = await Promise.all(pubs.map(async (pub) => {
+    const genId = String(pub.sk || '').replace(/^PUB#/, '');
+    const order = await ordersStore.get(genId);
+    return {
+      genId,
+      status: pub.status,
+      companyId: pub.companyId || order?.ticker || null,
+      companyName: order?.companyName || null,
+      publishedAt: pub.publishedAt || null,
+      reservedAt: pub.reservedAt || null,
+      priceEur: Number(pub.priceEur) || 0,
+      promptsPublic: quota.promptsArePublic(pub),
+      promptsText: pub.promptsText || '',
+      orderStatus: order?.status || null,
+      revisionsUsed: order?.revisionsUsed || 0,
+      revisionsAllowed: order?.revisionsAllowed || 0,
+      forkedFrom: order?.forkedFrom || null,
+      takedownReason: pub.takedownReason || null,
+      coverage: Boolean(pub.coverage),
+    };
+  }));
+
+  return json(200, {
+    profile: {
+      userId,
+      email: profile.email || null,
+      name: profile.name || null,
+      role: profile.role || null,
+      tier: profile.tier || 'none',
+      tierStatus: profile.tierStatus || null,
+      billingInterval: profile.billingInterval || null,
+      coverageCompanyIds: coveredCompanies(profile),
+      banned: Boolean(profile.banned),
+      createdAt: profile.createdAt || null,
+      linkedinUrl: profile.linkedinUrl || null,
+      stripeCustomerId: profile.stripeCustomerId || null,
+      openObligationId: profile.openObligationId || null,
+      openReviewId: profile.openReviewId || null,
+    },
+    publications,
+    // Reviews RECEIVED on this member's publications — the row lives in the
+    // owner's partition, keyed REVIEW#<genId>#<reviewerId>.
+    reviewsReceived: reviews.map((r) => ({
+      genId: r.genId,
+      reviewerId: r.reviewerId,
+      score: r.score,
+      comment: r.comment || '',
+      reviewedAt: r.reviewedAt || null,
+      voided: Boolean(r.voided),
+      edits: Array.isArray(r.history) ? r.history.length : 0,
+    })),
+    reads: reads.map((r) => ({ genId: String(r.sk || '').replace(/^READ#/, ''), ownerId: r.ownerId || null, openedAt: r.openedAt || null })),
+    sales: sales.map((sl) => ({ genId: sl.genId, companyId: sl.companyId || null, grossEur: Number(sl.grossEur) || 0, soldAt: sl.soldAt || null })),
+    payouts: payouts.map((po) => ({ id: String(po.sk || '').replace(/^PAYOUT#/, ''), amount: Number(po.amount) || 0, kind: po.kind || 'fee', paidAt: po.paidAt || null })),
+    topups: topups.map((t) => ({ kind: t.kind, units: t.units, creditedAt: t.creditedAt, month: t.month })),
+    entitlements: entitlements.map((e) => ({ reportId: String(e.sk || '').replace(/^ENT#/, ''), source: e.source || null, grantedAt: e.grantedAt || null })),
+    // 90-day TTL on audit rows, so this is recent activity, not history.
+    audit: audits.slice(-200).reverse().map((a) => ({ at: String(a.sk || '').slice(6, 30), type: a.type, detail: a.detail || null })),
+  });
+}
+
+// GET /admin/members/stats — what moved, bucketed by company. Derived from the
+// permanent rows (entitlements, reads, sales), never from the audit trail,
+// whose 90-day TTL would silently shrink history. Free-report downloads from
+// the public site are direct CDN links and leave no row anywhere — this counts
+// member activity and purchases, and the dashboard says so.
+async function getAdminStats(event) {
+  const now = requestNow(event);
+  const [items, index] = await Promise.all([
+    store.scanForStats(),
+    store.listPublicationIndex({}),
+  ]);
+  // genId → company for READ# rows, which carry only the genId.
+  const companyOf = new Map(index.map((i) => [i.genId, i.companyId]));
+
+  // Entitlements key on the report id (teslainc-18082026) while everything else
+  // keys on the ticker (TSLA), which split one company into two rows. The
+  // catalog knows both, so it is the join — best effort, because a stats page
+  // that dies when the catalog read hiccups helps nobody, and a report that
+  // has left the catalog falls back to its id's company token.
+  const tickerOf = new Map();
+  try {
+    const { catalog } = await catalogAws.buildCatalogAws({ now });
+    for (const report of catalog.reports) {
+      if (report.id && report.ticker) tickerOf.set(report.id, String(report.ticker).toUpperCase());
+    }
+  } catch (err) {
+    console.warn('stats: catalog join unavailable, falling back to id tokens:', err.message);
+  }
+
+  // A report id starts with the company token: teslainc-18082026 → teslainc.
+  const reportCompany = (reportId) => String(reportId || '').replace(/-\d{8}(-\d+)?$/, '');
+  const entCompany = (reportId) => tickerOf.get(reportId) || reportCompany(reportId);
+
+  const companies = new Map();
+  const bucket = (key) => {
+    const k = key || '(unknown)';
+    if (!companies.has(k)) companies.set(k, { reportOpens: 0, analystReads: 0, subscriberReads: 0, sales: 0, grossEur: 0, published: 0 });
+    return companies.get(k);
+  };
+
+  const totals = { users: 0, entitlements: 0, analystReads: 0, sales: 0, grossEur: 0, publications: 0, topups: 0, payoutsEur: 0 };
+  for (const item of items) {
+    const sk = String(item.sk || '');
+    if (sk === 'PROFILE') totals.users += 1;
+    else if (sk.startsWith('ENT#')) {
+      totals.entitlements += 1;
+      bucket(entCompany(sk.slice(4))).reportOpens += 1;
+    } else if (sk.startsWith('READ#')) {
+      totals.analystReads += 1;
+      bucket(companyOf.get(sk.slice(5))).analystReads += 1;
+    } else if (sk.startsWith('SUBREAD#')) {
+      bucket(item.companyId).subscriberReads += 1;
+    } else if (sk.startsWith('SALE#')) {
+      totals.sales += 1;
+      totals.grossEur += Number(item.grossEur) || 0;
+      const b = bucket(item.companyId);
+      b.sales += 1;
+      b.grossEur += Number(item.grossEur) || 0;
+    } else if (sk.startsWith('PUB#') && item.publishedAt) {
+      totals.publications += 1;
+      bucket(item.companyId).published += 1;
+    } else if (sk.startsWith('TOPUP#')) totals.topups += 1;
+    else if (sk.startsWith('PAYOUT#')) totals.payoutsEur += Number(item.amount) || 0;
+  }
+
+  const byCompany = [...companies.entries()]
+    .map(([companyId, counts]) => ({ companyId, ...counts, grossEur: Math.round(counts.grossEur * 100) / 100 }))
+    .sort((a, b) => (b.reportOpens + b.analystReads + b.sales) - (a.reportOpens + a.analystReads + a.sales));
+
+  totals.grossEur = Math.round(totals.grossEur * 100) / 100;
+  totals.payoutsEur = Math.round(totals.payoutsEur * 100) / 100;
+  return json(200, { now: now.toISOString(), totals, byCompany });
+}
+
+// GET /admin/members/promo-codes — every live promotion code, with what it
+// gives away. This is how AINAILMAINEN2026 stops being a surprise: the codes
+// live in Stripe, the secret key lives here, so the listing has to too.
+async function getAdminPromoCodes() {
+  const res = await stripe().promotionCodes.list({ limit: 100 });
+  const codes = res.data.map((pc) => ({
+    code: pc.code,
+    active: pc.active,
+    percentOff: pc.coupon?.percent_off || null,
+    amountOffEur: pc.coupon?.amount_off ? pc.coupon.amount_off / 100 : null,
+    duration: pc.coupon?.duration || null,
+    timesRedeemed: pc.times_redeemed || 0,
+    maxRedemptions: pc.max_redemptions || null,
+    expiresAt: pc.expires_at ? new Date(pc.expires_at * 1000).toISOString() : null,
+    restrictions: pc.restrictions?.minimum_amount ? `min ${pc.restrictions.minimum_amount / 100} EUR` : null,
+    promoId: pc.id,
+  }));
+  return json(200, { count: codes.length, codes });
+}
+
+// POST /admin/members/promo-deactivate {promoId} — switch one off. Deactivation
+// only: creating codes stays in the Stripe dashboard, where the coupon terms are.
+async function postAdminPromoDeactivate(event) {
+  const body = parseBody(event);
+  if (!body?.promoId) return json(400, { error: 'promoId is required' });
+  const updated = await stripe().promotionCodes.update(String(body.promoId), { active: false });
+  return json(200, { ok: true, code: updated.code, active: updated.active });
+}
+
+// POST /admin/members/void-review {ownerId, genId, reviewerId} — take one
+// review out of the totals. The same transact the coverage rules use: the row
+// stays, flagged, and reviewCount/scoreSum give back exactly what it added.
+async function postAdminVoidReview(event) {
+  const now = requestNow(event);
+  const body = parseBody(event);
+  if (!body?.ownerId || !body?.genId || !body?.reviewerId) {
+    return json(400, { error: 'ownerId, genId and reviewerId are required' });
+  }
+  const review = await store.getItem(`USER#${body.ownerId}`, `REVIEW#${body.genId}#${body.reviewerId}`);
+  if (!review) return json(404, { error: 'No such review' });
+  if (review.voided) return json(409, { error: 'Already voided' });
+  const index = await store.findPublicationIndex(body.genId);
+  if (!index) return json(404, { error: 'Unknown analysis' });
+
+  const committed = await store.runTransact(quota.buildVoidReviewTransact({
+    table: store.table(), ownerId: body.ownerId, reviewerId: body.reviewerId, now,
+    genId: body.genId, indexSk: index.sk, score: Number(review.score) || 0,
+  }));
+  if (!committed) return json(409, { error: 'Could not void — the review changed underneath' });
+  await store.audit(body.reviewerId, 'review-voided-by-admin', { genId: body.genId, score: review.score });
+  return json(200, { ok: true, genId: body.genId, reviewerId: body.reviewerId, scoreRemoved: review.score });
 }
 
 async function postAdminBan(event) {
@@ -1528,6 +2724,8 @@ async function postTestPublication(event) {
     // A store demo needs a spread: a clear leader, an unreviewed one, a weak one.
     reviewCount: Number(body.reviewCount) || 0,
     scoreSum: Number(body.scoreSum) || 0,
+    recommendation: body.recommendation || null,
+    targetPrice: body.targetPrice || null,
     ...(body.freeUntil ? { freeUntil: body.freeUntil } : {}),
   });
   return json(200, { ok: true, genId });
@@ -1562,6 +2760,7 @@ const PUBLIC_ROUTES = {
   'GET /analyses': getAnalyses,
   'GET /analyses/{genId}/free': getAnalysisFree,
   'POST /analyses/{genId}/buy-checkout': postAnalysisBuyCheckout,
+  'POST /analyses/{genId}/fork-checkout': postAnalysisForkCheckout,
   'GET /analyses/{genId}/purchased': getAnalysisPurchased,
   'GET /auth/linkedin/start': getLinkedinStart,
   'GET /auth/linkedin/callback': getLinkedinCallback,
@@ -1574,27 +2773,44 @@ const AUTHED_ROUTES = {
   'GET /me': getMe,
   'GET /me/earnings': getMeEarnings,
   'POST /me/role': postMeRole,
+  'POST /me/linkedin': postMeLinkedin,
   'POST /analyses/{genId}/open': postAnalysisOpen,
   'POST /analyses/{genId}/review': postAnalysisReview,
+  'POST /analyses/{genId}/review/edit': postAnalysisReviewEdit,
+  'GET /reviews/mine': getMyReviews,
   'POST /reports/{id}/open': postReportOpen,
   'POST /generations/free': postGenerationsFree,
   'POST /generations/fresh': postGenerationFresh,
+  'POST /generations/coverage': postGenerationCoverage,
   'GET /generations': listGenerations,
   'GET /generations/{genId}': getGeneration,
   'GET /generations/{genId}/order': getGenerationOrder,
   'POST /generations/{genId}/revisions': postGenerationRevision,
+  'POST /generations/{genId}/edits': postGenerationEdits,
+  'GET /generations/{genId}/preview': getGenerationPreview,
   'POST /generations/{genId}/submit': postGenerationSubmit,
+  'POST /generations/{genId}/price': postGenerationPrice,
+  'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,
+  'POST /generations/{genId}/revisions-checkout': postGenerationRevisionsCheckout,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
+  'POST /billing/topup-checkout': postBillingTopUpCheckout,
 };
 
 const ADMIN_ROUTES = {
   'GET /admin/members/publications': getAdminPublications,
+  'GET /admin/members/users': getAdminUsers,
+  'GET /admin/members/users/{userId}': getAdminUserDetail,
+  'GET /admin/members/stats': getAdminStats,
+  'GET /admin/members/promo-codes': getAdminPromoCodes,
+  'POST /admin/members/promo-deactivate': postAdminPromoDeactivate,
+  'POST /admin/members/void-review': postAdminVoidReview,
   'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,
   'POST /admin/members/role': postAdminRole,
   'POST /admin/members/feature': postAdminFeature,
   'POST /admin/members/takedown': postAdminTakedown,
+  'POST /admin/members/reopen': postAdminReopen,
   'POST /admin/members/payout': postAdminPayout,
   'POST /admin/members/ban': postAdminBan,
 };

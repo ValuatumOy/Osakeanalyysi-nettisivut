@@ -28,11 +28,19 @@ emphasis, assumptions, peer set and valuation method, but cannot invent facts or
 rewrite supplied financial data. Rating is derived arithmetically from the target
 price — "make this a SELL" only lands as an upstream assumption change.
 
-**Consequence for us: we never edit report content.** The published artefact is
-always an engine PDF from a specific `jobId`. That keeps
-[report-fact-provenance](../../.claude/memory) intact and keeps the compliance
-story simple: every published claim is traceable to an engine job and its comment
-chain.
+Since 31.8.2026 the analyst can also **edit the report text by hand** on the
+order page — click a paragraph, change it, save — and the engine renders that
+as a version of its own in seconds (`POST /jobs/{jobId}/edits`, no AI pass).
+Later AI revisions keep hand-edited paragraphs word for word. See
+[text-editing.md](text-editing.md).
+
+**Consequence for us: we never edit report content ourselves.** The published
+artefact is always an engine PDF from a specific `jobId`, whether the text in
+it was written by the AI or typed by the analyst — a hand edit is an engine job
+like any other, with the edited fields and the analyst's name on its change
+memo. That keeps [report-fact-provenance](../../.claude/memory) intact and
+keeps the compliance story simple: every published claim is traceable to an
+engine job and its comment chain.
 
 ## Publication surface — recommendation
 
@@ -159,7 +167,14 @@ Visibility only — it does not decide money (the bounty does). Minimum viable:
 
 Credibility scoring against realised returns (was the call right?) is the
 obvious later step and needs the target price and date per analysis — both
-already on the engine job. Record them now, score later — and see the next
+already on the engine job. **Recorded as of 24.8.2026**: `recommendation` and
+`targetPrice` are written to the `PUB#` row and the `PUBINDEX` row by
+`quota.buildSubmitTransact`, and returned by `GET /analyses`. They come from the
+delivered order, never the request body — same rule as `companyId`, and for the
+same reason: a client-supplied rating could publish a call the report does not
+support. Null on anything published before this, so every consumer handles null.
+The engine has to send them for them to be non-null; `engine-client.getJob` now
+passes `recommendation`/`targetPrice` through instead of dropping them. Score later — and see the next
 section, because Valuatum already built that scoring once.
 
 ## What the 2004 freelance system already solved

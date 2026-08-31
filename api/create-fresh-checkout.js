@@ -7,7 +7,7 @@ const REPORT_REVISIONS_INCLUDED = Number.parseInt(process.env.REPORT_REVISIONS_I
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { company, ticker, exchange, email, purpose, source, withRevisions } = req.body;
+  const { company, ticker, exchange, email, purpose, source, withRevisions, returnTo } = req.body;
   if (!company) return res.status(400).json({ error: 'Company name required' });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -33,7 +33,11 @@ module.exports = async (req, res) => {
         revisionsAllowed: revisions ? String(REPORT_REVISIONS_INCLUDED) : '0',
       },
       success_url: `${process.env.SITE_URL}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}&type=fresh`,
-      cancel_url: `${process.env.SITE_URL}/reports.html#order-fresh`,
+      // Abandoning the checkout returns to the page the order was started from —
+      // a company page otherwise dropped its buyer on the catalog, which is the
+      // one place their company is hardest to find again. Path only, from our
+      // own site: the client cannot name another host.
+      cancel_url: `${process.env.SITE_URL}${cancelPath(returnTo)}`,
     });
 
     res.json({ url: session.url });
@@ -42,6 +46,16 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: 'Checkout failed' });
   }
 };
+
+// A same-site path, or the catalog. Anything with a scheme, a host or a
+// traversal is refused rather than sanitised.
+function cancelPath(requested) {
+  const raw = String(requested || '');
+  if (!/^\/[A-Za-z0-9\-._~/]*(?:#[A-Za-z0-9\-._~]*)?$/.test(raw) || raw.includes('//') || raw.includes('..')) {
+    return '/reports.html#order-fresh';
+  }
+  return raw;
+}
 
 function freshReportLineItem(company, ticker, pricing, revisions) {
   if (pricing.priceId) {

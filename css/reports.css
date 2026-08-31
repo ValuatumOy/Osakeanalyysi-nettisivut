@@ -555,6 +555,7 @@
   font: inherit;
 }
 textarea.coverage-input { min-height: 96px; resize: vertical; }
+textarea.coverage-companies { min-height: 148px; font-variant-numeric: tabular-nums; }
 .coverage-input::placeholder { color: rgba(255,255,255,0.42); }
 .coverage-input:focus { outline: none; border-color: var(--green-light); box-shadow: 0 0 0 4px rgba(61,158,114,0.16); }
 .coverage-note { font-size: var(--text-xs); line-height: 1.6; color: rgba(255,255,255,0.52); margin: 0.75rem 0 0; }

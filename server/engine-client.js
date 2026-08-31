@@ -122,11 +122,15 @@ async function submitRevision({
   username = USERNAME,
   comments,
   scope = 'estimates',
+  analystName,
 } = {}) {
   if (!parentJobId) throw new Error('submitRevision: parentJobId is required');
   if (!comments) throw new Error('submitRevision: comments is required');
 
-  const body = JSON.stringify({ username, comments, scope });
+  // `username` is the engine's ownership key (it 403s on a mismatch and the
+  // jobs index is built on it), so the analyst travels as a separate
+  // display-only field that the engine prints on the cover.
+  const body = JSON.stringify({ username, comments, scope, ...(analystName ? { analystName } : {}) });
 
   const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
   let res;
@@ -147,8 +151,66 @@ async function submitRevision({
   return { jobId: data.jobId };
 }
 
+// POST /jobs/{jobId}/edits — a customer's hand edits to a DONE job's text, as
+// a new version. `edits` is `{ pointer: text }` for only the fields they
+// touched (an empty string deletes that paragraph); the engine applies them to
+// the report's data and re-renders in seconds with no AI pass, so a later
+// revision chains off the edited version and keeps the edited text word for
+// word. Returns { jobId } for the new (child) job, same shape as submitJob.
+async function submitEdit({
+  parentJobId,
+  username = USERNAME,
+  edits,
+  editedBy,
+} = {}) {
+  if (!parentJobId) throw new Error('submitEdit: parentJobId is required');
+  if (!edits || typeof edits !== 'object' || !Object.keys(edits).length) {
+    throw new Error('submitEdit: edits is required');
+  }
+
+  const body = JSON.stringify({ username, edits, ...(editedBy ? { editedBy } : {}) });
+
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(parentJobId)}/edits`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body,
+      signal,
+    });
+  } finally {
+    cancel();
+  }
+  const data = await readJson(res);
+
+  if (!res.ok) {
+    const err = new Error(`engine submitEdit ${describeError(res, data)}`);
+    // 409 means the parent has no saved data to edit (rendered before the
+    // engine kept it, or not an osakeanalyysi report); callers turn that into
+    // a clear message instead of a retry.
+    err.status = res.status;
+    throw err;
+  }
+  if (!data.jobId) throw new Error('engine submitEdit: response had no jobId');
+  return { jobId: data.jobId };
+}
+
 // GET /jobs/{jobId} — job status. status is PENDING | RUNNING | DONE | FAILED
 // (NOT_FOUND is synthesised for a 404). On DONE the response carries s3Url.
+const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
+
+/** Only the three the engine issues; anything else is treated as absent rather than shown. */
+function normaliseRecommendation(value) {
+  const v = String(value || '').trim().toUpperCase();
+  return RECOMMENDATIONS.has(v) ? v : null;
+}
+
+function cleanStr(value) {
+  const v = String(value ?? '').trim();
+  return v ? v.slice(0, 40) : null;
+}
+
 async function getJob(jobId) {
   if (!jobId) throw new Error('getJob: jobId is required');
 
@@ -164,6 +226,10 @@ async function getJob(jobId) {
   const data = await readJson(res);
   if (!res.ok) throw new Error(`engine getJob ${describeError(res, data)}`);
 
+  // The headline is the engine's own output, so it is taken from the job rather than read
+  // back out of the PDF. Undefined when the engine does not send it -- every consumer
+  // treats it as optional, so this costs nothing until the engine surfaces it.
+  const headline = data.headline || {};
   return {
     jobId: data.jobId || jobId,
     status: data.status,
@@ -172,7 +238,39 @@ async function getJob(jobId) {
     changesUrl: data.changesUrl,
     error: data.error,
     completedAt: data.completedAt,
+    recommendation: normaliseRecommendation(data.recommendation ?? headline.recommendation),
+    targetPrice: cleanStr(data.targetPrice ?? headline.targetPrice),
+    currentPrice: cleanStr(data.currentPrice ?? headline.currentPrice),
+    // Editing support. previewUrl is the engine's self-contained HTML of the
+    // rendered report (the document the text editor shows); authorship says
+    // whether the text is the AI's, a person's (an edit job) or both (an AI
+    // revision of an edited version). fit is the renderer's page-fit report;
+    // editWarnings/editedBy are set on edit jobs only. All optional -- an
+    // engine that does not send them leaves them undefined.
+    revisionScope: data.revisionScope,
+    previewUrl: data.previewUrl,
+    authorship: data.authorship,
+    editedBy: data.editedBy,
+    fit: data.fit,
+    editWarnings: data.editWarnings,
   };
+}
+
+// Fetch the rendered report as HTML from its presigned previewUrl (no signing
+// needed). The text editor loads this into a sandboxed iframe; the fetch is
+// done server-side so the browser never needs cross-origin access to the
+// engine's bucket and the presigned URL never leaves the server.
+async function fetchPreviewHtml(previewUrl) {
+  if (!previewUrl) throw new Error('fetchPreviewHtml: previewUrl is required');
+  const { signal, cancel } = withTimeout(DOWNLOAD_TIMEOUT_MS);
+  let res;
+  try {
+    res = await fetch(previewUrl, { signal });
+  } finally {
+    cancel();
+  }
+  if (!res.ok) throw new Error(`engine fetchPreviewHtml ${res.status}: ${res.statusText}`);
+  return res.text();
 }
 
 // Download the finished PDF from its presigned S3 URL (no signing needed).
@@ -206,4 +304,4 @@ async function fetchChangeMemo(changesUrl) {
   return res.json();
 }
 
-module.exports = { submitJob, submitRevision, getJob, downloadPdf, fetchChangeMemo };
+module.exports = { submitJob, submitRevision, submitEdit, getJob, downloadPdf, fetchChangeMemo, fetchPreviewHtml };

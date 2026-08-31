@@ -13,6 +13,13 @@
 // shape as RENDERING. A ready-report "+ Revisions" order starts life already
 // DELIVERED — there is nothing to generate, only to revise later.
 //
+// A customer's hand edits to the report text take the same DELIVERED ⇄ REVISING
+// trip: POST /edits claims the order and stashes `{ pointer: text }`, the
+// worker submits it to the engine's edit endpoint (no AI pass, a re-render in
+// seconds) and delivers the result as a version of its own, labelled as
+// written by the customer rather than the AI. Edits are free and unlimited,
+// so they never touch the revision allowance.
+//
 // It runs inside the always-on Express process (started from index.js). Because
 // a fresh FMP import can block up to ~5 minutes and rendering is polled across
 // ticks, a run in progress blocks the next tick from re-entering (single-flight).
@@ -270,8 +277,14 @@ async function deliver(order, job) {
   // DELIVERED removes the order from listPending so it is never re-processed.
   // originalPdfFileName is stamped once here and never overwritten by a later
   // revision, so the original PDF stays downloadable after pdfFileName moves on.
+  // originalJobId likewise: version 1's engine job, which jobId stops being
+  // after the first revision or edit. hasPreview records whether the engine
+  // produced the editable HTML for this job, so the order page knows whether
+  // to offer text editing without asking the engine on every load.
   await orders.update(order.id, {
     status: orders.STATUS.DELIVERED, pdfFileName, originalPdfFileName: pdfFileName, error: null,
+    originalJobId: order.originalJobId || order.jobId,
+    hasPreview: Boolean(job.previewUrl),
   });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
 
@@ -293,10 +306,16 @@ async function deliver(order, job) {
 // requested scenario). Always hidden — a forecast revision reflects one
 // customer's scenario, never the analyst's base case, so it never enters
 // resale or free rotation. Bumps revisionsUsed and goes back to DELIVERED.
+//
+// The same function delivers a finished hand edit (order.activeEdit set): the
+// file handling is identical, but the history entry says the customer wrote
+// the text, no email goes out (they did it themselves and are watching the
+// page), and the revision allowance is untouched.
 async function deliverRevision(order, job) {
   if (!pdfStore) {
     throw new Error('REPORT_PDF_BUCKET is not set — cannot publish the revised PDF');
   }
+  const edit = order.activeEdit || null;
 
   const pdf = await engine.downloadPdf(job.s3Url);
 
@@ -310,7 +329,7 @@ async function deliverRevision(order, job) {
   const companyLabel = order.companyName || order.ticker || 'Report';
   // Suffixed with the order id so a revised copy can never collide with (or
   // be mistaken for) the shared catalog file it started from.
-  const fileBase = `${companyToken(companyLabel)}_${dateToken}_rev-${order.id.slice(-8)}`;
+  const fileBase = `${companyToken(companyLabel)}_${dateToken}_${edit ? 'edit' : 'rev'}-${order.id.slice(-8)}`;
   const pdfFileName = await claimPdfFileName(fileBase, pdf);
 
   // Best-effort: the engine itself treats the change memo as best-effort (it
@@ -330,18 +349,25 @@ async function deliverRevision(order, job) {
     companyName: companyLabel,
     ticker: order.ticker || '',
     reportDate: reportDateIso,
-    description: `Revised report for ${companyLabel}, generated ${reportDateIso}.`,
-    tags: ['AI Equity Report', 'PDF', 'Report revision'],
+    description: edit
+      ? `Hand-edited report for ${companyLabel}, generated ${reportDateIso}.`
+      : `Revised report for ${companyLabel}, generated ${reportDateIso}.`,
+    tags: ['AI Equity Report', 'PDF', edit ? 'Hand-edited report' : 'Report revision'],
     hidden: true,
     publicationStatus: 'hidden',
     accessStatus: 'paid',
     excludeFromFree: true,
-    provenance: { sessionId: order.id, jobId: job.jobId, revisionOf: order.jobId },
+    provenance: {
+      sessionId: order.id, jobId: job.jobId, revisionOf: order.jobId,
+      ...(edit ? { editedBy: edit.editedBy || null } : {}),
+    },
   });
 
   const pdfUrl = `${PDF_BASE_URL}/${encodeURIComponent(pdfFileName)}`;
 
-  if (!order.email) {
+  if (edit) {
+    // No email for an edit: it took seconds and the customer is on the page.
+  } else if (!order.email) {
     console.warn('reconciler: delivered revision but order has no email', { id: order.id, pdfFileName });
   } else {
     await email.sendReportRevisedEmail(order.email, {
@@ -355,28 +381,58 @@ async function deliverRevision(order, job) {
 
   // v1 is the original delivery (handled by deliver(), never appended here),
   // so the first entry through this function is v2.
+  //
+  // `kind` and `authorship` are what the order page labels a version by:
+  // a `revision` is the AI's work from the customer's instructions (authorship
+  // `ai`, or `mixed` when it kept hand-edited paragraphs from an earlier
+  // version); an `edit` is the customer's own text (authorship `analyst`, the
+  // engine's word for a person). An edit entry also keeps the edited fields
+  // with their previous text so the page can show what changed side by side.
   const revisionEntry = {
     version: (order.revisionHistory?.length || 0) + 2,
     jobId: job.jobId,
-    comments: order.activeRevisionComment || '',
+    kind: edit ? 'edit' : 'revision',
+    authorship: job.authorship || (edit ? 'analyst' : 'ai'),
+    comments: edit ? '' : (order.activeRevisionComment || ''),
     pdfFileName,
     completedAt: job.completedAt || new Date().toISOString(),
     changes,
+    ...(job.fit ? { fit: job.fit } : {}),
+    ...(edit ? {
+      editedBy: edit.editedBy || '',
+      editedFrom: edit.fromVersion || (order.revisionHistory?.length || 0) + 1,
+      edits: Object.entries(edit.edits || {}).map(([pointer, after]) => ({
+        pointer,
+        before: Object.prototype.hasOwnProperty.call(edit.originals || {}, pointer) ? edit.originals[pointer] : null,
+        after,
+      })),
+      ...(job.editWarnings ? { editWarnings: job.editWarnings } : {}),
+    } : {}),
   };
 
   await orders.update(order.id, {
     status: orders.STATUS.DELIVERED,
     pdfFileName,
     jobId: job.jobId,
+    hasPreview: Boolean(job.previewUrl),
+    // Recorded per delivery so a revision's new rating replaces the old one, and so a
+    // published analysis can carry the rating it was published with.
+    ...(job.recommendation ? { recommendation: job.recommendation } : {}),
+    ...(job.targetPrice ? { targetPrice: job.targetPrice } : {}),
     revisionJobId: null,
-    revisionsUsed: (order.revisionsUsed || 0) + 1,
+    // An edit is free: it counts itself, never the paid allowance.
+    ...(edit
+      ? { editsUsed: (order.editsUsed || 0) + 1 }
+      : { revisionsUsed: (order.revisionsUsed || 0) + 1 }),
     pendingRevisionComment: null,
     activeRevisionComment: null,
+    pendingEdit: null,
+    activeEdit: null,
     revisionError: null,
     error: null,
     revisionHistory: [...(order.revisionHistory || []), revisionEntry],
   });
-  console.log('reconciler: revision delivered', { id: order.id, pdfFileName });
+  console.log(edit ? 'reconciler: edit delivered' : 'reconciler: revision delivered', { id: order.id, pdfFileName });
 }
 
 // A revision that hard-fails is NOT terminal for the order and does not cost
@@ -390,6 +446,8 @@ async function failRevision(order, reason) {
     revisionJobId: null,
     pendingRevisionComment: null,
     activeRevisionComment: null,
+    pendingEdit: null,
+    activeEdit: null,
     revisionError: reason,
     revisionAttempts: (order.revisionAttempts || 0) + 1,
   });
@@ -476,6 +534,36 @@ async function advance(order) {
   }
 
   if (order.status === orders.STATUS.REVISING) {
+    // A customer's POST /edits claimed the order and stashed their edited
+    // text; submit it to the engine's edit endpoint before polling. Same
+    // bookkeeping as a comment revision below: order.jobId stays the base,
+    // revisionJobId tracks the attempt. A 409 from the engine is terminal for
+    // this edit (the base has no saved data to edit), not a transient error.
+    if (order.pendingEdit) {
+      if (!order.jobId) return failRevision(order, 'order is REVISING but has no base jobId to edit');
+
+      const edit = order.pendingEdit;
+      let revisionJobId;
+      try {
+        ({ jobId: revisionJobId } = await engine.submitEdit({
+          parentJobId: order.jobId,
+          edits: edit.edits,
+          editedBy: edit.editedBy || order.analystName || undefined,
+        }));
+      } catch (err) {
+        if (err.status === 409) {
+          return failRevision(order, 'This report was generated before text editing was supported, so it cannot be edited. '
+            + 'Request a revision or generate a new report instead.');
+        }
+        throw err;
+      }
+      await orders.update(order.id, {
+        revisionJobId, pendingEdit: null, activeEdit: edit, polls: 0, error: null,
+      });
+      order = { ...order, revisionJobId, pendingEdit: null, activeEdit: edit, polls: 0 };
+      if (POLL_WINDOW_MS <= 0) return;
+    }
+
     // A customer's POST /revisions claimed the order (DELIVERED -> REVISING)
     // and stashed their comment; this is the first tick to see it, so submit
     // it to the engine before polling. order.jobId is the last *delivered*
@@ -488,6 +576,9 @@ async function advance(order) {
       const { jobId: revisionJobId } = await engine.submitRevision({
         parentJobId: order.jobId,
         comments,
+        // Only a member generation carries a name: a revised report says who
+        // steered it, an unrevised or shop report stays engine-only.
+        analystName: order.analystName || undefined,
       });
       await orders.update(order.id, {
         revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0, error: null,

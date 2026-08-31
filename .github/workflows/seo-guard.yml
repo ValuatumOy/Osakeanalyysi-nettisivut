@@ -1,0 +1,86 @@
+name: SEO guard
+
+# Blocks a change that lets the machine-readable files drift away from the pages.
+#
+# This is the guard llms.txt never had. It was hand-maintained and ended up telling AI
+# systems to BUY Kesko while the page said SELL, with three inverted ratings and a link to a
+# slug that did not exist -- on a site that publishes investment ratings. Every file the SEO
+# scripts generate is derived from the pages, so "did anyone regenerate it?" is answerable,
+# and this answers it on every PR.
+#
+# Each script has a --check mode that rebuilds in memory and exits 1 on a difference,
+# printing the command that fixes it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reports/**'
+      - 'companies/**'
+      - 'compare/**'
+      - 'blog/**'
+      - '*.html'
+      - 'llms.txt'
+      - 'pricing.md'
+      - 'sitemap.xml'
+      - 'scripts/**'
+  pull_request:
+    paths:
+      - 'reports/**'
+      - 'companies/**'
+      - 'compare/**'
+      - 'blog/**'
+      - '*.html'
+      - 'llms.txt'
+      - 'pricing.md'
+      - 'sitemap.xml'
+      - 'scripts/**'
+  workflow_dispatch:
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # build-page-freshness reads each file's last commit date.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Titles, company index, llms.txt, pricing.md, freshness, JSON-LD
+        run: |
+          node scripts/retitle-report-pages.mjs --check
+          node scripts/redescribe-report-pages.mjs --check
+          node scripts/build-company-index.mjs --check
+          node scripts/build-llms-txt.mjs --check
+          node scripts/build-pricing-md.mjs --check
+          node scripts/build-page-freshness.mjs --check
+          node scripts/retire-report-store.mjs --check
+          node scripts/add-analyst-section.mjs --check
+          node scripts/validate-jsonld.mjs
+
+      # Rendering needs Chrome, so this one only asserts the files are present and that the
+      # default card is no longer the logo strip. Regenerate locally with `npm run seo:og`.
+      - name: Open Graph cards present
+        run: node scripts/build-og-images.mjs --check
+
+      - name: Every og:image and sitemap URL resolves to a file
+        run: |
+          node -e '
+            const fs = require("fs");
+            let bad = 0;
+            for (const f of fs.readdirSync("reports").filter(x => x.endsWith(".html"))) {
+              const s = fs.readFileSync("reports/" + f, "utf8");
+              const m = (s.match(/og:image" content="https:\/\/www\.aiequityreports\.com(\/[^"]*)"/) || [])[1];
+              if (m && !fs.existsSync("." + m)) { console.error("missing og:image", m, "on", f); bad++; }
+            }
+            const xml = fs.readFileSync("sitemap.xml", "utf8");
+            for (const loc of xml.match(/<loc>([^<]+)<\/loc>/g) || []) {
+              const p = loc.replace(/<\/?loc>/g, "").replace("https://www.aiequityreports.com", "");
+              if (p && p !== "/" && !fs.existsSync("." + p)) { console.error("sitemap URL has no file:", p); bad++; }
+            }
+            if (bad) { console.error(bad + " broken reference(s)"); process.exit(1); }
+            console.log("og:image and sitemap references all resolve");
+          '

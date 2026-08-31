@@ -1,0 +1,852 @@
+{
+  "id": "storaensooyj-24082026",
+  "slug": "stora-enso-equity-report",
+  "companyName": "Stora Enso Oyj",
+  "ticker": "STERV.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Packaging & Containers",
+  "currency": "EUR",
+  "reportDate": "2026-08-24",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "9.82 EUR",
+    "targetPrice": "9.50 EUR",
+    "impliedUpside": "-3.3%",
+    "marketCap": "EUR 7.7 bn",
+    "enterpriseValue": "EUR 11.4 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "34.0x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "8.0x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "0.1%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "2.4%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "EUR 10.7 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "12.26 EUR",
+    "week52Low": "8.50 EUR",
+    "oneYearChange": "-6.0%",
+    "threeYearChange": "-10.6%"
+  },
+  "summary": [
+    "Stora Enso Oyj (STERV.HE, NASDAQ Helsinki) produces consumer board, containerboard, corrugated packaging, market pulp, biomaterials, sawn wood and engineered-wood solutions, while owning substantial Swedish forest assets and a 41% interest in Tornator. The HOLD rating carries a 12-month target price of 9.50 EUR against a current price of 9.82 EUR, implying -3.3% downside. Market capitalisation is EUR 7.7 bn and enterprise value is EUR 11.4 bn. The investment case is balanced between EUR 8.5 bn of reported forest fair value and depressed industrial returns, with 2026 free cash flow to firm forecast at only EUR 6m in this Valuatum equity research report dated 24 August 2026."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Forest value backing",
+      "metric": "EUR 8.5bn",
+      "text": "Reported forest fair value of EUR 8.5 bn and an arm's-length EUR 900m Swedish forest transaction provide observable asset evidence. The valuation applies a 30.4% discount, leaving EUR 5.9 bn in the target SOTP for Forest Assets. Debt allocation, tax leakage and distribution terms prevent the appraisal from supporting a stronger rating today."
+    },
+    {
+      "num": "02",
+      "title": "Oulu rerating gate",
+      "metric": "750kt",
+      "text": "Oulu BM6 is designed for 750,000 tonnes annually and approximately EUR 800m of full-capacity sales, implying EUR 1,067 per tonne. Consumer Packaging must reach an 8.0% comparable EBIT margin on approximately EUR 4.2 bn of 2028 sales; qualification, product mix and price discipline matter more than nameplate capacity."
+    },
+    {
+      "num": "03",
+      "title": "Cash conversion constraint",
+      "metric": "EUR 6m",
+      "text": "Maintained forecasts produce only EUR 6m of 2026 free cash flow to firm while net debt rises to EUR 3.7 bn. The model then requires operating recovery and capital discipline to reduce leverage. Near-zero cash generation leaves limited tolerance for Oulu maintenance, pulp weakness or another industrial setback."
+    }
+  ],
+  "thesisBreaker": "The thesis breaks if Oulu remains structurally below 6% margin while forest demerger terms create material debt, tax or distribution leakage, removing both industrial recovery and asset backing from the valuation.",
+  "valuePools": [
+    {
+      "name": "Forest Assets",
+      "share": "50.0% · EUR 5,680m",
+      "economics": "Revenue EUR 788m (8.4%) · Comparable EBIT EUR 133m (25.2%) · EV EUR 5,680m (50.0%)",
+      "text": "Forest Assets are the largest value pool despite contributing only EUR 788m of modelled revenue, or 8.4% of group revenue, and EUR 133m of comparable EBIT, or 25.2% of group comparable EBIT. The EUR 5,680m current EV allocation rests on EUR 8.5 bn of reported fair value, including Stora Enso's 41% interest in Tornator, rather than on industrial earnings. A 30.4% discount produces EUR 5.92 bn of target SOTP value, equivalent to approximately 70% of appraisal value. More than 1.2m hectares are planned for Bergslagets Skogar, with about 3.5m cubic metres of sustainable annual harvest, but protected acreage, mixed ownership, an 18-year wood-supply agreement and unknown debt and tax terms constrain distributability. The EUR 900m transaction for 175,000 hectares supports a market, not a guaranteed shareholder outcome."
+    },
+    {
+      "name": "Consumer Packaging",
+      "share": "21.0% · EUR 2,385m",
+      "economics": "Revenue EUR 3,510m (37.6%) · Comparable EBIT EUR 129m (24.4%) · EV EUR 2,385m (21.0%)",
+      "text": "Consumer Packaging generates EUR 3,510m of external revenue, or 37.6% of group revenue, and EUR 129m of comparable EBIT, or 24.4% of group comparable EBIT. Its EUR 2,385m current EV allocation is below the industrial scale implied by sales because FY2025 comparable EBIT margin was only 3.5% of total segment sales. Oulu BM6 is the rerating lever: 750,000 tonnes of design capacity and approximately EUR 800m of annual sales imply EUR 1,067 per tonne. The target values EUR 312.5m of 2028 normalised EBITDA at 8.0x, or EUR 2.5 bn, assuming approximately EUR 4.2 bn of sales and an 8.0% margin. FSSC 22000 certification supports food applications, while qualification, off-specification output, European utilisation and pricing near EUR 1,067 per tonne remain the commercial tests."
+    },
+    {
+      "name": "Biomaterials",
+      "share": "12.0% · EUR 1,363m",
+      "economics": "Revenue EUR 1,233m (13.2%) · Comparable EBIT EUR 185m (35.0%) · EV EUR 1,363m (12.0%)",
+      "text": "Biomaterials earns EUR 185m of comparable EBIT, or 35.0% of group comparable EBIT, from EUR 1,233m of external revenue, or 13.2% of group revenue. The EUR 1,363m current EV allocation reflects a profitable pulp and bio-based materials portfolio rather than Lignode, which is valued separately as an option. The target applies 7.0x to EUR 200m of normalised EBITDA, producing EUR 1.4 bn. Skutskär's EUR 19m investment raises fluff capacity to 440,000 tonnes annually, while the 100,000-tonne softwood line closes in Q3 2026. The mix shift can support a 13% comparable EBIT margin by 2028, but Suzano's 19% market-pulp share, BRL 843 per tonne cash cost and new capacity keep delivered cost and Chinese demand as the decisive variables."
+    },
+    {
+      "name": "Integrated Packaging",
+      "share": "8.0% · EUR 909m",
+      "economics": "Revenue EUR 2,274m (24.4%) · Comparable EBIT EUR 74m (14.0%) · EV EUR 909m (8.0%)",
+      "text": "Integrated Packaging contributes EUR 2,274m of external revenue, or 24.4% of group revenue, and EUR 74m of comparable EBIT, or 14.0% of group comparable EBIT. The EUR 909m current EV allocation reflects a 3.1% comparable EBIT margin on EUR 2.4 bn of total segment sales. The target uses EUR 128.6m of normalised EBITDA at 7.0x, generating EUR 900m, and assumes sales of approximately EUR 2.5 bn with a 6.0% EBIT margin by 2028. De Lier capacity rises 20% in 2026, but fixed-cost absorption depends on contracted regional demand. European corrugated spreads, recovered fibre, energy, logistics and converter utilisation determine whether the division can add roughly EUR 76m of EBIT without volume-led discounting. PPWR supports fibre demand but provides no separate valuation premium."
+    },
+    {
+      "name": "Wood Products",
+      "share": "7.0% · EUR 795m",
+      "economics": "Revenue EUR 1,522m (16.3%) · Modelled comparable EBIT EUR 5m (0.9%) · EV EUR 795m (7.0%)",
+      "text": "Wood Products has modelled revenue of EUR 1,522m, or 16.3% of group revenue, and modelled comparable EBIT of EUR 5m, or 0.9% of group comparable EBIT. The figures are proxies because standalone reporting ceased on 1 January 2026: EUR 1.5 bn of FY2024 sales was used as the revenue basis and EUR 5m of Other's comparable EBIT was assigned to the pool. The target applies 8.0x to EUR 87.5m of normalised EBITDA, producing EUR 700m, below the EUR 795m current EV allocation. Stora Enso remains Europe's second-largest sawn-wood producer at 4.0m cubic metres of annual capacity, but sawlog prices of EUR 88 per cubic metre for pine and EUR 104 per cubic metre for spruce expose the pool to cyclical margin compression. Central European strategic-review outcomes are material."
+    },
+    {
+      "name": "Lignode Battery-Anode Optionality",
+      "share": "2.0% · EUR 227m",
+      "economics": "Revenue not separately reported (0.0%) · Comparable EBIT not separately reported (—) · EV EUR 227m (2.0%)",
+      "text": "Lignode Battery-Anode Optionality has no separately reported revenue or comparable EBIT and is not valued as a current operating segment. The EUR 227m current EV allocation is an option on tier-one cell qualification, commercial FID, manufacturing yield and supply contracts. Failure leaves zero commercial value beyond existing pilot assets; the target bridge assigns about EUR 154m through probability-weighted 2030 success legs. The EUR 10m Sunila pilot and a 20Ah, 3V sodium-ion prototype demonstrate technical progress, but the June 2026 withdrawal of Lignode One from the EU Innovation Fund process keeps the economics conditional."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how Oulu execution, packaging and pulp earnings, forest-value crystallisation, Lignode success and net debt interact in the group valuation. The primary swing factor is not the headline revenue market but the conversion of forest appraisal value into distributable value while industrial margins recover. The bridge uses the scenario table's implied group EV/EBITDA multiples, so the multiple is an output of each case rather than an independently selected assumption.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "10,277",
+          "EBITDA": "1,862",
+          "Margin": "18.1%",
+          "Multiple": "6.2x",
+          "EV": "11,471",
+          "Equity": "7,859"
+        },
+        "impliedValueOrUpside": "9.97 EUR / sh · +1.5%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "9,679",
+          "EBITDA": "1,471",
+          "Margin": "15.2%",
+          "Multiple": "7.6x",
+          "EV": "11,113",
+          "Equity": "7,500"
+        },
+        "impliedValueOrUpside": "9.51 EUR / sh · -3.1%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "9,200",
+          "EBITDA": "1,104",
+          "Margin": "12.0%",
+          "Multiple": "9.9x",
+          "EV": "10,958",
+          "Equity": "7,346"
+        },
+        "impliedValueOrUpside": "9.31 EUR / sh · -5.1%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Stora Enso's economic value is concentrated in assets and normalised earnings rather than proportional to group revenue. Forest Assets represent 50.0% of current EV at EUR 5,680m, although modelled revenue is EUR 788m and comparable EBIT is EUR 133m. The EUR 8.5 bn reported forest fair value, more than 1.2m hectares earmarked for Bergslagets Skogar and approximately 3.5m cubic metres of sustainable annual harvest provide asset backing, but the 30.4% discount recognises taxes, protection, liquidity, minority interests, debt allocation and an 18-year wood-supply commitment. Consumer Packaging supplies 37.6% of revenue but 21.0% of EV, with Oulu requiring 750,000 tonnes of qualified saleable capacity and approximately EUR 800m of annual sales. Biomaterials generates 35.0% of comparable EBIT from 13.2% of revenue, making pulp cost and fluff qualification more important than broad biomaterials market forecasts. Integrated Packaging and Wood Products together add 31.0% of revenue but only 15.0% of EV because their current margins are 3.1% and modelled near breakeven. Lignode is only a 2.0% EV option with no current revenue or profit. The value creation question is therefore whether forest appraisal becomes distributable while Oulu and pulp operations earn through-cycle cash returns."
+    },
+    {
+      "heading": "Bridge from current earnings to quoted EV",
+      "text": "The bridge applies normalised EBITDA methods to the industrial pools and a discounted asset method to forests. Consumer Packaging uses EUR 312.5m of 2028E EBITDA at 8.0x, Integrated Packaging uses EUR 128.6m at 7.0x, Biomaterials uses EUR 200m at 7.0x, and Wood Products uses EUR 87.5m at 8.0x. Forest Assets use EUR 592.4m of asset-equivalent normalised EBITDA at 10.0x, matching EUR 5.92 bn after the 30.4% haircut to EUR 8.5 bn of fair value. Lignode contributes probability-weighted value of about EUR 154m from 35% base-success and 9% upside-success probabilities, each valued at 9.0x and discounted from 2030. Net debt of EUR 3.7 bn and the locked EUR -105m adjustment convert enterprise value into equity. Separately, the reverse test says the EUR 9.82 price requires only 4.0% EBIT margin in 2026 and 3.1% in 2027, against maintained forecasts of 6.8% and 8.7%, before reaching 11.2% by 2034. Applying 8.01x to 2026 EBITDA supports EUR 9,072m of EV, leaving much of the quoted EUR 11.4 bn EV dependent on future margin recovery, forest terms and deleveraging rather than current cash conversion."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome is 9.31 EUR per share, or -5.1%, if Oulu remains inefficient, corrugated spreads weaken, pulp prices fall, forest separation leakage increases and Lignode fails to commercialise. The base outcome is 9.51 EUR per share, or -3.1%, if Oulu qualifications progress, Biomaterials protects its mix, Integrated Packaging recovers modestly and the forest discount remains material. The bull outcome is 9.97 EUR per share, or +1.5%, requiring design-rate Oulu economics, normalised packaging spreads, successful fluff conversion, preserved forest appraisal value and lower net debt. Early evidence comes from qualified saleable tonnes rather than gross Oulu production, Skutskär margin above 10%, containerboard and corrugated spreads, and the November 2026 Capital Markets Day's debt, tax and distribution terms. The central debate is whether forest value can become distributable before industrial cash generation and Oulu execution have repaired the balance sheet, or whether the forest asset merely offsets prolonged low-return manufacturing. The balance of evidence supports HOLD: asset backing limits downside, but EUR 6m of 2026 free cash flow and unresolved demerger mechanics do not support a directional upgrade."
+    }
+  ],
+  "risks": [
+    "Oulu qualification or yield delays (Consumer Packaging): low saleable output keeps fixed costs and discounting high, with margin remaining below 6% after the shutdown as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Forest demerger value leakage (Forest Assets): debt, tax or protection terms reduce distributable NAV, with net debt allocation exceeding expectations as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Capital expenditure crowds out deleveraging (Biomaterials): weak cash conversion keeps leverage above target, with free cash flow to firm remaining near zero through 2027 as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Pulp capacity outruns Chinese demand (Biomaterials): prices fall towards high-cost delivered supply, with segment margin falling below 10% as the early warning - HIGH impact and manageable.",
+    "European corrugated spread compression (Integrated Packaging): recovered fibre and energy costs rise before box prices, with sequential EBIT decline on stable volumes as the early warning - MEDIUM impact and manageable."
+  ],
+  "catalysts": [
+    "Q3 maintenance and Oulu efficiency installation (near-term, Consumer Packaging): costs within EUR 40–50m and cleaner Q4 output would de-risk the normalised Oulu margin.",
+    "Q3 2026 interim report (near-term, Integrated Packaging): containerboard and corrugated spread direction will test the EUR 150m EBIT path.",
+    "Bergslagets Skogar Capital Markets Day (near-term, Forest Assets): debt, harvest, tax and distribution terms could narrow the 30.4% discount.",
+    "Skutskär softwood closure and fluff ramp (near-term, Biomaterials): qualified fluff volume and margin above 10% would support EUR 200m of EBITDA.",
+    "Oulu reaches full design capacity (medium-term, Consumer Packaging): 750,000 tonnes of qualified saleable mix in 2027 would provide the main industrial rerating trigger."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "9,396",
+            "9,049",
+            "9,326",
+            "9,512",
+            "9,679",
+            "10,001"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "556",
+            "1,324",
+            "1,449",
+            "1,418",
+            "1,471",
+            "1,543"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "5.9%",
+            "14.6%",
+            "15.5%",
+            "14.9%",
+            "15.2%",
+            "15.4%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-878",
+            "-1,231",
+            "-507",
+            "-769",
+            "-628",
+            "-628"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "-322",
+            "93",
+            "942",
+            "649",
+            "843",
+            "915"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "-3.4%",
+            "1.0%",
+            "10.1%",
+            "6.8%",
+            "8.7%",
+            "9.2%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-173",
+            "-211",
+            "-159",
+            "-352",
+            "-114",
+            "-103"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-495",
+            "-118",
+            "783",
+            "297",
+            "729",
+            "812"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-431",
+            "-183",
+            "686",
+            "228",
+            "539",
+            "601"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-0.6",
+            "-0.2",
+            "0.9",
+            "0.3",
+            "0.7",
+            "0.8"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.6",
+            "0.2",
+            "0.3",
+            "0.2",
+            "0.6",
+            "0.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-109.8%",
+            "-86.2%",
+            "28.7%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "ASSETS",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Tangible assets",
+          "values": [
+            "7,135",
+            "7,489",
+            "7,122",
+            "7,477",
+            "7,608",
+            "7,861"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "392",
+            "350",
+            "295",
+            "301",
+            "306",
+            "316"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "505",
+            "162",
+            "171",
+            "171",
+            "171",
+            "171"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "14,565",
+            "14,877",
+            "14,858",
+            "15,219",
+            "15,355",
+            "15,619"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,413",
+            "1,585",
+            "1,802",
+            "1,778",
+            "1,809",
+            "1,869"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "2,177",
+            "1,132",
+            "965",
+            "1,002",
+            "1,020",
+            "1,054"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "2,464",
+            "1,999",
+            "1,212",
+            "1,539",
+            "1,566",
+            "1,618"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "6,054",
+            "4,716",
+            "3,979",
+            "4,319",
+            "4,395",
+            "4,541"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "20,754",
+            "19,802",
+            "19,059",
+            "19,760",
+            "19,972",
+            "20,382"
+          ]
+        },
+        {
+          "label": "EQUITY & LIABILITIES",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "10,888",
+            "9,988",
+            "10,649",
+            "10,679",
+            "11,037",
+            "11,206"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "4,183",
+            "3,889",
+            "3,093",
+            "2,398",
+            "2,302",
+            "2,379"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "691",
+            "1,841",
+            "913",
+            "2,398",
+            "2,302",
+            "2,380"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "4,238",
+            "3,621",
+            "3,356",
+            "2,661",
+            "2,565",
+            "2,642"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,674",
+            "4,232",
+            "3,277",
+            "4,644",
+            "4,587",
+            "4,738"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "20,754",
+            "19,802",
+            "19,059",
+            "19,760",
+            "19,972",
+            "20,382"
+          ]
+        },
+        {
+          "label": "CAPITAL STRUCTURE & RATIOS",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,930",
+            "4,276",
+            "3,257",
+            "3,718",
+            "3,508",
+            "3,622"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,298",
+            "13,719",
+            "13,443",
+            "13,936",
+            "14,075",
+            "14,347"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "52.5%",
+            "50.4%",
+            "55.9%",
+            "54.0%",
+            "55.3%",
+            "55.0%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "26.9%",
+            "42.8%",
+            "30.6%",
+            "34.8%",
+            "31.8%",
+            "32.3%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "5.3x",
+            "3.2x",
+            "2.2x",
+            "2.6x",
+            "2.4x",
+            "2.3x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "1.1",
+            "1.2",
+            "0.9",
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "OPERATIONS",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "917",
+            "1,329",
+            "1,116",
+            "866",
+            "1,157",
+            "1,208"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "999",
+            "1,397",
+            "1,136",
+            "1,135",
+            "1,241",
+            "1,285"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-474",
+            "-281",
+            "77",
+            "131",
+            "11",
+            "20"
+          ]
+        },
+        {
+          "label": "INVESTING & FREE CASH",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "397",
+            "1,543",
+            "488",
+            "1,129",
+            "765",
+            "891"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-397",
+            "-1,543",
+            "-488",
+            "-1,129",
+            "-765",
+            "-891"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "520",
+            "-214",
+            "628",
+            "-264",
+            "392",
+            "317"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "779",
+            "-469",
+            "1,179",
+            "6",
+            "476",
+            "394"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "779",
+            "-469",
+            "1,179",
+            "6",
+            "476",
+            "394"
+          ]
+        },
+        {
+          "label": "FINANCING",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "92",
+            "-159",
+            "-1,300",
+            "591",
+            "-365",
+            "-265"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-434",
+            "-473",
+            "-158",
+            "-197",
+            "-182",
+            "-432"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "612",
+            "-373",
+            "-672",
+            "327",
+            "27",
+            "52"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "34.0x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.0x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "17.5x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "1316.1x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "0.7x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.4%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "2.6x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Stora Enso Oyj a buy in 2026?",
+      "a": "No. The rating is HOLD for a 12-month horizon, with a target price of 9.50 EUR versus 9.82 EUR currently, implying -3.3% downside. Forest Assets provide EUR 8.5 bn of reported fair value, but 2026 free cash flow to firm is only EUR 6m and net debt is forecast at EUR 3.7 bn. A stronger rating requires qualified Oulu volumes, Consumer Packaging margins above 8% and demerger terms that preserve most forest value."
+    },
+    {
+      "q": "What is Stora Enso's price target?",
+      "a": "The 12-month target price is 9.50 EUR, compared with a current price of 9.82 EUR and implied downside of -3.3%. The target is built primarily through SOTP: EUR 5.92 bn for Forest Assets after a 30.4% discount to EUR 8.5 bn of fair value, plus EBITDA-based valuations for packaging, Biomaterials and Wood Products, and approximately EUR 154m of probability-weighted Lignode value. The weighted target price is 9.5 EUR."
+    },
+    {
+      "q": "Why is Stora Enso rated HOLD?",
+      "a": "HOLD balances substantial forest backing against weak near-term cash conversion and unresolved separation mechanics. Forest Assets account for 50.0% of current EV, while 2026 free cash flow to firm is forecast at only EUR 6m and net debt rises to EUR 3.7 bn. Oulu can generate approximately EUR 800m of full-capacity sales, but qualification and margin evidence remain incomplete. The target price of 9.50 EUR leaves limited upside from 9.82 EUR."
+    },
+    {
+      "q": "Is Stora Enso overvalued in 2026?",
+      "a": "Stora Enso is not simply overvalued or undervalued. At 9.82 EUR, the shares trade at 34.0x 2026E earnings and 8.0x 2026E EV/EBITDA, but depressed earnings inflate the P/E and the equity retains forest backing. The target SOTP value is 9.50 EUR per share after a 30.4% forest discount and only EUR 154m of probability-weighted Lignode value. The valuation therefore supports HOLD rather than a directional call."
+    },
+    {
+      "q": "What is Stora Enso's bear and bull case?",
+      "a": "The bear case is 9.31 EUR per share, or -5.1%, with Oulu inefficiency, weaker corrugated spreads, lower pulp prices, larger forest leakage and no Lignode value. The bull case is 9.97 EUR per share, or +1.5%, requiring design-rate Oulu economics, stronger packaging and pulp earnings, successful fluff conversion, preserved forest appraisal value and lower net debt. The base case is 9.51 EUR per share, or -3.1%."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Stora Enso Oyj report dated 24 August 2026 (the value-map allocations, anchor market cap of EUR 7.7 bn and share price of 9.82 EUR). Forecasts, modelled division splits and valuation assumptions are estimates, not company guidance.",
+    "Competitor context: UPM trades at 8.5x 2026E EV/EBITDA, Holmen at 10.3x, Svenska Cellulosa Aktiebolaget SCA at 12.2x, Mayr-Melnhof Karton at 6.3x, Smurfit Westrock at 9.1x, Suzano at 4.6x, West Fraser at 13.7x and Weyerhaeuser at 11.8x. The 2026E peer median is 9.7x; peer comparisons differ in forest exposure, packaging mix and accounting definitions.",
+    "Market data: Stora Enso Oyj (STERV.HE), 9.82 EUR as of 24 August 2026; the target bridge uses 2028E modelled EBITDA of EUR 312.5m for Consumer Packaging at 8.0x, EUR 128.6m for Integrated Packaging at 7.0x, EUR 200m for Biomaterials at 7.0x, EUR 87.5m for Wood Products at 8.0x, EUR 592.4m of 2027E forest asset-equivalent normalised EBITDA at 10.0x and probability-weighted Lignode value from 2030E EBITDA legs of EUR 45m and EUR 74.335m at 9.0x. The report flags conflicting market estimates, non-comparable peer definitions and the Lignode under-four-minute charging claim as lower-confidence evidence."
+  ]
+}

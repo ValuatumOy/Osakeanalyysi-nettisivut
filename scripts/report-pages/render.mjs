@@ -8,6 +8,9 @@
 // valuatum-page-mode) so check.mjs can verify a built page against the page-owner rule
 // without re-rendering it.
 import fs from 'node:fs';
+import { reportTitle } from '../seo-title.mjs';
+import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
+import { reportDescription } from '../seo-description.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -66,17 +69,28 @@ export function coverageDocFrom(doc) {
   };
 }
 
-function metaDescription(d) {
-  const h = d.headline || {};
+/**
+ * Google renders about 160 characters. This used to build 206-245 and lose the tail every
+ * time; scripts/seo-description.mjs holds the budget and the reasoning. `analysts` comes
+ * from the members API at build time (a static description cannot be filled in by the
+ * browser), and is 0 when it could not be read.
+ */
+function metaDescription(d, analysts = 0, disagrees = null) {
+  return reportDescription({
+    name: shortName(d.companyName),
+    ticker: d.ticker,
+    recommendation: d.headline?.recommendation,
+    targetPrice: d.headline?.targetPrice,
+    analysts,
+    disagrees,
+  });
+}
+
+/** Share-card description with no rating or price target in it. */
+function shareDescription(d) {
   const sn = shortName(d.companyName);
-  if (!h.recommendation) {
-    return `${sn} (${d.ticker}) stock overview: share price, market cap and company profile. Generate a fresh Valuatum AI equity report for ${sn} — segment-value analysis, reverse valuation, financials, risks & catalysts.`.replace(/\s+/g, ' ').trim();
-  }
-  const parts = [`${sn} (${d.ticker}) stock analysis & AI equity report: Valuatum rates ${d.ticker} ${h.recommendation}`];
-  if (h.targetPrice) parts.push(`with a ${h.targetPrice} price target`);
-  if (h.currentPrice) parts.push(`vs ${h.currentPrice}`);
-  let s = parts.join(' ') + `. Share price forecast, valuation, segment-value analysis, reverse valuation, financials, risks & catalysts.`;
-  return s.replace(/\s+/g, ' ').trim();
+  return `${sn} (${d.ticker}) stock analysis & AI equity report: segment-value analysis, `
+    + `reverse valuation, financial estimates, risks & catalysts, with a 12-month price target.`;
 }
 
 // Keyword-rich public overview paragraph (templated; safe to show on paid pages).
@@ -153,9 +167,10 @@ function navHtml() {
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/report-store.html" class="nav-link">Store</a>
+        <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
+        <a href="/institutions.html" class="nav-link">Institutions</a>
         <details class="nav-more">
           <summary class="nav-link">More</summary>
           <div class="nav-more-menu">
@@ -174,9 +189,10 @@ function navHtml() {
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
       <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/report-store.html" class="nav-mobile-link">Store</a>
+      <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="/institutions.html" class="nav-mobile-link">Institutions</a>
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="/about.html" class="nav-mobile-link">About</a>
       <a href="/faq.html" class="nav-mobile-link">FAQ</a>
@@ -205,6 +221,7 @@ function footerHtml() {
           <div class="footer-col-label">Reports</div>
           <div class="footer-links">
             <a href="/reports.html" class="footer-link">Browse reports</a>
+            <a href="/companies.html" class="footer-link">Company index</a>
             <a href="/reports.html#free" class="footer-link">Free reports</a>
             <a href="/reports.html#coverage-request" class="footer-link">Request coverage</a>
             <a href="/pricing.html" class="footer-link">Pricing</a>
@@ -217,7 +234,7 @@ function footerHtml() {
             <a href="/about.html" class="footer-link">About Valuatum</a>
             <a href="https://valuatum.com" class="footer-link" target="_blank" rel="noopener">Valuatum.com</a>
             <a href="mailto:contact26@valuatum.com" class="footer-link">Support</a>
-            <a href="mailto:contact26@valuatum.com" class="footer-link">Enterprise sales</a>
+            <a href="/institutions.html" class="footer-link">For institutions</a>
           </div>
         </div>
         <div>
@@ -439,10 +456,19 @@ export function renderPage(d, cat, all) {
   const hasReport = !!(d.headline && d.headline.recommendation);
   const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
   const url = `${SITE}/reports/${d.slug}.html`;
-  const desc = metaDescription(d);
+  const desc = metaDescription(d, d.analystCount || 0, d.analystDisagrees ?? null);
+  // The share card is one surface: a neutral image next to text reading "rates KESKOB.HE
+  // SELL" is worse than either alone. og:/twitter: descriptions follow the same switch as
+  // the title and the card art. The plain <meta name="description"> is deliberately NOT
+  // changed here -- that is the Google snippet, and whether the rating belongs in it is the
+  // wider publication question, not a share-card one.
+  const shareDesc = SHOW_RATINGS_IN_METADATA ? desc : shareDescription(d);
   const sn = shortName(d.companyName);
-  const title = `${sn} (${d.ticker}) Stock Analysis & AI Equity Report — Price Target & Valuation | Valuatum`;
+  const title = reportTitle(sn, d.ticker, d.headline || {});
   const updated = d.reportDate;
+  // A rated page gets the share card built for it by scripts/build-og-images.mjs; an
+  // unrated overview page has nothing specific to put on one and keeps the default.
+  const ogImage = hasReport ? `${SITE}/images/og/${d.slug}.png` : `${SITE}/images/og-image.png`;
   const pdfHref = pdfHrefOf(cat);
   const downloadCta = isFree && pdfHref
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
@@ -648,15 +674,15 @@ export function renderPage(d, cat, all) {
   <meta name="valuatum-report-id" content="${attr(hasReport ? d.id : '')}">
   <meta name="valuatum-page-mode" content="${attr(mode)}">
   <meta property="og:title" content="${attr(title)}">
-  <meta property="og:description" content="${attr(desc)}">
+  <meta property="og:description" content="${attr(shareDesc)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${SITE}/images/og-image.png">
+  <meta property="og:image" content="${ogImage}">
   <meta property="article:published_time" content="${esc(updated)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${attr(sn + ' (' + d.ticker + ') AI Equity Report')}">
-  <meta name="twitter:description" content="${attr(desc)}">
-  <meta name="twitter:image" content="${SITE}/images/og-image.png">
+  <meta name="twitter:description" content="${attr(shareDesc)}">
+  <meta name="twitter:image" content="${ogImage}">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HSRL85C0K5"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HSRL85C0K5');</script>
   <script type="application/ld+json">
@@ -705,7 +731,7 @@ ${navHtml()}
           <div class="company-header-actions">
             ${downloadCta}
             ${hasReport ? `<a href="#" class="btn btn-outline" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">Generate a fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>` : ''}
-            <a href="/report-store.html?company=${encodeURIComponent(d.ticker)}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white; font-size:var(--text-xs);">See all analyst reports</a>
+            <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
           <p class="company-header-note">${esc(actionsNote)}</p>
         </div>
@@ -717,10 +743,25 @@ ${navHtml()}
 ${sections.join('\n')}
       </div>
     </div>
+    <!-- Public surface for the analyst layer: hidden until the members API returns an
+         analysis for this company, so a company nobody has covered shows nothing. -->
+    <section class="container analyst-reports" id="analyst-reports" data-analyst-reports data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}"
+             style="max-width:1760px; padding-bottom:3rem;">
+      <div class="store-company-head">
+        <h2 style="font-size:var(--text-2xl); font-weight:300; margin:0;">Analyst reports on ${esc(sn)}</h2>
+        <span class="store-count" data-analyst-count></span>
+      </div>
+      <p class="store-note" style="max-width:70ch;">Each is this company's Valuatum report re-run with an analyst's own
+        assumptions and published under their name. They are ordered by what other analysts said the work added over the
+        engine's report &mdash; a score out of five from people who had to read it to give it.</p>
+      <div class="store-banner" data-analyst-banner hidden></div>
+      <div data-analyst-list></div>
+    </section>
   </main>
 
 ${footerHtml()}
   <script src="/js/script.js"></script>
+  <script src="/js/analyst-reports.js" defer></script>
 </body>
 </html>
 `;

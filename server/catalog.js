@@ -353,6 +353,13 @@ function buildRawReports(options = {}) {
       // revision needs a job to call POST /jobs/{jobId}/revisions against.
       // The raw jobId itself is never exposed here — only this boolean.
       revisable: Boolean(meta.provenance && meta.provenance.jobId),
+      // Which order produced this file, for the admin's grouping only: every
+      // file of one order — the delivered report and each revised copy — shares
+      // the order id, which is what turns fifteen Tesla rows into three chains.
+      // The public GET /api/reports maps its own explicit subset and never
+      // carries this through.
+      provenanceSessionId: meta.provenance?.sessionId || null,
+      isRevision: /_rev-/.test(file.fileName) || Boolean(meta.provenance?.revisionOf),
       description: meta.description || `AI equity report for ${baseCompany}.`,
       tags: Array.isArray(meta.tags) && meta.tags.length ? meta.tags : ['AI Equity Report', 'PDF'],
       ageDays,

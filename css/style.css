@@ -3443,6 +3443,41 @@ select.input {
 }
 .store-company-head .spacer { margin-left: auto; }
 
+/* The `hidden` attribute sets display:none in the UA stylesheet, which any class rule with
+   its own display beats -- .btn declares display:inline-flex. Without this, every company
+   nobody has covered rendered an empty 48x39 "Analyst reports" button in its header. */
+.analyst-jump[hidden],
+.analyst-reports[hidden] { display: none !important; }
+
+/* What the analyst told the engine — the first round of steering, truncated by the API.
+   The call and target price it produced are deliberately not shown: those are what the
+   reader is buying, and this is the reason to. Analyst-written text, so it is quoted
+   rather than presented as the site's own words. */
+.analyst-prompt {
+  margin-top: .5rem;
+  padding-left: .75rem;
+  border-left: 2px solid var(--green, #9CDB06);
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  max-width: 62ch;
+}
+.analyst-prompt-label {
+  font-size: var(--text-xs, .75rem);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gray-steel, #5b6a63);
+}
+.analyst-prompt-text {
+  font-style: italic;
+  color: var(--ink, #14201a);
+  line-height: 1.5;
+}
+.analyst-prompt-rounds {
+  font-size: var(--text-xs, .75rem);
+  color: var(--gray-steel, #5b6a63);
+}
+
 .store-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -3563,3 +3598,8 @@ select.input {
   .store-row-cta { justify-content: flex-start; }
   .usage-stat .val { font-size: 1.6rem; }
 }
+
+/* The analyst's profile link beside their name on a published analysis. */
+.analyst-linkedin { display: inline-flex; align-items: center; color: var(--gray-steel);
+  margin-left: 0.4em; vertical-align: -0.15em; transition: color 0.15s ease; }
+.analyst-linkedin:hover { color: #0A66C2; }

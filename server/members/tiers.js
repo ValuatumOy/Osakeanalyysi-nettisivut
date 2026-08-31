@@ -25,8 +25,12 @@ const DEFAULT_LIMITS = {
   // at the €20 one-off price, 5 picks for one €19 month is €100 of product and
   // nothing stops a subscriber cancelling once the PDF is downloaded.
   none: { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 },
-  investor: { generations: 0, basePicks: 3, analystReads: 10, revisions: 0 },
-  'investor:year': { generations: 0, basePicks: 5, analystReads: 10, revisions: 0 },
+  // analystReads track the tier's own generosity: each one now pays the analyst
+  // who wrote what was read (bounty.readRateEur), so ten of them on the 19 EUR
+  // tier handed out a quarter of gross while the headline benefit was three
+  // picks. The peripheral perk must not be more generous than the core one.
+  investor: { generations: 0, basePicks: 3, analystReads: 5, revisions: 0 },
+  'investor:year': { generations: 0, basePicks: 5, analystReads: 5, revisions: 0 },
   investor_plus: { generations: 1, basePicks: 10, analystReads: 20, revisions: 2 },
   'investor_plus:year': { generations: 1, basePicks: 15, analystReads: 20, revisions: 2 },
   coverage: { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 }, // its own yearly path
