@@ -436,28 +436,7 @@
     hideAll();
     document.getElementById('deliveredMeta').textContent =
       [order.companyName, order.ticker].filter(Boolean).join(' · ') || '—';
-
-    // A fresh "build on" order has no PDF of its own until its first revision
-    // completes (see createForkOrder in server/lambda/members.js) — a "Download"
-    // button pointing at '#' reads as broken, so it stays hidden until there is
-    // something behind it. originalUrl (the analysis the buyer paid for, resolved
-    // live from the parent order) fills that gap in the meantime.
-    const downloadBtn = document.getElementById('downloadBtn');
-    if (order.pdfUrl) {
-      downloadBtn.href = order.pdfUrl;
-      downloadBtn.style.display = '';
-    } else {
-      downloadBtn.style.display = 'none';
-    }
-    const originalBtn = document.getElementById('originalBtn');
-    if (originalBtn) {
-      if (order.originalUrl) {
-        originalBtn.href = order.originalUrl;
-        originalBtn.style.display = '';
-      } else {
-        originalBtn.style.display = 'none';
-      }
-    }
+    document.getElementById('downloadBtn').href = order.pdfUrl || '#';
 
     const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');

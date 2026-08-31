@@ -317,20 +317,6 @@ async function getOrder(event) {
     payload.pdfUrl = await pdfStore.presignPdfDownload(order.pdfFileName);
   }
 
-  // A "build on" order (server/lambda/members.js createForkOrder) is deliberately
-  // created with no pdfFileName of its own — the parent's key is never shared,
-  // so a fork's first revision can never overwrite the analyst's published PDF
-  // (see test/orders/fork-order.test.mjs). Until that first revision lands, this
-  // buyer has nothing to download under their own order — but they did pay for
-  // the parent's analysis, so resolve it here, live, from the parent's own
-  // current row. Read-only: nothing is written back to either order.
-  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
-    const parent = await ordersStore.get(order.forkedFrom);
-    if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
-      payload.originalUrl = await pdfStore.presignPdfDownload(parent.pdfFileName);
-    }
-  }
-
   // Every delivered revision's change memo + a re-download link for that
   // specific PDF, newest first — the order page renders these under "revision
   // history". Presigning is cheap local SigV4 signing, no extra round trip.
