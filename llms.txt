@@ -16,6 +16,7 @@
 
 ## Paid equity reports (free preview available)
 - [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): HOLD, target 490.50 USD (current 482.05 USD).
+- [Alphabet (GOOGL) AI equity report](https://www.aiequityreports.com/reports/alphabet-equity-report.html): HOLD, target 312.70 USD (current 342.00 USD).
 - [Intel (INTC) AI equity report](https://www.aiequityreports.com/reports/intel-equity-report.html): SELL, target 98.00 USD (current 114.68 USD).
 - [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): SELL, target 17.10 EUR (current 19.20 EUR).
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
