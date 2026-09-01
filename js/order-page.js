@@ -575,7 +575,7 @@
     const memoSummary = entry.changes && entry.changes.differences && entry.changes.differences.summary;
     let html;
     if (memoSummary) {
-      html = '<p class="revision-comment">' + renderMarkdown(memoSummary) + '</p>';
+      html = '<div class="revision-comment">' + renderMarkdown(memoSummary) + '</div>';
     } else {
       const sections = editedSections(edits);
       const what = sections.length ? 'rewrote ' + joinList(sections) : 'rewrote part of the text';
@@ -821,7 +821,7 @@
 
   // Trim the shared head and tail first, so the alignment above only ever runs
   // on the span that actually differs.
-  function diffWords(original, edited) {
+  function wordDiffParts(original, edited) {
     const a = String(original || '').split(/\s+/).filter(Boolean);
     const b = String(edited || '').split(/\s+/).filter(Boolean);
     let start = 0;
@@ -838,7 +838,7 @@
   }
 
   function renderDiff(original, edited) {
-    const parts = diffWords(original, edited);
+    const parts = wordDiffParts(original, edited);
     if (!parts.some((p) => p.op !== 'same')) return escapeHtml(shortText(edited, 140));
 
     return parts.map((part, idx) => {
@@ -1033,7 +1033,9 @@
     const meta = document.getElementById('progressMeta');
     if (order.status === 'REVISING' && order.activity === 'editing') {
       title.textContent = 'Applying your edits…';
-      sub.textContent = 'The report is being re-rendered with your text. No AI is involved, so this usually takes under a minute.';
+      // Rendering itself is seconds; the wait is the engine starting up when it
+      // has been idle, which is not the customer's problem to understand.
+      sub.textContent = 'The report is being re-rendered with your text, exactly as you wrote it. This usually takes a few minutes.';
     } else if (order.status === 'REVISING') {
       title.textContent = 'Updating your report…';
       sub.textContent = 'The report engine is interpreting your request and regenerating the report. This usually takes 20 to 40 minutes.';
