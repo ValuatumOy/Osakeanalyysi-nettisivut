@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function () {
+  // Signed-in admin, with every API call answered from the tables below.
+  const PANE = new URLSearchParams(location.search).get('pane') || 'reports';
+  localStorage.setItem('aerAdminPassword', 'mock-admin-password');
+
+  const REPORTS = [
+    { id: 'nokiaoyj-14072026', companyName: 'Nokia Oyj', fileName: 'nokiaoyj_14072026.pdf',
+      ticker: 'NOKIA.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Information Technology',
+      reportDate: '2026-07-14', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'uploaded', generatedBy: null, buyerCount: 34, groupId: 'nokiaoyj-14072026', isRevision: false,
+      price: 20, priceLabel: '€20', forceFree: false, excludeFromFree: false },
+    { id: 'storaenso-02072026', companyName: 'Stora Enso Oyj', fileName: 'storaenso_02072026.pdf',
+      ticker: 'STERV.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Materials',
+      reportDate: '2026-07-02', availability: 'available', publicationStatus: null, isFree: true,
+      pdfUrl: 'https://files.aiequityreports.com/storaenso_02072026.pdf',
+      origin: 'uploaded', generatedBy: null, buyerCount: 0, groupId: 'storaenso-02072026', isRevision: false,
+      price: 0, priceLabel: 'Free', forceFree: true, excludeFromFree: false },
+    { id: 'koneoyj-25062026', companyName: 'KONE Oyj', fileName: 'koneoyj_25062026.pdf',
+      ticker: 'KNEBV.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Industrials',
+      reportDate: '2026-06-25', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'order', generatedBy: 'lars@example.com', buyerCount: 12,
+      groupId: 'cs_live_a1b2c3', isRevision: false, price: 20, priceLabel: '€20',
+      forceFree: false, excludeFromFree: false },
+    { id: 'koneoyj-25062026-2', companyName: 'KONE Oyj', fileName: 'koneoyj_25062026_rev1.pdf',
+      ticker: 'KNEBV.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Industrials',
+      reportDate: '2026-06-25', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'order', generatedBy: 'lars@example.com', buyerCount: 12,
+      groupId: 'cs_live_a1b2c3', isRevision: true, price: 20, priceLabel: '€20',
+      forceFree: false, excludeFromFree: false },
+    { id: 'koneoyj-25062026-3', companyName: 'KONE Oyj', fileName: 'koneoyj_25062026_rev2.pdf',
+      ticker: 'KNEBV.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Industrials',
+      reportDate: '2026-06-25', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'order', generatedBy: 'lars@example.com', buyerCount: 12,
+      groupId: 'cs_live_a1b2c3', isRevision: true, price: 20, priceLabel: '€20',
+      forceFree: false, excludeFromFree: false },
+    { id: 'nesteoyj-18062026', companyName: 'Neste Oyj', fileName: 'nesteoyj_18062026.pdf',
+      ticker: 'NESTE.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Energy',
+      reportDate: '2026-06-18', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'generation', generatedBy: 'Elina Salminen', buyerCount: 5,
+      groupId: 'gen-neste-5120', isRevision: false, price: 20, priceLabel: '€20',
+      forceFree: false, excludeFromFree: false },
+    { id: 'sampooyj-09062026', companyName: 'Sampo Oyj', fileName: 'sampooyj_09062026.pdf',
+      ticker: 'SAMPO.HE', exchange: 'Helsinki', country: 'Finland', sector: 'Financials',
+      reportDate: '2026-06-09', availability: 'hidden', publicationStatus: 'hidden', isFree: false,
+      origin: 'uploaded', generatedBy: null, buyerCount: 8, groupId: 'sampooyj-09062026', isRevision: false,
+      price: 20, priceLabel: '€20', forceFree: false, excludeFromFree: true },
+    { id: 'equinorasa-03062026', companyName: 'Equinor ASA', fileName: 'equinorasa_03062026.pdf',
+      ticker: 'EQNR.OL', exchange: 'Oslo', country: 'Norway', sector: 'Energy',
+      reportDate: '2026-06-03', availability: 'available', publicationStatus: null, isFree: false,
+      origin: 'uploaded', generatedBy: null, buyerCount: 21, groupId: 'equinorasa-03062026', isRevision: false,
+      price: 20, priceLabel: '€20', forceFree: false, excludeFromFree: false },
+    { id: 'volvoab-27052026', companyName: 'Volvo AB', fileName: 'volvoab_27052026.pdf',
+      ticker: 'VOLV-B.ST', exchange: 'Stockholm', country: 'Sweden', sector: 'Industrials',
+      reportDate: '2026-05-27', availability: 'expired', publicationStatus: 'expired', isFree: false,
+      origin: 'uploaded', generatedBy: null, buyerCount: 17, groupId: 'volvoab-27052026', isRevision: false,
+      price: 20, priceLabel: '€20', forceFree: false, excludeFromFree: false },
+  ];
+
+  // The Prompts column shows the first 60 characters of the analyst's prompt, so
+  // these openers are short enough to leave the row's moderation buttons on screen.
+  const PROMPT_TEXT = 'Order book.';
+
+  const PUBLICATIONS = [
+    { userId: 'u-elina-1', genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', analyst: 'Elina Salminen',
+      publishedAt: '2026-08-27T07:55:00Z', status: 'published', priceEur: 10, reviewCount: 5,
+      peerScore: 4.1, averageScore: 4.2, promptsText: PROMPT_TEXT, takedownReason: null },
+    { userId: 'u-aino-2', genId: 'gen-kone-4411', companyId: 'KNEBV.HE', analyst: 'Aino Virtanen',
+      publishedAt: '2026-08-21T09:12:00Z', status: 'published', priceEur: 12, reviewCount: 6,
+      peerScore: 4.2, averageScore: 4.4, promptsText: 'Service margin.', takedownReason: null },
+    { userId: 'u-henrik-3', genId: 'gen-neste-3902', companyId: 'NESTE.HE', analyst: 'Henrik Lindqvist',
+      publishedAt: '2026-08-14T14:40:00Z', status: 'published', priceEur: 9, reviewCount: 4,
+      peerScore: 4.0, averageScore: 4.1, promptsText: 'Margin/tonne.', takedownReason: null },
+    { userId: 'u-marja-4', genId: 'gen-sampo-3771', companyId: 'SAMPO.HE', analyst: 'Marja Koskinen',
+      publishedAt: '2026-08-06T08:05:00Z', status: 'published', priceEur: 0, reviewCount: 3,
+      peerScore: 3.8, averageScore: 3.9, promptsText: 'Combined ratio.', takedownReason: null },
+    { userId: 'u-oskar-5', genId: 'gen-storaenso-3510', companyId: 'STERV.HE', analyst: 'Oskar Bergström',
+      publishedAt: '2026-07-29T11:30:00Z', status: 'published', priceEur: 15, reviewCount: 2,
+      peerScore: 3.6, averageScore: 3.5, promptsText: 'Forest marks.', takedownReason: null },
+    { userId: 'u-elina-1', genId: 'gen-equinor-3402', companyId: 'EQNR.OL', analyst: 'Elina Salminen',
+      publishedAt: '2026-07-22T06:20:00Z', status: 'published', priceEur: 0, reviewCount: 4,
+      peerScore: 4.0, averageScore: 4.0, promptsText: '$70 Brent case.', takedownReason: null },
+    { userId: 'u-henrik-3', genId: 'gen-volvo-3140', companyId: 'VOLV-B.ST', analyst: 'Henrik Lindqvist',
+      publishedAt: '2026-07-09T13:05:00Z', status: 'takendown', priceEur: 12, reviewCount: 3,
+      peerScore: 2.4, averageScore: 2.2, promptsText: 'Truck intake.',
+      takedownReason: 'Figures unverified.' },
+    { userId: 'u-marja-4', genId: 'gen-maersk-2988', companyId: 'MAERSK-B.CO', analyst: 'Marja Koskinen',
+      publishedAt: '2026-06-30T10:15:00Z', status: 'published', priceEur: 8, reviewCount: 2,
+      peerScore: 3.9, averageScore: 3.8, promptsText: 'Freight rates.', takedownReason: null },
+  ];
+
+  const USERS = [
+    { userId: 'u-elina-1', email: 'elina@example.com', name: 'Elina Salminen', role: 'analyst',
+      tier: 'none', tierStatus: null, billingInterval: null, coverageCompanyIds: [], banned: false,
+      createdAt: '2026-08-28T09:00:00Z', linkedinUrl: 'https://www.linkedin.com/in/elina-salminen',
+      openObligationId: 'gen-storaenso-4820', openReviewId: null,
+      usage: { picks: 3, pickLimit: 10, analystReads: 6, analystReadLimit: 20, genReserved: true } },
+    { userId: 'u-aino-2', email: 'aino@example.com', name: 'Aino Virtanen', role: 'subscriber',
+      tier: 'investor_plus', tierStatus: 'active', billingInterval: 'month', coverageCompanyIds: [],
+      banned: false, createdAt: '2026-08-20T09:00:00Z', linkedinUrl: null,
+      openObligationId: null, openReviewId: null,
+      usage: { picks: 4, pickLimit: 10, analystReads: 7, analystReadLimit: 20, genReserved: false } },
+    { userId: 'u-henrik-3', email: 'henrik@example.com', name: 'Henrik Lindqvist', role: 'analyst',
+      tier: 'none', tierStatus: null, billingInterval: null, coverageCompanyIds: [], banned: false,
+      createdAt: '2026-08-11T09:00:00Z', linkedinUrl: 'https://www.linkedin.com/in/henrik-lindqvist',
+      openObligationId: null, openReviewId: 'gen-kone-4411',
+      usage: { picks: 8, pickLimit: 10, analystReads: 15, analystReadLimit: 20, genReserved: false } },
+    { userId: 'u-lars-6', email: 'lars@example.com', name: 'Lars Nyberg', role: 'subscriber',
+      tier: 'coverage', tierStatus: 'past_due', billingInterval: 'year', coverageCompanyIds: ['NESTE.HE'],
+      banned: false, createdAt: '2026-07-30T09:00:00Z', linkedinUrl: null,
+      openObligationId: null, openReviewId: null,
+      usage: { picks: 2, pickLimit: 10, analystReads: 3, analystReadLimit: 20, genReserved: false } },
+    { userId: 'u-marja-4', email: 'marja@example.com', name: 'Marja Koskinen', role: 'analyst',
+      tier: 'none', tierStatus: null, billingInterval: null, coverageCompanyIds: [], banned: false,
+      createdAt: '2026-07-14T09:00:00Z', linkedinUrl: null,
+      openObligationId: null, openReviewId: null,
+      usage: { picks: 5, pickLimit: 10, analystReads: 11, analystReadLimit: 20, genReserved: false } },
+    { userId: 'u-sofia-7', email: 'sofia@example.com', name: 'Sofia Hedlund', role: 'subscriber',
+      tier: 'investor', tierStatus: 'active', billingInterval: 'month', coverageCompanyIds: [],
+      banned: false, createdAt: '2026-06-25T09:00:00Z', linkedinUrl: null,
+      openObligationId: null, openReviewId: null,
+      usage: { picks: 1, pickLimit: 4, analystReads: 2, analystReadLimit: 8, genReserved: false } },
+    { userId: 'u-oskar-5', email: 'oskar@example.com', name: 'Oskar Bergström', role: 'analyst',
+      tier: 'none', tierStatus: null, billingInterval: null, coverageCompanyIds: [], banned: true,
+      createdAt: '2026-06-02T09:00:00Z', linkedinUrl: 'https://www.linkedin.com/in/oskar-bergstrom',
+      openObligationId: null, openReviewId: null,
+      usage: { picks: 0, pickLimit: 10, analystReads: 0, analystReadLimit: 20, genReserved: false } },
+  ];
+
+  // Half of every sale plus €1.50 a read, split into paid / held / ready.
+  const EARNINGS = {
+    share: 0.5, totalReadyToInvoice: 287.5, totalHeld: 114,
+    analysts: [
+      { userId: 'u-elina-1', analyst: 'Elina Salminen', email: 'elina@example.com',
+        published: 4, salesCount: 9, readsCount: 22, grossSales: 540,
+        readyToInvoice: 148, held: 45, paid: 110, clawback: 0 },
+      { userId: 'u-henrik-3', analyst: 'Henrik Lindqvist', email: 'henrik@example.com',
+        published: 3, salesCount: 6, readsCount: 14, grossSales: 360,
+        readyToInvoice: 96, held: 30, paid: 75, clawback: 0 },
+      { userId: 'u-marja-4', analyst: 'Marja Koskinen', email: 'marja@example.com',
+        published: 2, salesCount: 3, readsCount: 9, grossSales: 180,
+        readyToInvoice: 43.5, held: 15, paid: 45, clawback: 0 },
+      { userId: 'u-oskar-5', analyst: 'Oskar Bergström', email: 'oskar@example.com',
+        published: 2, salesCount: 2, readsCount: 6, grossSales: 120,
+        readyToInvoice: 0, held: 24, paid: 30, clawback: 15 },
+    ],
+  };
+
+  const STATS = {
+    totals: { users: 7, publications: 11, entitlements: 214, analystReads: 51,
+              sales: 20, grossEur: 1200, topups: 9, payoutsEur: 260 },
+    byCompany: [
+      { companyId: 'NOKIA.HE', reportOpens: 58, analystReads: 14, subscriberReads: 9, sales: 6, grossEur: 360, published: 3 },
+      { companyId: 'STERV.HE', reportOpens: 47, analystReads: 11, subscriberReads: 7, sales: 5, grossEur: 300, published: 2 },
+      { companyId: 'KNEBV.HE', reportOpens: 39, analystReads: 9, subscriberReads: 6, sales: 4, grossEur: 240, published: 2 },
+      { companyId: 'NESTE.HE', reportOpens: 31, analystReads: 8, subscriberReads: 4, sales: 3, grossEur: 180, published: 2 },
+      { companyId: 'SAMPO.HE', reportOpens: 24, analystReads: 6, subscriberReads: 3, sales: 2, grossEur: 120, published: 1 },
+      { companyId: 'EQNR.OL', reportOpens: 15, analystReads: 3, subscriberReads: 1, sales: 0, grossEur: 0, published: 1 },
+    ],
+  };
+
+  const PROMOS = {
+    codes: [
+      { code: 'AINAILMAINEN2026', active: true, percentOff: 100, amountOffEur: null, duration: 'forever',
+        timesRedeemed: 63, maxRedemptions: null, expiresAt: null, restrictions: null, promoId: 'promo_1AIN' },
+      { code: 'NORDICLAUNCH', active: true, percentOff: 25, amountOffEur: null, duration: 'once',
+        timesRedeemed: 118, maxRedemptions: 500, expiresAt: '2026-12-31T21:59:59Z', restrictions: null, promoId: 'promo_2NOR' },
+      { code: 'HELSINKI10', active: true, percentOff: null, amountOffEur: 10, duration: 'once',
+        timesRedeemed: 41, maxRedemptions: 200, expiresAt: null, restrictions: 'min 20 EUR', promoId: 'promo_3HEL' },
+      { code: 'ANALYST50', active: true, percentOff: 50, amountOffEur: null, duration: 'repeating',
+        timesRedeemed: 7, maxRedemptions: 25, expiresAt: '2026-10-15T20:59:59Z', restrictions: null, promoId: 'promo_4ANA' },
+      { code: 'SLUSH2025', active: false, percentOff: 30, amountOffEur: null, duration: 'once',
+        timesRedeemed: 210, maxRedemptions: 250, expiresAt: '2025-12-01T21:59:59Z', restrictions: null, promoId: 'promo_5SLU' },
+    ],
+  };
+
+  const USER_DETAIL = {
+    profile: { userId: 'u-elina-1', email: 'elina@example.com', name: 'Elina Salminen' },
+    publications: [
+      { genId: 'gen-nokia-3288', status: 'published', companyId: 'NOKIA.HE', companyName: 'Nokia Oyj',
+        publishedAt: '2026-08-27T07:55:00Z', priceEur: 10, revisionsUsed: 3, revisionsAllowed: 5,
+        promptsText: PROMPT_TEXT, forkedFrom: null, coverage: false, takedownReason: null },
+      { genId: 'gen-equinor-3402', status: 'published', companyId: 'EQNR.OL', companyName: 'Equinor ASA',
+        publishedAt: '2026-07-22T06:20:00Z', priceEur: 0, revisionsUsed: 1, revisionsAllowed: 5,
+        promptsText: 'Upstream cash at $70 Brent versus the renewables capex drag.', forkedFrom: null, coverage: false, takedownReason: null },
+    ],
+    reviewsReceived: [
+      { genId: 'gen-nokia-3288', reviewerId: 'u-henrik-3', score: 4, voided: false, edits: 1,
+        comment: 'Clear on the licensing tail. The 2026 bridge would be easier to follow with the segment split spelled out.' },
+      { genId: 'gen-equinor-3402', reviewerId: 'u-marja-4', score: 5, voided: false, edits: 0,
+        comment: 'Best treatment of the renewables capex drag I have read here.' },
+    ],
+    sales: [
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', grossEur: 60, soldAt: '2026-08-28T12:00:00Z' },
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', grossEur: 60, soldAt: '2026-08-20T12:00:00Z' },
+    ],
+    payouts: [{ id: 'po-2026-08', amount: 110, kind: 'share', paidAt: '2026-08-01T09:00:00Z' }],
+    entitlements: [
+      { reportId: 'nokiaoyj-14072026', source: 'pick', grantedAt: '2026-08-29T08:00:00Z' },
+      { reportId: 'koneoyj-25062026', source: 'pick', grantedAt: '2026-08-22T08:00:00Z' },
+    ],
+    reads: [{ genId: 'gen-kone-4411', openedAt: '2026-08-25T10:00:00Z' }],
+    topups: [{ month: '2026-08', units: 5, kind: 'picks', creditedAt: '2026-08-12T10:00:00Z' }],
+    audit: [
+      { at: '2026-08-29T08:01:12', type: 'ENTITLEMENT_GRANTED', detail: null },
+      { at: '2026-08-27T07:55:03', type: 'PUBLISHED', detail: null },
+    ],
+  };
+
+  const ROUTES = [
+    [/\/api\/admin\/reports$/, () => ({ generatedAt: '2026-09-01T06:00:00Z', week: '2026-W36', reports: REPORTS })],
+    [/\/admin\/members\/publications/, () => ({ count: PUBLICATIONS.length, publications: PUBLICATIONS })],
+    [/\/admin\/members\/users\/[^/?]+$/, () => USER_DETAIL],
+    [/\/admin\/members\/users$/, () => ({ count: USERS.length, users: USERS })],
+    [/\/admin\/members\/earnings$/, () => EARNINGS],
+    [/\/admin\/members\/stats$/, () => STATS],
+    [/\/admin\/members\/promo-codes$/, () => PROMOS],
+  ];
+
+  const realFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('aiequityreports.com') === -1) return realFetch(input, init);
+    const path = url.replace(/^https?:\/\/[^/]+/, '');
+    for (const [re, make] of ROUTES) {
+      if (re.test(path.split('?')[0]) || re.test(path)) {
+        return Promise.resolve(new Response(JSON.stringify(make(path)), {
+          status: 200, headers: { 'content-type': 'application/json' },
+        }));
+      }
+    }
+    return Promise.resolve(new Response(JSON.stringify({ error: 'unmocked ' + path }), { status: 404 }));
+  };
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      const btn = document.querySelector('.tab-btn[data-pane="' + PANE + '"]');
+      if (btn) btn.click();
+      setTimeout(function () {
+        const wrap = document.querySelector('#pane-' + PANE + ' .table-wrap');
+        const cells = wrap ? [...wrap.querySelectorAll('tbody tr:first-child td')].map(td => Math.round(td.getBoundingClientRect().width)) : [];
+        document.body.setAttribute('data-rects', JSON.stringify({
+          __page: [0, 0, document.documentElement.scrollWidth,
+                   Math.ceil(document.documentElement.scrollHeight)],
+          __table: wrap ? [wrap.scrollWidth, wrap.clientWidth] : null,
+          __cells: cells,
+        }));
+      }, 700);
+    }, 500);
+  });
+})();
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3D9E72; --green-light: #6DBFA0; --green-deep: #2D7A58;
+      --forest: #1B3A2D; --charcoal: #1A1A2E; --charcoal-mid: #4A4A6A;
+      --gray-steel: #7A7A9A; --off-white: #F8F8FC; --white: #FFFFFF;
+      --border: #E5E5EF; --gold: #D4A843; --red: #C0392B;
+      --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--charcoal); font-size: 0.875rem; }
+    a { color: var(--green); }
+
+    /* ── auth ── */
+    #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--forest); }
+    .auth-card { background: white; border-radius: var(--r-xl); padding: 2.5rem; width: 100%; max-width: 420px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); }
+    .auth-card h1 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .auth-card p { font-size: 0.8rem; color: var(--gray-steel); margin-bottom: 1.5rem; line-height: 1.6; }
+    .auth-card label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .auth-card input { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.875rem; font-family: inherit; outline: none; }
+    .auth-card input:focus { border-color: var(--green); }
+    .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; color: var(--red); margin: 1rem 0 0; display: none; }
+
+    /* ── tabs ── */
+    .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; overflow-x: auto; position: sticky; top: 52px; z-index: 90; }
+    .tab-btn { font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none; cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; white-space: nowrap; }
+    .tab-btn.active { color: var(--forest); border-bottom-color: var(--green); font-weight: 600; }
+    .tabpane[hidden] { display: none; }
+    .stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+    .stat-card { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.9rem 1rem; }
+    .stat-card .num { font-size: 1.35rem; font-weight: 600; color: var(--forest); }
+    .stat-card .lbl { font-size: 0.72rem; color: var(--gray-steel); margin-top: 0.15rem; }
+    .detail-row td { background: var(--off-white); }
+    .detail-box { padding: 0.9rem 1.1rem; font-size: 0.8rem; line-height: 1.7; }
+    .detail-box h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-steel); margin: 0.8rem 0 0.3rem; }
+    .detail-box h4:first-child { margin-top: 0; }
+    .detail-box table { font-size: 0.78rem; }
+    .pill-warn { background: #FEF3C7; color: #92400E; border-radius: var(--r-pill); padding: 0.1rem 0.55rem; font-size: 0.7rem; font-weight: 600; }
+    .pill-danger { background: #FEE2E2; color: #991B1B; border-radius: var(--r-pill); padding: 0.1rem 0.55rem; font-size: 0.7rem; font-weight: 600; }
+    .btn-xs { font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: var(--r-sm); border: 1px solid var(--border); background: white; cursor: pointer; font-family: inherit; color: var(--charcoal); }
+    .btn-xs:hover { border-color: var(--green); color: var(--green-deep); }
+    .btn-xs.danger { color: var(--red); }
+    .btn-xs.danger:hover { border-color: var(--red); }
+    .note-line { font-size: 0.75rem; color: var(--gray-steel); margin: 0.4rem 0 1rem; line-height: 1.6; }
+    details.prompts { max-width: 60ch; }
+    details.prompts pre { white-space: pre-wrap; font-family: inherit; font-size: 0.75rem; background: var(--off-white); border-radius: var(--r-sm); padding: 0.5rem 0.7rem; margin-top: 0.3rem; max-height: 14rem; overflow: auto; }
+
+    /* ── layout ── */
+    #app { display: none; min-height: 100vh; }
+    .topbar { background: var(--forest); color: white; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; position: sticky; top: 0; z-index: 100; }
+    .topbar-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; font-weight: 600; color: white; text-decoration: none; }
+    .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
+    .topbar-spacer { flex: 1; }
+    .topbar-link { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; }
+    .topbar-link:hover { background: rgba(255,255,255,0.08); color: white; }
+    .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; }
+    .topbar-signout:hover { background: rgba(255,255,255,0.08); }
+    .panel { padding: 1.5rem; max-width: 1080px; margin: 0 auto; }
+    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-steel); margin: 1.5rem 0 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── buttons / badges ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: var(--r-md); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--green-deep); }
+    .btn-ghost { background: none; border: 1.5px solid var(--border); color: var(--charcoal); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--charcoal-mid); }
+    .btn-danger { background: none; border: 1.5px solid #FECACA; color: var(--red); }
+    .btn-danger:hover:not(:disabled) { background: #FEF2F2; }
+    .btn-danger-solid { background: var(--red); color: white; }
+    .btn-sm { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
+    .badge { display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: var(--r-pill); text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-yellow { background: #FEF3C7; color: #92400E; }
+    .badge-gray { background: var(--off-white); color: var(--gray-steel); border: 1px solid var(--border); }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+
+    /* ── table / cards ── */
+    .card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .table-wrap { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { text-align: left; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-steel); padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { color: var(--charcoal); }
+    th.sortable .sort-arrow { display: inline-block; width: 1em; color: var(--green); }
+    td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    td.company { font-weight: 600; }
+    td .muted { color: var(--gray-steel); font-weight: 400; }
+
+    /* ── forms ── */
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; }
+    .field label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--charcoal-mid); margin-bottom: 0.35rem; }
+    .field input, .field select { width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.85rem; font-family: inherit; outline: none; background: white; }
+    .field input:focus, .field select:focus { border-color: var(--green); }
+    .checkrow { display: flex; align-items: center; gap: 0.45rem; font-size: 0.8rem; color: var(--charcoal-mid); margin-top: 0.5rem; }
+    .form-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+    .form-note { font-size: 0.75rem; color: var(--gray-steel); }
+    .flash { border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; margin-bottom: 0.9rem; display: none; }
+    .flash-ok { background: #D1FAE5; color: #065F46; }
+    .flash-err { background: #FEF2F2; border: 1px solid #FECACA; color: var(--red); }
+
+    /* ── modal ── */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(26,26,46,0.5); display: none; align-items: center; justify-content: center; z-index: 200; padding: 1rem; }
+    .modal-backdrop.open { display: flex; }
+    .modal { background: white; border-radius: var(--r-xl); padding: 1.75rem; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 48px rgba(0,0,0,0.3); }
+    .modal h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; }
+    .warn-box { background: #FEF3C7; border: 1px solid #FDE68A; border-radius: var(--r-md); padding: 0.8rem 1rem; font-size: 0.82rem; color: #92400E; line-height: 1.6; margin-bottom: 1rem; }
+    .warn-box strong { color: #78350F; }
+  </style>
+</head>
+<body>
+
+  <!-- ── password gate ── -->
+  <div id="auth-screen">
+    <form class="auth-card" id="auth-form">
+      <h1>Sign in</h1>
+      <label for="auth-password">Password</label>
+      <input type="password" id="auth-password" autocomplete="current-password" required>
+      <div class="auth-error" id="auth-error"></div>
+      <div style="margin-top:1.25rem;">
+        <button class="btn btn-primary" type="submit" id="auth-submit">Sign in</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ── app ── -->
+  <div id="app">
+    <div class="topbar">
+      <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
+      <span class="topbar-badge">Admin</span>
+      <a class="topbar-link" href="/admin/atlas.html">Journey atlas</a>
+      <div class="topbar-spacer"></div>
+      <button class="topbar-signout" id="signout">Sign out</button>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-pane="reports">Reports</button>
+      <button class="tab-btn" data-pane="analysts">Analyst reports</button>
+      <button class="tab-btn" data-pane="users">Users</button>
+      <button class="tab-btn" data-pane="earnings">Earnings &amp; payouts</button>
+      <button class="tab-btn" data-pane="stats">Stats</button>
+      <button class="tab-btn" data-pane="promos">Promo codes</button>
+    </div>
+
+    <div class="panel tabpane" id="pane-reports">
+      <div class="flash flash-ok" id="flash-ok"></div>
+      <div class="flash flash-err" id="flash-err"></div>
+
+      <div class="section-label">Add a report</div>
+      <form class="card" id="add-form">
+        <div class="form-grid">
+          <div class="field"><label>Company name *</label><input name="companyName" required placeholder="Stora Enso"></div>
+          <div class="field"><label>Ticker</label><input name="ticker" placeholder="STERV.HE"></div>
+          <div class="field"><label>Exchange</label><input name="exchange" placeholder="Helsinki"></div>
+          <div class="field"><label>Country</label><input name="country" placeholder="Finland"></div>
+          <div class="field"><label>Sector</label><input name="sector" placeholder="Materials"></div>
+          <div class="field"><label>Report date *</label><input type="date" name="reportDate" required></div>
+          <div class="field"><label>PDF file *</label><input type="file" name="pdf" accept="application/pdf" required></div>
+        </div>
+        <label class="checkrow"><input type="checkbox" name="isFree"> Free report (otherwise standard ready-report price)</label>
+        <label class="checkrow"><input type="checkbox" name="visibleNow" checked> Visible immediately (otherwise appears after the standard delay)</label>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="add-submit">Upload &amp; publish</button>
+          <span class="form-note" id="add-status"></span>
+        </div>
+      </form>
+
+      <div class="section-label">Catalog</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th class="sortable" data-sort="companyName">Company<span class="sort-arrow"></span></th>
+            <th class="sortable" data-sort="ticker">Ticker<span class="sort-arrow"></span></th>
+            <th class="sortable" data-sort="reportDate">Report date<span class="sort-arrow"></span></th>
+            <th>Status</th>
+            <th class="sortable" data-sort="buyerCount">Buyers (12&nbsp;mo)<span class="sort-arrow"></span></th>
+            <th></th>
+          </tr></thead>
+          <tbody id="report-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── analyst publications ── -->
+    <div class="panel tabpane" id="pane-analysts" hidden>
+      <div class="section-label">Published analyst reports</div>
+      <p class="note-line">Publication is automatic; this is post-moderation. Takedown voids the bounty and every sale; Reopen sends it back to the analyst as a generating report. Feature puts it in a free window for everyone.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Company</th><th>Analyst</th><th>Published</th><th>Status</th><th>Price</th><th>Reviews</th><th>Prompts</th><th></th></tr></thead>
+        <tbody id="analyst-rows"><tr><td colspan="8" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── users ── -->
+    <div class="panel tabpane" id="pane-users" hidden>
+      <div class="section-label">Members</div>
+      <p class="note-line">Click a row for everything on the account: publications, reviews received, purchases, payouts and the last 90 days of activity. Grant next generation clears an analyst's publish obligation.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Member</th><th>Role</th><th>Plan</th><th>This month</th><th>Flags</th><th></th></tr></thead>
+        <tbody id="user-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── earnings ── -->
+    <div class="panel tabpane" id="pane-earnings" hidden>
+      <div class="section-label">Analyst earnings</div>
+      <p class="note-line">Derived from the same ledger each analyst sees, so the two cannot disagree. "Pay out" settles everything currently payable for that analyst and records the PAYOUT rows.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Analyst</th><th>Published</th><th>Sales</th><th>Gross</th><th>Ready to invoice</th><th>Held (14&nbsp;d)</th><th>Paid</th><th></th></tr></thead>
+        <tbody id="earning-rows"><tr><td colspan="8" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── stats ── -->
+    <div class="panel tabpane" id="pane-stats" hidden>
+      <div class="section-label">Activity</div>
+      <div class="stat-cards" id="stat-cards"></div>
+      <div class="section-label">By company</div>
+      <p class="note-line">Counted from member entitlements, analyst reads and sales — the permanent rows. Public free-report downloads are direct CDN links and leave no row, so they are not in these numbers.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Company</th><th>Report opens</th><th>Analyst reads</th><th>Subscriber reads</th><th>Sales</th><th>Gross</th><th>Published</th></tr></thead>
+        <tbody id="stats-rows"><tr><td colspan="7" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ── promo codes ── -->
+    <div class="panel tabpane" id="pane-promos" hidden>
+      <div class="section-label">Live promotion codes</div>
+      <p class="note-line">Everything active in Stripe live mode. A 100%-off code with no restrictions and no expiry is highlighted — that is a free-everything key anyone can type. Creating codes stays in the Stripe dashboard; here they can only be switched off.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Code</th><th>Gives</th><th>Duration</th><th>Used</th><th>Limits</th><th></th></tr></thead>
+        <tbody id="promo-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ── edit modal ── -->
+  <div class="modal-backdrop" id="edit-backdrop">
+    <form class="modal" id="edit-form">
+      <h2>Edit report</h2>
+      <div class="form-grid">
+        <div class="field"><label>Company name</label><input name="companyName"></div>
+        <div class="field"><label>Ticker</label><input name="ticker"></div>
+        <div class="field"><label>Exchange</label><input name="exchange"></div>
+        <div class="field"><label>Country</label><input name="country"></div>
+        <div class="field"><label>Sector</label><input name="sector"></div>
+        <div class="field"><label>Report date</label><input type="date" name="reportDate"></div>
+        <div class="field"><label>Visibility</label>
+          <select name="visibility">
+            <option value="visible">Visible now</option>
+            <option value="hidden">Hidden</option>
+            <option value="default">Default schedule</option>
+          </select>
+        </div>
+        <div class="field"><label>Free status</label>
+          <select name="freeStatus">
+            <option value="default">Weekly rotation (default)</option>
+            <option value="forceFree">Always free</option>
+            <option value="excludeFromFree">Never free</option>
+          </select>
+          <span class="form-note">"Never free" leaves this week's rotation untouched; it applies from the next rotation.</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Save changes</button>
+        <button class="btn btn-ghost" type="button" id="edit-cancel">Cancel</button>
+        <span class="form-note" id="edit-status"></span>
+      </div>
+    </form>
+  </div>
+
+  <!-- ── delete modal ── -->
+  <div class="modal-backdrop" id="delete-backdrop">
+    <div class="modal">
+      <h2>Delete report</h2>
+      <div class="warn-box" id="delete-warning"></div>
+      <p style="font-size:0.82rem;color:var(--charcoal-mid);line-height:1.6;margin-bottom:0.9rem;">
+        Hiding removes the report from the catalog but keeps every link that buyers
+        already received working. <strong>Deleting kills those links permanently.</strong>
+      </p>
+      <div class="field" style="margin-bottom:1rem;">
+        <label>Type the company name to enable deletion</label>
+        <input id="delete-confirm-input" autocomplete="off" placeholder="">
+      </div>
+      <div class="form-actions" style="margin-top:0;">
+        <button class="btn btn-primary" id="delete-hide-instead">Hide instead (recommended)</button>
+        <button class="btn btn-danger-solid" id="delete-really" disabled>Delete permanently</button>
+        <button class="btn btn-ghost" id="delete-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    // Same-origin in production would need the API on the site host; the API
+    // lives on its own domain, so the base is fixed here and overridable for
+    // the test stage via localStorage.setItem('aerAdminApiBase', ...).
+    const API_BASE = localStorage.getItem('aerAdminApiBase') || 'https://api.aiequityreports.com';
+    const PASSWORD_KEY = 'aerAdminPassword';
+
+    const $ = (id) => document.getElementById(id);
+    let reports = [];
+    let editing = null;   // report being edited
+    let deleting = null;  // report pending deletion
+
+    // ── auth plumbing ────────────────────────────────────────────────────────
+    function password() { return localStorage.getItem(PASSWORD_KEY) || ''; }
+
+    function signOut(message) {
+      localStorage.removeItem(PASSWORD_KEY);
+      $('app').style.display = 'none';
+      $('auth-screen').style.display = 'flex';
+      const error = $('auth-error');
+      error.textContent = message || '';
+      error.style.display = message ? 'block' : 'none';
+    }
+
+    async function api(path, options = {}) {
+      const res = await fetch(`${API_BASE}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${password()}`,
+          ...(options.headers || {}),
+        },
+      });
+      if (res.status === 401) {
+        // Wrong or rotated password: forget it and re-prompt.
+        signOut('Session rejected — the admin password may have changed. Sign in again.');
+        throw new Error('Unauthorized');
+      }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      return data;
+    }
+
+    // ── flash helpers ────────────────────────────────────────────────────────
+    function flash(kind, message) {
+      const el = $(kind === 'ok' ? 'flash-ok' : 'flash-err');
+      el.textContent = message;
+      el.style.display = 'block';
+      setTimeout(() => { el.style.display = 'none'; }, 6000);
+    }
+
+    // ── catalog list ─────────────────────────────────────────────────────────
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function statusBadge(report) {
+      if (report.availability === 'available') return '<span class="badge badge-green">Live</span>';
+      if (report.publicationStatus === 'hidden') return '<span class="badge badge-gray">Hidden</span>';
+      if (report.publicationStatus === 'expired') return '<span class="badge badge-yellow">Expired</span>';
+      return `<span class="badge badge-gray">${esc(report.publicationStatus || '—')}</span>`;
+    }
+
+    // ── sorting ──────────────────────────────────────────────────────────────
+    // 'desc' first for dates and buyer counts (newest / most-sold on top),
+    // 'asc' first for text columns.
+    let sortKey = 'reportDate';
+    let sortDir = 'desc';
+    const NUMERIC_COLUMNS = new Set(['buyerCount']);
+    const DESC_FIRST_COLUMNS = new Set(['reportDate', 'buyerCount']);
+
+    function sortReports() {
+      const dir = sortDir === 'asc' ? 1 : -1;
+      reports.sort((a, b) => {
+        if (NUMERIC_COLUMNS.has(sortKey)) return dir * ((a[sortKey] || 0) - (b[sortKey] || 0));
+        const av = String(a[sortKey] || '');
+        const bv = String(b[sortKey] || '');
+        // Rows missing a value sink to the bottom regardless of direction.
+        if (!av || !bv) return !av && !bv ? 0 : (av ? -1 : 1);
+        return dir * av.localeCompare(bv, undefined, { sensitivity: 'base' });
+      });
+    }
+
+    function renderSortArrows() {
+      document.querySelectorAll('th.sortable').forEach((th) => {
+        th.querySelector('.sort-arrow').textContent =
+          th.dataset.sort === sortKey ? (sortDir === 'asc' ? ' ↑' : ' ↓') : '';
+      });
+    }
+
+    document.querySelectorAll('th.sortable').forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (sortKey === key) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortKey = key;
+          sortDir = DESC_FIRST_COLUMNS.has(key) ? 'desc' : 'asc';
+        }
+        renderReports();
+      });
+    });
+
+    const ORIGIN_BADGE = {
+      uploaded: '<span class="badge badge-gray">Uploaded</span>',
+      order: '<span class="badge badge-blue">Fresh order</span>',
+      generation: '<span class="badge badge-yellow">Member generation</span>',
+    };
+
+    function reportRow(report, index, extra) {
+      const who = report.generatedBy
+        ? `<br><span class="muted" style="font-size:0.7rem;">by ${esc(report.generatedBy)}</span>` : '';
+      return `
+        <tr${extra || ''}>
+          <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>
+          <td>${esc(report.ticker || '—')}</td>
+          <td>${esc(report.reportDate || '—')}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
+          <td>${report.buyerCount || 0}</td>
+          <td style="text-align:right; white-space:nowrap;">
+            <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
+            <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
+          </td>
+        </tr>`;
+    }
+
+    // One row per report, its revised copies folded away behind a count. All of
+    // one order's files share a groupId, which is what turns fifteen Tesla rows
+    // into a handful — the catalog is meant to be read as reports, not files.
+    function renderReports() {
+      sortReports();
+      renderSortArrows();
+      const chains = new Map();
+      reports.forEach((report, index) => {
+        const key = report.groupId || report.id;
+        if (!chains.has(key)) chains.set(key, { main: null, revs: [] });
+        const chain = chains.get(key);
+        if (report.isRevision) chain.revs.push({ report, index });
+        else chain.main = { report, index };
+      });
+
+      const rows = [];
+      for (const [key, chain] of chains) {
+        // Every file of the chain is a revision (the base left the catalog):
+        // the newest revision fronts it rather than the chain disappearing.
+        const main = chain.main || chain.revs.shift();
+        if (!main) continue;
+        rows.push(reportRow(main.report, main.index));
+        if (chain.revs.length) {
+          const gid = esc(String(key));
+          rows.push(`<tr class="rev-toggle-row"><td colspan="6" style="padding:0.25rem 0.9rem 0.55rem;">
+            <button class="btn-xs" data-revs="${gid}">▸ ${chain.revs.length} revised ${chain.revs.length === 1 ? 'version' : 'versions'}</button>
+          </td></tr>`);
+          for (const rev of chain.revs) {
+            rows.push(reportRow(rev.report, rev.index,
+              ` class="rev-row" data-rev-of="${gid}" hidden style="background:var(--off-white);"`));
+          }
+        }
+      }
+      $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
+    }
+
+    $('report-rows').addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-revs]');
+      if (!btn) return;
+      const gid = btn.dataset.revs;
+      let shown = false;
+      document.querySelectorAll(`tr.rev-row[data-rev-of="${CSS.escape(gid)}"]`).forEach((tr) => {
+        tr.hidden = !tr.hidden;
+        shown = !tr.hidden;
+      });
+      btn.textContent = btn.textContent.replace(shown ? '▸' : '▾', shown ? '▾' : '▸');
+    });
+
+    async function refreshReports() {
+      const data = await api('/api/admin/reports');
+      reports = data.reports || [];
+      renderReports();
+    }
+
+    // ── sign in / out ────────────────────────────────────────────────────────
+    $('auth-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      $('auth-submit').disabled = true;
+      localStorage.setItem(PASSWORD_KEY, $('auth-password').value);
+      try {
+        await refreshReports();
+        $('auth-screen').style.display = 'none';
+        $('app').style.display = 'block';
+        $('auth-password').value = '';
+        $('auth-error').style.display = 'none';
+      } catch (err) {
+        if (err.message !== 'Unauthorized') signOut(err.message);
+      } finally {
+        $('auth-submit').disabled = false;
+      }
+    });
+
+    $('signout').addEventListener('click', () => signOut());
+
+    // ── add flow: presign → PUT to S3 → publish ───────────────────
+    $('add-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const status = $('add-status');
+      const file = form.pdf.files[0];
+      if (!file) return;
+      $('add-submit').disabled = true;
+      try {
+        status.textContent = 'Requesting upload URL…';
+        const { fileName, uploadUrl } = await api('/api/admin/upload-url', {
+          method: 'POST',
+          body: JSON.stringify({ companyName: form.companyName.value, reportDate: form.reportDate.value }),
+        });
+
+        status.textContent = 'Uploading PDF…';
+        const put = await fetch(uploadUrl, { method: 'PUT', headers: { 'Content-Type': 'application/pdf' }, body: file });
+        if (!put.ok) throw new Error(`S3 upload failed (${put.status})`);
+
+        status.textContent = 'Publishing…';
+        await api('/api/admin/publish', {
+          method: 'POST',
+          body: JSON.stringify({
+            fileName,
+            companyName: form.companyName.value,
+            ticker: form.ticker.value,
+            exchange: form.exchange.value,
+            country: form.country.value,
+            sector: form.sector.value,
+            reportDate: form.reportDate.value,
+            isFree: form.isFree.checked,
+            visibleNow: form.visibleNow.checked,
+          }),
+        });
+
+        await refreshReports();
+        form.reset();
+        form.visibleNow.checked = true;
+        flash('ok', `Published ${fileName}.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      } finally {
+        status.textContent = '';
+        $('add-submit').disabled = false;
+      }
+    });
+
+    // ── edit ─────────────────────────────────────────────────────────────────
+    document.addEventListener('click', (event) => {
+      const editIndex = event.target.dataset?.edit;
+      const deleteIndex = event.target.dataset?.delete;
+      if (editIndex != null) openEdit(reports[Number(editIndex)]);
+      if (deleteIndex != null) openDelete(reports[Number(deleteIndex)]);
+    });
+
+    function openEdit(report) {
+      editing = report;
+      const form = $('edit-form');
+      form.companyName.value = report.companyName || '';
+      form.ticker.value = report.ticker || '';
+      form.exchange.value = report.exchange === 'Unknown' ? '' : (report.exchange || '');
+      form.country.value = report.country || '';
+      form.sector.value = report.sector === 'Unclassified' ? '' : (report.sector || '');
+      form.reportDate.value = report.reportDate || '';
+      form.visibility.value = report.availability === 'available' ? 'visible'
+        : report.publicationStatus === 'hidden' ? 'hidden' : 'default';
+      form.freeStatus.value = report.forceFree ? 'forceFree'
+        : report.excludeFromFree ? 'excludeFromFree' : 'default';
+      $('edit-backdrop').classList.add('open');
+    }
+
+    $('edit-cancel').addEventListener('click', () => $('edit-backdrop').classList.remove('open'));
+
+    $('edit-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const patch = {
+        companyName: form.companyName.value.trim() || null,
+        ticker: form.ticker.value.trim() || null,
+        exchange: form.exchange.value.trim() || null,
+        country: form.country.value.trim() || null,
+        sector: form.sector.value.trim() || null,
+        reportDate: form.reportDate.value || null,
+      };
+      if (form.visibility.value === 'hidden') {
+        patch.hidden = true; patch.publicationStatus = 'hidden'; patch.forceVisible = null;
+      } else if (form.visibility.value === 'visible') {
+        patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = true;
+      } else {
+        patch.hidden = null; patch.publicationStatus = null; patch.forceVisible = null;
+      }
+      if (form.freeStatus.value === 'forceFree') {
+        patch.forceFree = true; patch.excludeFromFree = null;
+      } else if (form.freeStatus.value === 'excludeFromFree') {
+        patch.forceFree = null; patch.excludeFromFree = true;
+      } else {
+        patch.forceFree = null; patch.excludeFromFree = null;
+      }
+      try {
+        $('edit-status').textContent = 'Saving…';
+        await api('/api/admin/update', {
+          method: 'POST',
+          body: JSON.stringify({ fileName: editing.fileName, patch }),
+        });
+        $('edit-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `Updated ${editing.fileName}.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      } finally {
+        $('edit-status').textContent = '';
+      }
+    });
+
+    // ── delete (with the buyer warning) ────────────────────────────
+    function openDelete(report) {
+      deleting = report;
+      const buyers = report.buyerCount || 0;
+      $('delete-warning').innerHTML = buyers > 0
+        ? `<strong>${buyers} buyer${buyers === 1 ? '' : 's'}</strong> received a permanent link to
+           <strong>${esc(report.companyName)}</strong> (${esc(report.fileName)}) in the last 12 months.
+           Deleting it kills those links — they will get a broken download.`
+        : `No recorded buyers in the last 12 months for <strong>${esc(report.companyName)}</strong>
+           (${esc(report.fileName)}). Older purchases may still exist beyond the ledger window.`;
+      $('delete-confirm-input').value = '';
+      $('delete-confirm-input').placeholder = report.companyName;
+      $('delete-really').disabled = true;
+      $('delete-backdrop').classList.add('open');
+    }
+
+    $('delete-confirm-input').addEventListener('input', (event) => {
+      $('delete-really').disabled =
+        event.target.value.trim().toLowerCase() !== String(deleting?.companyName || '').trim().toLowerCase();
+    });
+
+    $('delete-cancel').addEventListener('click', () => $('delete-backdrop').classList.remove('open'));
+
+    $('delete-hide-instead').addEventListener('click', async () => {
+      try {
+        await api('/api/admin/update', {
+          method: 'POST',
+          body: JSON.stringify({
+            fileName: deleting.fileName,
+            patch: { hidden: true, publicationStatus: 'hidden', forceVisible: null },
+          }),
+        });
+        $('delete-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `${deleting.companyName} hidden — sold links keep working.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      }
+    });
+
+    $('delete-really').addEventListener('click', async () => {
+      try {
+        await api('/api/admin/delete', {
+          method: 'POST',
+          body: JSON.stringify({ fileName: deleting.fileName }),
+        });
+        $('delete-backdrop').classList.remove('open');
+        await refreshReports();
+        flash('ok', `${deleting.companyName} deleted.`);
+      } catch (err) {
+        if (err.message !== 'Unauthorized') flash('err', err.message);
+      }
+    });
+
+    // ── members admin ────────────────────────────────────────────────────────
+    // Second API, same password: both Lambdas read the same admin secret, so one
+    // sign-in unlocks both. Overridable for the test stage like API_BASE above.
+    const MEMBERS_API = localStorage.getItem('aerAdminMembersApiBase') || 'https://members.aiequityreports.com';
+
+    async function mapi(path, options = {}) {
+      const res = await fetch(`${MEMBERS_API}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${password()}`,
+          ...(options.headers || {}),
+        },
+      });
+      if (res.status === 401) { signOut('Session rejected — sign in again.'); throw new Error('Unauthorized'); }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      return data;
+    }
+
+    // ── tabs: lazy-load each pane on first open ──────────────────────────────
+    const PANE_LOADERS = {
+      analysts: loadAnalystPane,
+      users: loadUsersPane,
+      earnings: loadEarningsPane,
+      stats: loadStatsPane,
+      promos: loadPromosPane,
+    };
+    const paneLoaded = {};
+
+    $('tabs').addEventListener('click', (ev) => {
+      const btn = ev.target.closest('.tab-btn');
+      if (!btn) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tabpane').forEach(pane => { pane.hidden = pane.id !== `pane-${btn.dataset.pane}`; });
+      const loader = PANE_LOADERS[btn.dataset.pane];
+      if (loader && !paneLoaded[btn.dataset.pane]) {
+        paneLoaded[btn.dataset.pane] = true;
+        loader().catch(err => { if (err.message !== 'Unauthorized') flash('err', err.message); });
+      }
+    });
+
+    const eur = (n) => '€' + (Math.round((Number(n) || 0) * 100) / 100).toLocaleString('en-IE');
+    const day = (iso) => String(iso || '').slice(0, 10) || '—';
+    const reload = (pane) => { paneLoaded[pane] = false; PANE_LOADERS[pane]().catch(e => flash('err', e.message)); };
+
+    // ── analyst publications ─────────────────────────────────────────────────
+    async function loadAnalystPane() {
+      const { publications } = await mapi('/admin/members/publications?limit=200');
+      $('analyst-rows').innerHTML = publications.map(p => {
+        const score = p.reviewCount
+          ? `${(p.averageScore ?? p.peerScore).toFixed(1)} / 5 <span class="muted">(${p.reviewCount})</span>`
+          : '<span class="muted">none</span>';
+        const status = p.status === 'published' ? '<span class="badge badge-green">Published</span>'
+          : p.status === 'takendown' ? `<span class="badge badge-gray">Taken down</span>`
+          : `<span class="badge badge-yellow">${esc(p.status)}</span>`;
+        const acts = p.status === 'published'
+          ? `<button class="btn-xs" data-act="feature" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}">Feature free</button>
+             <button class="btn-xs danger" data-act="takedown" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}" data-name="${esc(p.companyId)}">Take down</button>`
+          : p.status === 'takendown'
+            ? `<button class="btn-xs" data-act="reopen" data-user="${esc(p.userId)}" data-gen="${esc(p.genId)}">Reopen</button>`
+            : '';
+        return `<tr>
+          <td class="company">${esc(p.companyId)}</td>
+          <td>${esc(p.analyst || p.userId.slice(0, 8))}</td>
+          <td>${day(p.publishedAt)}</td>
+          <td>${status}${p.takedownReason ? `<br><span class="muted" style="font-size:0.7rem;">${esc(p.takedownReason)}</span>` : ''}</td>
+          <td>${p.priceEur ? eur(p.priceEur) : 'free'}</td>
+          <td>${score}</td>
+          <td>${p.promptsText ? `<details class="prompts"><summary>${esc(p.promptsText.slice(0, 60))}…</summary><pre>${esc(p.promptsText)}</pre></details>` : '<span class="muted">—</span>'}</td>
+          <td style="text-align:right; white-space:nowrap;">${acts}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="8" class="muted">Nothing published yet.</td></tr>';
+    }
+
+    $('analyst-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-act]');
+      if (!btn) return;
+      const { act, user, gen, name } = btn.dataset;
+      try {
+        if (act === 'feature') {
+          const days = prompt('Free window length in days?', '14');
+          if (days === null) return;
+          await mapi('/admin/members/feature', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen, days: Number(days) || 14 }) });
+          flash('ok', 'Featured — free for everyone for ' + (Number(days) || 14) + ' days.');
+        } else if (act === 'takedown') {
+          // Money moves on this one (bounty void + sale clawback), so the same
+          // type-the-name gate as report deletion.
+          const typed = prompt(`Taking this down voids its bounty and claws back its sales.\nType the company id (${name}) to confirm:`);
+          if (typed === null) return;
+          if (typed.trim().toUpperCase() !== String(name).toUpperCase()) { flash('err', 'Name did not match — nothing done.'); return; }
+          const reason = prompt('Reason (shown to the analyst):', '') || '';
+          await mapi('/admin/members/takedown', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen, reason }) });
+          flash('ok', 'Taken down.');
+        } else if (act === 'reopen') {
+          await mapi('/admin/members/reopen', { method: 'POST', body: JSON.stringify({ userId: user, genId: gen }) });
+          flash('ok', 'Reopened — back with the analyst as a generating report.');
+        }
+        reload('analysts');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
+    // ── users ────────────────────────────────────────────────────────────────
+    let userRows = [];
+    async function loadUsersPane() {
+      const { users } = await mapi('/admin/members/users');
+      userRows = users;
+      $('user-rows').innerHTML = users.map((u, i) => {
+        const plan = u.tier === 'none' ? '<span class="muted">—</span>'
+          : `${esc(u.tier)}${u.billingInterval === 'year' ? '/yr' : ''}` +
+            (u.tierStatus !== 'active' ? ` <span class="pill-warn">${esc(u.tierStatus)}</span>` : '') +
+            (u.coverageCompanyIds.length ? `<br><span class="muted" style="font-size:0.7rem;">${esc(u.coverageCompanyIds.join(', '))}</span>` : '');
+        const flags = [
+          u.banned ? '<span class="pill-danger">banned</span>' : '',
+          u.openObligationId ? '<span class="pill-warn">owes publication</span>' : '',
+          u.openReviewId ? '<span class="pill-warn">owes review</span>' : '',
+        ].filter(Boolean).join(' ') || '<span class="muted">—</span>';
+        return `<tr class="user-row" data-i="${i}" style="cursor:pointer;">
+          <td class="company">${esc(u.name || u.email || u.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(u.email || u.userId)}</span></td>
+          <td>${esc(u.role || '—')}</td>
+          <td>${plan}</td>
+          <td>${u.usage.picks}/${u.usage.pickLimit} picks · ${u.usage.analystReads}/${u.usage.analystReadLimit} reads${u.usage.genReserved ? ' · gen used' : ''}</td>
+          <td>${flags}</td>
+          <td style="text-align:right; white-space:nowrap;">
+            ${u.role && u.role !== 'reader' ? `<button class="btn-xs" data-uact="grant" data-user="${esc(u.userId)}">Grant next generation</button>` : ''}
+            <button class="btn-xs ${u.banned ? '' : 'danger'}" data-uact="ban" data-user="${esc(u.userId)}" data-banned="${u.banned ? '1' : '0'}">${u.banned ? 'Unban' : 'Ban'}</button>
+          </td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="6" class="muted">No members yet.</td></tr>';
+    }
+
+    $('user-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-uact]');
+      if (btn) {
+        const { uact, user } = btn.dataset;
+        try {
+          if (uact === 'ban') {
+            const banning = btn.dataset.banned !== '1';
+            if (banning && !confirm('Ban this member? They keep what they bought but can do nothing new.')) return;
+            await mapi('/admin/members/ban', { method: 'POST', body: JSON.stringify({ userId: user, banned: banning }) });
+            flash('ok', banning ? 'Banned.' : 'Unbanned.');
+          } else if (uact === 'grant') {
+            if (!confirm('Clear the publish obligation and give back this month\'s generation?')) return;
+            await mapi('/admin/members/grant-generation', { method: 'POST', body: JSON.stringify({ userId: user }) });
+            flash('ok', 'Granted — their next generation is unlocked.');
+          }
+          reload('users');
+        } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+        return;
+      }
+      const row = ev.target.closest('.user-row');
+      if (!row || ev.target.closest('details')) return;
+      const existing = row.nextElementSibling;
+      if (existing && existing.classList.contains('detail-row')) { existing.remove(); return; }
+      document.querySelectorAll('.detail-row').forEach(r => r.remove());
+      const u = userRows[Number(row.dataset.i)];
+      const detailRow = document.createElement('tr');
+      detailRow.className = 'detail-row';
+      detailRow.innerHTML = '<td colspan="6"><div class="detail-box muted">Loading…</div></td>';
+      row.after(detailRow);
+      try {
+        const d = await mapi(`/admin/members/users/${encodeURIComponent(u.userId)}`);
+        detailRow.innerHTML = `<td colspan="6"><div class="detail-box">${renderUserDetail(d)}</div></td>`;
+      } catch (err) {
+        detailRow.innerHTML = `<td colspan="6"><div class="detail-box">${esc(err.message)}</div></td>`;
+      }
+    });
+
+    function renderUserDetail(d) {
+      const parts = [];
+      if (d.publications.length) {
+        parts.push('<h4>Generations & publications</h4><table><tr><th>Company</th><th>Status</th><th>Published</th><th>Price</th><th>Revisions</th><th>Prompts</th></tr>'
+          + d.publications.map(p => `<tr><td>${esc(p.companyName || p.companyId || '—')}${p.forkedFrom ? ' <span class="muted">(fork)</span>' : ''}${p.coverage ? ' <span class="muted">(coverage)</span>' : ''}</td>
+            <td>${esc(p.status)}${p.takedownReason ? ` — ${esc(p.takedownReason)}` : ''}</td><td>${day(p.publishedAt || p.reservedAt)}</td>
+            <td>${p.priceEur ? eur(p.priceEur) : '—'}</td><td>${p.revisionsUsed}/${p.revisionsAllowed}</td>
+            <td>${p.promptsText ? `<details class="prompts"><summary>show</summary><pre>${esc(p.promptsText)}</pre></details>` : '—'}</td></tr>`).join('') + '</table>');
+      }
+      if (d.reviewsReceived.length) {
+        parts.push('<h4>Reviews received</h4><table><tr><th>Analysis</th><th>Reviewer</th><th>Score</th><th>Comment</th><th></th></tr>'
+          + d.reviewsReceived.map(r => `<tr${r.voided ? ' style="opacity:.5;"' : ''}><td>${esc(r.genId.slice(0, 8))}</td><td>${esc(r.reviewerId.slice(0, 8))}</td>
+            <td>${r.score}${r.voided ? ' <span class="pill-warn">voided</span>' : ''}${r.edits ? ` <span class="muted">(${r.edits} edits)</span>` : ''}</td>
+            <td style="max-width:34ch;">${esc(String(r.comment).slice(0, 160))}</td>
+            <td>${r.voided ? '' : `<button class="btn-xs danger" data-void="1" data-owner="${esc(d.profile.userId)}" data-gen="${esc(r.genId)}" data-reviewer="${esc(r.reviewerId)}">Void</button>`}</td></tr>`).join('') + '</table>');
+      }
+      if (d.sales.length) {
+        parts.push('<h4>Sales of their work</h4>' + d.sales.map(sl => `${day(sl.soldAt)} · ${esc(sl.companyId || sl.genId.slice(0, 8))} · ${eur(sl.grossEur)}`).join('<br>'));
+      }
+      if (d.payouts.length) {
+        parts.push('<h4>Payouts</h4>' + d.payouts.map(po => `${day(po.paidAt)} · ${esc(po.kind)} · ${eur(po.amount)}`).join('<br>'));
+      }
+      if (d.entitlements.length) {
+        parts.push(`<h4>Reports opened (${d.entitlements.length})</h4>` + d.entitlements.slice(0, 30).map(e => `${esc(e.reportId)} <span class="muted">(${esc(e.source || '?')})</span>`).join('<br>')
+          + (d.entitlements.length > 30 ? `<br><span class="muted">…and ${d.entitlements.length - 30} more</span>` : ''));
+      }
+      if (d.reads.length) {
+        parts.push(`<h4>Analyst reads (${d.reads.length})</h4>` + d.reads.slice(0, 20).map(r => `${day(r.openedAt)} · ${esc(r.genId.slice(0, 8))}`).join('<br>'));
+      }
+      if (d.topups.length) {
+        parts.push('<h4>Top-ups</h4>' + d.topups.map(t => `${esc(t.month)} · ${t.units} ${esc(t.kind)}`).join('<br>'));
+      }
+      if (d.audit.length) {
+        parts.push('<h4>Recent activity (90-day window)</h4>' + d.audit.slice(0, 25).map(a => `${esc(a.at)} · ${esc(a.type)}`).join('<br>'));
+      }
+      return parts.join('') || '<span class="muted">Nothing on this account yet.</span>';
+    }
+
+    // Void buttons live inside the detail box, which is re-rendered per open, so
+    // the handler sits on the table and survives.
+    $('user-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-void]');
+      if (!btn) return;
+      ev.stopPropagation();
+      if (!confirm('Void this review? Its score comes out of the totals; the row stays, flagged.')) return;
+      try {
+        await mapi('/admin/members/void-review', {
+          method: 'POST',
+          body: JSON.stringify({ ownerId: btn.dataset.owner, genId: btn.dataset.gen, reviewerId: btn.dataset.reviewer }),
+        });
+        flash('ok', 'Voided — the analysis shows its average without it.');
+        btn.closest('.detail-row')?.remove();
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    }, true);
+
+    // ── earnings ─────────────────────────────────────────────────────────────
+    async function loadEarningsPane() {
+      const data = await mapi('/admin/members/earnings');
+      const analysts = data.analysts || data.owed || [];
+      $('earning-rows').innerHTML = analysts.map(a => `<tr>
+        <td class="company">${esc(a.analyst || a.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(a.email || '')}</span></td>
+        <td>${a.published || 0}</td>
+        <td>${a.salesCount || 0}${a.readsCount ? ` <span class="muted">+ ${a.readsCount} reads</span>` : ''}</td>
+        <td>${eur(a.grossSales)}</td>
+        <td><strong>${eur(a.readyToInvoice)}</strong></td>
+        <td>${eur(a.held)}</td>
+        <td>${eur(a.paid)}${a.clawback ? ` <span class="pill-danger">${eur(a.clawback)} clawed</span>` : ''}</td>
+        <td style="text-align:right;">${a.readyToInvoice > 0
+          ? `<button class="btn-xs" data-pay="${esc(a.userId)}" data-amount="${a.readyToInvoice}">Pay out ${eur(a.readyToInvoice)}</button>` : ''}</td>
+      </tr>`).join('') || '<tr><td colspan="8" class="muted">Nobody is owed anything.</td></tr>';
+    }
+
+    $('earning-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-pay]');
+      if (!btn) return;
+      // Recording a payout is stating that money left the bank — hence the gate.
+      const typed = prompt(`This records ${eur(btn.dataset.amount)} as PAID for this analyst.\nDo it only after the invoice is actually settled.\nType PAID to confirm:`);
+      if (typed === null) return;
+      if (typed.trim().toUpperCase() !== 'PAID') { flash('err', 'Not confirmed — nothing recorded.'); return; }
+      try {
+        const res = await mapi('/admin/members/payout', { method: 'POST', body: JSON.stringify({ userId: btn.dataset.pay }) });
+        flash('ok', `Recorded — ${eur(res.total)} marked paid.`);
+        reload('earnings');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
+    // ── stats ────────────────────────────────────────────────────────────────
+    async function loadStatsPane() {
+      const { totals, byCompany } = await mapi('/admin/members/stats');
+      $('stat-cards').innerHTML = [
+        [totals.users, 'Members'],
+        [totals.publications, 'Published analyses'],
+        [totals.entitlements, 'Reports opened'],
+        [totals.analystReads, 'Analyst reads'],
+        [totals.sales, 'Analysis sales'],
+        [eur(totals.grossEur), 'Gross analysis sales'],
+        [totals.topups, 'Top-ups bought'],
+        [eur(totals.payoutsEur), 'Paid to analysts'],
+      ].map(([n, l]) => `<div class="stat-card"><div class="num">${n}</div><div class="lbl">${l}</div></div>`).join('');
+      $('stats-rows').innerHTML = byCompany.map(c => `<tr>
+        <td class="company">${esc(c.companyId)}</td>
+        <td>${c.reportOpens}</td><td>${c.analystReads}</td><td>${c.subscriberReads}</td>
+        <td>${c.sales}</td><td>${c.grossEur ? eur(c.grossEur) : '—'}</td><td>${c.published}</td>
+      </tr>`).join('') || '<tr><td colspan="7" class="muted">No activity yet.</td></tr>';
+    }
+
+    // ── promo codes ──────────────────────────────────────────────────────────
+    async function loadPromosPane() {
+      const { codes } = await mapi('/admin/members/promo-codes');
+      const live = codes.filter(c => c.active);
+      $('promo-rows').innerHTML = live.map(c => {
+        const gives = c.percentOff ? `${c.percentOff}% off` : c.amountOffEur ? `${eur(c.amountOffEur)} off` : '—';
+        const dangerous = c.percentOff === 100 && !c.maxRedemptions && !c.expiresAt && !c.restrictions;
+        const limits = [
+          c.maxRedemptions ? `max ${c.maxRedemptions}` : '',
+          c.expiresAt ? `until ${day(c.expiresAt)}` : '',
+          c.restrictions || '',
+        ].filter(Boolean).join(' · ') || (dangerous ? '<span class="pill-danger">none — free everything</span>' : '<span class="muted">none</span>');
+        return `<tr${dangerous ? ' style="background:#FEF2F2;"' : ''}>
+          <td class="company">${esc(c.code)}</td>
+          <td>${gives}</td>
+          <td>${esc(c.duration || '—')}</td>
+          <td>${c.timesRedeemed}</td>
+          <td>${limits}</td>
+          <td style="text-align:right;"><button class="btn-xs danger" data-promo="${esc(c.promoId)}" data-code="${esc(c.code)}">Deactivate</button></td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="6" class="muted">No active codes.</td></tr>';
+    }
+
+    $('promo-rows').addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-promo]');
+      if (!btn) return;
+      if (!confirm(`Deactivate ${btn.dataset.code}? Anyone typing it after this gets "invalid code". Cannot be reactivated here.`)) return;
+      try {
+        await mapi('/admin/members/promo-deactivate', { method: 'POST', body: JSON.stringify({ promoId: btn.dataset.promo }) });
+        flash('ok', `${btn.dataset.code} deactivated.`);
+        reload('promos');
+      } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+    });
+
+    // ── boot: stored password → straight in; otherwise show the gate ────────
+    // A wrong password keeps the gate up; an unreachable reports API does not —
+    // the members tabs are a different origin and may be fine, and an admin
+    // locked out of everything because one API is down can fix nothing.
+    (async () => {
+      if (!password()) return;
+      try {
+        await refreshReports();
+      } catch (err) {
+        if (err.message === 'Unauthorized') return;
+        flash('err', 'Report catalog unreachable: ' + err.message + ' — the other tabs still work.');
+      }
+      $('auth-screen').style.display = 'none';
+      $('app').style.display = 'block';
+    })();
+  </script>
+</body>
+</html>

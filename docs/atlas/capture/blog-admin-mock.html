@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function () {
+  // Signed in against a stubbed GitHub API: the token is already stored, and
+  // every repo read below answers with the same shapes github.com returns.
+  const TAB = new URLSearchParams(location.search).get('tab') || 'posts';
+  localStorage.setItem('valu_admin_token', 'ghp_mocktoken0000000000000000000000');
+
+  const b64 = (obj) => btoa(unescape(encodeURIComponent(JSON.stringify(obj, null, 2))));
+
+  const PRS = [
+    { number: 41, title: 'Blog: Is KONE stock overvalued in 2026?', created_at: '2026-08-30T18:42:00Z',
+      head: { ref: 'blog/is-kone-stock-overvalued' },
+      body: 'Humanizer score: 44\nAngle: KONE trades at a service-business multiple while two thirds of its order book is new equipment. This walks the split apart with our own numbers.\nFactcheck: pass\nOnpage: pass' },
+    { number: 40, title: 'Blog: Best Nordic dividend stocks for 2026', created_at: '2026-08-28T18:31:00Z',
+      head: { ref: 'blog/best-nordic-dividend-stocks' },
+      body: 'Humanizer score: 38\nAngle: Auto-selected from the queue. Payout ratios and cover across Helsinki, Stockholm, Oslo and Copenhagen, ranked on what the cash flow actually supports.\nFactcheck: pass' },
+    { number: 39, title: 'Blog: What a discounted cash flow model really assumes', created_at: '2026-08-26T18:30:00Z',
+      head: { ref: 'blog/what-a-dcf-really-assumes' },
+      body: 'Humanizer score: 46\nAngle: Every DCF hides four judgement calls. Here they are, priced on Neste.\nFactcheck: pass\nOnpage: pass' },
+  ];
+
+  const PUBLISHED_FILES = [
+    { name: 'can-ai-analyze-stocks.json' },
+    { name: 'investing-in-helsinki-listed-stocks.json' },
+    { name: 'how-to-value-a-stock.json' },
+    { name: 'nokia-stock-analysis-2026.json' },
+  ];
+
+  const PUBLISHED_META = {
+    'can-ai-analyze-stocks': { title: 'Can AI analyze stocks? What it does well, and where it still fails',
+      datePublished: '2026-08-19', authorId: 'author-1' },
+    'investing-in-helsinki-listed-stocks': { title: 'Investing in Helsinki-listed stocks: a practical guide',
+      datePublished: '2026-08-12', authorId: 'author-2' },
+    'how-to-value-a-stock': { title: 'How to value a stock: DCF, multiples and scenarios, step by step',
+      datePublished: '2026-07-31', authorId: 'author-1' },
+    'nokia-stock-analysis-2026': { title: 'Nokia stock analysis 2026: the licensing tail is the whole case',
+      datePublished: '2026-07-16', authorId: 'author-2' },
+  };
+
+  const realFetch = window.fetch.bind(window);
+
+  async function repoFile(path) {
+    const res = await realFetch('/' + path);
+    const text = await res.text();
+    return { content: btoa(unescape(encodeURIComponent(text))), sha: 'mock' + path.length };
+  }
+
+  const ROUTES = [
+    [/\/user$/, () => ({ login: 'valuatum-admin' })],
+    [/\/pulls\?/, () => PRS],
+    [/\/contents\/blog-content$/, () => PUBLISHED_FILES],
+    [/\/contents\/blog-content\/(.+)\.json/, (m) => ({
+      content: b64(PUBLISHED_META[m[1]] || { title: m[1], datePublished: '2026-08-01', authorId: 'author-1' }),
+      sha: 'mocksha',
+    })],
+    [/\/contents\/blog-system\/topic-queue\.json/, () => repoFile('blog-system/topic-queue.json')],
+    [/\/contents\/blog-system\/authors\.json/, () => repoFile('blog-system/authors.json')],
+  ];
+
+  window.fetch = function (input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('api.github.com') === -1 && url.indexOf('/api/auth') === -1) {
+      return realFetch(input, init);
+    }
+    if (url.indexOf('/api/auth') !== -1) {
+      return Promise.resolve(new Response(JSON.stringify({ token: 'ghp_mocktoken' }),
+        { status: 200, headers: { 'content-type': 'application/json' } }));
+    }
+    for (const [re, make] of ROUTES) {
+      const m = url.match(re);
+      if (m) {
+        return Promise.resolve(make(m)).then((body) => new Response(JSON.stringify(body), {
+          status: 200, headers: { 'content-type': 'application/json' },
+        }));
+      }
+    }
+    return Promise.resolve(new Response(JSON.stringify({ message: 'unmocked ' + url }), { status: 404 }));
+  };
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (TAB !== 'posts' && typeof switchTab === 'function') switchTab(TAB);
+      setTimeout(function () {
+        document.body.setAttribute('data-rects', JSON.stringify({
+          __page: [0, 0, document.documentElement.scrollWidth,
+                   Math.ceil(document.documentElement.scrollHeight)],
+        }));
+      }, 700);
+    }, 600);
+  });
+})();
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Admin — Valuatum</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3D9E72; --green-light: #6DBFA0; --green-deep: #2D7A58;
+      --forest: #1B3A2D; --charcoal: #1A1A2E; --charcoal-mid: #4A4A6A;
+      --gray-steel: #7A7A9A; --off-white: #F8F8FC; --white: #FFFFFF;
+      --border: #E5E5EF; --gold: #D4A843; --red: #C0392B;
+      --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--charcoal); font-size: 0.875rem; }
+    a { color: var(--green); }
+
+    /* ── auth ── */
+    #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--forest); }
+    .auth-card { background: white; border-radius: var(--r-xl); padding: 2.5rem; width: 100%; max-width: 420px; box-shadow: 0 24px 48px rgba(0,0,0,0.25); }
+    .auth-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
+    .auth-logo-mark { width: 36px; height: 36px; background: var(--forest); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; }
+    .auth-logo-mark svg { width: 20px; height: 20px; }
+    .auth-logo-text { font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+    .auth-logo-sub { font-size: 0.75rem; color: var(--gray-steel); }
+    .auth-card h1 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .auth-card p { font-size: 0.8rem; color: var(--gray-steel); margin-bottom: 1.5rem; line-height: 1.6; }
+    .auth-card label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .auth-card input { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.875rem; font-family: inherit; outline: none; transition: border-color 0.15s; }
+    .auth-card input:focus { border-color: var(--green); }
+    .auth-hint { font-size: 0.75rem; color: var(--gray-steel); margin-top: 0.5rem; margin-bottom: 1.25rem; line-height: 1.6; }
+    .auth-hint a { color: var(--green); }
+    .auth-error { background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; color: var(--red); margin-bottom: 1rem; display: none; }
+
+    /* ── layout ── */
+    #app { display: none; min-height: 100vh; }
+    .topbar { background: var(--forest); color: white; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; position: sticky; top: 0; z-index: 100; }
+    .topbar-logo { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; font-weight: 600; color: white; text-decoration: none; }
+    .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
+    .topbar-spacer { flex: 1; }
+    .topbar-user { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+    .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+    .topbar-signout:hover { background: rgba(255,255,255,0.08); }
+    .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; overflow-x: auto; }
+    .tab-btn { font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none; cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; transition: color 0.15s; white-space: nowrap; }
+    .tab-btn:hover { color: var(--charcoal); }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; }
+    .tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; background: var(--green); color: white; border-radius: var(--r-pill); font-size: 0.65rem; font-weight: 700; margin-left: 0.4rem; padding: 0 4px; }
+    .tab-count.zero { background: var(--border); color: var(--gray-steel); }
+    .panel { display: none; padding: 1.5rem; max-width: 980px; margin: 0 auto; }
+    .panel.active { display: block; }
+
+    /* ── buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: var(--r-md); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: opacity 0.15s, background 0.15s, border-color 0.15s; text-decoration: none; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--green-deep); }
+    .btn-ghost { background: none; border: 1.5px solid var(--border); color: var(--charcoal); }
+    .btn-ghost:hover:not(:disabled) { border-color: var(--charcoal-mid); }
+    .btn-danger { background: none; border: 1.5px solid #FECACA; color: var(--red); }
+    .btn-danger:hover:not(:disabled) { background: #FEF2F2; }
+    .btn-sm { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
+
+    /* ── badges ── */
+    .badge { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: var(--r-pill); text-transform: uppercase; letter-spacing: 0.04em; }
+    .badge-green { background: #D1FAE5; color: #065F46; }
+    .badge-yellow { background: #FEF3C7; color: #92400E; }
+    .badge-gray { background: var(--off-white); color: var(--gray-steel); border: 1px solid var(--border); }
+    .badge-red { background: #FEE2E2; color: #991B1B; }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+
+    /* ── cards ── */
+    .card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-steel); margin: 1.5rem 0 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .section-label:first-child { margin-top: 0; }
+    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--gray-steel); font-size: 0.875rem; }
+    .empty-state .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+    /* ── post card (pending) ── */
+    .post-card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); margin-bottom: 0.75rem; overflow: hidden; }
+    .post-card-head { padding: 1.1rem 1.4rem 0; }
+    .post-card-title { font-size: 0.95rem; font-weight: 600; color: var(--charcoal); line-height: 1.4; margin-bottom: 0.5rem; }
+    .post-card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+    .post-card-meta { font-size: 0.73rem; color: var(--gray-steel); margin-bottom: 0.9rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .post-card-body { padding: 0 1.4rem; }
+    .post-card-excerpt { font-size: 0.8rem; color: var(--charcoal-mid); line-height: 1.6; padding: 0.75rem; background: var(--off-white); border-radius: var(--r-md); margin-bottom: 0.9rem; border-left: 3px solid var(--green-light); }
+    .post-card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; padding: 0.9rem 1.4rem; border-top: 1px solid var(--border); background: #FAFAFA; align-items: center; }
+    .post-card-actions .spacer { flex: 1; }
+
+    /* ── published post row ── */
+    .pub-row { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.85rem 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
+    .pub-row-info { flex: 1; min-width: 0; }
+    .pub-row-title { font-weight: 500; color: var(--charcoal); font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pub-row-meta { font-size: 0.72rem; color: var(--gray-steel); margin-top: 0.2rem; }
+
+    /* ── topic rows ── */
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-btn { padding: 0.3rem 0.8rem; border-radius: var(--r-pill); font-size: 0.78rem; font-weight: 500; border: 1.5px solid var(--border); background: white; cursor: pointer; font-family: inherit; color: var(--gray-steel); transition: all 0.15s; }
+    .filter-btn:hover { border-color: var(--green); color: var(--green); }
+    .filter-btn.active { background: var(--green); border-color: var(--green); color: white; }
+    .topic-row { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.85rem 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .topic-row[data-status="published"] { opacity: 0.5; }
+    .topic-row-body { flex: 1; min-width: 0; }
+    .topic-query { font-weight: 500; color: var(--charcoal); font-size: 0.875rem; margin-bottom: 0.2rem; }
+    .topic-meta { font-size: 0.72rem; color: var(--gray-steel); }
+    .topic-notes { font-size: 0.78rem; color: var(--charcoal-mid); margin-top: 0.3rem; line-height: 1.5; }
+    .topic-actions { display: flex; gap: 0.4rem; align-items: center; flex-shrink: 0; }
+
+    /* ── idea form ── */
+    .idea-card { background: white; border: 2px solid var(--green-light); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+    .idea-card h3 { font-size: 0.875rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .idea-card p { font-size: 0.78rem; color: var(--gray-steel); margin-bottom: 1rem; }
+    .idea-grid { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: start; }
+    @media (max-width: 600px) { .idea-grid { grid-template-columns: 1fr; } }
+    .idea-input { width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.875rem; font-family: inherit; outline: none; transition: border-color 0.15s; }
+    .idea-input:focus { border-color: var(--green); }
+    .idea-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+    @media (max-width: 600px) { .idea-extras { grid-template-columns: 1fr; } }
+    .idea-extras select, .idea-extras input { width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.8rem; font-family: inherit; outline: none; color: var(--charcoal); background: white; transition: border-color 0.15s; }
+    .idea-extras select:focus, .idea-extras input:focus { border-color: var(--green); }
+
+    /* ── author cards ── */
+    .author-card { background: white; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
+    .author-head { display: flex; gap: 1rem; align-items: flex-start; }
+    .author-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; background: var(--off-white); }
+    .author-name { font-weight: 600; color: var(--charcoal); margin-bottom: 0.15rem; }
+    .author-role { font-size: 0.8rem; color: var(--gray-steel); }
+    .author-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+    .author-form .full { grid-column: 1 / -1; }
+    .form-field label { display: block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-steel); margin-bottom: 0.3rem; }
+    .form-field input, .form-field textarea { width: 100%; padding: 0.55rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--r-md); font-size: 0.85rem; font-family: inherit; outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--green); }
+    .form-actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
+    .todo-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: #FEF3C7; color: #92400E; padding: 0.15rem 0.5rem; border-radius: var(--r-pill); margin-left: 0.35rem; }
+
+    /* ── routine tab ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-box { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.1rem 1.25rem; }
+    .stat-box-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-steel); margin-bottom: 0.35rem; }
+    .stat-box-value { font-size: 0.95rem; font-weight: 600; color: var(--charcoal); line-height: 1.3; }
+    .stat-box-sub { font-size: 0.73rem; color: var(--gray-steel); margin-top: 0.2rem; }
+    .run-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+    .run-row:last-child { border-bottom: none; }
+    .run-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .run-dot-success { background: var(--green); }
+    .run-dot-fail { background: var(--red); }
+    .run-dot-running { background: var(--gold); animation: pulse 1.2s ease-in-out infinite; }
+    .run-dot-queued { background: var(--gray-steel); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .run-info { flex: 1; }
+    .run-title { font-size: 0.8rem; font-weight: 500; color: var(--charcoal); }
+    .run-meta { font-size: 0.72rem; color: var(--gray-steel); margin-top: 0.15rem; }
+
+    /* ── misc ── */
+    .spinner { display: inline-block; width: 13px; height: 13px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner-dark { border-color: rgba(0,0,0,0.15); border-top-color: var(--charcoal); }
+    .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--charcoal); color: white; padding: 0.7rem 1.1rem; border-radius: var(--r-lg); font-size: 0.85rem; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 999; transform: translateY(80px); opacity: 0; transition: transform 0.25s, opacity 0.25s; max-width: 360px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--green-deep); }
+    .toast.error { background: var(--red); }
+    @media (max-width: 600px) { .author-form { grid-template-columns: 1fr; } .author-form .full { grid-column: 1; } }
+
+    /* ── article preview / edit modal ── */
+    .am-overlay { position:fixed; inset:0; background:rgba(26,26,46,0.6); z-index:200; overflow-y:auto; padding:2rem 1rem; display:none; }
+    .am-overlay.open { display:block; }
+    .am-sheet { background:white; max-width:880px; margin:0 auto; border-radius:var(--r-xl); overflow:hidden; }
+    .am-head { background:var(--forest); color:white; padding:0.85rem 1.25rem; display:flex; align-items:center; gap:0.75rem; }
+    .am-close { background:none; border:none; color:rgba(255,255,255,0.6); cursor:pointer; font-size:1.1rem; line-height:1; padding:0.2rem 0.4rem; flex-shrink:0; }
+    .am-close:hover { color:white; }
+    .am-head-title { font-weight:600; font-size:0.875rem; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .am-tabs { display:flex; gap:0.15rem; background:rgba(255,255,255,0.12); border-radius:var(--r-pill); padding:0.2rem; flex-shrink:0; }
+    .am-tab { background:none; border:none; color:rgba(255,255,255,0.6); cursor:pointer; font-family:inherit; font-size:0.78rem; font-weight:500; padding:0.28rem 0.85rem; border-radius:var(--r-pill); transition:all 0.15s; white-space:nowrap; }
+    .am-tab.active { background:white; color:var(--forest); }
+    .am-body { padding:2rem; max-height:calc(100vh - 11rem); overflow-y:auto; }
+    .am-article h1 { font-size:1.45rem; font-weight:700; line-height:1.3; margin-bottom:0.6rem; }
+    .am-article h2 { font-size:1.05rem; font-weight:600; margin:1.75rem 0 0.55rem; }
+    .am-article p { line-height:1.75; font-size:0.9rem; margin-bottom:0.85rem; }
+    .am-article a { color:var(--green); }
+    .am-article table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.84rem; }
+    .am-article th { background:var(--off-white); padding:0.45rem 0.7rem; text-align:left; font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.04em; border-bottom:2px solid var(--border); }
+    .am-article td { padding:0.45rem 0.7rem; border-bottom:1px solid var(--border); }
+    .am-article ul, .am-article ol { padding-left:1.4rem; margin-bottom:0.85rem; }
+    .am-article li { font-size:0.9rem; line-height:1.7; margin-bottom:0.2rem; }
+    .am-meta-bar { display:flex; gap:0.4rem; flex-wrap:wrap; padding:0.75rem 0 1.25rem; border-bottom:1px solid var(--border); margin-bottom:1.5rem; }
+    .am-faq-item { margin-bottom:1rem; }
+    .am-faq-q { font-weight:600; font-size:0.88rem; margin-bottom:0.3rem; }
+    .am-faq-a { font-size:0.85rem; color:var(--charcoal-mid); line-height:1.65; }
+    .am-sources { list-style:none; padding:0; }
+    .am-sources li { font-size:0.82rem; padding:0.3rem 0; border-bottom:1px solid var(--border); }
+    .am-sources li:last-child { border-bottom:none; }
+    .am-edit-field { margin-bottom:0.9rem; }
+    .am-edit-field label { display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-steel); margin-bottom:0.3rem; }
+    .am-edit-field input, .am-edit-field textarea { width:100%; padding:0.55rem 0.75rem; border:1.5px solid var(--border); border-radius:var(--r-md); font-size:0.875rem; font-family:inherit; outline:none; transition:border-color 0.15s; resize:vertical; }
+    .am-edit-field input:focus, .am-edit-field textarea:focus { border-color:var(--green); }
+    .am-edit-field .hint { font-size:0.72rem; color:var(--gray-steel); margin-top:0.25rem; }
+    .am-section-block { border:1px solid var(--border); border-radius:var(--r-lg); padding:1rem; margin-bottom:0.6rem; }
+    .am-section-num { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-steel); margin-bottom:0.6rem; }
+    .am-save-bar { position:sticky; bottom:0; background:white; padding:0.85rem 0; border-top:1px solid var(--border); margin-top:1.25rem; display:flex; gap:0.5rem; align-items:center; }
+    .am-save-note { font-size:0.72rem; color:var(--gray-steel); }
+  </style>
+</head>
+<body>
+
+<!-- ── Auth ── -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="auth-logo-text">Valuatum</div>
+        <div class="auth-logo-sub">Blog Admin</div>
+      </div>
+    </div>
+    <h1>Admin</h1>
+    <p>Enter the admin password to access the blog dashboard.</p>
+    <div id="auth-error" class="auth-error"></div>
+    <label for="token-input">Password</label>
+    <input type="password" id="token-input" placeholder="••••••••" autocomplete="current-password">
+    <button class="btn btn-primary" id="connect-btn" onclick="connect()" style="width:100%; justify-content:center; padding:0.75rem; font-size:0.9rem; margin-top:1.25rem;">
+      Sign in
+    </button>
+  </div>
+</div>
+
+<!-- ── App ── -->
+<div id="app">
+  <div class="topbar">
+    <a class="topbar-logo" href="https://www.aiequityreports.com" target="_blank">
+      <div class="topbar-logo-dot"></div>
+      Valuatum
+    </a>
+    <span class="topbar-badge">Blog Admin</span>
+    <div class="topbar-spacer"></div>
+    <span class="topbar-user" id="topbar-user"></span>
+    <button class="topbar-signout" onclick="signOut()">Sign out</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-posts" onclick="switchTab('posts')">
+      Posts <span class="tab-count zero" id="count-posts">0</span>
+    </button>
+    <button class="tab-btn" id="tab-topics" onclick="switchTab('topics')">
+      Topics <span class="tab-count zero" id="count-topics">0</span>
+    </button>
+    <button class="tab-btn" id="tab-authors" onclick="switchTab('authors')">
+      Authors
+    </button>
+    <button class="tab-btn" id="tab-routine" onclick="switchTab('routine')">
+      Routine
+    </button>
+  </div>
+
+  <!-- ── Posts ── -->
+  <div class="panel active" id="panel-posts">
+    <div class="idea-card" id="gen-card-wrapper" style="margin-bottom:1.25rem; border-color: var(--green);">
+      <h3>Want to generate a post now?</h3>
+      <p>Open Claude Code and paste the prompt below. The draft appears here when Claude is done — then just hit Publish.</p>
+      <div id="gen-card-body" style="margin-top:0.75rem; font-size:0.8rem; color:var(--gray-steel);">Loading queue…</div>
+    </div>
+    <div id="posts-content">
+      <div class="empty-state"><div class="icon">⏳</div>Loading...</div>
+    </div>
+  </div>
+
+  <!-- ── Topics ── -->
+  <div class="panel" id="panel-topics">
+
+    <!-- Idea submission -->
+    <div class="idea-card">
+      <h3>Suggest a topic for the AI</h3>
+      <p>The AI pipeline will research, draft, and submit it for your review. Ideas go into the queue immediately.</p>
+      <div class="idea-grid">
+        <input class="idea-input" id="idea-topic" placeholder="e.g. Is Kone stock overvalued? / Best Nordic dividend stocks / How does DCF work?" maxlength="200">
+        <button class="btn btn-primary" onclick="submitIdea(this)">Add to queue</button>
+      </div>
+      <div class="idea-extras">
+        <select id="idea-cluster">
+          <option value="company-deep-dives">Company deep dive</option>
+          <option value="helsinki-stocks">Helsinki stocks</option>
+          <option value="valuation-methodology">Valuation methodology</option>
+          <option value="ai-equity-research">AI equity research</option>
+        </select>
+        <input class="idea-input" id="idea-notes" placeholder="Notes for the AI (optional)" maxlength="300" style="padding:0.55rem 0.75rem; font-size:0.8rem;">
+      </div>
+    </div>
+
+    <div id="topics-content">
+      <div class="empty-state"><div class="icon">⏳</div>Loading...</div>
+    </div>
+  </div>
+
+  <!-- ── Authors ── -->
+  <div class="panel" id="panel-authors">
+    <div id="authors-content">
+      <div class="empty-state"><div class="icon">⏳</div>Loading...</div>
+    </div>
+  </div>
+
+  <!-- ── Routine ── -->
+  <div class="panel" id="panel-routine">
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-box-label">Schedule</div>
+        <div class="stat-box-value">Mon · Wed · Fri</div>
+        <div class="stat-box-sub">21:30 Helsinki — full pipeline</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Topic proposals</div>
+        <div class="stat-box-value">Sunday</div>
+        <div class="stat-box-sub">21:30 Helsinki — queue refresh</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Next run</div>
+        <div class="stat-box-value" id="routine-next">—</div>
+        <div class="stat-box-sub" id="routine-next-sub"></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Model</div>
+        <div class="stat-box-value">Claude Opus 4.8</div>
+        <div class="stat-box-sub">Cloud routine · your subscription</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem;">
+        <span style="font-weight:600; font-size:0.875rem;">Recent runs</span>
+        <button class="btn btn-ghost btn-sm" onclick="loadRuns()">Refresh</button>
+      </div>
+      <div id="runs-content"><div style="text-align:center; padding:1.5rem; color:var(--gray-steel); font-size:0.8rem;">Loading...</div></div>
+    </div>
+
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+      <a class="btn btn-primary" href="https://claude.ai/code/routines/trig_01KFy9nJugM7s5wsqH2J4CoB" target="_blank" rel="noopener">
+        Manage routine in Claude →
+      </a>
+      <span style="font-size:0.75rem; color:var(--gray-steel);">Trigger, pause, or edit the schedule from claude.ai/code/routines</span>
+    </div>
+    <p style="font-size:0.72rem; color:var(--gray-steel); margin-top:0.75rem; line-height:1.6;">
+      Runs use Claude Opus 4.8 on your Claude Code subscription — no separate API key needed.
+      Each full run takes 20–60 min. Generated articles appear in <strong>Posts → Awaiting review</strong> for your approval.
+    </p>
+  </div>
+</div>
+
+<!-- ── Article preview / edit modal ── -->
+<div id="am-overlay" class="am-overlay" onclick="amOverlayClick(event)">
+  <div class="am-sheet" id="am-sheet">
+    <div class="am-head">
+      <button class="am-close" onclick="closeArticleModal()">✕</button>
+      <div class="am-head-title" id="am-head-title">Loading…</div>
+      <div class="am-tabs">
+        <button class="am-tab active" id="am-tab-preview" onclick="switchArticleTab('preview')">Preview</button>
+        <button class="am-tab" id="am-tab-edit" onclick="switchArticleTab('edit')">Edit</button>
+      </div>
+    </div>
+    <div class="am-body" id="am-body">
+      <div class="empty-state"><div class="icon">⏳</div>Loading…</div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const REPO = 'ValuatumOy/Osakeanalyysi-nettisivut';
+const API  = 'https://api.github.com';
+const SITE = 'https://www.aiequityreports.com';
+let TOKEN  = '';
+
+// ── GitHub API ──────────────────────────────────────────────────────────────
+async function gh(method, path, body) {
+  const res = await fetch(`${API}${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(body ? { 'Content-Type': 'application/json' } : {}),
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `HTTP ${res.status}`);
+  }
+  if (res.status === 204) return null;
+  return res.json();
+}
+
+async function getFile(filePath, branch) {
+  const q = branch ? `?ref=${encodeURIComponent(branch)}` : '';
+  const data = await gh('GET', `/repos/${REPO}/contents/${filePath}${q}`);
+  const text = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+  return { json: JSON.parse(text), sha: data.sha };
+}
+
+async function putFile(filePath, json, sha, message, branch) {
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(json, null, 2) + '\n')));
+  const body = { message, content, sha };
+  if (branch) body.branch = branch;
+  return gh('PUT', `/repos/${REPO}/contents/${filePath}`, body);
+}
+
+// ── Auth ─────────────────────────────────────────────────────────────────────
+async function connect() {
+  const input = document.getElementById('token-input');
+  const btn   = document.getElementById('connect-btn');
+  const err   = document.getElementById('auth-error');
+  const password = input.value.trim();
+  if (!password) return;
+  btn.innerHTML = '<span class="spinner"></span> Signing in…';
+  btn.disabled = true;
+  err.style.display = 'none';
+  try {
+    const res = await fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) throw new Error('Wrong password');
+    const { token } = await res.json();
+    TOKEN = token;
+    localStorage.setItem('valu_admin_token', TOKEN);
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadAll();
+  } catch (e) {
+    err.textContent = e.message;
+    err.style.display = 'block';
+    btn.innerHTML = 'Sign in';
+    btn.disabled = false;
+  }
+}
+
+function signOut() {
+  localStorage.removeItem('valu_admin_token');
+  location.reload();
+}
+
+document.getElementById('token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') connect();
+});
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+function switchTab(tab) {
+  ['posts','topics','authors','routine'].forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`panel-${t}`).classList.toggle('active', t === tab);
+  });
+  if (tab === 'routine') loadRuns();
+}
+
+async function loadAll() {
+  loadPosts();
+  loadTopics();
+  loadAuthors();
+  updateNextRunDisplay();
+}
+
+// ── POSTS ─────────────────────────────────────────────────────────────────────
+let prs = [];
+
+async function loadPosts() {
+  const el = document.getElementById('posts-content');
+  el.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>Loading posts…</div>';
+  try {
+    const [allPrs, dirEntries] = await Promise.all([
+      gh('GET', `/repos/${REPO}/pulls?state=open&per_page=50`),
+      gh('GET', `/repos/${REPO}/contents/blog-content`).catch(() => []),
+    ]);
+    prs = allPrs.filter(pr => pr.head.ref.startsWith('blog/'));
+
+    const published = Array.isArray(dirEntries)
+      ? dirEntries.filter(f => f.name.endsWith('.json') && !f.name.startsWith('_'))
+      : [];
+
+    const pendingCount = prs.length;
+    document.getElementById('count-posts').textContent = pendingCount;
+    document.getElementById('count-posts').className = 'tab-count' + (pendingCount ? '' : ' zero');
+
+    renderPosts(prs, published);
+  } catch (e) {
+    el.innerHTML = `<div class="empty-state">Failed to load: ${esc(e.message)}</div>`;
+  }
+}
+
+function renderPosts(pending, published) {
+  const el = document.getElementById('posts-content');
+  let html = '';
+
+  // ── Awaiting review ──
+  html += `<div class="section-label">Awaiting review ${pending.length ? `(${pending.length})` : ''}</div>`;
+  if (!pending.length) {
+    html += `<div class="empty-state" style="padding:2rem;"><div class="icon">✅</div>No posts waiting. All caught up.</div>`;
+  } else {
+    html += pending.map(pr => {
+      const slug = pr.head.ref.replace('blog/', '');
+      const body = pr.body || '';
+      const score = body.match(/[Hh]umanizer\s+score[:\s]*(\d+)/i)?.[1];
+      const angle = body.match(/Angle[:\s]+(.+)/i)?.[1]?.trim();
+      const autoNote = body.toLowerCase().includes('auto-selected') ? 'Auto-selected' : '';
+      const scoreClass = score ? (+score >= 40 ? 'badge-green' : 'badge-yellow') : 'badge-gray';
+      return `
+      <div class="post-card" id="pr-${pr.number}">
+        <div class="post-card-head">
+          <div class="post-card-title">${esc(pr.title)}</div>
+          <div class="post-card-badges">
+            ${score ? `<span class="badge ${scoreClass}">Humanizer ${score}/50</span>` : ''}
+            ${autoNote ? `<span class="badge badge-yellow">${esc(autoNote)}</span>` : ''}
+            <span class="badge badge-gray">${esc(slug)}</span>
+          </div>
+          <div class="post-card-meta">
+            <span>Draft ready ${formatDate(pr.created_at)}</span>
+            <span>PR #${pr.number}</span>
+          </div>
+        </div>
+        ${angle ? `<div class="post-card-body"><div class="post-card-excerpt">${esc(angle)}</div></div>` : ''}
+        <div class="post-card-actions">
+          <button class="btn btn-primary" onclick="publishPost(${pr.number}, this)">
+            Publish &amp; go live
+          </button>
+          <button class="btn btn-ghost" onclick="openArticlePreview('${esc(slug)}', this)">
+            Preview &amp; edit
+          </button>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost btn-sm" onclick="changeAuthorDialog(${pr.number}, '${esc(slug)}', this)">
+            Change author
+          </button>
+          <button class="btn btn-danger btn-sm" onclick="discardPost(${pr.number}, this)">
+            Remove
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Published ──
+  html += `<div class="section-label">Published (${published.length})</div>`;
+  if (!published.length) {
+    html += `<div style="text-align:center; padding:1.5rem; color:var(--gray-steel); font-size:0.8rem;">No articles published yet.</div>`;
+  } else {
+    html += published.reverse().map(f => {
+      const slug = f.name.replace('.json', '');
+      return `
+      <div class="pub-row" id="pub-${esc(slug)}">
+        <div class="pub-row-info">
+          <div class="pub-row-title" id="pub-title-${esc(slug)}">${esc(slug.replace(/-/g, ' '))}</div>
+          <div class="pub-row-meta" id="pub-meta-${esc(slug)}">Loading…</div>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="${esc(SITE)}/blog/${esc(slug)}.html" target="_blank" rel="noopener">View live →</a>
+      </div>`;
+    }).join('');
+    // async-load titles for each published post
+    published.forEach(f => loadPublishedMeta(f.name.replace('.json', '')));
+  }
+
+  el.innerHTML = html;
+  updateGenerateCard();
+}
+
+function updateGenerateCard() {
+  const el = document.getElementById('gen-card-body');
+  if (!el) return;
+  if (!topicsData) { el.textContent = 'Loading queue…'; return; }
+  const queued = topicsData.json.queue.filter(t => t.status === 'queued' || t.status === 'proposed');
+  if (!queued.length) {
+    el.innerHTML = `No topics in queue. <a href="#" onclick="switchTab('topics');return false;">Add some in the Topics tab →</a>`;
+    return;
+  }
+  const next = queued[0];
+  const prompt = `Generate a blog post following blog-system/PIPELINE.md for this topic: "${next.targetQuery || next.slug}" (slug: ${next.slug}, cluster: ${next.cluster || 'general'})`;
+  el.innerHTML = `
+    <div style="background:var(--off-white); border:1px solid var(--border); border-radius:var(--r-md); padding:0.6rem 0.85rem; font-family:monospace; font-size:0.78rem; color:var(--charcoal); margin-bottom:0.5rem; line-height:1.5;">${esc(prompt)}</div>
+    <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+      <button class="btn btn-ghost btn-sm" onclick="copyGenPrompt(this, ${JSON.stringify(prompt).replace(/'/g, '&#39;')})">Copy prompt</button>
+      <span style="color:var(--gray-steel);">Next in queue: <strong style="color:var(--charcoal);">${esc(next.targetQuery || next.slug)}</strong></span>
+      <a href="#" onclick="switchTab('topics');return false;" style="font-size:0.75rem;">Change topic →</a>
+    </div>`;
+}
+
+function copyGenPrompt(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// ── ARTICLE PREVIEW / EDIT MODAL ─────────────────────────────────────────────
+let amData = null; // { json, sha, slug, branch }
+let amTab  = 'preview';
+
+async function openArticlePreview(slug, btn) {
+  const overlay = document.getElementById('am-overlay');
+  const body    = document.getElementById('am-body');
+  const titleEl = document.getElementById('am-head-title');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  body.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>Loading article…</div>';
+  titleEl.textContent = 'Loading…';
+  amTab = 'preview';
+  document.getElementById('am-tab-preview').className = 'am-tab active';
+  document.getElementById('am-tab-edit').className = 'am-tab';
+  const branch = `blog/${slug}`;
+  try {
+    const data = await getFile(`blog-content/${slug}.json`, branch);
+    amData = { ...data, slug, branch };
+    titleEl.textContent = data.json.title || slug;
+    body.innerHTML = renderAmPreview(data.json);
+  } catch (e) {
+    body.innerHTML = `<div class="empty-state">Could not load article: ${esc(e.message)}</div>`;
+  }
+}
+
+function closeArticleModal() {
+  document.getElementById('am-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function amOverlayClick(e) {
+  if (e.target === document.getElementById('am-overlay')) closeArticleModal();
+}
+
+function switchArticleTab(tab) {
+  if (!amData) return;
+  amTab = tab;
+  document.getElementById('am-tab-preview').className = 'am-tab' + (tab === 'preview' ? ' active' : '');
+  document.getElementById('am-tab-edit').className    = 'am-tab' + (tab === 'edit'    ? ' active' : '');
+  const body = document.getElementById('am-body');
+  body.innerHTML = tab === 'preview' ? renderAmPreview(amData.json) : renderAmEdit(amData.json);
+}
+
+function renderAmPreview(j) {
+  const authorName = (authorsData?.json?.authors || []).find(a => a.id === j.authorId)?.name || j.authorId || '—';
+  let html = `<div class="am-article">
+    <h1>${esc(j.title || '')}</h1>
+    <div class="am-meta-bar">
+      <span class="badge badge-gray">${esc(authorName)}</span>
+      <span class="badge badge-gray">${esc(j.datePublished || '')}</span>
+      <span class="badge badge-gray">${j.readingTimeMinutes || '?'} min</span>
+      <span class="badge badge-gray">${esc(j.cluster || '')}</span>
+    </div>
+    <p style="color:var(--gray-steel); font-size:0.82rem; font-style:italic; margin-bottom:1.5rem;">${esc(j.metaDescription || '')}</p>`;
+
+  (j.sections || []).forEach(s => {
+    html += `<h2>${esc(s.h2)}</h2>${s.html || ''}`;
+  });
+
+  if (j.faq?.length) {
+    html += `<h2>Frequently asked questions</h2>`;
+    j.faq.forEach(f => {
+      html += `<div class="am-faq-item"><p class="am-faq-q">${esc(f.q)}</p><p class="am-faq-a">${esc(f.a)}</p></div>`;
+    });
+  }
+
+  if (j.sources?.length) {
+    html += `<h2>Sources</h2><ul class="am-sources">`;
+    j.sources.forEach(s => {
+      html += `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`;
+    });
+    html += `</ul>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderAmEdit(j) {
+  let html = `<form id="am-edit-form" onsubmit="return false;">
+    <div class="am-edit-field">
+      <label>Title <span style="font-weight:400;">(≤60 chars — currently <span id="am-title-len">${(j.title||'').length}</span>)</span></label>
+      <input name="title" value="${esc(j.title||'')}" maxlength="80" oninput="document.getElementById('am-title-len').textContent=this.value.length">
+    </div>
+    <div class="am-edit-field">
+      <label>Meta description <span style="font-weight:400;">(140–160 chars — currently <span id="am-meta-len">${(j.metaDescription||'').length}</span>)</span></label>
+      <input name="metaDescription" value="${esc(j.metaDescription||'')}" maxlength="200" oninput="document.getElementById('am-meta-len').textContent=this.value.length">
+    </div>
+    <div class="section-label">Sections</div>`;
+
+  (j.sections||[]).forEach((s, i) => {
+    html += `<div class="am-section-block">
+      <div class="am-section-num">Section ${i+1}</div>
+      <div class="am-edit-field">
+        <label>Heading (H2)</label>
+        <input name="sh2_${i}" value="${esc(s.h2||'')}">
+      </div>
+      <div class="am-edit-field">
+        <label>Content (HTML)</label>
+        <textarea name="shtml_${i}" rows="7" style="font-family:monospace; font-size:0.78rem;">${esc(s.html||'')}</textarea>
+      </div>
+    </div>`;
+  });
+
+  if (j.faq?.length) {
+    html += `<div class="section-label">FAQ</div>`;
+    j.faq.forEach((f, i) => {
+      html += `<div class="am-section-block">
+        <div class="am-section-num">Question ${i+1}</div>
+        <div class="am-edit-field">
+          <label>Question</label>
+          <input name="fq_${i}" value="${esc(f.q||'')}">
+        </div>
+        <div class="am-edit-field">
+          <label>Answer</label>
+          <textarea name="fa_${i}" rows="3">${esc(f.a||'')}</textarea>
+        </div>
+      </div>`;
+    });
+  }
+
+  html += `<div class="am-save-bar">
+    <button type="button" class="btn btn-primary" onclick="saveAmEdit(this)">Save changes</button>
+    <button type="button" class="btn btn-ghost" onclick="switchArticleTab('preview')">Preview</button>
+    <span class="am-save-note">Saved JSON is rebuilt into HTML when you publish.</span>
+  </div></form>`;
+  return html;
+}
+
+async function saveAmEdit(btn) {
+  if (!amData) return;
+  const form = document.getElementById('am-edit-form');
+  if (!form) return;
+  const { json, sha, slug, branch } = amData;
+  const get = name => form.querySelector(`[name="${name}"]`)?.value ?? null;
+
+  const updated = {
+    ...json,
+    title:           (get('title') || json.title).trim(),
+    metaDescription: (get('metaDescription') || json.metaDescription).trim(),
+    dateModified:    new Date().toISOString().slice(0, 10),
+    sections: (json.sections || []).map((s, i) => ({
+      ...s,
+      h2:   (get(`sh2_${i}`) ?? s.h2).trim(),
+      html: get(`shtml_${i}`) ?? s.html,
+    })),
+  };
+  if (json.faq) {
+    updated.faq = (json.faq || []).map((f, i) => ({
+      ...f,
+      q: (get(`fq_${i}`) ?? f.q).trim(),
+      a: (get(`fa_${i}`) ?? f.a).trim(),
+    }));
+  }
+
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Saving…';
+  btn.disabled = true;
+  try {
+    const { sha: newSha } = await putFile(
+      `blog-content/${slug}.json`, updated, sha,
+      `Blog: edit ${slug}`, branch
+    );
+    amData = { json: updated, sha: newSha, slug, branch };
+    document.getElementById('am-head-title').textContent = updated.title;
+    toast('Saved! Changes go live when you publish the PR.', 'success');
+    switchArticleTab('preview');
+  } catch (e) {
+    toast('Save failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+async function loadPublishedMeta(slug) {
+  try {
+    const { json } = await getFile(`blog-content/${slug}.json`);
+    const titleEl = document.getElementById(`pub-title-${slug}`);
+    const metaEl  = document.getElementById(`pub-meta-${slug}`);
+    if (titleEl) titleEl.textContent = json.title || slug;
+    if (metaEl)  metaEl.textContent  = `Published ${formatDate(json.datePublished)} · ${json.authorId || ''}`;
+  } catch (_) {}
+}
+
+async function publishPost(num, btn) {
+  if (!confirm('Publish this post? It will go live on the site immediately.')) return;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Publishing…';
+  btn.disabled = true;
+  try {
+    await gh('PUT', `/repos/${REPO}/pulls/${num}/merge`, {
+      merge_method: 'squash',
+      commit_title: `Publish blog post (#${num})`,
+    });
+    toast('Published! Vercel is deploying — live in ~30s.', 'success');
+    document.getElementById(`pr-${num}`)?.remove();
+    prs = prs.filter(p => p.number !== num);
+    const cnt = document.getElementById('count-posts');
+    cnt.textContent = prs.length;
+    cnt.className = 'tab-count' + (prs.length ? '' : ' zero');
+    setTimeout(loadPosts, 5000);
+    // Mark topic as published in queue
+    try {
+      const { json: q, sha: qSha } = await getFile('blog-system/topic-queue.json');
+      const idx = q.queue.findIndex(t => t.prNumber === num);
+      if (idx !== -1) {
+        q.queue[idx].status = 'published';
+        delete q.queue[idx].prNumber;
+        await putFile('blog-system/topic-queue.json', q, qSha,
+          `Blog topics: mark "${q.queue[idx].slug}" as published`);
+        topicsData = null;
+      }
+    } catch (_) {}
+  } catch (e) {
+    toast('Merge failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+async function discardPost(num, btn) {
+  if (!confirm('Discard this draft? The PR will be closed and the topic returned to the queue.')) return;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner spinner-dark"></span>';
+  btn.disabled = true;
+  try {
+    await gh('PATCH', `/repos/${REPO}/pulls/${num}`, { state: 'closed' });
+    toast('Draft discarded. Topic returned to queue.', 'success');
+    document.getElementById(`pr-${num}`)?.remove();
+    prs = prs.filter(p => p.number !== num);
+    const cnt = document.getElementById('count-posts');
+    cnt.textContent = prs.length;
+    cnt.className = 'tab-count' + (prs.length ? '' : ' zero');
+    if (!prs.length) loadPosts();
+    // Return topic to queue
+    try {
+      const { json: q, sha: qSha } = await getFile('blog-system/topic-queue.json');
+      const idx = q.queue.findIndex(t => t.prNumber === num);
+      if (idx !== -1) {
+        q.queue[idx].status = 'queued';
+        delete q.queue[idx].prNumber;
+        await putFile('blog-system/topic-queue.json', q, qSha,
+          `Blog topics: return "${q.queue[idx].slug}" to queue (PR #${num} discarded)`);
+        topicsData = null;
+      }
+    } catch (_) {}
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+async function changeAuthorDialog(prNum, slug, btn) {
+  let authData;
+  try { authData = await getFile('blog-system/authors.json'); }
+  catch { toast('Could not load authors.', 'error'); return; }
+  const list = authData.json.authors.map(a => `${a.id}: ${a.name}`).join('\n');
+  const picked = prompt(`Available authors:\n${list}\n\nEnter author ID:`, 'author-1');
+  if (!picked) return;
+  btn.disabled = true;
+  try {
+    const file = await getFile(`blog-content/${slug}.json`, 'blog/' + slug);
+    file.json.authorId   = picked.trim();
+    file.json.reviewerId = picked.trim();
+    await putFile(`blog-content/${slug}.json`, file.json, file.sha,
+      `Blog: update author on ${slug}`, 'blog/' + slug);
+    toast(`Author set to ${picked.trim()}.`, 'success');
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+  btn.disabled = false;
+}
+
+// ── TOPICS ───────────────────────────────────────────────────────────────────
+let topicsData = null;
+let topicFilter = 'active';
+
+async function loadTopics() {
+  try {
+    const { json, sha } = await getFile('blog-system/topic-queue.json');
+    topicsData = { json, sha };
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
+    const cnt = document.getElementById('count-topics');
+    cnt.textContent = active;
+    cnt.className = 'tab-count' + (active ? '' : ' zero');
+    renderTopics();
+    updateGenerateCard();
+  } catch (e) {
+    document.getElementById('topics-content').innerHTML =
+      `<div class="empty-state">Failed to load: ${esc(e.message)}</div>`;
+  }
+}
+
+function renderTopics() {
+  const el = document.getElementById('topics-content');
+  if (!topicsData) return;
+  const queue = topicsData.json.queue;
+  const filtered = topicFilter === 'all' ? queue
+    : topicFilter === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review')
+    : queue.filter(t => t.status === topicFilter);
+
+  const clusterLabel = {
+    'valuation-methodology': 'Valuation',
+    'helsinki-stocks': 'Helsinki Stocks',
+    'ai-equity-research': 'AI Research',
+    'company-deep-dives': 'Deep Dive',
+  };
+  const statusBadge = {
+    proposed: 'badge-yellow', queued: 'badge-green',
+    'in-review': 'badge-blue', published: 'badge-gray',
+    rejected: 'badge-red', 'blocked-cannibalization': 'badge-red',
+  };
+  const statusLabel = {
+    proposed: 'Proposed', queued: 'Queued', 'in-review': 'PR open',
+    published: 'Published', rejected: 'Rejected',
+  };
+
+  const counts = {};
+  ['active','proposed','queued','in-review','published','all'].forEach(f => {
+    counts[f] = f === 'all' ? queue.length
+      : f === 'active' ? queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length
+      : queue.filter(t => t.status === f).length;
+  });
+
+  el.innerHTML = `
+    <div class="filter-bar">
+      ${['active','queued','in-review','proposed','published','all'].map(f => `
+        <button class="filter-btn ${topicFilter === f ? 'active' : ''}" onclick="setTopicFilter('${f}')">
+          ${f === 'active' ? 'All active' : f === 'in-review' ? 'PR open' : f.charAt(0).toUpperCase()+f.slice(1)}
+          ${counts[f] ? ` (${counts[f]})` : ''}
+        </button>`).join('')}
+    </div>
+    ${!filtered.length
+      ? `<div class="empty-state" style="padding:2rem;"><div class="icon">🎉</div>Nothing in this filter.</div>`
+      : filtered.map(t => {
+          const realIdx = queue.indexOf(t);
+          return `
+          <div class="topic-row" data-status="${t.status}">
+            <div class="topic-row-body">
+              <div class="topic-query">${esc(t.targetQuery || t.slug)}</div>
+              <div class="topic-meta">
+                <span class="badge ${statusBadge[t.status] || 'badge-gray'}" style="font-size:0.65rem;">${esc(statusLabel[t.status] || t.status)}</span>
+                &nbsp;${esc(clusterLabel[t.cluster] || t.cluster)} · ${esc(t.role)}
+                ${t.status === 'in-review' && t.prNumber ? `&nbsp;· <a href="https://github.com/${REPO}/pull/${t.prNumber}" target="_blank" rel="noopener" style="font-size:0.72rem;">PR #${t.prNumber} →</a>` : ''}
+              </div>
+              ${t.notes ? `<div class="topic-notes">${esc(t.notes)}</div>` : ''}
+            </div>
+            <div class="topic-actions">
+              ${t.status === 'proposed'  ? `<button class="btn btn-primary btn-sm" onclick="setTopicStatus(${realIdx},'queued',this)">Queue it</button>` : ''}
+              ${t.status === 'queued'    ? `<button class="btn btn-ghost btn-sm"   onclick="setTopicStatus(${realIdx},'proposed',this)">Unqueue</button>` : ''}
+              ${t.status === 'in-review' ? `<span style="font-size:0.75rem; color:var(--gray-steel);">Awaiting review</span>` : ''}
+              ${t.status !== 'rejected' && t.status !== 'published' && t.status !== 'in-review'
+                ? `<button class="btn btn-danger btn-sm" onclick="setTopicStatus(${realIdx},'rejected',this)">Reject</button>` : ''}
+              ${t.status === 'rejected'
+                ? `<button class="btn btn-ghost btn-sm" onclick="setTopicStatus(${realIdx},'proposed',this)">Restore</button>` : ''}
+            </div>
+          </div>`;
+        }).join('')}`;
+}
+
+function setTopicFilter(f) { topicFilter = f; renderTopics(); }
+
+async function setTopicStatus(idx, newStatus, btn) {
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner spinner-dark"></span>';
+  btn.disabled = true;
+  try {
+    const { json, sha } = await getFile('blog-system/topic-queue.json');
+    json.queue[idx].status = newStatus;
+    const { sha: newSha } = await putFile('blog-system/topic-queue.json', json, sha,
+      `Blog topics: set "${json.queue[idx].slug}" to ${newStatus}`);
+    topicsData = { json, sha: newSha };
+    toast(`Topic ${newStatus}.`, 'success');
+    // update count badge
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
+    const cnt = document.getElementById('count-topics');
+    cnt.textContent = active;
+    cnt.className = 'tab-count' + (active ? '' : ' zero');
+    renderTopics();
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+async function submitIdea(btn) {
+  const topicInput  = document.getElementById('idea-topic');
+  const notesInput  = document.getElementById('idea-notes');
+  const clusterSel  = document.getElementById('idea-cluster');
+  const topic       = topicInput.value.trim();
+  if (!topic) { toast('Enter a topic first.', 'error'); topicInput.focus(); return; }
+
+  const slug = topic.toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .substring(0, 60);
+
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Adding…';
+  btn.disabled = true;
+
+  try {
+    const { json, sha } = await getFile('blog-system/topic-queue.json');
+    const newTopic = {
+      slug,
+      cluster: clusterSel.value,
+      role: 'support',
+      targetQuery: topic,
+      intent: 'informational',
+      status: 'queued',
+      proposedBy: 'human',
+      proposedAt: new Date().toISOString().substring(0, 10),
+      notes: notesInput.value.trim() || undefined,
+    };
+    if (!newTopic.notes) delete newTopic.notes;
+    json.queue.unshift(newTopic); // put at top so AI picks it first
+    const { sha: newSha } = await putFile('blog-system/topic-queue.json', json, sha,
+      `Blog topics: add human suggestion "${topic}"`);
+    topicsData = { json, sha: newSha };
+    topicInput.value  = '';
+    notesInput.value  = '';
+    toast(`"${topic}" added to queue — AI will draft it next run.`, 'success');
+    const active = json.queue.filter(t => t.status === 'proposed' || t.status === 'queued' || t.status === 'in-review').length;
+    const cnt = document.getElementById('count-topics');
+    cnt.textContent = active;
+    cnt.className = 'tab-count' + (active ? '' : ' zero');
+    topicFilter = 'queued';
+    renderTopics();
+    // switch to topics tab so they see it
+    switchTab('topics');
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+  btn.innerHTML = orig;
+  btn.disabled = false;
+}
+
+// ── AUTHORS ───────────────────────────────────────────────────────────────────
+let authorsData = null;
+
+async function loadAuthors() {
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    authorsData = { json, sha };
+    renderAuthors();
+  } catch (e) {
+    document.getElementById('authors-content').innerHTML =
+      `<div class="empty-state">Failed to load: ${esc(e.message)}</div>`;
+  }
+}
+
+function hasTodo(obj) {
+  return ['name','title','bio','photo','linkedin'].some(
+    f => !obj[f] || String(obj[f]).includes('TODO')
+  );
+}
+
+function renderAuthors() {
+  const el = document.getElementById('authors-content');
+  if (!authorsData) return;
+  const { authors, reviewers } = authorsData.json;
+
+  el.innerHTML = `
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+      <span style="font-weight:600; font-size:0.875rem;">Authors (${authors.length})</span>
+      <button class="btn btn-primary btn-sm" onclick="startAddAuthor()">+ Add author</button>
+    </div>
+    <div id="new-author-form" style="display:none;"></div>
+    ${authors.map((a, i) => `
+    <div class="author-card" id="author-card-${i}">
+      <div class="author-head">
+        <img class="author-photo" src="${esc(a.photo || '')}" alt="${esc(a.name)}" onerror="this.style.background='var(--off-white)'">
+        <div style="flex:1; min-width:0;">
+          <div class="author-name">${esc(a.name)} ${hasTodo(a) ? '<span class="todo-pill">needs info</span>' : ''}</div>
+          <div class="author-role">${esc(a.title)}</div>
+          <div style="font-size:0.72rem; color:var(--gray-steel); margin-top:0.2rem;">${esc(a.id)}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="toggleAuthorEdit(${i})">Edit</button>
+      </div>
+      <div id="author-edit-${i}" style="display:none; margin-top:1rem;">
+        <div class="author-form">
+          <div class="form-field"><label>Full name *</label><input id="a${i}-name" value="${esc(a.name)}"></div>
+          <div class="form-field"><label>Title *</label><input id="a${i}-title" value="${esc(a.title)}"></div>
+          <div class="form-field full"><label>Credentials</label><input id="a${i}-credentials" value="${esc(a.credentials || '')}"></div>
+          <div class="form-field full"><label>Bio (2–3 sentences) *</label><textarea id="a${i}-bio" rows="3">${esc(a.bio || '')}</textarea></div>
+          <div class="form-field"><label>Photo URL *</label><input id="a${i}-photo" value="${esc(a.photo || '')}" placeholder="/images/authors/name.jpg"></div>
+          <div class="form-field"><label>LinkedIn URL *</label><input id="a${i}-linkedin" value="${esc(a.linkedin || '')}" placeholder="https://linkedin.com/in/..."></div>
+          <div class="form-field full"><label>Author page path</label><input id="a${i}-authorPage" value="${esc(a.authorPage || '')}" placeholder="/authors/name.html"></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveAuthor(${i})">Save changes</button>
+          <button class="btn btn-ghost" onclick="toggleAuthorEdit(${i})">Cancel</button>
+        </div>
+      </div>
+    </div>`).join('')}
+
+    <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+      <div style="font-weight:600; font-size:0.875rem; margin-bottom:0.75rem;">Reviewers (${reviewers.length})</div>
+      ${reviewers.map(r => `
+      <div style="display:flex; align-items:center; gap:0.75rem; padding:0.65rem 0; border-bottom:1px solid var(--border);">
+        <div style="flex:1;">
+          <span style="font-weight:500;">${esc(r.name)}</span>
+          <span style="font-size:0.75rem; color:var(--gray-steel); margin-left:0.75rem;">${esc(r.id)} · ${esc(r.title)}</span>
+        </div>
+      </div>`).join('')}
+      <p style="font-size:0.75rem; color:var(--gray-steel); margin-top:0.75rem;">Reviewers are listed in authors.json. Edit via GitHub to add/remove.</p>
+    </div>`;
+}
+
+function toggleAuthorEdit(i) {
+  const el = document.getElementById(`author-edit-${i}`);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+async function saveAuthor(i) {
+  const get = id => document.getElementById(id)?.value.trim();
+  const updated = {
+    ...authorsData.json.authors[i],
+    name: get(`a${i}-name`), title: get(`a${i}-title`),
+    credentials: get(`a${i}-credentials`), bio: get(`a${i}-bio`),
+    photo: get(`a${i}-photo`), linkedin: get(`a${i}-linkedin`),
+    authorPage: get(`a${i}-authorPage`),
+    sameAs: [get(`a${i}-linkedin`)].filter(Boolean),
+  };
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    json.authors[i] = updated;
+    const { sha: newSha } = await putFile('blog-system/authors.json', json, sha,
+      `Authors: update ${updated.name}`);
+    authorsData = { json, sha: newSha };
+    toast('Author saved.', 'success');
+    renderAuthors();
+  } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+}
+
+function startAddAuthor() {
+  const el = document.getElementById('new-author-form');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div class="author-card" style="border-color:var(--green); margin-bottom:1rem;">
+      <div style="font-weight:600; color:var(--green); margin-bottom:1rem;">New author</div>
+      <div class="author-form">
+        <div class="form-field"><label>Author ID *</label><input id="new-id" placeholder="author-2"></div>
+        <div class="form-field"><label>Full name *</label><input id="new-name" placeholder="Jane Smith"></div>
+        <div class="form-field"><label>Title *</label><input id="new-title" placeholder="Equity Analyst, Valuatum Oy"></div>
+        <div class="form-field full"><label>Credentials</label><input id="new-credentials" placeholder="CFA, 8 years equity research"></div>
+        <div class="form-field full"><label>Bio (2–3 sentences) *</label><textarea id="new-bio" rows="3" placeholder="Jane covers Nordic industrials at Valuatum…"></textarea></div>
+        <div class="form-field"><label>Photo URL *</label><input id="new-photo" placeholder="/images/authors/jane-smith.jpg"></div>
+        <div class="form-field"><label>LinkedIn URL *</label><input id="new-linkedin" placeholder="https://linkedin.com/in/..."></div>
+        <div class="form-field full"><label>Author page path</label><input id="new-authorPage" placeholder="/authors/jane-smith.html"></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="addAuthor()">Add author</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('new-author-form').style.display='none'">Cancel</button>
+      </div>
+    </div>`;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function addAuthor() {
+  const get = id => document.getElementById(id)?.value.trim();
+  const newAuthor = {
+    id: get('new-id'), name: get('new-name'), title: get('new-title'),
+    credentials: get('new-credentials'), bio: get('new-bio'),
+    photo: get('new-photo'), linkedin: get('new-linkedin'),
+    authorPage: get('new-authorPage'),
+    sameAs: [get('new-linkedin')].filter(Boolean),
+  };
+  if (!newAuthor.id || !newAuthor.name) { toast('ID and name are required.', 'error'); return; }
+  try {
+    const { json, sha } = await getFile('blog-system/authors.json');
+    json.authors.push(newAuthor);
+    const { sha: newSha } = await putFile('blog-system/authors.json', json, sha,
+      `Authors: add ${newAuthor.name}`);
+    authorsData = { json, sha: newSha };
+    toast(`${newAuthor.name} added.`, 'success');
+    document.getElementById('new-author-form').style.display = 'none';
+    renderAuthors();
+  } catch (e) { toast('Failed: ' + e.message, 'error'); }
+}
+
+// ── ROUTINE ───────────────────────────────────────────────────────────────────
+function computeNextRun() {
+  const runDays = [0, 1, 3, 5]; // Sun Mon Wed Fri
+  const now = new Date();
+  for (let d = 0; d <= 7; d++) {
+    const c = new Date(now);
+    c.setUTCDate(now.getUTCDate() + d);
+    c.setUTCHours(18, 30, 0, 0);
+    if (runDays.includes(c.getUTCDay()) && c > now) return c;
+  }
+  return null;
+}
+
+function updateNextRunDisplay() {
+  const next = computeNextRun();
+  if (!next) return;
+  const el  = document.getElementById('routine-next');
+  const sub = document.getElementById('routine-next-sub');
+  if (!el) return;
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  el.textContent = days[next.getUTCDay()] + ' '
+    + next.toLocaleString('en-GB', { hour:'2-digit', minute:'2-digit', timeZone:'Europe/Helsinki' })
+    + ' Helsinki';
+  sub.textContent = next.getUTCDay() === 0 ? 'Topic-proposal run' : 'Full pipeline run';
+}
+
+function loadRuns() {
+  const el = document.getElementById('runs-content');
+  el.innerHTML = `
+    <div style="padding:1rem 0;">
+      <p style="font-size:0.8rem; color:var(--charcoal-mid); line-height:1.65; margin-bottom:1rem;">
+        The pipeline runs as a <strong>Claude Code cloud routine</strong> — run history and logs live at
+        <a href="https://claude.ai/code/routines/trig_01KFy9nJugM7s5wsqH2J4CoB" target="_blank" rel="noopener">claude.ai/code/routines</a>.
+        Generated articles appear in the <strong>Posts</strong> tab once the run completes.
+      </p>
+      <div class="run-row">
+        <div class="run-dot run-dot-queued"></div>
+        <div class="run-info">
+          <div class="run-title">Valuatum Blog Pipeline</div>
+          <div class="run-meta">Next: ${(() => { const n = computeNextRun(); if (!n) return '—'; const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']; return days[n.getUTCDay()] + ' ' + n.toLocaleString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Helsinki'}) + ' Helsinki'; })()} · Mon/Wed/Fri + Sun 21:30</div>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="https://claude.ai/code/routines/trig_01KFy9nJugM7s5wsqH2J4CoB" target="_blank" rel="noopener">View runs →</a>
+      </div>
+    </div>`;
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+updateNextRunDisplay();
+(async () => {
+  const saved = localStorage.getItem('valu_admin_token');
+  if (!saved) return;
+  TOKEN = saved;
+  try {
+    await gh('GET', '/user');
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadAll();
+  } catch {
+    localStorage.removeItem('valu_admin_token');
+    TOKEN = '';
+  }
+})();
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@
 #   docs/atlas/capture/capture.sh live     # only the public pages
 #   docs/atlas/capture/capture.sh mock     # only the pages that need a paid session
 #   docs/atlas/capture/capture.sh member   # only the member area / analyst workspace
+#   docs/atlas/capture/capture.sh admin    # only the admin site and blog admin
 #   docs/atlas/capture/capture.sh email    # only the emails
 #
 # Needs: google-chrome (or chromium), python3 with Pillow, node, pdftoppm.
@@ -97,6 +98,27 @@ if [ "$WHAT" = all ] || [ "$WHAT" = member ]; then
   cp "$TMP/crop-analyst-genCard.png"      "$TMP/analyst-publish.png"
   cp "$TMP/crop-analyst-earningsCard.png" "$TMP/analyst-income.png"
   cp "$TMP/crop-analyst-analysesCard.png" "$TMP/analyst-reviews.png"
+fi
+
+if [ "$WHAT" = all ] || [ "$WHAT" = admin ]; then
+  echo "admin site and blog admin (real pages, mocked sign-in)…"
+  cp "$HERE/admin-mock.html" "$HERE/blog-admin-mock.html" "$REPO/"
+  (cd "$REPO" && python3 -m http.server 8768 >/dev/null 2>&1) & MOCK_PID=$!
+  sleep 1
+  A=http://127.0.0.1:8768/admin-mock.html
+  B=http://127.0.0.1:8768/blog-admin-mock.html
+  # ?pane= picks the admin tab, ?tab= picks the blog-admin one
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-reports.png"  "$A?pane=reports"
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-analyst.png"  "$A?pane=analysts"
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-users.png"    "$A?pane=users"
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-earnings.png" "$A?pane=earnings"
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-stats.png"    "$A?pane=stats"
+  python3 "$HERE/shoot-admin.py" "$TMP/admin-promos.png"   "$A?pane=promos"
+  python3 "$HERE/shoot-admin.py" "$TMP/blog-admin.png"     "$B?tab=posts"
+  rm -f "$REPO/admin-mock.html" "$REPO/blog-admin-mock.html"
+  kill "$MOCK_PID" 2>/dev/null || true; MOCK_PID=
+  # the password gate needs no mocking at all
+  shot admin-signin "$LIVE/admin/index.html" 1280,900
 fi
 
 if [ "$WHAT" = all ] || [ "$WHAT" = email ]; then

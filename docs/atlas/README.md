@@ -94,9 +94,11 @@ node docs/atlas/build.mjs
 ```
 
 Needs Chrome, `python3` with Pillow, node and `pdftoppm`. Screenshots land in
-`shots/` as 1000px-wide JPEGs and are inlined into the built page.
+`shots/` as 1000px-wide JPEGs and are inlined into the built page. The mocked
+pages carry invented but self-consistent data — Nordic companies, plausible
+figures — so nothing real about a customer or an analyst is in them.
 
-Three kinds of screen cannot simply be visited:
+Four kinds of screen cannot simply be visited:
 
 - **The thank-you page and the order page** need a paid Stripe session, so
   `capture/mock-api.py` serves this repo's own HTML with mocked API answers.
@@ -106,6 +108,12 @@ Three kinds of screen cannot simply be visited:
   `capture/member-mock.html` is `members.html` with the sign-in and the members
   API stubbed out; `capture/shoot-member.py` renders it once per role and cuts
   out each section.
+- **The admin site and the blog admin** need the shared admin password and live
+  APIs. `capture/admin-mock.html` and `capture/blog-admin-mock.html` are those
+  pages with the gate and the APIs stubbed out; `capture/shoot-admin.py` renders
+  one tab at a time (`?pane=reports|analysts|users|earnings|stats|promos`, and
+  `?tab=posts|topics|authors|routine` for the blog admin). The password gate
+  itself is captured from the live site, since it needs nothing.
 - **The Stripe payment page** only exists inside a live checkout session, so
   `capture/stripe-illustration.html` is a drawing of it. The step says so.
 
