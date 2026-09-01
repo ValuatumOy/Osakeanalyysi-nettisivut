@@ -329,9 +329,13 @@ addEventListener('keydown', e=>{ if (e.key==='Escape' && !lb.hidden) closeLb(); 
 
 /* ---------- pan, zoom, click ---------- */
 let drag = null;
+/* The pointer is captured while dragging so a fast drag keeps panning, which
+   also means pointerup is reported on the canvas rather than on whatever is
+   under the cursor. So remember what was pressed on the way down. */
+const hitOf = t => t && (t.closest('[data-node]') || t.closest('[data-edge]'));
 canvas.addEventListener('pointerdown', e=>{
   if (e.button!==0) return;
-  drag = { x:e.clientX, y:e.clientY, vx:view.x, vy:view.y, moved:0 };
+  drag = { x:e.clientX, y:e.clientY, vx:view.x, vy:view.y, moved:0, hit:hitOf(e.target) };
   canvas.setPointerCapture(e.pointerId); canvas.classList.add('grabbing');
 });
 canvas.addEventListener('pointermove', e=>{
@@ -341,14 +345,19 @@ canvas.addEventListener('pointermove', e=>{
   drag.moved = Math.max(drag.moved, Math.abs(dx)+Math.abs(dy));
   view.x = drag.vx - dx/s; view.y = drag.vy - dy/s; applyView();
 });
-canvas.addEventListener('pointerup', e=>{
-  const wasDrag = drag && drag.moved > 5;
-  if (drag) { canvas.releasePointerCapture(e.pointerId); canvas.classList.remove('grabbing'); }
-  drag = null;
-  if (wasDrag) return;
-  const t = e.target.closest('[data-node]'), te = e.target.closest('[data-edge]');
-  if (t) pick(t.dataset.node); else if (te) pickEdge(te.dataset.edge);
-});
+function endDrag(e){
+  if (!drag) return;
+  const d = drag; drag = null;
+  try { canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+  canvas.classList.remove('grabbing');
+  if (d.moved > 5) return;                       // a drag, not a click
+  // Fall back to whatever sits under the cursor, in case the press landed on a gap.
+  const t = d.hit || hitOf(document.elementFromPoint(e.clientX, e.clientY));
+  if (!t) return;
+  if (t.dataset.node) pick(t.dataset.node); else if (t.dataset.edge) pickEdge(t.dataset.edge);
+}
+canvas.addEventListener('pointerup', endDrag);
+canvas.addEventListener('pointercancel', e=>{ drag = null; canvas.classList.remove('grabbing'); });
 canvas.addEventListener('wheel', e=>{ e.preventDefault(); zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.12 : 1/1.12); }, {passive:false});
 canvas.addEventListener('keydown', e=>{
   const t = e.target.closest('[data-node]');

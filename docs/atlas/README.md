@@ -104,9 +104,28 @@ Three kinds of screen cannot simply be visited:
 The emails are rendered from `server/email.js` itself
 (`capture/render-emails.mjs`), so they cannot drift from what customers get.
 
+## Checking it still works
+
+```sh
+python3 -m http.server 8767                  # from the repo root
+python3 docs/atlas/test-interactions.py
+```
+
+This drives the built page with **real mouse events** over the DevTools
+protocol and checks that clicking a step selects it and lights its path, that
+the dropdowns follow the click, that dragging pans without selecting, that the
+wheel zooms, that clicking an arrow opens that transition, that a screenshot
+opens and closes the lightbox, and that the band buttons switch journeys.
+
+Real events matter: the canvas captures the pointer while dragging, so a click
+arrives on the canvas rather than on the step under the cursor. Events
+dispatched straight at an element hide that — which is exactly how a broken
+build once passed.
+
 ## What this does not cover yet
 
-- Admin: adding reports, takedowns, payouts, promo codes.
+- Admin: adding reports, takedowns, moderation, payouts, promo codes.
 - The blog and the static page generators (`scripts/build-*.mjs`).
-- Company Coverage as its own path — it appears as a plan, not as a journey.
-- Fork buyers who are not analysts (they get a private report and owe nothing).
+- Coaching analysts — a role an admin can grant, with no self-service UI.
+- Sign-in failures: an expired magic link, a cancelled LinkedIn sign-in.
+- A banned analyst, who is blocked with nothing on screen to explain it.
