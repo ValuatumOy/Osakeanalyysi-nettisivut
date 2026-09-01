@@ -186,11 +186,19 @@ async function presignPdf(bucket, fileName) {
 // A catalog report: production's bucket, in every stage (see infra/lib/config.ts).
 const presignReport = report => presignPdf(process.env.REPORT_PDF_BUCKET, report.fileName);
 
-// A report this stage generated for a member. It is delivered into this stage's
-// own bucket and is deliberately not in the production catalog listing, so the
-// order's own pdfFileName is the key — the DELIVERED status is the entitlement.
-const presignGenerated = fileName =>
-  presignPdf(process.env.GENERATED_PDF_BUCKET || process.env.REPORT_PDF_BUCKET, fileName);
+// A report this stage generated for a member — delivered into REPORT_PDF_BUCKET
+// (reconciler.js has no notion of a separate GENERATED_PDF_BUCKET; every
+// delivered PDF, regardless of order origin, lands in the same bucket), so it
+// is served the same permanent, unsigned way as any other delivered report:
+// files.aiequityreports.com (CloudFront + OAC). Was presigned with a 5-minute
+// expiry until this comment; the order page could easily stay open longer
+// than that, and presigning never added security here — the same file was
+// already durably reachable at this URL (the delivery/revision emails carry
+// it, via server/reconciler.js's own PDF_BASE_URL).
+const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
+function permanentPdfUrl(fileName) {
+  return `${PDF_BASE_URL}/${encodeURIComponent(fileName)}`;
+}
 
 // GET /reports — the member-facing catalog. Unlike the prod public payload
 // this NEVER exposes pdfUrl: the presigned /open route is the only door.
@@ -957,7 +965,7 @@ async function getGeneration(event) {
 
   if (order.status === 'DELIVERED' && order.pdfFileName) {
     // The member owns what they generated — no quota, no entitlement row.
-    Object.assign(result, await presignGenerated(order.pdfFileName));
+    result.url = permanentPdfUrl(order.pdfFileName);
   }
   result.generationRestored = await restoreIfFailed({ profile, genId, order, publication, now });
   return json(200, result);
@@ -1010,26 +1018,24 @@ async function getGenerationOrder(event) {
     publication: publication.status,
   };
 
-  // The order page reads `pdfUrl`; presignGenerated answers { url, expiresIn }.
+  // The order page reads `pdfUrl` — a permanent link, not a presigned one.
   if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
-    payload.pdfUrl = (await presignGenerated(order.pdfFileName)).url;
+    payload.pdfUrl = permanentPdfUrl(order.pdfFileName);
   }
 
-  payload.revisionHistory = await Promise.all(
-    (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
-      version: entry.version,
-      comments: entry.comments || '',
-      completedAt: entry.completedAt,
-      changes: entry.changes || null,
-      pdfUrl: entry.pdfFileName ? (await presignGenerated(entry.pdfFileName)).url : null,
-    })),
-  );
+  payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
+    version: entry.version,
+    comments: entry.comments || '',
+    completedAt: entry.completedAt,
+    changes: entry.changes || null,
+    pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
+  }));
   if (payload.revisionHistory.length && order.originalPdfFileName) {
     payload.revisionHistory.push({
       version: 1,
       original: true,
       completedAt: order.deliveredEmailAt || null,
-      pdfUrl: (await presignGenerated(order.originalPdfFileName)).url,
+      pdfUrl: permanentPdfUrl(order.originalPdfFileName),
     });
   }
 
@@ -1813,7 +1819,7 @@ async function analysisDocument(genId) {
   const order = await ordersStore.get(genId);
   if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
   return {
-    ...(await presignGenerated(order.pdfFileName)),
+    url: permanentPdfUrl(order.pdfFileName),
     jobId: order.jobId || null,
     company: order.companyName,
   };
