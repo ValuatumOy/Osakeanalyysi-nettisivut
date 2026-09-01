@@ -491,6 +491,29 @@
     return label;
   }
 
+  // Which parts of the analysis a set of edits touched, named the way the
+  // report names them, so the summary reads as "rewrote the recommendation and
+  // the valuation" rather than as a count of paragraphs.
+  function editedSections(edits) {
+    const seen = [];
+    edits.forEach((edit) => {
+      const p = String(edit.pointer || '');
+      const head = p.split('/')[0];
+      // "the company" would read as the business itself, not the section.
+      const named = head === 'company' ? 'the company profile'
+        : POINTER_SECTIONS[head] && 'the ' + POINTER_SECTIONS[head].toLowerCase();
+      const name = p.startsWith('chrome:') ? 'the headings' : named;
+      if (name && !seen.includes(name)) seen.push(name);
+    });
+    return seen;
+  }
+
+  function joinList(items) {
+    if (items.length <= 1) return escapeHtml(items[0] || '');
+    const rest = items.slice(0, -1).map(escapeHtml).join(', ');
+    return rest + ' and ' + escapeHtml(items[items.length - 1]);
+  }
+
   // Word-level before/after: a longest-common-subsequence over word tokens,
   // rendered with <del>/<ins>. Small texts only (one paragraph), so the
   // quadratic table is fine.
@@ -528,21 +551,15 @@
     return html;
   }
 
-  // The renderer's page-fit report on a delivered version: pages that printed
-  // smaller to fit, and pages whose tail is cut off even at the smallest size.
+  // The renderer's page-fit report on a delivered version. Only a page whose
+  // tail is actually cut off is worth raising: printing a page slightly
+  // smaller is the renderer doing its job, and saying so just adds noise.
   function renderFit(fit) {
     if (!fit) return '';
-    const clipped = fit.clipped || [];
-    const shrunk = fit.shrunk || [];
-    if (clipped.length) {
-      return '<p class="version-fit version-fit--clipped">Page' + (clipped.length > 1 ? 's ' : ' ')
-        + clipped.map((p) => escapeHtml(p.page)).join(', ') + ' cut off in the PDF — the text no longer fits. Shorten it and save again.</p>';
-    }
-    if (shrunk.length) {
-      return '<p class="version-fit version-fit--shrunk">Page' + (shrunk.length > 1 ? 's ' : ' ')
-        + shrunk.map((p) => escapeHtml(p.page) + ' printed at ' + Math.round(p.zoom * 100) + '%').join(', ') + ' to fit the text.</p>';
-    }
-    return '';
+    const clipped = (fit && fit.clipped) || [];
+    if (!clipped.length) return '';
+    return '<p class="version-fit version-fit--clipped">Page' + (clipped.length > 1 ? 's ' : ' ')
+      + clipped.map((p) => escapeHtml(p.page)).join(', ') + ' cut off in the PDF — the text no longer fits. Shorten it and save again.</p>';
   }
 
   // A hand-edited version: who changed what, side by side, plus what the
@@ -551,9 +568,21 @@
     const edits = entry.edits || [];
     const warnings = entry.editWarnings || {};
     const who = entry.editedBy ? escapeHtml(entry.editedBy) : 'You';
-    let html = '<p class="revision-comment">' + who + ' changed ' + edits.length + ' ' + (edits.length === 1 ? 'paragraph' : 'paragraphs')
-      + ' by hand. No AI pass ran: every other paragraph, and every table, chart and figure, is exactly as in version '
-      + escapeHtml(entry.editedFrom != null ? entry.editedFrom : entry.version - 1) + '.</p>';
+    const from = entry.editedFrom != null ? entry.editedFrom : entry.version - 1;
+    // What the edit did to the analysis: the engine's change memo says it in a
+    // sentence, having seen both versions of the report. Without a memo, name
+    // the parts that were rewritten — as much as this page can tell on its own.
+    const memoSummary = entry.changes && entry.changes.differences && entry.changes.differences.summary;
+    let html;
+    if (memoSummary) {
+      html = '<p class="revision-comment">' + renderMarkdown(memoSummary) + '</p>';
+    } else {
+      const sections = editedSections(edits);
+      const what = sections.length ? 'rewrote ' + joinList(sections) : 'rewrote part of the text';
+      html = '<p class="revision-comment">' + who + ' ' + what
+        + '. The rest of the report — the figures, tables and charts included — is unchanged from version '
+        + escapeHtml(from) + '.</p>';
+    }
 
     if (!edits.length) {
       html += renderChangeMemo(entry.changes);
@@ -625,10 +654,21 @@
     '  [data-pointer][contenteditable] { box-shadow: 0 0 0 2px rgb(61,158,114); outline: none; background: rgba(61,158,114,.06); }',
     '  [data-pointer][data-edited="true"] { box-shadow: 0 0 0 2px rgba(217,119,6,.55); }',
     '  [data-derived] { cursor: not-allowed; }',
+    '  a[href] { cursor: inherit; }',
     '</style>',
     '<script>',
     '(function () {',
     '  var FLOOR = ' + FIT_FLOOR + ';',
+    // The frame is sandboxed without same-origin access, so following any link
+    // in the report — the table of contents included — lands on an error page.
+    // Swallow the click; the paragraph underneath still opens for editing.
+    '  document.addEventListener("click", function (e) {',
+    '    var el = e.target;',
+    '    while (el && el !== document) {',
+    '      if (el.tagName === "A" && el.hasAttribute("href")) { e.preventDefault(); return; }',
+    '      el = el.parentNode;',
+    '    }',
+    '  }, true);',
     '  var originals = {};',
     '  var post = function (m) { window.parent.postMessage(m, "*"); };',
     '  var editable = Array.prototype.slice.call(document.querySelectorAll("[data-pointer]:not([data-derived])"));',
@@ -736,6 +776,85 @@
     return s.length > n ? s.slice(0, n).trimEnd() + '…' : s;
   }
 
+  // What changed in a paragraph, word by word. The panel used to show the
+  // first 140 characters of the new text, which for a long paragraph is all
+  // untouched prose — the edit itself scrolled off. So diff the two versions
+  // and show only the changed words plus a little context around them.
+  const DIFF_CONTEXT = 8; // words kept either side of a change
+
+  function lcsDiff(a, b) {
+    if (!a.length && !b.length) return [];
+    if (!a.length) return [{ op: 'ins', words: b }];
+    if (!b.length) return [{ op: 'del', words: a }];
+    // A rewrite this large is not worth aligning word by word.
+    if (a.length * b.length > 250000) return [{ op: 'del', words: a }, { op: 'ins', words: b }];
+
+    const n = a.length;
+    const m = b.length;
+    const width = m + 1;
+    const dp = new Uint16Array((n + 1) * width);
+    for (let i = n - 1; i >= 0; i--) {
+      for (let j = m - 1; j >= 0; j--) {
+        dp[i * width + j] = a[i] === b[j]
+          ? dp[(i + 1) * width + j + 1] + 1
+          : Math.max(dp[(i + 1) * width + j], dp[i * width + j + 1]);
+      }
+    }
+
+    const out = [];
+    const push = (op, word) => {
+      const last = out[out.length - 1];
+      if (last && last.op === op) last.words.push(word);
+      else out.push({ op, words: [word] });
+    };
+    let i = 0;
+    let j = 0;
+    while (i < n && j < m) {
+      if (a[i] === b[j]) { push('same', a[i]); i++; j++; }
+      else if (dp[(i + 1) * width + j] >= dp[i * width + j + 1]) { push('del', a[i]); i++; }
+      else { push('ins', b[j]); j++; }
+    }
+    while (i < n) push('del', a[i++]);
+    while (j < m) push('ins', b[j++]);
+    return out;
+  }
+
+  // Trim the shared head and tail first, so the alignment above only ever runs
+  // on the span that actually differs.
+  function diffWords(original, edited) {
+    const a = String(original || '').split(/\s+/).filter(Boolean);
+    const b = String(edited || '').split(/\s+/).filter(Boolean);
+    let start = 0;
+    while (start < a.length && start < b.length && a[start] === b[start]) start++;
+    let endA = a.length;
+    let endB = b.length;
+    while (endA > start && endB > start && a[endA - 1] === b[endB - 1]) { endA--; endB--; }
+
+    const parts = [];
+    if (start) parts.push({ op: 'same', words: a.slice(0, start) });
+    for (const part of lcsDiff(a.slice(start, endA), b.slice(start, endB))) parts.push(part);
+    if (endA < a.length) parts.push({ op: 'same', words: a.slice(endA) });
+    return parts;
+  }
+
+  function renderDiff(original, edited) {
+    const parts = diffWords(original, edited);
+    if (!parts.some((p) => p.op !== 'same')) return escapeHtml(shortText(edited, 140));
+
+    return parts.map((part, idx) => {
+      if (part.op !== 'same') {
+        return '<span class="diff-' + part.op + '">' + escapeHtml(part.words.join(' ')) + '</span>';
+      }
+      const words = part.words;
+      if (words.length <= DIFF_CONTEXT * 2 + 1) return escapeHtml(words.join(' '));
+      const head = escapeHtml(words.slice(0, DIFF_CONTEXT).join(' '));
+      const tail = escapeHtml(words.slice(-DIFF_CONTEXT).join(' '));
+      if (idx === 0) return '… ' + tail;
+      if (idx === parts.length - 1) return head + ' …';
+      return head + ' … ' + tail;
+    }).join(' ');
+  }
+
   function renderEditorPanel() {
     const changesEl = document.getElementById('editorChanges');
     const warningsEl = document.getElementById('editorWarnings');
@@ -752,18 +871,16 @@
           + '<span class="count' + (over ? ' is-over' : '') + '">' + e.text.length + '/' + e.budget + '</span>'
           + '<button type="button" data-discard="' + escapeAttr(e.pointer) + '" title="Discard this change">✕</button></div>'
           + (e.text === '' ? '<p class="editor-change-text is-removed">Paragraph will be removed</p>'
-            : '<p class="editor-change-text">' + escapeHtml(shortText(e.text, 140)) + '</p>')
+            : '<p class="editor-change-text">' + renderDiff(e.original, e.text) + '</p>')
           + '</li>';
       }).join('') + '</ol>';
     }
 
     const overBudget = changed.filter((e) => e.text.length > e.budget);
     const clipped = (editor.fit && editor.fit.pages.filter((p) => p.over > 2)) || [];
-    const shrunk = (editor.fit && editor.fit.pages.filter((p) => p.over <= 2 && p.zoom < 1)) || [];
-    if (overBudget.length || clipped.length || shrunk.length) {
+    if (overBudget.length || clipped.length) {
       let html = '<div class="editor-warnings">';
       if (overBudget.length) html += '<p>' + (overBudget.length === 1 ? 'One paragraph is' : overBudget.length + ' paragraphs are') + ' longer than the space suggests. It will still be applied; check the page fit.</p>';
-      if (shrunk.length) html += '<p>Page' + (shrunk.length > 1 ? 's ' : ' ') + shrunk.map((p) => p.page + ' (' + Math.round(p.zoom * 100) + '%)').join(', ') + ' would print smaller to fit.</p>';
       if (clipped.length) html += '<p><strong>Page' + (clipped.length > 1 ? 's ' : ' ') + clipped.map((p) => p.page).join(', ') + ' would be cut off even at ' + Math.round(FIT_FLOOR * 100) + '%. Shorten the text.</strong></p>';
       html += '<p>An estimate while you type — the saved version reports the real page fit.</p></div>';
       warningsEl.innerHTML = html;
