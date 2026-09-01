@@ -1,0 +1,112 @@
+# Journey Atlas
+
+An interactive map of how the site works, written for anyone at Valuatum — not
+only developers. It shows three journeys side by side as horizontal bands:
+
+- **Anyone buying a report** — no account: finds a company page, pays, gets a PDF.
+- **Member on a monthly plan** — picks from the catalog, own generations, other analysts' work.
+- **Analyst publishing their own work** — writes with the engine, publishes, earns half.
+
+Pick a situation from the dropdowns, or click any step, and the path that
+actually runs lights up. Each step shows a real screenshot, what the person
+sees, what happens behind the scenes, and — folded away — where it lives in the
+code.
+
+**Where to read it:** <https://www.aiequityreports.com/admin/atlas.html>, also
+linked from the top of the admin page. It is a static page with no sign-in of
+its own, exactly like `admin/index.html`, and it is excluded from search
+engines through `robots.txt` and a `noindex` tag. It contains no live customer
+data — every screenshot is either a public page or a mocked account.
+
+## Changing it
+
+Everything on the page is generated from `data.json`. To fix a description, add
+a step, or change a branch, edit that file and rebuild:
+
+```sh
+node docs/atlas/build.mjs      # writes admin/atlas.html
+```
+
+The build refuses to write if a journey is broken: every combination of the
+dropdowns must end at a step marked `"terminal": true`, every step must be
+reachable, and every arrow must be used by at least one combination. That check
+is what keeps the map honest as the site changes.
+
+### The shape of `data.json`
+
+```jsonc
+{
+  "journeys": [{
+    "id": "customer",
+    "label": "Anyone buying a report",     // band heading
+    "sub":   "No account. Finds a page…",  // one line under it
+    "start": "c_start",                    // the first step
+    "columns": ["Starts on", "Chooses"],   // headings across the top
+    "controls": [{                         // the dropdowns
+      "id": "product", "label": "They…",
+      "options": [{ "value": "free", "label": "Open a free report" }]
+    }],
+    "nodes": [{
+      "id": "c_start",
+      "kind": "screen",        // screen | email | system | decision | outcome
+      "col": 0, "row": 2,      // position in the band
+      "label": "Company report page",
+      "img": "report-page-top",            // shots/report-page-top.jpg
+      "imgs": ["report-page-top", "home"], // more screens, shown in the panel
+      "imgBy": { "fresh": "success-fresh" },// swap the screenshot per dropdown value
+      "sees":   "What the person sees.",
+      "behind": "What happens behind the scenes.",
+      "gap":    "Something worth knowing — shown as a highlighted note.",
+      "dev":    ["api/webhook.js — receives the payment"],
+      "outcome": "ok",         // ok | warn | bad — colours an ending
+      "terminal": true         // this step ends the journey
+    }],
+    "edges": [{
+      "id": "c2", "from": "c_choose", "to": "c_free",
+      "label": "free PDF",
+      "when": { "product": ["free"] }   // only when the dropdown says so
+    }]
+  }]
+}
+```
+
+An arrow with no `when` is always available. Walking a journey means starting at
+`start` and repeatedly taking the *first* arrow out of the current step whose
+`when` matches — so order the arrows with the more specific ones first.
+
+## Re-taking the screenshots
+
+```sh
+docs/atlas/capture/capture.sh          # everything (a few minutes)
+docs/atlas/capture/capture.sh live     # only the public pages
+docs/atlas/capture/capture.sh mock     # the pages that need a paid session
+docs/atlas/capture/capture.sh member   # the member area and analyst workspace
+docs/atlas/capture/capture.sh email    # the emails
+node docs/atlas/build.mjs
+```
+
+Needs Chrome, `python3` with Pillow, node and `pdftoppm`. Screenshots land in
+`shots/` as 1000px-wide JPEGs and are inlined into the built page.
+
+Three kinds of screen cannot simply be visited:
+
+- **The thank-you page and the order page** need a paid Stripe session, so
+  `capture/mock-api.py` serves this repo's own HTML with mocked API answers.
+  That is how the order page is captured while writing, delivered, revised, out
+  of rounds, failed, and after a failed revision.
+- **The member area and the analyst workspace** need a signed-in account.
+  `capture/member-mock.html` is `members.html` with the sign-in and the members
+  API stubbed out; `capture/shoot-member.py` renders it once per role and cuts
+  out each section.
+- **The Stripe payment page** only exists inside a live checkout session, so
+  `capture/stripe-illustration.html` is a drawing of it. The step says so.
+
+The emails are rendered from `server/email.js` itself
+(`capture/render-emails.mjs`), so they cannot drift from what customers get.
+
+## What this does not cover yet
+
+- Admin: adding reports, takedowns, payouts, promo codes.
+- The blog and the static page generators (`scripts/build-*.mjs`).
+- Company Coverage as its own path — it appears as a plan, not as a journey.
+- Fork buyers who are not analysts (they get a private report and owe nothing).
