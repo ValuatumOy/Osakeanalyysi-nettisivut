@@ -127,6 +127,25 @@ test('whatever page offers a checkout also collects what comes back from it', ()
   assert.deepEqual(gaps, [], gaps.join('\n'));
 });
 
+// Reading ?forked= is not enough either: it names the parent analysis, which
+// belongs to another member. The fork's own order is keyed by the Stripe session
+// id, so handing the order page ?forked= sent the buyer to a UUID it treated as
+// their own generation and refused to open.
+test('a fork opens the order page by the Stripe session id, not the parent genId', () => {
+  const wrong = [];
+  for (const file of ['js/analyst-reports.js', 'members.html']) {
+    const src = readFileSync(path.join(ROOT, file), 'utf8');
+    if (!src.includes("get('forked')")) continue;
+    const at = src.indexOf('if (forked) {');
+    assert.notEqual(at, -1, `${file} reads ?forked= but never branches on it`);
+    const branch = src.slice(at, src.indexOf('}', at));
+    if (!/session_?[Ii]d/.test(branch) || /\bgenId\b|\bforked\b/.test(branch.replace('if (forked) {', ''))) {
+      wrong.push(`${file}: ${branch.trim()}`);
+    }
+  }
+  assert.deepEqual(wrong, [], wrong.join('\n'));
+});
+
 // One id, one element. Two elements shared id="linkedinBtn" on the members page,
 // so the line that pointed the sign-in link at LinkedIn set a property on the
 // hidden button next to it instead and the whole funnel dead-ended on "#".
