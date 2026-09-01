@@ -46,6 +46,7 @@ if [ "$WHAT" = all ] || [ "$WHAT" = live ]; then
   shot analysts      "$LIVE/analysts.html"       1280,3000
   shot analyst-story "$LIVE/analyst-story.html"  1280,1600
   shot pricing       "$LIVE/pricing.html"        1280,2400
+  shot institutions  "$LIVE/institutions.html"   1280,2600
   echo "the free PDF's first page…"
   curl -sf "$LIVE/reports.html" | grep -o 'https://files[^"]*\.pdf' | head -1 > "$TMP/pdfurl" || true
   if [ -s "$TMP/pdfurl" ]; then
@@ -124,6 +125,7 @@ CROPS = {
   'analysts-terms':   ('analysts',       1000, 2100),
   'pricing-top':      ('pricing',        0,   1100),
   'pricing-plans':    ('pricing',        1100, 2400),
+  'institutions-form':('institutions',   1300, 2400),
   'order-revision-box': ('order-deliv',  380, 1100),
   'order-revised-top':  ('order-revised', 0,   860),
 }
