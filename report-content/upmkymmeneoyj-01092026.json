@@ -1,0 +1,818 @@
+{
+  "id": "upmkymmeneoyj-01092026",
+  "slug": "upm-equity-report",
+  "companyName": "UPM-Kymmene Oyj",
+  "ticker": "UPM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Paper, Lumber & Forest Products",
+  "currency": "EUR",
+  "reportDate": "2026-09-01",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "24.06 EUR",
+    "targetPrice": "24.70 EUR",
+    "impliedUpside": "+2.7%",
+    "marketCap": "EUR 12.7 bn",
+    "enterpriseValue": "EUR 15.8 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "14.1x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "8.6x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "9.2%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "5.7%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "EUR 10.4 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "27.94 EUR",
+    "week52Low": "21.72 EUR",
+    "oneYearChange": "-1.7%",
+    "threeYearChange": "-24.3%"
+  },
+  "summary": [
+    "UPM-Kymmene Oyj (UPM.HE, NASDAQ Helsinki) is an integrated forest-products and renewable-materials group spanning pulp, forests, electricity, adhesives, papers, timber, plywood, biofuels, biochemicals and biomedical materials. The HOLD rating carries a 12-month target price of 24.70 EUR against a current price of 24.06 EUR, or +2.7% implied upside, in this Valuatum equity research report dated 1 September 2026. Market capitalisation is EUR 12.7 bn and enterprise value is EUR 15.8 bn. The investment case combines commodity exposure with renewable power, specialty conversion and emerging fossil-material substitutes across Finland, Uruguay, Germany and the United States.",
+    "The central tension is that value is concentrated in assets and earnings with different economic drivers. Pulp and plantations, Forest assets and wood sourcing, and Energy represent 56.0% of allocated enterprise value, while Communication Papers and Adhesive Materials carry more visible sales. The stock trades at 14.1x 2026E P/E and 8.6x 2026E EV/EBITDA, below UPM's normalised historical 11.01x EV/EBITDA but not on a comparable quality base. Uruguay pulp has a delivered-cost target of approximately USD 280 per tonne, forests exceed EUR 3.5 bn of assets, and Energy generated EUR 151m of comparable EBIT in 2025.",
+    "The target price is built primarily through a division-level SOTP using 2028E–2029E EBITDA, EBIT or revenue and peer-appropriate multiples, with a weighted target EV of EUR 17.80 bn less EUR 2.741 bn of net debt and EUR 418m of other adjustments. The base scenario produces 27.77 EUR per share and +15.4%, while the bear case produces 12.93 EUR per share and -46.3% and the bull case 37.82 EUR per share and +57.2%. The HOLD reflects moderate value support but several unresolved execution tests."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Low-cost pulp option",
+      "metric": "5.8m tonnes",
+      "text": "UPM's 5.8m-tonne annual pulp platform includes the 2.1m-tonne Paso de los Toros mill, with an optimised delivered cash-cost target of approximately USD 280 per tonne. A EUR 50 per tonne pulp-price move changes annual comparable EBIT by approximately EUR 180m net to EUR 270m gross, making Uruguay's cost position the largest earnings lever and the principal reason to retain separate pulp value."
+    },
+    {
+      "num": "02",
+      "title": "Real asset support",
+      "metric": "917,000 ha",
+      "text": "UPM owns 917,000 hectares and reports forest assets above EUR 3.5 bn, while Forest assets and wood sourcing is valued at EUR 3.30 bn after a 5.7% discount. Energy generated EUR 151m of comparable EBIT on EUR 615m of total segment sales in 2025. These real-asset and infrastructure earnings provide downside support while paper and pulp remain cyclical."
+    },
+    {
+      "num": "03",
+      "title": "Execution optionality",
+      "metric": "EUR 613m",
+      "text": "The WISA demerger creates a separately traded plywood benchmark, while the proposed Sappi transaction could deliver EUR 613m of cash proceeds and EUR 100m of annual graphic-paper synergies if competition concerns are resolved. Leuna has 220,000 tonnes of nameplate capacity but still needs repeat qualified orders and EUR 175m of EBITDA by 2029 to justify its EUR 1.40 bn target value."
+    }
+  ],
+  "thesisBreaker": "The thesis breaks if weak pulp pricing, high Finnish wood costs and a failed Leuna ramp jointly prevent EBITDA from sustainably exceeding EUR 1.7 bn.",
+  "valuePools": [
+    {
+      "name": "Pulp and plantations",
+      "share": "25.0% · EUR 3,962m",
+      "economics": "Revenue EUR 2,400m (24.9%) · Comparable EBIT EUR 240m (26.1%, 10.0% margin) · EV EUR 3,962m",
+      "text": "Pulp and plantations is the largest allocated pool because UPM controls 5.8 million tonnes of annual capacity, including 2.1 million tonnes at Paso de los Toros. Modelled revenue of EUR 2,400m and comparable EBIT of EUR 240m currently support only a 10.0% margin, whereas the target bridge requires EUR 575m of 2028E EBITDA at 8.0x, or EUR 4.60 bn before discounting. The base case assumes approximately 5.3 million saleable tonnes at EUR 566 per tonne, producing about EUR 3.0 bn of sales and EUR 575m of EBITDA after EUR 325m of fixed costs. Paso's optimised cash-cost target of approximately USD 280 per delivered tonne supports resilience, but Finnish wood costs, curtailments and Arauco Sucuriú and Paracel supply additions keep the cycle exposed."
+    },
+    {
+      "name": "Forest assets and wood sourcing",
+      "share": "19.0% · EUR 3,011m",
+      "economics": "Revenue EUR 400m (4.1%) · Comparable EBIT EUR 20m (2.2%, 5.0% margin) · EV EUR 3,011m",
+      "text": "Forest assets and wood sourcing contributes only modelled revenue of EUR 400m and comparable EBIT of EUR 20m, yet receives 19.0% of allocated enterprise value because the operating allocation excludes much of the estate's real-asset and internal fibre value. UPM owns 917,000 hectares, reports more than EUR 3.5 bn of forest assets and harvested 7.8 million cubic metres from owned and leased forests in 2025. The target bridge uses EUR 300m of normalised economic EBITDA at 11.0x, producing EUR 3.30 bn, a 5.7% discount to the disclosed minimum asset value. Biological assets, taxes, conservation restrictions and harvesting obligations justify some discount, while Stora Enso's planned demerger of 1.2 million Swedish hectares could provide price discovery."
+    },
+    {
+      "name": "Energy",
+      "share": "12.0% · EUR 1,902m",
+      "economics": "Revenue EUR 480m (5.0%) · Comparable EBIT EUR 151m (16.4%, 24.6% margin on total sales) · EV EUR 1,902m",
+      "text": "Energy produces EUR 480m of external revenue and EUR 151m of comparable EBIT, with a 24.6% margin on EUR 615m of total segment sales. Its 12.0% EV allocation reflects hydro and nuclear assets, UPM's position as Finland's second-largest electricity producer and a 54.3% stake in Pohjolan Voima. The target bridge requires EUR 210m of 2028E EBITDA at 10.0x, or EUR 2.10 bn. Finnish electricity demand is expected to grow 4–7% annually through 2030, but UPM's value depends on realised capture price and available generation rather than headline demand. Wind additions, negative-price periods, hydrology and nuclear outages can prevent the normalisation from EUR 151m of comparable EBIT to EUR 210m of EBITDA."
+    },
+    {
+      "name": "Adhesive Materials",
+      "share": "11.0% · EUR 1,743m",
+      "economics": "Revenue EUR 1,655m (17.1%) · Comparable EBIT EUR 124m (13.5%, 7.5% margin) · EV EUR 1,743m",
+      "text": "Adhesive Materials earns EUR 1,655m of revenue and EUR 124m of comparable EBIT, but its 7.5% margin remains below the quality implied by a 2028E target of EUR 211.1m EBITDA at 9.0x. The valuation therefore depends on margin repair rather than aggressive revenue growth: the bridge assumes EUR 1.80 bn of revenue and an 11.7% EBITDA margin, driven by specialty mix, pricing and cost discipline. UPM is estimated to hold 4–7.3% of the relevant market, against Avery Dennison's 8–13.9%, although definitions differ. Avery's 9.5x 2026E EBITDA multiple is a ceiling rather than a direct benchmark because Avery has higher-value identification exposure and a 13.6% expected EBIT margin."
+    },
+    {
+      "name": "Biochemicals",
+      "share": "9.0% · EUR 1,426m",
+      "economics": "Revenue EUR 50m (0.5%) · Comparable EBIT -EUR 25m (-2.7%) · EV EUR 1,426m",
+      "text": "Biochemicals is currently loss-making, with modelled revenue of EUR 50m and comparable EBIT of -EUR 25m, yet its 9.0% EV allocation reflects Leuna's potential rather than established earnings. The plant has 220,000 tonnes of annual nameplate capacity and requires EUR 990m of 2029 revenue at EUR 4,500 per tonne, a 30% gross margin and EUR 175m of EBITDA. Applying 8.0x EBITDA gives EUR 1.40 bn, close to the approximately EUR 1.3 bn project cost after the original EUR 550m estimate and a EUR 373m impairment. Stable separation and first industrial-sugar deliveries reduce technical risk, but repeat BioPura and functional-filler orders, integrated uptime and customer qualification remain unproven."
+    },
+    {
+      "name": "Specialty Papers",
+      "share": "7.0% · EUR 1,109m",
+      "economics": "Revenue EUR 1,108m (11.5%) · Comparable EBIT EUR 147m (16.0%, 11.2% margin) · EV EUR 1,109m",
+      "text": "Specialty Papers generates EUR 1,108m of revenue and EUR 147m of comparable EBIT, an 11.2% margin that makes it one of the group's more profitable reported businesses. Its 7.0% EV allocation is below its 11.5% revenue and 16.0% EBIT shares because the target bridge applies 8.0x to EUR 143.75m of 2028E EBIT. Release-liner and packaging applications provide mix support, with release-liner substrate accounting for 55.6% of the cited glassine and kraft market. Asian stability in Q1 2026 is constructive, but capacity pressure and input costs limit the case for multiple expansion. The pool supports group cash generation without carrying the same project risk as Leuna."
+    },
+    {
+      "name": "Communication Papers",
+      "share": "6.0% · EUR 951m",
+      "economics": "Revenue EUR 2,459m (25.5%) · Comparable EBIT EUR 181m (19.7%, 7.3% margin) · EV EUR 951m",
+      "text": "Communication Papers carries the group's largest revenue share at 25.5%, with modelled revenue of EUR 2,459m and comparable EBIT of EUR 181m, but receives only 6.0% of EV because European graphic-paper demand declined 8.0% in 2025. UPM has already closed 570,000 tonnes per year of capacity, and the target bridge applies 6.0x to EUR 141.667m of 2028E EBIT. The proposed Sappi joint venture could generate EUR 100m of annual synergies and EUR 613m of cash proceeds, but neither is separately capitalised in the target because regulatory remedies remain uncertain. The pool is therefore a managed-decline cash engine whose value depends on capacity leaving at least as quickly as demand."
+    },
+    {
+      "name": "Timber",
+      "share": "4.0% · EUR 634m",
+      "economics": "Revenue EUR 508m (5.3%) · Comparable EBIT EUR 43m (4.7%, 8.5% margin) · EV EUR 634m",
+      "text": "Timber contributes modelled revenue of EUR 508m and comparable EBIT of EUR 43m, an 8.5% margin, while its 4.0% EV allocation reflects commodity exposure to lumber, sawlogs and energy. The 2028E bridge values EUR 81.25m of EBITDA at 8.0x, producing EUR 650m before discounting to the 12-month horizon and EUR 1.1 per share after discounting. Binderholz provides a 4.5 million cubic metre annual European scale reference, but UPM does not need to match that scale to support the allocation. The decisive spread is lumber less sawlog and energy costs. Persistent Finnish wood-cost inflation would weaken Timber economics and also undermine the broader value assigned to integrated sourcing."
+    },
+    {
+      "name": "Plywood",
+      "share": "3.0% · EUR 475m",
+      "economics": "Revenue EUR 389m (4.0%) · Comparable EBIT EUR 35m (3.8%, 8.6% margin) · EV EUR 475m",
+      "text": "Plywood generates EUR 389m of revenue and EUR 35m of comparable EBIT, an 8.6% margin, and receives 3.0% of current EV. The bridge applies 8.0x to EUR 62.5m of 2028E EBIT, recognising the WISA brand and birch specialisation while retaining a cyclical wood-products discount. WISA has theoretical capacity of 785,000 cubic metres per year and an estimated 8–12% global share, although the market and share definitions are broad. The demerger effective date of 31 October 2026 creates an observable trading benchmark for a pool currently valued at EUR 475m. Completion can clarify standalone economics, but it does not remove exposure to wood costs, construction demand or plywood pricing."
+    },
+    {
+      "name": "Biofuels",
+      "share": "3.0% · EUR 475m",
+      "economics": "Revenue EUR 200m (2.1%) · Comparable EBIT EUR 15m (1.6%, 7.5% margin) · EV EUR 475m",
+      "text": "Biofuels contributes modelled revenue of EUR 200m and comparable EBIT of EUR 15m, while its 3.0% EV allocation reflects regulated spread economics rather than scale alone. The target bridge applies 10.0x to EUR 110m of 2028E EBITDA. Lappeenranta has capacity of 130,000 tonnes or 120m litres, representing approximately 3.3% of EU HVO volume, and the product offers an 80% greenhouse-gas reduction versus fossil diesel. Finland's distribution obligation is 19.5% in 2026, including a four-percentage-point advanced-fuel sub-target. The valuation depends on RED III eligibility, crude tall-oil feedstock and renewable-fuel premiums; policy changes, excess HVO supply or Union Database problems could erode the spread."
+    },
+    {
+      "name": "Biomedical materials",
+      "share": "1.0% · EUR 158m",
+      "economics": "Revenue EUR 9m (0.1%) · Comparable EBIT -EUR 1m (-0.1%) · EV EUR 158m",
+      "text": "Biomedical materials is an emerging option with modelled revenue of EUR 9m and comparable EBIT of -EUR 1m. The 1.0% EV allocation is not supported by current earnings; the 2029E bridge instead applies 2.0x to EUR 125m of revenue, producing a restrained strategic-option value. UPM's wood-derived animal-free hydrogels address niche applications, while Corning has a cited 48.91% scaffold share and CELLINK a 16.0% bio-ink share. The allocation assumes repeat commercial adoption rather than a proven earnings stream. Until customer uptake and product economics become visible, the pool remains too small to affect group earnings materially."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests the operating outcomes embedded in the share price and separates near-term delivery from long-term margin assumptions. The primary swing factor is normalised group EBITDA, with pulp spreads, Finnish wood costs, Energy capture and Leuna utilisation determining whether UPM earns the cash flow required by each case. The bridge also incorporates leverage and the multiple applied to that earnings base, so a weak operating outcome can reduce equity value through both lower enterprise value and persistent net debt.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "11,000",
+          "EBITDA": "2,310",
+          "Margin": "21.0%",
+          "Multiple": "10.0x",
+          "EV": "23,100",
+          "Equity": "19,941"
+        },
+        "impliedValueOrUpside": "37.82 EUR / sh · +57.2%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "10,300",
+          "EBITDA": "1,899",
+          "Margin": "18.4%",
+          "Multiple": "9.4x",
+          "EV": "17,800",
+          "Equity": "14,641"
+        },
+        "impliedValueOrUpside": "27.77 EUR / sh · +15.4%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "9,500",
+          "EBITDA": "1,425",
+          "Margin": "15.0%",
+          "Multiple": "7.0x",
+          "EV": "9,975",
+          "Equity": "6,816"
+        },
+        "impliedValueOrUpside": "12.93 EUR / sh · -46.3%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "UPM creates value through a portfolio whose inputs and cash flows are not economically interchangeable. Pulp and plantations combine 5.8 million tonnes of capacity with the low-cost Paso de los Toros platform, where the optimised delivered cash-cost target is approximately USD 280 per tonne. Forest assets and wood sourcing add 917,000 owned hectares, more than EUR 3.5 bn of disclosed forest assets and 7.8 million cubic metres of owned-and-leased harvest. Energy adds hydro and nuclear exposure through a 54.3% PVO stake and produced EUR 151m of comparable EBIT on EUR 615m of total segment sales in 2025. Adhesive Materials and Specialty Papers contribute spread and mix economics, with EUR 124m and EUR 147m of comparable EBIT respectively in 2025. Communication Papers generated EUR 2,459m of modelled revenue but operates in an 8.0% declining European market, making closures and cash conversion more important than growth. Biofuels depends on regulatory premiums, while Leuna requires 220,000 tonnes of qualified product demand. The portfolio's strength is diversification across commodity, real-asset and emerging-material earnings; its weakness is that Finnish fibre costs and Leuna losses can absorb gains elsewhere. A separate valuation is therefore more informative than a single paper multiple and supports HOLD rather than a permanent conglomerate discount."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge values each pool on a normalised earnings base and a multiple matched to its economics, then deducts EUR 2.741 bn of net debt and EUR 418m of other adjustments. Pulp contributes EUR 575m of 2028E EBITDA at 8.0x, Forest assets and wood sourcing EUR 300m at 11.0x, Energy EUR 210m at 10.0x and Adhesive Materials EUR 211.111m at 9.0x. Specialty Papers and Communication Papers are valued on EUR 143.75m and EUR 141.667m of EBIT at 8.0x and 6.0x, while Biochemicals requires EUR 175m of 2029E EBITDA at 8.0x. The resulting target enterprise value is EUR 17.80 bn. The reverse test shows what current price already requires: 2026E EBITDA of EUR 1.695 bn and a 9.5% EBIT margin, versus maintained-model EBITDA of EUR 1.846 bn and an 11.1% EBIT margin. At 8.58x 2026E EBITDA, current valuation is below the 9.5x peer median, but the discount reflects weaker returns and mix than historical averages. The quoted EV therefore rests partly on future execution: the gap between EUR 1.695 bn market-implied EBITDA and EUR 1.846 bn maintained EBITDA is EUR 151m, while forests and Energy provide separately auditable asset support. The target's central risk is not the multiple alone; it is whether normalised earnings materialise before leverage and restructuring absorb the benefit."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear case requires weak pulp spreads, high Finnish wood costs, poor Leuna utilisation, lower Energy capture and a failed or remedy-heavy Sappi transaction; it produces 12.93 EUR per share and -46.3%. The base case requires Paso de los Toros to deliver its cost position, modest Adhesive Materials margin repair, disciplined paper capacity and a credible path to Leuna's 2029 economics; it produces 27.77 EUR per share and +15.4%. The bull case requires stronger pulp pricing without major supply acceleration, high Energy capture, successful portfolio transactions and high-value biochemical qualification; it produces 37.82 EUR per share and +57.2%. Early indicators are realised pulp price and Finnish wood cost, Paso output, curtailment days, Energy capture price, repeat Leuna orders, start-up-cost progression and the European Commission's Sappi decision. The central debate is whether UPM's low-cost Uruguay pulp, forests and Energy can stabilise group cash flow before Finnish fibre costs, graphic-paper decline and Leuna execution overwhelm the portfolio. The observed evidence is mixed: H1 2026 comparable EBIT rose 17% to EUR 471m, but Kaukas requires a six-week shutdown, H2 maintenance effects are expected to be EUR 40m higher than H1 and Leuna's commercial output remains unproven. That balance supports HOLD until the earnings recovery becomes recurring."
+    }
+  ],
+  "risks": [
+    "Pulp-price decline and new hardwood supply (Forest assets and wood sourcing): lower realised pulp prices compress the delivered-cost spread as Arauco and Paracel capacity enters, with Chinese port inventories rising, BHKP prices falling and extended Finnish or Uruguay curtailments as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Persistent Finnish wood-cost inflation (Timber): sawlog and pulpwood costs rise faster than lumber and pulp prices, with Fibres North remaining negative after maintenance normalises and purchased-wood volumes becoming more expensive as the early warning - HIGH impact and structural.",
+    "Leuna fails to reach stable commercial output (Biochemicals): low yields, bottlenecks or weak qualification prevent 220,000 tonnes from producing EUR 990m of revenue and EUR 175m of EBITDA, with functional-filler deliveries slipping and start-up losses failing to peak during 2027 as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "UPM-Sappi transaction blocked or diluted (Communication Papers): a prohibition or onerous remedies remove EUR 613m of expected proceeds and weaken the EUR 100m annual synergy path, with major capacity disposals required or the 11 November decision delayed as the early warning - HIGH impact and manageable.",
+    "Negative power prices reduce capture (Energy): wind additions and weak demand create more low-price hours and reduce nuclear realisation, with Finnish area prices discounting Nordic benchmarks and Energy margin falling below 20.0% of total segment sales as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "WISA Group demerger becomes effective (near-term, Plywood): completion and first trading valuation provide independent price discovery for the EUR 475m pool.",
+    "Commission decision on the UPM-Sappi joint venture (near-term, Communication Papers): clearance or proportionate remedies could unlock EUR 613m of proceeds and the EUR 100m annual synergy path.",
+    "First repeat functional-filler deliveries (near-term, Biochemicals): customer orders after the initial September shipments would support the EUR 4,500 per tonne blended revenue assumption.",
+    "Leuna reaches positive EBIT (medium-term, Biochemicals): positive divisional EBIT during 2027 would validate the EUR 1.40 bn target value.",
+    "EUDR compliance becomes operational (medium-term, Forest assets and wood sourcing): traceable purchased wood by 30 December 2026 would protect sourcing access and the asset premium."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "10,460",
+            "10,339",
+            "9,656",
+            "10,000",
+            "10,300",
+            "10,400"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "912",
+            "1,698",
+            "1,351",
+            "1,846",
+            "1,899",
+            "1,964"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "8.7%",
+            "16.4%",
+            "14.0%",
+            "18.5%",
+            "18.4%",
+            "18.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-304",
+            "-1,094",
+            "-594",
+            "-741",
+            "-564",
+            "-536"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "608",
+            "604",
+            "757",
+            "1,105",
+            "1,335",
+            "1,428"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "5.8%",
+            "5.8%",
+            "7.8%",
+            "11.1%",
+            "13.0%",
+            "13.7%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-143",
+            "-104",
+            "-67",
+            "-46",
+            "-63",
+            "-64"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "465",
+            "500",
+            "690",
+            "1,059",
+            "1,272",
+            "1,364"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "395",
+            "463",
+            "491",
+            "902",
+            "1,074",
+            "1,152"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.7",
+            "0.9",
+            "0.9",
+            "1.7",
+            "2",
+            "2.2"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.5",
+            "1.5",
+            "1.5",
+            "1.4",
+            "1.6",
+            "1.8"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "202.5%",
+            "172.8%",
+            "161.5%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "9,166",
+            "7,933",
+            "9,842",
+            "9,311",
+            "9,590",
+            "9,683"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "715",
+            "580",
+            "554",
+            "574",
+            "591",
+            "597"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "283",
+            "174",
+            "264",
+            "264",
+            "264",
+            "264"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "13,483",
+            "13,535",
+            "12,925",
+            "12,413",
+            "12,710",
+            "12,809"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,949",
+            "2,070",
+            "1,886",
+            "1,970",
+            "2,029",
+            "2,049"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,873",
+            "2,073",
+            "1,593",
+            "1,653",
+            "1,700",
+            "1,716"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "632",
+            "892",
+            "715",
+            "783",
+            "807",
+            "815"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "4,454",
+            "5,035",
+            "4,194",
+            "4,406",
+            "4,536",
+            "4,579"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,532",
+            "17,233",
+            "17,659",
+            "17,801"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "11,531",
+            "11,540",
+            "10,334",
+            "10,443",
+            "10,796",
+            "11,089"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "2,444",
+            "2,945",
+            "3,638",
+            "1,762",
+            "1,773",
+            "1,690"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "200",
+            "37",
+            "156",
+            "1,762",
+            "1,773",
+            "1,690"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "3,179",
+            "3,656",
+            "4,268",
+            "2,392",
+            "2,403",
+            "2,320"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,441",
+            "2,395",
+            "2,237",
+            "3,705",
+            "3,768",
+            "3,701"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,531",
+            "17,233",
+            "17,659",
+            "17,801"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,718",
+            "2,922",
+            "3,079",
+            "2,741",
+            "2,740",
+            "2,565"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,543",
+            "13,630",
+            "13,413",
+            "13,184",
+            "13,536",
+            "13,653"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "62.4%",
+            "60.4%",
+            "58.9%",
+            "60.6%",
+            "61.1%",
+            "62.3%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "23.6%",
+            "25.3%",
+            "29.8%",
+            "26.2%",
+            "25.4%",
+            "23.1%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "3.0x",
+            "1.7x",
+            "2.3x",
+            "1.5x",
+            "1.4x",
+            "1.3x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.8",
+            "2.1",
+            "1.9",
+            "1.2",
+            "1.2",
+            "1.2"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "1,380",
+            "1,353",
+            "1,473",
+            "1,362",
+            "1,583",
+            "1,670"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "1,558",
+            "1,411",
+            "1,652",
+            "1,401",
+            "1,636",
+            "1,724"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-605",
+            "204",
+            "-387",
+            "282",
+            "55",
+            "18"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-703",
+            "1,146",
+            "-16",
+            "229",
+            "861",
+            "635"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "703",
+            "-1,146",
+            "16",
+            "-229",
+            "-861",
+            "-635"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "677",
+            "207",
+            "1,457",
+            "1,132",
+            "722",
+            "1,035"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "2,316",
+            "241",
+            "1,587",
+            "1,171",
+            "776",
+            "1,089"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "2,317",
+            "241",
+            "1,588",
+            "1,171",
+            "776",
+            "1,089"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-3,371",
+            "-14",
+            "-1,798",
+            "-1,063",
+            "-699",
+            "-1,027"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-693",
+            "-800",
+            "-800",
+            "-793",
+            "-722",
+            "-859"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-1,288",
+            "193",
+            "-309",
+            "69",
+            "23",
+            "8"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "14.1x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.6x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "14.3x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "10.9x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.3x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "5.7%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.5x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is UPM a buy in 2026?",
+      "a": "UPM is rated HOLD rather than BUY for 2026. The 12-month target price is 24.70 EUR versus 24.06 EUR currently, implying only +2.7% upside. The case has support from EUR 3.30 bn of forest value, EUR 2.10 bn of Energy value and low-cost Uruguay pulp, but Leuna's commercial ramp, Finnish wood costs and the UPM-Sappi transaction remain unresolved. The rating would move towards BUY if recurring Fibres improvement, positive Leuna EBIT and transaction clearance become visible."
+    },
+    {
+      "q": "What is UPM's price target?",
+      "a": "UPM's 12-month fundamental price target is 24.70 EUR per share, compared with a current price of 24.06 EUR and implied upside of +2.7%. The target uses a division-level SOTP with a target enterprise value of EUR 17.80 bn, less EUR 2.741 bn of net debt and EUR 418m of other adjustments. The base scenario is higher at 27.77 EUR per share, while the bear and bull cases are 12.93 EUR and 37.82 EUR respectively."
+    },
+    {
+      "q": "Why is UPM rated HOLD?",
+      "a": "UPM is rated HOLD because moderate asset-backed upside is offset by several operating and transaction risks. Pulp and plantations require EUR 575m of 2028E EBITDA at 8.0x, while Leuna requires EUR 175m of 2029E EBITDA after project cost rose to approximately EUR 1.3 bn from EUR 550m originally. H1 2026 comparable EBIT increased 17% to EUR 471m, but Finnish curtailments, EUR 40m of additional maintenance effects and the Sappi regulatory process limit conviction."
+    },
+    {
+      "q": "Is UPM overvalued in 2026?",
+      "a": "UPM is not presented as obviously overvalued in 2026, but the valuation is not distressed either. The shares trade at 14.1x 2026E P/E and 8.6x 2026E EV/EBITDA, against a 9.5x peer median EV/EBITDA and UPM's 11.01x normalised historical average. Current price implies 2026E EBITDA of EUR 1.695 bn, below the maintained EUR 1.846 bn model. The discount reflects cyclical pulp, conglomerate complexity and Leuna execution risk."
+    },
+    {
+      "q": "What is UPM's bear and bull case?",
+      "a": "UPM's bear case is 12.93 EUR per share, or -46.3%, based on EUR 9.5 bn of revenue, EUR 1.425 bn of EBITDA and a 7.0x multiple. It assumes weak pulp, high Finnish wood costs, poor Leuna utilisation and weak Energy capture. The bull case is 37.82 EUR, or +57.2%, based on EUR 11.0 bn of revenue and EUR 2.310 bn of EBITDA at 10.0x, requiring stronger pulp pricing, successful portfolio transactions and high-value biochemical qualification."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, UPM-Kymmene Oyj report dated 1 September 2026 (the value-map allocations, anchor market capitalisation of EUR 12.7 bn and share price of 24.06 EUR). Forecasts and divisional allocations are analyst-maintained estimates rather than company guidance unless explicitly identified otherwise.",
+    "Competitor context: Suzano at 4.6x 2026E EV/EBITDA, Holmen at 10.3x, Fortum at 13.0x, Avery Dennison at 9.5x and Borregaard at 9.3x. The cited competitor figures are not perfectly comparable: market definitions differ, Avery includes higher-value identification solutions, and Suzano reflects concentration, leverage and Brazilian risk.",
+    "Market data: UPM.HE, 24.06 EUR as of 1 September 2026; the target bridge uses 2028E group and divisional EBITDA or EBIT, including EUR 575m of pulp EBITDA at 8.0x, EUR 300m of forest EBITDA at 11.0x, EUR 210m of Energy EBITDA at 10.0x and EUR 175m of Biochemicals EBITDA at 8.0x. Price sources and forecast figures should be independently verified before use."
+  ]
+}
