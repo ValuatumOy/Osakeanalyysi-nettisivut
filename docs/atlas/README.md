@@ -1,11 +1,13 @@
 # Journey Atlas
 
 An interactive map of how the site works, written for anyone at Valuatum — not
-only developers. It shows three journeys side by side as horizontal bands:
+only developers. It shows five journeys stacked as horizontal bands:
 
 - **Anyone buying a report** — no account: finds a company page, pays, gets a PDF.
 - **Member on a monthly plan** — picks from the catalog, own generations, other analysts' work.
-- **Analyst publishing their own work** — writes with the engine, publishes, earns half.
+- **Analyst publishing their own work** — writes with the engine, publishes, earns half, and reads rivals in exchange for scoring them.
+- **Us, running the place** — the admin site: adding reports, moderating, paying analysts, the blog.
+- **How pages get made** — the hourly build, the blog routine, the generators run by hand, the weekly free rotation.
 
 Pick a situation from the dropdowns, or click any step, and the path that
 actually runs lights up. Each step shows a real screenshot, what the person
@@ -29,8 +31,14 @@ node docs/atlas/build.mjs      # writes admin/atlas.html
 
 The build refuses to write if a journey is broken: every combination of the
 dropdowns must end at a step marked `"terminal": true`, every step must be
-reachable, and every arrow must be used by at least one combination. That check
-is what keeps the map honest as the site changes.
+reachable, every arrow must be used by at least one combination, and no two
+steps in a column may overlap on the canvas (cards are taller than one row —
+leave two rows between two screens). That check is what keeps the map honest as
+the site changes.
+
+Arrows are tried in the order they appear, so a conditional arrow must come
+*before* the unconditional one out of the same step, or it can never be taken.
+The build catches that as an unused arrow.
 
 ### The shape of `data.json`
 
@@ -124,8 +132,7 @@ build once passed.
 
 ## What this does not cover yet
 
-- Admin: adding reports, takedowns, moderation, payouts, promo codes.
-- The blog and the static page generators (`scripts/build-*.mjs`).
-- Coaching analysts — a role an admin can grant, with no self-service UI.
-- Sign-in failures: an expired magic link, a cancelled LinkedIn sign-in.
-- A banned analyst, who is blocked with nothing on screen to explain it.
+- Coaching analysts — a role that exists in the backend with no button anywhere.
+- The institutions enquiry as its own journey; it appears as a second form on
+  the buyer's coverage request.
+- Anything below the surface of the report engine itself.

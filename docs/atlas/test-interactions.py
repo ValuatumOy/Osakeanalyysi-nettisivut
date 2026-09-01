@@ -138,14 +138,17 @@ async def main():
         else:
             fails.append("no screenshot in the panel to click")
 
-        # 7. band buttons switch journeys
-        await ev("document.getElementById('bb-analyst').click()")
-        await asyncio.sleep(0.4)
-        if await click_center_of("a_fork"):
+        # 7. every band button switches journeys, and a step in each one clicks
+        for band, node, expect in [("member","m_signin_fail","Sign-in did not work"),
+                                   ("analyst","a_fork","Builds on"),
+                                   ("admin","ad_blog","blog admin"),
+                                   ("pages","pg_check","Checks before")]:
+            await ev(f"document.getElementById('bb-{band}').click()")
+            await asyncio.sleep(0.4)
+            if not await click_center_of(node):
+                fails.append(f"{band}: {node} not clickable after switching band"); continue
             t3 = await ev("document.querySelector('#pane-detail h2')?.textContent || ''")
-            if "Builds on" not in (t3 or ""): fails.append(f"analyst band click gave {t3!r}")
-        else:
-            fails.append("a_fork not clickable after switching band")
+            if expect not in (t3 or ""): fails.append(f"{band}: clicking {node} gave {t3!r}")
 
         errs = await ev("window.__errs ? window.__errs.join(' | ') : ''")
         if errs: fails.append("page errors: " + errs)

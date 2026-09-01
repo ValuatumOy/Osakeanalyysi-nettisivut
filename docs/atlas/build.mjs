@@ -90,6 +90,16 @@ for (const j of data.journeys) {
     else if (journeyOf[e.from] !== j || journeyOf[e.to] !== j) problems.push(`${j.id}: arrow "${e.id}" crosses into another journey`);
     else if (!seenE.has(e.id)) problems.push(`${j.id}: arrow "${e.id}" (${e.from} → ${e.to}) is never taken`);
   }
+  // Cards are taller than one row, so two steps in the same column must sit far
+  // enough apart vertically or they overlap on the canvas.
+  const ROWH = 112, TALL = { screen: 176, email: 176 };
+  for (const a of j.nodes) {
+    for (const b of j.nodes) {
+      if (a === b || a.col !== b.col || a.row >= b.row) continue;
+      const need = Math.ceil((TALL[a.kind] || 46) / ROWH);
+      if (b.row - a.row < need) problems.push(`${j.id}: "${a.id}" (row ${a.row}) and "${b.id}" (row ${b.row}) overlap in column ${a.col} — leave ${need} row(s) between them`);
+    }
+  }
   console.log(`${j.id}: ${j.nodes.length} steps, ${j.edges.length} arrows, ${combos.length} combinations`);
 }
 if (problems.length) {

@@ -2031,6 +2031,842 @@
      "to": "a_ranked"
     }
    ]
+  },
+  {
+   "id": "admin",
+   "short": "Admin",
+   "label": "Us, running the place",
+   "sub": "One shared password. Adding reports, moderating analysts, paying them, and publishing the blog.",
+   "start": "ad_signin",
+   "columns": [
+    "Signs in",
+    "Admin site",
+    "Which job",
+    "Does it",
+    "",
+    "What happens next",
+    "",
+    "Result"
+   ],
+   "controls": [
+    {
+     "id": "task",
+     "label": "The job",
+     "options": [
+      {
+       "value": "add",
+       "label": "Add a report to the catalog"
+      },
+      {
+       "value": "remove",
+       "label": "Hide or delete a report"
+      },
+      {
+       "value": "moderate",
+       "label": "Moderate an analyst's analysis"
+      },
+      {
+       "value": "member",
+       "label": "Look after a member"
+      },
+      {
+       "value": "payout",
+       "label": "Pay an analyst"
+      },
+      {
+       "value": "stats",
+       "label": "Check the numbers"
+      },
+      {
+       "value": "promo",
+       "label": "Look at promo codes"
+      },
+      {
+       "value": "blog",
+       "label": "Publish a blog post"
+      }
+     ]
+    },
+    {
+     "id": "care",
+     "label": "When removing a report",
+     "options": [
+      {
+       "value": "hide",
+       "label": "Hides it"
+      },
+      {
+       "value": "delete",
+       "label": "Deletes it for good"
+      }
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "ad_signin",
+     "kind": "screen",
+     "col": 0,
+     "row": 4,
+     "label": "Types the admin password",
+     "img": "admin-signin",
+     "sees": "A single password box. No accounts, no names — everyone who administers the site shares one password.",
+     "behind": "There is no sign-in step as such: the password is kept in the browser and sent with every request, and the page shows itself if the first request comes back with data. The admin pages themselves are ordinary public files; what the password protects is the answers, which are checked on the server.",
+     "gap": "A shared password means nothing in the audit trail says which person did something.",
+     "dev": [
+      "admin/index.html:321-341",
+      "server/lambda/api.js:422-431 — ADMIN_UPLOAD_PASSWORD",
+      "server/lambda/members.js:2755-2760"
+     ]
+    },
+    {
+     "id": "ad_home",
+     "kind": "screen",
+     "col": 1,
+     "row": 4,
+     "label": "The admin site",
+     "img": "admin-reports",
+     "imgs": [
+      "admin-reports",
+      "admin-analyst",
+      "admin-users",
+      "admin-earnings",
+      "admin-stats",
+      "admin-promos"
+     ],
+     "sees": "Six tabs: Reports, Analyst reports, Users, Earnings & payouts, Stats, Promo codes — and a link to this atlas.",
+     "behind": "The tabs talk to two different backends with the same password: the report catalog and the members system.",
+     "dev": [
+      "admin/index.html:145-150 — the tabs"
+     ]
+    },
+    {
+     "id": "ad_choose",
+     "kind": "decision",
+     "col": 2,
+     "row": 4,
+     "label": "Which job?",
+     "sees": "Everything an admin does day to day sits behind one of the six tabs, plus the separate blog admin page.",
+     "behind": ""
+    },
+    {
+     "id": "ad_add",
+     "kind": "screen",
+     "col": 3,
+     "row": 0,
+     "label": "Adds a report",
+     "img": "admin-reports",
+     "sees": "A form: company, ticker, exchange, country, sector, date, the PDF file, and two tickboxes — free, and visible immediately.",
+     "behind": "Three steps in a row: the server names the file, the browser uploads the PDF straight to the file store, and a small record is written next to it. The company name typed here becomes part of the filename forever — there is no rename.",
+     "gap": "If the upload quietly fails, the last step answers 'PDF not found' and the report simply is not there.",
+     "dev": [
+      "admin/index.html:504-546",
+      "server/lambda/api.js:474-522"
+     ]
+    },
+    {
+     "id": "ad_s3",
+     "kind": "system",
+     "col": 4,
+     "row": 0,
+     "label": "Stored, but not published yet",
+     "sees": "The report appears in the admin table straight away — and nowhere else.",
+     "behind": "Adding a report writes two files to the store and nothing else. No page is built, nothing is committed, the public site does not know about it yet.",
+     "dev": [
+      "server/lambda/api.js:491-522 — the sidecar record"
+     ]
+    },
+    {
+     "id": "ad_wait",
+     "kind": "system",
+     "col": 5,
+     "row": 0,
+     "label": "Waits for the hourly build",
+     "sees": "Nothing to do. Within the hour the company's page and the catalog card exist.",
+     "behind": "A job runs every hour at seven minutes past and turns whatever is in the store into pages. See the last journey below for what it actually does.",
+     "dev": [
+      ".github/workflows/report-pages-sync.yml — hourly at :07"
+     ]
+    },
+    {
+     "id": "ad_live",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 6,
+     "row": 0,
+     "label": "Live within the hour",
+     "sees": "The report is on its company page, in the catalog, and in the sitemap.",
+     "behind": "Nothing was published by hand — the same hourly job builds every page from the same snapshot, so they cannot disagree with each other."
+    },
+    {
+     "id": "ad_remove",
+     "kind": "screen",
+     "col": 3,
+     "row": 2,
+     "label": "Hides or deletes a report",
+     "img": "admin-reports",
+     "sees": "Deleting asks how many people were sent a permanent link to this report in the last year, and makes you type the company name. It also offers to hide it instead, which is the recommended button.",
+     "behind": "Hiding takes it off the public pages and leaves every link that was already emailed working. Deleting is the only thing in the whole system that actually removes a file.",
+     "dev": [
+      "admin/index.html:620-672",
+      "server/lambda/api.js:557-568"
+     ]
+    },
+    {
+     "id": "ad_hidden",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 4,
+     "row": 2,
+     "label": "Hidden — old links still work",
+     "sees": "It disappears from the catalog, the company page and the sitemap at the next hourly build.",
+     "behind": "Anyone who bought it keeps their download. This is what the reaper does to old resale copies too — hide, never delete."
+    },
+    {
+     "id": "ad_deleted",
+     "kind": "outcome",
+     "outcome": "bad",
+     "terminal": true,
+     "col": 4,
+     "row": 3,
+     "label": "Deleted — those links now break",
+     "sees": "Gone everywhere, including for the people who paid for it.",
+     "behind": "Their emailed link stops working with no explanation and no refund path.",
+     "gap": "This is the one irreversible action in the system. The count of affected buyers is shown first, which is why it is worth reading."
+    },
+    {
+     "id": "ad_moderate",
+     "kind": "screen",
+     "col": 3,
+     "row": 4,
+     "label": "Moderates an analysis",
+     "img": "admin-analyst",
+     "sees": "Published analyst work with three buttons: make it free for a few days, take it down (typing the company id and a reason the analyst will see), or reopen something taken down.",
+     "behind": "Publishing is automatic, so this is the only quality gate and it happens after the fact. A takedown voids the sale, refunds the reader and claws back what the analyst earned. Reopening hands it back as an unfinished report and puts the publishing obligation back on them.",
+     "dev": [
+      "server/lambda/members.js:2136-2173, 2321-2336"
+     ]
+    },
+    {
+     "id": "ad_moderated",
+     "kind": "outcome",
+     "outcome": "warn",
+     "terminal": true,
+     "col": 4,
+     "row": 4,
+     "label": "Taken down and refunded",
+     "sees": "It vanishes from the company page; the reader is refunded.",
+     "behind": "Reopening is refused if that analyst already owes a different publication — the message explains that, because the fix is to publish the other one first."
+    },
+    {
+     "id": "ad_member",
+     "kind": "screen",
+     "col": 3,
+     "row": 6,
+     "label": "Looks after a member",
+     "img": "admin-users",
+     "sees": "Members with their plan and role. An admin can free up someone's next monthly generation, suspend an account, or throw out a review that should not count.",
+     "behind": "Freeing a generation clears both the publishing obligation and the month's used slot — this is the manual escape from an analyst who is stuck. Voiding a review keeps the row but subtracts the score back out.",
+     "gap": "Changing someone between reader, analyst and coaching analyst exists in the backend but has no button — the table only shows the role.",
+     "dev": [
+      "server/lambda/members.js:2296-2306, 2558-2589",
+      "members.js:2308-2319 — the role change with no UI"
+     ]
+    },
+    {
+     "id": "ad_member_done",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 4,
+     "row": 6,
+     "label": "Sorted",
+     "sees": "The change takes effect immediately.",
+     "behind": "Everything an admin does here is written to an audit trail against that member.",
+     "gap": "Suspending someone tells them nothing — see the analyst journey. They are simply logged out over and over."
+    },
+    {
+     "id": "ad_payout",
+     "kind": "screen",
+     "col": 3,
+     "row": 8,
+     "label": "Pays an analyst",
+     "img": "admin-earnings",
+     "sees": "Per analyst: what they published, what it sold for, what is ready to invoice, what is still held for 14 days, and what has been paid. Paying requires typing PAID.",
+     "behind": "This moves no money. It records that a transfer happened, which is done by hand outside the system — there are no payment rails here on purpose.",
+     "dev": [
+      "server/lambda/members.js:2176-2259"
+     ]
+    },
+    {
+     "id": "ad_paid",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 4,
+     "row": 8,
+     "label": "Recorded as paid",
+     "sees": "The analyst's own income panel matches, because both are worked out from the same records.",
+     "behind": "",
+     "gap": "The button always settles the whole balance; paying part of it is possible in the backend but not on screen."
+    },
+    {
+     "id": "ad_stats",
+     "kind": "screen",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 3,
+     "row": 10,
+     "label": "Reads the numbers",
+     "img": "admin-stats",
+     "sees": "Totals and a per-company table.",
+     "behind": "Downloads of free reports are direct links to the file store and leave no trace, so they are missing from these numbers. The page says so itself.",
+     "dev": [
+      "server/lambda/members.js:2455+"
+     ]
+    },
+    {
+     "id": "ad_promo",
+     "kind": "screen",
+     "outcome": "warn",
+     "terminal": true,
+     "col": 3,
+     "row": 12,
+     "label": "Looks at promo codes",
+     "img": "admin-promos",
+     "sees": "The live promo codes, with any code that gives everything away for free flagged. The only button switches one off.",
+     "behind": "Codes are created in Stripe, not here. Every checkout on the site accepts them.",
+     "dev": [
+      "server/lambda/members.js:2532-2556"
+     ]
+    },
+    {
+     "id": "ad_blog",
+     "kind": "screen",
+     "col": 3,
+     "row": 14,
+     "label": "Opens the blog admin",
+     "img": "blog-admin",
+     "sees": "Drafts waiting to be published, topics, authors, and the weekly routine. Written weekly by an automated routine; a person decides what goes out.",
+     "behind": "This page is not a content system — it edits the repository directly. The password does not protect the posts; it hands the browser a GitHub key with write access to the whole repository.",
+     "gap": "That key stays in the browser afterwards, and rotating the admin password does not take it back. Worth fixing before more people use this page.",
+     "dev": [
+      "blog-admin.html:375-432",
+      "api/auth.js — returns GITHUB_PAT to the browser"
+     ]
+    },
+    {
+     "id": "ad_merge",
+     "kind": "system",
+     "col": 4,
+     "row": 14,
+     "label": "Merges the draft",
+     "sees": "A toast saying it will be live in about 30 seconds.",
+     "behind": "Publishing is a merge into the main branch. Discarding a draft closes it and puts the topic back in the queue.",
+     "dev": [
+      "blog-admin.html:793-800, 829-850"
+     ]
+    },
+    {
+     "id": "ad_blog_live",
+     "kind": "screen",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 6,
+     "row": 14,
+     "label": "Post is live",
+     "img": "blog",
+     "sees": "The article appears on the blog within about half a minute.",
+     "behind": "Merging to the main branch is what deploys the site — the same mechanism as everything else."
+    }
+   ],
+   "edges": [
+    {
+     "id": "ad1",
+     "from": "ad_signin",
+     "to": "ad_home"
+    },
+    {
+     "id": "ad2",
+     "from": "ad_home",
+     "to": "ad_choose"
+    },
+    {
+     "id": "ad3",
+     "from": "ad_choose",
+     "to": "ad_add",
+     "label": "a new report",
+     "when": {
+      "task": [
+       "add"
+      ]
+     }
+    },
+    {
+     "id": "ad4",
+     "from": "ad_add",
+     "to": "ad_s3"
+    },
+    {
+     "id": "ad5",
+     "from": "ad_s3",
+     "to": "ad_wait"
+    },
+    {
+     "id": "ad6",
+     "from": "ad_wait",
+     "to": "ad_live"
+    },
+    {
+     "id": "ad7",
+     "from": "ad_choose",
+     "to": "ad_remove",
+     "label": "take one down",
+     "when": {
+      "task": [
+       "remove"
+      ]
+     }
+    },
+    {
+     "id": "ad8",
+     "from": "ad_remove",
+     "to": "ad_deleted",
+     "label": "deletes it",
+     "when": {
+      "care": [
+       "delete"
+      ]
+     }
+    },
+    {
+     "id": "ad9",
+     "from": "ad_remove",
+     "to": "ad_hidden",
+     "label": "hides it"
+    },
+    {
+     "id": "ad10",
+     "from": "ad_choose",
+     "to": "ad_moderate",
+     "label": "an analyst's work",
+     "when": {
+      "task": [
+       "moderate"
+      ]
+     }
+    },
+    {
+     "id": "ad11",
+     "from": "ad_moderate",
+     "to": "ad_moderated"
+    },
+    {
+     "id": "ad12",
+     "from": "ad_choose",
+     "to": "ad_member",
+     "label": "a member",
+     "when": {
+      "task": [
+       "member"
+      ]
+     }
+    },
+    {
+     "id": "ad13",
+     "from": "ad_member",
+     "to": "ad_member_done"
+    },
+    {
+     "id": "ad14",
+     "from": "ad_choose",
+     "to": "ad_payout",
+     "label": "money owed",
+     "when": {
+      "task": [
+       "payout"
+      ]
+     }
+    },
+    {
+     "id": "ad15",
+     "from": "ad_payout",
+     "to": "ad_paid"
+    },
+    {
+     "id": "ad16",
+     "from": "ad_choose",
+     "to": "ad_stats",
+     "label": "the numbers",
+     "when": {
+      "task": [
+       "stats"
+      ]
+     }
+    },
+    {
+     "id": "ad17",
+     "from": "ad_choose",
+     "to": "ad_promo",
+     "label": "promo codes",
+     "when": {
+      "task": [
+       "promo"
+      ]
+     }
+    },
+    {
+     "id": "ad18",
+     "from": "ad_choose",
+     "to": "ad_blog",
+     "label": "the blog",
+     "when": {
+      "task": [
+       "blog"
+      ]
+     }
+    },
+    {
+     "id": "ad19",
+     "from": "ad_blog",
+     "to": "ad_merge"
+    },
+    {
+     "id": "ad20",
+     "from": "ad_merge",
+     "to": "ad_blog_live"
+    }
+   ]
+  },
+  {
+   "id": "pages",
+   "short": "Pages",
+   "label": "How pages get made",
+   "sub": "Nobody publishes the site by hand. A job builds the pages, and merging to the main branch deploys them.",
+   "start": "pg_start",
+   "columns": [
+    "Something new",
+    "Picked up by",
+    "Turned into pages",
+    "Checked",
+    "Committed",
+    "Deployed",
+    "Result"
+   ],
+   "controls": [
+    {
+     "id": "what",
+     "label": "What is new",
+     "options": [
+      {
+       "value": "report",
+       "label": "A report PDF was added"
+      },
+      {
+       "value": "blog",
+       "label": "A blog post was written"
+      },
+      {
+       "value": "manual",
+       "label": "Company or comparison pages"
+      },
+      {
+       "value": "rotation",
+       "label": "The week's free reports"
+      }
+     ]
+    },
+    {
+     "id": "guard",
+     "label": "The checks",
+     "options": [
+      {
+       "value": "pass",
+       "label": "Pass"
+      },
+      {
+       "value": "fail",
+       "label": "Catch a problem"
+      }
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "pg_start",
+     "kind": "decision",
+     "col": 0,
+     "row": 3,
+     "label": "Something new exists",
+     "sees": "Nothing on the site yet.",
+     "behind": "Four things can start this: an admin adds a report, the weekly routine writes a blog draft, somebody runs one of the page generators, or the week rolls over and the free reports change."
+    },
+    {
+     "id": "pg_pdf",
+     "kind": "system",
+     "col": 1,
+     "row": 0,
+     "label": "An hourly job notices · :07",
+     "sees": "Nothing — this runs on its own, every hour at seven minutes past.",
+     "behind": "It reads the live catalog and compares it with the pages in the repository. It can also be started by hand when someone does not want to wait.",
+     "dev": [
+      ".github/workflows/report-pages-sync.yml",
+      "scripts/report-pages/sync.mjs"
+     ]
+    },
+    {
+     "id": "pg_extract",
+     "kind": "system",
+     "col": 2,
+     "row": 0,
+     "label": "Reads the PDF, writes the page",
+     "sees": "Nothing.",
+     "behind": "For a report with no page text yet, it pulls the text out of the PDF and has a language model turn it into the page's content. Then it rebuilds that company's page, the catalog grid and the sitemap — all from one snapshot, so they cannot disagree.",
+     "gap": "If the text extraction fails for one report, that report is skipped, the rest still go out, and the run reports the failure afterwards.",
+     "dev": [
+      "scripts/report-pages/extract.mjs",
+      "scripts/report-pages/render.mjs"
+     ]
+    },
+    {
+     "id": "pg_blog",
+     "kind": "system",
+     "col": 1,
+     "row": 3,
+     "label": "The weekly routine writes it",
+     "sees": "A draft appears in the blog admin.",
+     "behind": "An automated routine runs on Sunday evenings, refreshes its numbers, writes an article and proposes new topics. It is configured outside this repository, so it cannot be found by reading the code.",
+     "gap": "Its schedule lives in one person's account rather than in the repo — the previous in-repo version was removed after failing every run.",
+     "dev": [
+      "blog-system/PIPELINE.md"
+     ]
+    },
+    {
+     "id": "pg_review",
+     "kind": "screen",
+     "col": 2,
+     "row": 3,
+     "label": "A person reads it and merges",
+     "img": "blog-admin",
+     "sees": "The draft in the blog admin, with Publish and Discard.",
+     "behind": "Nothing goes out unread. Discarding puts the topic back in the queue for another week.",
+     "dev": [
+      "blog-admin.html:793-850"
+     ]
+    },
+    {
+     "id": "pg_manual",
+     "kind": "system",
+     "col": 1,
+     "row": 5,
+     "label": "Someone runs the generator",
+     "sees": "A command in a terminal.",
+     "behind": "Company pages, comparison pages, social share images and the homepage thumbnails are each a script somebody runs. Some need credentials or a headless browser, which is why they are not automatic.",
+     "gap": "Because these are by hand, they are the parts most likely to go stale — the homepage can end up advertising a report that is no longer free.",
+     "dev": [
+      "scripts/generate-company-pages.mjs",
+      "scripts/build-comparison-pages.mjs",
+      "npm run seo:og",
+      "npm run report:thumbs"
+     ]
+    },
+    {
+     "id": "pg_rotation",
+     "kind": "system",
+     "col": 1,
+     "row": 7,
+     "label": "The week's free reports pick themselves",
+     "sees": "Three reports are free this week; next week it is three others.",
+     "behind": "Nobody chooses them. The week number decides, through a fixed calculation, so the same week always gives the same three. Reports that are too new, recently sold, recently free, or marked never-free are left out.",
+     "dev": [
+      "server/catalog.js:243-276 — selectWeeklyFreeIds"
+     ]
+    },
+    {
+     "id": "pg_rot_live",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 2,
+     "row": 7,
+     "label": "Free for a week",
+     "sees": "Those three say Free on the catalog and open without paying.",
+     "behind": "The choice is made once and then reused, so marking a report never-free does not pull it out of the week already running.",
+     "gap": "The homepage thumbnails are built by hand, so they can advertise last week's free reports until somebody rebuilds them."
+    },
+    {
+     "id": "pg_check",
+     "kind": "system",
+     "col": 3,
+     "row": 1,
+     "label": "Checks before anything is kept",
+     "sees": "Nothing, unless it fails.",
+     "behind": "Before committing, the build re-runs every generator in check mode, validates the structured data, and confirms every share image and sitemap address points at a file that exists. Page dates come from when the page last really changed, not from today.",
+     "dev": [
+      ".github/workflows/seo-guard.yml",
+      "scripts/report-pages/check.mjs",
+      "scripts/build-page-freshness.mjs"
+     ]
+    },
+    {
+     "id": "pg_frozen",
+     "kind": "outcome",
+     "outcome": "warn",
+     "terminal": true,
+     "col": 4,
+     "row": 2,
+     "label": "Nothing committed — site stays as it was",
+     "sees": "No change on the site. The new report simply does not appear yet.",
+     "behind": "A failed check means nothing is written, so the site freezes at its last consistent state rather than going out half-built. Someone has to look at why.",
+     "gap": "The site being correct and the site being current look identical from outside — a stuck build is only visible to whoever watches the job."
+    },
+    {
+     "id": "pg_commit",
+     "kind": "system",
+     "col": 4,
+     "row": 1,
+     "label": "Commits and pushes",
+     "sees": "Nothing.",
+     "behind": "The generated pages are committed to the main branch like any other change. The site holds its pages as real files; nothing is assembled while somebody is reading it.",
+     "dev": [
+      "docs/report-page-automation.md"
+     ]
+    },
+    {
+     "id": "pg_deploy",
+     "kind": "system",
+     "col": 5,
+     "row": 1,
+     "label": "Merging deploys the site",
+     "sees": "About half a minute later, the change is live.",
+     "behind": "Every change reaches the public site the same way: it lands on the main branch and the host rebuilds. There is no separate publish step for anyone to forget."
+    },
+    {
+     "id": "pg_live",
+     "kind": "screen",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 6,
+     "row": 1,
+     "label": "Live on the site",
+     "img": "report-page-top",
+     "imgs": [
+      "report-page-top",
+      "catalog",
+      "blog"
+     ],
+     "sees": "The company page, the catalog card, the sitemap entry and the blog article — whichever this change produced.",
+     "behind": "Every generated file is derived from the pages themselves rather than typed a second time, which is what keeps the ratings on the pages, in the sitemap and in the AI-readable files from drifting apart.",
+     "dev": [
+      "docs/seo-generated-files.md"
+     ]
+    }
+   ],
+   "edges": [
+    {
+     "id": "pg1",
+     "from": "pg_start",
+     "to": "pg_pdf",
+     "label": "a report PDF",
+     "when": {
+      "what": [
+       "report"
+      ]
+     }
+    },
+    {
+     "id": "pg2",
+     "from": "pg_start",
+     "to": "pg_blog",
+     "label": "a blog post",
+     "when": {
+      "what": [
+       "blog"
+      ]
+     }
+    },
+    {
+     "id": "pg3",
+     "from": "pg_start",
+     "to": "pg_manual",
+     "label": "someone runs a script",
+     "when": {
+      "what": [
+       "manual"
+      ]
+     }
+    },
+    {
+     "id": "pg4",
+     "from": "pg_start",
+     "to": "pg_rotation",
+     "label": "a new week",
+     "when": {
+      "what": [
+       "rotation"
+      ]
+     }
+    },
+    {
+     "id": "pg5",
+     "from": "pg_rotation",
+     "to": "pg_rot_live"
+    },
+    {
+     "id": "pg6",
+     "from": "pg_pdf",
+     "to": "pg_extract"
+    },
+    {
+     "id": "pg7",
+     "from": "pg_extract",
+     "to": "pg_check"
+    },
+    {
+     "id": "pg8",
+     "from": "pg_blog",
+     "to": "pg_review"
+    },
+    {
+     "id": "pg9",
+     "from": "pg_review",
+     "to": "pg_check"
+    },
+    {
+     "id": "pg10",
+     "from": "pg_manual",
+     "to": "pg_check"
+    },
+    {
+     "id": "pg11",
+     "from": "pg_check",
+     "to": "pg_frozen",
+     "label": "a check fails",
+     "when": {
+      "guard": [
+       "fail"
+      ]
+     }
+    },
+    {
+     "id": "pg12",
+     "from": "pg_check",
+     "to": "pg_commit",
+     "label": "all clear"
+    },
+    {
+     "id": "pg13",
+     "from": "pg_commit",
+     "to": "pg_deploy"
+    },
+    {
+     "id": "pg14",
+     "from": "pg_deploy",
+     "to": "pg_live"
+    }
+   ]
   }
  ]
 }
