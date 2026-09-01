@@ -70,6 +70,8 @@ const handler = async (req, res) => {
           purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
           withRevisions: session.metadata?.withRevisions === 'true',
           revisionsAllowed: session.metadata?.revisionsAllowed || '0',
+          amountTotal: session.amount_total,
+          currency: session.currency,
         });
 
         // Confirmation email is best-effort: the purchase is recorded, and the
@@ -107,6 +109,8 @@ const handler = async (req, res) => {
             purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
             withRevisions: session.metadata?.withRevisions === 'true',
             revisionsAllowed: session.metadata?.revisionsAllowed || '0',
+            amountTotal: session.amount_total,
+            currency: session.currency,
           });
 
           try {

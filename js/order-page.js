@@ -254,91 +254,129 @@
     ].filter(Boolean).join('\n\n');
   }
 
+  // A cell's period. The engine writes a year and its quarters as distinct
+  // cells, so `quarter` is the only thing separating `ns 2026` from `ns Q4/26`.
+  function periodLabel(row) {
+    return row.quarter == null ? String(row.year) : 'Q' + row.quarter + '/' + String(row.year).slice(-2);
+  }
+
   // Ported from ForecastMovementCharts in RevisionDetails.tsx: one bar chart
-  // per moved varname (net sales / EBIT), each bar showing the new value with
-  // a dashed marker + label for the old one where they differ.
-  function renderForecastChart(wrote) {
+  // per moved varname (net sales / EBIT) and periodicity, each bar showing the
+  // new value with a dashed marker + label for the old one where they differ.
+  // Annual and quarterly figures get separate charts because a quarter is
+  // roughly a quarter of its year, and a shared y-scale would flatten the
+  // quarterly bars into slivers.
+  function renderForecastChart(wrote, derived) {
     const NAMES = { ns: 'Net sales', ebit: 'EBIT' };
-    const groups = ['ns', 'ebit'].filter((name) => wrote.some((row) => row.varname === name));
-    if (!groups.length) return '';
+    // A quarter-revised year has no written full-year cell — the engine cannot
+    // send a year alongside its own quarters — so without these the annual
+    // chart skips that year entirely. It is a full-year movement like any
+    // other, and reads as one: how the figure reached the model is not
+    // something the reader needs.
+    const derivedRows = (derived || []).filter((row) => row.after != null);
 
-    return groups.map((name) => {
-      const points = wrote.filter((row) => row.varname === name).sort((a, b) => a.year - b.year);
-      const width = 900, height = 300, left = 58, bottom = 40, top = 48;
-      const slot = (width - left - 10) / points.length;
-      const values = points.reduce((acc, p) => acc.concat([p.before == null ? 0 : p.before, p.after]), []);
-      const min = Math.min(0, ...values);
-      const max = Math.max(1, ...values);
-      const range = max - min || 1;
-      const y = (value) => top + ((max - value) / range) * (height - top - bottom);
-      const zero = y(0);
-      const barWidth = Math.min(72, slot * 0.42);
-      const labelWidth = (text) => Math.max(20, text.length * 6.7 + 8);
+    const series = [];
+    ['ns', 'ebit'].forEach((varname) => {
+      [false, true].forEach((quarterly) => {
+        const written = wrote.filter((row) => row.varname === varname && (row.quarter != null) === quarterly);
+        // Annual only: a written year wins over a derived one, though by
+        // construction the two never cover the same year.
+        const writtenYears = new Set(written.map((row) => row.year));
+        const extra = quarterly
+          ? []
+          : derivedRows.filter((row) => row.varname === varname && !writtenYears.has(row.year));
+        const points = written.concat(extra)
+          .sort((a, b) => a.year - b.year || (a.quarter || 0) - (b.quarter || 0));
+        if (!points.length) return;
+        const label = NAMES[varname] || varname;
+        series.push({ title: quarterly ? label + ', quarterly' : label, points });
+      });
+    });
+    if (!series.length) return '';
 
-      const bars = points.map((point, index) => {
-        const x = left + slot * index + slot / 2;
-        const oldY = y(point.before == null ? 0 : point.before);
-        const newY = y(point.after);
-        const increased = point.before == null || point.after >= point.before;
-        const changed = point.before != null && point.before !== point.after;
-        const topsAreClose = changed && Math.abs(oldY - newY) < 32;
-        const decreaseGap = newY - oldY;
-        const oldLabelY = topsAreClose ? (oldY < newY ? oldY - 11 : oldY + 17) : oldY - 11;
-        const newLabelY = decreaseGap > 0 ? (decreaseGap >= 20 ? newY - 5 : newY + 17) : newY - 11;
-        const arrowY = Math.max(23, Math.min(oldY, newY) - 3);
-        const oldLabel = formatNumber(point.before);
-        const newLabel = formatNumber(point.after);
-        const oldLabelInsideShortBar = oldLabelY > oldY && Math.abs(zero - oldY) < 25;
-        const newLabelInsideShortBar = newLabelY > newY && Math.abs(zero - newY) < 25;
-        const oldLabelX = oldLabelInsideShortBar ? x - barWidth / 2 - labelWidth(oldLabel) / 2 - 6 : x;
-        const newLabelX = newLabelInsideShortBar ? x - barWidth / 2 - labelWidth(newLabel) / 2 - 6 : x;
-        const fittedOldLabelY = oldLabelInsideShortBar ? oldY + 4 : oldLabelY;
-        const fittedNewLabelY = newLabelInsideShortBar ? newY + 4 : newLabelY;
-        const labelPill = (labelX, labelY, text) => {
-          const w = labelWidth(text);
-          return '<rect x="' + (labelX - w / 2) + '" y="' + (labelY - 13) + '" width="' + w + '" height="16" rx="8" fill="white" fill-opacity="0.96"/>';
-        };
-        const oldMarkerPath = increased
-          ? 'M ' + (x - barWidth / 2) + ' ' + oldY + ' H ' + (x + barWidth / 2)
-          : 'M ' + (x - barWidth / 2) + ' ' + newY + ' V ' + oldY + ' H ' + (x + barWidth / 2) + ' V ' + newY;
+    return series.map((entry) => renderForecastChartCard(entry.title, entry.points)).join('');
+  }
 
-        let g = '<g>';
-        g += '<rect x="' + (x - barWidth / 2) + '" y="' + Math.min(newY, zero) + '" width="' + barWidth + '" height="' + Math.max(1, Math.abs(zero - newY)) + '" fill="#0d9488" stroke="#0a7a70"/>';
-        if (point.before != null && changed) {
-          g += '<path d="' + oldMarkerPath + '" fill="none" stroke="white" stroke-width="4"/>';
-          g += '<path d="' + oldMarkerPath + '" fill="none" stroke="#57534e" stroke-width="1.5" stroke-dasharray="6 4"/>';
-          g += labelPill(oldLabelX, fittedOldLabelY, oldLabel);
-          g += '<text x="' + oldLabelX + '" y="' + fittedOldLabelY + '" text-anchor="middle" fill="#57534e" font-size="12">' + escapeHtml(oldLabel) + '</text>';
-        }
-        g += labelPill(newLabelX, fittedNewLabelY, newLabel);
-        g += '<text x="' + newLabelX + '" y="' + fittedNewLabelY + '" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="600">' + escapeHtml(newLabel) + '</text>';
-        if (changed) g += '<text x="' + (x + barWidth / 2 + 10) + '" y="' + arrowY + '" fill="#0f766e" font-size="22" font-weight="600">' + (increased ? '↑' : '↓') + '</text>';
-        g += '<text x="' + x + '" y="' + (height - 14) + '" text-anchor="middle" fill="#57534e" font-size="13" font-weight="600">' + point.year + '</text>';
-        g += '<title>' + point.year + ': old ' + escapeHtml(oldLabel) + ', new ' + escapeHtml(newLabel) + '</title>';
-        g += '</g>';
-        return g;
-      }).join('');
+  function renderForecastChartCard(title, points) {
+    const width = 900, height = 300, left = 58, bottom = 40, top = 48;
+    const slot = (width - left - 10) / points.length;
+    const values = points.reduce((acc, p) => acc.concat([p.before == null ? 0 : p.before, p.after]), []);
+    const min = Math.min(0, ...values);
+    const max = Math.max(1, ...values);
+    const range = max - min || 1;
+    const y = (value) => top + ((max - value) / range) * (height - top - bottom);
+    const zero = y(0);
+    const barWidth = Math.min(72, slot * 0.42);
+    const labelWidth = (text) => Math.max(20, text.length * 6.7 + 8);
 
-      return '<div class="revision-chart-card">'
-        + '<div class="revision-chart-title">' + escapeHtml(NAMES[name] || name) + '</div>'
-        + '<svg viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + escapeAttr(name) + ' forecast movement chart" style="width:100%;">'
-        + '<line x1="' + left + '" y1="' + zero + '" x2="' + (width - 10) + '" y2="' + zero + '" stroke="#d6d3d1"/>'
-        + bars
-        + '</svg></div>';
+    const bars = points.map((point, index) => {
+      const period = periodLabel(point);
+      const x = left + slot * index + slot / 2;
+      const oldY = y(point.before == null ? 0 : point.before);
+      const newY = y(point.after);
+      const increased = point.before == null || point.after >= point.before;
+      const changed = point.before != null && point.before !== point.after;
+      const topsAreClose = changed && Math.abs(oldY - newY) < 32;
+      const decreaseGap = newY - oldY;
+      const oldLabelY = topsAreClose ? (oldY < newY ? oldY - 11 : oldY + 17) : oldY - 11;
+      const newLabelY = decreaseGap > 0 ? (decreaseGap >= 20 ? newY - 5 : newY + 17) : newY - 11;
+      const arrowY = Math.max(23, Math.min(oldY, newY) - 3);
+      const oldLabel = formatNumber(point.before);
+      const newLabel = formatNumber(point.after);
+      const oldLabelInsideShortBar = oldLabelY > oldY && Math.abs(zero - oldY) < 25;
+      const newLabelInsideShortBar = newLabelY > newY && Math.abs(zero - newY) < 25;
+      const oldLabelX = oldLabelInsideShortBar ? x - barWidth / 2 - labelWidth(oldLabel) / 2 - 6 : x;
+      const newLabelX = newLabelInsideShortBar ? x - barWidth / 2 - labelWidth(newLabel) / 2 - 6 : x;
+      const fittedOldLabelY = oldLabelInsideShortBar ? oldY + 4 : oldLabelY;
+      const fittedNewLabelY = newLabelInsideShortBar ? newY + 4 : newLabelY;
+      const labelPill = (labelX, labelY, text) => {
+        const w = labelWidth(text);
+        return '<rect x="' + (labelX - w / 2) + '" y="' + (labelY - 13) + '" width="' + w + '" height="16" rx="8" fill="white" fill-opacity="0.96"/>';
+      };
+      const oldMarkerPath = increased
+        ? 'M ' + (x - barWidth / 2) + ' ' + oldY + ' H ' + (x + barWidth / 2)
+        : 'M ' + (x - barWidth / 2) + ' ' + newY + ' V ' + oldY + ' H ' + (x + barWidth / 2) + ' V ' + newY;
+
+      let g = '<g>';
+      g += '<rect x="' + (x - barWidth / 2) + '" y="' + Math.min(newY, zero) + '" width="' + barWidth + '" height="' + Math.max(1, Math.abs(zero - newY)) + '" fill="#0d9488" stroke="#0a7a70"/>';
+      if (point.before != null && changed) {
+        g += '<path d="' + oldMarkerPath + '" fill="none" stroke="white" stroke-width="4"/>';
+        g += '<path d="' + oldMarkerPath + '" fill="none" stroke="#57534e" stroke-width="1.5" stroke-dasharray="6 4"/>';
+        g += labelPill(oldLabelX, fittedOldLabelY, oldLabel);
+        g += '<text x="' + oldLabelX + '" y="' + fittedOldLabelY + '" text-anchor="middle" fill="#57534e" font-size="12">' + escapeHtml(oldLabel) + '</text>';
+      }
+      g += labelPill(newLabelX, fittedNewLabelY, newLabel);
+      g += '<text x="' + newLabelX + '" y="' + fittedNewLabelY + '" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="600">' + escapeHtml(newLabel) + '</text>';
+      if (changed) g += '<text x="' + (x + barWidth / 2 + 10) + '" y="' + arrowY + '" fill="#0f766e" font-size="22" font-weight="600">' + (increased ? '↑' : '↓') + '</text>';
+      g += '<text x="' + x + '" y="' + (height - 14) + '" text-anchor="middle" fill="#57534e" font-size="13" font-weight="600">' + escapeHtml(period) + '</text>';
+      g += '<title>' + escapeHtml(period) + ': old ' + escapeHtml(oldLabel) + ', new ' + escapeHtml(newLabel) + '</title>';
+      g += '</g>';
+      return g;
     }).join('');
+
+    return '<div class="revision-chart-card">'
+      + '<div class="revision-chart-title">' + escapeHtml(title) + '</div>'
+      + '<svg viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + escapeAttr(title) + ' forecast movement chart" style="width:100%;">'
+      + '<line x1="' + left + '" y1="' + zero + '" x2="' + (width - 10) + '" y2="' + zero + '" stroke="#d6d3d1"/>'
+      + bars
+      + '</svg></div>';
   }
 
   function renderForecastSection(revision) {
     let html = '<div class="revision-section revision-forecast">';
     html += '<div class="revision-section-title">Forecast movement</div>';
-    if (revision.wrote && revision.wrote.length) html += renderForecastChart(revision.wrote);
+    if (revision.wrote && revision.wrote.length) html += renderForecastChart(revision.wrote, revision.derivedFullYear);
     html += '<div class="revision-section-title" style="margin-top:.5rem;">Why the forecast changed</div>';
     html += renderMarkdown(revision.writeup || legacyForecastWriteup(revision));
 
     if (revision.dropped && revision.dropped.length) {
-      html += '<table class="revision-table"><caption>Values not written</caption><thead><tr><th>Variable</th><th>Year</th><th>Reason</th></tr></thead><tbody>'
-        + revision.dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(row.year) + '</td><td>' + escapeHtml(row.reason) + '</td></tr>').join('')
+      html += '<table class="revision-table"><caption>Values not written</caption><thead><tr><th>Variable</th><th>Period</th><th>Reason</th></tr></thead><tbody>'
+        + revision.dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(periodLabel(row)) + '</td><td>' + escapeHtml(row.reason) + '</td></tr>').join('')
         + '</tbody></table>';
+    }
+    if (revision.quarterlyReconciliation) {
+      html += '<div class="revision-section-title" style="margin-top:1rem;">How the full year was set</div>';
+      html += renderMarkdown(revision.quarterlyReconciliation);
     }
     if (revision.levelCaveat) {
       html += '<p class="revision-caveat">' + escapeHtml(revision.levelCaveat) + '</p>';
