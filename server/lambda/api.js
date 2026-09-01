@@ -20,6 +20,19 @@ const { sendAdminAlert } = require('../email');
 
 const STAGE = process.env.STAGE || 'prod';
 
+// Same permanent, unsigned link the delivery/revision emails already carry
+// (server/reconciler.js) — files.aiequityreports.com is a CloudFront
+// distribution in front of the private PDF bucket (OAC), so no signing is
+// needed and the link never expires. The order page used to presign these
+// with pdfStore.presignPdfDownload, which is right for /api/report-download
+// (a per-click link behind a fresh Stripe-session check) but wrong here: the
+// same file is already durably reachable at this URL, so a 15-minute-expiry
+// link only made the order page's copy worse without adding any security.
+const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
+function permanentPdfUrl(fileName) {
+  return `${PDF_BASE_URL}/${encodeURIComponent(fileName)}`;
+}
+
 // ── helpers ──────────────────────────────────────────────────────────────────
 
 function json(statusCode, body, headers = {}) {
@@ -314,7 +327,7 @@ async function getOrder(event) {
   // Only DELIVERED gets a PDF link — while REVISING, the order page shows
   // progress, not the (about to be superseded) previous file.
   if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
-    payload.pdfUrl = await pdfStore.presignPdfDownload(order.pdfFileName);
+    payload.pdfUrl = permanentPdfUrl(order.pdfFileName);
   }
 
   // A "build on" order (server/lambda/members.js createForkOrder) is deliberately
@@ -327,22 +340,20 @@ async function getOrder(event) {
   if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
     const parent = await ordersStore.get(order.forkedFrom);
     if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
-      payload.originalUrl = await pdfStore.presignPdfDownload(parent.pdfFileName);
+      payload.originalUrl = permanentPdfUrl(parent.pdfFileName);
     }
   }
 
   // Every delivered revision's change memo + a re-download link for that
   // specific PDF, newest first — the order page renders these under "revision
-  // history". Presigning is cheap local SigV4 signing, no extra round trip.
-  payload.revisionHistory = await Promise.all(
-    (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
-      version: entry.version,
-      comments: entry.comments || '',
-      completedAt: entry.completedAt,
-      changes: entry.changes || null,
-      pdfUrl: entry.pdfFileName ? await pdfStore.presignPdfDownload(entry.pdfFileName) : null,
-    })),
-  );
+  // history".
+  payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
+    version: entry.version,
+    comments: entry.comments || '',
+    completedAt: entry.completedAt,
+    changes: entry.changes || null,
+    pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
+  }));
 
   // Once at least one revision exists, order.pdfUrl above points at the latest
   // version — append the original as the oldest entry so it stays downloadable
@@ -353,7 +364,7 @@ async function getOrder(event) {
       version: 1,
       original: true,
       completedAt: order.deliveredEmailAt || null,
-      pdfUrl: await pdfStore.presignPdfDownload(order.originalPdfFileName),
+      pdfUrl: permanentPdfUrl(order.originalPdfFileName),
     });
   }
 
