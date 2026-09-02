@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const VARIANT = params.get('variant') || 'sub';
+  localStorage.setItem('memberToken', 'mock-token-abc123');
+  localStorage.removeItem('activeGenId');
+  localStorage.removeItem('pendingPlan');
+
+  const REPORTS = [
+    ['nokia-2026-07', 'Nokia Oyj', 'NOKIA.HE', '2026-07-14', '14 July 2026', false, 20, '€20'],
+    ['storaenso-2026-07', 'Stora Enso Oyj', 'STERV.HE', '2026-07-02', '2 July 2026', true, 0, '€20'],
+    ['kone-2026-06', 'KONE Oyj', 'KNEBV.HE', '2026-06-25', '25 June 2026', false, 20, '€20'],
+    ['neste-2026-06', 'Neste Oyj', 'NESTE.HE', '2026-06-18', '18 June 2026', false, 20, '€20'],
+    ['sampo-2026-06', 'Sampo Oyj', 'SAMPO.HE', '2026-06-09', '9 June 2026', false, 20, '€20'],
+    ['equinor-2026-06', 'Equinor ASA', 'EQNR.OL', '2026-06-03', '3 June 2026', true, 0, '€20'],
+    ['volvo-2026-05', 'Volvo AB', 'VOLV-B.ST', '2026-05-27', '27 May 2026', false, 20, '€20'],
+    ['maersk-2026-05', 'A.P. Møller-Mærsk A/S', 'MAERSK-B.CO', '2026-05-19', '19 May 2026', false, 20, '€20'],
+  ].map(([id, companyName, ticker, reportDate, reportDateLabel, isFree, price, priceLabel]) =>
+    ({ id, companyName, ticker, reportDate, reportDateLabel, isFree, price, priceLabel }));
+
+  const ANALYSES = [
+    { genId: 'gen-kone-4411', companyId: 'KNEBV.HE', analystId: 'u2', analyst: 'Aino Virtanen',
+      analystLinkedin: 'https://www.linkedin.com/in/aino-virtanen', publishedAt: '2026-08-21T09:12:00Z',
+      priceEur: 12, reviewCount: 6, peerScore: 4.2, averageScore: 4.4, free: false, publicFree: false },
+    { genId: 'gen-neste-3902', companyId: 'NESTE.HE', analystId: 'u3', analyst: 'Henrik Lindqvist',
+      analystLinkedin: 'https://www.linkedin.com/in/henrik-lindqvist', publishedAt: '2026-08-14T14:40:00Z',
+      priceEur: 9, reviewCount: 4, peerScore: 4.0, averageScore: 4.1, free: false, publicFree: false },
+    { genId: 'gen-sampo-3771', companyId: 'SAMPO.HE', analystId: 'u4', analyst: 'Marja Koskinen',
+      analystLinkedin: null, publishedAt: '2026-08-06T08:05:00Z',
+      priceEur: 0, reviewCount: 3, peerScore: 3.8, averageScore: 3.9, free: true, publicFree: true },
+    { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', analystId: 'u5', analyst: 'Oskar Bergström',
+      analystLinkedin: 'https://www.linkedin.com/in/oskar-bergstrom', publishedAt: '2026-07-29T11:30:00Z',
+      priceEur: 15, reviewCount: 2, peerScore: 3.6, averageScore: 3.5, free: false, publicFree: false },
+    { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', analystId: 'u1', analyst: 'Elina Salminen',
+      analystLinkedin: 'https://www.linkedin.com/in/elina-salminen', publishedAt: '2026-07-16T07:55:00Z',
+      priceEur: 10, reviewCount: 5, peerScore: 4.1, averageScore: 4.2, free: false, publicFree: false },
+  ];
+
+  const ANALYST_GENERATIONS = [
+    { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', companyName: 'Nokia Oyj', startedAt: '2026-07-16T06:10:00Z',
+      status: 'DELIVERED', publication: 'published', private: false, revisionsAllowed: 5, revisionsUsed: 3,
+      priceEur: 10, promptsPublic: true },
+    { genId: 'gen-storaenso-4820', companyId: 'STERV.HE', companyName: 'Stora Enso Oyj', startedAt: '2026-08-27T05:40:00Z',
+      status: 'DELIVERED', publication: 'none', private: false, revisionsAllowed: 5, revisionsUsed: 2,
+      priceEur: 0, promptsPublic: false },
+  ];
+
+  const SUB_GENERATIONS = [
+    { genId: 'gen-neste-5120', companyId: 'NESTE.HE', companyName: 'Neste Oyj', startedAt: '2026-08-19T09:20:00Z',
+      status: 'DELIVERED', publication: 'none', private: true, revisionsAllowed: 2, revisionsUsed: 1,
+      priceEur: 0, promptsPublic: false },
+    { genId: 'gen-kone-4990', companyId: 'KNEBV.HE', companyName: 'KONE Oyj', startedAt: '2026-07-11T10:02:00Z',
+      status: 'DELIVERED', publication: 'none', private: true, revisionsAllowed: 2, revisionsUsed: 2,
+      priceEur: 0, promptsPublic: false },
+  ];
+
+  const EARNINGS = {
+    totals: {
+      amount: 0, share: 0.5,
+      pending: 0, eligible: 0, paid: 0, clawback: 0,
+      salesCount: 4, grossSales: 420,
+      sharePending: 30, shareEligible: 60, sharePaid: 120, shareClawback: 0,
+      readsCount: 6, readPending: 1.5, readEligible: 3, readPaid: 4.5, readClawback: 0,
+    },
+    entries: [
+      { companyId: 'NOKIA.HE', publishedAt: '2026-07-16T07:55:00Z', state: 'paid', amount: 0, reason: null },
+    ],
+    saleEntries: [
+      { saleId: 's1', genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', soldAt: '2026-06-12T12:00:00Z', grossEur: 120, amount: 60, state: 'paid', reason: null },
+      { saleId: 's2', genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', soldAt: '2026-06-20T12:00:00Z', grossEur: 120, amount: 60, state: 'paid', reason: null },
+      { saleId: 's3', genId: 'gen-storaenso-3510', companyId: 'STERV.HE', soldAt: '2026-08-05T12:00:00Z', grossEur: 120, amount: 60, state: 'eligible', reason: null },
+      { saleId: 's4', genId: 'gen-kone-4411', companyId: 'KNEBV.HE', soldAt: '2026-08-28T12:00:00Z', grossEur: 60, amount: 30, state: 'pending', reason: null },
+    ],
+    readEntries: [
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-20T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-24T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-30T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', openedAt: '2026-08-11T12:00:00Z', amount: 1.5, state: 'eligible', reason: null },
+      { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', openedAt: '2026-08-15T12:00:00Z', amount: 1.5, state: 'eligible', reason: null },
+      { genId: 'gen-kone-4411', companyId: 'KNEBV.HE', openedAt: '2026-08-29T12:00:00Z', amount: 1.5, state: 'pending', reason: null },
+    ],
+  };
+
+  // Investor Plus, monthly: basePicks 10, analystReads 20, generations 1, revisions 2.
+  const ME_SUB = {
+    userId: 'u-sub-1', email: 'analyst@example.com', role: 'subscriber',
+    tier: 'investor_plus', tierStatus: 'active', billingInterval: 'month',
+    coverageCompanyId: null, coverageCompanyIds: [], banned: false, month: '2026-09',
+    freshReportPrice: 40, hasGeneration: true, publishes: false,
+    limits: { generations: 1, basePicks: 10, analystReads: 20, revisions: 2 },
+    usage: {
+      picks: 4, pickLimit: 10, picksExtra: 0,
+      analystReads: 7, analystReadLimit: 20, analystReadsExtra: 0,
+      genReserved: false, genId: null,
+      coverageUpdates: 0, coverageUpdateLimit: 4, coverageUpdatesByCompany: {},
+    },
+    openObligationId: null, linkedinUrl: null, openReviewId: null,
+    entitlements: [{ reportId: 'nokia-2026-07', source: 'pick', grantedAt: '2026-09-01T08:00:00Z' },
+                   { reportId: 'kone-2026-06', source: 'pick', grantedAt: '2026-08-30T08:00:00Z' }],
+  };
+
+  // Analyst role: generations 1, basePicks 10, analystReads 20, revisions 5.
+  const ME_ANALYST = JSON.parse(JSON.stringify(ME_SUB));
+  Object.assign(ME_ANALYST, {
+    userId: 'u-analyst-1', email: 'analyst@example.com', role: 'analyst',
+    tier: 'none', tierStatus: 'none', billingInterval: null,
+    freshReportPrice: 50, hasGeneration: true, publishes: true,
+    limits: { generations: 1, basePicks: 10, analystReads: 20, revisions: 5 },
+    openObligationId: 'gen-storaenso-4820',
+    linkedinUrl: 'https://www.linkedin.com/in/elina-salminen',
+    openReviewId: 'gen-kone-4411',
+  });
+  ME_ANALYST.usage.picks = 3;
+  ME_ANALYST.usage.analystReads = 6;
+  ME_ANALYST.usage.genReserved = true;
+  ME_ANALYST.usage.genId = 'gen-storaenso-4820';
+
+  const ME_NOPLAN = JSON.parse(JSON.stringify(ME_SUB));
+  Object.assign(ME_NOPLAN, {
+    userId: 'u-noplan-1', role: 'subscriber', tier: 'none', tierStatus: 'none',
+    billingInterval: null, freshReportPrice: 50, hasGeneration: false, publishes: false,
+    limits: { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 },
+    entitlements: [],
+  });
+  ME_NOPLAN.usage = { picks: 0, pickLimit: 0, picksExtra: 0, analystReads: 0, analystReadLimit: 0,
+    analystReadsExtra: 0, genReserved: false, genId: null, coverageUpdates: 0,
+    coverageUpdateLimit: 4, coverageUpdatesByCompany: {} };
+
+  const ME = VARIANT === 'analyst' ? ME_ANALYST : VARIANT === 'noplan' ? ME_NOPLAN : ME_SUB;
+  const GENERATIONS = VARIANT === 'analyst' ? ANALYST_GENERATIONS : SUB_GENERATIONS;
+
+  const ROUTES = [
+    [/\/me\/earnings$/, () => EARNINGS],
+    [/\/me$/, () => ME],
+    [/\/reports$/, () => ({ week: '2026-W36', reports: REPORTS })],
+    [/\/generations\/[^/]+$/, (url) => {
+      const id = url.split('/').pop();
+      const g = GENERATIONS.find((x) => x.genId === id) || GENERATIONS[0];
+      return { genId: g.genId, status: 'DELIVERED', company: g.companyName,
+               url: 'about:blank#pdf', generationRestored: false };
+    }],
+    [/\/generations$/, () => ({ generations: GENERATIONS })],
+    [/\/analyses(\?|$)/, () => ({ companyId: null, forkFeeEur: 15, analyses: ANALYSES })],
+    [/\/reviews\/mine$/, () => ({ reviews: [] })],
+  ];
+
+  const realFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('members') === -1 || url.indexOf('aiequityreports.com') === -1) {
+      return realFetch(input, init);
+    }
+    const path = url.replace(/^https?:\/\/[^/]+/, '');
+    for (const [re, make] of ROUTES) {
+      if (re.test(path)) {
+        const body = make(path);
+        return Promise.resolve(new Response(JSON.stringify(body), {
+          status: 200, headers: { 'content-type': 'application/json' },
+        }));
+      }
+    }
+    return Promise.resolve(new Response(JSON.stringify({ error: 'unmocked ' + path }), { status: 404 }));
+  };
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      const notice = document.getElementById('notice');
+      if (notice) { notice.textContent = ''; notice.className = 'notice'; }
+      if (typeof loadAnalyses === 'function') loadAnalyses();
+      setTimeout(function () {
+        const rects = {};
+        ['identityStrip', 'memberView', 'reportsTable', 'analysesCard', 'genCard',
+         'buyGenCard', 'earningsCard', 'plansCard'].forEach(function (id) {
+          const el = document.getElementById(id);
+          if (!el || el.hidden) return;
+          const box = id === 'reportsTable' ? el.closest('.ws-section') || el : el;
+          const r = box.getBoundingClientRect();
+          rects[id] = [Math.round(r.left + scrollX), Math.round(r.top + scrollY),
+                       Math.round(r.width), Math.round(r.height)];
+        });
+        rects.__page = [0, 0, document.documentElement.scrollWidth,
+                        Math.ceil(document.documentElement.scrollHeight)];
+        document.body.setAttribute('data-rects', JSON.stringify(rects));
+      }, 900);
+    }, 700);
+  });
+})();
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Analysts and Subscribers — Valuatum AI Equity Reports</title>
+  <meta property="og:title" content="Member area — Valuatum AI Equity Reports">
+  <meta property="og:description" content="Sign in to generate, revise and publish AI equity reports, follow your income, and manage your plan.">
+  <meta name="description" content="Sign in to Valuatum AI Equity Reports: the free analyst programme with LinkedIn, or an Investor or Company Coverage subscription by email link.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://www.aiequityreports.com/members.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>[hidden] { display: none !important; }</style>
+</head>
+<body>
+
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="/images/logo.svg" class="nav-logo-img" alt="Valuatum">
+        <div class="nav-logo-text">
+          <span class="nav-logo-wordmark" style="color:var(--charcoal);">Valuatum</span>
+          <span class="nav-logo-sub" style="color:var(--gray-steel);">AI Equity Reports</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="reports.html" class="nav-link">Reports</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="analysts.html" class="nav-link">Analysts</a>
+        <a href="institutions.html" class="nav-link">Institutions</a>
+        <details class="nav-more">
+          <summary class="nav-link">More</summary>
+          <div class="nav-more-menu">
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+          </div>
+        </details>
+      </nav>
+      <a href="members.html" class="nav-signin">Sign in</a>
+      <a href="reports.html" class="nav-cta">Browse reports</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span><span style="background:var(--charcoal);"></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
+      <a href="reports.html" class="nav-mobile-link">Reports</a>
+      <a href="companies.html" class="nav-mobile-link">Companies</a>
+      <a href="pricing.html" class="nav-mobile-link">Pricing</a>
+      <a href="analysts.html" class="nav-mobile-link">Analysts</a>
+      <a href="institutions.html" class="nav-mobile-link">Institutions</a>
+      <a href="methodology.html" class="nav-mobile-link">Methodology</a>
+      <a href="about.html" class="nav-mobile-link">About</a>
+      <a href="faq.html" class="nav-mobile-link">FAQ</a>
+      <a href="blog.html" class="nav-mobile-link">Blog</a>
+      <a href="members.html" class="nav-mobile-link">Sign in</a>
+      <a href="reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
+    </div>
+  </header>
+
+  <main class="ws-page">
+    <section class="ws-hero">
+      <div class="container">
+        <div class="ws-hero-top">
+          <div>
+            <span class="section-eyebrow section-eyebrow--light">Member area</span>
+            <h1 class="section-headline section-headline--light" id="pageTitle">Sign in</h1>
+          </div>
+          <span class="env-badge" id="envBadge" hidden>Test environment — not the live site</span>
+        </div>
+
+        <!-- Logged in: who you are and what you have left, on the band itself. -->
+        <div id="identityStrip" hidden>
+          <div class="ws-identity">
+            <div class="ws-identity-who">
+              <span id="accEmail">—</span>
+              <span id="tierBadge" class="tier-badge none">—</span>
+              <span id="roleLabel" class="ws-role"></span>
+            </div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" id="linkedinProfileBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
+              <button class="btn btn-outline btn-sm" id="myReviewsBtn" hidden onclick="myReviews()">My reviews</button>
+              <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
+              <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
+            </div>
+          </div>
+          <div class="usage-grid" id="usageGrid"></div>
+          <!-- Company Coverage sells four report updates a year. This is how one
+               is taken: the subscriber asks, and a real engine run starts on the
+               company they pay to have covered. -->
+          <div id="coverageCard" hidden style="margin-top:1rem;">
+            <div id="coverageCompanies"></div>
+            <p class="muted" style="font-size:var(--text-sm);">A fresh report written from today&rsquo;s figures. Takes 20 to 40 minutes and arrives by email.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ws-body">
+      <div class="container">
+        <div id="notice" class="notice"></div>
+
+        <!-- Logged out -->
+        <div id="authView">
+          <div class="auth-grid">
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Analysts, free</h2>
+              <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
+              <ul class="m-offer">
+                <li><strong>10 ready reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
+                <li><strong>20 analyst reports</strong>, unlocked one at a time. Rate the one you opened and say what it adds, and the next unlocks.</li>
+                <li><strong>1 fresh generation</strong>, free because you publish it under your own name and LinkedIn profile, with the prompts you used.</li>
+              </ul>
+              <a id="linkedinBtn" class="btn btn-linkedin" href="#">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                Sign in with LinkedIn
+              </a>
+              <p class="muted" style="margin-top:1rem;">Signing in as an analyst means you accept the <a href="analyst-terms.html">analyst terms</a> — ownership, the 50/50 split, payment and takedowns, on one page.</p>
+              <p class="muted" style="margin-top:0.75rem;">Prefer to read without publishing? Switch to a reader account any time, with a smaller allowance. <a href="analysts.html">How the analyst programme works →</a></p>
+              <p class="muted" style="margin-top:0.75rem;" id="switchHint" hidden>Wrong LinkedIn account? LinkedIn keeps its own session, so signing out here is not enough: <a href="https://www.linkedin.com/m/logout/" target="_blank" rel="noopener">sign out at linkedin.com</a> first, then come back and sign in again.</p>
+            </div>
+            <div class="ws-panel">
+              <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Subscribers</h2>
+              <p class="muted" style="margin-top:0.5rem; margin-bottom:1.4rem;">Investor, Investor Plus and Company Coverage plans sign in with an email link, no password. <a href="pricing.html">See the plans →</a></p>
+              <div class="form-row">
+                <label class="field"><span>Email address</span>
+                  <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email">
+                </label>
+                <button class="btn btn-primary" onclick="magicLink()">Email me a link</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logged in -->
+        <div id="memberView" hidden>
+
+          <div class="ws-section">
+            <div class="ws-section-head">
+              <h2>Report library</h2>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+            </div>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="reportsTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="analysesCard" hidden>
+            <div class="ws-section-head">
+              <h2>Analyst reports</h2>
+              <p class="sub">Analysts' own reports, built on top of the engine's report for the same company, best first. <strong>One at a time:</strong> opening one spends a read and locks the next until you have rated it and written what it adds.</p>
+            </div>
+
+            <div class="form-row" style="margin-bottom:1.25rem;">
+              <label class="field" style="flex:0 1 200px;"><span>Company</span>
+                <input id="analysesTicker" class="input" placeholder="Ticker, e.g. NOKIA.HE">
+              </label>
+              <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show reports</button>
+            </div>
+
+            <div id="myReviewsPanel" class="ws-panel" hidden style="margin-top:1.25rem;">
+              <div class="ws-section-head" style="margin-bottom:.75rem;">
+                <h3 style="font-size:var(--text-md); font-weight:600;">Reviews you have written</h3>
+                <p class="sub">Scores you can still correct. The number shown on an analysis is the average of what reviewers gave it.</p>
+              </div>
+              <div class="table-wrap"><table class="reports-table" id="myReviewsTable"></table></div>
+            </div>
+
+            <div id="reviewRow" class="review-open" hidden>
+              <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
+              <details id="reviewPrompts" hidden style="margin-bottom:1rem;">
+                <summary style="cursor:pointer;">What the analyst told the engine — the revision prompts you are grading</summary>
+                <pre id="reviewPromptsText" style="white-space:pre-wrap; max-height:18rem; overflow:auto; margin-top:.5rem; font-size:var(--text-sm);"></pre>
+              </details>
+              <p style="margin-bottom:1rem;">
+                <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
+                <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for.</span>
+              </p>
+              <div class="form-row">
+                <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
+                  <input id="reviewScore" class="input input--num" type="number" min="1" max="5" step="0.1" value="4">
+                </label>
+                <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
+                  <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
+                </label>
+                <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
+              </div>
+            </div>
+
+            <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+              <div class="table-wrap">
+                <table class="reports-table" id="analysesTable"></table>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="genCard" hidden>
+            <div class="ws-section-head">
+              <h2 id="genTitle">Monthly generation</h2>
+              <p class="sub" id="genSub">Reserve your report generation for this month.</p>
+            </div>
+            <div class="ws-panel">
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
+              <div id="genStatus" class="muted"></div>
+              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
+                <label class="field" style="position:relative;"><span>Company</span>
+                  <input id="genCompany" class="input" placeholder="Start typing a company, e.g. Nokia" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="genSuggest">
+                  <div class="search-autocomplete" id="genSuggest" role="listbox"></div>
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="genTicker" class="input" placeholder="picked for you">
+                </label>
+                <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
+              </div>
+              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
+              <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+                <div class="table-wrap">
+                  <table class="reports-table" id="generationsTable"></table>
+                </div>
+              </div>
+              <div id="submitRow" hidden style="margin-top:1.1rem;">
+                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
+                <div class="form-row">
+                  <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
+                    <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
+                  </label>
+                  <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
+                    <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
+                  </label>
+                  <button class="btn btn-primary" onclick="submitGen()">Publish report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ws-section" id="buyGenCard">
+            <div class="ws-section-head">
+              <h2>Another report, on demand</h2>
+              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time — it stays private, owes no publication, and carries the same revision rounds as your monthly one.</p>
+            </div>
+            <div class="ws-panel">
+              <div class="form-row">
+                <label class="field" style="position:relative;"><span>Company</span>
+                  <input id="buyCompany" class="input" placeholder="Start typing a company, e.g. Airbus" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="buySuggest">
+                  <div class="search-autocomplete" id="buySuggest" role="listbox"></div>
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="buyTicker" class="input" placeholder="picked for you">
+                </label>
+                <button class="btn btn-primary" id="buyGenBtn" onclick="buyGeneration()">Buy a generation</button>
+              </div>
+              <p class="muted" id="buyGenPrice" style="margin-top:1rem;"></p>
+            </div>
+          </div>
+
+          <div class="ws-section" id="earningsCard" hidden>
+            <div class="ws-section-head">
+              <h2>Income</h2>
+              <p class="sub">You set the price of every analysis you publish, and half of what it sells for is yours. A paying member who reads it with a monthly read earns you a flat €0.50 instead. Every sale and every read is held for 14 days after the reader pays, because a card payment can still be disputed or charged back in that time. After that it is ready to invoice: you send us an invoice for the balance, and we pay it. <a href="analyst-terms.html">Read the analyst terms →</a></p>
+            </div>
+            <div class="ws-panel">
+              <div class="earn-grid">
+                <div class="earn-stat"><div class="val" id="earnPaid">€0</div><div class="lbl">Paid to you</div></div>
+                <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Ready to invoice</div></div>
+                <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Held for 14 days</div></div>
+                <div class="earn-stat"><div class="val" id="earnGross">€0</div><div class="lbl">Your reports sold for</div></div>
+              </div>
+              <p class="muted" id="earnSummary" style="margin-top:1.5rem;"></p>
+            </div>
+            <div class="ws-panel ws-panel--flush" style="margin-top:1rem;">
+              <div class="table-wrap">
+                <table class="reports-table" id="earningsTable"></table>
+              </div>
+            </div>
+            <details class="earn-help">
+              <summary>How payment works, in detail</summary>
+              <ol>
+                <li><strong>You set the price.</strong> When you publish, you choose what your analysis costs and how long until it decays to free (up to a year). A reader without a membership pays that price by card; a member spends one of their monthly reads instead.</li>
+                <li><strong>The split is 50/50.</strong> Half of what the reader pays is yours, half is ours. The split is taken on the price the reader paid, before card fees — those come out of our half.</li>
+                <li><strong>Every sale is held for 14 days.</strong> A card payment can be disputed or charged back for a while after it happens, and moderation happens after publication rather than before it. For those 14 days your half shows as <em>Held 14 days</em>: counted, but not yet yours to invoice.</li>
+                <li><strong>Then you invoice us.</strong> After the 14 days the money moves to <em>Ready to invoice</em> — that total is what you bill us for, from you or your company. There is a minimum before a payout is worth making, so tiny balances wait for the next sale, and the invoice has a fixed due date rather than an ad-hoc payment date.</li>
+                <li><strong>A takedown voids the sale.</strong> If an analysis is taken down, its sales earn nothing, and anything already paid on it is clawed back against your next invoice. The reader is refunded.</li>
+                <li><strong>You are not an employee.</strong> Payment is against an invoice from you or your company; there is no employment relationship, and any taxes on what you earn are yours to handle.</li>
+                <li><strong>Subscriber reads pay a flat rate.</strong> When a paying member (Investor or Investor Plus) opens your analysis with one of their monthly reads, that read is worth €0.50 to you — a fixed amount, not a share of your price, because the member paid us a subscription rather than your price. It is held 14 days like a sale and appears above as its own row. Reads by other analysts and by readers on the free membership are not subscription revenue and pay nothing. This is why a low price and a slow decay to free are worth more than they look: they buy readership, readership decides the ranking, and the ranking decides who sells.</li>
+              </ol>
+              <p class="muted" style="margin-top:1rem;">This is the plain-English version. The binding one is the <a href="analyst-terms.html">analyst terms</a>: ownership, the split, invoicing, takedowns and leaving.</p>
+            </details>
+          </div>
+
+          <div class="ws-section" id="plansCard">
+            <div class="ws-section-head">
+              <h2>Plans</h2>
+              <p class="sub">Subscriptions are billed by Stripe. One-off purchases (€20 ready / €50 fresh) remain available on the <a href="reports.html">reports page</a>.</p>
+            </div>
+            <div class="plan-grid">
+              <div class="plan">
+                <div class="name">Investor</div>
+                <div class="price">€19 <span>/ month · €190 / year</span></div>
+                <ul>
+                  <li>3 reports per month, 5 on the yearly plan</li>
+                  <li>Fresh generations at the €40 member price</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan highlight">
+                <div class="name">Investor Plus</div>
+                <div class="price">€39 <span>/ month · €390 / year</span></div>
+                <ul>
+                  <li>10 reports per month, 15 on the yearly plan</li>
+                  <li>1 private fresh generation per month</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
+                  <button class="btn btn-outline-dark btn-sm" onclick="checkout('investor_plus','year')">Yearly</button>
+                </div>
+              </div>
+              <div class="plan">
+                <div class="name">Company Coverage</div>
+                <div class="price">€59 <span>/ year</span></div>
+                <ul>
+                  <li>Up to five companies, €59 each</li>
+                  <li>Latest report + 4 updates a year, per company</li>
+                </ul>
+                <div class="actions">
+                  <label class="field" style="flex:1 1 200px;"><span>Tickers, comma separated</span>
+                    <input id="coverageTicker" class="input" placeholder="e.g. AMD, NOKIA.HE">
+                  </label>
+                  <button class="btn btn-primary btn-sm" onclick="checkout('coverage','year')">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Valuatum Oy · Helsinki, Finland · Est. 2000</span>
+        <span class="footer-links" style="display:flex; gap:1.25rem; flex-wrap:wrap;">
+          <a href="analyst-terms.html" class="footer-link">Analyst terms</a>
+          <a href="disclaimer.html#terms" class="footer-link">Terms of use</a>
+          <a href="disclaimer.html#privacy" class="footer-link">Privacy policy</a>
+        </span>
+        <span class="footer-disclaimer">Reports are AI-generated research materials for informational purposes only. Not investment advice.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // The site a member is standing on decides which member system they use.
+    // A hardcoded flag put the test site on the LIVE members API — a colleague
+    // testing on test.aiequityreports.com would have spent a real generation
+    // and paid with a live card. Host wins, per stage, like the rest of the
+    // system: www / apex → prod, anything else → test.
+    const USE_PROD_MEMBERS = /^(www\.)?aiequityreports\.com$/.test(location.hostname);
+    const MEMBERS_API = USE_PROD_MEMBERS
+      ? 'https://members.aiequityreports.com'
+      : 'https://members-test.aiequityreports.com';
+    // Come back to whichever site started the flow (prod / staging / local).
+    const RETURN_TO = location.origin + location.pathname;
+    if (!USE_PROD_MEMBERS) document.getElementById('envBadge').hidden = false;
+    document.getElementById('linkedinBtn').href =
+      MEMBERS_API + '/auth/linkedin/start?returnTo=' + encodeURIComponent(RETURN_TO);
+
+    const frag = new URLSearchParams(location.hash.slice(1));
+    if (frag.get('token')) { localStorage.memberToken = frag.get('token'); history.replaceState(null, '', location.pathname); }
+    // The server sends a code for the one case it cannot phrase itself: the
+    // member said no on LinkedIn's screen, or closed it.
+    const SIGNIN_ERRORS = { linkedin_denied: 'LinkedIn sign-in was cancelled.' };
+    if (frag.get('error')) {
+      const code = frag.get('error');
+      // Some codes are already whole sentences from the server; do not prefix those.
+      notice('err', SIGNIN_ERRORS[code] || (code.includes(' ') ? code : 'Sign-in failed: ' + code));
+      history.replaceState(null, '', location.pathname);
+    }
+    if (frag.get('checkout') === 'success') { notice('ok', 'Subscription active in a few seconds. Refresh if it does not show yet.'); history.replaceState(null, '', location.pathname); }
+    const freshReceipt = frag.get('fresh');
+    if (freshReceipt) { history.replaceState(null, '', location.pathname); }
+    if (freshReceipt === 'cancel') { notice('ok', 'Purchase cancelled — nothing was charged.'); }
+
+    const token = () => localStorage.memberToken || '';
+
+    // Analyst names and comments are member-supplied (LinkedIn), and they are
+    // rendered to OTHER members — the only user-controlled strings on this page.
+    const esc = (value) => String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+    function notice(kind, text) {
+      const el = document.getElementById('notice');
+      el.className = 'notice ' + kind;
+      el.textContent = text;
+    }
+
+    async function api(method, path, body) {
+      const doFetch = () => fetch(MEMBERS_API + path, {
+        method,
+        headers: { 'content-type': 'application/json', ...(token() ? { authorization: 'Bearer ' + token() } : {}) },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      let res;
+      try { res = await doFetch(); }
+      catch (_) { res = await doFetch(); } // one retry on a network blip
+      return { status: res.status, data: await res.json().catch(() => null) };
+    }
+
+    function logout() {
+      localStorage.removeItem('memberToken');
+      // LinkedIn will silently re-authorize the same account on the next
+      // sign-in; the hint tells the member where the switch actually happens.
+      sessionStorage.justSignedOut = '1';
+      location.reload();
+    }
+    if (sessionStorage.justSignedOut) {
+      delete sessionStorage.justSignedOut;
+      const hint = document.getElementById('switchHint');
+      if (hint) hint.hidden = false;
+    }
+
+    async function magicLink() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) return;
+      await api('POST', '/auth/magic-link', { email, returnTo: RETURN_TO });
+      notice('ok', 'If the address is valid, a sign-in link is on its way. The link is valid for 15 minutes.');
+    }
+
+    const TIER_LABELS = { none: 'No subscription', investor: 'Investor', investor_plus: 'Investor Plus', coverage: 'Company Coverage' };
+
+    async function loadMe() {
+      let result;
+      try { result = await api('GET', '/me'); }
+      catch (_) { notice('err', 'Network error. Please reload.'); return; }
+      const { status, data } = result;
+      if (status === 401 || status === 403) { logout(); return; } // invalid/expired session only
+      if (status !== 200) { notice('err', 'Something went wrong (' + status + '). Please reload.'); return; }
+      document.getElementById('authView').hidden = true;
+      document.getElementById('memberView').hidden = false;
+      document.getElementById('identityStrip').hidden = false;
+
+      // Only worth offering to someone who has no plan running.
+      if (data.tier === 'none' || data.tierStatus !== 'active') offerPendingPlan();
+
+      document.getElementById('accEmail').textContent = data.email || 'Member';
+      const badge = document.getElementById('tierBadge');
+      badge.textContent = TIER_LABELS[data.tier] || data.tier;
+      badge.className = 'tier-badge' + (data.tier === 'none' ? ' none' : '');
+      const ROLE_LABELS = { analyst: 'Analyst', reader: 'Reader', coaching: 'Coaching analyst' };
+      document.getElementById('roleLabel').textContent = ROLE_LABELS[data.role] || '';
+      // "Member" covers two different people; name the one who actually signed in.
+      const pageTitle = ROLE_LABELS[data.role] ? 'Analyst workspace' : 'Your subscription';
+      document.getElementById('pageTitle').textContent = pageTitle;
+      // The tab still said "Sign In" to someone already signed in.
+      document.title = pageTitle + ' — Valuatum AI Equity Reports';
+
+      const u = data.usage;
+      // Counting down: what is left is the number a member acts on.
+      const left = (used, limit) => Math.max(0, limit - used) + ' / ' + limit;
+      const stats = [
+        [left(u.picks, u.pickLimit), 'Report picks left this month', 'picks'],
+      ];
+      if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read', 'reads']);
+      if (data.hasGeneration) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
+      if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
+      // Running out of a meter used to mean upgrading the whole plan for one more
+      // report. The step belongs where the wall is, so the button lives on the
+      // number itself.
+      const CAN_TOP_UP = { picks: u.pickLimit > 0, reads: u.analystReadLimit > 0 };
+      document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl, kind]) =>
+        '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div>'
+        + (kind && CAN_TOP_UP[kind]
+            ? '<button class="btn btn-outline btn-sm" style="margin-top:.5rem;" data-topup="' + kind + '">Add more</button>'
+            : '')
+        + '</div>').join('');
+
+      document.getElementById('plansCard').hidden = data.tier !== 'none';
+      // The price is the live subscription status, not a number the page picked.
+      document.getElementById('buyGenPrice').textContent = data.tier === 'none'
+        ? '€' + data.freshReportPrice + ' per report. Investor and Investor Plus members pay €40.'
+        : '€' + data.freshReportPrice + ' per report, your member price.';
+      if (freshReceipt && freshReceipt !== 'cancel' && !window._freshCollected) {
+        window._freshCollected = true;
+        collectFreshPurchase(freshReceipt);
+      }
+
+      // Analysts owe a publication for their free run; Investor Plus members
+      // get a private one with no strings attached.
+      const isAnalyst = data.publishes;
+      document.getElementById('stepDownBtn').hidden = !isAnalyst;
+      document.getElementById('linkedinProfileBtn').hidden = !isAnalyst;
+      document.getElementById('myReviewsBtn').hidden = !isAnalyst;
+      window._linkedinUrl = data.linkedinUrl || '';
+      const analysesCard = document.getElementById('analysesCard');
+      analysesCard.hidden = !(u.analystReadLimit > 0);
+      window._openReviewId = data.openReviewId || null;
+      renderReviewRow();
+      const coverageCard = document.getElementById('coverageCard');
+      coverageCard.hidden = data.tier !== 'coverage';
+      if (data.tier === 'coverage') {
+        // One button per covered company: the four updates are four each, so a
+        // single button could not say whose they were.
+        const companies = data.coverageCompanyIds && data.coverageCompanyIds.length
+          ? data.coverageCompanyIds : [data.coverageCompanyId].filter(Boolean);
+        const used = u.coverageUpdatesByCompany || {};
+        document.getElementById('coverageCompanies').innerHTML = companies.map(c => {
+          const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (used[c] || 0));
+          return '<div style="margin-bottom:.5rem;">'
+            + '<button class="btn btn-primary btn-sm" data-coverage-update="' + esc(c) + '"'
+            + (left_ ? '' : ' disabled') + '>Request a ' + esc(c) + ' update</button>'
+            + '<span class="muted" style="margin-left:.75rem;">'
+            + (left_ ? left_ + ' of ' + u.coverageUpdateLimit + ' left this year'
+                     : 'All of this year\u2019s updates used')
+            + '</span></div>';
+        }).join('');
+      }
+
+      const genCard = document.getElementById('genCard');
+      genCard.hidden = !data.hasGeneration;
+      if (data.hasGeneration) {
+        const ob = data.openObligationId;
+        document.getElementById('genTitle').textContent =
+          isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
+        document.getElementById('genSub').textContent = isAnalyst
+          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished report.'
+          : 'Reserve your monthly fresh report. It stays private to you and nothing is published.';
+        document.getElementById('genStatus').textContent = ob
+          ? 'Open publication obligation. Publish your report to unlock the next generation.'
+          : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
+        document.getElementById('genCommit').hidden = !isAnalyst;
+        window._publishes = isAnalyst;
+        document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
+        document.getElementById('submitRow').hidden = !ob;
+        window._openObligationId = ob;
+        // Resume watching a run that was already going when the page loaded.
+        const active = u.genId || localStorage.activeGenId;
+        if (active && u.genReserved) pollGeneration(active);
+        loadGenerations();
+        if (isAnalyst) loadEarnings();
+      }
+      window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
+      loadReports();
+    }
+
+    async function loadReports() {
+      const { data } = await api('GET', '/reports');
+      if (!data) return;
+      const rows = (data.reports || []).map(r => {
+        const owned = window._entitled?.has(r.id);
+        const price = r.isFree ? '<span class="pill-free">Free</span>' : (r.priceLabel || '€' + r.price);
+        const btn = '<button class="btn ' + (owned || r.isFree ? 'btn-outline-dark' : 'btn-primary') + ' btn-sm" onclick="openReport(\'' + r.id + '\')">' +
+          (owned ? 'Open again' : r.isFree ? 'Open' : 'Open (uses a pick)') + '</button>';
+        return '<tr><td>' + r.companyName + '</td><td>' + r.ticker + '</td><td>' + (r.reportDateLabel || r.reportDate) + '</td><td>' + price + '</td><td style="text-align:right">' + btn + '</td></tr>';
+      });
+      document.getElementById('reportsTable').innerHTML =
+        '<tr><th>Company</th><th>Ticker</th><th>Report date</th><th>Access</th><th></th></tr>' + rows.join('');
+    }
+
+    async function openReport(id) {
+      const { status, data } = await api('POST', '/reports/' + encodeURIComponent(id) + '/open');
+      if (data?.url) { window.open(data.url, '_blank'); loadMe(); }
+      else notice('err', (data && data.error) || ('Could not open the report (' + status + ')'));
+    }
+
+    async function checkout(plan, interval) {
+      const body = { plan, interval, returnTo: RETURN_TO };
+      if (plan === 'coverage') {
+        // Priced per company, so the list is the quantity.
+        body.coverageCompanyIds = document.getElementById('coverageTicker').value
+          .split(',').map(t => t.trim().toUpperCase()).filter(Boolean);
+        if (!body.coverageCompanyIds.length) { notice('err', 'Enter the ticker of each company you want covered.'); return; }
+        if (body.coverageCompanyIds.length > 5) { notice('err', 'A coverage subscription carries at most five companies.'); return; }
+      }
+      const { status, data } = await api('POST', '/billing/checkout', body);
+      if (data?.url) location.href = data.url;
+      else notice('err', (data && data.error) || ('Checkout failed (' + status + ')'));
+    }
+
+    // A real engine run: minutes, not seconds. Poll until it settles.
+    const GEN_STATUS_TEXT = {
+      NEW: 'Queued, waiting for the generator to pick it up.',
+      IMPORTING: 'Refreshing the company’s financial data…',
+      RENDERING: 'Writing the report. This typically takes 20 to 40 minutes.',
+      DELIVERED: 'Done, the report is ready.',
+      FAILED: 'Generation failed. Your monthly generation has been given back.',
+    };
+
+    // A generation is one a month, so the company must not hinge on the member
+    // remembering an exact ticker. Same search the paid fresh-report flow uses,
+    // and the same one the server resolves against — pick a row and the ticker
+    // arrives in the exact form the engine wants.
+    function bindCompanySearch(inputId, listId, tickerId) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      const ticker = document.getElementById(tickerId);
+      let timer = null;
+      let sequence = 0;
+
+      const close = () => { list.classList.remove('open'); input.setAttribute('aria-expanded', 'false'); };
+
+      input.addEventListener('input', () => {
+        ticker.value = ''; // typing again invalidates the ticker of the last pick
+        const query = input.value.trim();
+        const mine = ++sequence;
+        clearTimeout(timer);
+        if (query.length < 2) { close(); return; }
+        timer = setTimeout(async () => {
+          let results = [];
+          try { results = await window.searchWisdomCompanies(query); } catch (_) { results = []; }
+          if (mine !== sequence) return;
+          list.innerHTML = results.slice(0, 6).map(c =>
+            '<button class="autocomplete-item" type="button" role="option" data-ticker="' + esc(c.ticker) + '" data-name="' + esc(c.companyName) + '">' +
+              '<span class="autocomplete-ticker">' + esc(c.ticker) + '</span>' +
+              '<span class="autocomplete-name">' + esc(c.companyName) + '</span>' +
+              (c.industry ? '<span class="autocomplete-exchange">' + esc(c.industry) + '</span>' : '') +
+            '</button>').join('');
+          list.classList.toggle('open', results.length > 0);
+          input.setAttribute('aria-expanded', results.length > 0 ? 'true' : 'false');
+        }, 250);
+      });
+
+      list.addEventListener('pointerdown', (e) => {
+        const item = e.target.closest('.autocomplete-item');
+        if (!item) return;
+        e.preventDefault();
+        input.value = item.dataset.name;
+        ticker.value = item.dataset.ticker;
+        close();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target !== input && !list.contains(e.target)) close();
+      });
+    }
+    bindCompanySearch('genCompany', 'genSuggest', 'genTicker');
+    bindCompanySearch('buyCompany', 'buySuggest', 'buyTicker');
+
+    async function reserveGen() {
+      const company = document.getElementById('genCompany').value.trim();
+      const ticker = document.getElementById('genTicker').value.trim();
+      if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
+      if (window._publishes && !confirm(
+        'This generation is free because you publish it.\n\n' +
+        'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
+        'and you get no further generation until it is published.\n\nStart the generation for ' + company + '?')) return;
+
+      const { status, data } = await api('POST', '/generations/free', { company, ticker });
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }
+      notice('ok', 'Generation started for ' + data.company + '. You can leave this page — the report is emailed when it is ready.');
+      localStorage.activeGenId = data.genId;
+      loadMe();
+      pollGeneration(data.genId);
+    }
+
+    async function pollGeneration(genId) {
+      const out = document.getElementById('genProgress');
+      const { status, data } = await api('GET', '/generations/' + genId);
+      if (status !== 200) { out.textContent = ''; return; }
+      out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      // A run the engine could not deliver hands the month back automatically.
+      if (data.generationRestored) {
+        notice('ok', 'That generation failed, so your monthly generation is available again.');
+        loadMe();
+      }
+      if (data.url) {
+        const link = document.createElement('a');
+        link.href = data.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'btn btn-outline-dark btn-sm';
+        link.style.marginLeft = '0.6rem';
+        link.textContent = 'Download the PDF';
+        out.appendChild(link);
+      }
+      // The workspace enforces the revision count; the link only has to get
+      // the member there.
+      if (data.status === 'DELIVERED') {
+        out.appendChild(workspaceLink(genId, 'Revise it'));
+        // Temporary, 20.8.2026: a revision is written by the previous pipeline
+        // and comes back shorter. The analyst publishes what they revise, so
+        // they hear it before they click, not after. Remove with the engine fix.
+        const caution = document.createElement('p');
+        caution.className = 'muted';
+        caution.style.marginTop = '0.75rem';
+        caution.textContent = 'Revising regenerates the report with our previous writing pipeline: different headings, noticeably fewer pages. The original is kept as version 1.';
+        out.appendChild(caution);
+      }
+      if (data.status === 'DELIVERED' || data.status === 'FAILED') {
+        loadGenerations();
+        // Refresh only for a run we were actually watching. loadMe() resumes the
+        // poll from u.genId, so refreshing on a run that finished before the page
+        // loaded would bounce between the two calls forever.
+        const wasWatching = localStorage.activeGenId === genId;
+        delete localStorage.activeGenId;
+        if (wasWatching) loadMe();
+        return;
+      }
+      setTimeout(() => pollGeneration(genId), 30000);
+    }
+
+    // The revision loop lives on the order page — the same workspace a paying
+    // buyer gets. It was reachable only from the delivery email until now.
+    function workspaceUrl(genId) {
+      return 'order/index.html?session_id=' + encodeURIComponent(genId);
+    }
+
+    function workspaceLink(genId, label) {
+      const link = document.createElement('a');
+      link.href = workspaceUrl(genId);
+      link.className = 'btn btn-primary btn-sm';
+      link.style.marginLeft = '0.6rem';
+      link.textContent = label;
+      return link;
+    }
+
+    const GEN_ROW_STATUS = {
+      NEW: 'Queued', IMPORTING: 'Importing data', RENDERING: 'Writing',
+      REVISING: 'Revising', DELIVERED: 'Ready', FAILED: 'Failed',
+    };
+
+    async function loadGenerations() {
+      const { status, data } = await api('GET', '/generations');
+      if (status !== 200) return;
+      // Companies this analyst covers: the server refuses to let them read and
+      // score a rival on one, so the button says so before the click.
+      window._myCompanies = new Set((data.generations || [])
+        .filter(g => g.publication !== 'failed')
+        .map(g => String(g.companyId || '').toUpperCase())
+        .filter(Boolean));
+      if (window._analyses) loadAnalyses();
+      const rows = (data.generations || []).map(g => {
+        const done = g.status === 'DELIVERED';
+        const left = Math.max(0, (g.revisionsAllowed || 0) - (g.revisionsUsed || 0));
+        const action = done
+          ? '<a class="btn btn-outline-dark btn-sm" href="' + workspaceUrl(g.genId) + '">'
+            + (g.publication === 'published' ? 'Open' : 'Open and revise') + '</a>'
+          : '<span class="muted">—</span>';
+        // The price was fixed at publication and is what a forker pays too, so
+        // it has to be changeable afterwards.
+        const more = (done && g.publication !== 'published')
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyRevisions(\''
+            + encodeURIComponent(g.genId) + '\')" title="Buy more revision rounds on this report">+ rounds</button>'
+          : '';
+        const reprice = g.publication === 'published'
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
+            + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
+          : '';
+        // A published analysis shows its first steering prompt on the company
+        // page unless the analyst says otherwise. It is their own words on their
+        // own work, so it is their switch.
+        const prompts = g.publication === 'published'
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" data-prompts="'
+            + encodeURIComponent(g.genId) + '" data-public="' + (g.promptsPublic ? '1' : '0') + '">'
+            + (g.promptsPublic ? 'Hide my prompt' : 'Show my prompt') + '</button>'
+          : '';
+        return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
+          + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
+          + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
+          + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
+          + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
+          + '<td style="text-align:right">' + action + more + reprice + prompts + '</td></tr>';
+      });
+      document.getElementById('generationsTable').innerHTML =
+        '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="6" class="muted">You have not generated a report yet.</td></tr>');
+    }
+
+    // LinkedIn's basic scope gives us no public profile URL, so the analyst
+    // supplies it — and chooses whether to be linked at all.
+    async function myReviews() {
+      const panel = document.getElementById('myReviewsPanel');
+      if (!panel.hidden) { panel.hidden = true; return; }
+      await reloadMyReviews();
+      if (!window._myReviews) { notice('err', 'Could not load your reviews.'); return; }
+      panel.hidden = false;
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    async function reloadMyReviews() {
+      const { status, data } = await api('GET', '/reviews/mine');
+      if (status !== 200) return;
+      window._myReviews = data.reviews || [];
+      renderMyReviews();
+    }
+
+    function renderMyReviews() {
+      const list = window._myReviews || [];
+      const rows = list.map((r, i) => {
+        const was = r.history && r.history.length
+          ? '<div class="muted" style="font-size:var(--text-xs);">was ' + r.history.map(h => h.score).join(' → ') + '</div>'
+          : '';
+        // Voided once the reviewer took up the company: it no longer counts and
+        // can no longer be changed, so the row is read-only and says why.
+        if (r.voided) {
+          return '<tr><td>' + esc(r.companyId) + '<br><span class="muted">' + esc(r.analyst) + '</span></td>'
+            + '<td><span class="muted">' + Number(r.score) + '</span>' + was + '</td>'
+            + '<td class="muted">' + esc(r.comment || '') + '</td>'
+            + '<td style="text-align:right"><span class="muted">Withdrawn — you cover this company</span></td></tr>';
+        }
+        return '<tr><td>' + esc(r.companyId) + '<br><span class="muted">' + esc(r.analyst) + '</span></td>'
+          + '<td><input class="input input--num" style="max-width:90px;" type="number" min="1" max="5" step="0.1"'
+            + ' id="mr-score-' + i + '" value="' + Number(r.score) + '">' + was + '</td>'
+          + '<td><textarea class="input" id="mr-comment-' + i + '" rows="2">' + esc(r.comment || '') + '</textarea></td>'
+          + '<td style="text-align:right"><button class="btn btn-primary btn-sm" onclick="saveReview(' + i + ')">Save</button></td></tr>';
+      });
+      document.getElementById('myReviewsTable').innerHTML =
+        '<tr><th>Analysis</th><th>Your score</th><th>What it adds</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="4" class="muted">You have not reviewed anything yet.</td></tr>');
+    }
+
+    async function saveReview(i) {
+      const r = (window._myReviews || [])[i];
+      if (!r) return;
+      const score = Number(document.getElementById('mr-score-' + i).value);
+      const comment = document.getElementById('mr-comment-' + i).value.trim();
+      if (!Number.isFinite(score) || score < 1 || score > 5) { notice('err', 'Score has to be between 1 and 5.'); return; }
+      if (comment.length < 40) { notice('err', 'The written comparison needs at least 40 characters (now ' + comment.length + ').'); return; }
+
+      const { status, data } = await api('POST', '/analyses/' + encodeURIComponent(r.genId) + '/review/edit',
+        { score, comment });
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not save (' + status + ')')); return; }
+      notice('ok', 'Saved. ' + esc(r.companyId) + ' now shows the average of what reviewers gave it.');
+      await reloadMyReviews();
+      loadAnalyses();
+    }
+
+    async function setLinkedin() {
+      const answer = prompt(
+        'Your LinkedIn profile address. It appears beside your name on every analysis you have published.\n'
+        + 'Leave empty to remove it.',
+        window._linkedinUrl || 'https://www.linkedin.com/in/');
+      if (answer === null) return;
+      const { status, data } = await api('POST', '/me/linkedin', { linkedinUrl: String(answer).trim() });
+      if (status === 200) {
+        window._linkedinUrl = data.linkedinUrl || '';
+        notice('ok', data.linkedinUrl
+          ? 'Saved, and added to ' + data.publications + ' published ' + (data.publications === 1 ? 'analysis' : 'analyses') + '.'
+          : 'Removed from your published analyses.');
+        loadAnalyses();
+      } else notice('err', (data && data.error) || ('Could not save the link (' + status + ')'));
+    }
+
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-coverage-update]');
+      if (btn) requestCoverageUpdate(btn.getAttribute('data-coverage-update'), btn);
+    });
+
+    document.addEventListener('click', async (ev) => {
+      const btn = ev.target.closest('[data-prompts]');
+      if (!btn) return;
+      const makePublic = btn.getAttribute('data-public') !== '1';
+      btn.disabled = true;
+      const { status, data } = await api(
+        'POST', '/generations/' + btn.getAttribute('data-prompts') + '/prompts-public',
+        { public: makePublic });
+      btn.disabled = false;
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not change that (' + status + ')')); return; }
+      notice('ok', makePublic
+        ? 'Your first steering prompt now shows on the company page.'
+        : 'Your prompts are hidden from readers who have not paid.');
+      loadGenerations();
+    });
+
+    const TOPUP_LABEL = { picks: 'report picks', reads: 'analyst reports to read' };
+
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-topup]');
+      if (btn) buyTopUp(btn.getAttribute('data-topup'), btn);
+    });
+
+    async function buyTopUp(kind, button) {
+      const answer = prompt('How many more ' + TOPUP_LABEL[kind] + ' this month?', '3');
+      if (answer === null) return;
+      const units = Number(answer);
+      if (!Number.isInteger(units) || units < 1 || units > 20) { notice('err', 'Give a whole number, 1 to 20.'); return; }
+      button.disabled = true;
+      const { status, data } = await api('POST', '/billing/topup-checkout',
+        { kind, units, returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      button.disabled = false;
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
+
+    async function requestCoverageUpdate(ticker, button) {
+      if (!confirm('Start a fresh report on ' + ticker + '?\n\n'
+        + 'It spends one of that company\u2019s four updates for this year and takes 20 to 40 minutes. '
+        + 'You will get it by email, and it appears in your reports below.')) return;
+      button.disabled = true;
+      const { status, data } = await api('POST', '/generations/coverage', { ticker });
+      if (status !== 200) {
+        button.disabled = false;
+        notice('err', (data && data.error) || ('Could not start the update (' + status + ')'));
+        return;
+      }
+      notice('ok', 'Started. Your updated ' + (data.company || 'report') + ' arrives by email in 20 to 40 minutes.');
+      loadMe();
+      loadGenerations();
+    }
+
+    async function buyRevisions(genId) {
+      const answer = prompt('How many extra revision rounds?', '2');
+      if (answer === null) return;
+      const rounds = Number(answer);
+      if (!Number.isInteger(rounds) || rounds < 1) { notice('err', 'Give a whole number of rounds, 1 or more.'); return; }
+      const { status, data } = await api('POST', '/generations/' + genId + '/revisions-checkout',
+        { rounds, returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
+
+    async function repriceAnalysis(genId, current) {
+      const answer = prompt('New price in euros for this analysis (0 makes it free to read):', current);
+      if (answer === null) return;
+      const priceEur = Number(answer);
+      if (!Number.isFinite(priceEur) || priceEur < 0) { notice('err', 'Give the price as a number, 0 or more.'); return; }
+      const { status, data } = await api('POST', '/generations/' + genId + '/price', { priceEur });
+      if (status === 200) { notice('ok', 'Price updated to ' + data.priceEur + ' €.'); loadGenerations(); loadAnalyses(); }
+      else notice('err', (data && data.error) || ('Could not change the price (' + status + ')'));
+    }
+
+    async function buyGeneration() {
+      const company = document.getElementById('buyCompany').value.trim();
+      const ticker = document.getElementById('buyTicker').value.trim();
+      if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
+      const button = document.getElementById('buyGenBtn');
+      button.disabled = true;
+      const { status, data } = await api('POST', '/billing/fresh-checkout', { company, ticker, returnTo: RETURN_TO });
+      button.disabled = false;
+      if (status !== 200 || !data?.url) {
+        notice('err', (data && data.error) || ('Could not start the purchase (' + status + ')'));
+        return;
+      }
+      location.href = data.url;
+    }
+
+    // Coming back from Stripe: the session id in the URL is the receipt, and it
+    // is what turns the payment into a running generation. Safe to repeat — the
+    // server keys the order on that same id.
+    async function collectFreshPurchase(sessionId) {
+      const { status, data } = await api('POST', '/generations/fresh', { sessionId });
+      if (status !== 200) {
+        notice('err', (data && data.error) || 'We could not start the report you paid for. Contact contact26@valuatum.com with this page open.');
+        return;
+      }
+      notice('ok', 'Paid. Your report on ' + data.company + ' is generating — it is emailed when ready, and it is in your runs below.');
+      localStorage.activeGenId = data.genId;
+      loadGenerations();
+      pollGeneration(data.genId);
+    }
+
+    async function stepDown() {
+      if (!confirm('Continue as a reader? You keep the LinkedIn login and a smaller allowance, but you no longer publish.')) return;
+      const { status, data } = await api('POST', '/me/role', { role: 'reader' });
+      if (status === 200) { notice('ok', 'You are now a reader.'); loadMe(); }
+      else notice('err', (data && data.error) || ('Could not change the role (' + status + ')'));
+    }
+
+    function renderReviewRow() {
+      const row = document.getElementById('reviewRow');
+      row.hidden = !window._openReviewId;
+      if (window._openReviewId) {
+        document.getElementById('reviewPrompt').textContent =
+          'Read the report first, then score it. Open it with the button above — you owe this one a review before your next read.';
+      }
+      // Analyst-supplied free text, so textContent rather than innerHTML. Empty
+      // until the report is opened on a reloaded page, and empty for good on an
+      // unrevised publication — either way there is nothing to show.
+      const prompts = window._openPrompts || '';
+      document.getElementById('reviewPrompts').hidden = !prompts;
+      document.getElementById('reviewPromptsText').textContent = prompts;
+    }
+
+    async function loadAnalyses() {
+      const ticker = document.getElementById('analysesTicker').value.trim().toUpperCase();
+      const { status, data } = await api('GET', '/analyses' + (ticker ? '?companyId=' + encodeURIComponent(ticker) : ''));
+      if (status !== 200) { notice('err', 'Could not load reports (' + status + ')'); return; }
+      window._analyses = data.analyses || [];
+      // One open obligation at a time, so everything else is locked until it is
+      // cleared. Saying so on the button beats a message at the top of the page.
+      const blocked = Boolean(window._openReviewId);
+      const rows = window._analyses.map(a => {
+        const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
+        const lock = blocked && !isOpenOne && !a.publicFree;
+        const rival = !isOpenOne && (window._myCompanies || new Set()).has(String(a.companyId || '').toUpperCase());
+        const button = isOpenOne
+          ? '<button class="btn btn-primary btn-sm" onclick="focusReview()">Review this one</button>'
+          : rival
+            ? '<button class="btn btn-outline-dark btn-sm" disabled title="You cover this company yourself — you can buy this analysis, but not score it">Your coverage</button>'
+            : lock
+              ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
+              : '<button class="btn btn-outline-dark btn-sm" onclick="openAnalysis(\'' + encodeURIComponent(a.genId) + '\')">Open</button>';
+        // Deriving is a separate, paid thing from reading: the price goes to the
+        // analyst whose work you are building on, and you get your own report to
+        // revise from theirs.
+        const fork = '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyOrFork(\''
+          + encodeURIComponent(a.genId) + '\', ' + (Number(a.priceEur) || 0) + ')"'
+          + ' title="Buy this analysis, or buy it with revision rounds and build your own on top">Buy or build on</button>';
+        return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + (a.analystLinkedin ? ' <a href="' + esc(a.analystLinkedin) + '" target="_blank" rel="noopener nofollow" title="LinkedIn">in</a>' : '') + '</td><td>' + esc(a.publishedAt.slice(0, 10))
+          + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
+                          : a.free ? '<span class="pill-free">Free for you</span>'
+                          : (a.priceEur ? a.priceEur + ' €' : '—'))
+          + '</td><td>' + (a.reviewCount
+              ? Number(a.averageScore != null ? a.averageScore : a.peerScore).toFixed(1)
+                + ' <span class="muted">(' + a.reviewCount + (a.reviewCount === 1 ? ' review' : ' reviews') + ')</span>'
+              : '<span class="muted">no reviews</span>')
+          + '</td><td style="text-align:right">' + button + fork + '</td></tr>';
+      });
+      document.getElementById('analysesTable').innerHTML =
+        '<tr><th>Company</th><th>Analyst</th><th>Published</th><th>Price</th><th>Peer score</th><th></th></tr>'
+        + (rows.join('') || '<tr><td colspan="6" class="muted">No published analyst reports yet.</td></tr>');
+    }
+
+    // Reading someone's analysis and building on it are the same decision at the
+    // moment of buying, so it is one dialog rather than two buttons.
+    async function buyOrFork(genId, priceEur) {
+      const answer = prompt(
+        'Buy this analysis?\n\n'
+        + '1 = the report only' + (priceEur ? ' (' + priceEur + ' €)' : '')
+        + '\n2 = the report plus revision rounds, as your own report you can steer\n\n'
+        + 'Type 1 or 2:', '1');
+      if (answer === null) return;
+      if (String(answer).trim() === '2') return forkAnalysis(genId);
+      if (String(answer).trim() !== '1') { notice('err', 'Type 1 or 2.'); return; }
+      const { status, data } = await api('POST', '/analyses/' + genId + '/buy-checkout',
+        { returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
+
+    async function forkAnalysis(genId) {
+      const { status, data } = await api('POST', '/analyses/' + genId + '/fork-checkout',
+        { returnTo: window.location.href });
+      if (status === 200 && data && data.url) { window.location = data.url; return; }
+      notice('err', (data && data.error) || ('Could not start the checkout (' + status + ')'));
+    }
+
+    function focusReview() {
+      const row = document.getElementById('reviewRow');
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('reviewComment').focus();
+    }
+
+    // The PDF opens in a new tab, so it is trivially lost — a closed tab must not
+    // cost the read again. POST /analyses/{genId}/open answers an already-open
+    // analysis with the document and alreadyOpen, charging nothing.
+    async function reopenAnalysis() {
+      if (!window._openReviewId) return;
+      const button = document.getElementById('reopenBtn');
+      button.disabled = true;
+      const { status, data } = await api('POST', '/analyses/' + window._openReviewId + '/open');
+      button.disabled = false;
+      if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); return; }
+      window._openPrompts = data.promptsText || '';
+      renderReviewRow();
+      if (data.url) window.open(data.url, '_blank');
+      else notice('err', 'This report has no document to open.');
+    }
+
+    async function openAnalysis(genId) {
+      if (window._openReviewId) { focusReview(); return; }
+      const analysis = (window._analyses || []).find(a => encodeURIComponent(a.genId) === genId);
+      // Free-window analyses cost nothing and owe nothing; everything else does
+      // both, and the analyst should know that before the PDF is on screen.
+      if (!analysis?.publicFree && !confirm(
+        'Opening this report spends one of your monthly analyst reads, and you owe it a review: ' +
+        'a score from 1 to 5 and a written comparison of at least 40 characters.\n\n' +
+        'You cannot open another report until that review is written.\n\nOpen it?')) return;
+      // Claimed synchronously, while the click is still the reason a window is
+      // opening: a window.open after the await is what a popup blocker stops,
+      // which left the reviewer at the comment box with no report on screen.
+      const tab = window.open('', '_blank');
+      const { status, data } = await api('POST', '/analyses/' + genId + '/open');
+      if (status !== 200) {
+        if (tab) tab.close();
+        notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); loadMe(); return;
+      }
+      if (data.url && tab) tab.location = data.url;
+      else if (data.url) window.open(data.url, '_blank');
+      window._openReportUrl = data.url || '';
+      window._openPrompts = data.promptsText || '';
+      if (!data.free) {
+        window._openReviewId = genId;
+        renderReviewRow();
+        loadAnalyses();
+        focusReview();
+      }
+      notice('ok', data.free
+        ? 'This report is free right now — no read spent.'
+        : (data.url ? 'Report opened. Score and comment it to unlock your next read.'
+                    : 'Read recorded, but the PDF is not available for this report.'));
+      loadMe();
+    }
+
+    async function submitReview() {
+      const { status, data } = await api('POST', '/analyses/' + window._openReviewId + '/review', {
+        score: Number(document.getElementById('reviewScore').value),
+        comment: document.getElementById('reviewComment').value,
+      });
+      if (status !== 200) { notice('err', (data && data.error) || ('Review failed (' + status + ')')); return; }
+      document.getElementById('reviewComment').value = '';
+      window._openReviewId = null;
+      window._openPrompts = '';
+      renderReviewRow();
+      notice('ok', 'Review recorded — thank you.');
+      loadAnalyses();
+      loadMe();
+    }
+
+    async function submitGen() {
+      // Asked here rather than left in a settings button nobody finds: this is
+      // the moment the name goes public, and it is only ever asked once.
+      if (!window._linkedinUrl) {
+        const answer = prompt(
+          'Your analysis is about to be published under your name.\n\n'
+          + 'LinkedIn profile address, shown beside your name so readers can check who wrote it.\n'
+          + 'Leave empty to publish without it — you can add it later.',
+          'https://www.linkedin.com/in/');
+        if (answer !== null && String(answer).trim() && String(answer).trim() !== 'https://www.linkedin.com/in/') {
+          const li = await api('POST', '/me/linkedin', { linkedinUrl: String(answer).trim() });
+          if (li.status === 200) window._linkedinUrl = li.data.linkedinUrl || '';
+          else notice('err', (li.data && li.data.error) || 'That did not look like a LinkedIn profile address — publishing without it.');
+        }
+      }
+
+      const { status, data } = await api('POST', '/generations/' + window._openObligationId + '/submit',
+        {
+          // Empty until the revision pipeline supplies them; the server has
+          // always treated this as optional.
+          promptsText: '',
+          priceEur: Number(document.getElementById('pubPrice').value) || 0,
+          freeAfterDays: Number(document.getElementById('pubFreeAfter').value) || 365,
+        });
+      if (status === 200) { notice('ok', 'Published — thank you!'); loadMe(); }
+      else notice('err', (data && data.error) || ('Publishing failed (' + status + ')'));
+    }
+
+    const EARNING_LABELS = {
+      pending: 'Held 14 days', eligible: 'Ready to invoice', paid: 'Paid',
+      clawback: 'Clawed back', void: 'Nothing owed',
+    };
+    const eur = (n) => '€' + (Math.round(Number(n || 0) * 100) / 100).toLocaleString('en-IE',
+      { minimumFractionDigits: Number.isInteger(Number(n)) ? 0 : 2, maximumFractionDigits: 2 });
+
+    async function loadEarnings() {
+      const { status, data } = await api('GET', '/me/earnings');
+      const card = document.getElementById('earningsCard');
+      const sales = data?.saleEntries || [];
+      // An analyst who has not sold anything yet still needs to see how being
+      // paid works — hiding the section until the first sale hid the answer from
+      // exactly the people asking the question. Only a non-analyst (403) has no
+      // income at all.
+      if (status !== 200) { card.hidden = true; return; }
+      card.hidden = false;
+      const t = data.totals || {};
+
+      // The four numbers cover both what a sale earns and the pilot fee, so the
+      // headline stays true whichever of the two is actually running.
+      // The API may be a deploy behind this page, in which case the share totals
+      // are simply absent — zero, not NaN.
+      const n = (v) => Number(v) || 0;
+      const gross = n(t.grossSales);
+      document.getElementById('earnPaid').textContent =
+        eur(n(t.sharePaid) + n(t.paid) + n(t.readPaid) + n(t.shareClawback) + n(t.clawback) + n(t.readClawback));
+      document.getElementById('earnPayable').textContent =
+        eur(n(t.shareEligible) + n(t.eligible) + n(t.readEligible));
+      document.getElementById('earnMaturing').textContent =
+        eur(n(t.sharePending) + n(t.pending) + n(t.readPending));
+      document.getElementById('earnGross').textContent = eur(gross);
+      // Subscriber reads are the other income: a member's monthly allowance is
+      // revenue we collected, and each read of your work pays its fixed rate.
+      const reads = data.readEntries || [];
+      const readMoney = n(t.readPaid) + n(t.readEligible) + n(t.readPending);
+      const readLine = reads.length
+        ? ' ' + reads.length + (reads.length === 1 ? ' subscriber read' : ' subscriber reads')
+          + ' of your work, ' + eur(readMoney) + '.'
+        : '';
+      document.getElementById('earnSummary').textContent = (sales.length
+        ? sales.length + (sales.length === 1 ? ' sale' : ' sales') + ' of your analyses, '
+          + eur(gross) + ' paid by readers, your half is ' + eur(gross / 2)
+          + '. Half of every sale is yours; card fees come out of our half.'
+        : (data.entries?.length
+          ? 'Nothing sold yet. Your published analyses stay on their company pages and can sell at any time — the numbers above fill in as they do.'
+          : 'Nothing published yet, so nothing to sell. Publish an analysis with a price on it and every sale shows up here: what the reader paid, your half, and when you can invoice us for it.')) + readLine;
+
+      // Sales first — that is the income. The pilot fee rows follow, and vanish
+      // once nothing is on a fee any more.
+      const saleRows = sales.map(e => '<tr><td>' + (e.companyId || '—') + '</td><td>Sale</td><td>'
+        + String(e.soldAt).slice(0, 10) + '</td><td>' + eur(e.grossEur) + '</td><td>'
+        + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+        + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+      // The flat pilot fee is off, so its rows are all €0 — noise next to real money.
+      const feeRows = (data.entries || []).filter(e => e.amount)
+        .map(e => '<tr><td>' + e.companyId + '</td><td>Publication fee</td><td>'
+          + e.publishedAt.slice(0, 10) + '</td><td>—</td><td>'
+          + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+          + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+
+      const readRows = reads.map(e => '<tr><td>' + (e.companyId || '—') + '</td><td>Subscriber read</td><td>'
+        + String(e.openedAt).slice(0, 10) + '</td><td>—</td><td>'
+        + (EARNING_LABELS[e.state] || e.state) + (e.reason ? ' (' + e.reason + ')' : '')
+        + '</td><td>' + eur(e.amount) + '</td></tr>').join('');
+
+      document.getElementById('earningsTable').innerHTML =
+        '<thead><tr><th>Company</th><th>What</th><th>Date</th><th>Reader paid</th><th>Status</th><th>Yours</th></tr></thead><tbody>'
+        + (saleRows + readRows + feeRows
+          || '<tr><td colspan="6" class="muted">Nothing earned yet. Every sale of your work — and every read of it by a subscriber — appears here as its own row.</td></tr>')
+        + '</tbody>';
+    }
+
+    // The plan chosen on the pricing page. Stashed rather than acted on: signing
+    // in with LinkedIn is a round trip that loses the query string, and starting
+    // a Stripe checkout unasked on page load is not something a reader consented
+    // to. It becomes one button once they are signed in.
+    (function rememberPlanChoice() {
+      const params = new URLSearchParams(location.search);
+      const plan = params.get('plan');
+      if (!['investor', 'investor_plus', 'coverage'].includes(plan)) return;
+      const interval = params.get('interval') === 'year' ? 'year' : 'month';
+      try { localStorage.pendingPlan = JSON.stringify({ plan, interval }); } catch (_) { /* private mode */ }
+      history.replaceState(null, '', location.pathname);
+    })();
+
+    const PLAN_NAMES = { investor: 'Investor', investor_plus: 'Investor Plus', coverage: 'Company Coverage' };
+
+    function offerPendingPlan() {
+      let choice = null;
+      try { choice = JSON.parse(localStorage.pendingPlan || 'null'); } catch (_) { /* ignore */ }
+      if (!choice || !PLAN_NAMES[choice.plan]) return;
+      const el = document.getElementById('notice');
+      el.className = 'notice ok';
+      el.textContent = 'You picked ' + PLAN_NAMES[choice.plan] + ', billed '
+        + (choice.interval === 'year' ? 'yearly' : 'monthly') + '. ';
+      const go = document.createElement('button');
+      go.className = 'btn btn-primary btn-sm';
+      go.textContent = 'Continue to checkout';
+      go.onclick = () => {
+        // Coverage needs the company before it can be priced, and that field is
+        // further down the page — send them to it rather than to an error.
+        if (choice.plan === 'coverage' && !document.getElementById('coverageTicker').value.trim()) {
+          document.getElementById('coverageTicker').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('coverageTicker').focus();
+          notice('err', 'Name the company you want covered, then start the checkout.');
+          return;
+        }
+        try { delete localStorage.pendingPlan; } catch (_) { /* ignore */ }
+        checkout(choice.plan, choice.interval === 'year' || choice.plan === 'coverage' ? 'year' : 'month');
+      };
+      el.appendChild(go);
+    }
+
+    // Coming back from Stripe. A purchase must be handed over here whether or not
+    // anyone is signed in: the session id is the receipt, so this runs before and
+    // without a login, and it is also where the receipt email points.
+    async function collectPurchase() {
+      const params = new URLSearchParams(location.search);
+      const bought = params.get('bought');
+      const forked = params.get('forked');
+      const sessionId = params.get('session_id');
+      // Both of these are credited by the webhook, so the return trip only has to
+      // say so — but saying nothing read as a checkout that failed.
+      const topup = params.get('topup');
+      if (topup) {
+        notice(topup === 'added' ? 'ok' : 'err', topup === 'added'
+          ? 'Added to this month\u2019s allowance. It shows above within a few seconds.'
+          : 'The checkout was cancelled — nothing was added and nothing was charged.');
+        history.replaceState(null, '', location.pathname);
+        if (token()) setTimeout(loadMe, 2500);
+        return;
+      }
+      const revisions = params.get('revisions');
+      if (revisions) {
+        notice(revisions === 'added' ? 'ok' : 'err', revisions === 'added'
+          ? 'Your extra revision rounds have been added. They appear on the report within a few seconds.'
+          : 'The checkout was cancelled — no rounds were added and nothing was charged.');
+        history.replaceState(null, '', location.pathname);
+        return;
+      }
+      const genId = bought || forked;
+      if (!genId || genId === 'cancelled' || !sessionId) {
+        if (bought === 'cancelled' || forked === 'cancelled') notice('err', 'The checkout was cancelled — nothing was charged.');
+        return;
+      }
+      // A fork is a report of your own to revise, so it belongs on the order page
+      // rather than being handed over as a finished PDF. The fork's own order is
+      // keyed by the Stripe session id (createForkOrder in server/lambda/members.js
+      // sets genId = session.id) — `forked` is the parent analysis's genId, which
+      // belongs to a different user and would 404 on the order page.
+      if (forked) {
+        notice('ok', 'Your copy is ready to revise.');
+        location.replace(workspaceUrl(sessionId));
+        return;
+      }
+      notice('ok', 'Confirming your purchase…');
+      const res = await fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId)
+        + '/purchased?session_id=' + encodeURIComponent(sessionId));
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data || !data.url) {
+        notice('err', (data && data.error) || 'That purchase could not be confirmed.');
+        return;
+      }
+      const el = document.getElementById('notice');
+      el.className = 'notice ok';
+      el.textContent = 'Thank you. Your copy of ' + data.companyId + ' by ' + data.analyst + ' is ready. ';
+      const link = document.createElement('a');
+      link.href = data.url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.className = 'btn btn-primary btn-sm';
+      link.textContent = 'Open the PDF';
+      el.appendChild(link);
+      window.open(data.url, '_blank', 'noopener');
+    }
+
+    collectPurchase();
+    if (token()) loadMe();
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>

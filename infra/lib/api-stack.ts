@@ -73,6 +73,11 @@ export class ApiStack extends Stack {
     props.catalogStateTable.grantReadWriteData(apiFunction);
     props.pdfBucket.grantReadWrite(apiFunction);
     props.workerFunction.grantInvoke(apiFunction);
+    // Admin alert emails from the API's error paths (server/email.js).
+    apiFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['ses:SendEmail'],
+      resources: ['*'],
+    }));
     if (config.engineFunctionArn) {
       apiFunction.addToRolePolicy(new iam.PolicyStatement({
         actions: ['lambda:InvokeFunctionUrl', 'lambda:InvokeFunction'],

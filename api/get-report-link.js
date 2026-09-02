@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { getCatalogReport } = require('../server/catalog-client');
 const { isCompletedCheckout, isRevisionsOnly } = require('../server/checkout');
 
@@ -50,6 +51,7 @@ module.exports = async (req, res) => {
     });
   } catch (err) {
     console.error('get-report-link:', err.message);
+    await reportError('vercel get-report-link', err, { sessionId: session_id });
     res.status(500).json({ error: 'Failed' });
   }
 };

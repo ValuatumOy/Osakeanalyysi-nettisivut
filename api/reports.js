@@ -1,4 +1,5 @@
 const { getCatalogReports } = require('../server/catalog-client');
+const { reportError } = require('../server/email');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).end();
@@ -12,6 +13,7 @@ module.exports = async (req, res) => {
     });
   } catch (err) {
     console.error('reports:', err.message);
+    await reportError('vercel reports', err);
     res.status(500).json({ error: 'Could not load reports' });
   }
 };

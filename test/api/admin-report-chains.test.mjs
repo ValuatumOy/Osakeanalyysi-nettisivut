@@ -26,6 +26,7 @@ stub('../../server/aws/catalog-aws.js', {
     catalog: { generatedAt: 'now', week: 1, reports: [
       entry({ id: 'tesla-20082026', fileName: 'Tesla_20082026.pdf', provenanceSessionId: 'order-1' }),
       entry({ id: 'tesla-20082026-rev-1', fileName: 'Tesla_20082026_rev-ab.pdf', provenanceSessionId: 'order-1', isRevision: true }),
+      entry({ id: 'tesla-20082026-edit-1', fileName: 'Tesla_20082026_edit-cd.pdf', provenanceSessionId: 'order-1', isRevision: true }),
       entry({ id: 'nokia-05062026', fileName: 'Nokia_05062026.pdf' }),
     ] },
     state: { purchases: [] },
@@ -34,7 +35,15 @@ stub('../../server/aws/catalog-aws.js', {
 stub('../../server/aws/orders-store.js', {
   STATUS: { DELIVERED: 'DELIVERED' },
   list: async () => [
-    { id: 'order-1', email: 'buyer@example.com', visibility: undefined },
+    {
+      id: 'order-1', email: 'buyer@example.com', visibility: undefined,
+      pdfFileName: 'Tesla_20082026_rev-ab.pdf', originalPdfFileName: 'Tesla_20082026.pdf',
+      deliveredEmailAt: '2026-08-20T12:10:09.000Z',
+      revisionHistory: [
+        { version: 2, kind: 'revision', pdfFileName: 'Tesla_20082026_rev-ab.pdf', completedAt: '2026-08-20T13:54:00.000Z' },
+        { version: 3, kind: 'edit', pdfFileName: 'Tesla_20082026_edit-cd.pdf', completedAt: '2026-08-20T14:02:00.000Z' },
+      ],
+    },
   ],
   get: async () => null,
 });
@@ -66,6 +75,23 @@ test('the admin listing carries chain, origin and author; the public one does no
   assert.equal(base.generatedBy, 'buyer@example.com');
   assert.equal(upload.origin, 'uploaded');
   assert.equal(upload.groupId, 'nokia-05062026', 'an upload stands alone under its own id');
+
+  // Every row links to its PDF, paid and revised copies included: the public
+  // payload's free-only rule would have left the revision with no link at all.
+  assert.match(base.pdfUrl, /\/Tesla_20082026\.pdf$/);
+  assert.match(rev.pdfUrl, /\/Tesla_20082026_rev-ab\.pdf$/);
+
+  // When each file was produced comes from the order, not the bucket.
+  assert.equal(base.generatedAt, '2026-08-20T12:10:09.000Z');
+  assert.equal(rev.generatedAt, '2026-08-20T13:54:00.000Z');
+  assert.equal(upload.generatedAt, null);
+
+  // A revised copy says what made it; an original has no kind.
+  const edited = reports.find((r) => r.id === 'tesla-20082026-edit-1');
+  assert.equal(rev.kind, 'revision');
+  assert.equal(edited.kind, 'edit');
+  assert.equal(base.kind, null);
+  assert.equal(upload.kind, null);
 
   // The public catalog must not leak any of it.
   const pub = await handler({ routeKey: 'GET /api/reports', headers: {} });

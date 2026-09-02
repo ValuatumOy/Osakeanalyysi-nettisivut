@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { getPublicPricing } = require('../server/stripe-pricing');
 
 module.exports = async (req, res) => {
@@ -10,6 +11,7 @@ module.exports = async (req, res) => {
     res.json(await getPublicPricing(stripe, { bypassCache: true }));
   } catch (err) {
     console.error('pricing:', err.message);
+    await reportError('vercel pricing', err);
     res.status(500).json({ error: 'Could not load pricing' });
   }
 };

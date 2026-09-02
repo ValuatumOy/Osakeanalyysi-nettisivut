@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { CheckoutError, createFreshReportCheckout } = require('../server/checkout');
 
 module.exports = async (req, res) => {
@@ -15,6 +16,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });
     console.error('create-fresh-checkout:', err.message);
+    await reportError('vercel create-fresh-checkout', err, { company, ticker, email });
     res.status(500).json({ error: 'Checkout failed' });
   }
 };

@@ -33,6 +33,10 @@
     .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; overflow-x: auto; position: sticky; top: 52px; z-index: 90; }
     .tab-btn { font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none; cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; white-space: nowrap; }
     .tab-btn.active { color: var(--forest); border-bottom-color: var(--green); font-weight: 600; }
+    /* A tab that is a link out, not a pane: same look, opens in a new window. */
+    .tab-link { display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none; }
+    .tab-link svg { width: 0.8em; height: 0.8em; opacity: 0.7; }
+    .tab-link:hover { color: var(--forest); }
     .tabpane[hidden] { display: none; }
     .stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
     .stat-card { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.9rem 1rem; }
@@ -107,6 +111,23 @@
     .flash { border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; margin-bottom: 0.9rem; display: none; }
     .flash-ok { background: #D1FAE5; color: #065F46; }
     .flash-err { background: #FEF2F2; border: 1px solid #FECACA; color: var(--red); }
+    .warn-box { background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; border-radius: var(--r-md); padding: 0.6rem 0.9rem; font-size: 0.8rem; line-height: 1.55; margin-bottom: 1rem; }
+    details.add-report { padding: 0; }
+    details.add-report > summary { cursor: pointer; list-style: none; padding: 0.9rem 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--charcoal-mid); display: flex; align-items: center; gap: 0.5rem; }
+    details.add-report > summary::-webkit-details-marker { display: none; }
+    details.add-report > summary::before { content: '▸'; color: var(--gray-steel); }
+    details.add-report[open] > summary::before { content: '▾'; }
+    details.add-report > summary:hover { color: var(--charcoal); }
+    details.add-report > .add-body { padding: 0 1.5rem 1.25rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+    td .when { display: block; font-size: 0.7rem; color: var(--gray-steel); font-weight: 400; margin-top: 0.1rem; }
+    tr.rev-row td { background: var(--off-white); padding-top: 0.45rem; padding-bottom: 0.45rem; font-size: 0.76rem; }
+    tr.rev-row td.company { padding-left: 2.25rem; font-weight: 500; position: relative; }
+    tr.rev-row td.company::before { content: '↳'; position: absolute; left: 1.2rem; color: var(--gray-steel); }
+    tr.rev-row + tr:not(.rev-row) td { border-top: 1px solid var(--border); }
+    .rev-toggle { font-size: 0.7rem; color: var(--green-deep); background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; font-weight: 600; margin-top: 0.15rem; display: block; }
+    .rev-toggle:hover { text-decoration: underline; }
+    .promo-group { margin-bottom: 1.25rem; }
+    details.promo-other > summary { cursor: pointer; font-size: 0.8rem; font-weight: 600; color: var(--charcoal-mid); margin: 0.5rem 0 0.75rem; }
 
     /* ── modal ── */
     .modal-backdrop { position: fixed; inset: 0; background: rgba(26,26,46,0.5); display: none; align-items: center; justify-content: center; z-index: 200; padding: 1rem; }
@@ -148,6 +169,7 @@
       <button class="tab-btn" data-pane="earnings">Earnings &amp; payouts</button>
       <button class="tab-btn" data-pane="stats">Stats</button>
       <button class="tab-btn" data-pane="promos">Promo codes</button>
+      <a class="tab-btn tab-link" href="/admin/atlas.html" target="_blank" rel="noopener">Interactive docs <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3 7 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
 
     <div class="panel tabpane" id="pane-reports">
@@ -155,7 +177,10 @@
       <div class="flash flash-err" id="flash-err"></div>
 
       <div class="section-label">Add a report</div>
-      <form class="card" id="add-form">
+      <details class="card add-report">
+        <summary>Upload a PDF manually</summary>
+        <form class="add-body" id="add-form">
+        <div class="warn-box">Uploading new reports manually is not recommended, because they cannot be revised. Please generate or revise a report from the customer view instead.</div>
         <div class="form-grid">
           <div class="field"><label>Company name *</label><input name="companyName" required placeholder="Stora Enso"></div>
           <div class="field"><label>Ticker</label><input name="ticker" placeholder="STERV.HE"></div>
@@ -171,7 +196,8 @@
           <button class="btn btn-primary" type="submit" id="add-submit">Upload &amp; publish</button>
           <span class="form-note" id="add-status"></span>
         </div>
-      </form>
+        </form>
+      </details>
 
       <div class="section-label">Catalog</div>
       <div class="table-wrap">
@@ -234,11 +260,8 @@
     <!-- ── promo codes ── -->
     <div class="panel tabpane" id="pane-promos" hidden>
       <div class="section-label">Live promotion codes</div>
-      <p class="note-line">Everything active in Stripe live mode. A 100%-off code with no restrictions and no expiry is highlighted — that is a free-everything key anyone can type. Creating codes stays in the Stripe dashboard; here they can only be switched off.</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Code</th><th>Gives</th><th>Duration</th><th>Used</th><th>Limits</th><th></th></tr></thead>
-        <tbody id="promo-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
-      </table></div>
+      <p class="note-line">The Stripe account is shared with other Valuatum sites and a promotion code works on every checkout in the account, so a code made for another site is accepted here too. Stripe does not record which site a code is for: use <em>This site</em> / <em>Other site</em> to sort them, and the other sites' codes fold away below. A 100%-off code with no restrictions and no expiry is highlighted — that is a free-everything key anyone can type. Creating codes stays in the Stripe dashboard; here they can only be sorted or switched off.</p>
+      <div id="promo-groups"><p class="muted">Loading…</p></div>
     </div>
   </div>
 
@@ -412,16 +435,44 @@
       order: '<span class="badge badge-blue">Fresh order</span>',
       generation: '<span class="badge badge-yellow">Member generation</span>',
     };
+    // A revised copy is labelled by what produced it, not by how the original
+    // came to exist: the AI's revision from the customer's comments, or the
+    // customer's own hand edit of the text.
+    const KIND_BADGE = {
+      revision: '<span class="badge badge-blue">Revision</span>',
+      edit: '<span class="badge badge-yellow">Hand edit</span>',
+    };
 
-    function reportRow(report, index, extra) {
+    // When the engine finished this file, from its order. A hand upload has
+    // no order; its upload time is shown instead unless it is a bare midnight
+    // date stamp, which carries no time worth showing.
+    function generatedAt(report) {
+      const iso = report.generatedAt || (report.origin === 'uploaded' ? report.uploadedAt : null);
+      if (!iso || /T00:00:00(\.000)?Z$/.test(iso)) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return '';
+      const hh = String(d.getHours()).padStart(2, '0');
+      const mm = String(d.getMinutes()).padStart(2, '0');
+      const sameDay = d.toISOString().slice(0, 10) === String(report.reportDate || '').slice(0, 10);
+      return `<span class="when" title="${esc(iso)}">${sameDay ? '' : day(iso) + ' '}${hh}:${mm}</span>`;
+    }
+
+    // `rev`: { version, of } for a revised copy, rendered indented under its
+    // report. `toggle`: the "n revised versions" control on the report's row.
+    function reportRow(report, index, { rev, toggle } = {}) {
       const who = report.generatedBy
         ? `<br><span class="muted" style="font-size:0.7rem;">by ${esc(report.generatedBy)}</span>` : '';
+      const file = `<a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a>`;
+      const title = rev
+        ? `${rev.version ? `Version ${rev.version}` : 'Revised copy'} <span class="muted">of ${esc(report.companyName)}</span>`
+        : esc(report.companyName);
+      const attrs = rev ? ` class="rev-row" data-rev-of="${esc(rev.of)}" hidden` : '';
       return `
-        <tr${extra || ''}>
-          <td class="company">${esc(report.companyName)}<br><a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a></td>
+        <tr${attrs}>
+          <td class="company">${title}<br>${file}${toggle || ''}</td>
           <td>${esc(report.ticker || '—')}</td>
-          <td>${esc(report.reportDate || '—')}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
+          <td>${esc(report.reportDate || '—')}${generatedAt(report)}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${(rev && KIND_BADGE[report.kind]) || ORIGIN_BADGE[report.origin] || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
@@ -447,21 +498,23 @@
 
       const rows = [];
       for (const [key, chain] of chains) {
+        // Oldest first, so version numbers count up from the original (v1).
+        chain.revs.sort((a, b) => String(a.report.uploadedAt || '').localeCompare(String(b.report.uploadedAt || '')));
         // Every file of the chain is a revision (the base left the catalog):
-        // the newest revision fronts it rather than the chain disappearing.
-        const main = chain.main || chain.revs.shift();
+        // the newest revision fronts it rather than the chain disappearing,
+        // and without the original the version numbers are unknown.
+        const numbered = Boolean(chain.main);
+        const main = chain.main || chain.revs.pop();
         if (!main) continue;
-        rows.push(reportRow(main.report, main.index));
-        if (chain.revs.length) {
-          const gid = esc(String(key));
-          rows.push(`<tr class="rev-toggle-row"><td colspan="6" style="padding:0.25rem 0.9rem 0.55rem;">
-            <button class="btn-xs" data-revs="${gid}">▸ ${chain.revs.length} revised ${chain.revs.length === 1 ? 'version' : 'versions'}</button>
-          </td></tr>`);
-          for (const rev of chain.revs) {
-            rows.push(reportRow(rev.report, rev.index,
-              ` class="rev-row" data-rev-of="${gid}" hidden style="background:var(--off-white);"`));
-          }
-        }
+        const gid = String(key);
+        const n = chain.revs.length;
+        const toggle = n
+          ? `<button class="rev-toggle" data-revs="${esc(gid)}" data-count="${n}">▸ ${n} revised ${n === 1 ? 'version' : 'versions'}</button>`
+          : '';
+        rows.push(reportRow(main.report, main.index, { toggle }));
+        chain.revs.forEach((rev, i) => {
+          rows.push(reportRow(rev.report, rev.index, { rev: { of: gid, version: numbered ? i + 2 : null } }));
+        });
       }
       $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
     }
@@ -475,7 +528,8 @@
         tr.hidden = !tr.hidden;
         shown = !tr.hidden;
       });
-      btn.textContent = btn.textContent.replace(shown ? '▸' : '▾', shown ? '▾' : '▸');
+      const n = btn.dataset.count;
+      btn.textContent = `${shown ? '▾' : '▸'} ${n} revised ${n === '1' ? 'version' : 'versions'}`;
     });
 
     async function refreshReports() {
@@ -705,7 +759,7 @@
 
     $('tabs').addEventListener('click', (ev) => {
       const btn = ev.target.closest('.tab-btn');
-      if (!btn) return;
+      if (!btn || !btn.dataset.pane) return; // the docs link is not a pane
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
       document.querySelectorAll('.tabpane').forEach(pane => { pane.hidden = pane.id !== `pane-${btn.dataset.pane}`; });
       const loader = PANE_LOADERS[btn.dataset.pane];
@@ -948,10 +1002,17 @@
     }
 
     // ── promo codes ──────────────────────────────────────────────────────────
+    function promoTable(rows, empty) {
+      return `<div class="table-wrap"><table>
+        <thead><tr><th>Code</th><th>Coupon</th><th>Gives</th><th>Duration</th><th>Used</th><th>Limits</th><th></th></tr></thead>
+        <tbody>${rows.join('') || `<tr><td colspan="7" class="muted">${empty}</td></tr>`}</tbody>
+      </table></div>`;
+    }
+
     async function loadPromosPane() {
-      const { codes } = await mapi('/admin/members/promo-codes');
+      const { codes, site } = await mapi('/admin/members/promo-codes');
       const live = codes.filter(c => c.active);
-      $('promo-rows').innerHTML = live.map(c => {
+      const row = (c) => {
         const gives = c.percentOff ? `${c.percentOff}% off` : c.amountOffEur ? `${eur(c.amountOffEur)} off` : '—';
         const dangerous = c.percentOff === 100 && !c.maxRedemptions && !c.expiresAt && !c.restrictions;
         const limits = [
@@ -959,42 +1020,73 @@
           c.expiresAt ? `until ${day(c.expiresAt)}` : '',
           c.restrictions || '',
         ].filter(Boolean).join(' · ') || (dangerous ? '<span class="pill-danger">none — free everything</span>' : '<span class="muted">none</span>');
+        const tag = (label, value) => c.site === value ? ''
+          : `<button class="btn-xs" data-promo-site="${esc(value)}" data-promo="${esc(c.promoId)}" data-code="${esc(c.code)}">${label}</button> `;
         return `<tr${dangerous ? ' style="background:#FEF2F2;"' : ''}>
           <td class="company">${esc(c.code)}</td>
+          <td class="muted">${esc(c.couponName || '—')}</td>
           <td>${gives}</td>
           <td>${esc(c.duration || '—')}</td>
           <td>${c.timesRedeemed}</td>
           <td>${limits}</td>
-          <td style="text-align:right;"><button class="btn-xs danger" data-promo="${esc(c.promoId)}" data-code="${esc(c.code)}">Deactivate</button></td>
+          <td style="text-align:right; white-space:nowrap;">
+            ${tag('This site', site)}${tag('Other site', 'other')}<button class="btn-xs danger" data-promo="${esc(c.promoId)}" data-code="${esc(c.code)}">Deactivate</button>
+          </td>
         </tr>`;
-      }).join('') || '<tr><td colspan="6" class="muted">No active codes.</td></tr>';
+      };
+      const mine = live.filter(c => site && c.site === site);
+      const unsorted = live.filter(c => !c.site);
+      const others = live.filter(c => c.site && c.site !== site);
+      $('promo-groups').innerHTML = `
+        <div class="promo-group">
+          <div class="section-label">This site</div>
+          ${promoTable(mine.map(row), 'No codes tagged for this site yet.')}
+        </div>
+        ${unsorted.length ? `<div class="promo-group">
+          <div class="section-label">Not sorted yet</div>
+          <p class="note-line">Redeemable here until deactivated. Tag each as this site's or another site's.</p>
+          ${promoTable(unsorted.map(row), '')}
+        </div>` : ''}
+        <details class="promo-other">
+          <summary>${others.length} ${others.length === 1 ? 'code' : 'codes'} for other sites (still redeemable here)</summary>
+          ${promoTable(others.map(row), 'None.')}
+        </details>`;
     }
 
-    $('promo-rows').addEventListener('click', async (ev) => {
+    $('promo-groups').addEventListener('click', async (ev) => {
       const btn = ev.target.closest('[data-promo]');
       if (!btn) return;
-      if (!confirm(`Deactivate ${btn.dataset.code}? Anyone typing it after this gets "invalid code". Cannot be reactivated here.`)) return;
+      const site = btn.dataset.promoSite;
       try {
-        await mapi('/admin/members/promo-deactivate', { method: 'POST', body: JSON.stringify({ promoId: btn.dataset.promo }) });
-        flash('ok', `${btn.dataset.code} deactivated.`);
+        if (site !== undefined) {
+          await mapi('/admin/members/promo-site', { method: 'POST', body: JSON.stringify({ promoId: btn.dataset.promo, site }) });
+          flash('ok', `${btn.dataset.code} tagged as ${site === 'other' ? 'another site\'s' : 'this site\'s'}.`);
+        } else {
+          if (!confirm(`Deactivate ${btn.dataset.code}? Anyone typing it after this gets "invalid code". Cannot be reactivated here.`)) return;
+          await mapi('/admin/members/promo-deactivate', { method: 'POST', body: JSON.stringify({ promoId: btn.dataset.promo }) });
+          flash('ok', `${btn.dataset.code} deactivated.`);
+        }
         reload('promos');
       } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
     });
 
     // ── boot: stored password → straight in; otherwise show the gate ────────
-    // A wrong password keeps the gate up; an unreachable reports API does not —
-    // the members tabs are a different origin and may be fine, and an admin
-    // locked out of everything because one API is down can fix nothing.
+    // The app is shown at once and the catalog loads behind it: waiting for
+    // the request first kept the sign-in screen up for a second on every
+    // load. A password the API rejects brings the gate back with a message;
+    // an unreachable reports API does not — the members tabs are a different
+    // origin and may be fine, and an admin locked out of everything because
+    // one API is down can fix nothing.
     (async () => {
       if (!password()) return;
+      $('auth-screen').style.display = 'none';
+      $('app').style.display = 'block';
       try {
         await refreshReports();
       } catch (err) {
-        if (err.message === 'Unauthorized') return;
+        if (err.message === 'Unauthorized') return signOut('The saved password is no longer valid. Sign in again.');
         flash('err', 'Report catalog unreachable: ' + err.message + ' — the other tabs still work.');
       }
-      $('auth-screen').style.display = 'none';
-      $('app').style.display = 'block';
     })();
   </script>
 </body>

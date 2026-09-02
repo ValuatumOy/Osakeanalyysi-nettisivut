@@ -148,7 +148,9 @@ function companyToken(name) {
   return cleaned.split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
 }
 
-// Terminal failure: mark FAILED and email the admin to generate manually.
+// Terminal failure: mark FAILED, tell the customer their report is not
+// coming on its own, and email the admin to generate it manually. The
+// customer email goes first so the admin notice can say whether it went out.
 async function fail(order, reason) {
   await orders.update(order.id, {
     status: orders.STATUS.FAILED,
@@ -156,13 +158,31 @@ async function fail(order, reason) {
     attempts: (order.attempts || 0) + 1,
   });
   console.warn('reconciler: order failed', { id: order.id, reason });
+
+  let customerNotified = false;
+  if (order.email) {
+    try {
+      await email.sendGenerationFailedEmail(order.email, {
+        company: order.companyName || order.ticker,
+        ticker: order.ticker,
+        orderUrl: (order.revisionsAllowed || 0) > 0 ? orderUrl(order) : null,
+      });
+      customerNotified = true;
+    } catch (err) {
+      console.warn('reconciler: customer failure email failed:', err.message);
+    }
+  }
   try {
     await email.sendAdminNotification(
-      { company: order.companyName, ticker: order.ticker, exchange: order.exchange, error: reason },
+      {
+        company: order.companyName, ticker: order.ticker, exchange: order.exchange,
+        error: reason, orderId: order.id, customerNotified,
+      },
       order.email,
     );
   } catch (err) {
     console.warn('reconciler: admin failure notice failed:', err.message);
+    await email.reportError('reconciler: order failed', new Error(reason), { orderId: order.id, customer: order.email });
   }
 }
 
@@ -452,6 +472,32 @@ async function failRevision(order, reason) {
     revisionAttempts: (order.revisionAttempts || 0) + 1,
   });
   console.warn('reconciler: revision failed, reverted to DELIVERED', { id: order.id, reason });
+
+  // A hand edit that fails is shown on the page the customer is watching; a
+  // requested revision may have been waiting for hours, so that one is emailed.
+  // Both reach the admin: a failed engine run is always worth a look.
+  const wasEdit = Boolean(order.pendingEdit || order.activeEdit);
+  if (!wasEdit && order.email) {
+    try {
+      await email.sendRevisionFailedEmail(order.email, {
+        company: order.companyName || order.ticker,
+        ticker: order.ticker,
+        orderUrl: orderUrl(order),
+      });
+    } catch (err) {
+      console.warn('reconciler: customer revision-failed email failed:', err.message);
+    }
+  }
+  await email.reportError(wasEdit ? 'reconciler: edit failed' : 'reconciler: revision failed', new Error(reason), {
+    orderId: order.id,
+    company: order.companyName,
+    ticker: order.ticker,
+    customer: order.email,
+    revisionAttempts: (order.revisionAttempts || 0) + 1,
+    note: wasEdit
+      ? 'The order is back at DELIVERED with its previous PDF; the customer saw the error on the order page.'
+      : 'The order is back at DELIVERED with its previous PDF; the customer was emailed and can retry.',
+  });
 }
 
 // Poll engine.getJob(jobId) until DONE/FAILED, the poll budget (MAX_POLLS)
@@ -640,6 +686,19 @@ async function tick() {
         // order tracks this against revisionAttempts/revisionError instead —
         // see the note in advance().
         console.error(`reconciler: transient error on order ${order.id}:`, err.message);
+        // Alert once, on the first failed attempt: the retries are silent and
+        // running out of them takes the failure path, which emails on its own.
+        const attempt = (order.status === orders.STATUS.REVISING ? order.revisionAttempts : order.attempts) || 0;
+        if (attempt === 0) {
+          await email.reportError('reconciler: transient error', err, {
+            orderId: order.id,
+            status: order.status,
+            company: order.companyName,
+            ticker: order.ticker,
+            customer: order.email,
+            note: `Retried on each 5-minute sweep, up to ${MAX_ATTEMPTS} attempts; further retries are not emailed.`,
+          });
+        }
         try {
           if (order.status === orders.STATUS.REVISING) {
             await orders.update(order.id, {

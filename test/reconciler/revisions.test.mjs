@@ -77,11 +77,14 @@ function fakeEngine(overrides = {}) {
 
 function fakeEmail() {
   return {
-    calls: { sendReportRevisedEmail: [] },
+    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], reportError: [] },
     async sendReportEmail() {},
     async sendReportRevisedEmail(to, meta) { this.calls.sendReportRevisedEmail.push({ to, meta }); },
+    async sendRevisionFailedEmail(to, meta) { this.calls.sendRevisionFailedEmail.push({ to, meta }); },
+    async sendGenerationFailedEmail(to, meta) { this.calls.sendGenerationFailedEmail.push({ to, meta }); },
     async sendAdminNotification() {},
     async sendAdminDeliveryNotice() {},
+    async reportError(where, err, details) { this.calls.reportError.push({ where, message: err?.message, details }); return true; },
   };
 }
 

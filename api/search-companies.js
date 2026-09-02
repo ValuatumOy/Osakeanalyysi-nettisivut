@@ -1,3 +1,5 @@
+const { reportError } = require('../server/email');
+
 const UPSTREAM = process.env.COMPANY_SEARCH_UPSTREAM || 'https://files.valuatum.com/api/search-companies';
 const TIMEOUT_MS = Number.parseInt(process.env.COMPANY_SEARCH_TIMEOUT_MS || '8000', 10);
 
@@ -26,6 +28,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ query, results });
   } catch (error) {
     console.error('search-companies:', error.message);
+    await reportError('vercel search-companies', error, { query: req.query?.q });
     return res.status(502).json({ error: 'Company search is temporarily unavailable' });
   } finally {
     clearTimeout(timeout);

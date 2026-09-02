@@ -9,6 +9,8 @@ const FROM = envValue('FROM_EMAIL', 'reports@valuatum.com');
 const ADMIN = envValue('ADMIN_EMAIL', 'contact26@valuatum.com');
 const SITE = envValue('SITE_URL', 'https://valuatum.com');
 const AWS_REGION = envValue('AWS_REGION', 'eu-west-1');
+const STAGE = envValue('STAGE', envValue('VERCEL_ENV', 'local'));
+const SUPPORT = 'contact26@valuatum.com';
 
 let sesClient;
 function ses() {
@@ -68,26 +70,85 @@ async function sendEmail(message, label) {
   return response;
 }
 
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// ── Shared customer-facing layout ────────────────────────────────────────────
+// Every email a customer receives is the same card: dark Valuatum header, white
+// body, grey footer with the support address and the disclaimer. Templates
+// below only supply the body. `footerNote` is the licensing line shown on
+// report deliveries; the confirmation and failure emails leave it out.
+function customerLayout({ body, footerNote }) {
+  const note = footerNote
+    ? `<p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">${footerNote}</p>`
+    : '';
+  return `<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
+        <tr><td style="background:#1B3028;border-radius:12px 12px 0 0;padding:24px 32px;">
+          <p style="color:#6DBFA0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;">Valuatum</p>
+          <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
+        </td></tr>
+        <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
+          ${body}
+          <div style="border-top:1px solid #E2E9E5;padding-top:20px;margin-top:24px;">
+            ${note}
+            <p style="font-size:11px;color:#8A9590;line-height:1.65;margin:0;">
+              Questions? <a href="mailto:${SUPPORT}" style="color:#3D9E72;text-decoration:none;">${SUPPORT}</a>
+              &nbsp;&middot;&nbsp; <em>AI-generated research. Not investment advice.</em>
+            </p>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+const LICENSE_NOTE = 'This report is licensed for your personal research and reference use.';
+
+function heading(text) {
+  return `<h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">${text}</h1>`;
+}
+
+function primaryButton(href, label) {
+  return `<a href="${href}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
+            ${label} &rarr;
+          </a>`;
+}
+
+function secondaryLink(href, label) {
+  return `<p style="margin:0 0 12px;"><a href="${href}" style="color:#3D9E72;text-decoration:none;font-size:13px;">${label} &rarr;</a></p>`;
+}
+
+function infoBox(html) {
+  return `<div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
+            <p style="font-size:13px;color:#8A9590;margin:0;line-height:1.6;">${html}</p>
+          </div>`;
+}
+
 // ── Existing report: deliver PDF link ────────────────────────────────────────
 // `report.revisionsOnly`: the buyer already had the report for free and paid
 // for revisions on it, so the order page is the thing delivered here and the
 // PDF link is a courtesy.
 async function sendReportEmail(toEmail, report) {
   const revisionsOnly = Boolean(report.revisionsOnly && report.orderUrl);
-  const orderLink = report.orderUrl && !revisionsOnly
-    ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Request revision &rarr;</a></p>`
-    : '';
   const count = Number(report.revisionsAllowed) || 0;
-  const heading = revisionsOnly ? 'Your revisions are ready to use.' : 'Your report is ready.';
   const primary = revisionsOnly
-    ? `<a href="${report.orderUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
-            Request a revision &rarr;
-          </a>
-          <p style="margin:0 0 28px;"><a href="${report.pdfUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Download the PDF &rarr;</a></p>`
-    : `<a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
-            Download PDF report &rarr;
-          </a>
-          ${orderLink}`;
+    ? `${primaryButton(report.orderUrl, 'Request a revision')}
+          ${secondaryLink(report.pdfUrl, 'Download the PDF')}`
+    : `${primaryButton(report.pdfUrl, 'Download PDF report')}
+          ${report.orderUrl ? secondaryLink(report.orderUrl, 'Request revision') : ''}`;
   const lead = revisionsOnly
     ? `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker} &middot; ${count} revision ${count === 1 ? 'request' : 'requests'} included</p>`
     : `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>`;
@@ -98,81 +159,32 @@ async function sendReportEmail(toEmail, report) {
     subject: revisionsOnly
       ? `Your report revisions — ${report.ticker}`
       : `Your Valuatum AI Equity Report — ${report.ticker}`,
-    html: `<!DOCTYPE html>
-<html>
-<body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
-        <tr><td style="background:#1B3028;border-radius:12px 12px 0 0;padding:24px 32px;">
-          <p style="color:#6DBFA0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;">Valuatum</p>
-          <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
-        </td></tr>
-        <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
-          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">${heading}</h1>
+    html: customerLayout({
+      footerNote: LICENSE_NOTE,
+      body: `
+          ${heading(revisionsOnly ? 'Your revisions are ready to use.' : 'Your report is ready.')}
           ${lead}
           <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Generated ${report.reportDate}</p>
-          ${primary}
-          <div style="border-top:1px solid #E2E9E5;padding-top:20px;">
-            <p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">
-              This report is licensed for your personal research and reference use.
-            </p>
-            <p style="font-size:11px;color:#8A9590;line-height:1.65;margin:0;">
-              Questions? <a href="mailto:contact26@valuatum.com" style="color:#3D9E72;text-decoration:none;">contact26@valuatum.com</a>
-              &nbsp;&middot;&nbsp; <em>AI-generated research. Not investment advice.</em>
-            </p>
-          </div>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`,
+          ${primary}`,
+    }),
   }, 'report email');
 }
 
 // ── "+ Revisions" order: a requested forecast revision was delivered ────────
 async function sendReportRevisedEmail(toEmail, report) {
-  const orderLink = report.orderUrl
-    ? `<p style="margin:16px 0 0;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">View revision summary or request another &rarr;</a></p>`
-    : '';
   await sendEmail({
     from: FROM,
     to: toEmail,
     subject: `Your report has been updated — ${report.ticker}`,
-    html: `<!DOCTYPE html>
-<html>
-<body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
-        <tr><td style="background:#1B3028;border-radius:12px 12px 0 0;padding:24px 32px;">
-          <p style="color:#6DBFA0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;">Valuatum</p>
-          <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
-        </td></tr>
-        <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
-          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">Your report has been updated.</h1>
+    html: customerLayout({
+      footerNote: LICENSE_NOTE,
+      body: `
+          ${heading('Your report has been updated.')}
           <p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>
           <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Revised report, generated ${report.reportDate}</p>
-          <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:12px;">
-            Download the updated PDF &rarr;
-          </a>
-          ${orderLink}
-          <div style="border-top:1px solid #E2E9E5;padding-top:20px;margin-top:24px;">
-            <p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">
-              This report is licensed for your personal research and reference use.
-            </p>
-            <p style="font-size:11px;color:#8A9590;line-height:1.65;margin:0;">
-              Questions? <a href="mailto:contact26@valuatum.com" style="color:#3D9E72;text-decoration:none;">contact26@valuatum.com</a>
-              &nbsp;&middot;&nbsp; <em>AI-generated research. Not investment advice.</em>
-            </p>
-          </div>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`,
+          ${primaryButton(report.pdfUrl, 'Download the updated PDF')}
+          ${report.orderUrl ? secondaryLink(report.orderUrl, 'View revision summary or request another') : ''}`,
+    }),
   }, 'report revised email');
 }
 
@@ -181,53 +193,111 @@ async function sendFreshConfirmEmail(toEmail, meta) {
   const company = meta?.company || 'your company';
   const ticker = meta?.ticker ? ` (${meta.ticker})` : '';
   const orderLinkBox = meta?.orderUrl
-    ? `<div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
-         <p style="font-size:13px;color:#8A9590;margin:0;">
-           This order includes report revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the report.
-         </p>
-       </div>`
+    ? infoBox(`This order includes report revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the report.`)
     : '';
 
   await sendEmail({
     from: FROM,
     to: toEmail,
     subject: `Fresh report order confirmed — ${company}`,
-    html: `<!DOCTYPE html>
-<html>
-<body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
-        <tr><td style="background:#1B3028;border-radius:12px 12px 0 0;padding:24px 32px;">
-          <p style="color:#6DBFA0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;">Valuatum</p>
-          <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
-        </td></tr>
-        <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
-          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;">Order confirmed.</h1>
+    html: customerLayout({
+      body: `
+          ${heading('Order confirmed.')}
           <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">Fresh AI Equity Report for ${company}${ticker}</p>
           <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
             We've received your order and are generating a fresh report using the latest available financial data.
             Your PDF will arrive at this address within <strong>about 30 minutes</strong>.
           </p>
           ${orderLinkBox}
-          <div style="background:#f4f7f5;border-radius:8px;padding:14px 16px;margin-bottom:24px;">
-            <p style="font-size:13px;color:#8A9590;margin:0;">
-              While you wait, browse our
-              <a href="${SITE}/reports.html" style="color:#3D9E72;text-decoration:none;">free sample reports</a>
-              to see the format and quality of our analysis.
-            </p>
-          </div>
-          <p style="font-size:11px;color:#8A9590;margin:0;">
-            Questions? <a href="mailto:contact26@valuatum.com" style="color:#3D9E72;text-decoration:none;">contact26@valuatum.com</a>
-            &nbsp;&middot;&nbsp; <em>AI-generated research. Not investment advice.</em>
-          </p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`,
+          ${infoBox(`While you wait, browse our <a href="${SITE}/reports.html" style="color:#3D9E72;text-decoration:none;">free sample reports</a> to see the format and quality of our analysis.`)}`,
+    }),
   }, 'fresh confirmation email');
+}
+
+// ── Fresh report: generation failed — tell the customer ─────────────────────
+// Sent by the reconciler alongside the admin notification when an order lands
+// in FAILED. The customer paid (or spent a membership generation) and would
+// otherwise wait for a PDF that never comes.
+async function sendGenerationFailedEmail(toEmail, meta) {
+  const company = escapeHtml(meta?.company || 'your company');
+  const ticker = meta?.ticker ? ` &middot; ${escapeHtml(meta.ticker)}` : '';
+  const orderLink = meta?.orderUrl ? secondaryLink(meta.orderUrl, 'View your order') : '';
+
+  await sendEmail({
+    from: FROM,
+    to: toEmail,
+    subject: `We couldn't finish your report — ${meta?.ticker || company}`,
+    html: customerLayout({
+      body: `
+          ${heading("We couldn't finish your report.")}
+          <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">AI Equity Report for ${company}${ticker}</p>
+          <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
+            Something went wrong while generating this report, and it did not complete.
+            Our team has been notified and is looking into it. We will either deliver the report
+            to this address once the issue is resolved or get in touch with you about a refund.
+          </p>
+          ${infoBox('You do not need to do anything. If you would like to reach us sooner, reply to this email.')}
+          ${orderLink}`,
+    }),
+  }, 'generation failed email');
+}
+
+// ── "+ Revisions" order: a requested revision could not be completed ────────
+// The original report is untouched and the revision was not deducted, so the
+// email says so and points back at the order page to try again.
+async function sendRevisionFailedEmail(toEmail, meta) {
+  const company = escapeHtml(meta?.company || 'your company');
+  const ticker = meta?.ticker ? ` &middot; ${escapeHtml(meta.ticker)}` : '';
+
+  await sendEmail({
+    from: FROM,
+    to: toEmail,
+    subject: `Your revision couldn't be completed — ${meta?.ticker || company}`,
+    html: customerLayout({
+      body: `
+          ${heading("Your revision couldn't be completed.")}
+          <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">${company}${ticker}</p>
+          <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
+            We tried to apply your requested revision, but the update did not complete.
+            Your current report is unchanged and the revision has not been counted against
+            your allowance. Our team has been notified.
+          </p>
+          ${infoBox('You can request the revision again from your order page. If it keeps failing, reply to this email and we will look into it.')}
+          ${meta?.orderUrl ? primaryButton(meta.orderUrl, 'Open your order') : ''}`,
+    }),
+  }, 'revision failed email');
+}
+
+// ── Analyst analysis purchase: the buyer's receipt with the open link ───────
+// Sent from the members webhook the moment Stripe says the analysis is paid.
+// The link goes to the site, which re-verifies the purchase and opens the PDF.
+async function sendAnalysisPurchaseEmail(toEmail, meta) {
+  const company = escapeHtml(meta?.company || 'the company');
+  const analyst = meta?.analystName ? escapeHtml(meta.analystName) : '';
+  const lead = analyst
+    ? `${company} &middot; Analyst report by ${analyst}`
+    : `${company} &middot; Analyst report`;
+  const forked = Boolean(meta?.fork);
+
+  await sendEmail({
+    from: FROM,
+    to: toEmail,
+    subject: forked
+      ? `Your report on ${meta?.company || 'the company'} is ready to build on`
+      : `Your analyst report on ${meta?.company || 'the company'}`,
+    html: customerLayout({
+      footerNote: LICENSE_NOTE,
+      body: `
+          ${heading(forked ? 'Your purchase is complete.' : 'Your report is ready.')}
+          <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">${lead}</p>
+          <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 24px;">
+            ${forked
+              ? 'Thank you for your purchase. Your own copy of this report is being prepared for revision, and the button below takes you to it.'
+              : 'Thank you for your purchase. This is an equity research report written by an independent analyst on the Valuatum platform, and the button below opens the PDF.'}
+          </p>
+          ${primaryButton(meta.link, forked ? 'Open your report' : 'Open the report')}`,
+    }),
+  }, 'analysis purchase email');
 }
 
 // ── Fresh report: FAILURE fallback — ask admin to generate manually ─────────
@@ -241,12 +311,14 @@ async function sendAdminNotification(meta, customerEmail) {
     html: `
       <p><strong>Automated generation failed — please generate this report manually and send it to the customer.</strong></p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
-        <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
-        <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
-        <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
-        <tr><td style="color:#666;">Customer email</td><td><a href="mailto:${customerEmail}">${customerEmail || '—'}</a></td></tr>
-        ${meta?.error ? `<tr><td style="color:#666;">Error</td><td>${meta.error}</td></tr>` : ''}
-        ${meta?.purpose ? `<tr><td style="color:#666;">Purpose</td><td>${meta.purpose}</td></tr>` : ''}
+        <tr><td style="color:#666;">Company</td><td><strong>${escapeHtml(meta?.company || '—')}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker</td><td>${escapeHtml(meta?.ticker || '—')}</td></tr>
+        <tr><td style="color:#666;">Exchange</td><td>${escapeHtml(meta?.exchange || '—')}</td></tr>
+        <tr><td style="color:#666;">Customer email</td><td><a href="mailto:${escapeHtml(customerEmail)}">${escapeHtml(customerEmail || '—')}</a></td></tr>
+        ${meta?.orderId ? `<tr><td style="color:#666;">Order</td><td>${escapeHtml(meta.orderId)}</td></tr>` : ''}
+        ${meta?.error ? `<tr><td style="color:#666;">Error</td><td>${escapeHtml(meta.error)}</td></tr>` : ''}
+        ${meta?.purpose ? `<tr><td style="color:#666;">Purpose</td><td>${escapeHtml(meta.purpose)}</td></tr>` : ''}
+        ${meta?.customerNotified === false ? '<tr><td style="color:#666;">Customer</td><td><strong>Not emailed</strong> — the failure email could not be sent, so they do not know yet.</td></tr>' : ''}
       </table>
     `,
   }, 'admin failure notification');
@@ -262,23 +334,14 @@ async function sendAdminDeliveryNotice(meta) {
     html: `
       <p><strong>Fresh report generated and emailed to the customer.</strong> No action needed.</p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
-        <tr><td style="color:#666;">Company</td><td><strong>${meta?.company || '—'}</strong></td></tr>
-        <tr><td style="color:#666;">Ticker</td><td>${meta?.ticker || '—'}</td></tr>
-        <tr><td style="color:#666;">Exchange</td><td>${meta?.exchange || '—'}</td></tr>
-        <tr><td style="color:#666;">Customer</td><td><a href="mailto:${meta?.customerEmail || ''}">${meta?.customerEmail || '—'}</a></td></tr>
-        <tr><td style="color:#666;">PDF</td><td><a href="${meta?.pdfUrl || '#'}">${meta?.pdfUrl || '—'}</a></td></tr>
+        <tr><td style="color:#666;">Company</td><td><strong>${escapeHtml(meta?.company || '—')}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker</td><td>${escapeHtml(meta?.ticker || '—')}</td></tr>
+        <tr><td style="color:#666;">Exchange</td><td>${escapeHtml(meta?.exchange || '—')}</td></tr>
+        <tr><td style="color:#666;">Customer</td><td><a href="mailto:${escapeHtml(meta?.customerEmail || '')}">${escapeHtml(meta?.customerEmail || '—')}</a></td></tr>
+        <tr><td style="color:#666;">PDF</td><td><a href="${escapeHtml(meta?.pdfUrl || '#')}">${escapeHtml(meta?.pdfUrl || '—')}</a></td></tr>
       </table>
     `,
   }, 'admin delivery notice');
-}
-
-function escapeHtml(value) {
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 }
 
 async function sendCoverageRequest(meta) {
@@ -295,7 +358,7 @@ async function sendCoverageRequest(meta) {
   const rows = companies
     .map((entry, i) => `<tr><td style="color:#666;">${i + 1}</td><td><strong>${escapeHtml(entry)}</strong></td></tr>`)
     .join('');
-  const heading = companies.length === 1
+  const headline = companies.length === 1
     ? 'A new company coverage request was submitted on AI Equity Reports.'
     : `A coverage request for ${companies.length} companies was submitted on AI Equity Reports.`;
 
@@ -306,7 +369,7 @@ async function sendCoverageRequest(meta) {
       ? `Coverage request: ${String(companies[0] || 'unknown').slice(0, 120)}`
       : `Coverage request: ${companies.length} companies`,
     html: `
-      <p><strong>${heading}</strong></p>
+      <p><strong>${headline}</strong></p>
       <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
         ${rows}
       </table>
@@ -356,15 +419,16 @@ async function sendInstitutionRequest(meta) {
 
 // ── Generic operational alert to the admin ──────────────────────────────────
 // Used for failures that need eyes but have no dedicated template (e.g. the
-// webhook's purchase-sync failing after retries).
+// webhook's purchase-sync failing after retries). The stage is in the subject
+// so a test-stage alert is never mistaken for a production one.
 async function sendAdminAlert(subject, lines) {
   const items = (Array.isArray(lines) ? lines : [lines])
-    .map(line => `<li style="margin-bottom:4px;">${escapeHtml(line)}</li>`)
+    .map(line => `<li style="margin-bottom:4px;white-space:pre-wrap;">${escapeHtml(line)}</li>`)
     .join('');
   await sendEmail({
     from: FROM,
     to: ADMIN,
-    subject: `[AiEquityReports alert] ${subject}`,
+    subject: `[AiEquityReports ${STAGE}] ${subject}`,
     html: `
       <p><strong>${escapeHtml(subject)}</strong></p>
       <ul style="font-family:Arial,sans-serif;font-size:14px;">${items}</ul>
@@ -372,13 +436,42 @@ async function sendAdminAlert(subject, lines) {
   }, 'admin alert');
 }
 
+// ── Unexpected error → admin email, never throws ─────────────────────────────
+// The one call every catch block makes. `where` names the code path (a route
+// key, "reconciler tick", a Vercel function); `details` is anything that helps
+// find the order or request again. A failure to send is logged and swallowed:
+// an alert must never turn a handled error into an unhandled one.
+async function reportError(where, error, details = {}) {
+  const message = error?.message || String(error || 'unknown error');
+  const lines = [
+    `Where: ${where}`,
+    `Error: ${message}`,
+    ...Object.entries(details)
+      .filter(([, value]) => value !== undefined && value !== null && value !== '')
+      .map(([key, value]) => `${key}: ${typeof value === 'string' ? value : JSON.stringify(value)}`),
+    `Time: ${new Date().toISOString()}`,
+  ];
+  if (error?.stack) lines.push(`Stack:\n${String(error.stack).split('\n').slice(0, 12).join('\n')}`);
+  try {
+    await sendAdminAlert(`${where}: ${message.slice(0, 140)}`, lines);
+    return true;
+  } catch (alertErr) {
+    console.error('admin error alert could not be sent:', alertErr.message, { where, error: message });
+    return false;
+  }
+}
+
 module.exports = {
   sendReportEmail,
   sendReportRevisedEmail,
   sendFreshConfirmEmail,
+  sendGenerationFailedEmail,
+  sendRevisionFailedEmail,
+  sendAnalysisPurchaseEmail,
   sendAdminNotification,
   sendAdminDeliveryNotice,
   sendCoverageRequest,
   sendInstitutionRequest,
   sendAdminAlert,
+  reportError,
 };
