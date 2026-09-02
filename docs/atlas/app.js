@@ -104,7 +104,10 @@ function buildStatic(){
     const b = bands[j.id];
     gBands.append(el("rect",{class:"band",id:'band-'+j.id,x:-4000,y:b.top,width:WORLD.w+8000,height:b.height}));
     gBands.append(el('line',{class:'band-line',x1:-4000,y1:b.top,x2:WORLD.w+8000,y2:b.top}));
-    const t = el('text',{class:'band-title',x:PADX,y:b.top+34},j.label);
+    // A thick accent bar beside the title marks the journey in focus, so the
+    // white band reads as "the one you are looking at" rather than a style.
+    gBands.append(el('rect',{class:'band-mark',id:'mark-'+j.id,x:PADX-24,y:b.top+14,width:9,height:48,rx:3}));
+    const t = el('text',{class:'band-title',id:'title-'+j.id,x:PADX,y:b.top+34},j.label);
     const s = el('text',{class:'band-sub',x:PADX,y:b.top+52},j.sub);
     gBands.append(t,s);
     j.columns.forEach((c,ci)=>{ if(c) gBands.append(el('text',{class:'col-label',x:PADX + ci*COLW,y:b.contentTop-12},c)); });
@@ -175,7 +178,7 @@ function centerOn(nodeId){
 function highlight(){
   for (const j of G.journeys) {
     const {nodes, edges} = pathOf(j);
-    document.getElementById('band-'+j.id).classList.toggle('focused', j.id===focusId);
+    for (const pre of ['band-','mark-','title-']) document.getElementById(pre+j.id).classList.toggle('focused', j.id===focusId);
     for (const n of j.nodes) {
       const g = document.getElementById('n-'+n.id);
       g.classList.toggle('active', nodes.has(n.id));

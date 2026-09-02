@@ -58,6 +58,9 @@ svg.graph{display:block;font-family:var(--font-body);user-select:none}
 .band{fill:var(--band)} .band.alt{fill:var(--band-alt)} .band.focused{fill:var(--band-focus)}
 .band-line{stroke:var(--line);stroke-width:1}
 .band-title{font:600 17px var(--font-head);fill:var(--ink);letter-spacing:.01em}
+.band-title.focused{fill:var(--accent-ink)}
+.band-mark{fill:var(--accent);opacity:0;transition:opacity .15s}
+.band-mark.focused{opacity:1}
 .band-sub{font:400 12px var(--font-body);fill:var(--ink-3)}
 .col-label{font:600 10.5px var(--font-head);letter-spacing:.1em;text-transform:uppercase;fill:var(--ink-3)}
 .edge{fill:none;stroke:var(--line);stroke-width:1.8;transition:stroke .2s,opacity .2s,stroke-width .2s}
