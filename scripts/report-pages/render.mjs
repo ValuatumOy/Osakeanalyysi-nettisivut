@@ -474,7 +474,7 @@ export function renderPage(d, cat, all) {
   // its own. The button ships hidden; js/script.js reveals and prices it once
   // the live pricing says the tier is on sale.
   const revisionsCta = isFree && cat?.revisable
-    ? ` <button type="button" class="btn btn-outline" data-buy-revisions="${attr(d.id)}" style="border-color:rgba(255,255,255,0.3); color:white;" hidden>Add revisions</button>`
+    ? ` <button type="button" class="btn btn-outline" data-buy-revisions="${attr(d.id)}" style="border-color:rgba(255,255,255,0.3); color:white;" hidden>Create a revision</button>`
     : '';
   const downloadCta = isFree && pdfHref
     ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>${revisionsCta}`
@@ -633,7 +633,7 @@ export function renderPage(d, cat, all) {
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; text-align:center;">
             <p style="font-size:var(--text-md); font-weight:300; color:white; margin-bottom:1rem;">Download the full ${esc(sn)} report as a formatted PDF — free.</p>
             <a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" download>Download free PDF</a>
-            ${cat?.revisable ? `<button type="button" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3); color:white; margin-left:0.75rem;" data-buy-revisions="${attr(d.id)}" hidden>Add revisions</button>` : ''}
+            ${cat?.revisable ? `<button type="button" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3); color:white; margin-left:0.75rem;" data-buy-revisions="${attr(d.id)}" hidden>Create a revision</button>` : ''}
           </div>
         </section>`);
     }
@@ -815,7 +815,7 @@ export function renderCards(companies, companyPageCatalog) {
     const price = isFree ? 'Free' : `€${Number(cat.price || 20).toFixed(0)}`;
     const primaryCta = isFree
       ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>${cat.revisable ? `
-            <button class="btn btn-outline-dark" data-buy-revisions="${attr(doc.id)}" hidden>Add revisions</button>` : ''}`
+            <button class="btn btn-outline-dark" data-buy-revisions="${attr(doc.id)}" hidden>Create a revision</button>` : ''}`
       : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
     return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>

@@ -797,7 +797,7 @@ function bindReadyReportCheckoutLink(link) {
     buttons.forEach(function (btn) {
       if (!choice.available) { btn.hidden = true; return; }
       if (btn.dataset.loading !== '1') {
-        btn.textContent = 'Add ' + choice.revisionsCount + ' revisions \u2014 ' + formatEurAmount(choice.revisionsPrice);
+        btn.textContent = 'Create a revision \u2014 ' + formatEurAmount(choice.revisionsPrice);
       }
       btn.hidden = false;
     });
