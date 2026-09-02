@@ -8,7 +8,7 @@
 // valuatum-page-mode) so check.mjs can verify a built page against the page-owner rule
 // without re-rendering it.
 import fs from 'node:fs';
-import { reportTitle } from '../seo-title.mjs';
+import { reportTitle, companyTitle } from '../seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
 import { reportDescription } from '../seo-description.mjs';
 import path from 'node:path';
@@ -23,7 +23,21 @@ const NEW_REPORT_PRICE = 50;
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = (s) => esc(s);
-export const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+// The same suffix list scripts/redescribe-report-pages.mjs strips, so a page the
+// sync rebuilds gets the description the SEO guard expects ("Wärtsilä Oyj",
+// not "Wärtsilä Oyj Abp").
+// Strips until nothing is left to strip ("Wärtsilä Oyj Abp" → "Wärtsilä"):
+// the guard's script shortens whatever name it reads off the page once more,
+// so the page has to carry the name that no further strip can change.
+const SUFFIX = /,?\s+(Inc\.?|Oyj|Abp|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|A\/S|N\.V\.|S\.A\.|Group|Holdings?)\.?$/i;
+export const shortName = (n) => {
+  let name = String(n).trim();
+  for (;;) {
+    const next = name.replace(SUFFIX, '').trim();
+    if (!next || next === name) return name;
+    name = next;
+  }
+};
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
 const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
@@ -462,9 +476,16 @@ export function renderPage(d, cat, all) {
   // the title and the card art. The plain <meta name="description"> is deliberately NOT
   // changed here -- that is the Google snippet, and whether the rating belongs in it is the
   // wider publication question, not a share-card one.
-  const shareDesc = SHOW_RATINGS_IN_METADATA ? desc : shareDescription(d);
+  // Same switch scripts/redescribe-report-pages.mjs applies: a page with no
+  // report has no rating to hide, so its share card carries the snippet.
+  const shareDesc = (SHOW_RATINGS_IN_METADATA || !hasReport) ? desc : shareDescription(d);
   const sn = shortName(d.companyName);
-  const title = reportTitle(sn, d.ticker, d.headline || {});
+  // A coverage page (no report any more, or none yet) gets the company rule,
+  // the same one the 1,150+ generated overview pages and the title guard use.
+  // The report rule promises "& Price Target", which a page without a report
+  // cannot keep — and the SEO guard failed every PR after the sync rebuilt
+  // Fortum as a coverage page under the report rule.
+  const title = hasReport ? reportTitle(sn, d.ticker, d.headline || {}) : companyTitle(sn, d.ticker);
   const updated = d.reportDate;
   // A rated page gets the share card built for it by scripts/build-og-images.mjs; an
   // unrated overview page has nothing specific to put on one and keeps the default.
