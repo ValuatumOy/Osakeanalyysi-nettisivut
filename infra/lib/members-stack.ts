@@ -206,6 +206,8 @@ export class MembersStack extends Stack {
       // The order page's revision workspace, for a member's own run.
       [apigwv2.HttpMethod.GET, '/generations/{genId}/order'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/revisions'],
+      [apigwv2.HttpMethod.POST, '/generations/{genId}/edits'],
+      [apigwv2.HttpMethod.GET, '/generations/{genId}/preview'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/submit'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/price'],
       [apigwv2.HttpMethod.POST, '/generations/{genId}/prompts-public'],

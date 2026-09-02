@@ -8,6 +8,8 @@ const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
+const { validateEditRequest, EditValidationError } = require('../report-edits');
+const editing = require('../order-editing');
 const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const bounty = require('../members/bounty');
@@ -1001,8 +1003,13 @@ async function getGenerationOrder(event) {
     revisionsUsed: order.revisionsUsed || 0,
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
-    // Publishing freezes the PDF, so the order page must stop offering revisions.
+    // Publishing freezes the PDF, so the order page must stop offering
+    // revisions — and hand edits, which would change it just the same.
     publication: publication.status,
+    editable: publication.status !== 'published' && editing.editableNow(order),
+    currentVersion: editing.currentVersion(order),
+    activity: editing.activityOf(order),
+    editsUsed: order.editsUsed || 0,
   };
 
   // The order page reads `pdfUrl` — a permanent link, not a presigned one.
@@ -1011,10 +1018,7 @@ async function getGenerationOrder(event) {
   }
 
   payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
-    version: entry.version,
-    comments: entry.comments || '',
-    completedAt: entry.completedAt,
-    changes: entry.changes || null,
+    ...editing.historyEntryPayload(entry),
     pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
   }));
   if (payload.revisionHistory.length && order.originalPdfFileName) {
@@ -1070,6 +1074,75 @@ async function postGenerationRevision(event) {
   return json(200, { ok: true, status: claimed.status });
 }
 
+// POST /generations/{genId}/edits — the member's hand edits to the report
+// text, as the next version. Free and unlimited: no round is consumed. The
+// byline is the member's own name; the request cannot say otherwise.
+async function postGenerationEdits(event) {
+  const { deny, genId, order, profile, publication } = await ownedOrder(event);
+  if (deny) return deny;
+
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  let request;
+  try {
+    request = validateEditRequest(body);
+  } catch (err) {
+    if (err instanceof EditValidationError) return json(400, { error: err.message });
+    throw err;
+  }
+
+  if (!editing.editableNow(order)) {
+    return json(409, {
+      error: order.status === ordersStore.STATUS.DELIVERED
+        ? 'This report cannot be edited.'
+        : 'This generation is busy right now — wait for it to finish, then try again.',
+      status: order.status,
+    });
+  }
+
+  const claimed = await ordersStore.claimEdit(genId, {
+    edits: request.edits,
+    originals: request.originals,
+    editedBy: String(profile.name || profile.email || '').slice(0, 120),
+    fromVersion: editing.currentVersion(order),
+  });
+  if (!claimed) {
+    return json(409, { error: 'This generation cannot take an edit right now', status: order.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-edited', { genId, version: editing.currentVersion(order) + 1 });
+  return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(order) + 1 });
+}
+
+// GET /generations/{genId}/preview — the engine's rendered HTML of the
+// current version, for the text editor on the order page.
+async function getGenerationPreview(event) {
+  const { deny, order } = await ownedOrder(event);
+  if (deny) return deny;
+
+  const result = await editing.loadPreviewHtml(order);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, max-age=300',
+      'x-report-version': String(editing.currentVersion(order)),
+    },
+    body: result.html,
+  };
+}
+
 // GET /generations — every run this member has started, newest first. Without
 // it the order page was reachable only from the delivery email.
 async function listGenerations(event) {
@@ -1123,12 +1196,13 @@ async function postGenerationSubmit(event) {
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
-  // A fork with no revision on it is somebody else's analysis with a new name on
-  // the cover. The whole point of deriving is what you add, so at least one
-  // revision has to have landed before it can be published.
-  if (order.forkedFrom && !(order.revisionsUsed > 0)) {
+  // A fork with nothing changed on it is somebody else's analysis with a new
+  // name on the cover. The whole point of deriving is what you add, so at
+  // least one revision or hand edit has to have landed before it can be
+  // published.
+  if (order.forkedFrom && !(order.revisionsUsed > 0 || order.editsUsed > 0)) {
     return json(409, {
-      error: 'Revise this analysis at least once before publishing it — a fork with no revision is the analysis you derived it from',
+      error: 'Revise or edit this analysis at least once before publishing it — a fork with no changes is the analysis you derived it from',
     });
   }
 
@@ -2703,6 +2777,8 @@ const AUTHED_ROUTES = {
   'GET /generations/{genId}': getGeneration,
   'GET /generations/{genId}/order': getGenerationOrder,
   'POST /generations/{genId}/revisions': postGenerationRevision,
+  'POST /generations/{genId}/edits': postGenerationEdits,
+  'GET /generations/{genId}/preview': getGenerationPreview,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
   'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,

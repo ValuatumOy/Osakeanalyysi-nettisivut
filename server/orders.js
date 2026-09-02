@@ -98,6 +98,11 @@ function create(input, statePath = STATE_PATH) {
     currency: input.currency || null,
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,
+    // The engine job behind version 1. `jobId` moves on with every delivered
+    // revision or edit, so this is the only place the original's job survives
+    // (needed to edit or revise the original again later). Stamped here for
+    // an order that starts delivered, by deliver() for a fresh one.
+    originalJobId: input.jobId || null,
     importStatus: null, // SUCCESS | SKIPPED | FAILED (Task E FMP import)
     pdfFileName: input.pdfFileName || null,
     // Set once, on first delivery, and never touched again — pdfFileName itself
@@ -119,6 +124,14 @@ function create(input, statePath = STATE_PATH) {
     // appended here — see originalPdfFileName above instead.
     revisionHistory: [],
     revisionError: null,
+    // A hand edit in flight, `{ edits, originals, editedBy, fromVersion }`:
+    // pendingEdit until the worker has submitted it to the engine, activeEdit
+    // from then until delivery labels the resulting revisionHistory entry.
+    // Edits are free and unlimited, so they have no allowance; editsUsed only
+    // counts them (a forked analysis must add something before it publishes).
+    pendingEdit: null,
+    activeEdit: null,
+    editsUsed: 0,
     error: null,
     attempts: 0, // transient-error retries (network); terminal failures set FAILED
     revisionAttempts: 0, // same, but scoped to the current revision request only
@@ -158,6 +171,32 @@ function claimRevision(id, comment, statePath = STATE_PATH) {
   return orders[idx];
 }
 
+// Claim the right to apply hand edits: only from DELIVERED. Edits are free
+// and unlimited, so unlike claimRevision there is no allowance to check —
+// only the status, so two tabs cannot start two edit jobs on the same base.
+// Returns null when the claim fails; the caller turns that into a 409.
+function claimEdit(id, edit, statePath = STATE_PATH) {
+  const orders = readAll(statePath);
+  const idx = orders.findIndex(order => order.id === id);
+  if (idx === -1) return null;
+
+  const current = orders[idx];
+  if (current.status !== STATUS.DELIVERED) return null;
+
+  orders[idx] = {
+    ...current,
+    status: STATUS.REVISING,
+    pendingEdit: edit,
+    pendingRevisionComment: null,
+    revisionError: null,
+    revisionAttempts: 0,
+    polls: 0,
+    updatedAt: nowIso(),
+  };
+  writeAll(orders, statePath);
+  return orders[idx];
+}
+
 // Patch an order in place and bump updatedAt. `id` and `createdAt` are protected.
 function update(id, patch = {}, statePath = STATE_PATH) {
   const orders = readAll(statePath);
@@ -185,5 +224,6 @@ module.exports = {
   listPending,
   update,
   claimRevision,
+  claimEdit,
   STATE_PATH,
 };

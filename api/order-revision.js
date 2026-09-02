@@ -9,7 +9,7 @@
 // fails at deploy with no build error.
 
 const Stripe = require('stripe');
-const { submitOrderRevision } = require('../server/catalog-client');
+const { submitOrderRevision, submitOrderEdit } = require('../server/catalog-client');
 const { CheckoutError, createExtraRoundsCheckout, isCompletedCheckout, orderPageUrl } = require('../server/checkout');
 
 async function buyRounds(req, res, stripe, sessionId, session) {
@@ -32,8 +32,12 @@ module.exports = async (req, res) => {
   if (!sessionId) return res.status(400).json({ error: 'Missing session_id' });
 
   const wantsRounds = Boolean(req.body?.buyRounds);
+  // Hand edits to the report text travel through this function too (the
+  // twelve-function ceiling again): `{ edits, originals?, editedBy? }`. The
+  // backend validates the edits; only the session is verified here.
+  const edits = req.body?.edits && typeof req.body.edits === 'object' ? req.body.edits : null;
   const comments = String(req.body?.comments || '').trim();
-  if (!wantsRounds && !comments) return res.status(400).json({ error: 'comments is required' });
+  if (!wantsRounds && !edits && !comments) return res.status(400).json({ error: 'comments is required' });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   res.setHeader('cache-control', 'no-store');
@@ -44,6 +48,14 @@ module.exports = async (req, res) => {
       return res.status(402).json({ error: 'Payment not completed' });
     }
     if (wantsRounds) return await buyRounds(req, res, stripe, sessionId, session);
+    if (edits) {
+      const result = await submitOrderEdit(sessionId, {
+        edits,
+        originals: req.body.originals && typeof req.body.originals === 'object' ? req.body.originals : undefined,
+        editedBy: typeof req.body.editedBy === 'string' ? req.body.editedBy : undefined,
+      });
+      return res.status(200).json(result);
+    }
 
     const result = await submitOrderRevision(sessionId, comments);
     res.status(200).json(result);

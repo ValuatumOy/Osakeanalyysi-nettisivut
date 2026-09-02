@@ -17,6 +17,8 @@ const { searchCompanies } = require('../search');
 const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
 const { sendAdminAlert } = require('../email');
+const { validateEditRequest, EditValidationError } = require('../report-edits');
+const editing = require('../order-editing');
 
 const STAGE = process.env.STAGE || 'prod';
 
@@ -326,6 +328,13 @@ async function getOrder(event) {
     revisionsUsed: order.revisionsUsed || 0,
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
+    // Text editing: whether the current version can be edited by hand, which
+    // version number that is, and — while REVISING — whether the wait is an
+    // edit (seconds) or an AI revision (tens of minutes).
+    editable: editing.editableNow(order),
+    currentVersion: editing.currentVersion(order),
+    activity: editing.activityOf(order),
+    editsUsed: order.editsUsed || 0,
   };
 
   // Only DELIVERED gets a PDF link — while REVISING, the order page shows
@@ -352,10 +361,7 @@ async function getOrder(event) {
   // specific PDF, newest first — the order page renders these under "revision
   // history".
   payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
-    version: entry.version,
-    comments: entry.comments || '',
-    completedAt: entry.completedAt,
-    changes: entry.changes || null,
+    ...editing.historyEntryPayload(entry),
     pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
   }));
 
@@ -415,6 +421,84 @@ async function postOrderRevision(event) {
   }
 
   return json(200, { ok: true, status: claimed.status });
+}
+
+// POST /api/orders/{id}/edits — the customer's hand edits to the report text.
+// Body `{ edits: { pointer: text }, originals?: { pointer: text }, editedBy? }`.
+// Claims the order (DELIVERED -> REVISING, no allowance: edits are free and
+// unlimited) and wakes the worker, which submits the edits to the engine's
+// edit endpoint — a re-render in seconds with no AI pass.
+async function postOrderEdits(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+
+  let request;
+  try {
+    request = validateEditRequest(body);
+  } catch (err) {
+    if (err instanceof EditValidationError) return json(400, { error: err.message });
+    throw err;
+  }
+
+  const existing = await ordersStore.get(id);
+  if (!existing) return json(404, { error: 'Order not found' });
+  if (!editing.editableNow(existing)) {
+    return json(409, {
+      error: existing.status === ordersStore.STATUS.DELIVERED
+        ? 'This report cannot be edited.'
+        : 'This order is busy right now — wait for it to finish, then try again.',
+      status: existing.status,
+    });
+  }
+
+  const claimed = await ordersStore.claimEdit(id, {
+    edits: request.edits,
+    originals: request.originals,
+    editedBy: request.editedBy,
+    fromVersion: editing.currentVersion(existing),
+  });
+  if (!claimed) {
+    return json(409, { error: 'This order cannot take an edit right now', status: existing.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push invoke failed (sweep will catch it):', err.message);
+  }
+
+  return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(existing) + 1 });
+}
+
+// GET /api/orders/{id}/preview — the engine's rendered HTML of the current
+// version, which the order page's text editor shows in a sandboxed frame.
+async function getOrderPreview(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+
+  const result = await editing.loadPreviewHtml(order);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, max-age=300',
+      'x-report-version': String(editing.currentVersion(order)),
+    },
+    body: result.html,
+  };
 }
 
 // ── admin ──────────────────────────────────────────────────────────
@@ -579,6 +663,8 @@ const PUBLIC_ROUTES = {
   'POST /api/report-download': postReportDownload,
   'GET /api/orders/{id}': getOrder,
   'POST /api/orders/{id}/revisions': postOrderRevision,
+  'POST /api/orders/{id}/edits': postOrderEdits,
+  'GET /api/orders/{id}/preview': getOrderPreview,
 };
 
 const ADMIN_ROUTES = {
