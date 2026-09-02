@@ -430,6 +430,13 @@
       order: '<span class="badge badge-blue">Fresh order</span>',
       generation: '<span class="badge badge-yellow">Member generation</span>',
     };
+    // A revised copy is labelled by what produced it, not by how the original
+    // came to exist: the AI's revision from the customer's comments, or the
+    // customer's own hand edit of the text.
+    const KIND_BADGE = {
+      revision: '<span class="badge badge-blue">Revision</span>',
+      edit: '<span class="badge badge-yellow">Hand edit</span>',
+    };
 
     // When the engine finished this file, from its order. A hand upload has
     // no order; its upload time is shown instead unless it is a bare midnight
@@ -460,7 +467,7 @@
           <td class="company">${title}<br>${file}${toggle || ''}</td>
           <td>${esc(report.ticker || '—')}</td>
           <td>${esc(report.reportDate || '—')}${generatedAt(report)}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${(rev && KIND_BADGE[report.kind]) || ORIGIN_BADGE[report.origin] || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
