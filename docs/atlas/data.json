@@ -303,8 +303,11 @@
      "row": 0,
      "label": "Published, no sales yet",
      "sees": "It sits on the company page building their public track record, and members can read it.",
-     "behind": "The next monthly generation is unlocked either way — publishing is what counts, not selling. Each member who reads it pays them €0.50.",
-     "gap": "The workspace still tells analysts member reads earn them nothing, which is no longer true."
+     "behind": "The next monthly generation is unlocked either way — publishing is what counts, not selling. Each paying member who reads it earns them a flat €0.50 (held 14 days like a sale); reads by other analysts and by free readers earn nothing.",
+     "dev": [
+      "server/members/bounty.js:22-30 — the per-read rate",
+      "server/lambda/members.js:1845-1852 — only a subscriber's read pays"
+     ]
     },
     {
      "id": "a_sold",
@@ -341,8 +344,8 @@
      "row": 2,
      "label": "Income panel",
      "img": "analyst-income",
-     "sees": "Four figures: paid to you, ready to invoice, held for 14 days, and what your reports sold for.",
-     "behind": "Half of every sale is theirs, held 14 days to cover chargebacks and moderation, after which they invoice Valuatum. There is no automatic payout.",
+     "sees": "Four figures: paid to you, ready to invoice, held for 14 days, and what your reports sold for — plus a line and a row per subscriber read. Under them, how the money works.",
+     "behind": "Half of every sale is theirs, and a flat €0.50 per read by a paying member, both held 14 days to cover chargebacks and moderation, after which they invoice Valuatum. There is no automatic payout.",
      "gap": "Analysts invoice by hand — no Stripe Connect, no payroll integration.",
      "dev": [
       "members.html:268-295"
