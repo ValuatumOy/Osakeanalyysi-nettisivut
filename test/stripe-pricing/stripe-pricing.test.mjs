@@ -136,3 +136,18 @@ test('getPublicPricing lists the products once and exposes the free tier', async
     else process.env.FORECAST_REVISIONS_ENABLED = saved;
   }
 });
+
+test('under a test key the base kinds resolve by metadata.kind instead of the live product id', async () => {
+  const otherMode = (id) => new Error(`No such product: '${id}'; a similar object exists in live mode, but a test mode key was used to make this request.`);
+  const stripe = {
+    products: {
+      retrieve: async (id) => { throw otherMode(id); },
+      list: async () => ({ data: [
+        { id: 'prod_t', metadata: { kind: 'ready' }, default_price: { id: 'price_t', unit_amount: 2000, currency: 'eur' } },
+      ] }),
+    },
+    prices: { retrieve: async () => { throw new Error('should not be reached'); } },
+  };
+  const pricing = await getStripePricing(stripe, 'ready', { bypassCache: true });
+  assert.equal(pricing.priceId, 'price_t');
+});
