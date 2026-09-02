@@ -47,6 +47,17 @@ const handler = async (req, res) => {
     const isFresh = session.metadata?.isFresh === 'true';
     const reportId = session.metadata?.reportId;
 
+    // The Stripe account is shared with other Valuatum sites and with the
+    // members API, and this endpoint receives every checkout in it. Only a
+    // session this site created carries a reportId or the fresh flag; the
+    // rest are someone else's sale and not an error.
+    if (!isFresh && !reportId) {
+      console.log('Checkout completed for another site or API, ignored', {
+        sessionId: session.id, reportType: session.metadata?.reportType || null,
+      });
+      return res.json({ received: true, ignored: true });
+    }
+
     console.log('Checkout completed webhook received', {
       sessionId: session.id,
       isFresh,
