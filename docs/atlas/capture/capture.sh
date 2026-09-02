@@ -108,7 +108,7 @@ fi
 if [ "$WHAT" = all ] || [ "$WHAT" = email ]; then
   echo "emails (rendered from server/email.js templates)…"
   node "$HERE/render-emails.mjs" "$TMP"
-  for n in email-report email-confirm email-revised email-freerev; do
+  for n in email-report email-confirm email-revised email-freerev email-failed email-revfail; do
     [ -f "$TMP/$n.html" ] && shot "$n" "file://$TMP/$n.html" 760,640
   done
 fi

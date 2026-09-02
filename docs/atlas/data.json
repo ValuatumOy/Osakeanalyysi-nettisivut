@@ -355,9 +355,14 @@
      "terminal": true,
      "col": 11,
      "row": 2,
-     "label": "Paid, and free to write again",
-     "sees": "They invoice for what has cleared, and the next monthly generation is open.",
-     "behind": "Their public track record grows with every published report, which is the point of the programme."
+     "label": "Invoices — and the record grows",
+     "sees": "They invoice for what has cleared. Being free to write again is not part of this step: that happened the moment they published. The only wait left is the calendar — one free generation per month, so the next opens on the 1st.",
+     "behind": "The publish obligation is cleared on submit, and the monthly slot is a calendar-month flag. An analyst who never publishes stays blocked however long they wait; an admin can clear the obligation by hand. Their public track record grows with every published report, which is the point of the programme.",
+     "dev": [
+      "server/members/quota.js:120-130 — the two gates",
+      "quota.js:164-167 — submit releases the obligation",
+      "server/lambda/members.js:2358 — admin grant-generation"
+     ]
     },
     {
      "id": "a_readlist",
@@ -680,6 +685,7 @@
    "columns": [
     "Starts on",
     "Chooses",
+    "Opens",
     "Pays",
     "Confirmed",
     "Report arrives",
@@ -824,48 +830,52 @@
     {
      "id": "c_free",
      "kind": "screen",
-     "outcome": "ok",
-     "terminal": true,
+     "terminal": false,
      "col": 2,
      "row": 0,
      "label": "Reads the free PDF",
      "img": "free-pdf",
-     "sees": "The PDF opens straight away. No email, no payment, no account. Next to the download there is one paid button: 'Create a revision — €10'.",
-     "behind": "Free reports are ordinary links to the file store. A few rotate into the free tier each week to bring in search traffic; the rest cannot be opened without paying, even if someone guesses the address.",
+     "sees": "The PDF opens straight away. No email, no payment, no account. Next to the download there is one paid button: 'Create a revision — €10', for when they want the report changed — a different assumption, a scenario.",
+     "behind": "Free reports are ordinary links to the file store. A few rotate into the free tier each week to bring in search traffic; the rest cannot be opened without paying, even if someone guesses the address. The revision button is baked hidden and only appears once live pricing confirms the free-revisions tier is on sale.",
      "dev": [
       "docs/report-lifecycle.md — the free rotation rules",
       "server/catalog.js:395-410 — the rotation",
-      "api/create-checkout.js:20-22 — a free report cannot be sold"
-     ]
+      "js/script.js:786-815 — the revision button",
+      "api/create-checkout.js — a free report itself cannot be sold, only its revisions"
+     ],
+     "imgs": [
+      "free-pdf",
+      "free-report"
+     ],
+     "imgBy": {
+      "free_rev": "free-report"
+     }
     },
     {
-     "id": "c_free_rev",
-     "kind": "screen",
-     "col": 1,
-     "row": 5,
-     "label": "Free report — 'Create a revision'",
-     "img": "free-report",
-     "sees": "They already have the free PDF and want it changed — a different assumption, a scenario. 'Create a revision — €10' on the report page or its catalog card goes straight to Stripe; there is no standard-or-plus choice to make, because the report itself costs nothing.",
-     "behind": "The button is baked hidden and only appears once live pricing confirms the free-revisions tier is on sale. The checkout is the 'free-revisions' kind: €10 for three revision requests, the PDF they already have.",
-     "dev": [
-      "js/script.js:786-815 — the button",
-      "server/checkout.js:70-80 — free-revisions kind",
-      "server/stripe-pricing.js:9-14 — three included"
-     ]
+     "id": "c_free_done",
+     "kind": "outcome",
+     "outcome": "ok",
+     "terminal": true,
+     "col": 3,
+     "row": 0,
+     "label": "Done — has the PDF",
+     "sees": "Nothing more. The page and the button stay there, so revisions can be bought any time later.",
+     "behind": ""
     },
     {
      "id": "c_stripe",
      "kind": "screen",
-     "col": 2,
+     "col": 3,
      "row": 2,
      "label": "Pays on the Stripe page",
      "img": "stripe",
      "sees": "A payment page hosted by Stripe showing the report and the price. They fill in their email and card, or use Google/Apple Pay, and can enter a promo code. The email typed here is where the report will be sent.",
-     "behind": "Before this page opens, the site checks the report really is for sale, and — for the revisions option — that this report can be revised at all. Everything the later steps need (which company, ready, fresh or free, revisions or not) travels with the payment.",
+     "behind": "Before this page opens, the site checks the report really is for sale, and — for the revisions option — that this report can be revised at all. Everything the later steps need (which company, ready, fresh or free, revisions or not) travels with the payment. For a free report the checkout is the 'free-revisions' kind: €10 for three revision requests, the PDF they already have.",
      "dev": [
       "api/create-checkout.js — ready and free reports",
       "api/create-fresh-checkout.js — fresh reports",
-      "server/checkout.js — builds every session",
+      "server/checkout.js:70-80 — which kind, incl. free-revisions",
+      "server/stripe-pricing.js:9-14 — three included",
       "the screenshot is an illustration; a real Stripe page needs a live session"
      ]
     },
@@ -886,7 +896,7 @@
     {
      "id": "c_analyst_pay",
      "kind": "screen",
-     "col": 3,
+     "col": 4,
      "row": 6,
      "label": "Pays the analyst's price",
      "img": "stripe",
@@ -901,7 +911,7 @@
      "kind": "screen",
      "outcome": "ok",
      "terminal": true,
-     "col": 4,
+     "col": 5,
      "row": 6,
      "label": "Opens the analysis",
      "img": "free-pdf",
@@ -939,7 +949,7 @@
      "kind": "screen",
      "outcome": "warn",
      "terminal": true,
-     "col": 3,
+     "col": 4,
      "row": 0,
      "label": "Checkout cancelled",
      "img": "cancel",
@@ -953,7 +963,7 @@
     {
      "id": "c_recorded",
      "kind": "system",
-     "col": 3,
+     "col": 4,
      "row": 2,
      "label": "Payment recorded",
      "sees": "Nothing — this happens in the second after paying, while they are being sent to the thank-you page.",
@@ -966,7 +976,7 @@
     {
      "id": "c_thanks",
      "kind": "screen",
-     "col": 4,
+     "col": 5,
      "row": 1,
      "label": "Thank-you page",
      "img": "success-ready",
@@ -993,7 +1003,7 @@
     {
      "id": "c_confirm",
      "kind": "email",
-     "col": 4,
+     "col": 5,
      "row": 3,
      "label": "Email: order confirmed",
      "img": "email-confirm",
@@ -1006,7 +1016,7 @@
     {
      "id": "c_email_ready",
      "kind": "email",
-     "col": 5,
+     "col": 6,
      "row": 0,
      "label": "Email: your report",
      "img": "email-report",
@@ -1021,7 +1031,7 @@
     {
      "id": "c_email_freerev",
      "kind": "email",
-     "col": 5,
+     "col": 6,
      "row": 6,
      "label": "Email: your revisions",
      "img": "email-freerev",
@@ -1035,7 +1045,7 @@
     {
      "id": "c_writing",
      "kind": "system",
-     "col": 5,
+     "col": 6,
      "row": 3,
      "label": "Report is written · ~30 min",
      "sees": "Nothing, unless they bought revisions and opened the order page — there it says 'Preparing your report…'.",
@@ -1048,7 +1058,7 @@
     {
      "id": "c_download",
      "kind": "screen",
-     "col": 6,
+     "col": 7,
      "row": 0,
      "label": "Downloads the PDF",
      "img": "free-pdf",
@@ -1061,7 +1071,7 @@
     {
      "id": "c_delivered",
      "kind": "email",
-     "col": 6,
+     "col": 7,
      "row": 3,
      "label": "Email: your report",
      "img": "email-report",
@@ -1076,15 +1086,19 @@
      "kind": "screen",
      "outcome": "bad",
      "terminal": true,
-     "col": 6,
+     "col": 7,
      "row": 5,
      "label": "Report could not be written",
      "img": "order-failed",
-     "sees": "Only someone holding the order-page link sees anything: 'Something went wrong — contact support'. Everyone else simply never receives the report email.",
-     "behind": "The order is marked failed and an alert email comes to us.",
-     "gap": "The customer is never emailed about a failure — somebody has to notice the alert and follow up by hand.",
+     "sees": "An email: 'We couldn't finish your report' — something went wrong, the team has been told, and they will either get the report at this address once it is fixed or hear about a refund. They need do nothing. The order page, if they have the link, says the same.",
+     "behind": "After the last retry the order is marked failed. The customer is emailed first, then we get an alert that says whether that email went out, so someone can generate the report by hand or refund. Every engine failure reaches us this way; the retries in between are silent after the first.",
      "dev": [
-      "server/reconciler.js:144-155 — fail()"
+      "server/reconciler.js — fail()",
+      "server/email.js — sendGenerationFailedEmail, reportError"
+     ],
+     "imgs": [
+      "order-failed",
+      "email-failed"
      ]
     },
     {
@@ -1092,7 +1106,7 @@
      "kind": "outcome",
      "outcome": "ok",
      "terminal": true,
-     "col": 7,
+     "col": 8,
      "row": 0,
      "label": "Done — has the report",
      "sees": "Nothing more. Without the revisions option there is no order page and no way to ask for changes.",
@@ -1102,7 +1116,7 @@
     {
      "id": "c_order",
      "kind": "screen",
-     "col": 7,
+     "col": 8,
      "row": 2,
      "label": "Order page",
      "img": "order-deliv",
@@ -1125,7 +1139,7 @@
      "kind": "outcome",
      "outcome": "ok",
      "terminal": true,
-     "col": 7,
+     "col": 8,
      "row": 4,
      "label": "Done — has the report",
      "sees": "Nothing more. Without revisions there is no order page; the emailed link is permanent.",
@@ -1136,7 +1150,7 @@
      "kind": "outcome",
      "outcome": "ok",
      "terminal": true,
-     "col": 8,
+     "col": 9,
      "row": 1,
      "label": "Done — keeps the link",
      "sees": "Nothing more. The order page and the emailed link keep working, unused revision rounds stay available, and the text can be edited by hand at any time.",
@@ -1145,7 +1159,7 @@
     {
      "id": "c_revise",
      "kind": "screen",
-     "col": 8,
+     "col": 9,
      "row": 2,
      "label": "Asks for a revision",
      "img": "order-revision-box",
@@ -1161,7 +1175,7 @@
      "kind": "screen",
      "outcome": "warn",
      "terminal": true,
-     "col": 9,
+     "col": 10,
      "row": 0,
      "label": "No rounds left — offered more",
      "img": "order-exhausted",
@@ -1174,7 +1188,7 @@
     {
      "id": "c_revising",
      "kind": "system",
-     "col": 9,
+     "col": 10,
      "row": 2,
      "label": "Report is revised · ~30 min",
      "sees": "'Revising your report…' on the order page.",
@@ -1188,21 +1202,25 @@
      "kind": "screen",
      "outcome": "warn",
      "terminal": true,
-     "col": 10,
+     "col": 11,
      "row": 4,
      "label": "Revision failed — round given back",
      "img": "order-revfail",
-     "sees": "A red notice on the order page: the revision could not be made, the round was not used, please try again. The previous report is still there.",
-     "behind": "The order goes back to 'delivered' with the error attached.",
-     "gap": "No email is sent when a revision fails, so someone who closed the page never learns about it.",
+     "sees": "An email: 'Your revision couldn't be completed' — the current report is unchanged, the round was not counted, and an 'Open your order' button to try again. The order page shows the same message in a banner.",
+     "behind": "The order goes back to delivered with its previous PDF and the round is given back. A requested revision may have been waiting for hours, so it is emailed; a hand edit that fails is only shown on the page the customer is watching. Either way we get an alert.",
      "dev": [
-      "server/reconciler.js:386-400 — failRevision()"
+      "server/reconciler.js — failRevision()",
+      "server/email.js — sendRevisionFailedEmail"
+     ],
+     "imgs": [
+      "order-revfail",
+      "email-revfail"
      ]
     },
     {
      "id": "c_email_revised",
      "kind": "email",
-     "col": 10,
+     "col": 11,
      "row": 2,
      "label": "Email: report updated",
      "img": "email-revised",
@@ -1217,7 +1235,7 @@
      "kind": "screen",
      "outcome": "ok",
      "terminal": true,
-     "col": 11,
+     "col": 12,
      "row": 2,
      "label": "New version on the order page",
      "img": "order-revised-top",
@@ -1230,7 +1248,7 @@
     {
      "id": "c_edit",
      "kind": "screen",
-     "col": 8,
+     "col": 9,
      "row": 5,
      "label": "Edits the text by hand",
      "img": "order-editor",
@@ -1246,11 +1264,11 @@
     {
      "id": "c_editing",
      "kind": "system",
-     "col": 9,
+     "col": 10,
      "row": 6,
      "label": "Re-rendered · seconds",
      "sees": "'Revising your report…' for a moment, then the page refreshes.",
-     "behind": "The order goes DELIVERED → REVISING with the pending edit on the row; the worker sends the edits to the engine, polls, and delivers the new version. No email is sent, no round is used, and the edit counts as a change of their own for anything that needs one.",
+     "behind": "The order goes DELIVERED → REVISING with the pending edit on the row; the worker sends the edits to the engine, polls, and delivers the new version. No email is sent, no round is used, and the edit counts as a change of their own for anything that needs one. If the render fails, the page shows the error and the previous version stays — no email, since they are watching.",
      "dev": [
       "server/reconciler.js — deliverRevision with activeEdit",
       "server/orders.js — claimEdit"
@@ -1261,7 +1279,7 @@
      "kind": "screen",
      "outcome": "ok",
      "terminal": true,
-     "col": 10,
+     "col": 11,
      "row": 6,
      "label": "New version — 'Edited by hand'",
      "img": "order-edited",
@@ -1286,15 +1304,16 @@
      "label": "free PDF",
      "when": {
       "product": [
-       "free"
+       "free",
+       "free_rev"
       ]
      }
     },
     {
      "id": "c2f",
-     "from": "c_choose",
-     "to": "c_free_rev",
-     "label": "revisions on a free PDF",
+     "from": "c_free",
+     "to": "c_stripe",
+     "label": "Create a revision — €10",
      "when": {
       "product": [
        "free_rev"
@@ -1303,9 +1322,9 @@
     },
     {
      "id": "c2g",
-     "from": "c_free_rev",
-     "to": "c_stripe",
-     "label": "Create a revision — €10"
+     "from": "c_free",
+     "to": "c_free_done",
+     "label": "reads it"
     },
     {
      "id": "c2b",
@@ -1909,7 +1928,7 @@
      "row": 3,
      "label": "Report is written · 20–40 min",
      "sees": "The card shows progress and refreshes by itself; they can close the page.",
-     "behind": "Member generations go through exactly the same queue and engine as everything a non-member orders.",
+     "behind": "Member generations go through exactly the same queue and engine as everything a non-member orders. A failure is emailed to them and to us, like any fresh report.",
      "dev": [
       "server/reconciler.js"
      ]

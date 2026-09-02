@@ -38,6 +38,9 @@ const jobs = [
   ['email-revised', () => email.sendReportRevisedEmail('buyer@example.com', report)],
   // Revisions bought on a report that was free: the order page is the thing delivered.
   ['email-freerev', () => email.sendReportEmail('buyer@example.com', { ...report, revisionsOnly: true, revisionsAllowed: 3 })],
+  // The two failures a customer hears about by email.
+  ['email-failed',  () => email.sendGenerationFailedEmail('buyer@example.com', { company: 'Stora Enso Oyj', ticker: 'STERV', orderUrl: ORDER })],
+  ['email-revfail', () => email.sendRevisionFailedEmail('buyer@example.com', { company: 'Stora Enso Oyj', ticker: 'STERV', orderUrl: ORDER })],
 ];
 
 for (const [name, run] of jobs) {
