@@ -301,10 +301,15 @@
   <script>
     'use strict';
 
-    // Same-origin in production would need the API on the site host; the API
-    // lives on its own domain, so the base is fixed here and overridable for
-    // the test stage via localStorage.setItem('aerAdminApiBase', ...).
-    const API_BASE = localStorage.getItem('aerAdminApiBase') || 'https://api.aiequityreports.com';
+    // The API lives on its own domain, one per stage: the staging site
+    // (test.aiequityreports.com) talks to api-test / members-test, production
+    // to api / members. Production's API only allows its own origins, so a
+    // staging page pointed at it fails every request with a bare network
+    // error. localStorage.setItem('aerAdminApiBase', ...) still overrides,
+    // which is how a local preview is driven against the test stage.
+    const ON_STAGING = location.hostname.startsWith('test.');
+    const API_BASE = localStorage.getItem('aerAdminApiBase')
+      || (ON_STAGING ? 'https://api-test.aiequityreports.com' : 'https://api.aiequityreports.com');
     const PASSWORD_KEY = 'aerAdminPassword';
 
     const $ = (id) => document.getElementById(id);
@@ -670,7 +675,8 @@
     // ── members admin ────────────────────────────────────────────────────────
     // Second API, same password: both Lambdas read the same admin secret, so one
     // sign-in unlocks both. Overridable for the test stage like API_BASE above.
-    const MEMBERS_API = localStorage.getItem('aerAdminMembersApiBase') || 'https://members.aiequityreports.com';
+    const MEMBERS_API = localStorage.getItem('aerAdminMembersApiBase')
+      || (ON_STAGING ? 'https://members-test.aiequityreports.com' : 'https://members.aiequityreports.com');
 
     async function mapi(path, options = {}) {
       const res = await fetch(`${MEMBERS_API}${path}`, {

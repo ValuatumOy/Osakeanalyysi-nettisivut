@@ -335,9 +335,10 @@ See [`blog-system/PIPELINE.md`](blog-system/PIPELINE.md) for the runbook and
   management (upload, publish, edit including free status, delete) plus the
   members side — analyst publications, users, earnings and payouts, activity
   stats, and live promo codes. One password (`admin-upload-password`, kept in
-  `localStorage`) unlocks both APIs. To point it at the test stage:
-  `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')` and
-  `localStorage.setItem('aerAdminMembersApiBase', 'https://members-test.aiequityreports.com')`.
+  `localStorage`) unlocks both APIs. On `test.aiequityreports.com` it talks to
+  the test-stage APIs by itself. To drive a local preview against the test
+  stage: `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')`
+  and `localStorage.setItem('aerAdminMembersApiBase', 'https://members-test.aiequityreports.com')`.
 - **`/blog-admin.html`** — the older blog admin, which authenticates through
   `api/auth.js` and works against the GitHub API. Renamed from `admin.html`,
   which read as the site's main admin while sitting next to `/admin`.
