@@ -1066,19 +1066,22 @@
     });
 
     // ── boot: stored password → straight in; otherwise show the gate ────────
-    // A wrong password keeps the gate up; an unreachable reports API does not —
-    // the members tabs are a different origin and may be fine, and an admin
-    // locked out of everything because one API is down can fix nothing.
+    // The app is shown at once and the catalog loads behind it: waiting for
+    // the request first kept the sign-in screen up for a second on every
+    // load. A password the API rejects brings the gate back with a message;
+    // an unreachable reports API does not — the members tabs are a different
+    // origin and may be fine, and an admin locked out of everything because
+    // one API is down can fix nothing.
     (async () => {
       if (!password()) return;
+      $('auth-screen').style.display = 'none';
+      $('app').style.display = 'block';
       try {
         await refreshReports();
       } catch (err) {
-        if (err.message === 'Unauthorized') return;
+        if (err.message === 'Unauthorized') return signOut('The saved password is no longer valid. Sign in again.');
         flash('err', 'Report catalog unreachable: ' + err.message + ' — the other tabs still work.');
       }
-      $('auth-screen').style.display = 'none';
-      $('app').style.display = 'block';
     })();
   </script>
 </body>
