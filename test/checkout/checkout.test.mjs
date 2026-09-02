@@ -64,6 +64,7 @@ test('a free report with revisions sells the free-revisions tier with the includ
   const [params] = stripe.created;
   assert.deepEqual(params.line_items, [{ price: 'price_freerevisions', quantity: 1 }]);
   assert.equal(params.metadata.reportId, 'tesla-01092026');
+  assert.equal(params.metadata.site, 'aiequityreports', 'every session names the site the shared account webhook should match');
   assert.equal(params.metadata.kind, 'free-revisions');
   assert.equal(checkout.isRevisionsOnly({ metadata: params.metadata }), true);
   assert.equal(params.metadata.withRevisions, 'true');
@@ -184,4 +185,13 @@ test('the cancel path only ever points back at this site', () => {
   assert.equal(cancelPath('//evil.example'), '/reports.html#order-fresh');
   assert.equal(cancelPath('/a/../b'), '/reports.html#order-fresh');
   assert.equal(cancelPath(''), '/reports.html#order-fresh');
+});
+
+test('the webhook recognises its own sessions by the site tag, with the pre-tag fields as fallback', () => {
+  assert.equal(checkout.isOurSession({ metadata: { site: 'aiequityreports' } }), true);
+  assert.equal(checkout.isOurSession({ metadata: { reportId: 'tesla-01092026' } }), true);
+  assert.equal(checkout.isOurSession({ metadata: { isFresh: 'true' } }), true);
+  assert.equal(checkout.isOurSession({ metadata: { reportType: 'dk_ai_credit_risk', companyName: 'JYSK A/S' } }), false);
+  assert.equal(checkout.isOurSession({ metadata: { analysisGenId: 'g1' } }), false);
+  assert.equal(checkout.isOurSession({}), false);
 });

@@ -17,7 +17,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
-const { createExtraRoundsCheckout } = require('../checkout');
+const { createExtraRoundsCheckout, SITE_TAG } = require('../checkout');
 const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
@@ -1342,7 +1342,7 @@ async function postBillingTopUpCheckout(event) {
         },
       },
     }],
-    metadata: { topup: kind, topupUnits: String(units), userId: profile.userId },
+    metadata: { site: SITE_TAG, topup: kind, topupUnits: String(units), userId: profile.userId },
     success_url: `${returnTo}?topup=added&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${returnTo}?topup=cancelled`,
   });
@@ -1406,6 +1406,7 @@ async function postBillingCheckout(event) {
     // second price.
     line_items: [{ price: priceId, quantity: plan === 'coverage' ? coverage.length : 1 }],
     client_reference_id: profile.userId,
+    metadata: { site: SITE_TAG, userId: profile.userId, plan },
     subscription_data: {
       metadata: {
         userId: profile.userId,
@@ -1457,6 +1458,7 @@ async function postFreshCheckout(event) {
     line_items: [{ price: priceId, quantity: 1 }],
     client_reference_id: profile.userId,
     metadata: {
+      site: SITE_TAG,
       isFresh: 'true',
       userId: profile.userId,
       company: match.companyName || company,
@@ -1914,7 +1916,7 @@ async function postAnalysisBuyCheckout(event) {
         },
       },
     }],
-    metadata: { analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
+    metadata: { site: SITE_TAG, analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
     success_url: `${returnTo}?bought=${genId}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${returnTo}?bought=cancelled`,
   });
@@ -2073,6 +2075,7 @@ async function postAnalysisForkCheckout(event) {
     line_items: lineItems,
     ...(profile?.email ? { customer_email: profile.email } : {}),
     metadata: {
+      site: SITE_TAG,
       analysisGenId: genId,
       ownerId: index.userId,
       companyId: index.companyId,
