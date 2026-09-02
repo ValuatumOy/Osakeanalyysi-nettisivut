@@ -1,13 +1,11 @@
 # Journey Atlas
 
 An interactive map of how the site works, written for anyone at Valuatum — not
-only developers. It shows five journeys stacked as horizontal bands:
+only developers. It shows three journeys stacked as horizontal bands:
 
-- **Anyone buying a report** — no account: finds a company page, pays, gets a PDF.
+- **Analyst publishing their own work** — writes with the engine, steers it with revisions or hand edits, publishes, earns half, and reads rivals in exchange for scoring them.
+- **Anyone buying a report** — no account: finds a company page, pays, gets a PDF; can buy revisions on a free report and edit the text by hand.
 - **Member on a monthly plan** — picks from the catalog, own generations, other analysts' work.
-- **Analyst publishing their own work** — writes with the engine, publishes, earns half, and reads rivals in exchange for scoring them.
-- **Us, running the place** — the admin site: adding reports, moderating, paying analysts, the blog.
-- **How pages get made** — the hourly build, the blog routine, the generators run by hand, the weekly free rotation.
 
 Pick a situation from the dropdowns, or click any step, and the path that
 actually runs lights up. Each step shows a real screenshot, what the person
@@ -98,22 +96,20 @@ Needs Chrome, `python3` with Pillow, node and `pdftoppm`. Screenshots land in
 pages carry invented but self-consistent data — Nordic companies, plausible
 figures — so nothing real about a customer or an analyst is in them.
 
-Four kinds of screen cannot simply be visited:
+Three kinds of screen cannot simply be visited:
 
 - **The thank-you page and the order page** need a paid Stripe session, so
   `capture/mock-api.py` serves this repo's own HTML with mocked API answers.
   That is how the order page is captured while writing, delivered, revised, out
-  of rounds, failed, and after a failed revision.
+  of rounds, failed, after a failed revision, and after a hand edit. The text
+  editor itself is driven over the DevTools protocol (`capture/shoot-editor.py`):
+  it presses the edit button, clicks a paragraph in the sandboxed preview and
+  types, since no static screenshot can show a change in progress. The mock
+  answers the preview request with a short stand-in for the engine's document.
 - **The member area and the analyst workspace** need a signed-in account.
   `capture/member-mock.html` is `members.html` with the sign-in and the members
   API stubbed out; `capture/shoot-member.py` renders it once per role and cuts
   out each section.
-- **The admin site and the blog admin** need the shared admin password and live
-  APIs. `capture/admin-mock.html` and `capture/blog-admin-mock.html` are those
-  pages with the gate and the APIs stubbed out; `capture/shoot-admin.py` renders
-  one tab at a time (`?pane=reports|analysts|users|earnings|stats|promos`, and
-  `?tab=posts|topics|authors|routine` for the blog admin). The password gate
-  itself is captured from the live site, since it needs nothing.
 - **The Stripe payment page** only exists inside a live checkout session, so
   `capture/stripe-illustration.html` is a drawing of it. The step says so.
 
@@ -140,6 +136,8 @@ build once passed.
 
 ## What this does not cover yet
 
+- The admin site and how pages get built. Both were on the map once and were
+  taken off to keep it about the people who use the site.
 - Coaching analysts — a role that exists in the backend with no button anywhere.
 - The institutions enquiry as its own journey; it appears as a second form on
   the buyer's coverage request.

@@ -141,8 +141,7 @@ async def main():
         # 7. every band button switches journeys, and a step in each one clicks
         for band, node, expect in [("member","m_signin_fail","Sign-in did not work"),
                                    ("analyst","a_fork","Builds on"),
-                                   ("admin","ad_blog","blog admin"),
-                                   ("pages","pg_check","Checks before")]:
+                                   ("customer","c_edit","Edits the text")]:
             await ev(f"document.getElementById('bb-{band}').click()")
             await asyncio.sleep(0.4)
             if not await click_center_of(node):

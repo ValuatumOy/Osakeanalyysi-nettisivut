@@ -5,7 +5,6 @@
 #   docs/atlas/capture/capture.sh live     # only the public pages
 #   docs/atlas/capture/capture.sh mock     # only the pages that need a paid session
 #   docs/atlas/capture/capture.sh member   # only the member area / analyst workspace
-#   docs/atlas/capture/capture.sh admin    # only the admin site and blog admin
 #   docs/atlas/capture/capture.sh email    # only the emails
 #
 # Needs: google-chrome (or chromium), python3 with Pillow, node, pdftoppm.
@@ -39,6 +38,8 @@ shot () { # shot <name> <url> [WxH]
 if [ "$WHAT" = all ] || [ "$WHAT" = live ]; then
   echo "public pages…"
   shot report-page   "$LIVE/reports/stora-enso-equity-report.html" 1280,2200
+  # a free report's page, where the only paid button is "Create a revision"
+  shot free-report   "$LIVE/reports/stora-enso-equity-report.html" 1280,900
   shot catalog-tall  "$LIVE/reports.html"        1280,5200
   shot home          "$LIVE/"                    1280,900
   shot search        "$LIVE/search.html"         1280,900
@@ -72,6 +73,10 @@ if [ "$WHAT" = all ] || [ "$WHAT" = mock ]; then
   shot order-exhausted   "$M/order/index.html?session_id=exhausted"  1280,1100
   shot order-failed      "$M/order/index.html?session_id=failed"
   shot order-revfail     "$M/order/index.html?session_id=revfail"    1280,1100
+  shot success-freerev   "$M/checkout/success.html?session_id=freerev"
+  # the text editor open with a paragraph changed, and a hand-edited version in the history
+  python3 "$HERE/shoot-editor.py" editor  "$TMP/order-editor.png" "$M/order/index.html?session_id=deliv"
+  python3 "$HERE/shoot-editor.py" history "$TMP/order-edited.png" "$M/order/index.html?session_id=edited"
   kill "$MOCK_PID" 2>/dev/null || true; MOCK_PID=
   shot stripe "file://$HERE/stripe-illustration.html" 1280,820
 fi
@@ -100,31 +105,10 @@ if [ "$WHAT" = all ] || [ "$WHAT" = member ]; then
   cp "$TMP/crop-analyst-analysesCard.png" "$TMP/analyst-reviews.png"
 fi
 
-if [ "$WHAT" = all ] || [ "$WHAT" = admin ]; then
-  echo "admin site and blog admin (real pages, mocked sign-in)…"
-  cp "$HERE/admin-mock.html" "$HERE/blog-admin-mock.html" "$REPO/"
-  (cd "$REPO" && python3 -m http.server 8768 >/dev/null 2>&1) & MOCK_PID=$!
-  sleep 1
-  A=http://127.0.0.1:8768/admin-mock.html
-  B=http://127.0.0.1:8768/blog-admin-mock.html
-  # ?pane= picks the admin tab, ?tab= picks the blog-admin one
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-reports.png"  "$A?pane=reports"
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-analyst.png"  "$A?pane=analysts"
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-users.png"    "$A?pane=users"
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-earnings.png" "$A?pane=earnings"
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-stats.png"    "$A?pane=stats"
-  python3 "$HERE/shoot-admin.py" "$TMP/admin-promos.png"   "$A?pane=promos"
-  python3 "$HERE/shoot-admin.py" "$TMP/blog-admin.png"     "$B?tab=posts"
-  rm -f "$REPO/admin-mock.html" "$REPO/blog-admin-mock.html"
-  kill "$MOCK_PID" 2>/dev/null || true; MOCK_PID=
-  # the password gate needs no mocking at all
-  shot admin-signin "$LIVE/admin/index.html" 1280,900
-fi
-
 if [ "$WHAT" = all ] || [ "$WHAT" = email ]; then
   echo "emails (rendered from server/email.js templates)…"
   node "$HERE/render-emails.mjs" "$TMP"
-  for n in email-report email-confirm email-revised; do
+  for n in email-report email-confirm email-revised email-freerev; do
     [ -f "$TMP/$n.html" ] && shot "$n" "file://$TMP/$n.html" 760,640
   done
 fi
