@@ -9,6 +9,7 @@
 // fails at deploy with no build error.
 
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { submitOrderRevision, submitOrderEdit } = require('../server/catalog-client');
 const { CheckoutError, createExtraRoundsCheckout, isCompletedCheckout, orderPageUrl } = require('../server/checkout');
 
@@ -65,6 +66,7 @@ module.exports = async (req, res) => {
     if (err.status === 409) return res.status(409).json({ error: err.message });
     if (err.status === 400) return res.status(400).json({ error: err.message });
     console.error('order-revision:', err.message);
+    await reportError('vercel order-revision', err, { sessionId, wantsRounds, edit: Boolean(edits) });
     res.status(500).json({ error: 'Failed' });
   }
 };

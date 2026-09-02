@@ -12,6 +12,7 @@
 // ceiling — a thirteenth fails at deploy with no build error.
 
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { getOrderState, getOrderPreview } = require('../server/catalog-client');
 const { isCompletedCheckout } = require('../server/checkout');
 
@@ -42,6 +43,7 @@ module.exports = async (req, res) => {
     if (err.status === 404) return res.status(404).json({ error: 'Order not found' });
     if (err.status === 409 || err.status === 502) return res.status(err.status).json({ error: err.message });
     console.error('order-status:', err.message);
+    await reportError('vercel order-status', err, { sessionId, preview: Boolean(req.query.preview) });
     res.status(500).json({ error: 'Failed' });
   }
 };

@@ -18,6 +18,7 @@ const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
 const { createExtraRoundsCheckout } = require('../checkout');
+const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -1557,29 +1558,21 @@ async function sendAnalysisReceipt(session) {
   const link = `${base}?${isFork ? 'forked' : 'bought'}=${encodeURIComponent(genId)}&session_id=${encodeURIComponent(session.id)}`;
   const company = session.metadata?.companyId || 'the company';
   try {
-    const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
-    const ses = new SESv2Client({ region: process.env.AWS_REGION || 'eu-west-1' });
-    await ses.send(new SendEmailCommand({
-      FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
-      Destination: { ToAddresses: [to] },
-      Content: {
-        Simple: {
-          Subject: { Data: `Your analyst analysis of ${company}`, Charset: 'UTF-8' },
-          Body: {
-            Html: {
-              Data: `<p>Thank you — your purchase is complete.</p>`
-                + `<p><a href="${link}">Open your analyst analysis of ${company}</a></p>`
-                + `<p>This link stays valid: it re-checks your purchase and opens the PDF each time.</p>`,
-              Charset: 'UTF-8',
-            },
-          },
-        },
-      },
-    }));
+    // The author's name is on the publication row, not in the checkout
+    // metadata; best-effort, the receipt reads fine without it.
+    let analystName = '';
+    try {
+      analystName = (await store.findPublicationIndex(genId))?.analystName || '';
+    } catch (_) { /* name is decoration */ }
+    await email.sendAnalysisPurchaseEmail(to, { company, analystName, link, fork: isFork });
   } catch (err) {
     // Stripe retries the whole event on a non-200, which would re-record the
-    // sale; a mail that did not go out is not worth that.
+    // sale; a mail that did not go out is not worth that. The admin hears
+    // about it instead, since the buyer may now have nothing to open.
     console.error('analysis receipt email failed:', err);
+    await email.reportError('members: analysis purchase email', err, {
+      sessionId: session.id, genId, customer: to,
+    });
   }
 }
 
@@ -2591,11 +2584,20 @@ async function getAdminStats(event) {
 // GET /admin/members/promo-codes — every live promotion code, with what it
 // gives away. This is how AINAILMAINEN2026 stops being a surprise: the codes
 // live in Stripe, the secret key lives here, so the listing has to too.
+//
+// The Stripe account is shared with other Valuatum sites, and a promotion
+// code is account-wide: any active code is accepted at this site's checkout
+// too. There is nothing on the Stripe side that says which site a code was
+// made for, so the admin tags codes here (`site` metadata on the promotion
+// code) and the page groups by that tag. Untagged codes stay visible.
+const PROMO_SITE = 'aiequityreports';
 async function getAdminPromoCodes() {
   const res = await stripe().promotionCodes.list({ limit: 100 });
   const codes = res.data.map((pc) => ({
     code: pc.code,
     active: pc.active,
+    site: pc.metadata?.site || pc.coupon?.metadata?.site || null,
+    couponName: pc.coupon?.name || null,
     percentOff: pc.coupon?.percent_off || null,
     amountOffEur: pc.coupon?.amount_off ? pc.coupon.amount_off / 100 : null,
     duration: pc.coupon?.duration || null,
@@ -2605,7 +2607,19 @@ async function getAdminPromoCodes() {
     restrictions: pc.restrictions?.minimum_amount ? `min ${pc.restrictions.minimum_amount / 100} EUR` : null,
     promoId: pc.id,
   }));
-  return json(200, { count: codes.length, codes });
+  return json(200, { count: codes.length, codes, site: PROMO_SITE });
+}
+
+// POST /admin/members/promo-site {promoId, site} — tag a code as this site's
+// ('aiequityreports'), another site's ('other') or clear the tag (''). Only
+// metadata changes; the code keeps working everywhere it did.
+async function postAdminPromoSite(event) {
+  const body = parseBody(event);
+  if (!body?.promoId) return json(400, { error: 'promoId is required' });
+  const site = String(body.site || '');
+  if (![PROMO_SITE, 'other', ''].includes(site)) return json(400, { error: 'site must be aiequityreports, other or empty' });
+  const updated = await stripe().promotionCodes.update(String(body.promoId), { metadata: { site } });
+  return json(200, { ok: true, code: updated.code, site: updated.metadata?.site || null });
 }
 
 // POST /admin/members/promo-deactivate {promoId} — switch one off. Deactivation
@@ -2798,6 +2812,7 @@ const ADMIN_ROUTES = {
   'GET /admin/members/stats': getAdminStats,
   'GET /admin/members/promo-codes': getAdminPromoCodes,
   'POST /admin/members/promo-deactivate': postAdminPromoDeactivate,
+  'POST /admin/members/promo-site': postAdminPromoSite,
   'POST /admin/members/void-review': postAdminVoidReview,
   'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,
@@ -2851,6 +2866,10 @@ exports.handler = async (event) => {
     return json(404, { error: 'Not found' });
   } catch (err) {
     console.error(`${routeKey}:`, err);
+    await email.reportError(`members ${routeKey}`, err, {
+      requestId: event.requestContext?.requestId,
+      query: event.rawQueryString,
+    });
     return json(500, { error: 'Internal error' });
   }
 };

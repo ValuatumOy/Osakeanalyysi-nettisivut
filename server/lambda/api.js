@@ -16,7 +16,7 @@ const { ensureSecrets } = require('../aws/secrets');
 const { searchCompanies } = require('../search');
 const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
-const { sendAdminAlert } = require('../email');
+const { sendAdminAlert, reportError } = require('../email');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
 const editing = require('../order-editing');
 
@@ -522,8 +522,20 @@ async function getAdminReports() {
   // the customer and how it came to exist. One scan; the table is small, and
   // this endpoint is one admin's page load.
   const orderOf = new Map();
+  // When each file was produced, from the order that produced it: the
+  // original delivery's timestamp, or the revision history entry for a revised
+  // copy. S3's modification time is not this — a bulk sidecar rewrite resets
+  // it for every file at once.
+  const generatedAtOf = new Map();
   try {
-    for (const order of await ordersStore.list()) orderOf.set(order.id, order);
+    for (const order of await ordersStore.list()) {
+      orderOf.set(order.id, order);
+      const original = order.originalPdfFileName || order.pdfFileName;
+      if (original && order.deliveredEmailAt) generatedAtOf.set(original, order.deliveredEmailAt);
+      for (const entry of order.revisionHistory || []) {
+        if (entry.pdfFileName && entry.completedAt) generatedAtOf.set(entry.pdfFileName, entry.completedAt);
+      }
+    }
   } catch (err) {
     console.warn('admin reports: orders join unavailable:', err.message);
   }
@@ -535,6 +547,10 @@ async function getAdminReports() {
       const order = report.provenanceSessionId ? orderOf.get(report.provenanceSessionId) : null;
       return {
         ...publicReportPayload(report),
+        // The public payload drops the link for anything not free, which is
+        // every paid report and every revised copy. This listing is behind the
+        // admin password, so each row links to its file.
+        pdfUrl: permanentPdfUrl(report.fileName),
         publicationStatus: report.publicationStatus,
         excludeFromFree: report.excludeFromFree,
         forceFree: report.forceFree,
@@ -550,6 +566,7 @@ async function getAdminReports() {
         origin: !report.provenanceSessionId ? 'uploaded'
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
         generatedBy: order ? (order.analystName || order.email || null) : null,
+        generatedAt: generatedAtOf.get(report.fileName) || null,
       };
     }),
   });
@@ -691,6 +708,10 @@ exports.handler = async (event) => {
     return json(404, { error: 'Not found' });
   } catch (err) {
     console.error(`${routeKey}:`, err);
+    await reportError(`api ${routeKey}`, err, {
+      requestId: event.requestContext?.requestId,
+      query: event.rawQueryString,
+    });
     return json(500, { error: 'Internal error' });
   }
 };
