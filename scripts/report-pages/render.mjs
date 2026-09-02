@@ -837,7 +837,7 @@ export function renderCards(companies, companyPageCatalog) {
     const primaryCta = isFree
       ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>${cat.revisable ? `
             <button class="btn btn-outline-dark" data-buy-revisions="${attr(doc.id)}" hidden>Create a revision</button>` : ''}`
-      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
+      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report — ${esc(price)}</button>`;
     return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>
             <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>
@@ -849,7 +849,7 @@ export function renderCards(companies, companyPageCatalog) {
           <div class="rc-actions">
             <div><div class="rc-price">${esc(price)}</div><div class="rc-price-note">Instant PDF download</div></div>
             ${primaryCta}
-            <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report</button>
+            <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(0)}</button>
             <a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/${attr(pageUrl)}">Open report page</a>
           </div>
         </article>`;
