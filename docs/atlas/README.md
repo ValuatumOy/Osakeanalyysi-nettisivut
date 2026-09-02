@@ -13,7 +13,7 @@ sees, what happens behind the scenes, and — folded away — where it lives in 
 code.
 
 **Where to read it:** <https://www.aiequityreports.com/admin/atlas.html>, also
-linked from the top of the admin page. It is a static page with no sign-in of
+linked as "Interactive docs" from the admin page's tabs. It is a static page with no sign-in of
 its own, exactly like `admin/index.html`, and it is excluded from search
 engines through `robots.txt` and a `noindex` tag. It contains no live customer
 data — every screenshot is either a public page or a mocked account.
