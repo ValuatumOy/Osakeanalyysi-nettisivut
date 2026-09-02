@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
 const { sendReportEmail, sendFreshConfirmEmail } = require('../server/email');
-const { isCompletedCheckout, orderPageUrl, siteUrl } = require('../server/checkout');
+const { isCompletedCheckout, isRevisionsOnly, orderPageUrl, siteUrl } = require('../server/checkout');
 
 // Vercel: disable body parser so Stripe signature verification receives the raw body.
 async function getRawBody(req) {
@@ -121,6 +121,8 @@ const handler = async (req, res) => {
                 ...report,
                 pdfUrl: `${siteUrl()}/api/report-download?session_id=${encodeURIComponent(session.id)}`,
                 orderUrl: withRevisions ? orderPageUrl(session.id) : null,
+                revisionsOnly: isRevisionsOnly(session),
+                revisionsAllowed: session.metadata?.revisionsAllowed || '0',
               });
             } else {
               console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
