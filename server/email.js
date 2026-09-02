@@ -69,15 +69,35 @@ async function sendEmail(message, label) {
 }
 
 // ── Existing report: deliver PDF link ────────────────────────────────────────
+// `report.revisionsOnly`: the buyer already had the report for free and paid
+// for revisions on it, so the order page is the thing delivered here and the
+// PDF link is a courtesy.
 async function sendReportEmail(toEmail, report) {
-  const orderLink = report.orderUrl
+  const revisionsOnly = Boolean(report.revisionsOnly && report.orderUrl);
+  const orderLink = report.orderUrl && !revisionsOnly
     ? `<p style="margin:0 0 28px;"><a href="${report.orderUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Request revision &rarr;</a></p>`
     : '';
+  const count = Number(report.revisionsAllowed) || 0;
+  const heading = revisionsOnly ? 'Your revisions are ready to use.' : 'Your report is ready.';
+  const primary = revisionsOnly
+    ? `<a href="${report.orderUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
+            Request a revision &rarr;
+          </a>
+          <p style="margin:0 0 28px;"><a href="${report.pdfUrl}" style="color:#3D9E72;text-decoration:none;font-size:13px;">Download the PDF &rarr;</a></p>`
+    : `<a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
+            Download PDF report &rarr;
+          </a>
+          ${orderLink}`;
+  const lead = revisionsOnly
+    ? `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker} &middot; ${count} revision ${count === 1 ? 'request' : 'requests'} included</p>`
+    : `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>`;
 
   await sendEmail({
     from: FROM,
     to: toEmail,
-    subject: `Your Valuatum AI Equity Report — ${report.ticker}`,
+    subject: revisionsOnly
+      ? `Your report revisions — ${report.ticker}`
+      : `Your Valuatum AI Equity Report — ${report.ticker}`,
     html: `<!DOCTYPE html>
 <html>
 <body style="margin:0;padding:0;background:#f4f7f5;font-family:Arial,sans-serif;">
@@ -89,13 +109,10 @@ async function sendReportEmail(toEmail, report) {
           <p style="color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:0;">AI Equity Reports</p>
         </td></tr>
         <tr><td style="background:#fff;border:1px solid #E2E9E5;border-top:none;border-radius:0 0 12px 12px;padding:36px 32px;">
-          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">Your report is ready.</h1>
-          <p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>
+          <h1 style="font-size:22px;font-weight:300;color:#1A2420;margin:0 0 6px;letter-spacing:-.01em;">${heading}</h1>
+          ${lead}
           <p style="color:#8A9590;margin:0 0 28px;font-size:13px;">Generated ${report.reportDate}</p>
-          <a href="${report.pdfUrl}" style="display:inline-block;background:#3D9E72;color:#fff;padding:14px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:16px;">
-            Download PDF report &rarr;
-          </a>
-          ${orderLink}
+          ${primary}
           <div style="border-top:1px solid #E2E9E5;padding-top:20px;">
             <p style="font-size:12px;color:#8A9590;line-height:1.65;margin:0 0 6px;">
               This report is licensed for your personal research and reference use.

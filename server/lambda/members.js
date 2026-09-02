@@ -8,6 +8,8 @@ const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
+const { validateEditRequest, EditValidationError } = require('../report-edits');
+const editing = require('../order-editing');
 const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const bounty = require('../members/bounty');
@@ -15,6 +17,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
+const { createExtraRoundsCheckout } = require('../checkout');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -688,8 +691,8 @@ async function postGenerationFresh(event) {
 // revisionsAllowed is fixed when an order is created, so an analyst or a buyer
 // who runs out has no way forward but to start again. This tops it up; the
 // webhook is what actually raises the number, so an abandoned return trip
-// cannot lose rounds that were paid for.
-const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
+// cannot lose rounds that were paid for. The price comes from the shared
+// checkout module, the same place the anonymous order page gets it.
 
 async function postGenerationRevisionsCheckout(event) {
   const now = requestNow(event);
@@ -709,33 +712,18 @@ async function postGenerationRevisionsCheckout(event) {
   if (!order) return json(404, { error: 'Unknown generation' });
 
   const body = parseBody(event) || {};
-  const rounds = Math.min(10, Math.max(1, Math.round(Number(body.rounds) || 1)));
   const returnTo = auth.frontendUrl(body.returnTo);
 
-  const session = await stripe().checkout.sessions.create({
-    mode: 'payment',
-    allow_promotion_codes: true,
-    ...(profile.email ? { customer_email: profile.email } : {}),
-    line_items: [{
-      quantity: rounds,
-      price_data: {
-        currency: 'eur',
-        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
-        product_data: {
-          name: `Extra revision round — ${order.companyName || order.ticker || 'report'}`,
-          description: 'One more round of steering on a report you already have.',
-        },
-      },
-    }],
-    metadata: {
-      extraRevisions: String(rounds),
-      generationId: genId,
-      userId: profile.userId,
-    },
-    success_url: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${returnTo}?revisions=cancelled`,
+  const { session, rounds, priceEur } = await createExtraRoundsCheckout(stripe(), {
+    orderId: genId,
+    rounds: body.rounds,
+    email: profile.email,
+    companyLabel: order.companyName || order.ticker || 'report',
+    successUrl: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancelUrl: `${returnTo}?revisions=cancelled`,
+    extraMetadata: { userId: profile.userId },
   });
-  return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+  return json(200, { url: session.url, rounds, priceEur });
 }
 
 // GET /reviews/mine — the reviews this member has written, newest first.
@@ -1014,8 +1002,13 @@ async function getGenerationOrder(event) {
     revisionsUsed: order.revisionsUsed || 0,
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
-    // Publishing freezes the PDF, so the order page must stop offering revisions.
+    // Publishing freezes the PDF, so the order page must stop offering
+    // revisions — and hand edits, which would change it just the same.
     publication: publication.status,
+    editable: publication.status !== 'published' && editing.editableNow(order),
+    currentVersion: editing.currentVersion(order),
+    activity: editing.activityOf(order),
+    editsUsed: order.editsUsed || 0,
   };
 
   // The order page reads `pdfUrl` — a permanent link, not a presigned one.
@@ -1024,10 +1017,7 @@ async function getGenerationOrder(event) {
   }
 
   payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
-    version: entry.version,
-    comments: entry.comments || '',
-    completedAt: entry.completedAt,
-    changes: entry.changes || null,
+    ...editing.historyEntryPayload(entry),
     pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
   }));
   if (payload.revisionHistory.length && order.originalPdfFileName) {
@@ -1083,6 +1073,75 @@ async function postGenerationRevision(event) {
   return json(200, { ok: true, status: claimed.status });
 }
 
+// POST /generations/{genId}/edits — the member's hand edits to the report
+// text, as the next version. Free and unlimited: no round is consumed. The
+// byline is the member's own name; the request cannot say otherwise.
+async function postGenerationEdits(event) {
+  const { deny, genId, order, profile, publication } = await ownedOrder(event);
+  if (deny) return deny;
+
+  if (publication.status === 'published') {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  let request;
+  try {
+    request = validateEditRequest(body);
+  } catch (err) {
+    if (err instanceof EditValidationError) return json(400, { error: err.message });
+    throw err;
+  }
+
+  if (!editing.editableNow(order)) {
+    return json(409, {
+      error: order.status === ordersStore.STATUS.DELIVERED
+        ? 'This report cannot be edited.'
+        : 'This generation is busy right now — wait for it to finish, then try again.',
+      status: order.status,
+    });
+  }
+
+  const claimed = await ordersStore.claimEdit(genId, {
+    edits: request.edits,
+    originals: request.originals,
+    editedBy: String(profile.name || profile.email || '').slice(0, 120),
+    fromVersion: editing.currentVersion(order),
+  });
+  if (!claimed) {
+    return json(409, { error: 'This generation cannot take an edit right now', status: order.status });
+  }
+
+  try {
+    await invokeWorkerAsync();
+  } catch (err) {
+    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+  }
+
+  await store.audit(profile.userId, 'generation-edited', { genId, version: editing.currentVersion(order) + 1 });
+  return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(order) + 1 });
+}
+
+// GET /generations/{genId}/preview — the engine's rendered HTML of the
+// current version, for the text editor on the order page.
+async function getGenerationPreview(event) {
+  const { deny, order } = await ownedOrder(event);
+  if (deny) return deny;
+
+  const result = await editing.loadPreviewHtml(order);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'private, max-age=300',
+      'x-report-version': String(editing.currentVersion(order)),
+    },
+    body: result.html,
+  };
+}
+
 // GET /generations — every run this member has started, newest first. Without
 // it the order page was reachable only from the delivery email.
 async function listGenerations(event) {
@@ -1136,12 +1195,13 @@ async function postGenerationSubmit(event) {
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
-  // A fork with no revision on it is somebody else's analysis with a new name on
-  // the cover. The whole point of deriving is what you add, so at least one
-  // revision has to have landed before it can be published.
-  if (order.forkedFrom && !(order.revisionsUsed > 0)) {
+  // A fork with nothing changed on it is somebody else's analysis with a new
+  // name on the cover. The whole point of deriving is what you add, so at
+  // least one revision or hand edit has to have landed before it can be
+  // published.
+  if (order.forkedFrom && !(order.revisionsUsed > 0 || order.editsUsed > 0)) {
     return json(409, {
-      error: 'Revise this analysis at least once before publishing it — a fork with no revision is the analysis you derived it from',
+      error: 'Revise or edit this analysis at least once before publishing it — a fork with no changes is the analysis you derived it from',
     });
   }
 
@@ -1937,9 +1997,7 @@ async function createForkOrder(session) {
     forkedFrom: parentGenId,
     analystName: profile?.name || undefined,
     ...(obligation ? {} : { visibility: 'private' }),
-    revisionsAllowed: publishes
-      ? limitsFor(profile).revisions
-      : (Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3),
+    revisionsAllowed: publishes ? limitsFor(profile).revisions : FORK_REVISIONS_INCLUDED,
   });
 
   if (profile) {
@@ -1964,6 +2022,10 @@ async function createForkOrder(session) {
 // the publish obligation. Signed out, or as a reader, it is a private report
 // that owes nothing — the same split the paid generation already makes.
 const FORK_FEE_EUR = Number(process.env.FORK_FEE_EUR || '') || 10;
+// Revision rounds a bought fork comes with when the buyer does not publish
+// (a publishing analyst gets their tier's allowance instead). Its own number,
+// not the €5 ready+/fresh+ add-on's: a fork is a €15 purchase.
+const FORK_REVISIONS_INCLUDED = Number.parseInt(process.env.FORK_REVISIONS_INCLUDED || '', 10) || 3;
 
 async function postAnalysisForkCheckout(event) {
   const now = requestNow(event);
@@ -2718,6 +2780,8 @@ const AUTHED_ROUTES = {
   'GET /generations/{genId}': getGeneration,
   'GET /generations/{genId}/order': getGenerationOrder,
   'POST /generations/{genId}/revisions': postGenerationRevision,
+  'POST /generations/{genId}/edits': postGenerationEdits,
+  'GET /generations/{genId}/preview': getGenerationPreview,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
   'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,

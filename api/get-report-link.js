@@ -1,5 +1,6 @@
 const Stripe = require('stripe');
 const { getCatalogReport } = require('../server/catalog-client');
+const { isCompletedCheckout, isRevisionsOnly } = require('../server/checkout');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).end();
@@ -34,6 +35,10 @@ module.exports = async (req, res) => {
 
     res.json({
       type: 'existing',
+      // Revisions bought on a free report: the page must not present the
+      // PDF as the purchase.
+      revisionsOnly: isRevisionsOnly(session),
+      revisionsAllowed: Number(session.metadata?.revisionsAllowed || 0),
       reportName: report.name,
       ticker: report.ticker,
       reportDate: report.reportDate,
@@ -48,7 +53,3 @@ module.exports = async (req, res) => {
     res.status(500).json({ error: 'Failed' });
   }
 };
-
-function isCompletedCheckout(session) {
-  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
-}

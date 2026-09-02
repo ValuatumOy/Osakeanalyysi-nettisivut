@@ -28,11 +28,19 @@ emphasis, assumptions, peer set and valuation method, but cannot invent facts or
 rewrite supplied financial data. Rating is derived arithmetically from the target
 price — "make this a SELL" only lands as an upstream assumption change.
 
-**Consequence for us: we never edit report content.** The published artefact is
-always an engine PDF from a specific `jobId`. That keeps
-[report-fact-provenance](../../.claude/memory) intact and keeps the compliance
-story simple: every published claim is traceable to an engine job and its comment
-chain.
+Since 31.8.2026 the analyst can also **edit the report text by hand** on the
+order page — click a paragraph, change it, save — and the engine renders that
+as a version of its own in seconds (`POST /jobs/{jobId}/edits`, no AI pass).
+Later AI revisions keep hand-edited paragraphs word for word. See
+[text-editing.md](text-editing.md).
+
+**Consequence for us: we never edit report content ourselves.** The published
+artefact is always an engine PDF from a specific `jobId`, whether the text in
+it was written by the AI or typed by the analyst — a hand edit is an engine job
+like any other, with the edited fields and the analyst's name on its change
+memo. That keeps [report-fact-provenance](../../.claude/memory) intact and
+keeps the compliance story simple: every published claim is traceable to an
+engine job and its comment chain.
 
 ## Publication surface — recommendation
 

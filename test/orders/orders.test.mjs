@@ -116,3 +116,31 @@ test('REVISING is a pending status the worker sweep picks up', (t) => {
   assert.equal(pending.length, 1);
   assert.equal(pending[0].id, 'cs_8');
 });
+
+test('claimEdit succeeds from DELIVERED with no revisions purchased — edits are free', (t) => {
+  const statePath = isolate(t);
+  orders.create({ id: 'cs_edit', status: orders.STATUS.DELIVERED, jobId: 'job_base', revisionsAllowed: 0 }, statePath);
+  const edit = { edits: { 'recommendation/prose/0': 'BUY.' }, originals: { 'recommendation/prose/0': 'HOLD.' }, editedBy: 'Maija', fromVersion: 1 };
+
+  const claimed = orders.claimEdit('cs_edit', edit, statePath);
+  assert.equal(claimed.status, orders.STATUS.REVISING);
+  assert.deepEqual(claimed.pendingEdit, edit);
+  assert.equal(claimed.pendingRevisionComment, null);
+  assert.equal(claimed.revisionsUsed, 0);
+});
+
+test('claimEdit refuses while the order is busy, so two tabs cannot start two edit jobs', (t) => {
+  const statePath = isolate(t);
+  orders.create({ id: 'cs_edit2', status: orders.STATUS.DELIVERED, jobId: 'job_base' }, statePath);
+  assert.ok(orders.claimEdit('cs_edit2', { edits: { 'a/b': 'x' } }, statePath));
+  assert.equal(orders.claimEdit('cs_edit2', { edits: { 'a/b': 'y' } }, statePath), null);
+  assert.equal(orders.claimRevision('cs_edit2', 'and a revision', statePath), null);
+});
+
+test('an order that starts delivered records its job as the original one', (t) => {
+  const statePath = isolate(t);
+  const order = orders.create({ id: 'cs_ready', origin: 'ready', status: orders.STATUS.DELIVERED, jobId: 'job_base' }, statePath);
+  assert.equal(order.originalJobId, 'job_base');
+  assert.equal(order.editsUsed, 0);
+  assert.equal(order.pendingEdit, null);
+});

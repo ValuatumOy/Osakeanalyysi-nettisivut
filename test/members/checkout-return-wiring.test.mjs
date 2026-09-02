@@ -16,8 +16,10 @@ import path from 'node:path';
 const ROOT = fileURLToPath(new URL('../..', import.meta.url));
 
 const BACKENDS = [
-  'server/index.js',
   'server/lambda/members.js',
+  // The report shop's session builders, shared by the Vercel functions and
+  // the Express server.
+  'server/checkout.js',
   'api/create-checkout.js',
   'api/create-fresh-checkout.js',
   // Buying more revision rounds on an order rides in this one, the Vercel
@@ -49,7 +51,9 @@ function frontendSources() {
 // ?a=1&b=2 and #c=3 alike: the fragment is how the subscription flows come back.
 function returnParams(src) {
   const names = new Set();
-  for (const m of src.matchAll(/(?:success_url|cancel_url):\s*`([^`]+)`/g)) {
+  // Both the Stripe parameter names and the camel-cased options the shared
+  // builder in server/checkout.js takes them through.
+  for (const m of src.matchAll(/(?:success_url|cancel_url|successUrl|cancelUrl):\s*`([^`]+)`/g)) {
     const url = m[1];
     const query = url.includes('?') ? url.slice(url.indexOf('?') + 1).split('#')[0] : '';
     const hash = url.includes('#') ? url.slice(url.indexOf('#') + 1) : '';

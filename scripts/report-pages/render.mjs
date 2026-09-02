@@ -8,7 +8,7 @@
 // valuatum-page-mode) so check.mjs can verify a built page against the page-owner rule
 // without re-rendering it.
 import fs from 'node:fs';
-import { reportTitle } from '../seo-title.mjs';
+import { reportTitle, companyTitle } from '../seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
 import { reportDescription } from '../seo-description.mjs';
 import path from 'node:path';
@@ -23,7 +23,21 @@ const NEW_REPORT_PRICE = 50;
 // ── helpers ────────────────────────────────────────────────────────────────
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = (s) => esc(s);
-export const shortName = (n) => String(n).replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|N\.V\.|S\.A\.|Group|Holdings?)$/i, '').trim();
+// The same suffix list scripts/redescribe-report-pages.mjs strips, so a page the
+// sync rebuilds gets the description the SEO guard expects ("Wärtsilä Oyj",
+// not "Wärtsilä Oyj Abp").
+// Strips until nothing is left to strip ("Wärtsilä Oyj Abp" → "Wärtsilä"):
+// the guard's script shortens whatever name it reads off the page once more,
+// so the page has to carry the name that no further strip can change.
+const SUFFIX = /,?\s+(Inc\.?|Oyj|Abp|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|A\/S|N\.V\.|S\.A\.|Group|Holdings?)\.?$/i;
+export const shortName = (n) => {
+  let name = String(n).trim();
+  for (;;) {
+    const next = name.replace(SUFFIX, '').trim();
+    if (!next || next === name) return name;
+    name = next;
+  }
+};
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
 const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
@@ -462,16 +476,29 @@ export function renderPage(d, cat, all) {
   // the title and the card art. The plain <meta name="description"> is deliberately NOT
   // changed here -- that is the Google snippet, and whether the rating belongs in it is the
   // wider publication question, not a share-card one.
-  const shareDesc = SHOW_RATINGS_IN_METADATA ? desc : shareDescription(d);
+  // Same switch scripts/redescribe-report-pages.mjs applies: a page with no
+  // report has no rating to hide, so its share card carries the snippet.
+  const shareDesc = (SHOW_RATINGS_IN_METADATA || !hasReport) ? desc : shareDescription(d);
   const sn = shortName(d.companyName);
-  const title = reportTitle(sn, d.ticker, d.headline || {});
+  // A coverage page (no report any more, or none yet) gets the company rule,
+  // the same one the 1,150+ generated overview pages and the title guard use.
+  // The report rule promises "& Price Target", which a page without a report
+  // cannot keep — and the SEO guard failed every PR after the sync rebuilt
+  // Fortum as a coverage page under the report rule.
+  const title = hasReport ? reportTitle(sn, d.ticker, d.headline || {}) : companyTitle(sn, d.ticker);
   const updated = d.reportDate;
   // A rated page gets the share card built for it by scripts/build-og-images.mjs; an
   // unrated overview page has nothing specific to put on one and keeps the default.
   const ogImage = hasReport ? `${SITE}/images/og/${d.slug}.png` : `${SITE}/images/og-image.png`;
   const pdfHref = pdfHrefOf(cat);
+  // A free report that the engine can still revise also sells revisions on
+  // its own. The button ships hidden; js/script.js reveals and prices it once
+  // the live pricing says the tier is on sale.
+  const revisionsCta = isFree && cat?.revisable
+    ? ` <button type="button" class="btn btn-outline" data-buy-revisions="${attr(d.id)}" style="border-color:rgba(255,255,255,0.3); color:white;" hidden>Create a revision</button>`
+    : '';
   const downloadCta = isFree && pdfHref
-    ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>`
+    ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>${revisionsCta}`
     : hasReport
       ? `<a href="#unlock" class="btn btn-primary">Get the ready report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
       : `<a href="#generate" class="btn btn-gold">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
@@ -627,6 +654,7 @@ export function renderPage(d, cat, all) {
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; text-align:center;">
             <p style="font-size:var(--text-md); font-weight:300; color:white; margin-bottom:1rem;">Download the full ${esc(sn)} report as a formatted PDF — free.</p>
             <a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" download>Download free PDF</a>
+            ${cat?.revisable ? `<button type="button" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3); color:white; margin-left:0.75rem;" data-buy-revisions="${attr(d.id)}" hidden>Create a revision</button>` : ''}
           </div>
         </section>`);
     }
@@ -807,8 +835,9 @@ export function renderCards(companies, companyPageCatalog) {
     const pdfUrl = pdfHrefOf(cat) || '';
     const price = isFree ? 'Free' : `€${Number(cat.price || 20).toFixed(0)}`;
     const primaryCta = isFree
-      ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>`
-      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report</button>`;
+      ? `<a class="btn btn-primary" href="${attr(pdfUrl)}" target="_blank" rel="noopener" download>Download free PDF</a>${cat.revisable ? `
+            <button class="btn btn-outline-dark" data-buy-revisions="${attr(doc.id)}" hidden>Create a revision</button>` : ''}`
+      : `<button class="btn btn-primary" data-buy-report="${attr(doc.id)}" data-revisable="${cat.revisable ? '1' : ''}">Buy ready report — ${esc(price)}</button>`;
     return `<article class="report-card" role="listitem" id="report-${attr(doc.id)}" data-page-url="/${attr(pageUrl)}" data-name="${attr(name)}" data-ticker="${attr(ticker)}" data-exchange="${attr(exchange)}" data-sector="${attr(sector)}" data-date="${attr(dateIso)}" data-free="${isFree ? '1' : ''}" tabindex="0" aria-label="Open ${attr(name)} report page">
           <div>
             <div class="rc-eyebrow"><span class="rc-badge${isFree ? ' rc-badge-free' : ''}">${isFree ? 'Free report' : 'Ready report'}</span><span class="rc-date">${esc(formatReportDate(dateIso))}</span></div>
@@ -820,7 +849,7 @@ export function renderCards(companies, companyPageCatalog) {
           <div class="rc-actions">
             <div><div class="rc-price">${esc(price)}</div><div class="rc-price-note">Instant PDF download</div></div>
             ${primaryCta}
-            <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report</button>
+            <button class="btn btn-outline-dark" data-generate-company="${attr(name)}" data-generate-ticker="${attr(ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(0)}</button>
             <a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="/${attr(pageUrl)}">Open report page</a>
           </div>
         </article>`;

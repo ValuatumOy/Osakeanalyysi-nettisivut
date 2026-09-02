@@ -62,6 +62,10 @@ export class ApiStack extends Stack {
         SECRETS_SSM_PREFIX: config.secretsPrefix,
         SITE_URL: config.siteUrl,
         WORKER_FUNCTION_NAME: props.workerFunction.functionName,
+        // The order page's text editor asks this API for the rendered report
+        // (GET /api/orders/{id}/preview), which reads the job from the engine.
+        // Rendering itself stays with the worker; this is a read.
+        ...(config.pdfEngineUrl ? { PDF_ENGINE_URL: config.pdfEngineUrl } : {}),
       },
     });
 
@@ -69,6 +73,12 @@ export class ApiStack extends Stack {
     props.catalogStateTable.grantReadWriteData(apiFunction);
     props.pdfBucket.grantReadWrite(apiFunction);
     props.workerFunction.grantInvoke(apiFunction);
+    if (config.engineFunctionArn) {
+      apiFunction.addToRolePolicy(new iam.PolicyStatement({
+        actions: ['lambda:InvokeFunctionUrl', 'lambda:InvokeFunction'],
+        resources: [config.engineFunctionArn],
+      }));
+    }
     apiFunction.addToRolePolicy(new iam.PolicyStatement({
       actions: ['ssm:GetParameters', 'ssm:GetParameter'],
       resources: [
@@ -106,6 +116,8 @@ export class ApiStack extends Stack {
       [apigwv2.HttpMethod.POST, '/api/report-download'],
       [apigwv2.HttpMethod.GET, '/api/orders/{id}'],
       [apigwv2.HttpMethod.POST, '/api/orders/{id}/revisions'],
+      [apigwv2.HttpMethod.POST, '/api/orders/{id}/edits'],
+      [apigwv2.HttpMethod.GET, '/api/orders/{id}/preview'],
       [apigwv2.HttpMethod.GET, '/api/admin/reports'],
       [apigwv2.HttpMethod.POST, '/api/admin/upload-url'],
       [apigwv2.HttpMethod.POST, '/api/admin/publish'],

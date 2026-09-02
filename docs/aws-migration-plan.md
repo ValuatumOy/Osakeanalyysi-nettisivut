@@ -1,5 +1,12 @@
 # Plan: moving the report backend from files.valuatum.com to AWS (CDK)
 
+> **Status (2026-09-02): complete.** The migration shipped in July 2026 and
+> the box is decommissioned. `server/index.js`, its nginx snippet and its own
+> `package.json` were deleted; the duplicate Stripe routes went with them, and
+> every Checkout Session the shop opens is now built in `server/checkout.js`.
+> The rest of this document is the plan as it was executed, kept for the
+> design rationale.
+
 Decisions locked in (2026-07-30): same AWS account as pdf-report-engine; PDFs move
 to S3; light admin upload page at `www.aiequityreports.com/admin`; no
 backwards-compatibility for old PDF links; all CDK constructs named

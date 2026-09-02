@@ -19,6 +19,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { fetchLiveCatalog } from '../live-catalog.mjs';
+import { fetchAnalystIndex, analystClause } from '../analyst-index.mjs';
 import { extractReport } from './extract.mjs';
 import { loadEnv } from './openrouter.mjs';
 import { loadContentDocs, resolveState, PAGES_DIR } from './owners.mjs';
@@ -91,11 +92,22 @@ async function main() {
   const { companies } = resolveState(catalog, loadContentDocs());
   const pageDocs = [...companies.values()].map((c) => (c.owner ? c.owner.doc : coverageDocFrom(c.newestDoc)));
 
+  // The meta description mentions the analyst reports a company has, from the
+  // same index scripts/redescribe-report-pages.mjs reads. Without it every
+  // rebuilt page lost that clause and the SEO guard flagged it on the next PR.
+  const analystIndex = await fetchAnalystIndex();
+  if (!analystIndex) console.warn('  (no analyst index — descriptions will omit analyst counts)');
+
   fs.mkdirSync(PAGES_DIR, { recursive: true });
   const changedPages = [];
   for (const company of companies.values()) {
     const d = company.owner ? company.owner.doc : coverageDocFrom(company.newestDoc);
     const cat = company.owner ? company.owner.cat : null;
+    const clause = analystClause(analystIndex, d.ticker, d.headline?.recommendation);
+    if (clause) {
+      d.analystCount = clause.analysts;
+      d.analystDisagrees = clause.disagrees;
+    }
     const file = path.join(PAGES_DIR, `${company.slug}.html`);
     const changed = writeIfChanged(file, renderPage(d, cat, pageDocs));
     if (changed) changedPages.push(company.slug);

@@ -68,7 +68,7 @@ Roles, in short:
 | **Vercel functions** (`api/*.js`) | Stripe checkout sessions, the Stripe webhook, post-payment download links, and thin proxies to the AWS catalog/pricing/search APIs. |
 | **AWS API Lambda** (`server/lambda/api.js`) | Public catalog reads, purchase sync from the webhook, Wisdom company search, Stripe pricing, and the admin CRUD routes. |
 | **AWS Worker Lambda** (`server/lambda/worker.js`) | The reconciler (fresh-order state machine) on a 5-minute sweep plus push invocations, and the daily reaper. |
-| **`server/index.js`** | The legacy always-on Express app that used to run under PM2 on `files.valuatum.com`. Kept for local development; production is the Lambdas. |
+| **`server/*.js`** | The modules the Lambdas and the Vercel functions share: catalog, orders, checkout session builders, Stripe pricing, engine client, reconciler, reaper. |
 
 The AWS backend replaced an EC2 box in July 2026 — see
 [`docs/aws-migration-plan.md`](docs/aws-migration-plan.md) for the full design
@@ -132,20 +132,16 @@ npx serve -l 5173 .        # http://localhost:5173
 Front-end calls to `/api/*` are not served this way. To exercise them, run the
 Vercel dev server instead (`vercel dev`), or point the page at a deployed API.
 
-### Run the legacy Express backend locally
+### The backend locally
 
-```bash
-cd server
-npm install
-cp .env.example .env       # fill in the values you need
-node index.js              # http://localhost:3001
-```
-
-Without `ORDERS_TABLE` / `REPORT_PDF_BUCKET` set, the backend uses local JSON
-files (`server/data/`) and a local PDF directory instead of DynamoDB and S3, so
-it runs without AWS credentials for catalog work. Note that delivery of a fresh
-report deliberately has **no** local-disk path: `deliver()` fails loudly if
-`REPORT_PDF_BUCKET` is unset.
+There is no local server process any more: the Express app that used to run
+on `files.valuatum.com` was retired with the AWS migration. The backend
+modules under `server/` are exercised by the test suites (`npm run test:*`),
+which fake DynamoDB, S3 and Stripe. Without `ORDERS_TABLE` /
+`REPORT_PDF_BUCKET` set, the catalog and orders modules fall back to local
+JSON files (`server/data/`), which is what the tests rely on. Delivery of a
+fresh report deliberately has **no** local-disk path: `deliver()` fails
+loudly if `REPORT_PDF_BUCKET` is unset.
 
 ---
 
@@ -155,8 +151,8 @@ Two `.env.example` files document the full set:
 
 - [`.env.example`](.env.example) — what Vercel needs (Stripe keys, SES, the
   catalog API URL and sync secret, plus the local generator settings).
-- [`server/.env.example`](server/.env.example) — the backend's full surface,
-  annotated per subsystem.
+- [`server/.env.example`](server/.env.example) — the Lambda backend's full
+  surface, annotated per subsystem (set by CDK / SSM in AWS).
 
 The ones worth knowing:
 
@@ -335,9 +331,10 @@ See [`blog-system/PIPELINE.md`](blog-system/PIPELINE.md) for the runbook and
   management (upload, publish, edit including free status, delete) plus the
   members side — analyst publications, users, earnings and payouts, activity
   stats, and live promo codes. One password (`admin-upload-password`, kept in
-  `localStorage`) unlocks both APIs. To point it at the test stage:
-  `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')` and
-  `localStorage.setItem('aerAdminMembersApiBase', 'https://members-test.aiequityreports.com')`.
+  `localStorage`) unlocks both APIs. On `test.aiequityreports.com` it talks to
+  the test-stage APIs by itself. To drive a local preview against the test
+  stage: `localStorage.setItem('aerAdminApiBase', 'https://api-test.aiequityreports.com')`
+  and `localStorage.setItem('aerAdminMembersApiBase', 'https://members-test.aiequityreports.com')`.
 - **`/blog-admin.html`** — the older blog admin, which authenticates through
   `api/auth.js` and works against the GitHub API. Renamed from `admin.html`,
   which read as the site's main admin while sitting next to `/admin`.
