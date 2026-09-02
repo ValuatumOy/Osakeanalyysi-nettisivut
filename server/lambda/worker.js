@@ -13,14 +13,25 @@
 const { ensureSecrets } = require('../aws/secrets');
 
 exports.handler = async (event) => {
+  const action = event?.action || 'tick';
+  try {
+    return await run(action);
+  } catch (err) {
+    // Rethrown so the invocation still counts as a Lambda error (the
+    // CloudWatch alarm watches that); the email is the part a person reads.
+    console.error(`worker ${action} failed:`, err);
+    await require('../email').reportError(`worker ${action}`, err);
+    throw err;
+  }
+};
+
+async function run(action) {
   await ensureSecrets();
 
   // Required late so env/secrets are in place before module-level config reads.
   const reconciler = require('../reconciler');
   const reaper = require('../reaper');
   const catalogAws = require('../aws/catalog-aws');
-
-  const action = event?.action || 'tick';
 
   if (action === 'reap') {
     const summary = await reaper.sweep();
@@ -37,7 +48,8 @@ exports.handler = async (event) => {
     await catalogAws.persistWeekSelection(catalog, state);
   } catch (err) {
     console.warn('worker: week-selection persistence failed:', err.message);
+    await require('../email').reportError('worker: week-selection persistence', err);
   }
 
   return { ran };
-};
+}

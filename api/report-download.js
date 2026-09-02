@@ -7,6 +7,7 @@
 // backend. Nothing here is cacheable.
 
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { getCatalogReport, requestReportDownload } = require('../server/catalog-client');
 const { isCompletedCheckout } = require('../server/checkout');
 
@@ -39,6 +40,7 @@ module.exports = async (req, res) => {
     res.redirect(302, url);
   } catch (err) {
     console.error('report-download:', err.message);
+    await reportError('vercel report-download', err, { sessionId });
     res.status(500).json({ error: 'Failed' });
   }
 };

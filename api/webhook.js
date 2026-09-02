@@ -1,6 +1,6 @@
 const Stripe = require('stripe');
 const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
-const { sendReportEmail, sendFreshConfirmEmail } = require('../server/email');
+const { sendReportEmail, sendFreshConfirmEmail, reportError } = require('../server/email');
 const { isCompletedCheckout, isRevisionsOnly, orderPageUrl, siteUrl } = require('../server/checkout');
 
 // Vercel: disable body parser so Stripe signature verification receives the raw body.
@@ -89,6 +89,7 @@ const handler = async (req, res) => {
           }
         } catch (emailErr) {
           console.error('Fresh confirmation email failed:', emailErr.message, { sessionId: session.id });
+          await reportError('vercel webhook: fresh confirmation email', emailErr, { sessionId: session.id, customer: email });
         }
         // Admin notifications now come from the reconciler (success + failure),
         // not from here — generation hasn't run yet at webhook time.
@@ -96,6 +97,7 @@ const handler = async (req, res) => {
         const report = await getCatalogReport(reportId);
         if (!report) {
           console.error('Purchase sync skipped: unknown report id', { sessionId: session.id, reportId });
+          await reportError('vercel webhook: purchase sync', new Error(`unknown report id ${reportId}`), { sessionId: session.id, customer: email });
         } else {
           await recordCatalogPurchase({
             type: 'existing',
@@ -129,6 +131,7 @@ const handler = async (req, res) => {
             }
           } catch (emailErr) {
             console.error('Report email failed:', emailErr.message, { sessionId: session.id, reportId });
+            await reportError('vercel webhook: report email', emailErr, { sessionId: session.id, reportId, customer: email, note: 'The purchase is recorded; the buyer has no download link until this is resent.' });
           }
         }
       }

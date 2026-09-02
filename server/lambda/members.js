@@ -18,6 +18,7 @@ const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
 const { createExtraRoundsCheckout } = require('../checkout');
+const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -1557,29 +1558,21 @@ async function sendAnalysisReceipt(session) {
   const link = `${base}?${isFork ? 'forked' : 'bought'}=${encodeURIComponent(genId)}&session_id=${encodeURIComponent(session.id)}`;
   const company = session.metadata?.companyId || 'the company';
   try {
-    const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
-    const ses = new SESv2Client({ region: process.env.AWS_REGION || 'eu-west-1' });
-    await ses.send(new SendEmailCommand({
-      FromEmailAddress: process.env.FROM_EMAIL || 'reports@valuatum.com',
-      Destination: { ToAddresses: [to] },
-      Content: {
-        Simple: {
-          Subject: { Data: `Your analyst analysis of ${company}`, Charset: 'UTF-8' },
-          Body: {
-            Html: {
-              Data: `<p>Thank you — your purchase is complete.</p>`
-                + `<p><a href="${link}">Open your analyst analysis of ${company}</a></p>`
-                + `<p>This link stays valid: it re-checks your purchase and opens the PDF each time.</p>`,
-              Charset: 'UTF-8',
-            },
-          },
-        },
-      },
-    }));
+    // The author's name is on the publication row, not in the checkout
+    // metadata; best-effort, the receipt reads fine without it.
+    let analystName = '';
+    try {
+      analystName = (await store.findPublicationIndex(genId))?.analystName || '';
+    } catch (_) { /* name is decoration */ }
+    await email.sendAnalysisPurchaseEmail(to, { company, analystName, link, fork: isFork });
   } catch (err) {
     // Stripe retries the whole event on a non-200, which would re-record the
-    // sale; a mail that did not go out is not worth that.
+    // sale; a mail that did not go out is not worth that. The admin hears
+    // about it instead, since the buyer may now have nothing to open.
     console.error('analysis receipt email failed:', err);
+    await email.reportError('members: analysis purchase email', err, {
+      sessionId: session.id, genId, customer: to,
+    });
   }
 }
 
@@ -2851,6 +2844,10 @@ exports.handler = async (event) => {
     return json(404, { error: 'Not found' });
   } catch (err) {
     console.error(`${routeKey}:`, err);
+    await email.reportError(`members ${routeKey}`, err, {
+      requestId: event.requestContext?.requestId,
+      query: event.rawQueryString,
+    });
     return json(500, { error: 'Internal error' });
   }
 };

@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { reportError } = require('../server/email');
 const { getCatalogReport } = require('../server/catalog-client');
 const { CheckoutError, createReadyReportCheckout } = require('../server/checkout');
 
@@ -16,6 +17,7 @@ module.exports = async (req, res) => {
   } catch (err) {
     if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });
     console.error('create-checkout:', err.message);
+    await reportError('vercel create-checkout', err, { reportId: req.body?.reportId });
     res.status(500).json({ error: 'Checkout failed' });
   }
 };

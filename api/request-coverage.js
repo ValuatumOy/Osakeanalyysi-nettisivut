@@ -1,4 +1,4 @@
-const { sendCoverageRequest, sendInstitutionRequest } = require('../server/email');
+const { sendCoverageRequest, sendInstitutionRequest, reportError } = require('../server/email');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error('request-coverage:', error.message);
+    await reportError('vercel request-coverage', error);
     return res.status(500).json({ error: 'Request could not be sent' });
   }
 };

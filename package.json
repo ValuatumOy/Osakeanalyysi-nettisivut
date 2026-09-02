@@ -12,6 +12,7 @@
     "report:thumbs": "python3 scripts/report-thumbnails.py",
     "report:thumbs:check": "python3 scripts/report-thumbnails.py --check",
     "test:api": "node --test test/api/*.test.mjs",
+    "test:email": "node --test test/email/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",
     "test:checkout": "node --test test/checkout/*.test.mjs",

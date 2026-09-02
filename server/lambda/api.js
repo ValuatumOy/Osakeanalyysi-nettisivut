@@ -16,7 +16,7 @@ const { ensureSecrets } = require('../aws/secrets');
 const { searchCompanies } = require('../search');
 const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
-const { sendAdminAlert } = require('../email');
+const { sendAdminAlert, reportError } = require('../email');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
 const editing = require('../order-editing');
 
@@ -691,6 +691,10 @@ exports.handler = async (event) => {
     return json(404, { error: 'Not found' });
   } catch (err) {
     console.error(`${routeKey}:`, err);
+    await reportError(`api ${routeKey}`, err, {
+      requestId: event.requestContext?.requestId,
+      query: event.rawQueryString,
+    });
     return json(500, { error: 'Internal error' });
   }
 };
