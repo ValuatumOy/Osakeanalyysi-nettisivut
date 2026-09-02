@@ -1,5 +1,5 @@
 // AiEquityReportsApi Lambda — API Gateway HTTP API (payload v2) handler.
-// Replaces the Express app in server/index.js for the routes that survive the
+// Replaces the retired Express app (server/index.js) for the routes that survive the
 // migration: public catalog reads, the purchase-sync endpoint the
 // Vercel webhook calls, the Wisdom search proxy, Stripe pricing, and the admin
 // page's report management. Reuses the existing server/ modules; the
@@ -84,7 +84,7 @@ function emitAdminUnauthorized() {
   }));
 }
 
-// Same public shape server/index.js exposes today — the Vercel frontend
+// Same public shape the retired Express app exposed — the Vercel frontend
 // normalizes on top of this, so the payload must not change at cutover.
 //
 // One deliberate exception: `pdfUrl` is published only for FREE reports. It is

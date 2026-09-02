@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-// The site's other checkouts (api/create-checkout.js, api/create-fresh-checkout.js,
-// server/index.js) all accept a promotion code. The members Lambda opened four
+// The site's other checkouts (every builder in server/checkout.js) all accept
+// a promotion code. The members Lambda opened four
 // sessions and accepted none, so a discount code — or a 100% code used to test
 // a paid flow in production — worked everywhere except on member purchases.
 const src = readFileSync(new URL('../../server/lambda/members.js', import.meta.url), 'utf8');

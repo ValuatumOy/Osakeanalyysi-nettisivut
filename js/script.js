@@ -580,13 +580,15 @@ function formatEurAmount(cents) {
   return '€' + amount.toFixed(Number.isInteger(amount) ? 0 : 2);
 }
 
+// kind: 'ready' | 'fresh' | 'free'. A free report has no base price — the
+// buyer pays for the revisions alone — so its tier is the whole purchase.
 function getRevisionsChoice(kind, revisable) {
   var pricing = window.SITE_PUBLIC_PRICING;
   var unavailable = { available: false };
   if (!pricing || !pricing.revisionsEnabled) return unavailable;
-  if (kind === 'ready' && revisable === false) return unavailable;
-  var base = kind === 'fresh' ? pricing.fresh : pricing.ready;
-  var tier = kind === 'fresh' ? pricing.freshRevisions : pricing.readyRevisions;
+  if ((kind === 'ready' || kind === 'free') && revisable === false) return unavailable;
+  var base = kind === 'fresh' ? pricing.fresh : kind === 'free' ? { unitAmount: 0 } : pricing.ready;
+  var tier = kind === 'fresh' ? pricing.freshRevisions : kind === 'free' ? pricing.freeRevisions : pricing.readyRevisions;
   if (!base || !tier) return unavailable;
   return {
     available: true,
@@ -781,6 +783,37 @@ function bindReadyReportCheckoutLink(link) {
     }
   });
 }
+
+// "Add revisions" on a free report (report page and catalog card). There is
+// no standard/plus choice to make: the report is already free, so the button
+// is the whole offer and goes straight to checkout. Buttons are baked hidden
+// and only appear once live pricing confirms the tier is on sale.
+(function initFreeReportRevisionsButtons() {
+  var buttons = document.querySelectorAll('[data-buy-revisions]');
+  if (!buttons.length) return;
+
+  function reveal() {
+    var choice = getRevisionsChoice('free', true);
+    buttons.forEach(function (btn) {
+      if (!choice.available) { btn.hidden = true; return; }
+      if (btn.dataset.loading !== '1') {
+        btn.textContent = 'Add ' + choice.revisionsCount + ' revisions \u2014 ' + formatEurAmount(choice.revisionsPrice);
+      }
+      btn.hidden = false;
+    });
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (btn.dataset.loading === '1') return;
+      submitReadyReportCheckout(btn, btn.getAttribute('data-buy-revisions'), true);
+    });
+  });
+
+  reveal();
+  window.addEventListener('site:pricing', reveal);
+})();
 
 (function initCompanyPageCheckoutLinks() {
   document.querySelectorAll('a[href*="/reports.html#report-"], a[href^="reports.html#report-"]')

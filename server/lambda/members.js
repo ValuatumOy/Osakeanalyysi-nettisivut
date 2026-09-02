@@ -15,6 +15,8 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
+const { createExtraRoundsCheckout } = require('../checkout');
+const { revisionsIncluded } = require('../stripe-pricing');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -688,8 +690,8 @@ async function postGenerationFresh(event) {
 // revisionsAllowed is fixed when an order is created, so an analyst or a buyer
 // who runs out has no way forward but to start again. This tops it up; the
 // webhook is what actually raises the number, so an abandoned return trip
-// cannot lose rounds that were paid for.
-const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
+// cannot lose rounds that were paid for. The price comes from the shared
+// checkout module, the same place the anonymous order page gets it.
 
 async function postGenerationRevisionsCheckout(event) {
   const now = requestNow(event);
@@ -709,33 +711,18 @@ async function postGenerationRevisionsCheckout(event) {
   if (!order) return json(404, { error: 'Unknown generation' });
 
   const body = parseBody(event) || {};
-  const rounds = Math.min(10, Math.max(1, Math.round(Number(body.rounds) || 1)));
   const returnTo = auth.frontendUrl(body.returnTo);
 
-  const session = await stripe().checkout.sessions.create({
-    mode: 'payment',
-    allow_promotion_codes: true,
-    ...(profile.email ? { customer_email: profile.email } : {}),
-    line_items: [{
-      quantity: rounds,
-      price_data: {
-        currency: 'eur',
-        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
-        product_data: {
-          name: `Extra revision round — ${order.companyName || order.ticker || 'report'}`,
-          description: 'One more round of steering on a report you already have.',
-        },
-      },
-    }],
-    metadata: {
-      extraRevisions: String(rounds),
-      generationId: genId,
-      userId: profile.userId,
-    },
-    success_url: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${returnTo}?revisions=cancelled`,
+  const { session, rounds, priceEur } = await createExtraRoundsCheckout(stripe(), {
+    orderId: genId,
+    rounds: body.rounds,
+    email: profile.email,
+    companyLabel: order.companyName || order.ticker || 'report',
+    successUrl: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancelUrl: `${returnTo}?revisions=cancelled`,
+    extraMetadata: { userId: profile.userId },
   });
-  return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+  return json(200, { url: session.url, rounds, priceEur });
 }
 
 // GET /reviews/mine — the reviews this member has written, newest first.
@@ -1937,9 +1924,7 @@ async function createForkOrder(session) {
     forkedFrom: parentGenId,
     analystName: profile?.name || undefined,
     ...(obligation ? {} : { visibility: 'private' }),
-    revisionsAllowed: publishes
-      ? limitsFor(profile).revisions
-      : (Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3),
+    revisionsAllowed: publishes ? limitsFor(profile).revisions : revisionsIncluded(),
   });
 
   if (profile) {

@@ -1,57 +1,28 @@
-// Submit a forecast-revision request for a "+ Revisions" order.
+// Submit a forecast-revision request for an order that carries revisions.
 //
 // Same trust model as report-download.js / order-status.js: the Stripe
 // checkout session id is the bearer. This is the one mutating order-page
 // call — everything else the customer sees is read-only progress.
+//
+// Buying more rounds lives in this function too rather than its own,
+// because the Vercel plan is at its twelve-function ceiling — a thirteenth
+// fails at deploy with no build error.
 
 const Stripe = require('stripe');
 const { submitOrderRevision } = require('../server/catalog-client');
+const { CheckoutError, createExtraRoundsCheckout, isCompletedCheckout, orderPageUrl } = require('../server/checkout');
 
-// What one more round of steering costs. Same variable the members Lambda
-// prices its own top-up with, so the two doors never quote different numbers.
-const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
-
-function isCompletedCheckout(session) {
-  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
-}
-
-// Buying more rounds on an order somebody already has.
-//
-// It lives in this function rather than its own because the Vercel plan is at
-// its twelve-function ceiling — a thirteenth fails at deploy with no build
-// error. Same trust model either way: the checkout session id is the bearer.
-//
-// Nothing is credited here. The metadata is what the members webhook reads
-// (addRevisionRounds), and Stripe delivers every completed checkout in the
-// account to that endpoint, so an abandoned return trip cannot lose rounds that
-// were paid for.
-async function buyRounds(req, res, sessionId, session) {
-  const rounds = Math.min(10, Math.max(1, Math.round(Number(req.body?.rounds) || 1)));
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  const site = (process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '');
-  const orderUrl = `${site}/order/index.html?session_id=${encodeURIComponent(sessionId)}`;
-  const company = session.metadata?.company || session.metadata?.ticker || 'your report';
-
-  const created = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    allow_promotion_codes: true,
-    ...(session.customer_details?.email ? { customer_email: session.customer_details.email } : {}),
-    line_items: [{
-      quantity: rounds,
-      price_data: {
-        currency: 'eur',
-        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
-        product_data: {
-          name: `Extra revision round — ${company}`,
-          description: 'One more round of steering on a report you already have.',
-        },
-      },
-    }],
-    metadata: { extraRevisions: String(rounds), generationId: sessionId },
-    success_url: `${orderUrl}&revisions=added`,
-    cancel_url: `${orderUrl}&revisions=cancelled`,
+async function buyRounds(req, res, stripe, sessionId, session) {
+  const orderUrl = orderPageUrl(sessionId);
+  const { session: created, rounds, priceEur } = await createExtraRoundsCheckout(stripe, {
+    orderId: sessionId,
+    rounds: req.body?.rounds,
+    email: session.customer_details?.email,
+    companyLabel: session.metadata?.company || session.metadata?.ticker,
+    successUrl: `${orderUrl}&revisions=added`,
+    cancelUrl: `${orderUrl}&revisions=cancelled`,
   });
-  return res.status(200).json({ url: created.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+  return res.status(200).json({ url: created.url, rounds, priceEur });
 }
 
 module.exports = async (req, res) => {
@@ -72,11 +43,12 @@ module.exports = async (req, res) => {
     if (!isCompletedCheckout(session)) {
       return res.status(402).json({ error: 'Payment not completed' });
     }
-    if (wantsRounds) return await buyRounds(req, res, sessionId, session);
+    if (wantsRounds) return await buyRounds(req, res, stripe, sessionId, session);
 
     const result = await submitOrderRevision(sessionId, comments);
     res.status(200).json(result);
   } catch (err) {
+    if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });
     if (err.status === 404) return res.status(404).json({ error: 'Order not found' });
     if (err.status === 409) return res.status(409).json({ error: err.message });
     if (err.status === 400) return res.status(400).json({ error: err.message });

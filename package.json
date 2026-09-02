@@ -14,6 +14,7 @@
     "test:api": "node --test test/api/*.test.mjs",
     "test:company-pages": "node --test test/company-pages/*.test.mjs",
     "test:catalog": "node --test test/catalog/*.test.mjs",
+    "test:checkout": "node --test test/checkout/*.test.mjs",
     "test:members": "node --test test/members/*.test.mjs",
     "test:orders": "node --test test/orders/*.test.mjs",
     "test:reaper": "node --test test/reaper/*.test.mjs",

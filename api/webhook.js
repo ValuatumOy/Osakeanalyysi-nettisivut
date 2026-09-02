@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
 const { sendReportEmail, sendFreshConfirmEmail } = require('../server/email');
+const { isCompletedCheckout, orderPageUrl, siteUrl } = require('../server/checkout');
 
 // Vercel: disable body parser so Stripe signature verification receives the raw body.
 async function getRawBody(req) {
@@ -81,9 +82,7 @@ const handler = async (req, res) => {
             const withRevisions = session.metadata?.withRevisions === 'true';
             await sendFreshConfirmEmail(email, {
               ...session.metadata,
-              orderUrl: withRevisions
-                ? `${(process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '')}/order/index.html?session_id=${encodeURIComponent(session.id)}`
-                : null,
+              orderUrl: withRevisions ? orderPageUrl(session.id) : null,
             });
           } else {
             console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
@@ -115,14 +114,13 @@ const handler = async (req, res) => {
 
           try {
             if (email) {
-              const siteUrl = (process.env.SITE_URL || 'https://www.aiequityreports.com').replace(/\/$/, '');
               const withRevisions = session.metadata?.withRevisions === 'true';
               // The catalog no longer hands out a URL for a paid report, so the
               // receipt links to the gated download keyed on this session.
               await sendReportEmail(email, {
                 ...report,
-                pdfUrl: `${siteUrl}/api/report-download?session_id=${encodeURIComponent(session.id)}`,
-                orderUrl: withRevisions ? `${siteUrl}/order/index.html?session_id=${encodeURIComponent(session.id)}` : null,
+                pdfUrl: `${siteUrl()}/api/report-download?session_id=${encodeURIComponent(session.id)}`,
+                orderUrl: withRevisions ? orderPageUrl(session.id) : null,
               });
             } else {
               console.warn('Report email skipped: missing customer email', { sessionId: session.id, reportId });
@@ -145,7 +143,3 @@ const handler = async (req, res) => {
 
 module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
-
-function isCompletedCheckout(session) {
-  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
-}
