@@ -8,3 +8,4 @@ server/data/
 infra/cdk.out/
 pdfs/
 .env*
+docs/atlas/cdp-result.png

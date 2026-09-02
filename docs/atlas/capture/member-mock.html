@@ -1,6 +1,195 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const VARIANT = params.get('variant') || 'sub';
+  localStorage.setItem('memberToken', 'mock-token-abc123');
+  localStorage.removeItem('activeGenId');
+  localStorage.removeItem('pendingPlan');
+
+  const REPORTS = [
+    ['nokia-2026-07', 'Nokia Oyj', 'NOKIA.HE', '2026-07-14', '14 July 2026', false, 20, '€20'],
+    ['storaenso-2026-07', 'Stora Enso Oyj', 'STERV.HE', '2026-07-02', '2 July 2026', true, 0, '€20'],
+    ['kone-2026-06', 'KONE Oyj', 'KNEBV.HE', '2026-06-25', '25 June 2026', false, 20, '€20'],
+    ['neste-2026-06', 'Neste Oyj', 'NESTE.HE', '2026-06-18', '18 June 2026', false, 20, '€20'],
+    ['sampo-2026-06', 'Sampo Oyj', 'SAMPO.HE', '2026-06-09', '9 June 2026', false, 20, '€20'],
+    ['equinor-2026-06', 'Equinor ASA', 'EQNR.OL', '2026-06-03', '3 June 2026', true, 0, '€20'],
+    ['volvo-2026-05', 'Volvo AB', 'VOLV-B.ST', '2026-05-27', '27 May 2026', false, 20, '€20'],
+    ['maersk-2026-05', 'A.P. Møller-Mærsk A/S', 'MAERSK-B.CO', '2026-05-19', '19 May 2026', false, 20, '€20'],
+  ].map(([id, companyName, ticker, reportDate, reportDateLabel, isFree, price, priceLabel]) =>
+    ({ id, companyName, ticker, reportDate, reportDateLabel, isFree, price, priceLabel }));
+
+  const ANALYSES = [
+    { genId: 'gen-kone-4411', companyId: 'KNEBV.HE', analystId: 'u2', analyst: 'Aino Virtanen',
+      analystLinkedin: 'https://www.linkedin.com/in/aino-virtanen', publishedAt: '2026-08-21T09:12:00Z',
+      priceEur: 12, reviewCount: 6, peerScore: 4.2, averageScore: 4.4, free: false, publicFree: false },
+    { genId: 'gen-neste-3902', companyId: 'NESTE.HE', analystId: 'u3', analyst: 'Henrik Lindqvist',
+      analystLinkedin: 'https://www.linkedin.com/in/henrik-lindqvist', publishedAt: '2026-08-14T14:40:00Z',
+      priceEur: 9, reviewCount: 4, peerScore: 4.0, averageScore: 4.1, free: false, publicFree: false },
+    { genId: 'gen-sampo-3771', companyId: 'SAMPO.HE', analystId: 'u4', analyst: 'Marja Koskinen',
+      analystLinkedin: null, publishedAt: '2026-08-06T08:05:00Z',
+      priceEur: 0, reviewCount: 3, peerScore: 3.8, averageScore: 3.9, free: true, publicFree: true },
+    { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', analystId: 'u5', analyst: 'Oskar Bergström',
+      analystLinkedin: 'https://www.linkedin.com/in/oskar-bergstrom', publishedAt: '2026-07-29T11:30:00Z',
+      priceEur: 15, reviewCount: 2, peerScore: 3.6, averageScore: 3.5, free: false, publicFree: false },
+    { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', analystId: 'u1', analyst: 'Elina Salminen',
+      analystLinkedin: 'https://www.linkedin.com/in/elina-salminen', publishedAt: '2026-07-16T07:55:00Z',
+      priceEur: 10, reviewCount: 5, peerScore: 4.1, averageScore: 4.2, free: false, publicFree: false },
+  ];
+
+  const ANALYST_GENERATIONS = [
+    { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', companyName: 'Nokia Oyj', startedAt: '2026-07-16T06:10:00Z',
+      status: 'DELIVERED', publication: 'published', private: false, revisionsAllowed: 5, revisionsUsed: 3,
+      priceEur: 10, promptsPublic: true },
+    { genId: 'gen-storaenso-4820', companyId: 'STERV.HE', companyName: 'Stora Enso Oyj', startedAt: '2026-08-27T05:40:00Z',
+      status: 'DELIVERED', publication: 'none', private: false, revisionsAllowed: 5, revisionsUsed: 2,
+      priceEur: 0, promptsPublic: false },
+  ];
+
+  const SUB_GENERATIONS = [
+    { genId: 'gen-neste-5120', companyId: 'NESTE.HE', companyName: 'Neste Oyj', startedAt: '2026-08-19T09:20:00Z',
+      status: 'DELIVERED', publication: 'none', private: true, revisionsAllowed: 2, revisionsUsed: 1,
+      priceEur: 0, promptsPublic: false },
+    { genId: 'gen-kone-4990', companyId: 'KNEBV.HE', companyName: 'KONE Oyj', startedAt: '2026-07-11T10:02:00Z',
+      status: 'DELIVERED', publication: 'none', private: true, revisionsAllowed: 2, revisionsUsed: 2,
+      priceEur: 0, promptsPublic: false },
+  ];
+
+  const EARNINGS = {
+    totals: {
+      amount: 0, share: 0.5,
+      pending: 0, eligible: 0, paid: 0, clawback: 0,
+      salesCount: 4, grossSales: 420,
+      sharePending: 30, shareEligible: 60, sharePaid: 120, shareClawback: 0,
+      readsCount: 6, readPending: 1.5, readEligible: 3, readPaid: 4.5, readClawback: 0,
+    },
+    entries: [
+      { companyId: 'NOKIA.HE', publishedAt: '2026-07-16T07:55:00Z', state: 'paid', amount: 0, reason: null },
+    ],
+    saleEntries: [
+      { saleId: 's1', genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', soldAt: '2026-06-12T12:00:00Z', grossEur: 120, amount: 60, state: 'paid', reason: null },
+      { saleId: 's2', genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', soldAt: '2026-06-20T12:00:00Z', grossEur: 120, amount: 60, state: 'paid', reason: null },
+      { saleId: 's3', genId: 'gen-storaenso-3510', companyId: 'STERV.HE', soldAt: '2026-08-05T12:00:00Z', grossEur: 120, amount: 60, state: 'eligible', reason: null },
+      { saleId: 's4', genId: 'gen-kone-4411', companyId: 'KNEBV.HE', soldAt: '2026-08-28T12:00:00Z', grossEur: 60, amount: 30, state: 'pending', reason: null },
+    ],
+    readEntries: [
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-20T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-24T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-nokia-3288', companyId: 'NOKIA.HE', openedAt: '2026-07-30T12:00:00Z', amount: 1.5, state: 'paid', reason: null },
+      { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', openedAt: '2026-08-11T12:00:00Z', amount: 1.5, state: 'eligible', reason: null },
+      { genId: 'gen-storaenso-3510', companyId: 'STERV.HE', openedAt: '2026-08-15T12:00:00Z', amount: 1.5, state: 'eligible', reason: null },
+      { genId: 'gen-kone-4411', companyId: 'KNEBV.HE', openedAt: '2026-08-29T12:00:00Z', amount: 1.5, state: 'pending', reason: null },
+    ],
+  };
+
+  // Investor Plus, monthly: basePicks 10, analystReads 20, generations 1, revisions 2.
+  const ME_SUB = {
+    userId: 'u-sub-1', email: 'analyst@example.com', role: 'subscriber',
+    tier: 'investor_plus', tierStatus: 'active', billingInterval: 'month',
+    coverageCompanyId: null, coverageCompanyIds: [], banned: false, month: '2026-09',
+    freshReportPrice: 40, hasGeneration: true, publishes: false,
+    limits: { generations: 1, basePicks: 10, analystReads: 20, revisions: 2 },
+    usage: {
+      picks: 4, pickLimit: 10, picksExtra: 0,
+      analystReads: 7, analystReadLimit: 20, analystReadsExtra: 0,
+      genReserved: false, genId: null,
+      coverageUpdates: 0, coverageUpdateLimit: 4, coverageUpdatesByCompany: {},
+    },
+    openObligationId: null, linkedinUrl: null, openReviewId: null,
+    entitlements: [{ reportId: 'nokia-2026-07', source: 'pick', grantedAt: '2026-09-01T08:00:00Z' },
+                   { reportId: 'kone-2026-06', source: 'pick', grantedAt: '2026-08-30T08:00:00Z' }],
+  };
+
+  // Analyst role: generations 1, basePicks 10, analystReads 20, revisions 5.
+  const ME_ANALYST = JSON.parse(JSON.stringify(ME_SUB));
+  Object.assign(ME_ANALYST, {
+    userId: 'u-analyst-1', email: 'analyst@example.com', role: 'analyst',
+    tier: 'none', tierStatus: 'none', billingInterval: null,
+    freshReportPrice: 50, hasGeneration: true, publishes: true,
+    limits: { generations: 1, basePicks: 10, analystReads: 20, revisions: 5 },
+    openObligationId: 'gen-storaenso-4820',
+    linkedinUrl: 'https://www.linkedin.com/in/elina-salminen',
+    openReviewId: 'gen-kone-4411',
+  });
+  ME_ANALYST.usage.picks = 3;
+  ME_ANALYST.usage.analystReads = 6;
+  ME_ANALYST.usage.genReserved = true;
+  ME_ANALYST.usage.genId = 'gen-storaenso-4820';
+
+  const ME_NOPLAN = JSON.parse(JSON.stringify(ME_SUB));
+  Object.assign(ME_NOPLAN, {
+    userId: 'u-noplan-1', role: 'subscriber', tier: 'none', tierStatus: 'none',
+    billingInterval: null, freshReportPrice: 50, hasGeneration: false, publishes: false,
+    limits: { generations: 0, basePicks: 0, analystReads: 0, revisions: 0 },
+    entitlements: [],
+  });
+  ME_NOPLAN.usage = { picks: 0, pickLimit: 0, picksExtra: 0, analystReads: 0, analystReadLimit: 0,
+    analystReadsExtra: 0, genReserved: false, genId: null, coverageUpdates: 0,
+    coverageUpdateLimit: 4, coverageUpdatesByCompany: {} };
+
+  const ME = VARIANT === 'analyst' ? ME_ANALYST : VARIANT === 'noplan' ? ME_NOPLAN : ME_SUB;
+  const GENERATIONS = VARIANT === 'analyst' ? ANALYST_GENERATIONS : SUB_GENERATIONS;
+
+  const ROUTES = [
+    [/\/me\/earnings$/, () => EARNINGS],
+    [/\/me$/, () => ME],
+    [/\/reports$/, () => ({ week: '2026-W36', reports: REPORTS })],
+    [/\/generations\/[^/]+$/, (url) => {
+      const id = url.split('/').pop();
+      const g = GENERATIONS.find((x) => x.genId === id) || GENERATIONS[0];
+      return { genId: g.genId, status: 'DELIVERED', company: g.companyName,
+               url: 'about:blank#pdf', generationRestored: false };
+    }],
+    [/\/generations$/, () => ({ generations: GENERATIONS })],
+    [/\/analyses(\?|$)/, () => ({ companyId: null, forkFeeEur: 15, analyses: ANALYSES })],
+    [/\/reviews\/mine$/, () => ({ reviews: [] })],
+  ];
+
+  const realFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (url.indexOf('members') === -1 || url.indexOf('aiequityreports.com') === -1) {
+      return realFetch(input, init);
+    }
+    const path = url.replace(/^https?:\/\/[^/]+/, '');
+    for (const [re, make] of ROUTES) {
+      if (re.test(path)) {
+        const body = make(path);
+        return Promise.resolve(new Response(JSON.stringify(body), {
+          status: 200, headers: { 'content-type': 'application/json' },
+        }));
+      }
+    }
+    return Promise.resolve(new Response(JSON.stringify({ error: 'unmocked ' + path }), { status: 404 }));
+  };
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      const notice = document.getElementById('notice');
+      if (notice) { notice.textContent = ''; notice.className = 'notice'; }
+      if (typeof loadAnalyses === 'function') loadAnalyses();
+      setTimeout(function () {
+        const rects = {};
+        ['identityStrip', 'memberView', 'reportsTable', 'analysesCard', 'genCard',
+         'buyGenCard', 'earningsCard', 'plansCard'].forEach(function (id) {
+          const el = document.getElementById(id);
+          if (!el || el.hidden) return;
+          const box = id === 'reportsTable' ? el.closest('.ws-section') || el : el;
+          const r = box.getBoundingClientRect();
+          rects[id] = [Math.round(r.left + scrollX), Math.round(r.top + scrollY),
+                       Math.round(r.width), Math.round(r.height)];
+        });
+        rects.__page = [0, 0, document.documentElement.scrollWidth,
+                        Math.ceil(document.documentElement.scrollHeight)];
+        document.body.setAttribute('data-rects', JSON.stringify(rects));
+      }, 900);
+    }, 700);
+  });
+})();
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In — Analysts and Subscribers — Valuatum AI Equity Reports</title>

@@ -60,6 +60,8 @@
     .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
     .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
     .topbar-spacer { flex: 1; }
+    .topbar-link { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; }
+    .topbar-link:hover { background: rgba(255,255,255,0.08); color: white; }
     .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; }
     .topbar-signout:hover { background: rgba(255,255,255,0.08); }
     .panel { padding: 1.5rem; max-width: 1080px; margin: 0 auto; }
@@ -154,6 +156,7 @@
     <div class="topbar">
       <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
       <span class="topbar-badge">Admin</span>
+      <a class="topbar-link" href="/admin/atlas.html">Journey atlas</a>
       <div class="topbar-spacer"></div>
       <button class="topbar-signout" id="signout">Sign out</button>
     </div>
