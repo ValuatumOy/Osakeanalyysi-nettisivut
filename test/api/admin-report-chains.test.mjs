@@ -67,6 +67,11 @@ test('the admin listing carries chain, origin and author; the public one does no
   assert.equal(upload.origin, 'uploaded');
   assert.equal(upload.groupId, 'nokia-05062026', 'an upload stands alone under its own id');
 
+  // Every row links to its PDF, paid and revised copies included: the public
+  // payload's free-only rule would have left the revision with no link at all.
+  assert.match(base.pdfUrl, /\/Tesla_20082026\.pdf$/);
+  assert.match(rev.pdfUrl, /\/Tesla_20082026_rev-ab\.pdf$/);
+
   // The public catalog must not leak any of it.
   const pub = await handler({ routeKey: 'GET /api/reports', headers: {} });
   const first = JSON.parse(pub.body).reports[0];

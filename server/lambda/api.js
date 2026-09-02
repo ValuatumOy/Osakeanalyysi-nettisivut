@@ -535,6 +535,10 @@ async function getAdminReports() {
       const order = report.provenanceSessionId ? orderOf.get(report.provenanceSessionId) : null;
       return {
         ...publicReportPayload(report),
+        // The public payload drops the link for anything not free, which is
+        // every paid report and every revised copy. This listing is behind the
+        // admin password, so each row links to its file.
+        pdfUrl: permanentPdfUrl(report.fileName),
         publicationStatus: report.publicationStatus,
         excludeFromFree: report.excludeFromFree,
         forceFree: report.forceFree,
