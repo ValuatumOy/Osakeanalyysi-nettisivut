@@ -216,9 +216,13 @@
 
     // A fork is a report of the buyer's own to revise, not a finished PDF: it
     // belongs in the workspace, where the revision rounds they paid for are.
+    // The fork's own order is keyed by the Stripe session id (createForkOrder in
+    // server/lambda/members.js sets id = session.id); `forked` is the parent
+    // analysis's genId, which belongs to another member and would send the order
+    // page down its member-generation path and fail there.
     if (forked) {
       bannerEl.textContent = 'Your copy is ready to revise. Opening your workspace…';
-      location.href = '/order/index.html?session_id=' + encodeURIComponent(genId);
+      location.href = '/order/index.html?session_id=' + encodeURIComponent(sessionId);
       return;
     }
     bannerEl.textContent = 'Confirming your purchase…';

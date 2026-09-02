@@ -16,8 +16,10 @@ import path from 'node:path';
 const ROOT = fileURLToPath(new URL('../..', import.meta.url));
 
 const BACKENDS = [
-  'server/index.js',
   'server/lambda/members.js',
+  // The report shop's session builders, shared by the Vercel functions and
+  // the Express server.
+  'server/checkout.js',
   'api/create-checkout.js',
   'api/create-fresh-checkout.js',
   // Buying more revision rounds on an order rides in this one, the Vercel
@@ -49,7 +51,9 @@ function frontendSources() {
 // ?a=1&b=2 and #c=3 alike: the fragment is how the subscription flows come back.
 function returnParams(src) {
   const names = new Set();
-  for (const m of src.matchAll(/(?:success_url|cancel_url):\s*`([^`]+)`/g)) {
+  // Both the Stripe parameter names and the camel-cased options the shared
+  // builder in server/checkout.js takes them through.
+  for (const m of src.matchAll(/(?:success_url|cancel_url|successUrl|cancelUrl):\s*`([^`]+)`/g)) {
     const url = m[1];
     const query = url.includes('?') ? url.slice(url.indexOf('?') + 1).split('#')[0] : '';
     const hash = url.includes('#') ? url.slice(url.indexOf('#') + 1) : '';
@@ -125,6 +129,25 @@ test('whatever page offers a checkout also collects what comes back from it', ()
     }
   }
   assert.deepEqual(gaps, [], gaps.join('\n'));
+});
+
+// Reading ?forked= is not enough either: it names the parent analysis, which
+// belongs to another member. The fork's own order is keyed by the Stripe session
+// id, so handing the order page ?forked= sent the buyer to a UUID it treated as
+// their own generation and refused to open.
+test('a fork opens the order page by the Stripe session id, not the parent genId', () => {
+  const wrong = [];
+  for (const file of ['js/analyst-reports.js', 'members.html']) {
+    const src = readFileSync(path.join(ROOT, file), 'utf8');
+    if (!src.includes("get('forked')")) continue;
+    const at = src.indexOf('if (forked) {');
+    assert.notEqual(at, -1, `${file} reads ?forked= but never branches on it`);
+    const branch = src.slice(at, src.indexOf('}', at));
+    if (!/session_?[Ii]d/.test(branch) || /\bgenId\b|\bforked\b/.test(branch.replace('if (forked) {', ''))) {
+      wrong.push(`${file}: ${branch.trim()}`);
+    }
+  }
+  assert.deepEqual(wrong, [], wrong.join('\n'));
 });
 
 // One id, one element. Two elements shared id="linkedinBtn" on the members page,

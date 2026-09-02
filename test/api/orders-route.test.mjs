@@ -114,7 +114,7 @@ test('GET /api/orders/{id} returns 404 for an unknown order', async (t) => {
   assert.equal(res.statusCode, 404);
 });
 
-test('GET /api/orders/{id} presigns a PDF link only when DELIVERED', async (t) => {
+test('GET /api/orders/{id} returns a permanent PDF link only when DELIVERED', async (t) => {
   const orders = new Map([
     ['cs_delivered', { id: 'cs_delivered', status: STATUS.DELIVERED, pdfFileName: 'a.pdf', revisionsAllowed: 2, revisionsUsed: 1 }],
     ['cs_revising', { id: 'cs_revising', status: STATUS.REVISING, pdfFileName: 'a.pdf', revisionsAllowed: 2, revisionsUsed: 1 }],
@@ -123,7 +123,10 @@ test('GET /api/orders/{id} presigns a PDF link only when DELIVERED', async (t) =
   t.after(() => { delete require.cache[API_ID]; delete require.cache[ORDERS_STORE_ID]; delete require.cache[PDF_STORE_ID]; });
 
   const delivered = JSON.parse((await handler(event('GET /api/orders/{id}', { id: 'cs_delivered' }))).body);
-  assert.equal(delivered.pdfUrl, 'https://signed.example/a.pdf');
+  // Same permanent, unsigned link the delivery email carries (server/reconciler.js
+  // PDF_BASE_URL) — not a presigned S3 URL, which expired on the order page while
+  // the identical file stayed reachable forever at this address anyway.
+  assert.equal(delivered.pdfUrl, 'https://files.aiequityreports.com/reports/pdfs/a.pdf');
   assert.equal(delivered.revisionsAllowed, 2);
   assert.equal(delivered.revisionsUsed, 1);
 
@@ -132,7 +135,7 @@ test('GET /api/orders/{id} presigns a PDF link only when DELIVERED', async (t) =
   assert.equal(revising.status, STATUS.REVISING);
 });
 
-test('GET /api/orders/{id} returns revisionHistory newest-first with a presigned pdfUrl per entry', async (t) => {
+test('GET /api/orders/{id} returns revisionHistory newest-first with a permanent pdfUrl per entry', async (t) => {
   const orders = new Map([
     ['cs_history', {
       id: 'cs_history', status: STATUS.DELIVERED, pdfFileName: 'latest.pdf', revisionsAllowed: 3, revisionsUsed: 2,
@@ -148,11 +151,13 @@ test('GET /api/orders/{id} returns revisionHistory newest-first with a presigned
   const body = JSON.parse((await handler(event('GET /api/orders/{id}', { id: 'cs_history' }))).body);
   assert.equal(body.revisionHistory.length, 2);
   assert.equal(body.revisionHistory[0].version, 3); // newest first
-  assert.equal(body.revisionHistory[0].pdfUrl, 'https://signed.example/rev2.pdf');
+  assert.equal(body.revisionHistory[0].pdfUrl, 'https://files.aiequityreports.com/reports/pdfs/rev2.pdf');
   assert.equal(body.revisionHistory[0].changes, null);
   assert.equal(body.revisionHistory[1].version, 2);
   assert.equal(body.revisionHistory[1].comments, 'first change');
-  assert.deepEqual(pdfStore.calls.presignPdfDownload.sort(), ['latest.pdf', 'rev1.pdf', 'rev2.pdf']);
+  // pdfStore.presignPdfDownload is no longer on this path at all — permanentPdfUrl
+  // builds the link locally, no S3/CloudFront call.
+  assert.deepEqual(pdfStore.calls.presignPdfDownload, []);
 });
 
 test('POST /api/orders/{id}/revisions rejects empty, oversized and control-character comments', async (t) => {
@@ -230,7 +235,7 @@ test('GET /api/orders/{id} says whether the text can be edited, which version is
   assert.equal(edit.editedBy, 'Maija');
   assert.equal(edit.editedFrom, 2);
   assert.deepEqual(edit.edits, [{ pointer: 'recommendation/prose/0', before: 'a', after: 'b' }]);
-  assert.equal(edit.pdfUrl, 'https://signed.example/edit1.pdf');
+  assert.equal(edit.pdfUrl, 'https://files.aiequityreports.com/reports/pdfs/edit1.pdf');
   assert.equal(revision.kind, 'revision'); // written before edits existed: an AI revision
   assert.equal(revision.authorship, 'ai');
   assert.equal(revision.edits, undefined);

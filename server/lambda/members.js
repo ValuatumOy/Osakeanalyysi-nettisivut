@@ -17,6 +17,8 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
+const { createExtraRoundsCheckout } = require('../checkout');
+const { revisionsIncluded } = require('../stripe-pricing');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -188,11 +190,19 @@ async function presignPdf(bucket, fileName) {
 // A catalog report: production's bucket, in every stage (see infra/lib/config.ts).
 const presignReport = report => presignPdf(process.env.REPORT_PDF_BUCKET, report.fileName);
 
-// A report this stage generated for a member. It is delivered into this stage's
-// own bucket and is deliberately not in the production catalog listing, so the
-// order's own pdfFileName is the key — the DELIVERED status is the entitlement.
-const presignGenerated = fileName =>
-  presignPdf(process.env.GENERATED_PDF_BUCKET || process.env.REPORT_PDF_BUCKET, fileName);
+// A report this stage generated for a member — delivered into REPORT_PDF_BUCKET
+// (reconciler.js has no notion of a separate GENERATED_PDF_BUCKET; every
+// delivered PDF, regardless of order origin, lands in the same bucket), so it
+// is served the same permanent, unsigned way as any other delivered report:
+// files.aiequityreports.com (CloudFront + OAC). Was presigned with a 5-minute
+// expiry until this comment; the order page could easily stay open longer
+// than that, and presigning never added security here — the same file was
+// already durably reachable at this URL (the delivery/revision emails carry
+// it, via server/reconciler.js's own PDF_BASE_URL).
+const PDF_BASE_URL = (process.env.REPORT_PDF_BASE_URL || 'https://files.aiequityreports.com/reports/pdfs').replace(/\/$/, '');
+function permanentPdfUrl(fileName) {
+  return `${PDF_BASE_URL}/${encodeURIComponent(fileName)}`;
+}
 
 // GET /reports — the member-facing catalog. Unlike the prod public payload
 // this NEVER exposes pdfUrl: the presigned /open route is the only door.
@@ -682,8 +692,8 @@ async function postGenerationFresh(event) {
 // revisionsAllowed is fixed when an order is created, so an analyst or a buyer
 // who runs out has no way forward but to start again. This tops it up; the
 // webhook is what actually raises the number, so an abandoned return trip
-// cannot lose rounds that were paid for.
-const EXTRA_REVISION_EUR = Number(process.env.EXTRA_REVISION_EUR || '') || 5;
+// cannot lose rounds that were paid for. The price comes from the shared
+// checkout module, the same place the anonymous order page gets it.
 
 async function postGenerationRevisionsCheckout(event) {
   const now = requestNow(event);
@@ -703,33 +713,18 @@ async function postGenerationRevisionsCheckout(event) {
   if (!order) return json(404, { error: 'Unknown generation' });
 
   const body = parseBody(event) || {};
-  const rounds = Math.min(10, Math.max(1, Math.round(Number(body.rounds) || 1)));
   const returnTo = auth.frontendUrl(body.returnTo);
 
-  const session = await stripe().checkout.sessions.create({
-    mode: 'payment',
-    allow_promotion_codes: true,
-    ...(profile.email ? { customer_email: profile.email } : {}),
-    line_items: [{
-      quantity: rounds,
-      price_data: {
-        currency: 'eur',
-        unit_amount: Math.round(EXTRA_REVISION_EUR * 100),
-        product_data: {
-          name: `Extra revision round — ${order.companyName || order.ticker || 'report'}`,
-          description: 'One more round of steering on a report you already have.',
-        },
-      },
-    }],
-    metadata: {
-      extraRevisions: String(rounds),
-      generationId: genId,
-      userId: profile.userId,
-    },
-    success_url: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${returnTo}?revisions=cancelled`,
+  const { session, rounds, priceEur } = await createExtraRoundsCheckout(stripe(), {
+    orderId: genId,
+    rounds: body.rounds,
+    email: profile.email,
+    companyLabel: order.companyName || order.ticker || 'report',
+    successUrl: `${returnTo}?revisions=added&session_id={CHECKOUT_SESSION_ID}`,
+    cancelUrl: `${returnTo}?revisions=cancelled`,
+    extraMetadata: { userId: profile.userId },
   });
-  return json(200, { url: session.url, rounds, priceEur: rounds * EXTRA_REVISION_EUR });
+  return json(200, { url: session.url, rounds, priceEur });
 }
 
 // GET /reviews/mine — the reviews this member has written, newest first.
@@ -959,7 +954,7 @@ async function getGeneration(event) {
 
   if (order.status === 'DELIVERED' && order.pdfFileName) {
     // The member owns what they generated — no quota, no entitlement row.
-    Object.assign(result, await presignGenerated(order.pdfFileName));
+    result.url = permanentPdfUrl(order.pdfFileName);
   }
   result.generationRestored = await restoreIfFailed({ profile, genId, order, publication, now });
   return json(200, result);
@@ -1017,23 +1012,21 @@ async function getGenerationOrder(event) {
     editsUsed: order.editsUsed || 0,
   };
 
-  // The order page reads `pdfUrl`; presignGenerated answers { url, expiresIn }.
+  // The order page reads `pdfUrl` — a permanent link, not a presigned one.
   if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
-    payload.pdfUrl = (await presignGenerated(order.pdfFileName)).url;
+    payload.pdfUrl = permanentPdfUrl(order.pdfFileName);
   }
 
-  payload.revisionHistory = await Promise.all(
-    (order.revisionHistory || []).slice().reverse().map(async (entry) => ({
-      ...editing.historyEntryPayload(entry),
-      pdfUrl: entry.pdfFileName ? (await presignGenerated(entry.pdfFileName)).url : null,
-    })),
-  );
+  payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
+    ...editing.historyEntryPayload(entry),
+    pdfUrl: entry.pdfFileName ? permanentPdfUrl(entry.pdfFileName) : null,
+  }));
   if (payload.revisionHistory.length && order.originalPdfFileName) {
     payload.revisionHistory.push({
       version: 1,
       original: true,
       completedAt: order.deliveredEmailAt || null,
-      pdfUrl: (await presignGenerated(order.originalPdfFileName)).url,
+      pdfUrl: permanentPdfUrl(order.originalPdfFileName),
     });
   }
 
@@ -1887,7 +1880,7 @@ async function analysisDocument(genId) {
   const order = await ordersStore.get(genId);
   if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
   return {
-    ...(await presignGenerated(order.pdfFileName)),
+    url: permanentPdfUrl(order.pdfFileName),
     jobId: order.jobId || null,
     company: order.companyName,
   };
@@ -2005,9 +1998,7 @@ async function createForkOrder(session) {
     forkedFrom: parentGenId,
     analystName: profile?.name || undefined,
     ...(obligation ? {} : { visibility: 'private' }),
-    revisionsAllowed: publishes
-      ? limitsFor(profile).revisions
-      : (Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3),
+    revisionsAllowed: publishes ? limitsFor(profile).revisions : revisionsIncluded(),
   });
 
   if (profile) {

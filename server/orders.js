@@ -93,6 +93,9 @@ function create(input, statePath = STATE_PATH) {
     // republish the parent under its readers on the fork's first revision.
     forkedFrom: input.forkedFrom || null,
     reportId: input.reportId || null, // catalog entry id, origin: 'ready' only
+    // What Stripe charged, in minor units
+    amountTotal: Number.isFinite(input.amountTotal) ? input.amountTotal : null,
+    currency: input.currency || null,
     status: input.status || STATUS.NEW,
     jobId: input.jobId || null,
     // The engine job behind version 1. `jobId` moves on with every delivered

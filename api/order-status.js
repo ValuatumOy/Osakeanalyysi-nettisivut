@@ -13,10 +13,7 @@
 
 const Stripe = require('stripe');
 const { getOrderState, getOrderPreview } = require('../server/catalog-client');
-
-function isCompletedCheckout(session) {
-  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
-}
+const { isCompletedCheckout } = require('../server/checkout');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).end();
