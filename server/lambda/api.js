@@ -527,6 +527,10 @@ async function getAdminReports() {
   // copy. S3's modification time is not this — a bulk sidecar rewrite resets
   // it for every file at once.
   const generatedAtOf = new Map();
+  // What kind of copy a revised file is: the AI's revision from the
+  // customer's comments, or the customer's own hand edit. The history entry
+  // knows; for a file with no order the sidecar tag or the file name says.
+  const kindOf = new Map();
   try {
     for (const order of await ordersStore.list()) {
       orderOf.set(order.id, order);
@@ -534,6 +538,7 @@ async function getAdminReports() {
       if (original && order.deliveredEmailAt) generatedAtOf.set(original, order.deliveredEmailAt);
       for (const entry of order.revisionHistory || []) {
         if (entry.pdfFileName && entry.completedAt) generatedAtOf.set(entry.pdfFileName, entry.completedAt);
+        if (entry.pdfFileName && entry.kind) kindOf.set(entry.pdfFileName, entry.kind);
       }
     }
   } catch (err) {
@@ -567,6 +572,10 @@ async function getAdminReports() {
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
         generatedBy: order ? (order.analystName || order.email || null) : null,
         generatedAt: generatedAtOf.get(report.fileName) || null,
+        // 'revision' | 'edit' for a revised copy, null for an original.
+        kind: !report.isRevision ? null
+          : kindOf.get(report.fileName)
+            || ((report.tags || []).includes('Hand-edited report') || /_edit-/.test(report.fileName) ? 'edit' : 'revision'),
       };
     }),
   });

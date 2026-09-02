@@ -433,6 +433,13 @@
       order: '<span class="badge badge-blue">Fresh order</span>',
       generation: '<span class="badge badge-yellow">Member generation</span>',
     };
+    // A revised copy is labelled by what produced it, not by how the original
+    // came to exist: the AI's revision from the customer's comments, or the
+    // customer's own hand edit of the text.
+    const KIND_BADGE = {
+      revision: '<span class="badge badge-blue">Revision</span>',
+      edit: '<span class="badge badge-yellow">Hand edit</span>',
+    };
 
     // When the engine finished this file, from its order. A hand upload has
     // no order; its upload time is shown instead unless it is a bare midnight
@@ -463,7 +470,7 @@
           <td class="company">${title}<br>${file}${toggle || ''}</td>
           <td>${esc(report.ticker || '—')}</td>
           <td>${esc(report.reportDate || '—')}${generatedAt(report)}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${ORIGIN_BADGE[report.origin] || ''}${who}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${(rev && KIND_BADGE[report.kind]) || ORIGIN_BADGE[report.origin] || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
@@ -1062,19 +1069,22 @@
     });
 
     // ── boot: stored password → straight in; otherwise show the gate ────────
-    // A wrong password keeps the gate up; an unreachable reports API does not —
-    // the members tabs are a different origin and may be fine, and an admin
-    // locked out of everything because one API is down can fix nothing.
+    // The app is shown at once and the catalog loads behind it: waiting for
+    // the request first kept the sign-in screen up for a second on every
+    // load. A password the API rejects brings the gate back with a message;
+    // an unreachable reports API does not — the members tabs are a different
+    // origin and may be fine, and an admin locked out of everything because
+    // one API is down can fix nothing.
     (async () => {
       if (!password()) return;
+      $('auth-screen').style.display = 'none';
+      $('app').style.display = 'block';
       try {
         await refreshReports();
       } catch (err) {
-        if (err.message === 'Unauthorized') return;
+        if (err.message === 'Unauthorized') return signOut('The saved password is no longer valid. Sign in again.');
         flash('err', 'Report catalog unreachable: ' + err.message + ' — the other tabs still work.');
       }
-      $('auth-screen').style.display = 'none';
-      $('app').style.display = 'block';
     })();
   </script>
 </body>
