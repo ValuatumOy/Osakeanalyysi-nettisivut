@@ -18,7 +18,6 @@ const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
 const { createExtraRoundsCheckout } = require('../checkout');
-const { revisionsIncluded } = require('../stripe-pricing');
 
 const STAGE = process.env.STAGE || 'test';
 
@@ -1998,7 +1997,7 @@ async function createForkOrder(session) {
     forkedFrom: parentGenId,
     analystName: profile?.name || undefined,
     ...(obligation ? {} : { visibility: 'private' }),
-    revisionsAllowed: publishes ? limitsFor(profile).revisions : revisionsIncluded(),
+    revisionsAllowed: publishes ? limitsFor(profile).revisions : FORK_REVISIONS_INCLUDED,
   });
 
   if (profile) {
@@ -2023,6 +2022,10 @@ async function createForkOrder(session) {
 // the publish obligation. Signed out, or as a reader, it is a private report
 // that owes nothing — the same split the paid generation already makes.
 const FORK_FEE_EUR = Number(process.env.FORK_FEE_EUR || '') || 10;
+// Revision rounds a bought fork comes with when the buyer does not publish
+// (a publishing analyst gets their tier's allowance instead). Its own number,
+// not the €5 ready+/fresh+ add-on's: a fork is a €15 purchase.
+const FORK_REVISIONS_INCLUDED = Number.parseInt(process.env.FORK_REVISIONS_INCLUDED || '', 10) || 3;
 
 async function postAnalysisForkCheckout(event) {
   const now = requestNow(event);

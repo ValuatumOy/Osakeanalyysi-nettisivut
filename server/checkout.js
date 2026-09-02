@@ -9,7 +9,7 @@
 // Nothing here talks to the catalog or the orders table — callers look the
 // report up and pass it in, so this module needs only a Stripe client.
 
-const { getStripePricing, revisionsIncluded } = require('./stripe-pricing');
+const { getStripePricing, includedRevisions } = require('./stripe-pricing');
 
 const MAX_EXTRA_ROUNDS = 10;
 
@@ -96,8 +96,8 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
   if (!report) throw new CheckoutError(404, 'Report not found');
   const withRevisions = Boolean(options.withRevisions);
   const kind = readyReportKind(report, withRevisions);
-  const included = withRevisions ? revisionsIncluded() : 0;
   const pricing = await getStripePricing(stripe, kind, { bypassCache: true });
+  const included = withRevisions ? includedRevisions(pricing) : 0;
 
   return stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -150,8 +150,8 @@ async function createFreshReportCheckout(stripe, order = {}) {
   const company = String(order.company || '').trim();
   if (!company) throw new CheckoutError(400, 'Company name required');
   const withRevisions = Boolean(order.withRevisions);
-  const included = withRevisions ? revisionsIncluded() : 0;
   const pricing = await getStripePricing(stripe, withRevisions ? 'fresh-revisions' : 'fresh', { bypassCache: true });
+  const included = withRevisions ? includedRevisions(pricing) : 0;
 
   return stripe.checkout.sessions.create({
     payment_method_types: ['card'],

@@ -42,6 +42,7 @@ const paidReport = { id: 'nokia-15072026', name: 'Nokia', ticker: 'NOKIA', isFre
 
 test.beforeEach(() => {
   delete process.env.REPORT_REVISIONS_INCLUDED;
+  delete process.env.FREE_REPORT_REVISIONS_INCLUDED;
   delete process.env.EXTRA_REVISION_EUR;
   process.env.SITE_URL = 'https://site.example/';
 });
@@ -66,7 +67,7 @@ test('a free report with revisions sells the free-revisions tier with the includ
   assert.equal(params.metadata.kind, 'free-revisions');
   assert.equal(checkout.isRevisionsOnly({ metadata: params.metadata }), true);
   assert.equal(params.metadata.withRevisions, 'true');
-  assert.equal(params.metadata.revisionsAllowed, '3');
+  assert.equal(params.metadata.revisionsAllowed, "3");
   assert.equal(params.metadata.price, '10');
   assert.equal(params.success_url, 'https://site.example/checkout/success.html?session_id={CHECKOUT_SESSION_ID}');
 });
@@ -112,14 +113,33 @@ test('a standard ready report falls back to an inline amount when Stripe has no 
   }
 });
 
-test('the included revision count is read from one place', async () => {
-  process.env.REPORT_REVISIONS_INCLUDED = '5';
+test('ready+/fresh+ include two revisions by default and a free report three', async () => {
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
-  await createReadyReportCheckout(stripe, freeReport, { withRevisions: true });
+  await createReadyReportCheckout(stripe, paidReport, { withRevisions: true });
   await createFreshReportCheckout(stripe, { company: 'Nokia', withRevisions: true });
-  assert.equal(stripe.created[0].metadata.revisionsAllowed, '5');
-  assert.equal(stripe.created[1].metadata.revisionsAllowed, '5');
+  await createReadyReportCheckout(stripe, freeReport, { withRevisions: true });
+  assert.equal(stripe.created[0].metadata.revisionsAllowed, '2');
+  assert.equal(stripe.created[1].metadata.revisionsAllowed, '2');
+  assert.equal(stripe.created[2].metadata.revisionsAllowed, '3');
   assert.deepEqual(stripe.created[1].line_items, [{ price: 'price_freshrevisions', quantity: 1 }]);
+});
+
+test('the env fallbacks apply per kind', async () => {
+  process.env.REPORT_REVISIONS_INCLUDED = '5';
+  process.env.FREE_REPORT_REVISIONS_INCLUDED = '4';
+  const stripe = fakeStripe({ products: ALL_PRODUCTS });
+  await createFreshReportCheckout(stripe, { company: 'Nokia', withRevisions: true });
+  await createReadyReportCheckout(stripe, freeReport, { withRevisions: true });
+  assert.equal(stripe.created[0].metadata.revisionsAllowed, '5');
+  assert.equal(stripe.created[1].metadata.revisionsAllowed, '4');
+});
+
+test('the Stripe product\'s own metadata.revisions wins over every fallback', async () => {
+  process.env.REPORT_REVISIONS_INCLUDED = '5';
+  const tagged = ALL_PRODUCTS.map(p => (p.metadata.kind === 'ready-revisions' ? { ...p, metadata: { ...p.metadata, revisions: '7' } } : p));
+  const stripe = fakeStripe({ products: tagged });
+  await createReadyReportCheckout(stripe, paidReport, { withRevisions: true });
+  assert.equal(stripe.created[0].metadata.revisionsAllowed, '7');
 });
 
 test('a fresh order needs a company name', async () => {

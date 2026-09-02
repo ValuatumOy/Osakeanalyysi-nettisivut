@@ -25,8 +25,8 @@ A paid add-on tier, sold alongside every purchase path:
   anything) to change and regenerates the report — target price, multiples,
   financial tables and change memo included.
 - **Free report + Revisions** — a report in the free rotation has no base
-  price, so the buyer pays for the N revisions alone (Stripe kind
-  `free-revisions`, €10 for 3). It goes through exactly the ready-report
+  price, so the buyer pays for the revisions alone (Stripe kind
+  `free-revisions`, €10 for 3, against 2 in the €5 ready+/fresh+ add-on). It goes through exactly the ready-report
   path: `api/create-checkout.js` with `withRevisions: true`, the same
   webhook, the same order row seeded at `DELIVERED`, the same order page.
   A free report without revisions is still not purchasable at all.
@@ -98,8 +98,11 @@ passes through), `createFreshReportCheckout`, and
 `orderPageUrl` live there too. The Vercel functions under `api/` and the
 members Lambda's extra-rounds door both call it; neither builds a line item
 or reads a price env var on its own.
-The included-revision count comes from `revisionsIncluded()` in
-`server/stripe-pricing.js`, likewise read nowhere else.
+The included-revision count comes from `includedRevisions(pricing)` in
+`server/stripe-pricing.js`, likewise read nowhere else: the Stripe
+product's `metadata.revisions` when set, else a per-kind default (2 for
+ready+/fresh+, 3 for a free report). A bought fork in the members Lambda
+has its own `FORK_REVISIONS_INCLUDED` (3).
 
 The members Lambda still builds its own subscription, top-up, analysis-sale
 and fork sessions; those are member products, not report-shop ones, and
@@ -127,8 +130,9 @@ were left as they are.
   whether `getPublicPricing` (`server/stripe-pricing.js`) exposes the
   revisions price tiers at all, which is what the `reports.html` checkbox
   keys off to show/hide itself.
-- `REPORT_REVISIONS_INCLUDED` — how many revisions every "+ Revisions"
-  tier includes. Read once, by `revisionsIncluded()`.
+- `REPORT_REVISIONS_INCLUDED` (2), `FREE_REPORT_REVISIONS_INCLUDED` (3) —
+  fallbacks for a product without `metadata.revisions`. Read once, by
+  `revisionsIncluded(kind)`.
 - Stripe kinds `ready-revisions`, `fresh-revisions`, `free-revisions` and
   `extra-revision` in `server/stripe-pricing.js`. Each is found by the
   `kind` metadata tag on its Product, which `scripts/stripe-setup-revisions.mjs`

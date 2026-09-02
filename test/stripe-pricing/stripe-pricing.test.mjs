@@ -129,8 +129,9 @@ test('getPublicPricing lists the products once and exposes the free tier', async
     const pricing = await getPublicPricing(stripe, { bypassCache: true });
     assert.equal(lists, 1);
     assert.equal(pricing.freeRevisions.label, '€10.00');
+    assert.equal(pricing.freeRevisions.included, 3);
     assert.equal(pricing.readyRevisions, null);
-    assert.equal(pricing.revisionsIncluded, 3);
+    assert.equal(pricing.revisionsIncluded, 2);
   } finally {
     if (saved === undefined) delete process.env.FORECAST_REVISIONS_ENABLED;
     else process.env.FORECAST_REVISIONS_ENABLED = saved;

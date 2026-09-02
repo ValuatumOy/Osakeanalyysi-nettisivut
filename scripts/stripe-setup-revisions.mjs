@@ -36,6 +36,8 @@ const stage = live ? 'prod' : 'test';
 const suffix = live ? '' : ' (test)';
 
 // Amounts are the current business decision for each tier, in cents.
+// `revisions` is how many revision requests a "+ Revisions" tier includes;
+// it is written to the product's metadata, which is where the app reads it.
 const TIERS = [
   {
     kind: 'ready',
@@ -55,6 +57,7 @@ const TIERS = [
     kind: 'ready-revisions',
     name: `AI Equity Report (Ready) + Revisions${suffix}`,
     unitAmount: 2500,
+    revisions: 2,
     envProduct: 'STRIPE_READY_REPORT_REVISIONS_PRODUCT_ID',
     envPrice: 'STRIPE_READY_REPORT_REVISIONS_PRICE_ID',
   },
@@ -62,6 +65,7 @@ const TIERS = [
     kind: 'fresh-revisions',
     name: `AI Equity Report (Fresh) + Revisions${suffix}`,
     unitAmount: 5500,
+    revisions: 2,
     envProduct: 'STRIPE_FRESH_REPORT_REVISIONS_PRODUCT_ID',
     envPrice: 'STRIPE_FRESH_REPORT_REVISIONS_PRICE_ID',
   },
@@ -69,6 +73,7 @@ const TIERS = [
     kind: 'free-revisions',
     name: `AI Equity Report (Free) + Revisions${suffix}`,
     unitAmount: 1000,
+    revisions: 3,
     envProduct: 'STRIPE_FREE_REPORT_REVISIONS_PRODUCT_ID',
     envPrice: 'STRIPE_FREE_REPORT_REVISIONS_PRICE_ID',
   },
@@ -81,17 +86,17 @@ const TIERS = [
   },
 ];
 
-async function findOrCreateProduct(name, kind) {
+async function findOrCreateProduct(name, kind, revisions) {
   // The app resolves by metadata.kind, so that is the identity here too. A
   // product created by hand under the right name (before the tag existed) is
   // adopted and tagged rather than duplicated. List + exact equality, because
   // products.search does token matching and these names share most tokens.
+  const metadata = { kind, stage, ...(revisions ? { revisions: String(revisions) } : {}) };
   const products = await stripe.products.list({ active: true, limit: 100 });
-  const tagged = products.data.find(p => p.metadata?.kind === kind);
-  if (tagged) return tagged;
-  const named = products.data.find(p => p.name === name);
-  if (named) return stripe.products.update(named.id, { metadata: { kind, stage } });
-  return stripe.products.create({ name, metadata: { kind, stage } });
+  const existing = products.data.find(p => p.metadata?.kind === kind) || products.data.find(p => p.name === name);
+  if (!existing) return stripe.products.create({ name, metadata });
+  const stale = Object.entries(metadata).some(([k, v]) => existing.metadata?.[k] !== v);
+  return stale ? stripe.products.update(existing.id, { metadata }) : existing;
 }
 
 async function findOrCreatePrice(productId, unitAmount) {
@@ -103,7 +108,7 @@ async function findOrCreatePrice(productId, unitAmount) {
 
 const envLines = [];
 for (const tier of TIERS) {
-  const product = await findOrCreateProduct(tier.name, tier.kind);
+  const product = await findOrCreateProduct(tier.name, tier.kind, tier.revisions);
   const price = await findOrCreatePrice(product.id, tier.unitAmount);
   // The app reads a product's default_price, so changing the price in the
   // Stripe dashboard later updates checkout without a code change.
@@ -111,7 +116,7 @@ for (const tier of TIERS) {
   if (product.default_price !== price.id) {
     await stripe.products.update(product.id, { default_price: price.id });
   }
-  console.error(`${tier.kind}: product ${product.id}, price ${price.id} (${tier.unitAmount / 100} EUR, ${stage})`);
+  console.error(`${tier.kind}: product ${product.id}, price ${price.id} (${tier.unitAmount / 100} EUR${tier.revisions ? `, ${tier.revisions} revisions` : ''}, ${stage})`);
   envLines.push(`${tier.envProduct}=${product.id}`);
   envLines.push(`${tier.envPrice}=${price.id}`);
 }

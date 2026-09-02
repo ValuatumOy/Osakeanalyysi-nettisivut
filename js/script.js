@@ -594,7 +594,7 @@ function getRevisionsChoice(kind, revisable) {
     available: true,
     basePrice: base.unitAmount,
     revisionsPrice: tier.unitAmount,
-    revisionsCount: pricing.revisionsIncluded || 3,
+    revisionsCount: tier.included || pricing.revisionsIncluded || 2,
   };
 }
 
