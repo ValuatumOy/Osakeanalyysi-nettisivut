@@ -2584,11 +2584,20 @@ async function getAdminStats(event) {
 // GET /admin/members/promo-codes — every live promotion code, with what it
 // gives away. This is how AINAILMAINEN2026 stops being a surprise: the codes
 // live in Stripe, the secret key lives here, so the listing has to too.
+//
+// The Stripe account is shared with other Valuatum sites, and a promotion
+// code is account-wide: any active code is accepted at this site's checkout
+// too. There is nothing on the Stripe side that says which site a code was
+// made for, so the admin tags codes here (`site` metadata on the promotion
+// code) and the page groups by that tag. Untagged codes stay visible.
+const PROMO_SITE = 'aiequityreports';
 async function getAdminPromoCodes() {
   const res = await stripe().promotionCodes.list({ limit: 100 });
   const codes = res.data.map((pc) => ({
     code: pc.code,
     active: pc.active,
+    site: pc.metadata?.site || pc.coupon?.metadata?.site || null,
+    couponName: pc.coupon?.name || null,
     percentOff: pc.coupon?.percent_off || null,
     amountOffEur: pc.coupon?.amount_off ? pc.coupon.amount_off / 100 : null,
     duration: pc.coupon?.duration || null,
@@ -2598,7 +2607,19 @@ async function getAdminPromoCodes() {
     restrictions: pc.restrictions?.minimum_amount ? `min ${pc.restrictions.minimum_amount / 100} EUR` : null,
     promoId: pc.id,
   }));
-  return json(200, { count: codes.length, codes });
+  return json(200, { count: codes.length, codes, site: PROMO_SITE });
+}
+
+// POST /admin/members/promo-site {promoId, site} — tag a code as this site's
+// ('aiequityreports'), another site's ('other') or clear the tag (''). Only
+// metadata changes; the code keeps working everywhere it did.
+async function postAdminPromoSite(event) {
+  const body = parseBody(event);
+  if (!body?.promoId) return json(400, { error: 'promoId is required' });
+  const site = String(body.site || '');
+  if (![PROMO_SITE, 'other', ''].includes(site)) return json(400, { error: 'site must be aiequityreports, other or empty' });
+  const updated = await stripe().promotionCodes.update(String(body.promoId), { metadata: { site } });
+  return json(200, { ok: true, code: updated.code, site: updated.metadata?.site || null });
 }
 
 // POST /admin/members/promo-deactivate {promoId} — switch one off. Deactivation
@@ -2791,6 +2812,7 @@ const ADMIN_ROUTES = {
   'GET /admin/members/stats': getAdminStats,
   'GET /admin/members/promo-codes': getAdminPromoCodes,
   'POST /admin/members/promo-deactivate': postAdminPromoDeactivate,
+  'POST /admin/members/promo-site': postAdminPromoSite,
   'POST /admin/members/void-review': postAdminVoidReview,
   'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,

@@ -522,8 +522,20 @@ async function getAdminReports() {
   // the customer and how it came to exist. One scan; the table is small, and
   // this endpoint is one admin's page load.
   const orderOf = new Map();
+  // When each file was produced, from the order that produced it: the
+  // original delivery's timestamp, or the revision history entry for a revised
+  // copy. S3's modification time is not this — a bulk sidecar rewrite resets
+  // it for every file at once.
+  const generatedAtOf = new Map();
   try {
-    for (const order of await ordersStore.list()) orderOf.set(order.id, order);
+    for (const order of await ordersStore.list()) {
+      orderOf.set(order.id, order);
+      const original = order.originalPdfFileName || order.pdfFileName;
+      if (original && order.deliveredEmailAt) generatedAtOf.set(original, order.deliveredEmailAt);
+      for (const entry of order.revisionHistory || []) {
+        if (entry.pdfFileName && entry.completedAt) generatedAtOf.set(entry.pdfFileName, entry.completedAt);
+      }
+    }
   } catch (err) {
     console.warn('admin reports: orders join unavailable:', err.message);
   }
@@ -554,6 +566,7 @@ async function getAdminReports() {
         origin: !report.provenanceSessionId ? 'uploaded'
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
         generatedBy: order ? (order.analystName || order.email || null) : null,
+        generatedAt: generatedAtOf.get(report.fileName) || null,
       };
     }),
   });

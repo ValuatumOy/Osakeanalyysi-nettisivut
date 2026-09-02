@@ -227,6 +227,7 @@ export class MembersStack extends Stack {
       [apigwv2.HttpMethod.GET, '/admin/members/stats'],
       [apigwv2.HttpMethod.GET, '/admin/members/promo-codes'],
       [apigwv2.HttpMethod.POST, '/admin/members/promo-deactivate'],
+      [apigwv2.HttpMethod.POST, '/admin/members/promo-site'],
       [apigwv2.HttpMethod.POST, '/admin/members/void-review'],
       [apigwv2.HttpMethod.GET, '/admin/members/earnings'],
       [apigwv2.HttpMethod.POST, '/admin/members/grant-generation'],
