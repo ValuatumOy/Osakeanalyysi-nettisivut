@@ -33,6 +33,10 @@
     .tabs { background: white; border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0; overflow-x: auto; position: sticky; top: 52px; z-index: 90; }
     .tab-btn { font-size: 0.875rem; font-weight: 500; padding: 0.9rem 1.25rem; border: none; background: none; cursor: pointer; color: var(--gray-steel); border-bottom: 2px solid transparent; margin-bottom: -1px; font-family: inherit; white-space: nowrap; }
     .tab-btn.active { color: var(--forest); border-bottom-color: var(--green); font-weight: 600; }
+    /* A tab that is a link out, not a pane: same look, opens in a new window. */
+    .tab-link { display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none; }
+    .tab-link svg { width: 0.8em; height: 0.8em; opacity: 0.7; }
+    .tab-link:hover { color: var(--forest); }
     .tabpane[hidden] { display: none; }
     .stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
     .stat-card { background: white; border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0.9rem 1rem; }
@@ -60,8 +64,6 @@
     .topbar-logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
     .topbar-badge { font-size: 0.7rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.2rem 0.6rem; border-radius: var(--r-pill); color: rgba(255,255,255,0.7); letter-spacing: 0.06em; text-transform: uppercase; }
     .topbar-spacer { flex: 1; }
-    .topbar-link { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; }
-    .topbar-link:hover { background: rgba(255,255,255,0.08); color: white; }
     .topbar-signout { font-size: 0.75rem; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r-pill); padding: 0.25rem 0.7rem; cursor: pointer; font-family: inherit; }
     .topbar-signout:hover { background: rgba(255,255,255,0.08); }
     .panel { padding: 1.5rem; max-width: 1080px; margin: 0 auto; }
@@ -156,7 +158,6 @@
     <div class="topbar">
       <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
       <span class="topbar-badge">Admin</span>
-      <a class="topbar-link" href="/admin/atlas.html">Journey atlas</a>
       <div class="topbar-spacer"></div>
       <button class="topbar-signout" id="signout">Sign out</button>
     </div>
@@ -168,6 +169,7 @@
       <button class="tab-btn" data-pane="earnings">Earnings &amp; payouts</button>
       <button class="tab-btn" data-pane="stats">Stats</button>
       <button class="tab-btn" data-pane="promos">Promo codes</button>
+      <a class="tab-btn tab-link" href="/admin/atlas.html" target="_blank" rel="noopener">Interactive docs <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3 7 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
 
     <div class="panel tabpane" id="pane-reports">
@@ -757,7 +759,7 @@
 
     $('tabs').addEventListener('click', (ev) => {
       const btn = ev.target.closest('.tab-btn');
-      if (!btn) return;
+      if (!btn || !btn.dataset.pane) return; // the docs link is not a pane
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
       document.querySelectorAll('.tabpane').forEach(pane => { pane.hidden = pane.id !== `pane-${btn.dataset.pane}`; });
       const loader = PANE_LOADERS[btn.dataset.pane];
