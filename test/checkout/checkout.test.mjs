@@ -63,6 +63,8 @@ test('a free report with revisions sells the free-revisions tier with the includ
   const [params] = stripe.created;
   assert.deepEqual(params.line_items, [{ price: 'price_freerevisions', quantity: 1 }]);
   assert.equal(params.metadata.reportId, 'tesla-01092026');
+  assert.equal(params.metadata.kind, 'free-revisions');
+  assert.equal(checkout.isRevisionsOnly({ metadata: params.metadata }), true);
   assert.equal(params.metadata.withRevisions, 'true');
   assert.equal(params.metadata.revisionsAllowed, '3');
   assert.equal(params.metadata.price, '10');
@@ -88,6 +90,8 @@ test('a paid report with revisions sells the ready-revisions tier', async () => 
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
   await createReadyReportCheckout(stripe, paidReport, { withRevisions: true });
   assert.deepEqual(stripe.created[0].line_items, [{ price: 'price_readyrevisions', quantity: 1 }]);
+  assert.equal(stripe.created[0].metadata.kind, 'ready-revisions');
+  assert.equal(checkout.isRevisionsOnly({ metadata: stripe.created[0].metadata }), false);
 });
 
 test('a standard ready report falls back to an inline amount when Stripe has no price', async () => {

@@ -102,10 +102,10 @@
         <div class="success-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><path d="M8 14l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h1 class="success-title">Payment confirmed.</h1>
-        <p class="success-sub">Your report is ready to download. We've also sent it to your email.</p>
+        <h1 class="success-title" id="reportTitle">Payment confirmed.</h1>
+        <p class="success-sub" id="reportSub">Your report is ready to download. We've also sent it to your email.</p>
         <div class="report-box">
-          <div class="report-box-label">Your report</div>
+          <div class="report-box-label" id="reportBoxLabel">Your report</div>
           <div class="report-box-name" id="reportName">—</div>
           <div class="report-box-meta" id="reportMeta">—</div>
         </div>
@@ -115,7 +115,7 @@
         </a>
         <p class="email-note">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 3l5 3 5-3M1 3v6h10V3H1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-          Also sent to <span id="customerEmail" style="font-weight:500;">your email</span>
+          <span id="emailNoteText">Also sent to </span><span id="customerEmail" style="font-weight:500;">your email</span>
         </p>
         <a id="reportOrderLink" href="#" class="btn btn-outline-dark btn-full" style="display:none; margin-top:1rem;">Track order &amp; request a revision</a>
       </div>
@@ -257,6 +257,21 @@
         } else {
           document.getElementById('reportName').textContent = data.reportName || '—';
           document.getElementById('reportMeta').textContent = `${data.ticker} · Generated ${data.reportDate}`;
+          if (data.revisionsOnly) {
+            // The report was free and already theirs; what they bought is the
+            // right to revise it. Say so, and lead with the order page.
+            const count = data.revisionsAllowed || 0;
+            document.getElementById('reportTitle').textContent = 'Revisions added.';
+            document.getElementById('reportSub').textContent =
+              `You can now request ${count} ${count === 1 ? 'revision' : 'revisions'} of this free report. The order link is also in your email.`;
+            document.getElementById('reportBoxLabel').textContent = 'Your free report';
+            const download = document.getElementById('downloadBtn');
+            download.classList.remove('btn-primary'); download.classList.add('btn-outline-dark');
+            const order = document.getElementById('reportOrderLink');
+            order.classList.remove('btn-outline-dark'); order.classList.add('btn-primary');
+            order.textContent = 'Request a revision';
+            document.getElementById('emailNoteText').textContent = 'Order link sent to ';
+          }
           // Paid reports have no public URL any more: the download goes
           // through the gated endpoint, which re-checks this Stripe session.
           document.getElementById('downloadBtn').href =

@@ -109,6 +109,11 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
       reportName: report.name || report.companyName || '',
       ticker: report.ticker || '',
       price: String(pricing.unitAmount / 100),
+      // What was actually bought. A free report's buyer paid for revisions
+      // only, and the receipt page and email must not thank them for a
+      // report they already had — the catalog's free flag rotates weekly,
+      // so the session is the durable record of that.
+      kind,
       withRevisions: withRevisions ? 'true' : 'false',
       revisionsAllowed: String(included),
     },
@@ -210,8 +215,15 @@ async function createExtraRoundsCheckout(stripe, { orderId, rounds, email, compa
   return { session, rounds: quantity, priceEur: (quantity * pricing.unitAmount) / 100 };
 }
 
+// True when the session bought revisions on a report the buyer already had
+// for free — the PDF was never the purchase.
+function isRevisionsOnly(session) {
+  return session?.metadata?.kind === 'free-revisions';
+}
+
 module.exports = {
   CheckoutError,
+  isRevisionsOnly,
   MAX_EXTRA_ROUNDS,
   cancelPath,
   clampRounds,
