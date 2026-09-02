@@ -15,11 +15,17 @@ function extraRevisionFallbackUnitAmount() {
 }
 
 const PRICE_CONFIG = {
+  // The two base kinds keep their live product ids as defaults and a
+  // hardcoded fallback amount, so the shop stays open when Stripe cannot be
+  // reached. Under a test-mode key those live ids do not exist; the `kind`
+  // metadata tag (scripts/stripe-setup-revisions.mjs sets it on the test
+  // products, and adopts the live ones) is what finds the right product then.
   ready: {
     productEnv: 'STRIPE_READY_REPORT_PRODUCT_ID',
     priceEnv: 'STRIPE_READY_REPORT_PRICE_ID',
     defaultProductId: 'prod_UtBtnbEY6jZjI0',
     defaultPriceId: 'price_1TtPVO2FVkKDgcuUAOQ8uvIa',
+    lookupMetadataKind: 'ready',
     fallbackUnitAmount: 2000,
     currency: 'eur',
   },
@@ -28,6 +34,7 @@ const PRICE_CONFIG = {
     priceEnv: 'STRIPE_FRESH_REPORT_PRICE_ID',
     defaultProductId: 'prod_UtBsf3RcUsub19',
     defaultPriceId: 'price_1TtPUr2FVkKDgcuUBSFqewde',
+    lookupMetadataKind: 'fresh',
     fallbackUnitAmount: 5000,
     currency: 'eur',
   },
@@ -106,18 +113,19 @@ function revisionsEnabled() {
 }
 
 async function getPublicPricing(stripe, options = {}) {
+  // One product listing serves every kind below.
+  const products = await listActiveProducts(stripe).catch(() => []);
+  const lookup = { ...options, products };
   const [ready, fresh] = await Promise.all([
-    getStripePricing(stripe, 'ready', options),
-    getStripePricing(stripe, 'fresh', options),
+    getStripePricing(stripe, 'ready', lookup),
+    getStripePricing(stripe, 'fresh', lookup),
   ]);
   const pricing = { ready: publicPrice(ready), fresh: publicPrice(fresh), revisionsEnabled: revisionsEnabled() };
   if (!pricing.revisionsEnabled) return pricing;
 
   // The revisions kinds throw when unconfigured (see resolveStripePricing) —
   // catch per-kind so a half-set-up "ready" tier doesn't hide a working
-  // "fresh" one, and vice versa. One product listing serves all three.
-  const products = await listActiveProducts(stripe).catch(() => []);
-  const lookup = { ...options, products };
+  // "fresh" one, and vice versa.
   const [readyRevisions, freshRevisions, freeRevisions] = await Promise.all([
     getStripePricing(stripe, 'ready-revisions', lookup).catch(() => null),
     getStripePricing(stripe, 'fresh-revisions', lookup).catch(() => null),
@@ -130,8 +138,13 @@ async function getPublicPricing(stripe, options = {}) {
   return pricing;
 }
 
+// Resolution order: an explicit product id (env, then the live default), then
+// the product tagged with the kind, then an explicit price id, then the
+// fallback amount. An id from another Stripe mode is skipped quietly — the
+// tag lookup is the expected path under a test key, not an error.
 async function resolveStripePricing(stripe, kind, config, products) {
-  const productId = stripeProductId(process.env[config.productEnv], config.defaultProductId);
+  const explicitProductId = stripeProductId(process.env[config.productEnv]);
+  const productId = explicitProductId || stripeProductId(config.defaultProductId);
   if (productId) {
     try {
       const product = await stripe.products.retrieve(productId, { expand: ['default_price'] });
@@ -140,9 +153,12 @@ async function resolveStripePricing(stripe, kind, config, products) {
         return normalizePrice(kind, price);
       }
     } catch (err) {
-      console.warn(`Stripe ${kind} product pricing lookup failed:`, err.message);
+      if (explicitProductId || !isOtherModeError(err)) {
+        console.warn(`Stripe ${kind} product pricing lookup failed:`, err.message);
+      }
     }
-  } else if (config.lookupMetadataKind) {
+  }
+  if (config.lookupMetadataKind) {
     try {
       const product = await findProductByMetadataKind(stripe, config.lookupMetadataKind, products);
       const price = product && product.default_price;
@@ -154,12 +170,15 @@ async function resolveStripePricing(stripe, kind, config, products) {
     }
   }
 
-  const priceId = stripePriceId(process.env[config.priceEnv], config.defaultPriceId);
+  const explicitPriceId = stripePriceId(process.env[config.priceEnv]);
+  const priceId = explicitPriceId || stripePriceId(config.defaultPriceId);
   if (priceId) {
     try {
       return normalizePrice(kind, await stripe.prices.retrieve(priceId));
     } catch (err) {
-      console.warn(`Stripe ${kind} price lookup failed:`, err.message);
+      if (explicitPriceId || !isOtherModeError(err)) {
+        console.warn(`Stripe ${kind} price lookup failed:`, err.message);
+      }
     }
   }
 
@@ -182,6 +201,13 @@ async function resolveStripePricing(stripe, kind, config, products) {
     unitAmount: fallbackUnitAmount,
     currency: config.currency,
   };
+}
+
+// Stripe's wording when a live id is looked up with a test key (or the other
+// way round): "No such product: 'prod_…'; a similar object exists in live
+// mode, but a test mode key was used to make this request."
+function isOtherModeError(err) {
+  return /similar object exists in (live|test) mode/i.test(String(err && err.message || ''));
 }
 
 async function listActiveProducts(stripe) {

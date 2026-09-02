@@ -1,7 +1,9 @@
 #!/usr/bin/env node
-// One-time setup: create the revision products/prices in Stripe and set each
-// product's default price. server/stripe-pricing.js finds every one of them
-// by its `kind` metadata tag, so nothing needs to be pasted into env vars.
+// One-time setup: create the report shop's products/prices in Stripe and set
+// each product's default price. server/stripe-pricing.js finds every one of
+// them by its `kind` metadata tag, so nothing needs to be pasted into env
+// vars. In live mode the two base products already exist under the names
+// below and are adopted (tagged), not recreated.
 //
 //   STRIPE_SECRET_KEY=sk_test_... node scripts/stripe-setup-revisions.mjs
 //   STRIPE_SECRET_KEY=sk_live_... node scripts/stripe-setup-revisions.mjs --live
@@ -35,6 +37,20 @@ const suffix = live ? '' : ' (test)';
 
 // Amounts are the current business decision for each tier, in cents.
 const TIERS = [
+  {
+    kind: 'ready',
+    name: `AI Equity Report (Ready)${suffix}`,
+    unitAmount: 2000,
+    envProduct: 'STRIPE_READY_REPORT_PRODUCT_ID',
+    envPrice: 'STRIPE_READY_REPORT_PRICE_ID',
+  },
+  {
+    kind: 'fresh',
+    name: `AI Equity Report (Freshly Generated)${suffix}`,
+    unitAmount: 5000,
+    envProduct: 'STRIPE_FRESH_REPORT_PRODUCT_ID',
+    envPrice: 'STRIPE_FRESH_REPORT_PRICE_ID',
+  },
   {
     kind: 'ready-revisions',
     name: `AI Equity Report (Ready) + Revisions${suffix}`,
