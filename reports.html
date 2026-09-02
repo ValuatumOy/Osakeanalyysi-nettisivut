@@ -1464,7 +1464,7 @@
             };
             buttonPriceEl.textContent = freshLabel;
             if (pricing.revisionsEnabled && pricing.freshRevisions && revisionsOption) {
-              document.getElementById('freshRevisionsCount').textContent = pricing.revisionsIncluded || 3;
+              document.getElementById('freshRevisionsCount').textContent = (pricing.freshRevisions && pricing.freshRevisions.included) || pricing.revisionsIncluded || 2;
               const delta = Math.max(0, pricing.freshRevisions.unitAmount - pricing.fresh.unitAmount);
               document.getElementById('freshRevisionsPrice').textContent =
                 (pricing.freshRevisions.currency === 'eur' ? '€' : pricing.freshRevisions.currency + ' ') +

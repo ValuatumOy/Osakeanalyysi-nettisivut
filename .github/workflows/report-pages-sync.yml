@@ -26,6 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # build-page-freshness reads each file's last commit date.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -42,9 +45,22 @@ jobs:
       - name: Guard — built state must agree with the live catalog
         run: node scripts/report-pages/check.mjs --allow-missing-file /tmp/extraction-failures
 
+      # The SEO guard (seo-guard.yml) checks these derivatives on every PR but
+      # never ran here, so each sync that rebuilt a page left the next PR red
+      # until someone regenerated them by hand. Same commands, same order, as
+      # the guard's own fix instructions. OG cards need Chrome and stay manual.
+      - name: Regenerate the SEO derivatives of the rebuilt pages
+        run: |
+          node scripts/retitle-report-pages.mjs
+          node scripts/redescribe-report-pages.mjs
+          node scripts/build-company-index.mjs
+          node scripts/build-llms-txt.mjs
+          node scripts/build-page-freshness.mjs
+          node scripts/add-analyst-section.mjs
+
       - name: Commit and push
         run: |
-          git add report-content reports reports.html sitemap.xml
+          git add report-content reports reports.html sitemap.xml llms.txt companies
           if git diff --cached --quiet; then
             echo "No changes — catalog and pages already agree."
             exit 0

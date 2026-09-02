@@ -1,10 +1,23 @@
 const CACHE_TTL_MS = 5 * 60 * 1000;
 
-// How many forecast-revision requests every "+ Revisions" purchase includes.
-// Read here and nowhere else, so the checkout handlers, the public pricing
-// payload and the members Lambda can never disagree on the number.
-function revisionsIncluded() {
-  return Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 3;
+// How many forecast-revision requests a "+ Revisions" purchase includes when
+// its Stripe product does not say (metadata.revisions, see
+// includedRevisions below). Ready+ and fresh+ are a €5 add-on and include
+// two; revisions on a free report are the whole €10 purchase and include
+// three. Read here and nowhere else, so the checkout handlers, the public
+// pricing payload and the members Lambda can never disagree on the number.
+function revisionsIncluded(kind) {
+  if (kind === 'free-revisions') {
+    return Number.parseInt(process.env.FREE_REPORT_REVISIONS_INCLUDED || '', 10) || 3;
+  }
+  return Number.parseInt(process.env.REPORT_REVISIONS_INCLUDED || '', 10) || 2;
+}
+
+// The count a resolved price carries: the product's own metadata.revisions
+// when set (scripts/stripe-setup-revisions.mjs writes it, and it can be
+// changed in the Stripe dashboard next to the price), else the default above.
+function includedRevisions(pricing) {
+  return pricing.revisionsIncluded || revisionsIncluded(pricing.kind);
 }
 
 // What one extra revision round costs when no Stripe product for it exists
@@ -131,10 +144,11 @@ async function getPublicPricing(stripe, options = {}) {
     getStripePricing(stripe, 'fresh-revisions', lookup).catch(() => null),
     getStripePricing(stripe, 'free-revisions', lookup).catch(() => null),
   ]);
-  pricing.readyRevisions = readyRevisions ? publicPrice(readyRevisions) : null;
-  pricing.freshRevisions = freshRevisions ? publicPrice(freshRevisions) : null;
-  pricing.freeRevisions = freeRevisions ? publicPrice(freeRevisions) : null;
-  pricing.revisionsIncluded = revisionsIncluded();
+  pricing.readyRevisions = readyRevisions ? publicRevisionsPrice(readyRevisions) : null;
+  pricing.freshRevisions = freshRevisions ? publicRevisionsPrice(freshRevisions) : null;
+  pricing.freeRevisions = freeRevisions ? publicRevisionsPrice(freeRevisions) : null;
+  // Kept for readers that predate per-tier counts; the ready+/fresh+ number.
+  pricing.revisionsIncluded = revisionsIncluded('ready-revisions');
   return pricing;
 }
 
@@ -150,7 +164,7 @@ async function resolveStripePricing(stripe, kind, config, products) {
       const product = await stripe.products.retrieve(productId, { expand: ['default_price'] });
       const price = product.default_price;
       if (price && typeof price === 'object' && stripePriceId(price.id)) {
-        return normalizePrice(kind, price);
+        return normalizePrice(kind, price, product);
       }
     } catch (err) {
       if (explicitProductId || !isOtherModeError(err)) {
@@ -163,7 +177,7 @@ async function resolveStripePricing(stripe, kind, config, products) {
       const product = await findProductByMetadataKind(stripe, config.lookupMetadataKind, products);
       const price = product && product.default_price;
       if (price && typeof price === 'object' && stripePriceId(price.id)) {
-        return normalizePrice(kind, price);
+        return normalizePrice(kind, price, product);
       }
     } catch (err) {
       console.warn(`Stripe ${kind} metadata product lookup failed:`, err.message);
@@ -227,13 +241,19 @@ async function findProductByMetadataKind(stripe, metadataKind, products) {
   return list.find(p => p.metadata && p.metadata.kind === metadataKind) || null;
 }
 
-function normalizePrice(kind, price) {
+function normalizePrice(kind, price, product) {
+  const revisions = Number.parseInt(product?.metadata?.revisions || '', 10);
   return {
     kind,
     priceId: price.id,
     unitAmount: Number(price.unit_amount || 0),
     currency: String(price.currency || 'eur').toLowerCase(),
+    revisionsIncluded: revisions > 0 ? revisions : null,
   };
+}
+
+function publicRevisionsPrice(price) {
+  return { ...publicPrice(price), included: includedRevisions(price) };
 }
 
 function publicPrice(price) {
@@ -267,6 +287,7 @@ function stripeProductId(value, fallback = '') {
 module.exports = {
   getPublicPricing,
   getStripePricing,
+  includedRevisions,
   revisionsEnabled,
   revisionsIncluded,
 };
