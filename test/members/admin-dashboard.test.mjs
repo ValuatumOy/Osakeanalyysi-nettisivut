@@ -24,7 +24,6 @@ stub('../../server/aws/catalog-aws.js', {
   ] } }),
 });
 stub('../../server/search.js', { searchCompanies: async () => [] });
-stub('../../server/members/bounty.js', { readRateEur: () => 0.5 });
 stub('../../server/members/auth.js', { requireUser: async () => ({ profile: null, deny: { statusCode: 401 } }) });
 stub('../../server/aws/orders-store.js', { get: async () => null, update: async () => {} });
 stub('../../server/members/store.js', {
@@ -134,4 +133,13 @@ test('the dashboard gates its own destructive buttons', () => {
   assert.match(html, /Type the company id/, 'takedown must be type-to-confirm');
   assert.match(html, /Type PAID to confirm/, 'payout must be type-to-confirm');
   assert.match(html, /aerAdminMembersApiBase/, 'the test-stage override must exist');
+});
+
+// Earnings is the one admin route that runs the real bounty ledger. A partial
+// stub of bounty.js once made it 500 with "bounty.ledger is not a function".
+test('earnings runs the real ledger', async () => {
+  state.index = [];
+  const res = await asAdmin('GET /admin/members/earnings');
+  assert.equal(res.statusCode, 200);
+  assert.ok('share' in JSON.parse(res.body));
 });
