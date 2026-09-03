@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
 const { sendReportEmail, sendFreshConfirmEmail, reportError } = require('../server/email');
-const { isCompletedCheckout, isRevisionsOnly, orderPageUrl, siteUrl } = require('../server/checkout');
+const { isCompletedCheckout, isOurSession, isRevisionsOnly, orderPageUrl, siteUrl } = require('../server/checkout');
 
 // Vercel: disable body parser so Stripe signature verification receives the raw body.
 async function getRawBody(req) {
@@ -46,6 +46,17 @@ const handler = async (req, res) => {
     const email = session.customer_details?.email || session.customer_email || session.metadata?.customerEmail;
     const isFresh = session.metadata?.isFresh === 'true';
     const reportId = session.metadata?.reportId;
+
+    // The Stripe account is shared with other Valuatum sites and with the
+    // members API, and this endpoint receives every checkout in it. A session
+    // this site created is tagged as such (server/checkout.js); the rest are
+    // someone else's sale and not an error.
+    if (!isOurSession(session)) {
+      console.log('Checkout completed for another site or API, ignored', {
+        sessionId: session.id, reportType: session.metadata?.reportType || null,
+      });
+      return res.json({ received: true, ignored: true });
+    }
 
     console.log('Checkout completed webhook received', {
       sessionId: session.id,

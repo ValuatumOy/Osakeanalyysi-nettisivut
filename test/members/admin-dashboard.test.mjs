@@ -24,7 +24,19 @@ stub('../../server/aws/catalog-aws.js', {
   ] } }),
 });
 stub('../../server/search.js', { searchCompanies: async () => [] });
-stub('../../server/members/bounty.js', { readRateEur: () => 0.5 });
+// Earnings only needs the ledger to hand back a row; the real numbers are the
+// bounty module's own tests.
+const ZERO_TOTALS = Object.fromEntries([
+  'salesCount', 'grossSales', 'readsCount', 'shareEligible', 'eligible', 'readEligible',
+  'sharePending', 'pending', 'readPending', 'sharePaid', 'paid', 'readPaid',
+  'shareClawback', 'clawback', 'readClawback',
+].map((key) => [key, 0]));
+stub('../../server/members/bounty.js', {
+  readRateEur: () => 0.5,
+  REVENUE_SHARE: 0.5,
+  ledger: () => ({ entries: [], totals: { ...ZERO_TOTALS, salesCount: 1 } }),
+  payableItems: () => [],
+});
 stub('../../server/members/auth.js', { requireUser: async () => ({ profile: null, deny: { statusCode: 401 } }) });
 stub('../../server/aws/orders-store.js', { get: async () => null, update: async () => {} });
 stub('../../server/members/store.js', {
@@ -36,6 +48,7 @@ stub('../../server/members/store.js', {
   findPublicationIndex: async (genId) => state.index.find((i) => i.genId === genId) || null,
   getProfile: async (userId) => state.profiles.find((p) => p.pk === `USER#${userId}`) || null,
   getItem: async (pk, sk) => state.items[`item:${pk}:${sk}`] || null,
+  getPublication: async (userId, genId) => state.items[`item:USER#${userId}:PUB#${genId}`] || null,
   getUsage: async () => null,
   runTransact: async (t) => { state.transacts.push(t); return true; },
   audit: async () => {},
@@ -125,6 +138,47 @@ test('voiding a review takes its score out of the totals, once', async () => {
   const again = await asAdmin('POST /admin/members/void-review', { body });
   assert.equal(again.statusCode, 409);
   assert.equal(state.transacts.length, 0);
+});
+
+// A name in the admin should go where a reader's would: the analyst's profile.
+test('the admin views carry the LinkedIn profile of everyone they name', async () => {
+  state.profiles = [
+    { pk: 'USER#u1', sk: 'PROFILE', name: 'Anna Analyst', email: 'a@b.c', role: 'analyst',
+      linkedinUrl: 'https://www.linkedin.com/in/anna' },
+    { pk: 'USER#rev1', sk: 'PROFILE', name: 'Rex Reviewer', role: 'analyst',
+      linkedinUrl: 'https://www.linkedin.com/in/rex' },
+  ];
+  state.index = [{
+    genId: 'g1', companyId: 'TSLA', sk: 'TSLA#2026#g1', userId: 'u1',
+    analystName: 'Anna Analyst', analystLinkedin: 'https://www.linkedin.com/in/anna',
+    publishedAt: '2026-08-26T00:00:00.000Z', status: 'published',
+  }];
+  state.items['u1:PUB#'] = [{ sk: 'PUB#g1', status: 'published', companyId: 'TSLA' }];
+  state.items['u1:REVIEW#'] = [{ genId: 'g1', reviewerId: 'rev1', score: 4, comment: 'good' }];
+
+  const users = JSON.parse((await asAdmin('GET /admin/members/users')).body).users;
+  assert.equal(users.find((u) => u.userId === 'u1').linkedinUrl, 'https://www.linkedin.com/in/anna');
+
+  const pubs = JSON.parse((await asAdmin('GET /admin/members/publications')).body).publications;
+  assert.equal(pubs[0].analystLinkedin, 'https://www.linkedin.com/in/anna');
+
+  const earnings = JSON.parse((await asAdmin('GET /admin/members/earnings')).body);
+  assert.equal(earnings.analysts[0].linkedinUrl, 'https://www.linkedin.com/in/anna');
+
+  const detail = JSON.parse((await asAdmin('GET /admin/members/users/{userId}', {
+    pathParameters: { userId: 'u1' },
+  })).body);
+  assert.equal(detail.profile.linkedinUrl, 'https://www.linkedin.com/in/anna');
+  assert.equal(detail.reviewsReceived[0].reviewerName, 'Rex Reviewer');
+  assert.equal(detail.reviewsReceived[0].reviewerLinkedin, 'https://www.linkedin.com/in/rex');
+});
+
+test('the dashboard shows those links beside the names', () => {
+  const html = readFileSync(new URL('../../admin/index.html', import.meta.url), 'utf8');
+  assert.match(html, /function linkedinLink/);
+  for (const field of ['p.analystLinkedin', 'u.linkedinUrl', 'a.linkedinUrl', 'r.reviewerLinkedin']) {
+    assert.ok(html.includes(`linkedinLink(${field}`), `${field} is linked`);
+  }
 });
 
 test('the dashboard gates its own destructive buttons', () => {

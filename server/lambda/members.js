@@ -17,7 +17,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
-const { createExtraRoundsCheckout } = require('../checkout');
+const { createExtraRoundsCheckout, SITE_TAG } = require('../checkout');
 const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
@@ -1342,7 +1342,7 @@ async function postBillingTopUpCheckout(event) {
         },
       },
     }],
-    metadata: { topup: kind, topupUnits: String(units), userId: profile.userId },
+    metadata: { site: SITE_TAG, topup: kind, topupUnits: String(units), userId: profile.userId },
     success_url: `${returnTo}?topup=added&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${returnTo}?topup=cancelled`,
   });
@@ -1406,6 +1406,7 @@ async function postBillingCheckout(event) {
     // second price.
     line_items: [{ price: priceId, quantity: plan === 'coverage' ? coverage.length : 1 }],
     client_reference_id: profile.userId,
+    metadata: { site: SITE_TAG, userId: profile.userId, plan },
     subscription_data: {
       metadata: {
         userId: profile.userId,
@@ -1457,6 +1458,7 @@ async function postFreshCheckout(event) {
     line_items: [{ price: priceId, quantity: 1 }],
     client_reference_id: profile.userId,
     metadata: {
+      site: SITE_TAG,
       isFresh: 'true',
       userId: profile.userId,
       company: match.companyName || company,
@@ -1914,7 +1916,7 @@ async function postAnalysisBuyCheckout(event) {
         },
       },
     }],
-    metadata: { analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
+    metadata: { site: SITE_TAG, analysisGenId: genId, ownerId: index.userId, companyId: index.companyId },
     success_url: `${returnTo}?bought=${genId}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${returnTo}?bought=cancelled`,
   });
@@ -2073,6 +2075,7 @@ async function postAnalysisForkCheckout(event) {
     line_items: lineItems,
     ...(profile?.email ? { customer_email: profile.email } : {}),
     metadata: {
+      site: SITE_TAG,
       analysisGenId: genId,
       ownerId: index.userId,
       companyId: index.companyId,
@@ -2290,6 +2293,7 @@ async function getAdminEarnings(event) {
       userId,
       analyst: nameOf.get(userId) || profile?.name || profile?.email || null,
       email: profile?.email || null,
+      linkedinUrl: profile?.linkedinUrl || null,
       published: led.entries.length,
       salesCount: led.totals.salesCount,
       grossSales: led.totals.grossSales,
@@ -2332,6 +2336,7 @@ async function getAdminPublications(event) {
       genId: item.genId,
       companyId: item.companyId,
       analyst: item.analystName || null,
+      analystLinkedin: item.analystLinkedin || null,
       publishedAt: item.publishedAt,
       status: item.status,
       priceEur: item.priceEur || 0,
@@ -2468,6 +2473,14 @@ async function getAdminUserDetail(event) {
     };
   }));
 
+  // Reviewers are ids on the row; the admin wants to know who they are, so
+  // each distinct reviewer's profile is read once.
+  const reviewerIds = [...new Set(reviews.map((r) => r.reviewerId).filter(Boolean))];
+  const reviewerProfiles = new Map(await Promise.all(reviewerIds.map(async (id) => {
+    const p = await store.getProfile(id);
+    return [id, p || null];
+  })));
+
   return json(200, {
     profile: {
       userId,
@@ -2491,6 +2504,8 @@ async function getAdminUserDetail(event) {
     reviewsReceived: reviews.map((r) => ({
       genId: r.genId,
       reviewerId: r.reviewerId,
+      reviewerName: reviewerProfiles.get(r.reviewerId)?.name || null,
+      reviewerLinkedin: reviewerProfiles.get(r.reviewerId)?.linkedinUrl || null,
       score: r.score,
       comment: r.comment || '',
       reviewedAt: r.reviewedAt || null,

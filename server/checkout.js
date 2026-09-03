@@ -15,6 +15,19 @@ const MAX_EXTRA_ROUNDS = 10;
 
 // A refusal the HTTP layer can pass straight through to the buyer, as
 // opposed to an unexpected failure that should be logged and become a 500.
+// The Stripe account is shared with other Valuatum sites, and every webhook
+// in it receives every checkout. This tag on a session's metadata says the
+// session is this site's; the webhook handles nothing without it.
+const SITE_TAG = 'aiequityreports';
+
+// Sessions created before the tag existed carry a reportId or the fresh
+// flag instead. A checkout session lives 24 hours, so that fallback can go
+// a day after the tag is deployed.
+function isOurSession(session) {
+  const meta = session?.metadata || {};
+  return meta.site === SITE_TAG || meta.isFresh === 'true' || Boolean(meta.reportId);
+}
+
 class CheckoutError extends Error {
   constructor(status, message) {
     super(message);
@@ -105,6 +118,7 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
     mode: 'payment',
     allow_promotion_codes: true,
     metadata: {
+      site: SITE_TAG,
       reportId: report.id,
       reportName: report.name || report.companyName || '',
       ticker: report.ticker || '',
@@ -160,6 +174,7 @@ async function createFreshReportCheckout(stripe, order = {}) {
     allow_promotion_codes: true,
     customer_email: order.email || undefined,
     metadata: {
+      site: SITE_TAG,
       isFresh: 'true',
       company,
       ticker: order.ticker || '',
@@ -205,6 +220,7 @@ async function createExtraRoundsCheckout(stripe, { orderId, rounds, email, compa
       description: 'One more round of steering on a report you already have.',
     })],
     metadata: {
+      site: SITE_TAG,
       ...(extraMetadata || {}),
       extraRevisions: String(quantity),
       generationId: orderId,
@@ -223,6 +239,8 @@ function isRevisionsOnly(session) {
 
 module.exports = {
   CheckoutError,
+  SITE_TAG,
+  isOurSession,
   isRevisionsOnly,
   MAX_EXTRA_ROUNDS,
   cancelPath,

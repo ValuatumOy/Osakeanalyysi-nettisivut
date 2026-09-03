@@ -1082,7 +1082,7 @@ function renderAuthors() {
       <div class="author-head">
         <img class="author-photo" src="${esc(a.photo || '')}" alt="${esc(a.name)}" onerror="this.style.background='var(--off-white)'">
         <div style="flex:1; min-width:0;">
-          <div class="author-name">${esc(a.name)} ${hasTodo(a) ? '<span class="todo-pill">needs info</span>' : ''}</div>
+          <div class="author-name">${esc(a.name)}${a.linkedin ? ` <a href="${esc(a.linkedin)}" target="_blank" rel="noopener nofollow" title="${esc(a.name)} on LinkedIn" style="font-size:0.75rem; font-weight:500;">LinkedIn</a>` : ''} ${hasTodo(a) ? '<span class="todo-pill">needs info</span>' : ''}</div>
           <div class="author-role">${esc(a.title)}</div>
           <div style="font-size:0.72rem; color:var(--gray-steel); margin-top:0.2rem;">${esc(a.id)}</div>
         </div>
