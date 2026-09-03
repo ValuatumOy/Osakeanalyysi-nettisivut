@@ -2293,6 +2293,7 @@ async function getAdminEarnings(event) {
       userId,
       analyst: nameOf.get(userId) || profile?.name || profile?.email || null,
       email: profile?.email || null,
+      linkedinUrl: profile?.linkedinUrl || null,
       published: led.entries.length,
       salesCount: led.totals.salesCount,
       grossSales: led.totals.grossSales,
@@ -2335,6 +2336,7 @@ async function getAdminPublications(event) {
       genId: item.genId,
       companyId: item.companyId,
       analyst: item.analystName || null,
+      analystLinkedin: item.analystLinkedin || null,
       publishedAt: item.publishedAt,
       status: item.status,
       priceEur: item.priceEur || 0,
@@ -2471,6 +2473,14 @@ async function getAdminUserDetail(event) {
     };
   }));
 
+  // Reviewers are ids on the row; the admin wants to know who they are, so
+  // each distinct reviewer's profile is read once.
+  const reviewerIds = [...new Set(reviews.map((r) => r.reviewerId).filter(Boolean))];
+  const reviewerProfiles = new Map(await Promise.all(reviewerIds.map(async (id) => {
+    const p = await store.getProfile(id);
+    return [id, p || null];
+  })));
+
   return json(200, {
     profile: {
       userId,
@@ -2494,6 +2504,8 @@ async function getAdminUserDetail(event) {
     reviewsReceived: reviews.map((r) => ({
       genId: r.genId,
       reviewerId: r.reviewerId,
+      reviewerName: reviewerProfiles.get(r.reviewerId)?.name || null,
+      reviewerLinkedin: reviewerProfiles.get(r.reviewerId)?.linkedinUrl || null,
       score: r.score,
       comment: r.comment || '',
       reviewedAt: r.reviewedAt || null,

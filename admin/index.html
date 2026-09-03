@@ -94,6 +94,9 @@
     td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; white-space: nowrap; }
     tr:last-child td { border-bottom: none; }
     td.company { font-weight: 600; }
+    .li-link { display: inline-flex; align-items: center; color: var(--gray-steel);
+      margin-left: 0.35em; vertical-align: -0.15em; }
+    .li-link:hover { color: #0A66C2; }
     td .muted { color: var(--gray-steel); font-weight: 400; }
 
     /* ── forms ── */
@@ -377,6 +380,19 @@
     // ── catalog list ─────────────────────────────────────────────────────────
     const esc = (value) => String(value ?? '').replace(/[&<>"']/g, c =>
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    // The LinkedIn profile an analyst gave us, next to their name. Same markup
+    // as the public report pages, so a name in the admin goes to the same place
+    // a reader would land. Nothing is drawn for a member who gave no link.
+    function linkedinLink(url, who) {
+      if (!url) return '';
+      const label = esc(`${who || 'This member'} on LinkedIn`);
+      return ` <a class="li-link" href="${esc(url)}" target="_blank" rel="noopener nofollow"`
+        + ` aria-label="${label}" title="${label}">`
+        + '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">'
+        + '<path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.87-2.36-3.87-2.36 0-2.72 1.84-2.72 3.75V24H8V8z"/>'
+        + '</svg></a>';
+    }
 
     function statusBadge(report) {
       if (report.availability === 'available') return '<span class="badge badge-green">Live</span>';
@@ -786,7 +802,7 @@
             : '';
         return `<tr>
           <td class="company">${esc(p.companyId)}</td>
-          <td>${esc(p.analyst || p.userId.slice(0, 8))}</td>
+          <td>${esc(p.analyst || p.userId.slice(0, 8))}${linkedinLink(p.analystLinkedin, p.analyst)}</td>
           <td>${day(p.publishedAt)}</td>
           <td>${status}${p.takedownReason ? `<br><span class="muted" style="font-size:0.7rem;">${esc(p.takedownReason)}</span>` : ''}</td>
           <td>${p.priceEur ? eur(p.priceEur) : 'free'}</td>
@@ -840,7 +856,7 @@
           u.openReviewId ? '<span class="pill-warn">owes review</span>' : '',
         ].filter(Boolean).join(' ') || '<span class="muted">—</span>';
         return `<tr class="user-row" data-i="${i}" style="cursor:pointer;">
-          <td class="company">${esc(u.name || u.email || u.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(u.email || u.userId)}</span></td>
+          <td class="company">${esc(u.name || u.email || u.userId.slice(0, 8))}${linkedinLink(u.linkedinUrl, u.name || u.email)}<br><span class="muted" style="font-size:0.7rem;">${esc(u.email || u.userId)}</span></td>
           <td>${esc(u.role || '—')}</td>
           <td>${plan}</td>
           <td>${u.usage.picks}/${u.usage.pickLimit} picks · ${u.usage.analystReads}/${u.usage.analystReadLimit} reads${u.usage.genReserved ? ' · gen used' : ''}</td>
@@ -901,7 +917,7 @@
       }
       if (d.reviewsReceived.length) {
         parts.push('<h4>Reviews received</h4><table><tr><th>Analysis</th><th>Reviewer</th><th>Score</th><th>Comment</th><th></th></tr>'
-          + d.reviewsReceived.map(r => `<tr${r.voided ? ' style="opacity:.5;"' : ''}><td>${esc(r.genId.slice(0, 8))}</td><td>${esc(r.reviewerId.slice(0, 8))}</td>
+          + d.reviewsReceived.map(r => `<tr${r.voided ? ' style="opacity:.5;"' : ''}><td>${esc(r.genId.slice(0, 8))}</td><td>${esc(r.reviewerName || r.reviewerId.slice(0, 8))}${linkedinLink(r.reviewerLinkedin, r.reviewerName)}</td>
             <td>${r.score}${r.voided ? ' <span class="pill-warn">voided</span>' : ''}${r.edits ? ` <span class="muted">(${r.edits} edits)</span>` : ''}</td>
             <td style="max-width:34ch;">${esc(String(r.comment).slice(0, 160))}</td>
             <td>${r.voided ? '' : `<button class="btn-xs danger" data-void="1" data-owner="${esc(d.profile.userId)}" data-gen="${esc(r.genId)}" data-reviewer="${esc(r.reviewerId)}">Void</button>`}</td></tr>`).join('') + '</table>');
@@ -950,7 +966,7 @@
       const data = await mapi('/admin/members/earnings');
       const analysts = data.analysts || data.owed || [];
       $('earning-rows').innerHTML = analysts.map(a => `<tr>
-        <td class="company">${esc(a.analyst || a.userId.slice(0, 8))}<br><span class="muted" style="font-size:0.7rem;">${esc(a.email || '')}</span></td>
+        <td class="company">${esc(a.analyst || a.userId.slice(0, 8))}${linkedinLink(a.linkedinUrl, a.analyst)}<br><span class="muted" style="font-size:0.7rem;">${esc(a.email || '')}</span></td>
         <td>${a.published || 0}</td>
         <td>${a.salesCount || 0}${a.readsCount ? ` <span class="muted">+ ${a.readsCount} reads</span>` : ''}</td>
         <td>${eur(a.grossSales)}</td>
