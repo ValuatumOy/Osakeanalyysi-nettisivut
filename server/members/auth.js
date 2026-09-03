@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2');
 const jwt = require('./jwt');
 const store = require('./store');
+const email = require('../email');
 
 const LINKEDIN_AUTH_URL = 'https://www.linkedin.com/oauth/v2/authorization';
 const LINKEDIN_TOKEN_URL = 'https://www.linkedin.com/oauth/v2/accessToken';
@@ -128,7 +129,11 @@ async function linkedinCallback(code, state, now = new Date()) {
   const info = await userRes.json(); // { sub, email, name, ... }
   if (!info.sub) return { error: 'LinkedIn sign-in failed' };
 
-  const userId = await store.ensureUser(`LINKEDIN#${info.sub}`, {
+  const identityPk = `LINKEDIN#${info.sub}`;
+  // Read before the find-or-create so we can tell a registration from a return
+  // visit: after ensureUser both look identical.
+  const firstSignIn = !(await store.getIdentity(identityPk));
+  const userId = await store.ensureUser(identityPk, {
     role: 'analyst',
     email: String(info.email || '').toLowerCase(),
     name: info.name || '',
@@ -136,7 +141,29 @@ async function linkedinCallback(code, state, now = new Date()) {
   });
   const profile = await store.getProfile(userId);
   await store.audit(userId, 'login', { method: 'linkedin' });
+  if (firstSignIn) await notifyAdminOfRegistration(profile, info);
   return { token: mintToken(profile, now), userId, returnTo };
+}
+
+// Every new analyst account is worth a look, so the admin gets one email the
+// first time a LinkedIn profile signs in. Sending is best effort: a mail
+// failure must never turn a successful sign-in into an error.
+async function notifyAdminOfRegistration(profile, info) {
+  try {
+    await email.sendAdminAlert(
+      `New LinkedIn registration: ${info.name || info.email || profile.userId}`,
+      [
+        `Name: ${info.name || '(none given)'}`,
+        `Email: ${info.email || '(none given)'}`,
+        `Role: ${profile.role || 'analyst'}`,
+        `User id: ${profile.userId}`,
+        `LinkedIn id: ${info.sub}`,
+        `Time: ${new Date().toISOString()}`,
+      ],
+    );
+  } catch (err) {
+    console.error('admin registration notice could not be sent:', err.message);
+  }
 }
 
 // ── email magic link ─────────────────────────────────────────────────────────
