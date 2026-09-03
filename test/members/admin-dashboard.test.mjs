@@ -24,19 +24,6 @@ stub('../../server/aws/catalog-aws.js', {
   ] } }),
 });
 stub('../../server/search.js', { searchCompanies: async () => [] });
-// Earnings only needs the ledger to hand back a row; the real numbers are the
-// bounty module's own tests.
-const ZERO_TOTALS = Object.fromEntries([
-  'salesCount', 'grossSales', 'readsCount', 'shareEligible', 'eligible', 'readEligible',
-  'sharePending', 'pending', 'readPending', 'sharePaid', 'paid', 'readPaid',
-  'shareClawback', 'clawback', 'readClawback',
-].map((key) => [key, 0]));
-stub('../../server/members/bounty.js', {
-  readRateEur: () => 0.5,
-  REVENUE_SHARE: 0.5,
-  ledger: () => ({ entries: [], totals: { ...ZERO_TOTALS, salesCount: 1 } }),
-  payableItems: () => [],
-});
 stub('../../server/members/auth.js', { requireUser: async () => ({ profile: null, deny: { statusCode: 401 } }) });
 stub('../../server/aws/orders-store.js', { get: async () => null, update: async () => {} });
 stub('../../server/members/store.js', {
@@ -153,7 +140,11 @@ test('the admin views carry the LinkedIn profile of everyone they name', async (
     analystName: 'Anna Analyst', analystLinkedin: 'https://www.linkedin.com/in/anna',
     publishedAt: '2026-08-26T00:00:00.000Z', status: 'published',
   }];
-  state.items['u1:PUB#'] = [{ sk: 'PUB#g1', status: 'published', companyId: 'TSLA' }];
+  state.items['u1:PUB#'] = [{
+    sk: 'PUB#g1', status: 'published', companyId: 'TSLA', publishedAt: '2026-08-26T00:00:00.000Z',
+  }];
+  // A sale is what puts the analyst on the earnings list at all.
+  state.items['u1:SALE#'] = [{ genId: 'g1', companyId: 'TSLA', grossEur: 20, soldAt: '2026-08-27T00:00:00.000Z' }];
   state.items['u1:REVIEW#'] = [{ genId: 'g1', reviewerId: 'rev1', score: 4, comment: 'good' }];
 
   const users = JSON.parse((await asAdmin('GET /admin/members/users')).body).users;
@@ -188,4 +179,13 @@ test('the dashboard gates its own destructive buttons', () => {
   assert.match(html, /Type the company id/, 'takedown must be type-to-confirm');
   assert.match(html, /Type PAID to confirm/, 'payout must be type-to-confirm');
   assert.match(html, /aerAdminMembersApiBase/, 'the test-stage override must exist');
+});
+
+// Earnings is the one admin route that runs the real bounty ledger. A partial
+// stub of bounty.js once made it 500 with "bounty.ledger is not a function".
+test('earnings runs the real ledger', async () => {
+  state.index = [];
+  const res = await asAdmin('GET /admin/members/earnings');
+  assert.equal(res.statusCode, 200);
+  assert.ok('share' in JSON.parse(res.body));
 });

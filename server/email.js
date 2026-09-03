@@ -422,6 +422,14 @@ async function sendInstitutionRequest(meta) {
 // webhook's purchase-sync failing after retries). The stage is in the subject
 // so a test-stage alert is never mistaken for a production one.
 async function sendAdminAlert(subject, lines) {
+  // Alerts belong to deployed code. Every catch block that calls this also runs
+  // on a laptop under `node --test`, and a dev shell with AWS credentials turned
+  // each failing test into admin mail. Both platforms set their own variable;
+  // nothing sets them locally.
+  if (!process.env.AWS_LAMBDA_FUNCTION_NAME && !process.env.VERCEL) {
+    console.error(`admin alert not sent (not deployed): ${subject}`);
+    return;
+  }
   const items = (Array.isArray(lines) ? lines : [lines])
     .map(line => `<li style="margin-bottom:4px;white-space:pre-wrap;">${escapeHtml(line)}</li>`)
     .join('');
