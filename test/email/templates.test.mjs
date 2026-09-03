@@ -26,9 +26,15 @@ function loadEmail({ sendImpl } = {}) {
 }
 
 function cleanup(t) {
-  const saved = { ADMIN_EMAIL: process.env.ADMIN_EMAIL, STAGE: process.env.STAGE };
+  const saved = {
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    STAGE: process.env.STAGE,
+    AWS_LAMBDA_FUNCTION_NAME: process.env.AWS_LAMBDA_FUNCTION_NAME,
+  };
   process.env.ADMIN_EMAIL = 'ops@example.test';
   process.env.STAGE = 'unit';
+  // sendAdminAlert only mails from a deployed runtime; stand in for one.
+  process.env.AWS_LAMBDA_FUNCTION_NAME = 'unit-test';
   t.after(() => {
     for (const [k, v] of Object.entries(saved)) {
       if (v === undefined) delete process.env[k]; else process.env[k] = v;
@@ -131,4 +137,15 @@ test('reportError never throws, even when SES itself is down', async (t) => {
   const { email } = loadEmail({ sendImpl: async () => { throw new Error('MessageRejected'); } });
   const ok = await email.reportError('worker tick', new Error('boom'));
   assert.equal(ok, false);
+});
+
+// The bug this closes: a failing test on a dev laptop with AWS credentials in
+// the shell mailed the admin, over and over, from the handler's own catch block.
+test('a laptop run reports the error to the console, not to the admin', async (t) => {
+  cleanup(t);
+  delete process.env.AWS_LAMBDA_FUNCTION_NAME;
+  const { email, sent } = loadEmail();
+  const ok = await email.reportError('members GET /admin/members/earnings', new Error('boom'));
+  assert.equal(sent.length, 0);
+  assert.equal(ok, true, 'a skipped alert is still not an error the caller must handle');
 });
