@@ -28,6 +28,10 @@ stub('../../server/aws/catalog-aws.js', {
       entry({ id: 'tesla-20082026-rev-1', fileName: 'Tesla_20082026_rev-ab.pdf', provenanceSessionId: 'order-1', isRevision: true }),
       entry({ id: 'tesla-20082026-edit-1', fileName: 'Tesla_20082026_edit-cd.pdf', provenanceSessionId: 'order-1', isRevision: true }),
       entry({ id: 'nokia-05062026', fileName: 'Nokia_05062026.pdf' }),
+      // A fork of order-1: it revises the parent's engine job, so it has no
+      // original of its own — only revised copies, numbered from 2.
+      entry({ id: 'tesla-03092026-rev-2', fileName: 'Tesla_03092026_rev-fork.pdf', provenanceSessionId: 'fork-1', isRevision: true }),
+      entry({ id: 'tesla-04092026-rev-2', fileName: 'Tesla_04092026_rev-fork.pdf', provenanceSessionId: 'fork-1', isRevision: true }),
     ] },
     state: { purchases: [] },
   }),
@@ -42,6 +46,14 @@ stub('../../server/aws/orders-store.js', {
       revisionHistory: [
         { version: 2, kind: 'revision', pdfFileName: 'Tesla_20082026_rev-ab.pdf', completedAt: '2026-08-20T13:54:00.000Z' },
         { version: 3, kind: 'edit', pdfFileName: 'Tesla_20082026_edit-cd.pdf', completedAt: '2026-08-20T14:02:00.000Z' },
+      ],
+    },
+    {
+      id: 'fork-1', email: 'analyst@example.com', visibility: 'private', forkedFrom: 'order-1',
+      pdfFileName: 'Tesla_04092026_rev-fork.pdf', originalPdfFileName: null, deliveredEmailAt: null,
+      revisionHistory: [
+        { version: 2, kind: 'revision', pdfFileName: 'Tesla_03092026_rev-fork.pdf', completedAt: '2026-09-03T13:50:40.000Z' },
+        { version: 3, kind: 'revision', pdfFileName: 'Tesla_04092026_rev-fork.pdf', completedAt: '2026-09-04T05:18:34.000Z' },
       ],
     },
   ],
@@ -93,10 +105,27 @@ test('the admin listing carries chain, origin and author; the public one does no
   assert.equal(base.kind, null);
   assert.equal(upload.kind, null);
 
+  // Which version each file is comes from the order, not from counting files.
+  assert.equal(base.version, 1);
+  assert.equal(rev.version, 2);
+  assert.equal(edited.version, 3);
+  assert.equal(upload.version, null);
+  assert.equal(base.forkedFrom, null);
+
+  // A fork has no version 1 of its own: its latest file must not pass for an
+  // original, and its pdfFileName (the newest revision) is not one either.
+  const forkV2 = reports.find((r) => r.id === 'tesla-03092026-rev-2');
+  const forkV3 = reports.find((r) => r.id === 'tesla-04092026-rev-2');
+  assert.equal(forkV2.version, 2);
+  assert.equal(forkV3.version, 3);
+  assert.equal(forkV3.forkedFrom, 'order-1');
+  assert.equal(forkV3.isRevision, true);
+  assert.equal(forkV3.generatedAt, '2026-09-04T05:18:34.000Z');
+
   // The public catalog must not leak any of it.
   const pub = await handler({ routeKey: 'GET /api/reports', headers: {} });
   const first = JSON.parse(pub.body).reports[0];
-  for (const field of ['groupId', 'origin', 'generatedBy', 'provenanceSessionId']) {
+  for (const field of ['groupId', 'origin', 'generatedBy', 'provenanceSessionId', 'version', 'forkedFrom']) {
     assert.ok(!(field in first), `${field} leaked into the public listing`);
   }
 });
