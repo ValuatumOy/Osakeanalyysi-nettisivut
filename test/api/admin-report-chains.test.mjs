@@ -36,9 +36,7 @@ stub('../../server/aws/catalog-aws.js', {
     state: { purchases: [] },
   }),
 });
-stub('../../server/aws/orders-store.js', {
-  STATUS: { DELIVERED: 'DELIVERED' },
-  list: async () => [
+const ORDERS = [
     {
       id: 'order-1', email: 'buyer@example.com', visibility: undefined,
       pdfFileName: 'Tesla_20082026_rev-ab.pdf', originalPdfFileName: 'Tesla_20082026.pdf',
@@ -56,8 +54,11 @@ stub('../../server/aws/orders-store.js', {
         { version: 3, kind: 'revision', pdfFileName: 'Tesla_04092026_rev-fork.pdf', completedAt: '2026-09-04T05:18:34.000Z' },
       ],
     },
-  ],
-  get: async () => null,
+];
+stub('../../server/aws/orders-store.js', {
+  STATUS: { DELIVERED: 'DELIVERED' },
+  list: async () => ORDERS,
+  get: async (id) => ORDERS.find((o) => o.id === id) || null,
 });
 stub('../../server/aws/pdf-store.js', {});
 stub('../../server/stripe-pricing.js', { getStripePricing: async () => ({}) });
@@ -128,4 +129,46 @@ test('the admin listing carries chain, origin and author; the public one does no
   for (const field of ['groupId', 'origin', 'generatedBy', 'provenanceSessionId', 'version', 'forkedFrom']) {
     assert.ok(!(field in first), `${field} leaked into the public listing`);
   }
+});
+
+// The revision history — forecast writeups, change memos — was readable only
+// by the customer who asked for the revisions. The admin can now open any
+// order's history from the catalog, behind the admin password, read-only.
+test('the admin can read any order\'s revision history; the password is required', async () => {
+  const res = await handler({
+    routeKey: 'GET /api/admin/orders/{id}',
+    pathParameters: { id: 'fork-1' },
+    headers: { authorization: 'Bearer pw' },
+  });
+  assert.equal(res.statusCode, 200);
+  const order = JSON.parse(res.body);
+  assert.equal(order.readOnly, true);
+  assert.equal(order.email, 'analyst@example.com');
+  assert.equal(order.forkedFrom, 'order-1');
+  // Newest first, and the fork has no original to append.
+  assert.deepEqual(order.revisionHistory.map((e) => e.version), [3, 2]);
+  assert.match(order.revisionHistory[0].pdfUrl, /Tesla_04092026_rev-fork\.pdf$/);
+
+  // A real original is appended as version 1, same as the customer sees.
+  const parent = JSON.parse((await handler({
+    routeKey: 'GET /api/admin/orders/{id}',
+    pathParameters: { id: 'order-1' },
+    headers: { authorization: 'Bearer pw' },
+  })).body);
+  assert.deepEqual(parent.revisionHistory.map((e) => e.version), [3, 2, 1]);
+  assert.equal(parent.revisionHistory[2].original, true);
+
+  const denied = await handler({
+    routeKey: 'GET /api/admin/orders/{id}',
+    pathParameters: { id: 'order-1' },
+    headers: { authorization: 'Bearer wrong' },
+  });
+  assert.equal(denied.statusCode, 401);
+
+  const missing = await handler({
+    routeKey: 'GET /api/admin/orders/{id}',
+    pathParameters: { id: 'nope' },
+    headers: { authorization: 'Bearer pw' },
+  });
+  assert.equal(missing.statusCode, 404);
 });

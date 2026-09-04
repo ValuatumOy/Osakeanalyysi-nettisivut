@@ -318,6 +318,13 @@ async function getOrder(event) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
 
+  return json(200, await orderPagePayload(order), { 'cache-control': 'no-store' });
+}
+
+// What the order page renders for one order: status, the current PDF, and
+// every revision's change memo. Shared by the customer's route above and the
+// admin's read-only view of the same order.
+async function orderPagePayload(order) {
   const payload = {
     status: order.status,
     origin: order.origin,
@@ -378,7 +385,29 @@ async function getOrder(event) {
     });
   }
 
-  return json(200, payload, { 'cache-control': 'no-store' });
+  return payload;
+}
+
+// GET /api/admin/orders/{id} — the order page's state for any order, behind
+// the admin password. The revision history with its forecast writeups and
+// change memos was only ever readable by the customer who asked for the
+// revisions: a paying buyer through their Stripe session id, a member
+// through their own token. The admin page links each catalog chain here so
+// the admin can read the same page, marked read-only — the page hides every
+// control that would act on the customer's behalf.
+async function getAdminOrder(event) {
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+
+  const payload = await orderPagePayload(order);
+  return json(200, {
+    ...payload,
+    readOnly: true,
+    email: order.email || null,
+    analystName: order.analystName || null,
+    forkedFrom: order.forkedFrom || null,
+  }, { 'cache-control': 'no-store' });
 }
 
 // POST /api/orders/{id}/revisions — the order page's one mutating call.
@@ -716,6 +745,7 @@ const PUBLIC_ROUTES = {
 
 const ADMIN_ROUTES = {
   'GET /api/admin/reports': getAdminReports,
+  'GET /api/admin/orders/{id}': getAdminOrder,
   'POST /api/admin/upload-url': postAdminUploadUrl,
   'POST /api/admin/publish': postAdminPublish,
   'POST /api/admin/update': postAdminUpdate,

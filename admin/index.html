@@ -489,6 +489,15 @@
       return `<br><span class="muted" style="font-size:0.7rem;">fork of ${whose} — no original of its own</span>`;
     }
 
+    // The order page in its read-only admin mode: the revision history with
+    // every forecast writeup and change memo, for a file some order produced.
+    // A hand upload has no order and gets no link.
+    function revisionsLink(report) {
+      if (report.origin === 'uploaded') return '';
+      const href = `/order/index.html?session_id=${encodeURIComponent(report.groupId)}&admin=1`;
+      return `<a href="${esc(href)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Revisions</a>`;
+    }
+
     // `rev`: { of } for a revised copy, rendered indented under its report.
     // `toggle`: the "n versions" control on the report's row. A report row
     // whose file is itself a revision (the chain has no original) says which
@@ -510,6 +519,7 @@
           <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${badge || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
+            ${rev ? '' : revisionsLink(report)}
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
             <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
           </td>

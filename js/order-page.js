@@ -25,7 +25,24 @@
     ? 'https://members.aiequityreports.com'
     : 'https://members-test.aiequityreports.com';
 
+  // A third way in: the admin, from the catalog on /admin/, reading any
+  // order's revision history — the forecast writeups and change memos that
+  // are otherwise visible only to the customer who asked for them. The admin
+  // page's password is in localStorage on this same origin; the API checks
+  // it. Read-only: every control that would act as the customer stays hidden.
+  const isAdminView = params.get('admin') === '1';
+  const adminPassword = () => window.localStorage.aerAdminPassword || '';
+  const ADMIN_API = window.localStorage.aerAdminApiBase
+    || (location.hostname.startsWith('test.') || !/aiequityreports\.com$/.test(location.hostname)
+      ? 'https://api-test.aiequityreports.com'
+      : 'https://api.aiequityreports.com');
+
   function fetchOrderState() {
+    if (isAdminView) {
+      return fetch(ADMIN_API + '/api/admin/orders/' + encodeURIComponent(sessionId), {
+        headers: { authorization: 'Bearer ' + adminPassword() },
+      });
+    }
     if (!isMemberRun()) {
       return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
     }
@@ -1060,6 +1077,18 @@
     pollAgain();
   }
 
+  // The admin's read-only view: say whose order this is, and remove every
+  // control that would submit a revision, an edit or a purchase in the
+  // customer's name. The history below is what the admin came for.
+  function renderAdminView(order) {
+    document.getElementById('deliveredTitle').textContent = 'Admin view — read only';
+    document.getElementById('deliveredSub').textContent =
+      'Ordered by ' + (order.analystName || order.email || 'an unknown customer')
+      + (order.forkedFrom ? ', forked from another analysis' : '')
+      + '. Revisions used: ' + (order.revisionsUsed || 0) + ' of ' + (order.revisionsAllowed || 0) + '.';
+    ['editOpenBtn', 'revisionBox', 'revisionExhausted', 'revisionBuy'].forEach(hide);
+  }
+
   function renderDelivered(order) {
     hideAll();
     document.getElementById('deliveredMeta').textContent =
@@ -1139,6 +1168,8 @@
 
     document.getElementById('revisionHistory').innerHTML = renderRevisionHistory(order.revisionHistory);
 
+    if (isAdminView) renderAdminView(order);
+
     show('stateDelivered');
     stopPolling(); // nothing changes until the customer submits a revision
   }
@@ -1155,7 +1186,10 @@
     // in a browser the member has never signed in on. Without the token the
     // Stripe proxy would be asked to verify a UUID and answer 500, so say what
     // is actually missing.
-    if (MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
+    if (isAdminView && !adminPassword()) {
+      return renderError('Sign in on the admin page first, then open this link again.');
+    }
+    if (!isAdminView && MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
       return renderError('This is your own generation. Sign in to the member area first, then open this link again.');
     }
     try {
@@ -1163,6 +1197,9 @@
       const data = await res.json();
 
       if (!res.ok) {
+        if (isAdminView && res.status === 401) {
+          return renderError('The admin password was not accepted. Sign in on the admin page again, then reload.');
+        }
         if (res.status === 401 || res.status === 403) {
           return renderError(MEMBER_GEN_ID.test(sessionId || '')
             ? 'Sign in to the member area first, then open this link again.'
