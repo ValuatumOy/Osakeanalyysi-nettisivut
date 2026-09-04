@@ -100,8 +100,9 @@ Three kinds of screen cannot simply be visited:
 
 - **The thank-you page and the order page** need a paid Stripe session, so
   `capture/mock-api.py` serves this repo's own HTML with mocked API answers.
-  That is how the order page is captured while writing, delivered, revised, out
-  of rounds, failed, after a failed revision, and after a hand edit. The text
+  That is how the order page is captured while writing, delivered, revised,
+  revised with the forecasts kept, out of rounds, failed, after a failed
+  revision, and after a hand edit. The text
   editor itself is driven over the DevTools protocol (`capture/shoot-editor.py`):
   it presses the edit button, clicks a paragraph in the sandboxed preview and
   types, since no static screenshot can show a change in progress. The mock

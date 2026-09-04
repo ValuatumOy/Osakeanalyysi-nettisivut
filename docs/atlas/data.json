@@ -147,11 +147,12 @@
      "label": "Signs in with LinkedIn",
      "img": "members-signin",
      "sees": "One button. Signing in is also how they accept the analyst terms. A link to their LinkedIn profile is required before they can publish anything.",
-     "behind": "Analyst is a role on the same account as a member subscription — someone can be both, and then keeps the better of each allowance.",
+     "behind": "Analyst is a role on the same account as a member subscription — someone can be both, and then keeps the better of each allowance. The first sign-in of a LinkedIn profile emails the admin the name, email and user id; return visits send nothing.",
      "gap": "Today any LinkedIn sign-in becomes an analyst. There is no approval step, and that is a known blocker before this goes live.",
      "dev": [
       "members.html:120, 1131 — the profile link",
-      "server/members/tiers.js:75-78 — roles"
+      "server/members/tiers.js:75-78 — roles",
+      "server/members/auth.js:148-167 — the registration alert"
      ]
     },
     {
@@ -184,7 +185,7 @@
      "sees": "Either generate a fresh report on a company of their choice, or build on another analyst's published analysis — pay that analyst's price plus a €10 fee and start from their work.",
      "behind": "A fork is copied as its own order with its own revision budget and no inherited file, so revising it can never overwrite the original that everyone else is reading.",
      "dev": [
-      "server/lambda/members.js:1955-2033 — fork checkout",
+      "server/lambda/members.js:1950-2028 — fork checkout",
       "server/orders.js:90-94"
      ]
     },
@@ -198,8 +199,8 @@
      "sees": "They pick a company and start. A banner warns that this commits them to publishing it under their own name.",
      "behind": "The monthly slot and the publishing obligation are taken together, before the engine starts. If the generation fails outright, both are given back.",
      "dev": [
-      "server/lambda/members.js:431-470",
-      "members.js:520-545 — restoreIfFailed"
+      "server/lambda/members.js:432-471",
+      "members.js:521-546 — restoreIfFailed"
      ]
     },
     {
@@ -214,7 +215,7 @@
      "gap": "The buy-or-fork chooser is still a browser prompt box asking you to type 1 or 2.",
      "dev": [
       "js/analyst-reports.js:200-227",
-      "server/lambda/members.js:1202 — revised or edited before publishing"
+      "server/lambda/members.js:1203 — revised or edited before publishing"
      ]
     },
     {
@@ -236,9 +237,9 @@
      "sees": "The order page, where they either reprompt the report in plain language (€5 a round beyond the plan) or open 'Edit the report text' and rewrite paragraphs themselves, free and as often as they like. This is where the analyst's actual judgement goes in.",
      "behind": "The comments they type, and the paragraphs they rewrite, are in effect the published work — the engine writes, the analyst directs. A later AI revision keeps hand-edited paragraphs word for word. They can choose to show their prompts publicly, which puts a 'steered with…' teaser on the company page.",
      "dev": [
-      "server/lambda/members.js:1046 — revisions",
-      "members.js:1076 — hand edits",
-      "members.js:840 — prompts-public",
+      "server/lambda/members.js:1047 — revisions",
+      "members.js:1077 — hand edits",
+      "members.js:841 — prompts-public",
       "docs/text-editing.md"
      ],
      "imgs": [
@@ -258,8 +259,8 @@
      "behind": "Company, recommendation and target price are taken from the delivered report, never from the browser, so the listing cannot be gamed. Publishing freezes that PDF — no more revisions, no more hand edits, and no more rounds to buy. Publishing is also what releases the obligation, so the next monthly generation opens.",
      "gap": "Nothing is reviewed before it goes public; moderation happens afterwards.",
      "dev": [
-      "server/lambda/members.js:1120-1170 — submit",
-      "members.js:904 — repricing"
+      "server/lambda/members.js:1121-1171 — submit",
+      "members.js:905 — repricing"
      ]
     },
     {
@@ -306,7 +307,7 @@
      "behind": "The next monthly generation is unlocked either way — publishing is what counts, not selling. Each paying member who reads it earns them a flat €0.50 (held 14 days like a sale); reads by other analysts and by free readers earn nothing.",
      "dev": [
       "server/members/bounty.js:22-30 — the per-read rate",
-      "server/lambda/members.js:1845-1852 — only a subscriber's read pays"
+      "server/lambda/members.js:1840-1847 — only a subscriber's read pays"
      ]
     },
     {
@@ -319,7 +320,7 @@
      "sees": "A reader — or another analyst forking it — pays the price the analyst set.",
      "behind": "The buyer gets an emailed permanent link that re-checks the payment.",
      "dev": [
-      "server/lambda/members.js:1491-1516"
+      "server/lambda/members.js:1494-1519"
      ]
     },
     {
@@ -364,7 +365,7 @@
      "dev": [
       "server/members/quota.js:120-130 — the two gates",
       "quota.js:164-167 — submit releases the obligation",
-      "server/lambda/members.js:2358 — admin grant-generation"
+      "server/lambda/members.js:2356 — admin grant-generation"
      ]
     },
     {
@@ -391,7 +392,7 @@
      "sees": "The analysis opens, with the other analyst's steering prompts shown next to it so they can judge what was actually added.",
      "behind": "Opening it spends one read and puts them under an obligation to score it. Re-opening the same one later is free.",
      "dev": [
-      "server/lambda/members.js:1743 — /analyses/{id}/open"
+      "server/lambda/members.js:1738 — /analyses/{id}/open"
      ]
     },
     {
@@ -404,8 +405,8 @@
      "sees": "A score from 1 to 5 and at least 40 characters on what this added over the plain engine report, or over the other takes on the same company. Anything shorter is refused.",
      "behind": "Only one unscored analysis at a time. Scores can be corrected later from 'My reviews', which keeps the old value in the history.",
      "dev": [
-      "server/lambda/members.js:2085-2095",
-      "members.js:776 — editing a score"
+      "server/lambda/members.js:2081-2091",
+      "members.js:777 — editing a score"
      ]
     },
     {
@@ -421,7 +422,7 @@
      "gap": "If that analyst later takes coverage of the same company, their scores of rivals on it are silently voided — the rival's score drops with no notice to anyone.",
      "dev": [
       "server/members/ranking.js",
-      "server/lambda/members.js:1690-1716 — voidReviewsOnCoverage"
+      "server/lambda/members.js:1685-1711 — voidReviewsOnCoverage"
      ]
     },
     {
@@ -435,7 +436,7 @@
      "sees": "The analysis is past its free-after date, or in a free window we opened. It just opens.",
      "behind": "No read is spent and no score is owed. This is also how someone with no account at all can read a published analysis.",
      "dev": [
-      "server/lambda/members.js:1770-1773"
+      "server/lambda/members.js:1765-1768"
      ]
     },
     {
@@ -449,7 +450,7 @@
      "sees": "'Score and comment the analysis you opened last before opening another.'",
      "behind": "Exactly one unscored analysis may be open at a time. There is no way to skip it — the only ways out are to score it, stop reading, or step down to being an ordinary reader.",
      "dev": [
-      "server/lambda/members.js:1806-1811"
+      "server/lambda/members.js:1801-1806"
      ]
     },
     {
@@ -463,7 +464,7 @@
      "sees": "'Buy it instead' — an analyst who covers a company cannot spend a free read on a rival's take on it.",
      "behind": "This keeps competitors from grading each other for free. They can still buy it like anyone else.",
      "dev": [
-      "server/lambda/members.js:1786-1791"
+      "server/lambda/members.js:1781-1786"
      ]
     },
     {
@@ -479,10 +480,10 @@
      "behind": "A suspended account is refused on every call. The page treats that refusal the same as an expired session, so it clears the login and reloads — which is why it loops.",
      "gap": "A suspended analyst is never told they are suspended, and there is no way for them to ask why. Telling that refusal apart from an expired session is a small change on the page.",
      "dev": [
-      "server/members/auth.js:198 — 'Account is suspended'",
+      "server/members/auth.js:225 — 'Account is suspended'",
       "members.html:448 — 401/403 both mean log out",
       "members.html:421-427 — logout()",
-      "server/lambda/members.js:2585 — an admin sets it"
+      "server/lambda/members.js:2593 — an admin sets it"
      ]
     }
    ],
@@ -877,7 +878,7 @@
      "dev": [
       "api/create-checkout.js — ready and free reports",
       "api/create-fresh-checkout.js — fresh reports",
-      "server/checkout.js:70-80 — which kind, incl. free-revisions",
+      "server/checkout.js:83-93 — which kind, incl. free-revisions",
       "server/stripe-pricing.js:9-14 — three included",
       "the screenshot is an illustration; a real Stripe page needs a live session"
      ]
@@ -906,7 +907,7 @@
      "sees": "A Stripe page for that analysis, at the price the analyst set. Someone building on it instead pays that price plus a €10 fee.",
      "behind": "Half of the price goes to the analyst who wrote it; the €10 derivation fee is Valuatum's.",
      "dev": [
-      "server/lambda/members.js:1955-2035 — fork checkout"
+      "server/lambda/members.js:1950-2030 — fork checkout"
      ]
     },
     {
@@ -921,8 +922,8 @@
      "sees": "They come back to the company page and the analysis opens in a new tab. An email arrives with a permanent link.",
      "behind": "The link re-checks the payment each time, so it can be kept and used later. Someone who forked rather than bought lands in their own copy instead and can reprompt it.",
      "dev": [
-      "server/lambda/members.js:2036 — /analyses/{id}/purchased",
-      "members.js:1491-1516 — the email"
+      "server/lambda/members.js:2031 — /analyses/{id}/purchased",
+      "members.js:1494-1519 — the email"
      ]
     },
     {
@@ -942,7 +943,7 @@
      "behind": "Both forms send us an email and nothing else. There is no automatic reply, no ticket, and no way for the person to check what happened — someone has to pick it up by hand.",
      "gap": "This is a lead that lands in an inbox. Nothing tells the person we received it, and nothing tells us later that the company they asked for is now covered.",
      "dev": [
-      "api/request-coverage.js:44-60",
+      "api/request-coverage.js:45-61",
       "reports.html:1338 — the form",
       "institutions.html:829-850 — the institution version"
      ]
@@ -1028,7 +1029,7 @@
      "gap": "Someone who bought without revisions gets no revision link at all, so there is no way for them to buy rounds afterwards. Adding that link for every buyer is a small change in the same email.",
      "dev": [
       "server/email.js — sendReportEmail",
-      "api/webhook.js:122-126 — orderUrl only when withRevisions"
+      "api/webhook.js:135-139 — orderUrl only when withRevisions"
      ]
     },
     {
@@ -1042,7 +1043,7 @@
      "behind": "The same delivery email as a ready report, switched into its revisions-only form because the checkout was of the free-revisions kind.",
      "dev": [
       "server/email.js — sendReportEmail, revisionsOnly",
-      "api/webhook.js:120-130 — isRevisionsOnly"
+      "api/webhook.js:133-143 — isRevisionsOnly"
      ]
     },
     {
@@ -1081,7 +1082,7 @@
      "sees": "'Your report is ready' with a Download button. This link is permanent and can be used any time later.",
      "behind": "The finished PDF is stored privately and does not appear in the public catalog unless resale is switched on. The email is sent exactly once, even if the worker crashes half-way.",
      "dev": [
-      "server/reconciler.js:173-287 — deliver()"
+      "server/reconciler.js:193-307 — deliver()"
      ]
     },
     {
@@ -1185,7 +1186,7 @@
      "sees": "'You've used all included revisions', with a Buy more revision rounds button. That opens a small Stripe payment (€5 per round, 1–10 at a time) and returns them to the same page with the rounds added.",
      "behind": "Extra rounds are a separate small purchase attached to the same order.",
      "dev": [
-      "api/order-revision.js:28-55 — buyRounds"
+      "api/order-revision.js:29-56 — buyRounds"
      ]
     },
     {
@@ -1197,7 +1198,7 @@
      "sees": "'Revising your report…' on the order page.",
      "behind": "The engine takes the original report plus the customer's comment and produces a new version, with a short memo of what changed — target price, rating, forecasts. The original file is never overwritten.",
      "dev": [
-      "server/reconciler.js:489-499 — submitRevision"
+      "server/reconciler.js:535-545 — submitRevision"
      ]
     },
     {
@@ -1242,10 +1243,14 @@
      "row": 2,
      "label": "New version on the order page",
      "img": "order-revised-top",
-     "sees": "The version history now shows 'Version 2 · AI revision' at the top: what they asked for, what moved (target price, rating, forecasts) and a download link per version. If rounds remain they can ask again, and they can edit the text by hand at any time.",
+     "imgs": [
+      "order-kept-versions"
+     ],
+     "sees": "The version history now shows 'Version 2 · AI revision' at the top: what they asked for, what moved (target price, rating, forecasts) and a download link per version. When the model decided the comment moves nothing, the page says so — 'The model kept its forecasts unchanged in this revision' — and explains why, instead of showing an empty chart. If rounds remain they can ask again, and they can edit the text by hand at any time.",
      "behind": "One round is now used. The history stays with the order.",
      "dev": [
-      "js/order-page.js:419-440"
+      "js/order-page.js:461-482",
+      "js/order-page.js:381-420 — the forecast section, incl. the unchanged case"
      ]
     },
     {
@@ -1258,7 +1263,7 @@
      "sees": "'Edit the report text' opens the report as it will print, right on the order page. They click a paragraph, change the wording, and the panel on the right lists every change word by word with a live page-fit estimate. They can add their name for the byline, then press 'Save as a new version'. Headings, figures, tables and charts cannot be changed.",
      "behind": "The engine's rendered HTML is shown in a sandboxed frame, every editable paragraph tagged with a pointer. The edits go to the engine, which re-renders the PDF with the new text in seconds — no AI pass. The engine warns when an edit changes a number in prose (the tables are not updated) and when a page no longer fits.",
      "dev": [
-      "js/order-page.js:638-1010 — the editor",
+      "js/order-page.js:680-1052 — the editor",
       "api/order-revision.js — body 'edits'",
       "server/report-edits.js — validation",
       "docs/text-editing.md"
@@ -1289,8 +1294,8 @@
      "sees": "The version history shows 'Version 2 · Edited by hand — Written by ⟨name⟩', with each edited paragraph before and after, and a download link per version. If they changed a figure in the text, a note says the tables were not updated.",
      "behind": "Every history entry now records who wrote it: the original delivery and AI revisions are 'AI-written', a hand edit carries the name, and an AI revision on top of hand edits says which paragraphs it kept. Versions stay linear — an edit always builds on the newest one.",
      "dev": [
-      "js/order-page.js:450-475 — version labels",
-      "js/order-page.js:567-620 — before/after diff"
+      "js/order-page.js:492-517 — version labels",
+      "js/order-page.js:609-662 — before/after diff"
      ]
     }
    ],
@@ -1738,11 +1743,12 @@
      "label": "Signs in",
      "img": "members-signin",
      "sees": "Two ways in, side by side: analysts sign in with LinkedIn, subscribers type their email and get a sign-in link. No passwords anywhere.",
-     "behind": "The emailed link works for 15 minutes. There is no password to lose or reset.",
+     "behind": "The emailed link works for 15 minutes. There is no password to lose or reset. A LinkedIn profile's first sign-in emails the admin, so someone knows a new analyst has arrived.",
      "gap": "Anyone who signs in with LinkedIn currently becomes an analyst — there is no gate on that yet.",
      "dev": [
       "members.html:110-137",
-      "server/members/auth.js:152-163 — 15-minute link"
+      "server/members/auth.js:179-190 — 15-minute link",
+      "server/members/auth.js:148-167 — the registration alert"
      ]
     },
     {
@@ -1756,8 +1762,8 @@
      "behind": "The subscription's state comes from Stripe. A failed card leaves the plan working in a grace period; a cancellation ends it at once.",
      "gap": "There is no self-service upgrade, downgrade or cancel — those are emails to support today.",
      "dev": [
-      "server/lambda/members.js:1291 — /billing/checkout",
-      "members.js:127 — past_due still counts as active"
+      "server/lambda/members.js:1292 — /billing/checkout",
+      "members.js:128 — past_due still counts as active"
      ]
     },
     {
@@ -1794,7 +1800,7 @@
      "behind": "A failed card keeps working during a grace period; a cancellation drops the tier immediately. One-off purchases and their own generations stay theirs forever. Library picks survive only while a LinkedIn role does.",
      "gap": "Nothing warns anyone before this happens, and there is no self-service way to resubscribe from inside the member area.",
      "dev": [
-      "server/lambda/members.js:127, 335-352",
+      "server/lambda/members.js:128, 336-353",
       "members.html:490 — the plans card returns"
      ]
     },
@@ -1831,8 +1837,8 @@
      "sees": "They pick any listed company and start a report. Investor Plus includes one a month; the plain Investor plan includes none.",
      "behind": "The monthly slot is reserved before the engine starts, so a failure never silently eats it — a failed generation gives the month back.",
      "dev": [
-      "server/lambda/members.js:431-470",
-      "members.js:520-545 — restoreIfFailed"
+      "server/lambda/members.js:432-471",
+      "members.js:521-546 — restoreIfFailed"
      ]
     },
     {
@@ -1845,7 +1851,7 @@
      "sees": "'Another report, on demand' — €40 for members instead of the €50 list price. Paid through Stripe, then it behaves like any fresh report.",
      "behind": "The member price is worked out on the server from their live subscription, not from anything the browser sends.",
      "dev": [
-      "server/lambda/members.js:1369-1387"
+      "server/lambda/members.js:1370-1388"
      ]
     },
     {
@@ -1859,7 +1865,7 @@
      "behind": "The update is a private generation for that company. It comes with no revision rounds at all.",
      "gap": "Asking for a company that is not on the subscription is refused, and so is a year with all four updates used — both as bare error messages.",
      "dev": [
-      "server/lambda/members.js:548-618 — /generations/coverage",
+      "server/lambda/members.js:549-619 — /generations/coverage",
       "members.html:896-912"
      ]
     },
@@ -1874,7 +1880,7 @@
      "behind": "Opening one spends a read. An analysis inside a free window costs no read at all.",
      "dev": [
       "members.html:157-206",
-      "server/lambda/members.js:1743 — /analyses/{id}/open"
+      "server/lambda/members.js:1738 — /analyses/{id}/open"
      ]
     },
     {
@@ -1887,7 +1893,7 @@
      "sees": "Before they can open another one, they must give this analysis a score from 1 to 5 and write at least 40 characters on what it added over the plain engine report.",
      "behind": "Only one unscored analysis can be open at a time — the next open is refused until this one is scored. Those scores are what rank analysts against each other.",
      "dev": [
-      "server/lambda/members.js:2085-2095 — score and 40-character comment",
+      "server/lambda/members.js:2081-2091 — score and 40-character comment",
       "server/members/ranking.js"
      ]
     },
@@ -1920,7 +1926,7 @@
      "behind": "Top-ups are added to the same monthly record, so anything bought and not used expires at the end of the month. A plan with none of that allowance at all cannot top it up.",
      "gap": "Buying credits late in the month can mean paying for something that expires days later — nothing warns about that.",
      "dev": [
-      "server/lambda/members.js:1229-1290",
+      "server/lambda/members.js:1230-1291",
       "server/members/quota.js:954-960"
      ]
     },
@@ -1971,9 +1977,9 @@
      "sees": "The same order page a non-member gets, reached from the member area. It shows the download, an 'Edit the report text' button, the revision box and how many rounds the plan includes — 2 on Investor Plus, none on Investor, none at all on a coverage update.",
      "behind": "The page uses their login instead of a payment reference. Extra rounds beyond the plan cost €5 each, bought 1–10 at a time. Editing by hand is free and unlimited, and the byline is always the member's own name.",
      "dev": [
-      "js/order-page.js:21-35 — member vs payment login",
-      "server/lambda/members.js:685-740 — extra rounds",
-      "members.js:1076-1130 — edits and preview"
+      "js/order-page.js:21-52 — member vs payment login",
+      "server/lambda/members.js:686-741 — extra rounds",
+      "members.js:1077-1131 — edits and preview"
      ],
      "imgs": [
       "order-deliv",
@@ -2019,7 +2025,7 @@
      "dev": [
       "members.html:383-388 — the error messages",
       "members.html:434-439 — asking for a link",
-      "server/members/auth.js:177 — invalid or expired"
+      "server/members/auth.js:204 — invalid or expired"
      ]
     },
     {
@@ -2034,7 +2040,7 @@
      "sees": "The new version appears in the history as 'Edited by hand — Written by ⟨their name⟩', with every changed paragraph before and after. No round was used.",
      "behind": "Same editing machinery as every other order; the members API routes it under their generation.",
      "dev": [
-      "server/lambda/members.js:1076 — postGenerationEdits"
+      "server/lambda/members.js:1077 — postGenerationEdits"
      ]
     }
    ],

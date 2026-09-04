@@ -379,16 +379,41 @@
       + '</svg></div>';
   }
 
+  // The engine sends this section whenever an estimates revision ran, even
+  // when the model concluded the comment moves nothing: then `wrote` is
+  // empty and `resultFid` is null, and the writeup explains the decision.
+  // A revision can also write nothing because every value was dropped, in
+  // which case the "Values not written" table below carries the reason.
   function renderForecastSection(revision) {
+    const wrote = revision.wrote || [];
+    const derived = (revision.derivedFullYear || []).filter((row) => row.after != null);
+    const moved = wrote.length > 0 || derived.length > 0;
+    const dropped = revision.dropped || [];
+    const writeup = revision.writeup || legacyForecastWriteup(revision);
+
     let html = '<div class="revision-section revision-forecast">';
     html += '<div class="revision-section-title">Forecast movement</div>';
-    if (revision.wrote && revision.wrote.length) html += renderForecastChart(revision.wrote, revision.derivedFullYear);
-    html += '<div class="revision-section-title" style="margin-top:.5rem;">Why the forecast changed</div>';
-    html += renderMarkdown(revision.writeup || legacyForecastWriteup(revision));
+    if (moved) {
+      html += renderForecastChart(wrote, revision.derivedFullYear);
+      html += '<div class="revision-section-title" style="margin-top:.5rem;">Why the forecast changed</div>';
+      html += renderMarkdown(writeup);
+    } else {
+      html += '<p class="revision-forecast-none">'
+        + (dropped.length
+          ? 'No forecast values were written in this revision. The values below were proposed but could not be applied.'
+          : 'The model kept its forecasts unchanged in this revision.')
+        + '</p>';
+      if (writeup) {
+        html += '<div class="revision-section-title" style="margin-top:.5rem;">'
+          + (dropped.length ? 'What the model proposed' : 'Why the forecast stayed unchanged')
+          + '</div>';
+        html += renderMarkdown(writeup);
+      }
+    }
 
-    if (revision.dropped && revision.dropped.length) {
+    if (dropped.length) {
       html += '<table class="revision-table"><caption>Values not written</caption><thead><tr><th>Variable</th><th>Period</th><th>Reason</th></tr></thead><tbody>'
-        + revision.dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(periodLabel(row)) + '</td><td>' + escapeHtml(row.reason) + '</td></tr>').join('')
+        + dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(periodLabel(row)) + '</td><td>' + escapeHtml(row.reason) + '</td></tr>').join('')
         + '</tbody></table>';
     }
     if (revision.quarterlyReconciliation) {
