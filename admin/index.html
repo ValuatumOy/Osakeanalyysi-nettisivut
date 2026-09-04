@@ -473,24 +473,53 @@
       return `<span class="when" title="${esc(iso)}">${sameDay ? '' : day(iso) + ' '}${hh}:${mm}</span>`;
     }
 
-    // `rev`: { version, of } for a revised copy, rendered indented under its
-    // report. `toggle`: the "n revised versions" control on the report's row.
+    // Which version of its report a file is, as the order recorded it. Falls
+    // back to "Revised copy" for a revision no order can number.
+    function versionLabel(report) {
+      return report.version ? `Version ${report.version}` : 'Revised copy';
+    }
+
+    // A fork started from another member's published analysis rather than a
+    // fresh engine run, so its chain has no original of its own; say so, and
+    // whose analysis it built on when that report is in the catalog too.
+    function forkNote(report) {
+      if (!report.forkedFrom) return '';
+      const parent = reports.find((r) => r.groupId === report.forkedFrom && !r.isRevision);
+      const whose = parent?.generatedBy ? `${esc(parent.generatedBy)}'s analysis` : 'another analysis';
+      return `<br><span class="muted" style="font-size:0.7rem;">fork of ${whose} — no original of its own</span>`;
+    }
+
+    // The order page in its read-only admin mode: the revision history with
+    // every forecast writeup and change memo, for a file some order produced.
+    // A hand upload has no order and gets no link.
+    function revisionsLink(report) {
+      if (report.origin === 'uploaded') return '';
+      const href = `/order/index.html?session_id=${encodeURIComponent(report.groupId)}&admin=1`;
+      return `<a href="${esc(href)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Revisions</a>`;
+    }
+
+    // `rev`: { of } for a revised copy, rendered indented under its report.
+    // `toggle`: the "n versions" control on the report's row. A report row
+    // whose file is itself a revision (the chain has no original) says which
+    // version it is rather than passing for one.
     function reportRow(report, index, { rev, toggle } = {}) {
       const who = report.generatedBy
         ? `<br><span class="muted" style="font-size:0.7rem;">by ${esc(report.generatedBy)}</span>` : '';
       const file = `<a href="${esc(report.pdfUrl)}" target="_blank" rel="noopener" class="muted" style="font-size:0.7rem;">${esc(report.fileName)}</a>`;
       const title = rev
-        ? `${rev.version ? `Version ${rev.version}` : 'Revised copy'} <span class="muted">of ${esc(report.companyName)}</span>`
-        : esc(report.companyName);
+        ? `${versionLabel(report)} <span class="muted">of ${esc(report.companyName)}</span>`
+        : `${esc(report.companyName)}${report.isRevision ? ` <span class="muted">${versionLabel(report).toLowerCase()}</span>` : ''}`;
       const attrs = rev ? ` class="rev-row" data-rev-of="${esc(rev.of)}" hidden` : '';
+      const badge = report.isRevision ? KIND_BADGE[report.kind] : ORIGIN_BADGE[report.origin];
       return `
         <tr${attrs}>
-          <td class="company">${title}<br>${file}${toggle || ''}</td>
+          <td class="company">${title}<br>${file}${rev ? '' : forkNote(report)}${toggle || ''}</td>
           <td>${esc(report.ticker || '—')}</td>
           <td>${esc(report.reportDate || '—')}${generatedAt(report)}</td>
-          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${(rev && KIND_BADGE[report.kind]) || ORIGIN_BADGE[report.origin] || ''}${who}</td>
+          <td>${statusBadge(report)}${report.isFree ? ' <span class="badge badge-blue">Free</span>' : ''}<br>${badge || ''}${who}</td>
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
+            ${rev ? '' : revisionsLink(report)}
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
             <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
           </td>
@@ -514,22 +543,27 @@
 
       const rows = [];
       for (const [key, chain] of chains) {
-        // Oldest first, so version numbers count up from the original (v1).
-        chain.revs.sort((a, b) => String(a.report.uploadedAt || '').localeCompare(String(b.report.uploadedAt || '')));
-        // Every file of the chain is a revision (the base left the catalog):
-        // the newest revision fronts it rather than the chain disappearing,
-        // and without the original the version numbers are unknown.
-        const numbered = Boolean(chain.main);
+        // Oldest first: by the version the order recorded, or by upload time
+        // for a file no order can number.
+        chain.revs.sort((a, b) =>
+          (a.report.version || 0) - (b.report.version || 0)
+          || String(a.report.uploadedAt || '').localeCompare(String(b.report.uploadedAt || '')));
+        // Every file of the chain is a revision — the order is a fork, whose
+        // version 1 is another order's report, or the original was deleted.
+        // The newest revision fronts the chain rather than the chain
+        // disappearing; its row says which version it is, and the copies
+        // below it are labelled as earlier, not as revisions of it.
         const main = chain.main || chain.revs.pop();
         if (!main) continue;
         const gid = String(key);
         const n = chain.revs.length;
+        const noun = chain.main ? 'revised' : 'earlier';
         const toggle = n
-          ? `<button class="rev-toggle" data-revs="${esc(gid)}" data-count="${n}">▸ ${n} revised ${n === 1 ? 'version' : 'versions'}</button>`
+          ? `<button class="rev-toggle" data-revs="${esc(gid)}" data-count="${n}" data-noun="${noun}">▸ ${n} ${noun} ${n === 1 ? 'version' : 'versions'}</button>`
           : '';
         rows.push(reportRow(main.report, main.index, { toggle }));
-        chain.revs.forEach((rev, i) => {
-          rows.push(reportRow(rev.report, rev.index, { rev: { of: gid, version: numbered ? i + 2 : null } }));
+        chain.revs.forEach((rev) => {
+          rows.push(reportRow(rev.report, rev.index, { rev: { of: gid } }));
         });
       }
       $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
@@ -545,7 +579,7 @@
         shown = !tr.hidden;
       });
       const n = btn.dataset.count;
-      btn.textContent = `${shown ? '▾' : '▸'} ${n} revised ${n === '1' ? 'version' : 'versions'}`;
+      btn.textContent = `${shown ? '▾' : '▸'} ${n} ${btn.dataset.noun} ${n === '1' ? 'version' : 'versions'}`;
     });
 
     async function refreshReports() {
