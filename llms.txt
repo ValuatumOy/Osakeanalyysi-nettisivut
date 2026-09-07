@@ -11,7 +11,7 @@
 
 ## Free sample equity reports
 - [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): HOLD, target 10.10 EUR (current 10.13 EUR).
-- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): SELL, target 260.10 USD (current 366.31 USD).
+- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): BUY, target 536.80 USD (current 352.16 USD).
 - [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): HOLD, target 24.70 EUR (current 24.06 EUR).
 
 ## Paid equity reports (free preview available)
