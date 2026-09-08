@@ -12,6 +12,7 @@
 
   const LEVER_LABEL = {
     probabilityPct: 'probability',
+    marketValue: 'market size',
     sharePct: 'market share',
     marginPct: 'margin',
     metricValue: 'profit forecast',
@@ -39,17 +40,18 @@
       const base = state.baseline && byKey(state.baseline.rows)[row.key];
       const baseValue = base ? valueOf(base, lever) : value;
       const changed = state.overrides[row.key] && state.overrides[row.key][lever] != null && Math.abs(baseValue - value) > 1e-9;
-      const step = lever === 'metricValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
-      const shown = lever === 'metricValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
+      const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
+      const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
       return '<span class="wb-field' + (changed ? ' is-changed' : '') + '">'
         + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(LEVER_LABEL[lever]) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
         + (extra || '')
-        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
+        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
         + '</span>';
     }
 
     function valueOf(row, lever) {
       if (lever === 'sharePct') return row.scale ? row.scale.sharePct : 0;
+      if (lever === 'marketValue') return row.scale ? row.scale.marketValue : 0;
       if (lever === 'marginPct') return row.scale ? row.scale.marginPct : row.modelledMargin ? row.modelledMargin.impliedMarginPct : 0;
       return row[lever] || 0;
     }
@@ -60,9 +62,11 @@
       if (row.editable.indexOf('sharePct') >= 0 && row.scale) {
         return label
           + '<span class="wb-build">' + fieldHtml(row, 'sharePct', row.scale.sharePct, '<span class="wb-unit">%</span>')
-          + '<span class="wb-op">of</span><span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>'
+          + '<span class="wb-op">of</span>' + (row.editable.indexOf('marketValue') >= 0
+            ? fieldHtml(row, 'marketValue', row.scale.marketValue)
+            : '<span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>')
           + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>') + '</span>'
-          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + '</span></span>'
+          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + (row.editable.indexOf('marketValue') >= 0 ? ' · the report\'s figure; change it if you read the market differently' : '') + '</span></span>'
           + (hinted ? '' : marginContextHint());
       }
       if (row.editable.indexOf('metricValue') >= 0) {
@@ -388,8 +392,8 @@
         const s = data.solve;
         const rowInfo = row ? byKey(state.current.rows)[row] : null;
         const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every profit forecast';
-        const unit = lever === 'metricValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
-        const shown = (v) => (lever === 'metricValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : fmt1(v)) + unit;
+        const unit = lever === 'metricValue' || lever === 'marketValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
+        const shown = (v) => (lever === 'metricValue' || lever === 'marketValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : fmt1(v)) + unit;
         if (!s || !Number.isFinite(s.value) || s.targetAtValue == null) {
           out.innerHTML = '<span class="wb-issue">The calculator cannot vary this input on its own.</span>';
           return;
