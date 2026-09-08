@@ -89,7 +89,10 @@ async function previewValuation(order, body) {
   const overrides = body && typeof body.overrides === 'object' && body.overrides ? body.overrides : undefined;
   const solve = body && typeof body.solve === 'object' && body.solve ? body.solve : undefined;
   try {
-    const result = await engine.previewValuation({ jobId: order.jobId, overrides, solve });
+    // `engineUsername` is set only on orders whose job was submitted outside
+    // the shop (a verification run attached by hand); the engine refuses a
+    // preview from anyone but the job's owner.
+    const result = await engine.previewValuation({ jobId: order.jobId, overrides, solve, ...(order.engineUsername ? { username: order.engineUsername } : {}) });
     return { status: 200, result };
   } catch (err) {
     if (err.status === 400 || err.status === 409 || err.status === 413) return { status: err.status, error: err.message };
