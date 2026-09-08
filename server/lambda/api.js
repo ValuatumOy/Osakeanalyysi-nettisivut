@@ -505,6 +505,23 @@ async function postOrderEdits(event) {
   return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(existing) + 1 });
 }
 
+// POST /api/orders/{id}/valuation — the what-if calculator on the order's
+// current version; body `{ overrides?, solve? }` passes through to the engine.
+async function postOrderValuation(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const result = await editing.previewValuation(order, body);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return json(200, result.result, { 'cache-control': 'no-store' });
+}
+
 // GET /api/orders/{id}/preview — the engine's rendered HTML of the current
 // version, which the order page's text editor shows in a sandboxed frame.
 async function getOrderPreview(event) {
@@ -741,6 +758,7 @@ const PUBLIC_ROUTES = {
   'POST /api/orders/{id}/revisions': postOrderRevision,
   'POST /api/orders/{id}/edits': postOrderEdits,
   'GET /api/orders/{id}/preview': getOrderPreview,
+  'POST /api/orders/{id}/valuation': postOrderValuation,
 };
 
 const ADMIN_ROUTES = {

@@ -77,4 +77,23 @@ async function loadPreviewHtml(order) {
   }
 }
 
-module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml };
+// The what-if calculator on the order's current version. `body` is
+// `{ overrides?, solve? }` straight from the browser; the engine validates
+// it (400 on a malformed lever, 409 on a report that predates the
+// calculator). Returns { status, result } or { status, error }.
+async function previewValuation(order, body) {
+  if (order.status !== 'DELIVERED' || !order.jobId) {
+    return { status: 409, error: 'The report is not ready right now.' };
+  }
+  const overrides = body && typeof body.overrides === 'object' && body.overrides ? body.overrides : undefined;
+  const solve = body && typeof body.solve === 'object' && body.solve ? body.solve : undefined;
+  try {
+    const result = await engine.previewValuation({ jobId: order.jobId, overrides, solve });
+    return { status: 200, result };
+  } catch (err) {
+    if (err.status === 400 || err.status === 409 || err.status === 413) return { status: err.status, error: err.message };
+    return { status: 502, error: `Could not compute the valuation: ${err.message}` };
+  }
+}
+
+module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation };

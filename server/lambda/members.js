@@ -1143,6 +1143,19 @@ async function getGenerationPreview(event) {
   };
 }
 
+// POST /generations/{genId}/valuation — the what-if calculator on the
+// member's own report: `{ overrides?, solve? }` in, the recalculated target
+// out. Reads only; committing a what-if is a revision.
+async function postGenerationValuation(event) {
+  const { deny, order } = await ownedOrder(event);
+  if (deny) return deny;
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const result = await editing.previewValuation(order, body);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return json(200, result.result, { 'cache-control': 'no-store' });
+}
+
 // GET /generations — every run this member has started, newest first. Without
 // it the order page was reachable only from the delivery email.
 async function listGenerations(event) {
@@ -2811,6 +2824,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/edits': postGenerationEdits,
   'GET /generations/{genId}/preview': getGenerationPreview,
+  'POST /generations/{genId}/valuation': postGenerationValuation,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
   'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,

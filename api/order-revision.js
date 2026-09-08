@@ -10,7 +10,7 @@
 
 const Stripe = require('stripe');
 const { reportError } = require('../server/email');
-const { submitOrderRevision, submitOrderEdit } = require('../server/catalog-client');
+const { submitOrderRevision, submitOrderEdit, previewOrderValuation } = require('../server/catalog-client');
 const { CheckoutError, createExtraRoundsCheckout, isCompletedCheckout, orderPageUrl } = require('../server/checkout');
 
 async function buyRounds(req, res, stripe, sessionId, session) {
@@ -37,8 +37,10 @@ module.exports = async (req, res) => {
   // twelve-function ceiling again): `{ edits, originals?, editedBy? }`. The
   // backend validates the edits; only the session is verified here.
   const edits = req.body?.edits && typeof req.body.edits === 'object' ? req.body.edits : null;
+  // The what-if calculator rides here as well: `{ valuation: { overrides?, solve? } }`.
+  const valuation = req.body?.valuation && typeof req.body.valuation === 'object' ? req.body.valuation : null;
   const comments = String(req.body?.comments || '').trim();
-  if (!wantsRounds && !edits && !comments) return res.status(400).json({ error: 'comments is required' });
+  if (!wantsRounds && !edits && !valuation && !comments) return res.status(400).json({ error: 'comments is required' });
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   res.setHeader('cache-control', 'no-store');
@@ -49,6 +51,7 @@ module.exports = async (req, res) => {
       return res.status(402).json({ error: 'Payment not completed' });
     }
     if (wantsRounds) return await buyRounds(req, res, stripe, sessionId, session);
+    if (valuation) return res.status(200).json(await previewOrderValuation(sessionId, valuation));
     if (edits) {
       const result = await submitOrderEdit(sessionId, {
         edits,
@@ -64,7 +67,7 @@ module.exports = async (req, res) => {
     if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });
     if (err.status === 404) return res.status(404).json({ error: 'Order not found' });
     if (err.status === 409) return res.status(409).json({ error: err.message });
-    if (err.status === 400) return res.status(400).json({ error: err.message });
+    if (err.status === 400 || err.status === 413) return res.status(err.status).json({ error: err.message });
     console.error('order-revision:', err.message);
     await reportError('vercel order-revision', err, { sessionId, wantsRounds, edit: Boolean(edits) });
     res.status(500).json({ error: 'Failed' });

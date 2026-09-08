@@ -107,6 +107,23 @@
     });
   }
 
+  // The target-price workbench's calculator: `{ overrides?, solve? }` through
+  // whichever door this order lives behind. Read-only on every side.
+  function postValuation(body) {
+    if (!isMemberRun()) {
+      return fetch('/api/order-revision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, valuation: body }),
+      });
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/valuation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+      body: JSON.stringify(body),
+    });
+  }
+
   // Back from the rounds checkout. The webhook is what credits them, so this
   // only has to say so and reload — silence read as a checkout that failed.
   (function reportRoundsPurchase() {
@@ -1053,6 +1070,52 @@
     }
   }
 
+  // ---- The target-price workbench ------------------------------------------
+  const workbench = { open: false, order: null, panel: null };
+
+  async function openWorkbench(order) {
+    const box = document.getElementById('valuationBox');
+    const status = document.getElementById('valuationStatus');
+    workbench.open = true;
+    status.textContent = '';
+    status.classList.remove('is-error');
+    box.style.display = '';
+    document.querySelector('.order-card').classList.add('order-card--editing');
+    document.getElementById('valuationOpenBtn').textContent = 'Close the target-price view';
+    const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
+    workbench.panel = window.ValuationWorkbench.mount(document.getElementById('valuationPanel'), {
+      preview: postValuation,
+      remainingRounds: remaining,
+      onLock: function (overrides, changes) {
+        // Phase 3 wires this to a revision that carries the locked rows; until
+        // then the page says so instead of pretending.
+        status.textContent = 'Locking ' + changes.length + ' assumption' + (changes.length === 1 ? '' : 's')
+          + ' into a new report is the next step of this feature and is not live yet. Your report is unchanged.';
+      },
+    });
+    await workbench.panel.start();
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeWorkbench() {
+    workbench.open = false;
+    document.getElementById('valuationBox').style.display = 'none';
+    document.getElementById('valuationPanel').innerHTML = '';
+    if (!editor.open) document.querySelector('.order-card').classList.remove('order-card--editing');
+    const button = document.getElementById('valuationOpenBtn');
+    button.innerHTML = button.dataset.label;
+  }
+
+  (function () {
+    const button = document.getElementById('valuationOpenBtn');
+    button.dataset.label = button.innerHTML;
+    button.addEventListener('click', function () {
+      if (workbench.open) { closeWorkbench(); return; }
+      openWorkbench(workbench.order || {});
+    });
+    document.getElementById('valuationCloseBtn').addEventListener('click', closeWorkbench);
+  })();
+
   document.getElementById('editOpenBtn').addEventListener('click', function () {
     if (editor.open) { closeEditor(); return; }
     openEditor(editor.order || {});
@@ -1148,6 +1211,11 @@
     editor.order = order;
     if (editor.open) closeEditor();
     document.getElementById('editOpenBtn').style.display = order.editable ? '' : 'none';
+    // The target-price workbench: free to explore on any delivered version;
+    // locking the assumptions into a new report is a revision like any other.
+    workbench.order = order;
+    if (workbench.open) closeWorkbench();
+    document.getElementById('valuationOpenBtn').style.display = order.pdfUrl ? '' : 'none';
 
     const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');
