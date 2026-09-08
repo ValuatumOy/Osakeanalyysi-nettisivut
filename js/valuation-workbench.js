@@ -62,7 +62,7 @@
           + '<span class="wb-build">' + fieldHtml(row, 'sharePct', row.scale.sharePct, '<span class="wb-unit">%</span>')
           + '<span class="wb-op">of</span><span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>'
           + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>') + '</span>'
-          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + '</span>'
+          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + '</span></span>'
           + (hinted ? '' : marginContextHint());
       }
       if (row.editable.indexOf('metricValue') >= 0) {
@@ -122,7 +122,12 @@
 
     function rowLabel(row) {
       if (row.kind === 'option-leg') return '<span class="wb-leg-label">' + esc(titleCase(row.scenario || row.label)) + '</span>';
-      if (row.kind === 'option-expectation') return '<span class="wb-division">' + esc(titleCase(row.division)) + '</span><span class="wb-division-note">probability-weighted</span>';
+      if (row.kind === 'option-expectation') {
+        const residual = row.residualPct > 0.05
+          ? '<span class="wb-division-note is-residual" title="The scenarios below do not cover every outcome; the rest is valued at zero.">' + fmtPct(row.residualPct) + '% of outcomes not covered by a scenario → valued at 0</span>'
+          : '<span class="wb-division-note">scenarios cover 100% of outcomes</span>';
+        return '<span class="wb-division">' + esc(titleCase(row.division)) + '</span><span class="wb-division-note">probability-weighted</span>' + residual;
+      }
       if (row.kind === 'engine') return '<span class="wb-division">' + esc(titleCase(row.division || row.label)) + '</span>';
       if (row.kind === 'sotp-total') return '<span class="wb-division">Sum of the parts</span>';
       return '<span class="wb-division">' + esc(row.label) + '</span>';
