@@ -390,7 +390,7 @@
           const apply = out.querySelector('#wbSolveApply');
           if (apply) apply.addEventListener('click', () => {
             state.overrides[row] = Object.assign(state.overrides[row] || {}, {});
-            state.overrides[row][lever] = Math.round(s.value * 100) / 100;
+            state.overrides[row][lever] = s.value; // the solver's exact value; the field rounds for display only
             refresh();
           });
         } else {
