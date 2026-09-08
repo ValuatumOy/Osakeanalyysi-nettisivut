@@ -187,6 +187,16 @@
         + '</div><div class="wb-band-scale"><span>−60%</span><span>' + lo + '%</span><span>+' + hi + '%</span><span>+60%</span></div>';
     }
 
+    // The report's own QA verdict travels with the numbers. A blocked report is
+    // delivered when its target is code-computed and only the argument behind
+    // it failed a check; the numbers here are those numbers, so say so.
+    function qualityHtml(result) {
+      const q = result.reportQuality;
+      if (!q || q.status !== 'blocked') return '';
+      return '<p class="wb-quality">This report was delivered with ' + q.blockers + ' unresolved valuation finding' + (q.blockers === 1 ? '' : 's')
+        + '. The target and every figure below are computed by the engine, but the report\'s argument for them did not pass every check and is under review.</p>';
+    }
+
     function summaryHtml(result) {
       const base = state.baseline;
       const changed = base && result.targetPrice != null && Math.abs(result.targetPrice - base.targetPrice) > 0.04;
@@ -264,7 +274,7 @@
 
     function render() {
       const result = state.current;
-      container.innerHTML = summaryHtml(result)
+      container.innerHTML = qualityHtml(result) + summaryHtml(result)
         + '<div class="wb-section-title">The bridge</div>'
         + '<p class="wb-section-sub">Every figure the target is built from. Change any underlined value; the engine recomputes the whole bridge the same way it did for the report.</p>'
         + '<div class="wb-table-wrap">' + tableHtml(result) + '</div>'
