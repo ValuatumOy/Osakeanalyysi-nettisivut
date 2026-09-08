@@ -22,7 +22,7 @@
       border: 1px solid var(--color-border);
       border-radius: var(--r-xl);
       padding: 2.5rem;
-      max-width: 960px;
+      max-width: 1240px;
       width: 100%;
       margin-top: 2rem;
     }
@@ -266,6 +266,13 @@
     .rv-entry[open] > .rv-summary-row .rv-chevron { transform: rotate(45deg); }
     @media (max-width: 720px) { .rv-summary-row { grid-template-columns: auto 1fr auto auto; } .rv-pulse { grid-column: 1 / -1; } }
     .rv-body { padding: .5rem .25rem 1.75rem; }
+    .rv-lead { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr); gap: 1rem; align-items: stretch; margin-bottom: 1.5rem; }
+    .rv-lead > .rv-request, .rv-lead > .rv-headline { margin: 0; }
+    .rv-lead > .rv-headline { grid-template-columns: 1fr; align-content: start; }
+    @media (max-width: 900px) { .rv-lead { grid-template-columns: 1fr; } }
+    .rv-forecast-cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, 1fr); gap: 1.5rem 2.5rem; align-items: start; }
+    .rv-forecast-cols > .rv-forecast-text .revision-md { max-width: 62ch; }
+    @media (max-width: 1100px) { .rv-forecast-cols { grid-template-columns: 1fr; } }
     .rv-muted { font-size: var(--text-sm); color: var(--gray-steel); }
     .rv-request { background: var(--off-white); border-radius: var(--r-md); padding: .85rem 1rem; margin: .5rem 0 1.25rem; }
     .rv-request p { font-size: var(--text-sm); color: var(--charcoal-mid); line-height: 1.65; white-space: pre-wrap; margin: 0; }
@@ -279,7 +286,7 @@
     .rv-rating-row .rv-delta { margin-top: 0; display: inline-flex; align-items: center; gap: .3rem; }
     .rv-block { margin-bottom: 1.5rem; }
     .rv-block-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray-steel); margin-bottom: .5rem; }
-    .rv-block-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; margin-bottom: .85rem; max-width: 70ch; }
+    .rv-block-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; margin-bottom: .85rem; max-width: 80ch; }
     .rv-sub-title { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin: 1.25rem 0 .4rem; }
     .rv-summary .revision-md p { font-size: var(--text-sm); color: var(--charcoal); }
     .rv-items { margin: .75rem 0 0; }
@@ -347,7 +354,7 @@
     .wb-band-scale { display: flex; justify-content: space-between; font-size: 10px; color: var(--gray-steel); margin-top: .35rem; font-variant-numeric: tabular-nums; }
 
     .wb-section-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray-steel); margin-bottom: .35rem; }
-    .wb-section-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; margin-bottom: .85rem; max-width: 70ch; }
+    .wb-section-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; margin-bottom: .85rem; max-width: 80ch; }
     .wb-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
     .wb-table { width: 100%; border-collapse: collapse; font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
     .wb-table th, .wb-table td { text-align: left; padding: .6rem .65rem; border-bottom: 1px solid var(--gray-light); vertical-align: top; }
@@ -390,6 +397,9 @@
     .wb-issue-row td { padding-top: 0; border-bottom: 1px solid var(--gray-light); background: #fff7f6; }
     .wb-issue { display: block; font-size: var(--text-xs); color: #a63b32; padding-bottom: .5rem; }
 
+    .wb-lower { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 2.5rem; align-items: start; margin-bottom: 1.5rem; }
+    .wb-lower > .wb-solve, .wb-lower > .wb-sens { margin-bottom: 0; }
+    @media (max-width: 1100px) { .wb-lower { grid-template-columns: 1fr; } }
     .wb-solve { border: 1px solid var(--color-border); border-radius: var(--r-md); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
     .wb-solve-label { display: block; font-size: var(--text-sm); font-weight: 500; color: var(--charcoal); margin-bottom: .6rem; }
     .wb-solve-row { display: flex; gap: .6rem; align-items: stretch; flex-wrap: wrap; }
@@ -420,7 +430,7 @@
     .wb ::selection { background: var(--green-mist); }
 
     /* The text editor */
-    .order-card--editing { max-width: 1500px; }
+    .order-card--editing { max-width: 1560px; }
     .editor-box { border-top: 1px solid var(--color-border); margin-top: 1.75rem; padding-top: 1.75rem; }
     .editor-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.25rem; align-items: start; }
     @media (max-width: 900px) { .editor-layout { grid-template-columns: 1fr; } }

@@ -472,11 +472,12 @@
       html += '<p class="rv-block-sub">' + (movedCells
         ? movedCells + ' figure' + (movedCells === 1 ? '' : 's') + ' moved in the model; the rest of the path is shown so you can see the whole shape, not only the patch.'
         : 'Every figure in the writable window is shown; none moved.') + '</p>';
-      html += renderForecastChart(wrote, revision.derivedFullYear);
-      html += renderForecastGrid(wrote, revision.derivedFullYear);
-      html += renderRecomputed(revision.recomputed);
-      html += '<h4 class="rv-sub-title">Why the forecast changed</h4>';
-      html += renderMarkdown(writeup);
+      html += '<div class="rv-forecast-cols"><div class="rv-forecast-numbers">'
+        + renderForecastChart(wrote, revision.derivedFullYear)
+        + renderForecastGrid(wrote, revision.derivedFullYear)
+        + renderRecomputed(revision.recomputed)
+        + '</div><div class="rv-forecast-text"><h4 class="rv-sub-title" style="margin-top:0">Why the forecast changed</h4>'
+        + renderMarkdown(writeup) + '</div></div>';
     } else {
       html += '<p class="rv-block-sub">'
         + (dropped.length
@@ -534,9 +535,9 @@
       + '</div>';
   }
 
-  function renderChangeMemo(memo) {
+  function renderChangeMemo(memo, options) {
     if (!memo) return '<p class="rv-muted">Change details are not available for this version.</p>';
-    let html = renderHeadline(memo);
+    let html = options && options.headline === false ? '' : renderHeadline(memo);
     const d = memo.differences || {};
     html += '<section class="rv-block"><h3 class="rv-block-title">What moved in the report</h3>';
     if (d.summary) html += '<div class="rv-summary">' + renderMarkdown(d.summary) + '</div>';
@@ -586,9 +587,11 @@
       } else if (entry.kind === 'edit') {
         html += renderEditDetails(entry);
       } else {
-        if (entry.comments) html += '<div class="rv-request"><span class="wb-summary-label">Your request</span><p>' + escapeHtml(entry.comments) + '</p></div>';
+        const request = entry.comments ? '<div class="rv-request"><span class="wb-summary-label">Your request</span><p>' + escapeHtml(entry.comments) + '</p></div>' : '';
+        const headline = renderHeadline(entry.changes);
+        if (request || headline) html += '<div class="rv-lead">' + request + headline + '</div>';
         html += renderAnalystProse(entry.changes);
-        html += renderChangeMemo(entry.changes);
+        html += renderChangeMemo(entry.changes, { headline: false });
         if (entry.reportQuality && entry.reportQuality.status === 'blocked') {
           html += '<p class="wb-quality">Delivered with ' + entry.reportQuality.blockers + ' unresolved valuation finding' + (entry.reportQuality.blockers === 1 ? '' : 's') + '. The figures are computed by the engine; the argument behind them is under review.</p>';
         }

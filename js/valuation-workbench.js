@@ -278,8 +278,7 @@
         + '<div class="wb-section-title">The bridge</div>'
         + '<p class="wb-section-sub">Every figure the target is built from. Change any underlined value; the engine recomputes the whole bridge the same way it did for the report.</p>'
         + '<div class="wb-table-wrap">' + tableHtml(result) + '</div>'
-        + solveHtml(result)
-        + sensitivityHtml(result)
+        + '<div class="wb-lower">' + solveHtml(result) + sensitivityHtml(result) + '</div>'
         + footerHtml();
       wire();
     }
@@ -302,7 +301,7 @@
       const sens = container.querySelector('.wb-sens');
       const sensHtml = sensitivityHtml(result);
       if (sens) { if (sensHtml) sens.outerHTML = sensHtml; else sens.remove(); }
-      else if (sensHtml) container.querySelector('.wb-footer').insertAdjacentHTML('beforebegin', sensHtml);
+      else if (sensHtml) container.querySelector('.wb-lower').insertAdjacentHTML('beforeend', sensHtml);
       const footer = container.querySelector('.wb-footer');
       if (footer) footer.outerHTML = footerHtml();
       const solve = container.querySelector('.wb-solve');
