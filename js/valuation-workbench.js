@@ -237,14 +237,51 @@
     }
 
     function solveHtml(result) {
-      const options = solveOptions(result);
+      const options = solveOptions(result).filter((o) => o.value !== '::allMetricsScale');
       if (!state.solveRow) state.solveRow = options[0] ? options[0].value : '';
       return '<div class="wb-solve">'
-        + '<label class="wb-solve-label" for="wbSolveLever">What would the current price of ' + fmt1(result.currentPrice) + ' ' + esc(result.currency) + ' require?</label>'
+        + '<div class="wb-solve-label">What would the current price of ' + fmt1(result.currentPrice) + ' ' + esc(result.currency) + ' require?</div>'
         + '<div class="wb-solve-row">'
-        + '<select id="wbSolveLever" class="wb-select">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
+        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Scale every forecast to the current price</button>'
+        + '<span class="wb-solve-or">or move one input only:</span>'
+        + '<select id="wbSolveLever" class="wb-select" aria-label="Input to solve for">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
         + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve</button>'
         + '</div><p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
+    }
+
+    // Every profit forecast × k: the engine's own answer to "what does the
+    // price require", applied as the same overrides a user could have typed
+    // (the metric on an established business, the market on a scenario), so
+    // the bridge below shows every "was".
+    async function runSolveAll() {
+      const out = container.querySelector('#wbSolveResult');
+      out.innerHTML = '<span class="wb-muted">Solving…</span>';
+      try {
+        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: state.current.currentPrice } });
+        const s = data.solve;
+        if (!s || !s.reached) {
+          out.innerHTML = '<span class="wb-unreachable">Even scaling every forecast ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach the price.</span>';
+          return;
+        }
+        const k = s.value;
+        const rows = state.current.rows;
+        rows.forEach((row) => {
+          if (row.kind === 'engine' || row.kind === 'method') {
+            if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
+          } else if (row.kind === 'option-leg') {
+            if (row.editable.indexOf('marketValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).marketValue = row.scale.marketValue * k;
+            else if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
+          }
+        });
+        await refresh();
+        const pct = (k - 1) * 100;
+        container.querySelector('#wbSolveResult').innerHTML = 'Every profit forecast ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') puts the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
+          + '. The bridge below now shows those figures, each with the report\'s own value beside it. <button type="button" class="wb-link" id="wbSolveUndo">Back to the report\'s figures</button>';
+        const undo = container.querySelector('#wbSolveUndo');
+        if (undo) undo.addEventListener('click', () => { state.overrides = {}; refresh(); });
+      } catch (err) {
+        out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
+      }
     }
 
     function sensitivityHtml(result) {
@@ -336,6 +373,8 @@
       if (lock) lock.addEventListener('click', () => opts.onLock(state.overrides, changeList()));
       const solveBtn = container.querySelector('#wbSolveBtn');
       if (solveBtn) solveBtn.addEventListener('click', runSolve);
+      const solveAllBtn = container.querySelector('#wbSolveAllBtn');
+      if (solveAllBtn) solveAllBtn.addEventListener('click', runSolveAll);
       const sel = container.querySelector('#wbSolveLever');
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
     }
@@ -413,7 +452,7 @@
         } else {
           out.innerHTML = '<span class="wb-unreachable">Not reachable with this input alone.</span> Even at <strong>' + esc(shown(s.value)) + '</strong>'
             + (lever === 'probabilityPct' ? ' (the other scenarios of this business take the rest)' : '')
-            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. Try a different input, or scale every profit forecast together.';
+            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. Try another input, or use the button on the left to scale every forecast together.';
         }
       } catch (err) {
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
