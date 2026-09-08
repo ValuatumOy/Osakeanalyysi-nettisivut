@@ -125,10 +125,9 @@
     .revision-comment {
       font-size: var(--text-sm);
       color: var(--charcoal-mid);
-      background: var(--green-faint);
-      border-left: 3px solid var(--green);
-      border-radius: 0 var(--r-md) var(--r-md) 0;
-      padding: .75rem 1rem;
+      background: var(--off-white);
+      border-radius: var(--r-md);
+      padding: .85rem 1rem;
       margin-bottom: 1.25rem;
       line-height: 1.6;
     }
@@ -238,6 +237,78 @@
     .version-fit--clipped { background: #fef2f2; color: #991b1b; }
     .analyst-prose { font-size: var(--text-xs); color: var(--charcoal-mid); background: var(--green-faint); border-radius: var(--r-md); padding: .6rem .85rem; margin-bottom: 1rem; line-height: 1.6; }
 
+
+
+    /* ---- Versions: the revision history, in the workbench's voice ---- */
+    .rv { border-top: 1px solid var(--color-border); margin-top: 1.75rem; padding-top: 1.75rem; }
+    .rv-head { margin-bottom: 1rem; }
+    .rv-title { font-size: var(--text-md); font-weight: 600; color: var(--charcoal); margin-bottom: .3rem; }
+    .rv-head-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; max-width: 70ch; }
+    .rv-entry { border-top: 1px solid var(--color-border); }
+    .rv-entry:last-of-type { border-bottom: 1px solid var(--color-border); }
+    .rv-summary-row { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(140px, 1fr) auto auto auto; align-items: center; gap: 1rem; padding: .9rem .25rem; font-size: var(--text-sm); }
+    .rv-summary-row::-webkit-details-marker { display: none; }
+    .rv-summary-row:hover { background: var(--off-white); }
+    .rv-summary-row:focus-visible { outline: 2px solid var(--green-deep); outline-offset: -2px; }
+    .rv-vnum { font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--charcoal); background: var(--off-white); border: 1px solid var(--color-border); border-radius: 999px; padding: .2rem .6rem; font-variant-numeric: tabular-nums; }
+    .rv-entry[open] > .rv-summary-row .rv-vnum { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+    .rv-who { display: flex; flex-direction: column; min-width: 0; }
+    .rv-who-label { font-weight: 500; color: var(--charcoal); }
+    .rv-date { font-size: var(--text-xs); color: var(--gray-steel); }
+    .rv-pulse { display: inline-flex; align-items: center; gap: .45rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rv-pulse-was { color: var(--gray-steel); font-size: var(--text-xs); }
+    .rv-pulse-arrow { color: var(--gray-steel); }
+    .rv-pulse-now { font-weight: 600; color: var(--charcoal); }
+    .rv-pulse .wb-rating { margin-left: .2rem; }
+    .rv-download { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green-deep); text-decoration: none; border: 1px solid var(--green-light); border-radius: var(--r-sm); padding: .25rem .55rem; }
+    .rv-download:hover { background: var(--green-faint); }
+    .rv-chevron { width: 8px; height: 8px; border-right: 1.5px solid var(--gray-steel); border-bottom: 1.5px solid var(--gray-steel); transform: rotate(-45deg); transition: transform var(--trs); margin-right: .25rem; }
+    .rv-entry[open] > .rv-summary-row .rv-chevron { transform: rotate(45deg); }
+    @media (max-width: 720px) { .rv-summary-row { grid-template-columns: auto 1fr auto auto; } .rv-pulse { grid-column: 1 / -1; } }
+    .rv-body { padding: .5rem .25rem 1.75rem; }
+    .rv-muted { font-size: var(--text-sm); color: var(--gray-steel); }
+    .rv-request { background: var(--off-white); border-radius: var(--r-md); padding: .85rem 1rem; margin: .5rem 0 1.25rem; }
+    .rv-request p { font-size: var(--text-sm); color: var(--charcoal-mid); line-height: 1.65; white-space: pre-wrap; margin: 0; }
+    .rv-headline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem 2rem; padding: 1.1rem 1.25rem; background: var(--off-white); border-radius: var(--r-lg); margin-bottom: 1.5rem; }
+    .rv-target { display: flex; align-items: baseline; gap: .35rem; font-size: var(--text-xl); font-weight: 300; letter-spacing: -.02em; color: var(--charcoal); line-height: 1; font-variant-numeric: tabular-nums; }
+    .rv-delta { display: block; font-size: var(--text-xs); color: var(--gray-steel); margin-top: .4rem; font-variant-numeric: tabular-nums; }
+    .rv-delta.is-up { color: var(--green-deep); }
+    .rv-delta.is-down { color: #A63B32; }
+    .rv-rating-row { display: flex; align-items: center; gap: .5rem; }
+    .rv-rating-row .wb-rating { margin-left: 0; font-size: 12px; }
+    .rv-rating-row .rv-delta { margin-top: 0; display: inline-flex; align-items: center; gap: .3rem; }
+    .rv-block { margin-bottom: 1.5rem; }
+    .rv-block-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gray-steel); margin-bottom: .5rem; }
+    .rv-block-sub { font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.6; margin-bottom: .85rem; max-width: 70ch; }
+    .rv-sub-title { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin: 1.25rem 0 .4rem; }
+    .rv-summary .revision-md p { font-size: var(--text-sm); color: var(--charcoal); }
+    .rv-items { margin: .75rem 0 0; }
+    .rv-item { display: grid; grid-template-columns: 150px 1fr; gap: .75rem; padding: .65rem 0; border-top: 1px solid var(--gray-light); }
+    .rv-item dt { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gray-steel); padding-top: .25rem; }
+    .rv-item dd { margin: 0; }
+    .rv-item--unchanged dt { color: var(--green-deep); }
+    @media (max-width: 640px) { .rv-item { grid-template-columns: 1fr; gap: .2rem; } }
+    .rv-chart { margin: 0 0 .75rem; }
+    .rv-chart figcaption { font-size: var(--text-xs); font-weight: 600; color: var(--charcoal-mid); margin-bottom: .2rem; }
+    .rv-grid-wrap { overflow-x: auto; margin-bottom: .75rem; }
+    .rv-grid { width: 100%; border-collapse: collapse; font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
+    .rv-grid th, .rv-grid td { text-align: right; padding: .45rem .55rem; border-bottom: 1px solid var(--gray-light); vertical-align: top; white-space: nowrap; }
+    .rv-grid thead th { color: var(--gray-steel); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+    .rv-grid thead th:first-child, .rv-grid tbody th { text-align: left; color: var(--charcoal); font-weight: 500; }
+    .rv-grid td.is-changed .rv-grid-new { color: var(--green-deep); font-weight: 600; }
+    .rv-grid-new { display: block; }
+    .rv-grid-was { display: block; font-size: 10px; color: var(--gray-steel); }
+    .rv-grid--dense th, .rv-grid--dense td { padding: .35rem .5rem; }
+    .rv-grid--list th, .rv-grid--list td { text-align: left; white-space: normal; }
+    .rv-reason { color: var(--charcoal-mid); }
+    .rv-recomputed { margin: .25rem 0 .75rem; }
+    .rv-recomputed > summary { cursor: pointer; font-size: var(--text-xs); font-weight: 600; color: var(--green-deep); padding: .35rem 0; list-style: none; }
+    .rv-recomputed > summary::-webkit-details-marker { display: none; }
+    .rv-recomputed > summary::before { content: '+'; display: inline-block; width: 1em; color: var(--gray-steel); }
+    .rv-recomputed[open] > summary::before { content: '−'; }
+    .rv-recomputed > summary .rv-muted { font-weight: 400; margin-left: .35rem; font-size: var(--text-xs); }
+    .rv-caveat { font-size: var(--text-xs); color: var(--gray-steel); font-style: italic; margin-top: .75rem; }
+    .revision-md h4 { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--gray-steel); margin: 1rem 0 .3rem; }
 
     /* ---- Target-price workbench ---- */
     .wb-box { border-top: 1px solid var(--color-border); margin-top: 1.75rem; padding-top: 1.75rem; }
@@ -482,9 +553,8 @@
 
         <div class="revision-box" id="revisionBox" style="display:none;">
           <div class="revision-error-banner" id="revisionErrorBanner" style="display:none;"></div>
-          <h2 style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:.4rem;">Request a report revision</h2>
-          <p class="order-sub" style="margin-bottom:.65rem;">To make changes to the report, describe in plain language what you'd like to see — e.g. "assume gold price doubles in 2027", "use a different peer group", or "take a more conservative growth approach". We'll interpret it, update the report accordingly, and regenerate it. No numbers to fill in yourself.</p>
-          <p class="order-sub" style="margin-bottom:.85rem;">Feel free to write in your own language instead of English — Finnish worked great in our testing, and other languages should too. If one doesn't work well, English is the safe fallback.</p>
+          <h2 style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:.4rem;">Request a revision</h2>
+          <p class="order-sub" style="margin-bottom:.85rem;">Say in plain words what should change: "assume gold doubles in 2027", "use a different peer group", "be more conservative on growth". The analyst turns it into forecast figures, writes them into the model and regenerates the report. Any language works; English is the safe fallback. Every version stays below, with what moved measured by the engine.</p>
           <p class="revision-count" id="revisionCount">—</p>
           <textarea class="revision-textarea" id="revisionText" placeholder="Describe the change you'd like to see in the report…"></textarea>
           <button type="button" class="btn btn-primary btn-lg btn-full" id="revisionSubmit">Request revision</button>
