@@ -305,6 +305,7 @@ async function deliver(order, job) {
     status: orders.STATUS.DELIVERED, pdfFileName, originalPdfFileName: pdfFileName, error: null,
     originalJobId: order.originalJobId || order.jobId,
     hasPreview: Boolean(job.previewUrl),
+    ...(job.reportQuality ? { reportQuality: job.reportQuality } : {}),
   });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
 
@@ -418,6 +419,7 @@ async function deliverRevision(order, job) {
     completedAt: job.completedAt || new Date().toISOString(),
     changes,
     ...(job.fit ? { fit: job.fit } : {}),
+    ...(job.reportQuality ? { reportQuality: job.reportQuality } : {}),
     ...(edit ? {
       editedBy: edit.editedBy || '',
       editedFrom: edit.fromVersion || (order.revisionHistory?.length || 0) + 1,

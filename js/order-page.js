@@ -1217,6 +1217,21 @@
     if (workbench.open) closeWorkbench();
     document.getElementById('valuationOpenBtn').style.display = order.pdfUrl ? '' : 'none';
 
+    // A report the engine delivered with unresolved valuation findings: the
+    // target is code-computed, the argument behind it is under review. Say so
+    // where the download button is, not only inside the workbench.
+    const quality = document.getElementById('qualityBanner');
+    if (quality) {
+      const q = order.reportQuality;
+      if (q && q.status === 'blocked') {
+        quality.textContent = 'This version was delivered with ' + q.blockers + ' unresolved valuation finding' + (q.blockers === 1 ? '' : 's')
+          + '. The target price and every figure are computed by the engine; the report\'s argument for them did not pass every check and is under review.';
+        quality.style.display = '';
+      } else {
+        quality.style.display = 'none';
+      }
+    }
+
     const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');
     if (order.revisionError) {

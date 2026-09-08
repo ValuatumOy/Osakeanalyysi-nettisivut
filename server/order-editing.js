@@ -20,6 +20,7 @@ function historyEntryPayload(entry) {
     completedAt: entry.completedAt,
     changes: entry.changes || null,
     ...(entry.fit ? { fit: entry.fit } : {}),
+    ...(entry.reportQuality ? { reportQuality: entry.reportQuality } : {}),
     ...(kind === 'edit' ? {
       editedBy: entry.editedBy || '',
       editedFrom: entry.editedFrom ?? null,
@@ -96,4 +97,13 @@ async function previewValuation(order, body) {
   }
 }
 
-module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation };
+// The QA verdict of the version the customer currently holds: the newest
+// revision's when there is one, else the original delivery's. Null on orders
+// delivered before the engine reported one.
+function currentReportQuality(order) {
+  const last = (order.revisionHistory || []).slice(-1)[0];
+  if (last) return last.reportQuality || null;
+  return order.reportQuality || null;
+}
+
+module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation, currentReportQuality };

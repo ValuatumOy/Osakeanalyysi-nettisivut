@@ -1001,6 +1001,7 @@ async function getGenerationOrder(event) {
     reportId: order.reportId,
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
+    reportQuality: editing.currentReportQuality(order),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Publishing freezes the PDF, so the order page must stop offering

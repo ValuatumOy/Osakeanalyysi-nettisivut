@@ -324,6 +324,8 @@ async function getOrder(event) {
 // What the order page renders for one order: status, the current PDF, and
 // every revision's change memo. Shared by the customer's route above and the
 // admin's read-only view of the same order.
+const currentReportQuality = editing.currentReportQuality;
+
 async function orderPagePayload(order) {
   const payload = {
     status: order.status,
@@ -333,6 +335,7 @@ async function orderPagePayload(order) {
     reportId: order.reportId,
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
+    reportQuality: currentReportQuality(order),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Text editing: whether the current version can be edited by hand, which

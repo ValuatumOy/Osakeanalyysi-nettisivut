@@ -253,6 +253,9 @@ async function getJob(jobId) {
     editedBy: data.editedBy,
     fit: data.fit,
     editWarnings: data.editWarnings,
+    // The engine's own QA verdict; a `blocked` report is still delivered
+    // when its target is code-computed and only the argument is in question.
+    reportQuality: data.reportQuality,
   };
 }
 
