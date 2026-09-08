@@ -25,7 +25,24 @@
     ? 'https://members.aiequityreports.com'
     : 'https://members-test.aiequityreports.com';
 
+  // A third way in: the admin, from the catalog on /admin/, reading any
+  // order's revision history — the forecast writeups and change memos that
+  // are otherwise visible only to the customer who asked for them. The admin
+  // page's password is in localStorage on this same origin; the API checks
+  // it. Read-only: every control that would act as the customer stays hidden.
+  const isAdminView = params.get('admin') === '1';
+  const adminPassword = () => window.localStorage.aerAdminPassword || '';
+  const ADMIN_API = window.localStorage.aerAdminApiBase
+    || (location.hostname.startsWith('test.') || !/aiequityreports\.com$/.test(location.hostname)
+      ? 'https://api-test.aiequityreports.com'
+      : 'https://api.aiequityreports.com');
+
   function fetchOrderState() {
+    if (isAdminView) {
+      return fetch(ADMIN_API + '/api/admin/orders/' + encodeURIComponent(sessionId), {
+        headers: { authorization: 'Bearer ' + adminPassword() },
+      });
+    }
     if (!isMemberRun()) {
       return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
     }
@@ -87,6 +104,23 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
       body: JSON.stringify({ comments: comments }),
+    });
+  }
+
+  // The target-price workbench's calculator: `{ overrides?, solve? }` through
+  // whichever door this order lives behind. Read-only on every side.
+  function postValuation(body) {
+    if (!isMemberRun()) {
+      return fetch('/api/order-revision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, valuation: body }),
+      });
+    }
+    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/valuation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+      body: JSON.stringify(body),
     });
   }
 
@@ -298,7 +332,8 @@
   }
 
   function renderForecastChartCard(title, points) {
-    const width = 900, height = 300, left = 58, bottom = 40, top = 48;
+    // Two quarters do not need the height eight years do.
+    const width = 900, height = points.length <= 3 ? 170 : 260, left = 24, bottom = 34, top = 44;
     const slot = (width - left - 10) / points.length;
     const values = points.reduce((acc, p) => acc.concat([p.before == null ? 0 : p.before, p.after]), []);
     const min = Math.min(0, ...values);
@@ -306,142 +341,265 @@
     const range = max - min || 1;
     const y = (value) => top + ((max - value) / range) * (height - top - bottom);
     const zero = y(0);
-    const barWidth = Math.min(72, slot * 0.42);
-    const labelWidth = (text) => Math.max(20, text.length * 6.7 + 8);
+    const barWidth = Math.min(64, slot * 0.46);
+    const labelWidth = (text) => Math.max(20, text.length * 6.6 + 10);
+    const NEW = '#2A7452', OLD = '#8A9590', INK = '#1A2420';
 
     const bars = points.map((point, index) => {
       const period = periodLabel(point);
       const x = left + slot * index + slot / 2;
       const oldY = y(point.before == null ? 0 : point.before);
       const newY = y(point.after);
-      const increased = point.before == null || point.after >= point.before;
       const changed = point.before != null && point.before !== point.after;
-      const topsAreClose = changed && Math.abs(oldY - newY) < 32;
-      const decreaseGap = newY - oldY;
-      const oldLabelY = topsAreClose ? (oldY < newY ? oldY - 11 : oldY + 17) : oldY - 11;
-      const newLabelY = decreaseGap > 0 ? (decreaseGap >= 20 ? newY - 5 : newY + 17) : newY - 11;
-      const arrowY = Math.max(23, Math.min(oldY, newY) - 3);
+      const increased = point.before == null || point.after >= point.before;
       const oldLabel = formatNumber(point.before);
       const newLabel = formatNumber(point.after);
-      const oldLabelInsideShortBar = oldLabelY > oldY && Math.abs(zero - oldY) < 25;
-      const newLabelInsideShortBar = newLabelY > newY && Math.abs(zero - newY) < 25;
-      const oldLabelX = oldLabelInsideShortBar ? x - barWidth / 2 - labelWidth(oldLabel) / 2 - 6 : x;
-      const newLabelX = newLabelInsideShortBar ? x - barWidth / 2 - labelWidth(newLabel) / 2 - 6 : x;
-      const fittedOldLabelY = oldLabelInsideShortBar ? oldY + 4 : oldLabelY;
-      const fittedNewLabelY = newLabelInsideShortBar ? newY + 4 : newLabelY;
-      const labelPill = (labelX, labelY, text) => {
-        const w = labelWidth(text);
-        return '<rect x="' + (labelX - w / 2) + '" y="' + (labelY - 13) + '" width="' + w + '" height="16" rx="8" fill="white" fill-opacity="0.96"/>';
-      };
-      const oldMarkerPath = increased
-        ? 'M ' + (x - barWidth / 2) + ' ' + oldY + ' H ' + (x + barWidth / 2)
-        : 'M ' + (x - barWidth / 2) + ' ' + newY + ' V ' + oldY + ' H ' + (x + barWidth / 2) + ' V ' + newY;
-
+      // The new value sits on top of the bar; when the old value was higher its
+      // dashed ghost outline stays, with its label above the ghost.
+      // Labels never share a line: when the two tops are close, the old value
+      // takes the line above and the new one sits just under it.
+      const close = changed && Math.abs(oldY - newY) < 18;
+      const oldLabelY = increased ? (close ? newY + 16 : oldY + 14) : oldY - 8;
+      const newLabelY = !increased && close ? oldLabelY + 15 : newY - 8;
+      const pill = (px, py, text, fill) => '<rect x="' + (px - labelWidth(text) / 2) + '" y="' + (py - 11) + '" width="' + labelWidth(text) + '" height="15" rx="7.5" fill="' + fill + '"/>';
       let g = '<g>';
-      g += '<rect x="' + (x - barWidth / 2) + '" y="' + Math.min(newY, zero) + '" width="' + barWidth + '" height="' + Math.max(1, Math.abs(zero - newY)) + '" fill="#0d9488" stroke="#0a7a70"/>';
-      if (point.before != null && changed) {
-        g += '<path d="' + oldMarkerPath + '" fill="none" stroke="white" stroke-width="4"/>';
-        g += '<path d="' + oldMarkerPath + '" fill="none" stroke="#57534e" stroke-width="1.5" stroke-dasharray="6 4"/>';
-        g += labelPill(oldLabelX, fittedOldLabelY, oldLabel);
-        g += '<text x="' + oldLabelX + '" y="' + fittedOldLabelY + '" text-anchor="middle" fill="#57534e" font-size="12">' + escapeHtml(oldLabel) + '</text>';
+      if (changed && !increased) {
+        g += '<rect x="' + (x - barWidth / 2) + '" y="' + oldY + '" width="' + barWidth + '" height="' + Math.max(1, zero - oldY) + '" fill="none" stroke="' + OLD + '" stroke-width="1.25" stroke-dasharray="4 3"/>';
       }
-      g += labelPill(newLabelX, fittedNewLabelY, newLabel);
-      g += '<text x="' + newLabelX + '" y="' + fittedNewLabelY + '" text-anchor="middle" fill="#0f766e" font-size="12" font-weight="600">' + escapeHtml(newLabel) + '</text>';
-      if (changed) g += '<text x="' + (x + barWidth / 2 + 10) + '" y="' + arrowY + '" fill="#0f766e" font-size="22" font-weight="600">' + (increased ? '↑' : '↓') + '</text>';
-      g += '<text x="' + x + '" y="' + (height - 14) + '" text-anchor="middle" fill="#57534e" font-size="13" font-weight="600">' + escapeHtml(period) + '</text>';
-      g += '<title>' + escapeHtml(period) + ': old ' + escapeHtml(oldLabel) + ', new ' + escapeHtml(newLabel) + '</title>';
-      g += '</g>';
-      return g;
+      g += '<rect x="' + (x - barWidth / 2) + '" y="' + Math.min(newY, zero) + '" width="' + barWidth + '" height="' + Math.max(1, Math.abs(zero - newY)) + '" rx="2" fill="' + (changed ? NEW : '#C9DED3') + '"/>';
+      if (changed && increased) {
+        g += '<line x1="' + (x - barWidth / 2 - 4) + '" y1="' + oldY + '" x2="' + (x + barWidth / 2 + 4) + '" y2="' + oldY + '" stroke="' + OLD + '" stroke-width="1.25" stroke-dasharray="4 3"/>';
+      }
+      g += pill(x, newLabelY, newLabel, 'white') + '<text x="' + x + '" y="' + newLabelY + '" text-anchor="middle" fill="' + (changed ? NEW : INK) + '" font-size="11.5" font-weight="600">' + escapeHtml(newLabel) + '</text>';
+      if (changed) {
+        g += pill(x, oldLabelY, oldLabel, 'white') + '<text x="' + x + '" y="' + oldLabelY + '" text-anchor="middle" fill="' + OLD + '" font-size="11">' + escapeHtml(oldLabel) + '</text>';
+      }
+      g += '<text x="' + x + '" y="' + (height - 12) + '" text-anchor="middle" fill="' + (changed ? INK : OLD) + '" font-size="12" font-weight="' + (changed ? '600' : '400') + '">' + escapeHtml(period) + '</text>';
+      g += '<title>' + escapeHtml(period) + ': ' + (changed ? 'was ' + escapeHtml(oldLabel) + ', now ' : '') + escapeHtml(newLabel) + '</title>';
+      return g + '</g>';
     }).join('');
 
-    return '<div class="revision-chart-card">'
-      + '<div class="revision-chart-title">' + escapeHtml(title) + '</div>'
+    return '<figure class="rv-chart">'
+      + '<figcaption>' + escapeHtml(title) + '</figcaption>'
       + '<svg viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + escapeAttr(title) + ' forecast movement chart" style="width:100%;">'
-      + '<line x1="' + left + '" y1="' + zero + '" x2="' + (width - 10) + '" y2="' + zero + '" stroke="#d6d3d1"/>'
+      + '<line x1="' + left + '" y1="' + zero + '" x2="' + (width - 10) + '" y2="' + zero + '" stroke="#E2E9E5"/>'
       + bars
-      + '</svg></div>';
+      + '</svg></figure>';
   }
 
-  function renderForecastSection(revision) {
-    let html = '<div class="revision-section revision-forecast">';
-    html += '<div class="revision-section-title">Forecast movement</div>';
-    if (revision.wrote && revision.wrote.length) html += renderForecastChart(revision.wrote, revision.derivedFullYear);
-    html += '<div class="revision-section-title" style="margin-top:.5rem;">Why the forecast changed</div>';
-    html += renderMarkdown(revision.writeup || legacyForecastWriteup(revision));
+  // The whole path the revision wrote, as a grid: one row per variable and
+  // periodicity, one column per period, the new value with "was" beneath it
+  // where it moved. The chart shows the shape; this shows the numbers.
+  function renderForecastGrid(wrote, derived) {
+    const NAMES = { ns: 'Net sales', ebit: 'EBIT' };
+    const derivedRows = (derived || []).filter((row) => row.after != null);
+    const rows = [];
+    ['ns', 'ebit'].forEach((varname) => {
+      [false, true].forEach((quarterly) => {
+        const written = wrote.filter((row) => row.varname === varname && (row.quarter != null) === quarterly);
+        const years = new Set(written.map((row) => row.year));
+        const extra = quarterly ? [] : derivedRows.filter((row) => row.varname === varname && !years.has(row.year));
+        const cells = written.concat(extra).sort((a, b) => a.year - b.year || (a.quarter || 0) - (b.quarter || 0));
+        if (cells.length) rows.push({ label: (NAMES[varname] || varname) + (quarterly ? ', quarterly' : ''), cells });
+      });
+    });
+    if (!rows.length) return '';
+    return rows.map((row) => {
+      let html = '<div class="rv-grid-wrap"><table class="rv-grid"><thead><tr><th scope="col">' + escapeHtml(row.label) + '</th>'
+        + row.cells.map((c) => '<th scope="col">' + escapeHtml(periodLabel(c)) + '</th>').join('') + '</tr></thead><tbody><tr><th scope="row">' + (row.label.indexOf('quarterly') >= 0 ? 'Q' : 'Year') + '</th>';
+      row.cells.forEach((c) => {
+        const changed = c.before != null && c.before !== c.after;
+        html += '<td class="' + (changed ? 'is-changed' : '') + '"><span class="rv-grid-new">' + escapeHtml(formatNumber(c.after)) + '</span>'
+          + (changed ? '<span class="rv-grid-was">was ' + escapeHtml(formatNumber(c.before)) + '</span>' : '') + '</td>';
+      });
+      return html + '</tr></tbody></table></div>';
+    }).join('');
+  }
 
-    if (revision.dropped && revision.dropped.length) {
-      html += '<table class="revision-table"><caption>Values not written</caption><thead><tr><th>Variable</th><th>Period</th><th>Reason</th></tr></thead><tbody>'
-        + revision.dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(periodLabel(row)) + '</td><td>' + escapeHtml(row.reason) + '</td></tr>').join('')
-        + '</tbody></table>';
+  // What the model recomputed from the written path (EBITDA, EPS, cash flow,
+  // net debt...). Measured by the engine, so shown as numbers, not prose:
+  // grouped by metric, one column per year, moved cells marked.
+  function renderRecomputed(recomputed) {
+    const rows = (recomputed || []).filter((r) => r && typeof r.metric === 'string');
+    if (!rows.length) return '';
+    const byMetric = new Map();
+    rows.forEach((r) => {
+      const m = /^(.*?)\s+((?:19|20)\d{2})$/.exec(r.metric.trim());
+      const name = m ? m[1] : r.metric, year = m ? m[2] : '';
+      if (!byMetric.has(name)) byMetric.set(name, []);
+      byMetric.get(name).push({ year, before: r.before, after: r.after });
+    });
+    const years = [...new Set(rows.map((r) => (/((?:19|20)\d{2})$/.exec(r.metric.trim()) || [])[1]).filter(Boolean))].sort();
+    const fmt = (name, v) => {
+      if (v == null || !Number.isFinite(v)) return '—';
+      if (/margin|%|yield|ratio/i.test(name) && Math.abs(v) < 5) return (v * 100).toFixed(1) + '%';
+      return Math.abs(v) >= 100 ? formatNumber(Math.round(v)) : v.toFixed(2);
+    };
+    const moved = (a, b) => a != null && b != null && Math.abs(a - b) > Math.max(1e-9, Math.abs(a) * 0.0005);
+    let html = '<details class="rv-recomputed"><summary>' + rows.length + ' figures the model recomputed from this path <span class="rv-muted">EBITDA, margins, EPS, cash flow, net debt…</span></summary>'
+      + '<div class="rv-grid-wrap"><table class="rv-grid rv-grid--dense"><thead><tr><th scope="col">Metric</th>' + years.map((y) => '<th scope="col">' + y + '</th>').join('') + '</tr></thead><tbody>';
+    byMetric.forEach((cells, name) => {
+      html += '<tr><th scope="row">' + escapeHtml(name) + '</th>';
+      years.forEach((y) => {
+        const c = cells.find((x) => x.year === y);
+        if (!c) { html += '<td class="rv-muted">—</td>'; return; }
+        const changed = moved(c.before, c.after);
+        html += '<td class="' + (changed ? 'is-changed' : '') + '"><span class="rv-grid-new">' + escapeHtml(fmt(name, c.after)) + '</span>'
+          + (changed ? '<span class="rv-grid-was">was ' + escapeHtml(fmt(name, c.before)) + '</span>' : '') + '</td>';
+      });
+      html += '</tr>';
+    });
+    return html + '</tbody></table></div></details>';
+  }
+
+  // The engine sends this section whenever an estimates revision ran, even
+  // when the model concluded the comment moves nothing: then `wrote` is
+  // empty and `resultFid` is null, and the writeup explains the decision.
+  // A revision can also write nothing because every value was dropped, in
+  // which case the "Values not written" table below carries the reason.
+  function renderForecastSection(revision) {
+    const wrote = revision.wrote || [];
+    const derived = (revision.derivedFullYear || []).filter((row) => row.after != null);
+    const moved = wrote.length > 0 || derived.length > 0;
+    const dropped = revision.dropped || [];
+    const writeup = revision.writeup || legacyForecastWriteup(revision);
+    const movedCells = wrote.filter((c) => c.before != null && c.before !== c.after).length
+      + derived.filter((c) => c.before != null && c.before !== c.after).length;
+
+    let html = '<section class="rv-block">';
+    html += '<h3 class="rv-block-title">The forecast this version is built on</h3>';
+    if (moved) {
+      html += '<p class="rv-block-sub">' + (movedCells
+        ? movedCells + ' figure' + (movedCells === 1 ? '' : 's') + ' moved in the model; the rest of the path is shown so you can see the whole shape, not only the patch.'
+        : 'Every figure in the writable window is shown; none moved.') + '</p>';
+      html += '<div class="rv-forecast-cols"><div class="rv-forecast-numbers">'
+        + renderForecastChart(wrote, revision.derivedFullYear)
+        + renderForecastGrid(wrote, revision.derivedFullYear)
+        + renderRecomputed(revision.recomputed)
+        + '</div><div class="rv-forecast-text"><h4 class="rv-sub-title" style="margin-top:0">Why the forecast changed</h4>'
+        + renderMarkdown(writeup) + '</div></div>';
+    } else {
+      html += '<p class="rv-block-sub">'
+        + (dropped.length
+          ? 'No forecast values were written in this version. The values below were proposed but could not be applied.'
+          : 'The model kept its forecasts unchanged in this version.')
+        + '</p>';
+      if (writeup) {
+        html += '<h4 class="rv-sub-title">' + (dropped.length ? 'What the model proposed' : 'Why the forecast stayed unchanged') + '</h4>';
+        html += renderMarkdown(writeup);
+      }
+    }
+
+    if (dropped.length) {
+      html += '<h4 class="rv-sub-title">Values not written</h4><div class="rv-grid-wrap"><table class="rv-grid rv-grid--list"><thead><tr><th scope="col">Variable</th><th scope="col">Period</th><th scope="col">Reason</th></tr></thead><tbody>'
+        + dropped.map((row) => '<tr><td>' + escapeHtml(row.varname) + '</td><td>' + escapeHtml(periodLabel(row)) + '</td><td class="rv-reason">' + escapeHtml(row.reason) + '</td></tr>').join('')
+        + '</tbody></table></div>';
     }
     if (revision.quarterlyReconciliation) {
-      html += '<div class="revision-section-title" style="margin-top:1rem;">How the full year was set</div>';
+      html += '<h4 class="rv-sub-title">How the full year was set</h4>';
       html += renderMarkdown(revision.quarterlyReconciliation);
     }
     if (revision.levelCaveat) {
-      html += '<p class="revision-caveat">' + escapeHtml(revision.levelCaveat) + '</p>';
+      html += '<p class="rv-caveat">' + escapeHtml(revision.levelCaveat) + '</p>';
     }
-    html += '</div>';
+    html += '</section>';
     return html;
   }
 
-  function renderChangeMemo(memo) {
-    if (!memo) return '<p class="revision-no-memo">Change details are not available for this revision.</p>';
+  function ratingChip(rating) {
+    const r = String(rating || '').toUpperCase();
+    if (!r) return '<span class="wb-rating wb-rating--none">—</span>';
+    return '<span class="wb-rating wb-rating--' + r.toLowerCase() + '">' + escapeHtml(r) + '</span>';
+  }
 
-    let html = '<div class="revision-metrics">';
-    html += '<div class="revision-metric"><div class="revision-metric-label">Target price</div><div class="revision-metric-values">'
-      + '<span class="revision-metric-before">' + escapeHtml(formatValue(memo.headline.targetPrice.before, memo.headline.targetPrice.currency)) + '</span>'
-      + '<span class="revision-metric-after">' + escapeHtml(formatValue(memo.headline.targetPrice.after, memo.headline.targetPrice.currency)) + '</span>'
-      + '</div></div>';
-    html += '<div class="revision-metric"><div class="revision-metric-label">Rating</div><div class="revision-metric-values">'
-      + '<span class="revision-metric-before">' + escapeHtml(memo.headline.rating.before || '—') + '</span>'
-      + '<span class="revision-metric-after">' + escapeHtml(memo.headline.rating.after || '—') + '</span>'
-      + '</div></div>';
-    html += '</div>';
+  // The measured headline of a revision — target before → after, rating
+  // before → after — in the same voice as the target-price workbench.
+  function renderHeadline(memo) {
+    const h = memo && memo.headline;
+    if (!h) return '';
+    const tp = h.targetPrice || {};
+    const ccy = tp.currency || '';
+    const moved = tp.before != null && tp.after != null && Math.abs(tp.after - tp.before) > 0.04;
+    const delta = moved ? ((tp.after - tp.before) / tp.before) * 100 : null;
+    const ratingChanged = h.rating && h.rating.before && h.rating.after && h.rating.before !== h.rating.after;
+    return '<div class="rv-headline">'
+      + '<div><span class="wb-summary-label">Target price</span>'
+      + '<span class="rv-target">' + (tp.after == null ? '—' : escapeHtml(tp.after.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }))) + '<span class="wb-target-ccy">' + escapeHtml(ccy) + '</span></span>'
+      + (moved
+        ? '<span class="rv-delta ' + (delta > 0 ? 'is-up' : 'is-down') + '">' + (delta > 0 ? '+' : '−') + Math.abs(delta).toFixed(1) + '% · was ' + escapeHtml(tp.before.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })) + '</span>'
+        : '<span class="rv-delta">unchanged</span>')
+      + '</div>'
+      + '<div><span class="wb-summary-label">Rating</span>'
+      + '<span class="rv-rating-row">' + ratingChip(h.rating && h.rating.after) + (ratingChanged ? '<span class="rv-delta">was ' + ratingChip(h.rating.before) + '</span>' : '<span class="rv-delta">unchanged</span>') + '</span>'
+      + '</div>'
+      + '</div>';
+  }
 
-    html += '<div class="revision-section"><div class="revision-section-title">What moved in the report</div>';
-    html += renderMarkdown(memo.differences.summary);
-    (memo.differences.items || []).forEach((item) => {
-      html += '<div class="revision-diff-item"><div class="revision-diff-area">' + escapeHtml(item.area) + '</div>' + renderMarkdown(item.what) + '</div>';
-    });
-    if (memo.differences.unchanged) {
-      html += '<div class="revision-section-title" style="margin-top:1rem;">Unchanged</div>' + renderMarkdown(memo.differences.unchanged);
+  function renderChangeMemo(memo, options) {
+    if (!memo) return '<p class="rv-muted">Change details are not available for this version.</p>';
+    let html = options && options.headline === false ? '' : renderHeadline(memo);
+    const d = memo.differences || {};
+    html += '<section class="rv-block"><h3 class="rv-block-title">What moved in the report</h3>';
+    if (d.summary) html += '<div class="rv-summary">' + renderMarkdown(d.summary) + '</div>';
+    if (d.items && d.items.length) {
+      html += '<dl class="rv-items">' + d.items.map((item) => '<div class="rv-item"><dt>' + escapeHtml(item.area) + '</dt><dd>' + renderMarkdown(item.what) + '</dd></div>').join('') + '</dl>';
     }
-    html += '</div>';
-
+    if (d.unchanged) html += '<div class="rv-item rv-item--unchanged"><dt>Unchanged</dt><dd>' + renderMarkdown(d.unchanged) + '</dd></div>';
+    html += '</section>';
     if (memo.forecastRevision) html += renderForecastSection(memo.forecastRevision);
-
     return html;
+  }
+
+  // A one-line, measured account of a version for the closed row: the target
+  // move and the rating, so the list reads without opening anything.
+  function renderVersionPulse(entry) {
+    const h = entry.changes && entry.changes.headline;
+    if (!h || !h.targetPrice) return '';
+    const tp = h.targetPrice;
+    const moved = tp.before != null && tp.after != null && Math.abs(tp.after - tp.before) > 0.04;
+    const f = (v) => v == null ? '—' : v.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    let html = '<span class="rv-pulse">';
+    html += moved
+      ? '<span class="rv-pulse-was">' + escapeHtml(f(tp.before)) + '</span><span class="rv-pulse-arrow" aria-hidden="true">→</span><span class="rv-pulse-now">' + escapeHtml(f(tp.after)) + ' ' + escapeHtml(tp.currency || '') + '</span>'
+      : '<span class="rv-pulse-now">' + escapeHtml(f(tp.after)) + ' ' + escapeHtml(tp.currency || '') + '</span><span class="rv-pulse-was">unchanged</span>';
+    if (h.rating && h.rating.after) html += ratingChip(h.rating.after);
+    return html + '</span>';
   }
 
   function renderRevisionHistory(list) {
     if (!list || !list.length) return '';
-    let html = '<div class="revision-history"><div class="revision-history-title">Versions</div>';
+    let html = '<section class="rv"><div class="rv-head"><h2 class="rv-title">Versions</h2>'
+      + '<p class="rv-head-sub">Newest first. Every figure here is measured from the two reports by the engine; the prose is the engine\'s account of what differs, never of why.</p></div>';
     list.forEach((entry, index) => {
       const date = formatDate(entry.completedAt);
-      html += '<details class="revision-entry"' + (index === 0 ? ' open' : '') + '>';
-      html += '<summary class="revision-entry-summary">'
-        + '<span><span class="revision-entry-label">' + versionLabel(entry) + '</span>'
-        + versionBadge(entry)
-        + (date ? ' <span class="revision-entry-date">' + escapeHtml(date) + '</span>' : '') + '</span>';
-      if (entry.pdfUrl) {
-        html += '<a class="revision-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">Download this version</a>';
-      }
-      html += '</summary>';
-      html += '<div class="revision-entry-body">';
+      html += '<details class="rv-entry' + (entry.original ? ' rv-entry--original' : '') + '"' + (index === 0 ? ' open' : '') + '>';
+      html += '<summary class="rv-summary-row">'
+        + '<span class="rv-vnum" aria-label="Version ' + escapeHtml(entry.version) + '">v' + escapeHtml(entry.version) + '</span>'
+        + '<span class="rv-who"><span class="rv-who-label">' + versionLabel(entry) + '</span>'
+        + (date ? '<span class="rv-date">' + escapeHtml(date) + '</span>' : '') + '</span>'
+        + renderVersionPulse(entry)
+        + (entry.pdfUrl ? '<a class="rv-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>' : '')
+        + '<span class="rv-chevron" aria-hidden="true"></span>'
+        + '</summary>';
+      html += '<div class="rv-body">';
       if (entry.original) {
-        html += '<p class="revision-no-memo">The report as originally delivered, written by the AI, before any revisions or edits.</p>';
+        html += '<p class="rv-muted">The report as originally delivered, written by the AI, before any revisions or edits.</p>';
       } else if (entry.kind === 'edit') {
         html += renderEditDetails(entry);
       } else {
-        if (entry.comments) html += '<p class="revision-comment">' + escapeHtml(entry.comments) + '</p>';
+        const request = entry.comments ? '<div class="rv-request"><span class="wb-summary-label">Your request</span><p>' + escapeHtml(entry.comments) + '</p></div>' : '';
+        const headline = renderHeadline(entry.changes);
+        if (request || headline) html += '<div class="rv-lead">' + request + headline + '</div>';
         html += renderAnalystProse(entry.changes);
-        html += renderChangeMemo(entry.changes);
+        html += renderChangeMemo(entry.changes, { headline: false });
+        if (entry.reportQuality && entry.reportQuality.status === 'blocked') {
+          html += '<p class="wb-quality">Delivered with ' + entry.reportQuality.blockers + ' unresolved valuation finding' + (entry.reportQuality.blockers === 1 ? '' : 's') + '. The figures are computed by the engine; the argument behind them is under review.</p>';
+        }
         html += renderFit(entry.fit);
       }
       html += '</div></details>';
     });
-    html += '</div>';
+    html += '</section>';
     return html;
   }
 
@@ -450,9 +608,9 @@
   // the customer's instructions), the customer's own hand edit, or an AI
   // revision that kept hand-edited paragraphs from an earlier version.
   function versionLabel(entry) {
-    if (entry.original) return 'Version 1 · Original report';
-    if (entry.kind === 'edit') return 'Version ' + escapeHtml(entry.version) + ' · Edited by hand';
-    return 'Version ' + escapeHtml(entry.version) + ' · AI revision';
+    if (entry.original) return 'Original report';
+    if (entry.kind === 'edit') return entry.editedBy ? 'Edited by ' + escapeHtml(entry.editedBy) : 'Edited by hand';
+    return entry.authorship === 'mixed' ? 'AI revision, keeps your edits' : 'AI revision';
   }
 
   function versionBadge(entry) {
@@ -1011,6 +1169,52 @@
     }
   }
 
+  // ---- The target-price workbench ------------------------------------------
+  const workbench = { open: false, order: null, panel: null };
+
+  async function openWorkbench(order) {
+    const box = document.getElementById('valuationBox');
+    const status = document.getElementById('valuationStatus');
+    workbench.open = true;
+    status.textContent = '';
+    status.classList.remove('is-error');
+    box.style.display = '';
+    document.querySelector('.order-card').classList.add('order-card--editing');
+    document.getElementById('valuationOpenBtn').textContent = 'Close the target-price view';
+    const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
+    workbench.panel = window.ValuationWorkbench.mount(document.getElementById('valuationPanel'), {
+      preview: postValuation,
+      remainingRounds: remaining,
+      onLock: function (overrides, changes) {
+        // Phase 3 wires this to a revision that carries the locked rows; until
+        // then the page says so instead of pretending.
+        status.textContent = 'Locking ' + changes.length + ' assumption' + (changes.length === 1 ? '' : 's')
+          + ' into a new report is the next step of this feature and is not live yet. Your report is unchanged.';
+      },
+    });
+    await workbench.panel.start();
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeWorkbench() {
+    workbench.open = false;
+    document.getElementById('valuationBox').style.display = 'none';
+    document.getElementById('valuationPanel').innerHTML = '';
+    if (!editor.open) document.querySelector('.order-card').classList.remove('order-card--editing');
+    const button = document.getElementById('valuationOpenBtn');
+    button.innerHTML = button.dataset.label;
+  }
+
+  (function () {
+    const button = document.getElementById('valuationOpenBtn');
+    button.dataset.label = button.innerHTML;
+    button.addEventListener('click', function () {
+      if (workbench.open) { closeWorkbench(); return; }
+      openWorkbench(workbench.order || {});
+    });
+    document.getElementById('valuationCloseBtn').addEventListener('click', closeWorkbench);
+  })();
+
   document.getElementById('editOpenBtn').addEventListener('click', function () {
     if (editor.open) { closeEditor(); return; }
     openEditor(editor.order || {});
@@ -1060,6 +1264,18 @@
     pollAgain();
   }
 
+  // The admin's read-only view: say whose order this is, and remove every
+  // control that would submit a revision, an edit or a purchase in the
+  // customer's name. The history below is what the admin came for.
+  function renderAdminView(order) {
+    document.getElementById('deliveredTitle').textContent = 'Admin view — read only';
+    document.getElementById('deliveredSub').textContent =
+      'Ordered by ' + (order.analystName || order.email || 'an unknown customer')
+      + (order.forkedFrom ? ', forked from another analysis' : '')
+      + '. Revisions used: ' + (order.revisionsUsed || 0) + ' of ' + (order.revisionsAllowed || 0) + '.';
+    ['editOpenBtn', 'revisionBox', 'revisionExhausted', 'revisionBuy'].forEach(hide);
+  }
+
   function renderDelivered(order) {
     hideAll();
     document.getElementById('deliveredMeta').textContent =
@@ -1094,6 +1310,30 @@
     editor.order = order;
     if (editor.open) closeEditor();
     document.getElementById('editOpenBtn').style.display = order.editable ? '' : 'none';
+    // The target-price workbench: free to explore on any delivered version;
+    // locking the assumptions into a new report is a revision like any other.
+    workbench.order = order;
+    if (workbench.open) closeWorkbench();
+    // The calculator needs the engine's preview endpoint, which is on the test
+    // stage only until the engine ships to production. Hide the door on the
+    // production site rather than open it onto an error.
+    const workbenchLive = !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
+    document.getElementById('valuationOpenBtn').style.display = order.pdfUrl && workbenchLive ? '' : 'none';
+
+    // A report the engine delivered with unresolved valuation findings: the
+    // target is code-computed, the argument behind it is under review. Say so
+    // where the download button is, not only inside the workbench.
+    const quality = document.getElementById('qualityBanner');
+    if (quality) {
+      const q = order.reportQuality;
+      if (q && q.status === 'blocked') {
+        quality.textContent = 'This version was delivered with ' + q.blockers + ' unresolved valuation finding' + (q.blockers === 1 ? '' : 's')
+          + '. The target price and every figure are computed by the engine; the report\'s argument for them did not pass every check and is under review.';
+        quality.style.display = '';
+      } else {
+        quality.style.display = 'none';
+      }
+    }
 
     const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');
@@ -1139,6 +1379,8 @@
 
     document.getElementById('revisionHistory').innerHTML = renderRevisionHistory(order.revisionHistory);
 
+    if (isAdminView) renderAdminView(order);
+
     show('stateDelivered');
     stopPolling(); // nothing changes until the customer submits a revision
   }
@@ -1155,7 +1397,10 @@
     // in a browser the member has never signed in on. Without the token the
     // Stripe proxy would be asked to verify a UUID and answer 500, so say what
     // is actually missing.
-    if (MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
+    if (isAdminView && !adminPassword()) {
+      return renderError('Sign in on the admin page first, then open this link again.');
+    }
+    if (!isAdminView && MEMBER_GEN_ID.test(sessionId || '') && !memberToken()) {
       return renderError('This is your own generation. Sign in to the member area first, then open this link again.');
     }
     try {
@@ -1163,6 +1408,9 @@
       const data = await res.json();
 
       if (!res.ok) {
+        if (isAdminView && res.status === 401) {
+          return renderError('The admin password was not accepted. Sign in on the admin page again, then reload.');
+        }
         if (res.status === 401 || res.status === 403) {
           return renderError(MEMBER_GEN_ID.test(sessionId || '')
             ? 'Sign in to the member area first, then open this link again.'

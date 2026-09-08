@@ -253,6 +253,9 @@ async function getJob(jobId) {
     editedBy: data.editedBy,
     fit: data.fit,
     editWarnings: data.editWarnings,
+    // The engine's own QA verdict; a `blocked` report is still delivered
+    // when its target is code-computed and only the argument is in question.
+    reportQuality: data.reportQuality,
   };
 }
 
@@ -304,4 +307,34 @@ async function fetchChangeMemo(changesUrl) {
   return res.json();
 }
 
-module.exports = { submitJob, submitRevision, submitEdit, getJob, downloadPdf, fetchChangeMemo, fetchPreviewHtml };
+// POST /jobs/{jobId}/valuation/preview — the what-if calculator: apply
+// `overrides` (keyed by bridge row) to the report's own valuation bridge and
+// recalculate the target price. Stateless on the engine side, nothing is
+// written. `solve` asks for the lever value that puts the target at a price.
+// Resolves the engine's response body; rejects with `.status` on a refusal
+// (409 when the report predates the calculator).
+async function previewValuation({ jobId, username = USERNAME, overrides, solve } = {}) {
+  if (!jobId) throw new Error('previewValuation: jobId is required');
+  const body = JSON.stringify({ username, ...(overrides ? { overrides } : {}), ...(solve ? { solve } : {}) });
+  const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
+  let res;
+  try {
+    res = await client().fetch(`${ENGINE_URL}/jobs/${encodeURIComponent(jobId)}/valuation/preview`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body,
+      signal,
+    });
+  } finally {
+    cancel();
+  }
+  const data = await readJson(res);
+  if (!res.ok) {
+    const error = new Error(data.error || `engine previewValuation ${describeError(res, data)}`);
+    error.status = res.status;
+    throw error;
+  }
+  return data;
+}
+
+module.exports = { submitJob, submitRevision, submitEdit, getJob, downloadPdf, fetchChangeMemo, fetchPreviewHtml, previewValuation };

@@ -4,12 +4,14 @@
     {
       "name": "static-site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": [
-        "-m",
-        "http.server",
-        "3100"
-      ],
+      "runtimeArgs": ["-m", "http.server", "3100"],
       "port": 3100
+    },
+    {
+      "name": "order-page-harness",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/laurihynonen/Valuatum/pdf-report-engine/out/valuation-harness/server.mjs"],
+      "port": 3101
     }
   ]
 }

@@ -233,7 +233,30 @@ async function getOrderPreview(orderId) {
   return { html: await response.text() };
 }
 
+// The what-if calculator for a one-off buyer's order. Resolves the engine's
+// response; throws with `.status` from the backend.
+async function previewOrderValuation(orderId, body) {
+  const base = catalogBaseUrl();
+  const secret = process.env.CATALOG_SYNC_SECRET || '';
+  if (!base || !secret) {
+    throw new Error('CATALOG_API_URL / CATALOG_SYNC_SECRET are not configured — cannot compute the valuation');
+  }
+  const response = await fetch(`${base}/api/orders/${encodeURIComponent(orderId)}/valuation`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${secret}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body || {}),
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(data.error || `Valuation request failed: ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  return data;
+}
+
 module.exports = {
+  previewOrderValuation,
   getCatalogReport,
   getCatalogReports,
   recordCatalogPurchase,

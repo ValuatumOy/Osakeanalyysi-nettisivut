@@ -9,6 +9,10 @@ def order(status, used=0, allowed=2, history=None, err=None):
     if err: o['revisionError']=err
     return o
 HIST=[{'version':2,'completedAt':'2026-09-01T10:12:00Z','pdfUrl':PDF,'comments':'Please raise the 2027 EBITDA margin assumption to 14% — the new pulp mill ramp-up should be reflected.','changes':{'headline':{'targetPrice':{'before':14.2,'after':15.1,'currency':'EUR'},'rating':{'before':'HOLD','after':'BUY'}},'differences':{'summary':'The 2027 EBITDA margin was lifted from 12.5% to 14.0%, flowing through to a higher target price.','items':[{'area':'Forecasts','what':'2027E EBITDA +€180m; margin 12.5% → 14.0%.'},{'area':'Valuation','what':'Target price €14.20 → €15.10.'}],'unchanged':'Revenue growth, capex and dividend assumptions.'}}},{'original':True,'completedAt':'2026-09-01T09:40:00Z','pdfUrl':PDF}]
+# A revision the model decided not to act on: the estimates step ran, wrote
+# nothing, and the writeup explains why. The order page must say so rather
+# than print two headings around an empty chart.
+HIST_KEPT=[{'version':2,'completedAt':'2026-09-01T10:12:00Z','pdfUrl':PDF,'comments':'Please raise the 2027 EBITDA margin assumption to 14% — the new pulp mill ramp-up should be reflected.','changes':{'headline':{'targetPrice':{'before':14.2,'after':14.2,'currency':'EUR'},'rating':{'before':'HOLD','after':'HOLD'}},'differences':{'summary':'The text now discusses the Oulu ramp-up in more detail, but the forecasts and the target price are unchanged.','items':[{'area':'Investment thesis','what':'Added a paragraph on the mill ramp-up timeline and the guided margin.'}],'unchanged':'All forecasts, the target price and the rating.'},'forecastRevision':{'wrote':[],'resultFid':None,'writeup':'Management guided for about 14% at the Q2 call, but that guidance is for the mill alone, not the group. Our group margin already assumes the mill reaches full capacity in 2027; lifting it to 14% would double count the ramp-up. The forecasts are kept.'}}},{'original':True,'completedAt':'2026-09-01T09:40:00Z','pdfUrl':PDF}]
 # A version the customer wrote by hand: the paragraph before and after, and
 # what the engine noticed about it.
 EDIT_HIST=[{'version':2,'kind':'edit','authorship':'analyst','editedBy':'Maria Lindqvist','editedFrom':1,'completedAt':'2026-09-01T10:03:00Z','pdfUrl':PDF,
@@ -42,6 +46,7 @@ ORDERS={
  'revising':order('REVISING',used=0),
  'revised':order('DELIVERED',used=1,history=HIST),
  'exhausted':order('DELIVERED',used=2,history=HIST),
+ 'kept':order('DELIVERED',used=1,history=HIST_KEPT),
  'failed':{'status':'FAILED'},
  'edited':order('DELIVERED',used=0,history=EDIT_HIST),
  'revfail':order('DELIVERED',used=0,err='The revision could not be generated. Your round has not been used — please try again.'),

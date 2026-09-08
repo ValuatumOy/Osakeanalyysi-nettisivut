@@ -1001,6 +1001,7 @@ async function getGenerationOrder(event) {
     reportId: order.reportId,
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
+    reportQuality: editing.currentReportQuality(order),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Publishing freezes the PDF, so the order page must stop offering
@@ -1141,6 +1142,19 @@ async function getGenerationPreview(event) {
     },
     body: result.html,
   };
+}
+
+// POST /generations/{genId}/valuation — the what-if calculator on the
+// member's own report: `{ overrides?, solve? }` in, the recalculated target
+// out. Reads only; committing a what-if is a revision.
+async function postGenerationValuation(event) {
+  const { deny, order } = await ownedOrder(event);
+  if (deny) return deny;
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const result = await editing.previewValuation(order, body);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return json(200, result.result, { 'cache-control': 'no-store' });
 }
 
 // GET /generations — every run this member has started, newest first. Without
@@ -2811,6 +2825,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions': postGenerationRevision,
   'POST /generations/{genId}/edits': postGenerationEdits,
   'GET /generations/{genId}/preview': getGenerationPreview,
+  'POST /generations/{genId}/valuation': postGenerationValuation,
   'POST /generations/{genId}/submit': postGenerationSubmit,
   'POST /generations/{genId}/price': postGenerationPrice,
   'POST /generations/{genId}/prompts-public': postGenerationPromptsPublic,

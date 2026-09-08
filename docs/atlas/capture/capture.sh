@@ -70,6 +70,7 @@ if [ "$WHAT" = all ] || [ "$WHAT" = mock ]; then
   shot order-prog        "$M/order/index.html?session_id=prog"
   shot order-deliv       "$M/order/index.html?session_id=deliv"      1280,1100
   shot order-revised     "$M/order/index.html?session_id=revised"    1280,1500
+  shot order-kept        "$M/order/index.html?session_id=kept"       1280,2200
   shot order-exhausted   "$M/order/index.html?session_id=exhausted"  1280,1100
   shot order-failed      "$M/order/index.html?session_id=failed"
   shot order-revfail     "$M/order/index.html?session_id=revfail"    1280,1100
@@ -134,6 +135,7 @@ CROPS = {
   'institutions-form':('institutions',   1300, 2400),
   'order-revision-box': ('order-deliv',  380, 1100),
   'order-revised-top':  ('order-revised', 0,   860),
+  'order-kept-versions': ('order-kept',  1160, 2010),
 }
 made = []
 for name, (src, top, bot) in CROPS.items():

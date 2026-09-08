@@ -318,6 +318,15 @@ async function getOrder(event) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
 
+  return json(200, await orderPagePayload(order), { 'cache-control': 'no-store' });
+}
+
+// What the order page renders for one order: status, the current PDF, and
+// every revision's change memo. Shared by the customer's route above and the
+// admin's read-only view of the same order.
+const currentReportQuality = editing.currentReportQuality;
+
+async function orderPagePayload(order) {
   const payload = {
     status: order.status,
     origin: order.origin,
@@ -326,6 +335,7 @@ async function getOrder(event) {
     reportId: order.reportId,
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
+    reportQuality: currentReportQuality(order),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Text editing: whether the current version can be edited by hand, which
@@ -378,7 +388,29 @@ async function getOrder(event) {
     });
   }
 
-  return json(200, payload, { 'cache-control': 'no-store' });
+  return payload;
+}
+
+// GET /api/admin/orders/{id} — the order page's state for any order, behind
+// the admin password. The revision history with its forecast writeups and
+// change memos was only ever readable by the customer who asked for the
+// revisions: a paying buyer through their Stripe session id, a member
+// through their own token. The admin page links each catalog chain here so
+// the admin can read the same page, marked read-only — the page hides every
+// control that would act on the customer's behalf.
+async function getAdminOrder(event) {
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+
+  const payload = await orderPagePayload(order);
+  return json(200, {
+    ...payload,
+    readOnly: true,
+    email: order.email || null,
+    analystName: order.analystName || null,
+    forkedFrom: order.forkedFrom || null,
+  }, { 'cache-control': 'no-store' });
 }
 
 // POST /api/orders/{id}/revisions — the order page's one mutating call.
@@ -476,6 +508,23 @@ async function postOrderEdits(event) {
   return json(200, { ok: true, status: claimed.status, version: editing.currentVersion(existing) + 1 });
 }
 
+// POST /api/orders/{id}/valuation — the what-if calculator on the order's
+// current version; body `{ overrides?, solve? }` passes through to the engine.
+async function postOrderValuation(event) {
+  if (!secretsMatch(bearerToken(event), process.env.CATALOG_SYNC_SECRET)) {
+    return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
+      { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
+  }
+  const id = event.pathParameters?.id || '';
+  const order = await ordersStore.get(id);
+  if (!order) return json(404, { error: 'Order not found' });
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const result = await editing.previewValuation(order, body);
+  if (result.status !== 200) return json(result.status, { error: result.error });
+  return json(200, result.result, { 'cache-control': 'no-store' });
+}
+
 // GET /api/orders/{id}/preview — the engine's rendered HTML of the current
 // version, which the order page's text editor shows in a sandboxed frame.
 async function getOrderPreview(event) {
@@ -531,14 +580,28 @@ async function getAdminReports() {
   // customer's comments, or the customer's own hand edit. The history entry
   // knows; for a file with no order the sidecar tag or the file name says.
   const kindOf = new Map();
+  // Which version of its report each file is: 1 for the original delivery,
+  // the history entry's number for a revised copy. The order is the only
+  // place this is known — counting revision files in the catalog would be
+  // wrong once one is deleted, and a fork never has a version 1 of its own:
+  // it starts revising the parent generation's report, so its history
+  // begins at 2.
+  const versionOf = new Map();
   try {
     for (const order of await ordersStore.list()) {
       orderOf.set(order.id, order);
-      const original = order.originalPdfFileName || order.pdfFileName;
+      // Orders delivered before originalPdfFileName was stamped only have
+      // pdfFileName; if that has since moved on to a revised copy, the
+      // history loop below corrects the file's entries. A fork's pdfFileName
+      // is never an original, so it gets no such fallback.
+      const original = order.originalPdfFileName || (order.forkedFrom ? null : order.pdfFileName);
+      if (original) versionOf.set(original, 1);
       if (original && order.deliveredEmailAt) generatedAtOf.set(original, order.deliveredEmailAt);
       for (const entry of order.revisionHistory || []) {
-        if (entry.pdfFileName && entry.completedAt) generatedAtOf.set(entry.pdfFileName, entry.completedAt);
-        if (entry.pdfFileName && entry.kind) kindOf.set(entry.pdfFileName, entry.kind);
+        if (!entry.pdfFileName) continue;
+        if (entry.completedAt) generatedAtOf.set(entry.pdfFileName, entry.completedAt);
+        if (entry.kind) kindOf.set(entry.pdfFileName, entry.kind);
+        if (entry.version) versionOf.set(entry.pdfFileName, entry.version);
       }
     }
   } catch (err) {
@@ -572,6 +635,13 @@ async function getAdminReports() {
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
         generatedBy: order ? (order.analystName || order.email || null) : null,
         generatedAt: generatedAtOf.get(report.fileName) || null,
+        // 1 for an original, the history number for a revised copy, null when
+        // no order knows the file (a hand upload).
+        version: versionOf.get(report.fileName) || null,
+        // The generation this order forked from, when it started from another
+        // member's published analysis instead of a fresh engine run. Such an
+        // order has no original of its own in the catalog.
+        forkedFrom: order?.forkedFrom || null,
         // 'revision' | 'edit' for a revised copy, null for an original.
         kind: !report.isRevision ? null
           : kindOf.get(report.fileName)
@@ -691,10 +761,12 @@ const PUBLIC_ROUTES = {
   'POST /api/orders/{id}/revisions': postOrderRevision,
   'POST /api/orders/{id}/edits': postOrderEdits,
   'GET /api/orders/{id}/preview': getOrderPreview,
+  'POST /api/orders/{id}/valuation': postOrderValuation,
 };
 
 const ADMIN_ROUTES = {
   'GET /api/admin/reports': getAdminReports,
+  'GET /api/admin/orders/{id}': getAdminOrder,
   'POST /api/admin/upload-url': postAdminUploadUrl,
   'POST /api/admin/publish': postAdminPublish,
   'POST /api/admin/update': postAdminUpdate,
