@@ -50,7 +50,7 @@
 
     function valueOf(row, lever) {
       if (lever === 'sharePct') return row.scale ? row.scale.sharePct : 0;
-      if (lever === 'marginPct') return row.scale ? row.scale.marginPct : 0;
+      if (lever === 'marginPct') return row.scale ? row.scale.marginPct : row.modelledMargin ? row.modelledMargin.impliedMarginPct : 0;
       return row[lever] || 0;
     }
 
@@ -67,8 +67,18 @@
       }
       if (row.editable.indexOf('metricValue') >= 0) {
         const m = row.modelledMargin;
+        if (m && row.editable.indexOf('marginPct') >= 0) {
+          // Same shape as a scenario leg: the report's own revenue build for
+          // this year, with the margin as the lever. Either field moves the metric.
+          const differs = Math.abs(m.marginPct - m.impliedMarginPct) > 0.15;
+          return label
+            + '<span class="wb-build">' + fieldHtml(row, 'metricValue', row.metricValue)
+            + '<span class="wb-op">=</span><span class="wb-build-market" title="' + esc('Revenue the report models for this business in ' + m.year) + '">' + fmtInt(m.revenue) + '</span>'
+            + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', m.impliedMarginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="' + esc('Margin on the report\'s own ' + m.year + ' revenue build. The report models ' + fmtPct(m.marginPct) + '% ' + m.metric + '; the bridge implies ' + fmtPct(m.impliedMarginPct) + '%.') + '">margin</span>') + '</span>'
+            + (differs ? '<span class="wb-hint is-left">report models ' + fmtPct(m.marginPct) + '% ' + esc(m.metric) + ' margin; this bridge implies ' + fmtPct(m.impliedMarginPct) + '%</span>' : '');
+        }
         return label + fieldHtml(row, 'metricValue', row.metricValue)
-          + (m ? '<span class="wb-hint is-left" title="The margin this report models for the division in its valuation year, from its own revenue and cost build.">modelled ' + esc(m.metric) + ' margin ' + esc(String(m.year)) + ': ' + fmtPct(m.marginPct) + '%</span>' : '');
+          + (m ? '<span class="wb-hint is-left" title="The margin this report models for the division, from its own revenue and cost build; a different year than the bridge values, so not a lever here.">modelled ' + esc(m.metric) + ' margin ' + esc(String(m.year)) + ': ' + fmtPct(m.marginPct) + '%</span>' : '');
       }
       if (row.kind === 'option-expectation' || row.kind === 'sotp-total') return '<span class="wb-cell-label">' + esc(row.metricUsed) + '</span>';
       return label + '<span class="wb-static">' + fmtInt(row.metricValue) + '</span>';
@@ -320,6 +330,11 @@
       const o = state.overrides[key] || (state.overrides[key] = {});
       if (base && Math.abs(valueOf(base, lever) - value) < 1e-9) { delete o[lever]; if (!Object.keys(o).length) delete state.overrides[key]; }
       else o[lever] = value;
+      // A profit engine's metric and its margin describe the same number; the one just typed wins.
+      if (base && base.kind === 'engine' && (lever === 'metricValue' || lever === 'marginPct')) {
+        delete o[lever === 'metricValue' ? 'marginPct' : 'metricValue'];
+        if (!Object.keys(o).length) delete state.overrides[key];
+      }
       window.clearTimeout(state.timer);
       state.timer = window.setTimeout(refresh, delay);
     }
