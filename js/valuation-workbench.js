@@ -337,9 +337,12 @@
     }
 
     function schedule(input, delay) {
-      const value = num(input.value);
+      let value = num(input.value);
       if (value == null) return;
       const key = input.dataset.row, lever = input.dataset.lever;
+      // A scenario probability is stated in whole percents in the report and
+      // its gates; a fractional one would come back as a finding when locked.
+      if (lever === 'probabilityPct') { value = Math.round(value); input.value = String(value); }
       const base = byKey(state.baseline.rows)[key];
       const o = state.overrides[key] || (state.overrides[key] = {});
       if (base && Math.abs(valueOf(base, lever) - value) < 1e-9) { delete o[lever]; if (!Object.keys(o).length) delete state.overrides[key]; }
@@ -399,7 +402,8 @@
           const apply = out.querySelector('#wbSolveApply');
           if (apply) apply.addEventListener('click', () => {
             state.overrides[row] = Object.assign(state.overrides[row] || {}, {});
-            state.overrides[row][lever] = s.value; // the solver's exact value; the field rounds for display only
+            // The solver's exact value, except a probability, which the report states in whole percents.
+            state.overrides[row][lever] = lever === 'probabilityPct' ? Math.round(s.value) : s.value;
             refresh();
           });
         } else {
