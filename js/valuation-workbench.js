@@ -54,7 +54,7 @@
       return row[lever] || 0;
     }
 
-    function metricCell(row) {
+    function metricCell(row, hinted) {
       const year = row.forecastYear ? row.forecastYear + 'E ' : '';
       const label = '<span class="wb-cell-label">' + esc(year + (row.metricUsed || '').replace(/^\d{4}E?\s*/i, '')) + '</span>';
       if (row.editable.indexOf('sharePct') >= 0 && row.scale) {
@@ -62,11 +62,28 @@
           + '<span class="wb-build">' + fieldHtml(row, 'sharePct', row.scale.sharePct, '<span class="wb-unit">%</span>')
           + '<span class="wb-op">of</span><span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>'
           + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>') + '</span>'
-          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + '</span>';
+          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + '</span>'
+          + (hinted ? '' : marginContextHint());
       }
-      if (row.editable.indexOf('metricValue') >= 0) return label + fieldHtml(row, 'metricValue', row.metricValue);
+      if (row.editable.indexOf('metricValue') >= 0) {
+        const m = row.modelledMargin;
+        return label + fieldHtml(row, 'metricValue', row.metricValue)
+          + (m ? '<span class="wb-hint is-left" title="The margin this report models for the division in its valuation year, from its own revenue and cost build.">modelled ' + esc(m.metric) + ' margin ' + esc(String(m.year)) + ': ' + fmtPct(m.marginPct) + '%</span>' : '');
+      }
       if (row.kind === 'option-expectation' || row.kind === 'sotp-total') return '<span class="wb-cell-label">' + esc(row.metricUsed) + '</span>';
       return label + '<span class="wb-static">' + fmtInt(row.metricValue) + '</span>';
+    }
+
+    // A scenario leg's margin is asserted, not modelled: the only honest
+    // context is what the report models elsewhere, shown as a list, never as
+    // a number that could read as this division's own.
+    function marginContextHint() {
+      const list = (state.current && state.current.modelledMargins) || [];
+      if (!list.length) return '';
+      const values = list.map((m) => m.marginPct).sort((a, b) => a - b);
+      const metric = list.every((m) => m.metric === list[0].metric) ? list[0].metric : 'profit';
+      const detail = list.map((m) => m.division + ' ' + fmtPct(m.marginPct) + '% (' + m.metric + ' ' + m.year + ')').join(' · ');
+      return '<span class="wb-hint is-left" title="' + esc(detail) + '">this scenario\'s margin is an assumption; the report models ' + fmtPct(values[0]) + '–' + fmtPct(values[values.length - 1]) + '% ' + esc(metric) + ' in its established businesses</span>';
     }
 
     function multipleCell(row) {
@@ -109,6 +126,7 @@
         + '<th scope="col" class="num">÷ Discount</th><th scope="col" class="num">× Probability / weight</th><th scope="col" class="num">= ' + esc(result.currency) + ' / share</th>'
         + '</tr></thead><tbody>';
       let lastDivision = null;
+      const hintedDivisions = {};
       result.rows.forEach((row) => {
         if (row.kind === 'anchor') return;
         const cls = ['wb-row', 'wb-row--' + row.kind];
@@ -118,9 +136,10 @@
         lastDivision = division;
         const rowIssues = issuesByRow[row.key] || [];
         const contribution = Number.isFinite(row.contributionPerShare) ? fmt1(row.contributionPerShare) : '<span class="wb-muted">—</span>';
+        if (row.kind === 'option-leg') hintedDivisions[row.division] = true;
         html += '<tr class="' + cls.join(' ') + (rowIssues.length ? ' has-issue' : '') + '" data-row="' + esc(row.key) + '">'
           + '<th scope="row">' + rowLabel(row) + '</th>'
-          + '<td>' + metricCell(row) + '</td>'
+          + '<td>' + metricCell(row, row.kind === 'option-leg' && hintedDivisions[row.division]) + '</td>'
           + '<td class="num">' + multipleCell(row) + '</td>'
           + '<td class="num">' + discountCell(row) + '</td>'
           + '<td class="num">' + weightCell(row) + '</td>'
