@@ -443,6 +443,8 @@
       }
     }
 
+    function goalOf() { return state.current.currentPrice; }
+
     async function runSolve() {
       const out = container.querySelector('#wbSolveResult');
       const [row, lever] = state.solveRow.split('::');
@@ -453,7 +455,7 @@
         const rowInfo = row ? byKey(state.current.rows)[row] : null;
         const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every profit forecast';
         const unit = lever === 'metricValue' || lever === 'marketValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
-        const shown = (v) => (lever === 'metricValue' || lever === 'marketValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : fmt1(v)) + unit;
+        const shown = (v) => (lever === 'metricValue' || lever === 'marketValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : Math.abs(v) < 1 ? (Math.round(v * 100) / 100).toString() : fmt1(v)) + unit;
         if (!s || !Number.isFinite(s.value) || s.targetAtValue == null) {
           out.innerHTML = '<span class="wb-issue">The calculator cannot vary this input on its own.</span>';
           return;
@@ -471,9 +473,16 @@
             refresh();
           });
         } else {
-          out.innerHTML = '<span class="wb-unreachable">Not reachable with this input alone.</span> Even at <strong>' + esc(shown(s.value)) + '</strong>'
-            + (lever === 'probabilityPct' ? ' (the other scenarios of this business take the rest)' : '')
-            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. This is the one-input answer; the green button above scales every forecast together and always reaches the price.';
+          const lo = s.targetAtLower, hi = s.targetAtUpper;
+          const rangeText = lo != null && hi != null
+            ? 'On its own this input can only move the target between <strong>' + fmt1(Math.min(lo, hi)) + '</strong> and <strong>' + fmt1(Math.max(lo, hi)) + ' ' + esc(data.currency) + '</strong>'
+              + ' (' + esc(LEVER_LABEL[lever]) + ' from ' + esc(shown(s.lower)) + ' to ' + esc(shown(s.upper)) + (lever === 'probabilityPct' ? ', the other scenarios of this business take the rest' : '') + ')'
+            : 'Even at <strong>' + esc(shown(s.value)) + '</strong> the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency);
+          const now = state.current.targetPrice;
+          const direction = now != null ? (goalOf() < now ? 'down' : 'up') : '';
+          out.innerHTML = '<span class="wb-unreachable">' + fmt1(goalOf()) + ' ' + esc(data.currency) + ' is outside what this input can do.</span> ' + rangeText
+            + (now != null ? '; the target is ' + fmt1(now) + ' now' + (direction ? ' and would have to go ' + direction : '') : '') + '. '
+            + 'Pick another input, or use the green button above: it scales every forecast together and always reaches the price.';
         }
       } catch (err) {
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
