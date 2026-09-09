@@ -245,6 +245,11 @@
         + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Solve: scale every forecast to the current price</button>'
         + '<span class="wb-solve-or">No input needed. The engine finds the factor and fills the bridge in.</span>'
         + '</div>'
+        + '<details class="wb-solve-one"' + (state.solveAimOpen ? ' open' : '') + ' data-aim><summary>Or aim at a target price of your own</summary><div class="wb-solve-row">'
+        + '<label class="wb-solve-or" for="wbAimPrice">Target price (' + esc(result.currency) + ')</label>'
+        + '<input type="text" inputmode="decimal" id="wbAimPrice" class="wb-select wb-aim-input" value="' + esc(state.aimPrice || fmt1(result.currentPrice)) + '" aria-label="Target price to aim at">'
+        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbAimBtn">Scale every forecast to it</button>'
+        + '</div></details>'
         + '<details class="wb-solve-one"' + (state.solveOneOpen ? ' open' : '') + '><summary>Or move one input only</summary><div class="wb-solve-row">'
         + '<select id="wbSolveLever" class="wb-select" aria-label="Input to solve for">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
         + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve this input</button>'
@@ -256,14 +261,16 @@
     // price require", applied as the same overrides a user could have typed
     // (the metric on an established business, the market on a scenario), so
     // the bridge below shows every "was".
-    async function runSolveAll() {
+    async function runSolveAll(aim) {
       const out = container.querySelector('#wbSolveResult');
+      const goal = aim != null ? aim : state.current.currentPrice;
+      if (!(goal > 0)) { out.innerHTML = '<span class="wb-issue">Give a target price above zero.</span>'; return; }
       out.innerHTML = '<span class="wb-muted">Solving…</span>';
       try {
-        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: state.current.currentPrice } });
+        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: goal } });
         const s = data.solve;
         if (!s || !s.reached) {
-          out.innerHTML = '<span class="wb-unreachable">Even scaling every forecast ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach the price.</span>';
+          out.innerHTML = '<span class="wb-unreachable">Even scaling every forecast ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach ' + fmt1(goal) + '.</span>';
           return;
         }
         const k = s.value;
@@ -377,7 +384,16 @@
       const solveBtn = container.querySelector('#wbSolveBtn');
       if (solveBtn) solveBtn.addEventListener('click', runSolve);
       const solveAllBtn = container.querySelector('#wbSolveAllBtn');
-      if (solveAllBtn) solveAllBtn.addEventListener('click', runSolveAll);
+      if (solveAllBtn) solveAllBtn.addEventListener('click', () => runSolveAll());
+      const aimBtn = container.querySelector('#wbAimBtn');
+      const aimInput = container.querySelector('#wbAimPrice');
+      if (aimBtn && aimInput) {
+        const go = () => { state.aimPrice = aimInput.value; runSolveAll(num(aimInput.value)); };
+        aimBtn.addEventListener('click', go);
+        aimInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); go(); } });
+      }
+      const aim = container.querySelector('.wb-solve-one[data-aim]');
+      if (aim) aim.addEventListener('toggle', () => { state.solveAimOpen = aim.open; });
       const sel = container.querySelector('#wbSolveLever');
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
       const one = container.querySelector('.wb-solve-one');
