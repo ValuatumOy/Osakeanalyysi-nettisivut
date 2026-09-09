@@ -621,17 +621,21 @@ async function advance(order) {
       if (!order.jobId) return failRevision(order, 'order is REVISING but has no base jobId to revise');
 
       const comments = order.pendingRevisionComment;
+      // A locked what-if rides as a narrative revision: the model is not
+      // changed, the report is rewritten on the customer's rows.
+      const valuationOverrides = order.pendingValuationOverrides || null;
       const { jobId: revisionJobId } = await engine.submitRevision({
         parentJobId: order.jobId,
         comments,
+        ...(valuationOverrides ? { scope: 'narrative', valuationOverrides } : {}),
         // Only a member generation carries a name: a revised report says who
         // steered it, an unrevised or shop report stays engine-only.
         analystName: order.analystName || undefined,
       });
       await orders.update(order.id, {
-        revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0, error: null,
+        revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, activeRevisionComment: comments, polls: 0, error: null,
       });
-      order = { ...order, revisionJobId, pendingRevisionComment: null, activeRevisionComment: comments, polls: 0 };
+      order = { ...order, revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, activeRevisionComment: comments, polls: 0 };
       // Fall through: with a poll window configured, start polling immediately.
       if (POLL_WINDOW_MS <= 0) return;
     }

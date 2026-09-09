@@ -1054,8 +1054,10 @@ async function postGenerationRevision(event) {
   if (REVISION_CONTROL_CHARS.test(comments)) {
     return json(400, { error: 'comments contains invalid control characters' });
   }
+  const valuationOverrides = editing.parseValuationOverrides(body.valuationOverrides);
+  if (valuationOverrides instanceof Error) return json(400, { error: valuationOverrides.message });
 
-  const claimed = await ordersStore.claimRevision(genId, comments);
+  const claimed = await ordersStore.claimRevision(genId, comments, valuationOverrides);
   if (!claimed) {
     return json(409, {
       error: order.revisionsUsed >= order.revisionsAllowed

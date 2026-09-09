@@ -181,6 +181,17 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   assert.equal(entry.pdfFileName, order.pdfFileName);
   assert.equal(entry.changes.headline.targetPrice.after, 14.1);
   assert.equal(order.activeRevisionComment, null);
+
+  // A locked what-if travels as a narrative revision with the override map,
+  // and is cleared from the row once submitted.
+  orders.claimRevision('cs_rev_ok', 'Write the report on my assumptions', { 'robotaxi|bull': { probabilityPct: 40 } }, statePath);
+  await reconciler.advance(orders.get('cs_rev_ok', statePath));
+  order = orders.get('cs_rev_ok', statePath);
+  assert.equal(engine.calls.submitRevision.length, 2);
+  assert.equal(engine.calls.submitRevision[1].scope, 'narrative');
+  assert.deepEqual(engine.calls.submitRevision[1].valuationOverrides, { 'robotaxi|bull': { probabilityPct: 40 } });
+  assert.equal(order.pendingValuationOverrides, null);
+  assert.equal(engine.calls.submitRevision[0].scope, undefined);
 });
 
 test('a change memo fetch failure does not block delivery — the entry just has changes: null', async (t) => {

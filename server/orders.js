@@ -149,7 +149,8 @@ function create(input, statePath = STATE_PATH) {
 // check-then-write, so a double-click or a second open tab loses the race
 // instead of starting two revision jobs. Returns null (not an error) when the
 // claim fails — the caller turns that into a 409.
-function claimRevision(id, comment, statePath = STATE_PATH) {
+function claimRevision(id, comment, valuationOverrides = null, statePath = STATE_PATH) {
+  if (typeof valuationOverrides === 'string') { statePath = valuationOverrides; valuationOverrides = null; } // old (id, comment, statePath) callers
   const orders = readAll(statePath);
   const idx = orders.findIndex(order => order.id === id);
   if (idx === -1) return null;
@@ -162,6 +163,7 @@ function claimRevision(id, comment, statePath = STATE_PATH) {
     ...current,
     status: STATUS.REVISING,
     pendingRevisionComment: comment,
+    pendingValuationOverrides: valuationOverrides,
     revisionError: null,
     revisionAttempts: 0,
     polls: 0,

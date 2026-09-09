@@ -92,18 +92,21 @@
     button.textContent = label;
   }
 
-  function postRevision(comments) {
+  // `valuationOverrides` (optional) is the what-if the customer locked in the
+  // target-price view; the engine writes the report on those rows.
+  function postRevision(comments, valuationOverrides) {
+    const extra = valuationOverrides ? { valuationOverrides: valuationOverrides } : {};
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId, comments: comments }),
+        body: JSON.stringify(Object.assign({ session_id: sessionId, comments: comments }, extra)),
       });
     }
     return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/revisions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
-      body: JSON.stringify({ comments: comments }),
+      body: JSON.stringify(Object.assign({ comments: comments }, extra)),
     });
   }
 
@@ -546,7 +549,25 @@
     }
     if (d.unchanged) html += '<div class="rv-item rv-item--unchanged"><dt>Unchanged</dt><dd>' + renderMarkdown(d.unchanged) + '</dd></div>';
     html += '</section>';
+    if (memo.requesterAssumptions) html += renderRequesterAssumptions(memo.requesterAssumptions, memo.headline);
     if (memo.forecastRevision) html += renderForecastSection(memo.forecastRevision);
+    return html;
+  }
+
+  // The rows the customer locked in the target-price view, and whether the
+  // delivered target is the one the lock computed.
+  function renderRequesterAssumptions(ra, headline) {
+    const f = (v) => v == null ? '—' : Number(v).toLocaleString('en-US', { maximumFractionDigits: 2 });
+    const unit = (lever, v) => /Pct$/.test(lever) ? f(v) + '%' : lever === 'selectedMultiple' ? f(v) + 'x' : f(v);
+    const label = { probabilityPct: 'probability', weightPct: 'weight', marketValue: 'market size', sharePct: 'market share', marginPct: 'margin', metricValue: 'metric', selectedMultiple: 'multiple' };
+    const delivered = headline && headline.targetPrice ? headline.targetPrice.after : null;
+    const matched = delivered != null && Math.abs(delivered - ra.targetPrice) < 0.06;
+    let html = '<section class="rv-block"><h3 class="rv-block-title">Assumptions you locked</h3>'
+      + '<p class="rv-lead">Set in the target-price view and carried into this report by the engine. The locked bridge computed '
+      + '<strong>' + escapeHtml(f(ra.targetPrice)) + ' ' + escapeHtml(ra.currency || '') + '</strong>' + (ra.rating ? ' ' + ratingChip(ra.rating) : '')
+      + (delivered == null ? '' : matched ? ', which is the delivered target.' : '; the delivered report shows ' + escapeHtml(f(delivered)) + '.') + '</p>';
+    html += '<dl class="rv-items">' + ra.changes.map((c) => '<div class="rv-item"><dt>' + escapeHtml(c.method.replace(/^\s*(OPTION|SOTP)\s*:\s*/i, '')) + '</dt><dd>'
+      + escapeHtml(label[c.lever] || c.lever) + ' ' + escapeHtml(unit(c.lever, c.before)) + ' → <strong>' + escapeHtml(unit(c.lever, c.after)) + '</strong></dd></div>').join('') + '</dl></section>';
     return html;
   }
 
@@ -1185,15 +1206,36 @@
     workbench.panel = window.ValuationWorkbench.mount(document.getElementById('valuationPanel'), {
       preview: postValuation,
       remainingRounds: remaining,
-      onLock: function (overrides, changes) {
-        // Phase 3 wires this to a revision that carries the locked rows; until
-        // then the page says so instead of pretending.
-        status.textContent = 'Locking ' + changes.length + ' assumption' + (changes.length === 1 ? '' : 's')
-          + ' into a new report is the next step of this feature and is not live yet. Your report is unchanged.';
-      },
+      onLock: function (overrides, changes) { lockAssumptions(overrides, changes); },
     });
     await workbench.panel.start();
     box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // The lock: one narrative revision carrying the customer's rows. The comment
+  // is written here so the version history reads like any other revision.
+  async function lockAssumptions(overrides, changes) {
+    const status = document.getElementById('valuationStatus');
+    const lines = changes.map(function (c) { return c.label + ': ' + c.what + ' ' + c.before + ' → ' + c.after; });
+    const ok = window.confirm('Generate a new report on these assumptions? This uses one revision round.\n\n' + lines.join('\n'));
+    if (!ok) return;
+    status.textContent = 'Submitting…';
+    status.classList.remove('is-error');
+    const comments = 'Write the report on the assumptions I set in the target-price view:\n' + lines.map(function (l) { return '- ' + l; }).join('\n');
+    try {
+      const res = await postRevision(comments, overrides);
+      const data = await res.json().catch(function () { return {}; });
+      if (!res.ok) {
+        status.textContent = data.error || 'Could not start the report. Please try again.';
+        status.classList.add('is-error');
+        return;
+      }
+      closeWorkbench();
+      load(); // switches to the REVISING progress state and starts polling
+    } catch (err) {
+      status.textContent = 'Network error. Please try again.';
+      status.classList.add('is-error');
+    }
   }
 
   function closeWorkbench() {

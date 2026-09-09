@@ -437,8 +437,10 @@ async function postOrderRevision(event) {
   if (FORBIDDEN_CONTROL_CHARS.test(comments)) {
     return json(400, { error: 'comments contains invalid control characters' });
   }
+  const valuationOverrides = editing.parseValuationOverrides(body.valuationOverrides);
+  if (valuationOverrides instanceof Error) return json(400, { error: valuationOverrides.message });
 
-  const claimed = await ordersStore.claimRevision(id, comments);
+  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides);
   if (!claimed) {
     const existing = await ordersStore.get(id);
     if (!existing) return json(404, { error: 'Order not found' });
