@@ -242,11 +242,14 @@
       return '<div class="wb-solve">'
         + '<div class="wb-solve-label">What would the current price of ' + fmt1(result.currentPrice) + ' ' + esc(result.currency) + ' require?</div>'
         + '<div class="wb-solve-row">'
-        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Scale every forecast to the current price</button>'
-        + '<span class="wb-solve-or">or move one input only:</span>'
+        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Solve: scale every forecast to the current price</button>'
+        + '<span class="wb-solve-or">No input needed. The engine finds the factor and fills the bridge in.</span>'
+        + '</div>'
+        + '<details class="wb-solve-one"' + (state.solveOneOpen ? ' open' : '') + '><summary>Or move one input only</summary><div class="wb-solve-row">'
         + '<select id="wbSolveLever" class="wb-select" aria-label="Input to solve for">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
-        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve</button>'
-        + '</div><p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
+        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve this input</button>'
+        + '</div></details>'
+        + '<p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
     }
 
     // Every profit forecast × k: the engine's own answer to "what does the
@@ -377,6 +380,8 @@
       if (solveAllBtn) solveAllBtn.addEventListener('click', runSolveAll);
       const sel = container.querySelector('#wbSolveLever');
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
+      const one = container.querySelector('.wb-solve-one');
+      if (one) one.addEventListener('toggle', () => { state.solveOneOpen = one.open; });
     }
 
     function schedule(input, delay) {
@@ -452,7 +457,7 @@
         } else {
           out.innerHTML = '<span class="wb-unreachable">Not reachable with this input alone.</span> Even at <strong>' + esc(shown(s.value)) + '</strong>'
             + (lever === 'probabilityPct' ? ' (the other scenarios of this business take the rest)' : '')
-            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. Try another input, or use the button on the left to scale every forecast together.';
+            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. This is the one-input answer; the green button above scales every forecast together and always reaches the price.';
         }
       } catch (err) {
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
