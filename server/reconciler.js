@@ -447,6 +447,7 @@ async function deliverRevision(order, job) {
       ? { editsUsed: (order.editsUsed || 0) + 1 }
       : { revisionsUsed: (order.revisionsUsed || 0) + 1 }),
     pendingRevisionComment: null,
+    pendingValuationOverrides: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -467,6 +468,7 @@ async function failRevision(order, reason) {
     status: orders.STATUS.DELIVERED,
     revisionJobId: null,
     pendingRevisionComment: null,
+    pendingValuationOverrides: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -628,6 +630,8 @@ async function advance(order) {
         parentJobId: order.jobId,
         comments,
         ...(valuationOverrides ? { scope: 'narrative', valuationOverrides } : {}),
+        // A hand-attached job is owned by whoever submitted it, not the shop.
+        ...(order.engineUsername ? { username: order.engineUsername } : {}),
         // Only a member generation carries a name: a revised report says who
         // steered it, an unrevised or shop report stays engine-only.
         analystName: order.analystName || undefined,
