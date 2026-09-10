@@ -31,7 +31,7 @@
   const num = (v) => { const n = Number(String(v).replace(/,/g, '')); return Number.isFinite(n) ? n : null; };
 
   function mount(container, opts) {
-    const state = { baseline: null, current: null, overrides: {}, timer: null, inflight: 0, solveRow: '' };
+    const state = { baseline: null, current: null, overrides: {}, timer: null, inflight: 0, solveRow: '', picks: {} };
     const byKey = (rows) => { const m = {}; (rows || []).forEach((r) => { m[r.key] = r; }); return m; };
 
     // ---- rendering -------------------------------------------------------
@@ -133,7 +133,7 @@
         return '<span class="wb-division">' + esc(titleCase(row.division)) + '</span><span class="wb-division-note">probability-weighted</span>' + residual;
       }
       if (row.kind === 'engine') return '<span class="wb-division">' + esc(titleCase(row.division || row.label)) + '</span>';
-      if (row.kind === 'sotp-total') return '<span class="wb-division">Sum of the parts</span>';
+      if (row.kind === 'sotp-total') return '<span class="wb-division">Sum of the parts</span><span class="wb-division-note">= the target price per share</span>';
       return '<span class="wb-division">' + esc(row.label) + '</span>';
     }
 
@@ -236,20 +236,33 @@
       return options;
     }
 
+    // The businesses a scale may touch: an established business is its own
+    // row, a scenario-valued one is all of its legs.
+    function businesses(result) {
+      const list = [];
+      result.rows.forEach((row) => {
+        if (row.kind === 'engine' || row.kind === 'method') list.push({ name: titleCase(row.division || row.label), keys: [row.key] });
+        else if (row.kind === 'option-expectation') list.push({ name: titleCase(row.division), keys: result.rows.filter((r) => r.kind === 'option-leg' && r.division === row.division).map((r) => r.key) });
+      });
+      return list;
+    }
+    function pickedBusinesses() { return businesses(state.current).filter((b) => state.picks[b.name] !== false); }
+
     function solveHtml(result) {
       const options = solveOptions(result).filter((o) => o.value !== '::allMetricsScale');
       if (!state.solveRow) state.solveRow = options[0] ? options[0].value : '';
       return '<div class="wb-solve">'
-        + '<div class="wb-solve-label">What would the current price of ' + fmt1(result.currentPrice) + ' ' + esc(result.currency) + ' require?</div>'
+        + '<div class="wb-solve-label">Aim at a target price</div>'
         + '<div class="wb-solve-row">'
-        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Solve: scale every forecast to the current price</button>'
-        + '<span class="wb-solve-or">No input needed. The engine finds the factor and fills the bridge in.</span>'
-        + '</div>'
-        + '<details class="wb-solve-one"' + (state.solveAimOpen ? ' open' : '') + ' data-aim><summary>Or aim at a target price of your own</summary><div class="wb-solve-row">'
         + '<label class="wb-solve-or" for="wbAimPrice">Target price (' + esc(result.currency) + ')</label>'
         + '<input type="text" inputmode="decimal" id="wbAimPrice" class="wb-select wb-aim-input" value="' + esc(state.aimPrice || fmt1(result.currentPrice)) + '" aria-label="Target price to aim at">'
-        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbAimBtn">Scale every forecast to it</button>'
-        + '</div></details>'
+        + '<span class="wb-solve-or">the current price is ' + fmt1(result.currentPrice) + '</span>'
+        + '</div>'
+        + '<div class="wb-solve-picks"><span class="wb-solve-or">Reach it through:</span>' + businesses(result).map((b) => '<label class="wb-pick"><input type="checkbox" data-pick="' + esc(b.name) + '"' + (state.picks[b.name] === false ? '' : ' checked') + '> ' + esc(b.name) + '</label>').join('') + '</div>'
+        + '<div class="wb-solve-row">'
+        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Solve: scale the checked businesses to it</button>'
+        + '<span class="wb-solve-or">The engine finds the factor and fills the bridge in; unchecked businesses keep the report\'s figures.</span>'
+        + '</div>'
         + '<details class="wb-solve-one"' + (state.solveOneOpen ? ' open' : '') + '><summary>Or move one input only</summary><p class="wb-solve-or wb-solve-goal" id="wbSolveGoal"></p><div class="wb-solve-row">'
         + '<select id="wbSolveLever" class="wb-select" aria-label="Input to solve for">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
         + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve this input</button>'
@@ -261,20 +274,25 @@
     // price require", applied as the same overrides a user could have typed
     // (the metric on an established business, the market on a scenario), so
     // the bridge below shows every "was".
-    async function runSolveAll(aim) {
+    async function runSolveAll() {
       const out = container.querySelector('#wbSolveResult');
-      const goal = aim != null ? aim : state.current.currentPrice;
-      if (!(goal > 0)) { out.innerHTML = '<span class="wb-issue">Give a target price above zero.</span>'; return; }
+      const goal = goalOf();
+      const picked = pickedBusinesses();
+      const all = picked.length === businesses(state.current).length;
+      const names = all ? 'every business' : picked.map((b) => b.name).join(', ');
+      if (!picked.length) { out.innerHTML = '<span class="wb-issue">Check at least one business.</span>'; return; }
       out.innerHTML = '<span class="wb-muted">Solving…</span>';
       try {
-        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: goal } });
+        const keys = [].concat.apply([], picked.map((b) => b.keys));
+        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: goal, rows: keys } });
         const s = data.solve;
         if (!s || !s.reached) {
-          out.innerHTML = '<span class="wb-unreachable">Even scaling every forecast ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach ' + fmt1(goal) + '.</span>';
+          out.innerHTML = '<span class="wb-unreachable">Even scaling ' + esc(names) + ' ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach ' + fmt1(goal) + '.</span>'
+            + (all ? '' : ' Check more businesses, or pick another target.');
           return;
         }
         const k = s.value;
-        const rows = state.current.rows;
+        const rows = state.current.rows.filter((row) => keys.indexOf(row.key) >= 0);
         rows.forEach((row) => {
           if (row.kind === 'engine' || row.kind === 'method') {
             if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
@@ -285,7 +303,7 @@
         });
         await refresh();
         const pct = (k - 1) * 100;
-        container.querySelector('#wbSolveResult').innerHTML = 'Every profit forecast ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') puts the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
+        container.querySelector('#wbSolveResult').innerHTML = (all ? 'Every profit forecast' : 'The profit forecasts in ' + esc(names)) + ' ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') put' + (all ? 's' : '') + ' the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
           + '. The bridge below now shows those figures, each with the report\'s own value beside it. <button type="button" class="wb-link" id="wbSolveUndo">Back to the report\'s figures</button>';
         const undo = container.querySelector('#wbSolveUndo');
         if (undo) undo.addEventListener('click', () => { state.overrides = {}; refresh(); });
@@ -384,18 +402,12 @@
       const solveBtn = container.querySelector('#wbSolveBtn');
       if (solveBtn) solveBtn.addEventListener('click', runSolve);
       const solveAllBtn = container.querySelector('#wbSolveAllBtn');
-      if (solveAllBtn) solveAllBtn.addEventListener('click', () => runSolveAll());
-      const aimBtn = container.querySelector('#wbAimBtn');
+      if (solveAllBtn) solveAllBtn.addEventListener('click', runSolveAll);
       const aimInput = container.querySelector('#wbAimPrice');
-      if (aimBtn && aimInput) {
-        const go = () => { state.aimPrice = aimInput.value; runSolveAll(num(aimInput.value)); };
-        aimBtn.addEventListener('click', go);
-        aimInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); go(); } });
-      }
-      const aim = container.querySelector('.wb-solve-one[data-aim]');
-      const goalLine = () => { const g = container.querySelector('#wbSolveGoal'); if (g) g.innerHTML = 'Solves for ' + goalLabel() + (goalOf() !== state.current.currentPrice ? '. Close the row above to aim at the current price instead.' : '. Open the row above to aim at a price of your own.'); };
-      if (aim) aim.addEventListener('toggle', () => { state.solveAimOpen = aim.open; goalLine(); });
-      if (aimInput) aimInput.addEventListener('input', goalLine);
+      if (aimInput) aimInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); runSolveAll(); } });
+      container.querySelectorAll('input[data-pick]').forEach((box) => box.addEventListener('change', () => { state.picks[box.dataset.pick] = box.checked; }));
+      const goalLine = () => { const g = container.querySelector('#wbSolveGoal'); if (g) g.innerHTML = 'Solves for ' + goalLabel() + ', the price in the box above.'; };
+      if (aimInput) aimInput.addEventListener('input', () => { state.aimPrice = aimInput.value; goalLine(); });
       goalLine();
       const sel = container.querySelector('#wbSolveLever');
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
@@ -446,19 +458,17 @@
       }
     }
 
-    // The price a solve aims at: the customer's own target when that row is
-    // open and holds a number, otherwise the share price the report was
-    // written at. The one-input solve says which, so nobody solves for the
-    // wrong number.
+    // The price a solve aims at: the box's number, which starts at the share
+    // price the report was written at. Both solves say which, so nobody solves
+    // for the wrong number.
     function goalOf() {
-      const aim = container.querySelector('.wb-solve-one[data-aim]');
       const input = container.querySelector('#wbAimPrice');
-      if (aim && aim.open && input) { const v = num(input.value); if (v > 0) return v; }
+      if (input) { const v = num(input.value); if (v > 0) return v; }
       return state.current.currentPrice;
     }
     function goalLabel() {
       const goal = goalOf();
-      return fmt1(goal) + ' ' + esc(state.current.currency) + (goal === state.current.currentPrice ? ' (the current price)' : ' (your target)');
+      return fmt1(goal) + ' ' + esc(state.current.currency) + (Math.abs(goal - state.current.currentPrice) < 0.05 ? ' (the current price)' : ' (your target)');
     }
 
     async function runSolve() {
@@ -498,7 +508,7 @@
           const direction = now != null ? (goalOf() < now ? 'down' : 'up') : '';
           out.innerHTML = '<span class="wb-unreachable">' + goalLabel() + ' is outside what this input can do.</span> ' + rangeText
             + (now != null ? '; the target is ' + fmt1(now) + ' now' + (direction ? ' and would have to go ' + direction : '') : '') + '. '
-            + 'Pick another input, or use the green button above: it scales every forecast together and always reaches the price.';
+            + 'Pick another input, or use the green button above with every business checked: that always reaches the price.';
         }
       } catch (err) {
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
