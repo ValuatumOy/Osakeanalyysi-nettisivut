@@ -133,7 +133,17 @@
         return '<span class="wb-division">' + esc(titleCase(row.division)) + '</span><span class="wb-division-note">probability-weighted</span>' + residual;
       }
       if (row.kind === 'engine') return '<span class="wb-division">' + esc(titleCase(row.division || row.label)) + '</span>';
-      if (row.kind === 'sotp-total') return '<span class="wb-division">Sum of the parts</span><span class="wb-division-note">= the target price per share</span>';
+      if (row.kind === 'sotp-total') {
+        // The row is stated net of what ranks ahead of shareholders, so the
+        // components above it do not sum to it. Show the step rather than
+        // leaving the reader to find the gap.
+        const r = state.current || {};
+        const deduction = r.evToEquityPerShare;
+        const note = typeof deduction === 'number' && typeof r.targetPrice === 'number'
+          ? 'parts ' + fmt1(r.targetPrice + deduction) + ' less ' + fmt1(deduction) + ' of net debt and other claims ahead of shareholders = the target price'
+          : '= the target price per share';
+        return '<span class="wb-division">Sum of the parts</span><span class="wb-division-note">' + esc(note) + '</span>';
+      }
       return '<span class="wb-division">' + esc(row.label) + '</span>';
     }
 
