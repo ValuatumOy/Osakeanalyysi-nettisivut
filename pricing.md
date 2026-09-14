@@ -1,6 +1,6 @@
 # Pricing — Valuatum AI Equity Reports
 
-Professional AI-generated equity research for listed companies. Prices in EUR, VAT excluded.
+Professional AI-generated equity research for listed companies. Prices in EUR and include VAT where applicable. EU businesses can enter a VAT ID at checkout for reverse-charge invoicing.
 Billed securely by Stripe. No subscription is required to buy a single report.
 
 Canonical page: https://www.aiequityreports.com/pricing.html

@@ -71,6 +71,11 @@ test('a free report with revisions sells the free-revisions tier with the includ
   assert.equal(params.metadata.revisionsAllowed, "3");
   assert.equal(params.metadata.price, '10');
   assert.equal(params.success_url, 'https://site.example/checkout/success.html?session_id={CHECKOUT_SESSION_ID}');
+  assert.deepEqual(params.automatic_tax, { enabled: true }, 'Stripe Tax on every session');
+  assert.deepEqual(params.tax_id_collection, { enabled: true }, 'EU buyers can enter a VAT id');
+  assert.equal(params.billing_address_collection, 'required');
+  assert.equal(params.customer_creation, 'always', 'invoice creation needs a Customer');
+  assert.equal(params.invoice_creation.enabled, true);
 });
 
 test('a free report that the engine cannot revise refuses revisions', async () => {
@@ -105,6 +110,8 @@ test('a standard ready report falls back to an inline amount when Stripe has no 
     await createReadyReportCheckout(stripe, paidReport, {});
     const [item] = stripe.created[0].line_items;
     assert.equal(item.price_data.unit_amount, 2000);
+    assert.equal(item.price_data.tax_behavior, 'inclusive', 'inline prices match the dashboard prices');
+    assert.equal(item.price_data.product_data.tax_code, 'txcd_10000000');
     assert.match(item.price_data.product_data.name, /Nokia/);
     assert.equal(stripe.created[0].metadata.revisionsAllowed, '0');
   } finally {

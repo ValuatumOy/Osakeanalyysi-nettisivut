@@ -13,6 +13,39 @@ const { getStripePricing, includedRevisions } = require('./stripe-pricing');
 
 const MAX_EXTRA_ROUNDS = 10;
 
+// Stripe Tax on every session this site creates. Prices are VAT-inclusive (the
+// account default), so Stripe splits the VAT out of the advertised amount and a
+// valid EU VAT id from another member state reverse-charges at the same gross
+// with a 0 VAT line. A post-payment invoice carries the VAT breakdown and both
+// VAT ids; it needs a Customer, which customer_creation provides for guests.
+//
+// existingCustomer: the session passes a `customer`. Checkout may then only
+// compute tax and save the VAT id if it is allowed to write the billing address
+// and business name back to that Customer, and customer_creation is rejected.
+// invoice: false for subscription mode, which invoices on its own.
+function taxParams({ existingCustomer = false, invoice = true } = {}) {
+  return {
+    automatic_tax: { enabled: true },
+    tax_id_collection: { enabled: true },
+    ...(existingCustomer
+      ? { customer_update: { address: 'auto', name: 'auto' } }
+      : { billing_address_collection: 'required' }),
+    ...(invoice
+      ? {
+          ...(existingCustomer ? {} : { customer_creation: 'always' }),
+          invoice_creation: {
+            enabled: true,
+            invoice_data: { footer: 'Valuatum Oy – AI Equity Reports' },
+          },
+        }
+      : {}),
+  };
+}
+
+// Tax fields for an inline price_data line item, matching the dashboard prices.
+const INLINE_TAX = { tax_behavior: 'inclusive' };
+const INLINE_PRODUCT_TAX = { tax_code: 'txcd_10000000' };
+
 // A refusal the HTTP layer can pass straight through to the buyer, as
 // opposed to an unexpected failure that should be logged and become a 500.
 // The Stripe account is shared with other Valuatum sites, and every webhook
@@ -60,8 +93,9 @@ function lineItem(pricing, { name, description, quantity = 1 }) {
   return {
     price_data: {
       currency: pricing.currency || 'eur',
-      product_data: { name, description },
+      product_data: { name, description, ...INLINE_PRODUCT_TAX },
       unit_amount: pricing.unitAmount,
+      ...INLINE_TAX,
     },
     quantity,
   };
@@ -117,6 +151,7 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
     line_items: [lineItem(pricing, readyReportCopy(report, kind, included))],
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     metadata: {
       site: SITE_TAG,
       reportId: report.id,
@@ -172,6 +207,7 @@ async function createFreshReportCheckout(stripe, order = {}) {
     line_items: [lineItem(pricing, freshReportCopy(company, order.ticker, withRevisions, included))],
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     customer_email: order.email || undefined,
     metadata: {
       site: SITE_TAG,
@@ -213,6 +249,7 @@ async function createExtraRoundsCheckout(stripe, { orderId, rounds, email, compa
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     ...(email ? { customer_email: email } : {}),
     line_items: [lineItem(pricing, {
       quantity,
@@ -250,6 +287,9 @@ module.exports = {
   createReadyReportCheckout,
   isCompletedCheckout,
   lineItem,
+  taxParams,
+  INLINE_TAX,
+  INLINE_PRODUCT_TAX,
   orderPageUrl,
   readyReportKind,
   siteUrl,
