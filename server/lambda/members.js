@@ -17,7 +17,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
-const { createExtraRoundsCheckout, SITE_TAG } = require('../checkout');
+const { createExtraRoundsCheckout, SITE_TAG, taxParams, INLINE_TAX, INLINE_PRODUCT_TAX } = require('../checkout');
 const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
@@ -1344,17 +1344,20 @@ async function postBillingTopUpCheckout(event) {
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     ...(profile.email ? { customer_email: profile.email } : {}),
     line_items: [{
       quantity: units,
       price_data: {
         currency: 'eur',
         unit_amount: Math.round(unitEur * 100),
+        ...INLINE_TAX,
         product_data: {
           name: kind === 'picks' ? 'One more report this month' : 'One more analyst report to read',
           description: kind === 'picks'
             ? 'Adds one report pick to this month\u2019s allowance.'
             : 'Adds one analyst report to this month\u2019s reading allowance.',
+          ...INLINE_PRODUCT_TAX,
         },
       },
     }],
@@ -1416,6 +1419,9 @@ async function postBillingCheckout(event) {
   const session = await stripe().checkout.sessions.create({
     mode: 'subscription',
     allow_promotion_codes: true,
+    // The customer was created above with an email only; Stripe Tax needs the
+    // address Checkout collects written back, and subscriptions invoice on their own.
+    ...taxParams({ existingCustomer: true, invoice: false }),
     customer: customerId,
     // Quantity is the company count: one Stripe price, no per-pack price ids to
     // keep in step. A discount for covering several is a Stripe coupon, not a
@@ -1469,6 +1475,7 @@ async function postFreshCheckout(event) {
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams({ existingCustomer: Boolean(profile.stripeCustomerId) }),
     customer: profile.stripeCustomerId || undefined,
     customer_email: profile.stripeCustomerId ? undefined : (profile.email || undefined),
     line_items: [{ price: priceId, quantity: 1 }],
@@ -1921,14 +1928,17 @@ async function postAnalysisBuyCheckout(event) {
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     line_items: [{
       quantity: 1,
       price_data: {
         currency: 'eur',
         unit_amount: Math.round(price * 100),
+        ...INLINE_TAX,
         product_data: {
           name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
           description: 'One analyst\'s re-run of the Valuatum AI equity report, with the prompts used to steer it.',
+          ...INLINE_PRODUCT_TAX,
         },
       },
     }],
@@ -2065,9 +2075,11 @@ async function postAnalysisForkCheckout(event) {
     price_data: {
       currency: 'eur',
       unit_amount: Math.round(FORK_FEE_EUR * 100),
+      ...INLINE_TAX,
       product_data: {
         name: `Build on ${index.companyId} — derivation`,
         description: 'Revision rounds on top of a published analyst analysis, delivered as your own report.',
+        ...INLINE_PRODUCT_TAX,
       },
     },
   }];
@@ -2077,9 +2089,11 @@ async function postAnalysisForkCheckout(event) {
       price_data: {
         currency: 'eur',
         unit_amount: Math.round(analysisPrice * 100),
+        ...INLINE_TAX,
         product_data: {
           name: `${index.companyId} — analyst analysis by ${index.analystName || 'Analyst'}`,
           description: 'The analysis you are building on. Half of this reaches its author.',
+          ...INLINE_PRODUCT_TAX,
         },
       },
     });
@@ -2088,6 +2102,7 @@ async function postAnalysisForkCheckout(event) {
   const session = await stripe().checkout.sessions.create({
     mode: 'payment',
     allow_promotion_codes: true,
+    ...taxParams(),
     line_items: lineItems,
     ...(profile?.email ? { customer_email: profile.email } : {}),
     metadata: {
