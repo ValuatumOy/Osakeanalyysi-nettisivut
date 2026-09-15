@@ -1898,6 +1898,9 @@ async function analysisDocument(genId) {
   if (order?.status !== 'DELIVERED' || !order.pdfFileName) return { url: null, jobId: order?.jobId || null };
   return {
     url: permanentPdfUrl(order.pdfFileName),
+    // The engine's own report before any revision: a reviewer grades what the
+    // analyst added on top of it, which they cannot see from the result alone.
+    originalUrl: order.originalPdfFileName ? permanentPdfUrl(order.originalPdfFileName) : null,
     jobId: order.jobId || null,
     company: order.companyName,
   };

@@ -225,7 +225,8 @@
               </details>
               <p style="margin-bottom:1rem;">
                 <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
-                <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for.</span>
+                <a class="btn btn-outline-dark btn-sm" id="originalBtn" href="#" target="_blank" rel="noopener" hidden style="margin-left:0.5rem;">Open the engine's original</a>
+                <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for. The original is the engine's report before the analyst's revisions: what you are comparing against.</span>
               </p>
               <div class="form-row">
                 <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
@@ -978,6 +979,9 @@
       const prompts = window._openPrompts || '';
       document.getElementById('reviewPrompts').hidden = !prompts;
       document.getElementById('reviewPromptsText').textContent = prompts;
+      const original = document.getElementById('originalBtn');
+      original.hidden = !window._openOriginalUrl;
+      original.href = window._openOriginalUrl || '#';
     }
 
     async function loadAnalyses() {
@@ -1061,6 +1065,7 @@
       button.disabled = false;
       if (status !== 200) { notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); return; }
       window._openPrompts = data.promptsText || '';
+      window._openOriginalUrl = data.originalUrl || '';
       renderReviewRow();
       if (data.url) window.open(data.url, '_blank');
       else notice('err', 'This report has no document to open.');
@@ -1087,6 +1092,7 @@
       if (data.url && tab) tab.location = data.url;
       else if (data.url) window.open(data.url, '_blank');
       window._openReportUrl = data.url || '';
+      window._openOriginalUrl = data.originalUrl || '';
       window._openPrompts = data.promptsText || '';
       if (!data.free) {
         window._openReviewId = genId;
