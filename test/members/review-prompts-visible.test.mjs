@@ -22,7 +22,7 @@ stub('../../server/members/auth.js', {
   requireUser: async () => ({ profile: { userId: 'reviewer', role: 'analyst' }, deny: null }),
 });
 stub('../../server/aws/orders-store.js', {
-  get: async () => ({ status: 'DELIVERED', pdfFileName: null, jobId: 'job-1' }),
+  get: async () => ({ status: 'DELIVERED', pdfFileName: 'Nokia_rev.pdf', originalPdfFileName: 'Nokia.pdf', jobId: 'job-1' }),
   update: async () => {},
 });
 stub('../../server/members/store.js', {
@@ -50,7 +50,10 @@ test('opening another analyst\'s analysis returns the revision prompts', async (
     headers: { authorization: 'Bearer stub' },
   });
   assert.equal(res.statusCode, 200);
-  assert.equal(JSON.parse(res.body).promptsText, PROMPTS);
+  const body = JSON.parse(res.body);
+  assert.equal(body.promptsText, PROMPTS);
+  // The engine's own report before the revisions: what the reviewer grades against.
+  assert.match(body.originalUrl, /\/Nokia\.pdf$/);
 });
 
 test('the review panel renders the prompts as text, never as markup', () => {

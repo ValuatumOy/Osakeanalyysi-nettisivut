@@ -97,7 +97,10 @@ export class MembersStack extends Stack {
         WORKER_FUNCTION_NAME: props.workerFunction.functionName,
         REPORT_PDF_BUCKET: catalogBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
-        REPORT_PDF_BASE_URL: config.memberCatalogPdfBaseUrl,
+        // Links to PDFs this stage's reconciler delivered (permanentPdfUrl in
+        // members.js), so this stage's files domain. Pointing test at prod's
+        // domain opened prod's same-named report (OriolaOyj_15092026.pdf, 15.9.2026).
+        REPORT_PDF_BASE_URL: config.pdfBaseUrl,
         // This stage's own bucket, where the reconciler delivers what members
         // generate. Those PDFs are never in the production catalog listing, so
         // they are presigned straight from the order's pdfFileName.
