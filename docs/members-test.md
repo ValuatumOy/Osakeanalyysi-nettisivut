@@ -17,10 +17,11 @@ non-prod. Nothing here ships with the prod API Lambda.
 
 ## The catalog members see is production's
 
-`config.ts` pins three member-facing values to production in **every** stage —
-`memberCatalogBucket` (`aiequityreports-pdfs`), `memberCatalogStateTable`
-(`AiEquityReportsCatalogState`) and `memberCatalogPdfBaseUrl`
-(`files.aiequityreports.com`). The members Lambda imports both by name and gets
+`config.ts` pins two member-facing values to production in **every** stage —
+`memberCatalogBucket` (`aiequityreports-pdfs`) and `memberCatalogStateTable`
+(`AiEquityReportsCatalogState`). Links to PDFs a member *generated* use the
+stage's own `pdfBaseUrl`: test PDFs live in `files-test`, and a prod base there
+opened prod's same-named report. The members Lambda imports both by name and gets
 `grantRead` only; it never writes catalog state (the worker tick is the single
 writer of the weekly free selection). An analyst choosing a report to build on
 has to see what the public site actually sells, not the handful of PDFs that
