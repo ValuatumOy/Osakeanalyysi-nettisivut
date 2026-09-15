@@ -260,9 +260,8 @@
     return '<div class="store-empty">'
       + '<p><strong>No analyst has published a report on ' + esc(companyName) + ' yet.</strong></p>'
       + '<p>When one does it appears here: this company\'s Valuatum report re-run with that '
-      + 'analyst\'s own assumptions and instructions, published under their name and dated. '
-      + 'Reports are ordered by what other analysts said the work added over the engine\'s '
-      + 'report, scored out of five by people who had to read it to say so.</p>'
+      + 'analyst\'s own assumptions, published under their name and dated. Reports are ordered '
+      + 'by a score out of five: what other analysts felt the work added over the engine\'s default report.</p>'
       + '<p><a href="/analysts.html">How the analyst programme works</a></p>'
       + '</div>';
   }

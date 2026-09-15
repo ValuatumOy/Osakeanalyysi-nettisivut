@@ -140,10 +140,54 @@
         <!-- Logged in -->
         <div id="memberView" hidden>
 
+          <div class="ws-section" id="genCard" hidden>
+            <div class="ws-section-head">
+              <h2 id="genTitle">Monthly generation</h2>
+              <p class="sub" id="genSub">Reserve your report generation for this month.</p>
+              <ol class="sub" id="genPath" style="margin:.6rem 0 0 1.2rem; padding:0;">
+                <li>Start the generation below and wait for the engine's report (20 to 40 minutes).</li>
+                <li>Open it, read it, and request a revision with your own view: what should change and why.</li>
+                <li>Publish the version you stand behind. Your prompts go with it.</li>
+              </ol>
+            </div>
+            <div class="ws-panel">
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
+              <div id="genStatus" class="muted"></div>
+              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
+                <label class="field" style="position:relative;"><span>Company</span>
+                  <input id="genCompany" class="input" placeholder="Start typing a company, e.g. Nokia" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="genSuggest">
+                  <div class="search-autocomplete" id="genSuggest" role="listbox"></div>
+                </label>
+                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
+                  <input id="genTicker" class="input" placeholder="picked for you">
+                </label>
+                <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
+              </div>
+              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
+              <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
+                <div class="table-wrap">
+                  <table class="reports-table" id="generationsTable"></table>
+                </div>
+              </div>
+              <div id="submitRow" hidden style="margin-top:1.1rem;">
+                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
+                <div class="form-row">
+                  <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
+                    <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
+                  </label>
+                  <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
+                    <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
+                  </label>
+                  <button class="btn btn-primary" onclick="submitGen()">Publish report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="ws-section">
             <div class="ws-section-head">
               <h2>Report library</h2>
-              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick.</p>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick. These are for reading: to revise a company, generate it above.</p>
             </div>
             <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
@@ -197,45 +241,6 @@
             <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
               <div class="table-wrap">
                 <table class="reports-table" id="analysesTable"></table>
-              </div>
-            </div>
-          </div>
-
-          <div class="ws-section" id="genCard" hidden>
-            <div class="ws-section-head">
-              <h2 id="genTitle">Monthly generation</h2>
-              <p class="sub" id="genSub">Reserve your report generation for this month.</p>
-            </div>
-            <div class="ws-panel">
-              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
-              <div id="genStatus" class="muted"></div>
-              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
-                <label class="field" style="position:relative;"><span>Company</span>
-                  <input id="genCompany" class="input" placeholder="Start typing a company, e.g. Nokia" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="genSuggest">
-                  <div class="search-autocomplete" id="genSuggest" role="listbox"></div>
-                </label>
-                <label class="field" style="flex:0 1 150px;"><span>Ticker</span>
-                  <input id="genTicker" class="input" placeholder="picked for you">
-                </label>
-                <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
-              </div>
-              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
-              <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
-                <div class="table-wrap">
-                  <table class="reports-table" id="generationsTable"></table>
-                </div>
-              </div>
-              <div id="submitRow" hidden style="margin-top:1.1rem;">
-                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
-                <div class="form-row">
-                  <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
-                    <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
-                  </label>
-                  <label class="field" style="flex:0 1 210px;"><span>Free after (days)</span>
-                    <input id="pubFreeAfter" class="input input--num" type="number" min="1" max="365" step="1" value="365">
-                  </label>
-                  <button class="btn btn-primary" onclick="submitGen()">Publish report</button>
-                </div>
               </div>
             </div>
           </div>
@@ -532,14 +537,15 @@
       if (data.hasGeneration) {
         const ob = data.openObligationId;
         document.getElementById('genTitle').textContent =
-          isAnalyst ? 'Monthly free generation' : 'Monthly private generation';
+          isAnalyst ? 'Your report this month' : 'Your private report this month';
         document.getElementById('genSub').textContent = isAnalyst
-          ? 'Reserve your free report generation. Before the next one unlocks you must publish the finished report.'
+          ? 'Free: you publish the finished report under your own name. The next one unlocks once it is published.'
           : 'Reserve your monthly fresh report. It stays private to you and nothing is published.';
         document.getElementById('genStatus').textContent = ob
           ? 'Open publication obligation. Publish your report to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
         document.getElementById('genCommit').hidden = !isAnalyst;
+        document.getElementById('genPath').hidden = !isAnalyst;
         window._publishes = isAnalyst;
         document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
         document.getElementById('submitRow').hidden = !ob;
@@ -688,14 +694,6 @@
       // the member there.
       if (data.status === 'DELIVERED') {
         out.appendChild(workspaceLink(genId, 'Revise it'));
-        // Temporary, 20.8.2026: a revision is written by the previous pipeline
-        // and comes back shorter. The analyst publishes what they revise, so
-        // they hear it before they click, not after. Remove with the engine fix.
-        const caution = document.createElement('p');
-        caution.className = 'muted';
-        caution.style.marginTop = '0.75rem';
-        caution.textContent = 'Revising regenerates the report with our previous writing pipeline: different headings, noticeably fewer pages. The original is kept as version 1.';
-        out.appendChild(caution);
       }
       if (data.status === 'DELIVERED' || data.status === 'FAILED') {
         loadGenerations();
