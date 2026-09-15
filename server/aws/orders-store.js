@@ -173,12 +173,15 @@ async function create(input) {
 // a double-click or a second open tab loses the race instead of starting two
 // revision jobs. Returns null (not an error) when the claim fails — the
 // caller turns that into a 409.
-async function claimRevision(id, comment) {
+// `valuationOverrides` (optional) is the what-if the customer locked in the
+// target-price view; the reconciler submits it with the comment as a
+// narrative-scope revision.
+async function claimRevision(id, comment, valuationOverrides = null) {
   try {
     const res = await dynamo().send(new UpdateCommand({
       TableName: TABLE(),
       Key: { orderId: id },
-      UpdateExpression: 'SET #s = :revising, pendingRevisionComment = :comment, '
+      UpdateExpression: 'SET #s = :revising, pendingRevisionComment = :comment, pendingValuationOverrides = :overrides, '
         + 'revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
       ConditionExpression: '#s = :delivered AND revisionsUsed < revisionsAllowed',
       ExpressionAttributeNames: { '#s': 'status' },
@@ -186,6 +189,7 @@ async function claimRevision(id, comment) {
         ':revising': STATUS.REVISING,
         ':delivered': STATUS.DELIVERED,
         ':comment': comment,
+        ':overrides': valuationOverrides,
         ':null': null,
         ':zero': 0,
         ':now': nowIso(),

@@ -185,7 +185,7 @@ async function getOrderState(orderId) {
 // Submit a forecast-revision request. The caller must have already verified
 // the buyer's Stripe session — the shared secret only authorizes the backend
 // call, it is not proof of purchase on its own.
-async function submitOrderRevision(orderId, comments) {
+async function submitOrderRevision(orderId, comments, valuationOverrides) {
   const base = catalogBaseUrl();
   const secret = process.env.CATALOG_SYNC_SECRET || '';
   if (!base || !secret) {
@@ -194,7 +194,7 @@ async function submitOrderRevision(orderId, comments) {
   return fetchJson(`${base}/api/orders/${encodeURIComponent(orderId)}/revisions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${secret}` },
-    body: JSON.stringify({ comments }),
+    body: JSON.stringify({ comments, ...(valuationOverrides ? { valuationOverrides } : {}) }),
   });
 }
 

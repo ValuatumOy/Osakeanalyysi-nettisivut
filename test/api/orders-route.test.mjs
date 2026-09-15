@@ -25,13 +25,14 @@ function fakeOrdersStore(orders) {
   return {
     STATUS,
     async get(id) { return orders.get(id) || null; },
-    async claimRevision(id, comment) {
+    async claimRevision(id, comment, valuationOverrides = null) {
       const order = orders.get(id);
       if (!order) return null;
       if (order.status !== STATUS.DELIVERED) return null;
       if ((order.revisionsUsed || 0) >= (order.revisionsAllowed || 0)) return null;
       order.status = STATUS.REVISING;
       order.pendingRevisionComment = comment;
+      order.pendingValuationOverrides = valuationOverrides;
       return order;
     },
     async claimEdit(id, edit) {
@@ -179,6 +180,9 @@ test('POST /api/orders/{id}/revisions rejects empty, oversized and control-chara
   assert.equal(tooLong.statusCode, 400);
 
   const controlChar = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'bad\x07comment' } }));
+  const badOverrides = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_1', body: { comments: 'lock', valuationOverrides: { 'core auto': { selectedMultiple: 'x' } } } }));
+  assert.equal(badOverrides.statusCode, 400);
+  assert.match(JSON.parse(badOverrides.body).error, /finite number/);
   assert.equal(controlChar.statusCode, 400);
 });
 

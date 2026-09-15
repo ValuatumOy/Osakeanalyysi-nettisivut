@@ -245,8 +245,10 @@ remains open.
   emails, so it is a business decision, not a code one.
 - Fresh-report delivery emails (reconciler) still link the PDF directly; that
   path needs the same treatment as the ready-report receipt.
-- VAT: no `automatic_tax` anywhere, one-off or subscription. Selling digital
-  subscriptions to EU consumers needs an OSS registration decision.
+- VAT: every session now sends `automatic_tax` + `tax_id_collection` (+ post-payment
+  `invoice_creation` outside subscription mode) via `taxParams()` in `server/checkout.js`.
+  Prices are VAT-inclusive; the FI registration runs the `small_seller` scheme (no OSS),
+  so watch the 10 k€/year EU cross-border B2C threshold in Stripe Tax → Thresholds.
 - The analyst freemium has **no off switch**: any LinkedIn sign-in becomes an
   analyst with picks and a generation. Nothing verifies that the person is an
   analyst, so this must be gated before production.

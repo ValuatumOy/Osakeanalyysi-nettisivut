@@ -12,6 +12,7 @@
 
   const LEVER_LABEL = {
     probabilityPct: 'probability',
+    marketValue: 'market size',
     sharePct: 'market share',
     marginPct: 'margin',
     metricValue: 'profit forecast',
@@ -30,7 +31,7 @@
   const num = (v) => { const n = Number(String(v).replace(/,/g, '')); return Number.isFinite(n) ? n : null; };
 
   function mount(container, opts) {
-    const state = { baseline: null, current: null, overrides: {}, timer: null, inflight: 0, solveRow: '' };
+    const state = { baseline: null, current: null, overrides: {}, timer: null, inflight: 0, solveRow: '', picks: {} };
     const byKey = (rows) => { const m = {}; (rows || []).forEach((r) => { m[r.key] = r; }); return m; };
 
     // ---- rendering -------------------------------------------------------
@@ -39,17 +40,18 @@
       const base = state.baseline && byKey(state.baseline.rows)[row.key];
       const baseValue = base ? valueOf(base, lever) : value;
       const changed = state.overrides[row.key] && state.overrides[row.key][lever] != null && Math.abs(baseValue - value) > 1e-9;
-      const step = lever === 'metricValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
-      const shown = lever === 'metricValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
+      const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
+      const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
       return '<span class="wb-field' + (changed ? ' is-changed' : '') + '">'
         + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(LEVER_LABEL[lever]) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
         + (extra || '')
-        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
+        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
         + '</span>';
     }
 
     function valueOf(row, lever) {
       if (lever === 'sharePct') return row.scale ? row.scale.sharePct : 0;
+      if (lever === 'marketValue') return row.scale ? row.scale.marketValue : 0;
       if (lever === 'marginPct') return row.scale ? row.scale.marginPct : row.modelledMargin ? row.modelledMargin.impliedMarginPct : 0;
       return row[lever] || 0;
     }
@@ -60,9 +62,11 @@
       if (row.editable.indexOf('sharePct') >= 0 && row.scale) {
         return label
           + '<span class="wb-build">' + fieldHtml(row, 'sharePct', row.scale.sharePct, '<span class="wb-unit">%</span>')
-          + '<span class="wb-op">of</span><span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>'
+          + '<span class="wb-op">of</span>' + (row.editable.indexOf('marketValue') >= 0
+            ? fieldHtml(row, 'marketValue', row.scale.marketValue)
+            : '<span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>')
           + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>') + '</span>'
-          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + '</span></span>'
+          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + (row.editable.indexOf('marketValue') >= 0 ? ' · the report\'s figure; change it if you read the market differently' : '') + '</span></span>'
           + (hinted ? '' : marginContextHint());
       }
       if (row.editable.indexOf('metricValue') >= 0) {
@@ -129,7 +133,17 @@
         return '<span class="wb-division">' + esc(titleCase(row.division)) + '</span><span class="wb-division-note">probability-weighted</span>' + residual;
       }
       if (row.kind === 'engine') return '<span class="wb-division">' + esc(titleCase(row.division || row.label)) + '</span>';
-      if (row.kind === 'sotp-total') return '<span class="wb-division">Sum of the parts</span>';
+      if (row.kind === 'sotp-total') {
+        // The row is stated net of what ranks ahead of shareholders, so the
+        // components above it do not sum to it. Show the step rather than
+        // leaving the reader to find the gap.
+        const r = state.current || {};
+        const deduction = r.evToEquityPerShare;
+        const note = typeof deduction === 'number' && typeof r.targetPrice === 'number'
+          ? 'parts ' + fmt1(r.targetPrice + deduction) + ' less ' + fmt1(deduction) + ' of net debt and other claims ahead of shareholders = the target price'
+          : '= the target price per share';
+        return '<span class="wb-division">Sum of the parts</span><span class="wb-division-note">' + esc(note) + '</span>';
+      }
       return '<span class="wb-division">' + esc(row.label) + '</span>';
     }
 
@@ -232,15 +246,80 @@
       return options;
     }
 
+    // The businesses a scale may touch: an established business is its own
+    // row, a scenario-valued one is all of its legs.
+    function businesses(result) {
+      const list = [];
+      result.rows.forEach((row) => {
+        if (row.kind === 'engine' || row.kind === 'method') list.push({ name: titleCase(row.division || row.label), keys: [row.key] });
+        else if (row.kind === 'option-expectation') list.push({ name: titleCase(row.division), keys: result.rows.filter((r) => r.kind === 'option-leg' && r.division === row.division).map((r) => r.key) });
+      });
+      return list;
+    }
+    function pickedBusinesses() { return businesses(state.current).filter((b) => state.picks[b.name] !== false); }
+
     function solveHtml(result) {
-      const options = solveOptions(result);
+      const options = solveOptions(result).filter((o) => o.value !== '::allMetricsScale');
       if (!state.solveRow) state.solveRow = options[0] ? options[0].value : '';
       return '<div class="wb-solve">'
-        + '<label class="wb-solve-label" for="wbSolveLever">What would the current price of ' + fmt1(result.currentPrice) + ' ' + esc(result.currency) + ' require?</label>'
+        + '<div class="wb-solve-label">Aim at a target price</div>'
         + '<div class="wb-solve-row">'
-        + '<select id="wbSolveLever" class="wb-select">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
-        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve</button>'
-        + '</div><p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
+        + '<label class="wb-solve-or" for="wbAimPrice">Target price (' + esc(result.currency) + ')</label>'
+        + '<input type="text" inputmode="decimal" id="wbAimPrice" class="wb-select wb-aim-input" value="' + esc(state.aimPrice || fmt1(result.currentPrice)) + '" aria-label="Target price to aim at">'
+        + '<span class="wb-solve-or">the current price is ' + fmt1(result.currentPrice) + '</span>'
+        + '</div>'
+        + '<div class="wb-solve-picks"><span class="wb-solve-or">Reach it through:</span>' + businesses(result).map((b) => '<label class="wb-pick"><input type="checkbox" data-pick="' + esc(b.name) + '"' + (state.picks[b.name] === false ? '' : ' checked') + '> ' + esc(b.name) + '</label>').join('') + '</div>'
+        + '<div class="wb-solve-row">'
+        + '<button type="button" class="btn btn-primary btn-sm" id="wbSolveAllBtn">Solve: scale the checked businesses to it</button>'
+        + '<span class="wb-solve-or">The engine finds the factor and fills the bridge in; unchecked businesses keep the report\'s figures.</span>'
+        + '</div>'
+        + '<details class="wb-solve-one"' + (state.solveOneOpen ? ' open' : '') + '><summary>Or move one input only</summary><p class="wb-solve-or wb-solve-goal" id="wbSolveGoal"></p><div class="wb-solve-row">'
+        + '<select id="wbSolveLever" class="wb-select" aria-label="Input to solve for">' + options.map((o) => '<option value="' + esc(o.value) + '"' + (o.value === state.solveRow ? ' selected' : '') + '>' + esc(o.label) + '</option>').join('') + '</select>'
+        + '<button type="button" class="btn btn-outline-dark btn-sm" id="wbSolveBtn">Solve this input</button>'
+        + '</div></details>'
+        + '<p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
+    }
+
+    // Every profit forecast × k: the engine's own answer to "what does the
+    // price require", applied as the same overrides a user could have typed
+    // (the metric on an established business, the market on a scenario), so
+    // the bridge below shows every "was".
+    async function runSolveAll() {
+      const out = container.querySelector('#wbSolveResult');
+      const goal = goalOf();
+      const picked = pickedBusinesses();
+      const all = picked.length === businesses(state.current).length;
+      const names = all ? 'every business' : picked.map((b) => b.name).join(', ');
+      if (!picked.length) { out.innerHTML = '<span class="wb-issue">Check at least one business.</span>'; return; }
+      out.innerHTML = '<span class="wb-muted">Solving…</span>';
+      try {
+        const keys = [].concat.apply([], picked.map((b) => b.keys));
+        const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: goal, rows: keys } });
+        const s = data.solve;
+        if (!s || !s.reached) {
+          out.innerHTML = '<span class="wb-unreachable">Even scaling ' + esc(names) + ' ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach ' + fmt1(goal) + '.</span>'
+            + (all ? '' : ' Check more businesses, or pick another target.');
+          return;
+        }
+        const k = s.value;
+        const rows = state.current.rows.filter((row) => keys.indexOf(row.key) >= 0);
+        rows.forEach((row) => {
+          if (row.kind === 'engine' || row.kind === 'method') {
+            if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
+          } else if (row.kind === 'option-leg') {
+            if (row.editable.indexOf('marketValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).marketValue = row.scale.marketValue * k;
+            else if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
+          }
+        });
+        await refresh();
+        const pct = (k - 1) * 100;
+        container.querySelector('#wbSolveResult').innerHTML = (all ? 'Every profit forecast' : 'The profit forecasts in ' + esc(names)) + ' ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') put' + (all ? 's' : '') + ' the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
+          + '. The bridge below now shows those figures, each with the report\'s own value beside it. <button type="button" class="wb-link" id="wbSolveUndo">Back to the report\'s figures</button>';
+        const undo = container.querySelector('#wbSolveUndo');
+        if (undo) undo.addEventListener('click', () => { state.overrides = {}; refresh(); });
+      } catch (err) {
+        out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
+      }
     }
 
     function sensitivityHtml(result) {
@@ -332,8 +411,18 @@
       if (lock) lock.addEventListener('click', () => opts.onLock(state.overrides, changeList()));
       const solveBtn = container.querySelector('#wbSolveBtn');
       if (solveBtn) solveBtn.addEventListener('click', runSolve);
+      const solveAllBtn = container.querySelector('#wbSolveAllBtn');
+      if (solveAllBtn) solveAllBtn.addEventListener('click', runSolveAll);
+      const aimInput = container.querySelector('#wbAimPrice');
+      if (aimInput) aimInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); runSolveAll(); } });
+      container.querySelectorAll('input[data-pick]').forEach((box) => box.addEventListener('change', () => { state.picks[box.dataset.pick] = box.checked; }));
+      const goalLine = () => { const g = container.querySelector('#wbSolveGoal'); if (g) g.innerHTML = 'Solves for ' + goalLabel() + ', the price in the box above.'; };
+      if (aimInput) aimInput.addEventListener('input', () => { state.aimPrice = aimInput.value; goalLine(); });
+      goalLine();
       const sel = container.querySelector('#wbSolveLever');
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
+      const one = container.querySelector('.wb-solve-one');
+      if (one) one.addEventListener('toggle', () => { state.solveOneOpen = one.open; });
     }
 
     function schedule(input, delay) {
@@ -379,17 +468,30 @@
       }
     }
 
+    // The price a solve aims at: the box's number, which starts at the share
+    // price the report was written at. Both solves say which, so nobody solves
+    // for the wrong number.
+    function goalOf() {
+      const input = container.querySelector('#wbAimPrice');
+      if (input) { const v = num(input.value); if (v > 0) return v; }
+      return state.current.currentPrice;
+    }
+    function goalLabel() {
+      const goal = goalOf();
+      return fmt1(goal) + ' ' + esc(state.current.currency) + (Math.abs(goal - state.current.currentPrice) < 0.05 ? ' (the current price)' : ' (your target)');
+    }
+
     async function runSolve() {
       const out = container.querySelector('#wbSolveResult');
       const [row, lever] = state.solveRow.split('::');
       out.innerHTML = '<span class="wb-muted">Solving…</span>';
       try {
-        const data = await request({ overrides: state.overrides, solve: { for: lever, row: row || undefined, targetPrice: state.current.currentPrice } });
+        const data = await request({ overrides: state.overrides, solve: { for: lever, row: row || undefined, targetPrice: goalOf() } });
         const s = data.solve;
         const rowInfo = row ? byKey(state.current.rows)[row] : null;
         const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every profit forecast';
-        const unit = lever === 'metricValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
-        const shown = (v) => (lever === 'metricValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : fmt1(v)) + unit;
+        const unit = lever === 'metricValue' || lever === 'marketValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
+        const shown = (v) => (lever === 'metricValue' || lever === 'marketValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : Math.abs(v) < 1 ? (Math.round(v * 100) / 100).toString() : fmt1(v)) + unit;
         if (!s || !Number.isFinite(s.value) || s.targetAtValue == null) {
           out.innerHTML = '<span class="wb-issue">The calculator cannot vary this input on its own.</span>';
           return;
@@ -397,7 +499,7 @@
         if (s.reached) {
           out.innerHTML = 'The ' + esc(LEVER_LABEL[lever] || 'forecasts') + ' for <strong>' + esc(name) + '</strong> would have to be <strong>' + esc(shown(s.value)) + '</strong>'
             + (rowInfo ? ' (the report has ' + esc(shown(valueOf(rowInfo, lever))) + ')' : '')
-            + ' for the target to sit at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. '
+            + ' for the target to sit at ' + goalLabel() + '. '
             + (lever === 'allMetricsScale' ? '' : '<button type="button" class="wb-link" id="wbSolveApply">Set it and see the bridge</button>');
           const apply = out.querySelector('#wbSolveApply');
           if (apply) apply.addEventListener('click', () => {
@@ -407,9 +509,16 @@
             refresh();
           });
         } else {
-          out.innerHTML = '<span class="wb-unreachable">Not reachable with this input alone.</span> Even at <strong>' + esc(shown(s.value)) + '</strong>'
-            + (lever === 'probabilityPct' ? ' (the other scenarios of this business take the rest)' : '')
-            + ' the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency) + '. Try a different input, or scale every profit forecast together.';
+          const lo = s.targetAtLower, hi = s.targetAtUpper;
+          const rangeText = lo != null && hi != null
+            ? 'On its own this input can only move the target between <strong>' + fmt1(Math.min(lo, hi)) + '</strong> and <strong>' + fmt1(Math.max(lo, hi)) + ' ' + esc(data.currency) + '</strong>'
+              + ' (' + esc(LEVER_LABEL[lever]) + ' from ' + esc(shown(s.lower)) + ' to ' + esc(shown(s.upper)) + (lever === 'probabilityPct' ? ', the other scenarios of this business take the rest' : '') + ')'
+            : 'Even at <strong>' + esc(shown(s.value)) + '</strong> the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency);
+          const now = state.current.targetPrice;
+          const direction = now != null ? (goalOf() < now ? 'down' : 'up') : '';
+          out.innerHTML = '<span class="wb-unreachable">' + goalLabel() + ' is outside what this input can do.</span> ' + rangeText
+            + (now != null ? '; the target is ' + fmt1(now) + ' now' + (direction ? ' and would have to go ' + direction : '') : '') + '. '
+            + 'Pick another input, or use the green button above with every business checked: that always reaches the price.';
         }
       } catch (err) {
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';

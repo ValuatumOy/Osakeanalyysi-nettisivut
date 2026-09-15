@@ -123,14 +123,20 @@ async function submitRevision({
   comments,
   scope = 'estimates',
   analystName,
+  valuationOverrides,
 } = {}) {
   if (!parentJobId) throw new Error('submitRevision: parentJobId is required');
   if (!comments) throw new Error('submitRevision: comments is required');
+  if (valuationOverrides && scope !== 'narrative') throw new Error('submitRevision: valuationOverrides requires scope "narrative"');
 
   // `username` is the engine's ownership key (it 403s on a mismatch and the
   // jobs index is built on it), so the analyst travels as a separate
   // display-only field that the engine prints on the cover.
-  const body = JSON.stringify({ username, comments, scope, ...(analystName ? { analystName } : {}) });
+  const body = JSON.stringify({
+    username, comments, scope,
+    ...(analystName ? { analystName } : {}),
+    ...(valuationOverrides ? { valuationOverrides } : {}),
+  });
 
   const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
   let res;

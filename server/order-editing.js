@@ -109,4 +109,24 @@ function currentReportQuality(order) {
   return order.reportQuality || null;
 }
 
-module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation, currentReportQuality };
+// The what-if the customer locked: `{ rowKey: { lever: number } }`, at most
+// 50 rows. Shape only — the engine validates it against the report's rows and
+// answers 400 with the row and field, which the reconciler surfaces as the
+// revision error. Returns null when absent, an Error when malformed.
+function parseValuationOverrides(raw) {
+  if (raw == null) return null;
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return new Error('valuationOverrides must be an object keyed by bridge row');
+  const keys = Object.keys(raw);
+  if (!keys.length) return new Error('valuationOverrides is empty');
+  if (keys.length > 50) return new Error('valuationOverrides names too many rows');
+  for (const key of keys) {
+    const row = raw[key];
+    if (!row || typeof row !== 'object' || Array.isArray(row)) return new Error(`valuationOverrides[${key}] must be an object`);
+    for (const [lever, value] of Object.entries(row)) {
+      if (typeof value !== 'number' || !Number.isFinite(value)) return new Error(`valuationOverrides[${key}].${lever} must be a finite number`);
+    }
+  }
+  return raw;
+}
+
+module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation, currentReportQuality, parseValuationOverrides };
