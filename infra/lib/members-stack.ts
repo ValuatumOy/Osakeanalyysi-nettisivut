@@ -112,6 +112,7 @@ export class MembersStack extends Stack {
         MEMBERS_LIMITS_JSON: process.env.MEMBERS_LIMITS_JSON || '',
         SITE_URL: config.siteUrl,
         MEMBERS_API_URL: membersApiUrl,
+        ...(config.pdfEngineUrl ? { PDF_ENGINE_URL: config.pdfEngineUrl } : {}),
         // Auth redirects may return to any of these; the first is the default.
         // Anything not on this list is rejected (open-redirect guard).
         // The FIRST entry is the fallback for a rejected/missing returnTo, so
@@ -149,6 +150,12 @@ export class MembersStack extends Stack {
     // Create-only in practice: the worker owns order state transitions.
     props.ordersTable.grantReadWriteData(membersFunction);
     props.workerFunction.grantInvoke(membersFunction);
+    if (config.engineFunctionArn) {
+      membersFunction.addToRolePolicy(new iam.PolicyStatement({
+        actions: ['lambda:InvokeFunctionUrl', 'lambda:InvokeFunction'],
+        resources: [config.engineFunctionArn],
+      }));
+    }
     membersFunction.addToRolePolicy(new iam.PolicyStatement({
       actions: ['ses:SendEmail'],
       resources: ['*'],
