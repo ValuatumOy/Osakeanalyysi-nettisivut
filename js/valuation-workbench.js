@@ -351,7 +351,8 @@
         + '<p class="wb-section-sub">' + (isProb ? 'Combined success probability of the largest option (rows) against its exit multiple (columns), with everything else as set above.' : 'The main ' + forecastLabel + ' (rows) against its multiple (columns), with everything else as set above.') + ' Shaded by the rating each target would carry.</p>'
         + '<table class="wb-sens-table"><thead><tr><th scope="col">' + (isProb ? 'Probability' : 'Forecast') + '</th>' + s.columns.map((c) => '<th scope="col">' + fmt1(c) + 'x</th>').join('') + '</tr></thead><tbody>';
       s.rows.forEach((r) => {
-        html += '<tr' + (r.label ? ' class="is-base"' : '') + '><th scope="row">' + (isProb ? fmtPct(r.value) + '%' : fmtInt(r.value)) + (r.label ? '<span class="wb-sens-note">now</span>' : '') + '</th>'
+        const isBase = r.label === 'bridge case';
+        html += '<tr' + (isBase ? ' class="is-base"' : '') + '><th scope="row">' + (isProb ? fmtPct(r.value) + '%' : fmtInt(r.value)) + (isBase ? '<span class="wb-sens-note">now</span>' : '') + '</th>'
           + r.prices.map((p) => '<td class="' + cellClass(p) + '">' + fmt1(p) + '</td>').join('') + '</tr>';
       });
       return html + '</tbody></table></div>';
