@@ -121,18 +121,18 @@ function navHtml() {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/reports.html" class="nav-link">Reports</a>
         <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <a href="/institutions.html" class="nav-link">Institutions</a>
         <details class="nav-more">
-          <summary class="nav-link">More</summary>
+          <summary class="nav-link is-active">More</summary>
           <div class="nav-more-menu">
             <a href="/methodology.html" class="nav-link">Methodology</a>
             <a href="/about.html" class="nav-link">About</a>
             <a href="/faq.html" class="nav-link">FAQ</a>
-            <a href="/blog.html" class="nav-link">Blog</a>
+            <a href="/blog.html" class="nav-link is-active" aria-current="page">Blog</a>
           </div>
         </details>
       </nav>
@@ -143,7 +143,7 @@ function navHtml() {
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/reports.html" class="nav-mobile-link">Reports</a>
       <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
@@ -151,7 +151,7 @@ function navHtml() {
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="/about.html" class="nav-mobile-link">About</a>
       <a href="/faq.html" class="nav-mobile-link">FAQ</a>
-      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/blog.html" class="nav-mobile-link is-active" aria-current="page">Blog</a>
       <a href="/members.html" class="nav-mobile-link">Sign in</a>
       <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
@@ -563,18 +563,18 @@ function renderBlogIndex(publishedArticles, authorsData) {
         </div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
+        <a href="/reports.html" class="nav-link">Reports</a>
         <a href="/companies.html" class="nav-link">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <a href="/institutions.html" class="nav-link">Institutions</a>
         <details class="nav-more">
-          <summary class="nav-link">More</summary>
+          <summary class="nav-link is-active">More</summary>
           <div class="nav-more-menu">
             <a href="/methodology.html" class="nav-link">Methodology</a>
             <a href="/about.html" class="nav-link">About</a>
             <a href="/faq.html" class="nav-link">FAQ</a>
-            <a href="/blog.html" class="nav-link">Blog</a>
+            <a href="/blog.html" class="nav-link is-active" aria-current="page">Blog</a>
           </div>
         </details>
       </nav>
@@ -585,7 +585,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
+      <a href="/reports.html" class="nav-mobile-link">Reports</a>
       <a href="/companies.html" class="nav-mobile-link">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
@@ -593,7 +593,7 @@ function renderBlogIndex(publishedArticles, authorsData) {
       <a href="/methodology.html" class="nav-mobile-link">Methodology</a>
       <a href="/about.html" class="nav-mobile-link">About</a>
       <a href="/faq.html" class="nav-mobile-link">FAQ</a>
-      <a href="/blog.html" class="nav-mobile-link">Blog</a>
+      <a href="/blog.html" class="nav-mobile-link is-active" aria-current="page">Blog</a>
       <a href="/members.html" class="nav-mobile-link">Sign in</a>
       <a href="/reports.html" class="nav-mobile-link nav-mobile-cta">Browse reports →</a>
     </div>
