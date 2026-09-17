@@ -135,3 +135,15 @@ test('only the bridge case is marked now in the sensitivity grid', async () => {
   assert.match(sensitivity, /<tr><th scope="row">110<\/th>/);
   assert.match(sensitivity, /<tr><th scope="row">120<\/th>/);
 });
+
+test('scaled option rows retain API-authorized margin inputs', async () => {
+  const html = await renderWorkbench([{
+    key: 'option|bull', kind: 'option-leg', division: 'Option', scenario: 'Bull',
+    label: 'OPTION: Option — Bull', metricUsed: 'Sales', forecastYear: 2030,
+    metricValue: 50, selectedMultiple: 2, discountFactor: 1, contributionPerShare: 1,
+    probabilityPct: 20, editable: ['marketValue', 'sharePct', 'marginPct', 'selectedMultiple'],
+    scale: { market: 'market', marketValue: 1000, sharePct: 10, marginPct: 50 },
+  }]);
+  assert.match(html, /data-lever="marginPct"/);
+  assert.match(html, /data-lever="sharePct"/);
+});

@@ -30,7 +30,7 @@
   }
 
   function hasLever(row, lever) {
-    return !!row && row.editable.indexOf(lever) >= 0 && !(isRevenueMetric(row) && lever === 'marginPct');
+    return !!row && row.editable.indexOf(lever) >= 0 && !(row.kind === 'engine' && isRevenueMetric(row) && lever === 'marginPct');
   }
 
   function esc(s) {
@@ -83,7 +83,7 @@
             : '<span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>')
           + margin + '</span>'
           + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + (hasLever(row, 'marketValue') ? ' · the report\'s figure; change it if you read the market differently' : '') + '</span></span>'
-          + (hinted || isRevenueMetric(row) ? '' : marginContextHint());
+          + (hinted ? '' : marginContextHint());
       }
       if (hasLever(row, 'metricValue')) {
         const m = isRevenueMetric(row) ? null : row.modelledMargin;
