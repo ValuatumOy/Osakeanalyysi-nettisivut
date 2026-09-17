@@ -20,6 +20,19 @@
     weightPct: 'weight',
   };
 
+  function isRevenueMetric(row) {
+    return row && /\b(?:revenue|sales)\b/i.test(String(row.metricUsed || ''));
+  }
+
+  function leverLabel(row, lever) {
+    if (lever === 'metricValue' && isRevenueMetric(row)) return 'revenue forecast';
+    return LEVER_LABEL[lever] || 'forecast';
+  }
+
+  function hasLever(row, lever) {
+    return !!row && row.editable.indexOf(lever) >= 0 && !(isRevenueMetric(row) && lever === 'marginPct');
+  }
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
@@ -43,7 +56,7 @@
       const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
       const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
       return '<span class="wb-field' + (changed ? ' is-changed' : '') + '">'
-        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(LEVER_LABEL[lever]) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
+        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(leverLabel(row, lever)) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
         + (extra || '')
         + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
         + '</span>';
@@ -59,19 +72,22 @@
     function metricCell(row, hinted) {
       const year = row.forecastYear ? row.forecastYear + 'E ' : '';
       const label = '<span class="wb-cell-label">' + esc(year + (row.metricUsed || '').replace(/^\d{4}E?\s*/i, '')) + '</span>';
-      if (row.editable.indexOf('sharePct') >= 0 && row.scale) {
+      if (hasLever(row, 'sharePct') && row.scale) {
+        const margin = hasLever(row, 'marginPct')
+          ? '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>')
+          : '';
         return label
           + '<span class="wb-build">' + fieldHtml(row, 'sharePct', row.scale.sharePct, '<span class="wb-unit">%</span>')
-          + '<span class="wb-op">of</span>' + (row.editable.indexOf('marketValue') >= 0
+          + '<span class="wb-op">of</span>' + (hasLever(row, 'marketValue')
             ? fieldHtml(row, 'marketValue', row.scale.marketValue)
             : '<span class="wb-build-market" title="' + esc(row.scale.market) + '">' + fmtInt(row.scale.marketValue) + '</span>')
-          + '<span class="wb-op">×</span>' + fieldHtml(row, 'marginPct', row.scale.marginPct, '<span class="wb-unit">%</span><span class="wb-unit-word" title="The report\'s own margin assumption for this scenario. The engine only checks that market × share × margin reproduces the profit figure; whether the margin is defensible is the analyst\'s call.">margin</span>') + '</span>'
-          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + (row.editable.indexOf('marketValue') >= 0 ? ' · the report\'s figure; change it if you read the market differently' : '') + '</span></span>'
-          + (hinted ? '' : marginContextHint());
+          + margin + '</span>'
+          + '<span class="wb-derived">= ' + fmtInt(row.metricValue) + ' <span class="wb-market-name">' + esc(row.scale.sharePct >= 100 ? 'all of: ' : 'share of: ') + esc(row.scale.market) + (hasLever(row, 'marketValue') ? ' · the report\'s figure; change it if you read the market differently' : '') + '</span></span>'
+          + (hinted || isRevenueMetric(row) ? '' : marginContextHint());
       }
-      if (row.editable.indexOf('metricValue') >= 0) {
-        const m = row.modelledMargin;
-        if (m && row.editable.indexOf('marginPct') >= 0) {
+      if (hasLever(row, 'metricValue')) {
+        const m = isRevenueMetric(row) ? null : row.modelledMargin;
+        if (m && hasLever(row, 'marginPct')) {
           // Same shape as a scenario leg: the report's own revenue build for
           // this year, with the margin as the lever. Either field moves the metric.
           const differs = Math.abs(m.marginPct - m.impliedMarginPct) > 0.15;
@@ -238,11 +254,12 @@
       const options = [];
       result.rows.forEach((row) => {
         row.editable.forEach((lever) => {
+          if (!hasLever(row, lever)) return;
           const name = row.kind === 'option-leg' ? titleCase(row.division) + ' — ' + titleCase(row.scenario) : titleCase(row.division || row.label);
-          options.push({ value: row.key + '::' + lever, label: name + ' · ' + LEVER_LABEL[lever] });
+          options.push({ value: row.key + '::' + lever, label: name + ' · ' + leverLabel(row, lever) });
         });
       });
-      options.push({ value: '::allMetricsScale', label: 'Every profit forecast, scaled together' });
+      options.push({ value: '::allMetricsScale', label: 'Every forecast, scaled together' });
       return options;
     }
 
@@ -280,7 +297,7 @@
         + '<p class="wb-solve-result" id="wbSolveResult" aria-live="polite"></p></div>';
     }
 
-    // Every profit forecast × k: the engine's own answer to "what does the
+    // Every forecast × k: the engine's own answer to "what does the
     // price require", applied as the same overrides a user could have typed
     // (the metric on an established business, the market on a scenario), so
     // the bridge below shows every "was".
@@ -313,7 +330,7 @@
         });
         await refresh();
         const pct = (k - 1) * 100;
-        container.querySelector('#wbSolveResult').innerHTML = (all ? 'Every profit forecast' : 'The profit forecasts in ' + esc(names)) + ' ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') put' + (all ? 's' : '') + ' the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
+        container.querySelector('#wbSolveResult').innerHTML = (all ? 'Every forecast' : 'The forecast figures in ' + esc(names)) + ' ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') put' + (all ? 's' : '') + ' the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
           + '. The bridge below now shows those figures, each with the report\'s own value beside it. <button type="button" class="wb-link" id="wbSolveUndo">Back to the report\'s figures</button>';
         const undo = container.querySelector('#wbSolveUndo');
         if (undo) undo.addEventListener('click', () => { state.overrides = {}; refresh(); });
@@ -327,9 +344,11 @@
       if (!s || !s.rows.length) return '';
       const isProb = s.axis === 'probabilityPct';
       const price = result.currentPrice;
+      const mainMetric = result.rows.find((row) => (row.kind === 'method' || row.kind === 'engine') && hasLever(row, 'metricValue'));
+      const forecastLabel = isRevenueMetric(mainMetric) ? 'revenue forecast' : 'profit forecast';
       const cellClass = (p) => { const up = ((p - price) / price) * 100; return up > result.bands.buyAbovePct ? 'is-buy' : up < result.bands.sellBelowPct ? 'is-sell' : 'is-hold'; };
       let html = '<div class="wb-sens"><div class="wb-section-title">Sensitivity</div>'
-        + '<p class="wb-section-sub">' + (isProb ? 'Combined success probability of the largest option (rows) against its exit multiple (columns), with everything else as set above.' : 'The main profit forecast (rows) against its multiple (columns), with everything else as set above.') + ' Shaded by the rating each target would carry.</p>'
+        + '<p class="wb-section-sub">' + (isProb ? 'Combined success probability of the largest option (rows) against its exit multiple (columns), with everything else as set above.' : 'The main ' + forecastLabel + ' (rows) against its multiple (columns), with everything else as set above.') + ' Shaded by the rating each target would carry.</p>'
         + '<table class="wb-sens-table"><thead><tr><th scope="col">' + (isProb ? 'Probability' : 'Forecast') + '</th>' + s.columns.map((c) => '<th scope="col">' + fmt1(c) + 'x</th>').join('') + '</tr></thead><tbody>';
       s.rows.forEach((r) => {
         html += '<tr' + (r.label ? ' class="is-base"' : '') + '><th scope="row">' + (isProb ? fmtPct(r.value) + '%' : fmtInt(r.value)) + (r.label ? '<span class="wb-sens-note">now</span>' : '') + '</th>'
@@ -489,7 +508,7 @@
         const data = await request({ overrides: state.overrides, solve: { for: lever, row: row || undefined, targetPrice: goalOf() } });
         const s = data.solve;
         const rowInfo = row ? byKey(state.current.rows)[row] : null;
-        const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every profit forecast';
+        const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every forecast';
         const unit = lever === 'metricValue' || lever === 'marketValue' ? '' : lever === 'selectedMultiple' ? 'x' : lever === 'allMetricsScale' ? '×' : '%';
         const shown = (v) => (lever === 'metricValue' || lever === 'marketValue' ? fmtInt(v) : lever === 'allMetricsScale' ? (Math.round(v * 100) / 100).toFixed(2) : Math.abs(v) < 1 ? (Math.round(v * 100) / 100).toString() : fmt1(v)) + unit;
         if (!s || !Number.isFinite(s.value) || s.targetAtValue == null) {
@@ -497,7 +516,7 @@
           return;
         }
         if (s.reached) {
-          out.innerHTML = 'The ' + esc(LEVER_LABEL[lever] || 'forecasts') + ' for <strong>' + esc(name) + '</strong> would have to be <strong>' + esc(shown(s.value)) + '</strong>'
+          out.innerHTML = 'The ' + esc(leverLabel(rowInfo, lever)) + ' for <strong>' + esc(name) + '</strong> would have to be <strong>' + esc(shown(s.value)) + '</strong>'
             + (rowInfo ? ' (the report has ' + esc(shown(valueOf(rowInfo, lever))) + ')' : '')
             + ' for the target to sit at ' + goalLabel() + '. '
             + (lever === 'allMetricsScale' ? '' : '<button type="button" class="wb-link" id="wbSolveApply">Set it and see the bridge</button>');
@@ -512,7 +531,7 @@
           const lo = s.targetAtLower, hi = s.targetAtUpper;
           const rangeText = lo != null && hi != null
             ? 'On its own this input can only move the target between <strong>' + fmt1(Math.min(lo, hi)) + '</strong> and <strong>' + fmt1(Math.max(lo, hi)) + ' ' + esc(data.currency) + '</strong>'
-              + ' (' + esc(LEVER_LABEL[lever]) + ' from ' + esc(shown(s.lower)) + ' to ' + esc(shown(s.upper)) + (lever === 'probabilityPct' ? ', the other scenarios of this business take the rest' : '') + ')'
+              + ' (' + esc(leverLabel(rowInfo, lever)) + ' from ' + esc(shown(s.lower)) + ' to ' + esc(shown(s.upper)) + (lever === 'probabilityPct' ? ', the other scenarios of this business take the rest' : '') + ')'
             : 'Even at <strong>' + esc(shown(s.value)) + '</strong> the target would be ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency);
           const now = state.current.targetPrice;
           const direction = now != null ? (goalOf() < now ? 'down' : 'up') : '';
@@ -532,7 +551,7 @@
         Object.keys(state.overrides[key]).forEach((lever) => {
           const row = rows[key] || base[key];
           list.push({ key, lever, label: row ? (row.kind === 'option-leg' ? titleCase(row.division) + ' — ' + titleCase(row.scenario) : titleCase(row.division || row.label)) : key,
-            what: LEVER_LABEL[lever], before: valueOf(base[key], lever), after: state.overrides[key][lever] });
+            what: leverLabel(row, lever), before: valueOf(base[key], lever), after: state.overrides[key][lever] });
         });
       });
       return list;
