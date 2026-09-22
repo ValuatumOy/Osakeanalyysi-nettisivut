@@ -63,10 +63,10 @@ export class WorkerStack extends Stack {
         // invocation (~8 min window, 20 s apart). The first live test render
         // took ~27 min (78 polls) — a real AI research pipeline, not a
         // template fill — so the budget is 150 polls (~50 min) to give slow
-        // renders room while still failing hung jobs within the hour.
+        // renders room while still failing jobs that outlive the engine's two-hour hard timeout.
         RECONCILER_POLL_WINDOW_MS: '480000',
         RECONCILER_POLL_DELAY_MS: '20000',
-        RECONCILER_MAX_POLLS: '150',
+        RECONCILER_MAX_POLLS: '390',
         EMIT_ORDER_METRICS: 'true',
         // Refresh the company's FMP data in Wisdom before rendering, so a
         // fresh report reflects current figures. The bearer token comes from
