@@ -39,6 +39,7 @@
   const fmtInt = (n) => Math.round(n).toLocaleString('en-US');
   const fmt1 = (n) => (Math.round(n * 10) / 10).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const fmtPct = (n) => (Math.round(n * 10) / 10).toLocaleString('en-US', { maximumFractionDigits: 1 });
+  const fmtShare = (n) => n.toLocaleString('en-US', { maximumFractionDigits: 6 });
   const fmtSigned = (n) => (n > 0 ? '+' : n < 0 ? '−' : '') + fmtPct(Math.abs(n)) + '%';
   const titleCase = (s) => String(s || '');
   const num = (v) => { const n = Number(String(v).replace(/,/g, '')); return Number.isFinite(n) ? n : null; };
@@ -53,12 +54,12 @@
       const base = state.baseline && byKey(state.baseline.rows)[row.key];
       const baseValue = base ? valueOf(base, lever) : value;
       const changed = state.overrides[row.key] && state.overrides[row.key][lever] != null && Math.abs(baseValue - value) > 1e-9;
-      const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : 1;
-      const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : fmtPct(value);
+      const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : lever === 'sharePct' && Math.abs(value) < 1 ? 0.0001 : 1;
+      const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : lever === 'sharePct' ? fmtShare(value) : fmtPct(value);
       return '<span class="wb-field' + (changed ? ' is-changed' : '') + '">'
-        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(leverLabel(row, lever)) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
+        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '"' + (lever === 'sharePct' ? ' data-value="' + value + '"' : '') + ' value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(leverLabel(row, lever)) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
         + (extra || '')
-        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : fmtPct(baseValue) + '%') + '</span>' : '')
+        + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : (lever === 'sharePct' ? fmtShare(baseValue) : fmtPct(baseValue)) + '%') + '</span>' : '')
         + '</span>';
     }
 
@@ -420,7 +421,8 @@
             const v = num(input.value); if (v == null) return;
             e.preventDefault();
             const step = Number(input.getAttribute('step')) * (e.shiftKey ? 10 : 1);
-            input.value = String(Math.round((v + (e.key === 'ArrowUp' ? step : -step)) * 1000) / 1000);
+            const precision = input.dataset.lever === 'sharePct' ? 1000000 : 1000;
+            input.value = String(Math.round((v + (e.key === 'ArrowUp' ? step : -step)) * precision) / precision);
             schedule(input, 150);
           }
         });
@@ -449,6 +451,7 @@
       let value = num(input.value);
       if (value == null) return;
       const key = input.dataset.row, lever = input.dataset.lever;
+      if (lever === 'sharePct' && value === num(input.defaultValue)) value = Number(input.dataset.value);
       // A scenario probability is stated in whole percents in the report and
       // its gates; a fractional one would come back as a finding when locked.
       if (lever === 'probabilityPct') { value = Math.round(value); input.value = String(value); }

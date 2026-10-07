@@ -5,8 +5,8 @@ import vm from 'node:vm';
 
 const source = readFileSync(new URL('../../js/valuation-workbench.js', import.meta.url), 'utf8');
 
-async function renderWorkbench(rows, sensitivityRows = [{ value: 150, label: 'bridge case', prices: [8] }]) {
-  const window = {};
+async function renderWorkbench(rows, sensitivityRows = [{ value: 150, label: 'bridge case', prices: [8] }], controls = {}) {
+  const window = { clearTimeout() {}, setTimeout() { return 1; } };
   const context = { window };
   vm.runInNewContext(source, context, { filename: 'js/valuation-workbench.js' });
 
@@ -14,7 +14,7 @@ async function renderWorkbench(rows, sensitivityRows = [{ value: 150, label: 'br
     html: '',
     classList: { add() {}, remove() {} },
     querySelector() { return null; },
-    querySelectorAll() { return []; },
+    querySelectorAll(selector) { return selector === 'input[data-lever]' ? (controls.inputs || []) : []; },
     prepend() {},
     set innerHTML(html) { this.html = html; },
     get innerHTML() { return this.html; },
@@ -41,8 +41,47 @@ async function renderWorkbench(rows, sensitivityRows = [{ value: 150, label: 'br
     onLock() {},
   });
   assert.equal(await mounted.start(), true);
+  controls.mounted = mounted;
   return container.innerHTML;
 }
+
+const roboticsRow = (key, sharePct) => ({
+  key, kind: 'option-leg', division: 'Humanoid robotics', scenario: key,
+  label: 'Humanoid robotics', metricUsed: 'Sales', metricValue: 50,
+  selectedMultiple: 2, contributionPerShare: 1, probabilityPct: 20.14,
+  editable: ['sharePct', 'marginPct', 'selectedMultiple'],
+  scale: { market: 'Humanoid robotics', marketValue: 1000, sharePct, marginPct: 50.14 },
+});
+
+test('small market shares keep six-decimal precision while other percentages stay unchanged', async () => {
+  const html = await renderWorkbench([
+    roboticsRow('neutral', 0.01822916667), roboticsRow('positive', 0.15625),
+  ]);
+  assert.match(html, /data-row="neutral" data-lever="sharePct" data-value="0\.01822916667" value="0\.018229" step="0\.0001"/);
+  assert.match(html, /data-row="positive" data-lever="sharePct" data-value="0\.15625" value="0\.15625" step="0\.0001"/);
+  assert.match(html, /data-lever="probabilityPct" value="20\.1" step="1"/);
+  assert.match(html, /data-lever="marginPct" value="50\.1" step="1"/);
+});
+
+test('unchanged rounded market shares create no override, and arrow edits affect only that field', async () => {
+  const events = {};
+  const input = {
+    dataset: { row: 'neutral', lever: 'sharePct', value: '0.01822916667' },
+    value: '0.018229', defaultValue: '0.018229',
+    addEventListener(type, handler) { events[type] = handler; },
+    getAttribute(name) { return name === 'step' ? '0.0001' : null; },
+  };
+  const controls = { inputs: [input] };
+  await renderWorkbench([roboticsRow('neutral', 0.01822916667), roboticsRow('positive', 0.15625)], undefined, controls);
+  events.change();
+  assert.equal(JSON.stringify(controls.mounted.overrides), '{}');
+  events.keydown({ key: 'ArrowUp', preventDefault() {} });
+  assert.equal(input.value, '0.018329');
+  assert.equal(JSON.stringify(controls.mounted.overrides), '{"neutral":{"sharePct":0.018329}}');
+  input.value = input.defaultValue;
+  events.change();
+  assert.equal(JSON.stringify(controls.mounted.overrides), '{}');
+});
 
 test('revenue rows keep editable value and multiple without margin controls or comparisons', async () => {
   const html = await renderWorkbench([{
