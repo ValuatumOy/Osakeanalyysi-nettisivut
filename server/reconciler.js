@@ -642,6 +642,9 @@ async function advance(order) {
           // Only a member generation carries a name: a revised report says who
           // steered it, an unrevised or shop report stays engine-only.
           analystName: order.analystName || undefined,
+          // The customer's revised forecast is kept in their own model for this
+          // company, so their later revisions update it instead of adding models.
+          endUserEmail: order.email || undefined,
         }));
       } catch (err) {
         // The engine refused the request (400/403/409; not a timeout or rate
