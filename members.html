@@ -534,6 +534,7 @@
       }
 
       const genCard = document.getElementById('genCard');
+      window._hasGeneration = Boolean(data.hasGeneration);
       genCard.hidden = !data.hasGeneration;
       if (data.hasGeneration) {
         const ob = data.openObligationId;
@@ -554,9 +555,16 @@
         // Resume watching a run that was already going when the page loaded.
         const active = u.genId || localStorage.activeGenId;
         if (active && u.genReserved) pollGeneration(active);
-        loadGenerations();
         if (isAnalyst) loadEarnings();
+      } else {
+        document.getElementById('genTitle').textContent = 'Your reports';
+        document.getElementById('genSub').textContent = 'Open your existing reports and request revisions.';
+        document.getElementById('genStatus').textContent = '';
+        ['genCommit', 'genPath', 'reserveRow', 'submitRow'].forEach(id => {
+          document.getElementById(id).hidden = true;
+        });
       }
+      loadGenerations();
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
       loadReports();
     }
@@ -732,6 +740,7 @@
     async function loadGenerations() {
       const { status, data } = await api('GET', '/generations');
       if (status !== 200) return;
+      document.getElementById('genCard').hidden = !window._hasGeneration && !(data.generations || []).length;
       // Companies this analyst covers: the server refuses to let them read and
       // score a rival on one, so the button says so before the click.
       window._myCompanies = new Set((data.generations || [])
