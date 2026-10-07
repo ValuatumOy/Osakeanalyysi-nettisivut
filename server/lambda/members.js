@@ -1057,7 +1057,10 @@ async function postGenerationRevision(event) {
   const valuationOverrides = editing.parseValuationOverrides(body.valuationOverrides);
   if (valuationOverrides instanceof Error) return json(400, { error: valuationOverrides.message });
 
-  const claimed = await ordersStore.claimRevision(genId, comments, valuationOverrides);
+  const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
+  if (scope instanceof Error) return json(400, { error: scope.message });
+
+  const claimed = await ordersStore.claimRevision(genId, comments, valuationOverrides, scope);
   if (!claimed) {
     return json(409, {
       error: order.revisionsUsed >= order.revisionsAllowed

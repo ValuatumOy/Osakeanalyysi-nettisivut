@@ -440,7 +440,10 @@ async function postOrderRevision(event) {
   const valuationOverrides = editing.parseValuationOverrides(body.valuationOverrides);
   if (valuationOverrides instanceof Error) return json(400, { error: valuationOverrides.message });
 
-  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides);
+  const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
+  if (scope instanceof Error) return json(400, { error: scope.message });
+
+  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides, scope);
   if (!claimed) {
     const existing = await ordersStore.get(id);
     if (!existing) return json(404, { error: 'Order not found' });

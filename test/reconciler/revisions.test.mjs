@@ -191,7 +191,20 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   assert.equal(engine.calls.submitRevision[1].scope, 'narrative');
   assert.deepEqual(engine.calls.submitRevision[1].valuationOverrides, { 'robotaxi|bull': { probabilityPct: 40 } });
   assert.equal(order.pendingValuationOverrides, null);
-  assert.equal(engine.calls.submitRevision[0].scope, undefined);
+  assert.equal(engine.calls.submitRevision[0].scope, 'estimates');
+});
+
+test('wording scope reaches the engine and is cleared after submission', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine();
+  const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+  const orders = require(ORDERS_ID);
+  orders.create({ id: 'cs_content', status: orders.STATUS.DELIVERED, jobId: 'job_base', revisionsAllowed: 1 }, statePath);
+  orders.claimRevision('cs_content', 'Explain the risks more clearly', null, 'content', statePath);
+  await reconciler.advance(orders.get('cs_content', statePath));
+  assert.equal(engine.calls.submitRevision[0].scope, 'content');
+  assert.equal(engine.calls.submitRevision[0].parentJobId, 'job_base');
+  assert.equal(orders.get('cs_content', statePath).pendingRevisionScope, null);
 });
 
 test('a change memo fetch failure does not block delivery — the entry just has changes: null', async (t) => {

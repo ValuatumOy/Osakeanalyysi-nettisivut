@@ -448,6 +448,7 @@ async function deliverRevision(order, job) {
       : { revisionsUsed: (order.revisionsUsed || 0) + 1 }),
     pendingRevisionComment: null,
     pendingValuationOverrides: null,
+    pendingRevisionScope: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -469,6 +470,7 @@ async function failRevision(order, reason) {
     revisionJobId: null,
     pendingRevisionComment: null,
     pendingValuationOverrides: null,
+    pendingRevisionScope: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -629,7 +631,8 @@ async function advance(order) {
       const { jobId: revisionJobId } = await engine.submitRevision({
         parentJobId: order.jobId,
         comments,
-        ...(valuationOverrides ? { scope: 'narrative', valuationOverrides } : {}),
+        scope: valuationOverrides ? 'narrative' : (order.pendingRevisionScope || 'estimates'),
+        ...(valuationOverrides ? { valuationOverrides } : {}),
         // A hand-attached job is owned by whoever submitted it, not the shop.
         ...(order.engineUsername ? { username: order.engineUsername } : {}),
         // Only a member generation carries a name: a revised report says who
@@ -637,9 +640,9 @@ async function advance(order) {
         analystName: order.analystName || undefined,
       });
       await orders.update(order.id, {
-        revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, activeRevisionComment: comments, polls: 0, error: null,
+        revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, activeRevisionComment: comments, polls: 0, error: null,
       });
-      order = { ...order, revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, activeRevisionComment: comments, polls: 0 };
+      order = { ...order, revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, activeRevisionComment: comments, polls: 0 };
       // Fall through: with a poll window configured, start polling immediately.
       if (POLL_WINDOW_MS <= 0) return;
     }

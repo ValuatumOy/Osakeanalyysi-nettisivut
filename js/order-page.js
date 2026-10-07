@@ -94,8 +94,8 @@
 
   // `valuationOverrides` (optional) is the what-if the customer locked in the
   // target-price view; the engine writes the report on those rows.
-  function postRevision(comments, valuationOverrides) {
-    const extra = valuationOverrides ? { valuationOverrides: valuationOverrides } : {};
+  function postRevision(comments, valuationOverrides, scope) {
+    const extra = valuationOverrides ? { valuationOverrides: valuationOverrides, scope: 'narrative' } : { scope: scope || 'estimates' };
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
@@ -1503,7 +1503,7 @@
     button.disabled = true;
     button.textContent = 'Submitting…';
     try {
-      const res = await postRevision(comments);
+      const res = await postRevision(comments, null, document.getElementById('revisionScope').value);
       const data = await res.json();
       if (!res.ok) {
         status.textContent = data.error || 'Could not submit your request. Please try again.';

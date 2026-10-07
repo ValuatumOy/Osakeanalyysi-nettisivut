@@ -129,4 +129,14 @@ function parseValuationOverrides(raw) {
   return raw;
 }
 
-module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation, currentReportQuality, parseValuationOverrides };
+function parseRevisionScope(raw, valuationOverrides) {
+  if (raw !== undefined && !['content', 'estimates', 'narrative'].includes(raw)) {
+    return new Error('scope must be content or estimates');
+  }
+  if (raw === 'narrative' && !valuationOverrides) {
+    return new Error('narrative scope requires valuationOverrides');
+  }
+  return valuationOverrides ? 'narrative' : (raw || 'estimates');
+}
+
+module.exports = { historyEntryPayload, activityOf, editableNow, currentVersion, loadPreviewHtml, previewValuation, currentReportQuality, parseValuationOverrides, parseRevisionScope };

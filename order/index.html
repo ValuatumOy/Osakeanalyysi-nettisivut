@@ -23,6 +23,7 @@
       border-radius: var(--r-xl);
       padding: 2.5rem;
       max-width: 1240px;
+      min-width: 0;
       width: 100%;
       margin-top: 2rem;
     }
@@ -576,8 +577,14 @@
         <div class="revision-box" id="revisionBox" style="display:none;">
           <div class="revision-error-banner" id="revisionErrorBanner" style="display:none;"></div>
           <h2 style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:.4rem;">Request a revision</h2>
-          <p class="order-sub" style="margin-bottom:.85rem;">Say in plain words what should change: "assume gold doubles in 2027", "use a different peer group", "be more conservative on growth". The analyst turns it into forecast figures, writes them into the model and regenerates the report. Any language works; English is the safe fallback. Every version stays below, with what moved measured by the engine.</p>
+          <p class="order-sub" style="margin-bottom:.85rem;">Say in plain words what should change. Choose forecasts and assumptions to update the model, or wording only to rewrite the text while keeping all numbers unchanged. Any language works; English is the safe fallback. Every revision uses one round and stays below in the version history.</p>
           <p class="revision-count" id="revisionCount">—</p>
+          <label for="revisionScope">What should change?</label>
+          <select class="revision-textarea" id="revisionScope" style="min-height:0; margin-top:.4rem;" aria-describedby="revisionScopeHint">
+            <option value="estimates" selected>Forecasts and assumptions</option>
+            <option value="content">Wording only</option>
+          </select>
+          <p class="order-sub" id="revisionScopeHint" style="margin-bottom:.85rem; color:var(--charcoal-mid);">Wording only keeps the forecasts, valuation and target price unchanged.</p>
           <textarea class="revision-textarea" id="revisionText" placeholder="Describe the change you'd like to see in the report…"></textarea>
           <button type="button" class="btn btn-primary btn-lg btn-full" id="revisionSubmit">Request revision</button>
           <p class="revision-status" id="revisionStatus"></p>

@@ -176,13 +176,13 @@ async function create(input) {
 // `valuationOverrides` (optional) is the what-if the customer locked in the
 // target-price view; the reconciler submits it with the comment as a
 // narrative-scope revision.
-async function claimRevision(id, comment, valuationOverrides = null) {
+async function claimRevision(id, comment, valuationOverrides = null, scope = 'estimates') {
   try {
     const res = await dynamo().send(new UpdateCommand({
       TableName: TABLE(),
       Key: { orderId: id },
       UpdateExpression: 'SET #s = :revising, pendingRevisionComment = :comment, pendingValuationOverrides = :overrides, '
-        + 'revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
+        + 'pendingRevisionScope = :scope, revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
       ConditionExpression: '#s = :delivered AND revisionsUsed < revisionsAllowed',
       ExpressionAttributeNames: { '#s': 'status' },
       ExpressionAttributeValues: {
@@ -190,6 +190,7 @@ async function claimRevision(id, comment, valuationOverrides = null) {
         ':delivered': STATUS.DELIVERED,
         ':comment': comment,
         ':overrides': valuationOverrides,
+        ':scope': valuationOverrides ? 'narrative' : scope,
         ':null': null,
         ':zero': 0,
         ':now': nowIso(),

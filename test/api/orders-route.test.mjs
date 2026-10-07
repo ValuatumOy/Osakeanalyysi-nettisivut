@@ -25,7 +25,7 @@ function fakeOrdersStore(orders) {
   return {
     STATUS,
     async get(id) { return orders.get(id) || null; },
-    async claimRevision(id, comment, valuationOverrides = null) {
+    async claimRevision(id, comment, valuationOverrides = null, scope) {
       const order = orders.get(id);
       if (!order) return null;
       if (order.status !== STATUS.DELIVERED) return null;
@@ -33,6 +33,7 @@ function fakeOrdersStore(orders) {
       order.status = STATUS.REVISING;
       order.pendingRevisionComment = comment;
       order.pendingValuationOverrides = valuationOverrides;
+      order.pendingRevisionScope = scope;
       return order;
     },
     async claimEdit(id, edit) {
@@ -98,6 +99,30 @@ function event(routeKey, { id, body, secret = 'test-secret' } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   };
 }
+
+test('shop revisions validate scope before claiming and default to forecasts', async (t) => {
+  cleanup(t);
+  const orders = new Map([
+    ['cs_scope', { id: 'cs_scope', status: STATUS.DELIVERED, revisionsAllowed: 2, revisionsUsed: 0 }],
+  ]);
+  const { handler } = loadApi({ orders });
+  for (const scope of ['edit', 'narrative', '', null, 42, {}]) {
+    const response = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_scope', body: { comments: 'Clearer wording', scope } }));
+    assert.equal(response.statusCode, 400, JSON.stringify(scope));
+    assert.equal(orders.get('cs_scope').status, STATUS.DELIVERED);
+  }
+  for (const scope of ['content', 'estimates', undefined]) {
+    orders.get('cs_scope').status = STATUS.DELIVERED;
+    const response = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_scope', body: { comments: 'Clearer wording', scope } }));
+    assert.equal(response.statusCode, 200);
+    assert.equal(orders.get('cs_scope').pendingRevisionScope, scope || 'estimates');
+  }
+  orders.get('cs_scope').status = STATUS.DELIVERED;
+  const valuationOverrides = { 'core auto': { selectedMultiple: 12 } };
+  const response = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_scope', body: { comments: 'Use my assumptions', scope: 'content', valuationOverrides } }));
+  assert.equal(response.statusCode, 200);
+  assert.equal(orders.get('cs_scope').pendingRevisionScope, 'narrative');
+});
 
 test('GET /api/orders/{id} rejects a missing/wrong bearer', async (t) => {
   const { handler } = loadApi();
