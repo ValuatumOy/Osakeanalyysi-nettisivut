@@ -42,10 +42,26 @@
   const fmtShare = (n) => n.toLocaleString('en-US', { maximumFractionDigits: 6 });
   const fmtSigned = (n) => (n > 0 ? '+' : n < 0 ? '−' : '') + fmtPct(Math.abs(n)) + '%';
   const titleCase = (s) => String(s || '');
-  const num = (v) => { const n = Number(String(v).replace(/,/g, '')); return Number.isFinite(n) ? n : null; };
+  const num = (v) => {
+    let text = String(v).trim();
+    if (/^[+-]?\d{1,3}(?:,\d{3})+\.\d+$/.test(text)) {
+      text = text.replace(/,/g, '');
+    } else if (/^[+-]?\d{1,3}(?:\.\d{3})+,\d+$/.test(text)) {
+      text = text.replace(/\./g, '').replace(',', '.');
+    } else if (/^[+-]?\d{1,3}([,.])\d{3}(?:\1\d{3})+$/.test(text)) {
+      text = text.replace(/[,.]/g, '');
+    } else {
+      if (/\s/.test(text) && !/^[+-]?\d{1,3}(?:\s\d{3})+(?:[.,]\d+)?$/.test(text)) return null;
+      text = text.replace(/\s/g, '').replace(',', '.');
+    }
+    if (!/^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(text)) return null;
+    const n = Number(text);
+    return Number.isFinite(n) ? n : null;
+  };
+  const inputFormat = (lever, value) => String(Number(value.toFixed(6)));
 
   function mount(container, opts) {
-    const state = { baseline: null, current: null, overrides: {}, timer: null, inflight: 0, solveRow: '', picks: {} };
+    const state = { baseline: null, current: null, overrides: {}, drafts: {}, pending: false, timer: null, inflight: 0, solveRow: '', picks: {} };
     const byKey = (rows) => { const m = {}; (rows || []).forEach((r) => { m[r.key] = r; }); return m; };
 
     // ---- rendering -------------------------------------------------------
@@ -55,9 +71,11 @@
       const baseValue = base ? valueOf(base, lever) : value;
       const changed = state.overrides[row.key] && state.overrides[row.key][lever] != null && Math.abs(baseValue - value) > 1e-9;
       const step = lever === 'metricValue' || lever === 'marketValue' ? 100 : lever === 'selectedMultiple' ? 0.5 : lever === 'sharePct' && Math.abs(value) < 1 ? 0.0001 : 1;
-      const shown = lever === 'metricValue' || lever === 'marketValue' ? fmtInt(value) : lever === 'selectedMultiple' ? fmt1(value) : lever === 'sharePct' ? fmtShare(value) : fmtPct(value);
+      const original = inputFormat(lever, value);
+      const draft = state.drafts[row.key + '::' + lever];
+      const shown = draft ? draft.raw : original;
       return '<span class="wb-field' + (changed ? ' is-changed' : '') + '">'
-        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '"' + (lever === 'sharePct' ? ' data-value="' + value + '"' : '') + ' value="' + esc(shown) + '" step="' + step + '" aria-label="' + esc(titleCase(leverLabel(row, lever)) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
+        + '<input type="text" inputmode="decimal" data-row="' + esc(row.key) + '" data-lever="' + lever + '" data-value="' + value + '" data-shown="' + esc(original) + '" value="' + esc(shown) + '" step="' + step + '" aria-invalid="' + Boolean(draft && draft.value == null) + '" aria-label="' + esc(titleCase(leverLabel(row, lever)) + ', ' + row.label) + '" size="' + Math.max(3, shown.length + 1) + '">'
         + (extra || '')
         + (changed ? '<span class="wb-was">was ' + esc(lever === 'metricValue' || lever === 'marketValue' ? fmtInt(baseValue) : lever === 'selectedMultiple' ? fmt1(baseValue) + 'x' : (lever === 'sharePct' ? fmtShare(baseValue) : fmtPct(baseValue)) + '%') + '</span>' : '')
         + '</span>';
@@ -303,18 +321,25 @@
     // (the metric on an established business, the market on a scenario), so
     // the bridge below shows every "was".
     async function runSolveAll() {
+      if (invalidDrafts()) return;
+      state.drafts = {};
+      if (!await refresh()) return;
+      const ticket = beginAction();
       const out = container.querySelector('#wbSolveResult');
       const goal = goalOf();
       const picked = pickedBusinesses();
       const all = picked.length === businesses(state.current).length;
       const names = all ? 'every business' : picked.map((b) => b.name).join(', ');
-      if (!picked.length) { out.innerHTML = '<span class="wb-issue">Check at least one business.</span>'; return; }
+      if (!picked.length) { state.pending = false; syncButtons(); out.innerHTML = '<span class="wb-issue">Check at least one business.</span>'; return; }
       out.innerHTML = '<span class="wb-muted">Solving…</span>';
       try {
         const keys = [].concat.apply([], picked.map((b) => b.keys));
         const data = await request({ overrides: state.overrides, solve: { for: 'allMetricsScale', targetPrice: goal, rows: keys } });
+        if (ticket !== state.inflight) return;
         const s = data.solve;
         if (!s || !s.reached) {
+          state.pending = false;
+          syncButtons();
           out.innerHTML = '<span class="wb-unreachable">Even scaling ' + esc(names) + ' ' + (s ? (Math.round(s.upper * 10) / 10) + '×' : '') + ' does not reach ' + fmt1(goal) + '.</span>'
             + (all ? '' : ' Check more businesses, or pick another target.');
           return;
@@ -329,13 +354,14 @@
             else if (row.editable.indexOf('metricValue') >= 0) (state.overrides[row.key] = state.overrides[row.key] || {}).metricValue = row.metricValue * k;
           }
         });
-        await refresh();
+        if (!await refresh()) return;
         const pct = (k - 1) * 100;
         container.querySelector('#wbSolveResult').innerHTML = (all ? 'Every forecast' : 'The forecast figures in ' + esc(names)) + ' ' + (pct >= 0 ? 'raised' : 'lowered') + ' by <strong>' + fmtPct(Math.abs(pct)) + '%</strong> (×' + (Math.round(k * 100) / 100).toFixed(2) + ') put' + (all ? 's' : '') + ' the target at ' + fmt1(s.targetAtValue) + ' ' + esc(data.currency)
           + '. The bridge below now shows those figures, each with the report\'s own value beside it. <button type="button" class="wb-link" id="wbSolveUndo">Back to the report\'s figures</button>';
         const undo = container.querySelector('#wbSolveUndo');
-        if (undo) undo.addEventListener('click', () => { state.overrides = {}; refresh(); });
+        if (undo) undo.addEventListener('click', resetInputs);
       } catch (err) {
+        if (ticket !== state.inflight) return;
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
       }
     }
@@ -363,9 +389,9 @@
       const changes = Object.keys(state.overrides).length;
       const rounds = opts.remainingRounds || 0;
       return '<div class="wb-footer">'
-        + '<button type="button" class="btn btn-ghost" id="wbReset"' + (changes ? '' : ' disabled') + '>Back to the report\'s assumptions</button>'
+        + '<button type="button" class="btn btn-ghost" id="wbReset"' + (changes || Object.keys(state.drafts).length ? '' : ' disabled') + '>Back to the report\'s assumptions</button>'
         + '<div class="wb-footer-lock">'
-        + '<button type="button" class="btn btn-primary btn-lg" id="wbLock"' + (changes && rounds > 0 && state.current && state.current.targetPrice != null ? '' : ' disabled') + '>Lock these assumptions &amp; generate the report</button>'
+        + '<button type="button" class="btn btn-primary btn-lg" id="wbLock"' + (canLock() ? '' : ' disabled') + '>Lock these assumptions &amp; generate the report</button>'
         + '<span class="wb-footer-hint">' + (rounds > 0
           ? 'Uses 1 of your ' + rounds + ' remaining revision' + (rounds === 1 ? '' : 's') + '. The report text is rewritten around the new numbers; nothing changes until you lock.'
           : 'Add a revision round to turn these assumptions into a new report.') + '</span>'
@@ -373,6 +399,7 @@
     }
 
     function render() {
+      state.updating = true;
       const result = state.current;
       container.innerHTML = qualityHtml(result) + summaryHtml(result)
         + '<div class="wb-section-title">The bridge</div>'
@@ -381,11 +408,13 @@
         + '<div class="wb-lower">' + solveHtml(result) + sensitivityHtml(result) + '</div>'
         + footerHtml();
       wire();
+      state.updating = false;
     }
 
     // Patch what changed instead of re-rendering the table, so a field being
     // typed in keeps its caret.
     function update() {
+      state.updating = true;
       const result = state.current;
       const summary = container.querySelector('.wb-summary');
       if (summary) summary.outerHTML = summaryHtml(result);
@@ -393,10 +422,13 @@
       const active = document.activeElement;
       const activeKey = active && active.dataset && active.dataset.row ? active.dataset.row + '::' + active.dataset.lever : null;
       const selStart = active && active.selectionStart;
+      const selEnd = active && active.selectionEnd;
+      const direction = active && active.selectionDirection;
+      const raw = active && active.value;
       if (wrap) wrap.innerHTML = tableHtml(result);
       if (activeKey) {
         const again = container.querySelector('input[data-row="' + CSS.escape(activeKey.split('::')[0]) + '"][data-lever="' + activeKey.split('::')[1] + '"]');
-        if (again) { again.focus(); try { again.setSelectionRange(selStart, selStart); } catch (e) { /* not a text input */ } }
+        if (again) { if (state.drafts[activeKey]) again.value = raw; again.focus(); try { again.setSelectionRange(selStart, selEnd, direction); } catch (e) { /* not a text input */ } }
       }
       const sens = container.querySelector('.wb-sens');
       const sensHtml = sensitivityHtml(result);
@@ -406,7 +438,12 @@
       if (footer) footer.outerHTML = footerHtml();
       const solve = container.querySelector('.wb-solve');
       if (solve) { const keep = container.querySelector('#wbSolveResult'); const kept = keep ? keep.innerHTML : ''; solve.outerHTML = solveHtml(result); container.querySelector('#wbSolveResult').innerHTML = kept; }
+      if (active && active.id === 'wbAimPrice') {
+        const again = container.querySelector('#wbAimPrice');
+        if (again) { again.value = raw; again.focus(); again.setSelectionRange(selStart, selEnd, direction); }
+      }
       wire();
+      state.updating = false;
     }
 
     // ---- interaction -----------------------------------------------------
@@ -414,9 +451,10 @@
     function wire() {
       container.querySelectorAll('input[data-lever]').forEach((input) => {
         input.addEventListener('input', () => schedule(input, 350));
-        input.addEventListener('change', () => schedule(input, 0));
+        input.addEventListener('change', () => { if (!state.updating) schedule(input, 0, true); });
+        input.addEventListener('blur', () => { if (!state.updating) schedule(input, 0, true); });
         input.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') { e.preventDefault(); schedule(input, 0); }
+          if (e.key === 'Enter') { e.preventDefault(); schedule(input, 0, true); }
           if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
             const v = num(input.value); if (v == null) return;
             e.preventDefault();
@@ -428,9 +466,9 @@
         });
       });
       const reset = container.querySelector('#wbReset');
-      if (reset) reset.addEventListener('click', () => { state.overrides = {}; state.solveRow = ''; refresh(); });
+      if (reset) reset.addEventListener('click', resetInputs);
       const lock = container.querySelector('#wbLock');
-      if (lock) lock.addEventListener('click', () => opts.onLock(state.overrides, changeList()));
+      if (lock) lock.addEventListener('click', () => { if (canLock()) opts.onLock(state.overrides, changeList()); });
       const solveBtn = container.querySelector('#wbSolveBtn');
       if (solveBtn) solveBtn.addEventListener('click', runSolve);
       const solveAllBtn = container.querySelector('#wbSolveAllBtn');
@@ -445,17 +483,59 @@
       if (sel) sel.addEventListener('change', () => { state.solveRow = sel.value; container.querySelector('#wbSolveResult').innerHTML = ''; });
       const one = container.querySelector('.wb-solve-one');
       if (one) one.addEventListener('toggle', () => { state.solveOneOpen = one.open; });
+      syncButtons();
     }
 
-    function schedule(input, delay) {
+    function invalidDrafts() { return Object.values(state.drafts).some(draft => draft.value == null); }
+    function canLock() { return !state.pending && !invalidDrafts() && Object.keys(state.overrides).length > 0 && opts.remainingRounds > 0 && state.current && state.current.targetPrice != null; }
+    function syncButtons() {
+      const lock = container.querySelector('#wbLock');
+      if (lock) lock.disabled = !canLock();
+      const reset = container.querySelector('#wbReset');
+      if (reset) reset.disabled = !Object.keys(state.overrides).length && !Object.keys(state.drafts).length;
+      ['#wbSolveBtn', '#wbSolveAllBtn'].forEach(id => { const button = container.querySelector(id); if (button) button.disabled = invalidDrafts(); });
+    }
+    function beginAction() {
+      window.clearTimeout(state.timer);
+      state.timer = null;
+      state.pending = true;
+      const ticket = ++state.inflight;
+      container.classList.remove('is-computing');
+      syncButtons();
+      return ticket;
+    }
+    function resetInputs() {
+      beginAction();
+      state.overrides = {};
+      state.drafts = {};
+      state.solveRow = '';
+      state.current = state.baseline;
+      render();
+      refresh();
+    }
+    function schedule(input, delay, commit = false) {
+      const wasPending = state.pending;
+      const previous = JSON.stringify(state.overrides);
+      beginAction();
       let value = num(input.value);
-      if (value == null) return;
       const key = input.dataset.row, lever = input.dataset.lever;
-      if (lever === 'sharePct' && value === num(input.defaultValue)) value = Number(input.dataset.value);
+      const draftKey = key + '::' + lever;
+      state.drafts[draftKey] = { raw: input.value, value };
+      if (input.setAttribute) input.setAttribute('aria-invalid', String(value == null));
+      syncButtons();
+      if (value == null) return;
+      const unchanged = value === num(input.dataset.shown);
+      if (unchanged) value = Number(input.dataset.value);
+      const base = byKey(state.baseline.rows)[key];
       // A scenario probability is stated in whole percents in the report and
       // its gates; a fractional one would come back as a finding when locked.
-      if (lever === 'probabilityPct') { value = Math.round(value); input.value = String(value); }
-      const base = byKey(state.baseline.rows)[key];
+      if (commit && lever === 'probabilityPct' && !(base && Math.abs(valueOf(base, lever) - value) < 1e-9)) value = Math.round(value);
+      if (commit) {
+        input.value = inputFormat(lever, value);
+        input.dataset.value = String(value);
+        input.dataset.shown = input.value;
+        delete state.drafts[draftKey];
+      }
       const o = state.overrides[key] || (state.overrides[key] = {});
       if (base && Math.abs(valueOf(base, lever) - value) < 1e-9) { delete o[lever]; if (!Object.keys(o).length) delete state.overrides[key]; }
       else o[lever] = value;
@@ -464,8 +544,12 @@
         delete o[lever === 'metricValue' ? 'marginPct' : 'metricValue'];
         if (!Object.keys(o).length) delete state.overrides[key];
       }
-      window.clearTimeout(state.timer);
-      state.timer = window.setTimeout(refresh, delay);
+      if (commit && !wasPending && !invalidDrafts() && previous === JSON.stringify(state.overrides)) {
+        state.pending = false;
+        syncButtons();
+        return;
+      }
+      state.timer = window.setTimeout(() => { state.timer = null; refresh(); }, delay);
     }
 
     async function request(body) {
@@ -476,16 +560,20 @@
     }
 
     async function refresh() {
-      const ticket = ++state.inflight;
+      if (invalidDrafts()) return false;
+      const ticket = beginAction();
       container.classList.add('is-computing');
       try {
         const data = await request({ overrides: state.overrides });
-        if (ticket !== state.inflight) return;
+        if (ticket !== state.inflight) return false;
         state.current = data;
+        state.pending = false;
         update();
+        return true;
       } catch (err) {
         if (ticket !== state.inflight) return;
         showError(err.message);
+        return false;
       } finally {
         if (ticket === state.inflight) container.classList.remove('is-computing');
       }
@@ -505,11 +593,18 @@
     }
 
     async function runSolve() {
+      if (invalidDrafts()) return;
+      state.drafts = {};
+      if (!await refresh()) return;
+      const ticket = beginAction();
       const out = container.querySelector('#wbSolveResult');
       const [row, lever] = state.solveRow.split('::');
       out.innerHTML = '<span class="wb-muted">Solving…</span>';
       try {
         const data = await request({ overrides: state.overrides, solve: { for: lever, row: row || undefined, targetPrice: goalOf() } });
+        if (ticket !== state.inflight) return;
+        state.pending = false;
+        syncButtons();
         const s = data.solve;
         const rowInfo = row ? byKey(state.current.rows)[row] : null;
         const name = rowInfo ? (rowInfo.kind === 'option-leg' ? titleCase(rowInfo.division) + ' — ' + titleCase(rowInfo.scenario) : titleCase(rowInfo.division || rowInfo.label)) : 'every forecast';
@@ -526,6 +621,8 @@
             + (lever === 'allMetricsScale' ? '' : '<button type="button" class="wb-link" id="wbSolveApply">Set it and see the bridge</button>');
           const apply = out.querySelector('#wbSolveApply');
           if (apply) apply.addEventListener('click', () => {
+            beginAction();
+            state.drafts = {};
             state.overrides[row] = Object.assign(state.overrides[row] || {}, {});
             // The solver's exact value, except a probability, which the report states in whole percents.
             state.overrides[row][lever] = lever === 'probabilityPct' ? Math.round(s.value) : s.value;
@@ -544,6 +641,7 @@
             + 'Pick another input, or use the green button above with every business checked: that always reaches the price.';
         }
       } catch (err) {
+        if (ticket !== state.inflight) return;
         out.innerHTML = '<span class="wb-issue">' + esc(err.message) + '</span>';
       }
     }
