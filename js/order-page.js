@@ -1231,7 +1231,7 @@
         return;
       }
       closeWorkbench();
-      load(); // switches to the REVISING progress state and starts polling
+      renderProgress(Object.assign({}, workbench.order, { status: data.status }));
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
       status.classList.add('is-error');
@@ -1513,7 +1513,7 @@
         return;
       }
       textarea.value = '';
-      load(); // switches to the REVISING progress state and starts polling
+      renderProgress(Object.assign({}, editor.order, { status: data.status }));
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
       status.classList.add('is-error');

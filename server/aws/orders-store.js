@@ -54,7 +54,7 @@ async function list() {
 }
 
 async function get(id) {
-  const res = await dynamo().send(new GetCommand({ TableName: TABLE(), Key: { orderId: id } }));
+  const res = await dynamo().send(new GetCommand({ TableName: TABLE(), Key: { orderId: id }, ConsistentRead: true }));
   return toRow(res.Item);
 }
 
