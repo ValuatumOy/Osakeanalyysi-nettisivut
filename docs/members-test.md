@@ -1,5 +1,26 @@
 # Members test stack (members-test.aiequityreports.com)
 
+## 2026-10-09 — Free generations for email accounts
+
+- Test members are managed at `https://test.aiequityreports.com/admin/`, Users.
+  The live admin reads a different members table. The environment selector
+  navigates between the two admin sites; name/email search finds the member.
+- Enter a count and choose **Give free generations** for any unbanned account.
+  `POST /admin/members/grant-generation {userId, count, requestId}` adds persistent
+  `PROFILE.generationCredits`; count is an integer from 1 to 100. The request
+  receipt prevents the same grant being credited twice. Email subscribers need
+  no LinkedIn role or paid subscription. Users refresh their member page to see
+  the balance and the private report controls.
+- A generation uses an available monthly allowance first, then a gift credit.
+  Gifted reports are private and do not create or clear a publication obligation.
+  Credit reservation and failure refunds are conditional DynamoDB transactions;
+  a failed original generation is refunded once, a failed revision is not.
+- The legacy no-count admin request still unlocks a monthly generation and
+  clears its publication obligation for accounts with a monthly allowance.
+  For an account with no monthly allowance, it grants one credit.
+- Verification uses mocked generation/order/worker calls. Granting credits does
+  not start an engine run; generating a report still spends real engine time.
+
 Isolated membership/subscription system. Test stage ONLY — `MembersStack` throws
 on `stage=prod` and `infra/bin/aiequityreports.ts` only instantiates it for
 non-prod. Nothing here ships with the prod API Lambda.

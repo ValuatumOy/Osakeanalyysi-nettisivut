@@ -479,7 +479,8 @@
         [left(u.picks, u.pickLimit), 'Report picks left this month', 'picks'],
       ];
       if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read', 'reads']);
-      if (data.hasGeneration) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
+      if (data.limits?.generations > 0) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
+      if (data.generationCredits > 0) stats.push([data.generationCredits, 'Free generations from admin']);
       if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
       // Running out of a meter used to mean upgrading the whole plan for one more
       // report. The step belongs where the wall is, so the button lives on the
@@ -538,23 +539,27 @@
       genCard.hidden = !data.hasGeneration;
       if (data.hasGeneration) {
         const ob = data.openObligationId;
+        const monthlyAvailable = (data.limits?.generations ?? 1) > 0 && !u.genReserved && !ob;
+        const usingCredit = !monthlyAvailable && data.generationCredits > 0;
+        const available = data.generationAvailable ?? (monthlyAvailable || usingCredit);
         document.getElementById('genTitle').textContent =
-          isAnalyst ? 'Your report this month' : 'Your private report this month';
-        document.getElementById('genSub').textContent = isAnalyst
+          usingCredit ? 'Your free private report' : isAnalyst ? 'Your report this month' : 'Your private report this month';
+        document.getElementById('genSub').textContent = usingCredit
+          ? 'Use one of your free generations. The report stays private and no subscription is needed.'
+          : isAnalyst
           ? 'Free: you publish the finished report under your own name. The next one unlocks once it is published.'
           : 'Reserve your monthly fresh report. It stays private to you and nothing is published.';
-        document.getElementById('genStatus').textContent = ob
+        document.getElementById('genStatus').textContent = usingCredit
+          ? data.generationCredits + ' free generation' + (data.generationCredits === 1 ? '' : 's') + ' available.'
+          : ob
           ? 'Open publication obligation. Publish your report to unlock the next generation.'
           : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
-        document.getElementById('genCommit').hidden = !isAnalyst;
-        document.getElementById('genPath').hidden = !isAnalyst;
-        window._publishes = isAnalyst;
-        document.getElementById('reserveRow').hidden = Boolean(ob) || u.genReserved;
+        document.getElementById('genCommit').hidden = !isAnalyst || usingCredit;
+        document.getElementById('genPath').hidden = !isAnalyst || usingCredit;
+        window._publishes = isAnalyst && !usingCredit;
+        document.getElementById('reserveRow').hidden = !available;
         document.getElementById('submitRow').hidden = !ob;
         window._openObligationId = ob;
-        // Resume watching a run that was already going when the page loaded.
-        const active = u.genId || localStorage.activeGenId;
-        if (active && u.genReserved) pollGeneration(active);
         if (isAnalyst) loadEarnings();
       } else {
         document.getElementById('genTitle').textContent = 'Your reports';
@@ -564,6 +569,8 @@
           document.getElementById(id).hidden = true;
         });
       }
+      const active = localStorage.activeGenId || (u.genReserved ? u.genId : null);
+      if (active) pollGeneration(active);
       loadGenerations();
       window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
       loadReports();
@@ -662,7 +669,10 @@
     bindCompanySearch('genCompany', 'genSuggest', 'genTicker');
     bindCompanySearch('buyCompany', 'buySuggest', 'buyTicker');
 
+    let reservingGeneration = false;
+    let pendingGenerationRequest = null;
     async function reserveGen() {
+      if (reservingGeneration) return;
       const company = document.getElementById('genCompany').value.trim();
       const ticker = document.getElementById('genTicker').value.trim();
       if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
@@ -671,12 +681,24 @@
         'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
         'and you get no further generation until it is published.\n\nStart the generation for ' + company + '?')) return;
 
-      const { status, data } = await api('POST', '/generations/free', { company, ticker });
-      if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }
-      notice('ok', 'Generation started for ' + data.company + '. You can leave this page — the report is emailed when it is ready.');
-      localStorage.activeGenId = data.genId;
-      loadMe();
-      pollGeneration(data.genId);
+      if (!pendingGenerationRequest || pendingGenerationRequest.ticker !== ticker) {
+        pendingGenerationRequest = { ticker, requestId: crypto.randomUUID() };
+      }
+      reservingGeneration = true;
+      document.getElementById('reserveBtn').disabled = true;
+      try {
+        const { status, data } = await api('POST', '/generations/free', { company, ...pendingGenerationRequest });
+        if (status !== 200) { notice('err', (data && data.error) || ('Could not start the generation (' + status + ')')); return; }
+        pendingGenerationRequest = null;
+        notice('ok', 'Generation started for ' + data.company + '. You can leave this page — the report is emailed when it is ready.');
+        localStorage.activeGenId = data.genId;
+        loadMe();
+      } catch (_) {
+        notice('err', 'Connection interrupted. Try again to check this generation.');
+      } finally {
+        reservingGeneration = false;
+        document.getElementById('reserveBtn').disabled = false;
+      }
     }
 
     async function pollGeneration(genId) {
@@ -686,7 +708,7 @@
       out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
       // A run the engine could not deliver hands the month back automatically.
       if (data.generationRestored) {
-        notice('ok', 'That generation failed, so your monthly generation is available again.');
+        notice('ok', 'That generation failed, so your free generation is available again.');
         loadMe();
       }
       if (data.url) {

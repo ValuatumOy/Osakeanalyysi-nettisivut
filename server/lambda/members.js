@@ -141,6 +141,17 @@ const limitsFor = (profile) => tiers.limitsFor({
   interval: billingInterval(profile),
 });
 
+const generationCreditsFor = (profile) => Math.max(0, Number(profile.generationCredits) || 0);
+const monthlyGenerationAvailable = (profile, limits, usage) =>
+  limits.generations > 0 && !usage?.genReserved && !profile.openObligationId;
+const isUuid = value => typeof value === 'string'
+  && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+function generationRequestId(userId, requestId) {
+  const hex = crypto.createHash('sha256').update(`${userId}:${requestId}`).digest('hex');
+  const variant = ((parseInt(hex[16], 16) & 3) | 8).toString(16);
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-8${hex.slice(13, 16)}-${variant}${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
+}
+
 const FRESH_LIST_PRICE = 50;
 const FRESH_MEMBER_PRICE = 40;
 
@@ -286,7 +297,9 @@ async function getMe(event) {
     banned: Boolean(profile.banned),
     month: monthKey,
     freshReportPrice: freshReportPrice(profile),
-    hasGeneration: limits.generations > 0,
+    hasGeneration: limits.generations > 0 || generationCreditsFor(profile) > 0,
+    generationCredits: generationCreditsFor(profile),
+    generationAvailable: monthlyGenerationAvailable(profile, limits, usage) || generationCreditsFor(profile) > 0,
     publishes: tiers.isPublishingRole(profile.role),
     limits,
     usage: {
@@ -438,18 +451,71 @@ async function postGenerationsFree(event) {
   if (deny) return deny;
 
   // Publishing roles carry the obligation; everyone else's generation is private.
+  const limits = limitsFor(profile);
   const isAnalyst = tiers.isPublishingRole(profile.role);
-  if (limitsFor(profile).generations < 1) {
-    return json(403, { error: 'Your plan does not include a monthly generation' });
-  }
-
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
+  if (body.requestId !== undefined && !isUuid(body.requestId)) {
+    return json(400, { error: 'requestId must be a UUID' });
+  }
   const company = String(body.company || '').trim();
   const requestedTicker = String(body.ticker || '').trim().toUpperCase();
   if (!company) return json(400, { error: 'company is required' });
   if (!requestedTicker) return json(400, { error: 'ticker is required' });
   if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
+
+  // Orders are globally keyed: scope a retry key to its member so it cannot
+  // attach another member's existing order to a new PUB row.
+  const genId = body.requestId
+    ? generationRequestId(profile.userId, body.requestId)
+    : crypto.randomUUID();
+  const createReservedOrder = async (match, credit, isPrivate = credit || !isAnalyst) => {
+    await ordersStore.create({
+      id: genId,
+      email: profile.email,
+      companyName: match.companyName || company,
+      ticker: match.ticker,
+      exchange: String(body.exchange || '').trim(),
+      industry: match.industry || '',
+      visibility: 'private',
+      analystName: String(profile.name || '').slice(0, 120),
+      revisionsAllowed: credit ? (limits.revisions || tiers.limitsFor({ role: 'reader' }).revisions) : limits.revisions,
+    });
+    try {
+      await invokeWorkerAsync();
+    } catch (err) {
+      console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
+    }
+    await store.audit(profile.userId, 'generation-reserved', { genId, ticker: match.ticker, private: isPrivate, generationCredit: credit });
+    await voidReviewsOnCoverage(profile.userId, match.ticker, now);
+    return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker: match.ticker, private: isPrivate });
+  };
+  const existingGeneration = async () => {
+    if (!body.requestId) return null;
+    const pub = await store.getItem(`USER#${profile.userId}`, `PUB#${genId}`, true);
+    if (!pub) return null;
+    if (pub.requestId !== body.requestId
+      || !(pub.ticker === requestedTicker || pub.ticker?.split('.')[0] === requestedTicker)) {
+      return json(409, { error: 'requestId was already used for a different generation' });
+    }
+    const order = await ordersStore.get(genId, true);
+    // A failed order write may have persisted. Reusing the same conditional
+    // order id safely finishes an interrupted write without spending again.
+    if (!order && pub.status === 'generating') {
+      const resolved = await resolveGenerationCompany(pub.ticker);
+      if (resolved.error) return resolved.error;
+      return createReservedOrder(resolved.match, Boolean(pub.generationCredit), Boolean(pub.private));
+    }
+    return json(200, {
+      genId, status: order?.status || (pub.status === 'generating' ? 'NEW' : pub.status),
+      company: order?.companyName || company, ticker: pub.ticker, private: Boolean(pub.private),
+    });
+  };
+  const existing = await existingGeneration();
+  if (existing) return existing;
+  if (limits.generations < 1 && generationCreditsFor(profile) < 1) {
+    return json(403, { error: 'Your plan does not include a monthly generation' });
+  }
 
   const resolved = await resolveGenerationCompany(requestedTicker);
   if (resolved.error) return resolved.error;
@@ -458,50 +524,31 @@ async function postGenerationsFree(event) {
 
   // Reserve the quota slot first: a failed reservation must never start a
   // billable engine run.
-  const genId = crypto.randomUUID();
-  const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
-  const committed = await store.runTransact(build({
-    table: store.table(), userId: profile.userId, now, genId,
-  }));
+  const reserve = { table: store.table(), userId: profile.userId, now, genId, ticker, requestId: body.requestId };
+  let credit = limits.generations < 1;
+  let committed = false;
+  if (!credit) {
+    const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
+    committed = await store.runTransact(build(reserve));
+  }
+  if (!committed && generationCreditsFor(profile) > 0) {
+    credit = true;
+    committed = await store.runTransact(quota.buildReserveGenerationCreditTransact(reserve));
+  }
   if (!committed) {
-    const fresh = await store.getProfile(profile.userId);
-    if (isAnalyst && fresh?.openObligationId) {
+    const raced = await existingGeneration();
+    if (raced) return raced;
+    const fresh = await store.getProfile(profile.userId, true);
+    if (generationCreditsFor(fresh || profile) < 1 && isAnalyst && fresh?.openObligationId) {
       return json(409, {
         error: 'Previous generated report must be submitted for publication first',
         openObligationId: fresh.openObligationId,
       });
     }
-    return json(429, { error: 'Monthly generation already used' });
+    return json(429, { error: credit ? 'No generation credits available' : 'Monthly generation already used' });
   }
 
-  // Membership reports are always written hidden: an analyst's goes public only
-  // once it is submitted and an admin publishes it, and a Plus member's never
-  // does.
-  await ordersStore.create({
-    id: genId,
-    email: profile.email,
-    companyName: match.companyName || company,
-    ticker,
-    exchange: String(body.exchange || '').trim(),
-    industry: match.industry || '',
-    visibility: 'private',
-    // LinkedIn sign-in is the analyst path and always yields a name; a
-    // magic-link member has none and their report stays engine-bylined. An
-    // email address is never printed on a public cover.
-    analystName: String(profile.name || '').slice(0, 120),
-    // The revision loop on the order page is where the member steers the
-    // report toward their own view; each round is a real engine run.
-    revisionsAllowed: limitsFor(profile).revisions,
-  });
-  try {
-    await invokeWorkerAsync();
-  } catch (err) {
-    console.warn('worker push failed (the 5-minute sweep will pick it up):', err.message);
-  }
-
-  await store.audit(profile.userId, 'generation-reserved', { genId, ticker, private: !isAnalyst });
-  await voidReviewsOnCoverage(profile.userId, ticker, now);
-  return json(200, { genId, status: 'NEW', company: match.companyName || company, ticker, private: !isAnalyst });
+  return createReservedOrder(match, credit);
 }
 
 // A generation the engine could not deliver gives the month back. Only a run
@@ -510,13 +557,26 @@ async function postGenerationsFree(event) {
 // publication and must not also get a new generation.
 async function restoreIfFailed({ profile, genId, order, publication, now }) {
   if (!order || order.status !== ordersStore.STATUS.FAILED) return false;
-  if (!publication || publication.status !== 'generating') return false;
+  if (!publication || (publication.status !== 'generating'
+    && !(publication.generationCredit && publication.status === 'failed'))) return false;
   if (order.originalPdfFileName || order.deliveredEmailAt) return false;
 
+  if (publication.generationCredit && publication.creditRestoredAt) return false;
+
   // Close the run out first: it is over regardless of who holds the month now.
-  await store.runTransact(quota.buildFailPublicationTransact({
-    table: store.table(), userId: profile.userId, genId, now,
-  }));
+  if (publication.status === 'generating') {
+    await store.runTransact(quota.buildFailPublicationTransact({
+      table: store.table(), userId: profile.userId, genId, now,
+    }));
+  }
+
+  if (publication.generationCredit) {
+    const restored = await store.runTransact(quota.buildRestoreGenerationCreditTransact({
+      table: store.table(), userId: profile.userId, genId, now,
+    }));
+    if (restored) await store.audit(profile.userId, 'generation-credit-restored', { genId, reason: order.error || 'generation failed' });
+    return restored;
+  }
 
   // A coverage update is not a monthly slot: it came off the year's four, and
   // there is no reservation row naming this run to check against, so the credit
@@ -2395,11 +2455,34 @@ async function getAdminPublications(event) {
 async function postAdminGrantGeneration(event) {
   const body = parseBody(event);
   if (!body?.userId) return json(400, { error: 'userId is required' });
-  await store.runTransact(quota.buildGrantGenerationTransact({
-    table: store.table(), userId: body.userId, now: requestNow(event),
-  }));
-  await store.audit(body.userId, 'generation-granted', { note: String(body.note || '') });
-  return json(200, { ok: true, userId: body.userId });
+  if (body.count !== undefined && (!Number.isInteger(body.count) || body.count < 1 || body.count > 100)) {
+    return json(400, { error: 'count must be an integer from 1 to 100' });
+  }
+  if (body.requestId !== undefined && !isUuid(body.requestId)) {
+    return json(400, { error: 'requestId must be a UUID' });
+  }
+  const profile = await store.getProfile(body.userId, true);
+  if (!profile) return json(404, { error: 'Unknown user' });
+  if (profile.banned) return json(409, { error: 'Cannot grant a banned member generations' });
+  const gift = body.count !== undefined || limitsFor(profile).generations < 1;
+  const count = body.count ?? 1;
+  const params = { table: store.table(), userId: body.userId, now: requestNow(event), count, requestId: body.requestId };
+  const committed = await store.runTransact(gift
+    ? quota.buildGrantGenerationCreditsTransact(params) : quota.buildGrantGenerationTransact(params));
+  let alreadyGranted = false;
+  if (!committed && gift && body.requestId) {
+    const receipt = await store.getItem(`USER#${body.userId}`, `GENERATIONGRANT#${body.requestId}`, true);
+    alreadyGranted = receipt?.count === count;
+  }
+  if (!committed && !alreadyGranted) return json(409, { error: 'Could not grant generations — the member changed underneath' });
+  if (committed) await store.audit(body.userId, 'generation-granted', {
+    note: String(body.note || ''), ...(gift ? { count, source: 'credit', requestId: body.requestId || null } : {}),
+  });
+  const updated = await store.getProfile(body.userId, true);
+  return json(200, {
+    ok: true, userId: body.userId, generationCredits: generationCreditsFor(updated || profile),
+    ...(gift ? { granted: count, ...(alreadyGranted ? { alreadyGranted: true } : {}) } : {}),
+  });
 }
 
 // POST /admin/members/role {userId, role} — the funnel: analysts whose work adds
@@ -2456,12 +2539,14 @@ async function getAdminUsers(event) {
       linkedinUrl: p.linkedinUrl || null,
       openObligationId: p.openObligationId || null,
       openReviewId: p.openReviewId || null,
+      generationCredits: generationCreditsFor(p),
       usage: {
         picks: usage?.picks || 0,
         pickLimit: limits.basePicks,
         analystReads: usage?.analystReads || 0,
         analystReadLimit: limits.analystReads,
         genReserved: Boolean(usage?.genReserved),
+        generationLimit: limits.generations,
       },
     };
   }));
@@ -2534,6 +2619,7 @@ async function getAdminUserDetail(event) {
       stripeCustomerId: profile.stripeCustomerId || null,
       openObligationId: profile.openObligationId || null,
       openReviewId: profile.openReviewId || null,
+      generationCredits: generationCreditsFor(profile),
     },
     publications,
     // Reviews RECEIVED on this member's publications — the row lives in the

@@ -161,6 +161,11 @@
     <div class="topbar">
       <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
       <span class="topbar-badge">Admin</span>
+      <label for="admin-environment">Environment</label>
+      <select id="admin-environment" aria-label="Admin environment">
+        <option value="prod">Live</option>
+        <option value="test">Test</option>
+      </select>
       <div class="topbar-spacer"></div>
       <button class="topbar-signout" id="signout">Sign out</button>
     </div>
@@ -175,9 +180,9 @@
       <a class="tab-btn tab-link" href="/admin/atlas.html" target="_blank" rel="noopener">Interactive docs <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3 7 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
 
+    <div class="flash flash-ok" id="flash-ok"></div>
+    <div class="flash flash-err" id="flash-err"></div>
     <div class="panel tabpane" id="pane-reports">
-      <div class="flash flash-ok" id="flash-ok"></div>
-      <div class="flash flash-err" id="flash-err"></div>
 
       <div class="section-label">Add a report</div>
       <details class="card add-report">
@@ -231,7 +236,9 @@
     <!-- ── users ── -->
     <div class="panel tabpane" id="pane-users" hidden>
       <div class="section-label">Members</div>
-      <p class="note-line">Click a row for everything on the account: publications, reviews received, purchases, payouts and the last 90 days of activity. Grant next generation clears an analyst's publish obligation.</p>
+      <p class="note-line">Give free generations to any member, including email accounts. Credits stay available until used; gifted reports stay private. Unlock monthly generation also clears an analyst's publish obligation.</p>
+      <label for="user-search">Find a member</label>
+      <input id="user-search" type="search" placeholder="Name or email address" style="margin:0.5rem 0 1rem; max-width:24rem;">
       <div class="table-wrap"><table>
         <thead><tr><th>Member</th><th>Role</th><th>Plan</th><th>This month</th><th>Flags</th><th></th></tr></thead>
         <tbody id="user-rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
@@ -339,6 +346,12 @@
     const PASSWORD_KEY = 'aerAdminPassword';
 
     const $ = (id) => document.getElementById(id);
+    $('admin-environment').value = ON_STAGING ? 'test' : 'prod';
+    $('admin-environment').addEventListener('change', (event) => {
+      location.assign(event.target.value === 'test'
+        ? 'https://test.aiequityreports.com/admin/'
+        : 'https://www.aiequityreports.com/admin/');
+    });
     let reports = [];
     let editing = null;   // report being edited
     let deleting = null;  // report pending deletion
@@ -881,10 +894,17 @@
 
     // ── users ────────────────────────────────────────────────────────────────
     let userRows = [];
+    const pendingCreditGrants = new Map();
     async function loadUsersPane() {
       const { users } = await mapi('/admin/members/users');
       userRows = users;
-      $('user-rows').innerHTML = users.map((u, i) => {
+      renderUsers();
+    }
+    $('user-search').addEventListener('input', renderUsers);
+    function renderUsers() {
+      const search = $('user-search').value.trim().toLowerCase();
+      $('user-rows').innerHTML = userRows.map((u, i) => {
+        if (search && !`${u.name || ''} ${u.email || ''}`.toLowerCase().includes(search)) return '';
         const plan = u.tier === 'none' ? '<span class="muted">—</span>'
           : `${esc(u.tier)}${u.billingInterval === 'year' ? '/yr' : ''}` +
             (u.tierStatus !== 'active' ? ` <span class="pill-warn">${esc(u.tierStatus)}</span>` : '') +
@@ -898,14 +918,16 @@
           <td class="company">${esc(u.name || u.email || u.userId.slice(0, 8))}${linkedinLink(u.linkedinUrl, u.name || u.email)}<br><span class="muted" style="font-size:0.7rem;">${esc(u.email || u.userId)}</span></td>
           <td>${esc(u.role || '—')}</td>
           <td>${plan}</td>
-          <td>${u.usage.picks}/${u.usage.pickLimit} picks · ${u.usage.analystReads}/${u.usage.analystReadLimit} reads${u.usage.genReserved ? ' · gen used' : ''}</td>
+          <td>${u.usage.picks}/${u.usage.pickLimit} picks · ${u.usage.analystReads}/${u.usage.analystReadLimit} reads${u.usage.genReserved ? ' · gen used' : ''}<br>${Number(u.generationCredits) || 0} free generations</td>
           <td>${flags}</td>
           <td style="text-align:right; white-space:nowrap;">
-            ${u.role && u.role !== 'reader' ? `<button class="btn-xs" data-uact="grant" data-user="${esc(u.userId)}">Grant next generation</button>` : ''}
+            <input type="number" min="1" max="100" value="1" data-credit-count="${esc(u.userId)}" aria-label="Free generations for ${esc(u.email || u.name || u.userId)}" style="width:4rem;" ${u.banned ? 'disabled' : ''}>
+            <button class="btn-xs" data-uact="credit" data-user="${esc(u.userId)}" ${u.banned ? 'disabled' : ''}>Give free generations</button>
+            ${u.usage.generationLimit > 0 ? `<button class="btn-xs" data-uact="grant" data-user="${esc(u.userId)}">Unlock monthly generation</button>` : ''}
             <button class="btn-xs ${u.banned ? '' : 'danger'}" data-uact="ban" data-user="${esc(u.userId)}" data-banned="${u.banned ? '1' : '0'}">${u.banned ? 'Unban' : 'Ban'}</button>
           </td>
         </tr>`;
-      }).join('') || '<tr><td colspan="6" class="muted">No members yet.</td></tr>';
+      }).join('') || '<tr><td colspan="6" class="muted">No matching members in this environment.</td></tr>';
     }
 
     $('user-rows').addEventListener('click', async (ev) => {
@@ -922,6 +944,22 @@
             if (!confirm('Clear the publish obligation and give back this month\'s generation?')) return;
             await mapi('/admin/members/grant-generation', { method: 'POST', body: JSON.stringify({ userId: user }) });
             flash('ok', 'Granted — their next generation is unlocked.');
+          } else if (uact === 'credit') {
+            const count = Number(btn.closest('tr').querySelector('[data-credit-count]').value);
+            if (!Number.isInteger(count) || count < 1 || count > 100) throw new Error('Enter a whole number from 1 to 100.');
+            btn.disabled = true;
+            let grant = pendingCreditGrants.get(user);
+            if (!grant || grant.count !== count) {
+              grant = { count, requestId: crypto.randomUUID() };
+              pendingCreditGrants.set(user, grant);
+            }
+            try {
+              await mapi('/admin/members/grant-generation', {
+                method: 'POST', body: JSON.stringify({ userId: user, ...grant }),
+              });
+              pendingCreditGrants.delete(user);
+              flash('ok', `${count} free generation${count === 1 ? '' : 's'} added.`);
+            } finally { btn.disabled = false; }
           }
           reload('users');
         } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }

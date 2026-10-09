@@ -76,13 +76,13 @@ test('free decay is capped at a year and defaults to it', () => {
   assert.equal(quota.clampFreeAfterDays(-5), 365);
 });
 
-test('admin grant clears both gates unconditionally', () => {
+test('admin monthly unlock clears both gates for an existing nonbanned member', () => {
   const params = quota.buildGrantGenerationTransact({
     table: TABLE, userId: 'u1', now: new Date('2026-08-20T00:00:00Z'),
   });
   const [profile, usage] = params.TransactItems.map(i => i.Update);
   assert.match(profile.UpdateExpression, /REMOVE openObligationId/);
-  assert.equal(profile.ConditionExpression, undefined); // must work whichever gate blocked
+  assert.equal(profile.ConditionExpression, 'attribute_exists(pk) AND (attribute_not_exists(banned) OR banned = :false)');
   assert.equal(usage.Key.sk, 'USAGE#2026-08');
   assert.equal(usage.UpdateExpression, 'REMOVE genReserved, genId');
 });
@@ -137,11 +137,12 @@ test('member generation reserves the month slot without a publish obligation', (
     table: TABLE, userId: 'u1', now, genId: 'g1',
   });
   const items = params.TransactItems;
-  assert.equal(items.length, 2); // no PROFILE obligation write
+  assert.equal(items.length, 3); // PROFILE check, without an obligation write
   assert.equal(items[0].Update.Key.sk, 'USAGE#2026-08');
   assert.equal(items[0].Update.ConditionExpression, 'attribute_not_exists(genReserved)');
   assert.equal(items[1].Put.Item.private, true);
-  assert.ok(!JSON.stringify(params).includes('openObligationId'));
+  assert.ok(items.every(item => !item.Update?.UpdateExpression.includes('openObligationId')));
+  assert.match(items[2].ConditionCheck.ConditionExpression, /attribute_not_exists\(openObligationId\)/);
 });
 
 test('freemium age gate: only reports 30 days or older', () => {

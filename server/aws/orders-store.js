@@ -53,8 +53,10 @@ async function list() {
   return scanAll();
 }
 
-async function get(id) {
-  const res = await dynamo().send(new GetCommand({ TableName: TABLE(), Key: { orderId: id } }));
+async function get(id, consistentRead = false) {
+  const res = await dynamo().send(new GetCommand({
+    TableName: TABLE(), Key: { orderId: id }, ...(consistentRead ? { ConsistentRead: true } : {}),
+  }));
   return toRow(res.Item);
 }
 

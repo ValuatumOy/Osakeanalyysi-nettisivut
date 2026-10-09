@@ -57,7 +57,7 @@ test('the buyer is emailed as soon as Stripe confirms, not when they come back',
 
 test('members.html hands over a purchase without requiring a login', () => {
   const html = readFileSync(new URL('../../members.html', import.meta.url), 'utf8');
-  assert.match(html, /collectPurchase\(\);\n    if \(token\(\)\) loadMe\(\);/);
+  assert.match(html, /collectPurchase\(\);\r?\n    if \(token\(\)\) loadMe\(\);/);
   assert.match(html, /params\.get\('bought'\)/);
   assert.match(html, /params\.get\('forked'\)/);
 });
