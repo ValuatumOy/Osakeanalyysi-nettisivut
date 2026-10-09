@@ -161,6 +161,11 @@
     <div class="topbar">
       <a class="topbar-logo" href="/"><span class="topbar-logo-dot"></span> AI Equity Reports</a>
       <span class="topbar-badge">Admin</span>
+      <label for="admin-environment">Environment</label>
+      <select id="admin-environment" aria-label="Admin environment">
+        <option value="prod">Live</option>
+        <option value="test">Test</option>
+      </select>
       <div class="topbar-spacer"></div>
       <button class="topbar-signout" id="signout">Sign out</button>
     </div>
@@ -339,6 +344,12 @@
     const PASSWORD_KEY = 'aerAdminPassword';
 
     const $ = (id) => document.getElementById(id);
+    $('admin-environment').value = ON_STAGING ? 'test' : 'prod';
+    $('admin-environment').addEventListener('change', (event) => {
+      location.assign(event.target.value === 'test'
+        ? 'https://test.aiequityreports.com/admin/'
+        : 'https://www.aiequityreports.com/admin/');
+    });
     let reports = [];
     let editing = null;   // report being edited
     let deleting = null;  // report pending deletion
