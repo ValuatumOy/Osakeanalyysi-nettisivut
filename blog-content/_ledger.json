@@ -198,6 +198,16 @@
       "authorId": "author-1",
       "reviewerId": "reviewer-1",
       "notes": "Refreshed the Nokia figures in the only live article. It cited a SELL at an 11.50 EUR target vs 13.90 EUR from nokia-05062026.json, a report file that no longer exists; the current 15 July 2026 model is SELL at 9.40 EUR vs 10.28 EUR. The rating still matched, which is why the rating scan passed it, so this was caught by comparing the cited report against report-index.mjs rather than by the gate. Added dataProvenance so the gate can verify it automatically from now on."
+    },
+    {
+      "slug": "can-ai-analyze-stocks",
+      "action": "edit",
+      "datePublished": "2026-06-12",
+      "dateModified": "2026-08-09",
+      "editedAt": "2026-08-09T18:44:32.933Z",
+      "authorId": "author-1",
+      "reviewerId": "reviewer-1",
+      "notes": "Replaced a link to /blog/how-to-value-a-stock.html, which 404s because that article was never merged, with a link to the new AI vs human stock analyst piece."
     }
   ]
 }
