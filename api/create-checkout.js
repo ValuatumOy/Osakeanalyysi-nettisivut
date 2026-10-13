@@ -1,6 +1,6 @@
 const Stripe = require('stripe');
 const { reportError } = require('../server/email');
-const { getCatalogReport } = require('../server/catalog-client');
+const { getCatalogReport, findTestStandIn, isStripeTestMode } = require('../server/catalog-client');
 const { CheckoutError, createReadyReportCheckout } = require('../server/checkout');
 
 module.exports = async (req, res) => {
@@ -10,7 +10,16 @@ module.exports = async (req, res) => {
   if (!reportId) return res.status(400).json({ error: 'Missing report id' });
 
   try {
-    const report = await getCatalogReport(reportId);
+    let report = await getCatalogReport(reportId);
+    // Test site only (Stripe test key): a production report id gets the test
+    // catalog's newest report for the same company. See findTestStandIn.
+    if (!report) {
+      report = await findTestStandIn(reportId, { withRevisions: Boolean(withRevisions) });
+      if (report) console.log('create-checkout: test stand-in', { requested: reportId, using: report.id });
+      else if (isStripeTestMode()) {
+        return res.status(404).json({ error: 'This report is not in the test catalog, and test has no report for the same company. Generate one on test first.' });
+      }
+    }
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const session = await createReadyReportCheckout(stripe, report, { withRevisions });
     res.json({ url: session.url });
