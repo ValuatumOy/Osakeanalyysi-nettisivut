@@ -1284,13 +1284,6 @@ async function postGenerationSubmit(event) {
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
   }
-  // Private stays private: a Plus member's monthly run and an admin's copy of
-  // someone else's report carry no obligation, so the submit transaction
-  // alone would let them through.
-  const publication = await store.getPublication(profile.userId, genId);
-  if (publication?.private) {
-    return json(409, { error: 'This is a private report and cannot be published' });
-  }
   // A fork with nothing changed on it is somebody else's analysis with a new
   // name on the cover. The whole point of deriving is what you add, so at
   // least one revision or hand edit has to have landed before it can be

@@ -15,7 +15,7 @@ function stub(modulePath, exports) {
 process.env.ADMIN_UPLOAD_PASSWORD = 'test-admin-secret';
 process.env.SECRETS_SSM_PREFIX = '';
 
-const state = { orders: {}, created: [], items: [], pubs: {} };
+const state = { orders: {}, created: [], items: [], pubs: {}, transactions: [] };
 
 stub('../../server/aws/catalog-aws.js', {});
 stub('../../server/search.js', { searchCompanies: async () => [] });
@@ -38,7 +38,16 @@ stub('../../server/members/store.js', {
   findPublicationIndex: async () => null,
   getPublication: async (userId, genId) => state.pubs[genId] || null,
   putItem: async (item) => { state.items.push(item); state.pubs[item.sk.replace(/^PUB#/, '')] = item; },
-  runTransact: async () => true,
+  // Evaluates only the one condition these tests are about: the submit
+  // transaction refuses a PUB# row marked private.
+  runTransact: async (params) => {
+    state.transactions.push(params);
+    const pubUpdate = params.TransactItems.find((t) => t.Update?.Key?.sk?.startsWith('PUB#'))?.Update;
+    if (pubUpdate && /attribute_not_exists\(#private\)/.test(pubUpdate.ConditionExpression)) {
+      return !state.pubs[pubUpdate.Key.sk.replace(/^PUB#/, '')]?.private;
+    }
+    return true;
+  },
   audit: async () => {},
 });
 
@@ -83,6 +92,8 @@ test('a delivered private report is copied to the member by email, privately', a
 
 test('the copy cannot be published', async () => {
   const { genId } = JSON.parse((await fork({ genId: 'lauri-tsla', userId: 'markus' })).body);
+  // Revised once, so the unchanged-fork rule is not what refuses it.
+  state.orders[genId].revisionsUsed = 1;
   const res = await handler({
     routeKey: 'POST /generations/{genId}/submit',
     pathParameters: { genId },
@@ -90,7 +101,8 @@ test('the copy cannot be published', async () => {
     body: JSON.stringify({ priceEur: 10 }),
   });
   assert.equal(res.statusCode, 409);
-  assert.match(JSON.parse(res.body).error, /private/);
+  const pubUpdate = state.transactions.at(-1).TransactItems[1].Update;
+  assert.equal(pubUpdate.ExpressionAttributeNames['#private'], 'private');
 });
 
 test('a report still generating, or an unknown member, is refused', async () => {
