@@ -68,7 +68,7 @@ test('the order form routes both scopes through member and shop requests', async
   for (const member of [true, false]) {
     const requests = [];
     const context = vm.createContext({
-      isMemberRun: () => member, sessionId: 'g1', MEMBERS_API: 'https://members-test.example',
+      isAdminView: false, isMemberRun: () => member, sessionId: 'g1', MEMBERS_API: 'https://members-test.example',
       memberToken: () => 'stub', fetch: (url, options) => { requests.push({ url, body: JSON.parse(options.body) }); },
     });
     vm.runInContext(functionSource, context);

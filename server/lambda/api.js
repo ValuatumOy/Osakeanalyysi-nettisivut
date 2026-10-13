@@ -406,12 +406,64 @@ async function getAdminOrder(event) {
   const payload = await orderPagePayload(order);
   return json(200, {
     ...payload,
-    readOnly: true,
+    // Revisions on the admin view never touch this order unless it is an
+    // admin copy already: the first one makes the copy (adminCopyFor below).
+    adminCopy: Boolean(order.adminCopy),
     email: order.email || null,
     analystName: order.analystName || null,
     forkedFrom: order.forkedFrom || null,
   }, { 'cache-control': 'no-store' });
 }
+
+// The admin revising someone else's report. Revising it in place would spend
+// its owner's rounds, change a PDF its buyers or readers already have, and —
+// for a member's analysis — put our comments into the prompts published as
+// theirs. So the admin's first revision or edit makes a private copy on the
+// same engine job, and everything after that happens on the copy: its own
+// order, its own rounds, no PDF key of its own until its first delivery (see
+// createForkOrder in server/lambda/members.js for why that matters), no email.
+// An admin copy revises in place; anything else gets a new copy.
+const ADMIN_COPY_ROUNDS = 20;
+
+async function adminCopyFor(order) {
+  if (order.adminCopy) return order;
+  if (order.status !== ordersStore.STATUS.DELIVERED || !order.jobId) return null;
+  return ordersStore.create({
+    id: crypto.randomUUID(),
+    companyName: order.companyName,
+    ticker: order.ticker,
+    exchange: order.exchange,
+    sector: order.sector,
+    industry: order.industry,
+    status: ordersStore.STATUS.DELIVERED,
+    jobId: order.jobId,
+    engineUsername: order.engineUsername,
+    forkedFrom: order.id,
+    visibility: 'private',
+    adminCopy: true,
+    revisionsAllowed: ADMIN_COPY_ROUNDS,
+  });
+}
+
+// Both return `orderId`: the copy the change went to, which the order page
+// moves to. On an admin copy that is the same id it was called with.
+async function adminChange(event, claim) {
+  const order = await ordersStore.get(event.pathParameters?.id || '');
+  if (!order) return json(404, { error: 'Order not found' });
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const copy = await adminCopyFor(order);
+  if (!copy) return json(409, { error: 'This report has no delivered version to copy yet', status: order.status });
+  const res = await claim(copy.id, body);
+  if (res.statusCode !== 200) return res;
+  return json(200, { ...JSON.parse(res.body), orderId: copy.id, copied: copy.id !== order.id });
+}
+
+const postAdminOrderRevision = (event) => adminChange(event, claimOrderRevision);
+const postAdminOrderEdits = (event) => adminChange(event, claimOrderEdit);
+// Read-only on any order: the calculator and the editor's view of the text.
+const postAdminOrderValuation = (event) => orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
+const getAdminOrderPreview = (event) => orderPreviewResponse(event.pathParameters?.id || '');
 
 // POST /api/orders/{id}/revisions — the order page's one mutating call.
 // Claims the order for a revision (DELIVERED -> REVISING, conditional on
@@ -424,9 +476,11 @@ async function postOrderRevision(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
+  return claimOrderRevision(event.pathParameters?.id || '', parseBody(event));
+}
 
-  const id = event.pathParameters?.id || '';
-  const body = parseBody(event);
+// The revision claim itself, shared with the admin's route (postAdminOrderRevision).
+async function claimOrderRevision(id, body) {
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
   const comments = String(body.comments || '').trim();
@@ -470,9 +524,11 @@ async function postOrderEdits(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
+  return claimOrderEdit(event.pathParameters?.id || '', parseBody(event));
+}
 
-  const id = event.pathParameters?.id || '';
-  const body = parseBody(event);
+// The edit claim itself, shared with the admin's route (postAdminOrderEdits).
+async function claimOrderEdit(id, body) {
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
   let request;
@@ -520,10 +576,12 @@ async function postOrderValuation(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
-  const id = event.pathParameters?.id || '';
+  return orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
+}
+
+async function orderValuationResponse(id, body) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
-  const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
   const result = await editing.previewValuation(order, body);
   if (result.status !== 200) return json(result.status, { error: result.error });
@@ -538,7 +596,10 @@ async function getOrderPreview(event) {
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
 
-  const id = event.pathParameters?.id || '';
+  return orderPreviewResponse(event.pathParameters?.id || '');
+}
+
+async function orderPreviewResponse(id) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
 
@@ -638,7 +699,7 @@ async function getAdminReports() {
         // construction, only in the catalog as plumbing).
         origin: !report.provenanceSessionId ? 'uploaded'
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
-        generatedBy: order ? (order.analystName || order.email || null) : null,
+        generatedBy: order ? (order.analystName || order.email || (order.adminCopy ? 'Admin' : null)) : null,
         generatedAt: generatedAtOf.get(report.fileName) || null,
         // 1 for an original, the history number for a revised copy, null when
         // no order knows the file (a hand upload).
@@ -647,6 +708,7 @@ async function getAdminReports() {
         // member's published analysis instead of a fresh engine run. Such an
         // order has no original of its own in the catalog.
         forkedFrom: order?.forkedFrom || null,
+        adminCopy: Boolean(order?.adminCopy),
         // 'revision' | 'edit' for a revised copy, null for an original.
         kind: !report.isRevision ? null
           : kindOf.get(report.fileName)
@@ -772,6 +834,10 @@ const PUBLIC_ROUTES = {
 const ADMIN_ROUTES = {
   'GET /api/admin/reports': getAdminReports,
   'GET /api/admin/orders/{id}': getAdminOrder,
+  'POST /api/admin/orders/{id}/revisions': postAdminOrderRevision,
+  'POST /api/admin/orders/{id}/edits': postAdminOrderEdits,
+  'POST /api/admin/orders/{id}/valuation': postAdminOrderValuation,
+  'GET /api/admin/orders/{id}/preview': getAdminOrderPreview,
   'POST /api/admin/upload-url': postAdminUploadUrl,
   'POST /api/admin/publish': postAdminPublish,
   'POST /api/admin/update': postAdminUpdate,
