@@ -511,6 +511,14 @@
       return `<a href="${esc(href)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Revisions</a>`;
     }
 
+    // A free, private copy of an order's report for a member to revise as their
+    // own (POST /admin/members/fork). The original and its owner's rounds are
+    // untouched. Same rule as the Revisions link: a hand upload has no engine job.
+    function copyButton(report) {
+      if (report.origin === 'uploaded') return '';
+      return `<button class="btn btn-ghost btn-sm" data-copy="${esc(report.groupId)}" data-name="${esc(report.companyName)}">Copy to member</button>`;
+    }
+
     // `rev`: { of } for a revised copy, rendered indented under its report.
     // `toggle`: the "n versions" control on the report's row. A report row
     // whose file is itself a revision (the chain has no original) says which
@@ -533,6 +541,7 @@
           <td>${report.buyerCount || 0}</td>
           <td style="text-align:right; white-space:nowrap;">
             ${rev ? '' : revisionsLink(report)}
+            ${rev ? '' : copyButton(report)}
             <button class="btn btn-ghost btn-sm" data-edit="${index}">Edit</button>
             <button class="btn btn-danger btn-sm" data-delete="${index}">Delete</button>
           </td>
@@ -582,7 +591,26 @@
       $('report-rows').innerHTML = rows.join('') || '<tr><td colspan="6" class="muted">No reports in the catalog.</td></tr>';
     }
 
-    $('report-rows').addEventListener('click', (ev) => {
+    $('report-rows').addEventListener('click', async (ev) => {
+      const copy = ev.target.closest('[data-copy]');
+      if (copy) {
+        const email = prompt(`Give a private copy of ${copy.dataset.name} to which member? Their email:`);
+        if (!email || !email.trim()) return;
+        const rounds = prompt('Revision rounds on the copy?', '5');
+        if (rounds === null) return;
+        try {
+          const res = await mapi('/admin/members/fork', {
+            method: 'POST',
+            body: JSON.stringify({ genId: copy.dataset.copy, email: email.trim(), rounds: Number(rounds) || 5 }),
+          });
+          // The member list of generations shows only to members with a monthly
+          // generation, so hand over the workspace link itself. It opens for the
+          // member while they are signed in to the members area on this site.
+          prompt(`Copied to ${res.email}. Send them this link to revise it:`,
+            `${location.origin}/order/index.html?session_id=${encodeURIComponent(res.genId)}`);
+        } catch (err) { if (err.message !== 'Unauthorized') flash('err', err.message); }
+        return;
+      }
       const btn = ev.target.closest('[data-revs]');
       if (!btn) return;
       const gid = btn.dataset.revs;

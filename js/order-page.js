@@ -1360,7 +1360,10 @@
     // stage only until the engine ships to production. Hide the door on the
     // production site rather than open it onto an error.
     const workbenchLive = !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
-    document.getElementById('valuationOpenBtn').style.display = order.pdfUrl && workbenchLive ? '' : 'none';
+    // A fork before its first revision has only the original's PDF, but the
+    // calculator runs on the engine job they share, so it opens there too.
+    document.getElementById('valuationOpenBtn').style.display =
+      (order.pdfUrl || order.originalUrl) && workbenchLive && !isAdminView ? '' : 'none';
 
     // A report the engine delivered with unresolved valuation findings: the
     // target is code-computed, the argument behind it is under review. Say so

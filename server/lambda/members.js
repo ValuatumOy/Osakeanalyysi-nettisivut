@@ -1077,6 +1077,15 @@ async function getGenerationOrder(event) {
   if (order.status === ordersStore.STATUS.DELIVERED && order.pdfFileName) {
     payload.pdfUrl = permanentPdfUrl(order.pdfFileName);
   }
+  // A copy (postAdminFork) has no PDF of its own until its first revision;
+  // show the one it was copied from, read live from the parent, as the buyer
+  // side does for a paid fork (orderPagePayload in server/lambda/api.js).
+  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
+    const parent = await ordersStore.get(order.forkedFrom);
+    if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
+      payload.originalUrl = permanentPdfUrl(parent.pdfFileName);
+    }
+  }
 
   payload.revisionHistory = (order.revisionHistory || []).slice().reverse().map((entry) => ({
     ...editing.historyEntryPayload(entry),
@@ -1274,6 +1283,13 @@ async function postGenerationSubmit(event) {
   if (!order?.ticker) return json(409, { error: 'No generated report to publish for this id' });
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
+  }
+  // Private stays private: a Plus member's monthly run and an admin's copy of
+  // someone else's report carry no obligation, so the submit transaction
+  // alone would let them through.
+  const publication = await store.getPublication(profile.userId, genId);
+  if (publication?.private) {
+    return json(409, { error: 'This is a private report and cannot be published' });
   }
   // A fork with nothing changed on it is somebody else's analysis with a new
   // name on the cover. The whole point of deriving is what you add, so at
@@ -2485,6 +2501,80 @@ async function postAdminGrantGeneration(event) {
   });
 }
 
+// POST /admin/members/fork {genId, email|userId, rounds?} — a free copy of any
+// delivered report, handed to a member to revise as their own.
+//
+// Revising someone else's report in place would spend their rounds and, once
+// they publish, put our comments into the prompts readers and reviewers see as
+// theirs. A copy has none of that: it is the paid fork without the payment —
+// same engine job, its own order and revision budget, no pdfFileName (see
+// createForkOrder for why that matters). Unlike the paid fork the parent need
+// not be published, and the copy is always private: the PUB# row makes it the
+// member's (ownedOrder), `private` keeps submit from publishing it.
+const ADMIN_FORK_ROUNDS = 5;
+
+async function postAdminFork(event) {
+  const now = requestNow(event);
+  const body = parseBody(event);
+  if (!body?.genId) return json(400, { error: 'genId is required' });
+  if (!body.userId && !body.email) return json(400, { error: 'email or userId is required' });
+
+  const parent = await ordersStore.get(body.genId);
+  if (!parent?.jobId || parent.status !== ordersStore.STATUS.DELIVERED) {
+    return json(409, { error: 'That report has no delivered engine job to copy', status: parent?.status || null });
+  }
+
+  let profile;
+  if (body.userId) {
+    profile = await store.getProfile(body.userId);
+  } else {
+    const email = String(body.email).trim().toLowerCase();
+    const matches = (await store.listProfiles()).filter((p) => String(p.email || '').toLowerCase() === email);
+    if (matches.length > 1) return json(409, { error: 'More than one member has that email — give the userId instead' });
+    profile = matches[0];
+  }
+  if (!profile) return json(404, { error: 'No member with that email or userId' });
+  const userId = profile.userId || String(profile.pk || '').replace(/^USER#/, '');
+  if (!profile.email) return json(409, { error: 'That member has no email address for delivery' });
+
+  const rounds = Number.parseInt(body.rounds, 10);
+  const genId = crypto.randomUUID();
+  const parentIndex = await store.findPublicationIndex(body.genId);
+
+  // Order first: a PUB# row without its order is a generation the member can
+  // see but not open.
+  await ordersStore.create({
+    id: genId,
+    email: profile.email,
+    companyName: parent.companyName || '',
+    ticker: parent.ticker || '',
+    exchange: parent.exchange || '',
+    status: ordersStore.STATUS.DELIVERED,
+    jobId: parent.jobId,
+    // A job attached by hand answers only to the username it was submitted
+    // under (editing.previewValuation); the copy revises the same job.
+    ...(parent.engineUsername ? { engineUsername: parent.engineUsername } : {}),
+    forkedFrom: body.genId,
+    analystName: profile.name || undefined,
+    visibility: 'private',
+    revisionsAllowed: Number.isInteger(rounds) && rounds > 0 && rounds <= 50 ? rounds : ADMIN_FORK_ROUNDS,
+  });
+  await store.putItem({
+    pk: `USER#${userId}`,
+    sk: `PUB#${genId}`,
+    status: 'generating',
+    private: true,
+    reservedAt: now.toISOString(),
+    companyId: String(parent.ticker || '').toUpperCase(),
+    forkedFrom: body.genId,
+    forkedFromUserId: parentIndex?.userId || null,
+    adminCopy: true,
+  });
+
+  await store.audit(userId, 'analysis-copied-by-admin', { genId, parentGenId: body.genId });
+  return json(200, { ok: true, genId, userId, email: profile.email, company: parent.companyName || parent.ticker || '' });
+}
+
 // POST /admin/members/role {userId, role} — the funnel: analysts whose work adds
 // nothing go back to being readers, the best move up to coaching.
 async function postAdminRole(event) {
@@ -2955,6 +3045,7 @@ const ADMIN_ROUTES = {
   'POST /admin/members/void-review': postAdminVoidReview,
   'GET /admin/members/earnings': getAdminEarnings,
   'POST /admin/members/grant-generation': postAdminGrantGeneration,
+  'POST /admin/members/fork': postAdminFork,
   'POST /admin/members/role': postAdminRole,
   'POST /admin/members/feature': postAdminFeature,
   'POST /admin/members/takedown': postAdminTakedown,
