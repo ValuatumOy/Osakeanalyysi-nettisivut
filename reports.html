@@ -14,7 +14,7 @@
   "url": "https://www.aiequityreports.com/reports.html",
   "name": "AI Equity Research Reports — Buy or Order Fresh | Valuatum",
   "description": "Ready AI equity research reports for 1,100+ Nordic, European and US listed companies. Free samples, ready reports from &euro;20, or a fresh report written on demand for &euro;50.",
-  "dateModified": "2026-09-14",
+  "dateModified": "2026-10-13",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -1062,9 +1062,10 @@
         });
         const data = await res.json();
         if (data && data.url) { window.location.href = data.url; return; }
+        var reason = data && data.error;
       } catch (err) {}
       if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
-      showToast('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+      showToast(checkoutFailureMessage(reason));
     }
     async function generateNewReport(company, ticker, button, options) {
       if (button && button.dataset.loading === '1') return;
@@ -1086,9 +1087,10 @@
         });
         const data = await res.json();
         if (res.ok && data && data.url) { window.location.href = data.url; return true; }
+        var reason = data && data.error;
       } catch (err) {}
       if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
-      showToast('Could not start fresh report checkout. Please try again or contact contact26@valuatum.com.');
+      showToast(checkoutFailureMessage(reason));
       return false;
     }
     function bindCardActions() {

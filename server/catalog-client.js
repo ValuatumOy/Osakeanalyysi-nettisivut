@@ -80,6 +80,41 @@ async function getCatalogReport(reportId) {
   return toBackendReport(getReportByIdSync(reportId, { persistState: false }));
 }
 
+// The report pages are built from the production catalog and the test site
+// serves the same HTML, so on test nearly every buy or revise button names a
+// report the test catalog has never seen. With a Stripe test key, and only
+// then, stand in the newest report the test catalog has for the same ticker:
+// same free/paid status first, revisable ones only when revisions are wanted.
+// A production report could not be revised from test anyway — its engine job
+// lives in the production engine.
+const PRODUCTION_CATALOG_URL = 'https://api.aiequityreports.com';
+
+function isStripeTestMode() {
+  return String(process.env.STRIPE_SECRET_KEY || '').startsWith('sk_test_');
+}
+
+async function findTestStandIn(reportId, { withRevisions = false } = {}) {
+  if (!isStripeTestMode()) return null;
+  let ticker = '';
+  let isFree = null;
+  try {
+    const data = await fetchJson(`${PRODUCTION_CATALOG_URL}/api/reports/${encodeURIComponent(reportId)}`);
+    const original = normalizeCatalogReport(data.report || data);
+    ticker = String(original?.ticker || '').toUpperCase();
+    isFree = original ? original.isFree : null;
+  } catch (err) {
+    console.warn('test stand-in: production lookup failed:', err.message);
+  }
+  if (!ticker) return null;
+
+  const candidates = (await getCatalogReports())
+    .filter((r) => String(r.ticker || '').toUpperCase() === ticker)
+    .filter((r) => !withRevisions || r.revisable)
+    .sort((a, b) => (Number(b.isFree === isFree) - Number(a.isFree === isFree))
+      || String(b.reportDate || '').localeCompare(String(a.reportDate || '')));
+  return candidates.length ? toBackendReport(candidates[0]) : null;
+}
+
 async function getCatalogReports() {
   const base = catalogBaseUrl();
 
@@ -259,6 +294,8 @@ module.exports = {
   previewOrderValuation,
   getCatalogReport,
   getCatalogReports,
+  findTestStandIn,
+  isStripeTestMode,
   recordCatalogPurchase,
   requestReportDownload,
   getOrderState,

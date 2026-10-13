@@ -671,6 +671,13 @@ function openRevisionsModal(choice, onChoose) {
   modal.classList.add('open');
 }
 
+// The server's own reason when it gave one ("Report not found", "This report
+// does not support revisions"): the bare apology hid what was actually wrong.
+function checkoutFailureMessage(reason) {
+  var base = 'Could not start checkout. Please try again or contact contact26@valuatum.com.';
+  return reason ? 'Could not start checkout: ' + reason + '\n\nPlease try again or contact contact26@valuatum.com.' : base;
+}
+
 // ── "Generate fresh report" button (generated company/coverage pages) ─────────
 // Entry point into the fresh-report pipeline. The button carries the covered
 // company's real SYMBOL.EXCHANGE ticker; exchange/country are derived server-side
@@ -704,13 +711,14 @@ function openRevisionsModal(choice, onChoose) {
         window.location.href = data.url;
         return;
       }
+      var reason = data && data.error;
     } catch (err) { /* fall through to reset below */ }
 
     btn.dataset.loading = '';
     btn.style.pointerEvents = '';
     btn.style.opacity = '';
     btn.textContent = label;
-    alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+    alert(checkoutFailureMessage(reason));
   }
 
   buttons.forEach(function (btn) {
@@ -754,13 +762,14 @@ async function submitReadyReportCheckout(link, reportId, withRevisions) {
       window.location.href = data.url;
       return;
     }
+    var reason = data && data.error;
   } catch (err) { /* fall through to reset below */ }
 
   link.dataset.loading = '';
   link.style.pointerEvents = '';
   link.style.opacity = '';
   link.textContent = label;
-  alert('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+  alert(checkoutFailureMessage(reason));
 }
 
 function bindReadyReportCheckoutLink(link) {

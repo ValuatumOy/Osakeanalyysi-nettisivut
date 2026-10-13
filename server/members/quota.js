@@ -306,8 +306,11 @@ function buildSubmitTransact({
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
             + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target, '
             + 'promptRounds = :rounds',
-          ConditionExpression: '#status = :generating AND attribute_not_exists(generationCredit)',
-          ExpressionAttributeNames: { '#status': 'status' },
+          // Private stays private: a gifted credit's run, a Plus member's month,
+          // a bought report and an admin's copy of someone else's report carry
+          // no obligation, so the PROFILE condition above lets them through.
+          ConditionExpression: '#status = :generating AND attribute_not_exists(generationCredit) AND attribute_not_exists(#private)',
+          ExpressionAttributeNames: { '#status': 'status', '#private': 'private' },
           ExpressionAttributeValues: {
             ':published': 'published',
             ':generating': 'generating',
