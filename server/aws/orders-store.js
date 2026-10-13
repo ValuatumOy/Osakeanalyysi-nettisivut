@@ -108,6 +108,12 @@ async function create(input) {
     // make the forker's first revision overwrite the published report under
     // every reader of it.
     forkedFrom: input.forkedFrom || undefined,
+    // An admin's private copy of someone else's report (adminCopyFor in
+    // server/lambda/api.js): the admin view revises it in place.
+    adminCopy: input.adminCopy || undefined,
+    // Carried from a parent whose job was attached by hand: the engine answers
+    // only to the username that job was submitted under.
+    engineUsername: input.engineUsername || undefined,
     reportId: input.reportId || null,
     // What Stripe charged, in minor units
     amountTotal: Number.isFinite(input.amountTotal) ? input.amountTotal : null,

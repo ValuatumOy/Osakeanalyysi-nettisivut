@@ -37,6 +37,16 @@ test('submit publishes and releases the obligation, and indexes the publication'
   assert.equal(indexPut.Item.reviewCount, 0);
 });
 
+test('submit refuses a private generation, whatever made it private', () => {
+  const params = quota.buildSubmitTransact({
+    table: TABLE, userId: 'u1', now: new Date('2026-09-01T00:00:00Z'), genId: 'g1',
+    promptsText: 'p', companyId: 'TSLA', jobId: '01JOB',
+  });
+  const pubUpdate = params.TransactItems[1].Update;
+  assert.match(pubUpdate.ConditionExpression, /attribute_not_exists\(#private\)/);
+  assert.equal(pubUpdate.ExpressionAttributeNames['#private'], 'private');
+});
+
 test('the engine rating is recorded on both rows, and only the three it issues', () => {
   const now = new Date('2026-09-01T00:00:00Z');
   const build = (extra) => quota.buildSubmitTransact({
