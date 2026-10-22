@@ -47,7 +47,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24.22.1'
 
       - name: Titles, company index, llms.txt, pricing.md, freshness, JSON-LD
         run: |
