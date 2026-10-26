@@ -1,12 +1,13 @@
 // Task E — synchronous FMP data-import trigger.
 //
-// Refreshes a single company's data from FinancialModelingPrep into Wisdom just
+// Refreshes a single company's data from FinancialModelingPrep into Trunk just
 // before rendering, so a "fresh" report reflects current figures. The Java
 // endpoint (DataImportController, provider=FMP) is SYNCHRONOUS: it blocks for
 // the whole import (tens of seconds, 5-minute server cap) and returns a terminal
 // outcome, so there is nothing to poll. See the fmp-import-java-dependency notes.
 //
-// Gated by FRESH_IMPORT_ENABLED. Requires FMP_IMPORT_URL (prod wisdom) and a
+// Gated by FRESH_IMPORT_ENABLED. Requires FMP_IMPORT_URL (the Trunk the stage's
+// engine reads: Wisdom for prod, trunkdev for test; infra/lib/config.ts) and a
 // bearer token with the Controller.DataImport grant (FMP_IMPORT_TOKEN).
 
 const IMPORT_URL = process.env.FMP_IMPORT_URL || '';

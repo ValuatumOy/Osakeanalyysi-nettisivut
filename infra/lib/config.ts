@@ -29,6 +29,13 @@ export interface StageConfig {
   /** pdf-report-engine Lambda: function URL + function ARN for IAM-auth invoke. */
   pdfEngineUrl?: string;
   engineFunctionArn?: string;
+  /**
+   * FMP_IMPORT_URL for the worker: the Trunk whose model the stage's engine
+   * reads (prod engine → Wisdom, test engine → trunkdev). Pointing test at
+   * Wisdom imported into production and left the model the test report reads
+   * untouched (GOOGL, 23 October 2026).
+   */
+  fmpImportUrl: string;
 }
 
 export function stageConfig(app: App): StageConfig {
@@ -50,6 +57,9 @@ export function stageConfig(app: App): StageConfig {
         url: 'https://7zqqrejifzqphtwfb2imxtn67q0yzekq.lambda-url.eu-west-1.on.aws',
         arn: 'arn:aws:lambda:eu-west-1:892885731254:function:pdf-report-api-test',
       };
+  // The Trunk each engine stage reads (pdf-report-engine secret
+  // `pdf-report<-test>/customers/Wisdom`); the FMP import must go to the same one.
+  const trunkRest = stage === 'prod' ? 'https://wisdom.valuatum.com/rest' : 'https://trunkdev.valuatum.com/rest';
 
   // Every other stage-dependent URL below uses `suffix` and defaults
   // correctly per stage; this one didn't, and a `stage=test` deploy that
@@ -84,5 +94,6 @@ export function stageConfig(app: App): StageConfig {
     secretsPrefix: `/aiequityreports/${stage}`,
     pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
     engineFunctionArn: app.node.tryGetContext('engineFunctionArn') ?? engine.arn,
+    fmpImportUrl: app.node.tryGetContext('fmpImportUrl') ?? `${trunkRest}/dataimport`,
   };
 }
