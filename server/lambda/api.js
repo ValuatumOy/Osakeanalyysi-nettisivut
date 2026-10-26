@@ -362,7 +362,11 @@ async function orderPagePayload(order) {
   // buyer has nothing to download under their own order — but they did pay for
   // the parent's analysis, so resolve it here, live, from the parent's own
   // current row. Read-only: nothing is written back to either order.
-  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
+  // An admin copy started from an older version names that version's PDF
+  // itself (basePdfFileName): the parent's current file is a different report.
+  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.basePdfFileName) {
+    payload.originalUrl = permanentPdfUrl(order.basePdfFileName);
+  } else if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
     const parent = await ordersStore.get(order.forkedFrom);
     if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
       payload.originalUrl = permanentPdfUrl(parent.pdfFileName);
@@ -406,14 +410,22 @@ async function getAdminOrder(event) {
   if (!order) return json(404, { error: 'Order not found' });
 
   const payload = await orderPagePayload(order);
+  // Which versions the admin can start a revision from: those whose engine
+  // job the order recorded (versionBaseOf below).
+  const recorded = new Set((order.revisionHistory || []).filter((e) => e.jobId).map((e) => e.version));
   return json(200, {
     ...payload,
+    revisionHistory: payload.revisionHistory.map((entry) => ({
+      ...entry,
+      revisable: entry.original ? Boolean(order.originalJobId || order.originalPdfFileName) : recorded.has(entry.version),
+    })),
     // Revisions on the admin view never touch this order unless it is an
     // admin copy already: the first one makes the copy (adminCopyFor below).
     adminCopy: Boolean(order.adminCopy),
     email: order.email || null,
     analystName: order.analystName || null,
     forkedFrom: order.forkedFrom || null,
+    forkedFromVersion: order.forkedFromVersion || null,
   }, { 'cache-control': 'no-store' });
 }
 
@@ -425,11 +437,33 @@ async function getAdminOrder(event) {
 // order, its own rounds, no PDF key of its own until its first delivery (see
 // createForkOrder in server/lambda/members.js for why that matters), no email.
 // An admin copy revises in place; anything else gets a new copy.
+//
+// A revision can also start from an older version (`fromVersion`): the engine
+// revises any finished job, and the comment history it carries is that
+// version's own. That is always a new copy, even from an admin copy, so no
+// order's history ever forks under it.
 const ADMIN_COPY_ROUNDS = 20;
 
-async function adminCopyFor(order) {
-  if (order.adminCopy) return order;
-  if (order.status !== ordersStore.STATUS.DELIVERED || !order.jobId) return null;
+// The engine job and PDF behind one version of an order, or null when the
+// order never recorded the job. Version 1 is originalJobId, or for an order
+// delivered before that was stamped, the original PDF's sidecar; every later
+// version is its revisionHistory entry.
+async function versionBaseOf(order, version) {
+  if (version === editing.currentVersion(order)) return { jobId: order.jobId, pdfFileName: order.pdfFileName };
+  if (version === 1) {
+    let jobId = order.originalJobId || null;
+    if (!jobId && order.originalPdfFileName) {
+      const sidecar = await pdfStore.readSidecar(order.originalPdfFileName).catch(() => null);
+      jobId = sidecar?.provenance?.jobId || null;
+    }
+    return jobId ? { jobId, pdfFileName: order.originalPdfFileName || null } : null;
+  }
+  const entry = (order.revisionHistory || []).find((e) => e.version === version);
+  return entry?.jobId ? { jobId: entry.jobId, pdfFileName: entry.pdfFileName || null } : null;
+}
+
+async function adminCopyFor(order, version, base) {
+  if (order.adminCopy && version === editing.currentVersion(order)) return order;
   return ordersStore.create({
     id: crypto.randomUUID(),
     companyName: order.companyName,
@@ -438,9 +472,11 @@ async function adminCopyFor(order) {
     sector: order.sector,
     industry: order.industry,
     status: ordersStore.STATUS.DELIVERED,
-    jobId: order.jobId,
+    jobId: base.jobId,
     engineUsername: order.engineUsername,
     forkedFrom: order.id,
+    forkedFromVersion: version,
+    basePdfFileName: base.pdfFileName || undefined,
     visibility: 'private',
     adminCopy: true,
     revisionsAllowed: ADMIN_COPY_ROUNDS,
@@ -449,20 +485,37 @@ async function adminCopyFor(order) {
 
 // Both return `orderId`: the copy the change went to, which the order page
 // moves to. On an admin copy that is the same id it was called with.
-async function adminChange(event, claim) {
+// `fromVersion` is taken by a comment revision only: an edit's original text
+// and a locked calculation were both read from the current version.
+async function adminChange(event, claim, { fromVersionAllowed }) {
   const order = await ordersStore.get(event.pathParameters?.id || '');
   if (!order) return json(404, { error: 'Order not found' });
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
-  const copy = await adminCopyFor(order);
-  if (!copy) return json(409, { error: 'This report has no delivered version to copy yet', status: order.status });
-  const res = await claim(copy.id, body);
+  if (order.status !== ordersStore.STATUS.DELIVERED || !order.jobId) {
+    return json(409, { error: 'This report has no delivered version to copy yet', status: order.status });
+  }
+
+  const current = editing.currentVersion(order);
+  const version = body.fromVersion == null ? current : Number(body.fromVersion);
+  if (!Number.isInteger(version) || version < 1 || version > current) {
+    return json(400, { error: `fromVersion must be a version of this report, 1 to ${current}` });
+  }
+  if (version !== current && (!fromVersionAllowed || body.valuationOverrides)) {
+    return json(400, { error: 'Only a comment revision can start from an older version; edits and locked assumptions work on the latest' });
+  }
+  const base = await versionBaseOf(order, version);
+  if (!base) return json(409, { error: `Version ${version} has no recorded engine job, so it cannot be revised` });
+
+  const copy = await adminCopyFor(order, version, base);
+  const { fromVersion, ...rest } = body;
+  const res = await claim(copy.id, rest);
   if (res.statusCode !== 200) return res;
   return json(200, { ...JSON.parse(res.body), orderId: copy.id, copied: copy.id !== order.id });
 }
 
-const postAdminOrderRevision = (event) => adminChange(event, claimOrderRevision);
-const postAdminOrderEdits = (event) => adminChange(event, claimOrderEdit);
+const postAdminOrderRevision = (event) => adminChange(event, claimOrderRevision, { fromVersionAllowed: true });
+const postAdminOrderEdits = (event) => adminChange(event, claimOrderEdit, { fromVersionAllowed: false });
 // Read-only on any order: the calculator and the editor's view of the text.
 const postAdminOrderValuation = (event) => orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
 const getAdminOrderPreview = (event) => orderPreviewResponse(event.pathParameters?.id || '');

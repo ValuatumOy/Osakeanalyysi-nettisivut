@@ -49,6 +49,11 @@
     });
   }
 
+  // The admin's chosen starting point for the next revision: a version number
+  // from the history ("Revise from here"), or null for the latest. Only a
+  // comment revision takes it; the server makes it a new admin copy.
+  let adminBaseVersion = null;
+
   // After an admin's revision or edit: the change went to an admin copy, so
   // follow it there unless this already was the copy.
   function afterChange(data) {
@@ -118,7 +123,10 @@
   // target-price view; the engine writes the report on those rows.
   function postRevision(comments, valuationOverrides, scope) {
     const extra = valuationOverrides ? { valuationOverrides: valuationOverrides, scope: 'narrative' } : { scope: scope || 'estimates' };
-    if (isAdminView) return adminFetch('/revisions', { body: Object.assign({ comments: comments }, extra) });
+    if (isAdminView) {
+      const from = adminBaseVersion && !valuationOverrides ? { fromVersion: adminBaseVersion } : {};
+      return adminFetch('/revisions', { body: Object.assign({ comments: comments }, extra, from) });
+    }
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
@@ -624,6 +632,7 @@
         + (date ? '<span class="rv-date">' + escapeHtml(date) + '</span>' : '') + '</span>'
         + renderVersionPulse(entry)
         + (entry.pdfUrl ? '<a class="rv-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>' : '')
+        + (isAdminView && index > 0 && entry.revisable ? '<button type="button" class="rv-download" data-from-version="' + escapeAttr(entry.version) + '">Revise from here</button>' : '')
         + '<span class="rv-chevron" aria-hidden="true"></span>'
         + '</summary>';
       html += '<div class="rv-body">';
@@ -1344,10 +1353,13 @@
   // Buying rounds is the customer's business and never shown.
   function renderAdminView(order) {
     hide('revisionBuy');
+    adminBaseVersion = null;
+    renderAdminBase();
     if (order.adminCopy) {
       document.getElementById('deliveredTitle').textContent = 'Admin copy';
       document.getElementById('deliveredSub').textContent =
         'A private copy for admin revisions' + (order.forkedFrom ? ' of order ' + order.forkedFrom : '')
+        + (order.forkedFromVersion ? ', started from its version ' + order.forkedFromVersion : '')
         + '. The original report is unchanged. Revisions used: ' + (order.revisionsUsed || 0)
         + ' of ' + (order.revisionsAllowed || 0) + '.';
       return;
@@ -1366,6 +1378,41 @@
     show('revisionBox');
     hide('revisionExhausted');
   }
+
+  // Where the admin's next revision starts. An older version always goes to a
+  // new admin copy; editing the text and locking assumptions stay on the
+  // latest, since both were read from it.
+  function renderAdminBase() {
+    let note = document.getElementById('revisionBase');
+    if (!note) {
+      note = document.createElement('p');
+      note.id = 'revisionBase';
+      note.className = 'revision-count';
+      document.getElementById('revisionCount').after(note);
+    }
+    if (!adminBaseVersion) { note.style.display = 'none'; return; }
+    note.style.display = '';
+    note.innerHTML = 'Starting from version ' + escapeHtml(adminBaseVersion)
+      + ': the revision goes to a new private admin copy built on that version. Editing the text and the target-price view still work on the latest. '
+      + '<button type="button" class="btn btn-ghost btn-sm" id="revisionBaseReset">Use the latest version</button>';
+  }
+
+  document.getElementById('revisionHistory').addEventListener('click', function (ev) {
+    const btn = ev.target.closest('[data-from-version]');
+    if (!btn) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    adminBaseVersion = Number(btn.dataset.fromVersion);
+    renderAdminBase();
+    document.getElementById('revisionBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('revisionText').focus({ preventScroll: true });
+  });
+
+  document.getElementById('revisionBox').addEventListener('click', function (ev) {
+    if (!ev.target.closest('#revisionBaseReset')) return;
+    adminBaseVersion = null;
+    renderAdminBase();
+  });
 
   // A market-first report's revision reads the comment for everything it can
   // change -- forecasts, divisions merged or split, scenario chances, the text --
