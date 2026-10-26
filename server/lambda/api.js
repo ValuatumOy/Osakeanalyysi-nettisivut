@@ -336,6 +336,8 @@ async function orderPagePayload(order) {
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
     reportQuality: currentReportQuality(order),
+    // The order page drops its scope choice for a market-first report.
+    marketFirst: Boolean(order.marketFirst),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Text editing: whether the current version can be edited by hand, which
@@ -360,7 +362,11 @@ async function orderPagePayload(order) {
   // buyer has nothing to download under their own order — but they did pay for
   // the parent's analysis, so resolve it here, live, from the parent's own
   // current row. Read-only: nothing is written back to either order.
-  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
+  // An admin copy started from an older version names that version's PDF
+  // itself (basePdfFileName): the parent's current file is a different report.
+  if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.basePdfFileName) {
+    payload.originalUrl = permanentPdfUrl(order.basePdfFileName);
+  } else if (order.status === ordersStore.STATUS.DELIVERED && !order.pdfFileName && order.forkedFrom) {
     const parent = await ordersStore.get(order.forkedFrom);
     if (parent?.status === ordersStore.STATUS.DELIVERED && parent.pdfFileName) {
       payload.originalUrl = permanentPdfUrl(parent.pdfFileName);
@@ -404,14 +410,115 @@ async function getAdminOrder(event) {
   if (!order) return json(404, { error: 'Order not found' });
 
   const payload = await orderPagePayload(order);
+  // Which versions the admin can start a revision from: those whose engine
+  // job the order recorded (versionBaseOf below).
+  const recorded = new Set((order.revisionHistory || []).filter((e) => e.jobId).map((e) => e.version));
   return json(200, {
     ...payload,
-    readOnly: true,
+    revisionHistory: payload.revisionHistory.map((entry) => ({
+      ...entry,
+      revisable: entry.original ? Boolean(order.originalJobId || order.originalPdfFileName) : recorded.has(entry.version),
+    })),
+    // Revisions on the admin view never touch this order unless it is an
+    // admin copy already: the first one makes the copy (adminCopyFor below).
+    adminCopy: Boolean(order.adminCopy),
     email: order.email || null,
     analystName: order.analystName || null,
     forkedFrom: order.forkedFrom || null,
+    forkedFromVersion: order.forkedFromVersion || null,
   }, { 'cache-control': 'no-store' });
 }
+
+// The admin revising someone else's report. Revising it in place would spend
+// its owner's rounds, change a PDF its buyers or readers already have, and —
+// for a member's analysis — put our comments into the prompts published as
+// theirs. So the admin's first revision or edit makes a private copy on the
+// same engine job, and everything after that happens on the copy: its own
+// order, its own rounds, no PDF key of its own until its first delivery (see
+// createForkOrder in server/lambda/members.js for why that matters), no email.
+// An admin copy revises in place; anything else gets a new copy.
+//
+// A revision can also start from an older version (`fromVersion`): the engine
+// revises any finished job, and the comment history it carries is that
+// version's own. That is always a new copy, even from an admin copy, so no
+// order's history ever forks under it.
+const ADMIN_COPY_ROUNDS = 20;
+
+// The engine job and PDF behind one version of an order, or null when the
+// order never recorded the job. Version 1 is originalJobId, or for an order
+// delivered before that was stamped, the original PDF's sidecar; every later
+// version is its revisionHistory entry.
+async function versionBaseOf(order, version) {
+  if (version === editing.currentVersion(order)) return { jobId: order.jobId, pdfFileName: order.pdfFileName };
+  if (version === 1) {
+    let jobId = order.originalJobId || null;
+    if (!jobId && order.originalPdfFileName) {
+      const sidecar = await pdfStore.readSidecar(order.originalPdfFileName).catch(() => null);
+      jobId = sidecar?.provenance?.jobId || null;
+    }
+    return jobId ? { jobId, pdfFileName: order.originalPdfFileName || null } : null;
+  }
+  const entry = (order.revisionHistory || []).find((e) => e.version === version);
+  return entry?.jobId ? { jobId: entry.jobId, pdfFileName: entry.pdfFileName || null } : null;
+}
+
+async function adminCopyFor(order, version, base) {
+  if (order.adminCopy && version === editing.currentVersion(order)) return order;
+  return ordersStore.create({
+    id: crypto.randomUUID(),
+    companyName: order.companyName,
+    ticker: order.ticker,
+    exchange: order.exchange,
+    sector: order.sector,
+    industry: order.industry,
+    status: ordersStore.STATUS.DELIVERED,
+    jobId: base.jobId,
+    engineUsername: order.engineUsername,
+    forkedFrom: order.id,
+    forkedFromVersion: version,
+    basePdfFileName: base.pdfFileName || undefined,
+    visibility: 'private',
+    adminCopy: true,
+    revisionsAllowed: ADMIN_COPY_ROUNDS,
+  });
+}
+
+// Both return `orderId`: the copy the change went to, which the order page
+// moves to. On an admin copy that is the same id it was called with.
+// `fromVersion` is taken by a comment revision only: an edit's original text
+// and a locked calculation were both read from the current version.
+async function adminChange(event, claim, { fromVersionAllowed }) {
+  const order = await ordersStore.get(event.pathParameters?.id || '');
+  if (!order) return json(404, { error: 'Order not found' });
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  if (order.status !== ordersStore.STATUS.DELIVERED || !order.jobId) {
+    return json(409, { error: 'This report has no delivered version to copy yet', status: order.status });
+  }
+
+  const current = editing.currentVersion(order);
+  const version = body.fromVersion == null ? current : Number(body.fromVersion);
+  if (!Number.isInteger(version) || version < 1 || version > current) {
+    return json(400, { error: `fromVersion must be a version of this report, 1 to ${current}` });
+  }
+  if (version !== current && (!fromVersionAllowed || body.valuationOverrides)) {
+    return json(400, { error: 'Only a comment revision can start from an older version; edits and locked assumptions work on the latest' });
+  }
+  const base = await versionBaseOf(order, version);
+  if (!base) return json(409, { error: `Version ${version} has no recorded engine job, so it cannot be revised` });
+
+  const copy = await adminCopyFor(order, version, base);
+  const { fromVersion, ...rest } = body;
+  const res = await claim(copy.id, rest);
+  if (res.statusCode !== 200) return res;
+  return json(200, { ...JSON.parse(res.body), orderId: copy.id, copied: copy.id !== order.id });
+}
+
+const postAdminOrderRevision = (event) => adminChange(event, claimOrderRevision, { fromVersionAllowed: true });
+const postAdminOrderEdits = (event) => adminChange(event, claimOrderEdit, { fromVersionAllowed: false });
+// Read-only on any order: the calculator and the editor's view of the text.
+const postAdminOrderValuation = (event) => orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
+const getAdminOrderPreview = (event) => orderPreviewResponse(event.pathParameters?.id || '');
 
 // POST /api/orders/{id}/revisions — the order page's one mutating call.
 // Claims the order for a revision (DELIVERED -> REVISING, conditional on
@@ -424,9 +531,11 @@ async function postOrderRevision(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
+  return claimOrderRevision(event.pathParameters?.id || '', parseBody(event));
+}
 
-  const id = event.pathParameters?.id || '';
-  const body = parseBody(event);
+// The revision claim itself, shared with the admin's route (postAdminOrderRevision).
+async function claimOrderRevision(id, body) {
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
   const comments = String(body.comments || '').trim();
@@ -440,7 +549,10 @@ async function postOrderRevision(event) {
   const valuationOverrides = editing.parseValuationOverrides(body.valuationOverrides);
   if (valuationOverrides instanceof Error) return json(400, { error: valuationOverrides.message });
 
-  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides);
+  const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
+  if (scope instanceof Error) return json(400, { error: scope.message });
+
+  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides, scope);
   if (!claimed) {
     const existing = await ordersStore.get(id);
     if (!existing) return json(404, { error: 'Order not found' });
@@ -467,9 +579,11 @@ async function postOrderEdits(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
+  return claimOrderEdit(event.pathParameters?.id || '', parseBody(event));
+}
 
-  const id = event.pathParameters?.id || '';
-  const body = parseBody(event);
+// The edit claim itself, shared with the admin's route (postAdminOrderEdits).
+async function claimOrderEdit(id, body) {
   if (!body) return json(400, { error: 'Invalid JSON body' });
 
   let request;
@@ -517,10 +631,12 @@ async function postOrderValuation(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
-  const id = event.pathParameters?.id || '';
+  return orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
+}
+
+async function orderValuationResponse(id, body) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
-  const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
   const result = await editing.previewValuation(order, body);
   if (result.status !== 200) return json(result.status, { error: result.error });
@@ -535,7 +651,10 @@ async function getOrderPreview(event) {
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
 
-  const id = event.pathParameters?.id || '';
+  return orderPreviewResponse(event.pathParameters?.id || '');
+}
+
+async function orderPreviewResponse(id) {
   const order = await ordersStore.get(id);
   if (!order) return json(404, { error: 'Order not found' });
 
@@ -635,7 +754,7 @@ async function getAdminReports() {
         // construction, only in the catalog as plumbing).
         origin: !report.provenanceSessionId ? 'uploaded'
           : (order?.visibility === 'private' || (order && !order.email) ? 'generation' : 'order'),
-        generatedBy: order ? (order.analystName || order.email || null) : null,
+        generatedBy: order ? (order.analystName || order.email || (order.adminCopy ? 'Admin' : null)) : null,
         generatedAt: generatedAtOf.get(report.fileName) || null,
         // 1 for an original, the history number for a revised copy, null when
         // no order knows the file (a hand upload).
@@ -644,6 +763,7 @@ async function getAdminReports() {
         // member's published analysis instead of a fresh engine run. Such an
         // order has no original of its own in the catalog.
         forkedFrom: order?.forkedFrom || null,
+        adminCopy: Boolean(order?.adminCopy),
         // 'revision' | 'edit' for a revised copy, null for an original.
         kind: !report.isRevision ? null
           : kindOf.get(report.fileName)
@@ -769,6 +889,10 @@ const PUBLIC_ROUTES = {
 const ADMIN_ROUTES = {
   'GET /api/admin/reports': getAdminReports,
   'GET /api/admin/orders/{id}': getAdminOrder,
+  'POST /api/admin/orders/{id}/revisions': postAdminOrderRevision,
+  'POST /api/admin/orders/{id}/edits': postAdminOrderEdits,
+  'POST /api/admin/orders/{id}/valuation': postAdminOrderValuation,
+  'GET /api/admin/orders/{id}/preview': getAdminOrderPreview,
   'POST /api/admin/upload-url': postAdminUploadUrl,
   'POST /api/admin/publish': postAdminPublish,
   'POST /api/admin/update': postAdminUpdate,

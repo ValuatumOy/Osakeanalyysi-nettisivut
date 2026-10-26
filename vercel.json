@@ -4,6 +4,12 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/test-site/:path*",
+      "has": [{ "type": "host", "value": "^(www\\.)?aiequityreports\\.com$" }],
+      "destination": "/reports.html",
+      "permanent": false
+    },
+    {
       "source": "/report-store.html",
       "destination": "/reports.html",
       "permanent": true

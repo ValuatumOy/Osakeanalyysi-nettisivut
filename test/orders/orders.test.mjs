@@ -15,6 +15,18 @@ function isolate(t) {
   return statePath;
 }
 
+test('claimRevision stores the scope and preserves old local-ledger call signatures', (t) => {
+  const statePath = isolate(t);
+  for (const [id, scope] of [['content', 'content'], ['estimates', 'estimates']]) {
+    orders.create({ id, status: orders.STATUS.DELIVERED, revisionsAllowed: 1 }, statePath);
+    assert.equal(orders.claimRevision(id, 'Revise', null, scope, statePath).pendingRevisionScope, scope);
+  }
+  orders.create({ id: 'locked', status: orders.STATUS.DELIVERED, revisionsAllowed: 1 }, statePath);
+  assert.equal(orders.claimRevision('locked', 'Revise', { auto: { selectedMultiple: 12 } }, statePath).pendingRevisionScope, 'narrative');
+  orders.create({ id: 'old', status: orders.STATUS.DELIVERED, revisionsAllowed: 1 }, statePath);
+  assert.equal(orders.claimRevision('old', 'Revise', statePath).pendingRevisionScope, 'estimates');
+});
+
 test('create() defaults to a fresh, standard order with no revisions', (t) => {
   const statePath = isolate(t);
   const order = orders.create({ id: 'cs_1', ticker: 'NOKIA.HE' }, statePath);

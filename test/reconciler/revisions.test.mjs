@@ -77,13 +77,14 @@ function fakeEngine(overrides = {}) {
 
 function fakeEmail() {
   return {
-    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], reportError: [] },
+    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], sendAdminRevisionNotice: [], reportError: [] },
     async sendReportEmail() {},
     async sendReportRevisedEmail(to, meta) { this.calls.sendReportRevisedEmail.push({ to, meta }); },
     async sendRevisionFailedEmail(to, meta) { this.calls.sendRevisionFailedEmail.push({ to, meta }); },
     async sendGenerationFailedEmail(to, meta) { this.calls.sendGenerationFailedEmail.push({ to, meta }); },
     async sendAdminNotification() {},
     async sendAdminDeliveryNotice() {},
+    async sendAdminRevisionNotice(meta) { this.calls.sendAdminRevisionNotice.push(meta); },
     async reportError(where, err, details) { this.calls.reportError.push({ where, message: err?.message, details }); return true; },
   };
 }
@@ -152,6 +153,9 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   // The revised report names the analyst who steered it; a shop order has no
   // name and stays engine-bylined.
   assert.equal(engine.calls.submitRevision[0].analystName, 'Esa Virtanen');
+  // The order's email identifies the customer whose own forecast model the
+  // revision updates.
+  assert.equal(engine.calls.submitRevision[0].endUserEmail, 'buyer@example.com');
 
   // Tick 2: polls the revision job, which is already DONE -> delivers.
   await reconciler.advance(order);
@@ -169,6 +173,16 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
 
   assert.equal(email.calls.sendReportRevisedEmail.length, 1);
   assert.equal(email.calls.sendReportRevisedEmail[0].to, 'buyer@example.com');
+
+  // The admin hears about a delivered revision, as about a first delivery.
+  assert.equal(email.calls.sendAdminRevisionNotice.length, 1);
+  const notice = email.calls.sendAdminRevisionNotice[0];
+  assert.equal(notice.customerEmail, 'buyer@example.com');
+  assert.equal(notice.version, 2);
+  assert.equal(notice.revisionsUsed, 1);
+  assert.equal(notice.revisionsAllowed, 2);
+  assert.equal(notice.comment, 'assume 8% EBIT margin from 2027');
+  assert.match(notice.pdfUrl, /rev-/);
 
   // The change memo is fetched and stored as the first revisionHistory entry.
   assert.equal(engine.calls.fetchChangeMemo.length, 1);
@@ -191,7 +205,20 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   assert.equal(engine.calls.submitRevision[1].scope, 'narrative');
   assert.deepEqual(engine.calls.submitRevision[1].valuationOverrides, { 'robotaxi|bull': { probabilityPct: 40 } });
   assert.equal(order.pendingValuationOverrides, null);
-  assert.equal(engine.calls.submitRevision[0].scope, undefined);
+  assert.equal(engine.calls.submitRevision[0].scope, 'estimates');
+});
+
+test('wording scope reaches the engine and is cleared after submission', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine();
+  const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+  const orders = require(ORDERS_ID);
+  orders.create({ id: 'cs_content', status: orders.STATUS.DELIVERED, jobId: 'job_base', revisionsAllowed: 1 }, statePath);
+  orders.claimRevision('cs_content', 'Explain the risks more clearly', null, 'content', statePath);
+  await reconciler.advance(orders.get('cs_content', statePath));
+  assert.equal(engine.calls.submitRevision[0].scope, 'content');
+  assert.equal(engine.calls.submitRevision[0].parentJobId, 'job_base');
+  assert.equal(orders.get('cs_content', statePath).pendingRevisionScope, null);
 });
 
 test('a change memo fetch failure does not block delivery — the entry just has changes: null', async (t) => {
@@ -354,6 +381,7 @@ test('a hand edit: submitted to the engine edit endpoint, delivered as a version
   assert.match(order.pdfFileName, /edit-/);
   assert.equal(pdfStore.sidecars.get(order.pdfFileName).provenance.editedBy, 'Maija Analyst');
   assert.equal(email.calls.sendReportRevisedEmail.length, 0);
+  assert.equal(email.calls.sendAdminRevisionNotice.length, 0); // an edit is not worth an admin email
 
   const entry = order.revisionHistory[0];
   assert.equal(entry.version, 2);
@@ -449,4 +477,79 @@ test('a fresh delivery records the original job id and whether the engine produc
   assert.equal(order.status, orders.STATUS.DELIVERED);
   assert.equal(order.originalJobId, 'job_base');
   assert.equal(order.hasPreview, true);
+});
+
+test('an engine 400 on a revision fails the round at once: no retries, the round kept, the customer emailed', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    submitRevision: () => { const err = new Error('engine submitRevision 400: analystName is required'); err.status = 400; throw err; },
+  });
+  const email = fakeEmail();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore: fakePdfStore() });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_rev_400', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+  }, statePath);
+  orders.claimRevision('cs_rev_400', 'merge the two divisions', statePath);
+  await reconciler.advance(orders.get('cs_rev_400', statePath));
+
+  const order = orders.get('cs_rev_400', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.jobId, 'job_base');
+  assert.equal(order.revisionsUsed, 0);
+  assert.equal(order.pendingRevisionComment, null);
+  assert.match(order.revisionError, /analystName is required/);
+  assert.equal(engine.calls.submitRevision.length, 1);
+  assert.equal(email.calls.sendRevisionFailedEmail.length, 1);
+});
+
+test('an engine 429 or 5xx on a revision stays a transient error, retried next sweep', async (t) => {
+  for (const status of [429, 503]) {
+    const statePath = isolate(t);
+    const engine = fakeEngine({
+      submitRevision: () => { const err = new Error(`engine submitRevision ${status}`); err.status = status; throw err; },
+    });
+    const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+    const orders = require(ORDERS_ID);
+    orders.create({ id: 'cs_rev_busy', status: orders.STATUS.DELIVERED, jobId: 'job_base', revisionsAllowed: 1 }, statePath);
+    orders.claimRevision('cs_rev_busy', 'go faster', statePath);
+    await assert.rejects(reconciler.advance(orders.get('cs_rev_busy', statePath)), new RegExp(String(status)));
+    assert.equal(orders.get('cs_rev_busy', statePath).status, orders.STATUS.REVISING);
+  }
+});
+
+test('a delivery records whether the market-first pipeline wrote the report, for the order page', async (t) => {
+  for (const [pipeline, expected] of [['market-first', true], [undefined, false]]) {
+    const statePath = isolate(t);
+    const engine = fakeEngine({
+      getJob: (jobId) => ({ jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', pipeline }),
+    });
+    const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+    const orders = require(ORDERS_ID);
+    orders.create({ id: 'cs_mf', email: 'a@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE', status: orders.STATUS.RENDERING, jobId: 'job_base' }, statePath);
+    await reconciler.advance(orders.get('cs_mf', statePath));
+    assert.equal(orders.get('cs_mf', statePath).marketFirst, expected);
+  }
+});
+
+test('an order without an email revises without endUserEmail, so the engine keeps making a new model', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine();
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_rev_noemail', email: '', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+  }, statePath);
+  orders.claimRevision('cs_rev_noemail', 'assume 8% EBIT margin from 2027', statePath);
+
+  await reconciler.advance(orders.get('cs_rev_noemail', statePath));
+
+  assert.equal(engine.calls.submitRevision.length, 1);
+  assert.equal(engine.calls.submitRevision[0].endUserEmail, undefined);
 });

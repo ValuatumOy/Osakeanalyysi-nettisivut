@@ -386,6 +386,36 @@ Decided in the second review, same day:
 8. **Degraded coverage pages take company identity from the newest historical content file**;
    `-coverage` stubs are recognized by filename and left alone.
 
+## The test site
+
+test.aiequityreports.com deploys `staging` and serves the same files as production, so its
+`/reports/<slug>.html` was always production's page, whatever the test catalog held. The
+listing was moved to the test catalog on 26 October 2026 (it is rebuilt in the browser from
+`/api/reports`); the pages need extraction, so they are baked like production's:
+
+- `REPORT_PAGES_STAGE=test node scripts/report-pages/sync.mjs` reads the test catalog
+  (`test.aiequityreports.com/api/reports`) and the test PDFs (`files-test`). It reads
+  `report-content/` too, so reports the two catalogs share are not extracted twice and a company
+  keeps production's slug. New extractions go to `test-site/report-content/`.
+- It bakes a page into `test-site/reports/` only for a company with a live test report (the same
+  owner rule as production), adds `noindex`, and writes `test-site/reports/index.json`. Nothing
+  else is touched: no coverage pages, no `reports.html`, no sitemap.
+- On a `test.` host, `js/script.js` sends a reader of `/reports/<slug>.html` to
+  `/test-site/reports/<slug>.html` when the index has it, and the test listing links there
+  directly. Companies with no test report keep production's page.
+- A test card shows the report its page is about (the index's `reportId`, chosen by the owner
+  rule), so card and page agree as they do in production; only a company with no test page
+  falls back to its newest report. A new paid report therefore stays off the listing while the
+  company has a free one, exactly as in production.
+- A PDF that fails the extraction gate (the engine's one-page stub for a failed run) is recorded
+  in `test-site/report-content/_failed.json` and not retried; delete an entry to retry it.
+- The `sync-test` job in `report-pages-sync.yml` runs this hourly against `staging` and pushes
+  `test-site/` there. Scheduled runs use `main`'s copy of the workflow, so until the job reaches
+  `main` it runs only when started by hand on `staging` (the production job skips any branch but
+  `main`).
+- `test-site/` reaches `main` with every staging merge. Production redirects `/test-site/*` to
+  `/reports.html` (`vercel.json`, host-scoped) and `robots.txt` disallows it.
+
 ## Still open
 
 1. **Should a superseded report stay purchasable?** The 5 June Nokia and AMD reports are unlisted

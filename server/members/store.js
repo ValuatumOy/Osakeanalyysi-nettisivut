@@ -20,13 +20,15 @@ const isConditionFailure = (err) =>
   err?.name === 'ConditionalCheckFailedException' ||
   err?.name === 'TransactionCanceledException';
 
-async function getItem(pk, sk) {
-  const res = await dynamo().send(new GetCommand({ TableName: table(), Key: { pk, sk } }));
+async function getItem(pk, sk, consistentRead = false) {
+  const res = await dynamo().send(new GetCommand({
+    TableName: table(), Key: { pk, sk }, ...(consistentRead ? { ConsistentRead: true } : {}),
+  }));
   return res.Item || null;
 }
 
-async function getProfile(userId) {
-  return getItem(`USER#${userId}`, 'PROFILE');
+async function getProfile(userId, consistentRead = false) {
+  return getItem(`USER#${userId}`, 'PROFILE', consistentRead);
 }
 
 async function updateProfile(userId, patch) {

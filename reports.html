@@ -14,7 +14,7 @@
   "url": "https://www.aiequityreports.com/reports.html",
   "name": "AI Equity Research Reports — Buy or Order Fresh | Valuatum",
   "description": "Ready AI equity research reports for 1,100+ Nordic, European and US listed companies. Free samples, ready reports from &euro;20, or a fresh report written on demand for &euro;50.",
-  "dateModified": "2026-09-14",
+  "dateModified": "2026-10-26",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -737,6 +737,114 @@
         };
       });
     }
+    // test.aiequityreports.com sells from the test catalog, which the baked cards
+    // (built hourly from the production catalog) do not show. There the grid is
+    // rebuilt in the browser from /api/reports, in the same card markup, before
+    // anything reads it. Test needs no crawlable cards, so nothing is baked or
+    // committed for it. A report with no company page gets a card without one.
+    function isTestCatalogHost() {
+      return /^test\./.test(window.location.hostname);
+    }
+    // `testPage`: the company's page on the test site (test-site/reports/, baked by the sync from
+    // the test catalog), which wins over the production page the company catalog names.
+    function testCardHtml(cat, company, testPage) {
+      const isFree = !!cat.isFree;
+      const name = (company && company.name) || cat.companyName || cat.name || '';
+      const ticker = (company && company.ticker) || cat.ticker || '';
+      const exchange = (company && company.exchange) || cat.exchange || '';
+      const sector = cat.sector && cat.sector !== 'Unclassified' ? cat.sector : '';
+      const dateIso = String(cat.reportDate || '').slice(0, 10);
+      const pageUrl = testPage ? '/test-site/reports/' + testPage.slug + '.html'
+        : company && company.url ? '/' + normalizeUrl(company.url) : '';
+      const description = (company && company.description) || cat.description || '';
+      const tags = (cat.tags || []).slice(0, 4).map(function(t) { return '<span class="rc-tag">' + escapeHTML(t) + '</span>'; }).join('');
+      const pdfUrl = !cat.pdfUrl ? '' : /^https?:\/\//.test(cat.pdfUrl) ? cat.pdfUrl : '/' + String(cat.pdfUrl).replace(/^\//, '');
+      const price = isFree ? 'Free' : '€' + Number(cat.price || 20).toFixed(0);
+      const primaryCta = isFree
+        ? '<a class="btn btn-primary" href="' + escapeHTML(pdfUrl) + '" target="_blank" rel="noopener" download>Download free PDF</a>'
+          + (cat.revisable ? '<button class="btn btn-outline-dark" data-buy-revisions="' + escapeHTML(cat.id) + '" hidden>Create a revision</button>' : '')
+        : '<button class="btn btn-primary" data-buy-report="' + escapeHTML(cat.id) + '" data-revisable="' + (cat.revisable ? '1' : '') + '">Buy ready report — ' + escapeHTML(price) + '</button>';
+      const nameHtml = pageUrl ? '<a href="' + escapeHTML(pageUrl) + '">' + escapeHTML(name) + '</a>' : escapeHTML(name);
+      return '<article class="report-card" role="listitem" id="report-' + escapeHTML(cat.id) + '"'
+        + (pageUrl ? ' data-page-url="' + escapeHTML(pageUrl) + '"' : '')
+        + ' data-name="' + escapeHTML(name) + '" data-ticker="' + escapeHTML(ticker) + '" data-exchange="' + escapeHTML(exchange)
+        + '" data-sector="' + escapeHTML(sector) + '" data-date="' + escapeHTML(dateIso) + '" data-free="' + (isFree ? '1' : '') + '"'
+        + (pageUrl ? ' tabindex="0" aria-label="Open ' + escapeHTML(name) + ' report page"' : '') + '>'
+        + '<div><div class="rc-eyebrow"><span class="rc-badge' + (isFree ? ' rc-badge-free' : '') + '">' + (isFree ? 'Free report' : 'Ready report') + '</span>'
+        + '<span class="rc-date">' + escapeHTML(cat.reportDateLabel || formatReportDate(dateIso)) + '</span></div>'
+        + '<h3 class="rc-company-name">' + nameHtml + '</h3>'
+        + '<div class="rc-company-meta"><span class="rc-ticker">' + escapeHTML(ticker) + '</span><span>·</span><span>' + escapeHTML(exchange) + '</span><span>·</span><span>' + escapeHTML(sector) + '</span></div>'
+        + '<p class="rc-desc">' + escapeHTML(description) + '</p><div class="rc-tags">' + tags + '</div></div>'
+        + '<div class="rc-actions"><div><div class="rc-price">' + escapeHTML(price) + '</div><div class="rc-price-note">Instant PDF download</div></div>'
+        + primaryCta
+        + '<button class="btn btn-outline-dark" data-generate-company="' + escapeHTML(name) + '" data-generate-ticker="' + escapeHTML(ticker) + '">Generate fresh report — €50</button>'
+        + (pageUrl ? '<a class="btn btn-ghost" style="justify-content:center;color:var(--gray-steel);" href="' + escapeHTML(pageUrl) + '">Open report page</a>' : '')
+        + '</div></article>';
+    }
+    // One card per company, its newest report, newest first: as the sync bakes them.
+    function loadTestCatalogCards() {
+      if (!isTestCatalogHost()) return Promise.resolve();
+      const testPages = fetch('/test-site/reports/index.json', { cache: 'no-store' })
+        .then(function(res) { return res.ok ? res.json() : { pages: [] }; })
+        .catch(function() { return { pages: [] }; });
+      return Promise.all([
+        fetch('/api/reports', { cache: 'no-store' })
+          .then(function(res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); }),
+        testPages,
+      ])
+        .then(function(results) {
+          const data = results[0];
+          const testPageByTicker = new Map();
+          ((results[1] && results[1].pages) || []).forEach(function(p) {
+            if (normalize(p.ticker)) testPageByTicker.set(normalize(p.ticker), p);
+          });
+          const reports = (Array.isArray(data) ? data : (data && data.reports) || [])
+            .filter(function(r) { return r && r.id && r.availability !== 'unavailable'; })
+            .sort(function(a, b) { return (String(b.reportDate || '') + String(b.uploadedAt || '')).localeCompare(String(a.reportDate || '') + String(a.uploadedAt || '')); });
+          const byTicker = new Map();
+          (window.COMPANY_PAGE_CATALOG || []).forEach(function(c) {
+            const key = normalize(c.ticker);
+            if (key && !byTicker.has(key)) byTicker.set(key, c);
+          });
+          // A company with a test page shows the report that page is about (the sync's owner
+          // rule: its free report if it has one, else its newest), so card and page agree as
+          // they do in production; any other company its newest report.
+          const chosen = new Map();
+          reports.forEach(function(r) {
+            const key = normalize(r.ticker) || normalize(r.companyName) || r.id;
+            const page = testPageByTicker.get(normalize(r.ticker));
+            if (!chosen.has(key) || (page && r.id === page.reportId)) chosen.set(key, r);
+          });
+          const picked = new Set(chosen.values());
+          const cards = [];
+          reports.filter(function(r) { return picked.has(r); }).forEach(function(r) {
+            cards.push(testCardHtml(r, byTicker.get(normalize(r.ticker)) || null, testPageByTicker.get(normalize(r.ticker)) || null));
+          });
+          document.getElementById('catalogGrid').innerHTML = cards.join('');
+          // script.js binds the free-report revision buttons at load, on the baked cards.
+          document.querySelectorAll('#catalogGrid [data-buy-revisions]').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              if (btn.dataset.loading === '1') return;
+              submitReadyReportCheckout(btn, btn.getAttribute('data-buy-revisions'), true);
+            });
+          });
+          const revealRevisions = function() {
+            const choice = getRevisionsChoice('free', true);
+            document.querySelectorAll('#catalogGrid [data-buy-revisions]').forEach(function(btn) {
+              btn.hidden = !choice.available;
+              if (choice.available && btn.dataset.loading !== '1') btn.textContent = 'Create a revision — ' + formatEurAmount(choice.revisionsPrice);
+            });
+          };
+          revealRevisions();
+          window.addEventListener('site:pricing', revealRevisions);
+        })
+        .catch(function(err) {
+          // The baked production cards stay; say so rather than let them pass as test's.
+          console.error('test catalog:', err);
+          showToast('Could not load the test catalog; the cards shown are production\'s.');
+        });
+    }
     function populateFilters() {
       const markets = Array.from(new Set(readyReports.map(function(r) { return r.displayExchange; }).filter(Boolean))).sort();
       const sectors = Array.from(new Set(readyReports.map(function(r) { return r.sector; }).filter(Boolean))).sort();
@@ -1062,9 +1170,10 @@
         });
         const data = await res.json();
         if (data && data.url) { window.location.href = data.url; return; }
+        var reason = data && data.error;
       } catch (err) {}
       if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
-      showToast('Could not start checkout. Please try again or contact contact26@valuatum.com.');
+      showToast(checkoutFailureMessage(reason));
     }
     async function generateNewReport(company, ticker, button, options) {
       if (button && button.dataset.loading === '1') return;
@@ -1086,9 +1195,10 @@
         });
         const data = await res.json();
         if (res.ok && data && data.url) { window.location.href = data.url; return true; }
+        var reason = data && data.error;
       } catch (err) {}
       if (button) { button.dataset.loading = ''; button.textContent = old; button.disabled = false; }
-      showToast('Could not start fresh report checkout. Please try again or contact contact26@valuatum.com.');
+      showToast(checkoutFailureMessage(reason));
       return false;
     }
     function bindCardActions() {
@@ -1404,6 +1514,9 @@
       if (el) el.scrollIntoView({ block: 'center' });
     }
     document.addEventListener('DOMContentLoaded', function() {
+      loadTestCatalogCards().then(start);
+    });
+    function start() {
       freshCompanyPicker = createFreshCompanyPicker();
       // Read the URL state up front so the search box and the fresh-report
       // picker are correct immediately; it is re-applied below once the
@@ -1476,7 +1589,7 @@
           if (window.applyStripeBackedPricing) window.applyStripeBackedPricing(pricing);
         });
       }
-    });
+    }
   })();
   </script>
 </body>

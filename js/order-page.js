@@ -3,6 +3,9 @@
 // api/order-status.js / api/order-revision.js.
 (function () {
   const POLL_MS = 8000;
+  // "Explore what drives the target price" (the valuation workbench) is
+  // hidden on every site until it works; see where the button is shown.
+  const WORKBENCH_ENABLED = false;
 
   function show(id) { document.getElementById(id).style.display = ''; }
   function hide(id) { document.getElementById(id).style.display = 'none'; }
@@ -29,13 +32,40 @@
   // order's revision history — the forecast writeups and change memos that
   // are otherwise visible only to the customer who asked for them. The admin
   // page's password is in localStorage on this same origin; the API checks
-  // it. Read-only: every control that would act as the customer stays hidden.
+  // it. The admin can also revise and edit, but never the customer's order
+  // itself: the first change makes a private admin copy and the page moves
+  // to it (adminCopyFor in server/lambda/api.js).
   const isAdminView = params.get('admin') === '1';
   const adminPassword = () => window.localStorage.aerAdminPassword || '';
   const ADMIN_API = window.localStorage.aerAdminApiBase
     || (location.hostname.startsWith('test.') || !/aiequityreports\.com$/.test(location.hostname)
       ? 'https://api-test.aiequityreports.com'
       : 'https://api.aiequityreports.com');
+
+  function adminFetch(path, options) {
+    options = options || {};
+    return fetch(ADMIN_API + '/api/admin/orders/' + encodeURIComponent(sessionId) + path, {
+      method: options.body ? 'POST' : 'GET',
+      headers: Object.assign({ authorization: 'Bearer ' + adminPassword() },
+        options.body ? { 'Content-Type': 'application/json' } : {}),
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
+  }
+
+  // The admin's chosen starting point for the next revision: a version number
+  // from the history ("Revise from here"), or null for the latest. Only a
+  // comment revision takes it; the server makes it a new admin copy.
+  let adminBaseVersion = null;
+
+  // After an admin's revision or edit: the change went to an admin copy, so
+  // follow it there unless this already was the copy.
+  function afterChange(data) {
+    if (isAdminView && data && data.orderId && data.orderId !== sessionId) {
+      location.href = location.pathname + '?session_id=' + encodeURIComponent(data.orderId) + '&admin=1';
+      return;
+    }
+    load();
+  }
 
   function fetchOrderState() {
     if (isAdminView) {
@@ -94,8 +124,12 @@
 
   // `valuationOverrides` (optional) is the what-if the customer locked in the
   // target-price view; the engine writes the report on those rows.
-  function postRevision(comments, valuationOverrides) {
-    const extra = valuationOverrides ? { valuationOverrides: valuationOverrides } : {};
+  function postRevision(comments, valuationOverrides, scope) {
+    const extra = valuationOverrides ? { valuationOverrides: valuationOverrides, scope: 'narrative' } : { scope: scope || 'estimates' };
+    if (isAdminView) {
+      const from = adminBaseVersion && !valuationOverrides ? { fromVersion: adminBaseVersion } : {};
+      return adminFetch('/revisions', { body: Object.assign({ comments: comments }, extra, from) });
+    }
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
@@ -113,6 +147,7 @@
   // The target-price workbench's calculator: `{ overrides?, solve? }` through
   // whichever door this order lives behind. Read-only on every side.
   function postValuation(body) {
+    if (isAdminView) return adminFetch('/valuation', { body: body });
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
@@ -600,6 +635,7 @@
         + (date ? '<span class="rv-date">' + escapeHtml(date) + '</span>' : '') + '</span>'
         + renderVersionPulse(entry)
         + (entry.pdfUrl ? '<a class="rv-download" href="' + escapeAttr(entry.pdfUrl) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF</a>' : '')
+        + (isAdminView && index > 0 && entry.revisable ? '<button type="button" class="rv-download" data-from-version="' + escapeAttr(entry.version) + '">Revise from here</button>' : '')
         + '<span class="rv-chevron" aria-hidden="true"></span>'
         + '</summary>';
       html += '<div class="rv-body">';
@@ -927,6 +963,7 @@
   };
 
   function fetchPreviewHtml() {
+    if (isAdminView) return adminFetch('/preview');
     if (!isMemberRun()) {
       return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId) + '&preview=1');
     }
@@ -936,6 +973,7 @@
   }
 
   function postEdits(payload) {
+    if (isAdminView) return adminFetch('/edits', { body: payload });
     if (!isMemberRun()) {
       return fetch('/api/order-revision', {
         method: 'POST',
@@ -1181,7 +1219,7 @@
         return;
       }
       closeEditor();
-      load(); // switches to the progress state and starts polling
+      afterChange(data); // switches to the progress state and starts polling
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
       status.classList.add('is-error');
@@ -1202,7 +1240,12 @@
     box.style.display = '';
     document.querySelector('.order-card').classList.add('order-card--editing');
     document.getElementById('valuationOpenBtn').textContent = 'Close the target-price view';
-    const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
+    // On the customer's own order the admin's lock goes to a new copy with
+    // rounds of its own (ADMIN_COPY_ROUNDS in server/lambda/api.js), so the
+    // customer's remaining rounds do not limit it.
+    const remaining = isAdminView && !order.adminCopy
+      ? 20
+      : Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     workbench.panel = window.ValuationWorkbench.mount(document.getElementById('valuationPanel'), {
       preview: postValuation,
       remainingRounds: remaining,
@@ -1231,7 +1274,7 @@
         return;
       }
       closeWorkbench();
-      load(); // switches to the REVISING progress state and starts polling
+      afterChange(data); // switches to the REVISING progress state and starts polling
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
       status.classList.add('is-error');
@@ -1306,20 +1349,92 @@
     pollAgain();
   }
 
-  // The admin's read-only view: say whose order this is, and remove every
-  // control that would submit a revision, an edit or a purchase in the
-  // customer's name. The history below is what the admin came for.
+  // The admin's view: say whose order this is and where a change would go.
+  // On the customer's own order every revision or edit goes to a new private
+  // admin copy, so the box is offered whatever rounds the customer has left;
+  // on an admin copy the page works like the customer's, on the copy.
+  // Buying rounds is the customer's business and never shown.
   function renderAdminView(order) {
-    document.getElementById('deliveredTitle').textContent = 'Admin view — read only';
+    hide('revisionBuy');
+    adminBaseVersion = null;
+    renderAdminBase();
+    if (order.adminCopy) {
+      document.getElementById('deliveredTitle').textContent = 'Admin copy';
+      document.getElementById('deliveredSub').textContent =
+        'A private copy for admin revisions' + (order.forkedFrom ? ' of order ' + order.forkedFrom : '')
+        + (order.forkedFromVersion ? ', started from its version ' + order.forkedFromVersion : '')
+        + '. The original report is unchanged. Revisions used: ' + (order.revisionsUsed || 0)
+        + ' of ' + (order.revisionsAllowed || 0) + '.';
+      return;
+    }
+    document.getElementById('deliveredTitle').textContent = 'Admin view';
     document.getElementById('deliveredSub').textContent =
       'Ordered by ' + (order.analystName || order.email || 'an unknown customer')
       + (order.forkedFrom ? ', forked from another analysis' : '')
-      + '. Revisions used: ' + (order.revisionsUsed || 0) + ' of ' + (order.revisionsAllowed || 0) + '.';
-    ['editOpenBtn', 'revisionBox', 'revisionExhausted', 'revisionBuy'].forEach(hide);
+      + '. Revisions used: ' + (order.revisionsUsed || 0) + ' of ' + (order.revisionsAllowed || 0) + '.'
+      + ' A revision or edit made here goes to a new private admin copy; this report stays as it is.';
+    document.getElementById('revisionCount').textContent =
+      'Your revision goes to a new private admin copy. The customer\'s report and rounds are not touched.';
+    const revisionButton = document.getElementById('revisionSubmit');
+    revisionButton.disabled = false;
+    revisionButton.textContent = 'Request revision';
+    show('revisionBox');
+    hide('revisionExhausted');
+  }
+
+  // Where the admin's next revision starts. An older version always goes to a
+  // new admin copy; editing the text and locking assumptions stay on the
+  // latest, since both were read from it.
+  function renderAdminBase() {
+    let note = document.getElementById('revisionBase');
+    if (!note) {
+      note = document.createElement('p');
+      note.id = 'revisionBase';
+      note.className = 'revision-count';
+      document.getElementById('revisionCount').after(note);
+    }
+    if (!adminBaseVersion) { note.style.display = 'none'; return; }
+    note.style.display = '';
+    note.innerHTML = 'Starting from version ' + escapeHtml(adminBaseVersion)
+      + ': the revision goes to a new private admin copy built on that version. Editing the text and the target-price view still work on the latest. '
+      + '<button type="button" class="btn btn-ghost btn-sm" id="revisionBaseReset">Use the latest version</button>';
+  }
+
+  document.getElementById('revisionHistory').addEventListener('click', function (ev) {
+    const btn = ev.target.closest('[data-from-version]');
+    if (!btn) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    adminBaseVersion = Number(btn.dataset.fromVersion);
+    renderAdminBase();
+    document.getElementById('revisionBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('revisionText').focus({ preventScroll: true });
+  });
+
+  document.getElementById('revisionBox').addEventListener('click', function (ev) {
+    if (!ev.target.closest('#revisionBaseReset')) return;
+    adminBaseVersion = null;
+    renderAdminBase();
+  });
+
+  // A market-first report's revision reads the comment for everything it can
+  // change -- forecasts, divisions merged or split, scenario chances, the text --
+  // whatever scope is sent, so the scope choice would promise what it cannot
+  // keep ("wording only" would still move the numbers). One comment box instead.
+  const SCOPED_INTRO = document.getElementById('revisionIntro').textContent;
+  function renderRevisionScope(order) {
+    const marketFirst = Boolean(order.marketFirst);
+    document.getElementById('revisionScopeField').style.display = marketFirst ? 'none' : '';
+    document.getElementById('revisionIntro').textContent = marketFirst
+      ? 'Say in plain words what should change: forecasts, how the businesses are divided, the chances of the scenarios, '
+        + 'or the text. The parts that can be done are applied and the revision note says what was not. Any language works; '
+        + 'English is the safe fallback. Every revision uses one round and stays below in the version history.'
+      : SCOPED_INTRO;
   }
 
   function renderDelivered(order) {
     hideAll();
+    renderRevisionScope(order);
     document.getElementById('deliveredMeta').textContent =
       [order.companyName, order.ticker].filter(Boolean).join(' · ') || '—';
 
@@ -1356,11 +1471,16 @@
     // locking the assumptions into a new report is a revision like any other.
     workbench.order = order;
     if (workbench.open) closeWorkbench();
-    // The calculator needs the engine's preview endpoint, which is on the test
-    // stage only until the engine ships to production. Hide the door on the
-    // production site rather than open it onto an error.
-    const workbenchLive = !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
-    document.getElementById('valuationOpenBtn').style.display = order.pdfUrl && workbenchLive ? '' : 'none';
+    // Switched off everywhere for now: the calculator does not work yet. The
+    // code stays; flip WORKBENCH_ENABLED to bring the button back. Even then it
+    // needs the engine's preview endpoint, which is on the test stage only
+    // until the engine ships to production, so production stays hidden.
+    const workbenchLive = WORKBENCH_ENABLED
+      && !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
+    // A fork before its first revision has only the original's PDF, but the
+    // calculator runs on the engine job they share, so it opens there too.
+    document.getElementById('valuationOpenBtn').style.display =
+      (order.pdfUrl || order.originalUrl) && workbenchLive ? '' : 'none';
 
     // A report the engine delivered with unresolved valuation findings: the
     // target is code-computed, the argument behind it is under review. Say so
@@ -1503,7 +1623,7 @@
     button.disabled = true;
     button.textContent = 'Submitting…';
     try {
-      const res = await postRevision(comments);
+      const res = await postRevision(comments, null, document.getElementById('revisionScope').value);
       const data = await res.json();
       if (!res.ok) {
         status.textContent = data.error || 'Could not submit your request. Please try again.';
@@ -1513,7 +1633,7 @@
         return;
       }
       textarea.value = '';
-      load(); // switches to the REVISING progress state and starts polling
+      afterChange(data); // switches to the REVISING progress state and starts polling
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
       status.classList.add('is-error');

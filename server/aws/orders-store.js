@@ -53,8 +53,10 @@ async function list() {
   return scanAll();
 }
 
-async function get(id) {
-  const res = await dynamo().send(new GetCommand({ TableName: TABLE(), Key: { orderId: id } }));
+async function get(id, consistentRead = false) {
+  const res = await dynamo().send(new GetCommand({
+    TableName: TABLE(), Key: { orderId: id }, ...(consistentRead ? { ConsistentRead: true } : {}),
+  }));
   return toRow(res.Item);
 }
 
@@ -106,6 +108,16 @@ async function create(input) {
     // make the forker's first revision overwrite the published report under
     // every reader of it.
     forkedFrom: input.forkedFrom || undefined,
+    // An admin's private copy of someone else's report (adminCopyFor in
+    // server/lambda/api.js): the admin view revises it in place.
+    adminCopy: input.adminCopy || undefined,
+    // Which version of the parent the copy started from, and that version's
+    // PDF: the page's download until the copy's first delivery.
+    forkedFromVersion: input.forkedFromVersion || undefined,
+    basePdfFileName: input.basePdfFileName || undefined,
+    // Carried from a parent whose job was attached by hand: the engine answers
+    // only to the username that job was submitted under.
+    engineUsername: input.engineUsername || undefined,
     reportId: input.reportId || null,
     // What Stripe charged, in minor units
     amountTotal: Number.isFinite(input.amountTotal) ? input.amountTotal : null,
@@ -176,13 +188,13 @@ async function create(input) {
 // `valuationOverrides` (optional) is the what-if the customer locked in the
 // target-price view; the reconciler submits it with the comment as a
 // narrative-scope revision.
-async function claimRevision(id, comment, valuationOverrides = null) {
+async function claimRevision(id, comment, valuationOverrides = null, scope = 'estimates') {
   try {
     const res = await dynamo().send(new UpdateCommand({
       TableName: TABLE(),
       Key: { orderId: id },
       UpdateExpression: 'SET #s = :revising, pendingRevisionComment = :comment, pendingValuationOverrides = :overrides, '
-        + 'revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
+        + 'pendingRevisionScope = :scope, revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
       ConditionExpression: '#s = :delivered AND revisionsUsed < revisionsAllowed',
       ExpressionAttributeNames: { '#s': 'status' },
       ExpressionAttributeValues: {
@@ -190,6 +202,7 @@ async function claimRevision(id, comment, valuationOverrides = null) {
         ':delivered': STATUS.DELIVERED,
         ':comment': comment,
         ':overrides': valuationOverrides,
+        ':scope': valuationOverrides ? 'narrative' : scope,
         ':null': null,
         ':zero': 0,
         ':now': nowIso(),

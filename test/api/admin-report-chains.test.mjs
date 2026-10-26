@@ -142,7 +142,8 @@ test('the admin can read any order\'s revision history; the password is required
   });
   assert.equal(res.statusCode, 200);
   const order = JSON.parse(res.body);
-  assert.equal(order.readOnly, true);
+  // Not an admin copy: a revision from the admin view would make one.
+  assert.equal(order.adminCopy, false);
   assert.equal(order.email, 'analyst@example.com');
   assert.equal(order.forkedFrom, 'order-1');
   // Newest first, and the fork has no original to append.

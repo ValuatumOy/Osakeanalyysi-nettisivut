@@ -89,7 +89,7 @@ function buildPickTransact({ table, userId, now, limit, reportId, source }) {
 
 // Reserve a paying member's monthly generation (Investor Plus). No publish
 // obligation — the report stays private — so the only gate is one per month.
-function buildReserveMemberGenerationTransact({ table, userId, now, genId }) {
+function buildReserveMemberGenerationTransact({ table, userId, now, genId, ticker, requestId }) {
   return {
     TransactItems: [
       {
@@ -109,9 +109,98 @@ function buildReserveMemberGenerationTransact({ table, userId, now, genId }) {
             sk: `PUB#${genId}`,
             status: 'generating',
             private: true,
+            ...(ticker ? { ticker } : {}),
+            ...(requestId ? { requestId } : {}),
             reservedAt: now.toISOString(),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+      {
+        ConditionCheck: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          ConditionExpression: 'attribute_exists(pk) AND attribute_not_exists(openObligationId) '
+            + 'AND (attribute_not_exists(banned) OR banned = :false)',
+          ExpressionAttributeValues: { ':false': false },
+        },
+      },
+    ],
+  };
+}
+
+function buildReserveGenerationCreditTransact({ table, userId, now, genId, ticker, requestId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'ADD generationCredits :minusOne',
+          ConditionExpression: 'attribute_exists(pk) AND generationCredits >= :one '
+            + 'AND (attribute_not_exists(banned) OR banned = :false)',
+          ExpressionAttributeValues: { ':minusOne': -1, ':one': 1, ':false': false },
+        },
+      },
+      {
+        Put: {
+          TableName: table,
+          Item: {
+            pk: `USER#${userId}`, sk: `PUB#${genId}`, status: 'generating',
+            private: true, generationCredit: true, reservedAt: now.toISOString(),
+            ...(ticker ? { ticker } : {}),
+            ...(requestId ? { requestId } : {}),
+          },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+    ],
+  };
+}
+
+function buildGrantGenerationCreditsTransact({ table, userId, now, count, requestId }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'SET generationGrantedAt = :at ADD generationCredits :count',
+          ConditionExpression: 'attribute_exists(pk) AND (attribute_not_exists(banned) OR banned = :false)',
+          ExpressionAttributeValues: { ':at': now.toISOString(), ':count': count, ':false': false },
+        },
+      },
+      ...(requestId ? [{
+        Put: {
+          TableName: table,
+          Item: { pk: `USER#${userId}`, sk: `GENERATIONGRANT#${requestId}`, count, grantedAt: now.toISOString() },
+          ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      }] : []),
+    ],
+  };
+}
+
+function buildRestoreGenerationCreditTransact({ table, userId, genId, now }) {
+  return {
+    TransactItems: [
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          UpdateExpression: 'ADD generationCredits :one',
+          ConditionExpression: 'attribute_exists(pk)',
+          ExpressionAttributeValues: { ':one': 1 },
+        },
+      },
+      {
+        Update: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: `PUB#${genId}` },
+          UpdateExpression: 'SET creditRestoredAt = :at',
+          ConditionExpression: 'generationCredit = :true AND #status = :failed AND attribute_not_exists(creditRestoredAt)',
+          ExpressionAttributeNames: { '#status': 'status' },
+          ExpressionAttributeValues: { ':true': true, ':failed': 'failed', ':at': now.toISOString() },
         },
       },
     ],
@@ -121,7 +210,7 @@ function buildReserveMemberGenerationTransact({ table, userId, now, genId }) {
 // Reserve the analyst's monthly free generation. Two gates in one transaction:
 // the publish obligation on PROFILE (spans months by design — no new free run
 // until the previous one is submitted) and the one-per-calendar-month flag.
-function buildReserveGenerationTransact({ table, userId, now, genId }) {
+function buildReserveGenerationTransact({ table, userId, now, genId, ticker, requestId }) {
   return {
     TransactItems: [
       {
@@ -155,6 +244,8 @@ function buildReserveGenerationTransact({ table, userId, now, genId }) {
             sk: `PUB#${genId}`,
             status: 'generating',
             reservedAt: now.toISOString(),
+            ...(ticker ? { ticker } : {}),
+            ...(requestId ? { requestId } : {}),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
         },
@@ -215,8 +306,11 @@ function buildSubmitTransact({
             + 'companyId = :company, jobId = :job, priceEur = :price, freeAfterDays = :days, '
             + 'freeFrom = :freeFrom, recommendation = :rec, targetPrice = :target, '
             + 'promptRounds = :rounds',
-          ConditionExpression: '#status = :generating',
-          ExpressionAttributeNames: { '#status': 'status' },
+          // Private stays private: a gifted credit's run, a Plus member's month,
+          // a bought report and an admin's copy of someone else's report carry
+          // no obligation, so the PROFILE condition above lets them through.
+          ConditionExpression: '#status = :generating AND attribute_not_exists(generationCredit) AND attribute_not_exists(#private)',
+          ExpressionAttributeNames: { '#status': 'status', '#private': 'private' },
           ExpressionAttributeValues: {
             ':published': 'published',
             ':generating': 'generating',
@@ -355,7 +449,8 @@ function buildGrantGenerationTransact({ table, userId, now }) {
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           UpdateExpression: 'REMOVE openObligationId SET generationGrantedAt = :at',
-          ExpressionAttributeValues: { ':at': now.toISOString() },
+          ConditionExpression: 'attribute_exists(pk) AND (attribute_not_exists(banned) OR banned = :false)',
+          ExpressionAttributeValues: { ':at': now.toISOString(), ':false': false },
         },
       },
       {
@@ -1015,6 +1110,9 @@ module.exports = {
   TOPUP_FIELDS,
   buildReserveGenerationTransact,
   buildReserveMemberGenerationTransact,
+  buildReserveGenerationCreditTransact,
+  buildGrantGenerationCreditsTransact,
+  buildRestoreGenerationCreditTransact,
   buildSubmitTransact,
   buildTakedownTransact,
   buildReopenTransact,

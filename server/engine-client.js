@@ -113,10 +113,13 @@ async function submitJob({
 }
 
 // POST /jobs/{jobId}/revisions — revise a DONE job with further comments.
-// scope "estimates" turns the comment into forecast values, imports them into
-// a new branch model and regenerates the report; the analyst's base model and
-// the parent job are never modified. Returns { jobId } for the new (child) job,
-// same shape as submitJob — poll it with getJob like any other job.
+// scope "estimates" turns the comment into forecast values, imports them on top
+// of the analyst's base model and regenerates the report; the base model and
+// the parent job are never modified. With `endUserEmail` the forecast is saved
+// into that customer's own model for the company (one per customer, updated by
+// each of their revisions); without it every revision gets a new model.
+// Returns { jobId } for the new (child) job, same shape as submitJob — poll it
+// with getJob like any other job.
 async function submitRevision({
   parentJobId,
   username = USERNAME,
@@ -124,6 +127,7 @@ async function submitRevision({
   scope = 'estimates',
   analystName,
   valuationOverrides,
+  endUserEmail,
 } = {}) {
   if (!parentJobId) throw new Error('submitRevision: parentJobId is required');
   if (!comments) throw new Error('submitRevision: comments is required');
@@ -136,6 +140,8 @@ async function submitRevision({
     username, comments, scope,
     ...(analystName ? { analystName } : {}),
     ...(valuationOverrides ? { valuationOverrides } : {}),
+    // Only an estimates revision writes a model, so only it needs the email.
+    ...(endUserEmail && scope === 'estimates' ? { endUserEmail } : {}),
   });
 
   const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);
@@ -152,7 +158,13 @@ async function submitRevision({
   }
   const data = await readJson(res);
 
-  if (!res.ok) throw new Error(`engine submitRevision ${describeError(res, data)}`);
+  if (!res.ok) {
+    const err = new Error(`engine submitRevision ${describeError(res, data)}`);
+    // A 4xx is the engine refusing this request, not an outage: retrying the
+    // same body gets the same answer, so callers fail it at once.
+    err.status = res.status;
+    throw err;
+  }
   if (!data.jobId) throw new Error('engine submitRevision: response had no jobId');
   return { jobId: data.jobId };
 }
@@ -262,6 +274,9 @@ async function getJob(jobId) {
     // The engine's own QA verdict; a `blocked` report is still delivered
     // when its target is code-computed and only the argument is in question.
     reportQuality: data.reportQuality,
+    // 'market-first' when that pipeline wrote the report: its revision reads
+    // the comment whatever the scope, so the order page offers no scope choice.
+    pipeline: data.pipeline,
   };
 }
 
