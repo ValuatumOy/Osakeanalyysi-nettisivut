@@ -403,6 +403,10 @@ listing was moved to the test catalog on 26 October 2026 (it is rebuilt in the b
 - On a `test.` host, `js/script.js` sends a reader of `/reports/<slug>.html` to
   `/test-site/reports/<slug>.html` when the index has it, and the test listing links there
   directly. Companies with no test report keep production's page.
+- A test card shows the report its page is about (the index's `reportId`, chosen by the owner
+  rule), so card and page agree as they do in production; only a company with no test page
+  falls back to its newest report. A new paid report therefore stays off the listing while the
+  company has a free one, exactly as in production.
 - A PDF that fails the extraction gate (the engine's one-page stub for a failed run) is recorded
   in `test-site/report-content/_failed.json` and not retried; delete an entry to retry it.
 - The `sync-test` job in `report-pages-sync.yml` runs this hourly against `staging` and pushes
