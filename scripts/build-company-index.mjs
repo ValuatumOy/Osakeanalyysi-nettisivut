@@ -67,7 +67,10 @@ const chunk = (re, label) => {
 };
 const HEAD_LINKS = (source.match(/<link rel="stylesheet"[^>]*>/g) || []).join('\n  ');
 const GA = chunk(/<script async src="https:\/\/www\.googletagmanager\.com[\s\S]*?<\/script>\s*<script>[\s\S]*?<\/script>/, 'analytics');
-const NAV = chunk(/<header[\s\S]*?<\/header>/, 'header');
+// The report template marks Reports as the current page; these pages belong under Companies.
+const NAV = chunk(/<header[\s\S]*?<\/header>/, 'header')
+  .replace(/ is-active" aria-current="page">/g, '">')
+  .replace(/(href="\/companies\.html" class="nav(?:-mobile)?-link)">/g, '$1 is-active" aria-current="page">');
 const FOOTER = chunk(/<footer[\s\S]*?<\/footer>/, 'footer');
 // analyst-reports.js is for a page about one company and no-ops anywhere else; an index
 // page has no mount for it, so it is not worth the request.

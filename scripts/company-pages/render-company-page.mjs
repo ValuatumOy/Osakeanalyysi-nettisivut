@@ -333,8 +333,8 @@ function navHtml() {
         <div class="nav-logo-text"><span class="nav-logo-wordmark">Valuatum</span><span class="nav-logo-sub">AI Equity Reports</span></div>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/reports.html" class="nav-link is-active" aria-current="page">Reports</a>
-        <a href="/companies.html" class="nav-link">Companies</a>
+        <a href="/reports.html" class="nav-link">Reports</a>
+        <a href="/companies.html" class="nav-link is-active" aria-current="page">Companies</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/analysts.html" class="nav-link">Analysts</a>
         <a href="/institutions.html" class="nav-link">Institutions</a>
@@ -355,8 +355,8 @@ function navHtml() {
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" style="display:none;">
-      <a href="/reports.html" class="nav-mobile-link is-active" aria-current="page">Reports</a>
-      <a href="/companies.html" class="nav-mobile-link">Companies</a>
+      <a href="/reports.html" class="nav-mobile-link">Reports</a>
+      <a href="/companies.html" class="nav-mobile-link is-active" aria-current="page">Companies</a>
       <a href="/pricing.html" class="nav-mobile-link">Pricing</a>
       <a href="/analysts.html" class="nav-mobile-link">Analysts</a>
       <a href="/institutions.html" class="nav-mobile-link">Institutions</a>

@@ -68,11 +68,12 @@ export class WorkerStack extends Stack {
         RECONCILER_POLL_DELAY_MS: '20000',
         RECONCILER_MAX_POLLS: '150',
         EMIT_ORDER_METRICS: 'true',
-        // Refresh the company's FMP data in Wisdom before rendering, so a
-        // fresh report reflects current figures. The bearer token comes from
-        // SSM (fmp-import-token); aspId uses the code default.
+        // Refresh the company's FMP data in Trunk before rendering, so a
+        // fresh report reflects current figures: Wisdom for prod, trunkdev
+        // for test (config.fmpImportUrl). The bearer token comes from SSM
+        // (fmp-import-token); aspId uses the code default.
         FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? 'true',
-        FMP_IMPORT_URL: this.node.tryGetContext('fmpImportUrl') ?? 'https://wisdom.valuatum.com/rest/dataimport',
+        FMP_IMPORT_URL: config.fmpImportUrl,
         // Delivered fresh reports are published for resale right away. No
         // RESALE_PRICE_EUR: the catalog prices every paid report at the flat
         // ready-report price, so sidecars carry no price.
