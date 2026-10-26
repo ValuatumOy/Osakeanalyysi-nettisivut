@@ -3,6 +3,9 @@
 // api/order-status.js / api/order-revision.js.
 (function () {
   const POLL_MS = 8000;
+  // "Explore what drives the target price" (the valuation workbench) is
+  // hidden on every site until it works; see where the button is shown.
+  const WORKBENCH_ENABLED = false;
 
   function show(id) { document.getElementById(id).style.display = ''; }
   function hide(id) { document.getElementById(id).style.display = 'none'; }
@@ -1468,10 +1471,12 @@
     // locking the assumptions into a new report is a revision like any other.
     workbench.order = order;
     if (workbench.open) closeWorkbench();
-    // The calculator needs the engine's preview endpoint, which is on the test
-    // stage only until the engine ships to production. Hide the door on the
-    // production site rather than open it onto an error.
-    const workbenchLive = !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
+    // Switched off everywhere for now: the calculator does not work yet. The
+    // code stays; flip WORKBENCH_ENABLED to bring the button back. Even then it
+    // needs the engine's preview endpoint, which is on the test stage only
+    // until the engine ships to production, so production stays hidden.
+    const workbenchLive = WORKBENCH_ENABLED
+      && !/^(www\.)?aiequityreports\.com$/.test(location.hostname);
     // A fork before its first revision has only the original's PDF, but the
     // calculator runs on the engine job they share, so it opens there too.
     document.getElementById('valuationOpenBtn').style.display =
