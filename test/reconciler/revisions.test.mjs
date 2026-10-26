@@ -152,6 +152,9 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
   // The revised report names the analyst who steered it; a shop order has no
   // name and stays engine-bylined.
   assert.equal(engine.calls.submitRevision[0].analystName, 'Esa Virtanen');
+  // The order's email identifies the customer whose own forecast model the
+  // revision updates.
+  assert.equal(engine.calls.submitRevision[0].endUserEmail, 'buyer@example.com');
 
   // Tick 2: polls the revision job, which is already DONE -> delivers.
   await reconciler.advance(order);
@@ -449,4 +452,24 @@ test('a fresh delivery records the original job id and whether the engine produc
   assert.equal(order.status, orders.STATUS.DELIVERED);
   assert.equal(order.originalJobId, 'job_base');
   assert.equal(order.hasPreview, true);
+});
+
+test('an order without an email revises without endUserEmail, so the engine keeps making a new model', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine();
+  const email = fakeEmail();
+  const pdfStore = fakePdfStore();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_rev_noemail', email: '', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+  }, statePath);
+  orders.claimRevision('cs_rev_noemail', 'assume 8% EBIT margin from 2027', statePath);
+
+  await reconciler.advance(orders.get('cs_rev_noemail', statePath));
+
+  assert.equal(engine.calls.submitRevision.length, 1);
+  assert.equal(engine.calls.submitRevision[0].endUserEmail, undefined);
 });
