@@ -1,0 +1,794 @@
+{
+  "id": "airbusse-20082026",
+  "slug": "airbus-se-equity-report",
+  "companyName": "Airbus SE",
+  "ticker": "AIR.DE",
+  "exchange": "Deutsche Börse",
+  "country": "Netherlands",
+  "sector": "Aerospace & Defense",
+  "currency": "EUR",
+  "reportDate": "2026-08-20",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "193.62 EUR",
+    "targetPrice": "179.30 EUR",
+    "impliedUpside": "-7.4%",
+    "marketCap": "EUR 152.7 bn",
+    "enterpriseValue": "EUR 149.1 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2025E",
+      "value": "33.7x"
+    },
+    {
+      "label": "EV/EBITDA 2025E",
+      "value": "18.3x"
+    },
+    {
+      "label": "FCF Yield 2025E",
+      "value": "0.8%"
+    },
+    {
+      "label": "Dividend Yield 2025E",
+      "value": "1.1%"
+    },
+    {
+      "label": "Net Debt/EBITDA 2025E",
+      "value": "-0.5x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "221.25 EUR",
+    "week52Low": "157.48 EUR",
+    "oneYearChange": "+15.5%",
+    "threeYearChange": "+63.4%"
+  },
+  "summary": [
+    "Airbus SE (AIR.DE, Deutsche Börse) designs, manufactures and supports commercial aircraft, helicopters, military air systems, satellites and secure communications products. HOLD is assigned in this Valuatum equity research report dated 20 August 2026, with a 12-month target price of 179.30 EUR against a current price of 193.62 EUR, implying -7.4% downside. Market capitalisation is EUR 152.7 bn and enterprise value is EUR 149.1 bn. The group’s principal exposures are commercial-aircraft production rates, aftermarket revenue, European defence procurement and fixed-price space-programme execution. Management retained an approximately 870-aircraft 2026 delivery target and introduced a EUR 12–13 bn 2029 Adjusted EBIT objective.",
+    "The valuation tension is between scarce franchises and difficult conversion into earnings and cash. Commercial Narrowbody Aircraft receives 50.0% of current EV, or EUR 74,534m, against 49.0% of revenue and 59.2% of reported EBIT; Commercial Aviation Services receives 12.0% of EV, or EUR 17,888m, against 7.4% of revenue and 4.2% of reported EBIT. The headline valuation is demanding at 33.7x 2025E P/E and 18.3x 2025E EV/EBITDA, although net debt/EBITDA is -0.5x. The base case requires revenue of EUR 93.7 bn in 2027, EBITDA of EUR 13.222 bn and a 14.1% margin, while inventory and working capital remain the central constraints.",
+    "The target price is built with 100% weight on a sum-of-the-parts valuation: modelled 2027E EBITDA is valued at 12.5x for narrowbodies, 15.0x for services, 14.0x for widebodies, 13.0x for helicopters and 12.0x for Military Air Systems; Space uses 2029E EBITDA at 12.0x, while A350 Freighter value is probability weighted. The bear, base and bull outcomes are 170.39 EUR (-12.0%), 179.28 EUR (-7.4%) and 184.82 EUR (-4.5%) per share. HOLD reflects strong franchise economics but insufficient evidence that production recovery, service mix and cash conversion justify a higher valuation."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Scarce aircraft franchise",
+      "metric": "58–60%",
+      "text": "Airbus controls an estimated 58–60% of the single-aisle market and led commercial deliveries with approximately 59% as of May 2026. The A321neo and A321XLR broaden the platform, while a 2027E narrowbody EBITDA contribution of EUR 6.105 bn supports EUR 76.31 bn of EV at 12.5x."
+    },
+    {
+      "num": "02",
+      "title": "Installed-fleet value",
+      "metric": "EUR 5.45bn",
+      "text": "Commercial Aviation Services generated estimated revenue of EUR 5.45 bn in 2025, approximately 10% growth and approximately 11% of Airbus segment sales. The base case requires EUR 7.0–7.5 bn of 2027 revenue and EUR 1.221 bn of EBITDA, with revenue per active aircraft the key proof point."
+    },
+    {
+      "num": "03",
+      "title": "Cash conversion risk",
+      "metric": "EUR 1.23bn",
+      "text": "Free operating cash flow is forecast at only EUR 1.231 bn in 2026 despite EBITDA of EUR 11.302 bn, while H1 2026 free cash flow before customer financing was negative EUR 1.2 bn. Airbus must deliver 519 commercial aircraft in H2 2026 after 351 in H1 to convert work in progress into receipts."
+    }
+  ],
+  "thesisBreaker": "A sustained production ceiling combined with renewed space charges would invalidate the base operating and valuation case by preventing backlog conversion into deliveries, margin and cash by 2028.",
+  "valuePools": [
+    {
+      "name": "Commercial Narrowbody Aircraft",
+      "share": "50.0% · EUR 74,534m",
+      "economics": "Revenue EUR 36,000m (49.0%) · EBIT EUR 3,600m (59.2%, 10.0% margin) · EV EUR 74,534m",
+      "text": "Commercial Narrowbody Aircraft is the group’s profit engine, with modelled revenue of EUR 36,000m and EBIT of EUR 3,600m. Its EUR 74,534m EV allocation is 50.0% of group EV, slightly above its 49.0% revenue share and below its 59.2% reported-EBIT share. The valuation requires 2027E EBITDA of EUR 6.105 bn at 12.5x, supported by higher deliveries, richer A321 mix, learning and lower disruption. H1 2026 A320-family deliveries ran at 45.2 per month, versus the 70–75 monthly objective by end-2027, and Pratt & Whitney GTF availability remains the principal bottleneck through 2028. Airbus holds 58–60% of the single-aisle market, but Boeing, COMAC and Embraer remain competitive; the economic risk is converting share into aircraft, margin and cash rather than securing more orders."
+    },
+    {
+      "name": "Commercial Aviation Services",
+      "share": "12.0% · EUR 17,888m",
+      "economics": "Revenue EUR 5,450m (7.4%) · EBIT EUR 255m (4.2%, 4.7% margin) · EV EUR 17,888m",
+      "text": "Commercial Aviation Services earns estimated revenue of EUR 5,450m and EBIT of EUR 255m, equal to a modelled 4.7% margin. Its EUR 17,888m EV allocation is 12.0% of group EV against 7.4% of revenue and 4.2% of reported EBIT, so the allocation demands a material change in mix and profitability. The SOTP requires EUR 1.221 bn of 2027E EBITDA at 15.0x, implying EUR 7.0–7.5 bn of revenue and a 16–17% EBITDA margin. Airbus controls design authority, parts, upgrades, engineering and fleet relationships, but competes with Boeing Global Services, Lufthansa Technik, GE Aerospace, ST Engineering and AAR. The approximately USD 101 bn 2026 commercial MRO market supports demand, while revenue per active aircraft, proprietary content and working-capital discipline determine whether the premium multiple is earned."
+    },
+    {
+      "name": "Commercial Widebody Aircraft",
+      "share": "10.0% · EUR 14,907m",
+      "economics": "Revenue EUR 10,016m (13.6%) · EBIT EUR 700m (11.5%, 7.0% margin) · EV EUR 14,907m",
+      "text": "Commercial Widebody Aircraft has modelled revenue of EUR 10,016m and EBIT of EUR 700m, with a 7.0% margin. Its EUR 14,907m EV allocation is 10.0% of group EV against 13.6% of revenue and 11.5% of reported EBIT. The target bridge applies 14.0x to EUR 1.090 bn of 2027E EBITDA, producing EUR 15.262 bn of EV. The case depends on A350 output approaching 12 aircraft per month by 2028 and A330 output reaching four per month, rather than on list prices; realised widebody revenue is assumed at EUR 140–180m per aircraft. Boeing’s installed widebody fleet was more than 60% larger in early 2026 and it recorded 538 firm 2025 orders versus Airbus’s 293. Replacement demand and fuel savings support orders, but airline profit of USD 23 bn in 2026 limits financing flexibility."
+    },
+    {
+      "name": "Helicopters",
+      "share": "8.0% · EUR 11,925m",
+      "economics": "Revenue EUR 8,619m (11.7%) · EBIT EUR 953m (15.7%, 10.6% margin on EUR 8,972m total sales) · EV EUR 11,925m",
+      "text": "Helicopters is the clearest reported profit pool, with FY2025 external revenue of EUR 8,619m and EBIT of EUR 953m. The 10.6% margin is calculated on EUR 8,972m of total segment sales, while external revenue represents 11.7% of group revenue and EBIT represents 15.7% of group reported EBIT. The EUR 11,925m EV allocation is 8.0% of group EV. A 13.0x multiple on EUR 939.2m of 2027E EBITDA produces EUR 12.210 bn of EV. Airbus held 51% of civil and parapublic bookings and 28% of military bookings in 2025, with a 4,800-aircraft civil replacement pool through 2035. Spain ordered 100 helicopters in 2025, but military mix, fixed-price execution, autonomous systems and the H160 emergency airworthiness directive constrain the premium."
+    },
+    {
+      "name": "Military Air Systems",
+      "share": "7.0% · EUR 10,435m",
+      "economics": "Revenue EUR 10,400m (14.2%) · EBIT EUR 700m (11.5%, 6.7% margin) · EV EUR 10,435m",
+      "text": "Military Air Systems has modelled revenue of EUR 10,400m and EBIT of EUR 700m, a 6.7% margin. Its EUR 10,435m EV allocation is 7.0% of group EV against 14.2% of revenue and 11.5% of reported EBIT. The SOTP applies 12.0x to EUR 890.3m of 2027E EBITDA, valuing the pool at EUR 10.683 bn. Defence and Space orders reached EUR 9.3 bn in H1 2026, while Italy’s A330 MRTT decision was approximately EUR 1.4 bn including ten years of support. European budgets are supportive, but policy commitments must become funded Airbus orders. The reported FCAS NGF cancellation, Eurodrone’s delayed first flight and political workshare create execution risk; Lockheed Martin’s F-35 has 20 customer countries versus 10 for Eurofighter."
+    },
+    {
+      "name": "Space Systems and Intelligence",
+      "share": "8.0% · EUR 11,925m",
+      "economics": "Revenue EUR 2,935m (4.0%) · EBIT EUR -61m (-1.0%, -2.1% margin) · EV EUR 11,925m",
+      "text": "Space Systems and Intelligence is a turnaround pool with modelled revenue of EUR 2,935m and EBIT of EUR -61m, equivalent to a -2.1% margin and -1.0% of group reported EBIT. Its EUR 11,925m EV allocation is 8.0% of group EV despite current losses. The valuation applies 12.0x to EUR 1.017 bn of 2029E EBITDA, allowing time for restructuring, OneSat delivery and clean-margin recovery. Airbus recorded EUR 989m of space-programme charges in the first nine months of 2024 after approximately EUR 600m of OneSat-related charges in 2023, and removed 2,043 positions. Thales Alenia Space provides a closer European scale comparator at EUR 2.36 bn of 2025 revenue. Further fixed-price charges or delayed milestones would reduce both EBITDA and the multiple."
+    },
+    {
+      "name": "A350 Freighter",
+      "share": "5.0% · EUR 7,454m",
+      "economics": "Revenue EUR 0m (0.0%) · EBIT EUR 0m (0.0% margin) · EV EUR 7,454m",
+      "text": "A350 Freighter is a pre-revenue option with no separately reported revenue or EBIT. Its EUR 7,454m analytical EV allocation is 5.0% of group EV, while the target bridge assigns approximately EUR 7.631 bn of probability-weighted present value. Airbus had 107 firm orders by August 2026, with EASA and FAA certification targeted for Q2 2027 and first delivery planned for H2 2027. The option is not valued as an operating segment today; value depends on the 24 September 2026 maiden-flight target, the approximately 400–410-hour test campaign, certified payload economics and Boeing’s entrenched freighter ecosystem."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests whether delivery recovery, service-mix expansion, space execution and A350F certification can convert backlog into group EBITDA and cash. The primary swing factor is operating conversion: the base case requires revenue of EUR 93,700m and EBITDA of EUR 13,222m, while the bear case absorbs more inventory and assigns no A350F value. The multiple is an implied group EV/EBITDA outcome after scenario-specific net cash, rather than a separately selected valuation multiple.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "EUR 102,000m",
+          "EBITDA": "EUR 15,810m",
+          "Margin": "15.5%",
+          "Multiple": "9.0x",
+          "EV": "EUR 142,298m",
+          "Equity": "EUR 145,896m"
+        },
+        "impliedValueOrUpside": "184.82 EUR / sh · -4.5%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "EUR 93,700m",
+          "EBITDA": "EUR 13,222m",
+          "Margin": "14.1%",
+          "Multiple": "10.4x",
+          "EV": "EUR 137,922m",
+          "Equity": "EUR 141,520m"
+        },
+        "impliedValueOrUpside": "179.28 EUR / sh · -7.4%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "EUR 84,000m",
+          "EBITDA": "EUR 10,080m",
+          "Margin": "12.0%",
+          "Multiple": "13.0x",
+          "EV": "EUR 130,901m",
+          "Equity": "EUR 134,499m"
+        },
+        "impliedValueOrUpside": "170.39 EUR / sh · -12.0%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Airbus creates value through a scarce commercial-aircraft franchise, an expanding installed fleet and policy-backed defence and space positions. Commercial Narrowbody Aircraft carries EUR 74,534m of current analytical EV, or 50.0%, against modelled revenue of EUR 36,000m and EBIT of EUR 3,600m. The 58–60% single-aisle share and A321neo/A321XLR breadth support backlog, pricing and learning, but H1 2026 A320 pace was only 45.2 aircraft per month against a 70–75 monthly end-2027 objective. Commercial Aviation Services adds recurring economics, with estimated revenue of EUR 5,450m and EBIT of EUR 255m, but the 15.0x service valuation requires 2027 revenue of EUR 7.0–7.5 bn and EUR 1.221 bn of EBITDA. Helicopters already earns a 10.6% margin on EUR 8,972m of total sales. Military Air Systems has EUR 9.3 bn of H1 orders, while Space remains a turnaround after EUR 989m of 2024 charges. A350 Freighter contributes optionality rather than current earnings: 107 orders exist, but certification remains pending. The economic anchor is therefore not order demand alone; it is the conversion of backlog and customer advances into delivered aircraft, margin and cash."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The SOTP applies separate EBITDA multiples because aircraft assembly, services, helicopters, defence, space and the freighter option have different risk and cash profiles. The bridge values narrowbodies at 12.5x EUR 6.105 bn of 2027E EBITDA, services at 15.0x EUR 1.221 bn, widebodies at 14.0x EUR 1.090 bn, helicopters at 13.0x EUR 939.2m, Military Air Systems at 12.0x EUR 890.3m and Space at 12.0x EUR 1.017 bn of 2029E EBITDA. A350F is probability weighted and discounted. The multiple applied to current group earnings provides a useful reverse test: 2025 EV/EBITDA is 18.31x against EV of EUR 149.068 bn, while 2026 peer median EV/EBITDA is 10.4x. The market-implied DCF requires EBIT margin to rise from 6.8% in 2025 to 11.8% in the terminal period. At the current price, six profit-engine values total EUR 144.987 bn, leaving approximately EUR 4.081 bn for A350F, versus the report’s EUR 7.631 bn probability-weighted value. That gap captures the market’s caution on certification, while manufacturing value still rests on future execution. Inventory of EUR 46.9 bn at Q1 2026 and negative H1 free cash flow before customer financing of EUR 1.2 bn explain why historical multiples are not applied without a cash discount."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome requires prolonged engine constraints, weak H2 cash conversion, renewed space charges and no A350F value; it produces 170.39 EUR per share, or -12.0%. The base outcome requires progressive delivery-rate improvement without a full-year A320 rate of 75, higher service wallet share and no major new space provision; it produces 179.28 EUR, or -7.4%. The bull outcome requires engines and cabin equipment to normalise, substantial inventory release, successful A350F certification and stronger profit conversion across commercial aircraft; it produces 184.82 EUR, or -4.5%. Early evidence will come from the 519 commercial aircraft required in H2 2026, finished-aircraft inventory below the EUR 46.9 bn peak, services revenue per active aircraft and A350F’s maiden flight on 24 September 2026. The central debate is whether Airbus owns a scarce franchise that can convert backlog into cash before supply and programme risks erode returns, or whether the production system keeps deferring that conversion. The 58–60% single-aisle position, EUR 9.3 bn of H1 defence orders and EUR 12–13 bn 2029 EBIT objective support long-term value, but current cash evidence favours HOLD."
+    }
+  ],
+  "risks": [
+    "Engine and equipment shortages (Commercial Widebody Aircraft): unfinished aircraft delay revenue and customer cash, with inventory rising while delivery guidance becomes back-end loaded as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Working-capital conversion fails (Commercial Aviation Services): higher earnings fail to translate into free cash flow, with H2 receipts failing to reverse the EUR 1.2 bn H1 outflow as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Further fixed-price space charges (Military Air Systems): provisions absorb defence earnings and consume cash, with new OneSat delays or cost-to-complete revisions as the early warning - HIGH impact and manageable if contained.",
+    "Airline profitability weakens (Commercial Widebody Aircraft): customers defer deliveries or seek concessions after the 2026 fuel shock, with rising deferrals as the early warning - MEDIUM impact and manageable.",
+    "A350F certification slips into 2028 (A350 Freighter): option value is discounted and cancellation risk rises, with maiden flight or cargo-door work slipping again as the early warning - MEDIUM impact and manageable."
+  ],
+  "catalysts": [
+    "H2 deliveries required to retain the 870-aircraft objective (near-term, Commercial Narrowbody Aircraft): 519 commercial deliveries would test backlog-to-cash conversion.",
+    "A350F maiden flight (near-term, A350 Freighter): the 24 September 2026 target would reduce technical failure probability.",
+    "Finished-aircraft inventory release (near-term, Commercial Narrowbody Aircraft): inventory below the EUR 46.9 bn peak would improve cash quality.",
+    "A320-family exit rate reaches 70–75 per month (medium-term, Commercial Narrowbody Aircraft): end-2027 production would support the EUR 6.1 bn EBITDA bridge.",
+    "Services outgrow the active fleet (medium-term, Commercial Aviation Services): rising revenue per active aircraft would support the premium multiple."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "58,763",
+            "65,446",
+            "69,230",
+            "75,143",
+            "83,323",
+            "93,700"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "5,818",
+            "6,508",
+            "7,657",
+            "8,141",
+            "11,302",
+            "13,222"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "9.9%",
+            "9.9%",
+            "11.1%",
+            "10.8%",
+            "13.6%",
+            "14.1%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-1,076",
+            "-2,242",
+            "-2,853",
+            "-2,726",
+            "-2,904",
+            "-3,027"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "4,742",
+            "4,266",
+            "4,804",
+            "5,415",
+            "8,398",
+            "10,195"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "8.1%",
+            "6.5%",
+            "6.9%",
+            "7.2%",
+            "10.1%",
+            "10.9%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "333",
+            "503",
+            "621",
+            "928",
+            "-178",
+            "16"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "5,075",
+            "4,769",
+            "5,425",
+            "6,343",
+            "8,220",
+            "10,211"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "4,136",
+            "3,613",
+            "4,078",
+            "4,538",
+            "6,611",
+            "8,212"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "5.3",
+            "4.6",
+            "5.2",
+            "5.8",
+            "8.4",
+            "10.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.5",
+            "1.8",
+            "1.8",
+            "2.1",
+            "3.1",
+            "3.8"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "28.5%",
+            "39.3%",
+            "34.9%",
+            "36.6%",
+            "36.6%",
+            "36.6%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "16,505",
+            "17,201",
+            "19,112",
+            "20,396",
+            "22,617",
+            "25,433"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "3,603",
+            "3,788",
+            "3,730",
+            "4,049",
+            "4,489",
+            "5,048"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "13,165",
+            "13,141",
+            "13,449",
+            "13,449",
+            "13,449",
+            "13,449"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "48,259",
+            "51,422",
+            "56,276",
+            "57,879",
+            "60,540",
+            "63,916"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "27,157",
+            "27,740",
+            "31,046",
+            "33,051",
+            "36,649",
+            "41,213"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "20,022",
+            "19,792",
+            "23,383",
+            "24,183",
+            "25,133",
+            "26,338"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "15,823",
+            "16,469",
+            "15,003",
+            "17,203",
+            "19,076",
+            "21,451"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "63,002",
+            "64,001",
+            "69,432",
+            "74,438",
+            "80,858",
+            "89,003"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "115,944",
+            "118,871",
+            "129,213",
+            "135,822",
+            "144,903",
+            "156,424"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "12,982",
+            "17,730",
+            "19,696",
+            "22,883",
+            "27,831",
+            "33,621"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "9,139",
+            "8,806",
+            "8,659",
+            "6,501",
+            "7,725",
+            "9,521"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "110",
+            "899",
+            "667",
+            "6,501",
+            "7,725",
+            "9,521"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "48,469",
+            "45,413",
+            "46,674",
+            "44,516",
+            "45,740",
+            "47,536"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "52,595",
+            "53,750",
+            "60,623",
+            "68,152",
+            "71,061",
+            "74,996"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "115,944",
+            "118,871",
+            "129,213",
+            "135,822",
+            "144,903",
+            "156,424"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-4,840",
+            "-5,147",
+            "-3,728",
+            "-4,201",
+            "-3,626",
+            "-2,409"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "6,408",
+            "10,966",
+            "14,019",
+            "18,682",
+            "24,205",
+            "31,211"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "11.2%",
+            "14.9%",
+            "15.2%",
+            "16.8%",
+            "19.2%",
+            "21.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-37.3%",
+            "-29.0%",
+            "-18.9%",
+            "-18.4%",
+            "-13.0%",
+            "-7.2%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.8x",
+            "-0.8x",
+            "-0.5x",
+            "-0.5x",
+            "-0.3x",
+            "-0.2x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.2",
+            "1.2",
+            "1.2",
+            "1.1",
+            "1.1",
+            "1.2"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "4,723",
+            "5,868",
+            "7,139",
+            "6,154",
+            "6,653",
+            "7,608"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "4,089",
+            "6,919",
+            "6,525",
+            "5,490",
+            "6,796",
+            "7,596"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "1,257",
+            "-13",
+            "-208",
+            "1,111",
+            "2,862",
+            "3,631"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "2,305",
+            "5,405",
+            "7,707",
+            "4,329",
+            "5,565",
+            "6,403"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-2,305",
+            "-5,405",
+            "-7,707",
+            "-4,329",
+            "-5,565",
+            "-6,403"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "2,418",
+            "463",
+            "-568",
+            "1,825",
+            "1,088",
+            "1,206"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "4,815",
+            "-1,209",
+            "226",
+            "1,161",
+            "1,231",
+            "1,193"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "4,815",
+            "-1,209",
+            "226",
+            "1,161",
+            "1,231",
+            "1,193"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-87",
+            "-1,249",
+            "-751",
+            "375",
+            "785",
+            "1,170"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "-1,181",
+            "-1,420",
+            "-1,422",
+            "-1,663",
+            "-2,422"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "2,331",
+            "-786",
+            "-1,319",
+            "2,200",
+            "1,873",
+            "2,376"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2025"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "33.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "18.3x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "27.5x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "131.6x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "6.7x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "1.1%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.5x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Airbus SE a buy in 2026?",
+      "a": "No. Airbus SE is rated HOLD for 2026, with a target price of 179.30 EUR versus 193.62 EUR currently, implying -7.4% downside. The group has a 58–60% single-aisle share, EUR 9.3 bn of H1 2026 Defence and Space orders and a EUR 12–13 bn 2029 Adjusted EBIT objective. However, H1 free cash flow before customer financing was negative EUR 1.2 bn, inventory reached EUR 46.9 bn and delivery conversion remains unproven."
+    },
+    {
+      "q": "What is Airbus SE's price target?",
+      "a": "The 12-month price target is 179.30 EUR per share, compared with the current price of 193.62 EUR and implying -7.4% downside. It is derived from a 100%-weighted sum-of-the-parts valuation. The bridge applies 12.5x to EUR 6.105 bn of narrowbody 2027E EBITDA, 15.0x to EUR 1.221 bn of services EBITDA and separate multiples to widebodies, helicopters, defence and space, with A350 Freighter value probability weighted."
+    },
+    {
+      "q": "Why is Airbus SE rated HOLD?",
+      "a": "Airbus SE is rated HOLD because its scarce franchises are offset by demanding execution and cash assumptions. The reverse valuation requires revenue to rise from EUR 75.1 bn in 2025 to EUR 93.7 bn in 2027, while EBIT margin moves from a market-implied 6.8% to 8.1% and eventually 11.8%. The 58–60% single-aisle position and EUR 12–13 bn 2029 EBIT outlook support upside, but inventory and engine constraints delay cash conversion."
+    },
+    {
+      "q": "Is Airbus SE overvalued in 2026?",
+      "a": "Airbus SE is expensive on near-term earnings but not uniformly overvalued across its franchises. The stock trades at 33.7x 2025E P/E and 18.3x 2025E EV/EBITDA, versus 2026 peer medians of 13.6x P/E and 10.4x EV/EBITDA. Its 18.0x normalised historical EV/EBITDA average and net cash support a premium, while EUR 46.9 bn of inventory and negative H1 cash flow justify keeping manufacturing multiples below historical norms."
+    },
+    {
+      "q": "What is Airbus SE's bear and bull case?",
+      "a": "The bear case produces 170.39 EUR per share, or -12.0%, if engine constraints persist, H2 cash conversion is weak, space charges return and A350F has no value. The base case produces 179.28 EUR, or -7.4%, on progressive delivery improvement and service-mix expansion. The bull case produces 184.82 EUR, or -4.5%, if supply normalises, inventory releases, A350F certifies successfully and profit conversion strengthens."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Airbus SE report dated 20 August 2026 (the value-map allocations, anchor market capitalisation of EUR 152.7 bn and share price of 193.62 EUR). Division-level allocations are modelled estimates where Airbus does not separately report the economics.",
+    "Competitor context: Airbus has 58% combined single-aisle share versus Boeing’s 33% of programme orders or approximately 40% under a narrower comparison; Boeing’s 2025 widebody orders were 538 versus Airbus’s 293; Airbus Services revenue was EUR 5.45 bn versus Boeing Global Services at USD 20.923 bn, Lufthansa Technik at EUR 8.0 bn and AAR at USD 3.3 bn. Boeing Global Services includes government services, Lufthansa Technik includes third-party platforms and AAR figures cover different fiscal periods.",
+    "Market data: AIR.DE, 193.62 EUR as of 20 August 2026; the target bridge uses 2027E revenue of EUR 93,700m, EBITDA of EUR 13,222m and 2027E modelled EBITDA of EUR 6,104.8m for Commercial Narrowbody Aircraft. Peer multiples are qualified by the report: Boeing’s negative earnings distort comparisons, and market and competitor figures use differing definitions, periods and scopes."
+  ]
+}

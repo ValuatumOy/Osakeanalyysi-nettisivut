@@ -1,0 +1,764 @@
+{
+  "id": "puuilo-20082026",
+  "slug": "puuilo-equity-report",
+  "companyName": "Puuilo Oyj",
+  "ticker": "PUUILO.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Department Stores",
+  "currency": "EUR",
+  "reportDate": "2026-08-20",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "14.00 EUR",
+    "targetPrice": "12.00 EUR",
+    "impliedUpside": "-14.3%",
+    "marketCap": "EUR 1.2 bn",
+    "enterpriseValue": "EUR 1.3 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2025E",
+      "value": "21.8x"
+    },
+    {
+      "label": "EV/EBITDA 2025E",
+      "value": "12.2x"
+    },
+    {
+      "label": "FCF Yield 2025E",
+      "value": "2.9%"
+    },
+    {
+      "label": "Dividend Yield 2025E",
+      "value": "3.2%"
+    },
+    {
+      "label": "Net Debt / EBITDA 2025E",
+      "value": "1.1x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "18.10 EUR",
+    "week52Low": "11.30 EUR",
+    "oneYearChange": "+23.2%",
+    "threeYearChange": "+141.4%"
+  },
+  "summary": [
+    "Puuilo Oyj (PUUILO.HE, NASDAQ Helsinki) is a Finnish discount retailer selling tools, automotive products, building and maintenance supplies, pet products, household goods and seasonal merchandise through physical stores, centralised sourcing, private-label products and an online store. The call is SELL in this Valuatum equity research report dated 20 August 2026, with a 12-month target price of 12.00 EUR versus a current price of 14.00 EUR, implying -14.3% downside. Market capitalisation is EUR 1.2 bn and enterprise value is EUR 1.3 bn. The strategy combines Finnish like-for-like growth with expansion towards more than 100 stores by FY2030 and an initial Swedish rollout.",
+    "The central tension is between strong store economics and a valuation that already capitalises sustained execution. Physical stores generate EUR 432.7m of FY2025 external sales, or 97.8% of group revenue, and receive 98.5% of allocated EV at EUR 1,279m; online contributes EUR 9.6m, or 2.2% of revenue, and receives EUR 19m, or 1.5% of EV. New stores require about EUR 1.8m and have approximately 19 months of cumulative EBITDA payback, supporting a premium. Yet current EV is 12.18x modeled 2025 EBITDA, against a 9.33x normalized historical average and an 8.4x 2026 peer median.",
+    "The target price uses a sum-of-the-parts valuation: 10.3x FY2026E store EBITDA of EUR 108m produces EUR 1.1bn of store EV, while 7.0x online EBITDA of EUR 2.5m produces EUR 17.5m of online EV; the combined bridge gives 12.00 EUR per share with 100% weight. The scenario bridge gives Bear EUR 6.87 per share and -50.9%, Base EUR 12.01 and -14.2%, and Bull EUR 16.33 and +16.7%. The bear assumes saturation and margin reversal; the bull requires high-single-digit like-for-like growth, at least eight productive annual openings and stable inventory efficiency."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Premium Already Capitalised",
+      "metric": "12.18x",
+      "text": "Current EV values Puuilo at 12.18x modeled 2025 EBITDA, above the 9.33x normalized historical average and 8.4x 2026 peer median. Store economics justify a premium, but cannibalisation, wage inflation, sourcing volatility and denser Finnish coverage leave limited valuation protection."
+    },
+    {
+      "num": "02",
+      "title": "Margins Must Peak",
+      "metric": "21.9%",
+      "text": "The market-implied model requires EBIT margins of 21.8% in 2026 and 21.9% in 2027, versus 17.1% in the authoritative model and a 17.5% adjusted EBITA margin in FY2025. Q1 FY2026 strength narrowed the gap but did not validate peak-like profitability."
+    },
+    {
+      "num": "03",
+      "title": "Online Is Supportive",
+      "metric": "2.2%",
+      "text": "Online generated EUR 9.6m of FY2025 revenue, or 2.2% of group sales, and holds only 1.5% of allocated EV. Free two-to-four-hour click-and-collect supports stores, but undisclosed fulfillment contribution prevents online from supporting a material technology-style valuation premium."
+    }
+  ],
+  "thesisBreaker": "The SELL thesis breaks if established-store growth exceeds 4% and EBIT margin remains above 18% through the Swedish launch, which would support a higher valuation.",
+  "valuePools": [
+    {
+      "name": "Stores",
+      "share": "98.5% · EUR 1,279m",
+      "economics": "Revenue EUR 433m (97.8%) · Comparable EBIT not separately reported (98% estimated share of current EBIT) · EV EUR 1,279m (98.5%)",
+      "text": "Stores are the profit engine, spanning tools, automotive, building and maintenance supplies, pet products, household goods and seasonal merchandise. FY2025 external sales were EUR 432.7m, equal to 97.8% of group revenue, while 56 stores were operating at 31 January 2026. Management targets more than 100 stores by FY2030, with seven to ten annual openings and at least eight planned in FY2026. A new store requires about EUR 1.8m including inventory and reaches cumulative EBITDA payback in approximately 19 months. The allocation of EUR 1,279m of EV therefore depends on maintaining catchment growth as density rises. At 10.3x modeled FY2026 EBITDA of EUR 108m, the assessed store EV is about EUR 1.1bn. The multiple exceeds the 8.4x peer median because modeled EBIT margin is 17.1% and modeled ROE is 45.2%, but competition from Tokmanni, Motonet, Biltema, K-Rauta and Bauhaus limits the available white space. Gross margin of 38.2% in FY2025 and private-label sales of 23.6% support returns, while freight, wages and inventory remain constraints."
+    },
+    {
+      "name": "Online store",
+      "share": "1.5% · EUR 19m",
+      "economics": "Revenue EUR 9.6m (2.2%) · Comparable EBIT not separately reported (2% estimated share of current EBIT) · EV EUR 19m (1.5%)",
+      "text": "The online store provides product discovery and click-and-collect across approximately 30,000 titles, with selected orders ready within two to four hours during store hours. FY2025 external sales were EUR 9.6m, or 2.2% of group revenue, while online growth accelerated to 17.6% in Q1 FY2026. The allocation is only EUR 19m of EV, reflecting undisclosed order economics, pickup mix, delivery cost, returns and contribution after fulfillment. The assessed value applies 7.0x modeled FY2026 EBITDA of EUR 2.5m, producing EUR 17.5m of target EV. K-Rauta's estimated USD 239m and Motonet's estimated USD 129m of Finnish online revenue demonstrate larger category positions, although their category breadth differs. Free pickup can increase convenience and store add-on sales, but it can also shift shelf purchases into labor-intensive orders without incremental demand. Online growth therefore supports the store estate rather than creating a standalone valuation engine. Value could rise if contribution is disclosed and revenue compounds above 15%; it could approach zero if fulfillment economics are negative."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests what the EUR 14.00 share price requires beyond the authoritative operating model. The primary swing factor is EBIT margin: the market-implied bridge requires EUR 109m of EBIT in 2026 and EUR 123m in 2027, versus modeled EBIT of EUR 86m and EUR 97m. That means margins above 21% before fading to 13.6%. Store rollout, gross margin, cannibalisation and inventory efficiency determine whether the premium is earned; online remains too small to alter the group outcome materially.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "545",
+          "EBITDA": "130",
+          "Margin": "23.9%",
+          "Multiple": "11.5x",
+          "EV": "1,495",
+          "Equity": "1,377"
+        },
+        "impliedValueOrUpside": "EUR 16.33 / sh · +16.7%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "501",
+          "EBITDA": "111",
+          "Margin": "22.1%",
+          "Multiple": "10.2x",
+          "EV": "1,130",
+          "Equity": "1,012"
+        },
+        "impliedValueOrUpside": "EUR 12.01 / sh · -14.2%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "450",
+          "EBITDA": "82",
+          "Margin": "18.2%",
+          "Multiple": "8.5x",
+          "EV": "697",
+          "Equity": "579"
+        },
+        "impliedValueOrUpside": "EUR 6.87 / sh · -50.9%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Puuilo creates value primarily through a dense physical-store network, centralised sourcing, private-label mix and rapid new-store payback. Stores generated EUR 432.7m of FY2025 external sales, or 97.8% of group revenue, and the 56-store network held about 12.1% of Finnish discount retail in 2025. Management reports approximately EUR 1.8m of initial investment per new store, including about EUR 0.3m of capex and EUR 1.5m of inventory, with profitability in the first full month and cumulative EBITDA payback in roughly 19 months. At eight openings, initial cash deployment is about EUR 14.4m, making inventory control more important than statutory capex alone. FY2025 operating free cash flow was EUR 72.6m and capex was EUR 5.8m, while inventories reached EUR 123.2m. The store opportunity is broad, but competition includes Tokmanni's 206 Finnish stores, Motonet, Biltema, K-Rauta and Bauhaus. Gross margin was 38.2% in FY2025 and 39.0% in Q1 FY2026; private label represented 23.6% of FY2025 revenue. Online revenue of EUR 9.6m, or 2.2% of group sales, supports discovery and pickup but has no disclosed contribution economics. The investment case therefore rests on incremental store catchment profit, not merely store-count growth."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The SOTP bridge separates stores from online because the evidence quality and economics differ. Stores receive 10.3x modeled FY2026 EBITDA of EUR 108m, producing approximately EUR 1.1bn of target EV; online receives 7.0x modeled EBITDA of EUR 2.5m, producing EUR 17.5m. Net debt of EUR 118m is deducted once at group level. The resulting target is EUR 12.00 per share, using a group multiple of about 10.2x FY2026 EBITDA. At the current EUR 1.3bn EV, Puuilo trades at 12.18x modeled 2025 EBITDA, above the 9.33x normalized historical average and 8.4x 2026 peer median. The premium has operating support: modeled 2026 EBIT margin is 17.1% versus a 6.2% peer median, and modeled ROE is 45.2% versus 19.7%. However, the current EV requires EUR 109m of 2026 EBIT and EUR 123m of 2027 EBIT in the reverse test, compared with EUR 86m and EUR 97m in the authoritative model. The quoted EV therefore leaves approximately EUR 168.1m resting on future execution relative to assessed EV. That future execution means sustained like-for-like growth, at least eight productive openings, stable gross margin and payback near 19 months."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The Bear outcome is EUR 6.87 per share, or -50.9%, and requires store saturation, weaker established-store demand, gross-margin normalisation and working-capital absorption. Early evidence would be negative like-for-like growth, inventories growing faster than sales and payback moving beyond 30 months. The Base outcome is EUR 12.01, or -14.2%, and requires delivery near the EUR 480–510m FY2026 sales guidance range, profitable Finnish openings and only modest Swedish dilution. The first half-year report, gross margin and opening cadence will distinguish this path. The Bull outcome is EUR 16.33, or +16.7%, and requires high-single-digit like-for-like growth, at least eight non-cannibalising annual openings, continued private-label gains, stable inventory efficiency and positive evidence from Sweden. The central debate is whether Puuilo's 19-month payback and 38.2% gross margin can persist as the network moves beyond 56 stores, or whether density, competition and costs reduce returns before more than 100 stores are reached. Q1 FY2026 sales growth of 16.3% and adjusted EBITA growth of 50.2% support the optimistic case, but one quarter does not establish 21%–22% EBIT margins. The balance of evidence supports SELL."
+    }
+  ],
+  "risks": [
+    "New-store cannibalisation (Stores): new locations may transfer sales rather than add catchment profit, with store count rising while like-for-like growth turns negative as the early warning - HIGH impact and thesis-breaker if it occurs.",
+    "Gross-margin normalisation (Stores): FX, freight, competition or mix could reverse purchasing gains, with gross margin trending towards 37% as the early warning - HIGH impact and thesis-breaker if it occurs.",
+    "Valuation multiple contraction (Group): small operating misses could reset the premium multiple, with guidance drifting towards its lower bound as the early warning - HIGH impact and structural.",
+    "Inventory absorbs rollout cash (Stores): new stores and assortment growth could outpace inventory turns, with inventory growth persistently exceeding sales growth as the early warning - HIGH impact and manageable.",
+    "Swedish format failure (Stores): local pricing, awareness or competition could weaken payback, with a slow ramp or opening investment above Finland as the early warning - MEDIUM impact and manageable."
+  ],
+  "catalysts": [
+    "H1 FY2026 report (near-term, Stores): sales, like-for-like growth, gross margin and adjusted EBITA will confirm or challenge the premium multiple.",
+    "Eight FY2026 openings (near-term, Stores): opening cadence and first-month profitability will test the store-duration assumption.",
+    "First Swedish store in Örebro (near-term, Stores): opening cost, sales ramp and local gross margin will begin testing international replication.",
+    "Second Swedish store in Sundsvall (medium-term, Stores): repeatability across a second catchment could extend the growth duration.",
+    "Online contribution disclosure (medium-term, Online store): orders, pickup mix, average order value and fulfillment cost would validate positive online value."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "296",
+            "338",
+            "384",
+            "440",
+            "501",
+            "563"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "55",
+            "70",
+            "78",
+            "107",
+            "111",
+            "125"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "18.7%",
+            "20.6%",
+            "20.3%",
+            "24.2%",
+            "22.1%",
+            "22.2%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-8",
+            "-17",
+            "-13",
+            "-32",
+            "-25",
+            "-28"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "47",
+            "53",
+            "65",
+            "75",
+            "86",
+            "97"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "15.9%",
+            "15.6%",
+            "17.0%",
+            "17.0%",
+            "17.1%",
+            "17.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-3",
+            "-4",
+            "-5",
+            "-6",
+            "-6",
+            "-6"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "44",
+            "48",
+            "60",
+            "69",
+            "80",
+            "91"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "35",
+            "39",
+            "48",
+            "54",
+            "61",
+            "70"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.6",
+            "0.7",
+            "0.8"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.3",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.5",
+            "0.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "72.3%",
+            "73.9%",
+            "66.8%",
+            "69.7%",
+            "69.7%",
+            "69.7%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "56",
+            "76",
+            "88",
+            "100",
+            "114",
+            "128"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "17",
+            "16",
+            "16",
+            "18",
+            "21",
+            "23"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "34",
+            "34",
+            "34",
+            "34",
+            "34",
+            "34"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "107",
+            "126",
+            "138",
+            "152",
+            "169",
+            "185"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "90",
+            "93",
+            "116",
+            "128",
+            "146",
+            "164"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "5",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "29",
+            "22",
+            "18",
+            "23",
+            "27",
+            "30"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "124",
+            "122",
+            "142",
+            "161",
+            "183",
+            "205"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "231",
+            "249",
+            "281",
+            "314",
+            "353",
+            "392"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "76",
+            "85",
+            "102",
+            "124",
+            "148",
+            "175"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "70",
+            "50",
+            "50",
+            "70",
+            "76",
+            "80"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "71",
+            "76",
+            "80"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "61",
+            "36",
+            "36",
+            "56",
+            "62",
+            "66"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "38",
+            "52",
+            "57",
+            "132",
+            "141",
+            "149"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "231",
+            "249",
+            "281",
+            "314",
+            "353",
+            "392"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "142",
+            "101",
+            "115",
+            "118",
+            "125",
+            "130"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "164",
+            "114",
+            "134",
+            "242",
+            "273",
+            "305"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "32.9%",
+            "34.2%",
+            "36.3%",
+            "39.4%",
+            "41.8%",
+            "44.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "186.1%",
+            "119.2%",
+            "112.8%",
+            "94.9%",
+            "84.9%",
+            "74.6%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.6x",
+            "1.5x",
+            "1.5x",
+            "1.1x",
+            "1.1x",
+            "1.0x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "3.3",
+            "2.4",
+            "2.5",
+            "1.2",
+            "1.3",
+            "1.4"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "45",
+            "61",
+            "40",
+            "76",
+            "72",
+            "83"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "48",
+            "64",
+            "43",
+            "80",
+            "76",
+            "87"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "0",
+            "-9",
+            "18",
+            "10",
+            "15",
+            "15"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "15",
+            "36",
+            "25",
+            "46",
+            "42",
+            "45"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-15",
+            "-36",
+            "-25",
+            "-46",
+            "-42",
+            "-45"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "30",
+            "25",
+            "15",
+            "29",
+            "30",
+            "38"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-17",
+            "70",
+            "18",
+            "34",
+            "34",
+            "42"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-17",
+            "70",
+            "18",
+            "34",
+            "34",
+            "42"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-15",
+            "-35",
+            "-21",
+            "-24",
+            "-27",
+            "-35"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "-25",
+            "-29",
+            "-32",
+            "-38",
+            "-43"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "15",
+            "-10",
+            "-6",
+            "5",
+            "3",
+            "3"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2025"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "21.8x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "12.2x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "17.4x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "34.9x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "9.5x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "3.2%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.1x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Puuilo Oyj a buy in 2026?",
+      "a": "No. Puuilo is rated SELL with a 12-month target price of 12.00 EUR versus 14.00 EUR currently, implying -14.3% downside. The company has strong store economics, including approximately 19-month new-store EBITDA payback and 17.5% FY2025 adjusted EBITA margin, but the current EUR 1.3bn EV equals 12.18x modeled 2025 EBITDA. The SELL view reflects valuation demanding EBIT margins above 21% in 2026–2027, versus 17.1% in the authoritative model."
+    },
+    {
+      "q": "What is Puuilo's price target?",
+      "a": "Puuilo's 12-month price target is 12.00 EUR per share, compared with a current price of 14.00 EUR and implied downside of -14.3%. The target uses a sum-of-the-parts method: stores receive 10.3x FY2026E EBITDA of EUR 108m and online receives 7.0x FY2026E EBITDA of EUR 2.5m. Those allocations produce approximately EUR 1.1bn of store EV and EUR 17.5m of online EV before the EUR 118m group net-debt bridge."
+    },
+    {
+      "q": "Why is Puuilo rated SELL?",
+      "a": "Puuilo is rated SELL because its EUR 1.3bn EV already prices in prolonged rollout success and margins above the authoritative model. Current EV is 12.18x modeled 2025 EBITDA, above the 9.33x normalized historical average and 8.4x 2026 peer median. The reverse valuation requires EUR 109m of 2026 EBIT and EUR 123m of 2027 EBIT, versus modeled EUR 86m and EUR 97m. Q1 sales growth of 16.3% is encouraging but insufficient to establish that path."
+    },
+    {
+      "q": "Is Puuilo overvalued in 2026?",
+      "a": "Puuilo is valued above its historical and peer reference points, although the premium has operating support. The share price implies 12.18x modeled 2025 EBITDA, against a 9.33x normalized historical average and an 8.4x 2026 peer median. The assessed target still applies a premium 10.3x store EBITDA multiple because modeled 2026 EBIT margin is 17.1% and modeled ROE is 45.2%. Overvaluation depends on whether margins can exceed 21% and rollout remains non-cannibalising."
+    },
+    {
+      "q": "What is Puuilo's bear and bull case?",
+      "a": "The bear case is EUR 6.87 per share, or -50.9%, based on EUR 450m of revenue, EUR 82m of EBITDA and an 8.5x multiple as stores saturate and margins normalise. The bull case is EUR 16.33, or +16.7%, based on EUR 545m of revenue, EUR 130m of EBITDA and an 11.5x multiple. The bull requires high-single-digit like-for-like growth, at least eight productive openings, stable inventory efficiency and early Swedish evidence."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Puuilo Oyj report dated 20 August 2026 (the value-map allocations, anchor market capitalisation and share price).",
+    "Competitor context: Tokmanni has 206 Finnish stores and EUR 1.7bn of FY2025 group revenue; the 2026 peer median is 8.4x EV/EBITDA, 13.4x EV/EBIT, 6.2% EBIT margin and 19.7% ROE. K-Rauta's estimated Finnish online revenue is USD 239m and Motonet's is USD 129m; the report notes that DIY leadership claims conflict because market definitions and methods differ.",
+    "Market data: PUUILO.HE, 14.00 EUR as of 20 August 2026; the target bridge uses EUR 108m of FY2026E store EBITDA at 10.3x and EUR 2.5m of online EBITDA at 7.0x. The authoritative model forecasts EUR 501m of 2026 revenue, EUR 111m of EBITDA and EUR 86m of EBIT. The report flags conflicting gross-margin figures of 38.2% and 38.8%, using the audited 38.2% figure, and identifies forecast division EBITDA and EBIT allocations as estimates rather than reported segment results."
+  ]
+}

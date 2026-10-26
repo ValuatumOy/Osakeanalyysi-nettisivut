@@ -1,0 +1,860 @@
+{
+  "id": "neste-19082026",
+  "slug": "neste-equity-report",
+  "companyName": "Neste Corporation",
+  "ticker": "NESTE.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Oil & Gas Refining & Marketing",
+  "currency": "EUR",
+  "reportDate": "2026-08-19",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month horizon",
+    "currentPrice": "27.97 EUR",
+    "targetPrice": "15,353.00 EUR",
+    "impliedUpside": "+54,791.0%",
+    "marketCap": "EUR 1m",
+    "enterpriseValue": "EUR 842m"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2025E",
+      "value": "—"
+    },
+    {
+      "label": "EV/EBITDA 2025E",
+      "value": "0.4x"
+    },
+    {
+      "label": "FCF Yield 2025E",
+      "value": "—"
+    },
+    {
+      "label": "Dividend Yield 2025E",
+      "value": "—"
+    },
+    {
+      "label": "Net Debt/EBITDA 2025E",
+      "value": "0.4x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "34.06 EUR",
+    "week52Low": "14.31 EUR",
+    "oneYearChange": "+113.1%",
+    "threeYearChange": "-1.6%"
+  },
+  "summary": [
+    "Neste Corporation (NESTE.HE, NASDAQ Helsinki) produces renewable diesel, sustainable aviation fuel and renewable feedstocks, while operating the Porvoo conventional refinery and a Nordic and Baltic distribution network. BUY is assigned in this Valuatum equity research report dated 19 August 2026, with a 12-month target price of 15,353.00 EUR against a current price of 27.97 EUR and implied upside of +54,791.0%. The stated market capitalisation is EUR 1m and enterprise value is EUR 842m. The call depends on renewable margins, refinery availability, Rotterdam execution and the conversion of policy-supported demand into cash generation.",
+    "The central tension is between a locked group EV of EUR 842m and division economics that assign EUR 4.5bn to conventional refining, EUR 4.0bn to renewable road fuels, EUR 2.5bn to SAF and EUR 2.6bn to uncommissioned capacity. Conventional refining generated reported EBIT of EUR 325m on EUR 9,300m of total segment sales, while Q2 2026 Renewable Products comparable sales margin reached USD 1,223 per ton. The headline 2025E valuation is 0.4x EV/EBITDA, but the bridge uses 5.0x FY2027E EBITDA for refining, 8.0x for road fuels and 10.0x for SAF, reflecting different durability and execution risks.",
+    "The target is built from a sum-of-the-parts bridge using FY2027E EBITDA multiples: EUR 4,000m for road fuels, EUR 2,500m for SAF, EUR 640m for polymers, EUR 2,650m for probability-weighted uncommissioned options, EUR 4,500m for refining, EUR 2,400m for marketing and negative EUR 496m for corporate costs. Enterprise value is EUR 16,194m less EUR 841m of net debt, producing EUR 15,353 per share on 1m locked shares. Bear, base and bull values are 7,798.93 EUR (+27,783.2%), 15,392.53 EUR (+54,932.3%) and 25,758.93 EUR (+91,994.9%)."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Refinery value gap",
+      "metric": "EUR 4.5bn",
+      "text": "Conventional refining and wholesale generated EUR 325m of reported EBIT in 2025, while the division is valued at EUR 4.5bn on 5.0x FY2027E EBITDA of EUR 900m. Q2 2026 refining margin reached USD 25.8 per barrel, but the nine-week Porvoo turnaround costing more than EUR 400m must finish on schedule for the mid-cycle case to hold."
+    },
+    {
+      "num": "02",
+      "title": "Recovered renewable economics",
+      "metric": "USD 1223/t",
+      "text": "Renewable Products comparable sales margin rose from USD 310 per ton in Q1 2025 to USD 1,223 per ton in Q2 2026. The installed road-fuels pool is valued on EUR 500m of FY2027E EBITDA at 8.0x, although utilisation was 75% against an 80% target and waste-and-residue inputs were 91% in Q4 2025."
+    },
+    {
+      "num": "03",
+      "title": "Option value gated",
+      "metric": "70%",
+      "text": "Rotterdam is valued through three operating legs with aggregate success probability of 70% and a 30% zero-value remainder. The base leg requires EUR 1.25bn of revenue and EUR 500m of EBITDA at scale, while official completion remains scheduled for 2027 after total project cost increased to EUR 2.5bn."
+    }
+  ],
+  "thesisBreaker": "The thesis fails if renewable utilisation stays below 70%, comparable sales margin falls below USD 600 per ton and Rotterdam is delayed beyond 2027 or requires another material cost reset.",
+  "valuePools": [
+    {
+      "name": "Conventional refining and wholesale",
+      "share": "27.0% · EUR 227m",
+      "economics": "Revenue EUR 6,920m (36.4%) · EBIT EUR 325m (64.6%, 3.5% margin) · EV EUR 227m",
+      "text": "Conventional refining and wholesale operates Porvoo’s approximately 10 million-ton-per-year crude refinery and serves Northern European middle-distillate, gasoline and specialty-product markets. Reported EBIT was EUR 325m on EUR 9,300m of total segment sales, with 11.868Mt of sales volume in 2025. The allocation of only EUR 227m of EV is therefore below the EUR 4.5bn division value derived from 5.0x FY2027E EBITDA of EUR 900m. Q2 2026 refining margin was USD 25.8 per barrel against USD 10.0 a year earlier, but the nine-week turnaround from August to October 2026 costs more than EUR 400m. Porvoo’s 12.1 estimated Nelson Complexity Index supports product flexibility, while regional competition includes Preem’s approximately 30% Nordic capacity and Orlen Lietuva’s 9.4Mt processed in 2025. The valuation requires normalised availability rather than a repeat of peak margins."
+    },
+    {
+      "name": "Renewable road fuels installed base",
+      "share": "24.0% · EUR 202m",
+      "economics": "Revenue EUR 5,000m (26.3%) · EBIT EUR 105m (20.9%, 2.1% margin) · EV EUR 202m",
+      "text": "Renewable road fuels use Neste’s installed conversion capacity, policy credits and access to certified waste and residue feedstocks. Modelled revenue is EUR 5,000m and reported EBIT is EUR 105m, whereas the allocated EV is EUR 202m and the valuation bridge assigns EUR 4.0bn on 8.0x FY2027E EBITDA of EUR 500m. The operating requirement is approximately 3.3 million tons of road-oriented sales at EUR 1,500 per ton, with about EUR 150 EBITDA per ton and a 10% margin. Comparable sales margin reached USD 1,223 per ton in Q2 2026, but utilisation was 75%, below the 80% target, and the 5.5Mt/y nameplate must compete for feedstock with SAF. Neste’s estimated broad renewable-diesel share is 13.5%, while Diamond Green Diesel has 1.2bn gal/y capacity and Eni targets more than 5Mt/y by 2030. RED III and North American credits support demand, but eligibility and traceability determine economics."
+    },
+    {
+      "name": "Uncommissioned renewable capacity and pathway options",
+      "share": "15.9% · EUR 134m",
+      "economics": "Revenue not separately reported · EBIT not separately reported · EV EUR 134m",
+      "text": "This pool is the Rotterdam expansion and related pathway options, with total project cost of EUR 2.5bn and official completion scheduled for 2027. It is valued as a probability-weighted operating option rather than a current operating segment. The base case requires EUR 1.25bn of revenue and EUR 500m of EBITDA at scale, while downside and upside cases require EUR 600m and EUR 2.25bn of revenue respectively. Three success legs carry 70% aggregate probability and the failure remainder is 30%. The expansion would lift renewable site capacity to 2.7Mt/y and SAF capability to 2.2Mt/y by the end of 2027. Further delay, a cost reset above EUR 300m or feedstock economics below fixed-cost coverage would reduce the allocation. Diamond Green Diesel, Eni, TotalEnergies, SkyNRG and LanzaJet add competing capacity, so commissioning yield, utilisation and contracted demand matter more than global fuel-market size."
+    },
+    {
+      "name": "Sustainable aviation fuel installed base",
+      "share": "15.0% · EUR 126m",
+      "economics": "Revenue EUR 1,800m (9.5%) · EBIT EUR 35m (7.0%, 1.9% margin) · EV EUR 126m",
+      "text": "Sustainable aviation fuel is supported by enforceable blending mandates and Neste’s installed production capability across Finland, Singapore and the Netherlands. Modelled revenue is EUR 1,800m and reported EBIT is EUR 35m, while the allocation is EUR 126m against a division value of EUR 2.5bn on 10.0x FY2027E EBITDA of EUR 250m. The base case implies approximately 0.64 million tons of sold volume and EUR 390 EBITDA per ton, compared with 145,000 tons sold in Q2 2026 and current capability of 1.5Mt/y. ReFuelEU rises from 2% in 2025 to 6% in 2030, while the UK rises from 2% to 10%; United States 45Z support is available through 2029. World Fuel Services provides access to more than 100 European airports and United Airlines expanded access to Houston, Newark and Dulles. Feedstock competition, HEFA limits and delayed mandates constrain the value of headline capacity."
+    },
+    {
+      "name": "Marketing, retail and distribution",
+      "share": "14.4% · EUR 121m",
+      "economics": "Revenue EUR 4,272m (22.5%) · EBIT EUR 82m (16.3%, 1.9% margin) · EV EUR 121m",
+      "text": "Marketing, retail and distribution monetises fuel, convenience, fleet and charging demand through nearly 1,000 stations across Finland and the Baltics. Reported EBIT was EUR 82m on EUR 4,272m of revenue, while the allocation is EUR 121m and the division value is EUR 2.4bn on 8.0x FY2027E EBITDA of EUR 300m. Neste has 476 Finnish sites and approximately 24.5% national network share, with 86 Lithuanian sites and an 11.9% share. The requirement is margin improvement rather than fuel-revenue growth: convenience, automation, procurement, distribution and network density must offset declining litres. Charging has no separate value because utilisation and site returns are undisclosed. St1 has approximately 470 Finnish sites, Viada has 216 Lithuanian sites and a 29% share, and Circle K has 96 sites and a 15% share. Site closures, fleet-volume weakness and EBIT margin below 2% would challenge the allocation."
+    },
+    {
+      "name": "Renewable polymers and chemicals",
+      "share": "3.8% · EUR 32m",
+      "economics": "Revenue EUR 1,017m (5.3%) · EBIT EUR 11m (2.2%, 1.1% margin) · EV EUR 32m",
+      "text": "Renewable polymers and chemicals supplies drop-in renewable and circular hydrocarbon feedstocks to customers using conventional chemical assets. Modelled revenue is EUR 1,017m and reported EBIT is EUR 11m, against an allocated EV of EUR 32m and a division value of EUR 640m on 8.0x FY2027E EBITDA of EUR 80m. The revenue is a residual allocation after road fuels and SAF rather than separate company disclosure, and EUR 80m of EBITDA implies a 7.9% margin. The 150kt/y Porvoo waste-plastic upgrading unit ramping in 2026 may improve circular-feedstock relevance, but no separate option value is assigned. Unlike road fuels and SAF, the division has no broad enforceable blending mandate; brand commitments and customer willingness to pay determine the renewable premium. Braskem, NatureWorks, TotalEnergies Corbion, BASF and Dow compete through dedicated polymers, drop-in feedstocks or broad chemical portfolios. Verified yields and multi-year contracts are needed to support a higher valuation."
+    },
+    {
+      "name": "Corporate and other activities",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue EUR 7m (0.0%) · EBIT EUR -62m (-12.3%) · EV EUR 0m",
+      "text": "Corporate and other activities comprise common functions and Neste Engineering Solutions, which mainly serves internal renewable projects. External revenue was EUR 7m and reported EBIT was negative EUR 62m, producing an implied negative value of EUR 496m at 8.0x recurring EBIT cost. The pool is not valued as an operating segment because external scale, backlog and stand-alone margins are not disclosed. Its cost remains a claim on every operating division unless Rotterdam completion and performance-program savings reduce the recurring loss."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests what the locked EUR 842m enterprise value requires the operating businesses to deliver. The primary swing factor is earnings durability: the bridge requires negative EBIT through 2027, only a 2.4% terminal EBIT margin and a EUR 2bn discounted terminal contribution before the locked debt and cash bridge reduces equity to EUR 1m. The result implies simultaneous impairment across refining, installed renewables, retail and project value, rather than a single weak division.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "23,000",
+          "EBITDA": "2,800",
+          "Margin": "12.2%",
+          "Multiple": "9.5x",
+          "EV": "26,600",
+          "Equity": "25,759"
+        },
+        "impliedValueOrUpside": "25,758.93 EUR / sh · +91,994.9%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "20,761",
+          "EBITDA": "1,824",
+          "Margin": "8.8%",
+          "Multiple": "8.9x",
+          "EV": "16,234",
+          "Equity": "15,393"
+        },
+        "impliedValueOrUpside": "15,392.53 EUR / sh · +54,932.3%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "18,500",
+          "EBITDA": "1,200",
+          "Margin": "6.5%",
+          "Multiple": "7.2x",
+          "EV": "8,640",
+          "Equity": "7,799"
+        },
+        "impliedValueOrUpside": "7,798.93 EUR / sh · +27,783.2%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Neste combines a conventional refining cash engine, installed renewable conversion assets, distribution infrastructure and unfinished capacity. Porvoo’s approximately 10Mt/y crude capacity and 12.1 estimated Nelson Complexity Index support regional middle-distillate economics; 2025 reported EBIT was EUR 325m on EUR 9,300m of total segment sales. Renewable road fuels generated reported EBIT of EUR 105m on EUR 5,000m of modelled revenue, with 75% Q2 2026 utilisation and USD 1,223 per ton comparable sales margin. SAF generated reported EBIT of EUR 35m on EUR 1,800m of modelled revenue, but Q2 sold volume was only 145,000 tons against 1.5Mt/y capability. Marketing adds EUR 82m of EBIT on EUR 4,272m of revenue through nearly 1,000 stations, while polymers contribute EUR 11m of EBIT on EUR 1,017m of revenue. Rotterdam is different: its EUR 2.5bn project cost and 2027 schedule justify probability-weighted value rather than a capacity multiple. The businesses share feedstocks, logistics and capital, so SAF growth can compete with road fuels for eligible waste and residue inputs. The economic question is whether policy value, product premiums and operational execution can convert physical capacity into durable EBITDA."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge values road fuels at 8.0x EUR 500m of FY2027E EBITDA, SAF at 10.0x EUR 250m, polymers at 8.0x EUR 80m, refining at 5.0x EUR 900m and marketing at 8.0x EUR 300m. Rotterdam contributes EUR 2,650m of probability-weighted value across downside, base and upside operating legs, while corporate and other activities deduct EUR 496m by capitalising negative EUR 62m of EBIT at 8.0x. These components produce EUR 16,194m of enterprise value, less locked net debt of EUR 841m, and a target based on 1m locked shares. The cross-division bridge matters because the quoted EUR 842m EV is only 0.42x modelled 2025 EBITDA and 0.83x EBIT, versus a 2026 peer median of 6.7x EV/EBITDA and Neste’s 7.59x normalised history. Applying the locked EV to current earnings supports almost none of the installed renewable, retail or option value. The reverse test instead requires negative EBIT through 2027, a 2.4% terminal EBIT margin and a EUR 2bn discounted terminal contribution. The quoted EV therefore rests on future execution being worth almost nothing across several economically distinct pools."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome of 7,798.93 EUR per share (+27,783.2%) requires renewable margins to normalise below recent levels, Porvoo to lose most of its current crack benefit, Rotterdam to receive no option value and corporate savings to disappoint. The base outcome of 15,392.53 EUR per share (+54,932.3%) requires installed divisions to deliver their bridge contributions, Rotterdam to retain probability-weighted value and the authoritative 2027 operating forecast to hold. The bull outcome of 25,758.93 EUR per share (+91,994.9%) requires utilisation above 80%, SAF sold volume near one million tons, a clean Porvoo restart and best-case Rotterdam economics, with stronger cash flow reducing net debt. The earliest discriminators are quarterly utilisation, comparable sales margin after feedstock inflation, Porvoo restart and cost, SAF tons sold, Rotterdam specification and contracted demand. The central debate is whether Q2 2026 reflects a temporary geopolitical and credit-cycle peak or the first evidence of sustainable renewable and refining economics. The 75% utilisation rate, EUR 2.5bn Rotterdam cost and turnaround risk argue for discipline, but the locked EV implies simultaneous failure across refining, renewables and retail; that imbalance supports BUY."
+    }
+  ],
+  "risks": [
+    "Waste-feedstock inflation (sustainable aviation fuel installed base): UCO and tallow costs absorb credit and product premiums, with UCO above USD 1,200 per ton and falling sales margin as the early warning - HIGH impact and structural.",
+    "Rotterdam delay or further cost escalation (uncommissioned renewable capacity and pathway options): delayed EBITDA, higher debt and lower project returns follow a schedule beyond 2027 or another cost reset - HIGH impact and a thesis-breaker if it occurs.",
+    "Porvoo turnaround overrun (conventional refining and wholesale): a restart beyond nine weeks removes high-margin throughput and raises replacement-supply costs, with the restart date as the early warning - HIGH impact and manageable.",
+    "HEFA eligibility tightens (renewable road fuels installed base): faster UK caps or adverse EU feedstock rules strand feedstock-dependent capacity and cap addressable demand - HIGH impact and structural.",
+    "Leverage and working-capital squeeze (corporate and other activities): inventory and capex consume liquidity and raise financing costs, with debt/EBITDA failing to move towards 2.5x as the early warning - HIGH impact and a thesis-breaker if it occurs."
+  ],
+  "catalysts": [
+    "Porvoo turnaround remains on plan (near-term, conventional refining and wholesale): an on-time restart and controlled scope protect the EUR 4.5bn refinery value.",
+    "Renewable utilisation reaches 80% (near-term, renewable road fuels installed base): higher quarterly capacity utilisation proves fixed-cost absorption and supports EUR 500m of FY2027E EBITDA.",
+    "Comparable sales margin remains above USD 800 per ton (near-term, renewable road fuels installed base): sustained unit economics support the road-fuels valuation.",
+    "SAF contract volumes exceed the Q2 run-rate (medium-term, sustainable aviation fuel installed base): higher quarterly sold volume de-risks the EUR 2.5bn SAF value.",
+    "Rotterdam mechanical completion remains scheduled for 2027 (medium-term, uncommissioned renewable capacity and pathway options): schedule adherence raises option success probability."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "25,707",
+            "22,926",
+            "20,635",
+            "18,488",
+            "19,586",
+            "20,761"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "3,048",
+            "2,549",
+            "1,007",
+            "2,001",
+            "1,658",
+            "1,824"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "11.9%",
+            "11.1%",
+            "4.9%",
+            "10.8%",
+            "8.5%",
+            "8.8%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-638",
+            "-867",
+            "-982",
+            "-984",
+            "-1,134",
+            "-1,179"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "2,410",
+            "1,682",
+            "25",
+            "1,017",
+            "524",
+            "645"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "9.4%",
+            "7.3%",
+            "0.1%",
+            "5.5%",
+            "2.7%",
+            "3.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-131",
+            "-86",
+            "-138",
+            "-152",
+            "-170",
+            "-180"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "2,279",
+            "1,596",
+            "-113",
+            "865",
+            "354",
+            "465"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "1,893",
+            "1,436",
+            "-94",
+            "878",
+            "—",
+            "-0"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "2.5",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.8",
+            "—",
+            "—",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "33.3%",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "ASSETS",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Tangible assets",
+          "values": [
+            "6,569",
+            "7,786",
+            "8,872",
+            "7,364",
+            "7,802",
+            "8,270"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "170",
+            "185",
+            "164",
+            "147",
+            "156",
+            "165"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "400",
+            "496",
+            "514",
+            "514",
+            "514",
+            "514"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "7,354",
+            "8,731",
+            "9,804",
+            "8,279",
+            "8,725",
+            "9,203"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "3,648",
+            "3,366",
+            "2,898",
+            "2,638",
+            "2,794",
+            "2,962"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "2,584",
+            "2,184",
+            "1,702",
+            "1,599",
+            "1,685",
+            "1,776"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "1,271",
+            "1,575",
+            "955",
+            "1,001",
+            "1,060",
+            "1,124"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "7,503",
+            "7,125",
+            "5,555",
+            "5,238",
+            "5,539",
+            "5,862"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "14,917",
+            "15,983",
+            "15,581",
+            "13,739",
+            "14,486",
+            "15,286"
+          ]
+        },
+        {
+          "label": "EQUITY & LIABILITIES",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "8,327",
+            "8,463",
+            "7,417",
+            "9,066",
+            "9,066",
+            "9,066"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "1,539",
+            "3,487",
+            "4,362",
+            "921",
+            "1,235",
+            "1,572"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "541",
+            "581",
+            "786",
+            "921",
+            "1,235",
+            "1,572"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "1,803",
+            "3,815",
+            "4,618",
+            "1,177",
+            "1,491",
+            "1,828"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,916",
+            "3,388",
+            "3,210",
+            "3,161",
+            "3,594",
+            "4,057"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "14,917",
+            "15,983",
+            "15,581",
+            "13,739",
+            "14,486",
+            "15,286"
+          ]
+        },
+        {
+          "label": "C A P I TA L S T R U C T U R E & R AT I O S",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "1,344",
+            "2,493",
+            "4,193",
+            "841",
+            "1,410",
+            "2,020"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "9,136",
+            "10,956",
+            "11,610",
+            "9,907",
+            "10,477",
+            "11,086"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "55.8%",
+            "53.0%",
+            "47.6%",
+            "66.0%",
+            "62.6%",
+            "59.3%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "16.1%",
+            "29.5%",
+            "56.5%",
+            "9.3%",
+            "15.6%",
+            "22.3%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.4x",
+            "1.0x",
+            "4.2x",
+            "0.4x",
+            "0.9x",
+            "1.1x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.9",
+            "2.1",
+            "1.7",
+            "1.7",
+            "1.5",
+            "1.4"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2022",
+        "2023",
+        "2024",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "O P E R AT I O N S",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "1,540",
+            "2,417",
+            "1,454",
+            "2,041",
+            "1,011",
+            "1,047"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "1,660",
+            "2,407",
+            "1,493",
+            "2,196",
+            "1,137",
+            "1,180"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "991",
+            "-114",
+            "-567",
+            "-179",
+            "123",
+            "132"
+          ]
+        },
+        {
+          "label": "I N V E S T I N G & F R E E C A S H",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "2,144",
+            "2,244",
+            "2,055",
+            "-541",
+            "1,580",
+            "1,656"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-2,144",
+            "-2,244",
+            "-2,055",
+            "541",
+            "-1,580",
+            "-1,656"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-604",
+            "173",
+            "-601",
+            "1,501",
+            "-569",
+            "-609"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-509",
+            "227",
+            "-634",
+            "2,736",
+            "-444",
+            "-476"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-507",
+            "227",
+            "-634",
+            "2,736",
+            "-444",
+            "-476"
+          ]
+        },
+        {
+          "label": "F I N A N C I N G",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "282",
+            "217",
+            "56",
+            "-2,535",
+            "629",
+            "673"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-614",
+            "-630",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-322",
+            "390",
+            "-545",
+            "47",
+            "59",
+            "64"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2025"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "0.4x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "0.8x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "0.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "0.4x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Neste a buy in 2026?",
+      "a": "Yes. Neste is rated BUY for a 12-month horizon, with a target price of 15,353.00 EUR versus 27.97 EUR currently. The case rests on EUR 4.5bn of conventional-refining value, EUR 4.0bn of renewable-road-fuels value and EUR 2.6bn of probability-weighted Rotterdam value against group EV of EUR 842m. The principal tests are renewable utilisation above 70%, comparable sales margin above USD 600 per ton and Rotterdam completion by 2027."
+    },
+    {
+      "q": "What is Neste's price target?",
+      "a": "Neste’s 12-month target price is 15,353.00 EUR, implying +54,791.0% against the current price of 27.97 EUR. The target comes from EUR 16,194m of divisional enterprise value, including EUR 4,000m for road fuels, EUR 2,500m for SAF, EUR 4,500m for refining and EUR 2,650m for uncommissioned options, less net debt of EUR 841m. The calculation uses 1m locked shares."
+    },
+    {
+      "q": "Why is Neste rated BUY?",
+      "a": "Neste is rated BUY because the locked EUR 842m group EV is below the EUR 4.5bn value assigned to conventional refining alone. Q2 2026 refining margin was USD 25.8 per barrel and Renewable Products comparable sales margin was USD 1,223 per ton. The valuation also gives probability-weighted value to Rotterdam rather than assuming success. The rating remains conditional on 75% utilisation improving towards 80%, controlled Porvoo maintenance and no further Rotterdam cost reset."
+    },
+    {
+      "q": "Is Neste overvalued in 2026?",
+      "a": "No. On the report’s locked market controls, Neste is valued at only 0.4x 2025E EV/EBITDA and 0.8x EV/EBIT, compared with a 2026 peer median of 6.7x EV/EBITDA. Those figures are distorted by the stated EUR 1m market capitalisation and 1m locked shares, so they are not conventional trading multiples. The analytical concern is not overvaluation but whether Q2 margins and future capacity can convert into sustainable cash generation."
+    },
+    {
+      "q": "What is Neste's bear and bull case?",
+      "a": "The bear case is 7,798.93 EUR per share, or +27,783.2%, if revenue is EUR 18,500m, EBITDA EUR 1,200m and Rotterdam receives no option value. The base case is 15,392.53 EUR, or +54,932.3%. The bull case is 25,758.93 EUR, or +91,994.9%, requiring revenue of EUR 23,000m, EBITDA of EUR 2,800m, utilisation above 80%, SAF volume near one million tons and best-case Rotterdam economics."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Neste Corporation report dated 19 August 2026 (the value-map allocations, anchor market capitalisation of EUR 1m and share price of 27.97 EUR). The report cautions that unusual supplied share-count, market-capitalisation and quote controls materially affect per-share outputs.",
+    "Competitor context: Valero 5.7x, Repsol 3.3x, Eni 5.2x, OMV 3.6x and Phillips 66 7.9x 2027E EV/EBITDA; Darling Ingredients 9.9x, VERBIO 9.7x and Couche-Tard 10.0x. The 2026 peer median is 6.7x EV/EBITDA, while integrated and renewable peers have different asset mixes and volatile multiples, so peer comparisons are not directly conclusive.",
+    "Market data: NESTE.HE, 27.97 EUR as of 19 August 2026; the target bridge uses FY2027E EBITDA of EUR 500m for road fuels, EUR 250m for SAF, EUR 80m for polymers, EUR 900m for refining and EUR 300m for marketing, plus probability-weighted Rotterdam value of EUR 2,650m and locked net debt of EUR 841m. The report notes conflicting Rotterdam timing evidence and uses the official 2027 schedule rather than a contractor page citing an earlier start."
+  ]
+}

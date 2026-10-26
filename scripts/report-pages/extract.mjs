@@ -15,7 +15,8 @@ import { chat, parseJsonResponse } from './openrouter.mjs';
 import { pdfToText } from './pdf-text.mjs';
 import { buildMessages } from './prompt.mjs';
 import { REPORT_SCHEMA, toReportContent } from './schema.mjs';
-import { CONTENT_DIR } from './owners.mjs';
+import { CONTENT_DIR, CONTENT_DIRS } from './owners.mjs';
+import { IS_TEST } from './stage.mjs';
 
 export const EXTRACTION_MODEL = 'openai/gpt-5.6-luna';
 const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
@@ -35,11 +36,13 @@ function applyCatalogFields(doc, entry) {
 /** Landing-page slug: reuse the one an earlier report for this company already claimed. */
 function resolveSlug(id, companyName, ticker) {
   const stem = id.replace(/-\d{8}(?:-\d+)?$/, '');
-  for (const file of fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.json'))) {
-    const doc = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
-    const docStem = String(doc.id || '').replace(/-\d{8}(?:-\d+)?$/, '');
-    const sameCompany = (ticker && doc.ticker === ticker) || (docStem && docStem === stem);
-    if (sameCompany && doc.slug) return doc.slug;
+  for (const dir of CONTENT_DIRS.filter((d) => fs.existsSync(d))) {
+    for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.startsWith('_'))) {
+      const doc = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+      const docStem = String(doc.id || '').replace(/-\d{8}(?:-\d+)?$/, '');
+      const sameCompany = (ticker && doc.ticker === ticker) || (docStem && docStem === stem);
+      if (sameCompany && doc.slug) return doc.slug;
+    }
   }
   const base = String(companyName)
     .replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|A\/S|N\.V\.|S\.A\.|Group|Holdings?|Abp)\.?$/i, '')
@@ -52,7 +55,9 @@ function resolveSlug(id, companyName, ticker) {
 // server/reconciler.js). The catalog API only advertises pdfUrl for free reports, but every
 // report's file is served unauthenticated under its fileName — the same URL the buyer email
 // carries — so extraction derives it when the API withholds it.
-const PDF_BASE_URL = 'https://files.aiequityreports.com/reports/pdfs';
+const PDF_BASE_URL = IS_TEST
+  ? 'https://files-test.aiequityreports.com/reports/pdfs'
+  : 'https://files.aiequityreports.com/reports/pdfs';
 
 async function downloadPdf(entry) {
   const url = entry.pdfUrl
@@ -106,6 +111,7 @@ export async function extractReport(entry) {
 
     gate(doc);
 
+    await fsp.mkdir(CONTENT_DIR, { recursive: true });
     const outPath = path.join(CONTENT_DIR, `${entry.id}.json`);
     await fsp.writeFile(outPath, `${JSON.stringify(doc, null, 2)}\n`, 'utf8');
 

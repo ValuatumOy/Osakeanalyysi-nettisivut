@@ -2,8 +2,11 @@
 // into their output. Always the live API — building from a stale local
 // snapshot is the failure mode that once let the site serve outdated pages
 // for weeks, so there is deliberately no file fallback, and any fetch
-// problem is a hard error.
-export const CATALOG_API_URL = 'https://www.aiequityreports.com/api/reports';
+// problem is a hard error. REPORT_PAGES_STAGE=test reads the test site's
+// catalog instead (scripts/report-pages/stage.mjs).
+export const CATALOG_API_URL = process.env.REPORT_PAGES_STAGE === 'test'
+  ? 'https://test.aiequityreports.com/api/reports'
+  : 'https://www.aiequityreports.com/api/reports';
 
 export async function fetchLiveCatalog() {
   const res = await fetch(CATALOG_API_URL);
