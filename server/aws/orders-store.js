@@ -111,6 +111,10 @@ async function create(input) {
     // An admin's private copy of someone else's report (adminCopyFor in
     // server/lambda/api.js): the admin view revises it in place.
     adminCopy: input.adminCopy || undefined,
+    // Which version of the parent the copy started from, and that version's
+    // PDF: the page's download until the copy's first delivery.
+    forkedFromVersion: input.forkedFromVersion || undefined,
+    basePdfFileName: input.basePdfFileName || undefined,
     // Carried from a parent whose job was attached by hand: the engine answers
     // only to the username that job was submitted under.
     engineUsername: input.engineUsername || undefined,

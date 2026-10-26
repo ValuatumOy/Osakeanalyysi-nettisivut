@@ -149,3 +149,78 @@ test('a report still generating cannot be copied', async (t) => {
   assert.equal(res.statusCode, 409);
   assert.equal(created.length, 0);
 });
+
+// Any version can be revised: the engine revises any finished job, so a
+// revision from an older version is a new copy on that version's job.
+const historyOrder = () => ({
+  ...laurisOrder(),
+  originalJobId: 'job-v1', originalPdfFileName: 'tesla-v1.pdf',
+  revisionHistory: [
+    { version: 2, kind: 'revision', jobId: 'job-v2', pdfFileName: 'tesla-v2.pdf', completedAt: '2026-10-01T10:00:00.000Z' },
+    { version: 3, kind: 'edit', pdfFileName: 'tesla-v3.pdf', completedAt: '2026-10-02T10:00:00.000Z' },
+    { version: 4, kind: 'revision', jobId: 'job-v4', pdfFileName: 'tesla-v4.pdf', completedAt: '2026-10-03T10:00:00.000Z' },
+  ],
+});
+
+test('a revision from an older version goes to a new copy on that version\'s job', async (t) => {
+  cleanup(t);
+  const orders = new Map([['lauri-tsla', historyOrder()]]);
+  const { handler, created } = loadApi(orders);
+
+  const res = await handler(event('POST /api/admin/orders/{id}/revisions', 'lauri-tsla', { comments: 'From v2', fromVersion: 2 }));
+  assert.equal(res.statusCode, 200, res.body);
+  const copy = created[0];
+  assert.equal(JSON.parse(res.body).orderId, copy.id);
+  assert.deepEqual([copy.jobId, copy.forkedFromVersion, copy.basePdfFileName], ['job-v2', 2, 'tesla-v2.pdf']);
+  assert.equal(copy.status, STATUS.REVISING);
+  assert.equal(copy.fromVersion, undefined);
+  assert.equal(copy.pendingRevisionComment, 'From v2');
+
+  const v1 = await handler(event('POST /api/admin/orders/{id}/revisions', 'lauri-tsla', { comments: 'From v1', fromVersion: 1 }));
+  assert.equal(v1.statusCode, 200, v1.body);
+  assert.deepEqual([created[1].jobId, created[1].forkedFromVersion], ['job-v1', 1]);
+});
+
+test('on an admin copy an older version still makes a new copy', async (t) => {
+  cleanup(t);
+  const orders = new Map([['copy-1', { ...historyOrder(), id: 'copy-1', adminCopy: true, revisionsAllowed: 20 }]]);
+  const { handler, created } = loadApi(orders);
+
+  const res = await handler(event('POST /api/admin/orders/{id}/revisions', 'copy-1', { comments: 'Branch', fromVersion: 2 }));
+  assert.equal(res.statusCode, 200, res.body);
+  assert.equal(JSON.parse(res.body).copied, true);
+  assert.equal(created[0].forkedFrom, 'copy-1');
+  assert.equal(orders.get('copy-1').status, STATUS.DELIVERED);
+
+  const latest = await handler(event('POST /api/admin/orders/{id}/revisions', 'copy-1', { comments: 'In place', fromVersion: 4 }));
+  assert.equal(latest.statusCode, 200, latest.body);
+  assert.equal(JSON.parse(latest.body).copied, false);
+  assert.equal(created.length, 1);
+});
+
+test('an older version is refused for edits, locks, unknown versions and versions with no job', async (t) => {
+  cleanup(t);
+  const orders = new Map([['lauri-tsla', historyOrder()]]);
+  const { handler, created } = loadApi(orders);
+  const cases = [
+    ['POST /api/admin/orders/{id}/edits', { edits: { 'recommendation/prose/0': 'x' }, fromVersion: 2 }, 400],
+    ['POST /api/admin/orders/{id}/revisions', { comments: 'x', fromVersion: 2, valuationOverrides: { rows: [] } }, 400],
+    ['POST /api/admin/orders/{id}/revisions', { comments: 'x', fromVersion: 5 }, 400],
+    ['POST /api/admin/orders/{id}/revisions', { comments: 'x', fromVersion: 'two' }, 400],
+    ['POST /api/admin/orders/{id}/revisions', { comments: 'x', fromVersion: 3 }, 409],
+  ];
+  for (const [route, body, status] of cases) {
+    const res = await handler(event(route, 'lauri-tsla', body));
+    assert.equal(res.statusCode, status, `${JSON.stringify(body)}: ${res.body}`);
+  }
+  assert.equal(created.length, 0);
+});
+
+test('the admin view says which versions can be revised', async (t) => {
+  cleanup(t);
+  const { handler } = loadApi(new Map([['lauri-tsla', historyOrder()]]));
+  const res = await handler(event('GET /api/admin/orders/{id}', 'lauri-tsla'));
+  assert.equal(res.statusCode, 200, res.body);
+  const flags = Object.fromEntries(JSON.parse(res.body).revisionHistory.map((e) => [e.version, e.revisable]));
+  assert.deepEqual(flags, { 1: true, 2: true, 3: false, 4: true });
+});
