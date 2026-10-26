@@ -806,12 +806,18 @@
             const key = normalize(c.ticker);
             if (key && !byTicker.has(key)) byTicker.set(key, c);
           });
-          const seen = new Set();
-          const cards = [];
+          // A company with a test page shows the report that page is about (the sync's owner
+          // rule: its free report if it has one, else its newest), so card and page agree as
+          // they do in production; any other company its newest report.
+          const chosen = new Map();
           reports.forEach(function(r) {
             const key = normalize(r.ticker) || normalize(r.companyName) || r.id;
-            if (seen.has(key)) return;
-            seen.add(key);
+            const page = testPageByTicker.get(normalize(r.ticker));
+            if (!chosen.has(key) || (page && r.id === page.reportId)) chosen.set(key, r);
+          });
+          const picked = new Set(chosen.values());
+          const cards = [];
+          reports.filter(function(r) { return picked.has(r); }).forEach(function(r) {
             cards.push(testCardHtml(r, byTicker.get(normalize(r.ticker)) || null, testPageByTicker.get(normalize(r.ticker)) || null));
           });
           document.getElementById('catalogGrid').innerHTML = cards.join('');
