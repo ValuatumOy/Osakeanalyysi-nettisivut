@@ -305,6 +305,7 @@ async function deliver(order, job) {
     status: orders.STATUS.DELIVERED, pdfFileName, originalPdfFileName: pdfFileName, error: null,
     originalJobId: order.originalJobId || order.jobId,
     hasPreview: Boolean(job.previewUrl),
+    marketFirst: job.pipeline === 'market-first',
     ...(job.reportQuality ? { reportQuality: job.reportQuality } : {}),
   });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
@@ -437,6 +438,7 @@ async function deliverRevision(order, job) {
     pdfFileName,
     jobId: job.jobId,
     hasPreview: Boolean(job.previewUrl),
+    marketFirst: job.pipeline === 'market-first',
     // Recorded per delivery so a revision's new rating replaces the old one, and so a
     // published analysis can carry the rating it was published with.
     ...(job.recommendation ? { recommendation: job.recommendation } : {}),
@@ -626,19 +628,29 @@ async function advance(order) {
       // A locked what-if rides as a narrative revision: the model is not
       // changed, the report is rewritten on the customer's rows.
       const valuationOverrides = order.pendingValuationOverrides || null;
-      const { jobId: revisionJobId } = await engine.submitRevision({
-        parentJobId: order.jobId,
-        comments,
-        ...(valuationOverrides ? { scope: 'narrative', valuationOverrides } : {}),
-        // A hand-attached job is owned by whoever submitted it, not the shop.
-        ...(order.engineUsername ? { username: order.engineUsername } : {}),
-        // Only a member generation carries a name: a revised report says who
-        // steered it, an unrevised or shop report stays engine-only.
-        analystName: order.analystName || undefined,
-        // The customer's revised forecast is kept in their own model for this
-        // company, so their later revisions update it instead of adding models.
-        endUserEmail: order.email || undefined,
-      });
+      let revisionJobId;
+      try {
+        ({ jobId: revisionJobId } = await engine.submitRevision({
+          parentJobId: order.jobId,
+          comments,
+          ...(valuationOverrides ? { scope: 'narrative', valuationOverrides } : {}),
+          // A hand-attached job is owned by whoever submitted it, not the shop.
+          ...(order.engineUsername ? { username: order.engineUsername } : {}),
+          // Only a member generation carries a name: a revised report says who
+          // steered it, an unrevised or shop report stays engine-only.
+          analystName: order.analystName || undefined,
+          // The customer's revised forecast is kept in their own model for this
+          // company, so their later revisions update it instead of adding models.
+          endUserEmail: order.email || undefined,
+        }));
+      } catch (err) {
+        // The engine refused the request (400/403/409; not a timeout or rate
+        // limit): the same request is refused again on every sweep, so fail
+        // the round now. The customer is emailed and keeps the round; the
+        // admin gets the engine's reason.
+        if (err.status >= 400 && err.status < 500 && err.status !== 408 && err.status !== 429) return failRevision(order, err.message);
+        throw err;
+      }
       await orders.update(order.id, {
         revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, activeRevisionComment: comments, polls: 0, error: null,
       });

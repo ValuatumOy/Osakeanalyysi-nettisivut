@@ -473,3 +473,58 @@ test('an order without an email revises without endUserEmail, so the engine keep
   assert.equal(engine.calls.submitRevision.length, 1);
   assert.equal(engine.calls.submitRevision[0].endUserEmail, undefined);
 });
+
+test('an engine 400 on a revision fails the round at once: no retries, the round kept, the customer emailed', async (t) => {
+  const statePath = isolate(t);
+  const engine = fakeEngine({
+    submitRevision: () => { const err = new Error('engine submitRevision 400: analystName is required'); err.status = 400; throw err; },
+  });
+  const email = fakeEmail();
+  const reconciler = loadReconciler({ statePath, engine, email, pdfStore: fakePdfStore() });
+  const orders = require(ORDERS_ID);
+
+  orders.create({
+    id: 'cs_rev_400', email: 'buyer@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE',
+    status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2,
+  }, statePath);
+  orders.claimRevision('cs_rev_400', 'merge the two divisions', statePath);
+  await reconciler.advance(orders.get('cs_rev_400', statePath));
+
+  const order = orders.get('cs_rev_400', statePath);
+  assert.equal(order.status, orders.STATUS.DELIVERED);
+  assert.equal(order.jobId, 'job_base');
+  assert.equal(order.revisionsUsed, 0);
+  assert.equal(order.pendingRevisionComment, null);
+  assert.match(order.revisionError, /analystName is required/);
+  assert.equal(engine.calls.submitRevision.length, 1);
+  assert.equal(email.calls.sendRevisionFailedEmail.length, 1);
+});
+
+test('an engine 429 or 5xx on a revision stays a transient error, retried next sweep', async (t) => {
+  for (const status of [429, 503]) {
+    const statePath = isolate(t);
+    const engine = fakeEngine({
+      submitRevision: () => { const err = new Error(`engine submitRevision ${status}`); err.status = status; throw err; },
+    });
+    const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+    const orders = require(ORDERS_ID);
+    orders.create({ id: 'cs_rev_busy', status: orders.STATUS.DELIVERED, jobId: 'job_base', revisionsAllowed: 1 }, statePath);
+    orders.claimRevision('cs_rev_busy', 'go faster', statePath);
+    await assert.rejects(reconciler.advance(orders.get('cs_rev_busy', statePath)), new RegExp(String(status)));
+    assert.equal(orders.get('cs_rev_busy', statePath).status, orders.STATUS.REVISING);
+  }
+});
+
+test('a delivery records whether the market-first pipeline wrote the report, for the order page', async (t) => {
+  for (const [pipeline, expected] of [['market-first', true], [undefined, false]]) {
+    const statePath = isolate(t);
+    const engine = fakeEngine({
+      getJob: (jobId) => ({ jobId, status: 'DONE', s3Url: 'https://s3.example/x.pdf', pipeline }),
+    });
+    const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+    const orders = require(ORDERS_ID);
+    orders.create({ id: 'cs_mf', email: 'a@example.com', companyName: 'Nokia', ticker: 'NOKIA.HE', status: orders.STATUS.RENDERING, jobId: 'job_base' }, statePath);
+    await reconciler.advance(orders.get('cs_mf', statePath));
+    assert.equal(orders.get('cs_mf', statePath).marketFirst, expected);
+  }
+});
