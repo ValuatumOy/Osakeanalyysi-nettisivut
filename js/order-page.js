@@ -1367,8 +1367,24 @@
     hide('revisionExhausted');
   }
 
+  // A market-first report's revision reads the comment for everything it can
+  // change -- forecasts, divisions merged or split, scenario chances, the text --
+  // whatever scope is sent, so the scope choice would promise what it cannot
+  // keep ("wording only" would still move the numbers). One comment box instead.
+  const SCOPED_INTRO = document.getElementById('revisionIntro').textContent;
+  function renderRevisionScope(order) {
+    const marketFirst = Boolean(order.marketFirst);
+    document.getElementById('revisionScopeField').style.display = marketFirst ? 'none' : '';
+    document.getElementById('revisionIntro').textContent = marketFirst
+      ? 'Say in plain words what should change: forecasts, how the businesses are divided, the chances of the scenarios, '
+        + 'or the text. The parts that can be done are applied and the revision note says what was not. Any language works; '
+        + 'English is the safe fallback. Every revision uses one round and stays below in the version history.'
+      : SCOPED_INTRO;
+  }
+
   function renderDelivered(order) {
     hideAll();
+    renderRevisionScope(order);
     document.getElementById('deliveredMeta').textContent =
       [order.companyName, order.ticker].filter(Boolean).join(' · ') || '—';
 

@@ -336,6 +336,8 @@ async function orderPagePayload(order) {
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
     reportQuality: currentReportQuality(order),
+    // The order page drops its scope choice for a market-first report.
+    marketFirst: Boolean(order.marketFirst),
     revisionError: order.revisionError || null,
     error: order.status === ordersStore.STATUS.FAILED ? order.error : null,
     // Text editing: whether the current version can be edited by hand, which
