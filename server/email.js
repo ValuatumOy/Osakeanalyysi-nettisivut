@@ -344,6 +344,32 @@ async function sendAdminDeliveryNotice(meta) {
   }, 'admin delivery notice');
 }
 
+// ── "+ Revisions" order: SUCCESS FYI — a revision was delivered ─────────────
+// Called by the reconciler when a requested revision (not a hand edit) is
+// delivered and ADMIN_NOTIFY_ON_SUCCESS is set.
+async function sendAdminRevisionNotice(meta) {
+  const allowance = meta?.revisionsAllowed
+    ? `${meta.revisionsUsed} of ${meta.revisionsAllowed}`
+    : String(meta?.revisionsUsed ?? '—');
+  await sendEmail({
+    from: FROM,
+    to: ADMIN,
+    subject: `Report revision delivered: ${meta?.company || meta?.ticker || 'unknown'}`,
+    html: `
+      <p><strong>A customer's revision was generated and emailed to them.</strong> No action needed.</p>
+      <table cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
+        <tr><td style="color:#666;">Company</td><td><strong>${escapeHtml(meta?.company || '—')}</strong></td></tr>
+        <tr><td style="color:#666;">Ticker</td><td>${escapeHtml(meta?.ticker || '—')}</td></tr>
+        <tr><td style="color:#666;">Customer</td><td><a href="mailto:${escapeHtml(meta?.customerEmail || '')}">${escapeHtml(meta?.customerEmail || '—')}</a></td></tr>
+        <tr><td style="color:#666;">Version</td><td>v${escapeHtml(String(meta?.version ?? '—'))} (revisions used ${escapeHtml(allowance)})</td></tr>
+        <tr><td style="color:#666;">Request</td><td style="white-space:pre-wrap;">${escapeHtml(meta?.comment || '—')}</td></tr>
+        <tr><td style="color:#666;">PDF</td><td><a href="${escapeHtml(meta?.pdfUrl || '#')}">${escapeHtml(meta?.pdfUrl || '—')}</a></td></tr>
+        ${meta?.orderUrl ? `<tr><td style="color:#666;">Order</td><td><a href="${escapeHtml(meta.orderUrl)}">${escapeHtml(meta.orderUrl)}</a></td></tr>` : ''}
+      </table>
+    `,
+  }, 'admin revision notice');
+}
+
 async function sendCoverageRequest(meta) {
   const companies = Array.isArray(meta?.companies) && meta.companies.length
     ? meta.companies
@@ -478,6 +504,7 @@ module.exports = {
   sendAnalysisPurchaseEmail,
   sendAdminNotification,
   sendAdminDeliveryNotice,
+  sendAdminRevisionNotice,
   sendCoverageRequest,
   sendInstitutionRequest,
   sendAdminAlert,

@@ -27,7 +27,8 @@
 // Delivery publishes to the catalog with no catalog code change: it writes the
 // PDF plus a sidecar into REPORT_PDF_DIR, marked hidden + excludeFromFree, so the
 // buyer gets it by email now and Phase 2 resale is a later flag-flip. Admin is
-// emailed on failure always, and on success when ADMIN_NOTIFY_ON_SUCCESS is set.
+// emailed on failure always, and on success (a delivery or a delivered revision)
+// when ADMIN_NOTIFY_ON_SUCCESS is set.
 
 const engine = require('./engine-client');
 const email = require('./email');
@@ -459,6 +460,23 @@ async function deliverRevision(order, job) {
     revisionHistory: [...(order.revisionHistory || []), revisionEntry],
   });
   console.log(edit ? 'reconciler: edit delivered' : 'reconciler: revision delivered', { id: order.id, pdfFileName });
+
+  // Same FYI as a first delivery, for revisions only: an edit is the
+  // customer's own text, free and unlimited, and would only add noise.
+  if (!edit && ADMIN_NOTIFY_ON_SUCCESS) {
+    try {
+      await email.sendAdminRevisionNotice({
+        company: companyLabel, ticker: order.ticker, customerEmail: order.email, pdfUrl,
+        orderUrl: orderUrl(order),
+        version: revisionEntry.version,
+        revisionsUsed: (order.revisionsUsed || 0) + 1,
+        revisionsAllowed: order.revisionsAllowed,
+        comment: revisionEntry.comments,
+      });
+    } catch (err) {
+      console.warn('reconciler: admin revision notice failed:', err.message);
+    }
+  }
 }
 
 // A revision that hard-fails is NOT terminal for the order and does not cost
