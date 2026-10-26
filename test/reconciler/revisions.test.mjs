@@ -77,13 +77,14 @@ function fakeEngine(overrides = {}) {
 
 function fakeEmail() {
   return {
-    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], reportError: [] },
+    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], sendAdminRevisionNotice: [], reportError: [] },
     async sendReportEmail() {},
     async sendReportRevisedEmail(to, meta) { this.calls.sendReportRevisedEmail.push({ to, meta }); },
     async sendRevisionFailedEmail(to, meta) { this.calls.sendRevisionFailedEmail.push({ to, meta }); },
     async sendGenerationFailedEmail(to, meta) { this.calls.sendGenerationFailedEmail.push({ to, meta }); },
     async sendAdminNotification() {},
     async sendAdminDeliveryNotice() {},
+    async sendAdminRevisionNotice(meta) { this.calls.sendAdminRevisionNotice.push(meta); },
     async reportError(where, err, details) { this.calls.reportError.push({ where, message: err?.message, details }); return true; },
   };
 }
@@ -172,6 +173,16 @@ test('REVISING happy path: submits to the engine, then delivers to a private fil
 
   assert.equal(email.calls.sendReportRevisedEmail.length, 1);
   assert.equal(email.calls.sendReportRevisedEmail[0].to, 'buyer@example.com');
+
+  // The admin hears about a delivered revision, as about a first delivery.
+  assert.equal(email.calls.sendAdminRevisionNotice.length, 1);
+  const notice = email.calls.sendAdminRevisionNotice[0];
+  assert.equal(notice.customerEmail, 'buyer@example.com');
+  assert.equal(notice.version, 2);
+  assert.equal(notice.revisionsUsed, 1);
+  assert.equal(notice.revisionsAllowed, 2);
+  assert.equal(notice.comment, 'assume 8% EBIT margin from 2027');
+  assert.match(notice.pdfUrl, /rev-/);
 
   // The change memo is fetched and stored as the first revisionHistory entry.
   assert.equal(engine.calls.fetchChangeMemo.length, 1);
@@ -370,6 +381,7 @@ test('a hand edit: submitted to the engine edit endpoint, delivered as a version
   assert.match(order.pdfFileName, /edit-/);
   assert.equal(pdfStore.sidecars.get(order.pdfFileName).provenance.editedBy, 'Maija Analyst');
   assert.equal(email.calls.sendReportRevisedEmail.length, 0);
+  assert.equal(email.calls.sendAdminRevisionNotice.length, 0); // an edit is not worth an admin email
 
   const entry = order.revisionHistory[0];
   assert.equal(entry.version, 2);
