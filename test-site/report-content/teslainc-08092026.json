@@ -1,0 +1,794 @@
+{
+  "id": "teslainc-08092026",
+  "slug": "tesla-equity-report",
+  "companyName": "Tesla, Inc.",
+  "ticker": "TSLA",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Auto - Manufacturers",
+  "currency": "USD",
+  "reportDate": "2026-09-09",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "354.81 USD",
+    "targetPrice": "385.60 USD",
+    "impliedUpside": "+8.7%",
+    "marketCap": "USD 1,401.3 bn",
+    "enterpriseValue": "USD 1,407 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "181.1x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "86.2x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "-0.2%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "—"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "USD 89.2 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "498.83 USD",
+    "week52Low": "297.38 USD",
+    "oneYearChange": "+6.1%",
+    "threeYearChange": "+48.2%"
+  },
+  "summary": [
+    "Tesla, Inc. (TSLA, NASDAQ Global Select) designs, manufactures and services electric vehicles, charging infrastructure and stationary battery systems, while developing supervised driver assistance, unsupervised robotaxis and humanoid robots. HOLD is assigned in this Valuatum equity research report dated 9 September 2026, with a 12-month target of 385.60 USD against a current price of 354.81 USD and implied upside of +8.7%. Market capitalisation is USD 1,401.3 bn and enterprise value is USD 1,407 bn. The call recognises meaningful autonomy and robotics optionality, but treats regulatory permission, safety evidence and operating scale as unresolved rather than established earnings.",
+    "The central tension is the distance between where value is allocated and where money is earned. Unsupervised autonomy and the robotaxi network receive 77.0% of current EV, or USD 1,083,170m, despite no separately reported revenue or gross profit. Core automotive hardware and lifecycle services produce revenue of USD 78,300m and gross profit of USD 11,836m, yet receive only 11.1% of EV, or USD 155,970m. The stock trades at 181.1x 2026E P/E and 86.2x 2026E EV/EBITDA, while maintained 2026E EBIT is USD 8,820m. The quotation therefore depends on software-like and network economics arriving beyond today’s industrial profit base.",
+    "The target price is built through sum-of-the-parts valuation: established businesses contribute 67.37 USD per share from 2028E EBITDA or EBIT, unsupervised autonomy contributes 315.6 USD per share through probability-weighted 2035E outcomes, and Optimus contributes 4.00 USD per share. After a deduction of 1.44 USD per share for net debt and other claims, the target is 385.60 USD. The Bear case implies 65.93 USD per share and -81.4%, the Base case 385.57 USD and +8.7%, and the Bull case 953.11 USD and +168.6%. The resulting balance supports HOLD because the upside requires several contingent milestones."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Autonomy Dominates Value",
+      "metric": "77.0% EV",
+      "text": "Unsupervised autonomy and the robotaxi network account for 77.0% of current EV, or USD 1,083,170m, while its positive probability-weighted contribution is 263.9 USD per share. The value requires 25% of a USD 5tn annual displaced-transport market by 2035, making permits, safety and fleet economics decisive for HOLD."
+    },
+    {
+      "num": "02",
+      "title": "Industrial Floor Is Limited",
+      "metric": "USD 38.0",
+      "text": "Core automotive hardware and lifecycle services contribute 38.0 USD per share despite revenue of USD 78,300m and gross profit of USD 11,836m. The 2028E bridge requires USD 19,241m EBITDA at 7.8x EV/EBITDA, so sustained cost reductions and volume growth must offset pricing pressure."
+    },
+    {
+      "num": "03",
+      "title": "Evidence Is Unresolved",
+      "metric": "6 cities",
+      "text": "Tesla operates paid unsupervised service in six cities and has logged one million unsupervised miles, but California lacks a driverless deployment permit and NHTSA is auditing 1,000 Cybercabs. Waymo has 220.6 million rider-only miles and 500,000 weekly trips, leaving Tesla beyond launch but short of proven scale."
+    }
+  ],
+  "thesisBreaker": "A deployment-blocking Cybercab ruling combined with sustained automotive gross margin below 17% and storage gross margin below 25% would invalidate the base valuation.",
+  "valuePools": [
+    {
+      "name": "Unsupervised autonomy and robotaxi network",
+      "share": "77.0% · USD 1,083,170m",
+      "economics": "Revenue USD 0m (0.0%) · Gross profit — (—) · EV USD 1,083,170m",
+      "text": "This emerging option covers autonomous travel that could displace personal-car ownership, ride-hailing, rental cars, chauffeur services and part of public transport. No separately reported revenue or gross profit supports the current allocation of USD 1,083,170m EV, so the valuation rests on conditional economics rather than present earnings. The positive leg requires 25% of the USD 5tn annual displaced-transport pool by 2035, equivalent to USD 1.25tn revenue at a 40% EBITDA margin and USD 500,000m EBITDA before probability weighting. Tesla has reached six cities and one million unsupervised miles, but Waymo has 220.6 million rider-only miles and 500,000 weekly trips. California remains unpermitted, Nevada caps the fleet at ten vehicles, and the NHTSA Cybercab audit leaves the network’s scale and safety path unresolved."
+    },
+    {
+      "name": "Core automotive hardware and lifecycle services",
+      "share": "11.1% · USD 155,970m",
+      "economics": "Revenue USD 78,300m (82.6%) · Gross profit USD 11,836m (78.0% EBIT-share basis) · EV USD 155,970m",
+      "text": "This profit engine combines vehicle sales, leasing, used vehicles, parts, maintenance, collision repair, insurance and other lifecycle services. Revenue of USD 78,300m and gross profit of USD 11,836m support only 11.1% of group EV, or USD 155,970m, because the division remains capital-intensive and exposed to price, warranty and model-cycle risk. The bridge applies 7.8x to 2028E EBITDA of USD 19,241m, producing USD 150,083m EV before discounting. A 22.0% 2028E gross margin is above the modelled 15.1% FY2025 margin and must follow the 19.2% Q1 2026 automotive margin excluding credits. Tesla’s 13% Q2 2026 global BEV brand share and BYD’s 557,090 deliveries versus Tesla’s 480,126 show that competition remains material."
+    },
+    {
+      "name": "Stationary energy storage",
+      "share": "7.4% · USD 104,665m",
+      "economics": "Revenue USD 12,350m (13.0%) · Gross profit USD 3,650m (17.0% EBIT-share basis) · EV USD 104,665m",
+      "text": "Stationary storage competes for grid infrastructure, peaking capacity and renewable-balancing expenditure rather than only equipment sales. Revenue of USD 12,350m and gross profit of USD 3,650m support 7.4% of EV, or USD 104,665m. The 2028E case requires 95 GWh at USD 190m revenue per GWh, producing revenue of USD 18,050m, a 38% gross margin and USD 12,434m EBITDA. The bridge applies 8.1x EV/EBITDA. Tesla deployed 46.7 GWh in 2025 and held 10% global share, but BYD led 2025 with 13%, while Chinese integrators held 76% of the global market. Houston’s 50 GWh annual target and Shanghai’s 40 GWh designed capacity provide a route to scale, yet warranty charges, pricing pressure and under-utilisation threaten the margin assumption."
+    },
+    {
+      "name": "Supervised driver-assistance software",
+      "share": "2.1% · USD 29,142m",
+      "economics": "Revenue USD 956m (1.0%) · Gross profit USD 956m (9.0% EBIT-share basis) · EV USD 29,142m",
+      "text": "Supervised driver-assistance software monetises Tesla’s installed vehicle base through subscriptions and deferred upfront revenue. Modelled revenue of USD 956m and gross profit of USD 956m support 2.1% of EV, or USD 29,142m. The 2028E bridge applies 8.4x EV/EBIT to EBIT of USD 3,338m, requiring revenue of USD 4,450m and a 75% EBIT margin. Tesla had 1.48–1.50 million active users in Q2 2026, 45% on monthly subscriptions, with a USD 99 monthly price and a 55% North American activation rate. The opportunity is credible but churn is undisclosed, European approval remains fragmented and bundled alternatives such as Huawei’s RMB 15,000 user cost can cap pricing. Retention, eligible-fleet growth and stable pricing matter more than the headline user count."
+    },
+    {
+      "name": "Optimus general-purpose robotics",
+      "share": "1.5% · USD 21,754m",
+      "economics": "Revenue USD 0m (0.0%) · Gross profit — (—) · EV USD 21,754m",
+      "text": "Optimus is an emerging option against a USD 1tn annual addressable labour-cost pool, not a current operating business. Revenue and gross profit are not separately reported, while the allocation is 1.5% of EV, or USD 21,754m. The positive leg requires 3.7% of that pool by 2035, or USD 37,000m revenue and USD 11,100m EBIT at a 30% margin. Tesla has an internal fleet above 1,000 units and three confirmed tasks, but no independent full-shift evidence. Chinese suppliers accounted for more than 90% of H1 2026 shipments, and Unitree’s G1 price is USD 13,500. The valuation therefore depends on intervention-adjusted productivity below USD 18.38 per hour and external customer validation rather than production intent."
+    },
+    {
+      "name": "Charging network",
+      "share": "0.7% · USD 9,851m",
+      "economics": "Revenue USD 2,800m (3.0%) · Gross profit USD 500m (4.0% EBIT-share basis) · EV USD 9,851m",
+      "text": "The charging network earns from electricity throughput, access and network operations as the global EV fleet displaces fuel. Revenue of USD 2,800m and gross profit of USD 500m support 0.7% of EV, or USD 9,851m. The 2028E case requires revenue of USD 5,800m and EBITDA of USD 1,394m at a 24% margin, with 6.8x EV/EBITDA applied in the bridge. Tesla had 77,682 stalls across 8,182 stations and delivered 6.7 TWh in 2025, with 50% of U.S. DC fast-charging ports in September 2026. Economics depend on mature-site utilisation, electricity spread and site capital: host-funded locations can generate a USD 0.10 per kWh network fee, while owned sites require land, grid connection and development."
+    },
+    {
+      "name": "Solar generation and energy services",
+      "share": "0.2% · USD 2,463m",
+      "economics": "Revenue USD 421m (0.4%) · Gross profit USD 152m (1.0% EBIT-share basis) · EV USD 2,463m",
+      "text": "Solar generation and energy services comprise installations, leases, PPAs, owned generation and virtual power-plant services. Revenue of USD 421m and gross profit of USD 152m support only 0.2% of EV, or USD 2,463m. The 2028E case reaches revenue of USD 1,600m and EBITDA of USD 431m, with 5.5x EV/EBITDA applied in the bridge. Tesla’s U.S. residential-solar share was approximately 2.5% in 2023, versus Sunrun’s 12.7% in 2025, while the U.S. residential market was estimated at USD 15.63bn in 2026. Tax-credit repeal and installation costs constrain recovery. Bundling Powerwall and VPP services provides some support, but Powerwall hardware is excluded from this pool to avoid double counting."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse bridge tests what the current quotation requires from consolidated operating earnings rather than from the probability-weighted division valuation. At a current price of 354.81 USD, market capitalisation is USD 1,401.3 bn and EV is USD 1,407 bn. Maintained 2026E EBIT of USD 8,820m supports 159.5x EV/EBIT, but matching the quotation requires 2026E EBIT of USD 27,100m at a 25.6% margin and 2028E EBIT of USD 65,700m at a 46.4% margin. The primary swing factor is whether autonomy and network economics arrive rapidly enough to lift group profitability beyond manufacturing.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "USD 165,000m",
+          "EBITDA": "USD 37,950m",
+          "Margin": "23.0%",
+          "Multiple": "99.3x",
+          "EV": "USD 3,770,035m",
+          "Equity": "USD 3,764,360m"
+        },
+        "impliedValueOrUpside": "953.11 USD / sh · +168.6%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "USD 141,568m",
+          "EBITDA": "USD 25,047m",
+          "Margin": "17.7%",
+          "Multiple": "61.0x",
+          "EV": "USD 1,528,518m",
+          "Equity": "USD 1,522,842m"
+        },
+        "impliedValueOrUpside": "385.57 USD / sh · +8.7%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "USD 125,000m",
+          "EBITDA": "USD 12,500m",
+          "Margin": "10.0%",
+          "Multiple": "21.3x",
+          "EV": "USD 266,076m",
+          "Equity": "USD 260,400m"
+        },
+        "impliedValueOrUpside": "65.93 USD / sh · -81.4%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Tesla’s economic map is broader than an automotive manufacturer. Core automotive hardware and lifecycle services provide the factories, installed fleet, service infrastructure and cash base, with revenue of USD 78,300m and gross profit of USD 11,836m. Storage adds revenue of USD 12,350m and gross profit of USD 3,650m, while charging and supervised software extend the installed-base economics. The largest value pool is unsupervised autonomy: its current revenue is USD 0m, but the positive leg assumes 25% of a USD 5tn annual displaced-transport pool by 2035, or USD 1.25tn revenue and USD 500,000m EBITDA at a 40% margin. Optimus is smaller but similarly conditional, requiring USD 37,000m revenue from 3.7% of a USD 1tn labour-cost pool. Evidence has crossed launch but not scale. Tesla has paid unsupervised service in six cities and logged one million miles, whereas Waymo has 220.6 million rider-only miles and 500,000 weekly trips. California lacks a driverless permit, Nevada permits only ten vehicles in a restricted corridor, and NHTSA is auditing 1,000 Cybercabs. The industrial base supports HOLD by limiting downside, but the rating remains constrained by permission-adjusted network economics."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge values established businesses on 2028E profit and options on conditional 2035E outcomes. Core automotive hardware and lifecycle services contribute 34.78 USD per share from USD 19,241m EBITDA at 7.8x, storage contributes 23.34 USD from USD 12,434m EBITDA at 8.1x, supervised software contributes 6.50 USD from USD 3,338m EBIT at 8.4x, charging contributes 2.20 USD from USD 1,394m EBITDA at 6.8x, and solar contributes 0.55 USD from USD 431m EBITDA at 5.5x. Established businesses therefore contribute 67.37 USD per share before discounting. Unsupervised autonomy contributes 315.6 USD per share after probability weighting, including a 31% positive case, a 40% neutral case, an 18% negative case and 11% zero-value failure. Optimus contributes 4.00 USD per share after a 25% positive case, 37% neutral case, 23% negative case and 15% failure. The total before claims is 387.0 USD per share, reduced by 1.44 USD to reach the 385.60 USD target. The reverse test gives the necessary caution: the current EV of USD 1,407 bn against maintained 2026E EBIT of USD 8,820m is 159.5x EV/EBIT, while matching the quotation requires USD 27,100m 2026E EBIT and USD 65,700m 2028E EBIT. Future execution, not modest peer-premium arithmetic, carries the valuation."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The Bear outcome is 65.93 USD per share and -81.4%. It requires persistent mid-teens automotive gross margin, partial storage-margin normalisation, heavy AI spending, restricted robotaxi operation and Optimus remaining a research fleet. Early evidence would be automotive ex-credit gross margin staying near 16.3%, storage gross margin falling below 25%, and no expansion beyond Texas and Florida. The Base outcome is 385.57 USD per share and +8.7%. It requires the maintained operating forecast, storage-factory utilisation, supervised-user growth and the fixed option probabilities rather than certain near-term autonomy revenue. The early indicators are NHTSA closing the Cybercab audit without a blocking remedy, California permitting paid driverless service, annualised storage deployments above 70 GWh and automotive margin recovery near 20%. The Bull outcome is 953.11 USD per share and +168.6%. It requires broad U.S. driverless authorisation, regulator-credible safety, Cybercab operating cost below USD 0.30 per mile, high storage utilisation and independently verified full-shift Optimus productivity below USD 18.38 per hour. The central debate is whether restricted driverless pilots mature into a safe, low-cost network or remain a valuable but contained option; the six-city footprint, one million miles and unresolved permits support HOLD rather than BUY."
+    }
+  ],
+  "risks": [
+    "Cybercab fails federal compliance (Unsupervised autonomy and robotaxi network): a redesign or prohibition delays scale and raises unit cost, with NHTSA requesting control-system or mirror changes as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Unsupervised crash performance remains weak (Supervised driver-assistance software): permits, liability and customer trust deteriorate, with regulator-reported miles per crash failing to improve as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Vehicle prices fall faster than cost (Core automotive hardware and lifecycle services): gross profit and cash funding for options contract, with ASP declining while COGS per vehicle stalls as the early warning - HIGH impact and manageable.",
+    "Storage capacity outruns profitable demand (Stationary energy storage): utilisation falls and price competition compresses margin, with deployments lagging capacity and gross margin dropping below 25% as the early warning - MEDIUM impact and manageable.",
+    "AI and robotics capex lacks measurable return (Optimus general-purpose robotics): free cash flow remains negative without de-risking milestones, with capex approaching USD 25bn while permits and tasks stagnate as the early warning - HIGH impact and a thesis-breaker if it occurs."
+  ],
+  "catalysts": [
+    "NHTSA resolves the Cybercab self-certification audit (near-term, Unsupervised autonomy and robotaxi network): a no-blocking redesign finding raises or cuts the positive-leg probability.",
+    "Disclosure of paid trips, cost and interventions (near-term, Unsupervised autonomy and robotaxi network): cost below USD 0.30 per mile with improving safety tests the 40% positive margin.",
+    "European expansion of FSD Supervised (near-term, Supervised driver-assistance software): growth in the eligible fleet and paid users extends the subscriber growth stage.",
+    "California driverless permit application and approval (medium-term, Unsupervised autonomy and robotaxi network): paid rides without onboard supervisors validate geographic scaling.",
+    "Houston and Shanghai Megafactory utilisation (medium-term, Stationary energy storage): annualised deployments above 70 GWh support the 2028E storage EBITDA build."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "96,773",
+            "97,690",
+            "94,827",
+            "106,035",
+            "120,769",
+            "141,568"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "11,358",
+            "12,444",
+            "10,503",
+            "16,323",
+            "18,290",
+            "25,047"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "11.7%",
+            "12.7%",
+            "11.1%",
+            "15.4%",
+            "15.1%",
+            "17.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-2,467",
+            "-5,368",
+            "-6,148",
+            "-7,503",
+            "-6,040",
+            "-6,176"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "8,891",
+            "7,076",
+            "4,355",
+            "8,820",
+            "12,250",
+            "18,871"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "9.2%",
+            "7.2%",
+            "4.6%",
+            "8.3%",
+            "10.1%",
+            "13.3%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1,082",
+            "1,914",
+            "923",
+            "799",
+            "991",
+            "1,378"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "9,973",
+            "8,990",
+            "5,278",
+            "9,619",
+            "13,241",
+            "20,249"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "14,976",
+            "7,153",
+            "3,855",
+            "6,319",
+            "12,352",
+            "18,890"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "4.7",
+            "2.2",
+            "1.2",
+            "2",
+            "3.8",
+            "5.9"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "45,123",
+            "51,507",
+            "40,643",
+            "49,108",
+            "55,932",
+            "65,564"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "362",
+            "1,226",
+            "135",
+            "151",
+            "172",
+            "202"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "253",
+            "244",
+            "257",
+            "257",
+            "257",
+            "257"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "50,269",
+            "57,186",
+            "62,239",
+            "70,720",
+            "77,564",
+            "87,227"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "13,626",
+            "12,017",
+            "12,392",
+            "13,572",
+            "15,458",
+            "18,120"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "19,592",
+            "30,204",
+            "39,737",
+            "40,165",
+            "40,861",
+            "41,842"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "16,398",
+            "16,139",
+            "16,513",
+            "18,133",
+            "20,653",
+            "24,210"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "49,616",
+            "58,360",
+            "68,642",
+            "71,871",
+            "76,972",
+            "84,172"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "106,618",
+            "122,070",
+            "137,806",
+            "149,515",
+            "161,461",
+            "178,324"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "63,609",
+            "73,680",
+            "82,865",
+            "89,184",
+            "101,537",
+            "120,427"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "2,682",
+            "5,535",
+            "6,736",
+            "6,138",
+            "4,639",
+            "1,797"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1,975",
+            "2,343",
+            "1,640",
+            "6,138",
+            "4,639",
+            "1,797"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "9,345",
+            "13,824",
+            "23,227",
+            "22,629",
+            "21,130",
+            "18,288"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "28,748",
+            "28,821",
+            "31,714",
+            "37,702",
+            "38,794",
+            "39,610"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "106,618",
+            "122,070",
+            "137,806",
+            "149,515",
+            "161,461",
+            "178,324"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-6,825",
+            "-2,516",
+            "-8,137",
+            "-5,857",
+            "-11,375",
+            "-20,616"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "51,868",
+            "65,419",
+            "74,728",
+            "83,327",
+            "90,162",
+            "99,811"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "59.7%",
+            "60.4%",
+            "60.1%",
+            "59.6%",
+            "62.9%",
+            "67.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-10.7%",
+            "-3.4%",
+            "-9.8%",
+            "-6.6%",
+            "-11.2%",
+            "-17.1%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.6x",
+            "-0.2x",
+            "-0.8x",
+            "-0.4x",
+            "-0.6x",
+            "-0.8x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "2",
+            "2.2",
+            "1.9",
+            "2",
+            "2.1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "10,553",
+            "3,171",
+            "3,691",
+            "13,704",
+            "18,402",
+            "25,080"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "3,263",
+            "1,868",
+            "2,616",
+            "13,179",
+            "17,477",
+            "23,794"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "7,474",
+            "9,298",
+            "6,312",
+            "118",
+            "-10",
+            "-14"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "11,643",
+            "12,285",
+            "11,201",
+            "15,984",
+            "12,885",
+            "15,838"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-11,643",
+            "-12,285",
+            "-11,201",
+            "-15,984",
+            "-12,885",
+            "-15,838"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-1,090",
+            "-9,114",
+            "-7,510",
+            "-2,280",
+            "5,517",
+            "9,242"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-6,634",
+            "-8,791",
+            "-383",
+            "-2,805",
+            "4,593",
+            "7,956"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-6,632",
+            "-8,791",
+            "-383",
+            "-2,805",
+            "4,593",
+            "7,956"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "8,306",
+            "8,594",
+            "8,285",
+            "3,900",
+            "-2,998",
+            "-5,685"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "7,216",
+            "-520",
+            "775",
+            "1,620",
+            "2,520",
+            "3,557"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "181.1x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "86.2x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "159.5x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "-408.0x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "15.8x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.4x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Tesla a buy in 2026?",
+      "a": "No. Tesla is rated HOLD for a 12-month horizon, with a target price of 385.60 USD versus 354.81 USD and implied upside of +8.7%. The valuation includes 315.6 USD per share from probability-weighted unsupervised autonomy and 4.00 USD from Optimus, but California lacks a driverless permit and NHTSA is auditing 1,000 Cybercabs. The operating businesses provide support, yet the balance of evidence does not justify a BUY at 181.1x 2026E P/E."
+    },
+    {
+      "q": "What is Tesla's price target?",
+      "a": "Tesla’s 12-month price target is 385.60 USD, compared with a current price of 354.81 USD and implied upside of +8.7%. Established businesses contribute 67.37 USD per share, unsupervised autonomy and the robotaxi network contribute 315.6 USD, and Optimus contributes 4.00 USD. A deduction of 1.44 USD per share for net debt and other claims reduces the combined 387.0 USD per share value to the target."
+    },
+    {
+      "q": "Why is Tesla rated HOLD?",
+      "a": "Tesla is rated HOLD because its current price already depends heavily on contingent autonomy and robotics outcomes. The market requires 2026E EBIT of USD 27,100m at a 25.6% margin and 2028E EBIT of USD 65,700m at a 46.4% margin, versus maintained 2026E EBIT of USD 8,820m. Six-city unsupervised operation and one million miles provide evidence of launch, but California permission, safety validation and network scale remain unresolved."
+    },
+    {
+      "q": "Is Tesla overvalued in 2026?",
+      "a": "Tesla is expensive against its maintained operating earnings, trading at 181.1x 2026E P/E, 86.2x 2026E EV/EBITDA and 159.5x 2026E EV/EBIT. Book-value returns provide little support: average 2026E–2028E ROE of 12.5% maps to 1.7x P/BV and an implied 43.9 USD per share. The valuation is not simply unsupported, because conditional autonomy outcomes contribute substantial value, but it leaves limited room for execution delays."
+    },
+    {
+      "q": "What is Tesla's bear and bull case?",
+      "a": "The Bear case is 65.93 USD per share and -81.4%, requiring restricted robotaxi operation, persistent mid-teens automotive gross margin, partial storage-margin normalisation and no externally productive Optimus. The Bull case is 953.11 USD per share and +168.6%, requiring broad driverless authorisation, regulator-credible safety, Cybercab cost below USD 0.30 per mile, high storage utilisation and independently verified full-shift Optimus productivity. The Base case is 385.57 USD per share and +8.7%."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Tesla, Inc. report dated 9 September 2026 (the value-map allocations, anchor market capitalisation of USD 1,401.3 bn and share price of 354.81 USD). Forecasts and derived division estimates are analytical judgements, not company guidance; the financial model flags 2026E capex of USD 15,984m against company guidance of USD 25,000m and requires review.",
+    "Competitor context: Waymo has 500,000 weekly paid trips and 220.6 million rider-only miles; BYD delivered 557,090 BEVs versus Tesla’s 480,126 in Q2 2026; BYD held 13% global storage share in 2025 versus Tesla’s 10%; General Motors trades at 5.1x 2027E EV/EBITDA and Aptiv at 7.8x. Rivian, Mobileye, EVgo, Fluence and other loss-making peers have unusable negative earnings multiples for mature-profit comparison.",
+    "Market data: TSLA, 354.81 USD as of 9 September 2026; maintained 2026E figures are revenue of USD 106,035m, EBITDA of USD 16,323m, EBIT of USD 8,820m and FCFF of -USD 2,805m, while 2028E established-business EBITDA is USD 25,047m. The target bridge uses 2028E operating multiples and probability-weighted 2035E autonomy and Optimus outcomes; the positive autonomy leg is conditional on the NHTSA audit closing without a blocking finding and California plus two other populous states permitting unrestricted paid driverless service."
+  ]
+}

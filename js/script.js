@@ -21,6 +21,25 @@ window.addEventListener('pageshow', function (event) {
   });
 });
 
+// ── Test site: report pages from the test catalog ──────────────────────
+// test.aiequityreports.com serves the same files as production, so its
+// /reports/<slug>.html is production's page. Where the test catalog has a
+// report for the company, the sync baked a test page under /test-site/reports/
+// (scripts/report-pages/sync.mjs, REPORT_PAGES_STAGE=test); send the reader
+// there. Production hosts never ask.
+(function testSiteReportPage() {
+  if (!/^test\./.test(window.location.hostname)) return;
+  const m = window.location.pathname.match(/^\/reports\/([^/]+)\.html$/);
+  if (!m) return;
+  fetch('/test-site/reports/index.json', { cache: 'no-store' })
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (index) {
+      const page = index && (index.pages || []).find(function (p) { return p.slug === m[1]; });
+      if (page) window.location.replace('/test-site/reports/' + page.slug + '.html' + window.location.search + window.location.hash);
+    })
+    .catch(function () { /* production's page stays */ });
+})();
+
 // ── Nav scroll ──────────────────────────────────────
 (function initNav() {
   const nav = document.getElementById('nav');

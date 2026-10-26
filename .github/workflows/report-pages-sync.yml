@@ -23,6 +23,9 @@ concurrency:
 
 jobs:
   sync:
+    # Production pages are committed to main only. A manual run from staging (to try sync-test
+    # before it reaches main) must not bake production pages into staging.
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -77,4 +80,50 @@ jobs:
           if [ -s /tmp/extraction-failures ]; then
             echo "::error::Extraction failed for: $(paste -sd, /tmp/extraction-failures). Their pages were left untouched — see the job summary."
             exit 1
+          fi
+
+  # test.aiequityreports.com's report pages, from the test catalog and the test PDFs, baked into
+  # test-site/ on staging (the branch the test site deploys). Only test-site/ is written:
+  # production's pages, cards and sitemap stay the job above's. A PDF that fails extraction —
+  # the engine's stub for a failed run — is remembered in test-site/report-content/_failed.json
+  # and not retried, so it warns once instead of failing every hour.
+  sync-test:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: report-pages-sync-test
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+
+      - name: Install pdftotext
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends poppler-utils
+
+      - name: Sync test pages from the test catalog
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          REPORT_PAGES_STAGE: test
+        run: node scripts/report-pages/sync.mjs --failures-out /tmp/extraction-failures
+
+      - name: Commit and push to staging
+        run: |
+          git add test-site
+          if git diff --cached --quiet; then
+            echo "No changes — the test catalog and test pages already agree."
+            exit 0
+          fi
+          git config user.name "report-pages-sync"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Test report pages: sync with the test catalog"
+          git push origin HEAD:staging
+
+      - name: Warn on extraction failures
+        run: |
+          if [ -s /tmp/extraction-failures ]; then
+            echo "::warning::Test extraction failed for: $(paste -sd, /tmp/extraction-failures). Remembered in test-site/report-content/_failed.json."
           fi

@@ -1,0 +1,776 @@
+{
+  "id": "elisa-19082026",
+  "slug": "elisa-equity-report",
+  "companyName": "Elisa Oyj",
+  "ticker": "ELISA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Telecommunications Services",
+  "currency": "EUR",
+  "reportDate": "2026-08-19",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "39.38 EUR",
+    "targetPrice": "37.40 EUR",
+    "impliedUpside": "-5.0%",
+    "marketCap": "EUR 6.3 bn",
+    "enterpriseValue": "EUR 8 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "16.1x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "8.1x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "5.1%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "5.0%"
+    },
+    {
+      "label": "Net Debt/EBITDA 2026E",
+      "value": "1.6x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "47.30 EUR",
+    "week52Low": "33.70 EUR",
+    "oneYearChange": "-21.4%",
+    "threeYearChange": "-21.7%"
+  },
+  "summary": [
+    "Elisa Oyj (ELISA.HE, NASDAQ Helsinki) provides mobile and fixed connectivity, devices, entertainment, digital, cloud, cybersecurity, IT, IoT and network-assurance services in Finland, Estonia and internationally. The call is HOLD on a 12-month horizon, with a target price of 37.40 EUR against a current price of 39.38 EUR, implying -5.0% downside. Market capitalisation is EUR 6.3 bn and enterprise value is EUR 8 bn in this Valuatum equity research report dated 19 August 2026. The domestic consumer and corporate franchises generate the economics, while software remains strategically relevant but financially immature.",
+    "The central tension is between a durable connectivity franchise and a valuation that already requires further execution. Consumer Customers contribute 70.0% of comparable EBIT and receive EUR 5,734m, or 72.1% of enterprise value, while Corporate Customers receive EUR 1,951m, or 24.5%; the two domestic pools therefore account for 96.6% of EV. The stock trades at 16.1x 2026E earnings and 8.1x 2026E EV/EBITDA, above the 6.5x peer EV/EBITDA median. Churn improved to 16.7% and post-paid ARPU reached EUR 24.0, but software comparable EBIT was negative EUR 10m in 2025 and organic growth was only 0.6% in Q2 2026.",
+    "The 37.40 EUR target is built from a 100%-weighted sum-of-the-parts valuation: Consumer Customers use EUR 580m of 2027E EBITDA at 9.5x, Corporate Customers EUR 250m at 7.5x, and International Telecom and Industrial Software EUR 8m and EUR 18m at 10.0x, respectively. The scenario bridge gives a Bear value of 26.73 EUR per share, or -32.1%, a Base value of 37.44 EUR, or -4.9%, and a Bull value of 47.75 EUR, or +21.3%. The base requires stable churn, recurring savings and EUR 856m of 2027 EBITDA."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Defend consumer economics",
+      "metric": "72.1% EV",
+      "text": "Consumer Customers contribute EUR 358m of FY2025 comparable EBIT, 70.0% of the group total, and receive EUR 5,734m, or 72.1% of enterprise value. Post-paid ARPU is EUR 24.0 and churn improved to 16.7%, but renewed discounting above 20% would weaken the 9.5x valuation multiple and support the HOLD call."
+    },
+    {
+      "num": "02",
+      "title": "Savings protect margins",
+      "metric": "EUR 40m",
+      "text": "The transformation programme targets EUR 40m of annual savings from Q1 2026. Corporate Customers produced a 35% Q2 2026 EBITDA margin despite revenue declining 0.7%, yet the 2027 assumption still requires EUR 250m of EBITDA. Recurring savings can offset wage inflation; temporary restructuring benefits cannot justify a higher rating."
+    },
+    {
+      "num": "03",
+      "title": "Software needs proof",
+      "metric": "0.6% growth",
+      "text": "International Software Services has more than 2,000 customers and approximately 50% recurring revenue, but Q2 2026 organic growth was only 0.6%, FY2025 comparable EBIT was negative EUR 10m and guidance was cut to 5–10%. Positive EBIT, organic growth above 10% and cash conversion are needed before a premium multiple is warranted."
+    }
+  ],
+  "thesisBreaker": "The thesis fails if churn exceeds 20%, software remains below 5% organic growth and group EBITDA falls below EUR 800m, forcing lower operating assumptions and valuation.",
+  "valuePools": [
+    {
+      "name": "Consumer Customers",
+      "share": "72.1% · EUR 5,734m",
+      "economics": "Revenue EUR 1,352m (59.9%) · Comparable EBIT EUR 358m (70.0%, 26.5% margin) · EV EUR 5,734m (72.1%)",
+      "text": "Consumer Customers are the principal profit engine, monetising Finnish and Estonian mobile and fixed connectivity through retained subscriptions, ARPU and network scale. FY2025 revenue was EUR 1,352m and comparable EBIT was EUR 358m, a 26.5% margin, while Q2 2026 EBITDA margin reached 43%. The allocation of EUR 5,734m implies 9.5x 2027E EBITDA on EUR 580m. That premium to the 6.5x peer median is supported by 38–39% Finnish mobile share, EUR 24.0 post-paid ARPU and lower complexity, but remains below Elisa’s 11.94x normalised historical EV/EBITDA. DNA’s EUR 19.6 mobile ARPU and 34% fixed-broadband share demonstrate competitive pressure. Churn at 16.7% is improving, yet a return above 20% would erode pricing, acquisition economics and the valuation case."
+    },
+    {
+      "name": "Corporate Customers",
+      "share": "24.5% · EUR 1,951m",
+      "economics": "Revenue EUR 750m (33.2%) · Comparable EBIT EUR 164m (32.1%, 21.9% margin) · EV EUR 1,951m (24.5%)",
+      "text": "Corporate Customers combine connectivity with cloud, cybersecurity, IT, IoT and managed services for enterprise and public-sector customers. FY2025 revenue was EUR 750m and comparable EBIT was EUR 164m, a 21.9% margin; Q2 2026 EBITDA margin improved to 35% even as revenue fell 0.7%. The EUR 1,951m allocation applies 7.5x to EUR 250m of 2027E EBITDA, below Consumer because project, equipment and labour mix remain uncertain. Elisa has approximately 40% of Finnish corporate mobile-service revenue and nearly 50% of corporate fixed-service revenue, providing customer access. However, the EUR 140m domestic IT benchmark generated only about 5% EBITDA, while IoT and security generated EUR 70m at 20–40%. The multiple therefore requires recurring service mix, not indiscriminate ICT growth."
+    },
+    {
+      "name": "International Industrial Software",
+      "share": "2.4% · EUR 188m",
+      "economics": "Revenue EUR 95m (4.2%) · Comparable EBIT EUR -6m (-1.2%, negative margin) · EV EUR 188m (2.4%)",
+      "text": "International Industrial Software covers production management, scheduling, quality, supply-chain and manufacturing workflows through the Industriq portfolio. The model assigns EUR 95m of FY2025 revenue and negative EUR 6m of comparable EBIT, with the split explicitly modelled within EUR 155.4m of International Software Services. Its EUR 188m EV applies 10.0x to EUR 18m of 2027E EBITDA, implying an illustrative 16–17% margin on EUR 105–115m revenue. More than 2,000 combined customers and approximately 50% recurring revenue provide scale, but growth has been acquisition-led and Q2 2026 organic growth was 0.6%. Siemens has EUR 1.6bn of software revenue and AVEVA approximately 85% recurring revenue, highlighting Elisa’s scale and recurring-mix gap. Organic growth above 10%, positive EBIT and cash conversion are required for re-rating."
+    },
+    {
+      "name": "International Telecom Software",
+      "share": "1.0% · EUR 83m",
+      "economics": "Revenue EUR 60m (2.7%) · Comparable EBIT EUR -4m (-0.8%, negative margin) · EV EUR 83m (1.0%)",
+      "text": "International Telecom Software, principally Polystar, automates network assurance, monitoring and fault management for telecom operators. The model assigns EUR 60m of revenue and negative EUR 4m of comparable EBIT, with EUR 8m of 2027E EBITDA valued at 10.0x for EUR 80m of EV in the detailed valuation. The installed base covers more than 100m subscribers across more than 100 operators, and the MasOrange selection in June 2026 provides a commercial test. Gartner classified Polystar as a Representative Vendor, but Amdocs’ estimated 14% adjacent-category position and USD 4.26bn backlog show the scale of bundled competitors. The 5–10% software growth guide and 0.6% Q2 organic growth leave the pool as an option rather than a mature software asset."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how consumer churn, Corporate mix, software execution and cash generation translate into group value. Revenue and EBITDA are the operating swing factors, while the selected multiple captures the quality of recurring connectivity and the degree of software proof. The Base case uses EUR 856m of 2027 EBITDA and 8.9x, compared with 7.5x in the Bear case and 10.0x in the Bull case. Net debt is the main equity-value swing after enterprise value: stronger cash generation reduces it toward EUR 1.4 bn in the Bull case, while weaker cash conversion leaves approximately EUR 1.8 bn in the Bear case.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "2,450",
+          "EBITDA": "930",
+          "Margin": "38.0%",
+          "Multiple": "10.0x",
+          "EV": "9,300",
+          "Equity": "7,668"
+        },
+        "impliedValueOrUpside": "47.75 EUR / sh · +21.3%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "2,335",
+          "EBITDA": "856",
+          "Margin": "36.7%",
+          "Multiple": "8.9x",
+          "EV": "7,644",
+          "Equity": "6,012"
+        },
+        "impliedValueOrUpside": "37.44 EUR / sh · -4.9%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "2,220",
+          "EBITDA": "790",
+          "Margin": "35.6%",
+          "Multiple": "7.5x",
+          "EV": "5,925",
+          "Equity": "4,293"
+        },
+        "impliedValueOrUpside": "26.73 EUR / sh · -32.1%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Elisa creates value primarily by retaining connectivity customers and raising the value of each relationship. Consumer Customers generated EUR 1,352m of FY2025 revenue and EUR 358m of comparable EBIT, with Q2 2026 post-paid ARPU at EUR 24.0 and churn at 16.7%, down from 23.0% in Q4 2025. Finnish mobile share is estimated at 38–39%, while fixed broadband share is 28%, below DNA’s 34%; the franchise therefore has pricing power but not monopoly economics. Corporate Customers add cloud, cybersecurity, IT, IoT and managed services to approximately 40% mobile and nearly 50% fixed corporate-service positions. Revenue was EUR 750m and comparable EBIT EUR 164m in FY2025, while Q2 EBITDA margin reached 35% despite revenue declining 0.7%. Software adds strategic options rather than current profit: Industrial Software is modelled at EUR 95m revenue and negative EUR 6m comparable EBIT, while Telecom Software is modelled at EUR 60m and negative EUR 4m. The group’s EUR 40m savings programme can support margins, but the value case remains domestic and supports HOLD."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The division bridge values EUR 580m of 2027 Consumer EBITDA at 9.5x, EUR 250m of Corporate EBITDA at 7.5x, and EUR 18m and EUR 8m of software EBITDA at 10.0x. These contributions total EUR 7.6 bn before the locked EUR 1.6 bn EV-to-equity deduction. At 39.38 EUR, the quoted market EV is EUR 8 bn, EUR 311m above the SOTP; that gap is approximately EUR 32m of Consumer EBITDA at the selected multiple, or EUR 1.94 per share. The reverse test is more demanding: the current price requires 2027 EBIT of EUR 630m and a 27.0% margin, compared with EUR 555m and 23.8% in the authoritative model, alongside 3.0% terminal growth. The stock trades at 16.14x 2026 earnings, near the 15.8x peer median, but its 8.10x EV/EBITDA is above the 6.5x peer median. The valuation therefore recognises franchise quality and savings potential while requiring more than stability. Excluding the unsupported EUR 982m 2026 EBITDA step-up and anchoring to EUR 856m in 2027 produces the HOLD conclusion."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The Bear outcome of 26.73 EUR per share requires renewed consumer discounting, churn above 20%, Corporate margins below 30% and software remaining near break-even. An early signal would be post-paid churn and ARPU weakening together while Corporate revenue remains negative. The Base outcome of 37.44 EUR requires churn around 16–18%, partial delivery of the EUR 40m savings programme, low-30s Corporate EBITDA margins and software contribution without a material acquisition burden. The relevant evidence is recurring margin improvement rather than adjusted restructuring gains. The Bull outcome of 47.75 EUR requires faster consumer service growth, a Corporate mix shift towards cybersecurity and IoT, software organic growth above 10% with positive comparable EBIT, and stronger cash generation. The leading indicators are service revenue, recurring software growth and net debt reduction toward EUR 1.4 bn. The central debate is whether Elisa is a mature connectivity franchise whose savings merely protect earnings, or a connectivity platform that can convert pricing, ICT mix and software into durable growth. Churn and recurring margin evidence currently favour the former, supporting HOLD rather than SELL."
+    }
+  ],
+  "risks": [
+    "Renewed Finnish mobile price war (Consumer Customers): post-paid churn above 20% or declining ARPU would increase discounts and acquisition costs, with churn and ARPU as the early warning indicators - HIGH impact and a thesis-breaker if it occurs.",
+    "ICT growth dilutes Corporate margins (Corporate Customers): labour-heavy projects growing faster than recurring services could push EBITDA margin below 30%, with revenue growth alongside margin deterioration as the early warning - HIGH impact and manageable.",
+    "Transformation savings fail to persist (Corporate Customers): consultancy, wage and retention costs could offset the EUR 40m target after restructuring, with costs rebounding after the restructuring period as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Software projects remain delayed (International Industrial Software): long sales cycles could prevent operating leverage, with organic growth below 5% for two quarters as the early warning - MEDIUM impact and manageable.",
+    "Capital intensity rises (Corporate Customers): fibre, spectrum and network capex could reduce free cash flow, with capex remaining above EUR 400m after 2026 as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "Q3 2026 interim report and guidance progress (near-term, Consumer Customers): churn, ARPU and EBITDA tracking against the EUR 815–845m guide would confirm or cut the domestic earnings base.",
+    "Delayed mobile price adjustments reach revenue (near-term, Consumer Customers): service-revenue growth with churn below 17% would support the 9.5x Consumer multiple.",
+    "Transformation savings become recurring (medium-term, Corporate Customers): margin at or above 33% after restructuring costs would raise sustainable EBITDA.",
+    "Postponed Polystar projects convert (medium-term, International Telecom Software): organic growth above 10% and positive EBITDA would support the software multiple.",
+    "Recurring software mix rises above 60% (long-term, International Industrial Software): renewals and SaaS exceeding project revenue growth could justify 12x EBITDA."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "2,181",
+            "2,192",
+            "2,257",
+            "2,282",
+            "2,335",
+            "2,394"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "685",
+            "765",
+            "765",
+            "982",
+            "856",
+            "881"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "31.4%",
+            "34.9%",
+            "33.9%",
+            "43.0%",
+            "36.6%",
+            "36.8%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-207",
+            "-279",
+            "-298",
+            "-453",
+            "-301",
+            "-305"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "477",
+            "486",
+            "466",
+            "529",
+            "555",
+            "576"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "21.9%",
+            "22.2%",
+            "20.6%",
+            "23.2%",
+            "23.8%",
+            "24.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-19",
+            "-38",
+            "-41",
+            "-46",
+            "-49",
+            "-52"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "458",
+            "448",
+            "425",
+            "482",
+            "506",
+            "524"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "374",
+            "356",
+            "342",
+            "392",
+            "412",
+            "427"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "2.3",
+            "2.2",
+            "2.1",
+            "2.4",
+            "2.6",
+            "2.7"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "2.2",
+            "2.3",
+            "2.4",
+            "2",
+            "2.1",
+            "2.1"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "92.3%",
+            "101.3%",
+            "110.4%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "903",
+            "968",
+            "1,016",
+            "1,020",
+            "1,044",
+            "1,070"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "210",
+            "235",
+            "245",
+            "248",
+            "253",
+            "260"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1,157",
+            "1,263",
+            "1,262",
+            "1,262",
+            "1,262",
+            "1,262"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "2,415",
+            "2,599",
+            "2,675",
+            "2,682",
+            "2,712",
+            "2,744"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "77",
+            "76",
+            "48",
+            "59",
+            "60",
+            "62"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "558",
+            "581",
+            "590",
+            "590",
+            "604",
+            "619"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "63",
+            "90",
+            "190",
+            "157",
+            "161",
+            "165"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "698",
+            "747",
+            "827",
+            "806",
+            "825",
+            "846"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "3,125",
+            "3,356",
+            "3,516",
+            "3,502",
+            "3,551",
+            "3,604"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "1,294",
+            "1,293",
+            "1,259",
+            "1,273",
+            "1,371",
+            "1,468"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "997",
+            "1,008",
+            "1,302",
+            "879",
+            "849",
+            "823"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "282",
+            "459",
+            "275",
+            "879",
+            "849",
+            "823"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "1,008",
+            "1,015",
+            "1,320",
+            "897",
+            "868",
+            "841"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "710",
+            "914",
+            "767",
+            "1,284",
+            "1,263",
+            "1,246"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "3,125",
+            "3,356",
+            "3,516",
+            "3,502",
+            "3,551",
+            "3,604"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "1,304",
+            "1,473",
+            "1,509",
+            "1,600",
+            "1,537",
+            "1,481"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "2,509",
+            "2,669",
+            "2,647",
+            "2,873",
+            "2,909",
+            "2,949"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "41.4%",
+            "38.5%",
+            "35.8%",
+            "36.3%",
+            "38.6%",
+            "40.7%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "100.8%",
+            "113.9%",
+            "119.8%",
+            "125.7%",
+            "112.1%",
+            "100.9%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.9x",
+            "1.9x",
+            "2.0x",
+            "1.6x",
+            "1.8x",
+            "1.7x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1",
+            "0.8",
+            "1.1",
+            "0.6",
+            "0.7",
+            "0.7"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023",
+        "2024",
+        "2025",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "593",
+            "641",
+            "696",
+            "747",
+            "706",
+            "724"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "611",
+            "685",
+            "737",
+            "785",
+            "746",
+            "766"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "9",
+            "-5",
+            "-56",
+            "98",
+            "7",
+            "8"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "255",
+            "463",
+            "375",
+            "460",
+            "330",
+            "337"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-255",
+            "-463",
+            "-375",
+            "-460",
+            "-330",
+            "-337"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "338",
+            "178",
+            "322",
+            "287",
+            "376",
+            "386"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "341",
+            "219",
+            "373",
+            "324",
+            "416",
+            "429"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "341",
+            "219",
+            "373",
+            "324",
+            "416",
+            "429"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-340",
+            "-166",
+            "-230",
+            "-319",
+            "-372",
+            "-382"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-329",
+            "-345",
+            "-361",
+            "-377",
+            "-313",
+            "-330"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-2",
+            "13",
+            "92",
+            "-32",
+            "4",
+            "4"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "16.1x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.1x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "15.1x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "19.5x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "5.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "5.0%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.6x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Elisa Oyj a buy in 2026?",
+      "a": "No. Elisa Oyj is rated HOLD for 2026, with a target price of 37.40 EUR versus 39.38 EUR currently, implying -5.0% downside. The franchise has supportive evidence in EUR 24.0 post-paid ARPU, 16.7% churn and a 43% Q2 2026 Consumer EBITDA margin. However, the price requires 2027 EBIT of EUR 630m and a 27.0% margin, compared with EUR 555m and 23.8% in the authoritative model."
+    },
+    {
+      "q": "What is Elisa Oyj's price target?",
+      "a": "Elisa Oyj’s 12-month price target is 37.40 EUR per share, compared with a current price of 39.38 EUR and implied downside of -5.0%. The target uses a 100%-weighted sum-of-the-parts valuation. Consumer Customers contribute 34.3 EUR per share, Corporate Customers 11.7 EUR, International Telecom Software 0.5 EUR and International Industrial Software 1.1 EUR, with the combined division values reduced by the locked EV-to-equity deduction."
+    },
+    {
+      "q": "Why is Elisa Oyj rated HOLD?",
+      "a": "Elisa Oyj is rated HOLD because domestic connectivity is durable but the current valuation already requires further execution. Consumer Customers contribute 70.0% of comparable EBIT and 72.1% of enterprise value, while Corporate Customers contribute 24.5% of EV. The EUR 40m savings programme and 16.7% churn support the case, but software comparable EBIT was negative EUR 10m in 2025 and Q2 2026 organic growth was only 0.6%."
+    },
+    {
+      "q": "Is Elisa Oyj overvalued in 2026?",
+      "a": "Elisa Oyj is not distressed, but the price is demanding relative to the cautious operating evidence. It trades at 16.1x 2026E earnings and 8.1x 2026E EV/EBITDA, versus peer medians of 15.8x and 6.5x. The current EUR 8 bn EV is EUR 311m above the SOTP allocation, while a reverse valuation requires EUR 630m of 2027 EBIT and a 27.0% margin."
+    },
+    {
+      "q": "What is Elisa Oyj's bear and bull case?",
+      "a": "The Bear case is 26.73 EUR per share, or -32.1%, if revenue falls to EUR 2,220m, EBITDA reaches EUR 790m, churn exceeds 20% and software remains near break-even. The Bull case is 47.75 EUR, or +21.3%, if revenue reaches EUR 2,450m, EBITDA reaches EUR 930m, Corporate mix shifts towards cyber and IoT, and software organic growth exceeds 10% with positive comparable EBIT."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Elisa Oyj report dated 19 August 2026 (the value-map allocations, anchor market cap and share price).",
+    "Competitor context: Tele2 at 9.7x 2026E EV/EBITDA, Swisscom at 8.2x, Proximus at 3.1x, Enghouse at 4.8x and Dassault Systèmes at 9.8x; the 6.5x peer median is used alongside Elisa’s 8.1x multiple. Consumer support includes Telia Finland at approximately 32–33% mobile share and DNA at 28% mobile share, EUR 19.6 mobile ARPU and 34% fixed-broadband share. Software comparisons include Siemens at EUR 1.6 bn of Digital Industries software revenue, AVEVA at approximately 85% recurring revenue and Amdocs at a USD 4.26 bn backlog.",
+    "Market data: ELISA.HE, 39.38 EUR as of 19 August 2026; the target bridge uses EUR 580m Consumer Customers 2027E EBITDA at 9.5x, EUR 250m Corporate Customers EBITDA at 7.5x, EUR 8m International Telecom Software EBITDA at 10.0x and EUR 18m International Industrial Software EBITDA at 10.0x. The 2026 model EBITDA figure of EUR 982m is flagged as unsupported and anomalous against official EUR 815–845m guidance and EUR 830m consensus; the target instead anchors to EUR 856m of 2027 EBITDA, where the authoritative model and consensus agree."
+  ]
+}

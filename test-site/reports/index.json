@@ -1,0 +1,109 @@
+{
+  "pages": [
+    {
+      "slug": "advanced-micro-devices-equity-report",
+      "ticker": "AMD",
+      "reportId": "advancedmicrodevices-06082026"
+    },
+    {
+      "slug": "airbus-se-equity-report",
+      "ticker": "AIR.DE",
+      "reportId": "airbusse-20082026"
+    },
+    {
+      "slug": "alphabet-equity-report",
+      "ticker": "GOOGL",
+      "reportId": "alphabetinc-27082026"
+    },
+    {
+      "slug": "elisa-equity-report",
+      "ticker": "ELISA.HE",
+      "reportId": "elisa-19082026"
+    },
+    {
+      "slug": "intel-equity-report",
+      "ticker": "INTC",
+      "reportId": "intel-05062026"
+    },
+    {
+      "slug": "kesko-equity-report",
+      "ticker": "KESKOB.HE",
+      "reportId": "kesko-07072026"
+    },
+    {
+      "slug": "neste-equity-report",
+      "ticker": "NESTE.HE",
+      "reportId": "neste-19082026"
+    },
+    {
+      "slug": "nokia-equity-report",
+      "ticker": "NOKIA.HE",
+      "reportId": "nokia-14102026"
+    },
+    {
+      "slug": "novo-nordisk-equity-report",
+      "ticker": "NOVO-B.CO",
+      "reportId": "novonordiskas-01092026"
+    },
+    {
+      "slug": "nvidia-equity-report",
+      "ticker": "NVDA",
+      "reportId": "nvidia-16072026"
+    },
+    {
+      "slug": "oriola-equity-report",
+      "ticker": "ORIOLA.HE",
+      "reportId": "oriola-07072026"
+    },
+    {
+      "slug": "orion-equity-report",
+      "ticker": "ORNBV.HE",
+      "reportId": "orion-07072026"
+    },
+    {
+      "slug": "pandora-equity-report",
+      "ticker": "PNDORA.CO",
+      "reportId": "pandoraas-30072026"
+    },
+    {
+      "slug": "pihlajalinna-equity-report",
+      "ticker": "PIHLIS.HE",
+      "reportId": "pihlajalinnaoyj-02102026"
+    },
+    {
+      "slug": "puuilo-equity-report",
+      "ticker": "PUUILO.HE",
+      "reportId": "puuilo-20082026"
+    },
+    {
+      "slug": "recursion-pharmaceuticals-equity-report",
+      "ticker": "RXRX",
+      "reportId": "recursion-02062026"
+    },
+    {
+      "slug": "sandisk-equity-report",
+      "ticker": "SNDK",
+      "reportId": "sandiskcorporation-10082026"
+    },
+    {
+      "slug": "stora-enso-equity-report",
+      "ticker": "STERV.HE",
+      "reportId": "storaensooyj-01092026-2"
+    },
+    {
+      "slug": "tesla-equity-report",
+      "ticker": "TSLA",
+      "reportId": "teslainc-05092026-rev-jnu7evsy-3"
+    },
+    {
+      "slug": "upm-equity-report",
+      "ticker": "UPM.HE",
+      "reportId": "upmkymmeneoyj-01092026"
+    },
+    {
+      "slug": "wartsila-equity-report",
+      "ticker": "WRT1V.HE",
+      "reportId": "wartsila-07072026"
+    }
+  ]
+}

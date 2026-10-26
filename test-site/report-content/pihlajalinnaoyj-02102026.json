@@ -1,0 +1,770 @@
+{
+  "id": "pihlajalinnaoyj-02102026",
+  "slug": "pihlajalinna-equity-report",
+  "companyName": "Pihlajalinna Oyj",
+  "ticker": "PIHLIS.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Medical - Care Facilities",
+  "currency": "EUR",
+  "reportDate": "2026-10-02",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "10.50 EUR",
+    "targetPrice": "11.90 EUR",
+    "impliedUpside": "+13.3%",
+    "marketCap": "EUR 236 m",
+    "enterpriseValue": "EUR 512 m"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "12.2x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "5.8x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "6.8%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "1.3%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "EUR 183 m"
+    }
+  ],
+  "priceStats": {
+    "week52High": "17.05 EUR",
+    "week52Low": "9.61 EUR",
+    "oneYearChange": "-33.6%",
+    "threeYearChange": "+32.8%"
+  },
+  "summary": [
+    "Pihlajalinna Oyj (PIHLIS.HE, NASDAQ Helsinki) provides healthcare services in Finland through occupational-health contracts, private clinics, diagnostics, hospitals and public-sector outsourcing. The rating is HOLD with a 12-month target price of 11.90 EUR against a current price of 10.50 EUR, implying +13.3% upside. Market capitalisation is EUR 236 m and enterprise value is EUR 512 m in this Valuatum equity research report dated 2 October 2026. The business combines recurring employer demand with activity-dependent clinical services and finite public contracts, but debt, contract exits and uncertain division disclosure limit the margin of safety despite expected earnings recovery.",
+    "The central valuation tension is that occupational healthcare carries 62.9% of the EUR 512 m current analytical enterprise-value allocation while contributing 40.1% of 2028E revenue and 57.8% of 2028E EBIT: EUR 240 m revenue and EUR 24 m EBIT. Private clinics, diagnostics and hospitals contribute 48.2% of revenue but 34.7% of EBIT, with EUR 288 m revenue and EUR 14.4 m EBIT, yet hold only 29.5% of EV. Public outsourcing contributes EUR 70 m revenue and EUR 3.12 m EBIT for 7.6% of EV. Group valuation is 12.2x P/E and 5.8x EV/EBITDA for 2026E.",
+    "The target price uses a 100%-weighted sum of the parts on 2028E EBIT: occupational healthcare at 15.6x, private clinics, diagnostics and hospitals at 12.2x, and public-sector outsourcing at 14.3x. The resulting established-business value is 24.2 EUR per share before EUR 12.3 per share of net debt and other claims, producing 11.90 EUR. The scenario bridge gives Bear EUR -12.27 per share and -216.8%, Base EUR 11.94 and +13.7%, and Bull EUR -12.27 and -216.8%; the zero multiples in the Bear and Bull rows make those mechanical outputs rather than independent price estimates."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Employer contracts anchor",
+      "metric": "62.9% EV",
+      "text": "Occupational healthcare carries 62.9% of the EUR 512 m current analytical EV allocation and is forecast at EUR 240 m revenue and EUR 24 m EBIT in 2028E. Statutory preventive demand supports recurring contracts, but employer retention, package scope and repricing must preserve the 10% fully loaded margin."
+    },
+    {
+      "num": "02",
+      "title": "Private recovery needs utilisation",
+      "metric": "EUR 28.8m",
+      "text": "Private clinics, diagnostics and hospitals are forecast to increase EBIT from EUR 14.4 m in 2028E to EUR 28.8 m in 2034E as margin rises from 5% to 8%. The recovery requires productive clinical capacity and better procedure mix despite Kela reimbursement falling from EUR 30 to EUR 8."
+    },
+    {
+      "num": "03",
+      "title": "Debt magnifies misses",
+      "metric": "3.1x ND/EBITDA",
+      "text": "Net debt / EBITDA is 3.1x in 2026E, while gross investment rises from EUR 39 m in 2026E to EUR 53 m in 2029. Positive division EBIT therefore does not prove independently funded growth: contract settlements, transition costs or capacity investment could absorb cash before deleveraging."
+    }
+  ],
+  "thesisBreaker": "Simultaneous employer-contract erosion and weak private utilisation, accompanied by stalled consolidated deleveraging, would break the earnings-recovery case and reduce valuation.",
+  "valuePools": [
+    {
+      "name": "Occupational healthcare",
+      "share": "62.9% · EUR 322 m",
+      "economics": "Revenue EUR 240 m (40.1%) · EBIT EUR 24 m (57.8%, 10% margin) · EV EUR 322 m (62.9%)",
+      "text": "Occupational healthcare provides employer-funded preventive and curative services, with the 2028E analytical pool based on EUR 1.8 bn of addressable spending and a constant 13.3333% assumed share. That produces EUR 240 m revenue and EUR 24 m EBIT, while the endpoint reaches EUR 300 m revenue and EUR 33 m EBIT in 2034E at an 11% margin. The 15.6x Terveystalo 2028E EV/EBIT reference values the 2028E EBIT at EUR 374.4 m before horizon adjustment, exceeding the current EUR 322 m EV allocation. The assumption is demanding because preventive coverage is mandatory but curative scope is optional, and employer tenders can narrow packages or resist repricing. Terveystalo, Mehiläinen and Pihlajalinna represented 80–90% of occupational healthcare in 2020 evidence, supporting scale but also competition and regulatory scrutiny."
+    },
+    {
+      "name": "Private clinics, diagnostics and hospitals",
+      "share": "29.5% · EUR 151 m",
+      "economics": "Revenue EUR 288 m (48.2%) · EBIT EUR 14.4 m (34.7%, 5% margin) · EV EUR 151 m (29.5%)",
+      "text": "Private clinics, diagnostics and hospitals are modelled against a EUR 2.4 bn privately funded pool in 2028E, excluding occupational activity and integrated public outsourcing. A constant 12% share produces EUR 288 m revenue and EUR 14.4 m EBIT at a 5% margin; by 2034E, EUR 360 m revenue and EUR 28.8 m EBIT require an 8% margin. The 12.2x care-facilities 2028E EV/EBIT reference gives EUR 175.68 m before horizon adjustment, above the EUR 151 m current EV allocation. Most endpoint EBIT improvement comes from margin rather than market growth: EUR 10.8 m of the EUR 14.4 m increase is margin-driven. Kela’s general private appointment reimbursement falls from EUR 30 to EUR 8 from 2026, making affordability, activity, procedure mix and clinical utilisation central to the recovery."
+    },
+    {
+      "name": "Public-sector outsourcing contracts",
+      "share": "7.6% · EUR 39 m",
+      "economics": "Revenue EUR 70 m (11.7%) · EBIT EUR 3.12 m (7.5%, 4.457% margin) · EV EUR 39 m (7.6%)",
+      "text": "Public-sector outsourcing contracts are a finite, declining pool rather than a claim on Finland’s total public healthcare budget. The model assumes EUR 70 m revenue and EUR 3.12 m EBIT in 2028E, falling to EUR 56 m revenue and EUR 2.52 m EBIT in 2034E. The 14.3x declining-EBIT tier reference gives EUR 44.616 m before horizon adjustment, close to the EUR 39 m current EV allocation. Contract compensation, staffing, service scope and exit terms determine residual value. Approximately EUR 72 m of annual revenue reduction relates to outsourcing expiries and new arrangements, while a historical EUR 8.2 m receivable write-down demonstrates that settlement exposure can exceed recurring profit. The division is small in EV but can create disproportionate transition and cash risks."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse valuation tests what operating earnings and valuation support the current equity value after the EUR 273 m net-debt deduction and other claims. The primary swing factor is the relationship between group EBITDA and the applied EV/EBITDA multiple, while the accepted target is built from division EBIT and separate peer or tier references. The Bear and Bull rows carry 0.0x multiples and therefore produce mechanical negative equity values; they are not independent price estimates of the operating stresses.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "620",
+          "EBITDA": "95",
+          "Margin": "15.3%",
+          "Multiple": "0.0x",
+          "EV (12M)": "0",
+          "Equity": "-276"
+        },
+        "impliedValueOrUpside": "EUR -12.27 / sh · -216.8%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "598",
+          "EBITDA": "87",
+          "Margin": "14.5%",
+          "Multiple": "6.3x",
+          "EV (12M)": "544",
+          "Equity": "268"
+        },
+        "impliedValueOrUpside": "EUR 11.94 / sh · +13.7%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "560",
+          "EBITDA": "75",
+          "Margin": "13.4%",
+          "Multiple": "0.0x",
+          "EV (12M)": "0",
+          "Equity": "-276"
+        },
+        "impliedValueOrUpside": "EUR -12.27 / sh · -216.8%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV (12M)",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Pihlajalinna creates value through three economically different healthcare pools sharing personnel, facilities and administrative infrastructure. Occupational healthcare is the principal profit engine: EUR 240 m of 2028E revenue and EUR 24 m of EBIT at a 10% margin, rising to EUR 300 m revenue and EUR 33 m EBIT in 2034E. Preventive services cover 90% of employees in the cited 2021 evidence, but curative care is optional, so statutory demand protects a floor rather than the whole earnings stream. Private clinics, diagnostics and hospitals provide EUR 288 m revenue and EUR 14.4 m EBIT in 2028E, with the accepted path reaching EUR 28.8 m EBIT by 2034E. That increase is chiefly margin-led: EUR 10.8 m of the EUR 14.4 m improvement comes from a three-point margin expansion. Kela’s reimbursement for general private appointments falls from EUR 30 to EUR 8, making affordability and productive capacity decisive. Public outsourcing contributes EUR 70 m revenue and EUR 3.12 m EBIT in 2028E, declining to EUR 56 m and EUR 2.52 m by 2034E. The evidence supports a durable employer base and plausible private recovery, but the rating remains HOLD because retention, utilisation and cash conversion are not yet sufficiently demonstrated."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge values 2028E EBIT separately: occupational healthcare contributes EUR 24 m at 15.6x EV/EBIT, private clinics, diagnostics and hospitals contribute EUR 14.4 m at 12.2x, and public-sector outsourcing contributes EUR 3.12 m at 14.3x. These calculations produce undiscounted enterprise values of EUR 374.4 m, EUR 175.7 m and EUR 44.6 m respectively. Applying the common one-year 9.25% cost-of-equity discount reduces the values to EUR 342.7 m, EUR 160.8 m and EUR 40.8 m. The bridge then produces 24.2 EUR per share for established businesses before deducting EUR 12.3 per share of net debt and other claims, resulting in the 11.90 EUR target. The current EUR 512 m EV is 5.88x 2028E EBITDA and 12.33x 2028E EBIT, while the reverse valuation reaches current equity value with only EUR 26.53 m of 2028E EBIT, below the accepted EUR 41.52 m division anchor. That conditional comparison leaves substantial value resting on future execution. The main risk is not the arithmetic but the 15.6x occupational reference: Terveystalo’s multiple rises from 8.0x in 2027E to 15.6x in 2028E as forecast margin falls from 12.6% to 6.6%. HOLD reflects that normalisation risk and the EUR 273 m consolidated net-debt burden."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The Bear case requires weaker paid private activity, narrower employer scope and continuing public-contract exits; it results in EUR -12.27 per share and -216.8% in the mechanical bridge. The Base case requires occupational repricing and retention, private clinical utilisation and better treatment mix to offset outsourcing runoff; it results in EUR 11.94 per share and +13.7%. The Bull case requires sustained employer retention, productive capacity and group cash conversion sufficient to fund investment without increasing financing deductions; it also produces EUR -12.27 per share and -216.8% because the scenario table applies a 0.0x multiple. Early evidence will come from employer revenue, renewal scope and pricing, private activity and procedure mix, recurring EBIT, free cash flow and contract settlement costs. The scheduled Q3 2026 release on 28 October 2026 is the nearest test. The central debate is whether statutory preventive demand and private capacity utilisation can support durable repricing and margin recovery, or whether reimbursement pressure, employer scope reductions and public-contract cash costs expose the high occupational multiple. The balance of evidence supports an occupational earnings core and a plausible private recovery, but only moderate upside and weak disclosure justify HOLD rather than a directional call."
+    }
+  ],
+  "risks": [
+    "Employer retention or optional scope deteriorates (Occupational healthcare): lower retained spending weakens constant-share revenue and EBIT, with renewal losses, narrower packages or pricing concessions as the early warning - HIGH impact and structural, and a thesis-breaker if it coincides with weak private utilisation.",
+    "Private demand weakens after reimbursement cuts (Private clinics, diagnostics and hospitals): patient affordability pressure leaves productive capacity unused, with lower paid activity, cancellations or adverse payer mix as the early warning - HIGH impact and structural.",
+    "Clinical labour costs outrun repricing (Private clinics, diagnostics and hospitals): staffing and subcontracting absorb revenue growth without fully loaded EBIT improvement, with revenue growth without EBIT improvement as the early warning - HIGH impact and manageable.",
+    "Public settlements and transition costs recur (Public-sector outsourcing contracts): disputed compensation or exit obligations exceed residual profit, with receivable ageing, provisions and adverse legal disclosures as the early warning - HIGH impact and structural.",
+    "Peer normalisation reduces occupational value (Occupational healthcare): Terveystalo’s unusual 2028E denominator inflates the reference multiple, with peer estimates normalising without corresponding EV growth as the early warning - HIGH impact and structural."
+  ],
+  "catalysts": [
+    "Q3 2026 earnings evidence (near-term, occupational healthcare and private clinics, diagnostics and hospitals): employer revenue, pricing, activity, procedure mix and Healthcare Services EBIT would test recurring earnings and productive utilisation.",
+    "Central Uusimaa negotiation outcome (near-term, private clinics, diagnostics and hospitals): evidenced completion, consideration and acquired earnings would clarify capacity and group funding risk.",
+    "Employer-contract repricing and retention evidence (medium-term, occupational healthcare): covered population, renewal scope and realised revenue would support or weaken the all-in margin progression.",
+    "FY2026 release and contract visibility (medium-term, public-sector outsourcing contracts): contract exits, settlement costs and remaining scope would test residual contract EBIT.",
+    "Sustained private EBIT and cash improvement (medium-term, private clinics, diagnostics and hospitals): recurring EBIT alongside consolidated cash conversion would validate recovery beyond adjusted measures."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "720",
+            "704",
+            "652",
+            "621",
+            "600",
+            "598"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "47",
+            "101",
+            "109",
+            "88",
+            "87",
+            "87"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "6.5%",
+            "14.4%",
+            "16.7%",
+            "14.2%",
+            "14.5%",
+            "14.6%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-26",
+            "-53",
+            "-50",
+            "-49",
+            "-47",
+            "-46"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "21",
+            "48",
+            "59",
+            "39",
+            "40",
+            "42"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "2.9%",
+            "6.9%",
+            "9.1%",
+            "6.3%",
+            "6.6%",
+            "6.9%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-12",
+            "-10",
+            "-13",
+            "-13",
+            "-13",
+            "-12"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "8",
+            "39",
+            "46",
+            "26",
+            "27",
+            "29"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "5",
+            "30",
+            "39",
+            "19",
+            "20",
+            "22"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.2",
+            "1.3",
+            "1.7",
+            "0.9",
+            "0.9",
+            "1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0.1",
+            "0.4",
+            "0.1",
+            "0.1",
+            "0.2"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "5.2%",
+            "22.2%",
+            "15.4%",
+            "15.4%",
+            "15.4%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "270",
+            "249",
+            "227",
+            "217",
+            "210",
+            "209"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "21",
+            "16",
+            "15",
+            "14",
+            "14",
+            "14"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "252",
+            "255",
+            "254",
+            "254",
+            "254",
+            "254"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "550",
+            "525",
+            "499",
+            "488",
+            "480",
+            "480"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "4",
+            "5",
+            "4",
+            "4",
+            "4",
+            "4"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "63",
+            "62",
+            "56",
+            "54",
+            "52",
+            "52"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "25",
+            "31",
+            "31",
+            "29",
+            "28",
+            "27"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "92",
+            "97",
+            "91",
+            "86",
+            "83",
+            "83"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "657",
+            "630",
+            "598",
+            "582",
+            "572",
+            "571"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "125",
+            "169",
+            "173",
+            "183",
+            "200",
+            "219"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "144",
+            "133",
+            "103",
+            "57",
+            "47",
+            "38"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "3",
+            "2",
+            "2",
+            "57",
+            "47",
+            "38"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "115",
+            "87",
+            "95",
+            "49",
+            "40",
+            "30"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "159",
+            "155",
+            "126",
+            "154",
+            "143",
+            "133"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "637",
+            "630",
+            "598",
+            "582",
+            "572",
+            "571"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "353",
+            "316",
+            "271",
+            "273",
+            "249",
+            "229"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "247",
+            "273",
+            "246",
+            "269",
+            "267",
+            "267"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "19.5%",
+            "26.8%",
+            "28.9%",
+            "31.5%",
+            "35.0%",
+            "38.4%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "283.4%",
+            "187.1%",
+            "157.1%",
+            "149.1%",
+            "124.2%",
+            "104.8%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "7.6x",
+            "3.1x",
+            "2.5x",
+            "3.1x",
+            "2.9x",
+            "2.6x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "0.6",
+            "0.6",
+            "0.7",
+            "0.6",
+            "0.6",
+            "0.6"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "51",
+            "81",
+            "66",
+            "45",
+            "67",
+            "67"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "64",
+            "95",
+            "76",
+            "55",
+            "76",
+            "76"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-18",
+            "2",
+            "23",
+            "23",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "34",
+            "28",
+            "24",
+            "39",
+            "39",
+            "45"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-34",
+            "-28",
+            "-24",
+            "-39",
+            "-39",
+            "-45"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "17",
+            "54",
+            "42",
+            "6",
+            "28",
+            "22"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "28",
+            "50",
+            "91",
+            "16",
+            "37",
+            "31"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "28",
+            "50",
+            "91",
+            "16",
+            "37",
+            "31"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-26",
+            "-34",
+            "-41",
+            "-9",
+            "-28",
+            "-23"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-7",
+            "—",
+            "-2",
+            "-9",
+            "-3",
+            "-3"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-9",
+            "20",
+            "1",
+            "-2",
+            "-1",
+            "-0"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026 E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "12.2x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "5.8x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "13.1x"
+          ]
+        },
+        {
+          "label": "P / model FCFF",
+          "values": [
+            "14.7x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.3x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "1.3%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "3.1x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Pihlajalinna Oyj a buy in 2026?",
+      "a": "No. Pihlajalinna Oyj is rated HOLD for 2026, with a 12-month target price of 11.90 EUR against 10.50 EUR and +13.3% implied upside. Occupational healthcare provides EUR 24 m of 2028E EBIT, while private clinics, diagnostics and hospitals must expand from EUR 14.4 m EBIT in 2028E towards EUR 28.8 m in 2034E. The opportunity is balanced by EUR 273 m of 2026E net debt, reimbursement pressure and reliance on a 15.6x occupational EV/EBIT reference."
+    },
+    {
+      "q": "What is Pihlajalinna Oyj's price target?",
+      "a": "The price target is 11.90 EUR for the 12-month horizon, compared with a current price of 10.50 EUR and +13.3% implied upside. The target comes from a sum of the parts using 2028E EBIT: 15.6x for occupational healthcare, 12.2x for private clinics, diagnostics and hospitals, and 14.3x for public-sector outsourcing contracts. The bridge produces 24.2 EUR per share before deducting 12.3 EUR per share of net debt and other claims."
+    },
+    {
+      "q": "Why is Pihlajalinna Oyj rated HOLD?",
+      "a": "Pihlajalinna Oyj is rated HOLD because the operating recovery is plausible but the valuation margin is limited. Occupational healthcare anchors 62.9% of the EUR 512 m current EV allocation, while private healthcare must deliver EUR 28.8 m EBIT by 2034E from EUR 14.4 m in 2028E. The target offers only +13.3% upside to 11.90 EUR, and confidence is constrained by 3.1x 2026E net debt / EBITDA, disputed public-contract evidence and the unusually high 15.6x occupational reference."
+    },
+    {
+      "q": "Is Pihlajalinna Oyj overvalued in 2026?",
+      "a": "Pihlajalinna Oyj is not clearly overvalued at 10.50 EUR, but the current price already requires meaningful execution. Current EV is EUR 512 m, equal to 5.88x 2028E EBITDA and 12.33x 2028E EBIT. The accepted bridge supports 11.90 EUR per share, while the reverse valuation reaches current equity value with EUR 26.53 m of 2028E EBIT, below the EUR 41.52 m division anchor. Debt, employer retention and private utilisation prevent a stronger rating."
+    },
+    {
+      "q": "What is Pihlajalinna Oyj's bear and bull case?",
+      "a": "The Bear case assumes EUR 560 m revenue, EUR 75 m EBITDA and a 13.4% margin; the Bull case assumes EUR 620 m revenue, EUR 95 m EBITDA and a 15.3% margin. Because both scenario rows carry a 0.0x multiple, each produces EUR -12.27 per share and -216.8% in the mechanical bridge. The meaningful operating distinction is whether employer retention, private clinical utilisation and cash-funded capacity support recovery, or reimbursement pressure and contract exits weaken EBIT."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Pihlajalinna Oyj report dated 2 October 2026 (the EUR 512 m value-map allocations, EUR 236 m anchor market capitalisation and 10.50 EUR share price).",
+    "Competitor context: Terveystalo has EUR 1,278.9 m group revenue and EUR 156.3 m adjusted EBIT in 2025; Mehiläinen has EUR 2,413.2 m group revenue and EUR 339.4 m underlying EBITA in 2025; Attendo has a 17.5x 2026E EV/EBIT observation. Spire Healthcare’s market-derived multiples fail the pack’s consistency check and are excluded from valuation; Terveystalo’s 15.6x 2028E occupational reference is unusually affected by a forecast EBIT-margin change from 12.6% in 2027E to 6.6% in 2028E.",
+    "Market data: PIHLIS.HE at 10.50 EUR as of 2 October 2026; the target bridge uses 2028E occupational EBIT of EUR 24 m at 15.6x, private EBIT of EUR 14.4 m at 12.2x and public-outsourcing EBIT of EUR 3.12 m at 14.3x, discounted at a 9.25% cost of equity. Official July revenue guidance of EUR 550–570 m conflicts with the maintained 2026E forecast of EUR 621 m and supplied consensus of EUR 560 m; quarterly rows are also described as corrupted."
+  ]
+}

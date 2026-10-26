@@ -745,14 +745,17 @@
     function isTestCatalogHost() {
       return /^test\./.test(window.location.hostname);
     }
-    function testCardHtml(cat, company) {
+    // `testPage`: the company's page on the test site (test-site/reports/, baked by the sync from
+    // the test catalog), which wins over the production page the company catalog names.
+    function testCardHtml(cat, company, testPage) {
       const isFree = !!cat.isFree;
       const name = (company && company.name) || cat.companyName || cat.name || '';
       const ticker = (company && company.ticker) || cat.ticker || '';
       const exchange = (company && company.exchange) || cat.exchange || '';
       const sector = cat.sector && cat.sector !== 'Unclassified' ? cat.sector : '';
       const dateIso = String(cat.reportDate || '').slice(0, 10);
-      const pageUrl = company && company.url ? '/' + normalizeUrl(company.url) : '';
+      const pageUrl = testPage ? '/test-site/reports/' + testPage.slug + '.html'
+        : company && company.url ? '/' + normalizeUrl(company.url) : '';
       const description = (company && company.description) || cat.description || '';
       const tags = (cat.tags || []).slice(0, 4).map(function(t) { return '<span class="rc-tag">' + escapeHTML(t) + '</span>'; }).join('');
       const pdfUrl = !cat.pdfUrl ? '' : /^https?:\/\//.test(cat.pdfUrl) ? cat.pdfUrl : '/' + String(cat.pdfUrl).replace(/^\//, '');
@@ -781,9 +784,20 @@
     // One card per company, its newest report, newest first: as the sync bakes them.
     function loadTestCatalogCards() {
       if (!isTestCatalogHost()) return Promise.resolve();
-      return fetch('/api/reports', { cache: 'no-store' })
-        .then(function(res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
-        .then(function(data) {
+      const testPages = fetch('/test-site/reports/index.json', { cache: 'no-store' })
+        .then(function(res) { return res.ok ? res.json() : { pages: [] }; })
+        .catch(function() { return { pages: [] }; });
+      return Promise.all([
+        fetch('/api/reports', { cache: 'no-store' })
+          .then(function(res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); }),
+        testPages,
+      ])
+        .then(function(results) {
+          const data = results[0];
+          const testPageByTicker = new Map();
+          ((results[1] && results[1].pages) || []).forEach(function(p) {
+            if (normalize(p.ticker)) testPageByTicker.set(normalize(p.ticker), p);
+          });
           const reports = (Array.isArray(data) ? data : (data && data.reports) || [])
             .filter(function(r) { return r && r.id && r.availability !== 'unavailable'; })
             .sort(function(a, b) { return (String(b.reportDate || '') + String(b.uploadedAt || '')).localeCompare(String(a.reportDate || '') + String(a.uploadedAt || '')); });
@@ -798,7 +812,7 @@
             const key = normalize(r.ticker) || normalize(r.companyName) || r.id;
             if (seen.has(key)) return;
             seen.add(key);
-            cards.push(testCardHtml(r, byTicker.get(normalize(r.ticker)) || null));
+            cards.push(testCardHtml(r, byTicker.get(normalize(r.ticker)) || null, testPageByTicker.get(normalize(r.ticker)) || null));
           });
           document.getElementById('catalogGrid').innerHTML = cards.join('');
           // script.js binds the free-report revision buttons at load, on the baked cards.

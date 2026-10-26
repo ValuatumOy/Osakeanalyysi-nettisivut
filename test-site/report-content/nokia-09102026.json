@@ -1,0 +1,808 @@
+{
+  "id": "nokia-09102026",
+  "slug": "nokia-equity-report",
+  "companyName": "Nokia Oyj",
+  "ticker": "NOKIA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Communication Equipment",
+  "currency": "EUR",
+  "reportDate": "2026-10-09",
+  "headline": {
+    "recommendation": "SELL",
+    "horizon": "12-month",
+    "currentPrice": "9.24 EUR",
+    "targetPrice": "7.70 EUR",
+    "impliedUpside": "-16.7%",
+    "marketCap": "EUR 51.6 bn",
+    "enterpriseValue": "EUR 50.1 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "35.1x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "16.2x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "3.8%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "2.3%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "EUR 21.7 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "15.00 EUR",
+    "week52Low": "4.43 EUR",
+    "oneYearChange": "+107.6%",
+    "threeYearChange": "+175.0%"
+  },
+  "summary": [
+    "Nokia Oyj (NOKIA.HE, NASDAQ Helsinki) develops telecommunications equipment, network software and technology licences for operators, cloud providers and enterprises across radio access, optical transport, IP routing, fixed broadband and patent licensing. The call is SELL in this Valuatum equity research report dated 9 October 2026, with a 12-month target price of 7.70 EUR against a current price of 9.24 EUR, implying -16.7% downside. Market capitalisation is EUR 51.6 bn and enterprise value is EUR 50.1 bn. The investment case depends on optical and routing growth becoming sustainable cash earnings while licensing and radio franchises remain durable.",
+    "The valuation tension is between a strong earnings mix and demanding market expectations. Patent and technology licensing receives 33.9% of market enterprise value at EUR 16,976m, optical networking receives 24.7% at EUR 12,373m and mobile radio access networks receives 15.4% at EUR 7,697m. Licensing is forecast to produce EUR 1,080m of 2028 EBIT, optical EUR 540m and radio EUR 656m. The stock trades at 35.1x 2026E earnings and 16.2x 2026E EBITDA, while current enterprise value is 21.23x 2026 EBIT and approximately 13.84x revised 2029 EBIT. Growth is credible, but returns and cash conversion remain unproven.",
+    "The target is a 100% weighted sum-of-the-parts valuation: 2028E EBIT is valued at 10.6x for radio, 10.2x for core software, 20.7x for optical, 11.1x for routing and fixed access, and 14.2x for licensing, then discounted one year at a 9.25% cost of equity. Established businesses contribute EUR 7.42 per share, the 6G option contributes EUR 0.00 and net cash after other claims adds EUR 0.27. Bear, base and bull outcomes all produce EUR 7.69 per share and -17% versus the current price because the 6G scenarios add no incremental EBIT."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Royalties anchor value",
+      "metric": "EUR 1.08bn",
+      "text": "Patent and technology licensing is forecast to generate EUR 1,080m of 2028 EBIT from EUR 1,600m of revenue at a 67.5% EBIT margin. Its illustrative value is EUR 14,057m, or 32.7% of the target. The case requires recurring annual sales near EUR 1.4bn to expand without repeated catch-up payments."
+    },
+    {
+      "num": "02",
+      "title": "Optical must deliver",
+      "metric": "16.0%",
+      "text": "Optical networking is forecast to grow from EUR 4,500m of revenue and EUR 540m of EBIT in 2028 to EUR 8,114m of revenue and EUR 1,298m of EBIT in 2034. The 16.0% later margin and 20.7x EBIT valuation require repeat AI and cloud demand, profitable integration and stronger delivery economics."
+    },
+    {
+      "num": "03",
+      "title": "Radio preserves earnings",
+      "metric": "EUR 0",
+      "text": "The 6G radio-platform option receives EUR 0 incremental EBIT because new-generation deliveries replace existing radio sales and earnings. Nokia’s continuing radio franchise remains forecast at EUR 8,200m of 2028 revenue and EUR 656m of EBIT. Commercial qualification, spectrum access and operator retention are prerequisites before 6G can add value."
+    }
+  ],
+  "thesisBreaker": "Persistent order growth accompanied by weak delivered margins and negative consolidated cash conversion would break the earnings-quality case and reduce the valuation.",
+  "valuePools": [
+    {
+      "name": "Patent and technology licensing",
+      "share": "33.9% · EUR 16,976m",
+      "economics": "Revenue EUR 1,600m (—) · EBIT EUR 1,080m (—) · EV EUR 16,976m (33.9%)",
+      "text": "Patent and technology licensing is the largest market-allocated value pool and the highest-margin operating franchise. The 2028 forecast combines EUR 1,600m of revenue with EUR 1,080m of EBIT at a 67.5% margin, while the market allocates EUR 16,976m of enterprise value. The selected 14.2x 2028 EBIT reference is based on InterDigital’s 15.8x EV/EBIT observation, discounted for renewal, enforceability and portfolio differences. Nokia has approximately EUR 1.4bn of contracted recurring annual sales through 2025, but contract duration and licence-level rates remain unavailable. Apple, OPPO, Vivo, Honor, Samsung and Huawei renewals support the commercial base; Amazon and Hisense settlements support wider monetisation. The valuation excludes repeated catch-up windfalls. Lower negotiated rates, adverse legal outcomes, patent ageing or weaker cash collection would directly challenge the largest value anchor."
+    },
+    {
+      "name": "Optical networking",
+      "share": "24.7% · EUR 12,373m",
+      "economics": "Revenue EUR 4,500m (—) · EBIT EUR 540m (—) · EV EUR 12,373m (24.7%)",
+      "text": "Optical networking is allocated EUR 12,373m of market enterprise value against a 2028 forecast of EUR 4,500m revenue and EUR 540m EBIT. The pool is valued at 20.7x 2028 EBIT, a 20.0% discount to Ciena’s 25.9x observation, because Nokia’s 12.0% margin is below Ciena’s 23.9% forecast margin and Infinera integration remains part of the execution burden. AI and cloud orders of EUR 2.8bn across Optical and IP Networks, with approximately half expected to convert to revenue over twelve months, support demand but do not disclose optical allocation, margins or cash collection. Nokia is ranked third globally in the cited trailing period, behind Huawei and alongside Ciena and Cisco/Acacia. The target requires repeat orders, supplier execution, product reuse and margin expansion towards 16.0%; weak conversion or persistent costs would compress both earnings and the multiple."
+    },
+    {
+      "name": "Mobile radio access networks",
+      "share": "15.4% · EUR 7,697m",
+      "economics": "Revenue EUR 8,200m (—) · EBIT EUR 656m (—) · EV EUR 7,697m (15.4%)",
+      "text": "Mobile radio access networks receives EUR 7,697m of market enterprise value and is forecast to generate EUR 8,200m of revenue and EUR 656m of EBIT in 2028. The model assumes approximately 1.0% annual growth and an 8.0% EBIT margin through 2034, treating the franchise as mature operator procurement rather than a separate 6G growth asset. Nokia remains a major radio supplier, but deployment timing, procurement pricing and cost absorption determine whether replacement spending preserves earnings. AI-RAN commercial availability is targeted for 2027, while 6G first availability is targeted for 2030. Spectrum permission, Release 21 completion in 2028–2029 and operator qualification are required for commercial transition. A failed platform transition accompanied by strategic customer losses would threaten the continuing franchise rather than merely remove the zero-valued option."
+    },
+    {
+      "name": "IP routing",
+      "share": "10.3% · EUR 5,161m",
+      "economics": "Revenue EUR 2,800m (—) · EBIT EUR 420m (—) · EV EUR 5,161m (10.3%)",
+      "text": "IP routing receives EUR 5,161m of market enterprise value against EUR 2,800m of 2028 revenue and EUR 420m of EBIT. The pool uses an 11.1x 2028 EBIT industry reference rather than a cloud premium: Arista’s 2028 EV/EBIT observation is flagged as an outlier and excluded, while suitable Cisco and HPE/Juniper multiples are unavailable. Nokia’s high-end router position above 10.0% and reported Q4 2024 IP Networks sales of EUR 650m support an established franchise, but the forecast requires revenue growth of approximately 8.0% initially and margin expansion from 15.0% in 2028 to 18.0% in 2034. AI and cloud orders support commercial relevance but are not allocated to routing. Repeat profitable cloud wins, carrier retention and controlled customisation are needed to convert demand into cash earnings."
+    },
+    {
+      "name": "Core network software and communications platforms",
+      "share": "9.1% · EUR 4,550m",
+      "economics": "Revenue EUR 3,100m (—) · EBIT EUR 403m (—) · EV EUR 4,550m (9.1%)",
+      "text": "Core network software and communications platforms receives EUR 4,550m of market enterprise value and is forecast at EUR 3,100m of revenue and EUR 403m of EBIT in 2028. The selected 10.2x EBIT multiple is an analytical reference rather than a pure-play observed multiple because Nokia does not report this perimeter separately. Omdia places Huawei at 31.3% of combined global 4G and 5G core revenue in 2025, while the top five account for 86.1%, highlighting both incumbency and competitive concentration. Nokia was the largest share gainer outside China in Q1 2026, but migration can replace existing workloads rather than create new revenue. The forecast assumes approximately 4.0% growth and margin improvement from 13.0% to 15.0%. Retention, migration acceptance and lower implementation costs must outweigh operator procurement pressure."
+    },
+    {
+      "name": "Fixed broadband access",
+      "share": "6.6% · EUR 3,317m",
+      "economics": "Revenue EUR 2,304m (—) · EBIT EUR 270m (—) · EV EUR 3,317m (6.6%)",
+      "text": "Fixed broadband access is allocated EUR 3,317m of market enterprise value and forecast to produce EUR 2,304m of revenue and EUR 270m of EBIT in 2028. Nokia’s 35.0% XGS-PON share in 2024 establishes technology leadership, but it does not represent every broadband-access category. The valuation applies an 11.1x industry reference because Adtran’s negative 2028 EBIT is unusable and no Calix trading multiple is available. The model assumes approximately 3.0% annual growth and a margin rising from 11.7% in 2028 to 12.0% thereafter. Funded fibre construction, repeat upgrades and operator order conversion are the demand tests. Customer automation benefits of 25.0–40.0% lower daily operating expense may support adoption, but Nokia’s ability to capture that value depends on pricing, procurement and delivery cash conversion."
+    },
+    {
+      "name": "Fixed Wireless Access CPE",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue not separately reported · EBIT not separately reported · EV EUR 0m (0.0%)",
+      "text": "Fixed Wireless Access CPE has zero continuing-operation revenue and EBIT after its disposal, so it is not valued as an operating segment. Nokia retains approximately 1.9m Inseego shares, an approximately 11.0% stake and warrants over approximately 0.8m shares at USD 4.26. The former business had an approximately USD 200m annual sales run rate, but no report-date share price, warrant valuation or complete accounting reconciliation is available. The retained securities therefore receive no separate fair value."
+    },
+    {
+      "name": "Enterprise Campus Edge",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue not separately reported · EBIT not separately reported · EV EUR 0m (0.0%)",
+      "text": "Enterprise Campus Edge is outside continuing-operation revenue and EBIT following its discontinued-operation classification and is not valued as an operating segment. Nokia had approximately 50.0% cumulative customer share in Q3 2025, but standalone revenue, EBIT, disposal terms and retained obligations remain unresolved. The approximately EUR 900m sales and EUR 100m operating loss disclosed for businesses moving into Portfolio Businesses covered multiple activities and cannot be assigned solely to Campus Edge."
+    },
+    {
+      "name": "Uncommercialized 6G radio-platform option",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue not separately reported · EBIT not separately reported · EV EUR 0m (0.0%)",
+      "text": "The uncommercialized 6G radio-platform option is not valued as an operating segment because replacement-overlapping deliveries produce EUR 0 incremental EBIT in every scenario. The measured 2034 annual RAN procurement market is EUR 33.8bn, with neutral deliveries of EUR 5.4bn and positive deliveries of EUR 8.1bn, but spectrum permission, Release 21 completion, operator qualification and supplier capacity remain prerequisites. No separate enterprise value is assigned."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The reverse-valuation bridge tests what the quoted market value requires from Nokia’s operating path rather than treating the market price as a forecast. The primary swing factor is consolidated earnings quality: optical and routing must convert AI and cloud demand into profitable cash while licensing renewals preserve the high-margin base. The market EV is EUR 50.1bn, compared with approximately EUR 3.6bn of revised 2029 EBIT and an indicative 13.84x EV/EBIT. The exercise is an older EUR 47.4bn equity observation and cannot be read as the assumptions embedded in today’s EUR 51.6bn market capitalisation.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Established": "EUR 7.4",
+          "6G radio-platform option": "EUR 0.0",
+          "Net debt": "EUR 0.3",
+          "Value / share": "EUR 7.69",
+          "Vs price": "-17%"
+        },
+        "impliedValueOrUpside": "EUR 7.69 / sh · -17%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Established": "EUR 7.4",
+          "6G radio-platform option": "EUR 0.0",
+          "Net debt": "EUR 0.3",
+          "Value / share": "EUR 7.69",
+          "Vs price": "-17%"
+        },
+        "impliedValueOrUpside": "EUR 7.69 / sh · -17%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Established": "EUR 7.4",
+          "6G radio-platform option": "EUR 0.0",
+          "Net debt": "EUR 0.3",
+          "Value / share": "EUR 7.69",
+          "Vs price": "-17%"
+        },
+        "impliedValueOrUpside": "EUR 7.69 / sh · -17%"
+      }
+    ],
+    "scenarioColumns": [
+      "Established",
+      "6G radio-platform option",
+      "Net debt",
+      "Value / share",
+      "Vs price"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Nokia creates value through six continuing franchises with different earnings characteristics. Licensing is the profit engine, with EUR 1,600m of 2028 revenue, EUR 1,080m of EBIT and a 67.5% margin; its value depends on recurring royalties rather than settlement-heavy catch-up revenue. Optical is the principal growth engine, with EUR 4,500m of revenue and EUR 540m of EBIT in 2028, supported by EUR 2.8bn of AI and cloud orders across Optical and IP Networks. Routing and core software add EUR 420m and EUR 403m of 2028 EBIT, but their growth requires profitable cloud wins and workload retention. Radio remains the largest operating pool at EUR 8,200m of revenue and EUR 656m of EBIT, while fixed access contributes EUR 270m of EBIT. The six divisions sum to EUR 22,504m of revenue and EUR 3,369m of EBIT in 2028. FWA CPE and Campus Edge are discontinued, and 6G replaces existing radio economics rather than adding incremental EBIT. The rating remains SELL because the strongest growth assumptions still need delivered margin and cash evidence."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge values each continuing division on modelled 2028 EBIT, applies its selected comparison multiple and discounts one year at a 9.25% cost of equity. Licensing contributes EUR 14,057m of discounted enterprise value at 14.2x, optical EUR 10,241m at 20.7x, radio EUR 6,365m at 10.6x, routing EUR 4,267m at 11.1x, core software EUR 3,763m at 10.2x and fixed access EUR 2,743m at 11.1x. Established businesses contribute EUR 7.42 per share from EUR 41,438m before the EUR 1,509m net-cash-and-claims adjustment. Adding EUR 0.27 per share of net cash after other claims produces the EUR 7.70 target. The arithmetic is not the central risk: reported division accounts, central-cost allocation, tax and cash funding remain unresolved. Current EV of EUR 50.1bn is 21.23x 2026 EBIT and 17.31x 2027 EBIT, versus approximately 13.84x revised 2029 EBIT. The valuation therefore requires optical and routing execution to narrow the gap while licensing renewals hold."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear case requires slower order conversion, weaker equipment pricing and less cost absorption, with the licensing franchise intact; it results in EUR 7.69 per share, or -17% versus the current price. The base case requires optical and routing to grow faster than mature radio and fixed access, software workloads to remain defensible and royalties to expand without repeated catch-up windfalls; it also results in EUR 7.69 per share, or -17%. The bull case requires repeat profitable cloud demand, successful integration, better equipment mix and stable recurring royalties, yet also results in EUR 7.69 per share, or -17%, because 6G adds no incremental EBIT in any case. Early evidence is order conversion, delivered optical margin, recurring royalty sales and consolidated cash collection. The central debate is whether optical and routing can strengthen consolidated cash returns while recurring licensing holds up, or whether execution and funding pressure expose the current price as too demanding. The balance of evidence supports SELL."
+    }
+  ],
+  "risks": [
+    "Optical growth retains too little profit (Optical networking): growth near 12% with EBIT margin below 12% would show integration, pricing and support costs are absorbing the ramp - HIGH impact and a thesis-breaker if it occurs.",
+    "Royalty renewals weaken (Patent and technology licensing): recurring annual sales falling below approximately EUR 1.4bn would reduce the highest-margin earnings anchor - HIGH impact and structural.",
+    "Operator procurement contracts (Fixed broadband access): sales decline while equipment margins fail to recover as funded fibre builds are delayed - HIGH impact and structural.",
+    "Memory availability delays deliveries (IP routing): order conversion slips and delivery commitments extend into 2027, weakening revenue timing and purchasing economics - HIGH impact and manageable.",
+    "Cloud-native workloads migrate away (Core network software and communications platforms): growth remains below 4.0% while implementation expense rises, reducing both earnings and workload retention - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "Q3 results clarify order conversion (near-term, Optical networking): the 22 October release tests progress towards EUR 1.4bn of conversion over twelve months.",
+    "Campus Edge transaction terms become clear (near-term, Enterprise Campus Edge): ownership transfer and retained obligations clarify the retained asset or liability.",
+    "Optical profitability strengthens (medium-term, Optical networking): sustained EBIT margin above 12% with growth near or above 12% supports a smaller peer discount.",
+    "Recurring royalty base expands (medium-term, Patent and technology licensing): recurring annual sales progress beyond approximately EUR 1.4bn without catch-up reliance supports forecast royalty growth.",
+    "6G standards and spectrum advance (long-term, Uncommercialized 6G radio-platform option): WRC-27 decisions and Release 21 completion in 2028–2029 enable qualification, although they create no premium without incremental earnings."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "22,258",
+            "19,220",
+            "19,889",
+            "20,406",
+            "21,373",
+            "22,504"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "2,237",
+            "2,790",
+            "2,216",
+            "3,096",
+            "3,684",
+            "4,143"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "10.1%",
+            "14.5%",
+            "11.1%",
+            "15.2%",
+            "17.2%",
+            "18.4%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-549",
+            "-791",
+            "-570",
+            "-737",
+            "-792",
+            "-775"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,688",
+            "1,999",
+            "1,646",
+            "2,359",
+            "2,892",
+            "3,369"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "7.6%",
+            "10.4%",
+            "8.3%",
+            "11.6%",
+            "13.5%",
+            "15.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-189",
+            "92",
+            "-731",
+            "-606",
+            "-340",
+            "-349"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,499",
+            "2,091",
+            "915",
+            "1,753",
+            "2,552",
+            "3,020"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "679",
+            "1,284",
+            "566",
+            "1,471",
+            "2,232",
+            "2,643"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.1",
+            "0.2",
+            "0.1",
+            "0.3",
+            "0.4",
+            "0.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.1",
+            "0.1",
+            "0.1",
+            "0.2",
+            "0.3",
+            "0.4"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "89.9%",
+            "55.4%",
+            "134.0%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,857",
+            "2,120",
+            "2,490",
+            "2,448",
+            "2,564",
+            "2,700"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,086",
+            "802",
+            "1,399",
+            "1,435",
+            "1,503",
+            "1,583"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "5,504",
+            "5,736",
+            "5,996",
+            "5,996",
+            "5,996",
+            "5,996"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "17,821",
+            "17,563",
+            "18,162",
+            "18,157",
+            "18,341",
+            "18,556"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "2,719",
+            "2,163",
+            "2,209",
+            "2,277",
+            "2,385",
+            "2,511"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "9,134",
+            "9,201",
+            "8,121",
+            "8,353",
+            "8,687",
+            "9,078"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "6,234",
+            "6,623",
+            "5,462",
+            "6,104",
+            "6,393",
+            "6,731"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "18,087",
+            "17,987",
+            "15,792",
+            "16,733",
+            "17,465",
+            "18,320"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,533",
+            "39,449",
+            "40,519"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "20,628",
+            "20,747",
+            "21,058",
+            "21,743",
+            "22,798",
+            "23,655"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,637",
+            "2,918",
+            "2,329",
+            "1,725",
+            "1,535",
+            "1,496"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "554",
+            "969",
+            "1,084",
+            "1,725",
+            "1,536",
+            "1,496"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "6,577",
+            "5,583",
+            "5,143",
+            "4,539",
+            "4,349",
+            "4,310"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "10,933",
+            "11,394",
+            "10,004",
+            "10,914",
+            "10,963",
+            "11,202"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,533",
+            "39,449",
+            "40,519"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-1,046",
+            "-1,873",
+            "-1,049",
+            "-1,708",
+            "-2,375",
+            "-2,779"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "18,585",
+            "18,011",
+            "19,009",
+            "19,090",
+            "19,476",
+            "19,916"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "51.8%",
+            "53.0%",
+            "56.0%",
+            "56.4%",
+            "57.8%",
+            "58.4%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-5.1%",
+            "-9.0%",
+            "-5.0%",
+            "-7.9%",
+            "-10.4%",
+            "-11.7%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.5x",
+            "-0.7x",
+            "-0.5x",
+            "-0.6x",
+            "-0.6x",
+            "-0.7x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "1.6",
+            "1.6",
+            "1.5",
+            "1.6",
+            "1.6"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "2,753",
+            "2,434",
+            "727",
+            "2,176",
+            "2,826",
+            "3,185"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "3,281",
+            "2,904",
+            "1,015",
+            "2,685",
+            "3,124",
+            "3,490"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-779",
+            "-535",
+            "471",
+            "31",
+            "204",
+            "238"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-473",
+            "533",
+            "1,169",
+            "731",
+            "976",
+            "990"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "473",
+            "-533",
+            "-1,169",
+            "-731",
+            "-976",
+            "-990"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "2,280",
+            "1,901",
+            "-442",
+            "1,445",
+            "1,850",
+            "2,195"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "3,574",
+            "2,096",
+            "-5",
+            "1,954",
+            "2,149",
+            "2,501"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "3,579",
+            "1,669",
+            "-5",
+            "1,954",
+            "2,149",
+            "2,501"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-1,988",
+            "-1,878",
+            "-443",
+            "-803",
+            "-1,555",
+            "-1,851"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-337",
+            "-610",
+            "-712",
+            "-758",
+            "-1,177",
+            "-1,786"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "1,238",
+            "23",
+            "-885",
+            "642",
+            "295",
+            "344"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "35.07x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "16.18x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "21.23x"
+          ]
+        },
+        {
+          "label": "EV/Sales",
+          "values": [
+            "2.45x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "26.40x"
+          ]
+        },
+        {
+          "label": "P/Book",
+          "values": [
+            "2.38x"
+          ]
+        },
+        {
+          "label": "P/Sales",
+          "values": [
+            "2.53x"
+          ]
+        },
+        {
+          "label": "Dividend yield",
+          "values": [
+            "2.3%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Nokia a buy in 2026?",
+      "a": "No. Nokia is rated SELL with a 12-month target price of 7.70 EUR against a current price of 9.24 EUR, implying -16.7% downside. The market capitalisation is EUR 51.6 bn and enterprise value is EUR 50.1 bn. Optical and routing growth, recurring licensing sales and radio customer retention provide operating support, but delivered margins, consolidated cash conversion, tax assumptions and divisional cost allocations remain insufficiently demonstrated for the current valuation."
+    },
+    {
+      "q": "What is Nokia's price target?",
+      "a": "Nokia’s 12-month price target is 7.70 EUR, compared with a current price of 9.24 EUR and implied downside of -16.7%. Established businesses contribute EUR 7.42 per share after applying 2028E EBIT multiples and discounting one year at a 9.25% cost of equity. Net cash after other claims adds EUR 0.27 per share, while the 6G radio-platform option adds EUR 0.00 because replacement-overlapping earnings are excluded."
+    },
+    {
+      "q": "Why is Nokia rated SELL?",
+      "a": "Nokia is rated SELL because the current price requires stronger earnings quality than the evidence yet supports. The stock trades at 35.1x 2026E earnings and 16.2x 2026E EBITDA, while the target valuation assigns EUR 14,057m to licensing and EUR 10,241m to optical. Optical must reach a 16.0% later EBIT margin, licensing must preserve approximately EUR 1.4bn of recurring annual sales and consolidated cash conversion must improve without relying on repeated catch-up payments."
+    },
+    {
+      "q": "Is Nokia overvalued in 2026?",
+      "a": "The valuation appears demanding on the report’s assumptions. Nokia’s market enterprise value of EUR 50.1 bn is 21.23x 2026 EBIT and approximately 13.84x revised 2029 EBIT, compared with a 2020–2025 normalised EV/EBITDA average of 8.81x. The parts valuation produces 7.70 EUR per share, below the 9.24 EUR current price. A stronger optical margin and durable licensing renewals could support a higher value, but they are not yet established."
+    },
+    {
+      "q": "What is Nokia's bear and bull case?",
+      "a": "The bear case assumes slower order conversion, weaker equipment pricing and less cost absorption while licensing remains intact; it produces EUR 7.69 per share, or -17% versus the current price. The base case requires faster optical and routing growth, defensible software workloads and recurring royalty expansion, producing the same EUR 7.69 per share. The bull case requires repeat profitable cloud demand, successful integration, better equipment mix and stable royalties, yet also produces EUR 7.69 because 6G adds no incremental EBIT."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Nokia Oyj report dated 9 October 2026 (the value-map allocations, anchor market capitalisation of EUR 51.6 bn and share price of 9.24 EUR).",
+    "Competitor context: InterDigital’s 15.8x 2028 EV/EBIT supports Nokia’s selected 14.2x licensing multiple after a 10.0% discount; Ciena’s 25.9x 2028 EV/EBIT supports a 20.7x optical multiple after a 20.0% discount; Arista’s 2028 EV/EBIT observation is flagged as an outlier and excluded; Adtran’s negative 2028 EBIT makes its multiple unusable; routing and fixed-access industry references remain unsupported as named-peer valuations.",
+    "Market data: NOKIA.HE, 9.24 EUR as of 9 October 2026; the bridge uses 2028E revenue of EUR 22,504m, EBITDA of EUR 4,143m and EBIT of EUR 3,369m, with 2029E EBIT of EUR 3,619m. The report flags unresolved quarterly EBITDA and depreciation checks, an undocumented 2026 effective tax-rate reduction, incomplete division accounts and central-cost allocation, and differing analyst target samples: Investing.com mean EUR 10.742 with a EUR 4.65–18.00 range versus Alpha Spread mean EUR 9.767."
+  ]
+}

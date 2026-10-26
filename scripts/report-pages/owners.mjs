@@ -13,9 +13,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { IS_TEST } from './stage.mjs';
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-export const CONTENT_DIR = path.join(ROOT, 'report-content');
-export const PAGES_DIR = path.join(ROOT, 'reports');
+// The test site keeps its own extractions and pages under test-site/, and reads the production
+// content as well: the test catalog carries many of the same reports, which need no second
+// extraction, and production's slug for a company is the one its test page should use.
+export const TEST_DIR = path.join(ROOT, 'test-site');
+const PROD_CONTENT_DIR = path.join(ROOT, 'report-content');
+export const CONTENT_DIR = IS_TEST ? path.join(TEST_DIR, 'report-content') : PROD_CONTENT_DIR;
+export const PAGES_DIR = IS_TEST ? path.join(TEST_DIR, 'reports') : path.join(ROOT, 'reports');
+/** Where content documents are read from, later directories overriding earlier ones by id. */
+export const CONTENT_DIRS = IS_TEST ? [PROD_CONTENT_DIR, CONTENT_DIR] : [CONTENT_DIR];
 
 // Reports whose PDF content does not match their catalog identity — never published and never
 // re-extracted. Kept in sync with the same constant in scripts/report-index.mjs.
@@ -29,16 +38,20 @@ export const EXCLUDE = new Set([
 /** Every committed report-content document, keyed by id. Throws on invalid JSON. */
 export function loadContentDocs() {
   const byId = new Map();
-  for (const file of fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.json') && !f.startsWith('_'))) {
-    let doc;
-    try {
-      doc = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
-    } catch (e) {
-      throw new Error(`report-content/${file} is not valid JSON: ${e.message}`);
+  for (const dir of CONTENT_DIRS) {
+    if (!fs.existsSync(dir)) continue;
+    const rel = path.relative(ROOT, dir);
+    for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.startsWith('_'))) {
+      let doc;
+      try {
+        doc = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+      } catch (e) {
+        throw new Error(`${rel}/${file} is not valid JSON: ${e.message}`);
+      }
+      const id = doc.id || file.replace(/\.json$/, '');
+      if (!doc.slug) throw new Error(`${rel}/${file} has no slug.`);
+      byId.set(id, { ...doc, id });
     }
-    const id = doc.id || file.replace(/\.json$/, '');
-    if (!doc.slug) throw new Error(`report-content/${file} has no slug.`);
-    byId.set(id, { ...doc, id });
   }
   return byId;
 }

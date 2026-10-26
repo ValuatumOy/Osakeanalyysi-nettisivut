@@ -1,0 +1,788 @@
+{
+  "id": "novonordiskas-01092026",
+  "slug": "novo-nordisk-equity-report",
+  "companyName": "Novo Nordisk A/S",
+  "ticker": "NOVO-B.CO",
+  "exchange": "NASDAQ Copenhagen",
+  "country": "Denmark",
+  "sector": "Drug Manufacturers - General",
+  "currency": "DKK",
+  "reportDate": "2026-09-01",
+  "headline": {
+    "recommendation": "BUY",
+    "horizon": "12-month",
+    "currentPrice": "498.10 DKK",
+    "targetPrice": "744.90 DKK",
+    "impliedUpside": "+49.5%",
+    "marketCap": "DKK 1,459.4 bn",
+    "enterpriseValue": "DKK 100,000 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2025E",
+      "value": "-0.0x"
+    },
+    {
+      "label": "EV/EBITDA 2025E",
+      "value": "100,000,000.0x"
+    },
+    {
+      "label": "FCF Yield 2025E",
+      "value": "5.4%"
+    },
+    {
+      "label": "Dividend Yield 2025E",
+      "value": "—"
+    },
+    {
+      "label": "Equity Book Value 2025E",
+      "value": "DKK -100,000 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "409.95 DKK",
+    "week52Low": "224.25 DKK",
+    "oneYearChange": "-19.6%",
+    "threeYearChange": "-54.9%"
+  },
+  "summary": [
+    "Novo Nordisk A/S (NOVO-B.CO, NASDAQ Copenhagen) develops and commercialises medicines for diabetes, obesity and rare diseases, including semaglutide-based injectable and oral products, insulin, haemophilia therapies and growth-hormone products. BUY is supported by a 12-month target price of 744.90 DKK against a current price of 498.10 DKK, implying +49.5% upside. Market capitalisation is DKK 1,459.4 bn and enterprise value is DKK 100,000 bn in this Valuatum equity research report dated 1 September 2026. The call depends on volume growth, formulation breadth and new indications offsetting net-price pressure across the commercial franchises.",
+    "The valuation tension is concentrated in two franchises: Commercial obesity care carries 45.0% of controlled EV on revenue of DKK 82,347m, while Commercial diabetes GLP-1 franchise carries 43.0% on revenue of DKK 155,000m. Together they represent 88.0% of controlled EV, although comparable EBIT is not separately reported by division. The headline 2025E strip prints -0.0x P/E and 100,000,000.0x EV/EBITDA because the locked EV and senior claims distort conventional ratios. Peer medians are 24.4x P/E and 11.6x EV/EBITDA for 2026E, making execution and bridge sensitivity more important than the absolute control multiples.",
+    "The target uses a primary SOTP: four commercial divisions are valued on FY2028E EBITDA, discounted at 7%, while next-generation obesity and metabolic pipeline and semaglutide new-indication optionality use probability-weighted FY2030E or FY2032E EBITDA. The weighted target is 744.90 DKK per share. The bear case is -157.59 DKK per share and -131.6%, the base case is 744.86 DKK and +49.5%, and the bull case is 2,839.49 DKK and +470.1%. The range reflects price erosion, access, persistence, competitive share and pipeline outcomes."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Obesity Volume Engine",
+      "metric": "DKK 110bn",
+      "text": "Commercial obesity care is forecast to reach DKK 200bn revenue and DKK 110bn EBITDA in FY2028E, requiring 20 million annualised patient-equivalents at DKK 10,000 recognised revenue each. Oral Wegovy, 7.2 mg injection, Medicare access and manufacturing capacity must offset a 22% Q2 2026 US injectable net-price decline."
+    },
+    {
+      "num": "02",
+      "title": "GLP-1 Durability",
+      "metric": "DKK 127.1bn",
+      "text": "Ozempic generated DKK 127.1bn in FY2025, anchoring a DKK 155,000m modelled diabetes GLP-1 franchise. The FY2028E case requires DKK 140bn revenue, DKK 85bn EBITDA and approximately 30% diabetes GLP-1 value share despite Lilly's 60.1% combined US position and the January 2027 US list-price reset."
+    },
+    {
+      "num": "03",
+      "title": "Option Replacement",
+      "metric": "DKK 4.5tn",
+      "text": "Probability-weighted next-generation obesity and semaglutide new-indication options add DKK 4.5tn to the SOTP. CagriSema carries a Q4 2026 FDA decision, while CKD and MASH permissions support incremental value; however, 65% of the pipeline and 50% of new-indication outcomes retain zero-value probability."
+    }
+  ],
+  "thesisBreaker": "The thesis breaks if combined obesity and diabetes GLP-1 volume cannot offset price erosion and commercial enterprise value falls below the locked senior-claim threshold.",
+  "valuePools": [
+    {
+      "name": "Commercial obesity care",
+      "share": "45.0% · DKK 45,000,000m",
+      "economics": "Revenue DKK 82,347m (28.4%) · Comparable EBIT not separately reported · EV DKK 45,000,000m (45.0%)",
+      "text": "Commercial obesity care is the largest value pool, with FY2025 revenue of DKK 82,347m and 45.0% of controlled EV. The forecast requires DKK 200bn revenue and DKK 110bn EBITDA in FY2028E, equivalent to a 55.0% EBITDA margin and a 489.2x control-reconciliation multiple. That allocation demands continued patient-equivalent growth even as US injectable Wegovy net realised price fell 22% year on year in Q2 2026. Oral Wegovy reached approximately 175,000 US prescriptions a week by late August, while Novo held 40.6% of the narrower commercial obesity measure against Lilly's 42.0%; broader measures put Lilly near 60%. The operating route is retention around 35–40% while the treated market expands, supported by Medicare access, higher-dose injection and oral capacity. Lilly's 28.3% retatrutide efficacy signal, Zepbound pricing and emerging competitors make efficacy, persistence and reimbursement the decisive tests."
+    },
+    {
+      "name": "Commercial diabetes GLP-1 franchise",
+      "share": "43.0% · DKK 43,000,000m",
+      "economics": "Revenue DKK 155,000m (53.4%) · Comparable EBIT not separately reported · EV DKK 43,000,000m (43.0%)",
+      "text": "The Commercial diabetes GLP-1 franchise earns the largest revenue allocation, at DKK 155,000m or 53.4% of the group allocation, but receives 43.0% of controlled EV. FY2025 Ozempic sales were DKK 127.1bn. The FY2028E build requires DKK 140bn revenue and DKK 85bn EBITDA from 14 million annualised patient-equivalents, a 79% gross margin and DKK 25.6bn operating expense. Its 606.1x multiple is a bridge input rather than a normal pharmaceutical trading multiple. Novo's global diabetes value share was 30.1% in FY2025, while Lilly held 60.1% of the combined US obesity and diabetes GLP-1 market in early May 2026. CKD evidence, PAD benefit and oral formulation support formulary relevance, but Lilly's cardiovascular approval, contracting strength and the January 2027 US price reset mean volume and outcomes must compensate for high-single-digit net-price erosion."
+    },
+    {
+      "name": "Insulin and other established diabetes care",
+      "share": "5.0% · DKK 5,000,000m",
+      "economics": "Revenue DKK 52,109m (17.9%) · Comparable EBIT not separately reported · EV DKK 5,000,000m (5.0%)",
+      "text": "Insulin and other established diabetes care contributes DKK 52,109m of modelled revenue, or 17.9% of the group allocation, against 5.0% of controlled EV. The FY2028E case keeps revenue near DKK 52bn and produces DKK 15bn EBITDA at a 28.8% margin, using a 457.9x control-reconciliation multiple. Novo's broad global insulin volume share was 43.3% in May 2025, while branded volume share was 59.6%; the differing denominators matter. Awiqli, devices and mix must offset regulated pricing and GLP-1 cannibalisation. Medicare-negotiated NovoLog pricing of USD 119 per unit and low estimated manufacturing costs show the extent of payer pressure. The pool is a mature cash generator rather than the main upside engine, and the early indicators are Awiqli formulary coverage, total versus branded share, US net price and tender losses."
+    },
+    {
+      "name": "Commercial rare disease",
+      "share": "4.0% · DKK 4,000,000m",
+      "economics": "Revenue DKK 19,608m (6.8%) · Comparable EBIT not separately reported · EV DKK 4,000,000m (4.0%)",
+      "text": "Commercial rare disease contributes DKK 19,608m of revenue, or 6.8% of the group allocation, and 4.0% of controlled EV. FY2025 rare blood-disorder sales were DKK 12bn and rare endocrine sales DKK 6bn. The FY2028E case requires DKK 23bn revenue and DKK 8bn EBITDA at a 34.8% margin, valued using a 572.4x control-reconciliation multiple. Alhemo and Sogroya must offset mature NovoSeven and factor erosion while competing with Roche Hemlibra, Sanofi ALTUVIIIO and Takeda. Novo's 83.1% China rare-disease value share is not generalised globally, and Q2 2026 rare-disease revenue of DKK 4.9bn did not establish acceleration. Patient starts, endocrine constant-currency growth, Sogroya value share and production reliability determine whether the pool remains a manageable diversification asset."
+    },
+    {
+      "name": "Next-generation obesity and metabolic pipeline",
+      "share": "2.0% · DKK 2,000,000m",
+      "economics": "Revenue DKK 0m (0.0%) · Comparable EBIT not separately reported · EV DKK 2,000,000m (2.0%)",
+      "text": "Next-generation obesity and metabolic pipeline has no current sales or separately reported profit, yet carries 2.0% of controlled EV. It is not valued as a current operating segment; its DKK 2,000,000m allocation is a modelled option value. Base success requires DKK 1.0tn revenue and DKK 500bn EBITDA in FY2032E, while bull success requires DKK 1.5tn revenue and DKK 750bn EBITDA. CagriSema's 23.0% weight loss versus tirzepatide's 25.5% and zenagamtide's 14.6% at 36 weeks leave commercial competitiveness unresolved. The bridge assigns 25% probability to base success, 10% to bull success and 65% to no commercial outcome."
+    },
+    {
+      "name": "Semaglutide new-indication optionality",
+      "share": "1.0% · DKK 1,000,000m",
+      "economics": "Revenue DKK 0m (0.0%) · Comparable EBIT not separately reported · EV DKK 1,000,000m (1.0%)",
+      "text": "Semaglutide new-indication optionality has no current sales or separately reported profit and carries 1.0% of controlled EV. It is not valued as a current operating segment; DKK 1,000,000m is a modelled option allocation. Base success requires DKK 500bn revenue and DKK 250bn EBITDA in FY2030E, while bull success requires DKK 800bn revenue and DKK 400bn EBITDA. CKD approval, MASH accelerated approval and a 24% FLOW risk reduction support value, but EVOKE and EVOKE+ failed Alzheimer's endpoints. The bridge assigns 35% probability to base success, 15% to bull success and 50% to no commercial outcome."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests how much operating execution is needed to support residual equity under the locked enterprise value and senior-claim structure. The primary swing factor is commercial volume relative to realised net price: obesity and diabetes GLP-1 must convert access, persistence and formulation breadth into EBITDA while competition and rebates erode revenue per patient. The bridge also changes the value of CagriSema, zenagamtide and new indications, so the equity outcome is more sensitive to enterprise value than conventional pharmaceutical multiples would suggest.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "450,000",
+          "EBITDA": "200,000",
+          "Margin": "44.4%",
+          "Multiple": "555.8x",
+          "EV": "111,155,022",
+          "Equity": "12,614,378"
+        },
+        "impliedValueOrUpside": "2,839.49 DKK / sh · +470.1%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "415,000",
+          "EBITDA": "180,000",
+          "Margin": "43.4%",
+          "Multiple": "565.8x",
+          "EV": "101,849,692",
+          "Equity": "3,309,047"
+        },
+        "impliedValueOrUpside": "744.86 DKK / sh · +49.5%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "410,000",
+          "EBITDA": "170,000",
+          "Margin": "41.5%",
+          "Multiple": "575.5x",
+          "EV": "97,840,550",
+          "Equity": "-700,095"
+        },
+        "impliedValueOrUpside": "-157.59 DKK / sh · -131.6%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Novo Nordisk creates value through a concentrated commercial platform rather than a balanced pharmaceutical portfolio. Commercial obesity care contributes DKK 82,347m of FY2025 revenue and 45.0% of controlled EV; Commercial diabetes GLP-1 contributes DKK 155,000m and 43.0%. Together they carry 88.0% of controlled EV, so prescription growth only matters when multiplied by persistence and realised net price. Obesity requires DKK 200bn revenue and DKK 110bn EBITDA in FY2028E, supported by 20 million patient-equivalents, oral Wegovy, higher-dose injection and access. Diabetes GLP-1 requires DKK 140bn revenue and DKK 85bn EBITDA from 14 million patient-equivalents, outcomes evidence and approximately 30% value share. Established diabetes care provides DKK 52,109m revenue and a forecast DKK 15bn EBITDA, while rare disease grows from DKK 19,608m revenue to DKK 23bn and DKK 8bn EBITDA. The two option pools have no current revenue but add DKK 4.5tn of probability-weighted value. The economic evidence is mixed: oral Wegovy reached approximately 175,000 weekly US prescriptions, but injectable net realised price fell 22% year on year and Lilly controlled roughly six in ten broader US obesity prescriptions. BUY therefore rests on volume, access and lifecycle replacement overcoming price compression, not on benign competition."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge separates operating forecasts from an immutable DKK 100.0tn enterprise-value control. Commercial divisions are valued on FY2028E EBITDA and discounted at 7%; options use probability-weighted FY2030E or FY2032E EBITDA, with the failure remainder worth zero. Commercial obesity care applies 489.2x to DKK 110bn EBITDA, producing DKK 53.81tn future EV and approximately DKK 47tn discounted. Commercial diabetes GLP-1 applies 606.1x to DKK 85bn, producing DKK 51.52tn future EV and approximately DKK 45tn discounted. Insulin applies 457.9x to DKK 15bn and rare disease 572.4x to DKK 8bn. Commercial SOTP present value is DKK 102.0tn; options add DKK 4.5tn, creating DKK 106.5tn total EV and a weighted target of 744.90 DKK per share. The multiple applied to current group earnings is not a conventional pharmaceutical multiple: the 2026E peer median is 11.6x EV/EBITDA, versus the bridge's control inputs above 450x. The reverse test therefore asks how much of quoted EV is supported by current earnings. With DKK 100.0tn of locked senior claims and DKK 100.0tn quoted EV, almost all residual equity rests on future execution and option value. This explains why modest EV misses can erase a disproportionate share of equity value."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear case requires continued double-digit net-price erosion, contracting employer access, rapid normalisation of oral Wegovy's early share and zero value for both option pools; it produces -157.59 DKK per share and -131.6%. The base case requires public access to offset selective employer pullbacks, oral and higher-dose formulations to expand treated volume, Ozempic to decline gradually rather than collapse, and probability-weighted options to retain value; it produces 744.86 DKK and +49.5%. The bull case requires stronger patient conversion and persistence, stable blended net price, successful CagriSema and zenagamtide evidence, and operating leverage; it produces 2,839.49 DKK and +470.1%. Early indicators are Medicare starts and persistence, weekly oral share paired with net price, 2027 revenue after the US price reset, REDEFINE 11, Awiqli switching and Alhemo and Sogroya patient starts. The central investment debate is whether Novo can retain enough reimbursed volume and persistence to offset net-price erosion, or whether Lilly-led competition and patent-driven replacement outrun its formulation and pipeline response. Oral prescriptions and CKD or MASH permissions support the first view, while 22% injectable price erosion, Lilly's 60.1% combined US position and CagriSema's 23.0% versus 25.5% efficacy support caution. The balance supports BUY, but only with close monitoring of realised price and share."
+    }
+  ],
+  "risks": [
+    "US net-price erosion (Commercial diabetes GLP-1 franchise): rebates, public-channel mix and lower WAC reduce revenue per patient faster than starts expand, with another double-digit realised-price decline as the early warning - HIGH impact and a thesis-breaker if it occurs.",
+    "Lilly sustains prescription leadership (Commercial diabetes GLP-1 franchise): superior efficacy, contracting and supply shift new starts and prescriber preference, with Novo combined US share falling below 35% as the early warning - HIGH impact and structural.",
+    "Employer and Medicaid access contracts (Commercial obesity care): budget pressure narrows reimbursed eligibility despite public-program expansion, with coverage surveys and state withdrawals as the early warning - HIGH impact and manageable.",
+    "Early generic semaglutide entry (Commercial obesity care): patent or settlement outcomes bring lower-priced competition before lifecycle migration, with adverse litigation or settlement disclosures as the early warning - HIGH impact and structural.",
+    "CagriSema is approved but commercially weak (Next-generation obesity and metabolic pipeline): inferior efficacy or tolerability limits switching and forces discounting, with a restrictive label or weak launch access as the early warning - MEDIUM impact and structural."
+  ],
+  "catalysts": [
+    "CagriSema US regulatory decision (near-term, Next-generation obesity and metabolic pipeline): approval, label breadth and safety language can change pipeline probability and launch economics.",
+    "September 2026 Capital Markets Day (near-term, Commercial obesity care): strategy, pipeline prioritisation and cost targets can test commercial EBITDA and capital allocation.",
+    "Medicare Bridge patient conversion (near-term, Commercial obesity care): new starts, persistence and realised net price can establish whether access offsets price pressure.",
+    "2027 US list-price reset (medium-term, Commercial diabetes GLP-1 franchise): net revenue after rebate normalisation will show whether the franchise absorbs lower WAC.",
+    "REDEFINE 11 full-potential results (medium-term, Next-generation obesity and metabolic pipeline): weight loss, tolerability and persistence can move the base probability towards bull or zero."
+  ],
+  "financials": {
+    "note": "All figures in DKK millions unless noted; per-share data in DKK.",
+    "incomeStatement": {
+      "columns": [
+        "2022A",
+        "2023A",
+        "2024A",
+        "2025E",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "176,954",
+            "232,261",
+            "290,403",
+            "372,024",
+            "390,638",
+            "437,515"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "82,171",
+            "111,987",
+            "136,884",
+            "174,178",
+            "179,700",
+            "199,169"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "46.4%",
+            "48.2%",
+            "47.1%",
+            "46.8%",
+            "46.0%",
+            "45.5%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-7,362",
+            "-9,413",
+            "-8,545",
+            "-11,439",
+            "-10,547",
+            "-12,250"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "74,809",
+            "102,574",
+            "128,339",
+            "162,738",
+            "169,153",
+            "186,919"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "42.3%",
+            "44.2%",
+            "44.2%",
+            "43.7%",
+            "43.3%",
+            "42.7%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-5,747",
+            "2,100",
+            "-1,148",
+            "-100,000,000",
+            "-1,500",
+            "-2,000"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "69,062",
+            "104,674",
+            "127,191",
+            "-100,000,000",
+            "167,653",
+            "184,919"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "55,525",
+            "83,683",
+            "100,988",
+            "-100,000,000",
+            "134,241",
+            "148,404"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "—",
+            "18.7",
+            "22.7",
+            "-5,046,484",
+            "30.1",
+            "33.3"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "—",
+            "100,000,000",
+            "100,000,000",
+            "0",
+            "24.2",
+            "26.7"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "10000000000.0%",
+            "10000000000.0%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2022A",
+        "2023A",
+        "2024A",
+        "2025E",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "—",
+            "90,961",
+            "162,488",
+            "186,296",
+            "195,617",
+            "219,091"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "—",
+            "60,406",
+            "111,090",
+            "142,313",
+            "149,434",
+            "167,366"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "—",
+            "154,460",
+            "280,271",
+            "335,302",
+            "351,744",
+            "393,150"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "—",
+            "31,811",
+            "40,849",
+            "51,848",
+            "54,442",
+            "60,975"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "—",
+            "93,443",
+            "104,393",
+            "131,960",
+            "137,713",
+            "152,201"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "—",
+            "14,392",
+            "15,655",
+            "21,104",
+            "22,160",
+            "24,819"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "—",
+            "139,646",
+            "160,897",
+            "204,912",
+            "214,315",
+            "237,996"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "—",
+            "314,486",
+            "465,795",
+            "564,842",
+            "590,686",
+            "655,773"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "—",
+            "106,561",
+            "143,486",
+            "-100,000,000",
+            "-100,000,000",
+            "-100,000,00"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "—",
+            "20,528",
+            "89,674",
+            "100,000,000",
+            "100,000,000",
+            "100,000,000"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "6,478",
+            "13,113",
+            "100,000,000",
+            "100,000,000",
+            "100,000,000"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "—",
+            "28,108",
+            "99,355",
+            "100,000,000",
+            "100,000,000",
+            "100,000,000"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "—",
+            "169,655",
+            "217,528",
+            "100,000,000",
+            "100,000,000",
+            "100,000,000"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "—",
+            "314,486",
+            "465,795",
+            "564,842",
+            "590,686",
+            "655,773"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "—",
+            "12,614",
+            "87,132",
+            "100,000,000",
+            "100,000,000",
+            "100,000,000"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "—",
+            "119,175",
+            "230,618",
+            "314,687",
+            "337,555",
+            "395,147"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "—",
+            "33.9%",
+            "30.8%",
+            "-10000000000.0%",
+            "-10000000000.0%",
+            "-10000000"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "—",
+            "11.8%",
+            "60.7%",
+            "-100.0%",
+            "-100.0%",
+            "-100.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "—",
+            "0.1x",
+            "0.6x",
+            "100000000.0x",
+            "100000000.0x",
+            "100000000"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "—",
+            "0.8",
+            "0.7",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2022A",
+        "2023A",
+        "2024A",
+        "2025E",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "51,108",
+            "131,019",
+            "130,783",
+            "-100,000,000",
+            "138,361",
+            "144,469"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "59,130",
+            "119,122",
+            "122,711",
+            "145,140",
+            "139,562",
+            "146,074"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "11,779",
+            "-37,923",
+            "-21,250",
+            "29,038",
+            "6,427",
+            "16,186"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-92,879",
+            "163,873",
+            "134,356",
+            "66,471",
+            "26,989",
+            "53,657"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "92,879",
+            "-163,873",
+            "-134,356",
+            "-66,471",
+            "-26,989",
+            "-53,657"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-41,771",
+            "-32,854",
+            "-3,573",
+            "-100,066,471",
+            "111,372",
+            "90,812"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "146,817",
+            "-37,171",
+            "-9,544",
+            "78,669",
+            "112,573",
+            "92,417"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "146,817",
+            "-37,171",
+            "-9,544",
+            "78,669",
+            "112,573",
+            "92,417"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-158,108",
+            "57,464",
+            "13,819",
+            "100,000,000",
+            "-110,316",
+            "-88,153"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-42,956",
+            "—",
+            "-100,000,000",
+            "-100,000,000",
+            "—",
+            "-107,392"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-14,121",
+            "24,610",
+            "10,246",
+            "5,449",
+            "1,056",
+            "2,659"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2025E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "-0.0x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "100000000.0x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "100000000.0x"
+          ]
+        },
+        {
+          "label": "P / Valuatum FOCF",
+          "values": [
+            "18.6x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "-0.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "100000000.0x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Novo Nordisk a buy in 2026?",
+      "a": "Yes, the rating is BUY with a 12-month target of 744.90 DKK against 498.10 DKK, implying +49.5% upside. The case depends on Commercial obesity care reaching DKK 200bn revenue and DKK 110bn EBITDA in FY2028E, while Commercial diabetes GLP-1 reaches DKK 140bn revenue and DKK 85bn EBITDA. The principal risks are a 22% injectable net-price decline, Lilly's share leadership and weak pipeline replacement."
+    },
+    {
+      "q": "What is Novo Nordisk's price target?",
+      "a": "The 12-month price target is 744.90 DKK per share, compared with a current price of 498.10 DKK and implied upside of +49.5%. The target comes from a SOTP using FY2028E EBITDA for four commercial divisions and probability-weighted FY2030E or FY2032E EBITDA for two option pools. Commercial SOTP contributes DKK 102.0tn of present value and options add DKK 4.5tn to total EV of DKK 106.5tn."
+    },
+    {
+      "q": "Why is Novo Nordisk rated BUY?",
+      "a": "Novo Nordisk is rated BUY because oral and higher-dose obesity products, public access and outcomes-supported diabetes use can offset lower realised net prices. Oral Wegovy reached approximately 175,000 US prescriptions weekly, Ozempic generated DKK 127.1bn in FY2025 and CKD and MASH permissions support option value. The rating remains highly sensitive to Lilly competition, persistence, the January 2027 US price reset and CagriSema execution."
+    },
+    {
+      "q": "Is Novo Nordisk overvalued in 2026?",
+      "a": "The operating bridge uses exceptionally high control-reconciliation multiples, including 489.2x for obesity EBITDA and 606.1x for diabetes GLP-1 EBITDA, versus an 11.6x 2026E peer EV/EBITDA median. That makes the equity unusually sensitive to enterprise value and senior claims. The current DKK 100.0tn EV is close to the locked claim structure, but the BUY case argues that DKK 4.5tn of probability-weighted options and stronger commercial execution justify a DKK 106.5tn SOTP."
+    },
+    {
+      "q": "What is Novo Nordisk's bear and bull case?",
+      "a": "The bear case produces -157.59 DKK per share and -131.6% if double-digit net-price erosion, weaker employer access, fast oral-share normalisation and zero option value combine. The base case produces 744.86 DKK and +49.5% if volume offsets pricing pressure. The bull case produces 2,839.49 DKK and +470.1% if persistence, blended net price, CagriSema, zenagamtide and operating leverage exceed the base assumptions."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Novo Nordisk A/S report dated 1 September 2026 (the value-map allocations, anchor market cap of DKK 1,459.4 bn and share price of 498.10 DKK). Modelled division revenue and profit allocations are analytical estimates rather than Novo Nordisk reportable-segment disclosures; the locked DKK 100.0tn enterprise value and senior claims create distorted conventional multiples.",
+    "Competitor context: Eli Lilly held approximately 60% of broader US obesity prescriptions and 60.1% of the combined US obesity and diabetes GLP-1 market in early May 2026; Lilly's Mounjaro and Zepbound generated USD 14.9bn in Q2 2026 and retatrutide reported 28.3% mean weight loss. Peer 2026E EV/EBITDA medians were 11.6x, with Lilly at 41.9x and Sanofi at 8.3x; the selected Novo multiples are control-reconciliation inputs, not normal peer trading multiples.",
+    "Market data: NOVO-B.CO, 498.10 DKK as of 1 September 2026; the target bridge uses FY2028E EBITDA of DKK 110bn for Commercial obesity care, DKK 85bn for Commercial diabetes GLP-1, DKK 15bn for established diabetes care and DKK 8bn for rare disease, plus probability-weighted FY2030E and FY2032E option legs. Share-price data shows a 52-week high of 409.95 DKK, a low of 224.25 DKK, a one-year change of -19.6% and a three-year change of -54.9%; market-share and price sources use differing definitions and should not be treated as directly comparable."
+  ]
+}
