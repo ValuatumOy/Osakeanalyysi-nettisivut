@@ -21,6 +21,11 @@
       "reportId": "elisa-19082026"
     },
     {
+      "slug": "fortum-equity-report",
+      "ticker": "FORTUM.HE",
+      "reportId": "fortum-30092026"
+    },
+    {
       "slug": "intel-equity-report",
       "ticker": "INTC",
       "reportId": "intel-05062026"
@@ -38,7 +43,7 @@
     {
       "slug": "nokia-equity-report",
       "ticker": "NOKIA.HE",
-      "reportId": "nokia-14102026"
+      "reportId": "nokia-26102026-2"
     },
     {
       "slug": "novo-nordisk-equity-report",
@@ -88,17 +93,17 @@
     {
       "slug": "stora-enso-equity-report",
       "ticker": "STERV.HE",
-      "reportId": "storaensooyj-01092026-2"
+      "reportId": "storaenso-26102026"
     },
     {
       "slug": "tesla-equity-report",
       "ticker": "TSLA",
-      "reportId": "teslainc-05092026-rev-jnu7evsy-3"
+      "reportId": "tesla-26102026-2"
     },
     {
       "slug": "upm-equity-report",
       "ticker": "UPM.HE",
-      "reportId": "upmkymmeneoyj-01092026"
+      "reportId": "upm-15092026-2"
     },
     {
       "slug": "wartsila-equity-report",

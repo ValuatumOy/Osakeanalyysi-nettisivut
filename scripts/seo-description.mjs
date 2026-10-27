@@ -32,8 +32,9 @@ export const DESCRIPTION_LIMIT = 160;
  * @param {string} [o.targetPrice]
  * @param {number} [o.analysts]   published analyst reports on this company
  * @param {boolean} [o.disagrees] whether the top-ranked analyst differs from the engine
+ * @param {boolean} [o.marketFirst] a market report: no rating and no price target to promise
  */
-export function reportDescription({ name, ticker, recommendation, targetPrice, analysts = 0, disagrees = null }) {
+export function reportDescription({ name, ticker, recommendation, targetPrice, analysts = 0, disagrees = null, marketFirst = false }) {
   const rated = SHOW_RATINGS_IN_SNIPPET && recommendation && targetPrice;
 
   // Longest first; a long company name walks down the list rather than truncating.
@@ -42,6 +43,12 @@ export function reportDescription({ name, ticker, recommendation, targetPrice, a
       `${name} (${ticker}) stock analysis: Valuatum rates ${ticker} ${recommendation} with a ${targetPrice} price target.`,
       `${name} (${ticker}) stock analysis: Valuatum rates it ${recommendation}, ${targetPrice} target.`,
       `${name} (${ticker}): Valuatum rates it ${recommendation}, ${targetPrice} target.`,
+    ]
+    : marketFirst
+    ? [
+      `${name} (${ticker}) stock analysis from Valuatum: what the share price is made of, business by business.`,
+      `${name} (${ticker}) stock analysis: what the share price is made of.`,
+      `${name} (${ticker}): what the share price is made of.`,
     ]
     : [
       `${name} (${ticker}) stock analysis and AI equity research from Valuatum: valuation, forecasts and a 12-month price target.`,
@@ -69,6 +76,12 @@ export function reportDescription({ name, ticker, recommendation, targetPrice, a
         ` ${n} on ${name}, ranked by peer review.`,
         ` Plus ${n}, peer-ranked.`,
       ])
+    : marketFirst
+    ? [
+      ' Peer multiples, forecasts and what to watch.',
+      ' Peers, forecasts, what to watch.',
+      '',
+    ]
     : [
       ' Segment value analysis, reverse valuation and full financials.',
       ' Segment value, reverse valuation, financials.',

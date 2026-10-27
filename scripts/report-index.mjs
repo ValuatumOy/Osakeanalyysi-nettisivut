@@ -75,8 +75,9 @@ export function loadAllReports() {
       companyName: data.companyName || data.slug,
       reportDate,
       filenameDate: filenameDate(data.id || file.replace(/\.json$/, '')),
-      // Only a rated report is citable for a valuation claim.
-      kind: headline.recommendation ? 'full' : 'coverage',
+      // Only a rated report is citable for a valuation claim. A market-first report is a
+      // real report, not a coverage stub, but it carries no rating or target to cite.
+      kind: headline.recommendation ? 'full' : data.reportKind === 'market-first' ? 'market' : 'coverage',
       recommendation: headline.recommendation || null,
       currentPrice: headline.currentPrice || null,
       targetPrice: headline.targetPrice || null,

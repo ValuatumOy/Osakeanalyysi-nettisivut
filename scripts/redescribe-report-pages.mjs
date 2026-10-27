@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { reportDescription, DESCRIPTION_LIMIT } from './seo-description.mjs';
-import { identity, headlineOf } from './report-headline.mjs';
+import { identity, headlineOf, isMarketFirstPage } from './report-headline.mjs';
 import { fetchAnalystIndex, analystClause } from './analyst-index.mjs';
 import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
@@ -55,6 +55,7 @@ for (const f of fs.readdirSync(DIR).filter((x) => x.endsWith('.html'))) {
     ticker: id.ticker,
     recommendation: headline?.recommendation,
     targetPrice: headline?.targetPrice,
+    marketFirst: isMarketFirstPage(html),
     analysts: clause.analysts,
     disagrees: clause.disagrees,
   });

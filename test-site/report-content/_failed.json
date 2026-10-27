@@ -2,8 +2,7 @@
   "alphabetinc-23102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "nokia-13102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "nokia-26102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
-  "nokia-26102026-2": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "test-22072026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "tesla-26102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
-  "tesla-26102026-2": "headline.recommendation is \"—\", expected BUY/HOLD/SELL"
+  "upm-27102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL"
 }

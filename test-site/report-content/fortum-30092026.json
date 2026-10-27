@@ -1,0 +1,782 @@
+{
+  "id": "fortum-30092026",
+  "slug": "fortum-equity-report",
+  "companyName": "Fortum Oyj",
+  "ticker": "FORTUM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Renewable Utilities",
+  "currency": "EUR",
+  "reportDate": "2026-09-30",
+  "headline": {
+    "recommendation": "HOLD",
+    "horizon": "12-month",
+    "currentPrice": "20.76 EUR",
+    "targetPrice": "22.30 EUR",
+    "impliedUpside": "+7.4%",
+    "marketCap": "EUR 18.6 bn",
+    "enterpriseValue": "EUR 20.8 bn"
+  },
+  "multiples": [
+    {
+      "label": "P/E 2026E",
+      "value": "18.7x"
+    },
+    {
+      "label": "EV/EBITDA 2026E",
+      "value": "13.0x"
+    },
+    {
+      "label": "FCF Yield 2026E",
+      "value": "6.6%"
+    },
+    {
+      "label": "Dividend Yield 2026E",
+      "value": "4.3%"
+    },
+    {
+      "label": "Equity Book Value",
+      "value": "EUR 8.4 bn"
+    }
+  ],
+  "priceStats": {
+    "week52High": "25.84 EUR",
+    "week52Low": "15.77 EUR",
+    "oneYearChange": "+47.1%",
+    "threeYearChange": "+115.5%"
+  },
+  "summary": [
+    "Fortum Oyj (FORTUM.HE, NASDAQ Helsinki) generates electricity from Nordic hydro, nuclear and operating wind assets and sells electricity and related services to consumers through Generation, Consumer Solutions and Other Operations. The HOLD rating carries a 12-month target price of 22.30 EUR against a current price of 20.76 EUR, implying +7.4% upside, with market capitalisation of EUR 18.6 bn and enterprise value of EUR 20.8 bn, in this Valuatum equity research report dated 30 September 2026. The company also studies potential new nuclear capacity in Finland and Sweden, but that option is not in the 2027–2034 group earnings forecast.",
+    "The valuation tension is between a large established-generation earnings base and demanding market allocation. Existing hydro carries 53.2% of EV, or EUR 11,083m, against EUR 580m of modelled 2027 EBIT; existing nuclear carries 31.2%, or EUR 6,495m, against EUR 312m of modelled EBIT; retail carries 15.6%, or EUR 3,248m, against EUR 122m. Fortum trades at 18.7x 2026E P/E and 13.0x 2026E EV/EBITDA, while the quoted EV is 19.71x maintained 2026 EBIT of EUR 1,056m. The price therefore requires hydro capture, nuclear availability and retail margin recovery rather than newbuild earnings.",
+    "The target price is built with an EV/EBIT parts-sum: 23.3x 2027E EBIT for hydro and existing nuclear, 14.7x for wind and solar, 16.1x for retail, and 22.2x for EUR 89m of corporate and unallocated EBIT costs. Established businesses contribute 24.74 EUR per share, probability-weighted potential new nuclear contributes 0.10 EUR, and EUR 2.45 is deducted for net debt and other claims. The bear, base and bull bridge outcomes are 22.29 EUR (+7.4%), 22.34 EUR (+7.6%) and 22.53 EUR (+8.5%) per share."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Flexible hydro engine",
+      "metric": "EUR 580m",
+      "text": "Hydro is allocated EUR 580m of 2027 EBIT and EUR 11,083m of current EV, making achieved prices and dispatch spreads central to the rating. Production was 18.5 TWh in 2025 against a 20–20.5 TWh normal range, while the optimisation premium target falls to EUR 6–8/MWh from 2027."
+    },
+    {
+      "num": "02",
+      "title": "Existing nuclear recovery",
+      "metric": "23.0–23.5",
+      "text": "Existing nuclear is modelled at EUR 340m of 2027 EBIT after 22.1 TWh of 2025 output and 3.9 TWh of lost production from unplanned outages. The updated 2026 expectation of 23.0–23.5 TWh tests recovery, while Loviisa licences through 2050 support longevity but require approximately EUR 1bn of investment."
+    },
+    {
+      "num": "03",
+      "title": "Method risk matters",
+      "metric": "23.3x",
+      "text": "The target applies 23.3x 2027E EBIT to hydro and existing nuclear, 16.1x to retail and 11.4x to conditional new nuclear. These are industry benchmarks rather than issuer-level divisional observations, while regulated-electric comparators do not cleanly match competitive retail economics."
+    }
+  ],
+  "thesisBreaker": "Sustained weak Nordic capture prices combined with costly nuclear outages would invalidate the established-generation earnings path and reduce valuation.",
+  "valuePools": [
+    {
+      "name": "Existing hydro generation",
+      "share": "53.2% · EUR 11,083m",
+      "economics": "Revenue EUR 1,500m (30.1%) · EBIT EUR 580m (62.8%, 38.7% margin) · EV EUR 11,083m (53.2%)",
+      "text": "Existing hydro is the largest market-allocated pool, with EUR 11,083m of EV against EUR 1,500m of modelled revenue and EUR 580m of 2027 EBIT. The allocation implies 19.1x 2027E EBIT before the target bridge's selected 23.3x multiple and year treatment. Its economics depend on normal-year volume, achieved Nordic prices and dispatch optimisation rather than installed capacity alone: 2025 hydro generation was 18.5 TWh versus a 20–20.5 TWh normal range, while the outright Generation portfolio achieved EUR 51.4/MWh and EUR 9.7/MWh of optimisation premium. Fortum's 4.7 GW hydro footprint and 124 listed plants provide scale, but the EUR 51.4/MWh figure is portfolio-wide rather than hydro-only. A 2027 premium of EUR 6–8/MWh and recovery in available output are therefore needed to support the allocated EBIT."
+    },
+    {
+      "name": "Existing nuclear generation",
+      "share": "31.2% · EUR 6,495m",
+      "economics": "Revenue EUR 1,700m (34.1%) · EBIT EUR 312m (33.8%, 18.4% margin) · EV EUR 6,495m (31.2%)",
+      "text": "Existing nuclear carries EUR 6,495m of current EV against EUR 1,700m of modelled revenue and EUR 312m of 2027 EBIT. The bridge applies 23.3x to the forecast EBIT, producing EUR 7,922m before year adjustment, although the comparable listed evidence is not a clean nuclear-only EV/EBIT set. Output fell to 22.1 TWh in 2025 from 24.3 TWh in 2024 after 3.9 TWh of unplanned outage losses, and the 2026 expectation is 23.0–23.5 TWh. Loviisa's operating licences run through 2050, but approximately EUR 1bn of continued-operation and lifetime-extension investment remains relevant. Google's 22-year PPA covers up to 50% of Loviisa capacity, yet its price and earnings effect are undisclosed, so visibility improves without a quantified EBIT uplift."
+    },
+    {
+      "name": "Consumer electricity retail",
+      "share": "15.6% · EUR 3,248m",
+      "economics": "Revenue EUR 3,029m (60.7%) · EBIT EUR 122m (13.2%, 4.0% margin) · EV EUR 3,248m (15.6%)",
+      "text": "Consumer electricity retail is allocated EUR 3,248m of EV against EUR 3,029m of modelled revenue and EUR 122m of reported comparable EBIT. The 2027 forecast rises to EUR 170m of EBIT on EUR 3,237m of revenue, implying a 5.3% margin and requiring EUR 48m more EBIT than FY2025. The bridge applies 16.1x 2027E EBIT, or EUR 2,737m before year adjustment, despite the multiple coming from regulated-electric comparators. Fortum served 2.25 million electricity customers at end-2025 and sold 33.7 TWh, but volume declined from 34.4 TWh while EBIT rose from EUR 76m to EUR 122m. Finnish competition remains material: Helen held an estimated 22% household share and Fortum 15% in 2023, making retention, procurement and cost to serve more important than customer count alone."
+    },
+    {
+      "name": "Existing wind and solar generation",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue EUR 45m (0.9%) · EBIT EUR 1m (0.1%, 0.0% margin) · EV EUR 0m (0.0%)",
+      "text": "Existing wind and solar has EUR 45m of modelled revenue and EUR 1m of comparable EBIT, but receives EUR 0m of current EV allocation. Operating wind generation was 1.0 TWh in 2025 within a 730 MW partnered footprint. The 2027 bridge uses zero EBIT, so the 14.7x benchmark produces zero EV; the value map therefore treats the pool as immaterial to present enterprise value. Fortum's 1.2 GW ready-to-build pipeline by end-2028 is not operating capacity or booked sales. Indicative wind capture of EUR 30/MWh versus EUR 39/MWh LCOE and solar capture and LCOE both at EUR 38/MWh provide no evidence that pipeline MW should be capitalised today."
+    },
+    {
+      "name": "Potential new nuclear capacity",
+      "share": "0.0% · EUR 0m",
+      "economics": "Revenue not separately reported (0.0%) · EBIT not separately reported (—) · EV EUR 0m (0.0%)",
+      "text": "Potential new nuclear capacity is pre-revenue and receives EUR 0m of current EV, so it is not valued as an operating segment. The option depends on Swedish state-aid negotiations, European Commission approval, licences, site rights, firm offtake, consortium financing and a final investment decision. No newbuild revenue or EBIT enters the 2027–2034 group forecast. Its conditional 2045 cases are therefore kept separate from established nuclear and do not alter the current operating allocation."
+    }
+  ],
+  "reverseValuation": {
+    "intro": "The scenario bridge tests what the quoted share price requires from group revenue, EBITDA and margin rather than assigning today's EV directly to a division. The primary swing factor is established-fleet execution: hydro capture and nuclear availability determine whether the base earnings path holds, while the bull case adds stronger earnings and a financeable Swedish newbuild. The negative, neutral and positive new-nuclear legs are probability-weighted once in the target bridge, with a 28% zero-value outcome.",
+    "scenarios": [
+      {
+        "scenario": "Bull",
+        "cols": {
+          "Revenue": "EUR 5,400m",
+          "EBITDA": "EUR 1,487m",
+          "Margin": "23.3%",
+          "Multiple": "15.1x",
+          "EV": "EUR 22,413m",
+          "Equity": "EUR 20,214m"
+        },
+        "impliedValueOrUpside": "22.53 EUR / sh · +8.5%"
+      },
+      {
+        "scenario": "Base",
+        "cols": {
+          "Revenue": "EUR 5,207m",
+          "EBITDA": "EUR 1,325m",
+          "Margin": "19.2%",
+          "Multiple": "16.8x",
+          "EV": "EUR 22,245m",
+          "Equity": "EUR 20,047m"
+        },
+        "impliedValueOrUpside": "22.34 EUR / sh · +7.6%"
+      },
+      {
+        "scenario": "Bear",
+        "cols": {
+          "Revenue": "EUR 5,207m",
+          "EBITDA": "EUR 1,161m",
+          "Margin": "16.1%",
+          "Multiple": "19.1x",
+          "EV": "EUR 22,197m",
+          "Equity": "EUR 19,999m"
+        },
+        "impliedValueOrUpside": "22.29 EUR / sh · +7.4%"
+      }
+    ],
+    "scenarioColumns": [
+      "Revenue",
+      "EBITDA",
+      "Margin",
+      "Multiple",
+      "EV",
+      "Equity"
+    ]
+  },
+  "coreAnalysis": [
+    {
+      "heading": "How the company creates economic value",
+      "text": "Fortum's economic value is concentrated in established Nordic generation and the cash flow attached to available, dispatchable low-carbon output. Generation reported EUR 3,075m of external sales, EUR 3,245m of total segment sales and EUR 893m of comparable EBIT in FY2025, representing 61.6% of group external revenue and 96.6% of group comparable EBIT. Within the analytical map, hydro receives EUR 580m of 2027 EBIT and existing nuclear EUR 340m, while wind and solar receive EUR 0m. Hydro's operating test is a return towards the 20–20.5 TWh normal range from 18.5 TWh in 2025 without losing the optimisation premium; the target falls from EUR 9.7/MWh in 2025 to EUR 6–8/MWh from 2027. Nuclear's test is recovery from 22.1 TWh in 2025 towards 23.0–23.5 TWh in 2026 while keeping fleet availability above 90% and absorbing Loviisa lifetime investment of approximately EUR 1bn. Retail adds scale but not equivalent economics: EUR 3,029m of FY2025 sales produced EUR 122m of EBIT, a 4.0% margin, against a 2027 allocation of EUR 170m and 5.3%. The HOLD follows because the operating recovery is tangible, but the earnings allocations remain conditional and the value map applies different shares to revenue, EBIT and EV."
+    },
+    {
+      "heading": "Putting the divisions back together",
+      "text": "The bridge reconciles EUR 580m of hydro EBIT, EUR 340m of existing nuclear EBIT, EUR 0m of wind and solar EBIT and EUR 170m of retail EBIT, less EUR 89m of central costs, to EUR 1,001m of 2027 group EBIT. Modelled revenue similarly combines EUR 1,570m of hydro sales, EUR 1,635m of existing nuclear sales, EUR 45m of wind and solar sales and EUR 3,237m of retail sales, less EUR 1,285m of central reconciliation, to group sales of EUR 5,207m. The selected 23.3x multiple applied to EUR 340m of nuclear EBIT supports EUR 7,922m of EV; the same multiple applied to EUR 580m of hydro EBIT supports EUR 13,514m. Retail contributes EUR 2,737m at 16.1x, while corporate and unallocated costs subtract EUR 1,976m at 22.2x. Established businesses therefore contribute 24.74 EUR per share before EUR 0.10 from probability-weighted new nuclear and a deduction of EUR 2.45 for net debt and other claims. The quoted EUR 20.8bn EV is 19.71x maintained 2026 EBIT of EUR 1,056m and 12.99x EBITDA. Future execution consequently supports the target only if the selected divisional multiples are accepted and the EBIT path is delivered; the bridge is not evidence that today's EV is independently justified by reported segment earnings."
+    },
+    {
+      "heading": "Scenarios and verdict",
+      "text": "The bear outcome is 22.29 EUR per share, or +7.4%, but requires weaker hydro capture, nuclear availability losses and no material newbuild terminal value rather than a failure of the Loviisa licence. The base outcome is 22.34 EUR, or +7.6%, and requires the revised group forecast, recovery towards 23.0–23.5 TWh of nuclear output, sustained hydro optimisation and a retail margin moving from 4.0% in FY2025 towards 5.3% in 2027. The bull outcome is 22.53 EUR, or +8.5%, and requires stronger established-fleet earnings plus an approved, financeable 3,400 MW Swedish programme with support, offtake, site rights, construction permissions, consortium participation and funding. Early indicators are the October interim report's hydro volume and achieved price, updated nuclear output and outage disclosure, retail sales, customer count and EBIT, and Swedish support and EU decisions. The central debate is whether Nordic scarcity and improved availability can sustain hydro and nuclear earnings, or whether weak capture prices and costly outages expose the target's method and leave retail margin recovery unable to compensate. The balance of evidence supports HOLD, with the numerical indication remaining under review."
+    }
+  ],
+  "risks": [
+    "Hydrological shortfall (Existing hydro generation): output remains below the 20–20.5 TWh normal range, reducing saleable volume and dispatch opportunity, with hydro production as the early warning - HIGH impact and manageable if it occurs.",
+    "Nuclear outages and lifetime costs (Existing nuclear generation): output misses the 23.0–23.5 TWh expectation and investment reduces returns, with nuclear output and outage disclosure as the early warning - HIGH impact and thesis-breaker if it occurs.",
+    "Newbuild cannot secure viable support (Potential new nuclear capacity): market revenue fails to recover financing and build costs, with no agreed CfD, EU approval, consortium or FID as the early warning - HIGH impact and structural.",
+    "Forecast and peer-basis verification (Consumer electricity retail): unexplained tax, D&A and issuer-level EBIT inputs or inappropriate peers distort fair value, with absent tax, D&A and issuer-level EBIT bridges as the early warning - HIGH impact and thesis-breaker if it occurs.",
+    "Retail competition (Consumer electricity retail): acquisition and service costs erode EBIT margin, with customer growth without comparable EBIT growth as the early warning - MEDIUM impact and manageable."
+  ],
+  "catalysts": [
+    "January–September 2026 interim report (near-term, Existing hydro generation): hydro volume and achieved price would test normalisation and the price-capture allocation.",
+    "Updated nuclear generation and outage disclosure (near-term, Existing nuclear generation): 2026 output against 23.0–23.5 TWh would test availability-led EBIT recovery.",
+    "Elmera offer outcome (near-term, Consumer electricity retail): completion and disclosed economics would clarify customers, integration and acquisition funding.",
+    "2027 optimisation-premium evidence (medium-term, Existing hydro generation): portfolio premium against the EUR 6–8/MWh target would change sustainable generation earnings.",
+    "Swedish state-support and EU decision (long-term, Potential new nuclear capacity): negotiated loan, CfD and state-aid approval would test whether positive EBIT is financeable."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "6,711",
+            "5,800",
+            "4,989",
+            "5,184",
+            "5,207",
+            "5,250"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "2,042",
+            "1,689",
+            "1,239",
+            "1,603",
+            "1,325",
+            "1,414"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "30.4%",
+            "29.1%",
+            "24.8%",
+            "30.9%",
+            "25.4%",
+            "26.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-380",
+            "-364",
+            "-303",
+            "-547",
+            "-324",
+            "-324"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,662",
+            "1,325",
+            "936",
+            "1,056",
+            "1,001",
+            "1,090"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "24.8%",
+            "22.8%",
+            "18.8%",
+            "20.4%",
+            "19.2%",
+            "20.8%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-78",
+            "74",
+            "—",
+            "-50",
+            "-58",
+            "-453"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,584",
+            "1,399",
+            "936",
+            "1,007",
+            "943",
+            "637"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-2,068",
+            "1,160",
+            "763",
+            "995",
+            "933",
+            "629"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-2.3",
+            "1.3",
+            "0.9",
+            "1.1",
+            "1",
+            "0.7"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.9",
+            "1.2",
+            "1.4",
+            "0.9",
+            "0.8",
+            "0.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-39.5%",
+            "89.0%",
+            "164.6%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "6,612",
+            "6,070",
+            "6,572",
+            "6,338",
+            "6,366",
+            "6,418"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "394",
+            "343",
+            "347",
+            "361",
+            "362",
+            "365"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "249",
+            "206",
+            "211",
+            "211",
+            "211",
+            "211"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "10,434",
+            "9,932",
+            "10,602",
+            "10,381",
+            "10,411",
+            "10,466"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "452",
+            "420",
+            "512",
+            "477",
+            "479",
+            "483"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "2,712",
+            "2,064",
+            "1,615",
+            "1,553",
+            "1,559",
+            "1,570"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "4,183",
+            "4,046",
+            "2,903",
+            "3,226",
+            "3,241",
+            "3,267"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "7,347",
+            "6,530",
+            "5,030",
+            "5,256",
+            "5,279",
+            "5,321"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "18,739",
+            "17,307",
+            "16,444",
+            "16,449",
+            "16,502",
+            "16,599"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "8,499",
+            "9,153",
+            "8,620",
+            "8,359",
+            "8,495",
+            "8,379"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "4,476",
+            "4,258",
+            "3,595",
+            "2,621",
+            "2,578",
+            "2,682"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1,554",
+            "475",
+            "1,151",
+            "2,621",
+            "2,578",
+            "2,682"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "5,986",
+            "5,797",
+            "5,069",
+            "4,095",
+            "4,052",
+            "4,156"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,708",
+            "1,877",
+            "2,289",
+            "3,633",
+            "3,592",
+            "3,702"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "18,740",
+            "17,307",
+            "16,445",
+            "16,449",
+            "16,502",
+            "16,599"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "1,965",
+            "781",
+            "1,948",
+            "2,016",
+            "1,915",
+            "2,096"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "10,346",
+            "9,840",
+            "10,463",
+            "10,375",
+            "10,410",
+            "10,475"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "45.4%",
+            "52.9%",
+            "52.4%",
+            "50.8%",
+            "51.5%",
+            "50.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "23.1%",
+            "8.5%",
+            "22.6%",
+            "24.1%",
+            "22.5%",
+            "25.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.0x",
+            "0.5x",
+            "1.6x",
+            "1.3x",
+            "1.4x",
+            "1.5x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2",
+            "3.5",
+            "2.2",
+            "1.5",
+            "1.5",
+            "1.4"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (model)",
+          "values": [
+            "-1,604",
+            "1,452",
+            "1,159",
+            "1,513",
+            "1,251",
+            "944"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "2,305",
+            "1,462",
+            "1,168",
+            "1,562",
+            "1,308",
+            "1,392"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-82",
+            "72",
+            "-93",
+            "29",
+            "5",
+            "9"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-921",
+            "-138",
+            "973",
+            "326",
+            "353",
+            "380"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "921",
+            "138",
+            "-973",
+            "-326",
+            "-353",
+            "-380"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-2,525",
+            "1,314",
+            "186",
+            "1,187",
+            "898",
+            "564"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "7,731",
+            "1,629",
+            "130",
+            "1,236",
+            "955",
+            "1,012"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "4,148",
+            "1,629",
+            "130",
+            "1,236",
+            "955",
+            "1,012"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "696",
+            "-1,798",
+            "-1,337",
+            "-865",
+            "-883",
+            "-538"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-1,014",
+            "-817",
+            "-1,032",
+            "-1,256",
+            "-796",
+            "-746"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "13",
+            "-208",
+            "-1,151",
+            "322",
+            "14",
+            "27"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "18.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "13.0x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "19.7x"
+          ]
+        },
+        {
+          "label": "P / model FCFF",
+          "values": [
+            "15.1x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "2.3x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "4.3%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.3x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "Is Fortum a buy in 2026?",
+      "a": "No. Fortum is rated HOLD for 2026, with a 12-month target price of 22.30 EUR against 20.76 EUR currently, implying +7.4% upside. Hydro and nuclear recovery provide support, but the quoted EUR 20.8 bn EV already equals 19.71x maintained 2026 EBIT of EUR 1,056m. The case also depends on unverified divisional EV/EBIT comparators, retail margin recovery and execution on established-generation forecasts."
+    },
+    {
+      "q": "What is Fortum's price target?",
+      "a": "Fortum's 12-month price target is 22.30 EUR per share, compared with a current price of 20.76 EUR and implied upside of +7.4%. The target combines EUR 24.74 per share from established businesses, EUR 0.10 from probability-weighted potential new nuclear capacity and a EUR 2.45 deduction for net debt and other claims. The valuation uses 2027E divisional EBIT and selected EV/EBIT multiples, with the assumptions explicitly under review."
+    },
+    {
+      "q": "Why is Fortum rated HOLD?",
+      "a": "Fortum is rated HOLD because the target offers only +7.4% upside while the earnings path remains conditional. Hydro generated 18.5 TWh in 2025 versus a 20–20.5 TWh normal range, and nuclear generated 22.1 TWh before a 23.0–23.5 TWh 2026 expectation. Retail must lift EBIT from EUR 122m to a forecast EUR 170m by 2027. The valuation also relies on divisional peer multiples that lack issuer-level comparability."
+    },
+    {
+      "q": "Is Fortum overvalued in 2026?",
+      "a": "Fortum is not conclusively overvalued on the accepted target bridge, but the price carries demanding assumptions. The current EUR 20.8 bn EV is 13.0x 2026E EBITDA and 19.7x 2026E EBIT, while the target EV is about EUR 22.21 bn and 16.76x EBITDA on the bridge. A cross-sectional check implies 14.0 EUR per share from 10.2% forecast ROE and 1.5x P/BV, versus 20.76 EUR currently, reinforcing valuation risk."
+    },
+    {
+      "q": "What is Fortum's bear and bull case?",
+      "a": "The bear case is 22.29 EUR per share, or +7.4%, and assumes weaker capture, lower nuclear availability and no material newbuild terminal value. The base case is 22.34 EUR, or +7.6%, on the revised forecast and stated probability weights. The bull case is 22.53 EUR, or +8.5%, and additionally requires stronger established earnings plus an approved and financeable 3,400 MW Swedish nuclear build with support, offtake, licences and consortium funding."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum Equity Research, Fortum Oyj report dated 30 September 2026 (the value-map allocations, anchor market capitalisation of EUR 18.6 bn and share price of 20.76 EUR). The target is provisional and remains under review because material divisional EV/EBIT peers, new-nuclear economics and forecast-input discontinuities are unreconciled.",
+    "Competitor context: Verbund trades at 14.4x 2026E P/E and 8.2x 2026E EV/EBITDA; Constellation Energy at 24.4x and 9.3x; EDP Renováveis at 32.9x and 9.6x. Constellation's 15.4x 2026E EV/EBIT is a consolidated US comparison, while CEZ at 7.9x and Vistra at 10.5x are EV/LTM EBITDA observations; these metrics and business mixes are not clean divisional comparators. NuScale is loss-making and its multiples are not meaningful.",
+    "Market data: FORTUM.HE, 20.76 EUR as of 30 September 2026; the target bridge uses 2027E EBIT of EUR 580m for hydro, EUR 340m for existing nuclear, EUR 170m for retail and EUR 0m for wind and solar, with 23.3x, 23.3x, 16.1x and 14.7x selected multiples. The group bridge uses 2026E EBITDA of EUR 1,603m, EUR 2,016m of net debt and EUR 182m of other adjustment. The financial model's 2026E capex of EUR 326m is below approximately EUR 550m of published committed-capex guidance excluding acquisitions, and its 2026E FCFF of EUR 1,236m does not yet reflect that guidance."
+  ]
+}
