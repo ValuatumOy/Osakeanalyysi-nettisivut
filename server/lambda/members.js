@@ -2084,6 +2084,8 @@ async function createForkOrder(session) {
     status: ordersStore.STATUS.DELIVERED,
     jobId: parent.jobId,
     forkedFrom: parentGenId,
+    marketFirst: Boolean(parent.marketFirst),
+    hasPreview: parent.hasPreview,
     analystName: profile?.name || undefined,
     ...(obligation ? {} : { visibility: 'private' }),
     revisionsAllowed: publishes ? limitsFor(profile).revisions : FORK_REVISIONS_INCLUDED,

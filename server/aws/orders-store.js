@@ -118,6 +118,12 @@ async function create(input) {
     // Carried from a parent whose job was attached by hand: the engine answers
     // only to the username that job was submitted under.
     engineUsername: input.engineUsername || undefined,
+    // Carried from the parent by a fork or admin copy, which start delivered
+    // and so never pass through the reconciler that sets these on a delivery.
+    // Without them a copy of a market-first report offered the scope choice
+    // and the hand editor until its first revision landed.
+    marketFirst: input.marketFirst || undefined,
+    hasPreview: typeof input.hasPreview === 'boolean' ? input.hasPreview : undefined,
     reportId: input.reportId || null,
     // What Stripe charged, in minor units
     amountTotal: Number.isFinite(input.amountTotal) ? input.amountTotal : null,
