@@ -722,7 +722,10 @@ async function postGenerationFresh(event) {
     companyName: session.metadata.company || '',
     ticker: session.metadata.ticker || '',
     exchange: session.metadata.exchange || '',
+    industry: session.metadata.industry || '',
     visibility: 'private',
+    // Same as the free generation: a revised report says who steered it.
+    analystName: String(profile.name || '').slice(0, 120),
     revisionsAllowed: limitsFor(profile).revisions,
   });
   try {
@@ -1552,6 +1555,7 @@ async function postFreshCheckout(event) {
       company: match.companyName || company,
       ticker: match.ticker,
       exchange: String(body.exchange || ''),
+      industry: match.industry || '',
       memberPrice: String(isMember),
     },
     // The session id is the receipt the member comes back with: POST
