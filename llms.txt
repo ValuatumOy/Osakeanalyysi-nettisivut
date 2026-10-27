@@ -10,7 +10,6 @@
 > Every figure is the one that page carried at that moment; the page itself is always authoritative.
 
 ## Free sample equity reports
-- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): HOLD, target 10.10 EUR (current 10.13 EUR).
 - [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): BUY, target 536.80 USD (current 352.16 USD).
 - [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): HOLD, target 24.70 EUR (current 24.06 EUR).
 
@@ -28,6 +27,7 @@
 - [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): HOLD, target 15.90 EUR (current 17.22 EUR).
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
+- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): HOLD, target 9.50 EUR (current 9.82 EUR).
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): HOLD, target 32.10 EUR (current 31.89 EUR).
 
 ## Stock comparisons
