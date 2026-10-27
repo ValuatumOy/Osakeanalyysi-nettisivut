@@ -135,6 +135,17 @@ test('a market-first page without its share card uses the default card', () => {
   assert.match(ogOf(renderPage(noCard, FREE, [noCard])), /\/images\/og-image\.png$/);
 });
 
+test('only a market-first page carries the market-report banner; a rated header is untouched', () => {
+  assert.match(renderPage(DOC, FREE, [DOC]), /Market report · no rating · no target price/);
+  const { reportKind, consensusTarget, otherClaims, ...rest } = DOC;
+  const rated = { ...rest, headline: { ...DOC.headline, recommendation: 'HOLD', targetPrice: '10.10 EUR' } };
+  const html = renderPage(rated, FREE, [rated]);
+  assert.doesNotMatch(html, /Market report · no rating/);
+  // The banner slot must leave no trace on a rated page: a stray blank line would rebuild
+  // every rated page on the next sync.
+  assert.match(html, /<\/div>\n {10}<\/div>\n {10}<div class="company-header-actions">/);
+});
+
 test('the market-first description promises no price target', () => {
   const d = reportDescription({ name: 'Stora Enso', ticker: 'STERV.HE', marketFirst: true });
   assert.ok(d.length <= 160, d);

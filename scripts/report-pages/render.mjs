@@ -990,8 +990,7 @@ ${navHtml()}
               <span class="company-meta-chip">${esc(d.country)}</span>
               <span class="company-meta-sep"></span>
               <span class="company-meta-chip">${esc(d.sector)}</span>
-            </div>
-            ${marketFirst ? marketReportBanner(d, sn) : ''}
+            </div>${marketFirst ? `\n            ${marketReportBanner(d, sn)}` : ''}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
