@@ -86,6 +86,13 @@ function proseOf(doc) {
   ];
 }
 
+/** The sync log's word on an extracted report: the rating and target, or for a market report the price it reads. */
+export function extractedSummary(run) {
+  const h = run.headline || {};
+  if (run.reportKind === MARKET_FIRST) return `market report, no rating${h.currentPrice ? `, price ${h.currentPrice}` : ''}`;
+  return `${h.recommendation}, target ${h.targetPrice}`;
+}
+
 /** The strict gate. Throws with a reason when the extraction must not be published. */
 export function gate(doc) {
   const problems = [];
@@ -144,6 +151,7 @@ export async function extractReport(entry) {
       slug: doc.slug,
       companyName: doc.companyName,
       headline: doc.headline,
+      reportKind: doc.reportKind ?? null,
       usd: result.usage?.usd ?? null,
       outPath,
     };
