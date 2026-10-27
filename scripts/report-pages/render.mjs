@@ -756,6 +756,19 @@ const MF_STYLE = `<style>
   </style>`;
 
 /**
+ * The first thing a reader of a market-first page must know: the report explains the price
+ * and takes no position. In the header, above the fold, on free and paid pages alike.
+ */
+function marketReportBanner(d, sn) {
+  const price = d.headline?.currentPrice;
+  const date = d.reportDate ? formatReportDate(d.reportDate) : null;
+  return `<div style="margin-top:1.25rem; padding:0.9rem 1.1rem; border-left:3px solid var(--green-light, #6DBFA0); background:rgba(255,255,255,0.06); border-radius:0 var(--r-md) var(--r-md) 0; max-width:62ch;">
+              <div style="font-size:var(--text-xs); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--green-light, #6DBFA0); margin-bottom:0.35rem;">Market report · no rating · no target price</div>
+              <p style="margin:0; color:rgba(255,255,255,0.85); font-size:var(--text-sm); line-height:1.5;">This report explains what ${esc(sn)}'s share price${price ? ` of ${esc(price)}` : ''}${date ? ` on ${esc(date)}` : ''} is made of, business by business, against listed peers. It takes no position: no rating, no target price and no recommendation to buy or sell.</p>
+            </div>`;
+}
+
+/**
  * Market-first pages: the full report content (free pages are the maximum SEO surface, as
  * for rated reports), ordered for a report that reads the share price rather than rating it.
  * Left: what the reader needs first and the reasoning. Right: the three points, the price
@@ -978,6 +991,7 @@ ${navHtml()}
               <span class="company-meta-sep"></span>
               <span class="company-meta-chip">${esc(d.sector)}</span>
             </div>
+            ${marketFirst ? marketReportBanner(d, sn) : ''}
           </div>
           <div class="company-header-actions">
             ${downloadCta}
