@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sameText } from './same-text.mjs';
-import { headlineOf } from './report-headline.mjs';
+import { headlineOf, isMarketFirstPage } from './report-headline.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -47,6 +47,7 @@ function collect() {
       rating: h ? h.recommendation : null,
       target: h && h.targetPrice ? String(h.targetPrice).replace(/\s+/g, ' ') : null,
       current: h && h.currentPrice ? String(h.currentPrice).replace(/\s+/g, ' ') : null,
+      marketFirst: isMarketFirstPage(html),
     });
   }
   return out.sort((a, b) => a.name.localeCompare(b.name));
@@ -58,6 +59,9 @@ const line = (p) => {
     let s = `: ${p.rating}, target ${p.target}`;
     if (p.current) s += ` (current ${p.current})`;
     bits.push(s + '.');
+  } else if (p.marketFirst) {
+    // No rating and no target by design; saying so keeps an AI answer from inventing one.
+    bits.push(`: market report — what the share price is made of, business by business; no rating or target price.`);
   } else {
     bits.push(`: share price, valuation and company profile; fresh report available on demand.`);
   }

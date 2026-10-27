@@ -13,8 +13,8 @@ import path from 'node:path';
 
 import { chat, parseJsonResponse } from './openrouter.mjs';
 import { pdfToText } from './pdf-text.mjs';
-import { buildMessages } from './prompt.mjs';
-import { REPORT_SCHEMA, toReportContent } from './schema.mjs';
+import { buildMessages, isMarketFirstText } from './prompt.mjs';
+import { REPORT_SCHEMA, MARKET_FIRST_SCHEMA, MARKET_FIRST, isMarketFirst, toReportContent } from './schema.mjs';
 import { CONTENT_DIR, CONTENT_DIRS } from './owners.mjs';
 import { IS_TEST } from './stage.mjs';
 
@@ -71,10 +71,29 @@ async function downloadPdf(entry) {
   return file;
 }
 
+// A Valuatum figure in a market-first page's prose is the worst error the page can make: the
+// report gives none, so any "target price" the model writes is either invented or the
+// analysts' consensus without its attribution.
+const UNATTRIBUTED_TARGET = /\b(?:our|valuatum'?s?)\s+(?:12-month\s+)?(?:price\s+)?target\b|\bimplied upside\b|\b(?:rates?|rated|rating)\s+(?:it\s+)?(?:BUY|HOLD|SELL)\b/i;
+
+function proseOf(doc) {
+  return [
+    ...(doc.summary || []),
+    ...(doc.thesis || []).map((t) => t.text),
+    ...(doc.valuePools || []).map((p) => p.text),
+    ...(doc.coreAnalysis || []).map((c) => c.text),
+    ...(doc.faqs || []).flatMap((f) => [f.q, f.a]),
+  ];
+}
+
 /** The strict gate. Throws with a reason when the extraction must not be published. */
-function gate(doc) {
+export function gate(doc) {
   const problems = [];
-  if (!RECOMMENDATIONS.has(String(doc.headline?.recommendation || '').toUpperCase())) {
+  if (isMarketFirst(doc)) {
+    if (!doc.headline?.currentPrice) problems.push('headline.currentPrice is missing');
+    const hit = proseOf(doc).find((p) => UNATTRIBUTED_TARGET.test(p || ''));
+    if (hit) problems.push(`market-first prose states a rating or target: "${String(hit).slice(0, 120)}…"`);
+  } else if (!RECOMMENDATIONS.has(String(doc.headline?.recommendation || '').toUpperCase())) {
     problems.push(`headline.recommendation is "${doc.headline?.recommendation}", expected BUY/HOLD/SELL`);
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(doc.reportDate || ''))) {
@@ -91,12 +110,13 @@ export async function extractReport(entry) {
   const pdfPath = await downloadPdf(entry);
   try {
     const reportText = await pdfToText(pdfPath);
-    const messages = buildMessages({ reportText, pdfFilename: path.basename(pdfPath) });
+    const marketFirst = isMarketFirstText(reportText);
+    const messages = buildMessages({ reportText, pdfFilename: path.basename(pdfPath), marketFirst });
 
     const result = await chat({
       model: EXTRACTION_MODEL,
       messages,
-      schema: REPORT_SCHEMA,
+      schema: marketFirst ? MARKET_FIRST_SCHEMA : REPORT_SCHEMA,
       schemaName: 'report_content',
     });
     if (result.finishReason === 'length') {
@@ -105,7 +125,11 @@ export async function extractReport(entry) {
 
     const raw = parseJsonResponse(result.text);
     const doc = applyCatalogFields(
-      toReportContent(raw, { id: entry.id, slug: resolveSlug(entry.id, raw.companyName, raw.ticker) }),
+      toReportContent(raw, {
+        id: entry.id,
+        slug: resolveSlug(entry.id, raw.companyName, raw.ticker),
+        reportKind: marketFirst ? MARKET_FIRST : null,
+      }),
       entry,
     );
 

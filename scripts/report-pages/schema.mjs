@@ -93,16 +93,94 @@ export const REPORT_SCHEMA = obj({
   sources: arr(str),
 });
 
+// The market-first report (the engine's main report since October 2026) gives no rating and
+// no target price: it takes today's share price and splits it between the businesses. Same
+// page fields where the content is the same; no headline rating, no reverse valuation, and
+// the analysts' consensus target as its own field so it can never be read as Valuatum's.
+export const MARKET_FIRST_SCHEMA = obj({
+  companyName: str,
+  ticker: str,
+  exchange: str,
+  country: str,
+  sector: str,
+  currency: str,
+  reportDate: str,
+
+  // One or two sentences on what the company does, for the page's opening paragraph.
+  profile: str,
+
+  headline: obj({
+    currentPrice: str,
+    marketCap: str,
+    enterpriseValue: str,
+  }),
+
+  // The line after the businesses in the price split: debt and other claims, less cash.
+  otherClaims: {
+    anyOf: [
+      { type: 'null' },
+      obj({ label: str, value: str }),
+    ],
+  },
+
+  consensusTarget: {
+    anyOf: [
+      { type: 'null' },
+      obj({ value: str, analysts: nullableStr, range: nullableStr, source: nullableStr }),
+    ],
+  },
+
+  multiples: arr(obj({ label: str, value: str })),
+
+  priceStats: obj({
+    week52High: nullableStr,
+    week52Low: nullableStr,
+    oneYearChange: nullableStr,
+    threeYearChange: nullableStr,
+  }),
+
+  summary: arr(str),
+
+  thesis: arr(obj({ num: str, title: str, metric: str, text: str })),
+
+  valuePools: arr(obj({ name: str, share: str, economics: str, text: str })),
+
+  coreAnalysis: arr(obj({ heading: str, text: str })),
+
+  risks: arr(str),
+
+  catalysts: arr(str),
+
+  financials: obj({
+    note: str,
+    incomeStatement: financialTable,
+    balanceSheet: financialTable,
+    cashFlow: financialTable,
+    ratios: financialTable,
+  }),
+
+  faqs: arr(obj({ q: str, a: str })),
+
+  sources: arr(str),
+});
+
+export const MARKET_FIRST = 'market-first';
+
+/** A market-first document: no rating by design, a full report all the same. */
+export const isMarketFirst = (doc) => doc?.reportKind === MARKET_FIRST;
+
 // Key order used by the hand-written files, so generated output diffs cleanly against them.
 const KEY_ORDER = [
-  'id', 'slug', 'companyName', 'ticker', 'exchange', 'country', 'sector', 'currency', 'reportDate',
-  'headline', 'multiples', 'priceStats', 'summary', 'thesis', 'thesisBreaker', 'valuePools',
+  'id', 'slug', 'reportKind', 'companyName', 'ticker', 'exchange', 'country', 'sector', 'currency', 'reportDate',
+  'profile', 'headline', 'otherClaims', 'consensusTarget', 'multiples', 'priceStats', 'summary', 'thesis', 'thesisBreaker', 'valuePools',
   'reverseValuation', 'coreAnalysis', 'risks', 'catalysts', 'financials', 'faqs', 'sources',
 ];
 
 /** Converts raw model output into the on-disk report-content shape. */
-export function toReportContent(raw, { id, slug }) {
-  const doc = { ...raw, id, slug };
+export function toReportContent(raw, { id, slug, reportKind = null }) {
+  const doc = { ...raw, id, slug, ...(reportKind ? { reportKind } : {}) };
+  if (doc.consensusTarget === null) delete doc.consensusTarget;
+  if (doc.otherClaims === null) delete doc.otherClaims;
 
   if (doc.reverseValuation?.scenarios) {
     doc.reverseValuation = {

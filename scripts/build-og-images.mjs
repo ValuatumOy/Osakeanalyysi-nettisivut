@@ -20,7 +20,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { headlineOf, identity } from './report-headline.mjs';
+import { headlineOf, identity, isMarketFirstPage } from './report-headline.mjs';
 import { SHOW_RATINGS_IN_METADATA } from './seo-flags.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -62,7 +62,7 @@ function trendLine(rating) {
 }
 
 /** One report's card, on the same grid as og-image.svg so the set looks like a set. */
-function reportCard({ name, ticker, rating, target, current }) {
+function reportCard({ name, ticker, rating, target, current, marketFirst = false }) {
   // With ratings off, the verdict leaves the card entirely -- and so do the two things that
   // encode it without words: the accent colour (red reads SELL at a glance) and the slope of
   // the trend line. What is left describes what the report contains.
@@ -96,8 +96,16 @@ function reportCard({ name, ticker, rating, target, current }) {
   <rect x="80" y="150" width="4" height="64" fill="${accent}" rx="2"/>
   <text x="104" y="185" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="400" fill="${accent}" letter-spacing="0.06em">${esc(ticker)}</text>
   <text x="104" y="245" font-family="Inter, -apple-system, sans-serif" font-size="54" font-weight="300" fill="white" letter-spacing="-1">${esc(fit(name, 30))}</text>
-  <text x="104" y="300" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="300" fill="rgba(255,255,255,0.5)">AI equity report · value pool analysis · reverse valuation</text>
-${rating
+  <text x="104" y="300" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="300" fill="rgba(255,255,255,0.5)">${marketFirst
+    ? 'AI market report · what the share price is made of'
+    : 'AI equity report · value pool analysis · reverse valuation'}</text>
+${marketFirst
+    // A market report has no verdict and no reverse valuation. No share price either: a
+    // share card is cached for weeks while the price moves.
+    ? `${stat(104, 'each business’s part', 'Price split')}
+${stat(364, 'listed peers compared', 'Peers')}
+${stat(624, 'forecasts & statements', 'Financials')}`
+    : rating
     ? `${stat(104, 'rating', rating, accent)}
 ${stat(364, 'price target', target)}
 ${current ? stat(624, 'current price', current) : ''}`
@@ -135,16 +143,18 @@ function ratedReports() {
   for (const f of fs.readdirSync(path.join(ROOT, 'reports')).filter((x) => x.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(ROOT, 'reports', f), 'utf8');
     const h = headlineOf(html);
-    if (!h) continue; // company overview pages share the default card
+    const marketFirst = isMarketFirstPage(html);
+    if (!h && !marketFirst) continue; // company overview pages share the default card
     const id = identity(html);
     if (!id) continue;
     out.push({
       slug: f.replace(/\.html$/, ''),
       name: id.name,
       ticker: id.ticker,
-      rating: h.recommendation,
-      target: h.targetPrice || '',
-      current: h.currentPrice || '',
+      rating: h ? h.recommendation : null,
+      target: h ? h.targetPrice || '' : '',
+      current: h ? h.currentPrice || '' : '',
+      marketFirst,
     });
   }
   return out.sort((a, b) => a.slug.localeCompare(b.slug));
@@ -154,14 +164,20 @@ function ratedReports() {
 const reports = ratedReports();
 const planned = [
   { out: path.join(ROOT, 'images', 'og-image.png'), svg: fs.readFileSync(path.join(ROOT, 'images', 'og-image.svg'), 'utf8'), key: 'default' },
-  ...reports.map((r) => ({ out: path.join(OUT, `${r.slug}.png`), svg: reportCard(r), key: r.slug })),
+  // A market-first page without its card falls back to the default (render.mjs), so its
+  // card is wanted but its absence breaks nothing.
+  ...reports.map((r) => ({ out: path.join(OUT, `${r.slug}.png`), svg: reportCard(r), key: r.slug, optional: r.marketFirst })),
 ];
 
 if (CHECK) {
-  const missing = planned.filter((p) => !fs.existsSync(p.out));
+  const absent = planned.filter((p) => !fs.existsSync(p.out));
+  const missing = absent.filter((p) => !p.optional);
+  for (const p of absent.filter((x) => x.optional)) {
+    console.warn(`  (no card yet for market-first page ${p.key}; it uses the default)`);
+  }
   const defaultPng = fs.readFileSync(path.join(ROOT, 'images', 'og-image.png'));
   const stillLogo = defaultPng.equals(fs.readFileSync(path.join(ROOT, 'images', 'Valuatum_logo.png')));
-  console.log(`[check] ${planned.length - missing.length}/${planned.length} OG images present`
+  console.log(`[check] ${planned.length - absent.length}/${planned.length} OG images present`
     + `${stillLogo ? ', default is STILL the logo strip' : ''}`);
   if (missing.length || stillLogo) {
     console.error('OG images are out of date — run: node scripts/build-og-images.mjs');
