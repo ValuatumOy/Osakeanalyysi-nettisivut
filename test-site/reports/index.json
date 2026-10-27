@@ -21,6 +21,11 @@
       "reportId": "elisa-19082026"
     },
     {
+      "slug": "fortum-equity-report",
+      "ticker": "FORTUM.HE",
+      "reportId": "fortum-30092026"
+    },
+    {
       "slug": "intel-equity-report",
       "ticker": "INTC",
       "reportId": "intel-05062026"
