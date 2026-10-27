@@ -6,7 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { renderPage } from '../../scripts/report-pages/render.mjs';
-import { gate } from '../../scripts/report-pages/extract.mjs';
+import { gate, extractedSummary } from '../../scripts/report-pages/extract.mjs';
 import { buildMessages, isMarketFirstText } from '../../scripts/report-pages/prompt.mjs';
 import { toReportContent } from '../../scripts/report-pages/schema.mjs';
 import { reportDescription } from '../../scripts/seo-description.mjs';
@@ -165,4 +165,9 @@ test('market-first detection and prompt', () => {
   const mf = buildMessages({ reportText: 'x', marketFirst: true })[1].content[0].text;
   assert.match(mf, /consensusTarget/);
   assert.doesNotMatch(mf, /BUY, HOLD or SELL as printed|reverseValuation/);
+});
+
+test('the sync log names a market report as one, not "undefined, target undefined"', () => {
+  assert.equal(extractedSummary({ reportKind: 'market-first', headline: { currentPrice: '€10.0' } }), 'market report, no rating, price €10.0');
+  assert.equal(extractedSummary({ reportKind: null, headline: { recommendation: 'HOLD', targetPrice: '22.30 EUR' } }), 'HOLD, target 22.30 EUR');
 });
