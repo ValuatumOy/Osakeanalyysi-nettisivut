@@ -474,6 +474,8 @@ async function adminCopyFor(order, version, base) {
     status: ordersStore.STATUS.DELIVERED,
     jobId: base.jobId,
     engineUsername: order.engineUsername,
+    marketFirst: Boolean(order.marketFirst),
+    hasPreview: order.hasPreview,
     forkedFrom: order.id,
     forkedFromVersion: version,
     basePdfFileName: base.pdfFileName || undefined,
