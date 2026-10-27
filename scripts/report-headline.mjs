@@ -31,11 +31,22 @@ export function identity(html) {
  * { recommendation, targetPrice, currentPrice, impliedUpside } for a rated page, else null.
  */
 export function headlineOf(html) {
+  const h = contentOf(html)?.headline;
+  return h && h.recommendation ? h : null;
+}
+
+/**
+ * True for a page built from a market-first report: a full report with no rating and no
+ * price target by design, so its metadata must not promise either.
+ */
+export function isMarketFirstPage(html) {
+  return contentOf(html)?.reportKind === 'market-first';
+}
+
+function contentOf(html) {
   const id = (html.match(/valuatum-report-id" content="([^"]*)"/) || [])[1];
   if (!id) return null;
   const file = path.join(CONTENT_DIR, `${id}.json`);
   if (!fs.existsSync(file)) return null;
-  const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const h = doc.headline;
-  return h && h.recommendation ? h : null;
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
 }

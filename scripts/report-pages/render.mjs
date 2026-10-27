@@ -11,6 +11,7 @@ import fs from 'node:fs';
 import { reportTitle, companyTitle } from '../seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
 import { reportDescription } from '../seo-description.mjs';
+import { isMarketFirst } from './schema.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -41,6 +42,16 @@ export const shortName = (n) => {
 const firstPct = (s) => { const m = String(s).match(/-?\d+(?:\.\d+)?/); return m ? Math.max(0, Math.min(100, parseFloat(m[0]))) : null; };
 const recClass = (r) => ({ BUY: 'pos', SELL: 'neg', HOLD: '' }[String(r || '').toUpperCase()] ?? '');
 const indefiniteArticle = (s) => /^[aeiou]/i.test(String(s).trim()) ? 'An' : 'A';
+
+// The analysts' consensus target is other analysts' figure. Wherever the page shows it, it
+// carries who it belongs to, so a reader or a search engine cannot take it for Valuatum's.
+const consensusSource = (c) => [
+  c.analysts ? `mean of ${c.analysts} analysts' targets` : "analysts' mean target",
+  c.range ? `range ${c.range}` : null,
+  c.source ? `source: ${c.source}` : null,
+].filter(Boolean).join(', ');
+const consensusSentence = (c) =>
+  `The analysts' consensus target is ${c.value} (${consensusSource(c)}).`;
 
 export const formatReportDate = (iso) =>
   new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -95,6 +106,7 @@ function metaDescription(d, analysts = 0, disagrees = null) {
     ticker: d.ticker,
     recommendation: d.headline?.recommendation,
     targetPrice: d.headline?.targetPrice,
+    marketFirst: isMarketFirst(d),
     analysts,
     disagrees,
   });
@@ -111,6 +123,19 @@ function shareDescription(d) {
 function overviewIntro(d) {
   const h = d.headline || {};
   const sn = shortName(d.companyName);
+  if (isMarketFirst(d)) {
+    // The same search terms as the template below (name, exchange, ticker, "stock
+    // analysis"), in sentences a reader would write.
+    const ident = `${sn} (${d.exchange ? d.exchange + ': ' : ''}${d.ticker})`;
+    // The profile starts with its verb ("makes packaging materials…") so the name and ticker
+    // can stand in front of it; a profile that names the company anyway loses the name.
+    const profile = String(d.profile || '').trim()
+      .replace(new RegExp(`^(?:${shortName(d.companyName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}|The company|It)\\s+`, 'i'), '');
+    const date = d.reportDate ? formatReportDate(d.reportDate) : null;
+    let m = profile ? `${ident} ${profile.charAt(0).toLowerCase()}${profile.slice(1)} ` : `${ident}. `;
+    m += `This stock analysis, a Valuatum market report${date ? ` dated ${date}` : ''}, explains what the share price${h.currentPrice ? ` of ${h.currentPrice}${date ? ' on that day' : ''}` : ''} is made of, business by business, against listed peers, with financial forecasts, key ratios and what to watch. It gives no rating and no target price.`;
+    return m.replace(/\s+/g, ' ').trim();
+  }
   let s = `${sn} (${d.exchange ? d.exchange + ': ' : ''}${d.ticker}) stock analysis and AI equity research. `;
   if (h.currentPrice) s += `${sn} shares trade at ${h.currentPrice}; `;
   if (h.recommendation) {
@@ -130,6 +155,13 @@ function templatedFaqs(d) {
   const sn = shortName(d.companyName);
   const t = d.ticker;
   const out = [];
+  if (isMarketFirst(d)) {
+    out.push({ q: `What is the ${sn} (${t}) share price made of?`, a: `Valuatum's market report splits ${sn}'s share price${h.currentPrice ? ` of ${h.currentPrice}` : ''} between its businesses and explains what the market pays for each, measured against listed peers. The full report shows the split and the reasoning behind it.` });
+    const c = d.consensusTarget;
+    if (c?.value) out.push({ q: `What do analysts expect for ${sn} (${t})?`, a: `${consensusSentence(c)} This is other analysts' figure, not Valuatum's: the market report gives no rating and no target price.` });
+    out.push({ q: `Where can I get the ${sn} (${t}) market report?`, a: `Buy the ${sn} (${t}) AI market report PDF on this page for instant download, or generate a fresh report for any listed company.` });
+    return out;
+  }
   if (h.recommendation) {
     out.push({ q: `Is ${sn} (${t}) a buy or a sell?`, a: `Valuatum's latest AI equity report rates ${sn} (${t}) ${h.recommendation}${h.targetPrice ? `, with a 12-month price target of ${h.targetPrice}` : ''}${h.currentPrice ? ` versus a ${h.currentPrice} share price` : ''}${h.impliedUpside ? ` (${h.impliedUpside})` : ''}. The full report explains the rationale behind the rating.` });
     if (h.targetPrice) out.push({ q: `What is the ${sn} (${t}) share price target?`, a: `The current Valuatum 12-month price target for ${sn} is ${h.targetPrice}${h.impliedUpside ? `, implying ${h.impliedUpside} versus the current share price` : ''}. Unlock the report for the valuation behind the target.` });
@@ -269,6 +301,36 @@ function footerHtml() {
   </footer>`;
 }
 
+// One grid of equal boxes: price, size, the cover multiples and the price record, with the
+// analysts' consensus as a box of its own and who it belongs to in the footnote. Padded with
+// the report-type box only when that evens out the rows of four.
+function marketFirstBand(d) {
+  const h = d.headline || {};
+  const c = d.consensusTarget;
+  const p = d.priceStats || {};
+  const date = d.reportDate ? formatReportDate(d.reportDate) : 'report date';
+  const cells = [
+    h.currentPrice ? ['Share price', esc(h.currentPrice), date] : null,
+    h.marketCap ? ['Market cap', esc(h.marketCap), 'shares × price'] : null,
+    h.enterpriseValue ? ['Enterprise value', esc(h.enterpriseValue), 'mcap + net debt'] : null,
+    ...(d.multiples || []).map((m) => [m.label, esc(m.value), '']),
+    p.week52High ? ['52-week high', esc(p.week52High), 'past 12 months'] : null,
+    p.week52Low ? ['52-week low', esc(p.week52Low), 'past 12 months'] : null,
+    p.oneYearChange ? ['1-year change', esc(p.oneYearChange), 'price only'] : null,
+    p.threeYearChange ? ['3-year change', esc(p.threeYearChange), 'price only'] : null,
+    c?.value ? ["Analysts' consensus target*", esc(c.value), "not Valuatum's"] : null,
+  ].filter(Boolean);
+  const fits = (n) => n % 4 === 0 || n % 3 === 0;
+  if (!fits(cells.length) && fits(cells.length + 1)) cells.push(['Report type', 'Market report', 'no rating, no target price']);
+  const cols = cells.length % 4 === 0 ? 4 : cells.length % 3 === 0 ? 3 : 4;
+  const grid = `<div class="cp-grid cp-grid-even cp-cols-${cols}">${cells.map(([l, v, s]) =>
+    `<div class="cp-cell"><span class="cp-l">${esc(l)}</span><span class="cp-v">${v}</span><span class="cp-sub">${esc(s || ' ')}</span></div>`).join('')}</div>`;
+  const note = c?.value
+    ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:0.75rem;">* ${esc(consensusSource(c).replace(/^./, (x) => x.toUpperCase()))}. Other analysts' figure, not Valuatum's: this market report gives no rating and no target price.</p>`
+    : '';
+  return grid + note;
+}
+
 function metricsBand(h) {
   const cells = [
     h.recommendation ? ['Recommendation', `<span class="num ${recClass(h.recommendation)}">${esc(h.recommendation)}</span>`, h.horizon || '12-month horizon'] : null,
@@ -316,6 +378,39 @@ function valuePoolsHtml(pools) {
         ${p.economics ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:0.4rem;">${esc(p.economics)}</p>` : ''}
         <p>${esc(p.text)}</p>`).join('');
   return `${bars ? `<div class="segment-value-chart" style="margin:1rem 0 2rem;">${bars}</div>` : ''}${detail}`;
+}
+
+const perShare = (s) => { const m = String(s ?? '').replace(/−/g, '-').match(/-?\d+(?:\.\d+)?/); return m ? parseFloat(m[0]) : null; };
+
+/**
+ * The market report's own bridge, "What the 10.1 is made of": each business's part of the
+ * share price, then debt and other claims taken off, ending at the price. Bars are drawn
+ * against the businesses' total, the longest line in the bridge.
+ */
+function priceBridgeHtml(d) {
+  const pools = (d.valuePools || []).map((p) => ({ label: p.name, text: p.share, v: perShare(p.share) })).filter((r) => r.v !== null);
+  if (!pools.length) return '';
+  const total = pools.reduce((s, r) => s + Math.max(0, r.v), 0);
+  const claims = d.otherClaims && perShare(d.otherClaims.value) !== null
+    ? { label: d.otherClaims.label, text: d.otherClaims.value, v: perShare(d.otherClaims.value) } : null;
+  const price = perShare(d.headline?.currentPrice);
+  const width = (v) => (total > 0 ? Math.min(100, Math.round((Math.abs(v) / total) * 1000) / 10) : 0);
+  const colors = ['var(--green)', 'var(--green-light)', 'var(--green-deep)', 'var(--charcoal-mid)', 'var(--gray-steel)', 'var(--forest)'];
+  const row = (label, text, w, color, strong = false) =>
+    `<div class="pool-row"><span class="pool-name" style="min-width:200px;${strong ? ' font-weight:600;' : ''}">${esc(label)}</span><div class="pool-track"><div class="pool-fill" style="width:${w}%; background:${color};"></div></div><span class="pool-pct"${strong ? ' style="font-weight:600;"' : ''}>${esc(text)}</span></div>`;
+  const rows = [
+    ...pools.map((r, i) => row(r.label, r.text, width(r.v), colors[i % colors.length])),
+    claims ? row(claims.label, claims.text, width(claims.v), '#c4553f') : '',
+    price !== null && claims ? row('Share price', d.headline.currentPrice, width(price), 'var(--charcoal)', true) : '',
+  ].join('');
+  return `<div class="segment-value-chart" style="margin:1rem 0 1.5rem;">${rows}</div>`;
+}
+
+function marketFirstPoolDetail(pools) {
+  return (pools || []).map((p) => `
+        <h3>${esc(p.name)}${p.share ? ` <span style="font-weight:400; color:var(--gray-steel); font-size:var(--text-sm);">— ${esc(p.share)}</span>` : ''}</h3>
+        ${p.economics ? `<p style="font-size:var(--text-xs); color:var(--gray-steel); margin-bottom:0.4rem;">${esc(p.economics)}</p>` : ''}
+        <p>${esc(p.text)}</p>`).join('');
 }
 
 function scenarioTable(rv) {
@@ -426,7 +521,9 @@ function buyGate(d, cat) {
         <section class="report-full-section" id="unlock">
           <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
             <h2 style="color:white; margin-top:0;">Unlock the ${esc(shortName(d.companyName))} ready report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.${price ? ` Instant download for ${price}.` : ''}${written ? ` Written on ${written}, from the figures available then.` : ''}</p>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${isMarketFirst(d)
+              ? 'The full PDF adds the split of the share price between the businesses with the reasoning for each, the peer comparison, what to watch per business, and the financial statements and forecasts.'
+              : 'The full PDF adds the complete reverse-valuation scenario model, segment financial statements and estimates, the full risk &amp; catalyst analysis, and the institutional one-page snapshot.'}${price ? ` Instant download for ${price}.` : ''}${written ? ` Written on ${written}, from the figures available then.` : ''}</p>
             <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem;">
               <a href="/reports.html#report-${esc(d.id)}" class="btn btn-primary btn-lg" data-revisable="${cat?.revisable ? '1' : ''}">${price ? `Buy the ready report — ${price}` : 'Get the ready report'}</a>
               <a href="/pricing.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:white;">See pricing</a>
@@ -460,56 +557,8 @@ function lockedSection(title, desc, teaser, ctaLabel, reportId) {
           </div></div>`;
 }
 
-// ── page template ───────────────────────────────────────────────────────────
-/**
- * One landing page. `cat` is the live catalog entry of the page-owner report, or null for a
- * coverage page. `all` is every company's page doc, for the related-reports chips.
- */
-export function renderPage(d, cat, all) {
-  const isFree = !!cat?.isFree;
-  const hasReport = !!(d.headline && d.headline.recommendation);
-  const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
-  const url = `${SITE}/reports/${d.slug}.html`;
-  const desc = metaDescription(d, d.analystCount || 0, d.analystDisagrees ?? null);
-  // The share card is one surface: a neutral image next to text reading "rates KESKOB.HE
-  // SELL" is worse than either alone. og:/twitter: descriptions follow the same switch as
-  // the title and the card art. The plain <meta name="description"> is deliberately NOT
-  // changed here -- that is the Google snippet, and whether the rating belongs in it is the
-  // wider publication question, not a share-card one.
-  // Same switch scripts/redescribe-report-pages.mjs applies: a page with no
-  // report has no rating to hide, so its share card carries the snippet.
-  const shareDesc = (SHOW_RATINGS_IN_METADATA || !hasReport) ? desc : shareDescription(d);
-  const sn = shortName(d.companyName);
-  // A coverage page (no report any more, or none yet) gets the company rule,
-  // the same one the 1,150+ generated overview pages and the title guard use.
-  // The report rule promises "& Price Target", which a page without a report
-  // cannot keep — and the SEO guard failed every PR after the sync rebuilt
-  // Fortum as a coverage page under the report rule.
-  const title = hasReport ? reportTitle(sn, d.ticker, d.headline || {}) : companyTitle(sn, d.ticker);
-  const updated = d.reportDate;
-  // A rated page gets the share card built for it by scripts/build-og-images.mjs; an
-  // unrated overview page has nothing specific to put on one and keeps the default.
-  const ogImage = hasReport ? `${SITE}/images/og/${d.slug}.png` : `${SITE}/images/og-image.png`;
-  const pdfHref = pdfHrefOf(cat);
-  // A free report that the engine can still revise also sells revisions on
-  // its own. The button ships hidden; js/script.js reveals and prices it once
-  // the live pricing says the tier is on sale.
-  const revisionsCta = isFree && cat?.revisable
-    ? ` <button type="button" class="btn btn-outline" data-buy-revisions="${attr(d.id)}" style="border-color:rgba(255,255,255,0.3); color:white;" hidden>Create a revision</button>`
-    : '';
-  const downloadCta = isFree && pdfHref
-    ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>${revisionsCta}`
-    : hasReport
-      ? `<a href="#unlock" class="btn btn-primary">Get the ready report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
-      : `<a href="#generate" class="btn btn-gold">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
-
-  // Two buttons, two products, and nothing on the page said what separated them.
-  // The report date is the only honest answer: it is what the ready report knew.
-  const writtenOn = updated ? formatReportDate(updated) : null;
-  const actionsNote = !hasReport
-    ? `A fresh report is written when you order it, from the data available today, and arrives by email — usually within about 30 minutes.`
-    : `${isFree ? 'This report was' : 'The ready report was'} written by the Valuatum engine on ${writtenOn || 'its publication date'} and holds the figures available then. A fresh report is written today, from today's data, and arrives by email — usually within about 30 minutes.`;
-
+/** Rated and coverage pages: the sections flow through two CSS columns. */
+function standardColumns(d, cat, all, { sn, isFree, hasReport, pdfHref }) {
   const sections = [];
   const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
   const unlockLabel = price ? `Unlock with the full report — ${price}` : 'Unlock with the full report';
@@ -690,6 +739,180 @@ export function renderPage(d, cat, all) {
         </section>`);
   }
 
+  return `      <div class="report-full-content coverage-cols">\n${sections.join('\n')}\n      </div>`;
+}
+
+// Fixed columns rather than CSS columns, so the reading order does not depend on how long
+// each section happens to be. On a narrow screen the columns dissolve and `order` stacks the
+// sections in reading order. The styles travel with the body so rated pages stay as they are.
+const MF_STYLE = `<style>
+    .mf-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 2.5rem;align-items:start;}
+    .mf-col>.report-full-section{margin-bottom:1.5rem;}
+    .cp-grid-even{grid-auto-rows:1fr;}
+    .cp-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+    .cp-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    @media(max-width:960px){.mf-cols{display:flex;flex-direction:column;}.mf-col{display:contents;}}
+    @media(max-width:520px){.cp-cols-4{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  </style>`;
+
+/**
+ * Market-first pages: the full report content (free pages are the maximum SEO surface, as
+ * for rated reports), ordered for a report that reads the share price rather than rating it.
+ * Left: what the reader needs first and the reasoning. Right: the three points, the price
+ * split, what to watch, then the actions and references.
+ */
+function marketFirstColumns(d, cat, all, { sn, isFree, pdfHref }) {
+  const price = cat?.price ? `€${Number(cat.price).toFixed(2)}` : '';
+  const unlockLabel = price ? `Unlock with the full report — ${price}` : 'Unlock with the full report';
+  const sec = (order, id, title, inner) => inner ? `
+        <section class="report-full-section" id="${id}" style="order:${order};">
+          <h2>${title}</h2>
+          ${inner}
+        </section>` : '';
+  const left = [];
+  const right = [];
+
+  left.push(sec(1, 'overview', `${esc(sn)} (${esc(d.ticker)}) overview`, `<p>${esc(overviewIntro(d))}</p>`));
+  left.push(sec(2, 'metrics', 'Key metrics &amp; valuation multiples', marketFirstBand(d)));
+
+  const summary = d.summary || [];
+  left.push(sec(3, 'summary', 'Executive summary', isFree
+    ? summary.map((p) => `<p>${esc(p)}</p>`).join('\n          ')
+    : `${summary[0] ? `<p>${esc(summary[0])}</p>` : ''}
+          ${lockedSection(`Full ${sn} market report summary`, `The complete reading of the ${sn} share price, business by business, and why it sits where it does against peers.`, summary.slice(1).join(' ') || summary[0] || '', unlockLabel, d.id)}`));
+
+  if (Array.isArray(d.thesis) && d.thesis.length) {
+    right.push(sec(4, 'thesis', 'The report in three points', isFree
+      ? thesisHtml(d.thesis)
+      : `${thesisTeaserList(d.thesis)}
+          ${lockedSection(`Full reasoning for ${sn}`, 'The detailed reasoning behind each of the three points.', d.thesis[0].text || '', unlockLabel, d.id)}`));
+  }
+
+  const bridge = priceBridgeHtml(d);
+  if (bridge) {
+    right.push(sec(5, 'segment-values', 'What the share price is made of', `<p>The market report splits ${esc(sn)}'s share price on ${esc(formatReportDate(d.reportDate))} between its businesses, by comparing each with its listed peers, then takes off debt and other claims.</p>
+          ${bridge}
+          ${isFree
+    ? marketFirstPoolDetail(d.valuePools)
+    : lockedSection(`Full ${sn} business-by-business reading`, 'Per-business reasoning: the multiple the market pays on forecast profit and the peer comparison.', (d.valuePools[0] && d.valuePools[0].text) || '', unlockLabel, d.id)}`));
+  }
+
+  if (isFree && Array.isArray(d.coreAnalysis) && d.coreAnalysis.length) {
+    left.push(sec(6, 'analysis', 'Analysis', `<p style="color:var(--gray-steel);">The reasoning behind the split in full: what the price pays for, why it sits where it does against peers, and what would change the reading.</p>
+          ${d.coreAnalysis.map((c) => `<h3>${esc(c.heading)}</h3>\n          <p>${esc(c.text)}</p>`).join('\n          ')}`));
+  }
+
+  if (isFree && ((d.risks && d.risks.length) || (d.catalysts && d.catalysts.length))) {
+    right.push(sec(7, 'risks', 'Risks &amp; what to watch', `${d.risks && d.risks.length ? `<h3>Risks</h3>${listSection(d.risks)}` : ''}
+          ${d.catalysts && d.catalysts.length ? `<h3>What to watch</h3>${listSection(d.catalysts)}` : ''}`));
+  }
+
+  const fin = financialsHtml(d.financials);
+  if (fin) {
+    left.push(sec(8, 'financials', isFree ? 'Financial statements &amp; estimates' : `${esc(sn)} financial statements &amp; estimates`, isFree
+      ? fin
+      : lockedSection(`${sn} financial model & forecasts`, `Income statement, revenue and EBIT forecasts, margins and key valuation ratios for ${sn} (${d.ticker}).`, (d.financials && d.financials.note) || '', unlockLabel, d.id)));
+  }
+
+  if (isFree && pdfHref) {
+    right.push(`
+        <section class="report-full-section" id="download" style="order:9;">
+          <div style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; text-align:center;">
+            <p style="font-size:var(--text-md); font-weight:300; color:white; margin-bottom:1rem;">Download the full ${esc(sn)} market report as a formatted PDF — free.</p>
+            <a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" download>Download free PDF</a>
+            ${cat?.revisable ? `<button type="button" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3); color:white; margin-left:0.75rem;" data-buy-revisions="${attr(d.id)}" hidden>Create a revision</button>` : ''}
+          </div>
+        </section>`);
+  } else if (!isFree) {
+    right.push(buyGate(d, cat).replace('<section class="report-full-section" id="unlock">', '<section class="report-full-section" id="unlock" style="order:9;">'));
+  }
+
+  if (Array.isArray(d.faqs) && d.faqs.length) {
+    right.push(sec(10, 'faq', `${esc(sn)} (${esc(d.ticker)}) stock — frequently asked questions`, faqHtml(faqsFor(d, cat))));
+  }
+
+  right.push(sec(11, 'sources', 'Sources &amp; methodology', `${(d.sources && d.sources.length) ? listSection(d.sources) : ''}
+          <p>Valuatum's market report takes analysts' consensus forecasts as they are, splits them between the businesses from the company's reported segment results, and reads the share price on the report date into the businesses by comparing each with its listed peers. It gives no rating and no target price. See the <a href="/methodology.html">methodology</a> for the full approach.</p>
+          <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
+            <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is AI-generated research material for informational purposes only. It gives no rating, no target price and no recommendation to buy or sell; any consensus target shown is other analysts' figure, attributed to its source. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
+          </div>`));
+
+  right.push(sec(12, 'related', 'Related AI equity reports', relatedHtml(d, all)));
+
+  return `      ${MF_STYLE}
+      <div class="report-full-content mf-cols">
+        <div class="mf-col">${left.join('\n')}
+        </div>
+        <div class="mf-col">${right.join('\n')}
+        </div>
+      </div>`;
+}
+
+// ── page template ───────────────────────────────────────────────────────────
+/**
+ * One landing page. `cat` is the live catalog entry of the page-owner report, or null for a
+ * coverage page. `all` is every company's page doc, for the related-reports chips.
+ */
+export function renderPage(d, cat, all) {
+  const isFree = !!cat?.isFree;
+  // A market-first report is a full report with no rating by design. `rated` decides what the
+  // metadata may say (title, share card, og image); `hasReport` decides what the page shows.
+  const marketFirst = isMarketFirst(d);
+  const rated = !!(d.headline && d.headline.recommendation);
+  const hasReport = rated || marketFirst;
+  const mode = !hasReport ? 'coverage' : isFree ? 'free' : 'paid';
+  const sn = shortName(d.companyName);
+  const url = `${SITE}/reports/${d.slug}.html`;
+  const desc = metaDescription(d, d.analystCount || 0, d.analystDisagrees ?? null);
+  // The share card is one surface: a neutral image next to text reading "rates KESKOB.HE
+  // SELL" is worse than either alone. og:/twitter: descriptions follow the same switch as
+  // the title and the card art. The plain <meta name="description"> is deliberately NOT
+  // changed here -- that is the Google snippet, and whether the rating belongs in it is the
+  // wider publication question, not a share-card one.
+  // Same switch scripts/redescribe-report-pages.mjs applies: a page with no
+  // report has no rating to hide, so its share card carries the snippet.
+  // A market-first page has no rating to hide either.
+  const shareDesc = (SHOW_RATINGS_IN_METADATA || !rated) ? desc : shareDescription(d);
+  // A coverage page (no report any more, or none yet) gets the company rule,
+  // the same one the 1,150+ generated overview pages and the title guard use.
+  // The report rule promises "& Price Target", which a page without a report
+  // cannot keep — and the SEO guard failed every PR after the sync rebuilt
+  // Fortum as a coverage page under the report rule. A market-first report has
+  // no price target either, so it takes the company rule too, as
+  // scripts/retitle-report-pages.mjs does for any page without a rating.
+  const title = rated ? reportTitle(sn, d.ticker, d.headline || {}) : companyTitle(sn, d.ticker);
+  const updated = d.reportDate;
+  // A report page gets the share card built for it by scripts/build-og-images.mjs (a
+  // market-first page gets the market-report card); an overview page keeps the default.
+  // The cards are built by hand (Chrome), so a market-first page the sync builds before
+  // anyone has made its card points at the default rather than at a missing file.
+  const card = path.join(ROOT, 'images', 'og', `${d.slug}.png`);
+  const ogImage = rated || (marketFirst && fs.existsSync(card))
+    ? `${SITE}/images/og/${d.slug}.png`
+    : `${SITE}/images/og-image.png`;
+  const pdfHref = pdfHrefOf(cat);
+  // A free report that the engine can still revise also sells revisions on
+  // its own. The button ships hidden; js/script.js reveals and prices it once
+  // the live pricing says the tier is on sale.
+  const revisionsCta = isFree && cat?.revisable
+    ? ` <button type="button" class="btn btn-outline" data-buy-revisions="${attr(d.id)}" style="border-color:rgba(255,255,255,0.3); color:white;" hidden>Create a revision</button>`
+    : '';
+  const downloadCta = isFree && pdfHref
+    ? `<a href="${attr(pdfHref)}" target="_blank" rel="noopener" class="btn btn-primary" download>Download free PDF</a>${revisionsCta}`
+    : hasReport
+      ? `<a href="#unlock" class="btn btn-primary">Get the ready report${cat?.price ? ` — €${Number(cat.price).toFixed(2)}` : ''}</a>`
+      : `<a href="#generate" class="btn btn-gold">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>`;
+
+  // Two buttons, two products, and nothing on the page said what separated them.
+  // The report date is the only honest answer: it is what the ready report knew.
+  const writtenOn = updated ? formatReportDate(updated) : null;
+  const actionsNote = !hasReport
+    ? `A fresh report is written when you order it, from the data available today, and arrives by email — usually within about 30 minutes.`
+    : `${isFree ? 'This report was' : 'The ready report was'} written by the Valuatum engine on ${writtenOn || 'its publication date'} and holds the figures available then. A fresh report is written today, from today's data, and arrives by email — usually within about 30 minutes.`;
+
+  const ctx = { sn, isFree, hasReport, pdfHref };
+  const body = marketFirst ? marketFirstColumns(d, cat, all, ctx) : standardColumns(d, cat, all, ctx);
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -767,9 +990,7 @@ ${navHtml()}
     </section>
 
     <div class="container" style="max-width:1760px; padding-top:2.5rem; padding-bottom:3rem;">
-      <div class="report-full-content coverage-cols">
-${sections.join('\n')}
-      </div>
+${body}
     </div>
     <!-- Public surface for the analyst layer: hidden until the members API returns an
          analysis for this company, so a company nobody has covered shows nothing. -->
