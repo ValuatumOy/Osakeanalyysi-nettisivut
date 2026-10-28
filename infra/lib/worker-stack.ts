@@ -74,6 +74,8 @@ export class WorkerStack extends Stack {
         // (fmp-import-token); aspId uses the code default.
         FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? 'true',
         FMP_IMPORT_URL: config.fmpImportUrl,
+        // Reports rendered from a pinned Trunk model (config.engineFidByTicker).
+        ENGINE_FID_BY_TICKER: JSON.stringify(config.engineFidByTicker),
         // Delivered fresh reports are published for resale right away. No
         // RESALE_PRICE_EUR: the catalog prices every paid report at the flat
         // ready-report price, so sidecars carry no price.
