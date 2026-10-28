@@ -28,6 +28,7 @@
 - [Pandora (PNDORA.CO) AI equity report](https://www.aiequityreports.com/reports/pandora-equity-report.html): BUY, target 1,112.30 DKK (current 807.40 DKK).
 - [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): HOLD, target 15.90 EUR (current 17.22 EUR).
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
+- [Remedy Entertainment (REMEDY.HE) AI equity report](https://www.aiequityreports.com/reports/remedy-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): HOLD, target 32.10 EUR (current 31.89 EUR).
 
@@ -52,6 +53,6 @@
 - Value pool analysis: decomposes a company's enterprise value into its distinct businesses and embedded options, each priced separately.
 
 ## Company overview pages
-1158 listed companies have a page with share price, valuation metrics and company profile,
+1157 listed companies have a page with share price, valuation metrics and company profile,
 each able to generate a fresh AI equity report on demand. They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).
