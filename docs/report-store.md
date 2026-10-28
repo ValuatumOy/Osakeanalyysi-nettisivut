@@ -31,10 +31,10 @@ generation you commit to publishing. See [members-test.md](members-test.md).
 - ~~Opening an analysis anonymously.~~ Decided and built, 19.8.2026. Esa's
   rule: *a logged-out visitor can see the free default reports, or a free
   analyst report if we manually decide it becomes available.* So the two kinds
-  of free were split. `freeUntil` — the window an administrator opens with
-  `POST /admin/members/feature` — is the only one that opens the document to
-  the public, served by `GET /analyses/{genId}/free` with no auth, no allowance
-  and no review owed. `freeFrom`, the decay time the analyst sets themselves,
+  of free were split. A price of €0 or `freeUntil` — the window an administrator
+  opens with `POST /admin/members/feature` — opens the document to the public,
+  served by `GET /analyses/{genId}/free` with no auth, allowance, or review.
+  `freeFrom`, the decay time the analyst sets themselves,
   stops costing a member one of their monthly reads and nothing more; the
   submit form and the analyst page now say so. `GET /analyses` carries both
   flags: `free` for members, `publicFree` for everyone.

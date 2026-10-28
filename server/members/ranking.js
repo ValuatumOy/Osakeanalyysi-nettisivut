@@ -50,15 +50,10 @@ function orderAnalyses(items, now = new Date()) {
       || String(a.genId).localeCompare(String(b.genId)));
 }
 
-// Two different kinds of free, and the difference decides who may read it.
-//
-// `freeUntil` is a window an administrator opened by hand — the only thing that
-// makes an analysis readable by a logged-out visitor (Esa, 19.8.2026: visitors
-// see the free engine reports, and an analyst analysis only when we decide it).
-// `freeFrom` is the analyst's own decay time: it stops costing a member one of
-// their monthly reads, but it does not open the document to the public.
+// A zero price or an administrator's free window opens the analysis to everyone.
+// An analyst's `freeFrom` decay time only stops costing members a monthly read.
 function isPublicFreeNow(item, now = new Date()) {
-  return Boolean(item?.freeUntil && now.toISOString() <= item.freeUntil);
+  return item?.priceEur === 0 || Boolean(item?.freeUntil && now.toISOString() <= item.freeUntil);
 }
 
 // Free for a signed-in member: either of the two.

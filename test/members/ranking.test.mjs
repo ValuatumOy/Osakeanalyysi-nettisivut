@@ -56,22 +56,28 @@ test('decimal peer scores order as written — 4.5 beats 4.2', () => {
   assert.equal(Math.round(first.peerScore * 100) / 100, 3.75);
 });
 
-test('public free is the hand-picked window only, never the analyst’s own decay', () => {
+test('a zero price or hand-picked window opens the analysis to everyone', () => {
   const decayed = pub('decayed', { freeFrom: '2026-08-01T00:00:00Z' });
   const featured = pub('featured', { freeUntil: '2026-09-30T00:00:00Z' });
   const expired = pub('expired', { freeUntil: '2026-08-01T00:00:00Z' });
   const plain = pub('plain');
+  const free = pub('free', { priceEur: 0 });
 
   // Free to a member: the decayed one and the open window.
   assert.equal(ranking.isFreeNow(decayed, NOW), true);
   assert.equal(ranking.isFreeNow(featured, NOW), true);
   assert.equal(ranking.isFreeNow(plain, NOW), false);
+  assert.equal(ranking.isFreeNow(free, NOW), true);
 
-  // Free to a logged-out visitor: only what an administrator opened.
+  // Decay alone is free only to members; zero is explicitly free to everyone.
   assert.equal(ranking.isPublicFreeNow(decayed, NOW), false);
   assert.equal(ranking.isPublicFreeNow(featured, NOW), true);
   assert.equal(ranking.isPublicFreeNow(expired, NOW), false);
   assert.equal(ranking.isPublicFreeNow(plain, NOW), false);
+  assert.equal(ranking.isPublicFreeNow(free, NOW), true);
+  assert.equal(ranking.isPublicFreeNow({ priceEur: 10 }, NOW), false);
+  assert.equal(ranking.isPublicFreeNow({ priceEur: null }, NOW), false);
+  assert.equal(ranking.isPublicFreeNow({ priceEur: '' }, NOW), false);
 });
 
 test('the shown score is what reviewers gave; the prior belongs to ranking only', () => {

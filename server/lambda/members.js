@@ -220,7 +220,14 @@ function permanentPdfUrl(fileName) {
 // this NEVER exposes pdfUrl: the presigned /open route is the only door.
 async function getReportsList(event) {
   const now = requestNow(event);
-  const { catalog } = await catalogAws.buildCatalogAws({ now });
+  const { catalog, sidecars } = await catalogAws.buildCatalogAws({ now });
+  const jobIdFor = report => sidecars?.get(report.fileName)?.provenance?.jobId;
+  let jobs = new Map();
+  try {
+    jobs = await engineJobs.getRevisionJobs(catalog.reports.map(jobIdFor));
+  } catch (err) {
+    console.warn('Could not verify report revisions:', err.message);
+  }
   return json(200, {
     week: catalog.week,
     reports: catalog.reports.map(report => ({
@@ -232,6 +239,7 @@ async function getReportsList(event) {
       isFree: report.isFree,
       price: report.price,
       priceLabel: report.priceLabel,
+      revisable: engineJobs.canRevise(jobs.get(jobIdFor(report))),
     })),
   }, { 'cache-control': 'public, max-age=300' });
 }
@@ -992,6 +1000,9 @@ async function postGenerationPrice(event) {
   const genId = event.pathParameters?.genId || '';
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
+  if (typeof body.priceEur !== 'number' || !Number.isFinite(body.priceEur) || body.priceEur < 0) {
+    return json(400, { error: 'Give the price as a number, 0 or more' });
+  }
 
   const publication = await store.getPublication(profile.userId, genId);
   if (!publication) return json(404, { error: 'Unknown analysis' });
@@ -1894,8 +1905,7 @@ async function getAnalyses(event) {
       // What reviewers gave. peerScore is the ranking number, pulled toward
       // the neutral prior, and is not what a reader should be shown.
       averageScore: ranking.averageScore(item) === null ? null : Math.round(ranking.averageScore(item) * 100) / 100,
-      // `free` costs a member no read; `publicFree` is the administrator's
-      // hand-picked window, the only one a logged-out visitor may open.
+      // `free` costs a member no read; `publicFree` is open to everyone.
       free: ranking.isFreeNow(item, now),
       publicFree: ranking.isPublicFreeNow(item, now),
       // What the analyst told the engine, first round only and truncated. This is
@@ -1958,10 +1968,8 @@ async function voidReviewsOnCoverage(userId, companyId, now) {
   return voided;
 }
 
-// GET /analyses/{genId}/free — no account, no allowance, no review owed. The
-// only analyst analysis a logged-out visitor can open is one an administrator
-// hand-picked into a free window (Esa, 19.8.2026). The analyst's own decay time
-// deliberately does NOT open this door: it only stops costing members a read.
+// GET /analyses/{genId}/free — no account, no allowance, no review owed.
+// The analyst's decay time alone only stops costing members a read.
 async function getAnalysisFree(event) {
   const now = requestNow(event);
   const genId = event.pathParameters?.genId || '';
@@ -1969,7 +1977,7 @@ async function getAnalysisFree(event) {
   // Same 404 for missing and taken-down: a takedown should not be discoverable.
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
   if (!ranking.isPublicFreeNow(index, now)) {
-    return json(403, { error: 'This analysis is not in a free window' });
+    return json(403, { error: 'This analysis is not free to the public' });
   }
   const document = await analysisDocument(genId);
   if (!document.url) return json(404, { error: 'No document for this analysis' });
@@ -2006,9 +2014,8 @@ async function postAnalysisOpen(event) {
     });
   };
 
-  // Inside a hand-picked free window, or past the analyst's own decay time, the
-  // analysis is free for everyone — no read spent, no review owed. Removing the
-  // gate is the whole point of the free window.
+  // A public free analysis or one past its member decay time costs no read and
+  // leaves no review obligation.
   if (ranking.isFreeNow(index, now)) return deliver({ free: true });
 
   // Re-opening something already paid for comes first, so an analyst who opened

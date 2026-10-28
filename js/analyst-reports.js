@@ -7,7 +7,7 @@
  * people to go there. What it also was, though, was the only caller of three members-API
  * endpoints that exist for readers with no account:
  *
- *   GET  /analyses/{genId}/free              an administrator's public free window
+ *   GET  /analyses/{genId}/free              a publicly free analysis
  *   POST /analyses/{genId}/buy-checkout      buying one without an account
  *   GET  /analyses/{genId}/purchased         collecting it after Stripe
  *
@@ -58,9 +58,8 @@
       : '<span class="store-noscore">Not reviewed yet</span>';
   }
 
-  // publicFree is the window an administrator opened by hand -- the only one a logged-out
-  // visitor may open. `free` alone is the analyst's own decay, which spares a member a read
-  // but does not open the document publicly.
+  // publicFree covers a zero price or an administrator's free window. `free`
+  // alone is the analyst's decay, which only spares members a read.
   function priceCell(a) {
     if (a.publicFree) return '<span class="pill-free">Free to read</span>';
     if (a.free) return '<span class="pill-free">Free for members</span>';
@@ -127,8 +126,7 @@
     + '</div>';
   }
 
-  // No account needed: the API only answers for an analysis an administrator has put in a
-  // free window, and hands back a short-lived signed URL.
+  // No account needed for an analysis the API marks publicFree.
   function openFree(genId, button) {
     var label = button.textContent;
     button.disabled = true;

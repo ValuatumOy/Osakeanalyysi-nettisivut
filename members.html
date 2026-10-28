@@ -170,7 +170,7 @@
                 </div>
               </div>
               <div id="submitRow" hidden style="margin-top:1.1rem;">
-                <p class="muted" style="margin-bottom:1.1rem;">The revisions you made and the prompts behind them are attached automatically when you publish, so you do not retype them here. Set what your report costs and how long until it stops costing other members a read.</p>
+                <p class="muted" style="margin-bottom:1.1rem;">Your revisions and prompts are attached automatically. Set a price and when it stops costing members a read. A price of €0 makes the report free for everyone.</p>
                 <div class="form-row">
                   <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
                     <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
@@ -187,7 +187,7 @@
           <div class="ws-section">
             <div class="ws-section-head">
               <h2>Report library</h2>
-              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick. These are for reading: to revise a company, generate it above.</p>
+              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick. Revisions are purchased separately; paid-report revisions include the report.</p>
             </div>
             <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
@@ -591,15 +591,29 @@
     async function loadReports() {
       const { data } = await api('GET', '/reports');
       if (!data) return;
+      if (document.readyState === 'loading') await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
+      if (window.SITE_PUBLIC_PRICING_PROMISE) await window.SITE_PUBLIC_PRICING_PROMISE;
       const rows = (data.reports || []).map(r => {
         const owned = window._entitled?.has(r.id);
-        const price = r.isFree ? '<span class="pill-free">Free</span>' : (r.priceLabel || '€' + r.price);
-        const btn = '<button class="btn ' + (owned || r.isFree ? 'btn-outline-dark' : 'btn-primary') + ' btn-sm" onclick="openReport(\'' + r.id + '\')">' +
+        const price = r.isFree ? '<span class="pill-free">Free</span>' : esc(r.priceLabel || '€' + r.price);
+        const btn = '<button class="btn ' + (owned || r.isFree ? 'btn-outline-dark' : 'btn-primary') + ' btn-sm" data-open-report="' + esc(r.id) + '">' +
           (owned ? 'Open again' : r.isFree ? 'Open' : 'Open (uses a pick)') + '</button>';
-        return '<tr><td>' + r.companyName + '</td><td>' + r.ticker + '</td><td>' + (r.reportDateLabel || r.reportDate) + '</td><td>' + price + '</td><td style="text-align:right">' + btn + '</td></tr>';
+        const choice = r.revisable === true && typeof getRevisionsChoice === 'function'
+          ? getRevisionsChoice(r.isFree ? 'free' : 'ready', true) : { available: false };
+        const revise = choice.available ? '<button class="btn btn-outline-dark btn-sm" data-revise-report="' + esc(r.id) + '">Revise — ' + formatEurAmount(choice.revisionsPrice) + '</button>' : '';
+        return '<tr><td>' + esc(r.companyName) + '</td><td>' + esc(r.ticker) + '</td><td>' + esc(r.reportDateLabel || r.reportDate) + '</td><td>' + price + '</td><td><div style="display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap">' + btn + revise + '</div></td></tr>';
       });
-      document.getElementById('reportsTable').innerHTML =
+      const table = document.getElementById('reportsTable');
+      table.innerHTML =
         '<tr><th>Company</th><th>Ticker</th><th>Report date</th><th>Access</th><th></th></tr>' + rows.join('');
+      table.querySelectorAll('[data-open-report]').forEach(btn => {
+        btn.addEventListener('click', () => openReport(btn.dataset.openReport));
+      });
+      table.querySelectorAll('[data-revise-report]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.dataset.loading !== '1') submitReadyReportCheckout(btn, btn.dataset.reviseReport, true);
+        });
+      });
     }
 
     async function openReport(id) {
@@ -965,6 +979,7 @@
     async function repriceAnalysis(genId, current) {
       const answer = prompt('New price in euros for this analysis (0 makes it free to read):', current);
       if (answer === null) return;
+      if (!answer.trim()) { notice('err', 'Give the price as a number, 0 or more.'); return; }
       const priceEur = Number(answer);
       if (!Number.isFinite(priceEur) || priceEur < 0) { notice('err', 'Give the price as a number, 0 or more.'); return; }
       const { status, data } = await api('POST', '/generations/' + genId + '/price', { priceEur });
