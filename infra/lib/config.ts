@@ -36,6 +36,13 @@ export interface StageConfig {
    * untouched (GOOGL, 23 October 2026).
    */
   fmpImportUrl: string;
+  /**
+   * ENGINE_FID_BY_TICKER for the worker: tickers whose report is rendered from
+   * a pinned Trunk model rather than the engine's default (FMP) model. The fids
+   * belong to the stage's Trunk, so the map is per stage. UPM.HE: statements
+   * imported into its `ValuatumData` model, 28 October 2026.
+   */
+  engineFidByTicker: Record<string, number>;
 }
 
 export function stageConfig(app: App): StageConfig {
@@ -95,5 +102,6 @@ export function stageConfig(app: App): StageConfig {
     pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
     engineFunctionArn: app.node.tryGetContext('engineFunctionArn') ?? engine.arn,
     fmpImportUrl: app.node.tryGetContext('fmpImportUrl') ?? `${trunkRest}/dataimport`,
+    engineFidByTicker: stage === 'prod' ? { 'UPM.HE': 20798 } : {},
   };
 }

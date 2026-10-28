@@ -64,6 +64,22 @@ function floatEnv(name, fallback) {
   return Number.isFinite(value) ? value : fallback;
 }
 
+// {"TICKER": fid, ...}: only positive integer fids are kept; a malformed value
+// is logged and ignored, so the worker falls back to the engine's own choice.
+function fidMapEnv(name) {
+  const raw = process.env[name];
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(raw);
+    return Object.fromEntries(
+      Object.entries(parsed).filter(([, fid]) => Number.isSafeInteger(fid) && fid > 0),
+    );
+  } catch (err) {
+    console.error(`[reconciler] ignoring ${name}: ${err.message}`);
+    return {};
+  }
+}
+
 const INTERVAL_MS = intEnv('RECONCILER_INTERVAL_MS', 45000);
 const MAX_POLLS = intEnv('RECONCILER_MAX_POLLS', 40);
 const MAX_ATTEMPTS = intEnv('RECONCILER_MAX_ATTEMPTS', 6);
@@ -77,6 +93,11 @@ const POLL_DELAY_MS = intEnv('RECONCILER_POLL_DELAY_MS', 20000);
 const EMIT_ORDER_METRICS = boolEnv('EMIT_ORDER_METRICS', false);
 const STUCK_AFTER_MINUTES = intEnv('ORDER_STUCK_AFTER_MINUTES', 30);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
+// Ticker -> Trunk followed model the engine renders, instead of its default
+// pick (the `ValuatumDataSources` FMP model). For a company whose statements
+// were imported into a `ValuatumData` model alongside the FMP one. Sent as
+// `params.fid`; revisions inherit the parent job's params, so they stay on it.
+const ENGINE_FID_BY_TICKER = fidMapEnv('ENGINE_FID_BY_TICKER');
 const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
 // Phase 2 resale: when enabled, a delivered report is published immediately for
 // resale (visible + resale price) instead of the Phase 1 hidden email-only write.
@@ -594,7 +615,11 @@ async function advance(order) {
       await orders.update(order.id, { importStatus: outcome.status }); // SUCCESS | SKIPPED
     }
 
-    const { jobId } = await engine.submitJob({ companyCode: order.ticker });
+    const fid = ENGINE_FID_BY_TICKER[order.ticker];
+    const { jobId } = await engine.submitJob({
+      companyCode: order.ticker,
+      ...(fid ? { params: { fid } } : {}),
+    });
     await orders.update(order.id, { status: orders.STATUS.RENDERING, jobId, polls: 0, error: null });
     order = { ...order, status: orders.STATUS.RENDERING, jobId, polls: 0 };
     // Fall through: with a poll window configured, start polling immediately.
