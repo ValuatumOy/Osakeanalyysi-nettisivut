@@ -977,7 +977,7 @@
     }
 
     async function repriceAnalysis(genId, current) {
-      const answer = prompt('New price in euros for this analysis (0 makes it free to read):', current);
+      const answer = prompt('New price in euros for this analysis (0 makes it free for everyone):', current);
       if (answer === null) return;
       if (!answer.trim()) { notice('err', 'Give the price as a number, 0 or more.'); return; }
       const priceEur = Number(answer);
