@@ -1,5 +1,4 @@
 (() => {
-  const returnedTopup = new URLSearchParams(location.search).has('topup');
   let member;
   let current = 'own';
   const get = id => document.getElementById(id);
@@ -15,6 +14,8 @@
       tab.tabIndex = active ? 0 : -1;
       get('panel-' + tab.dataset.workspaceTab).hidden = !active;
     });
+    // On a phone the tab row scrolls sideways; keep the chosen tab in view.
+    selected.parentElement.scrollLeft = selected.offsetLeft - 16;
     if (focus) selected.focus();
   };
   tabs().forEach(tab => {
@@ -73,6 +74,7 @@
     link.focus();
   }
 
+  // Only what blocks the member's next step is listed; everything else lives in its tab.
   window.refreshWorkspaceAttention = () => {
     if (!member) return;
     const review = Boolean(window._openReviewId);
@@ -81,47 +83,25 @@
     get('tab-analysts').hidden = !(member.usage.analystReadLimit > 0 || member.publishes || review);
     // A pending review remains reachable even when the monthly allowance is zero.
     get('analysesCard').hidden = get('tab-analysts').hidden;
-    const attention = get('workspaceAttention');
-    attention.replaceChildren();
-    const add = (label, action) => {
+    const due = get('workspaceDue');
+    due.replaceChildren();
+    const add = (title, text, label, action) => {
+      const item = document.createElement('li');
+      const heading = document.createElement('h2');
+      const body = document.createElement('p');
       const button = document.createElement('button');
+      heading.textContent = title;
+      body.textContent = text;
       button.type = 'button';
+      button.className = 'btn btn-sm ' + (due.children.length ? 'btn-outline-dark' : 'btn-primary');
       button.textContent = label;
       button.addEventListener('click', action);
-      attention.appendChild(button);
+      item.append(heading, body, button);
+      due.appendChild(item);
     };
-    if (publication) add('Publication due  / View your report', showPublication);
-    if (review) add('Review due  / Complete review', () => jump('analysts', 'reviewRow'));
-    attention.hidden = !publication && !review;
-
-    let title, text, label, action;
-    if (publication) {
-      title = 'Finish your report';
-      text = 'Open your report, request your revisions and publish the version you stand behind.';
-      label = 'View your report'; action = showPublication;
-    } else if (review) {
-      title = 'Complete your review';
-      text = 'Review the report you opened before your next monthly read.';
-      label = 'Write review'; action = () => jump('analysts', 'reviewRow');
-    } else if (!get('reserveRow').hidden && !get('genCard').hidden) {
-      title = member.publishes ? 'Start your next report' : 'Create your private report';
-      text = get('genStatus').textContent;
-      label = 'Choose a company'; action = () => jump('own', 'genCompany');
-    } else if (member.usage.genReserved) {
-      title = 'Continue your report';
-      text = 'Follow its progress, then open the report and request revisions.';
-      label = 'View your report'; action = () => jump('own', 'generationsTable');
-    } else {
-      title = 'Find your next report';
-      text = 'Browse the ready-report library with your current access.';
-      label = 'Browse ready reports'; action = () => jump('library', 'reportsTable');
-    }
-    get('workspaceNextTitle').textContent = title;
-    get('workspaceNextText').textContent = text;
-    const button = get('workspaceNextAction');
-    button.textContent = label;
-    button.onclick = action;
-    get('workspaceNext').hidden = false;
+    if (publication) add('Publish your report', 'Revise it until you stand behind it, then publish. Your next free generation unlocks when it is published.', 'View your report', showPublication);
+    if (review) add('Review the analyst report you opened', 'Your next analyst read unlocks once the review is in.', 'Write the review', () => jump('analysts', 'reviewRow'));
+    due.hidden = !publication && !review;
     if (get('tab-' + current).hidden) selectWorkspaceTab('own');
   };
 
@@ -132,14 +112,12 @@
     const active = data.tier !== 'none' && ['active', 'past_due'].includes(data.tierStatus);
     const tier = get('tierBadge').textContent;
     get('workspacePlan').textContent = active
-      ? tier + (data.tierStatus === 'past_due' ? '  / Payment past due' : '  / Active')
-      : data.tier === 'none' ? 'No paid subscription. Your current allowances are shown above.' : tier + '  / Subscription inactive';
-    if (returnedTopup) document.querySelector('.workspace-allowances').open = true;
-    document.querySelector('.workspace-help').hidden = get('genPath').hidden;
+      ? tier + (data.tierStatus === 'past_due' ? ', payment past due.' : ', active.')
+      : data.tier === 'none' ? 'No subscription.' : tier + ', inactive.';
+    get('genPath').closest('details').hidden = get('genPath').hidden;
     if (data.publishes && !data.hasGeneration) loadEarnings();
     refreshWorkspaceAttention();
     if (first && !get('tab-analysts').hidden) loadAnalyses();
     if (first) selectWorkspaceTab(data.hasGeneration || data.publishes ? 'own' : 'library');
-    get('myReviewsBtn').onclick = () => { selectWorkspaceTab('analysts'); myReviews(); };
   };
 })();
