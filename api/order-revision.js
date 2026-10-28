@@ -10,10 +10,13 @@
 
 const Stripe = require('stripe');
 const { reportError } = require('../server/email');
-const { submitOrderRevision, submitOrderEdit, previewOrderValuation } = require('../server/catalog-client');
+const { getOrderState, submitOrderRevision, submitOrderEdit, previewOrderValuation } = require('../server/catalog-client');
 const { CheckoutError, createExtraRoundsCheckout, isCompletedCheckout, orderPageUrl } = require('../server/checkout');
 
 async function buyRounds(req, res, stripe, sessionId, session) {
+  const order = await getOrderState(sessionId);
+  if (order.publicationLocked) return res.status(409).json({ error: 'This report is published — its PDF can no longer change' });
+  if (order.revisionAvailable !== true) return res.status(409).json({ error: 'Revisions are unavailable because the original report data could not be verified' });
   const orderUrl = orderPageUrl(sessionId);
   const { session: created, rounds, priceEur } = await createExtraRoundsCheckout(stripe, {
     orderId: sessionId,
@@ -67,6 +70,7 @@ module.exports = async (req, res) => {
     res.status(200).json(result);
   } catch (err) {
     if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });
+    if (err.status === 403) return res.status(403).json({ error: 'Sign in to access this report' });
     if (err.status === 404) return res.status(404).json({ error: 'Order not found' });
     if (err.status === 409) return res.status(409).json({ error: err.message });
     if (err.status === 400 || err.status === 413) return res.status(err.status).json({ error: err.message });

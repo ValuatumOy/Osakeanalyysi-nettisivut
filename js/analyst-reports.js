@@ -7,7 +7,7 @@
  * people to go there. What it also was, though, was the only caller of three members-API
  * endpoints that exist for readers with no account:
  *
- *   GET  /analyses/{genId}/free              an administrator's public free window
+ *   GET  /analyses/{genId}/free              a publicly free analysis
  *   POST /analyses/{genId}/buy-checkout      buying one without an account
  *   GET  /analyses/{genId}/purchased         collecting it after Stripe
  *
@@ -58,9 +58,8 @@
       : '<span class="store-noscore">Not reviewed yet</span>';
   }
 
-  // publicFree is the window an administrator opened by hand -- the only one a logged-out
-  // visitor may open. `free` alone is the analyst's own decay, which spares a member a read
-  // but does not open the document publicly.
+  // publicFree covers a zero price or an administrator's free window. `free`
+  // alone is the analyst's decay, which only spares members a read.
   function priceCell(a) {
     if (a.publicFree) return '<span class="pill-free">Free to read</span>';
     if (a.free) return '<span class="pill-free">Free for members</span>';
@@ -96,7 +95,7 @@
         + '<a class="btn btn-outline-dark btn-sm" href="/members.html">Sign in to read</a>';
     // The total, not the label alone: "Build on this" led to a Stripe page
     // showing a price the reader had never been told.
-    var forkTotal = forkFeeEur == null ? null : (Number(a.priceEur) || 0) + forkFeeEur;
+    var forkTotal = forkFeeEur == null ? null : (a.publicFree ? 0 : (Number(a.priceEur) || 0)) + forkFeeEur;
     cta += '<button class="btn btn-outline-dark btn-sm" data-fork="' + esc(a.genId) + '"'
       + ' title="Buy this analysis with revision rounds and steer it yourself">Build on this'
       + (forkTotal ? ' — €' + forkTotal : '') + '</button>';
@@ -127,24 +126,27 @@
     + '</div>';
   }
 
-  // No account needed: the API only answers for an analysis an administrator has put in a
-  // free window, and hands back a short-lived signed URL.
+  // No account needed for an analysis the API marks publicFree.
   function openFree(genId, button) {
     var label = button.textContent;
+    var tab = window.open('', '_blank');
+    if (tab) tab.opener = null;
     button.disabled = true;
     button.textContent = 'Opening…';
     fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/free')
       .then(function (res) {
         return res.json().catch(function () { return null; }).then(function (data) {
           if (res.ok && data && data.url) {
-            window.open(data.url, '_blank', 'noopener');
+            if (tab) tab.location = data.url;
+            else location.href = data.url;
             button.textContent = label;
           } else {
+            if (tab) tab.close();
             button.textContent = res.status === 403 ? 'No longer free' : 'Not available';
           }
         });
       })
-      .catch(function () { button.textContent = 'Not available'; })
+      .catch(function () { if (tab) tab.close(); button.textContent = 'Not available'; })
       .then(function () { button.disabled = false; });
   }
 
@@ -155,9 +157,11 @@
   function fork(genId, button) {
     button.disabled = true;
     button.textContent = 'Opening checkout…';
+    var headers = { 'content-type': 'application/json' };
+    if (window.localStorage.memberToken) headers.authorization = 'Bearer ' + window.localStorage.memberToken;
     fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/fork-checkout', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: headers,
       body: JSON.stringify({ returnTo: location.origin + location.pathname }),
     })
       .then(function (res) {
@@ -226,7 +230,9 @@
       return;
     }
     bannerEl.textContent = 'Confirming your purchase…';
-    fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/purchased?session_id=' + encodeURIComponent(sessionId))
+    fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/purchased?session_id=' + encodeURIComponent(sessionId), {
+      headers: window.localStorage.memberToken ? { authorization: 'Bearer ' + window.localStorage.memberToken } : {},
+    })
       .then(function (res) {
         return res.json().catch(function () { return null; }).then(function (data) {
           if (res.ok && data && data.url) {

@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   if (!reportId) return res.status(400).json({ error: 'Missing report id' });
 
   try {
-    let report = await getCatalogReport(reportId);
+    let report = await getCatalogReport(reportId, { requireBackend: true });
     // Test site only (Stripe test key): a production report id gets the test
     // catalog's newest report for the same company. See findTestStandIn.
     if (!report) {

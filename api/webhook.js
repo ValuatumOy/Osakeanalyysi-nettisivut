@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const { getCatalogReport, recordCatalogPurchase } = require('../server/catalog-client');
+const { getCatalogReport, recordCatalogPurchase, requestReportDownload } = require('../server/catalog-client');
 const { sendReportEmail, sendFreshConfirmEmail, reportError } = require('../server/email');
 const { isCompletedCheckout, isOurSession, isRevisionsOnly, orderPageUrl, siteUrl } = require('../server/checkout');
 
@@ -57,6 +57,11 @@ const handler = async (req, res) => {
       });
       return res.json({ received: true, ignored: true });
     }
+    // Analyst purchases and revision top-ups use the members webhook; they
+    // share this Stripe account and site tag but have no catalog reportId.
+    if ((!isFresh && !reportId) || (isFresh && session.metadata?.userId)) {
+      return res.json({ received: true, ignored: true });
+    }
 
     console.log('Checkout completed webhook received', {
       sessionId: session.id,
@@ -90,10 +95,9 @@ const handler = async (req, res) => {
         // reconciler sends the real delivery email later.
         try {
           if (email) {
-            const withRevisions = session.metadata?.withRevisions === 'true';
             await sendFreshConfirmEmail(email, {
               ...session.metadata,
-              orderUrl: withRevisions ? orderPageUrl(session.id) : null,
+              orderUrl: orderPageUrl(session.id),
             });
           } else {
             console.warn('Fresh report email skipped: missing customer email', { sessionId: session.id });
@@ -105,10 +109,13 @@ const handler = async (req, res) => {
         // Admin notifications now come from the reconciler (success + failure),
         // not from here — generation hasn't run yet at webhook time.
       } else {
-        const report = await getCatalogReport(reportId);
+        let report = await getCatalogReport(reportId);
+        if (!report && reportId) {
+          const fileName = session.metadata?.reportFileName || (await requestReportDownload(reportId)).fileName;
+          report = { id: reportId, fileName, ticker: session.metadata?.ticker || '', name: session.metadata?.reportName || 'Report' };
+        }
         if (!report) {
-          console.error('Purchase sync skipped: unknown report id', { sessionId: session.id, reportId });
-          await reportError('vercel webhook: purchase sync', new Error(`unknown report id ${reportId}`), { sessionId: session.id, customer: email });
+          throw new Error(`unknown report id ${reportId}`);
         } else {
           await recordCatalogPurchase({
             type: 'existing',
@@ -120,6 +127,7 @@ const handler = async (req, res) => {
             customerEmail: email || '',
             purchasedAt: new Date((session.created || Date.now() / 1000) * 1000).toISOString(),
             withRevisions: session.metadata?.withRevisions === 'true',
+            revisable: session.metadata?.revisable === 'true',
             revisionsAllowed: session.metadata?.revisionsAllowed || '0',
             amountTotal: session.amount_total,
             currency: session.currency,
@@ -133,7 +141,7 @@ const handler = async (req, res) => {
               await sendReportEmail(email, {
                 ...report,
                 pdfUrl: `${siteUrl()}/api/report-download?session_id=${encodeURIComponent(session.id)}`,
-                orderUrl: withRevisions ? orderPageUrl(session.id) : null,
+                orderUrl: (withRevisions || session.metadata?.revisable === 'true') ? orderPageUrl(session.id) : null,
                 revisionsOnly: isRevisionsOnly(session),
                 revisionsAllowed: session.metadata?.revisionsAllowed || '0',
               });

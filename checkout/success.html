@@ -280,6 +280,7 @@
           if (data.orderUrl) {
             const link = document.getElementById('reportOrderLink');
             link.href = data.orderUrl;
+            if (!data.revisionsAllowed) link.textContent = 'Open report workspace';
             link.style.display = '';
           }
           show('stateReport');
