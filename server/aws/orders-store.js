@@ -101,6 +101,9 @@ async function create(input) {
     // report they revise. Undefined on shop orders, which stay engine-only.
     analystName: input.analystName || undefined,
     origin: input.origin === 'ready' ? 'ready' : 'fresh',
+    // Only a newly generated engine original can have a public baseline.
+    publicEngineBase: input.publicEngineBase === true && input.origin !== 'ready'
+      && !input.forkedFrom && !input.adminCopy && !input.jobId && !input.reportId,
     // A derived analysis: the genId of the published analysis this one was
     // forked from. The fork revises the parent's engine job but is a separate
     // order, and it deliberately starts with pdfFileName null — the reconciler
@@ -182,7 +185,7 @@ async function create(input) {
     }));
     return toRow(order);
   } catch (err) {
-    if (err.name === 'ConditionalCheckFailedException') return get(input.id);
+    if (err.name === 'ConditionalCheckFailedException') return get(input.id, true);
     throw err;
   }
 }

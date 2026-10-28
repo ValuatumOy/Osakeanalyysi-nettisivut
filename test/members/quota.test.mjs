@@ -53,7 +53,7 @@ test('a paid publication creates an immutable public copy without publishing the
   const items = quota.buildSubmitTransact({
     table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date(), genId: 'cs_secret', publishedGenId: 'public-uuid',
     companyId: 'TSLA', jobId: 'job', orderUpdatedAt: 'v1', sourcePublication: true,
-    orderCopy: { id: 'cs_secret', jobId: 'job', status: 'DELIVERED', pdfFileName: 'report.pdf' },
+    orderCopy: { id: 'cs_secret', jobId: 'job', status: 'DELIVERED', pdfFileName: 'report.pdf', publicEngineBase: true },
   }).TransactItems;
   assert.equal(items[1].Update.Key.sk, 'PUB#public-uuid');
   assert.equal(items[2].Put.Item.genId, 'public-uuid');
@@ -66,6 +66,7 @@ test('a paid publication creates an immutable public copy without publishing the
   assert.equal(copy.orderId, 'public-uuid');
   assert.equal(copy.id, undefined);
   assert.equal(copy.publicationLocked, true);
+  assert.equal(copy.publicEngineBase, undefined, 'an analyst publication does not inherit the engine baseline marker');
   const originalPub = items.find(item => item.Update?.Key?.sk === 'PUB#cs_secret').Update;
   assert.match(originalPub.UpdateExpression, /#private = :private/);
 });
@@ -209,6 +210,30 @@ test('member generation reserves the month slot without a publish obligation', (
   assert.equal(items[1].Put.Item.private, true);
   assert.ok(items.every(item => !item.Update?.UpdateExpression.includes('openObligationId')));
   assert.match(items[2].ConditionCheck.ConditionExpression, /attribute_not_exists\(openObligationId\)/);
+});
+
+test('generation reservations atomically bind baseline eligibility to the current profile role', () => {
+  const base = { table: TABLE, userId: 'u1', now: new Date('2026-10-28T00:00:00Z'), genId: 'g1', companyId: 'NOKIA.HE' };
+  for (const build of [
+    quota.buildReserveMemberGenerationTransact, quota.buildReserveGenerationCreditTransact,
+    quota.buildPaidGenerationTransact, quota.buildCoverageGenerationTransact,
+  ]) {
+    for (const publicEngineBase of [true, false]) {
+      const items = build({ ...base, publicEngineBase }).TransactItems;
+      const pub = items.find(item => item.Put?.Item.sk === 'PUB#g1').Put;
+      assert.equal(pub.Item.publicEngineBase, publicEngineBase);
+      assert.equal(pub.ConditionExpression, 'attribute_not_exists(sk)');
+      const guards = items.map(item => item.Update || item.ConditionCheck).filter(item => item?.Key.sk === 'PROFILE');
+      assert.equal(guards.length, 1, 'one profile action, as DynamoDB forbids checking and updating it separately');
+      const guard = guards[0];
+      assert.match(guard.ConditionExpression, /attribute_exists\(pk\)/);
+      assert.equal(guard.ExpressionAttributeNames['#role'], 'role');
+      assert.equal(guard.ExpressionAttributeValues[':analyst'], 'analyst');
+      assert.equal(guard.ExpressionAttributeValues[':coaching'], 'coaching');
+      assert.ok(guard.ConditionExpression.endsWith(publicEngineBase ? 'AND #role IN (:analyst, :coaching)'
+        : 'AND (attribute_not_exists(#role) OR (#role <> :analyst AND #role <> :coaching))'));
+    }
+  }
 });
 
 test('freemium age gate: only reports 30 days or older', () => {

@@ -249,7 +249,7 @@
           <div class="ws-section" id="buyGenCard">
             <div class="ws-section-head">
               <h2>Another report, on demand</h2>
-              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time. It starts private and carries the same revision rounds as your monthly one. Analysts can choose to publish an edited version.</p>
+              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time, with the same revision rounds as your monthly one.</p>
             </div>
             <div class="ws-panel">
               <div class="form-row">
@@ -323,7 +323,7 @@
                 <div class="price">€39 <span>/ month · €390 / year</span></div>
                 <ul>
                   <li>10 reports per month, 15 on the yearly plan</li>
-                  <li>1 private fresh generation per month</li>
+                  <li>1 fresh generation per month</li>
                 </ul>
                 <div class="actions">
                   <button class="btn btn-primary btn-sm" onclick="checkout('investor_plus','month')">Monthly</button>
@@ -512,9 +512,10 @@
         collectFreshPurchase(freshReceipt);
       }
 
-      // Analysts owe a publication for their free run; Investor Plus members
-      // get a private one with no strings attached.
       const isAnalyst = data.publishes;
+      document.getElementById('buyGenSub').textContent = isAnalyst
+        ? 'Buy a fresh generation at any time. The unmodified engine report may be listed for sale; your changes are not published until you submit them.'
+        : 'Buy a fresh generation at any time. It stays private and carries the same revision rounds as your monthly one.';
       document.getElementById('stepDownBtn').hidden = !isAnalyst;
       document.getElementById('linkedinProfileBtn').hidden = !isAnalyst;
       document.getElementById('myReviewsBtn').hidden = !isAnalyst;
@@ -552,11 +553,13 @@
         const usingCredit = !monthlyAvailable && data.generationCredits > 0;
         const available = data.generationAvailable ?? (monthlyAvailable || usingCredit);
         document.getElementById('genTitle').textContent =
-          usingCredit ? 'Your free private report' : isAnalyst ? 'Your report this month' : 'Your private report this month';
+          usingCredit ? (isAnalyst ? 'Your free report' : 'Your free private report') : isAnalyst ? 'Your report this month' : 'Your private report this month';
         document.getElementById('genSub').textContent = usingCredit
-          ? 'Use one of your free generations. The report stays private and no subscription is needed.'
+          ? (isAnalyst
+            ? 'Use one of your free generations. The unmodified engine report may be listed for sale; your changes are not published until you submit them.'
+            : 'Use one of your free generations. The report stays private and no subscription is needed.')
           : isAnalyst
-          ? 'Free: you publish the finished report under your own name. The next one unlocks once it is published.'
+          ? 'The unmodified engine report may be listed for sale. Publish your finished report under your own name to unlock the next free generation.'
           : 'Reserve your monthly fresh report. It stays private to you and nothing is published.';
         document.getElementById('genStatus').textContent = usingCredit
           ? data.generationCredits + ' free generation' + (data.generationCredits === 1 ? '' : 's') + ' available.'
@@ -807,7 +810,7 @@
         return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
           + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
           + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
-          + '<td>' + (g.publication === 'published' ? 'Published' : g.private ? 'Private' : 'Not published yet') + '</td>'
+          + '<td>' + (g.publication === 'published' ? 'Published' : g.publicEngineBase ? 'Changes not published' : g.private ? 'Private' : 'Not published yet') + '</td>'
           + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
           + '<td style="text-align:right">' + action + more + reprice + prompts + '</td></tr>';
       });

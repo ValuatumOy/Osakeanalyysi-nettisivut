@@ -51,8 +51,8 @@ Canonical page: https://www.aiequityreports.com/pricing.html
 
 - Price: €39/month (€39/month · billed monthly)
 - Billed yearly: €390 billed yearly · save €78
-- Summary: For investors covering a wide portfolio. A large monthly report allowance plus one private fresh generation — a €50 product on its own.
-- Includes: 10 self-picked reports per month; 1 private fresh generation per month; Your fresh report stays private to you; Extra generations at the €40 member price; Email us to cancel or change your plan
+- Summary: For investors covering a wide portfolio. A large monthly report allowance plus one fresh generation — a €50 product on its own.
+- Includes: 10 self-picked reports per month; 1 fresh generation per month; Private for readers; analysts' unmodified engine reports may be sold; Extra generations at the €40 member price; Email us to cancel or change your plan
 - On the yearly plan: 15 self-picked reports per month
 
 ### Company Coverage

@@ -34,18 +34,24 @@ test('email member sees gifted balance and can start a private report', async ()
   assert.equal(elements.get('genCard').hidden, false);
   assert.equal(elements.get('reserveRow').hidden, false);
   assert.equal(elements.get('genTitle').textContent, 'Your free private report');
+  assert.match(elements.get('genSub').textContent, /stays private/);
+  assert.match(elements.get('buyGenSub').textContent, /stays private/);
   assert.match(elements.get('genStatus').textContent, /3 free generations available/);
   assert.match(elements.get('usageGrid').innerHTML, /Free generations from admin/);
   assert.doesNotMatch(elements.get('usageGrid').innerHTML, /Generation left this month/);
   assert.equal(context.window._publishes, false);
 });
 
-test('gifted analyst report is private while an existing publication remains due', async () => {
+test('gifted analyst sees how the original and their changes are published', async () => {
   const { context, elements } = page({ role: 'analyst', publishes: true, openObligationId: 'old', limits: { generations: 1 } });
   await context.loadMe();
   assert.equal(elements.get('reserveRow').hidden, false);
   assert.equal(elements.get('submitRow').hidden, false);
   assert.equal(elements.get('genCommit').hidden, true);
+  assert.equal(elements.get('genTitle').textContent, 'Your free report');
+  assert.match(elements.get('genSub').textContent, /engine report may be listed for sale/);
+  assert.match(elements.get('genSub').textContent, /changes are not published until you submit/);
+  assert.match(elements.get('buyGenSub').textContent, /engine report may be listed for sale/);
   assert.equal(context.window._publishes, false);
 });
 
@@ -53,6 +59,7 @@ test('monthly entitlement is used before a gift credit', async () => {
   const { context, elements } = page({ role: 'analyst', publishes: true, limits: { generations: 1 } });
   await context.loadMe();
   assert.equal(elements.get('genTitle').textContent, 'Your report this month');
+  assert.match(elements.get('genSub').textContent, /engine report may be listed for sale/);
   assert.equal(elements.get('genCommit').hidden, false);
   assert.equal(context.window._publishes, true);
 });

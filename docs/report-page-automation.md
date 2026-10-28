@@ -231,7 +231,23 @@ is the single exception to case J's "never build from history": historical files
 *report* content, but they do supply *company* identity. Hand-written stubs (case I) are
 distinguished by the `-coverage` filename convention and are never touched.
 
-## Why a cron and nothing else
+## Delivery wake-up and cron recovery
+
+When an analyst's original engine report enters the catalog, the worker asks
+GitHub Actions to run this sync immediately. The worker reads the fine-grained
+token from the SSM SecureString
+`/aiequityreports/<stage>/report-pages-dispatch-token`; the token needs
+**Actions: read and write** on `ValuatumOy/Osakeanalyysi-nettisivut` only.
+Production dispatches `main`, and test dispatches `staging`. A missing token or
+a failed dispatch does not interrupt report delivery: the hourly sync remains
+the recovery path. Actions still needs time to extract, verify, commit and
+deploy the page, and a failed extraction is reported by the workflow.
+
+The sync uses a fresh catalog request so a cached Vercel response does not hide
+the just-delivered report. The original PDF is the catalog report; an analyst's
+later revision remains a separate private file until explicitly published.
+
+The earlier design used a cron alone:
 
 An earlier draft of this plan added event triggers — `repository_dispatch` POSTs from
 `reconciler.deliver()` and the admin routes, plus a poll in the workflow to wait out the
@@ -245,7 +261,7 @@ cron had to exist regardless. Events were pure cost: a dispatch module, four cal
 token in SSM, worker and API Lambda redeploys — all deployment risk in the order path, buying
 minutes on a page nobody is refreshing.
 
-**Cadence: hourly.** A no-change run is a catalog fetch and a diff — no LLM call, no commit,
+**Recovery cadence: hourly.** A no-change run is a catalog fetch and a diff — no LLM call, no commit,
 seconds of free Actions time — so frequency costs nothing, and hourly caps every mismatch window
 (a rotation flip, a hide, a delivery) at an hour. Daily would stretch the worst case to a day of
 last week's free report staying fully readable after the flip; there is no simplicity gained in
@@ -260,8 +276,9 @@ says at that moment, and anything it misses, the next run catches.
 One idempotent script, `scripts/report-pages/sync.mjs`, is the whole feature.
 
 ```
-hourly cron            ┐
-manual workflow_dispatch ┴→ sync workflow → commit main → Vercel deploy
+hourly cron             ┐
+delivery wake-up        ├→ sync workflow → commit main → Vercel deploy
+manual workflow_dispatch┘
 
     sync.mjs:
       live catalog  vs  report-content/  vs  reports/
@@ -445,5 +462,5 @@ listing was moved to the test catalog on 26 October 2026 (it is rebuilt in the b
 - The worker Lambda deploy carrying the `deliver()` conditional-create fix (decision 6) —
   proposed for approval separately when built.
 
-Dropping the event triggers removed the fine-grained GitHub token, the SSM secret, and the API
-Lambda redeploy the earlier draft required.
+The delivery wake-up needs the scoped GitHub token described above; without it,
+only the hourly recovery run updates pages automatically.

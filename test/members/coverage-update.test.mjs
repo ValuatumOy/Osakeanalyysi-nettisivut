@@ -14,7 +14,7 @@ function stub(modulePath, exports) {
   require.cache[filename] = { id: filename, filename, loaded: true, exports, children: [], paths: [] };
 }
 
-const state = { profile: null, created: [], committed: true };
+const state = { profile: null, created: [], committed: true, reservation: null, race: null };
 
 stub('../../server/aws/catalog-aws.js', {
   fetchCatalog: async () => [],
@@ -29,7 +29,7 @@ stub('../../server/search.js', {
 });
 stub('../../server/members/bounty.js', { readRateEur: () => 0.5 });
 stub('../../server/members/auth.js', {
-  requireUser: async () => ({ profile: state.profile, deny: null }),
+  requireUser: async () => ({ profile: structuredClone(state.profile), deny: null }),
 });
 stub('../../server/aws/orders-store.js', {
   STATUS: { NEW: 'NEW', FAILED: 'FAILED', DELIVERED: 'DELIVERED' },
@@ -39,7 +39,17 @@ stub('../../server/aws/orders-store.js', {
 });
 stub('../../server/members/store.js', {
   table: () => 'stub',
-  runTransact: async () => state.committed,
+  runTransact: async transaction => {
+    if (state.race) { const race = state.race; state.race = null; race(); }
+    const guard = transaction.TransactItems.find(item => item.ConditionCheck)?.ConditionCheck;
+    if (guard?.ExpressionAttributeNames?.['#role'] === 'role') {
+      const publishing = [guard.ExpressionAttributeValues[':analyst'], guard.ExpressionAttributeValues[':coaching']].includes(state.profile?.role);
+      if (guard.ConditionExpression.includes('#role IN') ? !publishing : publishing) return false;
+    }
+    if (!state.committed) return false;
+    state.reservation = transaction.TransactItems.find(item => item.Put).Put.Item;
+    return true;
+  },
   listUserItems: async () => [],
   listPublicationIndex: async () => [],
   getItem: async () => null,
@@ -72,6 +82,33 @@ test('a Company Coverage subscriber can ask for an update', async () => {
   assert.equal(state.created[0].ticker, 'NOKIA.HE');
   assert.equal(state.created[0].visibility, 'private');
   assert.equal(state.created[0].revisionsAllowed, 0);
+});
+
+test('coverage baselines are public only for publishing roles while the member copy stays private', async () => {
+  for (const role of ['analyst', 'coaching', 'reader', 'subscriber']) {
+    state.profile = { ...subscriber, role };
+    state.created = [];
+    assert.equal((await request()).statusCode, 200);
+    const expected = ['analyst', 'coaching'].includes(role);
+    assert.equal(state.reservation.publicEngineBase, expected);
+    assert.equal(state.created[0].publicEngineBase, expected);
+    assert.equal(state.created[0].visibility, 'private');
+  }
+});
+
+test('a role change before coverage commit rejects stale eligibility and a retry uses the new role', async () => {
+  for (const [before, after] of [['analyst', 'reader'], ['coaching', 'subscriber'], ['reader', 'coaching'], ['subscriber', 'analyst']]) {
+    state.profile = { ...subscriber, role: before };
+    state.created = [];
+    state.reservation = null;
+    state.race = () => { state.profile.role = after; };
+    assert.equal((await request()).statusCode, 429);
+    assert.equal(state.reservation, null);
+    assert.equal(state.created.length, 0);
+    assert.equal((await request()).statusCode, 200);
+    assert.equal(state.reservation.publicEngineBase, ['analyst', 'coaching'].includes(after));
+    assert.equal(state.created.length, 1);
+  }
 });
 
 test('nobody else can — an update is what the subscription is', async () => {

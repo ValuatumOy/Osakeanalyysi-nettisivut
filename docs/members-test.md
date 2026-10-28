@@ -116,9 +116,10 @@ resale-on-test path cannot be exercised from the member UI until prod rollout.
   The quota transaction commits first, so a rejected reservation never starts a
   run. `GET /generations/{genId}` reports progress and hands over the
   entitlement once the report is delivered.
-- Membership reports are ordered with `visibility: 'private'`, which makes
-  `reconciler.deliver()` write a hidden, unpriced sidecar even when
-  `RESALE_ENABLED` is on — a member's report is never resold from the catalog.
+- Membership workspaces remain private. When an analyst or coach starts a
+  fresh engine generation, the unmodified original is also offered through the
+  catalog if resale is enabled; reader and subscriber generations stay hidden.
+  Later revisions and edits always have their own hidden sidecars.
 - Entitlements: `oneoff` and `generation` permanent; `pick`/`coverage` require
   active (or past_due) subscription at sign time; `free_pick` requires analyst role.
   Downloads are 5-minute S3 presigned GETs from `POST /reports/{id}/open`;

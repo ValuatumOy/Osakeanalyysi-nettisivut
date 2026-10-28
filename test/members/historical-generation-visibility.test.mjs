@@ -57,6 +57,17 @@ test('no entitlement and no historical reports keeps the generation card hidden'
   assert.equal(elements.get('submitRow').hidden, true);
 });
 
+test('an analyst sees that changes are unpublished even when the engine original can be sold', async () => {
+  const { context, elements } = page({ publishes: true, generations: [{
+    genId: 'nokia', companyName: 'Nokia', companyId: 'NOKIA.HE', status: 'DELIVERED',
+    publication: 'private', private: true, publicEngineBase: true, revisionsAllowed: 3, revisionsUsed: 1,
+  }] });
+  await context.loadMe();
+  await new Promise(setImmediate);
+  assert.match(elements.get('generationsTable').innerHTML, /Changes not published/);
+  assert.doesNotMatch(elements.get('generationsTable').innerHTML, />Private</);
+});
+
 test('a current private-generation entitlement still shows the reservation controls', async () => {
   const { context, elements } = page({ hasGeneration: true });
   await context.loadMe();

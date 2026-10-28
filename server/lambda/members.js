@@ -470,7 +470,9 @@ async function postGenerationsFree(event) {
   const genId = body.requestId
     ? generationRequestId(profile.userId, body.requestId)
     : crypto.randomUUID();
-  const createReservedOrder = async (match, credit, isPrivate = credit || !isAnalyst) => {
+  const createReservedOrder = async (match, reservation) => {
+    const credit = Boolean(reservation.generationCredit);
+    const isPrivate = Boolean(reservation.private);
     await ordersStore.create({
       id: genId,
       email: profile.email,
@@ -479,6 +481,7 @@ async function postGenerationsFree(event) {
       exchange: String(body.exchange || '').trim(),
       industry: match.industry || '',
       visibility: 'private',
+      publicEngineBase: reservation.publicEngineBase === true,
       analystName: String(profile.name || '').slice(0, 120),
       revisionsAllowed: credit ? (limits.revisions || tiers.limitsFor({ role: 'reader' }).revisions) : limits.revisions,
     });
@@ -505,7 +508,7 @@ async function postGenerationsFree(event) {
     if (!order && pub.status === 'generating') {
       const resolved = await resolveGenerationCompany(pub.ticker);
       if (resolved.error) return resolved.error;
-      return createReservedOrder(resolved.match, Boolean(pub.generationCredit), Boolean(pub.private));
+      return createReservedOrder(resolved.match, pub);
     }
     return json(200, {
       genId, status: order?.status || (pub.status === 'generating' ? 'NEW' : pub.status),
@@ -525,16 +528,19 @@ async function postGenerationsFree(event) {
 
   // Reserve the quota slot first: a failed reservation must never start a
   // billable engine run.
-  const reserve = { table: store.table(), userId: profile.userId, now, genId, ticker, requestId: body.requestId };
+  const reserve = { table: store.table(), userId: profile.userId, now, genId, ticker, requestId: body.requestId, publicEngineBase: isAnalyst };
   let credit = limits.generations < 1;
   let committed = false;
+  let reservation;
   if (!credit) {
     const build = isAnalyst ? quota.buildReserveGenerationTransact : quota.buildReserveMemberGenerationTransact;
-    committed = await store.runTransact(build(reserve));
+    reservation = build(reserve);
+    committed = await store.runTransact(reservation);
   }
   if (!committed && generationCreditsFor(profile) > 0) {
     credit = true;
-    committed = await store.runTransact(quota.buildReserveGenerationCreditTransact(reserve));
+    reservation = quota.buildReserveGenerationCreditTransact(reserve);
+    committed = await store.runTransact(reservation);
   }
   if (!committed) {
     const raced = await existingGeneration();
@@ -549,7 +555,7 @@ async function postGenerationsFree(event) {
     return json(429, { error: credit ? 'No generation credits available' : 'Monthly generation already used' });
   }
 
-  return createReservedOrder(match, credit);
+  return createReservedOrder(match, reservation.TransactItems.find(item => item.Put).Put.Item);
 }
 
 // A generation the engine could not deliver gives the month back. Only a run
@@ -648,9 +654,11 @@ async function postGenerationCoverage(event) {
 
   // The quota first: a refused update must never start a billable engine run.
   const genId = crypto.randomUUID();
-  const committed = await store.runTransact(quota.buildCoverageGenerationTransact({
+  const reservation = quota.buildCoverageGenerationTransact({
     table: store.table(), userId: profile.userId, now, genId, companyId: target,
-  }));
+    publicEngineBase: tiers.isPublishingRole(profile.role),
+  });
+  const committed = await store.runTransact(reservation);
   if (!committed) {
     return json(429, {
       error: `All ${quota.COVERAGE_UPDATES_PER_YEAR} updates on ${target} for this year have been used`,
@@ -664,8 +672,9 @@ async function postGenerationCoverage(event) {
     ticker: match.ticker,
     exchange: match.exchange || '',
     industry: match.industry || '',
-    // A coverage report is the subscriber's own copy, never resold.
+    // The workspace stays private; an eligible engine original may enter the catalog.
     visibility: 'private',
+    publicEngineBase: reservation.TransactItems.find(item => item.Put).Put.Item.publicEngineBase,
     // An update is the report as the engine writes it. Steering one toward a
     // view is what the generation tiers are for.
     revisionsAllowed: 0,
@@ -715,15 +724,19 @@ async function postGenerationFresh(event) {
 async function ensurePaidGeneration(session, profile, now) {
   const genId = session.id;
   let existing = await store.getPublication(profile.userId, genId, true);
+  let reservation = existing;
   if (existing && !existing.paid) throw new Error(`Paid generation ${genId} has conflicting ownership`);
   if (!existing) {
-    const created = await store.runTransact(quota.buildPaidGenerationTransact({
+    const transaction = quota.buildPaidGenerationTransact({
       table: store.table(), userId: profile.userId, now, genId,
-    }));
+      publicEngineBase: tiers.isPublishingRole(profile.role),
+    });
+    const created = await store.runTransact(transaction);
     if (!created) {
       existing = await store.getPublication(profile.userId, genId, true);
       if (!existing?.paid) throw new Error(`Could not record ownership of paid generation ${genId}`);
     }
+    reservation = created ? transaction.TransactItems[0].Put.Item : existing;
   }
 
   const order = await ordersStore.create({
@@ -734,6 +747,7 @@ async function ensurePaidGeneration(session, profile, now) {
     exchange: session.metadata.exchange || '',
     industry: session.metadata.industry || '',
     visibility: 'private',
+    publicEngineBase: reservation.publicEngineBase === true,
     // Same as the free generation: a revised report says who steered it.
     analystName: String(profile.name || '').slice(0, 120),
     revisionsAllowed: limitsFor(profile).revisions,
@@ -1272,6 +1286,7 @@ async function listGenerations(event) {
       revisionsAllowed: order?.revisionsAllowed || 0,
       revisionsUsed: order?.revisionsUsed || 0,
       private: Boolean(pub.private),
+      publicEngineBase: Boolean(order?.publicEngineBase),
     };
   }));
   rows.sort((a, b) => String(b.startedAt || '').localeCompare(String(a.startedAt || '')));

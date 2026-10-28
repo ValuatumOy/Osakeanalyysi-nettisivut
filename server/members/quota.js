@@ -57,6 +57,13 @@ function freemiumPickEligible(report) {
   return Number(report?.ageDays) >= FREEMIUM_MIN_AGE_DAYS;
 }
 
+// The role may change after authentication; bind the stored baseline decision
+// to the profile in the same transaction as the reservation.
+function generationRoleCondition(publicEngineBase) {
+  return publicEngineBase === true ? '#role IN (:analyst, :coaching)'
+    : '(attribute_not_exists(#role) OR (#role <> :analyst AND #role <> :coaching))';
+}
+
 // Consume one monthly pick AND grant the entitlement atomically. If two
 // concurrent opens race, exactly one transaction commits.
 function buildPickTransact({ table, userId, now, limit, reportId, source }) {
@@ -89,7 +96,7 @@ function buildPickTransact({ table, userId, now, limit, reportId, source }) {
 
 // Reserve a paying member's monthly generation (Investor Plus). No publish
 // obligation — the report stays private — so the only gate is one per month.
-function buildReserveMemberGenerationTransact({ table, userId, now, genId, ticker, requestId }) {
+function buildReserveMemberGenerationTransact({ table, userId, now, genId, ticker, requestId, publicEngineBase = false }) {
   return {
     TransactItems: [
       {
@@ -109,6 +116,7 @@ function buildReserveMemberGenerationTransact({ table, userId, now, genId, ticke
             sk: `PUB#${genId}`,
             status: 'generating',
             private: true,
+            publicEngineBase: publicEngineBase === true,
             ...(ticker ? { ticker } : {}),
             ...(requestId ? { requestId } : {}),
             reservedAt: now.toISOString(),
@@ -121,15 +129,17 @@ function buildReserveMemberGenerationTransact({ table, userId, now, genId, ticke
           TableName: table,
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           ConditionExpression: 'attribute_exists(pk) AND attribute_not_exists(openObligationId) '
-            + 'AND (attribute_not_exists(banned) OR banned = :false)',
-          ExpressionAttributeValues: { ':false': false },
+            + 'AND (attribute_not_exists(banned) OR banned = :false) '
+            + `AND ${generationRoleCondition(publicEngineBase)}`,
+          ExpressionAttributeNames: { '#role': 'role' },
+          ExpressionAttributeValues: { ':false': false, ':analyst': 'analyst', ':coaching': 'coaching' },
         },
       },
     ],
   };
 }
 
-function buildReserveGenerationCreditTransact({ table, userId, now, genId, ticker, requestId }) {
+function buildReserveGenerationCreditTransact({ table, userId, now, genId, ticker, requestId, publicEngineBase = false }) {
   return {
     TransactItems: [
       {
@@ -138,8 +148,10 @@ function buildReserveGenerationCreditTransact({ table, userId, now, genId, ticke
           Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
           UpdateExpression: 'ADD generationCredits :minusOne',
           ConditionExpression: 'attribute_exists(pk) AND generationCredits >= :one '
-            + 'AND (attribute_not_exists(banned) OR banned = :false)',
-          ExpressionAttributeValues: { ':minusOne': -1, ':one': 1, ':false': false },
+            + 'AND (attribute_not_exists(banned) OR banned = :false) '
+            + `AND ${generationRoleCondition(publicEngineBase)}`,
+          ExpressionAttributeNames: { '#role': 'role' },
+          ExpressionAttributeValues: { ':minusOne': -1, ':one': 1, ':false': false, ':analyst': 'analyst', ':coaching': 'coaching' },
         },
       },
       {
@@ -148,6 +160,7 @@ function buildReserveGenerationCreditTransact({ table, userId, now, genId, ticke
           Item: {
             pk: `USER#${userId}`, sk: `PUB#${genId}`, status: 'generating',
             private: true, generationCredit: true, reservedAt: now.toISOString(),
+            publicEngineBase: publicEngineBase === true,
             ...(ticker ? { ticker } : {}),
             ...(requestId ? { requestId } : {}),
           },
@@ -210,7 +223,7 @@ function buildRestoreGenerationCreditTransact({ table, userId, genId, now }) {
 // Reserve the analyst's monthly free generation. Two gates in one transaction:
 // the publish obligation on PROFILE (spans months by design — no new free run
 // until the previous one is submitted) and the one-per-calendar-month flag.
-function buildReserveGenerationTransact({ table, userId, now, genId, ticker, requestId }) {
+function buildReserveGenerationTransact({ table, userId, now, genId, ticker, requestId, publicEngineBase = false }) {
   return {
     TransactItems: [
       {
@@ -243,6 +256,7 @@ function buildReserveGenerationTransact({ table, userId, now, genId, ticker, req
             pk: `USER#${userId}`,
             sk: `PUB#${genId}`,
             status: 'generating',
+            publicEngineBase: publicEngineBase === true,
             reservedAt: now.toISOString(),
             ...(ticker ? { ticker } : {}),
             ...(requestId ? { requestId } : {}),
@@ -384,7 +398,7 @@ function buildSubmitTransact({
   }
   if (ordersTable && copiesOrder) {
     if (!orderCopy) throw new Error('A publication needs a copy of its order');
-    const { id, ...copy } = orderCopy;
+    const { id, publicEngineBase, ...copy } = orderCopy;
     items.push({ Update: {
       TableName: ordersTable,
       Key: { orderId: genId },
@@ -426,7 +440,7 @@ function buildSubmitTransact({
 // private and owes nothing. The PUB row is what makes it theirs: the member
 // area lists it, and the revision workspace checks ownership through it.
 // Idempotent, because the same Stripe receipt may be presented twice.
-function buildPaidGenerationTransact({ table, userId, now, genId }) {
+function buildPaidGenerationTransact({ table, userId, now, genId, publicEngineBase = false }) {
   return {
     TransactItems: [
       {
@@ -438,9 +452,19 @@ function buildPaidGenerationTransact({ table, userId, now, genId }) {
             status: 'generating',
             private: true,
             paid: true,
+            publicEngineBase: publicEngineBase === true,
             reservedAt: now.toISOString(),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+      {
+        ConditionCheck: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          ConditionExpression: `attribute_exists(pk) AND ${generationRoleCondition(publicEngineBase)}`,
+          ExpressionAttributeNames: { '#role': 'role' },
+          ExpressionAttributeValues: { ':analyst': 'analyst', ':coaching': 'coaching' },
         },
       },
     ],
@@ -1019,7 +1043,7 @@ function buildCoverageUpdateTransact({ table, userId, now, reportId, companyId }
 //
 // No ENT# row here: there is no report id yet. The order page is the way in
 // until the engine delivers, exactly as it is for any other private generation.
-function buildCoverageGenerationTransact({ table, userId, now, genId, companyId }) {
+function buildCoverageGenerationTransact({ table, userId, now, genId, companyId, publicEngineBase = false }) {
   return {
     TransactItems: [
       {
@@ -1044,10 +1068,20 @@ function buildCoverageGenerationTransact({ table, userId, now, genId, companyId 
             // a monthly slot, and the two are given back differently. The company
             // rides along because the counter it came off is that company's own.
             coverage: true,
+            publicEngineBase: publicEngineBase === true,
             coverageCompanyId: String(companyId || '').toUpperCase(),
             reservedAt: now.toISOString(),
           },
           ConditionExpression: 'attribute_not_exists(sk)',
+        },
+      },
+      {
+        ConditionCheck: {
+          TableName: table,
+          Key: { pk: `USER#${userId}`, sk: 'PROFILE' },
+          ConditionExpression: `attribute_exists(pk) AND ${generationRoleCondition(publicEngineBase)}`,
+          ExpressionAttributeNames: { '#role': 'role' },
+          ExpressionAttributeValues: { ':analyst': 'analyst', ':coaching': 'coaching' },
         },
       },
     ],

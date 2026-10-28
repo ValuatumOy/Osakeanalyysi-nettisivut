@@ -242,10 +242,16 @@ async function deliver(order, job) {
   // Phase 1 writes it hidden (email-only); with RESALE_ENABLED it is published
   // for resale immediately -- hidden:false + forceVisible skips the catalog's
   // visibleAfterDays delay -- at the configured discount price.
-  // A membership generation belongs to the member who ordered it: it is never
-  // resold from the catalog, whatever RESALE_ENABLED says.
+  // Members' own reports stay private, except the unmodified first engine
+  // output of a fresh generation reserved by a publishing analyst.
   const isPrivate = order.visibility === 'private';
-  const resell = RESALE_ENABLED && !isPrivate;
+  const publicEngineBase = order.publicEngineBase === true
+    && order.origin === 'fresh'
+    && !order.forkedFrom
+    && !order.adminCopy
+    && (!order.originalJobId || order.originalJobId === order.jobId)
+    && job.reportQuality?.deliverable !== false;
+  const resell = RESALE_ENABLED && (!isPrivate || publicEngineBase);
 
   const sidecar = {
     companyName: companyLabel,
@@ -311,6 +317,20 @@ async function deliver(order, job) {
     ...(job.reportQuality ? { reportQuality: job.reportQuality } : {}),
   });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
+
+  if (publicEngineBase && resell) {
+    try {
+      const { dispatchReportPages } = require('./report-page-dispatch');
+      const dispatched = await dispatchReportPages();
+      if (!dispatched.dispatched) {
+        console.warn('reconciler: report-page wake-up unavailable; scheduled sync will retry');
+      }
+    } catch (err) {
+      // Delivery must not be retried just because page generation could not be
+      // woken; the scheduled sync still sees the public catalog entry.
+      console.warn('reconciler: report-page wake-up failed; scheduled sync will retry', err.message);
+    }
+  }
 
   if (ADMIN_NOTIFY_ON_SUCCESS) {
     try {
