@@ -15,7 +15,7 @@ function page(overrides) {
     ...overrides,
   };
   const context = vm.createContext({
-    window: {}, localStorage: {}, freshReceipt: null, TIER_LABELS: { none: 'No subscription' },
+    window: {}, localStorage: {}, sessionStorage: {}, freshReceipt: null, TIER_LABELS: { none: 'No subscription' },
     document: { getElementById(id) {
       if (!elements.has(id)) elements.set(id, { hidden: false, textContent: '', innerHTML: '' });
       return elements.get(id);

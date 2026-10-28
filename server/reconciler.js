@@ -290,7 +290,8 @@ async function deliver(order, job) {
       ticker: order.ticker,
       reportDate: reportDateIso,
       pdfUrl,
-      orderUrl: (order.revisionsAllowed || 0) > 0 ? orderUrl(order) : null,
+      orderUrl: orderUrl(order),
+      revisionsAllowed: order.revisionsAllowed || 0,
     });
   }
 

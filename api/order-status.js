@@ -40,6 +40,7 @@ module.exports = async (req, res) => {
     const order = await getOrderState(sessionId);
     res.status(200).json(order);
   } catch (err) {
+    if (err.status === 403) return res.status(403).json({ error: 'Sign in to access this report' });
     if (err.status === 404) return res.status(404).json({ error: 'Order not found' });
     if (err.status === 409 || err.status === 502) return res.status(err.status).json({ error: err.message });
     console.error('order-status:', err.message);

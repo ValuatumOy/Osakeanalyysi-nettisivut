@@ -108,6 +108,7 @@ async function create(input) {
     // make the forker's first revision overwrite the published report under
     // every reader of it.
     forkedFrom: input.forkedFrom || undefined,
+    publicationLocked: typeof input.publicationLocked === 'boolean' ? input.publicationLocked : undefined,
     // An admin's private copy of someone else's report (adminCopyFor in
     // server/lambda/api.js): the admin view revises it in place.
     adminCopy: input.adminCopy || undefined,
@@ -201,11 +202,12 @@ async function claimRevision(id, comment, valuationOverrides = null, scope = 'es
       Key: { orderId: id },
       UpdateExpression: 'SET #s = :revising, pendingRevisionComment = :comment, pendingValuationOverrides = :overrides, '
         + 'pendingRevisionScope = :scope, revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
-      ConditionExpression: '#s = :delivered AND revisionsUsed < revisionsAllowed',
+      ConditionExpression: '#s = :delivered AND revisionsUsed < revisionsAllowed AND (attribute_not_exists(publicationLocked) OR publicationLocked = :unlocked)',
       ExpressionAttributeNames: { '#s': 'status' },
       ExpressionAttributeValues: {
         ':revising': STATUS.REVISING,
         ':delivered': STATUS.DELIVERED,
+        ':unlocked': false,
         ':comment': comment,
         ':overrides': valuationOverrides,
         ':scope': valuationOverrides ? 'narrative' : scope,
@@ -233,11 +235,12 @@ async function claimEdit(id, edit) {
       Key: { orderId: id },
       UpdateExpression: 'SET #s = :revising, pendingEdit = :edit, pendingRevisionComment = :null, '
         + 'revisionError = :null, revisionAttempts = :zero, polls = :zero, updatedAt = :now',
-      ConditionExpression: '#s = :delivered',
+      ConditionExpression: '#s = :delivered AND (attribute_not_exists(publicationLocked) OR publicationLocked = :unlocked)',
       ExpressionAttributeNames: { '#s': 'status' },
       ExpressionAttributeValues: {
         ':revising': STATUS.REVISING,
         ':delivered': STATUS.DELIVERED,
+        ':unlocked': false,
         ':edit': edit,
         ':null': null,
         ':zero': 0,

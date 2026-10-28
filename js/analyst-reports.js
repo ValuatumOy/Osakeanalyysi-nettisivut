@@ -96,7 +96,7 @@
         + '<a class="btn btn-outline-dark btn-sm" href="/members.html">Sign in to read</a>';
     // The total, not the label alone: "Build on this" led to a Stripe page
     // showing a price the reader had never been told.
-    var forkTotal = forkFeeEur == null ? null : (Number(a.priceEur) || 0) + forkFeeEur;
+    var forkTotal = forkFeeEur == null ? null : (a.publicFree ? 0 : (Number(a.priceEur) || 0)) + forkFeeEur;
     cta += '<button class="btn btn-outline-dark btn-sm" data-fork="' + esc(a.genId) + '"'
       + ' title="Buy this analysis with revision rounds and steer it yourself">Build on this'
       + (forkTotal ? ' — €' + forkTotal : '') + '</button>';
@@ -155,9 +155,11 @@
   function fork(genId, button) {
     button.disabled = true;
     button.textContent = 'Opening checkout…';
+    var headers = { 'content-type': 'application/json' };
+    if (window.localStorage.memberToken) headers.authorization = 'Bearer ' + window.localStorage.memberToken;
     fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/fork-checkout', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: headers,
       body: JSON.stringify({ returnTo: location.origin + location.pathname }),
     })
       .then(function (res) {
@@ -226,7 +228,9 @@
       return;
     }
     bannerEl.textContent = 'Confirming your purchase…';
-    fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/purchased?session_id=' + encodeURIComponent(sessionId))
+    fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/purchased?session_id=' + encodeURIComponent(sessionId), {
+      headers: window.localStorage.memberToken ? { authorization: 'Bearer ' + window.localStorage.memberToken } : {},
+    })
       .then(function (res) {
         return res.json().catch(function () { return null; }).then(function (data) {
           if (res.ok && data && data.url) {

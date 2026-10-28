@@ -40,6 +40,13 @@ const ALL_PRODUCTS = [
 const freeReport = { id: 'tesla-01092026', name: 'Tesla', ticker: 'TSLA', isFree: true, price: 0, revisable: true };
 const paidReport = { id: 'nokia-15072026', name: 'Nokia', ticker: 'NOKIA', isFree: false, price: 20, revisable: true };
 
+test('only a paid or completed zero-total checkout grants the purchase', () => {
+  assert.equal(checkout.isCompletedCheckout({ payment_status: 'paid' }), true);
+  assert.equal(checkout.isCompletedCheckout({ status: 'complete', payment_status: 'no_payment_required', amount_total: 0 }), true);
+  assert.equal(checkout.isCompletedCheckout({ status: 'open', payment_status: 'unpaid', amount_total: 0 }), false);
+  assert.equal(checkout.isCompletedCheckout({ status: 'open', payment_status: 'unpaid' }), false);
+});
+
 test.beforeEach(() => {
   delete process.env.REPORT_REVISIONS_INCLUDED;
   delete process.env.FREE_REPORT_REVISIONS_INCLUDED;
@@ -64,6 +71,7 @@ test('a free report with revisions sells the free-revisions tier with the includ
   const [params] = stripe.created;
   assert.deepEqual(params.line_items, [{ price: 'price_freerevisions', quantity: 1 }]);
   assert.equal(params.metadata.reportId, 'tesla-01092026');
+  assert.equal(params.metadata.revisable, 'true');
   assert.equal(params.metadata.site, 'aiequityreports', 'every session names the site the shared account webhook should match');
   assert.equal(params.metadata.kind, 'free-revisions');
   assert.equal(checkout.isRevisionsOnly({ metadata: params.metadata }), true);

@@ -148,7 +148,7 @@ async function sendReportEmail(toEmail, report) {
     ? `${primaryButton(report.orderUrl, 'Request a revision')}
           ${secondaryLink(report.pdfUrl, 'Download the PDF')}`
     : `${primaryButton(report.pdfUrl, 'Download PDF report')}
-          ${report.orderUrl ? secondaryLink(report.orderUrl, 'Request revision') : ''}`;
+          ${report.orderUrl ? secondaryLink(report.orderUrl, count > 0 ? 'Request revision' : 'Open report workspace') : ''}`;
   const lead = revisionsOnly
     ? `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker} &middot; ${count} revision ${count === 1 ? 'request' : 'requests'} included</p>`
     : `<p style="color:#8A9590;margin:0 0 8px;font-size:14px;">${report.name} &middot; ${report.ticker}</p>`;
@@ -192,8 +192,11 @@ async function sendReportRevisedEmail(toEmail, report) {
 async function sendFreshConfirmEmail(toEmail, meta) {
   const company = meta?.company || 'your company';
   const ticker = meta?.ticker ? ` (${meta.ticker})` : '';
+  const hasRevisions = meta?.withRevisions === 'true' || Number(meta?.revisionsAllowed) > 0;
   const orderLinkBox = meta?.orderUrl
-    ? infoBox(`This order includes report revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the report.`)
+    ? infoBox(hasRevisions
+      ? `This order includes report revisions. <a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> to see progress and, once delivered, request a change to the report.`
+      : `<a href="${meta.orderUrl}" style="color:#3D9E72;text-decoration:none;">Track your order</a> and open the report workspace once it is ready.`)
     : '';
 
   await sendEmail({

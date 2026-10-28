@@ -65,14 +65,18 @@ async function fetchJson(url, options = {}) {
   return data;
 }
 
-async function getCatalogReport(reportId) {
+async function getCatalogReport(reportId, { requireBackend = false } = {}) {
   const base = catalogBaseUrl();
+
+  if (!base && requireBackend) throw new Error('Catalog API is required to verify revisions');
 
   if (base) {
     try {
       const data = await fetchJson(`${base}/api/reports/${encodeURIComponent(reportId)}`);
       return toBackendReport(data.report || data);
     } catch (err) {
+      if (err.status === 404) return null;
+      if (requireBackend) throw err;
       console.warn('Catalog API report lookup failed, using local fallback:', err.message);
     }
   }

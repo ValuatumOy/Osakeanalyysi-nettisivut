@@ -11,7 +11,7 @@ function page({ hasGeneration = false, generations = [], publishes = false } = {
   const elements = new Map();
   const requests = [];
   const context = vm.createContext({
-    window: {}, localStorage: {}, freshReceipt: null,
+    window: {}, localStorage: {}, sessionStorage: {}, freshReceipt: null,
     TIER_LABELS: { none: 'No subscription' }, GEN_ROW_STATUS: { DELIVERED: 'Ready' },
     document: { getElementById: id => {
       if (!elements.has(id)) elements.set(id, { hidden: false, textContent: '', innerHTML: '' });

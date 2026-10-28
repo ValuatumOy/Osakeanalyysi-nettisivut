@@ -23,6 +23,7 @@ function stub(modulePath, exports) {
 process.env.ADMIN_UPLOAD_PASSWORD = 'admin-secret';
 process.env.MEMBERS_TEST_UTILS_SECRET = 'clock-secret';
 process.env.WORKER_FUNCTION_NAME = 'stub-worker';
+process.env.ORDERS_TABLE = 'Orders';
 delete process.env.SECRETS_SSM_PREFIX;
 delete process.env.MEMBERS_LIMITS_JSON;
 
@@ -107,8 +108,9 @@ stub('../../server/members/store.js', {
     }
     if (expr === 'REMOVE openObligationId') {
       if (items[1].Update.Key.sk.startsWith('PUB#')) {
-        const pub = state.pubs.get(items[1].Update.Key.sk.slice(4));
-        return Boolean(pub && !pub.generationCredit && pub.status === 'generating');
+        const source = items.find(item => item.Update?.Key?.sk === `PUB#${first.ExpressionAttributeValues[':genId']}`);
+        const pub = state.pubs.get(source?.Update.Key.sk.slice(4));
+        return Boolean(pub && !pub.generationCredit && !pub.private && pub.status === 'generating');
       }
       const genId = first.ExpressionAttributeValues[':genId'];
       if (state.usage?.genId !== genId || (state.profile.openObligationId && state.profile.openObligationId !== genId)) return false;
@@ -310,11 +312,12 @@ test('gift credit bypasses a used monthly slot and old obligation but cannot be 
   assert.equal(generated.body.private, true);
   assert.equal(state.profile.openObligationId, 'old');
   assert.equal(state.usage.genId, 'old');
-  state.orders.get(generated.body.genId).status = 'DELIVERED';
+  Object.assign(state.orders.get(generated.body.genId), { status: 'DELIVERED', jobId: 'job', pdfFileName: 'report.pdf' });
   const submitted = await request('POST /generations/{genId}/submit', {}, { pathParameters: { genId: generated.body.genId } });
   assert.equal(submitted.status, 409);
   const transaction = state.transactions.at(-1);
-  assert.match(transaction.TransactItems[1].Update.ConditionExpression, /attribute_not_exists\(generationCredit\)/);
+  const source = transaction.TransactItems.find(item => item.Update?.Key?.sk === `PUB#${generated.body.genId}`);
+  assert.match(source.Update.ConditionExpression, /attribute_not_exists\(generationCredit\)/);
   assert.equal(state.profile.openObligationId, 'old');
 });
 

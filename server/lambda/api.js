@@ -11,6 +11,8 @@ const Stripe = require('stripe');
 const catalogAws = require('../aws/catalog-aws');
 const stateStore = require('../aws/catalog-state-store');
 const ordersStore = require('../aws/orders-store');
+const membersStore = require('../members/store');
+const engineJobs = require('../aws/engine-jobs');
 const pdfStore = require('../aws/pdf-store');
 const { ensureSecrets } = require('../aws/secrets');
 const { searchCompanies } = require('../search');
@@ -153,7 +155,8 @@ function buyerCount(report, purchases) {
 // ── route handlers ───────────────────────────────────────────────────────────
 
 async function getReports() {
-  const { catalog } = await catalogAws.buildCatalogAws();
+  const { catalog, sidecars } = await catalogAws.buildCatalogAws();
+  await checkRevisableReports(catalog.reports, sidecars);
   return json(200, {
     generatedAt: catalog.generatedAt,
     week: catalog.week,
@@ -163,10 +166,22 @@ async function getReports() {
 
 async function getReportById(event) {
   const reportId = event.pathParameters?.id || '';
-  const { catalog } = await catalogAws.buildCatalogAws();
+  const { catalog, sidecars } = await catalogAws.buildCatalogAws();
   const report = catalog.reports.find(item => item.id === reportId);
   if (!report || report.availability === 'hidden') return json(404, { error: 'Report not found' });
+  await checkRevisableReports([report], sidecars);
   return json(200, { report: publicReportPayload(report) });
+}
+
+async function checkRevisableReports(reports, sidecars) {
+  const jobIdFor = report => sidecars?.get(report.fileName)?.provenance?.jobId;
+  let jobs = new Map();
+  try {
+    jobs = await engineJobs.getRevisionJobs(reports.map(jobIdFor));
+  } catch (err) {
+    console.warn('Could not verify report revisions:', err.message);
+  }
+  for (const report of reports) report.revisable = engineJobs.canRevise(jobs.get(jobIdFor(report)));
 }
 
 async function getPricing() {
@@ -219,12 +234,13 @@ async function postReportPurchases(event) {
       // The 5-minute sweep picks the order up anyway.
       console.warn('worker push invoke failed (sweep will catch it):', err.message);
     }
-  } else if (input.type === 'existing' && input.withRevisions && input.sessionId && input.fileName) {
+  } else if (input.type === 'existing' && (input.withRevisions || input.revisable) && input.sessionId) {
     // A "+ Revisions" purchase on an already-published catalog report: seed
     // an order row directly at DELIVERED (there is nothing to generate),
     // pinned to the engine jobId that produced it — read fresh from the
     // sidecar here, server-side, never from anything the browser sent.
     try {
+      if (!input.fileName) throw new Error('report fileName is required for revisions');
       const sidecar = await pdfStore.readSidecar(input.fileName);
       const jobId = sidecar?.provenance?.jobId || null;
       if (!jobId) {
@@ -245,10 +261,7 @@ async function postReportPurchases(event) {
         currency: input.currency,
       });
     } catch (err) {
-      // Non-fatal: the purchase itself is already recorded above and the
-      // customer already has their PDF. Losing the revision entitlement is
-      // a real problem, just not one worth a Stripe-retry loop — alert
-      // instead of throwing.
+      // The customer paid for revisions, so retry the idempotent order write.
       console.error('ready+revisions order seeding failed:', err.message, {
         sessionId: input.sessionId, reportId: input.reportId,
       });
@@ -263,6 +276,7 @@ async function postReportPurchases(event) {
       } catch (alertErr) {
         console.error('ready+revisions seeding-failure alert also failed:', alertErr.message);
       }
+      throw err;
     }
   }
 
@@ -315,10 +329,25 @@ async function getOrder(event) {
   }
 
   const id = event.pathParameters?.id || '';
-  const order = await ordersStore.get(id);
+  const order = await ordersStore.get(id, true);
+  if (await isOrderMemberOnly(order, id)) return json(403, { error: 'Sign in to access this report' });
   if (!order) return json(404, { error: 'Order not found' });
 
-  return json(200, await orderPagePayload(order), { 'cache-control': 'no-store' });
+  order.publicationLocked = await isOrderPublicationLocked(order);
+
+  const payload = await orderPagePayload(order);
+  payload.revisionAvailable = !order.publicationLocked && await engineJobs.isOrderRevisable(order);
+  return json(200, payload, { 'cache-control': 'no-store' });
+}
+
+async function isOrderPublicationLocked(order) {
+  if (order.publicationLocked != null) return Boolean(order.publicationLocked);
+  return isOrderMemberOnly(order);
+}
+
+async function isOrderMemberOnly(order, id = order?.id) {
+  const { requiresMemberAccess } = require('../members/public-order');
+  return requiresMemberAccess(order, membersStore.findPublicationForOrder, id);
 }
 
 // What the order page renders for one order: status, the current PDF, and
@@ -333,7 +362,9 @@ async function orderPagePayload(order) {
     companyName: order.companyName,
     ticker: order.ticker,
     reportId: order.reportId,
-    revisionsAllowed: order.revisionsAllowed || 0,
+    publicationLocked: Boolean(order.publicationLocked),
+    currentVersionPublished: Boolean(order.lastPublishedJobId && order.lastPublishedJobId === order.jobId),
+    revisionsAllowed: order.publicationLocked ? (order.revisionsUsed || 0) : (order.revisionsAllowed || 0),
     revisionsUsed: order.revisionsUsed || 0,
     reportQuality: currentReportQuality(order),
     // The order page drops its scope choice for a market-first report.
@@ -554,6 +585,11 @@ async function claimOrderRevision(id, body) {
   const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
   if (scope instanceof Error) return json(400, { error: scope.message });
 
+  const order = await ordersStore.get(id);
+  if (await isOrderMemberOnly(order, id)) return json(403, { error: 'Sign in to access this report' });
+  if (!order) return json(404, { error: 'Order not found' });
+  if (await isOrderPublicationLocked(order)) return json(409, { error: 'This report is published — its PDF can no longer change' });
+
   const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides, scope);
   if (!claimed) {
     const existing = await ordersStore.get(id);
@@ -597,7 +633,9 @@ async function claimOrderEdit(id, body) {
   }
 
   const existing = await ordersStore.get(id);
+  if (await isOrderMemberOnly(existing, id)) return json(403, { error: 'Sign in to access this report' });
   if (!existing) return json(404, { error: 'Order not found' });
+  if (await isOrderPublicationLocked(existing)) return json(409, { error: 'This report is published — its PDF can no longer change' });
   if (!editing.editableNow(existing)) {
     return json(409, {
       error: existing.status === ordersStore.STATUS.DELIVERED
@@ -633,7 +671,9 @@ async function postOrderValuation(event) {
     return json(process.env.CATALOG_SYNC_SECRET ? 401 : 503,
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
-  return orderValuationResponse(event.pathParameters?.id || '', parseBody(event));
+  const id = event.pathParameters?.id || '';
+  if (await isOrderMemberOnly(await ordersStore.get(id), id)) return json(403, { error: 'Sign in to access this report' });
+  return orderValuationResponse(id, parseBody(event));
 }
 
 async function orderValuationResponse(id, body) {
@@ -653,7 +693,9 @@ async function getOrderPreview(event) {
       { error: process.env.CATALOG_SYNC_SECRET ? 'Unauthorized' : 'CATALOG_SYNC_SECRET is not configured' });
   }
 
-  return orderPreviewResponse(event.pathParameters?.id || '');
+  const id = event.pathParameters?.id || '';
+  if (await isOrderMemberOnly(await ordersStore.get(id), id)) return json(403, { error: 'Sign in to access this report' });
+  return orderPreviewResponse(id);
 }
 
 async function orderPreviewResponse(id) {

@@ -55,6 +55,8 @@ export class ApiStack extends Stack {
       environment: {
         STAGE: config.stage,
         ORDERS_TABLE: props.ordersTable.tableName,
+        MEMBERS_TABLE: `AiEquityReportsMembers${config.suffix}`,
+        PDF_ENGINE_JOBS_TABLE: `pdf-jobs${config.suffix}`,
         CATALOG_STATE_TABLE: props.catalogStateTable.tableName,
         REPORT_PDF_BUCKET: props.pdfBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
@@ -70,6 +72,15 @@ export class ApiStack extends Stack {
     });
 
     props.ordersTable.grantReadWriteData(apiFunction);
+    const membersReadTable = dynamodb.Table.fromTableName(this, 'MembersReadTable', `AiEquityReportsMembers${config.suffix}`);
+    const engineJobsReadTable = dynamodb.Table.fromTableName(this, 'EngineJobsReadTable', `pdf-jobs${config.suffix}`);
+    apiFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['dynamodb:Query'], resources: [membersReadTable.tableArn],
+      conditions: { 'ForAllValues:StringEquals': { 'dynamodb:LeadingKeys': ['PUBINDEX'] } },
+    }));
+    apiFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['dynamodb:BatchGetItem'], resources: [engineJobsReadTable.tableArn],
+    }));
     props.catalogStateTable.grantReadWriteData(apiFunction);
     props.pdfBucket.grantReadWrite(apiFunction);
     props.workerFunction.grantInvoke(apiFunction);

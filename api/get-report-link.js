@@ -1,6 +1,6 @@
 const Stripe = require('stripe');
 const { reportError } = require('../server/email');
-const { getCatalogReport } = require('../server/catalog-client');
+const { getCatalogReport, getOrderState } = require('../server/catalog-client');
 const { isCompletedCheckout, isRevisionsOnly } = require('../server/checkout');
 
 module.exports = async (req, res) => {
@@ -16,9 +16,11 @@ module.exports = async (req, res) => {
     if (!isCompletedCheckout(session)) {
       return res.status(402).json({ error: 'Payment not completed' });
     }
+    try { await getOrderState(session_id); }
+    catch (err) { if (err.status !== 404) throw err; }
 
     const withRevisions = session.metadata?.withRevisions === 'true';
-    const orderUrl = withRevisions
+    const orderUrl = session.metadata?.isFresh === 'true' || withRevisions || session.metadata?.revisable === 'true'
       ? `/order/index.html?session_id=${encodeURIComponent(session_id)}`
       : null;
 
@@ -31,8 +33,13 @@ module.exports = async (req, res) => {
       });
     }
 
-    const report = await getCatalogReport(session.metadata?.reportId);
-    if (!report) return res.status(404).json({ error: 'Report not found' });
+    const reportId = session.metadata?.reportId;
+    if (!reportId) return res.status(404).json({ error: 'Report not found' });
+    const report = await getCatalogReport(reportId) || {
+      name: session.metadata?.reportName || 'Report',
+      ticker: session.metadata?.ticker || '',
+      reportDate: session.metadata?.reportDate || '',
+    };
 
     res.json({
       type: 'existing',
@@ -50,6 +57,7 @@ module.exports = async (req, res) => {
       orderUrl,
     });
   } catch (err) {
+    if (err.status === 403) return res.status(403).json({ error: 'Sign in to access this purchase' });
     console.error('get-report-link:', err.message);
     await reportError('vercel get-report-link', err, { sessionId: session_id });
     res.status(500).json({ error: 'Failed' });

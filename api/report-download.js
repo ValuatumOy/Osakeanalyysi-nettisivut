@@ -8,7 +8,7 @@
 
 const Stripe = require('stripe');
 const { reportError } = require('../server/email');
-const { getCatalogReport, requestReportDownload } = require('../server/catalog-client');
+const { requestReportDownload, getOrderState } = require('../server/catalog-client');
 const { isCompletedCheckout } = require('../server/checkout');
 
 module.exports = async (req, res) => {
@@ -24,6 +24,8 @@ module.exports = async (req, res) => {
     if (!isCompletedCheckout(session)) {
       return res.status(402).json({ error: 'Payment not completed' });
     }
+    try { await getOrderState(sessionId); }
+    catch (err) { if (err.status !== 404) throw err; }
 
     // A fresh order has no report until the reconciler delivers it; the buyer
     // gets that one by email.
@@ -32,13 +34,12 @@ module.exports = async (req, res) => {
       return res.status(409).json({ error: 'This purchase has no downloadable report yet' });
     }
 
-    const report = await getCatalogReport(reportId);
-    if (!report) return res.status(404).json({ error: 'Report not found' });
-
     const { url } = await requestReportDownload(reportId);
     res.setHeader('cache-control', 'no-store');
     res.redirect(302, url);
   } catch (err) {
+    if (err.status === 403) return res.status(403).json({ error: 'Sign in to access this purchase' });
+    if (err.status === 404) return res.status(404).json({ error: 'Report not found' });
     console.error('report-download:', err.message);
     await reportError('vercel report-download', err, { sessionId });
     res.status(500).json({ error: 'Failed' });

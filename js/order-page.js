@@ -23,10 +23,39 @@
   // payload either way, so everything below this point is unchanged.
   const MEMBER_GEN_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   const memberToken = () => window.localStorage.memberToken || '';
-  const isMemberRun = () => MEMBER_GEN_ID.test(sessionId || '') && Boolean(memberToken());
+  let memberOwnsOrder = false;
+  const isMemberRun = () => Boolean(memberToken()) && (MEMBER_GEN_ID.test(sessionId || '') || memberOwnsOrder);
   const MEMBERS_API = /^(www\.)?aiequityreports\.com$/.test(location.hostname)
     ? 'https://members.aiequityreports.com'
     : 'https://members-test.aiequityreports.com';
+
+  async function showPublicationOptions(order) {
+    const box = document.getElementById('publishBox');
+    const form = document.getElementById('publishForm');
+    const signIn = document.getElementById('publishSignIn');
+    const status = document.getElementById('publishStatus');
+    const changed = (order.revisionsUsed || 0) > 0 || (order.editsUsed || 0) > 0;
+    box.style.display = !isAdminView && !order.publicationLocked && !order.currentVersionPublished && order.publishEligible !== false && order.pdfUrl && changed ? '' : 'none';
+    if (box.style.display === 'none') return;
+    form.style.display = 'none';
+    signIn.style.display = memberToken() ? 'none' : '';
+    status.textContent = '';
+    if (!memberToken()) return;
+    try {
+      const res = await fetch(MEMBERS_API + '/me', { headers: { authorization: 'Bearer ' + memberToken() } });
+      const profile = await res.json();
+      if (!res.ok) {
+        signIn.style.display = '';
+        status.textContent = 'Sign in again to publish.';
+      } else if (profile.publishes) {
+        form.style.display = '';
+      } else {
+        status.textContent = 'Publishing is available to analysts.';
+      }
+    } catch (_) {
+      status.textContent = 'Could not check your account. Refresh to try again.';
+    }
+  }
 
   // A third way in: the admin, from the catalog on /admin/, reading any
   // order's revision history — the forecast writeups and change memos that
@@ -67,18 +96,24 @@
     load();
   }
 
-  function fetchOrderState() {
+  async function fetchOrderState() {
     if (isAdminView) {
       return fetch(ADMIN_API + '/api/admin/orders/' + encodeURIComponent(sessionId), {
         headers: { authorization: 'Bearer ' + adminPassword() },
       });
     }
-    if (!isMemberRun()) {
-      return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
+    if (memberToken()) {
+      const memberResponse = await fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/order', {
+        headers: { authorization: 'Bearer ' + memberToken() },
+      });
+      if (memberResponse.ok || MEMBER_GEN_ID.test(sessionId || '')) {
+        memberOwnsOrder = memberResponse.ok;
+        return memberResponse;
+      }
+      if (![401, 403, 404].includes(memberResponse.status)) return memberResponse;
+      memberOwnsOrder = false;
     }
-    return fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/order', {
-      headers: { authorization: 'Bearer ' + memberToken() },
-    });
+    return fetch('/api/order-status?session_id=' + encodeURIComponent(sessionId));
   }
 
   // Buying more rounds, from whichever side of the wall this order lives on. A
@@ -1497,11 +1532,15 @@
       }
     }
 
-    const remaining = Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
+    const locked = Boolean(order.publicationLocked || order.revisionAvailable === false) && !isAdminView;
+    const remaining = locked ? 0 : Math.max(0, (order.revisionsAllowed || 0) - (order.revisionsUsed || 0));
     const errorBanner = document.getElementById('revisionErrorBanner');
     if (order.revisionError) {
       errorBanner.textContent = 'Your last request could not be completed: ' + order.revisionError
         + ' Your current report is unchanged; you can try again below.';
+      errorBanner.style.display = '';
+    } else if (order.revisionAvailable === false && !order.publicationLocked) {
+      errorBanner.textContent = 'Revisions are unavailable because the original report data could not be verified. Contact contact26@valuatum.com for help.';
       errorBanner.style.display = '';
     } else {
       errorBanner.style.display = 'none';
@@ -1519,7 +1558,7 @@
       revisionButton.textContent = 'Request revision';
       show('revisionBox');
       hide('revisionExhausted');
-    } else if ((order.revisionsAllowed || 0) > 0) {
+    } else if (!locked && (order.revisionsAllowed || 0) > 0) {
       document.getElementById('revisionExhaustedCount').textContent = order.revisionsAllowed;
       hide('revisionBox');
       show('revisionExhausted');
@@ -1533,13 +1572,15 @@
     // that had nowhere to go.
     const buyBox = document.getElementById('revisionBuy');
     if (buyBox) {
-      buyBox.style.display = '';
+      buyBox.style.display = locked ? 'none' : '';
       document.getElementById('revisionBuyHint').textContent = remaining > 0
         ? 'Need more than ' + remaining + '? Add rounds to this report.'
         : 'Add more rounds to this report and keep steering it.';
     }
 
     document.getElementById('revisionHistory').innerHTML = renderRevisionHistory(order.revisionHistory);
+
+    showPublicationOptions(order);
 
     if (isAdminView) renderAdminView(order);
 
@@ -1574,9 +1615,7 @@
           return renderError('The admin password was not accepted. Sign in on the admin page again, then reload.');
         }
         if (res.status === 401 || res.status === 403) {
-          return renderError(MEMBER_GEN_ID.test(sessionId || '')
-            ? 'Sign in to the member area first, then open this link again.'
-            : 'This link is no longer valid.');
+          return renderError('Sign in to the member area first, then open this link again.');
         }
         if (res.status === 402) return renderError('Payment has not completed yet. If you just paid, give it a moment and reload.');
         if (res.status === 404) {
@@ -1602,6 +1641,39 @@
 
   document.getElementById('revisionBuyBtn').addEventListener('click', function () {
     buyMoreRounds(this);
+  });
+
+  document.getElementById('publishSignIn').addEventListener('click', function () {
+    sessionStorage.publishOrderId = sessionId;
+  });
+
+  document.getElementById('publishForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const button = document.getElementById('publishSubmit');
+    const status = document.getElementById('publishStatus');
+    button.disabled = true;
+    status.textContent = 'Publishing…';
+    status.classList.remove('is-error');
+    try {
+      const res = await fetch(MEMBERS_API + '/generations/' + encodeURIComponent(sessionId) + '/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + memberToken() },
+        body: JSON.stringify({
+          priceEur: Number(document.getElementById('publishPrice').value),
+          freeAfterDays: Number(document.getElementById('publishFreeAfter').value),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Publishing failed. Try again.');
+      document.getElementById('publishForm').style.display = 'none';
+      status.textContent = 'Published.';
+      await load();
+      document.getElementById('deliveredSub').textContent = 'Your report is published.';
+    } catch (err) {
+      status.textContent = err.message || 'Publishing failed. Try again.';
+      status.classList.add('is-error');
+    }
+    button.disabled = false;
   });
 
   document.getElementById('revisionSubmit').addEventListener('click', async function () {

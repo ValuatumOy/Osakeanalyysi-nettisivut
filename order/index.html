@@ -71,6 +71,9 @@
     .revision-textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(61,158,114,0.12); }
     .revision-status { min-height: 1.4em; margin: .6rem 0 0; font-size: var(--text-xs); color: var(--gray-steel); line-height: 1.5; }
     .revision-status.is-error { color: #a63b32; }
+    .publish-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .publish-fields label { display: block; }
+    @media (max-width: 600px) { .publish-fields { grid-template-columns: 1fr; gap: 0; } }
     .revision-error-banner {
       font-size: var(--text-xs);
       color: #a63b32;
@@ -601,6 +604,20 @@
           <button type="button" class="btn btn-outline-dark btn-sm" id="revisionBuyBtn">Buy more revision rounds</button>
           <span class="order-sub" id="revisionBuyHint" style="margin-left:0.75rem;"></span>
         </div>
+
+        <section class="revision-box" id="publishBox" style="display:none;" aria-labelledby="publishTitle">
+          <h2 id="publishTitle" style="font-size:var(--text-md); font-weight:600; color:var(--charcoal); margin-bottom:.4rem;">Publish your version</h2>
+          <p class="order-sub" style="margin-bottom:1rem; color:#5b6a63;">Your report and revision prompts will be published under your analyst name. The published version cannot be changed.</p>
+          <a class="btn btn-outline-dark btn-sm" id="publishSignIn" href="/members.html" style="display:none;">Sign in as an analyst</a>
+          <form id="publishForm" style="display:none;">
+            <div class="publish-fields">
+              <label for="publishPrice">Price (€)<input class="editor-input" id="publishPrice" type="number" min="0" step="1" value="0" required></label>
+              <label for="publishFreeAfter">Free for members after (days)<input class="editor-input" id="publishFreeAfter" type="number" min="1" max="365" step="1" value="365" required></label>
+            </div>
+            <button class="btn btn-primary btn-lg btn-full" id="publishSubmit" type="submit">Publish report</button>
+          </form>
+          <p class="revision-status" id="publishStatus" role="status" aria-live="polite"></p>
+        </section>
 
         <div id="revisionHistory"></div>
       </div>

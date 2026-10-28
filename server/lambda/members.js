@@ -8,6 +8,7 @@ const crypto = require('crypto');
 
 const catalogAws = require('../aws/catalog-aws');
 const ordersStore = require('../aws/orders-store');
+const engineJobs = require('../aws/engine-jobs');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
 const editing = require('../order-editing');
 const { searchCompanies } = require('../search');
@@ -17,7 +18,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
-const { createExtraRoundsCheckout, SITE_TAG, taxParams, INLINE_TAX, INLINE_PRODUCT_TAX } = require('../checkout');
+const { createExtraRoundsCheckout, isCompletedCheckout, isOurSession, orderPageUrl, SITE_TAG, taxParams, INLINE_TAX, INLINE_PRODUCT_TAX } = require('../checkout');
 const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
@@ -702,18 +703,27 @@ async function postGenerationFresh(event) {
   } catch (err) {
     return json(404, { error: 'Unknown purchase' });
   }
-  if (session.payment_status !== 'paid') return json(402, { error: 'Payment not completed' });
+  if (!isCompletedCheckout(session)) return json(402, { error: 'Payment not completed' });
   if (session.metadata?.isFresh !== 'true') return json(404, { error: 'Unknown purchase' });
   // Someone else's receipt buys them a report, not you one.
   if (session.metadata?.userId !== profile.userId) return json(403, { error: 'This purchase belongs to another member' });
   if (!profile.email) return json(400, { error: 'Your account has no email address for delivery' });
 
+  return json(200, await ensurePaidGeneration(session, profile, now));
+}
+
+async function ensurePaidGeneration(session, profile, now) {
   const genId = session.id;
-  const existing = await store.getPublication(profile.userId, genId);
+  let existing = await store.getPublication(profile.userId, genId, true);
+  if (existing && !existing.paid) throw new Error(`Paid generation ${genId} has conflicting ownership`);
   if (!existing) {
-    await store.runTransact(quota.buildPaidGenerationTransact({
+    const created = await store.runTransact(quota.buildPaidGenerationTransact({
       table: store.table(), userId: profile.userId, now, genId,
     }));
+    if (!created) {
+      existing = await store.getPublication(profile.userId, genId, true);
+      if (!existing?.paid) throw new Error(`Could not record ownership of paid generation ${genId}`);
+    }
   }
 
   const order = await ordersStore.create({
@@ -738,15 +748,15 @@ async function postGenerationFresh(event) {
     await store.audit(profile.userId, 'generation-purchased', {
       genId, ticker: session.metadata.ticker || '', amountTotal: session.amount_total, currency: session.currency,
     });
-    await voidReviewsOnCoverage(profile.userId, order.ticker, now);
   }
-  return json(200, {
+  await voidReviewsOnCoverage(profile.userId, order.ticker, now);
+  return {
     genId,
     status: order.status,
     company: order.companyName,
     ticker: order.ticker,
     alreadyCollected: Boolean(existing),
-  });
+  };
 }
 
 // POST /generations/{genId}/revisions-checkout — buy more revision rounds on a
@@ -766,14 +776,16 @@ async function postGenerationRevisionsCheckout(event) {
   const genId = event.pathParameters?.genId || '';
   const publication = await store.getPublication(profile.userId, genId);
   if (!publication) return json(404, { error: 'Unknown generation' });
-  // A published analysis is frozen — its PDF can no longer change, so more
-  // rounds would buy nothing. Same rule as the revision endpoint itself.
-  if (publication.status === 'published') {
-    return json(409, { error: 'This report is published — its PDF can no longer change' });
-  }
-
   const order = await ordersStore.get(genId);
   if (!order) return json(404, { error: 'Unknown generation' });
+  // A published analysis is frozen — its PDF can no longer change, so more
+  // rounds would buy nothing. Same rule as the revision endpoint itself.
+  if (['published', 'takendown'].includes(publication.status) || order.publicationLocked) {
+    return json(409, { error: 'This report is published — its PDF can no longer change' });
+  }
+  if (!await engineJobs.isOrderRevisable(order)) {
+    return json(409, { error: 'Revisions are unavailable because the original report data could not be verified' });
+  }
 
   const body = parseBody(event) || {};
   const returnTo = auth.frontendUrl(body.returnTo);
@@ -1062,6 +1074,11 @@ async function getGenerationOrder(event) {
     companyName: order.companyName,
     ticker: order.ticker,
     reportId: order.reportId,
+    publicationLocked: ['published', 'takendown'].includes(publication.status) || Boolean(order.publicationLocked),
+    revisionAvailable: !['published', 'takendown'].includes(publication.status)
+      && !order.publicationLocked && await engineJobs.isOrderRevisable(order),
+    currentVersionPublished: Boolean(order.lastPublishedJobId && order.lastPublishedJobId === order.jobId),
+    publishEligible: !publication.private || Boolean(publication.paid || publication.publishableSource),
     revisionsAllowed: order.revisionsAllowed || 0,
     revisionsUsed: order.revisionsUsed || 0,
     reportQuality: editing.currentReportQuality(order),
@@ -1072,7 +1089,7 @@ async function getGenerationOrder(event) {
     // Publishing freezes the PDF, so the order page must stop offering
     // revisions — and hand edits, which would change it just the same.
     publication: publication.status,
-    editable: publication.status !== 'published' && editing.editableNow(order),
+    editable: !['published', 'takendown'].includes(publication.status) && editing.editableNow(order),
     currentVersion: editing.currentVersion(order),
     activity: editing.activityOf(order),
     editsUsed: order.editsUsed || 0,
@@ -1105,7 +1122,7 @@ async function postGenerationRevision(event) {
   if (deny) return deny;
 
   // Published means frozen: buyers must not find the PDF changed under them.
-  if (publication.status === 'published') {
+  if (['published', 'takendown'].includes(publication.status) || order.publicationLocked) {
     return json(409, { error: 'This report is published — its PDF can no longer change' });
   }
 
@@ -1152,7 +1169,7 @@ async function postGenerationEdits(event) {
   const { deny, genId, order, profile, publication } = await ownedOrder(event);
   if (deny) return deny;
 
-  if (publication.status === 'published') {
+  if (['published', 'takendown'].includes(publication.status) || order.publicationLocked) {
     return json(409, { error: 'This report is published — its PDF can no longer change' });
   }
 
@@ -1265,10 +1282,14 @@ async function postGenerationSubmit(event) {
   const now = requestNow(event);
   const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
   if (deny) return deny;
+  if (!tiers.isPublishingRole(profile.role)) return json(403, { error: 'Analysts only' });
 
   const genId = event.pathParameters?.genId || '';
   const body = parseBody(event);
   if (!body) return json(400, { error: 'Invalid JSON body' });
+  const publication = await store.getPublication(profile.userId, genId);
+  let optionalPaid = Boolean(publication?.private && (publication?.paid || publication?.publishableSource));
+  let newPublication = false;
 
   // The company comes from the order the reservation resolved, never from the
   // request: the bounty keys on it, so a client-supplied ticker would be a way
@@ -1276,25 +1297,57 @@ async function postGenerationSubmit(event) {
   // DELIVERED is also what makes the report exist at all: without this an
   // analyst could reserve, publish an empty shell and start a bounty maturing.
   const order = await ordersStore.get(genId);
-  if (!order?.ticker) return json(409, { error: 'No generated report to publish for this id' });
+  if (!order?.ticker || !order.jobId || !order.pdfFileName) return json(409, { error: 'No generated report to publish for this id' });
   if (order.status !== 'DELIVERED') {
     return json(409, { error: 'The report is still generating', status: order.status });
+  }
+  if (!publication) {
+    let session;
+    try { session = await stripe().checkout.sessions.retrieve(genId); }
+    catch (_) { return json(404, { error: 'Unknown generation' }); }
+    const meta = session.metadata || {};
+    if (!isCompletedCheckout(session) || !isOurSession(session)
+      || !(meta.reportId || meta.isFresh === 'true' || meta.fork === 'true')) {
+      return json(404, { error: 'Unknown generation' });
+    }
+    if ((meta.userId && meta.userId !== profile.userId) || (meta.forkUserId && meta.forkUserId !== profile.userId)) {
+      return json(403, { error: 'This purchase belongs to another member' });
+    }
+    if (!meta.userId && !meta.forkUserId) {
+      const buyerEmail = String(session.customer_details?.email || session.customer_email || '').trim().toLowerCase();
+      const memberEmail = String(profile.email || '').trim().toLowerCase();
+      if (!buyerEmail || !memberEmail || buyerEmail !== memberEmail) {
+        return json(403, { error: 'Sign in with the verified email address used for this purchase before publishing it' });
+      }
+    }
+    const existing = await store.findPublicationForOrder(genId, order.ticker);
+    if (existing) return json(409, { error: 'This report has already been published' });
+    optionalPaid = true;
+    newPublication = true;
   }
   // A fork with nothing changed on it is somebody else's analysis with a new
   // name on the cover. The whole point of deriving is what you add, so at
   // least one revision or hand edit has to have landed before it can be
   // published.
-  if (order.forkedFrom && !(order.revisionsUsed > 0 || order.editsUsed > 0)) {
+  if ((optionalPaid || order.forkedFrom) && !(order.revisionsUsed > 0 || order.editsUsed > 0)) {
     return json(409, {
       error: 'Revise or edit this analysis at least once before publishing it — a fork with no changes is the analysis you derived it from',
     });
+  }
+  const publishedGenId = crypto.randomUUID();
+  if (order.lastPublishedJobId === order.jobId) {
+    return json(409, { error: 'Revise or edit the report again before publishing another version' });
   }
 
   // The analyst prices their own analysis and decides how long until it falls
   // free (max a year, quota.clampFreeAfterDays). Both are recorded now; the
   // surface that sells an analysis is not built yet.
+  if (!process.env.ORDERS_TABLE) throw new Error('ORDERS_TABLE is not set');
   const committed = await store.runTransact(quota.buildSubmitTransact({
     table: store.table(), userId: profile.userId, now, genId,
+    ordersTable: process.env.ORDERS_TABLE, orderUpdatedAt: order.updatedAt,
+    optionalPaid, newPublication, forkedFrom: order.forkedFrom || null,
+    publishedGenId, sourcePublication: Boolean(publication), orderCopy: publishedGenId !== genId ? order : null,
     // The comments the analyst sent the revision pipeline ARE the prompts;
     // the client's promptsText only fills in for an unrevised publication.
     promptsText: quota.revisionPrompts(order) || String(body.promptsText || ''),
@@ -1312,12 +1365,10 @@ async function postGenerationSubmit(event) {
     targetPrice: order.targetPrice || null,
   }));
   if (!committed) return json(409, { error: 'Nothing to submit for this generation id' });
-  // Published means frozen: a revision after this would change the PDF under
-  // readers who already opened or bought it.
-  await ordersStore.update(genId, { revisionsAllowed: order.revisionsUsed || 0 });
-  await store.audit(profile.userId, 'generation-published', { genId, companyId: order.ticker });
+  await voidReviewsOnCoverage(profile.userId, order.ticker, now);
+  await store.audit(profile.userId, 'generation-published', { genId: publishedGenId, companyId: order.ticker });
   return json(200, {
-    ok: true, genId, status: 'published',
+    ok: true, genId: publishedGenId, status: 'published',
     freeAfterDays: quota.clampFreeAfterDays(body.freeAfterDays),
   });
 }
@@ -1612,6 +1663,13 @@ async function userIdForCustomer(customerId) {
 // Writes the SALE# row the earnings ledger reads. Gross is what the reader paid,
 // which is the price the analyst set; Stripe's cut comes off our half.
 async function recordAnalysisSale(session) {
+  let gross = Math.round(Number(session.amount_total || 0)) / 100;
+  if (session.metadata?.fork === 'true') {
+    const items = await stripe().checkout.sessions.listLineItems(session.id, { limit: 100 });
+    const analysis = items.data.find(item => String(item.description || '').includes(' — analyst analysis by '));
+    gross = analysis ? Number(analysis.amount_total) / 100 : 0;
+  }
+  if (!(gross > 0)) return;
   const genId = session.metadata.analysisGenId;
   const ownerId = session.metadata.ownerId
     || (await store.findPublicationIndex(genId))?.userId;
@@ -1626,8 +1684,7 @@ async function recordAnalysisSale(session) {
     // A fork session also carries a derivation fee, which is ours and not the
     // author's, so it names the author's share explicitly. A plain purchase has
     // no such field and stays the whole session total.
-    grossEur: Number(session.metadata.saleGrossEur)
-      || Math.round(Number(session.amount_total || 0)) / 100,
+    grossEur: gross,
     currency: session.currency || 'eur',
     soldAt: new Date((session.created || 0) * 1000 || Date.now()).toISOString(),
   });
@@ -1702,29 +1759,48 @@ async function postBillingWebhook(event) {
     return json(400, { error: 'Invalid signature' });
   }
 
-  if (!await store.claimStripeEvent(stripeEvent.id)) return json(200, { ok: true, duplicate: true });
+  const claim = await store.claimStripeEvent(stripeEvent.id);
+  if (claim.state === 'done') return json(200, { ok: true, duplicate: true });
+  if (claim.state === 'busy') return json(503, { error: 'Event is being processed' });
 
   const object = stripeEvent.data.object;
+  try {
   switch (stripeEvent.type) {
-    case 'checkout.session.completed': {
+    case 'checkout.session.completed':
+    case 'checkout.session.async_payment_succeeded': {
       // A sale of one analyst's analysis. The webhook, not the buyer's return
       // trip, is what records it: the analyst's half is owed whether or not the
       // buyer ever lands back on the site.
       if (object.metadata?.analysisGenId) {
-        if (object.payment_status !== 'paid') break;
+        if (!isCompletedCheckout(object)) break;
         await recordAnalysisSale(object);
         if (object.metadata.fork === 'true') await createForkOrder(object);
         await sendAnalysisReceipt(object);
         break;
       }
       if (object.metadata?.extraRevisions) {
-        if (object.payment_status !== 'paid') break;
+        if (!isCompletedCheckout(object)) break;
         await addRevisionRounds(object);
         break;
       }
       if (object.metadata?.topup) {
-        if (object.payment_status !== 'paid') break;
+        if (!isCompletedCheckout(object)) break;
         await addTopUp(object, requestNow(event));
+        break;
+      }
+      if (object.metadata?.site === SITE_TAG && object.metadata?.isFresh === 'true' && object.metadata?.userId) {
+        if (!isCompletedCheckout(object)) break;
+        const profile = await store.getProfile(object.metadata.userId, true);
+        if (!profile?.email) throw new Error('Paid generation has no member email for delivery');
+        await ensurePaidGeneration(object, profile, requestNow(event));
+        try {
+          await email.sendFreshConfirmEmail(profile.email, {
+            ...object.metadata, revisionsAllowed: limitsFor(profile).revisions,
+            orderUrl: orderPageUrl(object.id),
+          });
+        } catch (err) {
+          await email.reportError('members: fresh confirmation email', err, { sessionId: object.id, customer: profile.email });
+        }
         break;
       }
       if (object.mode !== 'subscription') break;
@@ -1758,7 +1834,12 @@ async function postBillingWebhook(event) {
     default:
       break;
   }
+  await store.finishStripeEvent(stripeEvent.id, claim.leaseId);
   return json(200, { ok: true });
+  } catch (err) {
+    await store.releaseStripeEvent(stripeEvent.id, claim.leaseId);
+    throw err;
+  }
 }
 
 // ── analyst analyses: the layer on top of the engine report ─────────────────
@@ -2029,14 +2110,26 @@ async function addRevisionRounds(session) {
   const rounds = Math.round(Number(session.metadata.extraRevisions) || 0);
   if (!genId || rounds <= 0) return;
 
-  const updated = await ordersStore.addRevisionsAllowed(genId, rounds);
-  if (!updated) {
-    console.error('extra revisions: no order to credit', { genId, rounds });
-    return;
+  const receiptPk = `STRIPEREVISION#${session.id}`;
+  const credited = await store.runTransact({ TransactItems: [
+    { Update: {
+      TableName: process.env.ORDERS_TABLE, Key: { orderId: genId },
+      UpdateExpression: 'SET revisionsAllowed = if_not_exists(revisionsAllowed, :zero) + :rounds',
+      ConditionExpression: 'attribute_exists(orderId)',
+      ExpressionAttributeValues: { ':zero': 0, ':rounds': rounds },
+    } },
+    { Put: {
+      TableName: store.table(), Item: { pk: receiptPk, sk: 'EVT', genId },
+      ConditionExpression: 'attribute_not_exists(pk)',
+    } },
+  ] });
+  if (!credited) {
+    if (await store.getItem(receiptPk, 'EVT', true)) return;
+    throw new Error(`extra revisions: could not credit order ${genId}`);
   }
   if (session.metadata.userId) {
     await store.audit(session.metadata.userId, 'revisions-purchased', {
-      genId, rounds, revisionsAllowed: updated.revisionsAllowed,
+      genId, rounds,
     });
   }
 }
@@ -2055,8 +2148,7 @@ async function createForkOrder(session) {
 
   const parent = await ordersStore.get(parentGenId);
   if (!parent?.jobId) {
-    console.error('fork: parent has no job to build on', { parentGenId, genId });
-    return;
+    throw new Error(`fork: parent ${parentGenId} has no job to build on`);
   }
 
   const forkUserId = session.metadata.forkUserId || '';
@@ -2077,6 +2169,10 @@ async function createForkOrder(session) {
       parentUserId: session.metadata.ownerId || null,
       companyId: session.metadata.companyId || parent.ticker || '',
     }));
+    if (!obligation) {
+      const existing = await store.getItem(`USER#${profile.userId}`, `PUB#${genId}`, true);
+      obligation = Boolean(existing && existing.forkedFrom === parentGenId && !existing.private);
+    }
   }
 
   await ordersStore.create({
@@ -2087,7 +2183,9 @@ async function createForkOrder(session) {
     exchange: parent.exchange || '',
     status: ordersStore.STATUS.DELIVERED,
     jobId: parent.jobId,
+    engineUsername: parent.engineUsername,
     forkedFrom: parentGenId,
+    publicationLocked: false,
     marketFirst: Boolean(parent.marketFirst),
     hasPreview: parent.hasPreview,
     analystName: profile?.name || undefined,
@@ -2131,8 +2229,12 @@ async function postAnalysisForkCheckout(event) {
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
 
   const parentOrder = await ordersStore.get(genId);
-  if (!parentOrder?.jobId || parentOrder.status !== 'DELIVERED') {
+  if (!parentOrder?.jobId || !parentOrder.pdfFileName || parentOrder.status !== 'DELIVERED') {
     return json(409, { error: 'This analysis has no report to build on' });
+  }
+  const jobs = await engineJobs.getRevisionJobs([parentOrder.jobId]);
+  if (!engineJobs.canRevise(jobs.get(parentOrder.jobId), parentOrder.engineUsername || undefined)) {
+    return json(409, { error: 'This analysis cannot be revised because its original data is unavailable' });
   }
 
   const body = parseBody(event) || {};
@@ -2142,7 +2244,8 @@ async function postAnalysisForkCheckout(event) {
   // Signed in is optional here: a reader without an account can still buy a
   // fork, exactly as they can buy an analysis. requireUser denies rather than
   // throwing, so an anonymous caller just comes back without a profile.
-  const { profile } = await auth.requireUser(event, { bearerToken, json, now });
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (bearerToken(event) && deny) return deny;
 
   const lineItems = [{
     quantity: 1,
@@ -2157,7 +2260,8 @@ async function postAnalysisForkCheckout(event) {
       },
     },
   }];
-  if (analysisPrice > 0 && !ranking.isPublicFreeNow(index, now)) {
+  const soldAnalysisPrice = analysisPrice > 0 && !ranking.isPublicFreeNow(index, now) ? analysisPrice : 0;
+  if (soldAnalysisPrice > 0) {
     lineItems.unshift({
       quantity: 1,
       price_data: {
@@ -2187,13 +2291,13 @@ async function postAnalysisForkCheckout(event) {
       fork: 'true',
       // Only the author's half of the session is their sale; the rest is the
       // derivation fee. recordAnalysisSale reads this.
-      saleGrossEur: String(analysisPrice),
+      saleGrossEur: String(soldAnalysisPrice),
       forkUserId: profile?.userId || '',
     },
     success_url: `${returnTo}?forked=${genId}&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${returnTo}?forked=cancelled`,
   });
-  return json(200, { url: session.url, priceEur: analysisPrice + FORK_FEE_EUR });
+  return json(200, { url: session.url, priceEur: soldAnalysisPrice + FORK_FEE_EUR });
 }
 
 // GET /analyses/{genId}/purchased?session_id=… — the buyer's way in. The session
@@ -2210,8 +2314,17 @@ async function getAnalysisPurchased(event) {
   } catch (err) {
     return json(404, { error: 'Unknown purchase' });
   }
-  if (session.payment_status !== 'paid') return json(402, { error: 'Payment not completed' });
+  if (!isCompletedCheckout(session)) return json(402, { error: 'Payment not completed' });
   if (session.metadata?.analysisGenId !== genId) return json(404, { error: 'Unknown purchase' });
+
+  const receiptOrder = await ordersStore.get(sessionId);
+  const { requiresMemberAccess } = require('../members/public-order');
+  if (await requiresMemberAccess(receiptOrder, store.findPublicationForOrder, sessionId, session.metadata?.companyId)) {
+    const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now: requestNow(event) });
+    if (deny || !profile || profile.userId !== session.metadata?.forkUserId) {
+      return json(403, { error: 'Sign in to access this purchase' });
+    }
+  }
 
   const index = await store.findPublicationIndex(genId);
   if (!index || index.status !== 'published') return json(404, { error: 'Unknown analysis' });
@@ -2303,7 +2416,8 @@ async function postAdminReopen(event) {
   const index = await store.findPublicationIndex(body.genId);
   const committed = await store.runTransact(quota.buildReopenTransact({
     table: store.table(), userId: body.userId, now: requestNow(event), genId: body.genId,
-    indexSk: index?.sk,
+    indexSk: index?.sk, ordersTable: process.env.ORDERS_TABLE,
+    memberOnly: String(body.genId).startsWith('cs_'),
   }));
   // Two conditions can fail: the publication is not taken down, or the analyst
   // already owes a different generation. Say which, because the second one is

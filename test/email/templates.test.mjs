@@ -109,10 +109,11 @@ test('the existing delivery emails still carry the licence line and the same lay
   for (const msg of sent) assert.match(htmlOf(msg), /AI-generated research\. Not investment advice\./);
   assert.match(htmlOf(sent[0]), /licensed for your personal research/);
   assert.match(htmlOf(sent[0]), /Download PDF report/);
-  assert.match(htmlOf(sent[0]), /Request revision/);
+  assert.match(htmlOf(sent[0]), /Open report workspace/);
   assert.match(htmlOf(sent[1]), /Download the updated PDF/);
   assert.doesNotMatch(htmlOf(sent[2]), /licensed for your personal research/);
   assert.match(htmlOf(sent[2]), /Track your order/);
+  assert.doesNotMatch(htmlOf(sent[2]), /includes report revisions/);
 });
 
 test('reportError emails the admin with the place, message, details, stage and stack', async (t) => {

@@ -76,7 +76,8 @@ function siteUrl() {
 // A checkout session counts as done when it was paid, or when a promotion
 // code brought the total to zero.
 function isCompletedCheckout(session) {
-  return session.payment_status === 'paid' || Number(session.amount_total || 0) === 0;
+  return session?.payment_status === 'paid'
+    || (session?.status === 'complete' && session?.payment_status === 'no_payment_required' && session?.amount_total === 0);
 }
 
 // The durable, emailable page for an order that carries revisions. The
@@ -156,6 +157,9 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
       site: SITE_TAG,
       reportId: report.id,
       reportName: report.name || report.companyName || '',
+      reportFileName: report.fileName || '',
+      reportDate: report.reportDate || '',
+      revisable: report.revisable ? 'true' : 'false',
       ticker: report.ticker || '',
       price: String(pricing.unitAmount / 100),
       // What was actually bought. A free report's buyer paid for revisions

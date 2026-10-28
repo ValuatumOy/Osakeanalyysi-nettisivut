@@ -249,7 +249,7 @@
           <div class="ws-section" id="buyGenCard">
             <div class="ws-section-head">
               <h2>Another report, on demand</h2>
-              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time — it stays private, owes no publication, and carries the same revision rounds as your monthly one.</p>
+              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time. It starts private and carries the same revision rounds as your monthly one. Analysts can choose to publish an edited version.</p>
             </div>
             <div class="ws-panel">
               <div class="form-row">
@@ -453,6 +453,15 @@
       const { status, data } = result;
       if (status === 401 || status === 403) { logout(); return; } // invalid/expired session only
       if (status !== 200) { notice('err', 'Something went wrong (' + status + '). Please reload.'); return; }
+      const publishOrderId = sessionStorage.publishOrderId;
+      if (publishOrderId) {
+        delete sessionStorage.publishOrderId;
+        if (data.publishes) {
+          location.href = '/order/index.html?session_id=' + encodeURIComponent(publishOrderId);
+          return;
+        }
+        notice('err', 'Publishing is available to analysts.');
+      }
       document.getElementById('authView').hidden = true;
       document.getElementById('memberView').hidden = false;
       document.getElementById('identityStrip').hidden = false;

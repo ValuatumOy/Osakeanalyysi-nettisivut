@@ -94,6 +94,7 @@ export class MembersStack extends Stack {
         // fresh reports: create the order, wake the worker, the reconciler does
         // the rest.
         ORDERS_TABLE: props.ordersTable.tableName,
+        PDF_ENGINE_JOBS_TABLE: `pdf-jobs${config.suffix}`,
         WORKER_FUNCTION_NAME: props.workerFunction.functionName,
         REPORT_PDF_BUCKET: catalogBucket.bucketName,
         REPORT_PDF_PREFIX: 'reports/pdfs/',
@@ -149,6 +150,10 @@ export class MembersStack extends Stack {
     props.pdfBucket.grantRead(membersFunction); // this stage's own generations
     // Create-only in practice: the worker owns order state transitions.
     props.ordersTable.grantReadWriteData(membersFunction);
+    const engineJobsReadTable = dynamodb.Table.fromTableName(this, 'EngineJobsReadTable', `pdf-jobs${config.suffix}`);
+    membersFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['dynamodb:BatchGetItem'], resources: [engineJobsReadTable.tableArn],
+    }));
     props.workerFunction.grantInvoke(membersFunction);
     if (config.engineFunctionArn) {
       membersFunction.addToRolePolicy(new iam.PolicyStatement({
