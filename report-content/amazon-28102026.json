@@ -1,0 +1,759 @@
+{
+  "id": "amazon-28102026",
+  "slug": "amazon-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Amazon",
+  "ticker": "AMZN",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Specialty Retail",
+  "currency": "USD",
+  "reportDate": "2026-10-28",
+  "profile": "Sells everyday goods to shoppers through websites and physical stores, including its own stock and goods from independent sellers. It also earns from subscriptions, advertising and digital content, and rents out cloud computing through Amazon Web Services, serving consumers, merchants, advertisers, developers, companies, government agencies and schools.",
+  "headline": {
+    "currentPrice": "253 USD",
+    "marketCap": "USD 2.73tn",
+    "enterpriseValue": "USD 2.69tn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+4 USD per share"
+  },
+  "consensusTarget": {
+    "value": "331 USD",
+    "analysts": "70",
+    "range": "209-425 USD",
+    "source": "Chartmill"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "24x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "15x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "20x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "287 USD",
+    "week52Low": "196 USD",
+    "oneYearChange": "+10%",
+    "threeYearChange": "+98%"
+  },
+  "summary": [
+    "Amazon (AMZN, NASDAQ Global Select) sells goods through online and physical stores, while generating additional revenue from subscriptions, advertising, digital content and AWS cloud services. At 253 USD per share on 28 October 2026, its market capitalisation is USD 2.73tn and enterprise value is USD 2.69tn. In this Valuatum market report dated 28 October 2026, analysts forecast 2028 sales of USD 1,101,692m and operating profit of USD 185,163m. The share price is therefore read as a claim on three operating businesses rather than as a standalone group multiple, with cash less debt and other claims adding 4 USD per share.",
+    "At 253 USD, North America retail contributes 136 USD per share, AWS contributes 81 USD and International retail contributes 32 USD. Those parts imply 17.9x, 14.3x and 8.3x 2028 operating profit respectively, while the businesses together add 249.3 USD per share before the 3.84 USD per-share cash balance. North America retail carries the largest share because the split gives it USD 81,944m of 2028 operating profit; AWS contributes USD 61,406m and International retail USD 41,813m. The allocation is based on segment results and analysts' whole-company forecasts, not separate business forecasts.",
+    "The group multiple of 15x 2028 operating profit is below listed peers at about 18.5x. International retail is the widest gap, at 8.3x against a 15.4x peer median, while North America retail is 17.9x against 22.5x and AWS is 14.3x against 14.8x. The key tests are margin progression, AWS capacity and backlog conversion, delivery costs, third-party seller mix and capital spending of about USD 220bn in 2026. The mean of 70 analysts' targets is 331 USD (Chartmill), but the analysis remains focused on what the current share price pays for."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Three businesses",
+      "metric": "249.3 USD",
+      "text": "The share price assigns 136 USD to North America retail, 81 USD to AWS and 32 USD to International retail. Together, the businesses account for 249.3 USD per share, with cash less debt and other claims adding 3.84 USD per share."
+    },
+    {
+      "num": "02",
+      "title": "Peer discount",
+      "metric": "8.3x",
+      "text": "International retail carries the sharpest discount, at 8.3x 2028 operating profit against a 15.4x peer median. North America retail is at 17.9x against 22.5x, while AWS is at 14.3x against 14.8x."
+    },
+    {
+      "num": "03",
+      "title": "Margin watch",
+      "metric": "$496bn",
+      "text": "The decisive evidence is whether margins reach the levels embedded in the split: 13% for North America retail, 31% for AWS and 17% for International retail. AWS's USD 496bn backlog and the next four quarterly margins are the clearest tests."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "North America retail",
+      "share": "136 USD per share",
+      "economics": "17.9x 2028 operating profit · USD 81,944m forecast operating profit · peers 14.7x-30.2x, median 22.5x",
+      "text": "North America retail includes Amazon's online and physical stores, direct merchandise, independent-seller goods, advertising and Prime subscriptions. It generated revenue of USD 426bn in 2025 and represents 59% of 2025 sales to outside customers. The price assigns 136 USD per share to the business, based on forecast 2028 operating profit of USD 81,944m and a 17.9x multiple. That forecast requires sales of USD 655bn and a 13% operating margin, almost twice the reported 6.9% margin in 2025. The peer range is 14.7x to 30.2x, with a 22.5x median. Delivery economics are central: company-wide shipping costs were USD 102.7bn in 2025, while free same-day delivery supports customer frequency but must be covered by each order's economics. Sales growth without margin expansion would leave the 13% assumption unproven."
+    },
+    {
+      "name": "AWS",
+      "share": "81 USD per share",
+      "economics": "14.3x 2028 operating profit · USD 61,406m forecast operating profit · peers 13.9x-17.9x, median 14.8x",
+      "text": "AWS sells computing, storage, databases and other technology services to developers, businesses, governments and schools. Revenue was USD 129bn in 2025, with operating profit of USD 45.6bn and a 35.4% margin. The price assigns 81 USD per share to AWS, based on forecast 2028 operating profit of USD 61,406m and a 14.3x multiple. The split assumes sales of USD 198bn and a 31% margin, below both the 2025 margin and the roughly 39% margin recorded in Q2 2026. Listed peers cost 13.9x to 17.9x, with a 14.8x median, so the discount is modest. Amazon expects about USD 220bn of 2026 capital spending, mostly for AI and AWS. The USD 496bn backlog and capacity constraints support demand, but depreciation and higher memory costs could pressure margins if spending runs ahead of sales."
+    },
+    {
+      "name": "International retail",
+      "share": "32 USD per share",
+      "economics": "8.3x 2028 operating profit · USD 41,813m forecast operating profit · peers 3.3x-22.5x, median 15.4x",
+      "text": "International retail sells consumer goods outside North America through Amazon's own stock and independent sellers, while also earning from advertising and subscriptions. Revenue was USD 162bn in 2025, or 23% of sales to outside customers. The price assigns 32 USD per share to forecast 2028 operating profit of USD 41,813m at an 8.3x multiple. The split requires sales of USD 249bn and a 17% margin, compared with a 4.1% margin in Q2 2026 and operating income of USD 4.75bn in 2025. The peer median is 15.4x, with a range of 3.3x to 22.5x. Third-party sellers supplied 61% of worldwide paid units in Q2 2026, which can improve mix because their goods carry fewer inventory costs. Sustained profitability remains unproven, and a 4.1% margin on 2028 sales would produce only about USD 10.2bn of operating profit."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is constructed from three operating businesses and a small net cash balance. North America retail contributes 136 USD per share, AWS 81 USD and International retail 32 USD, producing 249.3 USD per share before cash, less debt and other claims. The 3.84 USD per-share balance brings the total to 253.1 USD. The operating-profit base is analysts' 2028 group forecast of USD 185,163m, split into USD 81,944m for North America retail, USD 61,406m for AWS and USD 41,813m for International retail. The resulting multiples are 17.9x, 14.3x and 8.3x respectively. North America retail is the largest pool because the split requires sales of USD 655bn and a 13% margin. AWS requires USD 198bn of sales and a 31% margin, while International retail requires USD 249bn and a 17% margin. The price therefore depends less on revenue alone than on whether each business converts forecast sales into the operating margins embedded in the split. The current reading is a group priced below listed peers, with the largest uncertainty concentrated in retail margin delivery."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "The discounts are clearest where forecast margins are furthest from reported performance. International retail is priced at 8.3x 2028 operating profit against a 15.4x peer median, while its margin must rise from 4.1% in Q2 2026 to 17%. North America retail is priced at 17.9x against a 22.5x median, but its 13% forecast margin is almost twice the 6.9% reported in 2025. AWS is closer to peers at 14.3x against 14.8x, yet its split assumes a margin decline to 31% from 35.4% in 2025 and roughly 39% in Q2 2026. Delivery costs explain part of the retail caution: company-wide shipping costs were USD 102.7bn in 2025, while free same-day delivery supports demand but consumes fulfilment economics. AWS carries a different uncertainty: Amazon expects about USD 220bn of 2026 capital spending, mostly for AI and AWS, before the associated revenue arrives. The discounts therefore reflect execution evidence, not simply sector labels. A peer multiple is more credible when the relevant margin has already appeared in reported results."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The next four quarterly reports should establish whether the margins in the price split are emerging. For North America retail, a margin near 7% would support a lower-profit outcome, whereas a steady climb into the low teens would make the 13% 2028 assumption more credible. Sales growth must be considered alongside delivery costs: Q2 2026 sales growth was 16%, but operating income was USD 9.1bn on sales of USD 116.2bn. AWS requires a comparison between the roughly 39% Q2 2026 margin and the 31% 2028 split. The USD 496bn backlog, capacity additions and capital spending against the USD 220bn plan will show whether demand converts into sales without excessive depreciation. AWS held 28% of cloud infrastructure services revenue in Q2 2026, versus 20% for Microsoft and 15% for Google. International retail needs both margin improvement and better mix: third-party sellers supplied 61% of worldwide paid units and paid units grew 17% in Q2 2026. A rising seller share and faster profit growth would support the 17% margin; volume growth without margin expansion would leave the discount intact."
+    }
+  ],
+  "risks": [
+    "International margin failure (International retail): a margin near 4.1% would leave 2028 operating profit near USD 10.2bn rather than USD 41,813m, with the next four quarterly International operating margins as the early warning.",
+    "AWS capacity overspend (AWS): capital spending of about USD 220bn in 2026 could run ahead of sales, increasing depreciation and pressuring the 31% forecast margin; the spending figure and quarterly AWS margin are the early warnings.",
+    "Delivery-cost pressure (North America retail): rapid sales growth and free same-day delivery could keep the operating margin near 7% rather than 13%; quarterly margin alongside sales growth is the early warning.",
+    "International infrastructure drag (International retail): costly fulfilment and technology infrastructure may prevent sustained profitability; profit growth relative to sales and the 4.1% margin are the early warnings.",
+    "AWS competitive loss (AWS): a falling cloud infrastructure share would weaken the sales split even if the market grows; the current 28% share against Microsoft's 20% and Google's 15% is the benchmark."
+  ],
+  "catalysts": [
+    "Quarterly margin expansion (near-term, North America retail): a steady move above 7% while sales continue growing would support the 13% 2028 operating-margin assumption.",
+    "AWS capacity conversion (near-term, AWS): new capacity turning the USD 496bn backlog into sales while the margin remains near 39% would support the larger-profit outcome.",
+    "International mix improvement (near-term, International retail): a rising third-party seller share from 61% alongside a higher margin would show that fees and advertising are improving economics.",
+    "Capital-spending payoff (medium-term, AWS): sales growth that absorbs about USD 220bn of 2026 capital spending without a material margin decline would reduce execution uncertainty.",
+    "Sustained international profitability (medium-term, International retail): profit growing faster than sales would make the 17% 2028 margin more credible."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "574,785",
+            "637,959",
+            "716,924",
+            "828,740",
+            "949,920",
+            "1,101,692"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "62,803",
+            "121,388",
+            "145,731",
+            "185,395",
+            "214,906",
+            "269,579"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "10.9%",
+            "19.0%",
+            "20.3%",
+            "22.4%",
+            "22.6%",
+            "24.5%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-25,951",
+            "-52,795",
+            "-65,756",
+            "-75,200",
+            "-73,647",
+            "-84,416"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "36,852",
+            "68,593",
+            "79,975",
+            "110,195",
+            "141,259",
+            "185,163"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "6.4%",
+            "10.8%",
+            "11.2%",
+            "13.3%",
+            "14.9%",
+            "16.8%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "693",
+            "-80",
+            "16,782",
+            "69,596",
+            "1,065",
+            "-1,754"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "37,545",
+            "68,513",
+            "96,757",
+            "179,791",
+            "142,324",
+            "183,409"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "30,425",
+            "59,248",
+            "77,670",
+            "138,511",
+            "112,421",
+            "150,250"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "3",
+            "5.7",
+            "7.3",
+            "13",
+            "10.6",
+            "14.1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "276,690",
+            "328,806",
+            "443,079",
+            "482,417",
+            "552,957",
+            "641,305"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "7,687",
+            "8,602",
+            "9,197",
+            "10,631",
+            "12,186",
+            "14,133"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "22,789",
+            "23,074",
+            "23,273",
+            "23,273",
+            "23,273",
+            "23,273"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "48,337",
+            "73,545",
+            "113,410",
+            "113,410",
+            "113,410",
+            "113,410"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "355,503",
+            "434,027",
+            "588,959",
+            "629,732",
+            "701,826",
+            "792,121"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "33,318",
+            "34,214",
+            "38,325",
+            "44,353",
+            "50,838",
+            "58,960"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "65,646",
+            "77,874",
+            "103,948",
+            "112,321",
+            "123,449",
+            "137,386"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "73,387",
+            "78,779",
+            "86,810",
+            "101,045",
+            "115,820",
+            "134,325"
+          ]
+        },
+        {
+          "label": "Other current assets",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "37,923",
+            "87,361",
+            "154,068"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "172,351",
+            "190,867",
+            "229,083",
+            "295,642",
+            "377,468",
+            "484,740"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "527,854",
+            "624,894",
+            "818,042",
+            "925,374",
+            "1,079,294",
+            "1,276,861"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "201,875",
+            "285,970",
+            "411,065",
+            "549,576",
+            "661,997",
+            "812,247"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "58,314",
+            "52,623",
+            "65,648",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "83,765",
+            "81,216",
+            "101,633",
+            "35,985",
+            "35,985",
+            "35,985"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "164,917",
+            "179,431",
+            "218,005",
+            "242,270",
+            "274,687",
+            "315,287"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "77,297",
+            "78,277",
+            "87,339",
+            "97,542",
+            "106,625",
+            "113,342"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "527,854",
+            "624,894",
+            "818,042",
+            "925,374",
+            "1,079,294",
+            "1,276,861"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "62,224",
+            "52,121",
+            "66,177",
+            "-41,427",
+            "-96,556",
+            "-175,052"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "186,802",
+            "259,814",
+            "389,903",
+            "410,607",
+            "458,816",
+            "523,853"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "38.2%",
+            "45.8%",
+            "50.2%",
+            "59.4%",
+            "61.3%",
+            "63.6%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "30.8%",
+            "18.2%",
+            "16.1%",
+            "-7.5%",
+            "-14.6%",
+            "-21.6%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.0x",
+            "0.4x",
+            "0.5x",
+            "-0.2x",
+            "-0.4x",
+            "-0.6x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.1",
+            "1.1",
+            "1.1",
+            "1.2",
+            "1.4",
+            "1.5"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "61,591",
+            "113,433",
+            "151,815",
+            "223,576",
+            "200,871",
+            "253,206"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "60,997",
+            "113,502",
+            "138,344",
+            "169,959",
+            "200,030",
+            "254,643"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-3,463",
+            "-1,390",
+            "-8,389",
+            "-9,865",
+            "-14,804",
+            "-18,541"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "65,570",
+            "131,319",
+            "220,688",
+            "115,973",
+            "145,742",
+            "174,711"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-65,570",
+            "-131,319",
+            "-220,688",
+            "-115,973",
+            "-145,742",
+            "-174,711"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-3,979",
+            "-17,886",
+            "-68,873",
+            "107,604",
+            "55,130",
+            "78,495"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-243",
+            "-14,675",
+            "-74,952",
+            "53,987",
+            "54,289",
+            "79,932"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-243",
+            "-14,675",
+            "-74,952",
+            "53,987",
+            "54,289",
+            "79,932"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "25,230",
+            "23,278",
+            "76,904",
+            "-55,445",
+            "9,082",
+            "6,717"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "21,251",
+            "5,392",
+            "8,031",
+            "52,159",
+            "64,212",
+            "85,213"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "19.7x"
+          ]
+        },
+        {
+          "label": "P/E 2027E",
+          "values": [
+            "24.3x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "14.5x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA 2027E",
+          "values": [
+            "12.3x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "5.0x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "13.3%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "28.8%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "n/a"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Amazon's share price made of?",
+      "a": "At 253 USD per share, North America retail accounts for 136 USD, AWS for 81 USD and International retail for 32 USD. Cash less debt and other claims adds 3.84 USD per share, bringing the split to 253.1 USD."
+    },
+    {
+      "q": "Why does Amazon trade below its listed peers?",
+      "a": "The split reads North America retail at 17.9x 2028 operating profit against a 22.5x peer median, AWS at 14.3x against 14.8x and International retail at 8.3x against 15.4x. The largest discounts coincide with margins that have not yet reached 13%, 31% and 17% respectively."
+    },
+    {
+      "q": "What do analysts expect for Amazon?",
+      "a": "The mean of 70 analysts' targets is 331 USD, with a range of 209-425 USD (Chartmill). Analysts forecast group 2028 sales of USD 1,101,692m and operating profit of USD 185,163m."
+    },
+    {
+      "q": "What should Amazon investors watch?",
+      "a": "The next four quarterly reports should be checked for North America retail's margin against 7% and 13%, AWS's margin against roughly 39% and 31%, and International retail's margin against 4.1% and 17%. AWS backlog conversion, about USD 220bn of 2026 capital spending, delivery costs and the 61% third-party seller mix are also important."
+    },
+    {
+      "q": "How does Valuatum's Amazon market report work?",
+      "a": "Analysts' whole-company forecasts are held unchanged to 2028, then split between North America retail, AWS and International retail using segment results. Each business is read at an EV/EBIT multiple against listed peers, and the parts plus cash less debt and other claims are reconciled to the current share price of 253 USD."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Amazon dated 28 October 2026 (253 USD share price, North America retail at 136 USD per share, AWS at 81 USD and International retail at 32 USD).",
+    "Competitor context: Walmart Inc., Coupang, Inc., Alibaba Group Holding Limited, MercadoLibre, Inc., JD.com, Inc., Microsoft Corporation, Alphabet Inc. and Oracle Corporation; business EV/EBIT 2028 multiples range from 3.3x to 30.2x, with peer medians of 22.5x for North America retail, 14.8x for AWS and 15.4x for International retail.",
+    "Market data: AMZN, 253 USD on 28 October 2026; analysts' 2028 group forecasts are revenue of USD 1,101,692m and operating profit of USD 185,163m; consensus source for the 331 USD mean of 70 analysts' targets is Chartmill. The business forecasts are split estimates, and the cash less debt and other claims balance is the model's end-2026 forecast rather than reported cash."
+  ]
+}
