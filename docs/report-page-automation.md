@@ -233,13 +233,14 @@ distinguished by the `-coverage` filename convention and are never touched.
 
 ## Delivery wake-up and cron recovery
 
-When an analyst's original engine report enters the catalog, the worker asks
-GitHub Actions to run this sync immediately. The worker reads the fine-grained
+When an analyst's original engine report enters the catalog, or an admin adds,
+edits, hides or deletes a catalog report, the backend asks GitHub Actions to
+run this sync immediately. It reads the fine-grained
 token from the SSM SecureString
 `/aiequityreports/<stage>/report-pages-dispatch-token`; the token needs
 **Actions: read and write** on `ValuatumOy/Osakeanalyysi-nettisivut` only.
 Production dispatches `main`, and test dispatches `staging`. A missing token or
-a failed dispatch does not interrupt report delivery: the hourly sync remains
+a failed dispatch does not interrupt the underlying change: the hourly sync remains
 the recovery path. Actions still needs time to extract, verify, commit and
 deploy the page, and a failed extraction is reported by the workflow.
 
@@ -247,19 +248,9 @@ The sync uses a fresh catalog request so a cached Vercel response does not hide
 the just-delivered report. The original PDF is the catalog report; an analyst's
 later revision remains a separate private file until explicitly published.
 
-The earlier design used a cron alone:
-
-An earlier draft of this plan added event triggers — `repository_dispatch` POSTs from
-`reconciler.deliver()` and the admin routes, plus a poll in the workflow to wait out the
-five-minute CDN cache on `/api/reports`. Dropped, for one reason: since the sync is idempotent and
-derives everything from current state, events could never affect *correctness*, only *latency* —
-and there is nobody waiting. The buyer already has their PDF by email the moment the order
-delivers; the landing page is a search and marketing surface, and search engines do not index
-within the hour. Meanwhile three catalog changes are time-driven and fire no event at all (the
-weekly free rotation, the reaper if armed, the `visibleAfterDays` / `expiresAt` timers), so the
-cron had to exist regardless. Events were pure cost: a dispatch module, four call sites, a GitHub
-token in SSM, worker and API Lambda redeploys — all deployment risk in the order path, buying
-minutes on a page nobody is refreshing.
+The original design used a cron alone. Event wake-ups reduce the wait for catalog changes;
+the cron still handles time-driven changes that have no event, including weekly free rotation,
+the reaper if armed, and the `visibleAfterDays` / `expiresAt` timers.
 
 **Recovery cadence: hourly.** A no-change run is a catalog fetch and a diff — no LLM call, no commit,
 seconds of free Actions time — so frequency costs nothing, and hourly caps every mismatch window
@@ -276,9 +267,9 @@ says at that moment, and anything it misses, the next run catches.
 One idempotent script, `scripts/report-pages/sync.mjs`, is the whole feature.
 
 ```
-hourly cron             ┐
-delivery wake-up        ├→ sync workflow → commit main → Vercel deploy
-manual workflow_dispatch┘
+hourly cron              ┐
+delivery or admin change ├→ sync workflow → commit main → Vercel deploy
+manual workflow_dispatch ┘
 
     sync.mjs:
       live catalog  vs  report-content/  vs  reports/
@@ -290,9 +281,8 @@ manual workflow_dispatch┘
 
 **Runner.** GitHub Actions. The deliverable is a git commit, and `pdftotext` and the OpenRouter
 key do not belong in the worker Lambda. The push uses the workflow's own `GITHUB_TOKEN` with
-`contents: write` — no personal token, no SSM, no backend changes anywhere in the publishing
-path. (The one backend change in scope, the `deliver()` overwrite fix, is independent of
-publishing — see the defect section.)
+`contents: write`. The separate token in SSM only wakes the workflow and needs the repository's
+`Actions: write` permission.
 
 **Publishing.** Straight to `main`; Vercel deploys on push. Fully automated — no human in the
 loop, which is what the strict gate below is for. If a human pushed between the sync's checkout

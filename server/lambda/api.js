@@ -21,6 +21,7 @@ const { companyToken } = require('../reconciler');
 const { sendAdminAlert, reportError } = require('../email');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
 const editing = require('../order-editing');
+const { dispatchReportPages } = require('../report-page-dispatch');
 
 const STAGE = process.env.STAGE || 'prod';
 
@@ -717,6 +718,17 @@ async function orderPreviewResponse(id) {
 
 // ── admin ──────────────────────────────────────────────────────────
 
+async function wakeReportPageSync() {
+  try {
+    const result = await dispatchReportPages();
+    if (result.dispatched) return true;
+    console.warn('admin: report-page wake-up unavailable; scheduled sync will retry');
+  } catch (err) {
+    console.warn('admin: report-page wake-up failed; scheduled sync will retry', err.message);
+  }
+  return false;
+}
+
 function requireAdmin(event) {
   const expected = process.env.ADMIN_UPLOAD_PASSWORD;
   if (!expected) return json(503, { error: 'ADMIN_UPLOAD_PASSWORD is not configured' });
@@ -867,7 +879,8 @@ async function postAdminPublish(event) {
   if (body.visibleNow) sidecar.forceVisible = true;
 
   await pdfStore.writeSidecar(fileName, sidecar);
-  return json(200, { ok: true, fileName, sidecar });
+  const pageSyncStarted = await wakeReportPageSync();
+  return json(200, { ok: true, fileName, sidecar, pageSyncStarted });
 }
 
 // Edit: merge form fields into the existing sidecar (null clears a key).
@@ -895,7 +908,8 @@ async function postAdminUpdate(event) {
   }
 
   await pdfStore.writeSidecar(fileName, sidecar);
-  return json(200, { ok: true, fileName, sidecar });
+  const pageSyncStarted = await wakeReportPageSync();
+  return json(200, { ok: true, fileName, sidecar, pageSyncStarted });
 }
 
 // Delete: the single deletion path in the system. The page has
@@ -910,7 +924,8 @@ async function postAdminDelete(event) {
 
   await pdfStore.deleteReport(fileName);
   console.warn('admin: report deleted (permanent links to it are now dead)', { fileName });
-  return json(200, { ok: true, deleted: fileName });
+  const pageSyncStarted = await wakeReportPageSync();
+  return json(200, { ok: true, deleted: fileName, pageSyncStarted });
 }
 
 // ── dispatch ─────────────────────────────────────────────────────────────────
