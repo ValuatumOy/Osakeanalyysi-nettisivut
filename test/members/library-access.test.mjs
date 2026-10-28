@@ -9,6 +9,7 @@ function reset() {
   Object.assign(state, {
     index: { genId: 'analysis', sk: 'TSLA#date#analysis', userId: 'author', status: 'published', companyId: 'TSLA', publishedAt: '2026-10-01T00:00:00Z', priceEur: 0 },
     publication: { status: 'published', publishedAt: '2026-10-01T00:00:00Z', freeAfterDays: 365 },
+    profile: { userId: 'reader', role: 'reader' }, entitlement: null,
     failJobs: false, writes: 0,
   });
 }
@@ -19,9 +20,9 @@ function stub(path, exports) {
 delete process.env.SECRETS_SSM_PREFIX;
 stub('../../server/aws/catalog-aws.js', { buildCatalogAws: async () => ({
   catalog: { week: '2026-W44', reports: [
-    { id: 'upm', fileName: 'upm.pdf', isFree: true, pdfUrl: 'private' },
-    { id: 'old', fileName: 'old.pdf', isFree: false },
-    { id: 'missing', fileName: 'missing.pdf', isFree: false },
+    { id: 'upm', fileName: 'upm.pdf', isFree: true, ageDays: 0, pdfUrl: 'private' },
+    { id: 'old', fileName: 'old.pdf', isFree: false, ageDays: 29 },
+    { id: 'missing', fileName: 'missing.pdf', isFree: false, ageDays: 30 },
   ] },
   sidecars: new Map([['upm.pdf', { provenance: { jobId: 'valid' } }], ['old.pdf', { provenance: { jobId: 'no-snapshot' } }]]),
 }) });
@@ -36,9 +37,11 @@ stub('../../server/aws/engine-jobs.js', {
   canRevise,
 });
 stub('../../server/aws/orders-store.js', { get: async () => ({ status: 'DELIVERED', pdfFileName: 'tesla.pdf' }) });
-stub('../../server/members/auth.js', { requireUser: async () => ({ profile: { userId: 'reader', role: 'reader' } }) });
+stub('@aws-sdk/s3-request-presigner', { getSignedUrl: async () => 'https://example.test/report.pdf' });
+stub('../../server/members/auth.js', { requireUser: async () => ({ profile: state.profile }) });
 stub('../../server/members/store.js', {
   table: () => 'Members',
+  getEntitlement: async () => state.entitlement,
   findPublicationIndex: async () => state.index,
   listPublicationIndex: async () => [state.index],
   getPublication: async () => state.publication,
@@ -56,10 +59,35 @@ test('member library only offers revisions when the source snapshot is usable', 
   reset();
   let result = JSON.parse((await request('GET /reports')).body).reports;
   assert.deepEqual(result.map(r => [r.id, r.revisable]), [['upm', true], ['old', false], ['missing', false]]);
+  assert.deepEqual(result.map(r => [r.id, r.freePickEligible]), [['upm', false], ['old', false], ['missing', true]]);
   assert.ok(result.every(r => !('pdfUrl' in r)));
   state.failJobs = true;
   result = JSON.parse((await request('GET /reports')).body).reports;
   assert.ok(result.every(r => r.revisable === false));
+});
+
+test('a public free report opens even when an earlier entitlement has expired', async () => {
+  reset();
+  state.profile = { userId: 'reader', role: 'subscriber', tier: 'investor', tierStatus: 'canceled' };
+  state.entitlement = { source: 'pick' };
+  const open = id => handler({ routeKey: 'POST /reports/{id}/open', pathParameters: { id }, headers: {} });
+  assert.equal((await open('upm')).statusCode, 200);
+  assert.equal((await open('old')).statusCode, 402);
+  state.entitlement = { source: 'free_pick' };
+  assert.equal((await open('upm')).statusCode, 200);
+  assert.equal((await open('old')).statusCode, 402);
+  assert.equal(state.writes, 0);
+});
+
+test('a report that stopped being free cannot silently consume a monthly pick', async () => {
+  reset();
+  const result = await handler({
+    routeKey: 'POST /reports/{id}/open', pathParameters: { id: 'missing' }, headers: {},
+    body: JSON.stringify({ onlyIfFree: true }),
+  });
+  assert.equal(result.statusCode, 409);
+  assert.match(JSON.parse(result.body).error, /no longer free/);
+  assert.equal(state.writes, 0);
 });
 
 test('zero-priced analysis is listed and opened for everyone, without using a member read', async () => {
@@ -76,6 +104,8 @@ test('zero-priced analysis is listed and opened for everyone, without using a me
   assert.equal(state.writes, 0);
   state.index.priceEur = 10;
   assert.equal((await request('GET /analyses/{genId}/free')).statusCode, 403);
+  assert.equal((await request('POST /analyses/{genId}/open', { onlyIfFree: true })).statusCode, 409);
+  assert.equal(state.writes, 0);
   state.index.priceEur = 0;
   state.index.status = 'takendown';
   assert.equal((await request('GET /analyses/{genId}/free')).statusCode, 404);

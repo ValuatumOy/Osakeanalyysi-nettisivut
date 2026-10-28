@@ -113,8 +113,8 @@
               <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
               <ul class="m-offer">
                 <li><strong>10 ready reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
-                <li><strong>20 analyst reports</strong>, unlocked one at a time. Rate the one you opened and say what it adds, and the next unlocks.</li>
-                <li><strong>1 fresh generation</strong>, free because you publish it under your own name and LinkedIn profile, with the prompts you used.</li>
+                <li><strong>20 analyst reports</strong>, unlocked one at a time. Reports using a monthly read require a review; free reports do not.</li>
+                <li><strong>1 fresh generation</strong>, free because you publish it under your own name, with the prompts you used. You can add a LinkedIn profile link.</li>
               </ul>
               <a id="linkedinBtn" class="btn btn-linkedin" href="#">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
@@ -151,7 +151,7 @@
               </ol>
             </div>
             <div class="ws-panel">
-              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name and LinkedIn profile.</p>
+              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name. You can add a LinkedIn profile link.</p>
               <div id="genStatus" class="muted"></div>
               <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
                 <label class="field" style="position:relative;"><span>Company</span>
@@ -187,7 +187,7 @@
           <div class="ws-section">
             <div class="ws-section-head">
               <h2>Report library</h2>
-              <p class="sub" id="libraryHint">Ten reports a month from the live public catalog: the €20 ready reports, exactly as they are sold, once they are at least 30 days old. Re-opening one you already have never costs another pick. Revisions are purchased separately; paid-report revisions include the report.</p>
+              <p class="sub" id="libraryHint">Free reports and reports you already have can be opened here. Revisions are purchased separately.</p>
             </div>
             <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
@@ -199,7 +199,7 @@
           <div class="ws-section" id="analysesCard" hidden>
             <div class="ws-section-head">
               <h2>Analyst reports</h2>
-              <p class="sub">Analysts' own reports, built on top of the engine's report for the same company, best first. <strong>One at a time:</strong> opening one spends a read and locks the next until you have rated it and written what it adds.</p>
+              <p class="sub">Analysts' reports build on the engine's report for the same company. Reports using a monthly read require a review before the next paid read. Free reports do not use a read or require a review.</p>
             </div>
 
             <div class="form-row" style="margin-bottom:1.25rem;">
@@ -476,7 +476,7 @@
       const ROLE_LABELS = { analyst: 'Analyst', reader: 'Reader', coaching: 'Coaching analyst' };
       document.getElementById('roleLabel').textContent = ROLE_LABELS[data.role] || '';
       // "Member" covers two different people; name the one who actually signed in.
-      const pageTitle = ROLE_LABELS[data.role] ? 'Analyst workspace' : 'Your subscription';
+      const pageTitle = data.publishes ? 'Analyst workspace' : 'Your account';
       document.getElementById('pageTitle').textContent = pageTitle;
       // The tab still said "Sign In" to someone already signed in.
       document.title = pageTitle + ' — Valuatum AI Equity Reports';
@@ -484,11 +484,14 @@
       const u = data.usage;
       // Counting down: what is left is the number a member acts on.
       const left = (used, limit) => Math.max(0, limit - used) + ' / ' + limit;
-      const stats = [
-        [left(u.picks, u.pickLimit), 'Report picks left this month', 'picks'],
-      ];
+      const stats = [];
+      if (u.pickLimit > 0) stats.push([left(u.picks, u.pickLimit), 'Report picks left this month', 'picks']);
       if (u.analystReadLimit) stats.push([left(u.analystReads, u.analystReadLimit), 'Analyst reports left to read', 'reads']);
-      if (data.limits?.generations > 0) stats.push([u.genReserved ? '0 / 1' : '1 / 1', 'Generation left this month']);
+      if (data.limits?.generations > 0) {
+        const locked = !u.genReserved && data.openObligationId;
+        stats.push([locked ? 'Locked' : u.genReserved ? '0 / 1' : '1 / 1',
+          locked ? 'Publish your report to use this month’s generation' : 'Generation left this month']);
+      }
       if (data.generationCredits > 0) stats.push([data.generationCredits, 'Free generations from admin']);
       if (data.tier === 'coverage') stats.push([left(u.coverageUpdates, u.coverageUpdateLimit), 'Coverage updates left this year']);
       // Running out of a meter used to mean upgrading the whole plan for one more
@@ -513,6 +516,7 @@
       }
 
       const isAnalyst = data.publishes;
+      window._memberUserId = data.userId;
       document.getElementById('buyGenSub').textContent = isAnalyst
         ? 'Buy a fresh generation at any time. The unmodified engine report may be listed for sale; your changes are not published until you submit them.'
         : 'Buy a fresh generation at any time. It stays private and carries the same revision rounds as your monthly one.';
@@ -584,7 +588,28 @@
       const active = localStorage.activeGenId || (u.genReserved ? u.genId : null);
       if (active) pollGeneration(active);
       loadGenerations();
-      window._entitled = new Set((data.entitlements || []).map(e => e.reportId));
+      const activePlan = data.tier && data.tier !== 'none' && ['active', 'past_due'].includes(data.tierStatus);
+      const linkedinRole = ['analyst', 'reader', 'coaching'].includes(data.role);
+      window._libraryAccess = {
+        activePlan: Boolean(activePlan),
+        coverage: activePlan && data.tier === 'coverage',
+        covered: (data.coverageCompanyIds?.length ? data.coverageCompanyIds : [data.coverageCompanyId]).filter(Boolean).map(c => c.toUpperCase()),
+        picks: u.picks || 0,
+        pickLimit: u.pickLimit || 0,
+      };
+      const entitled = e =>
+        e.source === 'oneoff' || e.source === 'generation' ||
+        (e.source === 'free_pick' ? linkedinRole : activePlan);
+      window._entitled = new Set((data.entitlements || []).filter(entitled).map(e => e.reportId));
+      window._expiredEntitlements = new Map((data.entitlements || []).filter(e => !entitled(e)).map(e => [e.reportId, e.source]));
+      document.getElementById('libraryHint').textContent = window._libraryAccess.coverage
+        ? 'Free reports and reports already unlocked here can be opened again. Your plan also covers reports for your selected companies. Revisions are purchased separately.'
+        : window._libraryAccess.pickLimit > 0
+        ? 'Free reports and reports already unlocked here do not use another pick. ' + (activePlan
+            ? 'Use a monthly pick to open another report. '
+            : 'Use a monthly pick on reports at least 30 days old. ')
+          + 'Revisions are purchased separately; paid-report revisions include the report.'
+        : 'Free reports and reports already unlocked here can be opened. Use the receipt link for separately bought reports. Other reports and revisions can be purchased separately.';
       loadReports();
     }
 
@@ -595,9 +620,29 @@
       if (window.SITE_PUBLIC_PRICING_PROMISE) await window.SITE_PUBLIC_PRICING_PROMISE;
       const rows = (data.reports || []).map(r => {
         const owned = window._entitled?.has(r.id);
+        const access = window._libraryAccess;
+        const reportDay = Date.parse(r.reportDate);
+        const today = new Date();
+        const fallbackEligible = Number.isFinite(reportDay) &&
+          Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()) - reportDay >= 30 * 86400000;
+        const freePickEligible = r.freePickEligible ?? fallbackEligible;
+        let reason = '';
+        let openLabel = owned ? 'Open again' : 'Open';
+        if (!owned && !r.isFree) {
+          if (window._expiredEntitlements?.has(r.id)) {
+            reason = window._expiredEntitlements.get(r.id) === 'free_pick' ? 'LinkedIn access required' : 'Subscription inactive';
+          } else if (access.coverage) {
+            if (!access.covered.includes(String(r.ticker || '').toUpperCase())) reason = 'Not covered by your plan';
+            else openLabel = 'Open with coverage';
+          } else if (!access.pickLimit) reason = 'Purchase required';
+          else if (!access.activePlan && !freePickEligible) reason = 'Available for picks after 30 days';
+          else if (access.picks >= access.pickLimit) reason = 'No picks left this month';
+          else openLabel = 'Open (uses a pick)';
+        }
         const price = r.isFree ? '<span class="pill-free">Free</span>' : esc(r.priceLabel || '€' + r.price);
-        const btn = '<button class="btn ' + (owned || r.isFree ? 'btn-outline-dark' : 'btn-primary') + ' btn-sm" data-open-report="' + esc(r.id) + '">' +
-          (owned ? 'Open again' : r.isFree ? 'Open' : 'Open (uses a pick)') + '</button>';
+        const btn = reason ? '<span class="muted">' + reason + '</span>'
+          : '<button class="btn ' + (owned || r.isFree ? 'btn-outline-dark' : 'btn-primary') + ' btn-sm" '
+            + (r.isFree && !owned ? 'data-free-only="1" ' : '') + 'data-open-report="' + esc(r.id) + '">' + openLabel + '</button>';
         const choice = r.revisable === true && typeof getRevisionsChoice === 'function'
           ? getRevisionsChoice(r.isFree ? 'free' : 'ready', true) : { available: false };
         const revise = choice.available ? '<button class="btn btn-outline-dark btn-sm" data-revise-report="' + esc(r.id) + '">Revise — ' + formatEurAmount(choice.revisionsPrice) + '</button>' : '';
@@ -607,7 +652,7 @@
       table.innerHTML =
         '<tr><th>Company</th><th>Ticker</th><th>Report date</th><th>Access</th><th></th></tr>' + rows.join('');
       table.querySelectorAll('[data-open-report]').forEach(btn => {
-        btn.addEventListener('click', () => openReport(btn.dataset.openReport));
+        btn.addEventListener('click', () => openReport(btn.dataset.openReport, btn.dataset.freeOnly === '1'));
       });
       table.querySelectorAll('[data-revise-report]').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -616,10 +661,23 @@
       });
     }
 
-    async function openReport(id) {
-      const { status, data } = await api('POST', '/reports/' + encodeURIComponent(id) + '/open');
-      if (data?.url) { window.open(data.url, '_blank'); loadMe(); }
-      else notice('err', (data && data.error) || ('Could not open the report (' + status + ')'));
+    async function openReport(id, onlyIfFree) {
+      const tab = window.open('', '_blank');
+      if (tab) tab.opener = null;
+      try {
+        const { status, data } = await api('POST', '/reports/' + encodeURIComponent(id) + '/open', onlyIfFree ? { onlyIfFree: true } : undefined);
+        if (data?.url) {
+          if (tab) tab.location = data.url;
+          else location.href = data.url;
+          loadMe();
+        } else {
+          if (tab) tab.close();
+          notice('err', (data && data.error) || ('Could not open the report (' + status + ')'));
+        }
+      } catch (_) {
+        if (tab) tab.close();
+        notice('err', 'Could not open the report. Please try again.');
+      }
     }
 
     async function checkout(plan, interval) {
@@ -704,7 +762,7 @@
       if (!company || !ticker) { notice('err', 'Start typing the company name and pick it from the list.'); return; }
       if (window._publishes && !confirm(
         'This generation is free because you publish it.\n\n' +
-        'The finished report and the prompts you used will appear on the site under your own name and LinkedIn profile, ' +
+        'The finished report and the prompts you used will appear on the site under your own name, ' +
         'and you get no further generation until it is published.\n\nStart the generation for ' + company + '?')) return;
 
       if (!pendingGenerationRequest || pendingGenerationRequest.ticker !== ticker) {
@@ -1047,16 +1105,21 @@
       const { status, data } = await api('GET', '/analyses' + (ticker ? '?companyId=' + encodeURIComponent(ticker) : ''));
       if (status !== 200) { notice('err', 'Could not load reports (' + status + ')'); return; }
       window._analyses = data.analyses || [];
+      window._forkFeeEur = Number.isFinite(data.forkFeeEur) ? data.forkFeeEur : null;
       // One open obligation at a time, so everything else is locked until it is
       // cleared. Saying so on the button beats a message at the top of the page.
       const blocked = Boolean(window._openReviewId);
       const rows = window._analyses.map(a => {
         const isOpenOne = window._openReviewId === encodeURIComponent(a.genId);
-        const lock = blocked && !isOpenOne && !a.publicFree;
-        const rival = !isOpenOne && (window._myCompanies || new Set()).has(String(a.companyId || '').toUpperCase());
+        const free = a.free || a.publicFree;
+        const own = a.analystId && a.analystId === window._memberUserId;
+        const lock = blocked && !isOpenOne && !free;
+        const rival = !isOpenOne && !free && (window._myCompanies || new Set()).has(String(a.companyId || '').toUpperCase());
         const button = isOpenOne
           ? '<button class="btn btn-primary btn-sm" onclick="focusReview()">Review this one</button>'
-          : rival
+          : own
+            ? '<span class="muted">Your report</span>'
+            : rival
             ? '<button class="btn btn-outline-dark btn-sm" disabled title="You cover this company yourself — you can buy this analysis, but not score it">Your coverage</button>'
             : lock
               ? '<button class="btn btn-outline-dark btn-sm" disabled title="Review the report you already opened before opening another">Locked</button>'
@@ -1064,9 +1127,13 @@
         // Deriving is a separate, paid thing from reading: the price goes to the
         // analyst whose work you are building on, and you get your own report to
         // revise from theirs.
-        const fork = '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyOrFork(\''
-          + encodeURIComponent(a.genId) + '\', ' + (Number(a.priceEur) || 0) + ')"'
-          + ' title="Buy this analysis, or buy it with revision rounds and build your own on top">Buy or build on</button>';
+        const fork = a.publicFree
+          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="forkAnalysis(\''
+            + encodeURIComponent(a.genId) + '\')">Build on this'
+            + (window._forkFeeEur == null ? '' : ' — €' + window._forkFeeEur) + '</button>'
+          : '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyOrFork(\''
+            + encodeURIComponent(a.genId) + '\', ' + (Number(a.priceEur) || 0) + ')"'
+            + ' title="Buy this analysis, or buy it with revision rounds and build your own on top">Buy or build on</button>';
         return '<tr' + (isOpenOne ? ' class="is-open-review"' : '') + '><td>' + esc(a.companyId) + '</td><td>' + esc(a.analyst) + (a.analystLinkedin ? ' <a href="' + esc(a.analystLinkedin) + '" target="_blank" rel="noopener nofollow" title="LinkedIn">in</a>' : '') + '</td><td>' + esc(a.publishedAt.slice(0, 10))
           + '</td><td>' + (a.publicFree ? '<span class="pill-free">Free for everyone</span>'
                           : a.free ? '<span class="pill-free">Free for you</span>'
@@ -1085,10 +1152,11 @@
     // Reading someone's analysis and building on it are the same decision at the
     // moment of buying, so it is one dialog rather than two buttons.
     async function buyOrFork(genId, priceEur) {
+      const total = window._forkFeeEur == null ? '' : ' (' + (Math.round(priceEur * 100) + Math.round(window._forkFeeEur * 100)) / 100 + ' €)';
       const answer = prompt(
         'Buy this analysis?\n\n'
         + '1 = the report only' + (priceEur ? ' (' + priceEur + ' €)' : '')
-        + '\n2 = the report plus revision rounds, as your own report you can steer\n\n'
+        + '\n2 = the report plus revision rounds, as your own report you can steer' + total + '\n\n'
         + 'Type 1 or 2:', '1');
       if (answer === null) return;
       if (String(answer).trim() === '2') return forkAnalysis(genId);
@@ -1130,11 +1198,12 @@
     }
 
     async function openAnalysis(genId) {
-      if (window._openReviewId) { focusReview(); return; }
       const analysis = (window._analyses || []).find(a => encodeURIComponent(a.genId) === genId);
+      const free = analysis?.free || analysis?.publicFree;
+      if (window._openReviewId && !free) { focusReview(); return; }
       // Free-window analyses cost nothing and owe nothing; everything else does
       // both, and the analyst should know that before the PDF is on screen.
-      if (!analysis?.publicFree && !confirm(
+      if (!free && !confirm(
         'Opening this report spends one of your monthly analyst reads, and you owe it a review: ' +
         'a score from 1 to 5 and a written comparison of at least 40 characters.\n\n' +
         'You cannot open another report until that review is written.\n\nOpen it?')) return;
@@ -1142,17 +1211,17 @@
       // opening: a window.open after the await is what a popup blocker stops,
       // which left the reviewer at the comment box with no report on screen.
       const tab = window.open('', '_blank');
-      const { status, data } = await api('POST', '/analyses/' + genId + '/open');
+      const { status, data } = await api('POST', '/analyses/' + genId + '/open', free ? { onlyIfFree: true } : undefined);
       if (status !== 200) {
         if (tab) tab.close();
         notice('err', (data && data.error) || ('Could not open the report (' + status + ')')); loadMe(); return;
       }
       if (data.url && tab) tab.location = data.url;
       else if (data.url) window.open(data.url, '_blank');
-      window._openReportUrl = data.url || '';
-      window._openOriginalUrl = data.originalUrl || '';
-      window._openPrompts = data.promptsText || '';
       if (!data.free) {
+        window._openReportUrl = data.url || '';
+        window._openOriginalUrl = data.originalUrl || '';
+        window._openPrompts = data.promptsText || '';
         window._openReviewId = genId;
         renderReviewRow();
         loadAnalyses();

@@ -38,7 +38,9 @@ test('email member sees gifted balance and can start a private report', async ()
   assert.match(elements.get('buyGenSub').textContent, /stays private/);
   assert.match(elements.get('genStatus').textContent, /3 free generations available/);
   assert.match(elements.get('usageGrid').innerHTML, /Free generations from admin/);
+  assert.doesNotMatch(elements.get('usageGrid').innerHTML, /0 \/ 0/);
   assert.doesNotMatch(elements.get('usageGrid').innerHTML, /Generation left this month/);
+  assert.equal(elements.get('pageTitle').textContent, 'Your account');
   assert.equal(context.window._publishes, false);
 });
 
@@ -49,6 +51,7 @@ test('gifted analyst sees how the original and their changes are published', asy
   assert.equal(elements.get('submitRow').hidden, false);
   assert.equal(elements.get('genCommit').hidden, true);
   assert.equal(elements.get('genTitle').textContent, 'Your free report');
+  assert.equal(elements.get('pageTitle').textContent, 'Analyst workspace');
   assert.match(elements.get('genSub').textContent, /engine report may be listed for sale/);
   assert.match(elements.get('genSub').textContent, /changes are not published until you submit/);
   assert.match(elements.get('buyGenSub').textContent, /engine report may be listed for sale/);
@@ -62,6 +65,35 @@ test('monthly entitlement is used before a gift credit', async () => {
   assert.match(elements.get('genSub').textContent, /engine report may be listed for sale/);
   assert.equal(elements.get('genCommit').hidden, false);
   assert.equal(context.window._publishes, true);
+});
+
+test('an unpublished earlier report locks the new monthly generation', async () => {
+  const { context, elements } = page({
+    role: 'analyst', publishes: true, openObligationId: 'old',
+    generationCredits: 0, generationAvailable: false, limits: { generations: 1 },
+  });
+  await context.loadMe();
+  assert.match(elements.get('usageGrid').innerHTML, /Locked/);
+  assert.match(elements.get('usageGrid').innerHTML, /Publish your report to use this month’s generation/);
+  assert.doesNotMatch(elements.get('usageGrid').innerHTML, /1 \/ 1/);
+  assert.equal(elements.get('reserveRow').hidden, true);
+  assert.equal(elements.get('submitRow').hidden, false);
+});
+
+test('library distinguishes permanent and expired access after a subscription ends', async () => {
+  const { context, elements } = page({
+    role: 'subscriber', tier: 'investor', tierStatus: 'canceled',
+    entitlements: [
+      { reportId: 'bought', source: 'oneoff' },
+      { reportId: 'past-pick', source: 'pick' },
+      { reportId: 'past-linkedin', source: 'free_pick' },
+    ],
+  });
+  await context.loadMe();
+  assert.equal(context.window._entitled.has('bought'), true);
+  assert.equal(context.window._entitled.has('past-pick'), false);
+  assert.equal(context.window._expiredEntitlements.get('past-linkedin'), 'free_pick');
+  assert.match(elements.get('libraryHint').textContent, /Use the receipt link for separately bought reports/);
 });
 
 test('using the last credit still resumes progress without a monthly entitlement', async () => {

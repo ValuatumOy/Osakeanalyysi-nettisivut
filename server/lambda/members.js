@@ -239,6 +239,7 @@ async function getReportsList(event) {
       isFree: report.isFree,
       price: report.price,
       priceLabel: report.priceLabel,
+      freePickEligible: quota.freemiumPickEligible(report),
       revisable: engineJobs.canRevise(jobs.get(jobIdFor(report))),
     })),
   }, { 'cache-control': 'public, max-age=300' });
@@ -353,8 +354,6 @@ async function postReportOpen(event) {
   const { catalog } = await catalogAws.buildCatalogAws({ now, includeNonPublic: Boolean(existing) });
   const report = catalog.reports.find(item => item.id === reportId);
   if (!report) return json(404, { error: 'Report not found' });
-  if (!existing && report.isFree) return json(200, await presignReport(report)); // weekly-rotation free reports gate nothing
-
   const sign = async (source) => {
     await store.audit(profile.userId, 'report-open', { reportId, source });
     return json(200, await presignReport(report));
@@ -366,12 +365,15 @@ async function postReportOpen(event) {
   if (existing) {
     if (existing.source === 'oneoff' || existing.source === 'generation') return sign(existing.source);
     if (existing.source === 'free_pick') {
-      return tiers.isLinkedinRole(profile.role) ? sign('free_pick')
-        : json(402, { error: 'Freemium access is for LinkedIn members only' });
+      if (tiers.isLinkedinRole(profile.role)) return sign('free_pick');
+      if (!report.isFree) return json(402, { error: 'Freemium access is for LinkedIn members only' });
+    } else {
+      if (activeTier(profile) !== 'none') return sign(existing.source);
+      if (!report.isFree) return json(402, { error: 'Subscription is not active' });
     }
-    return activeTier(profile) !== 'none' ? sign(existing.source)
-      : json(402, { error: 'Subscription is not active' });
   }
+  if (report.isFree) return json(200, await presignReport(report));
+  if (parseBody(event)?.onlyIfFree === true) return json(409, { error: 'This report is no longer free. Refresh the library to see its current access.' });
 
   const tier = activeTier(profile);
   const table = store.table();
@@ -2017,6 +2019,7 @@ async function postAnalysisOpen(event) {
   // A public free analysis or one past its member decay time costs no read and
   // leaves no review obligation.
   if (ranking.isFreeNow(index, now)) return deliver({ free: true });
+  if (parseBody(event)?.onlyIfFree === true) return json(409, { error: 'This report is no longer free. Refresh the list to see its current price.' });
 
   // Re-opening something already paid for comes first, so an analyst who opened
   // a rival and only afterwards started covering the company can still read what

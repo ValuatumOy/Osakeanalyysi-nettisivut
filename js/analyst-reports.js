@@ -129,20 +129,24 @@
   // No account needed for an analysis the API marks publicFree.
   function openFree(genId, button) {
     var label = button.textContent;
+    var tab = window.open('', '_blank');
+    if (tab) tab.opener = null;
     button.disabled = true;
     button.textContent = 'Opening…';
     fetch(MEMBERS_API + '/analyses/' + encodeURIComponent(genId) + '/free')
       .then(function (res) {
         return res.json().catch(function () { return null; }).then(function (data) {
           if (res.ok && data && data.url) {
-            window.open(data.url, '_blank', 'noopener');
+            if (tab) tab.location = data.url;
+            else location.href = data.url;
             button.textContent = label;
           } else {
+            if (tab) tab.close();
             button.textContent = res.status === 403 ? 'No longer free' : 'Not available';
           }
         });
       })
-      .catch(function () { button.textContent = 'Not available'; })
+      .catch(function () { if (tab) tab.close(); button.textContent = 'Not available'; })
       .then(function () { button.disabled = false; });
   }
 
