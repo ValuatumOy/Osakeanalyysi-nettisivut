@@ -34,7 +34,7 @@ test('library buttons open the selected report and revise only eligible reports 
       _libraryAccess: { activePlan: true, coverage: false, pickLimit: 10, picks: 0 },
     },
     document: { getElementById: () => table },
-    api: async () => ({ data: { reports: [
+    api: async () => ({ status: 200, data: { reports: [
       { id: 'upm', companyName: 'UPM', ticker: 'UPM.HE', isFree: true, revisable: true },
       { id: 'old', companyName: 'Old', isFree: true, revisable: false },
       { id: 'unknown', companyName: 'Unknown', isFree: true },
@@ -76,7 +76,7 @@ test('library actions respect the account and still offer eligible revisions', a
     const context = vm.createContext({
       window: { _entitled: new Set(entitled), _libraryAccess: access },
       document: { getElementById: () => table },
-      api: async () => ({ data: { reports } }),
+      api: async () => ({ status: 200, data: { reports } }),
       esc: value => String(value ?? ''),
       getRevisionsChoice: () => ({ available: true, revisionsPrice: 2500 }),
       formatEurAmount: cents => `€${cents / 100}`,

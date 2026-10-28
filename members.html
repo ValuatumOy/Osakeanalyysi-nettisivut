@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/members-workspace.css">
   <style>[hidden] { display: none !important; }</style>
 </head>
 <body>
@@ -68,7 +69,6 @@
       <div class="container">
         <div class="ws-hero-top">
           <div>
-            <span class="section-eyebrow section-eyebrow--light">Member area</span>
             <h1 class="section-headline section-headline--light" id="pageTitle">Sign in</h1>
           </div>
           <span class="env-badge" id="envBadge" hidden>Test environment — not the live site</span>
@@ -82,28 +82,16 @@
               <span id="tierBadge" class="tier-badge none">—</span>
               <span id="roleLabel" class="ws-role"></span>
             </div>
-            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <button class="btn btn-outline btn-sm" id="linkedinProfileBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button>
-              <button class="btn btn-outline btn-sm" id="myReviewsBtn" hidden onclick="myReviews()">My reviews</button>
-              <button class="btn btn-outline btn-sm" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button>
-              <button class="btn btn-outline btn-sm" onclick="logout()">Sign out</button>
-            </div>
+            <button class="ws-link ws-link--light" type="button" onclick="logout()">Sign out</button>
           </div>
           <div class="usage-grid" id="usageGrid"></div>
-          <!-- Company Coverage sells four report updates a year. This is how one
-               is taken: the subscriber asks, and a real engine run starts on the
-               company they pay to have covered. -->
-          <div id="coverageCard" hidden style="margin-top:1rem;">
-            <div id="coverageCompanies"></div>
-            <p class="muted" style="font-size:var(--text-sm);">A fresh report written from today&rsquo;s figures. Takes 20 to 40 minutes and arrives by email.</p>
-          </div>
         </div>
       </div>
     </section>
 
     <section class="ws-body">
       <div class="container">
-        <div id="notice" class="notice"></div>
+        <div id="notice" class="notice" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
 
         <!-- Logged out -->
         <div id="authView">
@@ -112,9 +100,9 @@
               <h2 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em;">Analysts, free</h2>
               <p class="muted" style="margin-top:0.5rem;">Sign in with LinkedIn. Every month you get:</p>
               <ul class="m-offer">
-                <li><strong>10 ready reports</strong> from the catalog: the €20 report as it is sold, 30 days or older.</li>
-                <li><strong>20 analyst reports</strong>, unlocked one at a time. Reports using a monthly read require a review; free reports do not.</li>
-                <li><strong>1 fresh generation</strong>, free because you publish it under your own name, with the prompts you used. You can add a LinkedIn profile link.</li>
+                <li><strong>10 ready reports.</strong> Choose any report in our catalog that is at least 30 days old. You get the full report we sell for €20.</li>
+                <li><strong>20 reports by other analysts.</strong> After opening one, rate it and say what it adds before you open the next. Free ones don't count toward the 20 and need no rating.</li>
+                <li><strong>1 report of your own.</strong> Generate a fresh report on a company you choose and revise it with your own view. In return, you publish it under your name with the prompts you used.</li>
               </ul>
               <a id="linkedinBtn" class="btn btn-linkedin" href="#">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
@@ -139,21 +127,35 @@
 
         <!-- Logged in -->
         <div id="memberView" hidden>
+          <ul class="workspace-due" id="workspaceDue" aria-label="Due now" hidden></ul>
+          <div class="workspace-tabs" role="tablist" aria-label="Member workspace">
+            <button type="button" role="tab" id="tab-own" aria-controls="panel-own" aria-selected="true" data-workspace-tab="own">Your reports</button>
+            <button type="button" role="tab" id="tab-library" aria-controls="panel-library" aria-selected="false" tabindex="-1" data-workspace-tab="library">Ready reports</button>
+            <button type="button" role="tab" id="tab-analysts" aria-controls="panel-analysts" aria-selected="false" tabindex="-1" data-workspace-tab="analysts" hidden>Analyst reports<span id="reviewTabBadge" hidden><span class="visually-hidden">, review due</span></span></button>
+            <button type="button" role="tab" id="tab-income" aria-controls="panel-income" aria-selected="false" tabindex="-1" data-workspace-tab="income" hidden>Income</button>
+            <button type="button" role="tab" id="tab-account" aria-controls="panel-account" aria-selected="false" tabindex="-1" data-workspace-tab="account">Account</button>
+          </div>
+          <section id="panel-own" role="tabpanel" aria-labelledby="tab-own" tabindex="0">
 
           <div class="ws-section" id="genCard" hidden>
             <div class="ws-section-head">
               <h2 id="genTitle">Monthly generation</h2>
               <p class="sub" id="genSub">Reserve your report generation for this month.</p>
-              <ol class="sub" id="genPath" style="margin:.6rem 0 0 1.2rem; padding:0;">
+              <details class="workspace-help"><summary>How publishing works</summary>
+              <ol class="sub" id="genPath">
                 <li>Start the generation below and wait for the engine's report (20 to 40 minutes).</li>
                 <li>Open it, read it, and request a revision with your own view: what should change and why.</li>
                 <li>Publish the version you stand behind. Your prompts go with it.</li>
-              </ol>
+              </ol></details>
             </div>
-            <div class="ws-panel">
-              <p class="a-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name. You can add a LinkedIn profile link.</p>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="generationsTable"><tr><td colspan="6" class="workspace-loading">Loading reports…</td></tr></table>
+              </div>
+              <div class="workspace-block">
               <div id="genStatus" class="muted"></div>
-              <div class="form-row" id="reserveRow" style="margin-top:1.1rem;">
+              <p class="workspace-commit" id="genCommit" hidden>Spending this generation commits you to publishing the finished report on the site under your own name.</p>
+              <div class="form-row" id="reserveRow">
                 <label class="field" style="position:relative;"><span>Company</span>
                   <input id="genCompany" class="input" placeholder="Start typing a company, e.g. Nokia" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="genSuggest">
                   <div class="search-autocomplete" id="genSuggest" role="listbox"></div>
@@ -163,14 +165,11 @@
                 </label>
                 <button class="btn btn-primary" id="reserveBtn" onclick="reserveGen()">Start generation</button>
               </div>
-              <div id="genProgress" class="muted" style="margin-top:1rem;"></div>
-              <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
-                <div class="table-wrap">
-                  <table class="reports-table" id="generationsTable"></table>
-                </div>
+              <div id="genProgress" class="muted"></div>
               </div>
-              <div id="submitRow" hidden style="margin-top:1.1rem;">
-                <p class="muted" style="margin-bottom:1.1rem;">Your revisions and prompts are attached automatically. Set a price and when it stops costing members a read. A price of €0 makes the report free for everyone.</p>
+              <div class="workspace-block" id="submitRow" hidden>
+                <h3 id="submitTitle">Publish your report</h3>
+                <p class="muted">Your revisions and prompts are attached automatically. Set a price and when it stops costing members a read. A price of €0 makes the report free for everyone.</p>
                 <div class="form-row">
                   <label class="field" style="flex:0 1 130px;"><span>Price (€)</span>
                     <input id="pubPrice" class="input input--num" type="number" min="0" step="1" value="0">
@@ -184,73 +183,8 @@
             </div>
           </div>
 
-          <div class="ws-section">
-            <div class="ws-section-head">
-              <h2>Report library</h2>
-              <p class="sub" id="libraryHint">Free reports and reports you already have can be opened here. Revisions are purchased separately.</p>
-            </div>
-            <div class="ws-panel ws-panel--flush">
-              <div class="table-wrap">
-                <table class="reports-table" id="reportsTable"></table>
-              </div>
-            </div>
-          </div>
-
-          <div class="ws-section" id="analysesCard" hidden>
-            <div class="ws-section-head">
-              <h2>Analyst reports</h2>
-              <p class="sub">Analysts' reports build on the engine's report for the same company. Reports using a monthly read require a review before the next paid read. Free reports do not use a read or require a review.</p>
-            </div>
-
-            <div class="form-row" style="margin-bottom:1.25rem;">
-              <label class="field" style="flex:0 1 200px;"><span>Company</span>
-                <input id="analysesTicker" class="input" placeholder="Ticker, e.g. NOKIA.HE">
-              </label>
-              <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show reports</button>
-            </div>
-
-            <div id="myReviewsPanel" class="ws-panel" hidden style="margin-top:1.25rem;">
-              <div class="ws-section-head" style="margin-bottom:.75rem;">
-                <h3 style="font-size:var(--text-md); font-weight:600;">Reviews you have written</h3>
-                <p class="sub">Scores you can still correct. The number shown on an analysis is the average of what reviewers gave it.</p>
-              </div>
-              <div class="table-wrap"><table class="reports-table" id="myReviewsTable"></table></div>
-            </div>
-
-            <div id="reviewRow" class="review-open" hidden>
-              <p class="muted" id="reviewPrompt" style="color:var(--gold-ink); margin-bottom:1rem;"></p>
-              <details id="reviewPrompts" hidden style="margin-bottom:1rem;">
-                <summary style="cursor:pointer;">What the analyst told the engine — the revision prompts you are grading</summary>
-                <pre id="reviewPromptsText" style="white-space:pre-wrap; max-height:18rem; overflow:auto; margin-top:.5rem; font-size:var(--text-sm);"></pre>
-              </details>
-              <p style="margin-bottom:1rem;">
-                <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
-                <a class="btn btn-outline-dark btn-sm" id="originalBtn" href="#" target="_blank" rel="noopener" hidden style="margin-left:0.5rem;">Open the engine's original</a>
-                <span class="muted" style="margin-left:0.75rem;">Read it first — re-opening is free, it is already paid for. The original is the engine's report before the analyst's revisions: what you are comparing against.</span>
-              </p>
-              <div class="form-row">
-                <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
-                  <input id="reviewScore" class="input input--num" type="number" min="1" max="5" step="0.1" value="4">
-                </label>
-                <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
-                  <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
-                </label>
-                <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
-              </div>
-            </div>
-
-            <div class="ws-panel ws-panel--flush" style="margin-top:1.25rem;">
-              <div class="table-wrap">
-                <table class="reports-table" id="analysesTable"></table>
-              </div>
-            </div>
-          </div>
-
-          <div class="ws-section" id="buyGenCard">
-            <div class="ws-section-head">
-              <h2>Another report, on demand</h2>
-              <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time, with the same revision rounds as your monthly one.</p>
-            </div>
+          <details class="ws-section workspace-buy" id="buyGenCard"><summary>Buy a fresh report</summary>
+            <p class="sub" id="buyGenSub">Need a company now, or a second one this month? Buy a fresh generation at any time, with the same revision rounds as your monthly one.</p>
             <div class="ws-panel">
               <div class="form-row">
                 <label class="field" style="position:relative;"><span>Company</span>
@@ -264,25 +198,84 @@
               </div>
               <p class="muted" id="buyGenPrice" style="margin-top:1rem;"></p>
             </div>
+          </details>
+
+
+          </section>
+          <section id="panel-library" role="tabpanel" aria-labelledby="tab-library" tabindex="0" hidden>
+          <div class="ws-section">
+            <p class="sub workspace-intro" id="libraryHint">Free reports and reports you already have can be opened here. Revisions are purchased separately.</p>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="reportsTable"><tr><td colspan="5" class="workspace-loading">Loading reports…</td></tr></table>
+              </div>
+            </div>
           </div>
 
-          <div class="ws-section" id="earningsCard" hidden>
-            <div class="ws-section-head">
-              <h2>Income</h2>
-              <p class="sub">You set the price of every analysis you publish, and half of what it sells for is yours. A paying member who reads it with a monthly read earns you a flat €0.50 instead. Every sale and every read is held for 14 days after the reader pays, because a card payment can still be disputed or charged back in that time. After that it is ready to invoice: you send us an invoice for the balance, and we pay it. <a href="analyst-terms.html">Read the analyst terms →</a></p>
-            </div>
-            <div class="ws-panel">
-              <div class="earn-grid">
-                <div class="earn-stat"><div class="val" id="earnPaid">€0</div><div class="lbl">Paid to you</div></div>
-                <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Ready to invoice</div></div>
-                <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Held for 14 days</div></div>
-                <div class="earn-stat"><div class="val" id="earnGross">€0</div><div class="lbl">Your reports sold for</div></div>
+          </section>
+          <section id="panel-analysts" role="tabpanel" aria-labelledby="tab-analysts" tabindex="0" hidden>
+          <div class="ws-section" id="analysesCard" hidden>
+            <p class="sub workspace-intro">Analysts' reports build on the engine's report for the same company. Opening one with a monthly read means reviewing it before your next paid read. Free reports need no review.</p>
+
+            <div class="workspace-toolbar">
+              <div class="form-row">
+                <label class="field"><span>Company</span>
+                  <input id="analysesTicker" class="input" placeholder="Ticker, e.g. NOKIA.HE">
+                </label>
+                <button class="btn btn-outline-dark" onclick="loadAnalyses()">Show reports</button>
               </div>
-              <p class="muted" id="earnSummary" style="margin-top:1.5rem;"></p>
+              <button class="ws-link" type="button" id="myReviewsBtn" hidden onclick="myReviews()">Reviews you have written</button>
             </div>
-            <div class="ws-panel ws-panel--flush" style="margin-top:1rem;">
+
+            <div id="myReviewsPanel" class="ws-panel" hidden>
+              <h3>Reviews you have written</h3>
+              <p class="muted">Scores you can still correct. The number shown on an analysis is the average of what reviewers gave it.</p>
+              <div class="table-wrap"><table class="reports-table" id="myReviewsTable"></table></div>
+            </div>
+
+            <div id="reviewRow" class="review-open" hidden>
+              <h3>Review the report you opened</h3>
+              <p class="muted" id="reviewPrompt"></p>
+              <div class="workspace-review-actions">
+                <button class="btn btn-primary btn-sm" id="reopenBtn" onclick="reopenAnalysis()">Open the report</button>
+                <a class="btn btn-outline-dark btn-sm" id="originalBtn" href="#" target="_blank" rel="noopener" hidden>Open the engine's original</a>
+              </div>
+              <p class="muted">Re-opening is free. The original is the engine's report before the analyst's revisions: what you are comparing against.</p>
+              <details id="reviewPrompts" class="workspace-help" hidden>
+                <summary>The revision prompts you are grading</summary>
+                <pre id="reviewPromptsText"></pre>
+              </details>
+              <div class="form-row">
+                <label class="field" style="flex:0 1 160px;"><span>Rating 1–5</span>
+                  <input id="reviewScore" class="input input--num" type="number" min="1" max="5" step="0.1" value="4">
+                </label>
+                <label class="field" style="flex:1 1 320px;"><span>What it adds</span>
+                  <textarea id="reviewComment" class="input" placeholder="What does this add over the engine's report, or over the other analyst reports on the same company? (min 40 characters)"></textarea>
+                </label>
+                <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
+              </div>
+            </div>
+
+            <div class="ws-panel ws-panel--flush">
               <div class="table-wrap">
-                <table class="reports-table" id="earningsTable"></table>
+                <table class="reports-table" id="analysesTable"><tr><td colspan="6" class="workspace-loading">Loading reports…</td></tr></table>
+              </div>
+            </div>
+          </div>
+
+          </section>
+          <section id="panel-income" role="tabpanel" aria-labelledby="tab-income" tabindex="0" hidden>
+          <div class="ws-section" id="earningsCard" hidden>
+            <div class="earn-grid">
+              <div class="earn-stat"><div class="val" id="earnPaid">€0</div><div class="lbl">Paid to you</div></div>
+              <div class="earn-stat"><div class="val" id="earnPayable">€0</div><div class="lbl">Ready to invoice</div></div>
+              <div class="earn-stat"><div class="val" id="earnMaturing">€0</div><div class="lbl">Held for 14 days</div></div>
+              <div class="earn-stat"><div class="val" id="earnGross">€0</div><div class="lbl">Your reports sold for</div></div>
+            </div>
+            <p class="sub workspace-intro" id="earnSummary"></p>
+            <div class="ws-panel ws-panel--flush">
+              <div class="table-wrap">
+                <table class="reports-table" id="earningsTable"><tr><td colspan="6" class="workspace-loading">Loading reports…</td></tr></table>
               </div>
             </div>
             <details class="earn-help">
@@ -300,6 +293,25 @@
             </details>
           </div>
 
+          </section>
+          <section id="panel-account" role="tabpanel" aria-labelledby="tab-account" tabindex="0" hidden>
+          <div class="ws-section">
+            <div class="ws-section-head"><h2>Your plan</h2><p class="sub" id="workspacePlan"></p></div>
+            <!-- Company Coverage sells four report updates a year. This is how one
+                 is taken: the subscriber asks, and a real engine run starts on the
+                 company they pay to have covered. -->
+            <div id="coverageCard" hidden>
+              <div id="coverageCompanies"></div>
+              <p class="muted">A fresh report written from today&rsquo;s figures. Takes 20 to 40 minutes and arrives by email.</p>
+            </div>
+          </div>
+          <div class="ws-section" id="profileCard" hidden>
+            <div class="ws-section-head"><h2>Profile</h2></div>
+            <ul class="workspace-profile">
+              <li><button class="ws-link" type="button" id="linkedinProfileBtn" hidden onclick="setLinkedin()">LinkedIn profile link</button> <span class="muted">Shown beside your name on every analysis you publish.</span></li>
+              <li><button class="ws-link" type="button" id="stepDownBtn" hidden onclick="stepDown()">Continue without publishing</button> <span class="muted">Switch to a reader account with a smaller allowance.</span></li>
+            </ul>
+          </div>
           <div class="ws-section" id="plansCard">
             <div class="ws-section-head">
               <h2>Plans</h2>
@@ -347,6 +359,7 @@
             </div>
           </div>
 
+          </section>
         </div>
       </div>
     </section>
@@ -366,6 +379,7 @@
     </div>
   </footer>
 
+  <script src="js/members-workspace.js"></script>
   <script>
     // The site a member is standing on decides which member system they use.
     // A hardcoded flag put the test site on the LIVE members API — a colleague
@@ -467,7 +481,7 @@
       document.getElementById('identityStrip').hidden = false;
 
       // Only worth offering to someone who has no plan running.
-      if (data.tier === 'none' || data.tierStatus !== 'active') offerPendingPlan();
+      if (data.tier === 'none' || !['active', 'past_due'].includes(data.tierStatus)) offerPendingPlan();
 
       document.getElementById('accEmail').textContent = data.email || 'Member';
       const badge = document.getElementById('tierBadge');
@@ -501,11 +515,11 @@
       document.getElementById('usageGrid').innerHTML = stats.map(([val, lbl, kind]) =>
         '<div class="usage-stat"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div>'
         + (kind && CAN_TOP_UP[kind]
-            ? '<button class="btn btn-outline btn-sm" style="margin-top:.5rem;" data-topup="' + kind + '">Add more</button>'
+            ? '<button class="ws-link ws-link--light" type="button" data-topup="' + kind + '">Add more</button>'
             : '')
         + '</div>').join('');
 
-      document.getElementById('plansCard').hidden = data.tier !== 'none';
+      document.getElementById('plansCard').hidden = data.tier !== 'none' && ['active', 'past_due'].includes(data.tierStatus);
       // The price is the live subscription status, not a number the page picked.
       document.getElementById('buyGenPrice').textContent = data.tier === 'none'
         ? '€' + data.freshReportPrice + ' per report. Investor and Investor Plus members pay €40.'
@@ -520,6 +534,7 @@
       document.getElementById('buyGenSub').textContent = isAnalyst
         ? 'Buy a fresh generation at any time. The unmodified engine report may be listed for sale; your changes are not published until you submit them.'
         : 'Buy a fresh generation at any time. It stays private and carries the same revision rounds as your monthly one.';
+      document.getElementById('profileCard').hidden = !isAnalyst;
       document.getElementById('stepDownBtn').hidden = !isAnalyst;
       document.getElementById('linkedinProfileBtn').hidden = !isAnalyst;
       document.getElementById('myReviewsBtn').hidden = !isAnalyst;
@@ -538,10 +553,10 @@
         const used = u.coverageUpdatesByCompany || {};
         document.getElementById('coverageCompanies').innerHTML = companies.map(c => {
           const left_ = Math.max(0, (u.coverageUpdateLimit || 0) - (used[c] || 0));
-          return '<div style="margin-bottom:.5rem;">'
+          return '<div class="workspace-coverage">'
             + '<button class="btn btn-primary btn-sm" data-coverage-update="' + esc(c) + '"'
             + (left_ ? '' : ' disabled') + '>Request a ' + esc(c) + ' update</button>'
-            + '<span class="muted" style="margin-left:.75rem;">'
+            + '<span class="muted">'
             + (left_ ? left_ + ' of ' + u.coverageUpdateLimit + ' left this year'
                      : 'All of this year\u2019s updates used')
             + '</span></div>';
@@ -568,9 +583,9 @@
         document.getElementById('genStatus').textContent = usingCredit
           ? data.generationCredits + ' free generation' + (data.generationCredits === 1 ? '' : 's') + ' available.'
           : ob
-          ? 'Open publication obligation. Publish your report to unlock the next generation.'
-          : (u.genReserved ? 'This month’s generation is used.' : 'Your generation is available.');
-        document.getElementById('genCommit').hidden = !isAnalyst || usingCredit;
+          ? ''
+          : (u.genReserved ? 'This month’s generation is used.' : 'This month’s generation is available. Pick a company to start it.');
+        document.getElementById('genCommit').hidden = !isAnalyst || usingCredit || !available;
         document.getElementById('genPath').hidden = !isAnalyst || usingCredit;
         window._publishes = isAnalyst && !usingCredit;
         document.getElementById('reserveRow').hidden = !available;
@@ -611,11 +626,12 @@
           + 'Revisions are purchased separately; paid-report revisions include the report.'
         : 'Free reports and reports already unlocked here can be opened. Use the receipt link for separately bought reports. Other reports and revisions can be purchased separately.';
       loadReports();
+      if (typeof configureWorkspace === 'function') configureWorkspace(data);
     }
 
     async function loadReports() {
-      const { data } = await api('GET', '/reports');
-      if (!data) return;
+      const { status, data } = await api('GET', '/reports').catch(() => ({ status: 0, data: null }));
+      if (status !== 200 || !data) { document.getElementById('reportsTable').innerHTML = '<tr><td>Reports could not be loaded. Reload to try again.</td></tr>'; return; }
       if (document.readyState === 'loading') await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
       if (window.SITE_PUBLIC_PRICING_PROMISE) await window.SITE_PUBLIC_PRICING_PROMISE;
       const rows = (data.reports || []).map(r => {
@@ -646,11 +662,11 @@
         const choice = r.revisable === true && typeof getRevisionsChoice === 'function'
           ? getRevisionsChoice(r.isFree ? 'free' : 'ready', true) : { available: false };
         const revise = choice.available ? '<button class="btn btn-outline-dark btn-sm" data-revise-report="' + esc(r.id) + '">Revise — ' + formatEurAmount(choice.revisionsPrice) + '</button>' : '';
-        return '<tr><td>' + esc(r.companyName) + '</td><td>' + esc(r.ticker) + '</td><td>' + esc(r.reportDateLabel || r.reportDate) + '</td><td>' + price + '</td><td><div style="display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap">' + btn + revise + '</div></td></tr>';
+        return '<tr><td>' + esc(r.companyName) + '</td><td data-label="Ticker">' + esc(r.ticker) + '</td><td data-label="Report date">' + esc(r.reportDateLabel || r.reportDate) + '</td><td data-label="Access">' + price + '</td><td><div style="display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap">' + btn + revise + '</div></td></tr>';
       });
       const table = document.getElementById('reportsTable');
       table.innerHTML =
-        '<tr><th>Company</th><th>Ticker</th><th>Report date</th><th>Access</th><th></th></tr>' + rows.join('');
+        '<tr><th>Company</th><th>Ticker</th><th>Report date</th><th>Access</th><th></th></tr>' + (rows.join('') || '<tr><td colspan="5">No ready reports are available yet. Please check back later.</td></tr>');
       table.querySelectorAll('[data-open-report]').forEach(btn => {
         btn.addEventListener('click', () => openReport(btn.dataset.openReport, btn.dataset.freeOnly === '1'));
       });
@@ -699,7 +715,6 @@
       NEW: 'Queued, waiting for the generator to pick it up.',
       IMPORTING: 'Refreshing the company’s financial data…',
       RENDERING: 'Writing the report. This typically takes 20 to 40 minutes.',
-      DELIVERED: 'Done, the report is ready.',
       FAILED: 'Generation failed. Your monthly generation has been given back.',
     };
 
@@ -789,26 +804,13 @@
       const out = document.getElementById('genProgress');
       const { status, data } = await api('GET', '/generations/' + genId);
       if (status !== 200) { out.textContent = ''; return; }
-      out.textContent = (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
+      // A delivered report is a row in the table below, with its own action.
+      out.textContent = data.status === 'DELIVERED' ? ''
+        : (GEN_STATUS_TEXT[data.status] || data.status) + (data.error ? ' (' + data.error + ')' : '');
       // A run the engine could not deliver hands the month back automatically.
       if (data.generationRestored) {
         notice('ok', 'That generation failed, so your free generation is available again.');
         loadMe();
-      }
-      if (data.url) {
-        const link = document.createElement('a');
-        link.href = data.url;
-        link.target = '_blank';
-        link.rel = 'noopener';
-        link.className = 'btn btn-outline-dark btn-sm';
-        link.style.marginLeft = '0.6rem';
-        link.textContent = 'Download the PDF';
-        out.appendChild(link);
-      }
-      // The workspace enforces the revision count; the link only has to get
-      // the member there.
-      if (data.status === 'DELIVERED') {
-        out.appendChild(workspaceLink(genId, 'Revise it'));
       }
       if (data.status === 'DELIVERED' || data.status === 'FAILED') {
         loadGenerations();
@@ -829,23 +831,14 @@
       return 'order/index.html?session_id=' + encodeURIComponent(genId);
     }
 
-    function workspaceLink(genId, label) {
-      const link = document.createElement('a');
-      link.href = workspaceUrl(genId);
-      link.className = 'btn btn-primary btn-sm';
-      link.style.marginLeft = '0.6rem';
-      link.textContent = label;
-      return link;
-    }
-
     const GEN_ROW_STATUS = {
       NEW: 'Queued', IMPORTING: 'Importing data', RENDERING: 'Writing',
       REVISING: 'Revising', DELIVERED: 'Ready', FAILED: 'Failed',
     };
 
     async function loadGenerations() {
-      const { status, data } = await api('GET', '/generations');
-      if (status !== 200) return;
+      const { status, data } = await api('GET', '/generations').catch(() => ({ status: 0 }));
+      if (status !== 200) { document.getElementById('generationsTable').innerHTML = '<tr><td>Your reports could not be loaded. Reload to try again.</td></tr>'; return; }
       document.getElementById('genCard').hidden = !window._hasGeneration && !(data.generations || []).length;
       // Companies this analyst covers: the server refuses to let them read and
       // score a rival on one, so the button says so before the click.
@@ -854,6 +847,8 @@
         .map(g => String(g.companyId || '').toUpperCase())
         .filter(Boolean));
       if (window._analyses) loadAnalyses();
+      const due = (data.generations || []).find(g => g.genId === window._openObligationId);
+      document.getElementById('submitTitle').textContent = 'Publish ' + (due ? due.companyName || due.companyId : 'your report');
       const rows = (data.generations || []).map(g => {
         const done = g.status === 'DELIVERED';
         const left = Math.max(0, (g.revisionsAllowed || 0) - (g.revisionsUsed || 0));
@@ -864,27 +859,29 @@
         // The price was fixed at publication and is what a forker pays too, so
         // it has to be changeable afterwards.
         const more = (done && g.publication !== 'published')
-          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="buyRevisions(\''
-            + encodeURIComponent(g.genId) + '\')" title="Buy more revision rounds on this report">+ rounds</button>'
+          ? '<button class="ws-link" type="button" onclick="buyRevisions(\''
+            + encodeURIComponent(g.genId) + '\')">Buy revision rounds</button>'
           : '';
         const reprice = g.publication === 'published'
-          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" onclick="repriceAnalysis(\''
+          ? '<button class="ws-link" type="button" onclick="repriceAnalysis(\''
             + encodeURIComponent(g.genId) + '\', ' + (Number(g.priceEur) || 0) + ')">Change price</button>'
           : '';
         // A published analysis shows its first steering prompt on the company
         // page unless the analyst says otherwise. It is their own words on their
         // own work, so it is their switch.
         const prompts = g.publication === 'published'
-          ? '<button class="btn btn-outline-dark btn-sm" style="margin-left:.4rem;" data-prompts="'
+          ? '<button class="ws-link" type="button" data-prompts="'
             + encodeURIComponent(g.genId) + '" data-public="' + (g.promptsPublic ? '1' : '0') + '">'
             + (g.promptsPublic ? 'Hide my prompt' : 'Show my prompt') + '</button>'
           : '';
-        return '<tr><td>' + esc(g.companyName || g.companyId) + '</td>'
-          + '<td>' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
-          + '<td>' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
-          + '<td>' + (g.publication === 'published' ? 'Published' : g.publicEngineBase ? 'Changes not published' : g.private ? 'Private' : 'Not published yet') + '</td>'
-          + '<td>' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
-          + '<td style="text-align:right">' + action + more + reprice + prompts + '</td></tr>';
+        return '<tr data-generation-id="' + esc(g.genId) + '"><td>' + esc(g.companyName || g.companyId) + '</td>'
+          + '<td data-label="Started">' + esc((g.startedAt || '').slice(0, 10)) + '</td>'
+          + '<td data-label="Progress">' + esc(GEN_ROW_STATUS[g.status] || g.status) + '</td>'
+          + '<td data-label="Publication">' + (g.publication === 'published' ? 'Published' : g.publicEngineBase ? 'Changes not published' : g.private ? 'Private' : 'Not published yet') + '</td>'
+          + '<td data-label="Revisions left">' + (done ? left + ' / ' + (g.revisionsAllowed || 0) : '—') + '</td>'
+          + '<td style="text-align:right"><div class="workspace-report-actions">' + action
+          + (more || reprice || prompts ? '<div class="workspace-row-actions">' + more + reprice + prompts + '</div>' : '')
+          + '</div></td></tr>';
       });
       document.getElementById('generationsTable').innerHTML =
         '<tr><th>Company</th><th>Started</th><th>Progress</th><th>Publication</th><th>Revisions left</th><th></th></tr>'
@@ -899,6 +896,7 @@
       await reloadMyReviews();
       if (!window._myReviews) { notice('err', 'Could not load your reviews.'); return; }
       panel.hidden = false;
+      selectWorkspaceTab('analysts');
       panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1087,7 +1085,7 @@
       row.hidden = !window._openReviewId;
       if (window._openReviewId) {
         document.getElementById('reviewPrompt').textContent =
-          'Read the report first, then score it. Open it with the button above — you owe this one a review before your next read.';
+          'Read it, then score it from 1 to 5 and write what it adds. Your next analyst read unlocks once the review is in.';
       }
       // Analyst-supplied free text, so textContent rather than innerHTML. Empty
       // until the report is opened on a reloaded page, and empty for good on an
@@ -1098,12 +1096,13 @@
       const original = document.getElementById('originalBtn');
       original.hidden = !window._openOriginalUrl;
       original.href = window._openOriginalUrl || '#';
+      if (typeof refreshWorkspaceAttention === 'function') refreshWorkspaceAttention();
     }
 
     async function loadAnalyses() {
       const ticker = document.getElementById('analysesTicker').value.trim().toUpperCase();
       const { status, data } = await api('GET', '/analyses' + (ticker ? '?companyId=' + encodeURIComponent(ticker) : ''));
-      if (status !== 200) { notice('err', 'Could not load reports (' + status + ')'); return; }
+      if (status !== 200) { document.getElementById('analysesTable').innerHTML = '<tr><td>Analyst reports could not be loaded. Use Show reports to try again.</td></tr>'; notice('err', 'Could not load reports (' + status + ')'); return; }
       window._analyses = data.analyses || [];
       window._forkFeeEur = Number.isFinite(data.forkFeeEur) ? data.forkFeeEur : null;
       // One open obligation at a time, so everything else is locked until it is
@@ -1175,6 +1174,7 @@
     }
 
     function focusReview() {
+      selectWorkspaceTab('analysts');
       const row = document.getElementById('reviewRow');
       row.scrollIntoView({ behavior: 'smooth', block: 'center' });
       document.getElementById('reviewComment').focus();
@@ -1380,6 +1380,7 @@
         // Coverage needs the company before it can be priced, and that field is
         // further down the page — send them to it rather than to an error.
         if (choice.plan === 'coverage' && !document.getElementById('coverageTicker').value.trim()) {
+          selectWorkspaceTab('account');
           document.getElementById('coverageTicker').scrollIntoView({ behavior: 'smooth', block: 'center' });
           document.getElementById('coverageTicker').focus();
           notice('err', 'Name the company you want covered, then start the checkout.');
