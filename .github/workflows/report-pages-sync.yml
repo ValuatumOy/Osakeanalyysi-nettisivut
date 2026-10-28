@@ -63,7 +63,8 @@ jobs:
 
       - name: Commit and push
         run: |
-          git add report-content reports reports.html sitemap.xml llms.txt companies
+          git add report-content reports reports.html sitemap.xml llms.txt companies companies.html
+          git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
           if git diff --cached --quiet; then
             echo "No changes — catalog and pages already agree."
             exit 0
