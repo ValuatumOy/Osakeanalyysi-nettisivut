@@ -58,7 +58,7 @@ test('the gate still rejects an unrated document that is not market-first', () =
 });
 
 test('the gate rejects market-first prose that states a Valuatum target or rating', () => {
-  for (const bad of ['Our target price is 12 EUR.', 'The implied upside is 14%.', 'Valuatum rates it HOLD.']) {
+  for (const bad of ['Our target price is 12 EUR.', 'The implied upside is 14%.', 'Valuatum rates it HOLD.', "The mean of 2 analysts' targets is 22.5 EUR, with implied upside of 29%."]) {
     assert.throws(() => gate({ ...DOC, summary: [bad] }), /states a rating or target/, bad);
   }
   // The consensus, attributed, is allowed.
@@ -164,6 +164,7 @@ test('market-first detection and prompt', () => {
   assert.equal(isMarketFirstText('Recommendation HOLD Target price 10.10 EUR'), false);
   const mf = buildMessages({ reportText: 'x', marketFirst: true })[1].content[0].text;
   assert.match(mf, /consensusTarget/);
+  assert.match(mf, /never write "implied upside" even when describing the analysts' consensus/i);
   assert.doesNotMatch(mf, /BUY, HOLD or SELL as printed|reverseValuation/);
 });
 
