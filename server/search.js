@@ -45,6 +45,10 @@ function venueOf(ticker) {
   return dot === -1 ? 'US' : ticker.slice(dot + 1).toUpperCase();
 }
 
+function isCoveredTicker(ticker) {
+  return coveredVenues().has(venueOf(String(ticker || '')));
+}
+
 // Small in-memory TTL cache so debounced keystrokes don't hammer Wisdom.
 const cache = new Map(); // key -> { at, value }
 
@@ -138,12 +142,11 @@ async function searchCompanies(rawQuery) {
     if (rows.length === 0) rows = await fetchWisdom('name', query);
   }
 
-  const venues = coveredVenues();
   const result = dedupe(rows.map(toPublic).filter(Boolean))
-    .filter((r) => venues.has(venueOf(r.ticker)))
+    .filter((r) => isCoveredTicker(r.ticker))
     .slice(0, MAX_RESULTS);
   cacheSet(key, result);
   return result;
 }
 
-module.exports = { searchCompanies, venueOf };
+module.exports = { searchCompanies, venueOf, isCoveredTicker };
