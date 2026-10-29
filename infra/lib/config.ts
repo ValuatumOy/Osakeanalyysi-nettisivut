@@ -38,11 +38,19 @@ export interface StageConfig {
   fmpImportUrl: string;
   /**
    * ENGINE_FID_BY_TICKER for the worker: tickers whose report is rendered from
-   * a pinned Trunk model rather than the engine's default (FMP) model. The fids
-   * belong to the stage's Trunk, so the map is per stage. UPM.HE: statements
-   * imported into its `ValuatumData` model, 28 October 2026.
+   * a pinned Trunk model rather than the engine's default model. The fids
+   * belong to the stage's Trunk, so the map is per stage. Empty since the FMP
+   * models moved to the `ValuatumData` analyst (29 October 2026): the engine
+   * then picks the same model itself.
    */
   engineFidByTicker: Record<string, number>;
+  /**
+   * FRESH_IMPORT_ENABLED default for the worker (context `freshImportEnabled`
+   * overrides). Off in prod since 29 October 2026: Wisdom's statements come from
+   * the PDF data import, and an FMP import there would create a second model
+   * under the old FMP analyst instead of refreshing the one the engine reads.
+   */
+  freshImportEnabled: boolean;
 }
 
 export function stageConfig(app: App): StageConfig {
@@ -102,6 +110,7 @@ export function stageConfig(app: App): StageConfig {
     pdfEngineUrl: app.node.tryGetContext('pdfEngineUrl') ?? engine.url,
     engineFunctionArn: app.node.tryGetContext('engineFunctionArn') ?? engine.arn,
     fmpImportUrl: app.node.tryGetContext('fmpImportUrl') ?? `${trunkRest}/dataimport`,
-    engineFidByTicker: stage === 'prod' ? { 'UPM.HE': 20798 } : {},
+    engineFidByTicker: {},
+    freshImportEnabled: stage !== 'prod',
   };
 }

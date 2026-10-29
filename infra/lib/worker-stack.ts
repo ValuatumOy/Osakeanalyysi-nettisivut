@@ -72,7 +72,7 @@ export class WorkerStack extends Stack {
         // fresh report reflects current figures: Wisdom for prod, trunkdev
         // for test (config.fmpImportUrl). The bearer token comes from SSM
         // (fmp-import-token); aspId uses the code default.
-        FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? 'true',
+        FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? String(config.freshImportEnabled),
         FMP_IMPORT_URL: config.fmpImportUrl,
         // Reports rendered from a pinned Trunk model (config.engineFidByTicker).
         ENGINE_FID_BY_TICKER: JSON.stringify(config.engineFidByTicker),
