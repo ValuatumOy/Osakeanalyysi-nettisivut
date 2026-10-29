@@ -48,7 +48,7 @@ Passed with `-c key=value` (or put in `cdk.context.json`):
 | `alertEmail` | SNS alarm subscription | `contact26@valuatum.com` |
 | `pdfEngineUrl` | pdf-report-engine Function URL | unset (fresh orders fail loudly) |
 | `engineFunctionArn` | engine Lambda ARN for the IAM invoke grant | unset |
-| `freshImportEnabled` / `resaleEnabled` / `reaperDryRun` | worker flags | `true` / `true` / `true` |
+| `freshImportEnabled` / `resaleEnabled` / `reaperDryRun` | worker flags | `false` in prod, `true` in test (`config.ts`) / `true` / `true` |
 | `fmpImportUrl` | FMP_IMPORT_URL: the Trunk the stage's engine reads | prod `https://wisdom.valuatum.com/rest/dataimport`, test `https://trunkdev.valuatum.com/rest/dataimport` |
 | `siteUrl` | SITE_URL for emails/links | `https://www.aiequityreports.com` |
 
