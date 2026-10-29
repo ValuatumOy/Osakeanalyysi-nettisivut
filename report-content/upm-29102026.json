@@ -1,0 +1,794 @@
+{
+  "id": "upm-29102026",
+  "slug": "upm-equity-report",
+  "reportKind": "market-first",
+  "companyName": "UPM",
+  "ticker": "UPM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Paper, Lumber & Forest Products",
+  "currency": "EUR",
+  "reportDate": "2026-10-29",
+  "profile": "Turns wood into pulp and sawn timber, electricity, self-adhesive label materials, specialty and graphic papers, plywood, wood and forestry services, renewable fuels and biochemicals. It serves paper and packaging makers, manufacturers, printers, energy users, fuel buyers and forest owners across several countries.",
+  "headline": {
+    "currentPrice": "23.3 EUR",
+    "marketCap": "EUR 12.3bn",
+    "enterpriseValue": "EUR 15.1bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-5.4 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "25.6 EUR",
+    "analysts": "14",
+    "range": "20.1-30.0 EUR",
+    "source": "MarketScreener"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "17x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "9.9x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "18x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "27.9 EUR",
+    "week52Low": "22.1 EUR",
+    "oneYearChange": "-3.3%",
+    "threeYearChange": "-28%"
+  },
+  "summary": [
+    "UPM.HE (UPM.HE, NASDAQ Helsinki) turns wood into pulp, timber, paper, label materials, electricity, plywood and renewable products. The share price was 23.3 EUR on 29 October 2026, against market capitalisation of EUR 12.3bn and enterprise value of EUR 15.1bn. In this Valuatum market report dated 29 October 2026, the whole company is read through EV/EBIT of 17x on 2026 forecast operating profit and 9.9x on 2028 forecast operating profit. The price therefore rests on a recovery in operating profit rather than on sales growth alone: analysts forecast operating profit of EUR 1.5bn in 2028, compared with EUR 749m in 2025.",
+    "The share price is split across eight businesses. Fibres contributes 8.3 EUR per share at 9.4x 2028 operating profit, Graphic papers 5.9 EUR at 9.2x, Adhesive materials 5.1 EUR at 11.7x, Energy 4.1 EUR at 12.1x and Specialty papers 3.8 EUR at 9.2x. Wood and renewables contributes 1.1 EUR at 11.6x, Plywood 0.5 EUR at 4.5x and Forests 0.0 EUR at 12.1x on zero forecast operating profit. The businesses total 28.7 EUR per share; debt and other claims, less cash, subtract 5.4 EUR per share to reach 23.3 EUR per share.",
+    "The overall 9.9x 2028 EV/EBIT reading is about the level of listed peers, but several businesses sit just below their own peer medians because their forecast margins must rise materially. Fibres needs to move from 9.7% to 16%, Graphic papers from 7.4% to 13% and Wood and renewables from 1.4% to 7%. The key checks are the EUR 247m adjusted operating profit needed in the fourth quarter to meet the EUR 892m 2026 forecast, the European Commission decision on the Sappi joint venture, Leuna's Q2 2027 integrated production and the WISA demerger."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Profit drives price",
+      "metric": "28.7 EUR",
+      "text": "The businesses add 28.7 EUR per share before debt and other claims, led by Fibres at 8.3 EUR per share. Debt and other claims, less cash, subtract 5.4 EUR per share, leaving the 23.3 EUR share price. The price is therefore built on forecast operating profit across the businesses."
+    },
+    {
+      "num": "02",
+      "title": "Peer-level valuation",
+      "metric": "9.9x",
+      "text": "The whole company trades at 9.9x analysts' 2028 forecast operating profit, broadly matching listed peers. Fibres is at its 9.4x peer median, while Graphic papers at 9.2x sits below its 9.5x industry median and Adhesive materials at 11.7x is just below its 11.8x peer median."
+    },
+    {
+      "num": "03",
+      "title": "Margin tests ahead",
+      "metric": "EUR 247m",
+      "text": "UPM needs EUR 247m of fourth-quarter adjusted operating profit to meet the EUR 892m 2026 forecast after EUR 645m in nine months. The Sappi approval, Leuna's Q2 2027 production start and Fibres' progress towards a 16% margin will determine whether forecast profit is becoming operational evidence."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Fibres",
+      "share": "8.3 EUR per share",
+      "economics": "9.4x 2028 operating profit · EUR 465m forecast operating profit · peers 9.0x-23.2x, median 9.4x",
+      "text": "Fibres sells pulp and sawn timber to paper, packaging, construction and industrial customers. It generated EUR 2.9bn of outside-customer sales in 2025, delivered 5.163 million tonnes of pulp and has pulp capacity of 5.8 million tonnes a year, alongside 1.0 million cubic metres of sawmill capacity. The market assigns 8.3 EUR per share to Fibres, based on EUR 465m of forecast 2028 operating profit and a 9.4x multiple, exactly the median of Suzano, Klabin and SCA. The operating challenge is the margin: adjusted operating profit was EUR 283m in 2025, a 9.7% margin, while the split requires a 16% margin by 2028. Pulp prices fell 15% in 2025, and global hardwood and softwood shipments fell 3% and 2% respectively in January to August 2026. North and South mill margins and further curtailments are the evidence to follow."
+    },
+    {
+      "name": "Graphic papers",
+      "share": "5.9 EUR per share",
+      "economics": "9.2x 2028 operating profit · EUR 335m forecast operating profit · industry median 9.5x",
+      "text": "Graphic papers supplies printing and publishing paper to merchants, printers and publishers. Outside-customer sales were EUR 2.5bn in 2025, while delivered volume was 2.893 million tonnes. The market assigns 5.9 EUR per share to the business at 9.2x forecast 2028 operating profit of EUR 335m, just below the 9.5x industry median and within the 6.3x to 12.5x quartile range. The valuation depends on a margin rising from 7.4% in 2025, when adjusted operating profit was EUR 181m, to 13% in 2028. Kaukas and Ettringen closures cut capacity by 13% and are intended to provide EUR 70m of annual fixed-cost savings, but weak demand and overcapacity have limited cost pass-through. The planned 50/50 Sappi joint venture could add EUR 100m of annual synergies, although European Commission approval remained unresolved at the report date."
+    },
+    {
+      "name": "Adhesive materials",
+      "share": "5.1 EUR per share",
+      "economics": "11.7x 2028 operating profit · EUR 228m forecast operating profit · peers 11.2x-14.5x, median 11.8x",
+      "text": "Adhesive materials sells self-adhesive label materials, films and graphic materials through 12 factories and 21 slitting and distribution terminals. Outside-customer sales were EUR 1.7bn in 2025. The market assigns 5.1 EUR per share at 11.7x forecast 2028 operating profit of EUR 228m, just below the 11.8x peer median for LINTEC, Avery Dennison and CCL Industries. The forecast requires the margin to rise from 7.5% adjusted in 2025, when adjusted operating profit was EUR 124m, to 13% in 2028. Customer destocking reduced deliveries in Q3 2026, and the business reported EUR 95m of operating profit on EUR 1,274m of sales in the first nine months, a 7.5% reported margin. Mills River, a EUR 13m advanced-label-materials project, was due for completion in Q3 2026 and must fill while demand recovers."
+    },
+    {
+      "name": "Energy",
+      "share": "4.1 EUR per share",
+      "economics": "12.1x 2028 operating profit · EUR 181m forecast operating profit · peers 9.8x-21.3x, median 12.3x",
+      "text": "Energy sells electricity and related services from 1,943 MW of generation capacity, including hydropower and holdings in other energy companies. It delivered 11,141 GWh in 2025 at an average price of EUR 50.3 per MWh, above the Finnish day-ahead average of EUR 40.48 per MWh. The market assigns 4.1 EUR per share at 12.1x forecast 2028 operating profit of EUR 181m, close to the 12.3x median of Fortum, Verbund and E.on. Outside-customer sales were EUR 480m in 2025 and adjusted operating profit was EUR 151m, a 31.5% margin. The split assumes EUR 490m of 2028 sales and a 37% margin, so nearly all the profit increase depends on power prices rather than revenue growth. Fortum and Verbund reported lower 2025 margins than in 2024, which limits the evidence for paying more than a median multiple."
+    },
+    {
+      "name": "Specialty papers",
+      "share": "3.8 EUR per share",
+      "economics": "9.2x 2028 operating profit · EUR 217m forecast operating profit · industry median 9.5x",
+      "text": "Specialty papers sells labelling, packaging, release-base and face papers, together with office and graphic papers in Asia-Pacific. Outside-customer sales were EUR 1.1bn in 2025, with 1.398 million tonnes delivered against listed capacity of 2.0 million tonnes. The market assigns 3.8 EUR per share at 9.2x forecast 2028 operating profit of EUR 217m, just below the 9.5x industry median and within the 6.3x to 12.5x quartile range. Adjusted operating profit was EUR 147m in 2025, a 13.3% margin, whereas the split assumes a 19% margin in 2028. Customer stock reductions cut Q3 2026 volumes; comparable EBIT was EUR 26m, stated as an 8.5% segment-sales margin on a different sales basis. First-nine-month deliveries were 1.053 million tonnes, and Q3 deliveries were 319 thousand tonnes, leaving mill utilisation and destocking as the central tests."
+    },
+    {
+      "name": "Wood and renewables",
+      "share": "1.1 EUR per share",
+      "economics": "11.6x 2028 operating profit · EUR 50m forecast operating profit · peers 9.7x-13.5x, median 11.8x",
+      "text": "Wood and renewables sells wood and forestry services, renewable fuels and biochemicals to UPM's businesses and outside customers. Outside-customer sales were EUR 659m in 2025 and the split has EUR 671m in 2028. Adjusted operating profit was only EUR 9m in 2025, a 1.4% margin, while the market assigns 1.1 EUR per share at 11.6x forecast 2028 operating profit of EUR 50m and close to the 11.8x peer median. The valuation therefore rests on profit rising more than fivefold with almost unchanged sales and on the margin reaching 7%. Leuna's integrated production was delayed to Q2 2027, with nominal capacity of 220,000 tonnes expected in early 2028. Two of three core processes were in production in Q3 2026, while qualification volumes planned for Q4 2026 are the first test of customer demand rather than merely the sales pipeline."
+    },
+    {
+      "name": "Plywood",
+      "share": "0.5 EUR per share",
+      "economics": "4.5x 2028 operating profit · EUR 59m forecast operating profit · peers 3.8x-12.1x, median 4.6x",
+      "text": "Plywood sells plywood and veneer to construction, transport and other industrial customers. Outside-customer sales were EUR 389m in 2025, production was 473,000 cubic metres against a theoretical maximum of 785,000, and the market assigns 0.5 EUR per share at 4.5x forecast 2028 operating profit of EUR 59m. The multiple is close to the 4.6x median of Boise Cascade, UFP Industries and Weyerhaeuser, although Weyerhaeuser's 12.1x multiple widens the range. Adjusted operating profit was EUR 35m in 2025, a 9.0% margin, while the split assumes sales of EUR 397m and a 15% margin in 2028. The low share-price contribution reflects the business's small size, not the absence of operational leverage. Completion of the WISA demerger on 31 October 2026 and trading around 2 November will give the business a separate market price and make mill utilisation easier to observe."
+    },
+    {
+      "name": "Forests",
+      "share": "0.0 EUR per share",
+      "economics": "12.1x 2028 operating profit · EUR 0m forecast operating profit · peers 7.9x-23.2x, median 12.1x",
+      "text": "UPM's forests supply wood to the group's pulp, timber and paper businesses. The company reported ownership of 917,000 hectares of forests and plantations in 2025, including 141,000 hectares protected or in restricted use. The market assigns 0.0 EUR per share because the split gives the forests EUR 0m of 2028 operating profit; applying the selected 12.1x forest-owner multiple to zero profit also produces zero. UPM reported EUR 77m of 2025 wood harvested from its own forests against 27.7 million cubic metres of total wood used, so the economic contribution sits within the costs of other businesses rather than in a separate profit line. Published asset readings are not directly comparable: Rayonier and Weyerhaeuser are whole-company measures after debt, while Stora Enso's 99.2% figure concerned a direct land sale before debt. A separate forest profit, sale or listing would create a market reference."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 23.3 EUR share price is assembled from 28.7 EUR per share of operating businesses and a 5.4 EUR per-share deduction for debt and other claims, less cash. Fibres is the largest component at 8.3 EUR per share, followed by Graphic papers at 5.9 EUR, Adhesive materials at 5.1 EUR, Energy at 4.1 EUR and Specialty papers at 3.8 EUR. The smaller pools are Wood and renewables at 1.1 EUR, Plywood at 0.5 EUR and Forests at 0.0 EUR. Together the businesses correspond to EUR 15.1bn of enterprise value and about EUR 1.5bn of forecast 2028 operating profit, or 9.9x EV/EBIT. The arithmetic matters because the share price is concentrated in businesses whose earnings must improve: Fibres needs EUR 465m of operating profit and a 16% margin, Graphic papers EUR 335m and a 13% margin, and Energy EUR 181m and a 37% margin. The implication for what the share price is made of is that the market is paying primarily for the forecast margin recovery, not for a broad increase in 2028 sales, which analysts place at EUR 9.9bn."
+    },
+    {
+      "heading": "Why the price compares with peers",
+      "text": "The overall 9.9x 2028 EV/EBIT multiple sits around the level of listed peers, but the business readings reflect different evidence. Fibres is at the 9.4x median of Suzano, Klabin and SCA, despite its forecast margin rising from 9.7% in 2025 to 16% in 2028. Graphic papers is at 9.2x against a 9.5x industry median after 2025 adjusted operating profit of EUR 181m and a 7.4% margin. Adhesive materials is at 11.7x against an 11.8x peer median, although destocking left nine-month 2026 operating profit at EUR 95m and a 7.5% reported margin. Energy is at 12.1x against a 12.3x peer median, while its assumed 37% margin exceeds Fortum's 18.8% and Verbund's 26.4% 2025 operating margins. Wood and renewables is at 11.6x against an 11.8x peer median despite only EUR 9m of 2025 adjusted operating profit. The consistent pattern is a near-peer multiple without a premium for forecast improvement. The share-price reading therefore depends on whether each margin recovery becomes visible in reported results."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The nearest whole-company test is the fourth quarter. UPM produced EUR 645m of adjusted operating profit in the first nine months of 2026, so EUR 247m is required in the final quarter to meet the EUR 892m full-year forecast. That result will test demand, pricing and contribution across every pool rather than isolating Fibres or paper. The European Commission's decision on the Sappi joint venture is the principal structural event for Graphic papers and Energy. Approval would remove the main uncertainty around EUR 100m of annual synergies; refusal would leave the EUR 70m of closure savings as the main support for Graphic papers. Leuna's qualification volumes in Q4 2026, integrated production in Q2 2027 and nominal capacity of 220,000 tonnes in early 2028 are the evidence for Wood and renewables. The WISA demerger due on 31 October 2026, with trading around 2 November, will make Plywood separately observable. Across the largest pool, Fibres North's 3% Q3 margin must move towards Fibres South's 23% and the 16% 2028 assumption. These events determine whether the price remains anchored to forecast profit or gains support from reported profit."
+    }
+  ],
+  "risks": [
+    "Pulp-price and volume weakness (Fibres): a sustained weak market could keep the margin near 9.7% rather than the 16% assumed for 2028, with global hardwood and softwood shipments already down 3% and 2%; quarterly Fibres North and South margins are the early warning.",
+    "Sappi approval failure (Graphic papers and Energy): refusal by the European Commission would prevent the planned joint venture and leave Graphic papers reliant on closures and EUR 70m of annual savings rather than EUR 100m of planned synergies; the Commission decision is the early warning.",
+    "Persistent destocking (Adhesive materials and Specialty papers): lower deliveries would leave mills underfilled and margins near 7.5% and 8.5% respectively instead of the 13% and 19% forecasts; quarterly volumes and margins are the early warning.",
+    "Leuna delay or weak ramp-up (Wood and renewables): delayed integrated production or low qualification volumes would leave profit near the EUR 9m 2025 level rather than the EUR 50m 2028 split; Q4 2026 qualification volumes are the early warning.",
+    "Underutilised plywood mills (Plywood): production remaining near 473,000 cubic metres against 785,000 cubic metres of theoretical capacity would prevent the margin rising from 9.0% to 15%; quarterly production is the early warning."
+  ],
+  "catalysts": [
+    "Fourth-quarter operating profit (near-term, all businesses): EUR 247m or more would meet the EUR 892m 2026 adjusted operating-profit forecast and show that the recovery is appearing across the group.",
+    "European Commission decision on Sappi (near-term, Graphic papers and Energy): approval would remove the main uncertainty around EUR 100m of annual synergies and clarify the paper combination.",
+    "WISA demerger and separate trading (near-term, Plywood): completion on 31 October 2026 and trading around 2 November would give Plywood an independent market price and quarterly margin record.",
+    "Leuna qualification and integrated production (near-term to medium-term, Wood and renewables): customer qualification volumes in Q4 2026 followed by production in Q2 2027 would show whether the plant can move towards 220,000 tonnes of nominal capacity.",
+    "Fibres margin recovery (medium-term, Fibres): Fibres North improving from a 3% Q3 margin while the group approaches a 16% 2028 margin would support the forecast profit allocated to the largest pool."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "10,460",
+            "10,339",
+            "9,656",
+            "9,441",
+            "9,685",
+            "9,850"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "912",
+            "1,743",
+            "1,374",
+            "1,390",
+            "2,115",
+            "2,315"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "8.7%",
+            "16.9%",
+            "14.2%",
+            "14.7%",
+            "21.8%",
+            "23.5%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-304",
+            "-1,139",
+            "-625",
+            "-497",
+            "-759",
+            "-779"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "608",
+            "604",
+            "749",
+            "892",
+            "1,356",
+            "1,536"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "5.8%",
+            "5.8%",
+            "7.8%",
+            "9.5%",
+            "14.0%",
+            "15.6%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-143",
+            "-104",
+            "-59",
+            "-4",
+            "-84",
+            "-76"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "465",
+            "500",
+            "690",
+            "888",
+            "1,272",
+            "1,460"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "395",
+            "436",
+            "479",
+            "669",
+            "973",
+            "1,073"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.7",
+            "0.8",
+            "0.9",
+            "1.3",
+            "1.8",
+            "2"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.5",
+            "1.5",
+            "1.5",
+            "1",
+            "1.5",
+            "1.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "202.5%",
+            "181.7%",
+            "165.1%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "9,166",
+            "7,085",
+            "6,459",
+            "6,369",
+            "6,534",
+            "6,645"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "715",
+            "580",
+            "554",
+            "542",
+            "556",
+            "565"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "283",
+            "174",
+            "264",
+            "264",
+            "264",
+            "264"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "3,319",
+            "5,697",
+            "5,650",
+            "4,872",
+            "4,872",
+            "4,872"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "13,483",
+            "13,536",
+            "12,927",
+            "12,047",
+            "12,226",
+            "12,346"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,949",
+            "2,104",
+            "1,886",
+            "1,871",
+            "1,919",
+            "1,952"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,873",
+            "2,038",
+            "1,594",
+            "1,671",
+            "1,712",
+            "1,740"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "632",
+            "892",
+            "715",
+            "739",
+            "759",
+            "772"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "4,454",
+            "5,034",
+            "4,195",
+            "4,281",
+            "4,390",
+            "4,463"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "536",
+            "526",
+            "410",
+            "413",
+            "413",
+            "413"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,532",
+            "16,741",
+            "17,028",
+            "17,223"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "11,531",
+            "11,540",
+            "10,334",
+            "10,212",
+            "10,649",
+            "10,944"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "2,444",
+            "3,747",
+            "3,638",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "200",
+            "166",
+            "156",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "3,179",
+            "4,401",
+            "4,167",
+            "2,118",
+            "2,020",
+            "1,954"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,441",
+            "2,230",
+            "2,057",
+            "3,439",
+            "3,387",
+            "3,353"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "1,322",
+            "925",
+            "973",
+            "972",
+            "972",
+            "972"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,531",
+            "16,741",
+            "17,028",
+            "17,223"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "706",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,718",
+            "3,021",
+            "3,079",
+            "2,438",
+            "2,223",
+            "2,078"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,543",
+            "14,541",
+            "13,386",
+            "12,624",
+            "12,845",
+            "12,996"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "62.4%",
+            "60.4%",
+            "58.9%",
+            "61.0%",
+            "62.5%",
+            "63.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "23.6%",
+            "26.2%",
+            "29.8%",
+            "23.9%",
+            "20.9%",
+            "19.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "3.0x",
+            "1.7x",
+            "2.2x",
+            "1.8x",
+            "1.1x",
+            "0.9x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.8",
+            "2.3",
+            "2",
+            "1.2",
+            "1.3",
+            "1.3"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "1,380",
+            "1,105",
+            "1,616",
+            "1,054",
+            "1,707",
+            "1,841"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "1,558",
+            "1,163",
+            "1,789",
+            "1,057",
+            "1,773",
+            "1,898"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-605",
+            "497",
+            "-499",
+            "113",
+            "43",
+            "29"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-703",
+            "325",
+            "78",
+            "395",
+            "938",
+            "899"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "703",
+            "-325",
+            "-78",
+            "-395",
+            "-938",
+            "-899"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "677",
+            "780",
+            "1,538",
+            "659",
+            "770",
+            "942"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "2,316",
+            "1,011",
+            "1,612",
+            "662",
+            "835",
+            "999"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "2,317",
+            "1,011",
+            "1,613",
+            "662",
+            "835",
+            "999"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-3,371",
+            "309",
+            "-1,903",
+            "-1,407",
+            "-732",
+            "-910"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-693",
+            "-800",
+            "-792",
+            "-791",
+            "-536",
+            "-778"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-1,288",
+            "1,089",
+            "-365",
+            "-749",
+            "38",
+            "32"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "18.3x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "10.9x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "17x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.2x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "4.4%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.8x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is UPM's share price made of?",
+      "a": "The 23.3 EUR share price is made of 28.7 EUR per share across eight businesses, less 5.4 EUR per share for debt and other claims, less cash. Fibres is the largest pool at 8.3 EUR per share, followed by Graphic papers at 5.9 EUR and Adhesive materials at 5.1 EUR."
+    },
+    {
+      "q": "Why does UPM trade around listed peer multiples?",
+      "a": "UPM's whole-company reading is 9.9x 2028 forecast operating profit, broadly in line with listed peers. Individual pools are mostly close to peer medians, but Graphic papers at 9.2x, Specialty papers at 9.2x and Wood and renewables at 11.6x sit below their respective 9.5x, 9.5x and 11.8x medians because their forecast margins must rise."
+    },
+    {
+      "q": "What do analysts forecast for UPM's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of EUR 9.9bn, operating profit of EUR 1.5bn, net earnings of EUR 1.1bn, EPS of 2 EUR and DPS of 1.6 EUR. The 2026 operating-profit forecast is EUR 892m, requiring EUR 247m in the fourth quarter after EUR 645m in the first nine months."
+    },
+    {
+      "q": "What should UPM investors watch?",
+      "a": "The immediate checks are fourth-quarter adjusted operating profit, the European Commission decision on the Sappi joint venture and the WISA demerger. Over the medium term, the key operating evidence is Fibres' progress towards a 16% margin, Leuna's Q2 2027 integrated production and the filling of paper and label-materials capacity after destocking."
+    },
+    {
+      "q": "How does Valuatum's UPM market report work?",
+      "a": "The method starts with analysts' whole-company sales and operating-profit forecasts to 2028, splits operating profit between businesses using reported segment results, compares each business with listed peers using EV/EBIT and reads today's 23.3 EUR share price back into the businesses. It explains the current price and gives no target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on UPM dated 29 October 2026 (23.3 EUR share price, 28.7 EUR per share across the businesses and -5.4 EUR per share for debt and other claims, less cash).",
+    "Competitor context: Fibres peers Suzano, Klabin and Svenska Cellulosa Aktiebolaget SCA at 9.0x-23.2x EV/EBIT 2028; Graphic papers and Specialty papers industry quartiles of 6.3x, 9.5x and 12.5x; Adhesive materials peers at 11.2x-14.5x; Energy peers at 9.8x-21.3x; Wood and renewables peers at 9.7x-13.5x; Plywood peers at 3.8x-12.1x; Forest peers at 7.9x-23.2x. The report notes that fewer than three listed peers require industry quartiles for Graphic papers and Specialty papers, and that EBITDA margins cited for Sappi are not directly comparable with UPM operating profit.",
+    "Market data: UPM.HE, 23.3 EUR on 29 October 2026, analysts' forecasts of EUR 9.9bn 2028 sales and EUR 1.5bn 2028 operating profit, and the consensus source MarketScreener. The consensus price target is 25.6 EUR from 14 analysts, with a 20.1-30.0 EUR range; it is not a Valuatum target."
+  ]
+}
