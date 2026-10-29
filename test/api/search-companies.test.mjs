@@ -65,3 +65,26 @@ async function invoke(query, method = 'GET') {
   await handler(req, res);
   return result;
 }
+
+test('company search proxy drops listings Wisdom no longer keeps current', async (t) => {
+  const originalFetch = global.fetch;
+  t.after(() => { global.fetch = originalFetch; });
+  global.fetch = async () => ({
+    ok: true,
+    async json() {
+      return {
+        results: [
+          { companyName: 'Toyota Boshoku Corporation', ticker: '3116.T' },
+          { companyName: 'Toyota Motor Corp.', ticker: '7203.T' },
+          { companyName: 'Toyota Caetano Portugal', ticker: 'SCT.LS' },
+          { companyName: 'Volvo', ticker: 'VOLV-B.ST' },
+          { companyName: 'Tesla', ticker: 'TSLA' },
+        ],
+      };
+    },
+  });
+
+  const response = await invoke({ q: 'venue-proxy' });
+  assert.equal(response.statusCode, 200);
+  assert.deepEqual(response.body.results.map((r) => r.ticker), ['VOLV-B.ST', 'TSLA']);
+});
