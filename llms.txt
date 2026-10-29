@@ -12,7 +12,7 @@
 ## Free sample equity reports
 - [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
-- [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [UPM (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 
 ## Paid equity reports (free preview available)
 - [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): HOLD, target 490.50 USD (current 482.05 USD).
