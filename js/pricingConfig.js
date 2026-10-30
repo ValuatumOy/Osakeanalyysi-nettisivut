@@ -54,11 +54,11 @@ const PRICING_CONFIG = {
       price: 50,
       launchPrice: null,
       period: 'per report',
-      description: 'Order a newly generated report with the latest available financial data, on any US, Nordic or Baltic listed company.',
+      description: 'Order a newly generated report with the latest available financial data, on any listed company.',
       features: [
         'Everything in Ready Report',
         'Latest available data',
-        'US, Nordic and Baltic listings',
+        'Any listed company',
         'Delivered by email, usually within an hour',
       ],
       notIncluded: [],

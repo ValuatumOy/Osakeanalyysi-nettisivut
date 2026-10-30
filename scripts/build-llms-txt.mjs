@@ -104,7 +104,7 @@ const overview = pages.filter((p) => !covered.has(p.slug));
 
 const body = `# Valuatum AI Equity Reports
 
-> Valuatum AI Equity Reports produces AI-generated equity research on US, Nordic and Baltic listed companies.
+> Valuatum AI Equity Reports produces AI-generated equity research on listed companies worldwide.
 > Each report starts from today's share price and explains it: analysts' consensus forecasts are kept as they are,
 > the price is split between the company's businesses, and each business is set beside listed peers. The base
 > report carries no rating or target; an analyst who revises it gets a 12-month target that follows from their own
