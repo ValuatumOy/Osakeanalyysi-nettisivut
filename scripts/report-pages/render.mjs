@@ -170,7 +170,7 @@ function templatedFaqs(d) {
   } else {
     out.push({ q: `Does Valuatum have an AI equity report on ${sn} (${t})?`, a: `${sn} is on Valuatum's coverage list, but a full AI equity report has not been published yet. Generate a fresh report on demand to get the rating, price target, segment-value analysis and reverse valuation.` });
     out.push({ q: `How is ${sn} (${t}) valued?`, a: `${indefiniteArticle(sn)} ${sn} AI equity report would value the company using segment-value analysis and a reverse valuation (a DCF-style framework), with segment financial estimates, key ratios, risks and catalysts.` });
-    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — usually within about 30 minutes of ordering.` });
+    out.push({ q: `How long does it take to generate ${indefiniteArticle(sn).toLowerCase()} ${sn} (${t}) report?`, a: `A fresh ${sn} AI equity report is delivered by email — usually within an hour of ordering.` });
   }
   return out;
 }
@@ -542,7 +542,7 @@ function generateGate(d) {
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${esc(sn)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates — plus a downloadable PDF.</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
               <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(d.companyName)}" data-ticker="${attr(d.ticker)}">Generate fresh report — €${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>
             </div>
           </div>
         </section>`;
@@ -920,8 +920,8 @@ export function renderPage(d, cat, all) {
   // The report date is the only honest answer: it is what the ready report knew.
   const writtenOn = updated ? formatReportDate(updated) : null;
   const actionsNote = !hasReport
-    ? `A fresh report is written when you order it, from the data available today, and arrives by email — usually within about 30 minutes.`
-    : `${isFree ? 'This report was' : 'The ready report was'} written by the Valuatum engine on ${writtenOn || 'its publication date'} and holds the figures available then. A fresh report is written today, from today's data, and arrives by email — usually within about 30 minutes.`;
+    ? `A fresh report is written when you order it, from the data available today, and arrives by email — usually within an hour.`
+    : `${isFree ? 'This report was' : 'The ready report was'} written by the Valuatum engine on ${writtenOn || 'its publication date'} and holds the figures available then. A fresh report is written today, from today's data, and arrives by email — usually within an hour.`;
 
   const ctx = { sn, isFree, hasReport, pdfHref };
   const body = marketFirst ? marketFirstColumns(d, cat, all, ctx) : standardColumns(d, cat, all, ctx);

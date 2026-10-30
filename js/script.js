@@ -255,33 +255,6 @@ function searchableCompanyPages() {
   return [];
 }
 
-// ── Homepage company cards from catalog data ──────────────────────
-(function initSampleCompanyCards() {
-  const cards = document.querySelectorAll('[data-company-card]');
-  if (!cards.length) return;
-
-  const pages = searchableCompanyPages();
-  cards.forEach(card => {
-    const ticker = card.dataset.companyCard?.toLowerCase();
-    if (!ticker) return;
-
-    const company = pages.find(c => c.ticker.toLowerCase() === ticker);
-    if (!company) return;
-
-    const desc = card.querySelector('[data-company-description]');
-    if (desc && company.description) desc.textContent = company.description;
-
-    const image = card.querySelector('.sample-thumbnail-img');
-    if (image && company.thumbnail) image.src = company.thumbnail;
-
-    card.addEventListener('click', e => {
-      if (e.target.closest('a, button')) return;
-      openCompanyPage(company.url);
-    });
-    card.style.cursor = 'pointer';
-  });
-})();
-
 function handleSearch(query) {
   if (!query) {
     window.location.href = 'reports.html';
@@ -482,22 +455,6 @@ function trackEvent(event, props = {}) {
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   sections.forEach(s => io.observe(s.el));
-})();
-
-// ── Mockup bar animation ──────────────────────────
-(function initMockupBars() {
-  document.querySelectorAll('.mockup-bar-fill[data-w]').forEach(bar => {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          bar.style.width = bar.dataset.w;
-          io.unobserve(bar);
-        }
-      });
-    }, { threshold: 0.3 });
-    bar.style.width = '0';
-    io.observe(bar);
-  });
 })();
 
 // ── Checkout button placeholder ───────────────────
@@ -896,6 +853,17 @@ function bindReadyReportCheckoutLink(link) {
       node.nodeValue = replacePriceText(node.nodeValue, pricing);
     });
 
+    // The "+ Revisions" prices and round counts: <span data-price="freshRevisions">
+    // and <span data-included="freshRevisions"> carry the kind they show.
+    document.querySelectorAll('[data-price]').forEach(function (el) {
+      var p = pricing[el.getAttribute('data-price')];
+      if (p && p.shortLabel) el.textContent = p.shortLabel;
+    });
+    document.querySelectorAll('[data-included]').forEach(function (el) {
+      var p = pricing[el.getAttribute('data-included')];
+      if (p && p.included) el.textContent = String(p.included);
+    });
+
     window.dispatchEvent(new CustomEvent('site:pricing', { detail: pricing }));
   }
 
@@ -907,4 +875,145 @@ function bindReadyReportCheckoutLink(link) {
       return pricing || fallbackPricing;
     })
     .catch(function () { return fallbackPricing; });
+})();
+
+// ── Story: one real revision, step by step ──────────────────────────
+// Figures from UPM's base report of 28 October 2026 (UPM_28102026_2.pdf, the
+// free UPM report) and the revision delivered on 29 October 2026
+// (UPM_29102026_rev-6Bj2EZE5.pdf). Each step sets the headline figure, the
+// caption and every row; the bars scale to the largest value in that step.
+const STORIES = {
+  upm: {
+    rows: ['Pulp and timber', 'Adhesive materials', 'Electricity', 'Forestry and renewables',
+      'Specialty papers', 'Graphic paper', 'Biochemicals', 'Debt and other claims, less cash'],
+    claims: 7,
+    focus: 2,
+    quote: 'Update the report so Electricity is valued against generation peers only: drop E.ON (mostly regulated networks) and use the Verbund–Fortum median, 15.7x 2028 EBIT. Carry the change through the rest of the report.',
+    cite: 'The analyst’s instruction, 29 October 2026',
+    steps: [
+      { tab: 'Price', label: 'UPM share price, 28 October 2026', num: '€23.0',
+        caption: 'The report starts from what investors pay for UPM today.',
+        muted: true },
+      { tab: 'Model', label: 'UPM share price, 28 October 2026', num: '€23.0',
+        caption: 'Valuatum’s model holds UPM’s reported figures and analysts’ forecasts. Each business gets its share of the 2028 operating profit.',
+        values: [410, 196, 172, 71, 195, 288, null, null],
+        text: ['€410m', '€196m', '€172m', '€71m', '€195m', '€288m', '–', ''],
+        subs: ['', '', '', '', '', '', 'barely sells anything yet', ''],
+        hide: [7] },
+      { tab: 'Base report', label: 'UPM share price, 28 October 2026', num: '€23.0',
+        caption: 'The AI report values each business at its peers’ multiple. The parts add up to today’s price. No target, no rating.',
+        values: [7.0, 4.9, 4.0, 3.8, 3.7, 3.3, 1.8, 5.5],
+        text: ['7.0', '4.9', '4.0', '3.8', '3.7', '3.3', '1.8', '−5.5'],
+        subs: ['9× 2028 profit', '13× 2028 profit', '12× 2028 profit', 'the €2bn the company reports',
+          '10× 2028 profit', '6× 2028 profit', 'needs €1.1bn of sales by 2035', 'end of 2026, as forecast'] },
+      { tab: 'Instruction', analyst: true, label: 'UPM share price, 28 October 2026', num: '€23.0',
+        caption: 'An analyst disagrees with one multiple and writes the change down in plain language.',
+        quote: true, focus: true },
+      { tab: 'Revised report', result: true, label: '12-month target, 28 October 2027', num: '€24.3',
+        delta: '+5.5% on the €23.0 share price',
+        caption: 'The model runs again. Electricity rises to €5.1 a share, and the businesses the analyst left alone keep the market’s view.',
+        quote: true, changed: [2, 6],
+        values: [7.0, 4.9, 5.1, 3.8, 3.7, 3.3, 2.0, 5.5],
+        text: ['7.0', '4.9', '5.1', '3.8', '3.7', '3.3', '2.0', '−5.5'],
+        subs: ['9× 2028 profit', '13× 2028 profit', '15.7× 2028 profit', 'the €2bn the company reports',
+          '10× 2028 profit', '6× 2028 profit', 'needs €1.1bn of sales by 2035', 'end of 2026, as forecast'] },
+    ],
+  },
+};
+
+(function initStory() {
+  document.querySelectorAll('[data-story]').forEach(root => {
+    const story = STORIES[root.dataset.story];
+    if (!story) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+    root.innerHTML = `
+      <div class="story-tabs" role="tablist" aria-label="Steps">${story.steps.map((s, i) => `
+        <button type="button" role="tab" class="story-tab${s.analyst ? ' is-analyst' : ''}${s.result ? ' is-result' : ''}" aria-selected="false" data-i="${i}"><span class="story-tab-n">${i + 1}</span>${esc(s.tab)}</button>`).join('')}
+      </div>
+      <div class="story-body">
+        <div>
+          <div class="story-swap" data-swap>
+            <span class="story-label" data-k="label"></span>
+            <strong class="story-num" data-k="num"></strong>
+            <span class="story-delta" data-k="delta"></span>
+            <p class="story-caption" data-k="caption"></p>
+          </div>
+          <blockquote class="story-quote">“${esc(story.quote)}”<cite>${esc(story.cite)}</cite></blockquote>
+        </div>
+        <ul class="story-rows">${story.rows.map((name, i) => `
+          <li class="story-row${i === story.claims ? ' is-claims' : ''}" style="--i:${i}">
+            <span class="story-name">${esc(name)}<span class="story-sub"></span></span>
+            <span class="story-bar"><i></i></span>
+            <span class="story-val"></span>
+          </li>`).join('')}
+        </ul>
+      </div>`;
+
+    const tabs = [...root.querySelectorAll('.story-tab')];
+    const rows = [...root.querySelectorAll('.story-row')];
+    const swap = root.querySelector('[data-swap]');
+    const field = (k) => root.querySelector(`[data-k="${k}"]`);
+    let current = -1;
+    let last = {};
+
+    function show(i) {
+      if (i === current) return;
+      current = i;
+      // A step without its own figures keeps the previous step's rows.
+      const s = story.steps[i];
+      for (let j = i; j >= 0; j--) if (story.steps[j].values) { last = story.steps[j]; break; }
+      if (s.muted) last = {};
+      tabs.forEach((t, j) => t.setAttribute('aria-selected', String(j === i)));
+      // On a narrow screen the tab row scrolls; keep the current step in view.
+      const bar = tabs[i].parentElement;
+      bar.scrollTo({ left: tabs[i].offsetLeft - (bar.clientWidth - tabs[i].offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+
+      swap.classList.add('is-out');
+      setTimeout(() => {
+        field('label').textContent = s.label;
+        field('num').textContent = s.num;
+        field('delta').textContent = s.delta || '';
+        field('caption').textContent = s.caption;
+        swap.classList.remove('is-out');
+      }, reduce ? 0 : 180);
+
+      root.classList.toggle('show-quote', Boolean(s.quote));
+      const values = last.values || [];
+      const max = Math.max(...values.filter(v => v != null), 1);
+      rows.forEach((row, j) => {
+        const v = values[j];
+        row.querySelector('.story-bar i').style.setProperty('--s', v == null ? 0 : (v / max).toFixed(3));
+        row.querySelector('.story-val').textContent = (last.text || [])[j] || '';
+        row.querySelector('.story-sub').textContent = (last.subs || [])[j] || '';
+        row.classList.toggle('is-muted', Boolean(s.muted));
+        row.classList.toggle('is-hidden', (last.hide || []).includes(j));
+        row.classList.toggle('is-focus', Boolean(s.focus) && j === story.focus);
+        row.classList.toggle('is-changed', (s.changed || []).includes(j));
+      });
+    }
+
+    let timer = null;
+    const stop = () => { clearInterval(timer); timer = null; };
+    tabs.forEach((t, i) => t.addEventListener('click', () => { stop(); show(i); }));
+    root.addEventListener('keydown', (e) => {
+      if (!['ArrowRight', 'ArrowLeft'].includes(e.key) || !e.target.classList.contains('story-tab')) return;
+      const n = (current + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      stop(); show(n); tabs[n].focus();
+    });
+    show(0);
+
+    if (reduce) return;
+    // Play through once when the story first comes into view.
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      timer = setInterval(() => {
+        if (current >= story.steps.length - 1) return stop();
+        show(current + 1);
+      }, 3400);
+    }, { threshold: 0.35 });
+    io.observe(root);
+  });
 })();

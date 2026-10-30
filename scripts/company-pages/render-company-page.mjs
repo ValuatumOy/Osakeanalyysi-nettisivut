@@ -188,7 +188,7 @@ ${navHtml()}
             <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
               <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-company="${attr(name)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, typically within about 30 minutes</span>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>
             </div>
           </div>
         </section>

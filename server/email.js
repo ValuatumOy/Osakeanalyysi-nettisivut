@@ -209,7 +209,7 @@ async function sendFreshConfirmEmail(toEmail, meta) {
           <p style="color:#8A9590;margin:0 0 20px;font-size:14px;">Fresh AI Equity Report for ${company}${ticker}</p>
           <p style="font-size:14px;color:#1A2420;line-height:1.7;margin:0 0 20px;">
             We've received your order and are generating a fresh report using the latest available financial data.
-            Your PDF will arrive at this address within <strong>about 30 minutes</strong>.
+            Your PDF will arrive at this address usually within <strong>an hour</strong>.
           </p>
           ${orderLinkBox}
           ${infoBox(`While you wait, browse our <a href="${SITE}/reports.html" style="color:#3D9E72;text-decoration:none;">free sample reports</a> to see the format and quality of our analysis.`)}`,

@@ -95,8 +95,8 @@ ${members.map(render).join('\n')}${note ? `\n${note}\n` : ''}
 
 - Ready reports download instantly as PDF, with an email copy.
 - Fresh reports are generated on demand from the latest available financial data and
-  arrive by email, usually within about 30 minutes.
-- Any listed company Valuatum covers can be ordered as a fresh report, whether or not a
+  arrive by email, usually within an hour.
+- Any US, Nordic or Baltic listed company can be ordered as a fresh report, whether or not a
   ready report exists for it.
 
 ## Coverage
@@ -138,8 +138,8 @@ const pricingJsonLd = {
       '@type': 'Product',
       '@id': 'https://www.aiequityreports.com/pricing.html#product',
       name: 'Valuatum AI Equity Report',
-      description: 'AI-generated equity research report for a listed company, covering '
-        + 'segment value analysis, reverse valuation, risks, catalysts and full financial estimates.',
+      description: 'AI-generated equity research report for a listed company that starts from the share price: '
+        + 'the price split by business, each business beside its peers, the valuation and full financial statements.',
       brand: { '@type': 'Organization', name: 'Valuatum Oy', url: 'https://www.aiequityreports.com/' },
       category: 'Equity research report',
       offers: oneOff.map(offerFor),
