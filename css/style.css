@@ -3340,3 +3340,24 @@ select.input {
   font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; color: var(--charcoal); max-width: 34ch; }
 .story-intro + .story { margin-top: 1.5rem; }
 @media (max-width: 480px) { .model-table { min-width: 0; } .model-table .c-mid { display: none; } }
+
+/* =====================================================
+   HOW TO USE IT — the five things a visitor does, in order.
+===================================================== */
+.home-use { padding: calc(var(--section-py) * 0.6) 0 var(--section-py); background: var(--white); }
+.use { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0;
+  border-top: 1px solid var(--color-border); }
+.use-step { display: grid; grid-template-columns: 3rem 1fr; column-gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--color-border); }
+.use-n { grid-row: span 3; font-family: var(--font-display); font-size: 2.25rem; line-height: 1; color: var(--green-deep); }
+.use-step--opt .use-n { color: #9AA59F; }
+.use-step h3 { font-size: var(--text-base); font-weight: 600; color: var(--charcoal); }
+.use-step p { font-size: var(--text-sm); line-height: 1.6; color: #5B6A63; margin-top: 0.3rem; }
+.use-where { justify-self: start; margin-top: 0.6rem; font-size: var(--text-sm); font-weight: 500; color: var(--green); }
+.use-where::after { content: " →"; }
+@media (min-width: 1000px) {
+  .use { grid-template-columns: repeat(5, 1fr); gap: 1.5rem; border-top: none; }
+  .use-step { display: flex; flex-direction: column; padding: 1.5rem 0 0; border-bottom: none; border-top: 2px solid var(--green-deep); }
+  .use-step--opt { border-top: 2px dashed #B9C2BD; }
+  .use-n { font-size: 2.75rem; margin-bottom: 0.9rem; }
+  .use-where { margin-top: auto; padding-top: 0.9rem; }
+}

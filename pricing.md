@@ -23,7 +23,7 @@ Canonical page: https://www.aiequityreports.com/pricing.html
 
 - Price: €50.00 (per report · latest data · delivered by email)
 - Summary: Order a newly generated report with the latest available financial data, on any US, Nordic or Baltic listed company.
-- Includes: Everything in Ready Report; Latest available data; US, Nordic and Baltic listings; Delivered by email, usually within about 30 minutes
+- Includes: Everything in Ready Report; Latest available data; US, Nordic and Baltic listings; Delivered by email, usually within an hour
 
 ### Enterprise
 
@@ -67,7 +67,7 @@ Yearly plans include a larger monthly report allowance and cost the equivalent o
 
 - Ready reports download instantly as PDF, with an email copy.
 - Fresh reports are generated on demand from the latest available financial data and
-  arrive by email, usually within about 30 minutes.
+  arrive by email, usually within an hour.
 - Any US, Nordic or Baltic listed company can be ordered as a fresh report, whether or not a
   ready report exists for it.
 
