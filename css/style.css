@@ -3267,3 +3267,76 @@ select.input {
   .split-name, .split-bar, .split-val { grid-row: auto; grid-column: auto; }
 }
 .tiles-head { max-width: 640px; margin-bottom: 2rem; }
+
+/* =====================================================
+   PROCESS MAP — the whole process as one still picture, before the
+   animated example. Five boxes; the model is the dark one.
+===================================================== */
+.pmap { margin-top: 2.5rem; }
+.pmap-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 1.75rem; }
+.pmap-step { position: relative; display: flex; flex-direction: column; }
+.pmap-who { font-size: var(--text-xs); color: var(--gray-steel); margin-bottom: 0.45rem; }
+.pmap-box { flex: 1; background: var(--off-white); border-radius: 22px; padding: 1.25rem 1.25rem 1.35rem; }
+.pmap-box b { display: block; font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; line-height: 1.2;
+  letter-spacing: -0.01em; color: var(--charcoal); }
+.pmap-box span { display: block; margin-top: 0.4rem; font-size: var(--text-sm); line-height: 1.5; color: #5B6A63; }
+.pmap-step--model .pmap-box { background: var(--forest); }
+.pmap-step--model .pmap-box b { color: var(--white); }
+.pmap-step--model .pmap-box span { color: rgba(255,255,255,0.7); }
+.pmap-step--you .pmap-box { background: var(--gold-faint); }
+.pmap-step--result .pmap-box { background: var(--green-faint); }
+/* Phone: a short arrow under each box points at the next one. */
+.pmap-step:not(:last-child)::after { content: ""; position: absolute; left: 1.4rem; bottom: -1.35rem; width: 9px; height: 9px;
+  border-right: 1.5px solid #9AA59F; border-bottom: 1.5px solid #9AA59F; transform: rotate(45deg); }
+@media (min-width: 640px) and (max-width: 1099px) {
+  .pmap-steps { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .pmap-step--result { grid-column: 1 / -1; }
+  .pmap-step:not(:last-child)::after { display: none; }
+}
+.pmap-back { display: flex; gap: 0.6rem; align-items: center; margin-top: 1.25rem; font-size: var(--text-sm); color: #5B6A63; }
+.pmap-back svg { flex: 0 0 auto; color: #7A5718; }
+@media (min-width: 1100px) {
+  .pmap-steps { grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+  .pmap-step:not(:last-child)::after { left: auto; bottom: auto; right: calc(-0.75rem - 5px); top: calc(50% + 0.6rem);
+    transform: rotate(-45deg); }
+  /* The loop back: from "Your instruction" under the row to the model. */
+  .pmap-back { position: relative; margin: 1.5rem 0 0 calc(20% + 0.3rem); width: calc(60% - 0.6rem); padding-top: 1.1rem;
+    border-top: 1.5px dashed rgba(200,150,62,0.6); justify-content: center; }
+  .pmap-back::before, .pmap-back::after { content: ""; position: absolute; top: -1.1rem; height: 1.1rem; width: 0;
+    border-left: 1.5px dashed rgba(200,150,62,0.6); }
+  .pmap-back::before { left: 0; }
+  .pmap-back::after { right: 0; }
+}
+
+/* =====================================================
+   MODEL — what the reports are built on, against a general chat.
+===================================================== */
+.model-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.5rem; }
+@media (min-width: 1100px) { .model-grid { grid-template-columns: 0.9fr 1.1fr; } }
+.model-tile { background: var(--off-white); border-radius: 28px; padding: clamp(1.25rem, 3vw, 2rem); min-width: 0; }
+.model-tile h3 { font-size: var(--text-base); font-weight: 600; color: var(--charcoal); }
+.model-tile-sub { font-size: var(--text-sm); color: var(--gray-steel); margin-top: 0.2rem; }
+.model-table-wrap { overflow-x: auto; margin-top: 1.25rem; }
+.model-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); font-variant-numeric: tabular-nums; min-width: 320px; }
+.model-table th, .model-table td { padding: 0.55rem 0.5rem; text-align: right; border-bottom: 1px solid rgba(26,36,32,0.07); }
+.model-table th { font-weight: 500; color: var(--gray-steel); }
+.model-table th:first-child, .model-table td:first-child { text-align: left; padding-left: 0; color: var(--charcoal); }
+.model-table .is-est { color: var(--green-deep); }
+.model-more { margin-top: 1rem; font-size: var(--text-sm); line-height: 1.6; color: #5B6A63; }
+.model-vs { width: 100%; border-collapse: collapse; margin-top: 1.25rem; font-size: var(--text-sm); }
+.model-vs th { text-align: left; font-weight: 500; color: var(--gray-steel); padding: 0 0.75rem 0.6rem 0; }
+.model-vs td { vertical-align: top; padding: 0.7rem 0.75rem 0.7rem 0; border-top: 1px solid rgba(26,36,32,0.07); line-height: 1.5; }
+.model-vs td:first-child { font-weight: 500; color: var(--charcoal); width: 22%; }
+.model-vs td:nth-child(2) { color: var(--gray-steel); width: 32%; }
+.model-vs td:nth-child(3) { color: var(--charcoal); }
+@media (max-width: 640px) {
+  .model-vs thead { display: none; }
+  .model-vs tr { display: block; padding: 0.75rem 0; border-top: 1px solid rgba(26,36,32,0.07); }
+  .model-vs td { display: block; border: none; padding: 0.1rem 0; width: auto !important; }
+  .model-vs td[data-label]::before { content: attr(data-label) ": "; color: var(--gray-steel); }
+}
+.model-note { margin-top: 1.5rem; font-size: var(--text-sm); color: #5B6A63; max-width: 70ch; }
+.story-intro { margin-top: clamp(3.5rem, 7vw, 5rem); font-family: var(--font-display); font-size: var(--text-xl);
+  font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; color: var(--charcoal); max-width: 34ch; }
+.story-intro + .story { margin-top: 1.5rem; }
+@media (max-width: 480px) { .model-table { min-width: 0; } .model-table .c-mid { display: none; } }
