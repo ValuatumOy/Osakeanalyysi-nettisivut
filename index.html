@@ -141,7 +141,7 @@
           <span class="hero-headline-line">that starts from the share price.</span>
         </h1>
         <p class="hero-sub">
-          Each report shows what today’s price pays for, business by business. Add your own view and the report comes back rebuilt on your numbers.
+          Each report shows what today’s price pays for, business by business, with every figure calculated in Valuatum’s financial model. Add your own view and the report comes back rebuilt on your numbers.
         </p>
 
         <!-- Search -->
@@ -207,12 +207,63 @@
     <!-- HOW IT WORKS -->
     <section class="home-story" id="how">
       <div class="container">
-        <h2 class="section-headline reveal" style="margin-bottom:0.75rem;">From the price to an analyst’s report.</h2>
-        <p class="section-sub reveal" style="margin-bottom:0;">A real UPM revision from 29 October 2026, in five steps.</p>
+        <h2 class="section-headline reveal" style="margin-bottom:0.75rem;">How a report is made.</h2>
+        <p class="section-sub reveal" style="margin-bottom:0;">From today’s share price to an analyst’s own report.</p>
+        <div class="pmap reveal">
+          <ol class="pmap-steps">
+            <li class="pmap-step"><span class="pmap-who">Market</span><div class="pmap-box"><b>Share price</b><span>What investors pay for the company today</span></div></li>
+            <li class="pmap-step pmap-step--model"><span class="pmap-who">Valuatum</span><div class="pmap-box"><b>Financial model</b><span>Reported statements and analysts’ forecasts. Calculates every figure.</span></div></li>
+            <li class="pmap-step"><span class="pmap-who">AI</span><div class="pmap-box"><b>Base report</b><span>Splits the price between the businesses. No target.</span></div></li>
+            <li class="pmap-step pmap-step--you"><span class="pmap-who">Analyst</span><div class="pmap-box"><b>Instruction</b><span>Where the analyst disagrees, in plain words</span></div></li>
+            <li class="pmap-step pmap-step--result"><span class="pmap-who">Valuatum and AI</span><div class="pmap-box"><b>Revised report</b><span>Rebuilt on the analyst’s numbers, with a 12-month target</span></div></li>
+          </ol>
+          <p class="pmap-back"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v2.8h-2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>The instruction goes back through the financial model, as many rounds as needed.</p>
+        </div>
+        <h3 class="story-intro reveal">The same steps on a real report: UPM, 28–29 October 2026.</h3>
         <figure class="story" data-story="upm">
           <p>UPM’s share price was €23.0 on 28 October 2026. The base report split it between seven businesses, with Electricity at €4.0 a share on 12× its 2028 operating profit. An analyst asked for Electricity to be valued on the Verbund–Fortum median of 15.7×. The revised report put Electricity at €5.1 and gave a 12-month target of €24.3.</p>
         </figure>
         <p class="home-story-more"><a href="institutions.html#example">The revision line by line →</a></p>
+      </div>
+    </section>
+
+    <!-- THE MODEL -->
+    <section class="home-story home-model" id="model">
+      <div class="container">
+        <h2 class="section-headline reveal" style=" max-width:760px; margin-bottom:0.75rem;">The numbers come from Valuatum’s financial model.</h2>
+        <p class="section-sub reveal" style="max-width:660px; margin-bottom:0;">The AI researches and writes. Every figure is calculated in the statement model Valuatum has built for banks, brokers and asset managers since 2000.</p>
+        <div class="model-grid reveal">
+          <div class="model-tile">
+            <h3>UPM in the model</h3>
+            <p class="model-tile-sub">EUR million · A = reported, E = analysts’ forecast as the model holds it</p>
+            <div class="model-table-wrap">
+              <table class="model-table">
+                <thead><tr><th></th><th>2025A</th><th class="is-est">2026E</th><th class="is-est c-mid">2027E</th><th class="is-est">2028E</th></tr></thead>
+                <tbody>
+                  <tr><td>Net sales</td><td>9,656</td><td>9,542</td><td class="c-mid">9,957</td><td>10,061</td></tr>
+                  <tr><td>EBITDA</td><td>1,343</td><td>1,497</td><td class="c-mid">1,818</td><td>1,897</td></tr>
+                  <tr><td>Operating profit</td><td>749</td><td>967</td><td class="c-mid">1,298</td><td>1,332</td></tr>
+                  <tr><td>Net earnings</td><td>479</td><td>725</td><td class="c-mid">988</td><td>1,038</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="model-more">Behind these rows sit the full income statement, balance sheet and cash flow. The model works out investment, working capital, tax, cash and debt from the forecast, and runs again for every revision.</p>
+          </div>
+          <div class="model-tile">
+            <h3>Compared with asking a chatbot</h3>
+            <table class="model-vs">
+              <thead><tr><th></th><th>A general AI chat</th><th>AI Equity Reports</th></tr></thead>
+              <tbody>
+                <tr><td>Statements</td><td data-label="Chat">What you paste in</td><td data-label="Here">Imported into the model from company filings, kept current for US, Nordic and Baltic listings</td></tr>
+                <tr><td>Figures</td><td data-label="Chat">Written by the language model</td><td data-label="Here">Calculated by the model and code; the AI writes the text around them</td></tr>
+                <tr><td>Forecast</td><td data-label="Chat">Whatever the prompt suggests</td><td data-label="Here">Analysts’ consensus, carried through profit, investment, cash and debt</td></tr>
+                <tr><td>Checks</td><td data-label="Chat">Yours to do</td><td data-label="Here">Every figure in the text checked against the calculation before delivery</td></tr>
+                <tr><td>Your view</td><td data-label="Chat">A new prompt, a new answer</td><td data-label="Here">One instruction; the model reruns and the target follows</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="model-note reveal">The method and the prompts behind it come from months of testing on real companies, with Valuatum’s analysts reviewing each report and listing what to fix.</p>
       </div>
     </section>
 
