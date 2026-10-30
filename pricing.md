@@ -11,19 +11,19 @@ Canonical page: https://www.aiequityreports.com/pricing.html
 
 - Price: €0 (always free · open PDF instantly)
 - Summary: Selected reports from large-cap companies. Open the full PDF for free. No card, no account.
-- Includes: Full PDF report; Segment value analysis; Reverse valuation; Risk & catalyst analysis; Financial statements
+- Includes: Full PDF report; The share price split by business; Each business beside its peers; Valuation in familiar measures; Financial statements
 
 ### Ready Report
 
 - Price: €20.00 (per report · instant download + email copy)
 - Summary: Recent AI equity research reports at a discounted price. Full PDF with all sections, generated within the past few weeks.
-- Includes: Full PDF report; Company value map; Core investment analysis; Reverse valuation + scenarios; Risk & catalyst analysis; Financial statements; Investment summary
+- Includes: Full PDF report; The share price split by business; One section per business; What to watch; Valuation in familiar measures; Financial statements; Numbered research sources
 
 ### Fresh Report
 
 - Price: €50.00 (per report · latest data · delivered by email)
-- Summary: Order a newly generated report with the latest available financial data. Any listed company, any time.
-- Includes: Everything in Ready Report; Latest available data; Any supported listed company; Delivered by email, usually within about 30 minutes
+- Summary: Order a newly generated report with the latest available financial data, on any US, Nordic or Baltic listed company.
+- Includes: Everything in Ready Report; Latest available data; US, Nordic and Baltic listings; Delivered by email, usually within about 30 minutes
 
 ### Enterprise
 
@@ -68,7 +68,7 @@ Yearly plans include a larger monthly report allowance and cost the equivalent o
 - Ready reports download instantly as PDF, with an email copy.
 - Fresh reports are generated on demand from the latest available financial data and
   arrive by email, usually within about 30 minutes.
-- Any listed company Valuatum covers can be ordered as a fresh report, whether or not a
+- Any US, Nordic or Baltic listed company can be ordered as a fresh report, whether or not a
   ready report exists for it.
 
 ## Coverage

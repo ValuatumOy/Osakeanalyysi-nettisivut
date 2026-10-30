@@ -484,22 +484,6 @@ function trackEvent(event, props = {}) {
   sections.forEach(s => io.observe(s.el));
 })();
 
-// ── Mockup bar animation ──────────────────────────
-(function initMockupBars() {
-  document.querySelectorAll('.mockup-bar-fill[data-w]').forEach(bar => {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          bar.style.width = bar.dataset.w;
-          io.unobserve(bar);
-        }
-      });
-    }, { threshold: 0.3 });
-    bar.style.width = '0';
-    io.observe(bar);
-  });
-})();
-
 // ── Checkout button placeholder ───────────────────
 // Pricing config hydration
 (function initPricingFromConfig() {
@@ -894,6 +878,17 @@ function bindReadyReportCheckoutLink(link) {
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(function (node) {
       node.nodeValue = replacePriceText(node.nodeValue, pricing);
+    });
+
+    // The "+ Revisions" prices and round counts: <span data-price="freshRevisions">
+    // and <span data-included="freshRevisions"> carry the kind they show.
+    document.querySelectorAll('[data-price]').forEach(function (el) {
+      var p = pricing[el.getAttribute('data-price')];
+      if (p && p.shortLabel) el.textContent = p.shortLabel;
+    });
+    document.querySelectorAll('[data-included]').forEach(function (el) {
+      var p = pricing[el.getAttribute('data-included')];
+      if (p && p.included) el.textContent = String(p.included);
     });
 
     window.dispatchEvent(new CustomEvent('site:pricing', { detail: pricing }));
