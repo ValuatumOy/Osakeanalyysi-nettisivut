@@ -104,13 +104,15 @@ const overview = pages.filter((p) => !covered.has(p.slug));
 
 const body = `# Valuatum AI Equity Reports
 
-> Valuatum AI Equity Reports produces professional, AI-generated equity research for any listed company.
-> Each report applies a structured enterprise-value and value-pool methodology — including reverse valuation,
-> risk and catalyst analysis, and full financial estimates — built on Valuatum's 25+ years of equity research
-> practice (Helsinki, Finland, est. 2000). Reports are delivered as web pages and downloadable PDFs.
+> Valuatum AI Equity Reports produces AI-generated equity research on US, Nordic and Baltic listed companies.
+> Each report starts from today's share price and explains it: analysts' consensus forecasts are kept as they are,
+> the price is split between the company's businesses, and each business is set beside listed peers. The base
+> report carries no rating or target; an analyst who revises it gets a 12-month target that follows from their own
+> assumptions. Built on Valuatum's financial models (Helsinki, Finland, est. 2000). Delivered as web pages and PDFs.
 > All content is AI-generated research for informational purposes only and is not investment advice.
 >
-> Ratings and price targets below are read directly from each report page when this file is generated.
+> Any rating or price target below is read directly from each report page when this file is generated; reports
+> that explain the price carry none.
 > Every figure is the one that page carried at that moment; the page itself is always authoritative.
 
 ## Free sample equity reports
@@ -126,7 +128,7 @@ ${comparisons().join('\n') || '- None published right now.'}
 ${blogPosts().join('\n') || '- None published right now.'}
 
 ## Methodology & company
-- [Methodology](${SITE}/methodology.html): how value-pool analysis and reverse valuation work.
+- [Methodology](${SITE}/methodology.html): how the report reads the share price into the businesses, and where an analyst's view enters.
 - [Reports catalogue](${SITE}/reports.html): browse all available reports and order a fresh report.
 - [Company index](${SITE}/companies.html): every company with a page on this site.
 - [Pricing](${SITE}/pricing.html): credits and per-report pricing.
@@ -136,8 +138,9 @@ ${blogPosts().join('\n') || '- None published right now.'}
 - [For institutions](${SITE}/institutions.html): how asset managers, brokers, advisory firms and IR teams use the reports, and how to request a free pilot.
 
 ## Key concepts
-- Reverse valuation: works backwards from the current market price to reveal the growth and margin assumptions investors are implicitly paying for.
-- Value pool analysis: decomposes a company's enterprise value into its distinct businesses and embedded options, each priced separately.
+- Market-first report: takes today's share price as the market's best estimate and shows what each business must deliver for it to hold.
+- Price split: today's share price divided between the company's businesses, each on a multiple of its forecast operating profit, so the parts add up to the price.
+- Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
 ${overview.length} listed companies have a page with share price, valuation metrics and company profile,

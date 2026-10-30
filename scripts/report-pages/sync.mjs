@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 import { fetchLiveCatalog } from '../live-catalog.mjs';
 import { fetchAnalystIndex, analystClause } from '../analyst-index.mjs';
-import { extractReport } from './extract.mjs';
+import { extractReport, extractedSummary } from './extract.mjs';
 import { loadEnv } from './openrouter.mjs';
 import { loadContentDocs, resolveState, CONTENT_DIR, PAGES_DIR } from './owners.mjs';
 import { IS_TEST } from './stage.mjs';
@@ -121,7 +121,7 @@ async function main() {
         try {
           const run = await extractReport(entry);
           extracted.push(run);
-          console.log(`extracted  ${entry.id} → ${path.relative(ROOT, run.outPath)} (${run.headline?.recommendation}, target ${run.headline?.targetPrice})`);
+          console.log(`extracted  ${entry.id} → ${path.relative(ROOT, run.outPath)} (${extractedSummary(run)})`);
         } catch (err) {
           failures.push({ id: entry.id, error: err.message });
           console.error(`FAILED     ${entry.id}: ${err.message}`);

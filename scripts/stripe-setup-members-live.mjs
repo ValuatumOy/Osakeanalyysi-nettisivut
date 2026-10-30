@@ -11,6 +11,7 @@
 // creation time, so an existing endpoint prints a warning instead of a secret.
 
 import Stripe from 'stripe';
+import { ensureWebhookEvents } from './stripe-webhook-events.mjs';
 
 const key = process.env.STRIPE_SECRET_KEY;
 const apiUrl = (process.env.MEMBERS_API_URL || '').replace(/\/$/, '');
@@ -80,6 +81,7 @@ for (const { plan, name, prices } of ONE_OFF) {
 // The exact event set server/lambda/members.js switches on.
 const EVENTS = [
   'checkout.session.completed',
+  'checkout.session.async_payment_succeeded',
   'customer.subscription.created',
   'customer.subscription.updated',
   'customer.subscription.deleted',
@@ -91,6 +93,7 @@ const hooks = await stripe.webhookEndpoints.list({ limit: 100 });
 let hook = hooks.data.find(h => h.url === webhookUrl);
 let hookSecret = null;
 if (hook) {
+  hook = await ensureWebhookEvents(stripe, hook, EVENTS);
   console.error(`webhook already exists (${hook.id}) — its signing secret is only shown at creation; roll it in the dashboard if it is lost`);
 } else {
   hook = await stripe.webhookEndpoints.create({ url: webhookUrl, enabled_events: EVENTS });

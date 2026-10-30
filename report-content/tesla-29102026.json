@@ -1,0 +1,770 @@
+{
+  "id": "tesla-29102026",
+  "slug": "tesla-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Tesla, Inc.",
+  "ticker": "TSLA",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Auto manufacturers",
+  "currency": "USD",
+  "reportDate": "2026-10-29",
+  "profile": "Makes and sells electric cars, and offers leasing, charging, service and parts, to drivers, businesses and fleet operators. It also sells battery storage and solar-energy products, while developing Autonomy and Optimus as potential future businesses.",
+  "headline": {
+    "currentPrice": "402 USD",
+    "marketCap": "1.59tn USD",
+    "enterpriseValue": "1.6tn USD"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-3 USD per share"
+  },
+  "consensusTarget": {
+    "value": "415 USD",
+    "analysts": "49",
+    "range": "25-600 USD",
+    "source": "PriceTargets.com"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "562x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "171x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "439x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "499 USD",
+    "week52Low": "297 USD",
+    "oneYearChange": "-12%",
+    "threeYearChange": "+95%"
+  },
+  "summary": [
+    "Tesla, Inc. (TSLA, NASDAQ Global Select) makes electric cars, provides leasing, charging, service and parts, and sells battery storage and solar products. The company is also developing Autonomy and Optimus. The share price was 402 USD on 29 October 2026, against a market capitalisation of 1.59tn USD and enterprise value of 1.6tn USD, in this Valuatum market report dated 29 October 2026. The price had fallen 12% over one year but risen 95% over three years, while the latest forecast set out sales of USD 145,710m and operating profit of USD 9,325m for 2028.",
+    "Cars and Energy together account for 21 USD per share before debt, other claims and cash: Cars contributes 17 USD at 8.1x 2028 operating profit, while Energy contributes 5 USD at 14.5x 2028 operating profit. Debt and other claims, less cash, reduce the split by 3 USD per share. The remaining 383 USD per share is assigned to Autonomy and Optimus: Autonomy contributes 307 USD and requires USD 1.35tn of 2040 sales, while Optimus contributes 77 USD and requires USD 449bn of 2040 sales.",
+    "The share price sits on a 171x 2028 EV/EBIT multiple for the whole company, against a peer median of 18.8x 2027 P/E and 13.2x 2027 EV/EBITDA, because most of the price is assigned to businesses that barely sell anything yet. Cars is near its industry median at 8.1x versus 7.1x, and Energy is at its solar-peer median of 14.5x. The reading changes with Autonomy sales and paid-mile costs, Optimus deliveries and unit economics, car margins and storage output."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Price needs new businesses",
+      "metric": "383 USD",
+      "text": "Today's Cars and Energy contribute only 21 USD per share, after which Autonomy and Optimus must account for 383 USD. The split requires Autonomy sales of USD 1.35tn and Optimus sales of USD 449bn in 2040, so the share price is principally a long-dated commercialisation claim."
+    },
+    {
+      "num": "02",
+      "title": "Autonomy carries most",
+      "metric": "1.35tn USD",
+      "text": "Autonomy accounts for 307 USD per share and requires USD 1.35tn of annual rides by 2040 at a 25% operating margin. That is about 16% of worldwide transport spending of USD 8.27tn, making ride scale, permission and cost per paid mile the central tests."
+    },
+    {
+      "num": "03",
+      "title": "Watch delivery evidence",
+      "metric": "0.30 USD",
+      "text": "The earliest evidence is operational rather than financial: Autonomy needs a separate sales disclosure and a cost approaching 0.30 USD per paid mile, while Optimus needs outside deliveries, rising weekly output and a customer price below its unit cost. Cars and Energy require improving margins and factory utilisation."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Autonomy",
+      "share": "307 USD per share",
+      "economics": "25% 2040 operating margin · USD 337bn 2040 operating profit · Goldman Sachs robotaxi market about USD 415bn in 2035",
+      "text": "Autonomy is the largest pool in the share-price split, contributing 307 USD per share despite having no separately reported 2025 sales. The price requires annual ride sales of USD 1.35tn by 2040 and operating profit of about USD 337bn at a 25% margin. That sales level is about 16% of worldwide consumer transport spending of USD 8.27tn in 2026, 71% of United States household transportation spending of USD 1.9tn in 2024, and more than three times Goldman Sachs's forecast worldwide robotaxi market of USD 415bn in 2035. Tesla had nearly 2 million cumulative unsupervised miles by the end of September 2026 and service in six cities, but Waymo was completing more than 500,000 paid rides a week. The commercial bridge therefore depends on driverless permissions, lower costs and a fleet that can scale beyond current pilots."
+    },
+    {
+      "name": "Optimus",
+      "share": "77 USD per share",
+      "economics": "21% 2040 operating margin · USD 94bn 2040 operating profit · Goldman Sachs humanoid market USD 138bn in 2035",
+      "text": "Optimus contributes 77 USD per share and must become a large robot manufacturer from an initial factory line. The price requires USD 449bn of annual sales in 2040 and about USD 94bn of operating profit at a 21% margin, a comparison with FANUC's 21.4% company-wide operating margin rather than an established Optimus result. The required 2040 sales exceed Goldman Sachs's USD 138bn worldwide humanoid-market forecast for 2035 and equal 1.7% of ARK's USD 26tn widest opportunity. Tesla said production had begun on high-volume lines at Fremont, with a first line designed for one million robots a year, but design capacity is not output. Outside sales are planned around the end of 2027, while parts costs for an earlier version were estimated at USD 50,000-60,000 against a stated goal below USD 20,000."
+    },
+    {
+      "name": "Cars",
+      "share": "17 USD per share",
+      "economics": "8.1x 2028 operating profit · USD 8.1bn 2028 operating profit · peers about 7.1x",
+      "text": "Cars sells electric vehicles and related leasing, credits, used vehicles, maintenance, charging, insurance and parts. It contributes 17 USD per share at 8.1x its forecast 2028 operating profit of USD 8.1bn, based on sales of USD 126bn and a 6% operating margin. The multiple is slightly above the industry median of 7.1x and within the 4.9x-8.9x middle range; General Motors is at 7.5x and BYD at 8.7x. The key evidence is margin delivery: Tesla's latest reported quarterly operating margin was 2.6%, below the 6% split assumption, while third-quarter deliveries fell 2% year on year to 486,532 and automotive revenue fell 3% to USD 20,560m. The Semi began volume production in the third quarter, but Model S and Model X lines were decommissioned for Optimus lines."
+    },
+    {
+      "name": "Energy",
+      "share": "5 USD per share",
+      "economics": "14.5x 2028 operating profit · USD 1.3bn 2028 operating profit · solar peers median 14.5x",
+      "text": "Energy sells battery storage and solar products, installation, leasing and services to households, businesses and utilities. It contributes 5 USD per share at 14.5x forecast 2028 operating profit of USD 1.3bn, based on sales of USD 19.6bn and a 6% operating margin. The multiple equals the solar-peer median, with a lower quartile of 11.4x and upper quartile of 17.8x, so the commercial question is profit delivery rather than a peer discount. Tesla's 2025 external Energy sales were USD 12.8bn and reported gross margin was 29.8%, but the forecast operating margin is lower after selling, research and operating costs. Storage deployments reached 13.7 GWh in the third quarter of 2026, with the highest-ever order rate and backlog, although no backlog figure was disclosed. Texas production and capacity utilisation remain the principal execution evidence."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The split assigns 21 USD per share to the businesses already generating substantial sales and 383 USD to Autonomy and Optimus. Cars contributes 17 USD at 8.1x forecast 2028 operating profit of USD 8.1bn, while Energy contributes 5 USD at 14.5x forecast 2028 operating profit of USD 1.3bn. A deduction of 3 USD per share covers debt and other claims, less cash. The remaining 307 USD assigned to Autonomy requires USD 1.35tn of annual 2040 sales and about USD 337bn of operating profit at a 25% margin. Optimus contributes 77 USD and requires USD 449bn of 2040 sales and about USD 94bn of operating profit at a 21% margin. Those requirements dwarf current activity: Tesla's whole-company sales were USD 94,827m in 2025, while Autonomy had no separately reported sales and Optimus was at the first factory stage. The price is therefore made predominantly from successful scaling of new businesses rather than from near-term Cars and Energy earnings. The decisive question is whether future operating evidence can replace the present gap between USD 9.3bn of 2028 whole-company operating profit and USD 451bn required in 2040."
+    },
+    {
+      "heading": "Why the price differs from peers",
+      "text": "The whole company trades at 171x forecast 2028 EV/EBIT and 562x forecast 2026 EV/EBIT, whereas the peer median is 13.2x 2027 EV/EBITDA and 18.8x 2027 P/E. The difference is not explained by Cars or Energy alone. Cars is assigned 8.1x 2028 operating profit against an industry median of 7.1x, with General Motors at 7.5x and BYD at 8.7x. Energy is assigned 14.5x 2028 operating profit, exactly the solar-peer median, between 11.4x and 17.8x. These established businesses account for only 21 USD per share before claims. The unusual whole-company multiple reflects the 383 USD per share assigned to Autonomy and Optimus, where current sales are negligible but the required 2040 sales are USD 1.35tn and USD 449bn respectively. The comparison is also sensitive to profit margins: Cars requires 6% in 2028 against a latest-quarter company margin of 2.6%, while Energy also requires 6% operating margin. Peer figures are not a clean operating comparison: Rivian, Mobileye and Lyft negative multiples are excluded as outliers, and Enphase's 21x multiple uses past operating profit rather than Energy's 2028 forecast. The price therefore embeds a future-business premium, not simply a conventional automotive or solar multiple."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The next evidence is measurable. Autonomy needs a separately disclosed annual sales figure, because the current disclosure reports nearly 2 million cumulative unsupervised miles rather than revenue. Sales of USD 58.9bn are required by 2030, followed by USD 550bn in 2035 and USD 1.35tn in 2040. Cost per paid mile is equally important: Tesla's 0.30 USD goal had no deadline and had not been met by 21 October 2026, while Morgan Stanley estimated fully autonomous Tesla cost at 0.74 USD per mile excluding safety monitors. Permission to run without a safety driver in California and other large states determines whether six-city service can become a national fleet. Optimus needs outside deliveries around the end of 2027, weekly output moving towards 20,000 robots and a customer price with unit cost below it; the first line's one-million-robot design capacity is not production. Cars needs deliveries, automotive revenue and operating margin to move towards the 6% split assumption, while Energy needs storage volume, order flow and Texas Megapack utilisation. A SpaceX combination could also change which businesses shareholders own, but Tesla's committee had agreed no terms as of 21 October 2026. These milestones determine whether the price remains concentrated in unproven future operations or gains support from reported commercial scale."
+    }
+  ],
+  "risks": [
+    "Autonomy commercial scale: sales may remain immaterial while the price requires USD 58.9bn by 2030 and USD 1.35tn by 2040, with separate Autonomy revenue not yet disclosed; early warning is the absence of an annual sales figure.",
+    "Autonomy cost and permission: the 0.30 USD per paid-mile goal has no deadline and California listed Tesla Robotaxi LLC for testing with a safety driver, limiting fleet deployment; early warning is cost above 0.74 USD per mile or no driverless approvals.",
+    "Optimus adoption: outside deliveries planned around the end of 2027 may not materialise, leaving robots inside Tesla plants without proof that customers will pay; early warning is no external delivery by the planned date.",
+    "Cars margin and volume: the 6% 2028 operating-margin assumption is above the latest reported 2.6% and third-quarter deliveries fell 2% to 486,532; early warning is weak deliveries alongside automotive revenue below USD 20,560m.",
+    "Energy utilisation: factory capacity may not translate into output if equipment uptime, components or demand constrain production; early warning is storage revenue below USD 2,881m or cost of revenue above USD 1,927m in a quarter."
+  ],
+  "catalysts": [
+    "Driverless approval and annual Autonomy sales disclosure (near-term, Autonomy): a separate sales figure and permission without safety drivers would demonstrate progress towards USD 58.9bn of 2030 sales.",
+    "Paid-mile cost reduction (near-term, Autonomy): a reported cost moving towards 0.30 USD per mile would support the 25% 2040 operating-margin path.",
+    "External Optimus deliveries (medium-term, Optimus): sales to other companies around the end of 2027 would show that the product works beyond Tesla's own facilities.",
+    "Optimus production ramp (medium-term, Optimus): output approaching 20,000 robots a week would show that the first line can move towards its one-million-robot annual design capacity.",
+    "Higher factory utilisation (near-term, Cars and Energy): improving vehicle deliveries, a Cars margin approaching 6%, and sustained Texas Megapack output would make the established-business forecasts more attainable."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "96,773",
+            "97,690",
+            "94,827",
+            "107,249",
+            "122,300",
+            "145,710"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "10,123",
+            "12,444",
+            "10,503",
+            "14,869",
+            "18,125",
+            "24,605"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "10.5%",
+            "12.7%",
+            "11.1%",
+            "13.9%",
+            "14.8%",
+            "16.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-1,232",
+            "-5,368",
+            "-6,148",
+            "-12,025",
+            "-12,082",
+            "-15,280"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "8,891",
+            "7,076",
+            "4,355",
+            "2,844",
+            "6,043",
+            "9,325"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "9.2%",
+            "7.2%",
+            "4.6%",
+            "2.7%",
+            "4.9%",
+            "6.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1,082",
+            "1,914",
+            "923",
+            "1,518",
+            "414",
+            "1,405"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "9,973",
+            "8,990",
+            "5,278",
+            "4,362",
+            "6,457",
+            "10,730"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "14,976",
+            "7,153",
+            "3,855",
+            "3,616",
+            "6,045",
+            "10,046"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "4.7",
+            "2.2",
+            "1.2",
+            "1.1",
+            "1.9",
+            "3.1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "45,123",
+            "51,507",
+            "40,643",
+            "49,670",
+            "56,641",
+            "67,482"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "362",
+            "1,226",
+            "135",
+            "153",
+            "174",
+            "207"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "253",
+            "244",
+            "257",
+            "257",
+            "257",
+            "257"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "4,531",
+            "4,209",
+            "21,204",
+            "21,204",
+            "21,204",
+            "21,204"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "50,269",
+            "57,186",
+            "62,239",
+            "71,284",
+            "78,276",
+            "89,151"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "13,626",
+            "12,017",
+            "12,392",
+            "13,727",
+            "15,654",
+            "18,650"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "19,592",
+            "30,204",
+            "39,737",
+            "40,223",
+            "40,933",
+            "42,038"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "16,398",
+            "16,139",
+            "16,513",
+            "18,341",
+            "20,915",
+            "24,918"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "49,616",
+            "58,360",
+            "68,642",
+            "72,291",
+            "77,502",
+            "85,606"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "6,733",
+            "6,524",
+            "6,925",
+            "6,925",
+            "6,925",
+            "6,925"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "106,618",
+            "122,070",
+            "137,806",
+            "150,500",
+            "162,702",
+            "181,682"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "63,609",
+            "73,680",
+            "82,865",
+            "86,481",
+            "92,526",
+            "102,572"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "2,682",
+            "5,535",
+            "6,736",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1,975",
+            "2,343",
+            "1,640",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "9,345",
+            "13,824",
+            "23,227",
+            "24,366",
+            "26,121",
+            "28,530"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "28,748",
+            "28,821",
+            "31,714",
+            "39,653",
+            "44,055",
+            "50,580"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "4,916",
+            "5,745",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "106,618",
+            "122,070",
+            "137,806",
+            "150,500",
+            "162,702",
+            "181,682"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "4,916",
+            "5,745",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-6,825",
+            "-2,516",
+            "-8,137",
+            "-2,591",
+            "-1,654",
+            "-840"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "51,868",
+            "65,419",
+            "74,728",
+            "83,890",
+            "90,872",
+            "101,732"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "59.7%",
+            "60.4%",
+            "60.1%",
+            "57.5%",
+            "56.9%",
+            "56.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-10.7%",
+            "-3.4%",
+            "-9.8%",
+            "-3.0%",
+            "-1.8%",
+            "-0.8%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.7x",
+            "-0.2x",
+            "-0.8x",
+            "-0.2x",
+            "-0.1x",
+            "-0.0x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "2",
+            "2.2",
+            "1.8",
+            "1.8",
+            "1.7"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "9,485",
+            "3,171",
+            "3,691",
+            "15,524",
+            "18,137",
+            "25,341"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "2,195",
+            "1,868",
+            "2,616",
+            "14,265",
+            "17,749",
+            "24,026"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "7,474",
+            "9,298",
+            "6,312",
+            "117",
+            "-10",
+            "-15"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "10,408",
+            "12,285",
+            "11,201",
+            "21,070",
+            "19,074",
+            "26,155"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-10,408",
+            "-12,285",
+            "-11,201",
+            "-21,070",
+            "-19,074",
+            "-26,155"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-923",
+            "-9,114",
+            "-7,510",
+            "-5,546",
+            "-937",
+            "-814"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-6,467",
+            "-8,791",
+            "-383",
+            "-6,804",
+            "-1,324",
+            "-2,130"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-6,465",
+            "-8,791",
+            "-383",
+            "-6,804",
+            "-1,324",
+            "-2,130"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "8,306",
+            "8,594",
+            "8,285",
+            "7,374",
+            "3,511",
+            "4,818"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "7,383",
+            "-520",
+            "775",
+            "1,828",
+            "2,574",
+            "4,003"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "406.9x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "99.6x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "562x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "17.2x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "n/a"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.2x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Tesla's share price made of?",
+      "a": "The 402 USD share price is split into 17 USD for Cars, 5 USD for Energy, -3 USD for debt and other claims less cash, 307 USD for Autonomy and 77 USD for Optimus. Cars and Energy together contribute 21 USD per share, leaving 383 USD assigned to new businesses."
+    },
+    {
+      "q": "Why does Tesla trade on a different basis from listed peers?",
+      "a": "Tesla trades at 171x forecast 2028 EV/EBIT, while the peer median is 13.2x 2027 EV/EBITDA. Cars is assigned 8.1x 2028 operating profit against a 7.1x industry median, and Energy 14.5x against its solar-peer median; the difference is mainly the 383 USD per share assigned to Autonomy and Optimus."
+    },
+    {
+      "q": "What do analysts forecast for Tesla's sales and profit?",
+      "a": "Analysts forecast sales of USD 107,249m and operating profit of USD 2,844m in 2026, rising to sales of USD 145,710m and operating profit of USD 9,325m in 2028. Net earnings are forecast at USD 10,046m and EPS at 3.1 USD in 2028."
+    },
+    {
+      "q": "What should Tesla investors watch?",
+      "a": "The key indicators are separate Autonomy sales, cost per paid mile and driverless permissions; external Optimus deliveries, weekly output, price and unit cost; Cars deliveries and operating margin; and Energy storage volume, order flow and Texas Megapack utilisation. A possible SpaceX combination could also change which businesses shareholders own."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The analysis takes the 402 USD share price as given, applies analysts' forecasts through 2028, carries Cars and Energy forward, and assigns the remaining price to Autonomy and Optimus. The implied 2040 requirements are USD 1.35tn of Autonomy sales and USD 449bn of Optimus sales, compared with published market forecasts and operating evidence."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Tesla, Inc. dated 29 October 2026 (402 USD share price, Cars and Energy at 21 USD per share, Autonomy at 307 USD per share and Optimus at 77 USD per share).",
+    "Competitor context: General Motors at 7.5x and BYD at 8.7x 2028 EV/EBIT for Cars; solar-industry median 14.5x 2028 EV/EBIT for Energy; peer median 13.2x 2027 EV/EBITDA and 18.8x 2027 P/E. Negative Rivian, Mobileye and Lyft multiples are excluded as outliers, and Enphase's 21x multiple uses past operating profit rather than Energy's 2028 forecast.",
+    "Market data: TSLA at 402 USD on 29 October 2026; analysts' forecasts include USD 145,710m sales and USD 9,325m operating profit for 2028; the 415 USD consensus price target comes from PriceTargets.com and averages 49 analysts' targets. The report cautions that Cars and Energy profit splits are estimates, Optimus design capacity is not output, and Tesla's cash-flow rows are Valuatum model calculations rather than the company's reported cash-flow statement."
+  ]
+}

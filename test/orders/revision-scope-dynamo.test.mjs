@@ -19,10 +19,18 @@ test('Dynamo revision claim persists the scope atomically with the comment', asy
     assert.match(input.UpdateExpression, /pendingRevisionScope = :scope/);
     assert.equal(input.ExpressionAttributeValues[':scope'], scope || 'estimates');
     assert.equal(input.ExpressionAttributeValues[':comment'], 'Revise');
-    assert.equal(input.ConditionExpression, '#s = :delivered AND revisionsUsed < revisionsAllowed');
+    assert.match(input.ConditionExpression, /#s = :delivered AND revisionsUsed < revisionsAllowed/);
+    assert.match(input.ConditionExpression, /publicationLocked = :unlocked/);
   }
   const overrides = { auto: { selectedMultiple: 12 } };
   await orders.claimRevision('g1', 'Use my assumptions', overrides, 'content');
   assert.equal(sent.at(-1).ExpressionAttributeValues[':scope'], 'narrative');
   assert.deepEqual(sent.at(-1).ExpressionAttributeValues[':overrides'], overrides);
+});
+
+test('hand edits cannot claim a publication-locked order', async () => {
+  await orders.claimEdit('g1', { edits: {} });
+  const input = sent.at(-1);
+  assert.match(input.ConditionExpression, /publicationLocked = :unlocked/);
+  assert.equal(input.ExpressionAttributeValues[':unlocked'], false);
 });

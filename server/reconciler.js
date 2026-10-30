@@ -64,6 +64,22 @@ function floatEnv(name, fallback) {
   return Number.isFinite(value) ? value : fallback;
 }
 
+// {"TICKER": fid, ...}: only positive integer fids are kept; a malformed value
+// is logged and ignored, so the worker falls back to the engine's own choice.
+function fidMapEnv(name) {
+  const raw = process.env[name];
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(raw);
+    return Object.fromEntries(
+      Object.entries(parsed).filter(([, fid]) => Number.isSafeInteger(fid) && fid > 0),
+    );
+  } catch (err) {
+    console.error(`[reconciler] ignoring ${name}: ${err.message}`);
+    return {};
+  }
+}
+
 const INTERVAL_MS = intEnv('RECONCILER_INTERVAL_MS', 45000);
 const MAX_POLLS = intEnv('RECONCILER_MAX_POLLS', 40);
 const MAX_ATTEMPTS = intEnv('RECONCILER_MAX_ATTEMPTS', 6);
@@ -77,6 +93,11 @@ const POLL_DELAY_MS = intEnv('RECONCILER_POLL_DELAY_MS', 20000);
 const EMIT_ORDER_METRICS = boolEnv('EMIT_ORDER_METRICS', false);
 const STUCK_AFTER_MINUTES = intEnv('ORDER_STUCK_AFTER_MINUTES', 30);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
+// Ticker -> Trunk followed model the engine renders, instead of its default
+// pick (the `ValuatumDataSources` FMP model). For a company whose statements
+// were imported into a `ValuatumData` model alongside the FMP one. Sent as
+// `params.fid`; revisions inherit the parent job's params, so they stay on it.
+const ENGINE_FID_BY_TICKER = fidMapEnv('ENGINE_FID_BY_TICKER');
 const ADMIN_NOTIFY_ON_SUCCESS = boolEnv('ADMIN_NOTIFY_ON_SUCCESS', true);
 // Phase 2 resale: when enabled, a delivered report is published immediately for
 // resale (visible + resale price) instead of the Phase 1 hidden email-only write.
@@ -242,10 +263,16 @@ async function deliver(order, job) {
   // Phase 1 writes it hidden (email-only); with RESALE_ENABLED it is published
   // for resale immediately -- hidden:false + forceVisible skips the catalog's
   // visibleAfterDays delay -- at the configured discount price.
-  // A membership generation belongs to the member who ordered it: it is never
-  // resold from the catalog, whatever RESALE_ENABLED says.
+  // Members' own reports stay private, except the unmodified first engine
+  // output of a fresh generation reserved by a publishing analyst.
   const isPrivate = order.visibility === 'private';
-  const resell = RESALE_ENABLED && !isPrivate;
+  const publicEngineBase = order.publicEngineBase === true
+    && order.origin === 'fresh'
+    && !order.forkedFrom
+    && !order.adminCopy
+    && (!order.originalJobId || order.originalJobId === order.jobId)
+    && job.reportQuality?.deliverable !== false;
+  const resell = RESALE_ENABLED && (!isPrivate || publicEngineBase);
 
   const sidecar = {
     companyName: companyLabel,
@@ -290,7 +317,8 @@ async function deliver(order, job) {
       ticker: order.ticker,
       reportDate: reportDateIso,
       pdfUrl,
-      orderUrl: (order.revisionsAllowed || 0) > 0 ? orderUrl(order) : null,
+      orderUrl: orderUrl(order),
+      revisionsAllowed: order.revisionsAllowed || 0,
     });
   }
 
@@ -310,6 +338,20 @@ async function deliver(order, job) {
     ...(job.reportQuality ? { reportQuality: job.reportQuality } : {}),
   });
   console.log('reconciler: delivered', { id: order.id, pdfFileName });
+
+  if (publicEngineBase && resell) {
+    try {
+      const { dispatchReportPages } = require('./report-page-dispatch');
+      const dispatched = await dispatchReportPages();
+      if (!dispatched.dispatched) {
+        console.warn('reconciler: report-page wake-up unavailable; scheduled sync will retry');
+      }
+    } catch (err) {
+      // Delivery must not be retried just because page generation could not be
+      // woken; the scheduled sync still sees the public catalog entry.
+      console.warn('reconciler: report-page wake-up failed; scheduled sync will retry', err.message);
+    }
+  }
 
   if (ADMIN_NOTIFY_ON_SUCCESS) {
     try {
@@ -593,7 +635,11 @@ async function advance(order) {
       await orders.update(order.id, { importStatus: outcome.status }); // SUCCESS | SKIPPED
     }
 
-    const { jobId } = await engine.submitJob({ companyCode: order.ticker });
+    const fid = ENGINE_FID_BY_TICKER[order.ticker];
+    const { jobId } = await engine.submitJob({
+      companyCode: order.ticker,
+      ...(fid ? { params: { fid } } : {}),
+    });
     await orders.update(order.id, { status: orders.STATUS.RENDERING, jobId, polls: 0, error: null });
     order = { ...order, status: orders.STATUS.RENDERING, jobId, polls: 0 };
     // Fall through: with a poll window configured, start polling immediately.

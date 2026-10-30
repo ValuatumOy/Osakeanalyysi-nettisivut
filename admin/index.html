@@ -622,6 +622,10 @@
 
     $('signout').addEventListener('click', () => signOut());
 
+    const pageSyncMessage = (result) => result.pageSyncStarted
+      ? ' Website update started.'
+      : ' Website update will retry on the hourly sync.';
+
     // ── add flow: presign → PUT to S3 → publish ───────────────────
     $('add-form').addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -642,7 +646,7 @@
         if (!put.ok) throw new Error(`S3 upload failed (${put.status})`);
 
         status.textContent = 'Publishing…';
-        await api('/api/admin/publish', {
+        const result = await api('/api/admin/publish', {
           method: 'POST',
           body: JSON.stringify({
             fileName,
@@ -660,7 +664,7 @@
         await refreshReports();
         form.reset();
         form.visibleNow.checked = true;
-        flash('ok', `Published ${fileName}.`);
+        flash('ok', `Published ${fileName}.` + pageSyncMessage(result));
       } catch (err) {
         if (err.message !== 'Unauthorized') flash('err', err.message);
       } finally {
@@ -722,13 +726,13 @@
       }
       try {
         $('edit-status').textContent = 'Saving…';
-        await api('/api/admin/update', {
+        const result = await api('/api/admin/update', {
           method: 'POST',
           body: JSON.stringify({ fileName: editing.fileName, patch }),
         });
         $('edit-backdrop').classList.remove('open');
         await refreshReports();
-        flash('ok', `Updated ${editing.fileName}.`);
+        flash('ok', `Updated ${editing.fileName}.` + pageSyncMessage(result));
       } catch (err) {
         if (err.message !== 'Unauthorized') flash('err', err.message);
       } finally {
@@ -761,7 +765,7 @@
 
     $('delete-hide-instead').addEventListener('click', async () => {
       try {
-        await api('/api/admin/update', {
+        const result = await api('/api/admin/update', {
           method: 'POST',
           body: JSON.stringify({
             fileName: deleting.fileName,
@@ -770,7 +774,7 @@
         });
         $('delete-backdrop').classList.remove('open');
         await refreshReports();
-        flash('ok', `${deleting.companyName} hidden — sold links keep working.`);
+        flash('ok', `${deleting.companyName} hidden — sold links keep working.` + pageSyncMessage(result));
       } catch (err) {
         if (err.message !== 'Unauthorized') flash('err', err.message);
       }
@@ -778,13 +782,13 @@
 
     $('delete-really').addEventListener('click', async () => {
       try {
-        await api('/api/admin/delete', {
+        const result = await api('/api/admin/delete', {
           method: 'POST',
           body: JSON.stringify({ fileName: deleting.fileName }),
         });
         $('delete-backdrop').classList.remove('open');
         await refreshReports();
-        flash('ok', `${deleting.companyName} deleted.`);
+        flash('ok', `${deleting.companyName} deleted.` + pageSyncMessage(result));
       } catch (err) {
         if (err.message !== 'Unauthorized') flash('err', err.message);
       }

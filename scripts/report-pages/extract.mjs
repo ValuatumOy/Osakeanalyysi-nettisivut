@@ -17,6 +17,7 @@ import { buildMessages, isMarketFirstText } from './prompt.mjs';
 import { REPORT_SCHEMA, MARKET_FIRST_SCHEMA, MARKET_FIRST, isMarketFirst, toReportContent } from './schema.mjs';
 import { CONTENT_DIR, CONTENT_DIRS } from './owners.mjs';
 import { IS_TEST } from './stage.mjs';
+import { loadCompanyPageCatalog } from './render.mjs';
 
 export const EXTRACTION_MODEL = 'openai/gpt-5.6-luna';
 const RECOMMENDATIONS = new Set(['BUY', 'HOLD', 'SELL']);
@@ -34,7 +35,7 @@ function applyCatalogFields(doc, entry) {
 }
 
 /** Landing-page slug: reuse the one an earlier report for this company already claimed. */
-function resolveSlug(id, companyName, ticker) {
+export function resolveSlug(id, companyName, ticker) {
   const stem = id.replace(/-\d{8}(?:-\d+)?$/, '');
   for (const dir of CONTENT_DIRS.filter((d) => fs.existsSync(d))) {
     for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.startsWith('_'))) {
@@ -44,6 +45,12 @@ function resolveSlug(id, companyName, ticker) {
       if (sameCompany && doc.slug) return doc.slug;
     }
   }
+  // The first report must replace the existing company overview at its
+  // canonical URL, even when the PDF uses a longer legal company name.
+  const target = String(ticker || '').trim().toUpperCase();
+  const company = target && loadCompanyPageCatalog().find(item => String(item.ticker || '').trim().toUpperCase() === target);
+  const existing = String(company?.url || '').match(/^\/?reports\/([a-z0-9-]+)\.html$/i);
+  if (existing) return existing[1];
   const base = String(companyName)
     .replace(/,?\s+(Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|AB|ASA|A\/S|N\.V\.|S\.A\.|Group|Holdings?|Abp)\.?$/i, '')
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -84,6 +91,13 @@ function proseOf(doc) {
     ...(doc.coreAnalysis || []).map((c) => c.text),
     ...(doc.faqs || []).flatMap((f) => [f.q, f.a]),
   ];
+}
+
+/** The sync log's word on an extracted report: the rating and target, or for a market report the price it reads. */
+export function extractedSummary(run) {
+  const h = run.headline || {};
+  if (run.reportKind === MARKET_FIRST) return `market report, no rating${h.currentPrice ? `, price ${h.currentPrice}` : ''}`;
+  return `${h.recommendation}, target ${h.targetPrice}`;
 }
 
 /** The strict gate. Throws with a reason when the extraction must not be published. */
@@ -127,7 +141,7 @@ export async function extractReport(entry) {
     const doc = applyCatalogFields(
       toReportContent(raw, {
         id: entry.id,
-        slug: resolveSlug(entry.id, raw.companyName, raw.ticker),
+        slug: resolveSlug(entry.id, raw.companyName, entry.ticker || raw.ticker),
         reportKind: marketFirst ? MARKET_FIRST : null,
       }),
       entry,
@@ -144,6 +158,7 @@ export async function extractReport(entry) {
       slug: doc.slug,
       companyName: doc.companyName,
       headline: doc.headline,
+      reportKind: doc.reportKind ?? null,
       usd: result.usage?.usd ?? null,
       outPath,
     };

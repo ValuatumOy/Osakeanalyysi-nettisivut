@@ -1,22 +1,25 @@
 # Valuatum AI Equity Reports
 
-> Valuatum AI Equity Reports produces professional, AI-generated equity research for any listed company.
-> Each report applies a structured enterprise-value and value-pool methodology — including reverse valuation,
-> risk and catalyst analysis, and full financial estimates — built on Valuatum's 25+ years of equity research
-> practice (Helsinki, Finland, est. 2000). Reports are delivered as web pages and downloadable PDFs.
+> Valuatum AI Equity Reports produces AI-generated equity research on US, Nordic and Baltic listed companies.
+> Each report starts from today's share price and explains it: analysts' consensus forecasts are kept as they are,
+> the price is split between the company's businesses, and each business is set beside listed peers. The base
+> report carries no rating or target; an analyst who revises it gets a 12-month target that follows from their own
+> assumptions. Built on Valuatum's financial models (Helsinki, Finland, est. 2000). Delivered as web pages and PDFs.
 > All content is AI-generated research for informational purposes only and is not investment advice.
 >
-> Ratings and price targets below are read directly from each report page when this file is generated.
+> Any rating or price target below is read directly from each report page when this file is generated; reports
+> that explain the price carry none.
 > Every figure is the one that page carried at that moment; the page itself is always authoritative.
 
 ## Free sample equity reports
-- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): HOLD, target 10.10 EUR (current 10.13 EUR).
-- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): BUY, target 536.80 USD (current 352.16 USD).
-- [UPM-Kymmene (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): HOLD, target 24.70 EUR (current 24.06 EUR).
+- [Stora Enso (STERV.HE) AI equity report](https://www.aiequityreports.com/reports/stora-enso-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [Tesla (TSLA) AI equity report](https://www.aiequityreports.com/reports/tesla-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [UPM (UPM.HE) AI equity report](https://www.aiequityreports.com/reports/upm-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 
 ## Paid equity reports (free preview available)
 - [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): HOLD, target 490.50 USD (current 482.05 USD).
 - [Alphabet (GOOGL) AI equity report](https://www.aiequityreports.com/reports/alphabet-equity-report.html): HOLD, target 312.70 USD (current 342.00 USD).
+- [Amazon (AMZN) AI equity report](https://www.aiequityreports.com/reports/amazon-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Intel (INTC) AI equity report](https://www.aiequityreports.com/reports/intel-equity-report.html): SELL, target 98.00 USD (current 114.68 USD).
 - [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): SELL, target 17.10 EUR (current 19.20 EUR).
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
@@ -27,6 +30,7 @@
 - [Pandora (PNDORA.CO) AI equity report](https://www.aiequityreports.com/reports/pandora-equity-report.html): BUY, target 1,112.30 DKK (current 807.40 DKK).
 - [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): HOLD, target 15.90 EUR (current 17.22 EUR).
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
+- [Remedy Entertainment (REMEDY.HE) AI equity report](https://www.aiequityreports.com/reports/remedy-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): HOLD, target 32.10 EUR (current 31.89 EUR).
 
@@ -37,7 +41,7 @@
 - [Can AI Analyze Stocks? What AI Equity Research Can and Cannot Do](https://www.aiequityreports.com/blog/can-ai-analyze-stocks.html): AI removes the systematic biases built into sell-side research: anchoring, herding, and incentive conflicts.
 
 ## Methodology & company
-- [Methodology](https://www.aiequityreports.com/methodology.html): how value-pool analysis and reverse valuation work.
+- [Methodology](https://www.aiequityreports.com/methodology.html): how the report reads the share price into the businesses, and where an analyst's view enters.
 - [Reports catalogue](https://www.aiequityreports.com/reports.html): browse all available reports and order a fresh report.
 - [Company index](https://www.aiequityreports.com/companies.html): every company with a page on this site.
 - [Pricing](https://www.aiequityreports.com/pricing.html): credits and per-report pricing.
@@ -47,10 +51,11 @@
 - [For institutions](https://www.aiequityreports.com/institutions.html): how asset managers, brokers, advisory firms and IR teams use the reports, and how to request a free pilot.
 
 ## Key concepts
-- Reverse valuation: works backwards from the current market price to reveal the growth and margin assumptions investors are implicitly paying for.
-- Value pool analysis: decomposes a company's enterprise value into its distinct businesses and embedded options, each priced separately.
+- Market-first report: takes today's share price as the market's best estimate and shows what each business must deliver for it to hold.
+- Price split: today's share price divided between the company's businesses, each on a multiple of its forecast operating profit, so the parts add up to the price.
+- Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1158 listed companies have a page with share price, valuation metrics and company profile,
+1157 listed companies have a page with share price, valuation metrics and company profile,
 each able to generate a fresh AI equity report on demand. They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

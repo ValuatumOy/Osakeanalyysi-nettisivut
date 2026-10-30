@@ -1,0 +1,776 @@
+{
+  "id": "storaenso-29102026",
+  "slug": "stora-enso-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Stora Enso Oyj",
+  "ticker": "STERV.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Packaging & Containers",
+  "currency": "EUR",
+  "reportDate": "2026-10-29",
+  "profile": "Makes packaging materials and packaging solutions from wood fibre. It also sells pulp and other wood-based materials, sawn timber and related wood products, and wood from forests to converters, manufacturers, builders and timber processors in international markets.",
+  "headline": {
+    "currentPrice": "€9.69",
+    "marketCap": "€7.6bn",
+    "enterpriseValue": "€11.1bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "−4.44 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "€11.49",
+    "analysts": "16",
+    "range": "€9.00–€13.50",
+    "source": "StockAnalysis"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "17x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "12x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "23x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "€12.26",
+    "week52Low": "€8.73",
+    "oneYearChange": "−0.1%",
+    "threeYearChange": "−12%"
+  },
+  "summary": [
+    "Stora Enso Oyj (STERV.HE, NASDAQ Helsinki) makes packaging materials and packaging solutions from wood fibre, and sells pulp, wood products and forest assets. The share price was €9.69 on 29 October 2026, against a market capitalisation of €7.6bn and enterprise value of €11.1bn. In this Valuatum market report dated 29 October 2026, the price is read as a market split rather than a valuation of what the share should be worth. Analysts forecast 2028 sales of EUR 10,015m and operating profit of EUR 941m, while the group’s 2026 forecast operating profit is EUR 645m.",
+    "Forests account for €7.57 per share, based on €6bn or 70% of the company’s reported forest value of €8.5bn. Packaging materials contributes €3.58 per share at 9.0x 2028 operating profit of EUR 312m; Biomaterials €1.29 at 6.3x EUR 161m; Wood products €1.25 at 14.3x EUR 69m; and Packaging solutions €0.45 at 6.0x EUR 59m. These businesses add to €14.14 per share before debt and other claims, less cash of −4.44 EUR per share, producing the €9.69 share price.",
+    "The non-forest businesses are priced at about 8.5x 2028 operating profit, against listed peers at about 11.5x. Packaging materials faces European cartonboard overcapacity and the Oulu line is still building output; Wood products is closing Veitsiluoto and Gruvön; and Biomaterials’ margin moved from 7.5% in 2025 to 15.9% in Q2 2026. Watch the Swedish forest separation, capacity closures, margins and pulp volumes."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "€7.57",
+      "text": "Forests make up €7.57 per share, or 54% of the €14.14 per share assigned to the businesses before debt. Packaging, pulp and wood businesses provide the remainder, with the non-forest operations priced at about 8.5x 2028 operating profit against peers at about 11.5x."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "8.5x",
+      "text": "The 8.5x multiple for the non-forest businesses reflects excess European board capacity, the unfinished Oulu ramp-up, Wood products closures and uneven pulp earnings. Packaging materials must move from a 2.9% 2025 margin towards 7% in 2028, while Biomaterials must sustain a forecast 13% margin."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "H1 2027",
+      "text": "The planned Swedish forest separation is expected in the first half of 2027, subject to General Meeting approval, and would provide a quoted price for the forests. Before then, Gruvön’s closure by the end of 2026 and quarterly margins, deliveries and pulp volumes test the operating assumptions."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Forests",
+      "share": "7.57 EUR per share",
+      "economics": "reference value: 70% of reported value · 2025 adjusted operating result of EUR 317m · Pareto Securities reading 70%",
+      "text": "Forests are the largest part of the price, counted at €6bn, or 70% of the €8.5bn reported forest value, equivalent to €7.57 per share. The business delivered about 35 million cubic metres of wood in 2025 and generated an adjusted operating result of EUR 317m on outside sales of EUR 1.3bn. Most wood went to Stora Enso’s own mills: internal customers took 62% of net sales in Q4 2025, leaving 38% for other forest companies. The 70% reference is the lower of two published readings: Pareto Securities applied 70% to SCA’s forest assets, while Stora Enso’s 2025 Swedish forest sale was completed at 100% of reported value. The planned Swedish separation could create a quoted price, while a 15-year wood-supply agreement would continue linking the forests with the mills."
+    },
+    {
+      "name": "Packaging materials",
+      "share": "3.58 EUR per share",
+      "economics": "9.0x 2028 operating profit · 2028 operating profit of EUR 312m · peers 9.0x–11.3x, median 10.6x",
+      "text": "Packaging materials sells cartonboard, containerboard and other packaging papers to converters and manufacturers. It generated outside sales of EUR 4.3bn in 2025 and adjusted operating profit of EUR 124m, a 2.9% margin. The price assigns €3.58 per share, or 9.0x the EUR 312m 2028 operating profit in the business split. Listed peers range from 9.0x to 11.3x, with a 10.6x median. The low position reflects the margin required by the forecast: sales of EUR 4.6bn and a 7% margin by 2028. The Oulu line began ramping on 19 March 2025 with annual capacity of 750,000 tonnes, while European cartonboard operating rates remain under pressure from overcapacity. A steadily higher margin as Oulu fills would provide the clearest evidence that fixed costs are being absorbed."
+    },
+    {
+      "name": "Biomaterials",
+      "share": "1.29 EUR per share",
+      "economics": "6.3x 2028 operating profit · 2028 operating profit of EUR 161m · industry quartiles 6.3x / 9.5x / 12.5x",
+      "text": "Biomaterials sells pulp and other wood-based materials to industrial customers, including paper and hygiene-product manufacturers. Outside sales were EUR 1.2bn in 2025, with adjusted operating profit of EUR 110m and a 9.6% margin. The price assigns €1.29 per share, or 6.3x the EUR 161m 2028 operating profit in the split. That is the lower quartile of an industry range running from 6.3x to 12.5x, with a 9.5x median. The forecast assumes a 13% margin by 2028, above the 9.6% outside-sales margin in 2025. Earnings have been uneven: the reported Biomaterials margin was 7.5% in 2025 on total sales and 15.9% in Q2 2026, when adjusted operating profit was EUR 65m and pulp deliveries fell to 484,000 tonnes from 501,000 tonnes."
+    },
+    {
+      "name": "Wood products",
+      "share": "1.25 EUR per share",
+      "economics": "14.3x 2028 operating profit · 2028 operating profit of EUR 69m · industry quartiles 14.2x / 19.9x / 23.8x",
+      "text": "Wood products sells sawn timber, cross-laminated timber and laminated veneer lumber to merchants, retailers, industrial integrators and construction companies. Outside sales were EUR 1.6bn in 2025, when adjusted operating profit was negative EUR 2m and the margin was -0.1%. The price assigns €1.25 per share, or 14.3x the EUR 69m 2028 operating profit. That is close to the industry’s 14.2x lower quartile and below the 19.9x median. The split assumes sales of about EUR 1.7bn and a 4% margin by 2028. Veitsiluoto has been permanently closed and Gruvön’s CLT unit is due to close by the end of 2026, but closures remove both costs and sales. Future deliveries, sawn-timber prices and margins will show whether the remaining mills spread fixed costs over enough volume."
+    },
+    {
+      "name": "Packaging solutions",
+      "share": "0.45 EUR per share",
+      "economics": "6.0x 2028 operating profit · 2028 operating profit of EUR 59m · peers 5.9x–13.0x, median 11.5x",
+      "text": "Packaging solutions converts board into corrugated boxes and other packaging for companies that pack and ship goods. Outside sales were about EUR 1bn in 2025, with adjusted operating profit of EUR 14m and a 1.4% margin. The price assigns €0.45 per share, or 6.0x the EUR 59m 2028 operating profit in the split. Listed peers range from 5.9x to 13.0x, with an 11.5x median. The forecast requires sales of EUR 1.1bn and a 5% margin by 2028, more than three times the 2025 margin. Overcapacity persisted, and the German corrugated-board units were sold in July 2026. The remaining plants must run fuller for fixed costs to fall per box. European corrugated deliveries were 608 million m² in the first half of 2026, while the De Lier site has EUR 200m invested capacity of 405 million m² a year."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is primarily a forest-asset reading rather than a conventional earnings multiple. Forests contribute €7.57 per share, based on €6bn or 70% of reported forest value of €8.5bn. The other businesses contribute €6.57 per share: Packaging materials €3.58, Biomaterials €1.29, Wood products €1.25 and Packaging solutions €0.45. Together, the businesses add to €14.14 per share before debt and other claims. The forecast end-2026 deduction is −4.44 EUR per share, leaving €9.69. The industrial businesses are therefore priced on modest operating-profit multiples: 9.0x EUR 312m for Packaging materials, 6.3x EUR 161m for Biomaterials, 14.3x EUR 69m for Wood products and 6.0x EUR 59m for Packaging solutions. The split requires operating profit of EUR 941m for the whole company in 2028, including EUR 340m assigned to Forests. The central implication is that the share price contains a large asset component and a cautious earnings reading for the mills. The forest separation would make the largest component independently observable, while quarterly results test whether the smaller components can deliver the margins embedded in their assigned multiples."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "The non-forest businesses are priced at about 8.5x 2028 operating profit, compared with listed peers at about 11.5x. The gap is concentrated in operating uncertainty rather than a single industry-wide factor. Packaging materials is assigned 9.0x against a 10.6x peer median while its margin must rise from 2.9% in 2025 to 7% in 2028. European cartonboard has excess capacity, and the Oulu line, built for about EUR 1bn with annual capacity of 750,000 tonnes, is still ramping. Biomaterials is assigned 6.3x against a 9.5x industry median, despite a forecast margin rising from 9.6% in 2025 to 13% in 2028. Its reported total-sales margin moved from 7.5% in 2025 to 15.9% in Q2 2026, making the normal earnings level difficult to establish. Wood products is priced near the 14.2x lower quartile because its adjusted margin was -0.1% in 2025 and the forecast assumes 4% in 2028. Packaging solutions is at 6.0x against an 11.5x peer median, with a 1.4% margin needing to reach 5%. These are execution tests embedded in the price split."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first major event is the planned separation of the Swedish forests, expected in the first half of 2027 and subject to General Meeting approval. Completion would create a quoted price for the largest pool, allowing investors to compare the current 70% count with the 100% value achieved in Stora Enso’s 2025 forest transaction. A delay or refusal would leave the forests inside the group and preserve the current reference-value approach. Nearer-term, Gruvön’s CLT closure is due by the end of 2026, while Veitsiluoto has already been permanently closed. The subsequent test is whether Wood products’ outside-sales margin moves from -0.1% in 2025 towards 4% in 2028 without deliveries falling materially. Packaging materials needs quarterly margin improvement from 2.9% towards 7%, alongside evidence that cartonboard operating rates are recovering as Oulu fills. Biomaterials needs repeated performance after the Q2 2026 margin of 15.9% on total sales, with pulp deliveries watched from 484,000 tonnes. Packaging solutions needs its 1.4% margin to move towards 5%; the 4.9% Q2 2026 Integrated Packaging margin is only a broad directional guide. These indicators determine whether the price remains a cautious earnings split."
+    }
+  ],
+  "risks": [
+    "Forest separation approval and execution (Forests): a General Meeting refusal or delay would leave the largest pool without a quoted price; the early warning is the vote and completion date expected in the first half of 2027.",
+    "European board overcapacity (Packaging materials): low cartonboard operating rates could prevent the margin rising from 2.9% in 2025 towards 7% in 2028; management commentary on operating rates is the early warning.",
+    "Pulp earnings reversal (Biomaterials): the Q2 2026 total-sales margin of 15.9% could fall back towards 7.5%, while deliveries have already declined to 484,000 tonnes from 501,000 tonnes; quarterly margin and volume are the early warning.",
+    "Closures without recovery (Wood products): Gruvön and Veitsiluoto could remove sales without lifting the remaining mills’ margin from -0.1%; deliveries and outside-sales margin are the early warning.",
+    "Packaging margin shortfall (Packaging solutions): the 1.4% 2025 margin may not reach the 5% assumed for 2028; quarterly margin and European corrugated deliveries are the early warning."
+  ],
+  "catalysts": [
+    "Gruvön closure by the end of 2026 (near-term, Wood products): completing the announced capacity reduction would test whether the remaining mills run fuller and move the margin towards 4%.",
+    "Oulu ramp-up and higher cartonboard rates (near-term, Packaging materials): rising utilisation and quarterly margins would show that fixed costs are being spread over more tonnes.",
+    "Repeated Biomaterials strength (near-term, Biomaterials): further quarters near the Q2 2026 15.9% total-sales margin would make the 13% 2028 margin assumption more credible.",
+    "Skutskär fluff-pulp expansion in Q4 2027 (medium-term, Biomaterials): the EUR 19m investment and capacity increase to 440,000 tonnes a year would show whether the mill can rely more on specialised demand.",
+    "Swedish forest separation (medium-term, Forests): completion in the first half of 2027 would provide a quoted price for the forests and clarify whether investors value them nearer 70% or 100% of reported value."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "9,396",
+            "9,049",
+            "9,326",
+            "9,513",
+            "9,777",
+            "10,015"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "556",
+            "1,324",
+            "1,449",
+            "1,384",
+            "1,627",
+            "1,739"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "5.9%",
+            "14.6%",
+            "15.5%",
+            "14.5%",
+            "16.6%",
+            "17.4%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-878",
+            "-1,231",
+            "-507",
+            "-739",
+            "-776",
+            "-798"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "-322",
+            "93",
+            "942",
+            "645",
+            "851",
+            "941"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "-3.4%",
+            "1.0%",
+            "10.1%",
+            "6.8%",
+            "8.7%",
+            "9.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-173",
+            "-211",
+            "-159",
+            "-201",
+            "-222",
+            "-225"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-495",
+            "-118",
+            "783",
+            "443",
+            "629",
+            "716"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-431",
+            "-183",
+            "686",
+            "339",
+            "465",
+            "530"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-0.6",
+            "-0.2",
+            "0.9",
+            "0.4",
+            "0.6",
+            "0.7"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.6",
+            "0.2",
+            "0.3",
+            "0.3",
+            "0.5",
+            "0.5"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-109.8%",
+            "-86.2%",
+            "28.7%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "7,135",
+            "7,489",
+            "7,122",
+            "7,478",
+            "7,685",
+            "7,872"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "392",
+            "350",
+            "295",
+            "301",
+            "309",
+            "317"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "505",
+            "162",
+            "171",
+            "171",
+            "171",
+            "171"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "6,533",
+            "6,876",
+            "7,270",
+            "7,270",
+            "7,270",
+            "7,270"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "14,565",
+            "14,877",
+            "14,858",
+            "15,220",
+            "15,436",
+            "15,630"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,413",
+            "1,585",
+            "1,802",
+            "1,778",
+            "1,827",
+            "1,872"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "2,177",
+            "1,132",
+            "965",
+            "1,002",
+            "1,030",
+            "1,055"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "2,464",
+            "1,999",
+            "1,212",
+            "1,539",
+            "1,582",
+            "1,620"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "6,054",
+            "4,716",
+            "3,979",
+            "4,319",
+            "4,439",
+            "4,547"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "135",
+            "209",
+            "222",
+            "222",
+            "222",
+            "222"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "20,754",
+            "19,802",
+            "19,059",
+            "19,761",
+            "20,097",
+            "20,399"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "10,888",
+            "9,988",
+            "10,649",
+            "10,791",
+            "10,985",
+            "11,143"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "4,183",
+            "3,889",
+            "3,093",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "691",
+            "1,841",
+            "913",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "4,238",
+            "3,621",
+            "3,356",
+            "2,605",
+            "2,642",
+            "2,681"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,674",
+            "4,232",
+            "3,277",
+            "4,589",
+            "4,686",
+            "4,780"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "1,954",
+            "1,961",
+            "1,777",
+            "1,775",
+            "1,784",
+            "1,795"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "20,754",
+            "19,802",
+            "19,059",
+            "19,761",
+            "20,097",
+            "20,399"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "520",
+            "545",
+            "463",
+            "461",
+            "470",
+            "481"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,930",
+            "4,276",
+            "3,257",
+            "3,607",
+            "3,646",
+            "3,697"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,298",
+            "13,719",
+            "13,443",
+            "13,937",
+            "14,161",
+            "14,359"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "52.5%",
+            "50.4%",
+            "55.9%",
+            "54.6%",
+            "54.7%",
+            "54.6%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "26.9%",
+            "42.8%",
+            "30.6%",
+            "33.4%",
+            "33.2%",
+            "33.2%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "5.3x",
+            "3.2x",
+            "2.2x",
+            "2.6x",
+            "2.2x",
+            "2.1x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "1.1",
+            "1.2",
+            "0.9",
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "917",
+            "1,329",
+            "1,116",
+            "948",
+            "1,225",
+            "1,313"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "999",
+            "1,397",
+            "1,136",
+            "1,102",
+            "1,389",
+            "1,479"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-474",
+            "-281",
+            "77",
+            "131",
+            "17",
+            "15"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "397",
+            "1,543",
+            "488",
+            "1,101",
+            "992",
+            "992"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-397",
+            "-1,543",
+            "-488",
+            "-1,101",
+            "-992",
+            "-992"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "520",
+            "-214",
+            "628",
+            "-153",
+            "233",
+            "321"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "779",
+            "-469",
+            "1,179",
+            "1",
+            "397",
+            "487"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "779",
+            "-469",
+            "1,179",
+            "1",
+            "397",
+            "487"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "92",
+            "-159",
+            "-1,300",
+            "480",
+            "-190",
+            "-282"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-434",
+            "-473",
+            "-158",
+            "-197",
+            "-272",
+            "-372"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "612",
+            "-373",
+            "-672",
+            "327",
+            "43",
+            "38"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "22.5x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.1x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "17x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "0.7x"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "6.8%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "3.6%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "2.6x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Stora Enso Oyj’s share price made of?",
+      "a": "Forests account for €7.57 per share, Packaging materials for €3.58, Biomaterials for €1.29, Wood products for €1.25 and Packaging solutions for €0.45. The businesses total €14.14 per share before debt and other claims, less cash of −4.44 EUR per share, leaving €9.69."
+    },
+    {
+      "q": "Why does Stora Enso trade below its listed peers?",
+      "a": "The non-forest businesses are priced at about 8.5x 2028 operating profit against peers at about 11.5x. European cartonboard overcapacity, the Oulu ramp-up, Wood products closures and Biomaterials’ margin volatility make the forecast operating-profit improvements less established."
+    },
+    {
+      "q": "What do analysts forecast for Stora Enso’s sales and profit?",
+      "a": "Analysts forecast 2028 sales of EUR 10,015m, EBITDA of EUR 1,739m, operating profit of EUR 941m, net earnings of EUR 530m, EPS of EUR 0.7 and DPS of EUR 0.5. The 2026 operating-profit forecast is EUR 645m."
+    },
+    {
+      "q": "What should Stora Enso investors watch?",
+      "a": "The main events are the Swedish forest separation expected in the first half of 2027, subject to approval, Gruvön’s closure by the end of 2026, Packaging materials’ margin and cartonboard rates, Biomaterials’ pulp deliveries and margin, and Wood products’ deliveries and sawn-timber prices."
+    },
+    {
+      "q": "How does Valuatum’s market report work?",
+      "a": "The method keeps analysts’ whole-company forecasts unchanged, splits 2028 operating profit between the businesses using segment results, compares each business with peers or industry quartiles, and reads today’s €9.69 share price back into the businesses using EV/EBIT multiples and reported forest value."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Stora Enso Oyj dated 29 October 2026 (€9.69 share price, forests at €7.57 per share and the businesses at €14.14 per share before −4.44 EUR per share of debt and other claims, less cash).",
+    "Competitor context: BillerudKorsnäs AB (publ), Metsa Board and Mondi plc for Packaging materials; Metsa Board and UPM for Biomaterials; Holmen AB (publ) and Weyerhaeuser Company for Wood products; Smurfit Westrock Plc, Graphic Packaging Holding Company and International Paper Company for Packaging solutions. Peer EV/EBIT 2028 multiples range from 5.9x to 13.0x, with industry quartiles used where fewer than three peers are available. The forest comparison is caveated: Stora Enso’s 2025 sale was at 100% of reported value, while Pareto Securities’ 26 October 2026 reading for SCA was 70%; the split uses 70%.",
+    "Market data: STERV.HE, €9.69 on 29 October 2026; analysts forecast 2028 sales of EUR 10,015m and operating profit of EUR 941m; the consensus price target is €11.49 from 16 analysts, with StockAnalysis as the source."
+  ]
+}

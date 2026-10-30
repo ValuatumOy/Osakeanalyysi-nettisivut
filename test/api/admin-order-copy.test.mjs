@@ -112,6 +112,17 @@ test("a revision on the customer's order goes to a new private copy, even with t
   assert.equal(original.pendingRevisionComment, undefined);
 });
 
+test('an admin copy of a market-first report is market-first from the start', async (t) => {
+  cleanup(t);
+  const orders = new Map([['lauri-tsla', { ...laurisOrder(), marketFirst: true, hasPreview: true }]]);
+  const { handler, created } = loadApi(orders);
+
+  const res = await handler(event('POST /api/admin/orders/{id}/revisions', 'lauri-tsla', { comments: 'Lower the margin' }));
+  assert.equal(res.statusCode, 200, res.body);
+  assert.equal(created[0].marketFirst, true);
+  assert.equal(created[0].hasPreview, true);
+});
+
 test('on an admin copy the next revision and edit stay on that copy', async (t) => {
   cleanup(t);
   const orders = new Map([['copy-1', {

@@ -15,6 +15,7 @@ const ENGINE_ID = require.resolve('../../server/engine-client.js');
 // order-editing.js holds its own reference to the engine client, so it has
 // to be reloaded whenever the fake engine is swapped.
 const ORDER_EDITING_ID = require.resolve('../../server/order-editing.js');
+const MEMBERS_STORE_ID = require.resolve('../../server/members/store.js');
 
 const STATUS = Object.freeze({
   NEW: 'NEW', IMPORTING: 'IMPORTING', RENDERING: 'RENDERING',
@@ -24,10 +25,11 @@ const STATUS = Object.freeze({
 function fakeOrdersStore(orders) {
   return {
     STATUS,
-    async get(id) { return orders.get(id) || null; },
+    async get(id) { return orders.has(id) ? { ...orders.get(id) } : null; },
     async claimRevision(id, comment, valuationOverrides = null, scope) {
       const order = orders.get(id);
       if (!order) return null;
+      if (order.publicationLocked) return null;
       if (order.status !== STATUS.DELIVERED) return null;
       if ((order.revisionsUsed || 0) >= (order.revisionsAllowed || 0)) return null;
       order.status = STATUS.REVISING;
@@ -39,6 +41,7 @@ function fakeOrdersStore(orders) {
     async claimEdit(id, edit) {
       const order = orders.get(id);
       if (!order) return null;
+      if (order.publicationLocked) return null;
       if (order.status !== STATUS.DELIVERED) return null;
       order.status = STATUS.REVISING;
       order.pendingEdit = edit;
@@ -71,25 +74,54 @@ function fakePdfStore() {
   };
 }
 
-function loadApi({ orders = new Map(), secret = 'test-secret', engine = fakeEngine() } = {}) {
+function loadApi({ orders = new Map(), secret = 'test-secret', engine = fakeEngine(), legacyPublications = null } = {}) {
   delete require.cache[API_ID];
   delete require.cache[ORDER_EDITING_ID];
   process.env.CATALOG_SYNC_SECRET = secret;
   delete process.env.WORKER_FUNCTION_NAME; // invokeWorkerAsync becomes a no-op
   delete process.env.SECRETS_SSM_PREFIX; // ensureSecrets becomes a no-op
+  process.env.MEMBERS_TABLE = 'Members';
 
   const ordersStore = fakeOrdersStore(orders);
   const pdfStore = fakePdfStore();
   require.cache[ORDERS_STORE_ID] = { id: ORDERS_STORE_ID, filename: ORDERS_STORE_ID, loaded: true, exports: ordersStore };
   require.cache[PDF_STORE_ID] = { id: PDF_STORE_ID, filename: PDF_STORE_ID, loaded: true, exports: pdfStore };
   require.cache[ENGINE_ID] = { id: ENGINE_ID, filename: ENGINE_ID, loaded: true, exports: engine };
+  require.cache[MEMBERS_STORE_ID] = { id: MEMBERS_STORE_ID, filename: MEMBERS_STORE_ID, loaded: true,
+    exports: { findPublicationForOrder: async id => legacyPublications?.get(id) || null } };
 
   return { handler: require(API_ID).handler, orders, pdfStore, engine };
 }
 
 function cleanup(t) {
-  t.after(() => { for (const id of [API_ID, ORDERS_STORE_ID, PDF_STORE_ID, ENGINE_ID, ORDER_EDITING_ID]) delete require.cache[id]; });
+  t.after(() => { for (const id of [API_ID, ORDERS_STORE_ID, PDF_STORE_ID, ENGINE_ID, ORDER_EDITING_ID, MEMBERS_STORE_ID]) delete require.cache[id]; });
 }
+
+test('published orders are frozen and exposed legacy receipts require member authentication', async (t) => {
+  cleanup(t);
+  const orders = new Map([
+    ['cs_locked', { id: 'cs_locked', status: STATUS.DELIVERED, jobId: 'job', publicationLocked: true, revisionsAllowed: 3, revisionsUsed: 1 }],
+    ['cs_legacy', { id: 'cs_legacy', ticker: 'NOKIA.HE', status: STATUS.DELIVERED, jobId: 'job', forkedFrom: 'parent', revisionsAllowed: 3, revisionsUsed: 1 }],
+    ['cs_private', { id: 'cs_private', ticker: 'NOKIA.HE', status: STATUS.DELIVERED, jobId: 'job', forkedFrom: 'parent', revisionsAllowed: 3, revisionsUsed: 1 }],
+  ]);
+  const { handler } = loadApi({ orders, legacyPublications: new Map([
+    ['cs_legacy', { status: 'published' }], ['cs_missing', { status: 'published' }],
+  ]) });
+  const state = JSON.parse((await handler(event('GET /api/orders/{id}', { id: 'cs_locked' }))).body);
+  assert.equal(state.publicationLocked, true);
+  assert.equal(state.editable, false);
+  assert.equal((await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_locked', body: { comments: 'Revise' } }))).statusCode, 409);
+  for (const route of ['GET /api/orders/{id}', 'GET /api/orders/{id}/preview', 'POST /api/orders/{id}/revisions', 'POST /api/orders/{id}/edits', 'POST /api/orders/{id}/valuation']) {
+    const body = route.includes('revisions') ? { comments: 'Revise' } : route.includes('edits') ? { edits: { 'recommendation/prose/0': 'Changed' } } : {};
+    assert.equal((await handler(event(route, { id: 'cs_legacy', body }))).statusCode, 403, route);
+  }
+  orders.get('cs_legacy').memberOnly = true;
+  orders.get('cs_legacy').publicationLocked = false;
+  assert.equal((await handler(event('GET /api/orders/{id}', { id: 'cs_legacy' }))).statusCode, 403);
+  assert.equal((await handler(event('GET /api/orders/{id}', { id: 'cs_missing' }))).statusCode, 403);
+  assert.equal((await handler(event('GET /api/orders/{id}/preview', { id: 'cs_missing' }))).statusCode, 403);
+  assert.equal((await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_private', body: { comments: 'Revise' } }))).statusCode, 200);
+});
 
 function event(routeKey, { id, body, secret = 'test-secret' } = {}) {
   return {

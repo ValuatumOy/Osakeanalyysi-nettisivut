@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Institutions — Equity Research on Demand | Valuatum AI Equity Reports</title>
-  <meta name="description" content="How asset managers, brokers, advisory firms and IR teams use AI Equity Reports: a full report on any listed company in about half an hour, with revision rounds their own analysts drive. Request a free pilot.">
+  <meta name="description" content="How banks, brokers and asset managers use AI Equity Reports: every report starts from today’s share price and shows what each business must deliver. Your analyst adds their view and gets the report back rebuilt on their numbers. Request a free pilot.">
   <link rel="canonical" href="https://www.aiequityreports.com/institutions.html">
   <script type="application/ld+json" data-page-freshness>
 {
@@ -13,7 +13,7 @@
   "@id": "https://www.aiequityreports.com/institutions.html#page",
   "url": "https://www.aiequityreports.com/institutions.html",
   "name": "For Institutions — Equity Research on Demand | Valuatum AI Equity Reports",
-  "description": "How asset managers, brokers, advisory firms and IR teams use AI Equity Reports: a full report on any listed company in about half an hour, with revision rounds their own analysts drive. Request a free pilot.",
+  "description": "How banks, brokers and asset managers use AI Equity Reports: every report starts from today’s share price and shows what each business must deliver. Your analyst adds their view and gets the report back rebuilt on their numbers. Request a free pilot.",
   "dateModified": "2026-08-25",
   "inLanguage": "en",
   "isPartOf": {
@@ -29,7 +29,7 @@
 }
   </script>
   <meta property="og:title" content="For Institutions — Equity Research on Demand">
-  <meta property="og:description" content="A full equity report on any of the world’s 50,000 listed companies, in about half an hour. Your analysts steer the model; the model does the building. Request a free pilot.">
+  <meta property="og:description" content="The report explains the share price. Your analyst decides where the market is wrong, and gets the report back rebuilt on their numbers. Request a free pilot.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aiequityreports.com/institutions.html">
   <meta property="og:image" content="https://www.aiequityreports.com/images/og-image.png">
@@ -44,11 +44,6 @@
   <style>
     .i-section { padding: var(--section-py) 0; }
     .i-section--alt { background: var(--off-white); }
-    .i-hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem 3rem;
-      margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
-    .i-hero-stats .v { font-size: 2rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; }
-    .i-hero-stats .k { font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.35); margin-top: 0.35rem; line-height: 1.5; }
     .i-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
     @media (min-width: 620px) { .i-cards { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 980px) { .i-cards--three { grid-template-columns: repeat(3, 1fr); } }
@@ -76,13 +71,6 @@
     .i-route li:first-child { border-top: none; }
     .i-route li::before { content: "·"; position: absolute; left: 0.35rem; color: var(--green); font-weight: 600; }
     .i-route .btn { margin-top: auto; justify-content: center; }
-    .i-flow-wrap { overflow-x: auto; margin-top: 2.5rem; padding-bottom: 0.5rem; }
-    .i-flow { display: block; min-width: 900px; width: 100%; height: auto; }
-    .i-flow-legend { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 2rem; }
-    @media (min-width: 760px) { .i-flow-legend { grid-template-columns: repeat(2, 1fr); } }
-    .i-flow-legend div { padding-top: 1rem; border-top: 1px solid var(--color-border); }
-    .i-flow-legend h4 { font-size: var(--text-base); font-weight: 500; color: var(--charcoal); margin-bottom: 0.35rem; }
-    .i-flow-legend p { font-size: var(--text-sm); font-weight: 300; line-height: 1.75; color: #5B6A63; }
     .i-note { background: var(--gold-faint); border: 1px solid rgba(200,150,62,0.3);
       border-radius: var(--r-md); padding: 1.25rem 1.35rem; font-size: var(--text-sm);
       font-weight: 300; line-height: 1.75; color: #5B6A63; margin-top: 2rem; }
@@ -159,17 +147,42 @@
       font-weight: 300; color: var(--gray-steel); line-height: 1.7; vertical-align: top; }
     .i-diff td:first-child { font-weight: 600; color: var(--charcoal); }
     .i-diff td.after { color: var(--green-deep); }
-    /* PDF links sit under the Before and After columns, so the pair reads as
-       part of the comparison rather than as an afterthought below it. */
-    .i-diff tfoot td { border-bottom: none; padding-top: 1.25rem; }
-    .i-pdf { display: inline-flex; align-items: center; gap: 0.55rem; font-size: var(--text-sm);
-      font-weight: 400; color: var(--charcoal); text-decoration: none; border: 1px solid var(--color-border);
-      background: var(--white); border-radius: var(--r-md); padding: 0.7rem 1rem; line-height: 1.3; }
-    .i-pdf:hover { border-color: var(--green); }
-    .i-pdf--after { border-color: var(--green-mist); background: var(--green-faint); color: var(--green-deep); }
-    .i-pdf .x { font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); }
-    .i-pdf--after .x { color: #6E8579; }
 
+    /* The base report's cover beside the text that explains it. */
+    .i-split-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    @media (min-width: 960px) { .i-split-grid { grid-template-columns: 1fr 1.05fr; gap: 4.5rem; } }
+    .i-points { display: grid; gap: 0; margin-top: 0.5rem; }
+    .i-points div { padding: 1rem 0; border-top: 1px solid var(--color-border); }
+    .i-points h3 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem; }
+    .i-points p { font-size: var(--text-sm); font-weight: 300; line-height: 1.7; color: #5B6A63; }
+    .i-ba-num--analyst { border-color: rgba(200,150,62,0.5); background: var(--gold-faint); color: #7A5718; }
+    .i-ba-num--result { border-color: var(--green-deep); background: var(--green-deep); color: var(--white); }
+    .i-ba-text { font-size: var(--text-sm); font-weight: 300; line-height: 1.8; color: var(--gray-steel); max-width: 70ch; }
+    .i-says blockquote { margin: 0; }
+    .i-diff-wrap { margin-top: 3rem; }
+    .i-can { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 820px) { .i-can { grid-template-columns: 1.2fr 1fr; } }
+    .i-can-col { background: var(--white); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.75rem; }
+    .i-can-col h3 { font-size: var(--text-sm); font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem; }
+    .i-can-col ul { list-style: none; margin: 0; padding: 0; }
+    .i-can-col li { position: relative; padding: 0.6rem 0 0.6rem 1.6rem; border-top: 1px solid var(--color-border);
+      font-size: var(--text-sm); font-weight: 300; line-height: 1.65; color: #5B6A63; }
+    .i-can-col li:first-child { border-top: none; }
+    .i-can-col li::before { content: ""; position: absolute; left: 0.2rem; top: 1.05rem; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--green); }
+    .i-can-col--fixed { background: transparent; }
+    .i-can-col--fixed li::before { background: transparent; border: 1.5px solid #9AA59F; }
+    .i-uses { margin-top: 1.5rem; }
+    @media (min-width: 980px) { .i-uses { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 640px) {
+      .i-diff { min-width: 0; }
+      .i-diff thead { display: none; }
+      .i-diff tr { display: block; padding: 0.9rem 0; border-bottom: 1px solid var(--color-border); }
+      .i-diff td { display: block; border: none; padding: 0.15rem 0; }
+      .i-diff td[data-label] { margin-top: 0.4rem; }
+      .i-diff td[data-label]::before { content: attr(data-label); display: block; font-size: var(--text-xs);
+        letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-steel); font-weight: 500; }
+    }
     @media (max-width: 640px) { .i-ba-head h3 { font-size: var(--text-md); } }
 
   </style>
@@ -227,105 +240,13 @@
     <!-- HERO -->
     <section class="about-hero">
       <div class="container">
-        <span class="section-eyebrow section-eyebrow--light">For institutions</span>
-        <h1 class="section-headline section-headline--light" style="max-width:none;">Any listed company in the world.<br>A full report in about thirty minutes.</h1>
-        <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:660px; line-height:1.75;">Valuatum has built equity and credit analysis software for banks, brokers and asset managers since 2000. AI Equity Reports is that same modelling, on demand, for any of the world’s roughly 50,000 listed companies — and <strong style="color:rgba(255,255,255,0.92); font-weight:400;">steered by your analysts rather than written around them</strong>.</p>
+        <span class="section-eyebrow section-eyebrow--light">For banks, brokers and asset managers</span>
+        <h1 class="section-headline section-headline--light" style="max-width:920px;">The report explains the share price. Your analyst decides where the market is wrong.</h1>
+        <p style="font-size:var(--text-lg); font-weight:300; color:rgba(255,255,255,0.6); max-width:680px; line-height:1.75;">Every report starts from today’s price and shows what each business has to deliver to justify it. Your analyst writes in plain language where they disagree, and <strong style="color:rgba(255,255,255,0.92); font-weight:400;">the report comes back rebuilt on their numbers</strong>, with a 12-month target that follows from them.</p>
         <div style="display:flex; gap:1rem; margin-top:2.25rem; flex-wrap:wrap;">
-          <a href="#pilot" class="btn btn-primary">Request a free pilot</a>
-          <a href="#example" class="btn btn-outline">See a real revision</a>
-          <a href="reports.html#free" class="btn btn-outline">Read a finished report</a>
-        </div>
-        <!-- ~50,000 = listed companies worldwide, i.e. what can be ordered, not
-             what is pre-modelled. Already imported on 25.8.2026: 13,700 (Wisdom
-             /company returns 16,009, less the 2,309 the isFinancialCompany rule
-             excludes), on 41 exchanges. Everything else is imported on request,
-             which is the claim this number rests on — if that request path ever
-             stops working, this figure has to come down with it. -->
-        <div class="i-hero-stats">
-          <div><div class="v">~50,000</div><div class="k">Listed companies worldwide you can order a report on</div></div>
-          <div><div class="v">~30 min</div><div class="k">From request to a finished PDF</div></div>
-          <div><div class="v">5 rounds</div><div class="k">Revisions where your analyst steers the model</div></div>
-          <div><div class="v">25 years</div><div class="k">Of Valuatum models behind the numbers</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE GAP -->
-    <section class="i-section">
-      <div class="container">
-        <span class="section-eyebrow">Where it fits</span>
-        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">Most of an analyst’s week is not analysis.</h2>
-        <p class="section-sub" style="max-width:700px;">Pulling the financials, building the model, checking the peer set, laying out the tables — it has to be done, and none of it is where the judgment lives. The engine does that part in about half an hour, for any listed company, from a real financial model rather than a summary of the annual report.</p>
-        <p class="section-sub" style="max-width:700px;">What that buys back is your analysts’ time, and it goes where it is worth more: questioning an assumption, working out what the current price already assumes, making the calls a model cannot make. The same week produces deeper work, because none of it went on wrestling a spreadsheet into shape.</p>
-
-        <div class="i-cards i-cards--three">
-          <div class="i-card">
-            <h3>What arrives</h3>
-            <p>A complete PDF: company value map with enterprise value split by segment, reverse valuation showing what the current price already assumes, bear / base / bull scenarios, risks and catalysts, full financial statements and forecasts, a rating and a target price.</p>
-            <p><a href="reports.html#free" style="color:var(--green);">Open a finished one and judge it yourself →</a></p>
-          </div>
-          <div class="i-card">
-            <h3>What it is built on</h3>
-            <p>Valuatum's own financial models, the same ones behind ProFinder and CreditRisk, which credit institutions, stockbrokers, investment banks and asset managers across Europe have used for two decades. The AI writes the analysis; it does not invent the numbers.</p>
-            <p><a href="methodology.html" style="color:var(--green);">The methodology in full →</a></p>
-          </div>
-          <div class="i-card">
-            <h3>What your analysts do</h3>
-            <p>They argue with it. Every generation carries revision rounds in which your own analyst challenges assumptions, swaps the peer set, adds a channel check the model cannot see, and pushes the report toward the house view. The last word stays with a person.</p>
-            <p><a href="#process" style="color:var(--green);">The revision loop, step by step →</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- USE CASES -->
-    <section class="i-section i-section--alt">
-      <div class="container">
-        <span class="section-eyebrow">In practice</span>
-        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">Six ways institutions actually use this.</h2>
-        <p class="section-sub" style="max-width:680px;">Each of these is a real job someone on your team is doing today, by hand, on a deadline.</p>
-
-        <div class="i-cards i-cards--three">
-
-          <div class="i-card">
-            <span class="i-card-who">Asset managers</span>
-            <h3>The base work is already done</h3>
-            <p>Financials, peer set, segment split, DCF and multiples arrive built. Your analyst opens a finished argument instead of an empty spreadsheet, and spends the day on the part that decides the call.</p>
-            <p>The output is consistent across companies, which matters more than it sounds: comparing two names is only meaningful when both were valued the same way.</p>
-          </div>
-
-          <div class="i-card">
-            <span class="i-card-who">Portfolio managers</span>
-            <h3>The first pass before a meeting</h3>
-            <p>A company calls, a broker pitches, a name jumps on results. You have an afternoon. Generate the report, read the reverse valuation, and walk in knowing what the price already assumes and which assumption has to break for the story to work.</p>
-          </div>
-
-          <div class="i-card">
-            <span class="i-card-who">Research desks</span>
-            <h3>A second opinion your analyst has to answer</h3>
-            <p>Run a report on a company you already cover and compare it with the internal note. Where the two disagree is where the thesis is actually load-bearing, and the model states its assumptions explicitly, so the disagreement is specific rather than a matter of tone.</p>
-          </div>
-
-          <div class="i-card">
-            <span class="i-card-who">Heads of research</span>
-            <h3>Training that produces something usable</h3>
-            <p>A junior analyst who has to improve a generated report learns faster than one building a model from an empty sheet, because the argument comes first and the mechanics are already there.</p>
-            <p>The revision prompts are kept with the report, so you can see what they changed and why.</p>
-          </div>
-
-          <div class="i-card">
-            <span class="i-card-who">Corporate finance &amp; IR</span>
-            <h3>Your own company, read from outside</h3>
-            <p>Generate the report on your own listed company, and on the peers you are compared with. It shows what a disciplined outside model concludes from public numbers alone — usually the fastest way to find which part of your equity story is not reaching the market.</p>
-          </div>
-
-          <div class="i-card">
-            <span class="i-card-who">Advisory &amp; wealth</span>
-            <h3>Background for a client conversation</h3>
-            <p>Structured, dated background on any listed company a client asks about, without pulling an analyst off their book for a day.</p>
-            <p>Client-facing material, branded output or a wider distribution is a conversation we are happy to have — say so and we will put terms in place.</p>
-          </div>
-
+          <a href="#process" class="btn btn-primary">See how it works</a>
+          <a href="#pilot" class="btn btn-outline">Request a pilot</a>
+          <a href="reports.html#free" class="btn btn-outline">Read a free report</a>
         </div>
       </div>
     </section>
@@ -333,245 +254,234 @@
     <!-- PROCESS -->
     <section class="i-section" id="process">
       <div class="container">
-        <span class="section-eyebrow">How it works</span>
-        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">One generation, then as many rounds of argument as it takes.</h2>
-        <p class="section-sub" style="max-width:700px;">The engine builds the report unattended. Everything after that is your analyst reading a draft and telling it what is wrong — the same loop they would run with a junior, except the rework takes minutes.</p>
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:760px; margin-bottom:1rem;">From the share price to your analyst’s report, in five steps.</h2>
+        <p class="section-sub" style="max-width:700px; margin-bottom:0;">Shown with a real report: Remedy Entertainment, 28 October 2026.</p>
 
-        <div class="i-flow-wrap">
-          <svg class="i-flow" viewBox="0 0 1072 330" role="img" aria-labelledby="flowTitle flowDesc" xmlns="http://www.w3.org/2000/svg">
-            <title id="flowTitle">How a report is produced</title>
-            <desc id="flowDesc">Five stages: choose the company, the engine builds the report, your analyst reads the draft and comments, a revision round re-runs the model with your analyst's instructions, and the final report is delivered. Stages three and four repeat, up to five rounds.</desc>
+        <ol class="flow">
+          <li class="flow-step flow-step--market">
+            <div class="flow-head"><span class="flow-num">1</span><span class="flow-who">Market</span></div>
+            <h3>The company and its share price</h3>
+            <p class="flow-desc">The starting point is what investors pay today, not a value the AI invents.</p>
+            <div class="flow-eg">Remedy Entertainment · €17.40 a share · market cap €236m</div>
+          </li>
+          <li class="flow-step flow-step--valuatum">
+            <div class="flow-head"><span class="flow-num">2</span><span class="flow-who">Valuatum model</span></div>
+            <h3>Statements and forecasts</h3>
+            <p class="flow-desc">Reported financials and analysts’ consensus forecasts in Valuatum’s financial model, which calculates every forecast the report values.</p>
+            <div class="flow-eg">2025 sales €59.5m · 2028 consensus: sales €123m, operating profit €16m</div>
+          </li>
+          <li class="flow-step flow-step--ai">
+            <div class="flow-head"><span class="flow-num">3</span><span class="flow-who">AI</span></div>
+            <h3>The base report</h3>
+            <p class="flow-desc">AI researches the businesses, peers and news, and splits the price between the businesses: what each must deliver for the price to hold.</p>
+            <div class="flow-eg">Games carries the whole price: 17.6× its 2028 profit, the peer median. Main test: CONTROL Resonant, “scheduled for 24 September”.</div>
+          </li>
+          <li class="flow-step flow-step--analyst">
+            <div class="flow-head"><span class="flow-num">4</span><span class="flow-who">Your analyst</span></div>
+            <h3>The analyst’s instruction</h3>
+            <p class="flow-desc">In plain language: where the analyst disagrees, or what the model could not know. A multiple, a margin, the size of a business, a fact.</p>
+            <div class="flow-eg">The game launched on 24 September and sold over a million copies by 15 October. Update the text; change no figures.</div>
+          </li>
+          <li class="flow-step flow-step--result">
+            <div class="flow-head"><span class="flow-num">5</span><span class="flow-who">Back to you</span></div>
+            <h3>The updated report</h3>
+            <p class="flow-desc">Rebuilt on the analyst’s assumptions through the same model, with a 12-month target that follows from them and a record of what changed.</p>
+            <div class="flow-eg">Launch and sales described · forecasts unchanged · 12-month target €17.4, equal to the price</div>
+          </li>
+        </ol>
+        <p class="flow-loop">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v2.8h-2.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Not there yet?</strong> Write another instruction. Each round starts from the latest version, so earlier changes carry forward.</span>
+        </p>
 
-            <defs>
-              <marker id="fArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#8A9590"></path>
-              </marker>
-              <marker id="fArrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#3D9E72"></path>
-              </marker>
-            </defs>
-
-            <!-- 1 -->
-            <g>
-              <rect x="20" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
-              <circle cx="44" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
-              <text x="44" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">1</text>
-              <text x="68" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Choose</text>
-              <text x="40" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">Any listed company.</text>
-              <text x="40" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">Worldwide. New ones</text>
-              <text x="40" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">imported on request.</text>
-              <text x="40" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">2 MINUTES</text>
-            </g>
-            <line x1="204" y1="112" x2="224" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#fArrow)"></line>
-
-            <!-- 2 -->
-            <g>
-              <rect x="228" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
-              <circle cx="252" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
-              <text x="252" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">2</text>
-              <text x="276" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Engine builds</text>
-              <text x="248" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">Financials, peers,</text>
-              <text x="248" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">segments, DCF,</text>
-              <text x="248" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">multiples, the write-up.</text>
-              <text x="248" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">UNATTENDED, 20–40 MIN</text>
-            </g>
-            <line x1="412" y1="112" x2="432" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#fArrow)"></line>
-
-            <!-- 3 -->
-            <g>
-              <rect x="436" y="46" width="180" height="132" rx="14" fill="#EDF5F0" stroke="#C6E0D3"></rect>
-              <circle cx="460" cy="72" r="13" fill="#FFFFFF" stroke="#C6E0D3"></circle>
-              <text x="460" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">3</text>
-              <text x="484" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">You read it</text>
-              <text x="456" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">Your analyst reads the</text>
-              <text x="456" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">draft and writes down</text>
-              <text x="456" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">what is wrong with it.</text>
-              <text x="456" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#6E8579">YOUR PEOPLE</text>
-            </g>
-            <line x1="620" y1="112" x2="640" y2="112" stroke="#3D9E72" stroke-width="1.4" marker-end="url(#fArrowGreen)"></line>
-
-            <!-- 4 -->
-            <g>
-              <rect x="644" y="46" width="180" height="132" rx="14" fill="#EDF5F0" stroke="#C6E0D3"></rect>
-              <circle cx="668" cy="72" r="13" fill="#FFFFFF" stroke="#C6E0D3"></circle>
-              <text x="668" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">4</text>
-              <text x="692" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Revision round</text>
-              <text x="664" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">Assumptions, peer set,</text>
-              <text x="664" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">emphasis, your own</text>
-              <text x="664" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#4A5A52">channel checks.</text>
-              <text x="664" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#6E8579">MINUTES PER ROUND</text>
-            </g>
-            <line x1="828" y1="112" x2="848" y2="112" stroke="#8A9590" stroke-width="1.4" marker-end="url(#fArrow)"></line>
-
-            <!-- 5 -->
-            <g>
-              <rect x="852" y="46" width="180" height="132" rx="14" fill="#FFFFFF" stroke="#E2E9E5"></rect>
-              <circle cx="876" cy="72" r="13" fill="#EDF5F0" stroke="#C6E0D3"></circle>
-              <text x="876" y="77" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#2A6B4F">5</text>
-              <text x="900" y="77" font-family="Inter, sans-serif" font-size="13.5" font-weight="600" fill="#1A2420">Final report</text>
-              <text x="872" y="106" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">PDF, dated, with the</text>
-              <text x="872" y="124" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">revision history kept</text>
-              <text x="872" y="142" font-family="Inter, sans-serif" font-size="12" font-weight="300" fill="#5B6A63">alongside it.</text>
-              <text x="872" y="166" font-family="Inter, sans-serif" font-size="10.5" letter-spacing="0.06em" fill="#8A9590">YOURS TO KEEP</text>
-            </g>
-
-            <!-- loop 4 -> 3 -->
-            <path d="M 734 182 L 734 232 Q 734 244 722 244 L 546 244 Q 534 244 534 232 L 534 186"
-                  fill="none" stroke="#3D9E72" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#fArrowGreen)"></path>
-            <text x="634" y="272" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#2A6B4F">Repeat until the report says what your analyst thinks</text>
-            <text x="634" y="292" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-weight="300" fill="#6E8579">Up to five rounds per generation. Every round re-runs the model, not just the prose.</text>
-          </svg>
-        </div>
-
-        <div class="i-flow-legend">
-          <div>
-            <h4>Stage 3 is where the value is added</h4>
-            <p>The draft is finished work, not a skeleton — it is exactly what a paying customer receives. Your analyst is not filling gaps, they are disagreeing with a complete argument, which is a much faster thing to do well.</p>
-          </div>
-          <div>
-            <h4>Stage 4 takes instructions, not edits</h4>
-            <p>Your analyst writes what should change and why: a different WACC, a peer set that reflects how the company actually competes, a risk the model underweighted, a channel check nobody outside the firm has. The model re-runs with that input and the numbers move with it.</p>
-          </div>
-          <div>
-            <h4>The loop is bounded on purpose</h4>
-            <p>Five rounds per generation. Each one is a full engine run rather than a text rewrite, so the cap is real work rather than a paywall. If you find five is not enough for the way your team works, tell us; the number is set by us and can move.</p>
-          </div>
-          <div>
-            <h4>The reasoning is kept</h4>
-            <p>Every instruction your analyst sent is stored with the report. Six months later, when the call is being reviewed, you can see what the model concluded, what your analyst changed, and on what grounds.</p>
-          </div>
-        </div>
-
-        <div class="i-note">
-          <strong>One boundary worth knowing before you pilot this.</strong> Instructions steer evidence and assumptions, not conclusions. Your analyst can argue for a lower terminal growth rate, a different peer set, or more weight on a risk, and the valuation will follow. They cannot instruct a rating into existence or overwrite reported financial data — the rating follows arithmetically from the target price. If you want a SELL, you have to make the case upstream, which is the only honest way to get there.
-        </div>
-
-        <p class="section-sub" style="max-width:700px; margin-top:2rem;">That is the mechanism. <a href="#example" style="color:var(--green);">Here is one that actually ran, with the comment and both versions of the numbers →</a></p>
+        <p class="section-sub" style="max-width:700px; margin:2rem 0 0;"><a href="#example" style="color:var(--green);">The Remedy revision, line by line ↓</a></p>
       </div>
     </section>
 
-    <!-- WORKED EXAMPLE: BEFORE / COMMENT / AFTER -->
-    <section class="i-section i-section--alt" id="example">
+    <!-- WHAT THE BASE REPORT SHOWS -->
+    <section class="i-section i-section--alt" id="base-report">
       <div class="container">
-        <span class="section-eyebrow">Worked example</span>
-        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:700px;">One comment, and a HOLD became a BUY.</h2>
-        <p class="section-sub" style="max-width:700px;">This is a real revision from this pipeline, not an illustration. The engine produced a Stora Enso report on 24 August 2026. An analyst read it and wrote down what was wrong with it. The report was regenerated against those objections. Both versions, the comment and the differences between them are kept together, which is why it can be shown at this level of detail.</p>
+        <div class="i-split-grid">
+          <div>
+            <h2 class="section-headline" style="font-size:var(--text-2xl); margin-bottom:1rem;">Every report opens by taking the price apart.</h2>
+            <p class="section-sub" style="max-width:none;">The cover splits today’s share price between the businesses: what each is valued at, and on what multiple of its forecast profit. That is the market’s view written down in numbers, and it is what your analyst argues with.</p>
+            <div class="i-points">
+              <div>
+                <h3>Consensus is kept as it is</h3>
+                <p>Analysts’ forecasts are used unchanged to the last year they cover. The report splits them between the businesses and says which figures are its own estimate.</p>
+              </div>
+              <div>
+                <h3>Each business beside its peers</h3>
+                <p>Listed peers are the yardstick. In the Stora Enso report the mills are priced at about 8.5× 2028 operating profit; their peers at about 11.5×.</p>
+              </div>
+              <div>
+                <h3>No target, no rating</h3>
+                <p>The base report takes no view of its own. A target appears only when an analyst revises the report with their assumptions.</p>
+              </div>
+            </div>
+          </div>
+          <figure class="split">
+            <figcaption class="split-head"><span class="split-title">What the €9.69 is made of</span><span class="split-meta">Stora Enso · 29 Oct 2026 · € per share</span></figcaption>
+            <div class="split-body">
+              <div class="split-row"><span class="split-name">Forests<small>70% of the €8.5bn the company reports</small></span><span class="split-bar"><i style="--w:100%"></i></span><span class="split-val">7.57</span></div>
+              <div class="split-row"><span class="split-name">Packaging materials<small>9× its 2028 profit</small></span><span class="split-bar"><i style="--w:47.3%"></i></span><span class="split-val">3.58</span></div>
+              <div class="split-row"><span class="split-name">Biomaterials<small>6.3× its 2028 profit</small></span><span class="split-bar"><i style="--w:17%"></i></span><span class="split-val">1.29</span></div>
+              <div class="split-row"><span class="split-name">Wood products<small>14× its 2028 profit</small></span><span class="split-bar"><i style="--w:16.5%"></i></span><span class="split-val">1.25</span></div>
+              <div class="split-row"><span class="split-name">Packaging solutions<small>6× its 2028 profit</small></span><span class="split-bar"><i style="--w:5.9%"></i></span><span class="split-val">0.45</span></div>
+              <div class="split-row split-row--claims"><span class="split-name">Debt and other claims, less cash<small>end of 2026, as forecast</small></span><span class="split-bar"><i style="--w:58.7%"></i></span><span class="split-val">−4.44</span></div>
+              <div class="split-total"><span>Share price</span><strong>€9.69</strong></div>
+            </div>
+            <p class="split-foot">From the cover of the free report. <a href="reports/stora-enso-equity-report.html">Open the Stora Enso report →</a></p>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-        <!-- 1 · BEFORE -->
+    <!-- WORKED EXAMPLE -->
+    <section class="i-section" id="example">
+      <div class="container">
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:700px; margin-bottom:1rem;">One instruction, start to finish.</h2>
+        <p class="section-sub" style="max-width:700px;">A real revision from 28 October 2026. The analyst read the Remedy base report, saw that it was out of date on the company’s most important release, and wrote one paragraph.</p>
+
         <div class="i-ba-step">
           <div class="i-ba-head">
             <div class="i-ba-num">1</div>
-            <h3>What the engine produced</h3>
-            <span class="i-ba-date">24 August 2026</span>
+            <h3>The base report said</h3>
+            <span class="i-ba-date">28 October 2026</span>
           </div>
           <div class="i-verdict">
-            <div class="i-chip"><span class="l">Recommendation</span><span class="n">HOLD</span></div>
-            <div class="i-chip"><span class="l">Target price</span><span class="n">EUR 9.50</span></div>
-            <div class="i-chip"><span class="l">Share price</span><span class="n">EUR 9.82</span></div>
-            <div class="i-chip"><span class="l">Implied</span><span class="n">−3.3%</span></div>
+            <div class="i-chip"><span class="l">Share price</span><span class="n">€17.40</span></div>
+            <div class="i-chip"><span class="l">Target</span><span class="n">None</span></div>
+            <div class="i-chip"><span class="l">Pages</span><span class="n">18</span></div>
           </div>
-          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch;">A competent report. It valued the Swedish forest estate by discounting the reported fair value, and it was explicit about why:</p>
           <div class="i-pull">
-            “This report applies a 30.4% discount to the EUR 8.5 billion reported fair value, producing approximately EUR 5.92 billion for the forest part in the target SOTP. The discount explicitly covers appraisal-to-market uncertainty, tax and transaction leakage, protected acreage, minority and ownership complexity, listed-company liquidity, the 18-year wood-supply commitment and the possibility that debt is allocated to Bergslagets Skogar.”
-            <cite>Original report, forest valuation</cite>
+            “CONTROL Resonant, scheduled for 24 September 2026 and co-financed 50% by Annapurna, is the main test.”
+            <cite>Base report, summary</cite>
           </div>
         </div>
 
-        <!-- 2 · THE COMMENT -->
         <div class="i-ba-step">
           <div class="i-ba-head">
-            <div class="i-ba-num">2</div>
-            <h3>What the analyst said back</h3>
-            <span class="i-ba-date">Written in Finnish, rendered here in English</span>
+            <div class="i-ba-num i-ba-num--analyst">2</div>
+            <h3>The analyst wrote</h3>
           </div>
-          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch; margin-bottom:1.25rem;">Four objections. None of them asks for a different rating; every one of them attacks a piece of evidence or an assumption. That distinction is the whole method.</p>
-
           <div class="i-says">
-            <h4>The discount was priced for risks that cannot happen</h4>
-            <blockquote>“The company's valuation as a whole — both today and after next year's split into two separate companies — is completely independent of how debt is allocated between the two companies. The total debt is taken from shareholders' pockets in exactly the same way. The current owners will initially own both companies outright, so it makes no difference in which ‘pocket' the debt sits.”</blockquote>
-            <p style="margin-top:0.75rem;">The same objection covered the supply contracts: Stora Enso already buys wood at market prices from private owners and from its own companies, so an 18-year commitment prices nothing new. And no tax effect is coming.</p>
-          </div>
-
-          <div class="i-says">
-            <h4>The peer set was measuring the wrong thing</h4>
-            <blockquote>“These peers should be genuinely pure investment companies — not forest companies such as SCA or Holmen that have other businesses, because that muddles the valuation of the investment assets. Use companies whose business consists almost entirely of investment assets and the cash flow they generate, where NAV is clearly reported and the share price can be compared with NAV. Nordic companies are preferable.”</blockquote>
-          </div>
-
-          <div class="i-says">
-            <h4>One number looked simply wrong</h4>
-            <blockquote>“‘The Swedish estate's annual biological growth is approximately 1%.' I think this is seriously wrong. Sources indicate that biological forest assets grow by roughly 3–5% at the latitude in Sweden where Stora Enso's forests are located. It should be removed, or its source should be disclosed and the report should explain why other sources give different figures.”</blockquote>
-          </div>
-
-          <div class="i-says">
-            <h4>The comparisons were not comparable</h4>
-            <blockquote>“Why are Metsä Board, Billerud, Smurfit Westrock and Mondi described using different types of figures — percentages for some, tonnes for others, and then EBITDA margins for Smurfit and Mondi? Why not report tonnes, market share or margins on a comparable basis for all of them?”</blockquote>
+            <blockquote>“The report treats CONTROL Resonant as upcoming, but it launched on 24 September 2026. On 15 October 2026 Remedy announced that it had sold over 1 million copies, the fastest-selling game in the company’s history. Remedy has said the game reaches a 100% return on investment at 3–4 million copies (Remedy press release, 15 October 2026). Please update the text on the share price page, ‘What the price pays for’ and the Games pages so the launch is described as having happened, with these figures. In ‘What to watch’, replace the launch as the next test with sales progress toward 3–4 million copies. Change no forecasts, multiples or other figures.”</blockquote>
           </div>
         </div>
 
-        <!-- 3 · AFTER -->
         <div class="i-ba-step">
           <div class="i-ba-head">
-            <div class="i-ba-num">3</div>
-            <h3>What the revised report said</h3>
-            <span class="i-ba-date">25 August 2026</span>
+            <div class="i-ba-num i-ba-num--result">3</div>
+            <h3>What came back</h3>
+            <span class="i-ba-date">The same day</span>
           </div>
           <div class="i-verdict">
-            <div class="i-chip i-chip--after"><span class="l">Recommendation</span><span class="n">BUY</span></div>
-            <div class="i-chip i-chip--after"><span class="l">Target price</span><span class="n">EUR 12.50</span></div>
-            <div class="i-chip"><span class="l">Share price</span><span class="n">EUR 9.82</span></div>
-            <div class="i-chip i-chip--after"><span class="l">Implied</span><span class="n">+27.3%</span></div>
+            <div class="i-chip"><span class="l">Share price</span><span class="n">€17.40</span></div>
+            <div class="i-chip i-chip--after"><span class="l">12-month target</span><span class="n">€17.4</span></div>
+            <div class="i-chip i-chip--after"><span class="l">Pages</span><span class="n">22</span></div>
           </div>
-          <p style="font-size:var(--text-sm); font-weight:300; line-height:1.8; color:var(--gray-steel); max-width:70ch;">The rating was never instructed. It moved because the forest discount fell from 30.4% to 12.5% once the objections were accepted, and the rating follows the target price arithmetically. On the debt point the revised report says the opposite of the original:</p>
-          <div class="i-pull i-pull--after">
-            “The demerger's allocation of debt between Stora Enso and Bergslagets Skogar is not an economic value driver for shareholders who initially own both companies. Combined enterprise value less combined net debt produces the same combined equity value whether debt is placed in the forest company, the industrial company or split between them.”
-            <cite>Revised report, forest valuation</cite>
-          </div>
-          <div class="i-pull i-pull--after">
-            “The most relevant evidence for a post-demerger valuation discount comes from companies where reported NAV and market capitalization are observable, not integrated forest companies whose manufacturing earnings obscure asset pricing.”
-            <cite>Revised report, on the new peer set</cite>
-          </div>
+          <p class="i-ba-text">The Games pages now describe the launch with its figures, and “What to watch” follows sales toward 3–4 million copies. The 2028 forecast stayed at €123m of sales and €16m of operating profit, because the instruction changed no figures. That is also why the target equals the price: nothing in the analyst’s view differed from the market’s.</p>
         </div>
 
-        <!-- THE DIFF -->
-        <h3 class="a-worth-head" style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.015em; color:var(--charcoal); margin:3.5rem 0 0.25rem;">Line by line</h3>
-        <p style="font-size:var(--text-sm); font-weight:300; color:var(--gray-steel);">Every row below is a difference the system recorded between the two versions, not a summary written afterwards.</p>
         <div class="i-diff-wrap">
           <table class="i-diff">
             <thead>
-              <tr><th style="width:22%;">Item</th><th style="width:39%;">Before</th><th style="width:39%;">After</th></tr>
+              <tr><th style="width:24%;">Item</th><th style="width:38%;">Base report</th><th style="width:38%;">After the revision</th></tr>
             </thead>
             <tbody>
-              <tr><td>Recommendation</td><td>HOLD</td><td class="after">BUY</td></tr>
-              <tr><td>Target price</td><td>EUR 9.50</td><td class="after">EUR 12.50</td></tr>
-              <tr><td>Implied upside</td><td>−3.3%</td><td class="after">+27.3%</td></tr>
-              <tr><td>Forest discount</td><td>30.4%</td><td class="after">12.5%</td></tr>
-              <tr><td>Forest value in the bridge</td><td>EUR 5.92bn</td><td class="after">EUR 7.4375bn</td></tr>
-              <tr><td>Forest peer set</td><td>SCA and Holmen, mixed with operating-business metrics</td><td class="after">Pure NAV reporters: Investor AB 12.4%, Industrivärden 9% five-year average, Lundbergföretagen 13.5%, with HAL Trust and GBL as wide-discount cases</td></tr>
-              <tr><td>Biological growth</td><td>An unqualified 1% a year</td><td class="after">A 1.0–4.3% evidence range including Stora Enso's own reported 3.3%; the 1% figure treated as a possible net-growth measure</td></tr>
-              <tr><td>Debt allocation</td><td>Listed as a possible value leak</td><td class="after">EUR 3.718bn consolidated net debt deducted once; allocation between two initially shareholder-owned entities treated as value-neutral</td></tr>
-              <tr><td>Industrial divisions</td><td>Valued on EBITDA</td><td class="after">Valued on modelled EBIT</td></tr>
-              <tr><td>Bear / base / bull</td><td>EUR 9.31 / 9.51 / 9.97</td><td class="after">EUR 12.43 / 12.54 / 12.87</td></tr>
+              <tr><td>What the report is</td><td data-label="Base report">An explanation of the price, 18 pages</td><td data-label="After the revision" class="after">An analyst report with a 12-month target, 22 pages</td></tr>
+              <tr><td>CONTROL Resonant</td><td data-label="Base report">Upcoming, scheduled for 24 September</td><td data-label="After the revision" class="after">Launched 24 September; over 1 million copies by 15 October; a 100% return on investment at 3–4 million, per Remedy</td></tr>
+              <tr><td>What to watch</td><td data-label="Base report">The launch as the main test</td><td data-label="After the revision" class="after">Sales progress toward 3–4 million copies</td></tr>
+              <tr><td>2028 forecast</td><td data-label="Base report">Sales €123m, operating profit €16m</td><td data-label="After the revision">Unchanged</td></tr>
+              <tr><td>Target</td><td data-label="Base report">None</td><td data-label="After the revision" class="after">€17.4, equal to the price</td></tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <td>The reports themselves</td>
-                <td><a class="i-pdf" href="/reports/pdfs/StoraEnso_revision_before_24082026.pdf" target="_blank" rel="noopener">Original PDF <span class="x">53 pp · 24 Aug</span></a></td>
-                <td><a class="i-pdf i-pdf--after" href="/reports/pdfs/StoraEnso_revision_after_25082026.pdf" target="_blank" rel="noopener">Revised PDF <span class="x">59 pp · 25 Aug</span></a></td>
-              </tr>
-            </tfoot>
           </table>
         </div>
-        <p style="font-size:var(--text-xs); font-weight:300; line-height:1.7; color:var(--gray-steel); margin-top:0.75rem;">Both are the complete reports as they were produced, not extracts. Every figure in the table above can be checked against them.</p>
 
+        <div class="i-note">
+          <strong>One request did not land.</strong> The share price page still mentioned only pre-orders. The analyst caught it when reading the revised report, which is why every round should be read before it is used: the engine does the rework, a person signs it off.
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT AN INSTRUCTION CAN CHANGE -->
+    <section class="i-section i-section--alt" id="instructions">
+      <div class="container">
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:700px;">What your analyst can change, and what stays fixed.</h2>
+        <div class="i-can">
+          <div class="i-can-col">
+            <h3>An instruction can change</h3>
+            <ul>
+              <li>A business’s multiple, sales or margin, in the near years or the last forecast year</li>
+              <li>Any variable in the financial model, year by year: tax rate, beta, payout, working capital, investment</li>
+              <li>The size of a market, and the outcomes and chances of a new business</li>
+              <li>How the company is divided: merge two businesses or split one</li>
+              <li>What the text explains and what it keeps short</li>
+            </ul>
+          </div>
+          <div class="i-can-col i-can-col--fixed">
+            <h3>What stays fixed</h3>
+            <ul>
+              <li>Reported financial figures</li>
+              <li>The target: it follows from the assumptions and is never typed in</li>
+              <li>Facts need a source: a fact the text lacks is looked up and added to the sources</li>
+              <li>Businesses the analyst does not mention: they keep the market’s view, and their pages say so</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY IT HELPS -->
+    <section class="i-section">
+      <div class="container">
+        <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:700px;">What changes for a research team.</h2>
+        <div class="i-cards i-cards--three">
+          <div class="i-card">
+            <h3>The groundwork arrives done</h3>
+            <p>Financials, consensus, the split between businesses, peers and the price read into each business, done the same way for every company. Your analysts start from a finished argument instead of an empty model.</p>
+          </div>
+          <div class="i-card">
+            <h3>Disagreement becomes a number</h3>
+            <p>Because the base report states what each business must deliver, a view is a specific change to a specific line. When two analysts disagree, you can see exactly where.</p>
+          </div>
+          <div class="i-card">
+            <h3>The reasoning stays with the report</h3>
+            <p>Each instruction, its change record and every version stay together on the report’s order page. Months later you can see what the market priced, what your analyst changed, and why.</p>
+          </div>
+        </div>
+
+        <div class="i-cards i-uses">
+          <div class="i-card">
+            <span class="i-card-who">Heads of research</span>
+            <h3>Training that produces something usable</h3>
+            <p>A junior analyst who has to argue with a finished report learns faster than one building a model from an empty sheet, and the instructions show you how they think.</p>
+          </div>
+          <div class="i-card">
+            <span class="i-card-who">Research desks</span>
+            <h3>A second opinion on names you cover</h3>
+            <p>Set the base report beside your own note. Where your forecast differs from what the price needs is where your thesis carries weight.</p>
+          </div>
+          <div class="i-card">
+            <span class="i-card-who">Portfolio managers</span>
+            <h3>The first pass before a meeting</h3>
+            <p>Walk in knowing what the price already assumes for each business, and which of those assumptions has to break for the story to work.</p>
+          </div>
+          <div class="i-card">
+            <span class="i-card-who">Corporate finance &amp; IR</span>
+            <h3>Your own company, read from outside</h3>
+            <p>See what public figures and today’s price say about your businesses, and which part of your equity story the market is not paying for.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- THREE ROUTES -->
     <section class="i-section i-section--alt" id="routes">
       <div class="container">
-        <span class="section-eyebrow">Working together</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">Three ways in. Start with the first one.</h2>
-        <p class="section-sub" style="max-width:680px;">They are not exclusive, and the first one costs nothing, so there is little reason to start anywhere else.</p>
+        <p class="section-sub" style="max-width:680px;">They are not exclusive, and the first one costs nothing.</p>
 
         <div class="i-cards i-cards--three">
 
@@ -591,12 +501,12 @@
           <div class="i-route">
             <div class="i-route-tag">Option 2 · Per report</div>
             <h3>Buy at list price</h3>
-            <p>No agreement needed. A ready report from the catalogue is €20; a freshly generated one on any covered company is €50, delivered in about half an hour.</p>
+            <p>No agreement needed. A ready report from the catalogue is €20; a fresh one, written from the latest data, is €50.</p>
             <ul>
-              <li>€20 ready report, €50 fresh report</li>
-              <li>Any listed company, imported on request if new</li>
-              <li>API access and volume terms on request</li>
-              <li>Client-facing and branded output on request</li>
+              <li>With <span data-included="freshRevisions">2</span> revision rounds: <span data-price="readyRevisions">€25</span> ready, <span data-price="freshRevisions">€55</span> fresh</li>
+              <li><span data-included="freeRevisions">3</span> revision rounds on a free report: <span data-price="freeRevisions">€10</span></li>
+              <li>Fresh reports on US, Nordic and Baltic listings</li>
+              <li>Volume, API and branded output on request</li>
             </ul>
             <a href="pricing.html" class="btn btn-outline-dark">See pricing</a>
           </div>
@@ -604,11 +514,11 @@
           <div class="i-route">
             <div class="i-route-tag">Option 3 · You earn</div>
             <h3>Put your analysts on the platform</h3>
-            <p>Your analysts publish their reports under their own names, priced by them, with half of every sale paid back. It costs nothing to join and builds a public, dated track record for the people who write it.</p>
+            <p>Your analysts publish their revised reports under their own names, priced by them, with half of every sale paid back. It costs nothing to join and builds a public, dated track record.</p>
             <ul>
               <li>50 % of every sale to the analyst</li>
               <li>The analyst sets the price</li>
-              <li>Free membership, roughly an hour per report</li>
+              <li>Free membership with a monthly generation</li>
               <li>Published under a real name, dated</li>
             </ul>
             <a href="analysts.html" class="btn btn-outline-dark">How publishing works</a>
@@ -623,7 +533,6 @@
     <!-- PILOT FORM -->
     <section class="i-section" id="pilot">
       <div class="container">
-        <span class="section-eyebrow">Free pilot</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">Request limited access for your team.</h2>
 
         <div class="i-form-grid">
@@ -649,7 +558,7 @@
                 <div class="i-next-num">3</div>
                 <div>
                   <h4>Your team starts generating</h4>
-                  <p>Seats are set up in the member area. Your analysts pick companies, run the revision loop, and keep the reports internally.</p>
+                  <p>Seats are set up in the member area. Your analysts pick companies, write their instructions, and keep the reports internally.</p>
                 </div>
               </div>
             </div>
@@ -720,22 +629,25 @@
     <!-- LIMITS -->
     <section class="i-section i-section--alt">
       <div class="container">
-        <span class="section-eyebrow">Before you ask</span>
         <h2 class="section-headline" style="font-size:var(--text-2xl); max-width:660px;">What this does not do.</h2>
         <p class="section-sub" style="max-width:680px;">Worth reading now rather than in week two of a pilot.</p>
 
         <div class="i-limits">
           <div class="i-limit">
+            <h4>Fresh reports cover US, Nordic and Baltic listings</h4>
+            <p>Those are the markets where Valuatum’s statements are kept current automatically. A report on a company listed elsewhere would be built on stale figures, so it is not offered.</p>
+          </div>
+          <div class="i-limit">
             <h4>Banks and insurers are not what the models are built for</h4>
-            <p>Enterprise value, DCF on free cash flow and EV multiples describe an operating business, not a balance-sheet one. Ask before you build a pilot around financials, and we will tell you honestly what a report on one is worth.</p>
+            <p>Enterprise value and EV multiples describe an operating business, not a balance-sheet one. Ask before you build a pilot around financials, and we will tell you honestly what a report on one is worth.</p>
           </div>
           <div class="i-limit">
             <h4>It is not investment advice</h4>
-            <p>The reports are research material. They carry a rating and a target price because a valuation has to conclude something, but nobody at Valuatum knows your mandate, your holding period, or your client. The decision, and the responsibility for it, stays with your analyst.</p>
+            <p>A base report takes no view. A revised report carries a 12-month target because it values your analyst’s assumptions, but nobody at Valuatum knows your mandate, your holding period or your client. The decision, and the responsibility for it, stays with your analyst.</p>
           </div>
           <div class="i-limit">
-            <h4>Data is as good as what is published</h4>
-            <p>The model reads reported financials. It cannot see an unannounced contract, a management change nobody has filed, or what a competitor said to your salespeople last week. That is precisely the part your analysts add in the revision rounds, and the reason the loop exists at all.</p>
+            <h4>The research can miss what happened last week</h4>
+            <p>The model reads reported financials, and the AI’s research can be a step behind the news, as the Remedy example shows. A channel check, an unannounced contract or a launch that just happened is the part your analyst adds.</p>
           </div>
         </div>
       </div>
@@ -748,7 +660,7 @@
         <p style="font-size:var(--text-sm); color:var(--gray-steel); margin-bottom:1.5rem;">A pilot costs nothing and tells you more in an afternoon than a call will.</p>
         <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
           <a href="#pilot" class="btn btn-primary">Request pilot access</a>
-          <a href="reports.html#free" class="btn btn-outline-dark">Read a finished report first</a>
+          <a href="reports.html#free" class="btn btn-outline-dark">Read a free report first</a>
         </div>
         <p style="font-size:var(--text-xs); color:var(--gray-steel); margin-top:1.5rem;">Questions, or a procurement process to get through? <a href="mailto:contact26@valuatum.com" style="color:var(--green);">contact26@valuatum.com</a></p>
       </div>

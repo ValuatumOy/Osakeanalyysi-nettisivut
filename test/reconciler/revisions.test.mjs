@@ -77,8 +77,8 @@ function fakeEngine(overrides = {}) {
 
 function fakeEmail() {
   return {
-    calls: { sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], sendAdminRevisionNotice: [], reportError: [] },
-    async sendReportEmail() {},
+    calls: { sendReportEmail: [], sendReportRevisedEmail: [], sendRevisionFailedEmail: [], sendGenerationFailedEmail: [], sendAdminRevisionNotice: [], reportError: [] },
+    async sendReportEmail(to, meta) { this.calls.sendReportEmail.push({ to, meta }); },
     async sendReportRevisedEmail(to, meta) { this.calls.sendReportRevisedEmail.push({ to, meta }); },
     async sendRevisionFailedEmail(to, meta) { this.calls.sendRevisionFailedEmail.push({ to, meta }); },
     async sendGenerationFailedEmail(to, meta) { this.calls.sendGenerationFailedEmail.push({ to, meta }); },
@@ -477,6 +477,8 @@ test('a fresh delivery records the original job id and whether the engine produc
   assert.equal(order.status, orders.STATUS.DELIVERED);
   assert.equal(order.originalJobId, 'job_base');
   assert.equal(order.hasPreview, true);
+  assert.match(email.calls.sendReportEmail[0].meta.orderUrl, /session_id=cs_fresh/);
+  assert.equal(email.calls.sendReportEmail[0].meta.revisionsAllowed, 0);
 });
 
 test('an engine 400 on a revision fails the round at once: no retries, the round kept, the customer emailed', async (t) => {

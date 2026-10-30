@@ -12,12 +12,42 @@
 // ticker on the Wisdom result is SYMBOL.EXCHANGE (e.g. NESTE.HE) — exactly the
 // companyCode the engine expects — so the picker carries it straight into the
 // fresh-checkout call.
+//
+// Only companies listed where Wisdom's statements are kept current are offered:
+// US listings (no suffix, EDGAR) and the Nordic and Baltic exchanges (CNS,
+// NewsWeb). Since 29 October 2026 the other models in Wisdom (Tokyo, London,
+// Toronto, ...) no longer get new statements, so a fresh report on them would be
+// built on stale figures. The listing is read from the ticker suffix, not the
+// ISIN (Toyota carries its US ADR ISIN) or the domicile (Cayman, Bermuda, ...).
+// `.IS` is Istanbul, not Iceland (`.IC`). SEARCH_TICKER_VENUES overrides the
+// list (comma-separated suffixes without the dot; US for no suffix).
 
 const REST_BASE = (process.env.WISDOM_REST_BASE || 'https://wisdom.valuatum.com').replace(/\/$/, '');
 const TOKEN = () => process.env.WISDOM_API_TOKEN;
 const TIMEOUT_MS = Number.parseInt(process.env.WISDOM_TIMEOUT_MS || '6000', 10);
 const MAX_RESULTS = Number.parseInt(process.env.WISDOM_MAX_RESULTS || '10', 10);
 const CACHE_TTL_MS = Number.parseInt(process.env.WISDOM_CACHE_TTL_MS || '60000', 10);
+const DEFAULT_VENUES = 'US,ST,OL,CO,HE,IC,TL,RG,VS';
+
+function coveredVenues() {
+  return new Set(
+    String(process.env.SEARCH_TICKER_VENUES || DEFAULT_VENUES)
+      .split(',')
+      .map((v) => v.trim().toUpperCase())
+      .filter(Boolean),
+  );
+}
+
+// The listing venue of a Wisdom ticker: the suffix after the last dot, or US
+// for a ticker without one (TSLA, BRK-B).
+function venueOf(ticker) {
+  const dot = ticker.lastIndexOf('.');
+  return dot === -1 ? 'US' : ticker.slice(dot + 1).toUpperCase();
+}
+
+function isCoveredTicker(ticker) {
+  return coveredVenues().has(venueOf(String(ticker || '')));
+}
 
 // Small in-memory TTL cache so debounced keystrokes don't hammer Wisdom.
 const cache = new Map(); // key -> { at, value }
@@ -112,9 +142,11 @@ async function searchCompanies(rawQuery) {
     if (rows.length === 0) rows = await fetchWisdom('name', query);
   }
 
-  const result = dedupe(rows.map(toPublic).filter(Boolean)).slice(0, MAX_RESULTS);
+  const result = dedupe(rows.map(toPublic).filter(Boolean))
+    .filter((r) => isCoveredTicker(r.ticker))
+    .slice(0, MAX_RESULTS);
   cacheSet(key, result);
   return result;
 }
 
-module.exports = { searchCompanies };
+module.exports = { searchCompanies, venueOf, isCoveredTicker };

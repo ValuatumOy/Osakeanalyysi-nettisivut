@@ -1,0 +1,771 @@
+{
+  "id": "upm-28102026-2",
+  "slug": "upm-equity-report",
+  "reportKind": "market-first",
+  "companyName": "UPM",
+  "ticker": "UPM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Paper, Lumber & Forest Products",
+  "currency": "EUR",
+  "reportDate": "2026-10-28",
+  "profile": "Turns wood and other renewable materials into pulp, sawn timber, electricity, self-adhesive label materials, specialty and graphic papers, and plywood. It also manages forests, sells wood-based fuels and forestry services, and is developing renewable industrial chemicals from wood.",
+  "headline": {
+    "currentPrice": "23.0 EUR",
+    "marketCap": "EUR 12.1bn",
+    "enterpriseValue": "EUR 15bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-5.5 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "25.6 EUR",
+    "analysts": "14",
+    "range": "20.1-30.0 EUR",
+    "source": "MarketScreener"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "16x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "11x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "17x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "27.9 EUR",
+    "week52Low": "22.1 EUR",
+    "oneYearChange": "-1.7%",
+    "threeYearChange": "-27%"
+  },
+  "summary": [
+    "UPM (UPM.HE, NASDAQ Helsinki) turns wood and renewable materials into pulp, timber, electricity, papers, label materials, plywood, fuels and developing biochemicals. The share price was 23.0 EUR on 28 October 2026, against market capitalisation of EUR 12.1bn and enterprise value of EUR 15bn. In this Valuatum market report dated 28 October 2026, the price is taken as given rather than forecast. The established businesses account for 21.2 EUR per share on analysts’ forecasts, while the remaining 1.8 EUR per share is assigned to biochemicals, which currently sells almost nothing separately.",
+    "Pulp and timber is the largest established component at 7.0 EUR per share, based on 9x 2028 operating profit; forestry and renewables contributes 3.8 EUR per share at 75% of reported forest value. Adhesive materials contributes 4.9 EUR at 13.1x, electricity 4.0 EUR at 12.3x, specialty papers 3.7 EUR at 10x and graphic paper 3.3 EUR at 6x 2028 operating profit. Debt and other claims, less cash, subtract 5.5 EUR per share. Biochemicals adds 1.8 EUR per share and requires about EUR 1.1bn of 2035 sales at a 17% operating margin.",
+    "The price sits against a mixed peer backdrop: pulp and timber, electricity, specialty papers and graphic paper use multiples around selected peer medians, while adhesive materials is above its industry median and forestry is valued below reported assets. The key reading depends on profit delivery rather than multiple expansion. Watch pulp curtailments and prices, customer destocking, electricity prices, graphic-paper merger approval, forest-asset discounts, and whether Leuna reaches nominal capacity in early 2028."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Established businesses",
+      "metric": "€21.2",
+      "text": "Analysts’ forecasts for today’s businesses support 21.2 EUR per share, led by pulp and timber at 7.0 EUR, forestry and renewables at 3.8 EUR, adhesive materials at 4.9 EUR, electricity at 4.0 EUR, specialty papers at 3.7 EUR and graphic paper at 3.3 EUR."
+    },
+    {
+      "num": "02",
+      "title": "Profit still needed",
+      "metric": "€193m",
+      "text": "The established businesses carried forward to 2035 produce about EUR 1.5bn of operating profit, while the price requires about EUR 1.7bn. The missing EUR 193m is assigned to biochemicals, which therefore needs about EUR 1.1bn of sales at a 17% margin by 2035."
+    },
+    {
+      "num": "03",
+      "title": "Execution tests",
+      "metric": "568,538",
+      "text": "Biochemicals must sell 568,538 tonnes by 2035 at an assumed 2,000 EUR per tonne. Nearer-term evidence comes from integrated production in Q2 2027 and Leuna’s nominal capacity in early 2028; delays or volumes below 38,638 tonnes in 2030 would weaken the price composition."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Pulp and timber",
+      "share": "7.0 EUR per share",
+      "economics": "9x 2028 operating profit · EUR 410m forecast operating profit · peers about 9x",
+      "text": "Pulp and timber is the largest operating pool, selling pulp to paper, packaging and tissue makers and sawn timber to construction customers. Outside sales were EUR 2.9bn in 2025, while the split assigns EUR 3.2bn of sales and EUR 410m of operating profit in 2028, a 13% margin. The share-price component is 7.0 EUR per share at 9x 2028 profit, in line with the 9x peer median. The margin must rise from the comparable EUR 283m of 2025 Fibres operating profit on EUR 2.9bn of outside sales. Pulp prices, wood costs and mill utilisation drive the outcome: Kaukas was curtailed for eight weeks in 2026 and Pietarsaari was planned for five weeks in the fourth quarter. Full running weeks and the reported 8% year-on-year rise in third-quarter pulp prices would support the forecast; further stoppages would reduce tonnes and profit."
+    },
+    {
+      "name": "Adhesive materials",
+      "share": "4.9 EUR per share",
+      "economics": "13.1x 2028 operating profit · EUR 196m forecast operating profit · industry median 8.4x",
+      "text": "Adhesive materials sells self-adhesive paper, films and graphic materials to label and packaging makers. Outside sales were EUR 1.7bn in 2025 and the split places 2028 sales at EUR 1.8bn, with EUR 196m of operating profit at an 11% margin. The price assigns 4.9 EUR per share at 13.1x 2028 profit, above the industry median of 8.4x and upper quartile of 11.5x, although the multiple sits between Avery Dennison at 11.8x and CCL Industries at 14.5x. The required margin is materially above the 7.5% reported for 2025. Third-quarter 2026 sales were EUR 413m and comparable operating profit EUR 33m, a 7.9% margin, as customer destocking reduced deliveries. European label-material shipments rose 14% in Q2 2026, and the EUR 13m Mills River coater investment was ramping up."
+    },
+    {
+      "name": "Electricity",
+      "share": "4.0 EUR per share",
+      "economics": "12.3x 2028 operating profit · EUR 172m forecast operating profit · peers median 12.3x",
+      "text": "Electricity generated EUR 480m of outside sales in 2025, with UPM Energy delivering 11,141 GWh at an average EUR 50.3 per MWh. The split assumes EUR 521m of 2028 sales and EUR 172m of operating profit at a 33% margin, compared with EUR 151m of comparable EBIT in 2025. The pool contributes 4.0 EUR per share at 12.3x 2028 profit, exactly the median of Verbund, E.on and Fortum, whose multiples range from 9.8x to 21.6x. The margin is sensitive to power prices because nuclear and hydro output has low running costs. The third-quarter 2026 average sales price was EUR 44.0 per MWh, below the 2025 average. Deliveries of 11,141 GWh were below stated CO2-free capacity of 12 TWh, so price and margin matter more than modest volume growth."
+    },
+    {
+      "name": "Forestry and renewables",
+      "share": "3.8 EUR per share",
+      "economics": "75% of reported forest value · EUR 2bn counted value · SCA about 70%, Handelsbanken 80%",
+      "text": "Forestry and renewables is primarily an asset pool rather than an earnings multiple. The price assigns EUR 2bn, or 3.8 EUR per share, to forests reported at EUR 2.6bn across Finland, Uruguay and the United States as of 30 September 2026. That is 75% of reported value. Forests supplied 7.8 million cubic metres of the 27.7 million cubic metres consumed in 2025, supporting internal mills and partly protecting wood supply. Profit explains little of the value: the wider grouping containing forests, biofuels and biochemicals earned adjusted operating profit of only EUR 9m in 2025 on EUR 693m of sales. Renewable fuels add the Lappeenranta refinery, with capacity of about 130,000 tonnes a year and EUR 6m of adjusted operating profit in the second half of 2025. Listed forest-owner discounts and wood-sourcing costs are the main tests."
+    },
+    {
+      "name": "Specialty papers",
+      "share": "3.7 EUR per share",
+      "economics": "10x 2028 operating profit · EUR 195m forecast operating profit · industry median 9.5x",
+      "text": "Specialty papers sells labelling, release-base, flexible-packaging, office and graphic papers from plants in China, Finland and Germany. Outside sales were EUR 1.1bn in 2025, with 1.398 million tonnes delivered. The split assumes EUR 1.2bn of 2028 sales and EUR 195m of operating profit at a 16% margin, compared with EUR 147m of 2025 comparable EBIT and an 11.2% margin on total sales. The price assigns 3.7 EUR per share at 10x 2028 profit, close to the 9.5x industry median and between Stora Enso at 12.1x and Sappi at 7.9x. Third-quarter 2026 Specialty Materials reported an 8.5% comparable EBIT margin on EUR 303m of sales, while customer destocking hurt deliveries and earnings. The price therefore depends on a substantial margin recovery and a return from 319 thousand tonnes of quarterly deliveries toward the 2025 level."
+    },
+    {
+      "name": "Graphic paper",
+      "share": "3.3 EUR per share",
+      "economics": "6x 2028 operating profit · EUR 288m forecast operating profit · peers median 6x",
+      "text": "Graphic paper supplies publishers, catalogue producers, retailers, printers and merchants from eight mills in Europe and the United States. Outside sales were EUR 2,459m in 2025, with 2.893 million tonnes delivered and adjusted operating profit of EUR 181m. The split assumes EUR 2.7bn of 2028 sales and EUR 288m of operating profit at an 11% margin. The pool contributes 3.3 EUR per share at 6x 2028 profit, the median of Sylvamo at 4.0x and Sappi at 7.9x, but below the wider industry median of 9.5x. European graphic-paper demand fell 8% in 2025 and 7% in Q3 2026, while the business reported a EUR 7m operating loss and comparable EBIT of -EUR 8m in Q3 2026. A proposed 50/50 Sappi joint venture could add EUR 50m of annual savings for UPM if approved."
+    },
+    {
+      "name": "Biochemicals",
+      "share": "1.8 EUR per share",
+      "economics": "17% 2035 operating margin · EUR 193m required operating profit · EUR 1.1bn required sales",
+      "text": "Biochemicals is the new business assigned the part of the share price not explained by established operations. It currently sells almost nothing separately, yet the price assigns 1.8 EUR per share to it. The required outcome is about EUR 1.1bn of 2035 sales, 568,538 tonnes at an assumed 2,000 EUR per tonne, and EUR 193m of operating profit at a 17% margin. Leuna has nameplate capacity of 220,000 tonnes a year and a EUR 1,370m investment, so the required volume is about two and a half times the first plant’s capacity and implies further factories. The sugars-to-glycols process was delayed, with technical readiness expected in Q1 2027 and integrated production in Q2 2027. Nominal capacity is expected in early 2028 and is described as necessary for operating profit. Confirmed contracts and a pipeline several times Leuna’s capacity support initial demand, but not yet the 2035 scale."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is built from six established businesses, debt and other claims, less cash, and a residual for biochemicals. Pulp and timber carries 7.0 EUR per share at 9x 2028 operating profit, adhesive materials 4.9 EUR at 13.1x, electricity 4.0 EUR at 12.3x, forestry and renewables 3.8 EUR at 75% of reported forest value, specialty papers 3.7 EUR at 10x and graphic paper 3.3 EUR at 6x. Together the established businesses are shown at 26.6 EUR per share before -5.5 EUR per share of claims less cash, producing 21.2 EUR per share. The remaining 1.8 EUR per share is assigned to biochemicals. This allocation means the current price is not primarily a single-company earnings multiple: different pools rely on pulp prices, electricity prices, margins, asset values and a new chemical business. The most demanding operating assumptions are the 13% 2028 pulp-and-timber margin, the 11% adhesive-materials margin, the 16% specialty-paper margin and the 11% graphic-paper margin. The residual requires EUR 1.1bn of biochemicals sales and EUR 193m of operating profit by 2035. What the share price is made of therefore depends on delivery across several distinct businesses, not one uniform earnings path."
+    },
+    {
+      "heading": "Why the price differs from peers",
+      "text": "Most established pools use selected peer EV/EBIT multiples close to the comparisons used. Pulp and timber is at 9x 2028 profit, the median of Metsa Board at 9.0x, Stora Enso at 12.1x and Suzano at 8.9x. Electricity is at 12.3x, the median of Fortum, Verbund and E.on. Specialty papers is at 10x against an industry median of 9.5x, while graphic paper is at 6x, between Sylvamo at 4.0x and Sappi at 7.9x. Adhesive materials is the exception: 13.1x is above the 8.4x industry median and 11.5x upper quartile, although it lies between two closer label-material peers. The difference is therefore mainly in the profit to which each multiple is applied. Pulp and timber needs a 13% margin against EUR 283m of 2025 comparable EBIT; adhesive materials needs 11% against 7.5%; specialty papers needs 16% against 11.2%; and graphic paper needs 11% after a Q3 2026 comparable EBIT loss of EUR 8m. Forestry is valued on EUR 2bn of assets, not profit. The peer multiples do not remove the execution risk embedded in those forecast margins."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The nearest market-moving evidence is operational. Pulp and timber needs curtailments at Kaukas and Pietarsaari to end, with quarterly Fibres comparable EBIT improving from EUR 100m in Q3 2026 and the 8% pulp-price increase holding without equivalent wood-cost inflation. Adhesive materials needs destocking to end and quarterly margins to move above 9%, toward 11% in 2028. Electricity needs average realised prices to recover from EUR 44.0 per MWh in Q3 2026 toward the EUR 50.3 per MWh 2025 average, or volumes to rise from 11,141 GWh toward 12 TWh. Specialty papers needs its 8.5% Q3 margin to move toward 16%, while graphic paper needs positive comparable EBIT and a decision on the Sappi joint venture, expected by year-end 2026 or shortly after. The European Commission had expressed serious concerns, so the potential EUR 50m annual UPM saving remains conditional. Biochemicals has the longest execution chain: integrated production is expected in Q2 2027, nominal capacity in early 2028, and disclosed annual volume must eventually support 568,538 tonnes by 2035. These indicators determine whether the existing pools earn their forecast profits and whether the residual is supported by a real business."
+    }
+  ],
+  "risks": [
+    "Pulp curtailments (pulp and timber): further stoppages reduce tonnes while fixed mill costs continue, with new 2027 stoppages as the early warning.",
+    "Margin recovery fails (adhesive materials and specialty papers): customer destocking may keep margins near 8% rather than the 11% and 16% required in 2028, with quarterly margins below 9% and 8.5% respectively as early warnings.",
+    "Graphic-paper merger refusal (graphic paper): European Commission concerns could prevent the proposed Sappi joint venture and its EUR 50m annual UPM saving, with the final decision expected by year-end 2026 or shortly after.",
+    "Electricity-price weakness (electricity): prices near EUR 44.0 per MWh rather than the EUR 50.3 per MWh 2025 average would make the EUR 521m sales and 33% margin assumptions harder, with quarterly realised prices as the early warning.",
+    "Leuna execution and demand (biochemicals): delays or insufficient customer volumes could prevent nominal capacity and the EUR 1.1bn of 2035 sales required by the price, with disclosed volume below 38,638 tonnes in 2030 as the early warning."
+  ],
+  "catalysts": [
+    "European Commission decision (near-term, graphic paper): approval of the Sappi joint venture would remove the merger condition on the potential EUR 50m annual UPM saving.",
+    "Curtailments end (near-term, pulp and timber): full running weeks at Kaukas and Pietarsaari would spread fixed costs over more tonnes and support the 13% 2028 margin.",
+    "Destocking reverses (near-term, adhesive materials and specialty papers): higher deliveries and margins above 9% would show that customer inventories are normalising and fixed costs are being absorbed over more volume.",
+    "Power prices recover (medium-term, electricity): realised prices moving back toward EUR 50.3 per MWh would make the EUR 521m 2028 sales and 33% margin assumptions easier to achieve.",
+    "Leuna reaches scale (medium-term, biochemicals): integrated production in Q2 2027 followed by nominal capacity in early 2028 would establish the operating base needed for later chemical sales."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "10,460",
+            "10,339",
+            "9,656",
+            "9,542",
+            "9,957",
+            "10,061"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "1,371",
+            "1,743",
+            "1,343",
+            "1,497",
+            "1,818",
+            "1,897"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "13.1%",
+            "16.9%",
+            "13.9%",
+            "15.7%",
+            "18.3%",
+            "18.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-763",
+            "-1,139",
+            "-594",
+            "-530",
+            "-520",
+            "-565"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "608",
+            "604",
+            "749",
+            "967",
+            "1,298",
+            "1,332"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "5.8%",
+            "5.8%",
+            "7.8%",
+            "10.1%",
+            "13.0%",
+            "13.2%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-144",
+            "-104",
+            "-59",
+            "-96",
+            "-83",
+            "-75"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "464",
+            "500",
+            "690",
+            "871",
+            "1,215",
+            "1,257"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "387",
+            "436",
+            "479",
+            "725",
+            "988",
+            "1,038"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.7",
+            "0.8",
+            "0.9",
+            "1.4",
+            "1.9",
+            "2"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.5",
+            "1.5",
+            "1.5",
+            "1.1",
+            "1.5",
+            "1.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "206.7%",
+            "181.7%",
+            "165.5%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "7,053",
+            "7,085",
+            "6,459",
+            "6,437",
+            "6,717",
+            "6,788"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "715",
+            "580",
+            "554",
+            "547",
+            "571",
+            "577"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "283",
+            "174",
+            "264",
+            "264",
+            "264",
+            "264"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "3,148",
+            "5,697",
+            "5,650",
+            "4,872",
+            "4,872",
+            "4,872"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "11,199",
+            "13,536",
+            "12,927",
+            "12,121",
+            "12,425",
+            "12,501"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,948",
+            "2,104",
+            "1,886",
+            "1,891",
+            "1,973",
+            "1,994"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,979",
+            "2,038",
+            "1,594",
+            "1,688",
+            "1,758",
+            "1,775"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "632",
+            "892",
+            "715",
+            "747",
+            "780",
+            "788"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "4,559",
+            "5,034",
+            "4,195",
+            "4,326",
+            "4,511",
+            "4,557"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "2,715",
+            "526",
+            "410",
+            "413",
+            "413",
+            "413"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,532",
+            "16,860",
+            "17,349",
+            "17,471"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "11,531",
+            "11,540",
+            "10,334",
+            "10,266",
+            "10,675",
+            "10,921"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,056",
+            "3,747",
+            "3,638",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "327",
+            "166",
+            "156",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "3,715",
+            "4,401",
+            "4,167",
+            "2,141",
+            "2,142",
+            "2,069"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,345",
+            "2,230",
+            "2,057",
+            "3,481",
+            "3,560",
+            "3,508"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "882",
+            "925",
+            "973",
+            "972",
+            "972",
+            "972"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "18,473",
+            "19,096",
+            "17,531",
+            "16,860",
+            "17,349",
+            "17,471"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,751",
+            "3,021",
+            "3,079",
+            "2,476",
+            "2,445",
+            "2,293"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "14,259",
+            "14,541",
+            "13,386",
+            "12,715",
+            "13,093",
+            "13,187"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "62.4%",
+            "60.4%",
+            "58.9%",
+            "60.9%",
+            "61.5%",
+            "62.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "23.9%",
+            "26.2%",
+            "29.8%",
+            "24.1%",
+            "22.9%",
+            "21.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.0×",
+            "1.7×",
+            "2.3×",
+            "1.7×",
+            "1.3×",
+            "1.2×"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.9",
+            "2.3",
+            "2",
+            "1.2",
+            "1.3",
+            "1.3"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "-753",
+            "1,433",
+            "1,583",
+            "1,124",
+            "1,450",
+            "1,599"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "-442",
+            "1,491",
+            "1,757",
+            "1,204",
+            "1,518",
+            "1,662"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "1,909",
+            "169",
+            "-499",
+            "131",
+            "74",
+            "18"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "11,256",
+            "3,315",
+            "47",
+            "502",
+            "824",
+            "641"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-11,256",
+            "-3,315",
+            "-47",
+            "-502",
+            "-824",
+            "-641"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-12,009",
+            "-1,882",
+            "1,536",
+            "623",
+            "626",
+            "958"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-10,773",
+            "-1,841",
+            "1,611",
+            "702",
+            "695",
+            "1,021"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-10,773",
+            "-1,841",
+            "1,611",
+            "702",
+            "695",
+            "1,021"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "15,452",
+            "86",
+            "-1,903",
+            "-1,363",
+            "-578",
+            "-935"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "-800",
+            "-792",
+            "-793",
+            "-580",
+            "-791"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "3,443",
+            "-1,796",
+            "-367",
+            "-741",
+            "48",
+            "23"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "16.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "10.0x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "16x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.2x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "4.8%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.7x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is UPM's share price made of?",
+      "a": "The 23.0 EUR share price assigns 7.0 EUR to pulp and timber, 4.9 EUR to adhesive materials, 4.0 EUR to electricity, 3.8 EUR to forestry and renewables, 3.7 EUR to specialty papers and 3.3 EUR to graphic paper. Claims less cash subtract 5.5 EUR, while biochemicals contributes 1.8 EUR."
+    },
+    {
+      "q": "Why does UPM trade at different multiples across its businesses?",
+      "a": "Each business is matched with its own peer or asset comparison. Pulp and timber uses 9x 2028 operating profit, electricity 12.3x, adhesive materials 13.1x, specialty papers 10x and graphic paper 6x. Forestry and renewables is valued at 75% of EUR 2.6bn of reported forest value rather than on profit."
+    },
+    {
+      "q": "What do analysts forecast for UPM's sales and profit?",
+      "a": "Analysts’ 2028 forecasts held in the model are EUR 10,061m of net sales, EUR 1,332m of operating profit, EUR 1,038m of net earnings, EPS of 2 EUR and DPS of 1.6 EUR. The 2028 operating margin is 13.2% and the forecast net debt is EUR 2,293m."
+    },
+    {
+      "q": "What should UPM investors watch?",
+      "a": "The main indicators are pulp prices and curtailments, adhesive-materials and specialty-paper margins, electricity prices, the European Commission decision on the Sappi graphic-paper joint venture, forest-asset discounts and Leuna’s integrated production, nominal capacity and disclosed chemical volumes."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method takes today’s 23.0 EUR share price as given, keeps analysts’ whole-company forecasts through 2028, estimates how operating profit splits between established businesses and applies selected peer EV/EBIT multiples. The residual 1.8 EUR per share is assigned to biochemicals and solved as a 2035 sales and profit requirement."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on UPM dated 28 October 2026 (23.0 EUR share price, 21.2 EUR per share for today’s businesses and 1.8 EUR per share for biochemicals).",
+    "Competitor context: Metsa Board, Stora Enso Oyj, Suzano S.A., Fortum, Verbund AG, E.on Se, Avery Dennison Corporation, CCL Industries Inc., Sappi Limited and Sylvamo Corporation; selected 2028 EV/EBIT multiples range from 4.0x to 21.6x. Forest comparisons are qualified readings: SCA was valued at below 70% of reported forest value on 6 July 2026, while Handelsbanken valued it at 80% on 12 October 2026. The graphic-paper EUR 50m annual saving is conditional on European Commission approval, which remained outstanding amid serious concerns.",
+    "Market data: UPM.HE, 23.0 EUR on 28 October 2026; analysts’ forecasts used include EUR 10,061m of 2028 sales and EUR 1,332m of 2028 operating profit; the consensus price-target source is MarketScreener, based on 14 analysts with a 20.1-30.0 EUR range."
+  ]
+}

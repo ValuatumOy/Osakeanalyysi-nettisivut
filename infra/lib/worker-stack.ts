@@ -72,8 +72,10 @@ export class WorkerStack extends Stack {
         // fresh report reflects current figures: Wisdom for prod, trunkdev
         // for test (config.fmpImportUrl). The bearer token comes from SSM
         // (fmp-import-token); aspId uses the code default.
-        FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? 'true',
+        FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? String(config.freshImportEnabled),
         FMP_IMPORT_URL: config.fmpImportUrl,
+        // Reports rendered from a pinned Trunk model (config.engineFidByTicker).
+        ENGINE_FID_BY_TICKER: JSON.stringify(config.engineFidByTicker),
         // Delivered fresh reports are published for resale right away. No
         // RESALE_PRICE_EUR: the catalog prices every paid report at the flat
         // ready-report price, so sidecars carry no price.
@@ -125,12 +127,19 @@ export class WorkerStack extends Stack {
     // ── alarms ──────────────────────────────────────────────────
     const alarmAction = new cloudwatchActions.SnsAction(props.alertsTopic);
 
+    // Catches what the handler's reportError email cannot: timeouts and
+    // crashes outside the handler's catch. Requires an error in two
+    // consecutive 15-minute windows so a one-off timeout stays quiet. Not
+    // "2+ errors in one window": a worker hanging on every run times out
+    // only every 10 minutes (sweeps in between are throttled, not errors),
+    // which can be just 1 error per window.
     new cloudwatch.Alarm(this, 'WorkerErrorsAlarm', {
       alarmName: `AiEquityReportsWorkerErrors${config.suffix}`,
-      alarmDescription: 'Worker Lambda reported an error in the last 15 minutes',
+      alarmDescription: 'Worker Lambda reported errors in two consecutive 15-minute windows (timeouts or crashes; caught errors also email)',
       metric: this.workerFunction.metricErrors({ period: Duration.minutes(15), statistic: 'Sum' }),
       threshold: 1,
-      evaluationPeriods: 1,
+      evaluationPeriods: 2,
+      datapointsToAlarm: 2,
       comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
     }).addAlarmAction(alarmAction);

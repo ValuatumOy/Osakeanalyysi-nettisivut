@@ -18,7 +18,12 @@ Ready reports have a separate `accessStatus`:
 - `free`: direct PDF download, no checkout.
 - `paid`: ready-report checkout.
 
-Fresh generation is an order type, not a publication status. A generated report starts as `hidden` unless resale is enabled. When resale is enabled it starts as `ready` + `paid`. The reaper removes generated resale copies after the configured resale window; the permanent engine copy is not deleted.
+Fresh generation is an order type, not a publication status. With resale enabled,
+an ordinary fresh order or an analyst's original, unmodified engine generation
+starts as `ready` + `paid`. A reader's private generation and every analyst
+revision or edit stay `hidden`. The original remains a separate PDF and engine
+job when an analyst revises it. The reaper removes generated resale copies after
+the configured resale window; the permanent engine copy is not deleted.
 
 ## Consumer rules
 

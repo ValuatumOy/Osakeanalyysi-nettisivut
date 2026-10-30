@@ -27,14 +27,71 @@ test('submit publishes and releases the obligation, and indexes the publication'
   const [profileUpdate, pubUpdate, indexPut] = params.TransactItems.map(i => i.Update || i.Put);
 
   // Tolerant of an admin having cleared the obligation to unblock the next run.
-  assert.equal(profileUpdate.ConditionExpression,
-    'attribute_not_exists(openObligationId) OR openObligationId = :genId');
+  assert.match(profileUpdate.ConditionExpression, /openObligationId = :genId/);
+  assert.match(profileUpdate.ConditionExpression, /#role = :analyst OR #role = :coaching/);
   assert.equal(pubUpdate.ExpressionAttributeValues[':price'], 12);
   assert.equal(pubUpdate.ExpressionAttributeValues[':days'], 30);
   assert.equal(pubUpdate.ExpressionAttributeValues[':freeFrom'], '2026-10-01T00:00:00.000Z');
   assert.equal(indexPut.Item.pk, 'PUBINDEX');
   assert.equal(indexPut.Item.sk, 'NOKIA.HE#2026-09-01T00:00:00.000Z#g1');
   assert.equal(indexPut.Item.reviewCount, 0);
+});
+
+test('publication locks the delivered order in the same transaction and checks its version', () => {
+  const params = quota.buildSubmitTransact({
+    table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date('2026-09-01T00:00:00Z'),
+    genId: 'g1', companyId: 'TSLA', jobId: 'job', orderUpdatedAt: '2026-08-31T12:00:00Z',
+  });
+  const lock = params.TransactItems.find(item => item.Update?.TableName === 'Orders').Update;
+  assert.deepEqual(lock.Key, { orderId: 'g1' });
+  assert.equal(lock.ExpressionAttributeValues[':locked'], true);
+  assert.equal(lock.ExpressionAttributeValues[':updatedAt'], '2026-08-31T12:00:00Z');
+  assert.match(lock.ConditionExpression, /#status = :delivered AND updatedAt = :updatedAt/);
+});
+
+test('a paid publication creates an immutable public copy without publishing the Stripe receipt', () => {
+  const items = quota.buildSubmitTransact({
+    table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date(), genId: 'cs_secret', publishedGenId: 'public-uuid',
+    companyId: 'TSLA', jobId: 'job', orderUpdatedAt: 'v1', sourcePublication: true,
+    orderCopy: { id: 'cs_secret', jobId: 'job', status: 'DELIVERED', pdfFileName: 'report.pdf', publicEngineBase: true },
+  }).TransactItems;
+  assert.equal(items[1].Update.Key.sk, 'PUB#public-uuid');
+  assert.equal(items[2].Put.Item.genId, 'public-uuid');
+  assert.doesNotMatch(items[2].Put.Item.sk, /cs_secret/);
+  const source = items.find(item => item.Update?.TableName === 'Orders').Update;
+  assert.match(source.ConditionExpression, /lastPublishedJobId <> :job/);
+  assert.match(source.ConditionExpression, /updatedAt = :updatedAt/);
+  assert.equal(source.UpdateExpression, 'SET lastPublishedJobId = :job');
+  const copy = items.find(item => item.Put?.TableName === 'Orders').Put.Item;
+  assert.equal(copy.orderId, 'public-uuid');
+  assert.equal(copy.id, undefined);
+  assert.equal(copy.publicationLocked, true);
+  assert.equal(copy.publicEngineBase, undefined, 'an analyst publication does not inherit the engine baseline marker');
+  const originalPub = items.find(item => item.Update?.Key?.sk === 'PUB#cs_secret').Update;
+  assert.match(originalPub.UpdateExpression, /#private = :private/);
+});
+
+test('voluntary paid publication preserves unrelated obligations and only accepts paid private work', () => {
+  const base = { table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date(), genId: 'g1', companyId: 'TSLA', jobId: 'job', optionalPaid: true };
+  const existing = quota.buildSubmitTransact(base).TransactItems;
+  assert.ok(existing[0].ConditionCheck);
+  assert.match(existing[1].Update.ConditionExpression, /paid = :paid OR publishableSource = :sourceFlag/);
+  assert.match(existing[1].Update.ConditionExpression, /#private = :private/);
+  assert.match(existing[1].Update.UpdateExpression, /REMOVE #private/);
+  const guest = quota.buildSubmitTransact({ ...base, newPublication: true, forkedFrom: 'parent' }).TransactItems;
+  assert.equal(guest[1].Update.ConditionExpression, 'attribute_not_exists(pk)');
+  assert.equal(guest[2].Put.Item.forkedFrom, 'parent');
+});
+
+test('reopening unlocks the order in the publication transaction', () => {
+  const params = quota.buildReopenTransact({ table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date(), genId: 'g1' });
+  const unlock = params.TransactItems.find(item => item.Update?.TableName === 'Orders').Update;
+  assert.equal(unlock.ExpressionAttributeValues[':unlocked'], false);
+  assert.equal(unlock.ConditionExpression, 'attribute_exists(orderId)');
+  const legacy = quota.buildReopenTransact({ table: TABLE, ordersTable: 'Orders', userId: 'u1', now: new Date(), genId: 'cs_old', memberOnly: true })
+    .TransactItems.find(item => item.Update?.TableName === 'Orders').Update;
+  assert.match(legacy.UpdateExpression, /memberOnly = :memberOnly/);
+  assert.equal(legacy.ExpressionAttributeValues[':memberOnly'], true);
 });
 
 test('submit refuses a private generation, whatever made it private', () => {
@@ -153,6 +210,30 @@ test('member generation reserves the month slot without a publish obligation', (
   assert.equal(items[1].Put.Item.private, true);
   assert.ok(items.every(item => !item.Update?.UpdateExpression.includes('openObligationId')));
   assert.match(items[2].ConditionCheck.ConditionExpression, /attribute_not_exists\(openObligationId\)/);
+});
+
+test('generation reservations atomically bind baseline eligibility to the current profile role', () => {
+  const base = { table: TABLE, userId: 'u1', now: new Date('2026-10-28T00:00:00Z'), genId: 'g1', companyId: 'NOKIA.HE' };
+  for (const build of [
+    quota.buildReserveMemberGenerationTransact, quota.buildReserveGenerationCreditTransact,
+    quota.buildPaidGenerationTransact, quota.buildCoverageGenerationTransact,
+  ]) {
+    for (const publicEngineBase of [true, false]) {
+      const items = build({ ...base, publicEngineBase }).TransactItems;
+      const pub = items.find(item => item.Put?.Item.sk === 'PUB#g1').Put;
+      assert.equal(pub.Item.publicEngineBase, publicEngineBase);
+      assert.equal(pub.ConditionExpression, 'attribute_not_exists(sk)');
+      const guards = items.map(item => item.Update || item.ConditionCheck).filter(item => item?.Key.sk === 'PROFILE');
+      assert.equal(guards.length, 1, 'one profile action, as DynamoDB forbids checking and updating it separately');
+      const guard = guards[0];
+      assert.match(guard.ConditionExpression, /attribute_exists\(pk\)/);
+      assert.equal(guard.ExpressionAttributeNames['#role'], 'role');
+      assert.equal(guard.ExpressionAttributeValues[':analyst'], 'analyst');
+      assert.equal(guard.ExpressionAttributeValues[':coaching'], 'coaching');
+      assert.ok(guard.ConditionExpression.endsWith(publicEngineBase ? 'AND #role IN (:analyst, :coaching)'
+        : 'AND (attribute_not_exists(#role) OR (#role <> :analyst AND #role <> :coaching))'));
+    }
+  }
 });
 
 test('freemium age gate: only reports 30 days or older', () => {

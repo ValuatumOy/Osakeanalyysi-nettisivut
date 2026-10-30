@@ -40,3 +40,16 @@ test('no path lets an analyst review their own analysis', () => {
     assert.match(body, /index\.userId === profile\.userId/, `${fn} must refuse the owner`);
   }
 });
+
+// The member's order page and the shop's are the same page fed by two routes;
+// a field the page reads but one route leaves out silently changes the page
+// for that route's orders (an analyst's market-first report got the scope
+// choice its engine ignores).
+test('the member order route carries the fields the order page branches on', () => {
+  const start = lambda.indexOf('async function getGenerationOrder(');
+  assert.ok(start > 0, 'getGenerationOrder not found');
+  const body = lambda.slice(start, lambda.indexOf('\n}', start));
+  for (const field of ['marketFirst', 'editable', 'revisionError', 'reportQuality']) {
+    assert.match(body, new RegExp(`\\b${field}:`), `${field} missing from the member order payload`);
+  }
+});

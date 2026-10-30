@@ -1,4 +1,7 @@
 const { reportError } = require('../server/email');
+// The same listing filter as the shop's own search (server/search.js): the
+// upstream here is another service, so it is applied again.
+const { isCoveredTicker } = require('../server/search');
 
 const UPSTREAM = process.env.COMPANY_SEARCH_UPSTREAM || 'https://files.valuatum.com/api/search-companies';
 const TIMEOUT_MS = Number.parseInt(process.env.COMPANY_SEARCH_TIMEOUT_MS || '8000', 10);
@@ -22,7 +25,8 @@ module.exports = async (req, res) => {
 
     const data = await upstream.json();
     const results = Array.isArray(data?.results)
-      ? data.results.map(toPublicCompany).filter(Boolean).slice(0, 10)
+      ? data.results.map(toPublicCompany).filter(Boolean)
+        .filter((company) => isCoveredTicker(company.ticker)).slice(0, 10)
       : [];
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
     return res.status(200).json({ query, results });

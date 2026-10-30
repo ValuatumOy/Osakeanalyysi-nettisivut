@@ -166,8 +166,8 @@ async function putItem(item) {
   await dynamo().send(new PutCommand({ TableName: table(), Item: item }));
 }
 
-async function getPublication(userId, genId) {
-  return getItem(`USER#${userId}`, `PUB#${genId}`);
+async function getPublication(userId, genId, consistentRead = false) {
+  return getItem(`USER#${userId}`, `PUB#${genId}`, consistentRead);
 }
 
 // The cross-analyst view of publications: one partition, sort key
@@ -189,6 +189,25 @@ async function listPublicationIndex({ companyId, limit = 200 } = {}) {
 async function findPublicationIndex(genId) {
   const items = await listPublicationIndex({ limit: 1000 });
   return items.find((item) => item.genId === genId) || null;
+}
+
+async function findPublicationForOrder(genId, companyId) {
+  const prefix = companyId ? `${String(companyId).toUpperCase()}#` : '';
+  let startKey;
+  do {
+    const res = await dynamo().send(new QueryCommand({
+      TableName: table(),
+      KeyConditionExpression: prefix ? 'pk = :pk AND begins_with(sk, :prefix)' : 'pk = :pk',
+      FilterExpression: 'genId = :genId',
+      ExpressionAttributeValues: { ':pk': 'PUBINDEX', ':genId': genId, ...(prefix ? { ':prefix': prefix } : {}) },
+      ConsistentRead: true,
+      ...(startKey ? { ExclusiveStartKey: startKey } : {}),
+    }));
+    const found = (res.Items || []).find(item => item.genId === genId);
+    if (found) return found;
+    startKey = res.LastEvaluatedKey;
+  } while (startKey);
+  return null;
 }
 
 async function listReviews(ownerId, genId) {
@@ -276,20 +295,49 @@ async function runTransact(params) {
 // ── stripe webhook idempotency ───────────────────────────────────────────────
 
 async function claimStripeEvent(eventId) {
+  const now = Math.floor(Date.now() / 1000);
+  const leaseId = crypto.randomUUID();
   try {
-    await dynamo().send(new PutCommand({
+    await dynamo().send(new UpdateCommand({
       TableName: table(),
-      Item: {
-        pk: `STRIPEEVT#${eventId}`,
-        sk: 'EVT',
-        expiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 3600,
+      Key: { pk: `STRIPEEVT#${eventId}`, sk: 'EVT' },
+      UpdateExpression: 'SET #state = :processing, leaseId = :leaseId, leaseUntil = :until, expiresAt = :expires',
+      ConditionExpression: 'attribute_not_exists(pk) OR (#state = :processing AND leaseUntil < :now)',
+      ExpressionAttributeNames: { '#state': 'state' },
+      ExpressionAttributeValues: {
+        ':processing': 'processing', ':leaseId': leaseId, ':until': now + 60,
+        ':expires': now + 30 * 24 * 3600, ':now': now,
       },
-      ConditionExpression: 'attribute_not_exists(pk)',
     }));
-    return true;
+    return { state: 'claimed', leaseId };
   } catch (err) {
-    if (err?.name === 'ConditionalCheckFailedException') return false;
+    if (err?.name === 'ConditionalCheckFailedException') {
+      const existing = await getItem(`STRIPEEVT#${eventId}`, 'EVT', true);
+      return { state: existing?.state === 'processing' ? 'busy' : 'done' };
+    }
     throw err;
+  }
+}
+
+async function finishStripeEvent(eventId, leaseId) {
+  await dynamo().send(new UpdateCommand({
+    TableName: table(), Key: { pk: `STRIPEEVT#${eventId}`, sk: 'EVT' },
+    UpdateExpression: 'SET #state = :done REMOVE leaseId, leaseUntil',
+    ConditionExpression: 'leaseId = :leaseId',
+    ExpressionAttributeNames: { '#state': 'state' },
+    ExpressionAttributeValues: { ':done': 'done', ':leaseId': leaseId },
+  }));
+}
+
+async function releaseStripeEvent(eventId, leaseId) {
+  try {
+    await dynamo().send(new DeleteCommand({
+      TableName: table(), Key: { pk: `STRIPEEVT#${eventId}`, sk: 'EVT' },
+      ConditionExpression: 'leaseId = :leaseId',
+      ExpressionAttributeValues: { ':leaseId': leaseId },
+    }));
+  } catch (err) {
+    if (err?.name !== 'ConditionalCheckFailedException') throw err;
   }
 }
 
@@ -371,6 +419,7 @@ module.exports = {
   getPublication,
   listPublicationIndex,
   findPublicationIndex,
+  findPublicationForOrder,
   listReviews,
   putPayout,
   setFields,
@@ -379,5 +428,7 @@ module.exports = {
   putSale,
   runTransact,
   claimStripeEvent,
+  finishStripeEvent,
+  releaseStripeEvent,
   audit,
 };

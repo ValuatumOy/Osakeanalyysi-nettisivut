@@ -40,9 +40,10 @@ function activityOf(order) {
 // Whether the page should offer text editing on this order's current version.
 // hasPreview is recorded at delivery; an order delivered before it was
 // recorded gets the benefit of the doubt, and the preview route answers
-// honestly when the engine has nothing to show.
+// honestly when the engine has nothing to show. The engine refuses hand edits
+// on a market-first report, so it gets no editor.
 function editableNow(order) {
-  return order.status === 'DELIVERED' && Boolean(order.jobId) && order.hasPreview !== false;
+  return order.status === 'DELIVERED' && !order.publicationLocked && Boolean(order.jobId) && order.hasPreview !== false && !order.marketFirst;
 }
 
 // The current version's number: v1 is the original delivery, every history

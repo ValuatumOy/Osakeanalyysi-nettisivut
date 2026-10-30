@@ -1,0 +1,734 @@
+{
+  "id": "remedy-28102026",
+  "slug": "remedy-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Remedy Entertainment",
+  "ticker": "REMEDY.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Electronic Gaming & Multimedia",
+  "currency": "EUR",
+  "reportDate": "2026-10-28",
+  "profile": "Makes story-driven video games for PC and console players, using its own franchises such as Control and Alan Wake alongside partner-owned series such as Max Payne. It earns revenue from game sales, royalties and development fees paid by publishing partners.",
+  "headline": {
+    "currentPrice": "17.4 EUR",
+    "marketCap": "EUR 236m",
+    "enterpriseValue": "EUR 284m"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-3.5 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "22.5 EUR",
+    "analysts": "2",
+    "range": "22.0–23.0 EUR",
+    "source": "Investing.com"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "57x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "18x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "45x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "20.7 EUR",
+    "week52Low": "11.1 EUR",
+    "oneYearChange": "+32%",
+    "threeYearChange": "-37%"
+  },
+  "summary": [
+    "Remedy Entertainment (REMEDY.HE, NASDAQ Helsinki) makes story-driven games for PC and console players, including Control and Alan Wake, and earns from game sales, royalties and partner-funded development. The shares traded at 17.4 EUR on 28 October 2026, giving the company a market capitalisation of EUR 236m and an enterprise value of EUR 284m. In this Valuatum market report dated 28 October 2026, the price is read against analysts’ forecasts through 2028 rather than treated as a forecast of future value. The key accounting transition is from a EUR 14.9m operating loss in 2025 to EUR 16m of operating profit in 2028.",
+    "The price is almost entirely assigned to Games: 20.9 EUR per share, representing 100% of the businesses’ EUR 20.9 per-share total before debt and other claims. That split applies 17.6x to Games’ EUR 16m of 2028 operating profit, matching the median of CD Projekt, Capcom and Take-Two. Debt and other claims, less cash, subtract 3.5 EUR per share, leaving 17.4 EUR. Games’ forecast rests on EUR 123m of 2028 sales and a 13% operating margin, compared with EUR 60m of 2025 sales and a reported negative 25.0% operating margin after the FBC: Firebreak write-down.",
+    "The price matches the listed peers on 2028 EV/EBIT: Games is at 17.6x, against a peer range of 14.2x to 19.5x and a 17.6x median. The central question is therefore delivery of the forecast rather than a different peer multiple. Full-year 2026 sales near EUR 125m would support the path, while EUR 60m would repeat 2025. CONTROL Resonant, scheduled for 24 September 2026 and co-financed 50% by Annapurna, is the main test; its sales, 2026 EBITDA against EUR 11.3m in 2025, and the 2028 sales outcome near EUR 123m will determine how much of the price rests on a durable recovery."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "EUR 20.9",
+      "text": "Games accounts for 100% of the businesses’ EUR 20.9 per-share total before debt and other claims. The split applies 17.6x to EUR 16m of 2028 operating profit, so almost all of today’s price rests on one forecast profit stream and the releases that support it."
+    },
+    {
+      "num": "02",
+      "title": "Peer comparison",
+      "metric": "17.6x",
+      "text": "Games is priced at 17.6x 2028 operating profit, exactly the median of CD Projekt, Capcom and Take-Two. The peer range is 14.2x to 19.5x, making the forecast’s move from EUR 60m of 2025 sales to EUR 123m in 2028 more important than a premium multiple."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "EUR 125m",
+      "text": "Full-year 2026 sales near analysts’ EUR 125m forecast would put the recovery on course, while EUR 60m would resemble 2025. CONTROL Resonant’s sales, the 2026 EBITDA outcome against EUR 11.3m in 2025, and 2028 sales near EUR 123m are the clearest tests."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Games",
+      "share": "20.9 EUR per share",
+      "economics": "17.6x 2028 operating profit · EUR 16m 2028 operating profit · peers 14.2x–19.5x, median 17.6x",
+      "text": "Games is Remedy’s sole business in the split and covers story-led PC and console titles from franchises including Control and Alan Wake, as well as partner-owned series such as Max Payne. It generated EUR 59.5m of 2025 sales, with 45% from game sales and royalties and 55% from development fees paid by publishing partners. The split assigns all EUR 16m of forecast 2028 operating profit to Games and reads the current price as 17.6x that profit. Its EUR 20.9 per-share contribution equals 100% of the businesses’ total before debt and other claims. The forecast assumes EUR 123m of 2028 sales and a 13% operating margin, versus a reported negative 25.0% margin in 2025 after most of the FBC: Firebreak investment was written down. Control’s sales history supports recurring franchise revenue, while the weak FBC launch shows the risk of a small release slate."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is concentrated in Games rather than spread across several operating divisions. The split assigns Games EUR 20.9 per share, or 100% of the businesses’ total before debt and other claims, and then subtracts EUR 3.5 per share for forecast end-2026 debt and other claims, less cash. The resulting EUR 17.4 per share reconciles to an enterprise value of EUR 284m and an equity value of EUR 236m. Games’ assigned value uses EUR 16m of 2028 operating profit and a 17.6x EV/EBIT multiple, with no separate value pool for another business. That forecast requires sales to rise from EUR 59.5m in 2025 to EUR 123m in 2028 and the operating margin to move from negative 25.0% in 2025 to 13%. The historical margin is distorted by the FBC: Firebreak write-down, but the underlying issue remains execution: the price rests on a profit that does not yet exist. Control sold more than 1 million units in 2025 and more than 5 million over its lifetime, providing evidence that a successful title can earn for years. The price is therefore a concentrated claim on sustained franchise sales and a successful recovery in profitability."
+    },
+    {
+      "heading": "Why the price matches peers",
+      "text": "Games trades at 17.6x 2028 operating profit in the split, matching the 17.6x median of CD Projekt, Capcom and Take-Two. The peer range is 14.2x to 19.5x, from CD Projekt to Take-Two, so the market is not assigning a premium to Remedy’s forecast profit. Instead, the multiple sits at the middle of a range that reflects both the possibility of durable sales and the volatility of a small studio with few releases. Control’s continuing sales support the forecast, while FBC: Firebreak launched below expectations and led to a substantial write-down. Remedy’s forecast also requires a recovery from a EUR 14.9m operating loss in 2025 to EUR 5m in 2026 and EUR 16m in 2028. CD Projekt’s 54.3% 2025 operating margin, compared with the 13% margin in the Games split, demonstrates the earnings potential of a major hit but also shows that Remedy’s forecast does not require matching the leading peer. The comparison is qualified by peer data: Take-Two’s 2027 P/E, EV/EBITDA and P/BV figures and CD Projekt’s 2026 EV/EBITDA figure are excluded from peer averages or medians as outliers. The central reading is parity with peers conditional on delivery."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operating test is full-year 2026 sales. Analysts forecast EUR 125m, compared with EUR 59.5m in 2025; a result near EUR 125m would align with the recovery, while EUR 60m would look like a repeat of 2025. CONTROL Resonant, scheduled for worldwide launch on 24 September 2026, is the main near-term driver because Remedy publishes it itself and therefore receives the sales economics while carrying more direct performance exposure. Annapurna co-finances 50% of its development budget, limiting the cash cost and sharing some film and television rights. Full-year 2026 EBITDA is a secondary check: Remedy reported EUR 11.3m in 2025 and expects an increase, but EBITDA excludes depreciation and amortisation and is not the operating profit used in the multiple. The 2026E operating-profit estimate of EUR 5m requires EUR 8m in Q2–Q4 after a Q1 operating loss of EUR 3m, or a 7.8% margin on remaining sales. The longer test is 2028 sales near EUR 123m and a 13% operating margin. Strong execution would make the 17.6x peer-median reading easier to sustain; weak sales or another release disappointment would put the forecast itself under pressure."
+    }
+  ],
+  "risks": [
+    "CONTROL Resonant execution (Games): weak sales after the 24 September 2026 launch would undermine the EUR 125m 2026 and EUR 123m 2028 sales forecasts, with early sales reports and pre-orders as the warning indicators.",
+    "Release concentration (Games): a small number of titles means one weak launch can move the annual result sharply, as FBC: Firebreak’s poor consumer sales and the EUR 14.9m write-down demonstrated; early sell-through is the warning indicator.",
+    "Margin recovery (Games): the forecast requires operating margin to rise from negative 25.0% in 2025 to 13% in 2028, with 2026 operating profit of EUR 5m requiring EUR 8m in Q2–Q4; quarterly EBIT margin is the early warning.",
+    "Forecast sales shortfall (Games): 2026 sales near EUR 60m would repeat 2025 rather than approach EUR 125m, weakening the profit base behind 17.6x; full-year revenue is the warning indicator."
+  ],
+  "catalysts": [
+    "CONTROL Resonant sales (near-term, Games): strong post-launch sales would support the EUR 125m 2026 sales forecast and the path toward EUR 123m in 2028.",
+    "2026 revenue delivery (near-term, Games): full-year sales near EUR 125m would confirm the forecast recovery from EUR 59.5m in 2025.",
+    "2026 EBITDA growth (near-term, Games): EBITDA above EUR 11.3m would meet management’s stated direction and support improving operating leverage.",
+    "Operating-margin recovery (medium-term, Games): reaching a 13% operating margin on EUR 123m of 2028 sales would validate the forecast profit of EUR 16m.",
+    "Long-tail franchise sales (medium-term, Games): continued Control sales, after more than 5 million lifetime units, would show that older releases can keep contributing beyond launch."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR. E = analysts’ forecast held by the model. Cash-flow rows are the Valuatum model’s own calculations and are not the company’s reported cash-flow statement.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "34",
+            "51",
+            "60",
+            "125",
+            "122",
+            "123"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "-27",
+            "2",
+            "8",
+            "25",
+            "28",
+            "33"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "-79.4%",
+            "3.1%",
+            "13.7%",
+            "20.2%",
+            "23.0%",
+            "27.0%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-2",
+            "-6",
+            "-12",
+            "-20",
+            "-13",
+            "-17"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "-29",
+            "-4",
+            "-4",
+            "5",
+            "15",
+            "16"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "-84.4%",
+            "-8.4%",
+            "-7.3%",
+            "4.0%",
+            "12.3%",
+            "13.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1",
+            "0",
+            "-11",
+            "0",
+            "-16",
+            "-16"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-28",
+            "-4",
+            "-16",
+            "5",
+            "-1",
+            "-0"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-23",
+            "-4",
+            "-13",
+            "5",
+            "-1",
+            "-0"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-1.7",
+            "-0.3",
+            "-1",
+            "0.4",
+            "-0.1",
+            "-0"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-5.9%",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "7",
+            "6",
+            "6",
+            "13",
+            "13",
+            "13"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "19",
+            "40",
+            "28",
+            "59",
+            "57",
+            "58"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "30",
+            "47",
+            "34",
+            "72",
+            "70",
+            "71"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "0",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "24",
+            "26",
+            "35",
+            "46",
+            "45",
+            "46"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "20",
+            "21",
+            "10",
+            "31",
+            "30",
+            "31"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "44",
+            "47",
+            "45",
+            "78",
+            "76",
+            "77"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "5",
+            "5",
+            "8",
+            "8",
+            "8",
+            "8"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "79",
+            "99",
+            "88",
+            "158",
+            "155",
+            "156"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "68",
+            "69",
+            "57",
+            "62",
+            "61",
+            "61"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "—",
+            "13",
+            "15",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "-1",
+            "12",
+            "14",
+            "36",
+            "34",
+            "35"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "10",
+            "16",
+            "14",
+            "56",
+            "54",
+            "55"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "3",
+            "3",
+            "4",
+            "5",
+            "6",
+            "6"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "79",
+            "99",
+            "88",
+            "158",
+            "155",
+            "156"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "5",
+            "5",
+            "6"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-16",
+            "-5",
+            "9",
+            "47",
+            "46",
+            "47"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "49",
+            "61",
+            "62",
+            "105",
+            "101",
+            "102"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "85.5%",
+            "69.0%",
+            "64.6%",
+            "39.1%",
+            "39.3%",
+            "38.9%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-24.2%",
+            "-7.5%",
+            "15.2%",
+            "76.2%",
+            "75.7%",
+            "77.3%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.6x",
+            "-3.3x",
+            "1.1x",
+            "1.9x",
+            "1.6x",
+            "1.4x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "4.4",
+            "2.9",
+            "3.3",
+            "1.4",
+            "1.4",
+            "1.4"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "-26",
+            "8",
+            "-15",
+            "20",
+            "12",
+            "17"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "-32",
+            "7",
+            "-6",
+            "20",
+            "27",
+            "32"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "5",
+            "-5",
+            "11",
+            "6",
+            "-0",
+            "0"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "0",
+            "23",
+            "0",
+            "58",
+            "11",
+            "18"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-0",
+            "-23",
+            "-0",
+            "-58",
+            "-11",
+            "-18"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-26",
+            "-14",
+            "-15",
+            "-39",
+            "1",
+            "-1"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-33",
+            "-15",
+            "-6",
+            "-39",
+            "16",
+            "14"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-33",
+            "-15",
+            "-6",
+            "-39",
+            "16",
+            "14"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "2",
+            "16",
+            "4",
+            "60",
+            "-2",
+            "1"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-2",
+            "-1",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-24",
+            "2",
+            "-11",
+            "22",
+            "-1",
+            "0"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "44.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "11.2x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "3.8x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "4.0%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "8.9%"
+          ]
+        },
+        {
+          "label": "Dividend yield",
+          "values": [
+            "n/a"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Remedy Entertainment’s share price made of?",
+      "a": "The split assigns 20.9 EUR per share to Games, equal to 100% of the businesses’ total before debt and other claims. Applying 17.6x to Games’ EUR 16m of 2028 operating profit gives the business value, while forecast debt and other claims, less cash, subtract 3.5 EUR per share to reach 17.4 EUR."
+    },
+    {
+      "q": "Why does Remedy Entertainment trade at the middle of its game-industry peers?",
+      "a": "Games is priced at 17.6x 2028 operating profit, matching the median of CD Projekt, Capcom and Take-Two. Their peer range is 14.2x to 19.5x. The middle multiple balances Control’s continuing sales against FBC: Firebreak’s weak launch and the recovery required from a EUR 14.9m 2025 operating loss."
+    },
+    {
+      "q": "What do analysts forecast for Remedy Entertainment’s sales and profit?",
+      "a": "Analysts forecast sales of EUR 125m and operating profit of EUR 5m in 2026, followed by EUR 122m of sales and EUR 15m of operating profit in 2027. For 2028, the forecast is EUR 123m of sales, EUR 16m of operating profit and a 13.1% operating margin."
+    },
+    {
+      "q": "What should Remedy Entertainment investors watch?",
+      "a": "The main indicators are CONTROL Resonant’s post-launch sales, full-year 2026 revenue against EUR 125m, EBITDA against EUR 11.3m in 2025, and 2028 revenue against EUR 123m. The 2026 operating-profit forecast of EUR 5m also requires EUR 8m in Q2–Q4 after a EUR 3m Q1 loss."
+    },
+    {
+      "q": "How does Valuatum’s market report work?",
+      "a": "It keeps analysts’ forecasts unchanged through 2028, splits forecast operating profit between the businesses, compares each business with listed peers on EV/EBIT, and reads today’s share price back into those businesses. For Remedy, Games receives all EUR 16m of 2028 operating profit and the 17.6x multiple is the peer median."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Remedy Entertainment dated 28 October 2026 (17.4 EUR share price, Games at 20.9 EUR per share before debt and other claims).",
+    "Competitor context: CD Projekt S.A., Capcom Co., Ltd. and Take-Two Interactive Software, Inc.; 2028 EV/EBIT multiples of 14.2x, 17.6x and 19.5x respectively, with a 17.6x median. Take-Two’s 2027 P/E, EV/EBITDA and P/BV figures and CD Projekt’s 2026 EV/EBITDA figure are marked as outliers and excluded from peer averages or medians.",
+    "Market data: REMEDY.HE at 17.4 EUR on 28 October 2026; forecast figures used include EUR 125m of 2026 sales, EUR 123m of 2028 sales and EUR 16m of 2028 operating profit; the separate consensus price target source is Investing.com. Model cash-flow figures are Valuatum calculations and may differ materially from the company’s reported cash-flow statement. Figures require independent verification because the document notes that generative artificial intelligence assisted its production."
+  ]
+}

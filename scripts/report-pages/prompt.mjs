@@ -108,7 +108,7 @@ const HOUSE_STYLE = `${FORMATTING}\n\n${RATED_FIELDS}\n\n${FINANCIALS}\n\n${RATE
 const MARKET_FIRST_STYLE = `MARKET-FIRST REPORT — WHAT IS DIFFERENT
 This report does not value the company. It gives no rating, no target price and no view of what the share is worth: it takes today's share price as given, splits it between the businesses, and explains why the market pays what it does for each. Everything you write must stay inside that.
 - Never write a rating (BUY/HOLD/SELL), a Valuatum target price, an implied upside or a fair value, and never say the share is cheap, expensive, undervalued or overvalued. Where the general instructions say a section should say what it implies for the rating, say what it implies for what the share price is made of.
-- The report may print the analysts' consensus price target (the mean of other analysts' targets, with a source). It is NOT Valuatum's. Put it only in consensusTarget, and whenever prose mentions it, attribute it in the same sentence: "the mean of 16 analysts' targets is 11.5 EUR (MarketScreener)". Never call it "the target price" or "our target". Use null when the report prints no consensus target.
+- The report may print the analysts' consensus price target (the mean of other analysts' targets, with a source). It is NOT Valuatum's. Put it only in consensusTarget, with the analyst count and source. Do not mention the consensus target or its distance from the current price in any prose field, including FAQs. In particular, never write "implied upside" even when describing the analysts' consensus. Use null when the report prints no consensus target.
 
 profile
 - One or two sentences, 25-45 words, on what the company does, from the report's company profile. No figures, no ticker. Start with the verb and leave out the company's name, because the page prints the name in front of it: "makes packaging materials from wood fibre… It also sells…".
@@ -142,7 +142,7 @@ coreAnalysis — exactly 3 sections of 180-240 words, following the report's str
 risks — 3-5 entries from the report's "What to watch" and risk text, highest impact first: "Risk name (affected business): what happens, with <indicator> as the early warning."
 catalysts — 3-5 entries, nearest first: "Event (near-term/medium-term/long-term, affected business): what it would show."
 
-faqs — exactly 5, written for search queries, none about a rating or a Valuatum target: e.g. "What is <X>'s share price made of?", "Why does <X> trade below/above its peers?", "What do analysts expect for <X>?" (answer with the consensus, attributed), "What should <X> investors watch?", "How does Valuatum's market report work?".
+faqs — exactly 5, written for search queries, none about a rating or a target price: e.g. "What is <X>'s share price made of?", "Why does <X> trade below/above its peers?", "What do analysts forecast for <X>'s sales and profit?", "What should <X> investors watch?", "How does Valuatum's market report work?".
 
 sources — exactly 3 entries: "Primary data: Valuatum market report on <Company> dated <date> (<share price, the split between the businesses>).", "Competitor context: <peers and multiples>.", "Market data: <ticker, price on the report date, the forecast figures used, the consensus source>."
 ${CAVEATS}`;

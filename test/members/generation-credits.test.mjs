@@ -23,6 +23,7 @@ function stub(modulePath, exports) {
 process.env.ADMIN_UPLOAD_PASSWORD = 'admin-secret';
 process.env.MEMBERS_TEST_UTILS_SECRET = 'clock-secret';
 process.env.WORKER_FUNCTION_NAME = 'stub-worker';
+process.env.ORDERS_TABLE = 'Orders';
 delete process.env.SECRETS_SSM_PREFIX;
 delete process.env.MEMBERS_LIMITS_JSON;
 
@@ -69,6 +70,14 @@ stub('../../server/members/store.js', {
       race();
     }
     const items = params.TransactItems;
+    const reserved = items.find(item => item.Put?.Item.sk?.startsWith('PUB#'));
+    if (reserved) {
+      const guard = items.map(item => item.Update || item.ConditionCheck).find(item => item?.Key.sk === 'PROFILE');
+      if (guard?.ExpressionAttributeNames?.['#role'] === 'role') {
+        const publishing = [guard.ExpressionAttributeValues[':analyst'], guard.ExpressionAttributeValues[':coaching']].includes(state.profile?.role);
+        if (guard.ConditionExpression.includes('#role IN') ? !publishing : publishing) return false;
+      }
+    }
     const first = items[0].Update;
     const expr = first.UpdateExpression;
     if (expr.includes('ADD generationCredits :count')) {
@@ -107,8 +116,9 @@ stub('../../server/members/store.js', {
     }
     if (expr === 'REMOVE openObligationId') {
       if (items[1].Update.Key.sk.startsWith('PUB#')) {
-        const pub = state.pubs.get(items[1].Update.Key.sk.slice(4));
-        return Boolean(pub && !pub.generationCredit && pub.status === 'generating');
+        const source = items.find(item => item.Update?.Key?.sk === `PUB#${first.ExpressionAttributeValues[':genId']}`);
+        const pub = state.pubs.get(source?.Update.Key.sk.slice(4));
+        return Boolean(pub && !pub.generationCredit && !pub.private && pub.status === 'generating');
       }
       const genId = first.ExpressionAttributeValues[':genId'];
       if (state.usage?.genId !== genId || (state.profile.openObligationId && state.profile.openObligationId !== genId)) return false;
@@ -143,6 +153,18 @@ const grant = body => request('POST /admin/members/grant-generation', { userId: 
 const generate = (extra = {}) => request('POST /generations/free', { company: 'Nokia', ticker: 'NOKIA.HE', ...extra });
 const poll = id => request('GET /generations/{genId}', undefined, { pathParameters: { genId: id } });
 const requestId = '12345678-1234-4321-8123-123456789abc';
+
+test('generation list distinguishes an analyst engine original from a reader report', async () => {
+  for (const role of ['analyst', 'subscriber']) {
+    reset({ role, generationCredits: 1, openObligationId: role === 'analyst' ? 'existing' : undefined });
+    const created = await generate();
+    assert.equal(created.status, 200);
+    const listed = await request('GET /generations');
+    assert.equal(listed.status, 200);
+    assert.equal(listed.body.generations[0].private, true);
+    assert.equal(listed.body.generations[0].publicEngineBase, role === 'analyst');
+  }
+});
 
 test('credit builders are atomic, bounded by the balance, and independent of monthly gates', () => {
   const reserve = quota.buildReserveGenerationCreditTransact(base).TransactItems;
@@ -302,6 +324,99 @@ test('monthly allowance is used before gifted credits and keeps its existing pub
   }
 });
 
+test('only publishing roles reserve a public engine baseline for monthly and credit generations', async () => {
+  for (const role of ['analyst', 'coaching', 'reader', 'subscriber']) {
+    for (const credit of [false, true]) {
+      reset({ role, tier: 'investor_plus', tierStatus: 'active', generationCredits: 1 });
+      if (credit) state.usage = { genReserved: true, genId: 'old' };
+      const generated = await generate({ publicEngineBase: role === 'reader' || role === 'subscriber' });
+      assert.equal(generated.status, 200, `${role}: ${credit}`);
+      const expected = ['analyst', 'coaching'].includes(role);
+      const pub = state.pubs.get(generated.body.genId);
+      assert.equal(pub.publicEngineBase, expected);
+      assert.equal(state.orders.get(generated.body.genId).publicEngineBase, expected);
+      assert.equal(state.orders.get(generated.body.genId).visibility, 'private');
+      assert.equal(Boolean(pub.generationCredit), credit);
+      assert.equal(Boolean(pub.private), credit || !expected);
+    }
+  }
+});
+
+test('an interrupted reservation keeps its baseline decision after either direction of role change', async () => {
+  for (const role of ['analyst', 'coaching', 'reader', 'subscriber']) {
+    for (const credit of [false, true]) {
+      reset({ role, tier: 'investor_plus', tierStatus: 'active', generationCredits: 1 });
+      if (credit) state.usage = { genReserved: true, genId: 'old' };
+      state.createError = true;
+      assert.equal((await generate({ requestId })).status, 500);
+      const pub = [...state.pubs.values()][0];
+      const expected = ['analyst', 'coaching'].includes(role);
+      assert.equal(pub.publicEngineBase, expected);
+      state.profile.role = expected ? 'subscriber' : 'analyst';
+      state.createError = false;
+      const transactions = state.transactions.length;
+      const resumed = await generate({ requestId, publicEngineBase: !expected });
+      assert.equal(resumed.status, 200);
+      assert.equal(state.orders.get(resumed.body.genId).publicEngineBase, expected);
+      assert.equal(state.pubs.get(resumed.body.genId).publicEngineBase, expected);
+      assert.equal(state.transactions.length, transactions);
+      assert.equal(resumed.body.private, Boolean(pub.private));
+    }
+  }
+});
+
+test('a competing reservation uses the winner baseline decision when repairing its missing order', async () => {
+  for (const winnerEligible of [false, true]) {
+    reset({ role: winnerEligible ? 'subscriber' : 'analyst', generationCredits: 2 });
+    state.race = () => {
+      const transaction = state.transactions.at(-1);
+      const pub = copy(transaction.TransactItems.find(item => item.Put).Put.Item);
+      pub.publicEngineBase = winnerEligible;
+      state.pubs.set(pub.sk.slice(4), pub);
+      state.usage = { genReserved: true, genId: pub.sk.slice(4) };
+    };
+    const result = await generate({ requestId });
+    assert.equal(result.status, 200);
+    assert.equal(state.orders.get(result.body.genId).publicEngineBase, winnerEligible);
+    assert.equal(state.profile.generationCredits, 2);
+    assert.equal(state.creates.length, 1);
+  }
+});
+
+test('a legacy reservation without baseline eligibility stays private when an analyst repairs it', async () => {
+  reset({ generationCredits: 1 });
+  state.createError = true;
+  assert.equal((await generate({ requestId })).status, 500);
+  delete [...state.pubs.values()][0].publicEngineBase;
+  state.profile.role = 'analyst';
+  state.createError = false;
+  const resumed = await generate({ requestId, publicEngineBase: true });
+  assert.equal(resumed.status, 200);
+  assert.equal(state.orders.get(resumed.body.genId).publicEngineBase, false);
+  assert.equal(state.transactions.length, 1);
+});
+
+test('a role change before monthly or credit commit rejects the stale eligibility without spending', async () => {
+  for (const [before, after] of [['analyst', 'reader'], ['coaching', 'subscriber'], ['reader', 'coaching'], ['subscriber', 'analyst']]) {
+    for (const credit of [false, true]) {
+      reset({ role: before, tier: 'investor_plus', tierStatus: 'active', generationCredits: 1 });
+      if (credit) state.usage = { genReserved: true, genId: 'old' };
+      state.race = () => { state.profile.role = after; };
+      const rejected = await generate({ requestId });
+      assert.equal(rejected.status, 429, `${before} -> ${after}, credit: ${credit}`);
+      assert.equal(state.profile.generationCredits, 1);
+      assert.equal(state.pubs.size, 0);
+      assert.equal(state.creates.length, 0);
+      assert.equal(state.workers.length, 0);
+      assert.equal(state.usage?.genId, credit ? 'old' : undefined);
+      assert.equal(state.profile.openObligationId, undefined);
+      const retried = await generate({ requestId });
+      assert.equal(retried.status, 200);
+      assert.equal(state.orders.get(retried.body.genId).publicEngineBase, ['analyst', 'coaching'].includes(after));
+    }
+  }
+});
+
 test('gift credit bypasses a used monthly slot and old obligation but cannot be submitted', async () => {
   reset({ role: 'analyst', generationCredits: 1, openObligationId: 'old' });
   state.usage = { genReserved: true, genId: 'old' };
@@ -310,11 +425,12 @@ test('gift credit bypasses a used monthly slot and old obligation but cannot be 
   assert.equal(generated.body.private, true);
   assert.equal(state.profile.openObligationId, 'old');
   assert.equal(state.usage.genId, 'old');
-  state.orders.get(generated.body.genId).status = 'DELIVERED';
+  Object.assign(state.orders.get(generated.body.genId), { status: 'DELIVERED', jobId: 'job', pdfFileName: 'report.pdf' });
   const submitted = await request('POST /generations/{genId}/submit', {}, { pathParameters: { genId: generated.body.genId } });
   assert.equal(submitted.status, 409);
   const transaction = state.transactions.at(-1);
-  assert.match(transaction.TransactItems[1].Update.ConditionExpression, /attribute_not_exists\(generationCredit\)/);
+  const source = transaction.TransactItems.find(item => item.Update?.Key?.sk === `PUB#${generated.body.genId}`);
+  assert.match(source.Update.ConditionExpression, /attribute_not_exists\(generationCredit\)/);
   assert.equal(state.profile.openObligationId, 'old');
 });
 

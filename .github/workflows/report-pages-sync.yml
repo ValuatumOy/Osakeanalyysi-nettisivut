@@ -4,7 +4,7 @@ name: Report pages sync
 # extracts content for newly published reports, rebuilds the landing pages, the reports.html
 # card grid and the sitemap, verifies the result, and commits straight to main (Vercel deploys
 # on push). Hourly, because three catalog changes are time-driven and fire no event; a no-change
-# run writes nothing and costs seconds. workflow_dispatch is the manual "sync now" button.
+# run writes nothing and costs seconds. Delivery also uses workflow_dispatch to wake it up.
 #
 # The guard runs BEFORE the commit, so an inconsistent state never reaches main — a failing run
 # is a red workflow and no commit, and the site freezes at its last consistent state. A rejected
@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: report-pages-sync
+  group: report-pages-sync-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -63,7 +63,8 @@ jobs:
 
       - name: Commit and push
         run: |
-          git add report-content reports reports.html sitemap.xml llms.txt companies
+          git add report-content reports reports.html sitemap.xml llms.txt companies companies.html
+          git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
           if git diff --cached --quiet; then
             echo "No changes — catalog and pages already agree."
             exit 0
@@ -88,6 +89,8 @@ jobs:
   # the engine's stub for a failed run — is remembered in test-site/report-content/_failed.json
   # and not retried, so it warns once instead of failing every hour.
   sync-test:
+    # Hourly recovery still covers both sites; delivery wake-ups select one branch.
+    if: github.event_name == 'schedule' || github.ref_name == 'staging'
     runs-on: ubuntu-latest
     concurrency:
       group: report-pages-sync-test
