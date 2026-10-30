@@ -194,7 +194,7 @@ function freshReportCopy(company, ticker, withRevisions, included) {
     }
     : {
       name: `Fresh AI Equity Report - ${company}`,
-      description: `Latest-data report for ${label}. Delivered by email within about 30 minutes.`,
+      description: `Latest-data report for ${label}. Delivered by email, usually within an hour.`,
     };
 }
 

@@ -59,7 +59,7 @@ const PRICING_CONFIG = {
         'Everything in Ready Report',
         'Latest available data',
         'US, Nordic and Baltic listings',
-        'Delivered by email, usually within about 30 minutes',
+        'Delivered by email, usually within an hour',
       ],
       notIncluded: [],
       cta: 'Generate fresh report',

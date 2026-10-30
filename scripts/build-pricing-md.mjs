@@ -95,7 +95,7 @@ ${members.map(render).join('\n')}${note ? `\n${note}\n` : ''}
 
 - Ready reports download instantly as PDF, with an email copy.
 - Fresh reports are generated on demand from the latest available financial data and
-  arrive by email, usually within about 30 minutes.
+  arrive by email, usually within an hour.
 - Any US, Nordic or Baltic listed company can be ordered as a fresh report, whether or not a
   ready report exists for it.
 
