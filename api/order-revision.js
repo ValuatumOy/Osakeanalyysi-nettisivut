@@ -66,7 +66,8 @@ module.exports = async (req, res) => {
 
     // A locked what-if rides with the comment: `{ comments, valuationOverrides }`.
     const overrides = req.body?.valuationOverrides && typeof req.body.valuationOverrides === 'object' ? req.body.valuationOverrides : undefined;
-    const result = await submitOrderRevision(sessionId, comments, overrides, req.body?.scope);
+    // Images ride through as sent; the backend checks and stores them (server/revision-images.js).
+    const result = await submitOrderRevision(sessionId, comments, overrides, req.body?.scope, req.body?.images);
     res.status(200).json(result);
   } catch (err) {
     if (err instanceof CheckoutError) return res.status(err.status).json({ error: err.message });

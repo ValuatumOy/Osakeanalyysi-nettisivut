@@ -20,6 +20,7 @@ const { getPublicPricing } = require('../stripe-pricing');
 const { companyToken } = require('../reconciler');
 const { sendAdminAlert, reportError } = require('../email');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
+const revisionImages = require('../revision-images');
 const editing = require('../order-editing');
 const { dispatchReportPages } = require('../report-page-dispatch');
 
@@ -585,13 +586,17 @@ async function claimOrderRevision(id, body) {
 
   const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
   if (scope instanceof Error) return json(400, { error: scope.message });
+  const images = revisionImages.parseImages(body.images);
+  if (images instanceof Error) return json(400, { error: images.message });
 
   const order = await ordersStore.get(id);
   if (await isOrderMemberOnly(order, id)) return json(403, { error: 'Sign in to access this report' });
   if (!order) return json(404, { error: 'Order not found' });
   if (await isOrderPublicationLocked(order)) return json(409, { error: 'This report is published — its PDF can no longer change' });
 
-  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides, scope);
+  // Stored before the claim, so the worker the claim wakes finds them.
+  const imageKeys = images.length ? await revisionImages.storeImages(id, images) : [];
+  const claimed = await ordersStore.claimRevision(id, comments, valuationOverrides, scope, imageKeys);
   if (!claimed) {
     const existing = await ordersStore.get(id);
     if (!existing) return json(404, { error: 'Order not found' });

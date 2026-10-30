@@ -11,6 +11,7 @@ const ordersStore = require('../aws/orders-store');
 const engineJobs = require('../aws/engine-jobs');
 const { validateEditRequest, EditValidationError } = require('../report-edits');
 const editing = require('../order-editing');
+const revisionImages = require('../revision-images');
 const { searchCompanies } = require('../search');
 const auth = require('../members/auth');
 const bounty = require('../members/bounty');
@@ -1168,8 +1169,12 @@ async function postGenerationRevision(event) {
 
   const scope = editing.parseRevisionScope(body.scope, valuationOverrides);
   if (scope instanceof Error) return json(400, { error: scope.message });
+  const images = revisionImages.parseImages(body.images);
+  if (images instanceof Error) return json(400, { error: images.message });
 
-  const claimed = await ordersStore.claimRevision(genId, comments, valuationOverrides, scope);
+  // Stored before the claim, so the worker the claim wakes finds them.
+  const imageKeys = images.length ? await revisionImages.storeImages(genId, images) : [];
+  const claimed = await ordersStore.claimRevision(genId, comments, valuationOverrides, scope, imageKeys);
   if (!claimed) {
     return json(409, {
       error: order.revisionsUsed >= order.revisionsAllowed

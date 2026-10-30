@@ -592,6 +592,9 @@
           <p class="order-sub" id="revisionScopeHint" style="margin-bottom:.85rem; color:var(--charcoal-mid);">Wording only keeps the forecasts, valuation and target price unchanged.</p>
           </div>
           <textarea class="revision-textarea" id="revisionText" placeholder="Describe the change you'd like to see in the report…"></textarea>
+          <label for="revisionImages" style="display:block; margin-top:.85rem;">Images (optional)</label>
+          <input type="file" id="revisionImages" accept="image/png,image/jpeg" multiple style="margin-top:.4rem;" aria-describedby="revisionImagesHint">
+          <p class="order-sub" id="revisionImagesHint" style="margin:.35rem 0 .85rem; color:var(--charcoal-mid);">Up to 3 PNG or JPEG images, 2 MB each. Say in your request which business's page each one goes on.</p>
           <button type="button" class="btn btn-primary btn-lg btn-full" id="revisionSubmit">Request revision</button>
           <p class="revision-status" id="revisionStatus"></p>
         </div>

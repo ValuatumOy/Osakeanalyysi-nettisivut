@@ -148,6 +148,7 @@ export class MembersStack extends Stack {
     catalogStateTable.grantReadData(membersFunction);
     catalogBucket.grantRead(membersFunction); // presigned GETs for entitled opens
     props.pdfBucket.grantRead(membersFunction); // this stage's own generations
+    props.pdfBucket.grantPut(membersFunction, 'revision-images/*'); // images sent with a revision (server/revision-images.js)
     // Create-only in practice: the worker owns order state transitions.
     props.ordersTable.grantReadWriteData(membersFunction);
     const engineJobsReadTable = dynamodb.Table.fromTableName(this, 'EngineJobsReadTable', `pdf-jobs${config.suffix}`);

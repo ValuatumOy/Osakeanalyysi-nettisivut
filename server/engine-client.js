@@ -128,6 +128,7 @@ async function submitRevision({
   analystName,
   valuationOverrides,
   endUserEmail,
+  images,
 } = {}) {
   if (!parentJobId) throw new Error('submitRevision: parentJobId is required');
   if (!comments) throw new Error('submitRevision: comments is required');
@@ -142,6 +143,8 @@ async function submitRevision({
     ...(valuationOverrides ? { valuationOverrides } : {}),
     // Only an estimates revision writes a model, so only it needs the email.
     ...(endUserEmail && scope === 'estimates' ? { endUserEmail } : {}),
+    // `[{ data: base64, mimeType }]`: images the comment places on a market-first report's pages.
+    ...(images?.length ? { images } : {}),
   });
 
   const { signal, cancel } = withTimeout(REQUEST_TIMEOUT_MS);

@@ -26,7 +26,7 @@ function fakeOrdersStore(orders) {
   return {
     STATUS,
     async get(id) { return orders.has(id) ? { ...orders.get(id) } : null; },
-    async claimRevision(id, comment, valuationOverrides = null, scope) {
+    async claimRevision(id, comment, valuationOverrides = null, scope, images = []) {
       const order = orders.get(id);
       if (!order) return null;
       if (order.publicationLocked) return null;
@@ -36,6 +36,7 @@ function fakeOrdersStore(orders) {
       order.pendingRevisionComment = comment;
       order.pendingValuationOverrides = valuationOverrides;
       order.pendingRevisionScope = scope;
+      order.pendingRevisionImages = images.length ? images : null;
       return order;
     },
     async claimEdit(id, edit) {
@@ -366,4 +367,28 @@ test('GET /api/orders/{id}/preview proxies the engine HTML, and explains when th
 
   const unauthorised = await handler(event('GET /api/orders/{id}/preview', { id: 'cs_ok', secret: 'wrong' }));
   assert.equal(unauthorised.statusCode, 401);
+});
+
+test('images sent with a revision are stored first and the claim carries only their keys', async (t) => {
+  cleanup(t);
+  const CLIENTS_ID = require.resolve('../../server/aws/clients.js');
+  const IMAGES_ID = require.resolve('../../server/revision-images.js');
+  const puts = [];
+  delete require.cache[IMAGES_ID];
+  require.cache[CLIENTS_ID] = { id: CLIENTS_ID, filename: CLIENTS_ID, loaded: true,
+    exports: { s3: () => ({ async send(command) { puts.push(command.input); return {}; } }) } };
+  t.after(() => { delete require.cache[CLIENTS_ID]; delete require.cache[IMAGES_ID]; });
+  process.env.REPORT_PDF_BUCKET = 'stage-bucket';
+  const orders = new Map([['cs_img', { id: 'cs_img', status: STATUS.DELIVERED, revisionsAllowed: 2, revisionsUsed: 0 }]]);
+  const { handler } = loadApi({ orders });
+  const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).toString('base64');
+  const bad = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_img', body: { comments: 'Add it', images: [{ data: png, mimeType: 'image/gif' }] } }));
+  assert.equal(bad.statusCode, 400);
+  assert.equal(orders.get('cs_img').status, STATUS.DELIVERED, 'a refused image claims nothing');
+  const res = await handler(event('POST /api/orders/{id}/revisions', { id: 'cs_img', body: { comments: 'Put this map on the robotaxi page', images: [{ data: png, mimeType: 'image/png' }] } }));
+  assert.equal(res.statusCode, 200);
+  const keys = orders.get('cs_img').pendingRevisionImages;
+  assert.deepEqual(keys, [{ key: puts[0].Key, mimeType: 'image/png' }]);
+  assert.equal(puts[0].Bucket, 'stage-bucket');
+  assert.doesNotMatch(JSON.stringify(orders.get('cs_img')), new RegExp(png.slice(0, 8)), 'no image bytes on the order');
 });

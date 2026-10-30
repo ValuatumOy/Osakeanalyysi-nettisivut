@@ -555,3 +555,27 @@ test('an order without an email revises without endUserEmail, so the engine keep
   assert.equal(engine.calls.submitRevision.length, 1);
   assert.equal(engine.calls.submitRevision[0].endUserEmail, undefined);
 });
+
+test('images stored with a revision go to the engine with the comment and are cleared once submitted', async (t) => {
+  const statePath = isolate(t);
+  const CLIENTS_ID = require.resolve('../../server/aws/clients.js');
+  const IMAGES_ID = require.resolve('../../server/revision-images.js');
+  const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  delete require.cache[IMAGES_ID];
+  require.cache[CLIENTS_ID] = { id: CLIENTS_ID, filename: CLIENTS_ID, loaded: true,
+    exports: { s3: () => ({ async send(command) {
+      assert.equal(command.input.Key, 'revision-images/cs_img/a.png');
+      return { Body: { transformToByteArray: async () => new Uint8Array(png) } };
+    } }) } };
+  t.after(() => { delete require.cache[CLIENTS_ID]; delete require.cache[IMAGES_ID]; });
+  const engine = fakeEngine();
+  const reconciler = loadReconciler({ statePath, engine, email: fakeEmail(), pdfStore: fakePdfStore() });
+  const orders = require(ORDERS_ID);
+  orders.create({ id: 'cs_img', ticker: 'TSLA', status: orders.STATUS.DELIVERED, jobId: 'job_base', pdfFileName: 'Base.pdf', revisionsAllowed: 2 }, statePath);
+  orders.claimRevision('cs_img', 'Put this map on the robotaxi page', statePath);
+  orders.update('cs_img', { pendingRevisionImages: [{ key: 'revision-images/cs_img/a.png', mimeType: 'image/png' }] }, statePath);
+
+  await reconciler.advance(orders.get('cs_img', statePath));
+  assert.deepEqual(engine.calls.submitRevision[0].images, [{ data: png.toString('base64'), mimeType: 'image/png' }]);
+  assert.equal(orders.get('cs_img', statePath).pendingRevisionImages, null);
+});

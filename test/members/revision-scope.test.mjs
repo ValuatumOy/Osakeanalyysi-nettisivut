@@ -39,13 +39,13 @@ test('members scope is validated, carried to the claim, and locked overrides for
   for (const scope of ['content', 'estimates', undefined]) {
     claims.length = 0;
     assert.equal((await request({ comments: 'Revise', scope })).statusCode, 200);
-    assert.deepEqual(claims[0], ['g1', 'Revise', null, scope || 'estimates']);
+    assert.deepEqual(claims[0], ['g1', 'Revise', null, scope || 'estimates', []]);
   }
   const valuationOverrides = { auto: { selectedMultiple: 12 } };
   for (const scope of ['content', 'estimates', 'narrative', undefined]) {
     claims.length = 0;
     assert.equal((await request({ comments: 'Use my assumptions', scope, valuationOverrides })).statusCode, 200);
-    assert.deepEqual(claims[0], ['g1', 'Use my assumptions', valuationOverrides, 'narrative']);
+    assert.deepEqual(claims[0], ['g1', 'Use my assumptions', valuationOverrides, 'narrative', []]);
   }
 });
 
@@ -64,7 +64,7 @@ test('the order form routes both scopes through member and shop requests', async
   assert.match(html, /<label for="revisionScope">/);
   assert.match(html, /value="estimates" selected/);
   assert.match(html, /value="content"/);
-  assert.match(source, /postRevision\(comments, null, document.getElementById\('revisionScope'\).value\)/);
+  assert.match(source, /postRevision\(comments, null, document.getElementById\('revisionScope'\).value, images\)/);
   for (const member of [true, false]) {
     const requests = [];
     const context = vm.createContext({

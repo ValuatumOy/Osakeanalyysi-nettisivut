@@ -31,6 +31,7 @@
 // when ADMIN_NOTIFY_ON_SUCCESS is set.
 
 const engine = require('./engine-client');
+const revisionImages = require('./revision-images');
 const email = require('./email');
 const fmp = require('./fmp-client');
 
@@ -494,6 +495,7 @@ async function deliverRevision(order, job) {
     pendingRevisionComment: null,
     pendingValuationOverrides: null,
     pendingRevisionScope: null,
+    pendingRevisionImages: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -533,6 +535,7 @@ async function failRevision(order, reason) {
     pendingRevisionComment: null,
     pendingValuationOverrides: null,
     pendingRevisionScope: null,
+    pendingRevisionImages: null,
     activeRevisionComment: null,
     pendingEdit: null,
     activeEdit: null,
@@ -694,6 +697,8 @@ async function advance(order) {
       // A locked what-if rides as a narrative revision: the model is not
       // changed, the report is rewritten on the customer's rows.
       const valuationOverrides = order.pendingValuationOverrides || null;
+      // Images sent with the comment (revision-images.js); the engine places each on the page the comment names.
+      const images = order.pendingRevisionImages?.length ? await revisionImages.loadImages(order.pendingRevisionImages) : [];
       let revisionJobId;
       try {
         ({ jobId: revisionJobId } = await engine.submitRevision({
@@ -701,6 +706,7 @@ async function advance(order) {
           comments,
           scope: valuationOverrides ? 'narrative' : (order.pendingRevisionScope || 'estimates'),
           ...(valuationOverrides ? { valuationOverrides } : {}),
+          ...(images.length ? { images } : {}),
           // A hand-attached job is owned by whoever submitted it, not the shop.
           ...(order.engineUsername ? { username: order.engineUsername } : {}),
           // Only a member generation carries a name: a revised report says who
@@ -719,9 +725,9 @@ async function advance(order) {
         throw err;
       }
       await orders.update(order.id, {
-        revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, activeRevisionComment: comments, polls: 0, error: null,
+        revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, pendingRevisionImages: null, activeRevisionComment: comments, polls: 0, error: null,
       });
-      order = { ...order, revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, activeRevisionComment: comments, polls: 0 };
+      order = { ...order, revisionJobId, pendingRevisionComment: null, pendingValuationOverrides: null, pendingRevisionScope: null, pendingRevisionImages: null, activeRevisionComment: comments, polls: 0 };
       // Fall through: with a poll window configured, start polling immediately.
       if (POLL_WINDOW_MS <= 0) return;
     }

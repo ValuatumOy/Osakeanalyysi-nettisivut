@@ -159,8 +159,9 @@
 
   // `valuationOverrides` (optional) is the what-if the customer locked in the
   // target-price view; the engine writes the report on those rows.
-  function postRevision(comments, valuationOverrides, scope) {
+  function postRevision(comments, valuationOverrides, scope, images) {
     const extra = valuationOverrides ? { valuationOverrides: valuationOverrides, scope: 'narrative' } : { scope: scope || 'estimates' };
+    if (images && images.length) extra.images = images;
     if (isAdminView) {
       const from = adminBaseVersion && !valuationOverrides ? { fromVersion: adminBaseVersion } : {};
       return adminFetch('/revisions', { body: Object.assign({ comments: comments }, extra, from) });
@@ -1676,6 +1677,25 @@
     button.disabled = false;
   });
 
+  // Images attached to a revision request, as `{ data: base64, mimeType }`.
+  // The same limits are checked again by the backend (server/revision-images.js);
+  // three megabytes together still fit the order page's request as base64.
+  function readRevisionImages(input) {
+    const files = Array.from(input.files || []);
+    if (files.length > 3) return Promise.reject(new Error('Attach at most 3 images.'));
+    if (files.some(function (f) { return f.type !== 'image/png' && f.type !== 'image/jpeg'; })) return Promise.reject(new Error('Images must be PNG or JPEG files.'));
+    if (files.some(function (f) { return f.size > 2 * 1024 * 1024; })) return Promise.reject(new Error('Each image must be 2 MB or smaller.'));
+    if (files.reduce(function (sum, f) { return sum + f.size; }, 0) > 3 * 1024 * 1024) return Promise.reject(new Error('The images must be 3 MB or smaller together.'));
+    return Promise.all(files.map(function (file) {
+      return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+        reader.onload = function () { resolve({ data: String(reader.result).split(',')[1], mimeType: file.type }); };
+        reader.onerror = function () { reject(new Error('Could not read ' + file.name + '.')); };
+        reader.readAsDataURL(file);
+      });
+    }));
+  }
+
   document.getElementById('revisionSubmit').addEventListener('click', async function () {
     const textarea = document.getElementById('revisionText');
     const status = document.getElementById('revisionStatus');
@@ -1692,10 +1712,20 @@
       return;
     }
 
+    const imageInput = document.getElementById('revisionImages');
+    let images;
+    try {
+      images = await readRevisionImages(imageInput);
+    } catch (err) {
+      status.textContent = err.message;
+      status.classList.add('is-error');
+      return;
+    }
+
     button.disabled = true;
     button.textContent = 'Submitting…';
     try {
-      const res = await postRevision(comments, null, document.getElementById('revisionScope').value);
+      const res = await postRevision(comments, null, document.getElementById('revisionScope').value, images);
       const data = await res.json();
       if (!res.ok) {
         status.textContent = data.error || 'Could not submit your request. Please try again.';
@@ -1705,6 +1735,7 @@
         return;
       }
       textarea.value = '';
+      imageInput.value = '';
       afterChange(data); // switches to the REVISING progress state and starts polling
     } catch (err) {
       status.textContent = 'Network error. Please try again.';
