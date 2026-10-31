@@ -1,0 +1,770 @@
+{
+  "id": "kesko-31102026",
+  "slug": "kesko-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Kesko Oyj",
+  "ticker": "KESKOB.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Grocery Stores",
+  "currency": "EUR",
+  "reportDate": "2026-10-31",
+  "profile": "Operates as a Finnish trading company selling groceries, building and technical supplies, cars and sports goods across Northern Europe. It serves ordinary shoppers, independent K-retailers, professional builders, industrial companies, vehicle buyers and restaurants.",
+  "headline": {
+    "currentPrice": "25.7 EUR",
+    "marketCap": "EUR 10.2bn",
+    "enterpriseValue": "EUR 13.7bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-8.9 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "24.1 EUR",
+    "analysts": "4",
+    "range": "20.0-26.5 EUR",
+    "source": "MarketScreener"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "27x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "17x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "22x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "25.9 EUR",
+    "week52Low": "17.8 EUR",
+    "oneYearChange": "+40%",
+    "threeYearChange": "+61%"
+  },
+  "summary": [
+    "Kesko Oyj (KESKOB.HE, NASDAQ Helsinki) operates grocery stores, building and technical trade, and car and sports-goods businesses across Northern Europe. Its share price was 25.7 EUR, market capitalisation was EUR 10.2bn and enterprise value was EUR 13.7bn on 31 October 2026, in this Valuatum market report dated 31 October 2026. Analysts' 2028 forecasts comprise sales of EUR 14,784m and operating profit of EUR 794m. The company serves consumers, retailers, builders, industrial customers, restaurants and vehicle buyers, with K-Auto also importing vehicle brands for the Finnish market.",
+    "The 25.7 EUR share price assigns 21.0 EUR to Groceries, 8.7 EUR to Building and technical trade and 4.8 EUR to Cars before debt and other claims. Those businesses add to 34.5 EUR per share and imply 17.5x, 15.6x and 20.2x their respective 2028 operating profits of EUR 477m, EUR 222m and EUR 96m. Debt and other claims, less cash, reduce the split by 8.9 EUR per share, producing the current price. Groceries is the largest pool at 61% of the businesses' pre-claims value, followed by Building and technical trade at 25% and Cars at 14%.",
+    "The whole company trades at 17x 2028 operating profit, against listed-business references of about 9x, because each division carries a premium. Groceries reported a 6.5% 2025 margin against Axfood's 4.0% and Ahold Delhaize's 3.8%; Building and technical trade reached a 7.1% Q3 2026 margin and awaits Dahl completion; Cars has an order book nearly 70% larger and brand registrations up 23.9% in Q3. Watch Dahl's 2 November 2026 completion, financing through a planned EUR 500m-700m rights issue, and whether margins hold."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "17.5x",
+      "text": "The three businesses add to 34.5 EUR per share before debt and other claims, against EUR 794m of analysts' 2028 operating profit. The price therefore reads as 17.5x profit, while listed peers cost about 9x, leaving the composition driven by premium divisional multiples."
+    },
+    {
+      "num": "02",
+      "title": "Why above peers",
+      "metric": "6.5%",
+      "text": "Each business sits above its peer reference. Groceries earns a 6.5% 2025 margin against Axfood's 4.0% and Ahold Delhaize's 3.8%; Building and technical trade reached 7.1% in Q3 2026; Cars has a nearly 70% larger order book."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "23.9%",
+      "text": "Dahl completion, the planned EUR 500m-700m rights issue and divisional margins determine whether the price composition remains supported. Cars registrations rose 23.9% in Q3 2026 against 14.5% for the market, while Groceries' margin and Building's post-Dahl performance remain key tests."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Groceries",
+      "share": "21.0 EUR per share",
+      "economics": "17.5x 2028 operating profit · EUR 477m operating profit · peers 5.1x / 8.5x / 11.7x",
+      "text": "Groceries supplies food to consumers through independent K-retailers and sells wholesale to restaurants and other businesses. It generated outside sales of EUR 6,400m in 2025 and adjusted operating profit of EUR 418m, a 6.5% margin. The 2028 split assigns sales of EUR 7,600m, operating profit of EUR 477m and a 6% margin. The price assigns 21.0 EUR per share, or 61% of the 34.5 EUR businesses-only value, at 17.5x 2028 operating profit. That is above the Grocery Stores industry quartiles of 5.1x, 8.5x and 11.7x. Kesko's margin is the central evidence: Axfood reported 4.0% and Ahold Delhaize 3.8% in 2025. The premium consequently depends on a margin that remains materially above peers, rather than on a forecast margin expansion."
+    },
+    {
+      "name": "Building and technical trade",
+      "share": "8.7 EUR per share",
+      "economics": "15.6x 2028 operating profit · EUR 222m operating profit · peers about 8.8x-10.4x",
+      "text": "Building and technical trade sells home-improvement goods and technical supplies to consumers, builders, contractors and industrial customers through 458 stores and trade counters. Outside sales were EUR 4,700m in 2025, while the 2028 split reaches EUR 5,600m with operating profit of EUR 222m and a 4% margin. The price assigns 8.7 EUR per share, or 25% of the 34.5 EUR businesses-only value, at 15.6x forecast operating profit. That exceeds HORNBACH at 8.8x, Rexel at 10.4x and Kingfisher at 10.3x. The 2028 margin is only slightly above the 3.8% 2025 comparable margin, so ordinary forecast improvement does not explain the premium. The market reading instead incorporates the Dahl purchase, which had 2025 net sales of nearly EUR 2,100m and EBITDA of EUR 146m, plus the division's 7.1% Q3 2026 margin."
+    },
+    {
+      "name": "Cars",
+      "share": "4.8 EUR per share",
+      "economics": "20.2x 2028 operating profit · EUR 96m operating profit · peers 2.5x-13.5x",
+      "text": "Cars, reported as Car Trade, includes K-Auto's new and used-car sales, vehicle imports and sports goods. Outside sales were EUR 1,400m in 2025 and the 2028 split reaches EUR 1,600m, with operating profit of EUR 96m at a 6% margin. The price assigns 4.8 EUR per share, or 14% of the 34.5 EUR businesses-only value, at 20.2x forecast operating profit. That is above Inchcape at 2.5x, AutoNation at 9.7x and Bilia at 13.5x. Kesko's 6.1% 2025 margin compares with Bilia's 3.2% and Inchcape's 5.8%, while Hedin Mobility's retail business made a loss. The premium therefore rests on holding the margin and converting a new-car order book nearly 70% larger than a year earlier into deliveries. Brand registrations rose 23.9% in Q3 against 14.5% for Finland."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 25.7 EUR share price is reconstructed from three operating businesses and a claims deduction rather than from a target valuation. Groceries contributes 21.0 EUR per share, Building and technical trade 8.7 EUR and Cars 4.8 EUR, making 34.5 EUR before debt and other claims. The underlying enterprise values are EUR 8,349m, EUR 3,468m and EUR 1,931m respectively, based on 2028 operating profit of EUR 477m, EUR 222m and EUR 96m. Their multiples are 17.5x, 15.6x and 20.2x. Debt and other claims, less cash, deduct 8.9 EUR per share, or EUR 3,500m in the rounded split. The group therefore costs 17x 2028 operating profit and 27x 2026 operating profit. Groceries supplies most of the operating-profit base and pre-claims value, but Cars carries the highest divisional multiple. The composition is consequently most sensitive to grocery margin durability, Building's Dahl execution and Cars' ability to turn orders into profitable deliveries. The forecast itself is held at analysts' EUR 794m of 2028 operating profit and is not changed to make the price fit."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "Every business carries a higher multiple than its listed reference, but the evidence differs by division. Groceries' 17.5x is above the industry's 11.7x upper quartile. Its 6.5% 2025 margin exceeded Axfood's 4.0% and Ahold Delhaize's 3.8%, so the premium is linked to the possibility that a structurally stronger margin persists. Building and technical trade trades at 15.6x against peers from 8.8x to 10.4x. Its 2028 margin is only 4%, versus 3.8% in 2025, so the premium is not explained by a large forecast improvement. It instead reflects the Dahl purchase, whose businesses had nearly EUR 2,100m of 2025 net sales and EUR 146m of EBITDA, and the 7.1% Q3 2026 margin. Cars is at 20.2x against peers from 2.5x to 13.5x. Its 6.1% margin exceeds Bilia's 3.2%, while brand registrations grew 23.9% against 14.5% for the market and the order book was nearly 70% larger. These comparisons are not like-for-like: Cars includes sports goods and peer businesses differ, while grocery peer numbers are industry quartiles."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The nearest group event is expected Dahl completion on 2 November 2026. Completion would establish the acquisition but not its savings, which have not been quantified. A planned rights issue of about EUR 500m-700m and authority for up to 12 million new B shares determine how the purchase is financed and whether the same operating profit is spread across more shares. Building's annual margin is the direct operating test: 4% in 2028 matches the split, while a return towards 2% would resemble Byggmax's weak year and make the 15.6x multiple harder to explain. Groceries requires a 2028 margin near 6%; applying Axfood's 4% to EUR 7,600m of sales produces about EUR 305m of operating profit, versus EUR 477m in the split. Cars requires orders to become deliveries within typical waits of 3 to 4 months, or 6 to 8 months for some models, while its margin remains near 6%. Q4 2026 and Q1 2027 should show the conversion. A closing of the 23.9% versus 14.5% registration gap would weaken the market-share evidence."
+    }
+  ],
+  "risks": [
+    "Grocery margin compression (Groceries): a move from the 6.5% 2025 margin towards Axfood's 4.0% would reduce operating profit on EUR 7,600m of 2028 sales to about EUR 305m; the annual margin is the early warning.",
+    "Dahl execution and financing (Building and technical trade): delayed completion, unquantified savings or a difficult EUR 500m-700m rights issue would leave the premium without integration evidence; 2 November 2026 completion and financing announcements are the early warnings.",
+    "Housing weakness (Building and technical trade): muted new-home demand could keep the 2028 margin near or below 4% after the 7.1% Q3 2026 result; quarterly margin and housing-demand commentary are the early warnings.",
+    "Order-book conversion (Cars): a nearly 70% larger order book may not become deliveries or profit if delivery times lengthen or demand cools; Q4 2026 and Q1 2027 deliveries are the early warning.",
+    "Car margin deterioration (Cars): a fall from 6.1% towards Bilia's 3.2% would materially reduce 2028 operating profit and widen the premium to peers; annual outside-sales margin is the early warning."
+  ],
+  "catalysts": [
+    "Dahl completion (near-term, Building and technical trade): completion expected on 2 November 2026 would establish the acquisition and begin the period in which purchasing, own-brand and IT gains can be tested.",
+    "Rights issue execution (near-term, Building and technical trade): financing of about EUR 500m-700m would remove uncertainty around the Dahl purchase and show how the transaction is funded.",
+    "Margin delivery (near-term, Groceries): a 2028 margin near 6% would support the EUR 477m operating-profit split, while sustained results near the 6.5% 2025 level would preserve the margin distinction from peers.",
+    "Dahl savings and demand recovery (medium-term, Building and technical trade): quantified savings and stronger housing or industrial demand would show whether the 7.1% Q3 2026 margin can persist after integration.",
+    "Order-book deliveries (medium-term, Cars): Q4 2026 and Q1 2027 deliveries matching the nearly 70% larger order book would demonstrate that registration growth and the 6% margin can translate into profit."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "11,784",
+            "11,920",
+            "12,475",
+            "13,219",
+            "14,329",
+            "14,784"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "972",
+            "1,203",
+            "1,008",
+            "1,246",
+            "1,476",
+            "1,550"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "8.2%",
+            "10.1%",
+            "8.1%",
+            "9.4%",
+            "10.3%",
+            "10.5%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-277",
+            "-623",
+            "-597",
+            "-744",
+            "-726",
+            "-756"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "695",
+            "580",
+            "411",
+            "503",
+            "750",
+            "794"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "5.9%",
+            "4.9%",
+            "3.3%",
+            "3.8%",
+            "5.2%",
+            "5.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-82",
+            "-108",
+            "100",
+            "85",
+            "-87",
+            "-89"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "614",
+            "472",
+            "512",
+            "589",
+            "664",
+            "706"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "496",
+            "380",
+            "406",
+            "465",
+            "541",
+            "574"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.3",
+            "1",
+            "1",
+            "1.2",
+            "1.4",
+            "1.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.1",
+            "0.8",
+            "0.9",
+            "1",
+            "1.2",
+            "1.3"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "86.7%",
+            "80.7%",
+            "91.3%",
+            "87.0%",
+            "87.0%",
+            "87.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "3,873",
+            "4,271",
+            "4,661",
+            "4,868",
+            "5,277",
+            "5,445"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "211",
+            "234",
+            "213",
+            "225",
+            "244",
+            "252"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "664",
+            "643",
+            "722",
+            "722",
+            "722",
+            "722"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "398",
+            "454",
+            "494",
+            "494",
+            "495",
+            "495"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "5,145",
+            "5,603",
+            "6,090",
+            "6,309",
+            "6,737",
+            "6,913"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,084",
+            "1,102",
+            "1,204",
+            "1,257",
+            "1,362",
+            "1,406"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,299",
+            "1,277",
+            "1,343",
+            "1,313",
+            "1,424",
+            "1,469"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "212",
+            "473",
+            "166",
+            "298",
+            "323",
+            "333"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "2,595",
+            "2,852",
+            "2,713",
+            "2,868",
+            "3,109",
+            "3,208"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "14",
+            "17",
+            "20",
+            "20",
+            "20",
+            "20"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "7,754",
+            "8,471",
+            "8,823",
+            "9,197",
+            "9,866",
+            "10,140"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "2,758",
+            "2,735",
+            "2,827",
+            "2,920",
+            "3,056",
+            "3,159"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "691",
+            "1,054",
+            "1,286",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "99",
+            "291",
+            "189",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "372",
+            "681",
+            "1,007",
+            "512",
+            "677",
+            "700"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,556",
+            "2,928",
+            "2,790",
+            "3,506",
+            "3,797",
+            "3,871"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "2,069",
+            "2,127",
+            "2,199",
+            "2,260",
+            "2,336",
+            "2,409"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "7,754",
+            "8,471",
+            "8,823",
+            "9,197",
+            "9,866",
+            "10,140"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "1,998",
+            "2,051",
+            "2,098",
+            "2,158",
+            "2,234",
+            "2,308"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "2,575",
+            "2,923",
+            "3,407",
+            "3,443",
+            "3,824",
+            "3,933"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "3,336",
+            "3,607",
+            "4,136",
+            "4,205",
+            "4,646",
+            "4,785"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "35.6%",
+            "32.3%",
+            "32.0%",
+            "31.7%",
+            "31.0%",
+            "31.2%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "93.4%",
+            "106.9%",
+            "120.5%",
+            "117.9%",
+            "125.1%",
+            "124.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.6x",
+            "2.4x",
+            "3.4x",
+            "2.8x",
+            "2.6x",
+            "2.5x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "0.8",
+            "0.8",
+            "0.8"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "902",
+            "1,187",
+            "799",
+            "1,299",
+            "1,178",
+            "1,294"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "972",
+            "1,276",
+            "741",
+            "1,231",
+            "1,248",
+            "1,365"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-71",
+            "-184",
+            "204",
+            "-90",
+            "90",
+            "37"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "737",
+            "1,081",
+            "995",
+            "963",
+            "1,154",
+            "931"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-737",
+            "-1,081",
+            "-995",
+            "-963",
+            "-1,154",
+            "-931"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "165",
+            "107",
+            "-196",
+            "335",
+            "24",
+            "363"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "209",
+            "142",
+            "-160",
+            "267",
+            "94",
+            "434"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "209",
+            "142",
+            "-160",
+            "267",
+            "94",
+            "434"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-136",
+            "153",
+            "-43",
+            "-204",
+            "1",
+            "-352"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-421",
+            "-430",
+            "-306",
+            "-370",
+            "-405",
+            "-471"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "29",
+            "259",
+            "-239",
+            "132",
+            "25",
+            "11"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "22.0x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "11.0x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "27x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "3.5x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "3.8%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "16.3%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "4.0%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "2.8x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Kesko Oyj's share price made of?",
+      "a": "The 25.7 EUR share price assigns 21.0 EUR to Groceries, 8.7 EUR to Building and technical trade and 4.8 EUR to Cars. The 34.5 EUR businesses-only value is reduced by 8.9 EUR per share of debt and other claims, less cash."
+    },
+    {
+      "q": "Why does Kesko Oyj trade above its listed peers?",
+      "a": "Each business carries a higher multiple than its peer reference. Groceries has a 6.5% 2025 margin versus Axfood's 4.0%, Building and technical trade reached 7.1% in Q3 2026, and Cars had a nearly 70% larger order book with brand registrations up 23.9%."
+    },
+    {
+      "q": "What do analysts forecast for Kesko Oyj's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of EUR 14,784m, EBITDA of EUR 1,550m, operating profit of EUR 794m, net earnings of EUR 574m, EPS of 1.4 EUR and DPS of 1.3 EUR."
+    },
+    {
+      "q": "What should Kesko Oyj investors watch?",
+      "a": "Key indicators are Dahl completion expected on 2 November 2026, the planned EUR 500m-700m rights issue, Groceries' margin near 6%, Building and technical trade's post-Dahl margin, and Cars' conversion of its nearly 70% larger order book into deliveries."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The analysis keeps analysts' forecasts through 2028, splits EUR 794m of 2028 operating profit between the businesses using segment results, compares each business with peers on EV/EBIT, and reads the 25.7 EUR share price back into the resulting business multiples."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Kesko Oyj dated 31 October 2026 (25.7 EUR share price, the split between Groceries at 21.0 EUR, Building and technical trade at 8.7 EUR and Cars at 4.8 EUR).",
+    "Competitor context: Groceries industry quartiles of 5.1x / 8.5x / 11.7x; Building and technical trade peers HORNBACH at 8.8x, Rexel at 10.4x and Kingfisher at 10.3x; Cars peers Bilia at 13.5x, AutoNation at 9.7x and Inchcape at 2.5x. The Cars comparison is a reference rather than a like-for-like measure because the business includes sports goods and the peers differ in scope.",
+    "Market data: KESKOB.HE, 25.7 EUR on 31 October 2026, analysts' 2028 forecasts of EUR 14,784m sales and EUR 794m operating profit, and the consensus price target source MarketScreener. The quarterly model has a stated data-quality caveat: its 2026 EBITDA quarters total EUR 1,334m against the annual EUR 1,246m figure, and the annual figure is used for valuation."
+  ]
+}

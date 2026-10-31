@@ -21,7 +21,7 @@
 - [Alphabet (GOOGL) AI equity report](https://www.aiequityreports.com/reports/alphabet-equity-report.html): HOLD, target 312.70 USD (current 342.00 USD).
 - [Amazon.com (AMZN) AI equity report](https://www.aiequityreports.com/reports/amazon-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Intel (INTC) AI equity report](https://www.aiequityreports.com/reports/intel-equity-report.html): SELL, target 98.00 USD (current 114.68 USD).
-- [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): SELL, target 17.10 EUR (current 19.20 EUR).
+- [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
 - [Novo Nordisk (NOVO-B.CO) AI equity report](https://www.aiequityreports.com/reports/novo-nordisk-equity-report.html): BUY, target 404.50 DKK (current 300.15 DKK).
 - [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): BUY, target 267.00 USD (current 144.69 USD).
