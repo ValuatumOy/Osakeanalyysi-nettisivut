@@ -20,15 +20,18 @@
 - [Advanced Micro Devices (AMD) AI equity report](https://www.aiequityreports.com/reports/advanced-micro-devices-equity-report.html): HOLD, target 490.50 USD (current 482.05 USD).
 - [Alphabet (GOOGL) AI equity report](https://www.aiequityreports.com/reports/alphabet-equity-report.html): HOLD, target 312.70 USD (current 342.00 USD).
 - [Amazon.com (AMZN) AI equity report](https://www.aiequityreports.com/reports/amazon-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [Apple (AAPL) AI equity report](https://www.aiequityreports.com/reports/apple-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [Fortum (FORTUM.HE) AI equity report](https://www.aiequityreports.com/reports/fortum-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Intel (INTC) AI equity report](https://www.aiequityreports.com/reports/intel-equity-report.html): SELL, target 98.00 USD (current 114.68 USD).
 - [Kesko (KESKOB.HE) AI equity report](https://www.aiequityreports.com/reports/kesko-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [Neste (NESTE.HE) AI equity report](https://www.aiequityreports.com/reports/neste-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
 - [Novo Nordisk (NOVO-B.CO) AI equity report](https://www.aiequityreports.com/reports/novo-nordisk-equity-report.html): BUY, target 404.50 DKK (current 300.15 DKK).
 - [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): BUY, target 267.00 USD (current 144.69 USD).
 - [Oriola (ORIOLA.HE) AI equity report](https://www.aiequityreports.com/reports/oriola-equity-report.html): BUY, target 1.60 EUR (current 0.93 EUR).
 - [Orion (ORNBV.HE) AI equity report](https://www.aiequityreports.com/reports/orion-equity-report.html): BUY, target 74.80 EUR (current 70.50 EUR).
 - [Pandora (PNDORA.CO) AI equity report](https://www.aiequityreports.com/reports/pandora-equity-report.html): BUY, target 1,112.30 DKK (current 807.40 DKK).
-- [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): HOLD, target 15.90 EUR (current 17.22 EUR).
+- [Puuilo (PUUILO.HE) AI equity report](https://www.aiequityreports.com/reports/puuilo-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
 - [Remedy Entertainment (REMEDY.HE) AI equity report](https://www.aiequityreports.com/reports/remedy-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
@@ -56,6 +59,6 @@
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1157 listed companies have a page with share price, valuation metrics and company profile,
+1155 listed companies have a page with share price, valuation metrics and company profile,
 each able to generate a fresh AI equity report on demand. They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

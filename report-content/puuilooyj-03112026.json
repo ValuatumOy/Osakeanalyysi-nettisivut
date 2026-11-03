@@ -1,0 +1,740 @@
+{
+  "id": "puuilooyj-03112026",
+  "slug": "puuilo-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Puuilo Oyj",
+  "ticker": "PUUILO.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Department Stores",
+  "currency": "EUR",
+  "reportDate": "2026-11-03",
+  "profile": "Operates Finnish discount retail stores and an online shop selling practical goods for the home, renovation, gardening, leisure, pets and vehicles, mainly to consumers. It also plans an organic Swedish expansion built around large stores, low prices and a small basket.",
+  "headline": {
+    "currentPrice": "18.7 EUR",
+    "marketCap": "EUR 1.6bn",
+    "enterpriseValue": "EUR 1.7bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-2.0 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "17.8 EUR",
+    "analysts": "4",
+    "range": "15.5-19.1 EUR",
+    "source": "MarketScreener"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2027",
+      "value": "19x"
+    },
+    {
+      "label": "EV/EBIT 2029",
+      "value": "15x"
+    },
+    {
+      "label": "P/E 2027",
+      "value": "25x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "19.0 EUR",
+    "week52Low": "11.3 EUR",
+    "oneYearChange": "+30%",
+    "threeYearChange": "+132%"
+  },
+  "summary": [
+    "Puuilo Oyj (PUUILO.HE, NASDAQ Helsinki) operates Finnish discount retail stores and an online shop selling practical goods for home, renovation, gardening, leisure, pets and vehicles, with Sweden as a planned expansion market. The shares traded at 18.7 EUR on 3 November 2026, giving a market capitalisation of EUR 1.6bn and an enterprise value of EUR 1.7bn. In this Valuatum market report dated 3 November 2026, the price is treated as given: the analysis explains what the market price requires from the existing Finnish business and the unproven Swedish business, rather than assigning a target price or recommendation.",
+    "At 18.7 EUR per share, discount retail accounts for 14.4 EUR on analysts' 2029 forecast operating profit of EUR 117m at 10.4x EV/EBIT, while extra 2036 Finnish profit adds 2.53 EUR. Sweden expansion contributes 3.80 EUR on a probability-weighted basis, requiring EUR 920m of 2036 sales and a 7% operating margin. Debt and other claims, less cash, subtract 2.04 EUR per share, leaving the 18.7 EUR market price. The existing businesses therefore account for 16.9 EUR before the Swedish contribution, while the price adds EUR 532m of new businesses and growth beyond forecasts.",
+    "The central comparison is between Puuilo's 24.8x 2027E P/E and 14.5x EV/EBITDA and peer medians of 10.5x and 6.4x; Dollarama's higher multiples are excluded as an outlier. The premium reflects Puuilo's 16.9% 2027E EBIT margin and 62.5% ROE against peer medians of 7.8% and 18.6%, but Sweden remains untested. Watch the Örebro and Sundsvall openings, sales per store against roughly EUR 8m, the decision to expand beyond ten stores, and Finnish cash generation needed to fund the build-out."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Profit required",
+      "metric": "EUR 284m",
+      "text": "The 18.7 EUR share price requires about EUR 284m of operating profit in 2036, versus about EUR 177m from today's businesses carried forward. The EUR 107m gap is the amount that must come from additional growth, principally read into Finnish discount retail and Sweden expansion."
+    },
+    {
+      "num": "02",
+      "title": "Swedish scale",
+      "metric": "EUR 920m",
+      "text": "Sweden must grow from almost nothing to EUR 920m of annual sales by 2036 at a 7% operating margin. That implies about 15% of the more than EUR 6bn Swedish practical-goods discount market and well over one hundred stores at EUR 8m sales per store."
+    },
+    {
+      "num": "03",
+      "title": "Early tests",
+      "metric": "2 pilots",
+      "text": "The immediate evidence is operational: the first Finnish openings are already part of the funding base, while Örebro is planned for late 2026 and Sundsvall for early 2027. Three Finnish openings and two Swedish pilots will test whether the expansion can progress beyond its initial stage."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Discount retail",
+      "share": "16.9 EUR per share",
+      "economics": "10.4x 2029 operating profit · EUR 117m 2029 operating profit · peers about 10x EV/EBIT",
+      "text": "Discount retail is the established Finnish business: large stores and an online shop sell practical goods across home, renovation, gardening, leisure, pets and vehicles. Its 2026 sales are EUR 442m, and it is estimated to represent 100% of 2029 sales and operating profit. The market assigns 14.4 EUR per share to EUR 117m of 2029 operating profit at a 10.4x EV/EBIT multiple, with an additional 2.53 EUR for extra 2036 profit, bringing the pool to 16.9 EUR per share. The peer set is Tokmanni at 10.2x, Europris at 10.4x and Dollarama at 23.3x 2029 EV/EBIT, with Dollarama excluded from the peer median as an outlier. The price requires EUR 1.2bn of 2036 sales and an 18% operating margin, while a carried-forward outcome reaches EUR 980m of sales and 16.2 EUR per share."
+    },
+    {
+      "name": "Sweden expansion",
+      "share": "3.80 EUR per share",
+      "economics": "11.0x terminal EV/EBIT · EUR 65m 2036 operating profit · 7% margin versus 4.8%-17.0% comparators",
+      "text": "Sweden expansion is a new business with no stores open and no separately reported 2026 sales. Its 3.80 EUR per share contribution is probability-weighted across outcomes, not based on an established earnings stream. The market price requires EUR 920m of 2036 sales and EUR 65m of operating profit at a 7% margin, equivalent to roughly 15% of the more than EUR 6bn Swedish practical-goods discount market. At EUR 8m annual sales per store, the outcome needs well over one hundred stores. Puuilo plans pilots in Örebro in late 2026 and Sundsvall in early 2027; Inderes expects around ten stores by 2030 and no major Swedish profit before then. Rusta has 125 Swedish stores and Jula 75, highlighting the scale of the required network and the strength of existing competitors."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 18.7 EUR share price separates into an established Finnish business, additional Finnish profit and a new Swedish business. Discount retail contributes 14.4 EUR on EUR 117m of 2029 operating profit at 10.4x EV/EBIT, while extra 2036 Finnish profit contributes 2.53 EUR. Sweden contributes 3.80 EUR after weighting a range of 2036 sales outcomes by chance. Debt and other claims, less cash, subtract 2.04 EUR per share, producing the 18.7 EUR price from 20.7 EUR of businesses. The existing businesses alone are carried forward from analysts' forecasts to 2029 and then at published growth rates; they generate about EUR 177m of operating profit in 2036 and explain 12.4 EUR per share before additional growth. The full price instead requires about EUR 284m of 2036 operating profit on EUR 2.1bn of sales. The difference is EUR 107m of operating profit. The reading assigns 39% of that profit gap to discount retail and 61% to Sweden expansion. This makes the price composition dependent not only on Finnish execution, but also on a Swedish store network that currently has zero open stores."
+    },
+    {
+      "heading": "Why the price differs from peers",
+      "text": "Puuilo trades on 24.8x 2027E P/E and 14.5x 2027E EV/EBITDA, versus peer medians of 10.5x and 6.4x. The comparison is not a simple like-for-like discount-store ranking: Puuilo's forecast 2027E EBIT margin is 16.9% and ROE is 62.5%, against peer medians of 7.8% and 18.6%. The Finnish model therefore carries stronger forecast profitability than Tokmanni, Europris and the broader comparison set. Discount retail itself is assigned 10.4x 2029 EV/EBIT, close to Tokmanni's 10.2x and Europris's 10.4x; Dollarama's 23.3x is a qualified outlier and is excluded from the peer median. The higher whole-company measures are consequently driven by the price paid for the existing earnings, the extra Finnish profit and the value assigned to Sweden. The Swedish pool uses an 11.0x terminal EV/EBIT and a 7% margin, the middle of four comparator margins ranging from 4.8% to 17.0%. The reading remains sensitive to whether Puuilo can transfer its Finnish economics into a crowded Swedish market where Rusta already has 125 stores and Jula 75."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operational test is timing: Örebro is planned for late 2026 and Sundsvall for early 2027. Delays would point towards smaller Swedish outcomes because the expansion currently has no open stores. The next test is sales per store after several quarters. The price works at roughly EUR 8m of annual sales per store, while Inderes expects Swedish stores to build sales more slowly than Finnish stores because the brand is unknown and promotions or weak locations may reduce margins. The third test is the post-pilot decision. Inderes expects around ten stores by 2030, and a decision to move beyond ten would be the first step towards approximately EUR 63m of 2031 sales. Longer term, EUR 920m of 2036 sales requires a network of well over one hundred stores, with a 7% operating margin. Finnish performance remains the funding base: 2026 group sales guidance is EUR 495m to EUR 515m, including Sweden, while the Swedish setup cost is about EUR 1m. The price composition therefore changes with store openings, sales per store, the expansion decision, Swedish margins and the Finnish cash generation available to finance the build-out."
+    }
+  ],
+  "risks": [
+    "Swedish rollout delay (Sweden expansion): late Örebro or Sundsvall openings would keep the business at the smaller pilot outcomes, with opening dates as the early warning.",
+    "Weak Swedish store productivity (Sweden expansion): sales materially below roughly EUR 8m per store would require many more stores to reach EUR 920m of 2036 sales, with sales per store after several quarters as the early warning.",
+    "Margin pressure (Sweden expansion): promotions, weak locations and slower brand adoption could hold Swedish profitability below the 7% margin used, with operating margin after the pilots as the early warning.",
+    "Finnish funding shortfall (Discount retail): weaker Finnish sales or cash generation could constrain the Swedish build-out, with 2026 group sales against the EUR 495m-515m guidance range as the early warning."
+  ],
+  "catalysts": [
+    "Örebro opening (near-term, Sweden expansion): an on-schedule late-2026 opening would complete the first announced Swedish step.",
+    "Sundsvall opening (near-term, Sweden expansion): an on-schedule early-2027 opening would provide the second pilot needed to test the format across locations.",
+    "Pilot sales evidence (near-term, Sweden expansion): sales approaching roughly EUR 8m per store after several quarters would support the store-density assumption behind EUR 920m of 2036 sales.",
+    "Expansion decision (medium-term, Sweden expansion): a decision to move beyond around ten stores would establish a path towards approximately EUR 63m of 2031 sales.",
+    "Finnish execution (near-term, Discount retail): group sales within the EUR 495m-515m 2026 guidance range would support the cash base for Swedish setup costs and openings."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "384",
+            "442",
+            "478",
+            "533",
+            "577",
+            "645"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "78",
+            "90",
+            "107",
+            "120",
+            "128",
+            "144"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "20.3%",
+            "20.4%",
+            "22.5%",
+            "22.5%",
+            "22.3%",
+            "22.2%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-13",
+            "-15",
+            "-26",
+            "-30",
+            "-25",
+            "-27"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "65",
+            "75",
+            "82",
+            "90",
+            "103",
+            "117"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "17.0%",
+            "17.0%",
+            "17.1%",
+            "16.9%",
+            "17.9%",
+            "18.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-5",
+            "-5",
+            "-5",
+            "-9",
+            "-6",
+            "-6"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "60",
+            "70",
+            "76",
+            "81",
+            "97",
+            "111"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "48",
+            "56",
+            "63",
+            "63",
+            "79",
+            "89"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.6",
+            "0.7",
+            "0.8",
+            "0.8",
+            "0.9",
+            "1.1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.4",
+            "0.7",
+            "0.7",
+            "0.7",
+            "0.9",
+            "1"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "66.8%",
+            "106.1%",
+            "87.4%",
+            "94.8%",
+            "94.8%",
+            "94.8%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "88",
+            "100",
+            "109",
+            "121",
+            "131",
+            "146"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "16",
+            "14",
+            "15",
+            "17",
+            "18",
+            "20"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "34",
+            "34",
+            "34",
+            "34",
+            "34",
+            "34"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "138",
+            "147",
+            "157",
+            "171",
+            "182",
+            "200"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "116",
+            "123",
+            "137",
+            "151",
+            "164",
+            "183"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "8",
+            "12",
+            "11",
+            "13",
+            "14",
+            "16"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "18",
+            "33",
+            "31",
+            "37",
+            "39",
+            "44"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "142",
+            "168",
+            "179",
+            "201",
+            "217",
+            "243"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1",
+            "2",
+            "2",
+            "2",
+            "2",
+            "2"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "281",
+            "317",
+            "337",
+            "373",
+            "401",
+            "444"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "102",
+            "99",
+            "97",
+            "106",
+            "125",
+            "138"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "50",
+            "70",
+            "40",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "—",
+            "40",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "36",
+            "55",
+            "25",
+            "29",
+            "27",
+            "36"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "57",
+            "67",
+            "106",
+            "117",
+            "118",
+            "132"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "86",
+            "96",
+            "109",
+            "122",
+            "131",
+            "138"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "281",
+            "317",
+            "337",
+            "373",
+            "401",
+            "444"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "—",
+            "—",
+            "107",
+            "119",
+            "129",
+            "136"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "115",
+            "130",
+            "155",
+            "172",
+            "174",
+            "193"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "134",
+            "136",
+            "146",
+            "158",
+            "170",
+            "196"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "36.3%",
+            "31.2%",
+            "28.9%",
+            "28.3%",
+            "31.1%",
+            "31.1%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "112.8%",
+            "131.9%",
+            "159.4%",
+            "162.3%",
+            "139.1%",
+            "140.1%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.5×",
+            "1.4×",
+            "1.4×",
+            "1.4×",
+            "1.4×",
+            "1.3×"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2.5",
+            "2.5",
+            "1.7",
+            "1.7",
+            "1.8",
+            "1.8"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "40",
+            "66",
+            "75",
+            "83",
+            "94",
+            "100"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "43",
+            "70",
+            "80",
+            "90",
+            "99",
+            "105"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "18",
+            "2",
+            "14",
+            "10",
+            "10",
+            "16"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "25",
+            "24",
+            "36",
+            "44",
+            "36",
+            "45"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-25",
+            "-24",
+            "-36",
+            "-44",
+            "-36",
+            "-45"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "15",
+            "42",
+            "40",
+            "39",
+            "58",
+            "55"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "18",
+            "44",
+            "44",
+            "46",
+            "63",
+            "60"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "18",
+            "44",
+            "44",
+            "46",
+            "63",
+            "60"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-21",
+            "-30",
+            "-42",
+            "-34",
+            "-55",
+            "-51"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-29",
+            "-32",
+            "-59",
+            "-55",
+            "-60",
+            "-75"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-6",
+            "12",
+            "-2",
+            "5",
+            "3",
+            "5"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "24.8x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "14.5x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "19x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "14.9x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "3.8%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.4x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Puuilo Oyj's share price made of?",
+      "a": "At 18.7 EUR per share, discount retail contributes 16.9 EUR, Sweden expansion contributes 3.80 EUR on a probability-weighted basis, and debt and other claims, less cash, subtract 2.04 EUR. The businesses total 20.7 EUR per share before those claims."
+    },
+    {
+      "q": "Why does Puuilo trade on higher multiples than its peers?",
+      "a": "Puuilo trades at 24.8x 2027E P/E and 14.5x EV/EBITDA, versus peer medians of 10.5x and 6.4x. Its forecast 16.9% EBIT margin and 62.5% ROE are above peer medians of 7.8% and 18.6%, while the price also includes growth beyond the Finnish forecasts."
+    },
+    {
+      "q": "What do analysts forecast for Puuilo's sales and operating profit?",
+      "a": "Analysts forecast sales of EUR 533m and operating profit of EUR 90m in 2027, rising to EUR 645m and EUR 117m in 2029. Net earnings are forecast at EUR 63m in 2027 and EUR 89m in 2029."
+    },
+    {
+      "q": "What should Puuilo investors watch?",
+      "a": "The key evidence is the late-2026 Örebro opening, the early-2027 Sundsvall opening, sales per Swedish store against roughly EUR 8m, the decision to expand beyond around ten stores, and Finnish sales against the EUR 495m-515m 2026 guidance range."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The analysis keeps analysts' forecasts to 2029, carries today's businesses forward, and solves for the additional 2036 operating profit needed to explain the 18.7 EUR share price. It then reads that gap into Finnish discount retail and Sweden expansion without assigning a target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Puuilo Oyj dated 3 November 2026 (18.7 EUR share price, discount retail at 16.9 EUR per share and Sweden expansion at 3.80 EUR per share).",
+    "Competitor context: Tokmanni at 10.2x, Europris ASA at 10.4x and Dollarama Inc. at 23.3x 2029 EV/EBIT; Dollarama's multiple is treated as an outlier and excluded from the peer median.",
+    "Market data: PUUILO.HE, 18.7 EUR on 3 November 2026, analysts' forecasts of EUR 645m sales and EUR 117m operating profit in 2029, with consensus data from MarketScreener."
+  ]
+}

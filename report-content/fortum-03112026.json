@@ -1,0 +1,758 @@
+{
+  "id": "fortum-03112026",
+  "slug": "fortum-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Fortum Corporation",
+  "ticker": "FORTUM.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Renewable Utilities",
+  "currency": "EUR",
+  "reportDate": "2026-11-03",
+  "profile": "Makes electricity, mainly in Finland, Sweden and the wider Nordic region, from nuclear, hydro, wind and solar power. It also supplies heat and cooling, trades power in wholesale markets, and sells electricity, gas and related services to households and small and medium-sized businesses in the Nordics and Poland.",
+  "headline": {
+    "currentPrice": "22.3 EUR",
+    "marketCap": "EUR 20bn",
+    "enterpriseValue": "EUR 22.8bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-3.1 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "23.2 EUR",
+    "analysts": "19",
+    "range": "14.9-28.3 EUR",
+    "source": "StockAnalysis"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "21x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "17x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "22x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "25.8 EUR",
+    "week52Low": "17.0 EUR",
+    "oneYearChange": "+12%",
+    "threeYearChange": "+88%"
+  },
+  "summary": [
+    "Fortum Corporation (FORTUM.HE, NASDAQ Helsinki) makes electricity from nuclear, hydro, wind and solar assets, supplies heat and cooling, trades power, and sells energy and related services to households and businesses. The share price was 22.3 EUR on 3 November 2026, against a market capitalisation of EUR 20bn and enterprise value of EUR 22.8bn. In this Valuatum market report dated 3 November 2026, the company is framed through its established power-generation and energy-retail activities, alongside a possible new-nuclear business that has no investment decision yet. The share had risen 12% over one year and 88% over three years.",
+    "At 22.3 EUR per share, power generation carries 12.9 EUR on 2028 forecast operating profit of EUR 1,069m at 10.8x EV/EBIT, while extra 2035 power profit adds 5.49 EUR. Energy retail carries 4.04 EUR on 2028 forecast operating profit of EUR 294m at 12.3x, with extra 2035 profit adding 0.84 EUR. New nuclear contributes 2.11 EUR on a probability-weighted path to EUR 1.8bn of 2035 sales and EUR 374m of operating profit. Debt and other claims, less cash, subtract 3.05 EUR per share, leaving the price assembled from current forecasts and growth beyond them.",
+    "The whole company trades at 21x 2026 forecast operating profit and 17x 2028 forecast operating profit, versus a peer median of 9.1x and 8.6x EV/EBITDA for those years; the peer comparison is not a like-for-like conclusion about value because the company mix and forecast path differ. The key tests are power-generation sales rising from EUR 3,075m in 2025 towards EUR 4.5bn in 2030, retail profit recovering from EUR 14m in Q3 2026, and New nuclear securing state aid, customers and an investment decision. The 2035 path requires EUR 19.1bn of sales and about EUR 3bn of operating profit."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Profit still needed",
+      "metric": "EUR 1.5bn",
+      "text": "The price needs about EUR 1.5bn more operating profit in 2035 than today's businesses provide when analysts' forecasts are carried forward. That gap is allocated between power generation, energy retail and New nuclear, so the share price rests on profit beyond the forecast period."
+    },
+    {
+      "num": "02",
+      "title": "Sales must scale",
+      "metric": "3.8 times",
+      "text": "Sales have to reach EUR 19.1bn by 2035, compared with EUR 5bn in 2025. Power generation needs EUR 7.2bn, energy retail EUR 10.1bn and New nuclear EUR 1.8bn, making sustained volume growth rather than margin expansion the central operating requirement."
+    },
+    {
+      "num": "03",
+      "title": "Watch three tests",
+      "metric": "EUR 3,075m",
+      "text": "The immediate indicators are generation sales, retail profit and nuclear timing. Generation outside sales were EUR 3,075m in 2025, retail comparable operating profit was EUR 14m in Q3 2026, and New nuclear has no investment decision against a path requiring 1.45 TWh of sales in 2030."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Power generation",
+      "share": "12.9 EUR per share",
+      "economics": "10.8x 2028 operating profit · EUR 1,069m forecast operating profit · peers about 10.8x",
+      "text": "Power generation is the largest established pool, carrying 12.9 EUR per share on 2028 forecast operating profit of EUR 1,069m at 10.8x EV/EBIT. The business sold EUR 3,075m to outside customers in 2025 and earned EUR 893m of comparable operating profit, a 29% margin. The price path requires sales of about EUR 7.2bn and an operating margin of 33% in 2035, compared with analysts' carried-forward sales of about EUR 4.3bn. Fortum generated 42.3 TWh in 2025, while Statkraft generated 72.1 TWh, so matching a larger producer with 2% annual price increases would still produce only about EUR 6.4bn of sales. The Loviisa agreement with Google, covering half the plant from 2030, can secure demand, but the achieved Nordic power price was EUR 51.4/MWh in 2025 against the EUR 85/MWh benchmark used for New nuclear."
+    },
+    {
+      "name": "Energy retail",
+      "share": "4.0 EUR per share",
+      "economics": "12.3x 2028 operating profit · EUR 294m forecast operating profit · peers about 12.3x",
+      "text": "Energy retail carries 4.0 EUR per share on 2028 forecast operating profit of EUR 294m at 12.3x EV/EBIT. It sold EUR 3,021m to outside customers in 2025 and earned EUR 122m of comparable operating profit, while the price requires EUR 10.1bn of sales and a 3% margin in 2035. Fortum had 2.30 million customers at September 2026; Elmera added 915,000 electricity customers after consolidation from 31 October 2026. That acquisition raises the customer base by more than a third, but Elmera's EUR 482m purchase price does not remove the need for further customer gains or purchases. The latest quarter weakened to EUR 14m of comparable operating profit from EUR 23m, and the required margin is close to Elmera's 3.18% in 2025 but below Fortum retail's roughly 4% margin in 2025."
+    },
+    {
+      "name": "New nuclear",
+      "share": "2.1 EUR per share",
+      "economics": "10.4x terminal operating profit · EUR 374m 2035 operating profit · 21% margin",
+      "text": "New nuclear carries 2.1 EUR per share despite having no separately reported sales and no investment decision. The price path requires EUR 1.8bn of sales, 21.4 TWh of electricity and EUR 374m of operating profit in 2035, using an EUR 85/MWh price and a 21% margin. Fortum's NuCore plan at Oskarshamn spans 1,200 to 3,400 MW; a 2,400 MW project would produce about 19 TWh, while the path needs more than that. The business would need about 1.45 TWh of sales in 2030, ahead of Fortum's published earliest new-Nordic-supply window of 2035-2039. Fortum has applied for Swedish state aid and signed early-works agreements, but construction depends on state support, customer offtake, financing and an investment decision. The EUR 85/MWh assumption is materially above Finland's EUR 41/MWh average in 2025."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 22.3 EUR share price is built from established operations plus profit that is not yet in analysts' forecasts. Power generation contributes 12.9 EUR per share on EUR 1,069m of 2028 forecast operating profit at 10.8x EV/EBIT, and its extra 2035 profit contributes 5.49 EUR. Energy retail contributes 4.04 EUR on EUR 294m of 2028 forecast operating profit at 12.3x, with another 0.84 EUR for extra 2035 profit. New nuclear contributes 2.11 EUR on a weighted range of outcomes rather than current sales. Debt and other claims, less cash, subtract 3.05 EUR per share. The established businesses therefore account for 23.3 EUR before the New nuclear contribution and claims adjustment in the step-by-step calculation, while the simpler business split gives today's businesses 13.9 EUR and assigns the rest to new businesses and growth beyond forecasts. The difference reflects the model's treatment of future incremental profit, discounting and probability-weighted nuclear outcomes. The central implication is that the share price is not explained only by 2028 earnings: it also requires power generation to add EUR 947m of 2035 operating profit beyond the carried forecast, energy retail to add EUR 182m, and New nuclear to develop into a business with EUR 374m of operating profit."
+    },
+    {
+      "heading": "Why the price differs from peers",
+      "text": "Fortum trades at 21x 2026 forecast EV/EBIT and 17x 2028 forecast EV/EBIT, while the peer table gives Fortum 22.4x 2026 P/E and 22.3x 2027 P/E. The peer median is 17.0x and 15.6x P/E, 9.1x and 8.6x EV/EBITDA, and 18.2% return on equity for 2026. Those comparisons describe a market price attached to a different earnings mix rather than a clean single-business comparison. Fortum's power-generation pool uses a 10.8x 2028 EV/EBIT multiple from Verbund, RWE, Enel and EDP, while energy retail uses 12.3x from E.ON, Iberdrola and ENGIE. The power business has a 29% 2025 comparable operating margin, but its sales to outside customers were only EUR 3,075m and the price needs EUR 7.2bn by 2035. Retail has low capital intensity and EUR 122m of 2025 comparable operating profit, yet needs sales to rise from EUR 3,021m to EUR 10.1bn while retaining a 3% margin. New nuclear has no current sales and depends on a 21% assumed margin, EUR 85/MWh pricing and public support. The reading of the price is therefore driven by growth execution and project timing as much as by near-term peer multiples."
+    },
+    {
+      "heading": "What to watch",
+      "text": "Power generation is the first operating test. Outside sales were EUR 3,075m in 2025, but the price path needs about EUR 4.5bn by 2030 and EUR 7.2bn by 2035. The achieved Nordic power price of EUR 51.4/MWh, the hedged share rising from about 19% at the end of 2025 towards more than 25% by the end of 2028, and deliveries under the Google agreement from 2028 will show whether growth is volume-backed or exposed to weather and prices. Energy retail needs quarterly comparable operating profit to recover from EUR 14m in Q3 2026 against EUR 23m a year earlier. Customer retention after Elmera, sales approaching EUR 5.4bn in 2030, and a margin near 3% will determine whether the acquired platform supports the path. New nuclear has the clearest documented timing problem: the price path includes 1.45 TWh in 2030, while Fortum's earliest published supply window is 2035-2039. A Swedish state-aid decision, long-term offtake commitments and an investment decision on NuCore are the milestones. A 3,400 MW project could cover the required electricity, whereas 1,200 MW would produce only about 9.6 TWh annually."
+    }
+  ],
+  "risks": [
+    "Nuclear timing (New nuclear): supply begins after the 2030 path requires 1.45 TWh, with Fortum's earliest published window in 2035-2039; an investment decision and Swedish state-aid agreement are the early warnings.",
+    "Power-price weakness (Power generation): four quarterly achieved Nordic power prices below EUR 51.4/MWh would reduce revenue per unit and require more output; the achieved power price is the early warning.",
+    "Generation growth shortfall (Power generation): outside sales remain near EUR 3bn instead of reaching about EUR 4.5bn by 2030; annual sales growth is the early warning.",
+    "Retail margin erosion (Energy retail): a move from the required 3% margin towards Elmera's 1.90% 2023 level would reduce profit by about a third at the same sales; comparable operating profit is the early warning.",
+    "Customer attrition (Energy retail): the Elmera acquisition fails to retain its 915,000 customers, leaving sales below EUR 5.4bn in 2030; the consolidated customer count is the early warning."
+  ],
+  "catalysts": [
+    "Next quarterly results (near-term, Energy retail): comparable operating profit improves from EUR 14m in Q3 2026 and customer numbers remain intact after Elmera consolidation.",
+    "Higher contracted generation (near-term, Power generation): Loviisa deliveries under the Google agreement begin in 2028 and demonstrate firm demand for power at known prices.",
+    "NuCore state support (medium-term, New nuclear): Sweden agrees support near the EUR 85/MWh price path and Fortum secures customer offtake commitments.",
+    "Generation sales acceleration (medium-term, Power generation): outside sales move from EUR 3,075m in 2025 towards EUR 4.5bn in 2030 through higher output, prices or both.",
+    "Investment decision (long-term, New nuclear): Fortum approves NuCore at a scale closer to 3,400 MW, establishing a route towards 21.4 TWh and EUR 1.8bn of 2035 sales."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "6,711",
+            "5,800",
+            "4,989",
+            "5,548",
+            "6,171",
+            "6,514"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "1,823",
+            "1,689",
+            "1,243",
+            "1,434",
+            "1,573",
+            "1,709"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "27.2%",
+            "29.1%",
+            "24.9%",
+            "25.8%",
+            "25.5%",
+            "26.2%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-161",
+            "-364",
+            "-307",
+            "-328",
+            "-339",
+            "-346"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,662",
+            "1,325",
+            "936",
+            "1,106",
+            "1,234",
+            "1,363"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "24.8%",
+            "22.8%",
+            "18.8%",
+            "19.9%",
+            "20.0%",
+            "20.9%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-78",
+            "74",
+            "—",
+            "5",
+            "-46",
+            "-70"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,584",
+            "1,399",
+            "945",
+            "1,120",
+            "1,197",
+            "1,302"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-2,068",
+            "1,160",
+            "773",
+            "896",
+            "897",
+            "924"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-2.3",
+            "1.3",
+            "0.9",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.9",
+            "1.2",
+            "1.4",
+            "0.8",
+            "0.8",
+            "0.8"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-39.5%",
+            "89.0%",
+            "162.5%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "6,612",
+            "6,070",
+            "6,572",
+            "6,783",
+            "7,544",
+            "7,964"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "394",
+            "343",
+            "347",
+            "386",
+            "429",
+            "453"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "249",
+            "206",
+            "211",
+            "211",
+            "211",
+            "211"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "3,179",
+            "3,313",
+            "3,472",
+            "3,472",
+            "3,472",
+            "3,472"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "10,434",
+            "9,932",
+            "10,602",
+            "10,852",
+            "11,656",
+            "12,100"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "452",
+            "420",
+            "512",
+            "511",
+            "568",
+            "600"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "2,712",
+            "2,064",
+            "1,615",
+            "1,648",
+            "1,812",
+            "1,903"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "4,183",
+            "4,046",
+            "2,903",
+            "3,453",
+            "3,841",
+            "4,054"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "7,347",
+            "6,530",
+            "5,030",
+            "5,612",
+            "6,221",
+            "6,556"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "958",
+            "845",
+            "812",
+            "812",
+            "812",
+            "812"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "18,739",
+            "17,307",
+            "16,444",
+            "17,276",
+            "18,690",
+            "19,468"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "8,499",
+            "9,153",
+            "8,620",
+            "8,260",
+            "8,440",
+            "8,647"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "4,476",
+            "4,258",
+            "3,595",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1,554",
+            "475",
+            "1,151",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "5,986",
+            "5,797",
+            "5,069",
+            "4,488",
+            "5,067",
+            "5,331"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,708",
+            "1,877",
+            "2,289",
+            "4,075",
+            "4,738",
+            "5,048"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "547",
+            "480",
+            "467",
+            "453",
+            "445",
+            "442"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "18,740",
+            "17,307",
+            "16,445",
+            "17,276",
+            "18,690",
+            "19,468"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "118",
+            "94",
+            "105",
+            "91",
+            "83",
+            "80"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "1,965",
+            "781",
+            "1,948",
+            "2,666",
+            "3,428",
+            "3,740"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "10,346",
+            "9,840",
+            "10,463",
+            "10,835",
+            "11,786",
+            "12,307"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "45.4%",
+            "52.9%",
+            "52.4%",
+            "47.8%",
+            "45.2%",
+            "44.4%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "23.1%",
+            "8.5%",
+            "22.6%",
+            "32.3%",
+            "40.6%",
+            "43.3%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.1x",
+            "0.5x",
+            "1.6x",
+            "1.9x",
+            "2.2x",
+            "2.2x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2",
+            "3.5",
+            "2.2",
+            "1.4",
+            "1.3",
+            "1.3"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "-1,870",
+            "1,452",
+            "1,172",
+            "1,115",
+            "1,098",
+            "1,194"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "2,036",
+            "1,462",
+            "1,172",
+            "1,102",
+            "1,123",
+            "1,234"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-82",
+            "72",
+            "-93",
+            "109",
+            "137",
+            "76"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-1,140",
+            "-138",
+            "977",
+            "578",
+            "1,144",
+            "789"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "1,140",
+            "138",
+            "-977",
+            "-578",
+            "-1,144",
+            "-789"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-3,010",
+            "1,314",
+            "195",
+            "537",
+            "-46",
+            "404"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "2,733",
+            "1,629",
+            "130",
+            "524",
+            "-21",
+            "445"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-850",
+            "1,629",
+            "130",
+            "524",
+            "-21",
+            "445"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "696",
+            "-1,798",
+            "-1,347",
+            "12",
+            "433",
+            "-192"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-1,014",
+            "-817",
+            "-1,032",
+            "-1,256",
+            "-717",
+            "-718"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-34",
+            "-208",
+            "-1,152",
+            "549",
+            "387",
+            "212"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "22.4x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "15.9x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "21x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "2.4x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "3.6%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "1.9x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Fortum's share price made of?",
+      "a": "The 22.3 EUR share price is allocated to power generation at 12.9 EUR per share, energy retail at 4.0 EUR, New nuclear at 2.1 EUR and debt and other claims, less cash, at -3.1 EUR per share. The established businesses and New nuclear therefore require profit beyond analysts' forecasts."
+    },
+    {
+      "q": "Why does Fortum trade at different multiples from its peers?",
+      "a": "Fortum trades at 21x 2026 forecast EV/EBIT and 17x 2028 forecast EV/EBIT, while the peer median is 17.0x 2026 P/E and 15.6x 2027 P/E. Its mix includes power generation, low-margin retail and a New nuclear development project, so growth execution and timing affect the comparison."
+    },
+    {
+      "q": "What do analysts forecast for Fortum's sales and profit?",
+      "a": "Analysts forecast EUR 6,514m of sales, EUR 1,363m of operating profit and EUR 924m of net earnings in 2028. The price path then requires whole-company sales of EUR 19.1bn and about EUR 3bn of operating profit in 2035, including businesses and growth beyond the forecast period."
+    },
+    {
+      "q": "What should Fortum investors watch?",
+      "a": "Power-generation outside sales need to rise from EUR 3,075m in 2025 towards EUR 4.5bn in 2030. Energy retail profit was EUR 14m in Q3 2026, while New nuclear needs state aid, customer commitments and an investment decision despite the 2035-2039 earliest supply window."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The market report takes the 22.3 EUR share price as given, keeps analysts' sales and operating-profit forecasts to 2028, carries today's businesses forward, and allocates the remaining price requirement between power generation, energy retail and New nuclear. It explains the price rather than giving a target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Fortum Corporation dated 3 November 2026 (22.3 EUR share price, power generation at 12.9 EUR per share, energy retail at 4.0 EUR, New nuclear at 2.1 EUR and debt and other claims, less cash, at -3.1 EUR per share).",
+    "Competitor context: Verbund AG, RWE AG, Enel S.p.A. and EDP - Energias de Portugal, S.A. for power generation; E.ON SE, Iberdrola, S.A. and ENGIE S.A. for energy retail. The 2028 EV/EBIT multiples are 10.8x for power generation and 12.3x for energy retail; Fortum's peer table excludes E.ON's 20.3% ROE from the peer median and average as an outlier.",
+    "Market data: FORTUM.HE, 22.3 EUR on 3 November 2026; analysts forecast 2028 sales of EUR 6,514m and operating profit of EUR 1,363m. The consensus source is StockAnalysis, with 19 analysts, a 23.2 EUR average target and a 14.9-28.3 EUR range. Cash-flow rows are Valuatum model calculations rather than the company's reported cash-flow statement, and the New nuclear path runs ahead of Fortum's published 2035-2039 earliest supply window."
+  ]
+}

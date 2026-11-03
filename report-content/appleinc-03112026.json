@@ -1,0 +1,735 @@
+{
+  "id": "appleinc-03112026",
+  "slug": "apple-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Apple Inc.",
+  "ticker": "AAPL",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Consumer Electronics",
+  "currency": "USD",
+  "reportDate": "2026-11-03",
+  "profile": "Designs and sells smartphones, computers, tablets, watches, headphones, home devices and a headset blending digital images with the real world. It also sells software, cloud storage, digital content, advertising, payment and support services to consumers, businesses, schools and governments worldwide.",
+  "headline": {
+    "currentPrice": "345 USD",
+    "marketCap": "USD 5.11tn",
+    "enterpriseValue": "USD 5.11tn"
+  },
+  "consensusTarget": {
+    "value": "340 USD",
+    "analysts": "41",
+    "range": "245-400 USD",
+    "source": "PriceTargets.com"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2025",
+      "value": "43x"
+    },
+    {
+      "label": "EV/EBIT 2027",
+      "value": "48x"
+    },
+    {
+      "label": "P/E 2025",
+      "value": "54x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "352 USD",
+    "week52Low": "243 USD",
+    "oneYearChange": "+26%",
+    "threeYearChange": "+92%"
+  },
+  "summary": [
+    "Apple Inc. (AAPL, NASDAQ Global Select) designs and sells devices including iPhones, computers, tablets, watches, headphones and headsets, alongside software, cloud storage, content, advertising, payments and support services. The share price is 345 USD, market capitalisation is USD 5.11tn and enterprise value is USD 5.11tn in this Valuatum market report dated 3 November 2026. The price has risen 26% over one year and 92% over three years. Analysts forecast 2027 sales of USD 403,745m and operating profit of USD 106,355m, while 2024 reported sales were USD 391,035m and operating profit was USD 123,216m.",
+    "Today's businesses account for 54.8 USD per share: Americas 23 USD at 7.6x 2027 operating profit, Europe 14 USD at 7.8x, Greater China 9 USD at 7.6x, Rest of Asia Pacific 5 USD at 7.6x and Japan 4 USD at 7.7x. Apple Intelligence accounts for 261 USD per share and requires USD 3.67tn of 2039 sales at a 25% operating margin. Spatial Computing accounts for 29 USD and requires USD 488bn of 2039 sales at a 21% margin.",
+    "The established regions are carried at 7.6x-7.8x 2027 operating profit, against a consumer-electronics peer median of 11.3x, with the comparison weakened by widely separated Xiaomi and Samsung multiples. The main reading depends on whether Apple can sustain regional margins while memory costs, EU commissions and competition develop, and whether new businesses produce measurable sales. Investors should watch the first Apple Intelligence sales figure, paid-tier take-up, gross margin and spatial-computing volumes."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Today's businesses",
+      "metric": "55 USD",
+      "text": "Today's businesses support 55 USD per share against a 345 USD share price. The five established regions carry 7.6x-7.8x 2027 operating-profit multiples, with forecast operating profit of USD 106,355m for the whole company. The price therefore rests mainly on businesses that barely sell separately today."
+    },
+    {
+      "num": "02",
+      "title": "AI must scale",
+      "metric": "3.67tn USD",
+      "text": "Apple Intelligence needs USD 3.67tn of annual sales by 2039 and USD 918bn of operating profit at a 25% margin. That is roughly nine times Apple's 2024 sales of USD 391bn and far above the USD 26.8bn worldwide assistant market forecast for 2031."
+    },
+    {
+      "num": "03",
+      "title": "Watch disclosure",
+      "metric": "4 quarters",
+      "text": "A first Apple Intelligence sales figure within the next four quarterly reports would provide the earliest measurable test. The path needs about USD 160bn of annual sales by 2029, while Apple currently reports no separate AI sales figure and has not named a paid-access price."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Apple Intelligence",
+      "share": "261 USD per share",
+      "economics": "25% 2039 operating margin · USD 918bn 2039 operating profit · AI-assistant market forecast USD 26.8bn in 2031",
+      "text": "Apple Intelligence is the largest part of the price, at 261 USD per share. It currently sells almost nothing separately, although Apple has announced future paid access to features using server models and has more than 2.5 billion active devices. The price requires USD 3.67tn of annual sales by 2039 and USD 918bn of operating profit at a 25% margin. That sales path is already about USD 463bn in 2031, compared with a worldwide AI-assistant market forecast of USD 26.8bn for that year. The opportunity therefore depends on assistants taking spending from paid work, not merely charging for a phone feature. Bank of America’s fiscal 2030 estimate of USD 15bn-USD 65bn of incremental revenue is below the 2029 path. The key evidence is paid take-up, disclosed sales and whether computing costs leave 25% operating profit."
+    },
+    {
+      "name": "Spatial Computing",
+      "share": "29 USD per share",
+      "economics": "21% 2039 operating margin · USD 102bn 2039 operating profit · spatial-computing forecast USD 1.11tn in 2033",
+      "text": "Spatial Computing carries 29 USD per share and covers headsets, glasses, software and services. The price requires USD 488bn of annual sales by 2039 and USD 102bn of operating profit at a 21% margin. Published category forecasts are larger, including USD 1.11tn of worldwide spatial-computing sales in 2033, but Apple must grow from 45,000 Vision Pro units shipped in 2025. Vision Pro starts at 3,699 USD, against Meta Quest 3S at 349.99 USD, while Apple held 2.6% of mixed-reality headset shipments against Meta's 89.6% in the second quarter of 2026. More than 2,000 spatial apps and Apple's 2.5 billion active devices provide reach, but comfort, price, battery life and category demand remain unproven. The path needs mass-market hardware and software adoption."
+    },
+    {
+      "name": "Americas",
+      "share": "23 USD per share",
+      "economics": "7.6x 2027 operating profit · USD 45bn 2027 operating profit · peers 7.5x lower quartile, 11.3x median",
+      "text": "Americas is the largest established region, carrying 23 USD per share at 7.6x 2027 operating profit. The split assigns USD 45bn of operating profit to USD 172bn of sales, a 26% margin, compared with USD 167bn of 2024 external sales. The region sells iPhones, computers, tablets, watches and services across North and South America. Services have a reported 75.4% gross margin against 36.8% for products, supporting the forecast mix. The multiple is close to the consumer-electronics lower quartile of 7.5x and below the 11.3x median, despite the forecast margin being above Logitech's 14.4% and near Garmin's 25.9%. That combination makes margin durability the central issue. Fiscal 2025 Americas operating income was USD 72.5bn on USD 178.4bn of sales, but the split includes central costs and uses a lower 2027 margin."
+    },
+    {
+      "name": "Europe",
+      "share": "14 USD per share",
+      "economics": "7.8x 2027 operating profit · USD 27.6bn 2027 operating profit · peers 7.5x lower quartile, 11.3x median",
+      "text": "Europe contributes 14 USD per share at 7.8x 2027 operating profit. The forecast split assigns USD 27.6bn of operating profit to USD 105bn of sales at a 26% margin, against USD 101bn of 2024 external sales. The region includes Europe, India, the Middle East and Africa and sells devices and digital services to consumers, businesses and schools. Apple reported Europe operating income of USD 47.7bn on USD 111.0bn of sales in fiscal 2025, well above Logitech's 16.0% margin. Smartphone share reached 27% in Europe in 2025, while Samsung shipped 46.6 million phones against Apple's 36.9 million and Xiaomi held 16%. The 7.8x multiple is near the lower quartile, implying that the price depends on sustaining the high margin amid EU commission changes, memory costs and strong rivals."
+    },
+    {
+      "name": "Greater China",
+      "share": "9 USD per share",
+      "economics": "7.6x 2027 operating profit · USD 18bn 2027 operating profit · peers 7.5x lower quartile, 11.3x median",
+      "text": "Greater China carries 9 USD per share at 7.6x 2027 operating profit. The split assigns USD 18bn of operating profit to USD 69.1bn of sales at a 26% margin, compared with USD 67bn of 2024 external sales. Mainland China, Hong Kong and Taiwan generated USD 64,377m of sales and USD 26,917m of operating income in fiscal 2025. Apple led China's smartphone market with 22% share in the fourth quarter of 2025, shipments up 28% year on year while the market declined, but Huawei, OPPO and Xiaomi remain strong competitors. The multiple is close to the lower quartile and below the 11.3x median, although Xiaomi's 12.9x and Samsung's 2.3x are widely separated. The value therefore depends directly on maintaining 2027 sales and margin rather than on a higher regional multiple."
+    },
+    {
+      "name": "Rest of Asia Pacific",
+      "share": "5 USD per share",
+      "economics": "7.6x 2027 operating profit · USD 8.9bn 2027 operating profit · peers 7.5x lower quartile, 11.3x median",
+      "text": "Rest of Asia Pacific contributes 5 USD per share at 7.6x 2027 operating profit. The split assigns USD 8.9bn of operating profit to USD 31.7bn of sales at a 28% margin, against USD 30.7bn of 2024 external sales. The region includes Australia, New Zealand and Asian countries outside Apple's other reported regions. Fiscal 2026 regional sales were USD 39,861m, up from USD 33,696m in fiscal 2025, already above the split's 2027 sales forecast. The margin is materially higher than Lenovo's 6.9% device-group margin and ASUS's 5%, reflecting Apple's services mix and reported 75.4% services gross margin. The multiple remains near the peer lower end despite that profitability. Sustaining the 28% margin and converting the recent regional growth into services sales are therefore more important than multiple expansion."
+    },
+    {
+      "name": "Japan",
+      "share": "4 USD per share",
+      "economics": "7.7x 2027 operating profit · USD 6.8bn 2027 operating profit · peers 7.5x lower quartile, 11.3x median",
+      "text": "Japan carries 4 USD per share at 7.7x 2027 operating profit. The split assigns USD 6.8bn of operating profit to USD 25.9bn of sales at a 26% margin, against USD 25.1bn of 2024 external sales. Apple held 51.6% of Japanese smartphone shipments in the fiscal year to March 2026, with mobile-phone shipments up 4.9%, and the iPhone 18 Pro was listed at 219,800 JPY including tax. Reported 2024 Japan operating income was USD 12.5bn on USD 25.1bn of sales, so the 2027 margin assumption is lower than the earlier regional outcome. The 7.7x multiple is just above the 7.5x lower quartile and below the 11.3x median. The principal evidence is whether sales hold against a forecast 7.0% decline in Japanese smartphone shipments."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 345 USD share price is split between 55 USD for today's businesses and 290 USD for new businesses. The established regions contribute Americas 23 USD, Europe 14 USD, Greater China 9 USD, Rest of Asia Pacific 5 USD and Japan 4 USD. Their 2027 operating-profit forecasts total about USD 106bn for Apple, while the regional split uses 7.6x-7.8x EV/EBIT multiples. Apple Intelligence carries 261 USD and must reach USD 3.67tn of sales and USD 918bn of operating profit by 2039 at a 25% margin. Spatial Computing carries 29 USD and must reach USD 488bn of sales and USD 102bn of operating profit at a 21% margin. The established businesses therefore provide an observable base, but the larger parts depend on services and devices that report no separate sales figure today. Apple Intelligence needs a scale far beyond the USD 26.8bn worldwide assistant market forecast for 2031, while Spatial Computing must grow from 45,000 Vision Pro shipments in 2025. The share price is consequently made mainly of long-dated operating outcomes rather than current segment disclosure."
+    },
+    {
+      "heading": "Why the price sits near the peer low end",
+      "text": "The five established regions are priced at 7.6x-7.8x 2027 operating profit, close to the consumer-electronics lower quartile of 7.5x and below the 11.3x median. The comparison is not clean: Xiaomi's 2027 EV/EBIT is 12.9x, while Samsung's ranges from 2.2x to 2.6x across the regional comparisons, so the median is a loose guide. Apple's forecast margins are stronger than several device peers: Rest of Asia Pacific uses 28% against Lenovo's 6.9% and ASUS's 5%, while Europe uses 26% against Logitech's 16.0%. The modest multiples therefore put the emphasis on whether margins survive rather than on a current margin deficit. Products generated a 36.8% gross margin and services 75.4% in fiscal 2025, making mix important. Higher memory costs and the Siri AI ramp have driven December-quarter gross-margin guidance of 45%-46%, below the 47.9% September-quarter figure. EU App Store commission changes and competition from Huawei, Samsung, Xiaomi and other device makers add further pressure. The price reading changes with regional sales and operating profit, not with a standalone recommendation."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first measurable test is disclosure. Apple reports no separate Apple Intelligence or Spatial Computing sales figure, so a first number would establish whether the businesses are moving towards their required paths. Apple Intelligence needs about USD 160bn of annual sales by 2029, while Spatial Computing needs about USD 21bn; sales below USD 4bn in fiscal 2027 would trail Morgan Stanley's Spatial Computing forecast. Paid AI access is the next test: a price and meaningful take-up across more than 2.5 billion active devices would show a route to scale, while a small take-up would resemble the USD 15bn-USD 65bn fiscal 2030 incremental-revenue range. Costs matter equally. A 25% AI operating margin requires computing, model fees, research and selling costs to remain within about three quarters of sales, while spatial products need a 21% margin despite Vision Pro's 750-800 gram weight, 2.5-hour battery life and 3,699 USD entry price. For established regions, quarterly sales, gross margin, Chinese smartphone share, European commissions and Japanese demand show whether 2027 operating profit can hold. These indicators determine what the 345 USD price is made of."
+    }
+  ],
+  "risks": [
+    "AI cost escalation (Apple Intelligence): computing and research costs prevent the required 25% operating margin; the early warning is gross margin below the 45%-46% December-quarter guidance.",
+    "Weak paid take-up (Apple Intelligence): server-model features attract too few paying customers to support USD 160bn of annual sales by 2029; the early warning is no separate sales figure or a small first disclosure.",
+    "Category and product failure (Spatial Computing): expensive, heavy headsets fail to become mass-market devices; the early warning is worldwide headset shipments remaining near the 8.8 million 2026 forecast or continuing to fall.",
+    "Regional margin pressure (established businesses): memory costs, EU commissions and hardware competition reduce 2027 operating profit; the early warning is gross margin below 45%-46% or regional sales below the forecast paths.",
+    "China and Japan demand deterioration (Greater China and Japan): local competition and a 7.0% forecast fall in Japanese smartphone shipments reduce sales; the early warning is declining shipment share alongside regional sales below USD 69.1bn in Greater China or USD 25.9bn in Japan."
+  ],
+  "catalysts": [
+    "First paid AI sales disclosure (near-term, Apple Intelligence): a measurable figure within the next four quarterly reports would show whether the business has begun its path towards USD 160bn of annual sales by 2029.",
+    "AI pricing and take-up (near-term, Apple Intelligence): an accepted paid tier across Apple's more than 2.5 billion active devices would establish a route from installed-base reach to recurring sales.",
+    "December-quarter margin and regional sales (near-term, established businesses): gross margin at the top of the 45%-46% guidance and continued 7%-10% company-wide revenue growth would support the operating-profit assumptions.",
+    "Mass-market spatial product (medium-term, Spatial Computing): lower-priced, lighter, full-day glasses or headsets with rising shipments would show movement beyond Vision Pro's 45,000 units shipped in 2025.",
+    "Regional demand and services mix (medium-term, established businesses): sustained China share, European smartphone share and Rest of Asia Pacific growth would support sales and the 26%-28% regional margins."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2022 A",
+        "2023 A",
+        "2024 A",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "394,328",
+            "383,285",
+            "391,035",
+            "389,399",
+            "395,078",
+            "403,745"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "122,302",
+            "125,820",
+            "134,661",
+            "119,140",
+            "124,096",
+            "118,114"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "31.0%",
+            "32.8%",
+            "34.4%",
+            "30.6%",
+            "31.4%",
+            "29.3%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-2,865",
+            "-11,519",
+            "-11,445",
+            "—",
+            "-11,590",
+            "-11,759"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "119,437",
+            "114,301",
+            "123,216",
+            "119,140",
+            "112,506",
+            "106,355"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "30.3%",
+            "29.8%",
+            "31.5%",
+            "30.6%",
+            "28.5%",
+            "26.3%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-334",
+            "-565",
+            "269",
+            "—",
+            "4,562",
+            "11,817"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "119,103",
+            "113,736",
+            "123,485",
+            "119,140",
+            "117,068",
+            "118,172"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "115,167",
+            "96,995",
+            "93,736",
+            "95,312",
+            "98,286",
+            "99,213"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "7.1",
+            "6.2",
+            "6.1",
+            "6.2",
+            "6.4",
+            "6.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2022 A",
+        "2023 A",
+        "2024 A",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "52,534",
+            "54,376",
+            "45,680",
+            "48,903",
+            "49,616",
+            "50,705"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "201,975",
+            "191,165",
+            "192,494",
+            "195,717",
+            "196,430",
+            "197,519"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "4,946",
+            "6,331",
+            "7,286",
+            "6,967",
+            "7,069",
+            "7,224"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "106,813",
+            "107,270",
+            "115,758",
+            "114,078",
+            "115,020",
+            "116,457"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "23,646",
+            "29,965",
+            "29,943",
+            "30,037",
+            "30,475",
+            "31,143"
+          ]
+        },
+        {
+          "label": "Other current assets",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "69,942",
+            "167,295"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "135,405",
+            "143,566",
+            "152,987",
+            "151,082",
+            "222,505",
+            "322,119"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "15,375",
+            "17,852",
+            "19,499",
+            "19,499",
+            "19,499",
+            "19,499"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "352,755",
+            "352,583",
+            "364,980",
+            "366,298",
+            "438,434",
+            "539,136"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "50,672",
+            "62,146",
+            "56,950",
+            "152,262",
+            "250,548",
+            "349,761"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "98,959",
+            "95,281",
+            "85,750",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "21,110",
+            "15,807",
+            "20,879",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "135,690",
+            "132,287",
+            "119,208",
+            "47,021",
+            "33,458",
+            "33,458"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "153,982",
+            "145,308",
+            "176,392",
+            "167,015",
+            "154,428",
+            "155,918"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "12,411",
+            "12,842",
+            "12,430",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "352,755",
+            "352,583",
+            "364,980",
+            "366,298",
+            "438,434",
+            "539,136"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "12,411",
+            "12,842",
+            "12,430",
+            "0",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "108,834",
+            "93,965",
+            "89,116",
+            "-2,911",
+            "-100,417",
+            "-198,438"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "147,095",
+            "143,269",
+            "133,636",
+            "149,350",
+            "150,131",
+            "151,323"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "14.4%",
+            "17.6%",
+            "15.6%",
+            "41.6%",
+            "57.1%",
+            "64.9%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "214.8%",
+            "151.2%",
+            "156.5%",
+            "-1.9%",
+            "-40.1%",
+            "-56.7%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.9x",
+            "0.7x",
+            "0.7x",
+            "-0.0x",
+            "-0.8x",
+            "-1.7x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "0.9",
+            "1",
+            "0.9",
+            "0.9",
+            "1.4",
+            "2.1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2022 A",
+        "2023 A",
+        "2024 A",
+        "2025 E",
+        "2026 E",
+        "2027 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "129,173",
+            "103,301",
+            "121,750",
+            "95,250",
+            "109,808",
+            "110,869"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "114,121",
+            "101,306",
+            "119,899",
+            "95,250",
+            "105,979",
+            "100,948"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-11,141",
+            "5,213",
+            "-16,569",
+            "61",
+            "68",
+            "103"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-11,326",
+            "709",
+            "12,774",
+            "3,223",
+            "12,303",
+            "12,848"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "11,326",
+            "-709",
+            "-12,774",
+            "-3,223",
+            "-12,303",
+            "-12,848"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "117,847",
+            "102,592",
+            "108,976",
+            "92,027",
+            "97,505",
+            "98,021"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "120,656",
+            "100,872",
+            "103,577",
+            "92,027",
+            "93,675",
+            "88,100"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "120,656",
+            "100,872",
+            "103,577",
+            "92,027",
+            "93,675",
+            "88,100"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-136,418",
+            "-93,796",
+            "-107,351",
+            "-91,934",
+            "-27,125",
+            "—"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "4,081",
+            "8,796",
+            "1,625",
+            "94",
+            "70,380",
+            "98,021"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Apple's share price made of?",
+      "a": "The 345 USD share price is split into 55 USD for today's five regions, 261 USD for Apple Intelligence and 29 USD for Spatial Computing. The established regions use 7.6x-7.8x 2027 operating-profit multiples, while the new businesses require USD 3.67tn and USD 488bn of 2039 sales respectively."
+    },
+    {
+      "q": "Why do Apple's established businesses trade near the low end of consumer-electronics peers?",
+      "a": "Americas, Europe, Greater China, Rest of Asia Pacific and Japan are priced at 7.6x-7.8x 2027 operating profit, near the 7.5x peer lower quartile and below the 11.3x median. The key question is whether forecast regional margins of 26%-28% survive competition, memory costs and regulatory changes."
+    },
+    {
+      "q": "What do analysts forecast for Apple's sales and profit?",
+      "a": "Analysts forecast net sales of USD 403,745m, EBITDA of USD 118,114m, operating profit of USD 106,355m and net earnings of USD 99,213m for 2027. EPS is forecast at 6.5 USD, while 2024 reported sales were USD 391,035m and operating profit was USD 123,216m."
+    },
+    {
+      "q": "What should Apple investors watch?",
+      "a": "The nearest indicators are a first separate Apple Intelligence sales figure, paid-tier pricing and take-up, December-quarter gross margin against 45%-46% guidance, and Spatial Computing sales and shipments. Regional sales, China smartphone share, EU commission effects, Japanese demand and the 28% Rest of Asia Pacific margin also matter."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The analysis takes the 345 USD share price as given, carries analysts' forecasts for today's businesses to 2027 and applies regional EV/EBIT multiples of 7.6x-7.8x. The remaining 290 USD is read into Apple Intelligence and Spatial Computing using 2039 sales, operating margins, terminal multiples, discounting and outcome weights."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Apple Inc. dated 3 November 2026 (345 USD share price, 55 USD for today's businesses and 290 USD for Apple Intelligence and Spatial Computing).",
+    "Competitor context: Xiaomi Corporation at 12.9x 2027 EV/EBIT and Samsung Electronics at 2.2x-2.6x; the peer comparison is qualified because the two observed multiples are widely separated, while the consumer-electronics peer median is 11.3x.",
+    "Market data: AAPL, 345 USD on 3 November 2026, analysts' 2027 forecast of USD 403,745m sales and USD 106,355m operating profit, and consensus price-target source PriceTargets.com."
+  ]
+}
