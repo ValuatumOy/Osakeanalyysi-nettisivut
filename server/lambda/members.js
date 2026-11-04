@@ -18,7 +18,7 @@ const quota = require('../members/quota');
 const ranking = require('../members/ranking');
 const store = require('../members/store');
 const tiers = require('../members/tiers');
-const { createExtraRoundsCheckout, isCompletedCheckout, isOurSession, orderPageUrl, SITE_TAG, taxParams, INLINE_TAX, INLINE_PRODUCT_TAX } = require('../checkout');
+const { createExtraRoundsCheckout, createReadyReportCheckout, isCompletedCheckout, isOurSession, orderPageUrl, SITE_TAG, taxParams, INLINE_TAX, INLINE_PRODUCT_TAX } = require('../checkout');
 const email = require('../email');
 
 const STAGE = process.env.STAGE || 'test';
@@ -1647,6 +1647,54 @@ async function postFreshCheckout(event) {
   return json(200, { url: session.url, price: freshReportPrice(profile) });
 }
 
+// POST /billing/report-revisions-checkout — revisions on a catalog report, bought
+// while signed in. The session carries the member, so the purchase is theirs to
+// find and publish even when they pay with another email address.
+async function postReportRevisionsCheckout(event) {
+  const now = requestNow(event);
+  const { profile, deny } = await auth.requireUser(event, { bearerToken, json, now });
+  if (deny) return deny;
+
+  const body = parseBody(event);
+  if (!body) return json(400, { error: 'Invalid JSON body' });
+  const { catalog, sidecars } = await catalogAws.buildCatalogAws({ now });
+  const report = catalog.reports.find(item => item.id === body.reportId);
+  if (!report) return json(404, { error: 'Unknown report' });
+  const jobId = sidecars?.get(report.fileName)?.provenance?.jobId;
+  const jobs = await engineJobs.getRevisionJobs([jobId]);
+  if (!engineJobs.canRevise(jobs.get(jobId))) {
+    return json(409, { error: 'This report does not support revisions' });
+  }
+
+  const session = await createReadyReportCheckout(stripe(), { ...report, revisable: true }, {
+    withRevisions: true, userId: profile.userId,
+  });
+  return json(200, { url: session.url });
+}
+
+// The webhook is what links the purchase, so a lost return trip cannot leave a
+// paid revision outside the member's account. The order row itself comes from
+// the site's own webhook, as for any catalog purchase.
+async function linkReportRevisionsPurchase(session, now) {
+  const { userId, ticker } = session.metadata;
+  const profile = await store.getProfile(userId, true);
+  if (!profile) throw new Error(`Revision purchase ${session.id} names an unknown member`);
+  const created = await store.runTransact(quota.buildPaidGenerationTransact({
+    table: store.table(), userId, now, genId: session.id,
+    publicEngineBase: tiers.isPublishingRole(profile.role),
+  }));
+  if (!created) {
+    if (!await store.getPublication(userId, session.id, true)) {
+      throw new Error(`Could not record ownership of revision purchase ${session.id}`);
+    }
+    return; // already linked: a redelivered event
+  }
+  await store.audit(userId, 'report-revisions-purchased', {
+    genId: session.id, ticker: ticker || '', amountTotal: session.amount_total, currency: session.currency,
+  });
+  await voidReviewsOnCoverage(userId, ticker, now);
+}
+
 const SUB_STATUS_MAP = {
   active: 'active',
   trialing: 'active',
@@ -1829,6 +1877,12 @@ async function postBillingWebhook(event) {
         } catch (err) {
           await email.reportError('members: fresh confirmation email', err, { sessionId: object.id, customer: profile.email });
         }
+        break;
+      }
+      if (object.metadata?.site === SITE_TAG && object.metadata?.reportId
+        && object.metadata?.withRevisions === 'true' && object.metadata?.userId) {
+        if (!isCompletedCheckout(object)) break;
+        await linkReportRevisionsPurchase(object, requestNow(event));
         break;
       }
       if (object.mode !== 'subscription') break;
@@ -3088,6 +3142,7 @@ const AUTHED_ROUTES = {
   'POST /generations/{genId}/revisions-checkout': postGenerationRevisionsCheckout,
   'POST /billing/checkout': postBillingCheckout,
   'POST /billing/fresh-checkout': postFreshCheckout,
+  'POST /billing/report-revisions-checkout': postReportRevisionsCheckout,
   'POST /billing/topup-checkout': postBillingTopUpCheckout,
 };
 

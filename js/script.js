@@ -727,11 +727,24 @@ async function submitReadyReportCheckout(link, reportId, withRevisions) {
   trackEvent('ready_report_checkout_started', { reportId: reportId, source: 'company_page', withRevisions: withRevisions });
 
   try {
-    var res = await fetch('/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reportId: reportId, withRevisions: withRevisions }),
-    });
+    // A signed-in member's revisions go through the members API, which ties the
+    // purchase to their account. If that door is shut the sale still goes through.
+    var res = withRevisions && localStorage.memberToken
+      ? await fetch(
+        (/^(www\.)?aiequityreports\.com$/.test(location.hostname) ? 'https://members.aiequityreports.com' : 'https://members-test.aiequityreports.com')
+          + '/billing/report-revisions-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', authorization: 'Bearer ' + localStorage.memberToken },
+          body: JSON.stringify({ reportId: reportId }),
+        }).catch(function () { return null; })
+      : null;
+    if (!res || res.status === 401 || res.status === 404) {
+      res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId: reportId, withRevisions: withRevisions }),
+      });
+    }
     var data = await res.json();
     if (data && data.url) {
       trackEvent('stripe_checkout_clicked', { type: 'ready', reportId: reportId, source: 'company_page' });

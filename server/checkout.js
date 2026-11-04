@@ -169,6 +169,9 @@ async function createReadyReportCheckout(stripe, report, options = {}) {
       kind,
       withRevisions: withRevisions ? 'true' : 'false',
       revisionsAllowed: String(included),
+      // A signed-in member's purchase belongs to the member, whichever email
+      // they give Stripe. The members webhook links it to their account.
+      ...(options.userId ? { userId: options.userId } : {}),
     },
     success_url: `${siteUrl()}/checkout/success.html?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${siteUrl()}/reports.html`,
