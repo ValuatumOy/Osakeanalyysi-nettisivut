@@ -1,0 +1,764 @@
+{
+  "id": "elisa-04112026",
+  "slug": "elisa-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Elisa Oyj",
+  "ticker": "ELISA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Telecommunications Services",
+  "currency": "EUR",
+  "reportDate": "2026-11-04",
+  "profile": "Sells mobile and fixed-line subscriptions, television and digital services to households in Finland and Estonia. It also provides mobile, fixed, data-network, IT and cybersecurity services to companies and public bodies, while Elisa Industriq supplies industrial and telecom software and energy solutions worldwide.",
+  "headline": {
+    "currentPrice": "33.4 EUR",
+    "marketCap": "EUR 5.4bn",
+    "enterpriseValue": "EUR 7bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-10.2 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "14x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "13x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "15x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "45.2 EUR",
+    "week52Low": "31.7 EUR",
+    "oneYearChange": "-9.8%",
+    "threeYearChange": "-20%"
+  },
+  "summary": [
+    "Elisa Oyj (ELISA.HE, NASDAQ Helsinki) provides mobile, fixed-line, television, digital, data-network, IT, cybersecurity and industrial software services in Finland, Estonia and international markets. The share price was 33.4 EUR on 4 November 2026, against a market capitalisation of EUR 5.4bn and enterprise value of EUR 7bn. In this Valuatum market report dated 4 November 2026, analysts' forecasts run to 2028, when whole-company sales reach EUR 2,354m and operating profit reaches EUR 538m. The business mix is predominantly telecom, with software still loss-making in 2025 and dependent on a substantial margin recovery.",
+    "At 33.4 EUR, the businesses add up to 43.7 EUR per share before debt and other claims. Consumer telecom contributes 27.1 EUR per share, based on 322 EURm of 2028 operating profit at 13.5x; business telecom contributes 15.0 EUR per share, based on 179 EURm at 13.5x; and global software contributes 1.6 EUR per share, based on 37 EURm at 6.9x. Debt and other claims, less cash, subtract 10.2 EUR per share. Consumer and business telecom therefore account for 42.1 EUR per share, while software contributes only a small portion of the operating businesses' value.",
+    "The telecom businesses sit near the low end of listed peers costing 13.4x to 16x 2028 EV/EBIT, with a 14.4x median, while global software is near the lower quartile of its industry range. The reading rests on 0–2% 2026 telecom service-revenue growth, a business-telecom margin rising from 19.5% to 23%, and software sales growth of 5–10% after a 2025 operating loss of EUR 13.3m. Fourth-quarter adjusted operating profit of EUR 107m, household margin near 26.5%, data-centre orders of almost EUR 100m and software growth below 5% are the key changes to watch."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay",
+      "metric": "43.7 EUR",
+      "text": "Telecom makes up almost all operating-business value: consumer telecom contributes 27.1 EUR per share and business telecom 15.0 EUR per share, while software contributes 1.6 EUR. Together the businesses cost about 13x 2028 operating profit before debt and other claims subtract 10.2 EUR per share."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "13.5x",
+      "text": "Both telecom businesses are read at 13.5x 2028 operating profit against peer multiples of 13.4x to 16x and a 14.4x median. Lower 2026 telecom growth of 0–2%, falling business sales and a software operating loss of EUR 13.3m in 2025 explain the restrained multiples."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "107 EURm",
+      "text": "Fourth-quarter adjusted operating profit of 107 EURm is needed to complete analysts' 2026 forecast of EUR 489m. Household margin near 26.5%, almost EUR 100m of data-centre orders converting to sales from 2028, and software growth below 5% would materially change the reading."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Consumer telecom",
+      "share": "27.1 EUR per share",
+      "economics": "13.5x 2028 operating profit · EUR 322m 2028 operating profit · peers 13.4x–16x, median 14.4x",
+      "text": "Consumer telecom sells mobile and fixed communications, television and other digital services to households in Finland and Estonia. It generated sales of EUR 1.4bn to outside customers in 2025, and the split assigns EUR 322m of 2028 operating profit on sales of EUR 1.4bn, implying a 23% margin. The share price allocates 27.1 EUR per share to the business, or 62% of the EUR 43.7 per share attributed to the three operating businesses, at 13.5x forecast profit. That sits below the 14.4x peer median but above the 13.4x low. Finnish post-paid mobile subscriptions fell by 16,300 in Q3 2026, while fixed broadband subscriptions rose by 20,400. A 26.5% Q3 household margin leaves room above the split's 23%, but weak growth and discounting constrain the multiple."
+    },
+    {
+      "name": "Business telecom",
+      "share": "15.0 EUR per share",
+      "economics": "13.5x 2028 operating profit · EUR 179m 2028 operating profit · peers 13.4x–16x, median 14.4x",
+      "text": "Business telecom provides mobile, fixed and corporate network services, IT and cybersecurity to companies and public bodies in Finland and Estonia. Sales to outside customers were EUR 750m in 2025, when adjusted operating profit was EUR 146m at a 19.5% margin. The split assigns EUR 179m of 2028 operating profit on EUR 782m of sales, requiring a 23% margin, and allocates 15.0 EUR per share, or 34% of the EUR 43.7 per share attributed to the operating businesses. The 13.5x multiple is near the bottom of the 13.4x–16x peer range. Corporate Customers revenue fell 4% to EUR 177.9m in Q3 2026, making the forecast margin improvement the central issue. Almost EUR 100m of data-centre orders could support sales mainly from 2028."
+    },
+    {
+      "name": "Global software",
+      "share": "1.6 EUR per share",
+      "economics": "6.9x 2028 operating profit · EUR 37m 2028 operating profit · industry 6.6x lower quartile, 10.4x median, 16.6x upper quartile",
+      "text": "Global software, operated through Elisa Industriq, sells software services and distributed energy solutions to manufacturing, telecommunications and energy customers worldwide. It served more than 2,000 customers and generated sales of EUR 155m in 2025. The split assigns EUR 37m of 2028 operating profit on EUR 162m of sales, implying a 23% margin after a EUR 13.3m operating loss and -8.6% margin in 2025. The share price allocates 1.6 EUR per share, or 3.6% of the EUR 43.7 per share attributed to the operating businesses, at 6.9x. That is just above the 6.6x lower quartile and below the 10.4x industry median. Elisa cut its 2026 organic-growth assumption from above 10% to 5–10%, so profitability, not merely sales growth, is decisive."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is primarily a telecom price. Consumer telecom accounts for 27.1 EUR per share and business telecom for 15.0 EUR, together representing 42.1 EUR of the 43.7 EUR assigned to the operating businesses before debt and other claims. Their respective 2028 operating-profit allocations are EUR 322m and EUR 179m, each priced at 13.5x. Global software contributes only 1.6 EUR per share, despite the split assigning it EUR 37m of 2028 operating profit at 6.9x. The operating businesses therefore imply about 13x 2028 operating profit overall, below listed telecom peers at about 14x. The bridge to today's 33.4 EUR share price is debt and other claims, less cash, of -10.2 EUR per share, based on end-2026 forecasts. The central economic question is whether the two telecom divisions can deliver their forecast margins: consumer telecom at 23% on EUR 1.4bn of 2028 sales and business telecom at 23% on EUR 782m. Software requires a much larger change, from a EUR 13.3m operating loss in 2025 to EUR 37m of operating profit. The price is therefore made chiefly of recurring telecom earnings, with software providing limited current support but meaningful execution sensitivity."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "Consumer and business telecom are both priced at 13.5x 2028 operating profit, below the 14.4x peer median and close to the 13.4x low across Telia, Telenor and Tele2. The discount is not explained by industry exposure alone, because the peers face the same broad price competition. Consumer telecom's 2026 service-revenue growth assumption was reduced to 0–2%, while Finnish post-paid mobile subscriptions fell by 16,300 in Q3 2026. Fixed broadband added 20,400 subscriptions, but Elisa already held 37% of Finnish telecom revenue in 2025, leaving less room to gain share. Business telecom must lift its margin from 19.5% in 2025 to 23% in 2028 while Corporate Customers revenue fell 4% to EUR 177.9m in Q3 2026. Data-centre revenue from almost EUR 100m of orders is expected mainly from 2028, so the improvement is back-ended. Global software is priced at 6.9x, just above its industry's 6.6x lower quartile and below the 10.4x median. That reflects the required swing from a EUR 13.3m operating loss to EUR 37m of operating profit, alongside reduced organic-growth guidance of 5–10%. The market reading is therefore a combination of modest telecom growth, an unproven business margin step-up and software turnaround risk."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The nearest test is fourth-quarter 2026 adjusted operating profit. Elisa has reported EUR 382m for the first nine months, so EUR 107m in the fourth quarter is needed to reach analysts' full-year forecast of EUR 489m. A clean quarter would support the durability of current cost savings; a miss would weaken confidence in the near-term forecast. Consumer telecom's quarterly margin is the most direct test of the 23% 2028 split. The Q3 margin was 26.5%, while 20% would match Tele2's 2024 level and imply materially lower profit. Post-paid mobile subscriptions are another early signal: another decline after 16,300 losses would suggest weak growth is persistent, while fixed broadband's 20,400 additions show the offset that must continue. Business telecom needs a return to sales growth after the 4% Q3 decline and a margin moving towards 23% from 19.5%. Almost EUR 100m of data-centre orders, including three Google campuses, must convert into sales mainly from 2028. Global software needs organic growth of at least 5%, followed by a clearly smaller loss or profit in 2027 reports. The new operating model, efficiency measures and major semiconductor-industry deals are the practical tests of that recovery."
+    }
+  ],
+  "risks": [
+    "Household telecom margin (consumer telecom): a fall towards 20% would put profit below the split's 23% assumption, with quarterly margin as the early warning.",
+    "Corporate sales and margin (business telecom): another decline after the 4% Q3 2026 revenue fall, or a margin staying near 19.5%, would undermine EUR 782m of 2028 sales and EUR 179m of operating profit, with quarterly Corporate Customers revenue as the early warning.",
+    "Data-centre conversion (business telecom): almost EUR 100m of orders may not become sales mainly from 2028, weakening the forecast margin step-up, with disclosed revenue-start dates and order additions as the early warning.",
+    "Software profitability (global software): the business may remain loss-making instead of reaching EUR 37m of 2028 operating profit, with organic sales growth below 5% and the segment operating result as early warnings.",
+    "Fourth-quarter execution (whole company): adjusted operating profit below EUR 107m would leave 2026 below analysts' EUR 489m forecast, with quarterly adjusted operating profit as the early warning."
+  ],
+  "catalysts": [
+    "Fourth-quarter 2026 adjusted operating profit (near-term, whole company): EUR 107m would complete analysts' EUR 489m 2026 forecast and test whether current forecasts hold.",
+    "Household cost savings and margin (near-term, consumer telecom): savings from the EUR 40m transformation programme reaching profit while the margin stays near 26.5% would support the 23% 2028 split.",
+    "Corporate sales recovery (medium-term, business telecom): a return to growth after the 4% Q3 2026 fall would support EUR 782m of 2028 sales and the move towards a 23% margin.",
+    "Data-centre revenue (medium-term, business telecom): almost EUR 100m of orders converting into sales from 2028, including Google-campus connectivity, would strengthen the forecast profit step-up.",
+    "Software operating model (medium-term, global software): efficiency measures and new semiconductor-industry deals producing a smaller loss or profit would support the move from a EUR 13.3m 2025 operating loss to EUR 37m of 2028 operating profit."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "2,181",
+            "2,192",
+            "2,257",
+            "2,258",
+            "2,303",
+            "2,354"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "618",
+            "765",
+            "761",
+            "797",
+            "813",
+            "839"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "28.3%",
+            "34.9%",
+            "33.7%",
+            "35.3%",
+            "35.3%",
+            "35.6%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-141",
+            "-279",
+            "-298",
+            "-308",
+            "-295",
+            "-301"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "477",
+            "486",
+            "463",
+            "489",
+            "518",
+            "538"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "21.9%",
+            "22.2%",
+            "20.5%",
+            "21.7%",
+            "22.5%",
+            "22.9%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-19",
+            "-38",
+            "-38",
+            "-39",
+            "-39",
+            "-38"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "458",
+            "448",
+            "425",
+            "450",
+            "479",
+            "500"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "374",
+            "356",
+            "341",
+            "366",
+            "390",
+            "406"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "2.3",
+            "2.2",
+            "2.1",
+            "2.3",
+            "2.4",
+            "2.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "2.2",
+            "2.3",
+            "2.4",
+            "1.8",
+            "1.9",
+            "2"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "92.2%",
+            "101.3%",
+            "110.5%",
+            "80.0%",
+            "80.0%",
+            "80.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "903",
+            "968",
+            "1,016",
+            "1,010",
+            "1,030",
+            "1,053"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "210",
+            "235",
+            "245",
+            "245",
+            "250",
+            "255"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1,157",
+            "1,263",
+            "1,262",
+            "1,262",
+            "1,262",
+            "1,262"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "145",
+            "133",
+            "152",
+            "152",
+            "152",
+            "152"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "2,415",
+            "2,599",
+            "2,675",
+            "2,669",
+            "2,694",
+            "2,722"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "77",
+            "76",
+            "48",
+            "58",
+            "59",
+            "61"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "558",
+            "581",
+            "590",
+            "584",
+            "595",
+            "609"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "63",
+            "90",
+            "190",
+            "156",
+            "159",
+            "162"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "698",
+            "747",
+            "827",
+            "798",
+            "814",
+            "832"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "12",
+            "11",
+            "14",
+            "14",
+            "14",
+            "14"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "3,125",
+            "3,356",
+            "3,516",
+            "3,481",
+            "3,522",
+            "3,568"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "1,294",
+            "1,293",
+            "1,259",
+            "1,247",
+            "1,344",
+            "1,438"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "997",
+            "1,008",
+            "1,302",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "303",
+            "459",
+            "275",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "1,029",
+            "1,015",
+            "1,320",
+            "839",
+            "806",
+            "777"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "710",
+            "914",
+            "767",
+            "1,223",
+            "1,196",
+            "1,175"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "93",
+            "135",
+            "170",
+            "172",
+            "175",
+            "179"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "3,125",
+            "3,356",
+            "3,516",
+            "3,481",
+            "3,522",
+            "3,568"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "68",
+            "97",
+            "121",
+            "123",
+            "126",
+            "130"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "1,304",
+            "1,473",
+            "1,509",
+            "1,609",
+            "1,543",
+            "1,484"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "2,530",
+            "2,669",
+            "2,647",
+            "2,733",
+            "2,761",
+            "2,792"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "41.4%",
+            "38.5%",
+            "35.8%",
+            "35.8%",
+            "38.2%",
+            "40.3%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "100.8%",
+            "113.9%",
+            "119.8%",
+            "129.1%",
+            "114.8%",
+            "103.2%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.1x",
+            "1.9x",
+            "2.0x",
+            "2.0x",
+            "1.9x",
+            "1.8x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1",
+            "0.8",
+            "1.1",
+            "0.7",
+            "0.7",
+            "0.7"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "547",
+            "662",
+            "696",
+            "579",
+            "679",
+            "700"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "565",
+            "706",
+            "735",
+            "611",
+            "711",
+            "731"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "9",
+            "-26",
+            "-56",
+            "95",
+            "6",
+            "7"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "188",
+            "463",
+            "375",
+            "302",
+            "320",
+            "329"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-188",
+            "-463",
+            "-375",
+            "-302",
+            "-320",
+            "-329"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "359",
+            "199",
+            "321",
+            "277",
+            "359",
+            "371"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "363",
+            "219",
+            "370",
+            "309",
+            "391",
+            "402"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "363",
+            "219",
+            "370",
+            "309",
+            "391",
+            "402"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-340",
+            "-186",
+            "-229",
+            "-311",
+            "-356",
+            "-367"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-329",
+            "-345",
+            "-361",
+            "-377",
+            "-293",
+            "-312"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "19",
+            "13",
+            "92",
+            "-34",
+            "3",
+            "4"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "14.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.8x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "14x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.3x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "5.5%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "2.0x"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "29.4%"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "21.7%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Elisa Oyj's share price made of?",
+      "a": "At 33.4 EUR, the price assigns 27.1 EUR per share to consumer telecom, 15.0 EUR to business telecom and 1.6 EUR to global software before debt and other claims. The three operating businesses total 43.7 EUR per share, while debt and other claims, less cash, subtract 10.2 EUR per share."
+    },
+    {
+      "q": "Why does Elisa Oyj trade below its listed telecom peers?",
+      "a": "Consumer and business telecom are each read at 13.5x 2028 operating profit, below the 14.4x peer median and close to the 13.4x low. The evidence includes 0–2% 2026 telecom service-revenue growth, a 4% Q3 2026 business-revenue decline and the need for business margin to rise from 19.5% to 23%."
+    },
+    {
+      "q": "What do analysts forecast for Elisa Oyj's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of EUR 2,354m, EBITDA of EUR 839m, operating profit of EUR 538m, net earnings of EUR 406m, EPS of 2.5 EUR and DPS of 2 EUR. The 2026 operating-profit forecast is EUR 489m, requiring EUR 107m in fourth-quarter adjusted operating profit after EUR 382m in the first nine months."
+    },
+    {
+      "q": "What should Elisa Oyj investors watch?",
+      "a": "The key indicators are fourth-quarter adjusted operating profit of EUR 107m, the household margin against 26.5% in Q3 2026 and 23% in the 2028 split, business telecom sales after the 4% Q3 decline, almost EUR 100m of data-centre orders converting to sales from 2028, and software growth against the 5–10% assumption."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' whole-company forecasts through 2028, splits sales and operating profit between the businesses using reported segment results, compares each business with listed peers or industry quartiles, and reads today's 33.4 EUR share price into business multiples. It does not provide a target price, fair value or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Elisa Oyj dated 4 November 2026 (33.4 EUR share price, consumer telecom 27.1 EUR per share, business telecom 15.0 EUR per share and global software 1.6 EUR per share before -10.2 EUR per share of debt and other claims, less cash).",
+    "Competitor context: Telia, Telenor ASA and Tele2 AB (publ) at 13.4x, 14.4x and 16x 2028 EV/EBIT for telecom; Amdocs Limited at 6.6x and Dassault Systèmes SE at 17.6x for software, with software industry quartiles of 6.6x, 10.4x and 16.6x. Tele2's 40.9% ROE and 41.1% EBIT margin are excluded from the peer averages as an outlier.",
+    "Market data: ELISA.HE, 33.4 EUR on 4 November 2026, with 2028 forecasts of EUR 2,354m sales and EUR 538m operating profit; analysts' consensus forecasts are the starting point and no consensus share-price target is printed."
+  ]
+}
