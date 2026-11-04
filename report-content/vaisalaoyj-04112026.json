@@ -1,0 +1,763 @@
+{
+  "id": "vaisalaoyj-04112026",
+  "slug": "vaisala-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Vaisala Oyj",
+  "ticker": "VAIAS.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Hardware, Equipment & Parts",
+  "currency": "EUR",
+  "reportDate": "2026-11-04",
+  "profile": "Makes precision instruments and systems that measure humidity, gases and weather. It also sells weather data and forecasting services to factories, laboratories, power companies, national weather agencies, airports, road authorities, insurers and software developers.",
+  "headline": {
+    "currentPrice": "65.2 EUR",
+    "marketCap": "EUR 2.4bn",
+    "enterpriseValue": "EUR 2.4bn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+0.1 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "66.0 EUR",
+    "analysts": "5",
+    "range": "58.0–73.0 EUR",
+    "source": "StockAnalysis, citing S&P Global analyst estimates"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "22x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "18x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "30x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "67.0 EUR",
+    "week52Low": "40.9 EUR",
+    "oneYearChange": "+56%",
+    "threeYearChange": "+101%"
+  },
+  "summary": [
+    "Vaisala Oyj (VAIAS.HE, NASDAQ Helsinki) makes precision instruments and systems for humidity, gas and weather measurement, alongside weather data and forecasting services. Its customers include industrial, laboratory, power, aviation, government and software users. The shares traded at 65.2 EUR on 4 November 2026, giving the company a market capitalisation of EUR 2.4bn and an enterprise value of EUR 2.4bn in this Valuatum market report dated 4 November 2026. The price had risen 56% over one year and 101% over three years, while the 52-week range was 40.9–67.0 EUR.",
+    "The 65.2 EUR share price is chiefly Industrial measurements at 35.3 EUR per share and Weather systems at 28.4 EUR per share, with Weather data contributing 1.3 EUR per share and cash less debt and other claims adding 0.1 EUR per share. Industrial measurements is priced at 19x its 2028 forecast operating profit, Weather systems at 18x and Weather data at 6.9x. Together, the businesses represent 64.9 EUR per share and about 18x analysts’ 2028 operating profit, with Industrial measurements the largest profit pool.",
+    "Across the three businesses, the price sits around listed-peer medians: 18.7x 2028 operating profit for Industrial measurements, 18.3x for Weather systems and 6.9x for Weather data. The reading depends on Industrial measurements retaining a 23% 2028 margin, Weather systems converting its 160.5m EUR order book and 88.6m EUR of third-quarter orders into sales, and Weather data sustaining 60.9m EUR of recurring revenue. The final quarter of 2026 is the immediate test against 624m EUR of forecast sales and 109m EUR of operating profit."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Two core businesses",
+      "metric": "€63.7",
+      "text": "Industrial measurements and Weather systems account for 63.7 EUR per share of the 65.2 EUR price. Their 2028 forecast operating profits are 68m EUR and 56m EUR respectively, so the share price is primarily tied to the two measurement businesses rather than Weather data."
+    },
+    {
+      "num": "02",
+      "title": "Peer-like pricing",
+      "metric": "18.7x",
+      "text": "Industrial measurements is priced at 18.7x 2028 operating profit, the median of three peers, while Weather systems is at 18.3x, its peer median. Weather data is priced at 6.9x, the industry median, leaving all three businesses close to their relevant comparison points."
+    },
+    {
+      "num": "03",
+      "title": "Final-quarter test",
+      "metric": "€25m",
+      "text": "The last quarter of 2026 needs to contribute about 25m EUR of operating profit for the company to reach analysts’ 109m EUR forecast, after 83m EUR in the first nine months. The result will test whether current margins and orders support the operating-profit forecasts used in the split."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Industrial measurements",
+      "share": "35.3 EUR per share",
+      "economics": "19x 2028 operating profit · 68m EUR forecast operating profit · peers 9.1x–19.6x, median 18.7x",
+      "text": "Industrial measurements sells instruments and monitoring solutions to manufacturers, laboratories, life-science companies and power-sector customers. It generated outside sales of 248m EUR in 2025, equal to 42% of company sales, and the split takes sales to 300m EUR in 2028. The market assigns 35.3 EUR per share to the business, based on 68m EUR of forecast operating profit and 18.7x that profit. That multiple is the median of AMETEK, Honeywell and Yokogawa, whose multiples range from 9.1x to 19.6x. The key evidence is profitability: the split assumes a 23% 2028 adjusted operating margin, compared with 27.6% for January–September 2026 and 31.7% in the third quarter. The 54.5m EUR order book at September suggests that sustaining margins requires continued order intake, while component shortages could delay deliveries or raise material costs."
+    },
+    {
+      "name": "Weather systems",
+      "share": "28.4 EUR per share",
+      "economics": "18x 2028 operating profit · 56m EUR forecast operating profit · peers 12.1x–18.7x, median 18.3x",
+      "text": "Weather systems sells observation instruments, systems and related services to weather agencies, airports, renewable-energy producers and road authorities. Outside sales were 292m EUR in 2025, or 49% of company sales, and the split takes them to 354m EUR in 2028. Its 28.4 EUR per-share contribution reflects 56m EUR of forecast operating profit at 18.3x, the median of Leonardo, Teledyne and Honeywell. The forecast assumes a 16% operating margin, only moderately above the 14.7% reported in 2025, but project timing makes quarterly margins sensitive to utilisation of engineering, sales and project staff. Orders rose about half to 88.6m EUR in the third quarter and the order book was 160.5m EUR at September. The 25m EUR Indonesian airport project supports the pipeline, while saturation in wind-resource assessment remains a constraint."
+    },
+    {
+      "name": "Weather data",
+      "share": "1.3 EUR per share",
+      "economics": "6.9x 2028 operating profit · 7m EUR forecast operating profit · industry median 6.9x",
+      "text": "Weather data provides recurring weather information and forecasting services. It generated 59m EUR of 2025 sales, or 9.9% of outside sales, and the split assigns 7m EUR of 2028 operating profit on 71m EUR of sales, a 9% margin. The market pays 1.3 EUR per share, equivalent to 6.9x forecast operating profit. That is the median of the Internet Content & Information industry quartiles, which range from 4.4x to 10.1x; the comparison uses industry quartiles because the available company references are not treated as a conventional three-peer set. Recurring revenue was 60.9m EUR at 30 September 2026, 9% above the prior year, providing evidence of a repeatable revenue base. The business is nevertheless small in the price split, and its 2025 operating profit was only 0.1m EUR, making the multiple sensitive to the profit base."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 65.2 EUR share price is mostly a claim on two measurement businesses. Industrial measurements contributes 35.3 EUR per share, Weather systems 28.4 EUR and Weather data 1.3 EUR; cash less debt and other claims adds 0.1 EUR. The businesses therefore total 64.9 EUR per share before the balance-sheet adjustment. Industrial measurements is the largest pool because its 2028 forecast operating profit is 68m EUR, compared with 56m EUR for Weather systems and 7m EUR for Weather data. The split applies 18.7x, 18.3x and 6.9x to those profits respectively. At group level, analysts forecast 725m EUR of 2028 sales and 131m EUR of operating profit, against 624m EUR and 109m EUR in 2026. The price consequently depends more on the operating-profit path of Industrial measurements and Weather systems than on Weather data. Industrial measurements requires 300m EUR of 2028 sales at a 23% margin, while Weather systems requires 354m EUR at a 16% margin. The price composition is therefore concentrated, with margin retention and project delivery determining most of the operating profit represented by the share."
+    },
+    {
+      "heading": "Why the price is near peers",
+      "text": "The three businesses are priced close to their relevant peer references, rather than carrying one uniform group multiple. Industrial measurements sits at 18.7x 2028 operating profit, the median of AMETEK at 19.6x, Honeywell at 18.7x and Yokogawa at 9.1x. That position places particular weight on its assumed 23% margin: AMETEK’s comparable margin was 29.4% in 2025, while HORIBA’s was 15.9%, leaving Vaisala between the two. Weather systems is at 18.3x, the median of Leonardo, Teledyne and Honeywell, whose range is 12.1x–18.7x. Its 16% forecast margin is only modestly above the 14.7% reported in 2025, but project timing, wind-market saturation and the specialised aviation and weather-agency mix shape the comparison. Weather data is at the 6.9x industry median, between a 4.4x lower quartile and 10.1x upper quartile. Its 2025 operating profit was only 0.1m EUR, so recurring revenue growth matters more than a single historical margin. Overall, the price assumes peer-like economics across the businesses, not a premium independent of margins, orders or recurring revenue."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The immediate test is the full-year 2026 result. Analysts forecast 624m EUR of sales and 109m EUR of operating profit, while management’s October sales outlook is 610m–630m EUR excluding Atmo. The first nine months delivered 83m EUR of adjusted operating profit, leaving about 25m EUR for the final quarter; the third quarter alone produced 40.6m EUR. Industrial measurements needs a sustained adjusted margin near the 23% used in the 2028 split. Its January–September margin was 27.6%, but the 54.5m EUR order book at September is small beside 300m EUR of forecast 2028 sales. Weather systems needs its 160.5m EUR order book and 88.6m EUR of third-quarter orders to become deliveries, supporting 354m EUR of 2028 sales. The 25m EUR Indonesian airport project should be delivered mainly over three years, so it supports continuity rather than one-year acceleration. Weather data’s 60.9m EUR recurring revenue, up 9% year on year, is the indicator for whether its 7m EUR forecast operating profit is supported. Component shortages, weak wind demand or uneven project timing would weaken the operating-profit base behind the price split."
+    }
+  ],
+  "risks": [
+    "Industrial measurements margin: competition, product mix or component shortages could reduce the assumed 23% 2028 adjusted margin; the early warning is a quarterly margin near 16%.",
+    "Weather systems project timing: delayed deliveries or weaker wind-resource-assessment demand could leave sales below the 354m EUR 2028 split; the early warning is a shrinking 160.5m EUR order book.",
+    "Industrial measurements orders: the 54.5m EUR order book may not support 300m EUR of 2028 sales; the early warning is weak quarterly order intake.",
+    "Weather data profit base: 2025 operating profit was only 0.1m EUR, making the 7m EUR 2028 forecast sensitive to recurring-revenue execution; the early warning is slowing growth from 60.9m EUR of recurring revenue."
+  ],
+  "catalysts": [
+    "Full-year 2026 results (near-term, all businesses): sales within the 610m–630m EUR outlook and operating profit near 109m EUR would show that the forecast path is being met.",
+    "Industrial measurements fourth-quarter margin (near-term, Industrial measurements): a result near the 27.6% January–September 2026 margin would support profit above the 23% 2028 split assumption.",
+    "Order conversion (near-term, Weather systems): delivery of the 160.5m EUR order book and continued orders after the 88.6m EUR third-quarter intake would support 354m EUR of 2028 sales.",
+    "Indonesian airport deliveries (medium-term, Weather systems): execution of the 25m EUR project across 14 airports would add visibility to the project pipeline.",
+    "Recurring-revenue growth (medium-term, Weather data): continued growth from 60.9m EUR at September 2026 would support the 7m EUR 2028 operating-profit split."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "540",
+            "565",
+            "597",
+            "624",
+            "681",
+            "725"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "79",
+            "107",
+            "112",
+            "137",
+            "145",
+            "159"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "14.6%",
+            "19.0%",
+            "18.8%",
+            "22.0%",
+            "21.3%",
+            "21.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-12",
+            "-24",
+            "-28",
+            "-29",
+            "-27",
+            "-28"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "67",
+            "83",
+            "84",
+            "109",
+            "118",
+            "131"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "12.3%",
+            "14.7%",
+            "14.1%",
+            "17.4%",
+            "17.3%",
+            "18.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-3",
+            "-2",
+            "-7",
+            "-3",
+            "-3",
+            "-2"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "63",
+            "81",
+            "77",
+            "106",
+            "115",
+            "129"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "49",
+            "64",
+            "60",
+            "80",
+            "90",
+            "101"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.4",
+            "1.8",
+            "1.7",
+            "2.2",
+            "2.5",
+            "2.8"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.7",
+            "0.8",
+            "0.9",
+            "1.1",
+            "1.2",
+            "1.3"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "53.4%",
+            "42.7%",
+            "51.5%",
+            "48.0%",
+            "48.0%",
+            "48.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "108",
+            "127",
+            "130",
+            "137",
+            "150",
+            "159"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "17",
+            "52",
+            "45",
+            "47",
+            "51",
+            "55"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "46",
+            "100",
+            "94",
+            "94",
+            "94",
+            "94"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "3",
+            "3",
+            "4",
+            "4",
+            "4",
+            "4"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "173",
+            "282",
+            "273",
+            "283",
+            "300",
+            "313"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "59",
+            "58",
+            "61",
+            "64",
+            "70",
+            "74"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "113",
+            "148",
+            "148",
+            "153",
+            "167",
+            "177"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "90",
+            "89",
+            "93",
+            "97",
+            "106",
+            "113"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "262",
+            "295",
+            "301",
+            "314",
+            "342",
+            "364"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "8",
+            "13",
+            "14",
+            "14",
+            "14",
+            "14"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "443",
+            "589",
+            "589",
+            "611",
+            "656",
+            "691"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "268",
+            "309",
+            "326",
+            "376",
+            "427",
+            "485"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "50",
+            "105",
+            "70",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "3",
+            "18",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "54",
+            "111",
+            "85",
+            "51",
+            "45",
+            "31"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "106",
+            "140",
+            "152",
+            "157",
+            "156",
+            "146"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "15",
+            "30",
+            "26",
+            "27",
+            "28",
+            "29"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "443",
+            "589",
+            "589",
+            "611",
+            "656",
+            "691"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "—",
+            "25",
+            "19",
+            "20",
+            "21",
+            "21"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-28",
+            "44",
+            "14",
+            "-5",
+            "-25",
+            "-59"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "228",
+            "328",
+            "321",
+            "351",
+            "381",
+            "404"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "60.5%",
+            "52.4%",
+            "55.3%",
+            "61.5%",
+            "65.1%",
+            "70.1%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-10.5%",
+            "14.2%",
+            "4.4%",
+            "-1.4%",
+            "-5.9%",
+            "-12.2%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.4×",
+            "0.4×",
+            "0.1×",
+            "-0.0×",
+            "-0.2×",
+            "-0.4×"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "2.5",
+            "2.1",
+            "2",
+            "2",
+            "2.2",
+            "2.5"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "75",
+            "84",
+            "82",
+            "88",
+            "102",
+            "118"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "78",
+            "83",
+            "88",
+            "90",
+            "105",
+            "120"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-9",
+            "4",
+            "6",
+            "21",
+            "14",
+            "11"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "4",
+            "133",
+            "19",
+            "38",
+            "44",
+            "41"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-4",
+            "-133",
+            "-19",
+            "-38",
+            "-44",
+            "-41"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "71",
+            "-49",
+            "63",
+            "49",
+            "59",
+            "77"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "76",
+            "-47",
+            "78",
+            "51",
+            "61",
+            "79"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "76",
+            "-47",
+            "78",
+            "51",
+            "61",
+            "79"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-31",
+            "50",
+            "-59",
+            "-45",
+            "-50",
+            "-70"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-25",
+            "-26",
+            "-27",
+            "-31",
+            "-38",
+            "-43"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "40",
+            "1",
+            "3",
+            "5",
+            "9",
+            "7"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "29.6x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "17.2x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "22x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "6.3x"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "22.8%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "1.6%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.0x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Vaisala Oyj’s share price made of?",
+      "a": "The 65.2 EUR share price comprises 35.3 EUR per share for Industrial measurements, 28.4 EUR for Weather systems, 1.3 EUR for Weather data and 0.1 EUR of cash less debt and other claims."
+    },
+    {
+      "q": "Why does Vaisala trade near its peers?",
+      "a": "The businesses are priced at peer-like 2028 operating-profit multiples: 18.7x for Industrial measurements, 18.3x for Weather systems and 6.9x for Weather data. The comparison depends on sustaining margins of 23%, 16% and 9% respectively."
+    },
+    {
+      "q": "What do analysts forecast for Vaisala’s sales and profit?",
+      "a": "Analysts forecast 624m EUR of 2026 sales and 109m EUR of operating profit, rising to 725m EUR of sales and 131m EUR of operating profit in 2028."
+    },
+    {
+      "q": "What should Vaisala investors watch?",
+      "a": "The immediate tests are the final quarter of 2026, which needs about 25m EUR of operating profit, Industrial measurements’ margin and orders, Weather systems’ 160.5m EUR order book, and Weather data’s 60.9m EUR recurring revenue."
+    },
+    {
+      "q": "How does Valuatum’s market report work?",
+      "a": "The analysis keeps analysts’ forecasts unchanged, allocates 2028 operating profit between the businesses using segment results, compares each business with listed peers and reads today’s 65.2 EUR share price into the resulting multiples."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Vaisala Oyj dated 4 November 2026 (65.2 EUR share price, Industrial measurements 35.3 EUR per share, Weather systems 28.4 EUR per share, Weather data 1.3 EUR per share).",
+    "Competitor context: Industrial measurements peers AMETEK, Honeywell and Yokogawa at 19.6x, 18.7x and 9.1x 2028 EV/EBIT; Weather systems peers Leonardo, Teledyne and Honeywell at 12.1x, 18.3x and 18.7x; Weather data industry quartiles at 4.4x, 6.9x and 10.1x. The Weather data 2025 operating profit was only 0.1m EUR, making that comparison sensitive to the profit base.",
+    "Market data: VAIAS.HE, 65.2 EUR on 4 November 2026, analysts’ forecasts of 624m EUR sales and 109m EUR operating profit for 2026 and 725m EUR sales and 131m EUR operating profit for 2028, with the 66.0 EUR consensus source from StockAnalysis citing S&P Global analyst estimates."
+  ]
+}

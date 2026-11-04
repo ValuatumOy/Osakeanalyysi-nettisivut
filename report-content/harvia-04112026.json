@@ -1,0 +1,770 @@
+{
+  "id": "harvia-04112026",
+  "slug": "harvia-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Harvia Oyj",
+  "ticker": "HARVIA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Furnishings, Fixtures & Appliances",
+  "currency": "EUR",
+  "reportDate": "2026-11-04",
+  "profile": "Makes sauna heaters and controls, sauna cabins, Scandinavian hot tubs, steam equipment, accessories, heater stones and replacement parts. It sells worldwide to households, specialist sauna and wellness dealers, retailers, hotels, spas and public facilities through brands serving home and commercial markets.",
+  "headline": {
+    "currentPrice": "39.5 EUR",
+    "marketCap": "738 EURm",
+    "enterpriseValue": "799 EURm"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-3.3 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "19x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "14x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "24x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "47.7 EUR",
+    "week52Low": "31.1 EUR",
+    "oneYearChange": "+13%",
+    "threeYearChange": "+70%"
+  },
+  "summary": [
+    "Harvia Oyj (HARVIA.HE, NASDAQ Helsinki) makes sauna heaters, cabins, hot tubs, steam equipment, accessories and replacement parts for households and professional customers worldwide. The share price was 39.5 EUR on 4 November 2026, giving a market capitalisation of EUR 738m and enterprise value of EUR 799m. Analysts forecast 2028 sales of EUR 288m and operating profit of EUR 59m. This Valuatum market report dated 4 November 2026 explains how the current share price is allocated across the businesses rather than forecasting a target price or assigning a recommendation.",
+    "Heating equipment is the largest component at 21.2 EUR per share, followed by saunas and hot tubs at 9.3 EUR, spare parts and services at 5.2 EUR, accessories and stones at 3.7 EUR, and steam products at 3.4 EUR. The businesses total 42.8 EUR per share before debt and other claims, with implied 2028 EV/EBIT multiples of 12.4x, 12.4x, 25.0x, 18.1x and 12.4x respectively. Debt and other claims, less cash, reduce the split by 3.3 EUR per share.",
+    "The share price implies about 13.5x 2028 operating profit for the businesses against about 6.5x for listed peers. Spare parts and services is at 25.0x versus a peer median of 12.9x, while accessories and stones is at 18.1x versus 12.3x; heating, saunas and steam are each above the 8.8x industry upper quartile. The key tests are fourth-quarter sales of about EUR 62m and adjusted operating profit of about EUR 12m, normal Muurame deliveries, Lewisburg capacity and renewed steam growth after a 8.2% January–September decline."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "13.5x",
+      "text": "The five businesses account for 42.8 EUR per share before debt and other claims, equivalent to about 13.5x analysts’ 2028 operating profit. Debt and other claims, less cash, subtract 3.3 EUR per share, leaving the current 39.5 EUR share price."
+    },
+    {
+      "num": "02",
+      "title": "Why above peers",
+      "metric": "25.0x",
+      "text": "Every business trades above its relevant peer comparison. Spare parts and services is the clearest gap at 25.0x versus a 12.9x peer median, supported by 15.9% January–September 2026 sales growth and demand that is less sensitive to consumer confidence."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "EUR 62m",
+      "text": "Fourth-quarter sales of about EUR 62m and adjusted operating profit of about EUR 12m are needed to complete analysts’ 2026 forecasts of EUR 228m sales and EUR 43m adjusted operating profit. Delivery normalisation, steam growth and Lewisburg capacity are the next checks."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Heating equipment",
+      "share": "21.2 EUR per share",
+      "economics": "12.4x 2028 operating profit · EUR 32m forecast operating profit · peers 3.3x / 5.4x / 8.8x",
+      "text": "Heating equipment sells sauna heaters, control units and infrared components to households, hotels and spas. It generated EUR 108m of 2025 sales and represents 54% of 2025 sales to outside customers and 54% of 2028 operating profit in the split. Analysts’ forecast allocation gives it EUR 156m of 2028 sales and EUR 32m of operating profit at a 20% margin. The price assigns 21.2 EUR per share, or 12.4x that profit, above the construction-materials industry’s 8.8x upper quartile. Harvia’s clearly over-20% heater and component market share, relatively stable group margin and forecast sales growth of about 45% from 2025 to 2028 support the premium. The premium still depends on Muurame operating normally, 2026 deliveries arriving and growth approaching the forecast rather than the company’s slower 10% long-term target."
+    },
+    {
+      "name": "Saunas and hot tubs",
+      "share": "9.3 EUR per share",
+      "economics": "12.4x 2028 operating profit · EUR 14m forecast operating profit · peers 3.3x / 5.4x / 8.8x",
+      "text": "Saunas and hot tubs comprise sauna cabins and Scandinavian hot tubs sold to households and professional customers. The business generated EUR 48m of 2025 external sales and represents 24% of 2025 external sales and 24% of 2028 operating profit in the split. The forecast allocation gives it EUR 69m of 2028 sales and EUR 14m of operating profit at a 20% margin. The price assigns 9.3 EUR per share, or 12.4x profit, above the industry’s 8.8x upper quartile. Harvia’s position in a fragmented sauna market, more than 20,000 saunas produced annually and a demonstrated group margin support the price. Cabins are larger consumer purchases than replacement parts, however, so weaker confidence, delivery interruptions or underused Lewisburg capacity would put the EUR 69m sales and 20% margin assumptions under pressure."
+    },
+    {
+      "name": "Spare parts and services",
+      "share": "5.2 EUR per share",
+      "economics": "25.0x 2028 operating profit · EUR 4m forecast operating profit · peers 12.3x to 17.8x, median 12.9x",
+      "text": "Spare parts and services supplies replacement parts and related services to owners of sauna and steam equipment and to professional customers. It generated EUR 13m of 2025 external sales, or 7% of group sales, and the split assigns EUR 19m of 2028 sales and EUR 4m of operating profit at a 20% margin. The price assigns 5.2 EUR per share, or 25.0x profit, above Pool Corporation at 12.3x, Masco Corporation at 12.9x and NIBE Industrier at 17.8x. Demand benefits from an installed base of more than 18 million saunas and replacement needs that are less exposed to weak consumer confidence. Sales rose 15.9% to EUR 11.4m in January–September 2026 and 17.7% in the third quarter. The premium therefore rests mainly on growth continuing and the group margin transferring to this line, which has no separately disclosed margin."
+    },
+    {
+      "name": "Accessories and stones",
+      "share": "3.7 EUR per share",
+      "economics": "18.1x 2028 operating profit · EUR 4m forecast operating profit · peers 11.2x to 12.9x, median 12.3x",
+      "text": "Accessories and stones sells sauna accessories and heater stones to owners, retailers and professional customers. It generated EUR 13m of 2025 external sales, while the split assigns EUR 19m of 2028 sales and EUR 4m of operating profit at a 20% margin. The price assigns 3.7 EUR per share, or 18.1x profit, versus peer multiples of 11.2x to 12.9x and a 12.3x median. Repeat purchases support the economics: sauna stones last three to five years and should be re-stacked at least annually, while combined sales grew 15.7% in the first half of 2026 and 22.7% in the second quarter. Harvia mines its own stone and moved some accessory production to China in 2024. The valuation still assumes repeat growth and a 20% margin that is carried over from the group because no product-group margin is disclosed."
+    },
+    {
+      "name": "Steam products",
+      "share": "3.4 EUR per share",
+      "economics": "12.4x 2028 operating profit · EUR 5m forecast operating profit · peers 3.3x / 5.4x / 8.8x",
+      "text": "Steam products comprise steam generators and related equipment for home and professional sauna and steam-room customers. The business generated EUR 17.2m of 2025 sales, or 9% of group sales, following the ThermaSol acquisition, and the split assigns about EUR 25m of 2028 sales and EUR 5m of operating profit at a 20% margin. The price assigns 3.4 EUR per share, or 12.4x profit, above the industry’s 8.8x upper quartile. The market is paying for recovery from a weak 2026: sales fell 8.2% in January–September but rose 3.3% in the third quarter. ThermaSol provides a US customer base, although its acquisition was financed with a EUR 20m loan and cash. The 2028 sales path is above Harvia’s 10% long-term growth target, making two consecutive quarters of growth and annual sales above EUR 17.2m important evidence."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "At 39.5 EUR per share, the 19 million shares represent equity value of EUR 738m. Adding forecast debt and other claims, less cash, of EUR 61m gives enterprise value of EUR 799m. The split assigns 21.2 EUR per share to heating equipment, 9.3 EUR to saunas and hot tubs, 5.2 EUR to spare parts and services, 3.7 EUR to accessories and stones and 3.4 EUR to steam products. Together the businesses account for 42.8 EUR per share before the 3.3 EUR deduction for debt and other claims, less cash. The largest business is heating equipment, with forecast 2028 operating profit of EUR 32m from EUR 156m sales; the smallest is spare parts and services, with EUR 4m from EUR 19m sales but a 25.0x implied multiple. The split therefore rests on forecast profit rather than reported asset values. Analysts’ whole-company forecasts rise from EUR 199m sales and EUR 38m operating profit in 2025 to EUR 288m and EUR 59m in 2028. The price embeds that growth while assigning all five businesses multiples above their peer comparisons."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "The businesses carry an implied 2028 multiple of about 13.5x operating profit, compared with about 6.5x for listed peers. Spare parts and services is the widest gap at 25.0x versus a 12.9x peer median, while accessories and stones is 18.1x versus 12.3x. Heating equipment, saunas and hot tubs and steam products each sit at 12.4x, above the construction-materials industry’s 8.8x upper quartile, used because fewer than three listed peers could be read. The evidence supporting a premium differs by business. Heater and component market share is clearly above 20%, group margins have been relatively stable and replacement demand supports parts. Stones last three to five years, while accessories and stones sales rose 15.7% in the first half of 2026. Steam products have a US base through ThermaSol but declined 8.2% in the first nine months. The common requirement is growth: the split needs group sales to reach EUR 288m and operating profit EUR 59m in 2028. A 20% margin is carried into several businesses because product-level margins are not disclosed, so the premium reflects both growth and the durability of that margin."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The immediate test is the fourth quarter of 2026. Analysts’ full-year forecast requires approximately EUR 62m of quarterly sales and EUR 12m of adjusted operating profit to reach EUR 228m sales and EUR 43m adjusted operating profit. Third-quarter group sales were EUR 53.9m and adjusted operating profit EUR 9.5m, so the final quarter must be stronger, particularly in profit. A clean result would support the view that the Muurame delivery disruption is over; a miss would raise questions about costs, capacity and the profit base used for 2028. Heating-equipment sales should be compared with EUR 107.9m in 2025, EUR 144m on Harvia’s 10% growth path and EUR 156m in the split. Saunas and hot tubs need to progress from EUR 47.5m in 2025 towards EUR 69m in 2028, while spare parts and services need to move from EUR 13.1m towards EUR 19m. Steam requires renewed growth after EUR 17.2m of 2025 sales and an 8.2% January–September 2026 decline. Finally, the Lewisburg expansion, normal Muurame deliveries and a group margin near 20% will show whether capacity and profitability can support the multiples."
+    }
+  ],
+  "risks": [
+    "Execution and delivery disruption (heating equipment and saunas): another Muurame interruption would defer sales and weaken confidence in the 2028 profit split, with fourth-quarter sales below EUR 62m as the early warning.",
+    "Consumer confidence and cabin demand (saunas and hot tubs): households may postpone large sauna and hot-tub purchases, with annual sales tracking below the EUR 63m 2028 path as the early warning.",
+    "Steam recovery failure (steam products): sales could remain below the EUR 17.2m 2025 level after the 8.2% January–September 2026 decline, with another quarter of contraction as the early warning.",
+    "Growth-dependent premium (spare parts and services): slower replacement demand would undermine the 25.0x multiple, with quarterly growth materially below the 17.7% third-quarter rate as the early warning.",
+    "Margin and capacity pressure (all businesses): underused Lewisburg capacity or rising costs could prevent the assumed 20% margins, with group adjusted margin falling below 20% as the early warning."
+  ],
+  "catalysts": [
+    "Fourth-quarter delivery and earnings (near-term, all businesses): EUR 62m of sales and EUR 12m of adjusted operating profit would complete the 2026 forecasts and support normal Muurame operations.",
+    "Steam growth confirmation (near-term, steam products): a second consecutive quarter of growth after the 3.3% third-quarter increase would support the EUR 25m 2028 sales path.",
+    "Lewisburg opening (near-term, heating equipment and saunas): completing the West Virginia expansion in late 2026 would add capacity for North American demand and test whether orders fill it.",
+    "Repeat-demand growth (medium-term, spare parts and accessories): parts growth continuing beyond the 17.7% third-quarter increase and accessories growth sustaining the 15.7% first-half rate would support the premium multiples.",
+    "Sales and margin delivery (medium-term, all businesses): reaching EUR 288m sales, EUR 59m operating profit and approximately 20% margins in 2028 would show that the growth and profitability embedded in the price arrived."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "151",
+            "175",
+            "199",
+            "228",
+            "259",
+            "288"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "39",
+            "42",
+            "46",
+            "51",
+            "62",
+            "69"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "26.1%",
+            "24.2%",
+            "23.0%",
+            "22.5%",
+            "23.8%",
+            "23.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-6",
+            "-7",
+            "-7",
+            "-8",
+            "-9",
+            "-10"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "33",
+            "35",
+            "38",
+            "43",
+            "53",
+            "59"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "21.9%",
+            "20.3%",
+            "19.3%",
+            "18.9%",
+            "20.4%",
+            "20.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-4",
+            "-4",
+            "-5",
+            "-4",
+            "-3",
+            "-2"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "30",
+            "32",
+            "33",
+            "40",
+            "50",
+            "57"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "23",
+            "24",
+            "26",
+            "31",
+            "39",
+            "44"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.3",
+            "1.3",
+            "1.4",
+            "1.7",
+            "2.1",
+            "2.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.6",
+            "0.7",
+            "0.8",
+            "0.9",
+            "1.1",
+            "1.2"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "51.4%",
+            "52.6%",
+            "52.9%",
+            "52.8%",
+            "52.8%",
+            "52.8%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "29",
+            "36",
+            "39",
+            "45",
+            "52",
+            "57"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "9",
+            "17",
+            "19",
+            "22",
+            "25",
+            "28"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "73",
+            "91",
+            "89",
+            "89",
+            "89",
+            "89"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "2",
+            "2",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "114",
+            "146",
+            "147",
+            "157",
+            "166",
+            "174"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "35",
+            "49",
+            "52",
+            "61",
+            "70",
+            "77"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "23",
+            "23",
+            "25",
+            "29",
+            "33",
+            "37"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "41",
+            "46",
+            "45",
+            "55",
+            "62",
+            "69"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "99",
+            "119",
+            "123",
+            "145",
+            "165",
+            "183"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1",
+            "0",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "214",
+            "265",
+            "271",
+            "303",
+            "333",
+            "359"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "109",
+            "124",
+            "131",
+            "147",
+            "170",
+            "193"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "75",
+            "95",
+            "95",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "77",
+            "100",
+            "97",
+            "53",
+            "54",
+            "54"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "25",
+            "29",
+            "34",
+            "92",
+            "97",
+            "99"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "4",
+            "11",
+            "10",
+            "11",
+            "12",
+            "13"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "214",
+            "265",
+            "271",
+            "303",
+            "333",
+            "359"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "3",
+            "8",
+            "8",
+            "9",
+            "10",
+            "10"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "38",
+            "57",
+            "58",
+            "55",
+            "52",
+            "45"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "143",
+            "173",
+            "181",
+            "194",
+            "212",
+            "228"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "50.7%",
+            "46.9%",
+            "48.1%",
+            "48.6%",
+            "51.1%",
+            "53.8%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "34.6%",
+            "46.1%",
+            "44.2%",
+            "37.6%",
+            "30.5%",
+            "23.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.0x",
+            "1.3x",
+            "1.3x",
+            "1.1x",
+            "0.8x",
+            "0.7x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "4",
+            "4.1",
+            "3.7",
+            "1.6",
+            "1.7",
+            "1.9"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "37",
+            "22",
+            "33",
+            "34",
+            "38",
+            "45"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "40",
+            "27",
+            "36",
+            "37",
+            "40",
+            "47"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-7",
+            "9",
+            "1",
+            "5",
+            "10",
+            "9"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "3",
+            "39",
+            "9",
+            "18",
+            "18",
+            "18"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-3",
+            "-39",
+            "-9",
+            "-18",
+            "-18",
+            "-18"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "34",
+            "-17",
+            "24",
+            "16",
+            "20",
+            "27"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "33",
+            "-9",
+            "24",
+            "19",
+            "22",
+            "28"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "33",
+            "-9",
+            "24",
+            "19",
+            "22",
+            "28"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-19",
+            "20",
+            "-24",
+            "-7",
+            "-12",
+            "-20"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-11",
+            "-12",
+            "-13",
+            "-14",
+            "-16",
+            "-21"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "15",
+            "3",
+            "1",
+            "10",
+            "8",
+            "7"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "24.0x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "15.6x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "19.0x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "5.1x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "18.9%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "22.4%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.2%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Harvia Oyj’s share price made of?",
+      "a": "The 39.5 EUR share price is split into 21.2 EUR for heating equipment, 9.3 EUR for saunas and hot tubs, 5.2 EUR for spare parts and services, 3.7 EUR for accessories and stones and 3.4 EUR for steam products. The businesses total 42.8 EUR per share before debt and other claims, less cash, which reduces the split by 3.3 EUR per share."
+    },
+    {
+      "q": "Why does Harvia trade above its listed peers?",
+      "a": "The businesses imply about 13.5x 2028 operating profit versus about 6.5x for listed peers. Spare parts and services is at 25.0x versus a 12.9x peer median, while accessories and stones is at 18.1x versus 12.3x. Growth, repeat demand, market position and relatively stable margins support the differences, but the valuation depends on those factors continuing."
+    },
+    {
+      "q": "What do analysts forecast for Harvia’s sales and profit?",
+      "a": "Analysts forecast sales of EUR 228m and operating profit of EUR 43m in 2026, rising to EUR 259m and EUR 53m in 2027 and EUR 288m and EUR 59m in 2028. The 2028 forecast includes EUR 69m sales from saunas and hot tubs, EUR 19m from spare parts and services, EUR 19m from accessories and stones and about EUR 25m from steam products."
+    },
+    {
+      "q": "What should Harvia investors watch?",
+      "a": "The fourth quarter needs about EUR 62m of sales and EUR 12m of adjusted operating profit to complete the 2026 forecasts. Other indicators are normal Muurame deliveries, the late-2026 Lewisburg expansion, heating-equipment sales moving towards EUR 156m by 2028, steam recovery after an 8.2% January–September decline and group adjusted margins near 20%."
+    },
+    {
+      "q": "How does Valuatum’s Harvia market report work?",
+      "a": "The analysis takes analysts’ forecasts through 2028, splits group profit between five businesses using segment results and reads today’s 39.5 EUR share price into each business through EV/EBIT multiples. The parts add to the share price after deducting debt and other claims, less cash. It explains the current price and does not provide a target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Harvia Oyj dated 4 November 2026 (39.5 EUR share price, EUR 738m market capitalisation, EUR 799m enterprise value and the split between five businesses).",
+    "Competitor context: Masco Corporation at 12.9x 2028 EV/EBIT, NIBE Industrier AB (publ) at 17.8x, Pool Corporation at 12.3x and Midea Group at 11.2x; industry quartiles of 3.3x, 5.4x and 8.8x are used where fewer than three peers could be read.",
+    "Market data: HARVIA.HE, 39.5 EUR on 4 November 2026, analysts’ forecasts of EUR 288m sales and EUR 59m operating profit in 2028, and no published consensus price target in the report. The peer comparison uses 2028 EV/EBIT forecasts; some businesses use industry quartiles because fewer than three listed peers could be read."
+  ]
+}
