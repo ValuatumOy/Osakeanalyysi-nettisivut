@@ -29,6 +29,7 @@
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): SELL, target 9.40 EUR (current 10.28 EUR).
 - [Novo Nordisk (NOVO-B.CO) AI equity report](https://www.aiequityreports.com/reports/novo-nordisk-equity-report.html): BUY, target 404.50 DKK (current 300.15 DKK).
 - [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): BUY, target 267.00 USD (current 144.69 USD).
+- [Olvi (OLVAS.HE) AI equity report](https://www.aiequityreports.com/reports/olvi-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Oriola (ORIOLA.HE) AI equity report](https://www.aiequityreports.com/reports/oriola-equity-report.html): BUY, target 1.60 EUR (current 0.93 EUR).
 - [Orion (ORNBV.HE) AI equity report](https://www.aiequityreports.com/reports/orion-equity-report.html): BUY, target 74.80 EUR (current 70.50 EUR).
 - [Pandora (PNDORA.CO) AI equity report](https://www.aiequityreports.com/reports/pandora-equity-report.html): BUY, target 1,112.30 DKK (current 807.40 DKK).
@@ -60,6 +61,6 @@
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1154 listed companies have a page with share price, valuation metrics and company profile,
+1153 listed companies have a page with share price, valuation metrics and company profile,
 each able to generate a fresh AI equity report on demand. They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).
