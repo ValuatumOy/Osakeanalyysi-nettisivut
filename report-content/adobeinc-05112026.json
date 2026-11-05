@@ -1,0 +1,750 @@
+{
+  "id": "adobeinc-05112026",
+  "slug": "adobe-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Adobe Inc.",
+  "ticker": "ADBE",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Software application",
+  "currency": "USD",
+  "reportDate": "2026-11-05",
+  "profile": "Sells subscription software for creating and editing images, video and audio, preparing and managing PDF documents, and running digital marketing and customer experiences. Its customers include creative professionals, consumers, businesses and public bodies using desktop, phone and online applications.",
+  "headline": {
+    "currentPrice": "248 USD",
+    "marketCap": "USD 97.2bn",
+    "enterpriseValue": "USD 87bn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+26 USD per share"
+  },
+  "consensusTarget": {
+    "value": "268 USD",
+    "analysts": "39",
+    "range": "140-373 USD",
+    "source": "StockAnalysis, citing S&P Global, 2026-11-05"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "9.3x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "8.1x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "13x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "363 USD",
+    "week52Low": "190 USD",
+    "oneYearChange": "-26%",
+    "threeYearChange": "-56%"
+  },
+  "summary": [
+    "Adobe Inc. (ADBE, NASDAQ Global Select) sells subscription software for creative work, PDF documents, digital marketing and customer experiences. Its share price was 248 USD on 5 November 2026, against market capitalisation of USD 97.2bn and enterprise value of USD 87bn. Subscriptions generated USD 22.9bn of Adobe's USD 23.8bn fiscal 2025 sales, while Digital Media contributed USD 17.6bn and Digital Experience USD 5.9bn. The business combines an 89% fiscal 2025 gross margin with USD 4.3bn of research spending, leaving the central market question as whether a large free-user audience converts into paid sales without eroding the operating margin. This Valuatum market report is dated 5 November 2026.",
+    "Adobe software accounts for nearly all the operating businesses' share-price value: USD 223 per share, based on USD 10.8bn of 2028 operating profit and an implied 8.1x EV/EBIT multiple. Cash, less debt and other claims, contributes a further USD 26 per share, taking the split to 248 USD. The 8.1x multiple is below the peer median of 18.2x and below the lowest named peer multiple of 12.0x for Salesforce. Analysts forecast Adobe software sales of USD 31.5bn and a 34% operating margin in 2028. The split therefore rests on a high-margin subscription business whose forecast profit is substantial, but whose market multiple reflects uncertainty around paid conversion, pricing and competition.",
+    "Adobe trades below listed software peers despite stronger reported profitability: its 2028 implied 8.1x EV/EBIT compares with peer figures from 12.0x for Salesforce to 35.4x for Autodesk, while Adobe's 2025 adjusted operating margin was 46%, against 22% for Autodesk, 20.1% for Salesforce and 9.3% for DocuSign. The key evidence is execution against the USD 26.576bn-USD 26.626bn fiscal 2026 sales target and USD 24.45-USD 24.50 adjusted EPS target, alongside 10.2% annual recurring revenue growth. The fourth-quarter result, conversion of free users, the 34% 2028 margin and the new chief executive's approach to pricing and Creative Cloud changes will determine what the share price is made of."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "8.1x",
+      "text": "Adobe software carries USD 223 per share of the 248 USD share price. The split assigns USD 10.8bn of 2028 operating profit to the business and reads the price as 8.1x that profit, while cash less debt and other claims adds USD 26 per share."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "18.2x",
+      "text": "The 8.1x implied 2028 EV/EBIT multiple is below the 18.2x peer median and the 12.0x lowest named peer. Adobe's 2025 adjusted operating margin was 46%, but concern centres on converting free-user growth into paid sales while protecting pricing and margins."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "34%",
+      "text": "The immediate test is whether fiscal 2026 sales reach the USD 26.576bn-USD 26.626bn target and adjusted operating profit reaches USD 9.4bn. Longer term, a 2028 adjusted operating margin near or above 34%, paid conversion and leadership decisions will determine the profit supporting the price."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Adobe software",
+      "share": "223 USD per share",
+      "economics": "8.1x 2028 operating profit · USD 10.8bn forecast operating profit · peers 12.0x-35.4x, median 18.2x",
+      "text": "Adobe software covers creative products for images, video and audio, PDF preparation and management, and digital marketing and customer experiences. Subscriptions produced USD 22.9bn of fiscal 2025 sales, with Digital Media contributing USD 17.6bn and Digital Experience USD 5.9bn. The split assigns USD 10.8bn of 2028 operating profit on USD 31.5bn of sales, equivalent to a 34% margin, and reads USD 223 per share at 8.1x EV/EBIT. That multiple is below Salesforce at 12.0x, Microsoft at 18.2x and Autodesk at 35.4x. Adobe's 89% fiscal 2025 gross margin and USD 11.0bn adjusted operating profit support strong economics, but USD 4.3bn of research spending, limited entry barriers, price-sensitive customers and Canva's 260 million monthly users keep pressure on paid conversion and future margins."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "Adobe software is the only operating business in the split and carries USD 223 per share of the 248 USD price. The calculation assigns USD 10.8bn of 2028 operating profit to the business, on forecast sales of USD 31.5bn and a 34% margin, then applies 8.1x EV/EBIT to produce enterprise value of USD 87.028bn. Cash, less debt and other claims, contributes USD 25.9 per share, reconciling the operating-business value to a 248.5 USD share price in the detailed calculation. The underlying economics are unusually profitable: fiscal 2025 gross margin was 89%, adjusted operating profit was USD 11.0bn, and reported operating profit was USD 8.7bn. Subscriptions accounted for USD 22.9bn of USD 23.8bn fiscal 2025 sales. That concentration makes the price sensitive to one question rather than a diversified portfolio of businesses: whether Adobe can turn use of its creative, document and marketing products into paid revenue while retaining a high margin. The 2028 forecast margin falls from 46% adjusted in 2025 to 34%, so the price rests on meaningful profit but also on maintaining a sizeable margin above lower-margin competitors."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "Adobe's implied 8.1x 2028 EV/EBIT multiple is below every named peer: Salesforce is 12.0x, Microsoft 18.2x and Autodesk 35.4x, with an 18.2x peer median. The discount is not explained by a weaker current margin. Adobe's adjusted operating margin was 46% in 2025, compared with 22% for Autodesk, 20.1% for Salesforce and 9.3% for DocuSign in their respective fiscal 2026 periods. Adobe's forecast margin still falls to 34% by 2028, so the lower multiple reflects uncertainty about the durability and conversion of growth rather than a forecast margin expansion. In June 2026, Adobe said its growth target reflected a strategic decision to accelerate free-user growth and defer planned Creative Cloud line optimisations. That choice can enlarge the audience but may delay paid sales and leave pricing exposed. Adobe also states that its markets have limited barriers to entry and customers are price-sensitive. Canva's 260 million monthly users in 2025 illustrate the scale of competition for creative work. The market price therefore assigns a strong operating business a multiple below peers because profit conversion, pricing and margin retention remain less certain than the headline margin suggests."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operational test is fiscal 2026 execution. Adobe's sales target is USD 26.576bn to USD 26.626bn, adjusted EPS target is USD 24.45 to USD 24.50, and analysts forecast USD 9.4bn of adjusted operating profit. Three quarters had produced USD 9.0bn of adjusted profit, leaving about USD 405m required in the final quarter to reach that forecast; a result well above the threshold would suggest the forecast is cautious, while a result near it could imply sharply higher spending. Annual recurring revenue growth should be read against Adobe's 10.2% fiscal 2026 target, alongside disclosures on free-to-paid conversion and deferred Creative Cloud changes. The second test is the 2028 adjusted margin: around 34% would match the forecast, a sustained margin nearer 46% would support materially higher profit, while pressure towards Autodesk's 22% would reduce it. The third is strategic execution. Adobe completed the USD 1.9bn Semrush acquisition on 28 April 2026 and bought Topaz Labs on 23 September 2026. Anil Chakravarthy becomes chief executive on 1 December 2026. Paid sales from acquisitions and early decisions on pricing, free users and Creative Cloud will determine whether the current price reflects durable profit or unresolved execution risk."
+    }
+  ],
+  "risks": [
+    "Paid conversion (Adobe software): accelerating free-user growth may not produce enough paid sales, weakening the forecast profit base, with free-to-paid conversion disclosures as the early warning.",
+    "Margin compression (Adobe software): competition, price-sensitive customers and spending could push the adjusted operating margin below the 34% 2028 forecast, with quarterly adjusted margin as the early warning.",
+    "Sales shortfall (Adobe software): fiscal 2026 sales could miss the USD 26.576bn-USD 26.626bn target, deepening doubts about the growth strategy, with quarterly sales against target as the early warning.",
+    "Strategic execution (Adobe software): the USD 1.9bn Semrush acquisition, Topaz Labs purchase and chief executive transition could add cost without paid sales, with acquisition contribution and management's first pricing decisions as the early warning."
+  ],
+  "catalysts": [
+    "Fourth-quarter results (near-term, Adobe software): sales above the USD 26.576bn-USD 26.626bn fiscal 2026 target and adjusted profit materially above USD 405m would show that the forecast is cautious.",
+    "Paid conversion evidence (near-term, Adobe software): stronger movement from free users to paid plans alongside 10.2% annual recurring revenue growth would address the main concern behind the 8.1x multiple.",
+    "Margin resilience (medium-term, Adobe software): an adjusted operating margin sustained well above the 34% 2028 forecast would show that pricing and competition are not eroding profit as expected.",
+    "New leadership and acquisitions (medium-term, Adobe software): Anil Chakravarthy's decisions after 1 December 2026, together with paid sales from Semrush and Topaz Labs, would clarify the direction of growth and margin."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "19,409",
+            "21,505",
+            "23,769",
+            "26,607",
+            "29,038",
+            "31,534"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "6,890",
+            "7,598",
+            "9,524",
+            "10,155",
+            "10,962",
+            "11,802"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "35.5%",
+            "35.3%",
+            "40.1%",
+            "38.2%",
+            "37.8%",
+            "37.4%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-240",
+            "-857",
+            "-818",
+            "-796",
+            "-937",
+            "-1,022"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "6,650",
+            "6,741",
+            "8,706",
+            "9,359",
+            "10,025",
+            "10,780"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "34.3%",
+            "31.3%",
+            "36.6%",
+            "35.2%",
+            "34.5%",
+            "34.2%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "149",
+            "190",
+            "28",
+            "10",
+            "522",
+            "825"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "6,799",
+            "6,931",
+            "8,734",
+            "9,369",
+            "10,547",
+            "11,605"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "5,428",
+            "5,560",
+            "7,130",
+            "7,770",
+            "9,129",
+            "10,382"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "11.9",
+            "12.4",
+            "16.7",
+            "18.2",
+            "21.4",
+            "24.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,388",
+            "2,217",
+            "2,185",
+            "2,550",
+            "2,783",
+            "3,022"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,088",
+            "782",
+            "495",
+            "554",
+            "605",
+            "657"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "12,805",
+            "12,788",
+            "12,857",
+            "12,857",
+            "12,857",
+            "12,857"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "1,223",
+            "1,554",
+            "1,610",
+            "1,610",
+            "1,610",
+            "1,610"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "17,504",
+            "17,341",
+            "17,147",
+            "17,571",
+            "17,855",
+            "18,146"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "3,943",
+            "3,619",
+            "4,732",
+            "4,991",
+            "5,229",
+            "5,473"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "7,141",
+            "7,613",
+            "5,431",
+            "7,248",
+            "7,911",
+            "8,591"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "11,084",
+            "11,232",
+            "10,163",
+            "15,603",
+            "24,573",
+            "34,781"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1,191",
+            "1,657",
+            "2,186",
+            "2,186",
+            "2,186",
+            "2,186"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "29,779",
+            "30,230",
+            "29,496",
+            "35,360",
+            "44,614",
+            "55,113"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "16,518",
+            "14,105",
+            "11,623",
+            "23,336",
+            "32,465",
+            "42,846"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,634",
+            "4,129",
+            "6,210",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "1,499",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "4,564",
+            "5,176",
+            "7,235",
+            "1,025",
+            "1,025",
+            "1,025"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "8,251",
+            "10,521",
+            "10,200",
+            "10,514",
+            "10,599",
+            "10,686"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "446",
+            "428",
+            "438",
+            "485",
+            "525",
+            "555"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "29,779",
+            "30,230",
+            "29,496",
+            "35,360",
+            "44,614",
+            "55,113"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "—",
+            "428",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-3,061",
+            "-1,557",
+            "1,217",
+            "-10,127",
+            "-18,820",
+            "-28,753"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,011",
+            "12,120",
+            "12,402",
+            "12,724",
+            "13,120",
+            "13,538"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "55.5%",
+            "46.7%",
+            "39.4%",
+            "66.0%",
+            "72.8%",
+            "77.7%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-18.5%",
+            "-11.0%",
+            "10.5%",
+            "-43.4%",
+            "-58.0%",
+            "-67.1%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.4x",
+            "-0.2x",
+            "0.1x",
+            "-1.0x",
+            "-1.7x",
+            "-2.4x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.3",
+            "1.1",
+            "1",
+            "1.5",
+            "2.3",
+            "3.3"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "8,154",
+            "7,512",
+            "8,013",
+            "8,622",
+            "9,913",
+            "11,247"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "7,598",
+            "6,894",
+            "7,461",
+            "8,613",
+            "9,461",
+            "10,509"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-1,440",
+            "-1,095",
+            "-65",
+            "-56",
+            "153",
+            "157"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "352",
+            "694",
+            "624",
+            "1,220",
+            "1,220",
+            "1,313"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-352",
+            "-694",
+            "-624",
+            "-1,220",
+            "-1,220",
+            "-1,313"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "7,802",
+            "6,818",
+            "7,389",
+            "7,402",
+            "8,693",
+            "9,933"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "7,323",
+            "6,317",
+            "6,815",
+            "7,393",
+            "8,241",
+            "9,195"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "7,323",
+            "6,317",
+            "6,815",
+            "7,393",
+            "8,241",
+            "9,195"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-3,437",
+            "-5,880",
+            "-9,042",
+            "-2,221",
+            "40",
+            "30"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "4,365",
+            "938",
+            "-1,653",
+            "5,181",
+            "8,733",
+            "9,964"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "12.5x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "8.6x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "9.3x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.2x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "35.2%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "44.5%"
+          ]
+        },
+        {
+          "label": "DIV YIELD",
+          "values": [
+            "n/a"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Adobe's share price made of?",
+      "a": "Adobe software accounts for USD 223 per share at an implied 8.1x 2028 EV/EBIT multiple on USD 10.8bn of forecast operating profit. Cash, less debt and other claims, contributes USD 26 per share."
+    },
+    {
+      "q": "Why does Adobe trade below its software peers?",
+      "a": "Adobe's implied 8.1x 2028 EV/EBIT multiple is below the 18.2x peer median and below Salesforce at 12.0x, despite Adobe's 46% 2025 adjusted operating margin. The discount reflects uncertainty around free-to-paid conversion, pricing and margin retention."
+    },
+    {
+      "q": "What do analysts forecast for Adobe's sales and profit?",
+      "a": "Analysts forecast net sales of USD 26.607bn in 2026, USD 29.038bn in 2027 and USD 31.534bn in 2028. Operating profit is forecast at USD 9.359bn, USD 10.025bn and USD 10.780bn respectively."
+    },
+    {
+      "q": "What should Adobe investors watch?",
+      "a": "The main indicators are fiscal 2026 sales against the USD 26.576bn-USD 26.626bn target, adjusted operating profit against USD 9.4bn, annual recurring revenue growth against 10.2%, free-to-paid conversion and the adjusted operating margin against the 34% 2028 forecast."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' forecasts unchanged, splits forecast operating profit between businesses, compares each business with listed peers using EV/EBIT, and reads today's share price into the resulting multiples. It explains the price rather than forecasting it or assigning a target price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Adobe Inc. dated 5 November 2026 (248 USD share price, Adobe software at 223 USD per share and cash, less debt and other claims, at 26 USD per share).",
+    "Competitor context: Autodesk, Inc. at 35.4x, Microsoft Corporation at 18.2x and Salesforce, Inc. at 12.0x 2028 EV/EBIT; peer median 18.2x. DocuSign's 103.6x and 211.5x EV/EBITDA figures are marked as outliers and excluded from the peer median and average where applicable; n.m. denotes a non-positive denominator.",
+    "Market data: ADBE at 248 USD on 5 November 2026; forecast 2028 sales of USD 31.5bn and operating profit of USD 10.8bn; consensus source StockAnalysis, citing S&P Global. Cash-flow figures are the Valuatum model's calculations and can differ materially from Adobe's reported cash-flow statement."
+  ]
+}
