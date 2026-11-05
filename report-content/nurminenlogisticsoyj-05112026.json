@@ -1,0 +1,760 @@
+{
+  "id": "nurminenlogisticsoyj-05112026",
+  "slug": "nurminen-logistics-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Nurminen Logistics Oyj",
+  "ticker": "NLG1V.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Railroads",
+  "currency": "EUR",
+  "reportDate": "2026-11-05",
+  "profile": "Moves goods for businesses between Finland, the Baltics, Sweden, continental Europe and Asia. It runs freight trains, handles and stores cargo, arranges customs and forwarding, and combines rail, road and sea transport for shippers, manufacturers, importers and exporters.",
+  "headline": {
+    "currentPrice": "0.52 EUR",
+    "marketCap": "EUR 42m",
+    "enterpriseValue": "EUR 96m"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-0.68 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "11x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "7.4x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "0.99 EUR",
+    "week52Low": "0.51 EUR",
+    "oneYearChange": "-45%",
+    "threeYearChange": "-39%"
+  },
+  "summary": [
+    "Nurminen Logistics Oyj (NLG1V.HE, NASDAQ Helsinki) moves freight by rail and coordinates cargo, forwarding and terminal services across Finland, the Baltics, Sweden, continental Europe and Asia. At 0.52 EUR a share on 5 November 2026, the equity value is EUR 42m and enterprise value is EUR 96m. In this Valuatum market report dated 5 November 2026, analysts forecast revenue of EUR 138m and operating profit of EUR 13m for 2028. The share price has fallen 45% over one year and 39% over three years, while the forecast 2028 operating margin is 9.4%, below the 13.2% reported in 2025.",
+    "The price pays for four operating businesses before debt and other claims. Baltic Logistics contributes 0.52 EUR per share, or 43% of the EUR 1.19 attributed to the businesses, at 7.2x 2028 operating profit. Rail Freight contributes 0.41 EUR per share, or 34%, at 7.8x. Cargo contributes 0.19 EUR per share, or 16%, at 7.2x, while Forwarding contributes 0.07 EUR per share, or 6%, at 7.2x. Together, the businesses imply enterprise value of EUR 97m before rounding, while debt and other claims, less cash, subtract 0.68 EUR per share, leaving the 0.52 EUR market price.",
+    "The whole company trades at about 7.5x 2028 operating profit, against listed peers at about 16x. The discount reflects Finnish rail sales of EUR 16.6m in the third quarter of 2026 versus EUR 17.8m a year earlier, lost Russian traffic in the Baltics, small scale and margins that remain unproven by business. Watch Baltic sales against EUR 62m in 2028, rail sales above EUR 17.8m, Cargo growth from 14% in the third quarter, fuller international trains and the planned EUR 1.5m annual efficiency savings from 2027."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay",
+      "metric": "0.52 EUR",
+      "text": "The share price pays for four transport businesses: Baltic Logistics at 0.52 EUR per share, Rail Freight at 0.41 EUR, Cargo at 0.19 EUR and Forwarding at 0.07 EUR. Their combined 1.19 EUR per share is reduced by 0.68 EUR for debt and other claims, less cash."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "7.5x",
+      "text": "The businesses are read at about 7.5x 2028 operating profit, against listed peers at about 16x. Finnish rail sales fell to EUR 16.6m in the third quarter from EUR 17.8m, while Baltic disruption, weak forwarding margins and small scale keep confidence below peer levels."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "EUR 62m",
+      "text": "Baltic sales near EUR 62m in 2028 would match the split, while railway sales above EUR 17.8m would test whether Finnish weakness is easing. The Sweden–Italy and Sweden–Spain services, fuller southbound trains and EUR 1.5m annual savings from 2027 are the main operating tests."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Baltic Logistics",
+      "share": "0.52 EUR per share",
+      "economics": "7.2x 2028 operating profit · EUR 6m forecast operating profit · peers 14.2x-17.5x, median 15.7x",
+      "text": "Baltic Logistics coordinates freight and logistics services through the Baltic countries. Its external sales were EUR 47m in 2025, and the split assigns sales of EUR 62m and operating profit of EUR 6m in 2028, a 9% margin. The market price attributes 0.52 EUR per share, or 43% of the EUR 1.19 contributed by the four businesses, to this pool. The asset-light model uses partners for rail operations, so the margin depends on customer pricing against partner charges rather than owned trains or terminals. External sales reached EUR 9.0m in the third quarter of 2026, up 56% year on year, after second-quarter growth of 13.8%. The discount to peers reflects Baltic rail activity falling 18.8% in Latvia and 17.3% in Estonia in 2025, lost Russian traffic, regional concentration and the absence of a separately reported operating margin."
+    },
+    {
+      "name": "Rail Freight",
+      "share": "0.41 EUR per share",
+      "economics": "7.8x 2028 operating profit · EUR 4m forecast operating profit · peers 13.6x-17.5x, median 16.4x",
+      "text": "Rail Freight moves goods on domestic Finnish services and international routes. Sales were EUR 34m in 2025, while the split assigns sales of EUR 45m and operating profit of EUR 4m in 2028, a 9% margin. The market price attributes 0.41 EUR per share, or 34% of the EUR 1.19 contributed by the businesses, to this pool. Finnish operations have about 4 million tonnes of annual volume and 96% on-time delivery, while international traffic relies on partner operators. Fixed Finnish costs make volume important, and international profitability depends on load balance when trains run full in one direction and half empty in the other. The 7.8x multiple is below peers because Finnish volumes remain weak, Russian tariff increases reduced fertiliser traffic and the business lacks the scale, owned networks and established volume stability of large listed railways."
+    },
+    {
+      "name": "Cargo",
+      "share": "0.19 EUR per share",
+      "economics": "7.2x 2028 operating profit · EUR 2m forecast operating profit · peers 14.2x-18.9x, median 16.8x",
+      "text": "Cargo handles and stores goods through cargo and terminal services. Sales were EUR 17m in 2025, and the split assigns sales of EUR 23m and operating profit of EUR 2m in 2028, a 9% margin. The market price attributes 0.19 EUR per share, or 16% of the EUR 1.19 contributed by the businesses, to this pool. Profit depends on filling warehouse and terminal capacity: rent, staff and equipment create a largely fixed cost base, so additional volume can lift profit faster than sales, while weak volumes thin margins quickly. Finnish Cargo sales grew 14% in the third quarter of 2026. The 7.2x multiple is below peers despite the split margin matching HHLA Container's 8.7% in 2025, because the group is small, exposed to Finnish rail weakness and has not demonstrated that a 9% margin will hold as sales grow by about a third."
+    },
+    {
+      "name": "Forwarding",
+      "share": "0.07 EUR per share",
+      "economics": "7.2x 2028 operating profit · EUR 1m forecast operating profit · peers 14.2x-17.5x, median 15.7x",
+      "text": "Forwarding arranges imports, exports and customs procedures and coordinates rail, road and sea transport. Sales were EUR 7m in 2025, and the split assigns sales of EUR 9m and operating profit of EUR 1m in 2028, a 9% margin. The market price attributes 0.07 EUR per share, or 6% of the EUR 1.19 contributed by the businesses, to this pool. A forwarder earns the difference between customer charges and purchased carrier capacity, so margin depends on buying space well and processing shipments through a small team. No separate Forwarding margin has been disclosed, leaving the split assumption untested. The 7.2x multiple is about half the peer median because the business is small, has limited visible track record and assumes a margin above Kuehne+Nagel's 5.1% in 2025 and DSV's 7.9%."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "At 0.52 EUR a share, the market assigns 0.52 EUR per share to Baltic Logistics, 0.41 EUR to Rail Freight, 0.19 EUR to Cargo and 0.07 EUR to Forwarding. The four businesses therefore add to 1.19 EUR per share before claims. Baltic Logistics is the largest pool, representing 43% of the businesses' combined value, followed by Rail Freight at 34%, Cargo at 16% and Forwarding at 6%. The split applies 7.2x 2028 operating profit to Baltic Logistics, 7.8x to Rail Freight, 7.2x to Cargo and 7.2x to Forwarding. Those multiples correspond to forecast operating profit of EUR 6m, EUR 4m, EUR 2m and EUR 1m respectively. Debt and other claims, less cash, subtract 0.68 EUR per share, or EUR 55m at the end of 2026 as forecast, from the businesses' EUR 1.19 per share. The resulting price is therefore principally a claim on forecast operating profit rather than reported asset value. What matters for the composition is whether EUR 13m of group operating profit in 2028 is achieved and how much belongs to businesses whose margins are currently estimated rather than separately disclosed."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "The whole company is read at about 7.5x 2028 operating profit, while listed peers cost about 16x. Each business also sits below its relevant peer range: Baltic Logistics at 7.2x versus 14.2x-17.5x, Rail Freight at 7.8x versus 13.6x-17.5x, Cargo at 7.2x versus 14.2x-18.9x and Forwarding at 7.2x versus 14.2x-17.5x. The common discount reflects a group forecast operating margin of 9.4% in 2028 against 13.2% in 2025, as well as a small scale that magnifies weakness in one region or service. Rail Freight has Finnish sales of EUR 16.6m in the third quarter of 2026 versus EUR 17.8m a year earlier, and Russian tariff increases have reduced fertiliser traffic. Baltic Logistics operates in markets where 2025 rail freight fell 18.8% in Latvia and 17.3% in Estonia. Cargo is read alongside those group pressures, while Forwarding has no separately reported margin. Peer operating margins also declined, but the comparison remains demanding: Kuehne+Nagel reported 5.1% in 2025 and DSV 7.9%, against 9% assumed for each Nurminen business. The price composition therefore rests on growth and margin delivery that has not yet been established across the group."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operating test is quarterly railway sales. The latest figure was EUR 16.6m, against EUR 17.8m a year earlier; continued sales below EUR 17.8m would point to persistent Finnish weakness, while international traffic must compensate through fuller trains. International rail traffic grew 66% in the third quarter, but load balance on southbound routes remains crucial. The second test is Baltic sales: EUR 9.0m in the third quarter of 2026 was up 56%, and EUR 62m in 2028 would match the split. A separate Baltic or Forwarding operating margin would be more decisive because the current 9% assumptions are not independently disclosed. The Sweden–Italy service has operated twice weekly since October 2026, and the Sweden–Spain service is targeted for early 2027; reported loads will show whether route expansion adds profitable volume. Cargo sales grew 14% in the third quarter, making subsequent growth important for reaching EUR 23m of 2028 sales. Finally, EUR 1.5m of annual efficiency savings from 2027 and lower financing costs after repayment of the EUR 12m North Rail loan could support group earnings, although lower interest does not increase operating profit. These indicators determine what the 0.52 EUR share price is made of."
+    }
+  ],
+  "risks": [
+    "Finnish rail contraction (Rail Freight): railway sales remain below EUR 17.8m and Russian tariff increases continue reducing fertiliser volumes, with quarterly railway sales as the early warning.",
+    "Unproven forwarding margins (Forwarding): a margin near Kuehne+Nagel's 5.1% would reduce 2028 profit to roughly half the split estimate, with separate Forwarding margin disclosure as the early warning.",
+    "Baltic disruption (Baltic Logistics): lost Russian traffic and weak Latvian and Estonian rail activity limit growth, with Baltic quarterly sales below the EUR 62m 2028 path as the early warning.",
+    "International load imbalance (Rail Freight): trains run half empty southbound and route expansion adds cost without sufficient profit, with load factors on the Sweden–Italy and Sweden–Spain services as the early warning.",
+    "Group earnings pressure (all businesses): the 2028 forecast operating margin falls to 9.4% from 13.2% in 2025, with quarterly group operating profit and the EUR 1.5m savings programme as early warnings."
+  ],
+  "catalysts": [
+    "Quarterly railway recovery (near-term, Rail Freight): sales above EUR 17.8m would show that Finnish weakness is being offset or reversed.",
+    "Baltic growth confirmation (near-term, Baltic Logistics): quarterly sales continuing after EUR 9.0m in the third quarter of 2026 would support the EUR 62m 2028 split.",
+    "Sweden–Spain launch (near-term, Rail Freight and Forwarding): the planned early-2027 service and fuller southbound trains would show that route expansion is producing usable volume.",
+    "Efficiency savings (medium-term, all businesses): EUR 1.5m of annual savings from 2027 would support profit while the businesses expand.",
+    "Separate margin disclosure (medium-term, Baltic Logistics and Forwarding): reported margins near the assumed 9% would validate the currently unreported business-level economics."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "128",
+            "105",
+            "109",
+            "109",
+            "123",
+            "138"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "36",
+            "25",
+            "27",
+            "21",
+            "20",
+            "24"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "28.4%",
+            "23.6%",
+            "24.5%",
+            "19.2%",
+            "16.5%",
+            "17.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-3",
+            "-5",
+            "-12",
+            "-12",
+            "-10",
+            "-11"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "33",
+            "19",
+            "14",
+            "9",
+            "10",
+            "13"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "25.9%",
+            "18.4%",
+            "13.2%",
+            "8.2%",
+            "8.3%",
+            "9.4%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-4",
+            "-3",
+            "-5",
+            "-9",
+            "-4",
+            "-3"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "29",
+            "16",
+            "10",
+            "-0",
+            "6",
+            "10"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "23",
+            "13",
+            "6",
+            "-1",
+            "4",
+            "6"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.3",
+            "0.2",
+            "0.1",
+            "-0",
+            "0.1",
+            "0.1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0.1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "35.9%",
+            "41.3%",
+            "39.1%",
+            "39.1%",
+            "39.1%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "77",
+            "51",
+            "48",
+            "50",
+            "56",
+            "63"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1",
+            "6",
+            "4",
+            "4",
+            "4",
+            "5"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1",
+            "7",
+            "8",
+            "8",
+            "8",
+            "8"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "80",
+            "65",
+            "60",
+            "62",
+            "69",
+            "76"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "12",
+            "14",
+            "12",
+            "13",
+            "14",
+            "16"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "13",
+            "16",
+            "20",
+            "19",
+            "22",
+            "24"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "26",
+            "31",
+            "33",
+            "33",
+            "37",
+            "42"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "7",
+            "5",
+            "4",
+            "4",
+            "4",
+            "4"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "114",
+            "102",
+            "97",
+            "99",
+            "110",
+            "122"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "46",
+            "41",
+            "43",
+            "40",
+            "44",
+            "49"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "18",
+            "23",
+            "31",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "21",
+            "6",
+            "10",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "18",
+            "20",
+            "16",
+            "9",
+            "12",
+            "15"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "38",
+            "24",
+            "22",
+            "35",
+            "39",
+            "43"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "12",
+            "17",
+            "17",
+            "16",
+            "16",
+            "16"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "114",
+            "102",
+            "97",
+            "99",
+            "110",
+            "122"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "10",
+            "15",
+            "15",
+            "14",
+            "14",
+            "14"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "36",
+            "28",
+            "37",
+            "43",
+            "47",
+            "51"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "72",
+            "54",
+            "64",
+            "69",
+            "77",
+            "85"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "40.3%",
+            "40.5%",
+            "43.9%",
+            "40.3%",
+            "39.8%",
+            "40.0%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "77.6%",
+            "66.9%",
+            "86.4%",
+            "109.3%",
+            "107.8%",
+            "103.8%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.0x",
+            "1.1x",
+            "1.4x",
+            "2.1x",
+            "2.3x",
+            "2.1x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "0.7",
+            "1.3",
+            "1.5",
+            "0.9",
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "30",
+            "15",
+            "15",
+            "9",
+            "14",
+            "18"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "34",
+            "18",
+            "19",
+            "16",
+            "17",
+            "20"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-3",
+            "2",
+            "4",
+            "2",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "36",
+            "-10",
+            "8",
+            "14",
+            "17",
+            "19"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-36",
+            "10",
+            "-8",
+            "-14",
+            "-17",
+            "-19"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-6",
+            "4",
+            "7",
+            "-4",
+            "-3",
+            "-1"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-1",
+            "26",
+            "-1",
+            "3",
+            "-0",
+            "1"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-1",
+            "26",
+            "-1",
+            "3",
+            "-0",
+            "1"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "14",
+            "-24",
+            "-4",
+            "3",
+            "6",
+            "4"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-2",
+            "—",
+            "-5",
+            "-2",
+            "—",
+            "-2"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "7",
+            "1",
+            "4",
+            "-1",
+            "3",
+            "3"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "n.m."
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "4.6x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "11x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.3x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "n/a"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "2.1x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Nurminen Logistics Oyj's share price made of?",
+      "a": "At 0.52 EUR a share, the price is split between Baltic Logistics at 0.52 EUR per share, Rail Freight at 0.41 EUR, Cargo at 0.19 EUR and Forwarding at 0.07 EUR. Debt and other claims, less cash, subtract 0.68 EUR per share."
+    },
+    {
+      "q": "Why does Nurminen Logistics trade below its listed peers?",
+      "a": "The businesses are read at 7.2x-7.8x 2028 operating profit, against relevant peer ranges of 13.6x-18.9x. Finnish railway sales of EUR 16.6m in the third quarter, Baltic disruption, small scale and unreported business-level margins keep the comparison below peers."
+    },
+    {
+      "q": "What do analysts forecast for Nurminen Logistics sales and profit?",
+      "a": "Analysts forecast revenue of EUR 138m, EBITDA of EUR 24m, operating profit of EUR 13m and net earnings of EUR 6m in 2028. The forecast operating margin is 9.4%, compared with 13.2% reported in 2025."
+    },
+    {
+      "q": "What should Nurminen Logistics investors watch?",
+      "a": "Watch quarterly railway sales against EUR 17.8m, Baltic sales against the EUR 62m 2028 path, Cargo growth after 14% in the third quarter, international train load balance, the Sweden–Spain launch and EUR 1.5m annual efficiency savings from 2027."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The analysis keeps analysts' forecasts through 2028, splits group operating profit between four businesses, compares each with listed peers using EV/EBIT and reads today's 0.52 EUR share price back into the businesses after debt and other claims, less cash."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Nurminen Logistics Oyj dated 5 November 2026 (0.52 EUR share price, Baltic Logistics at 0.52 EUR per share, Rail Freight at 0.41 EUR, Cargo at 0.19 EUR and Forwarding at 0.07 EUR).",
+    "Competitor context: DSV A/S at 14.2x-15.7x EV/EBIT 2028, Kuehne + Nagel International AG at 17.5x, Expeditors International of Washington, Inc. at 15.7x, Union Pacific Corporation at 16.4x, CSX Corporation at 17.5x, Canadian National Railway Company at 13.6x, Canadian Pacific Railway Limited at 16.4x, GXO Logistics, Inc. at 16.8x and XPO Logistics, Inc. at 18.9x. Peer comparisons use each company's Valuatum model; the report notes that where fewer than three peers are available, industry quartiles are used.",
+    "Market data: NLG1V.HE, 0.52 EUR on 5 November 2026, with analysts' forecasts of revenue of EUR 138m and operating profit of EUR 13m in 2028. The supplied disclosures do not provide separate Forwarding or Baltic operating margins, so the 9% business-level margins are split estimates rather than reported figures."
+  ]
+}
