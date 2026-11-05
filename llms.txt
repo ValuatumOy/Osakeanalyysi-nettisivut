@@ -21,6 +21,7 @@
 - [Alphabet (GOOGL) AI equity report](https://www.aiequityreports.com/reports/alphabet-equity-report.html): HOLD, target 312.70 USD (current 342.00 USD).
 - [Amazon.com (AMZN) AI equity report](https://www.aiequityreports.com/reports/amazon-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Apple (AAPL) AI equity report](https://www.aiequityreports.com/reports/apple-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
+- [Consti (CONSTI.HE) AI equity report](https://www.aiequityreports.com/reports/consti-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Elisa (ELISA.HE) AI equity report](https://www.aiequityreports.com/reports/elisa-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Fortum (FORTUM.HE) AI equity report](https://www.aiequityreports.com/reports/fortum-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Harvia (HARVIA.HE) AI equity report](https://www.aiequityreports.com/reports/harvia-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
@@ -64,6 +65,6 @@
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1150 listed companies have a page with share price, valuation metrics and company profile,
+1149 listed companies have a page with share price, valuation metrics and company profile,
 each able to generate a fresh AI equity report on demand. They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

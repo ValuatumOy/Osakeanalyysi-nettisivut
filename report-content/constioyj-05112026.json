@@ -1,0 +1,748 @@
+{
+  "id": "constioyj-05112026",
+  "slug": "consti-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Consti Oyj",
+  "ticker": "CONSTI.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Engineering & Construction",
+  "currency": "EUR",
+  "reportDate": "2026-11-05",
+  "profile": "Renovates and repairs buildings in Finland’s growth centres. It also installs and services heating, ventilation and electrical systems, undertakes some new-build work, and serves housing companies, businesses, property investors and public bodies through four business areas.",
+  "headline": {
+    "currentPrice": "9.74 EUR",
+    "marketCap": "EUR 79m",
+    "enterpriseValue": "EUR 83m"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-0.46 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "9.6x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "6.3x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "13x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "12.75 EUR",
+    "week52Low": "9.72 EUR",
+    "oneYearChange": "-5.6%",
+    "threeYearChange": "-2.8%"
+  },
+  "summary": [
+    "Consti Oyj (CONSTI.HE, NASDAQ Helsinki) renovates and repairs buildings in Finland’s growth centres, installs and services heating, ventilation and electrical systems, and undertakes some new-build work. The share price was 9.74 EUR on 5 November 2026, giving the company a market capitalisation of EUR 79m and an enterprise value of EUR 83m. Housing companies, corporations, public-sector customers and building-technology clients make up the operating base. Analysts forecast 2028 sales of EUR 364m and operating profit of EUR 13m, while the group reported EUR 336m of sales and EUR 9m of operating profit in 2025.",
+    "The 9.74 EUR share price is split across four operating businesses. Housing Companies contributes 3.93 EUR per share at 7.5x its 2028 forecast operating profit of EUR 4m; Corporations contributes 3.07 EUR at 7.5x EUR 3m; Public Sector contributes 1.83 EUR at 7.5x EUR 2m; and Building Technology contributes 1.37 EUR at 3.2x EUR 3m. The four businesses total 10.20 EUR per share before debt and other claims. Forecast debt and other claims, less cash, reduce the amount by 0.46 EUR per share, producing the current 9.74 EUR price.",
+    "The group’s aggregate price implies about 6.5x 2028 operating profit, versus about 12.5x for listed peers, while the business split places three activities at 7.5x and Building Technology at 3.2x. Weak financing for housing-company renovations, cautious property investors, tight public budgets, small scale and a 2.1% operating margin in January–September 2026 explain the lower reading. The key tests are whether EUR 278.7m of backlog converts into sales, whether 2028 sales reach the split assumptions, whether margins approach 4%, and whether 2026 operating profit reaches EUR 8m–11m."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "Four Businesses",
+      "metric": "4 businesses",
+      "text": "The 9.74 EUR share price rests on Housing Companies, Corporations, Public Sector and Building Technology. Together they contribute 10.20 EUR per share before forecast debt and other claims, with no forests or property included in the price composition."
+    },
+    {
+      "num": "02",
+      "title": "Peer Discount",
+      "metric": "2.1% margin",
+      "text": "The aggregate price pays about 6.5x 2028 operating profit against about 12.5x for listed peers. Scarce financing, cautious clients, tight public budgets and a 2.1% group operating margin in January–September 2026 support the lower multiples."
+    },
+    {
+      "num": "03",
+      "title": "Sales Delivery",
+      "metric": "EUR 278.7m",
+      "text": "The central test is whether the EUR 278.7m order backlog at 30 September 2026 converts into sales. Housing Companies, Corporations, Public Sector and Building Technology must approach their 2028 sales assumptions for the price split to remain supported."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Housing Companies",
+      "share": "3.93 EUR per share",
+      "economics": "7.5x 2028 operating profit · EUR 4m forecast operating profit · industry lower quartile 10.9x, median 14.1x, upper quartile 15.3x",
+      "text": "Housing Companies renovates and repairs residential buildings for housing companies and apartment-block residents. It generated EUR 114m of outside sales in 2025, up 21.9% from EUR 93.2m in 2024, and employed 345 people at year-end. The split assumes EUR 119m of 2028 sales and a 4% margin, producing EUR 4m of operating profit. The market assigns 3.93 EUR per share to that profit at 7.5x, below the industry lower quartile of 10.9x and median of 14.1x. Financing access continued to constrain housing-company renovations in October 2026, while competition remained intense. Fixed-price contracts leave cost overruns with Consti, so utilisation and contract control determine whether the assumed margin appears. Sales near EUR 114m would leave the financing problem unresolved; higher orders and sales would provide the earliest evidence that postponed projects are returning."
+    },
+    {
+      "name": "Corporations",
+      "share": "3.07 EUR per share",
+      "economics": "7.5x 2028 operating profit · EUR 3m forecast operating profit · industry lower quartile 10.9x, median 14.1x, upper quartile 15.3x",
+      "text": "Corporations renovates and builds projects for businesses and real-estate investors. Outside sales were EUR 89m in 2025, and the split assumes EUR 93m in 2028 at a 4% margin, creating EUR 3m of operating profit. Its 3.07 EUR per-share contribution is priced at 7.5x, below the industry lower quartile of 10.9x and median of 14.1x. Project execution is decisive because fixed-price work exposes Consti to overruns, while target-price and cost-plus-fee contracts share more risk with customers. Property investors remained cautious and competition intense in October 2026, limiting volumes and pricing. Consti’s group scale also matters: it had 981 employees and EUR 336m of group sales in 2025. Skanska Construction’s 4.1% margin, NCC Building Nordics’ 3.5% and Peab Construction’s 2.2% frame the 4% assumption."
+    },
+    {
+      "name": "Public Sector",
+      "share": "1.83 EUR per share",
+      "economics": "7.5x 2028 operating profit · EUR 2m forecast operating profit · industry lower quartile 10.9x, median 14.1x, upper quartile 15.3x",
+      "text": "Public Sector renovates and builds schools, hospitals and public rental properties. It generated EUR 53m of outside sales in 2025, and the split assumes EUR 55m in 2028 at a 4% margin, producing EUR 2m of operating profit. The market assigns 1.83 EUR per share at 7.5x, below the industry lower quartile of 10.9x and median of 14.1x. The business depends on municipal and wellbeing-services-county finances, which were identified as constraints on future renovation activity. The Government Palace renovation is the largest operational test: Consti’s share is about EUR 171m if renovation and extension proceed, with about EUR 112m of renovation work due into backlog in the first quarter of 2026. The EUR 18m Koskela school and daycare project and EUR 46.6m Pitäjänmäki target-price contract provide further evidence on delivery and margin."
+    },
+    {
+      "name": "Building Technology",
+      "share": "1.37 EUR per share",
+      "economics": "3.2x 2028 operating profit · EUR 3m forecast operating profit · industry lower quartile 4.7x, median 7.9x, upper quartile 11.6x",
+      "text": "Building Technology installs, services and maintains building systems for businesses, property owners and public customers. Outside sales were EUR 92m in 2025, with 364 employees, while the split assumes EUR 96m of 2028 sales at a 4% margin and EUR 3m of operating profit. The 1.37 EUR per-share contribution is priced at 3.2x, below the industry lower quartile of 4.7x and median of 7.9x. Consti does not publish a separate profit line for this activity, so investors cannot directly test the assumed margin. Service work can provide steadier revenue, while project overruns can quickly consume profit; group service sales were EUR 30.1m in 2025. The business sold EUR 69.8m in the first nine months of 2026, including EUR 25.0m in the third quarter. Skilled-worker availability and scale versus larger rivals remain material constraints."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 9.74 EUR share price is built from four renovation and building-services activities rather than forests or property. Housing Companies is the largest component at 3.93 EUR per share, followed by Corporations at 3.07 EUR, Public Sector at 1.83 EUR and Building Technology at 1.37 EUR. Together the businesses contribute 10.20 EUR per share before debt and other claims. Their respective 2028 forecast operating profits are EUR 4m, EUR 3m, EUR 2m and EUR 3m, with the first three priced at 7.5x and Building Technology at 3.2x. Forecast debt and other claims, less cash, subtract 0.46 EUR per share, equivalent to EUR 4m at group level, leaving the 9.74 EUR share price and EUR 83m enterprise value. The whole-company measure is 9.6x 2026 forecast operating profit and 6.3x 2028 forecast operating profit. Analysts’ forecasts are for the group, so the sales, margins and operating profits assigned to each business are allocations rather than separately published segment forecasts. That distinction matters most for Corporations, Public Sector and Building Technology, where direct segment profitability is unavailable. The price composition therefore depends on both group forecasts and the chosen allocation of profit across the four activities."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "The lower multiples reflect operating uncertainty rather than a single industry-wide comparison. Housing Companies, Corporations and Public Sector each sit at 7.5x 2028 operating profit, below the relevant industry lower quartile of 10.9x and median of 14.1x. Building Technology is lower at 3.2x against an Engineering & Construction lower quartile of 4.7x and median of 7.9x. Housing-company renovations remain constrained by scarce financing, while property investors are cautious and competition is intense in Corporations. Public Sector depends on municipal and wellbeing-services-county budgets. Building Technology lacks the scale and separately disclosed margin of larger specialists. The assumed 4% margin in each business also needs to be earned: group operating margin was 2.8% in 2025 and 2.1% in January–September 2026. Peer operating margins show a wide range, from Peab Construction’s 2.2% to Skanska Construction’s 4.1%, while Bravida’s Finnish EBITA margin was 2.1% in 2025. Consti’s 2028 group forecast is EUR 364m of sales and EUR 13m of operating profit, compared with EUR 336m and EUR 9m in 2025. The price therefore rests on improving sales and margins that are not yet visible consistently in reported segment results."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The primary evidence will be conversion of contracted work into sales and operating profit. Group backlog was EUR 278.7m at 30 September 2026, 16.2% above a year earlier, but its business-area composition is not disclosed. Housing Companies needs sales to move above the EUR 114m recorded in 2025 and towards the EUR 119m 2028 allocation; financing commentary is the earliest indicator. Corporations needs sales to approach EUR 93m from EUR 89m, alongside margins nearer the 3.5%–4.1% earned by NCC Building Nordics and Skanska Construction. Public Sector reported EUR 11.5m of sales in the third quarter of 2026, with EUR 55m assumed for 2028; Government Palace, Koskela and Pitäjänmäki will test delivery and pricing. Building Technology needs sales to rise from EUR 92m in 2025 towards EUR 96m, while a separately disclosed profit figure would directly test the 4% assumption. At group level, the unchanged 2026 operating-result guidance of EUR 8m–11m is an important near-term check against the 2.1% nine-month margin. The Government Palace extension remains dependent on planning, permits and Senate Properties’ decisions. Skilled-worker availability could restrict Building Technology growth. A combination of rising business-area sales, backlog conversion and margins approaching 4% would change the price composition’s evidential basis; stagnant sales or cost overruns would reinforce the current lower multiples."
+    }
+  ],
+  "risks": [
+    "Financing constraints (Housing Companies): scarce lender access postpones apartment-block renovation projects and keeps sales near EUR 114m; financing wording and quarterly sales are the early warning.",
+    "Project overruns (Corporations and Public Sector): fixed-price work can turn delayed or misestimated projects into margin losses; group operating margin below 2.1% is the early warning.",
+    "Public-budget pressure (Public Sector): weak municipal and wellbeing-services-county finances constrain renovation activity and could keep sales near EUR 53m; quarterly Public Sector sales below the EUR 55m 2028 path are the early warning.",
+    "Margin shortfall (all businesses): the four-business split assumes 4% margins while group margin was 2.1% in January–September 2026; failure to reach the EUR 8m–11m 2026 operating-result guidance is the early warning.",
+    "Skilled-worker shortage (Building Technology): insufficient installers limit growth from EUR 92m of 2025 sales towards EUR 96m in 2028; recruitment and retention commentary is the early warning."
+  ],
+  "catalysts": [
+    "Government Palace execution (near-term, Public Sector): construction beginning as scheduled and smooth delivery of about EUR 112m of renovation backlog would provide evidence of recurring public-sector profit.",
+    "Backlog conversion (near-term, all businesses): the EUR 278.7m group backlog converting into sales without cost overruns would support the 2028 sales assumptions.",
+    "Financing improvement (medium-term, Housing Companies): easier lender terms and rising housing-company orders would move sales above EUR 114m towards EUR 119m.",
+    "Margin recovery (medium-term, Corporations and all businesses): operating performance approaching the 3.5%–4.1% peer range would support the 4% margins used in the split.",
+    "Skilled hiring and service growth (medium-term, Building Technology): more installers and higher recurring service activity would help sales approach EUR 96m and spread fixed costs across more work."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "321",
+            "327",
+            "336",
+            "328",
+            "352",
+            "364"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "16",
+            "14",
+            "13",
+            "12",
+            "15",
+            "17"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "5.0%",
+            "4.4%",
+            "3.9%",
+            "3.7%",
+            "4.4%",
+            "4.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-4",
+            "-4",
+            "-4",
+            "-4",
+            "-4",
+            "-4"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "12",
+            "10",
+            "9",
+            "9",
+            "12",
+            "13"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "3.9%",
+            "3.1%",
+            "2.8%",
+            "2.6%",
+            "3.3%",
+            "3.6%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-1",
+            "-1",
+            "-1",
+            "-1",
+            "-1",
+            "-1"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "11",
+            "9",
+            "9",
+            "8",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "9",
+            "7",
+            "7",
+            "6",
+            "9",
+            "10"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.2",
+            "0.9",
+            "0.9",
+            "0.8",
+            "1.1",
+            "1.3"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.6",
+            "0.7",
+            "0.7",
+            "0.6",
+            "0.9",
+            "1"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "51.5%",
+            "77.1%",
+            "81.2%",
+            "79.6%",
+            "79.6%",
+            "79.6%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "9",
+            "8",
+            "7",
+            "7",
+            "8",
+            "8"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "49",
+            "49",
+            "49",
+            "49",
+            "49",
+            "49"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "59",
+            "58",
+            "57",
+            "57",
+            "57",
+            "58"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "41",
+            "45",
+            "41",
+            "41",
+            "45",
+            "46"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "21",
+            "14",
+            "19",
+            "17",
+            "18",
+            "19"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "62",
+            "60",
+            "60",
+            "59",
+            "63",
+            "66"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "121",
+            "117",
+            "117",
+            "116",
+            "121",
+            "123"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "41",
+            "44",
+            "45",
+            "46",
+            "50",
+            "53"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "12",
+            "9",
+            "10",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "2",
+            "2",
+            "5",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "9",
+            "6",
+            "10",
+            "10",
+            "10",
+            "9"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "65",
+            "62",
+            "62",
+            "60",
+            "62",
+            "62"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "121",
+            "117",
+            "117",
+            "116",
+            "121",
+            "123"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "6",
+            "6",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-1",
+            "3",
+            "-5",
+            "4",
+            "1",
+            "-1"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "34",
+            "40",
+            "40",
+            "50",
+            "51",
+            "51"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "33.9%",
+            "37.3%",
+            "38.7%",
+            "39.6%",
+            "41.0%",
+            "42.7%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-2.3%",
+            "6.1%",
+            "-10.9%",
+            "8.1%",
+            "2.2%",
+            "-2.8%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.1x",
+            "0.2x",
+            "-0.4x",
+            "0.3x",
+            "0.1x",
+            "-0.1x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1.1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "15",
+            "4",
+            "12",
+            "1",
+            "12",
+            "14"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "16",
+            "4",
+            "13",
+            "1",
+            "13",
+            "14"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-2",
+            "8",
+            "-2",
+            "9",
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "5",
+            "3",
+            "3",
+            "4",
+            "4",
+            "4"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-5",
+            "-3",
+            "-3",
+            "-4",
+            "-4",
+            "-4"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "10",
+            "1",
+            "10",
+            "-3",
+            "8",
+            "9"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "10",
+            "2",
+            "14",
+            "-2",
+            "8",
+            "10"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "10",
+            "2",
+            "14",
+            "-2",
+            "8",
+            "10"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-10",
+            "-7",
+            "-5",
+            "1",
+            "-6",
+            "-9"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-3",
+            "-5",
+            "-6",
+            "-6",
+            "-5",
+            "-7"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-0",
+            "-6",
+            "5",
+            "-2",
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "12.6x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "6.8x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "9.6x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.7x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "2.6%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "13.7%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "6.3%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "0.3x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Consti Oyj’s share price made of?",
+      "a": "The 9.74 EUR share price is allocated to Housing Companies at 3.93 EUR per share, Corporations at 3.07 EUR, Public Sector at 1.83 EUR and Building Technology at 1.37 EUR. The four businesses total 10.20 EUR per share before forecast debt and other claims, less 0.46 EUR per share."
+    },
+    {
+      "q": "Why does Consti Oyj trade below its listed peers?",
+      "a": "The group price implies about 6.5x 2028 operating profit against about 12.5x for listed peers. Scarce housing-company financing, cautious property investors, weak public finances, small scale and a 2.1% operating margin in January–September 2026 weigh on the comparison."
+    },
+    {
+      "q": "What do analysts forecast for Consti Oyj’s sales and profit?",
+      "a": "Analysts forecast EUR 364m of sales and EUR 13m of operating profit in 2028, compared with EUR 336m of sales and EUR 9m of operating profit in 2025. The forecast also includes EUR 10m of net earnings, EPS of 1.3 EUR and DPS of 1 EUR."
+    },
+    {
+      "q": "What should Consti Oyj investors watch?",
+      "a": "Investors should track conversion of the EUR 278.7m backlog into sales, Housing Companies’ financing and sales, Corporations’ margins, Public Sector projects including Government Palace, Building Technology sales and hiring, and delivery against EUR 8m–11m of 2026 operating-result guidance."
+    },
+    {
+      "q": "How does Valuatum’s market report work?",
+      "a": "The method keeps analysts’ whole-company forecasts unchanged to 2028, allocates sales and operating profit between businesses, compares each activity with listed peers or industry quartiles, and reads today’s share price back into the businesses through EV/EBIT multiples. It does not forecast the share price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Consti Oyj dated 5 November 2026 (9.74 EUR share price, EUR 79m market capitalisation, EUR 83m enterprise value and the split between Housing Companies, Corporations, Public Sector and Building Technology).",
+    "Competitor context: YIT at 14.1x and NCC AB at 11.7x 2028 EV/EBIT for the industrials comparison; Bravida Holding AB at 12.3x and Instalco AB at 11.0x for Building Technology, with industry quartiles used because fewer than three listed peers could be read.",
+    "Market data: CONSTI.HE, 9.74 EUR on 5 November 2026, analysts’ 2028 forecast of EUR 364m sales and EUR 13m operating profit, with consensus forecasts used as the starting point. The business-level sales, margins and operating profits are allocations rather than separately published forecasts; cash-flow rows are Valuatum model calculations and may differ from reported cash flow."
+  ]
+}
