@@ -1,0 +1,752 @@
+{
+  "id": "metsooutotec-05112026",
+  "slug": "metso-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Metso Outotec",
+  "ticker": "METSO.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Industrial machinery",
+  "currency": "EUR",
+  "reportDate": "2026-11-05",
+  "profile": "Sells machines, process systems, spare parts and services to quarry operators, aggregates contractors, construction companies and mining companies. It also delivers processing plants, maintenance, upgrades and digital tools supporting the management of water, energy and materials.",
+  "headline": {
+    "currentPrice": "17.0 EUR",
+    "marketCap": "EUR 14.1bn",
+    "enterpriseValue": "EUR 15.2bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-1.4 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "18.4 EUR",
+    "analysts": "20",
+    "range": "14.0-21.5 EUR",
+    "source": "Stock Analysis"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "19x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "14x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "25x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "19.0 EUR",
+    "week52Low": "13.1 EUR",
+    "oneYearChange": "+24%",
+    "threeYearChange": "+100%"
+  },
+  "summary": [
+    "Metso Outotec (METSO.HE, NASDAQ Helsinki) sells mineral-processing and aggregates equipment, plants, spare parts and services to mining, quarrying and construction customers. The share price was 17.0 EUR on 5 November 2026, against market capitalisation of EUR 14.1bn and enterprise value of EUR 15.2bn, in this Valuatum market report dated 5 November 2026. Analysts forecast 2028 operating profit of EUR 1.1bn on sales of EUR 6.6bn. The business mix matters because Minerals supplies most of the forecast profit, while Aggregates brings exposure to factory utilisation, aftermarket recovery and the Tampere modernisation.",
+    "The 17.0 EUR share price assigns 14.1 EUR to Minerals and 4.3 EUR to Aggregates before debt and other claims. Minerals represents 77% of the 18.4 EUR combined business value and is priced at 13.4x its EUR 871m 2028 operating profit, against a peer median of 12.5x. Aggregates represents 23% and is priced at 13.9x its EUR 257m forecast operating profit, against a 13.4x peer median. Debt and other claims, less cash, subtract 1.4 EUR per share, leaving 17.0 EUR. The split therefore rests on forecast profit rather than reported asset values.",
+    "The whole company trades at 14x 2028 operating profit, above the listed-peer comparison because both businesses sit above their respective peer medians. Minerals' premium rests on copper equipment orders, multi-year service agreements and sales growth from EUR 3,974m in 2025 towards about EUR 5bn in 2028, while Aggregates' premium rests on a 16% forecast margin and Tampere production. Watch 2026 Minerals sales, adjusted margins, aftermarket bookings, the EUR 433m Aggregates backlog and Lokotrack production scheduled for Q3 2027."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What You Pay For",
+      "metric": "13.5x",
+      "text": "Nearly all of the 17.0 EUR share price rests on Minerals and Aggregates. Their combined 18.4 EUR pre-claims value corresponds to about 13.5x 2028 operating profit, with Minerals contributing 14.1 EUR and Aggregates 4.3 EUR. The share price is therefore primarily a claim on forecast operating profit from two businesses."
+    },
+    {
+      "num": "02",
+      "title": "Above Peer Prices",
+      "metric": "14.0x",
+      "text": "The whole-company multiple is above the approximately 12.5x peer comparison. Aggregates is further above its median at 13.9x versus 13.4x, reflecting the Tampere factory programme, while Minerals is at 13.4x versus a 12.5x median, supported by copper orders and multi-year service agreements."
+    },
+    {
+      "num": "03",
+      "title": "Key Tests Ahead",
+      "metric": "€5bn",
+      "text": "The main tests are whether Minerals sales rise from EUR 3,974m in 2025 towards about EUR 5bn in 2028 and whether the Tampere programme starts on schedule. Lokotrack production is scheduled for Q3 2027 and crusher production for autumn 2028; Aggregates' margin also needs to reach 16%."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Minerals",
+      "share": "14.1 EUR per share",
+      "economics": "13.4x 2028 operating profit · EUR 871m forecast operating profit · peers 11.4x-16.9x, median 12.5x",
+      "text": "Minerals sells mineral-processing equipment, complete plants and services to mining customers, including technology that recovers copper and other metals from processed ore. It generated EUR 3,974m of outside sales in 2025 and EUR 680m of adjusted operating profit, a 17.1% margin. The split assigns EUR 871m of 2028 operating profit on about EUR 5bn of sales and gives the business 14.1 EUR per share, equal to 77% of the 18.4 EUR value of the two businesses before claims. The price therefore pays 13.4x forecast operating profit, slightly above the 12.5x peer median. Copper orders of about EUR 180m, EUR 100m and EUR 40m, plus multi-year service agreements, provide the growth evidence. The margin remains around 17%, so the premium depends more on sales growth and aftermarket expansion than on forecast margin expansion."
+    },
+    {
+      "name": "Aggregates",
+      "share": "4.3 EUR per share",
+      "economics": "13.9x 2028 operating profit · EUR 257m forecast operating profit · peers 9.5x-15.5x, median 13.4x",
+      "text": "Aggregates sells crushing and screening equipment, spare parts and services to quarries and contractors producing construction aggregates. It generated EUR 1.3bn of outside sales in 2025, with crushing representing three quarters of the business. Equipment sales grew 10%, but aftermarket sales fell 4%, making the sales mix important because parts and service recur and generally earn more than new machines. The split assigns EUR 257m of 2028 operating profit on EUR 1.6bn of sales and gives the business 4.3 EUR per share, or 23% of the 18.4 EUR pre-claims value. The price pays 13.9x forecast operating profit against a 13.4x peer median. The premium is supported by a forecast margin rising from 15.5% adjusted in 2025 to 16%, and by the Tampere technology centre, where Lokotrack production is scheduled for Q3 2027."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is built from two operating businesses rather than from a single undifferentiated company multiple. Minerals contributes 14.1 EUR per share and Aggregates 4.3 EUR before debt and other claims, giving 18.4 EUR for the operating businesses. A forecast EUR 1,128m of combined 2028 operating profit is split into EUR 871m for Minerals and EUR 257m for Aggregates. Applying 13.4x to Minerals and 13.9x to Aggregates produces enterprise values of EUR 11,688m and EUR 3,557m respectively. Debt and other claims, less cash, reduce the combined amount by 1.4 EUR per share, or EUR 1.2bn in total, leaving the 17.0 EUR share price. Minerals is therefore the dominant economic exposure: its 14.1 EUR contribution is 77% of the pre-claims business value and its forecast profit is 77% of the split. Aggregates supplies the smaller 23% contribution, but its multiple is further above its peer median. The price consequently depends on Minerals converting orders and service agreements into sales while Aggregates delivers the margin improvement and factory benefits embedded in its multiple."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "Both businesses sit above their peer medians, but for different reasons. Minerals is priced at 13.4x 2028 operating profit against a 12.5x median across FLSmidth, Weir Group, Sandvik and Epiroc. Its forecast 17% margin is little changed from the 17.1% achieved in 2025, so the premium is not based on a large margin expansion. Instead, the evidence is visible growth: the split assumes sales about 27% above 2025, alongside copper equipment orders and multi-year agreements for analyzers, mill linings and crusher wear parts. Aggregates is priced at 13.9x against a 13.4x median across Astec, Terex and Sandvik. Its 15.5% adjusted 2025 margin is above Astec's 4.7% and close to Terex Materials Processing at 13.9%, while the split assumes a 16% 2028 margin. The Tampere programme provides the operational explanation for that improvement. Lokotrack production is due in Q3 2027 and a second crusher factory in autumn 2028. The premiums therefore reflect growth and execution evidence, while remaining below the highest peer multiples."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first test is Minerals' outside sales. The business generated EUR 3,974m in 2025, while the split needs about EUR 5bn in 2028. Full-year 2026 results due early in 2027 should show whether the EUR 180m copper smelter order, EUR 100m Peru order and EUR 40m Sweden order are turning into delivered sales. The second test is the adjusted margin: 17.1% in 2025, with movement towards 19%-20% supporting a higher peer comparison and deterioration weakening the premium. Service bookings are a third test because milestone-based analyzer work and quarterly mill-lining bookings indicate whether aftermarket sales are becoming a larger share. Aggregates has separate timing risks. Its adjusted margin needs to move from 15.5% in 2025 to 16%, while its EUR 433m backlog must support factory utilisation. Lokotrack production is scheduled for Q3 2027 and crusher production for autumn 2028. Delays would postpone the expected cost and handling benefits. Aftermarket sales, which fell 4% in 2025, also need to recover; otherwise equipment-led growth could leave the mix less supportive of margins."
+    }
+  ],
+  "risks": [
+    "Minerals sales execution (Minerals): delivered sales remain near EUR 3,974m rather than approaching about EUR 5bn by 2028, weakening the growth supporting 13.4x; early warning is 2026 outside sales near the 2025 level.",
+    "Minerals margin (Minerals): adjusted margin falls below 17.1%, reducing the profit against which the premium multiple is paid; early warning is a margin drifting below the 2025 level.",
+    "Tampere delays (Aggregates): Lokotrack production misses Q3 2027 or crusher production misses autumn 2028, postponing the factory benefits behind the 13.9x multiple; early warning is a missed construction or commissioning milestone.",
+    "Aftermarket mix (Aggregates): aftermarket sales continue falling after the 4% decline in 2025, limiting the margin recovery; early warning is weaker parts and service bookings.",
+    "Reported one-off costs (company): further capacity-adjustment costs keep reported operating profit below forecast even when underlying performance is less affected; early warning is another quarter with material adjustment items."
+  ],
+  "catalysts": [
+    "2026 Minerals sales conversion (near-term, Minerals): copper, Peru and Sweden orders begin appearing in delivered sales, showing progress from EUR 3,974m towards about EUR 5bn.",
+    "Service agreement bookings (near-term, Minerals): analyzer, mill-lining and crusher wear-parts agreements book steadily, showing that aftermarket work is becoming a larger share of sales.",
+    "Tampere Lokotrack start (medium-term, Aggregates): production begins in Q3 2027, demonstrating that the modernisation is supporting factory efficiency and the 16% forecast margin.",
+    "Aggregates aftermarket recovery (medium-term, Aggregates): parts and service sales turn upward after the 4% 2025 decline, improving mix and margin quality.",
+    "Tampere crusher factory (long-term, Aggregates): crusher production starts in autumn 2028, completing the second phase of the programme behind the above-median multiple."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "5,390",
+            "4,863",
+            "5,240",
+            "5,529",
+            "6,155",
+            "6,643"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "885",
+            "892",
+            "874",
+            "989",
+            "1,163",
+            "1,306"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "16.4%",
+            "18.3%",
+            "16.7%",
+            "17.9%",
+            "18.9%",
+            "19.7%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-80",
+            "-165",
+            "-139",
+            "-196",
+            "-161",
+            "-179"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "805",
+            "727",
+            "735",
+            "793",
+            "1,003",
+            "1,127"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "14.9%",
+            "14.9%",
+            "14.0%",
+            "14.3%",
+            "16.3%",
+            "17.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-81",
+            "-79",
+            "-99",
+            "-70",
+            "-61",
+            "-52"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "724",
+            "648",
+            "636",
+            "723",
+            "941",
+            "1,075"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "545",
+            "330",
+            "429",
+            "554",
+            "708",
+            "815"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.7",
+            "0.4",
+            "0.5",
+            "0.7",
+            "0.9",
+            "1"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.3",
+            "0.4",
+            "0.4",
+            "0.5",
+            "0.7",
+            "0.8"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "45.5%",
+            "90.2%",
+            "73.3%",
+            "80.1%",
+            "80.1%",
+            "80.1%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "586",
+            "685",
+            "732",
+            "775",
+            "862",
+            "931"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "789",
+            "804",
+            "811",
+            "856",
+            "953",
+            "1,028"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1,097",
+            "1,124",
+            "1,277",
+            "1,277",
+            "1,277",
+            "1,277"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "38",
+            "40",
+            "81",
+            "81",
+            "81",
+            "81"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "2,510",
+            "2,653",
+            "2,901",
+            "2,988",
+            "3,173",
+            "3,317"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,951",
+            "1,959",
+            "1,903",
+            "2,085",
+            "2,321",
+            "2,505"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,823",
+            "1,713",
+            "1,668",
+            "1,652",
+            "1,836",
+            "1,980"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "638",
+            "431",
+            "501",
+            "515",
+            "573",
+            "619"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "4,412",
+            "4,103",
+            "4,072",
+            "4,252",
+            "4,730",
+            "5,104"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "234",
+            "259",
+            "242",
+            "242",
+            "242",
+            "242"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "7,156",
+            "7,015",
+            "7,215",
+            "7,482",
+            "8,145",
+            "8,662"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "2,618",
+            "2,611",
+            "2,677",
+            "2,904",
+            "3,168",
+            "3,415"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "1,167",
+            "1,300",
+            "1,369",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "242",
+            "164",
+            "98",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "1,482",
+            "1,429",
+            "1,467",
+            "842",
+            "1,001",
+            "1,103"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2,756",
+            "2,662",
+            "2,743",
+            "3,410",
+            "3,647",
+            "3,810"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "300",
+            "313",
+            "328",
+            "326",
+            "330",
+            "334"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "7,156",
+            "7,015",
+            "7,215",
+            "7,482",
+            "8,145",
+            "8,662"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "118",
+            "141",
+            "127",
+            "125",
+            "129",
+            "133"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "889",
+            "1,174",
+            "1,093",
+            "1,099",
+            "1,361",
+            "1,524"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "3,389",
+            "3,644",
+            "3,643",
+            "3,878",
+            "4,400",
+            "4,807"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "36.6%",
+            "37.2%",
+            "37.1%",
+            "38.8%",
+            "38.9%",
+            "39.4%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "34.0%",
+            "45.0%",
+            "40.8%",
+            "37.8%",
+            "43.0%",
+            "44.6%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "1.0x",
+            "1.3x",
+            "1.3x",
+            "1.1x",
+            "1.2x",
+            "1.2x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.6",
+            "1.5",
+            "1.5",
+            "1.3",
+            "1.3",
+            "1.3"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "102",
+            "581",
+            "815",
+            "605",
+            "526",
+            "726"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "145",
+            "761",
+            "996",
+            "658",
+            "572",
+            "765"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "619",
+            "-86",
+            "-248",
+            "146",
+            "342",
+            "267"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "61",
+            "308",
+            "387",
+            "283",
+            "345",
+            "323"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-61",
+            "-308",
+            "-387",
+            "-283",
+            "-345",
+            "-323"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "41",
+            "273",
+            "428",
+            "322",
+            "180",
+            "403"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "237",
+            "267",
+            "578",
+            "375",
+            "227",
+            "442"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "245",
+            "111",
+            "519",
+            "375",
+            "227",
+            "442"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "112",
+            "-445",
+            "-405",
+            "-307",
+            "-123",
+            "-358"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-199",
+            "-248",
+            "-298",
+            "-315",
+            "-444",
+            "-567"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "153",
+            "-172",
+            "23",
+            "14",
+            "57",
+            "44"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "25.4x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "15.4x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.9x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "14.3%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "20.0%"
+          ]
+        },
+        {
+          "label": "DIV YIELD",
+          "values": [
+            "3.2%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Metso Outotec's share price made of?",
+      "a": "The 17.0 EUR share price assigns 14.1 EUR to Minerals and 4.3 EUR to Aggregates before debt and other claims. Minerals is priced at 13.4x its EUR 871m 2028 operating profit, while Aggregates is priced at 13.9x its EUR 257m forecast operating profit. Debt and other claims, less cash, subtract 1.4 EUR per share."
+    },
+    {
+      "q": "Why does Metso Outotec trade above its listed peers?",
+      "a": "Minerals trades at 13.4x 2028 operating profit against a 12.5x peer median, supported by forecast sales growth, copper orders and service agreements. Aggregates trades at 13.9x against a 13.4x median, supported by a forecast 16% margin and the Tampere factory programme."
+    },
+    {
+      "q": "What do analysts forecast for Metso Outotec's sales and profit?",
+      "a": "Analysts forecast EUR 6,643m of 2028 sales, EUR 1,306m of EBITDA, EUR 1,127m of operating profit and EUR 815m of net earnings. EPS is forecast at 1 EUR and DPS at 0.8 EUR. The 2028 operating profit split assigns EUR 871m to Minerals and EUR 257m to Aggregates."
+    },
+    {
+      "q": "What should Metso Outotec investors watch?",
+      "a": "Watch Minerals sales moving from EUR 3,974m in 2025 towards about EUR 5bn in 2028, adjusted margin against 17.1%, and service bookings. For Aggregates, watch the 15.5% adjusted margin, the EUR 433m backlog, aftermarket sales and Lokotrack production scheduled for Q3 2027."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' forecasts to 2028, splits forecast operating profit between Minerals and Aggregates using 2025 segment results, compares each business with listed peers using EV/EBIT, and reads today's 17.0 EUR share price back into the businesses after debt and other claims, less cash."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Metso Outotec dated 5 November 2026 (17.0 EUR share price, Minerals at 14.1 EUR per share and Aggregates at 4.3 EUR per share).",
+    "Competitor context: Minerals peers Sandvik AB, FLSmidth & Co. A/S, Weir Group and Epiroc at 11.4x-16.9x EV/EBIT 2028, median 12.5x; Aggregates peers Astec Industries, Inc., Terex Corporation and Sandvik AB at 9.5x-15.5x, median 13.4x. Epiroc's 69.9x P/E and 335.6x EV/EBITDA are excluded from the peer median and average as outliers.",
+    "Market data: METSO.HE, 17.0 EUR on 5 November 2026; analysts forecast 2028 sales of EUR 6,643m and operating profit of EUR 1,127m; consensus price data from Stock Analysis, based on S&P Global analyst estimates."
+  ]
+}
