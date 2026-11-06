@@ -10,6 +10,20 @@ export function sitemapLocs(xml) {
   return (xml.match(/<loc>([^<]+)<\/loc>/g) || []).map((m) => m.replace(/<\/?loc>/g, ''));
 }
 
+/** Update lastmod for existing URLs only, preserving all other sitemap content. */
+export function updateLastmods(xml, locs, lastmod) {
+  const targets = new Set([...locs].map((loc) => loc.replace(/&/g, '&amp;')));
+  return xml.replace(/<url>[\s\S]*?<\/url>/g, (block) => {
+    const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1];
+    if (!targets.has(loc)) return block;
+    if (/<lastmod>[^<]*<\/lastmod>/.test(block)) {
+      return block.replace(/<lastmod>[^<]*<\/lastmod>/, () => `<lastmod>${lastmod}</lastmod>`);
+    }
+    return block.replace(/(<\/loc>)(\r?\n)([ \t]*)/, (_, close, newline, indent) =>
+      `${close}${newline}${indent}<lastmod>${lastmod}</lastmod>${newline}${indent}`);
+  });
+}
+
 /**
  * Insert or update one <url> block, keeping the existing lastmod unless a new one is given.
  */

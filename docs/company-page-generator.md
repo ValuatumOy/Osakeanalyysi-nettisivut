@@ -56,7 +56,8 @@ and estimates disabled.
 After a successful run, the generator also adds or updates each page in
 `js/companyPagesData.js` and `sitemap.xml`. This keeps the homepage and Reports
 searches, internal discovery and search-engine discovery in sync with the
-generated HTML pages. Use `--skip-discovery` only for isolated previews or tests.
+generated HTML pages. A normal command-line run also rebuilds the A–Z directory.
+Use `--skip-discovery` only for isolated previews or tests.
 
 ## Selection rules
 

@@ -2,14 +2,8 @@
 // Build /companies.html and /companies/<letter>.html — a crawlable index of every page
 // under /reports/.
 //
-// reports.html is a storefront: it lists the ~16 ready reports that can be bought, and is
-// right to. That left the other 1,158 company pages with no hub linking to them at all —
-// 373 of them had no inbound link from anywhere on the site, so Google could only reach
-// them through sitemap.xml. A sitemap tells a crawler a URL exists; it passes no context
-// and no weight.
-//
-// The index is split by first letter so no single page carries 1,156 links, which would
-// dilute each one to nothing. Crawl depth from the homepage is three clicks.
+// The hub previews each letter; letter pages link to every indexable company page
+// with ordinary HTML links, independently of JavaScript search.
 //
 //   node scripts/build-company-index.mjs [--check]
 
@@ -19,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { sameText } from './same-text.mjs';
 import { headlineOf } from './report-headline.mjs';
 import { upsertUrl } from './seo-sitemap.mjs';
+import { directoryBucket } from './company-pages/directory-bucket.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -52,12 +47,6 @@ function collect() {
   return out.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 }
 
-/** Group key: A–Z, or "0–9" for anything that does not start with a letter. */
-const bucketOf = (name) => {
-  const c = name.trim()[0]?.toUpperCase() ?? '#';
-  return /[A-Z]/.test(c) ? c : '0-9';
-};
-
 // ── shared chrome, lifted from the built pages so the index matches the site ──
 const source = fs.readFileSync(path.join(ROOT, 'reports', 'tesla-equity-report.html'), 'utf8');
 const chunk = (re, label) => {
@@ -78,19 +67,36 @@ const BODY_SCRIPTS = (source.match(/<script src="[^"]*"[^>]*><\/script>/g) || []
   .filter((tag) => !tag.includes('analyst-reports.js'))
   .join('\n  ');
 
-function page({ url, title, description, breadcrumbName, h1, intro, bodyHtml, extraJsonLd = [] }) {
+function page({ url, title, description, breadcrumbName, h1, intro, bodyHtml, listItems }) {
+  const breadcrumbs = [
+    { name: 'Home', url: `${SITE}/` },
+    { name: 'Companies', url: `${SITE}/companies.html` },
+    ...(breadcrumbName ? [{ name: breadcrumbName, url }] : []),
+  ];
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-          { '@type': 'ListItem', position: 2, name: 'Companies', item: `${SITE}/companies.html` },
-          ...(breadcrumbName ? [{ '@type': 'ListItem', position: 3, name: breadcrumbName, item: url }] : []),
-        ],
+        '@id': `${url}#breadcrumb`,
+        itemListElement: breadcrumbs.map((b, i) => ({
+          '@type': 'ListItem', position: i + 1, name: b.name, item: b.url,
+        })),
       },
-      ...extraJsonLd,
+      {
+        '@type': 'CollectionPage',
+        '@id': `${url}#index`,
+        url,
+        name: h1,
+        description,
+        breadcrumb: { '@id': `${url}#breadcrumb` },
+        isPartOf: { '@type': 'WebSite', name: 'Valuatum AI Equity Reports', url: `${SITE}/` },
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: listItems.length,
+          itemListElement: listItems.map((item, i) => ({ '@type': 'ListItem', position: i + 1, ...item })),
+        },
+      },
     ],
   }, null, 2).replace(/</g, '\\u003c');
 
@@ -121,6 +127,8 @@ ${jsonLd}
     .idx-wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gap-lg, 1.5rem); }
     .idx-hero { padding: calc(var(--gap-xl, 3rem) * 1.2) 0 var(--gap-lg, 1.5rem); }
     .idx-hero p { max-width: 62ch; color: var(--gray-steel, #5b6570); }
+    .idx-breadcrumb { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; font-size: .9rem; }
+    .idx-breadcrumb li + li::before { content: '/'; margin-right: .5rem; color: var(--gray-steel, #5b6570); }
     .idx-alpha { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 var(--gap-xl, 3rem); padding: 0; list-style: none; }
     .idx-alpha a, .idx-alpha span {
       display: inline-flex; align-items: center; justify-content: center;
@@ -130,6 +138,8 @@ ${jsonLd}
     .idx-alpha span { color: var(--gray-mist, #b9c0c8); border-style: dashed; }
     .idx-group { margin-bottom: var(--gap-xl, 3rem); }
     .idx-group h2 { font-size: 1.5rem; font-weight: 400; margin: 0 0 .9rem; }
+    .idx-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 1.5rem; }
+    .idx-groups .idx-list { display: block; }
     .idx-list { list-style: none; margin: 0; padding: 0;
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .35rem 1.5rem; }
     .idx-list li { padding: .3rem 0; border-bottom: 1px solid var(--gray-mist, #eef1f4); }
@@ -146,6 +156,11 @@ ${jsonLd}
   ${NAV}
   <main>
     <section class="idx-wrap idx-hero">
+      <nav aria-label="Breadcrumb">
+        <ol class="idx-breadcrumb">
+${breadcrumbs.map((b, i) => `          <li>${i === breadcrumbs.length - 1 ? `<span aria-current="page">${esc(b.name)}</span>` : `<a href="${attr(b.url.replace(SITE, '') || '/')}">${esc(b.name)}</a>`}</li>`).join('\n')}
+        </ol>
+      </nav>
       <h1 class="section-headline">${esc(h1)}</h1>
       <p>${intro}</p>
     </section>
@@ -171,18 +186,20 @@ const item = (c) => {
 const companies = collect();
 const buckets = new Map();
 for (const c of companies) {
-  const b = bucketOf(c.name);
+  const b = directoryBucket(c.name);
   if (!buckets.has(b)) buckets.set(b, []);
   buckets.get(b).push(c);
 }
 const letters = [...buckets.keys()].sort((a, b) => (a === '0-9' ? -1 : b === '0-9' ? 1 : a.localeCompare(b)));
 const slugOf = (l) => (l === '0-9' ? '0-9' : l.toLowerCase());
 
-const alphaNav = (current) => `      <ul class="idx-alpha">
+const alphaNav = (current) => `      <nav aria-label="Company initials">
+      <ul class="idx-alpha">
 ${letters.map((l) => (l === current
     ? `        <li><span aria-current="page">${esc(l)}</span></li>`
     : `        <li><a href="/companies/${slugOf(l)}.html">${esc(l)}</a></li>`)).join('\n')}
-      </ul>`;
+      </ul>
+      </nav>`;
 
 const files = new Map();
 
@@ -192,19 +209,22 @@ files.set('companies.html', page({
   title: `Company Index — ${n(companies.length)} Listed Companies | Valuatum`.slice(0, 60),
   description: `Every listed company with an AI equity analysis page on Valuatum: ${n(companies.length)} companies across the Nordics, Europe and the US, each with share price, valuation metrics and a report available on demand.`,
   breadcrumbName: '',
-  h1: 'Every company on this site',
+  h1: 'Company stock analysis A–Z',
   intro: `${n(companies.length)} listed companies have an analysis page here, each with share price, valuation metrics, a company profile and a fresh AI equity report available on demand. Pick a letter to browse, or <a href="/reports.html">see the reports ready to buy today</a>.`,
   bodyHtml: `${alphaNav(null)}
-      <div class="idx-group">
-${letters.map((l) => `        <p style="margin:.2rem 0;"><a href="/companies/${slugOf(l)}.html"><strong>${esc(l)}</strong></a> <span class="idx-tk">${buckets.get(l).length} ${buckets.get(l).length === 1 ? 'company' : 'companies'}</span></p>`).join('\n')}
+      <div class="idx-groups">
+${letters.map((l) => `        <section class="idx-group">
+          <h2>${esc(l)}</h2>
+          <ul class="idx-list">
+${buckets.get(l).slice(0, 3).map(item).join('\n')}
+          </ul>
+          <p><a href="/companies/${slugOf(l)}.html">All ${buckets.get(l).length} ${buckets.get(l).length === 1 ? 'company' : 'companies'} starting with ${esc(l)}</a></p>
+        </section>`).join('\n')}
       </div>`,
-  extraJsonLd: [{
-    '@type': 'CollectionPage',
-    '@id': `${SITE}/companies.html#index`,
-    name: 'Company index',
-    description: `Index of ${n(companies.length)} listed companies with AI equity analysis pages.`,
-    isPartOf: { '@type': 'WebSite', name: 'Valuatum AI Equity Reports', url: `${SITE}/` },
-  }],
+  listItems: letters.map((l) => ({
+    name: `All ${buckets.get(l).length} ${buckets.get(l).length === 1 ? 'company' : 'companies'} starting with ${l}`,
+    url: `${SITE}/companies/${slugOf(l)}.html`,
+  })),
 }));
 
 // one page per letter
@@ -216,38 +236,26 @@ for (const l of letters) {
     description: `${list.length} listed companies starting with ${l}, each with an AI equity analysis page: share price, valuation metrics, company profile and a report available on demand.`,
     breadcrumbName: l,
     h1: `Companies starting with ${l}`,
-    intro: `${list.length} ${list.length === 1 ? 'company' : 'companies'} with an analysis page. Every page carries share price, valuation metrics and a company profile, and can generate a fresh AI equity report on demand.`,
+    intro: `${list.length} ${list.length === 1 ? 'company' : 'companies'} with an analysis page. Every page carries share price, valuation metrics and a company profile, and can generate a fresh AI equity report on demand.${list.some((c) => c.name.trim()[0].toUpperCase() !== l) && l !== '0-9' ? ' Names with accented or Nordic initials appear under their A–Z equivalent.' : ''}`,
     bodyHtml: `${alphaNav(l)}
       <div class="idx-group">
-        <h2>${esc(l)}</h2>
         <ul class="idx-list">
 ${list.map(item).join('\n')}
         </ul>
       </div>`,
-    extraJsonLd: [{
-      '@type': 'CollectionPage',
-      '@id': `${SITE}/companies/${slugOf(l)}.html#index`,
-      name: `Companies starting with ${l}`,
-      isPartOf: { '@type': 'WebSite', name: 'Valuatum AI Equity Reports', url: `${SITE}/` },
-      mainEntity: {
-        '@type': 'ItemList',
-        numberOfItems: list.length,
-        itemListElement: list.map((c, i) => ({
-          '@type': 'ListItem', position: i + 1, name: `${c.name} (${c.ticker})`,
-          url: `${SITE}/reports/${c.slug}.html`,
-        })),
-      },
-    }],
+    listItems: list.map((c) => ({ name: `${c.name} (${c.ticker})`, url: `${SITE}/reports/${c.slug}.html` })),
   }));
 }
 
 let stale = 0;
+const changedFiles = new Set();
 fs.mkdirSync(path.join(ROOT, 'companies'), { recursive: true });
 for (const [rel, html] of files) {
   const abs = path.join(ROOT, rel);
   const current = fs.existsSync(abs) ? fs.readFileSync(abs, 'utf8') : null;
   if (current !== null && sameText(current, html)) continue;
   stale++;
+  changedFiles.add(rel);
   if (!CHECK) fs.writeFileSync(abs, html);
 }
 
@@ -256,9 +264,12 @@ for (const [rel, html] of files) {
 // priority; both are above a single company page but below the storefront.
 const sitemapFile = path.join(ROOT, 'sitemap.xml');
 let xml = fs.readFileSync(sitemapFile, 'utf8');
-xml = upsertUrl(xml, `${SITE}/companies.html`, { changefreq: 'weekly', priority: '0.8' });
+const today = new Date().toISOString().slice(0, 10);
+const lastmod = (rel) => !CHECK && changedFiles.has(rel) ? today : null;
+xml = upsertUrl(xml, `${SITE}/companies.html`, { lastmod: lastmod('companies.html'), changefreq: 'weekly', priority: '0.8' });
 for (const l of letters) {
-  xml = upsertUrl(xml, `${SITE}/companies/${slugOf(l)}.html`, { changefreq: 'weekly', priority: '0.7' });
+  const rel = path.join('companies', `${slugOf(l)}.html`);
+  xml = upsertUrl(xml, `${SITE}/companies/${slugOf(l)}.html`, { lastmod: lastmod(rel), changefreq: 'weekly', priority: '0.7' });
 }
 const sitemapStale = !sameText(xml, fs.readFileSync(sitemapFile, 'utf8'));
 if (sitemapStale && !CHECK) fs.writeFileSync(sitemapFile, xml);

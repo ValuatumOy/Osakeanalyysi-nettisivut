@@ -12,6 +12,7 @@ import { reportTitle, companyTitle } from '../seo-title.mjs';
 import { SHOW_RATINGS_IN_METADATA } from '../seo-flags.mjs';
 import { reportDescription } from '../seo-description.mjs';
 import { isMarketFirst } from './schema.mjs';
+import { directoryBreadcrumbHtml, directoryBreadcrumbItems } from '../company-pages/directory-breadcrumb.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -476,16 +477,13 @@ function relatedHtml(current, all) {
 
 function jsonLd(d, cat, desc) {
   const url = `${SITE}/reports/${d.slug}.html`;
+  const hasReport = !!d.headline?.recommendation || isMarketFirst(d);
   const graph = [
     {
       '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: 'Reports', item: `${SITE}/reports.html` },
-        { '@type': 'ListItem', position: 3, name: `${shortName(d.companyName)} equity report`, item: url },
-      ],
+      itemListElement: directoryBreadcrumbItems(shortName(d.companyName), url),
     },
-    {
+    hasReport ? {
       '@type': 'AnalysisNewsArticle',
       '@id': url + '#article',
       headline: `${shortName(d.companyName)} (${d.ticker}) AI Equity Report`,
@@ -501,7 +499,14 @@ function jsonLd(d, cat, desc) {
         name: d.companyName,
         tickerSymbol: d.ticker,
       },
-      isAccessibleForFree: !!cat?.isFree,
+    } : {
+      '@type': 'WebPage',
+      '@id': url + '#page',
+      name: `${shortName(d.companyName)} (${d.ticker}) Stock Analysis & AI Equity Report`,
+      description: desc,
+      inLanguage: 'en',
+      url,
+      mainEntity: { '@type': 'Corporation', name: d.companyName, tickerSymbol: d.ticker },
     },
   ];
   const faqs = faqsFor(d, cat);
@@ -511,7 +516,7 @@ function jsonLd(d, cat, desc) {
       mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
     });
   }
-  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2).replace(/</g, '\\u003c');
 }
 
 function buyGate(d, cat) {
@@ -976,11 +981,7 @@ ${navHtml()}
   <main class="report-full-page">
     <section class="report-company-header">
       <div class="container">
-        <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.6); margin-bottom:1rem;">
-          <a href="/" style="color:rgba(255,255,255,0.7);">Home</a> ›
-          <a href="/reports.html" style="color:rgba(255,255,255,0.7);">Reports</a> ›
-          <span>${esc(sn)}</span>
-        </nav>
+        ${directoryBreadcrumbHtml(sn)}
         <div class="company-header-inner">
           <div class="company-ident">
             <h1 class="company-name">${esc(sn)} (${esc(d.ticker)}) Stock Analysis &amp; AI Equity Report</h1>

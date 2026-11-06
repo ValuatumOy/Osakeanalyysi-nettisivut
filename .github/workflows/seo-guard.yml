@@ -53,6 +53,7 @@ jobs:
         run: |
           node scripts/retitle-report-pages.mjs --check
           node scripts/redescribe-report-pages.mjs --check
+          node scripts/update-company-breadcrumbs.mjs --check
           node scripts/build-company-index.mjs --check
           node scripts/build-llms-txt.mjs --check
           node scripts/build-pricing-md.mjs --check

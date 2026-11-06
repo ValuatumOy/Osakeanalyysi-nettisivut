@@ -24,6 +24,7 @@
   "@graph": [
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.aiequityreports.com/companies/k.html#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -48,7 +49,12 @@
     {
       "@type": "CollectionPage",
       "@id": "https://www.aiequityreports.com/companies/k.html#index",
+      "url": "https://www.aiequityreports.com/companies/k.html",
       "name": "Companies starting with K",
+      "description": "45 listed companies starting with K, each with an AI equity analysis page: share price, valuation metrics, company profile and a report available on demand.",
+      "breadcrumb": {
+        "@id": "https://www.aiequityreports.com/companies/k.html#breadcrumb"
+      },
       "isPartOf": {
         "@type": "WebSite",
         "name": "Valuatum AI Equity Reports",
@@ -339,6 +345,8 @@
     .idx-wrap { max-width: 1100px; margin: 0 auto; padding: 0 var(--gap-lg, 1.5rem); }
     .idx-hero { padding: calc(var(--gap-xl, 3rem) * 1.2) 0 var(--gap-lg, 1.5rem); }
     .idx-hero p { max-width: 62ch; color: var(--gray-steel, #5b6570); }
+    .idx-breadcrumb { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; font-size: .9rem; }
+    .idx-breadcrumb li + li::before { content: '/'; margin-right: .5rem; color: var(--gray-steel, #5b6570); }
     .idx-alpha { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 var(--gap-xl, 3rem); padding: 0; list-style: none; }
     .idx-alpha a, .idx-alpha span {
       display: inline-flex; align-items: center; justify-content: center;
@@ -348,6 +356,8 @@
     .idx-alpha span { color: var(--gray-mist, #b9c0c8); border-style: dashed; }
     .idx-group { margin-bottom: var(--gap-xl, 3rem); }
     .idx-group h2 { font-size: 1.5rem; font-weight: 400; margin: 0 0 .9rem; }
+    .idx-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 1.5rem; }
+    .idx-groups .idx-list { display: block; }
     .idx-list { list-style: none; margin: 0; padding: 0;
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .35rem 1.5rem; }
     .idx-list li { padding: .3rem 0; border-bottom: 1px solid var(--gray-mist, #eef1f4); }
@@ -408,10 +418,18 @@
   </header>
   <main>
     <section class="idx-wrap idx-hero">
+      <nav aria-label="Breadcrumb">
+        <ol class="idx-breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/companies.html">Companies</a></li>
+          <li><span aria-current="page">K</span></li>
+        </ol>
+      </nav>
       <h1 class="section-headline">Companies starting with K</h1>
       <p>45 companies with an analysis page. Every page carries share price, valuation metrics and a company profile, and can generate a fresh AI equity report on demand.</p>
     </section>
     <section class="idx-wrap">
+      <nav aria-label="Company initials">
       <ul class="idx-alpha">
         <li><a href="/companies/0-9.html">0-9</a></li>
         <li><a href="/companies/a.html">A</a></li>
@@ -441,8 +459,8 @@
         <li><a href="/companies/y.html">Y</a></li>
         <li><a href="/companies/z.html">Z</a></li>
       </ul>
+      </nav>
       <div class="idx-group">
-        <h2>K</h2>
         <ul class="idx-list">
         <li><a href="/reports/k-fast-holding-equity-report.html">K-Fast Holding</a><span class="idx-tk">KFAST-B.ST</span></li>
         <li><a href="/reports/k2a-knaust-and-andersson-fastigheter-equity-report.html">K2A Knaust &amp; Andersson Fastigheter</a><span class="idx-tk">K2A-B.ST</span></li>

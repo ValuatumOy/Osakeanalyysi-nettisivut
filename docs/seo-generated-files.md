@@ -16,6 +16,7 @@ systems as ground truth, on a site that publishes investment ratings.
 | `npm run seo:titles` | `<title>`, `og:title` on `reports/*.html` | page title + `report-content/<id>.json` |
 | `npm run seo:descriptions` | `<meta name="description">` on the 17 report pages | `report-content/<id>.json` + members API |
 | `npm run seo:companies` | `companies.html`, `companies/<letter>.html`, sitemap entries | `reports/*.html` |
+| `npm run seo:breadcrumbs` | company page breadcrumbs, their JSON-LD and changed pages' sitemap dates | each page's displayed company name and canonical URL |
 | `npm run seo:llms` | `llms.txt` | `reports/*.html`, `compare/`, `blog/` |
 | `npm run seo:pricing` | `pricing.md`, JSON-LD in `pricing.html` | `pricing.html` pricing cards |
 | `npm run seo:freshness` | `WebPage` JSON-LD on top-level pages | `git log -1` per file |
@@ -34,9 +35,10 @@ script, so a regeneration does not undo the work. The migration scripts exist be
 `sync.mjs` needs the live catalog and `generate-company-pages.mjs` needs Wisdom, so the
 1,174 pages on disk cannot be rebuilt offline.
 
-**Real dates, not today's.** `sitemap.xml` is edited in place rather than regenerated, and
-page freshness uses each file's last commit date. Stamping "today" across 1,174 pages tells
-Google everything changed at once, which is both false and checkable.
+**Real dates, not automatic restamps.** `sitemap.xml` is edited in place rather than
+regenerated, and page freshness uses each file's last commit date. Breadcrumb and company
+index changes update the sitemap date only for pages whose contents actually changed;
+running the same generator again does not advance dates on untouched pages.
 
 **Titles are budgeted.** `scripts/seo-title.mjs` picks the longest variant that fits in 60
 rendered characters, so the rating and price target survive SERP truncation and the
