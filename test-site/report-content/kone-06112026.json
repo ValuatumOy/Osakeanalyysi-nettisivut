@@ -1,0 +1,758 @@
+{
+  "id": "kone-06112026",
+  "slug": "kone-equity-report",
+  "reportKind": "market-first",
+  "companyName": "KONE Corporation",
+  "ticker": "KNEBV.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Industrial machinery",
+  "currency": "EUR",
+  "reportDate": "2026-11-06",
+  "profile": "Makes and installs elevators, escalators and automatic building doors, then maintains, repairs and upgrades them throughout their operating lives. It serves construction companies, property developers, building owners, facility managers and housing associations worldwide, from initial installation through later maintenance and modernization.",
+  "headline": {
+    "currentPrice": "57.5 EUR",
+    "marketCap": "EUR 25.4bn",
+    "enterpriseValue": "EUR 26.4bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-2.1 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "59.5 EUR",
+    "analysts": "21",
+    "range": "46.0-82.0 EUR",
+    "source": "MarketScreener consensus, dated 2026-10-27"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "19x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "14x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "24x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "64.4 EUR",
+    "week52Low": "46.2 EUR",
+    "oneYearChange": "-1.7%",
+    "threeYearChange": "+39%"
+  },
+  "summary": [
+    "KONE Corporation (KNEBV.HE, NASDAQ Helsinki) makes and installs elevators, escalators and automatic building doors, and maintains, repairs and modernizes installed equipment. The share price was 57.5 EUR, market capitalisation was EUR 25.4bn and enterprise value was EUR 26.4bn on 6 November 2026, in this Valuatum market report dated 6 November 2026. The company serves construction companies, developers, building owners, facility managers and housing associations worldwide. Analysts forecast operating profit of EUR 1.9bn in 2028, while the current market price is read at 14x 2028 operating profit and 19x 2026 operating profit.",
+    "The 57.5 EUR share price is principally made up of Service at 26.8 EUR per share, New equipment at 21.7 EUR per share and Modernization at 11.1 EUR per share. Each business is read at 14.1x its 2028 forecast operating profit: EUR 840m for Service, EUR 681m for New equipment and EUR 348m for Modernization. The three businesses total 59.7 EUR per share before debt and other claims, less cash of 2.1 EUR per share. Service contributes 45% of split 2028 operating profit, New equipment 36% and Modernization 19%, keeping the recurring maintenance business the largest component.",
+    "The three businesses are each priced below listed peers at about 16x 2028 EV/EBIT, with peer multiples ranging from 15.4x to 17.8x and a median of 16.1x. Weak New equipment orders, an imperfect Service comparison with Otis and the pending TK Elevator acquisition explain the lower reading. Watch orders moving towards 159,000 units, company-wide adjusted operating margin against 12.5%-12.9% guidance, Service sales above EUR 5,054.6m and Modernization sales above EUR 2,092.9m, plus regulatory clearances for completion no earlier than Q2 2027."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "14.1x",
+      "text": "The 57.5 EUR share price rests on three elevator businesses valued on operating profit: Service at 26.8 EUR per share, New equipment at 21.7 EUR per share and Modernization at 11.1 EUR per share. Each is read at 14.1x 2028 operating profit."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "16.1x",
+      "text": "Listed peers cost a median 16.1x 2028 EV/EBIT, against 14.1x for each KONE business. Falling New equipment orders, a non-like-for-like Service margin comparison with Otis and the pending TK Elevator transaction keep the market from applying peer multiples."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "159,000",
+      "text": "Orders returning towards 159,000 units would support New equipment sales of EUR 4.8bn in 2028. Company-wide adjusted margin of 12.5%-12.9% in 2026, Service sales growth from EUR 5,054.6m and TK Elevator clearances are the key evidence."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Service",
+      "share": "26.8 EUR per share",
+      "economics": "14.1x 2028 operating profit · EUR 840m 2028 operating profit · peers 15.4x-17.8x, median 16.1x",
+      "text": "Service maintains and repairs elevators and escalators for building owners and operators, earning recurring revenue from an installed base of about 1.8 million units. External sales were EUR 5.1bn in 2025, and the split requires sales of EUR 5.9bn and operating profit of EUR 840m at a 14% margin in 2028. The price assigns 26.8 EUR per share, or 14.1x that profit, below peers at 15.4x-17.8x. Contract pricing and renewal rates determine revenue per unit, while route density determines technician utilisation and the amount of sales retained. KONE does not publish a Service-only margin; its company-wide adjusted margin was 12.2% in 2025, while Otis reported 25.1% for Service, including modernization. The comparison is therefore imperfect. Sales, margin progress and TK Elevator integration are the main evidence."
+    },
+    {
+      "name": "New equipment",
+      "share": "21.7 EUR per share",
+      "economics": "14.1x 2028 operating profit · EUR 681m 2028 operating profit · peers 15.4x-17.8x, median 16.1x",
+      "text": "New equipment supplies and installs elevators, escalators, automatic building doors and access solutions for new buildings. External sales fell from about EUR 4.5bn in 2024 to EUR 4.1bn in 2025 as Greater China and, to a lesser extent, the Americas weakened; orders declined to about 154,000 units from 159,000. The split assigns 21.7 EUR per share and requires EUR 4.8bn of 2028 sales, EUR 681m of operating profit and a 14% margin. That is 14.1x profit, below every listed peer at 15.4x-17.8x. Factories and installation crews create operating leverage, so lower orders pressure margin more than sales and recovery can improve it faster. Otis equipment margin was 4.8% in 2025, making KONE's 14% split assumption dependent on visible order and pricing recovery."
+    },
+    {
+      "name": "Modernization",
+      "share": "11.1 EUR per share",
+      "economics": "14.1x 2028 operating profit · EUR 348m 2028 operating profit · peers 15.4x-17.8x, median 16.1x",
+      "text": "Modernization upgrades aging elevators and escalators, from individual components to complete systems. External sales were EUR 2.1bn in 2025, when partial modernization grew more than twice as fast as full replacement and became the largest part of the business. The split assigns 11.1 EUR per share and requires sales of EUR 2.5bn, operating profit of EUR 348m and a 14% margin in 2028. The price is 14.1x that profit, below peer multiples of 15.4x-17.8x. KONE's comparable sales growth was 17.4% in 2025, while the split requires roughly 18% additional sales over three years, so it does not require the full recent pace. KONE reports no standalone Modernization margin; company-wide adjusted operating margin was 12.2% in 2025, and the pending TK Elevator purchase remains a group-level uncertainty."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price assigns most of its business value to recurring and project-based elevator activities rather than to a separate balance-sheet asset. Service contributes 26.8 EUR per share and is supported by about 1.8 million maintained units, making its EUR 5.9bn 2028 sales requirement the largest operating test. New equipment contributes 21.7 EUR per share and needs EUR 4.8bn of 2028 sales after external sales fell to EUR 4.1bn in 2025. Modernization contributes 11.1 EUR per share and needs EUR 2.5bn of sales, against EUR 2.1bn in 2025. The three allocations use the same 14.1x 2028 EV/EBIT multiple, applied to EUR 840m, EUR 681m and EUR 348m of operating profit respectively. Together they produce 59.7 EUR per share before debt and other claims, less cash, of 2.1 EUR per share. This is a price composition built on operating execution: Service must expand the maintenance base and pricing, New equipment must restore orders and installation volumes, and Modernization must sustain upgrade demand. The balance of the price therefore rests on three different routes to EUR 1.9bn of whole-company operating profit in 2028."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "Each business is read at 14.1x 2028 EV/EBIT, below listed peers at 15.4x-17.8x and a median of 16.1x. The discount is not explained by a general elevator-market weakness alone because Otis, Mitsubishi Electric and Schindler face the same industry environment. New equipment orders declined to about 154,000 units in 2025 from 159,000, while equipment sales fell 9.1% as reported. The 14% 2028 margin in the split is also well above Otis's published 4.8% equipment margin in 2025, so the market has not yet seen comparable KONE equipment profitability. Service has a smaller maintenance base than Otis, at about 1.8 million units against about 2.5 million, affecting route density and technician utilisation. The Service comparison is qualified because Otis's 25.1% Service margin includes modernization, while KONE does not publish a Service-only margin. Modernization grew 17.4% at comparable exchange rates in 2025, but its 14% split margin is likewise unpublished. Finally, the TK Elevator purchase involves EUR 5bn in cash plus up to 270 million new shares, with completion no earlier than Q2 2027, adding approval, dilution and integration uncertainty."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The earliest evidence for New equipment is annual orders: a return towards 159,000 units would support the EUR 4.8bn 2028 sales allocation, while a figure below 154,000 in 2026 would extend the decline. For Service, restated sales of EUR 5,054.6m in 2025 and EUR 3.9bn for January-September 2026 provide the baseline; sales still near EUR 5,054.6m in 2027 would make the EUR 5.9bn 2028 allocation harder to support. Modernization has the equivalent test in restated 2025 sales of EUR 2,092.9m against the EUR 2.5bn 2028 allocation. KONE's company-wide adjusted operating margin is the nearest published profitability check because standalone business margins are unavailable. Guidance is 12.5%-12.9% for 2026, compared with 14% in the 2028 forecast. TK Elevator is the principal corporate event: six country clearances had been received by 28 October 2026, while the European Commission process was still in prenotification and completion was not expected before Q2 2027. About EUR 700m of annual cost savings are expected within three years of completion, but regulatory conditions, integration costs of EUR 48.5m in the first nine months of 2026 and management distraction remain relevant."
+    }
+  ],
+  "risks": [
+    "TK Elevator approval and integration (all businesses): regulatory conditions, dilution from up to 270 million new shares or execution problems could prolong uncertainty, with further country clearances and the European Commission process as early warnings.",
+    "New equipment orders (New equipment): orders below 154,000 units in 2026 would weaken the path to EUR 4.8bn of 2028 sales, with annual unit orders as the early warning.",
+    "Margin delivery (all businesses): company-wide adjusted operating margin below the 12.5%-12.9% 2026 guidance would make the 14% 2028 operating-profit assumptions harder to support, with quarterly adjusted margin as the early warning.",
+    "Service growth and density (Service): sales near EUR 5,054.6m in 2027 would imply slower growth than the EUR 5.9bn 2028 allocation, with annual restated Service sales and units under maintenance as the early warning.",
+    "Modernization demand (Modernization): sales near EUR 2,092.9m in 2027 would leave the EUR 2.5bn 2028 allocation unsupported, with annual upgrade sales and partial-modernization growth as the early warning."
+  ],
+  "catalysts": [
+    "Further TK Elevator clearances (near-term, all businesses): additional approvals would reduce regulatory uncertainty ahead of completion no earlier than Q2 2027.",
+    "Orders returning towards 159,000 units (near-term, New equipment): a recovery from about 154,000 units in 2025 would support the EUR 4.8bn 2028 sales allocation.",
+    "2026 margin within 12.5%-12.9% guidance (near-term, all businesses): delivery would show progress towards the 14% 2028 operating-margin forecast.",
+    "Service sales growth above inflation (medium-term, Service): growth beyond EUR 5,054.6m would support the EUR 5.9bn 2028 sales allocation and a denser maintenance base.",
+    "TK Elevator completion and savings delivery (long-term, all businesses): completion no earlier than Q2 2027 followed by about EUR 700m of annual savings within three years would clarify the enlarged group's economics."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "10,952",
+            "11,098",
+            "11,245",
+            "11,782",
+            "12,540",
+            "13,229"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "1,272",
+            "1,541",
+            "1,648",
+            "1,796",
+            "1,990",
+            "2,175"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "11.6%",
+            "13.9%",
+            "14.7%",
+            "15.2%",
+            "15.9%",
+            "16.4%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-72",
+            "-292",
+            "-320",
+            "-403",
+            "-300",
+            "-307"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,200",
+            "1,249",
+            "1,328",
+            "1,393",
+            "1,690",
+            "1,868"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "11.0%",
+            "11.3%",
+            "11.8%",
+            "11.8%",
+            "13.5%",
+            "14.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "6",
+            "5",
+            "-1",
+            "-15",
+            "-37",
+            "-39"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,206",
+            "1,254",
+            "1,327",
+            "1,378",
+            "1,653",
+            "1,829"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "932",
+            "961",
+            "992",
+            "1,065",
+            "1,308",
+            "1,447"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.8",
+            "1.9",
+            "1.9",
+            "2.1",
+            "2.5",
+            "2.8"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.8",
+            "1.8",
+            "1.8",
+            "2.3",
+            "2.8",
+            "3.1"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "97.1%",
+            "94.2%",
+            "94.1%",
+            "94.2%",
+            "94.2%",
+            "94.2%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "780",
+            "899",
+            "943",
+            "976",
+            "1,038",
+            "1,096"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "287",
+            "333",
+            "337",
+            "353",
+            "375",
+            "396"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1,469",
+            "1,558",
+            "1,553",
+            "1,553",
+            "1,553",
+            "1,553"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "111",
+            "165",
+            "173",
+            "173",
+            "173",
+            "173"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "2,647",
+            "2,956",
+            "3,005",
+            "3,054",
+            "3,140",
+            "3,217"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "821",
+            "841",
+            "843",
+            "887",
+            "944",
+            "996"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "4,519",
+            "4,546",
+            "4,398",
+            "4,754",
+            "4,935",
+            "5,099"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "425",
+            "576",
+            "441",
+            "514",
+            "547",
+            "577"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "5,764",
+            "5,963",
+            "5,681",
+            "6,155",
+            "6,425",
+            "6,672"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "320",
+            "366",
+            "366",
+            "366",
+            "366",
+            "366"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "8,731",
+            "9,284",
+            "9,052",
+            "9,574",
+            "9,931",
+            "10,255"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "2,786",
+            "2,893",
+            "2,827",
+            "2,958",
+            "3,263",
+            "3,479"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "200",
+            "401",
+            "200",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "3",
+            "3",
+            "202",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "419",
+            "596",
+            "394",
+            "559",
+            "548",
+            "566"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "5,090",
+            "5,276",
+            "5,273",
+            "5,493",
+            "5,547",
+            "5,626"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "436",
+            "520",
+            "558",
+            "564",
+            "572",
+            "584"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "8,731",
+            "9,284",
+            "9,052",
+            "9,574",
+            "9,931",
+            "10,255"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "349",
+            "433",
+            "456",
+            "462",
+            "470",
+            "481"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "128",
+            "260",
+            "417",
+            "678",
+            "630",
+            "649"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "2,565",
+            "2,721",
+            "2,789",
+            "3,175",
+            "3,424",
+            "3,647"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "31.9%",
+            "31.2%",
+            "31.2%",
+            "30.9%",
+            "32.9%",
+            "33.9%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "4.6%",
+            "9.0%",
+            "14.8%",
+            "22.9%",
+            "19.3%",
+            "18.6%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.1x",
+            "0.2x",
+            "0.3x",
+            "0.4x",
+            "0.3x",
+            "0.3x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.1",
+            "1.1",
+            "1.1",
+            "1.1",
+            "1.2",
+            "1.2"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "1,362",
+            "1,391",
+            "1,256",
+            "1,125",
+            "1,436",
+            "1,598"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "1,345",
+            "1,343",
+            "1,272",
+            "1,137",
+            "1,465",
+            "1,629"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-167",
+            "-138",
+            "56",
+            "343",
+            "172",
+            "156"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "245",
+            "601",
+            "369",
+            "452",
+            "385",
+            "385"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-245",
+            "-601",
+            "-369",
+            "-452",
+            "-385",
+            "-385"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "1,116",
+            "790",
+            "887",
+            "673",
+            "1,050",
+            "1,213"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "1,107",
+            "718",
+            "902",
+            "685",
+            "1,080",
+            "1,244"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "1,107",
+            "718",
+            "902",
+            "685",
+            "1,080",
+            "1,244"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-986",
+            "-594",
+            "-1,037",
+            "-599",
+            "-1,017",
+            "-1,183"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-1,087",
+            "-905",
+            "-906",
+            "-933",
+            "-1,003",
+            "-1,231"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "130",
+            "196",
+            "-151",
+            "74",
+            "33",
+            "30"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "23.9x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "14.7x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "8.7x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "11.8%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "37.2%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "3.9%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is KONE Corporation's share price made of?",
+      "a": "The 57.5 EUR share price is allocated to Service at 26.8 EUR per share, New equipment at 21.7 EUR per share and Modernization at 11.1 EUR per share. The businesses total 59.7 EUR per share before debt and other claims, less cash, of 2.1 EUR per share."
+    },
+    {
+      "q": "Why does KONE trade below its listed peers?",
+      "a": "Each KONE business is read at 14.1x 2028 EV/EBIT, below peers at 15.4x-17.8x and a 16.1x median. New equipment orders fell to about 154,000 units in 2025, the Service comparison with Otis is imperfect, and the TK Elevator transaction remains pending."
+    },
+    {
+      "q": "What do analysts forecast for KONE's sales and profit?",
+      "a": "Analysts forecast sales of EUR 13,229m and operating profit of EUR 1,868m in 2028. The model allocates EUR 840m of operating profit to Service, EUR 681m to New equipment and EUR 348m to Modernization."
+    },
+    {
+      "q": "What should KONE investors watch?",
+      "a": "Watch orders moving towards 159,000 units, 2026 adjusted operating margin against 12.5%-12.9% guidance, Service sales against EUR 5,054.6m of restated 2025 sales, Modernization sales against EUR 2,092.9m and TK Elevator regulatory clearances."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' whole-company forecasts unchanged, splits forecast operating profit between Service, New equipment and Modernization, compares each business with listed peers on EV/EBIT and reads today's 57.5 EUR share price back into the businesses."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on KONE Corporation dated 6 November 2026 (57.5 EUR share price, Service at 26.8 EUR per share, New equipment at 21.7 EUR per share and Modernization at 11.1 EUR per share).",
+    "Competitor context: Otis Worldwide Corporation at 15.4x, Mitsubishi Electric Corporation at 16.1x and Schindler Holding Ltd. at 17.8x 2028 EV/EBIT; Otis's 4.8% 2025 equipment margin and 25.1% Service margin include the report's stated comparison qualifications.",
+    "Market data: KNEBV.HE, 57.5 EUR on 6 November 2026, analysts' 2028 forecast of EUR 13,229m sales and EUR 1,868m operating profit, and MarketScreener consensus dated 27 October 2026."
+  ]
+}

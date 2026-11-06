@@ -36,6 +36,11 @@
       "reportId": "kesko-07072026"
     },
     {
+      "slug": "kone-equity-report",
+      "ticker": "KNEBV.HE",
+      "reportId": "kone-06112026"
+    },
+    {
       "slug": "neste-equity-report",
       "ticker": "NESTE.HE",
       "reportId": "neste-19082026"
