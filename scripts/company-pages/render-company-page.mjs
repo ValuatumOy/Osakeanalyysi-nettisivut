@@ -1,4 +1,5 @@
 import { companyTitle } from '../seo-title.mjs';
+import { directoryBreadcrumbHtml, directoryBreadcrumbItems } from './directory-breadcrumb.mjs';
 
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
@@ -53,11 +54,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
     '@graph': [
       {
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-          { '@type': 'ListItem', position: 2, name: 'Reports', item: `${SITE}/reports.html` },
-          { '@type': 'ListItem', position: 3, name: `${name} overview`, item: url },
-        ],
+        itemListElement: directoryBreadcrumbItems(name, url),
       },
       {
         '@type': 'WebPage',
@@ -137,11 +134,7 @@ ${navHtml()}
   <main class="report-full-page">
     <section class="report-company-header">
       <div class="container">
-        <nav aria-label="Breadcrumb" style="font-size:var(--text-xs); color:rgba(255,255,255,0.6); margin-bottom:1rem;">
-          <a href="/" style="color:rgba(255,255,255,0.7);">Home</a> &rsaquo;
-          <a href="/reports.html" style="color:rgba(255,255,255,0.7);">Reports</a> &rsaquo;
-          <span>${esc(name)}</span>
-        </nav>
+        ${directoryBreadcrumbHtml(name)}
         <div class="company-header-inner">
           <div class="company-ident">
             <h1 class="company-name">${esc(name)} (${esc(company.ticker)}) Stock Analysis &amp; AI Equity Report</h1>

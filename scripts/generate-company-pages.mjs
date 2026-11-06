@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WisdomClient, normalizeTicker } from './company-pages/wisdom-client.mjs';
@@ -202,6 +203,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       process.exitCode = 1;
     } else {
       const result = await generateCompanyPages({ ...options, onProgress: console.log });
+      if (result.companies.length && options.updateDiscovery !== false && !options.outputDir) {
+        execFileSync(process.execPath, [path.join(ROOT, 'scripts', 'build-company-index.mjs')], { cwd: ROOT, stdio: 'inherit' });
+      }
       console.log(`\nGenerated ${result.companies.length} page(s); ${result.failures.length} failed.`);
       process.exitCode = result.failures.length > 0 ? 1 : 0;
     }

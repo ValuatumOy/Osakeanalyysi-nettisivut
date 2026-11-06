@@ -5,7 +5,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { renderPage } from '../../scripts/report-pages/render.mjs';
+import { coverageDocFrom, renderPage } from '../../scripts/report-pages/render.mjs';
 import { gate, extractedSummary } from '../../scripts/report-pages/extract.mjs';
 import { buildMessages, isMarketFirstText } from '../../scripts/report-pages/prompt.mjs';
 import { toReportContent } from '../../scripts/report-pages/schema.mjs';
@@ -47,6 +47,24 @@ const PAID = { id: DOC.id, isFree: false, price: 20 };
 
 const meta = (html, name) => (html.match(new RegExp(`<meta name="${name}" content="([^"]*)"`)) || [])[1];
 const text = (html) => html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
+
+test('report and coverage breadcrumbs match the directory and the accessible page content', () => {
+  const graph = (html) => JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  for (const cat of [FREE, PAID]) {
+    const html = renderPage(DOC, cat, [DOC]);
+    assert.match(html, /href="\/companies\/s\.html"[^>]*>S<\/a>/);
+    const nodes = graph(html);
+    const crumb = nodes.find((node) => node['@type'] === 'BreadcrumbList');
+    assert.deepEqual(crumb.itemListElement.map((item) => item.name), ['Home', 'Companies', 'S', 'Stora Enso']);
+    const article = nodes.find((node) => node['@type'] === 'AnalysisNewsArticle');
+    assert.ok(article);
+    assert.equal(Object.hasOwn(article, 'isAccessibleForFree'), false);
+  }
+  const coverage = coverageDocFrom(DOC);
+  const nodes = graph(renderPage(coverage, null, [coverage]));
+  assert.ok(nodes.some((node) => node['@type'] === 'WebPage'));
+  assert.ok(!nodes.some((node) => node['@type'] === 'AnalysisNewsArticle'));
+});
 
 test('the gate accepts a market-first document without a rating', () => {
   assert.doesNotThrow(() => gate(DOC));
