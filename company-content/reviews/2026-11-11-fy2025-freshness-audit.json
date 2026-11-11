@@ -1,11 +1,11 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Company overviews still showing FY 2025 after the third reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2025 after the fourth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "counts": {
-    "same_or_older": 856,
-    "lookup_failed": 12,
+    "same_or_older": 842,
     "identity_mismatch": 3,
-    "newer": 18
+    "newer": 13,
+    "lookup_failed": 7
   },
   "results": [
     {
@@ -65,14 +65,6 @@
       "modelYear": 2025
     },
     {
-      "file": "aallon-group-equity-report.html",
-      "ticker": "AALLON",
-      "isin": "FI4000369608",
-      "pageYear": 2025,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker AALLON"
-    },
-    {
       "file": "ab-electrolux-equity-report.html",
       "ticker": "ELUX-B.ST",
       "isin": "SE0016589188",
@@ -84,14 +76,6 @@
       "file": "ab-fagerhult-publ-equity-report.html",
       "ticker": "FAG.ST",
       "isin": "SE0010048884",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "ab-skf-equity-report.html",
-      "ticker": "SKF-B.ST",
-      "isin": "SE0000108227",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -215,14 +199,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "admicom-equity-report.html",
-      "ticker": "ADMCM",
-      "isin": "FI4000251830",
-      "pageYear": 2025,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker ADMCM"
     },
     {
       "file": "adtraction-group-equity-report.html",
@@ -545,14 +521,6 @@
       "modelYear": 2025
     },
     {
-      "file": "apetit-equity-report.html",
-      "ticker": "APETIT",
-      "isin": "FI0009003503",
-      "pageYear": 2025,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker APETIT"
-    },
-    {
       "file": "apotea-equity-report.html",
       "ticker": "APOTEA.ST",
       "isin": "SE0023313762",
@@ -673,14 +641,6 @@
       "modelYear": 2025
     },
     {
-      "file": "as-tallink-grupp-equity-report.html",
-      "ticker": "TALLINK.HE",
-      "isin": "FI4000349378",
-      "pageYear": 2025,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker TALLINK.HE"
-    },
-    {
       "file": "ascelia-pharma-equity-report.html",
       "ticker": "ACE.ST",
       "isin": "SE0010573113",
@@ -703,14 +663,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "asml-equity-report.html",
-      "ticker": "ASML",
-      "isin": "USN070592100",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "asmodee-group-equity-report.html",
@@ -916,14 +868,6 @@
       "file": "be-group-equity-report.html",
       "ticker": "BEGR.ST",
       "isin": "SE0008321921",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "beammwave-equity-report.html",
-      "ticker": "BEAMMW-B.ST",
-      "isin": "SE0016799068",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -1233,14 +1177,6 @@
       "modelYear": 2025
     },
     {
-      "file": "boozt-equity-report.html",
-      "ticker": "BOOZT.ST",
-      "isin": "SE0009888738",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
       "file": "boreo-equity-report.html",
       "ticker": "BOREO.HE",
       "isin": "FI0009900724",
@@ -1327,14 +1263,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "brondbyernes-if-fodbold-equity-report.html",
-      "ticker": "BIF.CO",
-      "isin": "DK0010247956",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "bts-group-equity-report.html",
@@ -1561,28 +1489,12 @@
       "modelYear": 2025
     },
     {
-      "file": "chemometec-equity-report.html",
-      "ticker": "CHEMM.CO",
-      "isin": "DK0060055861",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "christian-berner-tech-trade-equity-report.html",
       "ticker": "BERNER-B.ST",
       "isin": "SE0006143129",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "cibus-equity-report.html",
-      "ticker": "CIBUS",
-      "isin": "SE0010832204",
-      "pageYear": 2025,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker CIBUS"
     },
     {
       "file": "cint-group-equity-report.html",
@@ -1687,22 +1599,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "coffee-stain-studios-equity-report.html",
-      "ticker": "COFFEE-B.ST",
-      "isin": "SE0026599557",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
-      "file": "coloplast-equity-report.html",
-      "ticker": "COLO-B.CO",
-      "isin": "DK0060448595",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "columbus-equity-report.html",
@@ -2297,14 +2193,6 @@
       "modelYear": 2025
     },
     {
-      "file": "epiroc-equity-report.html",
-      "ticker": "EPI-A.ST",
-      "isin": "SE0015658109",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
       "file": "episurf-medical-equity-report.html",
       "ticker": "EPIS-B.ST",
       "isin": "SE0003491562",
@@ -2471,14 +2359,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "ferrari-equity-report.html",
-      "ticker": "RACE.MI",
-      "isin": "NL0011585146",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "ferroamp-equity-report.html",
@@ -2705,14 +2585,6 @@
       "modelYear": 2025
     },
     {
-      "file": "gapwaves-equity-report.html",
-      "ticker": "GAPW-B.ST",
-      "isin": "SE0009155518",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
       "file": "garo-aktiebolag-equity-report.html",
       "ticker": "GARO.ST",
       "isin": "SE0015812417",
@@ -2828,14 +2700,6 @@
       "file": "goodbye-kansas-group-equity-report.html",
       "ticker": "GBK.ST",
       "isin": "SE0021627353",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "goodtech-equity-report.html",
-      "ticker": "GOD.OL",
-      "isin": "NO0004913609",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -3220,14 +3084,6 @@
       "file": "huscompagniet-equity-report.html",
       "ticker": "HUSCO.CO",
       "isin": "DK0061412855",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "husqvarna-equity-report.html",
-      "ticker": "HUSQ-B.ST",
-      "isin": "SE0001662230",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -4017,14 +3873,6 @@
       "modelYear": 2025
     },
     {
-      "file": "matas-equity-report.html",
-      "ticker": "MATAS.CO",
-      "isin": "DK0060497295",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "maven-wireless-sweden-equity-report.html",
       "ticker": "MAVEN.ST",
       "isin": "SE0015961180",
@@ -4081,14 +3929,6 @@
       "modelYear": 2025
     },
     {
-      "file": "mentice-equity-report.html",
-      "ticker": "MNTC.ST",
-      "isin": "SE0012673291",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
       "file": "metsa-board-equity-report.html",
       "ticker": "METSB",
       "isin": "FI0009000665",
@@ -4108,14 +3948,6 @@
       "file": "micro-systemation-equity-report.html",
       "ticker": "MSAB-B.ST",
       "isin": "SE0000526626",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "midsona-equity-report.html",
-      "ticker": "MSON-B.ST",
-      "isin": "SE0000565228",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -4308,14 +4140,6 @@
       "file": "napatech-equity-report.html",
       "ticker": "NAPA.OL",
       "isin": "DK0060520450",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "navamedic-equity-report.html",
-      "ticker": "NAVA.OL",
-      "isin": "NO0010205966",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
@@ -6281,14 +6105,6 @@
       "modelYear": 2025
     },
     {
-      "file": "strongpoint-equity-report.html",
-      "ticker": "STRO.OL",
-      "isin": "NO0010098247",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
       "file": "studentbostader-i-norden-equity-report.html",
       "ticker": "STUDBO.ST",
       "isin": "SE0015657697",
@@ -6460,14 +6276,6 @@
       "file": "tcm-group-equity-report.html",
       "ticker": "TCM.CO",
       "isin": "DK0060915478",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "techstep-equity-report.html",
-      "ticker": "TECH.OL",
-      "isin": "NO0012916131",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
