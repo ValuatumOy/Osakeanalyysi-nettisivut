@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Unreviewed company overviews showing FY 2025 after the fifth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2025 after the seventh reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "counts": {
     "same_or_older": 842,
     "identity_mismatch": 3,
@@ -6139,14 +6139,6 @@
       "file": "tagmaster-equity-report.html",
       "ticker": "TAGM-B.ST",
       "isin": "SE0015950399",
-      "pageYear": 2025,
-      "status": "same_or_older",
-      "modelYear": 2025
-    },
-    {
-      "file": "talenom-equity-report.html",
-      "ticker": "TNOM.HE",
-      "isin": "FI4000598149",
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025

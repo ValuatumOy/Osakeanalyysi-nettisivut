@@ -88,6 +88,13 @@
       "message": "Rana Gruber shares were delisted from Euronext Oslo Børs on 27 April 2026.",
       "source": "https://live.euronext.com/en/products/equities/company-news/2026-04-22-rana-gruber-asa-delisting",
       "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/lassila-and-tikanoja-equity-report.html",
+      "name": "Former Lassila and Tikanoja",
+      "message": "The former Lassila and Tikanoja demerged on 31 December 2025: its property services business became Luotea, and its circular economy business became a new Lassila and Tikanoja company. This page describes the former combined company.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd503be61887e800fd581f3820f9a869e&lang=en&src=listed",
+      "label": "Company demerger announcement"
     }
   ]
 }
