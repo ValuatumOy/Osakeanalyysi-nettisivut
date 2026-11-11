@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [{
+    "path": "reports/csam-health-group-as-equity-report.html",
+    "ticker": "OMDA.OL",
+    "pageTicker": "OMDA.OL",
+    "isin": "NO0010894512",
+    "financialYear": 2025,
+    "modelFinancialYear": 2022,
+    "currency": "NOK",
+    "marketCurrency": "NOK",
+    "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/04/10/670348_Omda%20Annual%20Report%202025.pdf",
+    "identitySourceUrl": "https://omda.com/csam-health-group-rebrands-to-omda-for-the-next-step-in-its-growth-journey/",
+    "sourceNote": "Figures are from the consolidated Norwegian GAAP financial statements. Revenue is the reported total sales revenue; total operating income also includes government grants.",
+    "reviewNotes": "Audited FY2025 Norwegian GAAP consolidated report, pp. 30, 32, 51, 67 and 103: NOK million sales revenue 494.193, EBIT 50.180, net income 6.608, equity 16.667. Net income and equity have no non-controlling interest. No verified year-end share price or market cap; NOK 36.93 is the average purchase price of treasury shares. Formerly CSAM Health Group AS, unchanged ISIN.",
+    "values": {"bookValue":16.667,"sharePrice":null,"revenue":494.193,"ebit":50.18,"netEarnings":6.608,"marketCap":null},
+    "modelSnapshot": {"bookValue":28.773,"sharePrice":38,"revenue":366.669,"ebit":-81.942,"netEarnings":-131.599,"marketCap":796.761352}
+  }]
+}

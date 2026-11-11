@@ -1183,6 +1183,90 @@
         },
         "notes": "Audited FY2025 consolidated annual report, pages 21, 27, 47–49. SEK million: revenue 242.4, EBIT -48.668, owner net earnings 495.069, equity 870.118. The closing share price was SEK 26.60 and there were 54,258,121 shares, producing market cap SEK 1,443.2660186m."
       }
+    },
+    {
+      "file": "reports/q-free-equity-report.html",
+      "name": "Q-Free",
+      "ticker": "QFR.OL",
+      "isin": "NO0003103103",
+      "message": "Q-Free shares had their last trading day on Oslo Børs on 14 December 2023.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2023-12-13-q-free-asa-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/self-storage-group-equity-report.html",
+      "name": "Self Storage Group",
+      "ticker": "SSG.OL",
+      "isin": "NO0010781206",
+      "message": "Self Storage Group shares had their last day of listing on Oslo Børs on 13 December 2023.",
+      "source": "https://www.nasdaq.com/press-release/correction%3A-last-day-of-trading-in-self-storage-group-asa-667-23-2023-12-13",
+      "label": "Nasdaq correction notice"
+    },
+    {
+      "file": "reports/nordic-shipholding-equity-report.html",
+      "name": "Nordic Shipholding",
+      "ticker": "NORDIC.CO",
+      "isin": "DK0060083996",
+      "message": "Nordic Shipholding's final liquidation was approved and its shares were suspended on Nasdaq Copenhagen on 28 December 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b14223cba946eda06d1a890d57ea69014&lang=en",
+      "label": "Nasdaq liquidation notice"
+    },
+    {
+      "file": "reports/gotenehus-group-equity-report.html",
+      "name": "Götenehus Group",
+      "ticker": "GHUS-B.ST",
+      "isin": "SE0001799636",
+      "message": "Götenehus Group B shares had their last trading day on Nasdaq First North on 11 January 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-gotenehus-group-ab-from-nasdaq-first-north-growth-market-697-23-2023-12",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/froy-equity-report.html",
+      "name": "Frøy",
+      "ticker": "FROY.OL",
+      "isin": "NO0010936792",
+      "message": "Frøy shares had their last trading day on Oslo Børs on 26 September 2023.",
+      "source": "https://mfn.se/ob/a/froy/froy-asa-delisting-dc203de6",
+      "label": "Oslo Børs delisting notice"
+    },
+    {
+      "file": "reports/hemcheck-sweden-equity-report.html",
+      "name": "Hemcheck Sweden",
+      "ticker": "HEMC.ST",
+      "isin": "SE0009320278",
+      "message": "Hemcheck Sweden became Bio Vitos Pharma in 2023. Following a share consolidation and ISIN change in 2024, Bio Vitos Pharma shares had their last trading day on 11 April 2025.",
+      "source": "https://www.nasdaq.com/press-release/change-of-company-name-for-hemcheck-sweden-ab-publ-630-23-2023-12-05",
+      "label": "Nasdaq name change",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b94eec6a73e6d8d893ab9638c48dd83e2&lang=en",
+      "additionalLabel": "Nasdaq delisting notice",
+      "identityEvidence": "https://www.nasdaq.com/press-release/reverse-split-and-change-isin-bio-vitos-pharma-ab-2024-11-01"
+    },
+    {
+      "file": "reports/idogen-equity-report.html",
+      "name": "Idogen",
+      "ticker": "IDOGEN.ST",
+      "isin": "SE0014428561",
+      "message": "Idogen was declared bankrupt and its shares were delisted from Nasdaq First North on 7 July 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b7761ca271c67890c7bbb4ab33f82562a&lang=en&src=rss",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/learning-2-sleep-l2s-equity-report.html",
+      "name": "Learning 2 Sleep L2S",
+      "ticker": "L2S.ST",
+      "isin": "SE0017083694",
+      "message": "Learning 2 Sleep L2S was declared bankrupt and its shares were delisted from Nasdaq First North on 15 January 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-learning-2-sleep-l2s-ab-from-nasdaq-first-north-growth-market-20-24-2024",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/lauritz-com-group-equity-report.html",
+      "name": "Lauritz.com Group",
+      "ticker": "LAUR.ST",
+      "isin": "DK0060733368",
+      "message": "Lauritz.com Group entered bankruptcy proceedings on 11 July 2023, and its shares were delisted from Nasdaq First North on 12 July 2023.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-lauritz.com-group-a-s-from-nasdaq-first-north-growth-market-379-23-2023",
+      "label": "Nasdaq delisting notice"
     }
   ]
 }

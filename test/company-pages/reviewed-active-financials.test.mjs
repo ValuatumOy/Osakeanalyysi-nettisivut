@@ -64,3 +64,13 @@ test('Formpipe separates continuing operations from the result of the sold busin
   assert.match(html, /last trading day on Nasdaq Stockholm on 24 August 2026/);
   assert.doesNotMatch(html, /data-generate-report|SEK 243\.30m/);
 });
+
+test('Omda uses the audited sales revenue and its current listing identity', async () => {
+  const html = await read('reports/csam-health-group-as-equity-report.html');
+  for (const value of ['NOK 494.19m', 'NOK 50.18m', 'NOK 6.61m', 'NOK 16.67m']) assert.ok(html.includes(value));
+  assert.match(html, /"identifier": "NO0010894512"/);
+  assert.match(html, /Previously known as CSAM Health Group/);
+  assert.match(html, /consolidated Norwegian GAAP/);
+  assert.match(html, /Share price<\/span><span class="cp-v">N\/A<\/span>/);
+  assert.doesNotMatch(html, /revenue of NOK 495\.69m|36\.93 NOK/);
+});

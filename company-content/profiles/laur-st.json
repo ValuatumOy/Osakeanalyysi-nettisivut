@@ -1,9 +1,11 @@
 {
   "ticker": "LAUR.ST",
   "companyName": "Lauritz.com Group A/S",
-  "profile": "Lauritz.com Group A/S operates an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offers valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver is transaction fees from auction turnover.",
+  "profile": "Lauritz.com Group A/S operated an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offered valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver was transaction fees from auction turnover. The listed company entered bankruptcy proceedings in 2023.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T18:47:34.895Z"
+  "generatedAt": "2026-07-24T18:47:34.895Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://www.nasdaq.com/press-release/delisting-of-lauritz.com-group-a-s-from-nasdaq-first-north-growth-market-379-23-2023"
 }

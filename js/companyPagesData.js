@@ -2087,11 +2087,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Crunchfish develops software for digital payments, centered on its Digital Cash platform, which provides patented layer-2 offline payment functionality for banks, payment service providers, and CBDC projects. The company also offers Blippit, an app terminal that links payment apps to POS systems. Revenue is driven by software licensing, integrations, and related services."
   },
   {
-    "name": "CSAM Health Group AS",
+    "name": "Omda",
     "ticker": "OMDA.OL",
     "exchange": "Oslo",
     "url": "reports/csam-health-group-as-equity-report.html",
-    "description": "CSAM Health Group AS, now Omda AS, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety."
+    "description": "Omda AS, formerly CSAM Health Group, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety."
   },
   {
     "name": "CTEK",
@@ -3204,7 +3204,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "FROY.OL",
     "exchange": "Oslo",
     "url": "reports/froy-equity-report.html",
-    "description": "Frøy ASA provides integrated aquaculture services to salmon farming companies, mainly in Norway and other North Atlantic markets. Its fleet of wellboats and service vessels supports transport of smolt and live fish, fish treatment, net cleaning, site installation and maintenance, and other day-to-day marine operations. The company also handles sea transport and related logistics."
+    "description": "Frøy AS provides integrated aquaculture services to salmon farming companies, mainly in Norway and other North Atlantic markets. Its fleet of wellboats and service vessels supports transport of smolt and live fish, fish treatment, net cleaning, site installation and maintenance, and other day-to-day marine operations. The company also handles sea transport and related logistics."
   },
   {
     "name": "FSport",
@@ -3638,7 +3638,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "HEMC.ST",
     "exchange": "Stockholm",
     "url": "reports/hemcheck-sweden-equity-report.html",
-    "description": "Hemcheck Sweden AB (publ) develops and commercializes point-of-care products for detecting hemolysis in blood samples. Its Helge concept includes single-use tests for vacuum tubes and blood gas syringes, together with a reader and optional display. The company is based in Karlstad and serves healthcare settings where timely blood sample quality control matters."
+    "description": "Hemcheck Sweden AB (publ) developed and commercialized point-of-care products for detecting hemolysis in blood samples. Its Helge concept included single-use tests for vacuum tubes and blood gas syringes, together with a reader and optional display. The company was based in Karlstad and served healthcare settings where timely blood sample quality control matters. The company later changed its name to Bio Vitos Pharma."
   },
   {
     "name": "Hemnet Group",
@@ -3911,7 +3911,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "IDOGEN.ST",
     "exchange": "Stockholm",
     "url": "reports/idogen-equity-report.html",
-    "description": "Idogen AB is a Swedish biotechnology company developing tolerogenic cell therapies intended to re-establish immune tolerance. Its programs are aimed at preventing the immune system from attacking biological treatments, transplanted organs, or the body’s own tissues, with lead work in hemophilia patients who have developed neutralizing antibodies and broader applications in transplantation and autoimmune disease."
+    "description": "Idogen AB was a Swedish biotechnology company developing tolerogenic cell therapies intended to re-establish immune tolerance. Its programs were aimed at preventing the immune system from attacking biological treatments, transplanted organs, or the body’s own tissues, with lead work in hemophilia patients who have developed neutralizing antibodies and broader applications in transplantation and autoimmune disease. The company was declared bankrupt in 2023."
   },
   {
     "name": "Image Systems",
@@ -4534,7 +4534,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "LAUR.ST",
     "exchange": "Stockholm",
     "url": "reports/lauritz-com-group-equity-report.html",
-    "description": "Lauritz.com Group A/S operates an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offers valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver is transaction fees from auction turnover."
+    "description": "Lauritz.com Group A/S operated an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offered valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver was transaction fees from auction turnover. The listed company entered bankruptcy proceedings in 2023."
   },
   {
     "name": "LeadDesk Oy",
@@ -4548,7 +4548,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "L2S.ST",
     "exchange": "Stockholm",
     "url": "reports/learning-2-sleep-l2s-equity-report.html",
-    "description": "Learning 2 Sleep L2S AB provides digital healthcare services focused on sleep problems. The company offers an app-based sleep analysis and CBT-I treatment program, supported by coaching, recommendations, and audio exercises for individuals. It also works with employers, insurers, researchers, and healthcare partners through adapted sleep programs and data-based services."
+    "description": "Learning 2 Sleep L2S AB provided digital healthcare services focused on sleep problems. The company offered an app-based sleep analysis and CBT-I treatment program, supported by coaching, recommendations, and audio exercises for individuals. It also worked with employers, insurers, researchers, and healthcare partners through adapted sleep programs and data-based services. The company was declared bankrupt in 2024."
   },
   {
     "name": "LED iBond International",
@@ -5549,7 +5549,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "NORDIC.CO",
     "exchange": "Copenhagen",
     "url": "reports/nordic-shipholding-equity-report.html",
-    "description": "Nordic Shipholding A/S is a Danish ship-owning company focused on the management and operation of tankers. Its fleet has included handy tankers and an LR1 vessel, which are commercially operated and technically managed through external shipping partners. The company’s value driver is the deployment and chartering of tanker vessels."
+    "description": "Nordic Shipholding A/S was a Danish ship-owning company focused on the management and operation of tankers. Its fleet included handy tankers and an LR1 vessel, which were commercially operated and technically managed through external shipping partners. The company’s value driver was the deployment and chartering of tanker vessels. The company completed final liquidation in 2023."
   },
   {
     "name": "Nordisk Bergteknik",
@@ -6326,7 +6326,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "QFR.OL",
     "exchange": "Oslo",
     "url": "reports/q-free-equity-report.html",
-    "description": "Q-Free ASA develops intelligent transportation systems for tolling, traffic management, and road safety. Its offerings include electronic toll collection, congestion charging, adaptive signal control, automatic license plate recognition, and other hardware and software used to manage road networks. The company also provides service, maintenance, and integration support for deployed systems worldwide."
+    "description": "Q-Free AS develops intelligent transportation systems for tolling, traffic management, and road safety. Its offerings include electronic toll collection, congestion charging, adaptive signal control, automatic license plate recognition, and other hardware and software used to manage road networks. The company also provides service, maintenance, and integration support for deployed systems worldwide."
   },
   {
     "name": "Q-Interline",
@@ -6942,7 +6942,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "SSG.OL",
     "exchange": "Oslo",
     "url": "reports/self-storage-group-equity-report.html",
-    "description": "Self Storage Group ASA operates as a Scandinavian self-storage provider, offering rentable storage space through its City Self-Storage brand and related facilities in Norway. The company focuses on leasing units to private and business customers, supported by lean operations, automation, and customer service. It has also indicated a longer-term brand transition toward Green Storage."
+    "description": "Self Storage Group AS provides self-storage services, offering rentable storage space to private and business customers. The business uses facilities, customer service and automated access to support storage rentals. In Norway, City Self-Storage and OK Minilager merged in 2025 and adopted the Green Storage brand in 2026."
   },
   {
     "name": "Seluxit",

@@ -16,6 +16,7 @@ test('reviewed historical companies explain their status and cannot be ordered f
     assert.ok(html.includes('href="#overview" class="btn btn-gold">View company status'), page.file);
     if (page.successor) assert.ok(html.includes(`href="${page.successor}"`), page.file);
     if (page.additionalSource) assert.ok(html.includes(page.additionalSource.replace(/&/g, '&amp;')), page.file);
+    if (page.identityEvidence) assert.ok(html.includes(page.identityEvidence.replace(/&/g, '&amp;')), page.file);
     if (page.isin) {
       assert.ok(html.includes(`"identifier": "${page.isin}"`), page.file);
       assert.ok(html.includes(`"tickerSymbol": "${page.ticker}"`), page.file);

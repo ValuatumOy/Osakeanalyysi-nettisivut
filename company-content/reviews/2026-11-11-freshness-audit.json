@@ -911,7 +911,9 @@
       "isin": "NO0010936792",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://mfn.se/ob/a/froy/froy-asa-delisting-dc203de6"
     },
     {
       "file": "fuud-equity-report.html",
@@ -971,7 +973,9 @@
       "isin": "SE0001799636",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-gotenehus-group-ab-from-nasdaq-first-north-growth-market-697-23-2023-12"
     },
     {
       "file": "gpx-medical-equity-report.html",
@@ -1027,7 +1031,9 @@
       "isin": "SE0009320278",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/change-of-company-name-for-hemcheck-sweden-ab-publ-630-23-2023-12-05"
     },
     {
       "file": "hifab-group-ab-publ-equity-report.html",
@@ -1105,7 +1111,9 @@
       "isin": "SE0014428561",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b7761ca271c67890c7bbb4ab33f82562a&lang=en&src=rss"
     },
     {
       "file": "innofactor-equity-report.html",
@@ -1270,7 +1278,9 @@
       "isin": "DK0060733368",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-lauritz.com-group-a-s-from-nasdaq-first-north-growth-market-379-23-2023"
     },
     {
       "file": "learning-2-sleep-l2s-equity-report.html",
@@ -1278,7 +1288,9 @@
       "isin": "SE0017083694",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-learning-2-sleep-l2s-ab-from-nasdaq-first-north-growth-market-20-24-2024"
     },
     {
       "file": "led-ibond-international-equity-report.html",
@@ -1490,7 +1502,9 @@
       "isin": "DK0060083996",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "liquidated",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b14223cba946eda06d1a890d57ea69014&lang=en"
     },
     {
       "file": "nortel-as-equity-report.html",
@@ -1664,7 +1678,9 @@
       "isin": "NO0003103103",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2023-12-13-q-free-asa-delisting"
     },
     {
       "file": "quantafuel-equity-report.html",
@@ -1794,7 +1810,9 @@
       "isin": "NO0010781206",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/correction%3A-last-day-of-trading-in-self-storage-group-asa-667-23-2023-12-13"
     },
     {
       "file": "seluxit-equity-report.html",
