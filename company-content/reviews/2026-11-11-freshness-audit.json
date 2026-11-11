@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the sixth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the seventh reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
     {
@@ -9,7 +9,9 @@
       "isin": "SE0002575340",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b7d89c90e2c701ae86282a8d2add501b0&lang=en"
     },
     {
       "file": "adderacare-equity-report.html",
@@ -25,7 +27,9 @@
       "isin": "NO0010844038",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bc89a2237bc210c022bbf306f779c9f9c&lang=en"
     },
     {
       "file": "adventure-box-technology-equity-report.html",
@@ -217,7 +221,9 @@
       "isin": "FI0009008403",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b305a9815f8956bf55a5d1da988942666&lang=en"
     },
     {
       "file": "bbs-bioactive-bone-substitutes-equity-report.html",
@@ -257,7 +263,9 @@
       "isin": "FI4000414800",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://attachment.news.eu.nasdaq.com/ab58a2a7243724a4be478f1913991b724"
     },
     {
       "file": "biofish-holding-as-equity-report.html",
@@ -361,7 +369,9 @@
       "isin": "SE0010441584",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b16cd812fc24def617cfb5bb47b8aae17&lang=en"
     },
     {
       "file": "carbiotix-equity-report.html",
@@ -401,7 +411,9 @@
       "isin": "FI4000062781",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bd3ed7b04751016f49be53bae7ae3c2b5&lang=en"
     },
     {
       "file": "chordate-medical-holding-equity-report.html",
@@ -417,7 +429,9 @@
       "isin": "DK0060227585",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bdf8270f9f66ea1be87a7bae6414515d7&lang=en"
     },
     {
       "file": "chromogenics-equity-report.html",
@@ -578,14 +592,6 @@
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "diadrom-holding-equity-report.html",
-      "ticker": "DIAH.ST",
-      "isin": "SE0001606906",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "diagonal-bio-equity-report.html",
@@ -754,14 +760,6 @@
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "eniro-group-equity-report.html",
-      "ticker": "ENRO.ST",
-      "isin": "SE0011256312",
-      "pageYear": 2024,
-      "status": "identity_mismatch",
-      "modelYear": 2025
     },
     {
       "file": "ensurge-micropower-equity-report.html",
@@ -996,14 +994,6 @@
       "modelYear": 2023
     },
     {
-      "file": "hydrogenpro-equity-report.html",
-      "ticker": "HYPRO.OL",
-      "isin": "NO0010892359",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
       "file": "hypefactors-equity-report.html",
       "ticker": "HYPE.CO",
       "isin": "DK0060989911",
@@ -1098,22 +1088,6 @@
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "job-solution-sweden-holding-equity-report.html",
-      "ticker": "CALVIK.ST",
-      "isin": "SE0017564800",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
-      "file": "jondetech-sensors-equity-report.html",
-      "ticker": "JDT.ST",
-      "isin": "SE0009662554",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "kahoot-equity-report.html",
@@ -1292,28 +1266,12 @@
       "modelYear": 2024
     },
     {
-      "file": "lohilo-foods-equity-report.html",
-      "ticker": "LOHILO.ST",
-      "isin": "SE0014262549",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
       "file": "loudspring-equity-report.html",
       "ticker": "EAGLE.HE",
       "isin": "FI4000092523",
       "pageYear": 2021,
       "status": "same_or_older",
       "modelYear": 2021
-    },
-    {
-      "file": "lytix-biopharma-as-equity-report.html",
-      "ticker": "LYTIX.OL",
-      "isin": "NO0010405780",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "mackmyra-svensk-whisky-equity-report.html",
@@ -1593,7 +1551,9 @@
       "isin": "NO0010907389",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2026-04-22-rana-gruber-asa-delisting"
     },
     {
       "file": "relesys-equity-report.html",
@@ -1788,28 +1748,12 @@
       "modelYear": 2022
     },
     {
-      "file": "vincit-equity-report.html",
-      "ticker": "VINCIT",
-      "isin": "FI4000185533",
-      "pageYear": 2024,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker VINCIT"
-    },
-    {
       "file": "volue-equity-report.html",
       "ticker": "VOLUE.OL",
       "isin": "NO0010894603",
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "webstep-equity-report.html",
-      "ticker": "WSTEP.OL",
-      "isin": "NO0010609662",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "western-bulk-chartering-as-equity-report.html",

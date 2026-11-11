@@ -1590,6 +1590,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Calliditas Therapeutics develops and commercializes medicines for rare diseases, with an initial focus on renal and hepatic conditions. Its lead products include TARPEYO/Kinpeygo, budesonide delayed-release capsules for primary IgA nephropathy, and it also advances partnered regional licenses and additional pipeline candidates. In 2024, Asahi Kasei acquired control of the company."
   },
   {
+    "name": "Calviks",
+    "ticker": "CALVIK.ST",
+    "exchange": "Stockholm",
+    "url": "reports/job-solution-sweden-holding-equity-report.html",
+    "description": "Calviks AB (publ) is an investment company that develops businesses focused on staffing, recruitment and broader competence supply. Through its subsidiaries, the group provides services in Sweden, Norway and Denmark, covering specialist and white-collar recruitment as well as temporary staffing. Growth is driven by acquisitions, cross-selling and expanding its Nordic service platform."
+  },
+  {
     "name": "Cambi",
     "ticker": "CAMBI.OL",
     "exchange": "Oslo",
@@ -4173,13 +4180,6 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "JM AB is a Nordic residential developer that focuses on new-build housing and residential areas in Sweden, Norway and Finland, mainly in metropolitan and growth regions. The company also develops commercial premises and carries out contract work, primarily in Greater Stockholm, with sustainability integrated across its operations."
   },
   {
-    "name": "Job Solution Sweden Holding",
-    "ticker": "CALVIK.ST",
-    "exchange": "Stockholm",
-    "url": "reports/job-solution-sweden-holding-equity-report.html",
-    "description": "Job Solution Sweden Holding AB (publ) is an investment company that develops businesses focused on staffing, recruitment and broader competence supply. Through its subsidiaries, the group provides services in Sweden, Norway and Denmark, covering specialist and white-collar recruitment as well as temporary staffing. Growth is driven by acquisitions, cross-selling and expanding its Nordic service platform."
-  },
-  {
     "name": "John Mattson Fastighetsföretagen",
     "ticker": "JOMA.ST",
     "exchange": "Stockholm",
@@ -4768,7 +4768,7 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Lyko Group AB (publ) operates a Nordic beauty retail business through its e-commerce platform, mobile app and stores in Sweden, Norway and Finland. The company sells a broad assortment of beauty products and also develops and manufactures selected own-brand items and supplies hairdressers and retailers through wholesale and production operations."
   },
   {
-    "name": "Lytix Biopharma AS",
+    "name": "Lytix Biopharma ASA",
     "ticker": "LYTIX.OL",
     "exchange": "Oslo",
     "url": "reports/lytix-biopharma-as-equity-report.html",

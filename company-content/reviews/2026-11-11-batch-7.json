@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/diadrom-holding-equity-report.html",
+      "ticker": "DIAH.ST",
+      "pageTicker": "DIAH.ST",
+      "isin": "SE0001606906",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/8c7d6640-4964-4928-886f-75d93c0d14b0/arsredovisning-2025.pdf",
+      "sourceNote": "The annual report is newer than the financial model used for this overview.",
+      "reviewNotes": "FY2025 annual report, SEK thousands: revenue 46,697, EBIT -3,007, net result -2,950, equity 5,735; year-end share price SEK 3.20 and market capitalisation SEK 23,301 thousand. Wisdom still contains FY2024 actuals.",
+      "values": {
+        "bookValue": 5.735,
+        "sharePrice": 3.2,
+        "revenue": 46.697,
+        "ebit": -3.007,
+        "netEarnings": -2.95,
+        "marketCap": 23.301
+      },
+      "modelSnapshot": {
+        "bookValue": 8.685,
+        "sharePrice": 6.8,
+        "revenue": 64.744,
+        "ebit": -3.117,
+        "netEarnings": -2.902,
+        "marketCap": 49.515152
+      }
+    },
+    {
+      "path": "reports/eniro-group-equity-report.html",
+      "ticker": "ENRO.ST",
+      "pageTicker": "ENRO.ST",
+      "isin": "SE0029300995",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.enirogroup.com/media/w0abgh2a/a-rsredovisning_2025.pdf",
+      "identitySourceUrl": "https://view.news.eu.nasdaq.com/view?id=bac11ea40b65985bade6ce640eda2abce&lang=en&src=rss",
+      "sourceNote": "The FY 2025 share price precedes the 1-for-50 reverse split in June 2026 and is not comparable to post-split prices. The share ISIN changed at the split.",
+      "reviewNotes": "The 2025 annual report gives revenue SEK 955m, EBIT 55m, owner net profit 46m and owner equity 344m. The unadjusted share price at the 2025 year end was SEK 0.39 and the market capitalisation was SEK 284m. Nasdaq confirms the subsequent 1-for-50 reverse split and ISIN change from SE0011256312 to SE0029300995. Wisdom displays a split-adjusted historical price and a market capitalisation inconsistent with the report.",
+      "values": {
+        "bookValue": 344,
+        "sharePrice": 0.39,
+        "revenue": 955,
+        "ebit": 55,
+        "netEarnings": 46,
+        "marketCap": 284
+      },
+      "modelSnapshot": {
+        "bookValue": 344,
+        "sharePrice": 19.5,
+        "revenue": 955,
+        "ebit": 55,
+        "netEarnings": 45,
+        "marketCap": 14196.138762
+      }
+    },
+    {
+      "path": "reports/vincit-equity-report.html",
+      "ticker": "VINCIT.HE",
+      "pageTicker": "VINCIT",
+      "isin": "FI4000185533",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://ir-cdn.inderes.com/assets/vincit/calendar-event-attachments/9c7e7228-cdb2-41b4-8da5-a0a800da1dde/vincit-financial-statements-and-board-of-directors-report.pdf",
+      "sourceNote": "Net earnings and book value are attributable to parent company shareholders. The company-reported market capitalisation includes all issued shares.",
+      "reviewNotes": "Audited FY2025 report: sales EUR 69.075m, EBIT -1.287m, owner net earnings -2.795636m, owner equity 31.914m, year-end share price EUR 1.28 and issuer market cap EUR 21.69925m. Model net earnings are -2.825m; group loss is -2.876m.",
+      "values": {
+        "bookValue": 31.914,
+        "sharePrice": 1.28,
+        "revenue": 69.075,
+        "ebit": -1.287,
+        "netEarnings": -2.795636,
+        "marketCap": 21.69925
+      },
+      "modelSnapshot": {
+        "bookValue": 31.914,
+        "sharePrice": 1.28,
+        "revenue": 69.075,
+        "ebit": -1.287,
+        "netEarnings": -2.825,
+        "marketCap": 21.41506048
+      }
+    },
+    {
+      "path": "reports/webstep-equity-report.html",
+      "ticker": "WSTEP.OL",
+      "pageTicker": "WSTEP.OL",
+      "isin": "NO0010609662",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://s22.q4cdn.com/155297899/files/doc_financials/2025/ar/WSTEP-Annual-report-2025.pdf",
+      "sourceNote": "The annual report is newer than the financial model used for this overview. Net earnings include discontinued operations.",
+      "reviewNotes": "Audited FY2025 report, NOK thousands: revenue 835,197, EBIT 55,949, total owner profit 40,359, equity 331,305 and year-end share price NOK 18.50. No market capitalisation was disclosed in the annual report. Wisdom still has FY2024 actuals.",
+      "values": {
+        "bookValue": 331.305,
+        "sharePrice": 18.5,
+        "revenue": 835.197,
+        "ebit": 55.949,
+        "netEarnings": 40.359,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 351.613,
+        "sharePrice": 22,
+        "revenue": 874.131,
+        "ebit": 66.726,
+        "netEarnings": 49.514,
+        "marketCap": 602.228
+      }
+    },
+    {
+      "path": "reports/lytix-biopharma-as-equity-report.html",
+      "ticker": "LYTIX.OL",
+      "pageTicker": "LYTIX.OL",
+      "isin": "NO0010405780",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/c/aHR0cHM6Ly9hcGkzLm9zbG8ub3Nsb2JvcnMubm8vdjEvbmV3c3JlYWRlci9hdHRhY2htZW50P21lc3NhZ2VJZD02NjkxMzcmYXR0YWNobWVudElkPTMyMTk0NA/2025-lytix-annual-report-final-2023-03-23.pdf?news-id=58a3b800-0925-5fb8-a127-85ec26ce652d",
+      "identitySourceUrl": "https://news.cision.com/lytix-biopharma-asa/r/lytix-biopharma-asa---conversion-to-public-limited-liability-company-and-name-change-registered%2Cc4336125",
+      "sourceNote": "The annual report is newer than the financial model. The company converted from AS to ASA in April 2026.",
+      "reviewNotes": "Audited FY2025 report, NOK thousands: revenue 0, EBIT -64,028, net result -59,982 and equity 61,750; no verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 61.75,
+        "sharePrice": null,
+        "revenue": 0,
+        "ebit": -64.028,
+        "netEarnings": -59.982,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 107.894,
+        "sharePrice": 5.88,
+        "revenue": 11.133,
+        "ebit": -95.896,
+        "netEarnings": -94.265,
+        "marketCap": 318.30792
+      }
+    },
+    {
+      "path": "reports/jondetech-sensors-equity-report.html",
+      "ticker": "JDT.ST",
+      "pageTicker": "JDT.ST",
+      "isin": "SE0022240115",
+      "modelIsin": "SE0009662554",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/95c8b3db-3675-477d-a107-acf8275dbcf6/jondetech-sensors-ab-publ-arsredovisning-2025.pdf",
+      "identitySourceUrl": "https://view.news.eu.nasdaq.com/view?id=bfe99cb84ab7683f463b90bf557946ac2&lang=en",
+      "sourceNote": "The annual report is newer than the financial model. The share ISIN changed in a 1-for-100 reverse split in May 2024.",
+      "reviewNotes": "Audited FY2025 annual report, SEK thousands: revenue 66, EBIT -33,669, net earnings -34,860, equity 35,073. Nasdaq confirms the current ISIN following the reverse split; Wisdom retains the prior ISIN.",
+      "values": {
+        "bookValue": 35.073,
+        "sharePrice": null,
+        "revenue": 0.066,
+        "ebit": -33.669,
+        "netEarnings": -34.86,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 55.145,
+        "sharePrice": null,
+        "revenue": 0.296,
+        "ebit": -34.317,
+        "netEarnings": -38.161724,
+        "marketCap": null
+      }
+    },
+    {
+      "path": "reports/job-solution-sweden-holding-equity-report.html",
+      "ticker": "CALVIK.ST",
+      "pageTicker": "CALVIK.ST",
+      "isin": "SE0017564800",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/50211e8b-a182-4311-8e5a-5855b3ebdcc3/calviks-arsredovisning-2025.pdf",
+      "identitySourceUrl": "https://www.calviks.se/mfn_news/job-solution-sweden-holding-ab-byter-namn-till-calviks-ab-och-kortnamn-till-calvik-pa-nasdaq-first-north-growth-market/",
+      "sourceNote": "The annual report is newer than the financial model. The company changed its name from Job Solution Sweden Holding to Calviks in 2025.",
+      "reviewNotes": "Audited FY2025 annual report, SEK thousands: revenue 1,340,600, EBIT 42,022, owner earnings 5,448 and owner equity 88,876. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 88.876,
+        "sharePrice": null,
+        "revenue": 1340.6,
+        "ebit": 42.022,
+        "netEarnings": 5.448,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 70.866,
+        "sharePrice": 20.4,
+        "revenue": 406.908,
+        "ebit": 20.138,
+        "netEarnings": 12.733,
+        "marketCap": 101.01825
+      }
+    },
+    {
+      "path": "reports/hydrogenpro-equity-report.html",
+      "ticker": "HYPRO.OL",
+      "pageTicker": "HYPRO.OL",
+      "isin": "NO0010892359",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/03/27/669527_FINAL%20Annual%20Report%202025.pdf?VersionId=F.UoWZXnCJ4RkR8zGD_GrU7gsaEfc29j",
+      "sourceNote": "The annual report is newer than the financial model. Net earnings and book value are attributable to the parent company shareholders.",
+      "reviewNotes": "Audited FY2025 annual report, NOK thousands: revenue 86,650, EBIT -215,465, owner net loss -233,115, owner equity 250,968. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 250.968,
+        "sharePrice": null,
+        "revenue": 86.65,
+        "ebit": -215.465,
+        "netEarnings": -233.115,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 346,
+        "sharePrice": 5.1,
+        "revenue": 195.688,
+        "ebit": -227.45,
+        "netEarnings": -200.137,
+        "marketCap": 348.228
+      }
+    },
+    {
+      "path": "reports/talenom-equity-report.html",
+      "ticker": "TNOM.HE",
+      "pageTicker": "TNOM.HE",
+      "isin": "FI4000598149",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://storage.googleapis.com/inderes-widgets-prod-assets/talenom/attachments/882cced8-0863-44d2-a52c-47388d293af3/talenom-annual-review-2025.pdf",
+      "identitySourceUrl": "https://view.news.eu.nasdaq.com/view?id=b5b6055b48a389cba863786076da42df4&lang=en&src=listed",
+      "sourceNote": "Revenue and operating profit reflect continuing operations; net earnings include discontinued operations. The year-end share price and market capitalisation precede the February 2026 partial demerger.",
+      "reviewNotes": "Audited FY2025 report: revenue EUR 109.112m, EBIT 6.180m, owner net earnings 0.464m, equity 47.036m, closing price EUR 3.03, issuer-reported total market value about EUR 138.3m. Current ISIN follows 2026 partial demerger. Model net earnings 1.054m and market cap 137.798m.",
+      "values": {
+        "bookValue": 47.036,
+        "sharePrice": 3.03,
+        "revenue": 109.112,
+        "ebit": 6.18,
+        "netEarnings": 0.464,
+        "marketCap": 138.3
+      },
+      "modelSnapshot": {
+        "bookValue": 47.036,
+        "sharePrice": 3.03,
+        "revenue": 109.112,
+        "ebit": 6.181,
+        "netEarnings": 1.054,
+        "marketCap": 137.79825516
+      }
+    },
+    {
+      "path": "reports/lohilo-foods-equity-report.html",
+      "ticker": "LOHILO.ST",
+      "pageTicker": "LOHILO.ST",
+      "isin": "SE0014262549",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://mb.cision.com/Main/19752/4341044/4061783.pdf",
+      "sourceNote": "The annual report is newer than the financial model.",
+      "reviewNotes": "Audited FY2025 annual report, SEK thousands: revenue 186,791, EBIT 1,738, net result -1,357, owner equity 12,254. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 12.254,
+        "sharePrice": null,
+        "revenue": 186.791,
+        "ebit": 1.738,
+        "netEarnings": -1.357,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 13.611,
+        "sharePrice": null,
+        "revenue": 205.171,
+        "ebit": 1.525,
+        "netEarnings": -2.278,
+        "marketCap": null
+      }
+    }
+  ]
+}
