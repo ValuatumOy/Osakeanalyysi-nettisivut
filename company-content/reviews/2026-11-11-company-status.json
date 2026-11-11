@@ -1127,6 +1127,62 @@
       "message": "Emplicure shares had their last trading day on Nasdaq First North on 27 November 2023.",
       "source": "https://view.news.eu.nasdaq.com/view?id=b6c7c1928920666a1e0d40de9a8bc0f39&lang=en",
       "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/skartanyab-equity-report.html",
+      "name": "NYAB",
+      "ticker": "NYAB",
+      "isin": "SE0022242434",
+      "message": "NYAB was previously named SkartaNYAB. Its listing moved from Finland to Sweden in June 2024, when its shares were converted one for one.",
+      "source": "https://nyabgroup.com/en/newsroom/nyab-has-completed-the-re-domiciliation-and-transfers-listing-to-sweden-2/",
+      "label": "Company listing transfer",
+      "additionalSource": "https://www.nasdaq.com/press-release/skartanyab-plc%3A-change-of-company-name-and-trading-and-issuer-codes-2022-12-13",
+      "additionalLabel": "Nasdaq name change",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "EUR",
+        "marketCurrency": "SEK",
+        "sourceUrl": "https://attachment.news.eu.nasdaq.com/a1525632e3e034ecc2325990eb27adb21",
+        "revenue": 546.995,
+        "ebit": 30.645,
+        "netEarnings": 21.316,
+        "bookValue": 209.527,
+        "sharePrice": null,
+        "marketCap": 4292,
+        "notes": "Audited consolidated figures, EUR million (annual report pp. 83–84); market cap SEK 4,292m is issuer-reported for outstanding shares at year-end (p. 77). 5.87 SEK is the yearly volume-weighted average, not the closing share price. Former Finnish shares FI4000153515 converted 1:1 to Swedish shares SE0022242434 in 2024."
+      }
+    },
+    {
+      "file": "reports/formpipe-software-equity-report.html",
+      "name": "Formpipe Software",
+      "ticker": "FPIP.ST",
+      "isin": "SE0001338039",
+      "message": "Formpipe Software changed its name to Lasernet Group in June 2026. Lasernet Group shares had their last trading day on Nasdaq Stockholm on 24 August 2026.",
+      "source": "https://www.lasernetgroup.com/news-blogs/lasernet-group-delists-from-nasdaq-stockholm",
+      "label": "Company delisting announcement",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=bf96afde966fc39c6e9b309a9e7d63c35&lang=en",
+      "additionalLabel": "Nasdaq name change",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "SEK",
+        "marketCurrency": "SEK",
+        "sourceUrl": "https://view.news.eu.nasdaq.com/view?id=bc40e90a80d7cee8dcd973a5a9dd47fbd&lang=en",
+        "bookValue": 870.118,
+        "sharePrice": 26.6,
+        "revenue": 242.4,
+        "ebit": -48.668,
+        "netEarnings": 495.069,
+        "marketCap": 1443.2660186,
+        "modelSnapshot": {
+          "bookValue": 486.17,
+          "sharePrice": 22.9,
+          "revenue": 528.945,
+          "ebit": 24.562,
+          "netEarnings": 17.093,
+          "marketCap": 1242.1189
+        },
+        "notes": "Audited FY2025 consolidated annual report, pages 21, 27, 47–49. SEK million: revenue 242.4, EBIT -48.668, owner net earnings 495.069, equity 870.118. The closing share price was SEK 26.60 and there were 54,258,121 shares, producing market cap SEK 1,443.2660186m."
+      }
     }
   ]
 }

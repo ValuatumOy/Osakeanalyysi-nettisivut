@@ -147,6 +147,23 @@ test('unverified optional figures remain N/A rather than falling back to the mod
   assert.equal(again[0].changed, false);
 });
 
+test('missing comparable revenue stays unavailable and requires an explanation', async (t) => {
+  const { root } = await fixture(t);
+  const missingRevenue = { ...manifest, pages: [{ ...entry, sourceNote: 'The investment company does not report comparable revenue.', values: { ...entry.values, revenue: null } }] };
+  const result = await refreshCompanyPages({ manifest: missingRevenue, client: mockClient, rootDir: root, now, write: true });
+  const html = await fs.readFile(path.join(root, entry.path), 'utf8');
+  assert.deepEqual(result[0].unavailable, ['revenue']);
+  assert.match(html, /has no comparable revenue figure and reported operating profit of EUR 2\.97m/);
+  assert.match(html, /Revenue<\/span><span class="cp-v">N\/A<\/span>/);
+  assert.doesNotMatch(html, /financial overview for 2025: revenue/);
+  assert.match(html, /does not report comparable revenue/);
+  assert.equal((await refreshCompanyPages({ manifest: missingRevenue, client: mockClient, rootDir: root, now, write: true }))[0].changed, false);
+  const unexplained = { ...missingRevenue, pages: [{ ...missingRevenue.pages[0], sourceNote: '' }] };
+  await assert.rejects(refreshCompanyPages({ manifest: unexplained, client: mockClient, rootDir: root, now }), /explain why revenue is unavailable/);
+  const empty = { ...missingRevenue, pages: [{ ...missingRevenue.pages[0], values: { bookValue: null, sharePrice: null, revenue: null, ebit: null, netEarnings: null, marketCap: null } }] };
+  await assert.rejects(refreshCompanyPages({ manifest: empty, client: mockClient, rootDir: root, now }), /at least one reviewed financial figure/);
+});
+
 test('year-end reports are identified accurately and unsupported source types are rejected', async (t) => {
   const { root } = await fixture(t);
   const yearEnd = { ...manifest, pages: [{ ...entry, sourceType: 'year-end-report' }] };

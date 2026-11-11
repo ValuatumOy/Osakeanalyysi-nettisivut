@@ -116,22 +116,24 @@ export function refreshHtml(html, entry, checkedOn, today) {
   }
   const { values: v, currency: c, marketCurrency: mc, financialYear: year } = entry;
   const sourceLabel = entry.sourceType === 'year-end-report' ? 'year-end report' : 'annual report';
-  const fields = ['revenue'];
+  const fields = [];
+  if (v.revenue !== null) fields.push('revenue');
   if (v.ebit !== null) fields.push('EBIT');
   if (v.netEarnings !== null) fields.push('net earnings');
   if (v.bookValue !== null) fields.push('book value');
   if (v.sharePrice !== null) fields.push('year-end share price');
   if (v.marketCap !== null) fields.push('market capitalisation');
   const fieldList = fields.length === 1 ? fields[0] : `${fields.slice(0, -1).join(', ')} and ${fields.at(-1)}`;
-  const profitSummary = v.ebit === null ? '' : ` and operating profit of ${money(v.ebit, c)}`;
+  const revenueSummary = v.revenue === null ? 'has no comparable revenue figure' : `reported revenue of ${money(v.revenue, c)}`;
+  const profitSummary = v.ebit === null ? '' : ` and ${v.revenue === null ? 'reported ' : ''}operating profit of ${money(v.ebit, c)}`;
   const marketFacts = [];
   if (v.sharePrice !== null) marketFacts.push(`the year-end share price was ${price(v.sharePrice, mc)}`);
   if (v.marketCap !== null) marketFacts.push(`market capitalisation was ${money(v.marketCap, mc)}`);
   const marketSummary = marketFacts.length ? `; ${marketFacts.join(' and ')}` : '';
   let next = html.replace(/financial overview for \d{4}:[^"\r\n]*?\./g, `financial overview for ${year}: ${fieldList}.`);
   next = replaceSection(next, 'overview', (section) => replaceOne(section,
-    /For (?:the latest completed financial year, |financial year )\d{4}, [^<]*? revenue of (?:N\/A|[A-Z]{3} [-\d,.]+m)(?: and operating profit of (?:N\/A|[A-Z]{3} [-\d,.]+m))?(?:; (?:the year-end share price was (?:N\/A|[-\d,.]+ [A-Z]{3})(?: and market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m))?|market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m)))?\./g,
-    `For financial year ${year}, ${esc(name)} reported revenue of ${money(v.revenue, c)}${profitSummary}${marketSummary}.`, entry.path));
+    /For (?:the latest completed financial year, |financial year )\d{4}, (?:[^<]*? revenue of (?:N\/A|[A-Z]{3} [-\d,.]+m)|[^<]*? has no comparable revenue figure)(?: and (?:reported )?operating profit of (?:N\/A|[A-Z]{3} [-\d,.]+m))?(?:; (?:the year-end share price was (?:N\/A|[-\d,.]+ [A-Z]{3})(?: and market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m))?|market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m)))?\./g,
+    `For financial year ${year}, ${esc(name)} ${revenueSummary}${profitSummary}${marketSummary}.`, entry.path));
   next = replaceSection(next, 'metrics', (section) => {
     const grid = `<div class="cp-grid">${[
       ['Book value', money(v.bookValue, c), `FY ${year}`],
@@ -188,10 +190,12 @@ function validateManifest(manifest, today) {
     }
     for (const key of KEYS) {
       const reviewed = entry.values?.[key];
-      if (!(Number.isFinite(reviewed) || (reviewed === null && key !== 'revenue')) || !(entry.modelSnapshot?.[key] === null || Number.isFinite(entry.modelSnapshot?.[key]))) {
+      if (!(Number.isFinite(reviewed) || reviewed === null) || !(entry.modelSnapshot?.[key] === null || Number.isFinite(entry.modelSnapshot?.[key]))) {
         throw new Error(`${entry.path}: reviewed and model values are required for ${key}`);
       }
     }
+    if (!['bookValue', 'revenue', 'ebit', 'netEarnings'].some((key) => Number.isFinite(entry.values[key]))) throw new Error(`${entry.path}: at least one reviewed financial figure is required`);
+    if (entry.values.revenue === null && (typeof entry.sourceNote !== 'string' || !entry.sourceNote.trim())) throw new Error(`${entry.path}: explain why revenue is unavailable`);
   }
 }
 

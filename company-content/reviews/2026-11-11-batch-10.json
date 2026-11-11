@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/arribatec-solutions-equity-report.html",
+      "ticker": "ARR.OL",
+      "pageTicker": "ARR.OL",
+      "isin": "NO0013682948",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/04/29/671741_Arribatec%20Annual%20Report%202025.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0013682948-XOSL/company-information",
+      "sourceNote": "Net earnings include discontinued operations and are attributable to the parent company's owners. Market capitalisation is calculated from the reported closing share price and outstanding shares.",
+      "reviewNotes": "Audited consolidated report pp. 28, 30–31: NOK million revenue 578.784, EBIT 31.972, owner net earnings 54.023, equity 300.750. Page 4 reports NOK 7.980 closing price and 67,264,514 outstanding shares; calculated market cap NOK 536.77082172m. A 10:1 reverse split was completed in 2025. Formerly Arribatec Solutions; the name changed in 2021. See https://www.arribatec.com/wp-content/uploads/2022/02/Prospectus-Arribatec-Group-ASA-03.02.2022.pdf.",
+      "values": {
+        "bookValue": 300.75,
+        "sharePrice": 7.98,
+        "revenue": 578.784,
+        "ebit": 31.972,
+        "netEarnings": 54.023,
+        "marketCap": 536.77082172
+      },
+      "modelSnapshot": {
+        "bookValue": 189.152,
+        "sharePrice": 3.45,
+        "revenue": 574.733,
+        "ebit": -60.834,
+        "netEarnings": -82.713,
+        "marketCap": 24.00234
+      }
+    },
+    {
+      "path": "reports/cavendish-hydrogen-equity-report.html",
+      "ticker": "CAVEN.OL",
+      "pageTicker": "CAVEN.OL",
+      "isin": "NO0013219535",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "EUR",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/b8f44dc8-9c62-4295-a501-37c4a246b9d1/cavendish-hydrogen-asa-annual-report-2025.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0013219535-XOSL",
+      "sourceNote": "The consolidated financial statements are in EUR and the Oslo shares are traded in NOK. An independently verified year-end share price and market capitalisation were unavailable.",
+      "reviewNotes": "Audited FY2025 consolidated statement, printed pages 41–42: EUR million revenue from customer contracts 15.309, operating loss -25.096, owner net loss -26.644, equity 48.683. No independently verified closing price or market cap.",
+      "values": {
+        "bookValue": 48.683,
+        "sharePrice": null,
+        "revenue": 15.309,
+        "ebit": -25.096,
+        "netEarnings": -26.644,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 73.1,
+        "sharePrice": 8.55,
+        "revenue": 31,
+        "ebit": -23.5,
+        "netEarnings": -22.7,
+        "marketCap": 287.28
+      }
+    },
+    {
+      "path": "reports/idex-biometrics-equity-report.html",
+      "ticker": "IDEX.OL",
+      "pageTicker": "IDEX.OL",
+      "isin": "NO0013536078",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/dd5515b8-481a-48c7-a9ad-cf4ff45cb43b/2025-idex-biometrics-asa-annual-report.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0013536078-XOSL/market-information",
+      "sourceNote": "The consolidated financial statements are in USD and the Oslo shares are traded in NOK. An independently verified year-end share price and market capitalisation were unavailable.",
+      "reviewNotes": "Audited consolidated FY2025 annual report pp. 26 and 28: USD million revenue 0.254, operating loss -10.533, net loss -10.002, equity 1.461. No non-controlling interest reported. The ISIN changed after a 100:1 reverse split in 2025.",
+      "values": {
+        "bookValue": 1.461,
+        "sharePrice": null,
+        "revenue": 0.254,
+        "ebit": -10.533,
+        "netEarnings": -10.002,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 4.713,
+        "sharePrice": 6.79,
+        "revenue": 0.841,
+        "ebit": -21.903,
+        "netEarnings": -14.449,
+        "marketCap": 2815.57496297
+      }
+    },
+    {
+      "path": "reports/saga-pure-equity-report.html",
+      "ticker": "SAGA.OL",
+      "pageTicker": "SAGA.OL",
+      "isin": "NO0010572589",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://mb.cision.com/Main/20232/4338125/4050609.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0010572589-XOSL",
+      "sourceNote": "The investment company's operating income includes fair-value changes and other items; the report does not present comparable revenue. Net earnings are attributable to the parent company's owners.",
+      "reviewNotes": "Audited consolidated FY2025 report pp. 14, 16 and 18: NOK million EBIT 6.758, owner net earnings 6.476, owner equity 1,129.465. Total operating income 28.163 includes fair-value changes and other non-revenue items and is not used as revenue. No independently verified closing price or market cap.",
+      "values": {
+        "bookValue": 1129.465,
+        "sharePrice": null,
+        "revenue": null,
+        "ebit": 6.758,
+        "netEarnings": 6.476,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 868.677,
+        "sharePrice": 1.25,
+        "revenue": -19.369,
+        "ebit": -32.432,
+        "netEarnings": 2.971,
+        "marketCap": 606.0975
+      }
+    }
+  ]
+}

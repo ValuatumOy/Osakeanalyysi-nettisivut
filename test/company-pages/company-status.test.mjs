@@ -20,7 +20,7 @@ test('reviewed historical companies explain their status and cannot be ordered f
       assert.ok(html.includes(`"identifier": "${page.isin}"`), page.file);
       assert.ok(html.includes(`"tickerSymbol": "${page.ticker}"`), page.file);
     }
-    if (page.financialReview) assert.ok(html.includes(page.financialReview.sourceUrl), page.file);
+    if (page.financialReview) assert.ok(html.includes(page.financialReview.sourceUrl.replace(/&/g, '&amp;')), page.file);
   }
 });
 
