@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/navamedic-equity-report.html",
+      "ticker": "NAVA.OL",
+      "pageTicker": "NAVA.OL",
+      "isin": "NO0010205966",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://navamedic.com/wp-content/uploads/2026/03/Navamedic-ASA-Annual-Report-2025.pdf",
+      "reviewNotes": "Consolidated income statement and changes in equity, pp. 34-36; year-end share price and market capitalisation, p. 11.",
+      "values": {
+        "bookValue": 334.077,
+        "sharePrice": 23.8,
+        "revenue": 565.359,
+        "ebit": 12.404,
+        "netEarnings": -23.538,
+        "marketCap": 570
+      },
+      "modelSnapshot": {
+        "bookValue": 334.077,
+        "sharePrice": 23.799999,
+        "revenue": 565.359,
+        "ebit": 12.404,
+        "netEarnings": -23.538,
+        "marketCap": 570.75677242
+      }
+    },
+    {
+      "path": "reports/techstep-equity-report.html",
+      "ticker": "TECH.OL",
+      "pageTicker": "TECH.OL",
+      "isin": "NO0012916131",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/c/aHR0cHM6Ly9hcGkzLm9zbG8ub3Nsb2JvcnMubm8vdjEvbmV3c3JlYWRlci9hdHRhY2htZW50P21lc3NhZ2VJZD02NzE5MzAmYXR0YWNobWVudElkPTMyNDU1Mw/techstep_asa_annual_report_2025.pdf?news-id=769c029d-883f-5c86-b9c0-9324b2124123",
+      "sourceNote": "Revenue excludes the other revenue reported separately in the income statement.",
+      "reviewNotes": "Consolidated income statement and equity, pp. 68-70. Current share ISIN verified at https://www.techstep.io/investor/share-information ; no source-confirmed year-end price or market cap.",
+      "values": {
+        "bookValue": 485.076,
+        "sharePrice": null,
+        "revenue": 997.906,
+        "ebit": -89.794,
+        "netEarnings": -103.51,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 485.076,
+        "sharePrice": 12.6,
+        "revenue": 997.906,
+        "ebit": -89.794,
+        "netEarnings": -103.51,
+        "marketCap": 433.5277716
+      }
+    },
+    {
+      "path": "reports/beammwave-equity-report.html",
+      "ticker": "BEAMMW-B.ST",
+      "pageTicker": "BEAMMW-B.ST",
+      "isin": "SE0016799068",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/ace609e0-0d48-484f-806a-2723b4e18e79/arsredovisning-beammwave-ab-2025-inkl-revisionsberattelse.pdf",
+      "reviewNotes": "Net sales and audited EBIT, earnings and equity from annual report. Year-end share price and market cap were not verified.",
+      "values": {
+        "bookValue": 132.849,
+        "sharePrice": null,
+        "revenue": 2.593,
+        "ebit": -25.229,
+        "netEarnings": -24.802,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 132.848954,
+        "sharePrice": 7.96,
+        "revenue": 2.593045,
+        "ebit": -25.229478,
+        "netEarnings": -24.801504,
+        "marketCap": 358.11138132
+      }
+    },
+    {
+      "path": "reports/mentice-equity-report.html",
+      "ticker": "MNTC.ST",
+      "pageTicker": "MNTC.ST",
+      "isin": "SE0012673291",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/900844b2-bc91-4b47-858c-115e171ea986/260421-mentice-ar25-en.pdf",
+      "reviewNotes": "Financial statements, pp. 38–40; year-end price and market capitalisation, p. 19.",
+      "values": {
+        "bookValue": 138.376,
+        "sharePrice": 13,
+        "revenue": 279.093,
+        "ebit": -27.565,
+        "netEarnings": -32.334,
+        "marketCap": 365.6
+      },
+      "modelSnapshot": {
+        "bookValue": 138.376,
+        "sharePrice": 13.35,
+        "revenue": 279.093,
+        "ebit": -27.565,
+        "netEarnings": -32.334,
+        "marketCap": 375.47856225
+      }
+    },
+    {
+      "path": "reports/academedia-equity-report.html",
+      "ticker": "ACAD.ST",
+      "pageTicker": "ACAD.ST",
+      "isin": "SE0007897079",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a6ce0a727ef5af405c69535a9b631408e",
+      "sourceNote": "The financial year ended on 30 June 2026.",
+      "reviewNotes": "Annual report 2025/26: FY2026 ended 30 June. Consolidated financial statements and equity, and p. 120 share price and market capitalisation. No non-controlling interests.",
+      "values": {
+        "bookValue": 7018,
+        "sharePrice": 100.8,
+        "revenue": 20360,
+        "ebit": 1947,
+        "netEarnings": 955,
+        "marketCap": 9709
+      },
+      "modelSnapshot": {
+        "bookValue": 7018,
+        "sharePrice": 100.800003,
+        "revenue": 20360,
+        "ebit": 1947,
+        "netEarnings": 955,
+        "marketCap": 9663.3138524
+      }
+    },
+    {
+      "path": "reports/duroc-equity-report.html",
+      "ticker": "DURC-B.ST",
+      "pageTicker": "DURC-B.ST",
+      "isin": "SE0000331266",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.duroc.se/upl/files/266882/duroc-arsredovisning-2025-2026.pdf?t=844159740",
+      "sourceNote": "The financial year ended on 30 June 2026; book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "Annual report FY2025/26: consolidated income statement and equity attributed to parent, pp. 63–66, year-end B-share price p. 16. Two share classes; market cap left unavailable.",
+      "values": {
+        "bookValue": 1008.9,
+        "sharePrice": 19.25,
+        "revenue": 2767.4,
+        "ebit": -82.9,
+        "netEarnings": -100.9,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 1008.9,
+        "sharePrice": 19.25,
+        "revenue": 2767.4,
+        "ebit": -82.9,
+        "netEarnings": -106.71207326,
+        "marketCap": 750.75
+      }
+    },
+    {
+      "path": "reports/gapwaves-equity-report.html",
+      "ticker": "GAPW-B.ST",
+      "pageTicker": "GAPW-B.ST",
+      "isin": "SE0009155518",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/bd1d3f65-607a-41e7-9fb0-ae487e8dc421/gapwaves-ab-publ-annual-report-2025.pdf",
+      "sourceNote": "Book value and net earnings are group totals.",
+      "reviewNotes": "Annual report pp. 35–38 consolidated statements; B-share information p. 21. Year-end share price and market cap not verified.",
+      "values": {
+        "bookValue": 117.274,
+        "sharePrice": null,
+        "revenue": 90.553,
+        "ebit": -57.082,
+        "netEarnings": -58.241,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 117.274,
+        "sharePrice": 15,
+        "revenue": 90.553,
+        "ebit": -57.082,
+        "netEarnings": -58.241,
+        "marketCap": 545.06022
+      }
+    },
+    {
+      "path": "reports/agf-equity-report.html",
+      "ticker": "AGF-B.CO",
+      "pageTicker": "AGF-B.CO",
+      "isin": "DK0010263722",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://cde-agf-cms-prod.azureedge.net/media/b4zlipdx/agf-as-%C3%A5rsrapport-2025_26.pdf",
+      "sourceNote": "The financial year ended on 30 June 2026. Operating profit includes other operating income and expenses.",
+      "reviewNotes": "Annual report consolidated income statement and parent shareholders equity. EBIT is result before financial items, including other operating income and expenses. No year-end share price or market capitalisation was verified.",
+      "values": {
+        "bookValue": 268.584,
+        "sharePrice": null,
+        "revenue": 230.559,
+        "ebit": -13.649,
+        "netEarnings": -5.597,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 268.584,
+        "sharePrice": 1.185,
+        "revenue": 230.559,
+        "ebit": -13.649,
+        "netEarnings": -5.597,
+        "marketCap": 639.9
+      }
+    },
+    {
+      "path": "reports/midsona-equity-report.html",
+      "ticker": "MSON-B.ST",
+      "pageTicker": "MSON-B.ST",
+      "isin": "SE0000565228",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/a/midsona/49a04be2-6233-4e64-97ad-5a9a6cf6c805/midsona-annual-report-2025.pdf",
+      "reviewNotes": "Consolidated income statement, balance sheet and five-year summary including year-end B-share price and market capitalisation. Reported EBIT is SEK 58m; model shows SEK 134m; the company reports adjusted EBIT of SEK 133m.",
+      "values": {
+        "bookValue": 2933,
+        "sharePrice": 8.48,
+        "revenue": 3630,
+        "ebit": 58,
+        "netEarnings": 10,
+        "marketCap": 1233
+      },
+      "modelSnapshot": {
+        "bookValue": 2933,
+        "sharePrice": 8.48,
+        "revenue": 3630,
+        "ebit": 134,
+        "netEarnings": 10,
+        "marketCap": 1233.2301184
+      }
+    },
+    {
+      "path": "reports/dantax-equity-report.html",
+      "ticker": "DANT.CO",
+      "pageTicker": "DANT.CO",
+      "isin": "DK0015205637",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://dantaxradio.dk/wp-content/uploads/2026/10/Dantax-AS-Aarsrapport-2025-26.pdf",
+      "sourceNote": "The financial year ended on 30 June 2026.",
+      "reviewNotes": "Annual report consolidated key figures and income statement; year-end share price DKK 300 confirmed by company FY2025/26 earnings release. Market capitalisation was not stated.",
+      "values": {
+        "bookValue": 39.012,
+        "sharePrice": 300,
+        "revenue": 19.733,
+        "ebit": -0.64,
+        "netEarnings": 7.582,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 39.012,
+        "sharePrice": 300,
+        "revenue": 19.733,
+        "ebit": -0.64,
+        "netEarnings": 7.582,
+        "marketCap": null
+      }
+    }
+  ]
+}
