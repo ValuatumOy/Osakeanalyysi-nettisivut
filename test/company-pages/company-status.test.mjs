@@ -29,3 +29,15 @@ test('Tikkurila historical figures use the consolidated annual report in euros',
   for (const value of ['EUR 581.97m', 'EUR 61.08m', 'EUR 43.08m', 'EUR 181.36m']) assert.ok(html.includes(value));
   assert.doesNotMatch(html, /GBP 0\.[0125]m/);
 });
+
+test('Airthings uses the audited 2025 consolidated figures in Norwegian kroner', async () => {
+  const html = await fs.readFile(path.join(root, 'reports/airthings-equity-report.html'), 'utf8');
+  for (const value of ['NOK 346.12m', 'NOK -130.84m', 'NOK -172.59m', 'NOK 254.79m']) assert.ok(html.includes(value));
+  assert.doesNotMatch(html, /USD 38\.5m|USD -13\.7m|FY 2024/);
+});
+
+test('Kyoto uses the audited 2025 consolidated figures rather than lease income as revenue', async () => {
+  const html = await fs.readFile(path.join(root, 'reports/kyoto-group-as-equity-report.html'), 'utf8');
+  for (const value of ['EUR 1.05m', 'EUR -8.12m', 'EUR -8.15m', 'EUR 9.95m']) assert.ok(html.includes(value));
+  assert.doesNotMatch(html, /EUR 0m|EUR -7\.6m|FY 2023/);
+});

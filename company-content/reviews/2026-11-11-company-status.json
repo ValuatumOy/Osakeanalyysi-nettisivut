@@ -530,6 +530,331 @@
       "message": "ChromoGenics shares had their last trading day on First North Sweden on 30 September 2024.",
       "source": "https://view.news.eu.nasdaq.com/view?id=b3e315ff6f18c09999af3965ddddd70ff&lang=en&src=rss",
       "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/ecoonline-holding-as-equity-report.html",
+      "name": "EcoOnline Holding AS",
+      "isin": "NO0010936891",
+      "ticker": "ECO.OL",
+      "message": "EcoOnline Holding shares had their last trading day on Euronext Growth Oslo on 20 September 2022.",
+      "source": "https://www.mfn.se/ob/a/ecoonline-holding/ecoonline-holding-as-delisting-5188d3db",
+      "label": "Oslo Børs delisting notice"
+    },
+    {
+      "file": "reports/simcorp-equity-report.html",
+      "name": "SimCorp",
+      "isin": "DK0060495240",
+      "ticker": "SIM.CO",
+      "message": "SimCorp shares had their last trading day on Nasdaq Copenhagen on 30 October 2023.",
+      "source": "https://www.simcorp.com/about-us/news/2023/nasdaq-as-accepts-delisting-of-simcorp-as-shares",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/clean-industry-solutions-holding-europe-equity-report.html",
+      "name": "Clean Industry Solutions Holding Europe",
+      "isin": "SE0011762517",
+      "ticker": "CISH.ST",
+      "message": "Clean Industry Solutions shares had their last trading day on First North Sweden on 30 July 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bccae9ed392f2287d6822815f95563680&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/duearity-equity-report.html",
+      "name": "Duearity",
+      "isin": "SE0015949482",
+      "ticker": "DEAR.ST",
+      "message": "Duearity entered bankruptcy proceedings and was delisted from First North Sweden on 10 September 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b758a541d85b743297edefa14553cb1a8&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/hoylu-equity-report.html",
+      "name": "Hoylu",
+      "isin": "SE0020677854",
+      "ticker": "HOYLU.ST",
+      "message": "Hoylu shares had their last trading day on First North Sweden on 1 August 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-hoylu-ab-nasdaq-first-north-growth-market-2024-07-18",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/aventura-group-equity-report.html",
+      "name": "Aventura Group",
+      "isin": "SE0015961438",
+      "ticker": "AVENT-B.ST",
+      "message": "Aventura Group entered bankruptcy proceedings in January 2024 and was delisted from First North Sweden on 31 January 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b2fbf9312ac4d3dd2e1464818f2e2de5e&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/linkfire-equity-report.html",
+      "name": "Linkfire",
+      "isin": "DK0061550811",
+      "ticker": "LINKFI.ST",
+      "message": "Linkfire shares had their last trading day on First North Sweden on 18 January 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b7a91e6a251922e2a146631b84d9be8ca&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/cline-scientific-equity-report.html",
+      "name": "Cline Scientific",
+      "isin": "SE0006758231",
+      "ticker": "CLINE-B.ST",
+      "message": "Cline Scientific entered bankruptcy proceedings and was delisted from First North Sweden on 12 August 2024.",
+      "source": "https://www.nasdaq.com/docs/2025/04/23/European-Surveillance-Annual-Report-2024.pdf",
+      "label": "Nasdaq surveillance report"
+    },
+    {
+      "file": "reports/kiliaro-equity-report.html",
+      "name": "Kiliaro",
+      "isin": "SE0016275333",
+      "ticker": "KILI.ST",
+      "message": "Kiliaro changed its name to Pixfam in September 2025. The company entered bankruptcy proceedings and was delisted from NGM Growth Market on 2 September 2026.",
+      "source": "https://www.skatteverket.se/privat/skatter/vardepapper/aktiehistorik/k/kiliaro.4.96cca41179bad4b1aa8725.html",
+      "label": "Swedish Tax Agency company history",
+      "additionalSource": "https://news.cision.com/ngm-market-notice/r/26-67-decision-on-delisting-of-pixfam-ab-from-ngm-growth-market,c4391300",
+      "additionalLabel": "NGM delisting notice"
+    },
+    {
+      "file": "reports/scandinavian-brake-systems-equity-report.html",
+      "name": "Scandinavian Brake Systems",
+      "isin": "DK0060042612",
+      "ticker": "SBS.CO",
+      "message": "Scandinavian Brake Systems was liquidated and its shares were last listed on Nasdaq Copenhagen on 10 December 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b659e07807705d9df56075be25d6a546e&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/seluxit-equity-report.html",
+      "name": "Seluxit",
+      "isin": "DK0061076130",
+      "ticker": "SLXIT.CO",
+      "message": "Seluxit entered bankruptcy proceedings and was last listed on First North Denmark on 1 July 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b408b55c35bbba61aeb8fe353b924ca7d&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/scape-technologies-equity-report.html",
+      "name": "Scape Technologies",
+      "isin": "DK0061114246",
+      "ticker": "SCAPE.CO",
+      "message": "Scape Technologies shares had their last trading day on First North Denmark on 13 August 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b72a9e4b16f81ce25eb12d55228ebe807&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/fifax-equity-report.html",
+      "name": "FIFAX",
+      "isin": "FI4000496328",
+      "ticker": "FIFAX.HE",
+      "message": "Fifax entered bankruptcy proceedings in July 2025 and was last listed on First North Finland on 22 July 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bb4963749a37376e4c5b86a900e18f39e&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/kyoto-group-as-equity-report.html",
+      "name": "Kyoto Group AS",
+      "isin": "NO0010936750",
+      "ticker": "KYOTO.OL",
+      "message": "Kyoto Group shares had their last trading day on Euronext Growth Oslo on 1 August 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-08-01-kyoto-group-delisting",
+      "label": "Euronext delisting notice",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "EUR",
+        "sourceUrl": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/917001790/2025",
+        "revenue": 1.046969,
+        "ebit": -8.121472,
+        "netEarnings": -8.151029,
+        "bookValue": 9.947669,
+        "note": "Audited consolidated financial statements in EUR millions under Norwegian simplified IFRS; revenue excludes lease income. Share price and market cap are unavailable after delisting."
+      }
+    },
+    {
+      "file": "reports/airthings-equity-report.html",
+      "name": "Airthings",
+      "isin": "NO0010895568",
+      "ticker": "AIRX.OL",
+      "message": "Airthings shares had their last trading day on Oslo Børs on 11 February 2026.",
+      "source": "https://www.airthings.com/newsroom/airthings-asa-delisting",
+      "label": "Company delisting notice",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "NOK",
+        "sourceUrl": "https://www.airthings.com/hubfs/01_Website/investors/reports/Airthings_ASA_2025_Annual_Report_vF.pdf",
+        "revenue": 346.117,
+        "ebit": -130.842,
+        "netEarnings": -172.594,
+        "bookValue": 254.794,
+        "note": "Audited consolidated financial statements in NOK millions, prepared under Norwegian GAAP. Share price and market cap are unverified."
+      }
+    },
+    {
+      "file": "reports/aquaporin-equity-report.html",
+      "name": "Aquaporin",
+      "isin": "DK0061555109",
+      "ticker": "AQP.CO",
+      "message": "Aquaporin entered bankruptcy proceedings in February 2026 and was last listed on Nasdaq Copenhagen on 2 February 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bc3bd03d5c39d2f026655607db730f22b&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/ellen-equity-report.html",
+      "name": "Ellen",
+      "isin": "SE0014730347",
+      "ticker": "ELN.ST",
+      "message": "Ellen changed its name to LN Future Invest in August 2025. Its shares had their last trading day on First North Sweden on 23 February 2026.",
+      "source": "https://www.mfn.se/cis/a/ln-future-invest/beslut-om-avnotering-av-aktierna-i-ln-future-invest-ab-97490a88",
+      "label": "Company delisting notice",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b0ca7d8880c3f6a0085df9f0e80972e83&lang=en",
+      "additionalLabel": "Nasdaq name-change notice"
+    },
+    {
+      "file": "reports/mackmyra-svensk-whisky-equity-report.html",
+      "name": "Mackmyra Svensk Whisky",
+      "isin": "SE0000731747",
+      "ticker": "MACK-B.ST",
+      "message": "Mackmyra Svensk Whisky entered bankruptcy proceedings and was delisted from First North Sweden on 19 August 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b78e1e5dac63156f4abe0ccc276dcad59&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/mintra-holding-as-equity-report.html",
+      "name": "Mintra Holding AS",
+      "isin": "NO0010895022",
+      "ticker": "MNTR.OL",
+      "message": "Mintra Holding shares had their last trading day on Euronext Growth Oslo on 1 February 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-01-31-mintra-holding-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/magseis-fairfield-equity-report.html",
+      "name": "Magseis Fairfield",
+      "isin": "NO0010663669",
+      "ticker": "0QWE.L",
+      "message": "Magseis Fairfield was acquired by TGS and was delisted from Oslo Børs in January 2023.",
+      "source": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2024/04/12/615675_2023%20TGS%20Annual%20Report.pdf",
+      "label": "TGS annual report",
+      "successor": "/reports/tgs-equity-report.html",
+      "successorLabel": "View TGS",
+      "additionalSource": "https://live.euronext.com/en/product/equities/NO0010663669-XOSL",
+      "additionalLabel": "Euronext instrument record"
+    },
+    {
+      "file": "reports/mercell-holding-equity-report.html",
+      "name": "Mercell Holding",
+      "isin": "NO0010307143",
+      "ticker": "MRCEL.OL",
+      "message": "Mercell Holding was acquired by Thoma Bravo and delisted from Oslo Børs in 2022.",
+      "source": "https://www.thomabravo.com/press-releases/thoma-bravo-completes-acquisition-of-mercell-holding-asa?hs_amp=true",
+      "label": "Acquisition announcement",
+      "additionalSource": "https://live.euronext.com/el/product/equities/NO0010307143-XOSL/ipo",
+      "additionalLabel": "Euronext instrument record"
+    },
+    {
+      "file": "reports/ocean-yield-equity-report.html",
+      "name": "Ocean Yield",
+      "isin": "NO0010657448",
+      "ticker": "OCY.OL",
+      "message": "Ocean Yield was delisted from Oslo Børs on 21 December 2021.",
+      "source": "https://live.euronext.com/en/product/equities/NO0010657448-XOSL",
+      "label": "Euronext instrument record"
+    },
+    {
+      "file": "reports/quantafuel-equity-report.html",
+      "name": "Quantafuel",
+      "isin": "NO0010785967",
+      "ticker": "QFUEL.OL",
+      "message": "Quantafuel shares were last listed on Euronext Growth Oslo on 6 February 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-02-05-quantafuel-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/relesys-equity-report.html",
+      "name": "Relesys",
+      "isin": "DK0061680436",
+      "ticker": "RELE.CO",
+      "message": "Relesys shares had their last trading day on First North Denmark on 14 May 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd759708394277bff8e4db17a3a438b34&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/samesystem-equity-report.html",
+      "name": "Samesystem",
+      "isin": "DK0061551033",
+      "ticker": "SAME.CO",
+      "message": "SameSystem shares had their last trading day on First North Denmark on 18 January 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bb1d54d045a53dd004312ae52b70f8b38&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/odico-equity-report.html",
+      "name": "Odico",
+      "isin": "DK0061031036",
+      "ticker": "ODICO.CO",
+      "message": "Odico entered bankruptcy proceedings in March 2024 and was last listed on First North Denmark on 20 March 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b33a5431d67df7118dcb726f5d7c85bcd&lang=da",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/teco-2030-equity-report.html",
+      "name": "Teco 2030",
+      "isin": "NO0010887516",
+      "ticker": "TECO.OL",
+      "message": "TECO 2030 applied for bankruptcy in December 2024 and was delisted from Euronext Growth Oslo on 20 January 2025.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-01-16-teco-2030-asa-delisting",
+      "label": "Euronext delisting notice",
+      "additionalSource": "https://live.euronext.com/en/products/equities/company-news/2024-12-10-teco-2030-asa-decision-petition-bankruptcy",
+      "additionalLabel": "Bankruptcy announcement"
+    },
+    {
+      "file": "reports/the-drilling-company-of-1972-equity-report.html",
+      "name": "The Drilling Company of 1972",
+      "isin": "DK0061135753",
+      "ticker": "DRLCO.CO",
+      "message": "The Drilling Company of 1972 was last listed on Nasdaq Copenhagen on 3 October 2022 following its combination with Noble.",
+      "source": "https://www.nasdaq.com/press-release/the-drilling-company-of-1972-a-s-removal-from-trading-and-official-listing-2022-10-03",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/xxl-equity-report.html",
+      "name": "XXL",
+      "isin": "NO0010716863",
+      "ticker": "XXL.OL",
+      "message": "XXL shares were last listed on Oslo Børs on 21 July 2025 after the company was acquired by Frasers.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-07-18-xxl-asa-delisting",
+      "label": "Euronext delisting notice",
+      "additionalSource": "https://live.euronext.com/en/products/equities/company-news/2025-06-30-frasers-group-plc-announces-compulsory-acquisition",
+      "additionalLabel": "Frasers acquisition notice",
+      "identitySource": "https://live.euronext.com/en/products/equities/company-news/2024-07-18-xxl-asa-key-information-relating-reverse-share-split-0"
+    },
+    {
+      "file": "reports/nts-equity-report.html",
+      "name": "NTS",
+      "isin": "NO0004895103",
+      "ticker": "NTS.OL",
+      "message": "NTS was merged into SalMar in December 2023.",
+      "source": "https://www.salmar.no/en/news/salmar-completion-of-intra-group-merger-and-mandatory-notification-of-trade/",
+      "label": "SalMar merger announcement",
+      "successor": "/reports/salmar-equity-report.html",
+      "successorLabel": "View SalMar"
+    },
+    {
+      "file": "reports/piippo-equity-report.html",
+      "name": "Piippo",
+      "isin": "FI4000123070",
+      "ticker": "PIIPPO.HE",
+      "message": "Piippo shares had their last trading day on First North Finland on 29 June 2026.",
+      "source": "https://piippo.info/",
+      "label": "Piippo company information"
+    },
+    {
+      "file": "reports/ntr-holding-equity-report.html",
+      "name": "NTR Holding",
+      "isin": "DK0010027671",
+      "ticker": "NTR-B.CO",
+      "message": "NTR Holding B shares had their last trading day on Nasdaq Copenhagen on 16 January 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd637ff112e505766b26c47bf9f2b0084&lang=en&src=rss",
+      "label": "Nasdaq delisting notice"
     }
   ]
 }
