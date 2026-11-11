@@ -129,3 +129,65 @@ The filing review found a newer annual report than the Wisdom model's latest act
 | SCANA.OL | scana | 2024 | 2025 | [filing](https://scana.no/wp-content/uploads/2026/04/2025-MD-Annual-report-260422.pdf) |
 | VOW.OL | vow | 2024 | 2025 | [filing](https://www.vowasa.com/wp-content/uploads/2026/04/Vow-Annual-and-Sustainability-Report-2025.pdf) |
 | WSTEP.OL | webstep | 2024 | 2025 | [filing](https://s22.q4cdn.com/155297899/files/doc_financials/2025/ar/WSTEP-Annual-report-2025.pdf) |
+
+## Figures the reviewers withheld (55 companies)
+
+The reviewer left these fields unavailable because the filing had no comparable figure or the model's figure could not be confirmed (for example investment income shown as revenue, an operating subtotal that is not EBIT, or a disputed equity figure). Wisdom has a value for each, and the sync shows Wisdom's value. Check whether Wisdom's figure is meaningful for the company; if it is not, the fix belongs in Wisdom.
+
+| Ticker | Page | Withheld | Reviewer's note |
+|---|---|---|---|
+| BOOZT.ST | boozt | Market cap |  |
+| ASML | asml | Share price, Market cap |  |
+| SKF-B.ST | ab-skf | Market cap |  |
+| RACE.MI | ferrari | Share price, Market cap |  |
+| CIBUS.ST | cibus | EBIT, Market cap | Revenue combines rental and service income; operating profit is unavailable because the report does not state it directly. |
+| GOD.OL | goodtech | Share price, Market cap | Revenue and operating profit cover continuing operations; net earnings also include discontinued operations. |
+| STRO.OL | strongpoint | Market cap | Book value and net earnings are attributable to shareholders of the parent company. |
+| CAVEN.OL | cavendish-hydrogen | Share price, Market cap | The consolidated financial statements are in EUR and the Oslo shares are traded in NOK. An independently verified year-end share price and market capitalisation were unavailable. |
+| IDEX.OL | idex-biometrics | Share price, Market cap | The consolidated financial statements are in USD and the Oslo shares are traded in NOK. An independently verified year-end share price and market capitalisation were unavailable. |
+| SAGA.OL | saga-pure | Revenue, Share price, Market cap | The investment company's operating income includes fair-value changes and other items; the report does not present comparable revenue. Net earnings are attributable to the parent company's owners. |
+| OMDA.OL | csam-health-group-as | Share price, Market cap | Figures are from the consolidated Norwegian GAAP financial statements. Revenue is the reported total sales revenue; total operating income also includes government grants. |
+| IOX.OL | interoil-exploration-and-production | Share price, Market cap | Revenue and operating profit relate to continuing operations; net earnings include discontinued operations. The auditor highlighted material uncertainty related to going concern. |
+| ELUX-B.ST | ab-electrolux | Market cap | Net earnings and book value are attributable to owners of the parent. No verified year-end market capitalisation is available. |
+| ACRI-B.ST | acrinova | EBIT | Revenue includes rental and service income. Operating profit is not separately reported. Market capitalisation is the company’s approximate year-end amount for both listed share classes. |
+| TECH.OL | techstep | Share price, Market cap | Revenue excludes the other revenue reported separately in the income statement. |
+| BEAMMW-B.ST | beammwave | Share price, Market cap |  |
+| DURC-B.ST | duroc | Market cap | The financial year ended on 30 June 2026; book value and net earnings are attributable to the parent company’s shareholders. |
+| GAPW-B.ST | gapwaves | Share price, Market cap | Book value and net earnings are group totals. |
+| AGF-B.CO | agf | Share price, Market cap | The financial year ended on 30 June 2026. Operating profit includes other operating income and expenses. |
+| BOR.OL | borgestad | Share price, Market cap | Book value and net earnings are attributable to the parent company’s shareholders. |
+| CEDER.ST | cedergrenska | Share price, Market cap | The financial year ended on 30 June 2026; book value and net earnings are attributable to the parent company’s shareholders. |
+| GENT.OL | gentian-diagnostics | Share price, Market cap |  |
+| HBC.OL | hofseth-biocare | Share price, Market cap | Book value and net earnings are attributable to the parent company’s shareholders. |
+| CORE-B.ST | corem-property-group | EBIT | The year-end market capitalisation includes all share classes; the share price is for Class B. The company does not separately report operating profit. |
+| LOYAL.ST | loyal-solutions | Share price | The financial year ended on 30 June 2026; the figures are for Loyal Solutions A/S. |
+| COLO-B.CO | coloplast | Share price, Market cap | The financial year ended on 30 September 2026. Operating profit is after special items. |
+| ZLNA.OL | zelluna | Share price | The company was renamed from Ultimovacs following a business combination in March 2025, which was accounted for as a reverse acquisition. |
+| WWI.OL | wilh-wilhelmsen-holding | Share price, Market cap | Book value and net earnings are attributable to the parent company’s shareholders. |
+| SAGA-B.ST | ab-sagax | EBIT | Revenue is rental revenue. Book value and net earnings are attributable to the parent company’s shareholders; the share price is for Class B. |
+| NORSE.OL | norse-atlantic | Share price, Market cap |  |
+| FPAR-A.ST | fastpartner | EBIT | Revenue is rental income. The share price and market capitalisation are for Class A shares. The company does not separately report operating profit. |
+| EMIL-PREF.ST | fastighetsbolaget-emilshus | EBIT | The share price is for the preference share; year-end market value covers all share classes. The company does not separately report operating profit. |
+| COFFEE-B.ST | coffee-stain-studios | Share price, Market cap | The financial year ended on 31 March 2026. Book value and net earnings are attributable to the parent company’s shareholders. |
+| K2A-B.ST | k2a-knaust-and-andersson-fastigheter | EBIT, Market cap | Revenue is rental income. Book value includes SEK 450m in hybrid bonds; the company also reports SEK 518.9m attributable to preference shares. Operating profit is not separately reported. |
+| BIF.CO | brondbyernes-if-fodbold | Share price, Market cap | The financial year ended on 30 June 2026. Operating profit includes player transfer activities. |
+| DATA.CO | dataproces-group | Share price | The financial year ended on 30 April 2026. |
+| QCORE.ST | qlucore | Share price, Market cap | The financial year ended on 30 April 2026. |
+| EKTA-B.ST | elekta | Share price | The financial year ended on 30 April 2026. Operating profit is after items affecting comparability. Net earnings and book value are attributable to the parent company shareholders. |
+| SDOS.ST | scandidos | Share price, Market cap | The financial year ended on 30 April 2026. |
+| INTEG-B.ST | integrum | Share price, Market cap | The financial year ended on 30 April 2026. |
+| SKIS-B.ST | skistar | Market cap | The financial year ended on 31 August 2026. The year-end report has not been reviewed by the company auditor; the annual report was not yet available when checked. Net earnings and book value are attributable to parent company shareholders. |
+| USWE.ST | uswe-sports | Share price, Market cap | The financial year ended on 31 March 2026. The year-end report has not been reviewed by the company auditor. Operating profit is the reported result, not adjusted operational EBIT. |
+| PEN.OL | panoro-energy | Share price, Market cap | The reported operating profit includes exploration costs written off and share-based payments. Net earnings and book value are attributable to the parent company shareholders. |
+| SCANA.OL | scana | Share price, Market cap | The annual report is newer than the financial model used for this overview. |
+| VOW.OL | vow | Market cap | The annual report is newer than the financial model used for this overview. Net earnings and book value are attributable to parent company shareholders. |
+| WSTEP.OL | webstep | Market cap | The annual report is newer than the financial model used for this overview. Net earnings include discontinued operations. |
+| LYTIX.OL | lytix-biopharma-as | Share price, Market cap | The annual report is newer than the financial model. The company converted from AS to ASA in April 2026. |
+| CALVIK.ST | job-solution-sweden-holding | Share price, Market cap | The annual report is newer than the financial model. The company changed its name from Job Solution Sweden Holding to Calviks in 2025. |
+| HYPRO.OL | hydrogenpro | Share price, Market cap | The annual report is newer than the financial model. Net earnings and book value are attributable to the parent company shareholders. |
+| ELABS.OL | elliptic-laboratories | Share price, Market cap | The annual report is newer than the financial model. Revenue excludes other operating income. |
+| ENSU.OL | ensurge-micropower | Market cap | The annual report is newer than the financial model. Financial statements are in USD and the Oslo share price is in NOK. |
+| EQVA.OL | eqva | Share price | The annual report is newer than the financial model. Net earnings include discontinued operations and are attributable to the parent company shareholders. |
+| CYVIZ.OL | cyviz-as | Share price, Market cap | The annual report is newer than the financial model. The report restates some FY 2024 comparative figures. |
+| HUDL.OL | huddlestock-fintech-as | Share price, Market cap | The annual report is newer than the financial model. The group divested parts of its business during 2025. |
+| ININ.OL | elop-as | Book value | Net earnings include discontinued operations and are attributable to the parent company's owners. Book value is unavailable because the annual report presents conflicting owner-equity figures. |
