@@ -2011,8 +2011,8 @@ window.COMPANY_PAGE_CATALOG = [
   },
   {
     "name": "ContextVision",
-    "ticker": "0L8Z.L",
-    "exchange": "London",
+    "ticker": "CONTX.OL",
+    "exchange": "Oslo",
     "url": "reports/contextvision-equity-report.html",
     "description": "ContextVision AB is a Swedish medical technology software company focused on image analysis and artificial intelligence. It develops proprietary software for image enhancement and interpretation, primarily for ultrasound, X-ray, and MRI equipment. The company serves medical device manufacturers and supports clinical decision-making by improving the quality and reliability of medical imaging."
   },
@@ -4524,10 +4524,10 @@ window.COMPANY_PAGE_CATALOG = [
   },
   {
     "name": "Lassila & Tikanoja",
-    "ticker": "LUOTEA.HE",
+    "ticker": "LAT1V.HE",
     "exchange": "Helsinki",
     "url": "reports/lassila-and-tikanoja-equity-report.html",
-    "description": "Lassila and Tikanoja Oyj is a Nordic circular economy company that provides waste management, recycling, hazardous waste treatment, remediation, and industrial and water treatment services. It helps customers turn waste streams into materials and supports cleaner operations across Finland and Sweden. The group is listed on Nasdaq Helsinki."
+    "description": "The former Lassila and Tikanoja group operated in circular economy and property services before its partial demerger in 2025."
   },
   {
     "name": "Lauritz.com Group",

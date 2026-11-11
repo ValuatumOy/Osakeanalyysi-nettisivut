@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/elliptic-laboratories-equity-report.html",
+      "ticker": "ELABS.OL",
+      "pageTicker": "ELABS.OL",
+      "isin": "NO0010722283",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/9ba0657c-2240-4d45-b46b-44e38993403c/annual-report-2025-elliptic-laboratories-asa.pdf",
+      "sourceNote": "The annual report is newer than the financial model. Revenue excludes other operating income.",
+      "reviewNotes": "Audited FY2025 annual report, NOK thousands: revenue from customers 101,306, EBIT -47,240, owner net loss -139,961 and equity 187,995. Other operating income was 1,430. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 187.995,
+        "sharePrice": null,
+        "revenue": 101.306,
+        "ebit": -47.24,
+        "netEarnings": -139.961,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 325.341,
+        "sharePrice": 10.48,
+        "revenue": 131.914,
+        "ebit": 4.71,
+        "netEarnings": 8.96,
+        "marketCap": 1101.41656
+      }
+    },
+    {
+      "path": "reports/ensurge-micropower-equity-report.html",
+      "ticker": "ENSU.OL",
+      "pageTicker": "ENSU.OL",
+      "isin": "NO0013186460",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/04/10/670411_Ensurge_annual_2025_FINAL.pdf",
+      "sourceNote": "The annual report is newer than the financial model. Financial statements are in USD and the Oslo share price is in NOK.",
+      "reviewNotes": "Audited FY2025 annual report, USD thousands: revenue 25, EBIT -9,622, net earnings -10,800, equity 12,029. Issuer reports NOK 0.85 closing price. No verified year-end market cap.",
+      "values": {
+        "bookValue": 12.029,
+        "sharePrice": 0.85,
+        "revenue": 0.025,
+        "ebit": -9.622,
+        "netEarnings": -10.8,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": -3.471,
+        "sharePrice": 1.08,
+        "revenue": 0.061,
+        "ebit": -10.858,
+        "netEarnings": -12.922,
+        "marketCap": 650.81734632
+      }
+    },
+    {
+      "path": "reports/eqva-equity-report.html",
+      "ticker": "EQVA.OL",
+      "pageTicker": "EQVA.OL",
+      "isin": "NO0010708605",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/c/aHR0cHM6Ly9hcGkzLm9zbG8ub3Nsb2JvcnMubm8vdjEvbmV3c3JlYWRlci9hdHRhY2htZW50P21lc3NhZ2VJZD02NzIxMjEmYXR0YWNobWVudElkPTMyNDc2NA/annual-report-eqva-asa-2025.pdf?news-id=3608e784-4737-5cbe-8eaa-fdb3a5e3bce0",
+      "sourceNote": "The annual report is newer than the financial model. Net earnings include discontinued operations and are attributable to the parent company shareholders.",
+      "reviewNotes": "Audited FY2025 report, NOK thousands: customer revenue 1,278,514, EBIT 48,852, owner net earnings 44,654 including discontinued operations, owner equity 402,125, issuer-reported market cap NOK 282m. Share price not disclosed in the annual report.",
+      "values": {
+        "bookValue": 402.125,
+        "sharePrice": null,
+        "revenue": 1278.514,
+        "ebit": 48.852,
+        "netEarnings": 44.654,
+        "marketCap": 282
+      },
+      "modelSnapshot": {
+        "bookValue": 319.437,
+        "sharePrice": 4.76,
+        "revenue": 1060.736,
+        "ebit": 63.896,
+        "netEarnings": 31.234,
+        "marketCap": 355.27191532
+      }
+    },
+    {
+      "path": "reports/cyviz-as-equity-report.html",
+      "ticker": "CYVIZ.OL",
+      "pageTicker": "CYVIZ.OL",
+      "isin": "NO0010015175",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.cyviz.com/wp-content/uploads/2026/05/Cyviz-Annual-Report-2025.pdf",
+      "sourceNote": "The annual report is newer than the financial model. The report restates some FY 2024 comparative figures.",
+      "reviewNotes": "Audited FY2025 annual report, NOK thousands: revenue 563,940, EBIT 1,347, net earnings -16,655 and equity 100,935. The issuer restated FY2024 comparative figures. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 100.935,
+        "sharePrice": null,
+        "revenue": 563.94,
+        "ebit": 1.347,
+        "netEarnings": -16.655,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 118.745,
+        "sharePrice": 31,
+        "revenue": 595.136,
+        "ebit": 12.687,
+        "netEarnings": 18.748,
+        "marketCap": 401.915
+      }
+    },
+    {
+      "path": "reports/contextvision-equity-report.html",
+      "ticker": "CONTX.OL",
+      "pageTicker": "CONTX.OL",
+      "isin": "SE0014731154",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/78a1fac3-8215-4526-b855-aa647d050773/contextvision-annual-report-2025.pdf",
+      "identitySourceUrl": "https://www.contextvision.com/investors/",
+      "sourceNote": "Financial statements are in SEK and the Oslo share price and market capitalisation are in NOK. The issuer reported year-end market capitalisation of approximately NOK 328m.",
+      "reviewNotes": "Audited FY2025 annual report: revenue SEK 110.277m, EBIT 0.417m, owner net earnings 0.787m, equity 92.160m, closing price NOK 4.20 and issuer-reported market cap NOK 328m. The previous page used London ticker 0L8Z.L and incorrectly labelled its historical Oslo price as GBP. Wisdom CONTX.OL shows EBIT -2.937m.",
+      "values": {
+        "bookValue": 92.16,
+        "sharePrice": 4.2,
+        "revenue": 110.277,
+        "ebit": 0.417,
+        "netEarnings": 0.787,
+        "marketCap": 328
+      },
+      "modelSnapshot": {
+        "bookValue": 92.004466,
+        "sharePrice": 4.24,
+        "revenue": 110.277,
+        "ebit": -2.937,
+        "netEarnings": -0.078209,
+        "marketCap": 322.23071864
+      }
+    },
+    {
+      "path": "reports/huddlestock-fintech-as-equity-report.html",
+      "ticker": "HUDL.OL",
+      "pageTicker": "HUDL.OL",
+      "isin": "NO0010859648",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/2dd2cb78-0d45-432c-90f2-7df4988a3199/huddlestock-group-annual-report-2025.pdf",
+      "sourceNote": "The annual report is newer than the financial model. The group divested parts of its business during 2025.",
+      "reviewNotes": "Audited FY2025 annual report, NOK thousands: revenue 52,368, EBIT -61,086, net earnings -113,364 and equity 38,280. No verified year-end share price or market cap.",
+      "values": {
+        "bookValue": 38.28,
+        "sharePrice": null,
+        "revenue": 52.368,
+        "ebit": -61.086,
+        "netEarnings": -113.364,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 149.135806,
+        "sharePrice": 0.457,
+        "revenue": 71.509146,
+        "ebit": 7.559267,
+        "netEarnings": -72.328012,
+        "marketCap": 95.88872529
+      }
+    }
+  ]
+}

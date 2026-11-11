@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the seventh reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the eighth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
     {
@@ -490,14 +490,6 @@
       "modelYear": 2022
     },
     {
-      "file": "contextvision-equity-report.html",
-      "ticker": "0L8Z.L",
-      "isin": "SE0014731154",
-      "pageYear": 2024,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker 0L8Z.L"
-    },
-    {
       "file": "copperstone-resources-equity-report.html",
       "ticker": "COPP-B.ST",
       "isin": "SE0001915190",
@@ -549,14 +541,6 @@
       "file": "cyber-security-1-equity-report.html",
       "ticker": "CYB1.ST",
       "isin": "SE0007604061",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
-      "file": "cyviz-as-equity-report.html",
-      "ticker": "CYVIZ.OL",
-      "isin": "NO0010015175",
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
@@ -722,14 +706,6 @@
       "modelYear": 2024
     },
     {
-      "file": "elliptic-laboratories-equity-report.html",
-      "ticker": "ELABS.OL",
-      "isin": "NO0010722283",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
       "file": "elop-as-equity-report.html",
       "ticker": "ININ.OL",
       "isin": "NO0010864036",
@@ -762,28 +738,12 @@
       "modelYear": 2022
     },
     {
-      "file": "ensurge-micropower-equity-report.html",
-      "ticker": "ENSU.OL",
-      "isin": "NO0013186460",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
       "file": "epti-equity-report.html",
       "ticker": "OODA.ST",
       "isin": "SE0013774668",
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "eqva-equity-report.html",
-      "ticker": "EQVA.OL",
-      "isin": "NO0010708605",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "euroafrica-digital-ventures-equity-report.html",
@@ -978,14 +938,6 @@
       "modelYear": 2023
     },
     {
-      "file": "huddlestock-fintech-as-equity-report.html",
-      "ticker": "HUDL.OL",
-      "isin": "NO0010859648",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
-    {
       "file": "hydract-equity-report.html",
       "ticker": "HYDRCT.CO",
       "isin": "DK0061531944",
@@ -1167,7 +1119,9 @@
       "isin": "FI0009010854",
       "pageYear": 2024,
       "status": "identity_mismatch",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "demerged",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bd503be61887e800fd581f3820f9a869e&lang=en&src=listed"
     },
     {
       "file": "lauritz-com-group-equity-report.html",
