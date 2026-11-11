@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/interoil-exploration-and-production-equity-report.html",
+      "ticker": "IOX.OL",
+      "pageTicker": "IOX.OL",
+      "isin": "NO0013119255",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://interoil.no/wp-content/uploads/pdfs/reports/interoil-annual-report-2025-and-independent-auditors-report.pdf",
+      "sourceNote": "Revenue and operating profit relate to continuing operations; net earnings include discontinued operations. The auditor highlighted material uncertainty related to going concern.",
+      "reviewNotes": "Audited 2025 consolidated IFRS statements pp. 28–29 and 67: continuing sales USD 8.683m and operating loss -5.497m; total owner loss -29.885m including discontinued operations and owner equity -62.115m. KPMG drew attention to material going-concern uncertainty. 2025 year-end Oslo market data not independently verified.",
+      "values": {
+        "bookValue": -62.115,
+        "sharePrice": null,
+        "revenue": 8.683,
+        "ebit": -5.497,
+        "netEarnings": -29.885,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": -30.576,
+        "sharePrice": 1.93,
+        "revenue": 16.777,
+        "ebit": -4.918,
+        "netEarnings": -13.796,
+        "marketCap": 39.09952839
+      }
+    }
+  ]
+}

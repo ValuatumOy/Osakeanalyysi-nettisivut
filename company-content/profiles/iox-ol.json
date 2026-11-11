@@ -1,9 +1,11 @@
 {
   "ticker": "IOX.OL",
   "companyName": "Interoil Exploration and Production ASA",
-  "profile": "Interoil Exploration and Production ASA is an independent oil and gas company headquartered in Oslo and listed on the Oslo Stock Exchange. It is engaged in the acquisition, exploration, development, and operation of oil and natural gas properties, with activities focused mainly in Colombia and Argentina, where it acts as operator and license partner on producing and exploration assets.",
+  "profile": "Interoil Exploration and Production ASA is an independent oil and gas company headquartered in Oslo and listed on the Oslo Stock Exchange. It acquires, explores, develops and operates oil and natural gas properties. Following the divestment of its Argentine operations in February 2026, the company focuses its activities on Colombia.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T18:54:02.046Z"
+  "generatedAt": "2026-07-24T18:54:02.046Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://interoil.no/wp-content/uploads/pdfs/reports/interoil-annual-report-2025-and-independent-auditors-report.pdf"
 }

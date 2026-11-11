@@ -264,7 +264,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "ADVBOX.ST",
     "exchange": "Stockholm",
     "url": "reports/adventure-box-technology-equity-report.html",
-    "description": "Adventure Box Technology AB develops and operates a cloud-based platform for creating, sharing and playing 3D games online. It also provides licensing and consulting services. Since 2025, the company has been pursuing an acquisition-driven expansion in iGaming, adding technology, marketing and casino-related assets through acquisitions."
+    "description": "Adventure Box Technology AB developed and operated a cloud-based platform for creating, sharing and playing 3D games online, as well as licensing and consulting services. The company pursued an acquisition-driven expansion in iGaming in 2025. Bankruptcy proceedings were initiated in March 2026."
   },
   {
     "name": "AegirBio",
@@ -929,7 +929,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "AWDR.OL",
     "exchange": "Oslo",
     "url": "reports/awilco-drilling-equity-report.html",
-    "description": "Awilco Drilling PLC is a Norwegian offshore drilling company that historically owned and operated semi-submersible rigs, including WilPhoenix and WilHunter, for harsh-environment work in the North Sea and other offshore markets. The company previously focused on rig operations and related drilling services, but it entered members' voluntary liquidation in June 2025."
+    "description": "Awilco Drilling PLC was a UK-incorporated offshore drilling company listed in Norway. It historically owned and operated semi-submersible rigs, including WilPhoenix and WilHunter, for work in the North Sea and other offshore markets. The company became AR5 PLC and entered members’ voluntary liquidation in June 2025."
   },
   {
     "name": "Axfood",
@@ -1027,7 +1027,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "BONEH.HE",
     "exchange": "Helsinki",
     "url": "reports/bbs-bioactive-bone-substitutes-equity-report.html",
-    "description": "BBS-Bioactive Bone Substitutes Oyj is a Finnish medical technology company that develops, manufactures and commercializes bioactive bone graft substitutes for orthopedic surgery. Its main product, ARTEBONE, is a ready-to-use bone-healing paste based on tricalcium phosphate and bone proteins, intended to support the treatment of bone defects and healing problems."
+    "description": "BBS-Bioactive Bone Substitutes Oyj was a Finnish medical technology company that developed, manufactured and commercialized bioactive bone graft substitutes for orthopedic surgery. Its main product, ARTEBONE, was a bone-healing paste based on tricalcium phosphate and bone proteins. The company was declared bankrupt in February 2025."
   },
   {
     "name": "BE Group",
@@ -1636,7 +1636,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "CRBX.ST",
     "exchange": "Stockholm",
     "url": "reports/carbiotix-equity-report.html",
-    "description": "Carbiotix AB is a Swedish biotechnology company focused on the onsite upcycling of plant-based side-streams. Its NutraCycle service helps food, beverage, ingredient and feed producers convert by-products into fortified ingredients and other higher-value outputs. The company previously developed prebiotic ingredients and microbiome diagnostics, but has since centered on NutraCycle."
+    "description": "Carbiotix AB was a Swedish biotechnology company focused on the onsite upcycling of plant-based side-streams. Its NutraCycle service helped food, beverage, ingredient and feed producers convert by-products into ingredients and other higher-value outputs. The company was declared bankrupt in June 2026."
   },
   {
     "name": "Careium",
@@ -1783,7 +1783,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "CMH.ST",
     "exchange": "Stockholm",
     "url": "reports/chordate-medical-holding-equity-report.html",
-    "description": "Chordate Medical Holding AB (publ) develops and commercializes Ozilia®, a CE-marked, drug-free neuromodulation treatment for chronic migraine and chronic rhinitis. The company sells its products through distributors to clinics and hospitals in selected markets in Europe, the Middle East and Israel. It has also announced and received approval for delisting from Nasdaq First North Growth Market."
+    "description": "Chordate Medical Holding AB developed and commercialized Ozilia, a drug-free neuromodulation treatment for chronic migraine and chronic rhinitis. It sold products through distributors to clinics and hospitals in selected markets in Europe, the Middle East and Israel. The company decided on voluntary liquidation in December 2025."
   },
   {
     "name": "Chr. Hansen Holding",
@@ -4058,7 +4058,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "IOX.OL",
     "exchange": "Oslo",
     "url": "reports/interoil-exploration-and-production-equity-report.html",
-    "description": "Interoil Exploration and Production ASA is an independent oil and gas company headquartered in Oslo and listed on the Oslo Stock Exchange. It is engaged in the acquisition, exploration, development, and operation of oil and natural gas properties, with activities focused mainly in Colombia and Argentina, where it acts as operator and license partner on producing and exploration assets."
+    "description": "Interoil Exploration and Production ASA is an independent oil and gas company headquartered in Oslo and listed on the Oslo Stock Exchange. It acquires, explores, develops and operates oil and natural gas properties. Following the divestment of its Argentine operations in February 2026, the company focuses its activities on Colombia."
   },
   {
     "name": "Intervacc",
@@ -5780,7 +5780,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "0FHP.L",
     "exchange": "London",
     "url": "reports/olav-thon-eiendomsselskap-equity-report.html",
-    "description": "Olav Thon Eiendomsselskap ASA is a Norwegian real estate company focused on shopping centres and commercial property. Its portfolio is concentrated in Norway and Sweden, and it leases space for offices, shops, catering, warehouses, and logistics. The company is part of the Thon Group, which also has hotel and related property activities."
+    "description": "Olav Thon Eiendom AS is a Norwegian real estate company focused on shopping centres and commercial property. Its portfolio is concentrated in Norway and Sweden, and it leases space for offices, shops, catering, warehouses and logistics. The company is part of the Thon Group, which also has hotel and related property activities."
   },
   {
     "name": "Olvi",
