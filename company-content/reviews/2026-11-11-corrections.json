@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/contextvision-equity-report.html",
+      "ticker": "CONTX.OL",
+      "pageTicker": "CONTX.OL",
+      "isin": "SE0014731154",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://storage.mfn.se/78a1fac3-8215-4526-b855-aa647d050773/contextvision-annual-report-2025.pdf",
+      "identitySourceUrl": "https://www.contextvision.com/investors/",
+      "sourceNote": "Financial statements are in SEK and the Oslo share price and market capitalisation are in NOK. The issuer reported year-end market capitalisation of approximately NOK 328m.",
+      "reviewNotes": "Audited FY2025 annual report: revenue SEK 110.277m, EBIT 0.417m, owner net earnings 0.787m, equity 92.160m, closing price NOK 4.24 (annual report share section; the key figures table rounds this to 4.2) and issuer-reported market cap NOK 328m. The previous page used London ticker 0L8Z.L and incorrectly labelled its historical Oslo price as GBP. Wisdom CONTX.OL shows EBIT -2.937m.",
+      "values": {
+        "bookValue": 92.16,
+        "sharePrice": 4.24,
+        "revenue": 110.277,
+        "ebit": 0.417,
+        "netEarnings": 0.787,
+        "marketCap": 328
+      },
+      "modelSnapshot": {
+        "bookValue": 92.004466,
+        "sharePrice": 4.24,
+        "revenue": 110.277,
+        "ebit": -2.937,
+        "netEarnings": -0.078209,
+        "marketCap": 322.23071864
+      },
+      "expectedPageSha256": "f080416c4a483f88a540c49961eaa9f1973a3b2f67ef491c6ebefa7fad8bc730"
+    },
+    {
+      "path": "reports/uswe-sports-equity-report.html",
+      "ticker": "USWE.ST",
+      "pageTicker": "USWE.ST",
+      "isin": "SE0015949771",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceType": "annual-report",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0909/6482/0355/files/USWE_-_Arsredovisning_2025-2026_med_beslut_om_resultatdisposition.pdf",
+      "sourceNote": "The financial year ended on 31 March 2026. Operating profit is the reported result, not adjusted operational EBIT.",
+      "reviewNotes": "Audited FY2025/26 annual report, SEK thousands: revenue 135,124; reported EBIT -1,461; net earnings -2,422; parent shareholders equity 67,382. No verified year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 67.382,
+        "sharePrice": null,
+        "revenue": 135.124,
+        "ebit": -1.461,
+        "netEarnings": -2.422,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 67.382,
+        "sharePrice": 10,
+        "revenue": 135.124,
+        "ebit": -1.461,
+        "netEarnings": -2.422,
+        "marketCap": 71.36528
+      },
+      "expectedPageSha256": "b709bce1858010be0fd0773a48b16dfa1339167f566cb2123fd4ad7254d54f99"
+    },
+    {
+      "path": "reports/panoro-energy-equity-report.html",
+      "ticker": "PEN.OL",
+      "pageTicker": "PEN.OL",
+      "isin": "NO0010564701",
+      "financialYear": 2025,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.panoroenergy.com/wp-content/uploads/2026/04/Panoro-Annual-Report-Web-Version.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0010564701-XOSL/market-information",
+      "sourceNote": "The reported operating profit includes exploration costs written off and share-based payments. Net earnings and book value are attributable to the parent company shareholders. Shares are listed in Oslo in NOK.",
+      "reviewNotes": "FY2025 audited report USD 000: revenue 216,799, EBIT 29,727, owner net loss -13,096 and owner equity 223,066. Wisdom EBIT is 46.098m and equity is 220.795m. The report does not give precise year-end price or market capitalisation. The existing page identifies the London listing; the Oslo listing has the same issuer and ISIN. Corrected the page to the primary Oslo ticker and NOK listing currency after independent review.",
+      "values": {
+        "bookValue": 223.066,
+        "sharePrice": null,
+        "revenue": 216.799,
+        "ebit": 29.727,
+        "netEarnings": -13.096,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 220.795,
+        "sharePrice": 20.2,
+        "revenue": 216.799,
+        "ebit": 46.098,
+        "netEarnings": -13.096,
+        "marketCap": 229.1488
+      },
+      "expectedPageSha256": "002b82d33b51f211c58fcc5be449a77e4aa263ac06b5bfeff1a1d4ce5242ec5d"
+    },
+    {
+      "path": "reports/duell-equity-report.html",
+      "ticker": "DUELL.HE",
+      "pageTicker": "DUELL.HE",
+      "isin": "FI4000582143",
+      "financialYear": 2026,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://investors.duell.eu/files/documents/Duell%20Corporation%20Annual%20Report%202026_.pdf",
+      "sourceNote": "The financial year ended on 31 August 2026. Market capitalisation uses all issued shares.",
+      "reviewNotes": "Audited FY2026 annual report: revenue EUR 124.290279m, EBIT -4.621788m, parent owner net earnings -6.673487m and equity 43.361106m. The annual report gives closing price EUR 2.12 and company market capitalisation EUR 11.012073m, based on all 5,194,374 shares; Wisdom market cap uses outstanding shares. The old static overview showed pre-year-end data under FY2026.",
+      "values": {
+        "bookValue": 43.361106,
+        "sharePrice": 2.12,
+        "revenue": 124.290279,
+        "ebit": -4.621788,
+        "netEarnings": -6.673487,
+        "marketCap": 11.012073
+      },
+      "modelSnapshot": {
+        "bookValue": 43.361106,
+        "sharePrice": 2.12,
+        "revenue": 124.290279,
+        "ebit": -4.621788,
+        "netEarnings": -6.673487,
+        "marketCap": 10.98909632
+      }
+    },
+    {
+      "path": "reports/embracer-group-equity-report.html",
+      "ticker": "EMBRAC-B.ST",
+      "pageTicker": "EMBRAC-B.ST",
+      "isin": "SE0023615885",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://embracer.com/wp-content/uploads/2026/06/Embracer-Group-publishes-annual-report-202526-260618.pdf",
+      "sourceNote": "The financial year ended on 31 March 2026. Revenue and operating profit are for continuing operations; net earnings include discontinued operations. Net earnings and book value are attributable to parent company shareholders. Market capitalisation is approximately SEK 11 billion.",
+      "reviewNotes": "Audited FY2025/26 annual report, SEK millions: sales 15,906; EBIT -7,053; owner net earnings -5,819; owner equity 19,495; closing B-share price SEK 48.34 and approximately SEK 11,000m market capitalisation. Wisdom reports EBIT -7,187, price 48.05 and market cap 10,234.65.",
+      "values": {
+        "bookValue": 19495,
+        "sharePrice": 48.34,
+        "revenue": 15906,
+        "ebit": -7053,
+        "netEarnings": -5819,
+        "marketCap": 11000
+      },
+      "modelSnapshot": {
+        "bookValue": 19495,
+        "sharePrice": 48.05,
+        "revenue": 15906,
+        "ebit": -7187,
+        "netEarnings": -5819,
+        "marketCap": 10234.65
+      }
+    }
+  ]
+}

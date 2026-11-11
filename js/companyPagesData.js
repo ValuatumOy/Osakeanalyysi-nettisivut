@@ -5987,8 +5987,8 @@ window.COMPANY_PAGE_CATALOG = [
   },
   {
     "name": "Panoro Energy",
-    "ticker": "0N08.L",
-    "exchange": "London",
+    "ticker": "PEN.OL",
+    "exchange": "Oslo",
     "url": "reports/panoro-energy-equity-report.html",
     "description": "Panoro Energy ASA is an independent exploration and production company focused on oil and gas in Africa. It holds producing, development and exploration assets in Equatorial Guinea, Gabon, Tunisia and South Africa, with operations spanning offshore fields, licenses and permits. The company’s activities include exploration, production and related oil and gas development."
   },
