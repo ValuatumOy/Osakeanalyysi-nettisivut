@@ -3040,7 +3040,7 @@ window.COMPANY_PAGE_CATALOG = [
   },
   {
     "name": "Fiskars",
-    "ticker": "FISAS",
+    "ticker": "FSKRS.HE",
     "exchange": "Listed",
     "url": "reports/fiskars-equity-report.html",
     "description": "Fiskars is a global consumer goods company focused on design-driven brands for indoor and outdoor living. Its portfolio includes products for gardening, cooking and creating, led by the Fiskars brand and complemented by other lifestyle brands such as Iittala, Royal Copenhagen, Wedgwood, Gerber and Georg Jensen. The company sells in more than 100 countries."

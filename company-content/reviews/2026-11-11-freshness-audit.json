@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the fourth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the sixth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
     {
@@ -820,14 +820,6 @@
       "modelYear": 2024
     },
     {
-      "file": "fiskars-equity-report.html",
-      "ticker": "FISAS",
-      "isin": "FI0009000400",
-      "pageYear": 2024,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker FISAS"
-    },
-    {
       "file": "fjord1-equity-report.html",
       "ticker": "FJORD.OL",
       "isin": "NO0010792625",
@@ -1524,14 +1516,6 @@
       "reason": "No exact Wisdom company match found for ticker OSSR.CO"
     },
     {
-      "file": "panoro-energy-equity-report.html",
-      "ticker": "0N08.L",
-      "isin": "NO0010564701",
-      "pageYear": 2024,
-      "status": "lookup_failed",
-      "reason": "No exact Wisdom company match found for ticker 0N08.L"
-    },
-    {
       "file": "pci-biotech-holding-equity-report.html",
       "ticker": "0JGL.L",
       "isin": "NO0010405640",
@@ -1628,14 +1612,6 @@
       "modelYear": 2024
     },
     {
-      "file": "rockwool-equity-report.html",
-      "ticker": "ROCK-B.CO",
-      "isin": "DK0010219153",
-      "pageYear": 2024,
-      "status": "identity_mismatch",
-      "modelYear": 2025
-    },
-    {
       "file": "rovio-entertainment-equity-report.html",
       "ticker": "ROVIO.HE",
       "isin": "FI4000266804",
@@ -1674,14 +1650,6 @@
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "scana-equity-report.html",
-      "ticker": "SCANA.OL",
-      "isin": "NO0003053308",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "scandinavian-brake-systems-equity-report.html",
@@ -1834,14 +1802,6 @@
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "vow-equity-report.html",
-      "ticker": "VOW.OL",
-      "isin": "NO0010708068",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "webstep-equity-report.html",

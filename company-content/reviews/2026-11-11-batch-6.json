@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/panoro-energy-equity-report.html",
+      "ticker": "PEN.OL",
+      "pageTicker": "0N08.L",
+      "isin": "NO0010564701",
+      "financialYear": 2025,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.panoroenergy.com/wp-content/uploads/2026/04/Panoro-Annual-Report-Web-Version.pdf",
+      "identitySourceUrl": "https://live.euronext.com/en/product/equities/NO0010564701-XOSL/market-information",
+      "sourceNote": "The reported operating profit includes exploration costs written off and share-based payments. Net earnings and book value are attributable to the parent company shareholders.",
+      "reviewNotes": "FY2025 audited report USD 000: revenue 216,799, EBIT 29,727, owner net loss -13,096 and owner equity 223,066. Wisdom EBIT is 46.098m and equity is 220.795m. The report does not give precise year-end price or market capitalisation. The existing page identifies the London listing; the Oslo listing has the same issuer and ISIN.",
+      "values": {
+        "bookValue": 223.066,
+        "sharePrice": null,
+        "revenue": 216.799,
+        "ebit": 29.727,
+        "netEarnings": -13.096,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 220.795,
+        "sharePrice": 20.2,
+        "revenue": 216.799,
+        "ebit": 46.098,
+        "netEarnings": -13.096,
+        "marketCap": 229.1488
+      }
+    },
+    {
+      "path": "reports/fiskars-equity-report.html",
+      "ticker": "FSKRS.HE",
+      "pageTicker": "FSKRS.HE",
+      "isin": "FI0009000400",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://fiskarsgroup.com/wp-content/uploads/2026/02/FiskarsGroup_Annual_Report_2025.pdf",
+      "identitySourceUrl": "https://fiskarsgroup.com/investors/shares-shareholders/combination-of-share-series/",
+      "sourceNote": "Operating profit is the reported EBIT. Net earnings and book value are attributable to parent company shareholders.",
+      "reviewNotes": "Audited FY2025 report: revenue EUR 1,140.2m, reported EBIT 38.1m (comparable EBIT 76.4m), owner net earnings 9.3m, owner equity 710.4m, year-end share price EUR 12.68, market capitalisation EUR 1,022.3m. The page previously used the obsolete FISAS ticker; FSKRS is the current trading code.",
+      "values": {
+        "bookValue": 710.4,
+        "sharePrice": 12.68,
+        "revenue": 1140.2,
+        "ebit": 38.1,
+        "netEarnings": 9.3,
+        "marketCap": 1022.3
+      },
+      "modelSnapshot": {
+        "bookValue": 710.4,
+        "sharePrice": 12.68,
+        "revenue": 1140.2,
+        "ebit": 51.9,
+        "netEarnings": 9.5,
+        "marketCap": 1022.511079
+      }
+    },
+    {
+      "path": "reports/scana-equity-report.html",
+      "ticker": "SCANA.OL",
+      "pageTicker": "SCANA.OL",
+      "isin": "NO0003053308",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://scana.no/wp-content/uploads/2026/04/2025-MD-Annual-report-260422.pdf",
+      "sourceNote": "The annual report is newer than the financial model used for this overview.",
+      "reviewNotes": "FY2025 audited report: operating revenue NOK 1,596.6m, EBIT -13.0m, net earnings -36.3m, equity 628.2m. The model still contains FY2024 actuals. No independently verified year-end share price or market capitalisation was disclosed in the annual report.",
+      "values": {
+        "bookValue": 628.2,
+        "sharePrice": null,
+        "revenue": 1596.6,
+        "ebit": -13,
+        "netEarnings": -36.3,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 663,
+        "sharePrice": 2.87,
+        "revenue": 1924.3,
+        "ebit": 147.6,
+        "netEarnings": 83.3,
+        "marketCap": 1325.61282
+      }
+    },
+    {
+      "path": "reports/rockwool-equity-report.html",
+      "ticker": "ROCK-B.CO",
+      "pageTicker": "ROCK-B.CO",
+      "isin": "DK0063855168",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://www.rockfon.com/globalassets/rockwool-prefab-building-systems/downloads/annual-report-2025.pdf",
+      "identitySourceUrl": "https://view.news.eu.nasdaq.com/view?id=b2936b85e3a225542ebefcd3680371938&lang=en",
+      "sourceNote": "Operating profit includes the EUR 392m value adjustment of the Russian business. The share price is for B shares; market capitalisation covers both A and B shares. The B-share ISIN changed after a 2025 stock split.",
+      "reviewNotes": "FY2025 annual report: sales EUR 3,877m, EBIT EUR 178m after the Russian business value adjustment (EUR 570m before adjustment), owner net profit EUR 28m and equity EUR 2,741m; B-share price DKK 225.40 and combined A+B market cap DKK 46,542m. Wisdom EBIT 568.111915m is close to the figure before the value adjustment, but the precise reason is unconfirmed. Nasdaq confirms the B-share ISIN changed from DK0010219153 to DK0063855168 in April 2025.",
+      "values": {
+        "bookValue": 2741,
+        "sharePrice": 225.4,
+        "revenue": 3877,
+        "ebit": 178,
+        "netEarnings": 28,
+        "marketCap": 46542
+      },
+      "modelSnapshot": {
+        "bookValue": 2738.826744,
+        "sharePrice": 225.4,
+        "revenue": 3870.94885,
+        "ebit": 568.111915,
+        "netEarnings": 27.956298,
+        "marketCap": 46275.5216
+      }
+    },
+    {
+      "path": "reports/vow-equity-report.html",
+      "ticker": "VOW.OL",
+      "pageTicker": "VOW.OL",
+      "isin": "NO0010708068",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.vowasa.com/wp-content/uploads/2026/04/Vow-Annual-and-Sustainability-Report-2025.pdf",
+      "sourceNote": "The annual report is newer than the financial model used for this overview. Net earnings and book value are attributable to parent company shareholders.",
+      "reviewNotes": "FY2025 audited consolidated report: revenue NOK 1,034.2m, EBIT -226.4m including NOK 119.9m impairment, owner net earnings -286.6m and owner equity 216.1m. Closing share price NOK 2.79; market capitalisation is not disclosed. Model still has FY2024 actuals.",
+      "values": {
+        "bookValue": 216.1,
+        "sharePrice": 2.79,
+        "revenue": 1034.2,
+        "ebit": -226.4,
+        "netEarnings": -286.6,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 542.1,
+        "sharePrice": 1.98,
+        "revenue": 1018.2,
+        "ebit": -9.8,
+        "netEarnings": -132,
+        "marketCap": 317.46720852
+      }
+    }
+  ]
+}
