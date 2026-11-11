@@ -7356,7 +7356,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "SUMMA.HE",
     "exchange": "Helsinki",
     "url": "reports/summa-defence-equity-report.html",
-    "description": "Summa Defence Oyj is a Finnish defence and security technology group that builds and acquires dual-use businesses across maritime technologies, land technologies, and new technologies. Its portfolio includes shipbuilding, multipurpose machines and dredgers, portable spaces, drone manufacturing, XR technology, and related digital and renewable-energy solutions, with growth supported by its subsidiaries and M&A platform."
+    "description": "Summa Defence Oyj is a Finnish defence and security technology group. Its businesses have included maritime, land and emerging technologies, such as shipbuilding, machinery and digital systems. The company has been reviewing its group structure and financing alternatives as part of restructuring proceedings that began in October 2026."
   },
   {
     "name": "Suominen",
