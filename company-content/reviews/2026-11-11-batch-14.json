@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/aak-ab-publ-equity-report.html",
+      "ticker": "AAK.ST",
+      "pageTicker": "AAK.ST",
+      "isin": "SE0011337708",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/c0ccfa59-3ca3-4597-9f78-1f0588efbc27/aak-annual-report-2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. Market capitalisation is the year-end amount reported by the company.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 124 and 127: SEK million revenue 46,021, operating profit 4,675, owner earnings 3,429 and owner equity 19,897. The total result including non-controlling interests was 3,436. The share section p. 11 reports a closing price of SEK 263.80, 260,451,002 shares and market capitalisation SEK 68,706m. Multiplying the quoted share count and rounded price gives SEK 68,706.97m. Wisdom's pretax profit matches the report, but its EBIT is SEK 219m lower, with an equal difference in net financial income; the source-line mapping requires further investigation.",
+      "values": {
+        "bookValue": 19897,
+        "sharePrice": 263.8,
+        "revenue": 46021,
+        "ebit": 4675,
+        "netEarnings": 3429,
+        "marketCap": 68706
+      },
+      "modelSnapshot": {
+        "bookValue": 19897,
+        "sharePrice": 263.8,
+        "revenue": 46021,
+        "ebit": 4456,
+        "netEarnings": 3434,
+        "marketCap": 68706.9738
+      }
+    },
+    {
+      "path": "reports/acast-equity-report.html",
+      "ticker": "ACAST.ST",
+      "pageTicker": "ACAST.ST",
+      "isin": "SE0015960935",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a5333ee241c5a3695cb7f917a402097f0",
+      "sourceNote": "Market capitalisation is the year-end amount reported by the company.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 41–42: SEK million revenue 2,516.851, EBIT -18.035, owner earnings -112.411 and owner equity 1,181.277. Page 27 reports a SEK 34.35 closing price and SEK 6,268m market capitalisation; 182,465,260 ordinary shares are shown on p. 78. Wisdom revenue is SEK 98.752m below reported revenue, the same amount as the currency effect in the organic growth reconciliation on p. 83. Wisdom pretax profit matches, while EBIT is SEK 61.464m lower with a corresponding difference in net financial income; the source-line mapping requires further investigation.",
+      "values": {
+        "bookValue": 1181.277,
+        "sharePrice": 34.35,
+        "revenue": 2516.851,
+        "ebit": -18.035,
+        "netEarnings": -112.411,
+        "marketCap": 6268
+      },
+      "modelSnapshot": {
+        "bookValue": 1181.277,
+        "sharePrice": 34.35,
+        "revenue": 2418.099,
+        "ebit": -79.499,
+        "netEarnings": -112.411,
+        "marketCap": 6236.13945
+      }
+    },
+    {
+      "path": "reports/ab-fagerhult-publ-equity-report.html",
+      "ticker": "FAG.ST",
+      "pageTicker": "FAG.ST",
+      "isin": "SE0010048884",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/3ab35679-736b-4072-9606-1b4ac93b3b80/fagerhult-group-annual-and-sustainability-report-2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. Market capitalisation uses the year-end share price and shares outstanding, excluding treasury shares.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 122–124: SEK million revenue 7,891.4, operating profit 577.5, owner earnings 317.4, owner equity 7,089.8. Page 157: closing share price SEK 41.55 and 176,332,406 shares outstanding excluding 860,437 treasury shares; calculated year-end market capitalisation SEK 7,326.6114693m. Wisdom pretax profit matches, but EBIT is SEK 46.2m lower with a corresponding difference in net financial income; the source-line mapping requires further investigation. Nasdaq announced the current company name Fagerhult Group AB from 3 July 2023: https://www.nasdaq.com/press-release/change-of-company-name%3A-ab-fagerhult-publ-changes-name-to-fagerhult-group-ab-90-23.",
+      "values": {
+        "bookValue": 7089.8,
+        "sharePrice": 41.55,
+        "revenue": 7891.4,
+        "ebit": 577.5,
+        "netEarnings": 317.4,
+        "marketCap": 7326.6114693
+      },
+      "modelSnapshot": {
+        "bookValue": 7089.8,
+        "sharePrice": 41.55,
+        "revenue": 7891.4,
+        "ebit": 531.299999,
+        "netEarnings": 317.4,
+        "marketCap": 7326.5946
+      }
+    },
+    {
+      "path": "reports/af-gruppen-equity-report.html",
+      "ticker": "AFG.OL",
+      "pageTicker": "AFG.OL",
+      "isin": "NO0003078107",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.afgruppen.com/49bf71/siteassets/investor-ovrig-innhold/annual-general-meeting/af-annual-report-2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. Market capitalisation is the year-end amount reported by the company.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 225 and 227–228: NOK million total revenue 31,992, operating profit 1,662, owner earnings 1,093 and owner equity 2,900. Total earnings including non-controlling interests were 1,289 and total equity 3,949. Note 6 on p. 238 describes NOK 122m other revenues in addition to revenue from customer contracts. The share information pp. 82–83 gives a closing price of NOK 188.20 and market capitalisation NOK 20,713m. Wisdom pretax profit matches, but EBIT is NOK 557m higher with a corresponding difference in net financial expenses; the source-line mapping requires further investigation.",
+      "values": {
+        "bookValue": 2900,
+        "sharePrice": 188.2,
+        "revenue": 31992,
+        "ebit": 1662,
+        "netEarnings": 1093,
+        "marketCap": 20713
+      },
+      "modelSnapshot": {
+        "bookValue": 2900,
+        "sharePrice": 188.2,
+        "revenue": 31992,
+        "ebit": 2219,
+        "netEarnings": 1288,
+        "marketCap": 20712.7274
+      }
+    },
+    {
+      "path": "reports/ab-electrolux-equity-report.html",
+      "ticker": "ELUX-B.ST",
+      "pageTicker": "ELUX-B.ST",
+      "isin": "SE0016589188",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.electroluxgroup.com/wp-content/uploads/sites/2/2026/02/Annual-Report-2025-1.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. No verified year-end market capitalisation is available.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 133–134: SEK million net sales 131,282, operating income 3,657, owner earnings 878 and owner equity 8,700. The reported operating income includes the positive impact of the Kelvinator brand disposal; this is reported rather than adjusted EBIT. Page 32 gives a year-end B share price of SEK 63.78. The annual report does not state market capitalisation; no independent amount has been verified.",
+      "values": {
+        "bookValue": 8700,
+        "sharePrice": 63.78,
+        "revenue": 131282,
+        "ebit": 3657,
+        "netEarnings": 878,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 8700,
+        "sharePrice": 63.78,
+        "revenue": 131282,
+        "ebit": 2341,
+        "netEarnings": 878,
+        "marketCap": 17252.25516204
+      }
+    },
+    {
+      "path": "reports/acrinova-equity-report.html",
+      "ticker": "ACRI-B.ST",
+      "pageTicker": "ACRI-B.ST",
+      "isin": "SE0015660030",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://mb.cision.com/Main/12091/4329685/4018630.pdf",
+      "sourceNote": "Revenue includes rental and service income. Operating profit is not separately reported. Market capitalisation is the company’s approximate year-end amount for both listed share classes.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 33–34: SEK million total rental and service income 128.148 (rental income 125.827 plus other income 2.321), owner earnings 59.966 and owner equity 558.811. Note 5 on p. 44 says other income includes charged management fees and other income outside the lease agreements. The report does not present a separately identified operating profit; the standard XBRL candidate 29.104 is the company’s förvaltningsresultat, which includes net finance expenses. The previously displayed 51.647 resembles the property operating surplus less central administration, but excludes later income statement items. Page 27 reports SEK 10.50 as the year-end closing price of the B share and an approximate SEK 456m market capitalisation for both listed share classes.",
+      "values": {
+        "bookValue": 558.811,
+        "sharePrice": 10.5,
+        "revenue": 128.148,
+        "ebit": null,
+        "netEarnings": 59.966,
+        "marketCap": 456
+      },
+      "modelSnapshot": {
+        "bookValue": 558.811,
+        "sharePrice": 10.5,
+        "revenue": 128.148,
+        "ebit": 51.647,
+        "netEarnings": 59.966,
+        "marketCap": 669.837
+      }
+    }
+  ]
+}
