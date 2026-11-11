@@ -3274,7 +3274,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "RISH.OL",
     "exchange": "Oslo",
     "url": "reports/gc-rieber-shipping-equity-report.html",
-    "description": "GC Rieber Shipping is a ship-owning project house that develops and invests in maritime projects and solutions. The company focuses on tailored vessels and services for customers worldwide, drawing on capabilities in marine architecture and project management. Its activities center on creating and operating sustainable maritime assets and related shipping projects."
+    "description": "GC Rieber Shipping ASA was a ship-owning project house that developed and invested in maritime projects and solutions. Its activities included tailored vessels and services, marine architecture and project management. After its shares left Oslo Børs in 2023, the company became GC Rieber Shipping Holding AS."
   },
   {
     "name": "Generic Sweden",
@@ -5724,7 +5724,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "OTS.OL",
     "exchange": "Oslo",
     "url": "reports/oceanteam-equity-report.html",
-    "description": "Oceanteam ASA provides offshore services focused on subsea cable and umbilical logistics, equipment rental, cable storage and transport, and project management for renewable energy and oil and gas clients. The company also owns, charters and manages offshore support vessels and related equipment used in marine operations, with activities spanning shipping and solutions segments."
+    "description": "Oceanteam ASA provided offshore services focused on subsea cable and umbilical logistics, equipment rental, cable storage and transport, and project management for renewable energy and oil and gas clients. The company also owned, chartered and managed offshore support vessels and related equipment used in marine operations. Oceanteam merged into Soiltech ASA in 2024."
   },
   {
     "name": "Odfjell Drilling",
@@ -6767,7 +6767,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "SAVOH.HE",
     "exchange": "Helsinki",
     "url": "reports/savosolar-equity-report.html",
-    "description": "Savosolar Oyj designs and delivers large-scale solar thermal systems and related clean energy solutions. Its offerings include collectors, turnkey district heating and industrial process heating plants, energy storage, and automation and control services. The company serves utilities, industrial customers, and property owners, and it now operates as part of Summa Defence Group."
+    "description": "Savosolar Oyj designed and delivered large-scale solar thermal systems and related clean energy solutions. Its offerings included collectors, turnkey district heating and industrial process heating plants, energy storage, and automation and control services for utilities, industrial customers and property owners. The company later became Meriaura Group and then Summa Defence in 2025."
   },
   {
     "name": "Saxlund Group",
@@ -7799,7 +7799,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "VALUER.CO",
     "exchange": "Copenhagen",
     "url": "reports/valuer-holding-equity-report.html",
-    "description": "Valuer Holding A/S develops a data-driven AI platform that supports corporations, accelerators, and venture funds in identifying relevant technologies, new market opportunities, and strategic initiatives. Its services center on using advanced algorithms and analytics to help users search, assess, and prioritize innovation and business development opportunities."
+    "description": "Valuer Holding A/S developed a data-driven AI platform that supported corporations, accelerators and venture funds in identifying relevant technologies, new market opportunities and strategic initiatives. Its services used algorithms and analytics to help users search, assess and prioritize innovation and business development opportunities. Its shares left Nasdaq First North in 2023."
   },
   {
     "name": "Vår Energi AS",

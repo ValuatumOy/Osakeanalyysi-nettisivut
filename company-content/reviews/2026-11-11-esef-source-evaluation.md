@@ -6,6 +6,14 @@ In the 2025 index, 393 overview pages had one Nordic filing-entity name candidat
 
 After the ninth refresh batch, an additional comparison used the [GLEIF/ANNA ISIN-to-LEI relationship file](https://www.gleif.org/en/lei-data/lei-mapping/download-isin-to-lei-relationship-files) published on 11 November 2026. Of 1,058 pages still awaiting a financial review, 814 had a single mapped LEI, and 411 of those LEIs also appeared in the 2025 filing index. Four of the latter pages had already been marked with a historical company status. These are still review candidates: the mapping does not establish that a listing remains active, that a filing is the relevant audited annual report, or that its facts are suitable for a particular metric. GLEIF notes that its mapping does not cover every ISIN.
 
+To rebuild a review queue, download the GLEIF ZIP and the relevant [annual filing index](https://filings.xbrl.org/indexes/filings-2025.json), then run:
+
+```text
+python scripts/company-pages/esef-review-queue.py --mapping-zip <gleif.zip> --filings-json <filings-2025.json> --year 2025
+```
+
+The read-only command checks each page's current ISIN and ticker against its audit snapshot or earlier review, rejects ambiguous mappings and filing URLs that do not match the entity and period, and lists possible filings with validation counts and the original audit status. A financial review excludes a matching page only for its reviewed year or earlier; older reviews can re-enter the queue for a later year. By default it omits pages with recorded company-status notes and prints the first 20 matches; add `--include-status` to include those pages or `--limit 0` to print every match. Status notes include delistings as well as some active companies with changed names or listings. A match can be an interim filing, an amended report or an incorrectly tagged fact. It never approves figures or changes a company page.
+
 Run the read-only extractor on a downloaded xBRL-JSON filing:
 
 ```text
