@@ -891,7 +891,9 @@
       "isin": "SE0001338039",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.lasernetgroup.com/news-blogs/lasernet-group-delists-from-nasdaq-stockholm"
     },
     {
       "file": "fortnox-equity-report.html",
@@ -1828,7 +1830,11 @@
       "isin": "FI4000153515",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "listing_transferred",
+      "statusSource": "https://nyabgroup.com/en/newsroom/nyab-has-completed-the-re-domiciliation-and-transfers-listing-to-sweden-2/",
+      "verifiedTicker": "NYAB",
+      "verifiedIsin": "SE0022242434"
     },
     {
       "file": "smartcraft-equity-report.html",

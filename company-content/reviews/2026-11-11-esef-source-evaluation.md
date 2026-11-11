@@ -4,6 +4,8 @@ The [filings.xbrl.org API](https://filings.xbrl.org/docs/api) indexes reports ob
 
 In the 2025 index, 393 overview pages had one Nordic filing-entity name candidate after normalization. These are leads, not verified identities or necessarily annual reports; multiple pages can refer to one entity. The index also contains interim filings. A company name alone does not establish that an ISIN or share class is correct.
 
+After the ninth refresh batch, an additional comparison used the [GLEIF/ANNA ISIN-to-LEI relationship file](https://www.gleif.org/en/lei-data/lei-mapping/download-isin-to-lei-relationship-files) published on 11 November 2026. Of 1,058 pages still awaiting a financial review, 814 had a single mapped LEI, and 411 of those LEIs also appeared in the 2025 filing index. Four of the latter pages had already been marked with a historical company status. These are still review candidates: the mapping does not establish that a listing remains active, that a filing is the relevant audited annual report, or that its facts are suitable for a particular metric. GLEIF notes that its mapping does not cover every ISIN.
+
 Run the read-only extractor on a downloaded xBRL-JSON filing:
 
 ```text
@@ -13,5 +15,7 @@ npm run audit:esef-candidate -- --file <filing.json> --lei <verified-LEI> --curr
 It selects a small set of standard IFRS facts for the exact requested annual duration and matching year-end balance-sheet instant. Dimensional facts are ignored, conflicts or unexpected identities and currencies stop the extraction, and missing facts stay unavailable. Numeric facts must use the xBRL-JSON string representation. Values are in currency units, not millions. The command does not change pages or create an approved review.
 
 An analyst must independently check the company/ISIN-to-LEI mapping, that the filing is the relevant audited annual report, the accounting scope, and each figure before using the existing reviewed refresh workflow. Standard facts may be missing or insufficient for the company's presentation; do not replace them with adjusted profit or a parent-company figure by guesswork.
+
+The 2025 Formpipe filing illustrates why the original statements still need checking: its standard revenue tag contains SEK 243.302m of total operating income, while the report identifies SEK 242.400m as revenue and SEK 0.902m as other operating income. Saga Pure's 2025 filing presents investment-related operating income rather than a comparable revenue total. Neither figure should be published as revenue solely because a tag or model field suggests it.
 
 Two examples were compared with their issuers' audited statements. [Rockwool FY2025](https://www.rockfon.com/globalassets/rockwool-prefab-building-systems/downloads/annual-report-2025.pdf) returned EUR 3,877m revenue, EUR 178m operating profit, EUR 28m owner earnings and EUR 2,741m owner equity. [Dovre FY2025](https://attachment.news.eu.nasdaq.com/ac7b7aec49810709219decb845c43a7b1) returned EUR 91.860m, EUR -66.325m, EUR -53.461m and EUR -48.011m respectively. Agreement in these two examples does not validate other filings.

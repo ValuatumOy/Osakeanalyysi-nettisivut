@@ -1,9 +1,11 @@
 {
   "ticker": "FPIP.ST",
   "companyName": "Formpipe Software AB (publ)",
-  "profile": "Formpipe Software AB provides software for regulated organizations, with a focus on the public sector. Its products support case and document management, archiving, e-services, digital signing, and workflow automation, helping customers manage information securely and comply with legal and administrative requirements. The company also emphasizes long-term customer relationships and local service delivery.",
+  "profile": "Formpipe Software AB provided software for regulated organizations, with a focus on the public sector. Its products supported case and document management, archiving, e-services, digital signing and workflow automation. The company changed its name to Lasernet Group in June 2026, and its shares were delisted from Nasdaq Stockholm in August 2026.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T21:01:46.967Z"
+  "generatedAt": "2026-07-24T21:01:46.967Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://www.lasernetgroup.com/news-blogs/lasernet-group-delists-from-nasdaq-stockholm"
 }

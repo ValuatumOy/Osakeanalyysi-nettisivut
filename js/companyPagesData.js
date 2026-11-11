@@ -736,11 +736,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AroCell AB (publ), now operating as IDL Diagnostics, develops, manufactures and sells in vitro diagnostic tests for cancer and bacterial infections. Its portfolio includes point-of-care, rapid and laboratory tests, including TK 210 ELISA for thymidine kinase 1 measurement and UBC Rapid and TUBEX TF, supported by in-house research, production and sales."
   },
   {
-    "name": "Arribatec Solutions",
+    "name": "Arribatec Group",
     "ticker": "ARR.OL",
     "exchange": "Oslo",
     "url": "reports/arribatec-solutions-equity-report.html",
-    "description": "Arribatec Solutions ASA provides IT consulting and digital business services, including ERP implementation and support, cloud solutions, integrations, software development, business intelligence, and IT operations. The company helps customers connect people, processes, and systems, and it also offers training and managed support across its business applications and infrastructure portfolio."
+    "description": "Arribatec Group ASA provides IT consulting and digital business services, including ERP implementation and support, cloud solutions, integrations, software development, business intelligence, and IT operations. The company helps customers connect people, processes, and systems, and it also offers training and managed support across its business applications and infrastructure portfolio."
   },
   {
     "name": "Artificial Solutions International",
@@ -3134,7 +3134,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "FPIP.ST",
     "exchange": "Stockholm",
     "url": "reports/formpipe-software-equity-report.html",
-    "description": "Formpipe Software AB provides software for regulated organizations, with a focus on the public sector. Its products support case and document management, archiving, e-services, digital signing, and workflow automation, helping customers manage information securely and comply with legal and administrative requirements. The company also emphasizes long-term customer relationships and local service delivery."
+    "description": "Formpipe Software AB provided software for regulated organizations, with a focus on the public sector. Its products supported case and document management, archiving, e-services, digital signing and workflow automation. The company changed its name to Lasernet Group in June 2026, and its shares were delisted from Nasdaq Stockholm in August 2026."
   },
   {
     "name": "Fortinova Fastigheter",
@@ -7078,11 +7078,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Skanska AB is a Swedish construction and project development group operating in the Nordics, Europe and the United States. It designs, builds and invests in infrastructure, buildings and communities through construction, residential development, commercial property development and related project development activities. Its value comes from large, complex projects and long-term development assets."
   },
   {
-    "name": "SkartaNYAB",
-    "ticker": "SKARTA.HE",
-    "exchange": "Helsinki",
+    "name": "NYAB",
+    "ticker": "NYAB",
+    "exchange": "Stockholm",
     "url": "reports/skartanyab-equity-report.html",
-    "description": "SkartaNYAB Oyj is a Nordic contractor that provides engineering, construction and maintenance services for infrastructure, industrial construction and energy projects. Its work includes civil engineering, consulting and project management for roads, railways, bridges, power networks and renewable energy facilities. The company operates mainly in Finland and Sweden, with expanding activities in Norway."
+    "description": "NYAB AB is a Nordic contractor that provides engineering, construction and maintenance services for infrastructure, industrial construction and energy projects. Its work includes civil engineering, consulting and project management for roads, railways, bridges, power networks and renewable energy facilities. The company operates in Sweden, Finland and Norway."
   },
   {
     "name": "SkiStar",
