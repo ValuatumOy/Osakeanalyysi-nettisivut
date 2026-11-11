@@ -84,7 +84,8 @@ credentials or an AI call.
 `npm run refresh:companies` updates the financial sections of existing overview
 pages without regenerating profiles or reports. It preserves their existing URL,
 profile, calls to action, breadcrumbs and related links. Full report pages are
-rejected. The page is identified using the current Wisdom ticker and the ISIN
+rejected, as are historical company pages and pages without an active report
+order. Those pages need a separate status review. The page is identified using the current Wisdom ticker and the ISIN
 already present in its schema, so a ticker suffix change does not require a new
 profile or URL.
 
@@ -121,10 +122,20 @@ missing. If the filing is newer than the model, record the model's period as
 manifest. Running the command does not deploy the site. No scheduled automatic
 refresh is configured.
 
+A manifest cannot replace a review checked on a later date. A correction to an
+already-reviewed page on the same day must also include `expectedPageSha256` for
+that page in its manifest entry. Calculate the SHA-256 hash from the exact page
+you reviewed; the refresh rejects the correction if the page changes first.
+Re-running an identical review remains safe without a hash.
+
 The model's `currentYear - 1` identifies the requested model period; it does
 not prove that this is the latest published annual filing. The refreshed page
 states the actual fiscal year without claiming it is the latest. Share price and
 market cap are labelled as year-end, not current market data.
+
+Run `npm run audit:company-review-coverage -- --check` to find overview pages
+that are missing from both review manifests and audit inventories. The counts
+describe inventory coverage, not whether every figure is current or correct.
 
 ### Clarify historical overviews
 

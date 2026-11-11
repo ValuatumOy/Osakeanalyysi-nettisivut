@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { WisdomClient } from './company-pages/wisdom-client.mjs';
 import { normalizeCompanyData, selectPrimaryModel } from './company-pages/normalize-company.mjs';
@@ -75,6 +76,9 @@ export async function refreshCompanyPages({ manifest, client, rootDir = ROOT, wr
 
 export function refreshHtml(html, entry, checkedOn, today) {
   if (/valuatum-page-mode/i.test(html)) throw new Error(`${entry.path}: full report pages cannot be refreshed as overviews`);
+  if (/<strong>\s*Company status:\s*<\/strong>/i.test(html) || !/\bdata-generate-report\b/i.test(html)) {
+    throw new Error(`${entry.path}: historical or unavailable company pages require a separate review`);
+  }
   const newline = html.includes('\r\n') ? '\r\n' : '\n';
   const scriptPattern = /(<script type="application\/ld\+json">\s*)([\s\S]*?)(\s*<\/script>)/g;
   const scripts = [...html.matchAll(scriptPattern)];
@@ -95,6 +99,10 @@ export function refreshHtml(html, entry, checkedOn, today) {
   const yearMatch = html.match(/For (?:the latest completed financial year, |financial year )(\d{4}), /);
   if (!yearMatch || Number(yearMatch[1]) > entry.financialYear) {
     throw new Error(`${entry.path}: current financial year is missing or newer than the review`);
+  }
+  const priorReview = html.match(/<p class="cp-updated">Figures checked against the (?:annual|year-end) report on (\d{4}-\d{2}-\d{2})\./);
+  if (priorReview && (!validDate(priorReview[1]) || priorReview[1] > checkedOn)) {
+    throw new Error(`${entry.path}: a more recent review is already published`);
   }
   for (const attribute of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
     const pattern = new RegExp(`<meta ${attribute} content="[^\"]*financial overview for \\d{4}:[^\"]*">`, 'g');
@@ -146,6 +154,9 @@ export function refreshHtml(html, entry, checkedOn, today) {
     /<p>(?:Financial figures (?:are sourced from|for FY )|Available financial figures for FY )[\s\S]*?<\/p>/g,
     `<p>Available financial figures for FY ${year}, including any year-end share price and market capitalisation, are sourced from ${esc(name)}'s <a href="${esc(entry.sourceUrl)}">${sourceLabel}</a>.${entry.sourceNote ? ` ${esc(entry.sourceNote)}` : ''} See the <a href="/methodology.html">methodology</a> for the Valuatum AI equity research framework.</p>`, entry.path));
   if (next === html) return html;
+  if (priorReview?.[1] === checkedOn && entry.expectedPageSha256 !== createHash('sha256').update(html, 'utf8').digest('hex')) {
+    throw new Error(`${entry.path}: a same-day correction requires the reviewed page hash`);
+  }
 
   const updatedScript = [...next.matchAll(scriptPattern)].find((match) => {
     try { return JSON.parse(match[2])['@graph']?.some((node) => node['@type'] === 'WebPage' && node.mainEntity); }
@@ -164,6 +175,7 @@ function validateManifest(manifest, today) {
     if (!/^reports\/[a-z0-9-]+-equity-report\.html$/.test(entry.path || '')) throw new Error(`Invalid overview path: ${entry.path}`);
     if (!/^[A-Z0-9.-]+$/.test(entry.ticker || '') || !/^[A-Z0-9.-]+$/.test(entry.pageTicker || '') || !/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.isin || '')) throw new Error(`Invalid ticker or ISIN: ${entry.path}`);
     if (entry.modelIsin && (!/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.modelIsin) || !entry.identitySourceUrl)) throw new Error(`A different model ISIN requires identity evidence: ${entry.path}`);
+    if (entry.expectedPageSha256 !== undefined && !/^[a-f0-9]{64}$/.test(entry.expectedPageSha256)) throw new Error(`Invalid reviewed page hash: ${entry.path}`);
     if (!Number.isInteger(entry.financialYear) || entry.financialYear > Number(today.slice(0, 4)) || !/^[A-Z]{3}$/.test(entry.currency || '') || !/^[A-Z]{3}$/.test(entry.marketCurrency || '')) throw new Error(`Invalid year or currency: ${entry.path}`);
     if (entry.sourceType !== undefined && !['annual-report', 'year-end-report'].includes(entry.sourceType)) throw new Error(`Invalid source type: ${entry.path}`);
     if (entry.modelFinancialYear !== undefined && (!Number.isInteger(entry.modelFinancialYear) || entry.modelFinancialYear > entry.financialYear)) throw new Error(`Invalid model year: ${entry.path}`);

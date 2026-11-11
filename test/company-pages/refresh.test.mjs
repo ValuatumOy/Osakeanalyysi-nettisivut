@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { refreshCompanyPages, refreshHtml } from '../../scripts/refresh-company-pages.mjs';
 import { renderCompanyPage } from '../../scripts/company-pages/render-company-page.mjs';
@@ -93,6 +94,43 @@ test('a failure in a later page does not write an earlier page', async (t) => {
   await assert.rejects(refreshCompanyPages({ manifest: { ...manifest, pages: [entry, second] }, client, rootDir: root, now, write: true }), /SECOND.HE: Wisdom ebit changed/);
   assert.equal(await fs.readFile(path.join(root, entry.path), 'utf8'), html);
   assert.equal(await fs.readFile(path.join(root, second.path), 'utf8'), secondHtml);
+});
+
+test('a historical company later in a batch blocks every write', async (t) => {
+  const { root, html } = await fixture(t);
+  const secondIsin = 'FI4000251830';
+  const second = { ...entry, path: 'reports/second-equity-report.html', ticker: 'SECOND.HE', pageTicker: 'SECOND', isin: secondIsin };
+  const secondHtml = renderCompanyPage({ ...company, companyName: 'Second Oyj', companyCode: secondIsin, ticker: 'SECOND' }, [related], now)
+    .replace('<section class="report-full-section" id="overview">', '<section class="report-full-section" id="overview"><p><strong>Company status:</strong> Delisted.</p>');
+  await fs.writeFile(path.join(root, second.path), secondHtml);
+  const client = { ...mockClient, async findCompanyByTicker(ticker) {
+    return { companyId: 5, companyName: ticker, companyCode: ticker === second.ticker ? secondIsin : isin, ticker, industry: 'Industrials' };
+  } };
+  await assert.rejects(refreshCompanyPages({ manifest: { ...manifest, pages: [entry, second] }, client, rootDir: root, now, write: true }), /historical or unavailable company/);
+  assert.equal(await fs.readFile(path.join(root, entry.path), 'utf8'), html);
+  assert.equal(await fs.readFile(path.join(root, second.path), 'utf8'), secondHtml);
+  assert.throws(() => refreshHtml(html.replace(/data-generate-report/g, 'data-unavailable-report'), entry, '2026-11-11', '2026-11-11'), /historical or unavailable company/);
+});
+
+test('older reviews cannot replace newer ones and same-day corrections require the reviewed page', async (t) => {
+  const { root } = await fixture(t);
+  const pagePath = path.join(root, entry.path);
+  await refreshCompanyPages({ manifest, client: mockClient, rootDir: root, now, write: true });
+  const newer = { ...manifest, checkedOn: '2026-11-12', pages: [{ ...entry, values: { ...entry.values, ebit: 2.9 } }] };
+  const later = new Date('2026-11-12T12:00:00Z');
+  await refreshCompanyPages({ manifest: newer, client: mockClient, rootDir: root, now: later, write: true });
+  const reviewed = await fs.readFile(pagePath, 'utf8');
+  await assert.rejects(refreshCompanyPages({ manifest, client: mockClient, rootDir: root, now: later, write: true }), /more recent review/);
+  const correction = { ...newer, pages: [{ ...newer.pages[0], values: { ...entry.values, ebit: 2.8 } }] };
+  await assert.rejects(refreshCompanyPages({ manifest: correction, client: mockClient, rootDir: root, now: later, write: true }), /requires the reviewed page hash/);
+  const wrongHash = { ...correction, pages: [{ ...correction.pages[0], expectedPageSha256: '0'.repeat(64) }] };
+  await assert.rejects(refreshCompanyPages({ manifest: wrongHash, client: mockClient, rootDir: root, now: later, write: true }), /requires the reviewed page hash/);
+  assert.equal(await fs.readFile(pagePath, 'utf8'), reviewed);
+  const expectedPageSha256 = createHash('sha256').update(reviewed, 'utf8').digest('hex');
+  const approved = { ...correction, pages: [{ ...correction.pages[0], expectedPageSha256 }] };
+  await refreshCompanyPages({ manifest: approved, client: mockClient, rootDir: root, now: later, write: true });
+  assert.match(await fs.readFile(pagePath, 'utf8'), /operating profit of EUR 2\.8m/);
+  assert.equal((await refreshCompanyPages({ manifest: approved, client: mockClient, rootDir: root, now: later, write: true }))[0].changed, false);
 });
 
 test('unverified optional figures remain N/A rather than falling back to the model', async (t) => {

@@ -2,7 +2,7 @@
   "checkedOn": "2026-11-11",
   "scope": "Unreviewed company overviews showing FY 2025 after the seventh reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "counts": {
-    "same_or_older": 842,
+    "same_or_older": 841,
     "identity_mismatch": 3,
     "lookup_failed": 7
   },
