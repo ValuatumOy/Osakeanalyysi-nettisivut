@@ -1,9 +1,11 @@
 {
   "ticker": "QFR.OL",
-  "companyName": "Q-Free ASA",
-  "profile": "Q-Free ASA develops intelligent transportation systems for tolling, traffic management, and road safety. Its offerings include electronic toll collection, congestion charging, adaptive signal control, automatic license plate recognition, and other hardware and software used to manage road networks. The company also provides service, maintenance, and integration support for deployed systems worldwide.",
+  "companyName": "Q-Free AS",
+  "profile": "Q-Free AS develops intelligent transportation systems for tolling, traffic management, and road safety. Its offerings include electronic toll collection, congestion charging, adaptive signal control, automatic license plate recognition, and other hardware and software used to manage road networks. The company also provides service, maintenance, and integration support for deployed systems worldwide.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T20:10:20.138Z"
+  "generatedAt": "2026-07-24T20:10:20.138Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://virksomhet.brreg.no/nb/oppslag/enheter/935487242"
 }

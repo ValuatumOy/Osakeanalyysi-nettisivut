@@ -1,9 +1,11 @@
 {
   "ticker": "L2S.ST",
   "companyName": "Learning 2 Sleep L2S AB (publ)",
-  "profile": "Learning 2 Sleep L2S AB provides digital healthcare services focused on sleep problems. The company offers an app-based sleep analysis and CBT-I treatment program, supported by coaching, recommendations, and audio exercises for individuals. It also works with employers, insurers, researchers, and healthcare partners through adapted sleep programs and data-based services.",
+  "profile": "Learning 2 Sleep L2S AB provided digital healthcare services focused on sleep problems. The company offered an app-based sleep analysis and CBT-I treatment program, supported by coaching, recommendations, and audio exercises for individuals. It also worked with employers, insurers, researchers, and healthcare partners through adapted sleep programs and data-based services. The company was declared bankrupt in 2024.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T21:37:10.667Z"
+  "generatedAt": "2026-07-24T21:37:10.667Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://www.nasdaq.com/press-release/delisting-of-learning-2-sleep-l2s-ab-from-nasdaq-first-north-growth-market-20-24-2024"
 }

@@ -1,9 +1,12 @@
 {
   "ticker": "SSG.OL",
-  "companyName": "Self Storage Group ASA",
-  "profile": "Self Storage Group ASA operates as a Scandinavian self-storage provider, offering rentable storage space through its City Self-Storage brand and related facilities in Norway. The company focuses on leasing units to private and business customers, supported by lean operations, automation, and customer service. It has also indicated a longer-term brand transition toward Green Storage.",
+  "companyName": "Self Storage Group AS",
+  "profile": "Self Storage Group AS provides self-storage services, offering rentable storage space to private and business customers. The business uses facilities, customer service and automated access to support storage rentals. In Norway, City Self-Storage and OK Minilager merged in 2025 and adopted the Green Storage brand in 2026.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T20:21:43.060Z"
+  "generatedAt": "2026-07-24T20:21:43.060Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://www.greenstorage.com/no/om-oss/",
+  "identitySource": "https://virksomhet.brreg.no/nb/oppslag/enheter/818096712"
 }
