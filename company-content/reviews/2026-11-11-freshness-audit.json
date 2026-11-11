@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Company overviews still showing FY 2024 or earlier after eleven reviewed updates; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Company overviews still showing FY 2024 or earlier after the first and second reviewed refresh batches; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
     {
@@ -18,14 +18,6 @@
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
-    },
-    {
-      "file": "academedia-equity-report.html",
-      "ticker": "ACAD.ST",
-      "isin": "SE0007897079",
-      "pageYear": 2023,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "adderacare-equity-report.html",
@@ -50,14 +42,6 @@
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
-    },
-    {
-      "file": "agf-equity-report.html",
-      "ticker": "AGF-B.CO",
-      "isin": "DK0010263722",
-      "pageYear": 2023,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "airthings-equity-report.html",
@@ -250,14 +234,6 @@
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "beammwave-equity-report.html",
-      "ticker": "BEAMMW-B.ST",
-      "isin": "SE0016799068",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "belships-equity-report.html",
@@ -628,14 +604,6 @@
       "modelYear": 2024
     },
     {
-      "file": "dantax-equity-report.html",
-      "ticker": "DANT.CO",
-      "isin": "DK0015205637",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "decideact-equity-report.html",
       "ticker": "ACT.CO",
       "isin": "DK0061414471",
@@ -714,14 +682,6 @@
       "pageYear": 2023,
       "status": "same_or_older",
       "modelYear": 2023
-    },
-    {
-      "file": "duroc-equity-report.html",
-      "ticker": "DURC-B.ST",
-      "isin": "SE0000331266",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "ecit-as-equity-report.html",
@@ -954,14 +914,6 @@
       "pageYear": 2021,
       "status": "same_or_older",
       "modelYear": 2021
-    },
-    {
-      "file": "gapwaves-equity-report.html",
-      "ticker": "GAPW-B.ST",
-      "isin": "SE0009155518",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "gc-rieber-shipping-equity-report.html",
@@ -1492,14 +1444,6 @@
       "modelYear": 2024
     },
     {
-      "file": "mentice-equity-report.html",
-      "ticker": "MNTC.ST",
-      "isin": "SE0012673291",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "mercell-holding-equity-report.html",
       "ticker": "MRCEL.OL",
       "isin": "NO0010307143",
@@ -1516,28 +1460,12 @@
       "modelYear": 2023
     },
     {
-      "file": "midsona-equity-report.html",
-      "ticker": "MSON-B.ST",
-      "isin": "SE0000565228",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "mintra-holding-as-equity-report.html",
       "ticker": "MNTR.OL",
       "isin": "NO0010895022",
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "navamedic-equity-report.html",
-      "ticker": "NAVA.OL",
-      "isin": "NO0010205966",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "next-biometrics-group-equity-report.html",
@@ -1946,14 +1874,6 @@
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
-    },
-    {
-      "file": "techstep-equity-report.html",
-      "ticker": "TECH.OL",
-      "isin": "NO0012916131",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "teco-2030-equity-report.html",
