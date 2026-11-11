@@ -288,7 +288,7 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Afarak Group Oyj is a vertically integrated producer of speciality alloys and chrome products for the steel and stainless steel industries. It mines chromite and chrome ore in South Africa and Turkey, processes ferrochrome in Germany, and sells products worldwide through its trading unit to customers in automotive, aerospace, power generation, and other industrial sectors."
   },
   {
-    "name": "Afry",
+    "name": "AFRY",
     "ticker": "AFRY.ST",
     "exchange": "Stockholm",
     "url": "reports/afry-equity-report.html",
@@ -442,7 +442,7 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Alelion Energy Systems AB develops and manufactures lithium-ion battery systems and related energy storage solutions for off-highway and special vehicles, including industrial applications such as materials handling and cranes. The company also provides battery management, power electronics and control systems, with production and development based in Gothenburg, Sweden."
   },
   {
-    "name": "Alfa Laval Corporate",
+    "name": "Alfa Laval",
     "ticker": "ALFA.ST",
     "exchange": "Stockholm",
     "url": "reports/alfa-laval-corporate-equity-report.html",

@@ -152,3 +152,44 @@ test('Acrinova does not call an unreported operating subtotal EBIT', async () =>
   assert.match(html, /both listed share classes/);
   assert.doesNotMatch(html, /SEK 51\.6m|SEK 669\.8m/);
 });
+
+test('the next reviewed companies use audited 2025 operating profit and owner earnings', async () => {
+  const cases = [
+    ['alimak-group', 'SEK 977.0m', 'SEK 604.0m', 'SEK 1,002m'],
+    ['addlife', 'SEK 993.0m', 'SEK 560.0m', 'SEK 780m'],
+    ['alfa-laval-corporate', 'SEK 11,749.0m', 'SEK 8,272.0m', 'SEK 12,790m'],
+    ['afry', 'SEK 1,387.0m', 'SEK 800.0m', 'SEK 1,665m'],
+    ['ambea', 'SEK 1,379.0m', 'SEK 665.0m', 'SEK 1,202m'],
+  ];
+  for (const [file, profit, earnings, oldProfit] of cases) {
+    const html = await read(`reports/${file}-equity-report.html`);
+    assert.ok(html.includes(profit), file);
+    assert.ok(html.includes(earnings), file);
+    assert.ok(!html.includes(oldProfit), file);
+  }
+  for (const file of ['alimak-group', 'ambea']) {
+    const html = await read(`reports/${file}-equity-report.html`);
+    assert.match(html, /excluding treasury shares/);
+    assert.match(html, /figure includes treasury shares/);
+  }
+  for (const file of ['addlife', 'afry']) {
+    const html = await read(`reports/${file}-equity-report.html`);
+    assert.match(html, /unlisted A shares|A shares are unlisted/);
+    assert.match(html, /B-share price/);
+  }
+});
+
+test('AFRY uses the correct company name in the page and search index', async () => {
+  const html = await read('reports/afry-equity-report.html');
+  assert.match(html, /<h1 class="company-name">AFRY \(AFRY\.ST\)/);
+  assert.match(html, /data-company="AFRY AB" data-ticker="AFRY\.ST"/);
+  assert.match(await read('js/companyPagesData.js'), /"name": "AFRY"/);
+});
+
+test('Alfa Laval identifies the listed parent rather than its subsidiary', async () => {
+  const html = await read('reports/alfa-laval-corporate-equity-report.html');
+  assert.match(html, /<h1 class="company-name">Alfa Laval \(ALFA\.ST\)/);
+  assert.match(html, /data-company="Alfa Laval AB" data-ticker="ALFA\.ST"/);
+  assert.match(await read('companies/a.html'), /Alfa Laval \(ALFA\.ST\)/);
+  assert.doesNotMatch(html, /Alfa Laval Corporate/);
+});
