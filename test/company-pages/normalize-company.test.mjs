@@ -12,7 +12,7 @@ test('selectPrimaryModel uses orderNo and followed model ID as a tie-breaker', (
   assert.equal(selected.followedModelId, 100);
 });
 
-test('normalizeCompanyData reads the latest completed financial year', () => {
+test('normalizeCompanyData reads the model year at Y-1', () => {
   const company = {
     companyId: 5,
     companyName: 'Example Oyj',

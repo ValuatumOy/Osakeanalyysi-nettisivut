@@ -39,6 +39,14 @@ export async function generateCompanyPages(options) {
         continue;
       }
 
+      const outputPath = path.join(outputDir, `${pageSlug(company)}.html`);
+      try {
+        await fs.access(outputPath);
+        throw new Error(`Page already exists at ${outputPath}; use refresh:companies for reviewed updates`);
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+
       options.onProgress?.(`profile ${ticker}`);
       const profileResult = await getCompanyProfile({
         company,

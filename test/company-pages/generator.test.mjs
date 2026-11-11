@@ -86,6 +86,8 @@ window.COMPANY_PAGE_CATALOG = [
   assert.match(html, /max-width:1760px/);
   assert.match(html, /Example \(EXAMPLE\) overview/);
   assert.match(html, /Key metrics &amp; valuation multiples/);
+  assert.match(html, /For financial year 2025, Valuatum's model shows revenue/);
+  assert.doesNotMatch(html, /latest completed financial year/);
   assert.match(html, /EUR 1,200m/);
   assert.match(html, /12\.34 EUR/);
   assert.match(html, /Example designs and manufactures industrial equipment/);
@@ -148,7 +150,7 @@ test('data freshness line is rendered from a TSV freshness file', async (t) => {
   assert.equal(result.failures.length, 0);
   assert.equal(result.companies[0].dataUpdated, '2026-05-06');
   const html = await fs.readFile(path.join(root, 'reports', 'example-equity-report.html'), 'utf8');
-  assert.match(html, /Figures updated on 2026-05-06\. Data will be refreshed during report generation\./);
+  assert.match(html, /Financial model updated on 2026-05-06\./);
 });
 
 test('data freshness line is omitted when no freshness is available for the ticker', async (t) => {
@@ -166,7 +168,7 @@ test('data freshness line is omitted when no freshness is available for the tick
 
   assert.equal(result.companies[0].dataUpdated, null);
   const html = await fs.readFile(path.join(root, 'reports', 'example-equity-report.html'), 'utf8');
-  assert.doesNotMatch(html, /Figures updated on/);
+  assert.doesNotMatch(html, /Financial model updated on/);
 });
 
 test('financial companies are detected by ticker and industry keyword', () => {
@@ -211,4 +213,22 @@ test('generator skips financial companies entirely (no page, no failure)', async
   assert.equal(result.companies.length, 0);
   assert.equal(result.failures.length, 0);
   await assert.rejects(fs.readFile(path.join(root, 'reports', 'example-bank-equity-report.html'), 'utf8'));
+});
+
+test('generator refuses to overwrite an existing page before calling the AI provider', async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'company-generator-existing-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const outputDir = path.join(root, 'reports');
+  await fs.mkdir(outputDir);
+  const existing = path.join(outputDir, 'example-equity-report.html');
+  await fs.writeFile(existing, '<meta name="valuatum-page-mode" content="report">');
+  const result = await generateCompanyPages({
+    tickers: ['EXAMPLE'], client: freshnessTestClient(), outputDir,
+    profileDir: path.join(root, 'profiles'), updateDiscovery: false,
+    profileProvider: { async generate() { throw new Error('AI should not run'); } },
+    readyReports: [],
+  });
+  assert.equal(result.companies.length, 0);
+  assert.match(result.failures[0].error.message, /Page already exists/);
+  assert.equal(await fs.readFile(existing, 'utf8'), '<meta name="valuatum-page-mode" content="report">');
 });

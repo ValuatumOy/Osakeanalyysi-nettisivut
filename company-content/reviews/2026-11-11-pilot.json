@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/aallon-group-equity-report.html",
+      "ticker": "AALLON.HE",
+      "pageTicker": "AALLON",
+      "isin": "FI4000369608",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://aallon.fi/wp-content/uploads/2026/02/20260223_AALLON-Vuosikatsaus-2025-.pdf",
+      "values": {
+        "bookValue": 16.503,
+        "sharePrice": 10.65,
+        "revenue": 39.639,
+        "ebit": 2.97,
+        "netEarnings": 2.313,
+        "marketCap": 41.7
+      },
+      "modelSnapshot": {
+        "bookValue": 16.503,
+        "sharePrice": 10.65,
+        "revenue": 39.639,
+        "ebit": 3.009,
+        "netEarnings": 2.313,
+        "marketCap": 40.695141
+      }
+    },
+    {
+      "path": "reports/admicom-equity-report.html",
+      "ticker": "ADMCM.HE",
+      "pageTicker": "ADMCM",
+      "isin": "FI4000251830",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://www.admicom.com/hubfs/Admicom%20-%20sijoittajat/Admicom%20-%20Vuosikertomus%202025.pdf",
+      "values": {
+        "bookValue": 35.170565,
+        "sharePrice": 43.1,
+        "revenue": 37.735783,
+        "ebit": 7.573203,
+        "netEarnings": 5.307782,
+        "marketCap": 216.34
+      },
+      "modelSnapshot": {
+        "bookValue": 35.170565,
+        "sharePrice": 43.1,
+        "revenue": 37.735783,
+        "ebit": 7.573203,
+        "netEarnings": 5.379158,
+        "marketCap": 216.2351136
+      }
+    }
+  ]
+}
