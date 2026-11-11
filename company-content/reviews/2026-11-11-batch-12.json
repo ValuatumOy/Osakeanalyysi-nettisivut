@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/summa-defence-equity-report.html",
+      "ticker": "SUMMA.HE",
+      "pageTicker": "SUMMA.HE",
+      "isin": "FI4000592282",
+      "financialYear": 2025,
+      "modelFinancialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a65ef1702f89a1bd5feab30f1bc6be59b",
+      "sourceNote": "The figures use the final consolidated Finnish GAAP financial statements. The auditor issued a qualified opinion on the valuation of goodwill, development costs and the parent company’s subsidiary shares, and highlighted material uncertainty about going concern.",
+      "reviewNotes": "Final audited FY2025 consolidated Finnish GAAP statements, pp. 7, 14–15, 18: EUR million revenue 100.92567417, EBIT -21.80418177, net earnings after minority interest -24.44328250, owner equity 166.46449256. Year-end Nasdaq Helsinki share price EUR 2.12, 45,681,664 shares, market cap EUR 96.84512768m. The earlier unaudited March 2026 release showed EBIT -19.842m and net earnings -21.988m; the Wisdom net earnings matched the preliminary group result before the EUR 0.493m minority interest; the company also reported a c. EUR 2m goodwill impairment in its final May statements. Auditor issued a qualified opinion concerning asset valuations and highlighted going-concern uncertainty: https://view.news.eu.nasdaq.com/view?id=b725fbee7a0f8a8f17bac97d723d3999c&lang=en&src=micro. Corporate restructuring of Summa Defence Plc and Summa Holding Oy started 9 October and continued as of 9 November 2026: https://news.cision.com/summa-defence-oyj/r/corporate-restructuring-proceedings-of-summa-defence-plc-and-summa-holding-oy-continue---the-adminis%2Cc4422207.",
+      "values": {
+        "bookValue": 166.46449256,
+        "sharePrice": 2.12,
+        "revenue": 100.92567417,
+        "ebit": -21.80418177,
+        "netEarnings": -24.4432825,
+        "marketCap": 96.84512768
+      },
+      "modelSnapshot": {
+        "bookValue": 168.427,
+        "sharePrice": 2.12,
+        "revenue": 100.926,
+        "ebit": -19.842,
+        "netEarnings": -21.988,
+        "marketCap": 96.84512768
+      }
+    }
+  ]
+}

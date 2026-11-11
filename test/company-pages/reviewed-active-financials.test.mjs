@@ -74,3 +74,11 @@ test('Omda uses the audited sales revenue and its current listing identity', asy
   assert.match(html, /Share price<\/span><span class="cp-v">N\/A<\/span>/);
   assert.doesNotMatch(html, /revenue of NOK 495\.69m|36\.93 NOK/);
 });
+
+test('Summa Defence uses the final 2025 results and discloses restructuring', async () => {
+  const html = await read('reports/summa-defence-equity-report.html');
+  for (const value of ['EUR 100.93m', 'EUR -21.8m', 'EUR -24.44m', 'EUR 166.46m']) assert.ok(html.includes(value));
+  assert.match(html, /auditor issued a qualified opinion/);
+  assert.match(html, /corporate restructuring proceedings for Summa Defence Plc and Summa Holding Oy/);
+  assert.doesNotMatch(html, /EUR -19\.8m|EUR -22\.0m/);
+});
