@@ -1,0 +1,35 @@
+{
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "file": "reports/withsecure-equity-report.html",
+      "name": "WithSecure",
+      "message": "WithSecure shares had their last trading day on Nasdaq Helsinki on 26 March 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b91f3476a601c18d6e95d0b79999408d6&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/ultimovacs-equity-report.html",
+      "name": "Ultimovacs",
+      "message": "Ultimovacs ASA became Zelluna ASA on 4 March 2025 following a business combination. Its ticker changed from ULTI to ZLNA.",
+      "source": "https://zelluna.com/content/2025/04/Zelluna-Annual-Report-2024.pdf",
+      "label": "Zelluna annual report",
+      "successor": "/reports/zelluna-equity-report.html",
+      "successorLabel": "View Zelluna"
+    },
+    {
+      "file": "reports/novozymes-equity-report.html",
+      "name": "Novozymes",
+      "message": "Novozymes combined with Chr. Hansen to form Novonesis in January 2024. Its B-share ticker changed from NZYM B to NSIS B in March 2024.",
+      "source": "https://www.novonesis.com/en/investors/company-announcements/novozymes-archive",
+      "label": "Novonesis company history"
+    },
+    {
+      "file": "reports/dala-energi-equity-report.html",
+      "name": "Dala Energi",
+      "message": "Dala Energi AB became Siljansvik AB on 15 December 2025 after reorganising as an ownership and investment company.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b63a355518c55a15c61e0a4abad9a5ed8&lang=sv&src=micro",
+      "label": "Company announcement"
+    }
+  ]
+}
