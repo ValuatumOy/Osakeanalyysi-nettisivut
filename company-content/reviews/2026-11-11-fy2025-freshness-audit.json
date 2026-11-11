@@ -1,10 +1,9 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Unreviewed company overviews showing FY 2025 after the fourth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2025 after the fifth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "counts": {
     "same_or_older": 842,
     "identity_mismatch": 3,
-    "newer": 13,
     "lookup_failed": 7
   },
   "results": [
@@ -665,14 +664,6 @@
       "modelYear": 2025
     },
     {
-      "file": "asmodee-group-equity-report.html",
-      "ticker": "ASMDEE-B.ST",
-      "isin": "SE0023615638",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "aspo-equity-report.html",
       "ticker": "ASPO.HE",
       "isin": "FI0009008072",
@@ -905,14 +896,6 @@
       "modelYear": 2025
     },
     {
-      "file": "bergman-and-beving-equity-report.html",
-      "ticker": "BERG-B.ST",
-      "isin": "SE0000101362",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "betsson-equity-report.html",
       "ticker": "BETS-B.ST",
       "isin": "SE0022726485",
@@ -1055,14 +1038,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "biovica-international-equity-report.html",
-      "ticker": "BIOVIC-B.ST",
-      "isin": "SE0008613731",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "bittium-equity-report.html",
@@ -1521,14 +1496,6 @@
       "modelYear": 2025
     },
     {
-      "file": "clas-ohlson-equity-report.html",
-      "ticker": "CLAS-B.ST",
-      "isin": "SE0000584948",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "clavister-holding-ab-publ-equity-report.html",
       "ticker": "CLAV.ST",
       "isin": "SE0005308558",
@@ -1703,14 +1670,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "dataproces-group-equity-report.html",
-      "ticker": "DATA.CO",
-      "isin": "DK0061408580",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "dedicare-equity-report.html",
@@ -2015,14 +1974,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "elekta-equity-report.html",
-      "ticker": "EKTA-B.ST",
-      "isin": "SE0000163628",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "elektroimportoren-as-equity-report.html",
@@ -3233,14 +3184,6 @@
       "modelYear": 2025
     },
     {
-      "file": "integrum-equity-report.html",
-      "ticker": "INTEG-B.ST",
-      "isin": "SE0009807266",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "intervacc-equity-report.html",
       "ticker": "IVACC.ST",
       "isin": "SE0009607252",
@@ -3615,14 +3558,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "lagercrantz-group-equity-report.html",
-      "ticker": "LAGR-B.ST",
-      "isin": "SE0014990966",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "lammhults-design-group-equity-report.html",
@@ -5209,14 +5144,6 @@
       "modelYear": 2025
     },
     {
-      "file": "qlucore-equity-report.html",
-      "ticker": "QCORE.ST",
-      "isin": "SE0016829824",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "qpr-software-equity-report.html",
       "ticker": "QPR1V.HE",
       "isin": "FI0009008668",
@@ -5585,14 +5512,6 @@
       "modelYear": 2025
     },
     {
-      "file": "scandidos-equity-report.html",
-      "ticker": "SDOS.ST",
-      "isin": "SE0005768124",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "scandinavian-chemotech-equity-report.html",
       "ticker": "CMOTEC-B.ST",
       "isin": "SE0009242654",
@@ -5847,14 +5766,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "skistar-equity-report.html",
-      "ticker": "SKIS-B.ST",
-      "isin": "SE0012141687",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "sleep-cycle-equity-report.html",
@@ -6225,14 +6136,6 @@
       "modelYear": 2025
     },
     {
-      "file": "systemair-equity-report.html",
-      "ticker": "SYSR.ST",
-      "isin": "SE0016609499",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
-    },
-    {
       "file": "tagmaster-equity-report.html",
       "ticker": "TAGM-B.ST",
       "isin": "SE0015950399",
@@ -6527,14 +6430,6 @@
       "pageYear": 2025,
       "status": "same_or_older",
       "modelYear": 2025
-    },
-    {
-      "file": "uswe-sports-equity-report.html",
-      "ticker": "USWE.ST",
-      "isin": "SE0015949771",
-      "pageYear": 2025,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "valmet-equity-report.html",

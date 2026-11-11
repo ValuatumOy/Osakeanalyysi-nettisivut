@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/asmodee-group-equity-report.html",
+      "ticker": "ASMDEE-B.ST",
+      "pageTicker": "ASMDEE-B.ST",
+      "isin": "SE0023615638",
+      "financialYear": 2026,
+      "currency": "EUR",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://view.news.eu.nasdaq.com/view?id=b94aa90633c9f152b69bda7ae7c5944f4&lang=en&src=micro",
+      "sourceNote": "The financial year ended on 31 March 2026. Net earnings and book value are attributable to the parent company shareholders. The share price is for the listed B shares; market capitalisation covers both A and B shares.",
+      "reviewNotes": "Annual report FY2025/26 consolidated EUR figures: revenue 1,683.562m, EBIT 167.580m, profit to shareholders 27.705m and equity to shareholders 1,886.227m. The share section reports the B-share closing price of SEK 106.34 and total company market cap of SEK 24,851m; Wisdom converts these market figures into EUR.",
+      "values": {
+        "bookValue": 1886.227,
+        "sharePrice": 106.34,
+        "revenue": 1683.562,
+        "ebit": 167.58,
+        "netEarnings": 27.705,
+        "marketCap": 24851
+      },
+      "modelSnapshot": {
+        "bookValue": 1886.227,
+        "sharePrice": 9.68003211,
+        "revenue": 1683.562,
+        "ebit": 167.58,
+        "netEarnings": 27.705,
+        "marketCap": 2262.14633502
+      }
+    },
+    {
+      "path": "reports/bergman-and-beving-equity-report.html",
+      "ticker": "BERG-B.ST",
+      "pageTicker": "BERG-B.ST",
+      "isin": "SE0000101362",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://bergmanbeving.com/en/investors/financial-reports-and-presentations/annual-report-2025-2026",
+      "sourceNote": "The financial year ended on 31 March 2026. Net earnings and book value are attributable to the parent company shareholders. The reported market capitalisation includes all issued shares.",
+      "reviewNotes": "FY2025/26: revenue 4,972m, EBIT 413m (not adjusted EBIT 418m), owner profit 229m, owner equity 1,943m, B-share year-end price SEK 270. The issuer reports market capitalisation of SEK 7,408m. The associated financial report is https://attachment.news.eu.nasdaq.com/afeb99abcbca8e6e3fb79a04924d372a1.",
+      "values": {
+        "bookValue": 1943,
+        "sharePrice": 270,
+        "revenue": 4972,
+        "ebit": 413,
+        "netEarnings": 229,
+        "marketCap": 7408
+      },
+      "modelSnapshot": {
+        "bookValue": 1943,
+        "sharePrice": 270,
+        "revenue": 4972,
+        "ebit": 413,
+        "netEarnings": 229,
+        "marketCap": 7192.81971
+      }
+    },
+    {
+      "path": "reports/biovica-international-equity-report.html",
+      "ticker": "BIOVIC-B.ST",
+      "pageTicker": "BIOVIC-B.ST",
+      "isin": "SE0008613731",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/5d7a4147-e2af-4044-b341-263607759d00/biovica-25-26-eng-final.pdf",
+      "sourceNote": "The financial year ended on 30 April 2026. Market capitalisation is rounded to the nearest SEK million in the annual report.",
+      "reviewNotes": "FY2025/26 consolidated net sales SEK 13.380m, EBIT -70.119m, net loss -69.860m, equity 86.333m, B-share price SEK 0.35 and market capitalisation rounded to SEK 102m. Other operating income is separate from net sales.",
+      "values": {
+        "bookValue": 86.333,
+        "sharePrice": 0.35,
+        "revenue": 13.38,
+        "ebit": -70.119,
+        "netEarnings": -69.86,
+        "marketCap": 102
+      },
+      "modelSnapshot": {
+        "bookValue": 86.333,
+        "sharePrice": 0.35,
+        "revenue": 13.38,
+        "ebit": -70.119,
+        "netEarnings": -69.86,
+        "marketCap": 102.16891965
+      }
+    },
+    {
+      "path": "reports/dataproces-group-equity-report.html",
+      "ticker": "DATA.CO",
+      "pageTicker": "DATA.CO",
+      "isin": "DK0061408580",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a1e35c4f5116256239c4071cbb5def13e",
+      "sourceNote": "The financial year ended on 30 April 2026.",
+      "reviewNotes": "FY2025/26 audited consolidated accounts in DKK thousands: revenue 47,585, EBIT 8,059, profit 6,305, equity 52,891. The annual report does not give a verified year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 52.891,
+        "sharePrice": null,
+        "revenue": 47.585,
+        "ebit": 8.059,
+        "netEarnings": 6.305,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 52.891,
+        "sharePrice": 5.16,
+        "revenue": 47.585,
+        "ebit": 8.059,
+        "netEarnings": 6.305,
+        "marketCap": null
+      }
+    },
+    {
+      "path": "reports/clas-ohlson-equity-report.html",
+      "ticker": "CLAS-B.ST",
+      "pageTicker": "CLAS-B.ST",
+      "isin": "SE0000584948",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://about.clasohlson.com/en/corporate_governance/annual_general_meeting_2026",
+      "sourceNote": "The financial year ended on 30 April 2026. The share price is for the listed B shares and the market capitalisation is the company-reported total.",
+      "reviewNotes": "FY2025/26 financial report shows net sales SEK 12,513.9m, operating profit 1,527.1m, profit 1,168.9m, equity 3,154.1m, B-share closing price SEK 398.40 and total market capitalisation SEK 25,324m: https://mb.cision.com/Main/1116/4356813/4130290.pdf. The annual report is linked from the AGM page.",
+      "values": {
+        "bookValue": 3154.1,
+        "sharePrice": 398.4,
+        "revenue": 12513.9,
+        "ebit": 1527.1,
+        "netEarnings": 1168.9,
+        "marketCap": 25324
+      },
+      "modelSnapshot": {
+        "bookValue": 3154.1,
+        "sharePrice": 398.399994,
+        "revenue": 12513.9,
+        "ebit": 1527.1,
+        "netEarnings": 1168.9,
+        "marketCap": 25323.89363302
+      }
+    },
+    {
+      "path": "reports/qlucore-equity-report.html",
+      "ticker": "QCORE.ST",
+      "pageTicker": "QCORE.ST",
+      "isin": "SE0016829824",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://qlucore.com/sites/default/files/2026-08/Qlucore%20%C3%85rsredovisning_2025_FINAL%20inkl%20RB.pdf",
+      "sourceNote": "The financial year ended on 30 April 2026.",
+      "reviewNotes": "FY2025/26 audited consolidated statements, SEK thousands: revenue 6,737, operating result -36,369, profit attributable to shareholders -36,523, and equity 36,305. The annual report does not disclose an independently verified year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 36.305,
+        "sharePrice": null,
+        "revenue": 6.737,
+        "ebit": -36.369,
+        "netEarnings": -36.523,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 36.305,
+        "sharePrice": 0.465,
+        "revenue": 6.737,
+        "ebit": -36.369,
+        "netEarnings": -36.523,
+        "marketCap": 19.9487325
+      }
+    },
+    {
+      "path": "reports/elekta-equity-report.html",
+      "ticker": "EKTA-B.ST",
+      "pageTicker": "EKTA-B.ST",
+      "isin": "SE0000163628",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/4fee6c42-f5eb-4dff-9601-c15ca8313eec/elekta-annual-report-2025-26.pdf",
+      "sourceNote": "The financial year ended on 30 April 2026. Operating profit is after items affecting comparability. Net earnings and book value are attributable to the parent company shareholders.",
+      "reviewNotes": "Audited FY2025/26 consolidated report: revenue 16,718m, reported EBIT 234m, adjusted EBIT 2,051m, owner net earnings -519m, owner equity 7,099m and reported market cap 20,425m. Year-end B-share price is not explicitly disclosed in the annual report and is unavailable.",
+      "values": {
+        "bookValue": 7099,
+        "sharePrice": null,
+        "revenue": 16718,
+        "ebit": 234,
+        "netEarnings": -519,
+        "marketCap": 20425
+      },
+      "modelSnapshot": {
+        "bookValue": 7099,
+        "sharePrice": 53.25,
+        "revenue": 16718,
+        "ebit": 234,
+        "netEarnings": -519,
+        "marketCap": 20345.92614
+      }
+    },
+    {
+      "path": "reports/scandidos-equity-report.html",
+      "ticker": "SDOS.ST",
+      "pageTicker": "SDOS.ST",
+      "isin": "SE0005768124",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/ada886fdfa8308e8c8afb389fc24936e9",
+      "sourceNote": "The financial year ended on 30 April 2026.",
+      "reviewNotes": "Audited FY2025/26 consolidated report in SEK thousands: revenue 54,222, EBIT -2,985, net loss -3,435, owner equity 41,662. The annual report does not disclose an independently verified year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 41.662,
+        "sharePrice": null,
+        "revenue": 54.222,
+        "ebit": -2.985,
+        "netEarnings": -3.435,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 41.662,
+        "sharePrice": 0.98,
+        "revenue": 54.222,
+        "ebit": -2.985,
+        "netEarnings": -3.435,
+        "marketCap": 55.87086526
+      }
+    },
+    {
+      "path": "reports/integrum-equity-report.html",
+      "ticker": "INTEG-B.ST",
+      "pageTicker": "INTEG-B.ST",
+      "isin": "SE0009807266",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/5374dcb2-2699-4a3f-a5d5-3b5d2801a8f5/arsredovisning-2025-2026.pdf",
+      "sourceNote": "The financial year ended on 30 April 2026.",
+      "reviewNotes": "Audited FY2025/26 consolidated statement in SEK: revenue 91,384,978, EBIT -53,156,565, profit attributable to shareholders -46,337,918, owner equity 172,006,675. The annual report does not give a precise independently verified year-end share price or market capitalisation. A separate issuer Q1 report rounds them to SEK 7.8 and SEK 209.1m: https://reports.integrum.se/en/interim-report-may-july-2026/operations/this-is-integrum/.",
+      "values": {
+        "bookValue": 172.006675,
+        "sharePrice": null,
+        "revenue": 91.384978,
+        "ebit": -53.156565,
+        "netEarnings": -46.337918,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 172.006675,
+        "sharePrice": 7.84,
+        "revenue": 91.384978,
+        "ebit": -53.156565,
+        "netEarnings": -46.337918,
+        "marketCap": 209.0764144
+      }
+    },
+    {
+      "path": "reports/lagercrantz-group-equity-report.html",
+      "ticker": "LAGR-B.ST",
+      "pageTicker": "LAGR-B.ST",
+      "isin": "SE0014990966",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a241cc91adb0b4ab90b8e532be7d9fcae",
+      "sourceNote": "The financial year ended on 31 March 2026. The reported market capitalisation excludes repurchased shares.",
+      "reviewNotes": "FY2025/26 annual report: revenue SEK 10,609m, EBIT 1,694m (EBITA 1,923m), net profit 1,200m, equity 4,436m, year-end B-share price SEK 198.90 and market cap 41,005m.",
+      "values": {
+        "bookValue": 4436,
+        "sharePrice": 198.9,
+        "revenue": 10609,
+        "ebit": 1694,
+        "netEarnings": 1200,
+        "marketCap": 41005
+      },
+      "modelSnapshot": {
+        "bookValue": 4436,
+        "sharePrice": 198.899994,
+        "revenue": 10609,
+        "ebit": 1694,
+        "netEarnings": 1200,
+        "marketCap": 41005.07776494
+      }
+    },
+    {
+      "path": "reports/skistar-equity-report.html",
+      "ticker": "SKIS-B.ST",
+      "pageTicker": "SKIS-B.ST",
+      "isin": "SE0012141687",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceType": "year-end-report",
+      "sourceUrl": "https://ml-eu.globenewswire.com/Resource/Download/f97e37e2-bd7a-40e2-b378-fea53f7ee5d9",
+      "sourceNote": "The financial year ended on 31 August 2026. The year-end report has not been reviewed by the company auditor; the annual report was not yet available when checked. Net earnings and book value are attributable to parent company shareholders.",
+      "reviewNotes": "Year-end report FY2025/26: sales SEK 4,954m, reported EBIT 872m, owner net profit 627m, owner equity 4,513m, B-share price SEK 162.40. The company has not reported market capitalisation in this report; it is unavailable. The report explicitly states it has not been reviewed by the auditor.",
+      "values": {
+        "bookValue": 4513,
+        "sharePrice": 162.4,
+        "revenue": 4954,
+        "ebit": 872,
+        "netEarnings": 627,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 4513,
+        "sharePrice": 162.399994,
+        "revenue": 4954,
+        "ebit": 872,
+        "netEarnings": 627,
+        "marketCap": 12728.27102414
+      }
+    },
+    {
+      "path": "reports/systemair-equity-report.html",
+      "ticker": "SYSR.ST",
+      "pageTicker": "SYSR.ST",
+      "isin": "SE0016609499",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a331453e525bcb81bb963ced606a071ca",
+      "sourceNote": "The financial year ended on 30 April 2026. Net earnings and book value are attributable to parent company shareholders. Market capitalisation uses outstanding shares, excluding the company’s own shares.",
+      "reviewNotes": "FY2025/26 annual report: sales SEK 12,502.7m, EBIT 1,133.8m, owner net profit 760.8m, owner equity 6,107.7m, price SEK 71.00. The report values the 207,525,448 outstanding shares at SEK 14,734,307 thousand.",
+      "values": {
+        "bookValue": 6107.7,
+        "sharePrice": 71,
+        "revenue": 12502.7,
+        "ebit": 1133.8,
+        "netEarnings": 760.8,
+        "marketCap": 14734.307
+      },
+      "modelSnapshot": {
+        "bookValue": 6107.7,
+        "sharePrice": 71,
+        "revenue": 12502.7,
+        "ebit": 1133.8,
+        "netEarnings": 760.8,
+        "marketCap": 14734.306808
+      }
+    },
+    {
+      "path": "reports/uswe-sports-equity-report.html",
+      "ticker": "USWE.ST",
+      "pageTicker": "USWE.ST",
+      "isin": "SE0015949771",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceType": "year-end-report",
+      "sourceUrl": "https://storage.mfn.se/2506f446-1f04-426c-9b7c-4df37a775ef1/uswe-sports-bokslutskommunike-q4.pdf",
+      "sourceNote": "The financial year ended on 31 March 2026. The year-end report has not been reviewed by the company auditor. Operating profit is the reported result, not adjusted operational EBIT.",
+      "reviewNotes": "FY2025/26 year-end report in SEK thousands: sales 135,124, reported EBIT -1,461, net profit -2,422 and owner equity 67,382. Adjusted operational EBIT is +1,496. The report has not been reviewed by the company auditor and does not give year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 67.382,
+        "sharePrice": null,
+        "revenue": 135.124,
+        "ebit": -1.461,
+        "netEarnings": -2.422,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 67.382,
+        "sharePrice": 10,
+        "revenue": 135.124,
+        "ebit": -1.461,
+        "netEarnings": -2.422,
+        "marketCap": 71.36528
+      }
+    }
+  ]
+}

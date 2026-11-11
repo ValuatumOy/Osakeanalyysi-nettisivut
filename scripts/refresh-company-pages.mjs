@@ -107,6 +107,7 @@ export function refreshHtml(html, entry, checkedOn, today) {
     throw new Error(`${entry.path}: existing ticker does not match the reviewed page`);
   }
   const { values: v, currency: c, marketCurrency: mc, financialYear: year } = entry;
+  const sourceLabel = entry.sourceType === 'year-end-report' ? 'year-end report' : 'annual report';
   const fields = ['revenue'];
   if (v.ebit !== null) fields.push('EBIT');
   if (v.netEarnings !== null) fields.push('net earnings');
@@ -133,7 +134,7 @@ export function refreshHtml(html, entry, checkedOn, today) {
       ['Market capitalisation', money(v.marketCap, mc), `FY ${year} year end`],
     ].map(([label, value, sub]) => `<div class="cp-cell"><span class="cp-l">${label}</span><span class="cp-v">${value}</span><span class="cp-sub">${sub}</span></div>`).join('')}</div>`;
     let updated = replaceOne(section, /<div class="cp-grid">[\s\S]*?<\/div>(?=\s*(?:<p class="cp-updated"|<\/section>))/g, grid, entry.path);
-    const line = `<p class="cp-updated">Figures checked against the annual report on ${checkedOn}. Share price and market capitalisation are for the end of FY ${year}.</p>`;
+    const line = `<p class="cp-updated">Figures checked against the ${sourceLabel} on ${checkedOn}. Share price and market capitalisation are for the end of FY ${year}.</p>`;
     if (/<p class="cp-updated">/.test(updated)) {
       updated = replaceOne(updated, /<p class="cp-updated">[\s\S]*?<\/p>/g, line, entry.path);
     } else {
@@ -143,7 +144,7 @@ export function refreshHtml(html, entry, checkedOn, today) {
   });
   next = replaceSection(next, 'sources', (section) => replaceOne(section,
     /<p>(?:Financial figures (?:are sourced from|for FY )|Available financial figures for FY )[\s\S]*?<\/p>/g,
-    `<p>Available financial figures for FY ${year}, including any year-end share price and market capitalisation, are sourced from ${esc(name)}'s <a href="${esc(entry.sourceUrl)}">annual report</a>.${entry.sourceNote ? ` ${esc(entry.sourceNote)}` : ''} See the <a href="/methodology.html">methodology</a> for the Valuatum AI equity research framework.</p>`, entry.path));
+    `<p>Available financial figures for FY ${year}, including any year-end share price and market capitalisation, are sourced from ${esc(name)}'s <a href="${esc(entry.sourceUrl)}">${sourceLabel}</a>.${entry.sourceNote ? ` ${esc(entry.sourceNote)}` : ''} See the <a href="/methodology.html">methodology</a> for the Valuatum AI equity research framework.</p>`, entry.path));
   if (next === html) return html;
 
   const updatedScript = [...next.matchAll(scriptPattern)].find((match) => {
@@ -164,6 +165,7 @@ function validateManifest(manifest, today) {
     if (!/^[A-Z0-9.-]+$/.test(entry.ticker || '') || !/^[A-Z0-9.-]+$/.test(entry.pageTicker || '') || !/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.isin || '')) throw new Error(`Invalid ticker or ISIN: ${entry.path}`);
     if (entry.modelIsin && (!/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.modelIsin) || !entry.identitySourceUrl)) throw new Error(`A different model ISIN requires identity evidence: ${entry.path}`);
     if (!Number.isInteger(entry.financialYear) || entry.financialYear > Number(today.slice(0, 4)) || !/^[A-Z]{3}$/.test(entry.currency || '') || !/^[A-Z]{3}$/.test(entry.marketCurrency || '')) throw new Error(`Invalid year or currency: ${entry.path}`);
+    if (entry.sourceType !== undefined && !['annual-report', 'year-end-report'].includes(entry.sourceType)) throw new Error(`Invalid source type: ${entry.path}`);
     if (entry.modelFinancialYear !== undefined && (!Number.isInteger(entry.modelFinancialYear) || entry.modelFinancialYear > entry.financialYear)) throw new Error(`Invalid model year: ${entry.path}`);
     let source;
     try { source = new URL(entry.sourceUrl); } catch { throw new Error(`Invalid source URL: ${entry.path}`); }

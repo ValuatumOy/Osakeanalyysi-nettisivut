@@ -109,6 +109,18 @@ test('unverified optional figures remain N/A rather than falling back to the mod
   assert.equal(again[0].changed, false);
 });
 
+test('year-end reports are identified accurately and unsupported source types are rejected', async (t) => {
+  const { root } = await fixture(t);
+  const yearEnd = { ...manifest, pages: [{ ...entry, sourceType: 'year-end-report' }] };
+  await refreshCompanyPages({ manifest: yearEnd, client: mockClient, rootDir: root, now, write: true });
+  const html = await fs.readFile(path.join(root, entry.path), 'utf8');
+  assert.match(html, /Figures checked against the year-end report/);
+  assert.match(html, />year-end report<\/a>/);
+  assert.equal((await refreshCompanyPages({ manifest: yearEnd, client: mockClient, rootDir: root, now, write: true }))[0].changed, false);
+  const invalid = { ...manifest, pages: [{ ...entry, sourceType: 'unverified' }] };
+  await assert.rejects(refreshCompanyPages({ manifest: invalid, client: mockClient, rootDir: root, now }), /Invalid source type/);
+});
+
 test('omits an unverified operating profit while preserving the correct listing currency', async (t) => {
   const { root } = await fixture(t);
   const partial = { ...manifest, pages: [{ ...entry, ticker: 'EXAMPLE.ST', marketCurrency: 'SEK', sourceNote: 'Revenue includes rental & service income.', values: { ...entry.values, ebit: null, marketCap: null } }] };
