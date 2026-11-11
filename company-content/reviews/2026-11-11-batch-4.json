@@ -1,0 +1,343 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/coloplast-equity-report.html",
+      "ticker": "COLO-B.CO",
+      "pageTicker": "COLO-B.CO",
+      "isin": "DK0060448595",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://www.coloplast.com/siteassets/investors/results-reports--presentations/annual-reports/annual-report-2025_26.pdf",
+      "sourceNote": "The financial year ended on 30 September 2026. Operating profit is after special items.",
+      "reviewNotes": "FY2025/26 consolidated statements: EBIT DKK 4,252m after DKK 3,195m special items; EBIT before special items is DKK 7,447m. The annual report rounds the year-end share price and does not report the exact market capitalisation; both are unavailable.",
+      "values": {
+        "bookValue": 14292,
+        "sharePrice": null,
+        "revenue": 28941,
+        "ebit": 4252,
+        "netEarnings": 3074,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 14292,
+        "sharePrice": 417.899994,
+        "revenue": 28941,
+        "ebit": 4252,
+        "netEarnings": 3073.99999393,
+        "marketCap": 94194.6586476
+      }
+    },
+    {
+      "path": "reports/zelluna-equity-report.html",
+      "ticker": "ZLNA.OL",
+      "pageTicker": "ZLNA.OL",
+      "isin": "NO0013524942",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://ml-eu.globenewswire.com/Resource/Download/1c32338e-79ae-4b3c-92d2-ee2430ef7546",
+      "sourceNote": "The company was renamed from Ultimovacs following a business combination in March 2025, which was accounted for as a reverse acquisition.",
+      "reviewNotes": "Consolidated FY2025 income statement and balance sheet pp. 33–34; year-end market capitalisation p. 88. No source-confirmed year-end share price.",
+      "values": {
+        "bookValue": 85.857,
+        "sharePrice": null,
+        "revenue": 0,
+        "ebit": -143.834,
+        "netEarnings": -140.71,
+        "marketCap": 362.5
+      },
+      "modelSnapshot": {
+        "bookValue": 85.857,
+        "sharePrice": 13.8,
+        "revenue": 0,
+        "ebit": -143.834,
+        "netEarnings": -140.71,
+        "marketCap": 362.5232538
+      }
+    },
+    {
+      "path": "reports/wilh-wilhelmsen-holding-equity-report.html",
+      "ticker": "WWI.OL",
+      "pageTicker": "WWI.OL",
+      "isin": "NO0010571698",
+      "financialYear": 2025,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.wilhelmsen.com/globalassets/investor-relations/annual-report/wwh-annual-report-2025-web2.pdf",
+      "sourceNote": "Book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "Annual report consolidated financial summary: operating revenue USD 1,234m and EBIT USD 106m, shareholder net income USD 652m, shareholder equity USD 3,262m. No source-confirmed year-end Class A share price or company market capitalisation.",
+      "values": {
+        "bookValue": 3262,
+        "sharePrice": null,
+        "revenue": 1234,
+        "ebit": 106,
+        "netEarnings": 652,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 3262,
+        "sharePrice": 590,
+        "revenue": 1234,
+        "ebit": 106,
+        "netEarnings": 998,
+        "marketCap": 24786.08231
+      }
+    },
+    {
+      "path": "reports/ab-sagax-equity-report.html",
+      "ticker": "SAGA-B.ST",
+      "pageTicker": "SAGA-B.ST",
+      "isin": "SE0005127818",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.sagax.se/sites/default/files/pr/20260416-c55602b6-73fb-4c6c-9f17-d754717aa7bd-1.pdf",
+      "sourceNote": "Revenue is rental revenue. Book value and net earnings are attributable to the parent company’s shareholders; the share price is for Class B.",
+      "reviewNotes": "FY2025 annual report: rental revenue SEK 5,378m; no separate reported EBIT. Owner equity SEK 42,622m and owner profit SEK 4,048m; Class B price SEK 197.60 and total company market capitalisation SEK 71,103m. Wisdom model remains at FY2024.",
+      "values": {
+        "bookValue": 42622,
+        "sharePrice": 197.6,
+        "revenue": 5378,
+        "ebit": null,
+        "netEarnings": 4048,
+        "marketCap": 71103
+      },
+      "modelSnapshot": {
+        "bookValue": 40941,
+        "sharePrice": 226.2,
+        "revenue": 5063,
+        "ebit": 4004,
+        "netEarnings": 5275,
+        "marketCap": 76546.08
+      }
+    },
+    {
+      "path": "reports/norse-atlantic-equity-report.html",
+      "ticker": "NORSE.OL",
+      "pageTicker": "NORSE.OL",
+      "isin": "NO0012885252",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "USD",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://live.euronext.com/en/products/equities/company-news/2026-04-30-norse-atlantic-asa-annual-report-2025",
+      "reviewNotes": "FY2025 annual report consolidated income and financial position, USD thousands. No verified FY-end listing price or market capitalisation. The Wisdom model remains at FY2024.",
+      "values": {
+        "bookValue": -260.011,
+        "sharePrice": null,
+        "revenue": 734.042,
+        "ebit": -20.094,
+        "netEarnings": -61.941,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": -210.568,
+        "sharePrice": 4,
+        "revenue": 588.107,
+        "ebit": -97.017,
+        "netEarnings": -135.454,
+        "marketCap": 520.976
+      }
+    },
+    {
+      "path": "reports/chemometec-equity-report.html",
+      "ticker": "CHEMM.CO",
+      "pageTicker": "CHEMM.CO",
+      "isin": "DK0060055861",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a772ca2d52624dd57c81a282b8e1fb8aa",
+      "sourceNote": "The financial year ended on 30 June 2026.",
+      "reviewNotes": "FY2025/26 consolidated income statement and balance sheet pp. 71–72; company-reported year-end price and market capitalisation p. 61.",
+      "values": {
+        "bookValue": 725.394,
+        "sharePrice": 362.2,
+        "revenue": 511.057,
+        "ebit": 250.995,
+        "netEarnings": 201.836,
+        "marketCap": 6303
+      },
+      "modelSnapshot": {
+        "bookValue": 725.394,
+        "sharePrice": 362.200012,
+        "revenue": 511.057,
+        "ebit": 250.995,
+        "netEarnings": 201.836,
+        "marketCap": 6265.14710137
+      }
+    },
+    {
+      "path": "reports/fastpartner-equity-report.html",
+      "ticker": "FPAR-A.ST",
+      "pageTicker": "FPAR-A.ST",
+      "isin": "SE0013512506",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://fastpartner.se/media/fastpartner_annual_report_2025_en.pdf",
+      "sourceNote": "Revenue is rental income. The share price and market capitalisation are for Class A shares. The company does not separately report operating profit.",
+      "reviewNotes": "FY2025 consolidated statement, p. 76; shareholders equity p. 77; Class A share price and market capitalisation p. 59. Profit before financial items includes property revaluations and is not labelled EBIT; omitted.",
+      "values": {
+        "bookValue": 14968,
+        "sharePrice": 47.45,
+        "revenue": 2271.3,
+        "ebit": null,
+        "netEarnings": 318.2,
+        "marketCap": 8603
+      },
+      "modelSnapshot": {
+        "bookValue": 14968,
+        "sharePrice": 47.45,
+        "revenue": 2271.3,
+        "ebit": 1501.9,
+        "netEarnings": 318.2,
+        "marketCap": 12108.64056415
+      }
+    },
+    {
+      "path": "reports/fastighetsbolaget-emilshus-equity-report.html",
+      "ticker": "EMIL-PREF.ST",
+      "pageTicker": "EMIL-PREF.ST",
+      "isin": "SE0016785794",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.emilshus.com/sv/wp-content/uploads/sites/4/2026/04/Emilshus_2025_ENG_print.pdf",
+      "sourceNote": "The share price is for the preference share; year-end market value covers all share classes. The company does not separately report operating profit.",
+      "reviewNotes": "FY2025 annual report consolidated income and equity; share section reports preference share year-end price and company-wide market value. No separately reported EBIT.",
+      "values": {
+        "bookValue": 5114,
+        "sharePrice": 30.8,
+        "revenue": 896,
+        "ebit": null,
+        "netEarnings": 524,
+        "marketCap": 7736
+      },
+      "modelSnapshot": {
+        "bookValue": 5114,
+        "sharePrice": 30.8,
+        "revenue": 896,
+        "ebit": 669,
+        "netEarnings": 524,
+        "marketCap": 3740.7914236
+      }
+    },
+    {
+      "path": "reports/coffee-stain-studios-equity-report.html",
+      "ticker": "COFFEE-B.ST",
+      "pageTicker": "COFFEE-B.ST",
+      "isin": "SE0026599557",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://coffeestain.com/wp-content/uploads/coffee-stain-group-arsredovisning-2025-2026-swe.pdf",
+      "sourceNote": "The financial year ended on 31 March 2026. Book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "FY2025/26 annual report consolidated statements; corroborated in issuer year-end report. Shares were distributed to Embracer shareholders and Class B was listed in December 2025. No source-confirmed year-end share price or market capitalisation.",
+      "values": {
+        "bookValue": 3625,
+        "sharePrice": null,
+        "revenue": 961,
+        "ebit": 55,
+        "netEarnings": 11,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 3625,
+        "sharePrice": 17.143999,
+        "revenue": 961,
+        "ebit": 55,
+        "netEarnings": 11,
+        "marketCap": 3823.111777
+      }
+    },
+    {
+      "path": "reports/k2a-knaust-and-andersson-fastigheter-equity-report.html",
+      "ticker": "K2A-B.ST",
+      "pageTicker": "K2A-B.ST",
+      "isin": "SE0010520254",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a1ab2e0832de6d8b708c56d8fd3cd45a3",
+      "sourceNote": "Revenue is rental income. Book value includes SEK 450m in hybrid bonds; the company also reports SEK 518.9m attributable to preference shares. Operating profit is not separately reported.",
+      "reviewNotes": "The FY2025 annual report shows rental income of SEK 306.5m, net profit SEK 204.5m, equity SEK 2,272.1m and a B-share year-end price of SEK 4.98. The model excludes hybrid capital from equity and supplies a different share price. The company does not disclose EBIT or total market capitalisation; both are unavailable.",
+      "values": {
+        "bookValue": 2272.1,
+        "sharePrice": 4.98,
+        "revenue": 306.5,
+        "ebit": null,
+        "netEarnings": 204.5,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 1822.1,
+        "sharePrice": 4.97,
+        "revenue": 306.5,
+        "ebit": 165.9,
+        "netEarnings": 204.5,
+        "marketCap": 426.750541
+      }
+    },
+    {
+      "path": "reports/matas-equity-report.html",
+      "ticker": "MATAS.CO",
+      "pageTicker": "MATAS.CO",
+      "isin": "DK0060497295",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://storage.mfn.se/b6059eb5-1b05-4ad8-a9a2-84e8ee59f625/matasgroup-ar-2025-26-final.pdf",
+      "sourceNote": "The financial year ended on 31 March 2026. Book value is equity attributable to Matas shareholders. Market capitalisation is the company-reported figure rounded to DKK 0.1bn.",
+      "reviewNotes": "The FY2025/26 consolidated report shows revenue DKK 8,776m, EBIT DKK 514m, profit attributable to shareholders DKK 243m, equity attributable to shareholders DKK 3,750m, a closing share price of DKK 105.40 and market capitalisation rounded to DKK 4.0bn.",
+      "values": {
+        "bookValue": 3750,
+        "sharePrice": 105.4,
+        "revenue": 8776,
+        "ebit": 514,
+        "netEarnings": 243,
+        "marketCap": 4000
+      },
+      "modelSnapshot": {
+        "bookValue": 3750,
+        "sharePrice": 105.400002,
+        "revenue": 8776,
+        "ebit": 514,
+        "netEarnings": 243,
+        "marketCap": 3914.60635008
+      }
+    },
+    {
+      "path": "reports/brondbyernes-if-fodbold-equity-report.html",
+      "ticker": "BIF.CO",
+      "pageTicker": "BIF.CO",
+      "isin": "DK0010247956",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://cde-bif-cms-prod.azureedge.net/media/y4fp1a33/bif-annual-report-2025_26.pdf",
+      "sourceNote": "The financial year ended on 30 June 2026. Operating profit includes player transfer activities.",
+      "reviewNotes": "FY2025/26 annual report in DKK thousands: revenue 279,746, result before financial items and tax 28,266 including transfer activities, net profit 18,333, equity 202,733. The annual report rounds its share price and does not disclose exact market capitalisation; both are unavailable.",
+      "values": {
+        "bookValue": 202.733,
+        "sharePrice": null,
+        "revenue": 279.746,
+        "ebit": 28.266,
+        "netEarnings": 18.333,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 202.733,
+        "sharePrice": 0.275,
+        "revenue": 279.746,
+        "ebit": 28.266,
+        "netEarnings": 18.333,
+        "marketCap": 313.68300315
+      }
+    }
+  ]
+}

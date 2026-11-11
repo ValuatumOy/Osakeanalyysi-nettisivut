@@ -1,16 +1,8 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Company overviews still showing FY 2024 or earlier after the third reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Unreviewed company overviews showing FY 2024 or earlier after the fourth reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
-    {
-      "file": "ab-sagax-equity-report.html",
-      "ticker": "SAGA-B.ST",
-      "isin": "SE0005127818",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
-    },
     {
       "file": "abliva-equity-report.html",
       "ticker": "ABLI.ST",
@@ -820,22 +812,6 @@
       "modelYear": 2023
     },
     {
-      "file": "fastighetsbolaget-emilshus-equity-report.html",
-      "ticker": "EMIL-PREF.ST",
-      "isin": "SE0016785794",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
-      "file": "fastpartner-equity-report.html",
-      "ticker": "FPAR-A.ST",
-      "isin": "SE0013512506",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "fifax-equity-report.html",
       "ticker": "FIFAX.HE",
       "isin": "FI4000496328",
@@ -1148,14 +1124,6 @@
       "modelYear": 2024
     },
     {
-      "file": "k2a-knaust-and-andersson-fastigheter-equity-report.html",
-      "ticker": "K2A-B.ST",
-      "isin": "SE0010520254",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "kahoot-equity-report.html",
       "ticker": "KAHOT.OL",
       "isin": "NO0010823131",
@@ -1458,14 +1426,6 @@
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "norse-atlantic-equity-report.html",
-      "ticker": "NORSE.OL",
-      "isin": "NO0012885252",
-      "pageYear": 2024,
-      "status": "same_or_older",
-      "modelYear": 2024
     },
     {
       "file": "nortel-as-equity-report.html",
@@ -1900,14 +1860,6 @@
       "modelYear": 2024
     },
     {
-      "file": "wilh-wilhelmsen-holding-equity-report.html",
-      "ticker": "WWI.OL",
-      "isin": "NO0010571698",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "wilson-equity-report.html",
       "ticker": "WILS.OL",
       "isin": "NO0010252356",
@@ -1930,14 +1882,6 @@
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
-    },
-    {
-      "file": "zelluna-equity-report.html",
-      "ticker": "ZLNA.OL",
-      "isin": "NO0013524942",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     }
   ]
 }
