@@ -855,6 +855,191 @@
       "message": "NTR Holding B shares had their last trading day on Nasdaq Copenhagen on 16 January 2026.",
       "source": "https://view.news.eu.nasdaq.com/view?id=bd637ff112e505766b26c47bf9f2b0084&lang=en&src=rss",
       "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/norwegian-property-equity-report.html",
+      "name": "Norwegian Property",
+      "isin": "NO0010317811",
+      "ticker": "NPRO.OL",
+      "message": "Norwegian Property shares had their last listing day on Oslo Børs on 30 August 2021.",
+      "source": "https://www.norwegianproperty.no/en/ir/corporate-governance",
+      "label": "Company listing history"
+    },
+    {
+      "file": "reports/adderacare-equity-report.html",
+      "name": "AdderaCare",
+      "isin": "SE0009160922",
+      "ticker": "ADDERA.ST",
+      "message": "AdderaCare shares had their last trading day on Nasdaq First North on 20 January 2023.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-adderacare-ab-from-nasdaq-first-north-growth-market-11-23-2023-01-04",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/fuud-equity-report.html",
+      "name": "Fuud",
+      "isin": "SE0015988134",
+      "ticker": "FUUD.ST",
+      "message": "Fuud was declared bankrupt in October 2022, and its shares were delisted from Nasdaq First North on 25 October 2022.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-fuud-ab-publ-from-nasdaq-first-north-growth-market-523-22-2022-10-25",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/ghp-specialty-care-equity-report.html",
+      "name": "GHP Specialty Care",
+      "isin": "SE0002579912",
+      "ticker": "GHP.ST",
+      "message": "GHP Specialty Care shares had their last trading day on Nasdaq Stockholm on 20 May 2022.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-ghp-specialty-care-ab-from-nasdaq-stockholm-62-22-2022-05-06",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/hovding-sverige-equity-report.html",
+      "name": "Hövding Sverige",
+      "isin": "SE0007075262",
+      "ticker": "HOVD.ST",
+      "message": "Hövding Sverige shares had their last trading day on Nasdaq First North on 3 June 2022.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-hovding-sverige-ab-publ-from-nasdaq-first-north-growth-market-251-22",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/inzile-equity-report.html",
+      "name": "Inzile",
+      "isin": "SE0012570208",
+      "ticker": "INZILE.ST",
+      "message": "Inzile was declared bankrupt and its shares were delisted from Nasdaq First North on 7 November 2022.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-inzile-ab-publ-from-nasdaq-first-north-growth-market-553-22-2022-11-07",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/isr-immune-system-regulation-holding-equity-report.html",
+      "name": "ISR Immune System Regulation Holding",
+      "isin": "SE0008212195",
+      "ticker": "ISR.ST",
+      "message": "ISR Immune System Regulation Holding shares were delisted from Nasdaq First North on 24 May 2023.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-isr-immune-system-regulation-holding-ab-publ-from-nasdaq-first-north",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/sanistal-equity-report.html",
+      "name": "Sanistål",
+      "isin": "DK0010245661",
+      "ticker": "SANI.CO",
+      "message": "Sanistål shares had their last trading day on Nasdaq Copenhagen on 30 January 2023.",
+      "source": "https://www.nasdaq.com/press-release/sanistal-a-s-removal-from-trading-2023-01-04",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/biofish-holding-as-equity-report.html",
+      "name": "BioFish Holding AS",
+      "isin": "NO0010955198",
+      "ticker": "BFISH.OL",
+      "message": "BioFish Holding shares had their last listing day on Euronext Growth Oslo on 8 August 2025.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-08-08-biofish-holding-removal-trading",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/bredband2-i-skandinavien-equity-report.html",
+      "name": "Bredband2 i Skandinavien",
+      "isin": "SE0000648669",
+      "ticker": "BRE2.ST",
+      "message": "Bredband2 shares had their last trading day on Nasdaq First North on 23 February 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd9ec94c9c5c14b19232967d81d4b8895&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/kancera-equity-report.html",
+      "name": "Kancera",
+      "isin": "SE0015658570",
+      "ticker": "KAN.ST",
+      "message": "Kancera changed its name to Novakand Pharma in 2025. Its last day of trading on Nasdaq First North was 13 April 2026.",
+      "source": "https://novakand.com/en/investors/",
+      "label": "Company investor information",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b01c6a4f19a29dd27574e320265f3cdb8&lang=en",
+      "additionalLabel": "Nasdaq name-change notice"
+    },
+    {
+      "file": "reports/nilfisk-holding-equity-report.html",
+      "name": "Nilfisk Holding",
+      "isin": "DK0060907293",
+      "ticker": "NLFSK.CO",
+      "message": "Nilfisk Holding shares had their last trading day on Nasdaq Copenhagen on 12 May 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b9e596f59e4539c684425b8dc9e6703e7&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/lipigon-pharmaceuticals-equity-report.html",
+      "name": "Lipigon Pharmaceuticals",
+      "isin": "SE0015382072",
+      "ticker": "LPGO.ST",
+      "message": "Lipigon Pharmaceuticals shares had their last trading day on Nasdaq First North on 18 May 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bef37ca9a3f08efe1e1510daf72efff2d&lang=sv",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/svitzer-group-equity-report.html",
+      "name": "Svitzer Group",
+      "isin": "DK0062616637",
+      "ticker": "SVITZR.CO",
+      "message": "Svitzer Group shares had their last trading day on Nasdaq Copenhagen on 22 May 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b439d49947d3f6598a9a38cb9db5743d3&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/dovre-group-equity-report.html",
+      "name": "Dovre Group",
+      "isin": "FI0009008098",
+      "ticker": "DOV1V.HE",
+      "message": "Dovre Group was declared bankrupt on 2 November 2026. Trading in its shares was suspended on Nasdaq Helsinki on 2 January 2026.",
+      "source": "https://mfn.se/a/dovre-group/dovre-group-oyj-company-announcement.iframe",
+      "label": "Company bankruptcy notice",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b32771f7a9392db22d6abe6b4aa785c13&lang=en",
+      "additionalLabel": "Nasdaq suspension notice",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "EUR",
+        "sourceUrl": "https://attachment.news.eu.nasdaq.com/ac7b7aec49810709219decb845c43a7b1",
+        "revenue": 91.86,
+        "ebit": -66.325,
+        "netEarnings": -53.461,
+        "bookValue": -48.011,
+        "note": "Audited FY2025 consolidated statements in EUR millions, not prepared on a going-concern basis. Owner earnings include discontinued operations. Share price EUR 0.0734 and market capitalisation approximately EUR 7.9m from the annual report.",
+        "sharePrice": 0.0734,
+        "marketCap": 7.9
+      }
+    },
+    {
+      "file": "reports/karolinska-development-equity-report.html",
+      "name": "KDventures",
+      "isin": "SE0002190926",
+      "ticker": "KDV",
+      "message": "KDventures was previously named Karolinska Development. Its B shares trade on Nasdaq Stockholm under the symbol KDV.",
+      "source": "https://www.skatteverket.se/privat/skatter/vardepapper/aktiehistorik/k/karolinskadevelopment.4.70ac421612e2a997f85800044142.html",
+      "label": "Swedish Tax Agency company history",
+      "additionalSource": "https://www.nasdaq.com/european-market-activity/shares/kdv-b?id=TX877732",
+      "additionalLabel": "Nasdaq B-share listing",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "SEK",
+        "sourceUrl": "https://storage.mfn.se/97217529-698d-4772-858c-e5331c43fa44/kd-ar-2025-eng.pdf",
+        "revenue": 1.671,
+        "ebit": -194.124,
+        "netEarnings": -193.855,
+        "bookValue": 1044.868,
+        "note": "Audited FY2025 IFRS 10 investment entity statement, SEK millions. Market values unavailable; the source closing share price is rounded to one decimal."
+      }
+    },
+    {
+      "file": "reports/gpx-medical-equity-report.html",
+      "name": "GPX Medical",
+      "isin": "SE0014829255",
+      "ticker": "GPXMED.ST",
+      "message": "GPX Medical changed its name to Neola Medical in 2022. This legacy page previously used an inconsistent company identifier; its financial figures have been removed pending verification.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bc4593dd3ceed2c5aa6d54bae29b1b210&lang=en",
+      "label": "Nasdaq name-change notice",
+      "additionalSource": "https://neolamedical.com/neola-medical-investors/neola-medical-stock-information/",
+      "additionalLabel": "Neola share information",
+      "successor": "/reports/neola-medical-equity-report.html",
+      "successorLabel": "See the Neola Medical company page"
     }
   ]
 }

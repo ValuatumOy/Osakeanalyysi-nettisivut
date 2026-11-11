@@ -2371,7 +2371,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "DOV1V.HE",
     "exchange": "Helsinki",
     "url": "reports/dovre-group-equity-report.html",
-    "description": "Dovre Group Plc develops and constructs industrial-scale renewable energy projects through Renetec, including wind and solar parks, energy storage and heat exchange systems, and provides project management consulting and software-based cost and resource management solutions through Proha. The group has also sold its project personnel and Norwegian consulting businesses as part of a portfolio shift."
+    "description": "Dovre Group was a Finnish company with renewable-energy and consulting operations. It sold its remaining operating subsidiaries in September 2026 and was declared bankrupt in November 2026."
   },
   {
     "name": "Doxa",
@@ -3421,7 +3421,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "GPXMED.ST",
     "exchange": "Stockholm",
     "url": "reports/gpx-medical-equity-report.html",
-    "description": "GPX Medical AB develops and commercializes NEOLA, a medical device for continuous lung monitoring of preterm infants in neonatal intensive care. The company’s business is built around improving respiratory monitoring through its patented technology, with revenue potential tied to product sales, clinical adoption, and related commercialization efforts in neonatal care markets."
+    "description": "GPX Medical, now Neola Medical, develops NEOLA, a medical device for continuous lung monitoring of preterm infants in neonatal intensive care. The company’s business is built around improving respiratory monitoring through its patented technology, with revenue potential tied to product sales, clinical adoption, and related commercialization efforts in neonatal care markets."
   },
   {
     "name": "Gram Car Carriers",
@@ -4121,7 +4121,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "ISR.ST",
     "exchange": "Stockholm",
     "url": "reports/isr-immune-system-regulation-holding-equity-report.html",
-    "description": "ISR Immune System Regulation Holding AB is a Swedish biotechnology company focused on immunotherapy drug development. It develops immunostimulatory products and vaccine candidates intended to harness the immune system against viral and infectious diseases, including HIV and hepatitis B, as well as cancer. The company is based in Solna and listed on Nasdaq First North Growth Market."
+    "description": "ISR Immune System Regulation Holding AB is a Swedish biotechnology company focused on immunotherapy drug development. It develops immunostimulatory products and vaccine candidates intended to harness the immune system against viral and infectious diseases, including HIV and hepatitis B, as well as cancer. Its shares were previously listed on Nasdaq First North Growth Market."
   },
   {
     "name": "ISS",
@@ -4264,11 +4264,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Karnov Group provides mission-critical information and workflow solutions for professionals in legal, tax, accounting, and environmental, health and safety fields. Its offerings combine editorial content, digital research tools, legal templates, compliance workflows, and related services across Nordic and other European markets. The company serves lawyers, accountants, and other professional users."
   },
   {
-    "name": "Karolinska Development",
-    "ticker": "KDEV.ST",
+    "name": "KDventures",
+    "ticker": "KDV",
     "exchange": "Stockholm",
     "url": "reports/karolinska-development-equity-report.html",
-    "description": "Karolinska Development is a Nordic life sciences investment company focused on identifying medical innovations in the region and building companies around them. It invests in the creation and growth of portfolio companies developing treatments and other health-related products, and supports them through development, financing, commercialization, licensing, divestments and possible listings."
+    "description": "KDventures is a Nordic life sciences investment company focused on identifying medical innovations in the region and building companies around them. It invests in the creation and growth of portfolio companies developing treatments and other health-related products, and supports them through development, financing, commercialization, licensing, divestments and possible listings."
   },
   {
     "name": "KB Components",

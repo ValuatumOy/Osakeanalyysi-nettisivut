@@ -143,8 +143,9 @@ ${blogPosts().join('\n') || '- None published right now.'}
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-${overview.length} listed companies have a page with share price, valuation metrics and company profile,
-each able to generate a fresh AI equity report on demand. They are listed in
+${overview.length} company overview pages include profiles and, where available, financial figures.
+Some describe historical listings or renamed companies; check each page for report availability.
+They are listed in
 [the company index](${SITE}/companies.html) and in [sitemap.xml](${SITE}/sitemap.xml).
 `;
 
