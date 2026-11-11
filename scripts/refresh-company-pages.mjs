@@ -25,10 +25,10 @@ export async function refreshCompanyPages({ manifest, client, rootDir = ROOT, wr
     const source = await client.findCompanyByTicker(entry.ticker);
     const company = normalizeCompanyData(source, selectPrimaryModel(await client.getLatestActualModels(source)));
     if (isFinancialCompany(company)) throw new Error(`${entry.ticker}: financial company requires a separate review`);
-    if (company.companyCode.toUpperCase() !== entry.isin.toUpperCase()) {
+    if (company.companyCode.toUpperCase() !== (entry.modelIsin || entry.isin).toUpperCase()) {
       throw new Error(`${entry.ticker}: Wisdom ISIN does not match the reviewed company`);
     }
-    if (company.financialYear !== entry.financialYear || company.currency !== entry.currency || company.marketCurrency !== entry.marketCurrency) {
+    if (company.financialYear !== (entry.modelFinancialYear || entry.financialYear) || company.currency !== entry.currency || company.marketCurrency !== entry.marketCurrency) {
       throw new Error(`${entry.ticker}: Wisdom year or currency changed; a new review is needed`);
     }
     for (const key of KEYS) {
@@ -68,7 +68,8 @@ export async function refreshCompanyPages({ manifest, client, rootDir = ROOT, wr
     ticker: entry.ticker,
     financialYear: entry.financialYear,
     changed: previous !== next,
-    differences: KEYS.filter((key) => entry.values[key] !== entry.modelSnapshot[key]),
+    differences: KEYS.filter((key) => entry.values[key] !== null && entry.values[key] !== entry.modelSnapshot[key]),
+    unavailable: KEYS.filter((key) => entry.values[key] === null),
   }));
 }
 
@@ -106,10 +107,22 @@ export function refreshHtml(html, entry, checkedOn, today) {
     throw new Error(`${entry.path}: existing ticker does not match the reviewed page`);
   }
   const { values: v, currency: c, marketCurrency: mc, financialYear: year } = entry;
-  let next = html.replace(/financial overview for \d{4}:/g, `financial overview for ${year}:`);
+  const fields = ['revenue'];
+  if (v.ebit !== null) fields.push('EBIT');
+  if (v.netEarnings !== null) fields.push('net earnings');
+  if (v.bookValue !== null) fields.push('book value');
+  if (v.sharePrice !== null) fields.push('year-end share price');
+  if (v.marketCap !== null) fields.push('market capitalisation');
+  const fieldList = fields.length === 1 ? fields[0] : `${fields.slice(0, -1).join(', ')} and ${fields.at(-1)}`;
+  const profitSummary = v.ebit === null ? '' : ` and operating profit of ${money(v.ebit, c)}`;
+  const marketFacts = [];
+  if (v.sharePrice !== null) marketFacts.push(`the year-end share price was ${price(v.sharePrice, mc)}`);
+  if (v.marketCap !== null) marketFacts.push(`market capitalisation was ${money(v.marketCap, mc)}`);
+  const marketSummary = marketFacts.length ? `; ${marketFacts.join(' and ')}` : '';
+  let next = html.replace(/financial overview for \d{4}:[^"\r\n]*?\./g, `financial overview for ${year}: ${fieldList}.`);
   next = replaceSection(next, 'overview', (section) => replaceOne(section,
-    /For (?:the latest completed financial year, |financial year )\d{4}, [^<]*?; the year-end share price was [^<]*? and market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m)\./g,
-    `For financial year ${year}, ${esc(name)} reported revenue of ${money(v.revenue, c)} and operating profit of ${money(v.ebit, c)}; the year-end share price was ${price(v.sharePrice, mc)} and market capitalisation was ${money(v.marketCap, mc)}.`, entry.path));
+    /For (?:the latest completed financial year, |financial year )\d{4}, [^<]*? revenue of (?:N\/A|[A-Z]{3} [-\d,.]+m)(?: and operating profit of (?:N\/A|[A-Z]{3} [-\d,.]+m))?(?:; (?:the year-end share price was (?:N\/A|[-\d,.]+ [A-Z]{3})(?: and market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m))?|market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m)))?\./g,
+    `For financial year ${year}, ${esc(name)} reported revenue of ${money(v.revenue, c)}${profitSummary}${marketSummary}.`, entry.path));
   next = replaceSection(next, 'metrics', (section) => {
     const grid = `<div class="cp-grid">${[
       ['Book value', money(v.bookValue, c), `FY ${year}`],
@@ -129,8 +142,8 @@ export function refreshHtml(html, entry, checkedOn, today) {
     return updated;
   });
   next = replaceSection(next, 'sources', (section) => replaceOne(section,
-    /<p>Financial figures (?:are sourced from|for FY )[\s\S]*?<\/p>/g,
-    `<p>Financial figures for FY ${year} and year-end share price and market capitalisation are sourced from ${esc(name)}'s <a href="${esc(entry.sourceUrl)}">annual report</a>. See the <a href="/methodology.html">methodology</a> for the Valuatum AI equity research framework.</p>`, entry.path));
+    /<p>(?:Financial figures (?:are sourced from|for FY )|Available financial figures for FY )[\s\S]*?<\/p>/g,
+    `<p>Available financial figures for FY ${year}, including any year-end share price and market capitalisation, are sourced from ${esc(name)}'s <a href="${esc(entry.sourceUrl)}">annual report</a>.${entry.sourceNote ? ` ${esc(entry.sourceNote)}` : ''} See the <a href="/methodology.html">methodology</a> for the Valuatum AI equity research framework.</p>`, entry.path));
   if (next === html) return html;
 
   const updatedScript = [...next.matchAll(scriptPattern)].find((match) => {
@@ -149,12 +162,19 @@ function validateManifest(manifest, today) {
   for (const entry of manifest.pages) {
     if (!/^reports\/[a-z0-9-]+-equity-report\.html$/.test(entry.path || '')) throw new Error(`Invalid overview path: ${entry.path}`);
     if (!/^[A-Z0-9.-]+$/.test(entry.ticker || '') || !/^[A-Z0-9.-]+$/.test(entry.pageTicker || '') || !/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.isin || '')) throw new Error(`Invalid ticker or ISIN: ${entry.path}`);
+    if (entry.modelIsin && (!/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry.modelIsin) || !entry.identitySourceUrl)) throw new Error(`A different model ISIN requires identity evidence: ${entry.path}`);
     if (!Number.isInteger(entry.financialYear) || entry.financialYear > Number(today.slice(0, 4)) || !/^[A-Z]{3}$/.test(entry.currency || '') || !/^[A-Z]{3}$/.test(entry.marketCurrency || '')) throw new Error(`Invalid year or currency: ${entry.path}`);
+    if (entry.modelFinancialYear !== undefined && (!Number.isInteger(entry.modelFinancialYear) || entry.modelFinancialYear > entry.financialYear)) throw new Error(`Invalid model year: ${entry.path}`);
     let source;
     try { source = new URL(entry.sourceUrl); } catch { throw new Error(`Invalid source URL: ${entry.path}`); }
     if (source.protocol !== 'https:') throw new Error(`Source URL must use HTTPS: ${entry.path}`);
+    if (entry.identitySourceUrl) {
+      try { if (new URL(entry.identitySourceUrl).protocol !== 'https:') throw new Error(); }
+      catch { throw new Error(`Invalid identity source URL: ${entry.path}`); }
+    }
     for (const key of KEYS) {
-      if (!Number.isFinite(entry.values?.[key]) || !(entry.modelSnapshot?.[key] === null || Number.isFinite(entry.modelSnapshot?.[key]))) {
+      const reviewed = entry.values?.[key];
+      if (!(Number.isFinite(reviewed) || (reviewed === null && key !== 'revenue')) || !(entry.modelSnapshot?.[key] === null || Number.isFinite(entry.modelSnapshot?.[key]))) {
         throw new Error(`${entry.path}: reviewed and model values are required for ${key}`);
       }
     }
@@ -182,10 +202,11 @@ function validDate(value) {
 }
 function isoDate(value) { return new Date(value).toISOString().slice(0, 10); }
 function money(value, currency) {
+  if (value === null) return 'N/A';
   const digits = value !== 0 && Math.abs(value) < 0.01 ? 6 : 2;
   return `${currency} ${new Intl.NumberFormat('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: digits }).format(value)}m`;
 }
-function price(value, currency) { return `${new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ${currency}`; }
+function price(value, currency) { return value === null ? 'N/A' : `${new Intl.NumberFormat('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 6 }).format(value)} ${currency}`; }
 function esc(value) { return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 async function writeAtomically(file, value) {
   const temp = `${file}.${process.pid}.tmp`;
@@ -204,7 +225,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       const manifest = JSON.parse(await fs.readFile(path.resolve(args[index + 1]), 'utf8'));
       const client = new WisdomClient({ baseUrl: process.env.WISDOM_API_BASE || 'https://wisdom.valuatum.com/rest', token: process.env.WISDOM_API_TOKEN });
       const results = await refreshCompanyPages({ manifest, client, write: args.includes('--write') });
-      for (const result of results) console.log(`${result.changed ? 'update' : 'no change'} ${result.ticker} FY ${result.financialYear}: ${result.path}${result.differences.length ? ` (filing differs from model: ${result.differences.join(', ')})` : ''}`);
+      for (const result of results) console.log(`${result.changed ? 'update' : 'no change'} ${result.ticker} FY ${result.financialYear}: ${result.path}${result.differences.length ? ` (filing differs from model: ${result.differences.join(', ')})` : ''}${result.unavailable.length ? ` (unverified, shown as N/A: ${result.unavailable.join(', ')})` : ''}`);
       console.log(args.includes('--write') ? 'Reviewed pages written.' : 'Validation only; no files written.');
     }
   } catch (error) {
