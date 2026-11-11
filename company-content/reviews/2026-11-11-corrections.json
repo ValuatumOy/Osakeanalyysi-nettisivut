@@ -147,6 +147,35 @@
         "netEarnings": -5819,
         "marketCap": 10234.65
       }
+    },
+    {
+      "path": "reports/academedia-equity-report.html",
+      "ticker": "ACAD.ST",
+      "pageTicker": "ACAD.ST",
+      "isin": "SE0007897079",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a6ce0a727ef5af405c69535a9b631408e",
+      "sourceNote": "The financial year ended on 30 June 2026. Market capitalisation is calculated from 95,866,206 listed ordinary shares at SEK 100.80, excluding unlisted Class C treasury shares. The annual report’s SEK 9,709m figure does not reconcile with its stated period-end shares and closing price.",
+      "reviewNotes": "Audited 2025/26 report pp. 77–79, 96, 119–120: revenue SEK 20,360m, EBIT 1,947m, owner net earnings 955m, equity 7,018m. Closing price SEK 100.80; 95,866,206 listed ordinary shares produce SEK 9,663.3135648m, excluding unlisted treasury C shares. Annual report also reports SEK 9,709m, which conflicts with its 30 June share counts. The July total including 255,600 C shares registered on 22 July happens to reproduce the report figure, but the company has not confirmed its calculation: https://mfn.se/all/a/academedia/change-in-the-number-of-shares-and-votes-in-academedia-2.",
+      "values": {
+        "bookValue": 7018,
+        "sharePrice": 100.8,
+        "revenue": 20360,
+        "ebit": 1947,
+        "netEarnings": 955,
+        "marketCap": 9663.3135648
+      },
+      "modelSnapshot": {
+        "bookValue": 7018,
+        "sharePrice": 100.800003,
+        "revenue": 20360,
+        "ebit": 1947,
+        "netEarnings": 955,
+        "marketCap": 9663.3138524
+      },
+      "expectedPageSha256": "98bb6624a35d07ce2b44843c0640fd333252e0a65bb0616e6390d6bbdede2492"
     }
   ]
 }

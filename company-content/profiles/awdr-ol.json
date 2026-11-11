@@ -1,9 +1,11 @@
 {
   "ticker": "AWDR.OL",
   "companyName": "Awilco Drilling PLC",
-  "profile": "Awilco Drilling PLC is a Norwegian offshore drilling company that historically owned and operated semi-submersible rigs, including WilPhoenix and WilHunter, for harsh-environment work in the North Sea and other offshore markets. The company previously focused on rig operations and related drilling services, but it entered members' voluntary liquidation in June 2025.",
+  "profile": "Awilco Drilling PLC was a UK-incorporated offshore drilling company listed in Norway. It historically owned and operated semi-submersible rigs, including WilPhoenix and WilHunter, for work in the North Sea and other offshore markets. The company became AR5 PLC and entered members’ voluntary liquidation in June 2025.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T14:07:25.051Z"
+  "generatedAt": "2026-07-24T14:07:25.051Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://find-and-update.company-information.service.gov.uk/company/07114196"
 }

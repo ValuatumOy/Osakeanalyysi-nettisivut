@@ -39,7 +39,9 @@
       "isin": "SE0012955276",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "bankrupt",
+      "statusSource": "https://tic.io/sv/foretag/adventure-box-technology-ab-publ-2816194"
     },
     {
       "file": "airthings-equity-report.html",
@@ -123,7 +125,9 @@
       "isin": "SE0015960778",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b41c0265a443a9514c5160f8fdf4e93e8&lang=en"
     },
     {
       "file": "aquaporin-equity-report.html",
@@ -205,7 +209,9 @@
       "isin": "SE0001337213",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b1de90884d10576ed7b3538e36d24839e&lang=en"
     },
     {
       "file": "aventura-group-equity-report.html",
@@ -233,7 +239,9 @@
       "isin": "NO0012785098",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "liquidation",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2025-04-29-awilco-drilling-plc-delisting"
     },
     {
       "file": "ayima-group-equity-report.html",
@@ -261,7 +269,9 @@
       "isin": "FI4000260583",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "bankrupt",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b65fbd52e2893c782e102119c2b4dcb19&lang=en&src=rss"
     },
     {
       "file": "belships-equity-report.html",
@@ -429,7 +439,9 @@
       "isin": "SE0013016128",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "bankrupt",
+      "statusSource": "https://chapter11.nu/konkurser/carbiotix-ab-publ-skane-lan-2026-23951"
     },
     {
       "file": "cargotec-equity-report.html",
@@ -473,7 +485,9 @@
       "isin": "SE0009495559",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "liquidation",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b829d2093c2410a54731d090538ca5850&lang=en&src=rss"
     },
     {
       "file": "chr-hansen-holding-equity-report.html",
@@ -539,7 +553,9 @@
       "isin": "SE0003950864",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b29c8d372389776c21556059301cff669&lang=en"
     },
     {
       "file": "concordia-maritime-equity-report.html",
@@ -1602,7 +1618,9 @@
       "isin": "NO0005638858",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2026-02-10-olav-thon-eiendomsselskap-asa-delisting"
     },
     {
       "file": "orderyoyo-equity-report.html",

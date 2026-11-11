@@ -82,3 +82,33 @@ test('Summa Defence uses the final 2025 results and discloses restructuring', as
   assert.match(html, /corporate restructuring proceedings for Summa Defence Plc and Summa Holding Oy/);
   assert.doesNotMatch(html, /EUR -19\.8m|EUR -22\.0m/);
 });
+
+test('Interoil separates continuing operations from the total loss', async () => {
+  const html = await read('reports/interoil-exploration-and-production-equity-report.html');
+  for (const value of ['USD 8.68m', 'USD -5.5m', 'USD -29.89m', 'USD -62.12m']) assert.ok(html.includes(value));
+  assert.match(html, /Revenue and operating profit relate to continuing operations; net earnings include discontinued operations/);
+  assert.match(html, /material uncertainty related to going concern/);
+});
+
+test('AcadeMedia market value uses only listed ordinary shares', async () => {
+  const html = await read('reports/academedia-equity-report.html');
+  assert.match(html, /SEK 9,663\.31m/);
+  assert.match(html, /excluding unlisted Class C treasury shares/);
+  assert.doesNotMatch(html, /market capitalisation was SEK 9,709/);
+});
+
+test('historical split-adjusted shares do not show unverified market values', async () => {
+  for (const file of ['reports/carbiotix-equity-report.html', 'reports/chordate-medical-holding-equity-report.html']) {
+    const html = await read(file);
+    assert.match(html, /Share price<\/span><span class="cp-v">N\/A/);
+    assert.match(html, /Market capitalisation<\/span><span class="cp-v">N\/A/);
+    assert.match(html, /share identifier changed during 2024/);
+  }
+});
+
+test('Olav Thon keeps NOK financials without an unverified London currency', async () => {
+  const html = await read('reports/olav-thon-eiendomsselskap-equity-report.html');
+  for (const value of ['NOK 3,741.0m', 'NOK 1,881.0m', 'NOK 32,851.0m']) assert.ok(html.includes(value));
+  assert.match(html, /Share price<\/span><span class="cp-v">N\/A/);
+  assert.doesNotMatch(html, /company-meta-chip">GBP|227\.00 GBP|data-generate-report/);
+});

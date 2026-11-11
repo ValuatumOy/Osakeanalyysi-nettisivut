@@ -1362,6 +1362,123 @@
         },
         "notes": "GC Rieber Shipping Holding AS, organisation number 987974532, formerly listed GC Rieber Shipping ASA. Audited simplified IFRS consolidated 2025 statements, pp. 17–18 and note 4: NOK million other income 3.366 (not separately reported as revenue), EBIT -24.370, net earnings -15.496, total equity 813.865. Shares were delisted in 2023."
       }
+    },
+    {
+      "file": "reports/olav-thon-eiendomsselskap-equity-report.html",
+      "name": "Olav Thon Eiendomsselskap",
+      "ticker": "0FHP.L",
+      "isin": "NO0005638858",
+      "message": "Olav Thon Eiendomsselskap shares were delisted from Oslo Børs on 11 February 2026. The company is now named Olav Thon Eiendom AS.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2026-02-10-olav-thon-eiendomsselskap-asa-delisting",
+      "label": "Euronext delisting notice",
+      "additionalSource": "https://virksomhet.brreg.no/nb/oppslag/enheter/914594685",
+      "additionalLabel": "Company register",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "NOK",
+        "marketCurrency": "GBP",
+        "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/03/25/669306_%C3%85rsrapport%20OTE%202025.pdf",
+        "bookValue": 32851,
+        "sharePrice": null,
+        "revenue": null,
+        "ebit": 3741,
+        "netEarnings": 1881,
+        "marketCap": null,
+        "modelSnapshot": {
+          "bookValue": 31660,
+          "sharePrice": 227,
+          "revenue": 4885,
+          "ebit": 3602,
+          "netEarnings": 2245,
+          "marketCap": 23035.733
+        },
+        "notes": "Audited 2025 consolidated IFRS statements: operating profit NOK 3,741m, owner net earnings NOK 1,881m, parent shareholders equity NOK 32,851m. Income comprises rental income 4,009m, property-related income 1,040m and other operating income 85m; no single comparable revenue total was used. The published Oslo closing price was NOK 335; the page’s old 227 GBP is not a verified London price. Shares delisted from Oslo in February 2026."
+      }
+    },
+    {
+      "file": "reports/adventure-box-technology-equity-report.html",
+      "name": "Adventure Box Technology",
+      "ticker": "ADVBOX.ST",
+      "isin": "SE0012955276",
+      "message": "Adventure Box Technology shares had their last trading day on Nasdaq First North on 5 August 2025. Bankruptcy proceedings were initiated on 30 March 2026.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b41f544215745d1ef0b40af1362325ab9&lang=en",
+      "label": "Nasdaq delisting notice",
+      "additionalSource": "https://tic.io/sv/foretag/adventure-box-technology-ab-publ-2816194",
+      "additionalLabel": "Company register information"
+    },
+    {
+      "file": "reports/aprendere-skolor-equity-report.html",
+      "name": "Aprendere Skolor",
+      "ticker": "APRNDR.ST",
+      "isin": "SE0015960778",
+      "message": "Aprendere Skolor shares had their last trading day on Nasdaq First North on 9 January 2025 after a takeover by Cedergrenska.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b41c0265a443a9514c5160f8fdf4e93e8&lang=en",
+      "label": "Nasdaq delisting notice",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b9204d52f54af304a3881f6df71c14182&lang=sv&src=micro",
+      "additionalLabel": "Takeover announcement"
+    },
+    {
+      "file": "reports/auriant-mining-equity-report.html",
+      "name": "Auriant Mining",
+      "ticker": "AUR.ST",
+      "isin": "SE0001337213",
+      "message": "Auriant Mining shares had their last trading day on Nasdaq First North on 3 February 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b1de90884d10576ed7b3538e36d24839e&lang=en",
+      "label": "Company delisting announcement"
+    },
+    {
+      "file": "reports/awilco-drilling-equity-report.html",
+      "name": "Awilco Drilling",
+      "ticker": "AWDR.OL",
+      "isin": "NO0012785098",
+      "message": "Awilco Drilling had its last day of listing on Euronext Growth Oslo on 30 May 2025. The company became AR5 PLC and entered voluntary liquidation in June 2025.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-04-29-awilco-drilling-plc-delisting",
+      "label": "Euronext delisting notice",
+      "additionalSource": "https://find-and-update.company-information.service.gov.uk/company/07114196",
+      "additionalLabel": "Company register"
+    },
+    {
+      "file": "reports/bbs-bioactive-bone-substitutes-equity-report.html",
+      "name": "BBS-Bioactive Bone Substitutes",
+      "ticker": "BONEH.HE",
+      "isin": "FI4000260583",
+      "message": "BBS Bioactive Bone Substitutes was declared bankrupt on 17 February 2025. Its shares had their last day of listing on Nasdaq First North Growth Market Finland on 28 February 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b65fbd52e2893c782e102119c2b4dcb19&lang=en&src=rss",
+      "label": "Nasdaq delisting notice",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b7f486ba3e08f78513c9bd4eaf1dbc27a&lang=en&src=micro",
+      "additionalLabel": "Bankruptcy announcement"
+    },
+    {
+      "file": "reports/carbiotix-equity-report.html",
+      "name": "Carbiotix",
+      "ticker": "CRBX.ST",
+      "isin": "SE0013016128",
+      "message": "Carbiotix changed its share ISIN to SE0022760252 after a share consolidation in 2024. The shares had their last trading day on Spotlight Stock Market on 15 December 2025. The company was declared bankrupt on 4 June 2026.",
+      "source": "https://chapter11.nu/konkurser/carbiotix-ab-publ-skane-lan-2026-23951",
+      "label": "Bankruptcy record",
+      "additionalSource": "https://news.cision.com/se/spotlight-stock-market/r/market-notice-218-25--carbiotix-ab-will-be-delisted-after-close-of-the-market-on-december-15--2025%2Cc4279533",
+      "additionalLabel": "Spotlight delisting notice",
+      "identityEvidence": "https://news.cision.com/se/carbiotix/r/avstamningsdag-for-sammanlaggning-av-aktier-i-carbiotix-ab--publ-%2Cc4035336"
+    },
+    {
+      "file": "reports/chordate-medical-holding-equity-report.html",
+      "name": "Chordate Medical Holding",
+      "ticker": "CMH.ST",
+      "isin": "SE0009495559",
+      "message": "Chordate Medical Holding changed its share ISIN to SE0022726139 after a share consolidation in 2024. Its shares had their last trading day on Nasdaq First North on 4 March 2026 following a decision to liquidate the company.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b829d2093c2410a54731d090538ca5850&lang=en&src=rss",
+      "label": "Nasdaq delisting notice",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=ba04556f63d856b7bb1976e22a41948eb&lang=en",
+      "additionalLabel": "Share consolidation"
+    },
+    {
+      "file": "reports/concentric-equity-report.html",
+      "name": "Concentric",
+      "ticker": "COIC.ST",
+      "isin": "SE0003950864",
+      "message": "Concentric shares had their last trading day on Nasdaq Stockholm on 7 November 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b29c8d372389776c21556059301cff669&lang=en",
+      "label": "Nasdaq delisting notice"
     }
   ]
 }
