@@ -125,7 +125,9 @@ function skipReason(page, company, now) {
   if (company.financialYear < page.year) return `Wisdom year ${company.financialYear} is older than page year ${page.year}`;
   // Moving into a year that may still be running (the July 2026 Duell page showed part of an
   // unfinished year) needs a person; once a page shows that year, later model changes sync.
-  if (company.financialYear >= now.getUTCFullYear() && company.financialYear > page.year) {
+  // Before March, last calendar year's results are mostly unpublished, so that move waits too.
+  const lastClosedYear = now.getUTCFullYear() - (now.getUTCMonth() < 2 ? 2 : 1);
+  if (company.financialYear > lastClosedYear && company.financialYear > page.year) {
     return `Wisdom moves to FY ${company.financialYear}, which may not have ended; check and update by hand`;
   }
   if (company.metrics.revenue === null) return 'Wisdom has no revenue';

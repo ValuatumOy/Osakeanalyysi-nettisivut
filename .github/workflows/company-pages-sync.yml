@@ -64,7 +64,9 @@ jobs:
 
       - name: Guard
         run: |
-          node --test test/company-pages/*.test.mjs
+          # Only the sync's own tests: other company-page tests pin hand-reviewed figures on pages
+          # the sync is meant to change.
+          node --test test/company-pages/sync.test.mjs
           node scripts/validate-jsonld.mjs
 
       - name: Commit and push

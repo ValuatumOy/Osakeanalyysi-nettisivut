@@ -95,6 +95,14 @@ test('risky updates are skipped, not written', async () => {
   }
 });
 
+test('a new year is taken only once it has ended and results are out', async () => {
+  const dir = await site(page());
+  const early = await syncCompanyPages({ client: client(base, { year: 2027 }), rootDir: dir, now: new Date('2027-02-10T06:00:00Z') });
+  assert.match(early.results[0].reason, /may not have ended/);
+  const later = await syncCompanyPages({ client: client(base, { year: 2027 }), rootDir: dir, now: new Date('2027-03-02T06:00:00Z') });
+  assert.equal(later.results[0].status, 'update');
+});
+
 test('status pages are never touched', async () => {
   const historical = page().replace('<section class="report-full-section" id="metrics">', '<p><strong>Company status:</strong> Delisted.</p>\n<section class="report-full-section" id="metrics">');
   const dir = await site(historical);
