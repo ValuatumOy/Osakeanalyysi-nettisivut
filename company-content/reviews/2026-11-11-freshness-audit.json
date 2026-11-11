@@ -61,7 +61,9 @@
       "isin": "NO0010890304",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/product/equities/NO0010890304-XOSL"
     },
     {
       "file": "aker-clean-hydrogen-as-equity-report.html",
@@ -77,7 +79,9 @@
       "isin": "SE0008348072",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-alelion-energy-systems-ab-from-nasdaq-first-north-growth-market-562-23"
     },
     {
       "file": "alltainer-equity-report.html",
@@ -85,7 +89,9 @@
       "isin": "SE0015192828",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/se/spotlight-stock-market/r/spotlight--alltainer-ab-avnoteras-fran-spotlight-stock-market---alltainer-ab-is-delisted-from-spotli%2Cc4056359"
     },
     {
       "file": "american-shipping-company-equity-report.html",
@@ -101,7 +107,9 @@
       "isin": "SE0015961016",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "merged",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b383c3180fd2b64428402da70bf3c50d7&lang=en&src=micro"
     },
     {
       "file": "aprendere-skolor-equity-report.html",
@@ -125,7 +133,9 @@
       "isin": "NO0010776875",
       "pageYear": 2020,
       "status": "same_or_older",
-      "modelYear": 2020
+      "modelYear": 2020,
+      "companyStatus": "merged",
+      "statusSource": "https://anora.com/fi/altian-ja-arcuksen-sulautuminen-on-rekisteroity-ja-altian-ja-arcuksen-liiketoimintojen-yhdistaminen-on-saatettu-paatokseen-anora-group-on-muodostettu-010920210830"
     },
     {
       "file": "argeo-as-equity-report.html",
@@ -159,7 +169,9 @@
       "isin": "SE0011641794",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://attachment.news.eu.nasdaq.com/aeaf60d63502289525acf5f01966bbfc7"
     },
     {
       "file": "asetek-equity-report.html",
@@ -175,7 +187,9 @@
       "isin": "DK0061155785",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b2ac8349ade9df7339a13d9b0dda214ec&lang=en"
     },
     {
       "file": "auriant-mining-equity-report.html",
@@ -217,7 +231,9 @@
       "isin": "SE0009888506",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=be889d5f894bbe09875957b8a74c58688&lang=en"
     },
     {
       "file": "basware-equity-report.html",
@@ -327,7 +343,9 @@
       "isin": "SE0016288591",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://mb.cision.com/Main/9697/3806294/2193306.pdf"
     },
     {
       "file": "brighter-equity-report.html",
@@ -335,7 +353,9 @@
       "isin": "SE0004019545",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bcd35710f77e3614beea39bbca4e00b8f&lang=en"
     },
     {
       "file": "brodrene-hartmann-equity-report.html",
@@ -359,7 +379,9 @@
       "isin": "SE0016798581",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-byggfakta-group-nordic-holdco-ab-from-nasdaq-stockholm-2024-05-13"
     },
     {
       "file": "byggmastare-anders-j-ahlstrom-holding-equity-report.html",
@@ -401,7 +423,9 @@
       "isin": "SE0016609671",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b696674552624e12be393f4d47234e490&lang=en"
     },
     {
       "file": "cavendish-hydrogen-equity-report.html",
@@ -445,7 +469,9 @@
       "isin": "SE0020847481",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b3e315ff6f18c09999af3965ddddd70ff&lang=en&src=rss"
     },
     {
       "file": "clean-industry-solutions-holding-europe-equity-report.html",
@@ -493,7 +519,9 @@
       "isin": "SE0000102824",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-concordia-maritime-ab-from-nasdaq-stockholm-11-24-2024-01-24"
     },
     {
       "file": "copperstone-resources-equity-report.html",
@@ -517,7 +545,9 @@
       "isin": "SE0021513108",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b80ca285ef6b0df3f8a51fe4448303c68&lang=en"
     },
     {
       "file": "crayon-group-holding-equity-report.html",
@@ -599,7 +629,9 @@
       "isin": "DK0061535937",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://via.ritzau.dk/announcement/7155?lang=en&publisherId=13560358"
     },
     {
       "file": "dignitana-equity-report.html",
@@ -607,7 +639,9 @@
       "isin": "SE0002108001",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://mb.cision.com/Main/2116/4161536/3496778.pdf"
     },
     {
       "file": "dof-equity-report.html",
@@ -657,7 +691,9 @@
       "isin": "NO0010939804",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-11-22-ecit-delisting"
     },
     {
       "file": "ecoclime-group-equity-report.html",
@@ -681,7 +717,9 @@
       "isin": "NO0010998529",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2025-08-04-edda-wind-asa-delisting"
     },
     {
       "file": "eevia-health-equity-report.html",
@@ -697,7 +735,9 @@
       "isin": "FI4000282868",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bd1394df89794411391a30b44365b861f&lang=fi"
     },
     {
       "file": "ekobot-equity-report.html",
@@ -729,7 +769,9 @@
       "isin": "SE0000120776",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/elos-medtech-ab/r/elos-medtech-s-application-for-de-listing-has-been-approved,c3880952"
     },
     {
       "file": "emplicure-equity-report.html",
@@ -745,7 +787,9 @@
       "isin": "FI4000415252",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-from-nasdaq-helsinki%3A-enedo-plc-2023-06-01"
     },
     {
       "file": "epti-equity-report.html",
@@ -793,7 +837,9 @@
       "isin": "NO0010792625",
       "pageYear": 2020,
       "status": "same_or_older",
-      "modelYear": 2020
+      "modelYear": 2020,
+      "companyStatus": "delisted",
+      "statusSource": "https://mfn.se/ob/a/fjord1/fjord1-asa-delisting-25fa0cf7"
     },
     {
       "file": "formpipe-software-equity-report.html",
@@ -809,7 +855,9 @@
       "isin": "SE0017161243",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://storage.mfn.se/19783e3a-5431-48a7-be84-6001fe15db0c/delisting-of-the-shares-in-fortnox-ab-publ-from-nasdaq-stockholm.pdf"
     },
     {
       "file": "froy-equity-report.html",
@@ -889,7 +937,9 @@
       "isin": "NO0011109563",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-08-05-gram-car-carriers-asa-delisting"
     },
     {
       "file": "green-hydrogen-systems-equity-report.html",
@@ -913,7 +963,9 @@
       "isin": "FI4000127527",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b95dcee433a807d17c31e2ae10521c44e&lang=en"
     },
     {
       "file": "hemcheck-sweden-equity-report.html",
@@ -1003,7 +1055,9 @@
       "isin": "FI0009007637",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b842d418c4dfa142e62e5669d5f56c22c&lang=fi"
     },
     {
       "file": "intellego-technologies-equity-report.html",
@@ -1059,7 +1113,9 @@
       "isin": "NO0010823131",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-01-19-kahoot-delisting"
     },
     {
       "file": "kancera-equity-report.html",
@@ -1091,7 +1147,9 @@
       "isin": "SE0007871645",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.kindredgroup.com/contentassets/1169f35a3cd64ee5a86c752987ecc31c/delisting-of-kindred-group-plc.pdf"
     },
     {
       "file": "kmc-properties-equity-report.html",
@@ -1173,7 +1231,9 @@
       "isin": "SE0008091904",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b430ec1285ee98e3b0836bed3f5448084&lang=en"
     },
     {
       "file": "lidds-equity-report.html",
@@ -1309,7 +1369,9 @@
       "isin": "FI4000233267",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-from-nasdaq-first-north-growth-market%3A-next-games-corporation-2022-08-22"
     },
     {
       "file": "nilfisk-holding-equity-report.html",
@@ -1325,7 +1387,9 @@
       "isin": "FI0009008387",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/nixu-oyj/r/arbitral-tribunal-has-confirmed-dnv-s-redemption-right-over-the-minority-shares-in-nixu--dnv-has-gai%2Cc3886917"
     },
     {
       "file": "norcod-as-equity-report.html",
@@ -1465,7 +1529,9 @@
       "isin": "NO0010199151",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "merged",
+      "statusSource": "https://www.tgs.com/press-releases/tgs-and-pgs-merger-completed"
     },
     {
       "file": "piippo-equity-report.html",
@@ -1491,7 +1557,9 @@
       "isin": "FI4000507488",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.purmogroup.com/news/purmo-group-delists-from-nasdaq-helsinki/"
     },
     {
       "file": "q-free-equity-report.html",
@@ -1551,7 +1619,9 @@
       "isin": "FI4000266804",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b904f5e8b8c3ec587b8e19ae6944f5abd&lang=en"
     },
     {
       "file": "saga-pure-equity-report.html",
@@ -1695,7 +1765,9 @@
       "isin": "FI4000008719",
       "pageYear": 2020,
       "status": "same_or_older",
-      "modelYear": 2020
+      "modelYear": 2020,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/ppg/r/ppg-finland-oy-has-gained-title-to-the-minority-shares-in-tikkurila-oyj-and-the-shares-of-tikkurila-%2Cc3442393"
     },
     {
       "file": "ultimovacs-equity-report.html",
@@ -1711,7 +1783,9 @@
       "isin": "FI0009002158",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://prod.uponor.com/en-en/ir-news/2024/gf-has-gained-title-to-the-minority-shares-in-uponor-and-the-uponor-shares-will-be-delisted-from-nasdaq-helsinki"
     },
     {
       "file": "valuer-holding-equity-report.html",

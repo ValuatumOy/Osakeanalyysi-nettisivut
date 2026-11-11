@@ -136,6 +136,21 @@ market cap are labelled as year-end, not current market data.
 Run `npm run audit:company-review-coverage -- --check` to find overview pages
 that are missing from both review manifests and audit inventories. The counts
 describe inventory coverage, not whether every figure is current or correct.
+Historical status reviews can include a separate source-checked financial review;
+the pending count excludes pages with one, but includes other historical pages.
+
+For a company that has been delisted, merged or otherwise ceased trading, first
+record the event, date, primary source, exact page ticker and ISIN in a dated
+`company-status.json` review. Verify any linked successor separately. Then run:
+
+```bash
+npm run mark:historical-companies -- --manifest company-content/reviews/2026-11-11-company-status.json
+npm run mark:historical-companies -- --manifest company-content/reviews/2026-11-11-company-status.json --write
+```
+
+The first command checks the entire manifest without writing. The second removes
+obsolete report orders and adds the reviewed status; it does not update financial
+figures. Existing status pages are checked for consistency and re-runs are safe.
 
 ### Clarify historical overviews
 

@@ -205,7 +205,7 @@ function replaceOne(text, pattern, replacement, context) {
   return text.replace(pattern, replacement);
 }
 
-function updateSitemapDate(xml, loc, today) {
+export function updateSitemapDate(xml, loc, today) {
   const escaped = loc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const pattern = new RegExp(`<url>\\s*<loc>${escaped}<\\/loc>[\\s\\S]*?<\\/url>`, 'g');
   return replaceOne(xml, pattern, (block) => replaceOne(block, /<lastmod>[^<]*<\/lastmod>/g, `<lastmod>${today}</lastmod>`, loc), loc);
