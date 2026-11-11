@@ -24,12 +24,6 @@ test('ININ does not present disputed owner equity as an audited figure', async (
   assert.match(html, /data-ticker="ININ\.OL"/);
 });
 
-test('Neola identifies the scope of its 2025 financial statements', async () => {
-  const html = await read('reports/neola-medical-equity-report.html');
-  for (const value of ['SEK 0.0m', 'SEK -11.09m', 'SEK -11.02m', 'SEK 75.8m', '1.06 SEK', 'SEK 82.6m']) assert.ok(html.includes(value));
-  assert.match(html, /Swedish K3 financial statements; no consolidated statements were prepared for 2025/);
-});
-
 test('bankrupt companies do not describe their old legal entities as active', async () => {
   for (const file of ['reports/dof-equity-report.html', 'reports/coala-life-group-equity-report.html']) {
     const html = await read(file);
@@ -75,12 +69,10 @@ test('Omda uses the audited sales revenue and its current listing identity', asy
   assert.doesNotMatch(html, /revenue of NOK 495\.69m|36\.93 NOK/);
 });
 
-test('Summa Defence uses the final 2025 results and discloses restructuring', async () => {
+// Active pages show Wisdom's figures (scripts/sync-company-pages.mjs); only the status note is pinned.
+test('Summa Defence discloses restructuring', async () => {
   const html = await read('reports/summa-defence-equity-report.html');
-  for (const value of ['EUR 100.93m', 'EUR -21.8m', 'EUR -24.44m', 'EUR 166.46m']) assert.ok(html.includes(value));
-  assert.match(html, /auditor issued a qualified opinion/);
   assert.match(html, /corporate restructuring proceedings for Summa Defence Plc and Summa Holding Oy/);
-  assert.doesNotMatch(html, /EUR -19\.8m|EUR -22\.0m/);
 });
 
 test('Interoil separates continuing operations from the total loss', async () => {
@@ -88,13 +80,6 @@ test('Interoil separates continuing operations from the total loss', async () =>
   for (const value of ['USD 8.68m', 'USD -5.5m', 'USD -29.89m', 'USD -62.12m']) assert.ok(html.includes(value));
   assert.match(html, /Revenue and operating profit relate to continuing operations; net earnings include discontinued operations/);
   assert.match(html, /material uncertainty related to going concern/);
-});
-
-test('AcadeMedia market value uses only listed ordinary shares', async () => {
-  const html = await read('reports/academedia-equity-report.html');
-  assert.match(html, /SEK 9,663\.31m/);
-  assert.match(html, /excluding unlisted Class C treasury shares/);
-  assert.doesNotMatch(html, /market capitalisation was SEK 9,709/);
 });
 
 test('historical split-adjusted shares do not show unverified market values', async () => {
@@ -113,70 +98,12 @@ test('Olav Thon keeps NOK financials without an unverified London currency', asy
   assert.doesNotMatch(html, /company-meta-chip">GBP|227\.00 GBP|data-generate-report/);
 });
 
-test('reviewed 2025 results use the reported operating profit and parent earnings', async () => {
-  const cases = [
-    ['aak-ab-publ', 'SEK 4,675.0m', 'SEK 3,429.0m', 'SEK 4,456m'],
-    ['acast', 'SEK -18.04m', 'SEK -112.41m', 'SEK -79.5m'],
-    ['ab-fagerhult-publ', 'SEK 577.5m', 'SEK 317.4m', 'SEK 531m'],
-    ['af-gruppen', 'NOK 1,662.0m', 'NOK 1,093.0m', 'NOK 2,219m'],
-    ['ab-electrolux', 'SEK 3,657.0m', 'SEK 878.0m', 'SEK 2,341m'],
-  ];
-  for (const [file, profit, earnings, oldProfit] of cases) {
-    const html = await read(`reports/${file}-equity-report.html`);
-    assert.ok(html.includes(profit), file);
-    assert.ok(html.includes(earnings), file);
-    assert.ok(!html.includes(oldProfit), file);
-    assert.match(html, /Figures checked against the annual report on 2026-11-11/);
-  }
-  const acast = await read('reports/acast-equity-report.html');
-  assert.match(acast, /SEK 2,516\.85m/);
-  assert.doesNotMatch(acast, /SEK 2,418m/);
-  const electrolux = await read('reports/ab-electrolux-equity-report.html');
-  assert.match(electrolux, /Market capitalisation<\/span><span class="cp-v">N\/A/);
-});
-
 test('Fagerhult uses its current name in the page, directory and search data', async () => {
   const html = await read('reports/ab-fagerhult-publ-equity-report.html');
   assert.match(html, /<h1 class="company-name">Fagerhult Group AB \(FAG\.ST\)/);
   assert.match(html, /Previously known as AB Fagerhult \(publ\.\)/);
-  assert.match(html, /excluding treasury shares/);
   assert.match(await read('companies/f.html'), /Fagerhult Group AB \(FAG\.ST\)/);
   assert.match(await read('js/companyPagesData.js'), /"name": "Fagerhult Group AB"/);
-});
-
-test('Acrinova does not call an unreported operating subtotal EBIT', async () => {
-  const html = await read('reports/acrinova-equity-report.html');
-  assert.match(html, /Revenue<\/span><span class="cp-v">SEK 128\.15m/);
-  assert.match(html, /Operating profit<\/span><span class="cp-v">N\/A/);
-  assert.match(html, /Market capitalisation<\/span><span class="cp-v">SEK 456\.0m/);
-  assert.match(html, /both listed share classes/);
-  assert.doesNotMatch(html, /SEK 51\.6m|SEK 669\.8m/);
-});
-
-test('the next reviewed companies use audited 2025 operating profit and owner earnings', async () => {
-  const cases = [
-    ['alimak-group', 'SEK 977.0m', 'SEK 604.0m', 'SEK 1,002m'],
-    ['addlife', 'SEK 993.0m', 'SEK 560.0m', 'SEK 780m'],
-    ['alfa-laval-corporate', 'SEK 11,749.0m', 'SEK 8,272.0m', 'SEK 12,790m'],
-    ['afry', 'SEK 1,387.0m', 'SEK 800.0m', 'SEK 1,665m'],
-    ['ambea', 'SEK 1,379.0m', 'SEK 665.0m', 'SEK 1,202m'],
-  ];
-  for (const [file, profit, earnings, oldProfit] of cases) {
-    const html = await read(`reports/${file}-equity-report.html`);
-    assert.ok(html.includes(profit), file);
-    assert.ok(html.includes(earnings), file);
-    assert.ok(!html.includes(oldProfit), file);
-  }
-  for (const file of ['alimak-group', 'ambea']) {
-    const html = await read(`reports/${file}-equity-report.html`);
-    assert.match(html, /excluding treasury shares/);
-    assert.match(html, /figure includes treasury shares/);
-  }
-  for (const file of ['addlife', 'afry']) {
-    const html = await read(`reports/${file}-equity-report.html`);
-    assert.match(html, /unlisted A shares|A shares are unlisted/);
-    assert.match(html, /B-share price/);
-  }
 });
 
 test('AFRY uses the correct company name in the page and search index', async () => {

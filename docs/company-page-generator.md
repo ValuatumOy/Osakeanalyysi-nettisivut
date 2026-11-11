@@ -3,7 +3,7 @@
 `scripts/generate-company-pages.mjs` creates static company overview pages from
 Wisdom financial model data. It fetches financial data on every run. Only the
 AI-generated company profile is cached in `company-content/profiles/`.
-Existing pages are not overwritten: use the reviewed refresh workflow below.
+Existing pages are not overwritten: their figures are kept in step with Wisdom by the weekly sync below.
 
 ## Requirements
 
@@ -79,7 +79,34 @@ npm run test:company-pages
 The tests use in-memory Wisdom responses and do not require network access,
 credentials or an AI call.
 
-## Refresh existing pages
+## Keep figures in step with Wisdom (weekly)
+
+Company pages show Valuatum's Wisdom model figures, the same data a generated report uses, so a
+page never disagrees with the report a visitor orders from it. `.github/workflows/company-pages-sync.yml`
+runs `npm run sync:companies -- --write` every Monday (and on demand) on main and commits any
+change. Locally, without `--write`, it only lists what would change:
+
+```bash
+npm run sync:companies                      # dry run: updates, skips and errors
+npm run sync:companies -- --only upm-equity-report.html
+npm run sync:companies -- --write --report /tmp/sync.json
+```
+
+It rewrites only the overview sentence, the metrics grid, the source line, the financial
+descriptions and the page's dates; profile, URL, calls to action and status notes stay. A page
+whose figures already match is not touched. It skips and lists, instead of updating: status
+(historical) pages, full report pages, financial companies, a Wisdom ISIN that differs from the
+page, a year older than the page shows, a move into a year that may still be running, a model
+without revenue, and tickers Wisdom cannot find. If more than 20 % of lookups fail, nothing is
+written and the run goes red. The workflow needs the `WISDOM_API_TOKEN` repository secret.
+
+A difference between Wisdom and an issuer's filing is corrected in Wisdom, never on the page; the
+next sync then carries it to the page. Open corrections: `docs/wisdom-corrections-2026-11-11.md`.
+
+## Refresh existing pages from filings (superseded)
+
+Superseded by the weekly Wisdom sync above; kept for its status and audit tooling. Pages written
+this way show filing figures that can differ from the report, and the sync returns them to Wisdom.
 
 `npm run refresh:companies` updates the financial sections of existing overview
 pages without regenerating profiles or reports. It preserves their existing URL,
