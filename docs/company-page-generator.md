@@ -3,6 +3,7 @@
 `scripts/generate-company-pages.mjs` creates static company overview pages from
 Wisdom financial model data. It fetches financial data on every run. Only the
 AI-generated company profile is cached in `company-content/profiles/`.
+Existing pages are not overwritten: use the reviewed refresh workflow below.
 
 ## Requirements
 
@@ -37,7 +38,7 @@ Generate one or several pages:
 npm run generate:companies -- FORTUM NOKIA KESKOB UPM WRT1V
 ```
 
-Regenerate company profile text even when it is cached:
+Generate a new page and regenerate its company profile even when it is cached:
 
 ```bash
 npm run generate:companies -- --refresh-ai --model gpt-5.4-mini FORTUM
@@ -77,3 +78,57 @@ npm run test:company-pages
 
 The tests use in-memory Wisdom responses and do not require network access,
 credentials or an AI call.
+
+## Refresh existing pages
+
+`npm run refresh:companies` updates the financial sections of existing overview
+pages without regenerating profiles or reports. It preserves their existing URL,
+profile, calls to action, breadcrumbs and related links. Full report pages are
+rejected. The page is identified using the current Wisdom ticker and the ISIN
+already present in its schema, so a ticker suffix change does not require a new
+profile or URL.
+
+Every batch requires a reviewed JSON manifest, for example
+`company-content/reviews/2026-11-11-pilot.json`. For each company, the manifest
+contains the current Wisdom ticker, the page's existing ticker, the official
+annual report URL, the reviewed fiscal year and figures,
+and a snapshot of Wisdom's corresponding model figures. Amounts other than the
+share price are in millions. Verify each value, its currency, the share price
+and the market-cap definition against the filing before adding it. Record the
+date on which the sources were checked in `checkedOn`.
+
+```bash
+# First validate all companies without modifying files.
+npm run refresh:companies -- --manifest company-content/reviews/2026-11-11-pilot.json
+
+# Only after reviewing the validation result, update the local pages and sitemap.
+npm run refresh:companies -- --manifest company-content/reviews/2026-11-11-pilot.json --write
+```
+
+Both commands require `WISDOM_API_TOKEN`; neither uses AI. The refresh stops
+before writing if an ISIN, fiscal year, currency or model figure differs from
+the review, a page is not a recognized overview, or its sitemap entry is
+missing. A new year or a changed model therefore needs a new filing review and
+manifest. Running the command does not deploy the site. No scheduled automatic
+refresh is configured.
+
+The model's `currentYear - 1` identifies the requested model period; it does
+not prove that this is the latest published annual filing. The refreshed page
+states the actual fiscal year without claiming it is the latest. Share price and
+market cap are labelled as year-end, not current market data.
+
+### Pilot source differences
+
+- Aallon FY 2025: the annual report has EBIT of EUR 2.970m, while Wisdom has
+  EUR 3.009m. Wisdom includes EUR 0.039m in other financial expenses; its EBIT
+  and net financial expenses are each EUR 0.039m higher than the filing, with
+  the same pre-tax profit. The upstream reason for the classification is not
+  established. The filing reports year-end market cap of EUR 41.7m; Wisdom's
+  EUR 40.695141m matches the year-end price multiplied by shares excluding
+  treasury shares. The manifest uses the filing's reported values.
+- Admicom FY 2025: the annual report has net earnings of EUR 5.307782m and
+  year-end market cap of EUR 216.34m; Wisdom has EUR 5.379158m and EUR
+  216.2351136m. The manifest uses the filing's reported values.
+
+These observations do not justify applying the same adjustment to other
+companies. Reconcile each reviewed page against its own filing.

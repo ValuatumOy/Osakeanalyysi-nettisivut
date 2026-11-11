@@ -163,7 +163,7 @@ ${navHtml()}
         <section class="report-full-section" id="metrics">
           <h2>Key metrics &amp; valuation multiples</h2>
           <div class="cp-grid">${metrics.map(metricCell).join('')}</div>
-          ${company.dataUpdated ? `<p class="cp-updated">Figures updated on ${esc(company.dataUpdated)}. Data will be refreshed during report generation.</p>` : ''}
+          ${company.dataUpdated ? `<p class="cp-updated">Financial model updated on ${esc(company.dataUpdated)}.</p>` : ''}
         </section>
 
         <section class="report-full-section" id="about">
@@ -237,7 +237,7 @@ function companyOverview(company, name, readyReport = null) {
   const reportText = readyReport
     ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
     : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
-  return `${name} (${company.ticker}) stock analysis and AI equity research. For the latest completed financial year, ${company.financialYear}, ${name} reported revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
+  return `${name} (${company.ticker}) stock analysis and AI equity research. For financial year ${company.financialYear}, Valuatum's model shows revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
 }
 
 function metricCell(metric) {
@@ -274,7 +274,7 @@ function sourcesSection(company) {
   const name = companyDisplayName(company);
   return `<section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent the latest completed financial year (${company.financialYear}). See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <p>Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent financial year ${company.financialYear}. See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>
