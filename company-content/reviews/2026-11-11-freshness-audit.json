@@ -133,7 +133,9 @@
       "isin": "NO0010946593",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2025-08-13-argeo-asa-delisting"
     },
     {
       "file": "arise-equity-report.html",
@@ -197,7 +199,9 @@
       "isin": "SE0010101824",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/ngm-market-notice/r/25-45-decision-on-delisting-of-awardit-ab--publ--from-nordic-sme%2Cc4149718"
     },
     {
       "file": "awilco-drilling-equity-report.html",
@@ -289,7 +293,9 @@
       "isin": "SE0000454746",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b510dd3e4c62a3267053e8e67b5a4a702&lang=en"
     },
     {
       "file": "black-sea-property-as-equity-report.html",
@@ -583,7 +589,9 @@
       "isin": "SE0015961826",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://mb.cision.com/Main/22089/4280552/3838459.pdf"
     },
     {
       "file": "digizuite-equity-report.html",
@@ -623,7 +631,9 @@
       "isin": "SE0000215493",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bdffc733f102e6db3930b9922ca649824&lang=en&src=micro"
     },
     {
       "file": "dovre-group-equity-report.html",
@@ -959,7 +969,9 @@
       "isin": "SE0005851706",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b195650fb180b9fd10d3a6b05570b9625&lang=en&src=rss"
     },
     {
       "file": "ice-fish-farm-as-equity-report.html",
@@ -1337,7 +1349,9 @@
       "isin": "NO0010900087",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2023-09-25-nortel-delisting"
     },
     {
       "file": "norway-royal-salmon-as-equity-report.html",
@@ -1345,7 +1359,9 @@
       "isin": "NO0010331838",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2023/04/28/588927_SalMar%20Annual%20Report%202022.pdf"
     },
     {
       "file": "norwegian-property-equity-report.html",
@@ -1465,7 +1481,9 @@
       "isin": "NO0010890726",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://mfn.se/ob/a/play-magnus/play-magnus-as-delisting-14a4e7ac"
     },
     {
       "file": "purmo-group-equity-report.html",
@@ -1497,7 +1515,9 @@
       "isin": "NO0011019119",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2023-12-21-questback-group-delisting"
     },
     {
       "file": "rana-gruber-equity-report.html",

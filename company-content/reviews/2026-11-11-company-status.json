@@ -95,6 +95,86 @@
       "message": "The former Lassila and Tikanoja demerged on 31 December 2025: its property services business became Luotea, and its circular economy business became a new Lassila and Tikanoja company. This page describes the former combined company.",
       "source": "https://view.news.eu.nasdaq.com/view?id=bd503be61887e800fd581f3820f9a869e&lang=en&src=listed",
       "label": "Company demerger announcement"
+    },
+    {
+      "file": "reports/biotage-equity-report.html",
+      "name": "Biotage",
+      "message": "Biotage shares had their last trading day on Nasdaq Stockholm on 21 July 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b510dd3e4c62a3267053e8e67b5a4a702&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/iar-systems-group-equity-report.html",
+      "name": "IAR Systems Group",
+      "message": "I.A.R. Systems Group shares had their last trading day on Nasdaq Stockholm on 3 November 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b195650fb180b9fd10d3a6b05570b9625&lang=en&src=rss",
+      "label": "Nasdaq delisting notice",
+      "successor": "/reports/qt-equity-report.html",
+      "successorLabel": "View Qt Group",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b3e32ee2f9759667c35ac100f61a60006&lang=en&src=micro"
+    },
+    {
+      "file": "reports/doro-equity-report.html",
+      "name": "Doro",
+      "message": "Doro shares had their last trading day on Nasdaq Stockholm on 17 December 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bdffc733f102e6db3930b9922ca649824&lang=en&src=micro",
+      "label": "Company delisting notice",
+      "successor": "/reports/xplora-technologies-as-equity-report.html",
+      "successorLabel": "View Xplora Technologies",
+      "additionalSource": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2025/12/11/661705_Xplora%20Technologies%20AS-%20Delisting%20of%20Doro%20AB.pdf"
+    },
+    {
+      "file": "reports/awardit-equity-report.html",
+      "name": "Awardit",
+      "message": "Awardit shares had their last trading day on NGM Nordic SME on 27 May 2025.",
+      "source": "https://news.cision.com/ngm-market-notice/r/25-45-decision-on-delisting-of-awardit-ab--publ--from-nordic-sme%2Cc4149718",
+      "label": "NGM delisting notice"
+    },
+    {
+      "file": "reports/diagonal-bio-equity-report.html",
+      "name": "Diagonal Bio",
+      "message": "Diagonal Bio was declared bankrupt and its shares were delisted from NGM Nordic SME on 11 December 2025.",
+      "source": "https://mb.cision.com/Main/22089/4280552/3838459.pdf",
+      "label": "NGM delisting notice"
+    },
+    {
+      "file": "reports/argeo-as-equity-report.html",
+      "name": "Argeo AS",
+      "identitySource": "https://live.euronext.com/en/products/equities/company-news/2024-06-11-argeo-as-key-information-relating-reverse-share-split-and-change-isin",
+      "message": "Argeo entered bankruptcy proceedings in July 2025 and its shares were delisted from Euronext Oslo Børs on 14 August 2025.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-08-13-argeo-asa-delisting",
+      "label": "Euronext delisting notice",
+      "additionalSource": "https://live.euronext.com/en/products/equities/company-news/2025-07-25-argeo-opening-bankruptcy-proceedings"
+    },
+    {
+      "file": "reports/nortel-as-equity-report.html",
+      "name": "Nortel AS",
+      "message": "Nortel shares had their last trading day on Euronext Growth Oslo on 25 September 2023.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2023-09-25-nortel-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/norway-royal-salmon-as-equity-report.html",
+      "name": "Norway Royal Salmon AS",
+      "message": "Norway Royal Salmon merged into SalMar on 7 November 2022.",
+      "source": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2023/04/28/588927_SalMar%20Annual%20Report%202022.pdf",
+      "label": "SalMar annual report",
+      "successor": "/reports/salmar-equity-report.html",
+      "successorLabel": "View SalMar"
+    },
+    {
+      "file": "reports/questback-group-as-equity-report.html",
+      "name": "Questback Group AS",
+      "message": "Questback Group shares had their last trading day on Euronext Growth Oslo on 20 February 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2023-12-21-questback-group-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/play-magnus-as-equity-report.html",
+      "name": "Play Magnus AS",
+      "message": "Play Magnus shares had their last trading day on Euronext Growth Oslo on 28 December 2022.",
+      "source": "https://mfn.se/ob/a/play-magnus/play-magnus-as-delisting-14a4e7ac",
+      "label": "Oslo Børs delisting notice"
     }
   ]
 }
