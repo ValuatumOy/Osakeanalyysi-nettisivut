@@ -112,3 +112,43 @@ test('Olav Thon keeps NOK financials without an unverified London currency', asy
   assert.match(html, /Share price<\/span><span class="cp-v">N\/A/);
   assert.doesNotMatch(html, /company-meta-chip">GBP|227\.00 GBP|data-generate-report/);
 });
+
+test('reviewed 2025 results use the reported operating profit and parent earnings', async () => {
+  const cases = [
+    ['aak-ab-publ', 'SEK 4,675.0m', 'SEK 3,429.0m', 'SEK 4,456m'],
+    ['acast', 'SEK -18.04m', 'SEK -112.41m', 'SEK -79.5m'],
+    ['ab-fagerhult-publ', 'SEK 577.5m', 'SEK 317.4m', 'SEK 531m'],
+    ['af-gruppen', 'NOK 1,662.0m', 'NOK 1,093.0m', 'NOK 2,219m'],
+    ['ab-electrolux', 'SEK 3,657.0m', 'SEK 878.0m', 'SEK 2,341m'],
+  ];
+  for (const [file, profit, earnings, oldProfit] of cases) {
+    const html = await read(`reports/${file}-equity-report.html`);
+    assert.ok(html.includes(profit), file);
+    assert.ok(html.includes(earnings), file);
+    assert.ok(!html.includes(oldProfit), file);
+    assert.match(html, /Figures checked against the annual report on 2026-11-11/);
+  }
+  const acast = await read('reports/acast-equity-report.html');
+  assert.match(acast, /SEK 2,516\.85m/);
+  assert.doesNotMatch(acast, /SEK 2,418m/);
+  const electrolux = await read('reports/ab-electrolux-equity-report.html');
+  assert.match(electrolux, /Market capitalisation<\/span><span class="cp-v">N\/A/);
+});
+
+test('Fagerhult uses its current name in the page, directory and search data', async () => {
+  const html = await read('reports/ab-fagerhult-publ-equity-report.html');
+  assert.match(html, /<h1 class="company-name">Fagerhult Group AB \(FAG\.ST\)/);
+  assert.match(html, /Previously known as AB Fagerhult \(publ\.\)/);
+  assert.match(html, /excluding treasury shares/);
+  assert.match(await read('companies/f.html'), /Fagerhult Group AB \(FAG\.ST\)/);
+  assert.match(await read('js/companyPagesData.js'), /"name": "Fagerhult Group AB"/);
+});
+
+test('Acrinova does not call an unreported operating subtotal EBIT', async () => {
+  const html = await read('reports/acrinova-equity-report.html');
+  assert.match(html, /Revenue<\/span><span class="cp-v">SEK 128\.15m/);
+  assert.match(html, /Operating profit<\/span><span class="cp-v">N\/A/);
+  assert.match(html, /Market capitalisation<\/span><span class="cp-v">SEK 456\.0m/);
+  assert.match(html, /both listed share classes/);
+  assert.doesNotMatch(html, /SEK 51\.6m|SEK 669\.8m/);
+});

@@ -64,11 +64,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AB Electrolux is a global home appliance company that develops, markets, and sells refrigerators, freezers, ovens, cookers, dishwashers, washing machines, vacuum cleaners, and other household products. Its portfolio includes the Electrolux, AEG, and Frigidaire brands, and its value drivers include consumer demand, product innovation, brand strength, and sales across international markets."
   },
   {
-    "name": "AB Fagerhult (publ.)",
+    "name": "Fagerhult Group AB",
     "ticker": "FAG.ST",
     "exchange": "Stockholm",
     "url": "reports/ab-fagerhult-publ-equity-report.html",
-    "description": "AB Fagerhult is a Swedish lighting group that develops and sells professional lighting solutions for indoor and outdoor environments. Its portfolio spans brands and product platforms serving offices, schools, healthcare, retail and infrastructure applications. The company works with specifiers and local partners, with value driven by design, technical performance and tailored project solutions."
+    "description": "Fagerhult Group AB is a Swedish lighting group that develops and sells professional lighting solutions for indoor and outdoor environments. Its portfolio spans brands and product platforms serving offices, schools, healthcare, retail and infrastructure applications. The company works with specifiers and local partners, with value driven by design, technical performance and tailored project solutions."
   },
   {
     "name": "AB Sagax",
