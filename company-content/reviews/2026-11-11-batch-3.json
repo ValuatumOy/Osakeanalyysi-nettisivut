@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/borgestad-equity-report.html",
+      "ticker": "BOR.OL",
+      "pageTicker": "BOR.OL",
+      "isin": "NO0013256180",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2026/04/30/671941_Borgestad%20ASA%20Annual%20Report%202025.pdf",
+      "sourceNote": "Book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "Consolidated statements pp. 43–44. The group has real estate and industrial operations. No FY-end price or market capitalisation was confirmed.",
+      "values": {
+        "bookValue": 715.139,
+        "sharePrice": null,
+        "revenue": 1105.704,
+        "ebit": 52.606,
+        "netEarnings": 15.31,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 715.139,
+        "sharePrice": 19.5,
+        "revenue": 1105.704,
+        "ebit": 52.606,
+        "netEarnings": 15.31,
+        "marketCap": 683.710404
+      }
+    },
+    {
+      "path": "reports/cedergrenska-equity-report.html",
+      "ticker": "CEDER.ST",
+      "pageTicker": "CEDER.ST",
+      "isin": "SE0015949946",
+      "financialYear": 2026,
+      "modelFinancialYear": 2024,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/2c2a663e-c0d1-4f55-843c-c1d12b5ad84e/cedergrenska-arsredovisning-2025-26.pdf",
+      "sourceNote": "The financial year ended on 30 June 2026; book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "FY2025/26 consolidated income statement and balance sheet, pp. 58–59. EBIT includes goodwill amortisation. Listed share ISIN confirmed by Nasdaq listing announcement and company 2024 prospectus. Model year 2024 is stale. No verified FY-end price or market capitalisation.",
+      "values": {
+        "bookValue": 128.5,
+        "sharePrice": null,
+        "revenue": 1601.3,
+        "ebit": 57.5,
+        "netEarnings": 22.6,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 179.01,
+        "sharePrice": 37.6,
+        "revenue": 1232.628,
+        "ebit": 43.854,
+        "netEarnings": 21.308,
+        "marketCap": 436.131424
+      }
+    },
+    {
+      "path": "reports/gentian-diagnostics-equity-report.html",
+      "ticker": "GENT.OL",
+      "pageTicker": "GENT.OL",
+      "isin": "NO0010748866",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.gentian.com/hubfs/GDASA%20annual%20report%202025.pdf",
+      "reviewNotes": "Consolidated statements pp. 42–43; all subsidiaries wholly owned. No FY-end price or market capitalisation was confirmed.",
+      "values": {
+        "bookValue": 204.957,
+        "sharePrice": null,
+        "revenue": 176.499,
+        "ebit": 25.452,
+        "netEarnings": 13.256,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 204.957,
+        "sharePrice": 56.400002,
+        "revenue": 176.499,
+        "ebit": 25.452,
+        "netEarnings": 13.256,
+        "marketCap": 869.82057084
+      }
+    },
+    {
+      "path": "reports/hofseth-biocare-equity-report.html",
+      "ticker": "HBC.OL",
+      "pageTicker": "HBC.OL",
+      "isin": "NO0010598683",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://ml-eu.globenewswire.com/Resource/Download/c15d3693-08ef-40d3-85d2-41d611b42259",
+      "sourceNote": "Book value and net earnings are attributable to the parent company’s shareholders.",
+      "reviewNotes": "Consolidated income statement and equity in annual report. Owner equity is paid-up capital minus accumulated losses; total equity includes non-controlling interest. No FY-end price or market capitalisation was confirmed.",
+      "values": {
+        "bookValue": -74.844,
+        "sharePrice": null,
+        "revenue": 254.43,
+        "ebit": -112.346,
+        "netEarnings": -134.881,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": -74.844,
+        "sharePrice": 1.32,
+        "revenue": 254.43,
+        "ebit": -112.346,
+        "netEarnings": -134.881,
+        "marketCap": 542.6269596
+      }
+    },
+    {
+      "path": "reports/corem-property-group-equity-report.html",
+      "ticker": "CORE-B.ST",
+      "pageTicker": "CORE-B.ST",
+      "isin": "SE0010714287",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.corem.se/app/uploads/2026/05/corem_annual-report-and-sustainability-report-2025.pdf",
+      "sourceNote": "The year-end market capitalisation includes all share classes; the share price is for Class B. The company does not separately report operating profit.",
+      "reviewNotes": "FY2025 consolidated income statement and equity pp. 70–71; company-wide year-end market capitalisation SEK 11.0bn and B-share price pp. 44–45. EBIT is omitted because the company does not report it as a separate line.",
+      "values": {
+        "bookValue": 16490,
+        "sharePrice": 4.35,
+        "revenue": 3465,
+        "ebit": null,
+        "netEarnings": -3311,
+        "marketCap": 11000
+      },
+      "modelSnapshot": {
+        "bookValue": 16490,
+        "sharePrice": 4.35,
+        "revenue": 3465,
+        "ebit": 2088,
+        "netEarnings": -3311,
+        "marketCap": 5579.84505
+      }
+    },
+    {
+      "path": "reports/itera-equity-report.html",
+      "ticker": "ITERA.OL",
+      "pageTicker": "ITERA.OL",
+      "isin": "NO0010001118",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.itera.com/annual-report-2025",
+      "reviewNotes": "Consolidated financial statements from the issuer annual report. Year-end share price and market capitalisation are reported in the five-year summary at https://www.itera.com/en/investor-relations .",
+      "values": {
+        "bookValue": 45.34,
+        "sharePrice": 8.58,
+        "revenue": 844.284,
+        "ebit": 36.799,
+        "netEarnings": 22.973,
+        "marketCap": 705
+      },
+      "modelSnapshot": {
+        "bookValue": 45.34,
+        "sharePrice": 8.58,
+        "revenue": 844.284,
+        "ebit": 36.799,
+        "netEarnings": 22.973,
+        "marketCap": 701.10636024
+      }
+    },
+    {
+      "path": "reports/loyal-solutions-equity-report.html",
+      "ticker": "LOYAL.ST",
+      "pageTicker": "LOYAL.ST",
+      "isin": "DK0061535507",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a75de244288cb370a646c9d40d3a424a5",
+      "sourceNote": "The financial year ended on 30 June 2026; the figures are for Loyal Solutions A/S.",
+      "reviewNotes": "Audited company income statement and balance sheet, pp. 11–13; Stockholm-listed instrument identity confirmed in Nasdaq listing announcement. No FY-end price or market capitalisation verified.",
+      "values": {
+        "bookValue": -27.000941,
+        "sharePrice": null,
+        "revenue": 57.191045,
+        "ebit": 4.353627,
+        "netEarnings": 1.784779,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": -27.000941,
+        "sharePrice": 4.55908604,
+        "revenue": 57.191045,
+        "ebit": 4.353627,
+        "netEarnings": 1.784779,
+        "marketCap": null
+      }
+    },
+    {
+      "path": "reports/rovsing-equity-report.html",
+      "ticker": "ROV.CO",
+      "pageTicker": "ROV.CO",
+      "isin": "DK0061152170",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a89c68c4f4ff93eb99c2cbf136ac70d04",
+      "sourceNote": "The financial year ended on 30 June 2026.",
+      "reviewNotes": "Annual report FY2025/26 company income statement, balance sheet and share section. Year-end share price and market capitalisation from the report.",
+      "values": {
+        "bookValue": 15.411,
+        "sharePrice": 40.4,
+        "revenue": 30.748,
+        "ebit": -7.349,
+        "netEarnings": -8.752,
+        "marketCap": 45.9
+      },
+      "modelSnapshot": {
+        "bookValue": 15.411,
+        "sharePrice": 40.400002,
+        "revenue": 30.748,
+        "ebit": -7.349,
+        "netEarnings": -8.752,
+        "marketCap": 45.94369027
+      }
+    },
+    {
+      "path": "reports/ambu-equity-report.html",
+      "ticker": "AMBU-B.CO",
+      "pageTicker": "AMBU-B.CO",
+      "isin": "DK0060946788",
+      "financialYear": 2026,
+      "currency": "DKK",
+      "marketCurrency": "DKK",
+      "sourceUrl": "https://via.ritzau.dk/ir-files/13561943/15269839/33310/Annual%20Report%202025-26.pdf",
+      "sourceNote": "The financial year ended on 30 September 2026. The year-end market capitalisation is for the listed Class B shares.",
+      "reviewNotes": "Annual report FY2025/26 consolidated statements, pp. 121–123; share price and market capitalisation of listed Class B shares, p. 55.",
+      "values": {
+        "bookValue": 6251,
+        "sharePrice": 68.95,
+        "revenue": 6471,
+        "ebit": 851,
+        "netEarnings": 642,
+        "marketCap": 16200
+      },
+      "modelSnapshot": {
+        "bookValue": 6251,
+        "sharePrice": 68.949997,
+        "revenue": 6471,
+        "ebit": 851,
+        "netEarnings": 641.99999907,
+        "marketCap": null
+      }
+    },
+    {
+      "path": "reports/addtech-ab-publ-equity-report.html",
+      "ticker": "ADDT-B.ST",
+      "pageTicker": "ADDT-B.ST",
+      "isin": "SE0014781795",
+      "financialYear": 2026,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/ac2b2a30f0737d7194e8c35f9dc83e54d",
+      "sourceNote": "The financial year ended on 31 March 2026. Book value and net earnings are attributable to the parent company’s shareholders; the year-end market capitalisation is for the listed Class B shares.",
+      "reviewNotes": "FY2025/26 consolidated income statement and balance sheet; annual report p. 162 lists Class B year-end price and market capitalisation.",
+      "values": {
+        "bookValue": 7807,
+        "sharePrice": 317.6,
+        "revenue": 22703,
+        "ebit": 3085,
+        "netEarnings": 2147,
+        "marketCap": 82554
+      },
+      "modelSnapshot": {
+        "bookValue": 7807,
+        "sharePrice": 317.600006,
+        "revenue": 22703,
+        "ebit": 3085,
+        "netEarnings": 2147,
+        "marketCap": 85739.43799896
+      }
+    }
+  ]
+}

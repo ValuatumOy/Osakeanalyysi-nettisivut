@@ -1,0 +1,7125 @@
+{
+  "checkedOn": "2026-11-11",
+  "scope": "Company overviews still showing FY 2025 after the third reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
+  "counts": {
+    "same_or_older": 856,
+    "lookup_failed": 12,
+    "identity_mismatch": 3,
+    "newer": 18
+  },
+  "results": [
+    {
+      "file": "2020-bulkers-equity-report.html",
+      "ticker": "2020.OL",
+      "isin": "BMG9156K1018",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "2curex-equity-report.html",
+      "ticker": "2CUREX.ST",
+      "isin": "SE0010468124",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "4c-group-equity-report.html",
+      "ticker": "4C.ST",
+      "isin": "SE0017936891",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "5th-planet-games-equity-report.html",
+      "ticker": "5PG.OL",
+      "isin": "DK0060945467",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aac-clyde-space-equity-report.html",
+      "ticker": "AAC.ST",
+      "isin": "SE0021020716",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aak-ab-publ-equity-report.html",
+      "ticker": "AAK.ST",
+      "isin": "SE0011337708",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aalborg-boldspilklub-equity-report.html",
+      "ticker": "AAB.CO",
+      "isin": "DK0060868966",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aallon-group-equity-report.html",
+      "ticker": "AALLON",
+      "isin": "FI4000369608",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker AALLON"
+    },
+    {
+      "file": "ab-electrolux-equity-report.html",
+      "ticker": "ELUX-B.ST",
+      "isin": "SE0016589188",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ab-fagerhult-publ-equity-report.html",
+      "ticker": "FAG.ST",
+      "isin": "SE0010048884",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ab-skf-equity-report.html",
+      "ticker": "SKF-B.ST",
+      "isin": "SE0000108227",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "abas-protect-equity-report.html",
+      "ticker": "ABAS.ST",
+      "isin": "SE0018588659",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "abl-group-equity-report.html",
+      "ticker": "ABL.OL",
+      "isin": "NO0010715394",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "absolent-air-care-group-equity-report.html",
+      "ticker": "ABSO.ST",
+      "isin": "SE0006256558",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acarix-equity-report.html",
+      "ticker": "ACARIX.ST",
+      "isin": "SE0009268717",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acast-equity-report.html",
+      "ticker": "ACAST.ST",
+      "isin": "SE0015960935",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acconeer-equity-report.html",
+      "ticker": "ACCON.ST",
+      "isin": "SE0010546242",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acousort-equity-report.html",
+      "ticker": "ACOU.ST",
+      "isin": "SE0009189608",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acq-bure-equity-report.html",
+      "ticker": "YUBICO.ST",
+      "isin": "SE0015657788",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acrinova-equity-report.html",
+      "ticker": "ACRI-B.ST",
+      "isin": "SE0015660030",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "acroud-equity-report.html",
+      "ticker": "ACROUD.ST",
+      "isin": "SE0001863291",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "actic-group-equity-report.html",
+      "ticker": "ATIC.ST",
+      "isin": "SE0009269467",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "active-biotech-equity-report.html",
+      "ticker": "ACTI.ST",
+      "isin": "SE0001137985",
+      "pageYear": 2025,
+      "status": "identity_mismatch",
+      "modelYear": 2025
+    },
+    {
+      "file": "acucort-equity-report.html",
+      "ticker": "ACUC.ST",
+      "isin": "SE0009695927",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "addlife-equity-report.html",
+      "ticker": "ALIF-B.ST",
+      "isin": "SE0014401378",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "addnode-group-equity-report.html",
+      "ticker": "ANOD-B.ST",
+      "isin": "SE0017885767",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "admicom-equity-report.html",
+      "ticker": "ADMCM",
+      "isin": "FI4000251830",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker ADMCM"
+    },
+    {
+      "file": "adtraction-group-equity-report.html",
+      "ticker": "ADTR.ST",
+      "isin": "SE0016833149",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "advanced-soltech-sweden-equity-report.html",
+      "ticker": "GIGA.ST",
+      "isin": "SE0016101521",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "advenica-equity-report.html",
+      "ticker": "ADVE.ST",
+      "isin": "SE0006219473",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aegirbio-equity-report.html",
+      "ticker": "SUBGEN.ST",
+      "isin": "SE0026820854",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "af-gruppen-equity-report.html",
+      "ticker": "AFG.OL",
+      "isin": "NO0003078107",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "afarak-group-equity-report.html",
+      "ticker": "AFAGR.HE",
+      "isin": "FI0009800098",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "afry-equity-report.html",
+      "ticker": "AFRY.ST",
+      "isin": "SE0005999836",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "agat-ejendomme-equity-report.html",
+      "ticker": "AGAT.CO",
+      "isin": "DK0010258995",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ages-industri-equity-report.html",
+      "ticker": "AGES-B.ST",
+      "isin": "SE0005799046",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "agillic-equity-report.html",
+      "ticker": "AGILC.CO",
+      "isin": "DK0060955854",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "agilyx-equity-report.html",
+      "ticker": "AGLX.OL",
+      "isin": "NO0010872468",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aino-health-equity-report.html",
+      "ticker": "AINO.ST",
+      "isin": "SE0009242555",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "akastor-equity-report.html",
+      "ticker": "AKAST.OL",
+      "isin": "NO0010215684",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aker-biomarine-as-equity-report.html",
+      "ticker": "AKBM.OL",
+      "isin": "NO0010886625",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aker-bp-equity-report.html",
+      "ticker": "AKRBP.OL",
+      "isin": "NO0010345853",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aker-equity-report.html",
+      "ticker": "AKER.OL",
+      "isin": "NO0010234552",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aker-solutions-equity-report.html",
+      "ticker": "AKSO.OL",
+      "isin": "NO0010716582",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aktiebolaget-fastator-equity-report.html",
+      "ticker": "FASTAT.ST",
+      "isin": "SE0015407382",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aktieselskabet-schouw-and-co-equity-report.html",
+      "ticker": "SCHO.CO",
+      "isin": "DK0010253921",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "akva-group-equity-report.html",
+      "ticker": "AKVA.OL",
+      "isin": "NO0003097503",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alcadon-group-equity-report.html",
+      "ticker": "ALCA.ST",
+      "isin": "SE0008732218",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alefarm-brewing-equity-report.html",
+      "ticker": "ALEFRM.CO",
+      "isin": "DK0061407699",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alfa-laval-corporate-equity-report.html",
+      "ticker": "ALFA.ST",
+      "isin": "SE0000695876",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alimak-group-equity-report.html",
+      "ticker": "ALIG.ST",
+      "isin": "SE0007158910",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alk-abello-equity-report.html",
+      "ticker": "ALK-B.CO",
+      "isin": "DK0061802139",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alleima-equity-report.html",
+      "ticker": "ALLEI.ST",
+      "isin": "SE0017615644",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alligator-bioscience-equity-report.html",
+      "ticker": "ATORX.ST",
+      "isin": "SE0024173637",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alligo-equity-report.html",
+      "ticker": "ALLIGO-B.ST",
+      "isin": "SE0009922305",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alm-equity-equity-report.html",
+      "ticker": "ALM-PREF.ST",
+      "isin": "SE0004109627",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alma-media-equity-report.html",
+      "ticker": "ALMA.HE",
+      "isin": "FI0009013114",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alpcot-holding-equity-report.html",
+      "ticker": "ALPCOT-B.ST",
+      "isin": "SE0016845655",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alzecure-pharma-equity-report.html",
+      "ticker": "ALZCUR.ST",
+      "isin": "SE0010133785",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "alzinova-equity-report.html",
+      "ticker": "ALZ.ST",
+      "isin": "SE0007413455",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ambea-equity-report.html",
+      "ticker": "AMBEA.ST",
+      "isin": "SE0009663826",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "amer-sports-equity-report.html",
+      "ticker": "AS",
+      "isin": "KYG0260P1028",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "andfjord-salmon-as-equity-report.html",
+      "ticker": "ANDF.OL",
+      "isin": "NO0010829765",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "annehem-fastigheter-equity-report.html",
+      "ticker": "ANNE-B.ST",
+      "isin": "SE0015221684",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "annexin-pharmaceuticals-equity-report.html",
+      "ticker": "ANNX.ST",
+      "isin": "SE0025159387",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "anora-group-equity-report.html",
+      "ticker": "ANORA.HE",
+      "isin": "FI4000292438",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "anoto-group-equity-report.html",
+      "ticker": "ANOT.ST",
+      "isin": "SE0010415281",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "apetit-equity-report.html",
+      "ticker": "APETIT",
+      "isin": "FI0009003503",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker APETIT"
+    },
+    {
+      "file": "apotea-equity-report.html",
+      "ticker": "APOTEA.ST",
+      "isin": "SE0023313762",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "appspotr-equity-report.html",
+      "ticker": "SPOTR.ST",
+      "isin": "SE0025166416",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aptahem-equity-report.html",
+      "ticker": "APTA.ST",
+      "isin": "SE0022447173",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aq-group-equity-report.html",
+      "ticker": "AQ.ST",
+      "isin": "SE0022062196",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arcoma-equity-report.html",
+      "ticker": "ARCOMA.ST",
+      "isin": "SE0006219176",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arctic-blue-beverages-equity-report.html",
+      "ticker": "ARCTIC.ST",
+      "isin": "SE0017769136",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arctic-fish-holding-as-equity-report.html",
+      "ticker": "AFISH.OL",
+      "isin": "NO0010917719",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arctic-minerals-equity-report.html",
+      "ticker": "ARCT.ST",
+      "isin": "SE0024172779",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arcticzymes-technologies-equity-report.html",
+      "ticker": "AZT.OL",
+      "isin": "NO0010014632",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arendals-fossekompani-equity-report.html",
+      "ticker": "AFK.OL",
+      "isin": "NO0003572802",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arjo-equity-report.html",
+      "ticker": "ARJO-B.ST",
+      "isin": "SE0010468116",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arla-plast-equity-report.html",
+      "ticker": "ARPL.ST",
+      "isin": "SE0015810817",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arlandastad-group-equity-report.html",
+      "ticker": "AGROUP.ST",
+      "isin": "SE0016276851",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "arocell-equity-report.html",
+      "ticker": "IDLDX.ST",
+      "isin": "SE0003883990",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "artificial-solutions-international-equity-report.html",
+      "ticker": "TENEO.ST",
+      "isin": "SE0018397184",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "as-tallink-grupp-equity-report.html",
+      "ticker": "TALLINK.HE",
+      "isin": "FI4000349378",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker TALLINK.HE"
+    },
+    {
+      "file": "ascelia-pharma-equity-report.html",
+      "ticker": "ACE.ST",
+      "isin": "SE0010573113",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ascendis-pharma-equity-report.html",
+      "ticker": "ASND",
+      "isin": "DK0060615755",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "asker-healthcare-group-equity-report.html",
+      "ticker": "ASKER.ST",
+      "isin": "SE0024171458",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "asml-equity-report.html",
+      "ticker": "ASML",
+      "isin": "USN070592100",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2024
+    },
+    {
+      "file": "asmodee-group-equity-report.html",
+      "ticker": "ASMDEE-B.ST",
+      "isin": "SE0023615638",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "aspo-equity-report.html",
+      "ticker": "ASPO.HE",
+      "isin": "FI0009008072",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "aspocomp-group-equity-report.html",
+      "ticker": "ACG1V.HE",
+      "isin": "FI0009008080",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "assa-abloy-equity-report.html",
+      "ticker": "ASSA-B.ST",
+      "isin": "SE0007100581",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "atea-equity-report.html",
+      "ticker": "ATEA.OL",
+      "isin": "NO0004822503",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "atlas-copco-equity-report.html",
+      "ticker": "ATCO-A.ST",
+      "isin": "SE0017486889",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "atria-equity-report.html",
+      "ticker": "ATRAV.HE",
+      "isin": "FI0009006548",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "atrium-ljungberg-equity-report.html",
+      "ticker": "ATRLJ-B.ST",
+      "isin": "SE0024320832",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "attendo-equity-report.html",
+      "ticker": "ATT.ST",
+      "isin": "SE0007666110",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "austevoll-seafood-equity-report.html",
+      "ticker": "AUSS.OL",
+      "isin": "NO0010073489",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "autoliv-equity-report.html",
+      "ticker": "ALIV-SDB.ST",
+      "isin": "SE0021309614",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "autostore-holdings-equity-report.html",
+      "ticker": "AUTO.OL",
+      "isin": "BMG0670A1099",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "avensia-equity-report.html",
+      "ticker": "AVEN.ST",
+      "isin": "SE0000671745",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "avtech-sweden-equity-report.html",
+      "ticker": "AVT-B.ST",
+      "isin": "SE0004270445",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "axfood-equity-report.html",
+      "ticker": "AXFO.ST",
+      "isin": "SE0006993770",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "axichem-equity-report.html",
+      "ticker": "AXIC-A.ST",
+      "isin": "SE0005250719",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "axolot-solutions-holding-equity-report.html",
+      "ticker": "AXOLOT.ST",
+      "isin": "SE0009414303",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "b3-consulting-group-equity-report.html",
+      "ticker": "B3.ST",
+      "isin": "SE0008347660",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bactiguard-holding-equity-report.html",
+      "ticker": "BACTI-B.ST",
+      "isin": "SE0005878741",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bactiquant-equity-report.html",
+      "ticker": "BACTIQ.CO",
+      "isin": "DK0061417730",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bahnhof-equity-report.html",
+      "ticker": "BAHN-B.ST",
+      "isin": "SE0010442418",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "balco-group-equity-report.html",
+      "ticker": "BALCO.ST",
+      "isin": "SE0010323998",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bambuser-equity-report.html",
+      "ticker": "BUSER.ST",
+      "isin": "SE0027099326",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bang-and-olufsen-equity-report.html",
+      "ticker": "BO.CO",
+      "isin": "DK0010218429",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bavarian-nordic-equity-report.html",
+      "ticker": "BAVA.CO",
+      "isin": "DK0015998017",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "be-group-equity-report.html",
+      "ticker": "BEGR.ST",
+      "isin": "SE0008321921",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "beammwave-equity-report.html",
+      "ticker": "BEAMMW-B.ST",
+      "isin": "SE0016799068",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "beijer-alma-equity-report.html",
+      "ticker": "BEIA-B.ST",
+      "isin": "SE0011090547",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "beijer-electronics-group-equity-report.html",
+      "ticker": "EPEN.ST",
+      "isin": "SE0000671711",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "beijer-ref-equity-report.html",
+      "ticker": "BEIJ-B.ST",
+      "isin": "SE0015949748",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bergenbio-equity-report.html",
+      "ticker": "ONCIN.OL",
+      "isin": "NO0013711713",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bergman-and-beving-equity-report.html",
+      "ticker": "BERG-B.ST",
+      "isin": "SE0000101362",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "betsson-equity-report.html",
+      "ticker": "BETS-B.ST",
+      "isin": "SE0022726485",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "better-collective-equity-report.html",
+      "ticker": "BETCO.ST",
+      "isin": "DK0060952240",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bewi-equity-report.html",
+      "ticker": "BEWI.OL",
+      "isin": "NO0010890965",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "beyond-frames-entertainment-equity-report.html",
+      "ticker": "8WP.F",
+      "isin": "SE0011614965",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker 8WP.F"
+    },
+    {
+      "file": "bhg-group-equity-report.html",
+      "ticker": "BHG.ST",
+      "isin": "SE0010948588",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bico-group-equity-report.html",
+      "ticker": "BICO.ST",
+      "isin": "SE0013647385",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bilia-equity-report.html",
+      "ticker": "BILI-A.ST",
+      "isin": "SE0009921588",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "billerudkorsnas-equity-report.html",
+      "ticker": "BILL.ST",
+      "isin": "SE0000862997",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bimobject-equity-report.html",
+      "ticker": "BIM.ST",
+      "isin": "SE0011644376",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "binero-group-equity-report.html",
+      "ticker": "BINERO.ST",
+      "isin": "SE0005249570",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bio-works-technologies-equity-report.html",
+      "ticker": "BIOWKS.ST",
+      "isin": "SE0007387089",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bioarctic-equity-report.html",
+      "ticker": "BIOA-B.ST",
+      "isin": "SE0010323311",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bioextrax-equity-report.html",
+      "ticker": "BIOEX.ST",
+      "isin": "SE0016276752",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "biogaia-equity-report.html",
+      "ticker": "BIOG-B.ST",
+      "isin": "SE0017769995",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "biohit-equity-report.html",
+      "ticker": "BIOBV.HE",
+      "isin": "FI0009005482",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bioinvent-international-equity-report.html",
+      "ticker": "BINV.ST",
+      "isin": "SE0015244520",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bioporto-equity-report.html",
+      "ticker": "BIOPOR.CO",
+      "isin": "DK0011048619",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "biosergen-equity-report.html",
+      "ticker": "BIOSGN.ST",
+      "isin": "SE0026821852",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "biovica-international-equity-report.html",
+      "ticker": "BIOVIC-B.ST",
+      "isin": "SE0008613731",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "bittium-equity-report.html",
+      "ticker": "BITTI.HE",
+      "isin": "FI0009007264",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bjorn-borg-equity-report.html",
+      "ticker": "BORG.ST",
+      "isin": "SE0021921327",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "blick-global-group-equity-report.html",
+      "ticker": "BLICK.ST",
+      "isin": "SE0019172735",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "blue-vision-equity-report.html",
+      "ticker": "PEG.CO",
+      "isin": "DK0061155009",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bluenord-equity-report.html",
+      "ticker": "BNOR.OL",
+      "isin": "NO0010379266",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bokusgruppen-equity-report.html",
+      "ticker": "BOKUS.ST",
+      "isin": "SE0016074256",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "boliden-equity-report.html",
+      "ticker": "BOL.ST",
+      "isin": "SE0020050417",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bomill-equity-report.html",
+      "ticker": "BOMILL.ST",
+      "isin": "SE0014583332",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bonasudden-holding-equity-report.html",
+      "ticker": "BONAS.ST",
+      "isin": "SE0007157953",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bonava-equity-report.html",
+      "ticker": "BONAV-B.ST",
+      "isin": "SE0008091581",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bonesupport-holding-equity-report.html",
+      "ticker": "BONEX.ST",
+      "isin": "SE0009858152",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bong-equity-report.html",
+      "ticker": "BONG.ST",
+      "isin": "SE0000396061",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bonheur-equity-report.html",
+      "ticker": "BONHR.OL",
+      "isin": "NO0003110603",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bonzun-equity-report.html",
+      "ticker": "PADEL.ST",
+      "isin": "SE0024173728",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "boozt-equity-report.html",
+      "ticker": "BOOZT.ST",
+      "isin": "SE0009888738",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "boreo-equity-report.html",
+      "ticker": "BOREO.HE",
+      "isin": "FI0009900724",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "borregaard-equity-report.html",
+      "ticker": "BRG.OL",
+      "isin": "NO0010657505",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "botnia-exploration-holding-equity-report.html",
+      "ticker": "BOTX.ST",
+      "isin": "SE0010494708",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "boule-diagnostics-equity-report.html",
+      "ticker": "BOUL.ST",
+      "isin": "SE0011231158",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bouvet-equity-report.html",
+      "ticker": "BOUV.OL",
+      "isin": "NO0010360266",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "braincool-equity-report.html",
+      "ticker": "BRAIN.ST",
+      "isin": "SE0005731833",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bravida-holding-equity-report.html",
+      "ticker": "BRAV.ST",
+      "isin": "SE0007491303",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "brd-klee-equity-report.html",
+      "ticker": "KLEE-B.CO",
+      "isin": "DK0010129089",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "brilliant-future-equity-report.html",
+      "ticker": "BRILL.ST",
+      "isin": "SE0015811625",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "brinova-fastigheter-equity-report.html",
+      "ticker": "BRIN-B.ST",
+      "isin": "SE0008347652",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "brodrene-a-and-o-johansen-equity-report.html",
+      "ticker": "AOJ-B.CO",
+      "isin": "DK0061686714",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "brondbyernes-if-fodbold-equity-report.html",
+      "ticker": "BIF.CO",
+      "isin": "DK0010247956",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "bts-group-equity-report.html",
+      "ticker": "BTS-B.ST",
+      "isin": "SE0000805426",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bufab-equity-report.html",
+      "ticker": "BUFAB.ST",
+      "isin": "SE0025010671",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "bulten-equity-report.html",
+      "ticker": "BULTEN.ST",
+      "isin": "SE0003849223",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "byggma-equity-report.html",
+      "ticker": "BMA.OL",
+      "isin": "NO0003087603",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "byggmax-group-equity-report.html",
+      "ticker": "BMAX.ST",
+      "isin": "SE0003303627",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "byggpartner-gruppen-equity-report.html",
+      "ticker": "BYGGP.ST",
+      "isin": "SE0009242324",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "c-rad-equity-report.html",
+      "ticker": "CRAD-B.ST",
+      "isin": "SE0002016352",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cadeler-equity-report.html",
+      "ticker": "CADLR.OL",
+      "isin": "DK0061412772",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cag-group-equity-report.html",
+      "ticker": "CAG.ST",
+      "isin": "SE0011923341",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cambi-equity-report.html",
+      "ticker": "CAMBI.OL",
+      "isin": "NO0010078850",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "camurus-equity-report.html",
+      "ticker": "CAMX.ST",
+      "isin": "SE0007692850",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "candles-scandinavia-equity-report.html",
+      "ticker": "CANDLE-B.ST",
+      "isin": "SE0016797773",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cantargia-equity-report.html",
+      "ticker": "CANTA.ST",
+      "isin": "SE0006371126",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "carasent-equity-report.html",
+      "ticker": "CARA.ST",
+      "isin": "SE0023261599",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "careium-equity-report.html",
+      "ticker": "CARE.ST",
+      "isin": "SE0017131824",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "carlsberg-equity-report.html",
+      "ticker": "CARL-B.CO",
+      "isin": "DK0010181759",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "castellum-equity-report.html",
+      "ticker": "CAST.ST",
+      "isin": "SE0000379190",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "catena-equity-report.html",
+      "ticker": "CATE.ST",
+      "isin": "SE0001664707",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "catena-media-equity-report.html",
+      "ticker": "CTM.ST",
+      "isin": "MT0001000109",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cavotec-sa-equity-report.html",
+      "ticker": "CCC.ST",
+      "isin": "SE0025010887",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cbrain-equity-report.html",
+      "ticker": "CBRAIN.CO",
+      "isin": "DK0060030286",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cdon-equity-report.html",
+      "ticker": "CDON.ST",
+      "isin": "SE0015191911",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cell-impact-equity-report.html",
+      "ticker": "CI.ST",
+      "isin": "SE0025940513",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cellavision-equity-report.html",
+      "ticker": "CEVI.ST",
+      "isin": "SE0000683484",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cemat-equity-report.html",
+      "ticker": "CEMAT.CO",
+      "isin": "DK0010271584",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "chargepanel-equity-report.html",
+      "ticker": "CHARGE.ST",
+      "isin": "SE0017083835",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "checkin-com-group-equity-report.html",
+      "ticker": "CHECK.ST",
+      "isin": "SE0015810502",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cheffelo-equity-report.html",
+      "ticker": "CHEF.ST",
+      "isin": "SE0015556873",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "chemometec-equity-report.html",
+      "ticker": "CHEMM.CO",
+      "isin": "DK0060055861",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "christian-berner-tech-trade-equity-report.html",
+      "ticker": "BERNER-B.ST",
+      "isin": "SE0006143129",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cibus-equity-report.html",
+      "ticker": "CIBUS",
+      "isin": "SE0010832204",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker CIBUS"
+    },
+    {
+      "file": "cint-group-equity-report.html",
+      "ticker": "CINT.ST",
+      "isin": "SE0015483276",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "circhem-equity-report.html",
+      "ticker": "CIRCHE.ST",
+      "isin": "SE0015193529",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "citycon-equity-report.html",
+      "ticker": "CTY1S.HE",
+      "isin": "FI4000369947",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "clas-ohlson-equity-report.html",
+      "ticker": "CLAS-B.ST",
+      "isin": "SE0000584948",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "clavister-holding-ab-publ-equity-report.html",
+      "ticker": "CLAV.ST",
+      "isin": "SE0005308558",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "clean-motion-equity-report.html",
+      "ticker": "CLEMO.ST",
+      "isin": "SE0008216303",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "clemondo-group-equity-report.html",
+      "ticker": "CLEM.ST",
+      "isin": "SE0023468400",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "climeon-equity-report.html",
+      "ticker": "CLIME-B.ST",
+      "isin": "SE0023837182",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "clinical-laserthermia-systems-equity-report.html",
+      "ticker": "CLS-B.ST",
+      "isin": "SE0022049920",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cloetta-equity-report.html",
+      "ticker": "CLA-B.ST",
+      "isin": "SE0002626861",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "cloudberry-clean-energy-equity-report.html",
+      "ticker": "CLOUD.OL",
+      "isin": "NO0010876642",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "codelab-capital-as-equity-report.html",
+      "ticker": "CODE.OL",
+      "isin": "NO0013483503",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "codemill-equity-report.html",
+      "ticker": "CDMIL.ST",
+      "isin": "SE0013914819",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "coffee-stain-studios-equity-report.html",
+      "ticker": "COFFEE-B.ST",
+      "isin": "SE0026599557",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "coloplast-equity-report.html",
+      "ticker": "COLO-B.CO",
+      "isin": "DK0060448595",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "columbus-equity-report.html",
+      "ticker": "COLUM.CO",
+      "isin": "DK0010268366",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "combinedx-equity-report.html",
+      "ticker": "CX.ST",
+      "isin": "SE0012065589",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "compodium-international-equity-report.html",
+      "ticker": "COMPDM.ST",
+      "isin": "SE0022088233",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "componenta-equity-report.html",
+      "ticker": "CTH1V.HE",
+      "isin": "FI4000476783",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "concejo-equity-report.html",
+      "ticker": "CNCJO-B.ST",
+      "isin": "SE0000236382",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "conferize-equity-report.html",
+      "ticker": "UNLGRP.CO",
+      "isin": "DK0060816148",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "coor-service-management-holding-equity-report.html",
+      "ticker": "COOR.ST",
+      "isin": "SE0007158829",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "copenhagen-capital-equity-report.html",
+      "ticker": "CPHCAP-ST.CO",
+      "isin": "DK0060093607",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "corline-biomedical-equity-report.html",
+      "ticker": "CLBIO.ST",
+      "isin": "SE0006887451",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "crunchfish-equity-report.html",
+      "ticker": "CFISH.ST",
+      "isin": "SE0009190192",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ctek-equity-report.html",
+      "ticker": "CTEK.ST",
+      "isin": "SE0016798763",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ctt-systems-equity-report.html",
+      "ticker": "CTT.ST",
+      "isin": "SE0000418923",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dampskibsselskabet-norden-equity-report.html",
+      "ticker": "DNORD.CO",
+      "isin": "DK0060083210",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dataproces-group-equity-report.html",
+      "ticker": "DATA.CO",
+      "isin": "DK0061408580",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "dedicare-equity-report.html",
+      "ticker": "DEDI.ST",
+      "isin": "SE0003909282",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "deep-value-driller-as-equity-report.html",
+      "ticker": "DVD.OL",
+      "isin": "NO0010955917",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "demant-equity-report.html",
+      "ticker": "DEMANT.CO",
+      "isin": "DK0060738599",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "desenio-group-equity-report.html",
+      "ticker": "DSNO.ST",
+      "isin": "SE0015657853",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "detection-technology-equity-report.html",
+      "ticker": "DETEC.HE",
+      "isin": "FI4000115464",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "devport-equity-report.html",
+      "ticker": "DEVP-B.ST",
+      "isin": "SE0010546622",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "devyser-diagnostics-equity-report.html",
+      "ticker": "DVYSR.ST",
+      "isin": "SE0016588867",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dfds-equity-report.html",
+      "ticker": "DFDS.CO",
+      "isin": "DK0060655629",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "diamyd-medical-equity-report.html",
+      "ticker": "DMYD-B.ST",
+      "isin": "SE0005162880",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "digia-equity-report.html",
+      "ticker": "DIGIA.HE",
+      "isin": "FI0009007983",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "digital-workforce-services-equity-report.html",
+      "ticker": "DWF.HE",
+      "isin": "FI4000513015",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "digitalist-group-equity-report.html",
+      "ticker": "DIGIGR.HE",
+      "isin": "FI4000591698",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dios-fastigheter-equity-report.html",
+      "ticker": "DIOS.ST",
+      "isin": "SE0001634262",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "distit-equity-report.html",
+      "ticker": "DIST.ST",
+      "isin": "SE0003883800",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "divio-technologies-equity-report.html",
+      "ticker": "DIVIO-B.ST",
+      "isin": "SE0011311554",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dlaboratory-sweden-equity-report.html",
+      "ticker": "DLAB.ST",
+      "isin": "SE0015658380",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dno-equity-report.html",
+      "ticker": "DNO.OL",
+      "isin": "NO0003921009",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dof-group-equity-report.html",
+      "ticker": "DOFG.OL",
+      "isin": "NO0012851874",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dometic-group-equity-report.html",
+      "ticker": "DOM.ST",
+      "isin": "SE0007691613",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "done-ai-group-equity-report.html",
+      "ticker": "TFSVF",
+      "isin": "SE0010546911",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker TFSVF"
+    },
+    {
+      "file": "donkeyrepublic-holding-equity-report.html",
+      "ticker": "DONKEY.CO",
+      "isin": "DK0061540770",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "doxa-equity-report.html",
+      "ticker": "DOXA.ST",
+      "isin": "SE0005624756",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "drillcon-equity-report.html",
+      "ticker": "DRIL.ST",
+      "isin": "SE0001770702",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dsv-equity-report.html",
+      "ticker": "DSV.CO",
+      "isin": "DK0060079531",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "duni-equity-report.html",
+      "ticker": "DUNI.ST",
+      "isin": "SE0000616716",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "dustin-group-equity-report.html",
+      "ticker": "DUST.ST",
+      "isin": "SE0006625471",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eastnine-equity-report.html",
+      "ticker": "EAST.ST",
+      "isin": "SE0022050183",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ecorub-equity-report.html",
+      "ticker": "ECO-B.ST",
+      "isin": "SE0003273531",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eeducation-albert-equity-report.html",
+      "ticker": "ALBERT.ST",
+      "isin": "SE0016797989",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eezy-equity-report.html",
+      "ticker": "EEZY.HE",
+      "isin": "FI4000322326",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "egetis-therapeutics-equity-report.html",
+      "ticker": "EGTX.ST",
+      "isin": "SE0003815604",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "egnsinvest-ejendomme-tyskland-equity-report.html",
+      "ticker": "EGNETY.CO",
+      "isin": "DK0060118453",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eidesvik-offshore-equity-report.html",
+      "ticker": "EIOF.OL",
+      "isin": "NO0010263023",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elanders-equity-report.html",
+      "ticker": "ELAN-B.ST",
+      "isin": "SE0000119299",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elecster-equity-report.html",
+      "ticker": "ELEAV.HE",
+      "isin": "FI0009900658",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "electra-gruppen-equity-report.html",
+      "ticker": "ELON.ST",
+      "isin": "SE0001572520",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "electrolux-professional-equity-report.html",
+      "ticker": "EPRO-B.ST",
+      "isin": "SE0013747870",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "electromagnetic-geoservices-equity-report.html",
+      "ticker": "EMGS.OL",
+      "isin": "NO0010358484",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elekta-equity-report.html",
+      "ticker": "EKTA-B.ST",
+      "isin": "SE0000163628",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "elektroimportoren-as-equity-report.html",
+      "ticker": "ELIMP.OL",
+      "isin": "NO0010911902",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elicera-therapeutics-equity-report.html",
+      "ticker": "ELIC.ST",
+      "isin": "SE0015382080",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elkem-equity-report.html",
+      "ticker": "ELK.OL",
+      "isin": "NO0010816093",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ellwee-equity-report.html",
+      "ticker": "ORTIN.ST",
+      "isin": "SE0020551679",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elmera-group-equity-report.html",
+      "ticker": "ELMRA.OL",
+      "isin": "NO0010815673",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "elopak-equity-report.html",
+      "ticker": "ELO.OL",
+      "isin": "NO0011002586",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eltel-equity-report.html",
+      "ticker": "ELTEL.ST",
+      "isin": "SE0006509949",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "embellence-group-equity-report.html",
+      "ticker": "EMBELL.ST",
+      "isin": "SE0013888831",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "empir-group-equity-report.html",
+      "ticker": "SAFETY-B.ST",
+      "isin": "SE0010769182",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enad-global-7-equity-report.html",
+      "ticker": "EG7.ST",
+      "isin": "SE0010520106",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "endur-equity-report.html",
+      "ticker": "ENDUR.OL",
+      "isin": "NO0012555459",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enea-equity-report.html",
+      "ticker": "ENEA.ST",
+      "isin": "SE0009697220",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enento-group-equity-report.html",
+      "ticker": "ENENTO.HE",
+      "isin": "FI4000123195",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enersense-international-equity-report.html",
+      "ticker": "ESENSE.HE",
+      "isin": "FI4000301585",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enersize-equity-report.html",
+      "ticker": "ENERS.ST",
+      "isin": "FI4000233317",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "engcon-equity-report.html",
+      "ticker": "ENGCON-B.ST",
+      "isin": "SE0017769847",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ennogie-solar-group-equity-report.html",
+      "ticker": "ESG.CO",
+      "isin": "DK0010305077",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enorama-pharma-equity-report.html",
+      "ticker": "ERMA.ST",
+      "isin": "SE0008216329",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "entra-equity-report.html",
+      "ticker": "ENTRA.OL",
+      "isin": "NO0010716418",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "enzymatica-equity-report.html",
+      "ticker": "ENZY.ST",
+      "isin": "SE0003943620",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "eolus-vind-equity-report.html",
+      "ticker": "EOLU-B.ST",
+      "isin": "SE0007075056",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "epiroc-equity-report.html",
+      "ticker": "EPI-A.ST",
+      "isin": "SE0015658109",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "episurf-medical-equity-report.html",
+      "ticker": "EPIS-B.ST",
+      "isin": "SE0003491562",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "equinor-equity-report.html",
+      "ticker": "EQNR.OL",
+      "isin": "NO0010096985",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ericsson-equity-report.html",
+      "ticker": "ERIC-B.ST",
+      "isin": "SE0000108656",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "erria-equity-report.html",
+      "ticker": "ERRIA.CO",
+      "isin": "DK0060101483",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "essity-equity-report.html",
+      "ticker": "ESSITY-B.ST",
+      "isin": "SE0009922164",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "etteplan-equity-report.html",
+      "ticker": "ETTE.HE",
+      "isin": "FI0009008650",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "europris-equity-report.html",
+      "ticker": "EPR.OL",
+      "isin": "NO0010735343",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "evaxion-biotech-equity-report.html",
+      "ticker": "EVAX",
+      "isin": "US29970R3030",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "evolution-equity-report.html",
+      "ticker": "EVO.ST",
+      "isin": "SE0012673267",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ework-group-equity-report.html",
+      "ticker": "EWRK.ST",
+      "isin": "SE0002402701",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "exel-composites-equity-report.html",
+      "ticker": "EXL1V.HE",
+      "isin": "FI0009007306",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "expres2ion-biotech-holding-equity-report.html",
+      "ticker": "EXPRS2.ST",
+      "isin": "SE0023261292",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "exsitec-holding-equity-report.html",
+      "ticker": "EXS.ST",
+      "isin": "SE0014035762",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "f-secure-equity-report.html",
+      "ticker": "FSECURE.HE",
+      "isin": "FI4000519236",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fabege-equity-report.html",
+      "ticker": "FABG.ST",
+      "isin": "SE0011166974",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "faron-pharmaceuticals-oy-equity-report.html",
+      "ticker": "FARN.L",
+      "isin": "FI4000153309",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker FARN.L"
+    },
+    {
+      "file": "fasadgruppen-group-equity-report.html",
+      "ticker": "FG.ST",
+      "isin": "SE0015195771",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fast-ejendom-danmark-equity-report.html",
+      "ticker": "FED.CO",
+      "isin": "DK0060522746",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fastighets-ab-balder-equity-report.html",
+      "ticker": "BALD-B.ST",
+      "isin": "SE0017832488",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fastighets-ab-trianon-equity-report.html",
+      "ticker": "TRIAN-B.ST",
+      "isin": "SE0018013658",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fastpasscorp-equity-report.html",
+      "ticker": "FASTPC.CO",
+      "isin": "DK0060568145",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ferrari-equity-report.html",
+      "ticker": "RACE.MI",
+      "isin": "NL0011585146",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2024
+    },
+    {
+      "file": "ferroamp-equity-report.html",
+      "ticker": "FERRO.ST",
+      "isin": "SE0012229920",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ferronordic-equity-report.html",
+      "ticker": "FNM.ST",
+      "isin": "SE0005468717",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fingerprint-cards-equity-report.html",
+      "ticker": "FING-B.ST",
+      "isin": "SE0026141665",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "finnair-equity-report.html",
+      "ticker": "FIA1S.HE",
+      "isin": "FI4000567029",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "firefly-equity-report.html",
+      "ticker": "FIRE.ST",
+      "isin": "SE0000395428",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "firstfarms-equity-report.html",
+      "ticker": "FFARMS.CO",
+      "isin": "DK0060056166",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "flerie-equity-report.html",
+      "ticker": "FLERIE.ST",
+      "isin": "SE0022447348",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "flexqube-equity-report.html",
+      "ticker": "FLEXQ.ST",
+      "isin": "SE0010547075",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "flowscape-technology-equity-report.html",
+      "ticker": "FLOWS.ST",
+      "isin": "SE0018042046",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "flsmidth-and-co-equity-report.html",
+      "ticker": "FLS.CO",
+      "isin": "DK0010234467",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "flugger-group-equity-report.html",
+      "ticker": "FLUG-B.CO",
+      "isin": "DK0010218189",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fluicell-equity-report.html",
+      "ticker": "FLUI.ST",
+      "isin": "SE0023595459",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fluoguide-equity-report.html",
+      "ticker": "FLUO.ST",
+      "isin": "DK0061123312",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fm-mattsson-mora-group-equity-report.html",
+      "ticker": "FMM-B.ST",
+      "isin": "SE0018040883",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fom-technologies-equity-report.html",
+      "ticker": "FOM.CO",
+      "isin": "DK0061278199",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fondia-equity-report.html",
+      "ticker": "FONDIA.HE",
+      "isin": "FI4000232913",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fortinova-fastigheter-equity-report.html",
+      "ticker": "FNOVA-B.ST",
+      "isin": "SE0014608915",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fractal-gaming-group-equity-report.html",
+      "ticker": "FRACTL.ST",
+      "isin": "SE0015504477",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fragbite-group-equity-report.html",
+      "ticker": "FRAG.ST",
+      "isin": "SE0023287347",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fram-skandinavien-equity-report.html",
+      "ticker": "FRAM-B.ST",
+      "isin": "SE0010296269",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "freemelt-holding-equity-report.html",
+      "ticker": "FREEM.ST",
+      "isin": "SE0011167170",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "freja-eid-group-equity-report.html",
+      "ticker": "FREJA.ST",
+      "isin": "SE0015950308",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "frisq-holding-equity-report.html",
+      "ticker": "NOSA.ST",
+      "isin": "SE0006994539",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "fsport-equity-report.html",
+      "ticker": "FSPORT.ST",
+      "isin": "SE0016288641",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "g5-entertainment-equity-report.html",
+      "ticker": "G5EN.ST",
+      "isin": "SE0001824004",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gabather-equity-report.html",
+      "ticker": "GABA.ST",
+      "isin": "SE0010869552",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gabriel-holding-equity-report.html",
+      "ticker": "GABR.CO",
+      "isin": "DK0060124691",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gaming-corps-equity-report.html",
+      "ticker": "GCOR.ST",
+      "isin": "SE0014694691",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gapwaves-equity-report.html",
+      "ticker": "GAPW-B.ST",
+      "isin": "SE0009155518",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "garo-aktiebolag-equity-report.html",
+      "ticker": "GARO.ST",
+      "isin": "SE0015812417",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gasporox-equity-report.html",
+      "ticker": "GPX.ST",
+      "isin": "SE0008991624",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "generic-sweden-equity-report.html",
+      "ticker": "GENI.ST",
+      "isin": "SE0001790791",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "genmab-equity-report.html",
+      "ticker": "GMAB.CO",
+      "isin": "DK0010272202",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "genova-property-group-equity-report.html",
+      "ticker": "GPG.ST",
+      "isin": "SE0007184189",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "genovis-ab-publ-equity-report.html",
+      "ticker": "GENO.ST",
+      "isin": "SE0002485979",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "german-high-street-properties-equity-report.html",
+      "ticker": "GERHSP.CO",
+      "isin": "DK0060093524",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "getinge-equity-report.html",
+      "ticker": "GETI-B.ST",
+      "isin": "SE0000202624",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gigante-salmon-as-equity-report.html",
+      "ticker": "GIGA.OL",
+      "isin": "NO0011013765",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "glaston-equity-report.html",
+      "ticker": "GLA1V.HE",
+      "isin": "FI4000587340",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "glunz-and-jensen-holding-equity-report.html",
+      "ticker": "GJ.CO",
+      "isin": "DK0010249309",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gn-store-nord-equity-report.html",
+      "ticker": "GN.CO",
+      "isin": "DK0010272632",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gofore-equity-report.html",
+      "ticker": "GOFORE.HE",
+      "isin": "FI4000283130",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gomspace-group-equity-report.html",
+      "ticker": "GOMX.ST",
+      "isin": "SE0008348304",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "goodbye-kansas-group-equity-report.html",
+      "ticker": "GBK.ST",
+      "isin": "SE0021627353",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "goodtech-equity-report.html",
+      "ticker": "GOD.OL",
+      "isin": "NO0004913609",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "granges-equity-report.html",
+      "ticker": "GRNG.ST",
+      "isin": "SE0006288015",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "greater-than-equity-report.html",
+      "ticker": "GREAT.ST",
+      "isin": "SE0005881554",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "green-landscaping-group-equity-report.html",
+      "ticker": "GREEN.ST",
+      "isin": "SE0010985028",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "greenmobility-equity-report.html",
+      "ticker": "GREENM.CO",
+      "isin": "DK0060817898",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "grieg-seafood-equity-report.html",
+      "ticker": "GSF.OL",
+      "isin": "NO0010365521",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gruvaktiebolaget-viscaria-equity-report.html",
+      "ticker": "VISC.ST",
+      "isin": "SE0021148160",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "guard-therapeutics-international-equity-report.html",
+      "ticker": "GUARD.ST",
+      "isin": "SE0021181559",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gubra-equity-report.html",
+      "ticker": "GUBRA.CO",
+      "isin": "DK0062266474",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "guideline-geo-equity-report.html",
+      "ticker": "GGEO.ST",
+      "isin": "SE0005562014",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "gyldendal-equity-report.html",
+      "ticker": "GYLD-B.CO",
+      "isin": "DK0010247600",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "h-and-m-hennes-and-mauritz-equity-report.html",
+      "ticker": "HM-B.ST",
+      "isin": "SE0000106270",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "h-h-international-equity-report.html",
+      "ticker": "HH.CO",
+      "isin": "DK0015202451",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "h-lundbeck-equity-report.html",
+      "ticker": "HLUN-B.CO",
+      "isin": "DK0061804770",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "h100-group-equity-report.html",
+      "ticker": "GS9.F",
+      "isin": "SE0009580756",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hacksaw-equity-report.html",
+      "ticker": "HACK.ST",
+      "isin": "SE0025138357",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "haki-safety-equity-report.html",
+      "ticker": "HAKI-B.ST",
+      "isin": "SE0000122673",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hansa-biopharma-equity-report.html",
+      "ticker": "HNSA.ST",
+      "isin": "SE0002148817",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hanza-equity-report.html",
+      "ticker": "HANZA.ST",
+      "isin": "SE0005878543",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "harboes-bryggeri-equity-report.html",
+      "ticker": "HARB-B.CO",
+      "isin": "DK0060014751",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "havila-shipping-equity-report.html",
+      "ticker": "HAVI.OL",
+      "isin": "NO0010257728",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "haypp-group-equity-report.html",
+      "ticker": "HAYPP.ST",
+      "isin": "SE0016829469",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "heba-fastighets-equity-report.html",
+      "ticker": "HEBA-B.ST",
+      "isin": "SE0017911480",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hedera-group-equity-report.html",
+      "ticker": "HEGR.ST",
+      "isin": "SE0007815113",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "heimstaden-equity-report.html",
+      "ticker": "HEIM-PREF.ST",
+      "isin": "SE0015949037",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "heliospectra-equity-report.html",
+      "ticker": "HELIO.ST",
+      "isin": "SE0005933082",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hemnet-group-equity-report.html",
+      "ticker": "HEM.ST",
+      "isin": "SE0015671995",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "herantis-pharma-equity-report.html",
+      "ticker": "HRTIS.HE",
+      "isin": "FI4000087861",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexagon-composites-equity-report.html",
+      "ticker": "HEX.OL",
+      "isin": "NO0003067902",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexagon-equity-report.html",
+      "ticker": "HEXA-B.ST",
+      "isin": "SE0015961909",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexagon-purus-equity-report.html",
+      "ticker": "HPUR.OL",
+      "isin": "NO0010904923",
+      "pageYear": 2025,
+      "status": "identity_mismatch",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexatronic-group-equity-report.html",
+      "ticker": "HTRO.ST",
+      "isin": "SE0018040677",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexicon-equity-report.html",
+      "ticker": "HEXI.ST",
+      "isin": "SE0004898799",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hexpol-equity-report.html",
+      "ticker": "HPOL-B.ST",
+      "isin": "SE0007074281",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hiab-equity-report.html",
+      "ticker": "HIAB.HE",
+      "isin": "FI4000571013",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "high-coast-distillery-equity-report.html",
+      "ticker": "HIGHCO-B.ST",
+      "isin": "SE0003848613",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hkscan-equity-report.html",
+      "ticker": "HKFOODS.HE",
+      "isin": "FI0009006308",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hms-networks-equity-report.html",
+      "ticker": "HMS.ST",
+      "isin": "SE0009997018",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hoegh-autoliners-equity-report.html",
+      "ticker": "HAUTO.OL",
+      "isin": "NO0011082075",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "holmen-equity-report.html",
+      "ticker": "HOLM-B.ST",
+      "isin": "SE0011090018",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "honkarakenne-equity-report.html",
+      "ticker": "HONBS.HE",
+      "isin": "FI0009900104",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hove-equity-report.html",
+      "ticker": "HOVE.CO",
+      "isin": "DK0061675279",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "huddly-as-equity-report.html",
+      "ticker": "HDLY.OL",
+      "isin": "NO0013470534",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hufvudstaden-equity-report.html",
+      "ticker": "HUFV-A.ST",
+      "isin": "SE0000170375",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "huhtamaki-equity-report.html",
+      "ticker": "HUH1V.HE",
+      "isin": "FI0009000459",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "humana-equity-report.html",
+      "ticker": "HUM.ST",
+      "isin": "SE0008040653",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "humble-group-equity-report.html",
+      "ticker": "HUMBLE.ST",
+      "isin": "SE0006261046",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "hunter-group-equity-report.html",
+      "ticker": "HUNT.OL",
+      "isin": "NO0012953720",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "huscompagniet-equity-report.html",
+      "ticker": "HUSCO.CO",
+      "isin": "DK0061412855",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "husqvarna-equity-report.html",
+      "ticker": "HUSQ-B.ST",
+      "isin": "SE0001662230",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "i-tech-equity-report.html",
+      "ticker": "ITECH.ST",
+      "isin": "SE0011167725",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "icelandic-salmon-as-equity-report.html",
+      "ticker": "ISLAX.OL",
+      "isin": "NO0010724701",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "iconovo-equity-report.html",
+      "ticker": "ICO.ST",
+      "isin": "SE0010868943",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "image-systems-equity-report.html",
+      "ticker": "IS.ST",
+      "isin": "SE0006421871",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "immunovia-equity-report.html",
+      "ticker": "IMMNOV.ST",
+      "isin": "SE0006091997",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "impact-coatings-equity-report.html",
+      "ticker": "IMPC.ST",
+      "isin": "SE0001279142",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "impero-equity-report.html",
+      "ticker": "IMPERO.CO",
+      "isin": "DK0061536828",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "implantica-equity-report.html",
+      "ticker": "IMP-A-SDB.ST",
+      "isin": "SE0014855029",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "incap-equity-report.html",
+      "ticker": "ICP1V.HE",
+      "isin": "FI0009006407",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "incoax-networks-equity-report.html",
+      "ticker": "INCOAX.ST",
+      "isin": "SE0009832595",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "indutrade-equity-report.html",
+      "ticker": "INDT.ST",
+      "isin": "SE0001515552",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "infant-bacterial-therapeutics-equity-report.html",
+      "ticker": "IBT-B.ST",
+      "isin": "SE0008015259",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "inission-equity-report.html",
+      "ticker": "INISS-B.ST",
+      "isin": "SE0016275069",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "initiator-pharma-equity-report.html",
+      "ticker": "INIT.ST",
+      "isin": "DK0060775872",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "insplorion-equity-report.html",
+      "ticker": "INSP.ST",
+      "isin": "SE0006994943",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "instalco-equity-report.html",
+      "ticker": "INSTAL.ST",
+      "isin": "SE0017483506",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "intea-fastigheter-ab-class-b-equity-report.html",
+      "ticker": "INTEA-B.ST",
+      "isin": "SE0017072259",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "integrated-wind-solutions-equity-report.html",
+      "ticker": "IWS.OL",
+      "isin": "NO0013461350",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "integrum-equity-report.html",
+      "ticker": "INTEG-B.ST",
+      "isin": "SE0009807266",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "intervacc-equity-report.html",
+      "ticker": "IVACC.ST",
+      "isin": "SE0009607252",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "investors-house-equity-report.html",
+      "ticker": "INVEST.HE",
+      "isin": "FI0009900559",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "invisio-equity-report.html",
+      "ticker": "IVSO.ST",
+      "isin": "SE0001200015",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "inwido-equity-report.html",
+      "ticker": "INWI.ST",
+      "isin": "SE0006220018",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "irisity-equity-report.html",
+      "ticker": "IRIS.ST",
+      "isin": "SE0005365681",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "irlab-therapeutics-equity-report.html",
+      "ticker": "IRLAB-A.ST",
+      "isin": "SE0012675361",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "isofol-medical-equity-report.html",
+      "ticker": "ISOFOL.ST",
+      "isin": "SE0009581051",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "iss-equity-report.html",
+      "ticker": "ISS.CO",
+      "isin": "DK0060542181",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "itab-shop-concept-equity-report.html",
+      "ticker": "ITAB.ST",
+      "isin": "SE0015962097",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "izafe-group-equity-report.html",
+      "ticker": "IZAFE-B.ST",
+      "isin": "SE0003656834",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "jeudan-equity-report.html",
+      "ticker": "JDAN.CO",
+      "isin": "DK0061282464",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "jlt-mobile-computers-equity-report.html",
+      "ticker": "JLT.ST",
+      "isin": "SE0000725624",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "jm-equity-report.html",
+      "ticker": "JM.ST",
+      "isin": "SE0000806994",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "john-mattson-fastighetsforetagen-equity-report.html",
+      "ticker": "JOMA.ST",
+      "isin": "SE0012481364",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "k-fast-holding-equity-report.html",
+      "ticker": "KFAST-B.ST",
+      "isin": "SE0016101679",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kabe-group-ab-publ-equity-report.html",
+      "ticker": "KABE-B.ST",
+      "isin": "SE0000107724",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kakel-max-equity-report.html",
+      "ticker": "KAKEL.ST",
+      "isin": "SE0009921075",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kalleback-property-invest-equity-report.html",
+      "ticker": "KAPIAB.ST",
+      "isin": "SE0005704079",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kalmar-equity-report.html",
+      "ticker": "KALMAR.HE",
+      "isin": "FI4000571054",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kamux-equity-report.html",
+      "ticker": "KAMUX.HE",
+      "isin": "FI4000206750",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "karnov-group-equity-report.html",
+      "ticker": "KAR.ST",
+      "isin": "SE0012323715",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kb-components-equity-report.html",
+      "ticker": "5G7.F",
+      "isin": "SE0022725743",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker 5G7.F"
+    },
+    {
+      "file": "kebni-equity-report.html",
+      "ticker": "KEBNI-B.ST",
+      "isin": "SE0012904803",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kemira-equity-report.html",
+      "ticker": "KEMIRA.HE",
+      "isin": "FI0009004824",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kempower-equity-report.html",
+      "ticker": "KEMPOWR.HE",
+      "isin": "FI4000513593",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kentima-holding-equity-report.html",
+      "ticker": "KENH.ST",
+      "isin": "SE0005100757",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "keskisuomalainen-equity-report.html",
+      "ticker": "KSL.HE",
+      "isin": "FI0009007546",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kesla-equity-report.html",
+      "ticker": "KELAS.HE",
+      "isin": "FI0009900237",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kid-equity-report.html",
+      "ticker": "KID.OL",
+      "isin": "NO0010743545",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kinda-brave-entertainment-group-equity-report.html",
+      "ticker": "BRAVE.ST",
+      "isin": "SE0021921822",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kitron-equity-report.html",
+      "ticker": "KIT.OL",
+      "isin": "NO0003079709",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kjell-group-equity-report.html",
+      "ticker": "KJELL.ST",
+      "isin": "SE0028354936",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "klarabo-sverige-equity-report.html",
+      "ticker": "KLARA-B.ST",
+      "isin": "SE0010832287",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "klaria-pharma-holding-ab-publ-equity-report.html",
+      "ticker": "KLAR.ST",
+      "isin": "SE0007280326",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "klaveness-combination-carriers-equity-report.html",
+      "ticker": "KCC.OL",
+      "isin": "NO0010833262",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "knowit-equity-report.html",
+      "ticker": "KNOW.ST",
+      "isin": "SE0000421273",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kobenhavns-lufthavne-equity-report.html",
+      "ticker": "KBHL.CO",
+      "isin": "DK0010201102",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kojamo-equity-report.html",
+      "ticker": "LUMO.HE",
+      "isin": "FI4000312251",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "komplett-equity-report.html",
+      "ticker": "KOMPL.OL",
+      "isin": "NO0011016040",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "konecranes-equity-report.html",
+      "ticker": "KCR.HE",
+      "isin": "FI0009005870",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kongsberg-automotive-equity-report.html",
+      "ticker": "KOA.OL",
+      "isin": "NO0003033102",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kongsberg-gruppen-equity-report.html",
+      "ticker": "KOG.OL",
+      "isin": "NO0013536151",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kongsberg-maritime-equity-report.html",
+      "ticker": "KMAR.OL",
+      "isin": "NO0013697029",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "konsolidator-equity-report.html",
+      "ticker": "KONSOL.CO",
+      "isin": "DK0061113511",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "kontigo-care-equity-report.html",
+      "ticker": "KONT.ST",
+      "isin": "SE0007075247",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "koskisen-equity-report.html",
+      "ticker": "EZ8.SG",
+      "isin": "FI4000533005",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker EZ8.SG"
+    },
+    {
+      "file": "kreate-group-equity-report.html",
+      "ticker": "KREATE.HE",
+      "isin": "FI4000476866",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lagercrantz-group-equity-report.html",
+      "ticker": "LAGR-B.ST",
+      "isin": "SE0014990966",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "lammhults-design-group-equity-report.html",
+      "ticker": "LAMM-B.ST",
+      "isin": "SE0000386138",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "leaddesk-oy-equity-report.html",
+      "ticker": "LEADD.HE",
+      "isin": "FI4000364120",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lemonsoft-equity-report.html",
+      "ticker": "LEMON.HE",
+      "isin": "FI4000512678",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "leroy-seafood-group-equity-report.html",
+      "ticker": "LSG.OL",
+      "isin": "NO0003096208",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lifco-equity-report.html",
+      "ticker": "LIFCO-B.ST",
+      "isin": "SE0015949201",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lifecare-as-equity-report.html",
+      "ticker": "LIFE.OL",
+      "isin": "NO0013355859",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lifeclean-international-equity-report.html",
+      "ticker": "LCLEAN.ST",
+      "isin": "SE0014829271",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lime-technologies-equity-report.html",
+      "ticker": "LIME.ST",
+      "isin": "SE0011870195",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lindab-international-equity-report.html",
+      "ticker": "LIAB.ST",
+      "isin": "SE0001852419",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lindex-group-equity-report.html",
+      "ticker": "LINDEX.HE",
+      "isin": "FI0009000251",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "link-mobility-group-holding-equity-report.html",
+      "ticker": "LINK.OL",
+      "isin": "NO0010894231",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "liqtech-international-equity-report.html",
+      "ticker": "LIQT",
+      "isin": "US53632A3005",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "litium-equity-report.html",
+      "ticker": "LITI.ST",
+      "isin": "SE0007387246",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ll-lucky-games-equity-report.html",
+      "ticker": "EMB.ST",
+      "isin": "SE0015797873",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "logistea-equity-report.html",
+      "ticker": "LOGI-B.ST",
+      "isin": "SE0017131337",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "loomis-equity-report.html",
+      "ticker": "LOOMIS.ST",
+      "isin": "SE0014504817",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lumenradio-equity-report.html",
+      "ticker": "LUMEN.ST",
+      "isin": "SE0019072158",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "luxbright-equity-report.html",
+      "ticker": "LXB.ST",
+      "isin": "SE0015192075",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lyckegard-group-equity-report.html",
+      "ticker": "LYGRD.ST",
+      "isin": "SE0017160575",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "lyko-group-equity-report.html",
+      "ticker": "LYKO-A.ST",
+      "isin": "SE0010468918",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "m-o-b-a-network-equity-report.html",
+      "ticker": "MOBA.ST",
+      "isin": "SE0016277909",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "maersk-equity-report.html",
+      "ticker": "MAERSK-B.CO",
+      "isin": "DK0010244508",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mag-interactive-equity-report.html",
+      "ticker": "MAGI.ST",
+      "isin": "SE0010520908",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "magle-chemoswed-holding-equity-report.html",
+      "ticker": "MAGLE.ST",
+      "isin": "SE0014401014",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "magnora-equity-report.html",
+      "ticker": "MGN.OL",
+      "isin": "NO0010187032",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "maha-energy-equity-report.html",
+      "ticker": "MAHA-A.ST",
+      "isin": "SE0008374383",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "malmbergs-elektriska-equity-report.html",
+      "ticker": "MEAB-B.ST",
+      "isin": "SE0000507659",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mantex-equity-report.html",
+      "ticker": "MANTEX.ST",
+      "isin": "SE0023467451",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "marimekko-equity-report.html",
+      "ticker": "MEKKO.HE",
+      "isin": "FI0009007660",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "martela-equity-report.html",
+      "ticker": "MARAS.HE",
+      "isin": "FI0009900385",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "masoval-as-equity-report.html",
+      "ticker": "MAS.OL",
+      "isin": "NO0010974983",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "matas-equity-report.html",
+      "ticker": "MATAS.CO",
+      "isin": "DK0060497295",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "maven-wireless-sweden-equity-report.html",
+      "ticker": "MAVEN.ST",
+      "isin": "SE0015961180",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mavshack-equity-report.html",
+      "ticker": "MAV.ST",
+      "isin": "SE0020998854",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "medicover-equity-report.html",
+      "ticker": "MCOV-B.ST",
+      "isin": "SE0009778848",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "medistim-equity-report.html",
+      "ticker": "MEDI.OL",
+      "isin": "NO0010159684",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "medivir-equity-report.html",
+      "ticker": "0GP7.L",
+      "isin": "SE0020181014",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker 0GP7.L"
+    },
+    {
+      "file": "meko-equity-report.html",
+      "ticker": "MEKO.ST",
+      "isin": "SE0002110064",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mendus-equity-report.html",
+      "ticker": "IMMU.ST",
+      "isin": "SE0022239950",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mentice-equity-report.html",
+      "ticker": "MNTC.ST",
+      "isin": "SE0012673291",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "metsa-board-equity-report.html",
+      "ticker": "METSB",
+      "isin": "FI0009000665",
+      "pageYear": 2025,
+      "status": "lookup_failed",
+      "reason": "No exact Wisdom company match found for ticker METSB"
+    },
+    {
+      "file": "mgi-media-and-games-invest-se-equity-report.html",
+      "ticker": "M8G.ST",
+      "isin": "SE0018538068",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "micro-systemation-equity-report.html",
+      "ticker": "MSAB-B.ST",
+      "isin": "SE0000526626",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "midsona-equity-report.html",
+      "ticker": "MSON-B.ST",
+      "isin": "SE0000565228",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "midsummer-equity-report.html",
+      "ticker": "MIDS.ST",
+      "isin": "SE0011281757",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mildef-group-equity-report.html",
+      "ticker": "MILDEF.ST",
+      "isin": "SE0016074249",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "minesto-equity-report.html",
+      "ticker": "MINEST.ST",
+      "isin": "SE0007578141",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mips-equity-report.html",
+      "ticker": "MIPS.ST",
+      "isin": "SE0009216278",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "moberg-pharma-equity-report.html",
+      "ticker": "MOB.ST",
+      "isin": "SE0020353928",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "modelon-equity-report.html",
+      "ticker": "MODEL.ST",
+      "isin": "SE0023112438",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "modern-times-group-mtg-equity-report.html",
+      "ticker": "MTG-B.ST",
+      "isin": "SE0018012494",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "modulight-equity-report.html",
+      "ticker": "MODU.HE",
+      "isin": "FI4000511506",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "modus-therapeutics-holding-equity-report.html",
+      "ticker": "MODTX.ST",
+      "isin": "SE0015987904",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "momentum-group-equity-report.html",
+      "ticker": "MMGR-B.ST",
+      "isin": "SE0017562523",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "monsenso-equity-report.html",
+      "ticker": "MONSO.CO",
+      "isin": "DK0061277977",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "movebybike-europe-equity-report.html",
+      "ticker": "MBBAB.ST",
+      "isin": "SE0029530138",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "movinn-equity-report.html",
+      "ticker": "MOVINN.CO",
+      "isin": "DK0061555539",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mowi-equity-report.html",
+      "ticker": "MOWI.OL",
+      "isin": "NO0003054108",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mpc-container-ships-equity-report.html",
+      "ticker": "MPCC.OL",
+      "isin": "NO0010791353",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mt-hojgaard-holding-equity-report.html",
+      "ticker": "MTHH.CO",
+      "isin": "DK0010255975",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "multiconsult-equity-report.html",
+      "ticker": "MULTI.OL",
+      "isin": "NO0010734338",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "munters-group-equity-report.html",
+      "ticker": "MTRS.ST",
+      "isin": "SE0009806607",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "musti-group-equity-report.html",
+      "ticker": "MUSTI.HE",
+      "isin": "FI4000410758",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "mycronic-equity-report.html",
+      "ticker": "MYCR.ST",
+      "isin": "SE0025158629",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nanexa-equity-report.html",
+      "ticker": "NANEXA.ST",
+      "isin": "SE0007074166",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nanoform-finland-equity-report.html",
+      "ticker": "NANOFH.HE",
+      "isin": "FI4000330972",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nanologica-equity-report.html",
+      "ticker": "NICA.ST",
+      "isin": "SE0005454873",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "napatech-equity-report.html",
+      "ticker": "NAPA.OL",
+      "isin": "DK0060520450",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "navamedic-equity-report.html",
+      "ticker": "NAVA.OL",
+      "isin": "NO0010205966",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ncab-group-equity-report.html",
+      "ticker": "NCAB.ST",
+      "isin": "SE0017160773",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nederman-holding-equity-report.html",
+      "ticker": "NMAN.ST",
+      "isin": "SE0011204510",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nekkar-equity-report.html",
+      "ticker": "NKR.OL",
+      "isin": "NO0003049405",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nel-equity-report.html",
+      "ticker": "NEL.OL",
+      "isin": "NO0010081235",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nelly-group-equity-report.html",
+      "ticker": "NELLY.ST",
+      "isin": "SE0015245535",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "neobo-fastigheter-equity-report.html",
+      "ticker": "NEOBO.ST",
+      "isin": "SE0005034550",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "neola-medical-equity-report.html",
+      "ticker": "NEOLA.ST",
+      "isin": "SE0014829255",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "neonode-equity-report.html",
+      "ticker": "NEON",
+      "isin": "US64051M7092",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "neovici-holding-ab-ser-b-equity-report.html",
+      "ticker": "NEO-B.ST",
+      "isin": "SE0016830038",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nepa-equity-report.html",
+      "ticker": "NEPA.ST",
+      "isin": "SE0008066302",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "net-insight-equity-report.html",
+      "ticker": "NETI-B.ST",
+      "isin": "SE0000366098",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "netcompany-group-equity-report.html",
+      "ticker": "NETC.CO",
+      "isin": "DK0060952919",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "netel-holding-equity-report.html",
+      "ticker": "NETEL.ST",
+      "isin": "SE0016798417",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "netum-group-equity-report.html",
+      "ticker": "NETUM.HE",
+      "isin": "FI4000390943",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "new-bubbleroom-sweden-equity-report.html",
+      "ticker": "BBROOM.ST",
+      "isin": "SE0016288476",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "new-nordic-healthbrands-equity-report.html",
+      "ticker": "NNH.ST",
+      "isin": "SE0001838038",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "new-wave-group-equity-report.html",
+      "ticker": "NEWA-B.ST",
+      "isin": "SE0020356970",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "newbury-pharmaceuticals-equity-report.html",
+      "ticker": "NEWBRY.ST",
+      "isin": "SE0015244884",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nexam-chemical-holding-equity-report.html",
+      "ticker": "NEXAM.ST",
+      "isin": "SE0005101003",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nexcom-equity-report.html",
+      "ticker": "NEXCOM.CO",
+      "isin": "DK0061417144",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nexstim-equity-report.html",
+      "ticker": "NXTMH.HE",
+      "isin": "FI4000506811",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nextcell-pharma-equity-report.html",
+      "ticker": "NXTCL.ST",
+      "isin": "SE0009723125",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ngs-group-equity-report.html",
+      "ticker": "NGS.ST",
+      "isin": "SE0009947708",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nibe-industrier-equity-report.html",
+      "ticker": "NIBE-B.ST",
+      "isin": "SE0015988019",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nicoccino-holding-equity-report.html",
+      "ticker": "NICO.ST",
+      "isin": "SE0005506185",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nilorngruppen-equity-report.html",
+      "ticker": "NIL-B.ST",
+      "isin": "SE0007100342",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nilsson-special-vehicles-equity-report.html",
+      "ticker": "NILS.ST",
+      "isin": "SE0007702949",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nimbus-group-equity-report.html",
+      "ticker": "BOAT.ST",
+      "isin": "SE0015407390",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nip-group-equity-report.html",
+      "ticker": "NIPG",
+      "isin": "US6545032004",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nitro-games-equity-report.html",
+      "ticker": "NITRO.ST",
+      "isin": "FI4000242961",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nivika-fastigheter-equity-report.html",
+      "ticker": "NIVI-B.ST",
+      "isin": "SE0017083272",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nkt-equity-report.html",
+      "ticker": "NKT.CO",
+      "isin": "DK0010287663",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nnit-equity-report.html",
+      "ticker": "NNIT.CO",
+      "isin": "DK0060580512",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nobia-equity-report.html",
+      "ticker": "NOBI.ST",
+      "isin": "SE0028900134",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "noho-partners-equity-report.html",
+      "ticker": "NOHO.HE",
+      "isin": "FI4000064332",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nokian-renkaat-equity-report.html",
+      "ticker": "TYRES.HE",
+      "isin": "FI0009005318",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nolato-equity-report.html",
+      "ticker": "NOLA-B.ST",
+      "isin": "SE0015962477",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "noram-drilling-as-equity-report.html",
+      "ticker": "NORAM.OL",
+      "isin": "NO0010360019",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norbit-equity-report.html",
+      "ticker": "NORBT.OL",
+      "isin": "NO0010856511",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norconsult-equity-report.html",
+      "ticker": "NORCO.OL",
+      "isin": "NO0013052209",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordhealth-as-equity-report.html",
+      "ticker": "NORDH.OL",
+      "isin": "NO0011002651",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordic-flanges-group-equity-report.html",
+      "ticker": "NFGAB.ST",
+      "isin": "SE0023641311",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordic-halibut-as-equity-report.html",
+      "ticker": "NOHAL.OL",
+      "isin": "NO0003058109",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordic-iron-ore-equity-report.html",
+      "ticker": "NIO.ST",
+      "isin": "SE0011528017",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordic-level-group-ab-publ-equity-report.html",
+      "ticker": "LEVEL.ST",
+      "isin": "SE0012313302",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordic-semiconductor-equity-report.html",
+      "ticker": "NOD.OL",
+      "isin": "NO0003055501",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordisk-bergteknik-equity-report.html",
+      "ticker": "NORB-B.ST",
+      "isin": "SE0015812128",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norditek-group-equity-report.html",
+      "ticker": "NOTEK.ST",
+      "isin": "SE0016843486",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nordrest-holding-equity-report.html",
+      "ticker": "NREST.ST",
+      "isin": "SE0022088217",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norsk-hydro-equity-report.html",
+      "ticker": "NHY.OL",
+      "isin": "NO0005052605",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norske-skog-equity-report.html",
+      "ticker": "NSKOG.OL",
+      "isin": "NO0010861115",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "north-media-equity-report.html",
+      "ticker": "NORTHM.CO",
+      "isin": "DK0010270347",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "norwegian-air-shuttle-equity-report.html",
+      "ticker": "NAS.OL",
+      "isin": "NO0010196140",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "note-equity-report.html",
+      "ticker": "NOTE.ST",
+      "isin": "SE0001161654",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "novotek-equity-report.html",
+      "ticker": "NTEK-B.ST",
+      "isin": "SE0000567752",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nrc-group-equity-report.html",
+      "ticker": "NRC.OL",
+      "isin": "NO0003679102",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ntg-nordic-transport-group-equity-report.html",
+      "ticker": "NTG.CO",
+      "isin": "DK0061141215",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "nykode-therapeutics-as-equity-report.html",
+      "ticker": "NYKD.OL",
+      "isin": "NO0010714785",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oatly-group-equity-report.html",
+      "ticker": "OTLY",
+      "isin": "US67421J2078",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "odfjell-drilling-equity-report.html",
+      "ticker": "ODL.OL",
+      "isin": "BMG671801022",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "odfjell-se-equity-report.html",
+      "ticker": "ODF.OL",
+      "isin": "NO0003399909",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "odfjell-technology-equity-report.html",
+      "ticker": "OTL.OL",
+      "isin": "BMG6716L1081",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oem-international-equity-report.html",
+      "ticker": "OEM-B.ST",
+      "isin": "SE0017766843",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ogunsen-equity-report.html",
+      "ticker": "OGUN-B.ST",
+      "isin": "SE0008406151",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "okea-equity-report.html",
+      "ticker": "OKEA.OL",
+      "isin": "NO0010816895",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oncopeptides-equity-report.html",
+      "ticker": "ONCO.ST",
+      "isin": "SE0009414576",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oncozenge-equity-report.html",
+      "ticker": "ONCOZ.ST",
+      "isin": "SE0015504097",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oneflow-equity-report.html",
+      "ticker": "ONEF.ST",
+      "isin": "SE0017564461",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "online-brands-nordic-equity-report.html",
+      "ticker": "OBAB.ST",
+      "isin": "SE0017133838",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "opera-limited-equity-report.html",
+      "ticker": "OPRA",
+      "isin": "US68373M1071",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "opter-equity-report.html",
+      "ticker": "OPTER.ST",
+      "isin": "SE0016829501",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "opticept-technologies-equity-report.html",
+      "ticker": "OPTI.ST",
+      "isin": "SE0005881786",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "optomed-equity-report.html",
+      "ticker": "OPTOMED.HE",
+      "isin": "FI4000410881",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orexo-equity-report.html",
+      "ticker": "ORX.ST",
+      "isin": "SE0000736415",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "organoclick-equity-report.html",
+      "ticker": "ORGC.ST",
+      "isin": "SE0006510335",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orkla-equity-report.html",
+      "ticker": "ORK.OL",
+      "isin": "NO0003733800",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orphazyme-equity-report.html",
+      "ticker": "STRAP.CO",
+      "isin": "DK0062502894",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orron-energy-equity-report.html",
+      "ticker": "ORRON.ST",
+      "isin": "SE0000825820",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orsted-equity-report.html",
+      "ticker": "ORSTED.CO",
+      "isin": "DK0060094928",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "orthex-equity-report.html",
+      "ticker": "ORTHEX.HE",
+      "isin": "FI4000480504",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ortivus-equity-report.html",
+      "ticker": "ORTI-B.ST",
+      "isin": "SE0000123085",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ossdsign-equity-report.html",
+      "ticker": "OSSD.ST",
+      "isin": "SE0012570448",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "otello-corporation-equity-report.html",
+      "ticker": "OTEC.OL",
+      "isin": "NO0010040611",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "outokumpu-equity-report.html",
+      "ticker": "OUT1V.HE",
+      "isin": "FI0009002422",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ovaro-kiinteistosijoitus-equity-report.html",
+      "ticker": "OVARO.HE",
+      "isin": "FI4000349113",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ovzon-equity-report.html",
+      "ticker": "OVZON.ST",
+      "isin": "SE0010948711",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "oxe-marine-equity-report.html",
+      "ticker": "OXE.ST",
+      "isin": "SE0009888613",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pandox-equity-report.html",
+      "ticker": "PNDX-B.ST",
+      "isin": "SE0007100359",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "panostaja-equity-report.html",
+      "ticker": "PNA1V.HE",
+      "isin": "FI0009800379",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "paradox-interactive-equity-report.html",
+      "ticker": "PDX.ST",
+      "isin": "SE0008294953",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "park-street-equity-report.html",
+      "ticker": "PARKST-A.CO",
+      "isin": "DK0010158500",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "parken-sport-and-entertainment-equity-report.html",
+      "ticker": "PARKEN.CO",
+      "isin": "DK0010237643",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "partnera-oy-equity-report.html",
+      "ticker": "FOAMIT.HE",
+      "isin": "FI0009009559",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "paxman-equity-report.html",
+      "ticker": "PAX.ST",
+      "isin": "SE0009806284",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "peab-equity-report.html",
+      "ticker": "PEAB-B.ST",
+      "isin": "SE0000106205",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "per-aarsleff-holding-equity-report.html",
+      "ticker": "PAAL-B.CO",
+      "isin": "DK0060700516",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "petronor-e-and-p-equity-report.html",
+      "ticker": "PNOR.OL",
+      "isin": "NO0012942525",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pexip-holding-equity-report.html",
+      "ticker": "PEXIP.OL",
+      "isin": "NO0010840507",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pharmacolog-i-uppsala-equity-report.html",
+      "ticker": "PERP-B.ST",
+      "isin": "SE0022726311",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "photocat-equity-report.html",
+      "ticker": "PCAT.ST",
+      "isin": "DK0060668796",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "photocure-equity-report.html",
+      "ticker": "PHO.OL",
+      "isin": "NO0010000045",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pierce-group-equity-report.html",
+      "ticker": "PIERCE.ST",
+      "isin": "SE0015658364",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pihlajalinna-equity-report.html",
+      "ticker": "PIHLIS.HE",
+      "isin": "FI4000092556",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pila-pharma-equity-report.html",
+      "ticker": "PILA.ST",
+      "isin": "SE0015988274",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pion-group-equity-report.html",
+      "ticker": "PION-B.ST",
+      "isin": "SE0000567539",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "platzer-fastigheter-holding-equity-report.html",
+      "ticker": "PLAZ-B.ST",
+      "isin": "SE0004977692",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "polaris-media-equity-report.html",
+      "ticker": "POL.OL",
+      "isin": "NO0010466022",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "polestar-automotive-holding-uk-equity-report.html",
+      "ticker": "PSNY",
+      "isin": "US7311054099",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "polight-equity-report.html",
+      "ticker": "PLT.OL",
+      "isin": "NO0012535832",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "polygiene-group-equity-report.html",
+      "ticker": "POLYG.ST",
+      "isin": "SE0007692157",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ponsse-equity-report.html",
+      "ticker": "PON1V.HE",
+      "isin": "FI0009005078",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "powercell-sweden-equity-report.html",
+      "ticker": "PCELL.ST",
+      "isin": "SE0006425815",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "precio-fishbone-equity-report.html",
+      "ticker": "PRCO-B.ST",
+      "isin": "SE0000141137",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "precise-biometrics-equity-report.html",
+      "ticker": "PREC.ST",
+      "isin": "SE0018013849",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "precomp-solutions-equity-report.html",
+      "ticker": "PCOM-B.ST",
+      "isin": "SE0006091724",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "premium-snacks-nordic-equity-report.html",
+      "ticker": "SNX.ST",
+      "isin": "SE0006260865",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "prevas-equity-report.html",
+      "ticker": "PREV-B.ST",
+      "isin": "SE0000356008",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "pricer-equity-report.html",
+      "ticker": "PRIC-B.ST",
+      "isin": "SE0000233934",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "prime-office-equity-report.html",
+      "ticker": "PRIMOF.CO",
+      "isin": "DK0060137594",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "prisma-properties-equity-report.html",
+      "ticker": "PRISMA.ST",
+      "isin": "SE0022062055",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "proact-it-group-equity-report.html",
+      "ticker": "PACT.ST",
+      "isin": "SE0015961222",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "profilgruppen-equity-report.html",
+      "ticker": "PROF-B.ST",
+      "isin": "SE0000393860",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "profoto-holding-equity-report.html",
+      "ticker": "PRFO.ST",
+      "isin": "SE0015962147",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "promimic-equity-report.html",
+      "ticker": "PRO.ST",
+      "isin": "SE0017487242",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "prosafe-se-equity-report.html",
+      "ticker": "PRS.OL",
+      "isin": "NO0010861990",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "prostatype-genomics-equity-report.html",
+      "ticker": "PROGEN.ST",
+      "isin": "SE0023261532",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "public-property-invest-as-equity-report.html",
+      "ticker": "PUBLI.OL",
+      "isin": "SE0028799411",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "punamusta-media-equity-report.html",
+      "ticker": "REBL.HE",
+      "isin": "FI0009900468",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "q-interline-equity-report.html",
+      "ticker": "QINTER.CO",
+      "isin": "DK0061677135",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "q-linea-equity-report.html",
+      "ticker": "QLINEA.ST",
+      "isin": "SE0025420714",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "qiiwi-games-equity-report.html",
+      "ticker": "QIIWI.ST",
+      "isin": "SE0010245373",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "qleanair-equity-report.html",
+      "ticker": "QAIR.ST",
+      "isin": "SE0013382066",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "qlife-holding-equity-report.html",
+      "ticker": "QLIFE.ST",
+      "isin": "SE0022574331",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "qlucore-equity-report.html",
+      "ticker": "QCORE.ST",
+      "isin": "SE0016829824",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "qpr-software-equity-report.html",
+      "ticker": "QPR1V.HE",
+      "isin": "FI0009008668",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "qt-equity-report.html",
+      "ticker": "QTCOM.HE",
+      "isin": "FI4000198031",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "quartiers-properties-equity-report.html",
+      "ticker": "BOHO.ST",
+      "isin": "SE0009697204",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "railcare-group-equity-report.html",
+      "ticker": "RAIL.ST",
+      "isin": "SE0010441139",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "raisio-equity-report.html",
+      "ticker": "RAIVV.HE",
+      "isin": "FI0009002943",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ranplan-group-equity-report.html",
+      "ticker": "RPLAN.ST",
+      "isin": "SE0011178201",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rapala-vmc-equity-report.html",
+      "ticker": "RAP1V.HE",
+      "isin": "FI0009007355",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "raute-equity-report.html",
+      "ticker": "RAUTE.HE",
+      "isin": "FI0009004741",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "raysearch-laboratories-equity-report.html",
+      "ticker": "RAY-B.ST",
+      "isin": "SE0000135485",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "reach-subsea-equity-report.html",
+      "ticker": "REACH.OL",
+      "isin": "NO0003117202",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "realfiction-holding-equity-report.html",
+      "ticker": "REALFI.ST",
+      "isin": "SE0009920994",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rec-silicon-equity-report.html",
+      "ticker": "RECSI.OL",
+      "isin": "NO0010112675",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "recyctec-holding-ab-ser-b-equity-report.html",
+      "ticker": "RECY-B.ST",
+      "isin": "SE0014808978",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rederiaktiebolaget-gotland-equity-report.html",
+      "ticker": "GOTL-A.ST",
+      "isin": "SE0029278191",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "refine-group-equity-report.html",
+      "ticker": "REFINE.ST",
+      "isin": "SE0021021656",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rejlers-equity-report.html",
+      "ticker": "REJL-B.ST",
+      "isin": "SE0000123671",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "reka-industrial-equity-report.html",
+      "ticker": "REKA.HE",
+      "isin": "FI0009800296",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "relais-group-equity-report.html",
+      "ticker": "RELAIS.HE",
+      "isin": "FI4000391487",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "revenio-group-equity-report.html",
+      "ticker": "REG1V.HE",
+      "isin": "FI0009010912",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rheinmetall-equity-report.html",
+      "ticker": "RHM.DE",
+      "isin": "DE0007030009",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rias-equity-report.html",
+      "ticker": "RIAS-B.CO",
+      "isin": "DK0010125848",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "robit-equity-report.html",
+      "ticker": "ROBIT.HE",
+      "isin": "FI4000150016",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "roblon-equity-report.html",
+      "ticker": "RBLN-B.CO",
+      "isin": "DK0060485019",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rottneros-equity-report.html",
+      "ticker": "RROS.ST",
+      "isin": "SE0000112252",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "royal-unibrew-equity-report.html",
+      "ticker": "RBREW.CO",
+      "isin": "DK0060634707",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rtx-equity-report.html",
+      "ticker": "RTX.CO",
+      "isin": "DK0010267129",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rugvista-group-equity-report.html",
+      "ticker": "RUG.ST",
+      "isin": "SE0015659834",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rush-factory-equity-report.html",
+      "ticker": "SBI.HE",
+      "isin": "FI4000348909",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "rusta-equity-report.html",
+      "ticker": "RUSTA.ST",
+      "isin": "SE0020848356",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "s-d-standard-etc-equity-report.html",
+      "ticker": "SDSD.OL",
+      "isin": "CY0101550917",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "s2medical-equity-report.html",
+      "ticker": "S2M.ST",
+      "isin": "SE0011725084",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "saab-equity-report.html",
+      "ticker": "SAAB-B.ST",
+      "isin": "SE0021921269",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "safe-lane-gaming-b-equity-report.html",
+      "ticker": "SLG.ST",
+      "isin": "SE0020552297",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "safello-group-equity-report.html",
+      "ticker": "SFL.ST",
+      "isin": "SE0015346895",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "safeture-equity-report.html",
+      "ticker": "SFTR.ST",
+      "isin": "SE0006117297",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "saga-furs-equity-report.html",
+      "ticker": "SAGCV.HE",
+      "isin": "FI0009800551",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "salmar-equity-report.html",
+      "ticker": "SALM.OL",
+      "isin": "NO0010310956",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "salmon-evolution-equity-report.html",
+      "ticker": "SALME.OL",
+      "isin": "NO0010892094",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "saltx-technology-holding-equity-report.html",
+      "ticker": "SALT-B.ST",
+      "isin": "SE0005308541",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sandvik-equity-report.html",
+      "ticker": "SAND.ST",
+      "isin": "SE0000667891",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "saniona-equity-report.html",
+      "ticker": "SANION.ST",
+      "isin": "SE0005794617",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sanoma-equity-report.html",
+      "ticker": "SANOMA.HE",
+      "isin": "FI0009007694",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sats-equity-report.html",
+      "ticker": "SATS.OL",
+      "isin": "NO0010863285",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "saxlund-group-equity-report.html",
+      "ticker": "SAXG.ST",
+      "isin": "SE0023439500",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandi-standard-equity-report.html",
+      "ticker": "SCST.ST",
+      "isin": "SE0005999760",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandic-hotels-group-equity-report.html",
+      "ticker": "SHOT.ST",
+      "isin": "SE0007640156",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandidos-equity-report.html",
+      "ticker": "SDOS.ST",
+      "isin": "SE0005768124",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "scandinavian-chemotech-equity-report.html",
+      "ticker": "CMOTEC-B.ST",
+      "isin": "SE0009242654",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandinavian-enviro-systems-equity-report.html",
+      "ticker": "SES.ST",
+      "isin": "SE0005877560",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandinavian-investment-group-equity-report.html",
+      "ticker": "SIG.CO",
+      "isin": "DK0060038933",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandinavian-medical-solutions-equity-report.html",
+      "ticker": "SMSMED.CO",
+      "isin": "DK0061675006",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandinavian-real-heart-equity-report.html",
+      "ticker": "HEART.ST",
+      "isin": "SE0023286836",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scandinavian-tobacco-group-equity-report.html",
+      "ticker": "STG.CO",
+      "isin": "DK0060696300",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scanfil-equity-report.html",
+      "ticker": "SCANFL.HE",
+      "isin": "FI4000029905",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scatec-equity-report.html",
+      "ticker": "SCATC.OL",
+      "isin": "NO0010715139",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "schibsted-equity-report.html",
+      "ticker": "VEND.OL",
+      "isin": "NO0010736879",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "scibase-holding-equity-report.html",
+      "ticker": "SCIB.ST",
+      "isin": "SE0029277631",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sdiptech-equity-report.html",
+      "ticker": "SDIP-B.ST",
+      "isin": "SE0003756758",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "seamless-distribution-systems-equity-report.html",
+      "ticker": "SDS.ST",
+      "isin": "SE0009994445",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "seatwirl-equity-report.html",
+      "ticker": "STW.ST",
+      "isin": "SE0009242175",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sectra-equity-report.html",
+      "ticker": "SECT-B.ST",
+      "isin": "SE0022419784",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "securitas-equity-report.html",
+      "ticker": "SECU-B.ST",
+      "isin": "SE0000163594",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sedana-medical-equity-report.html",
+      "ticker": "SEDANA.ST",
+      "isin": "SE0015988373",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "selvaag-bolig-equity-report.html",
+      "ticker": "SBO.OL",
+      "isin": "NO0010612450",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sensys-gatso-group-equity-report.html",
+      "ticker": "SGG.ST",
+      "isin": "SE0020356244",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "senzagen-equity-report.html",
+      "ticker": "SENZA.ST",
+      "isin": "SE0010219626",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "senzime-equity-report.html",
+      "ticker": "SEZI.ST",
+      "isin": "SE0002478776",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "serstech-equity-report.html",
+      "ticker": "SERT.ST",
+      "isin": "SE0005365095",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "siem-offshore-equity-report.html",
+      "ticker": "SEA1.OL",
+      "isin": "KYG812291253",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "siili-solutions-equity-report.html",
+      "ticker": "SIILI.HE",
+      "isin": "FI4000043435",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "silkeborg-if-invest-equity-report.html",
+      "ticker": "PFINV.CO",
+      "isin": "DK0010128008",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "simris-alg-equity-report.html",
+      "ticker": "SIMRIS-B.ST",
+      "isin": "SE0008091664",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sinch-equity-report.html",
+      "ticker": "SINCH.ST",
+      "isin": "SE0016101844",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sintercast-equity-report.html",
+      "ticker": "SINT.ST",
+      "isin": "SE0000950982",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sitowise-group-equity-report.html",
+      "ticker": "SITOWS.HE",
+      "isin": "FI4000480215",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sivers-semiconductors-equity-report.html",
+      "ticker": "SIVE.ST",
+      "isin": "SE0003917798",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "skako-equity-report.html",
+      "ticker": "SKAKO.CO",
+      "isin": "DK0010231877",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "skane-mollan-equity-report.html",
+      "ticker": "SKMO.ST",
+      "isin": "SE0017885338",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "skanska-equity-report.html",
+      "ticker": "SKA-B.ST",
+      "isin": "SE0000113250",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "skistar-equity-report.html",
+      "ticker": "SKIS-B.ST",
+      "isin": "SE0012141687",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "sleep-cycle-equity-report.html",
+      "ticker": "SLEEP.ST",
+      "isin": "SE0015961404",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "smart-eye-equity-report.html",
+      "ticker": "SEYE.ST",
+      "isin": "SE0009268279",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "smartoptics-group-as-equity-report.html",
+      "ticker": "SMOP.OL",
+      "isin": "NO0011012502",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "soder-sportfiske-equity-report.html",
+      "ticker": "SODER.ST",
+      "isin": "SE0016276539",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "softronic-equity-report.html",
+      "ticker": "SOF-B.ST",
+      "isin": "SE0000323305",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "solar-equity-report.html",
+      "ticker": "SOLAR-B.CO",
+      "isin": "DK0010274844",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "solnaberg-property-equity-report.html",
+      "ticker": "SOLNA.ST",
+      "isin": "SE0009155211",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "solstad-offshore-equity-report.html",
+      "ticker": "SOFF.OL",
+      "isin": "NO0003080608",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "soltech-energy-sweden-equity-report.html",
+      "ticker": "SOLT.ST",
+      "isin": "SE0005392537",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "solteq-equity-report.html",
+      "ticker": "SOLTEQ.HE",
+      "isin": "FI0009007991",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sonetel-equity-report.html",
+      "ticker": "SONE.ST",
+      "isin": "SE0009580517",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "soprano-equity-report.html",
+      "ticker": "WETTERI.HE",
+      "isin": "FI0009012793",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sotkamo-silver-equity-report.html",
+      "ticker": "SOSI1.HE",
+      "isin": "SE0001057910",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sp-group-equity-report.html",
+      "ticker": "SPG.CO",
+      "isin": "DK0061027356",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spago-nanomedical-equity-report.html",
+      "ticker": "SPAGO.ST",
+      "isin": "SE0004899474",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spectracure-equity-report.html",
+      "ticker": "SPEC.ST",
+      "isin": "SE0007158118",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spectrumone-equity-report.html",
+      "ticker": "SPEONE.ST",
+      "isin": "SE0006994448",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "speqta-equity-report.html",
+      "ticker": "BRIGHT.ST",
+      "isin": "SE0017937279",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spermosens-equity-report.html",
+      "ticker": "SPERM.ST",
+      "isin": "SE0015346424",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spinnova-equity-report.html",
+      "ticker": "SPINN.HE",
+      "isin": "FI4000507595",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "spotify-technology-equity-report.html",
+      "ticker": "SPOT",
+      "isin": "LU1778762911",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "srv-yhtiot-equity-report.html",
+      "ticker": "SRV1V.HE",
+      "isin": "FI4000523675",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "ssh-communications-security-equity-report.html",
+      "ticker": "SSH1V.HE",
+      "isin": "FI0009008270",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "star-vault-equity-report.html",
+      "ticker": "SRVTF",
+      "isin": "SE0002149369",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "starbreeze-equity-report.html",
+      "ticker": "STAR-B.ST",
+      "isin": "SE0005992831",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "stendorren-fastigheter-equity-report.html",
+      "ticker": "STEF-B.ST",
+      "isin": "SE0006543344",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "stenhus-fastigheter-i-norden-equity-report.html",
+      "ticker": "SFAST.ST",
+      "isin": "SE0014956819",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "stenocare-equity-report.html",
+      "ticker": "STENO.CO",
+      "isin": "DK0061078425",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "stille-equity-report.html",
+      "ticker": "STIL.ST",
+      "isin": "SE0000998650",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "stillfront-group-equity-report.html",
+      "ticker": "SF.ST",
+      "isin": "SE0015346135",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "storytel-equity-report.html",
+      "ticker": "STORY-B.ST",
+      "isin": "SE0007439443",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "strongpoint-equity-report.html",
+      "ticker": "STRO.OL",
+      "isin": "NO0010098247",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "studentbostader-i-norden-equity-report.html",
+      "ticker": "STUDBO.ST",
+      "isin": "SE0015657697",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "studsvik-equity-report.html",
+      "ticker": "SVIK.ST",
+      "isin": "SE0000653230",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "summa-defence-equity-report.html",
+      "ticker": "SUMMA.HE",
+      "isin": "FI4000592282",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "suominen-equity-report.html",
+      "ticker": "SUY1V.HE",
+      "isin": "FI0009010862",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "surgical-science-sweden-equity-report.html",
+      "ticker": "SUS.ST",
+      "isin": "SE0014428512",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sveafastigheter-equity-report.html",
+      "ticker": "SVEAF.ST",
+      "isin": "SE0022243812",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "svedbergs-i-dalstorp-equity-report.html",
+      "ticker": "SVED-B.ST",
+      "isin": "SE0000407991",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "svenska-aerogel-holding-equity-report.html",
+      "ticker": "AERO.ST",
+      "isin": "SE0023440557",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "sweden-buyersclub-equity-report.html",
+      "ticker": "BUY.ST",
+      "isin": "SE0015660287",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "swedencare-equity-report.html",
+      "ticker": "SECARE.ST",
+      "isin": "SE0015988167",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "swedish-logistic-property-equity-report.html",
+      "ticker": "SLP-B.ST",
+      "isin": "SE0017565476",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "swedish-orphan-biovitrum-equity-report.html",
+      "ticker": "SOBI.ST",
+      "isin": "SE0000872095",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "swiss-properties-invest-equity-report.html",
+      "ticker": "SWISS.CO",
+      "isin": "DK0061805660",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "synact-pharma-equity-report.html",
+      "ticker": "SYNACT.ST",
+      "isin": "SE0008241491",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "synsam-equity-report.html",
+      "ticker": "SYNSAM.ST",
+      "isin": "SE0016829709",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "systemair-equity-report.html",
+      "ticker": "SYSR.ST",
+      "isin": "SE0016609499",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "tagmaster-equity-report.html",
+      "ticker": "TAGM-B.ST",
+      "isin": "SE0015950399",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "talenom-equity-report.html",
+      "ticker": "TNOM.HE",
+      "isin": "FI4000598149",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "talkpool-equity-report.html",
+      "ticker": "TALK.ST",
+      "isin": "CH0322161768",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tamtron-group-equity-report.html",
+      "ticker": "TAMTRON.HE",
+      "isin": "FI4000541313",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "targovax-equity-report.html",
+      "ticker": "CRNA.OL",
+      "isin": "NO0013033795",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tcm-group-equity-report.html",
+      "ticker": "TCM.CO",
+      "isin": "DK0060915478",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "techstep-equity-report.html",
+      "ticker": "TECH.OL",
+      "isin": "NO0012916131",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tecnotree-equity-report.html",
+      "ticker": "TEM1V.HE",
+      "isin": "FI4000570890",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "telenor-equity-report.html",
+      "ticker": "TEL.OL",
+      "isin": "NO0010063308",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "teleste-equity-report.html",
+      "ticker": "TLT1V.HE",
+      "isin": "FI0009007728",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tellusgruppen-equity-report.html",
+      "ticker": "TELLUS.ST",
+      "isin": "SE0015504519",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tempest-security-equity-report.html",
+      "ticker": "TSEC.ST",
+      "isin": "SE0010469221",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "teqnion-equity-report.html",
+      "ticker": "TEQ.ST",
+      "isin": "SE0012308088",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "terveystalo-equity-report.html",
+      "ticker": "TTALO.HE",
+      "isin": "FI4000252127",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tessin-nordic-holding-equity-report.html",
+      "ticker": "TESSIN.ST",
+      "isin": "SE0009522451",
+      "pageYear": 2025,
+      "status": "identity_mismatch",
+      "modelYear": 2025
+    },
+    {
+      "file": "tgs-equity-report.html",
+      "ticker": "TGS.OL",
+      "isin": "NO0003078800",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "thor-medical-equity-report.html",
+      "ticker": "TRMED.OL",
+      "isin": "NO0010597883",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "thule-group-equity-report.html",
+      "ticker": "THULE.ST",
+      "isin": "SE0006422390",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tietoevry-equity-report.html",
+      "ticker": "TIETO.HE",
+      "isin": "FI0009000277",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "titania-holding-equity-report.html",
+      "ticker": "TITA-B.ST",
+      "isin": "SE0017132129",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tivoli-equity-report.html",
+      "ticker": "TIV.CO",
+      "isin": "DK0060726743",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tobii-dynavox-equity-report.html",
+      "ticker": "DYVOX.ST",
+      "isin": "SE0017105620",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tobii-equity-report.html",
+      "ticker": "TOBII.ST",
+      "isin": "SE0002591420",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tokmanni-equity-report.html",
+      "ticker": "TOKMAN.HE",
+      "isin": "FI4000197934",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tomra-systems-equity-report.html",
+      "ticker": "TOM.OL",
+      "isin": "NO0012470089",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tourn-international-equity-report.html",
+      "ticker": "TOURN.ST",
+      "isin": "SE0005568482",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "train-alliance-sweden-equity-report.html",
+      "ticker": "TRAIN-B.ST",
+      "isin": "SE0020540144",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "trainers-house-equity-report.html",
+      "ticker": "TRH1V.HE",
+      "isin": "FI4000519202",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "transtema-group-equity-report.html",
+      "ticker": "TRANS.ST",
+      "isin": "SE0006758587",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "trelleborg-equity-report.html",
+      "ticker": "TREL-B.ST",
+      "isin": "SE0000114837",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "triboron-international-equity-report.html",
+      "ticker": "TRIBO-B.ST",
+      "isin": "SE0010600429",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "troax-group-equity-report.html",
+      "ticker": "TROAX.ST",
+      "isin": "SE0012729366",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "trophy-games-development-equity-report.html",
+      "ticker": "TGAMES.CO",
+      "isin": "DK0061537206",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "truecaller-equity-report.html",
+      "ticker": "TRUE-B.ST",
+      "isin": "SE0016787071",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "tulikivi-equity-report.html",
+      "ticker": "TULAV.HE",
+      "isin": "FI0009900583",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "umida-group-ab-ser-b-equity-report.html",
+      "ticker": "UMIDA-B.ST",
+      "isin": "SE0009190788",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "unlimited-travel-group-utg-equity-report.html",
+      "ticker": "UTG.ST",
+      "isin": "SE0001834821",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "upsales-technology-equity-report.html",
+      "ticker": "UPSALE.ST",
+      "isin": "SE0011985514",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "uswe-sports-equity-report.html",
+      "ticker": "USWE.ST",
+      "isin": "SE0015949771",
+      "pageYear": 2025,
+      "status": "newer",
+      "modelYear": 2026
+    },
+    {
+      "file": "valmet-equity-report.html",
+      "ticker": "VALMT.HE",
+      "isin": "FI4000074984",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "var-energi-as-equity-report.html",
+      "ticker": "VAR.OL",
+      "isin": "NO0011202772",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vbg-group-equity-report.html",
+      "ticker": "VBG-B.ST",
+      "isin": "SE0000115107",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "veidekke-equity-report.html",
+      "ticker": "VEI.OL",
+      "isin": "NO0005806802",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "verkkokauppa-com-equity-report.html",
+      "ticker": "VERK.HE",
+      "isin": "FI4000049812",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vertiseit-equity-report.html",
+      "ticker": "VERT-B.ST",
+      "isin": "SE0012481133",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vestas-equity-report.html",
+      "ticker": "VWS.CO",
+      "isin": "DK0061539921",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vestum-equity-report.html",
+      "ticker": "VESTUM.ST",
+      "isin": "SE0017134125",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "viaplay-group-equity-report.html",
+      "ticker": "VPLAY-B.ST",
+      "isin": "SE0012116390",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vicore-pharma-holding-equity-report.html",
+      "ticker": "VICO.ST",
+      "isin": "SE0007577895",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "viking-supply-ships-equity-report.html",
+      "ticker": "VSSAB-B.ST",
+      "isin": "SE0010820613",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vimian-group-equity-report.html",
+      "ticker": "VIMIAN.ST",
+      "isin": "SE0015961982",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "virogates-equity-report.html",
+      "ticker": "VIRO.CO",
+      "isin": "DK0061030574",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vitec-software-group-equity-report.html",
+      "ticker": "VIT-B.ST",
+      "isin": "SE0007871363",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vitrolife-equity-report.html",
+      "ticker": "VITR.ST",
+      "isin": "SE0011205202",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "viva-wine-group-equity-report.html",
+      "ticker": "VIVA.ST",
+      "isin": "SE0017084361",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "vivesto-equity-report.html",
+      "ticker": "VIVE.ST",
+      "isin": "SE0028925701",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "volvo-car-ab-publ-equity-report.html",
+      "ticker": "VOLCAR-B.ST",
+      "isin": "SE0021628898",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "volvo-equity-report.html",
+      "ticker": "VOLV-B.ST",
+      "isin": "SE0000115446",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "w5-solutions-equity-report.html",
+      "ticker": "W5.ST",
+      "isin": "SE0016786040",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wallenius-wilhelmsen-equity-report.html",
+      "ticker": "WAWI.OL",
+      "isin": "NO0010571680",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wallenstam-equity-report.html",
+      "ticker": "WALL-B.ST",
+      "isin": "SE0017780133",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wastbygg-gruppen-equity-report.html",
+      "ticker": "WBGR-B.ST",
+      "isin": "SE0014453874",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "waystream-holding-equity-report.html",
+      "ticker": "WAYS.ST",
+      "isin": "SE0007577077",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "westpay-equity-report.html",
+      "ticker": "WPAY.ST",
+      "isin": "SE0002169292",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wihlborgs-fastigheter-equity-report.html",
+      "ticker": "WIHL.ST",
+      "isin": "SE0018012635",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "windon-energy-group-equity-report.html",
+      "ticker": "WEG.ST",
+      "isin": "SE0017131865",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "windowmaster-international-equity-report.html",
+      "ticker": "WMA.CO",
+      "isin": "DK0064532444",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wirtek-equity-report.html",
+      "ticker": "WIRTEK.CO",
+      "isin": "DK0060040913",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wise-group-equity-report.html",
+      "ticker": "WISE.ST",
+      "isin": "SE0007277876",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "witted-megacorp-equity-report.html",
+      "ticker": "WITTED.HE",
+      "isin": "FI4000517461",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "wyld-networks-equity-report.html",
+      "ticker": "WYLD.ST",
+      "isin": "SE0027099078",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xano-industri-equity-report.html",
+      "ticker": "XANO-B.ST",
+      "isin": "SE0018014151",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xbrane-biopharma-equity-report.html",
+      "ticker": "XBRANE.ST",
+      "isin": "SE0026598583",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xintela-equity-report.html",
+      "ticker": "XINT.ST",
+      "isin": "SE0007756903",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xmreality-equity-report.html",
+      "ticker": "XMR.ST",
+      "isin": "SE0009664188",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xp-chemistries-equity-report.html",
+      "ticker": "XPC.ST",
+      "isin": "SE0016787279",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xplora-technologies-as-equity-report.html",
+      "ticker": "XPLRA.OL",
+      "isin": "NO0010895782",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xspray-pharma-equity-report.html",
+      "ticker": "XSPRAY.ST",
+      "isin": "SE0009973563",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "xvivo-perfusion-equity-report.html",
+      "ticker": "XVIVO.ST",
+      "isin": "SE0004840718",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "yara-international-equity-report.html",
+      "ticker": "YAR.OL",
+      "isin": "NO0010208051",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "yit-equity-report.html",
+      "ticker": "YIT.HE",
+      "isin": "FI0009800643",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zalaris-equity-report.html",
+      "ticker": "ZAL.OL",
+      "isin": "NO0010708910",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zaplox-equity-report.html",
+      "ticker": "ZAPLOX.ST",
+      "isin": "SE0020354389",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zaptec-as-equity-report.html",
+      "ticker": "ZAP.OL",
+      "isin": "NO0010713936",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zealand-pharma-equity-report.html",
+      "ticker": "ZEAL.CO",
+      "isin": "DK0060257814",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zinzino-equity-report.html",
+      "ticker": "ZZ-B.ST",
+      "isin": "SE0002480442",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zoomability-int-equity-report.html",
+      "ticker": "ZOOM.ST",
+      "isin": "SE0012740074",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    },
+    {
+      "file": "zordix-equity-report.html",
+      "ticker": "MAXENT-B.ST",
+      "isin": "SE0011725506",
+      "pageYear": 2025,
+      "status": "same_or_older",
+      "modelYear": 2025
+    }
+  ],
+  "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation."
+}

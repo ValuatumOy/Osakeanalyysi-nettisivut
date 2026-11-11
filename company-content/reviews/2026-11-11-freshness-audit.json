@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "scope": "Company overviews still showing FY 2024 or earlier after the first and second reviewed refresh batches; exact ticker and page ISIN checked against Wisdom.",
+  "scope": "Company overviews still showing FY 2024 or earlier after the third reviewed refresh batch; exact ticker and page ISIN checked against Wisdom.",
   "note": "A newer model year is a candidate for filing review, not evidence that its figures are correct. Same or older does not prove no newer filing exists. Identity mismatches and failed lookups require investigation.",
   "results": [
     {
@@ -300,14 +300,6 @@
       "modelYear": 2024
     },
     {
-      "file": "borgestad-equity-report.html",
-      "ticker": "BOR.OL",
-      "isin": "NO0013256180",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "brain-equity-report.html",
       "ticker": "BRAINP.CO",
       "isin": "DK0061670205",
@@ -420,14 +412,6 @@
       "modelYear": 2023
     },
     {
-      "file": "cedergrenska-equity-report.html",
-      "ticker": "CEDER.ST",
-      "isin": "SE0015949946",
-      "pageYear": 2023,
-      "status": "newer",
-      "modelYear": 2024
-    },
-    {
       "file": "chordate-medical-holding-equity-report.html",
       "ticker": "CMH.ST",
       "isin": "SE0009495559",
@@ -522,14 +506,6 @@
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "corem-property-group-equity-report.html",
-      "ticker": "CORE-B.ST",
-      "isin": "SE0010714287",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "cortus-energy-equity-report.html",
@@ -924,14 +900,6 @@
       "modelYear": 2022
     },
     {
-      "file": "gentian-diagnostics-equity-report.html",
-      "ticker": "GENT.OL",
-      "isin": "NO0010748866",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
-    },
-    {
       "file": "ghp-specialty-care-equity-report.html",
       "ticker": "GHP.ST",
       "isin": "SE0002579912",
@@ -1026,14 +994,6 @@
       "pageYear": 2024,
       "status": "same_or_older",
       "modelYear": 2024
-    },
-    {
-      "file": "hofseth-biocare-equity-report.html",
-      "ticker": "HBC.OL",
-      "isin": "NO0010598683",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "hovding-sverige-equity-report.html",
@@ -1162,14 +1122,6 @@
       "pageYear": 2021,
       "status": "same_or_older",
       "modelYear": 2021
-    },
-    {
-      "file": "itera-equity-report.html",
-      "ticker": "ITERA.OL",
-      "isin": "NO0010001118",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2025
     },
     {
       "file": "jetpak-top-holding-equity-report.html",
@@ -1394,14 +1346,6 @@
       "pageYear": 2021,
       "status": "same_or_older",
       "modelYear": 2021
-    },
-    {
-      "file": "loyal-solutions-equity-report.html",
-      "ticker": "LOYAL.ST",
-      "isin": "DK0061535507",
-      "pageYear": 2024,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "lytix-biopharma-as-equity-report.html",
@@ -1738,14 +1682,6 @@
       "pageYear": 2022,
       "status": "same_or_older",
       "modelYear": 2022
-    },
-    {
-      "file": "rovsing-equity-report.html",
-      "ticker": "ROV.CO",
-      "isin": "DK0061152170",
-      "pageYear": 2023,
-      "status": "newer",
-      "modelYear": 2026
     },
     {
       "file": "saga-pure-equity-report.html",
