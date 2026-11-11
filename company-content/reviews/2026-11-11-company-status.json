@@ -1040,6 +1040,93 @@
       "additionalLabel": "Neola share information",
       "successor": "/reports/neola-medical-equity-report.html",
       "successorLabel": "See the Neola Medical company page"
+    },
+    {
+      "file": "reports/aker-clean-hydrogen-as-equity-report.html",
+      "name": "Aker Clean Hydrogen AS",
+      "isin": "NO0010936081",
+      "ticker": "ACH.OL",
+      "message": "Aker Clean Hydrogen merged into an Aker Horizons subsidiary in June 2022. Its last trading day was 17 June 2022.",
+      "source": "https://news.cision.com/aker-horizons/r/mergers-with-aker-offshore-wind-and-aker-clean-hydrogen-completed---new-share-capital,c3587727",
+      "label": "Company merger notice",
+      "additionalSource": "https://live.euronext.com/en/product/equities/no0010936081-merk",
+      "additionalLabel": "Euronext instrument history"
+    },
+    {
+      "file": "reports/bergs-timber-equity-report.html",
+      "name": "Bergs Timber",
+      "isin": "SE0018012932",
+      "ticker": "0H2W.L",
+      "message": "Bergs Timber shares had their last trading day on Nasdaq Stockholm on 21 December 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b097e1e6b1a3db076724f4462bada402f&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/bioservo-technologies-equity-report.html",
+      "name": "Bioservo Technologies",
+      "isin": "SE0009779085",
+      "ticker": "BIOS.ST",
+      "message": "Bioservo Technologies shares had their last trading day on Nasdaq First North on 11 January 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-bioservo-technologies-ab-from-nasdaq-first-north-growth-market-693-23",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/brodrene-hartmann-equity-report.html",
+      "name": "Brødrene Hartmann",
+      "isin": "DK0010256197",
+      "ticker": "HART.CO",
+      "message": "Brødrene Hartmann shares had their last trading day on Nasdaq Copenhagen on 20 December 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b8c773e8aa8bf0e69b54b9b4d5f177fe8&lang=da",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/bw-ideol-as-equity-report.html",
+      "name": "BW Ideol AS",
+      "isin": "NO0010947385",
+      "ticker": "BWIDL.OL",
+      "message": "BW Ideol shares had their last trading day on Euronext Growth Oslo on 19 December 2023.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2023-12-18-bw-ideol-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/coala-life-group-equity-report.html",
+      "name": "Coala-Life Group",
+      "isin": "SE0017083983",
+      "ticker": "COALA.ST",
+      "message": "Coala-Life Group was declared bankrupt on 22 March 2024. Its shares were delisted from Nasdaq First North on 3 April 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-coala-life-group-ab-publ-from-nasdaq-first-north-growth-market-2024-04",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/copyright-agent-equity-report.html",
+      "name": "Copyright Agent",
+      "isin": "DK0061552437",
+      "ticker": "COPY.CO",
+      "message": "Copyright Agent shares had their last trading day on Nasdaq First North on 1 March 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b281104519372ab87908e7769449bef81&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/dof-equity-report.html",
+      "name": "DOF",
+      "isin": "NO0010070063",
+      "ticker": "DOF.OL",
+      "message": "DOF ASA was declared bankrupt on 2 February 2023. Former subsidiaries continued under the separately listed DOF Group ASA.",
+      "source": "https://live.euronext.com/sites/default/files/2023-06/DOF%20Group%20ASA%20Prospectus%2012-jun-2023.pdf",
+      "label": "DOF Group prospectus",
+      "additionalSource": "https://www.mfn.se/ob/a/dof/dof-asa-delisting-e3c6cf08",
+      "additionalLabel": "Delisting notice",
+      "successor": "/reports/dof-group-equity-report.html",
+      "successorLabel": "See the separate DOF Group company page"
+    },
+    {
+      "file": "reports/emplicure-equity-report.html",
+      "name": "Emplicure",
+      "isin": "SE0015812391",
+      "ticker": "EMPLI.ST",
+      "message": "Emplicure shares had their last trading day on Nasdaq First North on 27 November 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b6c7c1928920666a1e0d40de9a8bc0f39&lang=en",
+      "label": "Nasdaq delisting notice"
     }
   ]
 }

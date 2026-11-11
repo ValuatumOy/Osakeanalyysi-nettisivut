@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/loudspring-equity-report.html",
+      "ticker": "EAGLE.HE",
+      "pageTicker": "EAGLE.HE",
+      "isin": "FI4000092523",
+      "financialYear": 2025,
+      "modelFinancialYear": 2021,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://eaglefiltersgroup.com/site/wp-content/uploads/2026/04/Eagle-Filters-Group-konsernitilinpaatos-2025.pdf",
+      "identitySourceUrl": "https://www.nasdaq.com/press-release/loudspring-plc%3A-change-of-company-name-and-trading-and-issuer-codes-2022-11-10",
+      "sourceNote": "The year-end market capitalisation includes issued shares that had not yet been registered.",
+      "reviewNotes": "Audited consolidated FY2025, EUR million: revenue 3.10086611, EBIT -3.93641486, owner net earnings -4.75817522, owner equity -0.34294319. Closing price EUR 0.079; reported market cap EUR 18.590m includes unregistered issued shares. Formerly Loudspring; unchanged ISIN. Auditors highlighted material uncertainty related to going concern.",
+      "values": {
+        "bookValue": -0.34294319,
+        "sharePrice": 0.079,
+        "revenue": 3.10086611,
+        "ebit": -3.93641486,
+        "netEarnings": -4.75817522,
+        "marketCap": 18.59
+      },
+      "modelSnapshot": {
+        "bookValue": 9.484202,
+        "sharePrice": 0.16711,
+        "revenue": 0.18,
+        "ebit": -1.08776,
+        "netEarnings": -2.173327,
+        "marketCap": 8.81201444
+      }
+    },
+    {
+      "path": "reports/elop-as-equity-report.html",
+      "ticker": "ININ.OL",
+      "pageTicker": "ININ.OL",
+      "isin": "NO0010864036",
+      "financialYear": 2025,
+      "modelFinancialYear": 2021,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://inin.no/wp-content/uploads/2026/05/ININ_2025-Arsrapport_inkl.-revisjonsberetning.pdf",
+      "identitySourceUrl": "https://inin.no/wp-content/uploads/2023/06/Inin-Group-AS-Annual-Report-2022.pdf",
+      "sourceNote": "Net earnings include discontinued operations and are attributable to the parent company's owners. Book value is unavailable because the annual report presents conflicting owner-equity figures.",
+      "reviewNotes": "Audited consolidated FY2025, NOK million: revenue 942.579, EBIT -10.952, owner net earnings -88.682 including discontinued operations. Owner equity is omitted due to disagreement between the equity and balance-sheet statements. No verified year-end share price or market cap. Formerly Elop AS; unchanged ISIN.",
+      "values": {
+        "bookValue": null,
+        "sharePrice": null,
+        "revenue": 942.579,
+        "ebit": -10.952,
+        "netEarnings": -88.682,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 287.299,
+        "sharePrice": null,
+        "revenue": 13.066,
+        "ebit": -104.846,
+        "netEarnings": -106.038,
+        "marketCap": null
+      }
+    },
+    {
+      "path": "reports/neola-medical-equity-report.html",
+      "ticker": "NEOLA.ST",
+      "pageTicker": "NEOLA.ST",
+      "isin": "SE0014829255",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/56fc16b2-6ee6-47da-9f0d-d02beb396aec/arsredovisning-neola-medical-2025.pdf",
+      "sourceNote": "Figures are from the company's Swedish K3 financial statements; no consolidated statements were prepared for 2025.",
+      "reviewNotes": "Audited FY2025, SEK million: net sales 0, EBIT -11.093, net earnings -11.022, equity 75.803. Closing price SEK 1.06 and market cap SEK 82.6m. US subsidiary not consolidated because it was immaterial.",
+      "values": {
+        "bookValue": 75.803,
+        "sharePrice": 1.06,
+        "revenue": 0,
+        "ebit": -11.093,
+        "netEarnings": -11.022,
+        "marketCap": 82.6
+      },
+      "modelSnapshot": {
+        "bookValue": 75.803,
+        "sharePrice": 1.06,
+        "revenue": 0,
+        "ebit": -11.138,
+        "netEarnings": -11.022,
+        "marketCap": 81.24924804
+      }
+    }
+  ]
+}
