@@ -1,9 +1,11 @@
 {
   "ticker": "DOF.OL",
   "companyName": "DOF ASA",
-  "profile": "DOF ASA is an offshore and subsea services company serving the energy industry. It owns and operates a fleet of offshore and subsea vessels and provides integrated marine and engineering services, including survey, inspection, maintenance and repair, construction, decommissioning, and other project support. Its revenues are driven by vessel operations and offshore project execution.",
+  "profile": "DOF ASA was an offshore and subsea services company serving the energy industry. It operated offshore and subsea vessels and provided marine and engineering services. The company was declared bankrupt in February 2023; former subsidiaries continued under the separately listed DOF Group ASA.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T18:00:37.301Z"
+  "generatedAt": "2026-07-24T18:00:37.301Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://live.euronext.com/sites/default/files/2023-06/DOF%20Group%20ASA%20Prospectus%2012-jun-2023.pdf"
 }

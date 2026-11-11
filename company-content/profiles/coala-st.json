@@ -1,9 +1,11 @@
 {
   "ticker": "COALA.ST",
   "companyName": "Coala-Life Group AB (publ)",
-  "profile": "Coala-Life Group AB is a medical technology and digital health company focused on remote patient monitoring and cardiac diagnostics. It develops and markets the Coala Heart Monitor and related software for ECG and heart sound recording, serving healthcare providers with long-term monitoring, diagnostic analysis, and support for managing patients with chronic diseases, mainly in the United States.",
+  "profile": "Coala-Life Group AB was a medical technology and digital health company focused on remote patient monitoring and cardiac diagnostics. It developed and marketed the Coala Heart Monitor and related software. The company was declared bankrupt in March 2024, and its shares were delisted in April 2024.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T20:22:57.768Z"
+  "generatedAt": "2026-07-24T20:22:57.768Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://www.nasdaq.com/press-release/delisting-of-coala-life-group-ab-publ-from-nasdaq-first-north-growth-market-2024-04"
 }

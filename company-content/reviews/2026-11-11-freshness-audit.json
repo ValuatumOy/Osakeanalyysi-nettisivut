@@ -75,7 +75,9 @@
       "isin": "NO0010936081",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "merged",
+      "statusSource": "https://news.cision.com/aker-horizons/r/mergers-with-aker-offshore-wind-and-aker-clean-hydrogen-completed---new-share-capital,c3587727"
     },
     {
       "file": "alelion-energy-systems-equity-report.html",
@@ -275,7 +277,9 @@
       "isin": "SE0018012932",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b097e1e6b1a3db076724f4462bada402f&lang=en"
     },
     {
       "file": "besqab-equity-report.html",
@@ -311,7 +315,9 @@
       "isin": "SE0009779085",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-bioservo-technologies-ab-from-nasdaq-first-north-growth-market-693-23"
     },
     {
       "file": "biotage-equity-report.html",
@@ -375,7 +381,9 @@
       "isin": "DK0010256197",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b8c773e8aa8bf0e69b54b9b4d5f177fe8&lang=da"
     },
     {
       "file": "bw-ideol-as-equity-report.html",
@@ -383,7 +391,9 @@
       "isin": "NO0010947385",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2023-12-18-bw-ideol-delisting"
     },
     {
       "file": "byggfakta-group-nordic-holdco-equity-report.html",
@@ -511,7 +521,9 @@
       "isin": "SE0017083983",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-of-coala-life-group-ab-publ-from-nasdaq-first-north-growth-market-2024-04"
     },
     {
       "file": "combigene-equity-report.html",
@@ -553,7 +565,9 @@
       "isin": "DK0061552437",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b281104519372ab87908e7769449bef81&lang=en"
     },
     {
       "file": "cortus-energy-equity-report.html",
@@ -665,7 +679,9 @@
       "isin": "NO0010070063",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "bankruptcy",
+      "statusSource": "https://live.euronext.com/sites/default/files/2023-06/DOF%20Group%20ASA%20Prospectus%2012-jun-2023.pdf"
     },
     {
       "file": "dolphin-drilling-as-equity-report.html",
@@ -803,7 +819,9 @@
       "isin": "SE0015812391",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b6c7c1928920666a1e0d40de9a8bc0f39&lang=en"
     },
     {
       "file": "enedo-equity-report.html",

@@ -1909,7 +1909,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "COALA.ST",
     "exchange": "Stockholm",
     "url": "reports/coala-life-group-equity-report.html",
-    "description": "Coala-Life Group AB is a medical technology and digital health company focused on remote patient monitoring and cardiac diagnostics. It develops and markets the Coala Heart Monitor and related software for ECG and heart sound recording, serving healthcare providers with long-term monitoring, diagnostic analysis, and support for managing patients with chronic diseases, mainly in the United States."
+    "description": "Coala-Life Group AB was a medical technology and digital health company focused on remote patient monitoring and cardiac diagnostics. It developed and marketed the Coala Heart Monitor and related software. The company was declared bankrupt in March 2024, and its shares were delisted in April 2024."
   },
   {
     "name": "CodeLab Capital AS",
@@ -2322,7 +2322,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "DOF.OL",
     "exchange": "Oslo",
     "url": "reports/dof-equity-report.html",
-    "description": "DOF ASA is an offshore and subsea services company serving the energy industry. It owns and operates a fleet of offshore and subsea vessels and provides integrated marine and engineering services, including survey, inspection, maintenance and repair, construction, decommissioning, and other project support. Its revenues are driven by vessel operations and offshore project execution."
+    "description": "DOF ASA was an offshore and subsea services company serving the energy industry. It operated offshore and subsea vessels and provided marine and engineering services. The company was declared bankrupt in February 2023; former subsidiaries continued under the separately listed DOF Group ASA."
   },
   {
     "name": "DOF Group",
@@ -2626,11 +2626,11 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Elmera Group ASA is a Nordic energy group that serves consumers, businesses and the wholesale market in Norway, Sweden and Finland. Its activities include selling electricity and power contracts, billing and rating services, and electricity-related technology solutions. The group also operates through several brands and segments, including consumer, business, Nordic and new growth initiatives."
   },
   {
-    "name": "Elop AS",
+    "name": "ININ Group",
     "ticker": "ININ.OL",
     "exchange": "Oslo",
     "url": "reports/elop-as-equity-report.html",
-    "description": "Elop AS develops and commercialises tools and software for inspecting, monitoring and managing large infrastructure, with a focus on concrete structures. Its offering includes rolling ultrasonic scanning systems, inspection equipment and an asset management system for health monitoring. The company serves asset owners and engineering users seeking data on safety, maintenance needs and lifecycle performance."
+    "description": "ININ Group is a Norwegian industrial owner that invests in Nordic infrastructure services companies, including rail, power and infrastructure testing and inspection."
   },
   {
     "name": "Elopak",
@@ -4726,7 +4726,7 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Loomis AB provides cash and payment services that support the movement, handling, storage and processing of cash. Its offerings include cash in transit, cash management services, ATM services, foreign exchange, automated cash-handling solutions and Loomis Pay. The company serves banks, retailers and other businesses through a decentralized network in multiple markets."
   },
   {
-    "name": "Loudspring",
+    "name": "Eagle Filters Group",
     "ticker": "EAGLE.HE",
     "exchange": "Helsinki",
     "url": "reports/loudspring-equity-report.html",
