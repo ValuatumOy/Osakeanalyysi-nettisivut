@@ -1,0 +1,769 @@
+{
+  "id": "wartsilaoyjabp-11112026",
+  "slug": "wartsila-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Wärtsilä Oyj Abp",
+  "ticker": "WRT1V.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Industrial machinery",
+  "currency": "EUR",
+  "reportDate": "2026-11-11",
+  "profile": "Makes engines, propulsion equipment and maintenance services for shipowners, shipyards and other marine customers. It also sells engine-based power plants and related services, and participates through Valo in grid-scale battery storage equipment and software.",
+  "headline": {
+    "currentPrice": "25.8 EUR",
+    "marketCap": "EUR 15.2bn",
+    "enterpriseValue": "EUR 12.8bn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+4.1 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "32.4 EUR",
+    "analysts": "17",
+    "range": "19.5-40.0 EUR",
+    "source": "Investing.com"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "15x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "11x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "23x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "40.8 EUR",
+    "week52Low": "24.5 EUR",
+    "oneYearChange": "-3.9%",
+    "threeYearChange": "+129%"
+  },
+  "summary": [
+    "Wärtsilä Oyj Abp (WRT1V.HE, NASDAQ Helsinki) makes ship engines, propulsion equipment, maintenance services and engine-based power plants, while its Valo joint venture participates in grid-scale battery storage. The shares traded at 25.8 EUR on 11 November 2026, giving a market capitalisation of EUR 15.2bn and an enterprise value of EUR 12.8bn. In this Valuatum market report dated 11 November 2026, analysts forecast operating profit of EUR 1.1bn for 2028 on sales of EUR 7.5bn. The price therefore reflects a group with a large marine franchise, a substantial energy business and a smaller storage operation whose profitability remains the least established.",
+    "The share price is made up chiefly of Marine at 14.3 EUR per share, or 14.1x its 2028 forecast operating profit of EUR 597m. Energy contributes 5.4 EUR per share at 7.9x forecast operating profit of EUR 405m, while Energy Storage contributes 2.0 EUR per share at 9.2x forecast operating profit of EUR 125m. The three businesses total 21.6 EUR per share. Cash, less debt and other claims, adds 4.1 EUR per share, bringing the split to 25.8 EUR. Marine accounts for 53% of 2028 operating profit in the split, Energy 36% and Energy Storage 11%; these are EBIT shares, not shares of enterprise value.",
+    "The businesses together cost about 11.5x 2028 operating profit, against about 15x for listed peers. Marine is priced below its peer median of 17.7x, Energy below its 12.8x median and Energy Storage at the industry's lower quartile of 9.2x versus an 11.4x median. The reading will change with Marine's adjusted margin moving from 12.7% toward 14%, Energy moving from 15.4% toward 18%, and Valo turning positive toward the end of 2027. The 12-vessel CMA CGM engine order, separate 2027 business guidance, data-centre deliveries, order intake and storage margins are the practical tests."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "14.3 EUR",
+      "text": "Marine supplies 14.3 EUR of the 25.8 EUR share price, compared with 5.4 EUR for Energy and 2.0 EUR for Energy Storage. The three businesses total 21.6 EUR per share before cash, less debt and other claims add 4.1 EUR, so the share price is predominantly a claim on marine-engine profit."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "11.5x",
+      "text": "The three businesses cost about 11.5x 2028 forecast operating profit against about 15x for listed peers. Marine is at 14.1x versus a 17.7x peer median, Energy at 7.9x versus 12.8x and Energy Storage at 9.2x versus an 11.4x industry median."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "15.0%",
+      "text": "Marine's 12.7% adjusted margin needs to move toward 14%, Energy's 15.4% margin toward 18%, and Valo's operating loss needs to turn positive toward the end of 2027. Orders, deliveries and quarterly margins will determine whether the forecast profits supporting the split are delivered."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Marine",
+      "share": "14.3 EUR per share",
+      "economics": "14.1x 2028 operating profit · EUR 597m forecast operating profit · peers 14.4x-29.3x, median 17.7x",
+      "text": "Marine sells ship engines, propulsion equipment, onboard systems and lifecycle services to shipowners and shipyards. It generated external sales of EUR 3.5bn in 2025, including about EUR 2.2bn from service work, and its installed base of about 60 GW supports a steadier service stream than new-vessel orders. The split assigns EUR 597m of 2028 operating profit on EUR 4.2bn of sales, a 14% margin, and the market pays 14.1x that profit for EUR 14.3 per share. That multiple is below Alfa Laval's 14.4x and the peer median of 17.7x, despite Wärtsilä holding about 45% of the medium-speed main-engine market and about 85% of its alternative-fuel segment. High newbuild prices, scarce shipyard slots and doubt over the move from a 12.7% 2025 margin to 14% explain the restrained multiple."
+    },
+    {
+      "name": "Energy",
+      "share": "5.4 EUR per share",
+      "economics": "7.9x 2028 operating profit · EUR 405m forecast operating profit · peers 7.9x-16.1x, median 12.8x",
+      "text": "Energy sells engine-based power plants and lifecycle services to utilities, independent power producers and industrial customers. External sales were EUR 2bn in 2025, with an adjusted operating result of EUR 315m and a 15.4% margin. The split assigns EUR 405m of 2028 operating profit on EUR 2.4bn of sales, a 17% margin, and the market pays 7.9x that profit for EUR 5.4 per share. The multiple is the lowest among Cummins, Caterpillar and Mitsubishi Heavy Industries, against a 12.8x peer median. Wärtsilä has delivered 79 GW of power-plant capacity in 180 countries, more than 30% of its installed base is under service agreements and 789 MW of flexible engines were sold to US data centres in 2025. Equipment and installation costs still make the forecast margin increase a key uncertainty."
+    },
+    {
+      "name": "Energy Storage",
+      "share": "2.0 EUR per share",
+      "economics": "9.2x 2028 operating profit · EUR 125m forecast operating profit · industry lower quartile 9.2x, median 11.4x",
+      "text": "Energy Storage supplies grid-scale battery systems, related services and software to power-system operators and developers. It recorded external sales of EUR 694m in 2025 and was placed in Valo, a 50/50 joint venture with RCT Solutions, on 1 October 2026. The split assigns EUR 125m of 2028 operating profit on EUR 830m of sales, a 15% margin, and the market pays 9.2x that profit for EUR 2.0 per share. The multiple sits at the industry's lower quartile, against an 11.4x median and 16.0x upper quartile. The starting point is weak: the 2025 operating margin was 3.3%, orders fell 60% to EUR 455m and the year-end order book fell 36%. Valo's expected positive operating result toward the end of 2027 is therefore the central test of whether the forecast margin can be reached."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is principally a price for Marine, not a sum of reported asset values. Marine contributes EUR 14.3 per share at 14.1x its EUR 597m 2028 forecast operating profit, Energy contributes EUR 5.4 per share at 7.9x EUR 405m and Energy Storage contributes EUR 2.0 per share at 9.2x EUR 125m. Together they produce EUR 21.6 per share, while cash, less debt and other claims, adds EUR 4.1 per share. The three operating businesses therefore cost about 11.5x 2028 forecast operating profit, compared with about 15x for listed peers. Marine's 53% share of forecast operating profit is distinct from its EUR 14.3 share-price contribution, and Energy's 36% and Energy Storage's 11% are EBIT shares rather than enterprise-value shares. Marine's weight reflects its EUR 3.5bn 2025 sales base, about EUR 2.2bn of service revenue and a planned 14% 2028 margin. Energy has EUR 2bn of 2025 sales and a 15.4% margin, while storage starts from EUR 694m of sales and a 3.3% margin. The price is consequently most sensitive to Marine's margin and order cycle, with storage carrying the largest execution gap."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "Each business is priced below the relevant peer comparison because the market is not paying in advance for forecast margin improvement. Marine at 14.1x is below its 17.7x peer median and below the lowest listed peer multiple of 14.4x. Its split assumes a rise from a 12.7% adjusted 2025 margin to 14% in 2028, while high newbuild prices and limited shipyard slots have already held back ferry investment. Energy at 7.9x is below a 12.8x peer median. Its 17% forecast margin is achievable against Rolls-Royce Power Systems' 17.4% underlying margin in 2025, but remains below Wärtsilä's 18% target and depends on customers accepting high equipment and installation costs. Energy Storage is at the 9.2x industry lower quartile against an 11.4x median. Its forecast margin rises from 3.3% to 15%, despite 2025 orders of EUR 455m falling 60%, a 36% lower order book and pressure from tariffs, regulation and competition. The comparison is also qualified: Energy Storage uses industry quartiles because too few listed peers could be read, while Fluence's negative margins make its multiples non-meaningful. The low prices therefore reflect delivery risk, not a uniform peer discount."
+    },
+    {
+      "heading": "What to watch",
+      "text": "Quarterly margins and order conversion are the clearest evidence of whether the profits embedded in the split are being earned. Marine needs its adjusted outside-sales margin to climb from 12.7% toward 14% through 2027. The first Marine-only and Energy-only guidance from 2027 will separate the businesses, while deliveries of the 12-vessel CMA CGM order begin in 2027. Marine entered 2026 with an EUR 3,725m order book, and global newbuild contracts reached 2,552 in the first nine months of 2026 versus 2,029 in all of 2025, but capacity expansion of about EUR 90m is not scheduled to be commissioned until the first quarter of 2029. Energy needs its margin to move from 15.4% toward 17% by 2028, with deliveries of the 507 MW US data-centre order due in 2027 testing volume and profitability. Energy Storage is the most immediate operational uncertainty: Valo is expected to make an operating loss in 2026, with a EUR 40m-50m negative effect on Wärtsilä's 2026 operating result, before turning positive toward the end of 2027. Its EUR 719m year-end 2025 order book must rebuild from EUR 455m of orders, while tariffs and foreign-entity rules remain relevant to project economics."
+    }
+  ],
+  "risks": [
+    "Marine margin shortfall (Marine): the adjusted operating margin remains near 12.7% rather than moving toward 14%, reducing the EUR 597m 2028 forecast operating profit; early warning is quarterly margin performance.",
+    "Newbuild slowdown (Marine): high newbuild prices, scarce shipyard slots or delayed orders weaken engine sales and factory utilisation; early warning is falling contracting and a shrinking EUR 3,725m order book.",
+    "Energy execution gap (Energy): the margin stays near 15.4% instead of reaching the 17%-18% target range, leaving the EUR 405m 2028 forecast profit unsupported; early warning is quarterly adjusted margin and separate 2027 guidance.",
+    "Valo remains loss-making (Energy Storage): the venture fails to turn positive toward the end of 2027 and remains closer to its 3.3% 2025 margin than the forecast 15%; early warning is Valo's operating margin.",
+    "Order and policy pressure (Energy Storage): orders remain below the EUR 455m recorded in 2025 while tariffs and foreign-entity rules raise project costs; early warning is quarterly order intake and the EUR 719m order book."
+  ],
+  "catalysts": [
+    "Marine and Energy separate guidance (near-term, Marine and Energy): guidance from 2027 would allow the market to test each business's sales trajectory against its mid-single-digit Marine growth and high-teens Energy growth targets.",
+    "CMA CGM engine deliveries (near-term, Marine): deliveries for the 12-vessel order begin in 2027 and would show whether contracted volume converts into sales without eroding margins.",
+    "Data-centre engine deliveries (near-term, Energy): the 507 MW US order due in 2027 would demonstrate whether data-centre demand supports the Energy volume forecast.",
+    "Valo turns positive (medium-term, Energy Storage): an operating profit toward the end of 2027 would provide evidence that the storage business can earn money at its current size.",
+    "Capacity and order recovery (long-term, Marine and Energy Storage): the planned 30% technical-production expansion and a recovery from EUR 455m of storage orders would show whether volume can absorb fixed costs."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "6,015",
+            "6,449",
+            "6,914",
+            "6,403",
+            "6,556",
+            "7,457"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "481",
+            "847",
+            "1,001",
+            "1,022",
+            "1,105",
+            "1,306"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "8.0%",
+            "13.1%",
+            "14.5%",
+            "16.0%",
+            "16.9%",
+            "17.5%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-79",
+            "-131",
+            "-175",
+            "-160",
+            "-171",
+            "-179"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "402",
+            "716",
+            "826",
+            "862",
+            "934",
+            "1,127"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "6.7%",
+            "11.1%",
+            "11.9%",
+            "13.5%",
+            "14.2%",
+            "15.1%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-38",
+            "-29",
+            "2",
+            "9",
+            "44",
+            "58"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "364",
+            "687",
+            "828",
+            "871",
+            "978",
+            "1,185"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "270",
+            "507",
+            "632",
+            "655",
+            "724",
+            "895"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.5",
+            "0.9",
+            "1.1",
+            "1.1",
+            "1.2",
+            "1.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.3",
+            "0.3",
+            "0.4",
+            "0.4",
+            "0.5",
+            "0.6"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "56.5%",
+            "37.2%",
+            "41.0%",
+            "39.5%",
+            "39.5%",
+            "39.5%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "562",
+            "556",
+            "558",
+            "529",
+            "542",
+            "616"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "402",
+            "446",
+            "413",
+            "382",
+            "392",
+            "445"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "1,273",
+            "1,299",
+            "1,214",
+            "1,214",
+            "1,214",
+            "1,214"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "102",
+            "105",
+            "310",
+            "310",
+            "310",
+            "310"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "2,339",
+            "2,406",
+            "2,495",
+            "2,436",
+            "2,457",
+            "2,586"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "1,485",
+            "1,380",
+            "1,440",
+            "1,346",
+            "1,379",
+            "1,568"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1,948",
+            "2,176",
+            "1,793",
+            "1,725",
+            "1,766",
+            "2,009"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "819",
+            "1,554",
+            "2,590",
+            "2,099",
+            "2,149",
+            "2,445"
+          ]
+        },
+        {
+          "label": "Other current assets",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "594",
+            "945",
+            "805"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "4,252",
+            "5,110",
+            "5,823",
+            "5,764",
+            "6,239",
+            "6,827"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "212",
+            "178",
+            "156",
+            "156",
+            "156",
+            "156"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "6,803",
+            "7,694",
+            "8,474",
+            "8,356",
+            "8,852",
+            "9,568"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "2,233",
+            "2,531",
+            "2,883",
+            "3,279",
+            "3,744",
+            "4,353"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "515",
+            "409",
+            "503",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "76",
+            "99",
+            "38",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "788",
+            "727",
+            "1,097",
+            "594",
+            "594",
+            "594"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "3,445",
+            "4,121",
+            "4,202",
+            "4,175",
+            "4,191",
+            "4,286"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "337",
+            "315",
+            "292",
+            "309",
+            "323",
+            "335"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "6,803",
+            "7,694",
+            "8,474",
+            "8,356",
+            "8,852",
+            "9,568"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "268",
+            "258",
+            "229",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "40",
+            "-788",
+            "-1,820",
+            "-2,447",
+            "-2,834",
+            "-2,978"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "2,005",
+            "1,485",
+            "834",
+            "586",
+            "650",
+            "1,104"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "32.8%",
+            "32.9%",
+            "34.0%",
+            "39.2%",
+            "42.3%",
+            "45.5%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "1.8%",
+            "-31.1%",
+            "-63.1%",
+            "-74.6%",
+            "-75.7%",
+            "-68.4%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.1x",
+            "-0.9x",
+            "-1.8x",
+            "-2.4x",
+            "-2.6x",
+            "-2.3x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.2",
+            "1.2",
+            "1.4",
+            "1.4",
+            "1.5",
+            "1.6"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "670",
+            "1,168",
+            "1,273",
+            "987",
+            "839",
+            "738"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "689",
+            "1,214",
+            "1,296",
+            "980",
+            "806",
+            "694"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-275",
+            "-530",
+            "-465",
+            "-172",
+            "57",
+            "337"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "57",
+            "198",
+            "264",
+            "101",
+            "193",
+            "307"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-57",
+            "-198",
+            "-264",
+            "-101",
+            "-193",
+            "-307"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "613",
+            "970",
+            "1,009",
+            "886",
+            "646",
+            "431"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "709",
+            "1,061",
+            "1,308",
+            "879",
+            "613",
+            "387"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "710",
+            "1,061",
+            "1,308",
+            "879",
+            "613",
+            "387"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-197",
+            "-257",
+            "—",
+            "-783",
+            "-244",
+            "-274"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-142",
+            "-152",
+            "-189",
+            "-259",
+            "-258",
+            "-286"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "416",
+            "713",
+            "1,009",
+            "103",
+            "402",
+            "157"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "23.2x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "12.5x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.6x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "13.5%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "21.3%"
+          ]
+        },
+        {
+          "label": "DIV YIELD",
+          "values": [
+            "1.7%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Wärtsilä's share price made of?",
+      "a": "The 25.8 EUR share price is split into 14.3 EUR for Marine, 5.4 EUR for Energy and 2.0 EUR for Energy Storage. The businesses total 21.6 EUR per share, while cash, less debt and other claims, adds 4.1 EUR per share."
+    },
+    {
+      "q": "Why does Wärtsilä trade below its listed peers?",
+      "a": "Marine is priced at 14.1x 2028 forecast operating profit versus a 17.7x peer median, Energy at 7.9x versus 12.8x and Energy Storage at 9.2x versus an 11.4x industry median. The differences reflect uncertainty over margin improvement, orders and Valo's profitability."
+    },
+    {
+      "q": "What do analysts forecast for Wärtsilä's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of EUR 7,457m, EBITDA of EUR 1,306m, operating profit of EUR 1,127m and net earnings of EUR 895m. The 2028 forecast includes EUR 597m of Marine operating profit, EUR 405m from Energy and EUR 125m from Energy Storage in the split."
+    },
+    {
+      "q": "What should Wärtsilä investors watch?",
+      "a": "Quarterly Marine and Energy margins, separate business guidance from 2027, delivery of the 12-vessel CMA CGM engine order, the 507 MW data-centre order and Valo's path from a 3.3% 2025 operating margin to a positive result toward the end of 2027 are the main indicators."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' forecasts through 2028, splits forecast operating profit between the businesses using segment results and reads today's 25.8 EUR share price back into each business through EV/EBIT multiples. Debt and other claims less cash then reconcile the business values to the share price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Wärtsilä Oyj Abp dated 11 November 2026 (25.8 EUR share price, Marine 14.3 EUR per share, Energy 5.4 EUR per share and Energy Storage 2.0 EUR per share).",
+    "Competitor context: Marine peers Kongsberg Gruppen ASA, Alfa Laval Corporate AB and Rolls-Royce Holdings at 29.3x, 14.4x and 17.7x 2028 EV/EBIT; Energy peers Caterpillar Inc., Cummins Inc. and Mitsubishi Heavy Industries, Ltd. at 12.8x, 7.9x and 16.1x; Energy Storage industry quartiles of 9.2x, 11.4x and 16.0x. Energy Storage uses industry quartiles because too few listed peers could be read.",
+    "Market data: WRT1V.HE, 25.8 EUR on 11 November 2026, analysts' 2028 forecast of EUR 7.5bn sales and EUR 1.1bn operating profit, with the consensus price target sourced from Investing.com. The cash-flow tables are Valuatum's model calculations rather than the company's reported cash-flow statement, and the quarterly net earnings split does not add to the 2026 annual figure."
+  ]
+}
