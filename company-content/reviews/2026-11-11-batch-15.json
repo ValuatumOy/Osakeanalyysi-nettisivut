@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/alimak-group-equity-report.html",
+      "ticker": "ALIG.ST",
+      "pageTicker": "ALIG.ST",
+      "isin": "SE0007158910",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://corporate.alimakgroup.com/en/wp-content/uploads/sites/2/2021/10/AlimakGroup-AR-2025-ENG.pdf",
+      "sourceNote": "Market capitalisation uses the year-end share price and shares outstanding, excluding treasury shares. The company’s approximately SEK 15.6bn figure includes treasury shares.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 116–117 and 119: SEK million revenue 6,874, reported EBIT 977, earnings attributable to parent owners 604 and equity attributable to parent owners 7,195. Page 159 gives year-end price SEK 145.20, total shares 107,573,111 and 1,739,911 treasury shares; 105,833,200 outstanding shares times the price gives SEK 15,366.98064m. The company states total market capitalisation of approximately SEK 15.6bn.",
+      "values": {
+        "bookValue": 7195,
+        "sharePrice": 145.2,
+        "revenue": 6874,
+        "ebit": 977,
+        "netEarnings": 604,
+        "marketCap": 15366.98064
+      },
+      "modelSnapshot": {
+        "bookValue": 7194,
+        "sharePrice": 145.2,
+        "revenue": 6874,
+        "ebit": 1002,
+        "netEarnings": 604,
+        "marketCap": 15366.8064
+      },
+      "expectedPageSha256": "470d3b62588ae5c73b0071a31862ccaa246f820a5495bcbbbc9074406f676ab7"
+    },
+    {
+      "path": "reports/addlife-equity-report.html",
+      "ticker": "ALIF-B.ST",
+      "pageTicker": "ALIF-B.ST",
+      "isin": "SE0014401378",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.add.life/media/2pbl1ybt/addlife-annual-report-2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. The company-reported year-end market capitalisation includes treasury shares and values unlisted A shares at the B-share price.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements printed pp. 99–100: SEK million revenue 10,442, EBIT 993, owner earnings 560 and owner equity 5,443. Total earnings 562 and total equity 5,447 include non-controlling interests. Printed pp. 30–31 report a SEK 159.10 B-share closing price, 122,450,250 A and B shares including 586,189 own B shares, and approximately SEK 19,482m market capitalisation. The company-reported amount is consistent with valuing all A and B shares at the B-share price; the A shares are unlisted. Wisdom pretax profit agrees, while EBIT is SEK 213m lower with a corresponding difference in net financial items. Reported net other operating income is also SEK 213m; the actual source-row mapping remains unverified.",
+      "values": {
+        "bookValue": 5443,
+        "sharePrice": 159.1,
+        "revenue": 10442,
+        "ebit": 993,
+        "netEarnings": 560,
+        "marketCap": 19482
+      },
+      "modelSnapshot": {
+        "bookValue": 5443,
+        "sharePrice": 159.1,
+        "revenue": 10442,
+        "ebit": 780,
+        "netEarnings": 561,
+        "marketCap": 19388.5721051
+      },
+      "expectedPageSha256": "6c1d229bce8170aa97a9315e954d04de6d2369760e50d68e02e50a841957b3db"
+    },
+    {
+      "path": "reports/alfa-laval-corporate-equity-report.html",
+      "ticker": "ALFA.ST",
+      "pageTicker": "ALFA.ST",
+      "isin": "SE0000695876",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.alfalaval.com/globalassets/documents/investors/english/annual-reports/2025/annual-and-sustainability-report-2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. Market capitalisation uses the reported number of shares and the year-end share price.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 91, 93 and 111: SEK million revenue 69,674, operating profit 11,749, owner earnings 8,272 and owner equity 43,409. Group earnings 8,322 and equity 43,753 include non-controlling interests. Pages 148–149 report a SEK 465.70 closing price and 413,326,315 shares; multiplication gives SEK 192,486.0648955m, consistent with the reported SEK 192.49bn. The listed parent is Alfa Laval AB (publ), not its subsidiary Alfa Laval Corporate AB (p. 118). Wisdom and the report show the same pretax profit, but operating profit and financial items differ in the model; the source-row mapping requires investigation.",
+      "values": {
+        "bookValue": 43409,
+        "sharePrice": 465.7,
+        "revenue": 69674,
+        "ebit": 11749,
+        "netEarnings": 8272,
+        "marketCap": 192486.0648955
+      },
+      "modelSnapshot": {
+        "bookValue": 43409,
+        "sharePrice": 465.7,
+        "revenue": 69674,
+        "ebit": 12790,
+        "netEarnings": 8306,
+        "marketCap": 192485.9182
+      }
+    },
+    {
+      "path": "reports/afry-equity-report.html",
+      "ticker": "AFRY.ST",
+      "pageTicker": "AFRY.ST",
+      "isin": "SE0005999836",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://afry.com/sites/default/files/2026-03/annual_and_sustainability_report_2025.pdf",
+      "sourceNote": "Net earnings and book value are attributable to owners of the parent. The company-reported year-end market capitalisation values both share classes at the B-share price; A shares are unlisted.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 122–124: SEK million revenue 25,758, EBIT 1,387, owner earnings 800 and owner equity 12,677. Total earnings 804 and total equity 12,678 include non-controlling interests. Pages 142 and 174 give the B share closing price SEK 150.00 and 4,290,336 A plus 108,961,405 B shares. Company-reported market capitalisation SEK 16,988m corresponds to multiplying all shares by the B price; A shares are not listed.",
+      "values": {
+        "bookValue": 12677,
+        "sharePrice": 150,
+        "revenue": 25758,
+        "ebit": 1387,
+        "netEarnings": 800,
+        "marketCap": 16988
+      },
+      "modelSnapshot": {
+        "bookValue": 12677,
+        "sharePrice": 150,
+        "revenue": 25758,
+        "ebit": 1665,
+        "netEarnings": 803,
+        "marketCap": 16987.76115
+      },
+      "expectedPageSha256": "2c9ff506b49486bf8ea85355fe30ddedfceb929972fad2903bba74852c1801ce"
+    },
+    {
+      "path": "reports/ambea-equity-report.html",
+      "ticker": "AMBEA.ST",
+      "pageTicker": "AMBEA.ST",
+      "isin": "SE0009663826",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://mb.cision.com/Main/5048/4328625/4015461.pdf",
+      "sourceNote": "Market capitalisation uses the year-end share price and shares outstanding, excluding treasury shares. The company’s approximately SEK 11.9bn figure includes treasury shares.",
+      "reviewNotes": "Audited FY2025 consolidated IFRS statements pp. 99–101: SEK million revenue 16,039, EBIT 1,379, owner earnings 665 and owner equity 5,200. Page 45 reports year-end price SEK 141.30, 84,101,290 shares including 2,000,000 treasury shares; 82,101,290 outstanding shares times the year-end price gives SEK 11,600.912277m. The company reports approximately SEK 11.9bn for all registered shares.",
+      "values": {
+        "bookValue": 5200,
+        "sharePrice": 141.3,
+        "revenue": 16039,
+        "ebit": 1379,
+        "netEarnings": 665,
+        "marketCap": 11600.912277
+      },
+      "modelSnapshot": {
+        "bookValue": 5200,
+        "sharePrice": 141.3,
+        "revenue": 16039,
+        "ebit": 1202,
+        "netEarnings": 665,
+        "marketCap": 11826.1035
+      },
+      "expectedPageSha256": "8353607b36e089cb34807379200177e13bd9fd9e8027b64f345335eb6a23d43b"
+    }
+  ]
+}
