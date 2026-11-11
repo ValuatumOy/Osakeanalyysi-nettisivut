@@ -9,6 +9,7 @@
     "generate:companies": "node scripts/generate-company-pages.mjs",
     "refresh:companies": "node scripts/refresh-company-pages.mjs",
     "audit:company-review-coverage": "node scripts/audit-company-review-coverage.mjs",
+    "mark:historical-companies": "node scripts/mark-historical-company-pages.mjs",
     "report:sync": "node scripts/report-pages/sync.mjs",
     "report:check": "node scripts/report-pages/check.mjs",
     "report:thumbs": "python3 scripts/report-thumbnails.py",

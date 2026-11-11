@@ -17,7 +17,13 @@ export async function auditCompanyReviewCoverage(rootDir = ROOT) {
     if (/(?:pilot|batch-\d+|corrections)\.json$/.test(file)) {
       for (const page of data.pages || []) reviewed.add(path.basename(page.path));
     } else if (file.endsWith('company-status.json')) {
-      for (const page of data.pages || []) statuses.add(path.basename(page.file));
+      for (const page of data.pages || []) {
+        statuses.add(path.basename(page.file));
+        if (page.financialReview) {
+          if (!Number.isInteger(page.financialReview.financialYear) || !/^https:\/\//.test(page.financialReview.sourceUrl || '')) throw new Error(`Invalid historical financial review: ${page.file}`);
+          reviewed.add(path.basename(page.file));
+        }
+      }
     } else {
       for (const page of data.results || []) pending.add(path.basename(page.file));
     }
@@ -33,7 +39,7 @@ export async function auditCompanyReviewCoverage(rootDir = ROOT) {
   return {
     total: pages.length,
     reviewed: inSet(reviewed),
-    pending: inSet(pending),
+    pending: pages.filter((file) => pending.has(file) && !reviewed.has(file)).length,
     historicalStatus: inSet(statuses),
     untracked: pages.filter((file) => !reviewed.has(file) && !pending.has(file) && !statuses.has(file)),
   };

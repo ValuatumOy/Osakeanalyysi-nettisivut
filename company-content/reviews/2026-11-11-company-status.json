@@ -175,6 +175,361 @@
       "message": "Play Magnus shares had their last trading day on Euronext Growth Oslo on 28 December 2022.",
       "source": "https://mfn.se/ob/a/play-magnus/play-magnus-as-delisting-14a4e7ac",
       "label": "Oslo Børs delisting notice"
+    },
+    {
+      "file": "reports/nixu-equity-report.html",
+      "name": "Nixu",
+      "isin": "FI0009008387",
+      "ticker": "NIXU",
+      "message": "Nixu was last listed on Nasdaq Helsinki on 1 December 2023 after its shares were acquired by DNV.",
+      "source": "https://news.cision.com/nixu-oyj/r/arbitral-tribunal-has-confirmed-dnv-s-redemption-right-over-the-minority-shares-in-nixu--dnv-has-gai%2Cc3886917",
+      "label": "Nixu announcement"
+    },
+    {
+      "file": "reports/uponor-equity-report.html",
+      "name": "Uponor",
+      "isin": "FI0009002158",
+      "ticker": "UPONOR.HE",
+      "message": "Uponor was delisted from Nasdaq Helsinki on 29 April 2024 after its shares were acquired by Georg Fischer.",
+      "source": "https://prod.uponor.com/en-en/ir-news/2024/gf-has-gained-title-to-the-minority-shares-in-uponor-and-the-uponor-shares-will-be-delisted-from-nasdaq-helsinki",
+      "label": "Uponor announcement"
+    },
+    {
+      "file": "reports/purmo-group-equity-report.html",
+      "name": "Purmo Group",
+      "isin": "FI4000507488",
+      "ticker": "PURMO.HE",
+      "message": "Purmo Group was delisted from Nasdaq Helsinki on 14 January 2025 after its shares were acquired by Project Grand Bidco.",
+      "source": "https://www.purmogroup.com/news/purmo-group-delists-from-nasdaq-helsinki/",
+      "label": "Purmo Group announcement"
+    },
+    {
+      "file": "reports/tikkurila-equity-report.html",
+      "name": "Tikkurila",
+      "isin": "FI4000008719",
+      "ticker": "0MFI.L",
+      "message": "Tikkurila was delisted from Nasdaq Helsinki on 28 October 2021 after its shares were acquired by PPG.",
+      "source": "https://news.cision.com/ppg/r/ppg-finland-oy-has-gained-title-to-the-minority-shares-in-tikkurila-oyj-and-the-shares-of-tikkurila-%2Cc3442393",
+      "label": "PPG announcement",
+      "financialReview": {
+        "financialYear": 2020,
+        "currency": "EUR",
+        "sourceUrl": "https://tikkurila.com/sites/default/files/2024-06/Annual%20Review%202020.pdf",
+        "revenue": 581.974,
+        "ebit": 61.083,
+        "netEarnings": 43.077,
+        "bookValue": 181.358,
+        "note": "Consolidated statements, amounts in EUR millions. Price and market capitalisation left unavailable for the historical London ticker."
+      }
+    },
+    {
+      "file": "reports/pgs-equity-report.html",
+      "name": "PGS",
+      "isin": "NO0010199151",
+      "ticker": "PGS.OL",
+      "message": "PGS and TGS completed their merger on 1 July 2024.",
+      "source": "https://www.tgs.com/press-releases/tgs-and-pgs-merger-completed",
+      "label": "TGS merger announcement",
+      "successor": "/reports/tgs-equity-report.html",
+      "successorLabel": "View TGS"
+    },
+    {
+      "file": "reports/rovio-entertainment-equity-report.html",
+      "name": "Rovio Entertainment",
+      "isin": "FI4000266804",
+      "ticker": "ROVIO.HE",
+      "message": "Rovio was last listed on Nasdaq Helsinki on 22 January 2024 after Sega Europe acquired its shares.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b904f5e8b8c3ec587b8e19ae6944f5abd&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/next-games-equity-report.html",
+      "name": "Next Games",
+      "isin": "FI4000233267",
+      "ticker": "NXTGMS",
+      "message": "Next Games was last listed on First North Finland on 22 August 2022 after its shares were acquired by Netflix.",
+      "source": "https://www.nasdaq.com/press-release/delisting-from-nasdaq-first-north-growth-market%3A-next-games-corporation-2022-08-22",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/digizuite-equity-report.html",
+      "name": "Digizuite",
+      "isin": "DK0061535937",
+      "ticker": "DIGIZ.CO",
+      "message": "Digizuite shares had their last trading day on First North Denmark on 4 September 2023.",
+      "source": "https://via.ritzau.dk/announcement/7155?lang=en&publisherId=13560358",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/dignitana-equity-report.html",
+      "name": "Dignitana",
+      "isin": "SE0002108001",
+      "ticker": "DIGN.ST",
+      "message": "Dignitana shares had their last trading day on First North Sweden on 24 June 2025. The company is part of the Paxman group.",
+      "source": "https://mb.cision.com/Main/2116/4161536/3496778.pdf",
+      "label": "Company delisting notice",
+      "successor": "/reports/paxman-equity-report.html",
+      "successorLabel": "View Paxman",
+      "additionalSource": "https://dignitana.com/",
+      "additionalLabel": "Dignitana company information"
+    },
+    {
+      "file": "reports/ecit-as-equity-report.html",
+      "name": "ECIT As",
+      "isin": "NO0010939804",
+      "ticker": "ECIT.OL",
+      "message": "ECIT B shares had their last trading day on Euronext Growth Oslo on 25 November 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-11-22-ecit-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/edda-wind-equity-report.html",
+      "name": "Edda Wind",
+      "isin": "NO0010998529",
+      "ticker": "EWIND.OL",
+      "message": "Edda Wind shares were last listed on Oslo Børs on 4 August 2025.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2025-08-04-edda-wind-asa-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/efecte-oy-equity-report.html",
+      "name": "Efecte Oy",
+      "isin": "FI4000282868",
+      "ticker": "EFECTE.HE",
+      "message": "Efecte shares had their last trading day on First North Finland on 9 August 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd1394df89794411391a30b44365b861f&lang=fi",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/elos-medtech-equity-report.html",
+      "name": "Elos Medtech",
+      "isin": "SE0000120776",
+      "ticker": "ELOS-B.ST",
+      "message": "Elos Medtech shares had their last trading day on Nasdaq Stockholm on 19 December 2023.",
+      "source": "https://news.cision.com/elos-medtech-ab/r/elos-medtech-s-application-for-de-listing-has-been-approved,c3880952",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/enedo-equity-report.html",
+      "name": "Enedo",
+      "isin": "FI4000415252",
+      "ticker": "ENEDO.HE",
+      "message": "Enedo was last listed on Nasdaq Helsinki on 1 June 2023 after Inission acquired all its shares.",
+      "source": "https://www.nasdaq.com/press-release/delisting-from-nasdaq-helsinki%3A-enedo-plc-2023-06-01",
+      "label": "Nasdaq delisting notice",
+      "successor": "/reports/inission-equity-report.html",
+      "successorLabel": "View Inission"
+    },
+    {
+      "file": "reports/fjord1-equity-report.html",
+      "name": "Fjord1",
+      "isin": "NO0010792625",
+      "ticker": "FJORD.OL",
+      "message": "Fjord1 shares were last listed on Oslo Børs on 23 August 2021.",
+      "source": "https://mfn.se/ob/a/fjord1/fjord1-asa-delisting-25fa0cf7",
+      "label": "Oslo Børs delisting notice"
+    },
+    {
+      "file": "reports/fortnox-equity-report.html",
+      "name": "Fortnox",
+      "isin": "SE0017161243",
+      "ticker": "FNOX.ST",
+      "message": "Fortnox shares had their last trading day on Nasdaq Stockholm on 24 July 2025.",
+      "source": "https://storage.mfn.se/19783e3a-5431-48a7-be84-6001fe15db0c/delisting-of-the-shares-in-fortnox-ab-publ-from-nasdaq-stockholm.pdf",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/gram-car-carriers-equity-report.html",
+      "name": "Gram Car Carriers",
+      "isin": "NO0011109563",
+      "ticker": "GCC.OL",
+      "message": "Gram Car Carriers shares were last listed on Oslo Børs on 5 August 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-08-05-gram-car-carriers-asa-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/heeros-equity-report.html",
+      "name": "Heeros",
+      "isin": "FI4000127527",
+      "ticker": "HEEROS.HE",
+      "message": "Heeros shares had their last trading day on First North Finland on 19 August 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b95dcee433a807d17c31e2ae10521c44e&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/innofactor-equity-report.html",
+      "name": "Innofactor",
+      "isin": "FI0009007637",
+      "ticker": "IFA1V",
+      "message": "Innofactor shares were last listed on Nasdaq Helsinki on 25 April 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b842d418c4dfa142e62e5669d5f56c22c&lang=fi",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/kahoot-equity-report.html",
+      "name": "Kahoot!",
+      "isin": "NO0010823131",
+      "ticker": "KAHOT.OL",
+      "message": "Kahoot shares were last listed on Oslo Børs on 22 January 2024.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2024-01-19-kahoot-delisting",
+      "label": "Euronext delisting notice"
+    },
+    {
+      "file": "reports/kindred-group-equity-report.html",
+      "name": "Kindred Group",
+      "isin": "SE0007871645",
+      "ticker": "KIND-SDB.ST",
+      "message": "Kindred Group Swedish depositary receipts had their last trading day on Nasdaq Stockholm on 11 November 2024.",
+      "source": "https://www.kindredgroup.com/contentassets/1169f35a3cd64ee5a86c752987ecc31c/delisting-of-kindred-group-plc.pdf",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/leovegas-equity-report.html",
+      "name": "LeoVegas",
+      "isin": "SE0008091904",
+      "ticker": "LEO.ST",
+      "message": "LeoVegas shares had their last trading day on Nasdaq Stockholm on 22 September 2022.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b430ec1285ee98e3b0836bed3f5448084&lang=en",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/aker-carbon-capture-equity-report.html",
+      "name": "Aker Carbon Capture",
+      "isin": "NO0010890304",
+      "ticker": "ACC.OL",
+      "message": "Aker Carbon Capture was delisted from Oslo Børs on 22 October 2025.",
+      "source": "https://live.euronext.com/en/product/equities/NO0010890304-XOSL",
+      "label": "Euronext instrument record"
+    },
+    {
+      "file": "reports/alltainer-equity-report.html",
+      "name": "Alltainer",
+      "isin": "SE0015192828",
+      "ticker": "ALLT.ST",
+      "message": "Alltainer entered bankruptcy proceedings in October 2024 and was delisted from Spotlight Stock Market on 25 October 2024.",
+      "source": "https://news.cision.com/se/spotlight-stock-market/r/spotlight--alltainer-ab-avnoteras-fran-spotlight-stock-market---alltainer-ab-is-delisted-from-spotli%2Cc4056359",
+      "label": "Spotlight delisting notice"
+    },
+    {
+      "file": "reports/arcus-equity-report.html",
+      "name": "Arcus",
+      "isin": "NO0010776875",
+      "ticker": "ARCUS.OL",
+      "message": "Arcus merged into Altia on 1 September 2021, forming Anora Group.",
+      "source": "https://anora.com/fi/altian-ja-arcuksen-sulautuminen-on-rekisteroity-ja-altian-ja-arcuksen-liiketoimintojen-yhdistaminen-on-saatettu-paatokseen-anora-group-on-muodostettu-010920210830",
+      "label": "Anora merger announcement",
+      "successor": "/reports/anora-group-equity-report.html",
+      "successorLabel": "View Anora Group"
+    },
+    {
+      "file": "reports/amniotics-equity-report.html",
+      "name": "Amniotics",
+      "isin": "SE0015961016",
+      "ticker": "AMNI.ST",
+      "message": "Amniotics merged into Magle Chemoswed Holding on 7 October 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b383c3180fd2b64428402da70bf3c50d7&lang=en&src=micro",
+      "label": "Merger announcement",
+      "successor": "/reports/magle-chemoswed-holding-equity-report.html",
+      "successorLabel": "View Magle Chemoswed"
+    },
+    {
+      "file": "reports/alelion-energy-systems-equity-report.html",
+      "name": "Alelion Energy Systems",
+      "isin": "SE0008348072",
+      "ticker": "ALELIO.ST",
+      "message": "Alelion Energy Systems entered bankruptcy proceedings and was delisted from First North Sweden on 6 November 2023.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-alelion-energy-systems-ab-from-nasdaq-first-north-growth-market-562-23",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/asarina-pharma-equity-report.html",
+      "name": "Asarina Pharma",
+      "isin": "SE0011641794",
+      "ticker": "ASAP.ST",
+      "message": "Asarina Pharma shares had their last trading day on First North Sweden on 1 October 2024.",
+      "source": "https://attachment.news.eu.nasdaq.com/aeaf60d63502289525acf5f01966bbfc7",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/astralis-equity-report.html",
+      "name": "Astralis",
+      "isin": "DK0061155785",
+      "ticker": "ASTRLS.CO",
+      "message": "Astralis shares had their last trading day on First North Denmark on 25 October 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b2ac8349ade9df7339a13d9b0dda214ec&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/ayima-group-equity-report.html",
+      "name": "Ayima Group",
+      "isin": "SE0009888506",
+      "ticker": "AYIMA-B.ST",
+      "message": "Ayima Group entered bankruptcy proceedings in June 2024 and was delisted from First North Sweden on 18 June 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=be889d5f894bbe09875957b8a74c58688&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/brighter-equity-report.html",
+      "name": "Brighter",
+      "isin": "SE0004019545",
+      "ticker": "BRIG.ST",
+      "message": "Brighter entered bankruptcy proceedings and was delisted from First North Sweden on 23 November 2022.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bcd35710f77e3614beea39bbca4e00b8f&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/byggfakta-group-nordic-holdco-equity-report.html",
+      "name": "BYGGFAKTA GROUP Nordic HoldCo",
+      "isin": "SE0016798581",
+      "ticker": "BFG.ST",
+      "message": "Byggfakta Group shares had their last trading day on Nasdaq Stockholm on 23 May 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-byggfakta-group-nordic-holdco-ab-from-nasdaq-stockholm-2024-05-13",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/bricknode-holding-equity-report.html",
+      "name": "Bricknode Holding",
+      "isin": "SE0016288591",
+      "ticker": "BRICK-B.ST",
+      "message": "Bricknode Holding shares had their last trading day on First North Sweden on 1 August 2023.",
+      "source": "https://mb.cision.com/Main/9697/3806294/2193306.pdf",
+      "label": "Company delisting notice"
+    },
+    {
+      "file": "reports/cary-group-holding-equity-report.html",
+      "name": "Cary Group Holding",
+      "isin": "SE0016609671",
+      "ticker": "CARY.ST",
+      "message": "Cary Group Holding shares had their last trading day on Nasdaq Stockholm on 18 October 2022.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b696674552624e12be393f4d47234e490&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/concordia-maritime-equity-report.html",
+      "name": "Concordia Maritime",
+      "isin": "SE0000102824",
+      "ticker": "CCOR-B.ST",
+      "message": "Concordia Maritime shares had their last trading day on Nasdaq Stockholm on 6 February 2024.",
+      "source": "https://www.nasdaq.com/press-release/delisting-of-concordia-maritime-ab-from-nasdaq-stockholm-11-24-2024-01-24",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/cortus-energy-equity-report.html",
+      "name": "Cortus Energy",
+      "isin": "SE0021513108",
+      "ticker": "CE.ST",
+      "message": "Cortus Energy entered bankruptcy proceedings in March 2025 and was delisted from First North Sweden on 20 March 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b80ca285ef6b0df3f8a51fe4448303c68&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/chromogenics-equity-report.html",
+      "name": "ChromoGenics",
+      "isin": "SE0020847481",
+      "ticker": "CHRO.ST",
+      "message": "ChromoGenics shares had their last trading day on First North Sweden on 30 September 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b3e315ff6f18c09999af3965ddddd70ff&lang=en&src=rss",
+      "label": "Nasdaq delisting notice"
     }
   ]
 }
