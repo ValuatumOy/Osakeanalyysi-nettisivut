@@ -931,7 +931,9 @@
       "isin": "NO0010262686",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://gcrieber-shipping.com/disclosure_archive/gc-rieber-shipping-asa-delisting/"
     },
     {
       "file": "ghp-specialty-care-equity-report.html",
@@ -1580,7 +1582,9 @@
       "isin": "NO0010317316",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "merged",
+      "statusSource": "https://soiltech.no/merger-completed-and-publication-of-listing-prospectus/"
     },
     {
       "file": "odico-equity-report.html",
@@ -1774,7 +1778,9 @@
       "isin": "FI4000425848",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "renamed",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b8a6b42cacdf2c320be0f57d62d6f351c&lang=en&src=listed"
     },
     {
       "file": "scandinavian-brake-systems-equity-report.html",
@@ -1934,7 +1940,9 @@
       "isin": "DK0061418977",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b323cb93b16f04fca5ba97b760051de94&lang=en&src=rss"
     },
     {
       "file": "volue-equity-report.html",
@@ -1958,7 +1966,9 @@
       "isin": "NO0010252356",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b1c735d4d441da46f7bc67e63f75f4b83&lang=en"
     },
     {
       "file": "withsecure-equity-report.html",

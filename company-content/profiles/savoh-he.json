@@ -1,9 +1,11 @@
 {
   "ticker": "SAVOH.HE",
   "companyName": "Savosolar Oyj",
-  "profile": "Savosolar Oyj designs and delivers large-scale solar thermal systems and related clean energy solutions. Its offerings include collectors, turnkey district heating and industrial process heating plants, energy storage, and automation and control services. The company serves utilities, industrial customers, and property owners, and it now operates as part of Summa Defence Group.",
+  "profile": "Savosolar Oyj designed and delivered large-scale solar thermal systems and related clean energy solutions. Its offerings included collectors, turnkey district heating and industrial process heating plants, energy storage, and automation and control services for utilities, industrial customers and property owners. The company later became Meriaura Group and then Summa Defence in 2025.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T19:22:22.414Z"
+  "generatedAt": "2026-07-24T19:22:22.414Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://view.news.eu.nasdaq.com/view?id=b8a6b42cacdf2c320be0f57d62d6f351c&lang=en&src=listed"
 }

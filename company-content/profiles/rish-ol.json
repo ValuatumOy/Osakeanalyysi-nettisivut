@@ -1,9 +1,11 @@
 {
   "ticker": "RISH.OL",
   "companyName": "GC Rieber Shipping ASA",
-  "profile": "GC Rieber Shipping is a ship-owning project house that develops and invests in maritime projects and solutions. The company focuses on tailored vessels and services for customers worldwide, drawing on capabilities in marine architecture and project management. Its activities center on creating and operating sustainable maritime assets and related shipping projects.",
+  "profile": "GC Rieber Shipping ASA was a ship-owning project house that developed and invested in maritime projects and solutions. Its activities included tailored vessels and services, marine architecture and project management. After its shares left Oslo Børs in 2023, the company became GC Rieber Shipping Holding AS.",
   "provider": "codex",
   "model": "gpt-5.4-mini",
   "promptVersion": 2,
-  "generatedAt": "2026-07-24T18:25:50.191Z"
+  "generatedAt": "2026-07-24T18:25:50.191Z",
+  "reviewedAt": "2026-11-11",
+  "reviewSource": "https://gcrieber-shipping.com/wp-content/uploads/2024/04/GC-RieberShipping2023-Publish2.pdf"
 }

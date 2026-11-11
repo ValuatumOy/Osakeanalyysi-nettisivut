@@ -1267,6 +1267,101 @@
       "message": "Lauritz.com Group entered bankruptcy proceedings on 11 July 2023, and its shares were delisted from Nasdaq First North on 12 July 2023.",
       "source": "https://www.nasdaq.com/press-release/delisting-of-lauritz.com-group-a-s-from-nasdaq-first-north-growth-market-379-23-2023",
       "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/wilson-equity-report.html",
+      "name": "Wilson",
+      "ticker": "WILS.OL",
+      "isin": "NO0010252356",
+      "message": "Wilson shares had their last trading day on Oslo Børs on 9 May 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b1c735d4d441da46f7bc67e63f75f4b83&lang=en",
+      "label": "Delisting notice",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "EUR",
+        "marketCurrency": "NOK",
+        "sourceUrl": "https://st-wilsonas.nf.cdn.netflexapp.com/1778495720/wilson-annual-report-2025-1.pdf",
+        "bookValue": 216.784,
+        "sharePrice": null,
+        "revenue": 375.11,
+        "ebit": 19.567,
+        "netEarnings": 7.888,
+        "marketCap": null,
+        "modelSnapshot": {
+          "bookValue": 218.265,
+          "sharePrice": 64.599998,
+          "revenue": 439.614,
+          "ebit": 108.82,
+          "netEarnings": 83.834,
+          "marketCap": 2823.0199126
+        },
+        "notes": "Wilson ASA audited FY2025 annual report, pp. 77, 80–81 and 112: EUR million freight revenue 375.110, EBIT 19.567, owner net profit 7.888, equity 216.784. The shares stopped trading in May 2023. Same legal entity, organisation number 882757692."
+      }
+    },
+    {
+      "file": "reports/oceanteam-equity-report.html",
+      "name": "Oceanteam",
+      "ticker": "OTS.OL",
+      "isin": "NO0010317316",
+      "message": "Oceanteam merged into Soiltech ASA on 11 September 2024. Oceanteam shares had their last trading day on 10 September 2024.",
+      "source": "https://soiltech.no/merger-completed-and-publication-of-listing-prospectus/",
+      "label": "Completed merger",
+      "additionalSource": "https://soiltech.no/soiltech-and-oceanteam-key-information-regarding-merger-and-listing-on-euronext-expand/",
+      "additionalLabel": "Trading and merger details"
+    },
+    {
+      "file": "reports/valuer-holding-equity-report.html",
+      "name": "Valuer Holding",
+      "ticker": "VALUER.CO",
+      "isin": "DK0061418977",
+      "message": "Valuer Holding shares had their last trading day on Nasdaq First North on 3 August 2023.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b323cb93b16f04fca5ba97b760051de94&lang=en&src=rss",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/savosolar-equity-report.html",
+      "name": "Savosolar",
+      "ticker": "SAVOH.HE",
+      "isin": "FI4000425848",
+      "message": "Savosolar became Meriaura Group and later Summa Defence. The share ISIN changed in September 2025 after a share consolidation.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b8a6b42cacdf2c320be0f57d62d6f351c&lang=en&src=listed",
+      "label": "Company transaction",
+      "additionalSource": "https://view.news.eu.nasdaq.com/view?id=b4299e6b2f2d01b0938f77088bf5ad6c1&lang=en&src=rss",
+      "additionalLabel": "Nasdaq ISIN change",
+      "successor": "/reports/summa-defence-equity-report.html",
+      "successorLabel": "See the Summa Defence company page"
+    },
+    {
+      "file": "reports/gc-rieber-shipping-equity-report.html",
+      "name": "GC Rieber Shipping",
+      "ticker": "RISH.OL",
+      "isin": "NO0010262686",
+      "message": "GC Rieber Shipping shares had their last trading day on Oslo Børs on 13 December 2023. The company later changed its name to GC Rieber Shipping Holding AS.",
+      "source": "https://gcrieber-shipping.com/disclosure_archive/gc-rieber-shipping-asa-delisting/",
+      "label": "Delisting notice",
+      "additionalSource": "https://gcrieber-shipping.com/wp-content/uploads/2024/04/GC-RieberShipping2023-Publish2.pdf",
+      "additionalLabel": "Company name change",
+      "financialReview": {
+        "financialYear": 2025,
+        "currency": "NOK",
+        "marketCurrency": "NOK",
+        "sourceUrl": "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/987974532/2025",
+        "bookValue": 813.865,
+        "sharePrice": null,
+        "revenue": null,
+        "ebit": -24.37,
+        "netEarnings": -15.496,
+        "marketCap": null,
+        "modelSnapshot": {
+          "bookValue": 1170.962,
+          "sharePrice": 10.2,
+          "revenue": 5.212,
+          "ebit": -19.96,
+          "netEarnings": 243.135,
+          "marketCap": 878.0874
+        },
+        "notes": "GC Rieber Shipping Holding AS, organisation number 987974532, formerly listed GC Rieber Shipping ASA. Audited simplified IFRS consolidated 2025 statements, pp. 17–18 and note 4: NOK million other income 3.366 (not separately reported as revenue), EBIT -24.370, net earnings -15.496, total equity 813.865. Shares were delisted in 2023."
+      }
     }
   ]
 }
