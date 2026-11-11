@@ -30,6 +30,64 @@
       "message": "Dala Energi AB became Siljansvik AB on 15 December 2025 after reorganising as an ownership and investment company.",
       "source": "https://view.news.eu.nasdaq.com/view?id=b63a355518c55a15c61e0a4abad9a5ed8&lang=sv&src=micro",
       "label": "Company announcement"
+    },
+    {
+      "file": "reports/adevinta-equity-report.html",
+      "name": "Adevinta",
+      "message": "Adevinta was delisted from Oslo Børs on 5 June 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bc89a2237bc210c022bbf306f779c9f9c&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/abliva-equity-report.html",
+      "name": "Abliva",
+      "message": "Abliva shares had their last trading day on Nasdaq Stockholm on 17 March 2025.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b7d89c90e2c701ae86282a8d2add501b0&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/basware-equity-report.html",
+      "name": "Basware",
+      "message": "Basware shares were last listed on Nasdaq Helsinki on 9 December 2022.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b305a9815f8956bf55a5d1da988942666&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/caverion-equity-report.html",
+      "name": "Caverion",
+      "message": "Caverion shares were last listed on Nasdaq Helsinki on 1 July 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bd3ed7b04751016f49be53bae7ae3c2b5&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/chr-hansen-holding-equity-report.html",
+      "name": "Chr. Hansen Holding",
+      "message": "Chr. Hansen merged into Novozymes in January 2024. Its shares had their last trading day on Nasdaq Copenhagen on 30 January 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=bdf8270f9f66ea1be87a7bae6414515d7&lang=en",
+      "label": "Nasdaq merger notice"
+    },
+    {
+      "file": "reports/calliditas-therapeutics-equity-report.html",
+      "name": "Calliditas Therapeutics",
+      "message": "Calliditas Therapeutics shares had their last trading day on Nasdaq Stockholm on 10 October 2024.",
+      "source": "https://view.news.eu.nasdaq.com/view?id=b16cd812fc24def617cfb5bb47b8aae17&lang=en",
+      "label": "Nasdaq delisting notice"
+    },
+    {
+      "file": "reports/bilot-equity-report.html",
+      "name": "Bilot",
+      "message": "Bilot merged into Vincit in July 2022 and was delisted from Nasdaq Helsinki.",
+      "source": "https://attachment.news.eu.nasdaq.com/ab58a2a7243724a4be478f1913991b724",
+      "label": "Nasdaq surveillance report",
+      "successor": "/reports/vincit-equity-report.html",
+      "successorLabel": "View Vincit"
+    },
+    {
+      "file": "reports/rana-gruber-equity-report.html",
+      "name": "Rana Gruber",
+      "message": "Rana Gruber shares were delisted from Euronext Oslo Børs on 27 April 2026.",
+      "source": "https://live.euronext.com/en/products/equities/company-news/2026-04-22-rana-gruber-asa-delisting",
+      "label": "Euronext delisting notice"
     }
   ]
 }
