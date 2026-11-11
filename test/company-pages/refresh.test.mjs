@@ -95,6 +95,61 @@ test('a failure in a later page does not write an earlier page', async (t) => {
   assert.equal(await fs.readFile(path.join(root, second.path), 'utf8'), secondHtml);
 });
 
+test('unverified optional figures remain N/A rather than falling back to the model', async (t) => {
+  const { root } = await fixture(t);
+  const partiallyReviewed = { ...manifest, pages: [{ ...entry, values: { ...entry.values, sharePrice: null, marketCap: null } }] };
+  const result = await refreshCompanyPages({ manifest: partiallyReviewed, client: mockClient, rootDir: root, now, write: true });
+  const html = await fs.readFile(path.join(root, entry.path), 'utf8');
+  assert.deepEqual(result[0].unavailable, ['sharePrice', 'marketCap']);
+  assert.doesNotMatch(html, /year-end share price was N\/A|market capitalisation was N\/A/);
+  assert.match(html, /operating profit of EUR 2\.97m\./);
+  assert.doesNotMatch(html, /10\.65 EUR|EUR 40\.7m/);
+  assert.match(html, /<meta name="description" content="Example \(EXAMPLE\) financial overview for 2025: revenue, EBIT, net earnings and book value\.">/);
+  const again = await refreshCompanyPages({ manifest: partiallyReviewed, client: mockClient, rootDir: root, now, write: true });
+  assert.equal(again[0].changed, false);
+});
+
+test('omits an unverified operating profit while preserving the correct listing currency', async (t) => {
+  const { root } = await fixture(t);
+  const partial = { ...manifest, pages: [{ ...entry, ticker: 'EXAMPLE.ST', marketCurrency: 'SEK', sourceNote: 'Revenue includes rental & service income.', values: { ...entry.values, ebit: null, marketCap: null } }] };
+  const client = { ...mockClient, async findCompanyByTicker(ticker) {
+    return { companyId: 5, companyName: 'Example Oyj', companyCode: isin, ticker, industry: 'Industrials', marketCurrency: 'SEK' };
+  } };
+  await refreshCompanyPages({ manifest: partial, client, rootDir: root, now, write: true });
+  const html = await fs.readFile(path.join(root, entry.path), 'utf8');
+  assert.match(html, /revenue of EUR 39\.64m; the year-end share price was 10\.65 SEK\./);
+  assert.match(html, /<span class="cp-l">Operating profit<\/span><span class="cp-v">N\/A<\/span>/);
+  assert.match(html, /Revenue includes rental &amp; service income\./);
+  assert.doesNotMatch(html, /financial overview for 2025: revenue, EBIT/);
+  assert.equal((await refreshCompanyPages({ manifest: partial, client, rootDir: root, now, write: true }))[0].changed, false);
+});
+
+test('separate listed instruments require documented identity and retain price precision', async (t) => {
+  const { root } = await fixture(t);
+  const issuerIsin = 'EE3100004466';
+  const dual = { ...manifest, pages: [{ ...entry, modelIsin: issuerIsin, identitySourceUrl: 'https://example.com/annual-report.pdf',
+    values: { ...entry.values, sharePrice: 0.584 } }] };
+  const client = { ...mockClient, async findCompanyByTicker(ticker) { return { ...company, companyCode: issuerIsin, ticker }; } };
+  await assert.rejects(refreshCompanyPages({ manifest: { ...dual, pages: [{ ...dual.pages[0], identitySourceUrl: undefined }] }, client, rootDir: root, now, write: true }), /requires identity evidence/);
+  await refreshCompanyPages({ manifest: dual, client, rootDir: root, now, write: true });
+  const html = await fs.readFile(path.join(root, entry.path), 'utf8');
+  assert.match(html, /share price was 0\.584 EUR/);
+});
+
+test('reviewed filing may be newer than a separately recorded stale model', async (t) => {
+  const { root } = await fixture(t);
+  const oldModel = { ...mockClient, async getLatestActualModels() {
+    return [{ followedModelId: 10, currentYear: 2025, currency: 'EUR', dataMap: { 2024: {
+      bv: 16.503, adj_share_price_a: 10.65, ns: 39.639, ebit: 3.009, net_earnings: 2.313, market_cap_ye: 40.695141,
+    } } }];
+  } };
+  const newerFiling = { ...manifest, pages: [{ ...entry, modelFinancialYear: 2024 }] };
+  const result = await refreshCompanyPages({ manifest: newerFiling, client: oldModel, rootDir: root, now, write: true });
+  assert.equal(result[0].financialYear, 2025);
+  assert.match(await fs.readFile(path.join(root, entry.path), 'utf8'), /For financial year 2025/);
+  await assert.rejects(refreshCompanyPages({ manifest: { ...manifest, pages: [{ ...entry, modelFinancialYear: 2026 }] }, client: oldModel, rootDir: root, now }), /Invalid model year/);
+});
+
 test('a full report or a different page identity cannot be overwritten', () => {
   const html = renderCompanyPage(company, [related], now);
   assert.throws(() => refreshHtml(`${html}\n<meta name="valuatum-page-mode" content="report">`, entry, '2026-11-11', '2026-11-11'), /full report pages/);

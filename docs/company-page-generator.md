@@ -88,13 +88,21 @@ rejected. The page is identified using the current Wisdom ticker and the ISIN
 already present in its schema, so a ticker suffix change does not require a new
 profile or URL.
 
+For a separately listed depositary receipt whose issuer has a different ISIN,
+`modelIsin` and `identitySourceUrl` may be supplied only after checking the
+instrument relationship in an issuer or exchange document. Use the receipt's
+own year-end price and the relevant market-cap definition, not the other
+listing's price.
+
 Every batch requires a reviewed JSON manifest, for example
 `company-content/reviews/2026-11-11-pilot.json`. For each company, the manifest
 contains the current Wisdom ticker, the page's existing ticker, the official
 annual report URL, the reviewed fiscal year and figures,
 and a snapshot of Wisdom's corresponding model figures. Amounts other than the
 share price are in millions. Verify each value, its currency, the share price
-and the market-cap definition against the filing before adding it. Record the
+and the market-cap definition against the filing before adding it. Unverified
+figures other than revenue may be set to `null` and will
+appear as `N/A`; they are never filled from the model automatically. Record the
 date on which the sources were checked in `checkedOn`.
 
 ```bash
@@ -108,7 +116,8 @@ npm run refresh:companies -- --manifest company-content/reviews/2026-11-11-pilot
 Both commands require `WISDOM_API_TOKEN`; neither uses AI. The refresh stops
 before writing if an ISIN, fiscal year, currency or model figure differs from
 the review, a page is not a recognized overview, or its sitemap entry is
-missing. A new year or a changed model therefore needs a new filing review and
+missing. If the filing is newer than the model, record the model's period as
+`modelFinancialYear` as well as the filing's `financialYear`. A new year or a changed model therefore needs a new filing review and
 manifest. Running the command does not deploy the site. No scheduled automatic
 refresh is configured.
 
@@ -116,6 +125,23 @@ The model's `currentYear - 1` identifies the requested model period; it does
 not prove that this is the latest published annual filing. The refreshed page
 states the actual fiscal year without claiming it is the latest. Share price and
 market cap are labelled as year-end, not current market data.
+
+### Clarify historical overviews
+
+The following command identifies older overviews that still call their figures
+the latest and previews a wording correction. The `--write` option applies the
+correction and updates the sitemap; it does not change any financial figures.
+
+```bash
+node scripts/clarify-historical-overviews.mjs
+node scripts/clarify-historical-overviews.mjs --write
+```
+
+`company-content/reviews/2026-11-11-freshness-audit.json` records a read-only
+Wisdom ticker, ISIN and model-year check of the remaining historical pages.
+A newer model year only identifies a candidate for an annual-report review;
+it does not validate the financial figures or establish whether a company is
+still listed.
 
 ### Pilot source differences
 

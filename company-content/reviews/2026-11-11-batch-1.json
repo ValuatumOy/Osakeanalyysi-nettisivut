@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-11",
+  "pages": [
+    {
+      "path": "reports/boozt-equity-report.html",
+      "ticker": "BOOZT.ST",
+      "pageTicker": "BOOZT.ST",
+      "isin": "SE0009888738",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://storage.mfn.se/dfadd7c7-d227-4293-b084-99295099a7a2/uk-boozt-annual-report-2025.pdf",
+      "values": {
+        "bookValue": 2793,
+        "sharePrice": 113.5,
+        "revenue": 8287,
+        "ebit": 404,
+        "netEarnings": 301.085573,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 2785.695477,
+        "sharePrice": 77.9,
+        "revenue": 8265.327038,
+        "ebit": 446.828346,
+        "netEarnings": 301.131723,
+        "marketCap": 4883.2394
+      }
+    },
+    {
+      "path": "reports/asml-equity-report.html",
+      "ticker": "ASML",
+      "pageTicker": "ASML",
+      "isin": "USN070592100",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://ourbrand.asml.com/m/71076aaad607de4d/original/asml-2025-annual-report-based-on-us-gaap.pdf",
+      "values": {
+        "bookValue": 19612.2,
+        "sharePrice": null,
+        "revenue": 32667.3,
+        "ebit": 11301.4,
+        "netEarnings": 9609.4,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 18476.8,
+        "sharePrice": 693.08,
+        "revenue": 28262.9,
+        "ebit": 9022.6,
+        "netEarnings": 7361.8,
+        "marketCap": 272588.364
+      }
+    },
+    {
+      "path": "reports/apetit-equity-report.html",
+      "ticker": "APETIT.HE",
+      "pageTicker": "APETIT",
+      "isin": "FI0009003503",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://apetit.fi/app/uploads/2026/06/taloudellinen-katsaus_2025.pdf",
+      "values": {
+        "bookValue": 111.6,
+        "sharePrice": 13.85,
+        "revenue": 167.6,
+        "ebit": 13.7,
+        "netEarnings": 9,
+        "marketCap": 87.5
+      },
+      "modelSnapshot": {
+        "bookValue": 111.6,
+        "sharePrice": 13.85,
+        "revenue": 167.6,
+        "ebit": 13.6,
+        "netEarnings": 8.5,
+        "marketCap": 86.0657836
+      }
+    },
+    {
+      "path": "reports/ab-skf-equity-report.html",
+      "ticker": "SKF-B.ST",
+      "pageTicker": "SKF-B.ST",
+      "isin": "SE0000108227",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://cdn.skfmediahub.skf.com/api/public/096ee325b273e74a/pdf_preview_medium/SKF_ASR_2025_ENG_locked_pdf_preview_medium.pdf",
+      "values": {
+        "bookValue": 53558,
+        "sharePrice": 245.8,
+        "revenue": 91583,
+        "ebit": 7755,
+        "netEarnings": 3927,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 53558,
+        "sharePrice": 245.8,
+        "revenue": 91583,
+        "ebit": 7498,
+        "netEarnings": 4168,
+        "marketCap": 111925.2758
+      }
+    },
+    {
+      "path": "reports/as-tallink-grupp-equity-report.html",
+      "ticker": "TAL1T.TL",
+      "pageTicker": "TALLINK.HE",
+      "isin": "FI4000349378",
+      "modelIsin": "EE3100004466",
+      "identitySourceUrl": "https://attachment.news.eu.nasdaq.com/a4bfc4f2a7566177c13dafa5278f6e07e",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a4bfc4f2a7566177c13dafa5278f6e07e",
+      "values": {
+        "bookValue": 750.073,
+        "sharePrice": 0.584,
+        "revenue": 765.288,
+        "ebit": 50.302,
+        "netEarnings": 17.264,
+        "marketCap": 434.2
+      },
+      "modelSnapshot": {
+        "bookValue": 848.85024351,
+        "sharePrice": 0.608,
+        "revenue": 793.14048232,
+        "ebit": 71.15432284,
+        "netEarnings": 69.90477802,
+        "marketCap": 452.08999091
+      }
+    },
+    {
+      "path": "reports/ferrari-equity-report.html",
+      "ticker": "RACE.MI",
+      "pageTicker": "RACE.MI",
+      "isin": "NL0011585146",
+      "financialYear": 2025,
+      "modelFinancialYear": 2024,
+      "currency": "EUR",
+      "marketCurrency": "EUR",
+      "sourceUrl": "https://ferrari.scene7.com/is/content/ferrari/Ferrari_Annual_Report_2025_20F%20Form",
+      "reviewNotes": "IFRS annual report pp. 212, 214: income statement and parent-attributable equity. The Milan listing year-end price and market capitalisation were not verified.",
+      "values": {
+        "bookValue": 3906.893,
+        "sharePrice": null,
+        "revenue": 7145.768,
+        "ebit": 2109.716,
+        "netEarnings": 1596.919,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 3533.946,
+        "sharePrice": 412.4,
+        "revenue": 6676.668,
+        "ebit": 1891.949,
+        "netEarnings": 1525.912999,
+        "marketCap": 74126.0132
+      }
+    },
+    {
+      "path": "reports/cibus-equity-report.html",
+      "ticker": "CIBUS.ST",
+      "pageTicker": "CIBUS",
+      "isin": "SE0010832204",
+      "financialYear": 2025,
+      "currency": "EUR",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://attachment.news.eu.nasdaq.com/a87bac281ad88d093b7b868df39294ba1",
+      "reviewNotes": "Annual report pp. 9-10, 84-86: revenue combines rental income EUR 166.7m and service income EUR 22.1m; equity attributable to ordinary owners excludes the EUR 30m hybrid bond. EBIT is not stated and is left unavailable. Market capitalisation is left unavailable pending reconciliation of reported values.",
+      "values": {
+        "bookValue": 991.2,
+        "sharePrice": 146.95,
+        "revenue": 188.8,
+        "ebit": null,
+        "netEarnings": 91.4,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 987.749523,
+        "sharePrice": 146.95,
+        "revenue": 192.339672,
+        "ebit": 143.643505,
+        "netEarnings": 93.113592,
+        "marketCap": 11545.8127126
+      },
+      "sourceNote": "Revenue combines rental and service income; operating profit is unavailable because the report does not state it directly."
+    },
+    {
+      "path": "reports/epiroc-equity-report.html",
+      "ticker": "EPI-A.ST",
+      "pageTicker": "EPI-A.ST",
+      "isin": "SE0015658109",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://reports.epirocgroup.com/annual-and-sustainability-report-2025/",
+      "reviewNotes": "Consolidated income statement: https://reports.epirocgroup.com/annual-and-sustainability-report-2025/financial-information/group-financial-information/consolidated-income-statement/ ; shareholder equity: https://reports.epirocgroup.com/annual-and-sustainability-report-2025/financial-information/group-financial-information/consolidated-statement-of-changes-in-equity/ ; A-share price and both-class market cap: https://reports.epirocgroup.com/annual-and-sustainability-report-2025/the-business/the-epiroc-share/ .",
+      "values": {
+        "bookValue": 42261,
+        "sharePrice": 209.9,
+        "revenue": 61998,
+        "ebit": 11925,
+        "netEarnings": 8602,
+        "marketCap": 245716
+      },
+      "modelSnapshot": {
+        "bookValue": 42261,
+        "sharePrice": 209.9,
+        "revenue": 61998,
+        "ebit": 12689,
+        "netEarnings": 8599,
+        "marketCap": 253778.3356
+      }
+    },
+    {
+      "path": "reports/husqvarna-equity-report.html",
+      "ticker": "HUSQ-B.ST",
+      "pageTicker": "HUSQ-B.ST",
+      "isin": "SE0001662230",
+      "financialYear": 2025,
+      "currency": "SEK",
+      "marketCurrency": "SEK",
+      "sourceUrl": "https://www.husqvarnagroup.com/sites/husqvarna/files/2026-03/202603249629-1.pdf",
+      "reviewNotes": "Annual report consolidated income statement, p. 85 shareholder equity and p. 131 B-share price and total market cap. Market cap includes both share classes.",
+      "values": {
+        "bookValue": 23537,
+        "sharePrice": 46.51,
+        "revenue": 46613,
+        "ebit": 2898,
+        "netEarnings": 1768,
+        "marketCap": 26783
+      },
+      "modelSnapshot": {
+        "bookValue": 23537,
+        "sharePrice": 46.51,
+        "revenue": 46613,
+        "ebit": 2920,
+        "netEarnings": 1770,
+        "marketCap": 26589.767
+      }
+    },
+    {
+      "path": "reports/goodtech-equity-report.html",
+      "ticker": "GOD.OL",
+      "pageTicker": "GOD.OL",
+      "isin": "NO0004913609",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://mnd-assets.mynewsdesk.com/image/upload/f_pdf%2Cfl_attachment/pk491rrqyvr02j17szd4bu",
+      "sourceNote": "Revenue and operating profit cover continuing operations; net earnings also include discontinued operations.",
+      "reviewNotes": "Annual report pp. 50-54: revenue and EBIT from continuing operations, annual profit includes discontinued operations. There are no non-controlling interests. No source-confirmed year-end share price or market cap.",
+      "values": {
+        "bookValue": 277,
+        "sharePrice": null,
+        "revenue": 724,
+        "ebit": 36.6,
+        "netEarnings": 18.9,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 273.45993039,
+        "sharePrice": 9.64,
+        "revenue": 848.6015463,
+        "ebit": 14.40531134,
+        "netEarnings": 9.87654758,
+        "marketCap": 279.8888204
+      }
+    },
+    {
+      "path": "reports/strongpoint-equity-report.html",
+      "ticker": "STRO.OL",
+      "pageTicker": "STRO.OL",
+      "isin": "NO0010098247",
+      "financialYear": 2025,
+      "currency": "NOK",
+      "marketCurrency": "NOK",
+      "sourceUrl": "https://www.strongpoint.com/app/uploads/2026/03/strongpoint-asa-annual-report-2025-screen.pdf",
+      "sourceNote": "Book value and net earnings are attributable to shareholders of the parent company.",
+      "reviewNotes": "Annual report pp. 2, 53, 56: revenue and EBIT from income statement, equity and profit attributable to parent from statement of changes in equity; group totals include non-controlling interests. Market-cap definition is unverified.",
+      "values": {
+        "bookValue": 485.12,
+        "sharePrice": 10.05,
+        "revenue": 1358.909,
+        "ebit": -16.786,
+        "netEarnings": -1.027,
+        "marketCap": null
+      },
+      "modelSnapshot": {
+        "bookValue": 477.623,
+        "sharePrice": 10.05,
+        "revenue": 1358.909,
+        "ebit": -16.786,
+        "netEarnings": -4.971,
+        "marketCap": 449.8674063
+      }
+    }
+  ]
+}
