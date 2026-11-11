@@ -45,7 +45,9 @@
       "isin": "NO0010895568",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.airthings.com/newsroom/airthings-asa-delisting"
     },
     {
       "file": "akelius-residential-property-equity-report.html",
@@ -125,7 +127,9 @@
       "isin": "DK0061555109",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bc3bd03d5c39d2f026655607db730f22b&lang=en"
     },
     {
       "file": "arcus-equity-report.html",
@@ -205,7 +209,9 @@
       "isin": "SE0015961438",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b2fbf9312ac4d3dd2e1464818f2e2de5e&lang=en"
     },
     {
       "file": "awardit-equity-report.html",
@@ -479,7 +485,9 @@
       "isin": "SE0011762517",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bccae9ed392f2287d6822815f95563680&lang=en"
     },
     {
       "file": "cline-scientific-equity-report.html",
@@ -487,7 +495,9 @@
       "isin": "SE0006758231",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/docs/2025/04/23/European-Surveillance-Annual-Report-2024.pdf"
     },
     {
       "file": "coala-life-group-equity-report.html",
@@ -683,7 +693,9 @@
       "isin": "SE0015949482",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b758a541d85b743297edefa14553cb1a8&lang=en"
     },
     {
       "file": "ecit-as-equity-report.html",
@@ -709,7 +721,9 @@
       "isin": "NO0010936891",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.mfn.se/ob/a/ecoonline-holding/ecoonline-holding-as-delisting-5188d3db"
     },
     {
       "file": "edda-wind-equity-report.html",
@@ -753,7 +767,9 @@
       "isin": "SE0014730347",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.mfn.se/cis/a/ln-future-invest/beslut-om-avnotering-av-aktierna-i-ln-future-invest-ab-97490a88"
     },
     {
       "file": "elop-as-equity-report.html",
@@ -829,7 +845,9 @@
       "isin": "FI4000496328",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bb4963749a37376e4c5b86a900e18f39e&lang=en"
     },
     {
       "file": "fjord1-equity-report.html",
@@ -997,7 +1015,9 @@
       "isin": "SE0020677854",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/delisting-hoylu-ab-nasdaq-first-north-growth-market-2024-07-18"
     },
     {
       "file": "hydract-equity-report.html",
@@ -1139,7 +1159,9 @@
       "isin": "SE0016275333",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://news.cision.com/ngm-market-notice/r/26-67-decision-on-delisting-of-pixfam-ab-from-ngm-growth-market,c4391300"
     },
     {
       "file": "kindred-group-equity-report.html",
@@ -1181,7 +1203,9 @@
       "isin": "NO0010936750",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-08-01-kyoto-group-delisting"
     },
     {
       "file": "lassila-and-tikanoja-equity-report.html",
@@ -1265,7 +1289,9 @@
       "isin": "DK0061550811",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b7a91e6a251922e2a146631b84d9be8ca&lang=en"
     },
     {
       "file": "lipidor-equity-report.html",
@@ -1305,7 +1331,9 @@
       "isin": "SE0000731747",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b78e1e5dac63156f4abe0ccc276dcad59&lang=en"
     },
     {
       "file": "magseis-fairfield-equity-report.html",
@@ -1313,7 +1341,9 @@
       "isin": "NO0010663669",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/sites/default/files/company_press_releases/attachments_oslo/2024/04/12/615675_2023%20TGS%20Annual%20Report.pdf"
     },
     {
       "file": "mapspeople-equity-report.html",
@@ -1337,7 +1367,9 @@
       "isin": "NO0010307143",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.thomabravo.com/press-releases/thoma-bravo-completes-acquisition-of-mercell-holding-asa?hs_amp=true"
     },
     {
       "file": "mestro-equity-report.html",
@@ -1353,7 +1385,9 @@
       "isin": "NO0010895022",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-01-31-mintra-holding-delisting"
     },
     {
       "file": "next-biometrics-group-equity-report.html",
@@ -1449,7 +1483,9 @@
       "isin": "DK0010027671",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bd637ff112e505766b26c47bf9f2b0084&lang=en&src=rss"
     },
     {
       "file": "nts-equity-report.html",
@@ -1457,7 +1493,9 @@
       "isin": "NO0004895103",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "merged",
+      "statusSource": "https://www.salmar.no/en/news/salmar-completion-of-intra-group-merger-and-mandatory-notification-of-trade/"
     },
     {
       "file": "ocean-yield-equity-report.html",
@@ -1465,7 +1503,9 @@
       "isin": "NO0010657448",
       "pageYear": 2020,
       "status": "same_or_older",
-      "modelYear": 2020
+      "modelYear": 2020,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/product/equities/NO0010657448-XOSL"
     },
     {
       "file": "oceanteam-equity-report.html",
@@ -1481,7 +1521,9 @@
       "isin": "DK0061031036",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b33a5431d67df7118dcb726f5d7c85bcd&lang=da"
     },
     {
       "file": "olav-thon-eiendomsselskap-equity-report.html",
@@ -1539,7 +1581,9 @@
       "isin": "FI4000123070",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://piippo.info/"
     },
     {
       "file": "play-magnus-as-equity-report.html",
@@ -1575,7 +1619,9 @@
       "isin": "NO0010785967",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2024-02-05-quantafuel-delisting"
     },
     {
       "file": "questback-group-as-equity-report.html",
@@ -1603,7 +1649,9 @@
       "isin": "DK0061680436",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bd759708394277bff8e4db17a3a438b34&lang=en"
     },
     {
       "file": "risma-systems-equity-report.html",
@@ -1637,7 +1685,9 @@
       "isin": "DK0061551033",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=bb1d54d045a53dd004312ae52b70f8b38&lang=en"
     },
     {
       "file": "sanistal-equity-report.html",
@@ -1661,7 +1711,9 @@
       "isin": "DK0060042612",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b659e07807705d9df56075be25d6a546e&lang=en"
     },
     {
       "file": "scandion-oncology-equity-report.html",
@@ -1677,7 +1729,9 @@
       "isin": "DK0061114246",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b72a9e4b16f81ce25eb12d55228ebe807&lang=en"
     },
     {
       "file": "self-storage-group-equity-report.html",
@@ -1693,7 +1747,9 @@
       "isin": "DK0061076130",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://view.news.eu.nasdaq.com/view?id=b408b55c35bbba61aeb8fe353b924ca7d&lang=en"
     },
     {
       "file": "shape-robotics-equity-report.html",
@@ -1709,7 +1765,9 @@
       "isin": "DK0060495240",
       "pageYear": 2022,
       "status": "same_or_older",
-      "modelYear": 2022
+      "modelYear": 2022,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.simcorp.com/about-us/news/2023/nasdaq-as-accepts-delisting-of-simcorp-as-shares"
     },
     {
       "file": "skartanyab-equity-report.html",
@@ -1749,7 +1807,9 @@
       "isin": "NO0010887516",
       "pageYear": 2023,
       "status": "same_or_older",
-      "modelYear": 2023
+      "modelYear": 2023,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2025-01-16-teco-2030-asa-delisting"
     },
     {
       "file": "the-drilling-company-of-1972-equity-report.html",
@@ -1757,7 +1817,9 @@
       "isin": "DK0061135753",
       "pageYear": 2021,
       "status": "same_or_older",
-      "modelYear": 2021
+      "modelYear": 2021,
+      "companyStatus": "delisted",
+      "statusSource": "https://www.nasdaq.com/press-release/the-drilling-company-of-1972-a-s-removal-from-trading-and-official-listing-2022-10-03"
     },
     {
       "file": "tikkurila-equity-report.html",
@@ -1833,7 +1895,9 @@
       "isin": "NO0010716863",
       "pageYear": 2024,
       "status": "same_or_older",
-      "modelYear": 2024
+      "modelYear": 2024,
+      "companyStatus": "delisted",
+      "statusSource": "https://live.euronext.com/en/products/equities/company-news/2025-07-18-xxl-asa-delisting"
     }
   ]
 }
