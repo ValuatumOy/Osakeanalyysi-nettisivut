@@ -35,7 +35,7 @@
 - [Nokia (NOKIA.HE) AI equity report](https://www.aiequityreports.com/reports/nokia-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Novo Nordisk (NOVO-B.CO) AI equity report](https://www.aiequityreports.com/reports/novo-nordisk-equity-report.html): BUY, target 404.50 DKK (current 300.15 DKK).
 - [Nurminen Logistics (NLG1V.HE) AI equity report](https://www.aiequityreports.com/reports/nurminen-logistics-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
-- [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): BUY, target 267.00 USD (current 144.69 USD).
+- [NVIDIA (NVDA) AI equity report](https://www.aiequityreports.com/reports/nvidia-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Olvi (OLVAS.HE) AI equity report](https://www.aiequityreports.com/reports/olvi-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Oriola (ORIOLA.HE) AI equity report](https://www.aiequityreports.com/reports/oriola-equity-report.html): BUY, target 1.60 EUR (current 0.93 EUR).
 - [Orion (ORNAV.HE) AI equity report](https://www.aiequityreports.com/reports/orion-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
@@ -44,6 +44,7 @@
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
 - [Remedy Entertainment (REMEDY.HE) AI equity report](https://www.aiequityreports.com/reports/remedy-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
+- [Trainers' House (TRH1V.HE) AI equity report](https://www.aiequityreports.com/reports/trainers-house-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Vaisala (VAIAS.HE) AI equity report](https://www.aiequityreports.com/reports/vaisala-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 
@@ -69,7 +70,7 @@
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1147 company overview pages include profiles and, where available, financial figures.
+1146 company overview pages include profiles and, where available, financial figures.
 Some describe historical listings or renamed companies; check each page for report availability.
 They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

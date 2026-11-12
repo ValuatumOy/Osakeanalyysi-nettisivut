@@ -1,0 +1,763 @@
+{
+  "id": "nvidiacorporation-12112026",
+  "slug": "nvidia-equity-report",
+  "reportKind": "market-first",
+  "companyName": "NVIDIA Corporation",
+  "ticker": "NVDA",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Semiconductors",
+  "currency": "USD",
+  "reportDate": "2026-11-12",
+  "profile": "Designs computer chips and the systems built around them, serving cloud companies and other businesses that build and run artificial intelligence. It also sells graphics chips for gaming computers and professional workstations, plus computing platforms and software for carmakers and robot developers.",
+  "headline": {
+    "currentPrice": "174 USD",
+    "marketCap": "USD 4.21tn",
+    "enterpriseValue": "USD 4tn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+8 USD per share"
+  },
+  "consensusTarget": {
+    "value": "314 USD",
+    "analysts": "55",
+    "range": "200-515 USD",
+    "source": "MarketBeat"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2027",
+      "value": "15x"
+    },
+    {
+      "label": "EV/EBIT 2029",
+      "value": "6.8x"
+    },
+    {
+      "label": "P/E 2027",
+      "value": "17x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "243 USD",
+    "week52Low": "164 USD",
+    "oneYearChange": "-10%",
+    "threeYearChange": "+259%"
+  },
+  "summary": [
+    "NVIDIA Corporation (NVDA, NASDAQ Global Select) designs computer chips and AI computing systems, with Compute and networking serving cloud providers, enterprises, automakers and developers, while Graphics chips serves gaming and professional workstation customers. The share price was 174 USD on 12 November 2026, giving the company a market capitalisation of USD 4.21tn and an enterprise value of USD 4tn. In this Valuatum market report dated 12 November 2026, the whole company trades at 15x 2027 operating profit, 6.8x 2029 operating profit and 17x 2027 earnings.",
+    "The 174 USD share price is built mainly from Compute and networking at 386 USD per share, or 91% of the USD 426 per-share total attributed to the two businesses before deductions. Graphics chips contributes 39 USD per share, or 9%. Cash, less debt and other claims, adds 8 USD per share, while items not tied to one business subtract 261 USD per share. The operating-profit multiples implied by the split are 17.6x 2029 EBIT for Compute and networking and 17.1x for Graphics chips.",
+    "The businesses sit near the middle of their listed peer ranges, but the forecast margins differ sharply from competitors. Compute and networking is assigned a 69% 2029 operating margin against 11% for AMD and 16.1% for Marvell, while Graphics chips rises from 40.8% in 2026 to 62% in 2029. The key tests are fiscal third-quarter sales near USD 108bn, second-half sales of USD 233bn and whether supply, competition and margins validate the forecast."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "386 USD",
+      "text": "Compute and networking accounts for 386 USD per share, or 91% of the 426 USD attributed to the two businesses before deductions. Graphics chips contributes 39 USD per share. Together they exceed the 174 USD share price before cash, debt and other claims are reconciled."
+    },
+    {
+      "num": "02",
+      "title": "Peer positioning",
+      "metric": "69%",
+      "text": "The price sits near peers' middle multiples, while the principal difference is profitability. Compute and networking is assigned a 69% 2029 operating margin, far above AMD's 11% and Marvell's 16.1%, so the market's reading depends on how much of that margin survives."
+    },
+    {
+      "num": "03",
+      "title": "Execution test",
+      "metric": "USD 233bn",
+      "text": "The second half needs USD 233bn of sales to reach the USD 411bn fiscal 2027 forecast, after USD 118bn of adjusted operating profit in the first two quarters. Third-quarter sales guidance of USD 108bn is the nearest test of the forecast's pace."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Compute and networking",
+      "share": "386 USD per share",
+      "economics": "17.6x 2029 operating profit · USD 531,364m forecast operating profit · AMD 25.4x and Marvell 9.8x",
+      "text": "Compute and networking sells data-centre computing systems, networking products, AI software and automotive computing platforms to cloud providers, enterprises, automakers and developers. Outside sales were USD 193bn in 2026, while the split reaches USD 770bn in 2029 and assigns USD 531,364m of operating profit. The 386 USD per-share contribution represents 91% of the USD 426 attributed to both businesses before debt and other claims. At 17.6x 2029 operating profit, the implied multiple lies between AMD at 25.4x and Marvell at 9.8x. Its 2026 segment operating margin was 67.3%, rising to 69% in the split, supported by fixed-cost leverage and strong AI demand. The counterweight is margin risk: AMD's margin rose from 2% in 2023 to 11% in 2025, while Marvell was negative in 2024 and 2025. Supply, pricing and customer capacity commitments determine whether the forecast is reached."
+    },
+    {
+      "name": "Graphics chips",
+      "share": "39 USD per share",
+      "economics": "17.1x 2029 operating profit · USD 55,730m forecast operating profit · AMD 25.4x and Qualcomm 8.9x",
+      "text": "Graphics chips sells GeForce processors for gaming PCs and RTX processors for professional workstations to consumers, computer makers and businesses. Outside sales were USD 22.5bn in 2026, while the split reaches USD 89.4bn in 2029 and assigns USD 55,730m of operating profit. Its 39 USD per-share contribution is 9.3% of the USD 426 attributed to both businesses before debt and other claims. The 17.1x multiple sits between AMD at 25.4x and Qualcomm at 8.9x. NVIDIA held 94% of desktop discrete graphics-card shipments in the fourth quarter of 2025, supporting pricing power, but its 2026 operating margin was 40.8% and the split assumes 62% in 2029. Supply constraints, steady PC board volumes and AMD's 5% share make margin progression the central evidence for the price allocation."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 174 USD share price is dominated by Compute and networking, which contributes 386 USD per share and 91% of the USD 426 attributed to the two businesses before deductions. Graphics chips contributes 39 USD per share, or 9.3% of that total. The businesses therefore sum to 425.8 USD per share before the model applies balance-sheet and unallocated items: 8.41 USD per share of cash, less debt and other claims, and 260.5 USD per share not tied to one business. The resulting price is 173.7 USD per share. Compute and networking is assigned USD 531,364m of 2029 operating profit and a 17.6x multiple, while Graphics chips is assigned USD 55,730m and a 17.1x multiple. Those figures are not separate company forecasts; they are the split of the whole-company analyst forecast. The whole company forecast reaches USD 859,505m of sales and USD 587,094m of operating profit in 2029. The price composition is consequently driven by the assumed durability of two very different profit pools, with Compute and networking carrying the earnings weight and Graphics chips carrying the larger margin step."
+    },
+    {
+      "heading": "Why the price sits near peers",
+      "text": "Both businesses are read near the middle of their relevant peer ranges, but the comparison depends on profitability as much as on the multiple. Compute and networking at 17.6x 2029 operating profit sits between AMD at 25.4x and Marvell at 9.8x. Its split margin rises from 67.3% of 2026 outside sales to 69% in 2029, compared with AMD's 11% operating margin in 2025 and Marvell's 16.1% in fiscal 2026. A lower multiple than AMD therefore reflects uncertainty over whether an unusually high margin can persist, despite the business generating more profit per dollar of sales. Graphics chips at 17.1x sits between AMD at 25.4x and Qualcomm at 8.9x. NVIDIA's 94% desktop discrete graphics-card shipment share supports pricing power, but the split requires its margin to rise from 40.8% in 2026 to 62% in 2029. Gaming supply constraints and limited unit growth make that step conditional. The market reading is therefore neither a simple discount nor premium: it places both businesses at peer middles while withholding full credit for forecast margin expansion."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The nearest group-wide test is fiscal third-quarter sales guidance of USD 108bn, plus or minus 2%, against the USD 411bn fiscal 2027 sales forecast. The second half needs USD 233bn of sales, and adjusted operating profit must reach USD 151bn after USD 118bn in the first two quarters. A miss would show orders arriving more slowly than the forecast requires. For Compute and networking, substrate capacity is expected to rise 2.5-fold over three years, Unimicron's expansion was due to add capacity in the second quarter of 2027, and Amkor targeted more than a 300% increase in interposer wafer capacity by the end of 2028. Vera Rubin production at major cloud partners and USD 279bn of supply and capacity commitments are further demand checks. For Graphics chips, quarterly operating margin is the clearest signal: results near half of sales would support the path toward 62%, while a return toward 40% would weaken it. The expected first-half 2027 completion of the approximately USD 11.9bn Hugging Face purchase adds a business not included in the forecast."
+    }
+  ],
+  "risks": [
+    "Margin compression (Compute and networking): rival pricing or weaker product economics could pull the 69% 2029 split margin toward Intel's 20%; quarterly segment operating margin is the early warning.",
+    "Demand shortfall (Compute and networking): cloud customers may not absorb the capacity and supply commitments needed to deliver the USD 411bn fiscal 2027 sales forecast; fiscal third-quarter sales against USD 108bn guidance are the early warning.",
+    "Gaming supply constraint (Graphics chips): insufficient wafer, assembly, testing or packaging capacity could prevent sales reaching the USD 89.4bn 2029 split; statements on board allocation and capacity additions are the early warning.",
+    "Graphics margin miss (Graphics chips): the assumed rise from 40.8% in 2026 to 62% in 2029 may fail if mix or pricing weakens; quarterly operating margin near 40% is the early warning.",
+    "Competition (Graphics chips): AMD's 5% discrete-board share could grow and narrow NVIDIA's pricing advantage; quarterly Jon Peddie Research shipment share is the early warning."
+  ],
+  "catalysts": [
+    "Fiscal third-quarter sales delivery (near-term, Compute and networking): sales near USD 108bn would show that the pace required by the USD 411bn fiscal 2027 forecast is holding.",
+    "Vera Rubin ramp (near-term, Compute and networking): full production at partners including Microsoft Azure and Oracle would show whether new systems sustain demand and margin.",
+    "Graphics quarterly margin (near-term, Graphics chips): operating margin remaining near half of sales would support progress toward the 62% 2029 split assumption.",
+    "Supplier capacity expansion (medium-term, both businesses): the planned 2.5-fold increase in substrate capacity and doubled testing capacity would show whether supply constraints are easing.",
+    "Hugging Face completion (medium-term, Compute and networking): completion of the approximately USD 11.9bn acquisition in the first half of 2027 would add a business absent from the current forecast."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "60,922",
+            "130,497",
+            "215,938",
+            "410,840",
+            "667,791",
+            "859,505"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "33,731",
+            "83,317",
+            "133,230",
+            "272,032",
+            "434,753",
+            "570,141"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "55.4%",
+            "63.8%",
+            "61.7%",
+            "66.2%",
+            "65.1%",
+            "66.3%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-759",
+            "-1,864",
+            "-2,843",
+            "-3,317",
+            "11,920",
+            "16,953"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "32,972",
+            "81,453",
+            "130,387",
+            "268,715",
+            "446,673",
+            "587,094"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "54.1%",
+            "62.4%",
+            "60.4%",
+            "65.4%",
+            "66.9%",
+            "68.3%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "846",
+            "2,573",
+            "11,063",
+            "14,651",
+            "-28,265",
+            "-77,559"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "33,818",
+            "84,026",
+            "141,450",
+            "283,366",
+            "418,408",
+            "509,535"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "29,760",
+            "72,880",
+            "120,067",
+            "249,854",
+            "370,658",
+            "451,385"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "1.2",
+            "3",
+            "4.9",
+            "10.3",
+            "15.2",
+            "18.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.2",
+            "0.1",
+            "0",
+            "0.2",
+            "0.2",
+            "0.3"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "13.3%",
+            "2.4%",
+            "0.8%",
+            "1.4%",
+            "1.4%",
+            "1.4%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "5,260",
+            "8,076",
+            "13,250",
+            "25,285",
+            "41,099",
+            "52,898"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,112",
+            "807",
+            "3,306",
+            "6,290",
+            "10,224",
+            "13,159"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "4,430",
+            "5,188",
+            "20,832",
+            "20,832",
+            "20,832",
+            "20,832"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "4,500",
+            "6,425",
+            "30,552",
+            "30,552",
+            "30,552",
+            "30,552"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "15,302",
+            "20,496",
+            "67,940",
+            "82,959",
+            "102,707",
+            "117,441"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "5,282",
+            "10,080",
+            "21,403",
+            "37,576",
+            "61,077",
+            "78,611"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "31,783",
+            "61,457",
+            "93,597",
+            "128,116",
+            "173,763",
+            "207,821"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "7,280",
+            "8,589",
+            "10,605",
+            "22,579",
+            "36,701",
+            "47,237"
+          ]
+        },
+        {
+          "label": "Other current assets",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "186,665",
+            "481,437",
+            "873,874"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "44,345",
+            "80,126",
+            "125,605",
+            "374,936",
+            "752,978",
+            "1,207,543"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "6,081",
+            "10,979",
+            "13,258",
+            "13,258",
+            "13,258",
+            "13,258"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "65,728",
+            "111,601",
+            "206,803",
+            "471,153",
+            "868,942",
+            "1,338,242"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "42,978",
+            "79,327",
+            "157,293",
+            "406,172",
+            "773,256",
+            "1,219,340"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "8,459",
+            "8,463",
+            "7,469",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "1,250",
+            "—",
+            "999",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "10,310",
+            "11,534",
+            "12,629",
+            "5,160",
+            "5,160",
+            "5,160"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "10,631",
+            "18,047",
+            "32,163",
+            "52,504",
+            "80,195",
+            "100,856"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "1,809",
+            "2,693",
+            "4,718",
+            "7,317",
+            "10,331",
+            "12,886"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "65,728",
+            "111,601",
+            "206,803",
+            "471,153",
+            "868,942",
+            "1,338,242"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "1,347",
+            "—",
+            "2,944",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "3,776",
+            "1,681",
+            "807",
+            "-203,701",
+            "-509,581",
+            "-909,999"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "45,407",
+            "79,201",
+            "155,156",
+            "196,928",
+            "255,119",
+            "298,229"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "65.4%",
+            "71.1%",
+            "76.1%",
+            "86.2%",
+            "89.0%",
+            "91.1%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "8.8%",
+            "2.1%",
+            "0.5%",
+            "-50.2%",
+            "-65.9%",
+            "-74.6%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "0.1x",
+            "0.0x",
+            "0.0x",
+            "-0.7x",
+            "-1.2x",
+            "-1.6x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "4.2",
+            "4.4",
+            "3.9",
+            "7.1",
+            "9.4",
+            "12"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2024A",
+        "2025A",
+        "2026A",
+        "2027E",
+        "2028E",
+        "2029E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "18,164",
+            "48,938",
+            "92,564",
+            "223,819",
+            "317,281",
+            "403,501"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "14,926",
+            "42,232",
+            "81,782",
+            "210,900",
+            "342,320",
+            "472,208"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "13,313",
+            "25,806",
+            "30,346",
+            "29,352",
+            "41,457",
+            "30,931"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "1,348",
+            "7,058",
+            "50,287",
+            "18,336",
+            "7,828",
+            "-2,219"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-1,348",
+            "-7,058",
+            "-50,287",
+            "-18,336",
+            "-7,828",
+            "2,219"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "16,816",
+            "41,880",
+            "42,277",
+            "205,483",
+            "309,453",
+            "401,282"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "13,939",
+            "36,394",
+            "33,584",
+            "192,564",
+            "334,493",
+            "474,427"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "13,939",
+            "36,394",
+            "33,584",
+            "192,564",
+            "334,493",
+            "474,427"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-9,497",
+            "-36,097",
+            "-38,870",
+            "-6,844",
+            "-560",
+            "-2,746"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-3,979",
+            "-3,950",
+            "-1,719",
+            "-974",
+            "-3,574",
+            "-5,301"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "7,319",
+            "5,783",
+            "3,407",
+            "198,639",
+            "308,894",
+            "402,973"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "16.8x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "14.7x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "10.4x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "65.4%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "88.7%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "0.1%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is NVIDIA Corporation's share price made of?",
+      "a": "The 174 USD share price is split into 386 USD per share for Compute and networking, 39 USD for Graphics chips, 8 USD of cash less debt and other claims, and 261 USD of items not tied to one business."
+    },
+    {
+      "q": "Why does NVIDIA trade near the middle of its peers?",
+      "a": "Compute and networking is assigned 17.6x 2029 operating profit between AMD at 25.4x and Marvell at 9.8x. Graphics chips is assigned 17.1x between AMD at 25.4x and Qualcomm at 8.9x, with forecast margins determining how much of the peer comparison is supported."
+    },
+    {
+      "q": "What do analysts forecast for NVIDIA's sales and profit?",
+      "a": "Analysts forecast sales of USD 410,840m and operating profit of USD 268,715m in 2027, rising to USD 859,505m of sales and USD 587,094m of operating profit in 2029."
+    },
+    {
+      "q": "What should NVIDIA investors watch?",
+      "a": "The nearest checks are fiscal-third-quarter sales near USD 108bn and second-half sales of USD 233bn against the USD 411bn fiscal 2027 forecast. Investors should also track Compute and networking margins, Graphics chips margins against 40.8% and 62%, supplier capacity and AMD's discrete-board share."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' whole-company forecasts unchanged, splits forecast operating profit between the businesses using reported segment results, compares each business with listed peers using EV/EBIT, and reads today's share price back into the resulting business values."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on NVIDIA Corporation dated 12 November 2026 (174 USD share price, Compute and networking at 386 USD per share and Graphics chips at 39 USD per share).",
+    "Competitor context: Advanced Micro Devices, Inc. at 25.4x 2029 EV/EBIT, Marvell Technology, Inc. at 9.8x, and QUALCOMM Incorporated at 8.9x; Marvell's EV/EBIT is worked out from published market value, net debt and consensus operating profit rather than a Valuatum model.",
+    "Market data: NVDA, 174 USD on 12 November 2026, analysts' forecast of USD 859,505m sales and USD 587,094m operating profit in 2029, and the consensus price target source MarketBeat. The report states that the split between businesses is an estimate, that Marvell's multiple uses published figures, and that figures should be independently verified."
+  ]
+}

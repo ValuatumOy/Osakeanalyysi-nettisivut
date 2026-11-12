@@ -1,0 +1,707 @@
+{
+  "id": "trainershouseoyj-12112026",
+  "slug": "trainers-house-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Trainers' House Oyj",
+  "ticker": "TRH1V.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Consulting Services",
+  "currency": "EUR",
+  "reportDate": "2026-11-12",
+  "profile": "Helps organizations with marketing, sales, business development and organizational change. It also provides business training and coaching through projects, workshops and ongoing support delivered by consultants and trainers.",
+  "headline": {
+    "currentPrice": "1.96 EUR",
+    "marketCap": "EUR 4m",
+    "enterpriseValue": "EUR 3m"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+0.38 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "11x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "8.5x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "16x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "3.36 EUR",
+    "week52Low": "1.92 EUR",
+    "oneYearChange": "-17%",
+    "threeYearChange": "-54%"
+  },
+  "summary": [
+    "Trainers' House Oyj (TRH1V.HE, NASDAQ Helsinki) helps organizations with marketing, sales development, business development, training, coaching and organizational change. Its consultants and trainers deliver projects, workshops and ongoing support. The share price was 1.96 EUR on 12 November 2026, giving the company a market capitalization of EUR 4m and an enterprise value of EUR 3m. This Valuatum market report dated 12 November 2026 uses analysts' forecasts through 2028 and reads the current price into the operating business and the forecast cash position rather than producing a target price or recommendation.",
+    "The 1.96 EUR share price is split between 1.58 EUR for Business services and 0.38 EUR for cash, less debt and other claims. Business services receives the whole of the analysts' 2028 operating-profit forecast in the split: approximately EUR 0m on approximately EUR 8m of revenue and a 5% margin. The business portion implies 8.5x 2028 operating profit, compared with a listed-peer median of 7.6x and a range of 5.8x for WPP plc to about 10.3x for Accenture plc. The forecast cash contribution is based on end-2026 claims less cash, not reported cash.",
+    "The price sits above the 7.6x peer median while the business has a 0.3% operating margin for January–September 2026, a short order backlog and a EUR 0.2m third-quarter operating loss. The counterweight is the EUR 485 thousand operating profit recorded in 2025 and the possibility that full-year 2026 sales reach EUR 8m. Investors should watch sales, margin, operating cash flow and backlog: less than EUR 8m of 2026 sales, a loss-making 2027, four quarters of negative operating cash flow or continued weak orders would change what the share price is paying for."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What You Pay For",
+      "metric": "1.58 EUR",
+      "text": "Business services accounts for 1.58 EUR of the 1.96 EUR share price, representing the whole of the split's 2028 operating profit. The price pays 8.5x that forecast profit, while cash less debt and other claims contributes 0.38 EUR per share."
+    },
+    {
+      "num": "02",
+      "title": "Above Peer Prices",
+      "metric": "7.6x",
+      "text": "The 8.5x multiple for Business services is above the 7.6x peer median, despite a 0.3% January–September 2026 operating margin and a EUR 0.2m third-quarter loss. The market is paying for the return to the EUR 485 thousand operating profit recorded in 2025."
+    },
+    {
+      "num": "03",
+      "title": "What To Watch",
+      "metric": "-64k EUR",
+      "text": "The next reading depends on full-year 2026 sales of EUR 8m, a 5% 2028 operating margin and operating cash flow. Operating cash flow was negative EUR 64 thousand for January–September 2026, while the order backlog was short at September-end."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Business services",
+      "share": "1.58 EUR per share",
+      "economics": "8.5x 2028 operating profit · EUR 0m forecast operating profit on EUR 8m sales · peers about 7.6x median",
+      "text": "Business services covers consulting, marketing, sales development, training and coaching for companies and other organizations. It earns revenue from projects, workshops and ongoing support delivered by consultants and trainers. The split assigns it 1.58 EUR per share, or all of the businesses' value before cash, debt and other claims. The price implies 8.5x 2028 operating profit, against a peer median of 7.6x and a peer range from 5.8x for WPP plc to 10.3x for Accenture plc. The 2028 split assumes approximately EUR 8m of sales, approximately EUR 0m of operating profit and a 5% margin. In 2025, the business generated EUR 8.432m of external sales and EUR 485 thousand of operating profit, a margin of about 6%. Its people costs mean utilisation and project replacement determine how quickly profit changes."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is concentrated in one operating business rather than a portfolio of assets. Business services accounts for 1.58 EUR of the 1.96 EUR share price, while cash, less debt and other claims contributes 0.38 EUR per share. No forests or property are assigned a separate value. The split gives Business services the whole of the analysts' 2028 operating-profit forecast: approximately EUR 0m on approximately EUR 8m of sales, equivalent to a 5% operating margin. At the current price, that forecast profit is valued at 8.5x EV/EBIT. The price therefore depends on the consulting and training operation converting booked consultant capacity into recurring project revenue and retaining a positive margin. The business recorded EUR 8.432m of external sales and EUR 485 thousand of operating profit in 2025, but the latest operating evidence is weaker: the January–September 2026 operating margin was 0.3%, and the July–September 2026 operating loss was EUR 0.2m. Because salary costs continue when projects end, a modest revenue shortfall can remove most of the profit. The share price is consequently made chiefly of a small forecast operating profit, with cash providing the remaining per-share contribution."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "The Business services multiple of 8.5x 2028 operating profit is above the listed-peer median of 7.6x, but remains within the 5.8x-to-10.3x range from WPP plc to Accenture plc. The pricing difference is linked to the return to profitability in 2025, when operating profit reached EUR 485 thousand, and to the possibility that the company can restore a modest margin. It is not supported by current operating momentum alone. Trainers' House had a 0.3% operating margin for January–September 2026, a short order backlog at the end of September and a EUR 0.2m operating loss in the third quarter. The comparison is also loose because Trainers' House is much smaller and its profit base is very thin: a small change in operating profit produces a large change in EV/EBIT. Korn Ferry's 12.8% operating margin in fiscal 2026 shows the broader services category can operate at a materially higher margin, while Franklin Covey's 2.7% margin shows the range is wide. The share price therefore sits above the typical peer on a forecast that requires the 2025 recovery to persist, rather than on a demonstrated 2026 margin."
+    },
+    {
+      "heading": "What to watch",
+      "text": "Four operating indicators determine whether the current price continues to represent a recovering services business. First, full-year 2026 sales: January–September sales were EUR 5.849m, and EUR 8m for the year would meet the analysts' forecast; a lower result would show a shortfall. Second, margin: the January–September 2026 operating margin was 0.3%, while the split requires a 5% margin in 2028. A loss-making 2027 would challenge the assumption that the EUR 485 thousand operating profit achieved in 2025 was a new normal. Third, cash: operating cash flow was negative EUR 64 thousand for January–September 2026, so negative cash flow through the next four quarters would indicate continuing cash use. Fourth, the order backlog was described as short at September-end because work is project-based; a longer backlog would show that assignments are being sold ahead and could make revenue steadier. Kasvusysteemi represented 11% of new assignments in January–September 2026, so continued wins could lengthen the backlog. Conversely, project losses continuing at roughly EUR 0.2m per quarter would eliminate the EUR 0m 2028 profit underpinning the split."
+    }
+  ],
+  "risks": [
+    "Weak sales (Business services): full-year 2026 revenue falls below EUR 8m, leaving the forecast operating profit unsupported, with reported January–September sales of EUR 5.849m as the early warning.",
+    "Margin deterioration (Business services): a loss-making 2027 or continued quarterly losses removes the 5% 2028 margin used in the split, with the 0.3% January–September 2026 operating margin as the early warning.",
+    "Cash consumption (Business services): operating cash flow remains negative through the next four quarterly reports, with negative EUR 64 thousand for January–September 2026 as the early warning.",
+    "Short order backlog (Business services): insufficient project replacement reduces consultant utilisation and revenue visibility, with the short backlog at September 2026 as the early warning.",
+    "Thin profit base (Business services): small changes in operating profit cause large changes in EV/EBIT, with the EUR 485 thousand 2025 operating profit compared with the EUR 0.2m third-quarter 2026 loss as the early warning."
+  ],
+  "catalysts": [
+    "Full-year 2026 sales reach EUR 8m (near-term, Business services): delivery of the analysts' forecast would show that the nine-month sales decline has not widened.",
+    "Year-end operating result approaches EUR 0.5m (near-term, Business services): recovery from the third-quarter EUR 0.2m loss would make the 8.5x multiple easier to sustain within the peer range.",
+    "Backlog lengthens (near-term, Business services): more work sold ahead would improve revenue visibility and consultant utilisation after the short September 2026 backlog.",
+    "Kasvusysteemi wins further assignments (medium-term, Business services): continued contribution after 11% of new assignments in January–September 2026 would support steadier revenue.",
+    "Operating margin reaches 5% in 2028 (long-term, Business services): achievement of the split's margin would support the approximately EUR 0m operating-profit forecast on approximately EUR 8m of sales."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "0",
+            "0",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "1.9%",
+            "4.8%",
+            "8.5%",
+            "6.7%",
+            "9.0%",
+            "10.0%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-0",
+            "-0",
+            "-0",
+            "-0",
+            "-0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "-0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "-1.2%",
+            "0.5%",
+            "5.7%",
+            "3.7%",
+            "3.8%",
+            "5.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "0",
+            "-0",
+            "-0",
+            "-0",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-0",
+            "-0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "-0",
+            "-0.1",
+            "0.2",
+            "0.1",
+            "0.1",
+            "0.2"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.5",
+            "0",
+            "0.1",
+            "0",
+            "0",
+            "0.1"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "-1113.0%",
+            "—",
+            "28.9%",
+            "28.9%",
+            "28.9%",
+            "28.9%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "1",
+            "1",
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "2",
+            "2",
+            "2",
+            "2",
+            "2",
+            "2"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "4",
+            "4",
+            "4",
+            "4",
+            "4",
+            "4"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "1",
+            "2",
+            "2",
+            "2",
+            "2",
+            "2"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "2",
+            "2",
+            "3",
+            "2",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "4",
+            "4",
+            "4",
+            "4",
+            "4",
+            "5"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "-0",
+            "-0",
+            "-0",
+            "-0",
+            "-0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "2",
+            "2",
+            "2",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "6",
+            "6",
+            "6",
+            "6",
+            "6",
+            "6"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-0",
+            "-1",
+            "-1",
+            "-1",
+            "-1",
+            "-1"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "3",
+            "3",
+            "3",
+            "3",
+            "3",
+            "3"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "61.5%",
+            "62.9%",
+            "65.6%",
+            "68.9%",
+            "75.5%",
+            "76.4%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-3.8%",
+            "-15.5%",
+            "-28.1%",
+            "-19.4%",
+            "-24.9%",
+            "-29.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.9x",
+            "-1.5x",
+            "-1.6x",
+            "-1.5x",
+            "-1.6x",
+            "-1.8x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.2",
+            "1.3",
+            "1.4",
+            "1.7",
+            "2",
+            "2.2"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023 A",
+        "2024 A",
+        "2025 A",
+        "2026 E",
+        "2027 E",
+        "2028 E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "-0",
+            "0",
+            "1",
+            "0",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "-0",
+            "1",
+            "1",
+            "0",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "0",
+            "-0",
+            "-0",
+            "0",
+            "0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "0",
+            "-0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-0",
+            "0",
+            "-0",
+            "-0",
+            "-0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-0",
+            "0",
+            "1",
+            "-0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-0",
+            "0",
+            "1",
+            "-0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-0",
+            "0",
+            "1",
+            "-0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-1",
+            "-0",
+            "-0",
+            "0",
+            "-0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-2",
+            "-1",
+            "—",
+            "-0",
+            "-0",
+            "-0"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-1",
+            "0",
+            "0",
+            "-0",
+            "-0",
+            "0"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "16.3x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "6.1x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "11x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "1.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "1.8%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-1.5x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Trainers' House Oyj's share price made of?",
+      "a": "The 1.96 EUR share price is split into 1.58 EUR for Business services and 0.38 EUR for cash, less debt and other claims. Business services represents the whole of the split's 2028 operating profit and is valued at 8.5x forecast operating profit."
+    },
+    {
+      "q": "Why does Trainers' House trade above its listed peers?",
+      "a": "Business services is priced at 8.5x 2028 operating profit, above the 7.6x peer median. The premium reflects the EUR 485 thousand operating profit recorded in 2025 and the possibility of a recovery, although the January–September 2026 operating margin was only 0.3%."
+    },
+    {
+      "q": "What do analysts forecast for Trainers' House sales and profit?",
+      "a": "Analysts forecast approximately EUR 8m of sales and approximately EUR 0m of operating profit for 2028. The split applies a 5% operating margin, while full-year 2026 sales of EUR 8m would meet the current forecast."
+    },
+    {
+      "q": "What should Trainers' House investors watch?",
+      "a": "The key indicators are full-year 2026 sales, operating margin, operating cash flow and order backlog. January–September 2026 sales were EUR 5.849m, operating cash flow was negative EUR 64 thousand, the operating margin was 0.3% and the backlog was short."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' forecasts unchanged, assigns forecast operating profit between businesses, compares each business with listed peers using EV/EBIT and reads today's share price into the resulting multiples. It explains the current price rather than forecasting a target price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Trainers' House Oyj dated 12 November 2026 (1.96 EUR share price, 1.58 EUR Business services and 0.38 EUR cash less debt and other claims).",
+    "Competitor context: Accenture plc at 10.3x, Capgemini SE at 7.6x and WPP plc at 5.8x EV/EBIT 2028; the 7.6x peer median is based on the three listed peers, while the comparison is loose because Trainers' House has a very small profit base and a short order backlog.",
+    "Market data: TRH1V.HE, 1.96 EUR on 12 November 2026, analysts' forecasts of approximately EUR 8m sales and approximately EUR 0m operating profit in 2028, with forecasts held unchanged in the Valuatum model; no consensus price-target source is printed. The report states that figures may contain inaccuracies and should be independently verified."
+  ]
+}
