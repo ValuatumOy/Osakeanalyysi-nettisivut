@@ -1,0 +1,753 @@
+{
+  "id": "auroorayhtiotoyj-12112026",
+  "slug": "auroora-yhtiot-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Auroora Yhtiöt Oyj",
+  "ticker": "AUROORA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Conglomerates",
+  "currency": "EUR",
+  "reportDate": "2026-11-12",
+  "profile": "Owns a group of Finnish and Nordic industrial companies. The businesses design, build and maintain electrical equipment, sell water and wastewater treatment and recycling solutions, and make and service specialist industrial products for businesses, municipalities and public bodies.",
+  "headline": {
+    "currentPrice": "9.78 EUR",
+    "marketCap": "EUR 293m",
+    "enterpriseValue": "EUR 353m"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-2.00 EUR per share"
+  },
+  "consensusTarget": {
+    "value": "10.70 EUR",
+    "analysts": "3",
+    "range": "9.60-11.50 EUR",
+    "source": "Stock Analysis"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "27x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "20x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "47x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "13.30 EUR",
+    "week52Low": "5.22 EUR",
+    "oneYearChange": "0%",
+    "threeYearChange": "+87%"
+  },
+  "summary": [
+    "Auroora Yhtiöt Oyj (AUROORA.HE, NASDAQ Helsinki) owns Finnish and Nordic industrial businesses spanning electrical systems, water and wastewater treatment, recycling, specialist products and maintenance. The share price was 9.78 EUR on 12 November 2026, against market capitalisation of EUR 293m and enterprise value of EUR 353m. Analysts forecast revenue of EUR 305m and operating profit of EUR 18m in 2028, compared with revenue of EUR 205m and operating profit of EUR 6m in 2025. In this Valuatum market report dated 12 November 2026, the price is read as payment for forecast growth rather than current operating profit.",
+    "The price assigns 7.22 EUR per share to Electrification at 19.2x its 2028 operating profit of EUR 11m, 3.78 EUR per share to Industrial products at 22.7x operating profit of EUR 5m, and 0.79 EUR per share to Water and environment at 16.5x operating profit of EUR 1m. The businesses therefore add 11.78 EUR per share before debt and other claims, less cash. A deduction of 2.00 EUR per share for forecast end-2026 debt and other claims, less cash, reconciles the split to the 9.78 EUR share price.",
+    "Each business carries a multiple above its peer median: 19.2x versus 17.4x for Electrification, 22.7x versus 21.5x for Industrial products, and 16.5x versus 13.1x for Water and environment. The reading depends on forecast profit arriving: 2026 operating profit of EUR 13m requires about EUR 9m in the second half, Electrification sales reaching EUR 194m in 2028, Industrial products integrating acquisitions, and Water and environment converting a EUR 33.2m order backlog and acquisitions into profit."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "19.2x",
+      "text": "The price rests on three businesses and forecast operating profit rising from EUR 6m in 2025 to EUR 18m in 2028. Electrification receives 7.22 EUR per share, Industrial products 3.78 EUR per share and Water and environment 0.79 EUR per share before EUR 2.00 per share of claims less cash."
+    },
+    {
+      "num": "02",
+      "title": "Why above peers",
+      "metric": "22.7x",
+      "text": "Each business costs more per euro of forecast profit than its peer median: 19.2x versus 17.4x for Electrification, 22.7x versus 21.5x for Industrial products and 16.5x versus 13.1x for Water and environment. The premium requires growth, acquisitions and margin improvement to arrive."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "EUR 9m",
+      "text": "The second half must deliver about EUR 9m of operating profit to meet the EUR 13m 2026 forecast after first-half operating profit of EUR 3.6m. Labko and Coating Source completion, order backlogs and Electrification sales will determine whether the forecast path remains credible."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Electrification",
+      "share": "7.22 EUR per share",
+      "economics": "19.2x 2028 operating profit · EUR 11m operating profit · peers 17.4x",
+      "text": "Electrification designs, supplies, installs and services electrical systems, substations, transformers and automation for utilities, energy companies and industrial customers. It generated outside revenue of EUR 130m in 2025, while the split assigns revenue of EUR 194m and operating profit of EUR 11m in 2028 at a 6% margin. The share price assigns 7.22 EUR per share, or 216 EURm of enterprise value, to that forecast profit at 19.2x. The multiple is above the peer median of 17.4x but within a 13.5x-22.5x range. The evidence supporting the growth case includes an order backlog of EUR 96.9m at end-2025 and Fingrid investment of EUR 464m in the main grid. The constraint is execution: project delays, underpricing or weaker margins could remove the limited cushion beneath the forecast."
+    },
+    {
+      "name": "Industrial products",
+      "share": "3.78 EUR per share",
+      "economics": "22.7x 2028 operating profit · EUR 5m operating profit · peers 21.5x",
+      "text": "Industrial products sells specialist equipment, components, maintenance and heat-treatment services to industrial, energy, marine and public-sector customers. Outside revenue was EUR 57m in 2025; the split assigns revenue of EUR 86m and operating profit of EUR 5m in 2028 at a 6% margin. The share price assigns 3.78 EUR per share, or 113 EURm of enterprise value, at 22.7x forecast operating profit. That is slightly above the peer median of 21.5x and below the 24.8x high. Service companies supplied slightly more than half of segment sales in the second quarter of 2026, providing a steadier base than product sales. Six businesses joined during 2025, followed by Teknohaus, BRIX Facades and the expected Coating Source completion. Integration costs and uneven acquisition performance explain why the premium remains modest."
+    },
+    {
+      "name": "Water and environment",
+      "share": "0.79 EUR per share",
+      "economics": "16.5x 2028 operating profit · EUR 1m operating profit · peers 13.1x",
+      "text": "Water and environment sells water and wastewater treatment equipment and services, monitoring products and recycling solutions to municipalities, industries and other customers. Outside revenue was EUR 16m in 2025, when the business made a small adjusted loss; the split assigns revenue of EUR 25m and operating profit of EUR 1m in 2028 at a 6% margin. The share price assigns 0.79 EUR per share, or 24 EURm of enterprise value, at 16.5x forecast operating profit. That exceeds the peer median of 13.1x, although the multiple is applied to a small profit that is highly sensitive to margin changes. The order backlog was EUR 33.2m at end-June 2026, while Rasmix contributed an acquired revenue base of about EUR 5.0m and Labko has revenue of about EUR 10.5m. Price competition remains the key constraint."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is built from three operating businesses rather than from one uniform earnings stream. Electrification contributes 7.22 EUR per share, Industrial products 3.78 EUR per share and Water and environment 0.79 EUR per share, giving the businesses 11.78 EUR per share before claims less cash. Their assigned enterprise values are EUR 216m, EUR 113m and EUR 24m respectively. The split applies 19.2x, 22.7x and 16.5x to 2028 operating profit of EUR 11m, EUR 5m and EUR 1m. Electrification is therefore the decisive part of the price, carrying 64% of split 2028 operating profit and the largest expected increase in profit. Industrial products depends on revenue acquired through Teknohaus, BRIX Facades and Coating Source, while Water and environment requires a move from a 2025 loss to a 6% operating margin. The whole-company forecast is revenue of EUR 305m and operating profit of EUR 18m in 2028, against revenue of EUR 205m and operating profit of EUR 6m in 2025. Forecast growth, not the current earnings base, is what holds the price composition together."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "The market pays above the median listed-peer multiple for each business, but the size and quality of the premium differ. Electrification is read at 19.2x against a peer median of 17.4x and a range of 13.5x-22.5x. Its support is the EUR 96.9m order backlog and grid demand, but its 2025 outside revenue of EUR 130m and operating profit before amortisation of EUR 8.0m show that the 2028 allocation of EUR 194m revenue and EUR 11m operating profit still requires delivery. Industrial products is closer to peers at 22.7x versus 21.5x, with service revenue slightly above half of segment sales and several acquisitions providing a route to growth. Water and environment carries the most fragile premium at 16.5x versus 13.1x because EUR 1m of forecast operating profit is small and follows a loss in 2025. Its second-quarter 2026 adjusted EBITA margin of 9.6% is encouraging but is not the same measure as the forecast operating margin. The price composition therefore depends on growth and normalisation rather than established margins."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The earliest tests are operational. Whole-company adjusted operating profit was negative EUR 0.2m in the first quarter of 2026 and EUR 4.6m in the second quarter, leaving about EUR 9m required in the second half to reach the EUR 13m 2026 forecast. Electrification sales of EUR 194m in 2028 are central; sales nearer EUR 138.3m would imply the smaller earlier-scale outcome and reduce the support for 19.2x. Its backlog should be compared with EUR 96.9m at end-2025. Industrial products must show that BRIX, Coating Source and Teknohaus add revenue without weakening the second-quarter adjusted EBITA margin of 14.6%; its 2028 allocation requires EUR 86m of revenue. Water and environment has the nearest strategic test in Labko, expected to complete by end-2026, while its EUR 33.2m order backlog and 9.6% second-quarter adjusted EBITA margin need to persist. The share-price reading changes if acquisitions slip, price competition continues, margins fall towards the group's 4.0% adjusted 2025 figure, or forecast profit arrives later than expected."
+    }
+  ],
+  "risks": [
+    "Execution and order conversion (Electrification): project delays, underpricing or a shrinking backlog could prevent revenue reaching EUR 194m in 2028, with the EUR 96.9m end-2025 backlog as the early warning.",
+    "Forecast delivery (whole company): adjusted operating profit below the EUR 13m 2026 forecast after about EUR 9m is required in the second half would weaken the forecast profit base.",
+    "Acquisition integration (Industrial products): BRIX, Coating Source and Teknohaus may add costs or lose customers, with the 14.6% second-quarter 2026 adjusted EBITA margin as the early warning.",
+    "Price competition (Water and environment): public-sector pricing pressure could keep the business near break-even, with the 9.6% second-quarter 2026 adjusted EBITA margin as the early warning.",
+    "Small profit base (Water and environment): modest changes around EUR 1m of 2028 operating profit materially change the multiple, with the segment's quarterly adjusted EBITA as the early warning."
+  ],
+  "catalysts": [
+    "Coating Source completion (near-term, Industrial products): closing in November 2026 would add a business with about EUR 6m of latest-year revenue.",
+    "Labko completion (near-term, Water and environment): completion expected by end-2026 would add a business with about EUR 10.5m of revenue.",
+    "Second-half profit delivery (near-term, whole company): about EUR 9m of adjusted operating profit would complete the EUR 13m 2026 forecast.",
+    "Backlog conversion (medium-term, Electrification and Water and environment): Electrification retaining at least EUR 96.9m and Water and environment growing beyond EUR 33.2m would support forecast sales.",
+    "Margin conversion (medium-term, Industrial products and Water and environment): sustaining 14.6% and 9.6% adjusted EBITA margins respectively would support the 2028 operating-profit allocations of EUR 5m and EUR 1m."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR. Cash-flow rows are Valuatum model calculations and may differ materially from the company's reported cash-flow statement.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "106",
+            "143",
+            "205",
+            "267",
+            "288",
+            "305"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "6",
+            "11",
+            "17",
+            "26",
+            "31",
+            "33"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "5.9%",
+            "8.0%",
+            "8.2%",
+            "9.7%",
+            "10.7%",
+            "10.9%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-5",
+            "-8",
+            "-11",
+            "-13",
+            "-14",
+            "-15"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "2",
+            "4",
+            "6",
+            "13",
+            "16",
+            "18"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "1.6%",
+            "2.7%",
+            "2.8%",
+            "4.9%",
+            "5.7%",
+            "5.8%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-2",
+            "-3",
+            "-2",
+            "-5",
+            "-1",
+            "-0"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "-1",
+            "1",
+            "3",
+            "8",
+            "15",
+            "17"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "-1",
+            "1",
+            "2",
+            "6",
+            "12",
+            "13"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "—",
+            "0.8",
+            "2.7",
+            "7.2",
+            "13.2",
+            "14.7"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "—",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2",
+            "6",
+            "7",
+            "10",
+            "11",
+            "11"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "26",
+            "30",
+            "42",
+            "55",
+            "60",
+            "63"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "36",
+            "42",
+            "63",
+            "63",
+            "63",
+            "63"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "10",
+            "10",
+            "12",
+            "2",
+            "2",
+            "2"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "75",
+            "88",
+            "125",
+            "130",
+            "136",
+            "140"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "17",
+            "16",
+            "21",
+            "29",
+            "31",
+            "33"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "17",
+            "16",
+            "33",
+            "38",
+            "41",
+            "44"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "5",
+            "12",
+            "3",
+            "11",
+            "12",
+            "12"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "40",
+            "45",
+            "57",
+            "78",
+            "84",
+            "89"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "115",
+            "133",
+            "182",
+            "208",
+            "220",
+            "229"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "52",
+            "63",
+            "65",
+            "72",
+            "83",
+            "96"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "19",
+            "22",
+            "33",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "4",
+            "5",
+            "12",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "20",
+            "25",
+            "38",
+            "31",
+            "27",
+            "22"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "8",
+            "32",
+            "60",
+            "84",
+            "84",
+            "82"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "34",
+            "14",
+            "18",
+            "22",
+            "26",
+            "29"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "115",
+            "133",
+            "182",
+            "208",
+            "220",
+            "229"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "8",
+            "8",
+            "10",
+            "14",
+            "18",
+            "21"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "26",
+            "23",
+            "51",
+            "54",
+            "48",
+            "40"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "69",
+            "75",
+            "105",
+            "110",
+            "112",
+            "113"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "45.8%",
+            "47.1%",
+            "35.9%",
+            "34.4%",
+            "37.9%",
+            "42.0%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "48.7%",
+            "36.2%",
+            "78.0%",
+            "75.4%",
+            "58.2%",
+            "42.0%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "4.1x",
+            "2.0x",
+            "3.0x",
+            "2.1x",
+            "1.6x",
+            "1.2x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "4.8",
+            "1.4",
+            "1",
+            "0.9",
+            "1",
+            "1.1"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "-26",
+            "33",
+            "15",
+            "16",
+            "25",
+            "28"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "-20",
+            "35",
+            "19",
+            "19",
+            "26",
+            "28"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "30",
+            "-24",
+            "-1",
+            "4",
+            "1",
+            "1"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "70",
+            "20",
+            "46",
+            "28",
+            "19",
+            "20"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-70",
+            "-20",
+            "-46",
+            "-28",
+            "-19",
+            "-20"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "-96",
+            "13",
+            "-32",
+            "-13",
+            "6",
+            "8"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "-89",
+            "17",
+            "-25",
+            "-9",
+            "7",
+            "9"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "-89",
+            "18",
+            "-25",
+            "-9",
+            "7",
+            "9"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "85",
+            "17",
+            "22",
+            "11",
+            "-5",
+            "-7"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-11",
+            "29",
+            "-10",
+            "-2",
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "46.6x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "13.6x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.2x"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "4.9%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "9.4%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "n/a"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "27x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Auroora Yhtiöt Oyj's share price made of?",
+      "a": "The 9.78 EUR share price assigns 7.22 EUR per share to Electrification, 3.78 EUR per share to Industrial products and 0.79 EUR per share to Water and environment. The businesses total 11.78 EUR per share before a 2.00 EUR per-share deduction for debt and other claims, less cash."
+    },
+    {
+      "q": "Why does Auroora trade above its listed peers?",
+      "a": "The price implies 19.2x 2028 operating profit for Electrification versus a 17.4x peer median, 22.7x for Industrial products versus 21.5x, and 16.5x for Water and environment versus 13.1x. The difference rests on forecast growth, acquisitions and margin recovery."
+    },
+    {
+      "q": "What do analysts forecast for Auroora's sales and profit?",
+      "a": "Analysts forecast revenue of EUR 267m and operating profit of EUR 13m in 2026, rising to revenue of EUR 305m and operating profit of EUR 18m in 2028. Net earnings are forecast at EUR 6m in 2026 and EUR 13m in 2028."
+    },
+    {
+      "q": "What should Auroora investors watch?",
+      "a": "The key indicators are about EUR 9m of second-half 2026 operating profit, Electrification sales of EUR 194m in 2028, the EUR 96.9m Electrification backlog, Industrial products' 14.6% adjusted EBITA margin, and Water and environment's EUR 33.2m backlog and Labko completion."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "The method keeps analysts' forecasts unchanged to 2028, splits forecast operating profit between the businesses using segment results, compares each business with listed peers on EV/EBIT, and reads today's 9.78 EUR share price back into the businesses. It does not forecast the share price or provide a recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Auroora Yhtiöt Oyj dated 12 November 2026 (9.78 EUR share price, 7.22 EUR per share Electrification, 3.78 EUR per share Industrial products and 0.79 EUR per share Water and environment).",
+    "Competitor context: ABB Ltd, Siemens AG, Quanta Services, Inc. and Schneider Electric SE at 13.5x-22.5x for Electrification; Indutrade AB, Addtech AB, Lagercrantz Group AB and Bilfinger SE at 13.6x-24.8x for Industrial products; Xylem Inc., Ecolab Inc. and Kemira Oyj at 8.8x-22.8x for Water and environment. Xylem's 18.0x 2025 operating-profit multiple is a loose reference on a different basis, and Siemens AG and Bilfinger SE dividend yields are excluded as outliers from peer medians and averages.",
+    "Market data: AUROORA.HE, 9.78 EUR on 12 November 2026; analysts' forecasts include revenue of EUR 305m and operating profit of EUR 18m in 2028; the consensus price target source is Stock Analysis, with 3 analysts and a 9.60-11.50 EUR range. Cash-flow rows are Valuatum model calculations rather than the company's reported cash-flow statement, and figures should be independently verified."
+  ]
+}
