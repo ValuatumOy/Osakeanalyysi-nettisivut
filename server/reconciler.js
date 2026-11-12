@@ -883,47 +883,69 @@ function emitOrderMetrics(allOrders, now = new Date()) {
   }));
 }
 
+// Advances one order; a thrown error is transient (see advance()). Returns
+// false when the order hit one, so the same tick does not retry it.
+async function advanceSafely(order) {
+  try {
+    await advance(order);
+    return true;
+  } catch (err) {
+    // Transient: bump attempts, keep status, retry next tick. A REVISING
+    // order tracks this against revisionAttempts/revisionError instead —
+    // see the note in advance().
+    console.error(`reconciler: transient error on order ${order.id}:`, err.message);
+    // Alert once, on the first failed attempt: the retries are silent and
+    // running out of them takes the failure path, which emails on its own.
+    const attempt = (order.status === orders.STATUS.REVISING ? order.revisionAttempts : order.attempts) || 0;
+    if (attempt === 0) {
+      await email.reportError('reconciler: transient error', err, {
+        orderId: order.id,
+        status: order.status,
+        company: order.companyName,
+        ticker: order.ticker,
+        customer: order.email,
+        note: `Retried on each 5-minute sweep, up to ${MAX_ATTEMPTS} attempts; further retries are not emailed.`,
+      });
+    }
+    try {
+      if (order.status === orders.STATUS.REVISING) {
+        await orders.update(order.id, {
+          revisionError: err.message,
+          revisionAttempts: (order.revisionAttempts || 0) + 1,
+        });
+      } else {
+        await orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
+      }
+    } catch (updateErr) {
+      console.error('reconciler: could not record error for', order.id, updateErr.message);
+    }
+  }
+  return false;
+}
+
 // One reconciliation pass over all pending orders. Single-flight: a pass already
 // in progress makes this a no-op (returns false). (In Lambda the real guard is
 // reserved concurrency 1; this stays as a harmless second line of defense.)
+//
+// Two rounds share the tick's poll window. The first gives every pending order
+// one step without waiting (a new order sends its gap-fill request, a waiting
+// one checks once), so an order never waits for another order's window. The
+// second spends the rest of the window waiting on the orders still pending.
 async function tick() {
   if (running) return false;
   running = true;
-  tickDeadline = Date.now() + POLL_WINDOW_MS;
+  const windowEnd = Date.now() + POLL_WINDOW_MS;
   try {
+    tickDeadline = Date.now();
+    const erred = new Set();
     for (const order of await orders.listPending()) {
-      try {
-        await advance(order);
-      } catch (err) {
-        // Transient: bump attempts, keep status, retry next tick. A REVISING
-        // order tracks this against revisionAttempts/revisionError instead —
-        // see the note in advance().
-        console.error(`reconciler: transient error on order ${order.id}:`, err.message);
-        // Alert once, on the first failed attempt: the retries are silent and
-        // running out of them takes the failure path, which emails on its own.
-        const attempt = (order.status === orders.STATUS.REVISING ? order.revisionAttempts : order.attempts) || 0;
-        if (attempt === 0) {
-          await email.reportError('reconciler: transient error', err, {
-            orderId: order.id,
-            status: order.status,
-            company: order.companyName,
-            ticker: order.ticker,
-            customer: order.email,
-            note: `Retried on each 5-minute sweep, up to ${MAX_ATTEMPTS} attempts; further retries are not emailed.`,
-          });
-        }
-        try {
-          if (order.status === orders.STATUS.REVISING) {
-            await orders.update(order.id, {
-              revisionError: err.message,
-              revisionAttempts: (order.revisionAttempts || 0) + 1,
-            });
-          } else {
-            await orders.update(order.id, { error: err.message, attempts: (order.attempts || 0) + 1 });
-          }
-        } catch (updateErr) {
-          console.error('reconciler: could not record error for', order.id, updateErr.message);
-        }
+      if (!(await advanceSafely(order))) erred.add(order.id);
+    }
+    if (POLL_WINDOW_MS > 0) {
+      tickDeadline = windowEnd;
+      for (const order of await orders.listPending()) {
+        if (Date.now() >= windowEnd) break;
+        if (!erred.has(order.id)) await advanceSafely(order);
       }
     }
 

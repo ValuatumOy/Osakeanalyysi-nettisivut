@@ -40,6 +40,7 @@ function fakeCollector(states, { company = APPLE, configured = true } = {}) {
       return new Date(Date.now() - 1000 * requests.length).toISOString();
     },
     async checkGapFill(isin, requestedAt) {
+      if (requests.length === 2 && this.firstCheckOfSecond == null) this.firstCheckOfSecond = checks.length;
       checks.push({ isin, requestedAt });
       return states[Math.min(checks.length - 1, states.length - 1)];
     },
@@ -240,6 +241,10 @@ test('orders in one tick share its poll window, so a waiting order cannot starve
 
   assert.ok(took < 600, `the tick used one window, not one per order (${took} ms)`);
   assert.equal(collector.requests.length, 2, 'both orders were requested in the same tick');
+  // The first round gives each order one step before anything waits: the
+  // second order's request goes out right after the first order's first check.
+  assert.equal(collector.checks.length >= 3, true, 'the waiting round checked again');
+  assert.equal(collector.firstCheckOfSecond, 1, 'order b was checked before order a was checked twice');
   assert.equal((await stored('cs_a')).status, 'IMPORTING');
   assert.equal((await stored('cs_b')).status, 'IMPORTING');
 });
