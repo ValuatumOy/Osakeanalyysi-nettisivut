@@ -22,6 +22,7 @@ const ENV_KEYS = [
   'ORDERS_STATE_PATH', 'ORDERS_TABLE', 'REPORT_PDF_BUCKET', 'FRESH_IMPORT_ENABLED',
   'RECONCILER_POLL_WINDOW_MS', 'ENGINE_FID_BY_TICKER', 'GAP_FILL_ENABLED',
   'GAP_FILL_MAX_WAIT_MS', 'GAP_FILL_RESEND_MS', 'GAP_FILL_SETTLE_MS', 'GAP_FILL_POLL_DELAY_MS',
+  'RECONCILER_POLL_DELAY_MS',
 ];
 
 const APPLE = { isin: 'US0378331005', name: 'Apple Inc.' };
@@ -226,11 +227,11 @@ test('with the gap fill off, nothing is requested', async (t) => {
   assert.deepEqual(submitted, [{ companyCode: 'AAPL' }]);
 });
 
-test('orders in one tick share its poll window, so a waiting order cannot starve the next', async (t) => {
+test('orders in one tick take turns: each is checked every pass, none waits for another', async (t) => {
   const collector = fakeCollector([{ state: 'running', detail: 'acquiring' }]);
   const { reconciler } = load(t, collector, {
     RECONCILER_POLL_WINDOW_MS: '300',
-    GAP_FILL_POLL_DELAY_MS: '50',
+    RECONCILER_POLL_DELAY_MS: '50',
   });
   await newOrder('cs_a');
   await newOrder('cs_b', 'ADBE');
@@ -243,8 +244,10 @@ test('orders in one tick share its poll window, so a waiting order cannot starve
   assert.equal(collector.requests.length, 2, 'both orders were requested in the same tick');
   // The first round gives each order one step before anything waits: the
   // second order's request goes out right after the first order's first check.
-  assert.equal(collector.checks.length >= 3, true, 'the waiting round checked again');
   assert.equal(collector.firstCheckOfSecond, 1, 'order b was checked before order a was checked twice');
+  const isins = collector.checks.map(c => c.requestedAt);
+  assert.ok(collector.checks.length >= 4, `several passes ran (${collector.checks.length} checks)`);
+  assert.notEqual(isins[2], isins[3], 'the passes alternate between the two orders');
   assert.equal((await stored('cs_a')).status, 'IMPORTING');
   assert.equal((await stored('cs_b')).status, 'IMPORTING');
 });

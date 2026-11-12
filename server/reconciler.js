@@ -621,12 +621,12 @@ async function pollEngineJob(order, jobId, onDone, onFail) {
   }
 }
 
-// One poll window per tick, shared by every order the tick advances. Each
-// order used to get a POLL_WINDOW_MS window of its own, so two orders waiting
-// in one tick (two renders, or a gap fill and a render) could outlast the
-// worker's 10-minute timeout. Now the first waiting order may use the window
-// and later ones make one step each; the next sweep continues where they
-// stopped. Outside tick() (advance() called directly) a call gets a fresh window.
+// Inside tick() each advance() makes one step and returns (tick() itself
+// takes the orders in turns, see there): tickDeadline is then "now", so the
+// poll loops below do one check and do not wait. Each order used to wait in
+// a POLL_WINDOW_MS window of its own, so two waiting orders could outlast the
+// worker's 10-minute timeout and the orders behind them sat idle.
+// advance() called on its own (tests, tools) still gets a full window.
 let tickDeadline = null;
 function pollWindowDeadline() {
   const own = Date.now() + POLL_WINDOW_MS;
@@ -927,26 +927,26 @@ async function advanceSafely(order) {
 // in progress makes this a no-op (returns false). (In Lambda the real guard is
 // reserved concurrency 1; this stays as a harmless second line of defense.)
 //
-// Two rounds share the tick's poll window. The first gives every pending order
-// one step without waiting (a new order sends its gap-fill request, a waiting
-// one checks once), so an order never waits for another order's window. The
-// second spends the rest of the window waiting on the orders still pending.
+// Within the tick's poll window the orders take turns: each pass gives every
+// pending order one step without waiting (a new order sends its gap-fill
+// request, a waiting gap fill or render is checked once), then the tick pauses
+// RECONCILER_POLL_DELAY_MS and passes again. Every pending order is checked
+// about every 20 s however many there are, and no order waits for another's.
 async function tick() {
   if (running) return false;
   running = true;
   const windowEnd = Date.now() + POLL_WINDOW_MS;
   try {
-    tickDeadline = Date.now();
     const erred = new Set();
-    for (const order of await orders.listPending()) {
-      if (!(await advanceSafely(order))) erred.add(order.id);
-    }
-    if (POLL_WINDOW_MS > 0) {
-      tickDeadline = windowEnd;
-      for (const order of await orders.listPending()) {
-        if (Date.now() >= windowEnd) break;
-        if (!erred.has(order.id)) await advanceSafely(order);
+    for (;;) {
+      tickDeadline = Date.now(); // one step per order: nothing waits inside advance()
+      const pending = (await orders.listPending()).filter(order => !erred.has(order.id));
+      for (const order of pending) {
+        if (!(await advanceSafely(order))) erred.add(order.id);
       }
+      const remaining = windowEnd - Date.now();
+      if (pending.length === 0 || remaining <= POLL_DELAY_MS) break;
+      await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
     }
 
     if (EMIT_ORDER_METRICS) {
