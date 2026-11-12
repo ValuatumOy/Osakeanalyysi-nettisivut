@@ -74,6 +74,12 @@ export class WorkerStack extends Stack {
         // (fmp-import-token); aspId uses the code default.
         FRESH_IMPORT_ENABLED: this.node.tryGetContext('freshImportEnabled') ?? String(config.freshImportEnabled),
         FMP_IMPORT_URL: config.fmpImportUrl,
+        // Fill the company's missing report periods in Trunk before rendering
+        // (server/collector-client.js); replaces the FMP import above.
+        GAP_FILL_ENABLED: this.node.tryGetContext('gapFillEnabled') ?? String(config.gapFillEnabled),
+        COLLECTOR_IMPORTER_FUNCTION: config.collector.importerFunction,
+        COLLECTOR_REPORT_IMPORT_TABLE: config.collector.reportImportTable,
+        COLLECTOR_IMPORT_GROUPS_TABLE: config.collector.importGroupsTable,
         // Reports rendered from a pinned Trunk model (config.engineFidByTicker).
         ENGINE_FID_BY_TICKER: JSON.stringify(config.engineFidByTicker),
         // Delivered fresh reports are published for resale right away. No
@@ -99,6 +105,20 @@ export class WorkerStack extends Stack {
         resources: [config.engineFunctionArn],
       }));
     }
+    // Gap fill: start the collector's importer (async invoke only) and read
+    // back its request rows and the import groups. Read-only on both tables.
+    this.workerFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['lambda:InvokeFunction'],
+      resources: [`arn:aws:lambda:${this.region}:${this.account}:function:${config.collector.importerFunction}`],
+    }));
+    this.workerFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['dynamodb:Query'],
+      resources: [`arn:aws:dynamodb:${this.region}:${this.account}:table/${config.collector.reportImportTable}`],
+    }));
+    this.workerFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['dynamodb:GetItem'],
+      resources: [`arn:aws:dynamodb:${this.region}:${this.account}:table/${config.collector.importGroupsTable}`],
+    }));
     this.workerFunction.addToRolePolicy(new iam.PolicyStatement({
       actions: ['ssm:GetParameters', 'ssm:GetParameter'],
       resources: [

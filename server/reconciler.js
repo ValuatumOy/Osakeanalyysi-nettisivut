@@ -3,7 +3,11 @@
 // A single-flight background loop that walks each pending order through the
 // generation state machine and delivers the finished PDF:
 //
-//   NEW ─(FRESH_IMPORT_ENABLED)→ IMPORTING → RENDERING ─poll→ DELIVERED | FAILED
+//   NEW ─(GAP_FILL_ENABLED)→ IMPORTING → RENDERING ─poll→ DELIVERED | FAILED
+//
+// IMPORTING is the gap fill: wisdom-data-collector imports the company's
+// missing report periods into Trunk first (advanceGapFill). It replaced the
+// FMP import (FRESH_IMPORT_ENABLED), which is skipped while the gap fill is on.
 //
 // A "+ Revisions" order also cycles DELIVERED ⇄ REVISING: a customer's
 // POST /revisions claims the order and stashes a free-text comment, the
@@ -33,6 +37,7 @@
 const engine = require('./engine-client');
 const email = require('./email');
 const fmp = require('./fmp-client');
+const collector = require('./collector-client');
 
 // Storage backends. In Lambda, CDK sets ORDERS_TABLE / REPORT_PDF_BUCKET →
 // DynamoDB orders + S3 catalog. The JSON-file orders module remains only for
@@ -93,6 +98,21 @@ const POLL_DELAY_MS = intEnv('RECONCILER_POLL_DELAY_MS', 20000);
 const EMIT_ORDER_METRICS = boolEnv('EMIT_ORDER_METRICS', false);
 const STUCK_AFTER_MINUTES = intEnv('ORDER_STUCK_AFTER_MINUTES', 30);
 const FRESH_IMPORT_ENABLED = boolEnv('FRESH_IMPORT_ENABLED', false);
+// Gap fill before rendering (server/collector-client.js): the collector imports
+// the company's missing report periods into Trunk and the render waits for it,
+// bounded by GAP_FILL_MAX_WAIT_MS. It replaces the FMP import, so with both
+// flags on only the gap fill runs. Whatever its outcome, the order renders:
+// a gap fill that cannot finish leaves the report no staler than before, and
+// the admin is told.
+const GAP_FILL_ENABLED = boolEnv('GAP_FILL_ENABLED', false);
+// Under the 30-minute OrdersStuck alarm (NEW/IMPORTING), with room for the render to start.
+const GAP_FILL_MAX_WAIT_MS = intEnv('GAP_FILL_MAX_WAIT_MS', 20 * 60 * 1000);
+// A deferred request (another import of the company is in flight) is sent again after this.
+const GAP_FILL_RESEND_MS = intEnv('GAP_FILL_RESEND_MS', 3 * 60 * 1000);
+// Trunk saves a delivered import asynchronously (the REST call answers 202);
+// wait this long after the last group is delivered before the engine reads the model.
+const GAP_FILL_SETTLE_MS = intEnv('GAP_FILL_SETTLE_MS', 60 * 1000);
+const GAP_FILL_POLL_DELAY_MS = intEnv('GAP_FILL_POLL_DELAY_MS', 15 * 1000);
 // Ticker -> Trunk followed model the engine renders, instead of its default
 // pick (the `ValuatumDataSources` FMP model). For a company whose statements
 // were imported into a `ValuatumData` model alongside the FMP one. Sent as
@@ -601,6 +621,90 @@ async function pollEngineJob(order, jobId, onDone, onFail) {
   }
 }
 
+// Gap fill outcomes (order.gapFillStatus, set once):
+//   IMPORTED         the collector delivered missing periods to Trunk
+//   NOTHING_MISSING  Trunk already had every period the collector targets
+//   UNAVAILABLE      nothing could be imported (no documents found, the run failed, ...)
+//   TIMEOUT          still running after GAP_FILL_MAX_WAIT_MS
+//   NO_ISIN          Wisdom has no company with the order's ticker and an ISIN
+//   NOT_CONFIGURED   the COLLECTOR_* env vars are missing
+// order.gapFill keeps the working state: isin, name, startedAt (first request),
+// requestedAt (latest request, re-sent while deferred), state, detail, groups,
+// settleUntil, finishedAt.
+const GAP_FILL_OK = new Set(['IMPORTED', 'NOTHING_MISSING']);
+
+// Advances the gap fill of a NEW/IMPORTING order. Returns true once it has an
+// outcome (the order may render), false to be called again on a later tick.
+// Polls inside this invocation's window like pollEngineJob does.
+async function advanceGapFill(order) {
+  const gap = { ...(order.gapFill || {}) };
+  const save = async (patch) => {
+    Object.assign(gap, patch);
+    await orders.update(order.id, { status: orders.STATUS.IMPORTING, gapFill: gap });
+  };
+  const finish = async (status, detail) => {
+    Object.assign(gap, { detail: detail || gap.detail || '', finishedAt: new Date().toISOString() });
+    await orders.update(order.id, { gapFillStatus: status, gapFill: gap });
+    console.log('reconciler: gap fill finished', { id: order.id, ticker: order.ticker, status, detail: gap.detail });
+    if (!GAP_FILL_OK.has(status)) {
+      await email.reportError('reconciler: gap fill did not complete', new Error(`${status}: ${gap.detail}`), {
+        orderId: order.id,
+        company: order.companyName,
+        ticker: order.ticker,
+        isin: gap.isin,
+        note: 'The report is rendered anyway, from the model as it is in Trunk; it may be built on old figures.',
+      });
+    }
+    return true;
+  };
+
+  if (!collector.isConfigured()) return finish('NOT_CONFIGURED', 'COLLECTOR_* env vars are not set');
+
+  if (!gap.startedAt) {
+    const company = await collector.resolveCompany(order.ticker);
+    if (!company) return finish('NO_ISIN', `Wisdom has no company with ticker ${order.ticker} and a valid ISIN`);
+    const requestedAt = await collector.requestGapFill(company);
+    await save({ isin: company.isin, name: company.name, startedAt: requestedAt, requestedAt, state: 'waiting', resends: 0 });
+  }
+
+  const windowDeadline = Date.now() + POLL_WINDOW_MS;
+  for (;;) {
+    const now = Date.now();
+    if (gap.settleUntil) {
+      if (now >= Date.parse(gap.settleUntil)) return finish('IMPORTED', gap.detail);
+    } else {
+      const result = await collector.checkGapFill(gap.isin, gap.requestedAt, now);
+      if (result.state === 'imported') {
+        await save({
+          state: result.state, detail: result.detail, groups: result.groups,
+          settleUntil: new Date(now + GAP_FILL_SETTLE_MS).toISOString(),
+        });
+        continue;
+      }
+      if (result.state === 'nothing_missing') return finish('NOTHING_MISSING', result.detail);
+      if (result.state === 'unavailable') return finish('UNAVAILABLE', result.detail);
+      if (result.state === 'deferred' && now - Date.parse(gap.requestedAt) >= GAP_FILL_RESEND_MS) {
+        // Another import of this company (often the collector's own import of a
+        // just-published report) is in flight; ask again so that our request
+        // plans against what it delivered.
+        const requestedAt = await collector.requestGapFill({ isin: gap.isin, name: gap.name });
+        await save({ requestedAt, state: 'deferred', detail: result.detail, resends: (gap.resends || 0) + 1 });
+      } else if (result.state !== gap.state || result.detail !== gap.detail) {
+        await save({ state: result.state, detail: result.detail || '', groups: result.groups });
+      }
+      if (now - Date.parse(gap.startedAt) >= GAP_FILL_MAX_WAIT_MS) {
+        return finish('TIMEOUT', `still ${gap.state} after ${Math.round(GAP_FILL_MAX_WAIT_MS / 60000)} min: ${gap.detail}`);
+      }
+    }
+
+    const delay = gap.settleUntil
+      ? Math.max(0, Math.min(GAP_FILL_POLL_DELAY_MS, Date.parse(gap.settleUntil) - Date.now()))
+      : GAP_FILL_POLL_DELAY_MS;
+    if (Date.now() + delay >= windowDeadline) return false;
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
+}
+
 // Advance one order by one step. Throwing signals a TRANSIENT error (network,
 // etc.) -> the order keeps its status and is retried next tick until MAX_ATTEMPTS.
 // Terminal problems call fail() and return.
@@ -619,8 +723,12 @@ async function advance(order) {
   if (order.status === orders.STATUS.NEW || order.status === orders.STATUS.IMPORTING) {
     if (!order.ticker) return fail(order, 'no ticker resolved for this order');
 
-    // Optional fresh FMP import before rendering (Task E, flag-gated).
-    if (FRESH_IMPORT_ENABLED && order.importStatus == null) {
+    // Gap fill before rendering (flag-gated); returns false while it is still running.
+    if (GAP_FILL_ENABLED && order.gapFillStatus == null) {
+      const finished = await advanceGapFill(order);
+      if (!finished) return;
+    } else if (FRESH_IMPORT_ENABLED && !GAP_FILL_ENABLED && order.importStatus == null) {
+      // Optional fresh FMP import before rendering (Task E, flag-gated).
       await orders.update(order.id, { status: orders.STATUS.IMPORTING });
       const outcome = await fmp.fmpImport(order.ticker); // blocking, terminal
       if (outcome.status === 'FAILED') {
@@ -825,7 +933,7 @@ function start() {
     return null;
   }
   console.log(
-    `Reconciler started (interval ${INTERVAL_MS}ms, fresh import ${FRESH_IMPORT_ENABLED ? 'ON' : 'off'}, ` +
+    `Reconciler started (interval ${INTERVAL_MS}ms, gap fill ${GAP_FILL_ENABLED ? 'ON' : 'off'}, fresh import ${FRESH_IMPORT_ENABLED ? 'ON' : 'off'}, ` +
     `admin-on-success ${ADMIN_NOTIFY_ON_SUCCESS ? 'on' : 'off'}, resale ${RESALE_ENABLED ? 'ON' : 'off'})`,
   );
   const timer = setInterval(() => {

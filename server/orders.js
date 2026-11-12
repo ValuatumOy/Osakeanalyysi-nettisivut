@@ -106,6 +106,11 @@ function create(input, statePath = STATE_PATH) {
     // an order that starts delivered, by deliver() for a fresh one.
     originalJobId: input.jobId || null,
     importStatus: null, // SUCCESS | SKIPPED | FAILED (Task E FMP import)
+    // Gap fill before rendering (reconciler.js advanceGapFill): the outcome
+    // (IMPORTED | NOTHING_MISSING | UNAVAILABLE | TIMEOUT | NO_ISIN | NOT_CONFIGURED)
+    // and its working state. Server-side only; never in the order-page payload.
+    gapFillStatus: null,
+    gapFill: null,
     pdfFileName: input.pdfFileName || null,
     // Set once, on first delivery, and never touched again — pdfFileName itself
     // gets overwritten by every later revision, so this is the only place the

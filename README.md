@@ -164,7 +164,7 @@ The ones worth knowing:
 | `CATALOG_SYNC_SECRET` | Bearer shared between the Vercel webhook and `POST /api/report-purchases`. |
 | `WISDOM_API_TOKEN` | Server-side token for company search and the page generator. |
 | `PDF_ENGINE_URL` + `AWS_INVOKER_*` | pdf-report-engine Function URL and the keys used to SigV4-sign calls to it. |
-| `FRESH_IMPORT_ENABLED`, `RESALE_ENABLED`, `REAPER_DRY_RUN` | Feature flags for the FMP import step, resale of generated reports, and the reaper's safety mode. |
+| `GAP_FILL_ENABLED`, `FRESH_IMPORT_ENABLED`, `RESALE_ENABLED`, `REAPER_DRY_RUN` | Feature flags for the gap fill before rendering (`COLLECTOR_*` name the collector lane), the old FMP import step (off in prod; skipped when the gap fill is on), resale of generated reports, and the reaper's safety mode. |
 | `REPORT_VISIBLE_AFTER_DAYS`, `REPORT_FREE_*` | Catalog visibility and free-rotation rules. |
 
 In AWS, secrets come from SSM Parameter Store (`/aiequityreports/<stage>/…`),
@@ -221,11 +221,18 @@ the week's selection with a conditional put for the repeat-cooldown history.
 4. The reconciler walks the state machine:
 
    ```
-   NEW ──(FRESH_IMPORT_ENABLED)──▶ IMPORTING ──▶ RENDERING ──poll──▶ DELIVERED
-                                                              └────▶ FAILED
+   NEW ──(GAP_FILL_ENABLED)──▶ IMPORTING ──▶ RENDERING ──poll──▶ DELIVERED
+                                                            └────▶ FAILED
    ```
 
-   `IMPORTING` pulls fresh FMP data into Wisdom (up to ~6 min); `RENDERING`
+   `IMPORTING` asks wisdom-data-collector to import the company's missing
+   report periods into Trunk and waits for them (`server/collector-client.js`):
+   seconds when nothing is missing, a few minutes when a gap is filled, at most
+   `GAP_FILL_MAX_WAIT_MS` (20 min). The order renders whatever the outcome; one
+   that did not complete (`gapFillStatus` other than `IMPORTED` or
+   `NOTHING_MISSING`) is emailed to admin. Before 29 October 2026 this step was
+   the FMP import (`FRESH_IMPORT_ENABLED`), which now would duplicate models in
+   Wisdom. `RENDERING`
    submits the job to pdf-report-engine and polls it (~20 s inside one
    invocation, then across sweeps, bounded by `RECONCILER_MAX_POLLS`).
 5. Delivery uploads the PDF and a sidecar to S3 and emails the buyer. The new
