@@ -1,0 +1,719 @@
+{
+  "id": "thecocacolacompany-12112026",
+  "slug": "the-coca-cola-company-equity-report",
+  "reportKind": "market-first",
+  "companyName": "The Coca-Cola Company",
+  "ticker": "KO",
+  "exchange": "New York Stock Exchange",
+  "country": "United States",
+  "sector": "Beverages non-Alcoholic",
+  "currency": "USD",
+  "reportDate": "2026-11-12",
+  "profile": "Makes and sells drink concentrates, syrups and finished drinks through brands including Coca-Cola, Sprite, Fanta, Dasani, Powerade, Costa and fairlife. It serves bottling partners, shops, restaurants and consumers globally, while independent bottlers produce and sell many branded drinks and the company owns some bottling operations.",
+  "headline": {
+    "currentPrice": "91.2 USD",
+    "marketCap": "USD 392bn",
+    "enterpriseValue": "USD 434bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-9.8 USD per share"
+  },
+  "consensusTarget": {
+    "value": "97.3 USD",
+    "analysts": "24",
+    "range": "82.0-106.0 USD",
+    "source": "PriceTargets.com"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "28x"
+    },
+    {
+      "label": "EV/EBIT 2027",
+      "value": "28x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "26x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "98.3 USD",
+    "week52Low": "67.3 USD",
+    "oneYearChange": "+37%",
+    "threeYearChange": "+73%"
+  },
+  "summary": [
+    "The Coca-Cola Company (KO, New York Stock Exchange) makes and sells drink concentrates, syrups and finished beverages through brands such as Coca-Cola, Sprite, Fanta, Dasani, Powerade, Costa and fairlife. The share price was 91.2 USD, market capitalisation was USD 392bn and enterprise value was USD 434bn on 12 November 2026 in this Valuatum market report dated 12 November 2026. Analysts forecast 2027 sales of USD 49.4bn and operating profit of USD 15.7bn, with the group’s EV/EBIT at 28x on both 2026 and 2027 forecasts.",
+    "The share price is made up chiefly of five operating businesses. North America contributes 44.7 USD per share at 36.6x 2027 operating profit, Europe and Africa 22.0 USD at 21.5x, Latin America 19.0 USD at 21.5x, Asia Pacific 12.9 USD at 31.8x and Bottling 2.4 USD at 21.5x. Those businesses total 101.0 USD per share before debt and other claims; forecast claims less cash subtract 9.8 USD per share, leaving 91.2 USD per share.",
+    "The price sits above listed peers because every business is priced above its relevant peer range or industry quartiles. North America and Asia Pacific have the widest gaps, while brand share, concentrate economics and expected durability support the premium despite flat or falling volumes in several categories. Watch 2027 margins, unit-case volume, the KFC rollout and the planned Africa bottling sale."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay for",
+      "metric": "27.5x",
+      "text": "Five drink businesses account for 101.0 USD per share before debt and other claims, equivalent to about 27.5x their 2027 forecast operating profit versus about 12x for peers. Claims less cash subtract 9.8 USD per share, leaving the 91.2 USD share price."
+    },
+    {
+      "num": "02",
+      "title": "Why above peers",
+      "metric": "36.6x",
+      "text": "North America is priced at 36.6x 2027 operating profit against a 13.6x peer median, while Asia Pacific is priced at 31.8x against a 13.8x median. About 50% sparkling-drink value share in North America and above 50% in Asia Pacific support the premium."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "25.9%",
+      "text": "North America’s 25.9% 2025 operating margin must hold near the 26% embedded in the 2027 split. The KFC rollout to 3,600 US restaurants, the Africa bottling sale and Europe and Africa’s value share will test whether the price’s premium remains supported."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "North America",
+      "share": "44.7 USD per share",
+      "economics": "36.6x 2027 operating profit · USD 5.3bn forecast operating profit · peers 11.9x-26.4x, median 13.6x",
+      "text": "North America sells beverage concentrates and syrups and, in some markets, finished drinks to bottlers and customers. Outside sales were USD 19.6bn in 2025 and are forecast at USD 20.2bn in 2027, with USD 5.3bn of operating profit at a 26% margin. The market assigns 44.7 USD per share, or 36.6x forecast operating profit, above every listed peer from 11.9x to 26.4x. Coca-Cola holds about 50% sparkling-drink value share in the region, and price and mix added 5% to 2025 segment revenue even as unit cases fell 1%. The premium therefore rests on brand reach, pricing power and durability rather than forecast margin expansion. The KFC agreement covering 3,600 US restaurants could provide an observable volume test from January through spring 2027."
+    },
+    {
+      "name": "Europe and Africa",
+      "share": "22.0 USD per share",
+      "economics": "21.5x 2027 operating profit · USD 4.4bn forecast operating profit · industry quartiles 10.4x / 12.5x / 15.5x",
+      "text": "Europe and Africa sells concentrates, syrups and finished drinks across its markets. Sales to outside customers were USD 10.8bn in 2025 and are forecast at USD 11.2bn in 2027, supporting USD 4.4bn of operating profit at a 39% margin. Its 22.0 USD per share allocation implies 21.5x forecast operating profit, above the industry upper quartile of 15.5x. The economics are supported by concentrate-led operations, brand strength and a high operating margin, but the premium has less support if value share continues to fall. The announced Africa bottling transaction could reduce reported sales while changing the margin profile, and the company expects an eight-point reduction in comparable revenue growth from the transaction in 2027. The regional premium therefore depends on both margin retention and stabilisation of value share."
+    },
+    {
+      "name": "Latin America",
+      "share": "19.0 USD per share",
+      "economics": "21.5x 2027 operating profit · USD 3.8bn forecast operating profit · peers 4.3x-13.6x, median 8.9x",
+      "text": "Latin America sells concentrates, syrups and, in some markets, finished drinks to bottlers and customers. Outside sales were USD 6.3bn in 2025 and are forecast at USD 6.5bn in 2027, with USD 3.8bn of operating profit at a 58% margin. The market allocation is 19.0 USD per share at 21.5x forecast operating profit, above the three-peer range of 4.3x to 13.6x. Concentrate economics require less capital because independent bottlers carry plants, vehicles and coolers; nearly 5 million customers were served through 40 bottling partners in 2024, with the five largest accounting for 80% of the regional business. Flat 2025 unit-case volume and a forecast margin below the reported 59.1% make partner volume and margin the key evidence."
+    },
+    {
+      "name": "Asia Pacific",
+      "share": "12.9 USD per share",
+      "economics": "31.8x 2027 operating profit · USD 1.7bn forecast operating profit · peers 13.2x-22.9x, median 13.8x",
+      "text": "Asia Pacific sells beverage concentrates and syrups across 37 markets, with independent bottlers handling most production, distribution and sales. Outside sales of USD 5.3bn in 2025 are forecast at USD 5.5bn in 2027, producing USD 1.7bn of operating profit at a 32% margin. Its 12.9 USD per share allocation implies 31.8x forecast operating profit, above peers from 13.2x to 22.9x. Coca-Cola held above 50% sparkling-soft-drink value share in 2025, while capital spending was only USD 72m because partners carry most bottling infrastructure. The counterweight is a 2025 reported margin of 38.3% that falls to 32% in the split, alongside flat unit-case volume, a 3% fall in sparkling flavours and a 6% fall in juice, dairy and plant-based drinks."
+    },
+    {
+      "name": "Bottling",
+      "share": "2.4 USD per share",
+      "economics": "21.5x 2027 operating profit · USD 479m forecast operating profit · peers 4.3x-14.1x, median 12.4x",
+      "text": "Bottling makes and sells finished drinks through company-owned bottling operations, carrying factories, trucks and coolers that concentrate businesses leave to partners. Outside sales were USD 5.7bn in 2025 and are forecast at USD 5.9bn in 2027, with forecast operating profit of USD 479m at an 8% margin. The allocation is 2.4 USD per share at 21.5x operating profit, above listed peers from 4.3x to 14.1x and their 12.4x median. Bottling’s 7.4% 2025 margin was below Coca-Cola HBC’s 11.3% and Coca-Cola FEMSA’s 14.7%, so the premium is not explained by current profitability. It instead reflects a possible shift towards fewer, higher-margin bottling operations. The Africa sale is the decisive test: sales may fall, but margins could improve."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price pays mainly for forecast operating profit rather than for assets at reported values. Five businesses add to 101.0 USD per share before debt and other claims: North America contributes 44.7 USD, Europe and Africa 22.0 USD, Latin America 19.0 USD, Asia Pacific 12.9 USD and Bottling 2.4 USD. The combined allocation is about 27.5x 2027 operating profit, compared with about 12x for peers and industry. Forecast claims less cash of 9.8 USD per share reduce the total to the 91.2 USD share price. North America is the largest pool and requires USD 5.3bn of 2027 operating profit at a 26% margin, while Europe and Africa requires USD 4.4bn at 39%. Latin America contributes USD 3.8bn at 58%, Asia Pacific USD 1.7bn at 32% and Bottling USD 479m at 8%. The structure means the share price is most sensitive to the durability of brand-led margins and volumes in North America, Europe and Africa and Latin America, while Bottling matters more through its potential margin transition than through its current scale."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "Every business in the split carries a multiple above its relevant peer comparison. North America is at 36.6x 2027 operating profit, compared with a 13.6x peer median and a 26.4x highest peer. Asia Pacific is at 31.8x against a 13.8x median and 22.9x highest peer. Latin America and Bottling are each at 21.5x, against medians of 8.9x and 12.4x respectively, while Europe and Africa is at 21.5x against a 12.5x industry median. Brand reach and concentrate economics provide the clearest operating explanations: Coca-Cola has about 50% sparkling-drink value share in North America and above 50% in Asia Pacific, while independent bottlers carry much of the capital burden in Latin America and Asia Pacific. Current margins do not fully explain the gaps. North America’s 25.9% margin is below Monster’s 29.2%, and Bottling’s 7.4% is below Coca-Cola HBC’s 11.3%. The price therefore reflects perceived durability, pricing power and system position, with flat or falling volumes leaving those assumptions exposed."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first tests are margins and volume in the largest pools. North America’s 2027 split assumes a 26% margin against 25.9% in 2025; a result below 25.9% would weaken the operating evidence behind a 36.6x multiple. Unit cases fell 1% in 2025, so the KFC changeover across 3,600 US restaurants from January through spring 2027 is a dated test of whether volume can recover. Asia Pacific’s 32% 2027 margin is below the 38.3% reported for 2025, making the annual segment margin and weak categories important indicators. Latin America’s 58% split compares with 59.1% in 2025, while unchanged 2025 unit-case volume makes bottler reports a leading signal. The Africa bottling sale, targeted for completion by the end of 2026, could reduce reported sales and create a better margin profile; the company expects an eight-point drag on 2027 comparable revenue growth. Europe and Africa’s continued value-share losses would challenge its 21.5x premium. Group-wide 2026 organic revenue growth guidance of at least 5% must also be separated into price and volume to assess the quality of growth."
+    }
+  ],
+  "risks": [
+    "North America margin and volume (North America): a fall below the 25.9% 2025 margin or another decline after the 1% 2025 unit-case fall would weaken support for 36.6x operating profit; quarterly margin and unit-case data are the early warning.",
+    "Asia Pacific category weakness (Asia Pacific): continued declines in sparkling flavours or juice, dairy and plant-based drinks could reduce sales below USD 5.5bn and profit below USD 1.7bn; quarterly category volume is the early warning.",
+    "Europe and Africa value share (Europe and Africa): further value-share losses would make the 21.5x premium harder to hold; quarterly regional value-share data is the early warning.",
+    "Bottling execution (Bottling): the Africa transaction could reduce sales without delivering the expected margin improvement, leaving the 7.4% margin below peers; transaction completion and quarterly margins are the early warning.",
+    "Latin American partner volume (Latin America): weaker bottler sales could reduce concentrate demand and pressure the 58% forecast margin; quarterly unit-case volume and Coca-Cola FEMSA results are the early warning."
+  ],
+  "catalysts": [
+    "KFC rollout (near-term, North America): products reaching all 3,600 US KFC restaurants by spring 2027 would show whether distribution expansion can restore volume without lowering margin.",
+    "Africa bottling sale (near-term, Bottling and Europe and Africa): completion by the end of 2026 would show whether refranchising reduces sales while lifting margins and changing the earnings mix.",
+    "North American margin delivery (medium-term, North America): a 2027 margin of 26% or better would confirm that the forecast can hold the 25.9% 2025 profitability level.",
+    "Asia Pacific category stabilisation (medium-term, Asia Pacific): renewed growth in sparkling flavours and juice, dairy and plant-based drinks would strengthen the sales base behind the 31.8x multiple.",
+    "Bottling margin improvement (medium-term, Bottling): an increase from 7.4% towards Coca-Cola HBC’s 11.3% would show that a smaller bottling footprint is becoming more profitable."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "45,754",
+            "47,061",
+            "47,941",
+            "50,492",
+            "49,360"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "11,872",
+            "11,067",
+            "14,812",
+            "16,668",
+            "16,809"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "25.9%",
+            "23.5%",
+            "30.9%",
+            "33.0%",
+            "34.1%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-561",
+            "-1,075",
+            "-1,050",
+            "-1,019",
+            "-1,130"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "11,311",
+            "9,992",
+            "13,762",
+            "15,649",
+            "15,679"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "24.7%",
+            "21.2%",
+            "28.7%",
+            "31.0%",
+            "31.8%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1,641",
+            "3,094",
+            "2,236",
+            "1,891",
+            "2,207"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "12,952",
+            "13,086",
+            "16,642",
+            "18,184",
+            "18,530"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "10,703",
+            "10,649",
+            "13,794",
+            "15,030",
+            "15,147"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "2.5",
+            "2.5",
+            "3.2",
+            "3.5",
+            "3.5"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "1.8",
+            "1.9",
+            "2",
+            "2.4",
+            "2.5"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "74.3%",
+            "78.5%",
+            "63.6%",
+            "69.6%",
+            "69.6%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "9,236",
+            "11,485",
+            "9,613",
+            "10,894",
+            "10,650"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "14,865",
+            "13,301",
+            "12,531",
+            "13,198",
+            "12,902"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "18,358",
+            "18,139",
+            "15,491",
+            "15,491",
+            "15,491"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "26,951",
+            "30,308",
+            "34,931",
+            "34,931",
+            "34,931"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "69,410",
+            "73,233",
+            "72,566",
+            "74,514",
+            "73,973"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "4,424",
+            "4,728",
+            "4,425",
+            "4,805",
+            "4,697"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "12,942",
+            "10,441",
+            "16,349",
+            "16,731",
+            "16,654"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "9,366",
+            "10,828",
+            "10,270",
+            "11,097",
+            "10,848"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "26,732",
+            "25,997",
+            "31,044",
+            "32,633",
+            "32,199"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1,561",
+            "1,319",
+            "1,206",
+            "1,206",
+            "1,206"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "97,703",
+            "100,549",
+            "104,816",
+            "108,352",
+            "107,379"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "27,480",
+            "26,372",
+            "34,275",
+            "40,704",
+            "45,393"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "35,547",
+            "42,375",
+            "42,119",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "6,517",
+            "2,147",
+            "3,373",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "42,651",
+            "45,246",
+            "45,132",
+            "22,575",
+            "19,911"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "23,571",
+            "25,249",
+            "21,281",
+            "40,904",
+            "37,865"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "4,001",
+            "3,682",
+            "4,128",
+            "4,169",
+            "4,211"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "97,703",
+            "100,549",
+            "104,816",
+            "108,352",
+            "107,379"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "1,362",
+            "1,213",
+            "1,722",
+            "1,763",
+            "1,805"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "34,060",
+            "34,907",
+            "36,944",
+            "29,791",
+            "24,753"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "60,178",
+            "60,066",
+            "69,497",
+            "68,732",
+            "68,341"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "28.1%",
+            "26.2%",
+            "32.7%",
+            "37.6%",
+            "42.3%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "123.9%",
+            "132.4%",
+            "107.8%",
+            "73.2%",
+            "54.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.9x",
+            "3.2x",
+            "2.5x",
+            "1.8x",
+            "1.5x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.1",
+            "1",
+            "1.5",
+            "0.8",
+            "0.9"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "8,371",
+            "19,969",
+            "4,032",
+            "18,720",
+            "16,073"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "6,760",
+            "17,523",
+            "1,602",
+            "16,526",
+            "13,641"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "4,192",
+            "-8,245",
+            "10,799",
+            "-2,672",
+            "191"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "1,545",
+            "4,898",
+            "383",
+            "2,967",
+            "590"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-1,545",
+            "-4,898",
+            "-383",
+            "-2,967",
+            "-590"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "6,826",
+            "15,071",
+            "3,649",
+            "15,754",
+            "15,483"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "5,851",
+            "8,392",
+            "1,361",
+            "13,559",
+            "13,051"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "5,851",
+            "8,392",
+            "1,361",
+            "13,559",
+            "13,051"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-5,590",
+            "-13,681",
+            "-4,270",
+            "-14,927",
+            "-15,745"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-7,617",
+            "-7,954",
+            "-8,359",
+            "-8,778",
+            "-10,458"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "1,236",
+            "1,390",
+            "-621",
+            "827",
+            "-262"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "26.1x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "26.1x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "28x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "10.2x"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "42.5%"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.7%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is The Coca-Cola Company’s share price made of?",
+      "a": "The 91.2 USD share price is split into North America at 44.7 USD per share, Europe and Africa at 22.0 USD, Latin America at 19.0 USD, Asia Pacific at 12.9 USD and Bottling at 2.4 USD. The 101.0 USD total for the businesses is reduced by 9.8 USD of debt and other claims, less cash."
+    },
+    {
+      "q": "Why does The Coca-Cola Company trade above its beverage peers?",
+      "a": "Each business carries a multiple above its relevant peer comparison. North America is at 36.6x 2027 operating profit against a 13.6x peer median, and Asia Pacific is at 31.8x against a 13.8x median. Brand share, concentrate economics and expected earnings durability support the premium, while volume trends remain the main challenge."
+    },
+    {
+      "q": "What do analysts forecast for The Coca-Cola Company’s sales and profit?",
+      "a": "Analysts forecast 2027 sales of USD 49.4bn, operating profit of USD 15.7bn, net earnings of USD 15.1bn, EPS of 3.5 USD and DPS of 2.5 USD. The forecast is allocated across the businesses, including USD 5.3bn of North American operating profit and USD 479m for Bottling."
+    },
+    {
+      "q": "What should The Coca-Cola Company investors watch?",
+      "a": "The main indicators are 2027 operating margins, unit-case volume and the KFC rollout across 3,600 US restaurants. The Africa bottling sale targeted for completion by the end of 2026 could lower sales and improve margins, while Europe and Africa value share, Asia Pacific category volume and Latin American bottler results test the regional premiums."
+    },
+    {
+      "q": "How does Valuatum’s market report work?",
+      "a": "The method keeps analysts’ forecasts to 2027, splits forecast operating profit between businesses using 2025 segment results, compares each business with listed peers using EV/EBIT and reads today’s 91.2 USD share price back into the businesses. It explains the current price and gives no target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on The Coca-Cola Company dated 12 November 2026 (91.2 USD share price, five-business split of 101.0 USD per share before -9.8 USD per share of debt and other claims, less cash).",
+    "Competitor context: PepsiCo, Inc., Coca-Cola Europacific Partners PLC, Keurig Dr Pepper Inc., Monster Beverage Corporation, Coca-Cola Bottlers Japan Holdings Inc., Kirin Holdings Company, Limited, Coca-Cola Consolidated, Inc., Ambev S.A. and Kaufman & Broad S.A.; peer EV/EBIT 2027 ranges and medians are printed by business. Asahi Group Holdings, Ltd. has distorted peer multiples marked as outliers in the wider comparison, and the 4.3x Latin America and Bottling low-end comparison includes Kaufman & Broad, which is outside the drinks trade.",
+    "Market data: KO on the New York Stock Exchange at 91.2 USD on 12 November 2026; analysts’ forecasts used are 2027 sales of USD 49.4bn and operating profit of USD 15.7bn; consensus price data is from PriceTargets.com, dated 11 November 2026, based on 24 analysts. The cash-flow table is Valuatum’s model calculation and can differ materially from the company’s reported cash-flow statement."
+  ]
+}

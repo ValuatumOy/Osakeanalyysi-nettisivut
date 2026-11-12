@@ -1,0 +1,758 @@
+{
+  "id": "adobeinc-12112026",
+  "slug": "adobe-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Adobe Inc.",
+  "ticker": "ADBE",
+  "exchange": "NASDAQ Global Select",
+  "country": "United States",
+  "sector": "Software application",
+  "currency": "USD",
+  "reportDate": "2026-11-12",
+  "profile": "Sells subscription software and online services for creating and editing images, video and designs, and for creating, signing and managing documents. It also provides marketing and customer-experience software to individual creators, consumers, small businesses, agencies and large companies.",
+  "headline": {
+    "currentPrice": "238 USD",
+    "marketCap": "USD 92.9bn",
+    "enterpriseValue": "USD 81.8bn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+28.3 USD per share"
+  },
+  "consensusTarget": {
+    "value": "283 USD",
+    "analysts": "36",
+    "range": "195-430 USD",
+    "source": "MarketBeat"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "8.7x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "7.6x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "12x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "363 USD",
+    "week52Low": "190 USD",
+    "oneYearChange": "-29%",
+    "threeYearChange": "-60%"
+  },
+  "summary": [
+    "Adobe Inc. (ADBE, NASDAQ Global Select) sells subscription software for creative work, documents, marketing and customer experiences, serving creators, consumers, agencies and enterprises. Its share price was 238 USD on 12 November 2026, against market capitalisation of USD 92.9bn and enterprise value of USD 81.8bn. Net sales are forecast at USD 31,534m in 2028 and operating profit at USD 10,722m. In this Valuatum market report dated 12 November 2026, the price is read through the operating profit analysts forecast rather than through a target price or recommendation. The central question is how much of the price belongs to each business.",
+    "The 238 USD share price assigns 164 USD per share to Digital Media, based on 8.0x its 2028 forecast operating profit of USD 8,047m, and 45 USD per share to Digital Experience, based on 6.6x forecast operating profit of USD 2,675m. Together, the businesses account for 209 USD per share. A further 28.3 USD per share represents cash, less debt and other claims, producing a total of 237.6 USD per share. Across both businesses, the price pays about 7.5x analysts’ 2028 operating profit forecast of USD 10.7bn, versus about 17x for listed peers and industry comparisons.",
+    "The lower business multiples reflect competition and uncertainty over whether forecast margins can be sustained. Digital Media at 8.0x sits below a 19.5x peer median, while Digital Experience at 6.6x lies below its industry median of 10.4x. The key evidence is execution: fiscal 2026 sales guidance of USD 26,576m-26,626m, recurring-revenue growth of 10.2% from a USD 25,660m opening book, Digital Media sales reaching USD 23,700m in 2028 and Digital Experience sales approaching USD 7,900m. Anil Chakravarthy becomes chief executive on 1 December 2026."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What You Pay For",
+      "metric": "209 USD",
+      "text": "Nearly all of the 238 USD share price pays for Digital Media and Digital Experience. Their combined 209 USD per share represents about 7.5x analysts’ 2028 operating profit forecast of USD 10.7bn, with 28.3 USD per share added for cash, less debt and other claims."
+    },
+    {
+      "num": "02",
+      "title": "Why Below Peers",
+      "metric": "7.5x",
+      "text": "The businesses are priced at about 7.5x 2028 operating profit, against about 17x for peers and industry. Digital Media’s 8.0x reflects competition from Canva, while Digital Experience’s 6.6x reflects Salesforce and doubts that a 34% forecast margin can persist."
+    },
+    {
+      "num": "03",
+      "title": "What To Watch",
+      "metric": "10.2%",
+      "text": "The reading changes with execution. Fiscal 2026 sales inside guidance of USD 26,576m-26,626m, recurring-revenue growth of 10.2%, Digital Media sales reaching USD 23,700m by 2028 and the 1 December 2026 CEO transition are the clearest tests."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Digital Media",
+      "share": "164 USD per share",
+      "economics": "8.0x 2028 operating profit · USD 8,047m forecast operating profit · peers 5.3x-41.5x, median 19.5x",
+      "text": "Digital Media sells mostly subscription-based creative and document software to creators, consumers and businesses. Fiscal 2025 sales to outside customers were USD 17,600m, with gross profit of USD 16,800m and a 95% gross margin. The 2028 split requires sales of USD 23,700m and operating profit of USD 8,047m, a 34% margin, while the share price assigns 164 USD per share at 8.0x that profit. The multiple is below the 19.5x peer median and close to Shutterstock’s 5.3x low, within a wide range that reaches 41.5x for Autodesk. Canva reported 260 million monthly users and USD 3,500m of sales, while Adobe warns that AI products may not be adopted or monetised. Annual recurring revenue was USD 19,200m at fiscal 2025 year-end, up 11.5%, making subscription growth and margin retention the central evidence."
+    },
+    {
+      "name": "Digital Experience",
+      "share": "45 USD per share",
+      "economics": "6.6x 2028 operating profit · USD 2,675m forecast operating profit · industry quartiles 5.7x / 10.4x / 16.4x",
+      "text": "Digital Experience provides software and services for marketing, customer data and digital customer experiences. Fiscal 2025 sales were USD 5,864m, including USD 5,410m of subscriptions, and management said more than 20,000 enterprises relied on Adobe. The 2028 split requires sales of USD 7,900m and operating profit of USD 2,675m, a 34% margin. The share price assigns 45 USD per share at 6.6x forecast operating profit, between the industry’s 5.7x lower quartile and 10.4x median. Salesforce reported a 20.1% operating margin and USD 5,428m of marketing and commerce sales, versus 4.7% for Sprinklr and 0.2% for HubSpot. Adobe’s estimated margin therefore sits well above the cited rivals. The market’s caution centres on competition, customer switching and whether AI tools create revenue without proportionately higher selling and support costs."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The 238 USD share price is primarily a claim on two forecast profit streams rather than on separately reported segment results. Digital Media contributes 164 USD per share at 8.0x its 2028 operating profit estimate of USD 8,047m. Digital Experience contributes 45 USD per share at 6.6x forecast operating profit of USD 2,675m. The businesses therefore account for 209 USD per share, while cash, less debt and other claims contribute 28.3 USD per share. The combined calculation corresponds to about 7.5x analysts’ 2028 operating profit forecast of USD 10.7bn. Digital Media requires sales of USD 23,700m at a 34% operating margin, compared with fiscal 2025 sales of USD 17,600m. Digital Experience requires sales of USD 7,900m at the same 34% margin, against fiscal 2025 sales of USD 5,864m. Neither business has a currently published standalone operating margin because Adobe combined its segments from the first quarter of 2026. The price therefore depends on both businesses reaching the sales path and on margins that remain materially above several relevant competitors."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "Digital Media is priced at 8.0x 2028 operating profit, below a 19.5x peer median, while Digital Experience is priced at 6.6x, below the software-application industry median of 10.4x. The comparison is not simply a growth ranking: it tests whether Adobe can sustain the profits embedded in the price. Canva reported 260 million monthly users and USD 3,500m of sales, creating a direct challenge in design software, and Adobe’s filing cautions that AI products may not be adopted or monetised. Digital Media’s estimated 34% 2028 margin is above Autodesk’s 22% fiscal 2025 margin, Dropbox’s 27% and DocuSign’s 9.3%, increasing the burden of proof. Digital Experience faces Salesforce, which reported a 20.1% fiscal 2026 operating margin and USD 5,428m of marketing and commerce sales; Sprinklr reported 4.7% and HubSpot 0.2%. Adobe’s estimated margin is consequently an outlier. Its 5.81% digital-experience-platform share was close to Salesforce’s 5.23%, while Oracle, SAP, Microsoft and IBM also compete. The multiples reflect these competitive and margin uncertainties."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operating test is fiscal 2026 sales against guidance of USD 26,576m-26,626m, close to analysts’ USD 26,600m forecast. A result inside the range would keep the forecast path intact; a shortfall would reinforce doubts about growth. The second is year-end recurring-revenue growth against the 10.2% target on a USD 25,660m starting book. Because recurring revenue represents subscriptions in force, it is an early indicator of renewals and future sales. The third is Digital Media sales: the 2028 split requires USD 23,700m, compared with USD 17,600m in fiscal 2025. Digital Experience requires sales of USD 7,900m, compared with USD 5,864m in fiscal 2025. Quarterly commentary and any restored segment detail will matter because standalone margins are no longer published. Semrush, completed on 28 April 2026, and Topaz Labs, described as acquired on 10 November 2026, could add subscribers or costs. Anil Chakravarthy becomes chief executive on 1 December 2026, with Shantanu Narayen as executive chair. The first disclosures under the new leadership will show whether product, marketing and enterprise priorities change."
+    }
+  ],
+  "risks": [
+    "Competitive adoption and pricing pressure (Digital Media): Canva and other design rivals could slow subscriber and sales growth, with Digital Media sales below the USD 23,700m 2028 path as the early warning.",
+    "Margin compression (Digital Experience): Salesforce, Sprinklr and HubSpot show lower reported margins than Adobe’s estimated 34% 2028 margin, with a disclosed margin nearer Salesforce’s 20.1% as the early warning.",
+    "AI monetisation shortfall (Digital Media and Digital Experience): new AI products may not be adopted or generate revenue, with recurring-revenue growth below the 10.2% target as the early warning.",
+    "Forecast execution miss (both businesses): fiscal 2026 sales below USD 26,576m-26,626m would weaken the forecast path, with full-year sales below guidance as the early warning.",
+    "Leadership and integration disruption (both businesses): the 1 December 2026 CEO transition and recent Semrush and Topaz Labs transactions could change priorities or raise costs, with weaker quarterly commentary on enterprise sales or margins as the early warning."
+  ],
+  "catalysts": [
+    "Fiscal 2026 sales in guidance (near-term, both businesses): sales of USD 26,576m-26,626m would keep the analysts’ forecast path intact.",
+    "Recurring-revenue target met (near-term, both businesses): growth of 10.2% on the USD 25,660m opening book would support the subscription trajectory.",
+    "Digital Media reaches its sales path (medium-term, Digital Media): sales approaching USD 23,700m by 2028, with company profit holding up, would make the estimated 34% margin more credible.",
+    "Acquisitions add customers efficiently (medium-term, Digital Experience): Semrush and Topaz Labs bringing subscribers without proportionate selling and support costs would support the forecast margin.",
+    "New leadership clarifies execution (medium-term, both businesses): Anil Chakravarthy’s first disclosures after 1 December 2026 would show whether product, marketing and enterprise priorities improve growth and margin evidence."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "19,409",
+            "21,505",
+            "23,769",
+            "26,607",
+            "29,038",
+            "31,534"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "7,573",
+            "7,940",
+            "9,862",
+            "10,421",
+            "11,160",
+            "12,002"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "39.0%",
+            "36.9%",
+            "41.5%",
+            "39.2%",
+            "38.4%",
+            "38.1%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-923",
+            "-1,199",
+            "-1,156",
+            "-1,062",
+            "-1,173",
+            "-1,280"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "6,650",
+            "6,741",
+            "8,706",
+            "9,359",
+            "9,987",
+            "10,722"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "34.3%",
+            "31.3%",
+            "36.6%",
+            "35.2%",
+            "34.4%",
+            "34.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "149",
+            "190",
+            "28",
+            "10",
+            "560",
+            "883"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "6,799",
+            "6,931",
+            "8,734",
+            "9,369",
+            "10,547",
+            "11,605"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "5,428",
+            "5,560",
+            "7,130",
+            "7,774",
+            "9,133",
+            "10,386"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "11.9",
+            "12.4",
+            "16.7",
+            "18.2",
+            "21.4",
+            "24.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,388",
+            "1,936",
+            "1,873",
+            "2,201",
+            "2,402",
+            "2,609"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,088",
+            "782",
+            "495",
+            "554",
+            "605",
+            "657"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "12,805",
+            "12,788",
+            "12,857",
+            "12,857",
+            "12,857",
+            "12,857"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "1,223",
+            "1,835",
+            "1,922",
+            "1,610",
+            "1,610",
+            "1,610"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "17,504",
+            "17,341",
+            "17,147",
+            "17,222",
+            "17,474",
+            "17,732"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "3,943",
+            "3,619",
+            "4,732",
+            "5,209",
+            "5,579",
+            "5,958"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "7,141",
+            "7,613",
+            "5,431",
+            "7,248",
+            "7,911",
+            "8,591"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "11,084",
+            "11,232",
+            "10,163",
+            "16,748",
+            "26,682",
+            "37,880"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1,191",
+            "1,657",
+            "2,186",
+            "2,186",
+            "2,186",
+            "2,186"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "29,779",
+            "30,230",
+            "29,496",
+            "36,156",
+            "46,342",
+            "57,798"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "16,518",
+            "14,105",
+            "11,623",
+            "23,339",
+            "32,473",
+            "42,859"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,634",
+            "4,129",
+            "6,210",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "—",
+            "1,499",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "4,564",
+            "5,251",
+            "7,312",
+            "1,102",
+            "1,102",
+            "1,102"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "8,251",
+            "10,446",
+            "10,123",
+            "11,230",
+            "12,242",
+            "13,281"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "446",
+            "428",
+            "438",
+            "485",
+            "525",
+            "555"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "29,779",
+            "30,230",
+            "29,496",
+            "36,156",
+            "46,342",
+            "57,798"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "—",
+            "428",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-3,061",
+            "-1,557",
+            "1,217",
+            "-11,054",
+            "-20,578",
+            "-31,366"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "13,011",
+            "12,120",
+            "12,402",
+            "11,801",
+            "11,369",
+            "10,938"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "55.5%",
+            "46.7%",
+            "39.4%",
+            "64.6%",
+            "70.1%",
+            "74.2%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-18.5%",
+            "-11.0%",
+            "10.5%",
+            "-47.4%",
+            "-63.4%",
+            "-73.2%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.4x",
+            "-0.2x",
+            "0.1x",
+            "-1.1x",
+            "-1.8x",
+            "-2.6x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.3",
+            "1.1",
+            "1",
+            "1.5",
+            "2.2",
+            "2.9"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "7,791",
+            "7,779",
+            "8,349",
+            "9,466",
+            "10,949",
+            "12,326"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "7,258",
+            "7,161",
+            "7,797",
+            "9,458",
+            "10,464",
+            "11,536"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-1,440",
+            "-1,020",
+            "-63",
+            "-630",
+            "-642",
+            "-660"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "1,035",
+            "755",
+            "931",
+            "1,449",
+            "1,425",
+            "1,539"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-1,035",
+            "-755",
+            "-931",
+            "-1,449",
+            "-1,425",
+            "-1,539"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "6,756",
+            "7,024",
+            "7,418",
+            "8,017",
+            "9,524",
+            "10,788"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "6,300",
+            "6,598",
+            "6,846",
+            "8,008",
+            "9,039",
+            "9,997"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "6,300",
+            "6,598",
+            "6,846",
+            "8,008",
+            "9,039",
+            "9,997"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-3,437",
+            "-5,805",
+            "-9,040",
+            "-2,221",
+            "40",
+            "30"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "3,319",
+            "1,219",
+            "-1,622",
+            "5,796",
+            "9,564",
+            "10,818"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "12.0x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "7.9x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "8.7x"
+          ]
+        },
+        {
+          "label": "P/FCF",
+          "values": [
+            "—"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "4.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "n/a"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-1.1x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Adobe Inc.'s share price made of?",
+      "a": "The 238 USD share price assigns 164 USD per share to Digital Media and 45 USD per share to Digital Experience. Cash, less debt and other claims adds 28.3 USD per share, giving 237.6 USD per share in the detailed split."
+    },
+    {
+      "q": "Why does Adobe trade below its peers?",
+      "a": "Digital Media is priced at 8.0x 2028 operating profit versus a 19.5x peer median, while Digital Experience is at 6.6x versus a 10.4x industry median. Competition and uncertainty over the estimated 34% margins are the main explanations."
+    },
+    {
+      "q": "What do analysts forecast for Adobe's sales and profit?",
+      "a": "Analysts forecast net sales of USD 31,534m, operating profit of USD 10,722m and net earnings of USD 10,386m in 2028. The forecast includes Digital Media sales of USD 23,700m and Digital Experience sales of USD 7,900m in the business split."
+    },
+    {
+      "q": "What should Adobe investors watch?",
+      "a": "The main tests are fiscal 2026 sales against guidance of USD 26,576m-26,626m, recurring-revenue growth against 10.2% on a USD 25,660m starting book, Digital Media sales toward USD 23,700m by 2028 and the 1 December 2026 CEO transition."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "Analysts’ forecasts are kept unchanged to 2028, forecast operating profit is split between the businesses, and each business is compared with peers using EV/EBIT. The share price is then read into the businesses so their parts, plus cash less debt and other claims, add up to the share price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Adobe Inc. dated 12 November 2026 (238 USD share price, Digital Media at 164 USD per share and Digital Experience at 45 USD per share).",
+    "Competitor context: Autodesk, Inc. at 41.5x, Shutterstock, Inc. at 5.3x, Figma, Inc. at 27.2x and DocuSign, Inc. at 11.7x for Digital Media; Salesforce, Inc. at 9.5x and Software - Application industry quartiles of 5.7x / 10.4x / 16.4x for Digital Experience. Peer multiples are forecast EV/EBIT figures; the industry quartiles are used because fewer than three listed Digital Experience peers could be read.",
+    "Market data: ADBE at 238 USD on 12 November 2026; analysts forecast USD 31,534m of sales and USD 10,722m of operating profit in 2028; consensus price-target source MarketBeat, based on 36 analysts. The split between businesses is an estimate, standalone margins are not reported after Adobe combined its segments, and cash, less debt and other claims is a forecast rather than reported cash."
+  ]
+}

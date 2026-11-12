@@ -4,5 +4,6 @@
   "nokia-26102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "test-22072026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
   "tesla-26102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
-  "upm-27102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL"
+  "upm-27102026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL",
+  "assaabloyabpubl-12112026": "headline.recommendation is \"—\", expected BUY/HOLD/SELL"
 }

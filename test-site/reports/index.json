@@ -1,6 +1,11 @@
 {
   "pages": [
     {
+      "slug": "adobe-equity-report",
+      "ticker": "ADBE",
+      "reportId": "adobeinc-12112026"
+    },
+    {
       "slug": "advanced-micro-devices-equity-report",
       "ticker": "AMD",
       "reportId": "advancedmicrodevices-06082026"
@@ -104,6 +109,11 @@
       "slug": "tesla-equity-report",
       "ticker": "TSLA",
       "reportId": "tesla-26102026-2"
+    },
+    {
+      "slug": "the-coca-cola-company-equity-report",
+      "ticker": "KO",
+      "reportId": "thecocacolacompany-12112026"
     },
     {
       "slug": "upm-equity-report",
