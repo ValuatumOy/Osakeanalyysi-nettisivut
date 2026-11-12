@@ -595,7 +595,7 @@ async function failRevision(order, reason) {
 // order.jobId) and REVISING (polls order.revisionJobId, so a failed revision
 // leaves the previously-delivered order.jobId untouched and re-revisable).
 async function pollEngineJob(order, jobId, onDone, onFail) {
-  const windowDeadline = Date.now() + POLL_WINDOW_MS;
+  const windowDeadline = pollWindowDeadline();
   let polls = order.polls || 0;
 
   for (;;) {
@@ -619,6 +619,18 @@ async function pollEngineJob(order, jobId, onDone, onFail) {
     if (Date.now() + POLL_DELAY_MS >= windowDeadline) return;
     await new Promise(resolve => setTimeout(resolve, POLL_DELAY_MS));
   }
+}
+
+// One poll window per tick, shared by every order the tick advances. Each
+// order used to get a POLL_WINDOW_MS window of its own, so two orders waiting
+// in one tick (two renders, or a gap fill and a render) could outlast the
+// worker's 10-minute timeout. Now the first waiting order may use the window
+// and later ones make one step each; the next sweep continues where they
+// stopped. Outside tick() (advance() called directly) a call gets a fresh window.
+let tickDeadline = null;
+function pollWindowDeadline() {
+  const own = Date.now() + POLL_WINDOW_MS;
+  return tickDeadline == null ? own : Math.min(own, tickDeadline);
 }
 
 // Gap fill outcomes (order.gapFillStatus, set once):
@@ -667,7 +679,7 @@ async function advanceGapFill(order) {
     await save({ isin: company.isin, name: company.name, startedAt: requestedAt, requestedAt, state: 'waiting', resends: 0 });
   }
 
-  const windowDeadline = Date.now() + POLL_WINDOW_MS;
+  const windowDeadline = pollWindowDeadline();
   for (;;) {
     const now = Date.now();
     if (gap.settleUntil) {
@@ -877,6 +889,7 @@ function emitOrderMetrics(allOrders, now = new Date()) {
 async function tick() {
   if (running) return false;
   running = true;
+  tickDeadline = Date.now() + POLL_WINDOW_MS;
   try {
     for (const order of await orders.listPending()) {
       try {
@@ -923,6 +936,7 @@ async function tick() {
     }
     return true;
   } finally {
+    tickDeadline = null;
     running = false;
   }
 }

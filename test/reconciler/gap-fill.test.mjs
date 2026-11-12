@@ -224,3 +224,22 @@ test('with the gap fill off, nothing is requested', async (t) => {
   assert.equal((await stored('cs_8')).gapFillStatus, null);
   assert.deepEqual(submitted, [{ companyCode: 'AAPL' }]);
 });
+
+test('orders in one tick share its poll window, so a waiting order cannot starve the next', async (t) => {
+  const collector = fakeCollector([{ state: 'running', detail: 'acquiring' }]);
+  const { reconciler } = load(t, collector, {
+    RECONCILER_POLL_WINDOW_MS: '300',
+    GAP_FILL_POLL_DELAY_MS: '50',
+  });
+  await newOrder('cs_a');
+  await newOrder('cs_b', 'ADBE');
+
+  const started = Date.now();
+  await reconciler.tick();
+  const took = Date.now() - started;
+
+  assert.ok(took < 600, `the tick used one window, not one per order (${took} ms)`);
+  assert.equal(collector.requests.length, 2, 'both orders were requested in the same tick');
+  assert.equal((await stored('cs_a')).status, 'IMPORTING');
+  assert.equal((await stored('cs_b')).status, 'IMPORTING');
+});
