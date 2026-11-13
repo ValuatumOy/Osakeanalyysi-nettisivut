@@ -43,6 +43,24 @@ test('company search proxy rejects an empty query', async () => {
   assert.equal(response.statusCode, 400);
 });
 
+test('the shared upstream retains the exact ticker ahead of capped prefix results', async (t) => {
+  const originalFetch = global.fetch;
+  t.after(() => { global.fetch = originalFetch; });
+  global.fetch = async () => ({
+    ok: true,
+    async json() {
+      return { results: [
+        ...Array.from({ length: 12 }, (_, i) => ({ companyName: `Other ${i}`, ticker: `EXACT-${i}` })),
+        { companyName: 'Exact company', ticker: 'EXACT' },
+      ] };
+    },
+  });
+  const response = await invoke({ q: 'exact' });
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.body.results.length, 10);
+  assert.equal(response.body.results[0].ticker, 'EXACT');
+});
+
 async function invoke(query, method = 'GET') {
   const result = { statusCode: 200, body: null, headers: {} };
   const req = { method, query };

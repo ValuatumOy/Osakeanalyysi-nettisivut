@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-process.env.WISDOM_CACHE_TTL_MS = '-1';
 const checkout = require('../../server/checkout.js');
 const { CheckoutError, createReadyReportCheckout, createExtraRoundsCheckout, createFreshReportCheckout, cancelPath } = checkout;
 
@@ -31,15 +30,11 @@ function product(kind, unitAmount) {
   return { id: `prod_${slug}`, metadata: { kind }, default_price: { id: `price_${slug}`, unit_amount: unitAmount, currency: 'eur' } };
 }
 
-function wisdomReturns(rows, t) {
+function upstreamReturns(rows, t) {
   const originalFetch = global.fetch;
-  const originalToken = process.env.WISDOM_API_TOKEN;
-  process.env.WISDOM_API_TOKEN = 'test-token';
-  global.fetch = async () => ({ ok: true, status: 200, async json() { return rows; } });
+  global.fetch = async () => ({ ok: true, status: 200, async json() { return { results: rows }; } });
   t.after(() => {
     global.fetch = originalFetch;
-    if (originalToken === undefined) delete process.env.WISDOM_API_TOKEN;
-    else process.env.WISDOM_API_TOKEN = originalToken;
   });
 }
 
@@ -143,7 +138,7 @@ test('a standard ready report falls back to an inline amount when Stripe has no 
 });
 
 test('ready+/fresh+ include two revisions by default and a free report three', async (t) => {
-  wisdomReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
+  upstreamReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
   await createReadyReportCheckout(stripe, paidReport, { withRevisions: true });
   await createFreshReportCheckout(stripe, { company: 'Nokia', ticker: 'NOKIA.HE', withRevisions: true });
@@ -155,7 +150,7 @@ test('ready+/fresh+ include two revisions by default and a free report three', a
 });
 
 test('the env fallbacks apply per kind', async (t) => {
-  wisdomReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
+  upstreamReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
   process.env.REPORT_REVISIONS_INCLUDED = '5';
   process.env.FREE_REPORT_REVISIONS_INCLUDED = '4';
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
@@ -191,7 +186,7 @@ test('a fresh order needs a selected ticker before creating a checkout', async (
 
 test('fresh checkout resolves approved US and Nordic/Baltic listings and uses the canonical company', async (t) => {
   const tickers = ['TSLA', 'NOKIA.HE', 'VOLV-B.ST', 'EQNR.OL', 'NOVO-B.CO', 'SFG1T.TL'];
-  wisdomReturns(tickers.map(ticker => ({ companyName: `Canonical ${ticker}`, ticker })), t);
+  upstreamReturns(tickers.map(ticker => ({ companyName: `Canonical ${ticker}`, ticker })), t);
   for (const ticker of tickers) {
     const stripe = fakeStripe({ products: ALL_PRODUCTS });
     await createFreshReportCheckout(stripe, {
@@ -207,8 +202,40 @@ test('fresh checkout resolves approved US and Nordic/Baltic listings and uses th
   }
 });
 
+test('fresh checkout uses the configured search upstream without a local Wisdom token', async (t) => {
+  const originalToken = process.env.WISDOM_API_TOKEN;
+  delete process.env.WISDOM_API_TOKEN;
+  t.after(() => {
+    if (originalToken === undefined) delete process.env.WISDOM_API_TOKEN;
+    else process.env.WISDOM_API_TOKEN = originalToken;
+  });
+  upstreamReturns([], t);
+  global.fetch = async (url, options) => {
+    assert.equal(String(url), 'https://files.valuatum.com/api/search-companies?q=AALLON.HE');
+    assert.deepEqual(options.headers, { accept: 'application/json' });
+    return { ok: true, async json() { return { results: [{ companyName: 'Aallon Group', ticker: 'AALLON.HE' }] }; } };
+  };
+  const stripe = fakeStripe({ products: ALL_PRODUCTS });
+  await createFreshReportCheckout(stripe, { company: 'Aallon', ticker: 'AALLON.HE' });
+  assert.equal(stripe.created.length, 1);
+  assert.equal(stripe.created[0].metadata.company, 'Aallon Group');
+  assert.equal(stripe.created[0].metadata.ticker, 'AALLON.HE');
+});
+
+test('a short ticker hidden by prefix results can be resolved by name without accepting another ticker', async (t) => {
+  upstreamReturns([], t);
+  global.fetch = async (url) => {
+    const query = new URL(String(url)).searchParams.get('q');
+    return { ok: true, async json() { return { results: query === 'F' ? [{ ticker: 'FXX', companyName: 'Other' }] : [{ ticker: 'F', companyName: 'Ford Motor Company' }] }; } };
+  };
+  const stripe = fakeStripe({ products: ALL_PRODUCTS });
+  await createFreshReportCheckout(stripe, { company: 'Ford Motor Company', ticker: 'F' });
+  assert.equal(stripe.created[0].metadata.ticker, 'F');
+  assert.equal(stripe.created[0].metadata.company, 'Ford Motor Company');
+});
+
 test('fresh checkout refuses unsupported listings before a Stripe session even if Wisdom knows them', async (t) => {
-  wisdomReturns([{ companyName: 'Ferrari', ticker: 'RACE.MI' }, { companyName: 'Rheinmetall', ticker: 'RHM.DE' }], t);
+  upstreamReturns([{ companyName: 'Ferrari', ticker: 'RACE.MI' }, { companyName: 'Rheinmetall', ticker: 'RHM.DE' }], t);
   for (const ticker of ['RACE.MI', 'RHM.DE', 'FARN.L']) {
     const stripe = fakeStripe();
     await assert.rejects(
@@ -220,7 +247,7 @@ test('fresh checkout refuses unsupported listings before a Stripe session even i
 });
 
 test('an approved suffix alone cannot create a checkout for a missing or prefix-only Wisdom match', async (t) => {
-  wisdomReturns([{ companyName: 'Different share class', ticker: 'MISSING-A' }], t);
+  upstreamReturns([{ companyName: 'Different share class', ticker: 'MISSING-A' }], t);
   const stripe = fakeStripe();
   await assert.rejects(
     () => createFreshReportCheckout(stripe, { company: 'Missing', ticker: 'MISSING' }),
@@ -230,12 +257,23 @@ test('an approved suffix alone cannot create a checkout for a missing or prefix-
 });
 
 test('a failed Wisdom lookup returns a retryable error without creating a Stripe session', async (t) => {
-  wisdomReturns([], t);
+  upstreamReturns([], t);
   global.fetch = async () => { throw new Error('upstream unavailable'); };
   const stripe = fakeStripe();
   await assert.rejects(
     () => createFreshReportCheckout(stripe, { company: 'Nokia', ticker: 'NOKIA.HE' }),
     err => err instanceof CheckoutError && err.status === 503 && /try again/.test(err.message),
+  );
+  assert.equal(stripe.created.length, 0);
+});
+
+test('an invalid upstream response cannot create a Stripe session', async (t) => {
+  upstreamReturns([], t);
+  global.fetch = async () => ({ ok: true, async json() { return { unexpected: [] }; } });
+  const stripe = fakeStripe();
+  await assert.rejects(
+    () => createFreshReportCheckout(stripe, { company: 'Aallon', ticker: 'AALLON.HE' }),
+    err => err instanceof CheckoutError && err.status === 503,
   );
   assert.equal(stripe.created.length, 0);
 });

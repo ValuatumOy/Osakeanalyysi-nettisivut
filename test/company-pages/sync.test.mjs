@@ -64,7 +64,7 @@ test('small model changes are written, and a second run changes nothing', async 
   assert.equal(second.results[0].status, 'unchanged');
 });
 
-test('a filing-reviewed page and its source are not overwritten by model figures', async () => {
+test('a filing-reviewed page is rewritten to the model figures and wording', async () => {
   const reviewed = page()
     .replace(/For financial year 2025, Valuatum's model shows [^.]*\.\d*[^.]*\./, 'For financial year 2025, Test Oyj reported revenue of EUR 1,201.5m and operating profit of EUR 108.2m; the year-end share price was 12.34 EUR and market capitalisation was EUR 2,500.1m.')
     .replace(/<p class="cp-updated">[^<]*<\/p>/, '<p class="cp-updated">Figures checked against the annual report on 2026-11-11. Share price and market capitalisation are for the end of FY 2025.</p>')
@@ -73,27 +73,29 @@ test('a filing-reviewed page and its source are not overwritten by model figures
   const dir = await site(reviewed);
   const { results } = await syncCompanyPages({ client: client(base), rootDir: dir, write: true, now: NOW });
   const html = await read(dir, 'reports/test-equity-report.html');
-  assert.equal(results[0].status, 'skipped');
-  assert.equal(results[0].reason, 'non-model source needs a person');
-  assert.equal(html, reviewed);
+  assert.equal(results[0].status, 'update');
+  assert.match(html, /Valuatum's model shows/);
+  assert.match(html, /Figures updated from Valuatum's financial model on 2026-11-12\./);
+  assert.doesNotMatch(html, /checked against the|Available financial figures for FY/);
+  const second = await syncCompanyPages({ client: client(base), rootDir: dir, write: true, now: NOW });
+  assert.equal(second.results[0].status, 'unchanged');
 });
 
-test('a reviewed manifest protects the page even when the page uses model wording', async () => {
+test('a reviewed manifest no longer holds the page; Wisdom wins', async () => {
   const dir = await site(page());
   const reviewDir = path.join(dir, 'company-content', 'reviews');
   await fs.mkdir(reviewDir, { recursive: true });
   await fs.writeFile(path.join(reviewDir, 'review.json'), JSON.stringify({ pages: [{ path: 'reports/test-equity-report.html', values: { ebit: 110 } }] }));
-  const before = await read(dir, 'reports/test-equity-report.html');
-  const { results } = await syncCompanyPages({ client: client({ ...base, ebit: 115 }), rootDir: dir, write: true, now: NOW });
-  assert.equal(results[0].reason, 'filing-reviewed page needs a person');
-  assert.equal(await read(dir, 'reports/test-equity-report.html'), before);
+  const { results } = await syncCompanyPages({ client: client({ ...base, ebit: 115, net_earnings: 81 }), rootDir: dir, write: true, now: NOW });
+  assert.equal(results[0].status, 'update');
+  assert.match(await read(dir, 'reports/test-equity-report.html'), /EUR 115m/);
 });
 
 test('large changes and N/A transitions are left for review', async () => {
   const cases = [
     { html: page(), model: { ...base, adj_share_price_a: 25 }, reason: /share price changes by more than 20%/ },
     { html: page(), model: { ...base, ebit: -110 }, reason: /operating profit changes by more than 20%/ },
-    { html: page(), model: { ...base, net_earnings: 81 }, reason: /net earnings differs; check the model calculation/ },
+    { html: page(), model: { ...base, net_earnings: 120 }, reason: /net earnings changes by more than 20%/ },
     { html: page({ ...base, ebit: null }), model: base, reason: /operating profit changes to or from N\/A/ },
     { html: page(), model: { ...base, market_cap_ye: null }, reason: /market capitalisation changes to or from N\/A/ },
     { html: page({ ...base, ebit: 0 }), model: { ...base, ebit: 1 }, reason: /operating profit changes by more than 20%/ },
@@ -114,6 +116,15 @@ test('a listing outside current coverage is not updated', async () => {
   const { results } = await syncCompanyPages({ client: client(base), rootDir: dir, write: true, now: NOW });
   assert.equal(results[0].reason, 'listing is outside current coverage');
   assert.equal(await read(dir, 'reports/test-equity-report.html'), html);
+});
+
+test('a corrected order ticker is used for lookup while the page ISIN still guards identity', async () => {
+  const html = page(base, { ticker: 'TEST' }).replace('data-ticker="TEST"', 'data-ticker="TEST.HE"');
+  const dir = await site(html);
+  const ok = await syncCompanyPages({ client: client({ ...base, ebit: 115 }), rootDir: dir, now: NOW });
+  assert.equal(ok.results[0].status, 'update');
+  const mismatch = await syncCompanyPages({ client: client(base, { isin: 'SE0000000000' }), rootDir: dir, now: NOW });
+  assert.match(mismatch.results[0].reason, /differs from page ISIN/);
 });
 
 test('risky updates are skipped, not written', async () => {

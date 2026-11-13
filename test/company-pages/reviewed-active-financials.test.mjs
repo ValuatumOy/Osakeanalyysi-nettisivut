@@ -69,7 +69,6 @@ test('Omda uses the audited sales revenue and its current listing identity', asy
   assert.doesNotMatch(html, /revenue of NOK 495\.69m|36\.93 NOK/);
 });
 
-// Active pages show Wisdom's figures (scripts/sync-company-pages.mjs); only the status note is pinned.
 test('Summa Defence discloses restructuring', async () => {
   const html = await read('reports/summa-defence-equity-report.html');
   assert.match(html, /corporate restructuring proceedings for Summa Defence Plc and Summa Holding Oy/);
@@ -104,6 +103,15 @@ test('Fagerhult uses its current name in the page, directory and search data', a
   assert.match(html, /Previously known as AB Fagerhult \(publ\.\)/);
   assert.match(await read('companies/f.html'), /Fagerhult Group AB \(FAG\.ST\)/);
   assert.match(await read('js/companyPagesData.js'), /"name": "Fagerhult Group AB"/);
+});
+
+test('Acrinova does not call an unreported operating subtotal EBIT', async () => {
+  const html = await read('reports/acrinova-equity-report.html');
+  assert.match(html, /Revenue<\/span><span class="cp-v">SEK 128\.15m/);
+  assert.match(html, /Operating profit<\/span><span class="cp-v">N\/A/);
+  assert.match(html, /Market capitalisation<\/span><span class="cp-v">SEK 456\.0m/);
+  assert.match(html, /both listed share classes/);
+  assert.doesNotMatch(html, /SEK 51\.6m|SEK 669\.8m/);
 });
 
 test('AFRY uses the correct company name in the page and search index', async () => {

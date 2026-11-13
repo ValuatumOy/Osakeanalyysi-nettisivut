@@ -1,10 +1,5 @@
 const { reportError } = require('../server/email');
-// The same listing filter as the shop's own search (server/search.js): the
-// upstream here is another service, so it is applied again.
-const { isCoveredTicker } = require('../server/search');
-
-const UPSTREAM = process.env.COMPANY_SEARCH_UPSTREAM || 'https://files.valuatum.com/api/search-companies';
-const TIMEOUT_MS = Number.parseInt(process.env.COMPANY_SEARCH_TIMEOUT_MS || '8000', 10);
+const { searchCompaniesUpstream } = require('../server/company-search-upstream');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') return res.status(405).end();
@@ -14,37 +9,13 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'A valid company search query is required' });
   }
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const upstream = await fetch(`${UPSTREAM}?q=${encodeURIComponent(query)}`, {
-      headers: { accept: 'application/json' },
-      signal: controller.signal,
-    });
-    if (!upstream.ok) throw new Error(`upstream returned ${upstream.status}`);
-
-    const data = await upstream.json();
-    const results = Array.isArray(data?.results)
-      ? data.results.map(toPublicCompany).filter(Boolean)
-        .filter((company) => isCoveredTicker(company.ticker)).slice(0, 10)
-      : [];
+    const results = await searchCompaniesUpstream(query);
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
     return res.status(200).json({ query, results });
   } catch (error) {
     console.error('search-companies:', error.message);
     await reportError('vercel search-companies', error, { query: req.query?.q });
     return res.status(502).json({ error: 'Company search is temporarily unavailable' });
-  } finally {
-    clearTimeout(timeout);
   }
 };
-
-function toPublicCompany(company) {
-  const ticker = String(company?.ticker || '').trim();
-  if (!ticker) return null;
-  return {
-    companyName: String(company?.companyName || ticker).trim(),
-    ticker,
-    industry: String(company?.industry || '').trim() || undefined,
-  };
-}
