@@ -1,0 +1,13 @@
+{
+  "ticker": "IPSC",
+  "companyName": "Century Therapeutics, Inc.",
+  "profile": "Century Therapeutics is a biotechnology company developing allogeneic cell therapies using induced pluripotent stem cells. Its programs include beta islet cells, engineered T cells, and natural killer cells aimed at conditions including type 1 diabetes, other autoimmune diseases, and cancer. The company uses genetic editing and its Allo-Evasion technology in developing potential off-the-shelf therapies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.084Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1850119/000110465926026759/ipsc-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1850119/000110465926026759/ipsc-20251231x10k.htm"
+  ]
+}

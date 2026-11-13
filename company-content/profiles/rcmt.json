@@ -1,0 +1,13 @@
+{
+  "ticker": "RCMT",
+  "companyName": "RCM Technologies, Inc.",
+  "profile": "RCM Technologies provides staffing, engineering, life sciences, data and technology services to businesses and institutions. Its Specialty Health Care segment supplies medical and education professionals and offers teletherapy. Engineering services include energy, process and industrial, and aerospace work, alongside design, consulting and project management. Its Life Sciences, Data and Solutions segment provides enterprise applications, IT infrastructure, data solutions, digitization and business process technology services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:51:51.233Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/700841/000143774926011236/rcmt20260103_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/700841/000143774926011236/rcmt20260103_10k.htm"
+  ]
+}

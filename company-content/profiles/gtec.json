@@ -1,0 +1,13 @@
+{
+  "ticker": "GTEC",
+  "companyName": "Greenland Technologies Holding Corporation",
+  "profile": "Greenland Technologies designs, develops, manufactures, and sells components and products for material handling industries. Through subsidiaries in China, it produces transmission products used in forklift trucks for manufacturing and logistics applications, and sells them directly to forklift manufacturers. Its subsidiary HEVI has also developed electric industrial vehicles and related products, though substantially all of its operations have been suspended since 2025.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.549Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1735041/000121390026032928/ea0282605-10k_greenland.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1735041/000121390026032928/ea0282605-10k_greenland.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "GEG",
+  "companyName": "Great Elm Group, Inc.",
+  "profile": "Great Elm Group is an alternative asset management company focused on credit, real estate, specialty finance, and other alternative strategies. Through its investment adviser subsidiaries, it provides investment management services to business development companies, private funds, and a real estate operating partnership. Its subsidiaries also provide construction services to real estate businesses and third-party clients, and support build-to-suit property development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.212Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1831096/000119312526368246/geg-20260630.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1831096/000119312526368246/geg-20260630.htm"
+  ]
+}

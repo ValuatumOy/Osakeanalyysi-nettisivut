@@ -1,0 +1,13 @@
+{
+  "ticker": "WATT",
+  "companyName": "Energous Corporation",
+  "profile": "Energous develops radio-frequency wireless power technology for low-power Internet of Things devices. Its platform combines transmitter systems, receiver integrated circuits, antenna systems, and supporting software to deliver power and data to battery-free devices. Products and applications include PowerBridge transmitters, e-Sense tags, electronic shelf labels, asset trackers, and environmental sensors used in retail, industrial, healthcare, and logistics settings.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.549Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1575793/000110465926035214/watt-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1575793/000110465926035214/watt-20251231x10k.htm"
+  ]
+}

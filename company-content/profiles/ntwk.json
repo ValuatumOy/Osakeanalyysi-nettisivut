@@ -1,0 +1,13 @@
+{
+  "ticker": "NTWK",
+  "companyName": "NetSol Technologies, Inc.",
+  "profile": "NetSol Technologies provides software and services that help original equipment manufacturers, dealerships and financial institutions sell, finance and lease assets. Its Transcend platform includes finance and leasing software, digital retail solutions and related implementation, maintenance and support services. The company serves customers in more than 30 countries, including automotive manufacturers, dealer groups and recreational vehicle retailers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1039280/000149315226044483/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1039280/000149315226044483/form10-k.htm"
+  ]
+}

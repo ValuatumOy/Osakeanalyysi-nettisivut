@@ -1,0 +1,13 @@
+{
+  "ticker": "AWRE",
+  "companyName": "Aware, Inc.",
+  "profile": "Aware develops biometric identification software and services that help government agencies and commercial organizations enroll, identify, and authenticate individuals. Its products use fingerprint, face, iris, and voice data in applications including border control, law enforcement, access control, identity proofing, and secure transactions. Offerings include biometric frameworks, platforms, software development kits, and cloud services, sold through integrators, equipment manufacturers, resellers, partners, and directly to customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.857Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1015739/000119312526096448/awre-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1015739/000119312526096448/awre-20251231.htm"
+  ]
+}

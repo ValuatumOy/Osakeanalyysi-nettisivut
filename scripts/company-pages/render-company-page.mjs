@@ -45,7 +45,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
     (item.industry && item.industry === company.industry ? 8 : 0) +
     (item.currency && item.currency === company.currency ? 3 : 0);
   const related = relatedCompanies
-    .filter((item) => item.ticker !== company.ticker && !isFinancialCompany(item))
+    .filter((item) => item.ticker !== company.ticker && !isFinancialCompany(item) && item.industry && item.industry === company.industry)
     .sort((a, b) => relatedScore(b) - relatedScore(a) || String(a.companyName).localeCompare(String(b.companyName)))
     .slice(0, 4);
 

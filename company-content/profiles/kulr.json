@@ -1,0 +1,13 @@
+{
+  "ticker": "KULR",
+  "companyName": "KULR Technology Group, Inc.",
+  "profile": "KULR Technology Group designs and builds battery systems for autonomous platforms, digital infrastructure, electric mobility, and space applications. Its services include battery pack design, prototyping, testing, certification, manufacturing, and battery management system integration. The KULR ONE platform provides configurable systems for space, defense, aviation, grid, subsea, and other applications. The company also offers vibration-reduction technology for motors and rotating systems.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.328Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1662684/000110465926037918/tmb-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1662684/000110465926037918/tmb-20251231x10k.htm"
+  ]
+}

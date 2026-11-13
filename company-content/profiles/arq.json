@@ -1,0 +1,13 @@
+{
+  "ticker": "ARQ",
+  "companyName": "Arq, Inc.",
+  "profile": "Arq, Inc. develops and sells consumable air, water, and soil treatment products, primarily based on activated carbon. Its products include powdered, granular, and colloidal carbon, along with other chemicals used to capture contaminants and pollutants. Applications include drinking water and wastewater treatment, industrial gas purification, soil and groundwater remediation, and emissions control for power generation and industrial processes.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.326Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1515156/000151515626000021/arq-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1515156/000151515626000021/arq-20251231.htm"
+  ]
+}

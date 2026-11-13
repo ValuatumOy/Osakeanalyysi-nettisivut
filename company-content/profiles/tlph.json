@@ -1,0 +1,13 @@
+{
+  "ticker": "TLPH",
+  "companyName": "Talphera, Inc.",
+  "profile": "Talphera is a specialty pharmaceutical company developing therapies for medically supervised settings. Its portfolio centers on Niyad, a nafamostat formulation under study as a regional anticoagulant for the extracorporeal circuit during continuous renal replacement therapy in hospitalized patients. The company is also exploring LTX-608, a nafamostat formulation for intravenous infusion, for potential use in several acute conditions.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.359Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1427925/000143774926009387/acrx20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1427925/000143774926009387/acrx20251231_10k.htm"
+  ]
+}

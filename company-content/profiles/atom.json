@@ -1,0 +1,13 @@
+{
+  "ticker": "ATOM",
+  "companyName": "Atomera Incorporated",
+  "profile": "Atomera develops and licenses semiconductor processes and technologies, including Mears Silicon Technology, a thin film of reengineered silicon intended to improve transistor size, speed, reliability, and power efficiency. The company does not design or manufacture wafers or integrated circuits. Its customers and partners include foundries, integrated device makers, fabless manufacturers, wafer makers, equipment makers, and electronic design automation companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.475Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1420520/000168316826001291/atomera_i10k-123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1420520/000168316826001291/atomera_i10k-123125.htm"
+  ]
+}

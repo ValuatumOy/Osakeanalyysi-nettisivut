@@ -1,0 +1,13 @@
+{
+  "ticker": "BMRA",
+  "companyName": "Biomerica, Inc.",
+  "profile": "Biomerica develops, patents, manufactures, and markets diagnostic and therapeutic products. Its test kits analyze patient blood, urine, nasal, or fecal samples to help diagnose diseases, food intolerances, and other medical conditions. Products are sold worldwide to clinical laboratories and point-of-care settings, including physicians’ offices and over-the-counter channels. The company also provides contract development and manufacturing services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:53:10.569Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/73290/000149315226040851/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/73290/000149315226040851/form10-k.htm"
+  ]
+}

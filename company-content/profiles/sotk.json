@@ -1,0 +1,13 @@
+{
+  "ticker": "SOTK",
+  "companyName": "Sono-Tek Corporation",
+  "profile": "Sono-Tek designs and manufactures ultrasonic coating systems that apply precise, thin films to parts and components. Its products include integrated and multi-axis coating systems, fluxing systems, and subsystems incorporating ultrasonic nozzles and generators. Applications include electronics, medical devices, industrial materials, and alternative energy. Customers include original equipment manufacturers, distributors, and end users across the industries it serves.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.210Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/806172/000117152026000113/eps12623_sotk.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/806172/000117152026000113/eps12623_sotk.htm"
+  ]
+}

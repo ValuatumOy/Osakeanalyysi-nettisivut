@@ -1,0 +1,13 @@
+{
+  "ticker": "POCI",
+  "companyName": "Precision Optics Corporation, Inc.",
+  "profile": "Precision Optics Corporation designs and manufactures optical instruments, medical devices, components and assemblies for medical, defense, aerospace and industrial applications. Its products include endoscopes, endocouplers, digital imaging systems, microprecision lenses and other custom optical devices used in minimally invasive procedures. The company also provides engineering, product development and manufacturing services for customers seeking specialized optical systems and assemblies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/867840/000168316826007462/poci_i10k-063026.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/867840/000168316826007462/poci_i10k-063026.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "PLX",
+  "companyName": "Protalix BioTherapeutics, Inc.",
+  "profile": "Protalix BioTherapeutics discovers, develops, produces, and commercializes treatments for rare diseases using its plant cell-based protein expression platform and other approaches. Its commercial products include enzyme replacement therapies for Gaucher and Fabry diseases. The company sells Elelyso drug substance to licensees Pfizer and Fiocruz, and manufactures Elfabrio for Chiesi, which handles its global commercialization and distribution.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.094Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1006281/000110465926029858/plx-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1006281/000110465926029858/plx-20251231x10k.htm"
+  ]
+}

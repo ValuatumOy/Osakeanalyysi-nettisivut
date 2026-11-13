@@ -1,0 +1,13 @@
+{
+  "ticker": "EDUC",
+  "companyName": "Educational Development Corporation",
+  "profile": "Educational Development Corporation publishes Kane Miller children’s books and owns Learning Wrap-Ups educational manipulatives and SmartLab Toys STEAM-based toys and games. It also distributes Usborne children’s books in the United States through a multilevel marketing channel. The company sells books, toys, games, and related products directly to customers through independent representatives and to retail outlets through its publishing division.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.548Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/31667/000118518526001927/educ10k022826.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/31667/000118518526001927/educ10k022826.htm"
+  ]
+}

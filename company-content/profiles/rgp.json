@@ -1,0 +1,13 @@
+{
+  "ticker": "RGP",
+  "companyName": "Resources Connection, Inc.",
+  "profile": "Resources Connection is a global professional services firm offering on-demand talent, consulting, and outsourced services. It provides businesses with project-based professionals and expertise, consulting for transformation across finance, technology, risk, compliance, and operations, and outsourced finance, accounting, and human resources services for startups and growing enterprises. Its services primarily support business leaders, including finance and other C-suite executives.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.101Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1084765/000108476526000051/rgp-20260530.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1084765/000108476526000051/rgp-20260530.htm"
+  ]
+}

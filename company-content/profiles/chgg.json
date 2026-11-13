@@ -1,0 +1,13 @@
+{
+  "ticker": "CHGG",
+  "companyName": "Chegg, Inc.",
+  "profile": "Chegg provides learning services for students and workforce development programs for employers. Its offerings include self-paced language lessons, live classes, workplace skills training, and academic subscriptions with AI-supported study assistance, writing feedback and tools, and math problem-solving support. The company also offers advertising across its platforms and provides personalized learning experiences through digital services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.879Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1364954/000136495426000021/chgg-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1364954/000136495426000021/chgg-20251231.htm"
+  ]
+}

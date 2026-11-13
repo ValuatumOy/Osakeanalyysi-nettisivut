@@ -1,0 +1,13 @@
+{
+  "ticker": "INBS",
+  "companyName": "Intelligent Bio Solutions Inc.",
+  "profile": "Intelligent Bio Solutions develops and delivers testing and screening solutions, including its Intelligent Fingerprinting Platform, a portable system that analyzes fingerprint sweat using a disposable cartridge and handheld reader. Its commercially available drug screening system is designed to detect several drugs of abuse. The company is also developing applications for the platform and holds biosensor technology licenses and wearable and software-based technologies in its portfolio.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:52:19.594Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1725430/000149315226039136/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1725430/000149315226039136/form10-k.htm"
+  ]
+}

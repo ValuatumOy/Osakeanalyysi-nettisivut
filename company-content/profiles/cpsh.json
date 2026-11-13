@@ -1,0 +1,13 @@
+{
+  "ticker": "CPSH",
+  "companyName": "CPS Technologies Corporation",
+  "profile": "CPS Technologies designs, manufactures, and sells high-performance material solutions, including metal matrix composite components and hermetic packaging. Its materials combine metals and ceramics to provide thermal conductivity, stiffness, durability, and lower weight for demanding applications. Products are used in transportation, energy infrastructure, electronics, telecommunications, aerospace, and defense, including heat spreaders, housings, satellite components, and lightweight armor.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.746Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/814676/000143774926006687/cpsh20251227_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/814676/000143774926006687/cpsh20251227_10k.htm"
+  ]
+}

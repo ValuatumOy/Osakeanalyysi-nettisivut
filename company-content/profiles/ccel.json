@@ -1,0 +1,13 @@
+{
+  "ticker": "CCEL",
+  "companyName": "Cryo-Cell International, Inc.",
+  "profile": "Cryo-Cell International provides cellular processing and cryogenic storage services, primarily preserving umbilical cord blood and tissue stem cells for family use. It also manufactures the PrepaCyte CB system, a technology used to process cord blood stem cells, and processes and stores cord blood for public use. Its stored specimens are maintained for the benefit of newborns and potentially other family members.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.636Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/862692/000119312526083096/ccel-20251130.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/862692/000119312526083096/ccel-20251130.htm"
+  ]
+}

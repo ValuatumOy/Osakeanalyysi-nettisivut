@@ -1,0 +1,13 @@
+{
+  "ticker": "VRA",
+  "companyName": "Vera Bradley, Inc.",
+  "profile": "Vera Bradley designs and sells women’s handbags, luggage and travel items, fashion and home accessories, and gifts. It sells products directly through its full-line and outlet stores, e-commerce sites, and direct-to-consumer marketplaces. The company also sells to specialty retail locations, department stores, national accounts, and inventory liquidators, and earns royalties through licensing agreements related to the Vera Bradley brand.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.210Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1495320/000162828026021640/vra-20260131.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1495320/000162828026021640/vra-20260131.htm"
+  ]
+}

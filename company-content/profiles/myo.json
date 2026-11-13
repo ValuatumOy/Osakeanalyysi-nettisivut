@@ -1,0 +1,13 @@
+{
+  "ticker": "MYO",
+  "companyName": "Myomo, Inc.",
+  "profile": "Myomo develops and markets the MyoPro line of custom-fabricated, myoelectric upper-limb braces for people with neuromuscular disorders and arm paralysis. The devices use sensors to detect a wearer’s muscle signals and assist arm and hand movement. Myomo provides devices directly to patients and also sells through orthotics and prosthetics providers, the Veterans Administration, and certain international accounts.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.635Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1369290/000119312526098531/myo-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1369290/000119312526098531/myo-20251231.htm"
+  ]
+}

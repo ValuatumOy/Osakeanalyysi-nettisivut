@@ -1,0 +1,13 @@
+{
+  "ticker": "ARCT",
+  "companyName": "Arcturus Therapeutics Holdings Inc.",
+  "profile": "Arcturus Therapeutics develops messenger RNA medicines, with a focus on therapeutics for liver and respiratory rare diseases and vaccines for infectious diseases. Its pipeline includes candidates for ornithine transcarbamylase deficiency and cystic fibrosis. The company uses its STARR self-amplifying mRNA and LUNAR lipid nanoparticle technologies to develop medicines and has partnered with CSL Seqirus on vaccine development and commercialization, including its approved KOSTAIVE COVID-19 vaccine.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.159Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1768224/000119312526088391/arct-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1768224/000119312526088391/arct-20251231.htm"
+  ]
+}

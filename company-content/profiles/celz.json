@@ -1,0 +1,13 @@
+{
+  "ticker": "CELZ",
+  "companyName": "Creative Medical Technology Holdings, Inc.",
+  "profile": "Creative Medical Technology Holdings is a commercial-stage biotechnology company developing regenerative therapies in immunotherapy, endocrinology, urology, neurology, and orthopedics. Its programs include therapies based on reprogrammed immune cells and other stem-cell approaches for conditions such as erectile dysfunction, type 1 diabetes, and chronic lower back pain. It also develops cell-line and induced pluripotent stem-cell programs through subsidiaries.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:53:10.570Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1187953/000147793226001517/celz_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1187953/000147793226001517/celz_10k.htm"
+  ]
+}

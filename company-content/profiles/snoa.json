@@ -1,0 +1,13 @@
+{
+  "ticker": "SNOA",
+  "companyName": "Sonoma Pharmaceuticals, Inc.",
+  "profile": "Sonoma Pharmaceuticals develops and produces stabilized hypochlorous acid products for wound care, eye care, dermatological conditions, podiatry, animal health, and disinfection. Its offerings include wound cleansers, skin sprays, gels, and products for conditions such as irritation, scars, acne, and eczema. The company sells directly and through distribution partners in the United States and international markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:28.614Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1367083/000168316826004871/sonoma_i10k-033126.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1367083/000168316826004871/sonoma_i10k-033126.htm"
+  ]
+}

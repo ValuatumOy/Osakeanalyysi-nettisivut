@@ -1,0 +1,13 @@
+{
+  "ticker": "IRD",
+  "companyName": "Opus Genetics, Inc.",
+  "profile": "Opus Genetics develops gene therapies for inherited retinal diseases and other therapies for ophthalmic disorders. Its pipeline includes adeno-associated virus programs targeting genetic causes of retinal degeneration, including LCA5 and BEST1-related conditions. The company is also advancing phentolamine ophthalmic solution, which is approved for pharmacologically induced mydriasis and is being evaluated for additional eye-related indications. Its gene therapies are administered by subretinal injection.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.094Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1228627/000114036126009247/ef20060643_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1228627/000114036126009247/ef20060643_10k.htm"
+  ]
+}

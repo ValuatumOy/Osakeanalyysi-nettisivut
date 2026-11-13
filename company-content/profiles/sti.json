@@ -1,0 +1,13 @@
+{
+  "ticker": "STI",
+  "companyName": "Solidion Technology Inc.",
+  "profile": "Solidion Technology develops battery materials, components and energy storage solutions. Its technologies include silicon-rich anode materials, solid-state battery technology, fire-retardant electrolytes, graphene-enabled batteries and biochar-derived anode materials. The company describes applications for electric vehicles, energy storage systems and consumer electronics, and also develops battery cells and manufacturing processes intended for use in high-energy and high-power applications.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.361Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1881551/000121390026044126/ea0276988-10k_solidion.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1881551/000121390026044126/ea0276988-10k_solidion.htm"
+  ]
+}

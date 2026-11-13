@@ -1,0 +1,13 @@
+{
+  "ticker": "OSS",
+  "companyName": "One Stop Systems, Inc.",
+  "profile": "One Stop Systems designs, manufactures, and markets rugged high-performance computing, high-speed switch fabrics, and storage systems for edge applications. Its products support artificial intelligence, machine learning, sensor processing, sensor fusion, and autonomy on mobile or demanding platforms. Customers include manufacturers of equipment and platforms for autonomous vehicles, medical, industrial, aerospace, and defense applications, including aircraft, ships, trucks, and unmanned vehicles.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.158Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1394056/000119312526114051/oss-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1394056/000119312526114051/oss-20251231.htm"
+  ]
+}

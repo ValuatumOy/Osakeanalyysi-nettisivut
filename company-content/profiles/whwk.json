@@ -1,0 +1,13 @@
+{
+  "ticker": "WHWK",
+  "companyName": "Whitehawk Therapeutics Inc",
+  "profile": "Whitehawk Therapeutics is a clinical-stage oncology therapeutics company developing antibody-drug conjugates for cancer. Its licensed pipeline includes candidates targeting PTK7, MUC16, and SEZ6, using a linker-payload platform designed to deliver a topoisomerase I inhibitor into cancer cells. Whitehawk’s lead candidates are in early clinical development for solid tumors, including lung, ovarian, and endometrial cancers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:59.535Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1422142/000119312526104158/whwk-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1422142/000119312526104158/whwk-20251231.htm"
+  ]
+}

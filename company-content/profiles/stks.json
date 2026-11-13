@@ -1,0 +1,13 @@
+{
+  "ticker": "STKS",
+  "companyName": "The ONE Group Hospitality, Inc.",
+  "profile": "The ONE Group Hospitality develops, owns, operates, manages, franchises and licenses restaurants, and provides food and beverage hospitality management and advisory services. Its restaurant brands include STK steakhouses, Benihana interactive Japanese dining, Kona Grill polished casual restaurants and RA Sushi. Its hospitality services cover restaurants, bars, lounges, catering and related venues for hotels and casinos.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.356Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1399520/000110465926032065/stks-20251228x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1399520/000110465926032065/stks-20251228x10k.htm"
+  ]
+}

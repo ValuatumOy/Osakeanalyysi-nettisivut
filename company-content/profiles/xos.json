@@ -1,0 +1,13 @@
+{
+  "ticker": "XOS",
+  "companyName": "Xos, Inc.",
+  "profile": "Xos develops power and fleet solutions, including mobile charging and energy storage systems, medium-duty battery-electric commercial vehicles, and electric powertrain components. Its fleet management software supports vehicle operations. The company’s products serve applications such as fleet charging, last-mile delivery, industrial equipment, school buses, and specialty vehicles, with customers and uses spanning transportation, utilities, and other commercial operations.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.052Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819493/000181949326000008/xos-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1819493/000181949326000008/xos-20251231.htm"
+  ]
+}

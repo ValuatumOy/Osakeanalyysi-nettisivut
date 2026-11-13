@@ -1,0 +1,14 @@
+{
+  "ticker": "SRI",
+  "companyName": "Stoneridge, Inc.",
+  "profile": "Stoneridge supplies vision and safety, connectivity, vehicle intelligence and electronic control technologies primarily for commercial vehicle and off-highway markets. Its products include MirrorEye camera monitor systems and related vehicle electronics for manufacturers and suppliers. In 2026, Stoneridge completed the sale of its Control Devices business and now describes its portfolio around the remaining technology categories, including vehicle vision systems and connectivity solutions.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.962Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1043337/000104333726000023/sri-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1043337/000104333726000093/sri-20260930.htm",
+    "https://www.sec.gov/Archives/edgar/data/1043337/000104333726000091/sri-20260930xexx992final.htm"
+  ]
+}

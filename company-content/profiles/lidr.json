@@ -1,0 +1,13 @@
+{
+  "ticker": "LIDR",
+  "companyName": "AEye, Inc.",
+  "profile": "AEye provides active lidar sensing systems and related software for vehicle autonomy, advanced driver-assistance systems, robotic vision, and non-automotive applications. Its platform combines a solid-state lidar sensor, adaptive scanning architecture, and signal processing. The company works with automotive suppliers and other partners, and its technology is designed for uses including rail, aviation, defense, smart infrastructure, and security.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.084Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1818644/000143774926008858/lidr20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1818644/000143774926008858/lidr20251231_10k.htm"
+  ]
+}

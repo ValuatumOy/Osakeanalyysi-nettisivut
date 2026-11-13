@@ -1,0 +1,13 @@
+{
+  "ticker": "PRPO",
+  "companyName": "Precipio, Inc.",
+  "profile": "Precipio is a healthcare biotechnology company focused on cancer diagnostics, particularly hematologic malignancies. It provides specialized pathology testing services to physicians, hospitals, and laboratories, including molecular diagnostics, cytogenetics, and other laboratory analyses using patient samples. The company also develops and commercializes proprietary diagnostic assays and kits for clinical laboratories, drawing on its laboratory operations to support product evaluation and validation.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.857Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1043961/000110465926036878/prpo-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1043961/000110465926036878/prpo-20251231x10k.htm"
+  ]
+}

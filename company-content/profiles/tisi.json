@@ -1,0 +1,13 @@
+{
+  "ticker": "TISI",
+  "companyName": "Team, Inc.",
+  "profile": "Team, Inc. provides specialty industrial services through its Inspection and Heat-Treating and Mechanical Services segments. Its work includes nondestructive testing, condition assessment, engineering, heat treating, maintenance, repair, and asset integrity services. The company serves process, pipeline, power, aerospace, manufacturing, energy, infrastructure, and defense markets, delivering services during facility operations, turnarounds, outages, construction, and expansion projects.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.745Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/318833/000031883326000007/tisi-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/318833/000031883326000007/tisi-20251231.htm"
+  ]
+}

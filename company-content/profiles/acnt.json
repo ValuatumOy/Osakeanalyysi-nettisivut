@@ -1,0 +1,13 @@
+{
+  "ticker": "ACNT",
+  "companyName": "Ascent Industries Co.",
+  "profile": "Ascent Industries develops, manufactures, and supplies specialty chemical formulations and intermediates for industrial and consumer applications. Its products include surfactants, defoamers, lubricating agents, flame retardants, and specialty intermediates, used in cleaning products, coatings, oilfield chemicals, agriculture, water treatment, and other processes. The company also provides custom product development, process optimization, scale-up, and commercial manufacturing services for customers across diverse end markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.104Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/95953/000009595326000040/acnt-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/95953/000009595326000040/acnt-20251231.htm"
+  ]
+}

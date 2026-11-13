@@ -1,0 +1,13 @@
+{
+  "ticker": "AMTX",
+  "companyName": "Aemetis, Inc.",
+  "profile": "Aemetis operates renewable natural gas and renewable fuels businesses. In California, it produces ethanol and sells associated animal feed products and captured carbon dioxide. It also produces renewable natural gas from dairy waste for delivery through a utility pipeline. In India, it operates a biodiesel plant using vegetable oil and animal waste feedstocks.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:53:10.568Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/738214/000143774926008289/amtx20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/738214/000143774926008289/amtx20251231_10k.htm"
+  ]
+}

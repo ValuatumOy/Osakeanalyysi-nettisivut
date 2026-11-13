@@ -354,3 +354,26 @@ Alla olevat erot ovat tarkistusehdotuksia, eivät automaattisesti todettuja virh
 - **Unibap Space Solutions (UNIBAP.ST):** ticker ja ISIN ovat samat, mutta Wisdomin nimessä on yhä Unibap AB. [Ruotsin veroviranomaisen mukaan](https://www.skatteverket.se/privat/skatter/vardepapper/aktiehistorik/u/unibapspacesolutions.4.5c281c7015abecc2e20b174.html) virallinen nimi muuttui 3.6.2025. Tarkista ja päivitä perustieto Wisdomiin ennen uuden tilattavan sivun luontia. Vuoden 2025 talousluvut täsmäsivät yhtiön raporttiin.
 
 - **Cass Information Systems (CASS), FY2025:** Wisdomin nettotulos on 31,112 MUSD, kun [SEC:n vuosiraportista](https://www.sec.gov/Archives/edgar/data/708781/000070878126000010/cass-20251231.htm) löytyvä vertailuluku on 35,116 MUSD. Tarkista ensin määritelmä sekä pankkitytäryhtiön vaikutus; yhtiötä ei lisätty sivuerään.
+
+## Viimeisten USA-ehdokkaiden konevertailu
+
+Nämä erot vaativat tarkistuksen; XBRL-kenttien määritelmät, mahdolliset vähemmistöosuudet ja ajanjaksot voivat poiketa. Luvut MUSD. Sivut jätettiin pois, kunnes erot on selvitetty.
+
+| Ticker | FY | Kenttä | Wisdom | SEC:n löydetty vertailuluku | Lähde |
+|---|---:|---|---:|---:|---|
+| LODE | 2025 | Nettotulos | −39,509356 | −43,076443 (NetIncomeLoss); −43,166886 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1120970/000143774926009589/lode20251231_10k.htm) |
+| TTEC | 2025 | Oma pääoma | 95,067 | 112,903 (StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest) | [SEC](https://www.sec.gov/Archives/edgar/data/1013880/000110465926020532/ttec-20251231x10k.htm) |
+| MCRB | 2025 | Nettotulos | −74,989 | 5,696 (NetIncomeLoss); 5,696 (NetIncomeLossAvailableToCommonStockholdersBasic) | [SEC](https://www.sec.gov/Archives/edgar/data/1609809/000119312526103276/mcrb-20251231.htm) |
+| AGEN | 2025 | Nettotulos | −74,464 | −0,101 (NetIncomeLossAvailableToCommonStockholdersBasic); −3,083 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1098972/000119312526108632/agen-20251231.htm) |
+| UFI | 2026 | Nettotulos | −22,035 | −24,562 (NetIncomeLoss); −24,562 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/100726/000010072626000012/ufi-20260628.htm) |
+| DRIO | 2025 | Nettotulos | −61,735 | −41,714 (NetIncomeLoss); −41,714 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1533998/000110465926031621/drio-20251231x10k.htm) |
+| VTSI | 2025 | Nettotulos | 0,026098 | 0,258446 (NetIncomeLoss); 0,258446 (NetIncomeLossAvailableToCommonStockholdersBasic); 0,24984 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1085243/000149315226012903/form10-k.htm) |
+
+- **Star Equity / STRR:** Wisdomin ISIN US85513Q3011 viittaa vanhaan Star Equity -osakkeeseen. [Nasdaqin yritystapahtumailmoituksen](https://m.nasdaqtrader.com/TraderNews.aspx?id=ECA2025-434) mukaan vanhan osakkeen kaupankäynti päättyi elokuussa 2025 Hudson Global -fuusion yhteydessä; nykyisen STRR-yhtiön [uusi ISIN on US4437872058](https://www.sec.gov/Archives/edgar/data/1090372/000143893426001022/BRD017_0001090372_2026.xml); perustiedot on tarkistettava Wisdomissa ennen sivun tai tilausten avaamista.
+- **TGL:** Nasdaq on ilmoittanut [1:24-käänteisestä splitistä ja CUSIP-vaihdosta](https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2026-822) 16.11.2026 alkaen. Wisdomissa tarkastettaessa ollut ISIN US89458T4031 on tarkistettava tapahtuman jälkeen; yhtiö jätettiin tästä erästä pois.
+
+## Suurten ruotsalaisyhtiöiden liiketulos ja osakesarjat
+
+- **SCA (SCA-B.ST):** vuoden 2025 liikevaihto, nettotulos, oma pääoma ja B-osakkeen kurssi täsmäsivät. Wisdomin EBIT 2 332 MSEK poikkeaa [yhtiön raportoimasta liiketuloksesta 4 432 MSEK](https://www.sca.com/en/media/press-releases/2026/year-end-report-q4-2025/); tarkista laskentatavan ero.
+- **SSAB (SSAB-B.ST):** Wisdomin EBIT 5 950 MSEK poikkeaa [vuosikertomuksen](https://www.ssab.com/-/media/files/company/investors/annual-reports/2025/ssab-annual-report-2025.pdf) liiketuloksesta 6 116 MSEK. Wisdomin markkina-arvo 69 423 MSEK käyttää ilmeisesti B-osakkeen kurssia kaikille osakkeille, kun Nasdaqin A- ja B-sarjojen arvot yhteenlaskettuna ovat noin 69 667 MSEK. Tarkista sarjakohtainen laskenta ([A](https://attachment.news.eu.nasdaq.com/a5bab2f86776f616b3c66209610c57336), [B](https://attachment.news.eu.nasdaq.com/a3bd69b79fede6f9c7de0780d2436aeff)).
+- **Tele2 (TEL2-B.ST):** tuloslaskelman luvut, oma pääoma ja B-osakkeen päätöskurssi täsmäsivät. Wisdomin markkina-arvo 107 136,8 MSEK poikkeaa [A-](https://attachment.news.eu.nasdaq.com/a7634bec11b66dd24e911e288dddd102e) ja [B-sarjojen](https://attachment.news.eu.nasdaq.com/af64c2c14e81315fe27f4be113a180a81) Nasdaq-arvojen summasta, noin 107 270 MSEK; tarkista kummankin sarjan kurssit ja osakemäärät.

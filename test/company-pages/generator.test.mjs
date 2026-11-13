@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { generateCompanyPages } from '../../scripts/generate-company-pages.mjs';
-import { companyDisplayName, pageSlug, isFinancialCompany } from '../../scripts/company-pages/render-company-page.mjs';
+import { companyDisplayName, pageSlug, isFinancialCompany, renderCompanyPage } from '../../scripts/company-pages/render-company-page.mjs';
 
 test('company display names and slugs remove legal suffixes and preserve Nordic letters', () => {
   assert.equal(companyDisplayName({ companyName: 'Evolution AB (publ)', ticker: 'EVO.ST' }), 'Evolution');
@@ -13,6 +13,20 @@ test('company display names and slugs remove legal suffixes and preserve Nordic 
   assert.equal(pageSlug({ companyName: 'Metso Outotec', ticker: 'METSO.HE' }), 'metso-equity-report');
   assert.equal(pageSlug({ companyName: 'Investor AB (publ)', ticker: 'INVE-B.ST' }), 'investor-ab-equity-report');
   assert.equal(companyDisplayName({ companyName: 'BrightSpring Health Services, Inc. Common Stock', ticker: 'BTSG' }), 'BrightSpring Health Services');
+});
+
+test('related reports are limited to companies in the same industry', () => {
+  const company = {
+    companyName: 'Example Oyj', ticker: 'EXAMPLE', industry: 'Industrial Equipment',
+    currency: 'EUR', financialYear: 2025, metrics: {}, profile: 'Example profile.',
+  };
+  const related = [
+    { companyName: 'Similar Oyj', ticker: 'SIMILAR', industry: 'Industrial Equipment', currency: 'EUR' },
+    { companyName: 'Unrelated Oyj', ticker: 'UNRELATED', industry: 'Biotechnology', currency: 'EUR' },
+  ];
+  const html = renderCompanyPage(company, related);
+  assert.match(html, /similar-equity-report\.html/);
+  assert.doesNotMatch(html, /unrelated-equity-report\.html/);
 });
 
 test('generator writes a Fortum-style HTML page from live-shaped data', async (t) => {

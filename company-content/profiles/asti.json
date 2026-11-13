@@ -1,0 +1,13 @@
+{
+  "ticker": "ASTI",
+  "companyName": "Ascent Solar Technologies, Inc. Common Stock",
+  "profile": "Ascent Solar Technologies manufactures and sells flexible photovoltaic solar modules made with copper-indium-gallium-diselenide technology on plastic substrates. Its products provide power for specialized applications where rigid panels may not be suitable, including satellites, spacecraft, unmanned aerial vehicles, and other weight-sensitive markets. The company also designs finished products and works with partners on integrated solar solutions for vehicles and equipment.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.054Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1350102/000119312526117839/asti-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1350102/000119312526117839/asti-20251231.htm"
+  ]
+}

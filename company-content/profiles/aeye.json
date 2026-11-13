@@ -1,0 +1,13 @@
+{
+  "ticker": "AEYE",
+  "companyName": "AudioEye, Inc.",
+  "profile": "AudioEye provides a subscription-based digital accessibility platform for websites and applications. Its software identifies and fixes common accessibility errors and continuously monitors accessibility, while certified experts provide testing and custom fixes. The company also offers audits, legal support, PDF remediation, mobile application services, and reporting. Customers include businesses, nonprofits, and government agencies, served directly or through partners and resellers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.735Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1362190/000110465926027159/aeye-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1362190/000110465926027159/aeye-20251231x10k.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "RGS",
+  "companyName": "Regis Corporation",
+  "profile": "Regis Corporation franchises and operates hair salons, primarily in North America, under brands including Supercuts, SmartStyle, Cost Cutters, First Choice Haircutters, and Roosters. Its salons provide haircutting, styling, and hair coloring services and sell hair care and beauty products. The company earns royalties from franchise locations and revenue from services and product sales at company-operated salons.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.207Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/716643/000071664326000031/rgs-20260630.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/716643/000071664326000031/rgs-20260630.htm"
+  ]
+}

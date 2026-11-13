@@ -1,0 +1,13 @@
+{
+  "ticker": "IPM",
+  "companyName": "Intelligent Protection Management Corp.",
+  "profile": "Intelligent Protection Management provides managed IT security, secure private cloud hosting, backup and disaster recovery, professional, procurement and web hosting services. It also offers ManyCam, live streaming software and a virtual camera for streaming platforms, video conferencing applications and distance learning tools. Its IT services are provided to enterprise, commercial and small-to-medium-sized business clients across the United States.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.567Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1355839/000121390026029095/ea0277611-10k_intelligent.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1355839/000121390026029095/ea0277611-10k_intelligent.htm"
+  ]
+}

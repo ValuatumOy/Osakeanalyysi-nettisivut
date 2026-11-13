@@ -1,0 +1,13 @@
+{
+  "ticker": "AMPY",
+  "companyName": "Amplify Energy Corp.",
+  "profile": "Amplify Energy is an independent oil and natural gas company that acquires, develops, exploits and produces oil and gas properties. Following asset sales during 2025, its remaining properties are in Bairoil, Wyoming, and federal waters offshore Southern California. The company holds working interests in producing and undeveloped leasehold acreage and identified producing wells, and operates the properties containing its remaining proved reserves.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:49.600Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1533924/000110465926025299/ampy-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1533924/000110465926025299/ampy-20251231x10k.htm"
+  ]
+}

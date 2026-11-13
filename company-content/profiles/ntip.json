@@ -1,0 +1,13 @@
+{
+  "ticker": "NTIP",
+  "companyName": "Network-1 Technologies, Inc.",
+  "profile": "Network-1 Technologies develops, licenses, and seeks to monetize intellectual property. Its patent portfolios cover eSIM and connected-device technologies, high-frequency trading, media-content identification, and smart-home device interoperability. The company also works with inventors and patent owners on developing and monetizing patented technologies, and may acquire or enter strategic relationships involving intellectual property. It has invested in biotechnology company ILiAD.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:41.636Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1065078/000107261326000270/network1_10k-123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1065078/000107261326000270/network1_10k-123125.htm"
+  ]
+}

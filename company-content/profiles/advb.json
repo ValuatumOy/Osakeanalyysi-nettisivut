@@ -1,0 +1,13 @@
+{
+  "ticker": "ADVB",
+  "companyName": "Advanced Biomed Inc. Common Stock",
+  "profile": "Advanced Biomed is a holding company that shifted from biomedical operations to enterprise AI financial verification after disposing of its biomedical businesses. It develops and operates FinTruth, a platform that checks financial analysis and AI-generated financial content against source documents and financial rules, producing traceable, auditable results. Its target customers include financial institutions, professional services firms, and financial technology companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:41.943Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1941029/000121390026109029/ea0307457-10k_advanced.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1941029/000121390026109029/ea0307457-10k_advanced.htm"
+  ]
+}
