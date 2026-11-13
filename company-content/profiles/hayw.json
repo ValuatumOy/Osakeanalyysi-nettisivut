@@ -1,0 +1,10 @@
+{
+  "ticker": "HAYW",
+  "companyName": "Hayward Holdings, Inc.",
+  "profile": "Hayward designs and manufactures pool equipment, outdoor living products, and industrial flow control products for residential and commercial markets. Its pool portfolio includes pumps, filters, cleaners, heaters, lighting, water features, sanitizers, safety equipment, and automated cleaning systems, alongside automation products with connected capabilities. The company sells through specialized pool distributors, retailers, builders, online resellers, and other channel partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1834622/000183462226000008/hayw-20251231.htm"
+}

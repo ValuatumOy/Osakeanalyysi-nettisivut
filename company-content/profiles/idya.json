@@ -1,0 +1,13 @@
+{
+  "ticker": "IDYA",
+  "companyName": "IDEAYA Biosciences, Inc.",
+  "profile": "IDEAYA Biosciences discovers and develops precision medicines for genetically defined cancers. Its darovasertib and crizotinib combination has an NDA submitted for metastatic uveal melanoma, while the company also studies darovasertib in primary disease. IDEAYA is advancing other oncology programs, including IDE849, a DLL3-targeting TOP1 antibody-drug conjugate in Phase 1/2 development for small-cell lung cancer and neuroendocrine carcinomas.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.881Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1676725/000119312526054533/idya-20251231.htm",
+  "profileSources": [
+    "https://ir.ideayabio.com/2026-11-03-IDEAYA-Biosciences-Reports-Financial-Results-for-the-Third-Quarter-2026-and-Provides-a-Business-Update"
+  ]
+}

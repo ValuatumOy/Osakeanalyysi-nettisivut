@@ -1,0 +1,13 @@
+{
+  "ticker": "CURI",
+  "companyName": "CuriosityStream Inc.",
+  "profile": "CuriosityStream is a media and entertainment company offering factual video and audio programming across subjects including science, history, society, nature, lifestyle, and technology. It distributes content through subscription streaming services, content licensing, bundled distribution, talks, and courses. Its programming is produced, commissioned, co-produced, or licensed, and is delivered directly to consumers and through third-party platforms and partners.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.925Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026017346/curi-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1776909/000162828026017346/curi-20251231.htm"
+  ]
+}

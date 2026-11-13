@@ -1,0 +1,14 @@
+{
+  "ticker": "CLVT",
+  "companyName": "Clarivate Plc",
+  "profile": "Following the sale of its Life Sciences & Healthcare business in October 2026, Clarivate focuses on Academia & Government and Intellectual Property. It provides proprietary information, analytics, workflow software, and expert services supporting research, education, libraries, and intellectual property protection. Products include Web of Science, ProQuest, Alma, and Vega for academic and library customers, alongside patent and trademark tools for businesses and legal professionals.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.063Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1764046/000176404626000019/clvt-20251231.htm",
+  "profileSources": [
+    "https://clarivate.com/news/clarivate-completes-sale-of-life-sciences-healthcare-segment-advances-strategic-transformation/",
+    "https://clarivate.com/news/clarivate-reports-third-quarter-2026-results-delivering-clear-path-to-value-creation/"
+  ]
+}

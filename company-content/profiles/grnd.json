@@ -1,0 +1,10 @@
+{
+  "ticker": "GRND",
+  "companyName": "Grindr Inc.",
+  "profile": "Grindr operates a global social networking platform primarily for gay, bisexual, and sexually explorative adults. Users can create profiles, share photos and media, search and connect with others, chat, discover content, and use location-based features. The platform serves adults in the LGBTQ community seeking dating, relationships, friendships, professional networking, travel information, or local discovery, and offers subscriptions for premium features.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.075Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1820144/000182014426000007/grnd-20251231.htm"
+}

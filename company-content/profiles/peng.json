@@ -1,0 +1,10 @@
+{
+  "ticker": "PENG",
+  "companyName": "Penguin Solutions, Inc.",
+  "profile": "Penguin Solutions designs, builds, deploys, and manages data centers for enterprises, sovereign AI initiatives, and neocloud providers. Its offerings include AI and high-performance computing systems, infrastructure software, memory solutions, reference architectures, and services spanning design, deployment, optimization, and managed operations. It also provides high-availability and fault-tolerant computing solutions for data center and edge environments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.135Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1616533/000161653326000050/peng-20260828.htm"
+}

@@ -1,0 +1,14 @@
+{
+  "ticker": "PCT",
+  "companyName": "PureCycle Technologies, Inc.",
+  "profile": "PureCycle Technologies uses a dissolution process to recycle polypropylene plastic waste into purified recycled resin. Its process separates color, odor, and other contaminants from feedstock, then produces resin pellets for use in manufacturing. The company’s customers are businesses seeking recycled polypropylene for products and packaging. Feedstock may include discarded consumer packaging and other polypropylene materials that would otherwise be disposed of.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1830033/000119312526076801/pct-20251231.htm",
+  "profileSources": [
+    "https://www.purecycle.com/who-we-are",
+    "https://www.purecycle.com/our-process"
+  ]
+}

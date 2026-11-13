@@ -1,0 +1,15 @@
+{
+  "ticker": "SPRINT.ST",
+  "companyName": "Sprint Bioscience AB (publ)",
+  "profile": "Sprint Bioscience is a Swedish drug-discovery company developing preclinical small-molecule programs, primarily for solid tumors, using fragment-based drug discovery. Its portfolio targets tumor metabolism, the tumor microenvironment and immuno-oncology, with programs including VRK1, VPS34, NNMT, DCPS and STK25; NNMT also addresses chronic kidney disease. It licenses programs to pharmaceutical partners and has an AI-platform agreement with Lilly TuneLab.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:43:29.080Z",
+  "sourceFiling": "https://storage.mfn.se/3c1d60f4-90e0-430f-b336-a6b8fca11417/sprint-bioscience-arsredovisning-2025.pdf",
+  "profileSources": [
+    "https://storage.mfn.se/996a36ec-435f-4e7d-9444-c6699c9a66e6/delarsrapport-q3-2026-final.pdf",
+    "https://sprintbioscience.com/en/pipeline/",
+    "https://sprintbioscience.com/en/sprint-bioscience-signs-agreement-with-lilly-tunelab-to-accelerate-drug-development/"
+  ]
+}

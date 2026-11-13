@@ -1,0 +1,13 @@
+{
+  "ticker": "USIO",
+  "companyName": "Usio, Inc.",
+  "profile": "Usio is a cloud-based payment processor offering payment acceptance and funds disbursement through a technology platform. Its services include credit and debit card processing, ACH transfers, payment facilitation, prepaid card programs, electronic billing, and printing and mailing services. Businesses, merchants, and consumers use its payment products, which support online, telephone, and in-person transactions and multiple disbursement methods.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.634Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1088034/000143774926008833/usio20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1088034/000143774926008833/usio20251231_10k.htm"
+  ]
+}

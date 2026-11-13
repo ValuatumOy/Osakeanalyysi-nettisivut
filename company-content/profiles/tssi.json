@@ -1,0 +1,13 @@
+{
+  "ticker": "TSSI",
+  "companyName": "TSS, Inc.",
+  "profile": "TSS provides services for designing, integrating, deploying, maintaining, and refreshing enterprise technology systems and their facilities. Its work includes consulting, engineering, project management, systems integration and installation, facilities management, and IT procurement. The company serves enterprise customers and data center operators at data centers, modular data centers, colocation sites, and network edge locations, including AI-enabled server racks and related infrastructure.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:42:03.110Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1320760/000165495426002342/tssi_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1320760/000165495426002342/tssi_10k.htm"
+  ]
+}

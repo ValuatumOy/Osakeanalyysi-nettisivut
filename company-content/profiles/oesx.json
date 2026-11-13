@@ -1,0 +1,13 @@
+{
+  "ticker": "OESX",
+  "companyName": "Orion Energy Systems, Inc.",
+  "profile": "Orion Energy Systems provides LED lighting systems, wireless IoT-enabled controls, commercial and industrial electric vehicle charging solutions, and lighting and electrical maintenance services. It also offers turnkey installation, engineering, project management, and system maintenance. Its customers include commercial and industrial businesses, government entities, schools, distributors, contractors, and energy service companies, with projects across retail, manufacturing, logistics, healthcare, and office markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.635Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1409375/000119312526257468/oesx-20260331.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1409375/000119312526257468/oesx-20260331.htm"
+  ]
+}

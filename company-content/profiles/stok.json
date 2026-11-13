@@ -1,0 +1,10 @@
+{
+  "ticker": "STOK",
+  "companyName": "Stoke Therapeutics, Inc.",
+  "profile": "Stoke Therapeutics develops RNA-based medicines intended to address severe diseases by increasing protein expression. Using its TANGO approach, it designs antisense oligonucleotides to selectively restore protein levels. Its lead investigational medicine, zorevunersen, is in clinical development for Dravet syndrome. The company focuses on diseases involving protein insufficiency, particularly in the central nervous system and eye.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.750Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1623526/000119312526108362/stok-20251231.htm"
+}

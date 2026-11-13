@@ -1,0 +1,14 @@
+{
+  "ticker": "OGE",
+  "companyName": "OGE Energy Corp.",
+  "profile": "OGE Energy is the parent company of Oklahoma Gas and Electric Company, a regulated electric utility. Through OG&E, it generates, transmits, distributes, and sells electricity to residential, commercial, and industrial customers in Oklahoma and western Arkansas. Its operations include power generation and grid infrastructure, alongside customer programs and services related to electricity use, account management, and service reliability.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.078Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1021635/000119312526055414/oge-20251231.htm",
+  "profileSources": [
+    "https://www.oge.com/en/web/portal/label_ord/who-we-are/what-we-do/overview",
+    "https://www.oge.com/documents/d/portal/oklahoma-customer-guide"
+  ]
+}

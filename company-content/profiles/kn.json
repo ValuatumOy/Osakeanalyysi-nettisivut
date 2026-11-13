@@ -1,0 +1,10 @@
+{
+  "ticker": "KN",
+  "companyName": "Knowles Corporation",
+  "profile": "Knowles designs and manufactures specialty electronic components, including high-performance capacitors, radio frequency filters, balanced armature speakers, and microphones. Its products serve applications in defense, industrial, medical technology, electrification, hearing health, and specialty audio. The company sells directly to original equipment manufacturers and through sales representatives and distributors worldwide, providing custom engineered components for demanding applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.930Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1587523/000158752326000005/kn-20251231.htm"
+}

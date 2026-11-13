@@ -1,0 +1,10 @@
+{
+  "ticker": "GLUE",
+  "companyName": "Monte Rosa Therapeutics, Inc.",
+  "profile": "Monte Rosa Therapeutics is a clinical-stage biotechnology company developing small-molecule molecular glue degraders designed to direct selected proteins for degradation. Its discovery platform combines artificial intelligence and machine learning with proprietary experimental tools to identify targets and develop drug candidates. Its clinical programs address immune-mediated, inflammatory, and cancer diseases; Novartis holds an exclusive license for its VAV1-directed program.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.757Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1826457/000119312526109360/glue-20251231.htm"
+}

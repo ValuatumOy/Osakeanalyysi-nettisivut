@@ -1,0 +1,13 @@
+{
+  "ticker": "KOSS",
+  "companyName": "Koss Corporation",
+  "profile": "Koss Corporation designs and sells stereo headphones and related personal listening accessories under the Koss name and private labels. Its products are sold through distributors, specialty and national retailers, grocery and electronics stores, online channels, and prisons. It also sells headphones to school systems and manufacturers for resale or incorporation into their products, serving music listening, communications, and education uses.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.634Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/56701/000005670126000034/koss-20260630x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/56701/000005670126000034/koss-20260630x10k.htm"
+  ]
+}

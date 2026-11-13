@@ -1,0 +1,13 @@
+{
+  "ticker": "INSG",
+  "companyName": "Inseego Corp.",
+  "profile": "Inseego designs and develops cloud-managed wireless wide area network and intelligent edge solutions. Its 5G portfolio includes mobile broadband and fixed wireless access devices, together with cloud services for network visibility, monitoring, automation, control, and orchestration. Carriers, enterprises, and small and medium businesses use its solutions for business broadband, enterprise networking, and software-defined wide area network failover management.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:15.239Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1022652/000102265226000005/insg-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1022652/000102265226000005/insg-20251231.htm"
+  ]
+}

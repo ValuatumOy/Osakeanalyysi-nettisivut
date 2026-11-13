@@ -1,0 +1,13 @@
+{
+  "ticker": "GRWG",
+  "companyName": "GrowGeneration Corp.",
+  "profile": "GrowGeneration operates cultivation and gardening and storage solutions businesses. It develops, markets, retails and distributes hydroponic and organic gardening products, including nutrients, growing media, lighting and environmental control systems, through retail, commercial sales, wholesale and online channels. Its Mobile Media business provides customized storage solutions to agriculture, retail, warehousing, office, food service, hospitality and other markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:52:19.590Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1604868/000160486826000004/grwg-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1604868/000160486826000004/grwg-20251231.htm"
+  ]
+}

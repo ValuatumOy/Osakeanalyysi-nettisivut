@@ -1,0 +1,10 @@
+{
+  "ticker": "PII",
+  "companyName": "Polaris Inc.",
+  "profile": "Polaris designs, manufactures, and markets powersports vehicles, including off-road vehicles, snowmobiles, moto-roadsters, quadricycles, and boats. Its off-road range includes all-terrain vehicles and side-by-side vehicles for recreation and utility use. The company also designs, manufactures, or sources parts, garments, and accessories, including aftermarket products. It sells online and through independent dealers and distributors serving customers in North America and international markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/931015/000162828026008033/pii-20251231.htm"
+}

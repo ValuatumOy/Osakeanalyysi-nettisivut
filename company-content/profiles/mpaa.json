@@ -1,0 +1,13 @@
+{
+  "ticker": "MPAA",
+  "companyName": "Motorcar Parts of America, Inc.",
+  "profile": "Motorcar Parts of America supplies automotive aftermarket replacement parts, test solutions and diagnostic equipment. Products include light-duty and heavy-duty rotating electrical parts, brake-related products, and equipment for testing automotive systems. It distributes replacement parts to do-it-yourself consumers and professional installers through retail chains, online resellers, warehouse distributors, dealer networks and commercial retail divisions. It also provides test equipment and services to automakers and automotive suppliers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.871Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/918251/000114036126024463/ef20070436_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/918251/000114036126024463/ef20070436_10k.htm"
+  ]
+}

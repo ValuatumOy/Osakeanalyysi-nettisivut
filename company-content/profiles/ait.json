@@ -1,0 +1,10 @@
+{
+  "ticker": "AIT",
+  "companyName": "Applied Industrial Technologies, Inc.",
+  "profile": "Applied Industrial Technologies distributes industrial products and provides technical solutions in motion, fluid power, flow control, and automation. Its offerings include bearings, power transmission products, fluid power components and systems, specialty flow control, factory automation solutions, and maintenance supplies, along with repair and application support. Customers use its products for maintenance, repair, operations, equipment manufacturing, and new system installations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.091Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/109563/000010956326000033/ait-20260630.htm"
+}

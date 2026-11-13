@@ -1,0 +1,13 @@
+{
+  "ticker": "CAMP",
+  "companyName": "CAMP4 Therapeutics Corporation",
+  "profile": "CAMP4 Therapeutics develops RNA-targeting therapeutics intended to increase gene expression and restore protein levels in genetic diseases. Its lead candidate, CMP-002, is an antisense oligonucleotide designed to increase SYNGAP1 expression and is in preclinical development for SYNGAP1-related disorder. The company uses its RAP Platform to identify regulatory RNAs and generate candidates, focusing on central nervous system diseases and additional discovery programs.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:19.005Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1736730/000173673026000016/camp-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1736730/000173673026000016/camp-20251231.htm"
+  ]
+}

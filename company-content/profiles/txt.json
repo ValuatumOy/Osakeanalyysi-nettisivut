@@ -1,0 +1,10 @@
+{
+  "ticker": "TXT",
+  "companyName": "Textron Inc.",
+  "profile": "Textron is a multi-industry company with aircraft, defense, industrial, and finance businesses. Textron Aviation manufactures, sells, and services Cessna and Beechcraft aircraft and supports Hawker business jets, while Bell supplies military and commercial helicopters, tiltrotor aircraft, parts, and services. Across its segments, Textron serves corporate and individual buyers, operators, training schools, airlines, governments, and military customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:20.270Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/217346/000021734626000006/txt-20260103.htm"
+}

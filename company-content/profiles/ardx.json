@@ -1,0 +1,10 @@
+{
+  "ticker": "ARDX",
+  "companyName": "Ardelyx, Inc.",
+  "profile": "Ardelyx develops and commercializes medicines for unmet medical needs. It markets IBSRELA, an oral tenapanor therapy approved in the United States for adults with irritable bowel syndrome with constipation, and XPHOZAH, approved to reduce serum phosphorus in adults with chronic kidney disease on dialysis. The company also develops a next-generation NHE3 inhibitor.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.411Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1437402/000143740226000013/ardx-20251231.htm"
+}

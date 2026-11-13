@@ -1,0 +1,10 @@
+{
+  "ticker": "ZBIO",
+  "companyName": "Zenas BioPharma, Inc.",
+  "profile": "Zenas BioPharma is a clinical-stage biopharmaceutical company developing immunology-based therapies for autoimmune diseases. Its lead candidate, obexelimab, is a monoclonal antibody designed to inhibit B-cell activity. The company is evaluating obexelimab in clinical trials for IgG4-related disease, relapsing multiple sclerosis, and systemic lupus erythematosus, serving patients with these conditions through potential therapeutic treatments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.001Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1953926/000110465926027964/zbio-20251231x10k.htm"
+}

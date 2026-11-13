@@ -1,0 +1,10 @@
+{
+  "ticker": "COTY",
+  "companyName": "Coty Inc.",
+  "profile": "Coty is a beauty company with brands across fragrance, color cosmetics, and skin and body care. Its portfolio includes owned and licensed brands in Prestige and Consumer Beauty, with products marketed through channels including retail stores, e-commerce, and travel retail. Coty promotes brands through traditional and digital media, social platforms, in-store displays, collaborations, product placements, events, and relationships with celebrities and influencers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.003Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1024305/000102430526000048/coty-20260630.htm"
+}

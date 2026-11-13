@@ -1,0 +1,10 @@
+{
+  "ticker": "MKSI",
+  "companyName": "MKS Inc.",
+  "profile": "MKS provides technology solutions for semiconductor manufacturing, electronics and packaging, and specialty industrial applications. Its products include instruments, subsystems, systems, process-control solutions, and specialty chemicals. Services include design and development, system integration, training, calibration, maintenance, and repair. Customers include semiconductor manufacturers and companies using laser-based guidance and control for manufacturing, including printed circuit board and package substrate production.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.460Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1049502/000119312526066820/mksi-20251231.htm"
+}

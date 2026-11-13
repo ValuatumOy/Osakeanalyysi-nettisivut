@@ -1,0 +1,13 @@
+{
+  "ticker": "TGEN",
+  "companyName": "Tecogen Inc.",
+  "profile": "Tecogen manufactures commercial and industrial natural gas engine systems for combined heat and power, cooling, and refrigeration. Its products can provide electric or mechanical power while recovering engine heat for use at customer facilities. The company also provides operations and maintenance services for its equipment and installs, owns, and operates distributed energy systems, selling electricity, heat, hot water, and cooling under long-term agreements.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.091Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1537435/000153743526000013/tgen-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1537435/000153743526000013/tgen-20251231.htm"
+  ]
+}

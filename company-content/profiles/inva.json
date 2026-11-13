@@ -1,0 +1,10 @@
+{
+  "ticker": "INVA",
+  "companyName": "Innoviva, Inc.",
+  "profile": "Innoviva is a biopharmaceutical company with respiratory royalty interests, a critical care and infectious disease business, and other healthcare investments. It receives royalties from GSK on RELVAR/BREO ELLIPTA and ANORO ELLIPTA. Its marketed hospital-focused products include treatments for shock, bacterial pneumonia, complicated intra-abdominal infections, bloodstream and skin infections, and gonorrhea. It also holds a stake in Armata Pharmaceuticals.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.262Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1080014/000119312526071776/inva-20251231.htm"
+}

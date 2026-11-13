@@ -1,0 +1,10 @@
+{
+  "ticker": "UCTT",
+  "companyName": "Ultra Clean Holdings, Inc.",
+  "profile": "Ultra Clean Holdings develops and supplies subsystems, components, parts, and ultra-high-purity cleaning and analytical services, primarily for semiconductor companies and equipment markets. Its products include chemical, gas, and fluid delivery systems, frame assemblies, precision robotics, process modules, and other assemblies. Services include parts cleaning, recoating, surface encapsulation, and micro-contamination analysis for semiconductor device makers and wafer fabrication equipment markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:26.075Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1275014/000162828026010744/uctt-20251226.htm"
+}

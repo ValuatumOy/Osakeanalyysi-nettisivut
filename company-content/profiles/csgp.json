@@ -1,0 +1,10 @@
+{
+  "ticker": "CSGP",
+  "companyName": "CoStar Group, Inc.",
+  "profile": "CoStar Group operates online marketplaces and provides information, analytics, marketing services, and 3D digital twin technology for property markets. Its services cover commercial and residential properties, rentals, land, and businesses for sale, as well as commercial real estate auctions. The company supplies property data, listings, research, risk management tools, and analytical capabilities to real estate professionals, consumers, and related business communities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.962Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000020/csgp-20251231.htm"
+}

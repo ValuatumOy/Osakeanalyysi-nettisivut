@@ -1,0 +1,10 @@
+{
+  "ticker": "ES",
+  "companyName": "Eversource Energy",
+  "profile": "Eversource Energy is a public utility holding company engaged primarily in energy delivery through regulated electric, natural gas, and water utility subsidiaries. Its electric utilities distribute electricity and provide transmission service to residential, commercial, and industrial customers in Connecticut, Massachusetts, and New Hampshire. Its gas utilities serve customers in Massachusetts and Connecticut, while its water subsidiaries serve residential, commercial, industrial, municipal, and fire protection customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:29.452Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/72741/000162828026008461/es-20251231.htm"
+}

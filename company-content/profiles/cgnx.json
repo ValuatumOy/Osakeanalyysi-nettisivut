@@ -1,0 +1,10 @@
+{
+  "ticker": "CGNX",
+  "companyName": "Cognex Corporation",
+  "profile": "Cognex develops industrial machine vision systems that combine hardware and software to capture and analyze visual information. Its products help automate manufacturing and distribution tasks, including locating, identifying, inspecting and measuring discrete items. Customers include manufacturers and logistics providers across industries such as logistics, packaging, consumer electronics, automotive and semiconductors, as well as e-commerce and parcel companies using vision and barcode-reading systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.393Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/851205/000085120526000012/cgnx-20251231.htm"
+}

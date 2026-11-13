@@ -1,0 +1,10 @@
+{
+  "ticker": "FUN",
+  "companyName": "Six Flags Entertainment Corporation",
+  "profile": "Six Flags Entertainment operates amusement parks, water parks and resort properties in North America. Its family-oriented parks offer rides, recreational facilities and live entertainment to visitors of all ages. The company earns revenue from park admissions, food, merchandise and games, accommodations, and other extra-charge products. Families and young people are among the demographic groups important to its business.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.286Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1999001/000199900126000048/fun-20251231.htm"
+}

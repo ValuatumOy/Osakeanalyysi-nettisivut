@@ -1,0 +1,10 @@
+{
+  "ticker": "FLR",
+  "companyName": "Fluor Corporation",
+  "profile": "Fluor provides engineering, procurement and construction (EPC) and project management services through subsidiaries and joint ventures. Its professional and technical solutions serve clients in life sciences, advanced technologies and manufacturing, data centers, mining and metals, power, infrastructure, chemicals, liquefied natural gas, and oil and gas production and fuels. Fluor also provides services to the U.S. federal government and other governments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.393Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1124198/000112419826000007/flr-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "MITQ",
+  "companyName": "Moving iMage Technologies, Inc.",
+  "profile": "Moving iMage Technologies provides technology, products, and services to movie theater operators and sports and entertainment venues. It designs, manufactures, and distributes proprietary cinema products, peripherals, and loudspeaker systems, and resells third-party equipment such as screens, projectors, and servers. Its services include project management, design, integration, procurement, installation, and upgrades for cinemas, screening rooms, post-production facilities, universities, museums, and other venues.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:41.950Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1770236/000143774926031299/mitq20260630_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1770236/000143774926031299/mitq20260630_10k.htm"
+  ]
+}

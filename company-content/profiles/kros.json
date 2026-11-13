@@ -1,0 +1,10 @@
+{
+  "ticker": "KROS",
+  "companyName": "Keros Therapeutics, Inc.",
+  "profile": "Keros Therapeutics is a clinical-stage biopharmaceutical company developing protein therapeutics for disorders linked to dysfunctional TGF-beta signaling. Its lead candidate, rinvatercept, is being developed for neuromuscular diseases, including Duchenne muscular dystrophy and amyotrophic lateral sclerosis. Elritercept is being developed for cytopenias, including anemia and thrombocytopenia, in patients with myelodysplastic syndromes and myelofibrosis, under a worldwide license to Takeda outside mainland China, Hong Kong, and Macau.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.416Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1664710/000166471026000018/kros-20251231.htm"
+}

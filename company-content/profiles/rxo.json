@@ -1,0 +1,10 @@
+{
+  "ticker": "RXO",
+  "companyName": "RXO, Inc.",
+  "profile": "RXO operates an asset-light transportation brokerage platform serving shippers. Its truck brokerage matches freight with independent carriers using digital technology, while managed transportation offers load planning, procurement, monitoring, analytics and control tower services. It also provides expedited freight, freight forwarding, customs brokerage and middle-mile services. Its last-mile delivery service serves omnichannel and e-commerce retailers and direct-to-consumer manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.958Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1929561/000192956126000013/rxo-20251231.htm"
+}

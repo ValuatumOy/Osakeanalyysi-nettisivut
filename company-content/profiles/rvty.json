@@ -1,0 +1,10 @@
+{
+  "ticker": "RVTY",
+  "companyName": "Revvity, Inc.",
+  "profile": "Revvity provides health science products, technologies, expertise, and services spanning research, development, diagnosis, and healthcare. Its Life Sciences segment offers products, software, and services for cell, gene, and protein research and drug discovery and development workflows. Customers include pharmaceutical and biotechnology companies, contract research organizations, and academic and government institutions. The company also operates a Diagnostics segment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.460Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/31791/000003179126000012/revv-20251228.htm"
+}

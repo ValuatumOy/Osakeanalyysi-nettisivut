@@ -1,0 +1,10 @@
+{
+  "ticker": "FTNT",
+  "companyName": "Fortinet, Inc.",
+  "profile": "Fortinet provides cybersecurity and networking products through its Security Fabric platform, which includes secure networking, unified Secure Access Service Edge, and security operations solutions. Its offerings include operating systems, security processing hardware, cloud software, AI security tools, endpoint protection, and operational technology security. Customers include enterprises in financial services, retail, healthcare, and operational technology, as well as communications and security service providers and government organizations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:38.896Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1262039/000126203926000007/ftnt-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "NSIT",
+  "companyName": "Insight Enterprises, Inc.",
+  "profile": "Insight Enterprises is a technology solutions integrator serving clients in North America, Europe, the Middle East, Africa, and Asia-Pacific. It combines hardware, software, and services, including cloud solutions, to address clients’ technology needs. Offerings vary by geography: some markets include hardware and a broader range of services, while others focus largely on software, related services, and cloud solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.075Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/932696/000093269626000007/nsit-20251231.htm"
+}

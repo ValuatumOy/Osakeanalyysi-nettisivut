@@ -1,0 +1,10 @@
+{
+  "ticker": "PUMP",
+  "companyName": "ProPetro Holding Corp.",
+  "profile": "ProPetro provides energy services to upstream oil and gas exploration and production companies, primarily in the Permian Basin. Its services include hydraulic fracturing, wireline, cementing, and wet sand solutions for well completions. Through its PROPWR subsidiary, it also provides turnkey mobile power generation for oil and gas producers, industrial projects, and data centers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1680247/000168024726000028/pump-20251231.htm"
+}

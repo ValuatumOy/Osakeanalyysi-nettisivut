@@ -1,0 +1,13 @@
+{
+  "ticker": "BMRN",
+  "companyName": "BioMarin Pharmaceutical Inc.",
+  "profile": "BioMarin develops and commercializes medicines for rare and genetically defined diseases. Its portfolio includes approved therapies and research programs spanning clinical and preclinical development. The company uses genetic and enzyme technologies in drug discovery and works to bring treatments to patients through its commercial operations and healthcare providers in multiple countries.",
+  "provider": "editorial",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:11:01.341Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1048477/000104847726000004/bmrn-20251231.htm",
+  "profileSources": [
+    "https://www.biomarin.com/company/"
+  ]
+}

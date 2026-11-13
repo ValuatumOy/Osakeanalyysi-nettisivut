@@ -1,0 +1,10 @@
+{
+  "ticker": "ISRG",
+  "companyName": "Intuitive Surgical, Inc.",
+  "profile": "Intuitive Surgical develops robotic-assisted systems, instruments, accessories, digital tools, customer learning, and support services for minimally invasive care. Its da Vinci platforms support a range of surgical procedures, while the Ion system enables minimally invasive lung biopsies. The company’s products and services serve clinicians and care teams, and are used in healthcare settings involving patients, hospitals, healthcare systems, and payers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:36.602Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1035267/000103526726000010/isrg-20251231.htm"
+}

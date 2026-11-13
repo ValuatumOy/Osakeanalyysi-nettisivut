@@ -1,0 +1,13 @@
+{
+  "ticker": "CVR",
+  "companyName": "Chicago Rivet & Machine Co.",
+  "profile": "Chicago Rivet & Machine manufactures and sells rivets, cold-formed fasteners, components, and screw-machine products through its Fastener segment. Its Assembly Equipment segment makes automatic rivet-setting machines and related parts, components, and tools. The company’s products are sold mainly into the North American automotive industry, with revenues primarily derived from customers involved in automobile and automotive-component manufacturing.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.548Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/19871/000001987126000004/cvr-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/19871/000001987126000004/cvr-20251231.htm"
+  ]
+}

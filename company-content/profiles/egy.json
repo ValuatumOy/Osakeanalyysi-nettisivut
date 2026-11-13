@@ -1,0 +1,10 @@
+{
+  "ticker": "EGY",
+  "companyName": "VAALCO Energy, Inc.",
+  "profile": "VAALCO Energy is an independent energy company engaged in acquiring, exploring, developing and producing crude oil, natural gas and natural gas liquids. Its portfolio includes production, development and exploration assets in Gabon, Egypt, Côte d’Ivoire, Equatorial Guinea and Nigeria. The company’s operations serve energy markets through the extraction and sale of these hydrocarbon products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.108Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/894627/000089462726000013/egy-20251231.htm"
+}

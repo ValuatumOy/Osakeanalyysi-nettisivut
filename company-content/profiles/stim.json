@@ -1,0 +1,13 @@
+{
+  "ticker": "STIM",
+  "companyName": "Neuronetics, Inc.",
+  "profile": "Neuronetics provides the NeuroStar Advanced Therapy System, an office-based, non-invasive treatment that uses transcranial magnetic stimulation to stimulate brain areas associated with mood. The system is cleared for specified adult and adolescent patients with major depressive disorder, as well as adults with obsessive-compulsive disorder and certain anxiety symptoms. Through its Greenbrook subsidiary, the company also operates mental healthcare treatment centers offering NeuroStar therapy and SPRAVATO.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:16.747Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1227636/000110465926029004/stim-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1227636/000110465926029004/stim-20251231x10k.htm"
+  ]
+}

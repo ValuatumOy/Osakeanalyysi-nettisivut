@@ -1,0 +1,13 @@
+{
+  "ticker": "DIT",
+  "companyName": "AMCON Distributing Company",
+  "profile": "AMCON Distributing operates wholesale distribution and retail health food businesses. Its wholesale segment distributes consumer products to convenience stores, grocery stores, liquor stores, drug stores, and tobacco shops, and provides merchandising, category management, marketing, and information services. Its retail segment operates health food stores selling natural and organic groceries, nutritional supplements, personal care items, and general merchandise.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.211Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/928465/000110465926124512/dit-20260930x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/928465/000110465926124512/dit-20260930x10k.htm"
+  ]
+}

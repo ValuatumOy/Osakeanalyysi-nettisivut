@@ -1,0 +1,14 @@
+{
+  "ticker": "ROG",
+  "companyName": "Rogers Corporation",
+  "profile": "Rogers Corporation designs and manufactures specialty materials and components for applications where electrical, thermal, or mechanical performance matters. Its products include engineered materials for electronics, wireless infrastructure, data centers, vehicles, aerospace, defense, renewable energy, and industrial uses, as well as cushioning, sealing, and impact protection solutions. Customers include manufacturers and technology companies that incorporate these materials into equipment and finished products.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/84748/000008474826000007/rog-20251231.htm",
+  "profileSources": [
+    "https://www.rogerscorp.com/about-us",
+    "https://www.rogerscorp.com/"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AXON",
+  "companyName": "Axon Enterprise, Inc.",
+  "profile": "Axon provides integrated hardware, software, and services to public and private sector customers. Its connected devices include TASER conducted energy devices, cameras, sensors, drones, and robotics. Its cloud-based software supports the capture, storage, management, sharing, and analysis of video and digital evidence, as well as records, productivity, and real-time operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:53.332Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1069183/000162828026011360/axon-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ATI",
+  "companyName": "ATI Inc.",
+  "profile": "ATI produces specialty materials, components, and advanced metallic powder alloys using materials science and advanced process technologies. Its products include nickel-based alloys and superalloys, titanium alloys, and specialty alloys supplied in forms such as plate, sheet, and strip. Customers use these materials in commercial and military jet engines, airframes, defense applications, specialty and conventional energy, medical, electronics, and other industrial markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.819Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1018963/000162828026010140/ati-20251228.htm"
+}

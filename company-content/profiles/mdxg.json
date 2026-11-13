@@ -1,0 +1,10 @@
+{
+  "ticker": "MDXG",
+  "companyName": "MiMedx Group, Inc.",
+  "profile": "MiMedx Group provides products for wound care, burn treatment, and surgical applications. Its portfolio includes human placental allografts, an animal-derived collagen matrix, and distributed wound-care products such as platelet-rich plasma gel, bioglass and collagen dressings, and peptide matrix. Clinicians use its products to help treat chronic and hard-to-heal wounds and support healing in surgical specialties.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1376339/000137633926000011/mdxg-20251231.htm"
+}

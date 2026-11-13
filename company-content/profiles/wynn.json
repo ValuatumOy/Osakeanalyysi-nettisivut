@@ -1,0 +1,10 @@
+{
+  "ticker": "WYNN",
+  "companyName": "Wynn Resorts, Limited",
+  "profile": "Wynn Resorts designs, develops and operates integrated resorts featuring luxury hotels, retail, dining, entertainment, meeting and convention facilities, and gaming. Its resorts serve premium guests, including domestic and international travelers, as well as visitors seeking hospitality, leisure, business events and gaming. The company operates properties in Macau, Las Vegas and Massachusetts, and holds an interest in a resort development in the United Arab Emirates.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:41.057Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1174922/000117492226000013/wynn-20251231.htm"
+}

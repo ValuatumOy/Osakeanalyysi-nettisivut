@@ -1,0 +1,10 @@
+{
+  "ticker": "FOXF",
+  "companyName": "Fox Factory Holding Corp.",
+  "profile": "Fox Factory designs, engineers, manufactures and markets performance products and systems for bicycles, powered vehicles and specialty applications, as well as premium baseball and softball gear. Its products serve original equipment manufacturers and consumers. The company sells through vehicle and bicycle manufacturers, a global network of dealers and distributors, and direct-to-consumer channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.592Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1424929/000142492926000012/foxf-20260102.htm"
+}

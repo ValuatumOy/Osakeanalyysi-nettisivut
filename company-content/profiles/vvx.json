@@ -1,0 +1,10 @@
+{
+  "ticker": "VVX",
+  "companyName": "V2X, Inc.",
+  "profile": "V2X provides technology and service capabilities to national security, defense, civilian, and international customers. Its offerings include military and commercial training, simulation systems, integrated supply chain and logistics management, network installation and support, information assurance, and sensor systems for border security and critical infrastructure. It also supports mission logistics, infrastructure sustainment, and contingency operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.359Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1601548/000160154826000015/vec-20251231.htm"
+}

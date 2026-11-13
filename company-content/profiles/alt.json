@@ -1,0 +1,14 @@
+{
+  "ticker": "ALT",
+  "companyName": "Altimmune, Inc.",
+  "profile": "Altimmune is a clinical-stage biopharmaceutical company developing pemvidutide, an investigational balanced glucagon/GLP-1 dual-receptor agonist. The candidate is being studied for metabolic dysfunction-associated steatohepatitis (MASH), alcohol use disorder and alcohol-associated liver disease. Its pipeline includes a global Phase 3 MASH trial, results from a completed Phase 2 alcohol-use-disorder study, and an ongoing Phase 2 study in alcohol-associated liver disease.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.775Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1326190/000132619026000018/alt-20251231x10k.htm",
+  "profileSources": [
+    "https://ir.altimmune.com/news-releases/news-release-details/altimmune-announces-third-quarter-2026-financial-results-and",
+    "https://www.sec.gov/Archives/edgar/data/1326190/000132619026000070/alt-20260930x10q.htm"
+  ]
+}

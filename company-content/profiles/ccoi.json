@@ -1,0 +1,10 @@
+{
+  "ticker": "CCOI",
+  "companyName": "Cogent Communications Holdings, Inc.",
+  "profile": "Cogent Communications provides high-speed internet access, private network services, optical wavelength and transport services, and data center colocation space and power. Its customers include businesses, internet and communications providers, content delivery networks, media services, web hosts, and software providers. It serves customers through its network and data centers, with off-network connections using third-party carriers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.359Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1158324/000110465926017968/ccoi-20251231x10k.htm"
+}

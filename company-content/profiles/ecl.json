@@ -1,0 +1,10 @@
+{
+  "ticker": "ECL",
+  "companyName": "Ecolab Inc.",
+  "profile": "Ecolab provides water, hygiene, and infection prevention products and services to customers across industries including food and beverage, healthcare, manufacturing, hospitality, and life sciences. Its solutions include water treatment, process applications, and cleaning and sanitizing programs for industrial and institutional markets. The company serves customers internationally through several operating segments, including Global Water, Global Institutional & Specialty, Global Pest Elimination, and Global Life Sciences.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.876Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/31462/000110465926018357/ecl-20251231x10k.htm"
+}

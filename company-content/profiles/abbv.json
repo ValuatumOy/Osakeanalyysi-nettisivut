@@ -1,0 +1,10 @@
+{
+  "ticker": "ABBV",
+  "companyName": "AbbVie Inc.",
+  "profile": "AbbVie is a research-based biopharmaceutical company that discovers, develops, manufactures, markets, and sells medicines and therapies. Its portfolio spans immunology, neuroscience, oncology, and aesthetics, with products addressing autoimmune and other serious diseases. Examples include Skyrizi, a biologic therapy for several autoimmune conditions, and Rinvoq, an oral medicine for inflammatory diseases. The company organizes commercial activities by region or therapeutic area.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:22:00.556Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1551152/000155115226000008/abbv-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "PRME",
+  "companyName": "Prime Medicine, Inc.",
+  "profile": "Prime Medicine develops genetic medicines using Prime Editing, a gene-editing technology designed to make targeted changes to genomic DNA. Its pipeline includes in vivo programs for liver diseases and cystic fibrosis, and partnered ex vivo programs, including work with Bristol Myers Squibb. The company also develops delivery and editing platforms to support therapeutic candidates for genetic diseases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1894562/000162828026013569/prme-20251231.htm"
+}

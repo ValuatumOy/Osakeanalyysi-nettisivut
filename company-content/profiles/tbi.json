@@ -1,0 +1,13 @@
+{
+  "ticker": "TBI",
+  "companyName": "TrueBlue, Inc.",
+  "profile": "TrueBlue, Inc. provides workforce solutions that connect employers with talent. Its PeopleReady segment supplies on-demand general and skilled temporary workers, while PeopleManagement recruits and manages contingent staff at client facilities and provides commercial drivers. PeopleSolutions offers recruitment process outsourcing, managed service provider programs, talent advisory, and workforce compliance services. Its clients span industries and use the services to meet hiring and staffing needs.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.327Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/768899/000076889926000009/tbi-20251228.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/768899/000076889926000009/tbi-20251228.htm"
+  ]
+}

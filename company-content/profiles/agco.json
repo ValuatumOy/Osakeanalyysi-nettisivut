@@ -1,0 +1,10 @@
+{
+  "ticker": "AGCO",
+  "companyName": "AGCO Corporation",
+  "profile": "AGCO Corporation makes and distributes agricultural machinery, precision agriculture technologies, and replacement parts. Its products include tractors, combines, hay and forage equipment, planters, implements, application equipment, and mixed-fleet precision farming solutions. The company sells through independent dealers and distributors in many countries and provides retail and wholesale financing through joint ventures. Its customers include farms and agricultural businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/880266/000088026626000010/agco-20251231.htm"
+}

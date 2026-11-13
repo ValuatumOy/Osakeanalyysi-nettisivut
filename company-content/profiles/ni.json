@@ -1,0 +1,10 @@
+{
+  "ticker": "NI",
+  "companyName": "NiSource Inc.",
+  "profile": "NiSource is an energy holding company whose principal subsidiaries are regulated natural gas and electric utilities serving residential, commercial and industrial customers in six states. Columbia Operations distributes natural gas in Ohio, Pennsylvania, Virginia, Kentucky and Maryland, while NIPSCO operates gas and electric utility services. The company also develops generation resources for serving data center customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:51.279Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1111711/000111171126000027/nix-20251231.htm"
+}

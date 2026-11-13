@@ -1,0 +1,10 @@
+{
+  "ticker": "TPC",
+  "companyName": "Tutor Perini Corporation",
+  "profile": "Tutor Perini provides general contracting, construction management, pre-construction planning, project management, and design-build services to private customers and public agencies. Its work includes civil infrastructure such as highways, bridges, tunnels, transit systems, and water facilities, as well as buildings. The company also self-performs trades including excavation, concrete, steel, electrical, mechanical, plumbing, heating, ventilation, and fire protection.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.530Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/77543/000007754326000028/tpc-20251231.htm"
+}

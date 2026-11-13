@@ -1,0 +1,13 @@
+{
+  "ticker": "TMDE",
+  "companyName": "TMD Energy Limited",
+  "profile": "TMD Energy Limited provides marine fuel bunkering, ship management and vessel chartering services. It supplies marine gas oil and marine fuel oil, including high sulfur, low sulfur and very low sulfur fuel oil, to ships and vessels at sea. Its bunkering operations use a fleet of vessels at ports in Malaysia, while ship management services serve customers in Singapore and Malaysia.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.566Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2009714/000149315226049262/form20-f.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/2009714/000149315226049262/form20-f.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "ALEC",
+  "companyName": "Alector, Inc.",
+  "profile": "Alector is a clinical-stage biotechnology company developing therapies for neurodegenerative diseases. Its programs include an investigational antibody designed to elevate progranulin levels and preclinical candidates targeting Alzheimer’s disease, Parkinson’s disease, and Lewy body dementia. The company is also developing a blood-brain barrier delivery platform intended to support delivery of antibodies, enzymes, proteins, and siRNA to the brain.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:15.237Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1653087/000119312526071593/alec-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1653087/000119312526071593/alec-20251231.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AAOI",
+  "companyName": "Applied Optoelectronics, Inc.",
+  "profile": "Applied Optoelectronics designs and manufactures fiber-optic networking products for data centers, cable television, telecommunications, and fiber-to-the-home networks. Its offerings range from lasers and optical components to transceivers, subassemblies, and complete equipment. Customers include hyperscale data center operators, equipment suppliers, cable service providers, and telecommunications companies that deploy or supply fiber-optic networks.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.721Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1158114/000143774926005875/aaoi20251231_10k.htm"
+}

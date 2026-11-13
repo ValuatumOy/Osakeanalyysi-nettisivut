@@ -1,0 +1,13 @@
+{
+  "ticker": "FATN",
+  "companyName": "FatPipe, Inc. Common Stock",
+  "profile": "FatPipe develops subscription software for enterprise networking, cybersecurity, and network monitoring across cloud, hybrid cloud, and on-premise environments. Its offerings include SD-WAN and SASE traffic management, cybersecurity capabilities, and centralized monitoring tools, as well as security testing and managed web application firewall services. The company serves enterprises, communications and security service providers, government organizations, and middle-market companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:41.631Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1993400/000149315226024184/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1993400/000149315226024184/form10-k.htm"
+  ]
+}

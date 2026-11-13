@@ -1,0 +1,10 @@
+{
+  "ticker": "ICFI",
+  "companyName": "ICF International, Inc.",
+  "profile": "ICF International provides professional services and technology-based solutions to government and commercial clients. Its work includes management, technology and policy consulting, implementation, analytics, digital services and communications. Clients include U.S. federal, state and local agencies, international governments, and commercial organizations. The company supports work in energy, environment, infrastructure, disaster recovery, health, social programs, security and other markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.287Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1362004/000119312526082536/icfi-20251231.htm"
+}

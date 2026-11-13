@@ -1,0 +1,10 @@
+{
+  "ticker": "BTSG",
+  "companyName": "BrightSpring Health Services, Inc. Common Stock",
+  "profile": "BrightSpring Health Services provides pharmacy and provider services to complex Senior and Specialty patients, including behavioral populations, mainly in home and community settings. Pharmacy offerings include medication management and infusion and specialty pharmacy services. Provider services include home health, hospice, rehabilitation therapy, supportive care, and home-based primary care. Its patients are served through Medicare, Medicaid, and commercially insured populations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.841Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1865782/000119312526079454/btsg-20251231.htm"
+}

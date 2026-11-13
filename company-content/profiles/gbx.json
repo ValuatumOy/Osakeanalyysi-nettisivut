@@ -1,0 +1,10 @@
+{
+  "ticker": "GBX",
+  "companyName": "The Greenbrier Companies, Inc.",
+  "profile": "The Greenbrier Companies designs, builds, and markets freight railcars in North America, Europe, and Brazil. Its products include freight, tank, intermodal, and automotive railcars, as well as components. The company also provides wheel services, maintenance, railcar conversions, leasing, fleet management, and regulatory compliance services to railroads and other railcar owners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.229Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/923120/000119312526431954/gbx-20260831.htm"
+}

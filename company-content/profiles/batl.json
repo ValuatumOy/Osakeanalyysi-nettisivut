@@ -1,0 +1,13 @@
+{
+  "ticker": "BATL",
+  "companyName": "Battalion Oil Corporation",
+  "profile": "Battalion Oil Corporation is an independent energy company focused on acquiring, producing, exploring and developing onshore oil and natural gas assets in the United States. Its properties and drilling activities are concentrated in the Delaware Basin of Texas, where it operates wells targeting the Wolfcamp and Bone Spring formations. The company produces oil, natural gas and natural gas liquids.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.561Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1282648/000110465926033373/batl-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1282648/000110465926033373/batl-20251231x10k.htm"
+  ]
+}

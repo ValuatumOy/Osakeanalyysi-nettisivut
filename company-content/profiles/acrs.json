@@ -1,0 +1,10 @@
+{
+  "ticker": "ACRS",
+  "companyName": "Aclaris Therapeutics, Inc.",
+  "profile": "Aclaris Therapeutics is a clinical-stage biopharmaceutical company discovering and developing small and large molecule product candidates for immuno-inflammatory diseases. Its programs include monoclonal and bispecific antibodies targeting inflammatory pathways and small molecule kinase inhibitors developed using its KINect platform. The company seeks third-party partners to further develop candidates, obtain marketing approval and commercialize products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.110Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1557746/000110465926020540/acrs-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "MGTX",
+  "companyName": "MeiraGTx Holdings plc",
+  "profile": "MeiraGTx develops genetic medicines for inherited and other diseases, using targeted local delivery of genetic medicine candidates. Its programs include clinical-stage treatments for radiation-induced dry mouth, Parkinson’s disease, and retinal dystrophy. The company also develops gene regulation technology and provides internal manufacturing capabilities for viral vectors, plasmids, and quality-control testing to support its programs and third-party supply obligations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.249Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1735438/000110465926036494/mgtx-20251231x10k.htm"
+}

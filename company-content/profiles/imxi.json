@@ -1,0 +1,10 @@
+{
+  "ticker": "IMXI",
+  "companyName": "International Money Express, Inc.",
+  "profile": "International Money Express provides money transfer services through physical locations and digital channels. Consumers can send funds from the United States, Canada, Spain, Italy and Germany to beneficiaries in Latin America, the Caribbean, Africa, Asia and Europe. Its channels include independent agents, company-operated stores, websites, partner websites and mobile applications. The company also offers online payment options, prepaid debit cards and payroll cards.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.994Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1683695/000162828026015647/imxi-20251231.htm"
+}

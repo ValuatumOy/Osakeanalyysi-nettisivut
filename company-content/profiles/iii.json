@@ -1,0 +1,13 @@
+{
+  "ticker": "III",
+  "companyName": "Information Services Group, Inc.",
+  "profile": "Information Services Group is a technology research and advisory firm serving private- and public-sector organizations. It provides technology strategy, sourcing and transformation advice, research, market intelligence, provider evaluations, and services related to cloud, analytics, networks, software, governance and risk. Its proprietary platforms support supplier management, operational benchmarking and sourcing decisions, while its Enterprise services help clients manage change and core operations.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:21.605Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1371489/000110465926024573/iii-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1371489/000110465926024573/iii-20251231x10k.htm"
+  ]
+}

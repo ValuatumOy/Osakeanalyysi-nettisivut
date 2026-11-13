@@ -1,0 +1,10 @@
+{
+  "ticker": "HELE",
+  "companyName": "Helen of Troy Limited",
+  "profile": "Helen of Troy sells consumer products through brands including OXO, Hydro Flask, Osprey, Vicks, Braun, Honeywell, PUR and Revlon. Its Home & Outdoor segment offers food preparation and storage, cooking, cleaning, organization, beverageware, coolers, backpacks and travel gear. Beauty & Wellness products include hair styling appliances, grooming tools, personal care, nail care, humidifiers, thermometers, purifiers, heaters and fans. Customers include retailers, distributors and direct consumers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:12.640Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/916789/000091678926000048/hele-20260228.htm"
+}

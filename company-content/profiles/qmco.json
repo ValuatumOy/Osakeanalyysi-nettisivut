@@ -1,0 +1,13 @@
+{
+  "ticker": "QMCO",
+  "companyName": "Quantum Corporation",
+  "profile": "Quantum Corporation provides data management products and services for unstructured data, including video, images, audio, and other large files. Its portfolio includes primary and secondary storage systems and software, backup appliances, tape storage, asset management software, tape drives, and media. It also offers support, deployment, consulting, education, and managed services to customers including enterprises and hyperscalers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.209Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/709283/000162828026045602/qtm-20260331.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/709283/000162828026045602/qtm-20260331.htm"
+  ]
+}

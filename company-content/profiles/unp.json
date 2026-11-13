@@ -1,0 +1,10 @@
+{
+  "ticker": "UNP",
+  "companyName": "Union Pacific Corporation",
+  "profile": "Union Pacific Railroad, the principal operating company of Union Pacific Corporation, is a U.S. freight railroad connecting 23 states across the western two-thirds of the country. Its network links West Coast and Gulf Coast ports with Midwest and Eastern gateways and connects with rail systems in Canada and Mexico. It transports bulk, industrial and premium freight for customers, coordinating schedules with other rail carriers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:17.718Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/100885/000010088526000037/unp-20251231.htm"
+}

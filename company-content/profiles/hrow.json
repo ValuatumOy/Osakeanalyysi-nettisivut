@@ -1,0 +1,10 @@
+{
+  "ticker": "HROW",
+  "companyName": "Harrow Health, Inc.",
+  "profile": "Harrow develops and supplies ophthalmic medications for eye care professionals and patients in the United States and Canada. Its portfolio includes branded prescription treatments for conditions such as dry eye, cataracts, glaucoma, allergic conjunctivitis, and retinal disease, as well as nonprescription lubricant eye drops. The company markets and sells products including eye drops, gels, suspensions, and injectable medicines.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.930Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1360214/000149315226008562/form10-k.htm"
+}

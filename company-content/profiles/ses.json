@@ -1,0 +1,10 @@
+{
+  "ticker": "SES",
+  "companyName": "SES AI Corporation",
+  "profile": "SES develops and manufactures rechargeable lithium-metal and lithium-ion battery technologies and materials for energy storage systems, drones, urban air mobility, robotics, electric vehicles, and other applications. It offers integrated energy storage hardware and software, battery health and safety management, battery cells, and access to its Molecular Universe AI platform. Its materials are supplied to customers through manufacturing partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.247Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819142/000181914226000010/ses-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "LIND",
+  "companyName": "Lindblad Expeditions Holdings, Inc.",
+  "profile": "Lindblad Expeditions provides marine expeditions and land based adventure travel to individuals and families. Its ship based trips visit remote regions and cultural destinations, while its brands also offer land based travel experiences. The company operates owned and chartered expedition vessels, and collaborates with National Geographic on expedition planning, branding, sales and guest experiences.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.145Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1512499/000143774926005873/lindb20251231c_10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "SOLV",
+  "companyName": "Solventum Corporation",
+  "profile": "Solventum develops, manufactures, and commercializes healthcare products, software, and services for hospitals, clinics, dental practices, and healthcare systems. Its MedSurg offerings include wound therapy and dressings, skin care, surgical supplies, medical tapes, and monitoring technologies. Dental Solutions include brackets, aligners, and restorative products. Health Information Systems provides documentation, coding, speech recognition, and data visualization software for healthcare administration.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:25.160Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1964738/000196473826000007/solv-20251231.htm"
+}

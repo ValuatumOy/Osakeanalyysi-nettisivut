@@ -1,0 +1,10 @@
+{
+  "ticker": "EOLS",
+  "companyName": "Evolus, Inc.",
+  "profile": "Evolus is a global aesthetics company serving licensed aesthetic practitioners in the cash-pay market. Its commercial products include Jeuveau, an injectable botulinum toxin type A for temporary improvement of moderate to severe frown lines in adults, and Evolysse injectable hyaluronic acid gels for wrinkles and folds. The company also describes Evolysse products for facial areas including the mid face, lips and eyes.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:55.221Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1570562/000162828026014001/eols-20251231.htm"
+}

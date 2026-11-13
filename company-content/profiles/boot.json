@@ -1,0 +1,10 @@
+{
+  "ticker": "BOOT",
+  "companyName": "Boot Barn Holdings, Inc.",
+  "profile": "Boot Barn operates specialty retail stores and an e-commerce platform selling western and work-related footwear, apparel and accessories. Its assortment includes western and work boots, denim, shirts, hats, belts, jewelry, safety-toe footwear and protective clothing. The company serves western and country enthusiasts, workers seeking durable apparel and footwear, and customers shopping for everyday lifestyle products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.975Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1610250/000110465926061346/boot-20260328x10k.htm"
+}

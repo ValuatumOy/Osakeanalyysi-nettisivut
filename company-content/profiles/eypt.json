@@ -1,0 +1,14 @@
+{
+  "ticker": "EYPT",
+  "companyName": "EyePoint Pharmaceuticals, Inc.",
+  "profile": "EyePoint is a clinical-stage biopharmaceutical company developing sustained-delivery treatments for serious retinal diseases. Its lead candidate, DURAVYU, combines vorolanib with bioerodible Durasert E technology and is being studied in Phase 3 trials for diabetic macular edema. After its wet age-related macular degeneration program failed to meet a primary endpoint, the company said it would wind down that program and prioritize DME development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.877Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1314102/000119312526093917/eypt-20251231.htm",
+  "profileSources": [
+    "https://investors.eyepoint.bio/news-releases/news-release-details/eyepoint-reports-third-quarter-2026-financial-results-and",
+    "https://eyepoint.bio/our-programs/"
+  ]
+}

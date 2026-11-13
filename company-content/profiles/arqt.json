@@ -1,0 +1,10 @@
+{
+  "ticker": "ARQT",
+  "companyName": "Arcutis Biotherapeutics, Inc.",
+  "profile": "Arcutis Biotherapeutics develops and commercializes treatments for dermatological diseases, focusing on immune-mediated skin conditions. Its portfolio includes topical ZORYVE products: creams approved for plaque psoriasis and atopic dermatitis, and foam approved for seborrheic dermatitis and plaque psoriasis. The company serves patients through commercial sales in the United States and Canada and has a promotion agreement for U.S. marketing to primary care providers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.407Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1787306/000178730626000018/arqt-20251231.htm"
+}

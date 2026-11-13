@@ -1,0 +1,10 @@
+{
+  "ticker": "ALK",
+  "companyName": "Alaska Air Group, Inc.",
+  "profile": "Alaska Air Group operates Alaska Airlines, Hawaiian Airlines, Horizon Air and aviation services provider McGee Air Services. Alaska and Hawaiian provide scheduled passenger and cargo transportation across North America, Latin America, Asia and the Pacific, with Hawaiian retained as a distinct brand. Horizon and a partner carrier operate regional passenger flights, with their capacity sold to Alaska.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.639Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/766421/000076642126000010/alk-20251231.htm"
+}

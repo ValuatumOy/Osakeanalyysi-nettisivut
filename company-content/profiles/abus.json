@@ -1,0 +1,10 @@
+{
+  "ticker": "ABUS",
+  "companyName": "Arbutus Biopharma Corporation",
+  "profile": "Arbutus Biopharma is a clinical-stage biopharmaceutical company focused on infectious disease. It is developing imdusiran, a subcutaneously delivered RNA interference therapeutic, and AB-101, an oral PD-L1 inhibitor, for chronic hepatitis B. The company also holds intellectual property related to lipid nanoparticle technology and pursues licensing and patent litigation activities concerning its use in mRNA vaccines.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1447028/000144702826000017/abus-20251231.htm"
+}

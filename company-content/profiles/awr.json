@@ -1,0 +1,10 @@
+{
+  "ticker": "AWR",
+  "companyName": "American States Water Company",
+  "profile": "American States Water Company provides regulated water and electric utility services and contracted water and wastewater services. Its subsidiary Golden State Water Company distributes water and provides wastewater collection and treatment in California, while Bear Valley Electric Service distributes electricity in California mountain communities. Through American States Utility Services and subsidiaries, it operates and maintains water and wastewater systems at U.S. military installations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.136Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1056903/000162828026009114/awr-20251231.htm"
+}

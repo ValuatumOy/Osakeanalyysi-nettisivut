@@ -1,0 +1,10 @@
+{
+  "ticker": "ORN",
+  "companyName": "Orion Group Holdings, Inc.",
+  "profile": "Orion Group Holdings is a specialty construction company serving marine and infrastructure markets. Its marine business provides engineering, construction, dredging, and specialty services to government agencies and private commercial and industrial clients. Projects include marine transportation facilities such as terminals, cruise ship berths, Navy facilities, marinas, and other port facilities. The company operates across the continental United States, Alaska, Hawaii, Canada, and the Caribbean Basin.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.416Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1402829/000140282926000011/orn-20251231x10k.htm"
+}

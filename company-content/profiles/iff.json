@@ -1,0 +1,10 @@
+{
+  "ticker": "IFF",
+  "companyName": "International Flavors & Fragrances Inc.",
+  "profile": "International Flavors & Fragrances develops and manufactures ingredients and solutions for food, beverage, health, biosciences, and scent applications. Its offerings include flavor compounds, food ingredients, enzymes, cultures, probiotics, specialty ingredients, fragrance compounds, and natural health ingredients. Customers include food and beverage manufacturers, personal care and household product makers, supplement producers, and businesses serving animal nutrition, food protection, and industrial applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.818Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/51253/000005125326000006/iff-20251231.htm"
+}

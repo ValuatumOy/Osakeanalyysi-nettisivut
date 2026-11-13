@@ -1,0 +1,10 @@
+{
+  "ticker": "ACLS",
+  "companyName": "Axcelis Technologies, Inc.",
+  "profile": "Axcelis Technologies designs, manufactures and services ion implantation and other processing equipment used to fabricate semiconductor chips. Its Purion family includes ion implanters, and the company sells equipment to semiconductor chip manufacturers worldwide. It also provides aftermarket products and services, including used tools, spare parts, equipment upgrades, maintenance and customer training.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1113232/000110465926020461/acls-20251231x10k.htm"
+}

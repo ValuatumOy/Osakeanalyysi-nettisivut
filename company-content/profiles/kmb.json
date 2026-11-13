@@ -1,0 +1,10 @@
+{
+  "ticker": "KMB",
+  "companyName": "Kimberly-Clark Corporation",
+  "profile": "Kimberly-Clark manufactures and markets products made from natural or synthetic fibers and materials, using technologies in fibers, nonwovens, and absorbency. Its brands serve daily needs in baby and child care, adult care, feminine care, family care, and professional products. The company sells these products to consumers and professional customers in countries and territories around the world.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:54.565Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/55785/000162828026007567/kmb-20251231.htm"
+}

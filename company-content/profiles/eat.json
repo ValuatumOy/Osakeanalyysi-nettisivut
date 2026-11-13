@@ -1,0 +1,10 @@
+{
+  "ticker": "EAT",
+  "companyName": "Brinker International, Inc.",
+  "profile": "Brinker International owns, develops, operates, and franchises the Chili’s Grill & Bar and Maggiano’s Little Italy restaurant brands. Chili’s serves Southwest-inspired American food, including burgers, fajitas, chicken, and drinks, in a casual dining setting. Maggiano’s offers Italian American dishes through a la carte and family-style dining, with banquet spaces for events. Both brands serve restaurant guests.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.842Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/703351/000070335126000029/eat-20260624.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CNH",
+  "companyName": "CNH Industrial N.V.",
+  "profile": "CNH Industrial develops, manufactures, and sells agricultural and construction equipment. Its Agriculture products include harvesters, tractors, crop protection, and production equipment; its Construction segment also supplies equipment. Through its Financial Services segment, CNH offers retail financing to customers purchasing or leasing its own or other manufacturers’ equipment, along with wholesale financing for dealers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.946Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1567094/000156709426000006/cnhi-20251231.htm"
+}

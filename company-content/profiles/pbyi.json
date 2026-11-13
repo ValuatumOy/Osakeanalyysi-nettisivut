@@ -1,0 +1,13 @@
+{
+  "ticker": "PBYI",
+  "companyName": "Puma Biotechnology, Inc.",
+  "profile": "Puma Biotechnology develops and commercializes products for cancer treatment. Its commercial product, NERLYNX, is an oral form of neratinib approved in the United States for certain early-stage and advanced or metastatic HER2-positive breast cancers. The company also holds global development and commercialization rights to alisertib, an investigational small-molecule inhibitor being developed initially for small cell lung cancer and hormone receptor-positive breast cancer.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.315Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1401667/000143774926005891/pbyi20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1401667/000143774926005891/pbyi20251231_10k.htm"
+  ]
+}

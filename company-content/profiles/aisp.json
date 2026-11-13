@@ -1,0 +1,13 @@
+{
+  "ticker": "AISP",
+  "companyName": "Airship AI Holdings, Inc.",
+  "profile": "Airship AI provides an AI-driven data management platform for large institutions operating in mission-critical environments. Its software structures and analyzes data from edge sensors, including video, audio, and telemetry sources, supporting real-time alerts and searches of stored data. Its offerings include Outpost AI edge hardware and software, Acropolis enterprise management software, and Airship Command for viewing labeled data.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.885Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1842566/000165495426001280/airsp_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1842566/000165495426001280/airsp_10k.htm"
+  ]
+}

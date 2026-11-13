@@ -1,0 +1,10 @@
+{
+  "ticker": "LNT",
+  "companyName": "Alliant Energy Corporation",
+  "profile": "Alliant Energy is a regulated utility holding company serving customers in the Midwest through its subsidiaries IPL and WPL. The utilities generate and distribute electricity and distribute and transport natural gas to retail customers in Iowa and Wisconsin; they also sell electricity to wholesale customers. Its non-utility holdings include energy investments and supply chain services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:07.078Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/352541/000035254126000007/lnt-20251231.htm"
+}

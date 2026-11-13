@@ -1,0 +1,10 @@
+{
+  "ticker": "ATRC",
+  "companyName": "AtriCure, Inc.",
+  "profile": "AtriCure develops surgical treatments and therapies for atrial fibrillation, left atrial appendage management, and post-operative pain. Its cardiac ablation and appendage-management products are used by physicians in open-heart and minimally invasive procedures. CryoICE cryoSPHERE and cryoXT probes provide temporary nerve-block pain relief after cardiac, thoracic, and amputation surgeries. AtriCure sells to medical centers directly and through distributors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.001Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1323885/000132388526000007/atrc-20251231.htm"
+}

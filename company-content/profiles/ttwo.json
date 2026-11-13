@@ -1,0 +1,10 @@
+{
+  "ticker": "TTWO",
+  "companyName": "Take-Two Interactive Software, Inc.",
+  "profile": "Take-Two Interactive develops, publishes, and markets interactive entertainment through Rockstar Games, 2K, and Zynga. Its products include games for console systems, mobile devices, and personal computers, delivered through physical retail, digital downloads, online platforms, and cloud streaming. The company serves consumers ranging from game enthusiasts to casual players and offers post-launch content and in-game purchases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:52.298Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/946581/000162828026037434/ttwo-20260331.htm"
+}

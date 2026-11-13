@@ -1,0 +1,13 @@
+{
+  "ticker": "CDIO",
+  "companyName": "Cardio Diagnostics Holdings, Inc.",
+  "profile": "Cardio Diagnostics develops clinical blood tests and related tools for cardiovascular disease risk assessment and detection using an AI-driven platform combining genetic and epigenetic information. Its products include tests focused on coronary heart disease and a platform that provides clinicians with genetic and epigenetic insights for patient management. The company also offers a research-use solution supporting cardiovascular biopharmaceutical discovery and development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:28.613Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1870144/000155335026000023/cdio_10k-123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1870144/000155335026000023/cdio_10k-123125.htm"
+  ]
+}

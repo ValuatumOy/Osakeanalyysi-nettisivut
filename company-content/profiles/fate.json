@@ -1,0 +1,13 @@
+{
+  "ticker": "FATE",
+  "companyName": "Fate Therapeutics, Inc.",
+  "profile": "Fate Therapeutics is a clinical-stage biopharmaceutical company developing off-the-shelf cellular immunotherapies for cancer and autoimmune diseases. Using a proprietary induced pluripotent stem cell platform, it engineers clonal master cell lines and differentiates them into uniform T-cell and natural killer cell candidates. Its pipeline includes chimeric antigen receptor-targeted therapies designed for potential use alone or alongside standard treatments.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:59.535Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1434316/000119312526073699/fate-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1434316/000119312526073699/fate-20251231.htm"
+  ]
+}

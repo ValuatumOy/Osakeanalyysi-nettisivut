@@ -1,0 +1,13 @@
+{
+  "ticker": "OBIO",
+  "companyName": "Orchestra BioMed Holdings, Inc.",
+  "profile": "Orchestra BioMed develops therapeutic technologies through collaborations with medical device companies. Its lead candidates include AVIM Therapy, a bioelectronic therapy designed to lower blood pressure and integrate with cardiac pacemakers, and Virtue Sirolimus AngioInfusion Balloon for artery disease. The company is conducting clinical studies of these candidates and collaborates with Medtronic on AVIM Therapy development for patients with hypertension who are indicated for a pacemaker.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:42:53.130Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1814114/000110465926026754/obio-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1814114/000110465926026754/obio-20251231x10k.htm"
+  ]
+}

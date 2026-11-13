@@ -1,0 +1,13 @@
+{
+  "ticker": "LCUT",
+  "companyName": "Lifetime Brands, Inc.",
+  "profile": "Lifetime Brands designs, sources, and sells branded kitchenware, tableware, and other home products. Its offerings include cookware, cutlery, bakeware, dinnerware, flatware, thermal beverageware, food storage, and home décor, marketed through owned and licensed brands as well as retailers’ private labels. The company sells primarily to retailers, and also to distributors and consumers through its websites.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.082Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874396/000087439626000008/lcut-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/874396/000087439626000008/lcut-20251231.htm"
+  ]
+}

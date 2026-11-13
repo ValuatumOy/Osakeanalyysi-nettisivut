@@ -1,0 +1,10 @@
+{
+  "ticker": "ANET",
+  "companyName": "Arista Networks, Inc.",
+  "profile": "Arista Networks provides networking products, software, and services for cloud, AI, data center, campus, and wide-area network environments. Its platform is built around the Extensible Operating System and Network Data Lake, with offerings spanning AI, cloud and data center networking, campus and routing products, and network software and services. The company serves cloud and AI providers, specialty providers, and enterprise customers globally.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.621Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm"
+}

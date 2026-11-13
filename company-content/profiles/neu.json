@@ -1,0 +1,10 @@
+{
+  "ticker": "NEU",
+  "companyName": "NewMarket Corporation",
+  "profile": "NewMarket is a holding company whose subsidiaries make and market petroleum additives, antiknock compounds, and specialty materials. Afton develops, manufactures, and sells lubricant and fuel additive products worldwide, working with customers across major global regions. Ethyl markets antiknock compounds in North America and provides contract manufacturing services. AMPAC and Calca produce specialty materials and hydrazine products primarily for aerospace and defense customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:47.420Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1282637/000128263726000005/neu-20251231.htm"
+}

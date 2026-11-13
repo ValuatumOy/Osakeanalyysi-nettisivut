@@ -1,0 +1,10 @@
+{
+  "ticker": "RHI",
+  "companyName": "Robert Half International Inc.",
+  "profile": "Robert Half provides specialized talent solutions and business consulting through the Robert Half and Protiviti names. Its contract talent services place professionals in finance and accounting, technology, marketing and creative, legal, and administrative and customer support roles. The company also provides permanent placement talent solutions and consulting services, and offers managed technology services such as systems integration and desktop support.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.501Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/315213/000031521326000006/rhi-20251231.htm"
+}

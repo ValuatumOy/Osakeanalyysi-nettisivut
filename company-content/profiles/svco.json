@@ -1,0 +1,13 @@
+{
+  "ticker": "SVCO",
+  "companyName": "Silvaco Group, Inc. Common Stock",
+  "profile": "Silvaco Group provides technology computer aided design software, electronic design automation software, and semiconductor intellectual property. Its tools help engineers model and optimize semiconductor manufacturing processes and device performance, and design, simulate, and verify semiconductors. Its products include simulation software, design tools, standard cells, memory compilers, and interface technologies. Customers include foundries, integrated device manufacturers, and fabless semiconductor companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.735Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1943289/000162828026017378/svco-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1943289/000162828026017378/svco-20251231.htm"
+  ]
+}

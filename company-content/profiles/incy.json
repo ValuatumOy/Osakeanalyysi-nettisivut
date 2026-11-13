@@ -1,0 +1,10 @@
+{
+  "ticker": "INCY",
+  "companyName": "Incyte Corporation",
+  "profile": "Incyte discovers, develops and commercializes proprietary therapeutics, with programs and approved medicines in hematology, oncology, and inflammation and autoimmunity. Its products include JAKAFI for certain blood cancers and graft-versus-host disease. Incyte markets JAKAFI in the United States through a specialty sales force and commercial team, while Novartis holds rights to ruxolitinib in other countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/879169/000087916926000010/incy-20251231.htm"
+}

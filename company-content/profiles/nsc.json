@@ -1,0 +1,10 @@
+{
+  "ticker": "NSC",
+  "companyName": "Norfolk Southern Corporation",
+  "profile": "Norfolk Southern Corporation owns Norfolk Southern Railway Company and primarily transports raw materials, intermediate products, and finished goods by rail across the southeastern, eastern, and Midwestern United States. Its network connects manufacturers, electric generating facilities, mines, distribution and transload centers, and other businesses. The company also carries freight to and from other U.S. regions and overseas through Atlantic and Gulf Coast ports.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:38.896Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/702165/000162828026006268/nsc-20251231.htm"
+}

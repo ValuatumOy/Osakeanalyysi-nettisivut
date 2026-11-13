@@ -1,0 +1,10 @@
+{
+  "ticker": "OC",
+  "companyName": "Owens Corning",
+  "profile": "Owens Corning makes building products, including roofing, insulation, and doors and door systems. Its roofing products include laminate asphalt shingles, roofing components, composite lumber, oxidized asphalt, glass mat and specialty veil materials. Insulation products serve homes and other buildings, while doors are designed for residential construction and repair markets. The company sells roofing products through distributors, home centers and lumberyards.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.566Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1370946/000137094626000067/oc-20251231.htm"
+}

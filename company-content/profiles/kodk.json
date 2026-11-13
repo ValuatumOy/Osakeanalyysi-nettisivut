@@ -1,0 +1,10 @@
+{
+  "ticker": "KODK",
+  "companyName": "Eastman Kodak Company",
+  "profile": "Eastman Kodak manufactures products focused on commercial print and advanced materials and chemicals. Its Print segment supplies digital offset plates, computer-to-plate imaging solutions, production press systems, inks, inkjet components, software, services, and toner-based digital printing solutions. Customers include commercial printers and businesses in direct mail, publishing, newspapers, magazines, and packaging and labels, reached through direct sales and channel partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.799Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/31235/000119312526104214/kodk-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "CIIT",
+  "companyName": "Tianci International, Inc.",
+  "profile": "Through its subsidiary Roshing International, Tianci provides global logistics services, primarily ocean freight forwarding for containerized and bulk cargo. It arranges cargo space, vessel bookings, chartering, transport routes, and related shipping coordination without owning or operating transportation assets. Its customers include cargo owners and agents. The company also reports sales of electronic parts and business and technical consulting services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:28.613Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1557798/000168316826008309/tianci_i10k-073126.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1557798/000168316826008309/tianci_i10k-073126.htm"
+  ]
+}

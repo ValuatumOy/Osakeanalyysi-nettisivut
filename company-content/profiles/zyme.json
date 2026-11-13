@@ -1,0 +1,10 @@
+{
+  "ticker": "ZYME",
+  "companyName": "Zymeworks Inc.",
+  "profile": "Zymeworks is a biotechnology company managing licensed healthcare assets and developing antibody-based therapeutics for cancer, inflammation, and autoimmune disease. Its portfolio includes partnered products and candidates such as Ziihera and pasritamig. The company uses multispecific antibody and antibody-drug conjugate technology platforms, and works with partners on development and commercialization through arrangements that can include milestone payments and royalties.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.002Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1937653/000193765326000015/zyme-20251231.htm"
+}

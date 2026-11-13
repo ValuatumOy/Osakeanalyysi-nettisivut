@@ -1,0 +1,10 @@
+{
+  "ticker": "WSC",
+  "companyName": "WillScot Holdings Corporation",
+  "profile": "WillScot provides temporary space and portable storage solutions to customers across a range of industries in the United States, Canada, and Mexico. Its offerings include modular offices, classrooms, storage containers, sanitation solutions, and climate-controlled units, equipped with optional furniture, connectivity, security, and other products. The company leases and sells units and provides delivery, installation, maintenance, removal, and related services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.526Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000011/wsc-20251231.htm"
+}

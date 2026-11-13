@@ -1,0 +1,13 @@
+{
+  "ticker": "ASPN",
+  "companyName": "Aspen Aerogels, Inc.",
+  "profile": "Aspen Aerogels designs, develops and manufactures aerogel materials for electric vehicle, energy industrial and sustainable insulation markets. Its PyroThin thermal barriers are designed for battery systems to impede thermal runaway, and it supplies fabricated parts to automotive and battery manufacturers. Its Pyrogel and Cryogel insulation products serve oil, petrochemical, liquefied natural gas and power facilities, along with other applications.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.854Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1145986/000119312526106453/aspn-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1145986/000119312526106453/aspn-20251231.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "FTK",
+  "companyName": "Flotek Industries, Inc.",
+  "profile": "Flotek Industries is a technology and chemistry company serving domestic and international energy markets. Its Chemistry Technologies segment designs, manufactures, packages, distributes, and markets chemical solutions for hydrocarbon producers. Its Data Analytics segment provides analytical measurement, digital, and measure-and-control services that support process monitoring and decision-making across the oil and gas value chain, power, and other applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.030Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/928054/000092805426000020/ftk-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "SLND",
+  "companyName": "Southland Holdings, Inc.",
+  "profile": "Southland Holdings is a specialty infrastructure construction company that designs and builds projects across North America. Its civil services include water pipelines, pump and lift stations, water and wastewater treatment plants, structural steel, outfalls, and tunneling. Its transportation services include bridges, roadways, marine facilities, dredging, ship terminals, piers, and specialty structures for public agencies, utilities, and private clients.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.158Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1883814/000110465926035302/slnd-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1883814/000110465926035302/slnd-20251231x10k.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "MLR",
+  "companyName": "Miller Industries, Inc.",
+  "profile": "Miller Industries designs and manufactures towing and recovery equipment, including car carrier bodies, wreckers, and multi-vehicle transport trailers installed on chassis made by other companies. Its products are sold mainly through distributors serving the United States and international markets, as well as through prime contractors to government entities. Distributors also provide end users with parts and service for the equipment.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.165Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/924822/000110465926023486/mlr-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/924822/000110465926023486/mlr-20251231x10k.htm"
+  ]
+}

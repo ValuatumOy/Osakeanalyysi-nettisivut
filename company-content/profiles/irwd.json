@@ -1,0 +1,10 @@
+{
+  "ticker": "IRWD",
+  "companyName": "Ironwood Pharmaceuticals, Inc.",
+  "profile": "Ironwood Pharmaceuticals develops and commercializes therapies for gastrointestinal and rare diseases. Its commercial product LINZESS (linaclotide) is used to treat specified forms of irritable bowel syndrome with constipation and chronic or functional constipation in adults and pediatric patients, with indications varying by market. The company works with pharmaceutical partners to develop and commercialize linaclotide internationally and is developing apraglutide for short bowel syndrome.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:24.754Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1446847/000110465926020489/irwd-20251231x10k.htm"
+}

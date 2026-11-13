@@ -1,0 +1,10 @@
+{
+  "ticker": "IONQ",
+  "companyName": "IonQ, Inc.",
+  "profile": "IonQ sells specialized quantum computing hardware, access to quantum computers through cloud platforms and its own cloud service, and full quantum computing systems for cloud or on-premises use. Its offerings also include quantum networking, sensing, and security products, maintenance and support, and professional services that help customers apply these solutions. Through satellites, it provides data-as-a-service products, including synthetic-aperture radar imaging.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.819Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1824920/000119312526071562/ionq-20251231.htm"
+}

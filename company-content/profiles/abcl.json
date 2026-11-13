@@ -1,0 +1,13 @@
+{
+  "ticker": "ABCL",
+  "companyName": "AbCellera Biologics Inc.",
+  "profile": "AbCellera discovers and develops antibody-based medicines through a platform combining experimental technology, data science, and drug development capabilities. Its programs span endocrinology, women’s health, immunology, and oncology. The company advances its own therapeutic candidates and collaborates with biotechnology and pharmaceutical partners on drug programs. Its pipeline includes ABCL635 for vasomotor symptoms and other investigational antibodies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.072Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1703057/000170305726000012/abcl-20251231.htm",
+  "profileSources": [
+    "https://investors.abcellera.com/news/news-releases/2026/AbCellera-Reports-Q3-2026-Business-Results/default.aspx"
+  ]
+}

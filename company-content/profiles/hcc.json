@@ -1,0 +1,10 @@
+{
+  "ticker": "HCC",
+  "companyName": "Warrior Met Coal, Inc.",
+  "profile": "Warrior Met Coal mines non-thermal steelmaking coal for metal manufacturers in Europe, South America and Asia. Its Alabama underground mines produce premium hard coking coal, including low and high volatility grades that can be blended for customers’ coking coal requirements. The company also removes and sells natural gas from its owned and leased coal seams.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.971Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526048914/hcc-20251231.htm"
+}

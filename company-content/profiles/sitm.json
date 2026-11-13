@@ -1,0 +1,10 @@
+{
+  "ticker": "SITM",
+  "companyName": "SiTime Corporation",
+  "profile": "SiTime provides semiconductor-based precision timing solutions for electronic systems. Its products include oscillators, clock integrated circuits, resonators and synchronization software, serving customers across artificial intelligence systems, data centers, communications, enterprise, automotive, industrial, aerospace, defense, mobile, Internet of Things and consumer markets. The company’s solutions provide timing functionality for components such as processors, communication and interface circuits, and radio frequency components.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.565Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1451809/000145180926000012/sitm-20251231.htm"
+}

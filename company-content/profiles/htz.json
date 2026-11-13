@@ -1,0 +1,10 @@
+{
+  "ticker": "HTZ",
+  "companyName": "Hertz Global Holdings, Inc.",
+  "profile": "Hertz Global Holdings rents vehicles through its Hertz, Dollar and Thrifty brands, serving customers through company-operated and franchised locations across the Americas and international markets. Its rental services span multiple price points and service levels. The company also sells used vehicles through Hertz Car Sales, both online and at locations across the United States.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.284Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1657853/000165785326000008/htz-20251231.htm"
+}

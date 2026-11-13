@@ -1,0 +1,13 @@
+{
+  "ticker": "AENT",
+  "companyName": "Alliance Entertainment Holding Corporation",
+  "profile": "Alliance Entertainment distributes and retails physical entertainment and collectible products, including vinyl records, CDs, DVDs, Blu-rays, video games, electronics, and licensed merchandise. It connects content creators with retailers and operates direct-to-consumer brands and online storefronts. The company also provides logistics, drop-ship fulfillment, inventory, and distribution services to retailers and brands, serving retail locations and online sellers in multiple countries.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.315Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1823584/000149315226042141/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1823584/000149315226042141/form10-k.htm"
+  ]
+}

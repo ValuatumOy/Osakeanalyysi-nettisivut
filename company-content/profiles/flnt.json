@@ -1,0 +1,13 @@
+{
+  "ticker": "FLNT",
+  "companyName": "Fluent, Inc.",
+  "profile": "Fluent provides commerce media and digital customer acquisition services, connecting brands with consumers through advertising campaigns on partner websites and apps and its own digital properties. It uses first-party data, ad-serving technology, and analytics to target offers and measure responses. Clients include consumer brands, direct marketers, and agencies across several industries. Its subsidiary AdParlor also offers creator marketing and media buying services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.476Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1460329/000143774926010679/flnt20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1460329/000143774926010679/flnt20251231_10k.htm"
+  ]
+}

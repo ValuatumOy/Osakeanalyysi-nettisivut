@@ -1,0 +1,10 @@
+{
+  "ticker": "CLDX",
+  "companyName": "Celldex Therapeutics, Inc.",
+  "profile": "Celldex Therapeutics is a biopharmaceutical company focused on mast cell biology and the development of therapeutic antibodies for inflammatory, allergic, autoimmune, and other serious diseases. Its investigational pipeline includes monoclonal and bispecific antibody candidates, including programs targeting mast cell driven diseases and inflammatory pathways. The company conducts research and clinical development of potential therapies for patients whose conditions have inadequate treatment options.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.931Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/744218/000110465926019652/cldx-20251231x10k.htm"
+}

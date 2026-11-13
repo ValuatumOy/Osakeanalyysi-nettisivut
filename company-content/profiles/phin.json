@@ -1,0 +1,10 @@
+{
+  "ticker": "PHIN",
+  "companyName": "PHINIA Inc.",
+  "profile": "PHINIA develops, designs and manufactures integrated components and systems for combustion and hybrid propulsion in vehicles and industrial applications. Its products include fuel injection systems, fuel delivery modules, canisters, sensors, electronic control modules and associated software, alongside original equipment service solutions. The company also sells remanufactured products, maintenance and diagnostics solutions to independent aftermarket customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.608Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1968915/000196891526000023/phin-20251231.htm"
+}

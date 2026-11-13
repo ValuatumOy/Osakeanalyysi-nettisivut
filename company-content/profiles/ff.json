@@ -1,0 +1,13 @@
+{
+  "ticker": "FF",
+  "companyName": "FutureFuel Corp.",
+  "profile": "FutureFuel manufactures inorganic chemicals, bio-based specialty chemicals, and biofuels at an integrated facility in Batesville, Arkansas. Its Chemicals segment provides custom manufacturing for third-party customers and produces multi-customer specialty chemicals, including biocides, polymers, dyes, and solvents. Its Biofuels segment produces biodiesel and sells biodiesel and petrodiesel blends. The company’s chemical manufacturing capabilities also include production of intermediate compounds for pharmaceutical applications.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.095Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1337298/000143774926008411/ff20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1337298/000143774926008411/ff20251231_10k.htm"
+  ]
+}

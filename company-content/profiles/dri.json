@@ -1,0 +1,10 @@
+{
+  "ticker": "DRI",
+  "companyName": "Darden Restaurants, Inc.",
+  "profile": "Darden Restaurants is a full-service restaurant company that owns and operates restaurants in the United States under brands including Olive Garden, LongHorn Steakhouse, Yard House, Ruth’s Chris Steak House and Cheddar’s Scratch Kitchen. It also has restaurants operated by franchisees and independent third parties under development, franchise and contractual agreements. Its customers are restaurant diners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:30.001Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/940944/000094094426000025/dri-20260531.htm"
+}

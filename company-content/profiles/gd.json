@@ -1,0 +1,10 @@
+{
+  "ticker": "GD",
+  "companyName": "General Dynamics Corporation",
+  "profile": "General Dynamics is an aerospace and defense company whose businesses span business aviation, ship construction and repair, land combat vehicles, weapon systems and munitions, and technology products and services. Its Aerospace segment produces business jets and provides aircraft repair, customer support, and custom completion services. The company serves customers in aviation and defense markets, including organizations seeking aircraft, ships, combat systems, and technology solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.624Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/40533/000004053326000006/gd-20251231.htm"
+}

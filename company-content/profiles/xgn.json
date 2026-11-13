@@ -1,0 +1,13 @@
+{
+  "ticker": "XGN",
+  "companyName": "Exagen Inc.",
+  "profile": "Exagen Inc. develops and commercializes AVISE-branded testing products for the diagnosis, prognosis, and monitoring of rheumatic and autoimmune diseases, including systemic lupus erythematosus and rheumatoid arthritis. Its AVISE CTD test supports evaluation of patients with symptoms associated with connective tissue diseases. The company’s tests are used in clinical settings by rheumatologists, primary care physicians, other specialists, and the patients they serve.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.327Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1274737/000127473726000009/exdx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1274737/000127473726000009/exdx-20251231.htm"
+  ]
+}

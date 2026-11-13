@@ -1,0 +1,10 @@
+{
+  "ticker": "WGS",
+  "companyName": "GeneDx Holdings Corp.",
+  "profile": "GeneDx provides clinical genetic testing and genomic interpretation, with a focus on rare and ultra-rare disorders. Its ExomeDx and GenomeDx tests support clinicians seeking diagnoses for patients, and its GeneDx Infinity dataset supports genomic discovery for biopharmaceutical companies. The company combines clinical expertise and technology to interpret genomic data and inform clinical decision-making.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1818331/000181833126000015/wgs-20251231.htm"
+}

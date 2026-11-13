@@ -1,0 +1,10 @@
+{
+  "ticker": "CDE",
+  "companyName": "Coeur Mining, Inc.",
+  "profile": "Coeur Mining produces and sells precious metals from silver-gold and gold mines in the United States and Mexico, and operates a silver-zinc-lead exploration project in Canada. Its products include gold and silver bullion, refined by third parties from mine output, and gold concentrate sold to third-party smelters. Bullion customers include multinational banks, trading houses, and refiners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.946Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/215466/000021546626000004/cde-20251231.htm"
+}

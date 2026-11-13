@@ -1,0 +1,10 @@
+{
+  "ticker": "TWI",
+  "companyName": "Titan International, Inc.",
+  "profile": "Titan International designs, manufactures, and sells wheels, tires, undercarriage systems, and related components for agricultural, earthmoving and construction, and consumer applications. Its products are supplied to original equipment manufacturers and aftermarket customers through distributors, equipment dealers, and company distribution centers. Applications include farm machinery, construction and mining equipment, off-road vehicles, trailers, and outdoor power equipment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.686Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/899751/000089975126000007/twi-20251231.htm"
+}

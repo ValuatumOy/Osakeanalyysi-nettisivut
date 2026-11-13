@@ -1,0 +1,10 @@
+{
+  "ticker": "SHEN",
+  "companyName": "Shenandoah Telecommunications Company",
+  "profile": "Shenandoah Telecommunications provides broadband services through fiber-optic and hybrid fiber coaxial networks in eight eastern U.S. states. Its offerings include residential and commercial internet, video, and voice, as well as Ethernet, wavelength services, and dark fiber leasing. It also provides managed network services and DSL and voice services as a rural local exchange carrier.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.606Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/354963/000035496326000125/shen-20251231.htm"
+}

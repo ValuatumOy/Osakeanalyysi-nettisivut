@@ -1,0 +1,10 @@
+{
+  "ticker": "WMS",
+  "companyName": "Advanced Drainage Systems, Inc.",
+  "profile": "Advanced Drainage Systems designs, manufactures and markets thermoplastic corrugated pipe and related water management products. Its portfolio addresses stormwater and onsite wastewater needs, including capturing, conveying, storing and treating water. Products serve residential, non-residential, infrastructure and agriculture applications. The company also offers residential drainage solutions, access boxes and irrigation products through its acquired NDS business.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.272Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1604028/000160402826000019/wms-20260331.htm"
+}

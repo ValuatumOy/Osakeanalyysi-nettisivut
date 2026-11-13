@@ -1,0 +1,13 @@
+{
+  "ticker": "VATE",
+  "companyName": "INNOVATE Corp.",
+  "profile": "INNOVATE is a diversified holding company with operating businesses in infrastructure, life sciences, broadcasting, and other investments. Its subsidiaries include DBM Global, which provides structural and steel construction services; Pansend Life Sciences, which supports healthcare and biotechnology product development; and broadcasting businesses operating over-the-air television stations in the United States and Puerto Rico. The company manages a portfolio of businesses and investments.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.746Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1006837/000100683726000014/vate-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1006837/000100683726000014/vate-20251231.htm"
+  ]
+}

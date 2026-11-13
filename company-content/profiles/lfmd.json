@@ -1,0 +1,13 @@
+{
+  "ticker": "LFMD",
+  "companyName": "LifeMD, Inc.",
+  "profile": "LifeMD provides virtual medical care and pharmacy services directly to patients. Its integrated platform supports diagnosis, treatment, prescription fulfillment, and ongoing care management through technology, affiliated clinical services, and pharmacy infrastructure. The company offers virtual care in areas including primary care, men’s and women’s health, hormone health, weight management, insomnia, dermatology, and cardiology, along with prescription and over-the-counter treatments when medically appropriate.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:15.238Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/948320/000149315226009549/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/948320/000149315226009549/form10-k.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "HII",
+  "companyName": "Huntington Ingalls Industries, Inc.",
+  "profile": "Huntington Ingalls Industries designs, builds, repairs, and maintains naval ships and develops defense technologies and services. Its Ingalls segment builds non-nuclear ships, including amphibious assault ships, destroyers, and Coast Guard cutters; Newport News handles nuclear ship construction and maintenance. Mission Technologies supplies C5ISR systems, cyber and electronic warfare capabilities, autonomous systems, training, modernization, and nuclear operations primarily for the U.S. Government.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:25.161Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1501585/000150158526000006/hii-20251231.htm"
+}

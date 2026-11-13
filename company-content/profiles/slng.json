@@ -1,0 +1,13 @@
+{
+  "ticker": "SLNG",
+  "companyName": "Stabilis Solutions, Inc.",
+  "profile": "Stabilis Solutions provides liquefied natural gas production, storage, transportation, and fueling solutions to customers in industries including aerospace, agriculture, industrial, marine, mining, oil and gas, pipeline, remote power, and utilities. It sells and delivers LNG, rents cryogenic equipment, and provides engineering and field support services. Through a joint venture, it also builds power and control systems for the energy industry in China.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.084Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1043186/000143774926007090/slng20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1043186/000143774926007090/slng20251231_10k.htm"
+  ]
+}

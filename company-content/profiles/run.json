@@ -1,0 +1,10 @@
+{
+  "ticker": "RUN",
+  "companyName": "Sunrun Inc.",
+  "profile": "Sunrun designs, develops, installs, sells, owns and maintains residential solar energy systems in the United States. It provides homeowners with solar power through leases and power purchase agreements, and offers battery storage in select markets; customers may also buy systems outright. Sunrun monitors, maintains and insures contracted systems, and serves certain commercial developers through multifamily and new home offerings.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.574Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1469367/000162828026012289/run-20251231.htm"
+}

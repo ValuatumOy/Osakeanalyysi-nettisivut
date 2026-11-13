@@ -1,0 +1,10 @@
+{
+  "ticker": "PLSE",
+  "companyName": "Pulse Biosciences, Inc.",
+  "profile": "Pulse Biosciences develops medical devices using nanosecond pulsed-field ablation technology to target and remove cellular tissue. Its nPulse System delivers this energy, and its Vybrance Percutaneous Electrode System is designed for soft tissue ablation in percutaneous and intraoperative surgical procedures. The company has also developed applicators for study in other medical specialties and clinical applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1625101/000143774926004724/plse20251231_10k.htm"
+}

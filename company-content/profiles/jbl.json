@@ -1,0 +1,10 @@
+{
+  "ticker": "JBL",
+  "companyName": "Jabil Inc.",
+  "profile": "Jabil provides engineering, supply chain, design, manufacturing, and product management services across the product lifecycle, from planning and fabrication to assembly, delivery, and post-production. It serves companies in automotive, healthcare, packaging, energy infrastructure, capital equipment, cloud and data centers, networking, connected living, and digital commerce. Its business units coordinate customer work using manufacturing, electronic design, and design-for-manufacturability capabilities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.876Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/898293/000162828026067038/jbl-20260831.htm"
+}

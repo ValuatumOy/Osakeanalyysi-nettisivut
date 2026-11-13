@@ -1,0 +1,10 @@
+{
+  "ticker": "LVWR",
+  "companyName": "LiveWire Group, Inc.",
+  "profile": "LiveWire designs and sells electric motorcycles, motorcycle parts, accessories, and apparel, as well as electric balance bikes for children and adult pedal-assist electric bikes. Its motorcycle products are sold wholesale through independent dealers and retailers, at a company-owned dealership, and online. Its STACYC bikes and related parts and accessories are sold wholesale through dealers and distributors and directly to consumers online.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.524Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1898795/000189879526000028/lvwr-20251231.htm"
+}

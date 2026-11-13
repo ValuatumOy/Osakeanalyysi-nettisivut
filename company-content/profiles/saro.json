@@ -1,0 +1,10 @@
+{
+  "ticker": "SARO",
+  "companyName": "StandardAero, Inc.",
+  "profile": "StandardAero provides aftermarket services for aircraft engines serving commercial, military and business aviation. Its work includes scheduled and unscheduled engine maintenance, repair and overhaul, component repair, on-wing and field support, asset management and engineering solutions. It also repairs engine components for commercial aerospace, military, land and marine, and oil and gas customers, connecting engine manufacturers with aircraft operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2025410/000119312526072618/saro-20251231.htm"
+}

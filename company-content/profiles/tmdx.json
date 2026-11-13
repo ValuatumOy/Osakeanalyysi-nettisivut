@@ -1,0 +1,10 @@
+{
+  "ticker": "TMDX",
+  "companyName": "TransMedics Group, Inc.",
+  "profile": "TransMedics develops organ preservation technology and transplant logistics services for transplant programs. Its Organ Care System products perfuse, monitor, and support donor hearts, lungs, and livers outside the body, with products for each organ. The company also provides organ procurement, perfusion management, and transportation coordination through its National OCS Program, using clinical specialists, procurement surgeons, and air and ground transport.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:38.679Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm"
+}

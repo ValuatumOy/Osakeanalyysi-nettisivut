@@ -1,0 +1,13 @@
+{
+  "ticker": "ULBI",
+  "companyName": "Ultralife Corporation",
+  "profile": "Ultralife Corporation designs and manufactures power and communications products for government, defense and commercial markets. Its Battery & Energy Products include rechargeable and non-rechargeable batteries, uninterruptible power supplies, charging systems and accessories. Its Communications Systems products include RF amplifiers, power supplies, cable and connector assemblies, speakers, equipment mounts, portable systems, integrated communications systems, and related design services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:16.742Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/875657/000143774926009385/ulbi20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/875657/000143774926009385/ulbi20251231_10k.htm"
+  ]
+}

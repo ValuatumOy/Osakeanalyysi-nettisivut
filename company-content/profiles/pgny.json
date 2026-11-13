@@ -1,0 +1,10 @@
+{
+  "ticker": "PGNY",
+  "companyName": "Progyny, Inc.",
+  "profile": "Progyny provides employers with fertility, family building and women’s health benefits for employees and covered dependents. Its offerings include fertility, pregnancy and postpartum, menopause and midlife, benefit and leave navigation, and parent and child wellbeing solutions. The company supports members with education, coaching, concierge assistance and digital tools, and provides access to a network of fertility and women’s health specialists.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.956Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1551306/000155130626000020/pgny-20251231.htm"
+}

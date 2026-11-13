@@ -1,0 +1,13 @@
+{
+  "ticker": "CVEO",
+  "companyName": "Civeo Corporation",
+  "profile": "Civeo provides hospitality and facility services for remote workforces in Australia and Canada. Services include lodging, catering, food service, housekeeping, maintenance, laundry, facility management, utilities, communications, security, and logistics. The company also manages workforce accommodation development, from site selection and design through construction management. Its customers include companies in mining, oil, construction, engineering, and related services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.493Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1590584/000159058426000021/cveo-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1590584/000159058426000021/cveo-20251231.htm"
+  ]
+}

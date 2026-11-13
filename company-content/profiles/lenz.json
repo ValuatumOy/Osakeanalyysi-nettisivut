@@ -1,0 +1,10 @@
+{
+  "ticker": "LENZ",
+  "companyName": "LENZ Therapeutics, Inc.",
+  "profile": "LENZ Therapeutics is a commercial pharmaceutical company developing and commercializing therapies intended to improve vision. Its product VIZZ is a prescription eye drop for treating presbyopia, marketed in the United States through eye care professional sales, an e-pharmacy partner, and retail pharmacies. The company also pursues international licensing and distribution partnerships for VIZZ.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.686Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1815776/000181577626000011/lenz-20251231.htm"
+}

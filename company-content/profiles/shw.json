@@ -1,0 +1,10 @@
+{
+  "ticker": "SHW",
+  "companyName": "The Sherwin-Williams Company",
+  "profile": "The Sherwin-Williams Company develops, manufactures, distributes, and sells paint, coatings, and related products to professional, industrial, commercial, and retail customers. Its offerings include architectural paints and coatings, protective and marine products, original-equipment-manufacturer finishes, stains, varnishes, wood finishes, applicators, caulks, and adhesives. It serves customers through company-operated specialty paint stores and sales to retailers, dealers, and distributors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.627Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/89800/000008980026000008/shw-20251231.htm"
+}

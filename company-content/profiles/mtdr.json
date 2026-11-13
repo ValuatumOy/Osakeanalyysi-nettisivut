@@ -1,0 +1,10 @@
+{
+  "ticker": "MTDR",
+  "companyName": "Matador Resources Company",
+  "profile": "Matador Resources is an independent energy company that explores for, develops, produces and acquires oil and natural gas resources, mainly in unconventional plays. Its operations focus on the Delaware Basin and also include the Haynesville and Cotton Valley areas. The company provides natural gas processing, oil transportation, gathering and produced water disposal services to third parties.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1520006/000152000626000002/mtdr-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "NOV",
+  "companyName": "NOV Inc.",
+  "profile": "NOV supplies equipment and technology to the global energy industry, supporting drilling, completion and production needs. Its offerings include proprietary technologies, equipment, and aftermarket support for oil and gas operations. The company serves major diversified, national and independent service companies, contractors and energy producers, and provides products and services across its Energy Equipment and Energy Products and Services segments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.643Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1021860/000119312526048350/nov-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "LXFR",
+  "companyName": "Luxfer Holdings PLC",
+  "profile": "Luxfer develops and manufactures advanced materials, components, and high-pressure gas containment solutions for defense, first response, healthcare, transportation, and specialty industrial markets. Its products include magnesium alloys and powders, zirconium-based chemicals, and aluminum and composite gas cylinders. The cylinders are used in emergency response, healthcare, aerospace, alternative fuel transportation, and other industrial applications.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:53.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1096056/000109605626000015/lxfr-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1096056/000109605626000015/lxfr-20251231.htm"
+  ]
+}

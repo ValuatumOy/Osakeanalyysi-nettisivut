@@ -1,0 +1,13 @@
+{
+  "ticker": "CELU",
+  "companyName": "Celularity Inc.",
+  "profile": "Celularity develops cellular therapies derived from the human placenta and commercializes placental biomaterial products. Its pipeline includes off-the-shelf allogeneic cell therapy candidates, including cenplacel-L, being developed for age-related degenerative diseases and conditions such as immune and infectious diseases and cancer. Marketed products include amniotic membrane allografts and placental connective tissue matrices for soft tissue repair, wound coverage, and reconstructive procedures.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:41.635Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1752828/000149315226020424/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1752828/000149315226020424/form10-k.htm"
+  ]
+}

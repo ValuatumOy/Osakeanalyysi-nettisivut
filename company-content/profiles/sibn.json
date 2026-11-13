@@ -1,0 +1,14 @@
+{
+  "ticker": "SIBN",
+  "companyName": "SI-BONE, Inc.",
+  "profile": "SI-BONE develops and markets implant systems and instruments for minimally invasive surgery involving the sacroiliac joint and pelvic anatomy. Its portfolio includes titanium implants and implantable bone products used in procedures addressing sacroiliac joint dysfunction, pelvic trauma, and certain spinal conditions. The company serves orthopedic and spine surgeons and patients through clinician training, product support, and sales channels in the United States and internationally.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.082Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1459839/000145983926000036/sibn-20251231.htm",
+  "profileSources": [
+    "https://si-bone.com/company",
+    "https://si-bone.com/si-joint-pain-treatment/ifuse-implant-systems"
+  ]
+}

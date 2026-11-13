@@ -1,0 +1,10 @@
+{
+  "ticker": "HNRG",
+  "companyName": "Hallador Energy Company",
+  "profile": "Hallador Energy is an independent power producer and fuel company with electric and coal operations. Through Hallador Power, it sells accredited capacity and wholesale electricity to utilities and other energy market participants, including through power purchase agreements and market transactions. Its Sunrise subsidiary mines bituminous coal in Indiana and supplies fuel to power plants in the Midwest and Southeast.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.798Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/788965/000110465926027174/hnrg-20251231x10k.htm"
+}

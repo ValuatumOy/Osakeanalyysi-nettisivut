@@ -1,0 +1,10 @@
+{
+  "ticker": "ITRI",
+  "companyName": "Itron, Inc.",
+  "profile": "Itron provides technology and related services for utilities and cities, focused on energy, water, grid management, smart city applications, and critical infrastructure. Its portfolio includes connected meters, sensors, switches, communication networks, software, and services that gather and analyze data, control devices, and support operational decisions. Customers use these solutions to manage utility and municipal infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:49.386Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/780571/000078057126000033/itri-20251231.htm"
+}

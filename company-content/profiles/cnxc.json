@@ -1,0 +1,10 @@
+{
+  "ticker": "CNXC",
+  "companyName": "Concentrix Corporation",
+  "profile": "Concentrix provides technology-enabled services and integrated solutions to companies across technology, retail, communications, financial services, and healthcare sectors. Its offerings include customer experience strategy and design, digital operations, automation, analytics, artificial intelligence readiness, and business transformation. It supports customer interactions through voice, chat, email, social media, messaging, and self-service channels, serving global brands and large multinational companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1803599/000180359926000027/cnxc-20251130.htm"
+}

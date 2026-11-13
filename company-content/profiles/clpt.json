@@ -1,0 +1,13 @@
+{
+  "ticker": "CLPT",
+  "companyName": "ClearPoint Neuro, Inc.",
+  "profile": "ClearPoint Neuro develops and commercializes medical devices for neurosurgical procedures and provides services supporting biologics and drug delivery programs. Its products include the ClearPoint system for image-guided brain procedures, stereotactic systems for operating rooms, a neuro laser therapy system, and the IRRAflow system for intracranial fluid management. Its consulting and preclinical services support pharmaceutical, biotechnology, academic, and contract research organization partners.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.166Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1285550/000119312526111231/clpt-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1285550/000119312526111231/clpt-20251231.htm"
+  ]
+}

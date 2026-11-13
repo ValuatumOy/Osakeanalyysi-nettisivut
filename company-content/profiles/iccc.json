@@ -1,0 +1,13 @@
+{
+  "ticker": "ICCC",
+  "companyName": "ImmuCell Corporation",
+  "profile": "ImmuCell develops, manufactures and commercializes animal health biologics for neonatal dairy and beef calves. Its First Defense product line uses hyperimmunized bovine colostrum to provide orally delivered antibodies against pathogens associated with calf scours. Products include single-dose boluses and gel formulations, as well as powder ingredients for calf feeding programs, and are marketed through the company’s sales organization and distributors.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/811641/000143774926010339/iccc20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/811641/000143774926010339/iccc20251231_10k.htm"
+  ]
+}

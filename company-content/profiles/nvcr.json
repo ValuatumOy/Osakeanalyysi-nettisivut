@@ -1,0 +1,10 @@
+{
+  "ticker": "NVCR",
+  "companyName": "NovoCure Limited",
+  "profile": "NovoCure develops and markets medical devices that deliver Tumor Treating Fields, electric fields used as cancer therapy. Its commercial products include Optune Gio for glioblastoma, Optune Lua for metastatic non-small cell lung cancer and pleural mesothelioma, and Optune Pax for locally advanced pancreatic cancer. The company serves patients and healthcare providers in multiple countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.409Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1645113/000164511326000017/nvcr-20251231.htm"
+}

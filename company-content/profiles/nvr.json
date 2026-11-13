@@ -1,0 +1,10 @@
+{
+  "ticker": "NVR",
+  "companyName": "NVR, Inc.",
+  "profile": "NVR constructs and sells single-family detached homes, townhomes, and condominium buildings, primarily on a pre-sold basis, through the Ryan Homes, NVHomes, and Heartland Homes brands. Its offerings serve first-time, move-up, and luxury buyers. To support homebuilding customers, the company also operates mortgage banking and title services businesses, primarily through its subsidiary NVR Mortgage Finance.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.207Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/906163/000090616326000018/nvr-20251231.htm"
+}

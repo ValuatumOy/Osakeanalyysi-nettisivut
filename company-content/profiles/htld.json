@@ -1,0 +1,10 @@
+{
+  "ticker": "HTLD",
+  "companyName": "Heartland Express, Inc.",
+  "profile": "Heartland Express and its subsidiaries provide short-, medium- and long-haul truckload transportation. Their services primarily include nationwide, asset-based dry van freight for major shippers across the United States, along with cross-border freight and other transportation services through third-party partnerships in Mexico. They also offer temperature-controlled truckload transportation and Mexico logistics services under several operating brands.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:12.837Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/799233/000079923326000006/htld-20251231.htm"
+}

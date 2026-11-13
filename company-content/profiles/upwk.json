@@ -1,0 +1,10 @@
+{
+  "ticker": "UPWK",
+  "companyName": "Upwork Inc.",
+  "profile": "Upwork connects businesses with independent professionals and agencies through the Upwork Marketplace and provides enterprise workforce solutions through its Lifted subsidiary. Services support talent sourcing, contracting, engagement management, and payment for freelance, agency, fractional, and payrolled work. Clients range from small businesses and entrepreneurs to large enterprises, while talent use the platforms to find work and manage their businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.722Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1627475/000162747526000012/upwk-20251231.htm"
+}

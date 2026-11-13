@@ -1,0 +1,10 @@
+{
+  "ticker": "KRMN",
+  "companyName": "Karman Holdings Inc.",
+  "profile": "Karman designs, tests, manufactures and sells mission-critical systems for missile, defense and space programs. Its offerings include payload protection and deployment systems, aerodynamic interstage systems, integrated solid rocket motors and supporting propulsion subsystems. The company serves space and launch, hypersonics and strategic missile defense, and tactical missile and integrated defense markets, supplying prime contractor customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2040127/000204012726000014/krmn-20251231.htm"
+}

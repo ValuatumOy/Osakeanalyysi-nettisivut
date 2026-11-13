@@ -1,0 +1,10 @@
+{
+  "ticker": "SWK",
+  "companyName": "Stanley Black & Decker, Inc.",
+  "profile": "Stanley Black & Decker provides hand tools, power tools, outdoor products and related accessories, along with engineered fastening solutions. Its products and solutions serve end users whose needs include tools, outdoor equipment and fastening systems. The company focuses its portfolio on tools and outdoor products and engineered fastening systems, and develops workflow solutions through its brands and product platforms.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:41.057Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/93556/000009355626000009/swk-20260103.htm"
+}

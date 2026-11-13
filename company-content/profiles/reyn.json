@@ -1,0 +1,10 @@
+{
+  "ticker": "REYN",
+  "companyName": "Reynolds Consumer Products Inc.",
+  "profile": "Reynolds Consumer Products makes household products for cooking, serving, cleanup and storage, sold under brands such as Reynolds and Hefty and as store brands. Its portfolio includes aluminum foil, parchment and other papers, disposable bakeware, trash and food storage bags, plastic wrap and disposable tableware. Its customers include grocery, mass merchant, warehouse club, discount, drug, home improvement and online retailers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.555Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1786431/000162828026005284/reyn-20251231.htm"
+}

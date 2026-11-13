@@ -1,0 +1,13 @@
+{
+  "ticker": "QTRX",
+  "companyName": "Quanterix Corporation",
+  "profile": "Quanterix provides instruments, consumables and services for biomarker research and diagnostics. Its Simoa technology detects proteins at very low concentrations in blood and other fluids, while its spatial biology platforms analyze biomarker distribution in tissue samples. The company sells products worldwide to research laboratories, contract research organizations, academic institutions and biopharmaceutical companies. It also provides contract research and clinical laboratory testing services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:19.005Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1503274/000150327426000013/qtrx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1503274/000150327426000013/qtrx-20251231.htm"
+  ]
+}

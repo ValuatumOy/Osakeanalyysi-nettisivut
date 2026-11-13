@@ -1,0 +1,13 @@
+{
+  "ticker": "CVRX",
+  "companyName": "CVRx, Inc.",
+  "profile": "CVRx develops, manufactures and commercializes neuromodulation medical devices for cardiovascular disease. Its Barostim implant delivers electrical pulses to baroreceptors in the carotid artery, providing Baroreflex Activation Therapy for patients with heart failure. The therapy is designed to affect signaling between the cardiovascular system and the autonomic nervous system and is used alongside guideline-directed medical therapy. Barostim is approved in the United States for heart failure.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:49.600Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1235912/000110465926014708/cvrx-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1235912/000110465926014708/cvrx-20251231x10k.htm"
+  ]
+}

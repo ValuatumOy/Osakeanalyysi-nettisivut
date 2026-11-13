@@ -1,0 +1,10 @@
+{
+  "ticker": "TPR",
+  "companyName": "Tapestry, Inc.",
+  "profile": "Tapestry is a global house of accessories and lifestyle brands, including Coach and kate spade new york. Coach sells fashion accessories and lifestyle collections, while kate spade offers handbags, ready-to-wear, jewelry, footwear, gifts, home décor, and related products. The brands reach customers through retail and outlet stores, e-commerce, concession locations, wholesale, and licensing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:11.726Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1116132/000111613226000018/tpr-20260627.htm"
+}

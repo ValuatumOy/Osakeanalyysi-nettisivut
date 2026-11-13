@@ -1,0 +1,10 @@
+{
+  "ticker": "MLAB",
+  "companyName": "Mesa Laboratories, Inc.",
+  "profile": "Mesa Laboratories designs and manufactures life sciences tools and quality control products for regulated pharmaceutical, healthcare, and medical device applications. Its offerings include biological, chemical, and cleaning indicators used to assess sterilization, disinfection, and cleaning processes, as well as sterility assurance testing and laboratory services. It also sells consumables and hardware and provides maintenance, calibration, and testing services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:40.547Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/724004/000072400426000047/mlab20260331_10k.htm"
+}

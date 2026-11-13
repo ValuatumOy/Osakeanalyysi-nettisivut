@@ -1,0 +1,10 @@
+{
+  "ticker": "SLAB",
+  "companyName": "Silicon Laboratories Inc.",
+  "profile": "Silicon Laboratories develops secure wireless semiconductor devices and software for connected products. Its integrated hardware and software platforms, development tools, ecosystem, and support help customers design devices for industrial, commercial, home, and life applications. The company focuses on Internet of Things products, including solutions for energy-efficient operation, intelligent data capture, processing, communication, and security.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.867Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1038074/000103807426000005/slab-20260103.htm"
+}

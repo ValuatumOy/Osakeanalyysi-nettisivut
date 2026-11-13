@@ -1,0 +1,13 @@
+{
+  "ticker": "ASTC",
+  "companyName": "Astrotech Corporation",
+  "profile": "Astrotech Corporation commercializes mass spectrometry and gas chromatography technologies through wholly owned subsidiaries. Its products include portable instruments for detecting explosives and narcotics, analyzing agricultural materials and breath samples, controlling industrial processes, and monitoring environmental compounds. The company also holds related technology intellectual property and has announced initiatives to evaluate potential lunar infrastructure technologies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.046Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1001907/000143774926031175/astc20260630_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1001907/000143774926031175/astc20260630_10k.htm"
+  ]
+}

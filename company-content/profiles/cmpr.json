@@ -1,0 +1,10 @@
+{
+  "ticker": "CMPR",
+  "companyName": "Cimpress plc",
+  "profile": "Cimpress provides customized physical marketing products and branded merchandise through a portfolio of print businesses. Its offerings include business cards, signage, promotional products, apparel, packaging, books, magazines, wall decor, photo merchandise, invitations and announcements, alongside design and digital marketing services. The company serves businesses seeking custom products, including in low quantities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.606Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1262976/000126297626000027/cmpr-20260630.htm"
+}

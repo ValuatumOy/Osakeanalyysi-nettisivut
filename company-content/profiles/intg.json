@@ -1,0 +1,13 @@
+{
+  "ticker": "INTG",
+  "companyName": "The InterGroup Corporation",
+  "profile": "The InterGroup Corporation owns and operates the Hilton San Francisco Financial District through a subsidiary, serving business, convention, group, and leisure travelers. Its operations also include ownership and in-house management of apartment complexes, commercial real estate, and single-family homes, as well as investments in marketable securities and other investments. The company may sell real estate properties when appropriate.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.884Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/69422/000149315226044490/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/69422/000149315226044490/form10-k.htm"
+  ]
+}

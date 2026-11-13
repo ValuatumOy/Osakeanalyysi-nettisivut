@@ -1,0 +1,13 @@
+{
+  "ticker": "INMB",
+  "companyName": "INmune Bio, Inc.",
+  "profile": "INmune Bio is a clinical-stage biotechnology company developing product candidates intended to reprogram the innate immune system in diseases associated with chronic inflammation and immune dysfunction. Its programs include CORDStrom, a pooled, umbilical cord-derived mesenchymal stromal cell platform being developed for recessive dystrophic epidermolysis bullosa; XPro, a protein therapeutic targeting soluble TNF; and INKmune, an NK cell-priming platform for cancer.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.856Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1711754/000121390026036370/ea0279078-10k_inmune.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1711754/000121390026036370/ea0279078-10k_inmune.htm"
+  ]
+}

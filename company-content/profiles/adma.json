@@ -1,0 +1,10 @@
+{
+  "ticker": "ADMA",
+  "companyName": "ADMA Biologics, Inc.",
+  "profile": "ADMA Biologics develops, manufactures and markets specialty biologic therapies for people with immune deficiencies and others at risk of certain infectious diseases. Its marketed products include intravenous immune globulin therapies for primary immunodeficiency and hepatitis B immune globulin for specified exposures. The company also operates U.S. plasma collection centers and develops plasma-derived therapeutic candidates for clinical use.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.574Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1368514/000114036126006815/ef20059416_10-k.htm"
+}

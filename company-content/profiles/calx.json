@@ -1,0 +1,10 @@
+{
+  "ticker": "CALX",
+  "companyName": "Calix, Inc.",
+  "profile": "Calix develops and sells broadband platforms, cloud software, appliances, and managed services for communication service providers. Its offerings combine network access and subscriber premises solutions with cloud tools, AI-enabled workflows, and integrated SmartLife services. Calix also provides customer success and market activation services to help providers manage operations and deliver connectivity and related services to residential, business, and municipal subscribers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.529Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1406666/000140666626000005/calx-20251231.htm"
+}

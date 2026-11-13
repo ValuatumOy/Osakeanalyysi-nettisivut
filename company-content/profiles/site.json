@@ -1,0 +1,10 @@
+{
+  "ticker": "SITE",
+  "companyName": "SiteOne Landscape Supply, Inc.",
+  "profile": "SiteOne Landscape Supply distributes landscape supplies wholesale to residential and commercial landscape professionals, primarily private contractors. Its product range includes hardscapes, irrigation supplies, fertilizers and control products, landscape accessories, nursery goods, outdoor lighting and ice melt. The company also provides consultative services such as irrigation project take-offs, commercial project planning, sales lead generation, business operations assistance, product support and technical and management seminars.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.642Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1650729/000165072926000005/site-20251228.htm"
+}

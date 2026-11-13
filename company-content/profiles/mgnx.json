@@ -1,0 +1,13 @@
+{
+  "ticker": "MGNX",
+  "companyName": "MacroGenics, Inc.",
+  "profile": "MacroGenics is a clinical-stage biopharmaceutical company developing antibody-based therapeutics for cancer. Its product candidates include antibody-drug conjugates and multispecific antibodies, developed using its antibody technology platforms. The company also collaborates with biopharmaceutical partners on product development and operates a commercial-scale antibody manufacturing facility, providing contract development and manufacturing services for clinical and commercial products.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.884Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1125345/000112534526000017/mgnx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1125345/000112534526000017/mgnx-20251231.htm"
+  ]
+}

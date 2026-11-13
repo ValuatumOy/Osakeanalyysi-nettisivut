@@ -1,0 +1,10 @@
+{
+  "ticker": "CCC",
+  "companyName": "CCC Intelligent Solutions Holdings Inc.",
+  "profile": "CCC Intelligent Solutions provides cloud software and AI solutions for automotive insurance and collision repair. Its platform supports insurers’ claims workflows and customer experiences, and helps repair facilities manage operations, repair quality and business processes. The platform connects insurers, repairers, parts suppliers and automotive manufacturers, with tools for vehicle damage detection, claim handling, repair estimating, claim review and subrogation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.555Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1818201/000119312526067448/ccc-20251231.htm"
+}

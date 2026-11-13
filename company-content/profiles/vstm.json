@@ -1,0 +1,10 @@
+{
+  "ticker": "VSTM",
+  "companyName": "Verastem, Inc.",
+  "profile": "Verastem is a biopharmaceutical company that develops and commercializes medicines for cancers driven by RAS/MAPK pathways. It markets AVMAPKI FAKZYNJA CO-PACK in the United States for adults with KRAS-mutated recurrent low-grade serous ovarian cancer after prior systemic therapy. Its pipeline includes clinical-stage and preclinical drug programs, including treatments under evaluation for other cancers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.063Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1526119/000110465926023444/vstm-20251231x10k.htm"
+}

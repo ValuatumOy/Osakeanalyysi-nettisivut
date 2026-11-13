@@ -1,0 +1,10 @@
+{
+  "ticker": "OCUL",
+  "companyName": "Ocular Therapeutix, Inc.",
+  "profile": "Ocular Therapeutix develops and commercializes ophthalmic products using its ELUTYX bioresorbable hydrogel technology. Its approved product DEXTENZA treats inflammation and pain after eye surgery and itching associated with allergic conjunctivitis. The company is also developing AXPAXLI for wet age-related macular degeneration and diabetic retinal disease, and OTX-TIC for glaucoma and ocular hypertension.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.721Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1393434/000110465926010664/ocul-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "PRMB",
+  "companyName": "Primo Brands Corporation",
+  "profile": "Primo Brands sells branded water and beverages through retail outlets, hospitality and food service accounts, and direct delivery to homes and businesses. Its offerings include spring, purified, flavored and enhanced beverages, water dispensers and filtration units. Customers can also exchange multi-use water bottles at retail locations or refill them at self-service stations. Its products are distributed across the United States and Canada.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.393Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2042694/000162828026012779/prmb-20251231.htm"
+}

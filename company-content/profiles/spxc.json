@@ -1,0 +1,15 @@
+{
+  "ticker": "SPXC",
+  "companyName": "SPX Technologies, Inc.",
+  "profile": "SPX Technologies supplies engineered infrastructure equipment through its HVAC and Detection and Measurement businesses. HVAC offerings include cooling towers, water management and control systems for cooling applications, air handling, boilers, and heating products. Detection and Measurement products include underground inspection tools, transit fare systems, communications technologies, and navigation lighting. Customers include building operators, utilities, municipalities, transit agencies, and infrastructure contractors.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.083Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/88205/000008820526000008/spxc-20251231.htm",
+  "profileSources": [
+    "https://spx.com/about-spx-technologies/",
+    "https://spx.gcs-web.com/news-releases/news-release-details/spx-technologies-announces-acquisition-fis-water",
+    "https://www.sec.gov/Archives/edgar/data/88205/000008820526000061/spxc-20260926.htm"
+  ]
+}

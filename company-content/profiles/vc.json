@@ -1,0 +1,10 @@
+{
+  "ticker": "VC",
+  "companyName": "Visteon Corporation",
+  "profile": "Visteon develops, manufactures, and supports automotive electronics and related software for vehicle manufacturers worldwide. Its offerings include digital instrument clusters, information displays, infotainment systems, cockpit domain controllers, CognitoAI, battery management systems, high-voltage power electronics, and engineering services. Customers include global automakers such as BMW, Ford, Honda, Toyota, Volkswagen, and other original equipment manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.069Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1111335/000111133526000006/vc-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "TILE",
+  "companyName": "Interface, Inc.",
+  "profile": "Interface provides flooring products for commercial, institutional and residential interiors. Its portfolio includes modular carpet tile, luxury vinyl tile, rubber flooring and premium area rugs, marketed under brands including Interface, FLOR, noraplan and norament. Products serve customers in offices, education, healthcare, government, retail, transportation, hospitality and residential settings, with designs and specifications tailored to varied spaces.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.628Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/715787/000071578726000006/tile-20251228.htm"
+}

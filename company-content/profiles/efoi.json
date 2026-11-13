@@ -1,0 +1,13 @@
+{
+  "ticker": "EFOI",
+  "companyName": "Energy Focus, Inc.",
+  "profile": "Energy Focus designs, develops, manufactures and sells energy-efficient lighting systems and controls. Its products include LED lighting fixtures and lamps for commercial and military maritime applications, as well as energy storage systems, uninterruptible power supplies, tubular LED products and battery backup units. The company serves commercial and military maritime markets with lighting solutions intended to support energy efficiency, productivity and wellness.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.567Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/924168/000162828026020697/efoi-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/924168/000162828026020697/efoi-20251231.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AUPH",
+  "companyName": "Aurinia Pharmaceuticals Inc.",
+  "profile": "Aurinia Pharmaceuticals is a biopharmaceutical company focused on therapies for autoimmune diseases. It markets LUPKYNIS, an oral therapy for adults with active lupus nephritis, directly through its U.S. commercial organization and sells it to specialty pharmacies and a specialty distributor. Collaboration partner Otsuka markets the product in Japan, the European Union, the United Kingdom and Switzerland.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.958Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1600620/000160062026000017/auph-20251231.htm"
+}

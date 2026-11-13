@@ -1,0 +1,13 @@
+{
+  "ticker": "WFCF",
+  "companyName": "Where Food Comes From, Inc.",
+  "profile": "Where Food Comes From provides third-party verification of food production practices and product claims in North America. Its services include on-site and desk audits covering livestock, aquaculture, crops, and other food products, as well as consulting and technology solutions for the food and agriculture industries. Its labeling program connects consumers with product information through retail and restaurant labels and web-based resources.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.746Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1360565/000149315226008155/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1360565/000149315226008155/form10-k.htm"
+  ]
+}

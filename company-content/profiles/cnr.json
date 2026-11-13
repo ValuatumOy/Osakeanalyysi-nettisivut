@@ -1,0 +1,10 @@
+{
+  "ticker": "CNR",
+  "companyName": "Core Natural Resources, Inc.",
+  "profile": "Core Natural Resources produces metallurgical and thermal coal, with mining operations primarily in the Appalachian Basin. Its coal serves steelmaking, electricity generation, cement production, and other infrastructure uses. The company sells to export markets and rail-served power plants, and reaches international customers through ownership interests in marine export terminals and access to other ports.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.862Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000007/cnr-20251231.htm"
+}

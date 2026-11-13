@@ -1,0 +1,10 @@
+{
+  "ticker": "FLGT",
+  "companyName": "Fulgent Genetics, Inc.",
+  "profile": "Fulgent Genetics provides laboratory testing and therapeutic development services. Its laboratory business offers anatomic pathology, genetic and precision diagnostic testing, including oncology, rare disease, hereditary cancer and reproductive health services. It also serves pharmaceutical and biotechnology companies with testing, licensing and sponsored programs, and offers consumers testing through a telemedicine platform. Its therapeutic business develops cancer drug candidates using nanoencapsulation technology.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.144Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1674930/000119312526079169/flgt-20251231.htm"
+}

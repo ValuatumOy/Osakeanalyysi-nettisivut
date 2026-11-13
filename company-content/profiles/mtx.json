@@ -1,0 +1,10 @@
+{
+  "ticker": "MTX",
+  "companyName": "Minerals Technologies Inc.",
+  "profile": "Minerals Technologies develops, produces, and markets minerals, mineral-based products, and related services. Its Consumer & Specialties segment supplies household and personal care products, including cat litter, and specialty additives used in consumer and industrial goods. Its Engineered Solutions segment provides engineered systems, mineral blends, and technologies for industrial customers seeking to improve manufacturing processes and projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.749Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/891014/000089101426000067/form10k.htm"
+}

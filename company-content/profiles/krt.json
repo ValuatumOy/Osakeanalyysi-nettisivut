@@ -1,0 +1,10 @@
+{
+  "ticker": "KRT",
+  "companyName": "Karat Packaging Inc.",
+  "profile": "Karat Packaging distributes and manufactures disposable foodservice products and related items, including containers, bags, boxes, tableware, cups, lids, cutlery, straws, beverage ingredients, gloves and janitorial supplies. Products are available in plastic, paper and compostable forms. The company also provides customized product development, design, printing and logistics services. Its customers include distributors, restaurant and supermarket chains, retail establishments and online customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.994Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1758021/000175802126000010/krt-20251231.htm"
+}

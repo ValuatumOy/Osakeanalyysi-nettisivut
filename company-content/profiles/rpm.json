@@ -1,0 +1,10 @@
+{
+  "ticker": "RPM",
+  "companyName": "RPM International Inc.",
+  "profile": "RPM International manufactures, markets, and sells specialty chemical products focused on maintenance and improvement needs. Its offerings include specialty paints, protective and industrial coatings, roofing systems, sealants and adhesives, infrastructure repair products, flooring systems, and building envelope solutions. The company serves construction, industrial, specialty, and consumer markets through its subsidiaries and product lines, which include construction products, performance coatings, and consumer businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.819Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/110621/000119312526312142/rpm-20260531.htm"
+}

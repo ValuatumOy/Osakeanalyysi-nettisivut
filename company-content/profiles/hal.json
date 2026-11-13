@@ -1,0 +1,10 @@
+{
+  "ticker": "HAL",
+  "companyName": "Halliburton Company",
+  "profile": "Halliburton provides products and services to oil and natural gas producers throughout the reservoir lifecycle, from locating hydrocarbons and managing geological data to drilling, well construction, completion, and production optimization. Its Completion and Production segment offers cementing, stimulation, specialty chemicals, intervention, pressure control, artificial lift, and completion products and services. Its Drilling and Evaluation segment supports drilling and formation evaluation activities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.206Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/45012/000004501226000015/hal-20251231.htm"
+}

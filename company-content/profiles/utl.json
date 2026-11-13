@@ -1,0 +1,10 @@
+{
+  "ticker": "UTL",
+  "companyName": "Unitil Corporation",
+  "profile": "Unitil is a public utility holding company whose subsidiaries distribute electricity and natural gas to residential, commercial, and industrial customers in New Hampshire, Massachusetts, and Maine. Its utilities provide local electric service and natural gas distribution, while an interstate pipeline supplies gas transportation access to affiliated utilities. A service subsidiary provides centralized administrative, professional, engineering, operations, technology, and energy supply management services to affiliated companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.524Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/755001/000119312526042983/utl-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "EPAM",
+  "companyName": "EPAM Systems, Inc.",
+  "profile": "EPAM provides digital engineering, cloud and artificial intelligence-enabled transformation services, along with business, experience and technology consulting. Its work for global enterprises and start-ups includes software development and product engineering, digital experience design, cloud platforms, cybersecurity and AI solutions. Services span strategy, product research, implementation, integration, testing, deployment, migration, support and maintenance, delivered through multidisciplinary teams and a global delivery platform.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.041Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1352010/000135201026000015/epam-20251231.htm"
+}

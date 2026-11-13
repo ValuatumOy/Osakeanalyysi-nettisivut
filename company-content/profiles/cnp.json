@@ -1,0 +1,14 @@
+{
+  "ticker": "CNP",
+  "companyName": "CenterPoint Energy, Inc.",
+  "profile": "CenterPoint Energy is a public utility holding company whose operating subsidiaries provide electric transmission and distribution, natural gas distribution, and energy delivery services. Houston Electric serves transmission customers in the ERCOT region and retail electric providers in the Texas Gulf Coast area. Other subsidiaries operate natural gas systems in Minnesota, Texas, and Indiana, and provide electric and gas service in southwestern Indiana.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:27:25.184Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1130310/000113031026000008/cnp-20251231.htm",
+  "profileSources": [
+    "https://investors.centerpointenergy.com/news-releases/news-release-details/centerpoint-energy-reports-strong-q3-2026-results-raises",
+    "https://investors.centerpointenergy.com/news-releases/news-release-details/centerpoint-energy-completes-sale-its-ohio-natural-gas-business"
+  ]
+}

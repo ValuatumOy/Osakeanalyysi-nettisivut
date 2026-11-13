@@ -1,0 +1,10 @@
+{
+  "ticker": "VYX",
+  "companyName": "NCR Voyix Corporation",
+  "profile": "NCR Voyix provides commerce technology for retailers and restaurants. Its offerings combine software applications, services, payments, and point-of-sale and self-checkout hardware. The company supports transactions and operations across digital and physical customer channels, including online, in-store, curbside, and mobile settings. Its customers use the platform to manage commerce and customer experiences.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.228Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/70866/000007086626000006/ncr-20251231.htm"
+}

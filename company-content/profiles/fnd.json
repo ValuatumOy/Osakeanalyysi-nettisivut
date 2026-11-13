@@ -1,0 +1,10 @@
+{
+  "ticker": "FND",
+  "companyName": "Floor & Decor Holdings, Inc.",
+  "profile": "Floor & Decor is a specialty retailer of hard surface flooring and related accessories, and a seller of commercial surfaces. Its stores and website offer laminate and vinyl, tile, wood, natural stone, installation materials, tools, decorative accessories, and adjacent products. Customers include professional installers, commercial businesses, homeowners undertaking projects themselves, and homeowners buying products for professional installation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.616Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026009770/fnd-20251225.htm"
+}

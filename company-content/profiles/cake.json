@@ -1,0 +1,10 @@
+{
+  "ticker": "CAKE",
+  "companyName": "The Cheesecake Factory Incorporated",
+  "profile": "The Cheesecake Factory Incorporated owns and operates restaurants in the United States and Canada under The Cheesecake Factory, North Italia, Flower Child, and other Fox Restaurant Concepts brands, and licenses its restaurant brand internationally. Its bakery division produces cheesecakes and other baked goods for its restaurants, international licensees, and third-party bakery customers. Restaurant guests can dine in or order food for off-premise consumption.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/887596/000110465926018643/cake-20251230x10k.htm"
+}

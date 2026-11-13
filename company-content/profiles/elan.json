@@ -1,0 +1,10 @@
+{
+  "ticker": "ELAN",
+  "companyName": "Elanco Animal Health Incorporated",
+  "profile": "Elanco develops and sells animal health products and services intended to prevent and treat disease in pets and farm animals. Its portfolio includes products for dogs, cats, cattle, poultry, swine and sheep, marketed under numerous brands in many countries. Customers and partners include farmers, pet owners and veterinarians. Its pet health products cover areas including parasite control, dermatology, vaccines and pain treatments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.041Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1739104/000173910426000012/elan-20251231.htm"
+}

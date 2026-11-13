@@ -1,0 +1,10 @@
+{
+  "ticker": "AXGN",
+  "companyName": "AxoGen, Inc.",
+  "profile": "AxoGen develops and commercializes technologies for peripheral nerve regeneration and repair, serving surgeons and healthcare providers treating nerve injuries. Its products include processed human nerve grafts, porcine tissue nerve connectors, protectors and caps, and a multilayer amniotic membrane tissue matrix. The portfolio is available in the United States and several other countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.496Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/805928/000080592826000031/axgn-20251231.htm"
+}

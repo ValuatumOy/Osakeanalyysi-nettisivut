@@ -1,0 +1,10 @@
+{
+  "ticker": "KWR",
+  "companyName": "Quaker Chemical Corporation",
+  "profile": "Quaker Chemical Corporation, operating as Quaker Houghton, develops, produces and markets specialty chemical products and chemical management services for industrial and manufacturing applications. Its products include metal removal and forming fluids, corrosion inhibitors, hydraulic fluids, rolling lubricants, surface solutions and specialty greases. Customers include steel, aluminum, automotive, aerospace, offshore, can, mining and metalworking companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.608Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/81362/000162828026010694/kwr-20251231.htm"
+}

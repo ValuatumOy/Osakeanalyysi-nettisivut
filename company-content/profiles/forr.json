@@ -1,0 +1,13 @@
+{
+  "ticker": "FORR",
+  "companyName": "Forrester Research, Inc.",
+  "profile": "Forrester Research is an independent research and advisory firm serving business and technology leaders and teams worldwide. It provides subscription research, consulting, and events covering areas such as technology, customer experience, digital, marketing, sales, and product. Its research includes trends, forecasts, buyer data, business practices, benchmarking, and vendor evaluations, with analyst guidance to help clients apply findings to their initiatives.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.104Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1023313/000119312526105114/forr-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1023313/000119312526105114/forr-20251231.htm"
+  ]
+}

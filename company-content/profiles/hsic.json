@@ -1,0 +1,10 @@
+{
+  "ticker": "HSIC",
+  "companyName": "Henry Schein, Inc.",
+  "profile": "Henry Schein distributes health care products and services primarily to dental and medical practitioners and alternate care sites. Its offerings include branded and corporate-brand merchandise, equipment, technical services, financial and consulting services, continuing education, and practice management software and e-services. The company also manufactures and sells dental implants, biomaterials, endodontic, orthodontic and orthopedic products for dental practices, laboratories, physician practices and other health care providers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.566Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1000228/000100022826000013/hsic-20251227.htm"
+}

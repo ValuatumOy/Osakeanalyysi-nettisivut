@@ -1,0 +1,10 @@
+{
+  "ticker": "EVTC",
+  "companyName": "EVERTEC, Inc.",
+  "profile": "EVERTEC provides transaction processing, payment services, and financial technology solutions across Latin America, Puerto Rico, and the Caribbean. Its offerings include merchant acquiring, electronic payment processing, core banking, cash processing, and support services such as managed security and fraud monitoring. Customers include financial institutions, merchants, corporations, and government agencies that use its systems to issue, process, and accept transactions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.931Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1559865/000155986526000012/evtc-20251231.htm"
+}

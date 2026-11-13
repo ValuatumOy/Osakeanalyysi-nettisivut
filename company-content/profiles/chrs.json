@@ -1,0 +1,13 @@
+{
+  "ticker": "CHRS",
+  "companyName": "Coherus BioSciences, Inc.",
+  "profile": "Coherus Oncology is a commercial-stage oncology company that commercializes LOQTORZI in the United States and develops cancer medicines. LOQTORZI is an approved PD-1 inhibitor for certain adults with nasopharyngeal carcinoma. Its clinical pipeline includes casdozokitug, an investigational IL-27 antagonist, and tagmokitug, an investigational CCR8-targeting antibody. The company holds global development and commercialization rights to both candidates.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:51:51.232Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1512762/000110465926025308/chrs-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1512762/000110465926025308/chrs-20251231x10k.htm"
+  ]
+}

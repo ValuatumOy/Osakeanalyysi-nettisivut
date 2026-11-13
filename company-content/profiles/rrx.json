@@ -1,0 +1,10 @@
+{
+  "ticker": "RRX",
+  "companyName": "Regal Rexnord Corporation",
+  "profile": "Regal Rexnord provides products and subsystems that power, transmit and control motion. Its portfolio includes electric motors, air-moving systems, power transmission components, conveyor products, automation controls, drives, precision motors and actuators. Customers operate in factory automation, food and beverage, aerospace, medical, data center, general industrial, energy, mining, HVAC and residential and commercial markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/82811/000008281126000054/rbc-20251231.htm"
+}

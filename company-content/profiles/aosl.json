@@ -1,0 +1,10 @@
+{
+  "ticker": "AOSL",
+  "companyName": "Alpha and Omega Semiconductor Limited",
+  "profile": "Alpha and Omega Semiconductor designs, develops, and supplies power semiconductors for electronics manufacturers. Its portfolio includes MOSFETs, insulated gate bipolar transistors, integrated power modules, and power integrated circuits. Products serve applications such as computers, graphics cards, game consoles, appliances, power tools, phones, battery packs, motor controls, and power supplies for servers and telecommunications equipment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.410Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1387467/000162828026059261/aosl-20260630.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "HUBS",
+  "companyName": "HubSpot, Inc.",
+  "profile": "HubSpot provides a subscription customer platform for marketing, sales, customer service, operations, content, and commerce teams, primarily at mid-market business-to-business companies. Its platform combines AI-powered agents and engagement hubs with a customer relationship management product and a connected ecosystem of integrations, templates, partners, community, and educational content. Tools support customer data management, marketing, sales processes, support, billing, and payments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:44.924Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1404655/000119312526046646/hubs-20251231.htm"
+}

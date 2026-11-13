@@ -1,0 +1,10 @@
+{
+  "ticker": "U",
+  "companyName": "Unity Software Inc.",
+  "profile": "Unity provides software and services for creating, deploying and growing games and interactive experiences across mobile, PC, console and extended reality platforms. Its Create tools support real-time 2D and 3D content development, while Grow products help customers acquire users and monetize content through advertising and publishing services. Customers include developers, enterprises, government and nonprofit institutions, and individual creators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1810806/000181080626000011/unity-20251231.htm"
+}

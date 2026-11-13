@@ -1,0 +1,10 @@
+{
+  "ticker": "FTV",
+  "companyName": "Fortive Corporation",
+  "profile": "Fortive develops and markets products, software, and services through its Intelligent Operating Solutions and Advanced Healthcare Solutions segments. Its Intelligent Operating Solutions offerings include professional instruments for maintenance, repair, measurement, and condition monitoring; facility and asset lifecycle software; and connected worker safety and compliance solutions. Customers use these offerings in industrial, healthcare, utility, communications, and other settings.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:02.542Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1659166/000165916626000007/ftv-20251231.htm"
+}

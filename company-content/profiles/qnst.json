@@ -1,0 +1,10 @@
+{
+  "ticker": "QNST",
+  "companyName": "QuinStreet, Inc.",
+  "profile": "QuinStreet operates performance marketplaces and marketing technologies for financial services and home services companies. It connects high-intent digital media traffic with client offerings and provides qualified clicks, leads, calls, applications, and customers through online marketing programs. Its media sources include search, websites, email, social and mobile programs, call centers, and media partnerships; clients generally pay per click, lead, or other action.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.798Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1117297/000119312526367160/qnst-20260630.htm"
+}

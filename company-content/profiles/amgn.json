@@ -1,0 +1,10 @@
+{
+  "ticker": "AMGN",
+  "companyName": "Amgen Inc.",
+  "profile": "Amgen discovers, develops, manufactures, and delivers human therapeutic medicines. Its products address diseases and areas of medical need, with examples in the filing including treatments for cardiovascular risk, IgG4-related disease, generalized myasthenia gravis, small cell lung cancer, chronic rhinosinusitis with nasal polyps, and thyroid eye disease. The company serves patients and healthcare providers through its medicines across markets worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:36.604Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/318154/000031815426000010/amgn-20251231.htm"
+}

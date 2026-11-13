@@ -1,0 +1,13 @@
+{
+  "ticker": "DTIL",
+  "companyName": "Precision BioSciences, Inc.",
+  "profile": "Precision BioSciences is a clinical-stage gene editing company developing therapies with its ARCUS platform. The platform supports in vivo gene insertion, elimination, and excision, and the company is advancing programs for genetic and infectious diseases. Its pipeline includes a clinical-stage program designed to address chronic hepatitis B, alongside programs developed internally and with partners.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.885Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1357874/000162828026017019/dtil-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1357874/000162828026017019/dtil-20251231.htm"
+  ]
+}

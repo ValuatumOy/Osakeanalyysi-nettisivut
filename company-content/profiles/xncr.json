@@ -1,0 +1,10 @@
+{
+  "ticker": "XNCR",
+  "companyName": "Xencor, Inc.",
+  "profile": "Xencor is a clinical-stage biopharmaceutical company that discovers and develops engineered antibody therapeutics for cancer and autoimmune diseases. Its protein engineering technologies support XmAb drug candidates with features such as multi-target activity, bispecific structures, and extended half-life. The company advances candidates through clinical development and may develop programs with partners. Its research portfolio includes T-cell engaging antibodies and candidates for solid tumors and autoimmune conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.151Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1326732/000132673226000015/xncr-20251231.htm"
+}

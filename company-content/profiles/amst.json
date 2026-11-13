@@ -1,0 +1,13 @@
+{
+  "ticker": "AMST",
+  "companyName": "Amesite Inc.",
+  "profile": "Amesite develops AI-powered applications for enterprises and professionals, with emphasis on post-acute healthcare. Its NurseMagic products provide documentation and workflow tools for individual nurses, caregivers, and healthcare businesses, while LynkMagic offers enterprise AI solutions for healthcare and related organizations. The company also operates Amesite Engage, an application serving professional, educational, and individual needs, though it is not currently dedicating resources to its growth.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.550Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1807166/000121390026102676/ea0303992-10k_amesite.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1807166/000121390026102676/ea0303992-10k_amesite.htm"
+  ]
+}

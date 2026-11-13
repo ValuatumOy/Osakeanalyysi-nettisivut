@@ -1,0 +1,14 @@
+{
+  "ticker": "SWKS",
+  "companyName": "Skyworks Solutions, Inc.",
+  "profile": "Skyworks develops radio frequency, analog, mixed-signal, power-management and connectivity semiconductors for mobile and connected products. Following its 2026 combination with Qorvo, its portfolio also spans RF gallium nitride, low-voltage power and wired broadband technologies. The company serves smartphone makers and customers in defense and aerospace, automotive, data center, networking and connected-edge markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:27:25.195Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/4127/000000412726000055/swks-20261002.htm",
+  "profileSources": [
+    "https://investors.skyworksinc.com/news-releases/news-release-details/skyworks-completes-combination-qorvo",
+    "https://investors.skyworksinc.com/news-releases/news-release-details/skyworks-begins-new-chapter-following-qorvo-combination-reports"
+  ]
+}

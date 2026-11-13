@@ -14,6 +14,7 @@ import { sameText } from './same-text.mjs';
 import { headlineOf } from './report-headline.mjs';
 import { upsertUrl } from './seo-sitemap.mjs';
 import { directoryBucket } from './company-pages/directory-bucket.mjs';
+import { directoryIdentity } from './company-pages/directory-identity.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.aiequityreports.com';
@@ -32,13 +33,14 @@ function collect() {
     const html = fs.readFileSync(path.join(ROOT, 'reports', f), 'utf8');
     if (/noindex/i.test((html.match(/<meta name="robots" content="([^"]*)"/) || [])[1] || '')) continue;
     const title = dec((html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '');
-    const m = title.match(/^(.*?)\s*\(([^)]+)\)\s*(?:Stock|Valuation)/);
-    if (!m) continue;
+    const heading = dec((html.match(/<h1\b[^>]*class="company-name"[^>]*>([\s\S]*?)<\/h1>/i) || [])[1] || '');
+    const identity = directoryIdentity(title, heading);
+    if (!identity) continue;
     const h = headlineOf(html);
     out.push({
       slug: f.replace(/\.html$/, ''),
-      name: m[1].trim(),
-      ticker: m[2].trim(),
+      name: identity.name,
+      ticker: identity.ticker,
       mode: (html.match(/valuatum-page-mode" content="([a-z]+)"/) || [])[1] || 'company',
       rating: h ? h.recommendation : null,
       target: h && h.targetPrice ? String(h.targetPrice).replace(/\s+/g, ' ') : null,

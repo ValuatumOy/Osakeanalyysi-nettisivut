@@ -1,0 +1,10 @@
+{
+  "ticker": "DNUT",
+  "companyName": "Krispy Kreme, Inc.",
+  "profile": "Krispy Kreme makes and sells fresh doughnuts, including its Original Glazed variety and other hand-crafted and decorated products. Consumers buy them at company-operated and franchise shops, through fresh deliveries to grocery stores, club wholesalers, convenience stores, restaurants and drug stores, and through digital ordering for pickup or delivery. The company also partners with retailers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.591Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1857154/000185715426000015/dnut-20251228.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "PFGC",
+  "companyName": "Performance Food Group Company",
+  "profile": "Performance Food Group markets and distributes food and food-related products across North America. Its customers include independent and chain restaurants, schools, healthcare facilities, businesses, retailers, convenience stores, vending and office coffee distributors, and theaters. Its offerings include meat, seafood, frozen and refrigerated foods, groceries, disposables, and kitchen supplies, alongside services such as product procurement, menu development, and operational strategy.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:02.544Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1618673/000119312526346886/pfgc-20260627.htm"
+}

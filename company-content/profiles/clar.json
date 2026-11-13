@@ -1,0 +1,13 @@
+{
+  "ticker": "CLAR",
+  "companyName": "Clarus Corporation",
+  "profile": "Clarus designs, develops, manufactures, and distributes outdoor equipment and lifestyle products through brands including Black Diamond, Rhino-Rack, MAXTRAX, TRED Outdoors, and RockyMounts. Its products include climbing, skiing, and mountain sports equipment; vehicle racks and accessories; off-road recovery gear; and bicycle racks. Products are sold through specialty and online retailers, company websites, distributors, and original equipment manufacturers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.733Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/913277/000110465926024159/clar-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/913277/000110465926024159/clar-20251231x10k.htm"
+  ]
+}

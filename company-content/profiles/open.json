@@ -1,0 +1,10 @@
+{
+  "ticker": "OPEN",
+  "companyName": "Opendoor Technologies Inc.",
+  "profile": "Opendoor operates a digital platform for residential real estate transactions, enabling homeowners to buy and sell homes directly with the company. Its online experience uses software, data science and artificial intelligence to support home transactions. The company also integrates related services, including mortgage origination, title and escrow, home warranties and insurance, for residential buyers and sellers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.648Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1801169/000180116926000010/open-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "CRBU",
+  "companyName": "Caribou Biosciences, Inc.",
+  "profile": "Caribou Biosciences is a clinical-stage biopharmaceutical company developing genome-edited cell therapies. Its chRDNA technology is used to engineer allogeneic, or off-the-shelf, CAR-T cell therapy candidates made from healthy donor cells. The company is advancing candidates targeting CD19 for B-cell non-Hodgkin lymphoma and BCMA for multiple myeloma. These investigational therapies are intended for patients with hematologic malignancies and are being evaluated in clinical trials.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.104Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1619856/000161985626000008/crbu-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1619856/000161985626000008/crbu-20251231.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "NSYS",
+  "companyName": "Nortech Systems Incorporated",
+  "profile": "Nortech Systems provides engineering design and contract manufacturing services for complex medical devices, electromechanical systems, assemblies, and components. Its services include project management, design, testing, prototyping, manufacturing, supply chain management, and post-market support. Customers are original equipment manufacturers in medical device, medical imaging, aerospace and defense, and industrial markets, with products often built to customer specifications.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.050Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/722313/000149315226012913/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/722313/000149315226012913/form10-k.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "PXLW",
+  "companyName": "Pixelworks, Inc.",
+  "profile": "Pixelworks develops and licenses cinematic visualization solutions, including its TrueCut Motion platform for content creation, remastering, video streaming, and display of cinematic video. The platform gives filmmakers tools to tune motion blur, judder, and frame-rate appearance and aims to preserve creative intent across screens. The company also develops video algorithms and maintains an intellectual property portfolio related to visual display of digital image data.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.857Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1040161/000104016126000019/pxlw-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1040161/000104016126000019/pxlw-20251231.htm"
+  ]
+}

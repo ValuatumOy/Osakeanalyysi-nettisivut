@@ -1,0 +1,10 @@
+{
+  "ticker": "TRC",
+  "companyName": "Tejon Ranch Co.",
+  "profile": "Tejon Ranch Co. develops, leases, and monetizes land-based real estate, with commercial and industrial properties at Tejon Ranch Commerce Center as a central business. Its portfolio includes leased industrial and commercial space and residential rental communities. The company also conducts mineral resource, farming, and ranching activities and works with joint ventures to develop real estate properties.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.970Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/96869/000162828026019685/trc-20251231.htm"
+}

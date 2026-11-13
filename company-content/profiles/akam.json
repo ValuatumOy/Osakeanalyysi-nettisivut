@@ -1,0 +1,10 @@
+{
+  "ticker": "AKAM",
+  "companyName": "Akamai Technologies, Inc.",
+  "profile": "Akamai provides security, cloud computing and content delivery services to enterprises. Its offerings include application and API protection, web application firewalls, bot management, DDoS protection, DNS security, network segmentation and distributed computing infrastructure for applications. The company also provides customer services and support, helping businesses protect data, applications, networks and users while delivering digital experiences across global internet infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:41.056Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000022/akam-20251231.htm"
+}

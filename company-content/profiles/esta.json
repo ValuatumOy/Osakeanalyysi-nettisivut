@@ -1,0 +1,10 @@
+{
+  "ticker": "ESTA",
+  "companyName": "Establishment Labs Holdings Inc.",
+  "profile": "Establishment Labs is a medical technology company focused on breast aesthetics and reconstruction. Its product portfolio centers on Motiva silicone gel-filled breast implants, including Round, Ergonomix, Anatomical and Ergonomix2 families, as well as the Flora Tissue Expander. Products are sold through exclusive distributors or the company’s direct sales force, serving the breast augmentation and reconstruction market.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1688757/000168875726000022/esta-20251231.htm"
+}

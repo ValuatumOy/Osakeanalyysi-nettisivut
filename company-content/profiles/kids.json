@@ -1,0 +1,10 @@
+{
+  "ticker": "KIDS",
+  "companyName": "OrthoPediatrics Corp.",
+  "profile": "OrthoPediatrics designs, develops and markets orthopedic implants, surgical instruments and specialized braces for children with orthopedic conditions. Its products are sold to hospitals and medical facilities in the United States and international markets. The company uses contract manufacturers for implants and related instrumentation, typically makes braces in-house, and operates orthotic and prosthetic clinics that provide pediatric nonsurgical treatment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.995Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1425450/000142545026000013/kids-20251231.htm"
+}

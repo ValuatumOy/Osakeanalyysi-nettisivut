@@ -1,0 +1,13 @@
+{
+  "ticker": "IZEA",
+  "companyName": "IZEA Worldwide, Inc.",
+  "profile": "IZEA Worldwide provides influencer marketing services and technology that connect marketers with social media creators. Its managed services support campaign strategy, creator partnerships, content, performance media, and social commerce, using proprietary tools for discovery, workflow, compliance, and measurement. Its platform also enables creators and marketers to find, engage, and collaborate with one another. Customers include brands, advertising agencies, and independent creators.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.475Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1495231/000149523126000010/izea-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1495231/000149523126000010/izea-20251231.htm"
+  ]
+}

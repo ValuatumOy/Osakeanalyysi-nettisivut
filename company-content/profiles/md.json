@@ -1,0 +1,10 @@
+{
+  "ticker": "MD",
+  "companyName": "Pediatrix Medical Group, Inc.",
+  "profile": "Pediatrix Medical Group provides physician services in newborn, maternal-fetal, and other pediatric subspecialty care through affiliated clinicians. Its neonatal teams care for premature or medically complicated babies, primarily in hospital neonatal intensive care units. Maternal-fetal clinicians provide inpatient and office-based care to expectant mothers with complicated pregnancies and their unborn babies. The network also includes pediatric intensivists, hospitalists, and surgeons serving hospital clients and patients.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:37.828Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/893949/000119312526058074/md-20251231.htm"
+}

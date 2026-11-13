@@ -1,0 +1,13 @@
+{
+  "ticker": "INSE",
+  "companyName": "Inspired Entertainment, Inc.",
+  "profile": "Inspired Entertainment supplies gaming content, platforms, terminals, software and related services to licensed online and land-based lottery, betting and gaming operators. Its products include digital games delivered through proprietary and third-party networks, server-based gaming systems, and terminals for venues such as casinos, betting offices, gaming centers, pubs and bingo halls. Customers include licensed lotteries, bookmakers and gaming operators.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:41.551Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1615063/000149315226009479/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1615063/000149315226009479/form10-k.htm"
+  ]
+}

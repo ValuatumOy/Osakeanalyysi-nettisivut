@@ -1,0 +1,10 @@
+{
+  "ticker": "PPG",
+  "companyName": "PPG Industries, Inc.",
+  "profile": "PPG Industries manufactures and distributes paints, coatings and specialty products for industrial, commercial and residential uses. Its offerings include architectural coatings, aerospace coatings, automotive refinish products, adhesives, sealants and related services. Customers include painting and maintenance contractors, consumers, industrial equipment makers, packaging and automotive manufacturers, aircraft operators, and businesses in marine and other markets. Products reach customers through stores, distributors and direct sales.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:30.002Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/79879/000007987926000046/ppg-20251231.htm"
+}

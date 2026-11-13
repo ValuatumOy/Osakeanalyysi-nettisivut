@@ -1,0 +1,10 @@
+{
+  "ticker": "FAST",
+  "companyName": "Fastenal Company",
+  "profile": "Fastenal sells industrial and construction supplies across more than nine major product lines, primarily to business customers. It serves customers through physical locations and customer sites, supported by distribution centers and technologies such as vending, bin stock, and eBusiness. Its service models include inventory management, integrated supply, replenishment, and advanced manufacturing services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:53.332Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/815556/000081555626000009/fast-20251231.htm"
+}

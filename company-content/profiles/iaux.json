@@ -1,0 +1,14 @@
+{
+  "ticker": "IAUX",
+  "companyName": "i-80 Gold Corp.",
+  "profile": "i-80 Gold is a Nevada-focused gold mining and development company. Its portfolio includes producing underground operations and projects for future underground and open-pit mining. The company is developing a hub-and-spoke approach, with the Lone Tree plant being refurbished as a central processing facility for underground ore. It sells gold and silver-bearing material to third-party processors while advancing its Nevada mine portfolio.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.071Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1853962/000162828026009886/iaux-20251231.htm",
+  "profileSources": [
+    "https://www.i80gold.com/10748-2/",
+    "https://www.i80gold.com/lone-tree/"
+  ]
+}

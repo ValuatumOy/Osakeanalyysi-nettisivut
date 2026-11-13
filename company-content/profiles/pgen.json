@@ -1,0 +1,10 @@
+{
+  "ticker": "PGEN",
+  "companyName": "Precigen, Inc.",
+  "profile": "Precigen is a commercial-stage biopharmaceutical company developing precision medicines for immuno-oncology, autoimmune disorders, and infectious diseases. Its approved product, Papzimeos, is an immunotherapy for adults with recurrent respiratory papillomatosis. The company’s platforms include AdenoVerse immunotherapy and UltraCAR-T, and its pipeline includes clinical-stage candidates for cancer. It also developed the UltraPorator device to support manufacturing of UltraCAR-T therapies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.264Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1356090/000135609026000009/pgen-20251231.htm"
+}

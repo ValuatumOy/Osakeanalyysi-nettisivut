@@ -1,0 +1,10 @@
+{
+  "ticker": "SCSC",
+  "companyName": "ScanSource, Inc.",
+  "profile": "ScanSource distributes technology solutions and services to channel sales partners, including value-added resellers, advisors, independent sales organizations, software vendors, and managed service providers. Its offerings span mobility and barcode products, point-of-sale and payment terminals, physical security, networking, communications, connectivity, software as a service, and cloud services. It provides technical support, configuration, engineering, and related services to partners serving end users.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.013Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/918965/000091896526000044/scsc-20260630.htm"
+}

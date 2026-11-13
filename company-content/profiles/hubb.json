@@ -1,0 +1,10 @@
+{
+  "ticker": "HUBB",
+  "companyName": "Hubbell Incorporated",
+  "profile": "Hubbell manufactures electrical and utility solutions used across energy infrastructure, buildings, factories and other critical facilities. Its Utility Solutions segment supplies transmission and distribution components, smart meters, communications systems, and protection and control devices. Its Electrical Solutions segment provides components for managing power in buildings and industrial settings. Products are sold mainly through distributors or directly to utilities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:30.001Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/48898/000162828026007500/hubb-20251231.htm"
+}

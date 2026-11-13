@@ -1,0 +1,14 @@
+{
+  "ticker": "PRGS",
+  "companyName": "Progress Software Corporation",
+  "profile": "Progress Software provides software for developing and managing applications, data and digital experiences. Its portfolio includes development tools, data connectivity, automation, secure file transfer, document collaboration, monitoring and application delivery. In September 2026, it completed the acquisition of Domo’s AI and data platform business, adding business intelligence, data integration, analytics, workflow automation and AI agent capabilities for enterprise, commercial and government customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:36.457Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/876167/000087616726000008/prgs-20251130.htm",
+  "profileSources": [
+    "https://investors.progress.com/news-releases/news-release-details/progress-software-reports-fiscal-third-quarter-2026-financial",
+    "https://investors.progress.com/news-releases/news-release-details/progress-software-completes-acquisition-domos-ai-and-data?trk=public_post_comment-text"
+  ]
+}

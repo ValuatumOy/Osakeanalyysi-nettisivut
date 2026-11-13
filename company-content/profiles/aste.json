@@ -1,0 +1,10 @@
+{
+  "ticker": "ASTE",
+  "companyName": "Astec Industries, Inc.",
+  "profile": "Astec Industries designs, manufactures, markets, and services equipment and components used in road building and related construction. Its products support work from aggregate quarrying and crushing to asphalt and concrete road surfacing. It also supplies equipment for mining, forestry, recycling, energy, and other industries, along with automation and telematics platforms and replacement parts for its own and some competitors' equipment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.759Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/792987/000079298726000011/aste-20251231.htm"
+}

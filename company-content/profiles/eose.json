@@ -1,0 +1,14 @@
+{
+  "ticker": "EOSE",
+  "companyName": "Eos Energy Enterprises, Inc.",
+  "profile": "Eos Energy Enterprises designs and manufactures stationary long-duration energy storage systems using aqueous zinc-based Znyth battery technology. Its Eos Z3 modules are assembled into modular products, with controls and support services for multi-hour storage applications. Utility, industrial, and commercial customers use the systems to store electricity for grid and facility needs; recent deployments include projects supporting data center power demand.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.067Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1805077/000162828026011961/eose-20251231.htm",
+  "profileSources": [
+    "https://investors.eose.com/news-releases/news-release-details/eos-energy-enterprises-reports-third-quarter-2026-revenue-827/",
+    "https://www.eose.com/technology/"
+  ]
+}

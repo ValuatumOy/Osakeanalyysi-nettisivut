@@ -1,0 +1,10 @@
+{
+  "ticker": "RARE",
+  "companyName": "Ultragenyx Pharmaceutical Inc.",
+  "profile": "Ultragenyx Pharmaceutical develops and commercializes therapies for serious rare and ultra-rare genetic diseases. Its products and candidates include biologics, small molecules, gene therapies, and nucleic acid treatments. The company has approved therapies and clinical-stage candidates, and focuses on diseases with significant unmet medical needs. It serves patients through its commercial organization in multiple regions and third-party distributors in smaller markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526057329/rare-20251231.htm"
+}

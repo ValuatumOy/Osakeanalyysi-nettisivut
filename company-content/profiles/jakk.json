@@ -1,0 +1,13 @@
+{
+  "ticker": "JAKK",
+  "companyName": "JAKKS Pacific, Inc.",
+  "profile": "JAKKS Pacific designs, produces, markets, sells and distributes toys and other child-focused consumer products. Its offerings include action figures, vehicles, dolls, role-play products, children’s furniture, outdoor activity toys, costumes and board games. Products use licensed entertainment characters and brands as well as the company’s own properties. The company sells through its sales staff and representatives to retailers, specialty stores and wholesalers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:49.599Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1009829/000118518526000723/jakk10k123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1009829/000118518526000723/jakk10k123125.htm"
+  ]
+}

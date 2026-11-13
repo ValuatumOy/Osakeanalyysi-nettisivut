@@ -1,0 +1,10 @@
+{
+  "ticker": "MATV",
+  "companyName": "Mativ Holdings, Inc.",
+  "profile": "Mativ manufactures specialty materials for business and consumer markets, using fibers, polymers, resins, and chemicals to produce nonwovens, films, specialty paper, and netting. It further processes these materials through coating, saturation, adhesive application, and converting to meet customer specifications. Its products serve applications including filtration, healthcare, and sustainable packaging, with sales across global markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.247Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1000623/000100062326000016/matv-20251231.htm"
+}

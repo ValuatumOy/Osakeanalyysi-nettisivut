@@ -1,0 +1,10 @@
+{
+  "ticker": "OLN",
+  "companyName": "Olin Corporation",
+  "profile": "Olin manufactures and distributes chemical products and ammunition through its Chlor Alkali Products and Vinyls, Epoxy and Winchester segments. Its chemicals include chlorine, caustic soda, vinyl intermediates, chlorinated organics, epoxy materials and resins. Winchester products include sporting and military ammunition, reloading components, industrial cartridges and clay targets. Customers use its products across chemical, industrial and consumer applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.608Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/74303/000007430326000027/oln-20251231.htm"
+}

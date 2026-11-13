@@ -1,0 +1,13 @@
+{
+  "ticker": "XTIA",
+  "companyName": "XTI Aerospace, Inc.",
+  "profile": "XTI Aerospace’s current operating business is its UAS distribution and services operation, conducted through Drone Nerds. It sells and supports unmanned aircraft, payloads, sensors, batteries and related equipment, and provides training, repair, maintenance and fleet support for enterprise, public safety, government and defense customers. The company ceased investment in its TriFan 600 aircraft program and wound down its Advanced Defense Systems division in 2026.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.964Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1529113/000121390026043785/ea0279149-10k_xtiaero.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1529113/000162828026073407/xtia-20260930.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "DRS",
+  "companyName": "Leonardo DRS, Inc.",
+  "profile": "Leonardo DRS designs, develops, manufactures and integrates defense technologies for U.S. national security customers and allied defense forces. Its products and solutions include sensing systems, network computing, force protection, electric power and propulsion, electro-optical and infrared sensors, electronic warfare systems, radars and tactical computing. These offerings support missions and platforms across land, air, sea, space and cyber domains.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.566Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1833756/000183375626000013/drs-20251231.htm"
+}

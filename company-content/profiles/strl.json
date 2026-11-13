@@ -1,0 +1,10 @@
+{
+  "ticker": "STRL",
+  "companyName": "Sterling Infrastructure, Inc.",
+  "profile": "Sterling Infrastructure provides construction and infrastructure services through E-Infrastructure, Transportation and Building Solutions segments, primarily in the United States. Work includes large-scale site development and electrical services, transportation infrastructure and rehabilitation, and concrete foundations and structures. The company also provides plumbing services and surveys for new single-family homes, serving data center, industrial, transportation, residential and commercial projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874238/000087423826000024/strl-20251231.htm"
+}

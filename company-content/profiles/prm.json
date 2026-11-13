@@ -1,0 +1,14 @@
+{
+  "ticker": "PRM",
+  "companyName": "Perimeter Solutions, SA",
+  "profile": "Perimeter Solutions supplies industrial products and services through Fire Safety and Specialty Products businesses. Fire Safety offerings include retardants, suppressants, application equipment, and services for wildland, structural, and industrial firefighting. Specialty Products includes lubricant additives, electronic and electromechanical components, and machinery for medical-device manufacturing following its 2026 acquisition of Medical Manufacturing Technologies. Customers include fire agencies and industrial manufacturers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.087Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1880319/000188031926000013/prm-20251231.htm",
+  "profileSources": [
+    "https://ir.perimeter-solutions.com/news-events/press-releases/detail/82/perimeter-solutions-completes-acquisition-of-mmt",
+    "https://ir.perimeter-solutions.com/sec-filings/all-sec-filings/content/0001880319-26-000025/0001880319-26-000025.pdf"
+  ]
+}

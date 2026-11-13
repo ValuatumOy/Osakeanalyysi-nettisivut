@@ -1,0 +1,13 @@
+{
+  "ticker": "GSIT",
+  "companyName": "GSI Technology, Inc.",
+  "profile": "GSI Technology designs and sells synchronous SRAM products and develops associative processing units for compute-in-memory applications. Its SRAM products serve networking, telecommunications, test and measurement, and military, defense and aerospace markets. Its APU technology targets artificial intelligence, high-performance computing and edge search applications, including radar image processing, vector search, computer vision, drug discovery and cybersecurity. The company uses fabless manufacturing.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:51:51.206Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1126741/000110465926070962/gsit-20260331x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1126741/000110465926070962/gsit-20260331x10k.htm"
+  ]
+}

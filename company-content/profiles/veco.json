@@ -1,0 +1,10 @@
+{
+  "ticker": "VECO",
+  "companyName": "Veeco Instruments Inc.",
+  "profile": "Veeco manufactures semiconductor process equipment for materials engineering and microelectronic fabrication. Its technologies include ion beam, laser annealing, deposition, advanced packaging lithography, and wafer processing systems. Customers use its equipment to produce and develop logic and memory devices, photonics, power electronics, RF components, magnetic heads, and other semiconductor products. Veeco serves semiconductor, compound semiconductor, data storage, and scientific markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.303Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/103145/000110465926019711/veco-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "GRMN",
+  "companyName": "Garmin Ltd.",
+  "profile": "Garmin designs, develops, manufactures, markets, and distributes GPS-enabled and other navigation, communications, sensor-based, and information products and services. It serves fitness, outdoor, aviation, marine, and automotive original equipment markets, and supplies products for aftermarket applications. Its offerings include web and mobile platforms for tracking and analyzing fitness, activity, workout, and wellness data, plus applications developed for Garmin devices.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:53.132Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526056028/grmn-20251227.htm"
+}

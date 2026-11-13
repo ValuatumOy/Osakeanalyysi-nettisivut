@@ -1,0 +1,13 @@
+{
+  "ticker": "AMPG",
+  "companyName": "AmpliTech Group, Inc.",
+  "profile": "AmpliTech Group designs, engineers, and assembles radio frequency and microwave components, including low-noise, medium-power, and cryogenic amplifiers, as well as related subsystems. It also provides project-based engineering services, manufactures satellite communications components, designs signal processing chips for communications and defense applications, and distributes semiconductor packaging. Its customers operate in satellite communications, telecommunications, aerospace, government, defense, and commercial markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.745Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1518461/000149315226012914/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1518461/000149315226012914/form10-k.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "DLPN",
+  "companyName": "Dolphin Entertainment, Inc.",
+  "profile": "Dolphin Entertainment provides entertainment publicity, marketing, and content production services through its subsidiaries. Its services include public relations, strategic communications, social media and influencer marketing, celebrity booking, and experiential marketing for clients in entertainment, lifestyle, and related industries. The company also develops, produces, and distributes feature films, television programs, and digital content through its content production business.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.054Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1282224/000107997326000368/dlpn_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1282224/000107997326000368/dlpn_10k.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CTEV",
+  "companyName": "Claritev Corporation",
+  "profile": "Claritev provides technology, data, analytics and services to organizations across the U.S. healthcare system. Its offerings address out-of-network cost management, payment integrity, billing and payment accuracy, and in-network payment and revenue integrity. The company serves healthcare payers, providers and other organizations, using claims experience and data-driven insights to help them assess costs, pricing and payment dynamics.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:12.836Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1793229/000179322926000017/ctev-20251231.htm"
+}

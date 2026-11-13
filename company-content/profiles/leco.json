@@ -1,0 +1,10 @@
+{
+  "ticker": "LECO",
+  "companyName": "Lincoln Electric Holdings, Inc.",
+  "profile": "Lincoln Electric makes industrial machinery and technology for welding, cutting, brazing, machining, process automation, and field repair. Its products include welding equipment and consumables, cutting systems, wire feeders, fume control equipment, power equipment, software, and automated production systems. It also provides system integration, additive manufacturing, fabrication, wear services, equipment upfitting, and training to distributors, manufacturers, industrial users, and integrators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:37.956Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/59527/000005952726000006/leco-20251231x10k.htm"
+}

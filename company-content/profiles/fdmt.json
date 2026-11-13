@@ -1,0 +1,14 @@
+{
+  "ticker": "FDMT",
+  "companyName": "4D Molecular Therapeutics, Inc.",
+  "profile": "4D Molecular Therapeutics develops genetic medicines using its proprietary adeno-associated virus vector discovery and engineering platform. Its lead candidate, 4D-150, is in Phase 3 trials for wet age-related macular degeneration and diabetic macular edema. The company is also developing 4D-710, an inhaled gene therapy candidate for cystic fibrosis, and 4D-175, an investigational program for geographic atrophy.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.772Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1650648/000119312526114075/fdmt-20251231.htm",
+  "profileSources": [
+    "https://4dmt.gcs-web.com/news-releases/news-release-details/4dmt-reports-third-quarter-2026-financial-results-operational",
+    "https://www.sec.gov/Archives/edgar/data/1650648/000119312526458477/fdmt-20260930.htm"
+  ]
+}

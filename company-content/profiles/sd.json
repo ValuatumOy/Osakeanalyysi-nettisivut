@@ -1,0 +1,10 @@
+{
+  "ticker": "SD",
+  "companyName": "SandRidge Energy, Inc.",
+  "profile": "SandRidge Energy is an independent oil and natural gas company focused on acquiring, developing, and producing hydrocarbon resources in the U.S. Mid-Continent. Its operations include interests in producing wells and leased acreage, primarily in Oklahoma, Kansas, and Texas. The company’s activities span formations including the Mississippian Lime, Meramec, and Cherokee, where it develops and produces oil and natural gas.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:24.755Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1349436/000162828026015318/sd-20251231.htm"
+}

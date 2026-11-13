@@ -1,0 +1,10 @@
+{
+  "ticker": "NE",
+  "companyName": "Noble Corporation Plc",
+  "profile": "Noble Corporation provides contract drilling services to the international oil and gas industry using mobile offshore drilling units. Its fleet includes floating rigs and jackups deployed in oil and gas basins around the world. Customers primarily include large integrated, independent, and government-owned or controlled oil and gas companies, which contract for drilling services, typically on a dayrate basis.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.866Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1895262/000189526226000076/ne-20251231.htm"
+}

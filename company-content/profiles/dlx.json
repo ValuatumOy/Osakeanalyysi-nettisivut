@@ -1,0 +1,10 @@
+{
+  "ticker": "DLX",
+  "companyName": "Deluxe Corporation",
+  "profile": "Deluxe Corporation provides payment, data, and print products and services to small and medium-sized businesses, financial institutions, and consumer brands, primarily in North America. Its offerings include electronic payment acceptance, receivables and accounts-payable processing, data analytics and marketing services, checks, business forms, promotional products, and digital storefront solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/27996/000002799626000037/dlx-20251231.htm"
+}

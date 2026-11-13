@@ -1,0 +1,10 @@
+{
+  "ticker": "MOS",
+  "companyName": "The Mosaic Company",
+  "profile": "The Mosaic Company produces and markets phosphate and potash crop nutrients, along with animal feed ingredients. Its products serve agricultural and industrial uses, with potash also sold for animal feed. The company mines phosphate rock and potash, processes and sells finished products, and operates production, blending, bagging, and distribution facilities. Its customers are located in approximately 40 countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1285785/000128578526000017/mos-20251231.htm"
+}

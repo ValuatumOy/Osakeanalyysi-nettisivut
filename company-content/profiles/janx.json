@@ -1,0 +1,10 @@
+{
+  "ticker": "JANX",
+  "companyName": "Janux Therapeutics, Inc.",
+  "profile": "Janux Therapeutics is a clinical-stage biopharmaceutical company developing immunotherapies using its TRACTr, TRACIr, and ARM platforms. Its pipeline includes T cell engagers and bispecific candidates under clinical investigation for cancer, including candidates targeting PSMA in prostate cancer and EGFR in solid tumors. The company also describes development of its ARM platform for autoimmune diseases and oncology.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.798Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1817713/000119312526076918/janx-20251231.htm"
+}

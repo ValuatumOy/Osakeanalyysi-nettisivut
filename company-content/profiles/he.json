@@ -1,0 +1,14 @@
+{
+  "ticker": "HE",
+  "companyName": "Hawaiian Electric Industries, Inc.",
+  "profile": "Hawaiian Electric Industries is a Hawai‘i-based holding company centered on Hawaiian Electric, a regulated utility serving O‘ahu, Maui, Lāna‘i, Moloka‘i, and Hawai‘i Island. The utility generates or purchases electricity and operates transmission and distribution systems for households and businesses. HEI also retains a minority stake in American Savings Bank after selling most of its ownership and is completing its strategic exit from Pacific Current.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.068Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/354707/000035470726000008/he-20251231.htm",
+  "profileSources": [
+    "https://www.hei.com/investor-relations/news-and-events/news/news-details/2026/HEI-Reports-Third-Quarter-2026-Results/default.aspx",
+    "https://www.hei.com/investor-relations/news-and-events/news/news-details/2026/HEI-Begins-Monetizing-ASB-Shares-Enabling-Advance-Funding-of-Maui-Wildfire-Settlement/default.aspx"
+  ]
+}

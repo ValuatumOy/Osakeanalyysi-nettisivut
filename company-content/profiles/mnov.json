@@ -1,0 +1,13 @@
+{
+  "ticker": "MNOV",
+  "companyName": "MediciNova, Inc.",
+  "profile": "MediciNova is a biopharmaceutical company developing therapeutics for serious diseases with unmet medical needs, with a commercial focus on the United States. Its development activities center on MN-166 (ibudilast) for neurological and other disorders, including multiple sclerosis and ALS, and MN-001 (tipelukast) for fibrotic and metabolic disorders, including nonalcoholic fatty liver disease and hypertriglyceridemia.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.740Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1226616/000119312526100432/mnov-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1226616/000119312526100432/mnov-20251231.htm"
+  ]
+}

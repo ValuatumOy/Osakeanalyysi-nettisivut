@@ -1,0 +1,10 @@
+{
+  "ticker": "NGS",
+  "companyName": "Natural Gas Services Group, Inc.",
+  "profile": "Natural Gas Services Group provides natural gas and electric compression equipment, technology, and services to the energy industry. It rents, designs, installs, services, and maintains natural gas engine and electric motor drive compressors for oil and gas production and processing facilities. Its customers include oil and gas exploration and production companies using compressors for gas lift and natural gas production.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.972Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1084991/000108499126000015/ngs-20251231.htm"
+}

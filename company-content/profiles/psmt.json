@@ -1,0 +1,10 @@
+{
+  "ticker": "PSMT",
+  "companyName": "PriceSmart, Inc.",
+  "profile": "PriceSmart operates membership warehouse clubs in Central America, the Caribbean and Colombia, serving consumers and small businesses. Its merchandise includes everyday consumables, private-label products, and other consumable and non-consumable goods. Members can shop in clubs, through the mobile app or online, with home delivery and curbside pickup available through its Click & Go service.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1041803/000104180326000039/psmt-20260831.htm"
+}

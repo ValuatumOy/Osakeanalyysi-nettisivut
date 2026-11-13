@@ -1,0 +1,13 @@
+{
+  "ticker": "LOCO",
+  "companyName": "El Pollo Loco Holdings, Inc.",
+  "profile": "El Pollo Loco operates and franchises limited-service restaurants specializing in citrus-marinated, fire-grilled chicken. Its menu includes bone-in chicken meals and Mexican-inspired entrees such as burritos, tostadas, bowls, and salads, along with fresh salsas and dressings. The company serves customers through restaurants in the United States and licensed locations in the Philippines, with food and beverage sales generated through company-operated and franchised restaurants.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.817Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1606366/000160636626000017/loco-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1606366/000160636626000017/loco-20251231x10k.htm"
+  ]
+}

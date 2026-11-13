@@ -1,0 +1,13 @@
+{
+  "ticker": "CLNN",
+  "companyName": "Clene Inc.",
+  "profile": "Clene is a clinical-stage pharmaceutical company developing clean-surfaced nanotechnology therapeutics made from catalytic nanocrystals. Its platform is designed to support cellular metabolic and energy processes in diseased, stressed, or damaged cells. The company’s development efforts focus on central nervous system disorders, including amyotrophic lateral sclerosis, multiple sclerosis, and Parkinson’s disease, and include its lead candidate CNM-Au8, a gold nanocrystal suspension.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.745Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1822791/000143774926008502/clnn20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1822791/000143774926008502/clnn20251231_10k.htm"
+  ]
+}

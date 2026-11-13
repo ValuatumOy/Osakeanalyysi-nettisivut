@@ -1,0 +1,13 @@
+{
+  "ticker": "LGCY",
+  "companyName": "Legacy Education Inc.",
+  "profile": "Legacy Education provides career-focused post-secondary education through accredited academic institutions. Its schools offer certificate and degree programs in healthcare and related fields, including nursing, medical assisting, diagnostic sonography, surgical technology, pharmacy technology, dental assisting, and veterinary assistance. The company serves students at different stages of adult life, including recent high school graduates and working parents, through campuses in California.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.105Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1836754/000149315226044147/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1836754/000149315226044147/form10-k.htm"
+  ]
+}

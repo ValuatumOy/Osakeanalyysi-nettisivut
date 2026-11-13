@@ -1,0 +1,10 @@
+{
+  "ticker": "ALGM",
+  "companyName": "Allegro MicroSystems, Inc.",
+  "profile": "Allegro MicroSystems designs, develops and markets sensor integrated circuits and application-specific power integrated circuits. Its sensor products detect motion, position, speed and electrical current, while its power products drive motors and manage power conversion and regulation. The company primarily serves automotive and industrial customers, including businesses in robotics, energy infrastructure and data centers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.648Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/866291/000119312526233537/algm-20260327.htm"
+}

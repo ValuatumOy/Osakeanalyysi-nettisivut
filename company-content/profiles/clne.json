@@ -1,0 +1,13 @@
+{
+  "ticker": "CLNE",
+  "companyName": "Clean Energy Fuels Corp.",
+  "profile": "Clean Energy Fuels procures and distributes renewable and conventional natural gas, including compressed and liquefied natural gas, for transportation and other customers in the United States and Canada. It develops, owns, operates, and maintains vehicle fueling stations and dairy renewable natural gas projects, and supplies fuel to commercial fleets. Its customers include trucking, airport, refuse, transit, industrial, institutional, and government fleet operators.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:36.498Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1368265/000110465926019215/clne-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1368265/000110465926019215/clne-20251231x10k.htm"
+  ]
+}

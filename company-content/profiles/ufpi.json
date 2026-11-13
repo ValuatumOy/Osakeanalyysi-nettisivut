@@ -1,0 +1,10 @@
+{
+  "ticker": "UFPI",
+  "companyName": "UFP Industries, Inc.",
+  "profile": "UFP Industries is a holding company whose subsidiaries design, manufacture and supply products made from wood, wood and non-wood composites, and other materials. Its business serves retail, packaging and construction markets through specialized operating segments. The company provides custom solutions to customers and manages manufacturing locations, transportation, purchasing and related services that support its product businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/912767/000110465926019567/ufpi-20251227x10k.htm"
+}

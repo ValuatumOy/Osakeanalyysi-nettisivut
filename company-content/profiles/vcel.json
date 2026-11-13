@@ -1,0 +1,10 @@
+{
+  "ticker": "VCEL",
+  "companyName": "Vericel Corporation",
+  "profile": "Vericel develops and markets cell therapy and specialty biologic products for sports medicine and severe burn care. Its products include MACI, an autologous cellularized scaffold used to repair certain knee cartilage defects, and instruments for arthroscopic MACI delivery. It also supplies Epicel, a skin replacement for extensive deep burns, and holds North American rights to NexoBrid, a topical biologic for burn eschar removal.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.930Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/887359/000162828026012013/vcel-20251231.htm"
+}

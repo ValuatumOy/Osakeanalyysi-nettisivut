@@ -1,0 +1,10 @@
+{
+  "ticker": "CHEF",
+  "companyName": "The Chefs' Warehouse, Inc.",
+  "profile": "The Chefs’ Warehouse distributes specialty foods, center-of-the-plate products, produce, and broadline food supplies to chefs and foodservice businesses in the United States, Canada, and the Middle East. Customers include independent restaurants, hotels, caterers, country clubs, culinary schools, bakeries, cruise lines, casinos, and specialty food stores. Its Allen Brothers business also sells certain products directly to consumers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.722Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1517175/000151717526000005/chef-20251226.htm"
+}

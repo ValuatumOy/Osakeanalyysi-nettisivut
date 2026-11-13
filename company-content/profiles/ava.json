@@ -1,0 +1,10 @@
+{
+  "ticker": "AVA",
+  "companyName": "Avista Corporation",
+  "profile": "Avista is primarily an electric and natural gas utility serving customers in Washington, Idaho, Oregon and Montana through Avista Utilities, and customers in Juneau, Alaska through subsidiary AEL&P. Its utility operations provide electric distribution and transmission, natural gas distribution and electricity generation. The company also buys and sells electricity and natural gas as part of energy resource management and meeting customer demand.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:13.564Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/104918/000119312526067872/ava-20251231.htm"
+}

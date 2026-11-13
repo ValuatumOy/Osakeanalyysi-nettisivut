@@ -1,0 +1,13 @@
+{
+  "ticker": "PAMT",
+  "companyName": "Pamt Corp.",
+  "profile": "PAMT is a holding company whose subsidiaries provide truckload transportation, brokerage, and logistics services. It transports general commodities, including automotive parts, expedited goods, consumer goods, and manufactured products, using company equipment and third-party carriers. Services include dedicated, expedited, automotive, local, regional, and long-haul freight transportation across the continental United States and Mexico, and in some Canadian provinces.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.493Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/798287/000143774926007960/ptsi20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/798287/000143774926007960/ptsi20251231_10k.htm"
+  ]
+}

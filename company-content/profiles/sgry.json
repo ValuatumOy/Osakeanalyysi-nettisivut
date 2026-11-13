@@ -1,0 +1,10 @@
+{
+  "ticker": "SGRY",
+  "companyName": "Surgery Partners, Inc.",
+  "profile": "Surgery Partners owns and operates surgical facilities and related healthcare services through subsidiaries. Its operations include ambulatory surgery centers, short stay surgical hospitals, anesthesia services, urgent care facilities, and multispecialty physician practices. Facilities provide planned, primarily nonemergency procedures across specialties such as orthopedics, ophthalmology, gastroenterology, pain management, and general surgery, serving patients and physicians in outpatient care.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:01.904Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1638833/000163883326000008/sgry-20251231.htm"
+}

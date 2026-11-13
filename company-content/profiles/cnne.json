@@ -1,0 +1,10 @@
+{
+  "ticker": "CNNE",
+  "companyName": "Cannae Holdings, Inc.",
+  "profile": "Cannae Holdings acquires interests in operating companies and actively manages and operates a core group of businesses as a long-term owner. It takes equity stakes where it can exercise control or significant influence, supports company management teams, and applies operational expertise to their businesses. Its holdings include companies in employee benefits, sports, financial technology, distilling, insurance, and restaurants.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.590Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1704720/000170472026000045/cnne-20251231.htm"
+}

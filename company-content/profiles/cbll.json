@@ -1,0 +1,10 @@
+{
+  "ticker": "CBLL",
+  "companyName": "CeriBell, Inc.",
+  "profile": "CeriBell is a medical technology company offering the Ceribell System, a portable point-of-care EEG platform for acute care settings. The system combines rapidly deployable hardware with AI-powered algorithms to support diagnosis and continuous monitoring of patients with neurological conditions, particularly seizure detection and management. Its users include hospitals and clinicians caring for patients at risk of seizures.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.799Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1861107/000119312526067238/cbll-20251231.htm"
+}

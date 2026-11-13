@@ -1,0 +1,13 @@
+{
+  "ticker": "TRT",
+  "companyName": "Trio-Tech International",
+  "profile": "Trio-Tech International operates in the semiconductor industry, manufacturing test equipment, providing testing services, and distributing semiconductor equipment and electronic components. Its equipment supports front-end and back-end semiconductor manufacturing and includes leak detectors, autoclaves, centrifuges, burn-in systems, and temperature-controlled chucks. The company also provides electrical, environmental, and burn-in testing, and customizes complementary products for customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.734Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/732026/000143774926031124/trt20260630_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/732026/000143774926031124/trt20260630_10k.htm"
+  ]
+}

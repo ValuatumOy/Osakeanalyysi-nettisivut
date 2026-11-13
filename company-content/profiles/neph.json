@@ -1,0 +1,13 @@
+{
+  "ticker": "NEPH",
+  "companyName": "Nephros, Inc.",
+  "profile": "Nephros develops and markets point-of-use water filtration products for medical and commercial applications. Its medical portfolio includes microfilters and ultrafilters for infection control and dialysis water treatment, while its commercial filters address taste, odor, scale, particulates, lead, cysts and PFAS. Customers and users include healthcare facilities, dialysis settings, foodservice and hospitality businesses, laboratories, manufacturers and government facilities.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:59.361Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1196298/000149315226009848/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1196298/000149315226009848/form10-k.htm"
+  ]
+}

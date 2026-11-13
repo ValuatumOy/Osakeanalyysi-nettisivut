@@ -1,0 +1,13 @@
+{
+  "ticker": "OFLX",
+  "companyName": "Omega Flex, Inc.",
+  "profile": "Omega Flex manufactures and sells flexible metal hose, corrugated tubing, related fittings, and accessories. Its products carry gases and liquids in applications including building fuel-gas piping, fuel containment, medical gas systems, and industrial processes involving corrosive compounds or extreme temperatures. The company manufactures in the United States and United Kingdom and sells primarily through distributors, wholesalers, and original equipment manufacturers in North America and Europe.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.315Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1317945/000149315226009876/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1317945/000149315226009876/form10-k.htm"
+  ]
+}

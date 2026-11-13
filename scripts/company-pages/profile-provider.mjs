@@ -170,6 +170,9 @@ function cleanProfile(value) {
   if (wordCount < 45 || wordCount > 65) {
     throw new Error(`Generated company profile must contain 45-65 words; received ${wordCount}`);
   }
+  if (/\b(?:excerpt|provided (?:filing|source|text|information)|source material|this profile|no (?:factual )?(?:company )?profile can be)\b/i.test(profile)) {
+    throw new Error('Generated company profile refers to its source or generation process');
+  }
   return profile;
 }
 

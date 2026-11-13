@@ -1,0 +1,10 @@
+{
+  "ticker": "MRNA",
+  "companyName": "Moderna, Inc.",
+  "profile": "Moderna develops mRNA medicines, including vaccines and therapeutic candidates for infectious diseases, oncology, and rare diseases. Its commercial products include Spikevax and mNEXSPIKE COVID vaccines and mRESVIA, a vaccine against respiratory syncytial virus. The company also advances clinical candidates, including cancer therapies and treatments for rare diseases, and operates manufacturing facilities supporting vaccine launches and collaborations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.945Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1682852/000168285226000033/mrna-20251231.htm"
+}

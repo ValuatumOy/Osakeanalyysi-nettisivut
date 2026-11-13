@@ -1,0 +1,10 @@
+{
+  "ticker": "PRLB",
+  "companyName": "Proto Labs, Inc.",
+  "profile": "Proto Labs provides digital manufacturing services through its own factories and a network of manufacturing partners. It makes custom prototype and low-volume production parts using injection molding, CNC machining, 3D printing, and sheet metal fabrication, and provides access to additional manufacturing processes through its partner network. Its customers include product developers, engineers, and supply chain teams across industries, from prototyping through production and replacement parts.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:26.075Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1443669/000144366926000010/prlb-20251231.htm"
+}

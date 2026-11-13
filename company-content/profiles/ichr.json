@@ -1,0 +1,10 @@
+{
+  "ticker": "ICHR",
+  "companyName": "Ichor Holdings, Ltd.",
+  "profile": "Ichor designs, engineers, and manufactures fluid delivery subsystems and components, primarily for semiconductor manufacturing equipment. Its products include gas and chemical delivery systems that measure and control materials used in semiconductor processes, along with precision-machined and welded components, vacuum and hydrogen brazing, and surface treatments. Its customers include semiconductor equipment manufacturers and companies in defense, aerospace, and medical industries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.249Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1652535/000165253526000012/ichr-20251226.htm"
+}

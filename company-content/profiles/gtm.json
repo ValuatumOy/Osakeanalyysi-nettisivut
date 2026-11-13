@@ -1,0 +1,10 @@
+{
+  "ticker": "GTM",
+  "companyName": "ZoomInfo Technologies Inc.",
+  "profile": "ZoomInfo provides cloud-based go-to-market software, data, and intelligence for sales, marketing, operations, and recruiting teams. Its platform supplies company and contact information, intent signals, organizational details, and analytics, and integrates data with customer relationship management and sales and marketing automation systems. Tools support prospect engagement, marketing campaigns, meeting transcription, workflow automation, and candidate sourcing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.291Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1794515/000179451526000012/zi-20251231.htm"
+}

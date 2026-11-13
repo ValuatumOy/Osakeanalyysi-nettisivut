@@ -1,0 +1,10 @@
+{
+  "ticker": "NRIX",
+  "companyName": "Nurix Therapeutics, Inc.",
+  "profile": "Nurix Therapeutics discovers and develops targeted protein degradation medicines for cancer and inflammatory diseases. Its clinical pipeline includes investigational degraders targeting BTK and CBL-B, while its preclinical work includes additional degraders and degrader antibody conjugates. Nurix also conducts partnered drug discovery programs with pharmaceutical companies, using its DEL-AI platform to identify and advance potential drug candidates.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.931Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1549595/000154959526000016/nrix-20251130.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "SWAG",
+  "companyName": "Stran & Company, Inc.",
+  "profile": "Stran provides outsourced marketing solutions centered on promotional products and branded merchandise. It sources and resells finished branded goods and offers custom sourcing, e-commerce platforms, creative and merchandising services, warehousing, fulfillment, distribution, print-on-demand, kitting, point-of-sale displays, and loyalty programs. Its customers span industries including healthcare, manufacturing, gaming, technology, finance, construction, and consumer goods.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:41.636Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1872525/000121390026034104/ea0282261-10k_stran.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1872525/000121390026034104/ea0282261-10k_stran.htm"
+  ]
+}

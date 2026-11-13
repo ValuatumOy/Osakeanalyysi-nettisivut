@@ -1,0 +1,10 @@
+{
+  "ticker": "TDUP",
+  "companyName": "ThredUp Inc.",
+  "profile": "ThredUp operates an online resale marketplace for apparel, shoes and accessories. Buyers in the United States can browse and purchase secondhand items, while individual sellers send clothing through its Clean Out Bag service for processing and resale. The company also provides brands and retailers with resale and closet clean out services through its Resale-as-a-Service offering.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.145Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1484778/000148477826000007/tdup-20251231.htm"
+}

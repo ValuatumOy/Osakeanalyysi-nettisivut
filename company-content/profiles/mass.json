@@ -1,0 +1,13 @@
+{
+  "ticker": "MASS",
+  "companyName": "908 Devices Inc.",
+  "profile": "908 Devices develops handheld instruments for chemical analysis at the point of need. Its products combine mass spectrometry, optical spectroscopy, analytics and machine learning to identify materials and provide rapid results in health, safety and defense applications. The company’s devices are used by front-line workers and government agencies, including to detect illicit drugs, counterfeit pharmaceuticals and hazardous substances in air or on surfaces.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:49.600Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1555279/000110465926024877/mass-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1555279/000110465926024877/mass-20251231x10k.htm"
+  ]
+}

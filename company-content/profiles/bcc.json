@@ -1,0 +1,10 @@
+{
+  "ticker": "BCC",
+  "companyName": "Boise Cascade Company",
+  "profile": "Boise Cascade distributes building materials and manufactures engineered wood products and plywood in North America. Its distribution network sells commodities such as oriented strand board, plywood and lumber, along with siding, decking, doors, millwork, roofing, insulation and engineered wood products. It manufactures laminated veneer lumber, I-joists, beams, plywood panels and ponderosa pine lumber for dealers, wholesalers, home improvement centers and industrial converters.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.504Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1328581/000132858126000006/bcc-20251231.htm"
+}

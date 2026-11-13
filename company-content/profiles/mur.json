@@ -1,0 +1,10 @@
+{
+  "ticker": "MUR",
+  "companyName": "Murphy Oil Corporation",
+  "profile": "Murphy Oil is an oil and natural gas exploration and production company with onshore and offshore operations. It produces crude oil, condensate, natural gas, and natural gas liquids, primarily in the United States and Canada, and explores for these resources in targeted areas worldwide. Its reported operating regions include the United States, Canada, and other countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.867Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/717423/000162828026011709/mur-20251231.htm"
+}

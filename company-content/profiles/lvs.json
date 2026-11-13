@@ -1,0 +1,14 @@
+{
+  "ticker": "LVS",
+  "companyName": "Las Vegas Sands Corp.",
+  "profile": "Las Vegas Sands develops and operates integrated resort properties that combine hotels, gaming venues, entertainment, retail, restaurants, and convention and exhibition facilities. Its current portfolio includes properties in Macao and Marina Bay Sands in Singapore. The company serves leisure and business visitors, including travelers attending meetings, exhibitions, and other events, through hospitality and destination services at these resorts.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.074Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1300514/000130051426000013/lvs-20251231.htm",
+  "profileSources": [
+    "https://www.sands.com/company/about-las-vegas-sands/",
+    "https://www.sands.com/properties/"
+  ]
+}

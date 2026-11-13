@@ -1,0 +1,10 @@
+{
+  "ticker": "LYV",
+  "companyName": "Live Nation Entertainment, Inc.",
+  "profile": "Live Nation produces and promotes live music events, operates or books venues, manages artists, and provides ticketing, sponsorship, and advertising services. Ticketmaster sells and distributes tickets through websites, mobile apps, and retail outlets. Its ticketing clients include arenas, stadiums, concert and festival promoters, sports teams and leagues, performing arts venues, museums, and theaters.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:54.565Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm"
+}

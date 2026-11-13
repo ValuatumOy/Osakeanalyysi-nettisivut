@@ -1,0 +1,10 @@
+{
+  "ticker": "PWR",
+  "companyName": "Quanta Services, Inc.",
+  "profile": "Quanta Services provides design, engineering, procurement, construction, upgrade, repair, and maintenance services for infrastructure across utility, power, manufacturing, communications, pipeline, and energy industries. Its work includes electric transmission and distribution networks, power generation and storage facilities, data centers, communications networks, gas utility systems, pipelines, and industrial facilities. Customers include companies in utility, renewable energy, technology, communications, industrial, and energy delivery markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:38.896Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1050915/000105091526000006/pwr-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "POWI",
+  "companyName": "Power Integrations, Inc.",
+  "profile": "Power Integrations designs, develops, and markets analog and mixed-signal integrated circuits and other components for high-voltage power conversion. Its products include power-supply ICs, LED drivers, motor drivers, and gate drivers used in electronics, appliances, industrial controls, lighting, electric vehicles, and renewable-energy systems. The company also provides technical documentation, design-support tools, and services to help customers use its products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.002Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/833640/000083364026000037/powi-20251231x10k.htm"
+}

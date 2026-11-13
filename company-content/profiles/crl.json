@@ -1,0 +1,14 @@
+{
+  "ticker": "CRL",
+  "companyName": "Charles River Laboratories International, Inc.",
+  "profile": "Charles River Laboratories supplies research models and services, preclinical drug discovery and safety assessment, and laboratory testing. Its offerings include animal models, research facility support, nonclinical studies, microbial detection and testing products, and specialized biologics testing. Pharmaceutical and biotechnology companies, government agencies, and other research organizations use its products and services to support drug research, development, and quality control.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.062Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1100682/000110068226000022/crl-20251227.htm",
+  "profileSources": [
+    "https://ir.criver.com/news-releases/news-release-details/charles-river-laboratories-announces-third-quarter-2026-results",
+    "https://ir.criver.com/static-files/d2d4f045-2918-4672-8666-b0a39333a04c"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "IDXX",
+  "companyName": "IDEXX Laboratories, Inc.",
+  "profile": "IDEXX Laboratories develops, manufactures, and distributes products and services for companion animal veterinary, livestock, poultry and dairy, and water testing industries. Its offerings include veterinary diagnostic instruments, consumables and rapid tests; reference laboratory and consulting services; practice management software and imaging systems; livestock health monitoring products; and water testing products. It also provides human medical point-of-care diagnostic products and serves the biomedical research community.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:38.897Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874716/000087471626000038/idxx-20251231.htm"
+}

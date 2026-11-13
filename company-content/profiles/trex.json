@@ -1,0 +1,10 @@
+{
+  "ticker": "TREX",
+  "companyName": "Trex Company, Inc.",
+  "profile": "Trex manufactures composite decking and railing, along with outdoor living products including fencing, cladding, fasteners, and outdoor lighting. Its products are marketed under the Trex brand and sold to distributors and home centers for resale, primarily to residential customers. Decking products combine reclaimed wood fibers and recycled polyethylene film, with protective polymer shells on its principal lines.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.081Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1069878/000119312526068732/trex-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "EXEL",
+  "companyName": "Exelixis, Inc.",
+  "profile": "Exelixis is an oncology company that discovers, develops and commercializes medicines for cancer. Its U.S. portfolio includes CABOMETYX and COMETRIQ, while partners including Ipsen and Takeda commercialize certain products in other territories. The company also advances clinical and research programs, including drug candidates and combination regimens for different cancer types.",
+  "provider": "editorial",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:11:01.343Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/939767/000093976726000021/exel-20260102.htm",
+  "profileSources": [
+    "https://ir.exelixis.com/news-releases/news-release-details/exelixis-announces-third-quarter-2026-financial-results-and"
+  ]
+}

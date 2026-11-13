@@ -1,0 +1,10 @@
+{
+  "ticker": "SMRT",
+  "companyName": "SmartRent, Inc.",
+  "profile": "SmartRent provides an enterprise real estate management platform for property owners, managers, and residents. Its cloud-based software and connected hardware support smart apartments and homes, access control, community WiFi, asset monitoring, self-guided tours, work order management, leasing and resident call handling, audits, and inspections. The company also provides training, installation, and support services to multifamily and single-family rental owners, operators, homebuilders, and iBuyers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.417Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1837014/000119312526089953/smrt-20251231.htm"
+}

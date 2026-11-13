@@ -1,0 +1,13 @@
+{
+  "ticker": "OM",
+  "companyName": "Outset Medical, Inc.",
+  "profile": "Outset Medical develops and sells the Tablo Hemodialysis System, a compact dialysis console with integrated water purification, on-demand dialysate production, touchscreen controls, and connected software. Cleared for use in hospitals, clinics, and homes, Tablo supports dialysis across care settings. The company also provides providers with training, service, data analytics, electronic health record integration, and clinical support.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.210Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1484612/000119312526051278/om-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1484612/000119312526051278/om-20251231.htm"
+  ]
+}

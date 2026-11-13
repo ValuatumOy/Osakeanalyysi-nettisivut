@@ -1,0 +1,13 @@
+{
+  "ticker": "INLX",
+  "companyName": "Intellinetics, Inc.",
+  "profile": "Intellinetics provides document management software and document services to small and medium-sized businesses and government organizations. Its software captures and manages paper and digital content, supports accounts payable automation, records management, and workflow, and is available on customer equipment or through cloud access. Document services include scanning, conversion, process outsourcing, micrographics, and long-term document storage and retrieval.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.634Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1081745/000149315226013568/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1081745/000149315226013568/form10-k.htm"
+  ]
+}

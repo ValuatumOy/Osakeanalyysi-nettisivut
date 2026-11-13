@@ -1,0 +1,10 @@
+{
+  "ticker": "MP",
+  "companyName": "MP Materials Corp.",
+  "profile": "MP Materials operates a rare earth mine and processing facility in California and a metal, alloy, and magnet manufacturing facility in Texas. It produces refined rare earth oxides, neodymium-praseodymium oxide and metal, and magnetic precursor products, and began manufacturing neodymium-iron-boron permanent magnets. Customers include materials buyers in Asia and General Motors in the United States.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:50.433Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000008/mp-20251231.htm"
+}

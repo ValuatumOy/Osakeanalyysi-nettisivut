@@ -1,0 +1,13 @@
+{
+  "ticker": "FHTX",
+  "companyName": "Foghorn Therapeutics Inc.",
+  "profile": "Foghorn Therapeutics is a clinical-stage biotechnology company developing medicines that target the chromatin regulatory system to address abnormal gene expression. Its Gene Traffic Control platform supports the identification and validation of drug targets. The company’s programs include small-molecule approaches such as protein degraders, enzymatic inhibitors, and transcription factor disruptors, with a focus on oncology and potential applications in other disease areas.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.313Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1822462/000162828026016814/fhtx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1822462/000162828026016814/fhtx-20251231.htm"
+  ]
+}

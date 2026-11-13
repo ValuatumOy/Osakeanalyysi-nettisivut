@@ -1,0 +1,10 @@
+{
+  "ticker": "KDP",
+  "companyName": "Keurig Dr Pepper Inc.",
+  "profile": "Keurig Dr Pepper manufactures, markets, distributes, and sells hot and cold beverages and single-serve brewing systems in North America. Its portfolio includes more than 125 owned, licensed, and partner brands, including Dr Pepper, Canada Dry, Snapple, Green Mountain Coffee Roasters, and Keurig. It serves retail and other sales-channel customers through distribution networks and direct-to-consumer e-commerce.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:52.294Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1418135/000141813526000016/kdp-20251231.htm"
+}

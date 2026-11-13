@@ -1,0 +1,10 @@
+{
+  "ticker": "BYRN",
+  "companyName": "Byrna Technologies Inc.",
+  "profile": "Byrna Technologies develops less-lethal self-defense products for consumers and professional security users. Its portfolio includes handheld and shoulder-fired launchers, chemical irritant, kinetic and inert projectiles, self-defense aerosol products, and accessories such as CO2 canisters, sights, and holsters. Customers include civilians, law enforcement agencies, corrections officers, private security professionals, investigators, and other professional security users.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.982Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1354866/000143774926003206/byrn20251130_10k.htm"
+}

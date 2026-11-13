@@ -1,0 +1,10 @@
+{
+  "ticker": "GRC",
+  "companyName": "The Gorman-Rupp Company",
+  "profile": "The Gorman-Rupp Company designs, manufactures, and sells pumps and pump systems for liquid-handling applications worldwide. Its products serve water and wastewater, construction, industrial, petroleum, agriculture, fire suppression, HVAC, military, and other markets. Pump types include centrifugal, turbine, submersible, gear, diaphragm, and other designs, sold through distributors, representatives, direct sales, retailers, catalogs, and e-commerce.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/42682/000119312526084820/grc-20251231.htm"
+}

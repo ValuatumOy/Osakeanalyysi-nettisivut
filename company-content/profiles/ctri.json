@@ -1,0 +1,10 @@
+{
+  "ticker": "CTRI",
+  "companyName": "Centuri Holdings, Inc.",
+  "profile": "Centuri Holdings provides utility and energy infrastructure services to electric, natural gas, and combined utility providers in North America. Its work includes replacing, maintaining, retrofitting, and installing distribution infrastructure and utility-scale transmission networks. It also serves distributed power and data center projects. Utility customers use its services to modernize and expand energy networks.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.721Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000020/ctri-20251228.htm"
+}

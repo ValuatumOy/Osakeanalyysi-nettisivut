@@ -1,0 +1,10 @@
+{
+  "ticker": "GILD",
+  "companyName": "Gilead Sciences, Inc.",
+  "profile": "Gilead Sciences is a biopharmaceutical company that discovers, develops and delivers medicines for serious diseases, with a focus on virology, oncology and other therapeutic areas. Its portfolio includes treatments and prevention medicines for HIV, therapies for viral hepatitis and COVID-19, and cancer medicines. Products are provided to patients through healthcare markets in more than 35 countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:17.703Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/882095/000088209526000006/gild-20251231.htm"
+}

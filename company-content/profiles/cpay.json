@@ -1,0 +1,10 @@
+{
+  "ticker": "CPAY",
+  "companyName": "Corpay, Inc.",
+  "profile": "Corpay provides corporate payment and spend management solutions to businesses and consumers. Its offerings include accounts payable automation, cross-border payments, commercial card programs, vehicle payments such as fuel cards and toll services, and lodging payments including hotel and extended-stay bookings. The company facilitates payments for businesses worldwide and sells products through digital channels, direct sales teams and strategic partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:51.278Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1175454/000117545426000018/flt-20251231.htm"
+}

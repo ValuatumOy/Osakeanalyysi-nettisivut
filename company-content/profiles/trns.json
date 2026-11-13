@@ -1,0 +1,10 @@
+{
+  "ticker": "TRNS",
+  "companyName": "Transcat, Inc.",
+  "profile": "Transcat provides calibration, repair, inspection, maintenance, quality, compliance, validation, and related services, alongside the distribution of measurement instruments. Its services include onsite, mobile, and in-house calibration and asset management support. The company also markets, sells, and rents new and used national and proprietary brand instruments. Its customers include regulated businesses, particularly life sciences, aerospace and defense, and energy and utilities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.740Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/99302/000143774926018588/trns20260328_10k.htm"
+}

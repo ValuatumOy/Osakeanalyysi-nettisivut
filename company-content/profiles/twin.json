@@ -1,0 +1,13 @@
+{
+  "ticker": "TWIN",
+  "companyName": "Twin Disc, Incorporated",
+  "profile": "Twin Disc designs, manufactures, and sells marine and heavy-duty off-highway power transmission equipment. Its products include marine transmissions, drives, propellers, boat management systems, power-shift transmissions, torque converters, power take-offs, clutches, controls, and braking systems. Customers include businesses in pleasure craft, commercial and military marine, energy and natural resources, government, and industrial markets. The company sells through its direct sales force and distributor network.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.808Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/100378/000143774926029700/twin20260630_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/100378/000143774926029700/twin20260630_10k.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "TNET",
+  "companyName": "TriNet Group, Inc.",
+  "profile": "TriNet provides human resources solutions to small and medium-sized businesses through professional employer organization and administrative services models. Its services include human capital expertise, employee benefits such as health insurance and retirement plans, payroll and tax administration, risk mitigation, compliance consulting and broader HR administration. Its platform supports client needs including employee data, workers’ compensation, training, performance management, onboarding and offboarding.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.501Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/937098/000093709826000010/tnet-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "NTGR",
+  "companyName": "NETGEAR, Inc.",
+  "profile": "NETGEAR provides networking hardware, software and services for businesses, homes and service providers. Its Enterprise segment offers enterprise networking, wireless LAN, cloud-managed platforms, audio and video over Ethernet, and security capabilities for small and medium enterprises. Its Consumer segment supplies WiFi routers and mesh systems, subscription services for performance, security, privacy and support, and portable mobile hotspots and routers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:12.837Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1122904/000119312526051346/ntgr-20251231.htm"
+}

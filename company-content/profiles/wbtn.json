@@ -1,0 +1,14 @@
+{
+  "ticker": "WBTN",
+  "companyName": "WEBTOON Entertainment Inc. Common stock",
+  "profile": "WEBTOON Entertainment operates digital storytelling platforms where creators publish web-comics, web-novels, manga, and other digital books for readers. Its offerings include WEBTOON, Wattpad, LINE MANGA, NAVER SERIES, eBookJapan, and Munpia. Users access free and paid content through mobile apps and websites, while creators can publish and build audiences. The company also develops adaptations of selected stories into other media formats.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.088Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1997859/000199785926000028/wbtn-20251231.htm",
+  "profileSources": [
+    "https://ir.webtoon.com/",
+    "https://ir.webtoon.com/static-files/04e3d13b-7984-48cb-bd33-ddba25557991"
+  ]
+}
