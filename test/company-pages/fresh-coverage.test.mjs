@@ -42,3 +42,35 @@ test('published company pages do not offer direct fresh checkout for excluded li
   }
   assert.deepEqual(violations, []);
 });
+
+test('reviewed ticker aliases order the matching current Wisdom instrument', async () => {
+  const listings = [
+    ['aallon-group', 'AALLON.HE', 'FI4000369608'],
+    ['admicom', 'ADMCM.HE', 'FI4000251830'],
+    ['apetit', 'APETIT.HE', 'FI0009003503'],
+    ['cibus', 'CIBUS.ST', 'SE0010832204'],
+    ['done-ai-group', 'DONE.ST', 'SE0010546911'],
+    ['metsa-board', 'METSB.HE', 'FI0009000665'],
+  ];
+  for (const [slug, ticker, isin] of listings) {
+    const html = await fs.readFile(new URL(`../../reports/${slug}-equity-report.html`, import.meta.url), 'utf8');
+    assert.ok(html.includes(`"identifier": "${isin}"`), `${slug}: reviewed instrument identity`);
+    const orderButton = html.match(/<a\b[^>]*\bdata-generate-report\b[^>]*>/)?.[0];
+    assert.ok(orderButton?.includes(`data-ticker="${ticker}"`), `${slug}: canonical order ticker`);
+  }
+});
+
+test('unresolved instrument identities offer coverage without a checkout promise', async () => {
+  for (const slug of [
+    'ossur-hf', 'as-tallink-grupp', 'active-biotech', 'besqab',
+    'byggmastare-anders-j-ahlstrom-holding', 'hexagon-purus', 'jondetech-sensors',
+    'lifa-air', 'next-biometrics-group', 'tessin-nordic-holding',
+  ]) {
+    const html = await fs.readFile(new URL(`../../reports/${slug}-equity-report.html`, import.meta.url), 'utf8');
+    assert.doesNotMatch(html, /data-generate-report/, slug);
+    assert.match(html, /href="#generate" class="btn btn-gold">Request coverage<\/a>/, slug);
+    const generate = html.match(/<section class="report-full-section" id="generate">([\s\S]*?)<\/section>/)[1];
+    assert.match(generate, /href="\/reports\.html\?search=[^"]+#coverage-request"/, slug);
+    assert.doesNotMatch(generate, /Delivered by email|&euro;|Order one now/, slug);
+  }
+});
