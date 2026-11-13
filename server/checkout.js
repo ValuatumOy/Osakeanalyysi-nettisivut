@@ -10,7 +10,8 @@
 // against the same covered-company search as the report picker before charging.
 
 const { getStripePricing, includedRevisions } = require('./stripe-pricing');
-const { searchCompanies, isCoveredTicker } = require('./search');
+const { isCoveredTicker } = require('./search');
+const { searchCompaniesUpstream } = require('./company-search-upstream');
 
 const MAX_EXTRA_ROUNDS = 10;
 
@@ -212,7 +213,7 @@ async function createFreshReportCheckout(stripe, order = {}) {
   }
   let results;
   try {
-    results = await searchCompanies(ticker);
+    results = await searchCompaniesUpstream(ticker);
   } catch {
     throw new CheckoutError(503, 'Company lookup is temporarily unavailable. Please try again shortly.');
   }
