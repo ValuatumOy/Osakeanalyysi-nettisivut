@@ -1,0 +1,10 @@
+{
+  "ticker": "AEE",
+  "companyName": "Ameren Corporation",
+  "profile": "Ameren is a utility holding company whose principal subsidiaries provide regulated electric and natural gas services. Ameren Missouri operates electric generation, transmission, and distribution, plus natural gas distribution. Ameren Illinois provides electric transmission and distribution and natural gas distribution. ATXI operates electric transmission. Their services supply energy to customers in Missouri and Illinois, while transmission businesses operate within the MISO region.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.962Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1002910/000100291026000009/aee-20251231.htm"
+}

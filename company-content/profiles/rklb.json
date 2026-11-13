@@ -1,0 +1,10 @@
+{
+  "ticker": "RKLB",
+  "companyName": "Rocket Lab USA, Inc.",
+  "profile": "Rocket Lab provides launch services and space systems for commercial and government customers. Its offerings include Electron launch services, spacecraft design and manufacturing, spacecraft components, optical systems, and spacecraft and on-orbit management solutions. It operates launch facilities in New Zealand and Virginia and provides access to orbit for spacecraft operators and government agencies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:52.295Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm"
+}

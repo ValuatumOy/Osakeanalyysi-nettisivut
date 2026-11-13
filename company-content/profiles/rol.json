@@ -1,0 +1,10 @@
+{
+  "ticker": "ROL",
+  "companyName": "Rollins, Inc.",
+  "profile": "Rollins provides pest and wildlife control services and protection against termite damage, rodents, and insects through a family of brands. Its services include residential and commercial pest control, termite protection, pest and wildlife exclusion, moisture remediation, insulation, and one-time treatments for specific infestations. Customers include households and businesses across sectors such as healthcare, food service, and logistics.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:11.726Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/84839/000008483926000008/rol-20251231.htm"
+}

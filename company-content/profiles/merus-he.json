@@ -1,0 +1,12 @@
+{
+  "ticker": "MERUS.HE",
+  "companyName": "Merus Power",
+  "profile": "Merus Power designs and manufactures battery energy storage systems and power quality solutions. Its products combine power electronics, software and electrical engineering to help integrate renewable energy, balance electricity supply and demand, and improve grid stability. The company also provides project planning, system integration, installation, maintenance and electricity trading services for its customers.",
+  "sourceFiling": "https://sijoittajat.meruspower.fi/wp-content/uploads/2026/02/Annual_Report_2025.pdf",
+  "profileSources": [
+    "https://meruspower.com/company/about-us/"
+  ],
+  "provider": "editorial",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:50:02.384Z"
+}

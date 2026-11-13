@@ -1,0 +1,10 @@
+{
+  "ticker": "VIAV",
+  "companyName": "Viavi Solutions Inc.",
+  "profile": "Viavi Solutions develops test and measurement, optical, and resilient positioning, navigation, and timing technologies. Its Network and Service Enablement business provides test, monitoring, assurance, and timing solutions for data centers, communications networks, and military, aerospace, railway, and first responder communications. Its Optical Security and Performance Products business serves anti-counterfeiting, consumer electronics, aerospace, industrial, and automotive applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.943Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/912093/000162828026056765/viav-20260627.htm"
+}

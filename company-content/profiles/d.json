@@ -1,0 +1,10 @@
+{
+  "ticker": "D",
+  "companyName": "Dominion Energy, Inc.",
+  "profile": "Dominion Energy is a regulated electric utility serving customers primarily in Virginia, North Carolina and South Carolina. Its subsidiary Virginia Power generates, transmits and distributes electricity to retail customers in Virginia and northeastern North Carolina, and sells or transmits electricity wholesale to cooperatives, municipalities and electricity markets. Dominion Energy also has long-term contracted electric generation operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:51.198Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/715957/000119312526063120/d-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "APLD",
+  "companyName": "Applied Digital Corporation",
+  "profile": "Applied Digital designs, develops, owns, and operates data centers built for high-performance computing workloads, including artificial intelligence, machine learning, and other accelerated computing applications. It provides data center capacity to hyperscalers and other compute customers through long-term lease and hosting arrangements. The company also operates a smaller legacy blockchain data center hosting business for a single customer.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:25.161Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1144879/000114487926000048/apld-20260531.htm"
+}

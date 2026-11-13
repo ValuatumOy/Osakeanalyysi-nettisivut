@@ -1,0 +1,10 @@
+{
+  "ticker": "CRS",
+  "companyName": "Carpenter Technology Corporation",
+  "profile": "Carpenter Technology manufactures, fabricates, and distributes premium specialty metals and alloys. Its products include titanium, nickel and cobalt alloys, powder metals, stainless steels, alloy steels, and tool steels, including materials engineered for additive manufacturing and soft magnetics applications. The company serves customers in aerospace, defense, medical, transportation, energy, industrial, and consumer markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:11.726Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/17843/000001784326000034/crs-20260630.htm"
+}

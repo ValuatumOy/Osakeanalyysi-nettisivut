@@ -1,0 +1,10 @@
+{
+  "ticker": "CRH",
+  "companyName": "CRH plc",
+  "profile": "CRH supplies building materials, products, and services for transportation and critical infrastructure, reindustrialization, and commercial and residential construction. Its portfolio includes aggregates and cementitious materials, road construction materials and services, and solutions for infrastructure projects involving transportation, water, energy, and telecommunications. Customers include national, regional, and local governments, contractors, and other construction product and service providers across North America, Europe, and Australia.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.626Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/849395/000162828026009043/crh-20251231.htm"
+}

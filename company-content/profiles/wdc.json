@@ -1,0 +1,10 @@
+{
+  "ticker": "WDC",
+  "companyName": "Western Digital Corporation",
+  "profile": "Western Digital develops, manufactures, and supplies data storage devices and solutions based on hard disk drive technology. Its portfolio includes high-capacity enterprise drives for cloud data centers, enterprise storage and smart video systems; hard drives for desktop and notebook computers; and external storage products for consumers. The company serves cloud infrastructure providers, enterprise customers, original equipment manufacturers, channel partners, retailers, and consumers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/106040/000162828026057139/wdc-20260703.htm"
+}

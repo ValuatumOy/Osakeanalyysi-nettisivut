@@ -1,0 +1,10 @@
+{
+  "ticker": "NKE",
+  "companyName": "NIKE, Inc.",
+  "profile": "NIKE designs, develops, markets and sells athletic footwear, apparel, equipment, accessories and services under the NIKE, Jordan and Converse brands. Products are sold directly through company retail stores and digital platforms, and through wholesale accounts such as distributors and licensees. The company also offers fitness apps, sport and wellness content, events, activations and digital services in retail stores.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:35.202Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm"
+}

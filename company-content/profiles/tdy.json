@@ -1,0 +1,10 @@
+{
+  "ticker": "TDY",
+  "companyName": "Teledyne Technologies Incorporated",
+  "profile": "Teledyne Technologies provides sensing, analysis and information technologies for industrial, aerospace, defense, environmental, medical and research markets. Its products include imaging sensors, cameras, marine and environmental monitoring instruments, electronic test equipment, aircraft information systems, defense electronics and satellite communication subsystems. It also manufactures semiconductors and microelectromechanical systems, and supplies engineered systems to government, industrial and commercial customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:30.000Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1094285/000109428526000017/tdy-20251228.htm"
+}

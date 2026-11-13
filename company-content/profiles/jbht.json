@@ -1,0 +1,10 @@
+{
+  "ticker": "JBHT",
+  "companyName": "J.B. Hunt Transport Services, Inc.",
+  "profile": "J.B. Hunt provides transportation, brokerage and delivery services to businesses and consumers in the United States, Canada and Mexico. Its services include containerized freight transported by truck and rail, dedicated freight operations tailored to customer requirements, local and home delivery, and freight brokerage using third-party carriers. Customers include companies across diverse industries, including large corporations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:00.882Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/728535/000143774926005294/jbht20251231_10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "BLDR",
+  "companyName": "Builders FirstSource, Inc.",
+  "profile": "Builders FirstSource supplies, manufactures and installs building materials and structural products for professional builders in new residential construction, repair and remodeling. Its products include trusses, wall panels, engineered wood, windows, doors, millwork, lumber and specialty materials. Services include turnkey framing, shell construction, design assistance and installation. Its Paradigm subsidiary offers drafting, estimating, quoting and virtual home design software to building industry businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.040Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1316835/000119312526054643/bldr-20251231.htm"
+}

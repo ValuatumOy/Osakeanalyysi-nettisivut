@@ -1,0 +1,10 @@
+{
+  "ticker": "XYL",
+  "companyName": "Xylem Inc.",
+  "profile": "Xylem designs, manufactures and services engineered products and solutions for water applications. Its portfolio supports drinking water delivery, treatment, measurement and use, as well as wastewater collection, testing, analysis and treatment. Offerings include transport and dewatering equipment, process water and wastewater treatment, analytics, smart metering, digital software and services. Customers include water utilities and other users across the water cycle.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.003Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1524472/000152447226000012/xyl-20251231.htm"
+}

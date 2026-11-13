@@ -1,0 +1,10 @@
+{
+  "ticker": "RMD",
+  "companyName": "ResMed Inc.",
+  "profile": "ResMed develops digital health solutions and cloud-connected medical devices for sleep and breathing disorders and related conditions. Its offerings include CPAP systems, ventilation and life-support devices, diagnostic products, masks, accessories, dental devices, and cloud-based applications and software for connected care. The company also provides in-home testing services and management software. Its customers include patients, clinicians, home medical equipment providers, and residential care providers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.962Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/943819/000094381926000047/rmd-20260630.htm"
+}

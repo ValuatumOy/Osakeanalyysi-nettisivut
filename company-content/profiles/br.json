@@ -1,0 +1,10 @@
+{
+  "ticker": "BR",
+  "companyName": "Broadridge Financial Solutions, Inc.",
+  "profile": "Broadridge provides financial technology solutions to banks, broker-dealers, asset and wealth managers, public companies, investors, and mutual funds. Its Investor Communication Solutions include proxy materials distribution, voting and solicitation services, shareholder disclosure management, fund solutions, corporate issuer services, regulatory services, and customer communications. Its Global Technology and Operations segment supports financial services operations, trading, and investing through technology-driven services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:20.270Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1383312/000162828026052243/br-20260630.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "DXCM",
+  "companyName": "DexCom, Inc.",
+  "profile": "Dexcom designs, develops and commercializes continuous glucose monitoring systems for diabetes and metabolic health management. Its products include the G7 and G7 15 Day systems and Stelo, an over-the-counter biosensor for adults with prediabetes or type 2 diabetes who do not use insulin. Users include patients, caregivers and clinicians, with compatible display devices and reporting software supporting glucose monitoring and care coordination.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:27.917Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1093557/000109355726000027/dxcm-20251231.htm"
+}

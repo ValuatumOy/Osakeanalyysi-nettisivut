@@ -1,0 +1,10 @@
+{
+  "ticker": "SN",
+  "companyName": "SharkNinja, Inc.",
+  "profile": "SharkNinja designs and sells small household appliances under the Shark and Ninja brands to consumers in global markets. Its products span cleaning, cooking and beverage preparation, food preparation, beauty, and home environment categories. The company applies product design, engineering, development, and manufacturing capabilities to create and refine appliances, drawing on consumer feedback and reviews to inform product technologies and features.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:20.270Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1957132/000195713226000015/sharkninja-20251231.htm"
+}

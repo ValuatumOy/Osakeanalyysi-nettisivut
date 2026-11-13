@@ -1,0 +1,10 @@
+{
+  "ticker": "CW",
+  "companyName": "Curtiss-Wright Corporation",
+  "profile": "Curtiss-Wright provides engineered products, solutions and services primarily to aerospace and defense markets, as well as commercial nuclear power, process and industrial markets. Its portfolio includes technologies for demanding environments and safety-critical applications. Customers include defense prime contractors, commercial aerospace original equipment manufacturers, and energy and manufacturing companies. The company serves these markets through engineering, precision manufacturing and related services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:51.278Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/26324/000162828026007587/cw-20251231.htm"
+}

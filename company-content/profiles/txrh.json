@@ -1,0 +1,10 @@
+{
+  "ticker": "TXRH",
+  "companyName": "Texas Roadhouse, Inc.",
+  "profile": "Texas Roadhouse operates and franchises casual dining and fast-casual restaurants under the Texas Roadhouse, Bubba’s 33 and Jaggers concepts. Texas Roadhouse serves steaks, ribs, seafood and other meals; Bubba’s 33 offers burgers, pizza, wings and additional dishes; Jaggers serves burgers, chicken sandwiches, tenders, salads and milkshakes. Restaurants provide dine-in service, with delivery available at many Bubba’s 33 and Jaggers locations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.042Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1289460/000110465926021292/txrh-20251230x10k.htm"
+}

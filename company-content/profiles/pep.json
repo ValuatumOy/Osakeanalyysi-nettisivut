@@ -1,0 +1,10 @@
+{
+  "ticker": "PEP",
+  "companyName": "PepsiCo, Inc.",
+  "profile": "The provided excerpt does not describe PepsiCo’s main business, products, services, or customers. It refers to a business section elsewhere in the filing and discusses relationships with vendors and customers, commodity and supply-chain risks, climate regulation, and international operations, but provides no supported description of the company’s offerings. A factual company profile cannot be written from this excerpt alone.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm"
+}

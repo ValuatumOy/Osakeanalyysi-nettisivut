@@ -1,0 +1,10 @@
+{
+  "ticker": "GPN",
+  "companyName": "Global Payments Inc.",
+  "profile": "Global Payments provides payment technology, software and services to businesses, financial institutions and consumers worldwide. Its offerings include payment processing, merchant acceptance solutions, business management software and value-added services that support business operations across channels. The company serves customers across North America, Europe, Asia-Pacific and Latin America, with technology and service capabilities supporting payment activities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:00.882Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1123360/000112336026000008/gpn-20251231.htm"
+}

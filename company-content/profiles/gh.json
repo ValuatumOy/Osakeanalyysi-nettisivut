@@ -1,0 +1,10 @@
+{
+  "ticker": "GH",
+  "companyName": "Guardant Health, Inc.",
+  "profile": "Guardant Health develops blood and tissue tests, real-world data, and analytics for cancer screening, recurrence monitoring, and treatment selection. Its products include Guardant360 tests for advanced cancers, Guardant Reveal for residual disease and therapy response monitoring, and Shield for colorectal cancer screening. It also provides testing and research analytics to biopharmaceutical companies developing cancer therapies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:37.955Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1576280/000157628026000013/gh-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "FICO",
+  "companyName": "Fair Isaac Corporation",
+  "profile": "Fair Isaac provides analytics software and scoring solutions to businesses and consumers. Its Scores segment offers predictive credit and other scores, including the FICO Score, through business channels and direct consumer services such as myFICO.com. Its Software segment supplies decisioning models, capabilities, and related professional services for processes including lending, customer management, fraud detection, and marketing, as SaaS or on-premises software.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:37.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/814547/000081454726000042/fico-20260930.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ON",
+  "companyName": "ON Semiconductor Corporation",
+  "profile": "ON Semiconductor, operating as onsemi, provides intelligent power and sensing solutions for automotive, industrial, medical, and other markets, including AI data centers. Its technologies support vehicle electrification, charging systems, automotive safety, solar and industrial power, diagnostic devices, factory and building automation, and robotics. Its products also address data center power needs, including energy efficiency across power supply systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:44.924Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000006/on-20251231.htm"
+}

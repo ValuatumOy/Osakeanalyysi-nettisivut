@@ -1,0 +1,10 @@
+{
+  "ticker": "DECK",
+  "companyName": "Deckers Outdoor Corporation",
+  "profile": "Deckers Outdoor designs, markets, and distributes footwear, apparel, and accessories for casual lifestyle use and performance activities. Its principal brands are HOKA, UGG, and Teva. Products include HOKA running, trail, hiking, fitness, and lifestyle footwear; UGG footwear, apparel, and accessories; and Teva outdoor footwear. Sales reach consumers through retailers, distributors, e-commerce, and company-operated stores.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:25.159Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/910521/000162828026037664/deck-20260331.htm"
+}

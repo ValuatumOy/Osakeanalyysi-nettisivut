@@ -1,0 +1,10 @@
+{
+  "ticker": "CELH",
+  "companyName": "Celsius Holdings, Inc.",
+  "profile": "Celsius Holdings operates in the energy drink industry and develops beverages for wellness-focused consumers, fitness enthusiasts, and people seeking added functionality in drinks, while also appealing to a broad consumer base. Pepsi plays a central role in distributing and commercializing its products. The excerpt describes the company’s products as beverages but does not specify individual product lines.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.944Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1341766/000134176626000024/celh-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CCK",
+  "companyName": "Crown Holdings, Inc.",
+  "profile": "Crown Holdings manufactures metal cans and ends for beverage, food, and aerosol industries, as well as transit packaging products made from steel, paper, plastic, and other substrates. Its offerings include beverage and food cans, bottles, crowns, caps, automation and equipment technologies, protective packaging, and steel and plastic consumables. Customers span beverage, food, metals, construction, agriculture, and other industries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:42.945Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1219601/000162828026012904/cck-20251231.htm"
+}

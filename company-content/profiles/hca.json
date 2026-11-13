@@ -1,0 +1,10 @@
+{
+  "ticker": "HCA",
+  "companyName": "HCA Healthcare, Inc.",
+  "profile": "HCA Healthcare operates general acute care, behavioral and rehabilitation hospitals, along with ambulatory surgery centers and endoscopy centers. Its facilities provide medical and surgical specialties, diagnostic and emergency care, mental health services, rehabilitation, and outpatient and ancillary services. The company serves patients and communities through hospitals, physician practices, urgent care facilities, clinics, diagnostic centers and home health and hospice services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:35.201Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/860730/000119312526044769/hca-20251231.htm"
+}

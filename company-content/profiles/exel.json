@@ -1,0 +1,10 @@
+{
+  "ticker": "EXEL",
+  "companyName": "Exelixis, Inc.",
+  "profile": "Exelixis develops and markets medicines, including cabozantinib products such as CABOMETYX. Its business includes protecting patents for marketed products and addressing applications by companies seeking approval for generic or other competing versions. The excerpt describes CABOMETYX tablets and other cabozantinib formulations, but does not specify the patients or conditions treated by these products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.037Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/939767/000093976726000021/exel-20260102.htm"
+}

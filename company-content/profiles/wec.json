@@ -1,0 +1,10 @@
+{
+  "ticker": "WEC",
+  "companyName": "WEC Energy Group, Inc.",
+  "profile": "WEC Energy Group is a holding company whose subsidiaries provide or invest in regulated electricity and natural gas utilities, renewable energy, and nonregulated renewable energy. Its electric utilities generate and distribute power to retail, wholesale, and resale customers in Wisconsin and Michigan. Its natural gas utilities serve customers in several regional territories, and it holds an interest in an electric transmission company.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:54.564Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/783325/000078332526000018/wec-20251231.htm"
+}

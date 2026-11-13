@@ -1,0 +1,10 @@
+{
+  "ticker": "VRTX",
+  "companyName": "Vertex Pharmaceuticals Incorporated",
+  "profile": "Vertex Pharmaceuticals is a global biotechnology company that discovers, develops and commercializes medicines for serious diseases, with an emphasis on specialty markets. It has approved medicines for cystic fibrosis, sickle cell disease, transfusion-dependent beta thalassemia and acute pain. The company also develops clinical-stage and earlier research programs in areas including kidney disease, neuropathic pain, type 1 diabetes and myotonic dystrophy.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:17.719Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/875320/000087532026000056/vrtx-20251231.htm"
+}

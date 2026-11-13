@@ -1,0 +1,10 @@
+{
+  "ticker": "MCHP",
+  "companyName": "Microchip Technology Incorporated",
+  "profile": "Microchip Technology develops, manufactures, and sells embedded control products and related services for original equipment manufacturers and other customers. Its portfolio includes microcontrollers, microprocessors, analog and mixed-signal products, field-programmable gate arrays, data center and networking products, and memory. These components support applications across automotive, aerospace, communications, consumer, computing, and industrial markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:54.564Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/827054/000082705426000016/mchp-20260331.htm"
+}

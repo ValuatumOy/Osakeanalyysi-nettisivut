@@ -1,0 +1,10 @@
+{
+  "ticker": "UPS",
+  "companyName": "United Parcel Service, Inc.",
+  "profile": "United Parcel Service provides package delivery and logistics services through an integrated air and ground network serving customers worldwide. Its services include domestic and international transportation and delivery, distribution, contract logistics, ocean and air freight, customs brokerage, and insurance. The company serves customers across markets including healthcare, business-to-business commerce, small and medium-sized businesses, and international trade, with shipping, tracking, and logistics tools.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.625Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1090727/000162828026008432/ups-20251231.htm"
+}

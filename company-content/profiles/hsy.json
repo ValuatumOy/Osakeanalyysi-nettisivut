@@ -1,0 +1,10 @@
+{
+  "ticker": "HSY",
+  "companyName": "The Hershey Company",
+  "profile": "The Hershey Company makes and sells chocolate and non-chocolate confectionery, gum, mints, protein bars, and snacks, including popcorn, pretzels, spreads, and snack mixes. It also offers baking ingredients, toppings, and beverages. Its products are marketed under more than 85 brand names and sold through retail, pantry, and food-service channels in North America and international markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:52.297Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/47111/000162828026008586/hsy-20251231.htm"
+}

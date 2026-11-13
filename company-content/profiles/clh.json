@@ -1,0 +1,10 @@
+{
+  "ticker": "CLH",
+  "companyName": "Clean Harbors, Inc.",
+  "profile": "Clean Harbors provides environmental and industrial services across North America. It collects, transports, treats, recycles and disposes of hazardous and non-hazardous waste, and offers emergency response, industrial maintenance, site remediation, water filtration, parts cleaning and vacuum services. Its customers include manufacturers, automotive and commercial businesses. The company also collects used oil and related materials, re-refines oil, and produces base oils and lubricants.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:41.057Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/822818/000082281826000009/clh-20251231.htm"
+}

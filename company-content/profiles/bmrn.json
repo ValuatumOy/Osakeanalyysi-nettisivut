@@ -1,0 +1,10 @@
+{
+  "ticker": "BMRN",
+  "companyName": "BioMarin Pharmaceutical Inc.",
+  "profile": "BioMarin is a biotechnology company focused on medicines for people with genetically defined conditions and rare diseases. It develops and commercializes therapies through internal research, partnerships and acquisitions. Its portfolio includes commercial therapies and a clinical and preclinical pipeline. The excerpt identifies patients with serious or life-threatening rare diseases and medical conditions as the intended beneficiaries of its medicines.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:58.038Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1048477/000104847726000004/bmrn-20251231.htm"
+}

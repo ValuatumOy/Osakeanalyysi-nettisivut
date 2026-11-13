@@ -1,0 +1,10 @@
+{
+  "ticker": "FTAI",
+  "companyName": "FTAI Aviation Ltd.",
+  "profile": "FTAI Aviation repairs, rebuilds, develops and manufactures aircraft engines and aftermarket components, primarily for CFM56 and V2500 engines. It sells or leases engines to airlines and asset owners, including through its maintenance, repair and exchange model. The company also owns and manages aircraft and engines through its aviation leasing business and manages third-party capital invested in aviation assets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:51.278Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1590364/000162828026012940/ftai-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "MTSI",
+  "companyName": "MACOM Technology Solutions Holdings, Inc.",
+  "profile": "MACOM designs, develops, and manufactures radio frequency and optical semiconductor products for industrial and defense, data center, and telecommunications markets. Its portfolio includes integrated circuits, multi-chip modules, diodes, amplifiers, switches, passive and active components, and RF and optical subsystems. Customers incorporate these products into systems such as wireless base stations, optical and data center networks, radar, medical and satellite systems, and test and measurement equipment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:29.452Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1493594/000149359426000044/mtsi-20261002.htm"
+}

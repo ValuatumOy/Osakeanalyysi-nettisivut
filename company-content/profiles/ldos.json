@@ -1,0 +1,10 @@
+{
+  "ticker": "LDOS",
+  "companyName": "Leidos Holdings, Inc.",
+  "profile": "Leidos provides scientific, engineering and technical services and solutions to government and commercial customers. Its work includes digital modernization, cloud and network services, mission software, cyber operations, intelligence analysis, logistics, security, training and managed health services. Customers include U.S. federal agencies, state and local governments, foreign government agencies and commercial businesses. Its segments span national security, health and civil, commercial and international, and defense systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:30.001Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1336920/000133692026000030/ldos-20260102.htm"
+}

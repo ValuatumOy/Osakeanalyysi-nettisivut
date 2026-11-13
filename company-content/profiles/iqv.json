@@ -1,0 +1,10 @@
+{
+  "ticker": "IQV",
+  "companyName": "IQVIA Holdings Inc.",
+  "profile": "IQVIA provides clinical research services, commercial insights, and healthcare intelligence to life sciences and healthcare organizations. It combines healthcare data, analytics, technology, and industry expertise in offerings that support clinical trial design, site selection, and patient recruitment, as well as real-world research and commercial operations. Customers include pharmaceutical, biotech, and medical device companies, researchers, government agencies, payers, and other healthcare stakeholders.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:53.133Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1478242/000162828026008322/iqv-20251231.htm"
+}

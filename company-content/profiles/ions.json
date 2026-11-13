@@ -1,0 +1,10 @@
+{
+  "ticker": "IONS",
+  "companyName": "Ionis Pharmaceuticals, Inc.",
+  "profile": "Ionis Pharmaceuticals discovers and develops RNA-targeted medicines for serious diseases and sells or partners on medicines across multiple markets. Its marketed medicines address conditions including familial chylomicronemia syndrome, hereditary angioedema, transthyretin amyloidosis, spinal muscular atrophy, and amyotrophic lateral sclerosis. Ionis independently commercializes some products, co-commercializes others with partners, and licenses or distributes additional medicines through collaborators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:37.956Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874015/000087401526000115/form10k.htm"
+}

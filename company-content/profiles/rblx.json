@@ -1,0 +1,10 @@
+{
+  "ticker": "RBLX",
+  "companyName": "Roblox Corporation",
+  "profile": "Roblox operates an immersive gaming and creation platform comprising the Roblox Client, Roblox Studio and Roblox Cloud. Users access experiences through the Client, while creators use Studio to build, publish and operate experiences and other content. The platform also includes a Marketplace for avatar items and a Creator Store for models, plugins, audio, fonts, images, meshes and video, serving users and creators around the world.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.631Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000024/rblx-20251231.htm"
+}

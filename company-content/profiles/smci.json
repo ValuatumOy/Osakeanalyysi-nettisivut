@@ -1,0 +1,10 @@
+{
+  "ticker": "SMCI",
+  "companyName": "Super Micro Computer, Inc.",
+  "profile": "Super Micro Computer provides information technology solutions for enterprise, cloud and edge workloads. Its portfolio includes servers, storage systems, networking devices, workstations, blade servers, server subsystems, management software and modular data center infrastructure. Customers include enterprise data centers, cloud service providers and edge computing users. The company also provides installation, upgrade, maintenance and liquid cooling support services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000022/smci-20260630.htm"
+}

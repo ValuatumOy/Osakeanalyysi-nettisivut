@@ -1,0 +1,10 @@
+{
+  "ticker": "PODD",
+  "companyName": "Insulet Corporation",
+  "profile": "Insulet develops, manufactures and sells continuous insulin delivery systems for people with insulin-dependent diabetes. Its Omnipod platform includes the Omnipod 5 Automated Insulin Delivery System, Omnipod DASH Insulin Management System and Classic Omnipod. The company also produces pods for Amgen's Neulasta Onpro kit, a delivery system intended to help reduce infection risk after intensive chemotherapy.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:51.279Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1145197/000114519726000028/podd-20251231.htm"
+}

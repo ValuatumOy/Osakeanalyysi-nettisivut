@@ -1,0 +1,10 @@
+{
+  "ticker": "STE",
+  "companyName": "STERIS plc",
+  "profile": "STERIS provides products and services supporting patient care and infection prevention, principally for healthcare providers and medical device and pharmaceutical customers. Its offerings include detergents, barrier products, instruments, sterilizers, surgical tables, and automated endoscope reprocessors. Services include equipment installation and maintenance, instrument and scope repair, laboratory testing, microbial reduction, and outsourced reprocessing. It also offers operating room connectivity solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:44.924Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1757898/000162828026039136/ste-20260331.htm"
+}
