@@ -68,10 +68,10 @@ jobs:
 
       - name: Commit and push
         run: |
-          git add reports sitemap.xml llms.txt companies companies.html
+          git add reports reports.html sitemap.xml llms.txt companies companies.html
           git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
           if git diff --cached --quiet; then
-            echo "No changes: every page already shows the model figures."
+            echo "No eligible updates to commit; see skipped pages in the summary."
             exit 0
           fi
           git config user.name "company-pages-sync"
