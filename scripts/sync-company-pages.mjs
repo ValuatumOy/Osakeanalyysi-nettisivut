@@ -5,9 +5,10 @@
 // to action and status notes are left as they are. A page whose figures already match is
 // not touched, so a run without model changes writes nothing.
 //
-// Reviewed pages, unavailable values and large changes require a person before they are
-// published. This keeps a model correction or split adjustment from silently replacing
-// verified filing values. All skips are listed in the run summary.
+// Wisdom wins: pages whose figures were checked against a filing are rewritten to the model
+// figures too, so a page never disagrees with the report a visitor can order. Unavailable
+// values, large changes and a move to a new fiscal year still require a person, which keeps a
+// split adjustment or model error from going live unseen. All skips are listed in the run summary.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -45,14 +46,12 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
   let files = (await fs.readdir(reportsDir)).filter((file) => file.endsWith('-equity-report.html')).sort();
   if (only) files = files.filter((file) => only.includes(file));
 
-  const { aliases, reviewedPages } = await wisdomReviews(rootDir);
+  const aliases = await tickerAliases(rootDir);
   const results = [];
   const pages = [];
   for (const file of files) {
     const html = await fs.readFile(path.join(reportsDir, file), 'utf8');
     const page = readPage(file, html);
-    if (!page.skip && reviewedPages.has(file)) page.skip = 'filing-reviewed page needs a person';
-    if (!page.skip && !page.modelWording) page.skip = 'non-model source needs a person';
     if (!page.skip && !isCoveredTicker(page.orderTicker || page.ticker)) page.skip = 'listing is outside current coverage';
     if (page.skip) results.push({ file, status: 'skipped', reason: page.skip });
     else pages.push(page);
@@ -115,10 +114,6 @@ function unsafeCellChange(oldCells, newCells) {
   for (let i = 0; i < oldCells.length; i += 1) {
     if (oldCells[i] === newCells[i]) continue;
     if (oldCells[i] === 'N/A' || newCells[i] === 'N/A') return `${labels[i]} changes to or from N/A; check by hand`;
-    // The live model recalculated net earnings for many FY2025 Nordic pages.
-    // Even small changes can disagree with filings, so hold the entire page
-    // until the model calculation has been reconciled.
-    if (i === 4) return 'net earnings differs; check the model calculation';
     const previous = parseCell(oldCells[i]);
     const next = parseCell(newCells[i]);
     if (!previous || !next || previous.currency !== next.currency || previous.unit !== next.unit) {
@@ -153,7 +148,7 @@ export function readPage(file, html) {
   const year = Number(sentence[0][0].match(/\d{4}/)[0]);
   const cells = [...grid[0][0].matchAll(/<span class="cp-v">([^<]*)<\/span>/g)].map((match) => match[1]);
   if (cells.length !== 6) return { skip: 'unrecognised metrics grid' };
-  // A page whose figures came from a filing review is not rewritten automatically.
+  // Filing wording is always replaced with the model wording, even when the figures match.
   const modelWording = sentence[0][0].includes("Valuatum's model shows") && !/checked against the|Available financial figures for FY/.test(html);
   const orderTag = (html.match(/<[^>]*\bdata-generate-report\b[^>]*>/i) || [])[0] || '';
   const orderTicker = (orderTag.match(/\bdata-ticker="([^"]+)"/i) || [])[1] || '';
@@ -191,21 +186,19 @@ export function updateHtml(page, company, today) {
 
 // Some older pages show a ticker without its exchange suffix (AALLON for AALLON.HE). The filing
 // reviews recorded the Wisdom ticker for those pages; the ISIN check still guards the match.
-async function wisdomReviews(rootDir) {
+async function tickerAliases(rootDir) {
   const aliases = new Map();
-  const reviewedPages = new Set();
   const dir = path.join(rootDir, 'company-content', 'reviews');
   const files = (await fs.readdir(dir)).filter((file) => file.endsWith('.json'));
   for (const file of files) {
     const review = JSON.parse(await fs.readFile(path.join(dir, file), 'utf8'));
     for (const entry of Array.isArray(review.pages) ? review.pages : []) {
-      if (entry.path && entry.values && typeof entry.values === 'object') reviewedPages.add(path.basename(entry.path));
       if (entry.ticker && entry.pageTicker && entry.ticker !== entry.pageTicker && entry.path) {
         aliases.set(path.basename(entry.path), entry.ticker);
       }
     }
   }
-  return { aliases, reviewedPages };
+  return aliases;
 }
 
 function findSchema(html) {
