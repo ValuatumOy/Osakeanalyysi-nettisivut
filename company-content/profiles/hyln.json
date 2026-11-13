@@ -1,0 +1,13 @@
+{
+  "ticker": "HYLN",
+  "companyName": "Hyliion Holdings Corp.",
+  "profile": "Hyliion designs and develops power generators for stationary and mobile applications and provides research and development services. Its primary product, the KARNO Power Module, is a modular generator powered by a heat-driven linear generator and designed to operate using a range of fuels. The company is initially targeting data centers, commercial and industrial users, and defense applications, and also provides research services under government contracts.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.810Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1759631/000162828026011278/hyln-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1759631/000162828026011278/hyln-20251231.htm"
+  ]
+}

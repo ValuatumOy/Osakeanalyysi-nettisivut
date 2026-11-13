@@ -1,0 +1,13 @@
+{
+  "ticker": "AVTX",
+  "companyName": "Avalo Therapeutics, Inc.",
+  "profile": "Avalo Therapeutics is a clinical-stage biotechnology company developing treatments for immune-mediated inflammatory diseases. Its lead candidate, abdakibart, is an anti-IL-1β monoclonal antibody being studied in a Phase 2 trial for hidradenitis suppurativa. The company also describes plans to develop or acquire additional compounds and programs for these diseases; the supplied text identifies legacy programs that are not currently in clinical development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.806Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1534120/000153412026000011/avtx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1534120/000153412026000011/avtx-20251231.htm"
+  ]
+}

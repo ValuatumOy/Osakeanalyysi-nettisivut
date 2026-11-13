@@ -1,0 +1,13 @@
+{
+  "ticker": "ALTO",
+  "companyName": "Alto Ingredients, Inc.",
+  "profile": "Alto Ingredients produces, markets, and distributes specialty alcohols, renewable fuels, and essential ingredients. Its products include industrial, pharmaceutical, food and beverage-grade alcohols, fuel-grade ethanol, dried yeast, corn protein products, corn germ, distillers grains, and carbon dioxide. Customers include manufacturers and distributors of cosmetics, sanitizers, food products, spirits, health and personal care products, as well as fuel blenders and trading firms.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.925Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/778164/000121390026027687/ea0280136-10k_alto.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/778164/000121390026027687/ea0280136-10k_alto.htm"
+  ]
+}

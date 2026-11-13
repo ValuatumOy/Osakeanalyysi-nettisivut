@@ -1,0 +1,13 @@
+{
+  "ticker": "STTK",
+  "companyName": "Shattuck Labs, Inc.",
+  "profile": "Shattuck Labs is a clinical-stage biotechnology company developing monoclonal and bispecific antibodies that block the DR3 receptor for inflammatory and immune-mediated diseases. Its lead candidate, SL-325, is a DR3-blocking monoclonal antibody being evaluated in a Phase 1 clinical trial. The company’s research and development work focuses on therapies targeting the DR3/TL1A pathway, including potential treatments for inflammatory bowel disease.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.915Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1680367/000162828026014989/sttk-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1680367/000162828026014989/sttk-20251231.htm"
+  ]
+}

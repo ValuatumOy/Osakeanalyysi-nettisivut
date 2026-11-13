@@ -1,0 +1,13 @@
+{
+  "ticker": "RXT",
+  "companyName": "Rackspace Technology, Inc.",
+  "profile": "Rackspace Technology provides hybrid cloud and artificial intelligence solutions, designing, integrating, and operating technology infrastructure, data foundations, and software platforms. Its services span edge, private cloud, public cloud, sovereign environments, colocation, and managed hosting, supporting workloads across multiple environments. The company helps organizations manage cloud infrastructure and AI deployments for regulated and mission-critical operations.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.495Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1810019/000181001926000015/rxt-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1810019/000181001926000015/rxt-20251231.htm"
+  ]
+}

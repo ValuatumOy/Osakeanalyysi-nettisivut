@@ -1,0 +1,13 @@
+{
+  "ticker": "SRZN",
+  "companyName": "Surrozen, Inc.",
+  "profile": "Surrozen is a biotechnology company developing therapies that modulate the Wnt pathway, with current development focused on ophthalmology. Its product candidates are antibody-based therapeutics designed to affect Wnt signaling in eye diseases. The company is developing SZN-8141 and SZN-8143 for retinal conditions, while evaluating research programs in other ophthalmic indications. It has licensed SZN-413 to Boehringer Ingelheim for research, development, and commercialization.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.926Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1824893/000119312526119818/srzn-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1824893/000119312526119818/srzn-20251231.htm"
+  ]
+}

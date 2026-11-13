@@ -1,0 +1,13 @@
+{
+  "ticker": "OVID",
+  "companyName": "Ovid Therapeutics Inc.",
+  "profile": "Ovid Therapeutics develops small molecule medicines for brain disorders. Its potential central nervous system therapies target biological mechanisms associated with neuronal hyperexcitability, including neurotransmitters and ion channels. Clinical programs address drug-resistant focal onset seizures, developmental and epileptic encephalopathies, psychosis associated with Parkinson’s disease and Lewy body dementia, and schizophrenia. Preclinical programs address other psychosis and mood disorders.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.870Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1636651/000162828026019438/ovid-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1636651/000162828026019438/ovid-20251231.htm"
+  ]
+}

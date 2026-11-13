@@ -1,0 +1,14 @@
+{
+  "ticker": "ABEO",
+  "companyName": "Abeona Therapeutics Inc.",
+  "profile": "Abeona Therapeutics is a commercial-stage biopharmaceutical company developing treatments for rare and serious diseases. Its FDA-approved ZEVASKYN is an autologous gene-modified cell therapy for wounds in patients with recessive dystrophic epidermolysis bullosa. Its development portfolio includes ABO-701, an engineered T-cell therapy for solid tumors, and ABO-801, a Phase 3-ready oral fluticasone candidate acquired in November 2026 for eosinophilic esophagitis.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:36.476Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/318306/000149315226010413/form10-k.htm",
+  "profileSources": [
+    "https://investors.abeonatherapeutics.com/news-events/press-releases/detail/360/abeona-therapeutics-reports-third-quarter-2026-financial-results-and-zevaskyn-commercial-progress",
+    "https://investors.abeonatherapeutics.com/sec-filings/all-sec-filings/content/0001493152-26-050738/form10-q.htm"
+  ]
+}

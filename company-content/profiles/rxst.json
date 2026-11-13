@@ -1,0 +1,13 @@
+{
+  "ticker": "RXST",
+  "companyName": "RxSight, Inc.",
+  "profile": "RxSight develops and commercializes medical technology for customized vision following cataract surgery. Its RxSight Light Adjustable Lens system includes an adjustable intraocular lens, a light delivery device, and related accessories. After lens implantation, eye doctors use the device to adjust the lens based on the patient’s refractive needs, allowing post-surgical changes to the visual correction. The system is used in premium cataract procedures.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.165Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1111485/000119312526071775/rxst-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1111485/000119312526071775/rxst-20251231.htm"
+  ]
+}

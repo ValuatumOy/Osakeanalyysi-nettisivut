@@ -1,0 +1,13 @@
+{
+  "ticker": "TNXP",
+  "companyName": "Tonix Pharmaceuticals Holding Corp.",
+  "profile": "Tonix Pharmaceuticals develops and commercializes therapies for central nervous system disorders, immunology, infectious diseases, and rare diseases. Its marketed products include TONMYA, a sublingual medicine for fibromyalgia in adults, and prescription products for acute migraine delivered by injection or nasal spray. The company also has clinical and preclinical development programs, including candidates for Lyme disease prevention, kidney transplant rejection, autoimmune diseases, and cocaine intoxication.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:39:03.353Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1430306/000199937126005730/tnxp-10k_123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1430306/000199937126005730/tnxp-10k_123125.htm"
+  ]
+}

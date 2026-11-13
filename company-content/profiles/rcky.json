@@ -1,0 +1,13 @@
+{
+  "ticker": "RCKY",
+  "companyName": "Rocky Brands, Inc.",
+  "profile": "Rocky Brands designs, manufactures, and markets footwear, apparel, and accessories under brands including Muck, XTRATUF, Rocky, Durango, Georgia Boot, Lehigh, Ranger, and Michelin. Its products serve work, outdoor, western, commercial military, duty, and military markets. The company distributes through wholesale accounts, consumer websites, third-party marketplaces, and a retail store, and also bids on military and private label footwear contracts.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.927Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/895456/000143774926007634/rcky20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/895456/000143774926007634/rcky20251231_10k.htm"
+  ]
+}

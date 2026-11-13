@@ -1,0 +1,13 @@
+{
+  "ticker": "SPOK",
+  "companyName": "Spok Holdings, Inc.",
+  "profile": "Spok develops, sells, and supports communication and collaboration systems for healthcare organizations and other institutions that need to coordinate clinical and critical communications. Its offerings include secure messaging, paging services, workflow tools, contact center solutions, software, equipment, and related support services. Customers include hospitals, government agencies, public safety organizations, educational institutions, hotels, resorts, casinos, and manufacturers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:32.203Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1289945/000128994526000010/spok-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1289945/000128994526000010/spok-20251231.htm"
+  ]
+}

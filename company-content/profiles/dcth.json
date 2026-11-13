@@ -1,0 +1,13 @@
+{
+  "ticker": "DCTH",
+  "companyName": "Delcath Systems, Inc.",
+  "profile": "Delcath Systems focuses on interventional oncology treatments for cancers originating in or spreading to the liver. Its HEPZATO KIT combines melphalan for injection with a hepatic delivery system and is approved in the United States for certain adults with metastatic uveal melanoma. In Europe, its CHEMOSAT system is a standalone hepatic delivery medical device used at medical centers to treat liver cancers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:19.004Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/872912/000162828026012019/dcth-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/872912/000162828026012019/dcth-20251231.htm"
+  ]
+}

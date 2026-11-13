@@ -1,0 +1,13 @@
+{
+  "ticker": "JELD",
+  "companyName": "JELD-WEN Holding, Inc.",
+  "profile": "JELD-WEN designs, manufactures, and distributes interior and exterior doors, windows, and related building products for new construction and repair and remodeling markets. Its products are made from wood, metal, and composite materials and include residential and non-residential doors, patio doors, wall systems, and residential windows. Customers include wholesale distributors, retailers, contractors, and consumers. The company operates manufacturing and distribution facilities in North America and Europe.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.936Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1674335/000167433526000043/jeld-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1674335/000167433526000043/jeld-20251231.htm"
+  ]
+}

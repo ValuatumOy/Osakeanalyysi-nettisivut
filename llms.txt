@@ -70,7 +70,7 @@
 - Analyst revision: an analyst's plain-language instruction changes the assumptions; the revised forecast runs through Valuatum's financial model and a 12-month target follows.
 
 ## Company overview pages
-1882 company overview pages include profiles and, where available, financial figures.
+1953 company overview pages include profiles and, where available, financial figures.
 Some describe historical listings or renamed companies; check each page for report availability.
 They are listed in
 [the company index](https://www.aiequityreports.com/companies.html) and in [sitemap.xml](https://www.aiequityreports.com/sitemap.xml).

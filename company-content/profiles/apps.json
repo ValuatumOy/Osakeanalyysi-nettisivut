@@ -1,0 +1,13 @@
+{
+  "ticker": "APPS",
+  "companyName": "Digital Turbine, Inc.",
+  "profile": "Digital Turbine provides mobile technology and advertising products for advertisers, app publishers and developers, wireless carriers, and device manufacturers. Its on-device products support app discovery and delivery, and present news and other media within mobile devices. Its advertising platform helps app developers, brands, and agencies run mobile campaigns, while its ad monetization services connect publishers’ display, native, and video inventory with advertisers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.788Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/317788/000162828026038115/apps-20260331.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/317788/000162828026038115/apps-20260331.htm"
+  ]
+}

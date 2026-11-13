@@ -1,0 +1,13 @@
+{
+  "ticker": "ALMU",
+  "companyName": "Aeluma, Inc.",
+  "profile": "Aeluma develops photonic and electronic technologies for communications and sensing applications, including datacom, mobile, defense, aerospace, robotics, automotive, augmented and virtual reality, and quantum uses. Its platform combines compound semiconductor materials with large-diameter substrates. Products and development work include near-infrared and shortwave-infrared photodetectors and arrays, quantum-dot lasers and optical amplifiers, wafers, chips, engineering samples, and development services for commercial and government customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.165Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1828805/000121390026100584/ea0305364-10k_aeluma.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1828805/000121390026100584/ea0305364-10k_aeluma.htm"
+  ]
+}

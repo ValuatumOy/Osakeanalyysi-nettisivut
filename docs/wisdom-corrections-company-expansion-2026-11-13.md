@@ -347,3 +347,10 @@ Alla olevat erot ovat tarkistusehdotuksia, eivät automaattisesti todettuja virh
 | SABR | 2025 | Oma pääoma | −1 051,003 | −1 036,494 (StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest) | [SEC](https://www.sec.gov/Archives/edgar/data/1597033/000162828026008800/sabr-20251231.htm) |
 | FIP | 2025 | Nettotulos | −260,406 | −207,403 (NetIncomeLossAvailableToCommonStockholdersBasic); −152,054 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1899883/000189988326000015/ftai-20251231.htm) |
 | ABAT | 2026 | Nettotulos | −75,438034 | −73,379021 (NetIncomeLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1576873/000149315226042497/form10-k.htm) |
+
+## Ruotsin lisäehdokkaat: ScandBook ja Unibap
+
+- **ScandBook Holding (SBOK-B.ST):** [vuoden 2025 raportissa](https://attachment.news.eu.nasdaq.com/a69bb0ff308c45cd8ec41c6d13d4759bd) liikevaihto oli 489,315 MSEK, liikevoitto 45,080 MSEK, nettotulos 40,670 MSEK ja oma pääoma 285,780 MSEK. Wisdomin vastaavat luvut olivat 432,326661, 31,557038, 30,086831 ja 306,744994 MSEK. Myös [tilinpäätöspäivän kurssiksi](https://attachment.news.eu.nasdaq.com/a6fbacd82a4cf9586affd6aad84af9257) ilmoitettu 49,40 SEK poikkeaa Wisdomin 46,80 SEK:stä. Tarkista myös muuttuneen ISINin vaikutus.
+- **Unibap Space Solutions (UNIBAP.ST):** ticker ja ISIN ovat samat, mutta Wisdomin nimessä on yhä Unibap AB. [Ruotsin veroviranomaisen mukaan](https://www.skatteverket.se/privat/skatter/vardepapper/aktiehistorik/u/unibapspacesolutions.4.5c281c7015abecc2e20b174.html) virallinen nimi muuttui 3.6.2025. Tarkista ja päivitä perustieto Wisdomiin ennen uuden tilattavan sivun luontia. Vuoden 2025 talousluvut täsmäsivät yhtiön raporttiin.
+
+- **Cass Information Systems (CASS), FY2025:** Wisdomin nettotulos on 31,112 MUSD, kun [SEC:n vuosiraportista](https://www.sec.gov/Archives/edgar/data/708781/000070878126000010/cass-20251231.htm) löytyvä vertailuluku on 35,116 MUSD. Tarkista ensin määritelmä sekä pankkitytäryhtiön vaikutus; yhtiötä ei lisätty sivuerään.

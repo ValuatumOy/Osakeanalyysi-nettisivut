@@ -1,0 +1,13 @@
+{
+  "ticker": "KLTR",
+  "companyName": "Kaltura, Inc.",
+  "profile": "Kaltura provides a cloud-based platform for organizations to create, manage, and deliver video and other rich media experiences. Its products support live and on-demand content, enterprise video management, online publishing, virtual events, webinars, cloud-based television services, and AI-generated video and avatar interactions. The company serves enterprises across industries, including universities and telecommunications and media companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.494Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1432133/000162828026018182/kltr-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1432133/000162828026018182/kltr-20251231.htm"
+  ]
+}

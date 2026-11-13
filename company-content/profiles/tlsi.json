@@ -1,0 +1,13 @@
+{
+  "ticker": "TLSI",
+  "companyName": "TriSalus Life Sciences, Inc.",
+  "profile": "TriSalus Life Sciences develops medical technology and investigational therapies for solid tumors. Its Pressure-Enabled Drug Delivery technology is designed to improve delivery of therapeutics into tumors by modulating pressure and blood vessel flow. Its TriNav Infusion System is used in interventional radiology procedures, including treatment of primary liver cancer and liver metastases. The company develops nelitolimod, an investigational immunotherapeutic, and devices for pancreatic tumor infusions.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:43:28.268Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1826667/000162828026015163/tlsi-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1826667/000162828026015163/tlsi-20251231.htm"
+  ]
+}

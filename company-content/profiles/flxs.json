@@ -1,0 +1,13 @@
+{
+  "ticker": "FLXS",
+  "companyName": "Flexsteel Industries, Inc.",
+  "profile": "Flexsteel Industries manufactures, imports, and markets residential furniture through its Flexsteel brand and several category-specific sub-brands. Its products include sofas, loveseats, chairs, sectionals, bedroom and dining furniture, occasional and entertainment tables, and kitchen storage. The company distributes its furniture through retail partners and online channels, offering both manufactured and imported products for different areas of the home.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.314Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/37472/000119312526357097/flxs-20260630.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/37472/000119312526357097/flxs-20260630.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "CERS",
+  "companyName": "Cerus Corporation",
+  "profile": "Cerus develops and commercializes the INTERCEPT Blood System to reduce blood-borne pathogens in donated blood components intended for transfusion. The system is used with platelets and plasma, and to produce fibrinogen complex and pathogen-reduced plasma. Cerus sells platelet and plasma systems through direct sales and distributors, and offers fibrinogen complex or production kits in the United States. Its red blood cell system remains in development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:42:53.121Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1020214/000119312526085678/cers-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1020214/000119312526085678/cers-20251231.htm"
+  ]
+}
