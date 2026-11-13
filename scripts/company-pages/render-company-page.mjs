@@ -22,6 +22,8 @@ const DISPLAY_NAME_OVERRIDES = new Map([
 const FINANCIAL_TICKERS = new Set(['NDA-FI.HE', 'SAMPO.HE', 'INVE-B.ST']);
 const FINANCIAL_INDUSTRY = /bank|insur|financ|capital market|asset manage|holding|investment/i;
 
+export const FINANCIAL_FIELDS = 'revenue, EBIT, net earnings, book value, year-end share price and market capitalisation';
+
 export function isFinancialCompany(company) {
   const ticker = String(company?.ticker || '').trim().toUpperCase();
   if (FINANCIAL_TICKERS.has(ticker)) return true;
@@ -39,7 +41,7 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
   const readyReport = options.readyReport || null;
-  const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: revenue, EBIT, net earnings, book value, year-end share price and market capitalisation.`;
+  const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: ${FINANCIAL_FIELDS}.`;
   const metrics = metricDefinitions(company);
   const relatedScore = (item) =>
     (item.industry && item.industry === company.industry ? 8 : 0) +
@@ -215,7 +217,7 @@ ${footerHtml()}
 `.replace(/[ \t]+$/gm, '');
 }
 
-function metricDefinitions(company) {
+export function metricDefinitions(company) {
   const { metrics, currency, financialYear } = company;
   const marketCurrency = company.marketCurrency || currency;
   return [
@@ -229,15 +231,19 @@ function metricDefinitions(company) {
 }
 
 function companyOverview(company, name, readyReport = null) {
-  const revenue = formatMillions(company.metrics.revenue, company.currency);
-  const ebit = formatMillions(company.metrics.ebit, company.currency);
-  const marketCurrency = company.marketCurrency || company.currency;
-  const sharePrice = formatPrice(company.metrics.sharePrice, marketCurrency);
-  const marketCap = formatMillions(company.metrics.marketCap, marketCurrency);
   const reportText = readyReport
     ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
     : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
-  return `${name} (${company.ticker}) stock analysis and AI equity research. For financial year ${company.financialYear}, Valuatum's model shows revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
+  return `${name} (${company.ticker}) stock analysis and AI equity research. ${financialSentence(company)} ${reportText}`;
+}
+
+export function financialSentence(company) {
+  const marketCurrency = company.marketCurrency || company.currency;
+  return `For financial year ${company.financialYear}, Valuatum's model shows revenue of ${formatMillions(company.metrics.revenue, company.currency)} and operating profit of ${formatMillions(company.metrics.ebit, company.currency)}; the year-end share price was ${formatPrice(company.metrics.sharePrice, marketCurrency)} and market capitalisation was ${formatMillions(company.metrics.marketCap, marketCurrency)}.`;
+}
+
+export function sourcesSentence(company, name) {
+  return `Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent financial year ${company.financialYear}.`;
 }
 
 function metricCell(metric) {
@@ -274,7 +280,7 @@ function sourcesSection(company) {
   const name = companyDisplayName(company);
   return `<section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent financial year ${company.financialYear}. See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <p>${sourcesSentence(company, name)} See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>
