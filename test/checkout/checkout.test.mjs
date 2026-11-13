@@ -222,6 +222,18 @@ test('fresh checkout uses the configured search upstream without a local Wisdom 
   assert.equal(stripe.created[0].metadata.ticker, 'AALLON.HE');
 });
 
+test('a short ticker hidden by prefix results can be resolved by name without accepting another ticker', async (t) => {
+  upstreamReturns([], t);
+  global.fetch = async (url) => {
+    const query = new URL(String(url)).searchParams.get('q');
+    return { ok: true, async json() { return { results: query === 'F' ? [{ ticker: 'FXX', companyName: 'Other' }] : [{ ticker: 'F', companyName: 'Ford Motor Company' }] }; } };
+  };
+  const stripe = fakeStripe({ products: ALL_PRODUCTS });
+  await createFreshReportCheckout(stripe, { company: 'Ford Motor Company', ticker: 'F' });
+  assert.equal(stripe.created[0].metadata.ticker, 'F');
+  assert.equal(stripe.created[0].metadata.company, 'Ford Motor Company');
+});
+
 test('fresh checkout refuses unsupported listings before a Stripe session even if Wisdom knows them', async (t) => {
   upstreamReturns([{ companyName: 'Ferrari', ticker: 'RACE.MI' }, { companyName: 'Rheinmetall', ticker: 'RHM.DE' }], t);
   for (const ticker of ['RACE.MI', 'RHM.DE', 'FARN.L']) {
