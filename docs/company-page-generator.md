@@ -132,9 +132,10 @@ npm run sync:companies -- --write
 ```
 
 Pages with a filing-review manifest, a non-model source, an unsupported listing,
-company-status notice or full report are left untouched. So are changes to or
+company-status notice or full report are left untouched. So are changes to net
+earnings (the current model calculation needs reconciliation), changes to or
 from N/A, changes over 20%, unknown currencies or units, mismatched ISINs,
-missing revenue, older years and years that may not have ended. The Actions job
+missing revenue, older years and new fiscal years pending filing verification. The Actions job
 summary lists skipped pages and failed lookups; more than 20% failed lookups
 stops all writes. The skipped pages require separate review and do not yet
 automatically follow later Wisdom corrections. The model year and a successful

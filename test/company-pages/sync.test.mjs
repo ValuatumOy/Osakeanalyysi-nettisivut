@@ -93,6 +93,7 @@ test('large changes and N/A transitions are left for review', async () => {
   const cases = [
     { html: page(), model: { ...base, adj_share_price_a: 25 }, reason: /share price changes by more than 20%/ },
     { html: page(), model: { ...base, ebit: -110 }, reason: /operating profit changes by more than 20%/ },
+    { html: page(), model: { ...base, net_earnings: 81 }, reason: /net earnings differs; check the model calculation/ },
     { html: page({ ...base, ebit: null }), model: base, reason: /operating profit changes to or from N\/A/ },
     { html: page(), model: { ...base, market_cap_ye: null }, reason: /market capitalisation changes to or from N\/A/ },
     { html: page({ ...base, ebit: 0 }), model: { ...base, ebit: 1 }, reason: /operating profit changes by more than 20%/ },
@@ -107,7 +108,8 @@ test('large changes and N/A transitions are left for review', async () => {
 });
 
 test('a listing outside current coverage is not updated', async () => {
-  const html = page(base, { ticker: 'TEST.DE' });
+  // Simulate a legacy page with a fresh-order button from before coverage gating.
+  const html = page(base, { ticker: 'TEST.DE' }).replace('id="generate"', 'id="generate" data-generate-report');
   const dir = await site(html);
   const { results } = await syncCompanyPages({ client: client(base), rootDir: dir, write: true, now: NOW });
   assert.equal(results[0].reason, 'listing is outside current coverage');
@@ -118,7 +120,7 @@ test('risky updates are skipped, not written', async () => {
   const cases = [
     [client(base, { isin: 'SE0000000000' }), /differs from page ISIN/],
     [client(base, { year: 2025 }), /older than page year/],
-    [client(base, { year: 2027 }), /may not have ended/],
+    [client(base, { year: 2027 }), /verify the filing/],
     [client({ ...base, ns: null }), /no revenue/],
   ];
   for (const [wisdom, reason] of cases) {
@@ -131,12 +133,13 @@ test('risky updates are skipped, not written', async () => {
   }
 });
 
-test('a new year is taken only once it has ended and results are out', async () => {
+test('a new year needs a verified filing even after March', async () => {
   const dir = await site(page());
   const early = await syncCompanyPages({ client: client(base, { year: 2027 }), rootDir: dir, now: new Date('2027-02-10T06:00:00Z') });
-  assert.match(early.results[0].reason, /may not have ended/);
+  assert.match(early.results[0].reason, /verify the filing/);
   const later = await syncCompanyPages({ client: client(base, { year: 2027 }), rootDir: dir, now: new Date('2027-03-02T06:00:00Z') });
-  assert.equal(later.results[0].status, 'update');
+  assert.equal(later.results[0].status, 'skipped');
+  assert.match(later.results[0].reason, /verify the filing/);
 });
 
 test('status pages are never touched', async () => {

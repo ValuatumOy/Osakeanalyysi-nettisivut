@@ -63,11 +63,13 @@ jobs:
       - name: Guard
         run: |
           node --test test/company-pages/*.test.mjs
-          node scripts/validate-jsonld.mjs
+          node scripts/report-pages/check.mjs
+          npm run seo:check
 
       - name: Commit and push
         run: |
           git add reports sitemap.xml llms.txt companies companies.html
+          git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
           if git diff --cached --quiet; then
             echo "No changes: every page already shows the model figures."
             exit 0

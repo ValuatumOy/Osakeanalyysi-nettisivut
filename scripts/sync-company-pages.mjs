@@ -69,7 +69,7 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
       results.push({ file: page.file, ticker: page.ticker, status: 'error', reason: error.message });
       return;
     }
-    const reason = skipReason(page, company, now);
+    const reason = skipReason(page, company);
     if (reason) {
       results.push({ file: page.file, ticker: page.ticker, status: 'skipped', reason });
       return;
@@ -115,6 +115,10 @@ function unsafeCellChange(oldCells, newCells) {
   for (let i = 0; i < oldCells.length; i += 1) {
     if (oldCells[i] === newCells[i]) continue;
     if (oldCells[i] === 'N/A' || newCells[i] === 'N/A') return `${labels[i]} changes to or from N/A; check by hand`;
+    // The live model recalculated net earnings for many FY2025 Nordic pages.
+    // Even small changes can disagree with filings, so hold the entire page
+    // until the model calculation has been reconciled.
+    if (i === 4) return 'net earnings differs; check the model calculation';
     const previous = parseCell(oldCells[i]);
     const next = parseCell(newCells[i]);
     if (!previous || !next || previous.currency !== next.currency || previous.unit !== next.unit) {
@@ -155,17 +159,13 @@ export function readPage(file, html) {
   return { file, html, ticker: entity.tickerSymbol, isin: String(entity.identifier).toUpperCase(), name: entity.name, year, cells, modelWording };
 }
 
-function skipReason(page, company, now) {
+function skipReason(page, company) {
   if (isFinancialCompany(company)) return 'financial company';
   if (company.companyCode.toUpperCase() !== page.isin) return `Wisdom ISIN ${company.companyCode} differs from page ISIN ${page.isin}`;
   if (company.financialYear < page.year) return `Wisdom year ${company.financialYear} is older than page year ${page.year}`;
-  // Moving into a year that may still be running (the July 2026 Duell page showed part of an
-  // unfinished year) needs a person; once a page shows that year, later model changes sync.
-  // Before March, last calendar year's results are mostly unpublished, so that move waits too.
-  const lastClosedYear = now.getUTCFullYear() - (now.getUTCMonth() < 2 ? 2 : 1);
-  if (company.financialYear > lastClosedYear && company.financialYear > page.year) {
-    return `Wisdom moves to FY ${company.financialYear}, which may not have ended; check and update by hand`;
-  }
+  // currentYear - 1 does not prove when a company's own fiscal year ended or
+  // that its annual filing is published. Do not infer completion from a date.
+  if (company.financialYear > page.year) return `Wisdom moves to FY ${company.financialYear}; verify the filing before updating`;
   if (company.metrics.revenue === null) return 'Wisdom has no revenue';
   return null;
 }
