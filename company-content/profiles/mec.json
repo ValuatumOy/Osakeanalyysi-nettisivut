@@ -1,0 +1,10 @@
+{
+  "ticker": "MEC",
+  "companyName": "Mayville Engineering Company, Inc.",
+  "profile": "Mayville Engineering Company provides manufacturing services and engineered components to original equipment manufacturers. Its capabilities include design, prototyping, tooling, metal fabrication and stamping, aluminum extrusion, tube forming, welding, coating and assembly, along with aftermarket components. Customers include manufacturers serving commercial vehicles, construction equipment, powersports, data centers, agriculture, military and other markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.108Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1766368/000110465926023496/tmb-20251231x10k.htm"
+}

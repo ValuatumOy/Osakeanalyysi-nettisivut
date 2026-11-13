@@ -92,6 +92,10 @@ window.COMPANY_PAGE_CATALOG = [
   assert.match(html, /EUR 1,200m/);
   assert.match(html, /12\.34 EUR/);
   assert.match(html, /Example designs and manufactures industrial equipment/);
+  const generateLink = html.match(/<a\b[^>]*data-generate-report[^>]*>/)?.[0];
+  assert.ok(generateLink);
+  assert.equal((generateLink.match(/\bdata-company=/g) || []).length, 1);
+  assert.match(generateLink, /data-company="Example Oyj"/);
 
   const catalog = await fs.readFile(catalogPath, 'utf8');
   assert.match(catalog, /"name": "Example"/);

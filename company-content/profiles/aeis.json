@@ -1,0 +1,10 @@
+{
+  "ticker": "AEIS",
+  "companyName": "Advanced Energy Industries, Inc.",
+  "profile": "Advanced Energy designs, manufactures, sells, and services precision power conversion, measurement, and control products. Its offerings include plasma power products, high and low voltage power products, sensing, controls, instrumentation, and repair, calibration, upgrade, and refurbishment services. Customers include original equipment manufacturers, distributors, and end users in semiconductor equipment, data center computing, industrial, medical, aerospace, defense, telecommunications, and networking markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:50.433Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/927003/000110465926014731/aeis-20251231x10k.htm"
+}

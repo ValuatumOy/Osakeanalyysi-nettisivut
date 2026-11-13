@@ -1,0 +1,10 @@
+{
+  "ticker": "KURA",
+  "companyName": "Kura Oncology, Inc.",
+  "profile": "Kura Oncology is a biopharmaceutical company developing and commercializing precision medicines for cancer and other diseases. Its commercial product, KOMZIFTI, is an oral medicine for certain adults with relapsed or refractory acute myeloid leukemia. Its pipeline includes small molecule candidates targeting menin and farnesyl transferase. The company evaluates these candidates alone and with other therapies in oncology and cardiometabolic conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.739Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1422143/000119312526092567/kura-20251231.htm"
+}

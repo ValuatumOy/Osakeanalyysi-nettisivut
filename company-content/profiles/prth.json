@@ -1,0 +1,10 @@
+{
+  "ticker": "PRTH",
+  "companyName": "Priority Technology Holdings, Inc.",
+  "profile": "Priority Technology Holdings provides payment processing and embedded finance services through its Merchant Solutions, Payables and Treasury Solutions businesses. Its platform supports card, ACH, check and wire payments, merchant acquiring, accounts payable automation, bill payment and treasury management. Solutions are delivered through APIs and applications to software partners, merchants, enterprises and financial institutions across sectors including retail, healthcare, government, education and hospitality.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.995Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1653558/000165355826000066/prth-20251231.htm"
+}

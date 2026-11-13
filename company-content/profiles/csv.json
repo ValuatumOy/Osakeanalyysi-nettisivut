@@ -1,0 +1,10 @@
+{
+  "ticker": "CSV",
+  "companyName": "Carriage Services, Inc.",
+  "profile": "Carriage Services operates funeral homes and cemeteries, providing funeral and cemetery services and merchandise to families on an immediate-need or prearranged basis. Funeral home services include consultation, preparation and transportation of remains, caskets, facilities for visitation and memorial services, and related merchandise. Cemeteries provide interment rights, memorial products, interment and inurnment services, and merchandise installation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.740Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1016281/000101628126000021/csv-20251231.htm"
+}

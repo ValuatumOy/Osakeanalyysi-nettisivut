@@ -1,0 +1,10 @@
+{
+  "ticker": "VSEC",
+  "companyName": "VSE Corporation",
+  "profile": "VSE Corporation provides aftermarket parts distribution and maintenance, repair, and overhaul services for aircraft components and engine accessories. Its aviation business supports commercial, business, and general aviation operators, including airlines, air cargo transporters, aviation manufacturers, repair providers, corporate and private aircraft owners, and fixed-base operators. It also provides supply chain management and parts support for aircraft fleets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:49.389Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/102752/000010275226000015/vsec-20251231.htm"
+}

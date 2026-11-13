@@ -1,0 +1,10 @@
+{
+  "ticker": "WEST",
+  "companyName": "Westrock Coffee Company, LLC",
+  "profile": "Westrock Coffee provides coffee, tea, flavors, extracts, and ingredients solutions, including sourcing, supply chain management, product development, roasting, packaging, and distribution. Its beverage products include branded and private-label coffee, tea, ready-to-drink beverages, and extracts for cold brew and other offerings. The company serves retail, food service, restaurant, convenience store, travel center, non-commercial, consumer packaged goods, and hospitality customers in the United States, Europe, and Asia.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.416Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1806347/000110465926025932/west-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "HLLY",
+  "companyName": "Holley Inc.",
+  "profile": "Holley designs, manufactures, and distributes performance automotive aftermarket products for car and truck enthusiasts, primarily in the United States, Canada, and Europe. Its products include carburetors, fuel systems, superchargers, exhaust components, ignition products, transmissions, tuners, and automotive software. The company sells across multiple channels and serves enthusiasts and expert partners in performance, off-road, import, and racing markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.686Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1822928/000162828026018218/hlly-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "SSTK",
+  "companyName": "Shutterstock, Inc.",
+  "profile": "Shutterstock operates a creative platform connecting content contributors with brands and businesses. Customers license searchable digital assets, including images, footage, music, and 3D models, and can use services that support creative work from ideation through execution. The company also offers image and media metadata licensing, GIF distribution and advertising, production tools and services, and tailored support.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.739Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1549346/000154934626000008/sstk-20251231.htm"
+}

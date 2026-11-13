@@ -1,0 +1,14 @@
+{
+  "ticker": "NAMS",
+  "companyName": "NewAmsterdam Pharma Company N.V.",
+  "profile": "NewAmsterdam Pharma is a late-stage biopharmaceutical company developing obicetrapib, an oral non-statin CETP inhibitor for patients with elevated LDL cholesterol and cardiovascular risk. The European Commission authorized obicetrapib as Ubeslo and in combination with ezetimibe as Evlarco, with Menarini responsible for European commercialization. NewAmsterdam continues Phase 3 cardiovascular trials and a Phase 2b study in preclinical Alzheimer’s disease.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.759Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1936258/000119312526056029/nams-20251231.htm",
+  "profileSources": [
+    "https://ir.newamsterdampharma.com/news-releases/news-release-details/newamsterdam-pharma-provides-corporate-update-and-reports-8",
+    "https://www.sec.gov/Archives/edgar/data/1936258/000119312526396716/nams-20260921.htm"
+  ]
+}

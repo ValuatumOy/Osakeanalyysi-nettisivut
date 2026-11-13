@@ -1,0 +1,10 @@
+{
+  "ticker": "DNA",
+  "companyName": "Ginkgo Bioworks Holdings, Inc.",
+  "profile": "Ginkgo Bioworks provides biological research and development services and tools to government and commercial customers across medicine, agriculture, industrial biotechnology, and government research. Its cell engineering offerings include technical research services, laboratory automation and data generation tools, and licenses for host cells and other intellectual property. Its biosecurity business serves customers working to identify, monitor, prevent, and mitigate biological threats.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:40.547Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1830214/000162828026012346/dna-20251231.htm"
+}

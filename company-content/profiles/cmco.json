@@ -1,0 +1,10 @@
+{
+  "ticker": "CMCO",
+  "companyName": "Columbus McKinnon Corporation",
+  "profile": "Columbus McKinnon designs, manufactures, and markets motion solutions for moving, lifting, positioning, and securing materials in commercial and industrial applications. Products include hoists, crane components, precision conveyor systems, rigging tools, light rail workstations, and digital power and motion control systems. Its customers operate in manufacturing, transportation, energy, construction, food and beverage, life sciences, entertainment, and warehousing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.982Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1005229/000100522926000022/cmco-20260331.htm"
+}

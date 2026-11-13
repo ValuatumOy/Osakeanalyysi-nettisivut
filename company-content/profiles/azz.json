@@ -1,0 +1,10 @@
+{
+  "ticker": "AZZ",
+  "companyName": "AZZ Inc.",
+  "profile": "AZZ provides metal coating services, including hot-dip and spin galvanizing, powder coating, anodizing, plating, and protective coil coatings for steel and aluminum. Its customers include steel fabricators, manufacturers, and businesses in construction, appliances, HVAC, transportation, containers, and industrial markets. Through a non-controlling investment, it is also associated with power transmission and infrastructure corrosion mitigation solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:49.389Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/8947/000000894726000068/azz-20260228.htm"
+}

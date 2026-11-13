@@ -1,0 +1,10 @@
+{
+  "ticker": "NVST",
+  "companyName": "Envista Holdings Corp",
+  "profile": "Envista develops and sells dental products and technologies through its Specialty Products & Technologies and Equipment & Consumables businesses. Its offerings include dental implant systems, prosthetics, guided surgery tools, orthodontic brackets and aligners, diagnostic and digital imaging equipment, restoratives, endodontic products, infection prevention supplies, and loupes. The company serves dental professionals worldwide through its commercial organization and distribution partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.572Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1757073/000175707326000011/nvst-20251231.htm"
+}

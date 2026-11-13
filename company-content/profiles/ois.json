@@ -1,0 +1,10 @@
+{
+  "ticker": "OIS",
+  "companyName": "Oil States International, Inc.",
+  "profile": "Oil States International supplies manufactured products and services to customers in the energy, military and industrial sectors. Its offerings include highly engineered capital equipment and consumable products across Offshore Manufactured Products, Completion and Production Services, and Downhole Technologies. Customers include national, major and independent oil and natural gas companies, offshore drilling companies, and other oilfield service, defense and industrial companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:12.644Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1121484/000112148426000007/ois-20251231.htm"
+}

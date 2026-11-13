@@ -1,0 +1,10 @@
+{
+  "ticker": "NXST",
+  "companyName": "Nexstar Media Group, Inc.",
+  "profile": "Nexstar produces and distributes local and national news, sports, and entertainment programming through television and digital platforms. It operates local broadcast stations affiliated with major networks, The CW, national news network NewsNation, entertainment multicast networks Antenna TV and REWIND TV, and digital properties including station apps and websites, The Hill, and NewsNationNow.com. Its customers and audiences include television viewers, digital users, advertisers, and brands.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:50.434Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1142417/000119312526078361/nxst-20251231.htm"
+}

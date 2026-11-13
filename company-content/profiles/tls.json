@@ -1,0 +1,10 @@
+{
+  "ticker": "TLS",
+  "companyName": "Telos Corporation",
+  "profile": "Telos Corporation provides technology solutions and services to government, commercial and international customers. Its offerings include cybersecurity governance, risk and compliance software, cybersecurity consulting and assessment, secure cloud services, identity and biometric technologies, secure messaging and network security. The company serves organizations seeking to protect systems, manage cyber risk and conduct communications in security-sensitive environments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.109Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/320121/000032012126000010/tls-20251231.htm"
+}

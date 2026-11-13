@@ -1,0 +1,10 @@
+{
+  "ticker": "RSVR",
+  "companyName": "Reservoir Media, Inc.",
+  "profile": "Reservoir Media operates music publishing, recorded music, and management businesses. It owns and administers music copyrights and master recordings, including historic and contemporary catalogs, and represents songwriters and artists. Its recorded music operations include labels that market and distribute recordings. The company serves music creators and audiences through the management and licensing of compositions and recordings.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.606Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1824403/000110465926067615/rsvr-20260331x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "BKSY",
+  "companyName": "BlackSky Technology Inc.",
+  "profile": "BlackSky provides space-based imagery, analytics, and monitoring services to government and commercial organizations, including defense and intelligence agencies. Its system combines a low Earth orbit satellite constellation with the BlackSky Spectra software platform for tasking, analytics, and data fusion. Offerings include subscription imagery and analytics, satellite and ground system solutions, and advanced technology services for customer research and operational workflows.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.739Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1753539/000175353926000032/bksy-20251231.htm"
+}

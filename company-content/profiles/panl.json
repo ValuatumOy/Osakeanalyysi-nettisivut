@@ -1,0 +1,10 @@
+{
+  "ticker": "PANL",
+  "companyName": "Pangaea Logistics Solutions, Ltd.",
+  "profile": "Pangaea Logistics Solutions provides seaborne drybulk transportation, logistics, terminal and stevedoring services to industrial customers. It transports commodities such as grains, coal, iron ore, bauxite, alumina, cement clinker and limestone using owned and chartered vessels. Services include cargo loading and discharge, port and terminal operations, vessel chartering, voyage planning and technical management. The company also works on loading and discharge facility design and operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.995Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1606909/000160690926000010/panl-20251231.htm"
+}

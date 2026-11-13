@@ -1,0 +1,10 @@
+{
+  "ticker": "BIOA",
+  "companyName": "BioAge Labs, Inc.",
+  "profile": "BioAge Labs is a clinical-stage biopharmaceutical company developing therapeutic candidates for metabolic diseases based on research into human aging biology. Its programs include an oral small-molecule inhibitor being developed for cardiometabolic disease and ophthalmology, and apelin receptor agonists for obesity. The company also advances platform-derived discovery programs through collaborations with pharmaceutical companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.686Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1709941/000119312526120873/bioa-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AIOT",
+  "companyName": "PowerFleet, Inc.",
+  "profile": "PowerFleet provides connected asset intelligence solutions through its Unity software-as-a-service platform, which combines data from multiple sources and integrates with customer business systems. Its offerings monitor and manage warehouse, yard, factory, road, and mobile assets, including forklifts, trucks, trailers, and containers. Customers use its tracking, safety, compliance, analytics, and operator management tools to support operations and supply chains.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.983Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1774170/000162828026043187/aiot-20260331.htm"
+}

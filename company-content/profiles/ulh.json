@@ -1,0 +1,10 @@
+{
+  "ticker": "ULH",
+  "companyName": "Universal Logistics Holdings, Inc.",
+  "profile": "Universal Logistics Holdings, through its subsidiaries, provides customized transportation and logistics solutions across North America and select international markets. Services include contract logistics, dedicated transportation, intermodal drayage, trucking, material handling, warehousing, cross-docking, kitting and rail support. Its trucking operations transport commodities such as automotive parts, machinery, food, steel and building materials. Customers primarily operate in automotive, industrial, retail, consumer goods, energy and metals sectors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:12.646Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1308208/000119312526108365/ulh-20251231.htm"
+}

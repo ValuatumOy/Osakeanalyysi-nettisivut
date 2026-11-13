@@ -1,0 +1,10 @@
+{
+  "ticker": "NPCE",
+  "companyName": "NeuroPace, Inc.",
+  "profile": "NeuroPace develops and sells the RNS System, a brain-responsive neuromodulation device for adults with drug-resistant focal epilepsy. Clinicians program the system to monitor brain activity, identify patient-specific abnormal patterns, and deliver electrical pulses at the seizure source. It also records continuous brain data that clinicians can review in person or remotely to inform treatment decisions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.030Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1528287/000152828726000011/npce-20251231.htm"
+}

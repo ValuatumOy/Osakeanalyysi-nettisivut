@@ -1,0 +1,10 @@
+{
+  "ticker": "YORW",
+  "companyName": "The York Water Company",
+  "profile": "The York Water Company supplies drinking water and wastewater services in south-central Pennsylvania. It impounds, treats and distributes water through its own systems, and owns and operates wastewater collection and treatment systems. Its service territory covers portions of municipalities in four counties. The company also provides billing and collection services for several municipalities and pursues bulk water supply agreements.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.991Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/108985/000010898526000015/form10k.htm"
+}

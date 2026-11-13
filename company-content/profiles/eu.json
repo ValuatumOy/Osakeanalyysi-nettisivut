@@ -1,0 +1,10 @@
+{
+  "ticker": "EU",
+  "companyName": "enCore Energy Corp.",
+  "profile": "enCore Energy focuses on extracting uranium in the United States using in-situ recovery technology. It operates uranium extraction facilities at the Rosita and Alta Mesa projects in South Texas. The company is developing extraction capacity around these facilities and holds exploration projects in South Dakota and Wyoming, along with conventional uranium projects it describes as non-core assets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:40.550Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1500881/000162828026022507/encr-20251231.htm"
+}

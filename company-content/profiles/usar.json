@@ -1,0 +1,10 @@
+{
+  "ticker": "USAR",
+  "companyName": "USA Rare Earth Inc",
+  "profile": "USA Rare Earth is developing an integrated rare earth and critical minerals business spanning mining, processing, metal and alloy production, and magnet manufacturing. Its planned and acquired capabilities relate to rare earth elements, oxides, metals, alloys, and permanent magnets. The company holds mining rights to a deposit containing heavy rare earth elements and other critical minerals, and serves partners and customers seeking these materials.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.573Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1970622/000197062226000021/usar-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "EAF",
+  "companyName": "GrafTech International Ltd.",
+  "profile": "GrafTech International manufactures graphite electrodes and petroleum needle coke products. Graphite electrodes conduct electricity in electric arc furnace steel production and are also used in steel refining and the production of other metals. The company also makes connecting pins that join electrodes into columns. Its customers include electric arc furnace steel producers and operators, as well as users of electrodes in other metal production processes.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:12.645Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/931148/000093114826000017/gti-20251231.htm"
+}

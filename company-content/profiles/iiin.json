@@ -1,0 +1,10 @@
+{
+  "ticker": "IIIN",
+  "companyName": "Insteel Industries, Inc.",
+  "profile": "Insteel Industries manufactures and markets steel wire reinforcing products for concrete construction. Its products include prestressed concrete strand and welded wire reinforcement, including engineered, concrete pipe, and standard products. Customers include manufacturers of concrete products, distributors, rebar fabricators, and contractors, who use the products in residential and nonresidential construction applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.063Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/764401/000143774926033862/iiin20261003_10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "MCFT",
+  "companyName": "MasterCraft Boat Holdings, Inc.",
+  "profile": "MasterCraft Boat Holdings designs, manufactures, and sells recreational powerboats through the MasterCraft, Crest, Balise, Chaparral, and Robalo brands. Its products include performance boats for water skiing and wake sports, pontoon boats, and recreational and sport fishing boats. The company also offers accessories, including trailers and aftermarket parts, for boating customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1638290/000119312526387432/mcft-20260630.htm"
+}

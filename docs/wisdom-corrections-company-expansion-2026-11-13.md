@@ -335,3 +335,15 @@ Nämä yhtiöt jätettiin pois sivuerästä odottamaan tarkistusta. Luvut ovat m
 | Primoris Services (PRIM) | 295,1 | 274,9 | [Yhtiö ilmoittaa nettotulokseksi 274,9](https://ir.prim.com/news-and-events/news-releases/2026/02-23-2026-211611532); tarkista Wisdomin kentän lähde ja määritelmä. |
 | Garrett Motion (GTX) | 329 | 310 | [Vuosiraportin nettotulos on 310](https://www.sec.gov/Archives/edgar/data/1735707/000173570726000009/gtx-20251231.htm). |
 | OPENLANE (OPLN) | −103,1 | 177,7 | Wisdomin arvo vastaa kantaosakkeille etuoikeutettujen osinkojen jälkeen kuuluvaa tulosta; raportoitu nettotulos ennen tätä vähennystä on 177,7. [Tarkista, miten kenttä pitäisi nimetä sivulla ja raportissa.](https://d18rn0p25nwr6d.cloudfront.net/CIK-0001395942/59262bf8-1349-4580-9908-06e03765ef35.pdf) |
+
+## Seuraavan ehdokaserän konevertailu: nettotulos ja oma pääoma
+
+Alla olevat erot ovat tarkistusehdotuksia, eivät automaattisesti todettuja virheitä. Vertaile erityisesti emoyhtiön omistajille kuuluvaa lukua, vähemmistöosuuksia ja osakesarjojen oikeuksia. Kaikki luvut ovat MUSD ja kyseiset sivut jätettiin tämän vuoksi pois erästä.
+
+| Ticker | FY | Kenttä | Wisdom | SEC:n käytettävissä ollut vertailuluku | Lähde |
+|---|---:|---|---:|---:|---|
+| NWE | 2025 | Nettotulos | 342,49 | 181,092 (NetIncomeLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1993004/000199300426000006/nweg-20251231.htm) |
+| PNTG | 2025 | Oma pääoma | 332,603 | 374,252 (StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest) | [SEC](https://www.sec.gov/Archives/edgar/data/1766400/000176640026000014/pntg-20251231.htm) |
+| SABR | 2025 | Oma pääoma | −1 051,003 | −1 036,494 (StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest) | [SEC](https://www.sec.gov/Archives/edgar/data/1597033/000162828026008800/sabr-20251231.htm) |
+| FIP | 2025 | Nettotulos | −260,406 | −207,403 (NetIncomeLossAvailableToCommonStockholdersBasic); −152,054 (ProfitLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1899883/000189988326000015/ftai-20251231.htm) |
+| ABAT | 2026 | Nettotulos | −75,438034 | −73,379021 (NetIncomeLoss) | [SEC](https://www.sec.gov/Archives/edgar/data/1576873/000149315226042497/form10-k.htm) |

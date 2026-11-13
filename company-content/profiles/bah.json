@@ -1,0 +1,15 @@
+{
+  "ticker": "BAH",
+  "companyName": "Booz Allen Hamilton Holding Corporation",
+  "profile": "Booz Allen Hamilton is an advanced technology company providing products and solutions to government and commercial customers, especially in defense, civil and national-security missions. It combines artificial intelligence, cybersecurity, engineering, data and mission expertise with proprietary cyber products. Recent acquisitions expanded its commercial cybersecurity services and added mission software, encryption and edge-computing products for U.S. and allied defense customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.774Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1443646/000162828026037521/bah-20260331.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1443646/000162828026066973/bah-20260930.htm",
+    "https://investors.boozallen.com/news-releases/news-release-details/booz-allen-completes-acquisition-defy-security",
+    "https://investors.boozallen.com/news-releases/news-release-details/booz-allen-completes-acquisition-ultra-ic-mission-solutions-business"
+  ]
+}

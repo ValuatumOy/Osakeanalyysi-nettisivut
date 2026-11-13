@@ -1,0 +1,10 @@
+{
+  "ticker": "NCMI",
+  "companyName": "National CineMedia, Inc.",
+  "profile": "National CineMedia operates a cinema advertising platform connecting advertisers with movie audiences. It sells advertising through the Noovie and CineLife preshow entertainment shows, theater lobby screens and promotional placements. Its NCMx products extend campaigns through digital properties, third-party publishers, connected television and other out-of-home venues. Customers include national, regional and local businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.110Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1377630/000119312526076788/ncmi-20260101.htm"
+}

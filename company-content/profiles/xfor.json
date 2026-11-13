@@ -1,0 +1,10 @@
+{
+  "ticker": "XFOR",
+  "companyName": "X4 Pharmaceuticals, Inc.",
+  "profile": "X4 Pharmaceuticals is a biopharmaceutical company developing and commercializing therapeutics for rare hematology diseases. Its commercially approved product, XOLREMDI (mavorixafor), is an oral therapy for patients aged 12 and older with WHIM syndrome. The company is also studying mavorixafor in chronic neutropenia, including congenital, acquired primary autoimmune and idiopathic forms.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.109Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000018/xfor-20251231.htm"
+}

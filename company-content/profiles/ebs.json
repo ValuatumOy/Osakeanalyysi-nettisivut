@@ -1,0 +1,10 @@
+{
+  "ticker": "EBS",
+  "companyName": "Emergent BioSolutions Inc.",
+  "profile": "Emergent BioSolutions develops and supplies products and services addressing public health threats, including chemical, biological, radiological and nuclear threats, emerging infectious diseases, health crises, and emergency care. Its portfolio includes naloxone nasal sprays, anthrax and smallpox medical countermeasures, and contract development and manufacturing services. Customers include government agencies, pharmacies, health departments, law enforcement, and community organizations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.602Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1367644/000136764426000015/ebs-20251231.htm"
+}

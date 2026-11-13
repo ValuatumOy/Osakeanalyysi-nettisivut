@@ -1,0 +1,10 @@
+{
+  "ticker": "GOGO",
+  "companyName": "Gogo Inc.",
+  "profile": "Gogo provides in-flight connectivity solutions for business and military and government aviation customers. Its offerings combine air-to-ground technology and low-earth-orbit and geostationary satellite services with software, hardware, and infrastructure. The company also supplies turnkey connectivity tailored to mission requirements, along with customer support. Its connectivity solutions serve aviation customers in more than 100 countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1537054/000119312526082487/gogo-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AMN",
+  "companyName": "AMN Healthcare Services, Inc.",
+  "profile": "AMN Healthcare provides workforce services and technology to healthcare organizations in the United States. Its offerings include temporary and permanent staffing, recruitment, managed services, vendor management systems, language interpretation, consulting, recruitment process outsourcing, revenue cycle solutions, and workforce software. It serves healthcare organizations and connects nurses, physicians, allied health professionals, and healthcare leaders with work opportunities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.062Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1142750/000162828026009918/amn-20251231.htm"
+}

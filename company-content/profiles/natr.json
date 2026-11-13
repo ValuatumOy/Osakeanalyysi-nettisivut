@@ -1,0 +1,10 @@
+{
+  "ticker": "NATR",
+  "companyName": "Nature's Sunshine Products, Inc.",
+  "profile": "Nature’s Sunshine Products manufactures and sells nutritional and personal care products through independent consultants, who use or resell them to consumers. Its products include general health, immune, cardiovascular, digestive, weight management and personal care items. The company sells under the Nature’s Sunshine Products and Synergy WorldWide brands and distributes products through regional operations and wholesale partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.108Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/275053/000162828026016540/natr-20251231.htm"
+}

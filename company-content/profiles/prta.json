@@ -1,0 +1,10 @@
+{
+  "ticker": "PRTA",
+  "companyName": "Prothena Corporation plc",
+  "profile": "Prothena is a clinical-stage biotechnology company developing therapies for diseases associated with protein dysregulation, including neurodegenerative and peripheral amyloid diseases. Its wholly owned and partnered programs address conditions such as Parkinson’s disease, ATTR amyloidosis with cardiomyopathy, Alzheimer’s disease, and ALS. The company also develops CYTOPE technology for targeting intracellular disease pathways in the brain and periphery.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.030Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1559053/000155905326000008/prta-20251231.htm"
+}
