@@ -1,0 +1,13 @@
+{
+  "ticker": "AIFF",
+  "companyName": "Firefly Neuroscience, Inc.",
+  "profile": "Firefly Neuroscience develops an integrated hardware, software, and data platform for clinical electrophysiological assessment. Its Evoke System captures EEG and ERP data, which its cloud-based analytics platform analyzes and returns to clinicians in structured reports. The system is used at clinical sites in the United States, where providers use its assessments and reports to support clinical decision-making about brain health.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:19.548Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/803578/000143774926010500/aiff20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/803578/000143774926010500/aiff20251231_10k.htm"
+  ]
+}

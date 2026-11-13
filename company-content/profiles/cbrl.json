@@ -1,0 +1,10 @@
+{
+  "ticker": "CBRL",
+  "companyName": "Cracker Barrel Old Country Store, Inc.",
+  "profile": "Cracker Barrel Old Country Store operates full-service restaurants with adjoining retail gift shops. Its restaurants serve breakfast, lunch, and dinner, featuring home-style country cooking, alongside takeout and delivery options. The shops sell decorative and functional goods, including rocking chairs, seasonal gifts, toys, apparel, cookware, and foods. Its stores serve travelers and local customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.407Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1067294/000110465926110772/cbrl-20260731x10k.htm"
+}

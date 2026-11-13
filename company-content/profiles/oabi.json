@@ -1,0 +1,13 @@
+{
+  "ticker": "OABI",
+  "companyName": "OmniAb, Inc.",
+  "profile": "OmniAb licenses antibody discovery technologies to pharmaceutical and biotechnology companies and academic institutions. Its platform uses engineered transgenic animals, screening methods, sequencing data, and computational tools to identify antibodies and other target-binding proteins for therapeutic development. The company offers integrated discovery services and customizable technology options, including systems for generating human antibodies and approaches supporting bispecific antibodies, peptides, and other antibody-based therapeutic formats.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:32.209Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1846253/000184625326000009/ck0001846253-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1846253/000184625326000009/ck0001846253-20251231.htm"
+  ]
+}

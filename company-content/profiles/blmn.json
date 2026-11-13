@@ -1,0 +1,10 @@
+{
+  "ticker": "BLMN",
+  "companyName": "Bloomin' Brands, Inc.",
+  "profile": "Bloomin’ Brands operates and franchises casual and fine dining restaurants under Outback Steakhouse, Carrabba’s Italian Grill, Bonefish Grill, and Fleming’s Prime Steakhouse & Wine Bar. The concepts serve restaurant guests with menus spanning steaks, Italian dishes, seafood, and other entrees, alongside beverages. Its international franchise operations include Outback Steakhouse and Carrabba’s Italian Grill concepts.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.063Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1546417/000154641726000009/blmn-20251228.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "PAG",
+  "companyName": "Penske Automotive Group, Inc.",
+  "profile": "Penske Automotive Group operates automotive and commercial truck dealerships across the United States, the United Kingdom, Canada, Germany, Italy, Japan and Australia. Its offerings include new and used vehicles, maintenance and repair, finance and insurance products, extended service contracts, aftermarket products and collision repair. It also distributes and retails commercial vehicles, engines, power systems, parts and related services, principally in Australia and New Zealand.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.689Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1019849/000162828026012830/pag-20251231.htm"
+}

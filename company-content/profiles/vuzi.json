@@ -1,0 +1,13 @@
+{
+  "ticker": "VUZI",
+  "companyName": "Vuzix Corporation",
+  "profile": "Vuzix Corporation designs, manufactures, and markets smart glasses, waveguides, and augmented reality display technologies. Its products include wearable computing devices, near-eye displays, heads-up displays, optical components, and related software solutions. The company serves enterprise, medical, defense and security, and selected consumer applications, and provides custom optical display solutions and engineering services to device manufacturers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.312Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1463972/000110465926027163/vuzi-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1463972/000110465926027163/vuzi-20251231x10k.htm"
+  ]
+}

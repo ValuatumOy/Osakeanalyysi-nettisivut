@@ -1,0 +1,10 @@
+{
+  "ticker": "ADP",
+  "companyName": "Automatic Data Processing, Inc.",
+  "profile": "Automatic Data Processing provides human capital management services and technology to organizations, including payroll, human resources, time and benefits, workforce management, talent, compliance, retirement, and HR outsourcing solutions. Its services support employers in managing workforce processes and paying workers. ADP serves organizations ranging from large companies to small local businesses, with clients across many countries and territories.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.624Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/8670/000000867026000030/adp-20260630.htm"
+}

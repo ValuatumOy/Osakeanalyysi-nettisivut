@@ -1,0 +1,10 @@
+{
+  "ticker": "KLAC",
+  "companyName": "KLA Corporation",
+  "profile": "KLA supplies equipment, software, and services for electronics manufacturing. Its process control products include inspection, metrology, and software used by chip, wafer, reticle, and materials manufacturers to monitor production. It also sells deposition and etching tools for specialty semiconductors, and inspection and measurement systems for printed circuit boards, IC substrates, and packaged chips. Its services support maintenance and equipment uptime.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:22:00.558Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/319201/000031920126000027/klac-20260630.htm"
+}

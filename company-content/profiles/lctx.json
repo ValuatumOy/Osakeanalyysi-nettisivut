@@ -1,0 +1,13 @@
+{
+  "ticker": "LCTX",
+  "companyName": "Lineage Cell Therapeutics, Inc.",
+  "profile": "Lineage Cell Therapeutics is a clinical-stage biotechnology company developing cell replacement therapies for conditions associated with lost or dysfunctional cells. Its programs use differentiated cells derived from pluripotent cell lines, supported by its AlloSCOPE manufacturing platform. The portfolio includes OpRegen, an allogeneic retinal pigment epithelial cell therapy in Phase 2a development with Roche and Genentech for geographic atrophy secondary to dry age-related macular degeneration.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.165Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/876343/000119312526093992/lctx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/876343/000119312526093992/lctx-20251231.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CMC",
+  "companyName": "Commercial Metals Company",
+  "profile": "Commercial Metals Company provides early-stage construction solutions for site preparation and foundational phases of infrastructure and building projects. Its manufacturing network produces steel and other construction products for infrastructure, non-residential, residential, industrial, and energy markets. The company serves customers through its North America Steel Group, Construction Solutions Group, and Europe Steel Group, with operations primarily in the United States and Central Europe.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/22444/000002244426000065/cmc-20260831.htm"
+}

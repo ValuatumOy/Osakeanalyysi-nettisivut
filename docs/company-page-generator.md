@@ -3,7 +3,7 @@
 `scripts/generate-company-pages.mjs` creates static company overview pages from
 Wisdom financial model data. It fetches financial data on every run. Only the
 AI-generated company profile is cached in `company-content/profiles/`.
-Existing pages are not overwritten: their figures are kept in step with Wisdom by the weekly sync below.
+Existing pages are not overwritten: use the reviewed refresh workflow below.
 
 ## Requirements
 
@@ -79,34 +79,7 @@ npm run test:company-pages
 The tests use in-memory Wisdom responses and do not require network access,
 credentials or an AI call.
 
-## Keep figures in step with Wisdom (weekly)
-
-Company pages show Valuatum's Wisdom model figures, the same data a generated report uses, so a
-page never disagrees with the report a visitor orders from it. `.github/workflows/company-pages-sync.yml`
-runs `npm run sync:companies -- --write` every Monday (and on demand) on main and commits any
-change. Locally, without `--write`, it only lists what would change:
-
-```bash
-npm run sync:companies                      # dry run: updates, skips and errors
-npm run sync:companies -- --only upm-equity-report.html
-npm run sync:companies -- --write --report /tmp/sync.json
-```
-
-It rewrites only the overview sentence, the metrics grid, the source line, the financial
-descriptions and the page's dates; profile, URL, calls to action and status notes stay. A page
-whose figures already match is not touched. It skips and lists, instead of updating: status
-(historical) pages, full report pages, financial companies, a Wisdom ISIN that differs from the
-page, a year older than the page shows, a move into a year that may still be running, a model
-without revenue, and tickers Wisdom cannot find. If more than 20 % of lookups fail, nothing is
-written and the run goes red. The workflow needs the `WISDOM_API_TOKEN` repository secret.
-
-A difference between Wisdom and an issuer's filing is corrected in Wisdom, never on the page; the
-next sync then carries it to the page. Open corrections: `docs/wisdom-corrections-2026-11-11.md`.
-
-## Refresh existing pages from filings (superseded)
-
-Superseded by the weekly Wisdom sync above; kept for its status and audit tooling. Pages written
-this way show filing figures that can differ from the report, and the sync returns them to Wisdom.
+## Refresh existing pages
 
 `npm run refresh:companies` updates the financial sections of existing overview
 pages without regenerating profiles or reports. It preserves their existing URL,
@@ -146,8 +119,27 @@ before writing if an ISIN, fiscal year, currency or model figure differs from
 the review, a page is not a recognized overview, or its sitemap entry is
 missing. If the filing is newer than the model, record the model's period as
 `modelFinancialYear` as well as the filing's `financialYear`. A new year or a changed model therefore needs a new filing review and
-manifest. Running the command does not deploy the site. No scheduled automatic
-refresh is configured.
+manifest. Running the command does not deploy the site.
+
+### Weekly Wisdom sync
+
+The separate company-pages sync runs every Monday and updates eligible pages
+from Wisdom's primary model. It is a dry run without `--write`:
+
+```bash
+npm run sync:companies
+npm run sync:companies -- --write
+```
+
+Pages with a filing-review manifest, a non-model source, an unsupported listing,
+company-status notice or full report are left untouched. So are changes to net
+earnings (the current model calculation needs reconciliation), changes to or
+from N/A, changes over 20%, unknown currencies or units, mismatched ISINs,
+missing revenue, older years and new fiscal years pending filing verification. The Actions job
+summary lists skipped pages and failed lookups; more than 20% failed lookups
+stops all writes. The skipped pages require separate review and do not yet
+automatically follow later Wisdom corrections. The model year and a successful
+sync do not establish that every figure agrees with the company's filing.
 
 A manifest cannot replace a review checked on a later date. A correction to an
 already-reviewed page on the same day must also include `expectedPageSha256` for

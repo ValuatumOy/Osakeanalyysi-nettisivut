@@ -1,0 +1,13 @@
+{
+  "ticker": "HCAT",
+  "companyName": "Health Catalyst, Inc.",
+  "profile": "Health Catalyst provides data and analytics technology and services to healthcare organizations, primarily healthcare providers. Its solution combines a cloud-based data and analytics platform, software applications, and expertise. Clients use these offerings to manage data, generate analytical insights, and support clinical, financial, and operational improvements in their organizations.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:15.238Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1636422/000163642226000035/hcat-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1636422/000163642226000035/hcat-20251231.htm"
+  ]
+}

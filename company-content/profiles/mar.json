@@ -1,0 +1,10 @@
+{
+  "ticker": "MAR",
+  "companyName": "Marriott International, Inc.",
+  "profile": "Marriott International franchises, operates, and licenses hotels, residential properties, timeshare properties, and other lodging under a portfolio of brands. Its offerings span luxury, premium, select, and midscale service levels, including longer-stay accommodations with home-like amenities. The company serves travelers through properties in countries and territories worldwide, while its business model focuses on franchising, management, and licensing rather than owning or leasing most properties.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.875Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1048286/000104828626000007/mar-20251231.htm"
+}

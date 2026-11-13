@@ -1,0 +1,10 @@
+{
+  "ticker": "MMI",
+  "companyName": "Marcus & Millichap, Inc.",
+  "profile": "Marcus & Millichap provides commercial real estate investment sales, financing, research, and advisory services. Its professionals represent commercial property owners and buyers in property sales and acquisitions, and the company offers auction services as an additional sales channel. It also arranges financing, advises on equity, sells loans, provides loan guarantees, and delivers consulting services to clients ranging from individual property owners to large investors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.013Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1578732/000162828026012419/mmi-20251231.htm"
+}

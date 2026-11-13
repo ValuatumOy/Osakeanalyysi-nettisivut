@@ -1,0 +1,10 @@
+{
+  "ticker": "ASMB",
+  "companyName": "Assembly Biosciences, Inc.",
+  "profile": "Assembly Biosciences develops investigational therapies for serious viral diseases. Its clinical and research programs include long-acting helicase-primase inhibitors for recurrent genital herpes, an oral hepatitis delta virus entry inhibitor, a next-generation hepatitis B virus capsid assembly modulator, and an oral polymerase inhibitor for transplant-associated herpesviruses. The company also conducts research into additional antiviral targets and collaborates with Gilead on its herpes program.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:24.754Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1426800/000119312526115992/asmb-20251231.htm"
+}

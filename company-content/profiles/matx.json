@@ -1,0 +1,10 @@
+{
+  "ticker": "MATX",
+  "companyName": "Matson, Inc.",
+  "profile": "Matson provides ocean transportation and logistics services through its Ocean Transportation and Logistics segments. Its shipping serves Hawaii, Alaska, Guam, Micronesia, Japan, the South Pacific, and routes from China to California. Services include freight carriage, terminal and stevedoring operations, trucking, rail brokerage, freight forwarding, warehousing, distribution, and supply chain management for freight customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/3453/000110465926020944/matx-20251231x10k.htm"
+}

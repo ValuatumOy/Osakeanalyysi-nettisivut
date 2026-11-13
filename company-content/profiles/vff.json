@@ -1,0 +1,10 @@
+{
+  "ticker": "VFF",
+  "companyName": "Village Farms International, Inc.",
+  "profile": "Village Farms International operates businesses in produce, cannabis, health and wellness products, and renewable natural gas. It grows fresh produce in controlled environment greenhouses, supplies cannabis to regulated markets, and produces and distributes hemp-derived cannabidiol and other cannabinoid products. Its customers include cannabis markets, designated Dutch coffee shops, consumers purchasing through e-commerce, and a renewable natural gas partner.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:56.972Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1584549/000119312526104189/vff-20251231.htm"
+}

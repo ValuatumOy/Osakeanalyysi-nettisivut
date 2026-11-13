@@ -1,0 +1,13 @@
+{
+  "ticker": "PDEX",
+  "companyName": "Pro-Dex, Inc.",
+  "profile": "Pro-Dex designs, develops and manufactures autoclavable, battery-powered and electric multifunction surgical drivers and shavers, primarily for orthopedic, thoracic and craniomaxillofacial procedures. It also provides engineering, quality and regulatory consulting, makes rotary air motors, and manufactures precision machined parts and assemblies for aerospace and defense customers. Its medical devices are sold mainly to original equipment manufacturers and are often developed under exclusive development and supply agreements.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:51:51.232Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/788920/000107997326001215/pdex_10k-063026.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/788920/000107997326001215/pdex_10k-063026.htm"
+  ]
+}

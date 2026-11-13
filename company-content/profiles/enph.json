@@ -1,0 +1,10 @@
+{
+  "ticker": "ENPH",
+  "companyName": "Enphase Energy, Inc.",
+  "profile": "Enphase Energy designs, develops, manufactures, and sells home energy solutions for solar generation, storage, control, and communications. Its products include microinverters, batteries, load controllers, electric vehicle chargers, monitoring devices, and cloud-based energy management software. The integrated platform supports system commissioning, consumption monitoring, and remote maintenance. Enphase serves homeowners and business users through installer, distributor, and module partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:38.679Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1463101/000146310126000013/enph-20251231.htm"
+}

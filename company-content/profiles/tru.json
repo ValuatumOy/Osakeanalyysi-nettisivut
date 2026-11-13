@@ -1,0 +1,13 @@
+{
+  "ticker": "TRU",
+  "companyName": "TransUnion",
+  "profile": "TransUnion collects and analyzes consumer data to develop information and insights for businesses and consumers. Its services help businesses assess credit risk, market to customers, verify identities and mitigate fraud. Consumer tools support access to credit profiles, management of personal financial information and precautions against identity theft. The company serves organizations across financial services and other industries in more than 30 countries and territories.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:18.994Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1552033/000155203326000012/tru-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1552033/000155203326000012/tru-20251231.htm"
+  ]
+}

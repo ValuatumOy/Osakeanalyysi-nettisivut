@@ -1,0 +1,10 @@
+{
+  "ticker": "HXL",
+  "companyName": "Hexcel Corporation",
+  "profile": "Hexcel manufactures advanced composite materials and engineered products for aerospace, defense, space, transportation, recreational and other industrial applications. Its products include carbon fibers, fabrics, specialty reinforcements, prepregs, resins, structural adhesives, honeycomb, pultruded profiles and composite structures. Customers use these materials and components in aircraft, engines, satellites, vehicles, sporting goods, interiors and industrial equipment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.648Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/717605/000119312526046377/hxl-20251231.htm"
+}

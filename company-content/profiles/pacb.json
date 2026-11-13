@@ -1,0 +1,10 @@
+{
+  "ticker": "PACB",
+  "companyName": "Pacific Biosciences of California, Inc.",
+  "profile": "Pacific Biosciences designs, develops, and manufactures sequencing systems and related products for genomic research. Its HiFi long-read technology supports studies of genomes, transcriptomes, and epigenomes across applications including human genetics, agriculture, infectious disease, microbiology, and oncology. Customers include research institutions, laboratories, genome centers, hospitals, clinical research organizations, pharmaceutical companies, and agricultural companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:24.753Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1299130/000129913026000034/pacb-20251231.htm"
+}

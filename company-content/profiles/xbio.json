@@ -1,0 +1,13 @@
+{
+  "ticker": "XBIO",
+  "companyName": "Xenetic Biosciences, Inc.",
+  "profile": "Xenetic Biosciences is a biopharmaceutical company developing immuno-oncology technologies for difficult-to-treat cancers. Its proprietary DNase technology is designed to target neutrophil extracellular traps, which can contribute to cancer growth, metastasis, and resistance to treatment. The company is advancing a systemic DNase program toward clinical study in people with locally advanced or metastatic solid tumors, initially focusing on pancreatic, colorectal, and other gastrointestinal cancers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:41.950Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1534525/000168316826001737/xenetic_i10k-123125.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1534525/000168316826001737/xenetic_i10k-123125.htm"
+  ]
+}

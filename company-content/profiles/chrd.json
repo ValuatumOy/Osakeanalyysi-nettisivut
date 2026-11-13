@@ -1,0 +1,10 @@
+{
+  "ticker": "CHRD",
+  "companyName": "Chord Energy Corporation",
+  "profile": "Chord Energy is an independent exploration and production company that acquires, explores, develops and produces crude oil, natural gas liquids and natural gas. Its operations are primarily in the Williston Basin, with limited non-operated interests in the Marcellus Shale. The company develops resources in the Middle Bakken and Three Forks formations and serves energy markets with its production.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1486159/000148615926000005/chrd-20251231.htm"
+}

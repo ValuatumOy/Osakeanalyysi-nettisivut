@@ -1,0 +1,10 @@
+{
+  "ticker": "CABO",
+  "companyName": "Cable One, Inc.",
+  "profile": "Cable One provides broadband communications through fiber-based infrastructure under its Sparklight brand. Its products include residential and business data services, video, and voice. The company serves residential and business customers across markets in western, midwestern, and southern states, delivering connectivity through its network. Customers subscribe to its data, video, and voice services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:20.606Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1632127/000163212726000005/cabo-20251231.htm"
+}

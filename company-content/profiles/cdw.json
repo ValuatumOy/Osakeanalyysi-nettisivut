@@ -1,0 +1,10 @@
+{
+  "ticker": "CDW",
+  "companyName": "CDW Corporation",
+  "profile": "CDW provides multi-brand information technology products, solutions, and services to business, government, education, and healthcare customers in the United States, the United Kingdom, and Canada. Its offerings range from hardware and software to integrated on-premise and cloud solutions across hybrid infrastructure, digital experience, and security. It also helps customers design, select, procure, integrate, and manage technology.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:02.542Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1402057/000140205726000011/cdw-20251231.htm"
+}

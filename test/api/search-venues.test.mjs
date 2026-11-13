@@ -48,6 +48,16 @@ test('hidden listings do not use up the result limit', async (t) => {
   assert.deepEqual(result.map((r) => r.ticker), ['NOKIA.HE']);
 });
 
+test('an exact ticker is retained ahead of prefix matches when results are capped', async (t) => {
+  wisdomReturns([
+    ...Array.from({ length: 12 }, (_, i) => ({ companyName: `Other class ${i}`, ticker: `EXACT-${i}` })),
+    { companyName: 'Exact company', ticker: 'EXACT' },
+  ], t);
+  const result = await searchCompanies('exact');
+  assert.equal(result.length, 10);
+  assert.equal(result[0].ticker, 'EXACT');
+});
+
 test('SEARCH_TICKER_VENUES overrides the list', async (t) => {
   process.env.SEARCH_TICKER_VENUES = 'HE';
   t.after(() => { delete process.env.SEARCH_TICKER_VENUES; });

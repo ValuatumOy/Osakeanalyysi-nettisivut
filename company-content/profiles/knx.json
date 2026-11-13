@@ -1,0 +1,10 @@
+{
+  "ticker": "KNX",
+  "companyName": "Knight-Swift Transportation Holdings Inc.",
+  "profile": "Knight-Swift provides freight transportation services across North America, serving shippers with full truckload, less-than-truckload, logistics, and intermodal offerings. It transports or arranges transportation for general commodities using company equipment, independent contractors, and third-party carriers. Its nationwide network of business units and terminals serves customers in the United States and Mexico, with services delivered through its Truckload, LTL, Logistics, and Intermodal segments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:12.736Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1492691/000149269126000016/knx-20251231.htm"
+}

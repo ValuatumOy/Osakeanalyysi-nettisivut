@@ -1,0 +1,10 @@
+{
+  "ticker": "SVV",
+  "companyName": "Savers Value Village, Inc.",
+  "profile": "Savers Value Village operates thrift stores in the United States, Canada, and Australia under several retail banners. It purchases secondhand clothing, textiles, shoes, accessories, housewares, books, and other goods from nonprofit partners, then processes and sells selected items in its stores. Goods unsuitable for or unsold at retail are sold to wholesale customers for reuse or repurposing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.265Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1883313/000188331326000014/svv-20260103.htm"
+}

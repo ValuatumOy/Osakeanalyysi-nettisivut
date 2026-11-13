@@ -1,0 +1,10 @@
+{
+  "ticker": "CYTK",
+  "companyName": "Cytokinetics, Incorporated",
+  "profile": "Cytokinetics discovers, develops and commercializes medicines that modulate muscle function for diseases involving impaired muscle performance. Its first commercial product, MYQORZO (aficamten), is a tablet approved for adults with obstructive hypertrophic cardiomyopathy. The company’s research focuses on muscle biology and includes investigational small-molecule candidates at discovery, preclinical and clinical stages. Its medicines and development programs address cardiovascular and neuromuscular diseases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:29.449Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1061983/000119312526076495/cytk-20251231.htm"
+}

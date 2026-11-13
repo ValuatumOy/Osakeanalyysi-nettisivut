@@ -1,0 +1,10 @@
+{
+  "ticker": "CSTL",
+  "companyName": "Castle Biosciences, Inc.",
+  "profile": "Castle Biosciences is a molecular diagnostics company offering tests to aid clinicians in diagnosing and treating dermatologic cancers, Barrett’s esophagus, uveal melanoma, and atopic dermatitis. Its portfolio includes tissue-based tests that characterize patient biology and provide information relevant to diagnosis, risk assessment, treatment, and patient management. The company serves clinicians in dermatology, gastroenterology, and ophthalmology.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:26.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1447362/000162828026012272/cstl-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "THRY",
+  "companyName": "Thryv Holdings, Inc.",
+  "profile": "Thryv provides software and marketing services for small and medium-sized businesses. Its SaaS platform combines customer relationship management, marketing tools, workflow automation, communications, payment processing, and reporting. Offerings include subscription software, platform extensions, payment solutions, professional services, website tools, and legacy print and digital marketing services. Customers use its tools to manage leads, promote businesses, and communicate with customers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.487Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1556739/000155673926000013/thry-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1556739/000155673926000013/thry-20251231.htm"
+  ]
+}

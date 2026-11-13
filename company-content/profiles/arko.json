@@ -1,0 +1,10 @@
+{
+  "ticker": "ARKO",
+  "companyName": "Arko Corp.",
+  "profile": "ARKO operates convenience stores, distributes fuel to dealer locations, and provides fleet fueling services. Its retail stores sell fuel and merchandise to consumers under regional brands, with shared marketing, merchandising, and loyalty programs. Wholesale customers include fuel dealers, while fleet customers use cardlock fueling locations and proprietary fuel cards for access to fueling sites.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.685Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1823794/000119312526071464/arko-20251231.htm"
+}

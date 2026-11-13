@@ -1,0 +1,10 @@
+{
+  "ticker": "WMK",
+  "companyName": "Weis Markets, Inc.",
+  "profile": "Weis Markets operates retail food stores in Pennsylvania and surrounding states, selling food and related merchandise to consumers. Its supermarkets offer groceries, dairy, frozen foods, meat, seafood, produce, floral items, pharmacy services, deli and prepared foods, bakery products, beer, wine, fuel, health and beauty products, and household goods. Many stores also provide online ordering.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.629Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/105418/000010541826000024/wmk-20251227x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CHRW",
+  "companyName": "C.H. Robinson Worldwide, Inc.",
+  "profile": "C.H. Robinson provides global logistics and freight transportation services, arranging shipments by truckload, less-than-truckload, ocean, air and rail through networks of carriers. Its offerings also include freight consolidation, customs brokerage, trade compliance, supply chain consulting, and managed logistics solutions. The company serves shippers across industries and provides fresh produce sourcing services through its Robinson Fresh business.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1043277/000104327726000009/chrw-20251231.htm"
+}

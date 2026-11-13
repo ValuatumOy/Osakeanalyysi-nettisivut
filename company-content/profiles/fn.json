@@ -1,0 +1,10 @@
+{
+  "ticker": "FN",
+  "companyName": "Fabrinet",
+  "profile": "Fabrinet provides optical packaging and precision optical, electro-mechanical, and electronic manufacturing services to original equipment manufacturers. Its capabilities include engineering, supply chain management, circuit board assembly, advanced packaging, integration, final assembly, and testing. It manufactures optical communications products, industrial lasers, automotive components, medical devices, and sensors, and also designs and sells customized optics and glass for OEM customers and merchant markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.208Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1408710/000140871026000028/fn-20260626.htm"
+}

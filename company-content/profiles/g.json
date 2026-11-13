@@ -1,0 +1,10 @@
+{
+  "ticker": "G",
+  "companyName": "Genpact Limited",
+  "profile": "Genpact provides technology and business services to enterprises, drawing on process expertise, industry knowledge, operational data, and advanced technologies. Its offerings include data and AI, digital technology, advisory services, agentic solutions, decision support, technology services, and digital operations. The company helps clients redesign processes, develop data and AI capabilities, and manage operations. It serves companies across industries and countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:12.737Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1398659/000139865926000004/g-20251231.htm"
+}

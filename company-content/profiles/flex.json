@@ -1,0 +1,10 @@
+{
+  "ticker": "FLEX",
+  "companyName": "Flex Ltd.",
+  "profile": "Flex provides design and engineering, supply chain, manufacturing, and integrated services, along with power and cooling products. It serves customers in data center, healthcare, industrial, automotive, communications, and lifestyle markets. Its capabilities support communications and lifestyle products, regulated manufacturing for medical devices and drug delivery, industrial automation and infrastructure, automotive systems, integrated compute systems, and power and cooling solutions for cloud and data center deployments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:29.452Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000012/flex-20260331.htm"
+}

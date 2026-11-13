@@ -1,0 +1,10 @@
+{
+  "ticker": "CZR",
+  "companyName": "Caesars Entertainment, Inc.",
+  "profile": "Caesars Entertainment operates casino and hospitality businesses, including casino properties, hotels, restaurants, bars, entertainment venues, retail shops and racing. It also offers retail and online sports betting, online casino gaming and horse racing wagering through branded apps. The company serves visitors to its properties and digital gaming customers, and conducts sports wagering and online gaming across jurisdictions in North America.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.556Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1590895/000159089526000011/czr-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "MSFT",
+  "companyName": "Microsoft Corporation",
+  "profile": "Microsoft develops and supports software, cloud services, devices, and technology solutions for individuals and businesses. Its offerings include AI and cloud computing, productivity and collaboration applications, operating systems, server and business applications, software development and management tools, video games, and PCs, tablets, gaming consoles, and accessories. It also provides consulting and solution support, integrated security products, and online advertising to a global audience.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.608Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+}

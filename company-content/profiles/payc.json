@@ -1,0 +1,10 @@
+{
+  "ticker": "PAYC",
+  "companyName": "Paycom Software, Inc.",
+  "profile": "Paycom provides cloud-based human capital management software through a software-as-a-service platform. Its applications support the employment lifecycle, including recruitment, onboarding, payroll, benefits, time and labor management, performance, human resources, and employee departures. The platform uses a shared system of record and gives employers and employees access to related information and administrative processes. Paycom sells its solution to organizations and provides client support.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:12.736Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1590955/000119312526059372/payc-20251231.htm"
+}

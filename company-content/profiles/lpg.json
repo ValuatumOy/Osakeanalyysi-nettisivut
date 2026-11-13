@@ -1,0 +1,10 @@
+{
+  "ticker": "LPG",
+  "companyName": "Dorian LPG Ltd.",
+  "profile": "Dorian LPG owns and operates very large gas carriers that transport liquefied petroleum gas. Its fleet includes vessels designed to carry ammonia cargoes, and it provides commercial management for its ships and technical management for most owned vessels. Through the Helios LPG Pool joint venture, it commercially manages participating vessels and shares pool revenues with other participants.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1596993/000159699326000025/lpg-20260331x10k.htm"
+}

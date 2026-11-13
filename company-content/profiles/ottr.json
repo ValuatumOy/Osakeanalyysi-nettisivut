@@ -1,0 +1,10 @@
+{
+  "ticker": "OTTR",
+  "companyName": "Otter Tail Corporation",
+  "profile": "Otter Tail Corporation is a holding company with electric utility, manufacturing, and plastics businesses. Its electric utility generates, purchases, transmits, distributes, and sells electricity to customers in parts of Minnesota, North Dakota, and South Dakota. Its manufacturing companies provide metal fabrication and thermoformed plastic products, while its plastics businesses produce PVC pipe used mainly in municipal water infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.530Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1466593/000146659326000008/ottr-20251231.htm"
+}

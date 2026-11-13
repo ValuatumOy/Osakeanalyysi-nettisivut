@@ -1,0 +1,10 @@
+{
+  "ticker": "OSK",
+  "companyName": "Oshkosh Corporation",
+  "profile": "Oshkosh designs and manufactures purpose-built vehicles and equipment for construction, firefighting, aviation, refuse collection, defense, and delivery. Products include access equipment, fire apparatus, airport ground support and rescue vehicles, refuse trucks, cranes, concrete mixers, defense vehicles, and postal delivery vehicles; it also provides airport operations and equipment-monitoring services. Customers include rental firms, contractors, municipalities, commercial operators, the U.S. government, and the U.S. Postal Service.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:50.433Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/775158/000119312526054061/osk-20251231.htm"
+}

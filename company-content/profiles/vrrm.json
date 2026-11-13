@@ -1,0 +1,10 @@
+{
+  "ticker": "VRRM",
+  "companyName": "Verra Mobility Corporation",
+  "profile": "Verra Mobility provides smart mobility technology solutions, including toll and violations management, vehicle title and registration services, automated safety and traffic enforcement, and commercial parking management. Its customers include rental car companies, fleet owner-operators, fleet management companies, government agencies, universities, parking operators, healthcare facilities, and transportation hubs. The company combines hardware, software, data, and administrative services to support transportation and enforcement programs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.539Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1682745/000119312526067293/vrrm-20251231.htm"
+}

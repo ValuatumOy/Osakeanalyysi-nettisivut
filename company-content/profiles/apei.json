@@ -1,0 +1,10 @@
+{
+  "ticker": "APEI",
+  "companyName": "American Public Education, Inc.",
+  "profile": "American Public Education provides online and campus-based postsecondary education through American Public University System, Rasmussen University, and Hondros College of Nursing. Programs include certificates, undergraduate and graduate study, and nursing and health sciences education. Its institutions serve adult learners, military personnel, veterans, military families, working adults, and other students, including people preparing for careers in public service, healthcare, and business.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.739Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1201792/000120179226000004/apei-20251231.htm"
+}

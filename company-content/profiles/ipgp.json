@@ -1,0 +1,10 @@
+{
+  "ticker": "IPGP",
+  "companyName": "IPG Photonics Corporation",
+  "profile": "IPG Photonics develops, manufactures, and sells fiber lasers, fiber amplifiers, diode lasers, and laser-based systems for materials processing, medical, and other advanced applications. Its products are sold globally to original equipment manufacturers, system integrators, and end users, primarily through a direct sales force. Complementary products include optical delivery cables, fiber couplers, beam switches, processing heads, sensors, and chillers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.292Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1111928/000111192826000040/ipgp-20251231.htm"
+}

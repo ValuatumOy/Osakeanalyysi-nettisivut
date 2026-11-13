@@ -1,0 +1,13 @@
+{
+  "ticker": "CELH",
+  "companyName": "Celsius Holdings, Inc.",
+  "profile": "Celsius Holdings develops and markets functional beverages, including energy drinks. Its portfolio includes the CELSIUS and Alani Nu brands and the North American Rockstar Energy business. The company sells its products through retail and other distribution channels, serving consumers seeking energy drinks and other functional beverages across its markets.",
+  "provider": "editorial",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:11:01.342Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1341766/000134176626000024/celh-20251231.htm",
+  "profileSources": [
+    "https://ir.celsiusholdingsinc.com/overview/"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "AKA",
+  "companyName": "a.k.a. Brands Holding Corp.",
+  "profile": "a.k.a. Brands Holding Corp. owns a portfolio of fashion brands: Princess Polly, Petal & Pup, Culture Kings, and mnml. The brands offer women’s fashion, streetwear, and related products through online channels, stores, and wholesale partners. Their customers include younger consumers seeking trend-led apparel, as well as shoppers interested in women’s lifestyle collections and streetwear from owned and third-party brands.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:59.535Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1865107/000186510726000008/aka-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1865107/000186510726000008/aka-20251231.htm"
+  ]
+}

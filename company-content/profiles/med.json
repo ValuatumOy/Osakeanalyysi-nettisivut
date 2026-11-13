@@ -1,0 +1,13 @@
+{
+  "ticker": "MED",
+  "companyName": "Medifast, Inc.",
+  "profile": "Medifast is a health and wellness company offering a coach-guided system focused on weight loss and metabolic health. Its program combines individualized support from independent coaches, community, a habit-creation framework, and nutrition plans and products. The company serves individuals seeking support with weight management, healthy habits, and broader well-being through a personalized, behavior-based approach.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:59.534Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/910329/000162828026008656/med-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/910329/000162828026008656/med-20251231.htm"
+  ]
+}

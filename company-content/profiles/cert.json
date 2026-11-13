@@ -1,0 +1,10 @@
+{
+  "ticker": "CERT",
+  "companyName": "Certara, Inc.",
+  "profile": "Certara provides biosimulation software, data solutions, and consulting services to biopharmaceutical and biotechnology companies. Its tools and scientific services support model-informed drug development, including research, preclinical work, clinical development, and commercialization. The company also helps clients collect, standardize, validate, store, and analyze scientific data and prepare regulatory documents for drug development.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.228Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1827090/000182709026000011/cert-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "NTLA",
+  "companyName": "Intellia Therapeutics, Inc.",
+  "profile": "Intellia Therapeutics is a biopharmaceutical company developing treatments using CRISPR gene editing and related technologies. Its lead candidates are lonvoguran ziclumeran for hereditary angioedema and nexiguran ziclumeran for transthyretin amyloidosis. The company also advances other clinical and preclinical candidates independently and with collaborators, applying gene editing, oligonucleotides, and lipid nanoparticles to develop treatments for severe diseases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.014Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1652130/000119312526076550/ntla-20251231.htm"
+}

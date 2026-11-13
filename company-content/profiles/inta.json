@@ -1,0 +1,10 @@
+{
+  "ticker": "INTA",
+  "companyName": "Intapp, Inc.",
+  "profile": "Intapp provides AI-enabled software solutions tailored to professional firms in regulated industries, including accounting, consulting, investment banking, legal, private capital, and real assets. Its cloud-based platform supports specialized workflows, relationship management, compliance, and firm operations. Products apply firms’ proprietary knowledge and data to processes such as client intake, conflicts, pipeline management, fundraising, reporting, and cross-selling, serving enterprise firms and their professionals.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.003Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1565687/000156568726000073/inta-20260630.htm"
+}

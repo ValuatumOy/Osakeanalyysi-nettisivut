@@ -1,0 +1,10 @@
+{
+  "ticker": "LYEL",
+  "companyName": "Lyell Immunopharma, Inc.",
+  "profile": "Lyell is a clinical-stage cell therapy company developing autologous CAR T-cell product candidates for cancer. Its therapies use patients’ own immune cells, engineered with CAR constructs and other enhancements intended to support cancer cell killing. The company’s clinical programs address hematologic malignancies, including large B-cell lymphoma, and solid tumors, including metastatic colorectal cancer.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.248Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1806952/000162828026017253/lyel-20251231.htm"
+}

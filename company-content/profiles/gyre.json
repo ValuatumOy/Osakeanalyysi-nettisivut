@@ -1,0 +1,13 @@
+{
+  "ticker": "GYRE",
+  "companyName": "Gyre Therapeutics, Inc.",
+  "profile": "Gyre Therapeutics is a biopharmaceutical company combining a commercial fibrosis-drug business in China with global research and development. Its subsidiary markets ETUARY, Etorel and Contiva for pulmonary fibrosis, other interstitial lung diseases and thrombocytopenia indications. Following its 2026 acquisition of Cullgen, Gyre also develops targeted protein degrader and degrader-antibody conjugate therapies for cancer and inflammatory diseases.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:39:31.417Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1124105/000119312526106251/gyre-20251231.htm",
+  "profileSources": [
+    "https://ir.gyretx.com/news-releases/news-release-details/gyre-therapeutics-reports-third-quarter-2026-and-year-date/"
+  ]
+}

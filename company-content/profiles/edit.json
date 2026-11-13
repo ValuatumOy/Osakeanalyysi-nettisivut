@@ -1,0 +1,13 @@
+{
+  "ticker": "EDIT",
+  "companyName": "Editas Medicine, Inc.",
+  "profile": "Editas Medicine develops genomic medicines using CRISPR gene-editing technology. Its platform includes CRISPR/Cas9 and CRISPR/Cas12a systems used to create molecules designed to edit specific DNA sequences. Research focuses on in vivo gene editing, including approaches intended to increase expression of normal genes, and on lipid nanoparticle delivery methods. Programs target elevated LDL cholesterol and inherited blood disorders.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:42:03.109Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1650664/000165066426000017/edit-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1650664/000165066426000017/edit-20251231.htm"
+  ]
+}

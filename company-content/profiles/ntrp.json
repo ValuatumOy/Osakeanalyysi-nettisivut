@@ -1,0 +1,13 @@
+{
+  "ticker": "NTRP",
+  "companyName": "NextTrip, Inc.",
+  "profile": "NextTrip is a travel and media company combining travel content, booking technology, and travel services. Its Travel segment provides booking platforms and brands for leisure, luxury, cruise, group, and business travel, with concierge support and advisor-assisted options. Its Media segment includes destination-focused video and editorial properties designed to connect audiences with travel booking platforms and generate advertising revenue. The company serves consumers and travel groups.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.857Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/788611/000149315226026334/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/788611/000149315226026334/form10-k.htm"
+  ]
+}

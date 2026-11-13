@@ -1,0 +1,10 @@
+{
+  "ticker": "LRN",
+  "companyName": "Stride, Inc.",
+  "profile": "Stride provides an online learning platform and related curriculum, technology systems, instruction, and student support services. Its General Education programs serve kindergarten through grade twelve learners, while Career Learning offers pathways focused on skills and work experience in fields such as information technology, healthcare, and general business. The company serves public and private schools, districts, charter boards, employers, government agencies, and consumers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1157408/000110465926090515/lrn-20260630x10k.htm"
+}

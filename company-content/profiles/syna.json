@@ -1,0 +1,10 @@
+{
+  "ticker": "SYNA",
+  "companyName": "Synaptics Incorporated",
+  "profile": "Synaptics designs and supplies silicon and software platforms for edge artificial intelligence, wireless connectivity and human interface technologies. Its products include processors, wireless solutions, touch controllers, biometrics, voice, audio and multimedia technologies. These solutions are designed for connected devices and applications spanning smart homes, industrial and automotive settings, personal computers, mobile products, robotics, wearables, security sensors, cameras and other Internet of Things uses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.556Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/817720/000081772026000055/syna-20260627.htm"
+}

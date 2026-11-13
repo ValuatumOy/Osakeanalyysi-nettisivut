@@ -1,0 +1,13 @@
+{
+  "ticker": "CDXS",
+  "companyName": "Codexis, Inc.",
+  "profile": "Codexis provides technology solutions for improving therapeutics manufacturing, using its CodeEvolver directed evolution platform to develop and commercialize enzymes and other proteins. Its ECO Synthesis platform offers enzymatic tools and processes for manufacturing RNA interference therapeutics, alongside process and analytical development services. The company also develops enzymes for pharmaceutical manufacturers to improve the production processes of small molecule therapeutics, including through higher yields and purity.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.105Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1200375/000120037526000006/cdxs-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1200375/000120037526000006/cdxs-20251231.htm"
+  ]
+}

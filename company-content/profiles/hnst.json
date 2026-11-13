@@ -1,0 +1,13 @@
+{
+  "ticker": "HNST",
+  "companyName": "The Honest Company, Inc.",
+  "profile": "The Honest Company develops and sells personal care products for babies and adults, including diapers, wipes, skin care and beauty products. Its wipes include all-purpose, flushable, sanitizing and makeup-remover varieties, while its diapers use plant-based materials. The company sells through retail partners’ stores and websites and other third-party e-commerce sites, serving consumers across the United States.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:21.604Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1530979/000162828026011634/hnst-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1530979/000162828026011634/hnst-20251231.htm"
+  ]
+}

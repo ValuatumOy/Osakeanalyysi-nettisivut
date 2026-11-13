@@ -1,0 +1,10 @@
+{
+  "ticker": "RBBN",
+  "companyName": "Ribbon Communications Inc.",
+  "profile": "Ribbon Communications provides communications software, hardware, network solutions, and related services to communications service providers and enterprises. Its offerings support secure voice and data communications, high-bandwidth networking, connectivity, and network operations. Products serve residential consumers through provider networks and organizations of varying sizes, including customers in finance, education, government, utilities, and transportation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.685Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1708055/000170805526000012/rbbn-20251231x10k.htm"
+}

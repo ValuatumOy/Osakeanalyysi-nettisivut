@@ -1,0 +1,10 @@
+{
+  "ticker": "INOD",
+  "companyName": "Innodata Inc.",
+  "profile": "Innodata provides data engineering and AI systems services supporting the development, training, post-training, evaluation and deployment of artificial intelligence systems. Its services include training data development, model alignment and preference optimization, capability and safety evaluation, and AI operationalization. Customers include technology companies, AI research laboratories and enterprises developing or deploying AI systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.629Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/903651/000110465926020655/inod-20251231x10k.htm"
+}

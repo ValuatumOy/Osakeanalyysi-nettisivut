@@ -1,0 +1,10 @@
+{
+  "ticker": "NWN",
+  "companyName": "Northwest Natural Holding Company",
+  "profile": "Northwest Natural Holding is a utility holding company with gas, water and wastewater, and renewable natural gas businesses. Its NW Natural utility distributes gas to residential, commercial, and industrial customers in Oregon and southwest Washington, while SiEnergy provides gas distribution and transmission in Texas. NWN Water provides regulated water and wastewater services and unregulated wastewater and operations services across five states.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.002Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1733998/000173399826000012/nwn-20251231.htm"
+}

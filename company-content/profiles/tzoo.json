@@ -1,0 +1,13 @@
+{
+  "ticker": "TZOO",
+  "companyName": "Travelzoo",
+  "profile": "Travelzoo operates digital media services for travel enthusiasts, including its website, mobile apps, newsletters, and Jack’s Flight Club subscription service. It publishes travel, entertainment, and local offers, including airfare information, hotel bookings, and vouchers for local businesses. Travel and local providers use its advertising and marketing services, while members pay fees for certain subscriptions and offers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.475Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1133311/000113331126000005/tzoo-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1133311/000113331126000005/tzoo-20251231.htm"
+  ]
+}

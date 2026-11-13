@@ -1,0 +1,10 @@
+{
+  "ticker": "MYGN",
+  "companyName": "Myriad Genetics, Inc.",
+  "profile": "Myriad Genetics develops and commercializes molecular diagnostic tests that provide genetic insights to patients and healthcare providers. Its tests assess disease risk and progression and help guide treatment decisions across specialties, including cancer, prenatal health, and mental health. The company also provides biopharma services such as biomarker identification, companion diagnostic development, regulatory registration, and commercialization.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.063Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/899923/000089992326000018/mygn-20251231.htm"
+}

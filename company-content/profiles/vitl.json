@@ -1,0 +1,10 @@
+{
+  "ticker": "VITL",
+  "companyName": "Vital Farms, Inc.",
+  "profile": "Vital Farms sources eggs and butter through a network of small farms that follow its animal welfare standards. It sells food products to consumers through retail channels, including Whole Foods Market, and serves restaurants. The company operates an egg processing facility and develops farming practices through company-operated accelerator farms intended to support its family farm network.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.227Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1579733/000119312526073423/vitl-20251228.htm"
+}

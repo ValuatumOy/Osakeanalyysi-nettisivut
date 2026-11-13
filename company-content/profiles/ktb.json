@@ -1,0 +1,10 @@
+{
+  "ticker": "KTB",
+  "companyName": "Kontoor Brands, Inc.",
+  "profile": "Kontoor Brands designs, manufactures, procures, sells, and licenses apparel, footwear, and accessories through brands including Wrangler, Lee, Helly Hansen, and Musto. Its products span denim, outdoor, workwear, footwear, and accessory categories. The company sells to consumers through wholesale and direct-to-consumer channels in the United States and internationally, and licenses its brands in certain regions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.530Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1760965/000176096526000014/ktb-20260103.htm"
+}

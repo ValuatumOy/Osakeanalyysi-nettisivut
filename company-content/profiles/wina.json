@@ -1,0 +1,10 @@
+{
+  "ticker": "WINA",
+  "companyName": "Winmark Corporation",
+  "profile": "Winmark Corporation franchises resale retail stores through five brands: Plato’s Closet, Once Upon A Child, Play It Again Sports, Style Encore, and Music Go Round. Franchisees buy and sell used clothing, children’s goods, sporting goods, musical instruments, and related accessories, with some new merchandise. The company also provides franchisees with technology, tools, training, and e-commerce platforms.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.394Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/908315/000090831526000007/wina-20251227x10k.htm"
+}

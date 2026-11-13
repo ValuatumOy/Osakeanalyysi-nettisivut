@@ -1,0 +1,10 @@
+{
+  "ticker": "SIGA",
+  "companyName": "SIGA Technologies, Inc.",
+  "profile": "SIGA Technologies is a commercial-stage pharmaceutical company that sells oral and intravenous formulations of TPOXX, an antiviral drug for treating smallpox. Its customers include the U.S. government, international governments and government-affiliated entities; in some international markets, sales are made through distributors. Oral TPOXX is also approved in several markets for other orthopoxvirus conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:55.220Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1010086/000143774926007557/siga20251231_10k.htm"
+}

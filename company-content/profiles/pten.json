@@ -1,0 +1,10 @@
+{
+  "ticker": "PTEN",
+  "companyName": "Patterson-UTI Energy, Inc.",
+  "profile": "Patterson-UTI Energy provides drilling and completion services to oil and natural gas exploration and production companies. Its services include contract and directional drilling, hydraulic fracturing, wireline, pumping, completion support, cementing, natural gas fueling, and proppant logistics and storage. The company also manufactures and distributes drill bits and downhole tools for energy and mining customers, and supplies electrical controls and automation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.952Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/889900/000088990026000013/pten-20251231.htm"
+}

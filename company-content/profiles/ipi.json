@@ -1,0 +1,10 @@
+{
+  "ticker": "IPI",
+  "companyName": "Intrepid Potash, Inc.",
+  "profile": "Intrepid Potash produces potash, Trio specialty fertilizer, water, salt, magnesium chloride and brines, and provides oilfield products and services. Potash serves agricultural fertilizer, animal feed and industrial markets, including oil and gas. Trio supplies potassium, magnesium and sulfur in a single particle. The company’s customers include agriculture, feed and oil and gas businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.109Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1421461/000142146126000008/ipi-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "HSTM",
+  "companyName": "HealthStream, Inc.",
+  "profile": "HealthStream provides software-as-a-service applications for healthcare organizations and the professionals and students who make up the healthcare workforce. Its offerings support learning, credentialing, scheduling, governance, risk and compliance, workforce management, and professional development. Applications are connected through its hStream technology platform, which supports interoperability and artificial intelligence capabilities across the company’s healthcare workforce solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:06.739Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1095565/000143774926005916/hstm20251231_10k.htm"
+}

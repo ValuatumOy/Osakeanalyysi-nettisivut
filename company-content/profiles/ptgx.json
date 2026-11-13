@@ -1,0 +1,14 @@
+{
+  "ticker": "PTGX",
+  "companyName": "Protagonist Therapeutics, Inc.",
+  "profile": "Protagonist Therapeutics discovers and develops peptide medicines for inflammatory, immunologic, hematologic, and metabolic diseases. Its partnered products include ICOTYDE (icotrokinra), an approved oral IL-23 receptor antagonist for plaque psoriasis commercialized by Johnson & Johnson, and MIMRYLO (rusfertide), approved for erythrocytosis in adults with polycythemia vera and commercialized by Takeda. The company also advances wholly owned peptide drug candidates.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.878Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1377121/000110465926019696/ptgx-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1377121/000110465926123351/tm2629043d1_ex99-1.htm",
+    "https://www.sec.gov/Archives/edgar/data/1377121/000110465926123620/R8.htm"
+  ]
+}

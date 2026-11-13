@@ -1,0 +1,10 @@
+{
+  "ticker": "TNC",
+  "companyName": "Tennant Company",
+  "profile": "Tennant designs, manufactures, sells, and services products for maintaining nonresidential surfaces. Its offerings include manual and autonomous mechanized cleaning equipment, sustainable cleaning technologies, aftermarket parts and consumables, equipment maintenance and repair, financing, rental and leasing, and asset management solutions. Customers include contract cleaners and businesses that maintain facilities themselves, serving settings such as factories, warehouses, schools, hospitals, retail sites, and public venues.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.593Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000008/tnc-20251231.htm"
+}

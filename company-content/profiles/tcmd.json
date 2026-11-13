@@ -1,0 +1,16 @@
+{
+  "ticker": "TCMD",
+  "companyName": "Tactile Systems Technology, Inc.",
+  "profile": "Tactile Medical develops and markets at-home medical devices and therapies for chronic conditions, including lymphedema, lipedema, chronic venous insufficiency and respiratory disorders. Its portfolio includes pneumatic compression systems such as Flexitouch and Nimbl for lymphatic and venous conditions, plus AffloVest airway-clearance therapy. The company works with clinicians and supports patients who use its devices at home.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.774Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1027838/000110465926016380/tcmd-20251231x10k.htm",
+  "profileSources": [
+    "https://investors.tactilemedical.com/news-releases/news-release-details/tactile-systems-technology-inc-reports-third-quarter-2026",
+    "https://tactilemedical.com/our-lymphedema-solutions/",
+    "https://tactilemedical.com/nimbl/",
+    "https://tactilemedical.com/afflovest/"
+  ]
+}

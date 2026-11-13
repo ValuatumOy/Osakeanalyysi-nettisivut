@@ -1,0 +1,10 @@
+{
+  "ticker": "EME",
+  "companyName": "EMCOR Group, Inc.",
+  "profile": "EMCOR provides electrical and mechanical construction, facilities services, building services, and industrial services through operating subsidiaries. Construction work includes designing, integrating, installing, starting up, operating, and maintaining electrical and mechanical systems in facilities. The company serves commercial, technology, manufacturing, industrial, healthcare, utility, and institutional customers, including corporations, governments, property owners, tenants, contractors, refineries, and petrochemical plants.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.962Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/105634/000010563426000025/eme-20251231.htm"
+}

@@ -1,0 +1,14 @@
+{
+  "ticker": "UPB",
+  "companyName": "Upstream Bio, Inc.",
+  "profile": "Upstream Bio is a clinical-stage biotechnology company developing treatments for severe inflammatory respiratory diseases. Its lead candidate, verekitug, is a monoclonal antibody designed to block the receptor for thymic stromal lymphopoietin. The company plans to start Phase 3 trials in severe asthma and chronic rhinosinusitis with nasal polyps in 2027, while a Phase 2 COPD trial continues. Patients with these conditions are its intended beneficiaries.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.084Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2022626/000119312526126188/upb-20251231.htm",
+  "profileSources": [
+    "https://investors.upstreambio.com/news-releases/news-release-details/upstream-bio-reports-third-quarter-2026-financial-results-and",
+    "https://investors.upstreambio.com/news-releases/news-release-details/upstream-bio-announces-pivotal-phase-3-development-plans"
+  ]
+}

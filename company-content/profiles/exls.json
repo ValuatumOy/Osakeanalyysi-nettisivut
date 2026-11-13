@@ -1,0 +1,10 @@
+{
+  "ticker": "EXLS",
+  "companyName": "ExlService Holdings, Inc.",
+  "profile": "ExlService is a global data and artificial intelligence company providing data and AI-led solutions and services, along with digital operations solutions and services. It applies analytics, data management, digital engineering, and industry expertise to client workflows and business operations. Clients include companies in insurance, healthcare and life sciences, banking and capital markets, retail, communications and media, and energy and infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1297989/000129798926000008/exls-20251231.htm"
+}

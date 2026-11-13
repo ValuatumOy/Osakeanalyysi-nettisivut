@@ -1,0 +1,10 @@
+{
+  "ticker": "ALAB",
+  "companyName": "Astera Labs, Inc. Common Stock",
+  "profile": "Astera Labs designs semiconductor-based connectivity products and software for cloud and AI infrastructure. Its Intelligent Connectivity Platform includes integrated circuits, boards, modules, and the COSMOS software suite for configuring, managing, monitoring, optimizing, troubleshooting, and customizing product functions. Product families support high-speed connections among processors, storage, and network controllers. Customers include hyperscalers, system original equipment manufacturers, and data center infrastructure suppliers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:12.961Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "BCRX",
+  "companyName": "BioCryst Pharmaceuticals, Inc.",
+  "profile": "BioCryst Pharmaceuticals develops and commercializes medicines for hereditary angioedema and other rare diseases. Its marketed products include ORLADEYO, an oral therapy for preventing hereditary angioedema attacks, and peramivir injection products for influenza. The company is also developing oral small molecule and injectable protein therapeutics for rare disease conditions, serving patients and healthcare markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.628Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/882796/000162828026012240/bcrx-20251231.htm"
+}

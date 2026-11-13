@@ -1,0 +1,10 @@
+{
+  "ticker": "PEGA",
+  "companyName": "Pegasystems Inc.",
+  "profile": "Pegasystems develops, markets, licenses, hosts and supports enterprise software for organizations. Its Pega Infinity portfolio includes artificial intelligence decisioning, workflow automation, customer engagement, customer service, low-code application development, robotic process automation and decision management products. The platform helps businesses and government agencies personalize customer experiences, automate service, streamline operations and workflows, and modernize legacy systems; its customers also use Blueprint to prototype applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.690Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1013857/000101385726000017/pega-20251231.htm"
+}

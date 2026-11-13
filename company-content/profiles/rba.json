@@ -1,0 +1,10 @@
+{
+  "ticker": "RBA",
+  "companyName": "RB Global, Inc.",
+  "profile": "RB Global operates an omnichannel marketplace for buyers and sellers of commercial assets and vehicles, using auction sites and a digital platform. Its services include online auctions, asset management and market data, equipment lifecycle management, parts procurement support, and heavy haul transport coordination. Customers include automobile insurers, end users, dealers, fleet owners and original equipment manufacturers across multiple asset classes.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1046102/000162828026011682/rba-20251231.htm"
+}

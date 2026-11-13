@@ -1,0 +1,10 @@
+{
+  "ticker": "EBAY",
+  "companyName": "eBay Inc.",
+  "profile": "eBay operates online marketplace platforms, localized marketplace sites, off-platform marketplaces, and mobile applications that connect buyers and sellers. Its services support product discovery, listings, advertising, payments, and shipping across a broad range of categories, including vehicle parts, collectibles, apparel, luxury goods, and sneakers. Customers include individual sellers, entrepreneurs, businesses, and buyers in markets around the world.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:53.132Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1065088/000106508826000027/ebay-20251231.htm"
+}

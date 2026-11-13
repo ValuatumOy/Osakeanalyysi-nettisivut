@@ -1,0 +1,14 @@
+{
+  "ticker": "VRDN",
+  "companyName": "Viridian Therapeutics, Inc.",
+  "profile": "Viridian Therapeutics discovers, develops, and commercializes medicines for autoimmune and rare diseases, with a focus on thyroid eye disease. Its marketed product, Lumvoa (veligrotug-vvze), is an IGF-1R antagonist approved for TED. The company is advancing investigational elegrobart for TED, VRDN-008, a half-life-extended FcRn inhibitor, and a TSHR-targeting program for other autoimmune diseases.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.073Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1590750/000159075026000007/vrdn-20251231.htm",
+  "profileSources": [
+    "https://investors.viridiantherapeutics.com/news/news-details/2026/Viridian-Therapeutics-Reports-Third-Quarter-2026-Financial-Results-and-Highlights-Recent-Business-Progress/default.aspx",
+    "https://www.viridiantherapeutics.com/press-release/viridian-therapeutics-announces-positive-vrdn-008-phase-1-results-supporting-potential-best-in-class-profile-with-every-8-week-subcutaneous-dosing-2/"
+  ]
+}

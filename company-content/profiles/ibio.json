@@ -1,0 +1,13 @@
+{
+  "ticker": "IBIO",
+  "companyName": "iBio, Inc.",
+  "profile": "iBio is a clinical-stage biotechnology company using artificial intelligence and machine learning to develop antibody therapeutics for obesity, cardiometabolic, and cardiopulmonary diseases. Its pipeline includes a clinical-stage long-acting myostatin antibody and preclinical candidates, including antibodies targeting Activin E and a myostatin–Activin A bispecific antibody. The company conducts discovery and development work at its research laboratory in San Diego.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.886Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1420720/000142072026000020/ibio-20260731x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1420720/000142072026000020/ibio-20260731x10k.htm"
+  ]
+}

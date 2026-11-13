@@ -1,0 +1,10 @@
+{
+  "ticker": "QCOM",
+  "companyName": "QUALCOMM Incorporated",
+  "profile": "QUALCOMM develops and commercializes technologies for computing, connectivity, artificial intelligence, software, sensing, security, and advanced packaging. Its products include integrated circuit platforms and system software for handsets, automotive, Internet of Things, and data center applications. The company also licenses intellectual property, including patent rights used in wireless products, and makes strategic investments. Customers and users span industries and device makers worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:36.599Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000128/qcom-20260927.htm"
+}

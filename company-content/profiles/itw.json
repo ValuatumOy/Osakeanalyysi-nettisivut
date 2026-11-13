@@ -1,0 +1,10 @@
+{
+  "ticker": "ITW",
+  "companyName": "Illinois Tool Works Inc.",
+  "profile": "Illinois Tool Works manufactures industrial products and equipment through businesses organized in seven segments: automotive OEM, food equipment, test and measurement and electronics, welding, polymers and fluids, construction products, and specialty products. Its offerings include vehicle components, commercial kitchen equipment, testing and electronics equipment, welding products, adhesives, fluids, and fastening systems. Its customers span automotive, food service, industrial, construction, energy, and other markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.629Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/49826/000004982626000008/itw-20251231.htm"
+}

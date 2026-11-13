@@ -1,0 +1,10 @@
+{
+  "ticker": "JOBY",
+  "companyName": "Joby Aviation, Inc.",
+  "profile": "Joby Aviation designs and tests piloted, all-electric vertical takeoff and landing aircraft for air taxi transportation. It plans to operate air taxi services directly and through partners, sell aircraft to distributors, and pursue defense and other specialized markets. Its activities include aircraft engineering, manufacturing, assembly, and flight testing, alongside development of operating software and a consumer app for aerial ridesharing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.091Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819848/000181984826000160/joby-20251231.htm"
+}

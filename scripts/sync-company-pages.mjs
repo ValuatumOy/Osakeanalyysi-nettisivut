@@ -5,13 +5,13 @@
 // to action and status notes are left as they are. A page whose figures already match is
 // not touched, so a run without model changes writes nothing.
 //
-// Pages are skipped (and listed) instead of updated when the update could be wrong:
-// historical/status pages, financial companies, a Wisdom ISIN that differs from the page,
-// a financial year that would move backwards or is not yet over, or a model with no revenue.
-// Differences between the model and issuers' filings are fixed in Wisdom, not here.
+// Reviewed pages, unavailable values and large changes require a person before they are
+// published. This keeps a model correction or split adjustment from silently replacing
+// verified filing values. All skips are listed in the run summary.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { WisdomClient } from './company-pages/wisdom-client.mjs';
 import { normalizeCompanyData, selectPrimaryModel } from './company-pages/normalize-company.mjs';
 import {
@@ -29,6 +29,8 @@ const CONCURRENCY = 4;
 // More failed Wisdom lookups than this share points at an API or token problem, not at
 // individual companies: stop without writing anything.
 const MAX_ERROR_SHARE = 0.2;
+const MAX_RELATIVE_CHANGE = 0.2;
+const { isCoveredTicker } = createRequire(import.meta.url)('../server/search');
 
 const OVERVIEW_SENTENCE = /For (?:the latest completed financial year, |financial year )\d{4}, (?:[^<]*? revenue of (?:N\/A|[A-Z]{3} [-\d,.]+m)|[^<]*? has no comparable revenue figure)(?: and (?:reported )?operating profit of (?:N\/A|[A-Z]{3} [-\d,.]+m))?(?:; (?:the year-end share price was (?:N\/A|[-\d,.]+ [A-Z]{3})(?: and market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m))?|market capitalisation was (?:N\/A|[A-Z]{3} [-\d,.]+m)))?\./g;
 const GRID = /<div class="cp-grid">[\s\S]*?<\/div><\/div>(?=\s*(?:<p class="cp-updated"|<\/section>))/g;
@@ -43,16 +45,19 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
   let files = (await fs.readdir(reportsDir)).filter((file) => file.endsWith('-equity-report.html')).sort();
   if (only) files = files.filter((file) => only.includes(file));
 
+  const { aliases, reviewedPages } = await wisdomReviews(rootDir);
   const results = [];
   const pages = [];
   for (const file of files) {
     const html = await fs.readFile(path.join(reportsDir, file), 'utf8');
     const page = readPage(file, html);
+    if (!page.skip && reviewedPages.has(file)) page.skip = 'filing-reviewed page needs a person';
+    if (!page.skip && !page.modelWording) page.skip = 'non-model source needs a person';
+    if (!page.skip && !isCoveredTicker(page.ticker)) page.skip = 'listing is outside current coverage';
     if (page.skip) results.push({ file, status: 'skipped', reason: page.skip });
     else pages.push(page);
   }
 
-  const aliases = await wisdomTickerAliases(rootDir);
   let errors = 0;
   await mapLimit(pages, CONCURRENCY, async (page) => {
     let company;
@@ -64,12 +69,17 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
       results.push({ file: page.file, ticker: page.ticker, status: 'error', reason: error.message });
       return;
     }
-    const reason = skipReason(page, company, now);
+    const reason = skipReason(page, company);
     if (reason) {
       results.push({ file: page.file, ticker: page.ticker, status: 'skipped', reason });
       return;
     }
     const cells = metricDefinitions(company).map((metric) => metric.value);
+    const riskyChange = unsafeCellChange(page.cells, cells);
+    if (riskyChange) {
+      results.push({ file: page.file, ticker: page.ticker, status: 'skipped', reason: riskyChange });
+      return;
+    }
     if (page.modelWording && company.financialYear === page.year && cells.every((value, index) => value === page.cells[index])) {
       results.push({ file: page.file, ticker: page.ticker, status: 'unchanged' });
       return;
@@ -100,6 +110,36 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
   return { aborted, results: results.map(({ next, ...result }) => result) };
 }
 
+function unsafeCellChange(oldCells, newCells) {
+  const labels = ['book value', 'share price', 'revenue', 'operating profit', 'net earnings', 'market capitalisation'];
+  for (let i = 0; i < oldCells.length; i += 1) {
+    if (oldCells[i] === newCells[i]) continue;
+    if (oldCells[i] === 'N/A' || newCells[i] === 'N/A') return `${labels[i]} changes to or from N/A; check by hand`;
+    // The live model recalculated net earnings for many FY2025 Nordic pages.
+    // Even small changes can disagree with filings, so hold the entire page
+    // until the model calculation has been reconciled.
+    if (i === 4) return 'net earnings differs; check the model calculation';
+    const previous = parseCell(oldCells[i]);
+    const next = parseCell(newCells[i]);
+    if (!previous || !next || previous.currency !== next.currency || previous.unit !== next.unit) {
+      return `${labels[i]} has an unrecognised or changed unit; check by hand`;
+    }
+    const delta = Math.abs(next.value - previous.value);
+    if ((previous.value === 0 && delta !== 0) || (previous.value !== 0 && delta / Math.abs(previous.value) > MAX_RELATIVE_CHANGE)) {
+      return `${labels[i]} changes by more than 20%; check by hand`;
+    }
+  }
+  return null;
+}
+
+function parseCell(cell) {
+  const match = /^\s*(?:([A-Z]{3})\s+)?(-?[\d,]+(?:\.\d+)?)(m)?(?:\s+([A-Z]{3}))?\s*$/.exec(cell);
+  if (!match || Boolean(match[1]) === Boolean(match[4])) return null;
+  const value = Number(match[2].replaceAll(',', ''));
+  if (!Number.isFinite(value)) return null;
+  return { value, currency: match[1] || match[4], unit: match[3] || '' };
+}
+
 export function readPage(file, html) {
   if (/valuatum-page-mode/i.test(html)) return { skip: 'full report page' };
   if (/<strong>\s*Company status:\s*<\/strong>/i.test(html)) return { skip: 'company status page' };
@@ -119,17 +159,13 @@ export function readPage(file, html) {
   return { file, html, ticker: entity.tickerSymbol, isin: String(entity.identifier).toUpperCase(), name: entity.name, year, cells, modelWording };
 }
 
-function skipReason(page, company, now) {
+function skipReason(page, company) {
   if (isFinancialCompany(company)) return 'financial company';
   if (company.companyCode.toUpperCase() !== page.isin) return `Wisdom ISIN ${company.companyCode} differs from page ISIN ${page.isin}`;
   if (company.financialYear < page.year) return `Wisdom year ${company.financialYear} is older than page year ${page.year}`;
-  // Moving into a year that may still be running (the July 2026 Duell page showed part of an
-  // unfinished year) needs a person; once a page shows that year, later model changes sync.
-  // Before March, last calendar year's results are mostly unpublished, so that move waits too.
-  const lastClosedYear = now.getUTCFullYear() - (now.getUTCMonth() < 2 ? 2 : 1);
-  if (company.financialYear > lastClosedYear && company.financialYear > page.year) {
-    return `Wisdom moves to FY ${company.financialYear}, which may not have ended; check and update by hand`;
-  }
+  // currentYear - 1 does not prove when a company's own fiscal year ended or
+  // that its annual filing is published. Do not infer completion from a date.
+  if (company.financialYear > page.year) return `Wisdom moves to FY ${company.financialYear}; verify the filing before updating`;
   if (company.metrics.revenue === null) return 'Wisdom has no revenue';
   return null;
 }
@@ -154,20 +190,21 @@ export function updateHtml(page, company, today) {
 
 // Some older pages show a ticker without its exchange suffix (AALLON for AALLON.HE). The filing
 // reviews recorded the Wisdom ticker for those pages; the ISIN check still guards the match.
-async function wisdomTickerAliases(rootDir) {
+async function wisdomReviews(rootDir) {
   const aliases = new Map();
+  const reviewedPages = new Set();
   const dir = path.join(rootDir, 'company-content', 'reviews');
-  let files = [];
-  try { files = (await fs.readdir(dir)).filter((file) => file.endsWith('.json')); } catch { return aliases; }
+  const files = (await fs.readdir(dir)).filter((file) => file.endsWith('.json'));
   for (const file of files) {
     const review = JSON.parse(await fs.readFile(path.join(dir, file), 'utf8'));
     for (const entry of Array.isArray(review.pages) ? review.pages : []) {
+      if (entry.path && entry.values && typeof entry.values === 'object') reviewedPages.add(path.basename(entry.path));
       if (entry.ticker && entry.pageTicker && entry.ticker !== entry.pageTicker && entry.path) {
         aliases.set(path.basename(entry.path), entry.ticker);
       }
     }
   }
-  return aliases;
+  return { aliases, reviewedPages };
 }
 
 function findSchema(html) {

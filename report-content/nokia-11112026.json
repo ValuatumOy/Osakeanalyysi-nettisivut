@@ -1,0 +1,745 @@
+{
+  "id": "nokia-11112026",
+  "slug": "nokia-equity-report",
+  "reportKind": "market-first",
+  "companyName": "Nokia Corporation",
+  "ticker": "NOKIA.HE",
+  "exchange": "NASDAQ Helsinki",
+  "country": "Finland",
+  "sector": "Communication Equipment",
+  "currency": "EUR",
+  "reportDate": "2026-11-11",
+  "profile": "Sells the equipment that carries phone calls, video and internet traffic to telecom operators, cloud companies, large businesses and defence customers. It also licenses patents to mobile-device makers and other industries.",
+  "headline": {
+    "currentPrice": "7.44 EUR",
+    "marketCap": "EUR 42.1bn",
+    "enterpriseValue": "EUR 41.2bn"
+  },
+  "otherClaims": {
+    "label": "Cash, less debt and other claims",
+    "value": "+0.16 EUR per share"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "22x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "15x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "45x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "15.00 EUR",
+    "week52Low": "5.07 EUR",
+    "oneYearChange": "+29%",
+    "threeYearChange": "+136%"
+  },
+  "summary": [
+    "Nokia Corporation (NOKIA.HE, NASDAQ Helsinki) sells optical, routing, data-centre, fibre-broadband and mobile-network equipment, alongside software, services and patent licences. The share price was 7.44 EUR on 11 November 2026, giving the company a market capitalisation of EUR 42.1bn and an enterprise value of EUR 41.2bn. In this Valuatum market report dated 11 November 2026, the whole company is read at 22x 2026 operating profit and 15x 2028 operating profit. Analysts’ 2028 forecast is revenue of EUR 24,270m and operating profit of EUR 2,672m, with the forecast split between the two operating businesses.",
+    "The price is principally made up of Network Infrastructure at 5.09 EUR per share and Mobile Infrastructure at 2.18 EUR per share. Network is read at 26.9x its allocated 2028 operating profit of EUR 1,072m, while Mobile is read at 7.7x its allocated operating profit of EUR 1,600m. Together, the businesses contribute 7.27 EUR per share and imply about 15.5x 2028 operating profit. Cash, less debt and other claims, adds 0.16 EUR per share, taking the split to 7.44 EUR. Network represents 70% and Mobile 30% of the two-business share-price allocation.",
+    "The combined multiple is slightly below listed peers at about 16.5x 2028 operating profit: Network is at 26.9x versus a 29.1x peer median, and Mobile at 7.7x versus 8.4x. The reading rests on different evidence across the businesses. Network sales rose 15% at constant currencies in Q3 2026, but Fixed Networks sales fell 22%; Mobile’s radio market was essentially flat in 2025. The key observations are Infinera integration by end-2026, conversion of AI and cloud orders, 2026 cash conversion of 35% to 55%, and whether 2028 margins hold."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "What you pay",
+      "metric": "7.27 EUR",
+      "text": "Network Infrastructure contributes 5.09 EUR per share and Mobile Infrastructure 2.18 EUR, so the two businesses make up 7.27 EUR of the 7.44 EUR share price before cash, debt and other claims. Together they are read at about 15.5x 2028 forecast operating profit."
+    },
+    {
+      "num": "02",
+      "title": "Why below peers",
+      "metric": "7.7x",
+      "text": "Mobile Infrastructure is read at 7.7x 2028 operating profit against an 8.4x peer median, while Network is at 26.9x against 29.1x. The larger gap is in Mobile, where radio equipment demand was essentially flat in 2025 and forecast margin is below the latest reported margin."
+    },
+    {
+      "num": "03",
+      "title": "What to watch",
+      "metric": "€200m",
+      "text": "The Infinera integration is targeted for completion by the end of 2026 with EUR 200m of net synergies. Other evidence will come from Network sales, Mobile’s 2028 margin and group cash conversion of 35% to 55% of comparable operating profit versus a 65% to 75% longer-term goal."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "Network Infrastructure",
+      "share": "5.09 EUR per share",
+      "economics": "26.9x 2028 operating profit · EUR 1,072m operating profit · peers 29.1x",
+      "text": "Network Infrastructure sells optical transport, IP routing, data-centre switching and fibre-broadband equipment to cloud companies, telecom operators and large enterprises. Outside-customer sales were EUR 7,600m in 2025, while the allocation reaches EUR 9,700m in 2028, about 27% higher. Allocated 2028 operating profit is EUR 1,072m at an 11% margin, compared with a reported 9.8% margin in 2025 and Nokia’s 13% to 17% 2028 target. The share price assigns 5.09 EUR per share and 26.9x that profit, slightly below the 29.1x peer median. Q3 2026 sales rose 15% at constant currencies and new AI and cloud orders were EUR 1,500m for the group, but Fixed Networks sales fell 22%. The mix of fast-growing optical activity and declining fixed broadband explains why the multiple sits below the median."
+    },
+    {
+      "name": "Mobile Infrastructure",
+      "share": "2.18 EUR per share",
+      "economics": "7.7x 2028 operating profit · EUR 1,600m operating profit · peers 8.4x",
+      "text": "Mobile Infrastructure sells mobile radio equipment, core-network software and services to telecom operators, enterprises and defence customers, and licenses patents. Outside-customer sales were EUR 11,400m in 2025 and are allocated at EUR 14,500m in 2028, with EUR 1,600m of operating profit at an 11% margin. The share price assigns 2.18 EUR per share and 7.7x allocated 2028 profit, below the 8.4x peer median. Q3 2026 sales were EUR 2,902m, gross margin was 47.5% and operating margin was 14.5%, all above the 2028 allocated operating margin. The market context is less supportive: radio equipment was essentially flat in 2025 and Dell’Oro expects about 1% annual growth through 2030. Contracts, restructuring savings and customer spending therefore determine whether forecast sales and margin are delivered."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is primarily a claim on two operating businesses rather than on a large excess-cash balance. Network Infrastructure contributes 5.09 EUR per share, or 70% of the 7.27 EUR contributed by the two businesses, and Mobile Infrastructure contributes 2.18 EUR, or 30%. The allocated 2028 operating profits are EUR 1,072m and EUR 1,600m respectively. Applying the multiples read from the market price gives Network an enterprise value of EUR 28,824m and Mobile an enterprise value of EUR 12,340m. Together, the businesses are priced at about 15.5x 2028 operating profit, compared with about 16.5x for listed peers. Network’s 26.9x multiple is close to its 29.1x peer median, while Mobile’s 7.7x is below its 8.4x median. The remaining 0.16 EUR per share comes from cash, less debt and other claims forecast at the end of 2026. That bridge matters because the business split is not a discounted valuation: it reads today’s 7.44 EUR share price into the forecast profits and then adds the balance-sheet claim."
+    },
+    {
+      "heading": "Why the price is below peers",
+      "text": "The modest discount to peers reflects execution and market-growth differences rather than one uniform concern. Network’s 26.9x multiple sits below a 29.1x median, but its peer range is unusually wide, from 8.1x for ADTRAN to 51.2x for Ciena. Nokia’s Network margin was 9.8% in 2025, down from 11.7% in 2024, and the 2028 allocation assumes recovery to 11%. Q3 2026 Network sales rose 15% at constant currencies, while Fixed Networks sales fell 22%, leaving uneven growth. Mobile’s gap is more direct: 7.7x versus an 8.4x peer median, with the 2028 allocation assuming an 11% operating margin versus about 13.4% reported for 2025 and 14.5% in Q3 2026. Radio equipment demand was essentially flat in 2025, and expected market growth of about 1% annually through 2030 limits the contribution from market expansion. The price therefore gives limited credit for margins that have not yet proved durable across the full businesses."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first operational test is the Infinera integration, which Nokia said was on track for completion by the end of 2026 with EUR 200m of net synergies. Ending duplicate systems, overlapping teams and factory moves would remove integration costs and make Network’s 11% allocated margin more credible. The second is order conversion: about half of Q2 AI and cloud orders were expected to become revenue within twelve months, while Nokia planned EUR 400m of additional working-capital investment in 2026 to secure supply for 2027 growth. The third is Fixed Networks, where another decline after the 22% Q3 2026 sales fall would offset optical growth. Mobile needs sales to approach EUR 14,500m and its 2028 margin to hold at 11%; a sustained margin near 13.4% would imply about EUR 1,900m of profit instead. Finally, group cash conversion was cut to 35% to 55% of comparable operating profit, below the 65% to 75% longer-term goal. Results that show higher sales, stable margins and cash conversion moving towards that goal would change how much of the price is supported by delivered profit."
+    }
+  ],
+  "risks": [
+    "Mobile demand stagnation (Mobile Infrastructure): radio-equipment demand remains essentially flat and operator spectrum spending or network-sharing models reduce new-equipment budgets, with annual Mobile sales below EUR 14,500m as the early warning.",
+    "Integration slippage (Network Infrastructure): delayed Infinera completion extends duplicate systems, overlapping teams and factory costs and delays EUR 200m of net synergies, with completion after the end of 2026 as the early warning.",
+    "Fixed-broadband deterioration (Network Infrastructure): Fixed Networks sales continue falling after the 22% Q3 2026 decline, offsetting optical growth and pressuring the allocated 11% margin, with quarterly Fixed Networks sales as the early warning.",
+    "Cash-conversion shortfall (Group): working-capital investment and restructuring payments keep cash conversion at 35% to 55% of comparable operating profit rather than the 65% to 75% longer-term goal, with free-cash-flow conversion below 35% as the early warning."
+  ],
+  "catalysts": [
+    "Infinera integration completion (near-term, Network Infrastructure): completion by the end of 2026 would end integration costs and begin the EUR 200m net-synergy contribution.",
+    "AI and cloud order conversion (near-term, Network Infrastructure): conversion of about half of Q2 orders within twelve months would support sales approaching EUR 9,700m in 2028.",
+    "Mobile contract wins (medium-term, Mobile Infrastructure): further multi-year radio deployments after the Virgin Media O2 agreement would show share gains in an essentially flat market.",
+    "Margin delivery (medium-term, both businesses): Network reaching an 11% 2028 operating margin and Mobile sustaining an 11% allocation would support the forecast profit split.",
+    "Cash recovery (medium-term, Group): conversion moving from 35% to 55% towards the 65% to 75% longer-term goal would show that working-capital and restructuring drains are ending."
+  ],
+  "financials": {
+    "note": "All figures in EUR millions unless noted; per-share data in EUR.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "22,258",
+            "19,220",
+            "19,889",
+            "20,756",
+            "22,430",
+            "24,270"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "1,970",
+            "3,012",
+            "2,765",
+            "3,300",
+            "3,962",
+            "4,656"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "8.9%",
+            "15.7%",
+            "13.9%",
+            "15.9%",
+            "17.7%",
+            "19.2%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-282",
+            "-1,013",
+            "-1,119",
+            "-1,464",
+            "-1,735",
+            "-1,984"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "1,688",
+            "1,999",
+            "1,646",
+            "1,836",
+            "2,227",
+            "2,672"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "7.6%",
+            "10.4%",
+            "8.3%",
+            "8.8%",
+            "9.9%",
+            "11.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "-189",
+            "92",
+            "-731",
+            "-349",
+            "-408",
+            "-407"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "1,499",
+            "2,091",
+            "920",
+            "1,492",
+            "1,824",
+            "2,270"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "679",
+            "1,284",
+            "633",
+            "941",
+            "1,862",
+            "2,408"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "0.1",
+            "0.2",
+            "0.1",
+            "0.2",
+            "0.3",
+            "0.4"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0.1",
+            "0.1",
+            "0.1",
+            "0.2",
+            "0.3",
+            "0.4"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "89.9%",
+            "55.4%",
+            "119.8%",
+            "94.0%",
+            "94.0%",
+            "94.0%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "2,857",
+            "2,120",
+            "2,490",
+            "2,490",
+            "2,691",
+            "2,912"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "1,086",
+            "802",
+            "1,399",
+            "1,460",
+            "1,578",
+            "1,707"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "5,504",
+            "5,736",
+            "5,996",
+            "5,996",
+            "5,996",
+            "5,996"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "8,374",
+            "8,905",
+            "8,277",
+            "8,277",
+            "8,277",
+            "8,277"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "17,821",
+            "17,563",
+            "18,162",
+            "18,223",
+            "18,542",
+            "18,892"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "2,719",
+            "2,163",
+            "2,209",
+            "2,316",
+            "2,503",
+            "2,708"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "9,134",
+            "9,201",
+            "8,121",
+            "8,474",
+            "9,053",
+            "9,688"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "6,234",
+            "6,623",
+            "5,462",
+            "6,208",
+            "6,709",
+            "7,259"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "18,087",
+            "17,987",
+            "15,792",
+            "16,998",
+            "18,264",
+            "19,656"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "3,952",
+            "3,599",
+            "3,643",
+            "3,643",
+            "3,643",
+            "3,643"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,865",
+            "40,449",
+            "42,191"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "20,628",
+            "20,747",
+            "21,058",
+            "21,213",
+            "22,190",
+            "22,847"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "3,637",
+            "2,918",
+            "2,329",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "554",
+            "969",
+            "1,084",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "6,577",
+            "5,583",
+            "5,143",
+            "4,927",
+            "5,024",
+            "5,332"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "10,933",
+            "11,394",
+            "10,004",
+            "11,388",
+            "11,897",
+            "12,659"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "1,722",
+            "1,425",
+            "1,392",
+            "1,337",
+            "1,339",
+            "1,353"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "39,860",
+            "39,149",
+            "37,597",
+            "38,865",
+            "40,449",
+            "42,191"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "997",
+            "863",
+            "1,000",
+            "945",
+            "947",
+            "961"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "-1,046",
+            "-1,873",
+            "-1,049",
+            "-1,038",
+            "-1,343",
+            "-1,263"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "18,585",
+            "18,011",
+            "19,009",
+            "19,230",
+            "19,900",
+            "20,624"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "51.8%",
+            "53.0%",
+            "56.0%",
+            "54.6%",
+            "54.9%",
+            "54.2%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "-5.1%",
+            "-9.0%",
+            "-5.0%",
+            "-4.9%",
+            "-6.1%",
+            "-5.5%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "-0.5x",
+            "-0.6x",
+            "-0.4x",
+            "-0.3x",
+            "-0.3x",
+            "-0.3x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.7",
+            "1.6",
+            "1.6",
+            "1.5",
+            "1.5",
+            "1.6"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "2,532",
+            "2,656",
+            "1,282",
+            "2,301",
+            "3,245",
+            "4,006"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "3,066",
+            "3,126",
+            "1,566",
+            "2,515",
+            "3,657",
+            "4,433"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "-779",
+            "-535",
+            "471",
+            "105",
+            "353",
+            "388"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "-740",
+            "755",
+            "1,718",
+            "1,526",
+            "2,054",
+            "2,334"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "740",
+            "-755",
+            "-1,718",
+            "-1,526",
+            "-2,054",
+            "-2,334"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "1,792",
+            "1,901",
+            "-436",
+            "775",
+            "1,192",
+            "1,671"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "3,626",
+            "2,096",
+            "-3",
+            "990",
+            "1,603",
+            "2,099"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "3,631",
+            "1,669",
+            "-3",
+            "990",
+            "1,603",
+            "2,099"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-1,988",
+            "-1,878",
+            "-510",
+            "-28",
+            "-690",
+            "-1,120"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "-337",
+            "-610",
+            "-712",
+            "-758",
+            "-885",
+            "-1,751"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "1,284",
+            "23",
+            "-946",
+            "746",
+            "502",
+            "551"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "44.7x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "12.5x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "22x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "2.0x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.1%"
+          ]
+        },
+        {
+          "label": "Net Debt / EBITDA",
+          "values": [
+            "-0.3x"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is Nokia Corporation's share price made of?",
+      "a": "The 7.44 EUR share price is split into 5.09 EUR for Network Infrastructure, 2.18 EUR for Mobile Infrastructure and 0.16 EUR from cash, less debt and other claims. Network is read at 26.9x allocated 2028 operating profit and Mobile at 7.7x."
+    },
+    {
+      "q": "Why does Nokia trade below its listed peers?",
+      "a": "The two businesses together are read at about 15.5x 2028 operating profit versus about 16.5x for peers. Network is at 26.9x versus a 29.1x peer median, while Mobile is at 7.7x versus 8.4x; uneven Network growth and a flat radio market explain the discount."
+    },
+    {
+      "q": "What do analysts forecast for Nokia's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of EUR 24,270m, EBITDA of EUR 4,656m, operating profit of EUR 2,672m and net earnings of EUR 2,408m. The forecast split allocates EUR 1,072m of operating profit to Network Infrastructure and EUR 1,600m to Mobile Infrastructure."
+    },
+    {
+      "q": "What should Nokia investors watch?",
+      "a": "The main indicators are completion of the Infinera integration by the end of 2026, conversion of AI and cloud orders, Fixed Networks sales, Mobile’s 2028 operating margin and group cash conversion. Cash conversion is forecast at 35% to 55% of comparable operating profit versus a 65% to 75% longer-term goal."
+    },
+    {
+      "q": "How does Valuatum's Nokia market report work?",
+      "a": "The method keeps analysts’ forecasts through 2028, allocates company-level operating profit between Network Infrastructure and Mobile Infrastructure, compares each business with listed peers using EV/EBIT, and reads today’s 7.44 EUR share price into the businesses. It gives no target price or recommendation."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on Nokia Corporation dated 11 November 2026 (7.44 EUR share price, 5.09 EUR Network Infrastructure and 2.18 EUR Mobile Infrastructure).",
+    "Competitor context: Network Infrastructure peers Ciena Corporation, Cisco Systems, Inc., ADTRAN Holdings, Inc. and ZTE Corporation at 51.2x, 27.0x, 8.1x and 31.2x 2028 EV/EBIT, with a 29.1x median; Mobile Infrastructure peers Telefonaktiebolaget LM Ericsson (publ), NEC Corporation and Samsung Electronics Co., Ltd. at 8.4x, 14.4x and 2.1x, with an 8.4x median. The peer range is wide and the peer median excludes qualified outliers where stated.",
+    "Market data: NOKIA.HE, 7.44 EUR on 11 November 2026; analysts’ forecasts use 2028 sales of EUR 24,270m and operating profit of EUR 2,672m, with the consensus forecast sourced from the Valuatum financial model. The report notes that the business split is an estimate, cash-flow rows are Valuatum calculations rather than the company’s reported cash-flow statement, and Samsung’s and ZTE’s EV/EBIT figures are worked out from published figures."
+  ]
+}

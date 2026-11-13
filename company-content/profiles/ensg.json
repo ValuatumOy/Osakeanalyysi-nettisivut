@@ -1,0 +1,10 @@
+{
+  "ticker": "ENSG",
+  "companyName": "The Ensign Group, Inc.",
+  "profile": "The Ensign Group is a holding company whose independent subsidiaries provide skilled nursing, senior living and rehabilitative care, along with ancillary services such as mobile diagnostics and medical transportation. It operates skilled nursing and senior living facilities and acquires, leases, owns and manages healthcare real estate. Its services support patients receiving post-acute care, while some properties are leased to third-party healthcare operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.690Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1125376/000112537626000007/ensg-20251231.htm"
+}

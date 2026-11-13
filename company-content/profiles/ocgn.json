@@ -1,0 +1,14 @@
+{
+  "ticker": "OCGN",
+  "companyName": "Ocugen, Inc.",
+  "profile": "Ocugen develops gene therapies for blindness-causing diseases using its modifier gene therapy platform. Its late-stage programs include OCU400 for retinitis pigmentosa, with Phase 3 liMeliGhT data expected in 2027; OCU410ST for Stargardt disease, in a Phase 2/3 pivotal trial; and OCU410 for geographic atrophy, now in Phase 3. The company also works with regional partners to expand potential patient access to OCU400.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.772Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1372299/000162828026014435/ocgn-20251231.htm",
+  "profileSources": [
+    "https://ocugen.gcs-web.com/news-releases/news-release-details/ocugen-provides-business-update-third-quarter-2026-financial",
+    "https://www.sec.gov/Archives/edgar/data/1372299/000110465926122401/tm2628896d1_ex99-1.htm"
+  ]
+}

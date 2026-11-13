@@ -1,0 +1,14 @@
+{
+  "ticker": "AM",
+  "companyName": "Antero Midstream Corporation",
+  "profile": "Antero Midstream owns and operates natural gas gathering pipelines and compression facilities, with interests in processing and fractionation assets in the Appalachian Basin. It also provides fresh water delivery, wastewater handling, and recycling services for well completion and production. Its infrastructure primarily serves Antero Resources, connecting the producer’s natural gas and natural gas liquids to domestic and international markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.059Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1623925/000110465926013380/am-20251231x10k.htm",
+  "profileSources": [
+    "https://www.anteromidstream.com/investors/press-releases/detail/168/antero-midstream-announces-third-quarter-2026-financial-and",
+    "https://www.anteromidstream.com/operations"
+  ]
+}

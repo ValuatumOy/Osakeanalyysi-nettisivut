@@ -1,0 +1,10 @@
+{
+  "ticker": "KTOS",
+  "companyName": "Kratos Defense & Security Solutions, Inc.",
+  "profile": "Kratos develops and supplies technology, hardware, products, systems, and software for defense, national security, and commercial markets. Its offerings include satellite ground systems and command software, unmanned aerial systems, hypersonic and rocket systems, propulsion, C5ISR and microwave electronics, and virtual and augmented reality training systems. Its customers include government organizations, commercial customers, and traditional defense system integrators and partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.820Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1069258/000106925826000013/ktos-20251228.htm"
+}

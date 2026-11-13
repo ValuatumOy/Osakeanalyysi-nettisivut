@@ -1,9 +1,7 @@
 name: Company pages sync
 
-# Keeps the financial figures on company overview pages equal to Valuatum's Wisdom model, the
-# same data a generated report uses (scripts/sync-company-pages.mjs). Weekly; a run where no
-# model changed writes nothing. Pages it cannot update safely are skipped and listed in the job
-# summary. Differences between Wisdom and issuers' filings are fixed in Wisdom, not on the pages.
+# Updates eligible company-page figures from Wisdom each week. Reviewed pages, unavailable
+# values and large changes remain untouched and are listed in the job summary for review.
 on:
   schedule:
     - cron: '17 5 * * 1'
@@ -64,19 +62,20 @@ jobs:
 
       - name: Guard
         run: |
-          # Only the sync's own tests: other company-page tests pin hand-reviewed figures on pages
-          # the sync is meant to change.
-          node --test test/company-pages/sync.test.mjs
-          node scripts/validate-jsonld.mjs
+          node --test test/company-pages/*.test.mjs
+          node scripts/report-pages/check.mjs
+          npm run seo:check
 
       - name: Commit and push
         run: |
-          git add reports sitemap.xml llms.txt companies companies.html
+          git add reports reports.html sitemap.xml llms.txt companies companies.html
+          git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
           if git diff --cached --quiet; then
-            echo "No changes: every page already shows the model figures."
+            echo "No eligible updates to commit; see skipped pages in the summary."
             exit 0
           fi
           git config user.name "company-pages-sync"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Company pages: sync figures with the Wisdom model"
+          bash scripts/finalize-page-freshness.sh
           git push

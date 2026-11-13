@@ -1,0 +1,10 @@
+{
+  "ticker": "CTKB",
+  "companyName": "Cytek Biosciences, Inc.",
+  "profile": "Cytek develops cell analysis systems using its Full Spectrum Profiling technology, which analyzes light emissions from multiple lasers to distinguish fluorescent tags on single cells. Its products include cell analyzers, a cell sorter, embedded software, reagents, and service offerings. Customers include pharmaceutical and biopharmaceutical companies, academic research centers, and contract research organizations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:07.249Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1831915/000162828026012352/ctkb-20251231.htm"
+}

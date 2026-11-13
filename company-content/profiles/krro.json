@@ -1,0 +1,13 @@
+{
+  "ticker": "KRRO",
+  "companyName": "Korro Bio, Inc.",
+  "profile": "Korro Bio is a biopharmaceutical company developing genetic medicines based on RNA editing. Its approach uses engineered oligonucleotides to modify RNA and is intended to address rare and more prevalent diseases. The company’s programs include candidates designed to alter protein function through RNA editing, including a lead program focused on glutamine synthetase and a candidate targeting alpha-1 antitrypsin deficiency.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.475Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1703647/000119312526104156/krro-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1703647/000119312526104156/krro-20251231.htm"
+  ]
+}

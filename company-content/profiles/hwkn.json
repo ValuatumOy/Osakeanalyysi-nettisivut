@@ -1,0 +1,10 @@
+{
+  "ticker": "HWKN",
+  "companyName": "Hawkins, Inc.",
+  "profile": "Hawkins formulates, manufactures, distributes and blends products for water treatment, food and health sciences, and industrial solutions customers. Its water treatment business supplies chemicals, filtration systems, equipment and services for potable, wastewater, process and agricultural water. It also provides ingredients and processing solutions to food, nutrition and pharmaceutical manufacturers, and distributes industrial chemicals and offers customer-specific blending and repackaging.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:13.564Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/46250/000004625026000018/hwkn-20260329.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "FEIM",
+  "companyName": "Frequency Electronics, Inc.",
+  "profile": "Frequency Electronics designs and manufactures precision time and frequency generation products and systems for space and other demanding environments. Its offerings include satellite timing, power conversion, frequency generation, synthesis, and distribution systems, as well as ruggedized clocks and specialized software. Customers include commercial and government satellite users, U.S. military programs, commercial telecommunications providers, and secure communications systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.686Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/39020/000118518526002997/feim10k043026.htm"
+}

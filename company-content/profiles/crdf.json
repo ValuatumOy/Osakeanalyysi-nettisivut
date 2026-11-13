@@ -1,0 +1,13 @@
+{
+  "ticker": "CRDF",
+  "companyName": "Cardiff Oncology, Inc.",
+  "profile": "Cardiff Oncology is a clinical-stage biotechnology company developing cancer therapies based on PLK1 inhibition. Its lead drug candidate, onvansertib, is an oral, selective PLK1 inhibitor being studied in combination with standard cancer treatments. Clinical programs include trials in RAS-mutated metastatic colorectal cancer and investigator-led studies in pancreatic cancer, small cell lung cancer, triple-negative breast cancer and chronic myelomonocytic leukemia.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:49.598Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1213037/000119312526067464/crdf-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1213037/000119312526067464/crdf-20251231.htm"
+  ]
+}

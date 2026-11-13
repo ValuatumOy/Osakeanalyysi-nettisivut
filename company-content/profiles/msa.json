@@ -1,0 +1,13 @@
+{
+  "ticker": "MSA",
+  "companyName": "MSA Safety Incorporated",
+  "profile": "MSA Safety designs, manufactures and sells industrial safety products for people and facilities. Its portfolio includes gas and flame detection systems, fire-service equipment, personal protective equipment, and connected safety products and services. In 2026, MSA completed its acquisition of Autronica Fire and Security, adding fire detection and security solutions. Customers operate in fire service, energy, utilities, construction, manufacturing and other industrial settings.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:27:25.197Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/66570/000006657026000005/msa-20251231.htm",
+  "profileSources": [
+    "https://investors.msasafety.com/news-releases/news-release-details/msa-safety-announces-third-quarter-2026-results"
+  ]
+}

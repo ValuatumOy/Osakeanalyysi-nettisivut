@@ -1,0 +1,10 @@
+{
+  "ticker": "LSCC",
+  "companyName": "Lattice Semiconductor Corporation",
+  "profile": "Lattice Semiconductor develops programmable logic semiconductors, silicon-enabling products, system solutions, design services, and technology licenses. Its field-programmable gate arrays support control, connectivity, and computing functions in systems spanning communications, computing, industrial, automotive, and consumer markets. Customers use its products in applications including servers, wireless infrastructure, switches, routers, smart devices, sensors, and security systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.460Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/855658/000143774926004100/lscc20260103_10k.htm"
+}

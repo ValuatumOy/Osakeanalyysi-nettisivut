@@ -1,0 +1,13 @@
+{
+  "ticker": "CCLD",
+  "companyName": "CareCloud, Inc.",
+  "profile": "CareCloud provides technology-enabled revenue cycle management services and cloud-based software to healthcare providers, from small practices to hospitals and health systems. Its offerings include medical billing, coding, claims processing, electronic health records, practice management, digital health services, healthcare IT consulting and staffing, and medical practice management services. The company also offers generative AI tools for clinical workflows, patient support, and claims appeals.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.735Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1582982/000149315226009872/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1582982/000149315226009872/form10-k.htm"
+  ]
+}

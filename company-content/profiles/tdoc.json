@@ -1,0 +1,10 @@
+{
+  "ticker": "TDOC",
+  "companyName": "Teladoc Health, Inc.",
+  "profile": "Teladoc Health provides virtual healthcare services and connected care solutions through business-to-business and direct-to-consumer channels. Its Integrated Care segment offers preventive, primary, urgent, mental, and chronic care, plus expert second opinions and referrals to in-person care. Its BetterHelp platform connects individuals with licensed clinicians for online counseling and therapy through web, mobile, phone, and text.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1477449/000147744926000012/tdoc-20251231.htm"
+}

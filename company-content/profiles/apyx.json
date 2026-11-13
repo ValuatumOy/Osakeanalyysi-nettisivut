@@ -1,0 +1,13 @@
+{
+  "ticker": "APYX",
+  "companyName": "Apyx Medical Corporation",
+  "profile": "Apyx Medical develops and sells surgical products for cosmetic surgery and hospital procedures. Its Helium Plasma Platform Technology products are marketed as Renuvion and J-Plasma, which provide surgeons with controlled heat for tissue treatment. Its AYON Body Contouring System combines fat removal, contouring, tissue contraction, and electrosurgical capabilities. The company also provides waveform expertise to other medical device manufacturers through OEM agreements.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.094Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/719135/000143774926007471/apyx20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/719135/000143774926007471/apyx20251231_10k.htm"
+  ]
+}

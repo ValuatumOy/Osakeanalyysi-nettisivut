@@ -1,0 +1,10 @@
+{
+  "ticker": "SBH",
+  "companyName": "Sally Beauty Holdings, Inc.",
+  "profile": "Sally Beauty Holdings retails and distributes professional beauty supplies through its Sally Beauty and Beauty Systems Group segments. Products include hair color, hair care, styling tools, nail products, and other beauty categories. Sally serves retail consumers and salon professionals through stores and digital channels; Beauty Systems Group distributes exclusively to salons and licensed beauty professionals.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.497Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1368458/000136845826000020/sbh-20260930.htm"
+}

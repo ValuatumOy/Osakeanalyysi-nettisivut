@@ -1,0 +1,10 @@
+{
+  "ticker": "AMSC",
+  "companyName": "American Superconductor Corporation",
+  "profile": "American Superconductor designs, develops and deploys power control solutions using smart materials, software and controls. Its products include voltage compensators, capacitors, transformers, rectifiers, power electronics and control systems, alongside engineering and support services. Customers include electric utilities, industrial and semiconductor manufacturers, wind turbine manufacturers, and naval and shipyard operators seeking power delivery, protection and reliability solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.629Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/880807/000143774926018542/amsc20260331_10k.htm"
+}

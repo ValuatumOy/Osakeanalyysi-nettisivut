@@ -1,0 +1,13 @@
+{
+  "ticker": "DHX",
+  "companyName": "DHI Group, Inc.",
+  "profile": "DHI Group provides software, online tools, and services through its Dice and ClearanceJobs career marketplaces. The platforms help recruiters and hiring managers search for, match with, and connect to skilled technologists, including professionals with active government security clearances. DHI also provides technology career content and workforce intelligence, and its services are used by employers and candidates.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:43.210Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1393883/000139388326000041/dhx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1393883/000139388326000041/dhx-20251231.htm"
+  ]
+}

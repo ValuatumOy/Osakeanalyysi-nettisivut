@@ -1,0 +1,10 @@
+{
+  "ticker": "DSGR",
+  "companyName": "Distribution Solutions Group, Inc.",
+  "profile": "Distribution Solutions Group distributes specialty products and services to industrial, commercial, institutional, and government maintenance, repair, and operations customers. Its businesses supply industrial MRO products, safety equipment, fasteners, power tools, test and measurement equipment, and electronic production supplies. The company also provides inventory programs, supply chain support, production line management, field installation, fabrication, and related technical services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.400Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/703604/000070360426000008/dsgr-20251231.htm"
+}

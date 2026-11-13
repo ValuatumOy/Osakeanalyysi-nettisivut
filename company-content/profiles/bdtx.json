@@ -1,0 +1,13 @@
+{
+  "ticker": "BDTX",
+  "companyName": "Black Diamond Therapeutics, Inc.",
+  "profile": "Black Diamond Therapeutics is a clinical-stage oncology company developing small-molecule therapies for cancers with genetically defined mutations. Its MasterKey therapies are designed to target families of oncogenic mutations, including alterations associated with treatment resistance and central nervous system disease. Its lead program, silevertinib, is an EGFR inhibitor being studied in a Phase 2 trial for patients with EGFR-mutant non-small cell lung cancer.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.327Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1701541/000170154126000009/bdtx-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1701541/000170154126000009/bdtx-20251231.htm"
+  ]
+}

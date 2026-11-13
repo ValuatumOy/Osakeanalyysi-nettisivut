@@ -1,0 +1,10 @@
+{
+  "ticker": "DNTH",
+  "companyName": "Dianthus Therapeutics, Inc.",
+  "profile": "Dianthus Therapeutics is a clinical-stage biotechnology company developing therapies for severe autoimmune diseases. Its clinical candidates include claseprubart, a monoclonal antibody designed to selectively inhibit active C1s in the classical complement pathway, and DNTH212, a fusion protein targeting plasmacytoid dendritic cells and B-cell function. Claseprubart is being studied in generalized myasthenia gravis, chronic inflammatory demyelinating polyneuropathy, and multifocal motor neuropathy.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.573Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1690585/000169058526000006/dnth-20251231.htm"
+}

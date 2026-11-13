@@ -1,0 +1,13 @@
+{
+  "ticker": "MPTI",
+  "companyName": "M-tron Industries, Inc.",
+  "profile": "M-tron Industries designs, manufactures, and markets frequency and spectrum control components and integrated microwave assemblies for electronic systems. Its products include crystal resonators, oscillators, radio frequency and microwave filters, diplexers, power amplifiers, and custom modules. These products serve aerospace and defense, avionics, space, industrial, medical, instrumentation, and other applications requiring reliable signal timing or control in demanding environments.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.157Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1902314/000143774926009844/mpti20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1902314/000143774926009844/mpti20251231_10k.htm"
+  ]
+}

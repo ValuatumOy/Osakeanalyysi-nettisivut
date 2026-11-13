@@ -1,0 +1,13 @@
+{
+  "ticker": "ATRA",
+  "companyName": "Atara Biotherapeutics, Inc.",
+  "profile": "Atara Biotherapeutics develops allogeneic T-cell immunotherapies for cancer and autoimmune diseases. Through a partnership with Pierre Fabre, it supports commercialization of Ebvallo in Europe and the United Kingdom for Epstein-Barr virus-positive post-transplant lymphoproliferative disease. In the United States, the FDA has accepted a resubmitted biologics license application for tab-cel, with a target action date in 2027.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.951Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1604464/000119312526108361/atra-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1604464/000110465926125171/tmb-ex99d1.htm"
+  ]
+}

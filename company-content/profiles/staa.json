@@ -1,0 +1,10 @@
+{
+  "ticker": "STAA",
+  "companyName": "STAAR Surgical Company",
+  "profile": "STAAR Surgical designs, develops, manufactures, and sells implantable eye lenses and delivery systems used to place them. Its principal products are Implantable Collamer Lenses, including the EVO family for myopia and Visian ICL for hyperopia; some models also address astigmatism. These lenses are used in refractive surgery and are sold through company representatives and independent distributors across its markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:26.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/718937/000071893726000004/staa-20260102.htm"
+}

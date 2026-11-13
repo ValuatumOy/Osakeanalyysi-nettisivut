@@ -1,0 +1,10 @@
+{
+  "ticker": "TGTX",
+  "companyName": "TG Therapeutics, Inc.",
+  "profile": "TG Therapeutics is a commercial-stage biotechnology company focused on acquiring, developing and commercializing treatments for B-cell diseases. Its approved medicine BRIUMVI is an infusion for adults with relapsing forms of multiple sclerosis, including clinically isolated syndrome, relapsing-remitting disease and active secondary progressive disease. The company markets BRIUMVI in the United States and works with a partner on commercialization elsewhere.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.972Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1001316/000143774926006133/tgtx20251231_10k.htm"
+}

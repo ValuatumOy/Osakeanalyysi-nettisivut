@@ -1,0 +1,15 @@
+{
+  "ticker": "ZVRA",
+  "companyName": "Zevra Therapeutics, Inc.",
+  "profile": "Zevra Therapeutics develops and commercializes medicines for rare diseases. Its marketed products include MIPLYFFA for neurological manifestations of Niemann-Pick disease type C and OLPRUVA for certain urea cycle disorders. The company is conducting a Phase 3 trial of celiprolol for vascular Ehlers-Danlos syndrome. Zevra sold its rights to AZSTARYS and KP1077 to Commave in 2026.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:34:28.770Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1434647/000143464726000011/zvra-20251231.htm",
+  "profileSources": [
+    "https://investors.zevra.com/news-releases/news-release-details/zevra-reports-third-quarter-2026-financial-results-and-corporate",
+    "https://www.sec.gov/Archives/edgar/data/1434647/000143464726000087/zvra-20260930.htm",
+    "https://zevra.com/our-products/"
+  ]
+}

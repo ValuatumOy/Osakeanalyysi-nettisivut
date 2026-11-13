@@ -1,0 +1,10 @@
+{
+  "ticker": "MYRG",
+  "companyName": "MYR Group Inc.",
+  "profile": "MYR Group provides specialty electrical construction services through subsidiaries serving electric utilities and commercial and industrial markets in the United States and Canada. Its work includes design, engineering, procurement, construction, upgrades, maintenance, and repairs. Projects cover transmission lines, substations, distribution systems, facilities, transportation systems, roadway lighting, and electric vehicle charging infrastructure, for utility customers, contractors, and facility owners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.530Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/700923/000070092326000007/myrg-20251231.htm"
+}

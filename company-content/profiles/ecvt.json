@@ -1,0 +1,10 @@
+{
+  "ticker": "ECVT",
+  "companyName": "Ecovyst Inc.",
+  "profile": "Ecovyst provides virgin and regenerated sulfuric acid products and services. Its offerings include regenerated sulfuric acid, sulfuric acid for mining and industrial production, sulfuric acid derivatives, and hazardous waste treatment services. Customers use these products and services in applications including fuel processing, mining, metals, industrial production, and waste treatment. Ecovyst operates manufacturing and regeneration facilities that serve customers across multiple end uses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.152Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1708035/000170803526000053/ecvt-20251231.htm"
+}

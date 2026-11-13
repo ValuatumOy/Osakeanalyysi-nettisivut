@@ -1,0 +1,10 @@
+{
+  "ticker": "GDDY",
+  "companyName": "GoDaddy Inc.",
+  "profile": "GoDaddy provides online services and tools for small businesses, individuals, organizations, developers, designers and domain investors. Its offerings include domain registration, logo and website creation, hosting, email, marketing, security and online presence services. Commerce products support online and in-person sales, payments, point-of-sale transactions, inventory and order management, alongside personalized customer guidance.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:07.078Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1609711/000160971126000010/gddy-20251231.htm"
+}

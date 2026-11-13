@@ -1,0 +1,14 @@
+{
+  "ticker": "SRFM",
+  "companyName": "Surf Air Mobility Inc.",
+  "profile": "Surf Air Mobility operates scheduled regional airline services and an on-demand charter business for passengers in the United States and internationally. It also develops aviation software and aircraft electrification technologies. In 2026, the company commercially launched OperatorOS, its operating system for regional airlines, and reported signing several customer contracts. Its activities also include developing hybrid and electric powertrain systems for regional aircraft.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.960Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1936224/000119312526104468/srfm-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1936224/000119312526449863/srfm-ex99_1.htm",
+    "https://www.sec.gov/Archives/edgar/data/1936224/000119312526450186/srfm-20260930.htm"
+  ]
+}

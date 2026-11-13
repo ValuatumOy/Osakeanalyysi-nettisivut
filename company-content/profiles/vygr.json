@@ -1,0 +1,13 @@
+{
+  "ticker": "VYGR",
+  "companyName": "Voyager Therapeutics, Inc.",
+  "profile": "Voyager Therapeutics develops genetic medicines for neurological diseases. Its pipeline includes programs for Alzheimer’s disease, Friedreich’s ataxia, Parkinson’s disease and other central nervous system conditions. Its TRACER platform discovers adeno-associated virus capsids intended to deliver therapies to the brain. The company advances proprietary drug candidates and partnered programs with collaborators, and develops a non-viral delivery platform for neurological therapeutics.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.869Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1640266/000110465926025197/vygr-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1640266/000110465926025197/vygr-20251231x10k.htm"
+  ]
+}

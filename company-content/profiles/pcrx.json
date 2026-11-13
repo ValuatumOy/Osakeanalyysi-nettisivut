@@ -1,0 +1,10 @@
+{
+  "ticker": "PCRX",
+  "companyName": "Pacira BioSciences, Inc.",
+  "profile": "Pacira BioSciences develops and markets non-opioid pain treatments. Its commercial products include EXPAREL, a long-acting local analgesic approved for postsurgical pain management; ZILRETTA, an extended-release injection indicated for osteoarthritis knee pain; and iovera, a handheld device that uses controlled cold to provide targeted, drug-free pain control. The company also develops gene therapy candidates for osteoarthritis.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.013Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1396814/000162828026012297/pcrx-20251231.htm"
+}

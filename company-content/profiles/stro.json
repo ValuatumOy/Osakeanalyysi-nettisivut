@@ -1,0 +1,13 @@
+{
+  "ticker": "STRO",
+  "companyName": "Sutro Biopharma, Inc.",
+  "profile": "Sutro Biopharma is a clinical-stage oncology company developing antibody-drug conjugates using its cell-free protein synthesis and site-specific conjugation platforms. Its pipeline includes candidates directed at tumor targets, including a clinical-stage candidate for solid tumors. The company also collaborates with pharmaceutical and biotechnology partners on antibody-based drug discovery and development, and its platforms have supported vaccine research and development.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.885Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1382101/000119312526119873/stro-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1382101/000119312526119873/stro-20251231.htm"
+  ]
+}

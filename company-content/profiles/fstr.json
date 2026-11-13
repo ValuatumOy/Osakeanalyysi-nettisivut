@@ -1,0 +1,13 @@
+{
+  "ticker": "FSTR",
+  "companyName": "L.B. Foster Company",
+  "profile": "L.B. Foster Company provides engineered and manufactured products, technology solutions and services for infrastructure. It operates Rail, Technologies, and Services and Infrastructure Solutions segments. Its rail businesses supply track components, friction management products and systems, rail monitoring technology, controls, displays and related services for railroads, industrial companies and transit markets. The company maintains locations in North America, South America, Europe and Asia.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:19.006Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/352825/000035282526000016/fstr-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/352825/000035282526000016/fstr-20251231.htm"
+  ]
+}

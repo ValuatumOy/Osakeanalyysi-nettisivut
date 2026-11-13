@@ -1,0 +1,10 @@
+{
+  "ticker": "POOL",
+  "companyName": "Pool Corporation",
+  "profile": "Pool Corporation is a wholesale distributor of swimming pool supplies, equipment, and related leisure products, as well as irrigation and landscape maintenance products and hardscapes, tile, and stone. It operates sales centers across North America, Europe, and Australia. Its customers generally include pool builders, pool service companies, retail stores, commercial pool operators, and landscape contractors. The company purchases products from manufacturers and distributes them.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:12.737Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/945841/000119312526074833/pool-20251231.htm"
+}

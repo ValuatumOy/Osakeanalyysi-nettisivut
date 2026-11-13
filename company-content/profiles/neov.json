@@ -1,0 +1,13 @@
+{
+  "ticker": "NEOV",
+  "companyName": "NeoVolta Inc.",
+  "profile": "NeoVolta develops and manufactures energy storage systems for residential and small commercial applications, combining lithium iron phosphate batteries with inverter technology for backup power, solar self-consumption, and energy resilience. Its products are marketed through solar installers and distributors. The company is expanding into commercial and industrial storage and utility-scale battery manufacturing, serving homeowners, businesses, and project developers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.157Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1748137/000168316826007333/neovolta_i10k-063026.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1748137/000168316826007333/neovolta_i10k-063026.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ETSY",
+  "companyName": "Etsy, Inc.",
+  "profile": "Etsy operates online marketplaces connecting independent creative sellers with buyers around the world. Its Etsy marketplace offers unique and creative goods, while Depop is a fashion resale marketplace. The company provides technology and services that support search, discovery, transactions, trust and safety, and seller growth. Its customers are marketplace buyers and sellers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.931Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1370637/000137063726000019/etsy-20251231.htm"
+}

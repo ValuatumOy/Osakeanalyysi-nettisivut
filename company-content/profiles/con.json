@@ -1,0 +1,10 @@
+{
+  "ticker": "CON",
+  "companyName": "Concentra Group Holdings Parent, Inc.",
+  "profile": "Concentra provides occupational health, consumer health, and direct-to-employer care across the United States. It operates occupational health centers, onsite clinics at employer worksites, and a telemedicine program. Services include workers’ compensation care, employer services, and consumer health services. Its main customers are employers, while patients are generally people employed by those businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.075Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2014596/000201459626000029/cghp-20251231.htm"
+}

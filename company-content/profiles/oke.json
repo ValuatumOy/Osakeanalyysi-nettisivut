@@ -1,0 +1,10 @@
+{
+  "ticker": "OKE",
+  "companyName": "ONEOK, Inc.",
+  "profile": "ONEOK provides midstream energy services, including gathering, processing, fractionation, transportation, storage, and marine export. Its pipeline network transports natural gas, natural gas liquids, refined products, and crude oil between producing areas, refineries, markets, and end users. Its counterparties are primarily major and independent crude oil and natural gas producers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:53.332Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1039684/000103968426000006/oke-20251231.htm"
+}

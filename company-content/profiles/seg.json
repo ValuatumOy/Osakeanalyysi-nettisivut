@@ -1,0 +1,13 @@
+{
+  "ticker": "SEG",
+  "companyName": "Seaport Entertainment Group Inc.",
+  "profile": "Seaport Entertainment Group owns, operates, and develops real estate and entertainment assets, primarily in New York City and Las Vegas. Its portfolio includes the Seaport in Lower Manhattan, an interest in Jean-Georges Restaurants, the Las Vegas Aviators minor league baseball team, Las Vegas Ballpark, and air rights above Fashion Show mall. Operations include hospitality, events, entertainment, retail, restaurants, and landlord activities.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:35.494Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2009684/000110465926023561/seg-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/2009684/000110465926023561/seg-20251231x10k.htm"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "WEYS",
+  "companyName": "Weyco Group, Inc.",
+  "profile": "Weyco Group designs, markets, and distributes footwear, primarily for men and also for women and children, under brands including Florsheim, Nunn Bush, Stacy Adams, and BOGS. Its products include leather dress shoes, casual footwear, and outdoor boots, shoes, and sandals. The company sells through wholesale retailers, licensing partners, e-commerce businesses, and its own stores, with retail and wholesale operations in North America and overseas.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:14.315Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/106532/000110465926027690/weys-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/106532/000110465926027690/weys-20251231x10k.htm"
+  ]
+}

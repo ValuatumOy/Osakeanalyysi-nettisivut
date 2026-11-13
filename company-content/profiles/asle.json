@@ -1,0 +1,13 @@
+{
+  "ticker": "ASLE",
+  "companyName": "AerSale Corporation",
+  "profile": "AerSale provides products and services to owners and operators of used commercial aircraft. Its Asset Management Solutions business acquires, sells, and leases aircraft and engines, and disassembles retired equipment to sell reusable components. Its Technical Operations business provides maintenance, repair, and overhaul services for aircraft, engines, and components, including modifications, conversions, upgrades, and aircraft storage for passenger, cargo, and government sectors.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:00.807Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1754170/000110465926025574/asle-20251231x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1754170/000110465926025574/asle-20251231x10k.htm"
+  ]
+}

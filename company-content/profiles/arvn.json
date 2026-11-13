@@ -1,0 +1,14 @@
+{
+  "ticker": "ARVN",
+  "companyName": "Arvinas, Inc.",
+  "profile": "Arvinas is a clinical-stage biotechnology company using its PROTAC platform to develop medicines that selectively degrade disease-associated proteins. Its clinical programs address oncology, neurodegenerative disease, and immuno-oncology, including candidates targeting BCL6, LRRK2, polyQ-AR, and HPK1. Vepdegestrant, developed with Pfizer and approved as VEPPANU, is licensed to Rigel, which holds global development, manufacturing, and commercialization rights.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.868Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1655759/000162828026011226/arvn-20251231.htm",
+  "profileSources": [
+    "https://ir.arvinas.com/news-releases/news-release-details/arvinas-reports-third-quarter-2026-financial-results-and/",
+    "https://www.rigel.com/investors/sec-filings/all-sec-filings/content/0001034842-26-000061/rigl-20260930.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "GNTX",
+  "companyName": "Gentex Corporation",
+  "profile": "Gentex designs, manufactures and supplies products for automotive, aviation, fire protection, consumer electronics and medical markets. Its principal business is automatic-dimming interior and exterior automotive rearview mirrors and related vehicle electronics. Other offerings include dimmable aircraft windows, smoke alarms, commercial fire signaling devices, premium audio products and consumer electronics. It supplies automotive products to vehicle producers across major global manufacturing regions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/355811/000035581126000010/gntx-20251231.htm"
+}

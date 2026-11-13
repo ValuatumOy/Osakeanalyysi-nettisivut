@@ -1,0 +1,10 @@
+{
+  "ticker": "FTDR",
+  "companyName": "Frontdoor, Inc.",
+  "profile": "Frontdoor provides home warranties and new home builder warranty products through the American Home Shield, HSA, OneGuard, Landmark, and 2-10 HBW brands. Home plans cover repair or replacement of major systems and appliances, with optional coverage for pools, spas, and pumps. The company arranges service through independent contractors and offers non-warranty services including HVAC upgrades, smart water shut-off installation, home maintenance, and virtual diagnosis.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:38.680Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1727263/000119312526076548/ftdr-20251231.htm"
+}

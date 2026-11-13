@@ -1,0 +1,10 @@
+{
+  "ticker": "CARR",
+  "companyName": "Carrier Global Corporation",
+  "profile": "Carrier Global provides heating, cooling, ventilation, and cold chain products and solutions, alongside related building services. Its offerings include air conditioners, heat pumps, heating systems, energy management controls, aftermarket components, repair and maintenance, rentals, system integration, monitoring, and equipment upgrades. Customers include residential and commercial building owners and contractors, as well as organizations in education, healthcare, technology, retail, hospitality, data centers, and infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:48.436Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1783180/000178318026000008/carr-20251231.htm"
+}

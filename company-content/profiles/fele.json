@@ -1,0 +1,10 @@
+{
+  "ticker": "FELE",
+  "companyName": "Franklin Electric Co., Inc.",
+  "profile": "Franklin Electric designs, manufactures, and distributes water and fuel pumping systems, including submersible motors, pumps, drives, electronic controls, monitoring devices, water treatment systems, and related equipment. Its water products serve residential, agricultural, municipal, and industrial uses, moving groundwater, transferred water, and wastewater. Fueling systems serve gas stations. Customers include distributors, original equipment manufacturers, oil and utility companies, and water well contractors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:38.679Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/38725/000003872526000009/fele-20251231.htm"
+}

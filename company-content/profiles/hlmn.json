@@ -1,0 +1,10 @@
+{
+  "ticker": "HLMN",
+  "companyName": "Hillman Solutions Corp.",
+  "profile": "Hillman Solutions supplies hardware-related products and merchandising services to retail markets, primarily in North America. Its products include fasteners, threaded rod, metal shapes, keys and key duplication systems, builder’s hardware, protective equipment, rope, chain, and identification items. Customers include hardware stores, home centers, mass merchants, pet supply stores, grocery stores, drug stores, and other retail outlets. Field teams support inventory replenishment and product displays.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:37.827Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1822492/000182249226000019/hlmn-20251227.htm"
+}

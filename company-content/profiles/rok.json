@@ -1,0 +1,10 @@
+{
+  "ticker": "ROK",
+  "companyName": "Rockwell Automation, Inc.",
+  "profile": "Rockwell Automation supplies industrial automation and digital transformation products and services to customers in manufacturing and process industries. Its offerings include drives, motion and safety products, industrial components, control and visualization software and hardware, digital twin and simulation software, and network and security infrastructure. Its services include digital consulting, engineered solutions, cybersecurity, safety, remote monitoring and asset management.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:51.201Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1024478/000102447826000048/rok-20260930.htm"
+}

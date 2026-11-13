@@ -1,0 +1,13 @@
+{
+  "ticker": "MIRM",
+  "companyName": "Mirum Pharmaceuticals, Inc.",
+  "profile": "Mirum Pharmaceuticals develops and commercializes medicines for rare diseases. Its commercial portfolio includes Livmarli for Alagille syndrome and progressive familial intrahepatic cholestasis; ATEBRIOZ for fibrodysplasia ossificans progressiva; and Cholbam and Ctexli for specified bile-acid disorders. Its pipeline includes volixibat for cholestatic liver diseases, brelovitug for chronic hepatitis delta, and MRM-3379 for fragile X syndrome.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:39:31.426Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1759425/000175942526000013/mirm-20251231.htm",
+  "profileSources": [
+    "https://ir.mirumpharma.com/news/news-details/2026/Mirum-Pharmaceuticals-Reports-Third-Quarter-2026-Financial-Results-and-Provides-Business-Update/default.aspx"
+  ]
+}

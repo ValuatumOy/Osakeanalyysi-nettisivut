@@ -1,0 +1,10 @@
+{
+  "ticker": "TDC",
+  "companyName": "Teradata Corporation",
+  "profile": "Teradata provides an AI and knowledge platform, data and analytics capabilities, and related services for organizations. Its platform supports enterprise workloads across public cloud, private cloud, on-premises, and hybrid environments, with tools for data access, processing, analytics, AI, and machine learning. Customers use these offerings to manage data and workloads and develop AI applications and agents.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.137Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/816761/000162828026012671/tdc-20251231.htm"
+}

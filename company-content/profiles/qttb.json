@@ -1,0 +1,13 @@
+{
+  "ticker": "QTTB",
+  "companyName": "Q32 Bio Inc.",
+  "profile": "Q32 Bio is a clinical-stage biotechnology company developing biologic medicines intended to restore immune balance in patients with autoimmune and inflammatory diseases. Its lead product candidate, bempikibart, is a monoclonal antibody targeting the interleukin-7 receptor alpha and is being evaluated for alopecia areata. The company has also developed ADX-097, whose future development and commercialization were transferred to Akebia Therapeutics.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.856Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1661998/000119312526099339/qttb-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1661998/000119312526099339/qttb-20251231.htm"
+  ]
+}

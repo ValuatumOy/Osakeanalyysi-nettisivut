@@ -1,0 +1,10 @@
+{
+  "ticker": "AXTI",
+  "companyName": "AXT, Inc.",
+  "profile": "AXT develops and produces compound and single-element semiconductor substrate wafers, along with raw materials used in substrate manufacturing. Its wafers include indium phosphide, gallium arsenide, and germanium substrates for semiconductor and optoelectronic applications such as data transmission, communications, lighting, lasers, and solar cells. Subsidiaries also produce and sell purified gallium and boron nitride crucibles to other companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.523Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1051627/000143774926008612/axti20251231_10k.htm"
+}

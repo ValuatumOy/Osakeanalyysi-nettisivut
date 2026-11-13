@@ -1,0 +1,10 @@
+{
+  "ticker": "NBIX",
+  "companyName": "Neurocrine Biosciences, Inc.",
+  "profile": "Neurocrine Biosciences discovers, develops, and commercializes treatments for neurological, psychiatric, endocrine, and immunological disorders. Its marketed products include INGREZZA for tardive dyskinesia and chorea associated with Huntington’s disease, and CRENESSITY for classic congenital adrenal hyperplasia. It also collaborates with AbbVie on treatments for endometriosis and uterine fibroids, and sells products through specialty pharmacy providers, wholesale distributors, and specialty distributors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:20.271Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/914475/000091447526000007/nbix-20251231.htm"
+}

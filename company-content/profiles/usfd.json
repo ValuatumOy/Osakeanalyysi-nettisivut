@@ -1,0 +1,10 @@
+{
+  "ticker": "USFD",
+  "companyName": "US Foods Holding Corp.",
+  "profile": "US Foods distributes fresh, frozen and dry food products, along with non-food items, to restaurants and other foodservice operators. Its customers include independent and chain restaurants, healthcare and hospitality organizations, government agencies and educational institutions. The company offers broadline distribution, delivery programs, an online ordering and inventory platform, and sales support for customer operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:07.077Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1665918/000166591826000008/usfd-20251227.htm"
+}

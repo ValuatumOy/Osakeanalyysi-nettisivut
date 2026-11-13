@@ -1,0 +1,10 @@
+{
+  "ticker": "IR",
+  "companyName": "Ingersoll Rand Inc.",
+  "profile": "Ingersoll Rand designs, manufactures, markets, and services compressors, pumps, vacuum and blower products, fluid transfer equipment, loading systems, power tools, and lifting equipment. It also supplies related aftermarket parts, consumables, repairs, and support. Its products serve industrial and life science applications, including manufacturing, food and beverage production, clean energy, infrastructure, and water and wastewater treatment.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.189Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1699150/000162828026008617/iri-20251231.htm"
+}

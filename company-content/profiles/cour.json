@@ -1,0 +1,10 @@
+{
+  "ticker": "COUR",
+  "companyName": "Coursera, Inc.",
+  "profile": "Coursera operates a global online learning platform offering courses and credentials created with universities and industry partners. Its catalog includes standalone courses, multi-course specializations, industry certificate programs, and university degrees, alongside interactive tools and personalized learning paths. Learners access content directly, while employers, colleges, universities, and government organizations also use its programs for skills development and career learning.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.409Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1651562/000165156226000015/cour-20251231.htm"
+}

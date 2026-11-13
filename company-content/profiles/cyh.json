@@ -1,0 +1,13 @@
+{
+  "ticker": "CYH",
+  "companyName": "Community Health Systems, Inc.",
+  "profile": "Community Health Systems provides hospital and outpatient healthcare services through affiliated healthcare systems operating across multiple markets. Its facilities include hospitals, physician practices, urgent care centers, emergency departments, imaging and cancer centers, and ambulatory surgery centers. Services include acute and emergency care, surgery, critical care, internal medicine, obstetrics, diagnostics, psychiatry, and rehabilitation for patients in the communities it serves.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:41.163Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1108109/000119312526059509/cyh-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1108109/000119312526059509/cyh-20251231.htm"
+  ]
+}

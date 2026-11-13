@@ -1,0 +1,10 @@
+{
+  "ticker": "OFIX",
+  "companyName": "Orthofix Medical Inc.",
+  "profile": "Orthofix Medical develops and sells medical technologies for musculoskeletal conditions. Its products include spinal hardware and implants, biologics, bone growth therapies, limb reconstruction solutions, and enabling technologies such as the 7D FLASH Navigation System. Its Global Spine segment serves patients with spinal diseases and injuries through implantable devices and regenerative solutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:22.062Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/884624/000119312526065189/ofix-20251231.htm"
+}

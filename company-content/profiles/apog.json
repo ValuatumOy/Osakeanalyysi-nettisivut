@@ -1,0 +1,10 @@
+{
+  "ticker": "APOG",
+  "companyName": "Apogee Enterprises, Inc.",
+  "profile": "Apogee provides architectural building products and services, along with high-performance coated materials. It designs, engineers, fabricates, and finishes aluminum window, curtainwall, storefront, and entrance systems; delivers project management and installation for façade systems; and processes glass for custom windows and walls. Its coated materials serve applications including interiors, museums, displays, and industrial flooring.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.798Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/6845/000000684526000023/apog-20260228.htm"
+}

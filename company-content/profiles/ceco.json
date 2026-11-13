@@ -1,0 +1,10 @@
+{
+  "ticker": "CECO",
+  "companyName": "CECO Environmental Corp.",
+  "profile": "CECO provides engineered technology and application expertise for industrial air, industrial water and energy transition markets. Its solutions address air and water quality, emissions management, and energy and process efficiency in applications across power, hydrocarbon processing, manufacturing, electronics, water treatment and other industrial markets. Customers include utilities, manufacturers, processors, engineering and construction firms, and equipment makers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/3197/000119312526085815/ceco-20251231.htm"
+}

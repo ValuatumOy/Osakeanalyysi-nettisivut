@@ -1,0 +1,10 @@
+{
+  "ticker": "PRCT",
+  "companyName": "PROCEPT BioRobotics Corporation",
+  "profile": "PROCEPT BioRobotics develops, manufactures, and sells robotic systems for minimally invasive urologic surgery, initially focused on benign prostatic hyperplasia. Its AquaBeam and HYDROS systems use image-guided robotic technology and disposable handpieces to deliver Aquablation therapy, combining imaging, treatment planning, and heat-free waterjet ablation to remove prostate tissue. The company’s products are used by physicians treating men with urinary symptoms associated with BPH.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.573Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1588978/000158897826000009/prct-20251231.htm"
+}

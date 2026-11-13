@@ -1,0 +1,13 @@
+{
+  "ticker": "DOUG",
+  "companyName": "Douglas Elliman Inc.",
+  "profile": "Douglas Elliman operates residential brokerage businesses in the New York metropolitan area and several other U.S. markets. Its services include residential property sales, development marketing, leasing, and ancillary mortgage, title and escrow services. The company also provides sales and marketing services for new developments in collaboration with real estate developers, and supports agents and clients with technology-enabled services and investments.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.871Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1878897/000187889726000007/doug-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1878897/000187889726000007/doug-20251231.htm"
+  ]
+}

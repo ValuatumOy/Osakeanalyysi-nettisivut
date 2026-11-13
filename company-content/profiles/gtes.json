@@ -1,0 +1,10 @@
+{
+  "ticker": "GTES",
+  "companyName": "Gates Industrial Corporation plc",
+  "profile": "Gates Industrial manufactures power transmission and fluid power products for aftermarket channels and original equipment manufacturers. Its portfolio includes elastomer drive belts and related components, as well as hoses, tubing and fittings for hydraulic fluid and other fluid transfer applications. Customers include distributors, equipment manufacturers, installers and end users across automotive, industrial, energy, resources and mobility markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.649Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1718512/000162828026007719/gtes-20251231.htm"
+}

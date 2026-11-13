@@ -1,0 +1,10 @@
+{
+  "ticker": "ENS",
+  "companyName": "EnerSys",
+  "profile": "EnerSys designs, manufactures, and distributes energy systems, motive power batteries, specialty batteries, chargers, power equipment, accessories, and outdoor equipment enclosures. Its products serve telecommunications, broadband, data centers, utilities, industrial facilities, material handling, transportation, aerospace, defense, medical, and security applications. The company also provides aftermarket and customer support services through distributors, independent representatives, and its sales force to customers worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:50.433Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1289308/000162828026036900/ens-20260331.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "RAIL",
+  "companyName": "FreightCar America, Inc.",
+  "profile": "FreightCar America manufactures and supplies railcars and railcar components, primarily for transportation of bulk commodities and containerized freight in North America. Its products include covered and open-top hopper cars, boxcars, gondolas, and intermodal and other flat cars. The company also provides railcar repair, rebuilding, and conversion services, and sells parts. Its primary customers are financial institutions and shippers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:51.933Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1320854/000119312526098668/rail-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1320854/000119312526098668/rail-20251231.htm"
+  ]
+}

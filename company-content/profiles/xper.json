@@ -1,0 +1,13 @@
+{
+  "ticker": "XPER",
+  "companyName": "Xperi Inc.",
+  "profile": "Xperi is a media and entertainment technology company whose technologies are used in consumer devices, connected cars and media platforms. Its products and services span pay-TV, consumer electronics, connected-car systems and media platforms, including TiVo and DTS offerings. Xperi also operates a cross-screen advertising solution that connects brands with audiences across its digital entertainment ecosystem and supports partners seeking to monetize content and devices.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:21.605Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1788999/000119312526076849/xper-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1788999/000119312526076849/xper-20251231.htm"
+  ]
+}

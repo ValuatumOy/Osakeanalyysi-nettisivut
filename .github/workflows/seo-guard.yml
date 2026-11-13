@@ -49,6 +49,9 @@ jobs:
         with:
           node-version: '24.22.1'
 
+      - name: Verify sync commit freshness
+        run: node --test test/report-pages/finalize-freshness.test.mjs
+
       - name: Titles, company index, llms.txt, pricing.md, freshness, JSON-LD
         run: |
           node scripts/retitle-report-pages.mjs --check

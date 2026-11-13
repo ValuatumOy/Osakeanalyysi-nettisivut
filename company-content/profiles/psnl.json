@@ -1,0 +1,10 @@
+{
+  "ticker": "PSNL",
+  "companyName": "Personalis, Inc.",
+  "profile": "Personalis develops and sells cancer genomic testing services for physicians, pharmaceutical companies, diagnostic companies and population sequencing initiatives. Its tests support detection and monitoring of residual or recurrent cancer, assessment of therapy response, tumor profiling for therapy selection, biomarker discovery and clinical trials. The company also provides whole exome sequencing of cancer samples and whole genome sequencing of human samples.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.144Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1527753/000119312526076615/psnl-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "LUNG",
+  "companyName": "Pulmonx Corporation",
+  "profile": "Pulmonx provides minimally invasive treatments for patients with severe emphysema. Its products include the Zephyr Endobronchial Valve, the Chartis Pulmonary Assessment System and the LungTraX Platform, which helps identify patients who may be eligible for Zephyr treatment. The company also manufactures the AeriSeal System, a polymer foam under clinical investigation. It sells directly in the United States and uses direct and distributor-based sales internationally.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:16.748Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1127537/000112753726000015/lung-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1127537/000112753726000015/lung-20251231.htm"
+  ]
+}

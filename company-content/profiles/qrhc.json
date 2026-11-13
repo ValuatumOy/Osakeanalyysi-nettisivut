@@ -1,0 +1,13 @@
+{
+  "ticker": "QRHC",
+  "companyName": "Quest Resource Holding Corporation",
+  "profile": "Quest Resource Holding Corporation provides waste and recycling management services for larger, multi-location businesses across retail, transportation, manufacturing, property, restaurant, and construction sectors. It designs customer-specific programs for collection, processing, recycling, disposal, and tracking of waste streams and recyclable materials. Services include vendor and invoice oversight, consolidated reporting, and data on transactional and environmental results.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:58.627Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1442236/000119312526104675/qrhc-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1442236/000119312526104675/qrhc-20251231.htm"
+  ]
+}

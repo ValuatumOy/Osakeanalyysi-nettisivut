@@ -1,0 +1,10 @@
+{
+  "ticker": "AUR",
+  "companyName": "Aurora Innovation, Inc.",
+  "profile": "Aurora Innovation develops the Aurora Driver, a self-driving platform combining hardware, software, and data services for multiple vehicle types. The company has integrated the platform into passenger vehicles, light commercial vehicles, and Class 8 trucks. Its initial driverless product is for trucking, and its technology is intended for transportation applications including passenger mobility and local goods delivery.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1828108/000182810826000016/aur-20251231.htm"
+}

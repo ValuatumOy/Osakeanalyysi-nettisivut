@@ -1,0 +1,10 @@
+{
+  "ticker": "LRCX",
+  "companyName": "Lam Research Corporation",
+  "profile": "Lam Research supplies wafer fabrication equipment and services to semiconductor manufacturers. Its equipment supports deposition, etch, cleaning, and wafer-level packaging processes used to manufacture memory, logic, and other semiconductor devices. Customers include semiconductor memory, foundry, and integrated device manufacturers. Its products and services help customers fabricate chips used in mobile phones, computers, servers, wearables, vehicles, and data storage devices.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:22:00.555Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/lrcx-20260628.htm"
+}

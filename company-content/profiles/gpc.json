@@ -1,0 +1,10 @@
+{
+  "ticker": "GPC",
+  "companyName": "Genuine Parts Company",
+  "profile": "Genuine Parts Company distributes automotive and industrial replacement parts and provides related value-added solutions. Its automotive businesses serve the aftermarket through parts and auto care networks, while its industrial business supplies replacement parts to industrial customers. The company also offers customer service, supply chain and distribution capabilities, and technology solutions. It operates primarily in North America, Europe, and Australasia through its subsidiaries and locations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.819Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/40987/000004098726000003/gpc-20251231.htm"
+}

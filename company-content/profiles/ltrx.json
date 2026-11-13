@@ -1,0 +1,13 @@
+{
+  "ticker": "LTRX",
+  "companyName": "Lantronix, Inc.",
+  "profile": "Lantronix provides computing, connectivity and remote management products and services for unmanned systems, critical infrastructure and enterprise networks. Its portfolio includes embedded IoT solutions, IoT systems, software and services. Products include computing modules and drone platforms, edge gateways with cloud-based management software, asset-tracking systems, and out-of-band network management offerings. Customers use these solutions for applications including defense, infrastructure monitoring and network resilience.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:21.606Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1114925/000168316826006754/lantronix_i10k-063026.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1114925/000168316826006754/lantronix_i10k-063026.htm"
+  ]
+}

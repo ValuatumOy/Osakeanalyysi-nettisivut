@@ -1,0 +1,13 @@
+{
+  "ticker": "EJH",
+  "companyName": "E-Home Household Service Holdings Limited",
+  "profile": "E-Home Household Service Holdings is a household services company based in Fuzhou, China. Through its E-Home website and WeChat platform, it provides home appliance services, housekeeping, and senior care across multiple provinces. Appliance services include delivery, installation, repair, and maintenance, while housekeeping services include cleaning. The company connects customers with technicians and independent service providers through its online platform.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:41.950Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1769768/000121390026116914/ea0311040-20f_ehomehouse.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1769768/000121390026116914/ea0311040-20f_ehomehouse.htm"
+  ]
+}

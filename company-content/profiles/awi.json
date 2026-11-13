@@ -1,0 +1,10 @@
+{
+  "ticker": "AWI",
+  "companyName": "Armstrong World Industries, Inc.",
+  "profile": "Armstrong World Industries designs and manufactures interior and exterior architectural applications, including ceilings, specialty walls, and exterior metal solutions. Its products use materials such as mineral fiber, fiberglass, metal, felt, resin, glass, wood, and glass-reinforced gypsum. The company produces suspended ceiling systems and specialty architectural products, and sells primarily to ceiling contractors, resale distributors, wholesalers, and retailers serving commercial projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:12.737Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/7431/000119312526065183/awi-20251231.htm"
+}

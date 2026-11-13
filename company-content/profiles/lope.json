@@ -1,0 +1,10 @@
+{
+  "ticker": "LOPE",
+  "companyName": "Grand Canyon Education, Inc.",
+  "profile": "Grand Canyon Education provides education services and operational support to colleges and universities across the United States. Its services can cover technology, online course delivery, academic support, admissions, financial aid, accounting and technical assistance. It also develops healthcare programs with university and healthcare network partners, using off-campus classrooms and laboratories to educate students for healthcare careers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.973Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926017047/lope-20251231x10k.htm"
+}

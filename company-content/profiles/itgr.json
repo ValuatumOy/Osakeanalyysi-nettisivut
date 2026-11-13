@@ -1,0 +1,10 @@
+{
+  "ticker": "ITGR",
+  "companyName": "Integer Holdings Corporation",
+  "profile": "Integer Holdings is a medical device contract development and manufacturing organization serving cardio and vascular, neuromodulation, and cardiac rhythm management markets. It supplies original equipment manufacturers with engineering and manufacturing services, components, subassemblies and finished devices. Its cardio and vascular products include catheter and wire-based technologies, stents, balloon catheters, imaging and sensing devices, guidewires and vascular closure devices for medical procedures.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.504Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1114483/000111448326000003/gb-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AXSM",
+  "companyName": "Axsome Therapeutics, Inc.",
+  "profile": "Axsome Therapeutics develops and commercializes medicines for central nervous system conditions. Its approved products are AUVELITY for major depressive disorder, SUNOSI for excessive daytime sleepiness associated with obstructive sleep apnea or narcolepsy, and SYMBRAVO for acute migraine treatment in adults. The company also develops investigational therapies for neurological and psychiatric conditions, including Alzheimer’s disease agitation, smoking cessation, ADHD, binge eating disorder, narcolepsy, fibromyalgia and epilepsy.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.565Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1579428/000119312526064267/axsm-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "GO",
+  "companyName": "Grocery Outlet Holding Corp.",
+  "profile": "Grocery Outlet operates a network of primarily independently run stores selling name-brand consumables, fresh products, and everyday staples to bargain-minded shoppers. Its stores offer changing assortments of discounted merchandise, including natural, organic, specialty, and health-oriented items, as well as private-label products. Independent operators manage store operations and provide localized product selections and customer service.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1771515/000177151526000015/go-20260103.htm"
+}

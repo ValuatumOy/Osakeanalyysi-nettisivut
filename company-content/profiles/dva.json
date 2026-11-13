@@ -1,0 +1,10 @@
+{
+  "ticker": "DVA",
+  "companyName": "DaVita Inc.",
+  "profile": "DaVita provides kidney care services, including dialysis, related laboratory services, integrated kidney care and disease management. Its care spans outpatient centers, patients’ homes, hospitals and skilled nursing facilities, and includes support for slowing kidney disease progression and transplantation. The company operates dialysis services in the United States and internationally and serves people with chronic kidney disease and kidney failure, alongside nephrology and payor partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:29.449Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/927066/000092706626000012/dva-20251231.htm"
+}

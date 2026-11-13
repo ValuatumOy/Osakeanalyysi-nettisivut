@@ -1,0 +1,10 @@
+{
+  "ticker": "FE",
+  "companyName": "FirstEnergy Corp.",
+  "profile": "FirstEnergy and its subsidiaries are principally involved in electric transmission, distribution and generation. Its electric operating companies serve customers across Midwest and Mid-Atlantic states, delivering electricity through regulated utility networks. The company also operates high-voltage transmission facilities in the PJM region and provides transmission services through subsidiaries, serving residential, commercial and other electricity users in its service areas.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:27.917Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1031296/000103129626000046/fe-20251231.htm"
+}

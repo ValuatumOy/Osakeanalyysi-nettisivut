@@ -1,0 +1,10 @@
+{
+  "ticker": "ROP",
+  "companyName": "Roper Technologies, Inc.",
+  "profile": "Roper Technologies is a diversified technology company whose businesses develop vertical software and technology-enabled products for specialized markets. Its offerings include application software, network software and technology-enabled products, as well as related services and solutions. Customers include healthcare providers, financial institutions, higher education organizations, early childhood education centers, faith-based organizations and businesses using specialized software in mission-critical workflows.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:51.202Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/882835/000088283526000009/rop-20251231.htm"
+}

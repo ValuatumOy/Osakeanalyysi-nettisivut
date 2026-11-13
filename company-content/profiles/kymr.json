@@ -1,0 +1,10 @@
+{
+  "ticker": "KYMR",
+  "companyName": "Kymera Therapeutics, Inc.",
+  "profile": "Kymera Therapeutics is a clinical-stage biopharmaceutical company developing oral medicines for human diseases. Its research focuses on targeted protein degradation and other small molecule approaches, with current programs primarily directed at immunology targets including STAT6, IRF5, and IRAK4. The company also has research initiatives in other therapeutic areas. Its intended beneficiaries are patients with serious diseases, including immune-inflammatory conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:47.421Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1815442/000119312526073395/kymr-20251231.htm"
+}

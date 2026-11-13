@@ -1,0 +1,13 @@
+{
+  "ticker": "OSUR",
+  "companyName": "OraSure Technologies, Inc.",
+  "profile": "OraSure Technologies develops, manufactures, markets, sells, and distributes diagnostic products and sample management solutions. Its products include rapid tests for HIV, hepatitis C, syphilis, sickle cell disease, and COVID-19, as well as specimen collection devices. Customers include laboratories, hospitals, clinics, public health organizations, distributors, government agencies, researchers, and pharmaceutical and biotechnology companies.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:15.238Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1116463/000111646326000016/osur-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1116463/000111646326000016/osur-20251231.htm"
+  ]
+}

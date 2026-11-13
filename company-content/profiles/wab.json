@@ -1,0 +1,10 @@
+{
+  "ticker": "WAB",
+  "companyName": "Westinghouse Air Brake Technologies Corporation",
+  "profile": "Wabtec provides technology-based locomotives, equipment, systems, and services for freight rail and passenger transit, as well as mining, marine, and industrial markets. Its products include braking systems, pantographs, automatic doors, and air-conditioning systems, alongside digital solutions and related services. Customers include freight railroads, passenger transit agencies, and transportation equipment manufacturers around the world.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:52.298Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/943452/000162828026008067/wab-20251231.htm"
+}

@@ -1,0 +1,14 @@
+{
+  "ticker": "MGRC",
+  "companyName": "McGrath RentCorp",
+  "profile": "McGrath RentCorp provides business-to-business rentals and sales of relocatable modular buildings, portable storage containers, and electronic test equipment. Its divisions also supply modular kitchens and manufactured classroom facilities. Customers include organizations in education, construction, government, healthcare, utilities, commercial operations, and technology industries. The company provides temporary or longer-term space and equipment solutions, with services that can include delivery and setup.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.077Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/752714/000119312526071463/mgrc-20251231.htm",
+  "profileSources": [
+    "https://www.mgrc.com/about-us",
+    "https://www.mgrc.com/"
+  ]
+}

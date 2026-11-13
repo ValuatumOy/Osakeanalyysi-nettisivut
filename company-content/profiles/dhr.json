@@ -1,0 +1,10 @@
+{
+  "ticker": "DHR",
+  "companyName": "Danaher Corporation",
+  "profile": "Danaher is a science and technology company with operating businesses in biotechnology, life sciences and diagnostics. Its biotechnology segment supplies equipment, consumables, software and services used in the research, development, manufacture and delivery of biological medicines, including vaccines, proteins and cell and gene therapies. Its businesses serve customers through recurring and nonrecurring sales.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:35.189Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/313616/000031361626000062/dhr-20251231.htm"
+}

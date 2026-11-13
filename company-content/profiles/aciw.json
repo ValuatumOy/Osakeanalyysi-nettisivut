@@ -1,0 +1,10 @@
+{
+  "ticker": "ACIW",
+  "companyName": "ACI Worldwide, Inc.",
+  "profile": "ACI Worldwide develops, markets, installs and supports software for digital payments. Its solutions handle payment functions including authentication, authorization, switching, settlement, fraud checks and reconciliation across channels and payment types. Customers include banks, central banks, payment intermediaries, processors, payment service providers, merchants and billers. The company also offers payment platforms and services for retail banking, merchant transactions and digital payment processing.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.896Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/935036/000093503626000011/aciw-20251231.htm"
+}

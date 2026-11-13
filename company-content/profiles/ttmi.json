@@ -1,0 +1,10 @@
+{
+  "ticker": "TTMI",
+  "companyName": "TTM Technologies, Inc.",
+  "profile": "TTM Technologies manufactures mission systems, RF components and assemblies, printed circuit boards, and substrates. It provides design, engineering, testing, component, assembly, and manufacturing services for customized technology products. Its customers include original equipment manufacturers, electronics manufacturing services providers, original design manufacturers, distributors, and government agencies. They operate in aerospace and defense, data centers, automotive, medical, industrial, instrumentation, and networking markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.841Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1116942/000119312526051976/ttmi-20251229.htm"
+}

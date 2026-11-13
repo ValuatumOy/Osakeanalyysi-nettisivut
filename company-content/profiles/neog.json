@@ -1,0 +1,10 @@
+{
+  "ticker": "NEOG",
+  "companyName": "Neogen Corporation",
+  "profile": "Neogen develops, manufactures, and markets products and services for food and animal safety. Its food-safety offerings include diagnostic test kits, consumables, culture media, and software for detecting contaminants and assessing food quality, sold to producers, processors, laboratories, and regulatory agencies. Animal-safety products include veterinary instruments, medicines, vaccines, diagnostics, pest-control products, genomics testing, and drug-detection solutions distributed through industry channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:19.002Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/711377/000119312526326092/neog-20260531.htm"
+}

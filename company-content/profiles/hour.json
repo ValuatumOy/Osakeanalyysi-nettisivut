@@ -1,0 +1,13 @@
+{
+  "ticker": "HOUR",
+  "companyName": "Hour Loop, Inc.",
+  "profile": "Hour Loop is an online retailer selling merchandise in the United States through Amazon, Walmart, and its own website. It operates primarily as a wholesale reseller, purchasing products in bulk from brands or manufacturers and listing them for sale on online marketplaces. Its merchandise spans home and garden décor, toys, kitchenware, apparel, and electronics, with Amazon accounting for nearly all reported sales.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:25.745Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1874875/000149315226012278/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1874875/000149315226012278/form10-k.htm"
+  ]
+}

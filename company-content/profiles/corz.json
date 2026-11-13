@@ -1,0 +1,10 @@
+{
+  "ticker": "CORZ",
+  "companyName": "Core Scientific, Inc.",
+  "profile": "Core Scientific designs, builds and operates data centers for high-density colocation services and digital asset mining. Its facilities support power-intensive computing, including artificial intelligence and other high-performance computing workloads. Colocation customers lease infrastructure such as dedicated data center space, electrical power and cooling, then deploy and manage their own hardware. The company also mines digital assets for its own account.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.972Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1839341/000162828026013305/core-20251231.htm"
+}

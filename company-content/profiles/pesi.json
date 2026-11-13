@@ -1,0 +1,13 @@
+{
+  "ticker": "PESI",
+  "companyName": "Perma-Fix Environmental Services, Inc.",
+  "profile": "Perma-Fix Environmental Services provides treatment and management of radioactive and mixed waste. Its services include project management, environmental restoration, decontamination and decommissioning, new-build construction, radiological protection, safety and industrial hygiene. The company operates licensed waste-treatment facilities and research laboratories and pursues projects in the United States and internationally. Waste from international customers is treated at U.S. facilities and returned.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.854Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/891532/000149315226012314/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/891532/000149315226012314/form10-k.htm"
+  ]
+}

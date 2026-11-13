@@ -1,0 +1,10 @@
+{
+  "ticker": "PLUS",
+  "companyName": "ePlus inc.",
+  "profile": "ePlus provides information technology products, professional services, and managed services to organizations across industries. Its solutions span artificial intelligence, cloud, data centers, cybersecurity, networking, and collaboration, combining technologies from multiple vendors with engineering and consulting expertise. The company also offers hosted software for automating and managing IT procurement and assets. Its customers include middle-market and large enterprises and state and local government institutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.573Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1022408/000114036126023171/ef20070470_10k.htm"
+}

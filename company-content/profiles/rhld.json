@@ -1,0 +1,10 @@
+{
+  "ticker": "RHLD",
+  "companyName": "Resolute Holdings Management, Inc.",
+  "profile": "Resolute Holdings Management provides operating management services to GPGI Holdings, Husky Holdings, and potentially other managed companies. It applies its Resolute Operating System and its management, mergers and acquisitions, and capital markets expertise to support the businesses it manages. Those businesses include CompoSecure, which makes premium metal payment cards and secure authentication solutions, and Husky, which supplies injection molding equipment, tooling, parts, and services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:06:51.573Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2039497/000110465926027050/rhld-20251231x10k.htm"
+}

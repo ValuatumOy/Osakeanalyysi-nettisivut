@@ -1,0 +1,10 @@
+{
+  "ticker": "GPOR",
+  "companyName": "Gulfport Energy Corporation",
+  "profile": "Gulfport Energy is an independent exploration and production company focused on natural gas assets in the Appalachia and Anadarko basins. Its principal operations target the Utica and Marcellus formations in eastern Ohio and the SCOOP Woodford and Springer formations in central Oklahoma. The company develops these oil and gas resources through drilling and completion activities and sells production from its operating areas.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:52.838Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874499/000162828026011487/gpor-20251231.htm"
+}

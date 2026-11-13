@@ -1,0 +1,13 @@
+{
+  "ticker": "WVVI",
+  "companyName": "Willamette Valley Vineyards, Inc.",
+  "profile": "Willamette Valley Vineyards produces and sells wines made primarily from grapes grown in vineyards it owns, leases or contracts, as well as grapes purchased from other vineyards. Its wines are marketed under several labels, including Willamette Valley Vineyards, Domaine Willamette and Tualatin Estate. The company sells directly to consumers through tasting rooms, wine clubs and online channels, and through distributors.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.567Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/838875/000119983526000061/wvvi-10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/838875/000119983526000061/wvvi-10k.htm"
+  ]
+}

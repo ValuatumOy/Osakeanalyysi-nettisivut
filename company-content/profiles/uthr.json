@@ -1,0 +1,10 @@
+{
+  "ticker": "UTHR",
+  "companyName": "United Therapeutics Corporation",
+  "profile": "United Therapeutics develops and sells pharmaceutical therapies for people with serious diseases, particularly pulmonary arterial hypertension and related pulmonary conditions. Its marketed products include inhaled treprostinil, injectable and oral therapies, delivery pumps, and tadalafil tablets; it also sells a treatment for high-risk neuroblastoma. The company additionally develops technologies intended to expand the availability of transplantable organs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:44.924Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1082554/000108255426000006/uthr-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "TTI",
+  "companyName": "TETRA Technologies, Inc.",
+  "profile": "TETRA Technologies provides energy services and products, industrial chemicals, and develops opportunities related to critical minerals. It supplies clear brine fluids, additives, and related services for oil and gas drilling, completion, and workover operations, and sells calcium chloride for energy and other markets. Its water services include water management, flowback, and production well testing for oil and gas operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.408Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/844965/000084496526000015/tti-20251231.htm"
+}

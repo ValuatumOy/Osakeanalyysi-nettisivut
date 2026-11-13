@@ -1,0 +1,10 @@
+{
+  "ticker": "KHC",
+  "companyName": "The Kraft Heinz Company",
+  "profile": "The Kraft Heinz Company develops and sells food and beverage products through consumer brands including Kraft, Oscar Mayer, Heinz, Philadelphia, Lunchables, Velveeta, Ore-Ida, and Maxwell House. Its products are sold across North America, international developed markets, and emerging markets. The company serves consumers through branded packaged foods and beverages, including products offered under licensed brands.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.204Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1637459/000163745926000009/khc-20251227.htm"
+}

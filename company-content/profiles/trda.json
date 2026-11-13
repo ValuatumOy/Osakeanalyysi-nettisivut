@@ -1,0 +1,10 @@
+{
+  "ticker": "TRDA",
+  "companyName": "Entrada Therapeutics, Inc.",
+  "profile": "Entrada Therapeutics is a clinical-stage biopharmaceutical company developing genetic medicines intended to engage intracellular targets. Its development portfolio includes programs for neuromuscular and inherited retinal diseases, with several clinical programs for Duchenne muscular dystrophy patients eligible for exon-skipping approaches. The company is also partnered with Vertex Pharmaceuticals on VX-670, a program for myotonic dystrophy type 1. Its medicines remain in clinical development.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.417Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1689375/000168937526000011/trda-20251231.htm"
+}

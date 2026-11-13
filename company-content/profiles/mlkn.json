@@ -1,0 +1,10 @@
+{
+  "ticker": "MLKN",
+  "companyName": "MillerKnoll, Inc.",
+  "profile": "MillerKnoll researches, designs, manufactures, sells, and distributes interior furnishings for residential, office, healthcare, educational, industrial, and public settings. Its products include seating, furniture systems, freestanding furniture, storage, textiles, leather, felt, and acoustic products, alongside related services and technology. The company serves organizations and individuals worldwide through independent dealers, direct sales, retailers, eCommerce platforms, catalogs, and its own retail stores.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.151Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/66382/000006638226000092/mlkn-20260530.htm"
+}

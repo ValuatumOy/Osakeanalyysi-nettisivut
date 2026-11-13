@@ -1,0 +1,14 @@
+{
+  "ticker": "BDC",
+  "companyName": "Belden Inc.",
+  "profile": "Belden supplies connection and networking solutions for industrial and enterprise customers. Its portfolio includes copper and fiber cables, connectivity systems, network equipment, data center power and cooling products, and RUCKUS enterprise Wi-Fi, switching and network-management platforms. Through its Smart Infrastructure and Automation businesses, the company serves distributors, installers, equipment makers and end users across data centers, broadband, healthcare, government, energy, transportation, warehousing and manufacturing.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:27:25.195Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/913142/000091314226000009/bdc-20251231.htm",
+  "profileSources": [
+    "https://investor.belden.com/news/news-details/2026/Belden-Completes-Acquisition-of-RUCKUS-Networks/default.aspx",
+    "https://investor.belden.com/news/news-details/2026/Belden-Reports-Record-Third-Quarter-2026-Results-and-Announces-100-Million-Data-Center-Agreement-for-2027/default.aspx"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "BEEP",
+  "companyName": "Mobile Infrastructure Corporation",
+  "profile": "Mobile Infrastructure Corporation acquires, owns, and optimizes parking facilities and related infrastructure in the United States. Its portfolio includes parking lots, garages, and other structures, along with commercial space adjacent to some facilities. The company generates parking revenue from transient and contract customers, works with third-party operators to manage facilities, and pursues ancillary uses such as electric vehicle charging.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:09.884Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1847874/000143774926007063/beep20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1847874/000143774926007063/beep20251231_10k.htm"
+  ]
+}

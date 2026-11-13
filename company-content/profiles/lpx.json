@@ -1,0 +1,10 @@
+{
+  "ticker": "LPX",
+  "companyName": "Louisiana-Pacific Corporation",
+  "profile": "Louisiana-Pacific provides building products for new home construction, repair and remodeling, and outdoor structures. Its Siding business makes engineered wood siding, trim, soffit and fascia for builders and installers. Its OSB business manufactures structural panels and value-added products used for roof decking, wall sheathing and floor underlayment, including panels designed for fire resistance, moisture protection, energy efficiency and load-bearing capacity.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.642Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/60519/000006051926000012/lpx-20251231.htm"
+}

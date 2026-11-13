@@ -1,0 +1,13 @@
+{
+  "ticker": "MO",
+  "companyName": "Altria Group, Inc.",
+  "profile": "Altria owns U.S. tobacco and nicotine businesses. Its operating companies manufacture and market cigarettes and machine-made cigars, as well as oral tobacco, nicotine pouches and e-vapor products. Its portfolio includes Philip Morris USA, U.S. Smokeless Tobacco Company, John Middleton, Helix Innovations and NJOY. The group serves adult tobacco and nicotine consumers through its brands.",
+  "provider": "editorial",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:11:01.328Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/764180/000076418026000017/mo-20251231.htm",
+  "profileSources": [
+    "https://www.altria.com/about-altria"
+  ]
+}

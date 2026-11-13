@@ -1,0 +1,10 @@
+{
+  "ticker": "PEG",
+  "companyName": "Public Service Enterprise Group Incorporated",
+  "profile": "Public Service Enterprise Group is a utility holding company operating through subsidiaries in electric and natural gas distribution, electricity transmission, and nuclear power generation. Its services include appliance repairs, solar generation, energy efficiency programs, and energy sales. Customers include residential, commercial, and industrial users in New Jersey, while its subsidiaries also serve wholesale energy markets and operate Long Island's electric transmission and distribution system.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:53.131Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/788784/000119312526077446/peg-20251231.htm"
+}

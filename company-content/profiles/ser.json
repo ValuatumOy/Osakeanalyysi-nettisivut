@@ -1,0 +1,13 @@
+{
+  "ticker": "SER",
+  "companyName": "Serina Therapeutics, Inc.",
+  "profile": "Serina Therapeutics is a clinical-stage biotechnology company developing drug candidates using its POZ polymer delivery technology. The platform is designed to modify small molecules and other therapeutic agents for controlled drug loading and release, including through long-acting subcutaneous injection. Its pipeline focuses on neurological diseases, including Parkinson’s disease, and the company is also exploring other therapeutic applications through partnerships.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:04.053Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1708599/000170859926000016/ser-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1708599/000170859926000016/ser-20251231.htm"
+  ]
+}

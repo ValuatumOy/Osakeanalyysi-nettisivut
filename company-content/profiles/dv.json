@@ -1,0 +1,10 @@
+{
+  "ticker": "DV",
+  "companyName": "DoubleVerify Holdings, Inc.",
+  "profile": "DoubleVerify provides analytics and measurement solutions for digital advertising. Its platform assesses whether ads appear in fraud-free, brand-suitable environments and are viewable in their intended geography, and offers customers performance data across programmatic, social, video, mobile, and connected television channels. Advertisers use its analytics to evaluate media quality, avoid wasted spend, and optimize advertising strategies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.751Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819928/000110465926020499/dv-20251231x10k.htm"
+}

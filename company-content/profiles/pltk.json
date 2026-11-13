@@ -1,0 +1,10 @@
+{
+  "ticker": "PLTK",
+  "companyName": "Playtika Holding Corp.",
+  "profile": "Playtika operates a portfolio of free-to-play mobile games for players seeking casual and other game experiences. It develops games and provides live game operations and technology services that support engagement, in-game content, and monetization. Its platform helps studios manage games at scale, tailor features and offers to players, and incorporate functional enhancements. The company has grown its portfolio primarily through acquisitions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.264Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1828016/000182801626000010/playtika-20251231.htm"
+}

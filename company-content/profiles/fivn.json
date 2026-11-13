@@ -1,0 +1,10 @@
+{
+  "ticker": "FIVN",
+  "companyName": "Five9, Inc.",
+  "profile": "Five9 provides a cloud-based Intelligent Customer Experience platform for enterprise contact centers. Its applications support customer service, sales, and marketing, with AI tools for virtual agents, agent assistance, workflow automation, call summaries, insights, workforce engagement, and revenue execution. The platform manages interactions across voice, chat, email, web, social media, and mobile channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.496Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1288847/000128884726000023/fivn-20251231.htm"
+}

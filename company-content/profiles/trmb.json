@@ -1,0 +1,10 @@
+{
+  "ticker": "TRMB",
+  "companyName": "Trimble Inc.",
+  "profile": "Trimble provides technology solutions connecting workflows across construction, geospatial, natural resources, utilities and transportation. Its offerings combine software applications, cloud platforms, data, hardware and mobile technologies, including tools for modeling, planning, design and workflow management. Customers include asset owners, contractors, architects, engineers, designers, surveyors, energy and utility companies, transportation businesses and governments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:00.881Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/864749/000086474926000015/trmb-20260102.htm"
+}

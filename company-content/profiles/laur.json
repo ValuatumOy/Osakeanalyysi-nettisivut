@@ -1,0 +1,10 @@
+{
+  "ticker": "LAUR",
+  "companyName": "Laureate Education, Inc.",
+  "profile": "Laureate Education operates degree-granting higher education institutions in Mexico and Peru. Its institutions offer undergraduate and graduate programs through campus-based, online and hybrid formats, with curricula emphasizing applied, career-oriented disciplines including medicine and health sciences, engineering and information technology, and business and management. The institutions serve traditional students, working adults and distance learners through private-pay education and multiple brands and price points.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.556Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/912766/000162828026009479/laur-20251231.htm"
+}

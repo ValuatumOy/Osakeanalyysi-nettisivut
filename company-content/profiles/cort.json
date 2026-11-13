@@ -1,0 +1,13 @@
+{
+  "ticker": "CORT",
+  "companyName": "Corcept Therapeutics Incorporated",
+  "profile": "Corcept Therapeutics discovers, develops, and commercializes medicines that modulate cortisol for endocrinologic, oncologic, metabolic, and neurologic disorders. Its marketed products include Korlym and an authorized generic for hypercortisolism, as well as Lifyorli (relacorilant) for use with chemotherapy in platinum-resistant ovarian cancer. The company is also developing relacorilant for Cushing’s syndrome and other cortisol modulators for additional conditions.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.877Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1088856/000162828026011091/cort-20251231.htm",
+  "profileSources": [
+    "https://ir.corcept.com/news-releases/news-release-details/corcept-therapeutics-announces-third-quarter-financial-results-5/"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "EW",
+  "companyName": "Edwards Lifesciences Corporation",
+  "profile": "Edwards Lifesciences develops medical technologies for structural heart disease, including surgical and transcatheter therapies. Its products include repair and replacement technologies for aortic, mitral, tricuspid and pulmonic heart valves, such as bioprosthetic surgical valves, annuloplasty rings, transcatheter valves and repair systems. These products are used by cardiac surgeons and interventional cardiologists to treat patients with heart valve disorders.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:51.198Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1099800/000109980026000009/ew-20251231.htm"
+}

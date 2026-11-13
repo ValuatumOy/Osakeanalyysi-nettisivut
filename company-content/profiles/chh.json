@@ -1,0 +1,10 @@
+{
+  "ticker": "CHH",
+  "companyName": "Choice Hotels International, Inc.",
+  "profile": "Choice Hotels International primarily operates as a hotel franchisor, with brands spanning economy, extended-stay, midscale, and upscale lodging. It also owns and manages some hotels and conducts international franchising through direct and master-franchise relationships. The company earns fees from franchised and managed properties and offers guests and hotels value-added solutions through vendor and travel partnerships.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.867Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1046311/000104631126000008/chh-20251231.htm"
+}

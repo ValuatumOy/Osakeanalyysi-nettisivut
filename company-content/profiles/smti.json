@@ -1,0 +1,13 @@
+{
+  "ticker": "SMTI",
+  "companyName": "Sanara MedTech Inc.",
+  "profile": "Sanara MedTech develops and sells medical products for surgical tissue repair and bone fusion. Its products include collagen powder for surgical wound management, a wound irrigation solution, and implants used to support bone growth and fusion. The company markets and distributes these products to surgeons at hospitals and surgical centers, primarily in the United States.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:42:03.103Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/714256/000149315226012352/form10-k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/714256/000149315226012352/form10-k.htm"
+  ]
+}

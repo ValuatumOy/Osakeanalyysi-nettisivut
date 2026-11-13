@@ -1,0 +1,10 @@
+{
+  "ticker": "ALNY",
+  "companyName": "Alnylam Pharmaceuticals, Inc.",
+  "profile": "Alnylam Pharmaceuticals is a biopharmaceutical company developing RNA interference therapeutics, a class of medicines designed to silence messenger RNA involved in disease. The company has six marketed RNAi-based medicines, including products commercialized by collaborators, and conducts research and clinical development across multiple programs. Its medicines address diseases including transthyretin-mediated amyloidosis, acute hepatic porphyria, and primary hyperoxaluria, serving patients through its commercial and collaborator networks.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:36:38.897Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1178670/000162828026007497/alny-20251231.htm"
+}

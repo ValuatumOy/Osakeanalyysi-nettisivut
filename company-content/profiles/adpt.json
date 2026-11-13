@@ -1,0 +1,10 @@
+{
+  "ticker": "ADPT",
+  "companyName": "Adaptive Biotechnologies Corporation",
+  "profile": "Adaptive Biotechnologies applies immune system sequencing and analysis technologies to develop clinical products and services. Its MRD business offers clonoSEQ testing to clinicians for detecting and monitoring residual disease in lymphoid cancers, and provides the assay to biopharmaceutical partners for drug development. Its Immune Medicine business offers immune receptor sequencing, proprietary data licensing, TCR-antigen prediction models, and target discovery capabilities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1478320/000119312526076902/adpt-20251231.htm"
+}

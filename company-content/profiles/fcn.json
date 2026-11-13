@@ -1,0 +1,10 @@
+{
+  "ticker": "FCN",
+  "companyName": "FTI Consulting, Inc.",
+  "profile": "FTI Consulting provides expert advice and professional services to organizations facing complex business challenges, crises and transformation. Its work spans corporate finance, forensic and litigation consulting, economic consulting, technology and strategic communications. Services include transaction and restructuring advice, analytics, investigations, dispute support, risk management, reputation and financial communications. Clients include corporations, law firms, private equity firms, banks and governments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/887936/000088793626000013/fcn-20251231.htm"
+}

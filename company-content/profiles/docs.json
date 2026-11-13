@@ -1,0 +1,10 @@
+{
+  "ticker": "DOCS",
+  "companyName": "Doximity, Inc.",
+  "profile": "Doximity operates a professional technology platform for physicians and other medical professionals, with tools for collaboration, medical news, career management, scheduling, virtual visits and clinical workflows. Its customers, primarily pharmaceutical manufacturers and health systems, use marketing and digital recruiting solutions. Workflow offerings include telehealth, on-call scheduling, digital fax and clinical AI tools designed to support clinicians and patient care.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.575Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1516513/000151651326000025/docs-20260331.htm"
+}

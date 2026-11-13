@@ -1,0 +1,10 @@
+{
+  "ticker": "OMC",
+  "companyName": "Omnicom Group Inc.",
+  "profile": "Omnicom is a strategic holding company operating through global networks and specialized agencies that provide marketing, sales, communications, and commerce services. Its offerings span media, content, commerce, generative AI, and branding communications. Agencies combine data, creativity, and technology to develop coordinated solutions for clients, including many large global companies, and use an integrated technology platform to support planning, advertising, media, and analytics.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:29.451Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/29989/000002998926000006/omc-20251231.htm"
+}

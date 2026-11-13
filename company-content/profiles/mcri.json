@@ -1,0 +1,10 @@
+{
+  "ticker": "MCRI",
+  "companyName": "Monarch Casino & Resort, Inc.",
+  "profile": "Monarch Casino & Resort owns and operates the Atlantis Casino Resort Spa in Reno, Nevada, and Monarch Casino Resort Spa Black Hawk in Colorado. These properties combine casino gaming with hotel accommodations, dining, spa and salon services, retail, entertainment, and meeting facilities. The Atlantis also offers mobile race and sports betting to patrons located within Nevada.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.354Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/907242/000110465926018717/mcri-20251231x10k.htm"
+}

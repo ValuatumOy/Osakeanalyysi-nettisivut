@@ -1,0 +1,13 @@
+{
+  "ticker": "INTT",
+  "companyName": "inTEST Corporation",
+  "profile": "inTEST Corporation supplies test and process technology solutions for manufacturing and testing. Its businesses develop engineered products and services used in customers’ production, research and development, and quality control processes. The company operates through Electronic Test, Environmental Technologies, and Process Technologies segments, with manufacturing in the United States, Canada, Italy, and Malaysia.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:53:10.553Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1036262/000103626226000012/intt-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1036262/000103626226000012/intt-20251231.htm"
+  ]
+}

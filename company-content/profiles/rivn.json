@@ -1,0 +1,10 @@
+{
+  "ticker": "RIVN",
+  "companyName": "Rivian Automotive, Inc.",
+  "profile": "Rivian is an automotive technology company that develops and manufactures electric vehicles and vertically integrated technologies and services. Its consumer vehicles include the R1T pickup truck and R1S sport utility vehicle, while its commercial van platform supports electric delivery vans. Rivian vehicles are sold directly to consumer and commercial customers. The company also offers software and services, including connected vehicle features and an autonomy platform.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:29.452Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1874178/000187417826000008/rivn-20251231.htm"
+}

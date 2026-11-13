@@ -1,0 +1,13 @@
+{
+  "ticker": "WNC",
+  "companyName": "Wabash National Corporation",
+  "profile": "Wabash National designs, manufactures, and services products for first-to-final-mile operations across transportation, logistics, and infrastructure markets. Its products include dry freight and refrigerated trailers, platform and tank trailers, truck bodies, structural composite panels, trailer aerodynamic solutions, and specialty food-grade processing equipment. Through Wabash Hub, it also provides access to a nationwide parts and service network, Trailers as a Service, and operational tools.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:53.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/879526/000087952626000036/wnc-20251231.htm"
+  ]
+}

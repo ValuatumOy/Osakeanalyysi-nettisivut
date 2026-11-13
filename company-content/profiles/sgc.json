@@ -1,0 +1,13 @@
+{
+  "ticker": "SGC",
+  "companyName": "Superior Group of Companies, Inc.",
+  "profile": "Superior Group of Companies sells customized promotional merchandise and branded uniform programs, healthcare apparel, and outsourced contact center services. Its apparel products include scrubs, lab coats, protective clothing, and patient garments, supplied to healthcare laundries, dealers, distributors, retailers, and consumers. Its contact centers provide business process outsourcing, contact, and call center support services to North American customers. Branded merchandise serves customers across multiple industries.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.104Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/95574/000143774926006653/sgc20251231_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/95574/000143774926006653/sgc20251231_10k.htm"
+  ]
+}

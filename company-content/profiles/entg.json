@@ -1,0 +1,10 @@
+{
+  "ticker": "ENTG",
+  "companyName": "Entegris, Inc.",
+  "profile": "Entegris supplies advanced materials and process solutions for semiconductor and other high-technology industries. Its products include deposition materials, chemical mechanical planarization slurries and pads, specialty gases, etch and cleaning materials, filtration and purification products, contamination-control systems, high-purity packaging, and fluid monitoring systems. Customers use these solutions in manufacturing processes to support material purity, yield, device reliability, and productivity.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.091Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1101302/000110130226000012/entg-20251231.htm"
+}

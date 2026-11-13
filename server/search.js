@@ -144,6 +144,7 @@ async function searchCompanies(rawQuery) {
 
   const result = dedupe(rows.map(toPublic).filter(Boolean))
     .filter((r) => isCoveredTicker(r.ticker))
+    .sort((a, b) => Number(b.ticker.toUpperCase() === query.toUpperCase()) - Number(a.ticker.toUpperCase() === query.toUpperCase()))
     .slice(0, MAX_RESULTS);
   cacheSet(key, result);
   return result;

@@ -1,0 +1,10 @@
+{
+  "ticker": "PLOW",
+  "companyName": "Douglas Dynamics, Inc.",
+  "profile": "Douglas Dynamics manufactures and upfits commercial work truck equipment. Its products include snowplows, sand and salt spreaders, municipal snow and ice control equipment, truck-mounted service cranes, dump hoists, truck bodies, racking, and storage solutions, along with related parts and accessories. It sells through distributors and provides vehicle upfitting and customized turnkey solutions to end users, including governmental agencies and municipalities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:15.248Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1287213/000143774926005316/plow20251231_10k.htm"
+}

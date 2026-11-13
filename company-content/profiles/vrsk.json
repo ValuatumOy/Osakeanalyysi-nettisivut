@@ -1,0 +1,10 @@
+{
+  "ticker": "VRSK",
+  "companyName": "Verisk Analytics, Inc.",
+  "profile": "Verisk provides data, analytics, and technology solutions for clients in the insurance ecosystem. Its offerings include proprietary data, industry expertise, statistical models, predictive analytics, decision support, and software platforms for rating, underwriting, claims, catastrophe, weather risk, and other insurance activities. Its clients include property and casualty insurers in the United States and insurance businesses globally.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:11.725Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1442145/000143774926004452/vrsk20251231_10k.htm"
+}

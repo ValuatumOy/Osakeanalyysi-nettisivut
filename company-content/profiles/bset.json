@@ -1,0 +1,13 @@
+{
+  "ticker": "BSET",
+  "companyName": "Bassett Furniture Industries, Incorporated",
+  "profile": "Bassett Furniture Industries designs, manufactures, sources, markets, and retails branded home furnishings. Its products include custom upholstered furniture, bedroom and dining furniture, outdoor furniture, accessories, and decorating products. The company sells through Bassett Home Furnishings stores, independent retailers, design centers, and its website. It also provides in-home and virtual design services through its retail stores and design consultants.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:35.328Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/10329/000143774926003189/bset20251129d_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/10329/000143774926003189/bset20251129d_10k.htm"
+  ]
+}

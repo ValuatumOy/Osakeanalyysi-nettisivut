@@ -1,0 +1,13 @@
+{
+  "ticker": "PYXS",
+  "companyName": "Pyxis Oncology, Inc.",
+  "profile": "Pyxis Oncology is a clinical-stage company developing treatments for solid tumors, with an immediate focus on head and neck squamous cell carcinoma. Its lead investigational candidate, micvotabart pelidotin, is an antibody-drug conjugate designed to target a fibronectin variant in the tumor microenvironment and deliver a drug payload. The candidate is being studied alone and in combination with pembrolizumab.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:32.475Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1782223/000119312526118532/pyxs-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1782223/000119312526118532/pyxs-20251231.htm"
+  ]
+}

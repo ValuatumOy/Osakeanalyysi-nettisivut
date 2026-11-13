@@ -1,0 +1,13 @@
+{
+  "ticker": "USNA",
+  "companyName": "USANA Health Sciences, Inc.",
+  "profile": "USANA develops and manufactures nutritional supplements, functional foods, and personal care products, including skincare products. It sells through direct selling, direct-to-consumer, third-party marketplace, and retail channels. Its core nutritional customers include independent Brand Partners who distribute products and Preferred Customers who purchase for personal use. Its Hiya business sells children's health and wellness products directly to consumers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:53.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/896264/000089626426000021/usna-20260103.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/896264/000089626426000021/usna-20260103.htm"
+  ]
+}

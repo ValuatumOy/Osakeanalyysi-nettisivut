@@ -1,0 +1,10 @@
+{
+  "ticker": "AGIO",
+  "companyName": "Agios Pharmaceuticals, Inc.",
+  "profile": "Agios Pharmaceuticals is a commercial-stage biopharmaceutical company focused on rare disease medicines, with a foundation in hematology. Its approved medicine mitapivat is marketed as AQVESME and PYRUKYND for specified forms of thalassemia and pyruvate kinase deficiency. The company is also developing medicines for conditions including myelodysplastic syndromes, sickle cell disease, phenylketonuria and polycythemia vera.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.285Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1439222/000143922226000025/agio-20251231.htm"
+}

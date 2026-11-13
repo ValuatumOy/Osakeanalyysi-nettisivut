@@ -1,0 +1,10 @@
+{
+  "ticker": "ORLY",
+  "companyName": "O'Reilly Automotive, Inc.",
+  "profile": "O’Reilly Automotive sells automotive aftermarket parts, tools, supplies, equipment, and accessories through stores in the United States, Puerto Rico, Mexico, and Canada. Its product range includes new and remanufactured hard parts, maintenance items, and vehicle accessories. The company serves both do-it-yourself customers and professional service providers, offering services such as battery testing, diagnostic code extraction, replacement assistance, tool loans, and recycling.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.628Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/898173/000089817326000009/orly-20251231x10k.htm"
+}

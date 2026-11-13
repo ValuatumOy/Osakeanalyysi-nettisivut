@@ -1,0 +1,13 @@
+{
+  "ticker": "ELMD",
+  "companyName": "Electromed, Inc.",
+  "profile": "Electromed develops, manufactures, markets, and sells airway clearance products, including the SmartVest Airway Clearance System for patients with compromised pulmonary function. The system uses a programmable air pulse generator and therapy garment to provide high-frequency chest wall oscillation treatment. Electromed sells to home health care and acute care settings, serving patients through referrals from clinicians and sales to hospitals and clinics.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:37:53.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1488917/000143774926028914/elmd20260630_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1488917/000143774926028914/elmd20260630_10k.htm"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "ticker": "WFRD",
+  "companyName": "Weatherford International plc",
+  "profile": "Weatherford International provides products and services for energy companies across the well life cycle, including drilling and evaluation, well construction and completions, and production and intervention. Its offerings combine equipment, field services, and digital technologies. In 2026, it completed its acquisition of NCS Multistage, adding completions and reservoir diagnostics capabilities. Customers include oil and gas operators working in energy regions worldwide.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.085Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1603923/000160392326000014/wfrd-20251231.htm",
+  "profileSources": [
+    "https://www.weatherford.com/about-us/",
+    "https://www.weatherford.com/products-and-services/",
+    "https://www.weatherford.com/investor-relations/investor-news-and-events/news/news-article/?ItemID=18786"
+  ]
+}

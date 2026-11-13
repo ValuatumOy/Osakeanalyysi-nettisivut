@@ -1,0 +1,10 @@
+{
+  "ticker": "CARS",
+  "companyName": "Cars.com Inc.",
+  "profile": "Cars.com operates an automotive marketplace connecting vehicle shoppers with dealerships and provides digital products for dealers and original equipment manufacturers. Its offerings include vehicle listings, reviews and editorial content, shopping and financing tools, dealer websites, trade-in and appraisal technology, and media solutions. The platform serves consumers, automotive dealerships, dealer groups, manufacturers and auto-adjacent companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.592Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1683606/000119312526076546/cars-20251231.htm"
+}

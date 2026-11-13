@@ -1,0 +1,13 @@
+{
+  "ticker": "REI",
+  "companyName": "Ring Energy, Inc.",
+  "profile": "Ring Energy is an independent oil and natural gas exploration and production company focused on the Permian Basin of Texas. It develops, produces, acquires, and explores for oil and gas resources, with drilling operations targeting oil and liquids-rich formations in the Northwest Shelf and Central Basin Platform. The company operates producing wells and develops its acreage through horizontal and vertical drilling.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:46:50.157Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1384195/000138419526000050/rei-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1384195/000138419526000050/rei-20251231.htm"
+  ]
+}

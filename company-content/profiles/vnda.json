@@ -1,0 +1,10 @@
+{
+  "ticker": "VNDA",
+  "companyName": "Vanda Pharmaceuticals Inc.",
+  "profile": "Vanda Pharmaceuticals develops and commercializes medicines for patients with unmet medical needs. Its marketed products treat schizophrenia and bipolar I disorder, sleep disorders including Non-24 and Smith-Magenis syndrome, relapsing forms of multiple sclerosis, and motion-induced vomiting. The company also has drug candidates and potential additional indications in development for neurological, psychiatric, gastrointestinal, dermatological, ophthalmic, and blood disorders.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.025Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1347178/000162828026007460/vnda-20251231.htm"
+}

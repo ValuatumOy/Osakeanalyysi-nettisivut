@@ -1,0 +1,10 @@
+{
+  "ticker": "LMB",
+  "companyName": "Limbach Holdings, Inc.",
+  "profile": "Limbach designs, delivers, and maintains mechanical, electrical, plumbing, and controls systems for building owners and operators, particularly in mission-critical facilities. Its customers span healthcare, industrial and manufacturing, data centers, life sciences, higher education, and cultural and entertainment markets. Services include engineering, facility planning, capital project support, system commissioning, inspection, repairs, maintenance, and specialty contracting for existing buildings and construction projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.523Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1606163/000162828026013285/lmb-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ULCC",
+  "companyName": "Frontier Group Holdings, Inc.",
+  "profile": "Frontier Group Holdings is the parent company of Frontier Airlines, an ultra-low-cost carrier offering flights across the United States and to select near-international destinations in the Americas. Its customer offering combines low fares with optional and bundled services, customer support, digital booking through its website and mobile app, cabin seating, and a frequent flyer program. The airline serves travelers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.012Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1670076/000167007626000020/fron-20251231.htm"
+}

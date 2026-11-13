@@ -1,0 +1,10 @@
+{
+  "ticker": "RYAM",
+  "companyName": "Rayonier Advanced Materials Inc.",
+  "profile": "Rayonier Advanced Materials manufactures cellulose specialties and other cellulose-based products and derivatives. Its materials are used in filters, food, pharmaceuticals, high-performance plastics, propellants, and industrial applications. The company also produces cellulose viscose pulp, cellulose fluff pulp, high-yield pulp, paperboard, biofuels, bioelectricity, and lignin. Its business segments include Cellulose Specialties, Biomaterials, Cellulose Commodities, Paperboard, and High-Yield Pulp.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:08:13.416Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1597672/000159767226000010/ryam-20251231.htm"
+}

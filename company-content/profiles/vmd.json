@@ -1,0 +1,13 @@
+{
+  "ticker": "VMD",
+  "companyName": "Viemed Healthcare, Inc.",
+  "profile": "Viemed Healthcare provides home medical equipment and post-acute healthcare services in the United States. Its offerings include home ventilation, respiratory disease management, oxygen therapy, neuromuscular care, sleep testing and sleep apnea treatment, and women’s health products such as breast pumps. The company also supplies related equipment and supplies and provides healthcare staffing and recruitment services to healthcare facilities.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:21.605Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1729149/000172914926000009/vmd-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1729149/000172914926000009/vmd-20251231.htm"
+  ]
+}

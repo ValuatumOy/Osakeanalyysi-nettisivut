@@ -1,0 +1,10 @@
+{
+  "ticker": "CGON",
+  "companyName": "CG Oncology, Inc. Common stock",
+  "profile": "CG Oncology is a clinical biopharmaceutical company developing cretostimogene grenadenorepvec, an investigational oncolytic immunotherapy for bladder cancer. The company is evaluating the therapy in clinical trials for high-risk and intermediate-risk non-muscle invasive bladder cancer, including as a monotherapy and in combination with another drug. Its activities include clinical development and preparation of a regulatory application for an initial indication.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1991792/000119312526079498/ck0001991792-20251231.htm"
+}

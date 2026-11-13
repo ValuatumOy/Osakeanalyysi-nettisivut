@@ -1,0 +1,10 @@
+{
+  "ticker": "OUST",
+  "companyName": "Ouster, Inc.",
+  "profile": "Ouster provides sensing and perception products for industrial, infrastructure, robotics, and automotive applications. Its platform combines digital lidar sensors, cameras, AI computing, sensor fusion, perception software, and AI models. Customers use its lidar technology for tasks including supply chain automation, public safety, intrusion detection, robotics, and advanced vehicle systems; automotive customers include technology providers, parts suppliers, and manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.593Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1816581/000162828026013313/oust-20251231.htm"
+}

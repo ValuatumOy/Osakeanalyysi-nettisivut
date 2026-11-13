@@ -1,0 +1,10 @@
+{
+  "ticker": "RGLD",
+  "companyName": "Royal Gold, Inc.",
+  "profile": "Royal Gold acquires and manages precious metal streams, royalties and similar interests. It obtains interests in projects at production, development or exploration stages, typically by acquiring existing rights or financing projects in exchange for stream or royalty interests. The company does not operate mines on properties where it holds interests and is generally not responsible for those properties' capital, environmental or operating costs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:37:47.275Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/85535/000008553526000008/rgld-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "NOW",
+  "companyName": "ServiceNow, Inc.",
+  "profile": "ServiceNow provides cloud-based software and services that help public and private organizations manage artificial intelligence and automate, integrate, and streamline workflows. Its ServiceNow AI Platform connects systems and supports workflows across organizational departments and roles. Products include AI-powered applications designed to help organizations govern and secure AI, coordinate work across existing systems, and manage business processes while maintaining operational continuity.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.621Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm"
+}

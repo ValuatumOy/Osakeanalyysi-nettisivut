@@ -1,0 +1,10 @@
+{
+  "ticker": "XRAY",
+  "companyName": "DENTSPLY SIRONA Inc.",
+  "profile": "DENTSPLY SIRONA develops, manufactures, and sells professional dental products and technologies, as well as healthcare consumables for urological and enterological applications. Its offerings include dental equipment and instruments, imaging systems, treatment centers, CAD/CAM products, implants, clear aligners, and consumables. It also provides cloud-based digital services and software. Customers include dental practitioners and specialists, with products distributed globally.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/818479/000081847926000075/xray-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "TBCH",
+  "companyName": "Turtle Beach Corporation",
+  "profile": "Turtle Beach Corporation designs and markets gaming accessories for consoles, personal computers, mobile devices, and tablets. Its products include gaming headsets and audio accessories, controllers, keyboards, mice, microphones, and flight and racing simulation hardware. The company distributes its products globally through retailers and other channels, serving gamers across a range of experience levels, as well as streamers, content creators, and competitive esports players.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:38:32.208Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1493761/000119312526104436/tbch-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1493761/000119312526104436/tbch-20251231.htm"
+  ]
+}

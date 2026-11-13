@@ -1,0 +1,10 @@
+{
+  "ticker": "PATK",
+  "companyName": "Patrick Industries, Inc.",
+  "profile": "Patrick Industries manufactures and distributes components and products for recreational vehicle, marine, powersports, manufactured housing, and industrial markets, including residential construction, hospitality, institutional, and commercial customers. Its offerings include laminated panels, countertops, cabinetry, lighting, electrical and plumbing components, fiberglass products, flooring, doors, appliances, marine hardware, and structural parts. It also provides transportation and logistics services through its nationwide manufacturing and distribution network.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.407Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/76605/000007660526000013/patk-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ALKT",
+  "companyName": "Alkami Technology, Inc.",
+  "profile": "Alkami Technology provides a cloud-based digital sales and service platform for community, regional and super-regional financial institutions in the United States. Its products include digital banking, onboarding and account opening, and data and marketing solutions. The platform serves banks and credit unions, providing their account holders with digital access to financial services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1529274/000152927426000009/alk-20251231.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "TUSK",
+  "companyName": "Mammoth Energy Services, Inc.",
+  "profile": "Mammoth Energy Services provides equipment rental, infrastructure, natural sand proppant, accommodation, and drilling services. Its rental operations supply equipment for oilfield, construction, and aviation activities, while its infrastructure business works on fiber networks. The company also mines and sells sand used in hydraulic fracturing, leases aircraft and related equipment, and provides directional drilling to oilfield operators.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.083Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1679268/000162828026015693/tusk-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1679268/000162828026015693/tusk-20251231.htm"
+  ]
+}

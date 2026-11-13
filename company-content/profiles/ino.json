@@ -1,0 +1,13 @@
+{
+  "ticker": "INO",
+  "companyName": "Inovio Pharmaceuticals, Inc.",
+  "profile": "Inovio Pharmaceuticals develops DNA medicine candidates for diseases associated with human papillomavirus, cancer, and infectious diseases. Its candidates are biologic medicines delivered using the company’s CELLECTRA electroporation devices, making them drug-device combination products. The company’s pipeline includes INO-3107, a candidate being evaluated as a potential treatment for adults with recurrent respiratory papillomatosis.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:59.526Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1055726/000105572626000008/ino-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1055726/000105572626000008/ino-20251231.htm"
+  ]
+}

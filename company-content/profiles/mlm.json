@@ -1,0 +1,10 @@
+{
+  "ticker": "MLM",
+  "companyName": "Martin Marietta Materials, Inc.",
+  "profile": "Martin Marietta Materials supplies aggregates, including crushed stone, sand, and gravel, through quarries, mines, and distribution yards. In selected markets it also provides cement, ready mixed concrete, asphalt, and paving services for infrastructure and residential and nonresidential construction. Its Specialties business produces magnesia-based products and dolomitic lime for environmental, industrial, agricultural, construction, consumer, and specialty applications, serving customers domestically and worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.876Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/916076/000119312526059193/mlm-20251231.htm"
+}

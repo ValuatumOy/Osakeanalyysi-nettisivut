@@ -1,0 +1,10 @@
+{
+  "ticker": "NAGE",
+  "companyName": "Niagen Bioscience Inc",
+  "profile": "Niagen Bioscience develops and commercializes products based on nicotinamide riboside, a form of vitamin B3 and precursor to NAD+. Its offerings include food-grade Niagen as a dietary and food ingredient, Tru Niagen dietary supplements for consumers, and Niagen Plus products featuring pharmaceutical-grade Niagen. It also supplies pharmaceutical-grade Niagen to outsourcing facilities and compounding pharmacies for prescription injectable formulations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:37.031Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1386570/000138657026000013/cdxc-20251231.htm"
+}

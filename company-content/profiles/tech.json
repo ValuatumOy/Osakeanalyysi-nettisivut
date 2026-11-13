@@ -1,0 +1,10 @@
+{
+  "ticker": "TECH",
+  "companyName": "Bio-Techne Corporation",
+  "profile": "Bio-Techne develops, manufactures, and sells life science reagents, instruments, and services for research, diagnostics, and bioprocessing markets. Its Protein Sciences products include biological reagents and analytical tools for protein analysis and assay workflows. Its Diagnostics and Spatial Biology offerings include diagnostic controls, calibrators, assays, tissue analysis instruments, and genetic and oncology kits for research and clinical applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.459Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/842023/000110465926100322/tech-20260630x10k.htm"
+}

@@ -1,0 +1,13 @@
+{
+  "ticker": "ENTX",
+  "companyName": "Entera Bio Ltd.",
+  "profile": "Entera Bio is a clinical-stage biotechnology company developing oral tablet formulations of peptide and protein replacement therapies. Its pipeline includes candidates targeting PTH(1-34), GLP-1/glucagon, and GLP-2, using its N-Tab platform for oral delivery. Its lead candidate, EB613, is an oral teriparatide tablet being developed for osteoporosis.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:48:26.077Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1638097/000117891326001797/zk2634461.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1638097/000117891326001797/zk2634461.htm"
+  ]
+}

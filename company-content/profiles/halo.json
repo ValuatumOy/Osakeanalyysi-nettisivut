@@ -1,0 +1,10 @@
+{
+  "ticker": "HALO",
+  "companyName": "Halozyme Therapeutics, Inc.",
+  "profile": "Halozyme Therapeutics develops drug delivery technologies and drug-device combination products. Its ENHANZE technology uses a proprietary enzyme to facilitate subcutaneous delivery of injected drugs and fluids. The company licenses technologies to biopharmaceutical partners for products combining them with partner compounds, and develops products using Hypercon and Surf Bio technologies. Its customers and collaborators include biopharmaceutical companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:29.448Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1159036/000115903626000024/halo-20251231.htm"
+}

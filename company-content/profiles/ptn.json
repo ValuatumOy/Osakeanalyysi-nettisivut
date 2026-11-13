@@ -1,0 +1,13 @@
+{
+  "ticker": "PTN",
+  "companyName": "Palatin Technologies, Inc.",
+  "profile": "Palatin Technologies develops peptide and small-molecule medicines that modulate melanocortin receptors. Its principal internal focus is selective MC4R agonists for rare obesity disorders associated with the MC4R pathway, including hypothalamic obesity, Prader-Willi syndrome and Bardet-Biedl syndrome. Programs include peptide candidates and oral small molecules progressing through preclinical development. Palatin also partners or licenses other receptor-based programs, including work in retinal disease.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.961Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/911216/000149315226044572/form10-k.htm",
+  "profileSources": [
+    "https://palatin.com/press_releases/palatin-reports-fiscal-year-2026-financial-results-and-provides-business-update/"
+  ]
+}

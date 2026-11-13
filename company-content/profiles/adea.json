@@ -1,0 +1,10 @@
+{
+  "ticker": "ADEA",
+  "companyName": "Adeia Inc.",
+  "profile": "Adeia develops and licenses intellectual property for media and semiconductor industries. Its portfolio includes media technologies for searching, streaming, discovering, consuming, personalizing, and interacting with content, as well as semiconductor technologies covering hybrid bonding, processing nodes, and advanced packaging. Its customers include media, entertainment, consumer electronics, social media, and semiconductor companies that use its innovations in products and services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.749Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1803696/000119312526076549/adea-20251231.htm"
+}

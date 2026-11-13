@@ -1,0 +1,10 @@
+{
+  "ticker": "COMP",
+  "companyName": "Compass, Inc.",
+  "profile": "Compass is a global real estate services company operating owned brokerages and franchise businesses under several real estate brands. Its professionals serve home buyers and sellers, and its platform includes technology offerings for managing real estate businesses and transactions. The company also provides services to franchisees, professionals and clients, including title, escrow, settlement and relocation services, and mortgage services through a joint venture.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.393Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1563190/000156319026000057/comp-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AVPT",
+  "companyName": "AvePoint, Inc.",
+  "profile": "AvePoint provides cloud data protection, governance, and management software through its AvePoint Confidence Platform. The platform serves technology teams, including IT operations, development operations, and cybersecurity, across cloud and content ecosystems such as Microsoft, Salesforce, Google, and AWS. Its suites support data governance, policy enforcement, SaaS expense management, backup, ransomware recovery, lifecycle management, and modernization of legacy systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.292Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1777921/000143774926005907/avpt20251231_10k.htm"
+}

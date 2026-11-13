@@ -1,0 +1,10 @@
+{
+  "ticker": "MBC",
+  "companyName": "MasterBrand, Inc.",
+  "profile": "MasterBrand manufactures residential cabinets sold across the United States and Canada to remodeling and new construction markets. Its products reach customers through dealers, retailers, and builders. The company offers cabinetry across price points and includes the Dura Supreme and Bertch brands, whose framed and frameless cabinets are distributed through a nationwide dealer network.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.410Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1941365/000194136526000006/mbc-20251228.htm"
+}

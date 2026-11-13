@@ -1,0 +1,13 @@
+{
+  "ticker": "SPCE",
+  "companyName": "Virgin Galactic Holdings, Inc.",
+  "profile": "Virgin Galactic develops and operates spaceflight systems for private individuals, researchers and government agencies. It offers passenger spaceflights, autonomous research flights and human-tended research missions using spaceships carried by high-altitude aircraft. The company also designs, manufactures, tests and maintains its vehicles, and has provided engineering services to third parties. Customer experiences include training and a suborbital flight.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:41:51.846Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1706946/000170694626000019/spce-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1706946/000170694626000019/spce-20251231.htm"
+  ]
+}

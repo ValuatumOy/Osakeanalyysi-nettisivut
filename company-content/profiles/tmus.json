@@ -1,0 +1,10 @@
+{
+  "ticker": "TMUS",
+  "companyName": "T-Mobile US, Inc.",
+  "profile": "T-Mobile provides wireless communications and broadband services to postpaid and prepaid customers, as well as wholesale wireless services to partners. It offers service plans and sells smartphones, wearables, tablets, 5G broadband gateways, other mobile devices, and accessories. Services and products are available through T-Mobile, Metro by T-Mobile, and Mint Mobile stores, websites, apps, customer care, national retailers, and third-party distributors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.616Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1283699/000128369926000010/tmus-20251231.htm"
+}

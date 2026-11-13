@@ -1,0 +1,10 @@
+{
+  "ticker": "BEAM",
+  "companyName": "Beam Therapeutics Inc.",
+  "profile": "Beam Therapeutics is a biotechnology company developing precision genetic medicines using gene editing and delivery technologies, including proprietary base editing. Its programs address hematology and genetic diseases, with investigational therapies and delivery platforms designed for different tissues and treatment approaches. The company also has internal manufacturing capabilities. Its work is directed toward potential treatments for patients with serious diseases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.136Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1745999/000119312526065194/beam-20251231.htm"
+}

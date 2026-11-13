@@ -1,0 +1,10 @@
+{
+  "ticker": "SBUX",
+  "companyName": "Starbucks Corporation",
+  "profile": "Starbucks roasts and sells specialty coffee, handcrafted coffee and tea beverages, and food through company-operated coffeehouses. It also sells coffee and tea products and licenses its trademarks through licensed coffeehouses, grocery, and foodservice channels. Its brands include Starbucks Coffee, Teavana, Ethos, and Starbucks Reserve. Its customers include coffeehouse visitors and consumers purchasing products through retail and foodservice channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:35:31.624Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/829224/000082922426000162/sbux-20260927.htm"
+}

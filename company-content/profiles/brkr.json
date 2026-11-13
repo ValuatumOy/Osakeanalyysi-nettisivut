@@ -1,0 +1,10 @@
+{
+  "ticker": "BRKR",
+  "companyName": "Bruker Corporation",
+  "profile": "Bruker develops, manufactures, and distributes scientific instruments and analytical and diagnostic solutions for examining chemical, biological, and industrial samples. Its technologies include magnetic resonance, mass spectrometry, chromatography, X-ray, microscopy, metrology, and molecular spectroscopy. Products and services support research, diagnostics, and applied markets. Customers include academic and government research facilities, pharmaceutical and biotechnology companies, and laboratories in clinical, food, chemical, and industrial fields.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.842Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1109354/000119312526082523/brkr-20251231.htm"
+}

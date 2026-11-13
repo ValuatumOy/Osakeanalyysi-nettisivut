@@ -1,0 +1,10 @@
+{
+  "ticker": "ACAD",
+  "companyName": "ACADIA Pharmaceuticals Inc.",
+  "profile": "Acadia Pharmaceuticals develops medicines for neurological and rare diseases. Its commercial products include NUPLAZID for hallucinations and delusions associated with Parkinson’s disease psychosis, and DAYBUE for Rett syndrome. The company also has research programs and product candidates for conditions including Alzheimer’s disease psychosis, Lewy body dementia psychosis, major depressive disorder, essential tremor and tardive dyskinesia.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.974Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1070494/000119312526072519/acad-20251231.htm"
+}

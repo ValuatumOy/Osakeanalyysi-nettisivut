@@ -1,0 +1,10 @@
+{
+  "ticker": "EXTR",
+  "companyName": "Extreme Networks, Inc.",
+  "profile": "Extreme Networks designs, develops and manufactures wired, wireless and software-defined wide area networking equipment. It also sells software subscriptions and related maintenance contracts to businesses and organizations across sectors including education, government, healthcare, retail, transportation and hospitality. Its networking platform integrates network management, security, analytics and AI capabilities intended to help enterprise IT teams operate and manage network infrastructure.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.575Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1078271/000119312526352872/extr-20260630.htm"
+}

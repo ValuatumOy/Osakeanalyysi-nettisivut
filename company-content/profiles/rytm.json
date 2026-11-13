@@ -1,0 +1,10 @@
+{
+  "ticker": "RYTM",
+  "companyName": "Rhythm Pharmaceuticals, Inc.",
+  "profile": "Rhythm Pharmaceuticals is a biopharmaceutical company developing melanocortin-4 receptor agonists for rare neuroendocrine diseases associated with hyperphagia and severe obesity. Its marketed medicine, IMCIVREE (setmelanotide), is authorized for certain rare MC4R pathway diseases, including Bardet-Biedl syndrome and specified genetic deficiencies. The company is also developing investigational medicines bivamelagon and RM-718 for hypothalamic obesity and related conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.842Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1649904/000162828026012399/rytm-20251231.htm"
+}

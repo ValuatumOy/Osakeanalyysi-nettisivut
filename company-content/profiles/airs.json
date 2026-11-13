@@ -1,0 +1,13 @@
+{
+  "ticker": "AIRS",
+  "companyName": "AirSculpt Technologies, Inc.",
+  "profile": "AirSculpt Technologies provides minimally invasive body contouring procedures at AirSculpt offices. Its proprietary method removes fat and tightens skin, and the company also offers fat transfer procedures using patients’ own fat cells. Other services include Power BBL, Up a Cup, Hip Flip, AirSculpt+, and AirSculpt Smooth. Surgeons, nurses, and patient care consultants guide patients through the experience.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.734Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1870940/000187094026000011/airs-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1870940/000187094026000011/airs-20251231.htm"
+  ]
+}

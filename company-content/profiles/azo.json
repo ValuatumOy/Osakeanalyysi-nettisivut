@@ -1,0 +1,10 @@
+{
+  "ticker": "AZO",
+  "companyName": "AutoZone, Inc.",
+  "profile": "AutoZone is a retailer and distributor of automotive replacement parts and accessories in the Americas. Its stores and websites offer hard parts, maintenance items, accessories and non-automotive products for cars, sport utility vehicles, vans and light trucks. Through commercial sales programs, it supplies repair garages, dealers, service stations, fleet owners and other accounts. It also sells automotive diagnostic, repair, collision and shop management software.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:34:51.201Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/866787/000110465926118791/azo-20260829x10k.htm"
+}

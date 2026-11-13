@@ -1,0 +1,14 @@
+{
+  "ticker": "HFFG",
+  "companyName": "HF Foods Group Inc.",
+  "profile": "HF Foods Group imports, markets and distributes fresh produce, frozen and dry food, seafood, meat, specialty ingredients and foodservice supplies. It serves Asian restaurants and other foodservice customers through distribution centers, cross-docks and delivery operations. Following its 2026 acquisition of SeaRay Foods, the company operates in the United States and Canada, adding seafood products and Canadian foodservice customers to its distribution business.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:56:23.959Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1680873/000168087326000015/hffg-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1680873/000162828026072267/hffg-20260930.htm",
+    "https://www.sec.gov/Archives/edgar/data/1680873/000162828026072206/exhibit991earningspressrel.htm"
+  ]
+}

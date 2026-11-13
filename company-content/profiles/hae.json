@@ -1,0 +1,10 @@
+{
+  "ticker": "HAE",
+  "companyName": "Haemonetics Corporation",
+  "profile": "Haemonetics is a medical technology company offering hospital technologies, plasma collection systems, and products for blood centers. Its products include automated plasma collection devices, donor management software, blood collection and processing devices, and hospital technologies for vascular closure, hemostasis, cell salvage and transfusion management. Customers include plasma collection centers, blood centers and hospitals.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.607Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/313143/000031314326000050/hae-20260328.htm"
+}

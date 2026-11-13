@@ -1,0 +1,10 @@
+{
+  "ticker": "CENX",
+  "companyName": "Century Aluminum Company",
+  "profile": "Century Aluminum produces primary aluminum at smelters in the United States and Iceland, making standard-grade and value-added products for customers. Its portfolio also includes a majority interest in a Jamaican bauxite mining and alumina refining joint venture, plus a carbon anode facility in the Netherlands that supplies a company smelter. Product offerings include aluminum ingot, primary foundry alloy and low-carbon aluminum under its Natur-Al line.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:52.838Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/949157/000162828026013788/cenx-20251231.htm"
+}

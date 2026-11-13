@@ -1,0 +1,10 @@
+{
+  "ticker": "ANGO",
+  "companyName": "AngioDynamics, Inc.",
+  "profile": "AngioDynamics designs, manufactures, and sells medical products and technologies used by clinicians treating cardiovascular disease and cancer. Its offerings include the Auryon atherectomy system for peripheral arterial disease, mechanical thrombectomy systems, venous drainage cannulas and circuits, and catheter-directed thrombolytic devices. The company serves clinicians and patients through products intended to support procedures addressing vascular conditions and cancer diagnoses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:40.548Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1275187/000162828026048138/ango-20260531.htm"
+}

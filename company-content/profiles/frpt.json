@@ -1,0 +1,10 @@
+{
+  "ticker": "FRPT",
+  "companyName": "Freshpet, Inc.",
+  "profile": "Freshpet makes fresh pet food for dogs and cats, offering products intended for pets’ main meals. Its products are sold through grocery, mass, international, digital, pet specialty, and club retail channels, including dedicated Freshpet Fridges in retail chains. The company serves consumers seeking fresh food for their pets and retail customers in the pet food category.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.135Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1611647/000161164726000006/frpt-20251231.htm"
+}

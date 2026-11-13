@@ -1,0 +1,10 @@
+{
+  "ticker": "LMAT",
+  "companyName": "LeMaitre Vascular, Inc.",
+  "profile": "LeMaitre Vascular develops, manufactures, and markets medical devices used primarily to treat peripheral vascular disease, end-stage renal disease, and cardiovascular disease. Its portfolio includes devices for arteries and veins, used in open surgical and endovascular procedures, and it provides human tissue cryopreservation services. Customers include vascular surgeons and, to a lesser extent, cardiac, general, and neurosurgeons.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.751Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1158895/000119312526073360/ck0001158895-20251231.htm"
+}

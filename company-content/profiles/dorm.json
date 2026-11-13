@@ -1,0 +1,10 @@
+{
+  "ticker": "DORM",
+  "companyName": "Dorman Products, Inc.",
+  "profile": "Dorman Products supplies replacement and upgrade parts for passenger vehicles, trucks, and specialty vehicles, including utility terrain and all-terrain vehicles. Its catalog includes mechanical parts, sensors, and electronics, sold under its own and customers’ brands or in bulk. Customers include aftermarket retailers, dealers, wholesale distributors, specialty markets, consumers, repair shops, and dealership service departments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/868780/000086878026000014/dorm-20251231.htm"
+}

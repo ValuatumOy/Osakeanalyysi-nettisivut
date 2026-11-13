@@ -1,0 +1,10 @@
+{
+  "ticker": "PDFS",
+  "companyName": "PDF Solutions, Inc.",
+  "profile": "PDF Solutions provides data solutions for companies in the semiconductor and electronics industries. Its offerings include software licenses, maintenance and technical support, software as a service, engineering services, characterization systems, DirectScan systems, Cimetrix runtime licenses, secureWISE data, and variable fees tied to Characterization Vehicle systems. Customers include semiconductor manufacturers, foundries, equipment makers, electronics suppliers, outsourced assembly and test providers, and other industry companies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.150Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1120914/000143774926005366/pdfs20251231d_10k.htm"
+}

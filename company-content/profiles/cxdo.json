@@ -1,0 +1,13 @@
+{
+  "ticker": "CXDO",
+  "companyName": "Crexendo, Inc.",
+  "profile": "Crexendo provides cloud communications software and services for businesses, including unified communications as a service with voice, video, and contact center capabilities. Its cloud telecommunications offering combines hardware, software, and internet-based calling services accessible through desktop phones and mobile or desktop applications. The company also provides broadband internet, managed IT, and infrastructure services, along with software licenses, maintenance support, consulting, design, and installation services.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:39:03.332Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1075736/000165495426001848/cxdo_10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1075736/000165495426001848/cxdo_10k.htm"
+  ]
+}

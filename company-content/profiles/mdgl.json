@@ -1,0 +1,10 @@
+{
+  "ticker": "MDGL",
+  "companyName": "Madrigal Pharmaceuticals, Inc.",
+  "profile": "Madrigal Pharmaceuticals develops therapeutics for metabolic dysfunction-associated steatohepatitis, a liver disease. Its medicine Rezdiffra is an oral, liver-directed therapy approved for adults with noncirrhotic disease and moderate to advanced liver fibrosis. The company markets Rezdiffra in the United States and Germany and is developing additional drug candidates, including oral agents and small interfering RNA programs, for MASH.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:38:37.956Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1157601/000162828026009514/mdgl-20251231.htm"
+}

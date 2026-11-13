@@ -1,0 +1,10 @@
+{
+  "ticker": "IOVA",
+  "companyName": "Iovance Biotherapeutics, Inc.",
+  "profile": "Iovance Biotherapeutics develops and commercializes tumor-infiltrating lymphocyte cell therapies for patients with solid tumor cancers. Its commercial products include Amtagvi, an individualized T-cell therapy for previously treated advanced melanoma, and Proleukin, an interleukin-2 product used in the Amtagvi treatment regimen and other applications. The company also develops TIL therapies and related approaches for additional solid tumor cancers, including lung cancer and sarcomas.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.151Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1425205/000110465926018899/iova-20251231x10k.htm"
+}

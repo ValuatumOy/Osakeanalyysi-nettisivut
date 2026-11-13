@@ -1,0 +1,10 @@
+{
+  "ticker": "MRTN",
+  "companyName": "Marten Transport, Ltd.",
+  "profile": "Marten Transport provides temperature-sensitive and dry truckload transportation, dedicated transportation solutions, and freight brokerage services. It moves food and other consumer packaged goods as well as dry freight across the United States and between the United States and Mexico and Canada. Its customers are shippers seeking freight capacity and transportation services tailored to their needs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:05.360Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/799167/000143774926005971/mrtn20251231_10k.htm"
+}

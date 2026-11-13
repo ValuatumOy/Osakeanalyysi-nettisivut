@@ -1,0 +1,10 @@
+{
+  "ticker": "NVAX",
+  "companyName": "Novavax, Inc.",
+  "profile": "Novavax develops vaccine technologies and vaccine candidates using recombinant protein-based nanoparticles and its Matrix-M adjuvant. Its technology is used in the Nuvaxovid COVID-19 vaccine and in a malaria vaccine developed by a partner. The company also supplies Matrix-M for partner research and development programs, including malaria vaccine collaborations and preclinical and clinical investigations, and advances its own vaccine pipeline.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.151Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1000694/000100069426000007/nvax-20251231.htm"
+}

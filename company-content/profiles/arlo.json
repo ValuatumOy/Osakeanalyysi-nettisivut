@@ -1,0 +1,10 @@
+{
+  "ticker": "ARLO",
+  "companyName": "Arlo Technologies, Inc.",
+  "profile": "Arlo Technologies provides smart security devices and subscription services for home, business, and personal safety. Its products include Wi-Fi and LTE cameras, video doorbells, floodlight cameras, and home security systems, connected through a cloud platform and mobile app. Services include cloud video recording, AI-based detection, professional monitoring, and emergency response. The platform also integrates with third-party Internet of Things products and protocols.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.265Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1736946/000173694626000031/arlo-20251231.htm"
+}

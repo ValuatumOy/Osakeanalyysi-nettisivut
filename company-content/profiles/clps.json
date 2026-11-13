@@ -1,0 +1,13 @@
+{
+  "ticker": "CLPS",
+  "companyName": "CLPS Incorporation",
+  "profile": "CLPS provides information technology consulting and solutions, primarily to financial institutions and other global clients. Its services include building or modifying clients’ proprietary systems and delivering turnkey financial solutions. The company also serves areas such as payments, credit services, e-commerce, education, and tourism, applying technologies including artificial intelligence, cloud computing, and big data through onsite and offshore delivery.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:49:41.636Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1724542/000121390026110018/ea0307179-20f_clpsincorp.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1724542/000121390026110018/ea0307179-20f_clpsincorp.htm"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "UI",
+  "companyName": "Ubiquiti Inc.",
+  "profile": "Ubiquiti sells networking equipment and related software platforms to service providers, enterprises, and smart homes through distributors, online retailers, and its webstores. Products include wireless broadband and backhaul systems, routing, wireless LAN infrastructure, switching, video surveillance, security gateways, and door access systems. Its UISP and UniFi OS platforms provide network management and internet access capabilities for service-provider and enterprise environments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.876Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1511737/000151173726000056/ubnt-20260630.htm"
+}

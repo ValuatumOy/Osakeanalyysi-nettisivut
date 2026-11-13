@@ -1,0 +1,13 @@
+{
+  "ticker": "ACU",
+  "companyName": "Acme United Corporation",
+  "profile": "Acme United supplies first aid and medical products, as well as cutting and sharpening tools, to school, home, office, hardware, sporting goods, and industrial markets. Its products include first aid kits, safety supplies, medical wipes, scissors, shears, knives, and sharpening tools. The company sells primarily through mass market and online retailers, distributors, stationery and office supply businesses, sporting goods stores, and hardware chains.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:12.104Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/2098/000119312526102079/acu-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/2098/000119312526102079/acu-20251231.htm"
+  ]
+}

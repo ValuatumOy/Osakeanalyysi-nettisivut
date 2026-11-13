@@ -1,0 +1,10 @@
+{
+  "ticker": "ADCT",
+  "companyName": "ADC Therapeutics SA",
+  "profile": "ADC Therapeutics develops and commercializes antibody drug conjugate medicines. Its portfolio includes ZYNLONTA, a CD19-directed therapy approved for certain patients with relapsed or refractory diffuse large B-cell lymphoma. The company also conducts clinical trials studying the medicine in combinations, earlier treatment lines and indolent lymphomas. Its operations include clinical development, manufacturing capabilities and commercialization, supported by an external contract manufacturing network.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:53.995Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1771910/000162828026016491/adc-20251231.htm"
+}

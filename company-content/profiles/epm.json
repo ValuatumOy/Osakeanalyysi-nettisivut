@@ -1,0 +1,13 @@
+{
+  "ticker": "EPM",
+  "companyName": "Evolution Petroleum Corporation",
+  "profile": "Evolution Petroleum is an independent energy company that acquires and develops oil and natural gas properties in the United States. Its portfolio consists mainly of non-operated working interests and mineral and royalty interests across several producing basins. The company participates alongside operators in development projects and holds interests in producing properties and future development opportunities.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:47:52.730Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1006655/000110465926108258/epm-20260630x10k.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1006655/000110465926108258/epm-20260630x10k.htm"
+  ]
+}

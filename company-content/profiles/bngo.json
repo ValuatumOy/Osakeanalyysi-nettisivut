@@ -1,0 +1,13 @@
+{
+  "ticker": "BNGO",
+  "companyName": "Bionano Genomics, Inc.",
+  "profile": "Bionano Genomics provides genome analysis solutions for research and clinical applications. Its offerings include optical genome mapping systems, nucleic acid extraction and purification instruments and consumables, genomic analysis software, and OGM-based diagnostic and laboratory services. Researchers, clinicians and laboratories use its products and services to analyze genomic data and investigate structural variation in areas including genetic disease, cancer and cell and gene therapy.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:50:14.566Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1411690/000141169026000007/bngo-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/1411690/000141169026000007/bngo-20251231.htm"
+  ]
+}

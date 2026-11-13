@@ -1,0 +1,10 @@
+{
+  "ticker": "KOP",
+  "companyName": "Koppers Holdings Inc.",
+  "profile": "Koppers is an integrated global provider of treated wood products, wood preservation chemicals, and carbon compounds. Its businesses supply railroad crossties, utility poles, rail products, inspection and recovery services, wood treatment chemicals and technologies, and products made by processing coal tar. Customers and end markets include railroads, utilities, chemical, residential lumber, agriculture, aluminum, steel, rubber, and construction industries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:07:24.755Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1315257/000131525726000012/kop-20251231.htm"
+}
