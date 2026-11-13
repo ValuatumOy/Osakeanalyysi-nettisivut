@@ -1,0 +1,81 @@
+name: Company pages sync
+
+# Updates eligible company-page figures from Wisdom each week. Reviewed pages, unavailable
+# values and large changes remain untouched and are listed in the job summary for review.
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Same group as report-pages-sync, so the two never push to main at the same time.
+concurrency:
+  group: report-pages-sync-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # build-page-freshness reads each file's last commit date.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+
+      - name: Update figures from Wisdom
+        env:
+          WISDOM_API_TOKEN: ${{ secrets.WISDOM_API_TOKEN }}
+        run: |
+          status=0
+          node scripts/sync-company-pages.mjs --write > /tmp/sync.txt 2>&1 || status=$?
+          cat /tmp/sync.txt
+          {
+            echo '### Company pages sync'
+            echo '```'
+            tail -1 /tmp/sync.txt
+            echo '```'
+            echo '<details><summary>Updated, skipped and failed pages</summary>'
+            echo
+            echo '```'
+            cat /tmp/sync.txt
+            echo '```'
+            echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Regenerate the SEO derivatives of the updated pages
+        run: |
+          node scripts/retitle-report-pages.mjs
+          node scripts/redescribe-report-pages.mjs
+          node scripts/update-company-breadcrumbs.mjs
+          node scripts/build-company-index.mjs
+          node scripts/build-llms-txt.mjs
+          node scripts/build-page-freshness.mjs
+          node scripts/add-analyst-section.mjs
+
+      - name: Guard
+        run: |
+          node --test test/company-pages/*.test.mjs
+          node scripts/report-pages/check.mjs
+          npm run seo:check
+
+      - name: Commit and push
+        run: |
+          git add reports reports.html sitemap.xml llms.txt companies companies.html
+          git add -u -- index.html pricing.html faq.html methodology.html about.html analysts.html analyst-story.html analyst-terms.html institutions.html blog.html disclaimer.html members.html comparisons.html
+          if git diff --cached --quiet; then
+            echo "No eligible updates to commit; see skipped pages in the summary."
+            exit 0
+          fi
+          git config user.name "company-pages-sync"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Company pages: sync figures with the Wisdom model"
+          bash scripts/finalize-page-freshness.sh
+          git push

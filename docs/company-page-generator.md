@@ -119,8 +119,27 @@ before writing if an ISIN, fiscal year, currency or model figure differs from
 the review, a page is not a recognized overview, or its sitemap entry is
 missing. If the filing is newer than the model, record the model's period as
 `modelFinancialYear` as well as the filing's `financialYear`. A new year or a changed model therefore needs a new filing review and
-manifest. Running the command does not deploy the site. No scheduled automatic
-refresh is configured.
+manifest. Running the command does not deploy the site.
+
+### Weekly Wisdom sync
+
+The separate company-pages sync runs every Monday and updates eligible pages
+from Wisdom's primary model. It is a dry run without `--write`:
+
+```bash
+npm run sync:companies
+npm run sync:companies -- --write
+```
+
+Pages with a filing-review manifest, a non-model source, an unsupported listing,
+company-status notice or full report are left untouched. So are changes to net
+earnings (the current model calculation needs reconciliation), changes to or
+from N/A, changes over 20%, unknown currencies or units, mismatched ISINs,
+missing revenue, older years and new fiscal years pending filing verification. The Actions job
+summary lists skipped pages and failed lookups; more than 20% failed lookups
+stops all writes. The skipped pages require separate review and do not yet
+automatically follow later Wisdom corrections. The model year and a successful
+sync do not establish that every figure agrees with the company's filing.
 
 A manifest cannot replace a review checked on a later date. A correction to an
 already-reviewed page on the same day must also include `expectedPageSha256` for

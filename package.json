@@ -8,6 +8,7 @@
   "scripts": {
     "generate:companies": "node scripts/generate-company-pages.mjs",
     "refresh:companies": "node scripts/refresh-company-pages.mjs",
+    "sync:companies": "node scripts/sync-company-pages.mjs",
     "audit:company-review-coverage": "node scripts/audit-company-review-coverage.mjs",
     "audit:esef-candidate": "node scripts/company-pages/esef-candidate.mjs",
     "audit:esef-compare": "node scripts/company-pages/esef-compare-queue.mjs",

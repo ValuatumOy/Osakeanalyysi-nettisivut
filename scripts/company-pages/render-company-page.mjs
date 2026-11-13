@@ -1,5 +1,8 @@
 import { companyTitle } from '../seo-title.mjs';
 import { directoryBreadcrumbHtml, directoryBreadcrumbItems } from './directory-breadcrumb.mjs';
+import search from '../../server/search.js';
+
+const { isCoveredTicker } = search;
 
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
@@ -22,6 +25,8 @@ const DISPLAY_NAME_OVERRIDES = new Map([
 const FINANCIAL_TICKERS = new Set(['NDA-FI.HE', 'SAMPO.HE', 'INVE-B.ST']);
 const FINANCIAL_INDUSTRY = /bank|insur|financ|capital market|asset manage|holding|investment/i;
 
+export const FINANCIAL_FIELDS = 'revenue, EBIT, net earnings, book value, year-end share price and market capitalisation';
+
 export function isFinancialCompany(company) {
   const ticker = String(company?.ticker || '').trim().toUpperCase();
   if (FINANCIAL_TICKERS.has(ticker)) return true;
@@ -39,7 +44,9 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
   const readyReport = options.readyReport || null;
-  const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: revenue, EBIT, net earnings, book value, year-end share price and market capitalisation.`;
+  const canGenerateFresh = isCoveredTicker(company.ticker);
+  const coverageUrl = `/reports.html?search=${encodeURIComponent(`${name}, ${company.ticker}`)}#coverage-request`;
+  const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: ${FINANCIAL_FIELDS}.`;
   const metrics = metricDefinitions(company);
   const relatedScore = (item) =>
     (item.industry && item.industry === company.industry ? 8 : 0) +
@@ -146,7 +153,7 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
-            <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+            <a href="#generate" class="btn btn-gold">${canGenerateFresh ? `Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}` : 'Request coverage'}</a>
             <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
         </div>
@@ -177,11 +184,11 @@ ${navHtml()}
 
         <section class="report-full-section" id="generate">
           <div class="company-generate-card" style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
-            <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
+            <h2 style="color:white; margin-top:0;">${canGenerateFresh ? `${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report` : `Request ${esc(name)} coverage`}</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${canGenerateFresh ? (readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`) : 'Fresh report generation is not currently available for this listing. Request coverage and we will let you know when it becomes available.'}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>
+              ${canGenerateFresh ? `<a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>` : `<a href="${attr(coverageUrl)}" class="btn btn-gold btn-lg">Request coverage</a>`}
             </div>
           </div>
         </section>
@@ -215,7 +222,7 @@ ${footerHtml()}
 `.replace(/[ \t]+$/gm, '');
 }
 
-function metricDefinitions(company) {
+export function metricDefinitions(company) {
   const { metrics, currency, financialYear } = company;
   const marketCurrency = company.marketCurrency || currency;
   return [
@@ -229,15 +236,22 @@ function metricDefinitions(company) {
 }
 
 function companyOverview(company, name, readyReport = null) {
-  const revenue = formatMillions(company.metrics.revenue, company.currency);
-  const ebit = formatMillions(company.metrics.ebit, company.currency);
-  const marketCurrency = company.marketCurrency || company.currency;
-  const sharePrice = formatPrice(company.metrics.sharePrice, marketCurrency);
-  const marketCap = formatMillions(company.metrics.marketCap, marketCurrency);
+  const canGenerateFresh = isCoveredTicker(company.ticker);
   const reportText = readyReport
-    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
-    : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
-  return `${name} (${company.ticker}) stock analysis and AI equity research. For financial year ${company.financialYear}, Valuatum's model shows revenue of ${revenue} and operating profit of ${ebit}; the year-end share price was ${sharePrice} and market capitalisation was ${marketCap}. ${reportText}`;
+    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'}${canGenerateFresh ? ' or generate a fresh report with the latest available data.' : '. Fresh report generation is not currently available for this listing. You can request coverage.'}`
+    : canGenerateFresh
+      ? `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`
+      : 'Fresh report generation is not currently available for this listing. You can request coverage.';
+  return `${name} (${company.ticker}) stock analysis and AI equity research. ${financialSentence(company)} ${reportText}`;
+}
+
+export function financialSentence(company) {
+  const marketCurrency = company.marketCurrency || company.currency;
+  return `For financial year ${company.financialYear}, Valuatum's model shows revenue of ${formatMillions(company.metrics.revenue, company.currency)} and operating profit of ${formatMillions(company.metrics.ebit, company.currency)}; the year-end share price was ${formatPrice(company.metrics.sharePrice, marketCurrency)} and market capitalisation was ${formatMillions(company.metrics.marketCap, marketCurrency)}.`;
+}
+
+export function sourcesSentence(company, name) {
+  return `Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent financial year ${company.financialYear}.`;
 }
 
 function metricCell(metric) {
@@ -274,7 +288,7 @@ function sourcesSection(company) {
   const name = companyDisplayName(company);
   return `<section class="report-full-section" id="sources">
           <h2>Sources &amp; methodology</h2>
-          <p>Financial figures are sourced from Valuatum's financial model for ${esc(name)} and represent financial year ${company.financialYear}. See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
+          <p>${sourcesSentence(company, name)} See the <a href="/methodology.html">methodology</a> for the full Valuatum AI equity research framework.</p>
           <div style="background:var(--off-white); border-radius:var(--r-lg); padding:1.25rem 1.5rem; margin-top:1.25rem; border-left:3px solid var(--gray-steel);">
             <p style="font-size:var(--text-sm); color:var(--gray-steel); margin:0;"><strong>Disclaimer:</strong> This is an AI-generated research material for informational purposes only. It is not investment advice or a buy/sell recommendation. Always perform your own analysis. Valuatum Oy, Helsinki, Finland.</p>
           </div>

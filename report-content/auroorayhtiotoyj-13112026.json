@@ -81,13 +81,13 @@
       "name": "Industrial products and services",
       "share": "2.90 EUR per share",
       "economics": "12.0x 2028 operating profit · EUR 7m forecast operating profit · peers 10.0x-11.3x, median 10.1x",
-      "text": "Industrial products and services sells specialist industrial products and provides technical and maintenance services to manufacturers, process industries and infrastructure customers. Outside sales were EUR 57m in 2025, while the split assigns EUR 86m of sales and EUR 7m of operating profit in 2028, an 8% margin. The price assigns 2.90 EUR per share at 12.0x operating profit, above Konecranes at 10.0x, Valmet at 10.1x and Instalco at 11.3x. The premium rests on specialist acquired companies and the possibility that profit grows into the price. Segment sales grew 87.9% in 2025, while Suomen Teknohaus contributed a niche Finnish piping business with a 38-year history. Trading remains uneven: adjusted EBITA margin was 2.9% in the first quarter of 2026 and 14.6% in the second. Labko, Coating Source and BRIX Facades add further execution evidence."
+      "text": "Industrial products and services sells specialist products and provides technical and maintenance services to manufacturers, process industries and infrastructure customers. Outside sales were EUR 57m in 2025; the split assigns EUR 86m sales and EUR 7m operating profit in 2028, an 8% margin. The price assigns 2.90 EUR per share at 12.0x operating profit, above peers at 10.0x-11.3x and their 10.1x median. The premium rests on acquired specialists: segment sales grew 87.9% in 2025 and Suomen Teknohaus has a 38-year history in Finnish special piping. Adjusted EBITA margins of 2.9% in Q1 2026 and 14.6% in Q2 show uneven trading. Coating Source and BRIX Facades are acquisition tests for this business. Separately, Labko was expected to close by year-end, but Auroora had not disclosed which segment it would join."
     },
     {
       "name": "Water and environment",
       "share": "0.05 EUR per share",
       "economics": "23.3x 2028 operating profit · approximately EUR 0m forecast operating profit · peers 8.9x-23.3x, median 17.8x",
-      "text": "Water and environment sells water-treatment and circular-economy solutions and related services to industrial and municipal customers. Outside sales were EUR 16m in 2025, including Operon's operation of nine Finnish treatment plants serving wastewater equivalent to about 250,000 people. The split assigns EUR 25m of sales and approximately EUR 0m of operating profit in 2028, roughly break-even after a 2025 adjusted loss of about 1.2% on outside sales. The price assigns only 0.05 EUR per share, but that amount equates to 23.3x a near-zero profit, matching the highest peer, Pentair. A EUR 28.9m segment backlog at December 2025 and a pro forma adjusted EBITA margin of 2.3% provide possible operating leverage. Rasmix added about EUR 5.0m of 2025 revenue, while Labko could add about EUR 10.5m if it closes and is allocated to this segment."
+      "text": "Water and environment sells water-treatment and circular-economy solutions and related services to industrial and municipal customers. Outside sales were EUR 16m in 2025; Operon ran nine Finnish treatment plants serving wastewater equivalent to about 250,000 people. The split assigns EUR 25m of 2028 sales at approximately break-even, after a 2025 adjusted loss of about 1.2% on outside sales. The price assigns 0.05 EUR per share at 23.3x a near-zero profit, matching the highest peer, Pentair. The EUR 28.9m backlog at December 2025 and 2.3% pro forma adjusted EBITA margin suggest possible operating leverage. Rasmix, acquired in January 2026, had about EUR 5.0m of revenue in 2025 and was placed in this segment. Labko has about EUR 10.5m of 2025 revenue and was expected to close by year-end, but Auroora had not disclosed which segment it would join; it is not allocated to this pool."
     }
   ],
   "coreAnalysis": [
@@ -107,14 +107,14 @@
   "risks": [
     "Project-margin compression (Electrical systems): poorly priced or delayed contracts could leave the EUR 121.5m backlog adding sales without proportionate profit, with the operating margin as the early warning.",
     "Forecast shortfall (all businesses): 2026 sales below EUR 267m or second-half adjusted operating profit below EUR 9m would reduce the forecast profit base, with quarterly sales and operating profit as the early warning.",
-    "Acquisition execution (Industrial products and services): Labko, Coating Source and BRIX Facades may add revenue without comparable profit, with segment margin after each closing as the early warning.",
+    "Acquisition execution (whole company): Labko, Coating Source or BRIX Facades may add sales without comparable operating profit, with post-closing segment revenue and margins as early warnings.",
     "Public-sector pricing pressure (Water and environment): equipment deliveries could keep the segment near its 2025 adjusted loss despite EUR 25m forecast 2028 sales, with adjusted segment profit as the early warning.",
     "Uneven trading (Industrial products and services): quarterly adjusted EBITA margins of 2.9% and 14.6% show that delivery reliability and efficiency can materially change profit, with the next quarterly margin as the early warning."
   ],
   "catalysts": [
     "2026 results (near-term, all businesses): about EUR 9m of second-half adjusted operating profit would complete analysts' EUR 13m full-year forecast.",
     "Backlog conversion (near-term, Electrical systems): delivery of the EUR 121.5m backlog at margins near the 6.8% adjusted pro forma EBITA level would support the EUR 10m 2028 operating-profit allocation.",
-    "Labko closing (near-term, Industrial products and services or Water and environment): completion by the end of 2026 with profitable sales would increase the relevant business's operating profit.",
+    "Labko closing (near-term, whole company): completion expected by year-end would bring a business with about EUR 10.5m of 2025 revenue; Auroora had not specified which segment it would join.",
     "Coating Source closing (near-term, Industrial products and services): the expected November 2026 completion would test whether acquired EUR 6m 2025 revenue arrives with an adequate margin.",
     "Margin improvement (medium-term, Water and environment): sales near EUR 25m with a margin above zero would move the near-zero profit base toward the listed peer comparison."
   ],
@@ -675,49 +675,57 @@
     },
     "ratios": {
       "columns": [
-        "2026E"
+        "2026E",
+        "2027E"
       ],
       "rows": [
         {
           "label": "P/E",
           "values": [
-            "48.8x"
+            "48.8x",
+            "25.6x"
           ]
         },
         {
           "label": "EV/EBITDA",
           "values": [
-            "13.7x"
+            "13.7x",
+            "11.3x"
           ]
         },
         {
           "label": "P/BV",
           "values": [
-            "4.2x"
+            "4.2x",
+            "—"
           ]
         },
         {
           "label": "EBIT margin",
           "values": [
-            "4.9%"
+            "4.9%",
+            "—"
           ]
         },
         {
           "label": "ROE",
           "values": [
-            "9.0%"
+            "9.0%",
+            "—"
           ]
         },
         {
           "label": "Dividend Yield",
           "values": [
-            "n/a"
+            "n/a",
+            "—"
           ]
         },
         {
           "label": "Net Debt / EBITDA",
           "values": [
-            "2.1x"
+            "2.1x",
+            "1.6x"
           ]
         }
       ]
