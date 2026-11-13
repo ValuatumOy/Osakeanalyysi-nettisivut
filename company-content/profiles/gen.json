@@ -1,10 +1,13 @@
 {
   "ticker": "GEN",
   "companyName": "Gen Digital Inc.",
-  "profile": "Gen Digital provides consumer cybersecurity, online privacy, identity protection and financial wellness products through brands including Norton, Avast, LifeLock and MoneyLion. Its offerings include free and paid subscription services, personal finance products, tools and content, distributed through direct sales, partner relationships, mobile applications and marketplaces. The excerpt identifies individuals, families and small businesses as audiences for its digital and financial solutions.",
-  "provider": "codex",
+  "profile": "Gen Digital provides consumer technology products for digital security, online privacy, identity protection and personal finance. Its brands include Norton, Avast, LifeLock, MoneyLion and Engine. The company offers software and services that help individuals protect devices and personal information, monitor identity-related risks and manage aspects of their financial lives.",
+  "provider": "editorial",
   "model": "gpt-6-luna",
   "promptVersion": 2,
-  "generatedAt": "2026-11-13T11:38:58.040Z",
-  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/849399/000084939926000017/gen-20260403.htm"
+  "generatedAt": "2026-11-13T12:11:01.345Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/849399/000084939926000017/gen-20260403.htm",
+  "profileSources": [
+    "https://newsroom.gendigital.com/gen"
+  ]
 }

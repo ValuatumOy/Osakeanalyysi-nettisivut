@@ -537,7 +537,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "MO",
     "exchange": "Listed",
     "url": "reports/altria-group-equity-report.html",
-    "description": "The excerpt describes Altria’s corporate goals, organizational initiatives, and discussion of tobacco market conditions, but does not identify its main business, products, services, or customers. It refers to U.S. tobacco and nicotine products, including smoke-free products, and adult nicotine consumers, but does not provide enough business description to characterize the company’s operations more specifically."
+    "description": "Altria owns U.S. tobacco and nicotine businesses. Its operating companies manufacture and market cigarettes and machine-made cigars, as well as oral tobacco, nicotine pouches and e-vapor products. Its portfolio includes Philip Morris USA, U.S. Smokeless Tobacco Company, John Middleton, Helix Innovations and NJOY. The group serves adult tobacco and nicotine consumers through its brands."
   },
   {
     "name": "AlzeCure Pharma",
@@ -1335,7 +1335,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "BMRN",
     "exchange": "Listed",
     "url": "reports/biomarin-pharmaceutical-equity-report.html",
-    "description": "BioMarin is a biotechnology company focused on medicines for people with genetically defined conditions and rare diseases. It develops and commercializes therapies through internal research, partnerships and acquisitions. Its portfolio includes commercial therapies and a clinical and preclinical pipeline. The excerpt identifies patients with serious or life-threatening rare diseases and medical conditions as the intended beneficiaries of its medicines."
+    "description": "BioMarin develops and commercializes medicines for rare and genetically defined diseases. Its portfolio includes approved therapies and research programs spanning clinical and preclinical development. The company uses genetic and enzyme technologies in drug discovery and works to bring treatments to patients through its commercial operations and healthcare providers in multiple countries."
   },
   {
     "name": "BioPorto",
@@ -1916,7 +1916,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "CELH",
     "exchange": "Listed",
     "url": "reports/celsius-holdings-equity-report.html",
-    "description": "Celsius Holdings operates in the energy drink industry and develops beverages for wellness-focused consumers, fitness enthusiasts, and people seeking added functionality in drinks, while also appealing to a broad consumer base. Pepsi plays a central role in distributing and commercializing its products. The excerpt describes the company’s products as beverages but does not specify individual product lines."
+    "description": "Celsius Holdings develops and markets functional beverages, including energy drinks. Its portfolio includes the CELSIUS and Alani Nu brands and the North American Rockstar Energy business. The company sells its products through retail and other distribution channels, serving consumers seeking energy drinks and other functional beverages across its markets."
   },
   {
     "name": "Cemat",
@@ -3211,14 +3211,14 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "EXEL",
     "exchange": "Listed",
     "url": "reports/exelixis-equity-report.html",
-    "description": "Exelixis develops and markets medicines, including cabozantinib products such as CABOMETYX. Its business includes protecting patents for marketed products and addressing applications by companies seeking approval for generic or other competing versions. The excerpt describes CABOMETYX tablets and other cabozantinib formulations, but does not specify the patients or conditions treated by these products."
+    "description": "Exelixis is an oncology company that discovers, develops and commercializes medicines for cancer. Its U.S. portfolio includes CABOMETYX and COMETRIQ, while partners including Ipsen and Takeda commercialize certain products in other territories. The company also advances clinical and research programs, including drug candidates and combination regimens for different cancer types."
   },
   {
     "name": "Exelon",
     "ticker": "EXC",
     "exchange": "Listed",
     "url": "reports/exelon-equity-report.html",
-    "description": "The provided excerpt describes Exelon and other utility registrants primarily through risks and regulatory matters. It refers to utility operations involving energy delivery systems and customer energy consumption, as well as smart grid, distributed energy resources, and energy efficiency programs. The excerpt does not provide enough supported information to specify Exelon’s main products, services, or customer groups."
+    "description": "Exelon is a U.S. utility company whose regulated businesses distribute electricity and natural gas. Its six regional utilities are Atlantic City Electric, Baltimore Gas and Electric, ComEd, Delmarva Power, PECO and Pepco. They operate and maintain energy networks serving residential, commercial and other customers in their respective service areas."
   },
   {
     "name": "ExpreS2ion Biotech Holding",
@@ -3673,7 +3673,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "GEN",
     "exchange": "Listed",
     "url": "reports/gen-digital-equity-report.html",
-    "description": "Gen Digital provides consumer cybersecurity, online privacy, identity protection and financial wellness products through brands including Norton, Avast, LifeLock and MoneyLion. Its offerings include free and paid subscription services, personal finance products, tools and content, distributed through direct sales, partner relationships, mobile applications and marketplaces. The excerpt identifies individuals, families and small businesses as audiences for its digital and financial solutions."
+    "description": "Gen Digital provides consumer technology products for digital security, online privacy, identity protection and personal finance. Its brands include Norton, Avast, LifeLock, MoneyLion and Engine. The company offers software and services that help individuals protect devices and personal information, monitor identity-related risks and manage aspects of their financial lives."
   },
   {
     "name": "General Dynamics",
@@ -6781,7 +6781,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "PEP",
     "exchange": "Listed",
     "url": "reports/pepsico-equity-report.html",
-    "description": "The provided excerpt does not describe PepsiCo’s main business, products, services, or customers. It refers to a business section elsewhere in the filing and discusses relationships with vendors and customers, commodity and supply-chain risks, climate regulation, and international operations, but provides no supported description of the company’s offerings. A factual company profile cannot be written from this excerpt alone."
+    "description": "PepsiCo produces and sells foods and beverages across international markets. Its portfolio includes snacks, cereals, soft drinks and sports drinks under brands such as Lay’s, Doritos, Cheetos, Quaker, Pepsi-Cola and Gatorade. The company manufactures and distributes products through its own operations and partners, serving consumers through retail and foodservice channels."
   },
   {
     "name": "Per Aarsleff Holding",

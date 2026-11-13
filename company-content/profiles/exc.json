@@ -1,10 +1,13 @@
 {
   "ticker": "EXC",
   "companyName": "Exelon Corporation",
-  "profile": "The provided excerpt describes Exelon and other utility registrants primarily through risks and regulatory matters. It refers to utility operations involving energy delivery systems and customer energy consumption, as well as smart grid, distributed energy resources, and energy efficiency programs. The excerpt does not provide enough supported information to specify Exelon’s main products, services, or customer groups.",
-  "provider": "codex",
+  "profile": "Exelon is a U.S. utility company whose regulated businesses distribute electricity and natural gas. Its six regional utilities are Atlantic City Electric, Baltimore Gas and Electric, ComEd, Delmarva Power, PECO and Pepco. They operate and maintain energy networks serving residential, commercial and other customers in their respective service areas.",
+  "provider": "editorial",
   "model": "gpt-6-luna",
   "promptVersion": 2,
-  "generatedAt": "2026-11-13T11:34:53.333Z",
-  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1109357/000110935726000018/exc-20251231.htm"
+  "generatedAt": "2026-11-13T12:11:01.344Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1109357/000110935726000018/exc-20251231.htm",
+  "profileSources": [
+    "https://www.exeloncorp.com/companies"
+  ]
 }
