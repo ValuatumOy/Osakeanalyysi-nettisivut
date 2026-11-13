@@ -73,6 +73,7 @@ jobs:
           git config user.name "report-pages-sync"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Report pages: sync with the live catalog"
+          bash scripts/finalize-page-freshness.sh
           git push
 
       # After the good work is committed: a failed extraction means a live report has no page

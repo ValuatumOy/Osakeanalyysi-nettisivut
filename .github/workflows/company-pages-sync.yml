@@ -77,4 +77,5 @@ jobs:
           git config user.name "company-pages-sync"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Company pages: sync figures with the Wisdom model"
+          bash scripts/finalize-page-freshness.sh
           git push
