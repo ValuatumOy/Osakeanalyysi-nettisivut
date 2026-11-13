@@ -116,6 +116,15 @@ test('a listing outside current coverage is not updated', async () => {
   assert.equal(await read(dir, 'reports/test-equity-report.html'), html);
 });
 
+test('a corrected order ticker is used for lookup while the page ISIN still guards identity', async () => {
+  const html = page(base, { ticker: 'TEST' }).replace('data-ticker="TEST"', 'data-ticker="TEST.HE"');
+  const dir = await site(html);
+  const ok = await syncCompanyPages({ client: client({ ...base, ebit: 115 }), rootDir: dir, now: NOW });
+  assert.equal(ok.results[0].status, 'update');
+  const mismatch = await syncCompanyPages({ client: client(base, { isin: 'SE0000000000' }), rootDir: dir, now: NOW });
+  assert.match(mismatch.results[0].reason, /differs from page ISIN/);
+});
+
 test('risky updates are skipped, not written', async () => {
   const cases = [
     [client(base, { isin: 'SE0000000000' }), /differs from page ISIN/],

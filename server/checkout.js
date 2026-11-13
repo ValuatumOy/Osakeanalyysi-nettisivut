@@ -10,7 +10,8 @@
 // against the same covered-company search as the report picker before charging.
 
 const { getStripePricing, includedRevisions } = require('./stripe-pricing');
-const { searchCompanies, isCoveredTicker } = require('./search');
+const { isCoveredTicker } = require('./search');
+const { searchCompaniesUpstream } = require('./company-search-upstream');
 
 const MAX_EXTRA_ROUNDS = 10;
 
@@ -204,19 +205,26 @@ function freshReportCopy(company, ticker, withRevisions, included) {
 
 // A report generated on demand for a company, with or without revisions.
 async function createFreshReportCheckout(stripe, order = {}) {
-  if (!String(order.company || '').trim()) throw new CheckoutError(400, 'Company name required');
+  const requestedCompany = String(order.company || '').trim();
+  if (!requestedCompany) throw new CheckoutError(400, 'Company name required');
   const ticker = String(order.ticker || '').trim().toUpperCase();
   if (!ticker) throw new CheckoutError(400, 'Select a company from the search results before ordering.');
   if (!isCoveredTicker(ticker)) {
     throw new CheckoutError(400, 'Fresh reports are not available for this listing yet. You can request coverage on the reports page.');
   }
-  let results;
+  let match;
   try {
-    results = await searchCompanies(ticker);
+    const results = await searchCompaniesUpstream(ticker);
+    match = results.find(item => item.ticker.toUpperCase() === ticker);
+    // A short ticker can be hidden by the upstream's prefix-result limit.
+    // Retry by name, but still require the exact ticker before charging.
+    if (!match && requestedCompany.toUpperCase() !== ticker) {
+      const byName = await searchCompaniesUpstream(requestedCompany);
+      match = byName.find(item => item.ticker.toUpperCase() === ticker);
+    }
   } catch {
     throw new CheckoutError(503, 'Company lookup is temporarily unavailable. Please try again shortly.');
   }
-  const match = results.find(item => item.ticker.toUpperCase() === ticker);
   if (!match) throw new CheckoutError(400, 'This listing is not covered for fresh reports. Select a company from the search results or request coverage.');
   const company = match.companyName;
   const withRevisions = Boolean(order.withRevisions);

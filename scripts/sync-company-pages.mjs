@@ -53,7 +53,7 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
     const page = readPage(file, html);
     if (!page.skip && reviewedPages.has(file)) page.skip = 'filing-reviewed page needs a person';
     if (!page.skip && !page.modelWording) page.skip = 'non-model source needs a person';
-    if (!page.skip && !isCoveredTicker(page.ticker)) page.skip = 'listing is outside current coverage';
+    if (!page.skip && !isCoveredTicker(page.orderTicker || page.ticker)) page.skip = 'listing is outside current coverage';
     if (page.skip) results.push({ file, status: 'skipped', reason: page.skip });
     else pages.push(page);
   }
@@ -62,7 +62,7 @@ export async function syncCompanyPages({ client, rootDir = ROOT, write = false, 
   await mapLimit(pages, CONCURRENCY, async (page) => {
     let company;
     try {
-      const source = await client.findCompanyByTicker(aliases.get(page.file) || page.ticker);
+      const source = await client.findCompanyByTicker(page.orderTicker || aliases.get(page.file) || page.ticker);
       company = normalizeCompanyData(source, selectPrimaryModel(await client.getLatestActualModels(source)));
     } catch (error) {
       errors += 1;
@@ -153,10 +153,11 @@ export function readPage(file, html) {
   const year = Number(sentence[0][0].match(/\d{4}/)[0]);
   const cells = [...grid[0][0].matchAll(/<span class="cp-v">([^<]*)<\/span>/g)].map((match) => match[1]);
   if (cells.length !== 6) return { skip: 'unrecognised metrics grid' };
-  // A page whose figures came from a filing review says so; it returns to the model wording
-  // even when the rounded figures happen to agree.
+  // A page whose figures came from a filing review is not rewritten automatically.
   const modelWording = sentence[0][0].includes("Valuatum's model shows") && !/checked against the|Available financial figures for FY/.test(html);
-  return { file, html, ticker: entity.tickerSymbol, isin: String(entity.identifier).toUpperCase(), name: entity.name, year, cells, modelWording };
+  const orderTag = (html.match(/<[^>]*\bdata-generate-report\b[^>]*>/i) || [])[0] || '';
+  const orderTicker = (orderTag.match(/\bdata-ticker="([^"]+)"/i) || [])[1] || '';
+  return { file, html, ticker: entity.tickerSymbol, orderTicker, isin: String(entity.identifier).toUpperCase(), name: entity.name, year, cells, modelWording };
 }
 
 function skipReason(page, company) {
