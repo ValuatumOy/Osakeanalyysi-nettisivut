@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
+process.env.WISDOM_CACHE_TTL_MS = '-1';
 const checkout = require('../../server/checkout.js');
 const { CheckoutError, createReadyReportCheckout, createExtraRoundsCheckout, createFreshReportCheckout, cancelPath } = checkout;
 
@@ -28,6 +29,18 @@ function fakeStripe({ products = [] } = {}) {
 function product(kind, unitAmount) {
   const slug = kind.replace(/-/g, '');
   return { id: `prod_${slug}`, metadata: { kind }, default_price: { id: `price_${slug}`, unit_amount: unitAmount, currency: 'eur' } };
+}
+
+function wisdomReturns(rows, t) {
+  const originalFetch = global.fetch;
+  const originalToken = process.env.WISDOM_API_TOKEN;
+  process.env.WISDOM_API_TOKEN = 'test-token';
+  global.fetch = async () => ({ ok: true, status: 200, async json() { return rows; } });
+  t.after(() => {
+    global.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.WISDOM_API_TOKEN;
+    else process.env.WISDOM_API_TOKEN = originalToken;
+  });
 }
 
 const ALL_PRODUCTS = [
@@ -129,10 +142,11 @@ test('a standard ready report falls back to an inline amount when Stripe has no 
   }
 });
 
-test('ready+/fresh+ include two revisions by default and a free report three', async () => {
+test('ready+/fresh+ include two revisions by default and a free report three', async (t) => {
+  wisdomReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
   await createReadyReportCheckout(stripe, paidReport, { withRevisions: true });
-  await createFreshReportCheckout(stripe, { company: 'Nokia', withRevisions: true });
+  await createFreshReportCheckout(stripe, { company: 'Nokia', ticker: 'NOKIA.HE', withRevisions: true });
   await createReadyReportCheckout(stripe, freeReport, { withRevisions: true });
   assert.equal(stripe.created[0].metadata.revisionsAllowed, '2');
   assert.equal(stripe.created[1].metadata.revisionsAllowed, '2');
@@ -140,11 +154,12 @@ test('ready+/fresh+ include two revisions by default and a free report three', a
   assert.deepEqual(stripe.created[1].line_items, [{ price: 'price_freshrevisions', quantity: 1 }]);
 });
 
-test('the env fallbacks apply per kind', async () => {
+test('the env fallbacks apply per kind', async (t) => {
+  wisdomReturns([{ companyName: 'Nokia', ticker: 'NOKIA.HE' }], t);
   process.env.REPORT_REVISIONS_INCLUDED = '5';
   process.env.FREE_REPORT_REVISIONS_INCLUDED = '4';
   const stripe = fakeStripe({ products: ALL_PRODUCTS });
-  await createFreshReportCheckout(stripe, { company: 'Nokia', withRevisions: true });
+  await createFreshReportCheckout(stripe, { company: 'Nokia', ticker: 'NOKIA.HE', withRevisions: true });
   await createReadyReportCheckout(stripe, freeReport, { withRevisions: true });
   assert.equal(stripe.created[0].metadata.revisionsAllowed, '5');
   assert.equal(stripe.created[1].metadata.revisionsAllowed, '4');
@@ -163,6 +178,66 @@ test('a fresh order needs a company name', async () => {
     () => createFreshReportCheckout(fakeStripe(), { company: '  ' }),
     (err) => err instanceof CheckoutError && err.status === 400,
   );
+});
+
+test('a fresh order needs a selected ticker before creating a checkout', async () => {
+  const stripe = fakeStripe();
+  await assert.rejects(
+    () => createFreshReportCheckout(stripe, { company: 'Nokia' }),
+    err => err instanceof CheckoutError && err.status === 400 && /Select a company/.test(err.message),
+  );
+  assert.equal(stripe.created.length, 0);
+});
+
+test('fresh checkout resolves approved US and Nordic/Baltic listings and uses the canonical company', async (t) => {
+  const tickers = ['TSLA', 'NOKIA.HE', 'VOLV-B.ST', 'EQNR.OL', 'NOVO-B.CO', 'SFG1T.TL'];
+  wisdomReturns(tickers.map(ticker => ({ companyName: `Canonical ${ticker}`, ticker })), t);
+  for (const ticker of tickers) {
+    const stripe = fakeStripe({ products: ALL_PRODUCTS });
+    await createFreshReportCheckout(stripe, {
+      company: 'Client-supplied name', ticker: ` ${ticker.toLowerCase()} `,
+      email: 'buyer@example.com', source: 'coverage', returnTo: '/reports/example-equity-report.html',
+    });
+    assert.equal(stripe.created.length, 1);
+    assert.equal(stripe.created[0].metadata.company, `Canonical ${ticker}`);
+    assert.equal(stripe.created[0].metadata.ticker, ticker);
+    assert.equal(stripe.created[0].metadata.source, 'coverage');
+    assert.equal(stripe.created[0].customer_email, 'buyer@example.com');
+    assert.equal(stripe.created[0].cancel_url, 'https://site.example/reports/example-equity-report.html');
+  }
+});
+
+test('fresh checkout refuses unsupported listings before a Stripe session even if Wisdom knows them', async (t) => {
+  wisdomReturns([{ companyName: 'Ferrari', ticker: 'RACE.MI' }, { companyName: 'Rheinmetall', ticker: 'RHM.DE' }], t);
+  for (const ticker of ['RACE.MI', 'RHM.DE', 'FARN.L']) {
+    const stripe = fakeStripe();
+    await assert.rejects(
+      () => createFreshReportCheckout(stripe, { company: 'Example', ticker }),
+      err => err instanceof CheckoutError && err.status === 400 && /request coverage/.test(err.message),
+    );
+    assert.equal(stripe.created.length, 0);
+  }
+});
+
+test('an approved suffix alone cannot create a checkout for a missing or prefix-only Wisdom match', async (t) => {
+  wisdomReturns([{ companyName: 'Different share class', ticker: 'MISSING-A' }], t);
+  const stripe = fakeStripe();
+  await assert.rejects(
+    () => createFreshReportCheckout(stripe, { company: 'Missing', ticker: 'MISSING' }),
+    err => err instanceof CheckoutError && err.status === 400 && /not covered/.test(err.message),
+  );
+  assert.equal(stripe.created.length, 0);
+});
+
+test('a failed Wisdom lookup returns a retryable error without creating a Stripe session', async (t) => {
+  wisdomReturns([], t);
+  global.fetch = async () => { throw new Error('upstream unavailable'); };
+  const stripe = fakeStripe();
+  await assert.rejects(
+    () => createFreshReportCheckout(stripe, { company: 'Nokia', ticker: 'NOKIA.HE' }),
+    err => err instanceof CheckoutError && err.status === 503 && /try again/.test(err.message),
+  );
+  assert.equal(stripe.created.length, 0);
 });
 
 test('extra rounds use the extra-revision product and clamp the quantity', async () => {

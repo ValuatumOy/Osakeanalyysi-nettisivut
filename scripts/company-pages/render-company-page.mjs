@@ -1,5 +1,8 @@
 import { companyTitle } from '../seo-title.mjs';
 import { directoryBreadcrumbHtml, directoryBreadcrumbItems } from './directory-breadcrumb.mjs';
+import search from '../../server/search.js';
+
+const { isCoveredTicker } = search;
 
 const SITE = 'https://www.aiequityreports.com';
 const NEW_REPORT_PRICE = 50;
@@ -41,6 +44,8 @@ export function renderCompanyPage(company, relatedCompanies = [], generatedOn = 
   const url = `${SITE}/reports/${slug}.html`;
   const date = toIsoDate(generatedOn);
   const readyReport = options.readyReport || null;
+  const canGenerateFresh = isCoveredTicker(company.ticker);
+  const coverageUrl = `/reports.html?search=${encodeURIComponent(`${name}, ${company.ticker}`)}#coverage-request`;
   const description = `${name} (${company.ticker}) financial overview for ${company.financialYear}: ${FINANCIAL_FIELDS}.`;
   const metrics = metricDefinitions(company);
   const relatedScore = (item) =>
@@ -148,7 +153,7 @@ ${navHtml()}
           </div>
           <div class="company-header-actions">
             ${readyReport ? headerReportCta(readyReport) : ''}
-            <a href="#generate" class="btn btn-gold">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+            <a href="#generate" class="btn btn-gold">${canGenerateFresh ? `Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}` : 'Request coverage'}</a>
             <a href="#analyst-reports" class="btn btn-gold analyst-jump" data-analyst-jump style="font-size:var(--text-xs);">Analyst reports</a>
           </div>
         </div>
@@ -179,11 +184,11 @@ ${navHtml()}
 
         <section class="report-full-section" id="generate">
           <div class="company-generate-card" style="background:var(--forest); border-radius:var(--r-xl); padding:2rem; color:white;">
-            <h2 style="color:white; margin-top:0;">${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report</h2>
-            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`}</p>
+            <h2 style="color:white; margin-top:0;">${canGenerateFresh ? `${readyReport ? 'Or generate new' : 'Generate the'} ${esc(name)} report` : `Request ${esc(name)} coverage`}</h2>
+            <p style="color:rgba(255,255,255,0.8); font-weight:300;">${canGenerateFresh ? (readyReport ? `Generate a new ${esc(name)} report with the latest available data for a refreshed company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.` : `${esc(name)} is on Valuatum's coverage list, but a full AI equity report hasn't been generated yet. Order one now for the complete company value map, reverse valuation, risk &amp; catalyst analysis, and financial statements and estimates &mdash; plus a downloadable PDF.`) : 'Fresh report generation is not currently available for this listing. Request coverage and we will let you know when it becomes available.'}</p>
             <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
-              <a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
-              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>
+              ${canGenerateFresh ? `<a href="#" class="btn btn-gold btn-lg" data-generate-report data-company="${attr(company.companyName)}" data-ticker="${attr(company.ticker)}">Generate fresh report &mdash; &euro;${NEW_REPORT_PRICE.toFixed(2)}</a>
+              <span style="font-size:var(--text-xs); color:rgba(255,255,255,0.6);">Delivered by email, usually within an hour</span>` : `<a href="${attr(coverageUrl)}" class="btn btn-gold btn-lg">Request coverage</a>`}
             </div>
           </div>
         </section>
@@ -231,9 +236,12 @@ export function metricDefinitions(company) {
 }
 
 function companyOverview(company, name, readyReport = null) {
+  const canGenerateFresh = isCoveredTicker(company.ticker);
   const reportText = readyReport
-    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'} or generate a fresh report with the latest available data.`
-    : `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`;
+    ? `A completed ${name} AI equity report is available from ${readyReport.reportDateLabel || formatReportDate(readyReport.reportDate)}; you can ${readyReport.isFree ? 'download the ready PDF for free' : 'buy the ready PDF'}${canGenerateFresh ? ' or generate a fresh report with the latest available data.' : '. Fresh report generation is not currently available for this listing. You can request coverage.'}`
+    : canGenerateFresh
+      ? `${name} is covered by Valuatum but does not yet have a published AI equity report. Generate a fresh report to get ${name}'s valuation, segment value analysis, reverse valuation, financial forecasts, key ratios, risks and catalysts.`
+      : 'Fresh report generation is not currently available for this listing. You can request coverage.';
   return `${name} (${company.ticker}) stock analysis and AI equity research. ${financialSentence(company)} ${reportText}`;
 }
 

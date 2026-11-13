@@ -6,10 +6,11 @@
 // at all). The functions now call these. The members Lambda shares the
 // extra-round builder for the same reason: two doors, one product, one price.
 //
-// Nothing here talks to the catalog or the orders table — callers look the
-// report up and pass it in, so this module needs only a Stripe client.
+// Ready-report callers pass the catalog entry in; fresh orders are resolved
+// against the same covered-company search as the report picker before charging.
 
 const { getStripePricing, includedRevisions } = require('./stripe-pricing');
+const { searchCompanies, isCoveredTicker } = require('./search');
 
 const MAX_EXTRA_ROUNDS = 10;
 
@@ -203,15 +204,28 @@ function freshReportCopy(company, ticker, withRevisions, included) {
 
 // A report generated on demand for a company, with or without revisions.
 async function createFreshReportCheckout(stripe, order = {}) {
-  const company = String(order.company || '').trim();
-  if (!company) throw new CheckoutError(400, 'Company name required');
+  if (!String(order.company || '').trim()) throw new CheckoutError(400, 'Company name required');
+  const ticker = String(order.ticker || '').trim().toUpperCase();
+  if (!ticker) throw new CheckoutError(400, 'Select a company from the search results before ordering.');
+  if (!isCoveredTicker(ticker)) {
+    throw new CheckoutError(400, 'Fresh reports are not available for this listing yet. You can request coverage on the reports page.');
+  }
+  let results;
+  try {
+    results = await searchCompanies(ticker);
+  } catch {
+    throw new CheckoutError(503, 'Company lookup is temporarily unavailable. Please try again shortly.');
+  }
+  const match = results.find(item => item.ticker.toUpperCase() === ticker);
+  if (!match) throw new CheckoutError(400, 'This listing is not covered for fresh reports. Select a company from the search results or request coverage.');
+  const company = match.companyName;
   const withRevisions = Boolean(order.withRevisions);
   const pricing = await getStripePricing(stripe, withRevisions ? 'fresh-revisions' : 'fresh', { bypassCache: true });
   const included = withRevisions ? includedRevisions(pricing) : 0;
 
   return stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    line_items: [lineItem(pricing, freshReportCopy(company, order.ticker, withRevisions, included))],
+    line_items: [lineItem(pricing, freshReportCopy(company, ticker, withRevisions, included))],
     mode: 'payment',
     allow_promotion_codes: true,
     ...taxParams(),
@@ -220,7 +234,7 @@ async function createFreshReportCheckout(stripe, order = {}) {
       site: SITE_TAG,
       isFresh: 'true',
       company,
-      ticker: order.ticker || '',
+      ticker,
       exchange: order.exchange || '',
       customerEmail: order.email || '',
       purpose: order.purpose || '',
