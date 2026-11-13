@@ -64,13 +64,6 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AB Electrolux is a global home appliance company that develops, markets, and sells refrigerators, freezers, ovens, cookers, dishwashers, washing machines, vacuum cleaners, and other household products. Its portfolio includes the Electrolux, AEG, and Frigidaire brands, and its value drivers include consumer demand, product innovation, brand strength, and sales across international markets."
   },
   {
-    "name": "Fagerhult Group AB",
-    "ticker": "FAG.ST",
-    "exchange": "Stockholm",
-    "url": "reports/ab-fagerhult-publ-equity-report.html",
-    "description": "Fagerhult Group AB is a Swedish lighting group that develops and sells professional lighting solutions for indoor and outdoor environments. Its portfolio spans brands and product platforms serving offices, schools, healthcare, retail and infrastructure applications. The company works with specifiers and local partners, with value driven by design, technical performance and tailored project solutions."
-  },
-  {
     "name": "AB Sagax",
     "ticker": "SAGA-B.ST",
     "exchange": "Stockholm",
@@ -90,6 +83,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/abas-protect-equity-report.html",
     "description": "ABAS Protect AB manufactures and installs perimeter protection solutions for industrial, construction and security environments. Its portfolio includes sliding, folding and swing gates, pedestrian gates, turnstiles, fences and related access control equipment, with products adapted to different security classes and Nordic conditions. The company also provides service and project support from its base in Ambjörnarp, Sweden."
+  },
+  {
+    "name": "AbbVie",
+    "ticker": "ABBV",
+    "exchange": "Listed",
+    "url": "reports/abbvie-equity-report.html",
+    "description": "AbbVie is a research-based biopharmaceutical company that discovers, develops, manufactures, markets, and sells medicines and therapies. Its portfolio spans immunology, neuroscience, oncology, and aesthetics, with products addressing autoimmune and other serious diseases. Examples include Skyrizi, a biologic therapy for several autoimmune conditions, and Rinvoq, an oral medicine for inflammatory diseases. The company organizes commercial activities by region or therapeutic area."
   },
   {
     "name": "ABL Group",
@@ -2087,13 +2087,6 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Crunchfish develops software for digital payments, centered on its Digital Cash platform, which provides patented layer-2 offline payment functionality for banks, payment service providers, and CBDC projects. The company also offers Blippit, an app terminal that links payment apps to POS systems. Revenue is driven by software licensing, integrations, and related services."
   },
   {
-    "name": "Omda",
-    "ticker": "OMDA.OL",
-    "exchange": "Oslo",
-    "url": "reports/csam-health-group-as-equity-report.html",
-    "description": "Omda AS, formerly CSAM Health Group, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety."
-  },
-  {
     "name": "CTEK",
     "ticker": "CTEK.ST",
     "exchange": "Stockholm",
@@ -2430,6 +2423,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Dustin Group AB is an online IT partner in the Nordics and Benelux that serves small and medium-sized businesses, large enterprises and the public sector. The company sells hardware and software and provides related services, including managed services, product lifecycle services, financing and support. It also emphasizes online sales and a growing share of service revenue."
   },
   {
+    "name": "Eagle Filters Group",
+    "ticker": "EAGLE.HE",
+    "exchange": "Helsinki",
+    "url": "reports/loudspring-equity-report.html",
+    "description": "Eagle Filters Group Oyj, formerly Loudspring, is a Finnish listed material science company focused on filtration and advanced fiber solutions. Its main products include high-performance filters for energy and industrial uses, advanced filtration materials, and respirators for health and safety customers. The company also owns securities and has described a shift toward a more industrial operating model."
+  },
+  {
     "name": "Eastnine",
     "ticker": "EAST.ST",
     "exchange": "Stockholm",
@@ -2577,6 +2577,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Elektroimportøren AS is a Norwegian specialty retailer and wholesaler of electrical equipment for private and professional customers. The company sells electrical installation materials, lighting, heating, ventilation and related products through physical stores, pick-up locations and online channels in Norway and Sweden. It also offers SpotOn, a digital service connecting customers with installers."
   },
   {
+    "name": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "exchange": "Listed",
+    "url": "reports/eli-lilly-and-company-equity-report.html",
+    "description": "Eli Lilly discovers, develops, manufactures, and markets human pharmaceutical products. Its medicines address cardiometabolic conditions, including diabetes and obesity, as well as cancer and other diseases. Products include insulin therapies and medicines such as Mounjaro, Zepbound, Cyramza, and Erbitux. The company distributes its products through facilities in the United States, Europe, and Asia, and sells them in countries worldwide."
+  },
+  {
     "name": "Elicera Therapeutics",
     "ticker": "ELIC.ST",
     "exchange": "Stockholm",
@@ -2624,13 +2631,6 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/elmera-group-equity-report.html",
     "description": "Elmera Group ASA is a Nordic energy group that serves consumers, businesses and the wholesale market in Norway, Sweden and Finland. Its activities include selling electricity and power contracts, billing and rating services, and electricity-related technology solutions. The group also operates through several brands and segments, including consumer, business, Nordic and new growth initiatives."
-  },
-  {
-    "name": "ININ Group",
-    "ticker": "ININ.OL",
-    "exchange": "Oslo",
-    "url": "reports/elop-as-equity-report.html",
-    "description": "ININ Group is a Norwegian industrial owner that invests in Nordic infrastructure services companies, including rail, power and infrastructure testing and inspection."
   },
   {
     "name": "Elopak",
@@ -2925,6 +2925,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/fabege-equity-report.html",
     "description": "Fabege AB is a Swedish property company focused on developing, owning and managing commercial real estate and selected housing in the Stockholm region. Its portfolio is concentrated in well-located submarkets such as Arenastaden, Solna Business Park, Stockholm city, Hammarby Sjöstad and Flemingsberg. Value is created through asset management, property refinement, project development and transactions."
+  },
+  {
+    "name": "Fagerhult Group AB",
+    "ticker": "FAG.ST",
+    "exchange": "Stockholm",
+    "url": "reports/ab-fagerhult-publ-equity-report.html",
+    "description": "Fagerhult Group AB is a Swedish lighting group that develops and sells professional lighting solutions for indoor and outdoor environments. Its portfolio spans brands and product platforms serving offices, schools, healthcare, retail and infrastructure applications. The company works with specifiers and local partners, with value driven by design, technical performance and tailored project solutions."
   },
   {
     "name": "Fantasma Games",
@@ -3977,6 +3984,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Infant Bacterial Therapeutics AB is a pharmaceutical company developing and commercializing medicines for diseases affecting premature infants. Its lead program, IBP-9414, is a bacterial strain-based drug candidate designed to prevent necrotizing enterocolitis and support gastrointestinal function. The company also advances additional candidates for gastroschisis, retinopathy of prematurity, and antibiotic-resistant hospital infections."
   },
   {
+    "name": "ININ Group",
+    "ticker": "ININ.OL",
+    "exchange": "Oslo",
+    "url": "reports/elop-as-equity-report.html",
+    "description": "ININ Group is a Norwegian industrial owner that invests in Nordic infrastructure services companies, including rail, power and infrastructure testing and inspection."
+  },
+  {
     "name": "Inission",
     "ticker": "INISS-B.ST",
     "exchange": "Stockholm",
@@ -4187,6 +4201,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "John Mattson Fastighetsföretagen is a Swedish residential property company focused on owning, managing and developing rental apartments and commercial premises in the Stockholm region and Uppsala. Its portfolio is concentrated in Lidingö, Sollentuna, Stockholm, Nacka and Upplands Väsby, with growth driven by property management, densification, value creation and acquisitions."
   },
   {
+    "name": "Johnson & Johnson",
+    "ticker": "JNJ",
+    "exchange": "Listed",
+    "url": "reports/johnson-and-johnson-equity-report.html",
+    "description": "Johnson & Johnson develops, manufactures, and sells healthcare products through its Innovative Medicine and MedTech segments. Its medicines address areas including cancer, immune disorders, neuroscience, infectious diseases, and cardiovascular conditions, and are distributed to retailers, wholesalers, hospitals, and healthcare professionals for prescription use. The company also supplies medical technologies through its MedTech business."
+  },
+  {
     "name": "JonDeTech Sensors",
     "ticker": "JDT.ST",
     "exchange": "Stockholm",
@@ -4264,18 +4285,18 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Karnov Group provides mission-critical information and workflow solutions for professionals in legal, tax, accounting, and environmental, health and safety fields. Its offerings combine editorial content, digital research tools, legal templates, compliance workflows, and related services across Nordic and other European markets. The company serves lawyers, accountants, and other professional users."
   },
   {
-    "name": "KDventures",
-    "ticker": "KDV",
-    "exchange": "Stockholm",
-    "url": "reports/karolinska-development-equity-report.html",
-    "description": "KDventures is a Nordic life sciences investment company focused on identifying medical innovations in the region and building companies around them. It invests in the creation and growth of portfolio companies developing treatments and other health-related products, and supports them through development, financing, commercialization, licensing, divestments and possible listings."
-  },
-  {
     "name": "KB Components",
     "ticker": "5G7.F",
     "exchange": "Listed",
     "url": "reports/kb-components-equity-report.html",
     "description": "KB Components AB (publ) designs, develops and manufactures injection-moulded polymer and composite components, together with related tooling, extrusion and assembly services. The company serves customers in light and heavy vehicles, medical technology, industrial applications, furniture, lighting and industrial windows, with production and technical support organized through an international manufacturing footprint."
+  },
+  {
+    "name": "KDventures",
+    "ticker": "KDV",
+    "exchange": "Stockholm",
+    "url": "reports/karolinska-development-equity-report.html",
+    "description": "KDventures is a Nordic life sciences investment company focused on identifying medical innovations in the region and building companies around them. It invests in the creation and growth of portfolio companies developing treatments and other health-related products, and supports them through development, financing, commercialization, licensing, divestments and possible listings."
   },
   {
     "name": "KebNi",
@@ -4367,6 +4388,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/kjell-group-equity-report.html",
     "description": "Kjell Group AB operates a Nordic retail and e-commerce business focused on electronic accessories and everyday technology products. Through Kjell & Company and the Av-Cables subsidiary, it sells cables, adapters and related accessories, and also provides advisory services and installation through its store network and online channels in Sweden, Norway and Denmark."
+  },
+  {
+    "name": "KLA",
+    "ticker": "KLAC",
+    "exchange": "Listed",
+    "url": "reports/kla-equity-report.html",
+    "description": "KLA supplies equipment, software, and services for electronics manufacturing. Its process control products include inspection, metrology, and software used by chip, wafer, reticle, and materials manufacturers to monitor production. It also sells deposition and etching tools for specialty semiconductors, and inspection and measurement systems for printed circuit boards, IC substrates, and packaged chips. Its services support maintenance and equipment uptime."
   },
   {
     "name": "KlaraBo Sverige",
@@ -4514,6 +4542,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/lagercrantz-group-equity-report.html",
     "description": "Lagercrantz Group is a technology group that develops and acquires niche businesses offering technical products and solutions to corporate customers. Its operations are organized in five divisions covering electrification, control and measurement, security and fire protection, specialized industrial products, and selected international niches. The group emphasizes customization, service, and value-added technical sales."
+  },
+  {
+    "name": "Lam Research",
+    "ticker": "LRCX",
+    "exchange": "Listed",
+    "url": "reports/lam-research-equity-report.html",
+    "description": "Lam Research supplies wafer fabrication equipment and services to semiconductor manufacturers. Its equipment supports deposition, etch, cleaning, and wafer-level packaging processes used to manufacture memory, logic, and other semiconductor devices. Customers include semiconductor memory, foundry, and integrated device manufacturers. Its products and services help customers fabricate chips used in mobile phones, computers, servers, wearables, vehicles, and data storage devices."
   },
   {
     "name": "Lammhults Design Group",
@@ -4724,13 +4759,6 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/loomis-equity-report.html",
     "description": "Loomis AB provides cash and payment services that support the movement, handling, storage and processing of cash. Its offerings include cash in transit, cash management services, ATM services, foreign exchange, automated cash-handling solutions and Loomis Pay. The company serves banks, retailers and other businesses through a decentralized network in multiple markets."
-  },
-  {
-    "name": "Eagle Filters Group",
-    "ticker": "EAGLE.HE",
-    "exchange": "Helsinki",
-    "url": "reports/loudspring-equity-report.html",
-    "description": "Eagle Filters Group Oyj, formerly Loudspring, is a Finnish listed material science company focused on filtration and advanced fiber solutions. Its main products include high-performance filters for energy and industrial uses, advanced filtration materials, and respirators for health and safety customers. The company also owns securities and has described a shift toward a more industrial operating model."
   },
   {
     "name": "Loyal Solutions",
@@ -4983,6 +5011,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/micro-systemation-equity-report.html",
     "description": "Micro Systemation AB, known as MSAB, develops software and related platforms for mobile device forensics. Its products are used by law enforcement, military, customs and forensic laboratories to extract, analyze and manage data from seized devices. The company also provides training and professional services through a global sales and distributor network."
+  },
+  {
+    "name": "Micron Technology",
+    "ticker": "MU",
+    "exchange": "Listed",
+    "url": "reports/micron-technology-equity-report.html",
+    "description": "Micron Technology develops and manufactures semiconductor memory and storage products, including DRAM, NAND, and NOR. It sells these as components, modules, solid-state drives, managed NAND, multi-chip packages, and wafers, and also offers system-level solutions combining memory, controllers, and firmware. Its products serve data center, computing, graphics, industrial, mobile, and automotive markets."
   },
   {
     "name": "Midsona",
@@ -5270,6 +5305,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/netel-holding-equity-report.html",
     "description": "Netel Holding AB is a Swedish infrastructure services company that develops and maintains critical infrastructure in telecom, power and infraservices. Its operations cover the full value chain from design and production to construction, maintenance and related civil works. The group serves customers in Sweden, Norway, Finland and Germany through local specialist businesses."
+  },
+  {
+    "name": "Netflix",
+    "ticker": "NFLX",
+    "exchange": "Listed",
+    "url": "reports/netflix-equity-report.html",
+    "description": "Netflix provides an entertainment service offering TV series, films, games, and live programming across genres and languages. Members can stream content and choose among subscription plans, including an ad-supported plan. The company earns most of its revenue from monthly membership fees for streaming services. Its content includes licensed programming and original productions, and it competes for viewers’ leisure time and access to entertainment content."
   },
   {
     "name": "Netum Group",
@@ -5699,6 +5741,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "NVIDIA is an accelerated computing company whose investment case is tied to AI data center GPUs, networking, software ecosystems, gaming, professional visualization and automotive platforms. The company page includes a ready paid AI equity report."
   },
   {
+    "name": "NYAB",
+    "ticker": "NYAB",
+    "exchange": "Stockholm",
+    "url": "reports/skartanyab-equity-report.html",
+    "description": "NYAB AB is a Nordic contractor that provides engineering, construction and maintenance services for infrastructure, industrial construction and energy projects. Its work includes civil engineering, consulting and project management for roads, railways, bridges, power networks and renewable energy facilities. The company operates in Sweden, Finland and Norway."
+  },
+  {
     "name": "Nykode Therapeutics AS",
     "ticker": "NYKD.OL",
     "exchange": "Oslo",
@@ -5788,6 +5837,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/olvi-equity-report.html",
     "description": "Olvi Oyj is a Finnish beverage company that produces and markets beer, cider, soft drinks, mineral water and energy drinks. The group operates mainly in Finland, the Baltic states, Denmark and Belarus through local business units. Its value drivers are a broad product portfolio, regional market positions and multi-local distribution."
+  },
+  {
+    "name": "Omda",
+    "ticker": "OMDA.OL",
+    "exchange": "Oslo",
+    "url": "reports/csam-health-group-as-equity-report.html",
+    "description": "Omda AS, formerly CSAM Health Group, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety."
   },
   {
     "name": "Oncopeptides",
@@ -5970,6 +6026,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/oxe-marine-equity-report.html",
     "description": "OXE Marine AB develops and sells diesel outboard engines for marine use, with products ranging from 150 to 300 horsepower. The company also offers related service and connectivity solutions, including remote diagnostics through OXE Connect. Its engines are aimed at commercial, governmental, and other demanding marine applications where fuel efficiency, torque, and durability matter."
+  },
+  {
+    "name": "Palantir Technologies",
+    "ticker": "PLTR",
+    "exchange": "Listed",
+    "url": "reports/palantir-technologies-equity-report.html",
+    "description": "Palantir builds software platforms that help organizations integrate data, decisions, and operations. Its platforms include Gotham for defense and intelligence missions, Foundry for data management, analytics, and workflows, Apollo for software delivery and infrastructure coordination, and AIP for connecting generative AI models with organizational data and operations. Its customers include government agencies, commercial enterprises, and other organizations."
   },
   {
     "name": "Pandora",
@@ -7076,13 +7139,6 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/skanska-equity-report.html",
     "description": "Skanska AB is a Swedish construction and project development group operating in the Nordics, Europe and the United States. It designs, builds and invests in infrastructure, buildings and communities through construction, residential development, commercial property development and related project development activities. Its value comes from large, complex projects and long-term development assets."
-  },
-  {
-    "name": "NYAB",
-    "ticker": "NYAB",
-    "exchange": "Stockholm",
-    "url": "reports/skartanyab-equity-report.html",
-    "description": "NYAB AB is a Nordic contractor that provides engineering, construction and maintenance services for infrastructure, industrial construction and energy projects. Its work includes civil engineering, consulting and project management for roads, railways, bridges, power networks and renewable energy facilities. The company operates in Sweden, Finland and Norway."
   },
   {
     "name": "SkiStar",

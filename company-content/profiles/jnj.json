@@ -1,0 +1,10 @@
+{
+  "ticker": "JNJ",
+  "companyName": "Johnson & Johnson",
+  "profile": "Johnson & Johnson develops, manufactures, and sells healthcare products through its Innovative Medicine and MedTech segments. Its medicines address areas including cancer, immune disorders, neuroscience, infectious diseases, and cardiovascular conditions, and are distributed to retailers, wholesalers, hospitals, and healthcare professionals for prescription use. The company also supplies medical technologies through its MedTech business.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:22:00.555Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
+}
