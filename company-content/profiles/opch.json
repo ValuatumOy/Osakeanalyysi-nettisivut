@@ -1,0 +1,10 @@
+{
+  "ticker": "OPCH",
+  "companyName": "Option Care Health, Inc.",
+  "profile": "Option Care Health provides infusion therapy at patients’ homes and alternate sites, including ambulatory infusion suites. Its services include clinical management, nursing support, care coordination, counseling, monitoring and reimbursement assistance. The company supplies intravenous pharmaceuticals and compounded solutions for anti-infective, nutrition, immunoglobulin and other acute and chronic therapies. It works with patients, physicians, hospitals, managed care organizations, payers and pharmaceutical manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.896Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1014739/000101473926000008/bios-20251231.htm"
+}

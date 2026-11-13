@@ -1,0 +1,10 @@
+{
+  "ticker": "ADTN",
+  "companyName": "ADTRAN Holdings, Inc.",
+  "profile": "ADTRAN Holdings supplies networking and communications platforms, hardware, software and services for broadband access, metro optical transport and data center interconnect. Its offerings include network infrastructure, customer premises equipment, network design and implementation, support, and cloud-hosted software applications. Customers include service providers, utilities, municipalities, fiber builders, cable operators, businesses, data center and content companies, and government agencies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:12.837Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/926282/000119312526073878/adtn-20251231.htm"
+}

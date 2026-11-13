@@ -1,0 +1,10 @@
+{
+  "ticker": "ERII",
+  "companyName": "Energy Recovery, Inc.",
+  "profile": "Energy Recovery designs and manufactures pressure exchanger technology and related energy-saving products for industrial and commercial processes. Its devices transfer pressure energy in pressurized fluids, supporting seawater reverse osmosis desalination and applications including wastewater treatment and carbon dioxide refrigeration. The company serves customers through a global direct sales team and on-site technical support staff.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.592Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1421517/000142151726000022/erii-20251231.htm"
+}

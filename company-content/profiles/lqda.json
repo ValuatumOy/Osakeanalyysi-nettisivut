@@ -1,0 +1,14 @@
+{
+  "ticker": "LQDA",
+  "companyName": "Liquidia Corporation",
+  "profile": "Liquidia develops and commercializes inhaled therapies for pulmonary and vascular diseases using its PRINT drug-particle technology. Its marketed product YUTREPIA is treprostinil inhalation powder approved for pulmonary arterial hypertension. The company is developing L606, an investigational extended-release treprostinil formulation for pulmonary hypertension, and studying YUTREPIA in additional conditions, including systemic sclerosis-associated Raynaud’s phenomenon.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.878Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819576/000110465926023804/lqda-20251231x10k.htm",
+  "profileSources": [
+    "https://investors.liquidia.com/news-releases/news-release-details/liquidia-corporation-reports-third-quarter-2026-financial",
+    "https://www.sec.gov/Archives/edgar/data/1819576/000110465926124752/lqda-20260930x10q.htm"
+  ]
+}

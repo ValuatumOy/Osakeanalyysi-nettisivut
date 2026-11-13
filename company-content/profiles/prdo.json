@@ -1,0 +1,10 @@
+{
+  "ticker": "PRDO",
+  "companyName": "Perdoceo Education Corporation",
+  "profile": "Perdoceo Education Corporation operates accredited academic institutions offering online, campus-based, and hybrid postsecondary programs. Its institutions provide associate through doctoral degrees, non-degree study, professional development, and continuing education. Programs cover areas including business, technology, criminal justice, nursing, and health sciences. Students include adult learners and members of the military community seeking career-focused education.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.929Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1046568/000119312526059331/prdo-20251231.htm"
+}

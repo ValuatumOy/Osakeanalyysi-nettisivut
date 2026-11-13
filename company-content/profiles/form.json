@@ -1,0 +1,10 @@
+{
+  "ticker": "FORM",
+  "companyName": "FormFactor, Inc.",
+  "profile": "FormFactor designs, manufactures, and sells semiconductor test and measurement products, including probe cards, analytical probes, probe stations, thermal systems, and cryogenic systems, along with related services. Its products provide electrical and optical information about semiconductor and electro-optical devices from research and development through production. Customers include semiconductor companies and scientific institutions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:34.866Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1039399/000103939926000009/form-20251227.htm"
+}

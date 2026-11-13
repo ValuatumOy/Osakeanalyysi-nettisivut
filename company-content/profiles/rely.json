@@ -1,0 +1,10 @@
+{
+  "ticker": "RELY",
+  "companyName": "Remitly Global, Inc.",
+  "profile": "Remitly provides cross-border financial services to consumers and businesses. Its platform primarily enables customers to send money internationally through a mobile app, website, or messaging services, and allows them to track transactions. Recipients can receive funds through its disbursement network. The company also describes offerings for high-amount senders, businesses, and receivers, building on global money movement.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.136Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1782170/000162828026009038/rely-20251231.htm"
+}

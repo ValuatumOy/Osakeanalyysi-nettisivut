@@ -1,0 +1,10 @@
+{
+  "ticker": "MTCH",
+  "companyName": "Match Group, Inc.",
+  "profile": "Match Group operates a portfolio of digital services designed to help people form social connections. Its brands include Tinder, Hinge, Match, Meetic, OkCupid, Pairs, Plenty of Fish, Azar, and BLK. The services use features such as profiles, search, recommendations, matching, and digital communication to serve users with differing preferences, backgrounds, locations, and relationship intentions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/891103/000089110326000025/mtch-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "EYE",
+  "companyName": "National Vision Holdings, Inc.",
+  "profile": "National Vision operates optical retail brands including America’s Best, Eyeglass World and Vista Optical locations in select Fred Meyer stores and military bases. It provides eye exams, eyeglasses and contact lenses through retail stores and consumer websites, including DiscountContacts.com. Its customers are consumers across income levels seeking access to eye care and eyewear, with stores also offering remote telehealth capabilities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.958Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1710155/000162828026014379/eye-20260103.htm"
+}

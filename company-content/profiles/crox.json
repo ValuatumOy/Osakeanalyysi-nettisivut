@@ -1,0 +1,10 @@
+{
+  "ticker": "CROX",
+  "companyName": "Crocs, Inc.",
+  "profile": "Crocs designs, develops, markets, distributes and sells casual lifestyle footwear and accessories worldwide through its Crocs and HEYDUDE brands. Crocs products include clogs, sandals and Jibbitz charms, while HEYDUDE offers casual footwear including Wally and Wendy loafer styles. The company sells through its own digital channels, third-party marketplaces and wholesale relationships to consumers and retailers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.575Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm"
+}

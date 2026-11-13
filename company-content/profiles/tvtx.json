@@ -1,0 +1,10 @@
+{
+  "ticker": "TVTX",
+  "companyName": "Travere Therapeutics, Inc.",
+  "profile": "Travere Therapeutics is a biopharmaceutical company focused on therapies for rare kidney and metabolic diseases. Its marketed product FILSPARI is indicated to slow kidney function decline in adults with primary IgA nephropathy at risk of progression. The company also develops sparsentan for focal segmental glomerulosclerosis and pegtibatinase, an investigational enzyme replacement therapy for homocystinuria, serving patients with rare diseases.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1438533/000143853326000014/tvtx-20251231.htm"
+}

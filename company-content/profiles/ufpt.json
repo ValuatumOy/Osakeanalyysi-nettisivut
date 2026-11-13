@@ -1,0 +1,10 @@
+{
+  "ticker": "UFPT",
+  "companyName": "UFP Technologies, Inc.",
+  "profile": "UFP Technologies develops and manufactures single-use and single-patient medical devices and components, often customized to customer specifications. Its products serve minimally invasive surgery, infection prevention, wound care, wearables, and orthopedic applications. Examples include surgical drapes, patient handling products, procedure disposables, medical-device packaging, orthopedic implant packaging, cardiac implant components, catheter dispenser coils, and products used in biopharmaceutical drug manufacturing. Its customers include medical device manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.304Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/914156/000162828026012816/ufpt-20251231.htm"
+}

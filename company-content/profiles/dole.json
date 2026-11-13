@@ -1,0 +1,10 @@
+{
+  "ticker": "DOLE",
+  "companyName": "Dole plc",
+  "profile": "Dole plc produces, sources, distributes, and markets fresh fruit and vegetables through retail, wholesale, foodservice, and e-commerce channels. Its products include bananas, pineapples, plantains, avocados, kiwis, apples, berries, and cherries, marketed to business and consumer customers. The company also provides produce management solutions to grocery retailers and transports third-party cargo on its vessels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:07.411Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1857475/000185747526000028/dole-20251231.htm"
+}

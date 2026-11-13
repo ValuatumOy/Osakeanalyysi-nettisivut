@@ -1,0 +1,10 @@
+{
+  "ticker": "LFST",
+  "companyName": "LifeStance Health Group, Inc.",
+  "profile": "LifeStance operates an outpatient mental health platform delivering care in person and virtually. Its clinicians provide psychiatric evaluations and treatment, psychological and neuropsychological testing, and individual, family and group therapy for patients with conditions including anxiety, depression, bipolar disorder, eating disorders, psychotic disorders and post-traumatic stress disorder. Through payor relationships, patients can use in-network insurance benefits for care.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.502Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1845257/000119312526071462/lfst-20251231.htm"
+}

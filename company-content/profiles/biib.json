@@ -1,10 +1,14 @@
 {
   "ticker": "BIIB",
   "companyName": "Biogen Inc.",
-  "profile": "Biogen is a biopharmaceutical company that discovers, develops and delivers therapies for serious and complex diseases, with a focus on neurology, specialized immunology and rare diseases. Its marketed medicines address multiple sclerosis, spinal muscular atrophy, Friedreich’s ataxia and ALS. The company also commercializes treatments and biosimilars through collaborations, serving patients and healthcare markets internationally.",
-  "provider": "codex",
+  "profile": "Biogen is a biopharmaceutical company that discovers, develops, and commercializes medicines for serious neurological, rare, and immunological diseases. Its portfolio includes therapies for multiple sclerosis, spinal muscular atrophy, Friedreich’s ataxia, ALS, geographic atrophy, paroxysmal nocturnal hemoglobinuria, and rare kidney diseases. Biogen completed its acquisition of Apellis Pharmaceuticals in May 2026, adding the FDA-approved medicines SYFOVRE and EMPAVELI.",
+  "provider": "codex-agent",
   "model": "gpt-6-luna",
   "promptVersion": 2,
-  "generatedAt": "2026-11-13T11:37:27.917Z",
-  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/875045/000087504526000013/biib-20251231.htm"
+  "generatedAt": "2026-11-13T12:27:25.198Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/875045/000087504526000013/biib-20251231.htm",
+  "profileSources": [
+    "https://www.sec.gov/Archives/edgar/data/875045/000087504526000013/biib-20251231.htm",
+    "https://investors.biogen.com/static-files/fdd9f18b-3e21-4148-9243-cdcc908a281b"
+  ]
 }

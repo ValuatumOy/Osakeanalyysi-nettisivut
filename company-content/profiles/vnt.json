@@ -1,0 +1,10 @@
+{
+  "ticker": "VNT",
+  "companyName": "Vontier Corporation",
+  "profile": "Vontier is an industrial technology company serving convenience retail, fleet solutions and auto repair markets. Its offerings include point-of-sale and payment systems, site management software, car wash technology, EV charging network software, fleet telematics, fueling equipment and repair tools. Its customers include fueling and convenience store operators, car wash businesses, charging networks, fleet owners and commercial vehicle repair businesses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.931Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1786842/000162828026007648/vnt-20251231.htm"
+}

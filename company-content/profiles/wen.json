@@ -1,0 +1,10 @@
+{
+  "ticker": "WEN",
+  "companyName": "The Wendy's Company",
+  "profile": "The Wendy’s Company operates and franchises quick-service restaurants serving food, including hamburger sandwiches. Its restaurant system serves customers in the United States and international markets. The company earns revenue from sales at company-operated restaurants and from franchise-related sources, including royalties, franchise fees, advertising fund contributions and rents. Its real estate and development operations also support franchisees.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.285Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/30697/000003069726000009/wen-20251228.htm"
+}

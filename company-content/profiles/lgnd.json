@@ -1,0 +1,10 @@
+{
+  "ticker": "LGND",
+  "companyName": "Ligand Pharmaceuticals Incorporated",
+  "profile": "Ligand Pharmaceuticals invests in and structures royalty interests in mid- to late-stage development and commercial biopharmaceutical products, partnering with biopharmaceutical companies on development and commercialization. It also operates Captisol and NITRICIL platform technologies. Its revenue comes primarily from partner product royalties, alongside Captisol material sales and license fees and milestone payments.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/886163/000088616326000006/lgnd-20251231.htm"
+}

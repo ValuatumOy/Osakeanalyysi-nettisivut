@@ -1,0 +1,10 @@
+{
+  "ticker": "SON",
+  "companyName": "Sonoco Products Company",
+  "profile": "Sonoco designs, develops and manufactures engineered packaging for customers across multiple end markets. Its businesses include Consumer Packaging and Industrial Paper Packaging, as well as an industrial and specialty plastics business. The company offers integrated packaging solutions and customized products intended to address customer packaging needs, support product quality, and shape brand experiences for companies worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.574Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/91767/000009176726000008/son-20251231.htm"
+}

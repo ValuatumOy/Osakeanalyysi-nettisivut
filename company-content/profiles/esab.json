@@ -1,0 +1,10 @@
+{
+  "ticker": "ESAB",
+  "companyName": "ESAB Corporation",
+  "profile": "ESAB develops, manufactures, and supplies fabrication technology, consumables, equipment, robotics, and gas control equipment. Its products include cutting, joining, and welding systems, as well as digital solutions and workflow services. Products are marketed under several brand names, including ESAB, and sold through independent distributors and direct salespeople to end users across industries and markets worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.618Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1877322/000187732226000007/esab-20251231.htm"
+}

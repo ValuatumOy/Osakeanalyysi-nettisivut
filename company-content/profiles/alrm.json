@@ -1,0 +1,10 @@
+{
+  "ticker": "ALRM",
+  "companyName": "Alarm.com Holdings, Inc.",
+  "profile": "Alarm.com provides a cloud-based platform and connected devices for residential, multifamily, small business, enterprise commercial, and energy markets. Its services include security, video surveillance and analytics, energy management, access control, utility grid management, active shooter detection, water management, personal safety, and emergency response. Service provider partners distribute, install, and support its offerings for property owners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.074Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1459200/000145920026000005/alrm-20251231.htm"
+}

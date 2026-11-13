@@ -1,0 +1,10 @@
+{
+  "ticker": "BV",
+  "companyName": "BrightView Holdings, Inc.",
+  "profile": "BrightView provides commercial landscaping services through maintenance and development operations. Maintenance includes mowing, gardening, mulching, snow removal, water management, irrigation maintenance, tree care, and golf course maintenance. Development services cover landscape design, coordination, and installation. The company serves corporate and commercial properties, residential communities, public parks, hotels and resorts, hospitals, schools, restaurants, retail locations, golf courses, municipalities, and airport authorities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:46.430Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1734713/000119312526455474/bv-20260930.htm"
+}

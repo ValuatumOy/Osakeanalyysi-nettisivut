@@ -1,0 +1,10 @@
+{
+  "ticker": "STRA",
+  "companyName": "Strategic Education, Inc.",
+  "profile": "Strategic Education provides campus-based and online post-secondary education, along with programs that develop job-ready skills. Through Capella University, Strayer University, and Torrens University, it offers degree and certificate programs to students, including working adults. Its education technology services include employer education benefits administration through Workforce Edge and online general education courses through Sophia Learning.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.751Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1013934/000101393426000006/stra-20251231.htm"
+}

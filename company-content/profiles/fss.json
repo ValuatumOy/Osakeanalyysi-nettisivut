@@ -1,0 +1,10 @@
+{
+  "ticker": "FSS",
+  "companyName": "Federal Signal Corporation",
+  "profile": "Federal Signal designs, manufactures, and supplies vehicles, equipment, public safety products, and integrated solutions for municipal, governmental, industrial, and commercial customers. Its offerings include street sweepers, sewer cleaners, vacuum and excavation trucks, waterblasting equipment, refuse vehicles, warning systems, lightbars, and sirens. It also sells parts and provides repair, service, rentals, and training.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/277509/000162828026011576/fss-20251231.htm"
+}

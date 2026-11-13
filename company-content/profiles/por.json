@@ -1,0 +1,14 @@
+{
+  "ticker": "POR",
+  "companyName": "Portland General Electric Company",
+  "profile": "Portland General Electric is an investor-owned electric utility serving customers in Oregon. It generates and purchases electricity, then transmits, distributes, and sells power to retail customers across its service territory. The company also participates in wholesale energy markets and manages a portfolio of generation and transmission resources. Its customers include households, businesses, public organizations, and other electricity users in Oregon communities.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.079Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/784977/000119312526052750/por-20251231.htm",
+  "profileSources": [
+    "https://investors.portlandgeneral.com/",
+    "https://investors.portlandgeneral.com/static-files/7f623247-f81f-4075-8f7b-a73268a8fbcf"
+  ]
+}

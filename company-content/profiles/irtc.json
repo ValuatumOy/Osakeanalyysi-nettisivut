@@ -1,0 +1,10 @@
+{
+  "ticker": "IRTC",
+  "companyName": "iRhythm Technologies, Inc.",
+  "profile": "iRhythm Technologies designs, develops and commercializes device-based ambulatory cardiac monitoring services. Its systems combine a wire-free, wearable patch biosensor that records electrocardiogram data with cloud-based analytic software to help physicians monitor patients and diagnose arrhythmias. The company also provides long-term and short-term continuous monitoring and mobile cardiac telemetry services through diagnostic testing facilities and qualified technicians.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.642Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1388658/000138865826000011/irtc-20251231.htm"
+}

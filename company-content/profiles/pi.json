@@ -1,0 +1,10 @@
+{
+  "ticker": "PI",
+  "companyName": "Impinj, Inc.",
+  "profile": "Impinj designs and sells a platform for wireless item-to-cloud connectivity and works with partners to develop item visibility solutions. Its products include endpoint and reader silicon radios, finished readers and gateways, tag production systems, intellectual property, software and cloud services. Customers and partners use these offerings to identify, track and manage items across retail, supply chains, food service, transportation and other industries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:04.932Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1114995/000119312526042813/pi-20251231.htm"
+}

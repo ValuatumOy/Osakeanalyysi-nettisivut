@@ -1,0 +1,15 @@
+{
+  "ticker": "VIR",
+  "companyName": "Vir Biotechnology, Inc.",
+  "profile": "Vir Biotechnology discovers and develops antibody-based medicines and immunotherapies for serious infectious diseases and cancer. Its pipeline includes a Phase 3 combination therapy for chronic hepatitis delta and investigational T-cell engagers for solid tumors, alongside preclinical research. The company applies antibody engineering, AI-enabled protein design, and masking technology, and collaborates with pharmaceutical partners on clinical and preclinical development programs.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.085Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1706431/000162828026010749/vir-20251231.htm",
+  "profileSources": [
+    "https://www.vir.bio/pipeline/",
+    "https://investors.vir.bio/news/news-details/2026/Vir-Biotechnology-Provides-Corporate-Update-and-Reports-Third-Quarter-2026-Financial-Results/default.aspx",
+    "https://investors.vir.bio/news/news-details/2026/Vir-Biotechnology-Enters-Multi-Program-Collaboration-and-License-Agreement-with-Gilead-Sciences-to-Discover-and-Develop-Novel-PRO-XTEN-Dual-masked-T-cell-Engagers-for-Solid-Tumors/default.aspx"
+  ]
+}

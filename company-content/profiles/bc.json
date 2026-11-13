@@ -1,0 +1,10 @@
+{
+  "ticker": "BC",
+  "companyName": "Brunswick Corporation",
+  "profile": "Brunswick designs, manufactures and markets recreational marine products, including engines, boats, marine parts and accessories, and products for the recreational vehicle market. Its propulsion products include outboard, inboard and sterndrive engines, controls, rigging, propellers and electric propulsion systems. It sells to boat builders, marine dealers, distributors, specialty retailers, service centers, original equipment manufacturers and government agencies, and operates a boat club.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.555Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/14930/000001493026000027/bcorp-20251231.htm"
+}

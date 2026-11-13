@@ -1,0 +1,10 @@
+{
+  "ticker": "QUBT",
+  "companyName": "Quantum Computing, Inc.",
+  "profile": "Quantum Computing, Inc. develops machines using integrated photonics and nonlinear quantum optics for quantum computing, machine learning, remote sensing, imaging, and cybersecurity applications. Its Entropy Quantum Computer is designed to address complex optimization problems using photonic technology. The company also offers products integrated with its Qatalyst software platform, serving applications that require computational processing and information technology.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.956Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1758009/000121390026022417/ea0278445-10k_quantum.htm"
+}

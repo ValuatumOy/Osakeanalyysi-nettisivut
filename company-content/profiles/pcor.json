@@ -1,0 +1,10 @@
+{
+  "ticker": "PCOR",
+  "companyName": "Procore Technologies, Inc.",
+  "profile": "Procore Technologies provides construction management software for owners, general contractors, and specialty contractors. Its integrated product categories cover preconstruction, project execution, resource management, and financial management, supporting project workflows, information access, analytics, communication, and collaboration. The platform also offers integrations through APIs and an app marketplace. Customers range from small construction businesses to global enterprises and access products primarily through subscriptions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.092Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1611052/000162828026011055/pcor-20251231.htm"
+}

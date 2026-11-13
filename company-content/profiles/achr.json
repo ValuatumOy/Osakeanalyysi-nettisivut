@@ -1,0 +1,10 @@
+{
+  "ticker": "ACHR",
+  "companyName": "Archer Aviation Inc.",
+  "profile": "Archer Aviation is developing electric vertical take-off and landing aircraft, aviation technologies and services for commercial and defense customers. Its Midnight aircraft is designed for air taxi operations, and the company is working with aviation authorities, governments, airlines and infrastructure partners on certification and network development. It is also advancing a hybrid-electric autonomous aircraft platform for defense, cargo and medical evacuation uses.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.643Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000019/achr-20251231.htm"
+}

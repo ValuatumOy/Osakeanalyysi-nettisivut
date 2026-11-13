@@ -1,0 +1,10 @@
+{
+  "ticker": "CSL",
+  "companyName": "Carlisle Companies Incorporated",
+  "profile": "Carlisle Companies supplies building envelope products and systems through its Carlisle Construction Materials and Carlisle Weatherproofing Technologies businesses. Its offerings include commercial roofing membranes, insulation, architectural metal, roof garden systems, and related technologies. The company serves customers involved in commercial construction, including those building, repairing, and replacing roofs and developing energy-efficient buildings.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.089Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/790051/000079005126000012/csl-20251231.htm"
+}

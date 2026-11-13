@@ -1,0 +1,10 @@
+{
+  "ticker": "TRIP",
+  "companyName": "Tripadvisor, Inc.",
+  "profile": "Tripadvisor operates online travel platforms that help travelers search, discover, book and review experiences, hotels and restaurants. Its consumer brands include Tripadvisor, Viator and TheFork. Services include travel guidance, traveler reviews, planning tools, hotel metasearch, bookable experiences and restaurant discovery. Customers include travelers, experience operators, restaurants, hotel partners and advertisers seeking access to travel audiences.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.628Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1526520/000119312526051281/trip-20251231.htm"
+}

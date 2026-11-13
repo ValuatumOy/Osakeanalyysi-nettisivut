@@ -1,0 +1,10 @@
+{
+  "ticker": "VRNS",
+  "companyName": "Varonis Systems, Inc.",
+  "profile": "Varonis Systems provides a data security platform for organizations seeking to protect sensitive enterprise data across cloud and on-premises environments. Its software covers data stores, cloud infrastructure, identity repositories, and SaaS and AI applications. The platform helps organizations understand data exposure, control access, reduce risk, and detect and respond to threats through automated security controls.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:53.080Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1361113/000162828026005450/vrns-20251231.htm"
+}

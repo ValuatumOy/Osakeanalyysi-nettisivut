@@ -1,0 +1,10 @@
+{
+  "ticker": "ARWR",
+  "companyName": "Arrowhead Pharmaceuticals, Inc.",
+  "profile": "Arrowhead Pharmaceuticals develops medicines that silence genes associated with disease using RNA interference and a portfolio of RNA chemistries and delivery methods. Its marketed product, REDEMPLO, is used with diet to reduce triglycerides in adults with familial chylomicronemia syndrome. The company also develops drug candidates at various clinical stages and licenses or collaborates on programs it does not plan to commercialize independently.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:13.565Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/879407/000087940726000078/arwr-20260930.htm"
+}

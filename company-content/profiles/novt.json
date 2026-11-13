@@ -1,0 +1,10 @@
+{
+  "ticker": "NOVT",
+  "companyName": "Novanta Inc.",
+  "profile": "Novanta supplies proprietary technology components and subsystems to medical, life science, and advanced industrial original equipment manufacturers. Its technologies support precision medicine, precision manufacturing, robotics, automation, and advanced surgery. Products are tailored to demanding applications and used in areas including minimally invasive and robotic surgery, ophthalmology, patient monitoring, drug delivery, laboratory testing, laser materials processing, metrology, and industrial automation.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:38.678Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1076930/000119312526064230/novt-20251231.htm"
+}

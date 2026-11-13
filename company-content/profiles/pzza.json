@@ -1,0 +1,10 @@
+{
+  "ticker": "PZZA",
+  "companyName": "Papa John's International, Inc.",
+  "profile": "Papa John’s operates and franchises pizza delivery and carryout restaurants, as well as dine-in and delivery restaurants in some international markets. Its restaurants sell pizza and other food and beverage products under the Papa Johns trademark. The company also conducts franchising and franchise support activities, sells franchise and development rights, and collects royalties from franchisees in the United States and Canada.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.593Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/901491/000162828026011965/pzza-20251228.htm"
+}

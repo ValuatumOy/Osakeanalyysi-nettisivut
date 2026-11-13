@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { directoryIdentity } from '../../scripts/company-pages/directory-identity.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const site = 'https://www.aiequityreports.com';
@@ -10,6 +11,13 @@ const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const letterFiles = fs.readdirSync(path.join(root, 'companies')).filter((file) => file.endsWith('.html'));
 const companyLinks = (html) => [...html.matchAll(/<a href="(\/reports\/[^"#]+\.html)">/g)].map((match) => match[1]);
 const decode = (text) => text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+
+test('a long title without a ticker uses the company heading for discovery', () => {
+  assert.deepEqual(
+    directoryIdentity('An exceptionally long company name Stock Analysis', 'An exceptionally long company name (EXM) Stock Analysis & AI Equity Report'),
+    { name: 'An exceptionally long company name', ticker: 'EXM' },
+  );
+});
 
 test('every indexable company page has exactly one crawlable directory entry', () => {
   const links = letterFiles.flatMap((file) => companyLinks(read(`companies/${file}`)));

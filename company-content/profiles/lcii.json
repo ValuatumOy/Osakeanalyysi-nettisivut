@@ -1,0 +1,10 @@
+{
+  "ticker": "LCII",
+  "companyName": "LCI Industries",
+  "profile": "LCI Industries supplies engineered components to the outdoor recreation, transportation, marine, and housing industries. Its products include chassis, axles, suspension systems, furniture, windows, appliances, towing accessories, doors, steps, awnings, leveling systems, and slide-outs. The company sells to original equipment manufacturers and aftermarket customers through dealers, distributors, service centers, and online direct-to-consumer channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.136Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/763744/000076374426000011/lcii-20251231.htm"
+}

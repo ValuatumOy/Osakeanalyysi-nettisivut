@@ -1,0 +1,10 @@
+{
+  "ticker": "HNI",
+  "companyName": "HNI Corporation",
+  "profile": "HNI manufactures workplace furnishings and residential building products. Workplace furnishings include furniture systems, seating, tables, storage, architectural and hospitality products, sold through dealers, office product distributors, and directly to businesses and governments. Residential products include gas, wood, electric, and pellet fireplaces, stoves, inserts, fire tables, and accessories, distributed through dealers, distributors, and company-owned outlets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.291Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/48287/000004828726000084/hni-20260103.htm"
+}

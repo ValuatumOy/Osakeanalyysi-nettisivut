@@ -1,0 +1,10 @@
+{
+  "ticker": "TARS",
+  "companyName": "Tarsus Pharmaceuticals, Inc.",
+  "profile": "Tarsus Pharmaceuticals is a commercial-stage biopharmaceutical company developing and commercializing therapeutics, initially focused on eye care. Its marketed product XDEMVY is an ophthalmic solution for Demodex blepharitis. The company also investigates lotilaner-based candidates, including a gel formulation for ocular rosacea and an oral tablet for Lyme disease prophylaxis and community malaria reduction, serving patients with these conditions.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1819790/000181979026000019/tars-20251231.htm"
+}

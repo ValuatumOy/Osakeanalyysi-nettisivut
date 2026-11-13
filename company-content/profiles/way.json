@@ -1,0 +1,10 @@
+{
+  "ticker": "WAY",
+  "companyName": "Waystar Holding Corp.",
+  "profile": "Waystar provides cloud-based software for healthcare organizations to manage payment workflows. Its platform supports eligibility checks, prior authorization, utilization management, coding and documentation accuracy, claims submission and monitoring, copay collection, and denied-claim appeals. Providers use its tools to improve billing accuracy and manage reimbursement processes. Customers include physician practices, clinics, surgical centers, laboratories, hospitals, and health systems across the continuum of care.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:47.421Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1990354/000199035426000011/way-20251231.htm"
+}

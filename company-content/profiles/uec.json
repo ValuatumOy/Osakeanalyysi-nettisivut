@@ -1,0 +1,10 @@
+{
+  "ticker": "UEC",
+  "companyName": "Uranium Energy Corp.",
+  "profile": "Uranium Energy is a uranium mining and development company with in-situ recovery projects in Wyoming and South Texas, supported by uranium processing facilities. It also controls mineral resources and land in Saskatchewan’s Athabasca Basin and is pursuing uranium refining and conversion capabilities through a subsidiary. Its activities include uranium extraction, project development and work to support the domestic nuclear fuel supply chain.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.556Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1334933/000143774926031414/uec20260731_10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ALGN",
+  "companyName": "Align Technology, Inc.",
+  "profile": "Align Technology designs, manufactures, and markets Invisalign clear aligners, Vivera retainers, iTero intraoral scanners and services, and exocad dental design software. Its products support orthodontic treatment, digital scanning, treatment planning, monitoring, and restorative dentistry workflows. Customers include orthodontists, general dental practitioners, dental laboratories, dental support organizations, and distributors; some accessories are also sold to consumers through online and retail channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:54.091Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1097149/000109714926000014/algn-20251231.htm"
+}

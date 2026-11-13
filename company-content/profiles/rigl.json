@@ -1,0 +1,13 @@
+{
+  "ticker": "RIGL",
+  "companyName": "Rigel Pharmaceuticals, Inc.",
+  "profile": "Rigel Pharmaceuticals develops and commercializes therapies for hematologic disorders and cancer. Its marketed medicines include TAVALISSE for chronic immune thrombocytopenia, REZLIDHIA for certain acute myeloid leukemia, GAVRETO for RET-driven lung and thyroid cancers, and VEPPANU (vepdegestrant) for specified advanced breast cancer. Rigel also develops clinical candidates, including R289 for myelodysplastic syndromes, and works with pharmaceutical partners on commercialization.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.879Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1034842/000103484226000015/rigl-20251231.htm",
+  "profileSources": [
+    "https://www.rigel.com/news-media/press-releases/detail/451/rigel-reports-third-quarter-2026-financial-results"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "SSD",
+  "companyName": "Simpson Manufacturing Co., Inc.",
+  "profile": "Simpson Manufacturing designs, engineers, manufactures, and sells structural solutions for wood, concrete, steel, and masonry construction. Products include connectors, fasteners, anchors, truss plates, lateral-force resisting systems, adhesives, and repair and protection products. The company also offers design and estimating software, engineering services, technical support, training, and digital tools to construction, manufacturing, and retail customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/920371/000162828026012920/ssd-20251231.htm"
+}

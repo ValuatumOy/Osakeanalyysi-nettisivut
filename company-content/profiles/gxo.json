@@ -1,0 +1,10 @@
+{
+  "ticker": "GXO",
+  "companyName": "GXO Logistics, Inc.",
+  "profile": "GXO provides contract logistics services, including warehousing and distribution, order fulfillment, e-commerce logistics, reverse logistics and other supply chain services. It designs and operates customized warehouse solutions for large corporations that outsource logistics activities. Its services support the movement of goods from warehouse receipt through fulfillment, distribution and returns, using technology, automation and operational processes to manage labor and inventory.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.393Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1852244/000185224426000007/gxo-20251231.htm"
+}

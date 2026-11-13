@@ -1,0 +1,10 @@
+{
+  "ticker": "MNKD",
+  "companyName": "MannKind Corporation",
+  "profile": "MannKind is a biopharmaceutical company developing and commercializing treatments for cardiometabolic and orphan lung diseases. Its commercial products include Afrezza inhaled insulin and the V-Go wearable insulin delivery device for diabetes, and Furoscix furosemide injection for edema associated with heart failure or chronic kidney disease. The company also develops inhaled therapies with United Therapeutics, which commercializes Tyvaso DPI for pulmonary hypertension.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.302Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/899460/000119312526073516/mnkd-20251231.htm"
+}

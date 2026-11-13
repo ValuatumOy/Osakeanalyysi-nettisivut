@@ -1,0 +1,10 @@
+{
+  "ticker": "WKC",
+  "companyName": "World Kinect Corporation",
+  "profile": "World Kinect is a global energy management company supplying fuel and related products and services to customers in aviation, land transportation, and marine sectors. It also supplies natural gas and sustainability-related products and services. Its aviation offerings include fuel management, ground handling, dispatch, flight planning, scheduling, and trip support for airlines, airports, cargo carriers, corporate fleets, charter operators, and government and military customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.593Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/789460/000078946026000015/wkc-20251231.htm"
+}

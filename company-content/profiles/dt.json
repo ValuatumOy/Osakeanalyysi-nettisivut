@@ -1,0 +1,10 @@
+{
+  "ticker": "DT",
+  "companyName": "Dynatrace, Inc.",
+  "profile": "Dynatrace provides a software platform for observability, application security, and AI operations across cloud, hybrid, and on-premises environments. Its solutions include AI application observability, log management and analytics, and cloud observability. The platform consolidates telemetry and business data, maps relationships across applications and infrastructure, and supports analysis and automation for enterprise IT, development, security, and business teams.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.460Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000019/dt-20260331.htm"
+}

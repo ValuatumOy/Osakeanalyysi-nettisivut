@@ -1,0 +1,10 @@
+{
+  "ticker": "PTCT",
+  "companyName": "PTC Therapeutics, Inc.",
+  "profile": "PTC Therapeutics is a global biopharmaceutical company that discovers, develops, and commercializes medicines for rare disorders in children and adults. Its portfolio includes treatments for phenylketonuria, Duchenne muscular dystrophy, AADC deficiency, and other rare conditions, alongside product candidates in development. The company’s therapeutic focus includes neurology and metabolism. It also holds commercialization rights for certain rare disease medicines in Latin America and the Caribbean.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:47.423Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1070081/000110465926017575/tmb-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "RMBS",
+  "companyName": "Rambus Inc.",
+  "profile": "Rambus provides semiconductor chips, silicon intellectual property and patents for data-intensive computing systems. Its memory interface chipsets support DDR5 and LPDDR5 server and client memory modules, while its digital controller and security IP are used in accelerated computing and data protection applications. Customers include memory module manufacturers, original equipment manufacturers and hyperscalers, served directly and through distributors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/917273/000119312526057101/rmbs-20251231.htm"
+}

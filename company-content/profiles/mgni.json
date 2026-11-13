@@ -1,0 +1,10 @@
+{
+  "ticker": "MGNI",
+  "companyName": "Magnite, Inc.",
+  "profile": "Magnite provides technology that automates the purchase and sale of digital advertising inventory. Its platform helps publishers manage and monetize advertising across connected TV channels, applications, websites and other digital media, while buyers use tools to discover, curate and purchase inventory. Customers include advertisers, agencies, demand-side platforms and digital media publishers, including streaming providers and broadcasters.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:45.608Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1595974/000159597426000007/mgni-20251231.htm"
+}

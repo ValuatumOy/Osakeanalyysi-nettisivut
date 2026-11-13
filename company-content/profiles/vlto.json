@@ -1,0 +1,10 @@
+{
+  "ticker": "VLTO",
+  "companyName": "Veralto Corporation",
+  "profile": "Veralto provides technology products and services in water analytics, water treatment, marking and coding, and packaging and color. Its Water Quality businesses, including Hach, Trojan Technologies, and ChemTreat, support water quality and reliability. Its Product Quality & Innovation businesses, including Videojet, Linx, Esko, X-Rite, and Pantone, help customers promote trust in products and support product innovation across regulated industries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.206Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1967680/000196768026000011/vlto-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "ELF",
+  "companyName": "e.l.f. Beauty, Inc.",
+  "profile": "e.l.f. Beauty is a multi-brand beauty company offering cosmetics and skin care products through brands including e.l.f. Cosmetics, e.l.f. SKIN, rhode, Naturium, and Well People. Its products span makeup, facial and body care, and skin care essentials, and are sold online and through beauty, mass-market, and specialty retailers. The company serves consumers through domestic and international retail distribution.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.407Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1600033/000160003326000020/elf-20260331.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "KMX",
+  "companyName": "CarMax, Inc.",
+  "profile": "CarMax sells quality used vehicles at no-haggle prices through online, in-store and combined shopping options. It also buys used vehicles from customers and other sources, reconditions vehicles for retail sale, and offers related products and services. Its sales operations arrange financing options, while CarMax Auto Finance provides loans to customers purchasing vehicles from the company.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.392Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1170010/000117001026000021/kmx-20260228.htm"
+}

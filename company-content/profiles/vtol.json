@@ -1,0 +1,10 @@
+{
+  "ticker": "VTOL",
+  "companyName": "Bristow Group Inc.",
+  "profile": "Bristow Group provides aviation services primarily to offshore energy companies and government entities. Its services include helicopter transport for personnel traveling to and between offshore bases, platforms, and drilling rigs; search and rescue; medical evacuation; fixed-wing transport; unmanned systems; and ad hoc helicopter services. It also operates a regional airline in Australia and dry-leases aircraft to third-party operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:41.013Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1525221/000152522126000013/vtol-20251231.htm"
+}

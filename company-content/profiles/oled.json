@@ -1,0 +1,10 @@
+{
+  "ticker": "OLED",
+  "companyName": "Universal Display Corporation",
+  "profile": "Universal Display researches, develops and commercializes organic light emitting diode technologies and materials for display and solid-state lighting applications. It manufactures and sells proprietary OLED materials for evaluation and use in commercial products, and licenses patents and know-how to manufacturers. Its customers include manufacturers developing OLED displays and lighting products for consumer electronics and automotive applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.648Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1005284/000119312526059371/oled-20251231.htm"
+}

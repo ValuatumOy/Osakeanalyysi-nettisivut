@@ -1,0 +1,10 @@
+{
+  "ticker": "JBLU",
+  "companyName": "JetBlue Airways Corporation",
+  "profile": "JetBlue Airways operates passenger air services, serving destinations across the United States, the Caribbean, Latin America, Canada and Europe. It offers travelers several fare and onboard experience options, including core fares and EvenMore, with features such as carry-on baggage, seatback entertainment, Wi-Fi, snacks and beverages. Customers can purchase additional seating space, priority access and other amenities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.628Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1158463/000115846326000007/jblu-20251231.htm"
+}

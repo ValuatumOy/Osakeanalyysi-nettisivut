@@ -1,0 +1,10 @@
+{
+  "ticker": "KALU",
+  "companyName": "Kaiser Aluminum Corporation",
+  "profile": "Kaiser Aluminum manufactures and sells semi-fabricated specialty aluminum mill products, including flat-rolled, extruded, drawn, and certain cast products. It focuses on demanding applications in aerospace, packaging, general engineering, and automotive markets. Its engineered products are supplied to customers such as aerospace and automotive manufacturers, their tier-one suppliers, beverage and food packaging manufacturers, and metal service centers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.750Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/811596/000119312526059575/kalu-20251231.htm"
+}

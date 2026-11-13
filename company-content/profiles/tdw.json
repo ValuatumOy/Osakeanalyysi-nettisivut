@@ -1,0 +1,10 @@
+{
+  "ticker": "TDW",
+  "companyName": "Tidewater Inc.",
+  "profile": "Tidewater provides marine transportation and support services to the global offshore energy industry using offshore service and related support vessels. Its services include towing and anchor handling, transporting supplies and personnel, offshore construction and subsea support, and specialized pipe laying, cable laying, and survey work. Customers include oil and gas companies, drilling contractors, windfarm developers, and other offshore service providers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/98222/000143774926006391/tdw20251231_10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "AES",
+  "companyName": "The AES Corporation",
+  "profile": "The AES Corporation develops, owns and operates electric generation businesses and utilities. It sells electricity and associated generation attributes through medium- and long-term power purchase agreements and short-term agreements in regulated and competitive markets. AES also provides renewable energy to corporate customers, including data center and mining companies, and serves utility customers through its AES Indiana and AES Ohio operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.689Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/874761/000087476126000063/aes-20251231.htm"
+}

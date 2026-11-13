@@ -1,0 +1,14 @@
+{
+  "ticker": "EXP",
+  "companyName": "Eagle Materials Inc.",
+  "profile": "Eagle Materials manufactures heavy construction products and light building materials in the United States. Its products include Portland cement, gypsum wallboard, recycled paperboard, aggregates, and ready-mix concrete. These materials are used in infrastructure, residential, commercial, and industrial construction. The company sells through a regional network of production facilities and distribution terminals to construction contractors and building-materials markets.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.064Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/918646/000119312526230979/exp-20260331.htm",
+  "profileSources": [
+    "https://ir.eaglematerials.com/news-releases/news-release-details/eagle-materials-reports-second-quarter-results-2",
+    "https://ir.eaglematerials.com/products"
+  ]
+}

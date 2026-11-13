@@ -380,6 +380,7 @@ export function companyDisplayName(company) {
 
 function shortName(name) {
   return String(name || '')
+    .replace(/\s+(?:Class\s+[A-Z]\s+)?Common Stock$/i, '')
     .replace(/\s+\(publ\)$/i, '')
     .replace(/,?\s+(Oyj\s+Abp|Inc\.?|Oyj|Ltd\.?|plc|Corporation|Corp\.?|Abp|AB|ASA|A\/S|AG|N\.V\.|S\.A\.)$/i, '')
     .trim();

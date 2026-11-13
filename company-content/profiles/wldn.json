@@ -1,0 +1,10 @@
+{
+  "ticker": "WLDN",
+  "companyName": "Willdan Group, Inc.",
+  "profile": "Willdan Group provides professional, technical and consulting services to utilities, public agencies, private industry and commercial and industrial firms. Its work includes energy planning and efficiency, sustainability, engineering, construction management, policy advisory, program management, and economic and financial consulting. The company also offers software and data analytics and services related to greenhouse gas reduction and government infrastructure needs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.286Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1370450/000110465926020767/wldn-20260102x10k.htm"
+}

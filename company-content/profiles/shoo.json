@@ -1,0 +1,10 @@
+{
+  "ticker": "SHOO",
+  "companyName": "Steven Madden, Ltd.",
+  "profile": "Steven Madden designs, sources, and markets branded and private-label footwear, handbags, apparel, and accessories. Its wholesale customers include department stores, mass merchants, off-price retailers, online retailers, specialty retailers, independent stores, and clubs. It also sells products directly through company-operated retail and outlet stores, international concessions, and e-commerce platforms under brands including Steve Madden, Kurt Geiger, and Dolce Vita.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.291Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/913241/000162828026012995/shoo-20251231.htm"
+}

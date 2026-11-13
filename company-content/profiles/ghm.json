@@ -1,0 +1,10 @@
+{
+  "ticker": "GHM",
+  "companyName": "Graham Corporation",
+  "profile": "Graham Corporation designs and manufactures custom-engineered fluid, power, heat transfer, vacuum, and advanced mixing equipment and systems. Its products serve defense, energy and process, and space applications, including propulsion, power generation, thermal management, chemical processing, and life support. Offerings include ejectors, condensers, pumps, heat exchangers, turbines, compressors, mixers, accessories, and related services for industrial customers and original equipment manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.524Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/716314/000119312526260688/ghm-20260331.htm"
+}

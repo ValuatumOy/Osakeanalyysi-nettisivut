@@ -1,0 +1,10 @@
+{
+  "ticker": "CPRI",
+  "companyName": "Capri Holdings Limited",
+  "profile": "Capri Holdings is a global luxury fashion group comprising Michael Kors and Jimmy Choo. Michael Kors offers apparel, footwear, and accessories through several collections, while Jimmy Choo focuses on women’s luxury footwear and also offers accessories, men’s footwear, and licensed fragrance and eyewear. The brands sell through company operated stores, e-commerce sites, department and specialty stores, wholesale channels, and licensing arrangements.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:01.905Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1530721/000153072126000047/cpri-20260328.htm"
+}

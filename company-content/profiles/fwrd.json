@@ -1,0 +1,10 @@
+{
+  "ticker": "FWRD",
+  "companyName": "Forward Air Corporation",
+  "profile": "Forward Air provides asset-light transportation and logistics services across North and South America, Europe, and Asia. Its offerings include expedited less-than-truckload transportation, pickup and delivery, truckload, air and ocean freight forwarding, fulfillment, customs brokerage, warehousing, distribution, and intermodal container drayage. Customers include businesses shipping time-sensitive freight, including companies in technology, retail, media, life sciences, and e-commerce.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:15.248Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/912728/000162828026016793/fwrd-20251231.htm"
+}

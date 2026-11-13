@@ -1,0 +1,10 @@
+{
+  "ticker": "BFAM",
+  "companyName": "Bright Horizons Family Solutions Inc.",
+  "profile": "Bright Horizons provides early education and child care, back-up care, and educational advisory services, primarily through multi-year contracts with employers offering these services as employee benefits. It operates center-based child care facilities and offers care coverage when primary arrangements are unavailable or insufficient. Its advisory services include workforce education, tuition assistance, student loan repayment, and college admissions and financing guidance for employees and working families.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.643Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1437578/000143757826000006/bfam-20251231.htm"
+}

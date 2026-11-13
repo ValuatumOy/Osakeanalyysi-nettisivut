@@ -1,0 +1,10 @@
+{
+  "ticker": "NN",
+  "companyName": "NextNav Inc.",
+  "profile": "NextNav provides positioning, navigation, and timing services designed to complement or back up satellite-based GPS. Its ground-based transmitter network uses low-band spectrum to provide signals for location and timing, including indoors and in urban areas. Its Pinnacle technology uses barometric sensors and a network of sensors to determine vertical location, supporting applications such as public safety and emergency dispatch.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:00.957Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1865631/000155485526000328/nn-20251231.htm"
+}

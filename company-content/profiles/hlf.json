@@ -1,0 +1,10 @@
+{
+  "ticker": "HLF",
+  "companyName": "Herbalife Nutrition Ltd.",
+  "profile": "Herbalife is a health and wellness company that sells nutrition, weight management, targeted nutrition, energy, sports and fitness, and outer nutrition products through independent members. Its products include meal replacement shakes, drink mixes, supplements, functional beverages, skincare, body care, and hair care. Members buy products for personal use or resell them, and provide customers with coaching, support, and education.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.592Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1180262/000119312526057113/hlf-20251231.htm"
+}

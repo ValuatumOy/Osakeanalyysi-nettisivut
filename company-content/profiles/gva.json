@@ -1,0 +1,10 @@
+{
+  "ticker": "GVA",
+  "companyName": "Granite Construction Incorporated",
+  "profile": "Granite Construction delivers infrastructure solutions for public and private clients, primarily in the United States. Its construction services cover roads, bridges, transit, airports, water systems, tunnels, energy projects, mining and site development. The company also produces aggregates, asphalt and recycled construction materials for its projects and outside buyers. Customers include public agencies, utilities, developers, industrial site owners, contractors and retailers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/861459/000086145926000004/gva-20251231.htm"
+}

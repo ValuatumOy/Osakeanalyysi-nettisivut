@@ -1,0 +1,10 @@
+{
+  "ticker": "ENOV",
+  "companyName": "Enovis Corporation",
+  "profile": "Enovis develops, manufactures, and distributes medical devices and related services for injury prevention, reconstructive surgery, rehabilitation, pain management, and physical therapy. Its products include orthopedic braces, therapy systems, stimulators, joint replacement implants, instrumentation, and surgical technologies. Customers include healthcare professionals, orthopedic specialists, surgeons, healthcare systems, athletes, patients, and retail consumers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.497Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1420800/000142080026000012/cfx-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "CDRE",
+  "companyName": "Cadre Holdings, Inc.",
+  "profile": "Cadre manufactures and distributes safety equipment for law enforcement, first responders, military, and nuclear markets. Its products include body armor, explosive ordnance disposal equipment, duty gear, remote handling solutions, radioactive-material storage containers, and ventilation and containment systems. Through owned distribution, it also supplies third-party uniforms, optics, boots, firearms, and ammunition. Customers include government agencies, emergency services, and commercial nuclear operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.303Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1860543/000110465926025862/cdre-20251231x10k.htm"
+}

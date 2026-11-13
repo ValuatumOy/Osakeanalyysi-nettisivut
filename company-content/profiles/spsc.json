@@ -1,0 +1,10 @@
+{
+  "ticker": "SPSC",
+  "companyName": "SPS Commerce, Inc.",
+  "profile": "SPS Commerce operates a supply chain network connecting retailers, brands, distributors, manufacturers, and logistics providers with trading partners. Its services support data exchange and commerce processes, including order fulfillment, analytics, item data management, and supplier relationship management. The company maintains connection protocols, compliance rules, and data standards, while providing onboarding, transaction monitoring, exception resolution, professional services, and testing and certification.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1092699/000109269926000012/spsc-20251231.htm"
+}

@@ -12,6 +12,7 @@ test('company display names and slugs remove legal suffixes and preserve Nordic 
   assert.equal(pageSlug({ companyName: 'Ørsted A/S', ticker: 'ORSTED.CO' }), 'orsted-equity-report');
   assert.equal(pageSlug({ companyName: 'Metso Outotec', ticker: 'METSO.HE' }), 'metso-equity-report');
   assert.equal(pageSlug({ companyName: 'Investor AB (publ)', ticker: 'INVE-B.ST' }), 'investor-ab-equity-report');
+  assert.equal(companyDisplayName({ companyName: 'BrightSpring Health Services, Inc. Common Stock', ticker: 'BTSG' }), 'BrightSpring Health Services');
 });
 
 test('generator writes a Fortum-style HTML page from live-shaped data', async (t) => {

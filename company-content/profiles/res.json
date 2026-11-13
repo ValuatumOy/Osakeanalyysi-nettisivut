@@ -1,0 +1,10 @@
+{
+  "ticker": "RES",
+  "companyName": "RPC, Inc.",
+  "profile": "RPC, Inc. provides oilfield services and equipment to independent and major oil and gas companies involved in exploration, production, and development. Its Technical Services include pressure pumping, wireline, downhole tools, coiled tubing, and cementing at customer wells. Support Services include rental tools, drill pipe, pipe handling, inspection and storage, plus classroom and computer training supporting customer operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:26.074Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/742278/000110465926021480/res-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "DXPE",
+  "companyName": "DXP Enterprises, Inc.",
+  "profile": "DXP distributes maintenance, repair, and operating products, equipment, and services to customers across industrial, energy, food and beverage, chemical, transportation, water, and wastewater markets. Its business includes service centers, innovative pumping solutions, and supply chain services. The company supplies industrial products and provides repair and maintenance services, technical support, and application expertise to industrial customers and other users of MRO products.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:36.305Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1020710/000162828026012382/dxpe-20251231.htm"
+}

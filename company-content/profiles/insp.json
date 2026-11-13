@@ -1,0 +1,10 @@
+{
+  "ticker": "INSP",
+  "companyName": "Inspire Medical Systems, Inc.",
+  "profile": "Inspire Medical Systems develops and commercializes minimally invasive treatments for obstructive sleep apnea. Its Inspire system monitors breathing and delivers mild electrical stimulation to the hypoglossal nerve to help keep the airway open during sleep. Physicians use the system for eligible patients with moderate to severe sleep apnea in the United States, Europe, and Asia.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:44.721Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1609550/000160955026000016/insp-20251231.htm"
+}

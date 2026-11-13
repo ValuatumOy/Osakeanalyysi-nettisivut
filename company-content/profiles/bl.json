@@ -1,0 +1,10 @@
+{
+  "ticker": "BL",
+  "companyName": "BlackLine, Inc.",
+  "profile": "BlackLine provides cloud-based financial software for finance and accounting teams in mid-size and enterprise organizations. Its platform includes tools for account reconciliation, transaction matching, journal entries, consolidation, compliance, cash application, collections and intercompany processes. The software connects with enterprise resource planning systems and other financial data sources to support record-to-report and invoice-to-cash workflows and financial reporting.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:13.563Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1666134/000162828026011915/bl-20251231.htm"
+}

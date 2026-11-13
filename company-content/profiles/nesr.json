@@ -1,0 +1,10 @@
+{
+  "ticker": "NESR",
+  "companyName": "National Energy Services Reunited Corp.",
+  "profile": "National Energy Services Reunited provides upstream and midstream oilfield services primarily to oil and natural gas companies in the Middle East and North Africa. Its production services include hydraulic fracturing, coiled tubing, stimulation and pumping, cementing, artificial lift and production management. It also provides drilling and evaluation services, including rigs, downhole tools, directional drilling, well testing and wireline logging.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:54.285Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1698514/000149315226009139/form10-k.htm"
+}

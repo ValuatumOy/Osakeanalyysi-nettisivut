@@ -1,0 +1,10 @@
+{
+  "ticker": "XPEL",
+  "companyName": "XPEL, Inc.",
+  "profile": "XPEL supplies protective films, coatings, and related installation services, primarily to the automotive aftermarket, new car dealerships, and automobile manufacturers. Its products include paint and surface protection films, automotive and architectural window films, windshield protection films, and ceramic coatings for automotive, aircraft, and marine surfaces. The company also sells tools, accessories, pre-cut films, and merchandise.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.229Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1767258/000176725826000014/xpel-20251231.htm"
+}

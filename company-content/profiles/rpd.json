@@ -1,0 +1,10 @@
+{
+  "ticker": "RPD",
+  "companyName": "Rapid7, Inc.",
+  "profile": "Rapid7 provides cybersecurity software and services for organizations seeking to improve security operations. Its offerings include managed detection and response, security information and event management, and exposure management, delivered through an integrated platform with threat detection, response, automation, and risk research capabilities. Customers across industries and organization sizes use its technology, services, and research.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1560327/000156032726000008/rp-20251231.htm"
+}

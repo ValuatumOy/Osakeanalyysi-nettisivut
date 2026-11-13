@@ -1,0 +1,10 @@
+{
+  "ticker": "GNK",
+  "companyName": "Genco Shipping & Trading Limited",
+  "profile": "Genco Shipping & Trading owns drybulk vessels that transport commodities on international shipping routes. Its cargoes include iron ore, coal, grain, bauxite, steel products and other drybulk goods. The company arranges vessel employment through spot market voyages, time charters and contracts of affreightment, and manages commercial and strategic fleet activities. Its technical vessel management is provided by a joint venture.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.146Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1326200/000110465926017117/gnk-20251231x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "LYTS",
+  "companyName": "LSI Industries Inc.",
+  "profile": "LSI Industries produces non-residential lighting and retail display solutions. Its lighting segment makes indoor and outdoor fixtures, poles, accessories, and controls for markets including convenience stores, parking facilities, restaurants, retail, grocery, automotive, sports, and warehouses. Its display segment makes custom store fixtures, signage, display cases, graphics, and food equipment. Customers include distributors, end-use businesses, and retail operators.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:46.429Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/763532/000143774926029621/lyts20260630d_10k.htm"
+}

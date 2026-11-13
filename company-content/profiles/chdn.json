@@ -1,0 +1,10 @@
+{
+  "ticker": "CHDN",
+  "companyName": "Churchill Downs Incorporated",
+  "profile": "Churchill Downs Incorporated operates live and historical horse racing venues, wagering services and regional casino gaming properties. Its racing business earns revenue from pari-mutuel wagering, simulcast fees, admissions, sponsorships, television rights, food and beverage, and other event services. The company operates Churchill Downs Racetrack, home of the Kentucky Derby, and historical racing properties in Kentucky, Virginia and New Hampshire, serving guests, wagering customers and sponsors.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:29.449Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/20212/000002021226000025/chdn-20251231.htm"
+}

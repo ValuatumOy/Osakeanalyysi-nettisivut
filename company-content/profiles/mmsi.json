@@ -1,0 +1,10 @@
+{
+  "ticker": "MMSI",
+  "companyName": "Merit Medical Systems, Inc.",
+  "profile": "Merit Medical Systems designs, develops, manufactures and markets medical devices for interventional, diagnostic and therapeutic procedures. Its products are used across areas including cardiology, radiology, oncology, critical care and endoscopy. Offerings include vascular access devices, needles, introducer sheaths, guide wires and custom procedural kits, trays and packs. Customers include healthcare facilities and clinicians worldwide.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.889Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/856982/000085698226000008/mmsi-20251231x10k.htm"
+}

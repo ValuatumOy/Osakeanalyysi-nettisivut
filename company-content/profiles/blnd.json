@@ -1,0 +1,14 @@
+{
+  "ticker": "BLND",
+  "companyName": "Blend Labs, Inc.",
+  "profile": "Blend Labs provides a digital platform that financial institutions use to originate mortgages, home equity loans, consumer credit, and deposit accounts. Its software supports borrower applications, verification, lender workflows, document exchange, and digital closing, with integrations to core banking and loan origination systems. Banks, credit unions, mortgage lenders, and fintechs use its tools, including AI-enabled automation across lending workflows.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.060Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1855747/000185574726000016/blnd-20251231.htm",
+  "profileSources": [
+    "https://blend.com/platform/",
+    "https://blend.com/company/newsroom/blend-autopilot-gains-momentum-as-tenth-lender-signs-on/"
+  ]
+}

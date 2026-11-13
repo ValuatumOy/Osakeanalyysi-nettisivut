@@ -1,0 +1,10 @@
+{
+  "ticker": "NATL",
+  "companyName": "NCR Atleos Corporation",
+  "profile": "NCR Atleos provides self-directed banking solutions to financial institutions, merchants, manufacturers, retailers and consumers. Its offerings include ATM and interactive teller machine hardware, software and services, the Allpoint network, and a turnkey ATM-as-a-Service platform. Terminals support cash deposits and withdrawals, account services and payment transactions, while interactive machines also enable more complex services such as account opening and loan applications.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.500Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1974138/000162828026012576/ncr-20251231.htm"
+}

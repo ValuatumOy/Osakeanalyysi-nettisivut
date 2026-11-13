@@ -1,0 +1,10 @@
+{
+  "ticker": "NSSC",
+  "companyName": "Napco Security Technologies, Inc.",
+  "profile": "NAPCO designs and manufactures electronic security equipment and provides cellular communication services for intrusion and fire alarm systems, alongside school safety solutions. Its products include access control systems, locks, intrusion and fire alarms, video surveillance equipment, door controllers, and cellular communicators. It sells mainly to independent security distributors, dealers, installers, and integrators, who also pay monthly fees for connected services.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:09.229Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/69633/000110465926100081/nssc-20260630x10k.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "LNTH",
+  "companyName": "Lantheus Holdings, Inc.",
+  "profile": "Lantheus develops and markets radiopharmaceutical products and related solutions used by healthcare professionals to detect, characterize, or rule out disease. Its offerings include radiopharmaceutical oncology products, precision diagnostics, biomarkers, digital solutions and contract development and manufacturing services. The company sells primarily to hospitals, independent imaging centers and government facilities, and serves clinicians across multiple specialties and settings.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.574Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1521036/000119312526073498/lnth-20251231.htm"
+}

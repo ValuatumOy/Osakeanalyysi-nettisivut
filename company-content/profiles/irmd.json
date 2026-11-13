@@ -1,0 +1,10 @@
+{
+  "ticker": "IRMD",
+  "companyName": "IRadimed Corporation",
+  "profile": "IRadimed develops, manufactures, markets, and distributes medical devices and related products and services designed for use during magnetic resonance imaging procedures. Its portfolio includes MRI-compatible intravenous infusion pump systems, disposable tubing, mounting equipment, and remote displays, as well as a patient vital signs monitoring system. These products support clinicians caring for patients during MRI scans.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:24.409Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1325618/000110465926024691/irmd-20251231x10k.htm"
+}

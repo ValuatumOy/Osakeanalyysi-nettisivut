@@ -1,0 +1,14 @@
+{
+  "ticker": "LAD",
+  "companyName": "Lithia Motors, Inc.",
+  "profile": "Lithia Motors operates an automotive retail network selling new and used vehicles from domestic and international manufacturers. Its dealerships also provide vehicle financing, parts, maintenance, and repair services, with offerings varying by location. The company serves individual and commercial customers through physical dealerships and online channels, supporting vehicle shopping and ownership across a broad range of brands and vehicle types.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.076Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1023128/000102312826000015/lad-20251231.htm",
+  "profileSources": [
+    "https://www.lithia.com/dealership/about.htm",
+    "https://www.lithia.com/"
+  ]
+}

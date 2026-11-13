@@ -1,0 +1,10 @@
+{
+  "ticker": "MXL",
+  "companyName": "MaxLinear, Inc.",
+  "profile": "MaxLinear designs communications system-on-chip products for broadband, mobile and wireline infrastructure, data centers, and industrial and other markets. Its integrated circuits combine communication functions such as radio frequency, analog and digital processing, security, networking, and power management. Customers include electronics distributors, module makers, original equipment manufacturers, and original design manufacturers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.497Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1288469/000128846926000011/mxl-20251231.htm"
+}

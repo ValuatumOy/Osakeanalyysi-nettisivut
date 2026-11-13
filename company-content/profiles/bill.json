@@ -1,0 +1,10 @@
+{
+  "ticker": "BILL",
+  "companyName": "Bill.com Holdings, Inc.",
+  "profile": "BILL provides a finance platform used by businesses and accountants to manage accounts payable, accounts receivable, expenses, forecasting and procurement. Its tools support invoice processing, approvals, payments, expense management, budgeting and cash flow workflows, and integrate with accounting software, banks and payment providers. The company serves small and midsize businesses, along with their suppliers, clients and accounting partners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:13.562Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1786352/000162828026058238/bill-20260630.htm"
+}

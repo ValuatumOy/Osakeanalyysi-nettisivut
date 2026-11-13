@@ -1,0 +1,10 @@
+{
+  "ticker": "LIVN",
+  "companyName": "LivaNova PLC",
+  "profile": "LivaNova develops, manufactures, markets, and sells medical products, therapies, and services through its Cardiopulmonary and Neuromodulation segments. Cardiopulmonary offerings include heart-lung machines, oxygenators, autotransfusion systems, tubing systems, cannulae, accessories, and related services for surgical care. Neuromodulation provides devices for vagus nerve stimulation therapy for drug-resistant epilepsy and difficult-to-treat depression, and develops a system for obstructive sleep apnea.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:10.531Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1639691/000163969126000010/livn-20251231.htm"
+}

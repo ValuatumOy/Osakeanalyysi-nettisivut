@@ -1,0 +1,10 @@
+{
+  "ticker": "ZWS",
+  "companyName": "Zurn Elkay Water Solutions Corporation",
+  "profile": "Zurn Elkay Water Solutions designs, procures, manufactures and markets water management products. Its portfolio includes water safety and control products, flow systems, hygienic and environmental products, and filtered drinking water products for public and private spaces. The company serves primarily institutional and commercial building construction markets, as well as waterworks and residential construction. Its solutions are used in new buildings and retrofit projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:29.449Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1439288/000162828026006372/zws-20251231.htm"
+}

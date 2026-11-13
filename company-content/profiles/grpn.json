@@ -1,0 +1,10 @@
+{
+  "ticker": "GRPN",
+  "companyName": "Groupon, Inc.",
+  "profile": "Groupon operates a two-sided online marketplace connecting consumers with merchants through mobile applications and websites. Its Local category features services and experiences, Goods offers products sold by third-party merchants, and Travel presents hotels, airfare and package deals. The company earns commissions on merchant transactions and retailer purchases made using digital coupons accessed through its platforms.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:14.592Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1490281/000162828026016429/grpn-20251231.htm"
+}

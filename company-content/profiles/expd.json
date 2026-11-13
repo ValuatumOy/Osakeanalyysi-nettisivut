@@ -1,0 +1,10 @@
+{
+  "ticker": "EXPD",
+  "companyName": "Expeditors International of Washington, Inc.",
+  "profile": "Expeditors provides global logistics services through an international network and integrated information systems, arranging transportation and strategic positioning of customers’ goods. It offers airfreight and ocean freight services, customs brokerage, order management, time-definite transportation, warehousing, distribution, temperature-controlled transit, cargo insurance, monitoring, and customized logistics and consulting. Its Project Cargo unit handles specialized shipments by air, ocean, or ground.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.207Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/746515/000119312526071569/expd-20251231.htm"
+}

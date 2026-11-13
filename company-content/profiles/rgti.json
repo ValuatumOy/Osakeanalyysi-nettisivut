@@ -1,0 +1,10 @@
+{
+  "ticker": "RGTI",
+  "companyName": "Rigetti Computing, Inc.",
+  "profile": "Rigetti Computing builds and operates superconducting quantum computers and develops quantum processors using a vertically integrated design and manufacturing platform. It provides access to its quantum computing systems through Rigetti Quantum Cloud Services and public cloud providers, and sells quantum computers to end users. Customers include cloud users, research partners, and academic institutions purchasing systems for computation and research.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:32.841Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926023454/rgti-20251231x10k.htm"
+}

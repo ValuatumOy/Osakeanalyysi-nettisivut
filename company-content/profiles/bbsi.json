@@ -1,0 +1,10 @@
+{
+  "ticker": "BBSI",
+  "companyName": "Barrett Business Services, Inc.",
+  "profile": "Barrett Business Services provides management support to small and mid-sized businesses through local teams that combine human resources, organizational development, risk mitigation, workplace safety, recruiting, employee benefits, and administrative expertise. Its services include employment administration, payroll, process improvement, supervisor training, leadership development, strategic guidance, workers’ compensation coverage, claims management, and employee benefit programs for business owner clients.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:57.523Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/902791/000119312526072255/bbsi-20251231.htm"
+}

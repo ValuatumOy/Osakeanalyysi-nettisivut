@@ -1,0 +1,10 @@
+{
+  "ticker": "CVCO",
+  "companyName": "Cavco Industries, Inc.",
+  "profile": "Cavco Industries designs and manufactures factory-built homes, including manufactured homes, park model recreational vehicles, vacation cabins, and commercial structures. It distributes homes through independent and company-owned retailers, planned community operators, and residential developers. Its finance subsidiary originates and services residential mortgages and home-only loans for factory-built home buyers, while its insurance subsidiary provides property and casualty coverage primarily to manufactured-home owners.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:57.406Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/278166/000162828026037782/cvco-20260328.htm"
+}

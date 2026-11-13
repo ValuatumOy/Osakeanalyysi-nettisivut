@@ -1,0 +1,13 @@
+{
+  "ticker": "XENE",
+  "companyName": "Xenon Pharmaceuticals Inc.",
+  "profile": "Xenon Pharmaceuticals is a neuroscience biopharmaceutical company developing treatments for neurological and psychiatric disorders. Its lead candidate azetukalner, a Kv7 potassium channel opener, has an NDA submitted to the FDA for focal seizures and is in Phase 3 studies for epilepsy. The company completed enrollment in a Phase 3 major depressive disorder study and continues to develop earlier-stage ion-channel programs for pain and other conditions.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:29:49.880Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1582313/000119312526076650/xene-20251231.htm",
+  "profileSources": [
+    "https://investor.xenon-pharma.com/news-releases/news-release-details/xenon-reports-q3-2026-financial-results-and-provides-business"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "BWA",
+  "companyName": "BorgWarner Inc.",
+  "profile": "BorgWarner manufactures and sells technology products for combustion, hybrid and electric vehicles. Its offerings include turbochargers, emissions and thermal systems, ignition technology, powertrain sensors, cabin and battery heating, and battery cooling products. It primarily supplies light vehicle original equipment manufacturers worldwide, and also serves commercial and off-highway vehicle manufacturers, tier-one vehicle systems suppliers and aftermarket customers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:11.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/908255/000090825526000011/bwa-20251231.htm"
+}

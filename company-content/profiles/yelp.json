@@ -1,0 +1,10 @@
+{
+  "ticker": "YELP",
+  "companyName": "Yelp Inc.",
+  "profile": "Yelp operates a platform where consumers search for and discover local businesses, using ratings, reviews, photos, videos, and other user-generated content. Its advertising products help businesses reach consumers and promote products and services, while subscription services support business operations. Yelp serves consumers and businesses across a broad range of local business categories through its platform and other devices.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:17.930Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1345016/000134501626000019/yelp-20251231.htm"
+}

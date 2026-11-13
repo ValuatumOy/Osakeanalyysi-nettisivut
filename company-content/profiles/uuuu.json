@@ -1,0 +1,14 @@
+{
+  "ticker": "UUUU",
+  "companyName": "Energy Fuels Inc.",
+  "profile": "Energy Fuels produces and processes uranium and other critical materials for energy and industrial supply chains. Its portfolio includes uranium concentrates, rare-earth oxides, rare-earth metals and alloys through its acquired Australian Strategic Materials business, vanadium, and heavy mineral sands products. Operations span U.S. mines and the White Mesa Mill in Utah, as well as the Korean Metals Plant, serving nuclear utilities and materials manufacturers.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.065Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1385849/000138584926000009/efr-20251231.htm",
+  "profileSources": [
+    "https://investors.energyfuels.com/2026-11-04-Energy-Fuels-Announces-Q3-2026-Results",
+    "https://investors.energyfuels.com/2026-08-28-Energy-Fuels-Completes-Acquisition-of-Australian-Strategic-Materials"
+  ]
+}

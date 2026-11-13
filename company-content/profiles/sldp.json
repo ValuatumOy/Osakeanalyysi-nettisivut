@@ -1,0 +1,10 @@
+{
+  "ticker": "SLDP",
+  "companyName": "Solid Power, Inc.",
+  "profile": "Solid Power develops sulfide-based solid electrolyte materials and solid-state battery cell manufacturing processes, with an initial focus on the electric vehicle market. It produces electrolyte samples and cells for customer sampling, internal development, and partner programs. Its commercialization strategy centers on supplying electrolyte to battery manufacturers and automotive original equipment manufacturers, and licensing cell manufacturing processes and designs.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:58.798Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1844862/000110465926019435/sldp-20251231x10k.htm"
+}

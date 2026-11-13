@@ -1,0 +1,10 @@
+{
+  "ticker": "CRAI",
+  "companyName": "CRA International, Inc.",
+  "profile": "CRA International is a consulting firm providing economic, financial, and management consulting services. It advises corporations, attorneys, law firms, and government agencies on litigation, regulatory proceedings, business strategy, and performance issues. Services include research and analysis, expert testimony, regulatory and antitrust support, forensic accounting, market forecasting, valuation, risk management, transaction support, strategy development, performance improvement, and market research.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:11.593Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1053706/000105370626000006/crai-20260103.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "SXI",
+  "companyName": "Standex International Corporation",
+  "profile": "Standex International is a diversified industrial manufacturer organized across electronics, aerospace and defense, scientific, and engraving and hydraulics businesses. It supplies engineered components, products and solutions tailored to commercial and industrial customer applications. Its electronics offerings include sensing and switching technologies, precision instrument transformers, and magnetic power conversion and measurement components and assemblies used across varied markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:36.574Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/310354/000143774926027789/sxi20260630_10k.htm"
+}

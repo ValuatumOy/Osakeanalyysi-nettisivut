@@ -1,0 +1,10 @@
+{
+  "ticker": "PAR",
+  "companyName": "PAR Technology Corporation",
+  "profile": "PAR Technology provides cloud-based software, hardware, payment processing, and related services to restaurants and retailers, including convenience and fuel stores. Its offerings include point-of-sale systems, digital ordering and delivery, customer engagement and loyalty tools, operational intelligence, and payment solutions. The company serves quick-service, fast-casual, and table-service restaurants, as well as retail operators, through subscription services and integrated technologies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.264Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/708821/000070882126000027/par-20251231.htm"
+}

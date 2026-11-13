@@ -1,0 +1,10 @@
+{
+  "ticker": "R",
+  "companyName": "Ryder System, Inc.",
+  "profile": "Ryder System provides outsourced logistics, transportation, fleet management, and supply chain services across North America. Its offerings include full-service leasing, commercial vehicle rental, vehicle maintenance, integrated logistics, dedicated transportation with vehicles and drivers, warehousing, manufacturing support, and final delivery. Customers across varied industries use Ryder to manage goods movement, fleets, and related operations.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.274Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/85961/000008596126000007/r-20251231.htm"
+}

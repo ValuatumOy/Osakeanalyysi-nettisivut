@@ -1,0 +1,10 @@
+{
+  "ticker": "VSAT",
+  "companyName": "Viasat, Inc.",
+  "profile": "Viasat provides communications technologies and services using satellites, ground infrastructure, user terminals, and operator partnerships. Its offerings include broadband and narrowband connectivity, satellite and wireless products, and terminals for fixed and mobile services. Customers include aviation, maritime, enterprise, consumer, military, and government users. Its government portfolio also includes communications gateways, situational awareness and command-and-control products and services, satellite communications, cybersecurity, and information assurance.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:47.422Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/797721/000119312526248290/vsat-20260331.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "COLL",
+  "companyName": "Collegium Pharmaceutical, Inc.",
+  "profile": "Collegium Pharmaceutical commercializes prescription medicines in the United States for attention deficit hyperactivity disorder and moderate to severe pain, along with Symproic. Its products include Jornay PM, a stimulant for ADHD; Belbuca, a buprenorphine buccal film for persistent pain; Xtampza ER, an extended-release oxycodone formulation; and Nucynta immediate- and extended-release tapentadol products for acute or persistent pain.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:55.265Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1267565/000162828026011992/coll-20251231.htm"
+}

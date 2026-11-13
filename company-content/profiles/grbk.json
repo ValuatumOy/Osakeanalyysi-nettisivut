@@ -1,0 +1,10 @@
+{
+  "ticker": "GRBK",
+  "companyName": "Green Brick Partners, Inc.",
+  "profile": "Green Brick Partners acquires and develops land and builds homes through seven builder brands. Its operations span Dallas-Fort Worth, Austin, Houston, Atlanta and Florida’s Treasure Coast. The company handles land acquisition, entitlements, home design and construction, and also provides title, mortgage and insurance agency services. It manages marketing and sales and develops master planned communities for homebuyers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:30.502Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1373670/000162828026011798/grbk-20251231.htm"
+}

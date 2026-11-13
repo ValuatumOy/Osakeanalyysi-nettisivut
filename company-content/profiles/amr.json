@@ -1,0 +1,14 @@
+{
+  "ticker": "AMR",
+  "companyName": "Alpha Metallurgical Resources, Inc.",
+  "profile": "Alpha Metallurgical Resources mines and markets metallurgical coal used in steelmaking, operating underground and surface mines in Virginia and West Virginia. It also produces thermal coal. The company supplies domestic and international steelmakers and other coal customers, coordinating product blending and transport through rail, barge, and ocean shipping, including its interest in Dominion Terminal Associates.",
+  "provider": "codex-agent",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:22:32.048Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1704715/000170471526000010/amr-20251231.htm",
+  "profileSources": [
+    "https://www.alphametresources.com/newsroom/",
+    "https://alphametresources.com/sales/"
+  ]
+}

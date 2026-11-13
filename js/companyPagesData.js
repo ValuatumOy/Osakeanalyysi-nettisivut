@@ -29,6 +29,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "5th Planet Games A/S is a Copenhagen-based video game publisher and financier that develops and publishes games across mobile, PC and console platforms. The company works with established intellectual property and partners such as Skybound Entertainment, and it also provides distribution and co-financing services across video games and related entertainment content."
   },
   {
+    "name": "A10 Networks",
+    "ticker": "ATEN",
+    "exchange": "Listed",
+    "url": "reports/a10-networks-equity-report.html",
+    "description": "A10 Networks provides secure application and network infrastructure solutions for enterprises and service providers worldwide. Its offerings include application delivery and traffic management, distributed denial of service protection, application and API security, and centralized management. Customers deploy these capabilities across physical, virtual, containerized, on-premises, hybrid cloud, and cloud-native environments, and can purchase related maintenance and support services."
+  },
+  {
     "name": "AAC Clyde Space",
     "ticker": "AAC.ST",
     "exchange": "Stockholm",
@@ -92,6 +99,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AbbVie is a research-based biopharmaceutical company that discovers, develops, manufactures, markets, and sells medicines and therapies. Its portfolio spans immunology, neuroscience, oncology, and aesthetics, with products addressing autoimmune and other serious diseases. Examples include Skyrizi, a biologic therapy for several autoimmune conditions, and Rinvoq, an oral medicine for inflammatory diseases. The company organizes commercial activities by region or therapeutic area."
   },
   {
+    "name": "AbCellera Biologics",
+    "ticker": "ABCL",
+    "exchange": "Listed",
+    "url": "reports/abcellera-biologics-equity-report.html",
+    "description": "AbCellera discovers and develops antibody-based medicines through a platform combining experimental technology, data science, and drug development capabilities. Its programs span endocrinology, women’s health, immunology, and oncology. The company advances its own therapeutic candidates and collaborates with biotechnology and pharmaceutical partners on drug programs. Its pipeline includes ABCL635 for vasomotor symptoms and other investigational antibodies."
+  },
+  {
     "name": "ABL Group",
     "ticker": "ABL.OL",
     "exchange": "Oslo",
@@ -120,6 +134,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AcadeMedia is a Nordic education company that operates preschools, primary schools, upper secondary schools and adult education providers in Sweden and other European markets. It also develops digital education services and technologies. The group’s value drivers are scale, centralised support functions and a broad portfolio of local education brands across the learning ladder."
   },
   {
+    "name": "ACADIA Pharmaceuticals",
+    "ticker": "ACAD",
+    "exchange": "Listed",
+    "url": "reports/acadia-pharmaceuticals-equity-report.html",
+    "description": "Acadia Pharmaceuticals develops medicines for neurological and rare diseases. Its commercial products include NUPLAZID for hallucinations and delusions associated with Parkinson’s disease psychosis, and DAYBUE for Rett syndrome. The company also has research programs and product candidates for conditions including Alzheimer’s disease psychosis, Lewy body dementia psychosis, major depressive disorder, essential tremor and tardive dyskinesia."
+  },
+  {
     "name": "Acarix",
     "ticker": "ACARIX.ST",
     "exchange": "Stockholm",
@@ -139,6 +160,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/acconeer-equity-report.html",
     "description": "Acconeer AB (publ) develops and sells low-power millimeter-wave radar sensors and related modules based on its pulsed coherent radar technology. Its products are used for distance, presence, motion, and object detection in applications such as industrial automation, consumer electronics, automotive, and IoT. The company also offers evaluation kits and support for integration."
+  },
+  {
+    "name": "ACI Worldwide",
+    "ticker": "ACIW",
+    "exchange": "Listed",
+    "url": "reports/aci-worldwide-equity-report.html",
+    "description": "ACI Worldwide develops, markets, installs and supports software for digital payments. Its solutions handle payment functions including authentication, authorization, switching, settlement, fraud checks and reconciliation across channels and payment types. Customers include banks, central banks, payment intermediaries, processors, payment service providers, merchants and billers. The company also offers payment platforms and services for retail banking, merchant transactions and digital payment processing."
   },
   {
     "name": "AcouSort",
@@ -190,6 +218,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AcuCort AB is a Swedish pharmaceutical company that develops and commercializes Zeqmelit, a fast-dissolving oral film containing dexamethasone. The product is designed for situations where simple administration is important and is approved in Sweden, Denmark, Norway and Finland for uses including acute allergic reactions, croup in children, chemotherapy-related nausea and vomiting, and respiratory support in COVID-19."
   },
   {
+    "name": "Adaptive Biotechnologies",
+    "ticker": "ADPT",
+    "exchange": "Listed",
+    "url": "reports/adaptive-biotechnologies-equity-report.html",
+    "description": "Adaptive Biotechnologies applies immune system sequencing and analysis technologies to develop clinical products and services. Its MRD business offers clonoSEQ testing to clinicians for detecting and monitoring residual disease in lymphoid cancers, and provides the assay to biopharmaceutical partners for drug development. Its Immune Medicine business offers immune receptor sequencing, proprietary data licensing, TCR-antigen prediction models, and target discovery capabilities."
+  },
+  {
     "name": "AdderaCare",
     "ticker": "ADDERA.ST",
     "exchange": "Stockholm",
@@ -218,11 +253,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Addtech AB is a Swedish publicly listed technical solutions group with around 150 independent companies. It sells high-tech products, components, and customised solutions to customers mainly in manufacturing and infrastructure, with operations organised across five business areas: Automation, Electrification, Energy, Industry, Process, and Safety. The group’s value driver is specialist, decentralised niche businesses."
   },
   {
+    "name": "Adeia",
+    "ticker": "ADEA",
+    "exchange": "Listed",
+    "url": "reports/adeia-equity-report.html",
+    "description": "Adeia develops and licenses intellectual property for media and semiconductor industries. Its portfolio includes media technologies for searching, streaming, discovering, consuming, personalizing, and interacting with content, as well as semiconductor technologies covering hybrid bonding, processing nodes, and advanced packaging. Its customers include media, entertainment, consumer electronics, social media, and semiconductor companies that use its innovations in products and services."
+  },
+  {
     "name": "Adevinta",
     "ticker": "ADE.OL",
     "exchange": "Oslo",
     "url": "reports/adevinta-equity-report.html",
     "description": "Adevinta is an online classifieds group that operates digital marketplaces across Europe and selected other markets. Its platforms connect buyers, sellers and businesses in categories including consumer goods, mobility, real estate and jobs, with revenue driven by marketplace listings, advertising and related services. The company was delisted in June 2024 after being acquired."
+  },
+  {
+    "name": "ADMA Biologics",
+    "ticker": "ADMA",
+    "exchange": "Listed",
+    "url": "reports/adma-biologics-equity-report.html",
+    "description": "ADMA Biologics develops, manufactures and markets specialty biologic therapies for people with immune deficiencies and others at risk of certain infectious diseases. Its marketed products include intravenous immune globulin therapies for primary immunodeficiency and hepatitis B immune globulin for specified exposures. The company also operates U.S. plasma collection centers and develops plasma-derived therapeutic candidates for clinical use."
   },
   {
     "name": "Admicom",
@@ -237,6 +286,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/adtraction-group-equity-report.html",
     "description": "Adtraction Group AB operates a partner marketing platform that connects brands with publishers, influencers, media sites, apps and other partners to drive online sales on a commission basis. The company provides tracking, payments and active partnership management, and serves advertisers across Europe through local teams and a proprietary technology platform."
+  },
+  {
+    "name": "ADTRAN Holdings",
+    "ticker": "ADTN",
+    "exchange": "Listed",
+    "url": "reports/adtran-holdings-equity-report.html",
+    "description": "ADTRAN Holdings supplies networking and communications platforms, hardware, software and services for broadband access, metro optical transport and data center interconnect. Its offerings include network infrastructure, customer premises equipment, network design and implementation, support, and cloud-hosted software applications. Customers include service providers, utilities, municipalities, fiber builders, cable operators, businesses, data center and content companies, and government agencies."
+  },
+  {
+    "name": "Advanced Drainage Systems",
+    "ticker": "WMS",
+    "exchange": "Listed",
+    "url": "reports/advanced-drainage-systems-equity-report.html",
+    "description": "Advanced Drainage Systems designs, manufactures and markets thermoplastic corrugated pipe and related water management products. Its portfolio addresses stormwater and onsite wastewater needs, including capturing, conveying, storing and treating water. Products serve residential, non-residential, infrastructure and agriculture applications. The company also offers residential drainage solutions, access boxes and irrigation products through its acquired NDS business."
   },
   {
     "name": "Advanced Micro Devices",
@@ -302,6 +365,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Agat Ejendomme A/S is a Danish listed real estate company focused on owning and operating properties, mainly shopping and outlet centres. It seeks to improve operating income, control costs in line with the portfolio, and wind down remaining land-related activities. The company also reviews strategic options for its assets and business structure."
   },
   {
+    "name": "AGCO",
+    "ticker": "AGCO",
+    "exchange": "Listed",
+    "url": "reports/agco-equity-report.html",
+    "description": "AGCO Corporation makes and distributes agricultural machinery, precision agriculture technologies, and replacement parts. Its products include tractors, combines, hay and forage equipment, planters, implements, application equipment, and mixed-fleet precision farming solutions. The company sells through independent dealers and distributors in many countries and provides retail and wholesale financing through joint ventures. Its customers include farms and agricultural businesses."
+  },
+  {
     "name": "AGES Industri",
     "ticker": "AGES-B.ST",
     "exchange": "Stockholm",
@@ -323,11 +393,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Agillic A/S is a Danish software company that provides a cloud-based marketing automation and customer marketing platform. Its software helps organisations collect and use customer data to deliver personalised, omnichannel communications across email, SMS, web, app and print. The company earns revenue through platform subscriptions and transaction-based fees."
   },
   {
+    "name": "Agilysys",
+    "ticker": "AGYS",
+    "exchange": "Listed",
+    "url": "reports/agilysys-equity-report.html",
+    "description": "Agilysys develops hospitality software delivered through cloud based and on premise solutions. Its products include point of sale, property management, inventory and procurement, payments, and related applications for managing guest journeys. It also provides subscription and maintenance offerings, customer support, and professional services. Customers include hotels, resorts, cruise lines, casinos, restaurants, universities, stadiums, corporate foodservice operators, and healthcare facilities."
+  },
+  {
     "name": "Agilyx",
     "ticker": "AGLX.OL",
     "exchange": "Oslo",
     "url": "reports/agilyx-equity-report.html",
     "description": "Agilyx ASA develops and commercialises solutions for plastic waste recycling. Its business includes feedstock management through GreenDot Global, technical services through arcLABS, and licensing of proprietary advanced recycling technologies such as Styrenyx and TruStyrenyx for polystyrene waste. The company focuses on recovering value from post-use plastics for circular and lower-carbon material production."
+  },
+  {
+    "name": "Agios Pharmaceuticals",
+    "ticker": "AGIO",
+    "exchange": "Listed",
+    "url": "reports/agios-pharmaceuticals-equity-report.html",
+    "description": "Agios Pharmaceuticals is a commercial-stage biopharmaceutical company focused on rare disease medicines, with a foundation in hematology. Its approved medicine mitapivat is marketed as AQVESME and PYRUKYND for specified forms of thalassemia and pyruvate kinase deficiency. The company is also developing medicines for conditions including myelodysplastic syndromes, sickle cell disease, phenylketonuria and polycythemia vera."
   },
   {
     "name": "Aino Health",
@@ -428,6 +512,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "AKVA group ASA is a technology and service provider to the global aquaculture industry. The company supplies solutions for sea-based and land-based fish farming, including marine infrastructure, feed systems, nets, sensors, camera systems, and related service and support. Its business is driven by equipment sales, project delivery, and ongoing maintenance and digital solutions."
   },
   {
+    "name": "Alarm.com Holdings",
+    "ticker": "ALRM",
+    "exchange": "Listed",
+    "url": "reports/alarm-com-holdings-equity-report.html",
+    "description": "Alarm.com provides a cloud-based platform and connected devices for residential, multifamily, small business, enterprise commercial, and energy markets. Its services include security, video surveillance and analytics, energy management, access control, utility grid management, active shooter detection, water management, personal safety, and emergency response. Service provider partners distribute, install, and support its offerings for property owners."
+  },
+  {
+    "name": "Alaska Air Group",
+    "ticker": "ALK",
+    "exchange": "Listed",
+    "url": "reports/alaska-air-group-equity-report.html",
+    "description": "Alaska Air Group operates Alaska Airlines, Hawaiian Airlines, Horizon Air and aviation services provider McGee Air Services. Alaska and Hawaiian provide scheduled passenger and cargo transportation across North America, Latin America, Asia and the Pacific, with Hawaiian retained as a distinct brand. Horizon and a partner carrier operate regional passenger flights, with their capacity sold to Alaska."
+  },
+  {
+    "name": "Albemarle",
+    "ticker": "ALB",
+    "exchange": "Listed",
+    "url": "reports/albemarle-equity-report.html",
+    "description": "Albemarle transforms essential resources into ingredients for mobility, energy, connectivity, and health markets. Its Energy Storage business develops and manufactures lithium compounds, including lithium carbonate, lithium hydroxide, and lithium chloride, used in batteries, power grids, specialty glass, and other applications. The company also reports Specialties and Ketjen segments and serves customers across automotive, electronics, pharmaceuticals, agriculture, and industrial markets."
+  },
+  {
     "name": "Alcadon Group",
     "ticker": "ALCA.ST",
     "exchange": "Stockholm",
@@ -456,6 +561,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Alfa Laval develops and sells equipment and services for heat transfer, separation and fluid handling. Its products include heat exchangers, separators, pumps, valves, tank cleaning systems and related service support for customers in energy, food and pharmaceuticals, marine, and water treatment. The company earns value from installed base, maintenance and process efficiency."
   },
   {
+    "name": "Align Technology",
+    "ticker": "ALGN",
+    "exchange": "Listed",
+    "url": "reports/align-technology-equity-report.html",
+    "description": "Align Technology designs, manufactures, and markets Invisalign clear aligners, Vivera retainers, iTero intraoral scanners and services, and exocad dental design software. Its products support orthodontic treatment, digital scanning, treatment planning, monitoring, and restorative dentistry workflows. Customers include orthodontists, general dental practitioners, dental laboratories, dental support organizations, and distributors; some accessories are also sold to consumers through online and retail channels."
+  },
+  {
     "name": "Alimak Group",
     "ticker": "ALIG.ST",
     "exchange": "Stockholm",
@@ -470,6 +582,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "ALK-Abelló A/S is a Denmark-based specialty pharmaceutical company focused on allergy prevention, diagnosis and treatment. It develops and markets allergy immunotherapy products, including tablet, drop and injectable treatments, along with allergen extracts and diagnostics. The company also supplies source materials used in manufacturing allergy products and operates internationally."
   },
   {
+    "name": "Alkami Technology",
+    "ticker": "ALKT",
+    "exchange": "Listed",
+    "url": "reports/alkami-technology-equity-report.html",
+    "description": "Alkami Technology provides a cloud-based digital sales and service platform for community, regional and super-regional financial institutions in the United States. Its products include digital banking, onboarding and account opening, and data and marketing solutions. The platform serves banks and credit unions, providing their account holders with digital access to financial services."
+  },
+  {
+    "name": "Alkermes",
+    "ticker": "ALKS",
+    "exchange": "Listed",
+    "url": "reports/alkermes-equity-report.html",
+    "description": "Alkermes is a biopharmaceutical company developing medicines in neuroscience. Its commercial products treat alcohol dependence, opioid dependence, schizophrenia, bipolar I disorder and narcolepsy. The company also develops clinical and preclinical candidates for neurological disorders, and licenses proprietary technologies used in products commercialized by other pharmaceutical companies. It operates from Ireland, Massachusetts and Ohio."
+  },
+  {
+    "name": "Allegro MicroSystems",
+    "ticker": "ALGM",
+    "exchange": "Listed",
+    "url": "reports/allegro-microsystems-equity-report.html",
+    "description": "Allegro MicroSystems designs, develops and markets sensor integrated circuits and application-specific power integrated circuits. Its sensor products detect motion, position, speed and electrical current, while its power products drive motors and manage power conversion and regulation. The company primarily serves automotive and industrial customers, including businesses in robotics, energy infrastructure and data centers."
+  },
+  {
     "name": "Alleima",
     "ticker": "ALLEI.ST",
     "exchange": "Stockholm",
@@ -482,6 +615,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/alliant-energy-equity-report.html",
     "description": "Alliant Energy is a regulated utility holding company serving customers in the Midwest through its subsidiaries IPL and WPL. The utilities generate and distribute electricity and distribute and transport natural gas to retail customers in Iowa and Wisconsin; they also sell electricity to wholesale customers. Its non-utility holdings include energy investments and supply chain services."
+  },
+  {
+    "name": "Allient",
+    "ticker": "ALNT",
+    "exchange": "Listed",
+    "url": "reports/allient-equity-report.html",
+    "description": "Allient designs, manufactures, and sells precision and specialty controlled motion components and systems for industrial, vehicle, medical, and aerospace and defense markets. Its products include motors, drives, controllers, positioning systems, gearing, encoders, power quality filters, safety modules, and communications gateways. The company sells component and integrated solutions to end customers and original equipment manufacturers through direct sales, representatives, and distributors."
   },
   {
     "name": "Alligator Bioscience",
@@ -531,6 +671,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/alpcot-holding-equity-report.html",
     "description": "Alpcot Holding AB operates a digital platform for savings, investments and insurance in Sweden. Through its subsidiaries, it provides financial advice and distributes financial products, with a main focus on occupational pension solutions for small and medium-sized companies. The group also offers life insurance, related risk products and asset management services."
+  },
+  {
+    "name": "Alpha and Omega Semiconductor Limited",
+    "ticker": "AOSL",
+    "exchange": "Listed",
+    "url": "reports/alpha-and-omega-semiconductor-limited-equity-report.html",
+    "description": "Alpha and Omega Semiconductor designs, develops, and supplies power semiconductors for electronics manufacturers. Its portfolio includes MOSFETs, insulated gate bipolar transistors, integrated power modules, and power integrated circuits. Products serve applications such as computers, graphics cards, game consoles, appliances, power tools, phones, battery packs, motor controls, and power supplies for servers and telecommunications equipment."
+  },
+  {
+    "name": "Alpha Metallurgical Resources",
+    "ticker": "AMR",
+    "exchange": "Listed",
+    "url": "reports/alpha-metallurgical-resources-equity-report.html",
+    "description": "Alpha Metallurgical Resources mines and markets metallurgical coal used in steelmaking, operating underground and surface mines in Virginia and West Virginia. It also produces thermal coal. The company supplies domestic and international steelmakers and other coal customers, coordinating product blending and transport through rail, barge, and ocean shipping, including its interest in Dominion Terminal Associates."
   },
   {
     "name": "Altria Group",
@@ -589,6 +743,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "American Shipping Company ASA is a Norwegian maritime investment company. Its main asset is a substantial shareholding in Solstad Maritime Holding AS, which owns and operates offshore service vessels. The company was established in 2005 and, in 2025, moved into liquidation as it wound down its remaining corporate activities."
   },
   {
+    "name": "American States Water Company",
+    "ticker": "AWR",
+    "exchange": "Listed",
+    "url": "reports/american-states-water-company-equity-report.html",
+    "description": "American States Water Company provides regulated water and electric utility services and contracted water and wastewater services. Its subsidiary Golden State Water Company distributes water and provides wastewater collection and treatment in California, while Bear Valley Electric Service distributes electricity in California mountain communities. Through American States Utility Services and subsidiaries, it operates and maintains water and wastewater systems at U.S. military installations."
+  },
+  {
+    "name": "American Superconductor",
+    "ticker": "AMSC",
+    "exchange": "Listed",
+    "url": "reports/american-superconductor-equity-report.html",
+    "description": "American Superconductor designs, develops and deploys power control solutions using smart materials, software and controls. Its products include voltage compensators, capacitors, transformers, rectifiers, power electronics and control systems, alongside engineering and support services. Customers include electric utilities, industrial and semiconductor manufacturers, wind turbine manufacturers, and naval and shipyard operators seeking power delivery, protection and reliability solutions."
+  },
+  {
     "name": "Amgen",
     "ticker": "AMGN",
     "exchange": "Listed",
@@ -608,6 +776,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/andfjord-salmon-as-equity-report.html",
     "description": "Andfjord Salmon AS develops and operates land-based aquaculture facilities for Atlantic salmon at Andøya in northern Norway. The company uses a proprietary flow-through system designed to combine features of ocean and land-based farming, and its activities center on building and expanding production capacity, processing salmon, and advancing its Kvalnes site toward commercial scale."
+  },
+  {
+    "name": "ANI Pharmaceuticals",
+    "ticker": "ANIP",
+    "exchange": "Listed",
+    "url": "reports/ani-pharmaceuticals-equity-report.html",
+    "description": "ANI Pharmaceuticals develops, manufactures, and commercializes therapeutics through its Rare Disease, Generics, and Brands businesses. Its products include ILUVIEN for diabetic macular edema and chronic non-infectious uveitis affecting the posterior segment of the eye, as well as a broad generics portfolio spanning varied indications. The company operates pharmaceutical manufacturing facilities capable of producing oral solid dose products, semi-solids, liquids, topicals, controlled substances, and potent products."
   },
   {
     "name": "Annehem Fastigheter",
@@ -638,11 +813,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Anoto Group AB develops digital writing and drawing solutions built on its patented dot-pattern technology. The company sells smart pens and related software through brands such as Livescribe and inq, and also offers cloud-based tools for digital note taking, enterprise forms, secure interactive marketing, and biometric authentication. It is also repositioning toward the inq brand."
   },
   {
+    "name": "Anterix",
+    "ticker": "ATEX",
+    "exchange": "Listed",
+    "url": "reports/anterix-equity-report.html",
+    "description": "Anterix holds licensed 900 MHz spectrum and provides spectrum sales and long-term leases to utilities and other critical infrastructure enterprises. It also offers tower site access through TowerX and turnkey connectivity management through CatalyX, alongside ecosystem solutions supporting private broadband network deployment and operation. Its customers seek connectivity for grid modernization, resilience, monitoring and remote automation."
+  },
+  {
+    "name": "Antero Midstream",
+    "ticker": "AM",
+    "exchange": "Listed",
+    "url": "reports/antero-midstream-equity-report.html",
+    "description": "Antero Midstream owns and operates natural gas gathering pipelines and compression facilities, with interests in processing and fractionation assets in the Appalachian Basin. It also provides fresh water delivery, wastewater handling, and recycling services for well completion and production. Its infrastructure primarily serves Antero Resources, connecting the producer’s natural gas and natural gas liquids to domestic and international markets."
+  },
+  {
     "name": "Apetit",
     "ticker": "APETIT",
     "exchange": "Listed",
     "url": "reports/apetit-equity-report.html",
     "description": "Apetit is a Finnish food company focused on plant-based food products and oilseed products. It develops and markets frozen vegetables, frozen foods, frozen pizzas and vegetable oils for retail, food service and industry customers. The company is rooted in domestic primary production and operates factories in Finland and Sweden."
+  },
+  {
+    "name": "Apogee Enterprises",
+    "ticker": "APOG",
+    "exchange": "Listed",
+    "url": "reports/apogee-enterprises-equity-report.html",
+    "description": "Apogee provides architectural building products and services, along with high-performance coated materials. It designs, engineers, fabricates, and finishes aluminum window, curtainwall, storefront, and entrance systems; delivers project management and installation for façade systems; and processes glass for custom windows and walls. Its coated materials serve applications including interiors, museums, displays, and industrial flooring."
   },
   {
     "name": "Apotea",
@@ -657,6 +853,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/applied-digital-equity-report.html",
     "description": "Applied Digital designs, develops, owns, and operates data centers built for high-performance computing workloads, including artificial intelligence, machine learning, and other accelerated computing applications. It provides data center capacity to hyperscalers and other compute customers through long-term lease and hosting arrangements. The company also operates a smaller legacy blockchain data center hosting business for a single customer."
+  },
+  {
+    "name": "Applied Industrial Technologies",
+    "ticker": "AIT",
+    "exchange": "Listed",
+    "url": "reports/applied-industrial-technologies-equity-report.html",
+    "description": "Applied Industrial Technologies distributes industrial products and provides technical solutions in motion, fluid power, flow control, and automation. Its offerings include bearings, power transmission products, fluid power components and systems, specialty flow control, factory automation solutions, and maintenance supplies, along with repair and application support. Customers use its products for maintenance, repair, operations, equipment manufacturing, and new system installations."
+  },
+  {
+    "name": "Applied Optoelectronics",
+    "ticker": "AAOI",
+    "exchange": "Listed",
+    "url": "reports/applied-optoelectronics-equity-report.html",
+    "description": "Applied Optoelectronics designs and manufactures fiber-optic networking products for data centers, cable television, telecommunications, and fiber-to-the-home networks. Its offerings range from lasers and optical components to transceivers, subassemblies, and complete equipment. Customers include hyperscale data center operators, equipment suppliers, cable service providers, and telecommunications companies that deploy or supply fiber-optic networks."
   },
   {
     "name": "AppSpotr",
@@ -692,6 +902,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/aquaporin-equity-report.html",
     "description": "Aquaporin A/S develops water treatment membranes and systems based on its Aquaporin Inside technology, which uses aquaporin proteins in biomimetic filtration. The company serves residential, municipal and industrial applications, including drinking water purification, wastewater treatment, water reuse and forward osmosis concentration. It also works with partners on customized membrane solutions and related commercial products."
+  },
+  {
+    "name": "Aquestive Therapeutics",
+    "ticker": "AQST",
+    "exchange": "Listed",
+    "url": "reports/aquestive-therapeutics-equity-report.html",
+    "description": "Aquestive Therapeutics develops pharmaceutical products and drug delivery technologies, including oral film formulations and epinephrine prodrug candidates. It manufactures four licensed commercialized products marketed by licensees in the United States and elsewhere, and collaborates with pharmaceutical companies to develop and commercialize medicines using its technologies. Its pipeline includes candidates intended for severe allergic reactions and other conditions."
+  },
+  {
+    "name": "Archer Aviation",
+    "ticker": "ACHR",
+    "exchange": "Listed",
+    "url": "reports/archer-aviation-equity-report.html",
+    "description": "Archer Aviation is developing electric vertical take-off and landing aircraft, aviation technologies and services for commercial and defense customers. Its Midnight aircraft is designed for air taxi operations, and the company is working with aviation authorities, governments, airlines and infrastructure partners on certification and network development. It is also advancing a hybrid-electric autonomous aircraft platform for defense, cargo and medical evacuation uses."
   },
   {
     "name": "Arcoma",
@@ -734,6 +958,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/arcus-equity-report.html",
     "description": "Arcus ASA was a Nordic branded consumer goods company focused on wine and spirits. It produced, imported, marketed, sold and distributed alcoholic beverages, with a strong position in aquavit and a broad wine portfolio. Its operations also included beverage logistics through Vectura. In 2021, Arcus merged with Altia to form Anora."
+  },
+  {
+    "name": "Arcutis Biotherapeutics",
+    "ticker": "ARQT",
+    "exchange": "Listed",
+    "url": "reports/arcutis-biotherapeutics-equity-report.html",
+    "description": "Arcutis Biotherapeutics develops and commercializes treatments for dermatological diseases, focusing on immune-mediated skin conditions. Its portfolio includes topical ZORYVE products: creams approved for plaque psoriasis and atopic dermatitis, and foam approved for seborrheic dermatitis and plaque psoriasis. The company serves patients through commercial sales in the United States and Canada and has a promotion agreement for U.S. marketing to primary care providers."
+  },
+  {
+    "name": "Ardelyx",
+    "ticker": "ARDX",
+    "exchange": "Listed",
+    "url": "reports/ardelyx-equity-report.html",
+    "description": "Ardelyx develops and commercializes medicines for unmet medical needs. It markets IBSRELA, an oral tenapanor therapy approved in the United States for adults with irritable bowel syndrome with constipation, and XPHOZAH, approved to reduce serum phosphorus in adults with chronic kidney disease on dialysis. The company also develops a next-generation NHE3 inhibitor."
   },
   {
     "name": "Arendals Fossekompani",
@@ -785,6 +1023,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Arlandastad Group AB is a Swedish real estate development company focused on large strategically located areas. It acquires land, plans and develops infrastructure and building rights, constructs properties, and manages or divests completed assets. The company owns and operates the Arlandastad and Skavsta development areas, and also runs selected operational businesses where they add value."
   },
   {
+    "name": "Arlo Technologies",
+    "ticker": "ARLO",
+    "exchange": "Listed",
+    "url": "reports/arlo-technologies-equity-report.html",
+    "description": "Arlo Technologies provides smart security devices and subscription services for home, business, and personal safety. Its products include Wi-Fi and LTE cameras, video doorbells, floodlight cameras, and home security systems, connected through a cloud platform and mobile app. Services include cloud video recording, AI-based detection, professional monitoring, and emergency response. The platform also integrates with third-party Internet of Things products and protocols."
+  },
+  {
+    "name": "Armstrong World Industries",
+    "ticker": "AWI",
+    "exchange": "Listed",
+    "url": "reports/armstrong-world-industries-equity-report.html",
+    "description": "Armstrong World Industries designs and manufactures interior and exterior architectural applications, including ceilings, specialty walls, and exterior metal solutions. Its products use materials such as mineral fiber, fiberglass, metal, felt, resin, glass, wood, and glass-reinforced gypsum. The company produces suspended ceiling systems and specialty architectural products, and sells primarily to ceiling contractors, resale distributors, wholesalers, and retailers serving commercial projects."
+  },
+  {
     "name": "AroCell",
     "ticker": "IDLDX.ST",
     "exchange": "Stockholm",
@@ -799,11 +1051,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Arribatec Group ASA provides IT consulting and digital business services, including ERP implementation and support, cloud solutions, integrations, software development, business intelligence, and IT operations. The company helps customers connect people, processes, and systems, and it also offers training and managed support across its business applications and infrastructure portfolio."
   },
   {
+    "name": "Arrowhead Pharmaceuticals",
+    "ticker": "ARWR",
+    "exchange": "Listed",
+    "url": "reports/arrowhead-pharmaceuticals-equity-report.html",
+    "description": "Arrowhead Pharmaceuticals develops medicines that silence genes associated with disease using RNA interference and a portfolio of RNA chemistries and delivery methods. Its marketed product, REDEMPLO, is used with diet to reduce triglycerides in adults with familial chylomicronemia syndrome. The company also develops drug candidates at various clinical stages and licenses or collaborates on programs it does not plan to commercialize independently."
+  },
+  {
     "name": "Artificial Solutions International",
     "ticker": "TENEO.ST",
     "exchange": "Stockholm",
     "url": "reports/artificial-solutions-international-equity-report.html",
     "description": "Artificial Solutions International develops conversational AI software through its Teneo platform, which lets organizations build applications that interact with customers in natural language across voice, text and other channels. Its products support virtual assistants, chatbots and customer-service automation, with multilingual capabilities and analytics for enterprise and public-sector deployments."
+  },
+  {
+    "name": "Arvinas",
+    "ticker": "ARVN",
+    "exchange": "Listed",
+    "url": "reports/arvinas-equity-report.html",
+    "description": "Arvinas is a clinical-stage biotechnology company using its PROTAC platform to develop medicines that selectively degrade disease-associated proteins. Its clinical programs address oncology, neurodegenerative disease, and immuno-oncology, including candidates targeting BCL6, LRRK2, polyQ-AR, and HPK1. Vepdegestrant, developed with Pfizer and approved as VEPPANU, is licensed to Rigel, which holds global development, manufacturing, and commercialization rights."
   },
   {
     "name": "AS Tallink Grupp",
@@ -883,10 +1149,17 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "ASSA ABLOY is a global provider of access solutions for homes, businesses and institutions. Its portfolio includes mechanical and smart locks, door hardware, security doors, access control systems, identification products and entrance automation. The group also serves hospitality and other secure environments through products and services for physical and digital access management."
   },
   {
-    "name": "Astera Labs, Inc. Common Stock",
+    "name": "Astec Industries",
+    "ticker": "ASTE",
+    "exchange": "Listed",
+    "url": "reports/astec-industries-equity-report.html",
+    "description": "Astec Industries designs, manufactures, markets, and services equipment and components used in road building and related construction. Its products support work from aggregate quarrying and crushing to asphalt and concrete road surfacing. It also supplies equipment for mining, forestry, recycling, energy, and other industries, along with automation and telematics platforms and replacement parts for its own and some competitors' equipment."
+  },
+  {
+    "name": "Astera Labs",
     "ticker": "ALAB",
     "exchange": "Listed",
-    "url": "reports/astera-labs-inc-common-stock-equity-report.html",
+    "url": "reports/astera-labs-equity-report.html",
     "description": "Astera Labs designs semiconductor-based connectivity products and software for cloud and AI infrastructure. Its Intelligent Connectivity Platform includes integrated circuits, boards, modules, and the COSMOS software suite for configuring, managing, monitoring, optimizing, troubleshooting, and customizing product functions. Product families support high-speed connections among processors, storage, and network controllers. Customers include hyperscalers, system original equipment manufacturers, and data center infrastructure suppliers."
   },
   {
@@ -904,6 +1177,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Atea ASA is a Nordic and Baltic information technology services company that supplies IT infrastructure products and related services to businesses and public-sector organizations. Its offering spans hardware, software, procurement, implementation, operations, and lifecycle management of IT assets, supported by local delivery across its regional markets and vendor partnerships."
   },
   {
+    "name": "ATI",
+    "ticker": "ATI",
+    "exchange": "Listed",
+    "url": "reports/ati-equity-report.html",
+    "description": "ATI produces specialty materials, components, and advanced metallic powder alloys using materials science and advanced process technologies. Its products include nickel-based alloys and superalloys, titanium alloys, and specialty alloys supplied in forms such as plate, sheet, and strip. Customers use these materials in commercial and military jet engines, airframes, defense applications, specialty and conventional energy, medical, electronics, and other industrial markets."
+  },
+  {
     "name": "Atlas Copco",
     "ticker": "ATCO-A.ST",
     "exchange": "Stockholm",
@@ -916,6 +1196,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/atria-equity-report.html",
     "description": "Atria Oyj is a Nordic food company that produces meat products, sausages, cold cuts, fresh poultry, and convenience foods. It operates in Finland, Sweden, Denmark and Estonia, with leading brands in several product categories. The company also serves grocery retail and foodservice customers through processing, slaughtering, packaging and distribution."
+  },
+  {
+    "name": "AtriCure",
+    "ticker": "ATRC",
+    "exchange": "Listed",
+    "url": "reports/atricure-equity-report.html",
+    "description": "AtriCure develops surgical treatments and therapies for atrial fibrillation, left atrial appendage management, and post-operative pain. Its cardiac ablation and appendage-management products are used by physicians in open-heart and minimally invasive procedures. CryoICE cryoSPHERE and cryoXT probes provide temporary nerve-block pain relief after cardiac, thoracic, and amputation surgeries. AtriCure sells to medical centers directly and through distributors."
   },
   {
     "name": "Atrium Ljungberg",
@@ -937,6 +1224,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/auriant-mining-equity-report.html",
     "description": "Auriant Mining AB is a Swedish junior mining company focused on gold exploration and production in Russia, mainly in Zabaikalye and the republics of Khakassia and Tyva. It operates two producing mines, Tardan and Staroverinskaya, and also holds one early-stage exploration asset and one development asset."
+  },
+  {
+    "name": "Aurinia Pharmaceuticals",
+    "ticker": "AUPH",
+    "exchange": "Listed",
+    "url": "reports/aurinia-pharmaceuticals-equity-report.html",
+    "description": "Aurinia Pharmaceuticals is a biopharmaceutical company focused on therapies for autoimmune diseases. It markets LUPKYNIS, an oral therapy for adults with active lupus nephritis, directly through its U.S. commercial organization and sells it to specialty pharmacies and a specialty distributor. Collaboration partner Otsuka markets the product in Japan, the European Union, the United Kingdom and Switzerland."
+  },
+  {
+    "name": "Aurora Innovation",
+    "ticker": "AUR",
+    "exchange": "Listed",
+    "url": "reports/aurora-innovation-equity-report.html",
+    "description": "Aurora Innovation develops the Aurora Driver, a self-driving platform combining hardware, software, and data services for multiple vehicle types. The company has integrated the platform into passenger vehicles, light commercial vehicles, and Class 8 trucks. Its initial driverless product is for trucking, and its technology is intended for transportation applications including passenger mobility and local goods delivery."
   },
   {
     "name": "Austevoll Seafood",
@@ -988,11 +1289,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Aventura Group AB is a Stockholm-based e-commerce and brand accelerator focused on the Chinese consumer market. The company develops and invests in brands with growth potential in China and supports their scaling through brand management, marketing, channel development, logistics coordination and consumer insights. Its portfolio includes Aventura, TicToc Ventures, Aurora Beauty and Headway B2B."
   },
   {
+    "name": "AvePoint",
+    "ticker": "AVPT",
+    "exchange": "Listed",
+    "url": "reports/avepoint-equity-report.html",
+    "description": "AvePoint provides cloud data protection, governance, and management software through its AvePoint Confidence Platform. The platform serves technology teams, including IT operations, development operations, and cybersecurity, across cloud and content ecosystems such as Microsoft, Salesforce, Google, and AWS. Its suites support data governance, policy enforcement, SaaS expense management, backup, ransomware recovery, lifecycle management, and modernization of legacy systems."
+  },
+  {
     "name": "Avery Dennison",
     "ticker": "AVY",
     "exchange": "Listed",
     "url": "reports/avery-dennison-equity-report.html",
     "description": "Avery Dennison develops materials science and digital identification products for industries including retail, logistics, food, pharmaceuticals, and automotive. Its offerings include pressure-sensitive label materials, graphics and reflective materials, functional tapes, RFID inlays and tags, software applications linking physical products with digital information, and branded packaging solutions. Customers use these products for labeling, identification, packaging, and conveying product information."
+  },
+  {
+    "name": "Avista",
+    "ticker": "AVA",
+    "exchange": "Listed",
+    "url": "reports/avista-equity-report.html",
+    "description": "Avista is primarily an electric and natural gas utility serving customers in Washington, Idaho, Oregon and Montana through Avista Utilities, and customers in Juneau, Alaska through subsidiary AEL&P. Its utility operations provide electric distribution and transmission, natural gas distribution and electricity generation. The company also buys and sells electricity and natural gas as part of energy resource management and meeting customer demand."
   },
   {
     "name": "AVTECH Sweden",
@@ -1016,6 +1331,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Awilco Drilling PLC was a UK-incorporated offshore drilling company listed in Norway. It historically owned and operated semi-submersible rigs, including WilPhoenix and WilHunter, for work in the North Sea and other offshore markets. The company became AR5 PLC and entered members’ voluntary liquidation in June 2025."
   },
   {
+    "name": "Axcelis Technologies",
+    "ticker": "ACLS",
+    "exchange": "Listed",
+    "url": "reports/axcelis-technologies-equity-report.html",
+    "description": "Axcelis Technologies designs, manufactures and services ion implantation and other processing equipment used to fabricate semiconductor chips. Its Purion family includes ion implanters, and the company sells equipment to semiconductor chip manufacturers worldwide. It also provides aftermarket products and services, including used tools, spare parts, equipment upgrades, maintenance and customer training."
+  },
+  {
     "name": "Axfood",
     "ticker": "AXFO.ST",
     "exchange": "Stockholm",
@@ -1030,6 +1352,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "aXichem develops, patents and markets nature-analog industrial chemicals, with phenylcapsaicin as its main product. It sells the ingredient under the brands aXiphen and aXivite for poultry feed and dietary supplements, and also targets applications in gut health, weight control, sports nutrition, and bio-enhancement of curcumin and melatonin."
   },
   {
+    "name": "AxoGen",
+    "ticker": "AXGN",
+    "exchange": "Listed",
+    "url": "reports/axogen-equity-report.html",
+    "description": "AxoGen develops and commercializes technologies for peripheral nerve regeneration and repair, serving surgeons and healthcare providers treating nerve injuries. Its products include processed human nerve grafts, porcine tissue nerve connectors, protectors and caps, and a multilayer amniotic membrane tissue matrix. The portfolio is available in the United States and several other countries."
+  },
+  {
     "name": "Axolot Solutions Holding",
     "ticker": "AXOLOT.ST",
     "exchange": "Stockholm",
@@ -1042,6 +1371,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/axon-enterprise-equity-report.html",
     "description": "Axon provides integrated hardware, software, and services to public and private sector customers. Its connected devices include TASER conducted energy devices, cameras, sensors, drones, and robotics. Its cloud-based software supports the capture, storage, management, sharing, and analysis of video and digital evidence, as well as records, productivity, and real-time operations."
+  },
+  {
+    "name": "Axsome Therapeutics",
+    "ticker": "AXSM",
+    "exchange": "Listed",
+    "url": "reports/axsome-therapeutics-equity-report.html",
+    "description": "Axsome Therapeutics develops and commercializes medicines for central nervous system conditions. Its approved products are AUVELITY for major depressive disorder, SUNOSI for excessive daytime sleepiness associated with obstructive sleep apnea or narcolepsy, and SYMBRAVO for acute migraine treatment in adults. The company also develops investigational therapies for neurological and psychiatric conditions, including Alzheimer’s disease agitation, smoking cessation, ADHD, binge eating disorder, narcolepsy, fibromyalgia and epilepsy."
+  },
+  {
+    "name": "AXT",
+    "ticker": "AXTI",
+    "exchange": "Listed",
+    "url": "reports/axt-equity-report.html",
+    "description": "AXT develops and produces compound and single-element semiconductor substrate wafers, along with raw materials used in substrate manufacturing. Its wafers include indium phosphide, gallium arsenide, and germanium substrates for semiconductor and optoelectronic applications such as data transmission, communications, lighting, lasers, and solar cells. Subsidiaries also produce and sell purified gallium and boron nitride crucibles to other companies."
   },
   {
     "name": "Ayima Group",
@@ -1100,6 +1443,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Bang & Olufsen designs and sells premium audio and home entertainment products, including wireless speakers, headphones, soundbars, televisions and related accessories. The company also provides audio technology and brand licensing for partner products. Its business is driven by product design, acoustic engineering, retail distribution and the Bang & Olufsen brand."
   },
   {
+    "name": "Barrett Business Services",
+    "ticker": "BBSI",
+    "exchange": "Listed",
+    "url": "reports/barrett-business-services-equity-report.html",
+    "description": "Barrett Business Services provides management support to small and mid-sized businesses through local teams that combine human resources, organizational development, risk mitigation, workplace safety, recruiting, employee benefits, and administrative expertise. Its services include employment administration, payroll, process improvement, supervisor training, leadership development, strategic guidance, workers’ compensation coverage, claims management, and employee benefit programs for business owner clients."
+  },
+  {
     "name": "Basware",
     "ticker": "BAS1V",
     "exchange": "Listed",
@@ -1128,6 +1478,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "BE Group AB is a trading and service company in steel, stainless steel and aluminium. It supplies inventory sales, production services and direct deliveries, with processing and logistics tailored to customer needs. Its main customers are in the manufacturing and construction industries, and its operations are concentrated in Sweden and Finland."
   },
   {
+    "name": "Beam Therapeutics",
+    "ticker": "BEAM",
+    "exchange": "Listed",
+    "url": "reports/beam-therapeutics-equity-report.html",
+    "description": "Beam Therapeutics is a biotechnology company developing precision genetic medicines using gene editing and delivery technologies, including proprietary base editing. Its programs address hematology and genetic diseases, with investigational therapies and delivery platforms designed for different tissues and treatment approaches. The company also has internal manufacturing capabilities. Its work is directed toward potential treatments for patients with serious diseases."
+  },
+  {
     "name": "BeammWave",
     "ticker": "BEAMMW-B.ST",
     "exchange": "Stockholm",
@@ -1154,6 +1511,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/beijer-ref-equity-report.html",
     "description": "Beijer Ref is a global wholesaler of cooling technology and HVAC products. Through subsidiaries in about 45 countries, it supplies commercial and industrial refrigeration systems, air conditioners, heat pumps and related components, while also offering own-brand and OEM products. Its business depends on distribution, sourcing, logistics and local market execution."
+  },
+  {
+    "name": "Belden",
+    "ticker": "BDC",
+    "exchange": "Listed",
+    "url": "reports/belden-equity-report.html",
+    "description": "Belden supplies connection and networking solutions for industrial and enterprise customers. Its portfolio includes copper and fiber cables, connectivity systems, network equipment, data center power and cooling products, and RUCKUS enterprise Wi-Fi, switching and network-management platforms. Through its Smart Infrastructure and Automation businesses, the company serves distributors, installers, equipment makers and end users across data centers, broadband, healthcare, government, energy, transportation, warehousing and manufacturing."
   },
   {
     "name": "Belships",
@@ -1189,6 +1553,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/besqab-equity-report.html",
     "description": "Besqab AB (publ) develops sustainable, high-quality residential housing in the Greater Stockholm and Uppsala regions. Its core business covers project development across the full process from land acquisition and market analysis to completion and handover. The company also manages completed rental housing and care-related properties as a complementary property management activity."
+  },
+  {
+    "name": "Beta Bionics",
+    "ticker": "BBNX",
+    "exchange": "Listed",
+    "url": "reports/beta-bionics-equity-report.html",
+    "description": "Beta Bionics develops and commercializes medical devices for people with diabetes who require insulin. Its product, the iLet Bionic Pancreas, uses adaptive closed-loop algorithms to support diabetes treatment and is cleared for people with Type 1 diabetes aged six and older. The company serves patients through commercialization of the device in the United States."
   },
   {
     "name": "Betolar",
@@ -1247,6 +1618,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Bilia AB is a full-service automotive group operating in Sweden, Norway, Belgium and Luxembourg. Its business is divided into service, car sales and fuel operations, covering new and used passenger cars, transport vehicles and trucks, as well as workshop services, parts, repairs, car wash, fuel sales and related mobility services."
   },
   {
+    "name": "Bill.com Holdings",
+    "ticker": "BILL",
+    "exchange": "Listed",
+    "url": "reports/bill-com-holdings-equity-report.html",
+    "description": "BILL provides a finance platform used by businesses and accountants to manage accounts payable, accounts receivable, expenses, forecasting and procurement. Its tools support invoice processing, approvals, payments, expense management, budgeting and cash flow workflows, and integrate with accounting software, banks and payment providers. The company serves small and midsize businesses, along with their suppliers, clients and accounting partners."
+  },
+  {
     "name": "BillerudKorsnäs",
     "ticker": "BILL.ST",
     "exchange": "Stockholm",
@@ -1275,6 +1653,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Binero Group AB (publ) provides IT and technology services for companies and organisations in the Nordics. Its offering includes Swedish cloud services, managed services, connected services, project management for network services, and operation of its own data centre and server infrastructure. The company also supports customers with 24/7 service and related consulting activities."
   },
   {
+    "name": "Bio-Techne",
+    "ticker": "TECH",
+    "exchange": "Listed",
+    "url": "reports/bio-techne-equity-report.html",
+    "description": "Bio-Techne develops, manufactures, and sells life science reagents, instruments, and services for research, diagnostics, and bioprocessing markets. Its Protein Sciences products include biological reagents and analytical tools for protein analysis and assay workflows. Its Diagnostics and Spatial Biology offerings include diagnostic controls, calibrators, assays, tissue analysis instruments, and genetic and oncology kits for research and clinical applications."
+  },
+  {
     "name": "Bio-Works Technologies",
     "ticker": "BIOWKS.ST",
     "exchange": "Stockholm",
@@ -1287,6 +1672,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/bioarctic-equity-report.html",
     "description": "BioArctic AB (publ) is a Swedish research-based biopharma company focused on treatments for neurodegenerative diseases. It develops antibody-based drug candidates for Alzheimer’s disease, Parkinson’s disease and ALS, and its BrainTransporter technology helps deliver medicines across the blood-brain barrier. Value is driven by royalties, partnerships, and license agreements, including Leqembi with Eisai."
+  },
+  {
+    "name": "BioCryst Pharmaceuticals",
+    "ticker": "BCRX",
+    "exchange": "Listed",
+    "url": "reports/biocryst-pharmaceuticals-equity-report.html",
+    "description": "BioCryst Pharmaceuticals develops and commercializes medicines for hereditary angioedema and other rare diseases. Its marketed products include ORLADEYO, an oral therapy for preventing hereditary angioedema attacks, and peramivir injection products for influenza. The company is also developing oral small molecule and injectable protein therapeutics for rare disease conditions, serving patients and healthcare markets."
   },
   {
     "name": "Bioextrax",
@@ -1314,7 +1706,7 @@ window.COMPANY_PAGE_CATALOG = [
     "ticker": "BIIB",
     "exchange": "Listed",
     "url": "reports/biogen-equity-report.html",
-    "description": "Biogen is a biopharmaceutical company that discovers, develops and delivers therapies for serious and complex diseases, with a focus on neurology, specialized immunology and rare diseases. Its marketed medicines address multiple sclerosis, spinal muscular atrophy, Friedreich’s ataxia and ALS. The company also commercializes treatments and biosimilars through collaborations, serving patients and healthcare markets internationally."
+    "description": "Biogen is a biopharmaceutical company that discovers, develops, and commercializes medicines for serious neurological, rare, and immunological diseases. Its portfolio includes therapies for multiple sclerosis, spinal muscular atrophy, Friedreich’s ataxia, ALS, geographic atrophy, paroxysmal nocturnal hemoglobinuria, and rare kidney diseases. Biogen completed its acquisition of Apellis Pharmaceuticals in May 2026, adding the FDA-approved medicines SYFOVRE and EMPAVELI."
   },
   {
     "name": "Biohit",
@@ -1394,6 +1786,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Black Sea Property AS is a Norwegian property company focused on development and ownership interests in Aheloy Beach Resort on Bulgaria’s Black Sea coast. The project is planned as a large holiday resort with apartments and commercial areas, while completed phases are already operating as Midia Grand Resort. The company’s value drivers are project completion, sales, and hotel operations."
   },
   {
+    "name": "Blackbaud",
+    "ticker": "BLKB",
+    "exchange": "Listed",
+    "url": "reports/blackbaud-equity-report.html",
+    "description": "Blackbaud provides software and services for organizations and individuals focused on social impact. Its offerings include solutions for fundraising and engagement, education, financial management, corporate social responsibility, and grantmaking. Customers include nonprofits, educational institutions, companies, grantmaking institutions, foundations, healthcare organizations, and houses of worship, which use its products to support operations and mission-related activities."
+  },
+  {
+    "name": "BlackLine",
+    "ticker": "BL",
+    "exchange": "Listed",
+    "url": "reports/blackline-equity-report.html",
+    "description": "BlackLine provides cloud-based financial software for finance and accounting teams in mid-size and enterprise organizations. Its platform includes tools for account reconciliation, transaction matching, journal entries, consolidation, compliance, cash application, collections and intercompany processes. The software connects with enterprise resource planning systems and other financial data sources to support record-to-report and invoice-to-cash workflows and financial reporting."
+  },
+  {
+    "name": "Blend Labs",
+    "ticker": "BLND",
+    "exchange": "Listed",
+    "url": "reports/blend-labs-equity-report.html",
+    "description": "Blend Labs provides a digital platform that financial institutions use to originate mortgages, home equity loans, consumer credit, and deposit accounts. Its software supports borrower applications, verification, lender workflows, document exchange, and digital closing, with integrations to core banking and loan origination systems. Banks, credit unions, mortgage lenders, and fintechs use its tools, including AI-enabled automation across lending workflows."
+  },
+  {
     "name": "Blick Global Group",
     "ticker": "BLICK.ST",
     "exchange": "Stockholm",
@@ -1413,6 +1826,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/bluenord-equity-report.html",
     "description": "BlueNord ASA is an Oslo-listed oil and gas company focused on producing and developing resources in the Danish North Sea. Its operations centre on a 36.8% interest in the Danish Underground Consortium, including mature producing assets and infrastructure. The company also works on operational optimisation, reserve development, and emissions reduction initiatives."
+  },
+  {
+    "name": "Boise Cascade Company",
+    "ticker": "BCC",
+    "exchange": "Listed",
+    "url": "reports/boise-cascade-company-equity-report.html",
+    "description": "Boise Cascade distributes building materials and manufactures engineered wood products and plywood in North America. Its distribution network sells commodities such as oriented strand board, plywood and lumber, along with siding, decking, doors, millwork, roofing, insulation and engineered wood products. It manufactures laminated veneer lumber, I-joists, beams, plywood panels and ponderosa pine lumber for dealers, wholesalers, home improvement centers and industrial converters."
   },
   {
     "name": "Bokusgruppen",
@@ -1478,6 +1898,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Bonzun AB, which changed its name to Acenta Group AB, now operates an international padel business. It develops and installs padel courts, distributes padel products through e-commerce and retail channels, provides related financing and digital services, and runs padel events and community activities. The business is built around an integrated padel ecosystem."
   },
   {
+    "name": "Boot Barn Holdings",
+    "ticker": "BOOT",
+    "exchange": "Listed",
+    "url": "reports/boot-barn-holdings-equity-report.html",
+    "description": "Boot Barn operates specialty retail stores and an e-commerce platform selling western and work-related footwear, apparel and accessories. Its assortment includes western and work boots, denim, shirts, hats, belts, jewelry, safety-toe footwear and protective clothing. The company serves western and country enthusiasts, workers seeking durable apparel and footwear, and customers shopping for everyday lifestyle products."
+  },
+  {
     "name": "Boozt",
     "ticker": "BOOZT.ST",
     "exchange": "Stockholm",
@@ -1497,6 +1924,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/borgestad-equity-report.html",
     "description": "Borgestad ASA is an investment company with operations centered on two areas: industrial holdings through its majority-owned Höganäs Borgestad group and real estate through full ownership of the Agora Bytom shopping mall in Poland. Höganäs Borgestad supplies refractory products, installations and turnkey solutions for industrial customers, while the property business provides rental and development income."
+  },
+  {
+    "name": "BorgWarner",
+    "ticker": "BWA",
+    "exchange": "Listed",
+    "url": "reports/borgwarner-equity-report.html",
+    "description": "BorgWarner manufactures and sells technology products for combustion, hybrid and electric vehicles. Its offerings include turbochargers, emissions and thermal systems, ignition technology, powertrain sensors, cabin and battery heating, and battery cooling products. It primarily supplies light vehicle original equipment manufacturers worldwide, and also serves commercial and off-highway vehicle manufacturers, tier-one vehicle systems suppliers and aftermarket customers."
   },
   {
     "name": "Borregaard",
@@ -1525,6 +1959,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/bouvet-equity-report.html",
     "description": "Bouvet ASA is a Norwegian consulting company that provides IT and digital communication services to private and public sector clients. The company helps customers design and deliver digital solutions, drawing on broad technical, design, and advisory competence. Its business is driven by consulting assignments, long-term client relationships, and demand for digitalization services."
+  },
+  {
+    "name": "Boyd Gaming",
+    "ticker": "BYD",
+    "exchange": "Listed",
+    "url": "reports/boyd-gaming-equity-report.html",
+    "description": "Boyd Gaming operates brick-and-mortar gaming entertainment properties and online casino gaming businesses in the United States and Canada. It also manages a casino under an agreement and offers online sports wagering and online casino access through market access agreements with third-party operators, subject to applicable state laws and regulatory approvals. Its customers include casino visitors and online gaming users."
   },
   {
     "name": "Brain+",
@@ -1576,11 +2017,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "BridgeBio is a biopharmaceutical company that discovers, develops, and commercializes medicines for genetic diseases, including conditions with significant unmet medical needs. It sells acoramidis in the United States as Attruby and markets it internationally as Beyonttra through collaboration partners and directly in some markets. The company also has approved medicines and develops therapies for patients with rare and genetically defined diseases."
   },
   {
+    "name": "Bright Horizons Family Solutions",
+    "ticker": "BFAM",
+    "exchange": "Listed",
+    "url": "reports/bright-horizons-family-solutions-equity-report.html",
+    "description": "Bright Horizons provides early education and child care, back-up care, and educational advisory services, primarily through multi-year contracts with employers offering these services as employee benefits. It operates center-based child care facilities and offers care coverage when primary arrangements are unavailable or insufficient. Its advisory services include workforce education, tuition assistance, student loan repayment, and college admissions and financing guidance for employees and working families."
+  },
+  {
     "name": "Brighter",
     "ticker": "BRIG.ST",
     "exchange": "Stockholm",
     "url": "reports/brighter-equity-report.html",
     "description": "Brighter AB is a Swedish health-tech company that develops daily-care solutions for people living with chronic diseases. Its products are designed to collect and share real-life treatment data between patients, relatives and care providers, supporting more informed care and research. The company is certified under ISO 13485 and listed on Nasdaq First North Growth Market."
+  },
+  {
+    "name": "BrightSpring Health Services",
+    "ticker": "BTSG",
+    "exchange": "Listed",
+    "url": "reports/brightspring-health-services-equity-report.html",
+    "description": "BrightSpring Health Services provides pharmacy and provider services to complex Senior and Specialty patients, including behavioral populations, mainly in home and community settings. Pharmacy offerings include medication management and infusion and specialty pharmacy services. Provider services include home health, hospice, rehabilitation therapy, supportive care, and home-based primary care. Its patients are served through Medicare, Medicaid, and commercially insured populations."
+  },
+  {
+    "name": "BrightView Holdings",
+    "ticker": "BV",
+    "exchange": "Listed",
+    "url": "reports/brightview-holdings-equity-report.html",
+    "description": "BrightView provides commercial landscaping services through maintenance and development operations. Maintenance includes mowing, gardening, mulching, snow removal, water management, irrigation maintenance, tree care, and golf course maintenance. Development services cover landscape design, coordination, and installation. The company serves corporate and commercial properties, residential communities, public parks, hotels and resorts, hospitals, schools, restaurants, retail locations, golf courses, municipalities, and airport authorities."
   },
   {
     "name": "Brilliant Future",
@@ -1590,11 +2052,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Brilliant Future AB provides a data-driven platform and related services for measuring and improving customer, employee and contact center experiences. Its software helps organizations collect surveys, analyze feedback and act on insights, while advisory services support change management, engagement and service performance. The company is based in Stockholm and serves organizations in Sweden and other markets."
   },
   {
+    "name": "Brinker International",
+    "ticker": "EAT",
+    "exchange": "Listed",
+    "url": "reports/brinker-international-equity-report.html",
+    "description": "Brinker International owns, develops, operates, and franchises the Chili’s Grill & Bar and Maggiano’s Little Italy restaurant brands. Chili’s serves Southwest-inspired American food, including burgers, fajitas, chicken, and drinks, in a casual dining setting. Maggiano’s offers Italian American dishes through a la carte and family-style dining, with banquet spaces for events. Both brands serve restaurant guests."
+  },
+  {
     "name": "Brinova Fastigheter",
     "ticker": "BRIN-B.ST",
     "exchange": "Stockholm",
     "url": "reports/brinova-fastigheter-equity-report.html",
     "description": "Brinova Fastigheter AB (publ) owns, develops and manages rental housing and community properties in selected growth locations in southern Sweden. Its portfolio includes homes and public-service properties for care, education, offices and other municipal uses. The company creates value through selective acquisitions, property development and active local management, and it is headquartered in Helsingborg."
+  },
+  {
+    "name": "Bristow Group",
+    "ticker": "VTOL",
+    "exchange": "Listed",
+    "url": "reports/bristow-group-equity-report.html",
+    "description": "Bristow Group provides aviation services primarily to offshore energy companies and government entities. Its services include helicopter transport for personnel traveling to and between offshore bases, platforms, and drilling rigs; search and rescue; medical evacuation; fixed-wing transport; unmanned systems; and ad hoc helicopter services. It also operates a regional airline in Australia and dry-leases aircraft to third-party operators."
   },
   {
     "name": "Broadridge Financial Solutions",
@@ -1623,6 +2099,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/brondbyernes-if-fodbold-equity-report.html",
     "description": "Brøndbyernes IF Fodbold A/S is a Danish professional football club that operates Brøndby IF’s football business from Brøndby Stadion. Its activities include the men’s and women’s teams, matchday operations, partner and sponsorship income, media-related revenue, and player transfers. The company’s results are also influenced by sporting performance and European competition participation."
+  },
+  {
+    "name": "Bruker",
+    "ticker": "BRKR",
+    "exchange": "Listed",
+    "url": "reports/bruker-equity-report.html",
+    "description": "Bruker develops, manufactures, and distributes scientific instruments and analytical and diagnostic solutions for examining chemical, biological, and industrial samples. Its technologies include magnetic resonance, mass spectrometry, chromatography, X-ray, microscopy, metrology, and molecular spectroscopy. Products and services support research, diagnostics, and applied markets. Customers include academic and government research facilities, pharmaceutical and biotechnology companies, and laboratories in clinical, food, chemical, and industrial fields."
+  },
+  {
+    "name": "Brunswick",
+    "ticker": "BC",
+    "exchange": "Listed",
+    "url": "reports/brunswick-equity-report.html",
+    "description": "Brunswick designs, manufactures and markets recreational marine products, including engines, boats, marine parts and accessories, and products for the recreational vehicle market. Its propulsion products include outboard, inboard and sterndrive engines, controls, rigging, propellers and electric propulsion systems. It sells to boat builders, marine dealers, distributors, specialty retailers, service centers, original equipment manufacturers and government agencies, and operates a boat club."
   },
   {
     "name": "BTS Group",
@@ -1723,11 +2213,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Cadence develops computational software, accelerated hardware, and silicon intellectual property products and solutions for electronic product design. Its offerings support the design, analysis, and verification of semiconductors and electromechanical systems. Customers include semiconductor companies that design and manufacture integrated circuits, as well as systems companies that design and manufacture electromechanical systems incorporating semiconductors and other electronics."
   },
   {
+    "name": "Cadre Holdings",
+    "ticker": "CDRE",
+    "exchange": "Listed",
+    "url": "reports/cadre-holdings-equity-report.html",
+    "description": "Cadre manufactures and distributes safety equipment for law enforcement, first responders, military, and nuclear markets. Its products include body armor, explosive ordnance disposal equipment, duty gear, remote handling solutions, radioactive-material storage containers, and ventilation and containment systems. Through owned distribution, it also supplies third-party uniforms, optics, boots, firearms, and ammunition. Customers include government agencies, emergency services, and commercial nuclear operators."
+  },
+  {
+    "name": "Caesars Entertainment",
+    "ticker": "CZR",
+    "exchange": "Listed",
+    "url": "reports/caesars-entertainment-equity-report.html",
+    "description": "Caesars Entertainment operates casino and hospitality businesses, including casino properties, hotels, restaurants, bars, entertainment venues, retail shops and racing. It also offers retail and online sports betting, online casino gaming and horse racing wagering through branded apps. The company serves visitors to its properties and digital gaming customers, and conducts sports wagering and online gaming across jurisdictions in North America."
+  },
+  {
     "name": "CAG Group",
     "ticker": "CAG.ST",
     "exchange": "Stockholm",
     "url": "reports/cag-group-equity-report.html",
     "description": "CAG Group AB is an IT consulting group organized around independent subsidiaries. It provides services in technology management, system development, cyber security, operations and maintenance, and training. The company serves customers in defense, banking and finance, industry and infrastructure, commerce and services, and health and care, combining strategy and implementation support across projects."
+  },
+  {
+    "name": "Calix",
+    "ticker": "CALX",
+    "exchange": "Listed",
+    "url": "reports/calix-equity-report.html",
+    "description": "Calix develops and sells broadband platforms, cloud software, appliances, and managed services for communication service providers. Its offerings combine network access and subscriber premises solutions with cloud tools, AI-enabled workflows, and integrated SmartLife services. Calix also provides customer success and market activation services to help providers manage operations and deliver connectivity and related services to residential, business, and municipal subscribers."
   },
   {
     "name": "Calliditas Therapeutics",
@@ -1765,11 +2276,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Candles Scandinavia develops and manufactures natural wax candles, reed diffusers and room sprays for private-label customers. The company focuses on sustainable home fragrance products, using automated production and integrated manufacturing to provide scalable, customized solutions. It serves brand owners seeking a supplier for design, filling, packaging and delivery."
   },
   {
+    "name": "Cannae Holdings",
+    "ticker": "CNNE",
+    "exchange": "Listed",
+    "url": "reports/cannae-holdings-equity-report.html",
+    "description": "Cannae Holdings acquires interests in operating companies and actively manages and operates a core group of businesses as a long-term owner. It takes equity stakes where it can exercise control or significant influence, supports company management teams, and applies operational expertise to their businesses. Its holdings include companies in employee benefits, sports, financial technology, distilling, insurance, and restaurants."
+  },
+  {
     "name": "Cantargia",
     "ticker": "CANTA.ST",
     "exchange": "Stockholm",
     "url": "reports/cantargia-equity-report.html",
     "description": "Cantargia AB (publ) is a Swedish biotechnology company developing antibody-based treatments targeting IL1RAP. Its lead oncology program, nadunolimab (CAN04), is in clinical development for cancers including pancreatic, lung, and triple-negative breast cancer. The company also has programs for inflammatory and autoimmune diseases, and CAN10 was acquired by Otsuka Pharmaceutical in 2025."
+  },
+  {
+    "name": "Capri Holdings Limited",
+    "ticker": "CPRI",
+    "exchange": "Listed",
+    "url": "reports/capri-holdings-limited-equity-report.html",
+    "description": "Capri Holdings is a global luxury fashion group comprising Michael Kors and Jimmy Choo. Michael Kors offers apparel, footwear, and accessories through several collections, while Jimmy Choo focuses on women’s luxury footwear and also offers accessories, men’s footwear, and licensed fragrance and eyewear. The brands sell through company operated stores, e-commerce sites, department and specialty stores, wholesale channels, and licensing arrangements."
   },
   {
     "name": "Carasent",
@@ -1800,11 +2325,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Cargotec is an industrial machinery company that provides cargo-handling solutions through its Hiab and MacGregor businesses. Hiab supplies on-road load-handling equipment, related services and digital solutions, while MacGregor serves marine cargo and load-handling needs for ships and offshore operations. The company is also in transition toward becoming an independent Hiab following the planned divestment of MacGregor."
   },
   {
+    "name": "Carlisle Companies Incorporated",
+    "ticker": "CSL",
+    "exchange": "Listed",
+    "url": "reports/carlisle-companies-incorporated-equity-report.html",
+    "description": "Carlisle Companies supplies building envelope products and systems through its Carlisle Construction Materials and Carlisle Weatherproofing Technologies businesses. Its offerings include commercial roofing membranes, insulation, architectural metal, roof garden systems, and related technologies. The company serves customers involved in commercial construction, including those building, repairing, and replacing roofs and developing energy-efficient buildings."
+  },
+  {
     "name": "Carlsberg",
     "ticker": "CARL-B.CO",
     "exchange": "Copenhagen",
     "url": "reports/carlsberg-equity-report.html",
     "description": "Carlsberg A/S is a global brewery group that develops, produces and sells beer and other beverages through a portfolio of local and international brands. Its business spans mainstream and premium beers, alcohol-free brews, cider and soft drinks, with revenue driven by branded beverage sales, market presence and distribution across multiple regions."
+  },
+  {
+    "name": "CarMax",
+    "ticker": "KMX",
+    "exchange": "Listed",
+    "url": "reports/carmax-equity-report.html",
+    "description": "CarMax sells quality used vehicles at no-haggle prices through online, in-store and combined shopping options. It also buys used vehicles from customers and other sources, reconditions vehicles for retail sale, and offers related products and services. Its sales operations arrange financing options, while CarMax Auto Finance provides loans to customers purchasing vehicles from the company."
   },
   {
     "name": "Carpenter Technology",
@@ -1821,6 +2360,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Carrier Global provides heating, cooling, ventilation, and cold chain products and solutions, alongside related building services. Its offerings include air conditioners, heat pumps, heating systems, energy management controls, aftermarket components, repair and maintenance, rentals, system integration, monitoring, and equipment upgrades. Customers include residential and commercial building owners and contractors, as well as organizations in education, healthcare, technology, retail, hospitality, data centers, and infrastructure."
   },
   {
+    "name": "Cars.com",
+    "ticker": "CARS",
+    "exchange": "Listed",
+    "url": "reports/cars-com-equity-report.html",
+    "description": "Cars.com operates an automotive marketplace connecting vehicle shoppers with dealerships and provides digital products for dealers and original equipment manufacturers. Its offerings include vehicle listings, reviews and editorial content, shopping and financing tools, dealer websites, trade-in and appraisal technology, and media solutions. The platform serves consumers, automotive dealerships, dealer groups, manufacturers and auto-adjacent companies."
+  },
+  {
     "name": "Cary Group Holding",
     "ticker": "CARY.ST",
     "exchange": "Stockholm",
@@ -1835,6 +2381,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Castellum AB is a Swedish property company that owns, manages and develops commercial real estate in growth cities across Sweden, Denmark and Finland, with additional indirect exposure to Norway through Entra. Its portfolio is concentrated in offices and logistics properties, and the business also includes project development, transactions and local property management."
   },
   {
+    "name": "Castle Biosciences",
+    "ticker": "CSTL",
+    "exchange": "Listed",
+    "url": "reports/castle-biosciences-equity-report.html",
+    "description": "Castle Biosciences is a molecular diagnostics company offering tests to aid clinicians in diagnosing and treating dermatologic cancers, Barrett’s esophagus, uveal melanoma, and atopic dermatitis. Its portfolio includes tissue-based tests that characterize patient biology and provide information relevant to diagnosis, risk assessment, treatment, and patient management. The company serves clinicians in dermatology, gastroenterology, and ophthalmology."
+  },
+  {
     "name": "Catena",
     "ticker": "CATE.ST",
     "exchange": "Stockholm",
@@ -1847,6 +2400,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/catena-media-equity-report.html",
     "description": "Catena Media plc operates as an affiliate marketing specialist focused on online casino gaming and sports betting. It creates content-rich websites and related marketing services that attract users, generate qualified leads, and connect them with partner operators. The company also earns through CPA, revenue-sharing, fixed-fee, hybrid, and subscription-based arrangements, with a growing focus on diversified product-led revenue streams."
+  },
+  {
+    "name": "Cavco Industries",
+    "ticker": "CVCO",
+    "exchange": "Listed",
+    "url": "reports/cavco-industries-equity-report.html",
+    "description": "Cavco Industries designs and manufactures factory-built homes, including manufactured homes, park model recreational vehicles, vacation cabins, and commercial structures. It distributes homes through independent and company-owned retailers, planned community operators, and residential developers. Its finance subsidiary originates and services residential mortgages and home-only loans for factory-built home buyers, while its insurance subsidiary provides property and casualty coverage primarily to manufactured-home owners."
   },
   {
     "name": "Cavendish Hydrogen",
@@ -1877,6 +2437,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "cBrain A/S develops and sells software for public-sector organizations, centered on its F2 platform for digital government workflows. The company’s software is used to digitize and manage processes such as permitting, inspections, grants, and citizen services. It also provides implementation and support for government customers, with revenue driven by software sales and related services."
   },
   {
+    "name": "CCC Intelligent Solutions Holdings",
+    "ticker": "CCC",
+    "exchange": "Listed",
+    "url": "reports/ccc-intelligent-solutions-holdings-equity-report.html",
+    "description": "CCC Intelligent Solutions provides cloud software and AI solutions for automotive insurance and collision repair. Its platform supports insurers’ claims workflows and customer experiences, and helps repair facilities manage operations, repair quality and business processes. The platform connects insurers, repairers, parts suppliers and automotive manufacturers, with tools for vehicle damage detection, claim handling, repair estimating, claim review and subrogation."
+  },
+  {
     "name": "CDON",
     "ticker": "CDON.ST",
     "exchange": "Stockholm",
@@ -1889,6 +2456,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/cdw-equity-report.html",
     "description": "CDW provides multi-brand information technology products, solutions, and services to business, government, education, and healthcare customers in the United States, the United Kingdom, and Canada. Its offerings range from hardware and software to integrated on-premise and cloud solutions across hybrid infrastructure, digital experience, and security. It also helps customers design, select, procure, integrate, and manage technology."
+  },
+  {
+    "name": "CECO Environmental",
+    "ticker": "CECO",
+    "exchange": "Listed",
+    "url": "reports/ceco-environmental-equity-report.html",
+    "description": "CECO provides engineered technology and application expertise for industrial air, industrial water and energy transition markets. Its solutions address air and water quality, emissions management, and energy and process efficiency in applications across power, hydrocarbon processing, manufacturing, electronics, water treatment and other industrial markets. Customers include utilities, manufacturers, processors, engineering and construction firms, and equipment makers."
   },
   {
     "name": "Cedergrenska",
@@ -1912,6 +2486,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CellaVision develops and sells digital hematology microscopy solutions for clinical laboratories. Its portfolio includes analyzers, instruments, reagents, staining systems, software and applications used to automate, standardize and simplify blood and body fluid analysis. The company serves laboratories through global partners and local market support, with products designed to improve workflow efficiency and diagnostic certainty."
   },
   {
+    "name": "Celldex Therapeutics",
+    "ticker": "CLDX",
+    "exchange": "Listed",
+    "url": "reports/celldex-therapeutics-equity-report.html",
+    "description": "Celldex Therapeutics is a biopharmaceutical company focused on mast cell biology and the development of therapeutic antibodies for inflammatory, allergic, autoimmune, and other serious diseases. Its investigational pipeline includes monoclonal and bispecific antibody candidates, including programs targeting mast cell driven diseases and inflammatory pathways. The company conducts research and clinical development of potential therapies for patients whose conditions have inadequate treatment options."
+  },
+  {
     "name": "Celsius Holdings",
     "ticker": "CELH",
     "exchange": "Listed",
@@ -1926,11 +2507,60 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CeMat A/S is a Denmark-based real estate company with operations focused mainly in Warsaw, Poland. Its business combines property development and asset management, including residential and commercial projects, leasing of small business units, self-storage, offices and warehouse space, and management of its owned property portfolio. The company also holds land for future development."
   },
   {
+    "name": "CenterPoint Energy",
+    "ticker": "CNP",
+    "exchange": "Listed",
+    "url": "reports/centerpoint-energy-equity-report.html",
+    "description": "CenterPoint Energy is a public utility holding company whose operating subsidiaries provide electric transmission and distribution, natural gas distribution, and energy delivery services. Houston Electric serves transmission customers in the ERCOT region and retail electric providers in the Texas Gulf Coast area. Other subsidiaries operate natural gas systems in Minnesota, Texas, and Indiana, and provide electric and gas service in southwestern Indiana."
+  },
+  {
+    "name": "Centuri Holdings",
+    "ticker": "CTRI",
+    "exchange": "Listed",
+    "url": "reports/centuri-holdings-equity-report.html",
+    "description": "Centuri Holdings provides utility and energy infrastructure services to electric, natural gas, and combined utility providers in North America. Its work includes replacing, maintaining, retrofitting, and installing distribution infrastructure and utility-scale transmission networks. It also serves distributed power and data center projects. Utility customers use its services to modernize and expand energy networks."
+  },
+  {
+    "name": "Century Aluminum Company",
+    "ticker": "CENX",
+    "exchange": "Listed",
+    "url": "reports/century-aluminum-company-equity-report.html",
+    "description": "Century Aluminum produces primary aluminum at smelters in the United States and Iceland, making standard-grade and value-added products for customers. Its portfolio also includes a majority interest in a Jamaican bauxite mining and alumina refining joint venture, plus a carbon anode facility in the Netherlands that supplies a company smelter. Product offerings include aluminum ingot, primary foundry alloy and low-carbon aluminum under its Natur-Al line."
+  },
+  {
+    "name": "CeriBell",
+    "ticker": "CBLL",
+    "exchange": "Listed",
+    "url": "reports/ceribell-equity-report.html",
+    "description": "CeriBell is a medical technology company offering the Ceribell System, a portable point-of-care EEG platform for acute care settings. The system combines rapidly deployable hardware with AI-powered algorithms to support diagnosis and continuous monitoring of patients with neurological conditions, particularly seizure detection and management. Its users include hospitals and clinicians caring for patients at risk of seizures."
+  },
+  {
+    "name": "Certara",
+    "ticker": "CERT",
+    "exchange": "Listed",
+    "url": "reports/certara-equity-report.html",
+    "description": "Certara provides biosimulation software, data solutions, and consulting services to biopharmaceutical and biotechnology companies. Its tools and scientific services support model-informed drug development, including research, preclinical work, clinical development, and commercialization. The company also helps clients collect, standardize, validate, store, and analyze scientific data and prepare regulatory documents for drug development."
+  },
+  {
+    "name": "CG Oncology",
+    "ticker": "CGON",
+    "exchange": "Listed",
+    "url": "reports/cg-oncology-equity-report.html",
+    "description": "CG Oncology is a clinical biopharmaceutical company developing cretostimogene grenadenorepvec, an investigational oncolytic immunotherapy for bladder cancer. The company is evaluating the therapy in clinical trials for high-risk and intermediate-risk non-muscle invasive bladder cancer, including as a monotherapy and in combination with another drug. Its activities include clinical development and preparation of a regulatory application for an initial indication."
+  },
+  {
     "name": "ChargePanel",
     "ticker": "CHARGE.ST",
     "exchange": "Stockholm",
     "url": "reports/chargepanel-equity-report.html",
     "description": "ChargePanel AB provides a cloud-based software platform for managing, operating and monetizing electric vehicle charging networks. Its products include white-label back-office tools, driver apps, payment and billing functions, roaming connections and fleet-related services. The company serves charge point operators, mobility service providers, energy companies, installers and other businesses in the EV charging market."
+  },
+  {
+    "name": "Charles River Laboratories International",
+    "ticker": "CRL",
+    "exchange": "Listed",
+    "url": "reports/charles-river-laboratories-international-equity-report.html",
+    "description": "Charles River Laboratories supplies research models and services, preclinical drug discovery and safety assessment, and laboratory testing. Its offerings include animal models, research facility support, nonclinical studies, microbial detection and testing products, and specialized biologics testing. Pharmaceutical and biotechnology companies, government agencies, and other research organizations use its products and services to support drug research, development, and quality control."
   },
   {
     "name": "Checkin.Com Group",
@@ -1952,6 +2582,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/chemometec-equity-report.html",
     "description": "ChemoMetec develops, manufactures, and sells analytical instruments for cell counting and cell analysis. Its NucleoCounter and XcytoMatic systems are used in biopharmaceutical production, cell and gene therapy, research, and quality control, supported by consumables and software. The company also serves related applications in agriculture and other life science workflows."
+  },
+  {
+    "name": "Choice Hotels International",
+    "ticker": "CHH",
+    "exchange": "Listed",
+    "url": "reports/choice-hotels-international-equity-report.html",
+    "description": "Choice Hotels International primarily operates as a hotel franchisor, with brands spanning economy, extended-stay, midscale, and upscale lodging. It also owns and manages some hotels and conducts international franchising through direct and master-franchise relationships. The company earns fees from franchised and managed properties and offers guests and hotels value-added solutions through vendor and travel partnerships."
+  },
+  {
+    "name": "Chord Energy",
+    "ticker": "CHRD",
+    "exchange": "Listed",
+    "url": "reports/chord-energy-equity-report.html",
+    "description": "Chord Energy is an independent exploration and production company that acquires, explores, develops and produces crude oil, natural gas liquids and natural gas. Its operations are primarily in the Williston Basin, with limited non-operated interests in the Marcellus Shale. The company develops resources in the Middle Bakken and Three Forks formations and serves energy markets with its production."
   },
   {
     "name": "Chordate Medical Holding",
@@ -1982,11 +2626,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "ChromoGenics develops and sells smart glass solutions for buildings, centered on electrochromic ConverLight products. Its portfolio includes dynamic glass with controllable light and heat transmission, static solar-control glass, and solar-cell facade panels. The company also manufactures electrochromic foil and related components in Uppsala for use in laminated glass and facade applications."
   },
   {
+    "name": "Churchill Downs Incorporated",
+    "ticker": "CHDN",
+    "exchange": "Listed",
+    "url": "reports/churchill-downs-incorporated-equity-report.html",
+    "description": "Churchill Downs Incorporated operates live and historical horse racing venues, wagering services and regional casino gaming properties. Its racing business earns revenue from pari-mutuel wagering, simulcast fees, admissions, sponsorships, television rights, food and beverage, and other event services. The company operates Churchill Downs Racetrack, home of the Kentucky Derby, and historical racing properties in Kentucky, Virginia and New Hampshire, serving guests, wagering customers and sponsors."
+  },
+  {
     "name": "Cibus",
     "ticker": "CIBUS",
     "exchange": "Listed",
     "url": "reports/cibus-equity-report.html",
     "description": "Cibus is a listed real estate company that owns and manages grocery-anchored and daily-goods properties across Europe, with a portfolio concentrated in the Nordics and Mainland Europe. Its properties are leased to food retailers and other daily-goods tenants under long-term agreements, making rental income the main value driver."
+  },
+  {
+    "name": "Cimpress",
+    "ticker": "CMPR",
+    "exchange": "Listed",
+    "url": "reports/cimpress-equity-report.html",
+    "description": "Cimpress provides customized physical marketing products and branded merchandise through a portfolio of print businesses. Its offerings include business cards, signage, promotional products, apparel, packaging, books, magazines, wall decor, photo merchandise, invitations and announcements, alongside design and digital marketing services. The company serves businesses seeking custom products, including in low quantities."
   },
   {
     "name": "Cint Group",
@@ -2003,11 +2661,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CirChem AB provides industrial solvent recycling services in Sweden. The company collects used solvents from industrial customers, then filters, purifies and distills them for reuse. At its Vargön facility, it also produces related chemical products, including washer fluid and hand sanitizer, while serving manufacturers seeking to reduce waste and replace virgin solvent use."
   },
   {
+    "name": "Cirrus Logic",
+    "ticker": "CRUS",
+    "exchange": "Listed",
+    "url": "reports/cirrus-logic-equity-report.html",
+    "description": "Cirrus Logic develops custom and general market mixed-signal components for mobile and consumer applications. Its audio products include amplifiers, codecs, converters, and digital signal processors; its high-performance mixed-signal products include camera controllers, haptics and sensing solutions, and battery and power integrated circuits. Customers include product teams in smartphone, computer, tablet, headset, wearable, automotive entertainment, home theater, and professional audio markets."
+  },
+  {
     "name": "Citycon",
     "ticker": "CTY1S.HE",
     "exchange": "Helsinki",
     "url": "reports/citycon-equity-report.html",
     "description": "Citycon Oyj owns, develops and manages mixed-use urban centres in major cities across the Nordics and Baltics. Its portfolio consists mainly of necessity-based shopping centres, often combined with retail, offices, housing and local services. The company’s value drivers are rental income, asset management, development projects and operating efficiency across its centres."
+  },
+  {
+    "name": "Claritev",
+    "ticker": "CTEV",
+    "exchange": "Listed",
+    "url": "reports/claritev-equity-report.html",
+    "description": "Claritev provides technology, data, analytics and services to organizations across the U.S. healthcare system. Its offerings address out-of-network cost management, payment integrity, billing and payment accuracy, and in-network payment and revenue integrity. The company serves healthcare payers, providers and other organizations, using claims experience and data-driven insights to help them assess costs, pricing and payment dynamics."
+  },
+  {
+    "name": "Clarivate",
+    "ticker": "CLVT",
+    "exchange": "Listed",
+    "url": "reports/clarivate-equity-report.html",
+    "description": "Following the sale of its Life Sciences & Healthcare business in October 2026, Clarivate focuses on Academia & Government and Intellectual Property. It provides proprietary information, analytics, workflow software, and expert services supporting research, education, libraries, and intellectual property protection. Products include Web of Science, ProQuest, Alma, and Vega for academic and library customers, alongside patent and trademark tools for businesses and legal professionals."
   },
   {
     "name": "Clas Ohlson",
@@ -2129,6 +2808,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Coffee Stain Studios AB develops and publishes video games, focusing on PC and console titles within the Coffee Stain group of Embracer. The studio contributes to the group’s games portfolio through original intellectual property and live operations, with revenue driven by game sales, updates, downloadable content, and related publishing activities."
   },
   {
+    "name": "Cognex",
+    "ticker": "CGNX",
+    "exchange": "Listed",
+    "url": "reports/cognex-equity-report.html",
+    "description": "Cognex develops industrial machine vision systems that combine hardware and software to capture and analyze visual information. Its products help automate manufacturing and distribution tasks, including locating, identifying, inspecting and measuring discrete items. Customers include manufacturers and logistics providers across industries such as logistics, packaging, consumer electronics, automotive and semiconductors, as well as e-commerce and parcel companies using vision and barcode-reading systems."
+  },
+  {
+    "name": "Collegium Pharmaceutical",
+    "ticker": "COLL",
+    "exchange": "Listed",
+    "url": "reports/collegium-pharmaceutical-equity-report.html",
+    "description": "Collegium Pharmaceutical commercializes prescription medicines in the United States for attention deficit hyperactivity disorder and moderate to severe pain, along with Symproic. Its products include Jornay PM, a stimulant for ADHD; Belbuca, a buprenorphine buccal film for persistent pain; Xtampza ER, an extended-release oxycodone formulation; and Nucynta immediate- and extended-release tapentadol products for acute or persistent pain."
+  },
+  {
     "name": "Coloplast",
     "ticker": "COLO-B.CO",
     "exchange": "Copenhagen",
@@ -2157,6 +2850,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CombinedX AB (publ) is a Swedish IT services group that helps companies and public-sector organizations use digitalization to improve operations. Through specialist subsidiaries, it provides services in digital transformation, service design, ERP and business processes, data analytics, automation, application development, digital workplace solutions, managed infrastructure, security, IoT, CRM, and change management."
   },
   {
+    "name": "Commercial Metals Company",
+    "ticker": "CMC",
+    "exchange": "Listed",
+    "url": "reports/commercial-metals-company-equity-report.html",
+    "description": "Commercial Metals Company provides early-stage construction solutions for site preparation and foundational phases of infrastructure and building projects. Its manufacturing network produces steel and other construction products for infrastructure, non-residential, residential, industrial, and energy markets. The company serves customers through its North America Steel Group, Construction Solutions Group, and Europe Steel Group, with operations primarily in the United States and Central Europe."
+  },
+  {
+    "name": "Compass",
+    "ticker": "COMP",
+    "exchange": "Listed",
+    "url": "reports/compass-equity-report.html",
+    "description": "Compass is a global real estate services company operating owned brokerages and franchise businesses under several real estate brands. Its professionals serve home buyers and sellers, and its platform includes technology offerings for managing real estate businesses and transactions. The company also provides services to franchisees, professionals and clients, including title, escrow, settlement and relocation services, and mortgage services through a joint venture."
+  },
+  {
     "name": "Compodium International",
     "ticker": "COMPDM.ST",
     "exchange": "Stockholm",
@@ -2178,11 +2885,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Concejo AB is a Swedish investment company that owns and develops operating businesses through two main areas: Concejo Industrier and SBF Fonder. The industrial units supply products and systems for fire safety and related services, while SBF Fonder manages Swedish residential property funds for institutional and private investors. The group also holds additional minority investments in growth companies."
   },
   {
+    "name": "Concentra Group Holdings Parent",
+    "ticker": "CON",
+    "exchange": "Listed",
+    "url": "reports/concentra-group-holdings-parent-equity-report.html",
+    "description": "Concentra provides occupational health, consumer health, and direct-to-employer care across the United States. It operates occupational health centers, onsite clinics at employer worksites, and a telemedicine program. Services include workers’ compensation care, employer services, and consumer health services. Its main customers are employers, while patients are generally people employed by those businesses."
+  },
+  {
     "name": "Concentric",
     "ticker": "COIC.ST",
     "exchange": "Stockholm",
     "url": "reports/concentric-equity-report.html",
     "description": "Concentric AB develops and manufactures flow-control and fluid-power systems for off-highway, truck, bus, industrial and energy applications. Its products include oil, water and fuel pumps, fans, thermal management solutions, hydraulic systems and related electric components. The company also provides engineering, development, testing and manufacturing services, with growing emphasis on electric products and electrification."
+  },
+  {
+    "name": "Concentrix",
+    "ticker": "CNXC",
+    "exchange": "Listed",
+    "url": "reports/concentrix-equity-report.html",
+    "description": "Concentrix provides technology-enabled services and integrated solutions to companies across technology, retail, communications, financial services, and healthcare sectors. Its offerings include customer experience strategy and design, digital operations, automation, analytics, artificial intelligence readiness, and business transformation. It supports customer interactions through voice, chat, email, social media, messaging, and self-service channels, serving global brands and large multinational companies."
   },
   {
     "name": "Concordia Maritime",
@@ -2241,6 +2962,34 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Copyright Agent A/S is a Danish legal-tech and copyright protection company based in Copenhagen. It helps creators, image agencies and other rights holders detect unauthorized online use of copyrighted works, manage infringement cases and pursue compensation claims. Its services combine software for image protection with end-to-end case handling and market education."
   },
   {
+    "name": "Corcept Therapeutics Incorporated",
+    "ticker": "CORT",
+    "exchange": "Listed",
+    "url": "reports/corcept-therapeutics-incorporated-equity-report.html",
+    "description": "Corcept Therapeutics discovers, develops, and commercializes medicines that modulate cortisol for endocrinologic, oncologic, metabolic, and neurologic disorders. Its marketed products include Korlym and an authorized generic for hypercortisolism, as well as Lifyorli (relacorilant) for use with chemotherapy in platinum-resistant ovarian cancer. The company is also developing relacorilant for Cushing’s syndrome and other cortisol modulators for additional conditions."
+  },
+  {
+    "name": "Core Laboratories",
+    "ticker": "CLB",
+    "exchange": "Listed",
+    "url": "reports/core-laboratories-equity-report.html",
+    "description": "Core Laboratories provides proprietary and patented reservoir description and production enhancement services and products to oil and gas companies. It analyzes reservoir rocks, fluids, and derived products, helping clients evaluate subsurface formations and reservoir performance. Its services include laboratory analysis and field work, and it also assists clients evaluating subsurface targets for carbon capture and sequestration projects."
+  },
+  {
+    "name": "Core Natural Resources",
+    "ticker": "CNR",
+    "exchange": "Listed",
+    "url": "reports/core-natural-resources-equity-report.html",
+    "description": "Core Natural Resources produces metallurgical and thermal coal, with mining operations primarily in the Appalachian Basin. Its coal serves steelmaking, electricity generation, cement production, and other infrastructure uses. The company sells to export markets and rail-served power plants, and reaches international customers through ownership interests in marine export terminals and access to other ports."
+  },
+  {
+    "name": "Core Scientific",
+    "ticker": "CORZ",
+    "exchange": "Listed",
+    "url": "reports/core-scientific-equity-report.html",
+    "description": "Core Scientific designs, builds and operates data centers for high-density colocation services and digital asset mining. Its facilities support power-intensive computing, including artificial intelligence and other high-performance computing workloads. Colocation customers lease infrastructure such as dedicated data center space, electrical power and cooling, then deploy and manage their own hardware. The company also mines digital assets for its own account."
+  },
+  {
     "name": "Corem Property Group",
     "ticker": "CORE-B.ST",
     "exchange": "Stockholm",
@@ -2276,6 +3025,55 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CoStar Group operates online marketplaces and provides information, analytics, marketing services, and 3D digital twin technology for property markets. Its services cover commercial and residential properties, rentals, land, and businesses for sale, as well as commercial real estate auctions. The company supplies property data, listings, research, risk management tools, and analytical capabilities to real estate professionals, consumers, and related business communities."
   },
   {
+    "name": "Costco Wholesale",
+    "ticker": "COST",
+    "exchange": "Listed",
+    "url": "reports/costco-wholesale-equity-report.html",
+    "description": "Costco Wholesale operates membership warehouses and e-commerce sites selling a limited selection of nationally branded and private-label merchandise across many categories. Its products include food and sundries, consumer electronics, appliances, health and beauty items, and other goods. The company also offers services such as technical support and extended warranty coverage for certain electronics, serving members through in-store and online channels."
+  },
+  {
+    "name": "Coty",
+    "ticker": "COTY",
+    "exchange": "Listed",
+    "url": "reports/coty-equity-report.html",
+    "description": "Coty is a beauty company with brands across fragrance, color cosmetics, and skin and body care. Its portfolio includes owned and licensed brands in Prestige and Consumer Beauty, with products marketed through channels including retail stores, e-commerce, and travel retail. Coty promotes brands through traditional and digital media, social platforms, in-store displays, collaborations, product placements, events, and relationships with celebrities and influencers."
+  },
+  {
+    "name": "Coursera",
+    "ticker": "COUR",
+    "exchange": "Listed",
+    "url": "reports/coursera-equity-report.html",
+    "description": "Coursera operates a global online learning platform offering courses and credentials created with universities and industry partners. Its catalog includes standalone courses, multi-course specializations, industry certificate programs, and university degrees, alongside interactive tools and personalized learning paths. Learners access content directly, while employers, colleges, universities, and government organizations also use its programs for skills development and career learning."
+  },
+  {
+    "name": "CRA International",
+    "ticker": "CRAI",
+    "exchange": "Listed",
+    "url": "reports/cra-international-equity-report.html",
+    "description": "CRA International is a consulting firm providing economic, financial, and management consulting services. It advises corporations, attorneys, law firms, and government agencies on litigation, regulatory proceedings, business strategy, and performance issues. Services include research and analysis, expert testimony, regulatory and antitrust support, forensic accounting, market forecasting, valuation, risk management, transaction support, strategy development, performance improvement, and market research."
+  },
+  {
+    "name": "Cracker Barrel Old Country Store",
+    "ticker": "CBRL",
+    "exchange": "Listed",
+    "url": "reports/cracker-barrel-old-country-store-equity-report.html",
+    "description": "Cracker Barrel Old Country Store operates full-service restaurants with adjoining retail gift shops. Its restaurants serve breakfast, lunch, and dinner, featuring home-style country cooking, alongside takeout and delivery options. The shops sell decorative and functional goods, including rocking chairs, seasonal gifts, toys, apparel, cookware, and foods. Its stores serve travelers and local customers."
+  },
+  {
+    "name": "Crane Company",
+    "ticker": "CR",
+    "exchange": "Listed",
+    "url": "reports/crane-company-equity-report.html",
+    "description": "Crane manufactures engineered components for aerospace, defense, space, and process industries through its Aerospace & Advanced Technologies and Process Flow Technologies segments. Its offerings include sensor-based technologies for aerospace, nuclear, and process applications; inline optical measurement solutions for biopharma and pharmaceutical process control; vacuum-insulated pipe systems and valves for cryogenic uses; and lubrication pumps and components for aerospace and defense applications."
+  },
+  {
+    "name": "Crane NXT, Co.",
+    "ticker": "CXT",
+    "exchange": "Listed",
+    "url": "reports/crane-nxt-co-equity-report.html",
+    "description": "Crane NXT provides technology solutions for securing, detecting and authenticating products and transactions. Its Crane Payment Innovations segment supplies electronic equipment, software, automation and processing systems, field services, remote diagnostics and productivity solutions. Its Security and Authentication Technologies segment offers technologies for banknotes and other physical products, brand protection, authentication, and digital content protection across online marketplaces, social media platforms and websites."
+  },
+  {
     "name": "Crayon Group Holding",
     "ticker": "CRAYN.OL",
     "exchange": "Oslo",
@@ -2295,6 +3093,27 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/crh-equity-report.html",
     "description": "CRH supplies building materials, products, and services for transportation and critical infrastructure, reindustrialization, and commercial and residential construction. Its portfolio includes aggregates and cementitious materials, road construction materials and services, and solutions for infrastructure projects involving transportation, water, energy, and telecommunications. Customers include national, regional, and local governments, contractors, and other construction product and service providers across North America, Europe, and Australia."
+  },
+  {
+    "name": "Cricut",
+    "ticker": "CRCT",
+    "exchange": "Listed",
+    "url": "reports/cricut-equity-report.html",
+    "description": "Cricut operates a creativity platform for people making do-it-yourself goods, including cards, apparel, gifts, and decor. Its products include connected cutting machines, accessories, and materials, supported by the Cricut Design Space desktop and mobile app. Users can access images, fonts, templates, and project designs, with broader content and app features available through Cricut Access subscriptions or individual purchases."
+  },
+  {
+    "name": "CRISPR Therapeutics",
+    "ticker": "CRSP",
+    "exchange": "Listed",
+    "url": "reports/crispr-therapeutics-equity-report.html",
+    "description": "CRISPR Therapeutics develops CRISPR-based gene-editing therapeutics for serious diseases. Its programs span hemoglobin disorders, in vivo gene editing, gene-edited CAR T cell therapies and regenerative medicine. Its approved therapy CASGEVY treats eligible patients with sickle cell disease or transfusion-dependent beta thalassemia and is developed and commercialized with Vertex. The company also advances delivery and gene-editing technologies."
+  },
+  {
+    "name": "Crocs",
+    "ticker": "CROX",
+    "exchange": "Listed",
+    "url": "reports/crocs-equity-report.html",
+    "description": "Crocs designs, develops, markets, distributes and sells casual lifestyle footwear and accessories worldwide through its Crocs and HEYDUDE brands. Crocs products include clogs, sandals and Jibbitz charms, while HEYDUDE offers casual footwear including Wally and Wendy loafer styles. The company sells through its own digital channels, third-party marketplaces and wholesale relationships to consumers and retailers."
   },
   {
     "name": "Crown Holdings",
@@ -2318,6 +3137,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "CTEK AB (publ) develops and sells battery charging and battery management products for vehicles, including 12V and 24V chargers, accessories, and EV charging solutions. Its business is organized around Consumer and Professional divisions, serving private customers, workshops, vehicle manufacturers, charging point operators, and other commercial customers."
   },
   {
+    "name": "CTS",
+    "ticker": "CTS",
+    "exchange": "Listed",
+    "url": "reports/cts-equity-report.html",
+    "description": "CTS Corporation designs, manufactures, and sells sensors, connectivity components, and actuators for original equipment manufacturers, tier-one suppliers, distributors, and the U.S. Government. Its products include controls, pedals, sensors, switches, transducers, filters, capacitors, frequency-control products, resistors, and rotary and piezo microactuators. They serve transportation, industrial, medical, and aerospace and defense applications, with sales supported by engineers, independent representatives, and distributors."
+  },
+  {
     "name": "CTT Systems",
     "ticker": "CTT.ST",
     "exchange": "Stockholm",
@@ -2337,6 +3163,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/cyber-security-1-equity-report.html",
     "description": "Cyber Security 1 AB provides cybersecurity services and software solutions across Sweden, Africa, the Middle East and Europe. Its operations are organized around distribution, advisory solutions, and managed security services, including security, risk and compliance offerings, incident response, forensics, implementation, and support. The company is also shifting toward higher-margin managed and implementation services."
+  },
+  {
+    "name": "Cytokinetics, Incorporated",
+    "ticker": "CYTK",
+    "exchange": "Listed",
+    "url": "reports/cytokinetics-incorporated-equity-report.html",
+    "description": "Cytokinetics discovers, develops and commercializes medicines that modulate muscle function for diseases involving impaired muscle performance. Its first commercial product, MYQORZO (aficamten), is a tablet approved for adults with obstructive hypertrophic cardiomyopathy. The company’s research focuses on muscle biology and includes investigational small-molecule candidates at discovery, preclinical and clinical stages. Its medicines and development programs address cardiovascular and neuromuscular diseases."
+  },
+  {
+    "name": "CytomX Therapeutics",
+    "ticker": "CTMX",
+    "exchange": "Listed",
+    "url": "reports/cytomx-therapeutics-equity-report.html",
+    "description": "CytomX Therapeutics is a clinical-stage biopharmaceutical company focused on developing oncology therapies. Its PROBODY platform uses tumor-associated proteases to conditionally activate masked biologics, including antibody-drug conjugates, T-cell engagers and cytokines. The company’s clinical programs include varsetatug masetecan, an investigational antibody-drug conjugate targeting EpCAM, and CX-801; its pipeline also includes preclinical programs."
   },
   {
     "name": "Cyviz AS",
@@ -2402,6 +3242,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Dataproces Group A/S provides software, data analysis and consulting services for Danish municipalities and other public-sector customers. Its solutions help clients optimize financial management, automate routine administrative work and improve decision support. The company also develops SaaS products and delivers analysis services in areas such as intermunicipal settlements, reimbursements and process efficiency."
   },
   {
+    "name": "DaVita",
+    "ticker": "DVA",
+    "exchange": "Listed",
+    "url": "reports/davita-equity-report.html",
+    "description": "DaVita provides kidney care services, including dialysis, related laboratory services, integrated kidney care and disease management. Its care spans outpatient centers, patients’ homes, hospitals and skilled nursing facilities, and includes support for slowing kidney disease progression and transplantation. The company operates dialysis services in the United States and internationally and serves people with chronic kidney disease and kidney failure, alongside nephrology and payor partners."
+  },
+  {
     "name": "DecideAct",
     "ticker": "ACT.CO",
     "exchange": "Copenhagen",
@@ -2430,11 +3277,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Deep Value Driller AS is a drillship-owning company focused on offshore contract drilling. It owns and operates the high-specification 7th generation drillship Deep Value Driller, and its business centers on contracting, managing, and chartering drilling rigs for energy customers. The company operates from Oslo and serves offshore markets in Norway and abroad."
   },
   {
+    "name": "Deluxe",
+    "ticker": "DLX",
+    "exchange": "Listed",
+    "url": "reports/deluxe-equity-report.html",
+    "description": "Deluxe Corporation provides payment, data, and print products and services to small and medium-sized businesses, financial institutions, and consumer brands, primarily in North America. Its offerings include electronic payment acceptance, receivables and accounts-payable processing, data analytics and marketing services, checks, business forms, promotional products, and digital storefront solutions."
+  },
+  {
     "name": "Demant",
     "ticker": "DEMANT.CO",
     "exchange": "Copenhagen",
     "url": "reports/demant-equity-report.html",
     "description": "Demant A/S is a Denmark-based hearing healthcare group that develops, manufactures and sells hearing aids, hearing care services and diagnostic equipment. Its operations span retail hearing care clinics, branded hearing aid solutions and hearing and balance assessment instruments used by audiologists, ENT specialists and balance clinics in global markets."
+  },
+  {
+    "name": "DENTSPLY SIRONA",
+    "ticker": "XRAY",
+    "exchange": "Listed",
+    "url": "reports/dentsply-sirona-equity-report.html",
+    "description": "DENTSPLY SIRONA develops, manufactures, and sells professional dental products and technologies, as well as healthcare consumables for urological and enterological applications. Its offerings include dental equipment and instruments, imaging systems, treatment centers, CAD/CAM products, implants, clear aligners, and consumables. It also provides cloud-based digital services and software. Customers include dental practitioners and specialists, with products distributed globally."
   },
   {
     "name": "Desenio Group",
@@ -2521,6 +3382,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Digitalist Group Plc is a Finland-based digital services company that helps clients improve customer experience, brand, design, and technology execution. Through its group companies, it provides digital transformation, strategy, research, design, software development, integrations, e-commerce, content management, and maintenance services for business and public-sector customers."
   },
   {
+    "name": "DigitalOcean Holdings",
+    "ticker": "DOCN",
+    "exchange": "Listed",
+    "url": "reports/digitalocean-holdings-equity-report.html",
+    "description": "DigitalOcean provides cloud and artificial intelligence services to growing technology companies and digital-native businesses. Its offerings include virtual machines, storage, networking, managed hosting, databases, Kubernetes, marketplace services, GPU infrastructure, language models, and AI agents. Customers use its platform to host websites, develop web and mobile applications, integrate AI into businesses, and build AI products."
+  },
+  {
     "name": "Digizuite",
     "ticker": "DIGIZ.CO",
     "exchange": "Copenhagen",
@@ -2547,6 +3415,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/distit-equity-report.html",
     "description": "DistIT AB is a Nordic distribution group focused on IT accessories, data communications, consumer electronics, networking, audio and video products, and electric vehicle charging. Through its subsidiaries, it serves both consumer and business customers via retailers, e-commerce, installers, telecom operators, discount chains, and specialist stores. Private label products, delivery reliability, and service levels are key value drivers."
+  },
+  {
+    "name": "Distribution Solutions Group",
+    "ticker": "DSGR",
+    "exchange": "Listed",
+    "url": "reports/distribution-solutions-group-equity-report.html",
+    "description": "Distribution Solutions Group distributes specialty products and services to industrial, commercial, institutional, and government maintenance, repair, and operations customers. Its businesses supply industrial MRO products, safety equipment, fasteners, power tools, test and measurement equipment, and electronic production supplies. The company also provides inventory programs, supply chain support, production line management, field installation, fabrication, and related technical services."
+  },
+  {
+    "name": "Diversified Energy Company",
+    "ticker": "DEC",
+    "exchange": "Listed",
+    "url": "reports/diversified-energy-company-equity-report.html",
+    "description": "Diversified Energy produces, transports, and markets natural gas, natural gas liquids, and oil from mature, long-life assets in the United States. Its operations include managing and maintaining producing wells and related infrastructure, using monitoring technologies and data analytics, and extending the productive life of existing assets. The company also operates a vertically integrated well-plugging business focused on retiring oil and gas wells."
   },
   {
     "name": "Divio Technologies",
@@ -2584,6 +3466,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "DOF Group ASA provides offshore and subsea services to the energy industry, combining ownership and operation of purpose-built vessels with project management, engineering, survey, remote intervention and diving capabilities. It also supports offshore wind and other marine operations, with activities centered on integrated offshore execution and fleet-based service delivery."
   },
   {
+    "name": "Dole",
+    "ticker": "DOLE",
+    "exchange": "Listed",
+    "url": "reports/dole-equity-report.html",
+    "description": "Dole plc produces, sources, distributes, and markets fresh fruit and vegetables through retail, wholesale, foodservice, and e-commerce channels. Its products include bananas, pineapples, plantains, avocados, kiwis, apples, berries, and cherries, marketed to business and consumer customers. The company also provides produce management solutions to grocery retailers and transports third-party cargo on its vessels."
+  },
+  {
     "name": "Dolphin Drilling AS",
     "ticker": "DDRIL.OL",
     "exchange": "Oslo",
@@ -2619,11 +3508,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "DonkeyRepublic Holding A/S provides bike-sharing and micromobility services in Europe. The company operates and partners with cities and organisations to offer rentable pedal bikes and e-bikes, supported by a technology platform for booking, access, fleet management and servicing. Its revenues are driven by ride demand, contract-based operations and fleet utilisation."
   },
   {
+    "name": "Dorian LPG",
+    "ticker": "LPG",
+    "exchange": "Listed",
+    "url": "reports/dorian-lpg-equity-report.html",
+    "description": "Dorian LPG owns and operates very large gas carriers that transport liquefied petroleum gas. Its fleet includes vessels designed to carry ammonia cargoes, and it provides commercial management for its ships and technical management for most owned vessels. Through the Helios LPG Pool joint venture, it commercially manages participating vessels and shares pool revenues with other participants."
+  },
+  {
+    "name": "Dorman Products",
+    "ticker": "DORM",
+    "exchange": "Listed",
+    "url": "reports/dorman-products-equity-report.html",
+    "description": "Dorman Products supplies replacement and upgrade parts for passenger vehicles, trucks, and specialty vehicles, including utility terrain and all-terrain vehicles. Its catalog includes mechanical parts, sensors, and electronics, sold under its own and customers’ brands or in bulk. Customers include aftermarket retailers, dealers, wholesale distributors, specialty markets, consumers, repair shops, and dealership service departments."
+  },
+  {
     "name": "Doro",
     "ticker": "DORO.ST",
     "exchange": "Stockholm",
     "url": "reports/doro-equity-report.html",
     "description": "Doro AB develops and sells easy-to-use mobile phones, smartphones and telecare products and services for older people and other users needing simpler communication and safety solutions. Its offer includes feature phones, connected devices, alarm services and support services, with revenue driven by consumer hardware and recurring security-related services."
+  },
+  {
+    "name": "DoubleVerify Holdings",
+    "ticker": "DV",
+    "exchange": "Listed",
+    "url": "reports/doubleverify-holdings-equity-report.html",
+    "description": "DoubleVerify provides analytics and measurement solutions for digital advertising. Its platform assesses whether ads appear in fraud-free, brand-suitable environments and are viewable in their intended geography, and offers customers performance data across programmatic, social, video, mobile, and connected television channels. Advertisers use its analytics to evaluate media quality, avoid wasted spend, and optimize advertising strategies."
+  },
+  {
+    "name": "Douglas Dynamics",
+    "ticker": "PLOW",
+    "exchange": "Listed",
+    "url": "reports/douglas-dynamics-equity-report.html",
+    "description": "Douglas Dynamics manufactures and upfits commercial work truck equipment. Its products include snowplows, sand and salt spreaders, municipal snow and ice control equipment, truck-mounted service cranes, dump hoists, truck bodies, racking, and storage solutions, along with related parts and accessories. It sells through distributors and provides vehicle upfitting and customized turnkey solutions to end users, including governmental agencies and municipalities."
   },
   {
     "name": "Dovre Group",
@@ -2638,6 +3555,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/doxa-equity-report.html",
     "description": "Doxa AB (publ) is a Swedish real estate investment company that acquires, owns, develops and sells properties and property-related assets, directly and through subsidiaries. It focuses on development opportunities, cash flow and value creation, and also works with project development across the full value chain from concept to completion."
+  },
+  {
+    "name": "Doximity",
+    "ticker": "DOCS",
+    "exchange": "Listed",
+    "url": "reports/doximity-equity-report.html",
+    "description": "Doximity operates a professional technology platform for physicians and other medical professionals, with tools for collaboration, medical news, career management, scheduling, virtual visits and clinical workflows. Its customers, primarily pharmaceutical manufacturers and health systems, use marketing and digital recruiting solutions. Workflow offerings include telehealth, on-call scheduling, digital fax and clinical AI tools designed to support clinicians and patient care."
   },
   {
     "name": "Drillcon",
@@ -2689,11 +3613,46 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Dustin Group AB is an online IT partner in the Nordics and Benelux that serves small and medium-sized businesses, large enterprises and the public sector. The company sells hardware and software and provides related services, including managed services, product lifecycle services, financing and support. It also emphasizes online sales and a growing share of service revenue."
   },
   {
+    "name": "DXP Enterprises",
+    "ticker": "DXPE",
+    "exchange": "Listed",
+    "url": "reports/dxp-enterprises-equity-report.html",
+    "description": "DXP distributes maintenance, repair, and operating products, equipment, and services to customers across industrial, energy, food and beverage, chemical, transportation, water, and wastewater markets. Its business includes service centers, innovative pumping solutions, and supply chain services. The company supplies industrial products and provides repair and maintenance services, technical support, and application expertise to industrial customers and other users of MRO products."
+  },
+  {
+    "name": "Dynatrace",
+    "ticker": "DT",
+    "exchange": "Listed",
+    "url": "reports/dynatrace-equity-report.html",
+    "description": "Dynatrace provides a software platform for observability, application security, and AI operations across cloud, hybrid, and on-premises environments. Its solutions include AI application observability, log management and analytics, and cloud observability. The platform consolidates telemetry and business data, maps relationships across applications and infrastructure, and supports analysis and automation for enterprise IT, development, security, and business teams."
+  },
+  {
+    "name": "e.l.f. Beauty",
+    "ticker": "ELF",
+    "exchange": "Listed",
+    "url": "reports/e-l-f-beauty-equity-report.html",
+    "description": "e.l.f. Beauty is a multi-brand beauty company offering cosmetics and skin care products through brands including e.l.f. Cosmetics, e.l.f. SKIN, rhode, Naturium, and Well People. Its products span makeup, facial and body care, and skin care essentials, and are sold online and through beauty, mass-market, and specialty retailers. The company serves consumers through domestic and international retail distribution."
+  },
+  {
     "name": "Eagle Filters Group",
     "ticker": "EAGLE.HE",
     "exchange": "Helsinki",
     "url": "reports/loudspring-equity-report.html",
     "description": "Eagle Filters Group Oyj, formerly Loudspring, is a Finnish listed material science company focused on filtration and advanced fiber solutions. Its main products include high-performance filters for energy and industrial uses, advanced filtration materials, and respirators for health and safety customers. The company also owns securities and has described a shift toward a more industrial operating model."
+  },
+  {
+    "name": "Eagle Materials",
+    "ticker": "EXP",
+    "exchange": "Listed",
+    "url": "reports/eagle-materials-equity-report.html",
+    "description": "Eagle Materials manufactures heavy construction products and light building materials in the United States. Its products include Portland cement, gypsum wallboard, recycled paperboard, aggregates, and ready-mix concrete. These materials are used in infrastructure, residential, commercial, and industrial construction. The company sells through a regional network of production facilities and distribution terminals to construction contractors and building-materials markets."
+  },
+  {
+    "name": "Eastman Kodak Company",
+    "ticker": "KODK",
+    "exchange": "Listed",
+    "url": "reports/eastman-kodak-company-equity-report.html",
+    "description": "Eastman Kodak manufactures products focused on commercial print and advanced materials and chemicals. Its Print segment supplies digital offset plates, computer-to-plate imaging solutions, production press systems, inks, inkjet components, software, services, and toner-based digital printing solutions. Customers include commercial printers and businesses in direct mail, publishing, newspapers, magazines, and packaging and labels, reached through direct sales and channel partners."
   },
   {
     "name": "Eastnine",
@@ -2724,6 +3683,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Ecoclime Group AB develops and supplies products and services for energy-efficient buildings, with activities in cloud-based automation, circular energy recovery, ventilation and building automation. The group designs, manufactures, installs and services solutions that recover waste heat, improve indoor climate and reduce property energy use. It also acquires and develops specialist operating companies."
   },
   {
+    "name": "Ecolab",
+    "ticker": "ECL",
+    "exchange": "Listed",
+    "url": "reports/ecolab-equity-report.html",
+    "description": "Ecolab provides water, hygiene, and infection prevention products and services to customers across industries including food and beverage, healthcare, manufacturing, hospitality, and life sciences. Its solutions include water treatment, process applications, and cleaning and sanitizing programs for industrial and institutional markets. The company serves customers internationally through several operating segments, including Global Water, Global Institutional & Specialty, Global Pest Elimination, and Global Life Sciences."
+  },
+  {
     "name": "EcoOnline Holding AS",
     "ticker": "ECO.OL",
     "exchange": "Oslo",
@@ -2736,6 +3702,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/ecorub-equity-report.html",
     "description": "EcoRub AB is a Swedish greentech company that develops and produces recycled rubber and plastic materials for industrial processing, including injection molding, extrusion and 3D printing. It also makes finished products such as gym floors, stable mats and ergonomic workplace mats. The company operates from its factory in Lövånger."
+  },
+  {
+    "name": "Ecovyst",
+    "ticker": "ECVT",
+    "exchange": "Listed",
+    "url": "reports/ecovyst-equity-report.html",
+    "description": "Ecovyst provides virgin and regenerated sulfuric acid products and services. Its offerings include regenerated sulfuric acid, sulfuric acid for mining and industrial production, sulfuric acid derivatives, and hazardous waste treatment services. Customers use these products and services in applications including fuel processing, mining, metals, industrial production, and waste treatment. Ecovyst operates manufacturing and regeneration facilities that serve customers across multiple end uses."
   },
   {
     "name": "Edda Wind",
@@ -3011,6 +3984,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Enento Group provides digital business and consumer information services across the Nordic countries. Its offerings include credit, business, asset and marketing information, along with direct-to-consumer services, used for risk management, finance, administration, decision-making, sales and marketing. The company is also shifting to a country-based operating model and focusing more tightly on core services."
   },
   {
+    "name": "Energy Fuels",
+    "ticker": "UUUU",
+    "exchange": "Listed",
+    "url": "reports/energy-fuels-equity-report.html",
+    "description": "Energy Fuels produces and processes uranium and other critical materials for energy and industrial supply chains. Its portfolio includes uranium concentrates, rare-earth oxides, rare-earth metals and alloys through its acquired Australian Strategic Materials business, vanadium, and heavy mineral sands products. Operations span U.S. mines and the White Mesa Mill in Utah, as well as the Korean Metals Plant, serving nuclear utilities and materials manufacturers."
+  },
+  {
+    "name": "Energy Recovery",
+    "ticker": "ERII",
+    "exchange": "Listed",
+    "url": "reports/energy-recovery-equity-report.html",
+    "description": "Energy Recovery designs and manufactures pressure exchanger technology and related energy-saving products for industrial and commercial processes. Its devices transfer pressure energy in pressurized fluids, supporting seawater reverse osmosis desalination and applications including wastewater treatment and carbon dioxide refrigeration. The company serves customers through a global direct sales team and on-site technical support staff."
+  },
+  {
     "name": "Enersense International",
     "ticker": "ESENSE.HE",
     "exchange": "Helsinki",
@@ -3053,11 +4040,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Enorama Pharma AB is a Swedish pharmaceutical company focused on developing, manufacturing and commercializing consumer-friendly oral nicotine products. Its portfolio includes nicotine pouches under the NIC-S brand and nicotine chewing gum, sold through own-brand and private-label arrangements. The company also has been exploring a divestment of its nicotine replacement chewing gum business to sharpen focus."
   },
   {
+    "name": "Enovis",
+    "ticker": "ENOV",
+    "exchange": "Listed",
+    "url": "reports/enovis-equity-report.html",
+    "description": "Enovis develops, manufactures, and distributes medical devices and related services for injury prevention, reconstructive surgery, rehabilitation, pain management, and physical therapy. Its products include orthopedic braces, therapy systems, stimulators, joint replacement implants, instrumentation, and surgical technologies. Customers include healthcare professionals, orthopedic specialists, surgeons, healthcare systems, athletes, patients, and retail consumers."
+  },
+  {
+    "name": "Enphase Energy",
+    "ticker": "ENPH",
+    "exchange": "Listed",
+    "url": "reports/enphase-energy-equity-report.html",
+    "description": "Enphase Energy designs, develops, manufactures, and sells home energy solutions for solar generation, storage, control, and communications. Its products include microinverters, batteries, load controllers, electric vehicle chargers, monitoring devices, and cloud-based energy management software. The integrated platform supports system commissioning, consumption monitoring, and remote maintenance. Enphase serves homeowners and business users through installer, distributor, and module partners."
+  },
+  {
     "name": "Ensurge Micropower",
     "ticker": "ENSU.OL",
     "exchange": "Oslo",
     "url": "reports/ensurge-micropower-equity-report.html",
     "description": "Ensurge Micropower ASA develops and commercializes ultrathin solid-state microbatteries for small connected devices, including wearables, hearables, medical products and industrial sensors. Its technology uses anode-free, multilayer lithium chemistry and scalable manufacturing methods designed to deliver high energy density, fast charging and flexible form factors that can be integrated into compact electronic products."
+  },
+  {
+    "name": "Entegris",
+    "ticker": "ENTG",
+    "exchange": "Listed",
+    "url": "reports/entegris-equity-report.html",
+    "description": "Entegris supplies advanced materials and process solutions for semiconductor and other high-technology industries. Its products include deposition materials, chemical mechanical planarization slurries and pads, specialty gases, etch and cleaning materials, filtration and purification products, contamination-control systems, high-purity packaging, and fluid monitoring systems. Customers use these solutions in manufacturing processes to support material purity, yield, device reliability, and productivity."
   },
   {
     "name": "Entra",
@@ -3079,6 +4087,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/eolus-vind-equity-report.html",
     "description": "Eolus Vind AB is a renewable energy developer and project operator focused on wind power, solar power and energy storage. The company develops projects from early stage through construction and operation, and also provides asset management services. Its activities span the Nordic region, parts of Europe and the United States."
+  },
+  {
+    "name": "Eos Energy Enterprises",
+    "ticker": "EOSE",
+    "exchange": "Listed",
+    "url": "reports/eos-energy-enterprises-equity-report.html",
+    "description": "Eos Energy Enterprises designs and manufactures stationary long-duration energy storage systems using aqueous zinc-based Znyth battery technology. Its Eos Z3 modules are assembled into modular products, with controls and support services for multi-hour storage applications. Utility, industrial, and commercial customers use the systems to store electricity for grid and facility needs; recent deployments include projects supporting data center power demand."
   },
   {
     "name": "EPAM Systems",
@@ -3137,11 +4152,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Erria A/S is a Denmark-listed maritime services group focused on shipping, offshore operations and logistics. It provides ship management, marine warranty surveying and offshore personnel services, and also operates container depot handling and repair in Vietnam. Through subsidiaries, it services lifesaving and firefighting equipment and manufactures security seals for cargo transport."
   },
   {
+    "name": "ESAB",
+    "ticker": "ESAB",
+    "exchange": "Listed",
+    "url": "reports/esab-equity-report.html",
+    "description": "ESAB develops, manufactures, and supplies fabrication technology, consumables, equipment, robotics, and gas control equipment. Its products include cutting, joining, and welding systems, as well as digital solutions and workflow services. Products are marketed under several brand names, including ESAB, and sold through independent distributors and direct salespeople to end users across industries and markets worldwide."
+  },
+  {
     "name": "Essity",
     "ticker": "ESSITY-B.ST",
     "exchange": "Stockholm",
     "url": "reports/essity-equity-report.html",
     "description": "Essity AB is a global hygiene and health company that develops, manufactures and sells products and services for personal care, consumer tissue and professional hygiene. Its portfolio includes incontinence, feminine care and baby care products, tissue products, and workplace hygiene solutions, with additional medical offerings in wound care, compression and orthopedics."
+  },
+  {
+    "name": "Establishment Labs Holdings",
+    "ticker": "ESTA",
+    "exchange": "Listed",
+    "url": "reports/establishment-labs-holdings-equity-report.html",
+    "description": "Establishment Labs is a medical technology company focused on breast aesthetics and reconstruction. Its product portfolio centers on Motiva silicone gel-filled breast implants, including Round, Ergonomix, Anatomical and Ergonomix2 families, as well as the Flora Tissue Expander. Products are sold through exclusive distributors or the company’s direct sales force, serving the breast augmentation and reconstruction market."
+  },
+  {
+    "name": "Etsy",
+    "ticker": "ETSY",
+    "exchange": "Listed",
+    "url": "reports/etsy-equity-report.html",
+    "description": "Etsy operates online marketplaces connecting independent creative sellers with buyers around the world. Its Etsy marketplace offers unique and creative goods, while Depop is a fashion resale marketplace. The company provides technology and services that support search, discovery, transactions, trust and safety, and seller growth. Its customers are marketplace buyers and sellers."
   },
   {
     "name": "Etteplan",
@@ -3172,6 +4208,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Evaxion Biotech A/S is a Danish biotechnology company developing AI-based immunotherapies and vaccines through its AI-Immunology platform. Its work focuses on discovering and designing candidates for cancer, bacterial diseases and viral infections, with programs advancing through preclinical and clinical development. The company also relies on its AI prediction models as a core value driver."
   },
   {
+    "name": "EverCommerce",
+    "ticker": "EVCM",
+    "exchange": "Listed",
+    "url": "reports/evercommerce-equity-report.html",
+    "description": "EverCommerce provides integrated software-as-a-service solutions for service-based small and medium-sized businesses. Its platform supports workflows and customer interactions across home services, health services, and wellness services. Products address tasks such as automating manual processes, generating business, and managing customer relationships. Customers include home improvement contractors, maintenance technicians, physician practices, therapists, and salon owners."
+  },
+  {
     "name": "Everfuel",
     "ticker": "EFUEL.OL",
     "exchange": "Oslo",
@@ -3184,6 +4227,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/eversource-energy-equity-report.html",
     "description": "Eversource Energy is a public utility holding company engaged primarily in energy delivery through regulated electric, natural gas, and water utility subsidiaries. Its electric utilities distribute electricity and provide transmission service to residential, commercial, and industrial customers in Connecticut, Massachusetts, and New Hampshire. Its gas utilities serve customers in Massachusetts and Connecticut, while its water subsidiaries serve residential, commercial, industrial, municipal, and fire protection customers."
+  },
+  {
+    "name": "EVERTEC",
+    "ticker": "EVTC",
+    "exchange": "Listed",
+    "url": "reports/evertec-equity-report.html",
+    "description": "EVERTEC provides transaction processing, payment services, and financial technology solutions across Latin America, Puerto Rico, and the Caribbean. Its offerings include merchant acquiring, electronic payment processing, core banking, cash processing, and support services such as managed security and fraud monitoring. Customers include financial institutions, merchants, corporations, and government agencies that use its systems to issue, process, and accept transactions."
   },
   {
     "name": "Evolution",
@@ -3221,6 +4271,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Exelon is a U.S. utility company whose regulated businesses distribute electricity and natural gas. Its six regional utilities are Atlantic City Electric, Baltimore Gas and Electric, ComEd, Delmarva Power, PECO and Pepco. They operate and maintain energy networks serving residential, commercial and other customers in their respective service areas."
   },
   {
+    "name": "ExlService Holdings",
+    "ticker": "EXLS",
+    "exchange": "Listed",
+    "url": "reports/exlservice-holdings-equity-report.html",
+    "description": "ExlService is a global data and artificial intelligence company providing data and AI-led solutions and services, along with digital operations solutions and services. It applies analytics, data management, digital engineering, and industry expertise to client workflows and business operations. Clients include companies in insurance, healthcare and life sciences, banking and capital markets, retail, communications and media, and energy and infrastructure."
+  },
+  {
+    "name": "Expeditors International of Washington",
+    "ticker": "EXPD",
+    "exchange": "Listed",
+    "url": "reports/expeditors-international-of-washington-equity-report.html",
+    "description": "Expeditors provides global logistics services through an international network and integrated information systems, arranging transportation and strategic positioning of customers’ goods. It offers airfreight and ocean freight services, customs brokerage, order management, time-definite transportation, warehousing, distribution, temperature-controlled transit, cargo insurance, monitoring, and customized logistics and consulting. Its Project Cargo unit handles specialized shipments by air, ocean, or ground."
+  },
+  {
     "name": "ExpreS2ion Biotech Holding",
     "ticker": "EXPRS2.ST",
     "exchange": "Stockholm",
@@ -3235,6 +4299,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Exsitec Holding AB (publ) is a Nordic information technology services company that provides business-supporting software and implementation services for medium-sized companies. Its portfolio includes ERP systems, business intelligence, CRM, invoice management, e-commerce, warehouse management, budgeting and forecasting, and custom applications. The group is headquartered in Linköping and operates across several Nordic markets."
   },
   {
+    "name": "Extreme Networks",
+    "ticker": "EXTR",
+    "exchange": "Listed",
+    "url": "reports/extreme-networks-equity-report.html",
+    "description": "Extreme Networks designs, develops and manufactures wired, wireless and software-defined wide area networking equipment. It also sells software subscriptions and related maintenance contracts to businesses and organizations across sectors including education, government, healthcare, retail, transportation and hospitality. Its networking platform integrates network management, security, analytics and AI capabilities intended to help enterprise IT teams operate and manage network infrastructure."
+  },
+  {
+    "name": "EyePoint Pharmaceuticals",
+    "ticker": "EYPT",
+    "exchange": "Listed",
+    "url": "reports/eyepoint-pharmaceuticals-equity-report.html",
+    "description": "EyePoint is a clinical-stage biopharmaceutical company developing sustained-delivery treatments for serious retinal diseases. Its lead candidate, DURAVYU, combines vorolanib with bioerodible Durasert E technology and is being studied in Phase 3 trials for diabetic macular edema. After its wet age-related macular degeneration program failed to meet a primary endpoint, the company said it would wind down that program and prioritize DME development."
+  },
+  {
     "name": "F-Secure",
     "ticker": "FSECURE.HE",
     "exchange": "Helsinki",
@@ -3247,6 +4325,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/fabege-equity-report.html",
     "description": "Fabege AB is a Swedish property company focused on developing, owning and managing commercial real estate and selected housing in the Stockholm region. Its portfolio is concentrated in well-located submarkets such as Arenastaden, Solna Business Park, Stockholm city, Hammarby Sjöstad and Flemingsberg. Value is created through asset management, property refinement, project development and transactions."
+  },
+  {
+    "name": "Fabrinet",
+    "ticker": "FN",
+    "exchange": "Listed",
+    "url": "reports/fabrinet-equity-report.html",
+    "description": "Fabrinet provides optical packaging and precision optical, electro-mechanical, and electronic manufacturing services to original equipment manufacturers. Its capabilities include engineering, supply chain management, circuit board assembly, advanced packaging, integration, final assembly, and testing. It manufactures optical communications products, industrial lasers, automotive components, medical devices, and sensors, and also designs and sells customized optics and glass for OEM customers and merchant markets."
   },
   {
     "name": "Fagerhult Group AB",
@@ -3333,6 +4418,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "FastPassCorp A/S develops and sells software for password management and identity verification. Its products include self-service password reset tools, secure help desk user verification, password synchronization, and cloud-based access management solutions. The company serves large enterprises and managed service providers, with deployments across sectors such as healthcare, education, financial services, and government."
   },
   {
+    "name": "Federal Signal",
+    "ticker": "FSS",
+    "exchange": "Listed",
+    "url": "reports/federal-signal-equity-report.html",
+    "description": "Federal Signal designs, manufactures, and supplies vehicles, equipment, public safety products, and integrated solutions for municipal, governmental, industrial, and commercial customers. Its offerings include street sweepers, sewer cleaners, vacuum and excavation trucks, waterblasting equipment, refuse vehicles, warning systems, lightbars, and sirens. It also sells parts and provides repair, service, rentals, and training."
+  },
+  {
     "name": "Ferrari",
     "ticker": "RACE.MI",
     "exchange": "Milan",
@@ -3410,6 +4502,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Fiskars is a global consumer goods company focused on design-driven brands for indoor and outdoor living. Its portfolio includes products for gardening, cooking and creating, led by the Fiskars brand and complemented by other lifestyle brands such as Iittala, Royal Copenhagen, Wedgwood, Gerber and Georg Jensen. The company sells in more than 100 countries."
   },
   {
+    "name": "Five9",
+    "ticker": "FIVN",
+    "exchange": "Listed",
+    "url": "reports/five9-equity-report.html",
+    "description": "Five9 provides a cloud-based Intelligent Customer Experience platform for enterprise contact centers. Its applications support customer service, sales, and marketing, with AI tools for virtual agents, agent assistance, workflow automation, call summaries, insights, workforce engagement, and revenue execution. The platform manages interactions across voice, chat, email, web, social media, and mobile channels."
+  },
+  {
     "name": "Fjord1",
     "ticker": "FJORD.OL",
     "exchange": "Oslo",
@@ -3436,6 +4535,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/flexqube-equity-report.html",
     "description": "FlexQube AB develops and sells modular material handling solutions for industrial customers, including cart systems, AGVs and AMRs. Its patented concept uses standardized components to create customizable, reconfigurable products for logistics in manufacturing, warehousing and distribution. The company also provides robotic and mechanical trolley-based solutions and related design expertise."
+  },
+  {
+    "name": "Floor & Decor Holdings",
+    "ticker": "FND",
+    "exchange": "Listed",
+    "url": "reports/floor-and-decor-holdings-equity-report.html",
+    "description": "Floor & Decor is a specialty retailer of hard surface flooring and related accessories, and a seller of commercial surfaces. Its stores and website offer laminate and vinyl, tile, wood, natural stone, installation materials, tools, decorative accessories, and adjacent products. Customers include professional installers, commercial businesses, homeowners undertaking projects themselves, and homeowners buying products for professional installation."
   },
   {
     "name": "Flowscape Technology",
@@ -3473,6 +4579,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "FluoGuide A/S is a clinical-stage biotechnology company developing FG001, a fluorescent guidance product designed to highlight cancer during surgery and improve surgical precision. Its programs focus on oncology, with lead indications in glioblastoma and head and neck cancer. The company is also advancing clinical development and working with MedTech partners to support commercialization."
   },
   {
+    "name": "Fluor",
+    "ticker": "FLR",
+    "exchange": "Listed",
+    "url": "reports/fluor-equity-report.html",
+    "description": "Fluor provides engineering, procurement and construction (EPC) and project management services through subsidiaries and joint ventures. Its professional and technical solutions serve clients in life sciences, advanced technologies and manufacturing, data centers, mining and metals, power, infrastructure, chemicals, liquefied natural gas, and oil and gas production and fuels. Fluor also provides services to the U.S. federal government and other governments."
+  },
+  {
     "name": "FM Mattsson Mora Group",
     "ticker": "FMM-B.ST",
     "exchange": "Stockholm",
@@ -3492,6 +4605,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/fondia-equity-report.html",
     "description": "Fondia Oyj is a Nordic business law firm that provides companies with a full range of legal services, including day-to-day operational support, transactional advice, dispute resolution, corporate law, and change projects. It also offers its Legal Department as a Service (LDaaS) model and other recurring legal services through teams operating in Finland, Sweden, Estonia and Lithuania."
+  },
+  {
+    "name": "FormFactor",
+    "ticker": "FORM",
+    "exchange": "Listed",
+    "url": "reports/formfactor-equity-report.html",
+    "description": "FormFactor designs, manufactures, and sells semiconductor test and measurement products, including probe cards, analytical probes, probe stations, thermal systems, and cryogenic systems, along with related services. Its products provide electrical and optical information about semiconductor and electro-optical devices from research and development through production. Customers include semiconductor companies and scientific institutions."
   },
   {
     "name": "Formpipe Software",
@@ -3536,6 +4656,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Fortum is a Finnish energy company that produces electricity and heat, operates hydropower, nuclear and combined heat and power plants, and sells electricity to households and businesses in the Nordic countries and Poland. It also provides district heating and selected circular-economy services, including waste recovery and recycling-related solutions."
   },
   {
+    "name": "Forward Air",
+    "ticker": "FWRD",
+    "exchange": "Listed",
+    "url": "reports/forward-air-equity-report.html",
+    "description": "Forward Air provides asset-light transportation and logistics services across North and South America, Europe, and Asia. Its offerings include expedited less-than-truckload transportation, pickup and delivery, truckload, air and ocean freight forwarding, fulfillment, customs brokerage, warehousing, distribution, and intermodal container drayage. Customers include businesses shipping time-sensitive freight, including companies in technology, retail, media, life sciences, and e-commerce."
+  },
+  {
+    "name": "Fox Factory Holding",
+    "ticker": "FOXF",
+    "exchange": "Listed",
+    "url": "reports/fox-factory-holding-equity-report.html",
+    "description": "Fox Factory designs, engineers, manufactures and markets performance products and systems for bicycles, powered vehicles and specialty applications, as well as premium baseball and softball gear. Its products serve original equipment manufacturers and consumers. The company sells through vehicle and bicycle manufacturers, a global network of dealers and distributors, and direct-to-consumer channels."
+  },
+  {
     "name": "Fractal Gaming Group",
     "ticker": "FRACTL.ST",
     "exchange": "Stockholm",
@@ -3557,6 +4691,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Fram Skandinavien AB is a Sweden-based investment and technology group focused on digital businesses in Southeast Asia and the Nordic region. Its activities include venture building, minority investments in technology companies, and IT development services through its standing teams. The group also maintains a listed structure in Sweden while managing its portfolio and operational support from Vietnam."
   },
   {
+    "name": "Franklin Electric Co.",
+    "ticker": "FELE",
+    "exchange": "Listed",
+    "url": "reports/franklin-electric-co-equity-report.html",
+    "description": "Franklin Electric designs, manufactures, and distributes water and fuel pumping systems, including submersible motors, pumps, drives, electronic controls, monitoring devices, water treatment systems, and related equipment. Its water products serve residential, agricultural, municipal, and industrial uses, moving groundwater, transferred water, and wastewater. Fueling systems serve gas stations. Customers include distributors, original equipment manufacturers, oil and utility companies, and water well contractors."
+  },
+  {
     "name": "Freemelt Holding",
     "ticker": "FREEM.ST",
     "exchange": "Stockholm",
@@ -3571,11 +4712,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Freja eID Group develops digital identification products and services. Its main offering is the Freja eID mobile electronic identity platform, used for authentication, identity verification and electronic signatures for consumers, businesses and public-sector organisations. The group also provides secure fulfilment services supporting the issuance and management of digital identities."
   },
   {
+    "name": "Freshpet",
+    "ticker": "FRPT",
+    "exchange": "Listed",
+    "url": "reports/freshpet-equity-report.html",
+    "description": "Freshpet makes fresh pet food for dogs and cats, offering products intended for pets’ main meals. Its products are sold through grocery, mass, international, digital, pet specialty, and club retail channels, including dedicated Freshpet Fridges in retail chains. The company serves consumers seeking fresh food for their pets and retail customers in the pet food category."
+  },
+  {
     "name": "FRISQ Holding",
     "ticker": "NOSA.ST",
     "exchange": "Stockholm",
     "url": "reports/frisq-holding-equity-report.html",
     "description": "Nosa Plugs AB, formerly FRISQ Holding AB, is a Swedish medical technology company focused on intranasal breathing products. Its portfolio includes odor-control plugs, nasal filters for airborne allergens, microbial protection products that reduce exposure to viruses and bacteria, smell training kits, and lubricating nasal spray. The company sells through professional and consumer channels in multiple markets."
+  },
+  {
+    "name": "Frontdoor",
+    "ticker": "FTDR",
+    "exchange": "Listed",
+    "url": "reports/frontdoor-equity-report.html",
+    "description": "Frontdoor provides home warranties and new home builder warranty products through the American Home Shield, HSA, OneGuard, Landmark, and 2-10 HBW brands. Home plans cover repair or replacement of major systems and appliances, with optional coverage for pools, spas, and pumps. The company arranges service through independent contractors and offers non-warranty services including HVAC upgrades, smart water shut-off installation, home maintenance, and virtual diagnosis."
+  },
+  {
+    "name": "Frontier Group Holdings",
+    "ticker": "ULCC",
+    "exchange": "Listed",
+    "url": "reports/frontier-group-holdings-equity-report.html",
+    "description": "Frontier Group Holdings is the parent company of Frontier Airlines, an ultra-low-cost carrier offering flights across the United States and to select near-international destinations in the Americas. Its customer offering combines low fares with optional and bundled services, customer support, digital booking through its website and mobile app, cabin seating, and a frequent flyer program. The airline serves travelers."
   },
   {
     "name": "Frøy",
@@ -3597,6 +4759,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/ftai-aviation-equity-report.html",
     "description": "FTAI Aviation repairs, rebuilds, develops and manufactures aircraft engines and aftermarket components, primarily for CFM56 and V2500 engines. It sells or leases engines to airlines and asset owners, including through its maintenance, repair and exchange model. The company also owns and manages aircraft and engines through its aviation leasing business and manages third-party capital invested in aviation assets."
+  },
+  {
+    "name": "FTI Consulting",
+    "ticker": "FCN",
+    "exchange": "Listed",
+    "url": "reports/fti-consulting-equity-report.html",
+    "description": "FTI Consulting provides expert advice and professional services to organizations facing complex business challenges, crises and transformation. Its work spans corporate finance, forensic and litigation consulting, economic consulting, technology and strategic communications. Services include transaction and restructuring advice, analytics, investigations, dispute support, risk management, reputation and financial communications. Clients include corporations, law firms, private equity firms, banks and governments."
+  },
+  {
+    "name": "Fulgent Genetics",
+    "ticker": "FLGT",
+    "exchange": "Listed",
+    "url": "reports/fulgent-genetics-equity-report.html",
+    "description": "Fulgent Genetics provides laboratory testing and therapeutic development services. Its laboratory business offers anatomic pathology, genetic and precision diagnostic testing, including oncology, rare disease, hereditary cancer and reproductive health services. It also serves pharmaceutical and biotechnology companies with testing, licensing and sponsored programs, and offers consumers testing through a telemedicine platform. Its therapeutic business develops cancer drug candidates using nanoencapsulation technology."
   },
   {
     "name": "Fuud",
@@ -3662,6 +4838,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Gasporox AB develops and sells laser-based inspection systems for non-destructive gas analysis and leak detection. Its products are used to measure headspace gases, verify container closure integrity, and detect microscopic leaks in packaging for pharmaceutical, food, and beverage applications. The company also offers sensors, instruments, laboratory services, calibration, training, and support."
   },
   {
+    "name": "Gates Industrial Corporation",
+    "ticker": "GTES",
+    "exchange": "Listed",
+    "url": "reports/gates-industrial-corporation-equity-report.html",
+    "description": "Gates Industrial manufactures power transmission and fluid power products for aftermarket channels and original equipment manufacturers. Its portfolio includes elastomer drive belts and related components, as well as hoses, tubing and fittings for hydraulic fluid and other fluid transfer applications. Customers include distributors, equipment manufacturers, installers and end users across automotive, industrial, energy, resources and mobility markets."
+  },
+  {
     "name": "GC Rieber Shipping",
     "ticker": "RISH.OL",
     "exchange": "Oslo",
@@ -3674,6 +4857,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/gen-digital-equity-report.html",
     "description": "Gen Digital provides consumer technology products for digital security, online privacy, identity protection and personal finance. Its brands include Norton, Avast, LifeLock, MoneyLion and Engine. The company offers software and services that help individuals protect devices and personal information, monitor identity-related risks and manage aspects of their financial lives."
+  },
+  {
+    "name": "Genco Shipping & Trading Limited",
+    "ticker": "GNK",
+    "exchange": "Listed",
+    "url": "reports/genco-shipping-and-trading-limited-equity-report.html",
+    "description": "Genco Shipping & Trading owns drybulk vessels that transport commodities on international shipping routes. Its cargoes include iron ore, coal, grain, bauxite, steel products and other drybulk goods. The company arranges vessel employment through spot market voyages, time charters and contracts of affreightment, and manages commercial and strategic fleet activities. Its technical vessel management is provided by a joint venture."
+  },
+  {
+    "name": "GeneDx Holdings",
+    "ticker": "WGS",
+    "exchange": "Listed",
+    "url": "reports/genedx-holdings-equity-report.html",
+    "description": "GeneDx provides clinical genetic testing and genomic interpretation, with a focus on rare and ultra-rare disorders. Its ExomeDx and GenomeDx tests support clinicians seeking diagnoses for patients, and its GeneDx Infinity dataset supports genomic discovery for biopharmaceutical companies. The company combines clinical expertise and technology to interpret genomic data and inform clinical decision-making."
   },
   {
     "name": "General Dynamics",
@@ -3711,11 +4908,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Genovis AB develops and sells enzyme-based tools and related services for the biopharmaceutical and research industries. Its SmartEnzymes portfolio and antibody-focused offerings support protein characterization, glycan analysis, bioconjugation, and quality control in drug development, manufacturing, and diagnostics. The company serves scientists and pharmaceutical customers through product sales and specialized services."
   },
   {
+    "name": "Genpact Limited",
+    "ticker": "G",
+    "exchange": "Listed",
+    "url": "reports/genpact-limited-equity-report.html",
+    "description": "Genpact provides technology and business services to enterprises, drawing on process expertise, industry knowledge, operational data, and advanced technologies. Its offerings include data and AI, digital technology, advisory services, agentic solutions, decision support, technology services, and digital operations. The company helps clients redesign processes, develop data and AI capabilities, and manage operations. It serves companies across industries and countries."
+  },
+  {
+    "name": "Gentex",
+    "ticker": "GNTX",
+    "exchange": "Listed",
+    "url": "reports/gentex-equity-report.html",
+    "description": "Gentex designs, manufactures and supplies products for automotive, aviation, fire protection, consumer electronics and medical markets. Its principal business is automatic-dimming interior and exterior automotive rearview mirrors and related vehicle electronics. Other offerings include dimmable aircraft windows, smoke alarms, commercial fire signaling devices, premium audio products and consumer electronics. It supplies automotive products to vehicle producers across major global manufacturing regions."
+  },
+  {
     "name": "Gentian Diagnostics",
     "ticker": "GENT.OL",
     "exchange": "Oslo",
     "url": "reports/gentian-diagnostics-equity-report.html",
     "description": "Gentian Diagnostics ASA develops and manufactures in vitro diagnostic reagents and open-channel turbidimetric assays for clinical chemistry analyzers. Its portfolio covers kidney disease, cardiac disease, inflammation, infection and veterinary medicine. The company sells through OEM partners, distributors and direct channels in global human and animal diagnostics markets, with manufacturing and offices in Norway and abroad."
+  },
+  {
+    "name": "Genuine Parts Company",
+    "ticker": "GPC",
+    "exchange": "Listed",
+    "url": "reports/genuine-parts-company-equity-report.html",
+    "description": "Genuine Parts Company distributes automotive and industrial replacement parts and provides related value-added solutions. Its automotive businesses serve the aftermarket through parts and auto care networks, while its industrial business supplies replacement parts to industrial customers. The company also offers customer service, supply chain and distribution capabilities, and technology solutions. It operates primarily in North America, Europe, and Australasia through its subsidiaries and locations."
   },
   {
     "name": "German High Street Properties",
@@ -3851,11 +5069,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "GPX Medical, now Neola Medical, develops NEOLA, a medical device for continuous lung monitoring of preterm infants in neonatal intensive care. The company’s business is built around improving respiratory monitoring through its patented technology, with revenue potential tied to product sales, clinical adoption, and related commercialization efforts in neonatal care markets."
   },
   {
+    "name": "Graham",
+    "ticker": "GHM",
+    "exchange": "Listed",
+    "url": "reports/graham-equity-report.html",
+    "description": "Graham Corporation designs and manufactures custom-engineered fluid, power, heat transfer, vacuum, and advanced mixing equipment and systems. Its products serve defense, energy and process, and space applications, including propulsion, power generation, thermal management, chemical processing, and life support. Offerings include ejectors, condensers, pumps, heat exchangers, turbines, compressors, mixers, accessories, and related services for industrial customers and original equipment manufacturers."
+  },
+  {
     "name": "Gram Car Carriers",
     "ticker": "GCC.OL",
     "exchange": "Oslo",
     "url": "reports/gram-car-carriers-equity-report.html",
     "description": "Gram Car Carriers ASA is a shipping company that provides seaborne vehicle transportation services through a fleet of pure car and truck carriers. It operates distribution, midsize and Panamax vessels, serving global and regional car manufacturers and other operators with commercial management, chartering and logistics solutions focused on efficient, safe cargo transport."
+  },
+  {
+    "name": "Grand Canyon Education",
+    "ticker": "LOPE",
+    "exchange": "Listed",
+    "url": "reports/grand-canyon-education-equity-report.html",
+    "description": "Grand Canyon Education provides education services and operational support to colleges and universities across the United States. Its services can cover technology, online course delivery, academic support, admissions, financial aid, accounting and technical assistance. It also develops healthcare programs with university and healthcare network partners, using off-campus classrooms and laboratories to educate students for healthcare careers."
   },
   {
     "name": "Gränges",
@@ -3865,11 +5097,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Gränges AB is a global supplier of rolled aluminium products and recycling services for selected niches. The company serves customers in thermal management, including automotive and HVAC applications, as well as specialty packaging and other industrial uses. It also provides technical support, production, sales, and customer-driven product development across its markets."
   },
   {
+    "name": "Granite Construction Incorporated",
+    "ticker": "GVA",
+    "exchange": "Listed",
+    "url": "reports/granite-construction-incorporated-equity-report.html",
+    "description": "Granite Construction delivers infrastructure solutions for public and private clients, primarily in the United States. Its construction services cover roads, bridges, transit, airports, water systems, tunnels, energy projects, mining and site development. The company also produces aggregates, asphalt and recycled construction materials for its projects and outside buyers. Customers include public agencies, utilities, developers, industrial site owners, contractors and retailers."
+  },
+  {
     "name": "Greater Than",
     "ticker": "GREAT.ST",
     "exchange": "Stockholm",
     "url": "reports/greater-than-equity-report.html",
     "description": "Greater Than AB develops predictive AI and data analytics for the mobility sector. Its software converts GPS and driving data into insights on crash probability and climate impact, helping customers assess risk, improve safety, and reduce emissions. The company serves organizations across transport, insurance, and related mobility applications."
+  },
+  {
+    "name": "Green Brick Partners",
+    "ticker": "GRBK",
+    "exchange": "Listed",
+    "url": "reports/green-brick-partners-equity-report.html",
+    "description": "Green Brick Partners acquires and develops land and builds homes through seven builder brands. Its operations span Dallas-Fort Worth, Austin, Houston, Atlanta and Florida’s Treasure Coast. The company handles land acquisition, entitlements, home design and construction, and also provides title, mortgage and insurance agency services. It manages marketing and sales and develops master planned communities for homebuyers."
   },
   {
     "name": "Green Hydrogen Systems",
@@ -3898,6 +5144,27 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/grieg-seafood-equity-report.html",
     "description": "Grieg Seafood ASA farms Atlantic salmon and sells fresh seafood products through operations in Norway and Canada. The company’s business is built around salmon farming, smolt production, and related aquaculture activities, with an emphasis on fish welfare, environmental performance, and operational efficiency. It is headquartered in Bergen, Norway."
+  },
+  {
+    "name": "Grindr",
+    "ticker": "GRND",
+    "exchange": "Listed",
+    "url": "reports/grindr-equity-report.html",
+    "description": "Grindr operates a global social networking platform primarily for gay, bisexual, and sexually explorative adults. Users can create profiles, share photos and media, search and connect with others, chat, discover content, and use location-based features. The platform serves adults in the LGBTQ community seeking dating, relationships, friendships, professional networking, travel information, or local discovery, and offers subscriptions for premium features."
+  },
+  {
+    "name": "Grocery Outlet Holding",
+    "ticker": "GO",
+    "exchange": "Listed",
+    "url": "reports/grocery-outlet-holding-equity-report.html",
+    "description": "Grocery Outlet operates a network of primarily independently run stores selling name-brand consumables, fresh products, and everyday staples to bargain-minded shoppers. Its stores offer changing assortments of discounted merchandise, including natural, organic, specialty, and health-oriented items, as well as private-label products. Independent operators manage store operations and provide localized product selections and customer service."
+  },
+  {
+    "name": "Groupon",
+    "ticker": "GRPN",
+    "exchange": "Listed",
+    "url": "reports/groupon-equity-report.html",
+    "description": "Groupon operates a two-sided online marketplace connecting consumers with merchants through mobile applications and websites. Its Local category features services and experiences, Goods offers products sold by third-party merchants, and Travel presents hotels, airfare and package deals. The company earns commissions on merchant transactions and retailer purchases made using digital coupons accessed through its platforms."
   },
   {
     "name": "Gruvaktiebolaget Viscaria",
@@ -3933,6 +5200,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/guideline-geo-equity-report.html",
     "description": "Guideline Geo develops and sells geophysical solutions for mapping the subsurface. Its main offerings include ground penetrating radar, resistivity, induced polarization, electromagnetics and seismic systems, along with related software, services and support. The company serves applications in groundwater detection, environmental and geological risk assessment, infrastructure site investigations and mineral exploration."
+  },
+  {
+    "name": "Gulfport Energy",
+    "ticker": "GPOR",
+    "exchange": "Listed",
+    "url": "reports/gulfport-energy-equity-report.html",
+    "description": "Gulfport Energy is an independent exploration and production company focused on natural gas assets in the Appalachia and Anadarko basins. Its principal operations target the Utica and Marcellus formations in eastern Ohio and the SCOOP Woodford and Springer formations in central Oklahoma. The company develops these oil and gas resources through drilling and completion activities and sells production from its operating areas."
+  },
+  {
+    "name": "GXO Logistics",
+    "ticker": "GXO",
+    "exchange": "Listed",
+    "url": "reports/gxo-logistics-equity-report.html",
+    "description": "GXO provides contract logistics services, including warehousing and distribution, order fulfillment, e-commerce logistics, reverse logistics and other supply chain services. It designs and operates customized warehouse solutions for large corporations that outsource logistics activities. Its services support the movement of goods from warehouse receipt through fulfillment, distribution and returns, using technology, automation and operational processes to manage labor and inventory."
   },
   {
     "name": "Gyldendal",
@@ -3977,11 +5258,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Hacksaw AB is a B2B technology platform and game development company focused on the online gaming industry. It develops and distributes digital slots, scratch cards and instant win games through its modular remote gaming server platform. The company serves private and state-owned iGaming operators across licensed markets and continues to expand its distribution network."
   },
   {
+    "name": "Haemonetics",
+    "ticker": "HAE",
+    "exchange": "Listed",
+    "url": "reports/haemonetics-equity-report.html",
+    "description": "Haemonetics is a medical technology company offering hospital technologies, plasma collection systems, and products for blood centers. Its products include automated plasma collection devices, donor management software, blood collection and processing devices, and hospital technologies for vascular closure, hemostasis, cell salvage and transfusion management. Customers include plasma collection centers, blood centers and hospitals."
+  },
+  {
     "name": "HAKI Safety",
     "ticker": "HAKI-B.ST",
     "exchange": "Stockholm",
     "url": "reports/haki-safety-equity-report.html",
     "description": "HAKI Safety AB (publ) is an international industrial group that develops, manufactures and sells safety products and solutions for temporary and challenging workplaces. Its offering includes work zone safety equipment, system scaffolding, and digital surveying tools, serving customers in infrastructure, energy, industry, aviation, rail, construction, and civil engineering, mainly in Europe and North America."
+  },
+  {
+    "name": "Hallador Energy Company",
+    "ticker": "HNRG",
+    "exchange": "Listed",
+    "url": "reports/hallador-energy-company-equity-report.html",
+    "description": "Hallador Energy is an independent power producer and fuel company with electric and coal operations. Through Hallador Power, it sells accredited capacity and wholesale electricity to utilities and other energy market participants, including through power purchase agreements and market transactions. Its Sunrise subsidiary mines bituminous coal in Indiana and supplies fuel to power plants in the Midwest and Southeast."
+  },
+  {
+    "name": "Halliburton Company",
+    "ticker": "HAL",
+    "exchange": "Listed",
+    "url": "reports/halliburton-company-equity-report.html",
+    "description": "Halliburton provides products and services to oil and natural gas producers throughout the reservoir lifecycle, from locating hydrocarbons and managing geological data to drilling, well construction, completion, and production optimization. Its Completion and Production segment offers cementing, stimulation, specialty chemicals, intervention, pressure control, artificial lift, and completion products and services. Its Drilling and Evaluation segment supports drilling and formation evaluation activities."
+  },
+  {
+    "name": "Halozyme Therapeutics",
+    "ticker": "HALO",
+    "exchange": "Listed",
+    "url": "reports/halozyme-therapeutics-equity-report.html",
+    "description": "Halozyme Therapeutics develops drug delivery technologies and drug-device combination products. Its ENHANZE technology uses a proprietary enzyme to facilitate subcutaneous delivery of injected drugs and fluids. The company licenses technologies to biopharmaceutical partners for products combining them with partner compounds, and develops products using Hypercon and Surf Bio technologies. Its customers and collaborators include biopharmaceutical companies."
   },
   {
     "name": "Hansa Biopharma",
@@ -4012,6 +5321,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Harmonychain AS, now operating as Lokotech Group AS, is a Norwegian technology holding company focused on blockchain mining infrastructure. Through its subsidiaries, it develops Scrypt ASIC hardware, mining pool software, and data center operations, while also providing related blockchain services and exploring adjacent computing workloads such as AI and edge processing."
   },
   {
+    "name": "Harrow Health",
+    "ticker": "HROW",
+    "exchange": "Listed",
+    "url": "reports/harrow-health-equity-report.html",
+    "description": "Harrow develops and supplies ophthalmic medications for eye care professionals and patients in the United States and Canada. Its portfolio includes branded prescription treatments for conditions such as dry eye, cataracts, glaucoma, allergic conjunctivitis, and retinal disease, as well as nonprescription lubricant eye drops. The company markets and sells products including eye drops, gels, suspensions, and injectable medicines."
+  },
+  {
     "name": "Harvia",
     "ticker": "HARVIA.HE",
     "exchange": "Helsinki",
@@ -4026,6 +5342,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Havila Shipping ASA is a Norwegian shipowner and offshore service company based in Fosnavåg. It provides quality-assured supply services to the international offshore industry through vessels used in subsea construction, platform supply, rescue and recovery, and related marine operations. The company also has management responsibilities for additional ships."
   },
   {
+    "name": "Hawaiian Electric Industries",
+    "ticker": "HE",
+    "exchange": "Helsinki",
+    "url": "reports/hawaiian-electric-industries-equity-report.html",
+    "description": "Hawaiian Electric Industries is a Hawai‘i-based holding company centered on Hawaiian Electric, a regulated utility serving O‘ahu, Maui, Lāna‘i, Moloka‘i, and Hawai‘i Island. The utility generates or purchases electricity and operates transmission and distribution systems for households and businesses. HEI also retains a minority stake in American Savings Bank after selling most of its ownership and is completing its strategic exit from Pacific Current."
+  },
+  {
+    "name": "Hawkins",
+    "ticker": "HWKN",
+    "exchange": "Listed",
+    "url": "reports/hawkins-equity-report.html",
+    "description": "Hawkins formulates, manufactures, distributes and blends products for water treatment, food and health sciences, and industrial solutions customers. Its water treatment business supplies chemicals, filtration systems, equipment and services for potable, wastewater, process and agricultural water. It also provides ingredients and processing solutions to food, nutrition and pharmaceutical manufacturers, and distributes industrial chemicals and offers customer-specific blending and repackaging."
+  },
+  {
     "name": "Haypp Group",
     "ticker": "HAYPP.ST",
     "exchange": "Stockholm",
@@ -4033,11 +5363,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Haypp Group AB (publ) is an e-commerce retailer of reduced-risk nicotine products, primarily nicotine pouches and related smoke-free alternatives. It operates multiple online brands in Europe and the United States, combining digital sales, distribution, and regulatory compliance capabilities. The company’s business is driven by consumer demand for online nicotine purchases and category growth."
   },
   {
+    "name": "Hayward Holdings",
+    "ticker": "HAYW",
+    "exchange": "Listed",
+    "url": "reports/hayward-holdings-equity-report.html",
+    "description": "Hayward designs and manufactures pool equipment, outdoor living products, and industrial flow control products for residential and commercial markets. Its pool portfolio includes pumps, filters, cleaners, heaters, lighting, water features, sanitizers, safety equipment, and automated cleaning systems, alongside automation products with connected capabilities. The company sells through specialized pool distributors, retailers, builders, online resellers, and other channel partners."
+  },
+  {
     "name": "HCA Healthcare",
     "ticker": "HCA",
     "exchange": "Listed",
     "url": "reports/hca-healthcare-equity-report.html",
     "description": "HCA Healthcare operates general acute care, behavioral and rehabilitation hospitals, along with ambulatory surgery centers and endoscopy centers. Its facilities provide medical and surgical specialties, diagnostic and emergency care, mental health services, rehabilitation, and outpatient and ancillary services. The company serves patients and communities through hospitals, physician practices, urgent care facilities, clinics, diagnostic centers and home health and hospice services."
+  },
+  {
+    "name": "Heartland Express",
+    "ticker": "HTLD",
+    "exchange": "Listed",
+    "url": "reports/heartland-express-equity-report.html",
+    "description": "Heartland Express and its subsidiaries provide short-, medium- and long-haul truckload transportation. Their services primarily include nationwide, asset-based dry van freight for major shippers across the United States, along with cross-border freight and other transportation services through third-party partnerships in Mexico. They also offer temperature-controlled truckload transportation and Mexico logistics services under several operating brands."
   },
   {
     "name": "Heba Fastighets",
@@ -4089,11 +5433,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Hemnet Group AB (publ) operates Sweden’s leading property portal, bringing together home buyers, sellers and real estate agents on its digital platform. The company’s business is built around property listings and related products and services that help users search, market and transact homes, while generating revenue from the housing market’s activity."
   },
   {
+    "name": "Henry Schein",
+    "ticker": "HSIC",
+    "exchange": "Listed",
+    "url": "reports/henry-schein-equity-report.html",
+    "description": "Henry Schein distributes health care products and services primarily to dental and medical practitioners and alternate care sites. Its offerings include branded and corporate-brand merchandise, equipment, technical services, financial and consulting services, continuing education, and practice management software and e-services. The company also manufactures and sells dental implants, biomaterials, endodontic, orthodontic and orthopedic products for dental practices, laboratories, physician practices and other health care providers."
+  },
+  {
     "name": "Herantis Pharma",
     "ticker": "HRTIS.HE",
     "exchange": "Helsinki",
     "url": "reports/herantis-pharma-equity-report.html",
     "description": "Herantis Pharma Oyj is a clinical-stage biotechnology company focused on developing disease-modifying therapies for neurodegenerative diseases, particularly Parkinson’s disease. Its lead program, HER-096, is a CDNF-derived peptide being advanced through clinical development. The company aims to build value through product development and strategic partnerships for later-stage clinical testing and commercialization."
+  },
+  {
+    "name": "Herbalife Nutrition",
+    "ticker": "HLF",
+    "exchange": "Listed",
+    "url": "reports/herbalife-nutrition-equity-report.html",
+    "description": "Herbalife is a health and wellness company that sells nutrition, weight management, targeted nutrition, energy, sports and fitness, and outer nutrition products through independent members. Its products include meal replacement shakes, drink mixes, supplements, functional beverages, skincare, body care, and hair care. Members buy products for personal use or resell them, and provide customers with coaching, support, and education."
+  },
+  {
+    "name": "Hertz Global Holdings",
+    "ticker": "HTZ",
+    "exchange": "Listed",
+    "url": "reports/hertz-global-holdings-equity-report.html",
+    "description": "Hertz Global Holdings rents vehicles through its Hertz, Dollar and Thrifty brands, serving customers through company-operated and franchised locations across the Americas and international markets. Its rental services span multiple price points and service levels. The company also sells used vehicles through Hertz Car Sales, both online and at locations across the United States."
   },
   {
     "name": "Hexagon",
@@ -4122,6 +5487,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/hexatronic-group-equity-report.html",
     "description": "Hexatronic Group develops and supplies fiber optic systems and related components for communication networks. Its businesses span fiber solutions, harsh-environment products, data center offerings, wireless infrastructure, and training services. The company also provides installation support, certification, and other services that help customers build, connect, and maintain network infrastructure across different applications and markets."
+  },
+  {
+    "name": "Hexcel",
+    "ticker": "HXL",
+    "exchange": "Listed",
+    "url": "reports/hexcel-equity-report.html",
+    "description": "Hexcel manufactures advanced composite materials and engineered products for aerospace, defense, space, transportation, recreational and other industrial applications. Its products include carbon fibers, fabrics, specialty reinforcements, prepregs, resins, structural adhesives, honeycomb, pultruded profiles and composite structures. Customers use these materials and components in aircraft, engines, satellites, vehicles, sporting goods, interiors and industrial equipment."
   },
   {
     "name": "Hexicon",
@@ -4159,6 +5531,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "High Coast Distillery AB (publ) produces and sells single malt whisky under the High Coast Whisky brand. The company operates a distillery and visitor center in Bjärtrå, Sweden, and earns revenue from whisky sales, cask sales, and related brand and visitor activities. Its products are distributed in Sweden and selected export markets."
   },
   {
+    "name": "Hillman Solutions",
+    "ticker": "HLMN",
+    "exchange": "Listed",
+    "url": "reports/hillman-solutions-equity-report.html",
+    "description": "Hillman Solutions supplies hardware-related products and merchandising services to retail markets, primarily in North America. Its products include fasteners, threaded rod, metal shapes, keys and key duplication systems, builder’s hardware, protective equipment, rope, chain, and identification items. Customers include hardware stores, home centers, mass merchants, pet supply stores, grocery stores, drug stores, and other retail outlets. Field teams support inventory replenishment and product displays."
+  },
+  {
     "name": "Hilton Worldwide Holdings",
     "ticker": "HLT",
     "exchange": "Listed",
@@ -4178,6 +5557,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/hms-networks-equity-report.html",
     "description": "HMS Networks develops industrial communication products that help equipment connect with software and control systems. Its portfolio includes network gateways and protocol converters, embedded communication interfaces, remote connectivity products, industrial wireless solutions, network diagnostics, cybersecurity products, and HMI and control hardware sold under brands such as Anybus, Ewon, Intesis, Ixxat, Red Lion and N-Tron."
+  },
+  {
+    "name": "HNI",
+    "ticker": "HNI",
+    "exchange": "Listed",
+    "url": "reports/hni-equity-report.html",
+    "description": "HNI manufactures workplace furnishings and residential building products. Workplace furnishings include furniture systems, seating, tables, storage, architectural and hospitality products, sold through dealers, office product distributors, and directly to businesses and governments. Residential products include gas, wood, electric, and pellet fireplaces, stoves, inserts, fire tables, and accessories, distributed through dealers, distributors, and company-owned outlets."
   },
   {
     "name": "Höegh Autoliners",
@@ -4334,6 +5720,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Hypefactors A/S is a Copenhagen-based software company that provides media intelligence and reputation management tools. Its platform monitors global news and other media channels in real time, applies automated sentiment and reputation scoring, and generates reports, insights, and monetary valuations of media coverage. It serves communications, PR, and reputation-focused teams."
   },
   {
+    "name": "i-80 Gold",
+    "ticker": "IAUX",
+    "exchange": "Listed",
+    "url": "reports/i-80-gold-equity-report.html",
+    "description": "i-80 Gold is a Nevada-focused gold mining and development company. Its portfolio includes producing underground operations and projects for future underground and open-pit mining. The company is developing a hub-and-spoke approach, with the Lone Tree plant being refurbished as a central processing facility for underground ore. It sells gold and silver-bearing material to third-party processors while advancing its Nevada mine portfolio."
+  },
+  {
     "name": "I-Tech",
     "ticker": "ITECH.ST",
     "exchange": "Stockholm",
@@ -4362,11 +5755,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Icelandic Salmon AS is a fully integrated salmon farming group in Iceland, operating through its subsidiary Arnarlax. The company produces farmed salmon across the value chain, including hatchery and smolt production, sea farming, harvesting, and sales. Its operations are centered in the Westfjords, with facilities and offices supporting production and customer delivery."
   },
   {
+    "name": "ICF International",
+    "ticker": "ICFI",
+    "exchange": "Listed",
+    "url": "reports/icf-international-equity-report.html",
+    "description": "ICF International provides professional services and technology-based solutions to government and commercial clients. Its work includes management, technology and policy consulting, implementation, analytics, digital services and communications. Clients include U.S. federal, state and local agencies, international governments, and commercial organizations. The company supports work in energy, environment, infrastructure, disaster recovery, health, social programs, security and other markets."
+  },
+  {
     "name": "Iconovo",
     "ticker": "ICO.ST",
     "exchange": "Stockholm",
     "url": "reports/iconovo-equity-report.html",
     "description": "Iconovo AB develops inhaled medicines and dry powder inhaler platforms for pharmaceutical partners. Its business combines patented device technologies with formulation development, supporting projects from early development through preclinical studies and later partnering. The company also has a Nordic sales focus through Iconovo Pharma for selected generic and proprietary inhalation products."
+  },
+  {
+    "name": "IDEAYA Biosciences",
+    "ticker": "IDYA",
+    "exchange": "Listed",
+    "url": "reports/ideaya-biosciences-equity-report.html",
+    "description": "IDEAYA Biosciences discovers and develops precision medicines for genetically defined cancers. Its darovasertib and crizotinib combination has an NDA submitted for metastatic uveal melanoma, while the company also studies darovasertib in primary disease. IDEAYA is advancing other oncology programs, including IDE849, a DLL3-targeting TOP1 antibody-drug conjugate in Phase 1/2 development for small-cell lung cancer and neuroendocrine carcinomas."
   },
   {
     "name": "IDEX Biometrics",
@@ -4404,6 +5811,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Image Systems AB develops and sells software and systems for non-contact measurement and high-resolution image processing. Its operations are organized in two business areas: Motion Analysis, which provides software for high-speed motion analysis used mainly in defense, automotive and university applications, and RemaSawco, which supplies systems for optimizing sawmill production and related services."
   },
   {
+    "name": "IMAX",
+    "ticker": "IMAX",
+    "exchange": "Listed",
+    "url": "reports/imax-equity-report.html",
+    "description": "IMAX operates an entertainment technology and content platform. It remasters films and other content into the IMAX format for distribution across its network, and sells or leases theater systems that combine proprietary projection, sound, screens, and auditorium design. It also provides licensing, maintenance, and warranty services. Customers include commercial theater exhibitors, with some museums, science centers, and destination entertainment sites."
+  },
+  {
     "name": "Immunovia",
     "ticker": "IMMNOV.ST",
     "exchange": "Stockholm",
@@ -4423,6 +5837,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/impero-equity-report.html",
     "description": "Impero A/S is a Danish software-as-a-service company that provides a risk and internal control platform for compliance management. Its cloud-based software helps finance, tax and compliance teams document risks, run internal controls, track remediation and generate reporting. The company serves enterprise customers across multiple entities and markets from offices in Denmark and Germany."
+  },
+  {
+    "name": "Impinj",
+    "ticker": "PI",
+    "exchange": "Listed",
+    "url": "reports/impinj-equity-report.html",
+    "description": "Impinj designs and sells a platform for wireless item-to-cloud connectivity and works with partners to develop item visibility solutions. Its products include endpoint and reader silicon radios, finished readers and gateways, tag production systems, intellectual property, software and cloud services. Customers and partners use these offerings to identify, track and manage items across retail, supply chains, food service, transportation and other industries."
   },
   {
     "name": "Implantica",
@@ -4467,6 +5888,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Infant Bacterial Therapeutics AB is a pharmaceutical company developing and commercializing medicines for diseases affecting premature infants. Its lead program, IBP-9414, is a bacterial strain-based drug candidate designed to prevent necrotizing enterocolitis and support gastrointestinal function. The company also advances additional candidates for gastroschisis, retinopathy of prematurity, and antibiotic-resistant hospital infections."
   },
   {
+    "name": "Ingersoll Rand",
+    "ticker": "IR",
+    "exchange": "Listed",
+    "url": "reports/ingersoll-rand-equity-report.html",
+    "description": "Ingersoll Rand designs, manufactures, markets, and services compressors, pumps, vacuum and blower products, fluid transfer equipment, loading systems, power tools, and lifting equipment. It also supplies related aftermarket parts, consumables, repairs, and support. Its products serve industrial and life science applications, including manufacturing, food and beverage production, clean energy, infrastructure, and water and wastewater treatment."
+  },
+  {
+    "name": "Ingram Micro Holding",
+    "ticker": "INGM",
+    "exchange": "Listed",
+    "url": "reports/ingram-micro-holding-equity-report.html",
+    "description": "Ingram Micro provides technology products, services and solutions to business partners across the global IT ecosystem. It works with vendor partners and serves reseller customers, helping them deliver technology to companies and consumers. Its portfolio includes hardware, software, cloud and digital solutions, professional services, cybersecurity and networking products. The company also provides a business-to-business platform for partners to interact and manage technology offerings."
+  },
+  {
     "name": "ININ Group",
     "ticker": "ININ.OL",
     "exchange": "Oslo",
@@ -4488,6 +5923,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Initiator Pharma A/S is a Danish clinical-stage biotechnology company developing drug candidates that target the central and peripheral nervous system. Its lead program, pudafensine, is being advanced for erectile dysfunction and vulvodynia, with additional preclinical assets in the pipeline. The company has also said it is focusing resources on pudafensine as its main strategic priority."
   },
   {
+    "name": "Innodata",
+    "ticker": "INOD",
+    "exchange": "Listed",
+    "url": "reports/innodata-equity-report.html",
+    "description": "Innodata provides data engineering and AI systems services supporting the development, training, post-training, evaluation and deployment of artificial intelligence systems. Its services include training data development, model alignment and preference optimization, capability and safety evaluation, and AI operationalization. Customers include technology companies, AI research laboratories and enterprises developing or deploying AI systems."
+  },
+  {
     "name": "Innofactor",
     "ticker": "IFA1V",
     "exchange": "Listed",
@@ -4495,11 +5937,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Innofactor is a Nordic software and services company focused on Microsoft-based business solutions, cloud services, and digital workplace tools. It provides consulting, implementation, maintenance, and customized application development, and also offers proprietary products such as Dynasty for document and case management. The company serves private, public, and third-sector customers across the region."
   },
   {
+    "name": "Innoviva",
+    "ticker": "INVA",
+    "exchange": "Listed",
+    "url": "reports/innoviva-equity-report.html",
+    "description": "Innoviva is a biopharmaceutical company with respiratory royalty interests, a critical care and infectious disease business, and other healthcare investments. It receives royalties from GSK on RELVAR/BREO ELLIPTA and ANORO ELLIPTA. Its marketed hospital-focused products include treatments for shock, bacterial pneumonia, complicated intra-abdominal infections, bloodstream and skin infections, and gonorrhea. It also holds a stake in Armata Pharmaceuticals."
+  },
+  {
+    "name": "Insight Enterprises",
+    "ticker": "NSIT",
+    "exchange": "Listed",
+    "url": "reports/insight-enterprises-equity-report.html",
+    "description": "Insight Enterprises is a technology solutions integrator serving clients in North America, Europe, the Middle East, Africa, and Asia-Pacific. It combines hardware, software, and services, including cloud solutions, to address clients’ technology needs. Offerings vary by geography: some markets include hardware and a broader range of services, while others focus largely on software, related services, and cloud solutions."
+  },
+  {
+    "name": "Inspire Medical Systems",
+    "ticker": "INSP",
+    "exchange": "Listed",
+    "url": "reports/inspire-medical-systems-equity-report.html",
+    "description": "Inspire Medical Systems develops and commercializes minimally invasive treatments for obstructive sleep apnea. Its Inspire system monitors breathing and delivers mild electrical stimulation to the hypoglossal nerve to help keep the airway open during sleep. Physicians use the system for eligible patients with moderate to severe sleep apnea in the United States, Europe, and Asia."
+  },
+  {
     "name": "Insplorion",
     "ticker": "INSP.ST",
     "exchange": "Stockholm",
     "url": "reports/insplorion-equity-report.html",
     "description": "Insplorion AB develops and sells sensor solutions based on its NanoPlasmonic Sensing platform. The company operates in hydrogen sensing, where its detectors are designed for fast and selective leak detection, and in research instruments used for real-time measurements in battery research, catalysis, materials science and life science. It is also reviewing its business portfolio, including a possible divestment of the hydrogen sensor unit."
+  },
+  {
+    "name": "Instacart (Maplebear Inc.)",
+    "ticker": "CART",
+    "exchange": "Listed",
+    "url": "reports/instacart-maplebear-inc-equity-report.html",
+    "description": "Instacart provides technology and services for grocery retailers, consumers, brands, and shoppers. Through its marketplace, consumers order groceries for delivery or pickup from retailers, and its Enterprise platform powers retailers’ online storefronts, e-commerce, fulfillment, connected stores, advertising, marketing, and insights. Instacart Ads provides brands with advertising tools and insights for online grocery, while shoppers fulfill orders."
   },
   {
     "name": "Instalco",
@@ -4516,11 +5986,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Insulet develops, manufactures and sells continuous insulin delivery systems for people with insulin-dependent diabetes. Its Omnipod platform includes the Omnipod 5 Automated Insulin Delivery System, Omnipod DASH Insulin Management System and Classic Omnipod. The company also produces pods for Amgen's Neulasta Onpro kit, a delivery system intended to help reduce infection risk after intensive chemotherapy."
   },
   {
+    "name": "Intapp",
+    "ticker": "INTA",
+    "exchange": "Listed",
+    "url": "reports/intapp-equity-report.html",
+    "description": "Intapp provides AI-enabled software solutions tailored to professional firms in regulated industries, including accounting, consulting, investment banking, legal, private capital, and real assets. Its cloud-based platform supports specialized workflows, relationship management, compliance, and firm operations. Products apply firms’ proprietary knowledge and data to processes such as client intake, conflicts, pipeline management, fundraising, reporting, and cross-selling, serving enterprise firms and their professionals."
+  },
+  {
     "name": "Intea Fastigheter AB Class B",
     "ticker": "INTEA-B.ST",
     "exchange": "Stockholm",
     "url": "reports/intea-fastigheter-ab-class-b-equity-report.html",
     "description": "Intea Fastigheter is a Swedish real estate company that acquires, develops and manages social infrastructure properties for long-term ownership. Its portfolio is concentrated in justice, higher education, healthcare and other public services, with tenants mainly consisting of government agencies, regions and other public institutions. The business is driven by long leases and customized premises."
+  },
+  {
+    "name": "Integer Holdings",
+    "ticker": "ITGR",
+    "exchange": "Listed",
+    "url": "reports/integer-holdings-equity-report.html",
+    "description": "Integer Holdings is a medical device contract development and manufacturing organization serving cardio and vascular, neuromodulation, and cardiac rhythm management markets. It supplies original equipment manufacturers with engineering and manufacturing services, components, subassemblies and finished devices. Its cardio and vascular products include catheter and wire-based technologies, stents, balloon catheters, imaging and sensing devices, guidewires and vascular closure devices for medical procedures."
   },
   {
     "name": "Integrated Wind Solutions",
@@ -4551,11 +6035,46 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Intellego Technologies AB develops and manufactures color indicators that show the effects of ultraviolet irradiation. Its products include indicators for UV-A and UV-B exposure, as well as UVC dosimeters used to validate disinfection processes. The company’s solutions are built on patented photochromic ink and are sold across industries including disinfection, sunscreen, and manufacturing."
   },
   {
+    "name": "Intellia Therapeutics",
+    "ticker": "NTLA",
+    "exchange": "Listed",
+    "url": "reports/intellia-therapeutics-equity-report.html",
+    "description": "Intellia Therapeutics is a biopharmaceutical company developing treatments using CRISPR gene editing and related technologies. Its lead candidates are lonvoguran ziclumeran for hereditary angioedema and nexiguran ziclumeran for transthyretin amyloidosis. The company also advances other clinical and preclinical candidates independently and with collaborators, applying gene editing, oligonucleotides, and lipid nanoparticles to develop treatments for severe diseases."
+  },
+  {
+    "name": "InterDigital",
+    "ticker": "IDCC",
+    "exchange": "Listed",
+    "url": "reports/interdigital-equity-report.html",
+    "description": "InterDigital researches and licenses technologies for wireless communications, video, and related digital applications. Its inventions contribute to standards and are implemented in smartphones, connected devices, consumer electronics, automotive products, and video services. The company licenses its patent portfolios to manufacturers and service providers rather than primarily selling finished devices, and reinvests licensing proceeds in research and development for future technologies."
+  },
+  {
+    "name": "Interface",
+    "ticker": "TILE",
+    "exchange": "Listed",
+    "url": "reports/interface-equity-report.html",
+    "description": "Interface provides flooring products for commercial, institutional and residential interiors. Its portfolio includes modular carpet tile, luxury vinyl tile, rubber flooring and premium area rugs, marketed under brands including Interface, FLOR, noraplan and norament. Products serve customers in offices, education, healthcare, government, retail, transportation, hospitality and residential settings, with designs and specifications tailored to varied spaces."
+  },
+  {
     "name": "InterMail",
     "ticker": "IMAIL.CO",
     "exchange": "Copenhagen",
     "url": "reports/intermail-equity-report.html",
     "description": "InterMail A/S provides customer communication services through a mix of physical and digital channels. The company produces and distributes direct mail, e-mail, SMS and e-Boks communications, and offers related services such as lead generation, marketing automation, loyalty programs, printing, packaging and special mailing solutions. It also supports data-driven campaign execution and fulfillment."
+  },
+  {
+    "name": "International Business Machines",
+    "ticker": "IBM",
+    "exchange": "Listed",
+    "url": "reports/international-business-machines-equity-report.html",
+    "description": "International Business Machines provides software, consulting services, and technology infrastructure for business clients. Its offerings include hybrid cloud and artificial intelligence platforms that support digital transformation, application modernization, and workflow changes. Consulting combines strategy, experience design, technology, and operations expertise across industries, while IBM’s infrastructure capabilities support mission-critical systems. The company also works with partners to deliver solutions for clients’ business challenges."
+  },
+  {
+    "name": "International Flavors & Fragrances",
+    "ticker": "IFF",
+    "exchange": "Listed",
+    "url": "reports/international-flavors-and-fragrances-equity-report.html",
+    "description": "International Flavors & Fragrances develops and manufactures ingredients and solutions for food, beverage, health, biosciences, and scent applications. Its offerings include flavor compounds, food ingredients, enzymes, cultures, probiotics, specialty ingredients, fragrance compounds, and natural health ingredients. Customers include food and beverage manufacturers, personal care and household product makers, supplement producers, and businesses serving animal nutrition, food protection, and industrial applications."
   },
   {
     "name": "Interoil Exploration and Production",
@@ -4614,11 +6133,46 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Ionis Pharmaceuticals discovers and develops RNA-targeted medicines for serious diseases and sells or partners on medicines across multiple markets. Its marketed medicines address conditions including familial chylomicronemia syndrome, hereditary angioedema, transthyretin amyloidosis, spinal muscular atrophy, and amyotrophic lateral sclerosis. Ionis independently commercializes some products, co-commercializes others with partners, and licenses or distributes additional medicines through collaborators."
   },
   {
+    "name": "IonQ",
+    "ticker": "IONQ",
+    "exchange": "Listed",
+    "url": "reports/ionq-equity-report.html",
+    "description": "IonQ sells specialized quantum computing hardware, access to quantum computers through cloud platforms and its own cloud service, and full quantum computing systems for cloud or on-premises use. Its offerings also include quantum networking, sensing, and security products, maintenance and support, and professional services that help customers apply these solutions. Through satellites, it provides data-as-a-service products, including synthetic-aperture radar imaging."
+  },
+  {
+    "name": "Iovance Biotherapeutics",
+    "ticker": "IOVA",
+    "exchange": "Listed",
+    "url": "reports/iovance-biotherapeutics-equity-report.html",
+    "description": "Iovance Biotherapeutics develops and commercializes tumor-infiltrating lymphocyte cell therapies for patients with solid tumor cancers. Its commercial products include Amtagvi, an individualized T-cell therapy for previously treated advanced melanoma, and Proleukin, an interleukin-2 product used in the Amtagvi treatment regimen and other applications. The company also develops TIL therapies and related approaches for additional solid tumor cancers, including lung cancer and sarcomas."
+  },
+  {
+    "name": "IPG Photonics",
+    "ticker": "IPGP",
+    "exchange": "Listed",
+    "url": "reports/ipg-photonics-equity-report.html",
+    "description": "IPG Photonics develops, manufactures, and sells fiber lasers, fiber amplifiers, diode lasers, and laser-based systems for materials processing, medical, and other advanced applications. Its products are sold globally to original equipment manufacturers, system integrators, and end users, primarily through a direct sales force. Complementary products include optical delivery cables, fiber couplers, beam switches, processing heads, sensors, and chillers."
+  },
+  {
     "name": "IQVIA Holdings",
     "ticker": "IQV",
     "exchange": "Listed",
     "url": "reports/iqvia-holdings-equity-report.html",
     "description": "IQVIA provides clinical research services, commercial insights, and healthcare intelligence to life sciences and healthcare organizations. It combines healthcare data, analytics, technology, and industry expertise in offerings that support clinical trial design, site selection, and patient recruitment, as well as real-world research and commercial operations. Customers include pharmaceutical, biotech, and medical device companies, researchers, government agencies, payers, and other healthcare stakeholders."
+  },
+  {
+    "name": "IRadimed",
+    "ticker": "IRMD",
+    "exchange": "Listed",
+    "url": "reports/iradimed-equity-report.html",
+    "description": "IRadimed develops, manufactures, markets, and distributes medical devices and related products and services designed for use during magnetic resonance imaging procedures. Its portfolio includes MRI-compatible intravenous infusion pump systems, disposable tubing, mounting equipment, and remote displays, as well as a patient vital signs monitoring system. These products support clinicians caring for patients during MRI scans."
+  },
+  {
+    "name": "iRhythm Technologies",
+    "ticker": "IRTC",
+    "exchange": "Listed",
+    "url": "reports/irhythm-technologies-equity-report.html",
+    "description": "iRhythm Technologies designs, develops and commercializes device-based ambulatory cardiac monitoring services. Its systems combine a wire-free, wearable patch biosensor that records electrocardiogram data with cloud-based analytic software to help physicians monitor patients and diagnose arrhythmias. The company also provides long-term and short-term continuous monitoring and mobile cardiac telemetry services through diagnostic testing facilities and qualified technicians."
   },
   {
     "name": "Irisity",
@@ -4684,6 +6238,34 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "J.B. Hunt provides transportation, brokerage and delivery services to businesses and consumers in the United States, Canada and Mexico. Its services include containerized freight transported by truck and rail, dedicated freight operations tailored to customer requirements, local and home delivery, and freight brokerage using third-party carriers. Customers include companies across diverse industries, including large corporations."
   },
   {
+    "name": "Jabil",
+    "ticker": "JBL",
+    "exchange": "Listed",
+    "url": "reports/jabil-equity-report.html",
+    "description": "Jabil provides engineering, supply chain, design, manufacturing, and product management services across the product lifecycle, from planning and fabrication to assembly, delivery, and post-production. It serves companies in automotive, healthcare, packaging, energy infrastructure, capital equipment, cloud and data centers, networking, connected living, and digital commerce. Its business units coordinate customer work using manufacturing, electronic design, and design-for-manufacturability capabilities."
+  },
+  {
+    "name": "Janux Therapeutics",
+    "ticker": "JANX",
+    "exchange": "Listed",
+    "url": "reports/janux-therapeutics-equity-report.html",
+    "description": "Janux Therapeutics is a clinical-stage biopharmaceutical company developing immunotherapies using its TRACTr, TRACIr, and ARM platforms. Its pipeline includes T cell engagers and bispecific candidates under clinical investigation for cancer, including candidates targeting PSMA in prostate cancer and EGFR in solid tumors. The company also describes development of its ARM platform for autoimmune diseases and oncology."
+  },
+  {
+    "name": "Jazz Pharmaceuticals",
+    "ticker": "JAZZ",
+    "exchange": "Listed",
+    "url": "reports/jazz-pharmaceuticals-equity-report.html",
+    "description": "Jazz Pharmaceuticals is a global biopharmaceutical company focused on medicines for rare diseases and patients with limited treatment options. Its portfolio includes therapies for epilepsies, cancers and sleep disorders, including Xywav, Epidiolex, Ziihera, Modeyso, Zepzelca and Rylaze. The company develops therapies through research and development programs and markets approved medicines to patients and healthcare providers in multiple countries."
+  },
+  {
+    "name": "JetBlue Airways",
+    "ticker": "JBLU",
+    "exchange": "Listed",
+    "url": "reports/jetblue-airways-equity-report.html",
+    "description": "JetBlue Airways operates passenger air services, serving destinations across the United States, the Caribbean, Latin America, Canada and Europe. It offers travelers several fare and onboard experience options, including core fares and EvenMore, with features such as carry-on baggage, seatback entertainment, Wi-Fi, snacks and beverages. Customers can purchase additional seating space, priority access and other amenities."
+  },
+  {
     "name": "Jetpak Top Holding",
     "ticker": "JETPAK.ST",
     "exchange": "Stockholm",
@@ -4710,6 +6292,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/jm-equity-report.html",
     "description": "JM AB is a Nordic residential developer that focuses on new-build housing and residential areas in Sweden, Norway and Finland, mainly in metropolitan and growth regions. The company also develops commercial premises and carries out contract work, primarily in Greater Stockholm, with sustainability integrated across its operations."
+  },
+  {
+    "name": "Joby Aviation",
+    "ticker": "JOBY",
+    "exchange": "Listed",
+    "url": "reports/joby-aviation-equity-report.html",
+    "description": "Joby Aviation designs and tests piloted, all-electric vertical takeoff and landing aircraft for air taxi transportation. It plans to operate air taxi services directly and through partners, sell aircraft to distributors, and pursue defense and other specialized markets. Its activities include aircraft engineering, manufacturing, assembly, and flight testing, alongside development of operating software and a consumer app for aerial ridesharing."
   },
   {
     "name": "John Mattson Fastighetsföretagen",
@@ -4768,6 +6357,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Kahoot! ASA is a global learning and engagement platform company that provides game-based software for schools, workplaces, and other group settings. Its products let users create, share, and host interactive quizzes, lessons, and presentations, with paid subscriptions and content offerings for educators, businesses, and content creators contributing to revenue."
   },
   {
+    "name": "Kaiser Aluminum",
+    "ticker": "KALU",
+    "exchange": "Listed",
+    "url": "reports/kaiser-aluminum-equity-report.html",
+    "description": "Kaiser Aluminum manufactures and sells semi-fabricated specialty aluminum mill products, including flat-rolled, extruded, drawn, and certain cast products. It focuses on demanding applications in aerospace, packaging, general engineering, and automotive markets. Its engineered products are supplied to customers such as aerospace and automotive manufacturers, their tier-one suppliers, beverage and food packaging manufacturers, and metal service centers."
+  },
+  {
     "name": "Kakel Max",
     "ticker": "KAKEL.ST",
     "exchange": "Stockholm",
@@ -4801,6 +6397,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/kancera-equity-report.html",
     "description": "Kancera AB (publ) is a clinical-stage biotechnology company developing small-molecule drugs that modulate immune-cell signaling, with a current focus on cardiovascular diseases. Its lead candidates include KAND567 and KAND145, which are being advanced through clinical and preclinical development. The company is also in the process of rebranding to Novakand Pharma as it sharpens its cardiovascular strategy."
+  },
+  {
+    "name": "Karman Holdings",
+    "ticker": "KRMN",
+    "exchange": "Listed",
+    "url": "reports/karman-holdings-equity-report.html",
+    "description": "Karman designs, tests, manufactures and sells mission-critical systems for missile, defense and space programs. Its offerings include payload protection and deployment systems, aerodynamic interstage systems, integrated solid rocket motors and supporting propulsion subsystems. The company serves space and launch, hypersonics and strategic missile defense, and tactical missile and integrated defense markets, supplying prime contractor customers."
   },
   {
     "name": "Karnov Group",
@@ -4964,11 +6567,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "KMC Properties ASA is a Norwegian real estate company that owns and develops industrial and logistics properties across the Nordics and parts of continental Europe. Its portfolio has long lease agreements with tenants and has been supported by development projects and acquisitions. In 2024, it agreed to combine its operations with Logistea."
   },
   {
+    "name": "Knife River",
+    "ticker": "KNF",
+    "exchange": "Listed",
+    "url": "reports/knife-river-equity-report.html",
+    "description": "Knife River supplies aggregates-based construction materials and contracting services across multiple U.S. states. It mines and sells crushed stone, sand and gravel, produces asphalt and ready-mix concrete, and provides asphalt paving, heavy-civil and concrete construction, site development and grading. Some operations also manufacture prestressed concrete products. Customers include government agencies and other public-sector entities, industrial and commercial businesses, residential developers, and private parties."
+  },
+  {
+    "name": "Knight-Swift Transportation Holdings",
+    "ticker": "KNX",
+    "exchange": "Listed",
+    "url": "reports/knight-swift-transportation-holdings-equity-report.html",
+    "description": "Knight-Swift provides freight transportation services across North America, serving shippers with full truckload, less-than-truckload, logistics, and intermodal offerings. It transports or arranges transportation for general commodities using company equipment, independent contractors, and third-party carriers. Its nationwide network of business units and terminals serves customers in the United States and Mexico, with services delivered through its Truckload, LTL, Logistics, and Intermodal segments."
+  },
+  {
     "name": "Knowit",
     "ticker": "KNOW.ST",
     "exchange": "Stockholm",
     "url": "reports/knowit-equity-report.html",
     "description": "Knowit AB is a Nordic IT and management consultancy that helps companies and public-sector organisations with digital transformation. Its services span custom software development, digital customer experiences, cloud and IoT solutions, cybersecurity, data and analytics, and advisory services. The company also offers proprietary digital products and operates mainly in the Nordic region, with additional presence in Germany and Poland."
+  },
+  {
+    "name": "Knowles",
+    "ticker": "KN",
+    "exchange": "Listed",
+    "url": "reports/knowles-equity-report.html",
+    "description": "Knowles designs and manufactures specialty electronic components, including high-performance capacitors, radio frequency filters, balanced armature speakers, and microphones. Its products serve applications in defense, industrial, medical technology, electrification, hearing health, and specialty audio. The company sells directly to original equipment manufacturers and through sales representatives and distributors worldwide, providing custom engineered components for demanding applications."
   },
   {
     "name": "Københavns Lufthavne",
@@ -5048,6 +6672,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Kontigo Care AB develops digital healthcare services for addiction treatment and workplace substance monitoring. Its main products are the Previct Care platform for remote support in addiction and mental health care, and Previct Safety for real-time drug testing and safer work environments. The company also provides support, technical service, and related care portal functionality."
   },
   {
+    "name": "Kontoor Brands",
+    "ticker": "KTB",
+    "exchange": "Listed",
+    "url": "reports/kontoor-brands-equity-report.html",
+    "description": "Kontoor Brands designs, manufactures, procures, sells, and licenses apparel, footwear, and accessories through brands including Wrangler, Lee, Helly Hansen, and Musto. Its products span denim, outdoor, workwear, footwear, and accessory categories. The company sells to consumers through wholesale and direct-to-consumer channels in the United States and internationally, and licenses its brands in certain regions."
+  },
+  {
     "name": "Kopy Goldfields",
     "ticker": "KOPY.ST",
     "exchange": "Stockholm",
@@ -5062,11 +6693,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Koskisen Corp is a Finnish wood products company that manufactures birch plywood and related panel products, as well as ready-made van interior lining, floor and wheel arch kits through its Kore business. Its offerings serve construction, joinery and transportation customers, with production and machining operations in Finland and Poland."
   },
   {
+    "name": "Kratos Defense & Security Solutions",
+    "ticker": "KTOS",
+    "exchange": "Listed",
+    "url": "reports/kratos-defense-and-security-solutions-equity-report.html",
+    "description": "Kratos develops and supplies technology, hardware, products, systems, and software for defense, national security, and commercial markets. Its offerings include satellite ground systems and command software, unmanned aerial systems, hypersonic and rocket systems, propulsion, C5ISR and microwave electronics, and virtual and augmented reality training systems. Its customers include government organizations, commercial customers, and traditional defense system integrators and partners."
+  },
+  {
     "name": "Kreate Group",
     "ticker": "KREATE.HE",
     "exchange": "Helsinki",
     "url": "reports/kreate-group-equity-report.html",
     "description": "Kreate Group Oyj is a Finnish infrastructure construction company that delivers demanding projects for bridges, roads, railways and other transport infrastructure, as well as foundation, environmental, rock and geotechnical work. It also provides circular economy and expert services, with value driven by project execution quality, cost efficiency and flexible delivery."
+  },
+  {
+    "name": "Krispy Kreme",
+    "ticker": "DNUT",
+    "exchange": "Listed",
+    "url": "reports/krispy-kreme-equity-report.html",
+    "description": "Krispy Kreme makes and sells fresh doughnuts, including its Original Glazed variety and other hand-crafted and decorated products. Consumers buy them at company-operated and franchise shops, through fresh deliveries to grocery stores, club wholesalers, convenience stores, restaurants and drug stores, and through digital ordering for pickup or delivery. The company also partners with retailers."
+  },
+  {
+    "name": "Kymera Therapeutics",
+    "ticker": "KYMR",
+    "exchange": "Listed",
+    "url": "reports/kymera-therapeutics-equity-report.html",
+    "description": "Kymera Therapeutics is a clinical-stage biopharmaceutical company developing oral medicines for human diseases. Its research focuses on targeted protein degradation and other small molecule approaches, with current programs primarily directed at immunology targets including STAT6, IRF5, and IRAK4. The company also has research initiatives in other therapeutic areas. Its intended beneficiaries are patients with serious diseases, including immune-inflammatory conditions."
   },
   {
     "name": "Kyoto Group AS",
@@ -5097,6 +6749,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Lammhults Design Group is a Swedish furniture group that develops and markets products and interior solutions for office environments and public spaces. Its operations are organised into Office Interiors and Library Interiors, with brands covering furniture, acoustic solutions, modular systems, and library fit-outs, including project sales and e-commerce."
   },
   {
+    "name": "Lantheus Holdings",
+    "ticker": "LNTH",
+    "exchange": "Listed",
+    "url": "reports/lantheus-holdings-equity-report.html",
+    "description": "Lantheus develops and markets radiopharmaceutical products and related solutions used by healthcare professionals to detect, characterize, or rule out disease. Its offerings include radiopharmaceutical oncology products, precision diagnostics, biomarkers, digital solutions and contract development and manufacturing services. The company sells primarily to hospitals, independent imaging centers and government facilities, and serves clinicians across multiple specialties and settings."
+  },
+  {
+    "name": "Las Vegas Sands",
+    "ticker": "LVS",
+    "exchange": "Listed",
+    "url": "reports/las-vegas-sands-equity-report.html",
+    "description": "Las Vegas Sands develops and operates integrated resort properties that combine hotels, gaming venues, entertainment, retail, restaurants, and convention and exhibition facilities. Its current portfolio includes properties in Macao and Marina Bay Sands in Singapore. The company serves leisure and business visitors, including travelers attending meetings, exhibitions, and other events, through hospitality and destination services at these resorts."
+  },
+  {
     "name": "Lassila & Tikanoja",
     "ticker": "LAT1V.HE",
     "exchange": "Helsinki",
@@ -5104,11 +6770,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "The former Lassila and Tikanoja group operated in circular economy and property services before its partial demerger in 2025."
   },
   {
+    "name": "Latham Group",
+    "ticker": "SWIM",
+    "exchange": "Listed",
+    "url": "reports/latham-group-equity-report.html",
+    "description": "Latham Group designs, manufactures, and markets in-ground residential swimming pools, pool covers, and pool liners. It sells through a dealer network and supports dealers with business development tools, co-branded marketing programs, and training. The company also uses digital and social marketing to generate homeowner demand and provide purchase-ready leads to its dealer partners."
+  },
+  {
+    "name": "Lattice Semiconductor",
+    "ticker": "LSCC",
+    "exchange": "Listed",
+    "url": "reports/lattice-semiconductor-equity-report.html",
+    "description": "Lattice Semiconductor develops programmable logic semiconductors, silicon-enabling products, system solutions, design services, and technology licenses. Its field-programmable gate arrays support control, connectivity, and computing functions in systems spanning communications, computing, industrial, automotive, and consumer markets. Customers use its products in applications including servers, wireless infrastructure, switches, routers, smart devices, sensors, and security systems."
+  },
+  {
+    "name": "Laureate Education",
+    "ticker": "LAUR",
+    "exchange": "Listed",
+    "url": "reports/laureate-education-equity-report.html",
+    "description": "Laureate Education operates degree-granting higher education institutions in Mexico and Peru. Its institutions offer undergraduate and graduate programs through campus-based, online and hybrid formats, with curricula emphasizing applied, career-oriented disciplines including medicine and health sciences, engineering and information technology, and business and management. The institutions serve traditional students, working adults and distance learners through private-pay education and multiple brands and price points."
+  },
+  {
     "name": "Lauritz.com Group",
     "ticker": "LAUR.ST",
     "exchange": "Stockholm",
     "url": "reports/lauritz-com-group-equity-report.html",
     "description": "Lauritz.com Group A/S operated an auction business focused on selling second-hand and collectible goods through online and physical auction houses. It offered valuation, consignment, cataloguing, storage, bidding, payment and delivery services, with categories including furniture, art, antiques, jewellery, watches and electronics. The company’s value driver was transaction fees from auction turnover. The listed company entered bankruptcy proceedings in 2023."
+  },
+  {
+    "name": "LCI Industries",
+    "ticker": "LCII",
+    "exchange": "Listed",
+    "url": "reports/lci-industries-equity-report.html",
+    "description": "LCI Industries supplies engineered components to the outdoor recreation, transportation, marine, and housing industries. Its products include chassis, axles, suspension systems, furniture, windows, appliances, towing accessories, doors, steps, awnings, leveling systems, and slide-outs. The company sells to original equipment manufacturers and aftermarket customers through dealers, distributors, service centers, and online direct-to-consumer channels."
   },
   {
     "name": "LeadDesk Oy",
@@ -5146,11 +6840,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Leidos provides scientific, engineering and technical services and solutions to government and commercial customers. Its work includes digital modernization, cloud and network services, mission software, cyber operations, intelligence analysis, logistics, security, training and managed health services. Customers include U.S. federal agencies, state and local governments, foreign government agencies and commercial businesses. Its segments span national security, health and civil, commercial and international, and defense systems."
   },
   {
+    "name": "LeMaitre Vascular",
+    "ticker": "LMAT",
+    "exchange": "Listed",
+    "url": "reports/lemaitre-vascular-equity-report.html",
+    "description": "LeMaitre Vascular develops, manufactures, and markets medical devices used primarily to treat peripheral vascular disease, end-stage renal disease, and cardiovascular disease. Its portfolio includes devices for arteries and veins, used in open surgical and endovascular procedures, and it provides human tissue cryopreservation services. Customers include vascular surgeons and, to a lesser extent, cardiac, general, and neurosurgeons."
+  },
+  {
     "name": "Lemonsoft",
     "ticker": "LEMON.HE",
     "exchange": "Helsinki",
     "url": "reports/lemonsoft-equity-report.html",
     "description": "Lemonsoft Oyj develops and sells enterprise resource planning software for Finnish small and medium-sized businesses. Its cloud-based SaaS solutions combine core business functions such as production, warehouse, project, customer relationship, financial, payroll and HR management, with related services and reporting tools. Customers are mainly in manufacturing, wholesale, construction, services and accounting."
+  },
+  {
+    "name": "Leonardo DRS",
+    "ticker": "DRS",
+    "exchange": "Listed",
+    "url": "reports/leonardo-drs-equity-report.html",
+    "description": "Leonardo DRS designs, develops, manufactures and integrates defense technologies for U.S. national security customers and allied defense forces. Its products and solutions include sensing systems, network computing, force protection, electric power and propulsion, electro-optical and infrared sensors, electronic warfare systems, radars and tactical computing. These offerings support missions and platforms across land, air, sea, space and cyber domains."
   },
   {
     "name": "LeoVegas",
@@ -5165,6 +6873,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/leroy-seafood-group-equity-report.html",
     "description": "Lerøy Seafood Group ASA is a fully integrated seafood company that produces salmon and trout, catches whitefish, and processes, develops, markets, sells, and distributes seafood products. Its operations span farming, wild catch, value-added processing, and international sales channels, with customers in retail, food service, and industrial markets across many countries."
+  },
+  {
+    "name": "LGI Homes",
+    "ticker": "LGIH",
+    "exchange": "Listed",
+    "url": "reports/lgi-homes-equity-report.html",
+    "description": "LGI Homes designs, builds, and sells new homes in markets across the United States. Its product lines include attached and detached entry-level homes and active-adult homes under the LGI Homes brand, as well as luxury homes under the Terrata Homes brand. It primarily targets entry-level buyers and also sells homes in bulk to institutions acquiring single-family rentals."
   },
   {
     "name": "LIDDS",
@@ -5188,6 +6903,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Lifco is a diversified industrial group that acquires and develops market-leading niche businesses. Its operations are organized across Dental, Demolition & Tools, Environmental Technology, Transportation Products and Systems Solutions, serving customers with consumables, equipment, attachments, recycling and work-environment solutions, niche transport products, and contract manufacturing and other industrial services."
   },
   {
+    "name": "Life Time Group Holdings",
+    "ticker": "LTH",
+    "exchange": "Listed",
+    "url": "reports/life-time-group-holdings-equity-report.html",
+    "description": "Life Time operates athletic country club destinations serving individual members in communities across North America. Its centers offer fitness equipment and classes, personal training, recovery spaces, pools, tennis and pickleball courts, basketball courts, spas, cafes, childcare and learning spaces. The company sells month-to-month memberships, including base and signature options that provide access to centers and selected additional products, services or spaces."
+  },
+  {
     "name": "Lifecare AS",
     "ticker": "LIFE.OL",
     "exchange": "Oslo",
@@ -5202,11 +6924,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "LifeClean International develops, manufactures and sells chemical solutions for cleaning, disinfection and decontamination. Its portfolio includes high-level disinfectants for healthcare, cleaning and disinfecting products for livestock and food production, and solutions for breaking down PFAS pollution. The company also works through partnerships and manufacturing capabilities to serve multiple industrial applications."
   },
   {
+    "name": "LifeStance Health Group",
+    "ticker": "LFST",
+    "exchange": "Listed",
+    "url": "reports/lifestance-health-group-equity-report.html",
+    "description": "LifeStance operates an outpatient mental health platform delivering care in person and virtually. Its clinicians provide psychiatric evaluations and treatment, psychological and neuropsychological testing, and individual, family and group therapy for patients with conditions including anxiety, depression, bipolar disorder, eating disorders, psychotic disorders and post-traumatic stress disorder. Through payor relationships, patients can use in-network insurance benefits for care."
+  },
+  {
+    "name": "Ligand Pharmaceuticals Incorporated",
+    "ticker": "LGND",
+    "exchange": "Listed",
+    "url": "reports/ligand-pharmaceuticals-incorporated-equity-report.html",
+    "description": "Ligand Pharmaceuticals invests in and structures royalty interests in mid- to late-stage development and commercial biopharmaceutical products, partnering with biopharmaceutical companies on development and commercialization. It also operates Captisol and NITRICIL platform technologies. Its revenue comes primarily from partner product royalties, alongside Captisol material sales and license fees and milestone payments."
+  },
+  {
+    "name": "Limbach Holdings",
+    "ticker": "LMB",
+    "exchange": "Listed",
+    "url": "reports/limbach-holdings-equity-report.html",
+    "description": "Limbach designs, delivers, and maintains mechanical, electrical, plumbing, and controls systems for building owners and operators, particularly in mission-critical facilities. Its customers span healthcare, industrial and manufacturing, data centers, life sciences, higher education, and cultural and entertainment markets. Services include engineering, facility planning, capital project support, system commissioning, inspection, repairs, maintenance, and specialty contracting for existing buildings and construction projects."
+  },
+  {
     "name": "Lime Technologies",
     "ticker": "LIME.ST",
     "exchange": "Stockholm",
     "url": "reports/lime-technologies-equity-report.html",
     "description": "Lime Technologies AB (publ) develops and sells CRM software and related services for sales, marketing and customer service. Its product suite includes Lime CRM, Lime Go and Lime Connect, alongside implementation, support and change-management services through Lime Intenz. The company serves mainly small and medium-sized businesses and selected industry segments across Europe."
+  },
+  {
+    "name": "Lincoln Educational Services",
+    "ticker": "LINC",
+    "exchange": "Listed",
+    "url": "reports/lincoln-educational-services-equity-report.html",
+    "description": "Lincoln Educational Services provides career-oriented postsecondary education to recent high school graduates and working adults. Its schools operate under the Lincoln Technical Institute, Lincoln College of Technology, and Nashville Auto Diesel College brands, offering programs in skilled trades, automotive, health sciences, and information technology. Campuses serve local communities and metropolitan markets, while several attract students from across the United States and abroad."
   },
   {
     "name": "Lincoln Electric Holdings",
@@ -5221,6 +6971,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/lindab-international-equity-report.html",
     "description": "Lindab International AB develops, manufactures and sells ventilation systems and building products. Its operations are organised in Ventilation Systems and Profile Systems, supplying duct systems, indoor climate solutions, roofs, walls and rainwater systems, mainly in Europe. The company also provides related distribution and installation-oriented products and services through its branch network."
+  },
+  {
+    "name": "Lindblad Expeditions Holdings",
+    "ticker": "LIND",
+    "exchange": "Listed",
+    "url": "reports/lindblad-expeditions-holdings-equity-report.html",
+    "description": "Lindblad Expeditions provides marine expeditions and land based adventure travel to individuals and families. Its ship based trips visit remote regions and cultural destinations, while its brands also offer land based travel experiences. The company operates owned and chartered expedition vessels, and collaborates with National Geographic on expedition planning, branding, sales and guest experiences."
   },
   {
     "name": "Lindex Group",
@@ -5279,6 +7036,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "LiqTech International, Inc. is a clean technology company that designs, manufactures, and markets filtration products and systems for liquid and gas applications. Its core offerings include silicon carbide ceramic membranes and automated filtration systems for industrial water treatment, plus diesel particulate filters for emissions control. The company sells through offices in Denmark and a network of representatives and distributors."
   },
   {
+    "name": "Liquidia",
+    "ticker": "LQDA",
+    "exchange": "Listed",
+    "url": "reports/liquidia-equity-report.html",
+    "description": "Liquidia develops and commercializes inhaled therapies for pulmonary and vascular diseases using its PRINT drug-particle technology. Its marketed product YUTREPIA is treprostinil inhalation powder approved for pulmonary arterial hypertension. The company is developing L606, an investigational extended-release treprostinil formulation for pulmonary hypertension, and studying YUTREPIA in additional conditions, including systemic sclerosis-associated Raynaud’s phenomenon."
+  },
+  {
+    "name": "Lithia Motors",
+    "ticker": "LAD",
+    "exchange": "Listed",
+    "url": "reports/lithia-motors-equity-report.html",
+    "description": "Lithia Motors operates an automotive retail network selling new and used vehicles from domestic and international manufacturers. Its dealerships also provide vehicle financing, parts, maintenance, and repair services, with offerings varying by location. The company serves individual and commercial customers through physical dealerships and online channels, supporting vehicle shopping and ownership across a broad range of brands and vehicle types."
+  },
+  {
     "name": "Litium",
     "ticker": "LITI.ST",
     "exchange": "Stockholm",
@@ -5286,11 +7057,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Litium AB provides a cloud-based digital commerce platform for B2B and B2C companies. Its software combines e-commerce, product information management, content management and campaign tools to help customers run online sales, manage multiple markets and channels, and support integration with other business systems through APIs and ready-made connectors."
   },
   {
+    "name": "LivaNova",
+    "ticker": "LIVN",
+    "exchange": "Listed",
+    "url": "reports/livanova-equity-report.html",
+    "description": "LivaNova develops, manufactures, markets, and sells medical products, therapies, and services through its Cardiopulmonary and Neuromodulation segments. Cardiopulmonary offerings include heart-lung machines, oxygenators, autotransfusion systems, tubing systems, cannulae, accessories, and related services for surgical care. Neuromodulation provides devices for vagus nerve stimulation therapy for drug-resistant epilepsy and difficult-to-treat depression, and develops a system for obstructive sleep apnea."
+  },
+  {
     "name": "Live Nation Entertainment",
     "ticker": "LYV",
     "exchange": "Listed",
     "url": "reports/live-nation-entertainment-equity-report.html",
     "description": "Live Nation produces and promotes live music events, operates or books venues, manages artists, and provides ticketing, sponsorship, and advertising services. Ticketmaster sells and distributes tickets through websites, mobile apps, and retail outlets. Its ticketing clients include arenas, stadiums, concert and festival promoters, sports teams and leagues, performing arts venues, museums, and theaters."
+  },
+  {
+    "name": "LiveWire Group",
+    "ticker": "LVWR",
+    "exchange": "Listed",
+    "url": "reports/livewire-group-equity-report.html",
+    "description": "LiveWire designs and sells electric motorcycles, motorcycle parts, accessories, and apparel, as well as electric balance bikes for children and adult pedal-assist electric bikes. Its motorcycle products are sold wholesale through independent dealers and retailers, at a company-owned dealership, and online. Its STACYC bikes and related parts and accessories are sold wholesale through dealers and distributors and directly to consumers online."
+  },
+  {
+    "name": "LKQ",
+    "ticker": "LKQ",
+    "exchange": "Listed",
+    "url": "reports/lkq-equity-report.html",
+    "description": "LKQ Corporation distributes vehicle replacement parts, components, systems, and specialty aftermarket products and accessories for vehicle repair, maintenance, and customization. Its alternative parts include collision and body repair products, mechanical parts, routine maintenance components, engines, and transmissions. The company serves customers through operating segments in North America, Europe, and specialty aftermarket distribution."
   },
   {
     "name": "LL Lucky Games",
@@ -5321,11 +7113,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Loomis AB provides cash and payment services that support the movement, handling, storage and processing of cash. Its offerings include cash in transit, cash management services, ATM services, foreign exchange, automated cash-handling solutions and Loomis Pay. The company serves banks, retailers and other businesses through a decentralized network in multiple markets."
   },
   {
+    "name": "Louisiana-Pacific",
+    "ticker": "LPX",
+    "exchange": "Listed",
+    "url": "reports/louisiana-pacific-equity-report.html",
+    "description": "Louisiana-Pacific provides building products for new home construction, repair and remodeling, and outdoor structures. Its Siding business makes engineered wood siding, trim, soffit and fascia for builders and installers. Its OSB business manufactures structural panels and value-added products used for roof decking, wall sheathing and floor underlayment, including panels designed for fire resistance, moisture protection, energy efficiency and load-bearing capacity."
+  },
+  {
     "name": "Loyal Solutions",
     "ticker": "LOYAL.ST",
     "exchange": "Stockholm",
     "url": "reports/loyal-solutions-equity-report.html",
     "description": "Loyal Solutions A/S develops software for managing documents, quality processes, risks, KPIs and regulatory compliance. Its platform centralizes information for organizations and supports related tasks such as automation, implementation, training and ongoing support. The company also offers cloud hosting and modular solutions for businesses seeking a single system for quality and compliance management."
+  },
+  {
+    "name": "LSI Industries",
+    "ticker": "LYTS",
+    "exchange": "Listed",
+    "url": "reports/lsi-industries-equity-report.html",
+    "description": "LSI Industries produces non-residential lighting and retail display solutions. Its lighting segment makes indoor and outdoor fixtures, poles, accessories, and controls for markets including convenience stores, parking facilities, restaurants, retail, grocery, automotive, sports, and warehouses. Its display segment makes custom store fixtures, signage, display cases, graphics, and food equipment. Customers include distributors, end-use businesses, and retail operators."
+  },
+  {
+    "name": "Lucid Group",
+    "ticker": "LCID",
+    "exchange": "Listed",
+    "url": "reports/lucid-group-equity-report.html",
+    "description": "Lucid designs, engineers, manufactures, and sells electric vehicles, including the Lucid Air sedan and Lucid Gravity SUV. It also develops electric powertrains, battery systems, and proprietary vehicle software, which is updated over the air. Lucid sells directly through retail locations and online channels and provides vehicle service through its network. Its software and hardware architecture supports driver assistance and autonomous mobility applications."
   },
   {
     "name": "LumenRadio",
@@ -5419,6 +7232,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Magle Chemoswed Holding AB is a Swedish contract development and manufacturing organization serving pharmaceutical and medical device customers. The company provides services from process development and analytical support through GMP manufacturing, fill-finish, freeze-drying, and related regulatory support. It also develops and supplies products and technologies based on its proprietary microsphere platform."
   },
   {
+    "name": "Magnite",
+    "ticker": "MGNI",
+    "exchange": "Listed",
+    "url": "reports/magnite-equity-report.html",
+    "description": "Magnite provides technology that automates the purchase and sale of digital advertising inventory. Its platform helps publishers manage and monetize advertising across connected TV channels, applications, websites and other digital media, while buyers use tools to discover, curate and purchase inventory. Customers include advertisers, agencies, demand-side platforms and digital media publishers, including streaming providers and broadcasters."
+  },
+  {
     "name": "Magnora",
     "ticker": "MGN.OL",
     "exchange": "Oslo",
@@ -5447,6 +7267,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Malmbergs Elektriska AB is a Nordic distributor and importer of electrical materials and related products for installers, industry, construction and rental companies, and retailers. Its business combines direct sourcing, wholesale distribution and own-brand product development, with offerings that include installation materials, lighting, cables, charging equipment and other electrical supplies."
   },
   {
+    "name": "MannKind",
+    "ticker": "MNKD",
+    "exchange": "Listed",
+    "url": "reports/mannkind-equity-report.html",
+    "description": "MannKind is a biopharmaceutical company developing and commercializing treatments for cardiometabolic and orphan lung diseases. Its commercial products include Afrezza inhaled insulin and the V-Go wearable insulin delivery device for diabetes, and Furoscix furosemide injection for edema associated with heart failure or chronic kidney disease. The company also develops inhaled therapies with United Therapeutics, which commercializes Tyvaso DPI for pulmonary hypertension."
+  },
+  {
     "name": "Mantex",
     "ticker": "MANTEX.ST",
     "exchange": "Stockholm",
@@ -5461,11 +7288,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "MapsPeople A/S develops MapsIndoors, an enterprise indoor mapping and spatial intelligence platform. The company provides interactive maps, wayfinding, search, room and desk booking, occupancy visualization, and related integrations for offices, airports, hospitals, stadiums, and other large venues. Its software is used to connect building data with navigation and workplace applications."
   },
   {
+    "name": "Marcus & Millichap",
+    "ticker": "MMI",
+    "exchange": "Listed",
+    "url": "reports/marcus-and-millichap-equity-report.html",
+    "description": "Marcus & Millichap provides commercial real estate investment sales, financing, research, and advisory services. Its professionals represent commercial property owners and buyers in property sales and acquisitions, and the company offers auction services as an additional sales channel. It also arranges financing, advises on equity, sells loans, provides loan guarantees, and delivers consulting services to clients ranging from individual property owners to large investors."
+  },
+  {
     "name": "Marimekko",
     "ticker": "MEKKO.HE",
     "exchange": "Helsinki",
     "url": "reports/marimekko-equity-report.html",
     "description": "Marimekko is a Finnish lifestyle design company that develops and sells clothing, bags and accessories, and home décor products such as textiles and tableware. Its offering is built around original prints and colors, with products designed for seasonal collections and continuing classics. The company also uses its own textile printing factory in Helsinki."
+  },
+  {
+    "name": "Marriott International",
+    "ticker": "MAR",
+    "exchange": "Listed",
+    "url": "reports/marriott-international-equity-report.html",
+    "description": "Marriott International franchises, operates, and licenses hotels, residential properties, timeshare properties, and other lodging under a portfolio of brands. Its offerings span luxury, premium, select, and midscale service levels, including longer-stay accommodations with home-like amenities. The company serves travelers through properties in countries and territories worldwide, while its business model focuses on franchising, management, and licensing rather than owning or leasing most properties."
   },
   {
     "name": "Martela",
@@ -5475,6 +7316,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Martela designs and manufactures office and school furniture and provides services for planning, installing, optimising and recycling workplaces and learning environments. Its offering includes ergonomic chairs, desks, screens, phone booths, storage and workspace solutions, supported by lifecycle services and circular-economy models such as Second Life and Workspace as a Service."
   },
   {
+    "name": "Martin Marietta Materials",
+    "ticker": "MLM",
+    "exchange": "Listed",
+    "url": "reports/martin-marietta-materials-equity-report.html",
+    "description": "Martin Marietta Materials supplies aggregates, including crushed stone, sand, and gravel, through quarries, mines, and distribution yards. In selected markets it also provides cement, ready mixed concrete, asphalt, and paving services for infrastructure and residential and nonresidential construction. Its Specialties business produces magnesia-based products and dolomitic lime for environmental, industrial, agricultural, construction, consumer, and specialty applications, serving customers domestically and worldwide."
+  },
+  {
+    "name": "Masco",
+    "ticker": "MAS",
+    "exchange": "Listed",
+    "url": "reports/masco-equity-report.html",
+    "description": "Masco designs, manufactures, and distributes branded home improvement and building products. Its plumbing products include faucets, showerheads, bathing units, plumbing components, water filtration systems, spas, exercise pools, and saunas. Its decorative architectural products include BEHR paints. Customers include retailers, wholesalers, distributors, plumbers, contractors, remodelers, builders, consumers, and specialty spa and sauna dealers."
+  },
+  {
     "name": "Måsøval AS",
     "ticker": "MAS.OL",
     "exchange": "Oslo",
@@ -5482,11 +7337,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Måsøval AS is a Norwegian aquaculture company based on Frøya. It produces Atlantic salmon and operates as a fully integrated business with farming at sea, smolt production, harvesting, processing, and sales. The company’s operations are concentrated along the central Norwegian coast, where it manages the value chain from roe to market."
   },
   {
+    "name": "MasterBrand",
+    "ticker": "MBC",
+    "exchange": "Listed",
+    "url": "reports/masterbrand-equity-report.html",
+    "description": "MasterBrand manufactures residential cabinets sold across the United States and Canada to remodeling and new construction markets. Its products reach customers through dealers, retailers, and builders. The company offers cabinetry across price points and includes the Dura Supreme and Bertch brands, whose framed and frameless cabinets are distributed through a nationwide dealer network."
+  },
+  {
+    "name": "Matador Resources Company",
+    "ticker": "MTDR",
+    "exchange": "Listed",
+    "url": "reports/matador-resources-company-equity-report.html",
+    "description": "Matador Resources is an independent energy company that explores for, develops, produces and acquires oil and natural gas resources, mainly in unconventional plays. Its operations focus on the Delaware Basin and also include the Haynesville and Cotton Valley areas. The company provides natural gas processing, oil transportation, gathering and produced water disposal services to third parties."
+  },
+  {
     "name": "Matas",
     "ticker": "MATAS.CO",
     "exchange": "Copenhagen",
     "url": "reports/matas-equity-report.html",
     "description": "Matas A/S is a Danish specialty retailer focused on beauty, health and wellbeing products. It sells skincare, haircare, cosmetics, supplements and related everyday essentials through its store network and online channels. The company also develops private-label ranges and offers pharmacy-related products and services through its digital platform."
+  },
+  {
+    "name": "Match Group",
+    "ticker": "MTCH",
+    "exchange": "Listed",
+    "url": "reports/match-group-equity-report.html",
+    "description": "Match Group operates a portfolio of digital services designed to help people form social connections. Its brands include Tinder, Hinge, Match, Meetic, OkCupid, Pairs, Plenty of Fish, Azar, and BLK. The services use features such as profiles, search, recommendations, matching, and digital communication to serve users with differing preferences, backgrounds, locations, and relationship intentions."
+  },
+  {
+    "name": "Matson",
+    "ticker": "MATX",
+    "exchange": "Listed",
+    "url": "reports/matson-equity-report.html",
+    "description": "Matson provides ocean transportation and logistics services through its Ocean Transportation and Logistics segments. Its shipping serves Hawaii, Alaska, Guam, Micronesia, Japan, the South Pacific, and routes from China to California. Services include freight carriage, terminal and stevedoring operations, trucking, rail brokerage, freight forwarding, warehousing, distribution, and supply chain management for freight customers."
   },
   {
     "name": "Maven Wireless Sweden",
@@ -5501,6 +7384,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/mavshack-equity-report.html",
     "description": "Mavshack AB (publ) operates in digital entertainment and related services. The group offers streaming and film content through Mavshack Movies and its online platforms, and it also provides e-commerce listing and selling services through Mavshack Service Provider Network and Mavshacklive.in in India. The company focuses on digital distribution and tailored IT solutions."
+  },
+  {
+    "name": "MaxLinear",
+    "ticker": "MXL",
+    "exchange": "Listed",
+    "url": "reports/maxlinear-equity-report.html",
+    "description": "MaxLinear designs communications system-on-chip products for broadband, mobile and wireline infrastructure, data centers, and industrial and other markets. Its integrated circuits combine communication functions such as radio frequency, analog and digital processing, security, networking, and power management. Customers include electronics distributors, module makers, original equipment manufacturers, and original design manufacturers."
+  },
+  {
+    "name": "McGrath RentCorp",
+    "ticker": "MGRC",
+    "exchange": "Listed",
+    "url": "reports/mcgrath-rentcorp-equity-report.html",
+    "description": "McGrath RentCorp provides business-to-business rentals and sales of relocatable modular buildings, portable storage containers, and electronic test equipment. Its divisions also supply modular kitchens and manufactured classroom facilities. Customers include organizations in education, construction, government, healthcare, utilities, commercial operations, and technology industries. The company provides temporary or longer-term space and equipment solutions, with services that can include delivery and setup."
   },
   {
     "name": "Medhelp Care Aktiebolag",
@@ -5557,6 +7454,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/mercell-holding-equity-report.html",
     "description": "Mercell Holding ASA provides digital procurement software for public buyers and suppliers. Its platform supports tender planning, publication, contract management, supplier discovery, bid submission, and related analytics and support services. The company’s products are designed to streamline compliance-heavy procurement workflows and connect public institutions with potential suppliers across European markets."
+  },
+  {
+    "name": "Mercury Systems",
+    "ticker": "MRCY",
+    "exchange": "Listed",
+    "url": "reports/mercury-systems-equity-report.html",
+    "description": "Mercury Systems develops and manufactures aerospace and defense electronics, including components, modules, subsystems, and processing solutions from silicon to system scale. Its products support signal and data processing, radio frequency applications, and mission computing. Customers include U.S. and European defense prime contractors, the U.S. government, and commercial aerospace original equipment manufacturers, whose applications include radar, avionics, weapons, and communications."
+  },
+  {
+    "name": "Merit Medical Systems",
+    "ticker": "MMSI",
+    "exchange": "Listed",
+    "url": "reports/merit-medical-systems-equity-report.html",
+    "description": "Merit Medical Systems designs, develops, manufactures and markets medical devices for interventional, diagnostic and therapeutic procedures. Its products are used across areas including cardiology, radiology, oncology, critical care and endoscopy. Offerings include vascular access devices, needles, introducer sheaths, guide wires and custom procedural kits, trays and packs. Customers include healthcare facilities and clinicians worldwide."
   },
   {
     "name": "Merus Power",
@@ -5622,6 +7533,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Microsoft develops and supports software, cloud services, devices, and technology solutions for individuals and businesses. Its offerings include AI and cloud computing, productivity and collaboration applications, operating systems, server and business applications, software development and management tools, video games, and PCs, tablets, gaming consoles, and accessories. It also provides consulting and solution support, integrated security products, and online advertising to a global audience."
   },
   {
+    "name": "Middlesex Water Company",
+    "ticker": "MSEX",
+    "exchange": "Listed",
+    "url": "reports/middlesex-water-company-equity-report.html",
+    "description": "Middlesex Water Company owns and operates regulated water and wastewater systems, primarily in New Jersey and Delaware, and operates other systems under contract for municipal and private clients. Its services include treating, storing, and distributing water for residential, commercial, industrial, and fire protection uses, as well as wastewater collection and treatment. Customers include households, businesses, municipalities, and other public and private entities."
+  },
+  {
     "name": "Midsona",
     "ticker": "MSON-B.ST",
     "exchange": "Stockholm",
@@ -5643,6 +7561,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "MilDef Group AB supplies rugged IT solutions, systems integration and related services for defense and security customers. Its offering includes hardware, software and support designed to operate in demanding environments and to enable secure, resilient and interoperable tactical communications and command systems. The company serves customers across multiple markets through its international operations."
   },
   {
+    "name": "MillerKnoll",
+    "ticker": "MLKN",
+    "exchange": "Listed",
+    "url": "reports/millerknoll-equity-report.html",
+    "description": "MillerKnoll researches, designs, manufactures, sells, and distributes interior furnishings for residential, office, healthcare, educational, industrial, and public settings. Its products include seating, furniture systems, freestanding furniture, storage, textiles, leather, felt, and acoustic products, alongside related services and technology. The company serves organizations and individuals worldwide through independent dealers, direct sales, retailers, eCommerce platforms, catalogs, and its own retail stores."
+  },
+  {
+    "name": "MiMedx Group",
+    "ticker": "MDXG",
+    "exchange": "Listed",
+    "url": "reports/mimedx-group-equity-report.html",
+    "description": "MiMedx Group provides products for wound care, burn treatment, and surgical applications. Its portfolio includes human placental allografts, an animal-derived collagen matrix, and distributed wound-care products such as platelet-rich plasma gel, bioglass and collagen dressings, and peptide matrix. Clinicians use its products to help treat chronic and hard-to-heal wounds and support healing in surgical specialties."
+  },
+  {
+    "name": "Minerals Technologies",
+    "ticker": "MTX",
+    "exchange": "Listed",
+    "url": "reports/minerals-technologies-equity-report.html",
+    "description": "Minerals Technologies develops, produces, and markets minerals, mineral-based products, and related services. Its Consumer & Specialties segment supplies household and personal care products, including cat litter, and specialty additives used in consumer and industrial goods. Its Engineered Solutions segment provides engineered systems, mineral blends, and technologies for industrial customers seeking to improve manufacturing processes and projects."
+  },
+  {
     "name": "Minesto",
     "ticker": "MINEST.ST",
     "exchange": "Stockholm",
@@ -5662,6 +7601,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/mips-equity-report.html",
     "description": "Mips AB develops and sells helmet-based safety systems designed to reduce rotational motion in certain angled impacts. Its technology is integrated into helmets for cycling, skiing, motorcycling, horse riding, climbing, and construction and industry use, and is sold primarily to helmet manufacturers worldwide as a component within finished helmet products."
+  },
+  {
+    "name": "MKS",
+    "ticker": "MKSI",
+    "exchange": "Listed",
+    "url": "reports/mks-equity-report.html",
+    "description": "MKS provides technology solutions for semiconductor manufacturing, electronics and packaging, and specialty industrial applications. Its products include instruments, subsystems, systems, process-control solutions, and specialty chemicals. Services include design and development, system integration, training, calibration, maintenance, and repair. Customers include semiconductor manufacturers and companies using laser-based guidance and control for manufacturing, including printed circuit board and package substrate production."
   },
   {
     "name": "Moberg Pharma",
@@ -5727,6 +7673,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Monsenso A/S develops a digital health software platform for mental health care and research. Its cloud-based solution collects patient-reported and sensor data from smartphones and wearables, supports remote monitoring and treatment support, and gives clinicians a web portal for viewing patient information. The company also serves healthcare providers, researchers and pharmaceutical users."
   },
   {
+    "name": "Monte Rosa Therapeutics",
+    "ticker": "GLUE",
+    "exchange": "Listed",
+    "url": "reports/monte-rosa-therapeutics-equity-report.html",
+    "description": "Monte Rosa Therapeutics is a clinical-stage biotechnology company developing small-molecule molecular glue degraders designed to direct selected proteins for degradation. Its discovery platform combines artificial intelligence and machine learning with proprietary experimental tools to identify targets and develop drug candidates. Its clinical programs address immune-mediated, inflammatory, and cancer diseases; Novartis holds an exclusive license for its VAV1-directed program."
+  },
+  {
     "name": "MoveByBike Europe",
     "ticker": "MBBAB.ST",
     "exchange": "Stockholm",
@@ -5755,6 +7708,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "MPC Container Ships ASA owns and operates a portfolio of small to mid-size container ships, primarily on fixed-rate charters serving intra-regional trade lanes. The company earns revenue from chartering its fleet to customers worldwide and focuses on fleet renewal, operational efficiency, and capital allocation. It is headquartered in Oslo and listed on the Oslo Stock Exchange."
   },
   {
+    "name": "MSA Safety Incorporated",
+    "ticker": "MSA",
+    "exchange": "Listed",
+    "url": "reports/msa-safety-incorporated-equity-report.html",
+    "description": "MSA Safety designs, manufactures and sells industrial safety products for people and facilities. Its portfolio includes gas and flame detection systems, fire-service equipment, personal protective equipment, and connected safety products and services. In 2026, MSA completed its acquisition of Autronica Fire and Security, adding fire detection and security solutions. Customers operate in fire service, energy, utilities, construction, manufacturing and other industrial settings."
+  },
+  {
     "name": "MT Højgaard Holding",
     "ticker": "MTHH.CO",
     "exchange": "Copenhagen",
@@ -5776,6 +7736,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Munters Group AB is a global provider of energy-efficient air treatment solutions for industrial and agricultural applications. Its offerings include dehumidification, cooling, and air quality systems used in food processing, pharmaceuticals, data centers, and livestock and greenhouse operations. The company also provides related service and support across its installed base."
   },
   {
+    "name": "Murphy Oil",
+    "ticker": "MUR",
+    "exchange": "Listed",
+    "url": "reports/murphy-oil-equity-report.html",
+    "description": "Murphy Oil is an oil and natural gas exploration and production company with onshore and offshore operations. It produces crude oil, condensate, natural gas, and natural gas liquids, primarily in the United States and Canada, and explores for these resources in targeted areas worldwide. Its reported operating regions include the United States, Canada, and other countries."
+  },
+  {
     "name": "Musti Group",
     "ticker": "MUSTI.HE",
     "exchange": "Helsinki",
@@ -5788,6 +7755,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/mycronic-equity-report.html",
     "description": "Mycronic AB develops, manufactures and markets high-precision production equipment for the electronics industry. Its product areas include PCB assembly solutions, photomask equipment for displays and semiconductors, dispensing and coating systems, bare board testing, and die bonding. The company serves electronics manufacturers by combining precision, flexibility, productivity, and long product lifecycles."
+  },
+  {
+    "name": "MYR Group",
+    "ticker": "MYRG",
+    "exchange": "Listed",
+    "url": "reports/myr-group-equity-report.html",
+    "description": "MYR Group provides specialty electrical construction services through subsidiaries serving electric utilities and commercial and industrial markets in the United States and Canada. Its work includes design, engineering, procurement, construction, upgrades, maintenance, and repairs. Projects cover transmission lines, substations, distribution systems, facilities, transportation systems, roadway lighting, and electric vehicle charging infrastructure, for utility customers, contractors, and facility owners."
+  },
+  {
+    "name": "N-able",
+    "ticker": "NABL",
+    "exchange": "Listed",
+    "url": "reports/n-able-equity-report.html",
+    "description": "N-able provides cybersecurity and IT management software for businesses and the technology providers that support them. Its platform covers unified endpoint management, security operations, and data protection, including device and network management, threat detection and response, and data backup and recovery. It sells primarily through managed service providers, resellers, distributors, and other channel partners."
   },
   {
     "name": "Nanexa",
@@ -5818,6 +7799,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Napatech A/S develops programmable Smart Network Interface Cards (SmartNICs) and Data Processing Units for cloud, enterprise, and telecom data centers. Its products and software are used to accelerate AI, network, storage, and security workloads, with a focus on packet capture, inline processing, virtualization, and related data-delivery applications."
   },
   {
+    "name": "Napco Security Technologies",
+    "ticker": "NSSC",
+    "exchange": "Listed",
+    "url": "reports/napco-security-technologies-equity-report.html",
+    "description": "NAPCO designs and manufactures electronic security equipment and provides cellular communication services for intrusion and fire alarm systems, alongside school safety solutions. Its products include access control systems, locks, intrusion and fire alarms, video surveillance equipment, door controllers, and cellular communicators. It sells mainly to independent security distributors, dealers, installers, and integrators, who also pay monthly fees for connected services."
+  },
+  {
+    "name": "National Energy Services Reunited",
+    "ticker": "NESR",
+    "exchange": "Listed",
+    "url": "reports/national-energy-services-reunited-equity-report.html",
+    "description": "National Energy Services Reunited provides upstream and midstream oilfield services primarily to oil and natural gas companies in the Middle East and North Africa. Its production services include hydraulic fracturing, coiled tubing, stimulation and pumping, cementing, artificial lift and production management. It also provides drilling and evaluation services, including rigs, downhole tools, directional drilling, well testing and wireline logging."
+  },
+  {
+    "name": "National Vision Holdings",
+    "ticker": "EYE",
+    "exchange": "Listed",
+    "url": "reports/national-vision-holdings-equity-report.html",
+    "description": "National Vision operates optical retail brands including America’s Best, Eyeglass World and Vista Optical locations in select Fred Meyer stores and military bases. It provides eye exams, eyeglasses and contact lenses through retail stores and consumer websites, including DiscountContacts.com. Its customers are consumers across income levels seeking access to eye care and eyewear, with stores also offering remote telehealth capabilities."
+  },
+  {
     "name": "Navamedic",
     "ticker": "NAVA.OL",
     "exchange": "Oslo",
@@ -5830,6 +7832,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/ncab-group-equity-report.html",
     "description": "NCAB Group is a global full-service supplier of printed circuit boards. It sources PCBs from selected manufacturers, mainly in Asia, and manages design support, prototyping, production, quality control and final delivery for customers. The company serves OEM, ODM and EMS clients across industries including automotive, industrial, medical, telecom, defense and other electronics applications."
+  },
+  {
+    "name": "NCR Atleos",
+    "ticker": "NATL",
+    "exchange": "Listed",
+    "url": "reports/ncr-atleos-equity-report.html",
+    "description": "NCR Atleos provides self-directed banking solutions to financial institutions, merchants, manufacturers, retailers and consumers. Its offerings include ATM and interactive teller machine hardware, software and services, the Allpoint network, and a turnkey ATM-as-a-Service platform. Terminals support cash deposits and withdrawals, account services and payment transactions, while interactive machines also enable more complex services such as account opening and loan applications."
+  },
+  {
+    "name": "NCR Voyix",
+    "ticker": "VYX",
+    "exchange": "Listed",
+    "url": "reports/ncr-voyix-equity-report.html",
+    "description": "NCR Voyix provides commerce technology for retailers and restaurants. Its offerings combine software applications, services, payments, and point-of-sale and self-checkout hardware. The company supports transactions and operations across digital and physical customer channels, including online, in-store, curbside, and mobile settings. Its customers use the platform to manage commerce and customer experiences."
   },
   {
     "name": "Nederman Holding",
@@ -5865,6 +7881,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/neobo-fastigheter-equity-report.html",
     "description": "Neobo Fastigheter AB (publ) is a Swedish real estate company that long-term owns, develops and manages residential rental properties. Its portfolio is concentrated in municipalities with strong demand for housing, and the company focuses on property management, refurbishment and value-enhancing investments to improve rental income, operating income and portfolio quality."
+  },
+  {
+    "name": "Neogen",
+    "ticker": "NEOG",
+    "exchange": "Listed",
+    "url": "reports/neogen-equity-report.html",
+    "description": "Neogen develops, manufactures, and markets products and services for food and animal safety. Its food-safety offerings include diagnostic test kits, consumables, culture media, and software for detecting contaminants and assessing food quality, sold to producers, processors, laboratories, and regulatory agencies. Animal-safety products include veterinary instruments, medicines, vaccines, diagnostics, pest-control products, genomics testing, and drug-detection solutions distributed through industry channels."
   },
   {
     "name": "Neola Medical",
@@ -5923,6 +7946,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Netel Holding AB is a Swedish infrastructure services company that develops and maintains critical infrastructure in telecom, power and infraservices. Its operations cover the full value chain from design and production to construction, maintenance and related civil works. The group serves customers in Sweden, Norway, Finland and Germany through local specialist businesses."
   },
   {
+    "name": "NETGEAR",
+    "ticker": "NTGR",
+    "exchange": "Listed",
+    "url": "reports/netgear-equity-report.html",
+    "description": "NETGEAR provides networking hardware, software and services for businesses, homes and service providers. Its Enterprise segment offers enterprise networking, wireless LAN, cloud-managed platforms, audio and video over Ethernet, and security capabilities for small and medium enterprises. Its Consumer segment supplies WiFi routers and mesh systems, subscription services for performance, security, privacy and support, and portable mobile hotspots and routers."
+  },
+  {
     "name": "Netum Group",
     "ticker": "NETUM.HE",
     "exchange": "Helsinki",
@@ -5965,6 +7995,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Newbury Pharmaceuticals AB is a Swedish hybrid pharmaceutical company focused on the Nordic region and selective international sales. It develops a portfolio of in-licensed and licensed medicines and acts as an exclusive distributor and local representative for partners. Its main focus areas include specialty and branded treatments in oncology, rare diseases, and neurology."
   },
   {
+    "name": "NewMarket",
+    "ticker": "NEU",
+    "exchange": "Listed",
+    "url": "reports/newmarket-equity-report.html",
+    "description": "NewMarket is a holding company whose subsidiaries make and market petroleum additives, antiknock compounds, and specialty materials. Afton develops, manufactures, and sells lubricant and fuel additive products worldwide, working with customers across major global regions. Ethyl markets antiknock compounds in North America and provides contract manufacturing services. AMPAC and Calca produce specialty materials and hydrazine products primarily for aerospace and defense customers."
+  },
+  {
     "name": "Nexam Chemical Holding",
     "ticker": "NEXAM.ST",
     "exchange": "Stockholm",
@@ -6005,6 +8042,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/nextcell-pharma-equity-report.html",
     "description": "NextCell Pharma AB is a Swedish biopharmaceutical company focused on cell therapies and advanced therapy medicinal products. Its main businesses are ProTrans, a stromal cell therapy in development for autoimmune and inflammatory diseases, Cellaviva, a private stem cell bank, and QVance, which provides analytical services for advanced therapies."
+  },
+  {
+    "name": "NextNav",
+    "ticker": "NN",
+    "exchange": "Listed",
+    "url": "reports/nextnav-equity-report.html",
+    "description": "NextNav provides positioning, navigation, and timing services designed to complement or back up satellite-based GPS. Its ground-based transmitter network uses low-band spectrum to provide signals for location and timing, including indoors and in urban areas. Its Pinnacle technology uses barometric sensors and a network of sensors to determine vertical location, supporting applications such as public safety and emergency dispatch."
   },
   {
     "name": "NGS Group",
@@ -6117,6 +8161,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/nobia-equity-report.html",
     "description": "Nobia AB is a Nordic kitchen specialist that develops, produces and sells kitchen solutions under brands including HTH, Marbodal, Sigdal, Invita, Norema and uno form. It serves consumers, professional customers and project clients through own stores, franchise outlets and retailers, and also provides design, advice, installation and related kitchen products."
+  },
+  {
+    "name": "Noble Corporation",
+    "ticker": "NE",
+    "exchange": "Listed",
+    "url": "reports/noble-corporation-equity-report.html",
+    "description": "Noble Corporation provides contract drilling services to the international oil and gas industry using mobile offshore drilling units. Its fleet includes floating rigs and jackups deployed in oil and gas basins around the world. Customers primarily include large integrated, independent, and government-owned or controlled oil and gas companies, which contract for drilling services, typically on a dayrate basis."
   },
   {
     "name": "NoHo Partners",
@@ -6287,6 +8338,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "North Media A/S develops and operates platforms and distribution channels that connect businesses with consumers. Its businesses include leaflet and local newspaper distribution, a digital rental-housing marketplace, and secure digital access solutions for buildings and homes. The group focuses on high-volume, low-unit-cost operations supported by technology, automation, and data."
   },
   {
+    "name": "Northwest Natural Holding Company",
+    "ticker": "NWN",
+    "exchange": "Listed",
+    "url": "reports/northwest-natural-holding-company-equity-report.html",
+    "description": "Northwest Natural Holding is a utility holding company with gas, water and wastewater, and renewable natural gas businesses. Its NW Natural utility distributes gas to residential, commercial, and industrial customers in Oregon and southwest Washington, while SiEnergy provides gas distribution and transmission in Texas. NWN Water provides regulated water and wastewater services and unregulated wastewater and operations services across five states."
+  },
+  {
     "name": "Norway Royal Salmon AS",
     "ticker": "NRS.OL",
     "exchange": "Oslo",
@@ -6299,6 +8357,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/norwegian-air-shuttle-equity-report.html",
     "description": "Norwegian Air Shuttle ASA is a Nordic aviation company focused on passenger air transport. It operates scheduled short-haul flights connecting Norway and the wider Nordic region with destinations across Europe, and it also owns Widerøe’s Flyveselskap. The group’s activities include airline operations, aircraft assets, crew and support functions, and related travel services."
+  },
+  {
+    "name": "Norwegian Cruise Line Holdings",
+    "ticker": "NCLH",
+    "exchange": "Listed",
+    "url": "reports/norwegian-cruise-line-holdings-equity-report.html",
+    "description": "Norwegian Cruise Line Holdings operates the Norwegian Cruise Line, Oceania Cruises and Regent Seven Seas Cruises brands. The brands offer voyages to destinations worldwide, with accommodations, dining venues, bars, lounges, spas, casinos, retail areas and entertainment. They also provide shore excursions and packages combining air transportation or hotel stays with cruises. The company serves cruise guests through its fleet of passenger ships."
   },
   {
     "name": "Norwegian Property",
@@ -6315,11 +8380,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "NOTE AB is a Northern European electronics manufacturing services company that produces printed circuit board assemblies, box-build systems and complete electronic products for customers in sectors such as industrial, medtech, communication, greentech, security and defence. Its services span early-stage production engineering, sourcing, manufacturing, testing, final assembly, logistics and after-sales support."
   },
   {
+    "name": "NOV",
+    "ticker": "NOV",
+    "exchange": "Listed",
+    "url": "reports/nov-equity-report.html",
+    "description": "NOV supplies equipment and technology to the global energy industry, supporting drilling, completion and production needs. Its offerings include proprietary technologies, equipment, and aftermarket support for oil and gas operations. The company serves major diversified, national and independent service companies, contractors and energy producers, and provides products and services across its Energy Equipment and Energy Products and Services segments."
+  },
+  {
+    "name": "Novanta",
+    "ticker": "NOVT",
+    "exchange": "Listed",
+    "url": "reports/novanta-equity-report.html",
+    "description": "Novanta supplies proprietary technology components and subsystems to medical, life science, and advanced industrial original equipment manufacturers. Its technologies support precision medicine, precision manufacturing, robotics, automation, and advanced surgery. Products are tailored to demanding applications and used in areas including minimally invasive and robotic surgery, ophthalmology, patient monitoring, drug delivery, laboratory testing, laser materials processing, metrology, and industrial automation."
+  },
+  {
+    "name": "Novavax",
+    "ticker": "NVAX",
+    "exchange": "Listed",
+    "url": "reports/novavax-equity-report.html",
+    "description": "Novavax develops vaccine technologies and vaccine candidates using recombinant protein-based nanoparticles and its Matrix-M adjuvant. Its technology is used in the Nuvaxovid COVID-19 vaccine and in a malaria vaccine developed by a partner. The company also supplies Matrix-M for partner research and development programs, including malaria vaccine collaborations and preclinical and clinical investigations, and advances its own vaccine pipeline."
+  },
+  {
     "name": "Novo Nordisk",
     "ticker": "NOVO-B.CO",
     "exchange": "Copenhagen",
     "url": "reports/novo-nordisk-equity-report.html",
     "description": "Novo Nordisk is a Denmark-based global healthcare company focused on discovering, developing and delivering medicines and delivery systems for diabetes, obesity, rare blood disorders and other chronic diseases. Its portfolio includes insulin, GLP-1 treatments and injection devices, supported by research, manufacturing and global access programs. The company is also streamlining operations to refocus resources on core growth areas."
+  },
+  {
+    "name": "NovoCure Limited",
+    "ticker": "NVCR",
+    "exchange": "Listed",
+    "url": "reports/novocure-limited-equity-report.html",
+    "description": "NovoCure develops and markets medical devices that deliver Tumor Treating Fields, electric fields used as cancer therapy. Its commercial products include Optune Gio for glioblastoma, Optune Lua for metastatic non-small cell lung cancer and pleural mesothelioma, and Optune Pax for locally advanced pancreatic cancer. The company serves patients and healthcare providers in multiple countries."
   },
   {
     "name": "Novotek",
@@ -6364,6 +8457,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "NTS ASA is a Norwegian aquaculture company focused on producing and selling farmed salmon. It also provides services to the seafood industry, including wellboat operations, service vessels, and sea transport. The group has grown through investments in related aquaculture businesses and has aimed to strengthen its position in salmon farming and marine services."
   },
   {
+    "name": "Nurix Therapeutics",
+    "ticker": "NRIX",
+    "exchange": "Listed",
+    "url": "reports/nurix-therapeutics-equity-report.html",
+    "description": "Nurix Therapeutics discovers and develops targeted protein degradation medicines for cancer and inflammatory diseases. Its clinical pipeline includes investigational degraders targeting BTK and CBL-B, while its preclinical work includes additional degraders and degrader antibody conjugates. Nurix also conducts partnered drug discovery programs with pharmaceutical companies, using its DEL-AI platform to identify and advance potential drug candidates."
+  },
+  {
     "name": "Nurminen Logistics",
     "ticker": "NLG1V.HE",
     "exchange": "Helsinki",
@@ -6376,6 +8476,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "NASDAQ",
     "url": "reports/nvidia-equity-report.html",
     "description": "NVIDIA is an accelerated computing company whose investment case is tied to AI data center GPUs, networking, software ecosystems, gaming, professional visualization and automotive platforms. The company page includes a ready paid AI equity report."
+  },
+  {
+    "name": "NVR",
+    "ticker": "NVR",
+    "exchange": "Listed",
+    "url": "reports/nvr-equity-report.html",
+    "description": "NVR constructs and sells single-family detached homes, townhomes, and condominium buildings, primarily on a pre-sold basis, through the Ryan Homes, NVHomes, and Heartland Homes brands. Its offerings serve first-time, move-up, and luxury buyers. To support homebuilding customers, the company also operates mortgage banking and title services businesses, primarily through its subsidiary NVR Mortgage Finance."
   },
   {
     "name": "NYAB",
@@ -6420,6 +8527,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Oceanteam ASA provided offshore services focused on subsea cable and umbilical logistics, equipment rental, cable storage and transport, and project management for renewable energy and oil and gas clients. The company also owned, chartered and managed offshore support vessels and related equipment used in marine operations. Oceanteam merged into Soiltech ASA in 2024."
   },
   {
+    "name": "Ocular Therapeutix",
+    "ticker": "OCUL",
+    "exchange": "Listed",
+    "url": "reports/ocular-therapeutix-equity-report.html",
+    "description": "Ocular Therapeutix develops and commercializes ophthalmic products using its ELUTYX bioresorbable hydrogel technology. Its approved product DEXTENZA treats inflammation and pain after eye surgery and itching associated with allergic conjunctivitis. The company is also developing AXPAXLI for wet age-related macular degeneration and diabetic retinal disease, and OTX-TIC for glaucoma and ocular hypertension."
+  },
+  {
     "name": "Odfjell Drilling",
     "ticker": "ODL.OL",
     "exchange": "Oslo",
@@ -6455,6 +8569,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "OEM International is a European technology trading group that distributes industrial components and systems through local sales companies. It offers more than 60,000 products from over 400 suppliers, supported by technical expertise and application knowledge. The business serves customers mainly in manufacturing and related industrial segments across several Northern and Central European markets."
   },
   {
+    "name": "OGE Energy",
+    "ticker": "OGE",
+    "exchange": "Listed",
+    "url": "reports/oge-energy-equity-report.html",
+    "description": "OGE Energy is the parent company of Oklahoma Gas and Electric Company, a regulated electric utility. Through OG&E, it generates, transmits, distributes, and sells electricity to residential, commercial, and industrial customers in Oklahoma and western Arkansas. Its operations include power generation and grid infrastructure, alongside customer programs and services related to electricity use, account management, and service reliability."
+  },
+  {
     "name": "Ogunsen",
     "ticker": "OGUN-B.ST",
     "exchange": "Stockholm",
@@ -6476,6 +8597,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Olav Thon Eiendom AS is a Norwegian real estate company focused on shopping centres and commercial property. Its portfolio is concentrated in Norway and Sweden, and it leases space for offices, shops, catering, warehouses and logistics. The company is part of the Thon Group, which also has hotel and related property activities."
   },
   {
+    "name": "Olin",
+    "ticker": "OLN",
+    "exchange": "Listed",
+    "url": "reports/olin-equity-report.html",
+    "description": "Olin manufactures and distributes chemical products and ammunition through its Chlor Alkali Products and Vinyls, Epoxy and Winchester segments. Its chemicals include chlorine, caustic soda, vinyl intermediates, chlorinated organics, epoxy materials and resins. Winchester products include sporting and military ammunition, reloading components, industrial cartridges and clay targets. Customers use its products across chemical, industrial and consumer applications."
+  },
+  {
     "name": "Olvi",
     "ticker": "OLVAS.HE",
     "exchange": "Helsinki",
@@ -6488,6 +8616,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/csam-health-group-as-equity-report.html",
     "description": "Omda AS, formerly CSAM Health Group, develops specialised software for healthcare and emergency services. Its products support clinical information management, connected healthcare, maternity and fertility, health analytics, imaging, and emergency workflows. The group serves hospitals and other healthcare providers with tools designed to improve information sharing, operational efficiency, and patient safety."
+  },
+  {
+    "name": "Omnicell",
+    "ticker": "OMCL",
+    "exchange": "Listed",
+    "url": "reports/omnicell-equity-report.html",
+    "description": "Omnicell provides healthcare technology for medication management across care settings. Its offerings combine medication storage and dispensing automation with software and an intelligence ecosystem. Hospital and health system solutions support central pharmacy operations, robotics, sterile compounding, and dispensing in nursing units and procedural areas. Customers include healthcare institutions seeking to support pharmacists and nurses and manage medication workflows."
   },
   {
     "name": "Omnicom Group",
@@ -6539,6 +8674,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Online Brands Nordic AB acquires, owns and develops e-commerce businesses in the Nordic region. The company focuses on buying profitable, fast-growing online brands and supporting them with shared capabilities in sales, marketing and operations. Its portfolio includes consumer-oriented brands such as Trendcarpet, Hatshop, Kitchenlab, Bread & Boxers and Isbjörn."
   },
   {
+    "name": "Opendoor Technologies",
+    "ticker": "OPEN",
+    "exchange": "Listed",
+    "url": "reports/opendoor-technologies-equity-report.html",
+    "description": "Opendoor operates a digital platform for residential real estate transactions, enabling homeowners to buy and sell homes directly with the company. Its online experience uses software, data science and artificial intelligence to support home transactions. The company also integrates related services, including mortgage origination, title and escrow, home warranties and insurance, for residential buyers and sellers."
+  },
+  {
     "name": "Opera Limited",
     "ticker": "OPRA",
     "exchange": "Listed",
@@ -6558,6 +8700,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/opticept-technologies-equity-report.html",
     "description": "OptiCept Technologies develops, manufactures and sells industrial technology platforms for the food and plant industries. Its solutions are based on patented pulsed electric field and vacuum infusion methods used to improve extraction, quality, shelf life and resource efficiency in processing. The company is headquartered in Lund, Sweden, and is publicly listed."
+  },
+  {
+    "name": "Option Care Health",
+    "ticker": "OPCH",
+    "exchange": "Listed",
+    "url": "reports/option-care-health-equity-report.html",
+    "description": "Option Care Health provides infusion therapy at patients’ homes and alternate sites, including ambulatory infusion suites. Its services include clinical management, nursing support, care coordination, counseling, monitoring and reimbursement assistance. The company supplies intravenous pharmaceuticals and compounded solutions for anti-infective, nutrition, immunoglobulin and other acute and chronic therapies. It works with patients, physicians, hospitals, managed care organizations, payers and pharmaceutical manufacturers."
   },
   {
     "name": "Optomed",
@@ -6644,6 +8793,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Ortivus develops and markets digital solutions for pre-hospital and ambulance care. Its MobiMed platform includes electronic patient care records, patient monitoring, fleet management, navigation and case management, and defibrillator products. The company’s business is driven by software and connected medical systems that help emergency services document care, share information, and manage operations."
   },
   {
+    "name": "OSI Systems",
+    "ticker": "OSIS",
+    "exchange": "Listed",
+    "url": "reports/osi-systems-equity-report.html",
+    "description": "OSI Systems designs and manufactures specialized electronic systems and components for security, healthcare, defense, and aerospace markets. Its Security division provides inspection and screening systems, turnkey security solutions, and high-power radio frequency systems. Healthcare offerings include patient monitoring, cardiology, remote monitoring, and connected care systems. The company also supplies electronic components and manufacturing services to original equipment manufacturers and other customers."
+  },
+  {
     "name": "OssDsign",
     "ticker": "OSSD.ST",
     "exchange": "Stockholm",
@@ -6663,6 +8819,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/otello-corporation-equity-report.html",
     "description": "Otello Corporation ASA is a Norwegian holding company listed on the Oslo Stock Exchange. Its remaining principal asset is a significant stake in Bemobi Mobile Tech S.A., a mobile media and entertainment company. Otello’s history includes operations in browsers, mobile advertising and apps, but it now functions mainly as an investment holding company."
+  },
+  {
+    "name": "Otter Tail",
+    "ticker": "OTTR",
+    "exchange": "Listed",
+    "url": "reports/otter-tail-equity-report.html",
+    "description": "Otter Tail Corporation is a holding company with electric utility, manufacturing, and plastics businesses. Its electric utility generates, purchases, transmits, distributes, and sells electricity to customers in parts of Minnesota, North Dakota, and South Dakota. Its manufacturing companies provide metal fabrication and thermoformed plastic products, while its plastics businesses produce PVC pipe used mainly in municipal water infrastructure."
+  },
+  {
+    "name": "Ouster",
+    "ticker": "OUST",
+    "exchange": "Listed",
+    "url": "reports/ouster-equity-report.html",
+    "description": "Ouster provides sensing and perception products for industrial, infrastructure, robotics, and automotive applications. Its platform combines digital lidar sensors, cameras, AI computing, sensor fusion, perception software, and AI models. Customers use its lidar technology for tasks including supply chain automation, public safety, intrusion detection, robotics, and advanced vehicle systems; automotive customers include technology providers, parts suppliers, and manufacturers."
   },
   {
     "name": "Outokumpu",
@@ -6686,11 +8856,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Ovzon AB provides integrated mobile satellite communications services and satellite solutions to customers globally. Its offerings combine high-throughput satellite capacity, mobile terminals, gateway services, network management, and customer support. The company focuses on mission-critical connectivity for defense, national security, and public safety users, and operates commercial service through its proprietary Ovzon 3 satellite."
   },
   {
+    "name": "Owens Corning",
+    "ticker": "OC",
+    "exchange": "Listed",
+    "url": "reports/owens-corning-equity-report.html",
+    "description": "Owens Corning makes building products, including roofing, insulation, and doors and door systems. Its roofing products include laminate asphalt shingles, roofing components, composite lumber, oxidized asphalt, glass mat and specialty veil materials. Insulation products serve homes and other buildings, while doors are designed for residential construction and repair markets. The company sells roofing products through distributors, home centers and lumberyards."
+  },
+  {
     "name": "OXE Marine",
     "ticker": "OXE.ST",
     "exchange": "Stockholm",
     "url": "reports/oxe-marine-equity-report.html",
     "description": "OXE Marine AB develops and sells diesel outboard engines for marine use, with products ranging from 150 to 300 horsepower. The company also offers related service and connectivity solutions, including remote diagnostics through OXE Connect. Its engines are aimed at commercial, governmental, and other demanding marine applications where fuel efficiency, torque, and durability matter."
+  },
+  {
+    "name": "Pacira BioSciences",
+    "ticker": "PCRX",
+    "exchange": "Listed",
+    "url": "reports/pacira-biosciences-equity-report.html",
+    "description": "Pacira BioSciences develops and markets non-opioid pain treatments. Its commercial products include EXPAREL, a long-acting local analgesic approved for postsurgical pain management; ZILRETTA, an extended-release injection indicated for osteoarthritis knee pain; and iovera, a handheld device that uses controlled cold to provide targeted, drug-free pain control. The company also develops gene therapy candidates for osteoarthritis."
   },
   {
     "name": "Pandora",
@@ -6721,6 +8905,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Panostaja Oyj is a Finnish investment company focused on growth-oriented small and medium-sized businesses in the service and software sectors. It acts as an active owner and growth partner, supporting portfolio companies with management tools, financing, strategic development and corporate acquisitions, while seeking value creation through long-term ownership and divestments."
   },
   {
+    "name": "Papa John's International",
+    "ticker": "PZZA",
+    "exchange": "Listed",
+    "url": "reports/papa-john-s-international-equity-report.html",
+    "description": "Papa John’s operates and franchises pizza delivery and carryout restaurants, as well as dine-in and delivery restaurants in some international markets. Its restaurants sell pizza and other food and beverage products under the Papa Johns trademark. The company also conducts franchising and franchise support activities, sells franchise and development rights, and collects royalties from franchisees in the United States and Canada."
+  },
+  {
+    "name": "PAR Technology",
+    "ticker": "PAR",
+    "exchange": "Listed",
+    "url": "reports/par-technology-equity-report.html",
+    "description": "PAR Technology provides cloud-based software, hardware, payment processing, and related services to restaurants and retailers, including convenience and fuel stores. Its offerings include point-of-sale systems, digital ordering and delivery, customer engagement and loyalty tools, operational intelligence, and payment solutions. The company serves quick-service, fast-casual, and table-service restaurants, as well as retail operators, through subscription services and integrated technologies."
+  },
+  {
     "name": "Paradox Interactive",
     "ticker": "PDX.ST",
     "exchange": "Stockholm",
@@ -6749,11 +8947,46 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Partnera Oy, now Foamit Corporation, is a Nordic industrial circular economy group focused on foam glass production and glass recycling. It collects and processes recycled glass and industrial side streams into foam glass for construction and infrastructure, as well as glass fractions for packaging and other industrial uses. The company also holds a minority investment in Nordic Option."
   },
   {
+    "name": "Patrick Industries",
+    "ticker": "PATK",
+    "exchange": "Listed",
+    "url": "reports/patrick-industries-equity-report.html",
+    "description": "Patrick Industries manufactures and distributes components and products for recreational vehicle, marine, powersports, manufactured housing, and industrial markets, including residential construction, hospitality, institutional, and commercial customers. Its offerings include laminated panels, countertops, cabinetry, lighting, electrical and plumbing components, fiberglass products, flooring, doors, appliances, marine hardware, and structural parts. It also provides transportation and logistics services through its nationwide manufacturing and distribution network."
+  },
+  {
+    "name": "Patterson-UTI Energy",
+    "ticker": "PTEN",
+    "exchange": "Listed",
+    "url": "reports/patterson-uti-energy-equity-report.html",
+    "description": "Patterson-UTI Energy provides drilling and completion services to oil and natural gas exploration and production companies. Its services include contract and directional drilling, hydraulic fracturing, wireline, pumping, completion support, cementing, natural gas fueling, and proppant logistics and storage. The company also manufactures and distributes drill bits and downhole tools for energy and mining customers, and supplies electrical controls and automation."
+  },
+  {
     "name": "Paxman",
     "ticker": "PAX.ST",
     "exchange": "Stockholm",
     "url": "reports/paxman-equity-report.html",
     "description": "Paxman AB develops and markets scalp cooling systems used during chemotherapy to help reduce hair loss in cancer patients. The company sells its Paxman and DigniCap systems to hospitals, clinics and treatment centres, and also provides related installation, service and support. Its business is driven by global device sales and recurring treatment-related demand."
+  },
+  {
+    "name": "Paycom Software",
+    "ticker": "PAYC",
+    "exchange": "Listed",
+    "url": "reports/paycom-software-equity-report.html",
+    "description": "Paycom provides cloud-based human capital management software through a software-as-a-service platform. Its applications support the employment lifecycle, including recruitment, onboarding, payroll, benefits, time and labor management, performance, human resources, and employee departures. The platform uses a shared system of record and gives employers and employees access to related information and administrative processes. Paycom sells its solution to organizations and provides client support."
+  },
+  {
+    "name": "Paylocity Holding",
+    "ticker": "PCTY",
+    "exchange": "Listed",
+    "url": "reports/paylocity-holding-equity-report.html",
+    "description": "Paylocity provides cloud-based human capital management, finance and information technology software to businesses. Its platform supports employee processes such as recruiting, onboarding, benefits, payroll and performance management, alongside spend management, accounts payable, corporate cards, procurement and IT provisioning. The company also offers implementation and client services, analytics, reporting and integrations with third-party systems."
+  },
+  {
+    "name": "PC Connection",
+    "ticker": "CNXN",
+    "exchange": "Listed",
+    "url": "reports/pc-connection-equity-report.html",
+    "description": "PC Connection provides information technology products and services to businesses, government agencies, and educational institutions. Its offerings include computer systems, software, data center solutions, security, networking, communications, and peripherals. The company helps customers design, configure, integrate, deploy, and support IT environments, and also offers managed and professional services, global procurement, and product distribution."
   },
   {
     "name": "PCI Biotech Holding",
@@ -6763,6 +8996,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "PCI Biotech Holding ASA is a Norwegian biopharmaceutical company in liquidation that previously developed photochemical technology platforms for life sciences applications. Its work focused on photochemical lysis for viral vector manufacturing and photochemical internalisation for light-triggered intracellular drug delivery. The company has also evaluated other bioprocessing-related opportunities while winding down operations."
   },
   {
+    "name": "PDF Solutions",
+    "ticker": "PDFS",
+    "exchange": "Listed",
+    "url": "reports/pdf-solutions-equity-report.html",
+    "description": "PDF Solutions provides data solutions for companies in the semiconductor and electronics industries. Its offerings include software licenses, maintenance and technical support, software as a service, engineering services, characterization systems, DirectScan systems, Cimetrix runtime licenses, secureWISE data, and variable fees tied to Characterization Vehicle systems. Customers include semiconductor manufacturers, foundries, equipment makers, electronics suppliers, outsourced assembly and test providers, and other industry companies."
+  },
+  {
     "name": "Peab",
     "ticker": "PEAB-B.ST",
     "exchange": "Stockholm",
@@ -6770,11 +9010,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Peab AB is a Nordic construction and civil engineering company with operations organized across construction, civil engineering, industry and project development. It builds and maintains housing, commercial buildings and infrastructure, and supplies materials and services including aggregates, concrete, paving, prefabricated elements, crane and machine rental, and related project support. The group emphasizes local execution supported by central resources."
   },
   {
+    "name": "Pediatrix Medical Group",
+    "ticker": "MD",
+    "exchange": "Listed",
+    "url": "reports/pediatrix-medical-group-equity-report.html",
+    "description": "Pediatrix Medical Group provides physician services in newborn, maternal-fetal, and other pediatric subspecialty care through affiliated clinicians. Its neonatal teams care for premature or medically complicated babies, primarily in hospital neonatal intensive care units. Maternal-fetal clinicians provide inpatient and office-based care to expectant mothers with complicated pregnancies and their unborn babies. The network also includes pediatric intensivists, hospitalists, and surgeons serving hospital clients and patients."
+  },
+  {
+    "name": "Pegasystems",
+    "ticker": "PEGA",
+    "exchange": "Listed",
+    "url": "reports/pegasystems-equity-report.html",
+    "description": "Pegasystems develops, markets, licenses, hosts and supports enterprise software for organizations. Its Pega Infinity portfolio includes artificial intelligence decisioning, workflow automation, customer engagement, customer service, low-code application development, robotic process automation and decision management products. The platform helps businesses and government agencies personalize customer experiences, automate service, streamline operations and workflows, and modernize legacy systems; its customers also use Blueprint to prototype applications."
+  },
+  {
+    "name": "Penguin Solutions",
+    "ticker": "PENG",
+    "exchange": "Listed",
+    "url": "reports/penguin-solutions-equity-report.html",
+    "description": "Penguin Solutions designs, builds, deploys, and manages data centers for enterprises, sovereign AI initiatives, and neocloud providers. Its offerings include AI and high-performance computing systems, infrastructure software, memory solutions, reference architectures, and services spanning design, deployment, optimization, and managed operations. It also provides high-availability and fault-tolerant computing solutions for data center and edge environments."
+  },
+  {
     "name": "Penneo",
     "ticker": "PENNEO.CO",
     "exchange": "Copenhagen",
     "url": "reports/penneo-equity-report.html",
     "description": "Penneo A/S provides a digital trust platform for regulated businesses, centered on electronic signing, identity validation and document workflows. Its software helps companies send, sign, store and manage agreements and reports with eID-based signatures, audit trails, integrations and compliance controls, serving accounting, finance, legal, real estate and HR customers across Europe."
+  },
+  {
+    "name": "Penske Automotive Group",
+    "ticker": "PAG",
+    "exchange": "Listed",
+    "url": "reports/penske-automotive-group-equity-report.html",
+    "description": "Penske Automotive Group operates automotive and commercial truck dealerships across the United States, the United Kingdom, Canada, Germany, Italy, Japan and Australia. Its offerings include new and used vehicles, maintenance and repair, finance and insurance products, extended service contracts, aftermarket products and collision repair. It also distributes and retails commercial vehicles, engines, power systems, parts and related services, principally in Australia and New Zealand."
   },
   {
     "name": "PepsiCo",
@@ -6791,11 +9059,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Per Aarsleff Holding A/S is a Danish engineering and construction group that delivers civil engineering, infrastructure and building projects. Its activities include work in transport and railway infrastructure, climate adaptation, environmental projects, energy facilities and building construction, supported by specialized capabilities in ground engineering, pipe technologies and related contracting services."
   },
   {
+    "name": "Perdoceo Education",
+    "ticker": "PRDO",
+    "exchange": "Listed",
+    "url": "reports/perdoceo-education-equity-report.html",
+    "description": "Perdoceo Education Corporation operates accredited academic institutions offering online, campus-based, and hybrid postsecondary programs. Its institutions provide associate through doctoral degrees, non-degree study, professional development, and continuing education. Programs cover areas including business, technology, criminal justice, nursing, and health sciences. Students include adult learners and members of the military community seeking career-focused education."
+  },
+  {
     "name": "Performance Food Group Company",
     "ticker": "PFGC",
     "exchange": "Listed",
     "url": "reports/performance-food-group-company-equity-report.html",
     "description": "Performance Food Group markets and distributes food and food-related products across North America. Its customers include independent and chain restaurants, schools, healthcare facilities, businesses, retailers, convenience stores, vending and office coffee distributors, and theaters. Its offerings include meat, seafood, frozen and refrigerated foods, groceries, disposables, and kitchen supplies, alongside services such as product procurement, menu development, and operational strategy."
+  },
+  {
+    "name": "Perimeter Solutions, SA",
+    "ticker": "PRM",
+    "exchange": "Listed",
+    "url": "reports/perimeter-solutions-sa-equity-report.html",
+    "description": "Perimeter Solutions supplies industrial products and services through Fire Safety and Specialty Products businesses. Fire Safety offerings include retardants, suppressants, application equipment, and services for wildland, structural, and industrial firefighting. Specialty Products includes lubricant additives, electronic and electromechanical components, and machinery for medical-device manufacturing following its 2026 acquisition of Medical Manufacturing Technologies. Customers include fire agencies and industrial manufacturers."
+  },
+  {
+    "name": "Personalis",
+    "ticker": "PSNL",
+    "exchange": "Listed",
+    "url": "reports/personalis-equity-report.html",
+    "description": "Personalis develops and sells cancer genomic testing services for physicians, pharmaceutical companies, diagnostic companies and population sequencing initiatives. Its tests support detection and monitoring of residual or recurrent cancer, assessment of therapy response, tumor profiling for therapy selection, biomarker discovery and clinical trials. The company also provides whole exome sequencing of cancer samples and whole genome sequencing of human samples."
   },
   {
     "name": "PetroNor E&P",
@@ -6824,6 +9113,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/pharmacolog-i-uppsala-equity-report.html",
     "description": "Pharmacolog i Uppsala AB develops medical technology for the preparation and verification of injectable drugs. Its products, including DrugLog, WasteLog and PrepLog, are used in pharmacies, hospital wards and surgical settings to reduce medication errors, support compounding quality and help detect possible tampering or diversion of controlled substances."
+  },
+  {
+    "name": "PHINIA",
+    "ticker": "PHIN",
+    "exchange": "Listed",
+    "url": "reports/phinia-equity-report.html",
+    "description": "PHINIA develops, designs and manufactures integrated components and systems for combustion and hybrid propulsion in vehicles and industrial applications. Its products include fuel injection systems, fuel delivery modules, canisters, sensors, electronic control modules and associated software, alongside original equipment service solutions. The company also sells remanufactured products, maintenance and diagnostics solutions to independent aftermarket customers."
   },
   {
     "name": "Photocat",
@@ -6889,6 +9185,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Play Magnus AS develops digital chess learning and entertainment products, including the Chessable platform, the Play Magnus app suite, chess24, and the Champions Chess Tour. It also sells chess books and related content through publishing brands such as Everyman Chess and New In Chess. The group was acquired by Chess.com in December 2022."
   },
   {
+    "name": "Playtika Holding",
+    "ticker": "PLTK",
+    "exchange": "Listed",
+    "url": "reports/playtika-holding-equity-report.html",
+    "description": "Playtika operates a portfolio of free-to-play mobile games for players seeking casual and other game experiences. It develops games and provides live game operations and technology services that support engagement, in-game content, and monetization. Its platform helps studios manage games at scale, tailor features and offers to players, and incorporate functional enhancements. The company has grown its portfolio primarily through acquisitions."
+  },
+  {
+    "name": "Polaris",
+    "ticker": "PII",
+    "exchange": "Listed",
+    "url": "reports/polaris-equity-report.html",
+    "description": "Polaris designs, manufactures, and markets powersports vehicles, including off-road vehicles, snowmobiles, moto-roadsters, quadricycles, and boats. Its off-road range includes all-terrain vehicles and side-by-side vehicles for recreation and utility use. The company also designs, manufactures, or sources parts, garments, and accessories, including aftermarket products. It sells online and through independent dealers and distributors serving customers in North America and international markets."
+  },
+  {
     "name": "Polaris Media",
     "ticker": "POL.OL",
     "exchange": "Oslo",
@@ -6924,6 +9234,27 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Ponsse is a Finnish manufacturer of cut-to-length forest machines, including harvesters and forwarders, used in mechanised wood harvesting. It designs and builds machines and key components in Vieremä, and also provides service, maintenance agreements, spare parts and related digital support for customers operating in forestry markets."
   },
   {
+    "name": "Pool",
+    "ticker": "POOL",
+    "exchange": "Listed",
+    "url": "reports/pool-equity-report.html",
+    "description": "Pool Corporation is a wholesale distributor of swimming pool supplies, equipment, and related leisure products, as well as irrigation and landscape maintenance products and hardscapes, tile, and stone. It operates sales centers across North America, Europe, and Australia. Its customers generally include pool builders, pool service companies, retail stores, commercial pool operators, and landscape contractors. The company purchases products from manufacturers and distributes them."
+  },
+  {
+    "name": "Portland General Electric Company",
+    "ticker": "POR",
+    "exchange": "Listed",
+    "url": "reports/portland-general-electric-company-equity-report.html",
+    "description": "Portland General Electric is an investor-owned electric utility serving customers in Oregon. It generates and purchases electricity, then transmits, distributes, and sells power to retail customers across its service territory. The company also participates in wholesale energy markets and manages a portfolio of generation and transmission resources. Its customers include households, businesses, public organizations, and other electricity users in Oregon communities."
+  },
+  {
+    "name": "Power Integrations",
+    "ticker": "POWI",
+    "exchange": "Listed",
+    "url": "reports/power-integrations-equity-report.html",
+    "description": "Power Integrations designs, develops, and markets analog and mixed-signal integrated circuits and other components for high-voltage power conversion. Its products include power-supply ICs, LED drivers, motor drivers, and gate drivers used in electronics, appliances, industrial controls, lighting, electric vehicles, and renewable-energy systems. The company also provides technical documentation, design-support tools, and services to help customers use its products."
+  },
+  {
     "name": "PowerCell Sweden",
     "ticker": "PCELL.ST",
     "exchange": "Stockholm",
@@ -6936,6 +9267,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/ppg-industries-equity-report.html",
     "description": "PPG Industries manufactures and distributes paints, coatings and specialty products for industrial, commercial and residential uses. Its offerings include architectural coatings, aerospace coatings, automotive refinish products, adhesives, sealants and related services. Customers include painting and maintenance contractors, consumers, industrial equipment makers, packaging and automotive manufacturers, aircraft operators, and businesses in marine and other markets. Products reach customers through stores, distributors and direct sales."
+  },
+  {
+    "name": "Precigen",
+    "ticker": "PGEN",
+    "exchange": "Listed",
+    "url": "reports/precigen-equity-report.html",
+    "description": "Precigen is a commercial-stage biopharmaceutical company developing precision medicines for immuno-oncology, autoimmune disorders, and infectious diseases. Its approved product, Papzimeos, is an immunotherapy for adults with recurrent respiratory papillomatosis. The company’s platforms include AdenoVerse immunotherapy and UltraCAR-T, and its pipeline includes clinical-stage candidates for cancer. It also developed the UltraPorator device to support manufacturing of UltraCAR-T therapies."
   },
   {
     "name": "Precio Fishbone",
@@ -6980,11 +9318,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Pricer AB develops and supplies electronic shelf-label systems and related software for retailers. Its offerings include digital shelf-edge labels, optical wireless communication hardware, the Pricer Plaza cloud platform, and tools for price automation, store operations, and shopper information. The company serves grocery, DIY, electronics, and specialty retailers in more than 80 countries."
   },
   {
+    "name": "PriceSmart",
+    "ticker": "PSMT",
+    "exchange": "Listed",
+    "url": "reports/pricesmart-equity-report.html",
+    "description": "PriceSmart operates membership warehouse clubs in Central America, the Caribbean and Colombia, serving consumers and small businesses. Its merchandise includes everyday consumables, private-label products, and other consumable and non-consumable goods. Members can shop in clubs, through the mobile app or online, with home delivery and curbside pickup available through its Click & Go service."
+  },
+  {
     "name": "Prime Office",
     "ticker": "PRIMOF.CO",
     "exchange": "Copenhagen",
     "url": "reports/prime-office-equity-report.html",
     "description": "Prime Office A/S is a Danish listed real estate company that invests primarily in centrally located residential, office and commercial properties, mainly in Germany. Its portfolio combines rental income from housing with office and commercial assets, and the company manages its property investments through acquisitions, ownership and ongoing asset administration."
+  },
+  {
+    "name": "Primo Brands",
+    "ticker": "PRMB",
+    "exchange": "Listed",
+    "url": "reports/primo-brands-equity-report.html",
+    "description": "Primo Brands sells branded water and beverages through retail outlets, hospitality and food service accounts, and direct delivery to homes and businesses. Its offerings include spring, purified, flavored and enhanced beverages, water dispensers and filtration units. Customers can also exchange multi-use water bottles at retail locations or refill them at self-service stations. Its products are distributed across the United States and Canada."
   },
   {
     "name": "Prisma Properties",
@@ -7001,6 +9353,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Proact IT Group AB provides data and information management services with a focus on cloud services and data centre solutions. The company helps customers store, protect, secure, connect and manage business-critical data through hybrid cloud, managed cloud, support, monitoring and consulting services, alongside related cybersecurity, infrastructure and Microsoft consulting offerings."
   },
   {
+    "name": "Procore Technologies",
+    "ticker": "PCOR",
+    "exchange": "Listed",
+    "url": "reports/procore-technologies-equity-report.html",
+    "description": "Procore Technologies provides construction management software for owners, general contractors, and specialty contractors. Its integrated product categories cover preconstruction, project execution, resource management, and financial management, supporting project workflows, information access, analytics, communication, and collaboration. The platform also offers integrations through APIs and an app marketplace. Customers range from small construction businesses to global enterprises and access products primarily through subscriptions."
+  },
+  {
     "name": "ProfilGruppen",
     "ticker": "PROF-B.ST",
     "exchange": "Stockholm",
@@ -7015,11 +9374,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Profoto Holding AB (publ) develops and sells lighting equipment for professional photography, including flashes, light shapers and related accessories. Its products combine hardware and software and are distributed through dealers to professional photographers and commercial customers, such as brands and e-commerce operators, in markets across Europe, North America and Asia."
   },
   {
+    "name": "Progyny",
+    "ticker": "PGNY",
+    "exchange": "Listed",
+    "url": "reports/progyny-equity-report.html",
+    "description": "Progyny provides employers with fertility, family building and women’s health benefits for employees and covered dependents. Its offerings include fertility, pregnancy and postpartum, menopause and midlife, benefit and leave navigation, and parent and child wellbeing solutions. The company supports members with education, coaching, concierge assistance and digital tools, and provides access to a network of fertility and women’s health specialists."
+  },
+  {
     "name": "Promimic",
     "ticker": "PRO.ST",
     "exchange": "Stockholm",
     "url": "reports/promimic-equity-report.html",
     "description": "Promimic AB (publ) develops and commercializes biomaterial surface treatments for medical implants. Its HA nano Surface technology is applied to implant materials to improve osseointegration, and the company works with medical device manufacturers in dental and orthopedic markets. It also supports production and commercialization through partners and its US operations."
+  },
+  {
+    "name": "ProPetro Holding",
+    "ticker": "PUMP",
+    "exchange": "Listed",
+    "url": "reports/propetro-holding-equity-report.html",
+    "description": "ProPetro provides energy services to upstream oil and gas exploration and production companies, primarily in the Permian Basin. Its services include hydraulic fracturing, wireline, cementing, and wet sand solutions for well completions. Through its PROPWR subsidiary, it also provides turnkey mobile power generation for oil and gas producers, industrial projects, and data centers."
   },
   {
     "name": "Prosafe SE",
@@ -7034,6 +9407,27 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/prostatype-genomics-equity-report.html",
     "description": "Prostatype Genomics AB develops, manufactures and markets Prostatype®, a CE-marked genomic test for prostate cancer. The test analyzes biopsy tissue together with clinical parameters to help assess tumor aggressiveness and support treatment decisions. The company’s value drivers are test sales, laboratory services and ongoing commercialization efforts in Europe and the United States, including reimbursement approvals."
+  },
+  {
+    "name": "Protagonist Therapeutics",
+    "ticker": "PTGX",
+    "exchange": "Listed",
+    "url": "reports/protagonist-therapeutics-equity-report.html",
+    "description": "Protagonist Therapeutics discovers and develops peptide medicines for inflammatory, immunologic, hematologic, and metabolic diseases. Its partnered products include ICOTYDE (icotrokinra), an approved oral IL-23 receptor antagonist for plaque psoriasis commercialized by Johnson & Johnson, and MIMRYLO (rusfertide), approved for erythrocytosis in adults with polycythemia vera and commercialized by Takeda. The company also advances wholly owned peptide drug candidates."
+  },
+  {
+    "name": "Proto Labs",
+    "ticker": "PRLB",
+    "exchange": "Listed",
+    "url": "reports/proto-labs-equity-report.html",
+    "description": "Proto Labs provides digital manufacturing services through its own factories and a network of manufacturing partners. It makes custom prototype and low-volume production parts using injection molding, CNC machining, 3D printing, and sheet metal fabrication, and provides access to additional manufacturing processes through its partner network. Its customers include product developers, engineers, and supply chain teams across industries, from prototyping through production and replacement parts."
+  },
+  {
+    "name": "PTC Therapeutics",
+    "ticker": "PTCT",
+    "exchange": "Listed",
+    "url": "reports/ptc-therapeutics-equity-report.html",
+    "description": "PTC Therapeutics is a global biopharmaceutical company that discovers, develops, and commercializes medicines for rare disorders in children and adults. Its portfolio includes treatments for phenylketonuria, Duchenne muscular dystrophy, AADC deficiency, and other rare conditions, alongside product candidates in development. The company’s therapeutic focus includes neurology and metabolism. It also holds commercialization rights for certain rare disease medicines in Latin America and the Caribbean."
   },
   {
     "name": "Public Property Invest AS",
@@ -7055,6 +9449,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/punamusta-media-equity-report.html",
     "description": "PunaMusta Media Oyj, now Rebl Group Oyj, is a Finnish company focused on printing, visibility and digital services. Its business includes magazine and newspaper printing, advertising and marketing materials, large-format and signage solutions, digital visibility, brand and product information management, and related design, content production and media sales services."
+  },
+  {
+    "name": "PureCycle Technologies",
+    "ticker": "PCT",
+    "exchange": "Listed",
+    "url": "reports/purecycle-technologies-equity-report.html",
+    "description": "PureCycle Technologies uses a dissolution process to recycle polypropylene plastic waste into purified recycled resin. Its process separates color, odor, and other contaminants from feedstock, then produces resin pellets for use in manufacturing. The company’s customers are businesses seeking recycled polypropylene for products and packaging. Feedstock may include discarded consumer packaging and other polypropylene materials that would otherwise be disposed of."
   },
   {
     "name": "Purmo Group",
@@ -7134,11 +9535,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Qt provides software development tools and frameworks for building cross-platform applications across desktop, mobile, embedded, XR and web environments. Its portfolio includes the Qt Framework, Qt Creator IDE, Qt Design Studio and other tooling for development, testing, localization and deployment, along with software quality products such as Squish, Coco, Test Center and Axivion."
   },
   {
+    "name": "Quaker Chemical",
+    "ticker": "KWR",
+    "exchange": "Listed",
+    "url": "reports/quaker-chemical-equity-report.html",
+    "description": "Quaker Chemical Corporation, operating as Quaker Houghton, develops, produces and markets specialty chemical products and chemical management services for industrial and manufacturing applications. Its products include metal removal and forming fluids, corrosion inhibitors, hydraulic fluids, rolling lubricants, surface solutions and specialty greases. Customers include steel, aluminum, automotive, aerospace, offshore, can, mining and metalworking companies."
+  },
+  {
     "name": "QUALCOMM Incorporated",
     "ticker": "QCOM",
     "exchange": "Listed",
     "url": "reports/qualcomm-incorporated-equity-report.html",
     "description": "QUALCOMM develops and commercializes technologies for computing, connectivity, artificial intelligence, software, sensing, security, and advanced packaging. Its products include integrated circuit platforms and system software for handsets, automotive, Internet of Things, and data center applications. The company also licenses intellectual property, including patent rights used in wireless products, and makes strategic investments. Customers and users span industries and device makers worldwide."
+  },
+  {
+    "name": "Qualys",
+    "ticker": "QLYS",
+    "exchange": "Listed",
+    "url": "reports/qualys-equity-report.html",
+    "description": "Qualys provides a cloud-based platform of information technology, security and compliance solutions. Its software helps organizations inventory internal and external IT and operational technology assets, assess security and compliance, identify and prioritize vulnerabilities, quantify cyber risk, and recommend, implement and verify remediation. Customers range from large global organizations to small businesses, with tools serving IT, security, application, endpoint, developer and cloud teams."
   },
   {
     "name": "Quanta Services",
@@ -7155,6 +9570,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Quantafuel ASA develops and operates technology for chemical recycling of post-consumer plastic waste. The company processes mixed and contaminated plastics into pyrolysis-based liquid products and feedstock for new plastics, using purification and catalytic steps to upgrade waste into reusable materials. Its business is built around waste collection, processing capacity, and product output from recycling plants."
   },
   {
+    "name": "Quantum Computing",
+    "ticker": "QUBT",
+    "exchange": "Listed",
+    "url": "reports/quantum-computing-equity-report.html",
+    "description": "Quantum Computing, Inc. develops machines using integrated photonics and nonlinear quantum optics for quantum computing, machine learning, remote sensing, imaging, and cybersecurity applications. Its Entropy Quantum Computer is designed to address complex optimization problems using photonic technology. The company also offers products integrated with its Qatalyst software platform, serving applications that require computational processing and information technology."
+  },
+  {
     "name": "Quartiers Properties",
     "ticker": "BOHO.ST",
     "exchange": "Stockholm",
@@ -7169,6 +9591,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Questback Group AS provides a survey and feedback software platform used by organizations to collect, analyze and act on input from customers, employees and other stakeholders. Its services include survey design and distribution, analytics, consulting and support, with subscription-based products centered on the Questback Essentials platform for experience management and decision support."
   },
   {
+    "name": "QuidelOrtho",
+    "ticker": "QDEL",
+    "exchange": "Listed",
+    "url": "reports/quidelortho-equity-report.html",
+    "description": "QuidelOrtho develops and sells diagnostic testing products and solutions in immunoassay, molecular testing, clinical chemistry, and transfusion medicine. Its portfolio includes laboratory instruments and tests, point of care and molecular diagnostics, and transfusion medicine products. It sells directly and through distributors for professional and individual use. Customers include hospitals, laboratories, physician offices, clinics, pharmacies, blood banks, and donor centers."
+  },
+  {
+    "name": "QuinStreet",
+    "ticker": "QNST",
+    "exchange": "Listed",
+    "url": "reports/quinstreet-equity-report.html",
+    "description": "QuinStreet operates performance marketplaces and marketing technologies for financial services and home services companies. It connects high-intent digital media traffic with client offerings and provides qualified clicks, leads, calls, applications, and customers through online marketing programs. Its media sources include search, websites, email, social and mobile programs, call centers, and media partnerships; clients generally pay per click, lead, or other action."
+  },
+  {
     "name": "Railcare Group",
     "ticker": "RAIL.ST",
     "exchange": "Stockholm",
@@ -7181,6 +9617,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/raisio-equity-report.html",
     "description": "Raisio plc is a Finnish food company that develops, manufactures and markets branded breakfast, snack and heart-health products, including Elovena and Benecol, as well as selected pasta, flour and plant-based food solutions. It also supplies plant stanol ester and other ingredients to industrial customers in Europe and other markets."
+  },
+  {
+    "name": "Rambus",
+    "ticker": "RMBS",
+    "exchange": "Listed",
+    "url": "reports/rambus-equity-report.html",
+    "description": "Rambus provides semiconductor chips, silicon intellectual property and patents for data-intensive computing systems. Its memory interface chipsets support DDR5 and LPDDR5 server and client memory modules, while its digital controller and security IP are used in accelerated computing and data protection applications. Customers include memory module manufacturers, original equipment manufacturers and hyperscalers, served directly and through distributors."
   },
   {
     "name": "Rana Gruber",
@@ -7202,6 +9645,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/rapala-vmc-equity-report.html",
     "description": "Rapala VMC Corporation is a global manufacturer and seller of fishing lures, treble hooks, fishing accessories and filleting knives. It also markets ice augers, baits and selected third-party products through distributors and retailers. The company earns most of its revenue from its own branded products, supported by production, sourcing and distribution across its value chain."
+  },
+  {
+    "name": "Rapid7",
+    "ticker": "RPD",
+    "exchange": "Listed",
+    "url": "reports/rapid7-equity-report.html",
+    "description": "Rapid7 provides cybersecurity software and services for organizations seeking to improve security operations. Its offerings include managed detection and response, security information and event management, and exposure management, delivered through an integrated platform with threat detection, response, automation, and risk research capabilities. Customers across industries and organization sizes use its technology, services, and research."
   },
   {
     "name": "Raute",
@@ -7274,6 +9724,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Refine Group AB (publ) builds and develops brands in digital commerce. Its portfolio includes consumer products and lifestyle brands, alongside digital services that support online sales, marketing, and e-commerce operations. The group earns revenue from product sales and service fees, and it has also added a digital assets business area."
   },
   {
+    "name": "Regal Rexnord",
+    "ticker": "RRX",
+    "exchange": "Listed",
+    "url": "reports/regal-rexnord-equity-report.html",
+    "description": "Regal Rexnord provides products and subsystems that power, transmit and control motion. Its portfolio includes electric motors, air-moving systems, power transmission components, conveyor products, automation controls, drives, precision motors and actuators. Customers operate in factory automation, food and beverage, aerospace, medical, data center, general industrial, energy, mining, HVAC and residential and commercial markets."
+  },
+  {
     "name": "Rejlers",
     "ticker": "REJL-B.ST",
     "exchange": "Stockholm",
@@ -7309,6 +9766,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Remedy Entertainment is a Finnish video game company that develops story-driven action games for PC and consoles. Its portfolio includes the Control and Alan Wake franchises, and it also builds the proprietary Northlight engine and related tools. The company works with publishing and co-development partners and is moving toward self-publishing selected owned games."
   },
   {
+    "name": "Remitly Global",
+    "ticker": "RELY",
+    "exchange": "Listed",
+    "url": "reports/remitly-global-equity-report.html",
+    "description": "Remitly provides cross-border financial services to consumers and businesses. Its platform primarily enables customers to send money internationally through a mobile app, website, or messaging services, and allows them to track transactions. Recipients can receive funds through its disbursement network. The company also describes offerings for high-amount senders, businesses, and receivers, building on global money movement."
+  },
+  {
     "name": "ResMed",
     "ticker": "RMD",
     "exchange": "Listed",
@@ -7323,6 +9787,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Revenio Group is a global provider of eye care diagnostic and vision care technology. It sells tonometers, retinal imaging devices, perimeters, OCT and refraction systems, plus clinical software under the iCare and Visionix brands. The company serves optometry, optical retail and ophthalmology, and in 2026 expanded through the acquisition of Visionix."
   },
   {
+    "name": "Revvity",
+    "ticker": "RVTY",
+    "exchange": "Listed",
+    "url": "reports/revvity-equity-report.html",
+    "description": "Revvity provides health science products, technologies, expertise, and services spanning research, development, diagnosis, and healthcare. Its Life Sciences segment offers products, software, and services for cell, gene, and protein research and drug discovery and development workflows. Customers include pharmaceutical and biotechnology companies, contract research organizations, and academic and government institutions. The company also operates a Diagnostics segment."
+  },
+  {
+    "name": "Reynolds Consumer Products",
+    "ticker": "REYN",
+    "exchange": "Listed",
+    "url": "reports/reynolds-consumer-products-equity-report.html",
+    "description": "Reynolds Consumer Products makes household products for cooking, serving, cleanup and storage, sold under brands such as Reynolds and Hefty and as store brands. Its portfolio includes aluminum foil, parchment and other papers, disposable bakeware, trash and food storage bags, plastic wrap and disposable tableware. Its customers include grocery, mass merchant, warehouse club, discount, drug, home improvement and online retailers."
+  },
+  {
     "name": "Rheinmetall",
     "ticker": "RHM.DE",
     "exchange": "Frankfurt",
@@ -7330,11 +9808,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Rheinmetall AG is an integrated technology group headquartered in Düsseldorf that supplies products and services for the security and defence industry, with activities spanning land, naval, air and space applications. Its portfolio includes military vehicle systems, weapons and ammunition, air defence, digital systems and related training, logistics and support services, alongside mobility and industrial technologies."
   },
   {
+    "name": "Rhythm Pharmaceuticals",
+    "ticker": "RYTM",
+    "exchange": "Listed",
+    "url": "reports/rhythm-pharmaceuticals-equity-report.html",
+    "description": "Rhythm Pharmaceuticals is a biopharmaceutical company developing melanocortin-4 receptor agonists for rare neuroendocrine diseases associated with hyperphagia and severe obesity. Its marketed medicine, IMCIVREE (setmelanotide), is authorized for certain rare MC4R pathway diseases, including Bardet-Biedl syndrome and specified genetic deficiencies. The company is also developing investigational medicines bivamelagon and RM-718 for hypothalamic obesity and related conditions."
+  },
+  {
     "name": "RIAS",
     "ticker": "RIAS-B.CO",
     "exchange": "Copenhagen",
     "url": "reports/rias-equity-report.html",
     "description": "RIAS A/S supplies semi-finished plastics and related building products. Its portfolio includes plastic sheets, rods, tubes, foils and technical and high-performance plastics, together with roof and light-transmission solutions for construction applications. The company serves customers in Denmark and broader Scandinavia through production, processing and distribution from its base in Roskilde."
+  },
+  {
+    "name": "Rigel Pharmaceuticals",
+    "ticker": "RIGL",
+    "exchange": "Listed",
+    "url": "reports/rigel-pharmaceuticals-equity-report.html",
+    "description": "Rigel Pharmaceuticals develops and commercializes therapies for hematologic disorders and cancer. Its marketed medicines include TAVALISSE for chronic immune thrombocytopenia, REZLIDHIA for certain acute myeloid leukemia, GAVRETO for RET-driven lung and thyroid cancers, and VEPPANU (vepdegestrant) for specified advanced breast cancer. Rigel also develops clinical candidates, including R289 for myelodysplastic syndromes, and works with pharmaceutical partners on commercialization."
+  },
+  {
+    "name": "Rigetti Computing",
+    "ticker": "RGTI",
+    "exchange": "Listed",
+    "url": "reports/rigetti-computing-equity-report.html",
+    "description": "Rigetti Computing builds and operates superconducting quantum computers and develops quantum processors using a vertically integrated design and manufacturing platform. It provides access to its quantum computing systems through Rigetti Quantum Cloud Services and public cloud providers, and sells quantum computers to end users. Customers include cloud users, research partners, and academic institutions purchasing systems for computation and research."
   },
   {
     "name": "RISMA Systems",
@@ -7349,6 +9848,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/rivian-automotive-equity-report.html",
     "description": "Rivian is an automotive technology company that develops and manufactures electric vehicles and vertically integrated technologies and services. Its consumer vehicles include the R1T pickup truck and R1S sport utility vehicle, while its commercial van platform supports electric delivery vans. Rivian vehicles are sold directly to consumer and commercial customers. The company also offers software and services, including connected vehicle features and an autonomy platform."
+  },
+  {
+    "name": "Robert Half International",
+    "ticker": "RHI",
+    "exchange": "Listed",
+    "url": "reports/robert-half-international-equity-report.html",
+    "description": "Robert Half provides specialized talent solutions and business consulting through the Robert Half and Protiviti names. Its contract talent services place professionals in finance and accounting, technology, marketing and creative, legal, and administrative and customer support roles. The company also provides permanent placement talent solutions and consulting services, and offers managed technology services such as systems integration and desktop support."
   },
   {
     "name": "Robit",
@@ -7391,6 +9897,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/rockwool-equity-report.html",
     "description": "Rockwool A/S is a global manufacturer of stone wool solutions. Its main business is insulation for buildings and industry, including products for thermal, fire and acoustic performance. The group also offers technical insulation for marine, offshore and process applications, as well as related systems and specialist solutions such as facades and horticultural substrates."
+  },
+  {
+    "name": "Rogers",
+    "ticker": "ROG",
+    "exchange": "Listed",
+    "url": "reports/rogers-equity-report.html",
+    "description": "Rogers Corporation designs and manufactures specialty materials and components for applications where electrical, thermal, or mechanical performance matters. Its products include engineered materials for electronics, wireless infrastructure, data centers, vehicles, aerospace, defense, renewable energy, and industrial uses, as well as cushioning, sealing, and impact protection solutions. Customers include manufacturers and technology companies that incorporate these materials into equipment and finished products."
   },
   {
     "name": "Rollins",
@@ -7442,6 +9955,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Royal Unibrew is a regional multi-beverage company that develops, markets, and distributes a broad portfolio of drinks across Nordic, Baltic, and selected other markets. Its range includes beers, soft drinks, water, energy drinks, cider, ready-to-drink products, wine, and spirits, supported by local brands and partner brands."
   },
   {
+    "name": "RPC",
+    "ticker": "RES",
+    "exchange": "Listed",
+    "url": "reports/rpc-equity-report.html",
+    "description": "RPC, Inc. provides oilfield services and equipment to independent and major oil and gas companies involved in exploration, production, and development. Its Technical Services include pressure pumping, wireline, downhole tools, coiled tubing, and cementing at customer wells. Support Services include rental tools, drill pipe, pipe handling, inspection and storage, plus classroom and computer training supporting customer operations."
+  },
+  {
+    "name": "RPM International",
+    "ticker": "RPM",
+    "exchange": "Listed",
+    "url": "reports/rpm-international-equity-report.html",
+    "description": "RPM International manufactures, markets, and sells specialty chemical products focused on maintenance and improvement needs. Its offerings include specialty paints, protective and industrial coatings, roofing systems, sealants and adhesives, infrastructure repair products, flooring systems, and building envelope solutions. The company serves construction, industrial, specialty, and consumer markets through its subsidiaries and product lines, which include construction products, performance coatings, and consumer businesses."
+  },
+  {
     "name": "RTX",
     "ticker": "RTX.CO",
     "exchange": "Copenhagen",
@@ -7468,6 +9995,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/rusta-equity-report.html",
     "description": "Rusta AB (publ) is a Nordic discount retailer that sells home and leisure products through a network of stores in Sweden, Norway, Finland and Germany, supported by an online channel in Sweden and Finland. Its assortment covers household goods, decor, storage, cleaning, seasonal and leisure items, with value driven by low prices and broad selection."
+  },
+  {
+    "name": "RXO",
+    "ticker": "RXO",
+    "exchange": "Listed",
+    "url": "reports/rxo-equity-report.html",
+    "description": "RXO operates an asset-light transportation brokerage platform serving shippers. Its truck brokerage matches freight with independent carriers using digital technology, while managed transportation offers load planning, procurement, monitoring, analytics and control tower services. It also provides expedited freight, freight forwarding, customs brokerage and middle-mile services. Its last-mile delivery service serves omnichannel and e-commerce retailers and direct-to-consumer manufacturers."
+  },
+  {
+    "name": "Ryder System",
+    "ticker": "R",
+    "exchange": "Listed",
+    "url": "reports/ryder-system-equity-report.html",
+    "description": "Ryder System provides outsourced logistics, transportation, fleet management, and supply chain services across North America. Its offerings include full-service leasing, commercial vehicle rental, vehicle maintenance, integrated logistics, dedicated transportation with vehicles and drivers, warehousing, manufacturing support, and final delivery. Customers across varied industries use Ryder to manage goods movement, fleets, and related operations."
   },
   {
     "name": "S.D. Standard ETC",
@@ -7524,6 +10065,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/saga-pure-equity-report.html",
     "description": "Saga Pure ASA is a listed investment company on the Oslo Stock Exchange that invests in sustainability-related and other assets. It takes positions in both listed and private companies and also works as an active owner and business developer. Its portfolio has included businesses in hydrogen, renewable energy, circular economy and carbon-related technologies."
+  },
+  {
+    "name": "Saia",
+    "ticker": "SAIA",
+    "exchange": "Listed",
+    "url": "reports/saia-equity-report.html",
+    "description": "Saia is a transportation company that provides national less-than-truckload freight services through an integrated network. It transports shipments, generally between 100 and 10,000 pounds, across the contiguous United States, and serves Canada and Mexico through third-party interline carriers. Its additional offerings include time-definite and expedited freight, brokered truckload transportation, and other logistics services for customers across North America."
+  },
+  {
+    "name": "Sally Beauty Holdings",
+    "ticker": "SBH",
+    "exchange": "Listed",
+    "url": "reports/sally-beauty-holdings-equity-report.html",
+    "description": "Sally Beauty Holdings retails and distributes professional beauty supplies through its Sally Beauty and Beauty Systems Group segments. Products include hair color, hair care, styling tools, nail products, and other beauty categories. Sally serves retail consumers and salon professionals through stores and digital channels; Beauty Systems Group distributes exclusively to salons and licensed beauty professionals."
   },
   {
     "name": "SalMar",
@@ -7587,6 +10142,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/sats-equity-report.html",
     "description": "SATS ASA is a Nordic fitness and training company headquartered in Oslo. Through its SATS, ELIXIA and Fresh Fitness brands, it operates fitness clubs across Norway, Sweden, Finland and Denmark, offering gym access, group training, personal training, online training, physiotherapy and related health and fitness services to members."
+  },
+  {
+    "name": "Savers Value Village",
+    "ticker": "SVV",
+    "exchange": "Listed",
+    "url": "reports/savers-value-village-equity-report.html",
+    "description": "Savers Value Village operates thrift stores in the United States, Canada, and Australia under several retail banners. It purchases secondhand clothing, textiles, shoes, accessories, housewares, books, and other goods from nonprofit partners, then processes and sells selected items in its stores. Goods unsuitable for or unsold at retail are sold to wholesale customers for reuse or repurposing."
   },
   {
     "name": "Savosolar",
@@ -7692,6 +10254,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/scanfil-equity-report.html",
     "description": "Scanfil Oyj is a European electronics manufacturing services company that provides design, prototyping, supply chain management, electronics assembly, mechanical assembly and system integration. It supports customers in industrial, energy and cleantech, aerospace and defense, and medtech and life science sectors through contract manufacturing, testing, packaging and global delivery across its production network."
+  },
+  {
+    "name": "ScanSource",
+    "ticker": "SCSC",
+    "exchange": "Listed",
+    "url": "reports/scansource-equity-report.html",
+    "description": "ScanSource distributes technology solutions and services to channel sales partners, including value-added resellers, advisors, independent sales organizations, software vendors, and managed service providers. Its offerings span mobility and barcode products, point-of-sale and payment terminals, physical security, networking, communications, connectivity, software as a service, and cloud services. It provides technical support, configuration, engineering, and related services to partners serving end users."
   },
   {
     "name": "Scape Technologies",
@@ -7841,6 +10410,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "SharkNinja designs and sells small household appliances under the Shark and Ninja brands to consumers in global markets. Its products span cleaning, cooking and beverage preparation, food preparation, beauty, and home environment categories. The company applies product design, engineering, development, and manufacturing capabilities to create and refine appliances, drawing on consumer feedback and reviews to inform product technologies and features."
   },
   {
+    "name": "SI-BONE",
+    "ticker": "SIBN",
+    "exchange": "Listed",
+    "url": "reports/si-bone-equity-report.html",
+    "description": "SI-BONE develops and markets implant systems and instruments for minimally invasive surgery involving the sacroiliac joint and pelvic anatomy. Its portfolio includes titanium implants and implantable bone products used in procedures addressing sacroiliac joint dysfunction, pelvic trauma, and certain spinal conditions. The company serves orthopedic and spine surgeons and patients through clinician training, product support, and sales channels in the United States and internationally."
+  },
+  {
     "name": "Siem Offshore",
     "ticker": "SEA1.OL",
     "exchange": "Oslo",
@@ -7855,6 +10431,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Siili Solutions is an information technology services company that designs and builds AI-powered digital solutions. Its services include software development, digital strategy, data analytics, and innovation work for corporate and public-sector clients. The company focuses on large customers in Finland and selected international markets, with demand driven by digital transformation projects."
   },
   {
+    "name": "Silicon Laboratories",
+    "ticker": "SLAB",
+    "exchange": "Listed",
+    "url": "reports/silicon-laboratories-equity-report.html",
+    "description": "Silicon Laboratories develops secure wireless semiconductor devices and software for connected products. Its integrated hardware and software platforms, development tools, ecosystem, and support help customers design devices for industrial, commercial, home, and life applications. The company focuses on Internet of Things products, including solutions for energy-efficient operation, intelligent data capture, processing, communication, and security."
+  },
+  {
     "name": "Silkeborg IF Invest",
     "ticker": "PFINV.CO",
     "exchange": "Copenhagen",
@@ -7867,6 +10450,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/simcorp-equity-report.html",
     "description": "SimCorp develops integrated investment management software for asset managers, pension funds, insurers, sovereign wealth funds, and other buy-side firms. Its platform supports portfolio construction, trading, risk analytics, operations, accounting, and client reporting across public and private assets. The company also provides managed services and cloud or on-premise deployment options."
+  },
+  {
+    "name": "Simpson Manufacturing Co.",
+    "ticker": "SSD",
+    "exchange": "Listed",
+    "url": "reports/simpson-manufacturing-co-equity-report.html",
+    "description": "Simpson Manufacturing designs, engineers, manufactures, and sells structural solutions for wood, concrete, steel, and masonry construction. Products include connectors, fasteners, anchors, truss plates, lateral-force resisting systems, adhesives, and repair and protection products. The company also offers design and estimating software, engineering services, technical support, training, and digital tools to construction, manufacturing, and retail customers."
   },
   {
     "name": "Simris Alg",
@@ -7890,6 +10480,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "SinterCast develops and supplies process control technology, software, hardware and technical support for the high-volume production of compacted graphite iron in foundries. Its systems use thermal analysis and automated feedforward correction to control casting quality, and the company also offers tracking technologies that help foundries monitor ladles, molds, castings and production performance."
   },
   {
+    "name": "SiteOne Landscape Supply",
+    "ticker": "SITE",
+    "exchange": "Listed",
+    "url": "reports/siteone-landscape-supply-equity-report.html",
+    "description": "SiteOne Landscape Supply distributes landscape supplies wholesale to residential and commercial landscape professionals, primarily private contractors. Its product range includes hardscapes, irrigation supplies, fertilizers and control products, landscape accessories, nursery goods, outdoor lighting and ice melt. The company also provides consultative services such as irrigation project take-offs, commercial project planning, sales lead generation, business operations assistance, product support and technical and management seminars."
+  },
+  {
+    "name": "SiTime",
+    "ticker": "SITM",
+    "exchange": "Listed",
+    "url": "reports/sitime-equity-report.html",
+    "description": "SiTime provides semiconductor-based precision timing solutions for electronic systems. Its products include oscillators, clock integrated circuits, resonators and synchronization software, serving customers across artificial intelligence systems, data centers, communications, enterprise, automotive, industrial, aerospace, defense, mobile, Internet of Things and consumer markets. The company’s solutions provide timing functionality for components such as processors, communication and interface circuits, and radio frequency components."
+  },
+  {
     "name": "Sitowise Group",
     "ticker": "SITOWS.HE",
     "exchange": "Helsinki",
@@ -7902,6 +10506,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/sivers-semiconductors-equity-report.html",
     "description": "Sivers Semiconductors develops semiconductor products through two business areas, Wireless and Photonics. Wireless supplies mmWave beamforming ICs, transceivers and antenna modules for satellite communications, fixed wireless access and 5G/6G networks. Photonics provides high-power lasers and related optical components for data communications, AI infrastructure, sensing and LiDAR applications. The company is also preparing for a potential dual listing in the United States."
+  },
+  {
+    "name": "Six Flags Entertainment",
+    "ticker": "FUN",
+    "exchange": "Listed",
+    "url": "reports/six-flags-entertainment-equity-report.html",
+    "description": "Six Flags Entertainment operates amusement parks, water parks and resort properties in North America. Its family-oriented parks offer rides, recreational facilities and live entertainment to visitors of all ages. The company earns revenue from park admissions, food, merchandise and games, accommodations, and other extra-charge products. Families and young people are among the demographic groups important to its business."
   },
   {
     "name": "SKAKO",
@@ -7930,6 +10541,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/skistar-equity-report.html",
     "description": "SkiStar AB operates alpine ski resorts and mountain destinations in Sweden and Norway, offering ski passes, lodging, rentals, activities, shops, and related guest services. The company also runs hotels and develops property in selected destinations. Its revenues are driven mainly by resort operations, seasonal travel demand, and accommodation and activity sales."
+  },
+  {
+    "name": "Skyworks Solutions",
+    "ticker": "SWKS",
+    "exchange": "Listed",
+    "url": "reports/skyworks-solutions-equity-report.html",
+    "description": "Skyworks develops radio frequency, analog, mixed-signal, power-management and connectivity semiconductors for mobile and connected products. Following its 2026 combination with Qorvo, its portfolio also spans RF gallium nitride, low-voltage power and wired broadband technologies. The company serves smartphone makers and customers in defense and aerospace, automotive, data center, networking and connected-edge markets."
   },
   {
     "name": "Sleep Cycle",
@@ -7981,6 +10599,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Solar A/S is a European sourcing and services company serving professional contractors mainly in electrical, heating and plumbing, ventilation, climate and energy solutions. It supplies a broad range of products and supports customers with logistics, product availability, value-adding services and digital tools designed to improve efficiency and help them run their businesses more effectively."
   },
   {
+    "name": "Solid Power",
+    "ticker": "SLDP",
+    "exchange": "Listed",
+    "url": "reports/solid-power-equity-report.html",
+    "description": "Solid Power develops sulfide-based solid electrolyte materials and solid-state battery cell manufacturing processes, with an initial focus on the electric vehicle market. It produces electrolyte samples and cells for customer sampling, internal development, and partner programs. Its commercialization strategy centers on supplying electrolyte to battery manufacturers and automotive original equipment manufacturers, and licensing cell manufacturing processes and designs."
+  },
+  {
     "name": "Solnaberg Property",
     "ticker": "SOLNA.ST",
     "exchange": "Stockholm",
@@ -8021,6 +10646,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/sonetel-equity-report.html",
     "description": "Sonetel AB (publ) provides a global AI-based communications platform for entrepreneurs and small businesses. Its services include virtual business phone numbers, cloud call forwarding, SIP trunking, interactive voice response, call recording, and AI-generated call, voicemail, and meeting summaries. The company also offers an API for automating number purchase, routing, and related workflows."
+  },
+  {
+    "name": "Sonoco Products Company",
+    "ticker": "SON",
+    "exchange": "Listed",
+    "url": "reports/sonoco-products-company-equity-report.html",
+    "description": "Sonoco designs, develops and manufactures engineered packaging for customers across multiple end markets. Its businesses include Consumer Packaging and Industrial Paper Packaging, as well as an industrial and specialty plastics business. The company offers integrated packaging solutions and customized products intended to address customer packaging needs, support product quality, and shape brand experiences for companies worldwide."
   },
   {
     "name": "Soprano",
@@ -8093,6 +10725,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Spotify Technology S.A. operates a digital audio streaming platform that offers music, podcasts and audiobooks to listeners in many markets. The service is available on mobile, desktop, tablets, cars, speakers and other connected devices, and it generates revenue through both advertising-supported access and paid Premium subscriptions. It also provides discovery and recommendation features for users and creators."
   },
   {
+    "name": "SPS Commerce",
+    "ticker": "SPSC",
+    "exchange": "Listed",
+    "url": "reports/sps-commerce-equity-report.html",
+    "description": "SPS Commerce operates a supply chain network connecting retailers, brands, distributors, manufacturers, and logistics providers with trading partners. Its services support data exchange and commerce processes, including order fulfillment, analytics, item data management, and supplier relationship management. The company maintains connection protocols, compliance rules, and data standards, while providing onboarding, transaction monitoring, exception resolution, professional services, and testing and certification."
+  },
+  {
+    "name": "SPX Technologies",
+    "ticker": "SPXC",
+    "exchange": "Listed",
+    "url": "reports/spx-technologies-equity-report.html",
+    "description": "SPX Technologies supplies engineered infrastructure equipment through its HVAC and Detection and Measurement businesses. HVAC offerings include cooling towers, water management and control systems for cooling applications, air handling, boilers, and heating products. Detection and Measurement products include underground inspection tools, transit fare systems, communications technologies, and navigation lighting. Customers include building operators, utilities, municipalities, transit agencies, and infrastructure contractors."
+  },
+  {
     "name": "SRV Yhtiöt",
     "ticker": "SRV1V.HE",
     "exchange": "Helsinki",
@@ -8107,11 +10753,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "SSH Communications Security develops cybersecurity software for privileged access management, secure communications, key management, secure file transfer and quantum-safe network encryption. Its products help organizations control access to critical systems, protect data in transit and support compliance. The company is also shifting from license and support sales toward a more recurring-revenue business model."
   },
   {
+    "name": "STAAR Surgical Company",
+    "ticker": "STAA",
+    "exchange": "Listed",
+    "url": "reports/staar-surgical-company-equity-report.html",
+    "description": "STAAR Surgical designs, develops, manufactures, and sells implantable eye lenses and delivery systems used to place them. Its principal products are Implantable Collamer Lenses, including the EVO family for myopia and Visian ICL for hyperopia; some models also address astigmatism. These lenses are used in refractive surgery and are sold through company representatives and independent distributors across its markets."
+  },
+  {
     "name": "Standard Supply AS",
     "ticker": "STSU.OL",
     "exchange": "Oslo",
     "url": "reports/standard-supply-as-equity-report.html",
     "description": "Standard Supply AS is a Norwegian listed shipping company that historically owned and operated platform supply vessels serving offshore energy activity. In 2025, the company said it had divested its legacy assets and began shifting toward a new strategy as a Bitcoin reserve company, using new capital to build a cryptocurrency treasury and related investment platform."
+  },
+  {
+    "name": "StandardAero",
+    "ticker": "SARO",
+    "exchange": "Listed",
+    "url": "reports/standardaero-equity-report.html",
+    "description": "StandardAero provides aftermarket services for aircraft engines serving commercial, military and business aviation. Its work includes scheduled and unscheduled engine maintenance, repair and overhaul, component repair, on-wing and field support, asset management and engineering solutions. It also repairs engine components for commercial aerospace, military, land and marine, and oil and gas customers, connecting engine manufacturers with aircraft operators."
+  },
+  {
+    "name": "Standex International",
+    "ticker": "SXI",
+    "exchange": "Listed",
+    "url": "reports/standex-international-equity-report.html",
+    "description": "Standex International is a diversified industrial manufacturer organized across electronics, aerospace and defense, scientific, and engraving and hydraulics businesses. It supplies engineered components, products and solutions tailored to commercial and industrial customer applications. Its electronics offerings include sensing and switching technologies, precision instrument transformers, and magnetic power conversion and measurement components and assemblies used across varied markets."
   },
   {
     "name": "Stanley Black & Decker",
@@ -8170,6 +10837,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "STERIS provides products and services supporting patient care and infection prevention, principally for healthcare providers and medical device and pharmaceutical customers. Its offerings include detergents, barrier products, instruments, sterilizers, surgical tables, and automated endoscope reprocessors. Services include equipment installation and maintenance, instrument and scope repair, laboratory testing, microbial reduction, and outsourced reprocessing. It also offers operating room connectivity solutions."
   },
   {
+    "name": "Sterling Infrastructure",
+    "ticker": "STRL",
+    "exchange": "Listed",
+    "url": "reports/sterling-infrastructure-equity-report.html",
+    "description": "Sterling Infrastructure provides construction and infrastructure services through E-Infrastructure, Transportation and Building Solutions segments, primarily in the United States. Work includes large-scale site development and electrical services, transportation infrastructure and rehabilitation, and concrete foundations and structures. The company also provides plumbing services and surveys for new single-family homes, serving data center, industrial, transportation, residential and commercial projects."
+  },
+  {
+    "name": "Steven Madden",
+    "ticker": "SHOO",
+    "exchange": "Listed",
+    "url": "reports/steven-madden-equity-report.html",
+    "description": "Steven Madden designs, sources, and markets branded and private-label footwear, handbags, apparel, and accessories. Its wholesale customers include department stores, mass merchants, off-price retailers, online retailers, specialty retailers, independent stores, and clubs. It also sells products directly through company-operated retail and outlet stores, international concessions, and e-commerce platforms under brands including Steve Madden, Kurt Geiger, and Dolce Vita."
+  },
+  {
     "name": "Stille",
     "ticker": "STIL.ST",
     "exchange": "Stockholm",
@@ -8182,6 +10863,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/stillfront-group-equity-report.html",
     "description": "Stillfront Group is a global games company that develops and operates digital free-to-play games for mobile and other platforms. Its portfolio includes established franchises and niche titles across strategy, simulation, RPG, action and casual genres. The company generates revenue mainly through in-app purchases, advertising and related game services, supported by studios and central platform functions."
+  },
+  {
+    "name": "Stoke Therapeutics",
+    "ticker": "STOK",
+    "exchange": "Listed",
+    "url": "reports/stoke-therapeutics-equity-report.html",
+    "description": "Stoke Therapeutics develops RNA-based medicines intended to address severe diseases by increasing protein expression. Using its TANGO approach, it designs antisense oligonucleotides to selectively restore protein levels. Its lead investigational medicine, zorevunersen, is in clinical development for Dravet syndrome. The company focuses on diseases involving protein insufficiency, particularly in the central nervous system and eye."
   },
   {
     "name": "Stora Enso",
@@ -8197,6 +10885,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/storytel-equity-report.html",
     "description": "Storytel AB is a Swedish digital platform and publishing group that provides subscription streaming for audiobooks and e-books under the Storytel and Mofibo brands. It operates in more than 25 markets and also runs a publishing business through imprints including Norstedts, StorySide, Printz Publishing, People’s Press, Rabén & Sjögren, B. Wahlströms, Gummerus and Lind & Co."
+  },
+  {
+    "name": "Strategic Education",
+    "ticker": "STRA",
+    "exchange": "Listed",
+    "url": "reports/strategic-education-equity-report.html",
+    "description": "Strategic Education provides campus-based and online post-secondary education, along with programs that develop job-ready skills. Through Capella University, Strayer University, and Torrens University, it offers degree and certificate programs to students, including working adults. Its education technology services include employer education benefits administration through Workforce Edge and online general education courses through Sophia Learning."
+  },
+  {
+    "name": "Stride",
+    "ticker": "LRN",
+    "exchange": "Listed",
+    "url": "reports/stride-equity-report.html",
+    "description": "Stride provides an online learning platform and related curriculum, technology systems, instruction, and student support services. Its General Education programs serve kindergarten through grade twelve learners, while Career Learning offers pathways focused on skills and work experience in fields such as information technology, healthcare, and general business. The company serves public and private schools, districts, charter boards, employers, government agencies, and consumers."
   },
   {
     "name": "StrongPoint",
@@ -8227,6 +10929,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Summa Defence Oyj is a Finnish defence and security technology group. Its businesses have included maritime, land and emerging technologies, such as shipbuilding, machinery and digital systems. The company has been reviewing its group structure and financing alternatives as part of restructuring proceedings that began in October 2026."
   },
   {
+    "name": "Sunrun",
+    "ticker": "RUN",
+    "exchange": "Listed",
+    "url": "reports/sunrun-equity-report.html",
+    "description": "Sunrun designs, develops, installs, sells, owns and maintains residential solar energy systems in the United States. It provides homeowners with solar power through leases and power purchase agreements, and offers battery storage in select markets; customers may also buy systems outright. Sunrun monitors, maintains and insures contracted systems, and serves certain commercial developers through multifamily and new home offerings."
+  },
+  {
     "name": "Suominen",
     "ticker": "SUY1V.HE",
     "exchange": "Helsinki",
@@ -8239,6 +10948,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/super-micro-computer-equity-report.html",
     "description": "Super Micro Computer provides information technology solutions for enterprise, cloud and edge workloads. Its portfolio includes servers, storage systems, networking devices, workstations, blade servers, server subsystems, management software and modular data center infrastructure. Customers include enterprise data centers, cloud service providers and edge computing users. The company also provides installation, upgrade, maintenance and liquid cooling support services."
+  },
+  {
+    "name": "Surgery Partners",
+    "ticker": "SGRY",
+    "exchange": "Listed",
+    "url": "reports/surgery-partners-equity-report.html",
+    "description": "Surgery Partners owns and operates surgical facilities and related healthcare services through subsidiaries. Its operations include ambulatory surgery centers, short stay surgical hospitals, anesthesia services, urgent care facilities, and multispecialty physician practices. Facilities provide planned, primarily nonemergency procedures across specialties such as orthopedics, ophthalmology, gastroenterology, pain management, and general surgery, serving patients and physicians in outpatient care."
   },
   {
     "name": "Surgical Science Sweden",
@@ -8318,6 +11034,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "SynAct Pharma AB is a clinical-stage biotechnology company developing treatments that aim to resolve inflammation rather than suppress the immune system. Its lead candidate, resomelagon (AP1189), is an oral melanocortin agonist in clinical development, alongside injectable peptide compounds. The company focuses on inflammatory and autoimmune diseases, including rheumatoid arthritis, and host-directed treatment in viral infections."
   },
   {
+    "name": "Synaptics Incorporated",
+    "ticker": "SYNA",
+    "exchange": "Listed",
+    "url": "reports/synaptics-incorporated-equity-report.html",
+    "description": "Synaptics designs and supplies silicon and software platforms for edge artificial intelligence, wireless connectivity and human interface technologies. Its products include processors, wireless solutions, touch controllers, biometrics, voice, audio and multimedia technologies. These solutions are designed for connected devices and applications spanning smart homes, industrial and automotive settings, personal computers, mobile products, robotics, wearables, security sensors, cameras and other Internet of Things uses."
+  },
+  {
+    "name": "Syndax Pharmaceuticals",
+    "ticker": "SNDX",
+    "exchange": "Listed",
+    "url": "reports/syndax-pharmaceuticals-equity-report.html",
+    "description": "Syndax Pharmaceuticals develops and commercializes cancer therapies. Its approved medicines include Revuforj, for certain relapsed or refractory acute leukemias, and Niktimvo, for chronic graft-versus-host disease after prior systemic therapies. The company leads Revuforj’s commercialization and development and works with Incyte on Niktimvo. Its clinical programs investigate additional uses of these medicines and other therapeutic opportunities."
+  },
+  {
     "name": "Synsam",
     "ticker": "SYNSAM.ST",
     "exchange": "Stockholm",
@@ -8374,6 +11104,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Tamtron Group Oyj develops and supplies weighing and dosing systems, scale components and related digital services for managing material flows. Its offering covers process, onboard, truck and railway weighing, along with installation, calibration, maintenance and other lifecycle services. The company serves industries including construction, forestry, mining, logistics, ports and recycling."
   },
   {
+    "name": "Tandem Diabetes Care",
+    "ticker": "TNDM",
+    "exchange": "Listed",
+    "url": "reports/tandem-diabetes-care-equity-report.html",
+    "description": "Tandem Diabetes Care designs, develops, and commercializes insulin delivery systems and diabetes technology for people with insulin-dependent diabetes. Its portfolio includes t:slim X2 and Tandem Mobi pump platforms, both featuring Control-IQ+ hybrid closed-loop technology, alongside applications and insights. The company serves people living with diabetes in more than 25 countries."
+  },
+  {
     "name": "Tapestry",
     "ticker": "TPR",
     "exchange": "Listed",
@@ -8381,11 +11118,32 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Tapestry is a global house of accessories and lifestyle brands, including Coach and kate spade new york. Coach sells fashion accessories and lifestyle collections, while kate spade offers handbags, ready-to-wear, jewelry, footwear, gifts, home décor, and related products. The brands reach customers through retail and outlet stores, e-commerce, concession locations, wholesale, and licensing."
   },
   {
+    "name": "Target Hospitality",
+    "ticker": "TH",
+    "exchange": "Listed",
+    "url": "reports/target-hospitality-equity-report.html",
+    "description": "Target Hospitality provides specialty rental accommodations and hospitality services through communities and lodging facilities in the United States and Canada. Its turnkey services include site design, construction, operations, security, housekeeping, catering, concierge services, and health and recreation facilities. Its customers include companies supporting natural resource, critical mineral and data center projects, as well as a U.S. government service provider."
+  },
+  {
     "name": "Targovax",
     "ticker": "CRNA.OL",
     "exchange": "Oslo",
     "url": "reports/targovax-equity-report.html",
     "description": "Targovax ASA is a biotechnology company developing circular RNA and immunotherapy medicines for cancer. Its programs include a proprietary circRNA platform and earlier-stage oncology assets such as ONCOS-102 and mutant RAS cancer vaccine candidates. The company is in a strategic transition toward circRNA-based therapeutics while continuing to advance selected immunotherapy programs."
+  },
+  {
+    "name": "Tarsus Pharmaceuticals",
+    "ticker": "TARS",
+    "exchange": "Listed",
+    "url": "reports/tarsus-pharmaceuticals-equity-report.html",
+    "description": "Tarsus Pharmaceuticals is a commercial-stage biopharmaceutical company developing and commercializing therapeutics, initially focused on eye care. Its marketed product XDEMVY is an ophthalmic solution for Demodex blepharitis. The company also investigates lotilaner-based candidates, including a gel formulation for ocular rosacea and an oral tablet for Lyme disease prophylaxis and community malaria reduction, serving patients with these conditions."
+  },
+  {
+    "name": "Taysha Gene Therapies",
+    "ticker": "TSHA",
+    "exchange": "Listed",
+    "url": "reports/taysha-gene-therapies-equity-report.html",
+    "description": "Taysha Gene Therapies is a clinical-stage biotechnology company developing AAV-based gene therapies for severe monogenic diseases of the central nervous system. Its lead program, TSHA-102, is being evaluated as a treatment for Rett syndrome in clinical trials involving adolescent, adult and pediatric females. The company’s work focuses on developing treatments for patients with severe neurological disease."
   },
   {
     "name": "TCM Group",
@@ -8414,6 +11172,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Oslo",
     "url": "reports/teco-2030-equity-report.html",
     "description": "TECO 2030 is a Norwegian clean technology company focused on developing zero-emission solutions for maritime and heavy industry. It develops PEM hydrogen fuel cell stacks and modules for ships and other heavy-duty applications, and is building production capacity in Narvik, Norway. The company also draws on its maritime technology background and related engineering capabilities."
+  },
+  {
+    "name": "Teladoc Health",
+    "ticker": "TDOC",
+    "exchange": "Listed",
+    "url": "reports/teladoc-health-equity-report.html",
+    "description": "Teladoc Health provides virtual healthcare services and connected care solutions through business-to-business and direct-to-consumer channels. Its Integrated Care segment offers preventive, primary, urgent, mental, and chronic care, plus expert second opinions and referrals to in-person care. Its BetterHelp platform connects individuals with licensed clinicians for online counseling and therapy through web, mobile, phone, and text."
   },
   {
     "name": "Teledyne Technologies Incorporated",
@@ -8451,11 +11216,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Tempest Security AB (publ) provides security services for corporate, public sector and private clients, mainly in Sweden but also internationally. Its offering includes security staffing, investigations, risk consulting, alarm receiving services, CCTV and other technical security solutions, delivered through the Security Solutions and Risk Solutions businesses."
   },
   {
+    "name": "Tennant Company",
+    "ticker": "TNC",
+    "exchange": "Listed",
+    "url": "reports/tennant-company-equity-report.html",
+    "description": "Tennant designs, manufactures, sells, and services products for maintaining nonresidential surfaces. Its offerings include manual and autonomous mechanized cleaning equipment, sustainable cleaning technologies, aftermarket parts and consumables, equipment maintenance and repair, financing, rental and leasing, and asset management solutions. Customers include contract cleaners and businesses that maintain facilities themselves, serving settings such as factories, warehouses, schools, hospitals, retail sites, and public venues."
+  },
+  {
     "name": "Teqnion",
     "ticker": "TEQ.ST",
     "exchange": "Stockholm",
     "url": "reports/teqnion-equity-report.html",
     "description": "Teqnion AB is a Swedish industrial group that owns and develops a portfolio of wholly owned subsidiaries operating in narrow technology niches across industrial markets. The group provides leading products, specialist expertise, and related services, and grows primarily through acquisitions, while each subsidiary remains independently run with local entrepreneurial management."
+  },
+  {
+    "name": "Teradata",
+    "ticker": "TDC",
+    "exchange": "Listed",
+    "url": "reports/teradata-equity-report.html",
+    "description": "Teradata provides an AI and knowledge platform, data and analytics capabilities, and related services for organizations. Its platform supports enterprise workloads across public cloud, private cloud, on-premises, and hybrid environments, with tools for data access, processing, analytics, AI, and machine learning. Customers use these offerings to manage data and workloads and develop AI applications and agents."
   },
   {
     "name": "Terveystalo",
@@ -8480,6 +11259,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Tessin Nordic Holding AB operates a digital platform for real estate financing. It connects investors with property developers and other borrowers seeking funding for residential and commercial projects, mainly through crowdfunding and secured loans. The company’s business is focused on arranging capital for real estate projects in Sweden and the wider Nordic market."
   },
   {
+    "name": "TETRA Technologies",
+    "ticker": "TTI",
+    "exchange": "Listed",
+    "url": "reports/tetra-technologies-equity-report.html",
+    "description": "TETRA Technologies provides energy services and products, industrial chemicals, and develops opportunities related to critical minerals. It supplies clear brine fluids, additives, and related services for oil and gas drilling, completion, and workover operations, and sells calcium chloride for energy and other markets. Its water services include water management, flowback, and production well testing for oil and gas operators."
+  },
+  {
     "name": "Texas Roadhouse",
     "ticker": "TXRH",
     "exchange": "Listed",
@@ -8494,11 +11280,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Textron is a multi-industry company with aircraft, defense, industrial, and finance businesses. Textron Aviation manufactures, sells, and services Cessna and Beechcraft aircraft and supports Hawker business jets, while Bell supplies military and commercial helicopters, tiltrotor aircraft, parts, and services. Across its segments, Textron serves corporate and individual buyers, operators, training schools, airlines, governments, and military customers."
   },
   {
+    "name": "TG Therapeutics",
+    "ticker": "TGTX",
+    "exchange": "Listed",
+    "url": "reports/tg-therapeutics-equity-report.html",
+    "description": "TG Therapeutics is a commercial-stage biotechnology company focused on acquiring, developing and commercializing treatments for B-cell diseases. Its approved medicine BRIUMVI is an infusion for adults with relapsing forms of multiple sclerosis, including clinically isolated syndrome, relapsing-remitting disease and active secondary progressive disease. The company markets BRIUMVI in the United States and works with a partner on commercialization elsewhere."
+  },
+  {
     "name": "TGS",
     "ticker": "TGS.OL",
     "exchange": "Oslo",
     "url": "reports/tgs-equity-report.html",
     "description": "TGS ASA is a global energy data and intelligence company that provides seismic acquisition, multi-client subsurface data, processing and imaging, and digital data solutions for exploration and production clients. It also offers wind, renewable energy, and carbon storage data. In 2026, it sold its North American well data products business, further concentrating on offshore data capabilities."
+  },
+  {
+    "name": "The AES",
+    "ticker": "AES",
+    "exchange": "Listed",
+    "url": "reports/the-aes-equity-report.html",
+    "description": "The AES Corporation develops, owns and operates electric generation businesses and utilities. It sells electricity and associated generation attributes through medium- and long-term power purchase agreements and short-term agreements in regulated and competitive markets. AES also provides renewable energy to corporate customers, including data center and mining companies, and serves utility customers through its AES Indiana and AES Ohio operations."
   },
   {
     "name": "The Boeing Company",
@@ -8508,11 +11308,53 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Boeing develops, produces, and markets commercial jet aircraft for airlines worldwide, including narrow-body and wide-body models designed for passenger and cargo needs. Its Defense, Space & Security business produces and modifies military aircraft, weapons, strategic defense and intelligence systems, satellites, and related products. Boeing Global Services supports commercial and defense customers with logistics, engineering, maintenance, modifications, upgrades, spare parts, training, technical documentation, and digital solutions."
   },
   {
+    "name": "The Cheesecake Factory Incorporated",
+    "ticker": "CAKE",
+    "exchange": "Listed",
+    "url": "reports/the-cheesecake-factory-incorporated-equity-report.html",
+    "description": "The Cheesecake Factory Incorporated owns and operates restaurants in the United States and Canada under The Cheesecake Factory, North Italia, Flower Child, and other Fox Restaurant Concepts brands, and licenses its restaurant brand internationally. Its bakery division produces cheesecakes and other baked goods for its restaurants, international licensees, and third-party bakery customers. Restaurant guests can dine in or order food for off-premise consumption."
+  },
+  {
+    "name": "The Chefs' Warehouse",
+    "ticker": "CHEF",
+    "exchange": "Listed",
+    "url": "reports/the-chefs-warehouse-equity-report.html",
+    "description": "The Chefs’ Warehouse distributes specialty foods, center-of-the-plate products, produce, and broadline food supplies to chefs and foodservice businesses in the United States, Canada, and the Middle East. Customers include independent restaurants, hotels, caterers, country clubs, culinary schools, bakeries, cruise lines, casinos, and specialty food stores. Its Allen Brothers business also sells certain products directly to consumers."
+  },
+  {
     "name": "The Drilling Company of 1972",
     "ticker": "DRLCO.CO",
     "exchange": "Copenhagen",
     "url": "reports/the-drilling-company-of-1972-equity-report.html",
     "description": "The Drilling Company of 1972 A/S, formerly Maersk Drilling, provided offshore oil and gas drilling services through a fleet of jack-up rigs, semi-submersibles and drillships. It also offered related drilling services such as casing running, cementing, cuttings handling, remotely operated vehicles and slops treatment. The company combined with Noble Corporation in October 2022."
+  },
+  {
+    "name": "The Ensign Group",
+    "ticker": "ENSG",
+    "exchange": "Listed",
+    "url": "reports/the-ensign-group-equity-report.html",
+    "description": "The Ensign Group is a holding company whose independent subsidiaries provide skilled nursing, senior living and rehabilitative care, along with ancillary services such as mobile diagnostics and medical transportation. It operates skilled nursing and senior living facilities and acquires, leases, owns and manages healthcare real estate. Its services support patients receiving post-acute care, while some properties are leased to third-party healthcare operators."
+  },
+  {
+    "name": "The GEO Group",
+    "ticker": "GEO",
+    "exchange": "Listed",
+    "url": "reports/the-geo-group-equity-report.html",
+    "description": "The GEO Group owns, leases, and manages secure facilities, processing centers, and reentry facilities, and provides community-based services. Its offerings include facility security and administration, rehabilitation, education, food services, reentry housing and employment assistance, electronic monitoring, supervision, and secure transportation. It also develops facilities for government partners. Customers include government agencies in the United States, Australia, and South Africa."
+  },
+  {
+    "name": "The Gorman-Rupp Company",
+    "ticker": "GRC",
+    "exchange": "Listed",
+    "url": "reports/the-gorman-rupp-company-equity-report.html",
+    "description": "The Gorman-Rupp Company designs, manufactures, and sells pumps and pump systems for liquid-handling applications worldwide. Its products serve water and wastewater, construction, industrial, petroleum, agriculture, fire suppression, HVAC, military, and other markets. Pump types include centrifugal, turbine, submersible, gear, diaphragm, and other designs, sold through distributors, representatives, direct sales, retailers, catalogs, and e-commerce."
+  },
+  {
+    "name": "The Greenbrier Companies",
+    "ticker": "GBX",
+    "exchange": "Listed",
+    "url": "reports/the-greenbrier-companies-equity-report.html",
+    "description": "The Greenbrier Companies designs, builds, and markets freight railcars in North America, Europe, and Brazil. Its products include freight, tank, intermodal, and automotive railcars, as well as components. The company also provides wheel services, maintenance, railcar conversions, leasing, fleet management, and regulatory compliance services to railroads and other railcar owners."
   },
   {
     "name": "The Hershey Company",
@@ -8522,11 +11364,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "The Hershey Company makes and sells chocolate and non-chocolate confectionery, gum, mints, protein bars, and snacks, including popcorn, pretzels, spreads, and snack mixes. It also offers baking ingredients, toppings, and beverages. Its products are marketed under more than 85 brand names and sold through retail, pantry, and food-service channels in North America and international markets."
   },
   {
+    "name": "The Kraft Heinz Company",
+    "ticker": "KHC",
+    "exchange": "Listed",
+    "url": "reports/the-kraft-heinz-company-equity-report.html",
+    "description": "The Kraft Heinz Company develops and sells food and beverage products through consumer brands including Kraft, Oscar Mayer, Heinz, Philadelphia, Lunchables, Velveeta, Ore-Ida, and Maxwell House. Its products are sold across North America, international developed markets, and emerging markets. The company serves consumers through branded packaged foods and beverages, including products offered under licensed brands."
+  },
+  {
+    "name": "The Mosaic Company",
+    "ticker": "MOS",
+    "exchange": "Listed",
+    "url": "reports/the-mosaic-company-equity-report.html",
+    "description": "The Mosaic Company produces and markets phosphate and potash crop nutrients, along with animal feed ingredients. Its products serve agricultural and industrial uses, with potash also sold for animal feed. The company mines phosphate rock and potash, processes and sells finished products, and operates production, blending, bagging, and distribution facilities. Its customers are located in approximately 40 countries."
+  },
+  {
     "name": "The Sherwin-Williams Company",
     "ticker": "SHW",
     "exchange": "Listed",
     "url": "reports/the-sherwin-williams-company-equity-report.html",
     "description": "The Sherwin-Williams Company develops, manufactures, distributes, and sells paint, coatings, and related products to professional, industrial, commercial, and retail customers. Its offerings include architectural paints and coatings, protective and marine products, original-equipment-manufacturer finishes, stains, varnishes, wood finishes, applicators, caulks, and adhesives. It serves customers through company-operated specialty paint stores and sales to retailers, dealers, and distributors."
+  },
+  {
+    "name": "The Vita Coco Company",
+    "ticker": "COCO",
+    "exchange": "Listed",
+    "url": "reports/the-vita-coco-company-equity-report.html",
+    "description": "The Vita Coco Company sells branded and private-label beverages and related products, led by coconut water. Its portfolio includes coconut oil, juice, coconut milk, and PWR LIFT protein-infused drinks. Products reach consumers through retail, e-commerce, and on-premise locations such as offices, fitness clubs, airports, and educational institutions. It supplies private-label coconut water and coconut oil to retailers."
+  },
+  {
+    "name": "The Wendy's Company",
+    "ticker": "WEN",
+    "exchange": "Listed",
+    "url": "reports/the-wendy-s-company-equity-report.html",
+    "description": "The Wendy’s Company operates and franchises quick-service restaurants serving food, including hamburger sandwiches. Its restaurant system serves customers in the United States and international markets. The company earns revenue from sales at company-operated restaurants and from franchise-related sources, including royalties, franchise fees, advertising fund contributions and rents. Its real estate and development operations also support franchisees."
   },
   {
     "name": "Thor Medical",
@@ -8536,11 +11406,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Thor Medical ASA develops and supplies alpha-particle emitters for radiopharmaceutical companies working on targeted cancer therapies. The company uses a proprietary production process based on naturally occurring thorium, without nuclear reactors or irradiation, to produce high-purity isotopes. It operates pilot-scale production in Norway and is developing larger-scale capacity for commercial deliveries."
   },
   {
+    "name": "ThredUp",
+    "ticker": "TDUP",
+    "exchange": "Listed",
+    "url": "reports/thredup-equity-report.html",
+    "description": "ThredUp operates an online resale marketplace for apparel, shoes and accessories. Buyers in the United States can browse and purchase secondhand items, while individual sellers send clothing through its Clean Out Bag service for processing and resale. The company also provides brands and retailers with resale and closet clean out services through its Resale-as-a-Service offering."
+  },
+  {
     "name": "Thule Group",
     "ticker": "THULE.ST",
     "exchange": "Stockholm",
     "url": "reports/thule-group-equity-report.html",
     "description": "Thule Group is a global sports and outdoor company that designs, manufactures and markets products for carrying and transporting equipment, active family travel, recreational vehicles, and bags. Its portfolio includes roof racks, roof boxes, bike carriers, strollers, child bike seats, dog transport products, awnings, tents, backpacks, luggage, and related mounts."
+  },
+  {
+    "name": "Tidewater",
+    "ticker": "TDW",
+    "exchange": "Listed",
+    "url": "reports/tidewater-equity-report.html",
+    "description": "Tidewater provides marine transportation and support services to the global offshore energy industry using offshore service and related support vessels. Its services include towing and anchor handling, transporting supplies and personnel, offshore construction and subsea support, and specialized pipe laying, cable laying, and survey work. Customers include oil and gas companies, drilling contractors, windfarm developers, and other offshore service providers."
   },
   {
     "name": "TietoEVRY",
@@ -8620,6 +11504,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Trainers' House Oyj provides training and consulting services for companies and organisations, focusing on sales, marketing and management development. It also offers digital and written materials, sales and management services, and related information systems and coaching. The company positions its work around helping clients improve customer results through conversation, culture and storytelling."
   },
   {
+    "name": "TransMedics Group",
+    "ticker": "TMDX",
+    "exchange": "Listed",
+    "url": "reports/transmedics-group-equity-report.html",
+    "description": "TransMedics develops organ preservation technology and transplant logistics services for transplant programs. Its Organ Care System products perfuse, monitor, and support donor hearts, lungs, and livers outside the body, with products for each organ. The company also provides organ procurement, perfusion management, and transportation coordination through its National OCS Program, using clinical specialists, procurement surgeons, and air and ground transport."
+  },
+  {
     "name": "Transtema Group",
     "ticker": "TRANS.ST",
     "exchange": "Stockholm",
@@ -8627,11 +11518,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Transtema Group AB provides services for communication networks in Sweden and Norway. Through its operating companies, it designs, builds, maintains, and monitors telecom and other infrastructure, including mobile networks, fiber, and related field services. The group serves operators, municipalities, businesses, property owners, and other customers that depend on reliable connectivity."
   },
   {
+    "name": "Travere Therapeutics",
+    "ticker": "TVTX",
+    "exchange": "Listed",
+    "url": "reports/travere-therapeutics-equity-report.html",
+    "description": "Travere Therapeutics is a biopharmaceutical company focused on therapies for rare kidney and metabolic diseases. Its marketed product FILSPARI is indicated to slow kidney function decline in adults with primary IgA nephropathy at risk of progression. The company also develops sparsentan for focal segmental glomerulosclerosis and pegtibatinase, an investigational enzyme replacement therapy for homocystinuria, serving patients with rare diseases."
+  },
+  {
     "name": "Trelleborg",
     "ticker": "TREL-B.ST",
     "exchange": "Stockholm",
     "url": "reports/trelleborg-equity-report.html",
     "description": "Trelleborg is a global industrial group focused on engineered polymer solutions. It develops and supplies sealing systems and components, polymer-based solutions for industrial and infrastructure applications, and integrated solutions for medical and life science uses. The company’s value drivers include materials expertise, application know-how, customer-specific engineering, and manufacturing for demanding environments."
+  },
+  {
+    "name": "Trex Company",
+    "ticker": "TREX",
+    "exchange": "Listed",
+    "url": "reports/trex-company-equity-report.html",
+    "description": "Trex manufactures composite decking and railing, along with outdoor living products including fencing, cladding, fasteners, and outdoor lighting. Its products are marketed under the Trex brand and sold to distributors and home centers for resale, primarily to residential customers. Decking products combine reclaimed wood fibers and recycled polyethylene film, with protective polymer shells on its principal lines."
   },
   {
     "name": "Triboron International",
@@ -8646,6 +11551,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Listed",
     "url": "reports/trimble-equity-report.html",
     "description": "Trimble provides technology solutions connecting workflows across construction, geospatial, natural resources, utilities and transportation. Its offerings combine software applications, cloud platforms, data, hardware and mobile technologies, including tools for modeling, planning, design and workflow management. Customers include asset owners, contractors, architects, engineers, designers, surveyors, energy and utility companies, transportation businesses and governments."
+  },
+  {
+    "name": "TriNet Group",
+    "ticker": "TNET",
+    "exchange": "Listed",
+    "url": "reports/trinet-group-equity-report.html",
+    "description": "TriNet provides human resources solutions to small and medium-sized businesses through professional employer organization and administrative services models. Its services include human capital expertise, employee benefits such as health insurance and retirement plans, payroll and tax administration, risk mitigation, compliance consulting and broader HR administration. Its platform supports client needs including employee data, workers’ compensation, training, performance management, onboarding and offboarding."
+  },
+  {
+    "name": "Tripadvisor",
+    "ticker": "TRIP",
+    "exchange": "Listed",
+    "url": "reports/tripadvisor-equity-report.html",
+    "description": "Tripadvisor operates online travel platforms that help travelers search, discover, book and review experiences, hotels and restaurants. Its consumer brands include Tripadvisor, Viator and TheFork. Services include travel guidance, traveler reviews, planning tools, hotel metasearch, bookable experiences and restaurant discovery. Customers include travelers, experience operators, restaurants, hotel partners and advertisers seeking access to travel audiences."
   },
   {
     "name": "Troax Group",
@@ -8669,11 +11588,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Truecaller AB (publ) provides a communication platform focused on caller identification, spam blocking, and fraud protection. Its mobile apps help users identify unknown numbers, screen calls, and filter unwanted messages, while its business products help companies verify and reach consumers more efficiently. The company also earns revenue from subscriptions and advertising."
   },
   {
+    "name": "TTM Technologies",
+    "ticker": "TTMI",
+    "exchange": "Listed",
+    "url": "reports/ttm-technologies-equity-report.html",
+    "description": "TTM Technologies manufactures mission systems, RF components and assemblies, printed circuit boards, and substrates. It provides design, engineering, testing, component, assembly, and manufacturing services for customized technology products. Its customers include original equipment manufacturers, electronics manufacturing services providers, original design manufacturers, distributors, and government agencies. They operate in aerospace and defense, data centers, automotive, medical, industrial, instrumentation, and networking markets."
+  },
+  {
     "name": "Tulikivi",
     "ticker": "TULAV.HE",
     "exchange": "Helsinki",
     "url": "reports/tulikivi-equity-report.html",
     "description": "Tulikivi Corporation is a Finnish stone-processing company that designs, manufactures and sells heat-retaining soapstone fireplaces, wood-burning and electric sauna heaters, and soapstone tiles and slabs for interiors. It also provides custom fireplaces and related dealer, service and spare-parts support, with production based mainly in Finland and using its own soapstone reserves."
+  },
+  {
+    "name": "Tutor Perini",
+    "ticker": "TPC",
+    "exchange": "Listed",
+    "url": "reports/tutor-perini-equity-report.html",
+    "description": "Tutor Perini provides general contracting, construction management, pre-construction planning, project management, and design-build services to private customers and public agencies. Its work includes civil infrastructure such as highways, bridges, tunnels, transit systems, and water facilities, as well as buildings. The company also self-performs trades including excavation, concrete, steel, electrical, mechanical, plumbing, heating, ventilation, and fire protection."
   },
   {
     "name": "Twilio",
@@ -8683,11 +11616,46 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Twilio provides communications APIs and software that businesses use to engage with customers through messaging, voice, email, and video. Its products include digital engagement centers, marketing campaign tools, user authentication and identity solutions, and compliance software. Customer data capabilities support personalized communications and campaigns across channels. Customers range from small and medium-sized businesses to large enterprises across many industries."
   },
   {
+    "name": "Ubiquiti",
+    "ticker": "UI",
+    "exchange": "Listed",
+    "url": "reports/ubiquiti-equity-report.html",
+    "description": "Ubiquiti sells networking equipment and related software platforms to service providers, enterprises, and smart homes through distributors, online retailers, and its webstores. Products include wireless broadband and backhaul systems, routing, wireless LAN infrastructure, switching, video surveillance, security gateways, and door access systems. Its UISP and UniFi OS platforms provide network management and internet access capabilities for service-provider and enterprise environments."
+  },
+  {
+    "name": "UFP Industries",
+    "ticker": "UFPI",
+    "exchange": "Listed",
+    "url": "reports/ufp-industries-equity-report.html",
+    "description": "UFP Industries is a holding company whose subsidiaries design, manufacture and supply products made from wood, wood and non-wood composites, and other materials. Its business serves retail, packaging and construction markets through specialized operating segments. The company provides custom solutions to customers and manages manufacturing locations, transportation, purchasing and related services that support its product businesses."
+  },
+  {
+    "name": "UFP Technologies",
+    "ticker": "UFPT",
+    "exchange": "Listed",
+    "url": "reports/ufp-technologies-equity-report.html",
+    "description": "UFP Technologies develops and manufactures single-use and single-patient medical devices and components, often customized to customer specifications. Its products serve minimally invasive surgery, infection prevention, wound care, wearables, and orthopedic applications. Examples include surgical drapes, patient handling products, procedure disposables, medical-device packaging, orthopedic implant packaging, cardiac implant components, catheter dispenser coils, and products used in biopharmaceutical drug manufacturing. Its customers include medical device manufacturers."
+  },
+  {
     "name": "Ultimovacs",
     "ticker": "ULTI.OL",
     "exchange": "Oslo",
     "url": "reports/ultimovacs-equity-report.html",
     "description": "Ultimovacs ASA is a Norwegian biotechnology company that originally developed cancer immunotherapies, including the UV1 therapeutic vaccine platform. In March 2025 it completed a business combination with Zelluna Immunotherapy AS and changed its name to Zelluna ASA, shifting the group toward off-the-shelf TCR-NK cell therapies for solid tumours and related oncology development activities."
+  },
+  {
+    "name": "Ultra Clean Holdings",
+    "ticker": "UCTT",
+    "exchange": "Listed",
+    "url": "reports/ultra-clean-holdings-equity-report.html",
+    "description": "Ultra Clean Holdings develops and supplies subsystems, components, parts, and ultra-high-purity cleaning and analytical services, primarily for semiconductor companies and equipment markets. Its products include chemical, gas, and fluid delivery systems, frame assemblies, precision robotics, process modules, and other assemblies. Services include parts cleaning, recoating, surface encapsulation, and micro-contamination analysis for semiconductor device makers and wafer fabrication equipment markets."
+  },
+  {
+    "name": "Ultragenyx Pharmaceutical",
+    "ticker": "RARE",
+    "exchange": "Listed",
+    "url": "reports/ultragenyx-pharmaceutical-equity-report.html",
+    "description": "Ultragenyx Pharmaceutical develops and commercializes therapies for serious rare and ultra-rare genetic diseases. Its products and candidates include biologics, small molecules, gene therapies, and nucleic acid treatments. The company has approved therapies and clinical-stage candidates, and focuses on diseases with significant unmet medical needs. It serves patients through its commercial organization in multiple regions and third-party distributors in smaller markets."
   },
   {
     "name": "Umida Group AB ser. B",
@@ -8718,11 +11686,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "United Therapeutics develops and sells pharmaceutical therapies for people with serious diseases, particularly pulmonary arterial hypertension and related pulmonary conditions. Its marketed products include inhaled treprostinil, injectable and oral therapies, delivery pumps, and tadalafil tablets; it also sells a treatment for high-risk neuroblastoma. The company additionally develops technologies intended to expand the availability of transplantable organs."
   },
   {
+    "name": "Unitil",
+    "ticker": "UTL",
+    "exchange": "Listed",
+    "url": "reports/unitil-equity-report.html",
+    "description": "Unitil is a public utility holding company whose subsidiaries distribute electricity and natural gas to residential, commercial, and industrial customers in New Hampshire, Massachusetts, and Maine. Its utilities provide local electric service and natural gas distribution, while an interstate pipeline supplies gas transportation access to affiliated utilities. A service subsidiary provides centralized administrative, professional, engineering, operations, technology, and energy supply management services to affiliated companies."
+  },
+  {
     "name": "Unity Software",
     "ticker": "U",
     "exchange": "Listed",
     "url": "reports/unity-software-equity-report.html",
     "description": "Unity provides software and services for creating, deploying and growing games and interactive experiences across mobile, PC, console and extended reality platforms. Its Create tools support real-time 2D and 3D content development, while Grow products help customers acquire users and monetize content through advertising and publishing services. Customers include developers, enterprises, government and nonprofit institutions, and individual creators."
+  },
+  {
+    "name": "Universal Display",
+    "ticker": "OLED",
+    "exchange": "Listed",
+    "url": "reports/universal-display-equity-report.html",
+    "description": "Universal Display researches, develops and commercializes organic light emitting diode technologies and materials for display and solid-state lighting applications. It manufactures and sells proprietary OLED materials for evaluation and use in commercial products, and licenses patents and know-how to manufacturers. Its customers include manufacturers developing OLED displays and lighting products for consumer electronics and automotive applications."
   },
   {
     "name": "Unlimited Travel Group UTG",
@@ -8752,6 +11734,34 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/upsales-technology-equity-report.html",
     "description": "Upsales Technology develops a cloud-based software platform for B2B sales organizations. Its subscription products combine CRM, marketing automation, customer support, subscription management, project management and business intelligence with company data and AI tools to help users find prospects, manage pipelines and grow revenue. The company serves customers mainly in the Nordic region."
+  },
+  {
+    "name": "Upstream Bio",
+    "ticker": "UPB",
+    "exchange": "Listed",
+    "url": "reports/upstream-bio-equity-report.html",
+    "description": "Upstream Bio is a clinical-stage biotechnology company developing treatments for severe inflammatory respiratory diseases. Its lead candidate, verekitug, is a monoclonal antibody designed to block the receptor for thymic stromal lymphopoietin. The company plans to start Phase 3 trials in severe asthma and chronic rhinosinusitis with nasal polyps in 2027, while a Phase 2 COPD trial continues. Patients with these conditions are its intended beneficiaries."
+  },
+  {
+    "name": "Upwork",
+    "ticker": "UPWK",
+    "exchange": "Listed",
+    "url": "reports/upwork-equity-report.html",
+    "description": "Upwork connects businesses with independent professionals and agencies through the Upwork Marketplace and provides enterprise workforce solutions through its Lifted subsidiary. Services support talent sourcing, contracting, engagement management, and payment for freelance, agency, fractional, and payrolled work. Clients range from small businesses and entrepreneurs to large enterprises, while talent use the platforms to find work and manage their businesses."
+  },
+  {
+    "name": "Uranium Energy",
+    "ticker": "UEC",
+    "exchange": "Listed",
+    "url": "reports/uranium-energy-equity-report.html",
+    "description": "Uranium Energy is a uranium mining and development company with in-situ recovery projects in Wyoming and South Texas, supported by uranium processing facilities. It also controls mineral resources and land in Saskatchewan’s Athabasca Basin and is pursuing uranium refining and conversion capabilities through a subsidiary. Its activities include uranium extraction, project development and work to support the domestic nuclear fuel supply chain."
+  },
+  {
+    "name": "UroGen Pharma",
+    "ticker": "URGN",
+    "exchange": "Listed",
+    "url": "reports/urogen-pharma-equity-report.html",
+    "description": "UroGen Pharma develops and commercializes treatments for urothelial and specialty cancers. Its approved products, Jelmyto and Zusduri, combine mitomycin with its RTGel sustained-release hydrogel for local delivery in the upper urinary tract or bladder. Jelmyto is used to treat low-grade upper tract urothelial cancer, while Zusduri treats recurrent low-grade intermediate-risk non-muscle-invasive bladder cancer. The company also has an investigational oncolytic virus in its pipeline."
   },
   {
     "name": "US Foods Holding",
@@ -8796,6 +11806,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Vår Energi is a Norwegian upstream oil and gas company focused on exploration, development and production on the Norwegian Continental Shelf. It holds interests in a large share of producing assets and operates several fields, with gas sales to Europe a key value driver. The company also grows through development projects and targeted acquisitions."
   },
   {
+    "name": "Varonis Systems",
+    "ticker": "VRNS",
+    "exchange": "Listed",
+    "url": "reports/varonis-systems-equity-report.html",
+    "description": "Varonis Systems provides a data security platform for organizations seeking to protect sensitive enterprise data across cloud and on-premises environments. Its software covers data stores, cloud infrastructure, identity repositories, and SaaS and AI applications. The platform helps organizations understand data exposure, control access, reduce risk, and detect and respond to threats through automated security controls."
+  },
+  {
     "name": "VBG Group",
     "ticker": "VBG-B.ST",
     "exchange": "Stockholm",
@@ -8803,11 +11820,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "VBG Group AB is an international industrial group with three divisions: Truck & Trailer Equipment, Mobile Thermal Solutions, and Ringfeder Power Transmission. It develops, manufactures, markets, and distributes products such as drawbar couplings, automatic tire chains, climate control systems, sliding roofs, and mechanical power transmission solutions through a portfolio of established brands and global sales channels."
   },
   {
+    "name": "Veeco Instruments",
+    "ticker": "VECO",
+    "exchange": "Listed",
+    "url": "reports/veeco-instruments-equity-report.html",
+    "description": "Veeco manufactures semiconductor process equipment for materials engineering and microelectronic fabrication. Its technologies include ion beam, laser annealing, deposition, advanced packaging lithography, and wafer processing systems. Customers use its equipment to produce and develop logic and memory devices, photonics, power electronics, RF components, magnetic heads, and other semiconductor products. Veeco serves semiconductor, compound semiconductor, data storage, and scientific markets."
+  },
+  {
     "name": "Veidekke",
     "ticker": "VEI.OL",
     "exchange": "Oslo",
     "url": "reports/veidekke-equity-report.html",
     "description": "Veidekke ASA is a Scandinavian construction and civil engineering group that provides building, infrastructure and property development services. The company develops and builds roads, tunnels, bridges and houses, and also operates asphalt and aggregates businesses as well as road maintenance activities. It serves public and private customers across Norway, Sweden and Denmark."
+  },
+  {
+    "name": "Veracyte",
+    "ticker": "VCYT",
+    "exchange": "Listed",
+    "url": "reports/veracyte-equity-report.html",
+    "description": "Veracyte is a diagnostics company that develops molecular tests to inform cancer diagnosis, prognosis and treatment decisions. Its tests cover prostate, thyroid, breast and bladder cancers, with offerings delivered through its U.S. clinical laboratories and international distribution to laboratories and hospitals. Clinicians use the test results to guide care, while the company also develops genomic and clinical evidence to support test use."
+  },
+  {
+    "name": "Veralto",
+    "ticker": "VLTO",
+    "exchange": "Listed",
+    "url": "reports/veralto-equity-report.html",
+    "description": "Veralto provides technology products and services in water analytics, water treatment, marking and coding, and packaging and color. Its Water Quality businesses, including Hach, Trojan Technologies, and ChemTreat, support water quality and reliability. Its Product Quality & Innovation businesses, including Videojet, Linx, Esko, X-Rite, and Pantone, help customers promote trust in products and support product innovation across regulated industries."
+  },
+  {
+    "name": "Vericel",
+    "ticker": "VCEL",
+    "exchange": "Listed",
+    "url": "reports/vericel-equity-report.html",
+    "description": "Vericel develops and markets cell therapy and specialty biologic products for sports medicine and severe burn care. Its products include MACI, an autologous cellularized scaffold used to repair certain knee cartilage defects, and instruments for arthroscopic MACI delivery. It also supplies Epicel, a skin replacement for extensive deep burns, and holds North American rights to NexoBrid, a topical biologic for burn eschar removal."
   },
   {
     "name": "VeriSign",
@@ -8829,6 +11874,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Helsinki",
     "url": "reports/verkkokauppa-com-equity-report.html",
     "description": "Verkkokauppa.com is a Finnish omnichannel retailer focused on consumer electronics, IT products, home and leisure goods, toys, games, sports, and baby products. It sells online and through four megastores, and also offers installation and related services. The company relies on price competitiveness, logistics, and broad assortment as its main value drivers."
+  },
+  {
+    "name": "Verra Mobility",
+    "ticker": "VRRM",
+    "exchange": "Listed",
+    "url": "reports/verra-mobility-equity-report.html",
+    "description": "Verra Mobility provides smart mobility technology solutions, including toll and violations management, vehicle title and registration services, automated safety and traffic enforcement, and commercial parking management. Its customers include rental car companies, fleet owner-operators, fleet management companies, government agencies, universities, parking operators, healthcare facilities, and transportation hubs. The company combines hardware, software, data, and administrative services to support transportation and enforcement programs."
   },
   {
     "name": "Vertex Pharmaceuticals Incorporated",
@@ -8866,6 +11918,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Viaplay Group AB provides streaming services, TV channels, and commercial radio, with operations focused on the Nordics and the Netherlands. Its offering includes live sports, films, series, documentaries, and music, supported by the Viaplay Select content concept and, in part, the Allente TV and broadband business. Revenue is driven by subscriptions, advertising, and content distribution."
   },
   {
+    "name": "Viasat",
+    "ticker": "VSAT",
+    "exchange": "Listed",
+    "url": "reports/viasat-equity-report.html",
+    "description": "Viasat provides communications technologies and services using satellites, ground infrastructure, user terminals, and operator partnerships. Its offerings include broadband and narrowband connectivity, satellite and wireless products, and terminals for fixed and mobile services. Customers include aviation, maritime, enterprise, consumer, military, and government users. Its government portfolio also includes communications gateways, situational awareness and command-and-control products and services, satellite communications, cybersecurity, and information assurance."
+  },
+  {
     "name": "Viavi Solutions",
     "ticker": "VIAV",
     "exchange": "Listed",
@@ -8901,11 +11960,39 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Vincit is a Finnish listed IT services company that designs, develops and maintains software and digital business solutions for enterprise and public-sector clients. Its operations are split between service businesses and a SaaS product offering, with delivery focused on data and AI, SAP and Microsoft Azure cloud solutions, composable commerce, and tailored digital products and teams."
   },
   {
+    "name": "Vir Biotechnology",
+    "ticker": "VIR",
+    "exchange": "Listed",
+    "url": "reports/vir-biotechnology-equity-report.html",
+    "description": "Vir Biotechnology discovers and develops antibody-based medicines and immunotherapies for serious infectious diseases and cancer. Its pipeline includes a Phase 3 combination therapy for chronic hepatitis delta and investigational T-cell engagers for solid tumors, alongside preclinical research. The company applies antibody engineering, AI-enabled protein design, and masking technology, and collaborates with pharmaceutical partners on clinical and preclinical development programs."
+  },
+  {
+    "name": "Viridian Therapeutics",
+    "ticker": "VRDN",
+    "exchange": "Listed",
+    "url": "reports/viridian-therapeutics-equity-report.html",
+    "description": "Viridian Therapeutics discovers, develops, and commercializes medicines for autoimmune and rare diseases, with a focus on thyroid eye disease. Its marketed product, Lumvoa (veligrotug-vvze), is an IGF-1R antagonist approved for TED. The company is advancing investigational elegrobart for TED, VRDN-008, a half-life-extended FcRn inhibitor, and a TSHR-targeting program for other autoimmune diseases."
+  },
+  {
     "name": "ViroGates",
     "ticker": "VIRO.CO",
     "exchange": "Copenhagen",
     "url": "reports/virogates-equity-report.html",
     "description": "ViroGates A/S is a Danish medical diagnostics company that develops and commercializes suPARnostic®, a product line for measuring the suPAR biomarker in blood samples. Its tests include point-of-care, automated laboratory, and ELISA formats, used to support clinical triage, research, and assessment of inflammation and disease severity."
+  },
+  {
+    "name": "Visteon",
+    "ticker": "VC",
+    "exchange": "Listed",
+    "url": "reports/visteon-equity-report.html",
+    "description": "Visteon develops, manufactures, and supports automotive electronics and related software for vehicle manufacturers worldwide. Its offerings include digital instrument clusters, information displays, infotainment systems, cockpit domain controllers, CognitoAI, battery management systems, high-voltage power electronics, and engineering services. Customers include global automakers such as BMW, Ford, Honda, Toyota, Volkswagen, and other original equipment manufacturers."
+  },
+  {
+    "name": "Vital Farms",
+    "ticker": "VITL",
+    "exchange": "Listed",
+    "url": "reports/vital-farms-equity-report.html",
+    "description": "Vital Farms sources eggs and butter through a network of small farms that follow its animal welfare standards. It sells food products to consumers through retail channels, including Whole Foods Market, and serves restaurants. The company operates an egg processing facility and develops farming practices through company-operated accelerator farms intended to support its family farm network."
   },
   {
     "name": "Vitec Software Group",
@@ -8957,6 +12044,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Volvo Car AB develops, manufactures and sells premium passenger cars under the Volvo brand. Its lineup includes fully electric, plug-in hybrid and internal combustion models, with sales supported by financing, leasing and related services. The group also operates software, connectivity and safety development functions as it shifts toward greater electrification."
   },
   {
+    "name": "Vontier",
+    "ticker": "VNT",
+    "exchange": "Listed",
+    "url": "reports/vontier-equity-report.html",
+    "description": "Vontier is an industrial technology company serving convenience retail, fleet solutions and auto repair markets. Its offerings include point-of-sale and payment systems, site management software, car wash technology, EV charging network software, fleet telematics, fueling equipment and repair tools. Its customers include fueling and convenience store operators, car wash businesses, charging networks, fleet owners and commercial vehicle repair businesses."
+  },
+  {
     "name": "VOW",
     "ticker": "VOW.OL",
     "exchange": "Oslo",
@@ -8992,6 +12086,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Wallenstam AB is a Swedish property company that develops, owns and manages residential and commercial properties in Stockholm, Gothenburg and Uppsala. Its portfolio includes rental apartments, offices and retail premises, with property development, leasing, asset management and construction driving value through long-term ownership and operations."
   },
   {
+    "name": "Warrior Met Coal",
+    "ticker": "HCC",
+    "exchange": "Listed",
+    "url": "reports/warrior-met-coal-equity-report.html",
+    "description": "Warrior Met Coal mines non-thermal steelmaking coal for metal manufacturers in Europe, South America and Asia. Its Alabama underground mines produce premium hard coking coal, including low and high volatility grades that can be blended for customers’ coking coal requirements. The company also removes and sells natural gas from its owned and leased coal seams."
+  },
+  {
     "name": "Wärtsilä",
     "ticker": "WRT1V.HE",
     "exchange": "Helsinki",
@@ -9013,11 +12114,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Waters designs, manufactures, sells and services analytical instruments and software for life, materials and food sciences. Its products include liquid chromatography and mass spectrometry systems, columns, consumables, service plans, thermal analysis, rheometry and calorimetry instruments, and software that interfaces with its own and other manufacturers’ instruments. Customers include pharmaceutical, clinical, industrial, academic, environmental and government laboratories."
   },
   {
+    "name": "Waystar Holding",
+    "ticker": "WAY",
+    "exchange": "Listed",
+    "url": "reports/waystar-holding-equity-report.html",
+    "description": "Waystar provides cloud-based software for healthcare organizations to manage payment workflows. Its platform supports eligibility checks, prior authorization, utilization management, coding and documentation accuracy, claims submission and monitoring, copay collection, and denied-claim appeals. Providers use its tools to improve billing accuracy and manage reimbursement processes. Customers include physician practices, clinics, surgical centers, laboratories, hospitals, and health systems across the continuum of care."
+  },
+  {
     "name": "Waystream Holding",
     "ticker": "WAYS.ST",
     "exchange": "Stockholm",
     "url": "reports/waystream-holding-equity-report.html",
     "description": "Waystream Holding AB develops and sells network equipment for fiber optic access networks, including switches, routers and optical accessories for FTTH and FTTB deployments. Its products are used by network carriers, city networks and broadband providers to deliver residential and business services over fiber, with related support, training and consulting services."
+  },
+  {
+    "name": "Weatherford International",
+    "ticker": "WFRD",
+    "exchange": "Listed",
+    "url": "reports/weatherford-international-equity-report.html",
+    "description": "Weatherford International provides products and services for energy companies across the well life cycle, including drilling and evaluation, well construction and completions, and production and intervention. Its offerings combine equipment, field services, and digital technologies. In 2026, it completed its acquisition of NCS Multistage, adding completions and reservoir diagnostics capabilities. Customers include oil and gas operators working in energy regions worldwide."
   },
   {
     "name": "Webstep",
@@ -9027,11 +12142,25 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Webstep ASA is a Norwegian IT services and consulting company that provides software development, design and user experience, analytics, business intelligence, cloud, mobility, AI and technology management services. It serves clients across industries through local offices in several Norwegian cities, offering expert consultants, team deliveries, turnkey projects and hired IT specialists."
   },
   {
+    "name": "WEBTOON Entertainment",
+    "ticker": "WBTN",
+    "exchange": "Listed",
+    "url": "reports/webtoon-entertainment-equity-report.html",
+    "description": "WEBTOON Entertainment operates digital storytelling platforms where creators publish web-comics, web-novels, manga, and other digital books for readers. Its offerings include WEBTOON, Wattpad, LINE MANGA, NAVER SERIES, eBookJapan, and Munpia. Users access free and paid content through mobile apps and websites, while creators can publish and build audiences. The company also develops adaptations of selected stories into other media formats."
+  },
+  {
     "name": "WEC Energy Group",
     "ticker": "WEC",
     "exchange": "Listed",
     "url": "reports/wec-energy-group-equity-report.html",
     "description": "WEC Energy Group is a holding company whose subsidiaries provide or invest in regulated electricity and natural gas utilities, renewable energy, and nonregulated renewable energy. Its electric utilities generate and distribute power to retail, wholesale, and resale customers in Wisconsin and Michigan. Its natural gas utilities serve customers in several regional territories, and it holds an interest in an electric transmission company."
+  },
+  {
+    "name": "Weis Markets",
+    "ticker": "WMK",
+    "exchange": "Listed",
+    "url": "reports/weis-markets-equity-report.html",
+    "description": "Weis Markets operates retail food stores in Pennsylvania and surrounding states, selling food and related merchandise to consumers. Its supermarkets offer groceries, dairy, frozen foods, meat, seafood, produce, floral items, pharmacy services, deli and prepared foods, bakery products, beer, wine, fuel, health and beauty products, and household goods. Many stores also provide online ordering."
   },
   {
     "name": "West Pharmaceutical Services",
@@ -9083,6 +12212,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Wilh. Wilhelmsen Holding ASA is an industrial holding company in the maritime sector. Through fully and partly owned entities, it develops businesses in maritime services, offshore energy services, and RoRo shipping and vehicle logistics. Its portfolio also includes related activities such as ship management, marine products and logistics, insurance services, and selected digital and infrastructure initiatives."
   },
   {
+    "name": "Willdan Group",
+    "ticker": "WLDN",
+    "exchange": "Listed",
+    "url": "reports/willdan-group-equity-report.html",
+    "description": "Willdan Group provides professional, technical and consulting services to utilities, public agencies, private industry and commercial and industrial firms. Its work includes energy planning and efficiency, sustainability, engineering, construction management, policy advisory, program management, and economic and financial consulting. The company also offers software and data analytics and services related to greenhouse gas reduction and government infrastructure needs."
+  },
+  {
+    "name": "WillScot Holdings",
+    "ticker": "WSC",
+    "exchange": "Listed",
+    "url": "reports/willscot-holdings-equity-report.html",
+    "description": "WillScot provides temporary space and portable storage solutions to customers across a range of industries in the United States, Canada, and Mexico. Its offerings include modular offices, classrooms, storage containers, sanitation solutions, and climate-controlled units, equipped with optional furniture, connectivity, security, and other products. The company leases and sells units and provides delivery, installation, maintenance, removal, and related services."
+  },
+  {
     "name": "Wilson",
     "ticker": "WILS.OL",
     "exchange": "Oslo",
@@ -9102,6 +12245,20 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Copenhagen",
     "url": "reports/windowmaster-international-equity-report.html",
     "description": "WindowMaster International A/S develops and supplies automated window control systems, actuators and related hardware for natural, mixed-mode and smoke ventilation in buildings. The company also provides engineering support for ventilation design and façade automation, with products aimed at improving indoor climate, energy efficiency and fire safety across commercial and other building types."
+  },
+  {
+    "name": "Wingstop",
+    "ticker": "WING",
+    "exchange": "Listed",
+    "url": "reports/wingstop-equity-report.html",
+    "description": "Wingstop is primarily a franchisor of fast-casual chicken restaurants, with independent franchisees operating most locations. Its menu includes cooked-to-order classic and boneless wings, tenders, chicken sandwiches, fries, vegetables, and dips, with dine-in, carryout, and delivery options. The company earns franchise, royalty, and advertising fees and also operates some restaurants. Its customers include restaurant guests and franchisees."
+  },
+  {
+    "name": "Winmark",
+    "ticker": "WINA",
+    "exchange": "Listed",
+    "url": "reports/winmark-equity-report.html",
+    "description": "Winmark Corporation franchises resale retail stores through five brands: Plato’s Closet, Once Upon A Child, Play It Again Sports, Style Encore, and Music Go Round. Franchisees buy and sell used clothing, children’s goods, sporting goods, musical instruments, and related accessories, with some new merchandise. The company also provides franchisees with technology, tools, training, and e-commerce platforms."
   },
   {
     "name": "Wirtek",
@@ -9132,6 +12289,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Witted Megacorp Oyj is an IT services company that helps large digitally mature organizations build software development teams and advance digital transformation projects. The group provides software consulting, team augmentation, and advisory services, and has expanded its offering into AI and data through Witted AIcorp. It operates across several Nordic markets and the United States."
   },
   {
+    "name": "World Kinect",
+    "ticker": "WKC",
+    "exchange": "Listed",
+    "url": "reports/world-kinect-equity-report.html",
+    "description": "World Kinect is a global energy management company supplying fuel and related products and services to customers in aviation, land transportation, and marine sectors. It also supplies natural gas and sustainability-related products and services. Its aviation offerings include fuel management, ground handling, dispatch, flight planning, scheduling, and trip support for airlines, airports, cargo carriers, corporate fleets, charter operators, and government and military customers."
+  },
+  {
     "name": "Wyld Networks",
     "ticker": "WYLD.ST",
     "exchange": "Stockholm",
@@ -9160,6 +12324,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Xbrane Biopharma AB develops biosimilars and related biological drugs using a patented production platform designed to lower manufacturing costs. Its portfolio includes candidates for ophthalmology and oncology, including Ximluci and Xdivane, and the company also generates revenue from product sales and licensing agreements. The company is headquartered in Solna and listed on Nasdaq Stockholm."
   },
   {
+    "name": "Xencor",
+    "ticker": "XNCR",
+    "exchange": "Listed",
+    "url": "reports/xencor-equity-report.html",
+    "description": "Xencor is a clinical-stage biopharmaceutical company that discovers and develops engineered antibody therapeutics for cancer and autoimmune diseases. Its protein engineering technologies support XmAb drug candidates with features such as multi-target activity, bispecific structures, and extended half-life. The company advances candidates through clinical development and may develop programs with partners. Its research portfolio includes T-cell engaging antibodies and candidates for solid tumors and autoimmune conditions."
+  },
+  {
+    "name": "Xenon Pharmaceuticals",
+    "ticker": "XENE",
+    "exchange": "Listed",
+    "url": "reports/xenon-pharmaceuticals-equity-report.html",
+    "description": "Xenon Pharmaceuticals is a neuroscience biopharmaceutical company developing treatments for neurological and psychiatric disorders. Its lead candidate azetukalner, a Kv7 potassium channel opener, has an NDA submitted to the FDA for focal seizures and is in Phase 3 studies for epilepsy. The company completed enrollment in a Phase 3 major depressive disorder study and continues to develop earlier-stage ion-channel programs for pain and other conditions."
+  },
+  {
     "name": "Xintela",
     "ticker": "XINT.ST",
     "exchange": "Stockholm",
@@ -9179,6 +12357,13 @@ window.COMPANY_PAGE_CATALOG = [
     "exchange": "Stockholm",
     "url": "reports/xp-chemistries-equity-report.html",
     "description": "XP Chemistries AB develops and produces forest-based capsaicin and capsaicin analogues using patented catalytic technology and renewable feedstocks. The company focuses on fine chemicals and biologically active products for animal feed, cosmetics, personal care, and self-defense spray applications, while also carrying out research, development, and patent management related to these compounds."
+  },
+  {
+    "name": "XPEL",
+    "ticker": "XPEL",
+    "exchange": "Listed",
+    "url": "reports/xpel-equity-report.html",
+    "description": "XPEL supplies protective films, coatings, and related installation services, primarily to the automotive aftermarket, new car dealerships, and automobile manufacturers. Its products include paint and surface protection films, automotive and architectural window films, windshield protection films, and ceramic coatings for automotive, aircraft, and marine surfaces. The company also sells tools, accessories, pre-cut films, and merchandise."
   },
   {
     "name": "Xplora Technologies AS",
@@ -9223,6 +12408,13 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Yara International ASA produces crop nutrition products and ammonia, with a portfolio of nitrogen-based fertilizers and related agronomic services. The company serves farmers and the broader food value chain with crop nutrition advice, digital farming tools, and product formulations designed to improve nutrient use. It also supplies nitrogen-based industrial solutions to other industries."
   },
   {
+    "name": "Yelp",
+    "ticker": "YELP",
+    "exchange": "Listed",
+    "url": "reports/yelp-equity-report.html",
+    "description": "Yelp operates a platform where consumers search for and discover local businesses, using ratings, reviews, photos, videos, and other user-generated content. Its advertising products help businesses reach consumers and promote products and services, while subscription services support business operations. Yelp serves consumers and businesses across a broad range of local business categories through its platform and other devices."
+  },
+  {
     "name": "YIT",
     "ticker": "YIT.HE",
     "exchange": "Helsinki",
@@ -9265,6 +12457,20 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Zelluna ASA is a Norwegian biotechnology company developing allogeneic, off-the-shelf T cell receptor-guided natural killer, or TCR-NK, cell therapies for solid cancers. Its lead program, ZI-MA4-1, targets the MAGE-A4 antigen and is in clinical development. The company’s value driver is its proprietary platform for scalable manufacturing of cell therapies."
   },
   {
+    "name": "Zenas BioPharma",
+    "ticker": "ZBIO",
+    "exchange": "Listed",
+    "url": "reports/zenas-biopharma-equity-report.html",
+    "description": "Zenas BioPharma is a clinical-stage biopharmaceutical company developing immunology-based therapies for autoimmune diseases. Its lead candidate, obexelimab, is a monoclonal antibody designed to inhibit B-cell activity. The company is evaluating obexelimab in clinical trials for IgG4-related disease, relapsing multiple sclerosis, and systemic lupus erythematosus, serving patients with these conditions through potential therapeutic treatments."
+  },
+  {
+    "name": "Ziff Davis",
+    "ticker": "ZD",
+    "exchange": "Listed",
+    "url": "reports/ziff-davis-equity-report.html",
+    "description": "Ziff Davis is a digital media and internet company with businesses in technology, shopping, gaming and entertainment, health and wellness, connectivity, cybersecurity, and marketing technology. It publishes editorial content and tools, offers consumer and business services, provides broadband network intelligence and performance products, and sells cloud-based subscription and licensed cybersecurity, privacy, and digital marketing tools."
+  },
+  {
     "name": "Zinzino",
     "ticker": "ZZ-B.ST",
     "exchange": "Stockholm",
@@ -9279,10 +12485,31 @@ window.COMPANY_PAGE_CATALOG = [
     "description": "Zoomability Int AB develops, manufactures and sells the Zoom Uphill, an all-terrain electric wheelchair designed for outdoor mobility on rough ground. The company markets the product through partners and resellers in several countries, with customers including people with limited mobility and other users seeking off-road mobility. It also operates through subsidiaries in Sweden and the United States."
   },
   {
+    "name": "ZoomInfo Technologies",
+    "ticker": "GTM",
+    "exchange": "Listed",
+    "url": "reports/zoominfo-technologies-equity-report.html",
+    "description": "ZoomInfo provides cloud-based go-to-market software, data, and intelligence for sales, marketing, operations, and recruiting teams. Its platform supplies company and contact information, intent signals, organizational details, and analytics, and integrates data with customer relationship management and sales and marketing automation systems. Tools support prospect engagement, marketing campaigns, meeting transcription, workflow automation, and candidate sourcing."
+  },
+  {
     "name": "Zordix",
     "ticker": "MAXENT-B.ST",
     "exchange": "Stockholm",
     "url": "reports/zordix-equity-report.html",
     "description": "Maximum Entertainment AB, formerly Zordix AB (publ), develops and publishes video games for digital and physical platforms worldwide. The company works on original and licensed titles across its own and partner labels, and provides publishing services that include funding, production, development support, marketing, distribution, platform management, and live-service operations."
+  },
+  {
+    "name": "Zurn Elkay Water Solutions",
+    "ticker": "ZWS",
+    "exchange": "Listed",
+    "url": "reports/zurn-elkay-water-solutions-equity-report.html",
+    "description": "Zurn Elkay Water Solutions designs, procures, manufactures and markets water management products. Its portfolio includes water safety and control products, flow systems, hygienic and environmental products, and filtered drinking water products for public and private spaces. The company serves primarily institutional and commercial building construction markets, as well as waterworks and residential construction. Its solutions are used in new buildings and retrofit projects."
+  },
+  {
+    "name": "Zymeworks",
+    "ticker": "ZYME",
+    "exchange": "Listed",
+    "url": "reports/zymeworks-equity-report.html",
+    "description": "Zymeworks is a biotechnology company managing licensed healthcare assets and developing antibody-based therapeutics for cancer, inflammation, and autoimmune disease. Its portfolio includes partnered products and candidates such as Ziihera and pasritamig. The company uses multispecific antibody and antibody-drug conjugate technology platforms, and works with partners on development and commercialization through arrangements that can include milestone payments and royalties."
   }
 ];

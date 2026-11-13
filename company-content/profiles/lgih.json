@@ -1,0 +1,10 @@
+{
+  "ticker": "LGIH",
+  "companyName": "LGI Homes, Inc.",
+  "profile": "LGI Homes designs, builds, and sells new homes in markets across the United States. Its product lines include attached and detached entry-level homes and active-adult homes under the LGI Homes brand, as well as luxury homes under the Terrata Homes brand. It primarily targets entry-level buyers and also sells homes in bulk to institutions acquiring single-family rentals.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:42.758Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1580670/000158067026000019/lgih-20251231.htm"
+}

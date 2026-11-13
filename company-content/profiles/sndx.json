@@ -1,0 +1,10 @@
+{
+  "ticker": "SNDX",
+  "companyName": "Syndax Pharmaceuticals, Inc.",
+  "profile": "Syndax Pharmaceuticals develops and commercializes cancer therapies. Its approved medicines include Revuforj, for certain relapsed or refractory acute leukemias, and Niktimvo, for chronic graft-versus-host disease after prior systemic therapies. The company leads Revuforj’s commercialization and development and works with Incyte on Niktimvo. Its clinical programs investigate additional uses of these medicines and other therapeutic opportunities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:18.751Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1395937/000119312526076536/sndx-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "COST",
+  "companyName": "Costco Wholesale Corporation",
+  "profile": "Costco Wholesale operates membership warehouses and e-commerce sites selling a limited selection of nationally branded and private-label merchandise across many categories. Its products include food and sundries, consumer electronics, appliances, health and beauty items, and other goods. The company also offers services such as technical support and extended warranty coverage for certain electronics, serving members through in-store and online channels.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:37.875Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+}

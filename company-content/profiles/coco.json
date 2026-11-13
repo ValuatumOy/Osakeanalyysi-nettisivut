@@ -1,0 +1,10 @@
+{
+  "ticker": "COCO",
+  "companyName": "The Vita Coco Company, Inc.",
+  "profile": "The Vita Coco Company sells branded and private-label beverages and related products, led by coconut water. Its portfolio includes coconut oil, juice, coconut milk, and PWR LIFT protein-infused drinks. Products reach consumers through retail, e-commerce, and on-premise locations such as offices, fitness clubs, airports, and educational institutions. It supplies private-label coconut water and coconut oil to retailers.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:58:27.291Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1482981/000148298126000022/coco-20251231.htm"
+}

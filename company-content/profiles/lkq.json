@@ -1,0 +1,10 @@
+{
+  "ticker": "LKQ",
+  "companyName": "LKQ Corporation",
+  "profile": "LKQ Corporation distributes vehicle replacement parts, components, systems, and specialty aftermarket products and accessories for vehicle repair, maintenance, and customization. Its alternative parts include collision and body repair products, mechanical parts, routine maintenance components, engines, and transmissions. The company serves customers through operating segments in North America, Europe, and specialty aftermarket distribution.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:28.273Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1065696/000106569626000012/lkq-20251231.htm"
+}

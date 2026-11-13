@@ -1,0 +1,10 @@
+{
+  "ticker": "TH",
+  "companyName": "Target Hospitality Corp.",
+  "profile": "Target Hospitality provides specialty rental accommodations and hospitality services through communities and lodging facilities in the United States and Canada. Its turnkey services include site design, construction, operations, security, housekeeping, catering, concierge services, and health and recreation facilities. Its customers include companies supporting natural resource, critical mineral and data center projects, as well as a U.S. government service provider.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:03.145Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1712189/000110465926026351/th-20251231x10k.htm"
+}

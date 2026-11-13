@@ -1,0 +1,10 @@
+{
+  "ticker": "CART",
+  "companyName": "Instacart (Maplebear Inc.)",
+  "profile": "Instacart provides technology and services for grocery retailers, consumers, brands, and shoppers. Through its marketplace, consumers order groceries for delivery or pickup from retailers, and its Enterprise platform powers retailers’ online storefronts, e-commerce, fulfillment, connected stores, advertising, marketing, and insights. Instacart Ads provides brands with advertising tools and insights for online grocery, while shoppers fulfill orders.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.460Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1579091/000157909126000018/cart-20251231.htm"
+}

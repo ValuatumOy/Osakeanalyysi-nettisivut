@@ -1,0 +1,10 @@
+{
+  "ticker": "DEC",
+  "companyName": "Diversified Energy Company PLC",
+  "profile": "Diversified Energy produces, transports, and markets natural gas, natural gas liquids, and oil from mature, long-life assets in the United States. Its operations include managing and maintaining producing wells and related infrastructure, using monitoring technologies and data analytics, and extending the productive life of existing assets. The company also operates a vertically integrated well-plugging business focused on retiring oil and gas wells.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:28.151Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1922446/000192244626000020/dec-20251231.htm"
+}

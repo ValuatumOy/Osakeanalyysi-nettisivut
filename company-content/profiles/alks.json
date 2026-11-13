@@ -1,0 +1,10 @@
+{
+  "ticker": "ALKS",
+  "companyName": "Alkermes plc",
+  "profile": "Alkermes is a biopharmaceutical company developing medicines in neuroscience. Its commercial products treat alcohol dependence, opioid dependence, schizophrenia, bipolar I disorder and narcolepsy. The company also develops clinical and preclinical candidates for neurological disorders, and licenses proprietary technologies used in products commercialized by other pharmaceutical companies. It operates from Ireland, Massachusetts and Ohio.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:20.972Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1520262/000119312526068925/alks-20251231.htm"
+}

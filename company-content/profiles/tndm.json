@@ -1,0 +1,10 @@
+{
+  "ticker": "TNDM",
+  "companyName": "Tandem Diabetes Care, Inc.",
+  "profile": "Tandem Diabetes Care designs, develops, and commercializes insulin delivery systems and diabetes technology for people with insulin-dependent diabetes. Its portfolio includes t:slim X2 and Tandem Mobi pump platforms, both featuring Control-IQ+ hybrid closed-loop technology, alongside applications and insights. The company serves people living with diabetes in more than 25 countries.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:51.498Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1438133/000143813326000010/tndm-20251231.htm"
+}

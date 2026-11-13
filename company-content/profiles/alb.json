@@ -1,0 +1,10 @@
+{
+  "ticker": "ALB",
+  "companyName": "Albemarle Corporation",
+  "profile": "Albemarle transforms essential resources into ingredients for mobility, energy, connectivity, and health markets. Its Energy Storage business develops and manufactures lithium compounds, including lithium carbonate, lithium hydroxide, and lithium chloride, used in batteries, power grids, specialty glass, and other applications. The company also reports Specialties and Ketjen segments and serves customers across automotive, electronics, pharmaceuticals, agriculture, and industrial markets.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:38.819Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/915913/000091591326000018/alb-20251231.htm"
+}

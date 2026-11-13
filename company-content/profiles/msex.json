@@ -1,0 +1,10 @@
+{
+  "ticker": "MSEX",
+  "companyName": "Middlesex Water Company",
+  "profile": "Middlesex Water Company owns and operates regulated water and wastewater systems, primarily in New Jersey and Delaware, and operates other systems under contract for municipal and private clients. Its services include treating, storing, and distributing water for residential, commercial, industrial, and fire protection uses, as well as wastewater collection and treatment. Customers include households, businesses, municipalities, and other public and private entities.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:00:46.430Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/66004/000162828026009777/msex-20251231.htm"
+}

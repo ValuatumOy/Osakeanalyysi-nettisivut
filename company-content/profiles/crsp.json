@@ -1,0 +1,10 @@
+{
+  "ticker": "CRSP",
+  "companyName": "CRISPR Therapeutics AG",
+  "profile": "CRISPR Therapeutics develops CRISPR-based gene-editing therapeutics for serious diseases. Its programs span hemoglobin disorders, in vivo gene editing, gene-edited CAR T cell therapies and regenerative medicine. Its approved therapy CASGEVY treats eligible patients with sickle cell disease or transfusion-dependent beta thalassemia and is developed and commercialized with Vertex. The company also advances delivery and gene-editing technologies.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:19.895Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1674416/000119312526048957/crsp-20251231.htm"
+}

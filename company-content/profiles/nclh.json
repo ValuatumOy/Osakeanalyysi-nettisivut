@@ -1,0 +1,10 @@
+{
+  "ticker": "NCLH",
+  "companyName": "Norwegian Cruise Line Holdings Ltd.",
+  "profile": "Norwegian Cruise Line Holdings operates the Norwegian Cruise Line, Oceania Cruises and Regent Seven Seas Cruises brands. The brands offer voyages to destinations worldwide, with accommodations, dining venues, bars, lounges, spas, casinos, retail areas and entertainment. They also provide shore excursions and packages combining air transportation or hotel stays with cruises. The company serves cruise guests through its fleet of passenger ships.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:55:55.690Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1513761/000110465926022067/nclh-20251231x10k.htm"
+}

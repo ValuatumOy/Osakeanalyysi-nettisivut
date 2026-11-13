@@ -1,0 +1,10 @@
+{
+  "ticker": "BYD",
+  "companyName": "Boyd Gaming Corporation",
+  "profile": "Boyd Gaming operates brick-and-mortar gaming entertainment properties and online casino gaming businesses in the United States and Canada. It also manages a casino under an agreement and offers online sports wagering and online casino access through market access agreements with third-party operators, subject to applicable state laws and regulatory approvals. Its customers include casino visitors and online gaming users.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:45.619Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/906553/000143774926004908/bgc20251121_10k.htm"
+}

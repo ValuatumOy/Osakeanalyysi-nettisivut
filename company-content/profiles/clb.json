@@ -1,0 +1,10 @@
+{
+  "ticker": "CLB",
+  "companyName": "Core Laboratories N.V.",
+  "profile": "Core Laboratories provides proprietary and patented reservoir description and production enhancement services and products to oil and gas companies. It analyzes reservoir rocks, fluids, and derived products, helping clients evaluate subsurface formations and reservoir performance. Its services include laboratory analysis and field work, and it also assists clients evaluating subsurface targets for carbon capture and sequestration projects.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T12:01:15.249Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1958086/000119312526118177/clb-20251231.htm"
+}

@@ -1,0 +1,10 @@
+{
+  "ticker": "LTH",
+  "companyName": "Life Time Group Holdings, Inc.",
+  "profile": "Life Time operates athletic country club destinations serving individual members in communities across North America. Its centers offer fitness equipment and classes, personal training, recovery spaces, pools, tennis and pickleball courts, basketball courts, spas, cafes, childcare and learning spaces. The company sells month-to-month memberships, including base and signature options that provide access to centers and selected additional products, services or spaces.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:56:49.394Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1869198/000186919826000010/lth-20251231.htm"
+}

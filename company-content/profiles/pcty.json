@@ -1,0 +1,10 @@
+{
+  "ticker": "PCTY",
+  "companyName": "Paylocity Holding Corporation",
+  "profile": "Paylocity provides cloud-based human capital management, finance and information technology software to businesses. Its platform supports employee processes such as recruiting, onboarding, benefits, payroll and performance management, alongside spend management, accounts payable, corporate cards, procurement and IT provisioning. The company also offers implementation and client services, analytics, reporting and integrations with third-party systems.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:57:02.648Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/1591698/000159169826000069/pcty-20260630.htm"
+}

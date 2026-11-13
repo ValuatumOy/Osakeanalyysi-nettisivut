@@ -1,0 +1,10 @@
+{
+  "ticker": "IMAX",
+  "companyName": "IMAX Corporation",
+  "profile": "IMAX operates an entertainment technology and content platform. It remasters films and other content into the IMAX format for distribution across its network, and sells or leases theater systems that combine proprietary projection, sound, screens, and auditorium design. It also provides licensing, maintenance, and warranty services. Customers include commercial theater exhibitors, with some museums, science centers, and destination entertainment sites.",
+  "provider": "codex",
+  "model": "gpt-6-luna",
+  "promptVersion": 2,
+  "generatedAt": "2026-11-13T11:59:01.904Z",
+  "sourceFiling": "https://www.sec.gov/Archives/edgar/data/921582/000162828026011770/imax-20251231.htm"
+}
