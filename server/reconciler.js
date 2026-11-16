@@ -635,6 +635,8 @@ function pollWindowDeadline() {
 
 // Gap fill outcomes (order.gapFillStatus, set once):
 //   IMPORTED         the collector delivered missing periods to Trunk
+//   PARTIAL          it delivered some, but planned periods were left out (e.g. it
+//                    rejected the document it found); gapFill.notImported lists them
 //   NOTHING_MISSING  Trunk already had every period the collector targets
 //   UNAVAILABLE      nothing could be imported (no documents found, the run failed, ...)
 //   TIMEOUT          still running after GAP_FILL_MAX_WAIT_MS
@@ -658,7 +660,18 @@ async function advanceGapFill(order) {
     Object.assign(gap, { detail: detail || gap.detail || '', finishedAt: new Date().toISOString() });
     await orders.update(order.id, { gapFillStatus: status, gapFill: gap });
     console.log('reconciler: gap fill finished', { id: order.id, ticker: order.ticker, status, detail: gap.detail });
-    if (!GAP_FILL_OK.has(status)) {
+    if (status === 'PARTIAL') {
+      const periods = (gap.notImported || []).map(p => `${p.period} (${p.status}${p.detail ? `: ${p.detail}` : ''})`);
+      await email.reportError('reconciler: gap fill was partial', new Error(
+        `PARTIAL: not imported: ${periods.length ? periods.join('; ') : 'see the collector request row'}`), {
+        orderId: order.id,
+        company: order.companyName,
+        ticker: order.ticker,
+        isin: gap.isin,
+        note: 'The report is rendered anyway. The periods listed above did not reach Trunk, so the report may show '
+          + 'old or estimated figures for them, possibly labelled as actuals. Check the delivered PDF.',
+      });
+    } else if (!GAP_FILL_OK.has(status)) {
       await email.reportError('reconciler: gap fill did not complete', new Error(`${status}: ${gap.detail}`), {
         orderId: order.id,
         company: order.companyName,
@@ -683,12 +696,13 @@ async function advanceGapFill(order) {
   for (;;) {
     const now = Date.now();
     if (gap.settleUntil) {
-      if (now >= Date.parse(gap.settleUntil)) return finish('IMPORTED', gap.detail);
+      if (now >= Date.parse(gap.settleUntil)) return finish(gap.partial ? 'PARTIAL' : 'IMPORTED', gap.detail);
     } else {
       const result = await collector.checkGapFill(gap.isin, gap.requestedAt, now);
       if (result.state === 'imported') {
         await save({
           state: result.state, detail: result.detail, groups: result.groups,
+          ...(result.partial ? { partial: true, notImported: result.notImported || [] } : {}),
           settleUntil: new Date(now + GAP_FILL_SETTLE_MS).toISOString(),
         });
         continue;

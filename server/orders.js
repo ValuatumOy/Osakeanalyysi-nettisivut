@@ -107,7 +107,7 @@ function create(input, statePath = STATE_PATH) {
     originalJobId: input.jobId || null,
     importStatus: null, // SUCCESS | SKIPPED | FAILED (Task E FMP import)
     // Gap fill before rendering (reconciler.js advanceGapFill): the outcome
-    // (IMPORTED | NOTHING_MISSING | UNAVAILABLE | TIMEOUT | NO_ISIN | NOT_CONFIGURED)
+    // (IMPORTED | PARTIAL | NOTHING_MISSING | UNAVAILABLE | TIMEOUT | NO_ISIN | NOT_CONFIGURED)
     // and its working state. Server-side only; never in the order-page payload.
     gapFillStatus: null,
     gapFill: null,

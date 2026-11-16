@@ -131,6 +131,34 @@ async function readGroup(importGroupId) {
   return res.Item || null;
 }
 
+// 'I#annual#2025' -> 'FY2025', 'I#quarterly#20254' -> 'Q4/2025'; anything else as it is.
+function positionLabel(sk) {
+  const [, kind, period] = String(sk).split('#');
+  if (kind === 'annual' && /^\d{4}$/.test(period || '')) return `FY${period}`;
+  if (kind === 'quarterly' && /^\d{5}$/.test(period || '')) return `Q${period.slice(4)}/${period.slice(0, 4)}`;
+  return String(sk).replace(/^I#/, '');
+}
+
+// The planned periods this request did not get into Trunk: the collector keeps one
+// unit row per period (pk I#<isin>, sk I#<kind>#<period>) and rewrites it on each
+// run, so the rows this run touched (updated since it started) that are not
+// 'imported' are the ones it left out, with the collector's reason.
+async function readNotImported(isin, startedAt) {
+  const { QueryCommand } = require('@aws-sdk/lib-dynamodb');
+  const { dynamo } = require('./aws/clients');
+  const res = await dynamo().send(new QueryCommand({
+    TableName: REPORT_IMPORT_TABLE(),
+    KeyConditionExpression: 'pk = :pk AND sk BETWEEN :from AND :to',
+    ExpressionAttributeValues: { ':pk': `I#${isin}`, ':from': 'I#', ':to': 'I#~' },
+  }));
+  return (res.Items || [])
+    .filter(row => String(row.sk).startsWith('I#'))
+    .filter(row => !startedAt || String(row.updated_at || '') >= startedAt)
+    .filter(row => row.status !== 'imported')
+    .sort((a, b) => String(a.sk).localeCompare(String(b.sk)))
+    .map(row => ({ period: positionLabel(row.sk), status: row.status || '', detail: row.status_detail || '' }));
+}
+
 // Where a group is: done once processing failed or delivery ended. The
 // consumer writes the row only when it starts, so a missing row is in progress.
 function groupOutcome(group) {
@@ -145,7 +173,8 @@ function groupOutcome(group) {
 //   waiting         no request row yet (the importer has not started it)
 //   running         the importer is planning or fetching
 //   importing       groups submitted, not all finished
-//   imported        every group finished and at least one was delivered to Trunk
+//   imported        every group finished and at least one was delivered to Trunk;
+//                   `partial: true` (+ `notImported` periods) when not everything planned got in
 //   nothing_missing Trunk already has every period the planner targets
 //   deferred        another import of the company is in flight; re-send later
 //   unavailable     nothing could be imported (no documents, skipped, failed, ...)
@@ -170,8 +199,21 @@ async function checkGapFill(isin, requestedAt, now = Date.now()) {
     const outcomes = await Promise.all(groupIds.map(async id => groupOutcome(await readGroup(id))));
     const groups = groupIds.map((id, i) => ({ id, outcome: outcomes[i] }));
     if (outcomes.length === 0 || outcomes.includes('pending')) return { state: 'importing', detail, groups };
-    if (outcomes.includes('delivered')) return { state: 'imported', detail, groups };
-    return { state: 'unavailable', detail, groups };
+    if (!outcomes.includes('delivered')) return { state: 'unavailable', detail, groups };
+    // Imported, but maybe not all of it: the collector planned documents it did
+    // not submit (e.g. it rejected the PDF it found), or a group failed.
+    const planned = Number(request.documents_planned);
+    const submitted = Number(request.documents_submitted);
+    const partial = (planned > submitted) || outcomes.includes('failed');
+    if (!partial) return { state: 'imported', detail, groups };
+    let notImported = [];
+    try {
+      notImported = await readNotImported(isin, request.started_at);
+    } catch (err) {
+      // Still partial; the alert only goes without the list of periods.
+      console.warn('collector-client: could not list the periods not imported:', err.message);
+    }
+    return { state: 'imported', detail, groups, partial: true, notImported };
   }
   if (NOT_FILLABLE.has(status)) return { state: 'unavailable', detail: `${status}: ${detail}` };
   // A status this client does not know (a newer collector): do not wait on it.
@@ -181,5 +223,5 @@ async function checkGapFill(isin, requestedAt, now = Date.now()) {
 module.exports = {
   isConfigured, resolveCompany, requestGapFill, checkGapFill,
   // for tests
-  payloadFor, groupOutcome,
+  payloadFor, groupOutcome, positionLabel,
 };

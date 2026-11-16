@@ -183,6 +183,26 @@ test('an import that cannot be done still renders, and admin is told', async (t)
   assert.equal(errors[0].ctx.isin, APPLE.isin);
 });
 
+test('a partial import renders, is recorded as PARTIAL, and admin is told which periods are missing', async (t) => {
+  const collector = fakeCollector([{
+    state: 'imported', detail: '6 documents submitted; 1 planned documents were not submitted',
+    groups: [{ id: 'g1', outcome: 'delivered' }], partial: true,
+    notImported: [{ period: 'FY2025', status: 'document_rejected', detail: 'PDF page count 1 is outside 4..800' }],
+  }]);
+  const { reconciler, submitted, errors } = load(t, collector);
+
+  await reconciler.advance(await newOrder('cs_p'));
+
+  const order = await stored('cs_p');
+  assert.equal(order.gapFillStatus, 'PARTIAL');
+  assert.equal(order.status, 'RENDERING');
+  assert.deepEqual(order.gapFill.notImported.map(p => p.period), ['FY2025']);
+  assert.deepEqual(submitted, [{ companyCode: 'AAPL' }]);
+  assert.equal(errors.length, 1);
+  assert.equal(errors[0].subject, 'reconciler: gap fill was partial');
+  assert.match(errors[0].message, /FY2025 \(document_rejected: PDF page count 1/);
+});
+
 test('a gap fill past the maximum wait times out and renders', async (t) => {
   const collector = fakeCollector([{ state: 'running', detail: 'acquiring' }]);
   const { reconciler, submitted, errors } = load(t, collector, { GAP_FILL_MAX_WAIT_MS: '0' });

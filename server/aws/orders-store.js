@@ -141,7 +141,7 @@ async function create(input) {
     originalJobId: input.jobId || null,
     importStatus: null,
     // Gap fill before rendering (reconciler.js advanceGapFill): the outcome
-    // (IMPORTED | NOTHING_MISSING | UNAVAILABLE | TIMEOUT | NO_ISIN | NOT_CONFIGURED)
+    // (IMPORTED | PARTIAL | NOTHING_MISSING | UNAVAILABLE | TIMEOUT | NO_ISIN | NOT_CONFIGURED)
     // and its working state. Server-side only; never in the order-page payload.
     gapFillStatus: null,
     gapFill: null,

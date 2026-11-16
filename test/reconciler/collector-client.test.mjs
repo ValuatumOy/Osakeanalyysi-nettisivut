@@ -132,3 +132,42 @@ test('a row without a valid ISIN does not resolve', async (t) => {
   const { client } = load(t, { wisdom: [{ ticker: 'AAPL', companyCode: '12345' }] });
   assert.equal(await client.resolveCompany('AAPL'), null);
 });
+
+test('a submitted request that left planned documents out is imported but partial, with the periods', async (t) => {
+  const startedAt = '2026-11-03T09:14:40Z';
+  const rows = [
+    req(startedAt, {
+      request_status: 'submitted', import_group_ids: ['g1'], documents_planned: 7, documents_submitted: 6,
+      started_at: startedAt,
+    }),
+    { pk: `I#${ISIN}`, sk: 'I#annual#2025', status: 'document_rejected', status_detail: 'PDF page count 1 is outside 4..800', updated_at: '2026-11-03T09:15:10Z' },
+    { pk: `I#${ISIN}`, sk: 'I#annual#2023', status: 'document_rejected', status_detail: 'an older run', updated_at: '2026-10-01T00:00:00Z' },
+    { pk: `I#${ISIN}`, sk: 'I#quarterly#20253', status: 'imported', updated_at: '2026-11-03T09:25:00Z' },
+  ];
+  const groups = { g1: { processingStatus: 'MERGED', deliveryStatus: 'DELIVERED' } };
+  const { client } = load(t, { rows, groups });
+  const result = await client.checkGapFill(ISIN, REQUESTED_AT);
+  assert.equal(result.state, 'imported');
+  assert.equal(result.partial, true);
+  assert.deepEqual(result.notImported, [
+    { period: 'FY2025', status: 'document_rejected', detail: 'PDF page count 1 is outside 4..800' },
+  ], 'only rows this run touched, and not the imported ones');
+});
+
+test('everything planned submitted and delivered is not partial', async (t) => {
+  const rows = [req('2026-11-03T09:14:40Z', {
+    request_status: 'submitted', import_group_ids: ['g1'], documents_planned: 3, documents_submitted: 3,
+  })];
+  const { client } = load(t, { rows, groups: { g1: { deliveryStatus: 'DELIVERED' } } });
+  const result = await client.checkGapFill(ISIN, REQUESTED_AT);
+  assert.equal(result.state, 'imported');
+  assert.equal(result.partial, undefined);
+});
+
+test('period labels', () => {
+  const { positionLabel } = require(CLIENT_ID);
+  assert.equal(positionLabel('I#annual#2025'), 'FY2025');
+  assert.equal(positionLabel('I#quarterly#20254'), 'Q4/2025');
+  assert.equal(positionLabel('I#half#20252'), 'half#20252');
+  delete require.cache[CLIENT_ID];
+});

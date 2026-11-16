@@ -230,7 +230,9 @@ the week's selection with a conditional put for the repeat-cooldown history.
    seconds when nothing is missing, a few minutes when a gap is filled, at most
    `GAP_FILL_MAX_WAIT_MS` (20 min). The order renders whatever the outcome; one
    that did not complete (`gapFillStatus` other than `IMPORTED` or
-   `NOTHING_MISSING`) is emailed to admin. Before 29 October 2026 this step was
+   `NOTHING_MISSING`) is emailed to admin, including `PARTIAL`: some periods
+   were imported but the collector left planned ones out (e.g. it rejected the
+   PDF it found), and the email lists them. Before 29 October 2026 this step was
    the FMP import (`FRESH_IMPORT_ENABLED`), which now would duplicate models in
    Wisdom. `RENDERING`
    submits the job to pdf-report-engine and polls it (~20 s inside one
