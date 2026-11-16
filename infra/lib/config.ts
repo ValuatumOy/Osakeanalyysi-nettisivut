@@ -51,6 +51,25 @@ export interface StageConfig {
    * under the old FMP analyst instead of refreshing the one the engine reads.
    */
   freshImportEnabled: boolean;
+  /**
+   * GAP_FILL_ENABLED default for the worker (context `gapFillEnabled`
+   * overrides): before rendering, ask wisdom-data-collector to import the
+   * company's missing report periods into the stage's Trunk and wait for them
+   * (server/collector-client.js). Replaces the FMP import; with both on, only
+   * the gap fill runs.
+   */
+  gapFillEnabled: boolean;
+  /**
+   * The wisdom-data-collector import lane that writes to the stage's Trunk:
+   * prod lane → Wisdom, test lane → trunkdev (wisdom-data-collector
+   * report-import.md §18). The importer Lambda is invoked asynchronously; the
+   * request rows and import groups are read back from the two tables.
+   */
+  collector: {
+    importerFunction: string;
+    reportImportTable: string;
+    importGroupsTable: string;
+  };
 }
 
 export function stageConfig(app: App): StageConfig {
@@ -112,5 +131,18 @@ export function stageConfig(app: App): StageConfig {
     fmpImportUrl: app.node.tryGetContext('fmpImportUrl') ?? `${trunkRest}/dataimport`,
     engineFidByTicker: {},
     freshImportEnabled: stage !== 'prod',
+    gapFillEnabled: true,
+    collector: stage === 'prod'
+      ? {
+          importerFunction: 'report-importer-prod',
+          reportImportTable: 'wisdom-data-collector-prod-report-import',
+          importGroupsTable: 'pdf-dataimport-equity-import-groups-prod',
+        }
+      : {
+          // The test lane keeps the collector's pre-lane names (§18.2).
+          importerFunction: 'report-importer',
+          reportImportTable: 'WisdomDataCollector-ReportImportTable21043579-9E2GMRSYT0AS',
+          importGroupsTable: 'pdf-dataimport-equity-import-groups-test',
+        },
   };
 }

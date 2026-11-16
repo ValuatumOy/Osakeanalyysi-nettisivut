@@ -150,4 +150,4 @@ async function searchCompanies(rawQuery) {
   return result;
 }
 
-module.exports = { searchCompanies, venueOf, isCoveredTicker };
+module.exports = { searchCompanies, venueOf, isCoveredTicker, fetchWisdom };
