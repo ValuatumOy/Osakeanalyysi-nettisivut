@@ -1,0 +1,770 @@
+{
+  "id": "thecocacolacompany-18112026",
+  "slug": "the-coca-cola-company-equity-report",
+  "reportKind": "market-first",
+  "companyName": "The Coca-Cola Company",
+  "ticker": "KO",
+  "exchange": "New York Stock Exchange",
+  "country": "United States",
+  "sector": "Beverages non-Alcoholic",
+  "currency": "USD",
+  "reportDate": "2026-11-18",
+  "profile": "Makes the concentrates and syrups that give its drinks their taste, while also selling some finished drinks. Its brands include Coca-Cola, Sprite and Fanta, with independent bottling partners, distributors, retailers and restaurants serving most customers.",
+  "headline": {
+    "currentPrice": "98.8 USD",
+    "marketCap": "USD 425bn",
+    "enterpriseValue": "USD 450bn"
+  },
+  "otherClaims": {
+    "label": "Debt and other claims, less cash",
+    "value": "-5.7 USD per share"
+  },
+  "consensusTarget": {
+    "value": "100.4 USD",
+    "analysts": "35",
+    "range": "82.4-111.3 USD",
+    "source": "Chartmill"
+  },
+  "multiples": [
+    {
+      "label": "EV/EBIT 2026",
+      "value": "29x"
+    },
+    {
+      "label": "EV/EBIT 2028",
+      "value": "27x"
+    },
+    {
+      "label": "P/E 2026",
+      "value": "29x"
+    }
+  ],
+  "priceStats": {
+    "week52High": "100.6 USD",
+    "week52Low": "67.3 USD",
+    "oneYearChange": "+39%",
+    "threeYearChange": "+73%"
+  },
+  "summary": [
+    "The Coca-Cola Company (KO, New York Stock Exchange) makes beverage concentrates, syrups and selected finished drinks under brands including Coca-Cola, Sprite and Fanta. Its share price was 98.8 USD, market capitalisation was USD 425bn and enterprise value was USD 450bn on 18 November 2026 in this Valuatum market report dated 18 November 2026. Independent bottlers carry much of the production, packaging and distribution, leaving the company exposed primarily to brand demand, pricing, mix and concentrate volumes across five operating businesses.",
+    "The share price is led by North America at 52.1 USD per share, valued at 33.1x 2028 operating profit, followed by EMEA at 26.5 USD per share and 23.9x. Asia Pacific contributes 11.3 USD per share at 21.3x, Latin America 10.9 USD per share at 21.3x and Bottling 3.8 USD per share at 23.9x. Together the businesses contribute 104.5 USD per share before debt and other claims, while USD 24.7bn of forecast claims less cash reduces the price by 5.7 USD per share.",
+    "The combined 27x 2028 EV/EBIT multiple is above listed peers at roughly 14x because each business earns a premium multiple, with North America furthest above its peer range. The reading depends on 2028 margins of 32% in North America, 40% in EMEA, 39% in Asia Pacific, 32% in Latin America and 11% in Bottling. Investors should watch unit-case volume, regional margins, the African bottling sale and 2026 results."
+  ],
+  "thesis": [
+    {
+      "num": "01",
+      "title": "North America leads",
+      "metric": "52.1 USD",
+      "text": "North America is the largest business in the price split, contributing 52.1 USD per share and 50% of the 104.5 USD per share assigned to the businesses before claims. Its 33.1x 2028 operating-profit multiple is above the 12.9x-22.9x peer range."
+    },
+    {
+      "num": "02",
+      "title": "Premium to peers",
+      "metric": "27x",
+      "text": "The five businesses together cost about 27x analysts' 2028 operating profit, compared with roughly 14x for listed peers. Every business sits above its highest cited peer, with North America at 33.1x against Monster Beverage's 22.9x."
+    },
+    {
+      "num": "03",
+      "title": "Margins matter",
+      "metric": "32%",
+      "text": "The central test is whether forecast margins hold through 2028. North America requires a 32% margin, EMEA 40%, Asia Pacific 39%, Latin America 32% and Bottling 11%; the African bottling sale and 2026 results provide nearer-term evidence."
+    }
+  ],
+  "valuePools": [
+    {
+      "name": "North America",
+      "share": "52.1 USD per share",
+      "economics": "33.1x 2028 operating profit · USD 6,766m forecast operating profit · peers 12.9x-22.9x, median 14.7x",
+      "text": "North America sells concentrates and syrups to bottling partners and finished drinks to retailers and food-service customers. Outside sales were USD 19.6bn in 2025 and reach USD 21.4bn in the 2028 split, with forecast operating profit of USD 6,766m on a 32% margin. The market assigns 52.1 USD per share, half of the 104.5 USD per share attributed to the businesses before claims, at 33.1x forecast operating profit. That is above peers costing 12.9x-22.9x, including Keurig Dr Pepper, PepsiCo and Monster Beverage. The premium rests on the concentrate model, brand position and a 30.2% adjusted 2025 margin, but unit-case volume fell 1% in 2025 and was flat in the third quarter of 2026. A return to volume growth would strengthen the premium; a margin retreat to 30.2% would weaken it."
+    },
+    {
+      "name": "EMEA",
+      "share": "26.5 USD per share",
+      "economics": "23.9x 2028 operating profit · USD 4,772m forecast operating profit · peers 9.4x-16.5x, median 14.7x",
+      "text": "EMEA sells concentrates, syrups and some finished drinks across Europe, the Middle East and Africa. Outside sales were USD 10.8bn in 2025 and reach USD 11.8bn in the 2028 split, producing forecast operating profit of USD 4,772m at a 40% margin. The business contributes 26.5 USD per share and costs 23.9x forecast operating profit, above peers at 9.4x-16.5x. Its economics differ from bottlers because independent partners operate most plants, trucks and packaging, leaving the brand owner with a larger share of sales. The 2025 outside-sales margin was 39.7%, down from 42.6% in 2023 and 41.4% in 2024, so the premium depends on a high margin being sustained rather than expanded. Volume grew 3% in 2025 but Europe declined 1%, while Eurasia and the Middle East grew 7%."
+    },
+    {
+      "name": "Asia Pacific",
+      "share": "11.3 USD per share",
+      "economics": "21.3x 2028 operating profit · USD 2,275m forecast operating profit · peers 6.4x-14.7x, median 12.9x",
+      "text": "Asia Pacific sells concentrates, syrups and finished drinks through independent bottlers, distributors, retailers and food-service customers. Outside sales were USD 5.3bn in 2025 and reach USD 5.8bn in the 2028 split, with forecast operating profit of USD 2,275m at a 39% margin. The business contributes 11.3 USD per share at 21.3x forecast operating profit, above peers at 6.4x-14.7x. Capital spending was only USD 72m in 2025, supporting the distinction between a concentrate seller and asset-heavy bottlers. The 2025 outside-sales margin was 38.3%, while unit-case volume was flat, sparkling flavours fell 3% and juice, dairy and plant-based drinks fell 6%. The premium therefore depends on durability of margin and leading market position rather than fast growth. A recovery in volume or stronger price and mix would provide the clearest support."
+    },
+    {
+      "name": "Latin America",
+      "share": "10.9 USD per share",
+      "economics": "21.3x 2028 operating profit · USD 2,212m forecast operating profit · peers 3.7x-14.7x, median 12.9x",
+      "text": "Latin America covers 40 markets and sells concentrates, syrups and some finished drinks through independent bottlers. Outside sales were USD 6.3bn in 2025 and reach USD 6.9bn in the 2028 split, with forecast operating profit of USD 2,212m at a 32% margin. The business contributes 10.9 USD per share at 21.3x forecast operating profit, above peers costing 3.7x-14.7x. Five owned concentrate or syrup plants and no beverage bottling plants keep capital intensity low; buildings and equipment spending was only USD 2m in 2025. The reported 2025 outside-sales margin was 59.1%, after 58.9% in 2023 and 58.6% in 2024, but the split assumes a sharp decline to 32% by 2028. That gap is the key uncertainty. Mexico volume fell 4% in 2025, offset by Brazil up 2% and Argentina up 6%."
+    },
+    {
+      "name": "Bottling",
+      "share": "3.8 USD per share",
+      "economics": "23.9x 2028 operating profit · USD 676m forecast operating profit · peers 3.7x-16.5x, median 11.8x",
+      "text": "Bottling makes, packages and distributes Coca-Cola and other drinks to retailers and food-service customers. Outside sales were USD 5.7bn in 2025 and reach USD 6.3bn in the 2028 split, with forecast operating profit of USD 676m at an 11% margin. The business contributes 3.8 USD per share at 23.9x forecast operating profit, above peers at 3.7x-16.5x and a median of 11.8x. Its 2025 adjusted operating profit was USD 426m at a 7.4% margin, below Coca-Cola FEMSA at 14.7%, Coca-Cola Europacific Partners at 13.4% and Coca-Cola HBC at 11.3%. The African bottling sale, expected to close by the end of 2026, would change the remaining business and provide about USD 1.3bn of cash for a 41.52% interest. The key evidence is whether margin reaches 11% or remains near 7.4%."
+    }
+  ],
+  "coreAnalysis": [
+    {
+      "heading": "What the price pays for",
+      "text": "The share price is built from five operating businesses rather than from assets carried at reported value. North America contributes 52.1 USD per share, EMEA 26.5 USD per share, Asia Pacific 11.3 USD per share, Latin America 10.9 USD per share and Bottling 3.8 USD per share, giving 104.5 USD per share before claims. Forecast 2028 operating profit totals USD 16,702m, split across North America at USD 6,766m, EMEA at USD 4,772m, Asia Pacific at USD 2,275m, Latin America at USD 2,212m and Bottling at USD 676m. The corresponding multiples range from 21.3x to 33.1x, producing an aggregate 27x EV/EBIT multiple. Forecast debt and other claims less cash of USD 24.7bn subtract 5.7 USD per share, leaving the 98.8 USD share price. The composition therefore rests most heavily on North America's margin and brand position, while EMEA's concentrate economics provide the second-largest contribution. The share price is not principally a claim on bottling assets: independent partners perform much of the physical production and distribution. What has to hold is the conversion of brand strength, pricing and mix into forecast operating profit without a sustained decline in unit-case volume."
+    },
+    {
+      "heading": "Why the price is above peers",
+      "text": "Each business carries a multiple above its cited listed peers, so the premium is broad rather than caused by one unusual segment. North America costs 33.1x 2028 operating profit against peers at 12.9x-22.9x; EMEA costs 23.9x against 9.4x-16.5x; Asia Pacific and Latin America each cost 21.3x against peer ranges of 6.4x-14.7x and 3.7x-14.7x; Bottling costs 23.9x against 3.7x-16.5x. The operating explanation is the concentrate model. Independent bottlers carry plants, trucks, packaging and much working capital, allowing Coca-Cola's businesses to retain higher margins than bottlers such as Coca-Cola Europacific Partners at 13.4%, Coca-Cola HBC at 11.3% and Coca-Cola FEMSA at 14.7%. North America also held approximately 20% of measured United States refreshment-drink sales in 2025 against PepsiCo's 16%, while Latin America and Asia Pacific reported margins of 59.1% and 38.3%. The premium remains dependent on persistence: North America volume fell 1% in 2025, Asia Pacific volume was flat, and forecast margins must remain near 32%, 40% and 39% in the largest regions."
+    },
+    {
+      "heading": "What to watch",
+      "text": "The first indicators are margins on outside sales. North America needs 32% in 2028 versus 30.2% adjusted in 2025; EMEA needs 40% versus 39.7%; Asia Pacific needs 39% versus 38.3%; Latin America is modelled at 32% versus 59.1%; Bottling needs 11% versus 7.4%. A shortfall would reduce operating profit behind the same share price and widen the gap to peers. Volume is the second test. North America unit cases were flat in the third quarter of 2026 after falling 1% in 2025, Asia Pacific was flat in 2025, Europe declined 1% and Latin America's Mexico volume fell 4%. A return to growth would show that demand, not only pricing, supports the premium. The African bottling sale is expected by the end of 2026, with about USD 1.3bn of cash for a 41.52% interest and an option over the remaining 25% within six years. Coca-Cola raised 2026 guidance on 27 October 2026 to at least 5% organic revenue growth, at least 11% comparable EPS growth and USD 13.0bn free cash flow. Full-year results early in 2027 will test the forecast base."
+    }
+  ],
+  "risks": [
+    "Margin reversal (North America): a return from the forecast 32% margin to the 30.2% adjusted 2025 level would reduce profit; the quarterly outside-sales margin is the early warning.",
+    "Volume decline (Asia Pacific and North America): flat or falling unit-case volume would leave the premium reliant on pricing and mix; quarterly case volume and sparkling-flavour trends are the early warning.",
+    "Latin American margin compression (Latin America): a move from the reported 59.1% margin toward the modelled 32% would reduce profit behind the 21.3x multiple; segment margin is the early warning.",
+    "African sale delay (Bottling and EMEA): delayed closing would leave more production and operating risk with Coca-Cola; completion by the end of 2026 is the early warning.",
+    "Bottler weakness (Emerging markets): weaker partner finances or infrastructure investment would reduce concentrate purchases and growth; bottler financial strength is the early warning."
+  ],
+  "catalysts": [
+    "African bottling sale closes (near-term, Bottling and EMEA): completion by the end of 2026 would confirm further movement of production to independent operators and bring about USD 1.3bn of cash.",
+    "2026 full-year results (near-term, whole company): delivery of at least 5% organic revenue growth, at least 11% comparable EPS growth and USD 13.0bn free cash flow would strengthen the forecast base.",
+    "North America volume recovery (medium-term, North America): positive unit-case growth in 2027 would show that profit growth is coming from more drinks as well as pricing.",
+    "Regional margin persistence (medium-term, EMEA and Asia Pacific): margins near 40% and 39% would support the concentrate economics behind their premiums.",
+    "Latin America margin retention (medium-term, Latin America): a margin nearer 59% than 32% would imply materially higher operating profit than the split assumes."
+  ],
+  "financials": {
+    "note": "All figures in USD millions unless noted; per-share data in USD.",
+    "incomeStatement": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Net Sales",
+          "values": [
+            "45,754",
+            "47,061",
+            "47,941",
+            "50,512",
+            "48,980",
+            "52,172"
+          ]
+        },
+        {
+          "label": "EBITDA",
+          "values": [
+            "12,439",
+            "11,604",
+            "15,359",
+            "17,228",
+            "17,261",
+            "18,352"
+          ]
+        },
+        {
+          "label": "EBITDA margin",
+          "values": [
+            "27.2%",
+            "24.7%",
+            "32.0%",
+            "34.1%",
+            "35.2%",
+            "35.2%"
+          ]
+        },
+        {
+          "label": "Depreciation",
+          "values": [
+            "-1,128",
+            "-1,612",
+            "-1,597",
+            "-1,566",
+            "-1,701",
+            "-1,650"
+          ]
+        },
+        {
+          "label": "Operating Profit (EBIT)",
+          "values": [
+            "11,311",
+            "9,992",
+            "13,762",
+            "15,662",
+            "15,559",
+            "16,702"
+          ]
+        },
+        {
+          "label": "EBIT margin",
+          "values": [
+            "24.7%",
+            "21.2%",
+            "28.7%",
+            "31.0%",
+            "31.8%",
+            "32.0%"
+          ]
+        },
+        {
+          "label": "Net financial items",
+          "values": [
+            "1,641",
+            "1,324",
+            "205",
+            "428",
+            "1,233",
+            "1,421"
+          ]
+        },
+        {
+          "label": "Pre-tax Profit",
+          "values": [
+            "12,952",
+            "13,086",
+            "15,998",
+            "18,030",
+            "18,732",
+            "20,063"
+          ]
+        },
+        {
+          "label": "Net Earnings",
+          "values": [
+            "10,703",
+            "10,631",
+            "13,107",
+            "14,424",
+            "15,104",
+            "16,166"
+          ]
+        },
+        {
+          "label": "EPS",
+          "values": [
+            "2.5",
+            "2.5",
+            "3.1",
+            "3.4",
+            "3.5",
+            "3.8"
+          ]
+        },
+        {
+          "label": "DPS",
+          "values": [
+            "0",
+            "1.9",
+            "2",
+            "2.4",
+            "2.5",
+            "2.7"
+          ]
+        },
+        {
+          "label": "Payout ratio",
+          "values": [
+            "—",
+            "78.6%",
+            "67.0%",
+            "71.6%",
+            "71.6%",
+            "71.6%"
+          ]
+        }
+      ]
+    },
+    "balanceSheet": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Tangible assets",
+          "values": [
+            "9,236",
+            "10,303",
+            "9,613",
+            "10,454",
+            "10,137",
+            "10,798"
+          ]
+        },
+        {
+          "label": "Intangibles",
+          "values": [
+            "14,865",
+            "13,301",
+            "12,531",
+            "13,203",
+            "12,803",
+            "13,637"
+          ]
+        },
+        {
+          "label": "Goodwill",
+          "values": [
+            "18,358",
+            "18,139",
+            "15,491",
+            "15,491",
+            "15,491",
+            "15,491"
+          ]
+        },
+        {
+          "label": "Other non-current assets",
+          "values": [
+            "26,951",
+            "31,490",
+            "34,931",
+            "34,931",
+            "34,931",
+            "34,931"
+          ]
+        },
+        {
+          "label": "Non-current assets",
+          "values": [
+            "69,410",
+            "73,233",
+            "72,566",
+            "74,079",
+            "73,362",
+            "74,856"
+          ]
+        },
+        {
+          "label": "Inventories",
+          "values": [
+            "4,424",
+            "4,728",
+            "4,425",
+            "4,807",
+            "4,661",
+            "4,965"
+          ]
+        },
+        {
+          "label": "Receivables",
+          "values": [
+            "12,942",
+            "10,441",
+            "16,349",
+            "17,092",
+            "16,903",
+            "17,296"
+          ]
+        },
+        {
+          "label": "Cash & equivalents",
+          "values": [
+            "9,366",
+            "10,828",
+            "10,270",
+            "11,101",
+            "10,765",
+            "11,466"
+          ]
+        },
+        {
+          "label": "Current assets",
+          "values": [
+            "26,732",
+            "25,997",
+            "31,044",
+            "33,000",
+            "32,329",
+            "33,727"
+          ]
+        },
+        {
+          "label": "Assets outside the model's subtotals",
+          "values": [
+            "1,561",
+            "1,319",
+            "1,206",
+            "1,206",
+            "1,206",
+            "1,206"
+          ]
+        },
+        {
+          "label": "Total Assets",
+          "values": [
+            "97,703",
+            "100,549",
+            "104,816",
+            "108,285",
+            "106,896",
+            "109,789"
+          ]
+        },
+        {
+          "label": "Equity",
+          "values": [
+            "27,480",
+            "26,372",
+            "34,275",
+            "40,097",
+            "44,868",
+            "50,214"
+          ]
+        },
+        {
+          "label": "Long-term debt",
+          "values": [
+            "35,547",
+            "42,375",
+            "42,119",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Short-term debt",
+          "values": [
+            "6,878",
+            "2,147",
+            "3,373",
+            "—",
+            "—",
+            "—"
+          ]
+        },
+        {
+          "label": "Long-term liabilities",
+          "values": [
+            "43,012",
+            "46,459",
+            "46,854",
+            "24,560",
+            "21,758",
+            "19,953"
+          ]
+        },
+        {
+          "label": "Current liabilities",
+          "values": [
+            "23,571",
+            "25,249",
+            "21,281",
+            "41,222",
+            "37,864",
+            "37,216"
+          ]
+        },
+        {
+          "label": "Liabilities outside the model's subtotals",
+          "values": [
+            "3,640",
+            "2,469",
+            "2,406",
+            "2,406",
+            "2,406",
+            "2,406"
+          ]
+        },
+        {
+          "label": "Total liabilities & equity",
+          "values": [
+            "97,703",
+            "100,549",
+            "104,816",
+            "108,285",
+            "106,896",
+            "109,789"
+          ]
+        },
+        {
+          "label": "Other interest-bearing items in net debt",
+          "values": [
+            "1,001",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "label": "Net debt",
+          "values": [
+            "34,060",
+            "33,694",
+            "35,222",
+            "28,549",
+            "23,282",
+            "18,970"
+          ]
+        },
+        {
+          "label": "Capital invested",
+          "values": [
+            "60,539",
+            "41,979",
+            "49,262",
+            "48,411",
+            "47,915",
+            "48,949"
+          ]
+        },
+        {
+          "label": "Equity ratio",
+          "values": [
+            "28.1%",
+            "26.2%",
+            "32.7%",
+            "37.0%",
+            "42.0%",
+            "45.7%"
+          ]
+        },
+        {
+          "label": "Gearing",
+          "values": [
+            "123.9%",
+            "127.8%",
+            "102.8%",
+            "71.2%",
+            "51.9%",
+            "37.8%"
+          ]
+        },
+        {
+          "label": "Net debt / EBITDA",
+          "values": [
+            "2.7x",
+            "2.9x",
+            "2.3x",
+            "1.7x",
+            "1.3x",
+            "1.0x"
+          ]
+        },
+        {
+          "label": "Current ratio",
+          "values": [
+            "1.1",
+            "1",
+            "1.5",
+            "0.8",
+            "0.9",
+            "0.9"
+          ]
+        }
+      ]
+    },
+    "cashFlow": {
+      "columns": [
+        "2023A",
+        "2024A",
+        "2025A",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "rows": [
+        {
+          "label": "Cash from operations (Valuatum model)",
+          "values": [
+            "7,619",
+            "20,867",
+            "3,935",
+            "18,353",
+            "16,609",
+            "18,301"
+          ]
+        },
+        {
+          "label": "Operating cash flow (Valuatum calculation)",
+          "values": [
+            "6,173",
+            "18,130",
+            "1,791",
+            "16,082",
+            "13,701",
+            "15,244"
+          ]
+        },
+        {
+          "label": "Change in working capital",
+          "values": [
+            "4,212",
+            "-8,606",
+            "10,799",
+            "-2,364",
+            "221",
+            "-460"
+          ]
+        },
+        {
+          "label": "Gross capex",
+          "values": [
+            "2,112",
+            "-12,652",
+            "-1,218",
+            "3,079",
+            "984",
+            "3,145"
+          ]
+        },
+        {
+          "label": "Capex (ex. M&A)",
+          "values": [
+            "-2,112",
+            "12,652",
+            "1,218",
+            "-3,079",
+            "-984",
+            "-3,145"
+          ]
+        },
+        {
+          "label": "Cash after capex (CFO - gross capex)",
+          "values": [
+            "5,507",
+            "8,215",
+            "2,717",
+            "15,274",
+            "15,625",
+            "15,156"
+          ]
+        },
+        {
+          "label": "Free operating cash flow (Valuatum def.)",
+          "values": [
+            "4,717",
+            "27,401",
+            "3,660",
+            "13,003",
+            "12,717",
+            "12,099"
+          ]
+        },
+        {
+          "label": "Free cash flow to firm",
+          "values": [
+            "4,717",
+            "27,401",
+            "3,660",
+            "13,003",
+            "12,717",
+            "12,099"
+          ]
+        },
+        {
+          "label": "CF from financing",
+          "values": [
+            "-5,570",
+            "-14,024",
+            "-3,583",
+            "-14,443",
+            "-15,937",
+            "-14,430"
+          ]
+        },
+        {
+          "label": "Dividends paid",
+          "values": [
+            "—",
+            "—",
+            "-8,359",
+            "-8,779",
+            "-10,333",
+            "-10,820"
+          ]
+        },
+        {
+          "label": "Net change in cash",
+          "values": [
+            "-63",
+            "19,495",
+            "1,570",
+            "831",
+            "-312",
+            "726"
+          ]
+        }
+      ]
+    },
+    "ratios": {
+      "columns": [
+        "2026E"
+      ],
+      "rows": [
+        {
+          "label": "P/E",
+          "values": [
+            "29.5x"
+          ]
+        },
+        {
+          "label": "EV/EBITDA",
+          "values": [
+            "26.1x"
+          ]
+        },
+        {
+          "label": "EV/EBIT",
+          "values": [
+            "29x"
+          ]
+        },
+        {
+          "label": "P/BV",
+          "values": [
+            "11.2x"
+          ]
+        },
+        {
+          "label": "Dividend Yield",
+          "values": [
+            "2.4%"
+          ]
+        },
+        {
+          "label": "ROE",
+          "values": [
+            "41.1%"
+          ]
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "What is The Coca-Cola Company's share price made of?",
+      "a": "The 98.8 USD share price is split between North America at 52.1 USD per share, EMEA at 26.5 USD, Asia Pacific at 11.3 USD, Latin America at 10.9 USD and Bottling at 3.8 USD. Debt and other claims less cash reduce the total by 5.7 USD per share."
+    },
+    {
+      "q": "Why does The Coca-Cola Company trade above its listed peers?",
+      "a": "Each business carries a higher 2028 EV/EBIT multiple than its listed peers. The explanation is the concentrate model, brand position and high margins: North America is modelled at 32%, EMEA at 40% and Asia Pacific at 39%, while independent bottlers carry much of the physical infrastructure."
+    },
+    {
+      "q": "What do analysts forecast for The Coca-Cola Company's sales and profit?",
+      "a": "Analysts forecast 2028 net sales of USD 52,172m, operating profit of USD 16,702m, net earnings of USD 16,166m, EPS of 3.8 USD and DPS of 2.7 USD. Forecast free cash flow to firm is USD 12,099m."
+    },
+    {
+      "q": "What should Coca-Cola investors watch?",
+      "a": "The key indicators are regional operating margins, unit-case volume, the African bottling sale and 2026 results. North America needs a 32% 2028 margin, while Bottling needs an 11% margin against 7.4% adjusted in 2025."
+    },
+    {
+      "q": "How does Valuatum's market report work?",
+      "a": "Analysts' forecasts are held unchanged to 2028, operating profit is split between five businesses using segment results, and today's share price is allocated using EV/EBIT multiples read from peer comparisons. Forecast claims less cash then reconcile the business values to the 98.8 USD share price."
+    }
+  ],
+  "sources": [
+    "Primary data: Valuatum market report on The Coca-Cola Company dated 18 November 2026 (98.8 USD share price, North America 52.1 USD per share, EMEA 26.5 USD per share, Asia Pacific 11.3 USD per share, Latin America 10.9 USD per share and Bottling 3.8 USD per share).",
+    "Competitor context: Coca-Cola Europacific Partners, PepsiCo, Keurig Dr Pepper, Monster Beverage, Coca-Cola HBC, Suntory Beverage & Food, Kaufman & Broad, Coca-Cola Consolidated and Coca-Cola FEMSA; cited 2028 EV/EBIT multiples range from 3.7x to 22.9x, with peer medians varying by business. Monster Beverage's 26.6x 2026 EV/EBITDA, 23.8x 2027 EV/EBITDA, 8.2x 2026 P/BV and 29.3% EBIT margin are excluded as outliers where marked.",
+    "Market data: KO, 98.8 USD on 18 November 2026; analysts' forecasts include 2028 net sales of USD 52,172m and operating profit of USD 16,702m; the consensus price target is 100.4 USD from 35 analysts, sourced from Chartmill. The African bottling sale was pending on 4 November 2026 and was expected to close by the end of 2026, with about USD 1.3bn of cash for a 41.52% interest."
+  ]
+}

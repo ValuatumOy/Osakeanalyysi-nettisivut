@@ -44,6 +44,7 @@
 - [Recursion Pharmaceuticals (RXRX) AI equity report](https://www.aiequityreports.com/reports/recursion-pharmaceuticals-equity-report.html): SELL, target 4.10 USD (current 4.84 USD).
 - [Remedy Entertainment (REMEDY.HE) AI equity report](https://www.aiequityreports.com/reports/remedy-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Sandisk (SNDK) AI equity report](https://www.aiequityreports.com/reports/sandisk-equity-report.html): BUY, target 1,382.70 USD (current 1,212.21 USD).
+- [The Coca-Cola Company (KO) AI equity report](https://www.aiequityreports.com/reports/the-coca-cola-company-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Trainers' House (TRH1V.HE) AI equity report](https://www.aiequityreports.com/reports/trainers-house-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Vaisala (VAIAS.HE) AI equity report](https://www.aiequityreports.com/reports/vaisala-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
 - [Wärtsilä (WRT1V.HE) AI equity report](https://www.aiequityreports.com/reports/wartsila-equity-report.html): market report — what the share price is made of, business by business; no rating or target price.
